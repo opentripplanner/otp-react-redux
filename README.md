@@ -1,6 +1,6 @@
 # otp-react-redux
 
-![ORP-RR](orprr.png =500x)
+<img src="otprr.png" width="500" />
 
 A library for writing modern [OpenTripPlanner](http://www.opentripplanner.org/)-compatible multimodal journey planning applications using [React]() and [Redux]().
 
