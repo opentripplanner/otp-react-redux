@@ -1,0 +1,8 @@
+api:
+  host: http://trimet.dev.conveyal.com
+  path: /otp/routers/default
+  port: 8001
+
+map:
+  initLat: 45.52
+  initLon: -122.682

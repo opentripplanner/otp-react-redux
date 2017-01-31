@@ -1,0 +1,3 @@
+entries:
+  - lib/index.js:dist/bundle.js
+  - lib/index.css:dist/bundle.css

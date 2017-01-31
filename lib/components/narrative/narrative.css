@@ -1,0 +1,35 @@
+.otp .options > .header {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.otp .option {
+  margin-bottom: 16px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px
+}
+
+.otp .option > .header {
+  font-size: 16px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid black;
+  margin-bottom: 6px;
+}
+
+.otp .option > .header > .title {
+  font-weight: bold;
+}
+
+.otp .option > .summary {
+  text-align: center;
+  margin: 8px 0px;
+}
+
+.otp .option .leg {
+  background-color: #d0d0d0;
+  padding: 6px;
+  margin-bottom: 8px;
+}
