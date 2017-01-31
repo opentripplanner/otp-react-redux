@@ -14,9 +14,10 @@ To run, first clone the repo and install [yarn](https://yarnpkg.com/) if needed.
 
 You may want to update `example-config.yml` with the API endpoint and initial map origin. The default values are for a Conveyal test server for Portland, OR.
 
-Start a test instance using yarn:
+Install the dependencies and start a test instance using yarn:
 
 ```bash
+yarn install
 yarn start
 ```
 
