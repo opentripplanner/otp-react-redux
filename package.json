@@ -24,7 +24,7 @@
     "bootstrap": "^3.3.7",
     "immutability-helper": "^2.1.1",
     "isomorphic-fetch": "^2.2.1",
-    "leaflet": "1.0.0",
+    "leaflet": "^1.0.3",
     "moment": "^2.17.1",
     "react-bootstrap": "^0.30.7",
     "react-leaflet": "^1.1.0",

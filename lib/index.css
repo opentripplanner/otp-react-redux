@@ -1,5 +1,5 @@
 @import url(node_modules/bootstrap/dist/css/bootstrap.min.css);
-@import url(https://unpkg.com/leaflet@1.0.3/dist/leaflet.css);
+@import url(node_modules/leaflet/dist/leaflet.css);
 
 @import url(lib/components/map/map.css);
 @import url(lib/components/narrative/narrative.css);
