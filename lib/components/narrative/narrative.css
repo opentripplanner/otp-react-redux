@@ -17,13 +17,14 @@
   padding-bottom: 4px;
   border-bottom: 1px solid black;
   margin-bottom: 6px;
+  cursor: pointer;
 }
 
 .otp .option > .header > .title {
   font-weight: bold;
 }
 
-.otp .option > .summary {
+.otp .option > .body > .summary {
   text-align: center;
   margin: 8px 0px;
 }
@@ -32,4 +33,24 @@
   background-color: #d0d0d0;
   padding: 6px;
   margin-bottom: 8px;
+}
+
+.otp .option .leg > .header {
+  cursor: pointer;
+}
+
+.otp .option .step {
+  cursor: pointer;
+  background-color: #eee;
+  margin-bottom: 4px;
+}
+
+.otp .option .step {
+  cursor: pointer;
+  background-color: #eee;
+  margin-bottom: 4px;
+}
+
+.otp .option .step.active {
+  border: 1px dotted;
 }

@@ -2,3 +2,5 @@
 dist
 tmp
 node_modules
+config.yml
+*.log

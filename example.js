@@ -14,15 +14,19 @@ import {
   EndpointsOverlay,
   ItineraryOverlay,
   LocationField,
+  ModeSelector,
+  DateTimeSelector,
   NarrativeItineraries,
   BaseMap,
-  OsmBaseLayer,
+  BaseLayers,
+  // OsmBaseLayer,
   PlanTripButton,
-  createOtpReducer
+  createOtpReducer,
+  ErrorMessage
 } from './lib'
 
-// load the OTP configurtation
-import otpConfig from './example-config.yml'
+// load the OTP configuration
+import otpConfig from './config.yml'
 
 // create an initial query for demo/testing purposes
 /* const initialQuery = {
@@ -57,15 +61,18 @@ class OtpRRExample extends Component {
       <Grid fluid>
         <Row>
           <Col xs={12} md={4} className='sidebar'>
-            <LocationField fieldName='from' label='Start Location' />
-            <LocationField fieldName='to' />
+            <LocationField type='from' label='Enter start location or click on map...' />
+            <LocationField type='to' label='Enter destination or click on map...' />
+            <ModeSelector />
+            <DateTimeSelector />
+            <ErrorMessage />
             <PlanTripButton />
             <NarrativeItineraries />
           </Col>
 
           <Col xsHidden md={8} className='map-container'>
             <BaseMap>
-              <OsmBaseLayer />
+              <BaseLayers />
               <ItineraryOverlay />
               <EndpointsOverlay />
             </BaseMap>
