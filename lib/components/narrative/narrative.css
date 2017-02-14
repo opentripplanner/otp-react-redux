@@ -49,8 +49,40 @@
   cursor: pointer;
   background-color: #eee;
   margin-bottom: 4px;
+  padding: 4px;
 }
 
 .otp .option .step.active {
   border: 1px dotted;
+}
+
+.otp .option .leg .stop-count {
+  cursor: pointer;
+  /*margin-bottom: 4px;*/
+  padding: 4px;
+  margin-left: 8px;
+}
+
+.otp .option .leg ul.stop-list {
+  cursor: pointer;
+  margin-bottom: 4px;
+  padding: 4px;
+  padding-left: 0px;
+  margin-left: 8px;
+  list-style: none;
+}
+
+.otp .option .leg .stop-list li.stop-item {
+  padding: 2px;
+  padding-left: 0px;
+  /*margin-left: 8px;*/
+  list-style: none;
+}
+
+.otp .option .leg .stop-list li.stop-item:before {
+  content: "-";
+  font-weight: 800;
+  padding-right: 8px;
+  margin-left: -1px;
+  color: red;
 }
