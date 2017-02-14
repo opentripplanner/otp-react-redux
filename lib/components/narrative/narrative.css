@@ -1,3 +1,7 @@
+:root {
+  --hover-color: #fffde8;
+}
+
 .otp .options > .header {
   margin-top: 20px;
   margin-bottom: 12px;
@@ -10,6 +14,14 @@
   background-color: #f5f5f5;
   border: 1px solid #e3e3e3;
   border-radius: 4px
+}
+
+.otp .option:hover {
+  background-color: var(--hover-color);
+}
+
+.otp .option.active {
+  background-color: #EAF3F2;
 }
 
 .otp .option > .header {
@@ -35,6 +47,14 @@
   margin-bottom: 8px;
 }
 
+.otp .option .leg:hover {
+  background-color: var(--hover-color);
+}
+
+.otp .option .leg.active {
+  background-color: #ddd;
+}
+
 .otp .option .leg > .header {
   cursor: pointer;
 }
@@ -50,10 +70,16 @@
   background-color: #eee;
   margin-bottom: 4px;
   padding: 4px;
+  font-size: x-small;
+}
+
+.otp .option .step:hover {
+  background-color: var(--hover-color);
 }
 
 .otp .option .step.active {
-  border: 1px dotted;
+  background-color: #ccc;
+  /*border: 1px dotted;*/
 }
 
 .otp .option .leg .stop-count {
