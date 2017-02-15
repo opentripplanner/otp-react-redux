@@ -8,6 +8,8 @@
   font-size: 16px;
 }
 
+/* ITINERARY OPTION */
+
 .otp .option {
   margin-bottom: 16px;
   padding: 10px;
@@ -26,9 +28,9 @@
 
 .otp .option > .header {
   font-size: 16px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid black;
-  margin-bottom: 6px;
+  /*padding-bottom: 4px;*/
+  /*border-bottom: 1px solid black;*/
+  /*margin-bottom: 6px;*/
   cursor: pointer;
 }
 
@@ -36,10 +38,12 @@
   font-weight: bold;
 }
 
-.otp .option > .body > .summary {
+.otp .option > .header > .summary {
   text-align: center;
   margin: 8px 0px;
 }
+
+/* ITINERARY LEG */
 
 .otp .option .leg {
   background-color: #d0d0d0;
@@ -58,6 +62,46 @@
 .otp .option .leg > .header {
   cursor: pointer;
 }
+
+.otp .option .leg .stop-count {
+  cursor: pointer;
+  /*margin-bottom: 4px;*/
+  padding: 4px;
+  margin-left: 8px;
+}
+
+.otp .option .leg .stop-list {
+  cursor: pointer;
+  margin-bottom: 4px;
+  padding: 4px;
+  padding-left: 0px;
+  margin-left: 8px;
+  list-style: none;
+}
+
+.otp .option .leg .item {
+  padding: 2px;
+  font-size: small;
+}
+
+.otp .option .leg .alert-item {
+  padding-left: 22px;
+}
+
+.otp .option .leg .stop-list .stop-item {
+  padding-left: 0px;
+}
+
+.otp .option .leg .stop-list .info-item {
+  padding-left: 12px;
+}
+
+/*.otp .option .leg .leg-duration {
+  float: right;
+  font-size: x-small;
+}*/
+
+/* ITINERARY STEP */
 
 .otp .option .step {
   cursor: pointer;
@@ -82,33 +126,6 @@
   /*border: 1px dotted;*/
 }
 
-.otp .option .leg .stop-count {
-  cursor: pointer;
-  /*margin-bottom: 4px;*/
-  padding: 4px;
-  margin-left: 8px;
-}
-
-.otp .option .leg ul.stop-list {
-  cursor: pointer;
-  margin-bottom: 4px;
-  padding: 4px;
-  padding-left: 0px;
-  margin-left: 8px;
-  list-style: none;
-}
-
-.otp .option .leg .stop-list li.stop-item {
-  padding: 2px;
-  padding-left: 0px;
-  /*margin-left: 8px;*/
-  list-style: none;
-}
-
-.otp .option .leg .stop-list li.stop-item:before {
-  content: "-";
-  font-weight: 800;
-  padding-right: 8px;
-  margin-left: -1px;
-  color: red;
+.otp .option .step .step-distance {
+  float: right;
 }
