@@ -105,6 +105,7 @@ render(
     }
     <Router history={history}>
       <Route path='/' component={props => <OtpApp {...props}><OtpRRExample /></OtpApp>} />
+      {/* Single route with multiple options or multiple separate routes? */}
       <Route path='/@:latLonZoom(/plan)' component={props => <OtpApp {...props}><OtpRRExample /></OtpApp>} />
       <Route path='/plan' component={props => <OtpApp {...props}><OtpRRExample /></OtpApp>} />
     </Router>
