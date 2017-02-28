@@ -18,6 +18,7 @@ import {
   BaseMap,
   OsmBaseLayer,
   PlanTripButton,
+  TransitiveOverlay,
   createOtpReducer
 } from './lib'
 
@@ -67,6 +68,7 @@ class OtpRRExample extends Component {
             <BaseMap>
               <OsmBaseLayer />
               <ItineraryOverlay />
+              <TransitiveOverlay />
               <EndpointsOverlay />
             </BaseMap>
           </Col>
