@@ -1,11 +1,11 @@
 {
   "name": "otp-react-redux",
   "description": "A library for writing modern OpenTripPlanner-compatible multimodal journey planning web applications using React and Redux",
-  "version": "0.1.0",
   "main": "build/index.js",
   "scripts": {
     "test": "mastarm lint && mastarm test",
-    "start": "mastarm build --serve example.js"
+    "start": "mastarm build --serve example.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "standard": {
     "parser": "babel-eslint"
