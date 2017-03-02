@@ -10,25 +10,6 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@conveyal/lonlat/-/lonlat-1.1.0.tgz#01c41dbf7e9d8c926e3753d3423890d8fa95a187"
 
-"@conveyal/woonerf@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@conveyal/woonerf/-/woonerf-0.2.0.tgz#53d75d549152082b8ac7d1ab1e980b1e583c72a5"
-  dependencies:
-    auth0-js "^7.3.0"
-    auth0-lock "^10.5.1"
-    isomorphic-fetch "^2.2.1"
-    lodash.isequal "^4.4.0"
-    lodash.isobject "^3.0.2"
-    lodash.merge "^4.6.0"
-    react "^15.3.2"
-    react-addons-perf "^15.3.2"
-    react-dom "^15.3.2"
-    react-router "^3.0.0"
-    react-router-redux "^4.0.6"
-    redux "^3.6.0"
-    redux-actions "^0.13.0"
-    redux-logger "^2.7.4"
-
 "@conveyal/woonerf@^2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@conveyal/woonerf/-/woonerf-2.0.1.tgz#ab4a1b6969ace038294a4847006ce5bc83071507"
@@ -351,47 +332,6 @@ async@~0.2.6:
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
-
-auth0-js@8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-8.2.0.tgz#0fc7e916a3785da84090d5eed4ae08db75535fbe"
-  dependencies:
-    base64-js "^1.2.0"
-    idtoken-verifier "^1.0.1"
-    superagent "^3.3.1"
-    url-join "^1.1.0"
-    winchan "^0.1.4"
-
-auth0-js@^7.3.0:
-  version "7.6.1"
-  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-7.6.1.tgz#5baea8603133bb143bd2c327b55a57da7afdf97c"
-  dependencies:
-    Base64 "~0.1.3"
-    json-fallback "0.0.1"
-    jsonp "~0.0.4"
-    qs "^6.2.1"
-    reqwest "2.0.5"
-    trim "~0.0.1"
-    winchan "0.1.4"
-    xtend "~2.1.1"
-
-auth0-lock@^10.10.2, auth0-lock@^10.5.1:
-  version "10.11.0"
-  resolved "https://registry.yarnpkg.com/auth0-lock/-/auth0-lock-10.11.0.tgz#5fb3bdbe27b9e6a3de30dc1544e1c6baedb86e30"
-  dependencies:
-    auth0-js "8.2.0"
-    blueimp-md5 "2.3.1"
-    fbjs "^0.3.1"
-    idtoken-verifier "^1.0.1"
-    immutable "^3.7.3"
-    jsonp "^0.2.0"
-    password-sheriff "^1.0.0"
-    react "^15.0.0 || ^16.0.0"
-    react-addons-css-transition-group "^15.0.0 || ^16.0.0"
-    react-dom "^15.0.0 || ^16.0.0"
-    superagent "^3.3.1"
-    trim "0.0.1"
-    url-join "^1.1.0"
 
 autolinker@~0.15.0:
   version "0.15.3"
@@ -1918,7 +1858,7 @@ debug-log@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/debug-log/-/debug-log-1.0.1.tgz#2307632d4c04382b8df8a32f70b895046d52745f"
 
-debug@*, debug@^2.1.1, debug@^2.1.3, debug@^2.2.0:
+debug@^2.1.1, debug@^2.1.3, debug@^2.2.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.0.tgz#bc596bcabe7617f11d9fa15361eded5608b8499b"
   dependencies:
@@ -3642,10 +3582,6 @@ jsesc@~0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
 
-json-fallback@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/json-fallback/-/json-fallback-0.0.1.tgz#e8e3083c3fddad0f9b5f09d3312074442580d781"
-
 json-schema@0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
@@ -3685,12 +3621,6 @@ jsonp@^0.2.0:
   resolved "https://registry.yarnpkg.com/jsonp/-/jsonp-0.2.1.tgz#a65b4fa0f10bda719a05441ea7b94c55f3e15bae"
   dependencies:
     debug "^2.1.3"
-
-jsonp@~0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/jsonp/-/jsonp-0.0.4.tgz#94665a4b771aabecb8aac84135b99594756918bd"
-  dependencies:
-    debug "*"
 
 jsonparse@^1.2.0:
   version "1.3.0"
@@ -3873,7 +3803,7 @@ lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
 
-lodash.isequal@^4.4.0, lodash.isequal@^4.5.0:
+lodash.isequal@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
 
@@ -4387,10 +4317,6 @@ object-assign@^4.0.0, object-assign@^4.0.1, object-assign@^4.1.0:
 object-keys@^1.0.8:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
-
-object-keys@~0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-0.4.0.tgz#28a6aae7428dd2c3a92f3d95f21335dd204e0336"
 
 object-path@^0.11.3:
   version "0.11.3"
@@ -5005,7 +4931,7 @@ qs@5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-5.2.0.tgz#a9f31142af468cb72b25b30136ba2456834916be"
 
-qs@^6.1.0, qs@^6.2.1, qs@^6.3.0, qs@~6.3.0:
+qs@^6.1.0, qs@^6.3.0, qs@~6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.0.tgz#f403b264f23bc01228c74131b407f18d5ea5d442"
 
@@ -5071,7 +4997,7 @@ rc@~1.1.6:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
-react-addons-perf@^15.3.2, react-addons-perf@^15.4.2:
+react-addons-perf@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react-addons-perf/-/react-addons-perf-15.4.2.tgz#110bdcf5c459c4f77cb85ed634bcd3397536383b"
   dependencies:
@@ -5109,13 +5035,17 @@ react-dates@^6.0.2:
     react-moment-proptypes "^1.2.1"
     react-portal "^3.0.0"
 
-"react-dom@^15.0.0 || ^16.0.0", react-dom@^15.3.2, react-dom@^15.4.1:
+"react-dom@^15.0.0 || ^16.0.0", react-dom@^15.4.1:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.4.2.tgz#015363f05b0a1fd52ae9efdd3a0060d90695208f"
   dependencies:
     fbjs "^0.8.1"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+
+react-fontawesome@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-fontawesome/-/react-fontawesome-1.5.0.tgz#879d1b2aa5c48bba551e9237f84993217b5645c4"
 
 react-input-autosize@^1.1.0:
   version "1.1.0"
@@ -5167,11 +5097,11 @@ react-redux, react-redux@^5.0.2:
     lodash-es "^4.2.0"
     loose-envify "^1.1.0"
 
-react-router-redux@^4.0.6, react-router-redux@^4.0.7:
+react-router-redux@^4.0.7:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-4.0.7.tgz#9b1fde4e70106c50f47214e12bdd888cfb96e2a6"
 
-react-router@^3.0.0, react-router@^3.0.2:
+react-router@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-3.0.2.tgz#5a19156678810e01d81901f9c0fef63284b8a514"
   dependencies:
@@ -5198,7 +5128,7 @@ react-select@^1.0.0-rc.3:
     classnames "^2.2.4"
     react-input-autosize "^1.1.0"
 
-"react@^15.0.0 || ^16.0.0", react@^15.3.2, react@^15.4.1:
+"react@^15.0.0 || ^16.0.0", react@^15.4.1:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"
   dependencies:
@@ -5345,13 +5275,6 @@ redux-actions, redux-actions@^1.2.1:
   resolved "https://registry.yarnpkg.com/redux-actions/-/redux-actions-1.2.1.tgz#649711d88f49f1dde5bc5a1cea8ceec5b54d9181"
   dependencies:
     invariant "^2.2.1"
-    lodash "^4.13.1"
-    reduce-reducers "^0.1.0"
-
-redux-actions@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/redux-actions/-/redux-actions-0.13.0.tgz#34bf77c5698e86d86b0edb533ea23a1c0658f4fe"
-  dependencies:
     lodash "^4.13.1"
     reduce-reducers "^0.1.0"
 
@@ -5514,10 +5437,6 @@ require-uncached@^1.0.2:
 requires-port@1.x.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
-
-reqwest@2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/reqwest/-/reqwest-2.0.5.tgz#00fb15ac4918c419ca82b43f24c78882e66039a1"
 
 resolve-dir@^0.1.0:
   version "0.1.1"
@@ -6217,7 +6136,7 @@ trim-newlines@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-1.0.0.tgz#5887966bb582a4503a41eb524f7d35011815a613"
 
-trim@0.0.1, trim@~0.0.1:
+trim@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/trim/-/trim-0.0.1.tgz#5858547f6b290757ee95cccc666fb50084c460dd"
 
@@ -6491,7 +6410,7 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.1"
 
-winchan@0.1.4, winchan@^0.1.4:
+winchan@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/winchan/-/winchan-0.1.4.tgz#88fa12411cd542eb626018c38a196bcbb17993bb"
 
@@ -6555,12 +6474,6 @@ xmlbuilder@2.6.2, xmlbuilder@>=2.4.6:
 "xtend@>=4.0.0 <4.1.0-0", xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
-
-xtend@~2.1.1:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/xtend/-/xtend-2.1.2.tgz#6efecc2a4dad8e6962c4901b337ce7ba87b5d28b"
-  dependencies:
-    object-keys "~0.4.0"
 
 y18n@^3.2.1:
   version "3.2.1"
