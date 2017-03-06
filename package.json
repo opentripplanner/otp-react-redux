@@ -5,8 +5,9 @@
   "scripts": {
     "cover": "mastarm test --coverage",
     "lint": "mastarm lint \"lib/**/*.js\"",
+    "lint-docs": "documentation lint \"lib/**/*.js\"",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
-    "test": "yarn run lint && mastarm test",
+    "test": "yarn run lint && yarn run lint-docs && mastarm test",
     "start": "mastarm build --serve example.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -52,6 +53,7 @@
     "semantic-release": "^6.3.2"
   },
   "devDependencies": {
+    "documentation": "^4.0.0-beta.18",
     "mastarm": "^3.2.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
