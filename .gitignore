@@ -1,5 +1,16 @@
+# macOS
 .DS_Store
-tmp
+
+# node stuff
 node_modules
-config.yml
 *.log
+
+# transpiled files
+build/*
+
+# testing stuff
+tmp
+coverage
+
+# secrets
+config.yml

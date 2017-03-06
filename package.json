@@ -3,6 +3,7 @@
   "description": "A library for writing modern OpenTripPlanner-compatible multimodal journey planning web applications using React and Redux",
   "main": "build/index.js",
   "scripts": {
+    "cover": "mastarm test --coverage",
     "lint": "mastarm lint \"lib/**/*.js\"",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
     "test": "yarn run lint && mastarm test",
