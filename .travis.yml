@@ -11,6 +11,7 @@ before_script:
   - yarn global add codecov
 script:
   - yarn run lint
+  - yarn run lint-docs
   - yarn run cover
   - codecov
 branches:
