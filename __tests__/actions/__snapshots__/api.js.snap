@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`actions > api should make a query to OTP 1`] = `"/api/plan?fromPlace=12%2C34&showIntermediateStops=true&toPlace=34%2C12"`;
+exports[`actions > api should make a query to OTP 1`] = `"/api/plan?arriveBy=false&fromPlace=12%2C34&showIntermediateStops=true&toPlace=34%2C12"`;
 
 exports[`actions > api should make a query to OTP 2`] = `
 Array [
