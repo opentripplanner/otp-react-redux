@@ -45,7 +45,7 @@
     "react-fontawesome": "^1.5.0",
     "react-leaflet": "^1.1.0",
     "react-redux": "^5.0.2",
-    "react-select-geocoder": "^1.1.0",
+    "react-select-geocoder": "^1.2.0",
     "redux": "^3.6.0",
     "redux-actions": "^1.2.1",
     "redux-logger": "^2.7.4",
