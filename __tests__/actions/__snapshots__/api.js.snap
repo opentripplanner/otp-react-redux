@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions > api should make a query to OTP 1`] = `
+Array [
+  Array [
+    Object {
+      "type": "PLAN_REQUEST",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "fake": "response",
+      },
+      "type": "PLAN_RESPONSE",
+    },
+  ],
+]
+`;
