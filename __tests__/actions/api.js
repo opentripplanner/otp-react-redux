@@ -19,6 +19,9 @@ describe('actions > api', () => {
       .reply(200, {
         fake: 'response'
       })
+      .on('request', (req, interceptor) => {
+        expect(req.path).toMatchSnapshot()
+      })
 
     const mockDispatch = jest.fn()
     planTripAction(mockDispatch, () => {
@@ -46,6 +49,7 @@ describe('actions > api', () => {
       }
     })
 
+    // wait for request to complete
     await timeoutPromise(100)
 
     expect(mockDispatch.mock.calls).toMatchSnapshot()
