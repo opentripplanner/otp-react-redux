@@ -8,7 +8,7 @@ node_js:
 after_success:
   - npm run semantic-release
 before_script:
-  - yarn add --global codecov
+  - yarn global add codecov
 script:
   - yarn run lint
   - yarn run cover
