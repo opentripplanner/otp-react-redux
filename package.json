@@ -5,7 +5,7 @@
   "scripts": {
     "cover": "mastarm test --coverage",
     "lint": "mastarm lint \"lib/**/*.js\"",
-    "lint-docs": "documentation lint \"lib/**/*.js\"",
+    "lint-docs": "documentation lint lib/**/*.js",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
     "test": "yarn run lint && yarn run lint-docs && mastarm test",
     "start": "mastarm build --serve example.js",
