@@ -18,3 +18,12 @@
   margin: 0px;
   padding: 0px;
 }
+
+a.header, a.step, .intermediate-stops a  {
+  color: inherit;
+  text-decoration: none;
+}
+
+.step {
+  width: 100%;
+}

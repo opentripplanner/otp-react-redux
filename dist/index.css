@@ -1620,56 +1620,16 @@
   overflow: visible;
   clip: auto;
 }.CalendarDay {
-  border: 1px solid #e4e7e7;
-  padding: 0;
-  box-sizing: border-box;
-  color: #565a5c;
-  cursor: pointer;
-  width: 39px;
-  height: 38px; }.CalendarDay:active {
-    background: #f2f2f2; }.CalendarDay--highlighted-calendar {
-  background: #ffe8bc;
-  color: #565a5c;
-  cursor: default; }.CalendarDay--highlighted-calendar:active {
-    background: #007a87; }.CalendarDay--outside {
-  border: 0;
-  cursor: default; }.CalendarDay--outside:active {
-    background: #fff; }.CalendarDay--hovered {
-  background: #e4e7e7;
-  border: 1px double #d4d9d9;
-  color: inherit; }.CalendarDay--blocked-minimum-nights {
-  color: #cacccd;
-  background: #fff;
-  border: 1px solid #e4e7e7;
-  cursor: default; }.CalendarDay--blocked-minimum-nights:active {
-    background: #fff; }.CalendarDay--selected-span {
-  background: #66e2da;
-  border: 1px double #33dacd;
-  color: #fff; }.CalendarDay--selected-span.CalendarDay--hovered, .CalendarDay--selected-span:active {
-    background: #33dacd;
-    border: 1px double #00a699; }.CalendarDay--selected-span.CalendarDay--last-in-range {
-    border-right: #00a699; }.CalendarDay--hovered-span,
-.CalendarDay--after-hovered-start {
-  background: #b2f1ec;
-  border: 1px double #80e8e0;
-  color: #007a87; }.CalendarDay--selected-start,
-.CalendarDay--selected-end,
-.CalendarDay--selected {
-  background: #00a699;
-  border: 1px double #00a699;
-  color: #fff; }.CalendarDay--selected-start:active,
-  .CalendarDay--selected-end:active,
-  .CalendarDay--selected:active {
-    background: #00a699; }.CalendarDay--blocked-calendar {
-  background: #cacccd;
-  color: #82888a;
-  cursor: default; }.CalendarDay--blocked-calendar:active {
-    background: #cacccd; }.CalendarDay--blocked-out-of-range {
-  color: #cacccd;
-  background: #fff;
-  border: 1px solid #e4e7e7;
-  cursor: default; }.CalendarDay--blocked-out-of-range:active {
-    background: #fff; }.CalendarMonth {
+  position: relative;
+  display: table;
+  height: 100%;
+  width: 100%; }.CalendarDay__day {
+  display: table-cell;
+  vertical-align: middle;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none; }.CalendarMonth {
   text-align: center;
   padding: 0 13px;
   vertical-align: top;
@@ -1693,7 +1653,57 @@
   margin-bottom: 2px; }.CalendarMonth--horizontal .CalendarMonth__caption,
 .CalendarMonth--vertical .CalendarMonth__caption {
   padding: 15px 0 35px; }.CalendarMonth--vertical-scrollable .CalendarMonth__caption {
-  padding: 5px 0; }.CalendarMonthGrid {
+  padding: 5px 0; }.CalendarMonth__day {
+  border: 1px solid #e4e7e7;
+  padding: 0;
+  box-sizing: border-box;
+  color: #565a5c;
+  cursor: pointer;
+  width: 39px;
+  height: 38px; }.CalendarMonth__day:active {
+    background: #f2f2f2; }.CalendarMonth__day--highlighted-calendar {
+  background: #ffe8bc;
+  color: #565a5c;
+  cursor: default; }.CalendarMonth__day--highlighted-calendar:active {
+    background: #007a87; }.CalendarMonth__day--outside {
+  border: 0;
+  cursor: default; }.CalendarMonth__day--outside:active {
+    background: #fff; }.CalendarMonth__day--hovered {
+  background: #e4e7e7;
+  border: 1px double #d4d9d9;
+  color: inherit; }.CalendarMonth__day--blocked-minimum-nights {
+  color: #cacccd;
+  background: #fff;
+  border: 1px solid #e4e7e7;
+  cursor: default; }.CalendarMonth__day--blocked-minimum-nights:active {
+    background: #fff; }.CalendarMonth__day--selected-span {
+  background: #66e2da;
+  border: 1px double #33dacd;
+  color: #fff; }.CalendarMonth__day--selected-span.CalendarMonth__day--hovered, .CalendarMonth__day--selected-span:active {
+    background: #33dacd;
+    border: 1px double #00a699; }.CalendarMonth__day--selected-span.CalendarMonth__day--last-in-range {
+    border-right: #00a699; }.CalendarMonth__day--hovered-span,
+.CalendarMonth__day--after-hovered-start {
+  background: #b2f1ec;
+  border: 1px double #80e8e0;
+  color: #007a87; }.CalendarMonth__day--selected-start,
+.CalendarMonth__day--selected-end,
+.CalendarMonth__day--selected {
+  background: #00a699;
+  border: 1px double #00a699;
+  color: #fff; }.CalendarMonth__day--selected-start:active,
+  .CalendarMonth__day--selected-end:active,
+  .CalendarMonth__day--selected:active {
+    background: #00a699; }.CalendarMonth__day--blocked-calendar {
+  background: #cacccd;
+  color: #82888a;
+  cursor: default; }.CalendarMonth__day--blocked-calendar:active {
+    background: #cacccd; }.CalendarMonth__day--blocked-out-of-range {
+  color: #cacccd;
+  background: #fff;
+  border: 1px solid #e4e7e7;
+  cursor: default; }.CalendarMonth__day--blocked-out-of-range:active {
+    background: #fff; }.CalendarMonthGrid {
   background: #fff;
   z-index: 0;
   text-align: left; }.CalendarMonthGrid--animating {
