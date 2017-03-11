@@ -3,9 +3,11 @@
   "description": "A library for writing modern OpenTripPlanner-compatible multimodal journey planning web applications using React and Redux",
   "main": "build/index.js",
   "scripts": {
+    "cover": "mastarm test --coverage",
     "lint": "mastarm lint \"lib/**/*.js\"",
+    "lint-docs": "documentation lint lib/**/*.js",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
-    "test": "yarn run lint && mastarm test",
+    "test": "yarn run lint && yarn run lint-docs && mastarm test",
     "start": "mastarm build --serve example.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -43,7 +45,7 @@
     "react-fontawesome": "^1.5.0",
     "react-leaflet": "^1.1.0",
     "react-redux": "^5.0.2",
-    "react-select-geocoder": "^1.1.0",
+    "react-select-geocoder": "^1.2.0",
     "redux": "^3.6.0",
     "redux-actions": "^1.2.1",
     "redux-logger": "^2.7.4",
@@ -51,7 +53,9 @@
     "semantic-release": "^6.3.2"
   },
   "devDependencies": {
-    "mastarm": "^3.2.1",
+    "documentation": "^4.0.0-beta.18",
+    "mastarm": "^3.5.1",
+    "nock": "^9.0.9",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
