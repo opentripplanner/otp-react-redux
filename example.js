@@ -7,7 +7,7 @@ import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 
 // import Bootstrap Grid components for layout
-import { Navbar, Grid, Row, Col, Button } from 'react-bootstrap'
+import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
@@ -22,10 +22,9 @@ import {
   // OsmBaseLayer,
   PlanTripButton,
   createOtpReducer,
-  ErrorMessage
+  ErrorMessage,
+  SwitchButton
 } from './lib'
-
-import SwitchButton from './lib/components/form/switchButton'
 
 // load the OTP configuration
 import otpConfig from './config.yml'
