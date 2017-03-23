@@ -22,7 +22,8 @@ import {
   // OsmBaseLayer,
   PlanTripButton,
   createOtpReducer,
-  ErrorMessage
+  ErrorMessage,
+  SwitchButton
 } from './lib'
 
 // load the OTP configuration
@@ -63,6 +64,7 @@ class OtpRRExample extends Component {
           <Col xs={12} md={4} className='sidebar'>
             <LocationField type='from' label='Enter start location or click on map...' />
             <LocationField type='to' label='Enter destination or click on map...' />
+            <SwitchButton />
             <ModeSelector />
             <DateTimeSelector />
             <ErrorMessage />
