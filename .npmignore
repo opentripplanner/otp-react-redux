@@ -10,7 +10,6 @@ coverage
 configurations
 
 # example app
-dist
 example*
 index.html
 
