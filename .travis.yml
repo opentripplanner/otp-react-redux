@@ -6,13 +6,14 @@ notifications:
 node_js:
   - '6'
 after_success:
-  - npm run semantic-release
+  - yarn run semantic-release
 before_script:
   - yarn global add codecov
 script:
   - yarn run lint
   - yarn run lint-docs
   - yarn run cover
+  - yarn run build
   - codecov
 branches:
   except:
