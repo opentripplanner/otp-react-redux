@@ -7,7 +7,7 @@ import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 
 // import Bootstrap Grid components for layout
-import { Navbar, Grid, Row, Col } from 'react-bootstrap'
+import { Navbar, Grid, Row, Col, Button } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
@@ -24,6 +24,8 @@ import {
   createOtpReducer,
   ErrorMessage
 } from './lib'
+
+import SwitchButton from './lib/components/form/switchButton'
 
 // load the OTP configuration
 import otpConfig from './config.yml'
@@ -63,6 +65,7 @@ class OtpRRExample extends Component {
           <Col xs={12} md={4} className='sidebar'>
             <LocationField type='from' label='Enter start location or click on map...' />
             <LocationField type='to' label='Enter destination or click on map...' />
+            <SwitchButton />
             <ModeSelector />
             <DateTimeSelector />
             <ErrorMessage />
