@@ -8,6 +8,18 @@
   font-size: 16px;
 }
 
+
+/* CAROUSEL HEADER */
+
+.otp .options > .carousel-header > .carousel-button {
+  width: 12.5%;
+}
+
+.otp .options > .carousel-header > .carousel-header-text {
+  display: inline-block;
+  width: 75%;
+}
+
 /* ITINERARY OPTION */
 
 .otp .option {

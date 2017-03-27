@@ -12,11 +12,12 @@ import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 // import OTP-RR components
 import {
   EndpointsOverlay,
+  ItineraryCarousel,
   ItineraryOverlay,
   LocationField,
   ModeSelector,
   DateTimeSelector,
-  NarrativeItineraries,
+  // NarrativeItineraries,
   BaseMap,
   BaseLayers,
   // OsmBaseLayer,
@@ -30,7 +31,7 @@ import {
 import otpConfig from './config.yml'
 
 // create an initial query for demo/testing purposes
-/* const initialQuery = {
+const initialQuery = {
   from: {
     name: 'PDX',
     lat: 45.589180,
@@ -41,12 +42,12 @@ import otpConfig from './config.yml'
     lat: 45.518950,
     lon: -122.679565
   }
-} */
+}
 
 // set up the Redux store
 const store = createStore(
   combineReducers({
-    otp: createOtpReducer(otpConfig) // add optional initial query here
+    otp: createOtpReducer(otpConfig, initialQuery) // add optional initial query here
     // add your own reducers if you want
   }),
   applyMiddleware(thunk, createLogger())
@@ -69,7 +70,8 @@ class OtpRRExample extends Component {
             <DateTimeSelector />
             <ErrorMessage />
             <PlanTripButton />
-            <NarrativeItineraries />
+            {/* <NarrativeItineraries /> */}
+            <ItineraryCarousel />
           </Col>
 
           <Col xsHidden md={8} className='map-container'>
