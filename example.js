@@ -31,7 +31,7 @@ import {
 import otpConfig from './config.yml'
 
 // create an initial query for demo/testing purposes
-const initialQuery = {
+/* const initialQuery = {
   from: {
     name: 'PDX',
     lat: 45.589180,
@@ -42,12 +42,12 @@ const initialQuery = {
     lat: 45.518950,
     lon: -122.679565
   }
-}
+} */
 
 // set up the Redux store
 const store = createStore(
   combineReducers({
-    otp: createOtpReducer(otpConfig, initialQuery) // add optional initial query here
+    otp: createOtpReducer(otpConfig) // add optional initial query here
     // add your own reducers if you want
   }),
   applyMiddleware(thunk, createLogger())
