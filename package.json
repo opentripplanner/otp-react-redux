@@ -7,6 +7,7 @@
     "lint": "mastarm lint \"lib/**/*.js\"",
     "lint-docs": "documentation lint lib/**/*.js",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
+    "prestart": "yarn",
     "test": "yarn run lint && yarn run lint-docs && mastarm test",
     "start": "mastarm build --serve example.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
