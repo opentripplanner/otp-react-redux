@@ -9,27 +9,6 @@
 @import url(lib/components/form/form.css);
 @import url(lib/components/narrative/narrative.css);
 
-.row {
-  position: fixed;
-  top: 52px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  padding: 0px 15px;
-}
-
-.sidebar {
-  height: 100%;
-  padding: 10px;
-  overflow-y: scroll;
-}
-
-.map-container {
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-}
-
 button.header, button.step, .intermediate-stops button  {
   background: inherit;
   color: inherit;
