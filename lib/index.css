@@ -8,3 +8,12 @@
 @import url(lib/components/map/map.css);
 @import url(lib/components/form/form.css);
 @import url(lib/components/narrative/narrative.css);
+
+button.header, button.step, .intermediate-stops button  {
+  background: inherit;
+  color: inherit;
+  border: 0;
+  text-align: inherit;
+  text-decoration: none;
+  width: 100%;
+}

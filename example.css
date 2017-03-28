@@ -18,12 +18,3 @@
   margin: 0px;
   padding: 0px;
 }
-
-button.header, button.step, .intermediate-stops button  {
-  background: inherit;
-  color: inherit;
-  border: 0;
-  text-align: inherit;
-  text-decoration: none;
-  width: 100%;
-}
