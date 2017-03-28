@@ -87,5 +87,25 @@ describe('actions > api', () => {
         expect(mockDispatch.mock.calls).toMatchSnapshot()
       })
     })
+
+    it('should gracefully handle bad response', async () => {
+      const planTripAction = planTrip()
+
+      nock('http://mock-host.com')
+        .get(/api\/plan/)
+        .reply(500, {
+          fake: 'response'
+        })
+
+      const mockDispatch = jest.fn()
+      planTripAction(mockDispatch, () => {
+        return defaultState
+      })
+
+      // wait for request to complete
+      await timeoutPromise(100)
+
+      expect(mockDispatch.mock.calls).toMatchSnapshot()
+    })
   })
 })

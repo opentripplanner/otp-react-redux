@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`actions > api > planTrip should gracefully handle bad response 1`] = `
+Array [
+  Array [
+    Object {
+      "type": "PLAN_REQUEST",
+    },
+  ],
+  Array [
+    Object {
+      "error": true,
+      "payload": [Error: Received error from server],
+      "type": "PLAN_ERROR",
+    },
+  ],
+]
+`;
+
 exports[`actions > api > planTrip should make a query to OTP with customOtpQueryBuilder in state config 1`] = `"/api/plan?from=here&to=there"`;
 
 exports[`actions > api > planTrip should make a query to OTP with customOtpQueryBuilder in state config 2`] = `
