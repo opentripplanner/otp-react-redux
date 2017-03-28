@@ -26,10 +26,9 @@ import {
   PlanTripButton,
   createOtpReducer,
   ErrorMessage,
+  OtpApp,
   SwitchButton
 } from './lib'
-
-import OtpApp from './lib/components/otp-app'
 
 // load the OTP configuration
 import otpConfig from './config.yml'
@@ -55,7 +54,7 @@ const store = createStore(
     routing: routerReducer
     // add your own reducers if you want
   }),
-  applyMiddleware(thunk, createLogger())
+  applyMiddleware(thunk, createLogger({duration: true, collapsed: true}))
 )
 
 // Create an enhanced history that syncs navigation events with the store
@@ -74,10 +73,12 @@ class OtpRRExample extends Component {
             <Col xs={12} md={4} className='sidebar'>
               <LocationField type='from' label='Enter start location or click on map...' />
               <LocationField type='to' label='Enter destination or click on map...' />
+              <SwitchButton />
               <ModeSelector />
               <DateTimeSelector />
               <ErrorMessage />
               <PlanTripButton />
+              {/* <NarrativeItineraries /> */}
               <ItineraryCarousel />
             </Col>
             <Col xsHidden md={8} className='map-container'>
