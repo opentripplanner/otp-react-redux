@@ -4,6 +4,7 @@ api:
   port: 8001
 
 map:
+  bounds: [ [45.3589, -122.934265], [45.710015, -122.376709] ]
   initLat: 45.52
   initLon: -122.682
   baseLayers:
