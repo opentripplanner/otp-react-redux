@@ -9,12 +9,8 @@ Array [
   ],
   Array [
     Object {
-      "payload": Object {
-        "body": Object {
-          "fake": "response",
-        },
-        "status": 500,
-      },
+      "error": true,
+      "payload": [Error: Received error from server],
       "type": "PLAN_ERROR",
     },
   ],
