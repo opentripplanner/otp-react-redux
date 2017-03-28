@@ -8,6 +8,7 @@
     "lint": "mastarm lint \"lib/**/*.js\"",
     "lint-docs": "documentation lint lib/**/*.js",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
+    "prestart": "yarn",
     "test": "yarn run lint && yarn run lint-docs && mastarm test",
     "start": "mastarm build --serve example.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
@@ -47,6 +48,7 @@
     "react-leaflet": "^1.1.0",
     "react-redux": "^5.0.2",
     "react-select-geocoder": "^1.2.0",
+    "react-swipeable-views": "^0.11.2",
     "redux": "^3.6.0",
     "redux-actions": "^1.2.1",
     "redux-logger": "^2.7.4",

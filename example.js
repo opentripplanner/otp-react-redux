@@ -12,11 +12,12 @@ import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 // import OTP-RR components
 import {
   EndpointsOverlay,
+  ItineraryCarousel,
   ItineraryOverlay,
   LocationField,
   ModeSelector,
   DateTimeSelector,
-  NarrativeItineraries,
+  // NarrativeItineraries,
   BaseMap,
   BaseLayers,
   // OsmBaseLayer,
@@ -69,7 +70,8 @@ class OtpRRExample extends Component {
             <DateTimeSelector />
             <ErrorMessage />
             <PlanTripButton />
-            <NarrativeItineraries />
+            {/* <NarrativeItineraries /> */}
+            <ItineraryCarousel />
           </Col>
 
           <Col xsHidden md={8} className='map-container'>
