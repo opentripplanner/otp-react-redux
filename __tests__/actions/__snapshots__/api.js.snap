@@ -17,6 +17,9 @@ Array [
       "type": "PLAN_RESPONSE",
     },
   ],
+  Array [
+    [Function],
+  ],
 ]
 `;
 
@@ -37,6 +40,9 @@ Array [
       "type": "PLAN_RESPONSE",
     },
   ],
+  Array [
+    [Function],
+  ],
 ]
 `;
 
@@ -56,6 +62,9 @@ Array [
       },
       "type": "PLAN_RESPONSE",
     },
+  ],
+  Array [
+    [Function],
   ],
 ]
 `;
