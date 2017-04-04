@@ -2,13 +2,9 @@
 
 import nock from 'nock'
 
-import {planTrip} from '../../lib/actions/api'
+import {timeoutPromise} from '../test-utils'
 
-function timeoutPromise (ms) {
-  return new Promise((resolve, reject) => {
-    setTimeout(resolve, ms)
-  })
-}
+import {planTrip} from '../../lib/actions/api'
 
 describe('actions > api', () => {
   describe('> planTrip', () => {
