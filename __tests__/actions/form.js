@@ -13,15 +13,17 @@ describe('actions > api > form', () => {
             host: 'http://mock-host.com',
             path: '/api',
             port: 80
-          },
-          autoPlan: true,
-          debouncePlanTimeMs: 500
+          }
         },
         currentQuery: {
           from: { lat: 12, lon: 34 },
           to: { lat: 34, lon: 12 }
         },
-        searches: []
+        searches: [],
+        ui: {
+          autoPlan: true,
+          debouncePlanTimeMs: 500
+        }
       }
     }
 
