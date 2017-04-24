@@ -9,6 +9,8 @@
 @import url(lib/components/form/form.css);
 @import url(lib/components/narrative/narrative.css);
 
+@import url(lib/icons.css);
+
 button.header, button.step, .intermediate-stops button  {
   background: inherit;
   color: inherit;
