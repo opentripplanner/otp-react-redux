@@ -61,10 +61,12 @@
     "mastarm": "^3.5.1",
     "nock": "^9.0.9",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "velocity-react": "^1.2.2"
   },
   "peerDependencies": {
     "react": ">=15.0.0",
-    "react-dom": ">=15.0.0"
+    "react-dom": ">=15.0.0",
+    "velocity-react": "^1.2.2"
   }
 }
