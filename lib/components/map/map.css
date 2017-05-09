@@ -51,3 +51,7 @@
   padding: 10px 12px;
   background-color: rgba(255, 255, 255, 0.9);
 }
+
+.otp .map .info-bar .buttons {
+  float: right;
+}
