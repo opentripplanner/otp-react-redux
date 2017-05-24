@@ -13,6 +13,7 @@ import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 import {
   BaseLayers,
   BaseMap,
+  BikeRentalOverlay,
   DateTimeSelector,
   EndpointsOverlay,
   ErrorMessage,
@@ -75,6 +76,7 @@ class OtpRRExample extends Component {
           <Col xsHidden md={8} className='map-container'>
             <BaseMap>
               <BaseLayers />
+              <BikeRentalOverlay />
               <ItineraryOverlay />
               <EndpointsOverlay />
             </BaseMap>
