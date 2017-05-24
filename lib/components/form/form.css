@@ -12,3 +12,79 @@
   text-align: center;
   margin: 8px 0px;
 }
+
+/* Settings Bar */
+
+.otp .settings-bar {
+  position: relative;
+}
+
+.otp .settings-bar .selected-modes {
+  font-size: 14px;
+}
+
+.otp .settings-bar .selected-modes .some-selected .mode-icon {
+  display: inline-block;
+  margin-right: 5px;
+  width: 16px;
+  height: 16px;
+  fill: white;
+}
+
+.otp .settings-bar .button-container {
+  float: right;
+}
+
+/* Settings Selector Panel */
+
+.otp .settings-selector-panel {
+  padding: 10px;
+}
+
+.otp .settings-selector-panel .button-row {
+  margin-bottom: 20px;
+}
+
+.otp .settings-selector-panel .button-row .selected {
+  background-color: #ccc;
+}
+
+/* Modes Selection Panel */
+
+.otp .modes-panel .mode-group-row {
+  background-color: #ccc;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.otp .modes-panel .mode-group-row .group-name {
+  display: inline-block;
+  vertical-align: top;
+  width: 120px;
+  padding-top: 10px;
+}
+
+.otp .modes-panel .mode-group-row .mode-icon-highlight {
+  display: inline-block;
+  vertical-align: top;
+  width: 36px;
+  height: 36px;
+  margin-left: 10px;
+  padding: 4px;
+}
+
+.otp .modes-panel .mode-group-row .mode-icon-highlight:hover {
+  background-color: #eee;
+}
+
+.otp .modes-panel .mode-group-row .mode-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.otp .modes-panel .mode-group-row button {
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+}

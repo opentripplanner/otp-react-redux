@@ -23,5 +23,12 @@ geocoder:
       maxLat: 45.7445
   MAPZEN_KEY: MAPZEN_KEY
 
-modes:
-  - TRANSIT,WALK
+modeGroups:
+  - name: Transit
+    modes:
+      - TRAM
+      - BUS
+  - name: Walk/Bike
+    modes:
+      - WALK
+      - BICYCLE
