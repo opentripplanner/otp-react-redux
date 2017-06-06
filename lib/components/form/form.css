@@ -27,21 +27,37 @@
   margin-right: 5px;
 }
 
-/* Settings Bar */
 
-.otp .settings-bar {
+
+/* Date/Time Preview */
+
+.otp .date-time-preview {
   position: relative;
 }
 
-.otp .settings-bar .selected-modes {
-  font-size: 14px;
-}
-
-.otp .settings-bar.compressed .selected-modes {
+.otp .date-time-preview.compressed .summary {
   text-align: center;
 }
 
-.otp .settings-bar .selected-modes .some-selected .mode-icon {
+.otp .date-time-preview.wide .button-container {
+  float: right;
+}
+
+/* Settings Preview */
+
+.otp .settings-preview {
+  position: relative;
+}
+
+.otp .settings-preview .selected-modes {
+  font-size: 14px;
+}
+
+.otp .settings-preview.compressed .selected-modes {
+  text-align: center;
+}
+
+.otp .settings-preview .selected-modes .some-selected .mode-icon {
   display: inline-block;
   margin-right: 5px;
   width: 16px;
@@ -49,7 +65,7 @@
   fill: black;
 }
 
-.otp .settings-bar.wide .button-container {
+.otp .settings-preview.wide .button-container {
   float: right;
 }
 
