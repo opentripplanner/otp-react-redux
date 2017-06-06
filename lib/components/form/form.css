@@ -20,6 +20,13 @@
   box-shadow: none;
 }
 
+.otp .location-field .location-option .route {
+  background-color: gray;
+  color: white;
+  padding: 2px 3px 0px;
+  margin-right: 5px;
+}
+
 /* Settings Bar */
 
 .otp .settings-bar {
@@ -30,15 +37,19 @@
   font-size: 14px;
 }
 
+.otp .settings-bar.compressed .selected-modes {
+  text-align: center;
+}
+
 .otp .settings-bar .selected-modes .some-selected .mode-icon {
   display: inline-block;
   margin-right: 5px;
   width: 16px;
   height: 16px;
-  fill: white;
+  fill: black;
 }
 
-.otp .settings-bar .button-container {
+.otp .settings-bar.wide .button-container {
   float: right;
 }
 
