@@ -1,0 +1,249 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducers > createOtpReducer > default reducer handlers > should handle PLAN_ERROR action 1`] = `
+Object {
+  "activeSearch": 0,
+  "config": Object {
+    "autoPlan": true,
+    "debouncePlanTimeMs": 0,
+  },
+  "currentQuery": Object {
+    "departArrive": "NOW",
+    "from": null,
+    "mode": "TRAM,BUS,GONDOLA,WALK",
+    "to": null,
+    "type": "ITINERARY",
+  },
+  "overlay": Object {
+    "bikeRental": Object {
+      "stations": Array [],
+    },
+  },
+  "searches": Array [
+    Object {
+      "activeItinerary": 0,
+      "activeLeg": null,
+      "activeStep": null,
+      "pending": false,
+      "planResponse": Object {
+        "error": [Error: An error],
+      },
+      "query": Object {
+        "departArrive": "NOW",
+        "from": null,
+        "mode": "TRAM,BUS,GONDOLA,WALK",
+        "to": null,
+        "type": "ITINERARY",
+      },
+    },
+  ],
+  "ui": Object {
+    "showExtendedSettings": false,
+  },
+}
+`;
+
+exports[`reducers > createOtpReducer > default reducer handlers > should handle PLAN_REQUEST action 1`] = `
+Object {
+  "activeSearch": 0,
+  "config": Object {
+    "autoPlan": true,
+    "debouncePlanTimeMs": 0,
+  },
+  "currentQuery": Object {
+    "departArrive": "NOW",
+    "from": null,
+    "mode": "TRAM,BUS,GONDOLA,WALK",
+    "to": null,
+    "type": "ITINERARY",
+  },
+  "overlay": Object {
+    "bikeRental": Object {
+      "stations": Array [],
+    },
+  },
+  "searches": Array [
+    Object {
+      "activeItinerary": 0,
+      "activeLeg": null,
+      "activeStep": null,
+      "pending": true,
+      "planResponse": null,
+      "query": Object {
+        "departArrive": "NOW",
+        "from": null,
+        "mode": "TRAM,BUS,GONDOLA,WALK",
+        "to": null,
+        "type": "ITINERARY",
+      },
+    },
+  ],
+  "ui": Object {
+    "showExtendedSettings": false,
+  },
+}
+`;
+
+exports[`reducers > createOtpReducer > default reducer handlers > should handle PLAN_RESPONSE action 1`] = `
+Object {
+  "activeSearch": 0,
+  "config": Object {
+    "autoPlan": true,
+    "debouncePlanTimeMs": 0,
+  },
+  "currentQuery": Object {
+    "departArrive": "NOW",
+    "from": null,
+    "mode": "TRAM,BUS,GONDOLA,WALK",
+    "to": null,
+    "type": "ITINERARY",
+  },
+  "overlay": Object {
+    "bikeRental": Object {
+      "stations": Array [],
+    },
+  },
+  "searches": Array [
+    Object {
+      "activeItinerary": 0,
+      "activeLeg": null,
+      "activeStep": null,
+      "pending": false,
+      "planResponse": Object {
+        "fakeResponse": true,
+      },
+      "postProcessedResults": null,
+      "query": Object {
+        "departArrive": "NOW",
+        "from": null,
+        "mode": "TRAM,BUS,GONDOLA,WALK",
+        "to": null,
+        "type": "ITINERARY",
+      },
+    },
+  ],
+  "ui": Object {
+    "showExtendedSettings": false,
+  },
+}
+`;
+
+exports[`reducers > createOtpReducer > default reducer handlers > should return default initial state 1`] = `
+Object {
+  "activeSearch": 0,
+  "config": Object {
+    "autoPlan": true,
+    "debouncePlanTimeMs": 0,
+  },
+  "currentQuery": Object {
+    "departArrive": "NOW",
+    "from": null,
+    "mode": "TRAM,BUS,GONDOLA,WALK",
+    "to": null,
+    "type": "ITINERARY",
+  },
+  "overlay": Object {
+    "bikeRental": Object {
+      "stations": Array [],
+    },
+  },
+  "searches": Array [],
+  "ui": Object {
+    "showExtendedSettings": false,
+  },
+}
+`;
+
+exports[`reducers > createOtpReducer > reducer with postProcessor > should post-process results 1`] = `
+Object {
+  "activeSearch": 0,
+  "config": Object {
+    "autoPlan": true,
+    "debouncePlanTimeMs": 0,
+  },
+  "currentQuery": Object {
+    "departArrive": "NOW",
+    "from": null,
+    "mode": "TRAM,BUS,GONDOLA,WALK",
+    "to": null,
+    "type": "ITINERARY",
+  },
+  "overlay": Object {
+    "bikeRental": Object {
+      "stations": Array [],
+    },
+  },
+  "searches": Array [
+    Object {
+      "activeItinerary": 0,
+      "activeLeg": null,
+      "activeStep": null,
+      "pending": false,
+      "planResponse": Object {
+        "fakeResponse": true,
+      },
+      "postProcessedResults": Object {
+        "processed": true,
+      },
+      "query": Object {
+        "departArrive": "NOW",
+        "from": null,
+        "mode": "TRAM,BUS,GONDOLA,WALK",
+        "to": null,
+        "type": "ITINERARY",
+      },
+    },
+  ],
+  "ui": Object {
+    "showExtendedSettings": false,
+  },
+}
+`;
+
+exports[`reducers > createOtpReducer > reducer with postProcessor > should post-process results 2`] = `
+Array [
+  Array [
+    Object {
+      "activeSearch": 0,
+      "config": Object {
+        "autoPlan": true,
+        "debouncePlanTimeMs": 0,
+      },
+      "currentQuery": Object {
+        "departArrive": "NOW",
+        "from": null,
+        "mode": "TRAM,BUS,GONDOLA,WALK",
+        "to": null,
+        "type": "ITINERARY",
+      },
+      "overlay": Object {
+        "bikeRental": Object {
+          "stations": Array [],
+        },
+      },
+      "searches": Array [
+        Object {
+          "activeItinerary": 0,
+          "activeLeg": null,
+          "activeStep": null,
+          "pending": true,
+          "planResponse": null,
+          "query": Object {
+            "departArrive": "NOW",
+            "from": null,
+            "mode": "TRAM,BUS,GONDOLA,WALK",
+            "to": null,
+            "type": "ITINERARY",
+          },
+        },
+      ],
+      "ui": Object {
+        "showExtendedSettings": false,
+      },
+    },
+    Object {
+      "fakeResponse": true,
+    },
+  ],
+]
+`;
