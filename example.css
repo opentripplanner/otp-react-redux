@@ -1,4 +1,4 @@
-.row {
+.main-row {
   position: fixed;
   top: 52px;
   bottom: 0px;
@@ -17,4 +17,8 @@
   height: 100%;
   margin: 0px;
   padding: 0px;
+}
+
+.date-time-selector {
+  margin-top: 20px;
 }

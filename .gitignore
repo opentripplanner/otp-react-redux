@@ -1,4 +1,19 @@
+# macOS
 .DS_Store
-dist
-tmp
+
+# node stuff
 node_modules
+*.log
+
+# transpiled files
+build/*
+
+# testing stuff
+tmp
+coverage
+
+# built example app
+dist
+
+# secrets
+config.yml

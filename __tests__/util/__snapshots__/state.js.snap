@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`util > state getDefaultQuery should parse window hash if available 1`] = `
+Object {
+  "date": "2017-02-03",
+  "departArrive": "DEPART",
+  "from": Object {
+    "lat": "12",
+    "lon": "34",
+    "name": "12.00000, 34.00000",
+  },
+  "mode": undefined,
+  "time": "12:34",
+  "to": Object {
+    "lat": "34",
+    "lon": "12",
+    "name": "34.00000, 12.00000",
+  },
+  "type": "ITINERARY",
+}
+`;

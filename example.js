@@ -11,19 +11,25 @@ import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
+  BaseLayers,
+  BaseMap,
+  BikeRentalOverlay,
+  DateTimeSelector,
   EndpointsOverlay,
+  ErrorMessage,
   ItineraryOverlay,
   LocationField,
   NarrativeItineraries,
-  BaseMap,
-  OsmBaseLayer,
   PlanTripButton,
   TransitiveOverlay,
+  SettingsSelectorPanel,
+  SwitchButton,
+
   createOtpReducer
 } from './lib'
 
-// load the OTP configurtation
-import otpConfig from './example-config.yml'
+// load the OTP configuration
+import otpConfig from './config.yml'
 
 // create an initial query for demo/testing purposes
 /* const initialQuery = {
@@ -58,17 +64,22 @@ class OtpRRExample extends Component {
         <Navbar.Brand>OpenTripPlanner</Navbar.Brand>
       </Navbar>
       <Grid fluid>
-        <Row>
+        <Row className='main-row'>
           <Col xs={12} md={4} className='sidebar'>
-            <LocationField fieldName='from' label='Start Location' />
-            <LocationField fieldName='to' />
+            <LocationField type='from' label='Enter start location or click on map...' />
+            <LocationField type='to' label='Enter destination or click on map...' />
+            <SwitchButton />
+            <DateTimeSelector />
+            <SettingsSelectorPanel />
+            <ErrorMessage />
             <PlanTripButton />
             <NarrativeItineraries />
           </Col>
 
           <Col xsHidden md={8} className='map-container'>
             <BaseMap>
-              <OsmBaseLayer />
+              <BaseLayers />
+              <BikeRentalOverlay />
               <ItineraryOverlay />
               <TransitiveOverlay transitiveData={transitiveData} />
               <EndpointsOverlay />

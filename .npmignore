@@ -1,0 +1,20 @@
+# node stuff
+node_modules
+*.log
+
+# testing stuff
+tmp
+coverage
+
+# build config
+configurations
+
+# example app
+example*
+index.html
+
+# project picture
+otprr.png
+
+# yarn
+yarn.lock

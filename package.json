@@ -3,8 +3,15 @@
   "description": "A library for writing modern OpenTripPlanner-compatible multimodal journey planning web applications using React and Redux",
   "main": "build/index.js",
   "scripts": {
-    "test": "mastarm lint && mastarm test",
-    "start": "mastarm build --serve example.js"
+    "build": "mastarm build",
+    "cover": "mastarm test --coverage",
+    "lint": "mastarm lint \"lib/**/*.js\"",
+    "lint-docs": "documentation lint lib/**/*.js",
+    "prepublish": "mastarm prepublish --config configurations/prepublish",
+    "prestart": "yarn",
+    "test": "yarn run lint && yarn run lint-docs && mastarm test",
+    "start": "mastarm build --serve example.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -20,25 +27,46 @@
   },
   "homepage": "https://github.com/opentripplanner/otp-react-redux#readme",
   "dependencies": {
+    "@conveyal/lonlat": "^1.1.0",
     "@mapbox/polyline": "^0.2.0",
     "bootstrap": "^3.3.7",
+    "clone": "^2.1.0",
     "d3": "^3.5.8",
+    "deep-equal": "^1.0.1",
+    "font-awesome": "^4.7.0",
     "immutability-helper": "^2.1.1",
     "isomorphic-fetch": "^2.2.1",
+    "isomorphic-mapzen-search": "^1.2.0",
     "leaflet": "^1.0.3",
+    "lodash.debounce": "^4.0.8",
     "moment": "^2.17.1",
+    "object-path": "^0.11.3",
+    "qs": "^6.3.0",
+    "react": "^15.4.1",
+    "react-addons-shallow-compare": "^15.4.2",
     "react-bootstrap": "^0.30.7",
+    "react-dates": "^6.0.2",
+    "react-dom": "^15.4.1",
+    "react-fontawesome": "^1.5.0",
     "react-leaflet": "^1.1.0",
     "react-redux": "^5.0.2",
+    "react-select-geocoder": "^1.2.0",
+    "react-swipeable-views": "^0.11.2",
     "redux": "^3.6.0",
     "redux-actions": "^1.2.1",
     "redux-logger": "^2.7.4",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "semantic-release": "^6.3.2"
   },
   "devDependencies": {
-    "mastarm": "^3.2.1",
+    "documentation": "^4.0.0-beta.18",
+    "mastarm": "^3.5.1",
+    "nock": "^9.0.9",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
+  },
+  "publishConfig": {
+    "tag": "test"
   },
   "peerDependencies": {
     "react": ">=15.0.0",
