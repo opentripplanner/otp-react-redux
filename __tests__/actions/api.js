@@ -4,10 +4,10 @@ import nock from 'nock'
 
 import {timeoutPromise} from '../test-utils'
 
-import {planTrip} from '../../lib/actions/api'
+import {routingQuery} from '../../lib/actions/api'
 
 describe('actions > api', () => {
-  describe('> planTrip', () => {
+  describe('> routingQuery', () => {
     const defaultState = {
       otp: {
         config: {
@@ -19,73 +19,38 @@ describe('actions > api', () => {
         },
         currentQuery: {
           from: { lat: 12, lon: 34 },
+          routingType: 'ITINERARY',
           to: { lat: 34, lon: 12 }
         },
         searches: []
       }
     }
 
-    const customOtpQueryBuilder = () => {
-      return `http://mock-host.com/api/plan?from=here&to=there`
-    }
+    it('should make a query to OTP', async () => {
+      const routingQueryAction = routingQuery()
 
-    const stateWithCustomBuilderFunction = {
-      otp: {
-        config: {
-          api: {
-            host: 'http://mock-host.com',
-            path: '/api',
-            port: 80
-          },
-          customOtpQueryBuilder
-        },
-        currentQuery: {
-          from: { lat: 12, lon: 34 },
-          to: { lat: 34, lon: 12 }
-        },
-        searches: []
-      }
-    }
-
-    const testCases = [{
-      state: defaultState,
-      title: 'default settings'
-    }, {
-      customOtpQueryBuilder,
-      state: defaultState,
-      title: 'customOtpQueryBuilder sent to action'
-    }, {
-      state: stateWithCustomBuilderFunction,
-      title: 'customOtpQueryBuilder in state config'
-    }]
-
-    testCases.forEach((testCase) => {
-      it(`should make a query to OTP with ${testCase.title}`, async () => {
-        const planTripAction = planTrip(testCase.customOtpQueryBuilder)
-
-        nock('http://mock-host.com')
-          .get(/api\/plan/)
-          .reply(200, {
-            fake: 'response'
-          })
-          .on('request', (req, interceptor) => {
-            expect(req.path).toMatchSnapshot()
-          })
-
-        const mockDispatch = jest.fn()
-        planTripAction(mockDispatch, () => {
-          return testCase.state
+      nock('http://mock-host.com')
+        .get(/api\/plan/)
+        .reply(200, {
+          fake: 'response'
+        })
+        .on('request', (req, interceptor) => {
+          expect(req.path).toMatchSnapshot('OTP Query Path')
         })
 
-        // wait for request to complete
-        await timeoutPromise(100)
-
-        expect(mockDispatch.mock.calls).toMatchSnapshot()
+      const mockDispatch = jest.fn()
+      routingQueryAction(mockDispatch, () => {
+        return defaultState
       })
+
+      // wait for request to complete
+      await timeoutPromise(100)
+
+      expect(mockDispatch.mock.calls).toMatchSnapshot()
     })
 
     it('should gracefully handle bad response', async () => {
-      const planTripAction = planTrip()
+      const routingQueryAction = routingQuery()
 
       nock('http://mock-host.com')
         .get(/api\/plan/)
@@ -94,7 +59,7 @@ describe('actions > api', () => {
         })
 
       const mockDispatch = jest.fn()
-      planTripAction(mockDispatch, () => {
+      routingQueryAction(mockDispatch, () => {
         return defaultState
       })
 
