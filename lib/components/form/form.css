@@ -13,25 +13,59 @@
   margin: 8px 0px;
 }
 
-/* Settings Bar */
+.otp .location-field.static .dropdown-menu {
+  position: static;
+  display: block;
+  border: none;
+  box-shadow: none;
+}
 
-.otp .settings-bar {
+.otp .location-field .location-option .route {
+  background-color: gray;
+  color: white;
+  padding: 2px 3px 0px;
+  margin-right: 5px;
+}
+
+
+
+/* Date/Time Preview */
+
+.otp .date-time-preview {
   position: relative;
 }
 
-.otp .settings-bar .selected-modes {
+.otp .date-time-preview.compressed .summary {
+  text-align: center;
+}
+
+.otp .date-time-preview.wide .button-container {
+  float: right;
+}
+
+/* Settings Preview */
+
+.otp .settings-preview {
+  position: relative;
+}
+
+.otp .settings-preview .selected-modes {
   font-size: 14px;
 }
 
-.otp .settings-bar .selected-modes .some-selected .mode-icon {
+.otp .settings-preview.compressed .selected-modes {
+  text-align: center;
+}
+
+.otp .settings-preview .selected-modes .some-selected .mode-icon {
   display: inline-block;
   margin-right: 5px;
   width: 16px;
   height: 16px;
-  fill: white;
+  fill: black;
 }
 
-.otp .settings-bar .button-container {
+.otp .settings-preview.wide .button-container {
   float: right;
 }
 
