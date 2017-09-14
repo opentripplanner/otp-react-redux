@@ -10,12 +10,12 @@ Object {
     "name": "12.00000, 34.00000",
   },
   "mode": undefined,
+  "routingType": "ITINERARY",
   "time": "12:34",
   "to": Object {
     "lat": "34",
     "lon": "12",
     "name": "34.00000, 12.00000",
   },
-  "type": "ITINERARY",
 }
 `;
