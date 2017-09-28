@@ -31,6 +31,7 @@
     "@mapbox/polyline": "^0.2.0",
     "bootstrap": "^3.3.7",
     "clone": "^2.1.0",
+    "d3": "^3.5.8",
     "deep-equal": "^1.0.1",
     "font-awesome": "^4.7.0",
     "immutability-helper": "^2.1.1",
