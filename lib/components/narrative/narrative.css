@@ -11,10 +11,9 @@
 /* REALTIME ALERT */
 
 .otp .realtime-alert {
-  border: 2px solid #084c8d;
   padding: 12px 20px;
   margin-bottom: 20px;
-  background-color: #f7e886;
+  background-color: #fdf8d6;
 }
 
 /*TODO: remove? no longer used in realtime annotation */
