@@ -8,6 +8,40 @@
   font-size: 16px;
 }
 
+/* REALTIME ALERT */
+
+.otp .realtime-alert {
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  background-color: #fdf8d6;
+}
+
+/*TODO: remove? no longer used in realtime annotation */
+.otp .realtime-alert > .icon-container {
+  /*color: red;*/
+  float: left;
+  font-size: 40px;
+}
+
+.otp .realtime-alert > .content {
+  /*margin-left: 60px;*/
+}
+
+.otp .realtime-alert > .content > .header {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 24px;
+}
+
+.otp .realtime-alert > .content > .text {
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.otp .realtime-alert > .content > .toggle-realtime {
+  margin-top: 10px;
+}
+
 
 /* CAROUSEL HEADER */
 
