@@ -22,6 +22,11 @@ geocoder:
       minLat: 45.273
       maxLat: 45.7445
   MAPZEN_KEY: MAPZEN_KEY
+  focusPoint:
+    lat: 45.5223452
+    lon: -122.6821804
+  # Optional custom Pelias instance (defaults to Mapzen Search)
+  # baseUrl: https://geocoder.example.com/pelias/v1
 
 modeGroups:
   - name: Transit
