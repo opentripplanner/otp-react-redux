@@ -56,7 +56,8 @@
     "redux-actions": "^1.2.1",
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.2.0",
-    "semantic-release": "^6.3.2"
+    "semantic-release": "^6.3.2",
+    "transitive-js": "^0.10.0"
   },
   "devDependencies": {
     "documentation": "^4.0.0-beta.18",
