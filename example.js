@@ -54,8 +54,6 @@ const store = createStore(
   applyMiddleware(thunk, createLogger())
 )
 
-const transitiveData = {"places":[{"place_id":"from","place_lat":45.5312746911948,"place_lon":-122.68535614013673,"place_name":"From"},{"place_id":"to","place_lat":45.523307418747926,"place_lon":-122.67608642578126,"place_name":"To"}]}
-
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
@@ -81,7 +79,7 @@ class OtpRRExample extends Component {
               <BaseLayers />
               <BikeRentalOverlay />
               <ItineraryOverlay />
-              <TransitiveOverlay transitiveData={transitiveData} />
+              <TransitiveOverlay />
               <EndpointsOverlay />
             </BaseMap>
           </Col>
