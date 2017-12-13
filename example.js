@@ -21,6 +21,7 @@ import {
   LocationField,
   NarrativeItineraries,
   PlanTripButton,
+  TransitiveOverlay,
   SettingsSelectorPanel,
   SwitchButton,
 
@@ -78,6 +79,7 @@ class OtpRRExample extends Component {
               <BaseLayers />
               <BikeRentalOverlay />
               <ItineraryOverlay />
+              <TransitiveOverlay />
               <EndpointsOverlay />
             </BaseMap>
           </Col>
