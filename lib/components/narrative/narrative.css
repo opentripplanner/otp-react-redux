@@ -8,6 +8,40 @@
   font-size: 16px;
 }
 
+/* REALTIME ALERT */
+
+.otp .realtime-alert {
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  background-color: #fdf8d6;
+}
+
+/*TODO: remove? no longer used in realtime annotation */
+.otp .realtime-alert > .icon-container {
+  /*color: red;*/
+  float: left;
+  font-size: 40px;
+}
+
+.otp .realtime-alert > .content {
+  /*margin-left: 60px;*/
+}
+
+.otp .realtime-alert > .content > .header {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 24px;
+}
+
+.otp .realtime-alert > .content > .text {
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.otp .realtime-alert > .content > .toggle-realtime {
+  margin-top: 10px;
+}
+
 
 /* CAROUSEL HEADER */
 
@@ -22,10 +56,9 @@
 
 /* ITINERARY OPTION */
 
-.otp .option .default-itin {
+.otp .option.default-itin {
   margin-bottom: 16px;
   padding: 10px;
-  background-color: green;
   border: 1px solid #e3e3e3;
   border-radius: 4px
 }
@@ -38,7 +71,7 @@
   background-color: #EAF3F2;
 }
 
-.otp .option .default-itin > .header {
+.otp .option.default-itin > .header {
   font-size: 16px;
   /*padding-bottom: 4px;*/
   /*border-bottom: 1px solid black;*/
@@ -46,43 +79,43 @@
   cursor: pointer;
 }
 
-.otp .option .default-itin > .header > .title {
+.otp .option.default-itin > .header > .title {
   font-weight: bold;
 }
 
-.otp .option .default-itin > .header > .summary {
+.otp .option.default-itin > .header > .summary {
   text-align: center;
   margin: 8px 0px;
 }
 
 /* ITINERARY LEG */
 
-.otp .option .default-itin .leg {
+.otp .option.default-itin .leg {
   background-color: #d0d0d0;
   padding: 6px;
   margin-bottom: 8px;
 }
 
-.otp .option .default-itin .leg:hover {
+.otp .option.default-itin .leg:hover {
   background-color: var(--hover-color);
 }
 
-.otp .option .default-itin .leg.active {
+.otp .option.default-itin .leg.active {
   background-color: #ddd;
 }
 
-.otp .option .default-itin .leg > .header {
+.otp .option.default-itin .leg > .header {
   cursor: pointer;
 }
 
-.otp .option .default-itin .leg .stop-count {
+.otp .option.default-itin .leg .stop-count {
   cursor: pointer;
   /*margin-bottom: 4px;*/
   padding: 4px;
   margin-left: 8px;
 }
 
-.otp .option .default-itin .leg .stop-list {
+.otp .option.default-itin .leg .stop-list {
   cursor: pointer;
   margin-bottom: 4px;
   padding: 4px;
@@ -91,26 +124,26 @@
   list-style: none;
 }
 
-.otp .Itin .option .default-itin .leg .item {
+.otp .Itin .option.default-itin .leg .item {
   padding: 2px;
   font-size: small;
 }
 
-.otp .option .default-itin .leg .alert-item {
+.otp .option.default-itin .leg .alert-item {
   padding-left: 22px;
 }
 
-.otp .option .default-itin .leg .stop-list .stop-item {
+.otp .option.default-itin .leg .stop-list .stop-item {
   padding-left: 0px;
 }
 
-.otp .option .default-itin .leg .stop-list .info-item {
+.otp .option.default-itin .leg .stop-list .info-item {
   padding-left: 12px;
 }
 
 /* ITINERARY STEP */
 
-.otp .option .default-itin .step {
+.otp .option.default-itin .step {
   cursor: pointer;
   background-color: #eee;
   margin-bottom: 4px;
@@ -118,15 +151,15 @@
   font-size: x-small;
 }
 
-.otp .option .default-itin .step:hover {
+.otp .option.default-itin .step:hover {
   background-color: var(--hover-color);
 }
 
-.otp .option .default-itin .step.active {
+.otp .option.default-itin .step.active {
   background-color: #ccc;
   /*border: 1px dotted;*/
 }
 
-.otp .option .default-itin .step .step-distance {
+.otp .option.default-itin .step .step-distance {
   float: right;
 }

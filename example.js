@@ -11,20 +11,21 @@ import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
+  BaseLayers,
+  BaseMap,
+  BikeRentalOverlay,
+  DateTimeSelector,
   EndpointsOverlay,
-  ItineraryCarousel,
+  ErrorMessage,
   ItineraryOverlay,
   LocationField,
-  ModeSelector,
-  DateTimeSelector,
-  // NarrativeItineraries,
-  BaseMap,
-  BaseLayers,
-  // OsmBaseLayer,
+  NarrativeItineraries,
   PlanTripButton,
-  createOtpReducer,
-  ErrorMessage,
-  SwitchButton
+  TransitiveOverlay,
+  SettingsSelectorPanel,
+  SwitchButton,
+
+  createOtpReducer
 } from './lib'
 
 // load the OTP configuration
@@ -61,23 +62,24 @@ class OtpRRExample extends Component {
         <Navbar.Brand>OpenTripPlanner</Navbar.Brand>
       </Navbar>
       <Grid fluid>
-        <Row>
+        <Row className='main-row'>
           <Col xs={12} md={4} className='sidebar'>
             <LocationField type='from' label='Enter start location or click on map...' />
             <LocationField type='to' label='Enter destination or click on map...' />
             <SwitchButton />
-            <ModeSelector />
             <DateTimeSelector />
+            <SettingsSelectorPanel />
             <ErrorMessage />
             <PlanTripButton />
-            {/* <NarrativeItineraries /> */}
-            <ItineraryCarousel />
+            <NarrativeItineraries />
           </Col>
 
           <Col xsHidden md={8} className='map-container'>
             <BaseMap>
               <BaseLayers />
+              <BikeRentalOverlay />
               <ItineraryOverlay />
+              <TransitiveOverlay />
               <EndpointsOverlay />
             </BaseMap>
           </Col>
