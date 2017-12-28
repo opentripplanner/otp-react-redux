@@ -1,5 +1,6 @@
 .otp.mobile .navbar {
   margin-bottom: 0;
+  border: none;
 }
 
 .otp.mobile .mobile-padding {
@@ -37,4 +38,13 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.otp.mobile .viewer-container {
+  position: fixed;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto; 
 }
