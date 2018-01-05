@@ -1,0 +1,32 @@
+/* application menu styling */
+
+.app-menu-button {
+  border: none;
+  background: none;
+  color: #fff;
+  font-size: 24px;
+  padding: 0px 0px;
+}
+
+.otp.mobile .app-menu-button {
+  padding: 10px 0px 0px 12px;
+}
+
+.app-menu ul.dropdown-menu {
+  font-size: 20px;
+}
+
+.app-menu .btn-default:hover,
+.app-menu .btn-default:focus,
+.app-menu .btn-default:active,
+.app-menu .open > .dropdown-toggle.btn-default:focus,
+.app-menu .open > .dropdown-toggle.btn-default {
+  color: #fff;
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+
+.app-menu .btn-default:hover {
+  color: #ddd;
+}

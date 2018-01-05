@@ -5,6 +5,7 @@
 @import url(node_modules/react-dates/lib/css/_datepicker.css);
 @import url(node_modules/react-select/dist/react-select.css);
 
+@import url(lib/components/app/app.css);
 @import url(lib/components/map/map.css);
 @import url(lib/components/form/form.css);
 @import url(lib/components/narrative/narrative.css);

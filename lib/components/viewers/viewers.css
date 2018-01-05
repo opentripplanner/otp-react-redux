@@ -1,6 +1,6 @@
 /* shared stop/trip viewer styles */
 
-.otp .stop-viewer-header, .otp .trip-viewer-header {
+.otp .stop-viewer-header, .otp .trip-viewer-header, .otp .route-viewer-header {
   background-color: #ddd;
   padding: 12px;
 }
@@ -9,12 +9,12 @@
   padding: 12px;
 }
 
-.otp .stop-viewer .back-button-container, .otp .trip-viewer .back-button-container {
+.otp .stop-viewer .back-button-container, .otp .trip-viewer .back-button-container, .otp .route-viewer .back-button-container {
   float: left;
   margin-right: 10px;
 }
 
-.otp .stop-viewer .header-text, .otp .trip-viewer .header-text {
+.otp .stop-viewer .header-text, .otp .trip-viewer .header-text, .otp .route-viewer .header-text {
   font-weight: 700;
   font-size: 24px;
 }
