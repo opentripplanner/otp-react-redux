@@ -1,3 +1,26 @@
+.otp .navbar {
+  border-radius: 0;
+  background-color: #444;
+}
+
+.otp .navbar .container {
+  margin-left: 0;
+}
+
+.otp .navbar-brand {
+  padding: 7px 10px;
+}
+
+.otp .navbar-title {
+  color: #fff;
+  font-size: 24px;
+  padding-top: 7px;
+}
+
+.otp.mobile .navbar-title {
+  padding-top: 2px;
+}
+
 .main-row {
   position: fixed;
   top: 52px;
@@ -17,6 +40,10 @@
   height: 100%;
   margin: 0px;
   padding: 0px;
+}
+
+.date-time-preview {
+  margin-top: 16px;
 }
 
 .date-time-selector {

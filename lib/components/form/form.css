@@ -27,7 +27,9 @@
   margin-right: 5px;
 }
 
-
+.otp .plan-trip-button, .view-results-button {
+  width: 100%;
+}
 
 /* Date/Time Preview */
 
@@ -41,6 +43,24 @@
 
 .otp .date-time-preview.wide .button-container {
   float: right;
+}
+
+.otp .date-time-preview.wide {
+  height: 64px;
+  background-color: #444;
+  color: white;
+  padding: 2px 15px;
+  margin-bottom: 10px;
+  padding-top: 8px;
+}
+
+.otp .date-time-preview.compressed {
+  text-align: center;
+}
+
+.otp .date-time-preview .details {
+  font-size: 14px;
+  line-height: 24px;
 }
 
 /* Settings Preview */
@@ -62,7 +82,41 @@
   margin-right: 5px;
   width: 16px;
   height: 16px;
+}
+
+.otp .settings-preview.compressed .selected-modes .some-selected .mode-icon {
   fill: black;
+}
+
+.otp .settings-preview.wide .selected-modes .some-selected .mode-icon {
+  fill: white;
+}
+
+.otp .settings-preview.wide {
+  height: 64px;
+  background-color: #444;
+  color: white;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+}
+
+.otp .settings-preview.compressed {
+  height: 95px;
+  text-align: center;
+  padding: 0px 15px;
+}
+
+.otp .settings-preview .selected-modes .some-selected-label {
+  margin-bottom: 4px;
+}
+
+.otp .settings-preview .selected-modes .all-selected {
+  height: 48px;
+  padding-top: 2px;
+}
+
+.otp .settings-preview.wide .selected-modes .all-selected {
+  padding-top: 14px;
 }
 
 .otp .settings-preview.wide .button-container {
