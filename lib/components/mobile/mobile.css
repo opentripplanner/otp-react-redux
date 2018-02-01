@@ -89,7 +89,7 @@
 
 .otp.mobile .options-lower-tray {
   position: fixed;
-  height: 50px;
+  height: 55px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -102,4 +102,33 @@
   left: 0;
   right: 0;
   overflow-y: auto;
+}
+
+/* results screen: normal display */
+
+.otp.mobile .results-map {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  bottom: 120px;
+}
+
+/* results screen: error display */
+
+.otp.mobile .results-error-map {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  height: 200px;
+}
+
+.otp.mobile .results-error-message {
+  position: fixed;
+  top: 300px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 12px;
 }
