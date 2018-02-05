@@ -125,34 +125,68 @@
 /* Modes Selection Panel */
 
 .otp .modes-panel .mode-group-row {
-  background-color: #ccc;
   margin-bottom: 10px;
-  padding: 8px;
+}
+
+.otp .modes-panel .mode-group-row .group-header {
+  margin-bottom: 10px;
 }
 
 .otp .modes-panel .mode-group-row .group-name {
-  display: inline-block;
-  vertical-align: top;
-  width: 120px;
-  padding-top: 10px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
-.otp .modes-panel .mode-group-row .mode-icon-highlight {
-  display: inline-block;
-  vertical-align: top;
-  width: 36px;
-  height: 36px;
-  margin-left: 10px;
-  padding: 4px;
+.otp .modes-panel .mode-group-row .group-select {
+  float: right;
+  text-align: right;
+  font-size: 12px;
+  padding-top: 5px;
 }
 
-.otp .modes-panel .mode-group-row .mode-icon-highlight:hover {
-  background-color: #eee;
+.otp .modes-panel .mode-group-row .group-icons {
+}
+
+.otp .modes-panel .mode-group-row .mode-button-container {
+  display: inline-block;
+  width: 64px;
+  height: 72px;
+  margin-right: 10px;
+  vertical-align: top;
+  position: relative;
+}
+
+.otp .modes-panel .mode-group-row .mode-button {
+  border: 1px solid gray;
+  padding: 3px;
+  border-radius: 3px;
+  width: 64px;
+  height: 48px
+}
+
+.otp .modes-panel .mode-group-row .mode-button:hover {
+  background-color: #f8f8f8;
+}
+
+.otp .modes-panel .mode-group-row .mode-check {
+  position: absolute;
+  top: -6px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  font-size: 16px;
 }
 
 .otp .modes-panel .mode-group-row .mode-icon {
-  width: 28px;
-  height: 28px;
+  width: 56px;
+  height: 30px;
+}
+
+.otp .modes-panel .mode-group-row .mode-label {
+  font-size: 10px;
+  text-align: center;
+  line-height: 12px;
+  padding-top: 4px;
 }
 
 .otp .modes-panel .mode-group-row button {
