@@ -5112,7 +5112,7 @@ markdown-table@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.1.tgz#4b3dd3a133d1518b8ef0dbc709bf2a1b4824bc8c"
 
-mastarm@^3.5.1:
+mastarm@^3.11.0:
   version "3.11.0"
   resolved "https://registry.yarnpkg.com/mastarm/-/mastarm-3.11.0.tgz#36a2dc14bccf6c3d519001fd9689411af0784564"
   dependencies:
