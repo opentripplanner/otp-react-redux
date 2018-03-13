@@ -52,6 +52,7 @@
     "react-fontawesome": "^1.5.0",
     "react-leaflet": "^1.1.0",
     "react-redux": "^5.0.2",
+    "react-resize-detector": "^2.1.0",
     "react-select-geocoder": "^1.2.1",
     "react-swipeable-views": "^0.11.2",
     "redux": "^3.6.0",
@@ -60,6 +61,7 @@
     "redux-thunk": "^2.2.0",
     "semantic-release": "^6.3.2",
     "transitive-js": "^0.10.0",
+    "turf-along": "^3.0.12",
     "velocity-react": "^1.3.3"
   },
   "devDependencies": {
