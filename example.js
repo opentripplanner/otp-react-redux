@@ -11,20 +11,16 @@ import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
-  BaseLayers,
-  BaseMap,
-  BikeRentalOverlay,
-  DateTimeSelector,
-  EndpointsOverlay,
+  DefaultMap,
+  DefaultSearchForm,
   ErrorMessage,
-  ItineraryOverlay,
-  LocationField,
-  NarrativeItineraries,
-  PlanTripButton,
-  TransitiveOverlay,
-  SettingsSelectorPanel,
-  SwitchButton,
-
+  MobileMain,
+  NarrativeRoutingResults,
+  ResponsiveWebapp,
+  StylizedMap,
+  ToggleMap,
+  ViewerContainer,
+  AppMenu,
   createOtpReducer
 } from './lib'
 
@@ -57,35 +53,59 @@ const store = createStore(
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
-    return (<div className='otp'>
-      <Navbar fluid>
-        <Navbar.Brand>OpenTripPlanner</Navbar.Brand>
-      </Navbar>
-      <Grid fluid>
-        <Row className='main-row'>
-          <Col xs={12} md={4} className='sidebar'>
-            <LocationField type='from' label='Enter start location or click on map...' />
-            <LocationField type='to' label='Enter destination or click on map...' />
-            <SwitchButton />
-            <DateTimeSelector />
-            <SettingsSelectorPanel />
-            <ErrorMessage />
-            <PlanTripButton />
-            <NarrativeItineraries />
-          </Col>
+    /** shared components **/
+    const map = (
+      <ToggleMap>
+        <DefaultMap toggleLabel={<span><i className='fa fa-map' /> Map View</span>} />
+        <StylizedMap toggleLabel={<span><i className='fa fa-random' /> Network View</span>} />
+      </ToggleMap>
+    )
 
-          <Col xsHidden md={8} className='map-container'>
-            <BaseMap>
-              <BaseLayers />
-              <BikeRentalOverlay />
-              <ItineraryOverlay />
-              <TransitiveOverlay />
-              <EndpointsOverlay />
-            </BaseMap>
-          </Col>
-        </Row>
-      </Grid>
-    </div>)
+    /** desktop view **/
+    const desktopView = (
+      <div className='otp'>
+        <Navbar>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
+                <AppMenu />
+              </div>
+              <div className='navbar-title' style={{ marginLeft: 50 }}>OpenTripPlanner</div>
+            </Navbar.Brand>
+          </Navbar.Header>
+        </Navbar>
+        <Grid>
+          <Row className='main-row'>
+            <Col sm={6} md={4} className='sidebar'>
+              <ViewerContainer>
+                <DefaultSearchForm />
+                <ErrorMessage />
+                <div className='desktop-narrative-container'>
+                  <NarrativeRoutingResults />
+                </div>
+              </ViewerContainer>
+            </Col>
+
+            <Col sm={6} md={8} className='map-container'>
+              {map}
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+    )
+
+    /** mobile view **/
+    const mobileView = (
+      <MobileMain map={map} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
+    )
+
+    /** the main webapp **/
+    return (
+      <ResponsiveWebapp
+        desktopView={desktopView}
+        mobileView={mobileView}
+      />
+    )
   }
 }
 

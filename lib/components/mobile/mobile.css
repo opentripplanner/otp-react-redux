@@ -1,0 +1,134 @@
+.otp.mobile .mobile-padding {
+  padding: 10px;
+}
+
+.otp .mobile-bottom-button-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 40px;
+}
+
+/* navbar settings */
+
+.otp.mobile .navbar {
+  margin-bottom: 0;
+  border: none;
+}
+
+.otp .navbar .mobile-header {
+  position: fixed;
+  top: 5px;
+  left: 50px;
+  right: 50px;
+  text-align: center;
+}
+
+.otp .navbar .mobile-header-text {
+  color: white;
+  padding-top: 9px;
+  font-size: 18px;
+  display: inline-block;
+}
+
+.otp .navbar .mobile-header-action {
+  display: inline-block;
+}
+
+.otp .navbar .mobile-header-action > button {
+  color: white;
+}
+
+.otp .navbar .mobile-back {
+  position: fixed;
+  top: 12px;
+  left: 15px;
+  color: white;
+  font-size: 18px;
+}
+
+.otp .navbar .mobile-close {
+  position: fixed;
+  top: 4px;
+  right: 6px;
+  color: white;
+  font-size: 18px;
+}
+
+.otp .navbar-brand {
+  padding: 7px 10px;
+}
+
+/* map settings */
+
+.otp.mobile .welcome-map {
+  position: fixed;
+  top: 110px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.otp.mobile .search-map {
+  position: fixed;
+  top: 300px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.otp.mobile .options-main-content {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  overflow-y: 'auto'
+}
+
+.otp.mobile .options-lower-tray {
+  position: fixed;
+  height: 55px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.otp.mobile .viewer-container {
+  position: fixed;
+  top: 250px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+}
+
+/* results screen: normal display */
+
+.otp.mobile .results-map {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  bottom: 120px;
+}
+
+/* results screen: error display */
+
+.otp.mobile .results-error-map {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  height: 200px;
+}
+
+.otp.mobile .results-error-message {
+  position: fixed;
+  top: 300px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 12px;
+}

@@ -4,6 +4,7 @@
 }
 
 .otp .link-button {
+  background: none;
   border: none;
   padding: 0px 0px;
   color: #000080;
