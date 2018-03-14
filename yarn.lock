@@ -4845,6 +4845,10 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
+leaflet.polylinemeasure@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/leaflet.polylinemeasure/-/leaflet.polylinemeasure-2.0.0.tgz#b6faca2174f16447d04e5d0e9d5e488953f07b66"
+
 leaflet@^1.0.3:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.2.0.tgz#fd5d93d9cb00091f5f8a69206d0d6744c1c82697"
