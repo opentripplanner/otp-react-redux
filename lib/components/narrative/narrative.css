@@ -132,3 +132,33 @@
   top: 5;
   right: 5;
 }
+
+/* TRIP TOOLS ROW */
+.otp .trip-tools {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.otp .trip-tools .button-container {
+  display: inline-block;
+}
+
+.otp .trip-tools .pad-right {
+  padding-right: 5px;
+}
+
+.otp .trip-tools .tool-button {
+  font-size: 12px;
+  width: 110px;
+  padding: 4px;
+}
+
+.otp .trip-tools .dropdown-menu {
+  font-size: 12px;
+  text-align: left;
+  padding: 4px;
+}
+
+.otp .trip-tools .dropdown-menu > li > a {
+  padding: 3px 5px;
+}
