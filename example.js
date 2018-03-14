@@ -3,6 +3,10 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 
@@ -109,10 +113,84 @@ class OtpRRExample extends Component {
   }
 }
 
+class OtpPrint extends Component {
+  render () {
+    /** desktop view **/
+    const desktopView = (
+      <div className='otp'>
+        <Navbar>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
+                <AppMenu />
+              </div>
+              <div className='navbar-title' style={{ marginLeft: 50 }}>Print-friendly view</div>
+            </Navbar.Brand>
+          </Navbar.Header>
+        </Navbar>
+        <Grid>
+          <Row className='main-row'>
+            <Col sm={12} md={12} className='sidebar'>
+              <ViewerContainer>
+                <DefaultSearchForm />
+                <ErrorMessage />
+                <div className='desktop-narrative-container'>
+                  <NarrativeRoutingResults />
+                </div>
+              </ViewerContainer>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+    )
+
+    /** the main webapp **/
+    return (
+      <ResponsiveWebapp
+        desktopView={desktopView}
+        mobileView={null}
+      />
+    )
+  }
+}
+
 // render the app
 render(
   <Provider store={store}>
-    <OtpRRExample />
+    { /**
+     * If not using router history, simply include OtpRRExample here:
+     * e.g.
+     * <OtpRRExample />
+     */
+    }
+    <Router
+      // TODO: Use react-router-redux once it is out of beta?
+      // history={history}
+      >
+      <div>
+        <Route
+          exact
+          path='/'
+          component={OtpRRExample}
+          />
+        <Route
+          path='/print'
+          component={OtpPrint}
+          />
+        <Route
+          path='/itin/:id'
+          component={OtpRRExample}
+          />
+        {/* Single route with multiple options or multiple separate routes? */}
+        {
+          /* TODO: Keep track of application state and handle starting conditions (position and/or OTP router to use)
+          <Route path='/@:latLonZoom(/plan)' component={props => <OtpApp {...props}><OtpRRExample /></OtpApp>} />
+          <Route path='/plan' component={props => <OtpApp {...props}><OtpRRExample /></OtpApp>} />
+          */
+        }
+      </div>
+    </Router>
+
   </Provider>,
   document.getElementById('root')
 )
