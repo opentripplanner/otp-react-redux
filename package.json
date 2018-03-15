@@ -63,7 +63,7 @@
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.2.0",
     "semantic-release": "^6.3.2",
-    "transitive-js": "^0.10.0",
+    "transitive-js": "^0.11.0",
     "turf-along": "^3.0.12",
     "velocity-react": "^1.3.3"
   },
@@ -73,9 +73,6 @@
     "nock": "^9.0.9",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
-  },
-  "publishConfig": {
-    "tag": "test"
   },
   "peerDependencies": {
     "react": ">=15.0.0",
