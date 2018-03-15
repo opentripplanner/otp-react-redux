@@ -162,3 +162,14 @@
 .otp .trip-tools .dropdown-menu > li > a {
   padding: 3px 5px;
 }
+
+/* TABBED ITINERARIES */
+
+.otp .tabbed-itineraries {
+  margin-top: 10px;
+}
+
+.otp .tabbed-itineraries .tab-row {
+  text-align: center;
+  margin-bottom: 10px;
+}
