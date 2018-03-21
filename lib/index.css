@@ -25,6 +25,19 @@ button.header, button.step, .clear-button-formatting  {
   margin: 0;
 }
 
+.clear-button-formatting:active {
+  background: none;
+  box-shadow: none;
+}
+
+.clear-button-formatting:focus {
+  background: none;
+}
+
+.clear-button-formatting:hover {
+  background: none;
+}
+
 button.header, button.step {
   width: 100%;
 }
