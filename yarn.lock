@@ -58,6 +58,10 @@ abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
 
+accounting@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/accounting/-/accounting-0.4.1.tgz#87dd4103eff7f4460f1e186f5c677ed6cf566883"
+
 acorn-globals@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/acorn-globals/-/acorn-globals-3.1.0.tgz#fd8270f71fbb4996b004fa880ee5d46573a731bf"
@@ -2339,6 +2343,14 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   resolved "https://registry.yarnpkg.com/cssstyle/-/cssstyle-0.2.37.tgz#541097234cb2513c83ceed3acddc27ff27987d54"
   dependencies:
     cssom "0.3.x"
+
+currency-formatter@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/currency-formatter/-/currency-formatter-1.4.2.tgz#9da20b3706f7a42daf73b356b09a2a2b76ff3870"
+  dependencies:
+    accounting "^0.4.1"
+    locale-currency "0.0.1"
+    object-assign "^4.1.1"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -5055,6 +5067,10 @@ load-json-file@^4.0.0:
     parse-json "^4.0.0"
     pify "^3.0.0"
     strip-bom "^3.0.0"
+
+locale-currency@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/locale-currency/-/locale-currency-0.0.1.tgz#c9e15a22ff575b4b4bb947a4bf92ac236bd1fe9b"
 
 locate-path@^2.0.0:
   version "2.0.0"
