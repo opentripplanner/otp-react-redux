@@ -112,7 +112,14 @@ class OtpRRExample extends Component {
 // render the app
 render(
   <Provider store={store}>
+    { /**
+     * If not using router history, simply include OtpRRExample here:
+     * e.g.
+     * <OtpRRExample />
+     */
+    }
     <OtpRRExample />
+
   </Provider>,
   document.getElementById('root')
 )

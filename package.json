@@ -30,7 +30,10 @@
     "@conveyal/lonlat": "^1.1.0",
     "@mapbox/polyline": "^0.2.0",
     "bootstrap": "^3.3.7",
+    "bowser": "^1.9.3",
     "clone": "^2.1.0",
+    "copy-to-clipboard": "^3.0.8",
+    "currency-formatter": "^1.4.2",
     "d3": "^3.5.8",
     "deep-equal": "^1.0.1",
     "font-awesome": "^4.7.0",
@@ -38,6 +41,7 @@
     "isomorphic-fetch": "^2.2.1",
     "isomorphic-mapzen-search": "^1.3.1",
     "leaflet": "^1.0.3",
+    "leaflet.polylinemeasure": "^2.0.0",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
     "moment": "^2.17.1",
@@ -52,6 +56,8 @@
     "react-fontawesome": "^1.5.0",
     "react-leaflet": "^1.1.0",
     "react-redux": "^5.0.2",
+    "react-resize-detector": "^2.1.0",
+    "react-router-dom": "^4.2.2",
     "react-select-geocoder": "^1.2.1",
     "react-swipeable-views": "^0.11.2",
     "redux": "^3.6.0",
@@ -59,12 +65,13 @@
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.2.0",
     "semantic-release": "^6.3.2",
-    "transitive-js": "^0.11.0",
+    "transitive-js": "^0.12.0",
+    "turf-along": "^3.0.12",
     "velocity-react": "^1.3.3"
   },
   "devDependencies": {
     "documentation": "^4.0.0-beta.18",
-    "mastarm": "^3.5.1",
+    "mastarm": "^3.11.0",
     "nock": "^9.0.9",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
@@ -72,5 +79,8 @@
   "peerDependencies": {
     "react": ">=15.0.0",
     "react-dom": ">=15.0.0"
+  },
+  "jest": {
+    "testURL": "http://localhost"
   }
 }

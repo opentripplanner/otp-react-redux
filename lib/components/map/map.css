@@ -17,3 +17,48 @@
 .otp .link-button:focus {
   outline:0;
 }
+
+/* leg diagram */
+
+.otp .leg-diagram {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  height: 180px;
+  z-index: 1000;
+  background-color: white;
+  background-clip: padding-box;
+  border: 2px solid rgba(127, 127, 127, .5);
+  border-Radius: 4px;
+}
+
+.otp .leg-diagram .y-axis-panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.otp .leg-diagram .main-diagram {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.otp .leg-diagram .close-button {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  z-index: 1001;
+  font-size: 20px;
+  color: #888;
+}
+
+.otp .leg-diagram .close-button:hover {
+  color: #aaa;
+  background: none;
+}
