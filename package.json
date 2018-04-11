@@ -65,7 +65,7 @@
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.2.0",
     "semantic-release": "^6.3.2",
-    "transitive-js": "^0.11.0",
+    "transitive-js": "^0.12.0",
     "turf-along": "^3.0.12",
     "velocity-react": "^1.3.3"
   },
