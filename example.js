@@ -28,18 +28,17 @@ import {
 import otpConfig from './config.yml'
 
 // create an initial query for demo/testing purposes
-/* const initialQuery = {
+const initialQuery = {
   from: {
-    name: 'PDX',
-    lat: 45.589180,
-    lon: -122.593460
+    lat: 45.5246,
+    lon: -122.6710
   },
   to: {
-    name: 'TTO',
-    lat: 45.518950,
-    lon: -122.679565
-  }
-} */
+    lat: 45.5307,
+    lon: -122.6647
+  },
+  type: 'ITINERARY'
+}
 
 // set up the Redux store
 const store = createStore(
