@@ -11,14 +11,12 @@ import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
-  DefaultMap,
   DefaultSearchForm,
   ErrorMessage,
   MobileMain,
   NarrativeRoutingResults,
   ResponsiveWebapp,
-  StylizedMap,
-  ToggleMap,
+  Map,
   ViewerContainer,
   AppMenu,
   createOtpReducer
@@ -52,13 +50,6 @@ const store = createStore(
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
-    /** shared components **/
-    const map = (
-      <ToggleMap>
-        <DefaultMap toggleLabel={<span><i className='fa fa-map' /> Map View</span>} />
-        <StylizedMap toggleLabel={<span><i className='fa fa-random' /> Network View</span>} />
-      </ToggleMap>
-    )
 
     /** desktop view **/
     const desktopView = (
@@ -86,7 +77,7 @@ class OtpRRExample extends Component {
             </Col>
 
             <Col sm={6} md={8} className='map-container'>
-              {map}
+              <Map />
             </Col>
           </Row>
         </Grid>
@@ -95,7 +86,7 @@ class OtpRRExample extends Component {
 
     /** mobile view **/
     const mobileView = (
-      <MobileMain map={map} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
+      <MobileMain map={(<Map />)} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
     )
 
     /** the main webapp **/
