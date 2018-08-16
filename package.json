@@ -38,6 +38,7 @@
     "d3-zoom": "^1.7.1",
     "deep-equal": "^1.0.1",
     "font-awesome": "^4.7.0",
+    "haversine": "^1.1.0",
     "immutability-helper": "^2.1.1",
     "isomorphic-fetch": "^2.2.1",
     "isomorphic-mapzen-search": "1.4.1",
