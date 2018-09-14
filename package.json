@@ -43,7 +43,7 @@
     "isomorphic-fetch": "^2.2.1",
     "isomorphic-mapzen-search": "1.4.1",
     "leaflet": "^1.0.3",
-    "leaflet.polylinemeasure": "^2.0.0",
+    "leaflet.polylinemeasure": "github:ppete2/Leaflet.PolylineMeasure",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
     "moment": "^2.17.1",
