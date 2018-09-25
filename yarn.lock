@@ -9367,22 +9367,9 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
-transitive-js@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/transitive-js/-/transitive-js-0.11.0.tgz#60874cf1a2e88e58f821f6231dbc567473dab7c6"
-  dependencies:
-    augment "4.3.0"
-    component-each "0.2.6"
-    component-emitter "1.2.1"
-    d3 "^3.5.8"
-    debug "^2.5.1"
-    lodash.foreach "^4.5.0"
-    priorityqueuejs "1.0.0"
-    sphericalmercator "^1.0.5"
-
-"transitive-js@git://github.com/conveyal/transitive.js/#c8f1a57":
+"transitive-js@git://github.com/conveyal/transitive.js/#f2286df":
   version "1.0.0-SNAPSHOT"
-  resolved "git://github.com/conveyal/transitive.js/#c8f1a57b9e93a7913b1ae1e7fb04cdd4cc77ad14"
+  resolved "git://github.com/conveyal/transitive.js/#f2286df2468c6cce731277179e6629c0346c07fd"
   dependencies:
     augment "4.3.0"
     component-each "0.2.6"
