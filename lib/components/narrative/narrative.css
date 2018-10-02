@@ -127,6 +127,10 @@
   font-size: 12px;
 }
 
+.otp .trip-details .trip-detail b {
+  font-weight: 600;
+}
+
 .otp .trip-details .trip-detail .hide-button {
   float: right;
   top: 5;
