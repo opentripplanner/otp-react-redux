@@ -16,6 +16,23 @@
 
 @import url(lib/bike-rental.css);
 
+/* PREVENT BOUNCE SCROLL ON OSX */
+/* Fix this body and html to prevent bounce */
+html,
+body {
+  position: fixed;
+  overflow: hidden;
+}
+/* Modify the root/main div to permit normal scrolling behavior */
+#root, #main {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Buttons */
+
 button.header, button.step, .clear-button-formatting  {
   background: inherit;
   color: inherit;
