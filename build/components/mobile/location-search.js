@@ -76,13 +76,16 @@ var MobileLocationSearch = (_temp2 = _class = function (_Component) {
     value: function render() {
       var _props = this.props,
           backScreen = _props.backScreen,
-          locationType = _props.locationType;
+          location = _props.location,
+          locationType = _props.locationType,
+          otherLocation = _props.otherLocation;
 
+      var suppressNearby = otherLocation && otherLocation.category === 'CURRENT_LOCATION';
       return _react2.default.createElement(
         _container2.default,
         null,
         _react2.default.createElement(_navigationBar2.default, {
-          headerText: 'Set ' + locationType + ' Location',
+          headerText: 'Set ' + (locationType === 'to' ? 'Destination' : 'Origin'),
           showBackButton: true,
           backScreen: backScreen
         }),
@@ -92,7 +95,8 @@ var MobileLocationSearch = (_temp2 = _class = function (_Component) {
           _react2.default.createElement(_locationField2.default, {
             type: locationType,
             hideExistingValue: true,
-            label: 'Enter location',
+            suppressNearby: suppressNearby,
+            label: location ? location.name : 'Enter location',
             'static': true,
             onLocationSelected: this._locationSelected
           })
@@ -109,7 +113,10 @@ var MobileLocationSearch = (_temp2 = _class = function (_Component) {
 // connect to the redux store
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    location: state.otp.currentQuery[ownProps.locationType],
+    otherLocation: ownProps.type === 'from' ? state.otp.currentQuery.to : state.otp.currentQuery.from
+  };
 };
 
 var mapDispatchToProps = {

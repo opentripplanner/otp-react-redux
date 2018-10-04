@@ -48,10 +48,6 @@ function setLocation(payload) {
   return function (dispatch, getState) {
     var otpState = getState().otp;
 
-    // update the location in the store
-    dispatch(settingLocation(payload));
-    dispatch((0, _form.formChanged)());
-
     // reverse geocode point location if requested
     if (payload.reverseGeocode) {
       var _otpState$config$geoc = otpState.config.geocoder,
@@ -71,9 +67,21 @@ function setLocation(payload) {
           type: payload.type,
           location: (0, _assign2.default)({}, payload.location, { name: json[0].address })
         }));
+        // Trigger form change after reverse geocode so that OTP query contains
+        // reverse geocoded place name
+        dispatch((0, _form.formChanged)());
       }).catch(function (err) {
-        console.error(err);
+        dispatch(settingLocation({
+          type: payload.type,
+          location: payload.location
+        }));
+        dispatch((0, _form.formChanged)());
+        console.warn(err);
       });
+    } else {
+      // update the location in the store
+      dispatch(settingLocation(payload));
+      dispatch((0, _form.formChanged)());
     }
   };
 }

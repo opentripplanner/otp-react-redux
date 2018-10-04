@@ -45,12 +45,18 @@ var _itinerary = require('../util/itinerary');
 //     : {lat: null, lon: null}
 // }
 
+var formatPlace = function formatPlace(location, alternateName) {
+  if (!location) return null;
+  var name = location.name || (alternateName || 'Place') + ' (' + location.lat + ',' + location.lon + ')';
+  return name + '::' + location.lat + ',' + location.lon;
+};
+
 var queryParams = [{ /* from - the trip origin. stored internally as a location (lat/lon/name) object  */
   name: 'from',
   routingTypes: ['ITINERARY', 'PROFILE'],
   default: null,
   itineraryRewrite: function itineraryRewrite(value) {
-    return { fromPlace: value.lat + ',' + value.lon };
+    return { fromPlace: formatPlace(value, 'Origin') };
   },
   profileRewrite: function profileRewrite(value) {
     return { from: { lat: value.lat, lon: value.lon } };
@@ -62,7 +68,7 @@ var queryParams = [{ /* from - the trip origin. stored internally as a location 
   routingTypes: ['ITINERARY', 'PROFILE'],
   default: null,
   itineraryRewrite: function itineraryRewrite(value) {
-    return { toPlace: value.lat + ',' + value.lon };
+    return { toPlace: formatPlace(value, 'Destination') };
   },
   profileRewrite: function profileRewrite(value) {
     return { to: { lat: value.lat, lon: value.lon } };

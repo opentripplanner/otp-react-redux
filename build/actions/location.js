@@ -27,6 +27,7 @@ var receivedPositionResponse = exports.receivedPositionResponse = (0, _reduxActi
 
 function getCurrentPosition() {
   var setAsType = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var onSuccess = arguments[1];
 
   return function () {
     var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(dispatch, getState) {
@@ -45,6 +46,7 @@ function getCurrentPosition() {
                     if (setAsType) {
                       console.log('setting location to current position');
                       dispatch((0, _map.setLocationToCurrent)({ type: setAsType }));
+                      onSuccess && onSuccess();
                     }
                   } else {
                     dispatch(receivedPositionError({ error: { message: 'Unknown error getting position' } }));

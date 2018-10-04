@@ -65,25 +65,30 @@ function parseUrlQueryString(queryString) {
   };
 }
 
+/**
+ * OTP allows passing a location in the form '123 Main St::lat,lon', so we check
+ * for the double colon and parse the coordinates accordingly.
+ */
+function parseLocationString(value) {
+  var parts = value.split('::');
+  var coordinates = parts[1] ? (0, _map.stringToCoords)(parts[1]) : (0, _map.stringToCoords)(parts[0]);
+  var name = parts[1] ? parts[0] : (0, _map.coordsToString)(coordinates);
+  return coordinates.length === 2 ? {
+    name: name || null,
+    lat: coordinates[0] || null,
+    lon: coordinates[1] || null
+  } : null;
+}
+
 function planParamsToQuery(params) {
   var query = {};
   for (var key in params) {
     switch (key) {
       case 'fromPlace':
-        var from = (0, _map.stringToCoords)(params.fromPlace);
-        query.from = from.length ? {
-          name: (0, _map.coordsToString)(from) || null,
-          lat: from[0] || null,
-          lon: from[1] || null
-        } : null;
+        query.from = parseLocationString(params.fromPlace);
         break;
       case 'toPlace':
-        var to = (0, _map.stringToCoords)(params.toPlace);
-        query.to = to.length ? {
-          name: (0, _map.coordsToString)(to) || null,
-          lat: to[0] || null,
-          lon: to[1] || null
-        } : null;
+        query.to = parseLocationString(params.toPlace);
         break;
       case 'arriveBy':
         query.departArrive = params.arriveBy === 'true' ? 'ARRIVE' : params.arriveBy === 'false' ? 'DEPART' : 'NOW';
