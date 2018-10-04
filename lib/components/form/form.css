@@ -61,7 +61,7 @@
 .otp .settings-preview.compressed {
   height: 95px;
   text-align: center;
-  padding: 0px 15px;
+  padding: 0px;
 }
 
 .otp .settings-preview .selected-modes .some-selected-label {
