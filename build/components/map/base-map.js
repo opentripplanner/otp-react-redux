@@ -38,10 +38,6 @@ var _reactRedux = require('react-redux');
 
 var _reactLeaflet = require('react-leaflet');
 
-var _reactContainerDimensions = require('react-container-dimensions');
-
-var _reactContainerDimensions2 = _interopRequireDefault(_reactContainerDimensions);
-
 var _map = require('../../actions/map');
 
 var _locationIcon = require('../icons/location-icon');
