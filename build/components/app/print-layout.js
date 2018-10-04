@@ -101,40 +101,48 @@ var PrintLayout = (_temp = _class = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'otp print-layout' },
+        { className: 'otp' },
         _react2.default.createElement(
           'div',
-          { className: 'header' },
+          { className: 'print-layout-container' },
           _react2.default.createElement(
             'div',
-            { style: { float: 'right' } },
+            { className: 'print-layout' },
             _react2.default.createElement(
-              _reactBootstrap.Button,
-              { bsSize: 'small', onClick: this._toggleMap },
-              _react2.default.createElement('i', { className: 'fa fa-map' }),
-              ' Toggle Map'
+              'div',
+              { className: 'header' },
+              _react2.default.createElement(
+                'div',
+                { style: { float: 'right' } },
+                _react2.default.createElement(
+                  _reactBootstrap.Button,
+                  { bsSize: 'small', onClick: this._toggleMap },
+                  _react2.default.createElement('i', { className: 'fa fa-map' }),
+                  ' Toggle Map'
+                ),
+                ' ',
+                _react2.default.createElement(
+                  _reactBootstrap.Button,
+                  { bsSize: 'small', onClick: this._print },
+                  _react2.default.createElement('i', { className: 'fa fa-print' }),
+                  ' Print'
+                )
+              ),
+              'Itinerary'
             ),
-            ' ',
-            _react2.default.createElement(
-              _reactBootstrap.Button,
-              { bsSize: 'small', onClick: this._print },
-              _react2.default.createElement('i', { className: 'fa fa-print' }),
-              ' Print'
-            )
-          ),
-          'Itinerary'
-        ),
-        this.state.mapVisible && _react2.default.createElement(
-          'div',
-          { className: 'map-container' },
-          _react2.default.createElement(
-            _baseMap2.default,
-            null,
-            _react2.default.createElement(_transitiveOverlay2.default, null),
-            _react2.default.createElement(_endpointsOverlay2.default, null)
+            this.state.mapVisible && _react2.default.createElement(
+              'div',
+              { className: 'map-container' },
+              _react2.default.createElement(
+                _baseMap2.default,
+                null,
+                _react2.default.createElement(_transitiveOverlay2.default, null),
+                _react2.default.createElement(_endpointsOverlay2.default, null)
+              )
+            ),
+            itinerary && _react2.default.createElement(_printableItinerary2.default, { itinerary: itinerary, companies: companies })
           )
-        ),
-        itinerary && _react2.default.createElement(_printableItinerary2.default, { itinerary: itinerary, companies: companies })
+        )
       );
     }
   }]);

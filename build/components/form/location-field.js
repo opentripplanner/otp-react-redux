@@ -107,20 +107,25 @@ var LocationField = (_temp = _class = function (_Component) {
       _this.setState({ menuVisible: menuVisible });
     };
 
+    _this._onTextInputBlur = function () {
+      return _this.setState({ menuVisible: false });
+    };
+
     _this._onTextInputChange = function (evt) {
       _this.setState({ value: evt.target.value });
       _this._geocodeAutocomplete(evt.target.value);
     };
 
-    _this._onTextInputClick = function () {
+    _this._onTextInputFocus = function () {
       var _this$props = _this.props,
           config = _this$props.config,
           currentPosition = _this$props.currentPosition,
+          nearbyStops = _this$props.nearbyStops,
           onClick = _this$props.onClick;
 
       if (typeof onClick === 'function') onClick();
       _this.setState({ menuVisible: true });
-      if (currentPosition && currentPosition.coords) {
+      if (nearbyStops.length === 0 && currentPosition && currentPosition.coords) {
         _this.props.findNearbyStops({
           lat: currentPosition.coords.latitude,
           lon: currentPosition.coords.longitude,
@@ -130,31 +135,37 @@ var LocationField = (_temp = _class = function (_Component) {
     };
 
     _this._onKeyDown = function (evt) {
-      var activeIndex = _this.state.activeIndex;
-
+      var isStatic = _this.props.static;
+      var _this$state = _this.state,
+          activeIndex = _this$state.activeIndex,
+          menuVisible = _this$state.menuVisible;
 
       switch (evt.key) {
         // 'Down' arrow key pressed: move selected menu item down by one position
         case 'ArrowDown':
-          if (activeIndex === _this.menuItemCount - 1) {
-            _this.setState({ activeIndex: null });
-            break;
+          // Suppress default 'ArrowDown' behavior which moves cursor to end
+          evt.preventDefault();
+          if (!menuVisible && !isStatic) {
+            // If the menu is not visible, simulate a text input click to show it.
+            return _this._onTextInputFocus();
           }
-          _this.setState({
+          if (activeIndex === _this.menuItemCount - 1) {
+            return _this.setState({ activeIndex: null });
+          }
+          return _this.setState({
             activeIndex: activeIndex === null ? 0 : activeIndex + 1
           });
-          break;
 
         // 'Up' arrow key pressed: move selection up by one position
         case 'ArrowUp':
+          // Suppress default 'ArrowUp' behavior which moves cursor to beginning
+          evt.preventDefault();
           if (activeIndex === 0) {
-            _this.setState({ activeIndex: null });
-            break;
+            return _this.setState({ activeIndex: null });
           }
-          _this.setState({
+          return _this.setState({
             activeIndex: activeIndex === null ? _this.menuItemCount - 1 : activeIndex - 1
           });
-          break;
 
         // 'Enter' keypress serves two purposes:
         //  - If pressed when typing in search string, switch from 'autocomplete'
@@ -176,15 +187,22 @@ var LocationField = (_temp = _class = function (_Component) {
           } else {
             // Menu not active; get geocode 'search' results
             _this._geocodeSearch(evt.target.value);
+            // Ensure menu is visible.
+            _this.setState({ menuVisible: true });
           }
 
           // Suppress default 'Enter' behavior which causes page to reload
           evt.preventDefault();
           break;
-
+        case 'Escape':
+          // Clear selection & hide the menu
+          return _this.setState({
+            menuVisible: false,
+            activeIndex: null
+          });
         // Any other key pressed: clear active selection
         default:
-          _this.setState({ activeIndex: null });
+          return _this.setState({ activeIndex: null });
       }
     };
 
@@ -192,16 +210,18 @@ var LocationField = (_temp = _class = function (_Component) {
       var _this$props2 = _this.props,
           currentPosition = _this$props2.currentPosition,
           getCurrentPosition = _this$props2.getCurrentPosition,
+          onLocationSelected = _this$props2.onLocationSelected,
           setLocationToCurrent = _this$props2.setLocationToCurrent,
           type = _this$props2.type;
 
       if (currentPosition.coords) {
         // We already have geolocation coordinates
         setLocationToCurrent({ type: type });
+        onLocationSelected && onLocationSelected();
       } else {
         // Call geolocation.getCurrentPosition and set as from/to type
         _this.setState({ fetchingLocation: true });
-        getCurrentPosition(type);
+        getCurrentPosition(type, onLocationSelected);
       }
     };
 
@@ -229,13 +249,6 @@ var LocationField = (_temp = _class = function (_Component) {
       }
     }
   }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      if (this.props.static) {
-        _reactDom2.default.findDOMNode(this.formControl).focus();
-      }
-    }
-  }, {
     key: '_geocodeSearch',
     value: function _geocodeSearch(text) {
       var _this2 = this;
@@ -246,6 +259,10 @@ var LocationField = (_temp = _class = function (_Component) {
           boundary = _props$config$geocode.boundary,
           focusPoint = _props$config$geocode.focusPoint;
 
+      if (!text) {
+        console.warn('No text entry provided for geocode search.');
+        return;
+      }
       (0, _isomorphicMapzenSearch.search)({
         apiKey: MAPZEN_KEY,
         boundary: boundary,
@@ -256,7 +273,7 @@ var LocationField = (_temp = _class = function (_Component) {
         format: false // keep as returned GeoJSON
       }).then(function (result) {
         console.log('search results (query=' + text + ')', result);
-        if (result.features.length > 0) {
+        if (result.features && result.features.length > 0) {
           // Only replace geocode items if results were found
           _this2.setState({ geocodedFeatures: result.features });
         } else {
@@ -274,13 +291,13 @@ var LocationField = (_temp = _class = function (_Component) {
   }, {
     key: '_setLocation',
     value: function _setLocation(location) {
-      if (typeof this.props.onLocationSelected === 'function') {
-        this.props.onLocationSelected(location);
-      }
-      this.props.setLocation({
-        type: this.props.type,
-        location: location
-      });
+      var _props = this.props,
+          onLocationSelected = _props.onLocationSelected,
+          setLocation = _props.setLocation,
+          type = _props.type;
+
+      onLocationSelected && onLocationSelected();
+      setLocation({ type: type, location: location });
     }
 
     /**
@@ -292,16 +309,16 @@ var LocationField = (_temp = _class = function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      var _props = this.props,
-          currentPosition = _props.currentPosition,
-          label = _props.label,
-          showClearButton = _props.showClearButton,
-          isStatic = _props.static,
-          suppressNearby = _props.suppressNearby,
-          type = _props.type,
-          nearbyStops = _props.nearbyStops;
+      var _props2 = this.props,
+          currentPosition = _props2.currentPosition,
+          label = _props2.label,
+          location = _props2.location,
+          showClearButton = _props2.showClearButton,
+          isStatic = _props2.static,
+          suppressNearby = _props2.suppressNearby,
+          type = _props2.type,
+          nearbyStops = _props2.nearbyStops;
       var activeIndex = this.state.activeIndex;
-
 
       var geocodedFeatures = this.state.geocodedFeatures;
       if (geocodedFeatures.length > 5) geocodedFeatures = geocodedFeatures.slice(0, 5);
@@ -441,25 +458,27 @@ var LocationField = (_temp = _class = function (_Component) {
       /** the text input element **/
       var placeholder = currentPosition.fetching === type ? 'Fetching location...' : label || type;
       var textControl = _react2.default.createElement(_reactBootstrap.FormControl, {
-        ref: function ref(ctl) {
+        autoFocus: isStatic // focuses the input when the component mounts if static
+        , ref: function ref(ctl) {
           _this3.formControl = ctl;
         },
         className: this._getFormControlClassname(),
         type: 'text',
         value: this.state.value,
         placeholder: placeholder,
+        onBlur: this._onTextInputBlur,
         onChange: this._onTextInputChange,
-        onClick: this._onTextInputClick,
+        onFocus: this._onTextInputFocus,
         onKeyDown: this._onKeyDown
       });
 
-      /** the clear ('X') button add-on */
-      var clearButton = _react2.default.createElement(
+      // Only include the clear ('X') button add-on if a location is selected
+      // or if the input field has text.
+      var clearButton = showClearButton && (location || this.state.value) ? _react2.default.createElement(
         _reactBootstrap.InputGroup.Addon,
         { onClick: this._onClearButtonClick },
         _react2.default.createElement('i', { className: 'fa fa-times' })
-      );
-
+      ) : null;
       if (isStatic) {
         // 'static' mode (menu is displayed alongside input, e.g., for mobile view)
         return _react2.default.createElement(
@@ -480,7 +499,7 @@ var LocationField = (_temp = _class = function (_Component) {
                   _react2.default.createElement(_locationIcon2.default, { type: type })
                 ),
                 textControl,
-                showClearButton && clearButton
+                clearButton
               )
             )
           ),
@@ -519,7 +538,7 @@ var LocationField = (_temp = _class = function (_Component) {
                 menuItems
               ),
               textControl,
-              showClearButton && clearButton
+              clearButton
             )
           )
         );
