@@ -75,6 +75,10 @@ var LocationField = (_temp = _class = function (_Component) {
           boundary = _this$props$config$ge.boundary,
           focusPoint = _this$props$config$ge.focusPoint;
 
+      if (!text) {
+        console.warn('No text entry provided for geocode autocomplete search.');
+        return;
+      }
       (0, _isomorphicMapzenSearch.autocomplete)({
         apiKey: MAPZEN_KEY,
         boundary: boundary,
@@ -98,6 +102,7 @@ var LocationField = (_temp = _class = function (_Component) {
         geocodedFeatures: []
       });
       _reactDom2.default.findDOMNode(_this.formControl).focus();
+      _this._onTextInputClick();
     };
 
     _this._onDropdownToggle = function (v, e) {
@@ -107,16 +112,21 @@ var LocationField = (_temp = _class = function (_Component) {
       _this.setState({ menuVisible: menuVisible });
     };
 
-    _this._onTextInputBlur = function () {
-      return _this.setState({ menuVisible: false });
+    _this._onBlurFormGroup = function (e) {
+      // Only hide menu if the target clicked is not a menu item in the
+      // dropdown. Otherwise, the click will not "finish" and the menu
+      // will hide without the user having made a selection.
+      if (!e.relatedTarget || e.relatedTarget.getAttribute('role') !== 'menuitem') {
+        _this.setState({ menuVisible: false });
+      }
     };
 
     _this._onTextInputChange = function (evt) {
-      _this.setState({ value: evt.target.value });
+      _this.setState({ value: evt.target.value, menuVisible: true });
       _this._geocodeAutocomplete(evt.target.value);
     };
 
-    _this._onTextInputFocus = function () {
+    _this._onTextInputClick = function () {
       var _this$props = _this.props,
           config = _this$props.config,
           currentPosition = _this$props.currentPosition,
@@ -135,7 +145,6 @@ var LocationField = (_temp = _class = function (_Component) {
     };
 
     _this._onKeyDown = function (evt) {
-      var isStatic = _this.props.static;
       var _this$state = _this.state,
           activeIndex = _this$state.activeIndex,
           menuVisible = _this$state.menuVisible;
@@ -145,9 +154,9 @@ var LocationField = (_temp = _class = function (_Component) {
         case 'ArrowDown':
           // Suppress default 'ArrowDown' behavior which moves cursor to end
           evt.preventDefault();
-          if (!menuVisible && !isStatic) {
+          if (!menuVisible) {
             // If the menu is not visible, simulate a text input click to show it.
-            return _this._onTextInputFocus();
+            return _this._onTextInputClick();
           }
           if (activeIndex === _this.menuItemCount - 1) {
             return _this.setState({ activeIndex: null });
@@ -465,10 +474,10 @@ var LocationField = (_temp = _class = function (_Component) {
         className: this._getFormControlClassname(),
         type: 'text',
         value: this.state.value,
-        placeholder: placeholder,
-        onBlur: this._onTextInputBlur,
-        onChange: this._onTextInputChange,
-        onFocus: this._onTextInputFocus,
+        placeholder: placeholder
+        // onBlur={this._onTextInputBlur}
+        , onChange: this._onTextInputChange,
+        onClick: this._onTextInputClick,
         onKeyDown: this._onKeyDown
       });
 
@@ -476,14 +485,22 @@ var LocationField = (_temp = _class = function (_Component) {
       // or if the input field has text.
       var clearButton = showClearButton && (location || this.state.value) ? _react2.default.createElement(
         _reactBootstrap.InputGroup.Addon,
-        { onClick: this._onClearButtonClick },
-        _react2.default.createElement('i', { className: 'fa fa-times' })
+        null,
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          {
+            bsStyle: 'link',
+            className: 'clear-button',
+            onClick: this._onClearButtonClick },
+          _react2.default.createElement('i', { className: 'fa fa-times' })
+        )
       ) : null;
       if (isStatic) {
         // 'static' mode (menu is displayed alongside input, e.g., for mobile view)
         return _react2.default.createElement(
           'div',
-          { className: 'location-field static' },
+          {
+            className: 'location-field static' },
           _react2.default.createElement(
             'form',
             null,
@@ -521,7 +538,9 @@ var LocationField = (_temp = _class = function (_Component) {
           null,
           _react2.default.createElement(
             _reactBootstrap.FormGroup,
-            { className: 'location-field' },
+            {
+              onBlur: this._onBlurFormGroup,
+              className: 'location-field' },
             _react2.default.createElement(
               _reactBootstrap.InputGroup,
               null,

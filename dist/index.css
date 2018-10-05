@@ -2463,7 +2463,7 @@
   margin-bottom: 6px;
 }.otp .map-overlay-popup .popup-row {
   margin-top: 6px;
-}.otp .location-field.static .dropdown-menu {
+}/* Location field */.otp .location-field.static .dropdown-menu {
   position: static;
   display: block;
   border: none;
@@ -2473,7 +2473,17 @@
   color: white;
   padding: 2px 3px 0px;
   margin-right: 5px;
-}.otp .plan-trip-button, .view-results-button {
+}/* .otp .location-field .input-group-addon {
+  border: none;
+  background: none;
+  cursor: pointer;
+} */.otp .location-field .clear-button {
+  border: none;
+  background: none;
+  color: #888;
+  margin: 0;
+  padding: 0px 5px;
+}/* Plan trip button */.otp .plan-trip-button, .view-results-button {
   width: 100%;
 }/* Date/Time Preview */.otp .date-time-preview {
   position: relative;
@@ -2485,6 +2495,16 @@
   margin-bottom: 20px;
 }.otp .date-time-modal .button-row .selected {
   background-color: #ccc;
+}/* switch button */.otp .switch-button-container {
+  position: absolute;
+  top: 32px;
+  right: 45px;
+  z-index: 100000;
+}.otp .switch-button-container-mobile {
+  position: absolute;
+  top: 78px;
+  right: 45px;
+  z-index: 100000;
 }/* Settings Preview */.otp .settings-preview {
   position: relative;
 }.otp .settings-preview.compressed .selected-modes {
