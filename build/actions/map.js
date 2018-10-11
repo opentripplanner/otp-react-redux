@@ -95,7 +95,8 @@ function setLocationToCurrent(payload) {
     payload.location = {
       lat: currentPosition.coords.latitude,
       lon: currentPosition.coords.longitude,
-      name: '(Current Location)'
+      name: '(Current Location)',
+      category: 'CURRENT_LOCATION'
     };
     dispatch(settingLocation(payload));
     dispatch((0, _form.formChanged)());

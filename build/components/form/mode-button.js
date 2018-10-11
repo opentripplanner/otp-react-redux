@@ -62,7 +62,7 @@ var ModeButton = (_temp = _class = function (_Component) {
           {
             className: 'mode-button',
             onClick: onClick,
-            title: mode,
+            title: label,
             style: { borderColor: buttonColor }
           },
           _react2.default.createElement(

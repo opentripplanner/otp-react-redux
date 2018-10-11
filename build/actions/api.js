@@ -209,16 +209,16 @@ function constructRoutingQuery(otpState, ignoreRealtimeUpdates) {
     }
   }
 
-  // hack to add walking to driving/TNC trips
-  if ((0, _itinerary.hasCar)(params.mode)) {
-    params.mode += ',WALK';
-  }
-
   // TODO: check that valid from/to locations are provided
 
   // FIXME: This is only performed when ignoring realtimeupdates currently, just
   // to ensure it is not repeated twice.
   if (ignoreRealtimeUpdates) (0, _query.updateOtpUrlParams)(params);
+
+  // hack to add walking to driving/TNC trips
+  if ((0, _itinerary.hasCar)(params.mode)) {
+    params.mode += ',WALK';
+  }
 
   return planEndpoint + '?' + _qs2.default.stringify(params);
 }

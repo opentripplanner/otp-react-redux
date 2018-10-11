@@ -48,6 +48,10 @@ var _icon = require('../narrative/icon');
 
 var _icon2 = _interopRequireDefault(_icon);
 
+var _locationIcon = require('../icons/location-icon');
+
+var _locationIcon2 = _interopRequireDefault(_locationIcon);
+
 var _ui = require('../../actions/ui');
 
 var _api = require('../../actions/api');
@@ -121,8 +125,15 @@ var StopViewer = (_temp2 = _class = function (_Component) {
           stopData = _props.stopData,
           hideBackButton = _props.hideBackButton;
 
-      // construct a lookup table mapping routeId (e.g. 'MyAgency:10') to an array of stoptimes
+      // Rewrite stop ID to not include Agency prefix, if present
+      // TODO: make this functionality configurable?
 
+      var stopId = void 0;
+      if (stopData && stopData.id) {
+        stopId = stopData.id.includes(':') ? stopData.id.split(':')[1] : stopData.id;
+      }
+
+      // construct a lookup table mapping routeId (e.g. 'MyAgency:10') to an array of stoptimes
       var stopTimesByRoute = {};
       if (stopData && stopData.routes && stopData.stopTimes) {
         stopData.stopTimes.forEach(function (patternTimes) {
@@ -187,7 +198,7 @@ var StopViewer = (_temp2 = _class = function (_Component) {
                 'Stop ID'
               ),
               ': ',
-              stopData.id
+              stopId
             ),
             _react2.default.createElement(
               'b',
@@ -195,7 +206,7 @@ var StopViewer = (_temp2 = _class = function (_Component) {
               'Plan a trip:'
             ),
             ' ',
-            _react2.default.createElement(_icon2.default, { type: 'dot-circle-o' }),
+            _react2.default.createElement(_locationIcon2.default, { type: 'from' }),
             ' ',
             _react2.default.createElement(
               'button',
@@ -206,7 +217,7 @@ var StopViewer = (_temp2 = _class = function (_Component) {
             ' ',
             '|',
             ' ',
-            _react2.default.createElement(_icon2.default, { type: 'map-marker' }),
+            _react2.default.createElement(_locationIcon2.default, { type: 'to' }),
             ' ',
             _react2.default.createElement(
               'button',

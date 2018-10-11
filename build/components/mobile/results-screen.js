@@ -54,6 +54,10 @@ var _realtimeAnnotation = require('../narrative/realtime-annotation');
 
 var _realtimeAnnotation2 = _interopRequireDefault(_realtimeAnnotation);
 
+var _locationIcon = require('../icons/location-icon');
+
+var _locationIcon2 = _interopRequireDefault(_locationIcon);
+
 var _container = require('./container');
 
 var _container2 = _interopRequireDefault(_container);
@@ -133,14 +137,14 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'location' },
-            _react2.default.createElement('i', { className: 'fa fa-map-marker' }),
+            _react2.default.createElement(_locationIcon2.default, { type: 'from' }),
             ' ',
             query.from ? query.from.name : ''
           ),
           _react2.default.createElement(
             'div',
             { className: 'location', style: { marginTop: '2px' } },
-            _react2.default.createElement('i', { className: 'fa fa-dot-circle-o' }),
+            _react2.default.createElement(_locationIcon2.default, { type: 'to' }),
             ' ',
             query.to ? query.to.name : ''
           )
@@ -151,7 +155,7 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
           _react2.default.createElement(
             _reactBootstrap.Button,
             {
-              className: 'edit-search-button',
+              className: 'edit-search-button pull-right',
               onClick: this._editSearchClicked
             },
             'Edit'

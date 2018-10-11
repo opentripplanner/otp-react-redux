@@ -26,6 +26,8 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class, _temp, _class2, _temp3;
 
+var _leaflet = require('leaflet');
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -169,7 +171,6 @@ var StopMarker = (_temp3 = _class2 = function (_Component) {
     key: 'render',
     value: function render() {
       var _props2 = this.props,
-          mobileView = _props2.mobileView,
           setLocation = _props2.setLocation,
           stop = _props2.stop;
       var id = stop.id,
@@ -178,16 +179,20 @@ var StopMarker = (_temp3 = _class2 = function (_Component) {
           lon = stop.lon;
 
       var idArr = id.split(':');
+      var radius = 20;
+      var half = radius / 2;
+      var quarter = radius / 4;
+      var html = '<div class="stop-overlay-icon" style="height: ' + half + 'px; width: ' + half + 'px; margin-left: ' + quarter + 'px; margin-top: ' + quarter + 'px;" />';
+      var icon = (0, _leaflet.divIcon)({
+        html: html,
+        className: 'stop-overlay-bg',
+        iconSize: radius
+      });
       return _react2.default.createElement(
-        _reactLeaflet.CircleMarker,
+        _reactLeaflet.Marker,
         {
-          key: id,
-          center: [lat, lon],
-          radius: mobileView ? 10 : 4,
-          fillOpacity: 1,
-          fillColor: '#fff',
-          color: '#000',
-          weight: 1.5
+          position: [lat, lon],
+          icon: icon
         },
         _react2.default.createElement(
           _reactLeaflet.Popup,
