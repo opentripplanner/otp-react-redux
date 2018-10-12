@@ -18,15 +18,17 @@
 
 /* PREVENT BOUNCE SCROLL ON iOS */
 @supports (-webkit-overflow-scrolling: touch) {
-  /* Fix this body and html to prevent bounce */
-  html,
-  body {
+  /* Fix the body and html to prevent bounce (only if print-view is not active) */
+  html:not(.print-view),
+  html:not(.print-view) body {
     position: fixed;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
   }
-  /* Modify the root/main div to permit normal scrolling behavior */
-  #root, #main {
+  /* Modify the root/main div to permit normal scrolling behavior (only if
+  print-view is not active) */
+  html:not(.print-view) #root,
+  html:not(.print-view) #main {
     width: 100vw;
     height: 100vh;
     -webkit-overflow-scrolling: touch;
