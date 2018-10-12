@@ -16,18 +16,21 @@
 
 @import url(lib/bike-rental.css);
 
-/* PREVENT BOUNCE SCROLL ON OSX */
-/* Fix this body and html to prevent bounce */
-html,
-body {
-  position: fixed;
-  overflow: hidden;
-}
-/* Modify the root/main div to permit normal scrolling behavior */
-#root, #main {
-  width: 100vw;
-  height: 100vh;
-  -webkit-overflow-scrolling: touch;
+/* PREVENT BOUNCE SCROLL ON iOS */
+@supports (-webkit-overflow-scrolling: touch) {
+  /* Fix this body and html to prevent bounce */
+  html,
+  body {
+    position: fixed;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  /* Modify the root/main div to permit normal scrolling behavior */
+  #root, #main {
+    width: 100vw;
+    height: 100vh;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* Buttons */
