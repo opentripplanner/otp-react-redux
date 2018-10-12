@@ -2384,22 +2384,15 @@
   border: none;
 }.app-menu .btn-default:hover {
   color: #ddd;
-}/* PrintLayout styles */.otp .print-layout-container {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: auto;
-}.otp .print-layout {
+}/* PrintLayout styles */.otp.print-layout {
   max-width: 640px;
   margin: 30px auto;
-}.otp .print-layout > .header {
+}.otp.print-layout > .header {
   margin-bottom: 30px;
   border-bottom: 4px solid black;
   font-size: 36px;
   font-weight: 600;
-}.otp .print-layout > .map-container {
+}.otp.print-layout > .map-container {
   border: 2px solid black;
   height: 400px;
   margin-bottom: 30px;
@@ -3049,6 +3042,11 @@
 }.otp .stop-viewer .route-row .trip-table {
   border-top: 1px solid gray;
   padding: 8px;
+}.otp .stop-viewer .trip-table-header-row {
+  font-size: 11px;
+  color: gray;
+  /* height needed for IE display */
+  height: 14px;
 }.otp .stop-viewer .route-row .trip-table-column-header {
   float: right;
   width: 80px;
@@ -3162,14 +3160,22 @@
   background-image: url("data:image/svg+xml;base64,PHN2ZyBpZD0id2hpdGVfYmciIGRhdGEtbmFtZT0id2hpdGUgYmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDgyLjUgOTQuNyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fS5jbHMtMntmaWxsOiNmZjJkMjk7fS5jbHMtM3tmaWxsOiMzMzM7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5odWItOTwvdGl0bGU+PGNpcmNsZSBjbGFzcz0iY2xzLTEiIGN4PSI0MS4yNSIgY3k9IjQxLjIiIHI9IjM4LjE4Ii8+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjQxLjI1IDgwLjI4IDQxLjIgNDYuMzEgNDUuMjQgNDUuODcgNjYuNDMgNzEuMzIgNDEuMjUgODAuMjgiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iNjYuMzkgNzEgNDQuNDQgNDUuMDYgNDcuMjQgNDIuMTMgNzkuODYgNDcuOTEgNjYuMzkgNzEiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iNzkuNDMgNDguMjggNDUuOTcgNDIuMzggNDYuMjUgMzguMzMgNzUuMDIgMjEuOTIgNzkuNDMgNDguMjgiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iNzUuMjQgMjEuOTIgNDUuNjcgMzguNjYgNDMuMzEgMzUuMzYgNTUuMDYgNC4zOSA3NS4yNCAyMS45MiIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSI1NC41NSA0LjY5IDQyLjg2IDM2LjU5IDM4LjkyIDM1LjYgMjcuODMgNC4zOSA1NC41NSA0LjY5Ii8+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjQxLjEgODAuMDcgNDEuMTUgNDYuMDkgMzcuMTEgNDUuNjUgMTUuOTIgNzEuMTEgNDEuMSA4MC4wNyIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxNS45NiA3MC43OCAzNy45MSA0NC44NSAzNS4xMSA0MS45MSAyLjQ5IDQ3LjY5IDE1Ljk2IDcwLjc4Ii8+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjIuOTIgNDguMDcgMzYuMzggNDIuMTcgMzYuMSAzOC4xMiA3LjMzIDIxLjcgMi45MiA0OC4wNyIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSI3LjExIDIxLjcxIDM2LjY4IDM4LjQ1IDM5LjA0IDM1LjE1IDI3LjI5IDQuMTggNy4xMSAyMS43MSIvPjxwYXRoIGNsYXNzPSJjbHMtMyIgZD0iTTgzLjQsNDNBNDEuMjUsNDEuMjUsMCwxLDAsMjkuNSw4Mi4zTDQzLjQsOTYuNSw1NS4zLDgyLjFBNDEuMjksNDEuMjksMCwwLDAsODMuNCw0M1pNNjUuNyw3MC42TDQ2LjUsNDcuN2E2LDYsMCwwLDAsMS44LTMuMmwyOS40LDUuMkEzNi4zMywzNi4zMywwLDAsMSw2NS43LDcwLjZaTTYuNSw0OS43bDI5LjQtNS4yYTYuODMsNi44MywwLDAsMCwxLjgsMy4yTDE4LjUsNzAuNkEzNi4zMywzNi4zMywwLDAsMSw2LjUsNDkuN1pNNS45LDQzYTM1LjgyLDM1LjgyLDAsMCwxLDQuNy0xNy44TDM2LjQsNDAuMWE1LjkyLDUuOTIsMCwwLDAtLjcsMi45djAuN0w2LjMsNDlBMzkuNDUsMzkuNDUsMCwwLDEsNS45LDQzWk0yOS40LDkuMWwxMC4yLDI4YTYsNiwwLDAsMC0yLjgsMi40TDEwLjksMjQuNkEzNi42MiwzNi42MiwwLDAsMSwyOS40LDkuMVpNNDIuMSw2LjhhMzQsMzQsMCwwLDEsMTIsMi4xbC0xMC4yLDI4YTUuNjYsNS42NiwwLDAsMC0xLjgtLjMsNS4yMyw1LjIzLDAsMCwwLTEuOC4zTDMwLjEsOC45QTM0LDM0LDAsMCwxLDQyLjEsNi44Wk03My4zLDI0LjZMNDcuNSwzOS41YTcuMiw3LjIsMCwwLDAtMi44LTIuNGwxMC4yLTI4QTM2LjgsMzYuOCwwLDAsMSw3My4zLDI0LjZaTTE5LjEsNzFMMzguMyw0OC4xYTcuMDksNy4wOSwwLDAsMCwzLjUsMS4zVjc5LjJBMzUuNDQsMzUuNDQsMCwwLDEsMTkuMSw3MVptMjMuNCw4LjNWNDkuNEE2LjI1LDYuMjUsMCwwLDAsNDYsNDguMUw2NS4xLDcxQTM2LDM2LDAsMCwxLDQyLjUsNzkuM1ptNi0zNS41VjQzLjFhNy4yNyw3LjI3LDAsMCwwLS43LTIuOUw3My42LDI1LjNhMzUuODIsMzUuODIsMCwwLDEsNC43LDE3LjgsMzguMDgsMzguMDgsMCwwLDEtLjUsNS45WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuOSAtMS44KSIvPjwvc3ZnPg==");
 }.bike-rental-out-of-hub {
   background-image: url("data:image/svg+xml;base64,PHN2ZyBpZD0ic3ZnNDYxOSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTUgMTcuMTQiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZjk0YTE1O308L3N0eWxlPjwvZGVmcz48dGl0bGU+YmlrZXNoYXJlX291dF9vZl9odWI8L3RpdGxlPjxwYXRoIGlkPSJjaXJjbGU0NjA0IiBjbGFzcz0iY2xzLTEiIGQ9Ik0xMS42OSwxLjM4YTEsMSwwLDEsMCwxLDFBMSwxLDAsMCwwLDExLjY5LDEuMzhabS0xLjg2LDJhMC41LDAuNSwwLDAsMC0uMzUuMTRMNi44NCw2YTAuNSwwLjUsMCwwLDAsMCwuNzZsMS44LDEuMzV2Mi43NWEwLjUsMC41LDAsMSwwLDEsMHYtM2EwLjUsMC41LDAsMCwwLS4yLTAuNEw4LjcyLDYuOWwxLjgyLTEuNzIsMC43NSwxYTAuNSwwLjUsMCwwLDAsLjQuMmgxLjVhMC41LDAuNSwwLDEsMCwwLTFIMTEuOTRsLTAuNzUtMS0wLjYtLjhhMC41LDAuNSwwLDAsMC0uMzgtMC4yMUg5LjgzWm0tNS4xNCw0YTMsMywwLDEsMCwzLDNBMywzLDAsMCwwLDQuNjksNy4zOFptOSwwYTMsMywwLDEsMCwzLDNBMywzLDAsMCwwLDEzLjY5LDcuMzhabS05LDFhMiwyLDAsMSwxLTIsMkEyLDIsMCwwLDEsNC42OSw4LjM4Wm05LDBhMiwyLDAsMSwxLTIsMkEyLDIsMCwwLDEsMTMuNjksOC4zOFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjY5IC0xLjM4KSIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIzLjMgMTIuOTQgNy41IDE3LjE0IDExLjcgMTIuOTQgMy4zIDEyLjk0Ii8+PC9zdmc+");
-}/* PREVENT BOUNCE SCROLL ON OSX *//* Fix this body and html to prevent bounce */html,
-body {
-  position: fixed;
-  overflow: hidden;
-}/* Modify the root/main div to permit normal scrolling behavior */#root, #main {
-  width: 100vw;
-  height: 100vh;
-  -webkit-overflow-scrolling: touch;
+}/* PREVENT BOUNCE SCROLL ON iOS */@supports (-webkit-overflow-scrolling: touch) {
+  /* Fix the body and html to prevent bounce (only if print-view is not active) */
+  html:not(.print-view),
+  html:not(.print-view) body {
+    position: fixed;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  /* Modify the root/main div to permit normal scrolling behavior (only if
+  print-view is not active) */
+  html:not(.print-view) #root,
+  html:not(.print-view) #main {
+    width: 100vw;
+    height: 100vh;
+    -webkit-overflow-scrolling: touch;
+  }
 }/* Buttons */button.header, button.step, .clear-button-formatting  {
   background: inherit;
   color: inherit;

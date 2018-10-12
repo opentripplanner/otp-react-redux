@@ -57,7 +57,15 @@ var ParkAndRideOverlay = (_temp = _class = function (_MapLayer) {
   (0, _createClass3.default)(ParkAndRideOverlay, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.props.parkAndRideQuery();
+      var params = {};
+      var prConfig = this.props.prConfig;
+
+      if (prConfig.maxTransitDistance) {
+        params['maxTransitDistance'] = prConfig.maxTransitDistance;
+      }
+      // TODO: support config-defined bounding envelope
+
+      this.props.parkAndRideQuery(params);
     }
   }, {
     key: 'componentWillUnmount',
@@ -138,7 +146,8 @@ var ParkAndRideOverlay = (_temp = _class = function (_MapLayer) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    locations: state.otp.overlay.parkAndRide && state.otp.overlay.parkAndRide.locations
+    locations: state.otp.overlay.parkAndRide && state.otp.overlay.parkAndRide.locations,
+    prConfig: state.otp.config.map.parkAndRideOverlay
   };
 };
 

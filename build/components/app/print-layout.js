@@ -92,6 +92,29 @@ var PrintLayout = (_temp = _class = function (_Component) {
         this.props.parseUrlQueryString(location.search);
       }
     }
+
+    /**
+     * Add print-view class to html tag to ensure that iOS scroll fix only applies
+     * to non-print views.
+     */
+
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var root = document.getElementsByTagName('html')[0];
+      root.setAttribute('class', 'print-view');
+    }
+
+    /**
+     * Remove class attribute from html tag on clean up.
+     */
+
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      var root = document.getElementsByTagName('html')[0];
+      root.removeAttribute('class');
+    }
   }, {
     key: 'render',
     value: function render() {
@@ -101,48 +124,40 @@ var PrintLayout = (_temp = _class = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'otp' },
+        { className: 'otp print-layout' },
         _react2.default.createElement(
           'div',
-          { className: 'print-layout-container' },
+          { className: 'header' },
           _react2.default.createElement(
             'div',
-            { className: 'print-layout' },
+            { style: { float: 'right' } },
             _react2.default.createElement(
-              'div',
-              { className: 'header' },
-              _react2.default.createElement(
-                'div',
-                { style: { float: 'right' } },
-                _react2.default.createElement(
-                  _reactBootstrap.Button,
-                  { bsSize: 'small', onClick: this._toggleMap },
-                  _react2.default.createElement('i', { className: 'fa fa-map' }),
-                  ' Toggle Map'
-                ),
-                ' ',
-                _react2.default.createElement(
-                  _reactBootstrap.Button,
-                  { bsSize: 'small', onClick: this._print },
-                  _react2.default.createElement('i', { className: 'fa fa-print' }),
-                  ' Print'
-                )
-              ),
-              'Itinerary'
+              _reactBootstrap.Button,
+              { bsSize: 'small', onClick: this._toggleMap },
+              _react2.default.createElement('i', { className: 'fa fa-map' }),
+              ' Toggle Map'
             ),
-            this.state.mapVisible && _react2.default.createElement(
-              'div',
-              { className: 'map-container' },
-              _react2.default.createElement(
-                _baseMap2.default,
-                null,
-                _react2.default.createElement(_transitiveOverlay2.default, null),
-                _react2.default.createElement(_endpointsOverlay2.default, null)
-              )
-            ),
-            itinerary && _react2.default.createElement(_printableItinerary2.default, { itinerary: itinerary, companies: companies })
+            ' ',
+            _react2.default.createElement(
+              _reactBootstrap.Button,
+              { bsSize: 'small', onClick: this._print },
+              _react2.default.createElement('i', { className: 'fa fa-print' }),
+              ' Print'
+            )
+          ),
+          'Itinerary'
+        ),
+        this.state.mapVisible && _react2.default.createElement(
+          'div',
+          { className: 'map-container' },
+          _react2.default.createElement(
+            _baseMap2.default,
+            null,
+            _react2.default.createElement(_transitiveOverlay2.default, null),
+            _react2.default.createElement(_endpointsOverlay2.default, null)
           )
-        )
+        ),
+        itinerary && _react2.default.createElement(_printableItinerary2.default, { itinerary: itinerary, companies: companies })
       );
     }
   }]);

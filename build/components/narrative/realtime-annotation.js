@@ -53,9 +53,13 @@ var RealtimeAnnotation = (_temp = _class = function (_Component) {
           realtimeEffects = _props.realtimeEffects,
           toggleRealtime = _props.toggleRealtime,
           useRealtime = _props.useRealtime;
+      // Keep only the unique route IDs (so that duplicates are not listed).
+
+      var filteredRoutes = realtimeEffects.normalRoutes.filter(function (routeId, index, self) {
+        return self.indexOf(routeId) === index;
+      });
       // FIXME: there are some weird css things happening in desktop vs. mobile,
       // so I removed the divs with classNames and opted for h4 and p for now
-
       var innerContent = _react2.default.createElement(
         'div',
         { className: 'realtime-alert' },
@@ -84,7 +88,7 @@ var RealtimeAnnotation = (_temp = _class = function (_Component) {
               ),
               'using the following routes:',
               ' ',
-              realtimeEffects.normalRoutes.map(function (route, idx) {
+              filteredRoutes.map(function (route, idx) {
                 return _react2.default.createElement(
                   'span',
                   { key: idx },
@@ -93,7 +97,7 @@ var RealtimeAnnotation = (_temp = _class = function (_Component) {
                     null,
                     route
                   ),
-                  realtimeEffects.normalRoutes.length - 1 > idx && ', '
+                  filteredRoutes.length - 1 > idx && ', '
                 );
               }),
               '.'

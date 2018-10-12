@@ -145,7 +145,6 @@ function getRealtimeEffects(otpState) {
   var normalDuration = isAffectedByRealtimeData && nonRealtimeItineraries ? nonRealtimeItineraries[0].duration : 0;
 
   var realtimeDuration = isAffectedByRealtimeData && realtimeItineraries ? realtimeItineraries[0].duration : 0;
-
   return {
     isAffectedByRealtimeData: isAffectedByRealtimeData,
     normalRoutes: normalRoutes,
@@ -154,6 +153,16 @@ function getRealtimeEffects(otpState) {
     normalDuration: normalDuration,
     realtimeDuration: realtimeDuration,
     exceedsThreshold: Math.abs(normalDuration - realtimeDuration) >= otpState.config.realtimeEffectsDisplayThreshold
+    // // TESTING: Return this instead to simulate a realtime-affected itinerary.
+    // return {
+    //   isAffectedByRealtimeData: true,
+    //   normalRoutes: ['10', '2', '10'],
+    //   realtimeRoutes: ['1', '2'],
+    //   routesDiffer: true,
+    //   normalDuration: 1000,
+    //   realtimeDuration: 800,
+    //   exceedsThreshold: true
+    // }
   };
 }
 

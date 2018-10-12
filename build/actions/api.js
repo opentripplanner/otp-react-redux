@@ -9,6 +9,10 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
 var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
@@ -229,7 +233,13 @@ var parkAndRideError = exports.parkAndRideError = (0, _reduxActions.createAction
 var parkAndRideResponse = exports.parkAndRideResponse = (0, _reduxActions.createAction)('PARK_AND_RIDE_RESPONSE');
 
 function parkAndRideQuery(params) {
-  return createQueryAction('park_and_ride', parkAndRideResponse, parkAndRideError);
+  var endpoint = 'park_and_ride';
+  if (params && (0, _keys2.default)(params).length > 0) {
+    endpoint += '?' + (0, _keys2.default)(params).map(function (key) {
+      return key + '=' + params[key];
+    }).join('&');
+  }
+  return createQueryAction(endpoint, parkAndRideResponse, parkAndRideError);
 }
 
 // bike rental station query

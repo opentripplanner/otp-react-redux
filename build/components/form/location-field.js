@@ -113,10 +113,10 @@ var LocationField = (_temp = _class = function (_Component) {
     };
 
     _this._onBlurFormGroup = function (e) {
-      // Only hide menu if the target clicked is not a menu item in the
-      // dropdown. Otherwise, the click will not "finish" and the menu
-      // will hide without the user having made a selection.
-      if (!e.relatedTarget || e.relatedTarget.getAttribute('role') !== 'menuitem') {
+      // IE does not use relatedTarget, so this check handles cross-browser support.
+      // see https://stackoverflow.com/a/49325196/915811
+      var target = e.relatedTarget !== null ? e.relatedTarget : document.activeElement;
+      if (!target || target.getAttribute('role') !== 'menuitem') {
         _this.setState({ menuVisible: false });
       }
     };
@@ -297,6 +297,12 @@ var LocationField = (_temp = _class = function (_Component) {
     value: function _getFormControlClassname() {
       return this.props.type + '-form-control';
     }
+    /**
+     * Only hide menu if the target clicked is not a menu item in the dropdown.
+     * Otherwise, the click will not "finish" and the menu will hide without the
+     * user having made a selection.
+     */
+
   }, {
     key: '_setLocation',
     value: function _setLocation(location) {

@@ -322,7 +322,7 @@ var RouteRow = function (_Component2) {
             { className: 'trip-table' },
             _react2.default.createElement(
               'div',
-              { style: { fontSize: '11px', color: 'gray' } },
+              { className: 'trip-table-header-row' },
               _react2.default.createElement(
                 'div',
                 { className: 'trip-table-column-header' },
