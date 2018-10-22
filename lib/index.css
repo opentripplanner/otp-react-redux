@@ -62,9 +62,9 @@ button.header, button.step {
 }
 
 .otp .from-location-icon {
-  color: #f5a81c;
+  color: #333;
 }
 
 .otp .to-location-icon {
-  color: #8ec449;
+  color: #f44256;
 }
