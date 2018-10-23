@@ -171,7 +171,7 @@
   text-align: center;
 }
 
-.otp .modes-panel .mode-group-row .mode-button:hover {
+.otp .modes-panel .mode-group-row .mode-button.enabled:hover {
   background-color: #f8f8f8;
 }
 
