@@ -64,65 +64,6 @@ var TransportationNetworkCompanyLeg = (_temp2 = _class = function (_Component) {
   }
 
   (0, _createClass3.default)(TransportationNetworkCompanyLeg, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this._resolveTncData(this.props, true);
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      this._resolveTncData(nextProps);
-    }
-  }, {
-    key: '_resolveTncData',
-    value: function _resolveTncData(props, isMounting) {
-      var companies = props.companies,
-          getTransportationNetworkCompanyEtaEstimate = props.getTransportationNetworkCompanyEtaEstimate,
-          getTransportationNetworkCompanyRideEstimate = props.getTransportationNetworkCompanyRideEstimate,
-          leg = props.leg,
-          tncData = props.tncData;
-
-      var from = getTNCLocation(leg, 'from');
-      var to = getTNCLocation(leg, 'to');
-      var rideType = defaultTncRideTypes[companies];
-      var now = new Date().getTime();
-
-      var stateUpdate = {
-        eta: null,
-        rideEstimate: null
-      };
-
-      var hasTncEtaData = tncData.etaEstimates[from] && tncData.etaEstimates[from][companies] && tncData.etaEstimates[from][companies][rideType];
-
-      var tncEtaDataIsValid = hasTncEtaData && tncData.etaEstimates[from][companies][rideType].estimateTimestamp.getTime() + 30000 > now;
-
-      if (hasTncEtaData && tncEtaDataIsValid) {
-        stateUpdate.eta = tncData.etaEstimates[from][companies][rideType];
-      } else if (isMounting || hasTncEtaData && !tncEtaDataIsValid) {
-        getTransportationNetworkCompanyEtaEstimate({
-          companies: companies, from: from
-        });
-      } else {
-        stateUpdate.noEtaEstimateAvailable = true;
-      }
-
-      var hasTncRideData = tncData.rideEstimates[from] && tncData.rideEstimates[from][to] && tncData.rideEstimates[from][to][companies] && tncData.rideEstimates[from][to][companies][rideType];
-
-      var tncRideDataIsValid = hasTncRideData && tncData.rideEstimates[from][to][companies][rideType].estimateTimestamp.getTime() + 30000 > now;
-
-      if (hasTncRideData && tncRideDataIsValid) {
-        stateUpdate.rideEstimate = tncData.rideEstimates[from][to][companies][rideType];
-      } else if (isMounting || hasTncRideData && !tncRideDataIsValid) {
-        getTransportationNetworkCompanyRideEstimate({
-          company: companies, from: from, rideType: rideType, to: to
-        });
-      } else {
-        stateUpdate.noRideEstimateAvailable = true;
-      }
-
-      this.setState(stateUpdate);
-    }
-  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -135,11 +76,7 @@ var TransportationNetworkCompanyLeg = (_temp2 = _class = function (_Component) {
         'UBER': 'https://m.uber.com/' + ((0, _ui.isMobile)() ? 'ul/' : '') + '?client_id=' + UBER_CLIENT_ID + '&action=setPickup&pickup[latitude]=' + leg.from.lat + '&pickup[longitude]=' + leg.from.lon + '&pickup[nickname]=' + encodeURI(leg.from.name) + '&dropoff[latitude]=' + leg.to.lat + '&dropoff[longitude]=' + leg.to.lon + '&dropoff[nickname]=' + encodeURI(leg.to.name),
         'LYFT': 'https://lyft.com/ride?id=' + defaultTncRideTypes['LYFT'] + '&partner=' + LYFT_CLIENT_ID + '&pickup[latitude]=' + leg.from.lat + '&pickup[longitude]=' + leg.from.lon + '&destination[latitude]=' + leg.to.lat + '&destination[longitude]=' + leg.to.lon
       };
-      var _state = this.state,
-          eta = _state.eta,
-          noEtaEstimateAvailable = _state.noEtaEstimateAvailable,
-          noRideEstimateAvailable = _state.noRideEstimateAvailable,
-          rideEstimate = _state.rideEstimate;
+      var tncData = leg.tncData;
 
       return _react2.default.createElement(
         'div',
@@ -155,50 +92,34 @@ var TransportationNetworkCompanyLeg = (_temp2 = _class = function (_Component) {
             className: 'btn btn-default',
             href: universalLinks[legMode.label.toUpperCase()],
             style: { marginBottom: 15 },
-            target: (0, _ui.isMobile)() ? '_self' : '_blank'
-          },
+            target: (0, _ui.isMobile)() ? '_self' : '_blank' },
           'Book Ride'
         ),
-        !eta && !noEtaEstimateAvailable && _react2.default.createElement(
+        tncData && tncData.estimatedArrival ? _react2.default.createElement(
           'p',
           null,
-          'Getting eta estimate from ',
-          (0, _itinerary.toSentenceCase)(legMode.label),
-          '...'
-        ),
-        !eta && noEtaEstimateAvailable && _react2.default.createElement(
+          'ETA for a driver: ',
+          (0, _time.formatDuration)(tncData.estimatedArrival)
+        ) : _react2.default.createElement(
           'p',
           null,
           'Could not obtain eta estimate from ',
           (0, _itinerary.toSentenceCase)(legMode.label),
           '!'
         ),
-        eta && _react2.default.createElement(
+        tncData && tncData.minCost ? _react2.default.createElement(
           'p',
           null,
-          'ETA for a driver: ',
-          (0, _time.formatDuration)(eta.estimatedSeconds)
-        ),
-        !rideEstimate && !noRideEstimateAvailable && _react2.default.createElement(
-          'p',
-          null,
-          'Getting ride estimate from ',
-          (0, _itinerary.toSentenceCase)(legMode.label),
-          '...'
-        ),
-        !rideEstimate && noRideEstimateAvailable && _react2.default.createElement(
+          'Estimated cost: ',
+          _currencyFormatter2.default.format(tncData.minCost, { code: tncData.currency }) + ' - ' + _currencyFormatter2.default.format(tncData.maxCost, { code: tncData.currency })
+        ) : _react2.default.createElement(
           'p',
           null,
           'Could not obtain ride estimate from ',
           (0, _itinerary.toSentenceCase)(legMode.label),
           '!'
         ),
-        rideEstimate && _react2.default.createElement(
-          'p',
-          null,
-          'Estimated cost: ',
-          _currencyFormatter2.default.format(rideEstimate.minCost, { code: rideEstimate.currency }) + ' - ' + _currencyFormatter2.default.format(rideEstimate.maxCost, { code: rideEstimate.currency })
-        )
+        '}'
       );
     }
   }]);
@@ -208,11 +129,6 @@ var TransportationNetworkCompanyLeg = (_temp2 = _class = function (_Component) {
   legMode: _react.PropTypes.object
 }, _temp2);
 
-
-function getTNCLocation(leg, type) {
-  var location = leg[type];
-  return location.lat.toFixed(5) + ',' + location.lon.toFixed(5);
-}
 
 var defaultTncRideTypes = {
   'LYFT': 'lyft',

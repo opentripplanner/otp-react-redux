@@ -44,11 +44,17 @@ var _defaultItinerary = require('./default/default-itinerary');
 
 var _defaultItinerary2 = _interopRequireDefault(_defaultItinerary);
 
+var _icon = require('./icon');
+
+var _icon2 = _interopRequireDefault(_icon);
+
 var _state = require('../../util/state');
 
 var _realtimeAnnotation = require('./realtime-annotation');
 
 var _realtimeAnnotation2 = _interopRequireDefault(_realtimeAnnotation);
+
+var _itinerary = require('../../util/itinerary');
 
 var _time = require('../../util/time');
 
@@ -84,9 +90,11 @@ var TabbedItineraries = (_temp2 = _class = function (_Component) {
 
       var _props = this.props,
           activeItinerary = _props.activeItinerary,
+          companies = _props.companies,
           itineraries = _props.itineraries,
           itineraryClass = _props.itineraryClass,
           realtimeEffects = _props.realtimeEffects,
+          tnc = _props.tnc,
           useRealtime = _props.useRealtime;
 
       if (!itineraries) return null;
@@ -99,6 +107,20 @@ var TabbedItineraries = (_temp2 = _class = function (_Component) {
           { className: 'tab-row' },
           itineraries.map(function (itinerary, index) {
             var classNames = ['tab-button', 'clear-button-formatting'];
+
+            var _calculatePhysicalAct = (0, _itinerary.calculatePhysicalActivity)(itinerary),
+                caloriesBurned = _calculatePhysicalAct.caloriesBurned;
+
+            var _calculateFares = (0, _itinerary.calculateFares)(itinerary),
+                centsToString = _calculateFares.centsToString,
+                maxTNCFare = _calculateFares.maxTNCFare,
+                minTNCFare = _calculateFares.minTNCFare,
+                transitFare = _calculateFares.transitFare;
+            // TODO: support non-USD
+
+
+            var minTotalFare = minTNCFare * 100 + transitFare;
+            var plus = maxTNCFare && maxTNCFare > minTNCFare ? '+' : '';
             if (index === activeItinerary) classNames.push('selected');
             return _react2.default.createElement(
               _reactBootstrap.Button,
@@ -134,6 +156,14 @@ var TabbedItineraries = (_temp2 = _class = function (_Component) {
                   itinerary.transfers,
                   ' transfer',
                   itinerary.transfers > 1 ? 's' : ''
+                ),
+                _react2.default.createElement(
+                  'span',
+                  null,
+                  _react2.default.createElement('br', null),
+                  minTotalFare ? '' + centsToString(minTotalFare) + plus + ' ' : '',
+                  Math.round(caloriesBurned),
+                  ' Cal'
                 )
               )
             );
@@ -186,7 +216,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     activeLeg: activeSearch && activeSearch.activeLeg,
     activeStep: activeSearch && activeSearch.activeStep,
     useRealtime: useRealtime,
-    companies: state.otp.currentQuery.companies
+    companies: state.otp.currentQuery.companies,
+    tnc: state.otp.tnc
   };
 };
 

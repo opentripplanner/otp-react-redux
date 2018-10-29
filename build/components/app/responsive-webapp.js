@@ -140,16 +140,21 @@ var ResponsiveWebapp = (_temp = _class = function (_Component) {
       }
 
       // Ensure that driving modes are never selected alone
-      if (query.mode !== nextProps.query.mode && (0, _itinerary.hasCar)(nextProps.query.mode) && !(0, _itinerary.hasTransit)(nextProps.query.mode) && this.props.modeGroups) {
-        var newMode = nextProps.query.mode;
-        this.props.modeGroups.forEach(function (modeGroup) {
-          modeGroup.modes.forEach(function (mode) {
-            var modeStr = mode.mode || mode;
-            if ((0, _itinerary.isTransit)(modeStr)) newMode += ',' + modeStr;
-          });
-        });
-        this.props.setQueryParam({ mode: newMode });
-      }
+      /*if (
+        query.mode !== nextProps.query.mode &&
+        hasCar(nextProps.query.mode) &&
+        !hasTransit(nextProps.query.mode) &&
+        this.props.modeGroups
+      ) {
+        let newMode = nextProps.query.mode
+        this.props.modeGroups.forEach(modeGroup => {
+          modeGroup.modes.forEach(mode => {
+            const modeStr = mode.mode || mode
+            if (isTransit(modeStr)) newMode += ',' + modeStr
+          })
+        })
+        this.props.setQueryParam({ mode: newMode })
+      }*/
 
       // Check for any updates to tracked UI state properties and update URL as needed
       if (!(0, _lodash2.default)(this.props.uiUrlParams, nextProps.uiUrlParams)) {

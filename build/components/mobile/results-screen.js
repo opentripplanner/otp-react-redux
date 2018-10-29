@@ -72,6 +72,8 @@ var _narrative = require('../../actions/narrative');
 
 var _state = require('../../util/state');
 
+var _ui2 = require('../../util/ui');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MobileResultsScreen = (_temp = _class = function (_Component) {
@@ -101,6 +103,14 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
   }
 
   (0, _createClass3.default)(MobileResultsScreen, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      // Get the target element that we want to persist scrolling for
+      // FIXME Do we need to add something that removes the listeners when
+      // component unmounts?
+      (0, _ui2.enableScrollForSelector)('.mobile-narrative-container');
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,

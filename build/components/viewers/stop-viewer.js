@@ -139,11 +139,8 @@ var StopViewer = (_temp2 = _class = function (_Component) {
         stopData.stopTimes.forEach(function (patternTimes) {
           var routeId = patternTimes.pattern.id.split(':')[0] + ':' + patternTimes.pattern.id.split(':')[1];
           if (!(routeId in stopTimesByRoute)) stopTimesByRoute[routeId] = [];
-
-          var now = (0, _moment2.default)().diff((0, _moment2.default)().startOf('day'), 'seconds');
           var filteredTimes = patternTimes.times.filter(function (stopTime) {
-            var diff = stopTime.realtimeDeparture - now;
-            return diff >= 0 && diff < 14400;
+            return stopTime.stopIndex < stopTime.stopCount - 1; // ensure that this isn't the last stop
           });
           stopTimesByRoute[routeId] = stopTimesByRoute[routeId].concat(filteredTimes);
         });
@@ -276,10 +273,14 @@ var RouteRow = function (_Component2) {
       var sortedStopTimes = null;
       if (stopTimes) {
         sortedStopTimes = stopTimes.sort(function (a, b) {
-          if (a.realtimeDeparture < b.realtimeDeparture) return -1;
-          if (a.realtimeDeparture > b.realtimeDeparture) return 1;
+          var aTime = a.serviceDay + a.realtimeDeparture;
+          var bTime = b.serviceDay + b.realtimeDeparture;
+          if (aTime < bTime) return -1;
+          if (aTime > bTime) return 1;
           return 0;
         });
+        // Cap the number of times shown for any Route at 5. TODO: make configurable
+        if (sortedStopTimes.length > 0) sortedStopTimes = sortedStopTimes.slice(0, 5);
       }
 
       return _react2.default.createElement(
@@ -319,49 +320,52 @@ var RouteRow = function (_Component2) {
           { enter: { animation: 'slideDown' }, leave: { animation: 'slideUp' } },
           this.state.expanded && _react2.default.createElement(
             'div',
-            { className: 'trip-table' },
+            null,
             _react2.default.createElement(
               'div',
-              { className: 'trip-table-header-row' },
+              { className: 'trip-table' },
               _react2.default.createElement(
                 'div',
-                { className: 'trip-table-column-header' },
-                'STATUS'
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'trip-table-column-header' },
-                'DEPARTURE'
-              ),
-              _react2.default.createElement('div', { style: { clear: 'both ' } })
-            ),
-            stopTimes && sortedStopTimes.map(function (stopTime, i) {
-              return _react2.default.createElement(
-                'div',
-                { className: 'trip-row', style: { marginTop: 6, fontSize: 14 }, key: i },
+                { className: 'header' },
+                _react2.default.createElement('div', { className: 'cell' }),
                 _react2.default.createElement(
                   'div',
-                  { style: { float: 'right', width: 80 } },
-                  stopTime.realtimeState === 'UPDATED' ? getStatusLabel(stopTime.departureDelay) : _react2.default.createElement(
+                  { className: 'cell time-column' },
+                  'DEPARTURE'
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'cell status-column' },
+                  'STATUS'
+                )
+              ),
+              stopTimes && sortedStopTimes.map(function (stopTime, i) {
+                return _react2.default.createElement(
+                  'div',
+                  { className: 'trip-row', style: { display: 'table-row', marginTop: 6, fontSize: 14 }, key: i },
+                  _react2.default.createElement(
                     'div',
-                    { className: 'status-label', style: { backgroundColor: '#bbb' } },
-                    'Scheduled'
+                    { className: 'cell' },
+                    'To ',
+                    stopTime.headsign
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'cell time-column' },
+                    getFormattedStopTime(stopTime)
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'cell status-column' },
+                    stopTime.realtimeState === 'UPDATED' ? getStatusLabel(stopTime.departureDelay) : _react2.default.createElement(
+                      'div',
+                      { className: 'status-label', style: { backgroundColor: '#bbb' } },
+                      'Scheduled'
+                    )
                   )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { style: { float: 'right', width: 80 } },
-                  getFormattedStopTime(stopTime)
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { key: i },
-                  'To ',
-                  stopTime.headsign
-                ),
-                _react2.default.createElement('div', { style: { clear: 'both ' } })
-              );
-            })
+                );
+              })
+            )
           )
         )
       );
@@ -374,11 +378,36 @@ var RouteRow = function (_Component2) {
 
 
 function getFormattedStopTime(stopTime) {
+  var now = (0, _moment2.default)();
+  var serviceDay = (0, _moment2.default)(stopTime.serviceDay * 1000);
+  var currentTime = now.diff(now.clone().startOf('day'), 'seconds');
+  var differentDay = (0, _moment2.default)().date() !== serviceDay.date();
+
+  // Determine whether to show departure as countdown (e.g. "5 min") or as HH:MM time
+  var showCountdown = !differentDay && stopTime.realtimeDeparture - currentTime < 3600;
+
   return _react2.default.createElement(
-    'span',
+    'div',
     null,
-    stopTime.realtimeState === 'UPDATED' ? _react2.default.createElement(_icon2.default, { type: 'rss', style: { color: '#888', fontSize: '0.8em', marginRight: 2 } }) : _react2.default.createElement(_icon2.default, { type: 'clock-o', style: { color: '#888', fontSize: '0.8em', marginRight: 2 } }),
-    (0, _time.formatStopTime)(stopTime.realtimeDeparture)
+    _react2.default.createElement(
+      'div',
+      { style: { float: 'left' } },
+      stopTime.realtimeState === 'UPDATED' ? _react2.default.createElement(_icon2.default, { type: 'rss', style: { color: '#888', fontSize: '0.8em', marginRight: 2 } }) : _react2.default.createElement(_icon2.default, { type: 'clock-o', style: { color: '#888', fontSize: '0.8em', marginRight: 2 } })
+    ),
+    _react2.default.createElement(
+      'div',
+      { style: { marginLeft: 20, fontSize: differentDay ? 12 : 14 } },
+      differentDay && _react2.default.createElement(
+        'div',
+        { style: { marginBottom: -4 } },
+        serviceDay.format('dddd')
+      ),
+      _react2.default.createElement(
+        'div',
+        null,
+        showCountdown ? (0, _time.formatDuration)(stopTime.realtimeDeparture - currentTime) : (0, _time.formatStopTime)(stopTime.realtimeDeparture)
+      )
+    )
   );
 }
 

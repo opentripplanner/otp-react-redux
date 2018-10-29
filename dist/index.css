@@ -2527,7 +2527,10 @@
   padding-top: 14px;
 }.otp .settings-preview.wide .button-container {
   float: right;
-}/* Settings Selector Panel */.otp .settings-selector-panel .button-row {
+}/* Settings Selector Panel */.otp .settings-selector-panel .col-xs-3, .col-xs-4, .col-xs-12 {
+  padding-left: 5px;
+  padding-right: 5px;
+}.otp .settings-selector-panel .button-row {
   margin-bottom: 20px;
 }.otp .settings-selector-panel .button-row .selected {
   background-color: #ccc;
@@ -2546,18 +2549,18 @@
 }.otp .modes-panel .mode-group-row .group-icons {
 }.otp .modes-panel .mode-group-row .mode-button-container {
   display: inline-block;
-  width: 64px;
+  width: 100%;
   height: 72px;
-  margin-right: 10px;
   vertical-align: top;
   position: relative;
 }.otp .modes-panel .mode-group-row .mode-button {
   border: 1px solid gray;
   padding: 3px;
   border-radius: 3px;
-  width: 64px;
-  height: 48px
-}.otp .modes-panel .mode-group-row .mode-button:hover {
+  width: 100%;
+  height: 48px;
+  text-align: center;
+}.otp .modes-panel .mode-group-row .mode-button.enabled:hover {
   background-color: #f8f8f8;
 }.otp .modes-panel .mode-group-row .mode-check {
   position: absolute;
@@ -2566,9 +2569,6 @@
   width: 12px;
   height: 12px;
   font-size: 16px;
-}.otp .modes-panel .mode-group-row .mode-icon {
-  width: 56px;
-  height: 30px;
 }.otp .modes-panel .mode-group-row .mode-label {
   font-size: 10px;
   text-align: center;
@@ -2964,8 +2964,9 @@
   top: 50px;
   left: 0;
   right: 0;
-  bottom: 50px;
-  overflow-y: 'auto'
+  bottom: 55px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }.otp.mobile .options-lower-tray {
   position: fixed;
   height: 55px;
@@ -3019,9 +3020,10 @@
 }.otp .stop-viewer .route-row .header .route-name {
   display: table-cell;
   padding: 8px;
+  vertical-align: middle;
 }.otp .stop-viewer .route-row .header .next-trip-preview {
   display: table-cell;
-  width: 85px;
+  width: 100px;
   border-left: 1px solid gray;
   padding: 9px 6px;
   font-size: 14px;
@@ -3031,28 +3033,65 @@
   border-left: 1px solid gray;
   padding: 0px;
   cursor: pointer;
+  vertical-align: middle;
 }.otp .stop-viewer .route-row .header .expansion-button {
   background: none;
   border: none;
-  padding: 8px 8px 4px 8px;
+  padding: 8px;
 }.otp .stop-viewer .route-row .header .expansion-button:hover {
   color: #ddd;
 }.otp .stop-viewer .route-row .header .expansion-button:focus {
   outline: 0px;
-}.otp .stop-viewer .route-row .trip-table {
-  border-top: 1px solid gray;
+}/*.otp .stop-viewer .trip-table {
+  display: table;
   padding: 8px;
-}.otp .stop-viewer .trip-table-header-row {
+}
+
+.otp .stop-viewer .trip-table .trip-table-header-row {
+  display: table-row;
   font-size: 11px;
   color: gray;
-  /* height needed for IE display */
   height: 14px;
-}.otp .stop-viewer .route-row .trip-table-column-header {
-  float: right;
-  width: 80px;
+}
+
+.otp .stop-viewer .trip-table .trip-table-column-header {
+  display: table-cell;
   font-weight: 500;
   text-align: center;
-}.otp .stop-viewer .route-row .trip-table .trip-row .status-label {
+}
+
+.otp .stop-viewer .trip-table .trip-row {
+  display: table-row;
+}
+
+.otp .stop-viewer .route-row .trip-table .trip-row {
+  display: table-row;
+}
+
+.otp .stop-viewer .route-row .trip-table .trip-row {
+  display: table-row;
+}*/.otp .stop-viewer .trip-table {
+  display: table;
+  width: 100%;
+  padding: 8px;
+  border-top: 1px solid gray;
+}.otp .stop-viewer .trip-table .header {
+  display: table-row;
+  font-size: 11px;
+  color: gray;
+  text-align: center;
+}.otp .stop-viewer .trip-table .trip-row {
+  display: table-row;
+}.otp .stop-viewer .trip-table .cell {
+  display: table-cell;
+  vertical-align: middle;
+}.otp .stop-viewer .trip-table .trip-row .cell {
+  padding-top: 6px;
+}.otp .stop-viewer .trip-table .time-column {
+  width: 90px;
+}.otp .stop-viewer .trip-table .status-column {
+  width: 80px;
+}.otp .stop-viewer .trip-table .status-label {
   width: 100%;
   text-align: center;
   text-transform: uppercase;
@@ -3160,22 +3199,16 @@
   background-image: url("data:image/svg+xml;base64,PHN2ZyBpZD0id2hpdGVfYmciIGRhdGEtbmFtZT0id2hpdGUgYmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDgyLjUgOTQuNyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fS5jbHMtMntmaWxsOiNmZjJkMjk7fS5jbHMtM3tmaWxsOiMzMzM7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5odWItOTwvdGl0bGU+PGNpcmNsZSBjbGFzcz0iY2xzLTEiIGN4PSI0MS4yNSIgY3k9IjQxLjIiIHI9IjM4LjE4Ii8+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjQxLjI1IDgwLjI4IDQxLjIgNDYuMzEgNDUuMjQgNDUuODcgNjYuNDMgNzEuMzIgNDEuMjUgODAuMjgiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iNjYuMzkgNzEgNDQuNDQgNDUuMDYgNDcuMjQgNDIuMTMgNzkuODYgNDcuOTEgNjYuMzkgNzEiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iNzkuNDMgNDguMjggNDUuOTcgNDIuMzggNDYuMjUgMzguMzMgNzUuMDIgMjEuOTIgNzkuNDMgNDguMjgiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iNzUuMjQgMjEuOTIgNDUuNjcgMzguNjYgNDMuMzEgMzUuMzYgNTUuMDYgNC4zOSA3NS4yNCAyMS45MiIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSI1NC41NSA0LjY5IDQyLjg2IDM2LjU5IDM4LjkyIDM1LjYgMjcuODMgNC4zOSA1NC41NSA0LjY5Ii8+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjQxLjEgODAuMDcgNDEuMTUgNDYuMDkgMzcuMTEgNDUuNjUgMTUuOTIgNzEuMTEgNDEuMSA4MC4wNyIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxNS45NiA3MC43OCAzNy45MSA0NC44NSAzNS4xMSA0MS45MSAyLjQ5IDQ3LjY5IDE1Ljk2IDcwLjc4Ii8+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjIuOTIgNDguMDcgMzYuMzggNDIuMTcgMzYuMSAzOC4xMiA3LjMzIDIxLjcgMi45MiA0OC4wNyIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSI3LjExIDIxLjcxIDM2LjY4IDM4LjQ1IDM5LjA0IDM1LjE1IDI3LjI5IDQuMTggNy4xMSAyMS43MSIvPjxwYXRoIGNsYXNzPSJjbHMtMyIgZD0iTTgzLjQsNDNBNDEuMjUsNDEuMjUsMCwxLDAsMjkuNSw4Mi4zTDQzLjQsOTYuNSw1NS4zLDgyLjFBNDEuMjksNDEuMjksMCwwLDAsODMuNCw0M1pNNjUuNyw3MC42TDQ2LjUsNDcuN2E2LDYsMCwwLDAsMS44LTMuMmwyOS40LDUuMkEzNi4zMywzNi4zMywwLDAsMSw2NS43LDcwLjZaTTYuNSw0OS43bDI5LjQtNS4yYTYuODMsNi44MywwLDAsMCwxLjgsMy4yTDE4LjUsNzAuNkEzNi4zMywzNi4zMywwLDAsMSw2LjUsNDkuN1pNNS45LDQzYTM1LjgyLDM1LjgyLDAsMCwxLDQuNy0xNy44TDM2LjQsNDAuMWE1LjkyLDUuOTIsMCwwLDAtLjcsMi45djAuN0w2LjMsNDlBMzkuNDUsMzkuNDUsMCwwLDEsNS45LDQzWk0yOS40LDkuMWwxMC4yLDI4YTYsNiwwLDAsMC0yLjgsMi40TDEwLjksMjQuNkEzNi42MiwzNi42MiwwLDAsMSwyOS40LDkuMVpNNDIuMSw2LjhhMzQsMzQsMCwwLDEsMTIsMi4xbC0xMC4yLDI4YTUuNjYsNS42NiwwLDAsMC0xLjgtLjMsNS4yMyw1LjIzLDAsMCwwLTEuOC4zTDMwLjEsOC45QTM0LDM0LDAsMCwxLDQyLjEsNi44Wk03My4zLDI0LjZMNDcuNSwzOS41YTcuMiw3LjIsMCwwLDAtMi44LTIuNGwxMC4yLTI4QTM2LjgsMzYuOCwwLDAsMSw3My4zLDI0LjZaTTE5LjEsNzFMMzguMyw0OC4xYTcuMDksNy4wOSwwLDAsMCwzLjUsMS4zVjc5LjJBMzUuNDQsMzUuNDQsMCwwLDEsMTkuMSw3MVptMjMuNCw4LjNWNDkuNEE2LjI1LDYuMjUsMCwwLDAsNDYsNDguMUw2NS4xLDcxQTM2LDM2LDAsMCwxLDQyLjUsNzkuM1ptNi0zNS41VjQzLjFhNy4yNyw3LjI3LDAsMCwwLS43LTIuOUw3My42LDI1LjNhMzUuODIsMzUuODIsMCwwLDEsNC43LDE3LjgsMzguMDgsMzguMDgsMCwwLDEtLjUsNS45WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuOSAtMS44KSIvPjwvc3ZnPg==");
 }.bike-rental-out-of-hub {
   background-image: url("data:image/svg+xml;base64,PHN2ZyBpZD0ic3ZnNDYxOSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTUgMTcuMTQiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZjk0YTE1O308L3N0eWxlPjwvZGVmcz48dGl0bGU+YmlrZXNoYXJlX291dF9vZl9odWI8L3RpdGxlPjxwYXRoIGlkPSJjaXJjbGU0NjA0IiBjbGFzcz0iY2xzLTEiIGQ9Ik0xMS42OSwxLjM4YTEsMSwwLDEsMCwxLDFBMSwxLDAsMCwwLDExLjY5LDEuMzhabS0xLjg2LDJhMC41LDAuNSwwLDAsMC0uMzUuMTRMNi44NCw2YTAuNSwwLjUsMCwwLDAsMCwuNzZsMS44LDEuMzV2Mi43NWEwLjUsMC41LDAsMSwwLDEsMHYtM2EwLjUsMC41LDAsMCwwLS4yLTAuNEw4LjcyLDYuOWwxLjgyLTEuNzIsMC43NSwxYTAuNSwwLjUsMCwwLDAsLjQuMmgxLjVhMC41LDAuNSwwLDEsMCwwLTFIMTEuOTRsLTAuNzUtMS0wLjYtLjhhMC41LDAuNSwwLDAsMC0uMzgtMC4yMUg5LjgzWm0tNS4xNCw0YTMsMywwLDEsMCwzLDNBMywzLDAsMCwwLDQuNjksNy4zOFptOSwwYTMsMywwLDEsMCwzLDNBMywzLDAsMCwwLDEzLjY5LDcuMzhabS05LDFhMiwyLDAsMSwxLTIsMkEyLDIsMCwwLDEsNC42OSw4LjM4Wm05LDBhMiwyLDAsMSwxLTIsMkEyLDIsMCwwLDEsMTMuNjksOC4zOFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjY5IC0xLjM4KSIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIzLjMgMTIuOTQgNy41IDE3LjE0IDExLjcgMTIuOTQgMy4zIDEyLjk0Ii8+PC9zdmc+");
-}/* PREVENT BOUNCE SCROLL ON iOS */@supports (-webkit-overflow-scrolling: touch) {
-  /* Fix the body and html to prevent bounce (only if print-view is not active) */
-  html:not(.print-view),
-  html:not(.print-view) body {
-    position: fixed;
-    overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  /* Modify the root/main div to permit normal scrolling behavior (only if
-  print-view is not active) */
-  html:not(.print-view) #root,
-  html:not(.print-view) #main {
-    width: 100vw;
-    height: 100vh;
-    -webkit-overflow-scrolling: touch;
-  }
+}/* PREVENT BOUNCE SCROLL ON iOS *//* Fix the body and html to prevent bounce (only if print-view is not active) */html:not(.print-view),
+html:not(.print-view) body {
+  position: fixed;
+  overflow: hidden;
+}/* Modify the root/main div to permit normal scrolling behavior (only if
+print-view is not active) */html:not(.print-view) #root,
+html:not(.print-view) #main {
+  width: 100vw;
+  height: 100vh;
+  -webkit-overflow-scrolling: touch;
 }/* Buttons */button.header, button.step, .clear-button-formatting  {
   background: inherit;
   color: inherit;
@@ -3194,9 +3227,9 @@
 }button.header, button.step {
   width: 100%;
 }.otp .from-location-icon {
-  color: #f5a81c;
+  color: #333;
 }.otp .to-location-icon {
-  color: #8ec449;
+  color: #f44256;
 }
 
 /*# sourceMappingURL=index.css.map */

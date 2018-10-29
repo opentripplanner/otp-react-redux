@@ -53,7 +53,7 @@ var LocationIcon = (_temp = _class = function (_Component) {
       // to: '#8ec449
 
       var classNameArr = ['fa', type + '-location-icon'];
-      if (type === 'from') classNameArr.push('fa-map-marker');else if (type === 'to') classNameArr.push('fa-dot-circle-o');
+      if (type === 'from') classNameArr.push('fa-dot-circle-o');else if (type === 'to') classNameArr.push('fa-map-marker');
       if (className) classNameArr = classNameArr.concat(className.split(' '));
 
       return _react2.default.createElement('i', { className: classNameArr.join(' '), style: style });

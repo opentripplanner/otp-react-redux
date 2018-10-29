@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -78,12 +82,20 @@ var Endpoint = function (_Component) {
 
       var position = location && location.lat && location.lon ? [location.lat, location.lon] : null;
       if (!position) return null;
-
+      var fgStyle = { fontSize: 24, width: 32, height: 32 };
+      var bgStyle = { fontSize: 32, width: 32, height: 32, paddingTop: 1 };
       var iconHtml = _server2.default.renderToStaticMarkup(_react2.default.createElement(
         'span',
         { title: location.name, className: 'fa-stack endpoint-' + type + '-icon', style: { opacity: 1.0, marginLeft: -10, marginTop: -7 } },
-        _react2.default.createElement(_locationIcon2.default, { type: type, className: 'fa-stack-1x', style: { color: '#fff', fontSize: 32, width: 32, height: 32, paddingTop: 1 } }),
-        _react2.default.createElement(_locationIcon2.default, { type: type, className: 'fa-stack-1x', style: { fontSize: 24, width: 32, height: 32 } })
+        type === 'from'
+        // From icon should have white circle background
+        ? _react2.default.createElement('i', { className: 'fa-stack-1x fa fa-circle', style: (0, _extends3.default)({ color: '#fff' }, fgStyle) }) : _react2.default.createElement(
+          'span',
+          null,
+          _react2.default.createElement(_locationIcon2.default, { type: type, className: 'fa-stack-1x', style: (0, _extends3.default)({ color: '#333' }, bgStyle) }),
+          _react2.default.createElement('i', { className: 'fa-stack-1x fa fa-circle', style: (0, _extends3.default)({ color: '#fff' }, bgStyle, { fontSize: 12, marginTop: -4 }) })
+        ),
+        _react2.default.createElement(_locationIcon2.default, { type: type, className: 'fa-stack-1x', style: fgStyle })
       ));
 
       return _react2.default.createElement(_reactLeaflet.Marker, {

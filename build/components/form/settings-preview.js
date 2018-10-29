@@ -90,7 +90,7 @@ var SettingsPreview = (_temp = _class = function (_Component) {
                 { className: 'mode-icon', key: mode },
                 (0, _itinerary.getModeIcon)(mode === 'CAR_HAIL' ? {
                   mode: 'CAR_HAIL',
-                  label: companies
+                  company: companies
                 } : mode, icons)
               );
             })

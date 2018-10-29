@@ -48,49 +48,70 @@ var ModeButton = (_temp = _class = function (_Component) {
     value: function render() {
       var _props = this.props,
           active = _props.active,
+          enabled = _props.enabled,
           icons = _props.icons,
           label = _props.label,
           mode = _props.mode,
-          onClick = _props.onClick;
+          onClick = _props.onClick,
+          inlineLabel = _props.inlineLabel,
+          showPlusTransit = _props.showPlusTransit;
 
-      var buttonColor = active ? '#000' : '#bbb';
+      var height = this.props.height || 48;
+      var iconSize = height - 20;
+
+      var iconColor = enabled ? '#000' : '#ccc';
+      var modeStr = mode.mode || mode;
+      var buttonStyle = { height: height };
+
+      if (modeStr !== 'TRANSIT' && (0, _itinerary.isTransit)(modeStr)) {
+        buttonStyle.width = height;
+        buttonStyle.border = '2px solid ' + (enabled ? active ? '#000' : '#bbb' : '#ddd');
+        if (active && enabled) buttonStyle.backgroundColor = '#fff';
+        buttonStyle.borderRadius = height / 2;
+      } else {
+        buttonStyle.border = active ? '2px solid #000' : '1px solid #bbb';
+        if (active) buttonStyle.backgroundColor = '#add8e6';
+      }
+
       return _react2.default.createElement(
         'div',
-        { className: 'mode-button-container' },
+        { className: 'mode-button-container ' + (enabled ? 'enabled' : 'disabled'), style: { height: height + (inlineLabel ? 8 : 24), textAlign: 'center' } },
         _react2.default.createElement(
           'button',
           {
             className: 'mode-button',
             onClick: onClick,
             title: label,
-            style: { borderColor: buttonColor }
+            style: buttonStyle,
+            disabled: !enabled
           },
           _react2.default.createElement(
             'div',
             {
               className: 'mode-icon',
-              style: { fill: buttonColor } },
+              style: { display: 'inline-block', fill: iconColor, width: iconSize, height: iconSize, verticalAlign: 'middle' } },
             (0, _itinerary.getModeIcon)(mode, icons)
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'mode-label', style: { color: buttonColor } },
-          label
-        ),
-        active && _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            'div',
-            { className: 'mode-check', style: { color: 'white' } },
-            _react2.default.createElement('i', { className: 'fa fa-circle' })
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'mode-check', style: { color: 'green' } },
-            _react2.default.createElement('i', { className: 'fa fa-check-circle' })
+          showPlusTransit && _react2.default.createElement(
+            'span',
+            null,
+            _react2.default.createElement('i', { className: 'fa fa-plus', style: { verticalAlign: 'middle', color: iconColor, margin: '0px 5px', fontSize: 14 } }),
+            _react2.default.createElement(
+              'div',
+              { style: { display: 'inline-block', width: iconSize, height: iconSize, verticalAlign: 'middle' } },
+              enabled ? (0, _itinerary.getModeIcon)('TRANSIT', icons) : _react2.default.createElement('div', { style: { width: iconSize, height: iconSize, backgroundColor: iconColor, borderRadius: iconSize / 2 } })
+            )
+          ),
+          inlineLabel && _react2.default.createElement(
+            'span',
+            { style: { fontSize: iconSize * 0.8, marginLeft: 10, verticalAlign: 'middle', fontWeight: active ? 600 : 300 } },
+            label
           )
+        ),
+        !inlineLabel && _react2.default.createElement(
+          'div',
+          { className: 'mode-label', style: { color: iconColor, fontWeight: active ? 600 : 300 } },
+          label
         )
       );
     }

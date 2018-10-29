@@ -36,6 +36,8 @@ exports.toSentenceCase = toSentenceCase;
 exports.getLegMode = getLegMode;
 exports.getPlaceName = getPlaceName;
 exports.getTNCLocation = getTNCLocation;
+exports.calculatePhysicalActivity = calculatePhysicalActivity;
+exports.calculateFares = calculateFares;
 
 var _react = require('react');
 
@@ -170,22 +172,29 @@ function hasBike(modesStr) {
 }
 
 function isWalk(mode) {
-  mode = mode || this.get('mode');
+  //mode = mode || this.get('mode')
+  if (!mode) return false;
+
   return mode === 'WALK';
 }
 
 function isBicycle(mode) {
-  mode = mode || this.get('mode');
+  //mode = mode || this.get('mode')
+  if (!mode) return false;
+
   return mode === 'BICYCLE';
 }
 
 function isBicycleRent(mode) {
-  mode = mode || this.get('mode');
+  //mode = mode || this.get('mode')
+  if (!mode) return false;
+
   return mode === 'BICYCLE_RENT';
 }
 
 function isCar(mode) {
-  mode = mode || this.get('mode');
+  //mode = mode || this.get('mode')
+  if (!mode) return false;
   return mode.startsWith('CAR');
 }
 
@@ -265,7 +274,7 @@ function getModeIcon(mode, customIcons) {
 
   // Special handling for CAR_HAIL, which can have company-specific icons
   if (modeStr === 'CAR_HAIL') {
-    modeStr = 'CAR_HAIL_' + mode.label.toUpperCase();
+    modeStr = 'CAR_HAIL_' + mode.company.toUpperCase();
   }
 
   // Check if there is a custom icon for this mode
@@ -387,7 +396,7 @@ function getLegMode(companies, leg) {
     };
   } else if (legMode === 'CAR' && companies) {
     legMode = {
-      label: companies,
+      company: companies,
       mode: 'CAR_HAIL'
     };
     isTNC = true;
@@ -411,6 +420,109 @@ function getPlaceName(place) {
 function getTNCLocation(leg, type) {
   var location = leg[type];
   return location.lat.toFixed(5) + ',' + location.lon.toFixed(5);
+}
+
+function calculatePhysicalActivity(itinerary) {
+  var walkDuration = 0;
+  var bikeDuration = 0;
+  var _iteratorNormalCompletion4 = true;
+  var _didIteratorError4 = false;
+  var _iteratorError4 = undefined;
+
+  try {
+    for (var _iterator4 = (0, _getIterator3.default)(itinerary.legs), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+      var leg = _step4.value;
+
+      if (leg.mode.startsWith('WALK')) walkDuration += leg.duration;
+      if (leg.mode.startsWith('BICYCLE')) bikeDuration += leg.duration;
+    }
+  } catch (err) {
+    _didIteratorError4 = true;
+    _iteratorError4 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion4 && _iterator4.return) {
+        _iterator4.return();
+      }
+    } finally {
+      if (_didIteratorError4) {
+        throw _iteratorError4;
+      }
+    }
+  }
+
+  var caloriesBurned = walkDuration / 3600 * 280 + bikeDuration / 3600 * 290;
+  return {
+    bikeDuration: bikeDuration,
+    caloriesBurned: caloriesBurned,
+    walkDuration: walkDuration
+  };
+}
+
+function calculateFares(itinerary) {
+  var transitFare = 0;
+  var symbol = '$'; // default to USD
+  var dollarsToString = function dollarsToString(dollars) {
+    return '' + symbol + dollars.toFixed(2);
+  };
+  var centsToString = function centsToString(cents) {
+    return '' + symbol + (cents / Math.pow(10, 2)).toFixed(2);
+  };
+  if (itinerary.fare && itinerary.fare.fare && itinerary.fare.fare.regular) {
+    var reg = itinerary.fare.fare.regular;
+    symbol = reg.currency.symbol;
+    transitFare = reg.cents;
+    centsToString = function centsToString(cents) {
+      return '' + symbol + (cents / Math.pow(10, reg.currency.defaultFractionDigits)).toFixed(reg.currency.defaultFractionDigits);
+    };
+    dollarsToString = function dollarsToString(dollars) {
+      return '' + symbol + dollars.toFixed(2);
+    };
+  }
+
+  // Process any TNC fares
+  var minTNCFare = 0;
+  var maxTNCFare = 0;
+  var _iteratorNormalCompletion5 = true;
+  var _didIteratorError5 = false;
+  var _iteratorError5 = undefined;
+
+  try {
+    for (var _iterator5 = (0, _getIterator3.default)(itinerary.legs), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+      var leg = _step5.value;
+
+      if (leg.mode === 'CAR' && leg.hailedCar && leg.tncData) {
+        var _leg$tncData = leg.tncData,
+            maxCost = _leg$tncData.maxCost,
+            minCost = _leg$tncData.minCost;
+        // TODO: Support non-USD
+
+        minTNCFare += minCost;
+        maxTNCFare += maxCost;
+      }
+    }
+  } catch (err) {
+    _didIteratorError5 = true;
+    _iteratorError5 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion5 && _iterator5.return) {
+        _iterator5.return();
+      }
+    } finally {
+      if (_didIteratorError5) {
+        throw _iteratorError5;
+      }
+    }
+  }
+
+  return {
+    centsToString: centsToString,
+    dollarsToString: dollarsToString,
+    maxTNCFare: maxTNCFare,
+    minTNCFare: minTNCFare,
+    transitFare: transitFare
+  };
 }
 
 //# sourceMappingURL=itinerary.js

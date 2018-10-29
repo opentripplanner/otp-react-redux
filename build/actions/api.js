@@ -337,12 +337,13 @@ function findGeometryForTrip(params) {
 }
 
 // Stop times for stop query
+// TODO: make timeRange and numberOfDepartures configurable
 
 var findStopTimesForStopResponse = exports.findStopTimesForStopResponse = (0, _reduxActions.createAction)('FIND_STOP_TIMES_FOR_STOP_RESPONSE');
 var findStopTimesForStopError = exports.findStopTimesForStopError = (0, _reduxActions.createAction)('FIND_STOP_TIMES_FOR_STOP_ERROR');
 
 function findStopTimesForStop(params) {
-  return createQueryAction('index/stops/' + params.stopId + '/stoptimes?timeRange=14400', findStopTimesForStopResponse, findStopTimesForStopError, {
+  return createQueryAction('index/stops/' + params.stopId + '/stoptimes?timeRange=345600&numberOfDepartures=5', findStopTimesForStopResponse, findStopTimesForStopError, {
     rewritePayload: function rewritePayload(payload) {
       return {
         stopId: params.stopId,
