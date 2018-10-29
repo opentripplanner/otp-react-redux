@@ -34,11 +34,12 @@
 .otp .stop-viewer .route-row .header .route-name {
   display: table-cell;
   padding: 8px;
+  vertical-align: middle;
 }
 
 .otp .stop-viewer .route-row .header .next-trip-preview {
   display: table-cell;
-  width: 85px;
+  width: 100px;
   border-left: 1px solid gray;
   padding: 9px 6px;
   font-size: 14px;
@@ -50,12 +51,13 @@
   border-left: 1px solid gray;
   padding: 0px;
   cursor: pointer;
+  vertical-align: middle;
 }
 
 .otp .stop-viewer .route-row .header .expansion-button {
   background: none;
   border: none;
-  padding: 8px 8px 4px 8px;
+  padding: 8px;
 }
 
 .otp .stop-viewer .route-row .header .expansion-button:hover {
@@ -66,26 +68,72 @@
   outline: 0px;
 }
 
-.otp .stop-viewer .route-row .trip-table {
-  border-top: 1px solid gray;
+/*.otp .stop-viewer .trip-table {
+  display: table;
   padding: 8px;
 }
 
-.otp .stop-viewer .trip-table-header-row {
+.otp .stop-viewer .trip-table .trip-table-header-row {
+  display: table-row;
   font-size: 11px;
   color: gray;
-  /* height needed for IE display */
   height: 14px;
 }
 
-.otp .stop-viewer .route-row .trip-table-column-header {
-  float: right;
-  width: 80px;
+.otp .stop-viewer .trip-table .trip-table-column-header {
+  display: table-cell;
   font-weight: 500;
   text-align: center;
 }
 
-.otp .stop-viewer .route-row .trip-table .trip-row .status-label {
+.otp .stop-viewer .trip-table .trip-row {
+  display: table-row;
+}
+
+.otp .stop-viewer .route-row .trip-table .trip-row {
+  display: table-row;
+}
+
+.otp .stop-viewer .route-row .trip-table .trip-row {
+  display: table-row;
+}*/
+
+.otp .stop-viewer .trip-table {
+  display: table;
+  width: 100%;
+  padding: 8px;
+  border-top: 1px solid gray;
+}
+
+.otp .stop-viewer .trip-table .header {
+  display: table-row;
+  font-size: 11px;
+  color: gray;
+  text-align: center;
+}
+
+.otp .stop-viewer .trip-table .trip-row {
+  display: table-row;
+}
+
+.otp .stop-viewer .trip-table .cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.otp .stop-viewer .trip-table .trip-row .cell {
+  padding-top: 6px;
+}
+
+.otp .stop-viewer .trip-table .time-column {
+  width: 90px;
+}
+
+.otp .stop-viewer .trip-table .status-column {
+  width: 80px;
+}
+
+.otp .stop-viewer .trip-table .status-label {
   width: 100%;
   text-align: center;
   text-transform: uppercase;

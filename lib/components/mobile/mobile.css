@@ -83,8 +83,9 @@
   top: 50px;
   left: 0;
   right: 0;
-  bottom: 50px;
-  overflow-y: 'auto'
+  bottom: 55px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .otp.mobile .options-lower-tray {
