@@ -32,6 +32,11 @@ html:not(.print-view) #main {
   -webkit-overflow-scrolling: touch;
 }
 
+/* Hide IE/Edge clear button in text input fields. */
+input[type=text]::-ms-clear {
+    display: none;
+}
+
 /* Buttons */
 
 button.header, button.step, .clear-button-formatting  {
