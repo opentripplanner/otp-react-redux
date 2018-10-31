@@ -50,7 +50,45 @@ var _state = require('../../util/state');
 
 var _itinerary = require('../../util/itinerary');
 
+var _leaflet = require('leaflet');
+
+var _leaflet2 = _interopRequireDefault(_leaflet);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_leaflet2.default.Evented.addInitHook(function () {
+  this._singleClickTimeout = null;
+  this.on('click', this._scheduleSingleClick, this);
+  this.on('dblclick dragstart zoomstart', this._cancelSingleClick, this);
+});
+
+_leaflet2.default.Evented.include({
+  _cancelSingleClick: function _cancelSingleClick() {
+    // This timeout is key to workaround an issue where double-click events
+    // are fired in this order on some touch browsers: ['click', 'dblclick', 'click']
+    // instead of ['click', 'click', 'dblclick']
+    setTimeout(this._clearSingleClickTimeout.bind(this), 0);
+  },
+
+  _scheduleSingleClick: function _scheduleSingleClick(e) {
+    this._clearSingleClickTimeout();
+
+    this._singleClickTimeout = setTimeout(this._fireSingleClick.bind(this, e), this.options.singleClickTimeout || 500);
+  },
+
+  _fireSingleClick: function _fireSingleClick(e) {
+    if (!e.originalEvent._stopped) {
+      this.fire('singleclick', _leaflet2.default.Util.extend(e, { type: 'singleclick' }));
+    }
+  },
+
+  _clearSingleClickTimeout: function _clearSingleClickTimeout() {
+    if (this._singleClickTimeout !== null) {
+      clearTimeout(this._singleClickTimeout);
+      this._singleClickTimeout = null;
+    }
+  }
+});
 
 var BaseMap = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(BaseMap, _Component);
@@ -126,7 +164,15 @@ var BaseMap = (_temp = _class = function (_Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+      var _this2 = this;
+
       this._updateBounds(null, this.props);
+
+      var lmap = this.refs.map.leafletElement;
+      lmap.options.singleClickTimeout = 250;
+      lmap.on('singleclick', function (e) {
+        _this2._onLeftClick(e);
+      });
     }
   }, {
     key: 'componentWillReceiveProps',
@@ -147,7 +193,7 @@ var BaseMap = (_temp = _class = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var _props = this.props,
           config = _props.config,
@@ -163,7 +209,7 @@ var BaseMap = (_temp = _class = function (_Component) {
         if (child.props.controlName) {
           // Add the visibility flag to this layer and push to the interal
           // array of user-controlled overlays
-          var visible = _this2.state.overlayVisibility[child.props.controlName];
+          var visible = _this3.state.overlayVisibility[child.props.controlName];
           var childWithVisibility = _react2.default.cloneElement(child, { visible: visible });
           userControlledOverlays.push(childWithVisibility);
         } else {
@@ -217,10 +263,9 @@ var BaseMap = (_temp = _class = function (_Component) {
           className: 'map',
           center: center,
           zoom: config.map.initZoom || 13,
-          onClick: this._onLeftClick,
-          onContextMenu: this._onRightClick,
           onOverlayAdd: this._onOverlayAdd,
           onOverlayRemove: this._onOverlayRemove
+          /* Note: Map-click is handled via single-click plugin, set up in componentDidMount() */
         },
         _react2.default.createElement(
           _reactLeaflet.LayersControl,
@@ -302,45 +347,42 @@ var BaseMap = (_temp = _class = function (_Component) {
   mapClick: _react.PropTypes.func,
   setLocation: _react.PropTypes.func, // TODO: rename from action name to avoid namespace conflict?
   toggleName: _react.PropTypes.element }, _initialiseProps = function _initialiseProps() {
-  var _this3 = this;
+  var _this4 = this;
 
   this._setLocationFromPopup = function (type) {
-    var setLocation = _this3.props.setLocation;
+    var setLocation = _this4.props.setLocation;
 
-    var location = (0, _map2.constructLocation)(_this3.state.popupPosition);
+    var location = (0, _map2.constructLocation)(_this4.state.popupPosition);
     setLocation({ type: type, location: location, reverseGeocode: true });
-    _this3.setState({ popupPosition: null });
-    if (typeof _this3.props.onSetLocation === 'function') {
-      _this3.props.onSetLocation({ type: type, location: location });
+    _this4.setState({ popupPosition: null });
+    if (typeof _this4.props.onSetLocation === 'function') {
+      _this4.props.onSetLocation({ type: type, location: location });
     }
   };
 
   this._onClickTo = function () {
-    return _this3._setLocationFromPopup('to');
+    return _this4._setLocationFromPopup('to');
   };
 
   this._onClickFrom = function () {
-    return _this3._setLocationFromPopup('from');
+    return _this4._setLocationFromPopup('from');
   };
 
   this._onLeftClick = function (e) {
-    if (typeof _this3.props.onClick === 'function') _this3.props.onClick(e);
-  };
-
-  this._onRightClick = function (e) {
-    _this3.setState({ popupPosition: e.latlng });
+    _this4.setState({ popupPosition: e.latlng });
+    if (typeof _this4.props.onClick === 'function') _this4.props.onClick(e);
   };
 
   this._onOverlayAdd = function (evt) {
-    var overlayVisibility = (0, _extends3.default)({}, _this3.state.overlayVisibility);
+    var overlayVisibility = (0, _extends3.default)({}, _this4.state.overlayVisibility);
     overlayVisibility[evt.name] = true;
-    _this3.setState({ overlayVisibility: overlayVisibility });
+    _this4.setState({ overlayVisibility: overlayVisibility });
   };
 
   this._onOverlayRemove = function (evt) {
-    var overlayVisibility = (0, _extends3.default)({}, _this3.state.overlayVisibility);
+    var overlayVisibility = (0, _extends3.default)({}, _this4.state.overlayVisibility);
     overlayVisibility[evt.name] = false;
-    _this3.setState({ overlayVisibility: overlayVisibility });
+    _this4.setState({ overlayVisibility: overlayVisibility });
   };
 
   this._mapBoundsChanged = function (e) {
@@ -353,8 +395,8 @@ var BaseMap = (_temp = _class = function (_Component) {
     // if (this.props.mapState.zoom !== zoom) {
     //   this.props.updateMapState({zoom})
     // }
-    if (!bounds.equals(_this3.props.mapState.bounds)) {
-      _this3.props.updateMapState({ bounds: e.target.getBounds() });
+    if (!bounds.equals(_this4.props.mapState.bounds)) {
+      _this4.props.updateMapState({ bounds: e.target.getBounds() });
     }
     // }
   };

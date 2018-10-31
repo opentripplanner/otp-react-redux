@@ -90,6 +90,7 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
 
     _this._optionClicked = function () {
       _this.setState({ expanded: !_this.state.expanded });
+      _this.refs['narrative-container'].scrollTop = 0;
     };
 
     _this._toggleRealtime = function () {
@@ -119,15 +120,13 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
           query = _props.query,
           realtimeEffects = _props.realtimeEffects,
           resultCount = _props.resultCount,
-          useRealtime = _props.useRealtime;
+          useRealtime = _props.useRealtime,
+          activeItineraryIndex = _props.activeItineraryIndex;
+      var expanded = this.state.expanded;
 
 
-      var narrativeContainerStyle = this.state.expanded ? {
-        top: 100,
-        overflowY: 'auto'
-      } : {
-        height: 120,
-        overflowY: 'hidden'
+      var narrativeContainerStyle = expanded ? { top: 140, overflowY: 'auto' } : { height: 80, overflowY: 'hidden'
+
         // Ensure that narrative covers map.
       };narrativeContainerStyle.backgroundColor = 'white';
 
@@ -203,6 +202,12 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
         );
       }
 
+      // Construct the 'dots'
+      var dots = [];
+      for (var i = 0; i < resultCount; i++) {
+        dots.push(_react2.default.createElement('div', { className: 'dot' + (activeItineraryIndex === i ? ' active' : '') }));
+      }
+
       return _react2.default.createElement(
         _container2.default,
         null,
@@ -218,19 +223,40 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'mobile-narrative-container', style: narrativeContainerStyle },
+          {
+            className: 'mobile-narrative-header',
+            style: { bottom: expanded ? null : 100, top: expanded ? 100 : null },
+            onClick: this._optionClicked
+          },
+          'Option ',
+          activeItineraryIndex + 1,
+          _react2.default.createElement('i', { className: 'fa fa-caret-' + (expanded ? 'down' : 'up'), style: { marginLeft: 8 } })
+        ),
+        _react2.default.createElement(
+          'div',
+          {
+            ref: 'narrative-container',
+            className: 'mobile-narrative-container',
+            style: narrativeContainerStyle
+          },
           _react2.default.createElement(_itineraryCarousel2.default, {
             itineraryClass: itineraryClass,
             hideHeader: true,
             expanded: this.state.expanded,
             onClick: this._optionClicked
           })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'dots-container', style: { padding: 'none' } },
+          dots
         )
       );
     }
   }]);
   return MobileResultsScreen;
 }(_react.Component), _class.propTypes = {
+  activeItineraryIndex: _propTypes2.default.number,
   map: _propTypes2.default.element,
   query: _propTypes2.default.object,
   resultCount: _propTypes2.default.number,
@@ -253,7 +279,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     realtimeEffects: realtimeEffects,
     error: response && response.error,
     resultCount: response ? activeSearch.query.routingType === 'ITINERARY' ? response.plan ? response.plan.itineraries.length : 0 : response.otp.profile.length : null,
-    useRealtime: useRealtime
+    useRealtime: useRealtime,
+    activeItineraryIndex: activeSearch !== null ? activeSearch.activeItinerary : null
   };
 };
 
