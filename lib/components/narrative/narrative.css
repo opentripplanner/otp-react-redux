@@ -145,10 +145,7 @@
 
 .otp .trip-tools .button-container {
   display: inline-block;
-}
-
-.otp .trip-tools .pad-right {
-  padding-right: 5px;
+  padding: 3px;
 }
 
 .otp .trip-tools .tool-button {
