@@ -61,6 +61,7 @@
     "react-resize-detector": "^2.1.0",
     "react-router-dom": "^4.2.2",
     "react-select-geocoder": "^1.2.1",
+    "react-swipeable-bottom-sheet": "^1.1.1",
     "react-swipeable-views": "^0.11.2",
     "redux": "^3.6.0",
     "redux-actions": "^1.2.1",

@@ -1,3 +1,9 @@
+.otp.mobile {
+  margin-top: 50px;
+  height: calc(100vh - 50px);
+  width: 100vw;
+}
+
 .otp.mobile .mobile-padding {
   padding: 10px;
 }
@@ -63,27 +69,26 @@
 /* map settings */
 
 .otp.mobile .welcome-map {
-  position: fixed;
-  top: 110px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  height: calc(100vh - 70px - 50px);
+  width: 100vw;
 }
 
 .otp.mobile .search-map {
-  position: fixed;
-  top: 300px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  height: calc(100vh - 249px - 50px);
+  width: 100vw;
+}
+
+.otp.mobile .results-map {
+  height: calc(100vh - 102px - 140px);
+  width: 100vw;
+}
+
+.otp.mobile .results-error-map {
+  height: 200px;
+  width: 100vw;
 }
 
 .otp.mobile .options-main-content {
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 0;
-  bottom: 55px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -96,22 +101,10 @@
   bottom: 0;
 }
 
-.otp.mobile .viewer-container {
-  position: fixed;
-  top: 250px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow-y: auto;
-}
-
 /* results screen: normal display */
 
 .otp.mobile .mobile-narrative-header {
-  position: fixed,
   height: 40px;
-  left: 0;
-  right: 0;
   background-color: #444;
   color: #fff;
   text-align: center;
@@ -121,11 +114,7 @@
 }
 
 .otp.mobile .mobile-narrative-container {
-  position: fixed;
-  bottom: 20px;
-  right: 0;
-  left: 0;
-  padding: 8px 12px;
+
 }
 
 .otp.mobile .dots-container {
@@ -134,6 +123,10 @@
   right: 0;
   left: 0;
   height: 20px;
+  background-color: #fff;
+  padding: 0;
+  /* Ensure dots render above below component */
+  z-index: 3000;
   text-align: center;
 }
 
@@ -151,29 +144,8 @@
   background-color: #888;
 }
 
-.otp.mobile .results-map {
-  position: fixed;
-  top: 100px;
-  left: 0;
-  right: 0;
-  bottom: 140px;
-}
-
 /* results screen: error display */
 
-.otp.mobile .results-error-map {
-  position: fixed;
-  top: 100px;
-  left: 0;
-  right: 0;
-  height: 200px;
-}
-
 .otp.mobile .results-error-message {
-  position: fixed;
-  top: 300px;
-  left: 0;
-  right: 0;
-  bottom: 0;
   padding-top: 12px;
 }
