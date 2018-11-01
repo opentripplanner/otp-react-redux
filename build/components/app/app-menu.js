@@ -61,28 +61,12 @@ var AppMenu = (_temp = _class = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var reactRouterConfig = this.props.reactRouterConfig;
-
-
-      var href = '/';
-      if (reactRouterConfig && reactRouterConfig.basename) {
-        href += reactRouterConfig.basename;
-      }
-
       return _react2.default.createElement(
         'div',
         { className: 'app-menu' },
         _react2.default.createElement(
           _reactBootstrap.DropdownButton,
           { title: _react2.default.createElement(_icon2.default, { type: 'bars' }), noCaret: true, className: 'app-menu-button', id: 'app-menu' },
-          _react2.default.createElement(
-            _reactBootstrap.MenuItem,
-            { onClick: function onClick() {
-                window.location.href = href;
-              } },
-            _react2.default.createElement(_icon2.default, { type: 'undo' }),
-            ' Start Over'
-          ),
           _react2.default.createElement(
             _reactBootstrap.MenuItem,
             { onClick: function onClick() {
@@ -103,9 +87,7 @@ var AppMenu = (_temp = _class = function (_Component) {
 // connect to the redux store
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {
-    reactRouterConfig: state.otp.config.reactRouter
-  };
+  return {};
 };
 
 var mapDispatchToProps = {

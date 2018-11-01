@@ -24,7 +24,9 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class3, _temp4;
+var _class3, _temp3;
+// import { DropdownButton, MenuItem } from 'react-bootstrap'
+
 
 var _react = require('react');
 
@@ -55,26 +57,31 @@ var TripTools = function (_Component) {
   (0, _createClass3.default)(TripTools, [{
     key: 'render',
     value: function render() {
-      var reportConfig = this.props.reportConfig;
+      var _props = this.props,
+          reportConfig = _props.reportConfig,
+          reactRouterConfig = _props.reactRouterConfig;
 
+      // Determine "home" URL
+
+      var startOverUrl = '/';
+      if (reactRouterConfig && reactRouterConfig.basename) {
+        startOverUrl += reactRouterConfig.basename;
+      }
 
       var buttons = [];
 
-      buttons.push(_react2.default.createElement(ShareSaveDropdownButton, null));
+      buttons.push(_react2.default.createElement(CopyUrlButton, null));
       buttons.push(_react2.default.createElement(PrintButton, null));
-      if (reportConfig && reportConfig.mailto) {
-        buttons.push(_react2.default.createElement(ReportIssueButton, reportConfig));
-      }
+      if (reportConfig && reportConfig.mailto) buttons.push(_react2.default.createElement(ReportIssueButton, reportConfig));
+      buttons.push(_react2.default.createElement(LinkButton, { icon: 'undo', text: 'Start Over', url: startOverUrl }));
 
       return _react2.default.createElement(
         'div',
         { className: 'trip-tools' },
         buttons.map(function (btn, i) {
-          var classNames = ['button-container'];
-          if (i < buttons.length - 1) classNames.push('pad-right');
           return _react2.default.createElement(
             'div',
-            { key: i, className: classNames.join(' ') },
+            { key: i, className: 'button-container' },
             btn
           );
         })
@@ -84,52 +91,80 @@ var TripTools = function (_Component) {
   return TripTools;
 }(_react.Component);
 
-// Share/Save Dropdown Component
+// Share/Save Dropdown Component -- not used currently
 
-var ShareSaveDropdownButton = function (_Component2) {
-  (0, _inherits3.default)(ShareSaveDropdownButton, _Component2);
-
-  function ShareSaveDropdownButton() {
-    var _ref;
-
-    var _temp, _this2, _ret;
-
-    (0, _classCallCheck3.default)(this, ShareSaveDropdownButton);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this2 = (0, _possibleConstructorReturn3.default)(this, (_ref = ShareSaveDropdownButton.__proto__ || (0, _getPrototypeOf2.default)(ShareSaveDropdownButton)).call.apply(_ref, [this].concat(args))), _this2), _this2._onCopyToClipboardClick = function () {
-      (0, _copyToClipboard2.default)(window.location.href);
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this2, _ret);
+/*
+class ShareSaveDropdownButton extends Component {
+  _onCopyToClipboardClick = () => {
+    copyToClipboard(window.location.href)
   }
 
-  (0, _createClass3.default)(ShareSaveDropdownButton, [{
+  render () {
+    return (
+      <DropdownButton
+        className='tool-button'
+        title={<span><i className='fa fa-share' /> Share/Save</span>}
+        id={'tool-share-dropdown'}
+      >
+        <MenuItem onClick={this._onCopyToClipboardClick}>
+          <i className='fa fa-clipboard' /> Copy Link to Clipboard
+        </MenuItem>
+      </DropdownButton>
+    )
+  }
+}
+*/
+
+// Copy URL Button
+
+var CopyUrlButton = function (_Component2) {
+  (0, _inherits3.default)(CopyUrlButton, _Component2);
+
+  function CopyUrlButton(props) {
+    (0, _classCallCheck3.default)(this, CopyUrlButton);
+
+    var _this2 = (0, _possibleConstructorReturn3.default)(this, (CopyUrlButton.__proto__ || (0, _getPrototypeOf2.default)(CopyUrlButton)).call(this, props));
+
+    _this2._onClick = function () {
+      (0, _copyToClipboard2.default)(window.location.href);
+      _this2.setState({ showCopied: true });
+      setTimeout(function () {
+        _this2.setState({ showCopied: false });
+      }, 2000);
+    };
+
+    _this2.state = { showCopied: false };
+    return _this2;
+  }
+
+  (0, _createClass3.default)(CopyUrlButton, [{
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        _reactBootstrap.DropdownButton,
-        {
-          className: 'tool-button',
-          title: _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          {
+            className: 'tool-button',
+            onClick: this._onClick
+          },
+          this.state.showCopied ? _react2.default.createElement(
             'span',
             null,
-            _react2.default.createElement('i', { className: 'fa fa-share' }),
-            ' Share/Save'
-          ),
-          id: 'tool-share-dropdown'
-        },
-        _react2.default.createElement(
-          _reactBootstrap.MenuItem,
-          { onClick: this._onCopyToClipboardClick },
-          _react2.default.createElement('i', { className: 'fa fa-clipboard' }),
-          ' Copy Link to Clipboard'
+            _react2.default.createElement('i', { className: 'fa fa-check' }),
+            ' Copied'
+          ) : _react2.default.createElement(
+            'span',
+            null,
+            _react2.default.createElement('i', { className: 'fa fa-clipboard' }),
+            ' Copy Link'
+          )
         )
       );
     }
   }]);
-  return ShareSaveDropdownButton;
+  return CopyUrlButton;
 }(_react.Component);
 
 // Print Button Component
@@ -138,21 +173,21 @@ var PrintButton = function (_Component3) {
   (0, _inherits3.default)(PrintButton, _Component3);
 
   function PrintButton() {
-    var _ref2;
+    var _ref;
 
-    var _temp2, _this3, _ret2;
+    var _temp, _this3, _ret;
 
     (0, _classCallCheck3.default)(this, PrintButton);
 
-    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
-    return _ret2 = (_temp2 = (_this3 = (0, _possibleConstructorReturn3.default)(this, (_ref2 = PrintButton.__proto__ || (0, _getPrototypeOf2.default)(PrintButton)).call.apply(_ref2, [this].concat(args))), _this3), _this3._onClick = function () {
+    return _ret = (_temp = (_this3 = (0, _possibleConstructorReturn3.default)(this, (_ref = PrintButton.__proto__ || (0, _getPrototypeOf2.default)(PrintButton)).call.apply(_ref, [this].concat(args))), _this3), _this3._onClick = function () {
       // Note: this is designed to work only with hash routing.
       var printUrl = window.location.href.replace('#', '#/print');
       window.open(printUrl, '_blank');
-    }, _temp2), (0, _possibleConstructorReturn3.default)(_this3, _ret2);
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this3, _ret);
   }
 
   (0, _createClass3.default)(PrintButton, [{
@@ -178,21 +213,21 @@ var PrintButton = function (_Component3) {
 
 // Report Issue Button Component
 
-var ReportIssueButton = (_temp4 = _class3 = function (_Component4) {
+var ReportIssueButton = (_temp3 = _class3 = function (_Component4) {
   (0, _inherits3.default)(ReportIssueButton, _Component4);
 
   function ReportIssueButton() {
-    var _ref3;
+    var _ref2;
 
-    var _temp3, _this4, _ret3;
+    var _temp2, _this4, _ret2;
 
     (0, _classCallCheck3.default)(this, ReportIssueButton);
 
-    for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-      args[_key3] = arguments[_key3];
+    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
     }
 
-    return _ret3 = (_temp3 = (_this4 = (0, _possibleConstructorReturn3.default)(this, (_ref3 = ReportIssueButton.__proto__ || (0, _getPrototypeOf2.default)(ReportIssueButton)).call.apply(_ref3, [this].concat(args))), _this4), _this4._onClick = function () {
+    return _ret2 = (_temp2 = (_this4 = (0, _possibleConstructorReturn3.default)(this, (_ref2 = ReportIssueButton.__proto__ || (0, _getPrototypeOf2.default)(ReportIssueButton)).call.apply(_ref2, [this].concat(args))), _this4), _this4._onClick = function () {
       var _this4$props = _this4.props,
           mailto = _this4$props.mailto,
           subject = _this4$props.subject;
@@ -201,7 +236,7 @@ var ReportIssueButton = (_temp4 = _class3 = function (_Component4) {
       var bodyLines = ['                       *** INSTRUCTIONS TO USER ***', 'This feature allows you to email a report to site administrators for review.', 'Please add any additional feedback for this trip under the \'Additional Comments\'', 'section below and send using your regular email program.', '', 'SEARCH DATA:', 'Address: ' + window.location.href, 'Browser: ' + _bowser2.default.name + ' ' + _bowser2.default.version, 'OS: ' + _bowser2.default.osname + ' ' + _bowser2.default.osversion, '', 'ADDITIONAL COMMENTS:', ''];
 
       window.open('mailto:' + mailto + '?subject=' + subject + '&body=' + encodeURIComponent(bodyLines.join('\n')), '_self');
-    }, _temp3), (0, _possibleConstructorReturn3.default)(_this4, _ret3);
+    }, _temp2), (0, _possibleConstructorReturn3.default)(_this4, _ret2);
   }
 
   (0, _createClass3.default)(ReportIssueButton, [{
@@ -221,13 +256,65 @@ var ReportIssueButton = (_temp4 = _class3 = function (_Component4) {
   return ReportIssueButton;
 }(_react.Component), _class3.defaultProps = {
   subject: 'Reporting an Issue with OpenTripPlanner'
-}, _temp4);
+}, _temp3);
+
+// Link to URL Button
+
+var LinkButton = function (_Component5) {
+  (0, _inherits3.default)(LinkButton, _Component5);
+
+  function LinkButton() {
+    var _ref3;
+
+    var _temp4, _this5, _ret3;
+
+    (0, _classCallCheck3.default)(this, LinkButton);
+
+    for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+      args[_key3] = arguments[_key3];
+    }
+
+    return _ret3 = (_temp4 = (_this5 = (0, _possibleConstructorReturn3.default)(this, (_ref3 = LinkButton.__proto__ || (0, _getPrototypeOf2.default)(LinkButton)).call.apply(_ref3, [this].concat(args))), _this5), _this5._onClick = function () {
+      window.location.href = _this5.props.url;
+    }, _temp4), (0, _possibleConstructorReturn3.default)(_this5, _ret3);
+  }
+
+  (0, _createClass3.default)(LinkButton, [{
+    key: 'render',
+    value: function render() {
+      var _props2 = this.props,
+          icon = _props2.icon,
+          text = _props2.text;
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          {
+            className: 'tool-button',
+            onClick: this._onClick
+          },
+          icon && _react2.default.createElement(
+            'span',
+            null,
+            _react2.default.createElement('i', { className: 'fa fa-' + icon }),
+            ' '
+          ),
+          text
+        )
+      );
+    }
+  }]);
+  return LinkButton;
+}(_react.Component);
 
 // Connect main class to redux store
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    reportConfig: state.otp.config.reportIssue
+    reportConfig: state.otp.config.reportIssue,
+    reactRouterConfig: state.otp.config.reactRouter
   };
 };
 

@@ -230,15 +230,20 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
         label: 'Aerial Tram'
       }];
 
-      var accessModes = [{
+      var accessModes = [
+      /*{
         mode: 'WALK',
         label: 'Walk + Transit'
-      }, {
+      },*/
+      {
         mode: 'BICYCLE',
         label: 'Bike + Transit'
       }, {
         mode: 'CAR_PARK',
         label: 'Park & Ride'
+      }, {
+        mode: 'CAR_RENT',
+        label: 'car2go + Transit'
       }, {
         mode: 'CAR_HAIL',
         company: 'UBER',
@@ -247,9 +252,6 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
         mode: 'CAR_HAIL',
         company: 'LYFT',
         label: 'Lyft + Transit'
-      }, {
-        mode: 'CAR_RENT',
-        label: 'car2go + Transit'
       }];
 
       var bikeOptions = [{
@@ -368,7 +370,7 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
               transitModes.map(function (mode, k) {
                 return _react2.default.createElement(
                   'div',
-                  { style: { display: 'inline-block', width: 64 } },
+                  { style: { display: 'inline-block', width: 64 }, key: k },
                   _react2.default.createElement(_modeButton2.default, {
                     enabled: modeHasTransit,
                     active: _this2._modeIsActive(mode),
