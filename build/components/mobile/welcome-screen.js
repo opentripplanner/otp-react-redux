@@ -97,7 +97,7 @@ var MobileWelcomeScreen = (_temp2 = _class = function (_Component) {
         _react2.default.createElement(_navigationBar2.default, { title: this.props.title }),
         _react2.default.createElement(
           'div',
-          { className: 'mobile-padding' },
+          { className: 'welcome-location mobile-padding' },
           _react2.default.createElement(_locationField2.default, {
             type: 'to',
             label: 'Where do you want to go?',

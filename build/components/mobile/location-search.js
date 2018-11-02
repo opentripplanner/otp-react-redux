@@ -91,7 +91,7 @@ var MobileLocationSearch = (_temp2 = _class = function (_Component) {
         }),
         _react2.default.createElement(
           'div',
-          { className: 'mobile-padding' },
+          { className: 'location-search mobile-padding' },
           _react2.default.createElement(_locationField2.default, {
             type: locationType,
             hideExistingValue: true,

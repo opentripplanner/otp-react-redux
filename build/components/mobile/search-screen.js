@@ -113,7 +113,7 @@ var MobileSearchScreen = (_temp2 = _class = function (_Component) {
         _react2.default.createElement(_navigationBar2.default, { headerText: 'Plan Your Trip' }),
         _react2.default.createElement(
           'div',
-          { className: 'mobile-padding' },
+          { className: 'search-settings mobile-padding' },
           _react2.default.createElement(_locationField2.default, {
             type: 'from',
             onClick: this._fromFieldClicked,

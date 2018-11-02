@@ -81,7 +81,7 @@ var MobileTripViewer = (_temp = _class = function (_Component) {
         }),
         _react2.default.createElement(
           'div',
-          { style: { height: 200 } },
+          { className: 'viewer-map' },
           _react2.default.createElement(_defaultMap2.default, null)
         ),
         _react2.default.createElement(

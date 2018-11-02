@@ -86,7 +86,7 @@ var MobileNavigationBar = (_temp2 = _class = function (_Component) {
 
       return _react2.default.createElement(
         _reactBootstrap.Navbar,
-        { fluid: true },
+        { fluid: true, fixedTop: true },
         _react2.default.createElement(
           _reactBootstrap.Navbar.Header,
           null,

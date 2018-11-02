@@ -138,36 +138,40 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
       });
 
       var locationsSummary = _react2.default.createElement(
-        _reactBootstrap.Row,
-        { xs: 12, className: 'locations-summary', style: { padding: '4px 8px' } },
+        'div',
+        { style: { position: 'fixed', top: 50, left: 0, right: 0, height: 50, paddingRight: 10 } },
         _react2.default.createElement(
-          _reactBootstrap.Col,
-          { xs: 8, sm: 11, style: { fontSize: '1.1em', lineHeight: '1.2em' } },
+          _reactBootstrap.Row,
+          { xs: 12, className: 'locations-summary', style: { padding: '4px 8px' } },
           _react2.default.createElement(
-            'div',
-            { className: 'location' },
-            _react2.default.createElement(_locationIcon2.default, { type: 'from' }),
-            ' ',
-            query.from ? query.from.name : ''
+            _reactBootstrap.Col,
+            { xs: 8, sm: 11, style: { fontSize: '1.1em', lineHeight: '1.2em' } },
+            _react2.default.createElement(
+              'div',
+              { className: 'location' },
+              _react2.default.createElement(_locationIcon2.default, { type: 'from' }),
+              ' ',
+              query.from ? query.from.name : ''
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'location', style: { marginTop: '2px' } },
+              _react2.default.createElement(_locationIcon2.default, { type: 'to' }),
+              ' ',
+              query.to ? query.to.name : ''
+            )
           ),
           _react2.default.createElement(
-            'div',
-            { className: 'location', style: { marginTop: '2px' } },
-            _react2.default.createElement(_locationIcon2.default, { type: 'to' }),
-            ' ',
-            query.to ? query.to.name : ''
-          )
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.Col,
-          { xs: 4, sm: 1 },
-          _react2.default.createElement(
-            _reactBootstrap.Button,
-            {
-              className: 'edit-search-button pull-right',
-              onClick: this._editSearchClicked
-            },
-            'Edit'
+            _reactBootstrap.Col,
+            { xs: 4, sm: 1 },
+            _react2.default.createElement(
+              _reactBootstrap.Button,
+              {
+                className: 'edit-search-button pull-right',
+                onClick: this._editSearchClicked
+              },
+              'Edit'
+            )
           )
         )
       );
