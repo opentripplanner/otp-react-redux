@@ -101,6 +101,9 @@
   left: 0;
   right: 0;
   bottom: 0;
+  background-color: #fff;
+  padding-top: 0;
+  margin-bottom: -10px;
 }
 
 /* results screen: normal display */
