@@ -92,6 +92,7 @@
 .otp.mobile .options-main-content {
   overflow-y: auto;
   overflow-x: hidden;
+  padding-bottom: 40px;
 }
 
 .otp.mobile .options-lower-tray {
