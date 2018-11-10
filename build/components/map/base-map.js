@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _getIterator2 = require('babel-runtime/core-js/get-iterator');
+
+var _getIterator3 = _interopRequireDefault(_getIterator2);
+
 var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
@@ -99,15 +103,15 @@ var BaseMap = (_temp = _class = function (_Component) {
     (0, _classCallCheck3.default)(this, BaseMap);
 
     // For controlled overlays, maintain a map of boolean visibility status,
-    // indexed by controlName string
+    // indexed by 'name' string
     var _this = (0, _possibleConstructorReturn3.default)(this, (BaseMap.__proto__ || (0, _getPrototypeOf2.default)(BaseMap)).call(this, props));
 
     _initialiseProps.call(_this);
 
     var overlayVisibility = {};
     _react2.default.Children.toArray(_this.props.children).forEach(function (child) {
-      if (child.props.controlName && child.props.visible) {
-        overlayVisibility[child.props.controlName] = child.props.visible;
+      if (child.props.name && child.props.visible) {
+        overlayVisibility[child.props.name] = child.props.visible;
       }
     });
 
@@ -178,6 +182,125 @@ var BaseMap = (_temp = _class = function (_Component) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       this._updateBounds(this.props, nextProps);
+
+      // Check if any overlays should be toggled due to mode change
+      var overlaysConfig = this.props.config.map.overlays;
+      if (this.props.query.mode && overlaysConfig && this.props.query.mode !== nextProps.query.mode) {
+        // Determine any added/removed modes
+        var oldModes = this.props.query.mode.split(',');
+        var newModes = nextProps.query.mode.split(',');
+        var removed = oldModes.filter(function (m) {
+          return !newModes.includes(m);
+        });
+        var added = newModes.filter(function (m) {
+          return !oldModes.includes(m);
+        });
+
+        var overlayVisibility = (0, _extends3.default)({}, this.state.overlayVisibility);
+
+        // Turn OFF any affected overlays for removed modes
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = (0, _getIterator3.default)(removed), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var mode = _step.value;
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
+
+            try {
+              for (var _iterator3 = (0, _getIterator3.default)(overlaysConfig), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                var oConfig = _step3.value;
+
+                if (oConfig.modes && oConfig.modes.includes(mode)) {
+                  overlayVisibility[oConfig.name] = false;
+                }
+              }
+            } catch (err) {
+              _didIteratorError3 = true;
+              _iteratorError3 = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                  _iterator3.return();
+                }
+              } finally {
+                if (_didIteratorError3) {
+                  throw _iteratorError3;
+                }
+              }
+            }
+          }
+
+          // Turn ON any affected overlays for added modes
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+          for (var _iterator2 = (0, _getIterator3.default)(added), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var _mode = _step2.value;
+            var _iteratorNormalCompletion4 = true;
+            var _didIteratorError4 = false;
+            var _iteratorError4 = undefined;
+
+            try {
+              for (var _iterator4 = (0, _getIterator3.default)(overlaysConfig), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                var _oConfig = _step4.value;
+
+                if (_oConfig.modes && _oConfig.modes.includes(_mode)) {
+                  overlayVisibility[_oConfig.name] = true;
+                }
+              }
+            } catch (err) {
+              _didIteratorError4 = true;
+              _iteratorError4 = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                  _iterator4.return();
+                }
+              } finally {
+                if (_didIteratorError4) {
+                  throw _iteratorError4;
+                }
+              }
+            }
+          }
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+              _iterator2.return();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
+          }
+        }
+
+        this.setState({ overlayVisibility: overlayVisibility });
+      }
     }
 
     // remove custom overlays on unmount
@@ -206,10 +329,10 @@ var BaseMap = (_temp = _class = function (_Component) {
       var userControlledOverlays = [];
       var fixedOverlays = [];
       _react2.default.Children.toArray(children).forEach(function (child) {
-        if (child.props.controlName) {
-          // Add the visibility flag to this layer and push to the interal
+        if (child.props.name) {
+          // Add the visibility flag to this layer and push to the internal
           // array of user-controlled overlays
-          var visible = _this3.state.overlayVisibility[child.props.controlName];
+          var visible = _this3.state.overlayVisibility[child.props.name];
           var childWithVisibility = _react2.default.cloneElement(child, { visible: visible });
           userControlledOverlays.push(childWithVisibility);
         } else {
@@ -290,7 +413,7 @@ var BaseMap = (_temp = _class = function (_Component) {
             return _react2.default.createElement(
               _reactLeaflet.LayersControl.Overlay,
               { key: i,
-                name: child.props.controlName,
+                name: child.props.name,
                 checked: child.props.visible
               },
               child

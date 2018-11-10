@@ -25,29 +25,25 @@ var receivedZipcarLocationsError = exports.receivedZipcarLocationsError = (0, _r
 var receivedZipcarLocationsResponse = exports.receivedZipcarLocationsResponse = (0, _reduxActions.createAction)('ZIPCAR_LOCATIONS_RESPONSE');
 var requestZipcarLocationsResponse = exports.requestZipcarLocationsResponse = (0, _reduxActions.createAction)('ZIPCAR_LOCATIONS_REQUEST');
 
-function zipcarLocationsQuery() {
+function zipcarLocationsQuery(url) {
   return function () {
     var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(dispatch, getState) {
-      var otpState, url, json, response, error;
+      var json, response, error;
       return _regenerator2.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              otpState = getState().otp;
-
-
               dispatch(requestZipcarLocationsResponse());
-              url = otpState.config.map.zipcarOverlay && otpState.config.map.zipcarOverlay.api;
               json = void 0;
-              _context.prev = 4;
-              _context.next = 7;
+              _context.prev = 2;
+              _context.next = 5;
               return fetch(url);
 
-            case 7:
+            case 5:
               response = _context.sent;
 
               if (!(response.status >= 400)) {
-                _context.next = 12;
+                _context.next = 10;
                 break;
               }
 
@@ -56,30 +52,30 @@ function zipcarLocationsQuery() {
               error.response = response;
               throw error;
 
-            case 12:
-              _context.next = 14;
+            case 10:
+              _context.next = 12;
               return response.json();
 
-            case 14:
+            case 12:
               json = _context.sent;
-              _context.next = 20;
+              _context.next = 18;
               break;
 
-            case 17:
-              _context.prev = 17;
-              _context.t0 = _context['catch'](4);
+            case 15:
+              _context.prev = 15;
+              _context.t0 = _context['catch'](2);
               return _context.abrupt('return', dispatch(receivedZipcarLocationsError(_context.t0)));
 
-            case 20:
+            case 18:
 
               dispatch(receivedZipcarLocationsResponse(json));
 
-            case 21:
+            case 19:
             case 'end':
               return _context.stop();
           }
         }
-      }, _callee, this, [[4, 17]]);
+      }, _callee, this, [[2, 15]]);
     }));
 
     return function (_x, _x2) {

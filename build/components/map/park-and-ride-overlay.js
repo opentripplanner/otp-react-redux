@@ -58,10 +58,8 @@ var ParkAndRideOverlay = (_temp = _class = function (_MapLayer) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var params = {};
-      var prConfig = this.props.prConfig;
-
-      if (prConfig.maxTransitDistance) {
-        params['maxTransitDistance'] = prConfig.maxTransitDistance;
+      if (this.props.maxTransitDistance) {
+        params['maxTransitDistance'] = this.props.maxTransitDistance;
       }
       // TODO: support config-defined bounding envelope
 
@@ -146,8 +144,7 @@ var ParkAndRideOverlay = (_temp = _class = function (_MapLayer) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    locations: state.otp.overlay.parkAndRide && state.otp.overlay.parkAndRide.locations,
-    prConfig: state.otp.config.map.parkAndRideOverlay
+    locations: state.otp.overlay.parkAndRide && state.otp.overlay.parkAndRide.locations
   };
 };
 

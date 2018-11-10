@@ -130,19 +130,22 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
         // Ensure that narrative covers map.
       };narrativeContainerStyle.backgroundColor = 'white';
 
-      var headerAction = realtimeEffects.isAffectedByRealtimeData && (realtimeEffects.exceedsThreshold || realtimeEffects.routesDiffer || !useRealtime) && _react2.default.createElement(_realtimeAnnotation2.default, {
-        componentClass: 'popover',
-        toggleRealtime: this._toggleRealtime,
-        realtimeEffects: realtimeEffects,
-        useRealtime: useRealtime
-      });
+      var headerAction = null;
+      if (realtimeEffects.isAffectedByRealtimeData && (realtimeEffects.exceedsThreshold || realtimeEffects.routesDiffer || !useRealtime)) {
+        headerAction = _react2.default.createElement(_realtimeAnnotation2.default, {
+          componentClass: 'popover',
+          toggleRealtime: this._toggleRealtime,
+          realtimeEffects: realtimeEffects,
+          useRealtime: useRealtime
+        });
+      }
 
       var locationsSummary = _react2.default.createElement(
         'div',
         { style: { position: 'fixed', top: 50, left: 0, right: 0, height: 50, paddingRight: 10 } },
         _react2.default.createElement(
           _reactBootstrap.Row,
-          { xs: 12, className: 'locations-summary', style: { padding: '4px 8px' } },
+          { className: 'locations-summary', style: { padding: '4px 8px' } },
           _react2.default.createElement(
             _reactBootstrap.Col,
             { xs: 8, sm: 11, style: { fontSize: '1.1em', lineHeight: '1.2em' } },
@@ -201,15 +204,14 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
                 ' Back to Search'
               )
             )
-          ),
-          _react2.default.createElement(_errorMessage2.default, { error: error })
+          )
         );
       }
 
       // Construct the 'dots'
       var dots = [];
       for (var i = 0; i < resultCount; i++) {
-        dots.push(_react2.default.createElement('div', { className: 'dot' + (activeItineraryIndex === i ? ' active' : '') }));
+        dots.push(_react2.default.createElement('div', { key: i, className: 'dot' + (activeItineraryIndex === i ? ' active' : '') }));
       }
 
       return _react2.default.createElement(

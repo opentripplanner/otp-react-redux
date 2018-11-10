@@ -58,10 +58,6 @@ var _parkAndRideOverlay = require('./park-and-ride-overlay');
 
 var _parkAndRideOverlay2 = _interopRequireDefault(_parkAndRideOverlay);
 
-var _routesOverlay = require('./routes-overlay');
-
-var _routesOverlay2 = _interopRequireDefault(_routesOverlay);
-
 var _stopsOverlay = require('./stops-overlay');
 
 var _stopsOverlay2 = _interopRequireDefault(_stopsOverlay);
@@ -69,6 +65,10 @@ var _stopsOverlay2 = _interopRequireDefault(_stopsOverlay);
 var _stopViewerOverlay = require('./stop-viewer-overlay');
 
 var _stopViewerOverlay2 = _interopRequireDefault(_stopViewerOverlay);
+
+var _tileOverlay = require('./tile-overlay');
+
+var _tileOverlay2 = _interopRequireDefault(_tileOverlay);
 
 var _transitiveOverlay = require('./transitive-overlay');
 
@@ -118,18 +118,28 @@ var DefaultMap = function (_Component) {
           )
         }, this.props),
         _react2.default.createElement(_tripViewerOverlay2.default, null),
-        _react2.default.createElement(_bikeRentalOverlay2.default, { controlName: 'Bike Stations' }),
-        mapConfig.carRentalOverlay && _react2.default.createElement(_carRentalOverlay2.default, { controlName: mapConfig.carRentalOverlay.name }),
-        mapConfig.zipcarOverlay && _react2.default.createElement(_zipcarOverlay2.default, { controlName: 'Zipcar Locations' }),
-        mapConfig.parkAndRideOverlay && _react2.default.createElement(_parkAndRideOverlay2.default, { controlName: 'Park & Ride Locations' }),
-        _react2.default.createElement(_transitiveOverlay2.default, null),
-        _react2.default.createElement(_routesOverlay2.default, { controlName: 'Transit Routes' }),
-        _react2.default.createElement(_endpointsOverlay2.default, null),
-        _react2.default.createElement(_stopsOverlay2.default, { controlName: 'Transit Stops', visible: true }),
         _react2.default.createElement(_stopViewerOverlay2.default, null),
         _react2.default.createElement(_routeViewerOverlay2.default, null),
-        (0, _ui.isMobile)() && _react2.default.createElement(_currentPositionMarker2.default, null),
-        !(0, _ui.isMobile)() && _react2.default.createElement(_distanceMeasure2.default, null)
+        _react2.default.createElement(_transitiveOverlay2.default, null),
+        _react2.default.createElement(_endpointsOverlay2.default, null),
+        mapConfig.overlays && mapConfig.overlays.map(function (overlayConfig, k) {
+          switch (overlayConfig.type) {
+            case 'car-rental':
+              return _react2.default.createElement(_carRentalOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig));
+            case 'bike-rental':
+              return _react2.default.createElement(_bikeRentalOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig));
+            case 'park-and-ride':
+              return _react2.default.createElement(_parkAndRideOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig));
+            case 'stops':
+              return _react2.default.createElement(_stopsOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig));
+            case 'tile':
+              return _react2.default.createElement(_tileOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig));
+            case 'zipcar':
+              return _react2.default.createElement(_zipcarOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig));
+            default:
+              return null;
+          }
+        })
       );
     }
   }]);

@@ -100,7 +100,7 @@ var TransitiveCanvasOverlay = (_temp = _class = function (_MapLayer) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       // Check if we received new transitive data
-      if (!(0, _lodash2.default)(nextProps.transitiveData, this.props.transitiveData)) {
+      if (this._transitive && !(0, _lodash2.default)(nextProps.transitiveData, this.props.transitiveData)) {
         this._transitive.updateData(nextProps.transitiveData);
         if (!nextProps.transitiveData) this._transitive.render();else this._updateBoundsAndRender();
       }
@@ -119,7 +119,12 @@ var TransitiveCanvasOverlay = (_temp = _class = function (_MapLayer) {
     }
   }, {
     key: 'componentWillUnmount',
-    value: function componentWillUnmount() {}
+    value: function componentWillUnmount() {
+      if (this._transitive) {
+        this._transitive.updateData(null);
+        this._transitive.render();
+      }
+    }
 
     // Internal Methods
 

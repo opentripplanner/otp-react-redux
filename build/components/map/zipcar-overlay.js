@@ -62,11 +62,11 @@ var ZipcarOverlay = (_temp = _class = function (_MapLayer) {
       var _this2 = this;
 
       // ititial station retrieval
-      this.props.zipcarLocationsQuery();
+      this.props.zipcarLocationsQuery(this.props.api);
 
       // set up timer to refresh stations periodically
       this._refreshTimer = setInterval(function () {
-        _this2.props.zipcarLocationsQuery();
+        _this2.props.zipcarLocationsQuery(_this2.props.api);
       }, 30000); // defaults to every 30 sec. TODO: make this configurable?*/
     }
   }, {
@@ -180,6 +180,7 @@ var ZipcarOverlay = (_temp = _class = function (_MapLayer) {
   }]);
   return ZipcarOverlay;
 }(_reactLeaflet.MapLayer), _class.propTypes = {
+  api: _react.PropTypes.string,
   locations: _react.PropTypes.array,
   zipcarLocationsQuery: _react.PropTypes.func,
   setLocation: _react.PropTypes.func
