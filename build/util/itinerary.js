@@ -13,6 +13,7 @@ var _getIterator2 = require('babel-runtime/core-js/get-iterator');
 
 var _getIterator3 = _interopRequireDefault(_getIterator2);
 
+exports.reverse = reverse;
 exports.isTransit = isTransit;
 exports.hasTransit = hasTransit;
 exports.hasCar = hasCar;
@@ -57,7 +58,22 @@ var _modeIcon = require('../components/icons/mode-icon');
 
 var _modeIcon2 = _interopRequireDefault(_modeIcon);
 
+var _pelias = require('./geocoders/pelias');
+
+var pelias = _interopRequireWildcard(_pelias);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getGeocoder(gcConfig) {
+  return pelias;
+}
+
+function reverse(point, gcConfig) {
+  console.log('>>> in util/geocode reverse');
+  return getGeocoder(gcConfig).reverse(point, gcConfig);
+}
 
 /**
  * @param  {string}  mode

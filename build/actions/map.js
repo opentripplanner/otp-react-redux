@@ -3,24 +3,18 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setElevationPoint = exports.showLegDiagram = exports.switchingLocations = exports.settingLocation = exports.clearingLocation = undefined;
-
-var _assign = require('babel-runtime/core-js/object/assign');
-
-var _assign2 = _interopRequireDefault(_assign);
-
+exports.setMapPopupLocation = exports.setElevationPoint = exports.showLegDiagram = exports.switchingLocations = exports.settingLocation = exports.clearingLocation = undefined;
 exports.clearLocation = clearLocation;
 exports.setLocation = setLocation;
 exports.setLocationToCurrent = setLocationToCurrent;
 exports.switchLocations = switchLocations;
-
-var _isomorphicMapzenSearch = require('isomorphic-mapzen-search');
+exports.setMapPopupLocationAndGeocode = setMapPopupLocationAndGeocode;
 
 var _reduxActions = require('redux-actions');
 
-var _form = require('./form');
+var _geocoder = require('../util/geocoder');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _form = require('./form');
 
 /* SET_LOCATION action creator. Updates a from or to location in the store
  *
@@ -50,25 +44,11 @@ function setLocation(payload) {
 
     // reverse geocode point location if requested
     if (payload.reverseGeocode) {
-      var _otpState$config$geoc = otpState.config.geocoder,
-          MAPZEN_KEY = _otpState$config$geoc.MAPZEN_KEY,
-          baseUrl = _otpState$config$geoc.baseUrl;
-      var point = payload.location;
-
-      (0, _isomorphicMapzenSearch.reverse)({
-        apiKey: MAPZEN_KEY,
-        point: point,
-        format: true,
-        url: baseUrl ? baseUrl + '/reverse' : null
-      }).then(function (json) {
-        // override location name if reverse geocode is successful
-        payload.location.name = json[0].address;
+      (0, _geocoder.reverse)(payload.location, otpState.config.geocoder).then(function (location) {
         dispatch(settingLocation({
           type: payload.type,
-          location: (0, _assign2.default)({}, payload.location, { name: json[0].address })
+          location: location
         }));
-        // Trigger form change after reverse geocode so that OTP query contains
-        // reverse geocoded place name
         dispatch((0, _form.formChanged)());
       }).catch(function (err) {
         dispatch(settingLocation({
@@ -124,5 +104,18 @@ function switchLocations() {
 var showLegDiagram = exports.showLegDiagram = (0, _reduxActions.createAction)('SHOW_LEG_DIAGRAM');
 
 var setElevationPoint = exports.setElevationPoint = (0, _reduxActions.createAction)('SET_ELEVATION_POINT');
+
+var setMapPopupLocation = exports.setMapPopupLocation = (0, _reduxActions.createAction)('SET_MAP_POPUP_LOCATION');
+
+function setMapPopupLocationAndGeocode(payload) {
+  return function (dispatch, getState) {
+    dispatch(setMapPopupLocation(payload));
+    (0, _geocoder.reverse)(payload.location, getState().otp.config.geocoder).then(function (location) {
+      dispatch(setMapPopupLocation({ location: location }));
+    }).catch(function (err) {
+      console.warn(err);
+    });
+  };
+}
 
 //# sourceMappingURL=map.js

@@ -8,6 +8,10 @@ var _distance = require('./distance');
 
 var distance = _interopRequireWildcard(_distance);
 
+var _geocode = require('./geocode');
+
+var geocode = _interopRequireWildcard(_geocode);
+
 var _itinerary = require('./itinerary');
 
 var itinerary = _interopRequireWildcard(_itinerary);
@@ -44,6 +48,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var OtpUtils = {
   distance: distance,
+  geocode: geocode,
   itinerary: itinerary,
   map: map,
   profile: profile,

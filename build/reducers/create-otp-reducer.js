@@ -310,6 +310,12 @@ function createOtpReducer(config, initialQuery) {
             elevationPoint: { $set: action.payload }
           }
         });
+      case 'SET_MAP_POPUP_LOCATION':
+        return (0, _immutabilityHelper2.default)(state, {
+          ui: {
+            mapPopupLocation: { $set: action.payload.location }
+          }
+        });
       case 'POSITION_FETCHING':
         return (0, _immutabilityHelper2.default)(state, {
           location: {

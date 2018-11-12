@@ -129,6 +129,9 @@ var BaseMap = (_temp = _class = function (_Component) {
     value: function _updateBounds(oldProps, newProps) {
       // TODO: maybe setting bounds ought to be handled in map props...
 
+      // Don't auto-fit if popup us active
+      if (oldProps && oldProps.popupLocation || newProps.popupLocation) return;
+
       var map = this.refs.map;
 
       if (!map) return;
@@ -162,11 +165,12 @@ var BaseMap = (_temp = _class = function (_Component) {
         map.leafletElement.panTo([step.lat, step.lon]);
       }
     }
+  }, {
+    key: 'componentDidMount',
+
 
     /* React Lifecycle methods */
 
-  }, {
-    key: 'componentDidMount',
     value: function componentDidMount() {
       var _this2 = this;
 
@@ -322,7 +326,8 @@ var BaseMap = (_temp = _class = function (_Component) {
           config = _props.config,
           children = _props.children,
           diagramLeg = _props.diagramLeg,
-          elevationPoint = _props.elevationPoint;
+          elevationPoint = _props.elevationPoint,
+          popupLocation = _props.popupLocation;
       var baseLayers = this.props.config.map.baseLayers;
 
 
@@ -339,9 +344,6 @@ var BaseMap = (_temp = _class = function (_Component) {
           fixedOverlays.push(child);
         }
       });
-
-      var popupPosition = this.state.popupPosition;
-
 
       var center = config.map && config.map.initLat && config.map.initLon ? [config.map.initLat, config.map.initLon] : null;
 
@@ -421,45 +423,52 @@ var BaseMap = (_temp = _class = function (_Component) {
           })
         ),
         fixedOverlays,
-        popupPosition ? _react2.default.createElement(
+        popupLocation && _react2.default.createElement(
           _reactLeaflet.Popup,
           { ref: 'clickPopup',
-            key: popupPosition.toString() // hack to ensure the popup opens only on right click
-            , position: popupPosition // FIXME: onOpen and onClose don't seem to work?
-            // onOpen={() => this.setState({popupPosition: null})}
-            // onClose={() => this.setState({popupPosition: null})}
+            position: [popupLocation.lat, popupLocation.lon],
+            onClose: this._popupClosed
           },
           _react2.default.createElement(
-            'span',
-            null,
-            'Plan a trip:',
+            'div',
+            { style: { width: 240 } },
             _react2.default.createElement(
-              'span',
-              { style: { margin: '0px 5px' } },
-              _react2.default.createElement(_locationIcon2.default, { type: 'from' })
+              'div',
+              { style: { fontSize: 14, marginBottom: 6 } },
+              popupLocation.name.split(',').length > 3 ? popupLocation.name.split(',').splice(0, 3).join(',') : popupLocation.name
             ),
             _react2.default.createElement(
-              'button',
-              { className: 'link-button',
-                onClick: this._onClickFrom },
-              'From here'
-            ),
-            ' ',
-            '|',
-            ' ',
-            _react2.default.createElement(
-              'span',
-              { style: { margin: '0px 5px' } },
-              _react2.default.createElement(_locationIcon2.default, { type: 'to' })
-            ),
-            _react2.default.createElement(
-              'button',
-              { className: 'link-button',
-                onClick: this._onClickTo },
-              'To here'
+              'div',
+              null,
+              'Plan a trip:',
+              _react2.default.createElement(
+                'span',
+                { style: { margin: '0px 5px' } },
+                _react2.default.createElement(_locationIcon2.default, { type: 'from' })
+              ),
+              _react2.default.createElement(
+                'button',
+                { className: 'link-button',
+                  onClick: this._onClickFrom },
+                'From here'
+              ),
+              ' ',
+              '|',
+              ' ',
+              _react2.default.createElement(
+                'span',
+                { style: { margin: '0px 5px' } },
+                _react2.default.createElement(_locationIcon2.default, { type: 'to' })
+              ),
+              _react2.default.createElement(
+                'button',
+                { className: 'link-button',
+                  onClick: this._onClickTo },
+                'To here'
+              )
             )
           )
-        ) : null,
+        ),
         elevationPointMarker
       );
     }
@@ -473,11 +482,13 @@ var BaseMap = (_temp = _class = function (_Component) {
   var _this4 = this;
 
   this._setLocationFromPopup = function (type) {
-    var setLocation = _this4.props.setLocation;
+    var _props2 = _this4.props,
+        setMapPopupLocation = _props2.setMapPopupLocation,
+        setLocation = _props2.setLocation,
+        location = _props2.popupLocation;
 
-    var location = (0, _map2.constructLocation)(_this4.state.popupPosition);
+    setMapPopupLocation({ location: null });
     setLocation({ type: type, location: location, reverseGeocode: true });
-    _this4.setState({ popupPosition: null });
     if (typeof _this4.props.onSetLocation === 'function') {
       _this4.props.onSetLocation({ type: type, location: location });
     }
@@ -492,7 +503,7 @@ var BaseMap = (_temp = _class = function (_Component) {
   };
 
   this._onLeftClick = function (e) {
-    _this4.setState({ popupPosition: e.latlng });
+    _this4.props.setMapPopupLocationAndGeocode({ location: (0, _map2.constructLocation)(e.latlng) });
     if (typeof _this4.props.onClick === 'function') _this4.props.onClick(e);
   };
 
@@ -523,6 +534,10 @@ var BaseMap = (_temp = _class = function (_Component) {
     }
     // }
   };
+
+  this._popupClosed = function () {
+    _this4.props.setMapPopupLocation({ location: null });
+  };
 }, _temp);
 
 // connect to the redux store
@@ -539,12 +554,15 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     isFromSet: state.otp.currentQuery.from && state.otp.currentQuery.from.lat !== null && state.otp.currentQuery.from.lon !== null,
     isToSet: state.otp.currentQuery.to && state.otp.currentQuery.to.lat !== null && state.otp.currentQuery.to.lon !== null,
     itinerary: (0, _state.getActiveItinerary)(state.otp),
-    query: state.otp.currentQuery
+    query: state.otp.currentQuery,
+    popupLocation: state.otp.ui.mapPopupLocation
   };
 };
 
 var mapDispatchToProps = {
-  setLocation: _map.setLocation
+  setLocation: _map.setLocation,
+  setMapPopupLocation: _map.setMapPopupLocation,
+  setMapPopupLocationAndGeocode: _map.setMapPopupLocationAndGeocode
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BaseMap);
