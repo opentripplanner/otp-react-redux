@@ -55,7 +55,7 @@
 
 .otp .switch-button-container-mobile {
   position: absolute;
-  top: 78px;
+  top: 32px;
   right: 45px;
   z-index: 100000;
 }
