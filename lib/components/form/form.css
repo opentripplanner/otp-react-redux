@@ -194,7 +194,7 @@
 /* Error message */
 
 .otp .error-message {
-  padding: 0px 15px;
+  margin: 16px;
 }
 
 .otp .error-message > .header {
