@@ -57,7 +57,8 @@ var DropdownSelector = (_temp2 = _class = function (_Component) {
     }
 
     return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DropdownSelector.__proto__ || (0, _getPrototypeOf2.default)(DropdownSelector)).call.apply(_ref, [this].concat(args))), _this), _this._onQueryParamChange = function (evt) {
-      _this.props.setQueryParam((0, _defineProperty3.default)({}, _this.props.name, evt.target.value));
+      var val = evt.target.value;
+      _this.props.setQueryParam((0, _defineProperty3.default)({}, _this.props.name, isNaN(val) ? val : parseFloat(val)));
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 

@@ -60,16 +60,6 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (SettingsSelectorPanel.__proto__ || (0, _getPrototypeOf2.default)(SettingsSelectorPanel)).call(this, props));
 
-    _this._setTransit = function () {
-      if (_this._lastTransitMode) {
-        // returning to transit from active mode
-        _this.props.setQueryParam({ mode: _this._lastTransitMode });
-        _this._lastTransitMode = null;
-      } else {
-        _this.props.setQueryParam({ mode: 'WALK,TRAM,BUS,RAIL,GONDOLA' });
-      }
-    };
-
     _this._setWalkOnly = function () {
       _this._setSoloMode('WALK');
     };
@@ -113,8 +103,7 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
       }
 
       // If no transit modes selected, select all
-      // TODO: populate based on config
-      if (!queryModes || queryModes.length === 0) queryModes = ['BUS', 'TRAM', 'RAIL', 'GONDOLA'];
+      if (!queryModes || queryModes.length === 0) queryModes = (0, _itinerary.getTransitModes)(_this.props.config);
 
       // Add the access mode
       queryModes.push(modeStr);
@@ -153,7 +142,7 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
         for (var _iterator = (0, _getIterator3.default)(queryModes), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var m = _step.value;
 
-          if (m.startsWith(mode.mode)) return true;
+          if (m === mode.mode) return true;
         }
       } catch (err) {
         _didIteratorError = true;
@@ -208,6 +197,7 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
       var _this2 = this;
 
       var _props2 = this.props,
+          config = _props2.config,
           mode = _props2.mode,
           icons = _props2.icons,
           queryModes = _props2.queryModes;
@@ -216,55 +206,11 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
       var modeHasTransit = (0, _itinerary.hasTransit)(mode);
 
       // TODO: make configurable
-      var transitModes = [{
-        mode: 'BUS',
-        label: 'Bus'
-      }, {
-        mode: 'TRAM',
-        label: 'MAX & Streetcar'
-      }, {
-        mode: 'RAIL',
-        label: 'Wes'
-      }, {
-        mode: 'GONDOLA',
-        label: 'Aerial Tram'
-      }];
+      var _config$modes = config.modes,
+          transitModes = _config$modes.transitModes,
+          accessModes = _config$modes.accessModes,
+          bicycleModes = _config$modes.bicycleModes;
 
-      var accessModes = [
-      /*{
-        mode: 'WALK',
-        label: 'Walk + Transit'
-      },*/
-      {
-        mode: 'BICYCLE',
-        label: 'Bike + Transit'
-      }, {
-        mode: 'CAR_PARK',
-        label: 'Park & Ride'
-      }, {
-        mode: 'CAR_RENT',
-        label: 'car2go + Transit'
-      }, {
-        mode: 'CAR_HAIL',
-        company: 'UBER',
-        label: 'Uber + Transit'
-      }, {
-        mode: 'CAR_HAIL',
-        company: 'LYFT',
-        label: 'Lyft + Transit'
-      }];
-
-      var bikeOptions = [{
-        mode: 'BICYCLE',
-        label: 'Own Bike',
-        iconWidth: 18,
-        action: this._setOwnBike
-      }, {
-        mode: 'BICYCLE_RENT',
-        label: 'Biketown',
-        iconWidth: 36,
-        action: this._setRentedBike
-      }];
 
       return _react2.default.createElement(
         'div',
@@ -399,7 +345,7 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
               { style: { fontSize: 18, margin: '16px 0px' } },
               'Travel Preferences'
             ),
-            (0, _itinerary.hasBike)(mode) && _react2.default.createElement(
+            (0, _itinerary.hasBike)(mode) && !(0, _itinerary.hasTransit)(mode) && _react2.default.createElement(
               'div',
               { style: { marginBottom: 16 } },
               _react2.default.createElement(
@@ -413,12 +359,15 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
                 _react2.default.createElement(
                   _reactBootstrap.ButtonGroup,
                   null,
-                  bikeOptions.map(function (option, k) {
+                  bicycleModes.map(function (option, k) {
+                    var action = _this2._setOwnBike;
+                    if (option.mode === 'BICYCLE_RENT') action = _this2._setRentedBike;
+                    // TODO: Handle different bikeshare networks
                     return _react2.default.createElement(
                       _reactBootstrap.Button,
                       { key: k,
                         style: { backgroundColor: queryModes.includes(option.mode) ? '#000' : '#aaa', color: '#fff', letterSpacing: 1, textTransform: 'uppercase', fontSize: 12 },
-                        onClick: option.action
+                        onClick: action
                       },
                       _react2.default.createElement(
                         'div',
@@ -455,6 +404,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
       routingType = _state$otp$currentQue.routingType;
 
   return {
+    config: state.otp.config,
     mode: mode,
     companies: companies,
     modeGroups: state.otp.config.modeGroups,

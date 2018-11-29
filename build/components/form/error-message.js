@@ -36,6 +36,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
+var _tripTools = require('../narrative/trip-tools');
+
+var _tripTools2 = _interopRequireDefault(_tripTools);
+
 var _state = require('../../util/state');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -110,7 +114,8 @@ var ErrorMessage = (_temp = _class = function (_Component) {
           'div',
           { className: 'message' },
           message
-        )
+        ),
+        _react2.default.createElement(_tripTools2.default, { buttonTypes: ['START_OVER'] })
       );
     }
   }]);

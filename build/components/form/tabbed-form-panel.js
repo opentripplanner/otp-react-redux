@@ -37,8 +37,6 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactBootstrap = require('react-bootstrap');
 
-var _velocityReact = require('velocity-react');
-
 var _dateTimePreview = require('./date-time-preview');
 
 var _dateTimePreview2 = _interopRequireDefault(_dateTimePreview);
@@ -104,39 +102,38 @@ var TabbedFormPanel = (_temp = _class = function (_Component) {
           { className: 'tab-row' },
           _react2.default.createElement(
             'div',
-            { className: 'tab' + (this._isExpanded('DATETIME') ? ' selected' : '') },
-            _react2.default.createElement(_dateTimePreview2.default, {
-              onClick: this._onEditDateTimeClick
-            })
+            { className: 'tab left ' + (this._isExpanded('DATETIME') ? ' selected' : '') },
+            _react2.default.createElement(
+              'div',
+              { className: 'tab-content' },
+              _react2.default.createElement(_dateTimePreview2.default, {
+                onClick: this._onEditDateTimeClick
+              })
+            )
           ),
           _react2.default.createElement(
             'div',
-            { className: 'tab' + (this._isExpanded('SETTINGS') ? ' selected' : '') },
-            _react2.default.createElement(_settingsPreview2.default, {
-              icons: icons,
-              onClick: this._onEditSettingsClick
-            })
-          )
-        ),
-        _react2.default.createElement(
-          _velocityReact.VelocityTransitionGroup,
-          {
-            enter: { animation: 'slideDown' },
-            leave: { animation: 'slideUp' } },
-          expandedDisplay && _react2.default.createElement(
-            'div',
-            { className: 'active-panel' },
-            this._isExpanded('DATETIME') && _react2.default.createElement(_dateTimeModal2.default, null),
-            this._isExpanded('SETTINGS') && _react2.default.createElement(_settingsSelectorPanel2.default, { icons: icons }),
+            { className: 'tab right ' + (this._isExpanded('SETTINGS') ? ' selected' : '') },
             _react2.default.createElement(
               'div',
-              { className: 'hide-button-row' },
-              _react2.default.createElement(
-                _reactBootstrap.Button,
-                { className: 'hide-button clear-button-formatting', onClick: this._onHideClick },
-                _react2.default.createElement('i', { className: 'fa fa-caret-up' }),
-                ' Hide Settings'
-              )
+              { className: 'tab-content' },
+              _react2.default.createElement(_settingsPreview2.default, { onClick: this._onEditSettingsClick })
+            )
+          )
+        ),
+        expandedDisplay && _react2.default.createElement(
+          'div',
+          { className: 'active-panel' },
+          this._isExpanded('DATETIME') && _react2.default.createElement(_dateTimeModal2.default, null),
+          this._isExpanded('SETTINGS') && _react2.default.createElement(_settingsSelectorPanel2.default, { icons: icons }),
+          _react2.default.createElement(
+            'div',
+            { className: 'hide-button-row' },
+            _react2.default.createElement(
+              _reactBootstrap.Button,
+              { className: 'hide-button clear-button-formatting', onClick: this._onHideClick },
+              _react2.default.createElement('i', { className: 'fa fa-caret-up' }),
+              ' Hide Settings'
             )
           )
         )

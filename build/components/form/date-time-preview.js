@@ -71,7 +71,7 @@ var DateTimePreview = (_temp = _class = function (_Component) {
 
       var summary = _react2.default.createElement(
         'div',
-        { className: 'details' },
+        { className: 'summary' },
         _react2.default.createElement('i', { className: 'fa fa-calendar' }),
         ' ',
         (0, _moment2.default)(date).calendar().split(' ')[0],
@@ -86,7 +86,7 @@ var DateTimePreview = (_temp = _class = function (_Component) {
         { className: 'button-container' },
         _react2.default.createElement(
           _reactBootstrap.Button,
-          { className: 'change-button', onClick: this.props.onClick },
+          { onClick: this.props.onClick },
           editButtonText,
           caret && _react2.default.createElement(
             'span',
@@ -97,16 +97,11 @@ var DateTimePreview = (_temp = _class = function (_Component) {
         )
       );
 
-      return this.props.compressed ? /* 'compressed' layout -- button is below selected mode preview */_react2.default.createElement(
+      return _react2.default.createElement(
         'div',
-        { className: 'date-time-preview compressed' },
+        { className: 'settings-preview' },
         summary,
-        button
-      ) : /* 'wide' layout -- button and selected mode preview are side-by-side  */_react2.default.createElement(
-        'div',
-        { className: 'date-time-preview wide' },
         button,
-        summary,
         _react2.default.createElement('div', { style: { clear: 'both' } })
       );
     }

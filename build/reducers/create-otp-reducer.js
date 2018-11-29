@@ -63,15 +63,13 @@ function createOtpReducer(config, initialQuery) {
 
   // If 'TRANSIT' is included in the mode list, replace it with individual modes
   if (queryModes.includes('TRANSIT')) {
+    // Isolate the non-transit modes in queryModes
     queryModes = queryModes.filter(function (m) {
       return !(0, _itinerary.isTransit)(m);
     });
-    config.modeGroups.forEach(function (group) {
-      group.modes.forEach(function (m) {
-        var modeStr = m.mode || m;
-        if (_itinerary.transitModes.includes(modeStr)) queryModes.push(modeStr);
-      });
-    });
+    // Add all possible transit modes
+    queryModes = queryModes.concat((0, _itinerary.getTransitModes)(config));
+    // Stringify and set as OTP 'mode' query param
     currentQuery.mode = queryModes.join(',');
   }
 

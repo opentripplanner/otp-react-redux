@@ -13,7 +13,7 @@ var _getIterator2 = require('babel-runtime/core-js/get-iterator');
 
 var _getIterator3 = _interopRequireDefault(_getIterator2);
 
-exports.reverse = reverse;
+exports.getTransitModes = getTransitModes;
 exports.isTransit = isTransit;
 exports.hasTransit = hasTransit;
 exports.hasCar = hasCar;
@@ -58,29 +58,22 @@ var _modeIcon = require('../components/icons/mode-icon');
 
 var _modeIcon2 = _interopRequireDefault(_modeIcon);
 
-var _pelias = require('./geocoders/pelias');
-
-var pelias = _interopRequireWildcard(_pelias);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function getGeocoder(gcConfig) {
-  return pelias;
-}
-
-function reverse(point, gcConfig) {
-  console.log('>>> in util/geocode reverse');
-  return getGeocoder(gcConfig).reverse(point, gcConfig);
-}
+// All OTP transit modes
+var transitModes = exports.transitModes = ['TRAM', 'BUS', 'SUBWAY', 'FERRY', 'RAIL', 'GONDOLA'];
 
 /**
- * @param  {string}  mode
- * @return {boolean}
+ * @param  {config} config OTP-RR configuration object
+ * @return {array}  List of all transit modes defined in config; otherwise default mode list
  */
 
-var transitModes = exports.transitModes = ['TRAM', 'BUS', 'SUBWAY', 'FERRY', 'RAIL', 'GONDOLA'];
+function getTransitModes(config) {
+  if (!config || !config.modes || !config.modes.transitModes) return transitModes;
+  return config.modes.transitModes.map(function (tm) {
+    return tm.mode;
+  });
+}
 
 function isTransit(mode) {
   return transitModes.includes(mode) || mode === 'TRANSIT';
@@ -188,28 +181,24 @@ function hasBike(modesStr) {
 }
 
 function isWalk(mode) {
-  //mode = mode || this.get('mode')
   if (!mode) return false;
 
   return mode === 'WALK';
 }
 
 function isBicycle(mode) {
-  //mode = mode || this.get('mode')
   if (!mode) return false;
 
   return mode === 'BICYCLE';
 }
 
 function isBicycleRent(mode) {
-  //mode = mode || this.get('mode')
   if (!mode) return false;
 
   return mode === 'BICYCLE_RENT';
 }
 
 function isCar(mode) {
-  //mode = mode || this.get('mode')
   if (!mode) return false;
   return mode.startsWith('CAR');
 }

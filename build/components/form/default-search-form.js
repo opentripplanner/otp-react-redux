@@ -71,7 +71,7 @@ var DefaultSearchForm = (_temp = _class = function (_Component) {
           icons = _props.icons,
           mobile = _props.mobile;
 
-      var actionText = mobile ? 'long press' : 'right-click';
+      var actionText = mobile ? 'tap' : 'click';
 
       return _react2.default.createElement(
         'div',

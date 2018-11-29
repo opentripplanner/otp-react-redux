@@ -36,6 +36,10 @@ var _reactRedux = require('react-redux');
 
 var _itinerary = require('../../util/itinerary');
 
+var _queryParams = require('../../util/query-params');
+
+var _queryParams2 = _interopRequireDefault(_queryParams);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SettingsPreview = (_temp = _class = function (_Component) {
@@ -50,60 +54,48 @@ var SettingsPreview = (_temp = _class = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          config = _props.config,
+          query = _props.query,
           caret = _props.caret,
-          companies = _props.companies,
-          editButtonText = _props.editButtonText,
-          icons = _props.icons,
-          modeGroups = _props.modeGroups,
-          queryModes = _props.queryModes;
+          editButtonText = _props.editButtonText;
 
 
-      var totalModeCount = 0;
-      modeGroups.forEach(function (g) {
-        totalModeCount += g.modes.length;
+      var activeModes = query.mode.split(',');
+      var defaultModes = (0, _itinerary.getTransitModes)(config).concat(['WALK']);
+
+      var showDot = false;
+      var modesEqual = activeModes.length === defaultModes.length && activeModes.sort().every(function (value, index) {
+        return value === defaultModes.sort()[index];
       });
 
-      var selectedModeCount = this.props.queryModes.length;
+      if (!modesEqual) showDot = true;else {
+        // The universe of properties to consider
+        // TODO: allow override in config
+        var paramNames = ['maxWalkDistance', 'maxWalkTime', 'walkSpeed', 'maxBikeDistance', 'maxBikeTime', 'bikeSpeed', 'optimize', 'optimizeBike'];
 
-      var selectedModes = _react2.default.createElement(
-        'div',
-        { className: 'selected-modes' },
-        selectedModeCount === totalModeCount ? _react2.default.createElement(
-          'div',
-          { className: 'all-selected' },
-          'All Modes Selected'
-        ) : _react2.default.createElement(
-          'div',
-          { className: 'some-selected' },
-          _react2.default.createElement(
-            'div',
-            { className: 'some-selected-label' },
-            selectedModeCount,
-            ' Modes Selected'
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'some-selected-modes' },
-            queryModes.map(function (mode) {
-              return _react2.default.createElement(
-                'div',
-                { className: 'mode-icon', key: mode },
-                (0, _itinerary.getModeIcon)(mode === 'CAR_HAIL' ? {
-                  mode: 'CAR_HAIL',
-                  company: companies
-                } : mode, icons)
-              );
-            })
-          )
-        )
-      );
+        paramNames.forEach(function (param) {
+          var paramInfo = _queryParams2.default.find(function (qp) {
+            return qp.name === param;
+          });
+          // Check that the parameter applies to the specified routingType
+          if (!paramInfo.routingTypes.includes(query.routingType)) return;
+
+          // Check that the applicability test (if provided) is satisfied
+          if (typeof paramInfo.applicable === 'function' && !paramInfo.applicable(query)) return;
+
+          if (query[param] !== paramInfo.default) {
+            showDot = true;
+            return;
+          }
+        });
+      }
 
       var button = _react2.default.createElement(
         'div',
         { className: 'button-container' },
         _react2.default.createElement(
           _reactBootstrap.Button,
-          { className: 'settings-button', onClick: this.props.onClick },
+          { onClick: this.props.onClick },
           editButtonText,
           caret && _react2.default.createElement(
             'span',
@@ -111,19 +103,21 @@ var SettingsPreview = (_temp = _class = function (_Component) {
             ' ',
             _react2.default.createElement('i', { className: 'fa fa-caret-' + caret })
           )
-        )
+        ),
+        showDot && _react2.default.createElement('div', { className: 'dot' })
       );
 
-      return this.props.compressed ? /* 'compressed' layout -- button is below selected mode preview */_react2.default.createElement(
+      return _react2.default.createElement(
         'div',
-        { className: 'settings-preview compressed' },
-        selectedModes,
-        button
-      ) : /* 'wide' layout -- button and selected mode preview are side-by-side  */_react2.default.createElement(
-        'div',
-        { className: 'settings-preview wide' },
+        { className: 'settings-preview' },
+        _react2.default.createElement(
+          'div',
+          { className: 'summary' },
+          'Travel',
+          _react2.default.createElement('br', null),
+          'Options'
+        ),
         button,
-        selectedModes,
         _react2.default.createElement('div', { style: { clear: 'both' } })
       );
     }
@@ -148,16 +142,9 @@ var SettingsPreview = (_temp = _class = function (_Component) {
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var _state$otp = state.otp,
-      config = _state$otp.config,
-      currentQuery = _state$otp.currentQuery;
-  var companies = currentQuery.companies,
-      mode = currentQuery.mode;
-
   return {
-    companies: companies,
-    modeGroups: config.modeGroups,
-    queryModes: mode.split(',')
+    config: state.otp.config,
+    query: state.otp.currentQuery
   };
 };
 

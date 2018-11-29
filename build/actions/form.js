@@ -100,7 +100,7 @@ function planParamsToQuery(params) {
         query.time = params.time || (0, _time.getCurrentTime)();
         break;
       default:
-        query[key] = params[key];
+        if (!isNaN(params[key])) query[key] = parseFloat(params[key]);else query[key] = params[key];
     }
   }
   return query;

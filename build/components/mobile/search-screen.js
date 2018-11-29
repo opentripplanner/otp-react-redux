@@ -131,7 +131,7 @@ var MobileSearchScreen = (_temp2 = _class = function (_Component) {
           ),
           _react2.default.createElement(
             _reactBootstrap.Row,
-            null,
+            { style: { marginBottom: 12 } },
             _react2.default.createElement(
               _reactBootstrap.Col,
               { xs: 6, style: { borderRight: '2px solid #ccc' } },
