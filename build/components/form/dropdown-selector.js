@@ -76,7 +76,7 @@ var DropdownSelector = (_temp2 = _class = function (_Component) {
         null,
         _react2.default.createElement(
           _reactBootstrap.FormGroup,
-          { style: { marginBottom: '15px' }, className: 'date-time-selector' },
+          { style: { marginBottom: '15px' } },
           _react2.default.createElement(
             _reactBootstrap.Row,
             null,
@@ -91,6 +91,7 @@ var DropdownSelector = (_temp2 = _class = function (_Component) {
               _react2.default.createElement(
                 _reactBootstrap.FormControl,
                 {
+                  className: 'dropdown-selector',
                   componentClass: 'select',
                   value: value,
                   onChange: this._onQueryParamChange

@@ -131,6 +131,7 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
                 _react2.default.createElement(
                   _reactBootstrap.FormControl,
                   {
+                    className: 'dropdown-selector',
                     componentClass: 'select',
                     style: { width: '100%' },
                     onChange: this._onDayOfWeekChange
@@ -195,6 +196,7 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
               _react2.default.createElement(
                 _reactBootstrap.FormControl,
                 {
+                  className: 'dropdown-selector',
                   componentClass: 'select',
                   value: departArrive,
                   onChange: this._onDepartChange,

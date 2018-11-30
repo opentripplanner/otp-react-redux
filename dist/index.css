@@ -2582,6 +2582,9 @@
   border: none;
   background: none;
   outline: none;
+}/* General dropdown selector */.otp.mobile .dropdown-selector {
+  font-size: 16px;
+  padding-top: 5px;
 }/* Error message */.otp .error-message {
   margin: 16px;
 }.otp .error-message > .header {

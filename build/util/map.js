@@ -81,15 +81,8 @@ function itineraryToTransitive(itin, includeGeometry) {
 
   itin.legs.forEach(function (leg) {
     if (leg.mode === 'WALK' || leg.mode === 'BICYCLE' || leg.mode === 'CAR') {
-      var fromPlaceId = void 0,
-          toPlaceId = void 0;
-      if (leg.rentedBike) {
-        fromPlaceId = 'bicycle_rent_station_' + leg.from.bikeShareId;
-        toPlaceId = 'bicycle_rent_station_' + leg.to.bikeShareId;
-      } else {
-        fromPlaceId = 'itin_street_' + streetEdgeId + '_from';
-        toPlaceId = 'itin_street_' + streetEdgeId + '_to';
-      }
+      var fromPlaceId = leg.from.bikeShareId ? 'bicycle_rent_station_' + leg.from.bikeShareId : 'itin_street_' + streetEdgeId + '_from';
+      var toPlaceId = leg.to.bikeShareId ? 'bicycle_rent_station_' + leg.to.bikeShareId : 'itin_street_' + streetEdgeId + '_to';
 
       var segment = {
         type: leg.mode,
