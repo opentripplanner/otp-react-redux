@@ -68,7 +68,7 @@
     "redux-thunk": "^2.2.0",
     "semantic-release": "^6.3.2",
     "throttle-debounce": "^2.0.1",
-    "transitive-js": "git://github.com/conveyal/transitive.js/#f2286df",
+    "transitive-js": "git://github.com/conveyal/transitive.js/#9bceedb",
     "turf-along": "^3.0.12",
     "velocity-react": "^1.3.3"
   },
