@@ -155,6 +155,7 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
                 _react2.default.createElement(_reactBootstrap.FormControl, {
                   className: 'time-selector',
                   type: 'time',
+                  required: 'true',
                   value: startTime,
                   style: { width: '100%' },
                   onChange: this._onStartTimeChange
@@ -171,6 +172,7 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
                 _react2.default.createElement(_reactBootstrap.FormControl, {
                   className: 'time-selector',
                   type: 'time',
+                  required: 'true',
                   value: endTime,
                   style: { width: '100%' },
                   onChange: this._onEndTimeChange
@@ -222,6 +224,7 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
                 className: 'time-selector',
                 type: 'time',
                 value: time,
+                required: 'true',
                 onChange: this._onTimeChange,
                 style: { width: '100%', display: departArrive === 'NOW' && 'none' }
               })
@@ -233,6 +236,7 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
                 className: 'date-selector',
                 type: 'date',
                 value: date,
+                required: 'true',
                 onChange: this._onDateChange,
                 style: { width: '100%', display: departArrive === 'NOW' && 'none' }
               })
