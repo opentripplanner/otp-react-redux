@@ -9349,9 +9349,9 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
-"transitive-js@git://github.com/conveyal/transitive.js/#f2286df":
+"transitive-js@git://github.com/conveyal/transitive.js/#9bceedb":
   version "1.0.0-SNAPSHOT"
-  resolved "git://github.com/conveyal/transitive.js/#f2286df2468c6cce731277179e6629c0346c07fd"
+  resolved "git://github.com/conveyal/transitive.js/#9bceedbdca88428cbff5468eeb55d78406ce02ea"
   dependencies:
     augment "4.3.0"
     component-each "0.2.6"
