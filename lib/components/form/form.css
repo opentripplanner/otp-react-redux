@@ -128,11 +128,6 @@
 
 /* Settings Selector Panel */
 
-.otp .settings-selector-panel .col-xs-3, .col-xs-4, .col-xs-12 {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
 .otp .settings-selector-panel .button-row {
   margin-bottom: 20px;
 }
@@ -142,6 +137,15 @@
 }
 
 /* Modes Selection Panel */
+
+.otp .modes-panel .col-xs-3,
+.otp .modes-panel .col-xs-4,
+.otp .modes-panel .col-xs-12 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* (old group-based format) */
 
 .otp .modes-panel .mode-group-row {
   margin-bottom: 10px;
@@ -161,9 +165,6 @@
   text-align: right;
   font-size: 12px;
   padding-top: 5px;
-}
-
-.otp .modes-panel .mode-group-row .group-icons {
 }
 
 .otp .modes-panel .mode-group-row .mode-button-container {
@@ -210,7 +211,11 @@
   outline: none;
 }
 
-/* General dropdown selector */
+/* General settings */
+
+.otp .general-settings-panel .row {
+  margin-bottom: 5px;
+}
 
 .otp.mobile .dropdown-selector {
   font-size: 16px;
