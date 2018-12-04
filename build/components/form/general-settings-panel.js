@@ -32,6 +32,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
+var _checkboxSelector = require('./checkbox-selector');
+
+var _checkboxSelector2 = _interopRequireDefault(_checkboxSelector);
+
 var _dropdownSelector = require('./dropdown-selector');
 
 var _dropdownSelector2 = _interopRequireDefault(_dropdownSelector);
@@ -39,6 +43,8 @@ var _dropdownSelector2 = _interopRequireDefault(_dropdownSelector);
 var _queryParams = require('../../util/query-params');
 
 var _queryParams2 = _interopRequireDefault(_queryParams);
+
+var _query = require('../../util/query');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55,7 +61,8 @@ var GeneralSettingsPanel = (_temp = _class = function (_Component) {
     value: function render() {
       var _props = this.props,
           paramNames = _props.paramNames,
-          query = _props.query;
+          query = _props.query,
+          config = _props.config;
 
       return _react2.default.createElement(
         'div',
@@ -68,7 +75,7 @@ var GeneralSettingsPanel = (_temp = _class = function (_Component) {
           if (!paramInfo.routingTypes.includes(query.routingType)) return;
 
           // Check that the applicability test (if provided) is satisfied
-          if (typeof paramInfo.applicable === 'function' && !paramInfo.applicable(query)) return;
+          if (typeof paramInfo.applicable === 'function' && !paramInfo.applicable(query, config)) return;
 
           // Create the UI component based on the selector type
           switch (paramInfo.selector) {
@@ -77,8 +84,15 @@ var GeneralSettingsPanel = (_temp = _class = function (_Component) {
                 key: paramInfo.name,
                 name: paramInfo.name,
                 value: query[paramInfo.name],
-                label: typeof paramInfo.label === 'function' ? paramInfo.label(query) : paramInfo.label,
-                options: typeof paramInfo.options === 'function' ? paramInfo.options(query) : paramInfo.options
+                label: (0, _query.getQueryParamProperty)(paramInfo, 'label', query),
+                options: (0, _query.getQueryParamProperty)(paramInfo, 'options', query)
+              });
+            case 'CHECKBOX':
+              return _react2.default.createElement(_checkboxSelector2.default, {
+                key: paramInfo.label,
+                name: paramInfo.name,
+                value: query[paramInfo.name],
+                label: (0, _query.getQueryParamProperty)(paramInfo, 'label', query)
               });
           }
         })
@@ -92,13 +106,14 @@ var GeneralSettingsPanel = (_temp = _class = function (_Component) {
 }, _class.defaultProps = {
   // The universe of properties to include in this form:
   // TODO: allow override in config
-  paramNames: ['maxWalkDistance', 'maxWalkTime', 'walkSpeed', 'maxBikeDistance', 'maxBikeTime', 'bikeSpeed', 'optimize', 'optimizeBike']
+  paramNames: _query.defaultParams
 }, _temp);
 
 // connect to redux store
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
+    config: state.otp.config,
     query: state.otp.currentQuery
   };
 };

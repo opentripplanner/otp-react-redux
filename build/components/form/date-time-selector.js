@@ -53,16 +53,6 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (DateTimeSelector.__proto__ || (0, _getPrototypeOf2.default)(DateTimeSelector)).call(this, props));
 
-    _this._onDepartChange = function (evt) {
-      _this.props.setQueryParam({ departArrive: evt.target.value });
-      if (evt.target.value === 'NOW') {
-        _this.props.setQueryParam({
-          date: (0, _moment2.default)().format('YYYY-MM-DD'),
-          time: (0, _moment2.default)().format('HH:mm')
-        });
-      }
-    };
-
     _this._onDateChange = function (evt) {
       _this.props.setQueryParam({ date: evt.target.value });
     };
@@ -85,6 +75,16 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
       _this.props.setQueryParam({ time: evt.target.value });
     };
 
+    _this._setDepartArrive = function (type) {
+      _this.props.setQueryParam({ departArrive: type });
+      if (type === 'NOW') {
+        _this.props.setQueryParam({
+          date: (0, _moment2.default)().format('YYYY-MM-DD'),
+          time: (0, _moment2.default)().format('HH:mm')
+        });
+      }
+    };
+
     _this.state = {
       dateFocused: false
     };
@@ -94,6 +94,8 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
   (0, _createClass3.default)(DateTimeSelector, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var _props = this.props,
           departArrive = _props.departArrive,
           date = _props.date,
@@ -101,11 +103,9 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
           startTime = _props.startTime,
           endTime = _props.endTime;
 
-      var options = ['NOW', 'DEPART', 'ARRIVE'];
-      // TODO: choose date / time selectors (currently Chrome optimized)
-
-      if (this.props.profile) {
-        var dowOptions = [{
+      // TODO: restore for profile mode
+      /*if (this.props.profile) {
+        const dowOptions = [{
           text: 'WEEKDAY',
           weekday: 3
         }, {
@@ -114,74 +114,51 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
         }, {
           text: 'SUNDAY',
           weekday: 0
-        }];
-
-        return _react2.default.createElement(
-          _reactBootstrap.Form,
-          null,
-          _react2.default.createElement(
-            _reactBootstrap.FormGroup,
-            { style: { marginBottom: '15px' }, className: 'date-time-selector' },
-            _react2.default.createElement(
-              _reactBootstrap.Row,
-              null,
-              _react2.default.createElement(
-                _reactBootstrap.Col,
-                { xs: 12 },
-                _react2.default.createElement(
-                  _reactBootstrap.FormControl,
-                  {
-                    className: 'dropdown-selector',
-                    componentClass: 'select',
-                    style: { width: '100%' },
-                    onChange: this._onDayOfWeekChange
-                  },
-                  dowOptions.map(function (o, i) {
-                    return _react2.default.createElement(
-                      'option',
-                      { key: i, value: o.weekday },
-                      o.text
-                    );
-                  })
-                )
-              )
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.Row,
-              { style: { marginTop: 20 } },
-              _react2.default.createElement(
-                _reactBootstrap.Col,
-                { xs: 5 },
-                _react2.default.createElement(_reactBootstrap.FormControl, {
-                  className: 'time-selector',
-                  type: 'time',
-                  required: 'true',
-                  value: startTime,
-                  style: { width: '100%' },
-                  onChange: this._onStartTimeChange
-                })
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.Col,
-                { xs: 2 },
-                'TO'
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.Col,
-                { xs: 5 },
-                _react2.default.createElement(_reactBootstrap.FormControl, {
-                  className: 'time-selector',
-                  type: 'time',
-                  required: 'true',
-                  value: endTime,
-                  style: { width: '100%' },
-                  onChange: this._onEndTimeChange
-                })
-              )
-            )
-          )
-        );
-      }
+        }]
+         return (
+          <Form>
+            <FormGroup style={{marginBottom: '15px'}} className='date-time-selector'>
+              <Row>
+                <Col xs={12}>
+                  <FormControl
+                    className='dropdown-selector'
+                    componentClass='select'
+                    style={{width: '100%'}}
+                    onChange={this._onDayOfWeekChange}
+                  >
+                    {dowOptions.map((o, i) => (
+                      <option key={i} value={o.weekday}>{o.text}</option>
+                    ))}
+                  </FormControl>
+                </Col>
+              </Row>
+              <Row style={{ marginTop: 20 }}>
+                <Col xs={5}>
+                  <FormControl
+                    className='time-selector'
+                    type='time'
+                    required='true'
+                    value={startTime}
+                    style={{width: '100%'}}
+                    onChange={this._onStartTimeChange}
+                  />
+                </Col>
+                <Col xs={2}>TO</Col>
+                <Col xs={5}>
+                  <FormControl
+                    className='time-selector'
+                    type='time'
+                    required='true'
+                    value={endTime}
+                    style={{width: '100%'}}
+                    onChange={this._onEndTimeChange}
+                  />
+                </Col>
+              </Row>
+            </FormGroup>
+          </Form>
+        )
+      }*/
 
       return _react2.default.createElement(
         _reactBootstrap.Form,
@@ -192,29 +169,15 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
           _react2.default.createElement(
             _reactBootstrap.Row,
             null,
-            _react2.default.createElement(
-              _reactBootstrap.Col,
-              { xs: 12 },
-              _react2.default.createElement(
-                _reactBootstrap.FormControl,
-                {
-                  className: 'dropdown-selector',
-                  componentClass: 'select',
-                  value: departArrive,
-                  onChange: this._onDepartChange,
-                  style: { width: '100%' }
-                },
-                options.map(function (o, i) {
-                  return _react2.default.createElement(
-                    'option',
-                    { key: i, value: o },
-                    o
-                  );
-                })
-              )
-            )
+            ['NOW', 'DEPART', 'ARRIVE'].map(function (type, i) {
+              return _react2.default.createElement(
+                _reactBootstrap.Col,
+                { key: i, xs: 4 },
+                _react2.default.createElement(DateOptionButton, { type: type, active: departArrive === type, setDepartArrive: _this2._setDepartArrive })
+              );
+            })
           ),
-          _react2.default.createElement(
+          departArrive !== 'NOW' && _react2.default.createElement(
             _reactBootstrap.Row,
             { style: { marginTop: 20 } },
             _react2.default.createElement(
@@ -261,6 +224,47 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
   type: _react.PropTypes.string // replace with locationType?
 }, _temp);
 
+var DateOptionButton = function (_Component2) {
+  (0, _inherits3.default)(DateOptionButton, _Component2);
+
+  function DateOptionButton() {
+    var _ref;
+
+    var _temp2, _this3, _ret;
+
+    (0, _classCallCheck3.default)(this, DateOptionButton);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp2 = (_this3 = (0, _possibleConstructorReturn3.default)(this, (_ref = DateOptionButton.__proto__ || (0, _getPrototypeOf2.default)(DateOptionButton)).call.apply(_ref, [this].concat(args))), _this3), _this3._onClick = function () {
+      _this3.props.setDepartArrive(_this3.props.type);
+    }, _temp2), (0, _possibleConstructorReturn3.default)(_this3, _ret);
+  }
+
+  (0, _createClass3.default)(DateOptionButton, [{
+    key: 'render',
+    value: function render() {
+      var _props2 = this.props,
+          active = _props2.active,
+          type = _props2.type;
+
+      var text = type;
+      if (type === 'NOW') text = 'Leave now';
+      if (type === 'DEPART') text = 'Depart at';
+      if (type === 'ARRIVE') text = 'Arrive by';
+      var classNames = ['depart-arrive-button'];
+      if (active) classNames.push('active');
+      return _react2.default.createElement(
+        _reactBootstrap.Button,
+        { className: classNames.join(' '), onClick: this._onClick },
+        text
+      );
+    }
+  }]);
+  return DateOptionButton;
+}(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var _state$otp$currentQue = state.otp.currentQuery,

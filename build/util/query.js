@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.defaultParams = undefined;
 
 var _assign = require('babel-runtime/core-js/object/assign');
 
@@ -12,6 +13,7 @@ var _keys = require('babel-runtime/core-js/object/keys');
 
 var _keys2 = _interopRequireDefault(_keys);
 
+exports.getQueryParamProperty = getQueryParamProperty;
 exports.ensureSingleAccessMode = ensureSingleAccessMode;
 exports.setUrlSearch = setUrlSearch;
 exports.updateOtpUrlParams = updateOtpUrlParams;
@@ -27,6 +29,17 @@ var _itinerary = require('./itinerary');
 var _state = require('./state');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* The list of default parameters considered in the settings panel */
+
+var defaultParams = exports.defaultParams = ['wheelchair', 'maxWalkDistance', 'maxWalkTime', 'walkSpeed', 'maxBikeDistance', 'maxBikeTime', 'bikeSpeed', 'optimize', 'optimizeBike'];
+
+/* A function to retrieve a property value from an entry in the query-params
+ * table, checking for either a static value or a function */
+
+function getQueryParamProperty(paramInfo, property, query) {
+  return typeof paramInfo[property] === 'function' ? paramInfo[property](query) : paramInfo[property];
+}
 
 function ensureSingleAccessMode(queryModes) {
   // Count the number of access modes

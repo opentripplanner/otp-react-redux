@@ -4,9 +4,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _typeof2 = require('babel-runtime/helpers/typeof');
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
+var _getIterator2 = require('babel-runtime/core-js/get-iterator');
+
+var _getIterator3 = _interopRequireDefault(_getIterator2);
+
 var _time = require('../util/time');
 
 var _itinerary = require('../util/itinerary');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * name: the default name of the parameter used for internal reference and API calls
@@ -361,6 +371,61 @@ var queryParams = [{ /* from - the trip origin. stored internally as a location 
   name: 'companies',
   routingTypes: ['ITINERARY'],
   default: null
+}, { /* wheelchair -- whether the user requires a wheelchair-accessible trip */
+  name: 'wheelchair',
+  routingTypes: ['ITINERARY'],
+  default: false,
+  selector: 'CHECKBOX',
+  label: 'Wheelchair Accessible',
+  applicable: function applicable(query, config) {
+    if (!query.mode) return false;
+
+    var _loop = function _loop(mode) {
+      if (config.modes && config.modes.accessModes) {
+        var accessMode = config.modes.accessModes.find(function (m) {
+          return m.mode === mode;
+        });
+        if (accessMode && accessMode.showWheelchairSetting) return {
+            v: true
+          };
+      }
+      if (config.modes && config.modes.transitModes) {
+        var transitMode = config.modes.transitModes.find(function (m) {
+          return m.mode === mode;
+        });
+        if (transitMode && transitMode.showWheelchairSetting) return {
+            v: true
+          };
+      }
+    };
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = (0, _getIterator3.default)(query.mode.split(',')), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var mode = _step.value;
+
+        var _ret = _loop(mode);
+
+        if ((typeof _ret === 'undefined' ? 'undefined' : (0, _typeof3.default)(_ret)) === "object") return _ret.v;
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+  }
 }];
 
 exports.default = queryParams;

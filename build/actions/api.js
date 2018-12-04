@@ -170,7 +170,7 @@ function constructRoutingQuery(otpState, ignoreRealtimeUpdates) {
     // 1. Must apply to the active routing type (ITINERARY or PROFILE)
     // 2. Must be included in the current user-defined query
     // 3. Must pass the parameter's applicability test, if one is specified
-    return qp.routingTypes.indexOf(routingType) !== -1 && qp.name in currentQuery && (typeof qp.applicable !== 'function' || qp.applicable(currentQuery));
+    return qp.routingTypes.indexOf(routingType) !== -1 && qp.name in currentQuery && (typeof qp.applicable !== 'function' || qp.applicable(currentQuery, config));
   }).forEach(function (qp) {
     // Translate the applicable parameters according to their rewrite
     // functions (if provided)

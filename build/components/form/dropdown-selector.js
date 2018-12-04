@@ -72,22 +72,22 @@ var DropdownSelector = (_temp2 = _class = function (_Component) {
 
 
       return _react2.default.createElement(
-        _reactBootstrap.Form,
+        _reactBootstrap.Row,
         null,
         _react2.default.createElement(
-          _reactBootstrap.FormGroup,
-          { style: { marginBottom: '15px' } },
+          _reactBootstrap.Col,
+          { xs: 6, className: 'setting-label' },
+          label
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Col,
+          { xs: 6 },
           _react2.default.createElement(
-            _reactBootstrap.Row,
+            _reactBootstrap.Form,
             null,
             _react2.default.createElement(
-              _reactBootstrap.Col,
-              { xs: 6, className: 'setting-label' },
-              label
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.Col,
-              { xs: 6 },
+              _reactBootstrap.FormGroup,
+              null,
               _react2.default.createElement(
                 _reactBootstrap.FormControl,
                 {

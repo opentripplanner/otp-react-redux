@@ -131,14 +131,19 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
       };narrativeContainerStyle.backgroundColor = 'white';
 
       var headerAction = null;
-      if (realtimeEffects.isAffectedByRealtimeData && (realtimeEffects.exceedsThreshold || realtimeEffects.routesDiffer || !useRealtime)) {
-        headerAction = _react2.default.createElement(_realtimeAnnotation2.default, {
-          componentClass: 'popover',
-          toggleRealtime: this._toggleRealtime,
-          realtimeEffects: realtimeEffects,
-          useRealtime: useRealtime
-        });
-      }
+      var showRealtimeAnnotation = realtimeEffects.isAffectedByRealtimeData && (realtimeEffects.exceedsThreshold || realtimeEffects.routesDiffer || !useRealtime);
+
+      /* Old navbar alert
+      if (showRealtimeAnnotation) {
+        headerAction = (
+          <RealtimeAnnotation
+            componentClass='popover'
+            toggleRealtime={this._toggleRealtime}
+            realtimeEffects={realtimeEffects}
+            useRealtime={useRealtime}
+          />
+        )
+      */
 
       var locationsSummary = _react2.default.createElement(
         'div',
@@ -249,7 +254,8 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
             itineraryClass: itineraryClass,
             hideHeader: true,
             expanded: this.state.expanded,
-            onClick: this._optionClicked
+            onClick: this._optionClicked,
+            showRealtimeAnnotation: showRealtimeAnnotation
           })
         ),
         _react2.default.createElement(

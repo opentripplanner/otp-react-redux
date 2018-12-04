@@ -39,10 +39,6 @@ var _modeIcon = require('../../icons/mode-icon');
 
 var _modeIcon2 = _interopRequireDefault(_modeIcon);
 
-var _tncWrapper = require('../tnc-wrapper');
-
-var _tncWrapper2 = _interopRequireDefault(_tncWrapper);
-
 var _tripDetails = require('../trip-details');
 
 var _tripDetails2 = _interopRequireDefault(_tripDetails);
@@ -72,7 +68,7 @@ var PrintableItinerary = (_temp = _class = function (_Component) {
         'div',
         { className: 'printable-itinerary' },
         itinerary.legs.map(function (leg, k) {
-          return leg.transitLeg ? _react2.default.createElement(TransitLeg, { key: k, leg: leg }) : leg.hailedCar ? _react2.default.createElement(_tncWrapper2.default, { componentClass: TNCLeg, leg: leg, legMode: (0, _itinerary.getLegMode)(companies, leg) }) : _react2.default.createElement(AccessLeg, { key: k, leg: leg });
+          return leg.transitLeg ? _react2.default.createElement(TransitLeg, { key: k, leg: leg }) : leg.hailedCar ? _react2.default.createElement(TNCLeg, { leg: leg, legMode: (0, _itinerary.getLegMode)(companies, leg) }) : _react2.default.createElement(AccessLeg, { key: k, leg: leg });
         }),
         _react2.default.createElement(_tripDetails2.default, { itinerary: itinerary })
       );
@@ -235,11 +231,11 @@ var TNCLeg = (_temp4 = _class4 = function (_Component4) {
   (0, _createClass3.default)(TNCLeg, [{
     key: 'render',
     value: function render() {
-      var _props2 = this.props,
-          leg = _props2.leg,
-          eta = _props2.eta;
+      var leg = this.props.leg;
+      var tncData = leg.tncData;
 
-      if (!eta) return null;
+      if (!tncData) return null;
+
       return _react2.default.createElement(
         'div',
         { className: 'leg' },
@@ -258,7 +254,7 @@ var TNCLeg = (_temp4 = _class4 = function (_Component4) {
               'b',
               null,
               'Take ',
-              eta.displayName
+              tncData.displayName
             ),
             ' to ',
             _react2.default.createElement(
@@ -277,9 +273,19 @@ var TNCLeg = (_temp4 = _class4 = function (_Component4) {
               _react2.default.createElement(
                 'b',
                 null,
-                Math.round(eta.estimatedSeconds / 60),
-                ' min.'
+                (0, _time.formatDuration)(tncData.estimatedArrival)
               )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'leg-detail' },
+              'Estimated travel time: ',
+              _react2.default.createElement(
+                'b',
+                null,
+                (0, _time.formatDuration)(leg.duration)
+              ),
+              ' (does not account for traffic)'
             )
           )
         )

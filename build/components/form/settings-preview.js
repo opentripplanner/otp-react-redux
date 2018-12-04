@@ -40,6 +40,8 @@ var _queryParams = require('../../util/query-params');
 
 var _queryParams2 = _interopRequireDefault(_queryParams);
 
+var _query = require('../../util/query');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SettingsPreview = (_temp = _class = function (_Component) {
@@ -69,11 +71,7 @@ var SettingsPreview = (_temp = _class = function (_Component) {
       });
 
       if (!modesEqual) showDot = true;else {
-        // The universe of properties to consider
-        // TODO: allow override in config
-        var paramNames = ['maxWalkDistance', 'maxWalkTime', 'walkSpeed', 'maxBikeDistance', 'maxBikeTime', 'bikeSpeed', 'optimize', 'optimizeBike'];
-
-        paramNames.forEach(function (param) {
+        _query.defaultParams.forEach(function (param) {
           var paramInfo = _queryParams2.default.find(function (qp) {
             return qp.name === param;
           });
@@ -81,7 +79,7 @@ var SettingsPreview = (_temp = _class = function (_Component) {
           if (!paramInfo.routingTypes.includes(query.routingType)) return;
 
           // Check that the applicability test (if provided) is satisfied
-          if (typeof paramInfo.applicable === 'function' && !paramInfo.applicable(query)) return;
+          if (typeof paramInfo.applicable === 'function' && !paramInfo.applicable(query, config)) return;
 
           if (query[param] !== paramInfo.default) {
             showDot = true;

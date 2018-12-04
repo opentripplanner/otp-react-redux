@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.otpUtils = exports.createOtpReducer = exports.setUseRealtimeResponse = exports.setMapCenter = exports.setLocationToCurrent = exports.setAutoPlan = exports.getCurrentPosition = exports.findNearbyStops = exports.clearLocation = exports.AppMenu = exports.ResponsiveWebapp = exports.ViewTripButton = exports.ViewStopButton = exports.ViewerContainer = exports.StopViewer = exports.MobileMain = exports.TNCWrapper = exports.TripTools = exports.TripDetails = exports.TransportationNetworkCompanyLeg = exports.RealtimeAnnotation = exports.NarrativeRoutingResults = exports.NarrativeProfileOptions = exports.NarrativeItinerary = exports.NarrativeItineraries = exports.LegDiagramPreview = exports.LocationIcon = exports.TransitiveOverlay = exports.TileOverlay = exports.StopsOverlay = exports.OsmBaseLayer = exports.Map = exports.ItineraryOverlay = exports.ItineraryCarousel = exports.EndpointsOverlay = exports.DefaultMap = exports.BikeRentalOverlay = exports.BaseMap = exports.BaseLayers = exports.SwitchButton = exports.StylizedMap = exports.SettingsSelectorPanel = exports.SettingsPreview = exports.PlanTripButton = exports.ModesPanel = exports.ModeSelector = exports.LocationField = exports.GeneralSettingsPanel = exports.ErrorMessage = exports.DefaultSearchForm = exports.DateTimeSelector = exports.DateTimePreview = exports.DateTimeModal = undefined;
+exports.otpUtils = exports.createOtpReducer = exports.setUseRealtimeResponse = exports.setMapCenter = exports.setLocationToCurrent = exports.setAutoPlan = exports.getCurrentPosition = exports.findNearbyStops = exports.clearLocation = exports.AppMenu = exports.ResponsiveWebapp = exports.ViewTripButton = exports.ViewStopButton = exports.ViewerContainer = exports.StopViewer = exports.MobileMain = exports.TripTools = exports.TripDetails = exports.TransportationNetworkCompanyLeg = exports.SimpleRealtimeAnnotation = exports.RealtimeAnnotation = exports.NarrativeRoutingResults = exports.NarrativeProfileOptions = exports.NarrativeItinerary = exports.NarrativeItineraries = exports.LegDiagramPreview = exports.LocationIcon = exports.TransitiveOverlay = exports.TileOverlay = exports.StopsOverlay = exports.OsmBaseLayer = exports.Map = exports.ItineraryOverlay = exports.ItineraryCarousel = exports.EndpointsOverlay = exports.DefaultMap = exports.BikeRentalOverlay = exports.BaseMap = exports.BaseLayers = exports.SwitchButton = exports.StylizedMap = exports.SettingsSelectorPanel = exports.SettingsPreview = exports.PlanTripButton = exports.ModesPanel = exports.ModeSelector = exports.LocationField = exports.GeneralSettingsPanel = exports.ErrorMessage = exports.DefaultSearchForm = exports.DateTimeSelector = exports.DateTimePreview = exports.DateTimeModal = undefined;
 
 var _dateTimeModal = require('./components/form/date-time-modal');
 
@@ -137,6 +137,10 @@ var _realtimeAnnotation = require('./components/narrative/realtime-annotation');
 
 var _realtimeAnnotation2 = _interopRequireDefault(_realtimeAnnotation);
 
+var _simpleRealtimeAnnotation = require('./components/narrative/simple-realtime-annotation');
+
+var _simpleRealtimeAnnotation2 = _interopRequireDefault(_simpleRealtimeAnnotation);
+
 var _tncLeg = require('./components/narrative/default/tnc-leg');
 
 var _tncLeg2 = _interopRequireDefault(_tncLeg);
@@ -148,10 +152,6 @@ var _tripDetails2 = _interopRequireDefault(_tripDetails);
 var _tripTools = require('./components/narrative/trip-tools');
 
 var _tripTools2 = _interopRequireDefault(_tripTools);
-
-var _tncWrapper = require('./components/narrative/tnc-wrapper');
-
-var _tncWrapper2 = _interopRequireDefault(_tncWrapper);
 
 var _main = require('./components/mobile/main');
 
@@ -234,10 +234,10 @@ exports.NarrativeItinerary = _narrativeItinerary2.default;
 exports.NarrativeProfileOptions = _narrativeProfileOptions2.default;
 exports.NarrativeRoutingResults = _narrativeRoutingResults2.default;
 exports.RealtimeAnnotation = _realtimeAnnotation2.default;
+exports.SimpleRealtimeAnnotation = _simpleRealtimeAnnotation2.default;
 exports.TransportationNetworkCompanyLeg = _tncLeg2.default;
 exports.TripDetails = _tripDetails2.default;
 exports.TripTools = _tripTools2.default;
-exports.TNCWrapper = _tncWrapper2.default;
 exports.MobileMain = _main2.default;
 exports.StopViewer = _stopViewer2.default;
 exports.ViewerContainer = _viewerContainer2.default;

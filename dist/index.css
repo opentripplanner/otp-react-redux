@@ -2489,7 +2489,20 @@
   margin-bottom: 20px;
 }.otp .date-time-modal .button-row .selected {
   background-color: #ccc;
-}/* Date/Time selectors */.otp .date-time-selector .date-selector,
+}/* Date/Time selectors */.otp .date-time-selector .col-xs-4,
+.otp .date-time-selector .col-xs-6 {
+  padding-left: 5px;
+  padding-right: 5px;
+}.otp .date-time-selector .depart-arrive-button  {
+  width: 100%;
+  border-radius: 0px;
+  background-color: #777;
+  color: #fff;
+  font-weight: 300;
+}.otp .date-time-selector .depart-arrive-button.active  {
+  background-color: #aaa;
+  font-weight: 500;
+}.otp .date-time-selector .date-selector,
 .otp .date-time-selector .time-selector {
   font-size: 16px;
   width: 100%;
@@ -2543,14 +2556,16 @@
 }.otp.mobile .settings-preview .button-container {
   float: none;
   display: inline-block;
-}/* Settings Selector Panel */.otp .settings-selector-panel .col-xs-3, .col-xs-4, .col-xs-12 {
-  padding-left: 5px;
-  padding-right: 5px;
-}.otp .settings-selector-panel .button-row {
+}/* Settings Selector Panel */.otp .settings-selector-panel .button-row {
   margin-bottom: 20px;
 }.otp .settings-selector-panel .button-row .selected {
   background-color: #ccc;
-}/* Modes Selection Panel */.otp .modes-panel .mode-group-row {
+}/* Modes Selection Panel */.otp .modes-panel .col-xs-3,
+.otp .modes-panel .col-xs-4,
+.otp .modes-panel .col-xs-12 {
+  padding-left: 5px;
+  padding-right: 5px;
+}/* (old group-based format) */.otp .modes-panel .mode-group-row {
   margin-bottom: 10px;
 }.otp .modes-panel .mode-group-row .group-header {
   margin-bottom: 10px;
@@ -2562,7 +2577,6 @@
   text-align: right;
   font-size: 12px;
   padding-top: 5px;
-}.otp .modes-panel .mode-group-row .group-icons {
 }.otp .modes-panel .mode-group-row .mode-button-container {
   display: inline-block;
   width: 100%;
@@ -2595,7 +2609,9 @@
   border: none;
   background: none;
   outline: none;
-}/* General dropdown selector */.otp.mobile .dropdown-selector {
+}/* General settings */.otp .general-settings-panel .row {
+  margin-bottom: 5px;
+}.otp.mobile .dropdown-selector {
   font-size: 16px;
   padding-top: 5px;
 }/* Error message */.otp .error-message {

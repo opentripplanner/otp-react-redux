@@ -44,15 +44,7 @@ var _defaultItinerary = require('./default/default-itinerary');
 
 var _defaultItinerary2 = _interopRequireDefault(_defaultItinerary);
 
-var _icon = require('./icon');
-
-var _icon2 = _interopRequireDefault(_icon);
-
 var _state = require('../../util/state');
-
-var _realtimeAnnotation = require('./realtime-annotation');
-
-var _realtimeAnnotation2 = _interopRequireDefault(_realtimeAnnotation);
 
 var _itinerary = require('../../util/itinerary');
 
@@ -90,14 +82,15 @@ var TabbedItineraries = (_temp2 = _class = function (_Component) {
 
       var _props = this.props,
           activeItinerary = _props.activeItinerary,
-          companies = _props.companies,
           itineraries = _props.itineraries,
           itineraryClass = _props.itineraryClass,
           realtimeEffects = _props.realtimeEffects,
-          tnc = _props.tnc,
           useRealtime = _props.useRealtime;
 
       if (!itineraries) return null;
+
+      /* TODO: should this be moved? */
+      var showRealtimeAnnotation = realtimeEffects.isAffectedByRealtimeData && (realtimeEffects.exceedsThreshold || realtimeEffects.routesDiffer || !useRealtime);
 
       return _react2.default.createElement(
         'div',
@@ -169,16 +162,13 @@ var TabbedItineraries = (_temp2 = _class = function (_Component) {
             );
           })
         ),
-        realtimeEffects.isAffectedByRealtimeData && (realtimeEffects.exceedsThreshold || realtimeEffects.routesDiffer || !useRealtime) && _react2.default.createElement(_realtimeAnnotation2.default, {
-          realtimeEffects: realtimeEffects,
-          toggleRealtime: this._toggleRealtimeItineraryClick,
-          useRealtime: useRealtime }),
         activeItinerary !== null && _react2.default.createElement(itineraryClass, (0, _extends3.default)({
           itinerary: itineraries[activeItinerary],
           index: activeItinerary,
           key: activeItinerary,
           active: true,
-          routingType: 'ITINERARY'
+          routingType: 'ITINERARY',
+          showRealtimeAnnotation: showRealtimeAnnotation
         }, this.props))
       );
     }
