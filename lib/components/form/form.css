@@ -46,6 +46,26 @@
 
 /* Date/Time selectors */
 
+.otp .date-time-selector .col-xs-4,
+.otp .date-time-selector .col-xs-6 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.otp .date-time-selector .depart-arrive-button  {
+  width: 100%;
+  border-radius: 0px;
+  background-color: #777;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.otp .date-time-selector .depart-arrive-button.active  {
+  background-color: #aaa;
+  font-weight: 600;
+}
+
 .otp .date-time-selector .date-selector,
 .otp .date-time-selector .time-selector {
   font-size: 16px;
