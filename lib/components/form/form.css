@@ -57,13 +57,12 @@
   border-radius: 0px;
   background-color: #777;
   color: #fff;
-  text-transform: uppercase;
   font-weight: 300;
 }
 
 .otp .date-time-selector .depart-arrive-button.active  {
   background-color: #aaa;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .otp .date-time-selector .date-selector,
