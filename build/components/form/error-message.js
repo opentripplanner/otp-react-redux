@@ -115,7 +115,7 @@ var ErrorMessage = (_temp = _class = function (_Component) {
           { className: 'message' },
           message
         ),
-        _react2.default.createElement(_tripTools2.default, { buttonTypes: ['START_OVER'] })
+        _react2.default.createElement(_tripTools2.default, { buttonTypes: ['START_OVER', 'REPORT_ISSUE'] })
       );
     }
   }]);
