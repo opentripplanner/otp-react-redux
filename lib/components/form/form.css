@@ -100,6 +100,10 @@
 
 /* Settings Preview */
 
+.otp .settings-preview {
+  cursor: pointer;
+}
+
 .otp.mobile .settings-preview {
   text-align: center;
 }
