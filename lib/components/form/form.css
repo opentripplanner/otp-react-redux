@@ -52,17 +52,9 @@
   padding-right: 5px;
 }
 
-.otp .date-time-selector .depart-arrive-button  {
+.otp .date-time-selector .date-option-button  {
   width: 100%;
-  border-radius: 0px;
-  background-color: #777;
-  color: #fff;
-  font-weight: 300;
-}
-
-.otp .date-time-selector .depart-arrive-button.active  {
-  background-color: #aaa;
-  font-weight: 500;
+  font-size: 14px;
 }
 
 .otp .date-time-selector .date-selector,
