@@ -1,5 +1,9 @@
 /* Location field */
 
+.otp .location-field .dropdown-menu .last-option {
+  margin-bottom: 10px;
+}
+
 .otp .location-field.static .dropdown-menu {
   position: static;
   display: block;
