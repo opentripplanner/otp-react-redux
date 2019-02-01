@@ -16,6 +16,14 @@
   background-color: #fdf8d6;
 }
 
+.otp .simple-realtime-annotation {
+  color: #888;
+  font-size: 14px;
+  text-align: center;
+  padding: 6px;
+  background-color: #fcf9d3;
+}
+
 /*TODO: remove? no longer used in realtime annotation */
 .otp .realtime-alert > .icon-container {
   /*color: red;*/
@@ -176,7 +184,7 @@
 }
 
 .otp .tabbed-itineraries .tab-button {
-  width: 80px;
+  width: 100px;
   margin: 5px;
   padding: 2px;
   border-radius: 0;
