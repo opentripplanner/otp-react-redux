@@ -254,7 +254,7 @@ var DateOptionButton = function (_Component2) {
       if (type === 'NOW') text = 'Leave now';
       if (type === 'DEPART') text = 'Depart at';
       if (type === 'ARRIVE') text = 'Arrive by';
-      var classNames = ['depart-arrive-button'];
+      var classNames = ['date-option-button', 'select-button'];
       if (active) classNames.push('active');
       return _react2.default.createElement(
         _reactBootstrap.Button,

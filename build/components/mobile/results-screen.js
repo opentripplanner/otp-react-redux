@@ -248,7 +248,8 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
           {
             ref: 'narrative-container',
             className: 'mobile-narrative-container',
-            style: narrativeContainerStyle
+            style: narrativeContainerStyle,
+            onClick: this._optionClicked
           },
           _react2.default.createElement(_itineraryCarousel2.default, {
             itineraryClass: itineraryClass,

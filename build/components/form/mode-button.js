@@ -85,22 +85,22 @@ var ModeButton = (_temp = _class = function (_Component) {
             style: buttonStyle,
             disabled: !enabled
           },
+          showPlusTransit && _react2.default.createElement(
+            'span',
+            null,
+            _react2.default.createElement(
+              'div',
+              { style: { display: 'inline-block', width: iconSize, height: iconSize, verticalAlign: 'middle' } },
+              enabled ? (0, _itinerary.getModeIcon)('TRANSIT', icons) : _react2.default.createElement('div', { style: { width: iconSize, height: iconSize, backgroundColor: iconColor, borderRadius: iconSize / 2 } })
+            ),
+            _react2.default.createElement('i', { className: 'fa fa-plus', style: { verticalAlign: 'middle', color: iconColor, margin: '0px 5px', fontSize: 14 } })
+          ),
           _react2.default.createElement(
             'div',
             {
               className: 'mode-icon',
               style: { display: 'inline-block', fill: iconColor, width: iconSize, height: iconSize, verticalAlign: 'middle' } },
             (0, _itinerary.getModeIcon)(mode, icons)
-          ),
-          showPlusTransit && _react2.default.createElement(
-            'span',
-            null,
-            _react2.default.createElement('i', { className: 'fa fa-plus', style: { verticalAlign: 'middle', color: iconColor, margin: '0px 5px', fontSize: 14 } }),
-            _react2.default.createElement(
-              'div',
-              { style: { display: 'inline-block', width: iconSize, height: iconSize, verticalAlign: 'middle' } },
-              enabled ? (0, _itinerary.getModeIcon)('TRANSIT', icons) : _react2.default.createElement('div', { style: { width: iconSize, height: iconSize, backgroundColor: iconColor, borderRadius: iconSize / 2 } })
-            )
           ),
           inlineLabel && _react2.default.createElement(
             'span',

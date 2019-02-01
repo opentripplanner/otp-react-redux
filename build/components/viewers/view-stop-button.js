@@ -72,7 +72,7 @@ var ViewStopButton = (_temp2 = _class = function (_Component) {
           className: 'view-stop-button',
           onClick: this._onClick
         },
-        this.props.text || 'Stop Viewer'
+        this.props.text || this.props.languageConfig.stopViewer || 'Stop Viewer'
       );
     }
   }]);
@@ -84,7 +84,9 @@ var ViewStopButton = (_temp2 = _class = function (_Component) {
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    languageConfig: state.otp.config.language
+  };
 };
 
 var mapDispatchToProps = {

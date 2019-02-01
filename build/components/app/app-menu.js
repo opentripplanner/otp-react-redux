@@ -61,6 +61,11 @@ var AppMenu = (_temp = _class = function (_Component) {
     value: function render() {
       var _this2 = this;
 
+      var _props = this.props,
+          reactRouterConfig = _props.reactRouterConfig,
+          languageConfig = _props.languageConfig;
+
+
       return _react2.default.createElement(
         'div',
         { className: 'app-menu' },
@@ -73,7 +78,20 @@ var AppMenu = (_temp = _class = function (_Component) {
                 _this2.props.setMainPanelContent(_ui.MainPanelContent.ROUTE_VIEWER);
               } },
             _react2.default.createElement(_icon2.default, { type: 'bus' }),
-            ' Route Viewer'
+            ' ',
+            languageConfig.routeViewer || 'Route Viewer'
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            { onClick: function onClick() {
+                var startOverUrl = '/';
+                if (reactRouterConfig && reactRouterConfig.basename) {
+                  startOverUrl += reactRouterConfig.basename;
+                }
+                window.location.href = startOverUrl;
+              } },
+            _react2.default.createElement(_icon2.default, { type: 'undo' }),
+            ' Start Over'
           )
         )
       );
@@ -87,7 +105,9 @@ var AppMenu = (_temp = _class = function (_Component) {
 // connect to the redux store
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    languageConfig: state.otp.config.language
+  };
 };
 
 var mapDispatchToProps = {

@@ -89,7 +89,8 @@ var RouteViewer = (_temp2 = _class = function (_Component) {
           viewedRoute = _props.viewedRoute,
           hideBackButton = _props.hideBackButton,
           findRoute = _props.findRoute,
-          setViewedRoute = _props.setViewedRoute;
+          setViewedRoute = _props.setViewedRoute,
+          languageConfig = _props.languageConfig;
 
 
       return _react2.default.createElement(
@@ -114,7 +115,7 @@ var RouteViewer = (_temp2 = _class = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'header-text' },
-            'Route Viewer'
+            languageConfig.routeViewer || 'Route Viewer'
           ),
           _react2.default.createElement('div', { style: { clear: 'both' } })
         ),
@@ -176,7 +177,8 @@ var RouteViewer = (_temp2 = _class = function (_Component) {
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     routes: state.otp.transitIndex.routes,
-    viewedRoute: state.otp.ui.viewedRoute
+    viewedRoute: state.otp.ui.viewedRoute,
+    languageConfig: state.otp.config.language
   };
 };
 

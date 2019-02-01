@@ -202,6 +202,12 @@ var queryParams = [{ /* from - the trip origin. stored internally as a location 
   }, {
     text: '10 miles',
     value: 16093
+  }, {
+    text: '20 miles',
+    value: 32187
+  }, {
+    text: '30 miles',
+    value: 48280
   }],
   itineraryRewrite: function itineraryRewrite(value) {
     return {
@@ -378,25 +384,18 @@ var queryParams = [{ /* from - the trip origin. stored internally as a location 
   selector: 'CHECKBOX',
   label: 'Wheelchair Accessible',
   applicable: function applicable(query, config) {
-    if (!query.mode) return false;
+    if (!query.mode || !config.modes) return false;
+    var configModes = (config.modes.accessModes || []).concat(config.modes.transitModes || []);
 
     var _loop = function _loop(mode) {
-      if (config.modes && config.modes.accessModes) {
-        var accessMode = config.modes.accessModes.find(function (m) {
-          return m.mode === mode;
-        });
-        if (accessMode && accessMode.showWheelchairSetting) return {
-            v: true
-          };
-      }
-      if (config.modes && config.modes.transitModes) {
-        var transitMode = config.modes.transitModes.find(function (m) {
-          return m.mode === mode;
-        });
-        if (transitMode && transitMode.showWheelchairSetting) return {
-            v: true
-          };
-      }
+      var configMode = configModes.find(function (m) {
+        return m.mode === mode;
+      });
+      if (!configMode || !configMode.showWheelchairSetting) return 'continue';
+      if (configMode.company && (!query.companies || !query.companies.split(',').includes(configMode.company))) return 'continue';
+      return {
+        v: true
+      };
     };
 
     var _iteratorNormalCompletion = true;
@@ -409,7 +408,13 @@ var queryParams = [{ /* from - the trip origin. stored internally as a location 
 
         var _ret = _loop(mode);
 
-        if ((typeof _ret === 'undefined' ? 'undefined' : (0, _typeof3.default)(_ret)) === "object") return _ret.v;
+        switch (_ret) {
+          case 'continue':
+            continue;
+
+          default:
+            if ((typeof _ret === 'undefined' ? 'undefined' : (0, _typeof3.default)(_ret)) === "object") return _ret.v;
+        }
       }
     } catch (err) {
       _didIteratorError = true;

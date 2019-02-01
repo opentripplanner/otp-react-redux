@@ -83,7 +83,7 @@ var MobileRouteViewer = (_temp2 = _class = function (_Component) {
         _container2.default,
         null,
         _react2.default.createElement(_navigationBar2.default, {
-          headerText: 'Route Viewer',
+          headerText: this.props.languageConfig.routeViewer || 'Route Viewer',
           showBackButton: true,
           onBackClicked: this._backClicked
         }),
@@ -109,7 +109,9 @@ var MobileRouteViewer = (_temp2 = _class = function (_Component) {
 // connect to the redux store
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    languageConfig: state.otp.config.language
+  };
 };
 
 var mapDispatchToProps = {

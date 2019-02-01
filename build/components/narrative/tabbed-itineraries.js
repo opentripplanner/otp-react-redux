@@ -99,6 +99,10 @@ var TabbedItineraries = (_temp2 = _class = function (_Component) {
           'div',
           { className: 'tab-row' },
           itineraries.map(function (itinerary, index) {
+            var timeOptions = {
+              format: 'h:mm a', // TODO: make configurable
+              offset: (0, _itinerary.getTimeZoneOffset)(itinerary)
+            };
             var classNames = ['tab-button', 'clear-button-formatting'];
 
             var _calculatePhysicalAct = (0, _itinerary.calculatePhysicalActivity)(itinerary),
@@ -127,11 +131,7 @@ var TabbedItineraries = (_temp2 = _class = function (_Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'title' },
-                index === 0 ? _react2.default.createElement(
-                  'span',
-                  null,
-                  'Best Bet'
-                ) : _react2.default.createElement(
+                _react2.default.createElement(
                   'span',
                   null,
                   'Option ',
@@ -142,6 +142,27 @@ var TabbedItineraries = (_temp2 = _class = function (_Component) {
                 'div',
                 { className: 'details' },
                 (0, _time.formatDuration)(itinerary.duration),
+                _react2.default.createElement(
+                  'span',
+                  null,
+                  _react2.default.createElement('br', null),
+                  (0, _time.formatTime)(itinerary.startTime, timeOptions),
+                  ' - ',
+                  (0, _time.formatTime)(itinerary.endTime, timeOptions)
+                ),
+                _react2.default.createElement(
+                  'span',
+                  null,
+                  _react2.default.createElement('br', null),
+                  minTotalFare ? _react2.default.createElement(
+                    'span',
+                    null,
+                    '' + centsToString(minTotalFare) + plus,
+                    ' \u2022 '
+                  ) : '',
+                  Math.round(caloriesBurned),
+                  ' Cal'
+                ),
                 itinerary.transfers > 0 && _react2.default.createElement(
                   'span',
                   null,
@@ -149,14 +170,6 @@ var TabbedItineraries = (_temp2 = _class = function (_Component) {
                   itinerary.transfers,
                   ' transfer',
                   itinerary.transfers > 1 ? 's' : ''
-                ),
-                _react2.default.createElement(
-                  'span',
-                  null,
-                  _react2.default.createElement('br', null),
-                  minTotalFare ? '' + centsToString(minTotalFare) + plus + ' ' : '',
-                  Math.round(caloriesBurned),
-                  ' Cal'
                 )
               )
             );

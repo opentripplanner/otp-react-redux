@@ -39,6 +39,7 @@ exports.getPlaceName = getPlaceName;
 exports.getTNCLocation = getTNCLocation;
 exports.calculatePhysicalActivity = calculatePhysicalActivity;
 exports.calculateFares = calculateFares;
+exports.getTimeZoneOffset = getTimeZoneOffset;
 
 var _react = require('react');
 
@@ -528,6 +529,11 @@ function calculateFares(itinerary) {
     minTNCFare: minTNCFare,
     transitFare: transitFare
   };
+}
+
+function getTimeZoneOffset(itinerary) {
+  if (!itinerary.legs || !itinerary.legs.length) return 0;
+  return itinerary.legs[0].agencyTimeZoneOffset + new Date().getTimezoneOffset() * 60000;
 }
 
 //# sourceMappingURL=itinerary.js

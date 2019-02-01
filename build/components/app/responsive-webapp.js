@@ -64,6 +64,8 @@ var _ui2 = require('../../util/ui');
 
 var _itinerary = require('../../util/itinerary');
 
+var _state = require('../../util/state');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ResponsiveWebapp = (_temp = _class = function (_Component) {
@@ -137,6 +139,10 @@ var ResponsiveWebapp = (_temp = _class = function (_Component) {
           });
           this.props.setQueryParam({ mode: queryModes.join(',') });
         }
+      }
+
+      if ((0, _ui2.isMobile)() && !this.props.activeItinerary && nextProps.activeItinerary) {
+        this.props.setMobileScreen(_ui.MobileScreens.RESULTS_SUMMARY);
       }
 
       // Ensure that driving modes are never selected alone
@@ -236,6 +242,7 @@ var ResponsiveWebapp = (_temp = _class = function (_Component) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
+    activeItinerary: (0, _state.getActiveItinerary)(state.otp),
     uiUrlParams: (0, _query.getUiUrlParams)(state.otp),
     currentPosition: state.otp.location.currentPosition,
     query: state.otp.currentQuery,

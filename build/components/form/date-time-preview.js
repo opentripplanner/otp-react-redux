@@ -99,7 +99,7 @@ var DateTimePreview = (_temp = _class = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'settings-preview' },
+        { className: 'settings-preview', onClick: this.props.onClick },
         summary,
         button,
         _react2.default.createElement('div', { style: { clear: 'both' } })

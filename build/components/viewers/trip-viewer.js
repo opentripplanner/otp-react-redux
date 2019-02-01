@@ -86,7 +86,8 @@ var TripViewer = (_temp2 = _class = function (_Component) {
       var _props = this.props,
           viewedTrip = _props.viewedTrip,
           tripData = _props.tripData,
-          hideBackButton = _props.hideBackButton;
+          hideBackButton = _props.hideBackButton,
+          languageConfig = _props.languageConfig;
 
 
       return _react2.default.createElement(
@@ -111,7 +112,7 @@ var TripViewer = (_temp2 = _class = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'header-text' },
-            'Trip Viewer'
+            languageConfig.tripViewer || 'Trip Viewer'
           ),
           _react2.default.createElement('div', { style: { clear: 'both' } })
         ),
@@ -208,7 +209,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var viewedTrip = state.otp.ui.viewedTrip;
   return {
     tripData: state.otp.transitIndex.trips[viewedTrip.tripId],
-    viewedTrip: viewedTrip
+    viewedTrip: viewedTrip,
+    languageConfig: state.otp.config.language
   };
 };
 

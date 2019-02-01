@@ -73,7 +73,7 @@ var MobileStopViewer = (_temp = _class = function (_Component) {
         _container2.default,
         null,
         _react2.default.createElement(_navigationBar2.default, {
-          headerText: 'Stop Viewer',
+          headerText: this.props.languageConfig.stopViewer || 'Stop Viewer',
           showBackButton: true,
           onBackClicked: function onBackClicked() {
             _this2.props.clearViewedStop();
@@ -100,7 +100,9 @@ var MobileStopViewer = (_temp = _class = function (_Component) {
 // connect to the redux store
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    languageConfig: state.otp.config.language
+  };
 };
 
 var mapDispatchToProps = {

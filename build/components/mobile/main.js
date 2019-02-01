@@ -87,8 +87,9 @@ var MobileMain = (_temp = _class = function (_Component) {
   (0, _createClass3.default)(MobileMain, [{
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      // Check if we are in the welcome screen and both locations have been set
-      if (this.props.uiState.mobileScreen === _ui.MobileScreens.WELCOME_SCREEN && nextProps.currentQuery.from && nextProps.currentQuery.to) {
+      // Check if we are in the welcome screen and both locations have been set OR
+      // auto-detect is denied and one location is set
+      if (this.props.uiState.mobileScreen === _ui.MobileScreens.WELCOME_SCREEN && (nextProps.currentQuery.from && nextProps.currentQuery.to || !nextProps.currentPosition.coords && (nextProps.currentQuery.from || nextProps.currentQuery.to))) {
         // If so, advance to main search screen
         this.props.setMobileScreen(_ui.MobileScreens.SEARCH_FORM);
       }
@@ -178,7 +179,8 @@ var MobileMain = (_temp = _class = function (_Component) {
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     uiState: state.otp.ui,
-    currentQuery: state.otp.currentQuery
+    currentQuery: state.otp.currentQuery,
+    currentPosition: state.otp.location.currentPosition
   };
 };
 

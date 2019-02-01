@@ -172,7 +172,8 @@ var StopMarker = (_temp3 = _class2 = function (_Component) {
     value: function render() {
       var _props2 = this.props,
           setLocation = _props2.setLocation,
-          stop = _props2.stop;
+          stop = _props2.stop,
+          languageConfig = _props2.languageConfig;
       var id = stop.id,
           name = stop.name,
           lat = stop.lat,
@@ -237,7 +238,7 @@ var StopMarker = (_temp3 = _class2 = function (_Component) {
                   bsSize: 'xsmall',
                   onClick: this._onClickView
                 },
-                'Stop Viewer'
+                languageConfig.stopViewer || 'Stop Viewer'
               )
             ),
             _react2.default.createElement(
@@ -268,7 +269,8 @@ var StopMarker = (_temp3 = _class2 = function (_Component) {
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     stops: state.otp.overlay.transit.stops,
-    queryMode: state.otp.currentQuery.mode
+    queryMode: state.otp.currentQuery.mode,
+    languageConfig: state.otp.config.language
   };
 };
 

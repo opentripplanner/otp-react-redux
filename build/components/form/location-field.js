@@ -117,7 +117,7 @@ var LocationField = (_temp = _class = function (_Component) {
       // see https://stackoverflow.com/a/49325196/915811
       var target = e.relatedTarget !== null ? e.relatedTarget : document.activeElement;
       if (!target || target.getAttribute('role') !== 'menuitem') {
-        _this.setState({ menuVisible: false });
+        _this.setState({ menuVisible: false, value: '', geocodedFeatures: [] });
       }
     };
 
@@ -349,7 +349,94 @@ var LocationField = (_temp = _class = function (_Component) {
       var itemIndex = 0; // the index of the current location-associated menu item (excluding non-selectable items)
       this.locationSelectedLookup = {}; // maps itemIndex to a location selection handler (for use by the _onKeyDown method)
 
-      /* 1) Process the current location */
+      /* 1) Process geocode search result option(s) */
+      if (geocodedFeatures.length > 0) {
+        // Add the menu sub-heading (not a selectable item)
+        //menuItems.push(<MenuItem header key='sr-header'>Search Results</MenuItem>)
+
+        // Iterate through the geocoder results
+        menuItems = menuItems.concat(geocodedFeatures.map(function (feature, i) {
+          // Create the selection handler
+          var locationSelected = function locationSelected() {
+            // Construct the location
+            var location = _lonlat2.default.fromCoordinates(feature.geometry.coordinates);
+            location.name = feature.properties.label;
+            // Set the current location
+            _this3._setLocation(location);
+            // Add to the location search history
+            _this3.props.addLocationSearch({ location: location });
+          };
+
+          // Add to the selection handler lookup (for use in _onKeyDown)
+          _this3.locationSelectedLookup[itemIndex] = locationSelected;
+
+          // Create and return the option menu item
+          var option = createOption('map-pin', feature.properties.label, locationSelected, itemIndex === activeIndex, i === geocodedFeatures.length - 1);
+          itemIndex++;
+          return option;
+        }));
+      }
+
+      /* 2) Process nearby transit stop options */
+      if (nearbyStops.length > 0 && !suppressNearby) {
+        // Add the menu sub-heading (not a selectable item)
+        menuItems.push(_react2.default.createElement(
+          _reactBootstrap.MenuItem,
+          { header: true, key: 'ns-header' },
+          'Nearby Stops'
+        ));
+
+        // Iterate through the found nearby stops
+        menuItems = menuItems.concat(nearbyStops.map(function (stopId, i) {
+          // Constuct the location
+          var stop = _this3.props.stopsIndex[stopId];
+          var location = {
+            name: stop.name,
+            lat: stop.lat,
+            lon: stop.lon
+
+            // Create the location selected handler
+          };var locationSelected = function locationSelected() {
+            _this3._setLocation(location);
+          };
+
+          // Add to the selection handler lookup (for use in _onKeyDown)
+          _this3.locationSelectedLookup[itemIndex] = locationSelected;
+
+          // Create and return the option menu item
+          var option = createTransitStopOption(stop, locationSelected, itemIndex === activeIndex, i === nearbyStops.length - 1);
+          itemIndex++;
+          return option;
+        }));
+      }
+
+      /* 3) Process recent search history options */
+      if (sessionSearches.length > 0) {
+        // Add the menu sub-heading (not a selectable item)
+        menuItems.push(_react2.default.createElement(
+          _reactBootstrap.MenuItem,
+          { header: true, key: 'ss-header' },
+          'Recently Searched'
+        ));
+
+        // Iterate through any saved locations
+        menuItems = menuItems.concat(sessionSearches.map(function (location, i) {
+          // Create the location-selected handler
+          var locationSelected = function locationSelected() {
+            _this3._setLocation(location);
+          };
+
+          // Add to the selection handler lookup (for use in _onKeyDown)
+          _this3.locationSelectedLookup[itemIndex] = locationSelected;
+
+          // Create and return the option menu item
+          var option = createOption('search', location.name, locationSelected, itemIndex === activeIndex, i === sessionSearches.length - 1);
+          itemIndex++;
+          return option;
+        }));
+      }
+
+      /* 4) Process the current location */
       var locationSelected = void 0,
           optionIcon = void 0,
           optionTitle = void 0;
@@ -376,97 +463,6 @@ var LocationField = (_temp = _class = function (_Component) {
         itemIndex++;
       }
 
-      /* 2) Process geocode search result option(s) */
-      if (geocodedFeatures.length > 0) {
-        // Add the menu sub-heading (not a selectable item)
-        menuItems.push(_react2.default.createElement(
-          _reactBootstrap.MenuItem,
-          { header: true, key: 'sr-header' },
-          'Search Results'
-        ));
-
-        // Iterate through the geocoder results
-        menuItems = menuItems.concat(geocodedFeatures.map(function (feature) {
-          // Create the selection handler
-          var locationSelected = function locationSelected() {
-            // Construct the location
-            var location = _lonlat2.default.fromCoordinates(feature.geometry.coordinates);
-            location.name = feature.properties.label;
-            // Set the current location
-            _this3._setLocation(location);
-            // Add to the location search history
-            _this3.props.addLocationSearch({ location: location });
-          };
-
-          // Add to the selection handler lookup (for use in _onKeyDown)
-          _this3.locationSelectedLookup[itemIndex] = locationSelected;
-
-          // Create and return the option menu item
-          var option = createOption('map-pin', feature.properties.label, locationSelected, itemIndex === activeIndex);
-          itemIndex++;
-          return option;
-        }));
-      }
-
-      /* 3) Process nearby transit stop options */
-      if (nearbyStops.length > 0 && !suppressNearby) {
-        // Add the menu sub-heading (not a selectable item)
-        menuItems.push(_react2.default.createElement(
-          _reactBootstrap.MenuItem,
-          { header: true, key: 'ns-header' },
-          'Nearby Stops'
-        ));
-
-        // Iterate through the found nearby stops
-        menuItems = menuItems.concat(nearbyStops.map(function (stopId) {
-          // Constuct the location
-          var stop = _this3.props.stopsIndex[stopId];
-          var location = {
-            name: stop.name,
-            lat: stop.lat,
-            lon: stop.lon
-
-            // Create the location selected handler
-          };var locationSelected = function locationSelected() {
-            _this3._setLocation(location);
-          };
-
-          // Add to the selection handler lookup (for use in _onKeyDown)
-          _this3.locationSelectedLookup[itemIndex] = locationSelected;
-
-          // Create and return the option menu item
-          var option = createTransitStopOption(stop, locationSelected, itemIndex === activeIndex);
-          itemIndex++;
-          return option;
-        }));
-      }
-
-      /* 4) Process recent search history options */
-      if (sessionSearches.length > 0) {
-        // Add the menu sub-heading (not a selectable item)
-        menuItems.push(_react2.default.createElement(
-          _reactBootstrap.MenuItem,
-          { header: true, key: 'ss-header' },
-          'Recently Searched'
-        ));
-
-        // Iterate through any saved locations
-        menuItems = menuItems.concat(sessionSearches.map(function (location) {
-          // Create the location-selected handler
-          var locationSelected = function locationSelected() {
-            _this3._setLocation(location);
-          };
-
-          // Add to the selection handler lookup (for use in _onKeyDown)
-          _this3.locationSelectedLookup[itemIndex] = locationSelected;
-
-          // Create and return the option menu item
-          var option = createOption('search', location.name, locationSelected, itemIndex === activeIndex);
-          itemIndex++;
-          return option;
-        }));
-      }
-
       // Store the number of location-associated items for reference in the _onKeyDown method
       this.menuItemCount = itemIndex;
 
@@ -480,16 +476,15 @@ var LocationField = (_temp = _class = function (_Component) {
         className: this._getFormControlClassname(),
         type: 'text',
         value: this.state.value,
-        placeholder: placeholder
-        // onBlur={this._onTextInputBlur}
-        , onChange: this._onTextInputChange,
+        placeholder: placeholder,
+        onChange: this._onTextInputChange,
         onClick: this._onTextInputClick,
         onKeyDown: this._onKeyDown
       });
 
       // Only include the clear ('X') button add-on if a location is selected
       // or if the input field has text.
-      var clearButton = showClearButton && (location || this.state.value) ? _react2.default.createElement(
+      var clearButton = showClearButton && location ? _react2.default.createElement(
         _reactBootstrap.InputGroup.Addon,
         null,
         _react2.default.createElement(
@@ -601,10 +596,10 @@ var LocationField = (_temp = _class = function (_Component) {
 
 var itemKey = 0;
 
-function createOption(icon, title, onSelect, isActive) {
+function createOption(icon, title, onSelect, isActive, isLast) {
   return _react2.default.createElement(
     _reactBootstrap.MenuItem,
-    { className: 'location-option', onSelect: onSelect, key: itemKey++, active: isActive },
+    { className: 'location-option' + (isLast ? ' last-option' : ''), onSelect: onSelect, key: itemKey++, active: isActive },
     _react2.default.createElement(
       'div',
       null,

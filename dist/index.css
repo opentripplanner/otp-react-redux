@@ -2463,7 +2463,9 @@
   margin-bottom: 6px;
 }.otp .map-overlay-popup .popup-row {
   margin-top: 6px;
-}/* Location field */.otp .location-field.static .dropdown-menu {
+}/* Location field */.otp .location-field .dropdown-menu .last-option {
+  margin-bottom: 10px;
+}.otp .location-field.static .dropdown-menu {
   position: static;
   display: block;
   border: none;
@@ -2493,15 +2495,9 @@
 .otp .date-time-selector .col-xs-6 {
   padding-left: 5px;
   padding-right: 5px;
-}.otp .date-time-selector .depart-arrive-button  {
+}.otp .date-time-selector .date-option-button  {
   width: 100%;
-  border-radius: 0px;
-  background-color: #777;
-  color: #fff;
-  font-weight: 300;
-}.otp .date-time-selector .depart-arrive-button.active  {
-  background-color: #aaa;
-  font-weight: 500;
+  font-size: 14px;
 }.otp .date-time-selector .date-selector,
 .otp .date-time-selector .time-selector {
   font-size: 16px;
@@ -2525,7 +2521,9 @@
   top: 32px;
   right: 45px;
   z-index: 100000;
-}/* Settings Preview */.otp.mobile .settings-preview {
+}/* Settings Preview */.otp .settings-preview {
+  cursor: pointer;
+}.otp.mobile .settings-preview {
   text-align: center;
 }.otp .settings-preview .summary {
   float: left;
@@ -2658,6 +2656,12 @@
   padding: 12px 20px;
   margin-bottom: 20px;
   background-color: #fdf8d6;
+}.otp .simple-realtime-annotation {
+  color: #888;
+  font-size: 14px;
+  text-align: center;
+  padding: 6px;
+  background-color: #fcf9d3;
 }/*TODO: remove? no longer used in realtime annotation */.otp .realtime-alert > .icon-container {
   /*color: red;*/
   float: left;
@@ -2753,7 +2757,7 @@
   text-align: center;
   margin-bottom: 10px;
 }.otp .tabbed-itineraries .tab-button {
-  width: 80px;
+  width: 100px;
   margin: 5px;
   padding: 2px;
   border-radius: 0;

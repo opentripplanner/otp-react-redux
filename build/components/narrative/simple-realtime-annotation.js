@@ -44,7 +44,7 @@ var SimpleRealtimeAnnotation = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { style: { color: '#888', fontSize: 14, textAlign: 'center' } },
+        { className: 'simple-realtime-annotation' },
         _react2.default.createElement('i', { className: 'fa fa-clock-o' }),
         ' This trip uses real-time traffic and delay information'
       );

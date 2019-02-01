@@ -107,13 +107,13 @@ var SettingsPreview = (_temp = _class = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'settings-preview' },
+        { className: 'settings-preview', onClick: this.props.onClick },
         _react2.default.createElement(
           'div',
           { className: 'summary' },
-          'Travel',
+          'Transit+ Options',
           _react2.default.createElement('br', null),
-          'Options'
+          '& Preferences'
         ),
         button,
         _react2.default.createElement('div', { style: { clear: 'both' } })

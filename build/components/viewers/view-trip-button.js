@@ -76,7 +76,7 @@ var ViewTripButton = (_temp2 = _class = function (_Component) {
           className: 'view-trip-button',
           onClick: this._onClick
         },
-        this.props.text || 'Trip Viewer'
+        this.props.text || this.props.languageConfig.tripViewer || 'Trip Viewer'
       );
     }
   }]);
@@ -90,7 +90,9 @@ var ViewTripButton = (_temp2 = _class = function (_Component) {
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    languageConfig: state.otp.config.language
+  };
 };
 
 var mapDispatchToProps = {

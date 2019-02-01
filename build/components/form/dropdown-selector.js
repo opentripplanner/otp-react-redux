@@ -87,7 +87,7 @@ var DropdownSelector = (_temp2 = _class = function (_Component) {
             null,
             _react2.default.createElement(
               _reactBootstrap.FormGroup,
-              null,
+              { className: 'dropdown-selector-container' },
               _react2.default.createElement(
                 _reactBootstrap.FormControl,
                 {

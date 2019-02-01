@@ -293,45 +293,6 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
               })
             ),
             _react2.default.createElement(_reactBootstrap.Col, { xs: 2 })
-          ),
-          _react2.default.createElement(
-            _reactBootstrap.Row,
-            { className: 'mode-group-row' },
-            _react2.default.createElement(
-              _reactBootstrap.Col,
-              { xs: 12 },
-              _react2.default.createElement(
-                'div',
-                { className: 'group-header' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'group-name', style: { color: modeHasTransit ? '#000' : '#ccc' } },
-                  'Filter Transit Modes'
-                )
-              )
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.Col,
-              { xs: 12, style: { textAlign: 'center' } },
-              transitModes.map(function (mode, k) {
-                return _react2.default.createElement(
-                  'div',
-                  { style: { display: 'inline-block', width: 64 }, key: k },
-                  _react2.default.createElement(_modeButton2.default, {
-                    enabled: modeHasTransit,
-                    active: _this2._modeIsActive(mode),
-                    icons: icons,
-                    mode: mode,
-                    label: mode.label,
-                    showCheck: true,
-                    height: 44,
-                    onClick: function onClick() {
-                      return _this2._toggleTransitMode(mode);
-                    }
-                  })
-                );
-              })
-            )
           )
         ),
         _react2.default.createElement(
@@ -345,6 +306,42 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
               { style: { fontSize: 18, margin: '16px 0px' } },
               'Travel Preferences'
             ),
+            (0, _itinerary.hasTransit)(mode) && _react2.default.createElement(
+              'div',
+              { style: { marginBottom: 16 } },
+              _react2.default.createElement(
+                'div',
+                { className: 'setting-label', style: { float: 'left' } },
+                'Use'
+              ),
+              _react2.default.createElement(
+                'div',
+                { style: { marginLeft: 50, textAlign: 'right' } },
+                transitModes.map(function (mode, k) {
+                  var classNames = ['select-button'];
+                  if (_this2._modeIsActive(mode)) classNames.push('active');
+                  return _react2.default.createElement(
+                    _reactBootstrap.Button,
+                    { key: mode.mode,
+                      className: classNames.join(' '),
+                      style: { marginTop: 3, marginBottom: 3 },
+                      onClick: function onClick() {
+                        return _this2._toggleTransitMode(mode);
+                      }
+                    },
+                    _react2.default.createElement(
+                      'div',
+                      {
+                        className: 'mode-icon',
+                        style: { display: 'inline-block', fill: '#000', width: 16, height: 16, marginRight: 5, verticalAlign: 'middle' } },
+                      (0, _itinerary.getModeIcon)(mode, icons)
+                    ),
+                    mode.label
+                  );
+                })
+              ),
+              _react2.default.createElement('div', { style: { clear: 'both' } })
+            ),
             (0, _itinerary.hasBike)(mode) && !(0, _itinerary.hasTransit)(mode) && _react2.default.createElement(
               'div',
               { style: { marginBottom: 16 } },
@@ -356,32 +353,30 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
               _react2.default.createElement(
                 'div',
                 { style: { textAlign: 'right' } },
-                _react2.default.createElement(
-                  _reactBootstrap.ButtonGroup,
-                  null,
-                  bicycleModes.map(function (option, k) {
-                    var action = _this2._setOwnBike;
-                    if (option.mode === 'BICYCLE_RENT') action = _this2._setRentedBike;
-                    // TODO: Handle different bikeshare networks
-                    return _react2.default.createElement(
-                      _reactBootstrap.Button,
-                      { key: k,
-                        style: { backgroundColor: queryModes.includes(option.mode) ? '#000' : '#aaa', color: '#fff', letterSpacing: 1, textTransform: 'uppercase', fontSize: 12 },
-                        onClick: action
-                      },
-                      _react2.default.createElement(
-                        'div',
-                        { style: { display: 'inline-block', width: option.iconWidth, height: 18, fill: '#fff', verticalAlign: 'middle', marginRight: 10 } },
-                        (0, _itinerary.getModeIcon)(option.mode, icons)
-                      ),
-                      _react2.default.createElement(
-                        'span',
-                        { style: { verticalAlign: 'middle' } },
-                        option.label
-                      )
-                    );
-                  })
-                )
+                bicycleModes.map(function (option, k) {
+                  var action = _this2._setOwnBike;
+                  if (option.mode === 'BICYCLE_RENT') action = _this2._setRentedBike;
+                  var classNames = ['select-button'];
+                  if (queryModes.includes(option.mode)) classNames.push('active');
+                  // TODO: Handle different bikeshare networks
+                  return _react2.default.createElement(
+                    _reactBootstrap.Button,
+                    { key: k,
+                      className: classNames.join(' '),
+                      onClick: action
+                    },
+                    _react2.default.createElement(
+                      'div',
+                      { style: { display: 'inline-block', width: option.iconWidth, height: 18, fill: '#000', verticalAlign: 'middle', marginRight: 10 } },
+                      (0, _itinerary.getModeIcon)(option.mode, icons)
+                    ),
+                    _react2.default.createElement(
+                      'span',
+                      { style: { verticalAlign: 'middle' } },
+                      option.label
+                    )
+                  );
+                })
               )
             ),
             _react2.default.createElement(_generalSettingsPanel2.default, null)

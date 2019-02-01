@@ -35,8 +35,8 @@ function formatDuration(seconds) {
  * @param {number} ms epoch time value in milliseconds
  * @returns {string} formatted text representation
  */
-function formatTime(ms) {
-  return (0, _moment2.default)(ms).format('h:mm a');
+function formatTime(ms, options) {
+  return (0, _moment2.default)(ms + (options && options.offset ? options.offset : 0)).format(options && options.format ? options.format : 'HH:mm');
 }
 
 /**

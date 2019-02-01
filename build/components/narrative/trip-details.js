@@ -40,6 +40,8 @@ var _moment2 = _interopRequireDefault(_moment);
 
 var _itinerary = require('../../util/itinerary');
 
+var _time = require('../../util/time');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var TripDetails = function (_Component) {
@@ -116,6 +118,11 @@ var TripDetails = function (_Component) {
           caloriesBurned = _calculatePhysicalAct.caloriesBurned,
           walkDuration = _calculatePhysicalAct.walkDuration;
 
+      var timeOptions = {
+        format: 'h:mm a',
+        offset: (0, _itinerary.getTimeZoneOffset)(itinerary)
+      };
+
       return _react2.default.createElement(
         'div',
         { className: 'trip-details' },
@@ -149,7 +156,7 @@ var TripDetails = function (_Component) {
                 _react2.default.createElement(
                   'b',
                   null,
-                  date.format('h:mma')
+                  (0, _time.formatTime)(itinerary.startTime, timeOptions)
                 )
               )
             )
