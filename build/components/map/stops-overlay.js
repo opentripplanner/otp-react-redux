@@ -116,7 +116,8 @@ var StopsOverlay = (_temp = _class = function (_MapLayer) {
           setLocation = _props.setLocation,
           setViewedStop = _props.setViewedStop,
           setMainPanelContent = _props.setMainPanelContent,
-          stops = _props.stops;
+          stops = _props.stops,
+          languageConfig = _props.languageConfig;
 
       var mobileView = (0, _ui.isMobile)();
       // don't render if below zoom threshold or transit not currently selected
@@ -132,7 +133,8 @@ var StopsOverlay = (_temp = _class = function (_MapLayer) {
             mobileView: mobileView,
             setLocation: setLocation,
             setViewedStop: setViewedStop,
-            setMainPanelContent: setMainPanelContent
+            setMainPanelContent: setMainPanelContent,
+            languageConfig: languageConfig
           });
         })
       );
@@ -189,6 +191,7 @@ var StopMarker = (_temp3 = _class2 = function (_Component) {
         className: 'stop-overlay-bg',
         iconSize: radius
       });
+
       return _react2.default.createElement(
         _reactLeaflet.Marker,
         {

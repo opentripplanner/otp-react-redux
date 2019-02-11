@@ -89,8 +89,7 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
     };
 
     _this._optionClicked = function () {
-      _this.setState({ expanded: !_this.state.expanded });
-      _this.refs['narrative-container'].scrollTop = 0;
+      _this._setExpanded(!_this.state.expanded);
     };
 
     _this._toggleRealtime = function () {
@@ -110,6 +109,20 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
       // FIXME Do we need to add something that removes the listeners when
       // component unmounts?
       (0, _ui2.enableScrollForSelector)('.mobile-narrative-container');
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      // Check if the active leg changed
+      if (this.props.activeLeg !== nextProps.activeLeg) {
+        this._setExpanded(false);
+      }
+    }
+  }, {
+    key: '_setExpanded',
+    value: function _setExpanded(expanded) {
+      this.setState({ expanded: expanded });
+      this.refs['narrative-container'].scrollTop = 0;
     }
   }, {
     key: 'render',
@@ -248,8 +261,7 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
           {
             ref: 'narrative-container',
             className: 'mobile-narrative-container',
-            style: narrativeContainerStyle,
-            onClick: this._optionClicked
+            style: narrativeContainerStyle
           },
           _react2.default.createElement(_itineraryCarousel2.default, {
             itineraryClass: itineraryClass,
@@ -293,7 +305,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     error: response && response.error,
     resultCount: response ? activeSearch.query.routingType === 'ITINERARY' ? response.plan ? response.plan.itineraries.length : 0 : response.otp.profile.length : null,
     useRealtime: useRealtime,
-    activeItineraryIndex: activeSearch !== null ? activeSearch.activeItinerary : null
+    activeItineraryIndex: activeSearch !== null ? activeSearch.activeItinerary : null,
+    activeLeg: activeSearch !== null ? activeSearch.activeLeg : null
   };
 };
 
