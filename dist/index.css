@@ -2941,6 +2941,10 @@
   margin-bottom: 10px;
   border-top: 1px solid gray;
   padding-top: 18px;
+}.otp .printable-itinerary .leg.interlined {
+  margin-bottom: 10px;
+  border-top: none;
+  padding-top: 0px;
 }.otp .printable-itinerary .mode-icon {
   float: left;
   width: 32px;

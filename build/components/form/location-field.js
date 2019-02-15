@@ -116,7 +116,7 @@ var LocationField = (_temp = _class = function (_Component) {
       // IE does not use relatedTarget, so this check handles cross-browser support.
       // see https://stackoverflow.com/a/49325196/915811
       var target = e.relatedTarget !== null ? e.relatedTarget : document.activeElement;
-      if (!target || target.getAttribute('role') !== 'menuitem') {
+      if (!_this.props.location && (!target || target.getAttribute('role') !== 'menuitem')) {
         _this.setState({ menuVisible: false, value: '', geocodedFeatures: [] });
       }
     };

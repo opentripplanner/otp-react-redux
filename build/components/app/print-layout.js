@@ -58,6 +58,8 @@ var _form = require('../../actions/form');
 
 var _state = require('../../util/state');
 
+var _time = require('../../util/time');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PrintLayout = (_temp = _class = function (_Component) {
@@ -120,7 +122,8 @@ var PrintLayout = (_temp = _class = function (_Component) {
     value: function render() {
       var _props = this.props,
           itinerary = _props.itinerary,
-          companies = _props.companies;
+          companies = _props.companies,
+          timeFormat = _props.timeFormat;
 
       return _react2.default.createElement(
         'div',
@@ -157,7 +160,7 @@ var PrintLayout = (_temp = _class = function (_Component) {
             _react2.default.createElement(_endpointsOverlay2.default, null)
           )
         ),
-        itinerary && _react2.default.createElement(_printableItinerary2.default, { itinerary: itinerary, companies: companies })
+        itinerary && _react2.default.createElement(_printableItinerary2.default, { itinerary: itinerary, companies: companies, timeFormat: timeFormat })
       );
     }
   }]);
@@ -172,7 +175,8 @@ var PrintLayout = (_temp = _class = function (_Component) {
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     itinerary: (0, _state.getActiveItinerary)(state.otp),
-    companies: state.otp.currentQuery.companies
+    companies: state.otp.currentQuery.companies,
+    timeFormat: (0, _time.getTimeFormat)(state.otp.config)
   };
 };
 

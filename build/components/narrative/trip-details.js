@@ -55,7 +55,9 @@ var TripDetails = function (_Component) {
   (0, _createClass3.default)(TripDetails, [{
     key: 'render',
     value: function render() {
-      var itinerary = this.props.itinerary;
+      var _props = this.props,
+          itinerary = _props.itinerary,
+          timeFormat = _props.timeFormat;
 
       var date = (0, _moment2.default)(itinerary.startTime);
 
@@ -119,7 +121,7 @@ var TripDetails = function (_Component) {
           walkDuration = _calculatePhysicalAct.walkDuration;
 
       var timeOptions = {
-        format: 'h:mm a',
+        format: timeFormat,
         offset: (0, _itinerary.getTimeZoneOffset)(itinerary)
       };
 
@@ -240,10 +242,10 @@ var TripDetail = function (_Component2) {
   (0, _createClass3.default)(TripDetail, [{
     key: 'render',
     value: function render() {
-      var _props = this.props,
-          icon = _props.icon,
-          summary = _props.summary,
-          description = _props.description;
+      var _props2 = this.props,
+          icon = _props2.icon,
+          summary = _props2.summary,
+          description = _props2.description;
 
       return _react2.default.createElement(
         'div',
@@ -294,7 +296,8 @@ var TripDetail = function (_Component2) {
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     routingType: state.otp.currentQuery.routingType,
-    tnc: state.otp.tnc
+    tnc: state.otp.tnc,
+    timeFormat: (0, _time.getTimeFormat)(state.otp.config)
   };
 };
 

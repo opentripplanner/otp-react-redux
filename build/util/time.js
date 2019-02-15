@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.getTimeFormat = getTimeFormat;
 exports.formatDuration = formatDuration;
 exports.formatTime = formatTime;
 exports.formatStopTime = formatStopTime;
@@ -14,6 +15,11 @@ var _moment = require('moment');
 var _moment2 = _interopRequireDefault(_moment);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getTimeFormat(config) {
+  if (config.dateTime && config.dateTime.timeFormat) return config.dateTime.timeFormat;
+  return 'HH:mm';
+}
 
 /**
  * Formats an elapsed time duration for display in narrative

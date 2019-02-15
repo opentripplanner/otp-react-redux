@@ -85,7 +85,8 @@ var TabbedItineraries = (_temp2 = _class = function (_Component) {
           itineraries = _props.itineraries,
           itineraryClass = _props.itineraryClass,
           realtimeEffects = _props.realtimeEffects,
-          useRealtime = _props.useRealtime;
+          useRealtime = _props.useRealtime,
+          timeFormat = _props.timeFormat;
 
       if (!itineraries) return null;
 
@@ -100,7 +101,7 @@ var TabbedItineraries = (_temp2 = _class = function (_Component) {
           { className: 'tab-row' },
           itineraries.map(function (itinerary, index) {
             var timeOptions = {
-              format: 'h:mm a', // TODO: make configurable
+              format: timeFormat,
               offset: (0, _itinerary.getTimeZoneOffset)(itinerary)
             };
             var classNames = ['tab-button', 'clear-button-formatting'];
@@ -220,7 +221,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     activeStep: activeSearch && activeSearch.activeStep,
     useRealtime: useRealtime,
     companies: state.otp.currentQuery.companies,
-    tnc: state.otp.tnc
+    tnc: state.otp.tnc,
+    timeFormat: (0, _time.getTimeFormat)(state.otp.config)
   };
 };
 

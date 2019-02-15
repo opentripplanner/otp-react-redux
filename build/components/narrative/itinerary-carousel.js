@@ -64,6 +64,8 @@ var _state = require('../../util/state');
 
 var _profile = require('../../util/profile');
 
+var _time = require('../../util/time');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ItineraryCarousel = (_temp2 = _class = function (_Component) {
@@ -225,7 +227,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     activeItinerary: activeSearch && activeSearch.activeItinerary,
     activeLeg: activeSearch && activeSearch.activeLeg,
     activeStep: activeSearch && activeSearch.activeStep,
-    companies: state.otp.currentQuery.companies
+    companies: state.otp.currentQuery.companies,
+    timeFormat: (0, _time.getTimeFormat)(state.otp.config)
   };
 };
 

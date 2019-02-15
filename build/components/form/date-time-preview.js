@@ -38,6 +38,8 @@ var _reactRedux = require('react-redux');
 
 var _reactBootstrap = require('react-bootstrap');
 
+var _time = require('../../util/time');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var DateTimePreview = (_temp = _class = function (_Component) {
@@ -59,12 +61,14 @@ var DateTimePreview = (_temp = _class = function (_Component) {
           departArrive = _props.departArrive,
           routingType = _props.routingType,
           startTime = _props.startTime,
-          endTime = _props.endTime;
+          endTime = _props.endTime,
+          timeFormat = _props.timeFormat;
 
 
       var timeStr = void 0;
+      var formattedTime = _moment2.default.utc(time, 'HH:mm').format(timeFormat);
       if (routingType === 'ITINERARY') {
-        if (departArrive === 'NOW') timeStr = 'Leave now';else if (departArrive === 'ARRIVE') timeStr = 'Arrive ' + time;else if (departArrive === 'DEPART') timeStr = 'Depart ' + time;
+        if (departArrive === 'NOW') timeStr = 'Leave now';else if (departArrive === 'ARRIVE') timeStr = 'Arrive ' + formattedTime;else if (departArrive === 'DEPART') timeStr = 'Depart ' + formattedTime;
       } else if (routingType === 'PROFILE') {
         timeStr = startTime + ' to ' + endTime;
       }
@@ -137,7 +141,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     date: date,
     time: time,
     startTime: startTime,
-    endTime: endTime
+    endTime: endTime,
+    timeFormat: (0, _time.getTimeFormat)(state.otp.config)
   };
 };
 

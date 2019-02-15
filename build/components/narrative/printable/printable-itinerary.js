@@ -62,13 +62,20 @@ var PrintableItinerary = (_temp = _class = function (_Component) {
     value: function render() {
       var _props = this.props,
           itinerary = _props.itinerary,
-          companies = _props.companies;
+          companies = _props.companies,
+          timeFormat = _props.timeFormat;
+
+
+      var timeOptions = {
+        format: timeFormat,
+        offset: (0, _itinerary.getTimeZoneOffset)(itinerary)
+      };
 
       return _react2.default.createElement(
         'div',
         { className: 'printable-itinerary' },
         itinerary.legs.map(function (leg, k) {
-          return leg.transitLeg ? _react2.default.createElement(TransitLeg, { key: k, leg: leg }) : leg.hailedCar ? _react2.default.createElement(TNCLeg, { leg: leg, legMode: (0, _itinerary.getLegMode)(companies, leg) }) : _react2.default.createElement(AccessLeg, { key: k, leg: leg });
+          return leg.transitLeg ? _react2.default.createElement(TransitLeg, { key: k, leg: leg, interlineFollows: k < itinerary.legs.length - 1 && itinerary.legs[k + 1].interlineWithPreviousLeg, timeOptions: timeOptions }) : leg.hailedCar ? _react2.default.createElement(TNCLeg, { leg: leg, legMode: (0, _itinerary.getLegMode)(companies, leg), timeOptions: timeOptions }) : _react2.default.createElement(AccessLeg, { key: k, leg: leg, timeOptions: timeOptions });
         }),
         _react2.default.createElement(_tripDetails2.default, { itinerary: itinerary })
       );
@@ -90,7 +97,57 @@ var TransitLeg = (_temp2 = _class2 = function (_Component2) {
   (0, _createClass3.default)(TransitLeg, [{
     key: 'render',
     value: function render() {
-      var leg = this.props.leg;
+      var _props2 = this.props,
+          leg = _props2.leg,
+          interlineFollows = _props2.interlineFollows,
+          timeOptions = _props2.timeOptions;
+
+      // Handle case of transit leg interlined w/ previous
+
+      if (leg.interlineWithPreviousLeg) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'leg interlined' },
+          _react2.default.createElement(
+            'div',
+            { className: 'leg-body' },
+            _react2.default.createElement(
+              'div',
+              { className: 'leg-header' },
+              'Continues as ',
+              _react2.default.createElement(
+                'b',
+                null,
+                leg.routeShortName,
+                ' ',
+                leg.routeLongName
+              ),
+              ' to ',
+              _react2.default.createElement(
+                'b',
+                null,
+                leg.to.name
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'leg-details' },
+              _react2.default.createElement(
+                'div',
+                { className: 'leg-detail' },
+                'Get off at ',
+                _react2.default.createElement(
+                  'b',
+                  null,
+                  leg.to.name
+                ),
+                ' at ',
+                (0, _time.formatTime)(leg.endTime, timeOptions)
+              )
+            )
+          )
+        );
+      }
 
       return _react2.default.createElement(
         'div',
@@ -133,9 +190,18 @@ var TransitLeg = (_temp2 = _class2 = function (_Component2) {
                 leg.from.name
               ),
               ' at ',
-              (0, _time.formatTime)(leg.startTime)
+              (0, _time.formatTime)(leg.startTime, timeOptions)
             ),
-            _react2.default.createElement(
+            interlineFollows ? _react2.default.createElement(
+              'div',
+              { className: 'leg-detail' },
+              'Stay on board at ',
+              _react2.default.createElement(
+                'b',
+                null,
+                leg.to.name
+              )
+            ) : _react2.default.createElement(
               'div',
               { className: 'leg-detail' },
               'Get off at ',
@@ -145,7 +211,7 @@ var TransitLeg = (_temp2 = _class2 = function (_Component2) {
                 leg.to.name
               ),
               ' at ',
-              (0, _time.formatTime)(leg.endTime)
+              (0, _time.formatTime)(leg.endTime, timeOptions)
             )
           )
         )
