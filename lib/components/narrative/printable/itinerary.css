@@ -4,8 +4,7 @@
   padding-top: 18px;
 }
 
-.otp .printable-itinerary .leg.interlined {
-  margin-bottom: 10px;
+.otp .printable-itinerary .leg.collapse-top {
   border-top: none;
   padding-top: 0px;
 }
