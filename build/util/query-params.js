@@ -134,11 +134,11 @@ var queryParams = [{ /* from - the trip origin. stored internally as a location 
   name: 'showIntermediateStops',
   routingTypes: ['ITINERARY'],
   default: true
-}, { /* maxWalkDistance - the maximum distance in meters the user will walk. */
+}, { /* maxWalkDistance - the maximum distance in meters the user will walk to transit. */
   name: 'maxWalkDistance',
   routingTypes: ['ITINERARY'],
   applicable: function applicable(query) {
-    return query.mode && query.mode.indexOf('WALK') !== -1;
+    return query.mode && (0, _itinerary.hasTransit)(query.mode) && query.mode.indexOf('WALK') !== -1;
   },
   default: 1207, // 3/4 mi.
   selector: 'DROPDOWN',
@@ -173,7 +173,7 @@ var queryParams = [{ /* from - the trip origin. stored internally as a location 
   name: 'maxBikeDistance',
   routingTypes: ['ITINERARY'],
   applicable: function applicable(query) {
-    return query.mode && query.mode.indexOf('BICYCLE') !== -1;
+    return query.mode && (0, _itinerary.hasTransit)(query.mode) && query.mode.indexOf('BICYCLE') !== -1;
   },
   default: 4828, // 3 mi.
   selector: 'DROPDOWN',
@@ -273,7 +273,7 @@ var queryParams = [{ /* from - the trip origin. stored internally as a location 
   selector: 'DROPDOWN',
   label: 'Max Walk Time',
   applicable: function applicable(query) {
-    return query.mode && query.mode.indexOf('WALK') !== -1;
+    return query.mode && (0, _itinerary.hasTransit)(query.mode) && query.mode.indexOf('WALK') !== -1;
   },
   options: [{
     text: '5 minutes',
@@ -323,7 +323,7 @@ var queryParams = [{ /* from - the trip origin. stored internally as a location 
   selector: 'DROPDOWN',
   label: 'Max Bike Time',
   applicable: function applicable(query) {
-    return query.mode && query.mode.indexOf('BICYCLE') !== -1;
+    return query.mode && (0, _itinerary.hasTransit)(query.mode) && query.mode.indexOf('BICYCLE') !== -1;
   },
   options: [{
     text: '5 minutes',

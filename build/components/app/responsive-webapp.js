@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -41,6 +45,10 @@ var _lodash = require('lodash.isequal');
 var _lodash2 = _interopRequireDefault(_lodash);
 
 var _reactRouterDom = require('react-router-dom');
+
+var _qs = require('qs');
+
+var _qs2 = _interopRequireDefault(_qs);
 
 var _printLayout = require('./print-layout');
 
@@ -172,7 +180,9 @@ var ResponsiveWebapp = (_temp = _class = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var location = this.props.location;
+      var _props = this.props,
+          location = _props.location,
+          initialDisplay = _props.initialDisplay;
 
       if (location && location.search) {
         // Set search params and plan trip if routing enabled and a query exists
@@ -203,6 +213,16 @@ var ResponsiveWebapp = (_temp = _class = function (_Component) {
       if (this.props.query.from && this.props.query.to) {
         this.props.formChanged();
       }
+
+      // Check for initial display state
+      if (initialDisplay === 'route' && location.search) {
+        var params = _qs2.default.parse(location.search.substring(1));
+        this.props.setMainPanelContent(_ui.MainPanelContent.ROUTE_VIEWER);
+        if (params.id) {
+          this.props.findRoute({ routeId: params.id });
+          this.props.setViewedRoute({ routeId: params.id });
+        }
+      }
     }
 
     /** Internal methods **/
@@ -224,9 +244,9 @@ var ResponsiveWebapp = (_temp = _class = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _props = this.props,
-          desktopView = _props.desktopView,
-          mobileView = _props.mobileView;
+      var _props2 = this.props,
+          desktopView = _props2.desktopView,
+          mobileView = _props2.mobileView;
 
       return (0, _ui2.isMobile)() ? mobileView : desktopView;
     }
@@ -259,6 +279,7 @@ var mapDispatchToProps = {
   setMapZoom: _config.setMapZoom,
   findNearbyStops: _api.findNearbyStops,
   getCurrentPosition: _location.getCurrentPosition,
+  findRoute: _api.findRoute,
   formChanged: _form.formChanged,
   clearViewedStop: _ui.clearViewedStop,
   clearViewedTrip: _ui.clearViewedTrip,
@@ -302,6 +323,13 @@ var RouterWrapper = function (_Component2) {
             path: '/',
             component: function component() {
               return _react2.default.createElement(WebappWithRouter, _this4.props);
+            }
+          }),
+          _react2.default.createElement(_reactRouterDom.Route, {
+            exact: true,
+            path: '/route',
+            component: function component() {
+              return _react2.default.createElement(WebappWithRouter, (0, _extends3.default)({ initialDisplay: 'route' }, _this4.props));
             }
           }),
           _react2.default.createElement(_reactRouterDom.Route, {

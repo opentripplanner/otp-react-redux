@@ -111,7 +111,7 @@ var SettingsPreview = (_temp = _class = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: 'summary' },
-          'Transit+ Options',
+          'Transit Options',
           _react2.default.createElement('br', null),
           '& Preferences'
         ),

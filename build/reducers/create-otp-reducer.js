@@ -433,16 +433,39 @@ function createOtpReducer(config, initialQuery) {
             })
           }
         });
+
       case 'FIND_ROUTES_RESPONSE':
+        // If routes is undefined, initialize it w/ the full payload
+        if (!state.transitIndex.routes) {
+          return (0, _immutabilityHelper2.default)(state, {
+            transitIndex: { routes: { $set: action.payload } }
+          });
+        }
+        // Otherwise, merge in only the routes not already defined
+        var currentRouteIds = (0, _keys2.default)(state.transitIndex.routes);
+        var newRoutes = (0, _keys2.default)(action.payload).filter(function (key) {
+          return !currentRouteIds.includes(key);
+        }).reduce(function (res, key) {
+          return (0, _assign2.default)(res, (0, _defineProperty3.default)({}, key, action.payload[key]));
+        }, {});
         return (0, _immutabilityHelper2.default)(state, {
-          transitIndex: { routes: { $set: action.payload } }
+          transitIndex: { routes: { $merge: newRoutes } }
         });
+
       case 'FIND_ROUTE_RESPONSE':
+        // If routes is undefined, initialize it w/ this route only
+        if (!state.transitIndex.routes) {
+          return (0, _immutabilityHelper2.default)(state, {
+            transitIndex: { routes: { $set: (0, _defineProperty3.default)({}, action.payload.id, action.payload) } }
+          });
+        }
+        // Otherwise, overwrite only this route
         return (0, _immutabilityHelper2.default)(state, {
           transitIndex: {
             routes: (0, _defineProperty3.default)({}, action.payload.id, { $set: action.payload })
           }
         });
+
       case 'FIND_PATTERNS_FOR_ROUTE_RESPONSE':
         return (0, _immutabilityHelper2.default)(state, {
           transitIndex: {

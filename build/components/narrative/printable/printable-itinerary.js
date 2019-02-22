@@ -74,6 +74,29 @@ var PrintableItinerary = (_temp = _class = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: 'printable-itinerary' },
+        itinerary.legs.length > 0 && _react2.default.createElement(
+          'div',
+          { className: 'leg collapse-top' },
+          _react2.default.createElement(
+            'div',
+            { className: 'leg-body' },
+            _react2.default.createElement(
+              'div',
+              { className: 'leg-header' },
+              _react2.default.createElement(
+                'b',
+                null,
+                'Depart'
+              ),
+              ' from ',
+              _react2.default.createElement(
+                'b',
+                null,
+                itinerary.legs[0].from.name
+              )
+            )
+          )
+        ),
         itinerary.legs.map(function (leg, k) {
           return leg.transitLeg ? _react2.default.createElement(TransitLeg, { key: k, leg: leg, interlineFollows: k < itinerary.legs.length - 1 && itinerary.legs[k + 1].interlineWithPreviousLeg, timeOptions: timeOptions }) : leg.hailedCar ? _react2.default.createElement(TNCLeg, { leg: leg, legMode: (0, _itinerary.getLegMode)(companies, leg), timeOptions: timeOptions }) : _react2.default.createElement(AccessLeg, { key: k, leg: leg, timeOptions: timeOptions });
         }),
@@ -107,7 +130,7 @@ var TransitLeg = (_temp2 = _class2 = function (_Component2) {
       if (leg.interlineWithPreviousLeg) {
         return _react2.default.createElement(
           'div',
-          { className: 'leg interlined' },
+          { className: 'leg collapse-top' },
           _react2.default.createElement(
             'div',
             { className: 'leg-body' },

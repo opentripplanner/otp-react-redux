@@ -127,7 +127,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var viewedRoute = state.otp.ui.viewedRoute;
   return {
     viewedRoute: viewedRoute,
-    routeData: viewedRoute ? state.otp.transitIndex.routes[viewedRoute.routeId] : null
+    routeData: viewedRoute && state.otp.transitIndex.routes ? state.otp.transitIndex.routes[viewedRoute.routeId] : null
   };
 };
 

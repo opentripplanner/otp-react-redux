@@ -311,12 +311,12 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
               { style: { marginBottom: 16 } },
               _react2.default.createElement(
                 'div',
-                { className: 'setting-label', style: { float: 'left' } },
+                { className: 'setting-label' },
                 'Use'
               ),
               _react2.default.createElement(
                 'div',
-                { style: { marginLeft: 50, textAlign: 'right' } },
+                { style: { textAlign: 'right' } },
                 transitModes.map(function (mode, k) {
                   var classNames = ['select-button'];
                   if (_this2._modeIsActive(mode)) classNames.push('active');

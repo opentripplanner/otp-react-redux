@@ -121,7 +121,9 @@ var StopsOverlay = (_temp = _class = function (_MapLayer) {
 
       var mobileView = (0, _ui.isMobile)();
       // don't render if below zoom threshold or transit not currently selected
-      if (this.context.map.getZoom() < minZoom || !(0, _itinerary.hasTransit)(queryMode) || !stops || stops.length === 0) return _react2.default.createElement(_reactLeaflet.FeatureGroup, null);
+      if (this.context.map.getZoom() < minZoom || !stops || stops.length === 0) {
+        return _react2.default.createElement(_reactLeaflet.FeatureGroup, null);
+      }
 
       return _react2.default.createElement(
         _reactLeaflet.FeatureGroup,
