@@ -208,12 +208,10 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var activeSearch = (0, _state.getActiveSearch)(state.otp);
   // const { activeItinerary, activeLeg, activeStep } = activeSearch ? activeSearch.activeItinerary : {}
   var pending = activeSearch ? activeSearch.pending : false;
-  var itineraries = (0, _state.getActiveItineraries)(state.otp);
   var realtimeEffects = (0, _state.getRealtimeEffects)(state.otp);
   var useRealtime = state.otp.useRealtime;
   return {
     // swap out realtime itineraries with non-realtime depending on boolean
-    itineraries: itineraries,
     pending: pending,
     realtimeEffects: realtimeEffects,
     activeItinerary: activeSearch && activeSearch.activeItinerary,

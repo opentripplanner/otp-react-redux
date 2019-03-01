@@ -112,7 +112,6 @@ var StopsOverlay = (_temp = _class = function (_MapLayer) {
     value: function render() {
       var _props = this.props,
           minZoom = _props.minZoom,
-          queryMode = _props.queryMode,
           setLocation = _props.setLocation,
           setViewedStop = _props.setViewedStop,
           setMainPanelContent = _props.setMainPanelContent,
@@ -120,24 +119,40 @@ var StopsOverlay = (_temp = _class = function (_MapLayer) {
           languageConfig = _props.languageConfig;
 
       var mobileView = (0, _ui.isMobile)();
-      // don't render if below zoom threshold or transit not currently selected
+
+      // Don't render if below zoom threshold or no stops visible
       if (this.context.map.getZoom() < minZoom || !stops || stops.length === 0) {
         return _react2.default.createElement(_reactLeaflet.FeatureGroup, null);
       }
 
+      // Helper to create StopMarker from stop
+      var createStopMarker = function createStopMarker(stop) {
+        return _react2.default.createElement(StopMarker, {
+          key: stop.id,
+          stop: stop,
+          mobileView: mobileView,
+          setLocation: setLocation,
+          setViewedStop: setViewedStop,
+          setMainPanelContent: setMainPanelContent,
+          languageConfig: languageConfig
+        });
+      };
+
+      // Singleton case; return FeatureGroup with single StopMarker
+      if (stops.length === 1) {
+        return _react2.default.createElement(
+          _reactLeaflet.FeatureGroup,
+          null,
+          createStopMarker(stops[0])
+        );
+      }
+
+      // Otherwise, return FeatureGroup with mapped array of StopMarkers
       return _react2.default.createElement(
         _reactLeaflet.FeatureGroup,
         null,
         stops.map(function (stop) {
-          return _react2.default.createElement(StopMarker, {
-            key: stop.id,
-            stop: stop,
-            mobileView: mobileView,
-            setLocation: setLocation,
-            setViewedStop: setViewedStop,
-            setMainPanelContent: setMainPanelContent,
-            languageConfig: languageConfig
-          });
+          return createStopMarker(stop);
         })
       );
     }
