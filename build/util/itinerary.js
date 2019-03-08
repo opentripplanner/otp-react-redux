@@ -533,7 +533,11 @@ function calculateFares(itinerary) {
 
 function getTimeZoneOffset(itinerary) {
   if (!itinerary.legs || !itinerary.legs.length) return 0;
-  return itinerary.legs[0].agencyTimeZoneOffset + new Date().getTimezoneOffset() * 60000;
+
+  // Determine if there is a DST offset between now and the itinerary start date
+  var dstOffset = new Date(itinerary.startTime).getTimezoneOffset() - new Date().getTimezoneOffset();
+
+  return itinerary.legs[0].agencyTimeZoneOffset + (new Date().getTimezoneOffset() + dstOffset) * 60000;
 }
 
 //# sourceMappingURL=itinerary.js

@@ -76,7 +76,7 @@ var MobileStopViewer = (_temp = _class = function (_Component) {
           headerText: this.props.languageConfig.stopViewer || 'Stop Viewer',
           showBackButton: true,
           onBackClicked: function onBackClicked() {
-            _this2.props.clearViewedStop();
+            _this2.props.setViewedStop(null);
           }
         }),
         _react2.default.createElement(
@@ -94,7 +94,7 @@ var MobileStopViewer = (_temp = _class = function (_Component) {
   }]);
   return MobileStopViewer;
 }(_react.Component), _class.propTypes = {
-  clearViewedStop: _propTypes2.default.func
+  setViewedStop: _propTypes2.default.func
 }, _temp);
 
 // connect to the redux store
@@ -106,7 +106,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 };
 
 var mapDispatchToProps = {
-  clearViewedStop: _ui.clearViewedStop
+  setViewedStop: _ui.setViewedStop
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(MobileStopViewer);

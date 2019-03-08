@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _temp;
+var _class, _temp2;
 
 var _react = require('react');
 
@@ -56,28 +56,35 @@ var _ui = require('../../actions/ui');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var MobileTripViewer = (_temp = _class = function (_Component) {
+var MobileTripViewer = (_temp2 = _class = function (_Component) {
   (0, _inherits3.default)(MobileTripViewer, _Component);
 
   function MobileTripViewer() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, MobileTripViewer);
-    return (0, _possibleConstructorReturn3.default)(this, (MobileTripViewer.__proto__ || (0, _getPrototypeOf2.default)(MobileTripViewer)).apply(this, arguments));
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = MobileTripViewer.__proto__ || (0, _getPrototypeOf2.default)(MobileTripViewer)).call.apply(_ref, [this].concat(args))), _this), _this._onBackClicked = function () {
+      _this.props.setViewedTrip(null);
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(MobileTripViewer, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       return _react2.default.createElement(
         _container2.default,
         null,
         _react2.default.createElement(_navigationBar2.default, {
           headerText: this.props.languageConfig.tripViewer || 'Trip Viewer',
           showBackButton: true,
-          onBackClicked: function onBackClicked() {
-            _this2.props.clearViewedTrip();
-          }
+          onBackClicked: this._onBackClicked
         }),
         _react2.default.createElement(
           'div',
@@ -94,8 +101,8 @@ var MobileTripViewer = (_temp = _class = function (_Component) {
   }]);
   return MobileTripViewer;
 }(_react.Component), _class.propTypes = {
-  clearViewedTrip: _propTypes2.default.func
-}, _temp);
+  setViewedTrip: _propTypes2.default.func
+}, _temp2);
 
 // connect to the redux store
 
@@ -106,7 +113,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 };
 
 var mapDispatchToProps = {
-  clearViewedTrip: _ui.clearViewedTrip
+  setViewedTrip: _ui.setViewedTrip
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(MobileTripViewer);

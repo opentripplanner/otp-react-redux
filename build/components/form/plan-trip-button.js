@@ -36,6 +36,10 @@ var _reactRedux = require('react-redux');
 
 var _api = require('../../actions/api');
 
+var _ui = require('../../actions/ui');
+
+var _ui2 = require('../../util/ui');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PlanTripButton = (_temp2 = _class = function (_Component) {
@@ -55,6 +59,7 @@ var PlanTripButton = (_temp2 = _class = function (_Component) {
     return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = PlanTripButton.__proto__ || (0, _getPrototypeOf2.default)(PlanTripButton)).call.apply(_ref, [this].concat(args))), _this), _this._onClick = function () {
       _this.props.routingQuery();
       if (typeof _this.props.onClick === 'function') _this.props.onClick();
+      if (!(0, _ui2.isMobile)()) _this.props.setMainPanelContent(null);
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
@@ -62,10 +67,11 @@ var PlanTripButton = (_temp2 = _class = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
-          disabled = _props.disabled,
+          currentQuery = _props.currentQuery,
           text = _props.text;
 
-      var displayText = text || disabled ? 'Complete trip details to plan trip' : 'Plan Trip';
+      var disabled = this.props.disabled === undefined ? !currentQuery.from || !currentQuery.to : this.props.disabled;
+
       return _react2.default.createElement(
         _reactBootstrap.Button,
         {
@@ -73,7 +79,7 @@ var PlanTripButton = (_temp2 = _class = function (_Component) {
           disabled: disabled,
           onClick: this._onClick
         },
-        displayText
+        text || 'Plan Trip'
       );
     }
   }]);
@@ -88,18 +94,10 @@ var PlanTripButton = (_temp2 = _class = function (_Component) {
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  // Set button to disabled if from or to location is missing.
-  var disabled = !state.otp.currentQuery.from || !state.otp.currentQuery.to;
-  return { disabled: disabled };
+  return { currentQuery: state.otp.currentQuery };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-  return {
-    routingQuery: function routingQuery() {
-      dispatch((0, _api.routingQuery)());
-    }
-  };
-};
+var mapDispatchToProps = { routingQuery: _api.routingQuery, setMainPanelContent: _ui.setMainPanelContent };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PlanTripButton);
 module.exports = exports['default'];

@@ -34,7 +34,6 @@ var switchingLocations = exports.switchingLocations = (0, _reduxActions.createAc
 function clearLocation(payload) {
   return function (dispatch, getState) {
     dispatch(clearingLocation(payload));
-    dispatch((0, _form.formChanged)());
   };
 }
 
@@ -49,19 +48,16 @@ function setLocation(payload) {
           type: payload.type,
           location: location
         }));
-        dispatch((0, _form.formChanged)());
       }).catch(function (err) {
         dispatch(settingLocation({
           type: payload.type,
           location: payload.location
         }));
-        dispatch((0, _form.formChanged)());
         console.warn(err);
       });
     } else {
       // update the location in the store
       dispatch(settingLocation(payload));
-      dispatch((0, _form.formChanged)());
     }
   };
 }
@@ -79,7 +75,6 @@ function setLocationToCurrent(payload) {
       category: 'CURRENT_LOCATION'
     };
     dispatch(settingLocation(payload));
-    dispatch((0, _form.formChanged)());
   };
 }
 
@@ -97,7 +92,6 @@ function switchLocations() {
       type: 'to',
       location: from
     }));
-    dispatch((0, _form.formChanged)());
   };
 }
 

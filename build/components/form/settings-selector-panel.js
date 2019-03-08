@@ -316,7 +316,7 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
               ),
               _react2.default.createElement(
                 'div',
-                { style: { textAlign: 'right' } },
+                { style: { textAlign: 'left' } },
                 transitModes.map(function (mode, k) {
                   var classNames = ['select-button'];
                   if (_this2._modeIsActive(mode)) classNames.push('active');
@@ -324,7 +324,7 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
                     _reactBootstrap.Button,
                     { key: mode.mode,
                       className: classNames.join(' '),
-                      style: { marginTop: 3, marginBottom: 3 },
+                      style: { marginTop: 3, marginBottom: 3, marginLeft: 0, marginRight: 5 },
                       onClick: function onClick() {
                         return _this2._toggleTransitMode(mode);
                       }

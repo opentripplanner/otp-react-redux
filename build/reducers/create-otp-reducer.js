@@ -39,7 +39,7 @@ var _ui = require('../actions/ui');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var defaultConfig = {
-  autoPlan: true,
+  autoPlan: false,
   debouncePlanTimeMs: 0,
   realtimeEffectsDisplayThreshold: 120
 
@@ -272,7 +272,8 @@ function createOtpReducer(config, initialQuery) {
       case 'SET_QUERY_PARAM':
         console.log('merging QPs', action.payload);
         return (0, _immutabilityHelper2.default)(state, { currentQuery: { $merge: action.payload } });
-      case 'FORM_CHANGED':
+
+      case 'CLEAR_ACTIVE_SEARCH':
         return (0, _immutabilityHelper2.default)(state, { activeSearchId: { $set: null } });
 
       case 'SET_AUTOPLAN':

@@ -201,6 +201,11 @@ function constructRoutingQuery(otpState, ignoreRealtimeUpdates) {
       params.searchTimeout = 10000;
     }
 
+    // set onlyTransitTrips for car rental searches
+    if (params.mode && params.mode.includes('CAR_RENT')) {
+      params.onlyTransitTrips = true;
+    }
+
     // Additional processing specific to PROFILE mode
   } else {
     // check start and end time validity; ignore both if either is invalid

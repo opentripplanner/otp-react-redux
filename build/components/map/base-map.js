@@ -40,6 +40,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
+var _lodash = require('lodash.isequal');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
 var _reactLeaflet = require('react-leaflet');
 
 var _map = require('../../actions/map');
@@ -129,8 +133,11 @@ var BaseMap = (_temp = _class = function (_Component) {
     value: function _updateBounds(oldProps, newProps) {
       // TODO: maybe setting bounds ought to be handled in map props...
 
+      oldProps = oldProps || {};
+      newProps = newProps || {};
+
       // Don't auto-fit if popup us active
-      if (oldProps && oldProps.popupLocation || newProps.popupLocation) return;
+      if (oldProps.popupLocation || newProps.popupLocation) return;
 
       var map = this.refs.map;
 
@@ -139,7 +146,9 @@ var BaseMap = (_temp = _class = function (_Component) {
       var padding = [30, 30];
 
       // Fit map to to entire itinerary if active itinerary bounds changed
-      var oldItinBounds = oldProps && oldProps.itinerary && (0, _itinerary.getItineraryBounds)(oldProps.itinerary);
+      var oldItinBounds = oldProps.itinerary && (0, _itinerary.getItineraryBounds)(oldProps.itinerary);
+      var fromChanged = !(0, _lodash2.default)(oldProps.query && oldProps.query.from, newProps.query && newProps.query.from);
+      var toChanged = !(0, _lodash2.default)(oldProps.query && oldProps.query.to, newProps.query && newProps.query.to);
       var newItinBounds = newProps.itinerary && (0, _itinerary.getItineraryBounds)(newProps.itinerary);
       if (!oldItinBounds && newItinBounds || oldItinBounds && newItinBounds && !oldItinBounds.equals(newItinBounds)) {
         map.leafletElement.fitBounds(newItinBounds, { padding: padding });
@@ -149,13 +158,13 @@ var BaseMap = (_temp = _class = function (_Component) {
         map.leafletElement.fitBounds((0, _itinerary.getLegBounds)(newProps.itinerary.legs[newProps.activeLeg]), { padding: padding });
 
         // If no itinerary update but from/to locations are present, fit to those
-      } else if (newProps.query.from && newProps.query.to) {
+      } else if (newProps.query.from && newProps.query.to && (fromChanged || toChanged)) {
         map.leafletElement.fitBounds([[newProps.query.from.lat, newProps.query.from.lon], [newProps.query.to.lat, newProps.query.to.lon]], { padding: padding });
 
         // If only from or to is set, pan to that
-      } else if (newProps.query.from) {
+      } else if (newProps.query.from && fromChanged) {
         map.leafletElement.panTo([newProps.query.from.lat, newProps.query.from.lon]);
-      } else if (newProps.query.to) {
+      } else if (newProps.query.to && toChanged) {
         map.leafletElement.panTo([newProps.query.to.lat, newProps.query.to.lon]);
 
         // Pan to to itinerary step if made active (clicked)

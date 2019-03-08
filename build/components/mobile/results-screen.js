@@ -50,10 +50,6 @@ var _itineraryCarousel = require('../narrative/itinerary-carousel');
 
 var _itineraryCarousel2 = _interopRequireDefault(_itineraryCarousel);
 
-var _realtimeAnnotation = require('../narrative/realtime-annotation');
-
-var _realtimeAnnotation2 = _interopRequireDefault(_realtimeAnnotation);
-
 var _locationIcon = require('../icons/location-icon');
 
 var _locationIcon2 = _interopRequireDefault(_locationIcon);
@@ -70,6 +66,8 @@ var _ui = require('../../actions/ui');
 
 var _narrative = require('../../actions/narrative');
 
+var _form = require('../../actions/form');
+
 var _state = require('../../util/state');
 
 var _ui2 = require('../../util/ui');
@@ -85,6 +83,7 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
     var _this = (0, _possibleConstructorReturn3.default)(this, (MobileResultsScreen.__proto__ || (0, _getPrototypeOf2.default)(MobileResultsScreen)).call(this));
 
     _this._editSearchClicked = function () {
+      _this.props.clearActiveSearch();
       _this.props.setMobileScreen(_ui.MobileScreens.SEARCH_FORM);
     };
 
@@ -305,12 +304,13 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     error: response && response.error,
     resultCount: response ? activeSearch.query.routingType === 'ITINERARY' ? response.plan ? response.plan.itineraries.length : 0 : response.otp.profile.length : null,
     useRealtime: useRealtime,
-    activeItineraryIndex: activeSearch !== null ? activeSearch.activeItinerary : null,
-    activeLeg: activeSearch !== null ? activeSearch.activeLeg : null
+    activeItineraryIndex: activeSearch ? activeSearch.activeItinerary : null,
+    activeLeg: activeSearch ? activeSearch.activeLeg : null
   };
 };
 
 var mapDispatchToProps = {
+  clearActiveSearch: _form.clearActiveSearch,
   setMobileScreen: _ui.setMobileScreen,
   setUseRealtimeResponse: _narrative.setUseRealtimeResponse
 };

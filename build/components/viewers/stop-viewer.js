@@ -42,6 +42,8 @@ var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
+require('moment-timezone');
+
 var _velocityReact = require('velocity-react');
 
 var _icon = require('../narrative/icon');
@@ -79,7 +81,7 @@ var StopViewer = (_temp2 = _class = function (_Component) {
     }
 
     return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = StopViewer.__proto__ || (0, _getPrototypeOf2.default)(StopViewer)).call.apply(_ref, [this].concat(args))), _this), _this._backClicked = function () {
-      _this.props.clearViewedStop();
+      _this.props.setViewedStop(null);
     }, _this._setLocationFromStop = function (type) {
       var _this$props = _this.props,
           setLocation = _this$props.setLocation,
@@ -123,7 +125,8 @@ var StopViewer = (_temp2 = _class = function (_Component) {
     value: function render() {
       var _props = this.props,
           stopData = _props.stopData,
-          hideBackButton = _props.hideBackButton;
+          hideBackButton = _props.hideBackButton,
+          homeTimezone = _props.homeTimezone;
 
       // Rewrite stop ID to not include Agency prefix, if present
       // TODO: make this functionality configurable?
@@ -230,7 +233,8 @@ var StopViewer = (_temp2 = _class = function (_Component) {
               return _react2.default.createElement(RouteRow, {
                 route: route,
                 stopTimes: stopTimesByRoute[route.id],
-                key: route.id
+                key: route.id,
+                homeTimezone: homeTimezone
               });
             })
           )
@@ -266,7 +270,8 @@ var RouteRow = function (_Component2) {
     value: function render() {
       var _props2 = this.props,
           route = _props2.route,
-          stopTimes = _props2.stopTimes;
+          stopTimes = _props2.stopTimes,
+          homeTimezone = _props2.homeTimezone;
 
       // sort stop times by next departure
 
@@ -303,7 +308,7 @@ var RouteRow = function (_Component2) {
           stopTimes && stopTimes.length > 0 && _react2.default.createElement(
             'div',
             { className: 'next-trip-preview' },
-            getFormattedStopTime(sortedStopTimes[0])
+            getFormattedStopTime(sortedStopTimes[0], homeTimezone)
           ),
           _react2.default.createElement(
             'div',
@@ -352,7 +357,7 @@ var RouteRow = function (_Component2) {
                   _react2.default.createElement(
                     'div',
                     { className: 'cell time-column' },
-                    getFormattedStopTime(stopTime)
+                    getFormattedStopTime(stopTime, homeTimezone)
                   ),
                   _react2.default.createElement(
                     'div',
@@ -377,14 +382,16 @@ var RouteRow = function (_Component2) {
 // helper method to generate stop time w/ status icon
 
 
-function getFormattedStopTime(stopTime) {
+function getFormattedStopTime(stopTime, homeTimezone) {
   var now = (0, _moment2.default)();
   var serviceDay = (0, _moment2.default)(stopTime.serviceDay * 1000);
   var currentTime = now.diff(now.clone().startOf('day'), 'seconds');
   var differentDay = (0, _moment2.default)().date() !== serviceDay.date();
 
+  var inHomeTimezone = homeTimezone && now.tz(homeTimezone).format('Z') === now.tz(_moment2.default.tz.guess()).format('Z');
+
   // Determine whether to show departure as countdown (e.g. "5 min") or as HH:MM time
-  var showCountdown = !differentDay && stopTime.realtimeDeparture - currentTime < 3600;
+  var showCountdown = inHomeTimezone && !differentDay && stopTime.realtimeDeparture - currentTime < 3600 && stopTime.realtimeDeparture > currentTime;
 
   return _react2.default.createElement(
     'div',
@@ -445,13 +452,14 @@ function getStatusLabel(delay) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
+    homeTimezone: state.otp.config.homeTimezone,
     viewedStop: state.otp.ui.viewedStop,
     stopData: state.otp.transitIndex.stops[state.otp.ui.viewedStop.stopId]
   };
 };
 
 var mapDispatchToProps = {
-  clearViewedStop: _ui.clearViewedStop,
+  setViewedStop: _ui.setViewedStop,
   findStop: _api.findStop,
   setLocation: _map.setLocation
 };

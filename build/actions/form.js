@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.changingForm = exports.settingQueryParam = undefined;
+exports.clearActiveSearch = exports.settingQueryParam = undefined;
 
 var _keys = require('babel-runtime/core-js/object/keys');
 
@@ -27,6 +27,10 @@ var _moment2 = _interopRequireDefault(_moment);
 
 var _reduxActions = require('redux-actions');
 
+var _lodash3 = require('lodash.isequal');
+
+var _lodash4 = _interopRequireDefault(_lodash3);
+
 var _api = require('./api');
 
 var _map = require('../util/map');
@@ -35,10 +39,14 @@ var _state = require('../util/state');
 
 var _time = require('../util/time');
 
+var _ui = require('../util/ui');
+
+var _ui2 = require('../actions/ui');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var settingQueryParam = exports.settingQueryParam = (0, _reduxActions.createAction)('SET_QUERY_PARAM');
-var changingForm = exports.changingForm = (0, _reduxActions.createAction)('FORM_CHANGED');
+var clearActiveSearch = exports.clearActiveSearch = (0, _reduxActions.createAction)('CLEAR_ACTIVE_SEARCH');
 
 /**
  * Action to update any specified query parameter. Replaces previous series of
@@ -47,7 +55,6 @@ var changingForm = exports.changingForm = (0, _reduxActions.createAction)('FORM_
 function setQueryParam(payload) {
   return function (dispatch, getState) {
     dispatch(settingQueryParam(payload));
-    dispatch(formChanged());
   };
 }
 
@@ -109,23 +116,42 @@ function planParamsToQuery(params) {
 var debouncedPlanTrip = void 0; // store as variable here, so it can be reused.
 var lastDebouncePlanTimeMs = void 0;
 
-function formChanged() {
+function formChanged(oldQuery, newQuery) {
   return function (dispatch, getState) {
     var otpState = getState().otp;
+
     // If departArrive is set to 'NOW', update the query time to current
     if (otpState.currentQuery && otpState.currentQuery.departArrive === 'NOW') {
       dispatch(settingQueryParam({ time: (0, _moment2.default)().format('HH:mm') }));
     }
 
-    dispatch(changingForm());
+    // Determine if either from/to location has changed
+    var fromChanged = !(0, _lodash4.default)(oldQuery.from, newQuery.from);
+    var toChanged = !(0, _lodash4.default)(oldQuery.to, newQuery.to);
+
+    // Clear the main panel if location changed
+    if (fromChanged || toChanged) {
+      dispatch((0, _ui2.setViewedStop)(null));
+      dispatch((0, _ui2.setViewedTrip)(null));
+      dispatch((0, _ui2.setViewedRoute)(null));
+      dispatch((0, _ui2.setMainPanelContent)(null));
+    }
+
+    // Clear the current search and return to search screen on mobile when either location changes
+    if ((0, _ui.isMobile)() && (fromChanged || toChanged)) {
+      dispatch(clearActiveSearch());
+      dispatch((0, _ui2.setMobileScreen)(_ui2.MobileScreens.SEARCH_FORM));
+    }
+
+    // Check whether a trip should be auto-replanned
     var _otpState$config = otpState.config,
         autoPlan = _otpState$config.autoPlan,
         debouncePlanTimeMs = _otpState$config.debouncePlanTimeMs;
-    // check if a trip plan should be made
 
-    if (autoPlan && (0, _state.queryIsValid)(otpState)) {
+    var updatePlan = autoPlan || !(0, _ui.isMobile)() && (fromChanged || toChanged) || // TODO: make autoplan configurable at the parameter level?
+    (0, _ui.isMobile)() && fromChanged && toChanged;
+    if (updatePlan && (0, _state.queryIsValid)(otpState)) {
       // trip plan should be made
-
       // check if debouncing function needs to be (re)created
       if (!debouncedPlanTrip || lastDebouncePlanTimeMs !== debouncePlanTimeMs) {
         debouncedPlanTrip = (0, _lodash2.default)(function () {

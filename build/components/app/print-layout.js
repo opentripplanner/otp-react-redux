@@ -56,6 +56,8 @@ var _printableItinerary2 = _interopRequireDefault(_printableItinerary);
 
 var _form = require('../../actions/form');
 
+var _api = require('../../actions/api');
+
 var _state = require('../../util/state');
 
 var _time = require('../../util/time');
@@ -92,6 +94,7 @@ var PrintLayout = (_temp = _class = function (_Component) {
 
       if (location && location.search) {
         this.props.parseUrlQueryString(location.search);
+        this.props.routingQuery();
       }
     }
 
@@ -181,7 +184,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 };
 
 var mapDispatchToProps = {
-  parseUrlQueryString: _form.parseUrlQueryString
+  parseUrlQueryString: _form.parseUrlQueryString,
+  routingQuery: _api.routingQuery
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PrintLayout);

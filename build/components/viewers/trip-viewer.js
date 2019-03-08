@@ -71,7 +71,7 @@ var TripViewer = (_temp2 = _class = function (_Component) {
     }
 
     return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = TripViewer.__proto__ || (0, _getPrototypeOf2.default)(TripViewer)).call.apply(_ref, [this].concat(args))), _this), _this._backClicked = function () {
-      _this.props.clearViewedTrip();
+      _this.props.setViewedTrip(null);
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
@@ -215,7 +215,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 };
 
 var mapDispatchToProps = {
-  clearViewedTrip: _ui.clearViewedTrip,
+  setViewedTrip: _ui.setViewedTrip,
   findTrip: _api.findTrip,
   setLocation: _map.setLocation
 };

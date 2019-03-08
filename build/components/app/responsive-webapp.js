@@ -70,8 +70,6 @@ var _query = require('../../util/query');
 
 var _ui2 = require('../../util/ui');
 
-var _itinerary = require('../../util/itinerary');
-
 var _state = require('../../util/state');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -91,15 +89,19 @@ var ResponsiveWebapp = (_temp = _class = function (_Component) {
     /** Lifecycle methods **/
 
     value: function componentWillReceiveProps(nextProps) {
+      var query = this.props.query;
+
+
+      if (!(0, _lodash2.default)(query, nextProps.query)) {
+        this.props.formChanged(query, nextProps.query);
+      }
+
       // check if device position changed (typically only set once, on initial page load)
       if (this.props.currentPosition !== nextProps.currentPosition) {
         if (nextProps.currentPosition.error || !nextProps.currentPosition.coords) return;
         var pt = {
           lat: nextProps.currentPosition.coords.latitude,
           lon: nextProps.currentPosition.coords.longitude
-
-          // update nearby stops
-          // this.props.findNearbyStops(pt)
 
           // if in mobile mode and from field is not set, use current location as from and recenter map
         };if ((0, _ui2.isMobile)() && this.props.query.from === null) {
@@ -111,63 +113,21 @@ var ResponsiveWebapp = (_temp = _class = function (_Component) {
         }
       }
 
-      // check for change to from/to locations; clear active viewer if applicable
-      var query = this.props.query;
-
-      var thisFrom = query ? query.from : null;
-      var thisTo = query ? query.to : null;
-      var nextFrom = query ? nextProps.query.from : null;
-      var nextTo = query ? nextProps.query.to : null;
-      if (thisFrom !== nextFrom || thisTo !== nextTo) {
-        // TODO: refactor / make this more consistent
-        this.props.clearViewedStop();
-        this.props.clearViewedTrip();
-        this.props.setViewedRoute(null);
-        this.props.setMainPanelContent(null);
-
-        // update mobile state if needed
-        if ((0, _ui2.isMobile)() && nextProps.mobileScreen === _ui.MobileScreens.RESULTS_SUMMARY) {
-          this.props.setMobileScreen(_ui.MobileScreens.SEARCH_FORM);
-        }
-      }
-
       // Check for change between ITINERARY and PROFILE routingTypes
-      if (query.routingType !== nextProps.query.routingType) {
-        var queryModes = nextProps.query.mode.split(',');
+      // TODO: restore this for profile mode
+      /*if (query.routingType !== nextProps.query.routingType) {
+        let queryModes = nextProps.query.mode.split(',')
         // If we are entering 'ITINERARY' mode, ensure that one and only one access mode is selected
         if (nextProps.query.routingType === 'ITINERARY') {
-          queryModes = (0, _query.ensureSingleAccessMode)(queryModes);
-          this.props.setQueryParam({ mode: queryModes.join(',') });
+          queryModes = ensureSingleAccessMode(queryModes)
+          this.props.setQueryParam({ mode: queryModes.join(',') })
         }
         // If we are entering 'PROFILE' mode, ensure that CAR_HAIL is not selected
         // TODO: make this more generic, i.e. introduce concept of mode->routingType permissions
         if (nextProps.query.routingType === 'ITINERARY') {
-          queryModes = queryModes.filter(function (mode) {
-            return mode !== 'CAR_HAIL';
-          });
-          this.props.setQueryParam({ mode: queryModes.join(',') });
+          queryModes = queryModes.filter(mode => mode !== 'CAR_HAIL')
+          this.props.setQueryParam({ mode: queryModes.join(',') })
         }
-      }
-
-      if ((0, _ui2.isMobile)() && !this.props.activeItinerary && nextProps.activeItinerary) {
-        this.props.setMobileScreen(_ui.MobileScreens.RESULTS_SUMMARY);
-      }
-
-      // Ensure that driving modes are never selected alone
-      /*if (
-        query.mode !== nextProps.query.mode &&
-        hasCar(nextProps.query.mode) &&
-        !hasTransit(nextProps.query.mode) &&
-        this.props.modeGroups
-      ) {
-        let newMode = nextProps.query.mode
-        this.props.modeGroups.forEach(modeGroup => {
-          modeGroup.modes.forEach(mode => {
-            const modeStr = mode.mode || mode
-            if (isTransit(modeStr)) newMode += ',' + modeStr
-          })
-        })
-        this.props.setQueryParam({ mode: newMode })
       }*/
 
       // Check for any updates to tracked UI state properties and update URL as needed
@@ -189,7 +149,6 @@ var ResponsiveWebapp = (_temp = _class = function (_Component) {
         // in the URL.
         this.props.parseUrlQueryString(location.search);
       }
-      this._newMediaType(null, true);
 
       if ((0, _ui2.isMobile)()) {
         // If on mobile browser, check position on load
@@ -209,11 +168,6 @@ var ResponsiveWebapp = (_temp = _class = function (_Component) {
         { enableHighAccuracy: true });
       }
 
-      // if from & to locations are pre-populated, attempt to plan trip on page load
-      if (this.props.query.from && this.props.query.to) {
-        this.props.formChanged();
-      }
-
       // Check for initial display state
       if (initialDisplay === 'route' && location.search) {
         var params = _qs2.default.parse(location.search.substring(1));
@@ -222,23 +176,6 @@ var ResponsiveWebapp = (_temp = _class = function (_Component) {
           this.props.findRoute({ routeId: params.id });
           this.props.setViewedRoute({ routeId: params.id });
         }
-      }
-    }
-
-    /** Internal methods **/
-
-    // called when switching between desktop and mobile modes
-
-  }, {
-    key: '_newMediaType',
-    value: function _newMediaType(props, initialPageLoad) {
-      props = props || this.props;
-      if ((0, _ui2.isMobile)()) {
-        // entering mobile mode
-        props.setAutoPlan({ autoPlan: false });
-      } else {
-        // entering desktop mode
-        props.setAutoPlan({ autoPlan: true });
       }
     }
   }, {
@@ -273,20 +210,14 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 };
 
 var mapDispatchToProps = {
-  setAutoPlan: _config.setAutoPlan,
   setLocationToCurrent: _map.setLocationToCurrent,
   setMapCenter: _config.setMapCenter,
   setMapZoom: _config.setMapZoom,
-  findNearbyStops: _api.findNearbyStops,
   getCurrentPosition: _location.getCurrentPosition,
   findRoute: _api.findRoute,
   formChanged: _form.formChanged,
-  clearViewedStop: _ui.clearViewedStop,
-  clearViewedTrip: _ui.clearViewedTrip,
   receivedPositionResponse: _location.receivedPositionResponse,
-  setViewedRoute: _ui.setViewedRoute,
   setMainPanelContent: _ui.setMainPanelContent,
-  setMobileScreen: _ui.setMobileScreen,
   setQueryParam: _form.setQueryParam,
   parseUrlQueryString: _form.parseUrlQueryString
 };

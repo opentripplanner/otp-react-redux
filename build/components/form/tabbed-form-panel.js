@@ -56,8 +56,6 @@ var _settingsSelectorPanel2 = _interopRequireDefault(_settingsSelectorPanel);
 
 var _ui = require('../../actions/ui');
 
-var _state = require('../../util/state');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var TabbedFormPanel = (_temp2 = _class = function (_Component) {
@@ -96,7 +94,6 @@ var TabbedFormPanel = (_temp2 = _class = function (_Component) {
     value: function render() {
       var _props = this.props,
           icons = _props.icons,
-          itineraries = _props.itineraries,
           mainPanelContent = _props.mainPanelContent;
 
 
@@ -139,16 +136,7 @@ var TabbedFormPanel = (_temp2 = _class = function (_Component) {
               _reactBootstrap.Button,
               { className: 'hide-button clear-button-formatting', onClick: this._onHideClick },
               _react2.default.createElement('i', { className: 'fa fa-caret-up' }),
-              ' ',
-              itineraries && itineraries.length > 0 ? _react2.default.createElement(
-                'span',
-                null,
-                'Show Results'
-              ) : _react2.default.createElement(
-                'span',
-                null,
-                'Hide Settings'
-              )
+              ' Hide Settings'
             )
           )
         )
@@ -164,7 +152,6 @@ var TabbedFormPanel = (_temp2 = _class = function (_Component) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    itineraries: (0, _state.getActiveItineraries)(state.otp),
     mainPanelContent: state.otp.ui.mainPanelContent
   };
 };

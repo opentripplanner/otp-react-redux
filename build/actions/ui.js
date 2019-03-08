@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MobileScreens = exports.MainPanelContent = exports.setViewedRoute = exports.clearViewedTrip = exports.setViewedTrip = exports.clearViewedStop = exports.setViewedStop = exports.setMainPanelContent = exports.setMobileScreen = undefined;
+exports.MobileScreens = exports.MainPanelContent = exports.setViewedRoute = exports.setViewedTrip = exports.setViewedStop = exports.setMainPanelContent = exports.setMobileScreen = undefined;
 
 var _reduxActions = require('redux-actions');
 
@@ -11,19 +11,11 @@ var setMobileScreen = exports.setMobileScreen = (0, _reduxActions.createAction)(
 
 var setMainPanelContent = exports.setMainPanelContent = (0, _reduxActions.createAction)('SET_MAIN_PANEL_CONTENT');
 
-// Stop Viewer actions
+// Stop/Route/Trip Viewer actions
 
 var setViewedStop = exports.setViewedStop = (0, _reduxActions.createAction)('SET_VIEWED_STOP');
 
-var clearViewedStop = exports.clearViewedStop = (0, _reduxActions.createAction)('CLEAR_VIEWED_STOP');
-
-// Trip Viewer actions
-
 var setViewedTrip = exports.setViewedTrip = (0, _reduxActions.createAction)('SET_VIEWED_TRIP');
-
-var clearViewedTrip = exports.clearViewedTrip = (0, _reduxActions.createAction)('CLEAR_VIEWED_TRIP');
-
-// Route Viewer actions
 
 var setViewedRoute = exports.setViewedRoute = (0, _reduxActions.createAction)('SET_VIEWED_ROUTE');
 

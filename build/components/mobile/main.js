@@ -74,6 +74,8 @@ var _routeViewer2 = _interopRequireDefault(_routeViewer);
 
 var _ui = require('../../actions/ui');
 
+var _state = require('../../util/state');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MobileMain = (_temp = _class = function (_Component) {
@@ -92,6 +94,10 @@ var MobileMain = (_temp = _class = function (_Component) {
       if (this.props.uiState.mobileScreen === _ui.MobileScreens.WELCOME_SCREEN && (nextProps.currentQuery.from && nextProps.currentQuery.to || !nextProps.currentPosition.coords && (nextProps.currentQuery.from || nextProps.currentQuery.to))) {
         // If so, advance to main search screen
         this.props.setMobileScreen(_ui.MobileScreens.SEARCH_FORM);
+      }
+
+      if (!this.props.activeItinerary && nextProps.activeItinerary) {
+        this.props.setMobileScreen(_ui.MobileScreens.RESULTS_SUMMARY);
       }
     }
   }, {
@@ -180,7 +186,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     uiState: state.otp.ui,
     currentQuery: state.otp.currentQuery,
-    currentPosition: state.otp.location.currentPosition
+    currentPosition: state.otp.location.currentPosition,
+    activeItinerary: (0, _state.getActiveItinerary)(state.otp)
   };
 };
 
