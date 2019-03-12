@@ -43,7 +43,11 @@ var _moment2 = _interopRequireDefault(_moment);
 
 var _form = require('../../actions/form');
 
+var _time = require('../../util/time');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var dateFormat = 'MM/DD/YYYY'; // TODO: Make configurable
 
 var DateTimeSelector = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(DateTimeSelector, _Component);
@@ -75,6 +79,16 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
       _this.props.setQueryParam({ time: evt.target.value });
     };
 
+    _this._onBackupTimeChange = function (evt) {
+      var time = (0, _moment2.default)(evt.target.value, _this.props.timeFormat).format('HH:mm');
+      _this.props.setQueryParam({ time: time });
+    };
+
+    _this._onBackupDateChange = function (evt) {
+      var date = (0, _moment2.default)(evt.target.value, dateFormat).format('YYYY-MM-DD');
+      _this.props.setQueryParam({ date: date });
+    };
+
     _this._setDepartArrive = function (type) {
       _this.props.setQueryParam({ departArrive: type });
       if (type === 'NOW') {
@@ -92,6 +106,16 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
   }
 
   (0, _createClass3.default)(DateTimeSelector, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var checkInput = function checkInput(type) {
+        var input = document.createElement('input');
+        input.setAttribute('type', type);
+        return input.type === type;
+      };
+      this._supportsDateTimeInputs = checkInput('date') && checkInput('time');
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -101,7 +125,8 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
           date = _props.date,
           time = _props.time,
           startTime = _props.startTime,
-          endTime = _props.endTime;
+          endTime = _props.endTime,
+          timeFormat = _props.timeFormat;
 
       // TODO: restore for profile mode
       /*if (this.props.profile) {
@@ -177,7 +202,33 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
               );
             })
           ),
-          departArrive !== 'NOW' && _react2.default.createElement(
+          departArrive !== 'NOW' && !this._supportsDateTimeInputs && _react2.default.createElement(
+            _reactBootstrap.Row,
+            { style: { marginTop: 20 } },
+            _react2.default.createElement(
+              _reactBootstrap.Col,
+              { xs: 6 },
+              _react2.default.createElement(_reactBootstrap.FormControl, {
+                className: 'time-selector',
+                type: 'text',
+                defaultValue: (0, _moment2.default)(time, 'HH:mm').format(timeFormat),
+                required: 'true',
+                onChange: this._onBackupTimeChange
+              })
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.Col,
+              { xs: 6 },
+              _react2.default.createElement(_reactBootstrap.FormControl, {
+                className: 'date-selector',
+                type: 'text',
+                defaultValue: (0, _moment2.default)(date, 'YYYY-MM-DD').format(dateFormat),
+                required: 'true',
+                onChange: this._onBackupDateChange
+              })
+            )
+          ),
+          departArrive !== 'NOW' && this._supportsDateTimeInputs && _react2.default.createElement(
             _reactBootstrap.Row,
             { style: { marginTop: 20 } },
             _react2.default.createElement(
@@ -280,7 +331,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     date: date,
     time: time,
     startTime: startTime,
-    endTime: endTime
+    endTime: endTime,
+    timeFormat: (0, _time.getTimeFormat)(state.otp.config)
   };
 };
 
