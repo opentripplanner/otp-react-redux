@@ -89,6 +89,8 @@ var CarRentalOverlay = (_temp = _class = function (_Component) {
         this._startRefreshing();
       } else if (this.props.visible && !nextProps.visible) {
         this._stopRefreshing();
+      } else if (this.props.visible && nextProps.visible && this.props.companies !== nextProps.companies) {
+        this._startRefreshing();
       }
     }
   }, {
@@ -175,6 +177,7 @@ var CarRentalOverlay = (_temp = _class = function (_Component) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
+    companies: state.otp.currentQuery.companies,
     stations: state.otp.overlay.carRental.stations
   };
 };
