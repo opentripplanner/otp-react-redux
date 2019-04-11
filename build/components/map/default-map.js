@@ -124,8 +124,10 @@ var DefaultMap = function (_Component) {
         _react2.default.createElement(_endpointsOverlay2.default, null),
         mapConfig.overlays && mapConfig.overlays.map(function (overlayConfig, k) {
           switch (overlayConfig.type) {
-            case 'car-rental':
-              return _react2.default.createElement(_carRentalOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig));
+            case 'car-rental-car2go':
+              return _react2.default.createElement(_carRentalOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig, { company: 'CAR2GO' }));
+            case 'car-rental-reachnow':
+              return _react2.default.createElement(_carRentalOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig, { company: 'REACHNOW' }));
             case 'bike-rental':
               return _react2.default.createElement(_bikeRentalOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig));
             case 'park-and-ride':

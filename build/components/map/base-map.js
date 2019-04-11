@@ -198,7 +198,7 @@ var BaseMap = (_temp = _class = function (_Component) {
 
       // Check if any overlays should be toggled due to mode change
       var overlaysConfig = this.props.config.map.overlays;
-      if (this.props.query.mode && overlaysConfig && this.props.query.mode !== nextProps.query.mode) {
+      if (this.props.query.mode && overlaysConfig && (this.props.query.mode !== nextProps.query.mode || this.props.query.companies !== nextProps.query.companies)) {
         // Determine any added/removed modes
         var oldModes = this.props.query.mode.split(',');
         var newModes = nextProps.query.mode.split(',');
@@ -208,6 +208,7 @@ var BaseMap = (_temp = _class = function (_Component) {
         var added = newModes.filter(function (m) {
           return !oldModes.includes(m);
         });
+        var newCompanies = nextProps.query.companies ? nextProps.query.companies.split(',') : [];
 
         var overlayVisibility = (0, _extends3.default)({}, this.state.overlayVisibility);
 
@@ -219,29 +220,29 @@ var BaseMap = (_temp = _class = function (_Component) {
         try {
           for (var _iterator = (0, _getIterator3.default)(removed), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
             var mode = _step.value;
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
+            var _iteratorNormalCompletion4 = true;
+            var _didIteratorError4 = false;
+            var _iteratorError4 = undefined;
 
             try {
-              for (var _iterator3 = (0, _getIterator3.default)(overlaysConfig), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                var oConfig = _step3.value;
+              for (var _iterator4 = (0, _getIterator3.default)(overlaysConfig), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                var _oConfig = _step4.value;
 
-                if (oConfig.modes && oConfig.modes.includes(mode)) {
-                  overlayVisibility[oConfig.name] = false;
+                if (_oConfig.modes && _oConfig.modes.includes(mode)) {
+                  overlayVisibility[_oConfig.name] = false;
                 }
               }
             } catch (err) {
-              _didIteratorError3 = true;
-              _iteratorError3 = err;
+              _didIteratorError4 = true;
+              _iteratorError4 = err;
             } finally {
               try {
-                if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                  _iterator3.return();
+                if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                  _iterator4.return();
                 }
               } finally {
-                if (_didIteratorError3) {
-                  throw _iteratorError3;
+                if (_didIteratorError4) {
+                  throw _iteratorError4;
                 }
               }
             }
@@ -270,29 +271,29 @@ var BaseMap = (_temp = _class = function (_Component) {
         try {
           for (var _iterator2 = (0, _getIterator3.default)(added), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
             var _mode = _step2.value;
-            var _iteratorNormalCompletion4 = true;
-            var _didIteratorError4 = false;
-            var _iteratorError4 = undefined;
+            var _iteratorNormalCompletion5 = true;
+            var _didIteratorError5 = false;
+            var _iteratorError5 = undefined;
 
             try {
-              for (var _iterator4 = (0, _getIterator3.default)(overlaysConfig), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                var _oConfig = _step4.value;
+              for (var _iterator5 = (0, _getIterator3.default)(overlaysConfig), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                var _oConfig2 = _step5.value;
 
-                if (_oConfig.modes && _oConfig.modes.includes(_mode)) {
-                  overlayVisibility[_oConfig.name] = true;
+                if (_oConfig2.modes && _oConfig2.modes.includes(_mode)) {
+                  overlayVisibility[_oConfig2.name] = true;
                 }
               }
             } catch (err) {
-              _didIteratorError4 = true;
-              _iteratorError4 = err;
+              _didIteratorError5 = true;
+              _iteratorError5 = err;
             } finally {
               try {
-                if (!_iteratorNormalCompletion4 && _iterator4.return) {
-                  _iterator4.return();
+                if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                  _iterator5.return();
                 }
               } finally {
-                if (_didIteratorError4) {
-                  throw _iteratorError4;
+                if (_didIteratorError5) {
+                  throw _iteratorError5;
                 }
               }
             }
@@ -308,6 +309,33 @@ var BaseMap = (_temp = _class = function (_Component) {
           } finally {
             if (_didIteratorError2) {
               throw _iteratorError2;
+            }
+          }
+        }
+
+        var _iteratorNormalCompletion3 = true;
+        var _didIteratorError3 = false;
+        var _iteratorError3 = undefined;
+
+        try {
+          for (var _iterator3 = (0, _getIterator3.default)(overlaysConfig), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+            var oConfig = _step3.value;
+
+            if (oConfig.company) {
+              overlayVisibility[oConfig.name] = newCompanies.includes(oConfig.company);
+            }
+          }
+        } catch (err) {
+          _didIteratorError3 = true;
+          _iteratorError3 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion3 && _iterator3.return) {
+              _iterator3.return();
+            }
+          } finally {
+            if (_didIteratorError3) {
+              throw _iteratorError3;
             }
           }
         }

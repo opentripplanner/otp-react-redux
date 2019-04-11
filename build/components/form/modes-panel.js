@@ -71,7 +71,7 @@ var ModesPanel = (_temp = _class = function (_Component) {
           companies = _props.companies,
           queryModes = _props.queryModes;
 
-      if (mode.mode === 'CAR_HAIL') {
+      if (mode.mode === 'CAR_HAIL' || mode.mode === 'CAR_RENT') {
         return Boolean(companies && companies.includes(mode.label.toUpperCase()));
       } else {
         return queryModes.includes(mode.mode || mode);
@@ -113,8 +113,8 @@ var ModesPanel = (_temp = _class = function (_Component) {
         });
         queryModes.push(modeStr);
 
-        // do extra stuff if mode selected was a TNC
-        queryParamUpdate.companies = modeStr === 'CAR_HAIL' ? mode.label.toUpperCase() : null;
+        // do extra stuff if mode selected was a TNC or car rental
+        queryParamUpdate.companies = modeStr === 'CAR_HAIL' || modeStr === 'CAR_RENT' ? mode.label.toUpperCase() : null;
 
         // Otherwise, if mode is currently selected, deselect it
       } else if (queryModes.includes(modeStr)) {

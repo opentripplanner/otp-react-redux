@@ -46,6 +46,21 @@ var _map = require('../../actions/map');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function makeIcon(company) {
+  return (0, _leaflet.divIcon)({
+    iconSize: [11, 16],
+    popupAnchor: [0, -6],
+    html: '<i />',
+    className: 'fa fa-map-marker car-rental-icon ' + company
+  });
+}
+
+var carRentalNetworkIconLookup = {
+  CAR2GO: makeIcon('car2go'),
+  default: makeIcon(''),
+  REACHNOW: makeIcon('reachnow')
+};
+
 var CarRentalOverlay = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(CarRentalOverlay, _Component);
 
@@ -57,14 +72,18 @@ var CarRentalOverlay = (_temp = _class = function (_Component) {
   (0, _createClass3.default)(CarRentalOverlay, [{
     key: '_startRefreshing',
     value: function _startRefreshing() {
-      var _this2 = this;
+      var _props = this.props,
+          company = _props.company,
+          refreshVehicles = _props.refreshVehicles;
 
-      // ititial station retrieval
-      this.props.refreshVehicles();
+      var params = { company: company
+
+        // ititial station retrieval
+      };refreshVehicles(params);
 
       // set up timer to refresh stations periodically
       this._refreshTimer = setInterval(function () {
-        _this2.props.refreshVehicles();
+        refreshVehicles(params);
       }, 30000); // defaults to every 30 sec. TODO: make this configurable?*/
     }
   }, {
@@ -89,26 +108,17 @@ var CarRentalOverlay = (_temp = _class = function (_Component) {
         this._startRefreshing();
       } else if (this.props.visible && !nextProps.visible) {
         this._stopRefreshing();
-      } else if (this.props.visible && nextProps.visible && this.props.companies !== nextProps.companies) {
-        this._startRefreshing();
       }
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       var stations = this.props.stations;
 
 
       if (!stations || stations.length === 0) return _react2.default.createElement(_reactLeaflet.FeatureGroup, null);
-
-      var markerIcon = (0, _leaflet.divIcon)({
-        iconSize: [11, 16],
-        popupAnchor: [0, -6],
-        html: '<i />',
-        className: 'fa fa-map-marker car-rental-icon'
-      });
 
       var bulletIconStyle = {
         color: 'gray',
@@ -124,7 +134,7 @@ var CarRentalOverlay = (_temp = _class = function (_Component) {
           return _react2.default.createElement(
             _reactLeaflet.Marker,
             {
-              icon: markerIcon,
+              icon: carRentalNetworkIconLookup[station.networks] || carRentalNetworkIconLookup.default,
               key: station.id,
               position: [station.y, station.x]
             },
@@ -150,13 +160,13 @@ var CarRentalOverlay = (_temp = _class = function (_Component) {
                   'div',
                   { className: 'popup-row' },
                   _react2.default.createElement(_setFromTo2.default, {
-                    map: _this3.context.map,
+                    map: _this2.context.map,
                     location: {
                       lat: station.y,
                       lon: station.x,
                       name: stationName
                     },
-                    setLocation: _this3.props.setLocation
+                    setLocation: _this2.props.setLocation
                   })
                 )
               )
@@ -176,9 +186,10 @@ var CarRentalOverlay = (_temp = _class = function (_Component) {
 // connect to the redux store
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  var companyData = state.otp.overlay.carRental[ownProps.company];
+  var stations = companyData ? companyData.stations : [];
   return {
-    companies: state.otp.currentQuery.companies,
-    stations: state.otp.overlay.carRental.stations
+    stations: stations
   };
 };
 

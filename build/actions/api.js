@@ -261,12 +261,15 @@ function bikeRentalQuery(params) {
 var carRentalResponse = exports.carRentalResponse = (0, _reduxActions.createAction)('CAR_RENTAL_RESPONSE');
 var carRentalError = exports.carRentalError = (0, _reduxActions.createAction)('CAR_RENTAL_ERROR');
 
-function carRentalQuery() {
-  return function (dispatch, getState) {
-    var companies = getState().otp.currentQuery.companies;
-
-    return dispatch(createQueryAction('car_rental?' + _qs2.default.stringify({ companies: companies }), carRentalResponse, carRentalError));
-  };
+function carRentalQuery(params) {
+  return createQueryAction('car_rental?' + _qs2.default.stringify(params), carRentalResponse, carRentalError, {
+    rewritePayload: function rewritePayload(payload) {
+      return {
+        company: params.company,
+        stations: payload.stations
+      };
+    }
+  });
 }
 
 // Single stop lookup query

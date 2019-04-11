@@ -125,6 +125,8 @@ function createOtpReducer(config, initialQuery) {
   };
 
   return function () {
+    var _carRental;
+
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
     var action = arguments[1];
 
@@ -220,10 +222,11 @@ function createOtpReducer(config, initialQuery) {
       case 'CAR_RENTAL_RESPONSE':
         return (0, _immutabilityHelper2.default)(state, {
           overlay: {
-            carRental: {
-              stations: { $set: action.payload.stations },
-              pending: { $set: false }
-            }
+            carRental: (_carRental = {}, (0, _defineProperty3.default)(_carRental, action.payload.company, {
+              $set: {
+                stations: action.payload.stations
+              }
+            }), (0, _defineProperty3.default)(_carRental, 'pending', { $set: false }), _carRental)
           }
         });
       case 'SET_USE_REALTIME_RESPONSE':
