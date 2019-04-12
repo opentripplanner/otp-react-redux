@@ -399,6 +399,7 @@ function getLegMode(companies, leg) {
   var isTNC = false;
   if (legMode === 'CAR' && leg.rentedCar) {
     legMode = {
+      company: companies,
       mode: 'CAR_RENT'
     };
   } else if (legMode === 'CAR' && companies) {
