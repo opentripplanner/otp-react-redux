@@ -64,9 +64,17 @@
 }
 
 .otp .car-rental-icon {
-  color: #009cde;
+  color: gray;
   font-size: 18px;
   text-align: center;
+}
+
+.otp .car-rental-icon-car2go {
+  color: #009cde;
+}
+
+.otp .car-rental-icon-reachnow {
+  color: #007fa3;
 }
 
 /* Stop icon circle css */
