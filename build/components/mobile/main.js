@@ -106,6 +106,7 @@ var MobileMain = (_temp = _class = function (_Component) {
       var _props = this.props,
           icons = _props.icons,
           itineraryClass = _props.itineraryClass,
+          itineraryFooter = _props.itineraryFooter,
           map = _props.map,
           title = _props.title,
           uiState = _props.uiState;
@@ -158,7 +159,7 @@ var MobileMain = (_temp = _class = function (_Component) {
           return _react2.default.createElement(_optionsScreen2.default, { icons: icons });
 
         case _ui.MobileScreens.RESULTS_SUMMARY:
-          return _react2.default.createElement(_resultsScreen2.default, { map: map, itineraryClass: itineraryClass });
+          return _react2.default.createElement(_resultsScreen2.default, { map: map, itineraryClass: itineraryClass, itineraryFooter: itineraryFooter, icons: icons });
 
         default:
           return _react2.default.createElement(

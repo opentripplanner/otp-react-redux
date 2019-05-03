@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getTimeFormat = getTimeFormat;
+exports.getDateFormat = getDateFormat;
+exports.getLongDateFormat = getLongDateFormat;
 exports.formatDuration = formatDuration;
 exports.formatTime = formatTime;
 exports.formatStopTime = formatStopTime;
@@ -17,8 +19,15 @@ var _moment2 = _interopRequireDefault(_moment);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function getTimeFormat(config) {
-  if (config.dateTime && config.dateTime.timeFormat) return config.dateTime.timeFormat;
-  return 'HH:mm';
+  return config.dateTime && config.dateTime.timeFormat ? config.dateTime.timeFormat : 'HH:mm';
+}
+
+function getDateFormat(config) {
+  return config.dateTime && config.dateTime.dateFormat ? config.dateTime.dateFormat : 'YYYY-MM-DD';
+}
+
+function getLongDateFormat(config) {
+  return config.dateTime && config.dateTime.longDateFormat ? config.dateTime.longDateFormat : 'D MMMM YYYY';
 }
 
 /**

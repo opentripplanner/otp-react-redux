@@ -278,9 +278,9 @@ function getLegModeString(leg) {
 function getModeIcon(mode, customIcons) {
   var modeStr = mode.mode || mode;
 
-  // Special handling for CAR_HAIL, which can have company-specific icons
-  if (modeStr === 'CAR_HAIL') {
-    modeStr = 'CAR_HAIL_' + mode.company.toUpperCase();
+  // Special handling for company-specific icons
+  if (mode.company) {
+    modeStr = modeStr + '_' + mode.company.toUpperCase();
   }
 
   // Check if there is a custom icon for this mode
@@ -393,11 +393,13 @@ function toSentenceCase(str) {
 }
 
 // Temporary hack for getting TNC details
+// TODO: do we still need this?
 function getLegMode(companies, leg) {
   var legMode = leg.mode;
   var isTNC = false;
   if (legMode === 'CAR' && leg.rentedCar) {
     legMode = {
+      company: companies,
       mode: 'CAR_RENT'
     };
   } else if (legMode === 'CAR' && companies) {

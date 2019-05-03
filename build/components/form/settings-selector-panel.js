@@ -109,7 +109,7 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
       queryModes.push(modeStr);
 
       // Do extra stuff if mode selected was a TNC
-      queryParamUpdate.companies = modeStr === 'CAR_HAIL' ? mode.company.toUpperCase() : null;
+      queryParamUpdate.companies = modeStr === 'CAR_HAIL' || modeStr === 'CAR_RENT' ? mode.company.toUpperCase() : null;
 
       queryParamUpdate.mode = queryModes.join(',');
 
@@ -130,7 +130,7 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
           companies = _props.companies,
           queryModes = _props.queryModes;
 
-      if (mode.mode === 'CAR_HAIL') {
+      if (mode.mode === 'CAR_HAIL' || mode.mode === 'CAR_RENT') {
         return Boolean(companies && companies.includes(mode.company.toUpperCase()));
       }
 

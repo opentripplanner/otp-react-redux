@@ -96,18 +96,23 @@ var CarRentalOverlay = (_temp = _class = function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      var stations = this.props.stations;
+      var _props = this.props,
+          stations = _props.stations,
+          companies = _props.companies;
 
 
-      if (!stations || stations.length === 0) return _react2.default.createElement(_reactLeaflet.FeatureGroup, null);
+      var filteredStations = stations;
+      if (companies) {
+        filteredStations = stations.filter(function (station) {
+          return station.networks.filter(function (value) {
+            return companies.includes(value);
+          }).length > 0;
+        });
+      }
 
-      var markerIcon = (0, _leaflet.divIcon)({
-        iconSize: [11, 16],
-        popupAnchor: [0, -6],
-        html: '<i />',
-        className: 'fa fa-map-marker car-rental-icon'
-      });
+      if (!filteredStations || filteredStations.length === 0) return _react2.default.createElement(_reactLeaflet.FeatureGroup, null);
 
+      // Default icon is gray, styling can be overridden by network-specific classes
       var bulletIconStyle = {
         color: 'gray',
         fontSize: 12,
@@ -117,8 +122,19 @@ var CarRentalOverlay = (_temp = _class = function (_Component) {
       return _react2.default.createElement(
         _reactLeaflet.FeatureGroup,
         null,
-        stations.map(function (station) {
-          var stationName = station.networks.join('/') + ' ' + station.id;
+        filteredStations.map(function (station) {
+          var stationName = station.networks.join('/') + ' ' + (station.name || station.id);
+
+          var className = 'fa fa-map-marker car-rental-icon';
+          // If this station is exclusive to a single network, apply the the class for that network
+          if (station.networks.length === 1) className += ' car-rental-icon-' + station.networks[0].toLowerCase();
+          var markerIcon = (0, _leaflet.divIcon)({
+            iconSize: [11, 16],
+            popupAnchor: [0, -6],
+            html: '<i />',
+            className: className
+          });
+
           return _react2.default.createElement(
             _reactLeaflet.Marker,
             {

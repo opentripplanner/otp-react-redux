@@ -105,11 +105,13 @@ function createOtpReducer(config, initialQuery) {
         stations: []
       },
       parkAndRide: {
-        locations: []
+        // null default value indicates no request for P&R list has been made
+        locations: null
       },
       transit: {
         stops: []
       },
+      transitive: null,
       zipcar: {
         locations: []
       }
@@ -120,6 +122,7 @@ function createOtpReducer(config, initialQuery) {
     },
     ui: {
       mobileScreen: _ui.MobileScreens.WELCOME_SCREEN,
+      printView: window.location.href.indexOf('/print/') !== -1,
       diagramLeg: null
     }
   };
@@ -135,8 +138,12 @@ function createOtpReducer(config, initialQuery) {
         // session (i.e. searches lookup is empty/null) AND an activeItinerary ID
         // is specified in URL parameters, use that ID. Otherwise, use null/0
         var activeItinerary = state.currentQuery.routingType === 'ITINERARY' ? 0 : null;
-        if ((!state.searches || (0, _keys2.default)(state.searches).length === 0) && window.history.state && window.history.state.ui_activeItinerary) {
-          activeItinerary = window.history.state.ui_activeItinerary;
+        // We cannot use window.history.state here to check for the active
+        // itinerary param because it is unreliable in some states (e.g.,
+        // when the print layout component first loads).
+        var urlParams = (0, _query.getUrlParams)();
+        if ((!state.searches || (0, _keys2.default)(state.searches).length === 0) && urlParams.ui_activeItinerary) {
+          activeItinerary = +urlParams.ui_activeItinerary;
         }
 
         return (0, _immutabilityHelper2.default)(state, {
@@ -550,7 +557,22 @@ function createOtpReducer(config, initialQuery) {
             }
           }
         });
-
+      // case 'INITIALIZE_TRANSITIVE':
+      //   const transitive = new Transitive({
+      //     data: action.payload.transitiveData,
+      //     initialBounds: action.payload.bounds,
+      //     zoomEnabled: false,
+      //     autoResize: false,
+      //     styles: require('./transitive-styles'),
+      //     zoomFactors,
+      //     display: 'canvas',
+      //     canvas
+      //   })
+      //   return update(state, {
+      //     overlay: {
+      //       transitive: { $set: }
+      //     }
+      //   })
       default:
         return state;
     }

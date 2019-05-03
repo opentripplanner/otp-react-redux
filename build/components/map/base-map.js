@@ -198,7 +198,8 @@ var BaseMap = (_temp = _class = function (_Component) {
 
       // Check if any overlays should be toggled due to mode change
       var overlaysConfig = this.props.config.map.overlays;
-      if (this.props.query.mode && overlaysConfig && this.props.query.mode !== nextProps.query.mode) {
+
+      if (overlaysConfig && this.props.query.mode) {
         // Determine any added/removed modes
         var oldModes = this.props.query.mode.split(',');
         var newModes = nextProps.query.mode.split(',');
@@ -211,43 +212,37 @@ var BaseMap = (_temp = _class = function (_Component) {
 
         var overlayVisibility = (0, _extends3.default)({}, this.state.overlayVisibility);
 
-        // Turn OFF any affected overlays for removed modes
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
         var _iteratorError = undefined;
 
         try {
-          for (var _iterator = (0, _getIterator3.default)(removed), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var mode = _step.value;
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
+          for (var _iterator = (0, _getIterator3.default)(overlaysConfig), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var oConfig = _step.value;
 
-            try {
-              for (var _iterator3 = (0, _getIterator3.default)(overlaysConfig), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                var oConfig = _step3.value;
+            if (!oConfig.modes || oConfig.modes.length !== 1) continue;
+            // TODO: support multi-mode overlays
+            var overlayMode = oConfig.modes[0];
 
-                if (oConfig.modes && oConfig.modes.includes(mode)) {
-                  overlayVisibility[oConfig.name] = false;
-                }
+            if ((overlayMode === 'CAR_RENT' || overlayMode === 'CAR_HAIL') && oConfig.companies) {
+              // Special handling for company-based mode overlays (e.g. carshare, car-hail)
+              var overlayCompany = oConfig.companies[0]; // TODO: handle multi-company overlays
+              if (added.includes(overlayMode)) {
+                // Company-based mode was just selected; enable overlay iff overlay's company is active
+                if (nextProps.query.companies.includes(overlayCompany)) overlayVisibility[oConfig.name] = true;
+              } else if (removed.includes(overlayMode)) {
+                // Company-based mode was just deselected; disable overlay (regardless of company)
+                overlayVisibility[oConfig.name] = false;
+              } else if (newModes.includes(overlayMode) && this.props.query.companies !== nextProps.query.companies) {
+                // Company-based mode remains selected but companies change
+                overlayVisibility[oConfig.name] = nextProps.query.companies.includes(overlayCompany);
               }
-            } catch (err) {
-              _didIteratorError3 = true;
-              _iteratorError3 = err;
-            } finally {
-              try {
-                if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                  _iterator3.return();
-                }
-              } finally {
-                if (_didIteratorError3) {
-                  throw _iteratorError3;
-                }
-              }
+            } else {
+              // Default handling for other modes
+              if (added.includes(overlayMode)) overlayVisibility[oConfig.name] = true;
+              if (removed.includes(overlayMode)) overlayVisibility[oConfig.name] = false;
             }
           }
-
-          // Turn ON any affected overlays for added modes
         } catch (err) {
           _didIteratorError = true;
           _iteratorError = err;
@@ -259,55 +254,6 @@ var BaseMap = (_temp = _class = function (_Component) {
           } finally {
             if (_didIteratorError) {
               throw _iteratorError;
-            }
-          }
-        }
-
-        var _iteratorNormalCompletion2 = true;
-        var _didIteratorError2 = false;
-        var _iteratorError2 = undefined;
-
-        try {
-          for (var _iterator2 = (0, _getIterator3.default)(added), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-            var _mode = _step2.value;
-            var _iteratorNormalCompletion4 = true;
-            var _didIteratorError4 = false;
-            var _iteratorError4 = undefined;
-
-            try {
-              for (var _iterator4 = (0, _getIterator3.default)(overlaysConfig), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                var _oConfig = _step4.value;
-
-                if (_oConfig.modes && _oConfig.modes.includes(_mode)) {
-                  overlayVisibility[_oConfig.name] = true;
-                }
-              }
-            } catch (err) {
-              _didIteratorError4 = true;
-              _iteratorError4 = err;
-            } finally {
-              try {
-                if (!_iteratorNormalCompletion4 && _iterator4.return) {
-                  _iterator4.return();
-                }
-              } finally {
-                if (_didIteratorError4) {
-                  throw _iteratorError4;
-                }
-              }
-            }
-          }
-        } catch (err) {
-          _didIteratorError2 = true;
-          _iteratorError2 = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-              _iterator2.return();
-            }
-          } finally {
-            if (_didIteratorError2) {
-              throw _iteratorError2;
             }
           }
         }

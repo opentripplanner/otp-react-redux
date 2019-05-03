@@ -128,7 +128,9 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
     value: function render() {
       var _props = this.props,
           error = _props.error,
+          icons = _props.icons,
           itineraryClass = _props.itineraryClass,
+          itineraryFooter = _props.itineraryFooter,
           query = _props.query,
           realtimeEffects = _props.realtimeEffects,
           resultCount = _props.resultCount,
@@ -264,10 +266,12 @@ var MobileResultsScreen = (_temp = _class = function (_Component) {
           },
           _react2.default.createElement(_itineraryCarousel2.default, {
             itineraryClass: itineraryClass,
+            itineraryFooter: itineraryFooter,
             hideHeader: true,
             expanded: this.state.expanded,
             onClick: this._optionClicked,
-            showRealtimeAnnotation: showRealtimeAnnotation
+            showRealtimeAnnotation: showRealtimeAnnotation,
+            customIcons: icons
           })
         ),
         _react2.default.createElement(

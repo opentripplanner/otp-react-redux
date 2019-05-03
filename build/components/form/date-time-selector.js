@@ -47,8 +47,6 @@ var _time = require('../../util/time');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var dateFormat = 'MM/DD/YYYY'; // TODO: Make configurable
-
 var DateTimeSelector = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(DateTimeSelector, _Component);
 
@@ -85,7 +83,7 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
     };
 
     _this._onBackupDateChange = function (evt) {
-      var date = (0, _moment2.default)(evt.target.value, dateFormat).format('YYYY-MM-DD');
+      var date = (0, _moment2.default)(evt.target.value, _this.props.dateFormat).format('YYYY-MM-DD');
       _this.props.setQueryParam({ date: date });
     };
 
@@ -126,7 +124,8 @@ var DateTimeSelector = (_temp = _class = function (_Component) {
           time = _props.time,
           startTime = _props.startTime,
           endTime = _props.endTime,
-          timeFormat = _props.timeFormat;
+          timeFormat = _props.timeFormat,
+          dateFormat = _props.dateFormat;
 
       // TODO: restore for profile mode
       /*if (this.props.profile) {
@@ -332,7 +331,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     time: time,
     startTime: startTime,
     endTime: endTime,
-    timeFormat: (0, _time.getTimeFormat)(state.otp.config)
+    timeFormat: (0, _time.getTimeFormat)(state.otp.config),
+    dateFormat: (0, _time.getDateFormat)(state.otp.config)
   };
 };
 

@@ -57,7 +57,8 @@ var TripDetails = function (_Component) {
     value: function render() {
       var _props = this.props,
           itinerary = _props.itinerary,
-          timeFormat = _props.timeFormat;
+          timeFormat = _props.timeFormat,
+          longDateFormat = _props.longDateFormat;
 
       var date = (0, _moment2.default)(itinerary.startTime);
 
@@ -148,7 +149,7 @@ var TripDetails = function (_Component) {
                 _react2.default.createElement(
                   'b',
                   null,
-                  date.format('MMMM DD, YYYY')
+                  date.format(longDateFormat)
                 )
               ),
               this.props.routingType === 'ITINERARY' && _react2.default.createElement(
@@ -297,7 +298,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     routingType: state.otp.currentQuery.routingType,
     tnc: state.otp.tnc,
-    timeFormat: (0, _time.getTimeFormat)(state.otp.config)
+    timeFormat: (0, _time.getTimeFormat)(state.otp.config),
+    longDateFormat: (0, _time.getLongDateFormat)(state.otp.config)
   };
 };
 

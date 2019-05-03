@@ -68,6 +68,7 @@ var DefaultMainPanel = function (_Component) {
       var _props = this.props,
           customIcons = _props.customIcons,
           itineraryClass = _props.itineraryClass,
+          itineraryFooter = _props.itineraryFooter,
           mainPanelContent = _props.mainPanelContent,
           currentQuery = _props.currentQuery,
           activeSearch = _props.activeSearch;
@@ -84,7 +85,7 @@ var DefaultMainPanel = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'desktop-narrative-container' },
-            _react2.default.createElement(_narrativeRoutingResults2.default, { itineraryClass: itineraryClass, customIcons: customIcons })
+            _react2.default.createElement(_narrativeRoutingResults2.default, { itineraryClass: itineraryClass, itineraryFooter: itineraryFooter, customIcons: customIcons })
           )
         ),
         showPlanTripButton && _react2.default.createElement('div', { style: { position: 'absolute', left: 0, right: 20, bottom: 55, height: 15, backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1))', zIndex: 100 } }),

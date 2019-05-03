@@ -62,7 +62,8 @@ var DateTimePreview = (_temp = _class = function (_Component) {
           routingType = _props.routingType,
           startTime = _props.startTime,
           endTime = _props.endTime,
-          timeFormat = _props.timeFormat;
+          timeFormat = _props.timeFormat,
+          dateFormat = _props.dateFormat;
 
 
       var timeStr = void 0;
@@ -78,7 +79,7 @@ var DateTimePreview = (_temp = _class = function (_Component) {
         { className: 'summary' },
         _react2.default.createElement('i', { className: 'fa fa-calendar' }),
         ' ',
-        (0, _moment2.default)(date).calendar().split(' ')[0],
+        (0, _moment2.default)(date).calendar(null, { sameElse: dateFormat }).split(' at')[0],
         _react2.default.createElement('br', null),
         _react2.default.createElement('i', { className: 'fa fa-clock-o' }),
         ' ',
@@ -142,7 +143,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     time: time,
     startTime: startTime,
     endTime: endTime,
-    timeFormat: (0, _time.getTimeFormat)(state.otp.config)
+    timeFormat: (0, _time.getTimeFormat)(state.otp.config),
+    dateFormat: (0, _time.getDateFormat)(state.otp.config)
   };
 };
 

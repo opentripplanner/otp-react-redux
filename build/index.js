@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.otpUtils = exports.createOtpReducer = exports.setUseRealtimeResponse = exports.setMapCenter = exports.setLocationToCurrent = exports.setAutoPlan = exports.getCurrentPosition = exports.findNearbyStops = exports.clearLocation = exports.DefaultMainPanel = exports.AppMenu = exports.ResponsiveWebapp = exports.ViewTripButton = exports.ViewStopButton = exports.ViewerContainer = exports.StopViewer = exports.MobileMain = exports.TripTools = exports.TripDetails = exports.TransportationNetworkCompanyLeg = exports.SimpleRealtimeAnnotation = exports.RealtimeAnnotation = exports.NarrativeRoutingResults = exports.NarrativeProfileOptions = exports.NarrativeItinerary = exports.NarrativeItineraries = exports.LegDiagramPreview = exports.LocationIcon = exports.TransitiveOverlay = exports.TileOverlay = exports.StopsOverlay = exports.OsmBaseLayer = exports.Map = exports.ItineraryOverlay = exports.ItineraryCarousel = exports.EndpointsOverlay = exports.DefaultMap = exports.BikeRentalOverlay = exports.BaseMap = exports.BaseLayers = exports.SwitchButton = exports.StylizedMap = exports.SettingsSelectorPanel = exports.SettingsPreview = exports.PlanTripButton = exports.ModesPanel = exports.ModeSelector = exports.LocationField = exports.GeneralSettingsPanel = exports.ErrorMessage = exports.DefaultSearchForm = exports.DateTimeSelector = exports.DateTimePreview = exports.DateTimeModal = undefined;
+exports.otpUtils = exports.createOtpReducer = exports.setUseRealtimeResponse = exports.setMapCenter = exports.setLocationToCurrent = exports.setAutoPlan = exports.getCurrentPosition = exports.findNearbyStops = exports.clearLocation = exports.DefaultMainPanel = exports.AppMenu = exports.ResponsiveWebapp = exports.ViewTripButton = exports.ViewStopButton = exports.ViewerContainer = exports.StopViewer = exports.MobileMain = exports.TripTools = exports.TripDetails = exports.TransportationNetworkCompanyLeg = exports.SimpleRealtimeAnnotation = exports.RealtimeAnnotation = exports.NarrativeRoutingResults = exports.NarrativeProfileOptions = exports.NarrativeItinerary = exports.NarrativeItineraries = exports.LineItinerary = exports.LegDiagramPreview = exports.LocationIcon = exports.TransitiveOverlay = exports.TileOverlay = exports.StopsOverlay = exports.OsmBaseLayer = exports.Map = exports.ItineraryOverlay = exports.ItineraryCarousel = exports.EndpointsOverlay = exports.DefaultMap = exports.BikeRentalOverlay = exports.BaseMap = exports.BaseLayers = exports.SwitchButton = exports.StylizedMap = exports.SettingsSelectorPanel = exports.SettingsPreview = exports.PlanTripButton = exports.ModesPanel = exports.ModeSelector = exports.LocationField = exports.GeneralSettingsPanel = exports.ErrorMessage = exports.DefaultSearchForm = exports.DateTimeSelector = exports.DateTimePreview = exports.DateTimeModal = undefined;
 
 var _dateTimeModal = require('./components/form/date-time-modal');
 
@@ -153,6 +153,10 @@ var _tripTools = require('./components/narrative/trip-tools');
 
 var _tripTools2 = _interopRequireDefault(_tripTools);
 
+var _lineItinerary = require('./components/narrative/line-itin/line-itinerary');
+
+var _lineItinerary2 = _interopRequireDefault(_lineItinerary);
+
 var _main = require('./components/mobile/main');
 
 var _main2 = _interopRequireDefault(_main);
@@ -233,6 +237,7 @@ exports.TileOverlay = _tileOverlay2.default;
 exports.TransitiveOverlay = _transitiveOverlay2.default;
 exports.LocationIcon = _locationIcon2.default;
 exports.LegDiagramPreview = _legDiagramPreview2.default;
+exports.LineItinerary = _lineItinerary2.default;
 exports.NarrativeItineraries = _narrativeItineraries2.default;
 exports.NarrativeItinerary = _narrativeItinerary2.default;
 exports.NarrativeProfileOptions = _narrativeProfileOptions2.default;

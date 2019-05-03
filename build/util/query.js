@@ -16,6 +16,7 @@ var _keys2 = _interopRequireDefault(_keys);
 exports.getQueryParamProperty = getQueryParamProperty;
 exports.ensureSingleAccessMode = ensureSingleAccessMode;
 exports.setUrlSearch = setUrlSearch;
+exports.getUrlParams = getUrlParams;
 exports.updateOtpUrlParams = updateOtpUrlParams;
 exports.updateUiUrlParams = updateUiUrlParams;
 exports.getUiUrlParams = getUiUrlParams;
@@ -75,6 +76,10 @@ function setUrlSearch(params) {
   window.history.pushState(params, '', base + '?' + _qs2.default.stringify(params));
 }
 
+function getUrlParams() {
+  return _qs2.default.parse(window.location.href.split('?')[1]);
+}
+
 /**
  * Update the OTP Query parameters in the URL. Leaves any other existing URL
  * parameters unchanged.
@@ -83,7 +88,7 @@ function setUrlSearch(params) {
 function updateOtpUrlParams(otpParams) {
   var params = {};
 
-  // Get all non-OTP params, which will be retained unchanged in the URL
+  // Get all OTP-specific params, which will be retained unchanged in the URL
   if (window.history.state) {
     (0, _keys2.default)(window.history.state).filter(function (key) {
       return key.indexOf('_') !== -1;
