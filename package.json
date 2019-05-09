@@ -5,11 +5,12 @@
   "scripts": {
     "build": "mastarm build",
     "cover": "mastarm test --coverage",
+    "jest": "mastarm test",
     "lint": "mastarm lint \"lib/**/*.js\"",
     "lint-docs": "documentation lint lib/**/*.js",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
     "prestart": "yarn",
-    "test": "yarn run lint && yarn run lint-docs && mastarm test",
+    "test": "yarn run lint && yarn run lint-docs && yarn run jest",
     "start": "mastarm build --serve example.js"
   },
   "standard": {
@@ -82,5 +83,9 @@
   "peerDependencies": {
     "react": ">=15.0.0",
     "react-dom": ">=15.0.0"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/__tests__/test-utils/setup.js",
+    "testURL": "http://localhost/"
   }
 }
