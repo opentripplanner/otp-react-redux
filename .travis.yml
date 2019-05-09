@@ -8,7 +8,7 @@ node_js:
 before_install:
   - npm i -g yarn codecov
 after_success:
-  - yarn run semantic-release
+  - semantic-release
 before_script:
   - yarn global add codecov
 script:
