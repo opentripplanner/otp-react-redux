@@ -5,17 +5,56 @@
 @import url(node_modules/react-dates/lib/css/_datepicker.css);
 @import url(node_modules/react-select/dist/react-select.css);
 
+@import url(lib/components/app/app.css);
 @import url(lib/components/map/map.css);
 @import url(lib/components/form/form.css);
 @import url(lib/components/narrative/narrative.css);
+@import url(lib/components/narrative/default/itinerary.css);
+@import url(lib/components/narrative/line-itin/itinerary.css);
+@import url(lib/components/narrative/printable/itinerary.css);
+@import url(lib/components/mobile/mobile.css);
+@import url(lib/components/viewers/viewers.css);
 
 @import url(lib/bike-rental.css);
 
-button.header, button.step, .intermediate-stops button  {
-  background: inherit;
+/* Hide IE/Edge clear button in text input fields. */
+input[type=text]::-ms-clear {
+    display: none;
+}
+
+/* Buttons */
+
+button.header, button.step, .clear-button-formatting  {
+  background: transparent;
   color: inherit;
   border: 0;
   text-align: inherit;
   text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+.clear-button-formatting:active {
+  background: none;
+  box-shadow: none;
+}
+
+.clear-button-formatting:focus {
+  background: none;
+}
+
+.clear-button-formatting:hover {
+  background: none;
+}
+
+button.header, button.step {
   width: 100%;
+}
+
+.otp .from-location-icon {
+  color: #333;
+}
+
+.otp .to-location-icon {
+  color: #f44256;
 }

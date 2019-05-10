@@ -1,16 +1,7 @@
-.otp .error > .header {
-  font-size: 16px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid #dbbec3;
-}
+/* Location field */
 
-.otp .error > .header > .title {
-  font-weight: bold;
-}
-
-.otp .error > .message {
-  text-align: center;
-  margin: 8px 0px;
+.otp .location-field .dropdown-menu .last-option {
+  margin-bottom: 10px;
 }
 
 .otp .location-field.static .dropdown-menu {
@@ -27,53 +18,148 @@
   margin-right: 5px;
 }
 
+/* .otp .location-field .input-group-addon {
+  border: none;
+  background: none;
+  cursor: pointer;
+} */
 
-
-/* Date/Time Preview */
-
-.otp .date-time-preview {
-  position: relative;
+.otp .location-field .clear-button {
+  border: none;
+  background: none;
+  color: #888;
+  margin: 0;
+  padding: 0px 5px;
 }
 
-.otp .date-time-preview.compressed .summary {
+/* Plan trip button */
+
+.otp .plan-trip-button, .view-results-button {
+  width: 100%;
+}
+
+.otp .bottom-fixed {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  height: 55px;
+}
+
+.otp .white-fade {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+  z-index: 100;
+}
+
+/* Date-Time Modal */
+
+.otp .date-time-modal .button-row {
+  margin-bottom: 20px;
+}
+
+.otp .date-time-modal .button-row .selected {
+  background-color: #ccc;
+}
+
+/* Date/Time selectors */
+
+.otp .date-time-selector .col-xs-4,
+.otp .date-time-selector .col-xs-6 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.otp .date-time-selector .date-option-button  {
+  width: 100%;
+  font-size: 14px;
+}
+
+.otp .date-time-selector .date-selector,
+.otp .date-time-selector .time-selector {
+  font-size: 16px;
+  width: 100%;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  box-shadow: none;
   text-align: center;
 }
 
-.otp .date-time-preview.wide .button-container {
-  float: right;
+.otp.mobile .date-time-selector .date-selector,
+.otp.mobile .date-time-selector .time-selector {
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+/* switch button */
+
+.otp .switch-button-container {
+  position: absolute;
+  top: 32px;
+  right: 45px;
+  z-index: 100000;
+}
+
+.otp .switch-button-container-mobile {
+  position: absolute;
+  top: 32px;
+  right: 45px;
+  z-index: 100000;
 }
 
 /* Settings Preview */
 
 .otp .settings-preview {
-  position: relative;
+  cursor: pointer;
 }
 
-.otp .settings-preview .selected-modes {
-  font-size: 14px;
-}
-
-.otp .settings-preview.compressed .selected-modes {
+.otp.mobile .settings-preview {
   text-align: center;
 }
 
-.otp .settings-preview .selected-modes .some-selected .mode-icon {
-  display: inline-block;
-  margin-right: 5px;
-  width: 16px;
-  height: 16px;
-  fill: black;
+.otp .settings-preview .summary {
+  float: left;
+  min-height: 38px;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-top: -1px;
 }
 
-.otp .settings-preview.wide .button-container {
+.otp.mobile .settings-preview .summary {
+  float: none;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.otp .settings-preview .button-container {
   float: right;
+  position: relative;
+  width: 36px;
+  height: 36px;
+}
+
+.otp .settings-preview .button-container .btn {
+  width: 100%;
+  height: 100%;
+}
+
+.otp .settings-preview .button-container .dot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #f00;
+}
+
+.otp.mobile .settings-preview .button-container {
+  float: none;
+  display: inline-block;
 }
 
 /* Settings Selector Panel */
-
-.otp .settings-selector-panel {
-  padding: 10px;
-}
 
 .otp .settings-selector-panel .button-row {
   margin-bottom: 20px;
@@ -85,35 +171,70 @@
 
 /* Modes Selection Panel */
 
+.otp .modes-panel .col-xs-3,
+.otp .modes-panel .col-xs-4,
+.otp .modes-panel .col-xs-12 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* (old group-based format) */
+
 .otp .modes-panel .mode-group-row {
-  background-color: #ccc;
   margin-bottom: 10px;
-  padding: 8px;
+}
+
+.otp .modes-panel .mode-group-row .group-header {
+  margin-bottom: 10px;
 }
 
 .otp .modes-panel .mode-group-row .group-name {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.otp .modes-panel .mode-group-row .group-select {
+  float: right;
+  text-align: right;
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+.otp .modes-panel .mode-group-row .mode-button-container {
   display: inline-block;
+  width: 100%;
+  height: 72px;
   vertical-align: top;
-  width: 120px;
-  padding-top: 10px;
+  position: relative;
 }
 
-.otp .modes-panel .mode-group-row .mode-icon-highlight {
-  display: inline-block;
-  vertical-align: top;
-  width: 36px;
-  height: 36px;
-  margin-left: 10px;
-  padding: 4px;
+.otp .modes-panel .mode-group-row .mode-button {
+  border: 1px solid gray;
+  padding: 3px;
+  border-radius: 3px;
+  width: 100%;
+  height: 48px;
+  text-align: center;
 }
 
-.otp .modes-panel .mode-group-row .mode-icon-highlight:hover {
-  background-color: #eee;
+.otp .modes-panel .mode-group-row .mode-button.enabled:hover {
+  background-color: #f8f8f8;
 }
 
-.otp .modes-panel .mode-group-row .mode-icon {
-  width: 28px;
-  height: 28px;
+.otp .modes-panel .mode-group-row .mode-check {
+  position: absolute;
+  top: -6px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  font-size: 16px;
+}
+
+.otp .modes-panel .mode-group-row .mode-label {
+  font-size: 10px;
+  text-align: center;
+  line-height: 12px;
+  padding-top: 4px;
 }
 
 .otp .modes-panel .mode-group-row button {
@@ -121,4 +242,79 @@
   border: none;
   background: none;
   outline: none;
+}
+
+/* General settings */
+
+.otp .general-settings-panel .row {
+  margin-bottom: 5px;
+}
+
+.otp.mobile .dropdown-selector {
+  font-size: 16px;
+  padding-top: 5px;
+}
+
+/* Error message */
+
+.otp .error-message {
+  margin: 16px;
+}
+
+.otp .error-message > .header {
+  font-size: 24px;
+  font-weight: 600;
+  border-bottom: 1px solid #bbb;
+  margin-bottom: 12px;
+  padding-bottom: 2px;
+}
+
+/* Tabbed Panel */
+
+.otp .tabbed-form-panel {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.otp .tabbed-form-panel .tab-row {
+  display: table;
+  width: 100%;
+  table-layout: 'fixed';
+}
+
+.otp .tabbed-form-panel .tab {
+  display: table-cell;
+  width: 50%;
+  vertical-align: top;
+}
+
+.otp .tabbed-form-panel .tab.left {
+  padding-right: 5px;
+}
+
+.otp .tabbed-form-panel .tab.right {
+  padding-left: 5px;
+}
+
+.otp .tabbed-form-panel .tab .tab-content {
+  padding: 10px 15px;
+  font-size: 13px;
+  background: #f0f0f0;
+}
+
+.otp .tabbed-form-panel .tab.selected .tab-content {
+  padding-bottom: 20px;
+}
+
+.otp .tabbed-form-panel .active-panel {
+  padding: 10px 15px 5px 15px;
+  background: #f0f0f0;
+}
+
+.otp .tabbed-form-panel .hide-button-row {
+  text-align: center;
+}
+
+.otp .tabbed-form-panel .hide-button {
+  font-size: 14px;
 }

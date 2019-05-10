@@ -1,0 +1,242 @@
+/* ITINERARY OPTION */
+
+.otp .option.default-itin button:focus {
+  outline: none;
+}
+
+.otp .option.default-itin {
+  margin-bottom: 16px;
+  padding: 10px;
+  border: 2px solid #999;
+  border-radius: 4px
+  background-color: #eeeeee;
+}
+
+.otp .option:hover .default-itin {
+  background-color: var(--hover-color);
+}
+
+.otp .option.active .default-itin {
+  background-color: #EAF3F2;
+}
+
+.otp .option.default-itin > .header {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.otp .option.default-itin > .header > .title {
+  font-weight: bold;
+}
+
+.otp .option.default-itin > .header > .summary {
+  text-align: center;
+  margin: 8px 0px;
+}
+
+.otp .option.default-itin > .header > .summary > .summary-block {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0px 2px;
+}
+
+.otp .option.default-itin > .header > .summary > .mode-block {
+  height: 18px;
+  width: 18px;
+}
+
+.otp .option.default-itin > .header > .summary > .arrow-block {
+  padding-top: 4px;
+  font-size: 13px;
+}
+
+/* ITINERARY LEG */
+
+.otp .option.default-itin .leg {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 8px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+}
+
+.otp .option.default-itin .leg:hover {
+  background-color: var(--hover-color);
+}
+
+.otp .option.default-itin .leg.active {
+  background-color: #fff;
+}
+
+.otp .option.default-itin .leg > .header {
+  cursor: pointer;
+  padding: 0;
+}
+
+.otp .option.default-itin .transit-leg .header .mode-icon-container {
+  float: left;
+  width: 28px;
+  height: 28px;
+  margin-top: 4px;
+}
+
+.otp .option.default-itin .transit-leg .header .route-name {
+  margin-left: 36px;
+}
+
+.otp .option.default-itin .route-short-name {
+  vertical-align: middle;
+  background-color: #888;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  padding: 1px 5px 2px 5px;
+  border-radius: 8px;
+}
+
+.otp .option.default-itin .transit-leg .route-short-name {
+  margin-right: 5px;
+}
+
+.otp .option.default-itin .transit-leg .route-long-name {
+  vertical-align: middle;
+  line-height: 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.otp .option.default-itin .transit-leg-body {
+  display: table;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.otp .option.default-itin .transit-leg-body .from-row,
+.otp .option.default-itin .transit-leg-body .trip-details-row,
+.otp .option.default-itin .transit-leg-body .to-row {
+  display: table-row;
+}
+
+.otp .option.default-itin .transit-leg-body .time-cell {
+  display: table-cell;
+  width: 45px;
+  font-size: 10px;
+  vertical-align: top;
+  text-align: right;
+  padding-right: 5px;
+  padding-top: 2px;
+}
+
+.otp .option.default-itin .transit-leg-body .trip-line-cell {
+  position: relative;
+  display: table-cell;
+  width: 12px;
+}
+
+.otp .option.default-itin .transit-leg-body .trip-line-top {
+  position: absolute;
+  left: 4px;
+  top: 10px;
+  bottom: 0;
+  width: 4px;
+  background-color: #888;
+}
+
+.otp .option.default-itin .transit-leg-body .trip-line-middle {
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #888;
+}
+
+.otp .option.default-itin .transit-leg-body .trip-line-bottom {
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  height: 10px;
+  width: 4px;
+  background-color: #888;
+}
+
+.otp .option.default-itin .transit-leg-body .trip-line-stop {
+  position: absolute;
+  top: 8px;
+  left: -15px;
+  height: 4;
+  width: 8;
+  background-color: #888;
+}
+
+.otp .option.default-itin .transit-leg-body .stop-bubble {
+  position: absolute;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid black;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.otp .option.default-itin .transit-leg-body .stop-name-cell {
+  display: table-cell;
+  padding-left: 8px;
+  padding-top: 2px;
+  line-height: 16px;
+}
+
+.otp .option.default-itin .transit-leg-body .trip-details-cell {
+  display: table-cell;
+  padding: 12px 0px 12px 8px;
+}
+
+.otp .option.default-itin .leg .stop-count {
+  cursor: pointer;
+}
+
+.otp .option.default-itin .leg .stop-list {
+  cursor: pointer;
+  list-style: none;
+}
+
+.otp .option.default-itin .leg .alert-item {
+  padding-left: 22px;
+}
+
+.otp .option.default-itin .leg .stop-list .stop-item {
+  position: relative;
+  font-size: 13px;
+  line-height: 15px;
+  padding-top: 4px;
+}
+
+.otp .option.default-itin .leg .info-item {
+  font-size: 11px;
+  font-style: italic;
+  line-height: 13px;
+  margin-top: 6px;
+}
+
+/* ITINERARY STEP */
+
+.otp .option.default-itin .step {
+  cursor: pointer;
+  background-color: #eee;
+  margin-bottom: 4px;
+  padding: 4px;
+  font-size: x-small;
+}
+
+.otp .option.default-itin .step:hover {
+  background-color: var(--hover-color);
+}
+
+.otp .option.default-itin .step.active {
+  background-color: #ccc;
+  /*border: 1px dotted;*/
+}
+
+.otp .option.default-itin .step .step-distance {
+  float: right;
+}

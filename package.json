@@ -5,13 +5,13 @@
   "scripts": {
     "build": "mastarm build",
     "cover": "mastarm test --coverage",
+    "jest": "mastarm test",
     "lint": "mastarm lint \"lib/**/*.js\"",
     "lint-docs": "documentation lint lib/**/*.js",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
     "prestart": "yarn",
-    "test": "yarn run lint && yarn run lint-docs && mastarm test",
-    "start": "mastarm build --serve example.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "test": "yarn run lint && yarn run lint-docs && yarn run jest",
+    "start": "mastarm build --serve example.js"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -30,17 +30,26 @@
     "@conveyal/lonlat": "^1.1.0",
     "@mapbox/polyline": "^0.2.0",
     "bootstrap": "^3.3.7",
+    "bowser": "^1.9.3",
     "clone": "^2.1.0",
-    "d3": "^3.5.8",
+    "copy-to-clipboard": "^3.0.8",
+    "currency-formatter": "^1.4.2",
+    "d3-selection": "^1.3.0",
+    "d3-zoom": "^1.7.1",
     "deep-equal": "^1.0.1",
     "font-awesome": "^4.7.0",
+    "haversine": "^1.1.0",
     "immutability-helper": "^2.1.1",
     "isomorphic-fetch": "^2.2.1",
-    "isomorphic-mapzen-search": "^1.3.0",
-    "leaflet": "^1.0.3",
+    "isomorphic-mapzen-search": "1.4.1",
+    "leaflet": "^1.3.4",
+    "leaflet.polylinemeasure": "github:ppete2/Leaflet.PolylineMeasure",
     "lodash.debounce": "^4.0.8",
+    "lodash.isequal": "^4.5.0",
     "moment": "^2.17.1",
+    "moment-timezone": "^0.5.23",
     "object-path": "^0.11.3",
+    "prop-types": "^15.6.0",
     "qs": "^6.3.0",
     "react": "^15.4.2",
     "react-addons-shallow-compare": "^15.4.2",
@@ -50,24 +59,33 @@
     "react-fontawesome": "^1.5.0",
     "react-leaflet": "^1.1.0",
     "react-redux": "^5.0.2",
+    "react-resize-detector": "^2.1.0",
+    "react-router-dom": "^4.2.2",
     "react-select-geocoder": "^1.2.1",
     "react-swipeable-views": "^0.11.2",
     "redux": "^3.6.0",
     "redux-actions": "^1.2.1",
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.2.0",
-    "semantic-release": "^6.3.2",
-    "transitive-js": "^0.10.0"
+    "throttle-debounce": "^2.0.1",
+    "transitive-js": "git://github.com/conveyal/transitive.js/#9bceedb",
+    "turf-along": "^3.0.12",
+    "velocity-react": "^1.3.3"
   },
   "devDependencies": {
     "documentation": "^4.0.0-beta.18",
-    "mastarm": "^3.5.1",
+    "mastarm": "4.1.1",
     "nock": "^9.0.9",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "semantic-release": "^15.13.12"
   },
   "peerDependencies": {
     "react": ">=15.0.0",
     "react-dom": ">=15.0.0"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/__tests__/test-utils/setup.js",
+    "testURL": "http://localhost/"
   }
 }

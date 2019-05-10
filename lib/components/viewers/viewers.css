@@ -1,0 +1,239 @@
+/* shared stop/trip viewer styles */
+
+.otp .stop-viewer-header, .otp .trip-viewer-header, .otp .route-viewer-header {
+  background-color: #ddd;
+  padding: 12px;
+}
+
+.otp .stop-viewer-body, .otp .trip-viewer-body {
+  padding: 12px;
+}
+
+.otp .stop-viewer .back-button-container, .otp .trip-viewer .back-button-container, .otp .route-viewer .back-button-container {
+  float: left;
+  margin-right: 10px;
+}
+
+.otp .stop-viewer .header-text, .otp .trip-viewer .header-text, .otp .route-viewer .header-text {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+/* stop viewer styles */
+
+.otp .stop-viewer .route-row {
+  border: 1px solid black;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.otp .stop-viewer .route-row .header {
+  display: table;
+  width: 100%;
+}
+.otp .stop-viewer .route-row .header .route-name {
+  display: table-cell;
+  padding: 8px;
+  vertical-align: middle;
+}
+
+.otp .stop-viewer .route-row .header .next-trip-preview {
+  display: table-cell;
+  width: 100px;
+  border-left: 1px solid gray;
+  padding: 9px 6px;
+  font-size: 14px;
+}
+
+.otp .stop-viewer .route-row .header .expansion-button-container {
+  display: table-cell;
+  width: 36px;
+  border-left: 1px solid gray;
+  padding: 0px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.otp .stop-viewer .route-row .header .expansion-button {
+  background: none;
+  border: none;
+  padding: 8px;
+}
+
+.otp .stop-viewer .route-row .header .expansion-button:hover {
+  color: #ddd;
+}
+
+.otp .stop-viewer .route-row .header .expansion-button:focus {
+  outline: 0px;
+}
+
+/*.otp .stop-viewer .trip-table {
+  display: table;
+  padding: 8px;
+}
+
+.otp .stop-viewer .trip-table .trip-table-header-row {
+  display: table-row;
+  font-size: 11px;
+  color: gray;
+  height: 14px;
+}
+
+.otp .stop-viewer .trip-table .trip-table-column-header {
+  display: table-cell;
+  font-weight: 500;
+  text-align: center;
+}
+
+.otp .stop-viewer .trip-table .trip-row {
+  display: table-row;
+}
+
+.otp .stop-viewer .route-row .trip-table .trip-row {
+  display: table-row;
+}
+
+.otp .stop-viewer .route-row .trip-table .trip-row {
+  display: table-row;
+}*/
+
+.otp .stop-viewer .trip-table {
+  display: table;
+  width: 100%;
+  padding: 8px;
+  border-top: 1px solid gray;
+}
+
+.otp .stop-viewer .trip-table .header {
+  display: table-row;
+  font-size: 11px;
+  color: gray;
+  text-align: center;
+}
+
+.otp .stop-viewer .trip-table .trip-row {
+  display: table-row;
+}
+
+.otp .stop-viewer .trip-table .cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.otp .stop-viewer .trip-table .trip-row .cell {
+  padding-top: 6px;
+}
+
+.otp .stop-viewer .trip-table .time-column {
+  width: 90px;
+}
+
+.otp .stop-viewer .trip-table .status-column {
+  width: 80px;
+}
+
+.otp .stop-viewer .trip-table .status-label {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 2px;
+  font-size: 11px;
+  color: white;
+  padding: 2px 0px 0px 0px;
+}
+
+/* trip viewer styles */
+
+.otp .trip-viewer .stop-time {
+  float: left;
+  width: 55px;
+  font-size: 11px;
+  padding-top: 7px;
+  padding-right: 5px;
+  text-align: right;
+}
+
+.otp .trip-viewer .strip-map-container {
+  position: relative;
+  float: left;
+  width: 20px;
+  height: 30px;
+}
+
+.otp .trip-viewer .strip-map-highlight {
+  position: absolute;
+  background-color: cyan;
+  width: 20px;
+  height: 30px;
+}
+
+.otp .trip-viewer .strip-map-highlight-first {
+  position: absolute;
+  background-color: cyan;
+  top: 2px;
+  width: 20px;
+  height: 28px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.otp .trip-viewer .strip-map-highlight-last {
+  position: absolute;
+  background-color: cyan;
+  top: 0px;
+  width: 20px;
+  height: 28px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.otp .trip-viewer .strip-map-line {
+  position: absolute;
+  left: 8px;
+  width: 4px;
+  background-color: #000;
+  height: 30px;
+}
+
+.otp .trip-viewer .strip-map-line-first {
+  position: absolute;
+  top: 15px;
+  left: 8px;
+  width: 4px;
+  background-color: #000;
+  height: 15px;
+}
+
+.otp .trip-viewer .strip-map-line-last {
+  position: absolute;
+  top: 0;
+  left: 8px;
+  width: 4px;
+  background-color: #000;
+  height: 15px;
+}
+
+.otp .trip-viewer .strip-map-icon {
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  font-size: 12.5px;
+  color: #000;
+}
+
+.otp .trip-viewer .stop-name {
+  font-size: 14px;
+  margin-left: 80px;
+  margin-right: 55px;
+  padding-top: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.otp .trip-viewer .stop-button-container {
+  float: right;
+  width: 50px;
+}

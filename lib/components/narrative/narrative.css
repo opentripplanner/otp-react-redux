@@ -1,5 +1,5 @@
 :root {
-  --hover-color: #fffde8;
+  --hover-color: #ffe;
 }
 
 .otp .options > .header {
@@ -14,6 +14,14 @@
   padding: 12px 20px;
   margin-bottom: 20px;
   background-color: #fdf8d6;
+}
+
+.otp .simple-realtime-annotation {
+  color: #888;
+  font-size: 14px;
+  text-align: center;
+  padding: 6px;
+  background-color: #fcf9d3;
 }
 
 /*TODO: remove? no longer used in realtime annotation */
@@ -54,112 +62,180 @@
   width: 75%;
 }
 
-/* ITINERARY OPTION */
+/* LEG DIAGRAM PREVIEW */
 
-.otp .option.default-itin {
-  margin-bottom: 16px;
-  padding: 10px;
-  border: 1px solid #e3e3e3;
-  border-radius: 4px
-}
-
-.otp .option:hover .default-itin {
-  background-color: var(--hover-color);
-}
-
-.otp .option.active .default-itin {
-  background-color: #EAF3F2;
-}
-
-.otp .option.default-itin > .header {
-  font-size: 16px;
-  /*padding-bottom: 4px;*/
-  /*border-bottom: 1px solid black;*/
-  /*margin-bottom: 6px;*/
-  cursor: pointer;
-}
-
-.otp .option.default-itin > .header > .title {
-  font-weight: bold;
-}
-
-.otp .option.default-itin > .header > .summary {
+.otp .leg-diagram-preview {
+  position: relative;
+  width: 75%;
+  margin: 0px 4px;
+  font-style: normal;
+  border: none;
   text-align: center;
-  margin: 8px 0px;
+  text-decoration: none;
+  display: inline-block;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: #fff solid 1px;
 }
 
-/* ITINERARY LEG */
-
-.otp .option.default-itin .leg {
-  background-color: #d0d0d0;
-  padding: 6px;
-  margin-bottom: 8px;
+.otp .leg-diagram-preview:hover {
+  border-color: #d1d5da;
+  background-color: #f6f8fa;
 }
 
-.otp .option.default-itin .leg:hover {
-  background-color: var(--hover-color);
+.otp .leg-diagram-preview.on:hover {
+  border-color: #d1d5da;
+  background-color: #f6f8fa;
 }
 
-.otp .option.default-itin .leg.active {
-  background-color: #ddd;
-}
-
-.otp .option.default-itin .leg > .header {
-  cursor: pointer;
-}
-
-.otp .option.default-itin .leg .stop-count {
-  cursor: pointer;
-  /*margin-bottom: 4px;*/
-  padding: 4px;
-  margin-left: 8px;
-}
-
-.otp .option.default-itin .leg .stop-list {
-  cursor: pointer;
-  margin-bottom: 4px;
-  padding: 4px;
-  padding-left: 0px;
-  margin-left: 8px;
-  list-style: none;
-}
-
-.otp .Itin .option.default-itin .leg .item {
-  padding: 2px;
-  font-size: small;
-}
-
-.otp .option.default-itin .leg .alert-item {
-  padding-left: 22px;
-}
-
-.otp .option.default-itin .leg .stop-list .stop-item {
-  padding-left: 0px;
-}
-
-.otp .option.default-itin .leg .stop-list .info-item {
-  padding-left: 12px;
-}
-
-/* ITINERARY STEP */
-
-.otp .option.default-itin .step {
-  cursor: pointer;
+.otp .leg-diagram-preview.on {
+  border-color: #d1d5da;
   background-color: #eee;
-  margin-bottom: 4px;
-  padding: 4px;
-  font-size: x-small;
 }
 
-.otp .option.default-itin .step:hover {
-  background-color: var(--hover-color);
+.otp .leg-diagram-preview .diagram {
+  padding: 2px;
 }
 
-.otp .option.default-itin .step.active {
-  background-color: #ccc;
-  /*border: 1px dotted;*/
+.otp .leg-diagram-preview .diagram .diagram-title {
+  font-size: small;
+  text-align: center;
 }
 
-.otp .option.default-itin .step .step-distance {
+.otp .leg-diagram-preview .expand-button-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+}
+
+.otp .leg-diagram-preview .expand-button {
+  width: 30px;
+  height: 30px;
+  fontSize: 16px;
+}
+
+/* TRIP DETAILS */
+
+.otp .trip-details {
+  border: 2px solid gray;
+  padding: 6px 10px;
+  margin-top: 16px;
+}
+
+.otp .trip-details .trip-details-header {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.otp .trip-details .trip-detail {
+  margin-top: 6px;
+}
+
+.otp .trip-details .trip-detail .icon {
+  float: left;
+  font-size: 17px;
+}
+
+.otp .trip-details .trip-detail .summary {
+  margin-left: 28px;
+  padding-top: 2px;
+}
+
+.otp .trip-details .trip-detail .expand-button {
+  margin-left: 6px;
+  margin-top: -2px;
+  font-size: 16px;
+  color: blue;
+}
+
+.otp .trip-details .trip-detail .description {
+  background-color: #fff;
+  border: 1px solid #888;
+  padding: 8px;
+  margin-top: 2px;
+  font-size: 12px;
+}
+
+.otp .trip-details .trip-detail b {
+  font-weight: 600;
+}
+
+.otp .trip-details .trip-detail .hide-button {
   float: right;
+  top: 5;
+  right: 5;
+}
+
+/* TRIP TOOLS ROW */
+.otp .trip-tools {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.otp .trip-tools .button-container {
+  display: inline-block;
+  padding: 3px;
+}
+
+.otp .trip-tools .tool-button {
+  font-size: 12px;
+  width: 110px;
+  padding: 4px;
+}
+
+.otp .trip-tools .dropdown-menu {
+  font-size: 12px;
+  text-align: left;
+  padding: 4px;
+}
+
+.otp .trip-tools .dropdown-menu > li > a {
+  padding: 3px 5px;
+}
+
+/* TABBED ITINERARIES */
+
+.otp .tabbed-itineraries {
+  margin-top: 10px;
+}
+
+.otp .tabbed-itineraries .tab-row {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.otp .tabbed-itineraries .tab-button {
+  width: 100px;
+  margin: 5px;
+  padding: 2px;
+  border-radius: 0;
+  outline: none;
+  vertical-align: top;
+}
+
+.otp .tabbed-itineraries .tab-button:active {
+  background-color: #f8f8f8;
+}
+
+.otp .tabbed-itineraries .tab-button .title {
+  display: inline-block;
+  padding-bottom: 1px;
+  border-bottom: 3px solid transparent;
+  margin-bottom: 3px;
+}
+
+.otp .tabbed-itineraries .tab-button .details {
+  font-size: 12px;
+  color: gray;
+}
+
+.otp .tabbed-itineraries .tab-button:hover .title {
+  border-bottom: 3px solid #ddd;
+}
+
+.otp .tabbed-itineraries .tab-button.selected .title {
+  border-bottom: 3px solid gray;
+  font-weight: bold;
 }

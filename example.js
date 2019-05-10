@@ -11,20 +11,14 @@ import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
-  BaseLayers,
-  BaseMap,
-  BikeRentalOverlay,
-  DateTimeSelector,
-  EndpointsOverlay,
+  DefaultSearchForm,
   ErrorMessage,
-  ItineraryOverlay,
-  LocationField,
-  NarrativeItineraries,
-  PlanTripButton,
-  TransitiveOverlay,
-  SettingsSelectorPanel,
-  SwitchButton,
-
+  MobileMain,
+  NarrativeRoutingResults,
+  ResponsiveWebapp,
+  Map,
+  ViewerContainer,
+  AppMenu,
   createOtpReducer
 } from './lib'
 
@@ -32,18 +26,17 @@ import {
 import otpConfig from './config.yml'
 
 // create an initial query for demo/testing purposes
-/* const initialQuery = {
+const initialQuery = {
   from: {
-    name: 'PDX',
-    lat: 45.589180,
-    lon: -122.593460
+    lat: 45.5246,
+    lon: -122.6710
   },
   to: {
-    name: 'TTO',
-    lat: 45.518950,
-    lon: -122.679565
-  }
-} */
+    lat: 45.5307,
+    lon: -122.6647
+  },
+  type: 'ITINERARY'
+}
 
 // set up the Redux store
 const store = createStore(
@@ -57,42 +50,66 @@ const store = createStore(
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
-    return (<div className='otp'>
-      <Navbar fluid>
-        <Navbar.Brand>OpenTripPlanner</Navbar.Brand>
-      </Navbar>
-      <Grid fluid>
-        <Row className='main-row'>
-          <Col xs={12} md={4} className='sidebar'>
-            <LocationField type='from' label='Enter start location or click on map...' />
-            <LocationField type='to' label='Enter destination or click on map...' />
-            <SwitchButton />
-            <DateTimeSelector />
-            <SettingsSelectorPanel />
-            <ErrorMessage />
-            <PlanTripButton />
-            <NarrativeItineraries />
-          </Col>
 
-          <Col xsHidden md={8} className='map-container'>
-            <BaseMap>
-              <BaseLayers />
-              <BikeRentalOverlay />
-              <ItineraryOverlay />
-              <TransitiveOverlay />
-              <EndpointsOverlay />
-            </BaseMap>
-          </Col>
-        </Row>
-      </Grid>
-    </div>)
+    /** desktop view **/
+    const desktopView = (
+      <div className='otp'>
+        <Navbar>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
+                <AppMenu />
+              </div>
+              <div className='navbar-title' style={{ marginLeft: 50 }}>OpenTripPlanner</div>
+            </Navbar.Brand>
+          </Navbar.Header>
+        </Navbar>
+        <Grid>
+          <Row className='main-row'>
+            <Col sm={6} md={4} className='sidebar'>
+              <ViewerContainer>
+                <DefaultSearchForm />
+                <ErrorMessage />
+                <div className='desktop-narrative-container'>
+                  <NarrativeRoutingResults />
+                </div>
+              </ViewerContainer>
+            </Col>
+
+            <Col sm={6} md={8} className='map-container'>
+              <Map />
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+    )
+
+    /** mobile view **/
+    const mobileView = (
+      <MobileMain map={(<Map />)} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
+    )
+
+    /** the main webapp **/
+    return (
+      <ResponsiveWebapp
+        desktopView={desktopView}
+        mobileView={mobileView}
+      />
+    )
   }
 }
 
 // render the app
 render(
   <Provider store={store}>
+    { /**
+     * If not using router history, simply include OtpRRExample here:
+     * e.g.
+     * <OtpRRExample />
+     */
+    }
     <OtpRRExample />
+
   </Provider>,
   document.getElementById('root')
 )

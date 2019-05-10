@@ -1,0 +1,53 @@
+/* application menu styling */
+
+.app-menu-button {
+  border: none;
+  background: none;
+  color: #fff;
+  font-size: 24px;
+  padding: 0px 0px;
+}
+
+.otp.mobile .app-menu-button {
+  padding: 10px 0px 0px 12px;
+}
+
+.app-menu ul.dropdown-menu {
+  font-size: 20px;
+}
+
+.app-menu .btn-default:hover,
+.app-menu .btn-default:focus,
+.app-menu .btn-default:active,
+.app-menu .open > .dropdown-toggle.btn-default:focus,
+.app-menu .open > .dropdown-toggle.btn-default {
+  color: #fff;
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+
+.app-menu .btn-default:hover {
+  color: #ddd;
+}
+
+/* PrintLayout styles */
+
+.otp.print-layout {
+  max-width: 640px;
+  margin: 30px auto;
+}
+
+.otp.print-layout > .header {
+  margin-bottom: 30px;
+  border-bottom: 4px solid black;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.otp.print-layout > .map-container {
+  border: 2px solid black;
+  height: 400px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
