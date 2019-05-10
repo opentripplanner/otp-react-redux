@@ -5,13 +5,13 @@
   "scripts": {
     "build": "mastarm build",
     "cover": "mastarm test --coverage",
+    "jest": "mastarm test",
     "lint": "mastarm lint \"lib/**/*.js\"",
     "lint-docs": "documentation lint lib/**/*.js",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
     "prestart": "yarn",
-    "test": "yarn run lint && yarn run lint-docs && mastarm test",
-    "start": "mastarm build --serve example.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "test": "yarn run lint && yarn run lint-docs && yarn run jest",
+    "start": "mastarm build --serve example.js"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -67,7 +67,6 @@
     "redux-actions": "^1.2.1",
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.2.0",
-    "semantic-release": "^6.3.2",
     "throttle-debounce": "^2.0.1",
     "transitive-js": "git://github.com/conveyal/transitive.js/#9bceedb",
     "turf-along": "^3.0.12",
@@ -78,10 +77,15 @@
     "mastarm": "4.1.1",
     "nock": "^9.0.9",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "semantic-release": "^15.13.12"
   },
   "peerDependencies": {
     "react": ">=15.0.0",
     "react-dom": ">=15.0.0"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/__tests__/test-utils/setup.js",
+    "testURL": "http://localhost/"
   }
 }

@@ -1,3 +1,6 @@
+// Test file renamed because it is no longer valid
+// TODO: write tests for form actions
+
 /* globals describe, expect, it, jest */
 
 import {timeoutPromise} from '../test-utils'

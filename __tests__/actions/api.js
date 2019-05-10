@@ -5,7 +5,7 @@ import nock from 'nock'
 import {routingQuery} from '../../lib/actions/api'
 
 describe('actions > api', () => {
-  describe('> routingQuery', () => {
+  describe('routingQuery', () => {
     const defaultState = {
       otp: {
         config: {
