@@ -11,14 +11,12 @@ import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
-  DefaultMap,
   DefaultSearchForm,
   ErrorMessage,
   MobileMain,
   NarrativeRoutingResults,
   ResponsiveWebapp,
-  StylizedMap,
-  ToggleMap,
+  Map,
   ViewerContainer,
   AppMenu,
   createOtpReducer
@@ -28,18 +26,17 @@ import {
 import otpConfig from './config.yml'
 
 // create an initial query for demo/testing purposes
-/* const initialQuery = {
+const initialQuery = {
   from: {
-    name: 'PDX',
-    lat: 45.589180,
-    lon: -122.593460
+    lat: 45.5246,
+    lon: -122.6710
   },
   to: {
-    name: 'TTO',
-    lat: 45.518950,
-    lon: -122.679565
-  }
-} */
+    lat: 45.5307,
+    lon: -122.6647
+  },
+  type: 'ITINERARY'
+}
 
 // set up the Redux store
 const store = createStore(
@@ -53,13 +50,6 @@ const store = createStore(
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
-    /** shared components **/
-    const map = (
-      <ToggleMap>
-        <DefaultMap toggleLabel={<span><i className='fa fa-map' /> Map View</span>} />
-        <StylizedMap toggleLabel={<span><i className='fa fa-random' /> Network View</span>} />
-      </ToggleMap>
-    )
 
     /** desktop view **/
     const desktopView = (
@@ -87,7 +77,7 @@ class OtpRRExample extends Component {
             </Col>
 
             <Col sm={6} md={8} className='map-container'>
-              {map}
+              <Map />
             </Col>
           </Row>
         </Grid>
@@ -96,7 +86,7 @@ class OtpRRExample extends Component {
 
     /** mobile view **/
     const mobileView = (
-      <MobileMain map={map} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
+      <MobileMain map={(<Map />)} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
     )
 
     /** the main webapp **/
@@ -112,7 +102,14 @@ class OtpRRExample extends Component {
 // render the app
 render(
   <Provider store={store}>
+    { /**
+     * If not using router history, simply include OtpRRExample here:
+     * e.g.
+     * <OtpRRExample />
+     */
+    }
     <OtpRRExample />
+
   </Provider>,
   document.getElementById('root')
 )

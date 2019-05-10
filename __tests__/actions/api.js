@@ -2,12 +2,10 @@
 
 import nock from 'nock'
 
-import {timeoutPromise} from '../test-utils'
-
 import {routingQuery} from '../../lib/actions/api'
 
 describe('actions > api', () => {
-  describe('> routingQuery', () => {
+  describe('routingQuery', () => {
     const defaultState = {
       otp: {
         config: {
@@ -19,6 +17,7 @@ describe('actions > api', () => {
         },
         currentQuery: {
           from: { lat: 12, lon: 34 },
+          mode: 'WALK,TRANSIT',
           routingType: 'ITINERARY',
           to: { lat: 34, lon: 12 }
         },
@@ -31,20 +30,15 @@ describe('actions > api', () => {
 
       nock('http://mock-host.com')
         .get(/api\/plan/)
-        .reply(200, {
-          fake: 'response'
-        })
-        .on('request', (req, interceptor) => {
-          expect(req.path).toMatchSnapshot('OTP Query Path')
+        .reply(200, (uri, requestBody) => {
+          expect(uri).toMatchSnapshot('OTP Query Path')
+          return { fake: 'response' }
         })
 
       const mockDispatch = jest.fn()
-      routingQueryAction(mockDispatch, () => {
+      await routingQueryAction(mockDispatch, () => {
         return defaultState
       })
-
-      // wait for request to complete
-      await timeoutPromise(100)
 
       expect(mockDispatch.mock.calls).toMatchSnapshot()
     })
@@ -59,12 +53,9 @@ describe('actions > api', () => {
         })
 
       const mockDispatch = jest.fn()
-      routingQueryAction(mockDispatch, () => {
+      await routingQueryAction(mockDispatch, () => {
         return defaultState
       })
-
-      // wait for request to complete
-      await timeoutPromise(100)
 
       expect(mockDispatch.mock.calls).toMatchSnapshot()
     })

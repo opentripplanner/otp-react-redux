@@ -17,3 +17,93 @@
 .otp .link-button:focus {
   outline:0;
 }
+
+/* leg diagram */
+
+.otp .leg-diagram {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  height: 180px;
+  z-index: 1000;
+  background-color: white;
+  background-clip: padding-box;
+  border: 2px solid rgba(127, 127, 127, .5);
+  border-Radius: 4px;
+}
+
+.otp .leg-diagram .y-axis-panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.otp .leg-diagram .main-diagram {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.otp .leg-diagram .close-button {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  z-index: 1001;
+  font-size: 20px;
+  color: #888;
+}
+
+.otp .leg-diagram .close-button:hover {
+  color: #aaa;
+  background: none;
+}
+
+.otp .car-rental-icon {
+  color: gray;
+  font-size: 18px;
+  text-align: center;
+}
+
+.otp .car-rental-icon-car2go {
+  color: #009cde;
+}
+
+.otp .car-rental-icon-reachnow {
+  color: #007fa3;
+}
+
+/* Stop icon circle css */
+
+.otp .stop-overlay-bg {
+  background: rgba(0,0,0,0);
+  border: none;
+}
+
+.otp .stop-overlay-icon {
+  border: 1px solid black;
+  background-color: #FFFFFF;
+  border-radius:50%;
+}
+
+/* Overlay Popups */
+
+.otp .map-overlay-popup {
+  min-width: 250px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.otp .map-overlay-popup .popup-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.otp .map-overlay-popup .popup-row {
+  margin-top: 6px;
+}

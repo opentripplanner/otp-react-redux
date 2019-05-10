@@ -30,3 +30,24 @@
 .app-menu .btn-default:hover {
   color: #ddd;
 }
+
+/* PrintLayout styles */
+
+.otp.print-layout {
+  max-width: 640px;
+  margin: 30px auto;
+}
+
+.otp.print-layout > .header {
+  margin-bottom: 30px;
+  border-bottom: 4px solid black;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.otp.print-layout > .map-container {
+  border: 2px solid black;
+  height: 400px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
