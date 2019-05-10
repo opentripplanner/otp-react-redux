@@ -241,6 +241,7 @@
   margin-top: 10px;
   color: #999999;
   font-style: normal;
+  display: inline-block;
 }
 
 .otp .line-itin .leg-body .step-row {
