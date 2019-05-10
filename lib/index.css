@@ -25,7 +25,7 @@ input[type=text]::-ms-clear {
 /* Buttons */
 
 button.header, button.step, .clear-button-formatting  {
-  background: inherit;
+  background: transparent;
   color: inherit;
   border: 0;
   text-align: inherit;
