@@ -1,15 +1,17 @@
 api:
-  host: http://trimet.dev.conveyal.com
+  host: https://trimet-otp.ibi-transit.com
   path: /otp/routers/default
-  port: 8001
+  # port: 8001
 
 map:
   initLat: 45.52
   initLon: -122.682
   baseLayers:
     - name: Streets
-      url: http://tile.stamen.com/terrain/{z}/{x}/{y}.png
-      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+      url: //cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png
+      subdomains: 'abcd'
+      attribution: 'Map tiles: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
+      maxZoom: 20
     - name: Stamen Toner Lite
       url: http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
@@ -28,12 +30,39 @@ geocoder:
   # Optional custom Pelias instance (defaults to Mapzen Search)
   # baseUrl: https://geocoder.example.com/pelias/v1
 
-modeGroups:
-  - name: Transit
-    modes:
-      - TRAM
-      - BUS
-  - name: Walk/Bike
-    modes:
-      - WALK
-      - BICYCLE
+# Use this mode config for the enhanced Transit+ config
+modes:
+  transitModes:
+    - mode: BUS
+      label: Bus
+    - mode: TRAM
+      label: MAX & Streetcar
+    - mode: RAIL
+      label: WES
+    - mode: GONDOLA
+      label: Aerial Tram
+
+  accessModes:
+    - mode: BICYCLE
+      label: Transit + Bike
+
+  bicycleModes:
+    - mode: BICYCLE
+      label: Own Bike
+      iconWidth: 18
+
+
+routingTypes:
+  - key: ITINERARY
+    text: Exact Time
+
+### Use this config for the standard mode selector
+# modeGroups:
+#   - name: Transit
+#     modes:
+#       - TRAM
+#       - BUS
+#   - name: Walk/Bike
+#     modes:
+#       - WALK
+#       - BICYCLE
