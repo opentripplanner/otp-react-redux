@@ -68,7 +68,7 @@
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.2.0",
     "throttle-debounce": "^2.0.1",
-    "transitive-js": "git://github.com/conveyal/transitive.js/#9bceedb",
+    "transitive-js": "git://github.com/conveyal/transitive.js/#c2c07668242a2ecce6fc259cc4a0bf2e08e91848",
     "turf-along": "^3.0.12",
     "velocity-react": "^1.3.3"
   },
