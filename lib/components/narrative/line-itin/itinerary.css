@@ -282,7 +282,12 @@
 }
 
 .otp .line-itin .leg-body .transit-leg-details {
-  margin-top: 10px;
+  margin-top: 5px;
+}
+
+.otp .line-itin .leg-body .agency-info {
+  margin-top: 5px;
+
 }
 
 .otp .line-itin .leg-body .transit-leg-details .header {
