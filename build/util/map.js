@@ -80,7 +80,7 @@ function itineraryToTransitive(itin, includeGeometry) {
   });
 
   itin.legs.forEach(function (leg) {
-    if (leg.mode === 'WALK' || leg.mode === 'BICYCLE' || leg.mode === 'CAR') {
+    if (leg.mode === 'WALK' || leg.mode === 'BICYCLE' || leg.mode === 'CAR' || leg.mode === 'MICROMOBILITY') {
       var fromPlaceId = leg.from.bikeShareId ? 'bicycle_rent_station_' + leg.from.bikeShareId : 'itin_street_' + streetEdgeId + '_from';
       var toPlaceId = leg.to.bikeShareId ? 'bicycle_rent_station_' + leg.to.bikeShareId : 'itin_street_' + streetEdgeId + '_to';
 

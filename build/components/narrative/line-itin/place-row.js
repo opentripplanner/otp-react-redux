@@ -73,6 +73,9 @@ var PlaceRow = function (_Component) {
           return _react2.default.createElement('div', { className: 'leg-line leg-line-bicycle' });
         case 'CAR':
           return _react2.default.createElement('div', { className: 'leg-line leg-line-car' });
+        case 'MICROMOBILITY':
+        case 'MICROMOBILITY_RENT':
+          return _react2.default.createElement('div', { className: 'leg-line leg-line-vehicle' });
         default:
           return _react2.default.createElement('div', { className: 'leg-line leg-line-transit', style: {
               backgroundColor: leg.routeColor ? '#' + leg.routeColor : defaultRouteColor
@@ -200,6 +203,14 @@ var PlaceRow = function (_Component) {
             { className: 'place-subheader' },
             'Pick up ',
             leg.from.networks ? leg.from.networks.join('/') : 'rented car',
+            ' ',
+            leg.from.name
+          ),
+          leg && leg.rentedVehicle && _react2.default.createElement(
+            'div',
+            { className: 'place-subheader' },
+            'Pick up ',
+            leg.from.networks ? leg.from.networks.join('/') : 'rented vehicle',
             ' ',
             leg.from.name
           ),

@@ -89,6 +89,12 @@ var ModeIcon = (_temp = _class = function (_Component) {
             { className: 'mode-icon' },
             _react2.default.createElement(_icon2.default, { title: 'walk', type: 'male' })
           );
+        case 'MICROMOBILITY':
+          return _react2.default.createElement(
+            'span',
+            { className: 'mode-icon' },
+            _react2.default.createElement(_icon2.default, { title: 'micromobility', type: 'flash' })
+          );
         default:
           return defaultToText ? _react2.default.createElement(
             'span',

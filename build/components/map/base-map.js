@@ -224,7 +224,7 @@ var BaseMap = (_temp = _class = function (_Component) {
             // TODO: support multi-mode overlays
             var overlayMode = oConfig.modes[0];
 
-            if ((overlayMode === 'CAR_RENT' || overlayMode === 'CAR_HAIL') && oConfig.companies) {
+            if ((overlayMode === 'CAR_RENT' || overlayMode === 'CAR_HAIL' || overlayMode === 'MICROMOBILITY_RENT') && oConfig.companies) {
               // Special handling for company-based mode overlays (e.g. carshare, car-hail)
               var overlayCompany = oConfig.companies[0]; // TODO: handle multi-company overlays
               if (added.includes(overlayMode)) {

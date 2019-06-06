@@ -62,6 +62,9 @@ var ModeIcon = (_temp = _class = function (_Component) {
           return _react2.default.createElement(GondolaIcon, null);
         case 'car':
           return _react2.default.createElement(CarIcon, null);
+        case 'micromobility':
+        case 'micromobility_rent':
+          return _react2.default.createElement(MicromobilityIcon, null);
       }
       return null;
     }
@@ -232,6 +235,34 @@ var CarIcon = function (_Component8) {
     }
   }]);
   return CarIcon;
+}(_react.Component);
+
+/**
+ * Icons made by Freepik (https://www.freepik.com/)
+ * from Flaticon (https://www.flaticon.com/)
+ * licensed by Creative Commons BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
+ */
+
+
+var MicromobilityIcon = function (_Component9) {
+  (0, _inherits3.default)(MicromobilityIcon, _Component9);
+
+  function MicromobilityIcon() {
+    (0, _classCallCheck3.default)(this, MicromobilityIcon);
+    return (0, _possibleConstructorReturn3.default)(this, (MicromobilityIcon.__proto__ || (0, _getPrototypeOf2.default)(MicromobilityIcon)).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(MicromobilityIcon, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'svg',
+        { height: '100%', viewBox: '0 0 512 512', width: '100%', xmlns: 'http://www.w3.org/2000/svg' },
+        _react2.default.createElement('path', { d: 'm464.027344 393.210938-47.425782-341.464844c-4.097656-29.5-29.648437-51.746094-59.429687-51.746094h-68.171875v40h68.171875c9.929687 0 18.441406 7.414062 19.808594 17.246094l36.148437 260.25c-52.128906 15.089844-91.835937 59.722656-99.703125 114.503906h-196.867187c-8.253906-23.277344-30.484375-40-56.558594-40-33.085938 0-60 26.914062-60 60s26.914062 60 60 60c26.074219 0 48.304688-16.722656 56.558594-40h235.441406v-20c0-43.472656 27.886719-80.550781 66.710938-94.296875l5.699218 41.042969c-19.234375 10.003906-32.410156 30.113281-32.410156 53.253906 0 33.085938 26.914062 60 60 60s60-26.914062 60-60c0-28.964844-20.632812-53.203125-47.972656-58.789062zm-404.027344 78.789062c-11.027344 0-20-8.972656-20-20s8.972656-20 20-20 20 8.972656 20 20-8.972656 20-20 20zm392 0c-11.027344 0-20-8.972656-20-20s8.972656-20 20-20 20 8.972656 20 20-8.972656 20-20 20zm0 0' })
+      );
+    }
+  }]);
+  return MicromobilityIcon;
 }(_react.Component);
 
 module.exports = exports['default'];

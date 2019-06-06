@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.clearStops = exports.transportationNetworkCompanyRideError = exports.transportationNetworkCompanyRideResponse = exports.transportationNetworkCompanyEtaError = exports.transportationNetworkCompanyEtaResponse = exports.findPatternsForRouteError = exports.findPatternsForRouteResponse = exports.findRoutesError = exports.findRoutesResponse = exports.findStopTimesForStopError = exports.findStopTimesForStopResponse = exports.findGeometryForTripError = exports.findGeometryForTripResponse = exports.findStopTimesForTripError = exports.findStopTimesForTripResponse = exports.findStopsForTripError = exports.findStopsForTripResponse = exports.findTripError = exports.findTripResponse = exports.findStopError = exports.findStopResponse = exports.carRentalError = exports.carRentalResponse = exports.bikeRentalResponse = exports.bikeRentalError = exports.parkAndRideResponse = exports.parkAndRideError = exports.forgetSearch = exports.rememberSearch = exports.toggleTracking = exports.routingError = exports.routingResponse = exports.routingRequest = exports.nonRealtimeRoutingResponse = undefined;
+exports.clearStops = exports.transportationNetworkCompanyRideError = exports.transportationNetworkCompanyRideResponse = exports.transportationNetworkCompanyEtaError = exports.transportationNetworkCompanyEtaResponse = exports.findPatternsForRouteError = exports.findPatternsForRouteResponse = exports.findRoutesError = exports.findRoutesResponse = exports.findStopTimesForStopError = exports.findStopTimesForStopResponse = exports.findGeometryForTripError = exports.findGeometryForTripResponse = exports.findStopTimesForTripError = exports.findStopTimesForTripResponse = exports.findStopsForTripError = exports.findStopsForTripResponse = exports.findTripError = exports.findTripResponse = exports.findStopError = exports.findStopResponse = exports.vehicleRentalError = exports.vehicleRentalResponse = exports.carRentalError = exports.carRentalResponse = exports.bikeRentalResponse = exports.bikeRentalError = exports.parkAndRideResponse = exports.parkAndRideError = exports.forgetSearch = exports.rememberSearch = exports.toggleTracking = exports.routingError = exports.routingResponse = exports.routingRequest = exports.nonRealtimeRoutingResponse = undefined;
 
 var _stringify = require('babel-runtime/core-js/json/stringify');
 
@@ -37,6 +37,7 @@ exports.routingQuery = routingQuery;
 exports.parkAndRideQuery = parkAndRideQuery;
 exports.bikeRentalQuery = bikeRentalQuery;
 exports.carRentalQuery = carRentalQuery;
+exports.vehicleRentalQuery = vehicleRentalQuery;
 exports.findStop = findStop;
 exports.findTrip = findTrip;
 exports.findStopsForTrip = findStopsForTrip;
@@ -306,6 +307,15 @@ var carRentalError = exports.carRentalError = (0, _reduxActions.createAction)('C
 
 function carRentalQuery(params) {
   return createQueryAction('car_rental', carRentalResponse, carRentalError);
+}
+
+// Vehicle rental (e.g. Lime eScooter) locations lookup query
+
+var vehicleRentalResponse = exports.vehicleRentalResponse = (0, _reduxActions.createAction)('VEHICLE_RENTAL_RESPONSE');
+var vehicleRentalError = exports.vehicleRentalError = (0, _reduxActions.createAction)('VEHICLE_RENTAL_ERROR');
+
+function vehicleRentalQuery(params) {
+  return createQueryAction('vehicle_rental', vehicleRentalResponse, vehicleRentalError);
 }
 
 // Single stop lookup query

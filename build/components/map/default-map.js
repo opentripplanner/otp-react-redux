@@ -86,6 +86,10 @@ var _distanceMeasure = require('./distance-measure');
 
 var _distanceMeasure2 = _interopRequireDefault(_distanceMeasure);
 
+var _vehicleRentalOverlay = require('./vehicle-rental-overlay');
+
+var _vehicleRentalOverlay2 = _interopRequireDefault(_vehicleRentalOverlay);
+
 var _zipcarOverlay = require('./zipcar-overlay');
 
 var _zipcarOverlay2 = _interopRequireDefault(_zipcarOverlay);
@@ -134,6 +138,8 @@ var DefaultMap = function (_Component) {
               return _react2.default.createElement(_stopsOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig));
             case 'tile':
               return _react2.default.createElement(_tileOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig));
+            case 'vehicle-rental':
+              return _react2.default.createElement(_vehicleRentalOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig));
             case 'zipcar':
               return _react2.default.createElement(_zipcarOverlay2.default, (0, _extends3.default)({ key: k }, overlayConfig));
             default:

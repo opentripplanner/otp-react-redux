@@ -22,6 +22,7 @@ exports.isWalk = isWalk;
 exports.isBicycle = isBicycle;
 exports.isBicycleRent = isBicycleRent;
 exports.isCar = isCar;
+exports.isVehicle = isVehicle;
 exports.isAccessMode = isAccessMode;
 exports.getMapColor = getMapColor;
 exports.getStepDirection = getStepDirection;
@@ -206,8 +207,13 @@ function isCar(mode) {
   return mode.startsWith('CAR');
 }
 
+function isVehicle(mode) {
+  if (!mode) return false;
+  return mode.startsWith('MICROMOBILITY');
+}
+
 function isAccessMode(mode) {
-  return isWalk(mode) || isBicycle(mode) || isBicycleRent(mode) || isCar(mode);
+  return isWalk(mode) || isBicycle(mode) || isBicycleRent(mode) || isCar(mode) || isVehicle(mode);
 }
 
 function getMapColor(mode) {
@@ -220,6 +226,7 @@ function getMapColor(mode) {
   if (mode === 'TRAM') return '#800';
   if (mode === 'FERRY') return '#008';
   if (mode === 'CAR') return '#444';
+  if (mode === 'MICROMOBILITY') return '#f5a729';
   return '#aaa';
 }
 
@@ -273,6 +280,8 @@ function getLegModeString(leg) {
     case 'TRAM':
       if (leg.routeLongName.toLowerCase().indexOf('streetcar') !== -1) return 'Streetcar';
       return 'Light Rail';
+    case 'MICROMOBILITY':
+      return 'Ride';
   }
   return toSentenceCase(leg.mode);
 }
@@ -466,6 +475,10 @@ function getLegMode(companies, leg) {
   } else if (legMode === 'BICYCLE' && leg.rentedBike) {
     legMode = {
       mode: 'BICYCLE_RENT'
+    };
+  } else if (legMode === 'MICROMOBILITY' && leg.rentedVehicle) {
+    legMode = {
+      mode: 'MICROMOBILITY_RENT'
     };
   }
 

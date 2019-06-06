@@ -2406,7 +2406,7 @@
 }.otp .leg-diagram .close-button:hover {
   color: #aaa;
   background: none;
-}.otp .car-rental-icon {
+}/*** Car Rental Map Icons ***/.otp .car-rental-icon {
   color: gray;
   font-size: 18px;
   text-align: center;
@@ -2414,6 +2414,12 @@
   color: #009cde;
 }.otp .car-rental-icon-reachnow {
   color: #007fa3;
+}/*** Micromobility Rental Map Icons ***/.otp .vehicle-rental-icon {
+  color: gray;
+  font-size: 18px;
+  text-align: center;
+}.otp .vehicle-rental-icon-lime {
+  color: #21CF00;
 }/* Stop icon circle css */.otp .stop-overlay-bg {
   background: rgba(0,0,0,0);
   border: none;
@@ -3046,6 +3052,16 @@
     0deg,
     grey,
     grey 8px,
+    white 8px,
+    white 12.5px
+  );
+}.otp .line-itin .leg-line-vehicle {
+  left: 7.5px;
+  right: 7.5px;
+  background: repeating-linear-gradient(
+    0deg,
+    #f5a729,
+    #f5a729 8px,
     white 8px,
     white 12.5px
   );

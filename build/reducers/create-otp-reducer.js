@@ -138,6 +138,9 @@ function createOtpReducer(config, initialQuery) {
         stops: []
       },
       transitive: null,
+      vehicleRental: {
+        stations: []
+      },
       zipcar: {
         locations: []
       }
@@ -254,6 +257,24 @@ function createOtpReducer(config, initialQuery) {
         return (0, _immutabilityHelper2.default)(state, {
           overlay: {
             carRental: {
+              stations: { $set: action.payload.stations },
+              pending: { $set: false }
+            }
+          }
+        });
+      case 'VEHICLE_RENTAL_ERROR':
+        return (0, _immutabilityHelper2.default)(state, {
+          overlay: {
+            vehicleRental: {
+              pending: { $set: false },
+              error: { $set: action.payload }
+            }
+          }
+        });
+      case 'VEHICLE_RENTAL_RESPONSE':
+        return (0, _immutabilityHelper2.default)(state, {
+          overlay: {
+            vehicleRental: {
               stations: { $set: action.payload.stations },
               pending: { $set: false }
             }

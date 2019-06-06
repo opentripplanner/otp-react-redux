@@ -138,8 +138,8 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
       // Add the access mode
       queryModes.push(modeStr);
 
-      // Do extra stuff if mode selected was a TNC
-      queryParamUpdate.companies = modeStr === 'CAR_HAIL' || modeStr === 'CAR_RENT' ? mode.company.toUpperCase() : null;
+      // Do extra stuff if mode selected was a TNC, car rental, or vehicle rental
+      queryParamUpdate.companies = modeStr === 'CAR_HAIL' || modeStr === 'CAR_RENT' || modeStr === 'MICROMOBILITY_RENT' ? mode.company.toUpperCase() : null;
 
       queryParamUpdate.mode = queryModes.join(',');
 
