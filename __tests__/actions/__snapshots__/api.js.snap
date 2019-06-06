@@ -1,8 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OTP Query Path 1`] = `"/api/plan?fromPlace=12%2C34&toPlace=34%2C12&mode=WALK%2CTRANSIT"`;
-
-exports[`actions > api > routingQuery should gracefully handle bad response 1`] = `
+exports[`actions > api routingQuery should gracefully handle bad response 1`] = `
 Array [
   Array [
     Object {
@@ -16,7 +14,7 @@ Array [
 ]
 `;
 
-exports[`actions > api > routingQuery should make a query to OTP 1`] = `
+exports[`actions > api routingQuery should make a query to OTP 1`] = `
 Array [
   Array [
     Object {
@@ -29,3 +27,5 @@ Array [
   ],
 ]
 `;
+
+exports[`actions > api routingQuery should make a query to OTP: OTP Query Path 1`] = `"/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT"`;

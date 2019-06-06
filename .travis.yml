@@ -3,12 +3,13 @@ cache:
   yarn: true
 notifications:
   email: false
+  webhooks: https://outlook.office.com/webhook/03fa4a79-572f-4c68-b756-e4e851d0215a@9093f1a3-8771-4fb7-8596-d51eeef18cda/TravisCI/449087910d3647598cf3d7c6387fb8fc/286c079f-6085-4aa0-8f8d-e2a3e8d1f568
 node_js:
-  - '6'
+  - '8'
 before_install:
   - npm i -g yarn codecov
 after_success:
-  - yarn run semantic-release
+  - semantic-release
 before_script:
   - yarn global add codecov
 script:
