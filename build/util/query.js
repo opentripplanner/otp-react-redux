@@ -20,12 +20,20 @@ exports.getUrlParams = getUrlParams;
 exports.updateOtpUrlParams = updateOtpUrlParams;
 exports.updateUiUrlParams = updateUiUrlParams;
 exports.getUiUrlParams = getUiUrlParams;
+exports.getJSONFromStorage = getJSONFromStorage;
+exports.getTripOptionsFromQuery = getTripOptionsFromQuery;
+exports.isNotDefaultQuery = isNotDefaultQuery;
+exports.getDefaultQuery = getDefaultQuery;
 
 var _qs = require('qs');
 
 var _qs2 = _interopRequireDefault(_qs);
 
 var _itinerary = require('./itinerary');
+
+var _queryParams = require('./query-params');
+
+var _queryParams2 = _interopRequireDefault(_queryParams);
 
 var _state = require('./state');
 
@@ -133,6 +141,78 @@ function getUiUrlParams(otpState) {
     ui_activeItinerary: activeSearch ? activeSearch.activeItinerary : 0
   };
   return uiParams;
+}
+
+function getJSONFromStorage(name) {
+  var nullIfNotFound = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  var itemAsString = void 0;
+  try {
+    itemAsString = window.localStorage.getItem(name);
+    var json = JSON.parse(itemAsString);
+    if (json) return json;else return nullIfNotFound ? null : {};
+  } catch (e) {
+    // Catch any errors associated with parsing bad JSON.
+    console.warn(e, itemAsString);
+    return nullIfNotFound ? null : {};
+  }
+}
+
+function getTripOptionsFromQuery(query) {
+  var keepPlace = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  var options = (0, _assign2.default)({}, query);
+  // Delete time/date options and from/to
+  delete options.time;
+  delete options.departArrive;
+  delete options.date;
+  if (!keepPlace) {
+    delete options.from;
+    delete options.to;
+  }
+  return options;
+}
+
+/**
+ * Determines whether the specified query differs from the default query, i.e.,
+ * whether the user has modified any trip options (including mode) from their
+ * default values.
+ */
+function isNotDefaultQuery(query, config) {
+  var activeModes = query.mode.split(',');
+  var defaultModes = (0, _itinerary.getTransitModes)(config).concat(['WALK']);
+  var queryIsDifferent = false;
+  var modesEqual = activeModes.length === defaultModes.length && activeModes.sort().every(function (value, index) {
+    return value === defaultModes.sort()[index];
+  });
+
+  if (!modesEqual) {
+    queryIsDifferent = true;
+  } else {
+    defaultParams.forEach(function (param) {
+      var paramInfo = _queryParams2.default.find(function (qp) {
+        return qp.name === param;
+      });
+      // Check that the parameter applies to the specified routingType
+      if (!paramInfo.routingTypes.includes(query.routingType)) return;
+      // Check that the applicability test (if provided) is satisfied
+      if (typeof paramInfo.applicable === 'function' && !paramInfo.applicable(query, config)) return;
+      if (query[param] !== paramInfo.default) {
+        queryIsDifferent = true;
+      }
+    });
+  }
+  return queryIsDifferent;
+}
+
+function getDefaultQuery() {
+  var defaultQuery = { routingType: 'ITINERARY' };
+  _queryParams2.default.filter(function (qp) {
+    return 'default' in qp;
+  }).forEach(function (qp) {
+    defaultQuery[qp.name] = qp.default;
+  });
+  return defaultQuery;
 }
 
 //# sourceMappingURL=query.js

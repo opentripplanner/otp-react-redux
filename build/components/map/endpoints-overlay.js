@@ -81,6 +81,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 };
 
 var mapDispatchToProps = {
+  rememberPlace: _map.rememberPlace,
   setLocation: _map.setLocation
 };
 

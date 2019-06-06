@@ -93,12 +93,18 @@ var ItineraryBody = (_temp = _class = function (_Component) {
           place: leg.from,
           time: leg.startTime,
           leg: leg,
+          previousLeg: i > 0 ? itinerary.legs[i - 1] : null,
           legIndex: i,
           followsTransit: followsTransit
         }, _this2.props)));
         // If this is the last leg, create a special PlaceRow for the destination only
         if (i === itinerary.legs.length - 1) {
-          rows.push(_react2.default.createElement(_placeRow2.default, { place: leg.to, time: leg.endTime, timeOptions: timeOptions, setActiveLeg: setActiveLeg, key: i + 1 }));
+          rows.push(_react2.default.createElement(_placeRow2.default, {
+            place: leg.to,
+            time: leg.endTime,
+            timeOptions: timeOptions,
+            setActiveLeg: setActiveLeg,
+            key: i + 1 }));
         }
         if (leg.transitLeg) followsTransit = true;
       });

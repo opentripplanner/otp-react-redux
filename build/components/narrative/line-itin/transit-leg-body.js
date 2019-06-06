@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
 
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
@@ -30,6 +29,8 @@ var _class, _temp, _class2, _temp2, _class3, _temp3;
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
 
 var _propTypes = require('prop-types');
 
@@ -85,8 +86,13 @@ var TransitLegBody = (_temp = _class = function (_Component) {
     value: function render() {
       var _props = this.props,
           customIcons = _props.customIcons,
-          leg = _props.leg;
-      var alerts = leg.alerts,
+          leg = _props.leg,
+          operator = _props.operator;
+      var agencyBrandingUrl = leg.agencyBrandingUrl,
+          agencyId = leg.agencyId,
+          agencyName = leg.agencyName,
+          agencyUrl = leg.agencyUrl,
+          alerts = leg.alerts,
           mode = leg.mode,
           routeShortName = leg.routeShortName,
           routeLongName = leg.routeLongName,
@@ -94,8 +100,10 @@ var TransitLegBody = (_temp = _class = function (_Component) {
       var _state = this.state,
           alertsExpanded = _state.alertsExpanded,
           stopsExpanded = _state.stopsExpanded;
+      // If the config contains an operator with a logo URL, prefer that over the
+      // one provided by OTP (which is derived from agency.txt#agency_branding_url)
 
-
+      var logoUrl = operator && operator.logo || agencyBrandingUrl;
       var iconMode = mode;
       if (typeof customIcons.customModeForLeg === 'function') {
         var customMode = customIcons.customModeForLeg(leg);
@@ -146,6 +154,21 @@ var TransitLegBody = (_temp = _class = function (_Component) {
                 headsign
               )
             )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'agency-info' },
+          'Service operated by',
+          ' ',
+          _react2.default.createElement(
+            'a',
+            { href: agencyUrl, target: '_blank' },
+            agencyName,
+            logoUrl && _react2.default.createElement('img', {
+              src: logoUrl,
+              height: 25,
+              style: { marginLeft: '5px' } })
           )
         ),
         alerts && alerts.length > 0 && _react2.default.createElement(
@@ -211,7 +234,20 @@ var TransitLegBody = (_temp = _class = function (_Component) {
   legIndex: _propTypes2.default.number,
   setActiveLeg: _propTypes2.default.func
 }, _temp);
-exports.default = TransitLegBody;
+
+// Connect to the redux store
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    operator: state.otp.config.operators.find(function (operator) {
+      return operator.id === ownProps.leg.agencyId;
+    })
+  };
+};
+
+var mapDispatchToProps = {};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TransitLegBody);
 
 var RouteName = function (_Component2) {
   (0, _inherits3.default)(RouteName, _Component2);

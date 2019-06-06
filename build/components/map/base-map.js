@@ -283,9 +283,9 @@ var BaseMap = (_temp = _class = function (_Component) {
           diagramLeg = _props.diagramLeg,
           elevationPoint = _props.elevationPoint,
           popupLocation = _props.popupLocation;
-      var baseLayers = this.props.config.map.baseLayers;
+      var baseLayers = config.map.baseLayers;
 
-
+      var showElevationProfile = Boolean(config.elevationProfile);
       var userControlledOverlays = [];
       var fixedOverlays = [];
       _react2.default.Children.toArray(children).forEach(function (child) {
@@ -327,12 +327,20 @@ var BaseMap = (_temp = _class = function (_Component) {
         console.error('no map position/bounds provided!', {position, zoom, bounds})
       } */
 
-      // Compute the elevation point marker, if activeLeg
+      // Compute the elevation point marker, if activeLeg and elevation profile is enabled.
       var elevationPointMarker = null;
-      if (diagramLeg && elevationPoint) {
+      if (showElevationProfile && diagramLeg && elevationPoint) {
         var pos = (0, _itinerary.legLocationAtDistance)(diagramLeg, elevationPoint);
         if (pos) {
-          elevationPointMarker = _react2.default.createElement(_reactLeaflet.Marker, { position: pos });
+          elevationPointMarker = _react2.default.createElement(_reactLeaflet.CircleMarker, {
+            center: pos,
+            fillColor: '#084c8d',
+            weight: 6,
+            color: '#555',
+            opacity: 0.4,
+            radius: 5,
+            fill: true,
+            fillOpacity: 1 });
         }
       }
 
@@ -509,8 +517,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     isFromSet: state.otp.currentQuery.from && state.otp.currentQuery.from.lat !== null && state.otp.currentQuery.from.lon !== null,
     isToSet: state.otp.currentQuery.to && state.otp.currentQuery.to.lat !== null && state.otp.currentQuery.to.lon !== null,
     itinerary: (0, _state.getActiveItinerary)(state.otp),
-    query: state.otp.currentQuery,
-    popupLocation: state.otp.ui.mapPopupLocation
+    popupLocation: state.otp.ui.mapPopupLocation,
+    query: state.otp.currentQuery
   };
 };
 

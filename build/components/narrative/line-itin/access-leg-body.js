@@ -109,12 +109,12 @@ var AccessLegBody = (_temp = _class = function (_Component) {
             _react2.default.createElement('i', { className: 'fa fa-caret-' + (this.state.expanded ? 'up' : 'down') })
           )
         ),
+        this.props.routingType === 'ITINERARY' && _react2.default.createElement(_legDiagramPreview2.default, { leg: leg }),
         _react2.default.createElement(
           _velocityReact.VelocityTransitionGroup,
           { enter: { animation: 'slideDown' }, leave: { animation: 'slideUp' } },
           this.state.expanded && _react2.default.createElement(AccessLegSteps, { steps: leg.steps })
-        ),
-        this.props.routingType === 'ITINERARY' && _react2.default.createElement(_legDiagramPreview2.default, { leg: leg })
+        )
       );
     }
   }]);

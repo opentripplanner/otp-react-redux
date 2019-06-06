@@ -89,6 +89,9 @@ function queryIsValid(otpState) {
   // TODO: add date/time validation
 }
 exports.queryIsValid = queryIsValid;
+
+// TODO: Check this against util/query#getDefaultQuery
+
 function getDefaultQuery() {
   var params = {};
   if (typeof window !== 'undefined') {

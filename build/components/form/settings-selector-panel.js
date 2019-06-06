@@ -8,6 +8,10 @@ var _getIterator2 = require('babel-runtime/core-js/get-iterator');
 
 var _getIterator3 = _interopRequireDefault(_getIterator2);
 
+var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -44,7 +48,13 @@ var _modeButton = require('./mode-button');
 
 var _modeButton2 = _interopRequireDefault(_modeButton);
 
+var _icon = require('../narrative/icon');
+
+var _icon2 = _interopRequireDefault(_icon);
+
 var _itinerary = require('../../util/itinerary');
+
+var _query = require('../../util/query');
 
 var _generalSettingsPanel = require('./general-settings-panel');
 
@@ -68,18 +78,36 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
       _this._setSoloMode('BICYCLE');
     };
 
-    _this._setOwnBike = function () {
-      var nonBikeModes = _this.props.queryModes.filter(function (m) {
+    _this._addBikeModeToQueryModes = function (bikeMode) {
+      var _this$props = _this.props,
+          queryModes = _this$props.queryModes,
+          setQueryParam = _this$props.setQueryParam;
+
+      var nonBikeModes = queryModes.filter(function (m) {
         return !m.startsWith('BICYCLE');
       });
-      _this.props.setQueryParam({ mode: 'BICYCLE,' + nonBikeModes.join(',') });
+      setQueryParam({ mode: [].concat((0, _toConsumableArray3.default)(nonBikeModes), [bikeMode]).join(',') });
+    };
+
+    _this._setOwnBike = function () {
+      return _this._addBikeModeToQueryModes('BICYCLE');
     };
 
     _this._setRentedBike = function () {
-      var nonBikeModes = _this.props.queryModes.filter(function (m) {
-        return !m.startsWith('BICYCLE');
-      });
-      _this.props.setQueryParam({ mode: 'BICYCLE_RENT,' + nonBikeModes.join(',') });
+      return _this._addBikeModeToQueryModes('BICYCLE_RENT');
+    };
+
+    _this._getStoredSettings = function () {
+      return window.localStorage.getItem('otp.defaultQuery');
+    };
+
+    _this._toggleStoredSettings = function () {
+      var options = (0, _query.getTripOptionsFromQuery)(_this.props.query);
+      if (_this._getStoredSettings()) _this.props.clearDefaultSettings();else _this.props.storeDefaultSettings(options);
+    };
+
+    _this._resetForm = function () {
+      return _this.props.resetForm();
     };
 
     _this._setAccessMode = function (mode) {
@@ -103,7 +131,9 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
       }
 
       // If no transit modes selected, select all
-      if (!queryModes || queryModes.length === 0) queryModes = (0, _itinerary.getTransitModes)(_this.props.config);
+      if (!queryModes || queryModes.length === 0) {
+        queryModes = (0, _itinerary.getTransitModes)(_this.props.config);
+      }
 
       // Add the access mode
       queryModes.push(modeStr);
@@ -131,7 +161,7 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
           queryModes = _props.queryModes;
 
       if (mode.mode === 'CAR_HAIL' || mode.mode === 'CAR_RENT') {
-        return Boolean(companies && companies.includes(mode.company.toUpperCase()));
+        return Boolean(companies && mode.company && companies.includes(mode.company.toUpperCase()));
       }
 
       var _iteratorNormalCompletion = true;
@@ -144,6 +174,8 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
 
           if (m === mode.mode) return true;
         }
+        // All transit modes are selected
+        // if (isTransit(mode.mode) && queryModes.indexOf('TRANSIT') !== -1) return true
       } catch (err) {
         _didIteratorError = true;
         _iteratorError = err;
@@ -200,24 +232,65 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
           config = _props2.config,
           mode = _props2.mode,
           icons = _props2.icons,
+          query = _props2.query,
           queryModes = _props2.queryModes;
 
 
       var modeHasTransit = (0, _itinerary.hasTransit)(mode);
-
       // TODO: make configurable
       var _config$modes = config.modes,
           transitModes = _config$modes.transitModes,
           accessModes = _config$modes.accessModes,
           bicycleModes = _config$modes.bicycleModes;
+      // Do not permit remembering trip options if they do not differ from the
+      // defaults and nothing has been stored
 
-
+      var queryIsDefault = !(0, _query.isNotDefaultQuery)(query, config);
+      var rememberIsDisabled = queryIsDefault && !this._getStoredSettings();
       return _react2.default.createElement(
         'div',
         { className: 'settings-selector-panel' },
         _react2.default.createElement(
           'div',
           { className: 'modes-panel' },
+          _react2.default.createElement(
+            'div',
+            { style: { marginBottom: '5px' }, className: 'pull-right' },
+            _react2.default.createElement(
+              _reactBootstrap.Button,
+              {
+                bsStyle: 'link',
+                bsSize: 'xsmall',
+                disabled: rememberIsDisabled,
+                onClick: this._toggleStoredSettings
+              },
+              this._getStoredSettings() ? _react2.default.createElement(
+                'span',
+                null,
+                _react2.default.createElement(_icon2.default, { type: 'times' }),
+                ' Forget my options'
+              ) : _react2.default.createElement(
+                'span',
+                null,
+                _react2.default.createElement(_icon2.default, { type: 'lock' }),
+                ' Remember trip options'
+              )
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.Button,
+              {
+                bsStyle: 'link',
+                bsSize: 'xsmall',
+                disabled: queryIsDefault,
+                onClick: this._resetForm
+              },
+              _react2.default.createElement(_icon2.default, { type: 'undo' }),
+              ' ',
+              'Restore',
+              this._getStoredSettings() ? ' my' : '',
+              ' defaults'
+            )
+          ),
           _react2.default.createElement(
             _reactBootstrap.Row,
             { className: 'mode-group-row' },
@@ -393,22 +466,32 @@ var SettingsSelectorPanel = (_temp = _class = function (_Component) {
 // connect to redux store
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var _state$otp$currentQue = state.otp.currentQuery,
-      companies = _state$otp$currentQue.companies,
-      mode = _state$otp$currentQue.mode,
-      routingType = _state$otp$currentQue.routingType;
+  var _state$otp = state.otp,
+      config = _state$otp.config,
+      currentQuery = _state$otp.currentQuery,
+      defaults = _state$otp.defaults;
+  var companies = currentQuery.companies,
+      mode = currentQuery.mode,
+      routingType = currentQuery.routingType;
 
   return {
-    config: state.otp.config,
+    defaults: defaults,
+    query: currentQuery,
+    config: config,
     mode: mode,
     companies: companies,
-    modeGroups: state.otp.config.modeGroups,
+    modeGroups: config.modeGroups,
     queryModes: !mode || mode.length === 0 ? [] : mode.split(','),
     routingType: routingType
   };
 };
 
-var mapDispatchToProps = { setQueryParam: _form.setQueryParam };
+var mapDispatchToProps = {
+  clearDefaultSettings: _form.clearDefaultSettings,
+  resetForm: _form.resetForm,
+  setQueryParam: _form.setQueryParam,
+  storeDefaultSettings: _form.storeDefaultSettings
+};
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SettingsSelectorPanel);
 module.exports = exports['default'];

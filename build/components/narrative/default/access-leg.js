@@ -105,8 +105,7 @@ var AccessLeg = (_temp2 = _class = function (_Component) {
           'button',
           {
             className: 'header',
-            onClick: this._onLegClick
-          },
+            onClick: this._onLegClick },
           _react2.default.createElement(
             'span',
             null,
@@ -151,8 +150,7 @@ var AccessLeg = (_temp2 = _class = function (_Component) {
                   className: 'step ' + (stepIsActive ? 'active' : ''),
                   onClick: function onClick(e) {
                     return _this2._onStepClick(e, step, stepIndex);
-                  }
-                },
+                  } },
                 _react2.default.createElement(
                   'span',
                   { className: 'step-distance' },

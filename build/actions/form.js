@@ -3,12 +3,21 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.clearActiveSearch = exports.settingQueryParam = undefined;
+exports.storeDefaultSettings = exports.clearDefaultSettings = exports.clearActiveSearch = exports.settingQueryParam = undefined;
 
 var _keys = require('babel-runtime/core-js/object/keys');
 
 var _keys2 = _interopRequireDefault(_keys);
 
+var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
+var _assign = require('babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
+
+exports.resetForm = resetForm;
 exports.setQueryParam = setQueryParam;
 exports.parseUrlQueryString = parseUrlQueryString;
 exports.formChanged = formChanged;
@@ -31,7 +40,7 @@ var _lodash3 = require('lodash.isequal');
 
 var _lodash4 = _interopRequireDefault(_lodash3);
 
-var _api = require('./api');
+var _query = require('../util/query');
 
 var _map = require('../util/map');
 
@@ -43,10 +52,37 @@ var _ui = require('../util/ui');
 
 var _ui2 = require('../actions/ui');
 
+var _api = require('./api');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var settingQueryParam = exports.settingQueryParam = (0, _reduxActions.createAction)('SET_QUERY_PARAM');
 var clearActiveSearch = exports.clearActiveSearch = (0, _reduxActions.createAction)('CLEAR_ACTIVE_SEARCH');
+var clearDefaultSettings = exports.clearDefaultSettings = (0, _reduxActions.createAction)('CLEAR_DEFAULT_SETTINGS');
+var storeDefaultSettings = exports.storeDefaultSettings = (0, _reduxActions.createAction)('STORE_DEFAULT_SETTINGS');
+
+function resetForm() {
+  return function (dispatch, getState) {
+    var otpState = getState().otp;
+    var transitModes = otpState.config.modes.transitModes;
+
+    if (otpState.defaults) {
+      dispatch(settingQueryParam(otpState.defaults));
+    } else {
+      // Get user overrides and apply to default query
+      var userOverrides = (0, _query.getJSONFromStorage)('otp.defaultQuery');
+      var defaultQuery = (0, _assign2.default)((0, _query.getDefaultQuery)(), userOverrides);
+      // Filter out non-options (i.e., date, places).
+      var options = (0, _query.getTripOptionsFromQuery)(defaultQuery);
+      // Default mode is currently WALK,TRANSIT. We need to update this value
+      // here to match the list of modes, otherwise the form will break.
+      options.mode = ['WALK'].concat((0, _toConsumableArray3.default)(transitModes.map(function (m) {
+        return m.mode;
+      }))).join(',');
+      dispatch(settingQueryParam(options));
+    }
+  };
+}
 
 /**
  * Action to update any specified query parameter. Replaces previous series of

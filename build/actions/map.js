@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setMapPopupLocation = exports.setElevationPoint = exports.showLegDiagram = exports.switchingLocations = exports.settingLocation = exports.clearingLocation = undefined;
+exports.setMapPopupLocation = exports.setElevationPoint = exports.showLegDiagram = exports.rememberPlace = exports.forgetPlace = exports.switchingLocations = exports.settingLocation = exports.clearingLocation = undefined;
 exports.clearLocation = clearLocation;
 exports.setLocation = setLocation;
 exports.setLocationToCurrent = setLocationToCurrent;
@@ -13,8 +13,6 @@ exports.setMapPopupLocationAndGeocode = setMapPopupLocationAndGeocode;
 var _reduxActions = require('redux-actions');
 
 var _geocoder = require('../util/geocoder');
-
-var _form = require('./form');
 
 /* SET_LOCATION action creator. Updates a from or to location in the store
  *
@@ -30,6 +28,9 @@ var _form = require('./form');
 var clearingLocation = exports.clearingLocation = (0, _reduxActions.createAction)('CLEAR_LOCATION');
 var settingLocation = exports.settingLocation = (0, _reduxActions.createAction)('SET_LOCATION');
 var switchingLocations = exports.switchingLocations = (0, _reduxActions.createAction)('SWITCH_LOCATIONS');
+
+var forgetPlace = exports.forgetPlace = (0, _reduxActions.createAction)('FORGET_PLACE');
+var rememberPlace = exports.rememberPlace = (0, _reduxActions.createAction)('REMEMBER_PLACE');
 
 function clearLocation(payload) {
   return function (dispatch, getState) {

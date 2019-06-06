@@ -46,6 +46,10 @@ var _planTripButton = require('../form/plan-trip-button');
 
 var _planTripButton2 = _interopRequireDefault(_planTripButton);
 
+var _userSettings = require('../form/user-settings');
+
+var _userSettings2 = _interopRequireDefault(_userSettings);
+
 var _narrativeRoutingResults = require('../narrative/narrative-routing-results');
 
 var _narrativeRoutingResults2 = _interopRequireDefault(_narrativeRoutingResults);
@@ -74,25 +78,46 @@ var DefaultMainPanel = function (_Component) {
           activeSearch = _props.activeSearch;
 
       var showPlanTripButton = mainPanelContent === 'EDIT_DATETIME' || mainPanelContent === 'EDIT_SETTINGS';
-
+      var mostRecentQuery = activeSearch ? activeSearch.query : null;
+      var planDisabled = (0, _lodash2.default)(currentQuery, mostRecentQuery);
       return _react2.default.createElement(
         _viewerContainer2.default,
         null,
         _react2.default.createElement(
           'div',
-          { style: { position: 'absolute', top: 0, left: 0, right: 0, bottom: showPlanTripButton ? 55 : 0, paddingBottom: 15, overflow: 'auto' } },
+          { style: {
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: showPlanTripButton ? 55 : 0,
+              paddingBottom: 15,
+              overflow: 'auto'
+            } },
           _react2.default.createElement(_defaultSearchForm2.default, { icons: customIcons }),
+          !activeSearch && !showPlanTripButton && _react2.default.createElement(_userSettings2.default, null),
           _react2.default.createElement(
             'div',
             { className: 'desktop-narrative-container' },
-            _react2.default.createElement(_narrativeRoutingResults2.default, { itineraryClass: itineraryClass, itineraryFooter: itineraryFooter, customIcons: customIcons })
+            _react2.default.createElement(_narrativeRoutingResults2.default, {
+              itineraryClass: itineraryClass,
+              itineraryFooter: itineraryFooter,
+              customIcons: customIcons })
           )
         ),
-        showPlanTripButton && _react2.default.createElement('div', { style: { position: 'absolute', left: 0, right: 20, bottom: 55, height: 15, backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1))', zIndex: 100 } }),
+        showPlanTripButton && _react2.default.createElement('div', {
+          style: {
+            position: 'absolute',
+            left: 0,
+            right: 10,
+            bottom: 55,
+            height: 15
+          },
+          className: 'white-fade' }),
         showPlanTripButton && _react2.default.createElement(
           'div',
-          { style: { position: 'absolute', left: 0, right: 0, bottom: 0, height: 55, padding: 10 } },
-          _react2.default.createElement(_planTripButton2.default, { disabled: (0, _lodash2.default)(currentQuery, activeSearch ? activeSearch.query : null) })
+          { className: 'bottom-fixed' },
+          _react2.default.createElement(_planTripButton2.default, { disabled: planDisabled })
         )
       );
     }
@@ -101,6 +126,7 @@ var DefaultMainPanel = function (_Component) {
 }(_react.Component);
 
 // connect to the redux store
+
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {

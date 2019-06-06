@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.clearStops = exports.transportationNetworkCompanyRideError = exports.transportationNetworkCompanyRideResponse = exports.transportationNetworkCompanyEtaError = exports.transportationNetworkCompanyEtaResponse = exports.findGeometryForPatternError = exports.findGeometryForPatternResponse = exports.findPatternsForRouteError = exports.findPatternsForRouteResponse = exports.findRouteError = exports.findRouteResponse = exports.findRoutesError = exports.findRoutesResponse = exports.findStopTimesForStopError = exports.findStopTimesForStopResponse = exports.findGeometryForTripError = exports.findGeometryForTripResponse = exports.findStopTimesForTripError = exports.findStopTimesForTripResponse = exports.findStopsForTripError = exports.findStopsForTripResponse = exports.findTripError = exports.findTripResponse = exports.findStopError = exports.findStopResponse = exports.carRentalError = exports.carRentalResponse = exports.bikeRentalResponse = exports.bikeRentalError = exports.parkAndRideResponse = exports.parkAndRideError = exports.routingError = exports.routingResponse = exports.routingRequest = exports.nonRealtimeRoutingResponse = undefined;
+exports.clearStops = exports.transportationNetworkCompanyRideError = exports.transportationNetworkCompanyRideResponse = exports.transportationNetworkCompanyEtaError = exports.transportationNetworkCompanyEtaResponse = exports.findPatternsForRouteError = exports.findPatternsForRouteResponse = exports.findRoutesError = exports.findRoutesResponse = exports.findStopTimesForStopError = exports.findStopTimesForStopResponse = exports.findGeometryForTripError = exports.findGeometryForTripResponse = exports.findStopTimesForTripError = exports.findStopTimesForTripResponse = exports.findStopsForTripError = exports.findStopsForTripResponse = exports.findTripError = exports.findTripResponse = exports.findStopError = exports.findStopResponse = exports.carRentalError = exports.carRentalResponse = exports.bikeRentalResponse = exports.bikeRentalError = exports.parkAndRideResponse = exports.parkAndRideError = exports.forgetSearch = exports.rememberSearch = exports.toggleTracking = exports.routingError = exports.routingResponse = exports.routingRequest = exports.nonRealtimeRoutingResponse = undefined;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _stringify = require('babel-runtime/core-js/json/stringify');
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _stringify2 = _interopRequireDefault(_stringify);
 
 var _keys = require('babel-runtime/core-js/object/keys');
 
@@ -29,6 +29,10 @@ var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 exports.routingQuery = routingQuery;
 exports.parkAndRideQuery = parkAndRideQuery;
 exports.bikeRentalQuery = bikeRentalQuery;
@@ -41,8 +45,6 @@ exports.findGeometryForTrip = findGeometryForTrip;
 exports.findStopTimesForStop = findStopTimesForStop;
 exports.findRoutes = findRoutes;
 exports.findRoute = findRoute;
-exports.findPatternsForRoute = findPatternsForRoute;
-exports.findGeometryForPattern = findGeometryForPattern;
 exports.getTransportationNetworkCompanyEtaEstimate = getTransportationNetworkCompanyEtaEstimate;
 exports.getTransportationNetworkCompanyRideEstimate = getTransportationNetworkCompanyRideEstimate;
 exports.findNearbyStops = findNearbyStops;
@@ -63,6 +65,8 @@ var _haversine = require('haversine');
 
 var _haversine2 = _interopRequireDefault(_haversine);
 
+var _map = require('./map');
+
 var _state = require('../util/state');
 
 var _queryParams = require('../util/query-params');
@@ -75,23 +79,49 @@ var _itinerary = require('../util/itinerary');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* globals fetch */
-
 if (typeof fetch === 'undefined') require('isomorphic-fetch');
 
 // Generic API actions
+
+/* globals fetch */
 
 var nonRealtimeRoutingResponse = exports.nonRealtimeRoutingResponse = (0, _reduxActions.createAction)('NON_REALTIME_ROUTING_RESPONSE');
 var routingRequest = exports.routingRequest = (0, _reduxActions.createAction)('ROUTING_REQUEST');
 var routingResponse = exports.routingResponse = (0, _reduxActions.createAction)('ROUTING_RESPONSE');
 var routingError = exports.routingError = (0, _reduxActions.createAction)('ROUTING_ERROR');
+var toggleTracking = exports.toggleTracking = (0, _reduxActions.createAction)('TOGGLE_TRACKING');
+var rememberSearch = exports.rememberSearch = (0, _reduxActions.createAction)('REMEMBER_SEARCH');
+var forgetSearch = exports.forgetSearch = (0, _reduxActions.createAction)('FORGET_SEARCH');
 
 var lastSearchId = 0;
+
+function randId() {
+  return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
+}
+
+function formatRecentPlace(place) {
+  return (0, _extends3.default)({}, place, {
+    type: 'recent',
+    icon: 'clock-o',
+    id: 'recent-' + randId(),
+    timestamp: new Date().getTime(),
+    forgettable: true
+  });
+}
+
+function formatRecentSearch(url, otpState) {
+  return {
+    query: (0, _query.getTripOptionsFromQuery)(otpState.currentQuery, true),
+    url: url,
+    id: randId(),
+    timestamp: new Date().getTime()
+  };
+}
 
 function routingQuery() {
   return function () {
     var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(dispatch, getState) {
-      var otpState, routingType, searchId;
+      var otpState, routingType, searchId, query;
       return _regenerator2.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -111,8 +141,21 @@ function routingQuery() {
               dispatch(routingRequest({ routingType: routingType, searchId: searchId }));
 
               // fetch a realtime route
-              fetch(constructRoutingQuery(otpState)).then(getJsonAndCheckResponse).then(function (json) {
+              query = constructRoutingQuery(otpState);
+
+              console.log(query);
+              fetch(query).then(getJsonAndCheckResponse).then(function (json) {
                 dispatch(routingResponse({ response: json, searchId: searchId }));
+                // If tracking is enabled, store locations and search after successful
+                // search is completed.
+                // TODO recent searches
+                if (otpState.user.trackRecent) {
+                  var from = formatRecentPlace(otpState.currentQuery.from);
+                  var to = formatRecentPlace(otpState.currentQuery.to);
+                  dispatch((0, _map.rememberPlace)({ type: 'recent', location: from }));
+                  dispatch((0, _map.rememberPlace)({ type: 'recent', location: to }));
+                  dispatch(rememberSearch(formatRecentSearch(query, otpState)));
+                }
               }).catch(function (error) {
                 dispatch(routingError({ error: error, searchId: searchId }));
               });
@@ -125,7 +168,7 @@ function routingQuery() {
                 // do nothing
               });
 
-            case 8:
+            case 10:
             case 'end':
               return _context.stop();
           }
@@ -159,7 +202,7 @@ function constructRoutingQuery(otpState, ignoreRealtimeUpdates) {
   var rt = config.routingTypes && config.routingTypes.find(function (rt) {
     return rt.key === routingType;
   });
-  var api = rt.api || config.api;
+  var api = rt && rt.api || config.api;
   var planEndpoint = '' + api.host + (api.port ? ':' + api.port : '') + api.path + '/plan';
 
   var params = {};
@@ -364,11 +407,12 @@ var findRoutesResponse = exports.findRoutesResponse = (0, _reduxActions.createAc
 var findRoutesError = exports.findRoutesError = (0, _reduxActions.createAction)('FIND_ROUTES_ERROR');
 
 function findRoutes(params) {
-  return createQueryAction('index/routes', findRoutesResponse, findRoutesError, {
+  var query = '\n{\n  routes {\n    id: gtfsId\n    color\n    longName\n    shortName\n    mode\n    type\n    desc\n    bikesAllowed\n    sortOrder\n    textColor\n    url\n    agency {\n      id: gtfsId\n      name\n      url\n    }\n  }\n}\n  ';
+  return createGraphQLQueryAction(query, {}, findRoutesResponse, findRoutesError, {
     serviceId: 'routes',
     rewritePayload: function rewritePayload(payload) {
       var routes = {};
-      payload.forEach(function (rte) {
+      payload.data.routes.forEach(function (rte) {
         routes[rte.id] = rte;
       });
       return routes;
@@ -376,63 +420,28 @@ function findRoutes(params) {
   });
 }
 
-// Single Route lookup query
-
-var findRouteResponse = exports.findRouteResponse = (0, _reduxActions.createAction)('FIND_ROUTE_RESPONSE');
-var findRouteError = exports.findRouteError = (0, _reduxActions.createAction)('FIND_ROUTE_ERROR');
-
-function findRoute(params) {
-  return createQueryAction('index/routes/' + params.routeId, findRouteResponse, findRouteError, {
-    postprocess: function postprocess(payload, dispatch) {
-      // load patterns
-      dispatch(findPatternsForRoute({ routeId: params.routeId }));
-    }
-  });
-}
-
 // Patterns for Route lookup query
-
+// TODO: replace with GraphQL query for route => patterns => geometry
 var findPatternsForRouteResponse = exports.findPatternsForRouteResponse = (0, _reduxActions.createAction)('FIND_PATTERNS_FOR_ROUTE_RESPONSE');
 var findPatternsForRouteError = exports.findPatternsForRouteError = (0, _reduxActions.createAction)('FIND_PATTERNS_FOR_ROUTE_ERROR');
 
-function findPatternsForRoute(params) {
-  return createQueryAction('index/routes/' + params.routeId + '/patterns', findPatternsForRouteResponse, findPatternsForRouteError, {
+function findRoute(params) {
+  var query = '\n  query routeQuery($routeId: [String]) {\n    routes (ids: $routeId) {\n      id: gtfsId\n      patterns {\n        id: semanticHash\n        directionId\n        headsign\n        name\n        semanticHash\n        geometry {\n          lat\n          lon\n        }\n      }\n    }\n  }\n  ';
+  return createGraphQLQueryAction(query, { routeId: params.routeId }, findPatternsForRouteResponse, findPatternsForRouteError, {
     rewritePayload: function rewritePayload(payload) {
       // convert pattern array to ID-mapped object
       var patterns = {};
-      payload.forEach(function (ptn) {
-        patterns[ptn.id] = ptn;
+      payload.data.routes[0].patterns.forEach(function (ptn) {
+        patterns[ptn.id] = {
+          routeId: params.routeId,
+          patternId: ptn.id,
+          geometry: ptn.geometry
+        };
       });
 
       return {
         routeId: params.routeId,
         patterns: patterns
-      };
-    },
-    postprocess: function postprocess(payload, dispatch) {
-      // load geometry for each pattern
-      payload.forEach(function (ptn) {
-        dispatch(findGeometryForPattern({
-          routeId: params.routeId,
-          patternId: ptn.id
-        }));
-      });
-    }
-  });
-}
-
-// Geometry for Pattern lookup query
-
-var findGeometryForPatternResponse = exports.findGeometryForPatternResponse = (0, _reduxActions.createAction)('FIND_GEOMETRY_FOR_PATTERN_RESPONSE');
-var findGeometryForPatternError = exports.findGeometryForPatternError = (0, _reduxActions.createAction)('FIND_GEOMETRY_FOR_PATTERN_ERROR');
-
-function findGeometryForPattern(params) {
-  return createQueryAction('index/patterns/' + params.patternId + '/geometry', findGeometryForPatternResponse, findGeometryForPatternError, {
-    rewritePayload: function rewritePayload(payload) {
-      return {
-        routeId: params.routeId,
-        patternId: params.patternId,
-        geometry: payload
       };
     }
   });
@@ -558,7 +567,7 @@ var clearStops = exports.clearStops = (0, _reduxActions.createAction)('CLEAR_STO
 /**
  * Generic helper for constructing API queries
  *
- * @param {String} endpoint - The API endpoint path (does not include
+ * @param {string} endpoint - The API endpoint path (does not include
  *   '../otp/routers/router_id/')
  * @param {Function} responseAction - Action to dispatch on a successful API
  *   response. Accepts payload object parameter.
@@ -571,6 +580,7 @@ var clearStops = exports.clearStops = (0, _reduxActions.createAction)('CLEAR_STO
  *       Accepts payload, dispatch, getState parameters.
  *   - serviceId: identifier for TransitIndex service used in
  *       alternateTransitIndex configuration.
+ *   - fetchOptions: fetch options (e.g., method, body, headers).
  */
 
 function createQueryAction(endpoint, responseAction, errorAction, options) {
@@ -595,7 +605,7 @@ function createQueryAction(endpoint, responseAction, errorAction, options) {
               payload = void 0;
               _context2.prev = 4;
               _context2.next = 7;
-              return fetch(url);
+              return fetch(url, options.fetchOptions);
 
             case 7:
               response = _context2.sent;
@@ -648,6 +658,16 @@ function createQueryAction(endpoint, responseAction, errorAction, options) {
       return _ref3.apply(this, arguments);
     };
   }();
+}
+
+function createGraphQLQueryAction(query, variables, responseAction, errorAction, options) {
+  var endpoint = 'index/graphql';
+  var fetchOptions = {
+    method: 'POST',
+    body: (0, _stringify2.default)({ query: query, variables: variables }),
+    headers: { 'Content-Type': 'application/json' }
+  };
+  return createQueryAction(endpoint, responseAction, errorAction, (0, _extends3.default)({}, options, { fetchOptions: fetchOptions }));
 }
 
 //# sourceMappingURL=api.js

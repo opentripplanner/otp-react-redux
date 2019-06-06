@@ -9,6 +9,10 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
+var _assign = require('babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
+
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -37,6 +41,8 @@ var _server = require('react-dom/server');
 
 var _server2 = _interopRequireDefault(_server);
 
+var _reactBootstrap = require('react-bootstrap');
+
 var _reactLeaflet = require('react-leaflet');
 
 var _leaflet = require('leaflet');
@@ -63,7 +69,27 @@ var Endpoint = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Endpoint.__proto__ || (0, _getPrototypeOf2.default)(Endpoint)).call.apply(_ref, [this].concat(args))), _this), _this._onDragEnd = function (e) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Endpoint.__proto__ || (0, _getPrototypeOf2.default)(Endpoint)).call.apply(_ref, [this].concat(args))), _this), _this._rememberAsHome = function () {
+      var rememberPlace = _this.props.rememberPlace;
+
+      var location = (0, _assign2.default)({}, _this.props.location);
+      location.id = 'home';
+      location.name = 'Home (' + location.name + ')';
+      location.icon = 'home';
+      location.forgettable = true;
+      location.type = 'home';
+      rememberPlace({ type: 'home', location: location });
+    }, _this._rememberAsWork = function () {
+      var rememberPlace = _this.props.rememberPlace;
+
+      var location = (0, _assign2.default)({}, _this.props.location);
+      location.id = 'work';
+      location.name = 'Work (' + location.name + ')';
+      location.icon = 'briefcase';
+      location.forgettable = true;
+      location.type = 'work';
+      rememberPlace({ type: 'work', location: location });
+    }, _this._onDragEnd = function (e) {
       var _this$props = _this.props,
           setLocation = _this$props.setLocation,
           type = _this$props.type;
@@ -98,12 +124,32 @@ var Endpoint = function (_Component) {
         _react2.default.createElement(_locationIcon2.default, { type: type, className: 'fa-stack-1x', style: fgStyle })
       ));
 
-      return _react2.default.createElement(_reactLeaflet.Marker, {
-        draggable: true,
-        icon: (0, _leaflet.divIcon)({ html: iconHtml, className: '' }),
-        position: position,
-        onDragEnd: this._onDragEnd
-      });
+      return _react2.default.createElement(
+        _reactLeaflet.Marker,
+        {
+          draggable: true,
+          icon: (0, _leaflet.divIcon)({ html: iconHtml, className: '' }),
+          position: position,
+          onDragEnd: this._onDragEnd },
+        _react2.default.createElement(
+          _reactLeaflet.Popup,
+          null,
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Button,
+              { onClick: this._rememberAsHome },
+              'Set as home'
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.Button,
+              { onClick: this._rememberAsWork },
+              'Set as work'
+            )
+          )
+        )
+      );
     }
   }]);
   return Endpoint;

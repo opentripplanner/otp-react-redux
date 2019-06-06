@@ -89,8 +89,8 @@ var PlaceRow = function (_Component) {
           place = _props.place,
           time = _props.time,
           timeOptions = _props.timeOptions,
-          followsTransit = _props.followsTransit;
-
+          followsTransit = _props.followsTransit,
+          previousLeg = _props.previousLeg;
 
       var stackIcon = function stackIcon(name, color, size) {
         return _react2.default.createElement('i', { className: 'fa fa-' + name + ' fa-stack-1x', style: { color: color, fontSize: size + 'px' } });
@@ -124,7 +124,8 @@ var PlaceRow = function (_Component) {
       }
 
       var interline = leg && leg.interlineWithPreviousLeg;
-
+      var changeVehicles = previousLeg && previousLeg.to.stopId === leg.from.stopId && (0, _itinerary.isTransit)(previousLeg.mode) && (0, _itinerary.isTransit)(leg.mode);
+      var special = interline || changeVehicles;
       return _react2.default.createElement(
         'div',
         { className: 'place-row', key: this.rowKey++ },
@@ -140,13 +141,13 @@ var PlaceRow = function (_Component) {
           _react2.default.createElement(
             'div',
             null,
-            !interline && icon
+            !special && icon
           )
         ),
         _react2.default.createElement(
           'div',
           { className: 'place-details' },
-          interline && _react2.default.createElement(
+          special && _react2.default.createElement(
             'div',
             { className: 'interline-dot' },
             '\u2022'
@@ -163,13 +164,22 @@ var PlaceRow = function (_Component) {
                 null,
                 place.name
               )
+            ) : changeVehicles ? _react2.default.createElement(
+              'div',
+              { className: 'interline-name' },
+              'Change Vehicles at ',
+              _react2.default.createElement(
+                'b',
+                null,
+                place.name
+              )
             ) : _react2.default.createElement(
               'div',
               null,
               (0, _itinerary.getPlaceName)(place)
             )
           ),
-          place.stopId && !interline && _react2.default.createElement(
+          place.stopId && !special && _react2.default.createElement(
             'div',
             { className: 'place-subheader' },
             _react2.default.createElement(

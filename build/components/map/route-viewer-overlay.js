@@ -8,6 +8,10 @@ var _values = require('babel-runtime/core-js/object/values');
 
 var _values2 = _interopRequireDefault(_values);
 
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -44,6 +48,10 @@ var _polyline2 = _interopRequireDefault(_polyline);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function geomToArray(point) {
+  return [point.lat, point.lon];
+}
+
 var RouteViewerOverlay = (_temp = _class = function (_MapLayer) {
   (0, _inherits3.default)(RouteViewerOverlay, _MapLayer);
 
@@ -64,17 +72,11 @@ var RouteViewerOverlay = (_temp = _class = function (_MapLayer) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      // helper fn to check if geometry has been populated for all patterns in route
-      var isGeomComplete = function isGeomComplete(routeData) {
-        return routeData && routeData.patterns && (0, _values2.default)(routeData.patterns).reduce(function (acc, ptn) {
-          return acc && typeof ptn.geometry !== 'undefined';
-        }, true);
-      };
-
+      console.log(nextProps);
       // if pattern geometry just finished populating, update the map points
-      if (!isGeomComplete(this.props.routeData) && isGeomComplete(nextProps.routeData)) {
+      if (nextProps.routeData && nextProps.routeData.patterns && (0, _keys2.default)(nextProps.routeData.patterns).length > 0) {
         var allPoints = (0, _values2.default)(nextProps.routeData.patterns).reduce(function (acc, ptn) {
-          return acc.concat(_polyline2.default.decode(ptn.geometry.points));
+          return acc.concat(ptn.geometry.map(geomToArray));
         }, []);
         this.context.map.fitBounds(allPoints);
       }
@@ -97,13 +99,13 @@ var RouteViewerOverlay = (_temp = _class = function (_MapLayer) {
       var segments = [];
       (0, _values2.default)(routeData.patterns).forEach(function (pattern) {
         if (!pattern.geometry) return;
-        var pts = _polyline2.default.decode(pattern.geometry.points);
+        var pts = pattern.geometry.map(geomToArray);
         segments.push(_react2.default.createElement(_reactLeaflet.Polyline, {
           positions: pts,
           weight: 4,
           color: routeColor,
           opacity: 1,
-          key: pattern.id
+          key: pattern.patternId
         }));
       });
 

@@ -34,12 +34,6 @@ var _reactBootstrap = require('react-bootstrap');
 
 var _reactRedux = require('react-redux');
 
-var _itinerary = require('../../util/itinerary');
-
-var _queryParams = require('../../util/query-params');
-
-var _queryParams2 = _interopRequireDefault(_queryParams);
-
 var _query = require('../../util/query');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -60,34 +54,9 @@ var SettingsPreview = (_temp = _class = function (_Component) {
           query = _props.query,
           caret = _props.caret,
           editButtonText = _props.editButtonText;
+      // Show dot indicator if the current query differs from the default query.
 
-
-      var activeModes = query.mode.split(',');
-      var defaultModes = (0, _itinerary.getTransitModes)(config).concat(['WALK']);
-
-      var showDot = false;
-      var modesEqual = activeModes.length === defaultModes.length && activeModes.sort().every(function (value, index) {
-        return value === defaultModes.sort()[index];
-      });
-
-      if (!modesEqual) showDot = true;else {
-        _query.defaultParams.forEach(function (param) {
-          var paramInfo = _queryParams2.default.find(function (qp) {
-            return qp.name === param;
-          });
-          // Check that the parameter applies to the specified routingType
-          if (!paramInfo.routingTypes.includes(query.routingType)) return;
-
-          // Check that the applicability test (if provided) is satisfied
-          if (typeof paramInfo.applicable === 'function' && !paramInfo.applicable(query, config)) return;
-
-          if (query[param] !== paramInfo.default) {
-            showDot = true;
-            return;
-          }
-        });
-      }
-
+      var showDot = (0, _query.isNotDefaultQuery)(query, config);
       var button = _react2.default.createElement(
         'div',
         { className: 'button-container' },

@@ -33,6 +33,8 @@ exports.getLegBounds = getLegBounds;
 exports.routeComparator = routeComparator;
 exports.legLocationAtDistance = legLocationAtDistance;
 exports.legElevationAtDistance = legElevationAtDistance;
+exports.getElevationProfile = getElevationProfile;
+exports.getTextWidth = getTextWidth;
 exports.toSentenceCase = toSentenceCase;
 exports.getLegMode = getLegMode;
 exports.getPlaceName = getPlaceName;
@@ -66,7 +68,7 @@ var transitModes = exports.transitModes = ['TRAM', 'BUS', 'SUBWAY', 'FERRY', 'RA
 
 /**
  * @param  {config} config OTP-RR configuration object
- * @return {array}  List of all transit modes defined in config; otherwise default mode list
+ * @return {Array}  List of all transit modes defined in config; otherwise default mode list
  */
 
 function getTransitModes(config) {
@@ -348,40 +350,93 @@ function legLocationAtDistance(leg, distance) {
 
 /* Returns an interpolated elevation at a specified distance along a leg */
 
-function legElevationAtDistance(leg, distance) {
-  // Iterate through the leg steps, constructing a combined profile for this leg
-  var traversed = 0;
-  var ptArray = [];
-  for (var si = 0; si < leg.steps.length; si++) {
-    var step = leg.steps[si];
-    if (step.elevation && step.elevation.length > 0) {
-      for (var ei = 0; ei < step.elevation.length; ei++) {
-        var elevItem = step.elevation[ei];
-        if (elevItem.first > step.length) continue;
-        ptArray.push({
-          first: traversed + elevItem.first,
-          second: elevItem.second
-        });
-      }
-    }
-    traversed += step.distance;
-  }
-
+function legElevationAtDistance(points, distance) {
   // Iterate through the combined elevation profile
-  traversed = 0;
-  for (var i = 1; i < ptArray.length; i++) {
-    var elevDistanceSpan = ptArray[i].first - ptArray[i - 1].first;
+  var traversed = 0;
+  // If first point distance is not zero, insert starting point at zero with
+  // null elevation. Encountering this value should trigger the warning below.
+  if (points[0][0] > 0) {
+    points.unshift([0, null]);
+  }
+  for (var i = 1; i < points.length; i++) {
+    var start = points[i - 1];
+    var elevDistanceSpan = points[i][0] - start[0];
     if (distance >= traversed && distance <= traversed + elevDistanceSpan) {
       // Distance falls within this point and the previous one;
       // compute & return iterpolated elevation value
+      if (start[1] === null) {
+        console.warn('Elevation value does not exist for distance.', distance, traversed);
+        return null;
+      }
       var pct = (distance - traversed) / elevDistanceSpan;
-      var elevSpan = ptArray[i].second - ptArray[i - 1].second;
-      return ptArray[i - 1].second + elevSpan * pct;
+      var elevSpan = points[i][1] - start[1];
+      return start[1] + elevSpan * pct;
     }
     traversed += elevDistanceSpan;
   }
-
+  console.warn('Elevation value does not exist for distance.', distance, traversed);
   return null;
+}
+
+// Iterate through the steps, building the array of elevation points and
+// keeping track of the minimum and maximum elevations reached
+function getElevationProfile(steps) {
+  var unitConversion = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+  var minElev = 100000;
+  var maxElev = -100000;
+  var traversed = 0;
+  var gain = 0;
+  var loss = 0;
+  var previous = null;
+  var points = [];
+  steps.forEach(function (step, stepIndex) {
+    if (!step.elevation || step.elevation.length === 0) {
+      traversed += step.distance;
+      return;
+    }
+    for (var i = 0; i < step.elevation.length; i++) {
+      var elev = step.elevation[i];
+      if (previous) {
+        var diff = (elev.second - previous.second) * unitConversion;
+        if (diff > 0) gain += diff;else loss += diff;
+      }
+      if (i === 0 && elev.first !== 0) {
+        // console.warn(`No elevation data available for step ${stepIndex}-${i} at beginning of segment`, elev)
+      }
+      var convertedElevation = elev.second * unitConversion;
+      if (convertedElevation < minElev) minElev = convertedElevation;
+      if (convertedElevation > maxElev) maxElev = convertedElevation;
+      points.push([traversed + elev.first, elev.second]);
+      // Insert "filler" point if the last point in elevation profile does not
+      // reach the full distance of the step.
+      if (i === step.elevation.length - 1 && elev.first !== step.distance) {
+        // points.push([traversed + step.distance, elev.second])
+      }
+      previous = elev;
+    }
+    traversed += step.distance;
+  });
+  return { maxElev: maxElev, minElev: minElev, points: points, traversed: traversed, gain: gain, loss: loss };
+}
+
+/**
+ * Uses canvas.measureText to compute and return the width of the given text of given font in pixels.
+ *
+ * @param {string} text The text to be rendered.
+ * @param {string} font The css font descriptor that text is to be rendered with (e.g. "bold 14px verdana").
+ *
+ * @see https://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/21015393#21015393
+ */
+function getTextWidth(text) {
+  var font = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '22px Arial';
+
+  // re-use canvas object for better performance
+  var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement('canvas'));
+  var context = canvas.getContext('2d');
+  context.font = font;
+  var metrics = context.measureText(text);
+  return metrics.width;
 }
 
 function toSentenceCase(str) {

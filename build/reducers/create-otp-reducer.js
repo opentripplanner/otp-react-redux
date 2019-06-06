@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
 var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
@@ -11,6 +15,14 @@ var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 var _keys = require('babel-runtime/core-js/object/keys');
 
 var _keys2 = _interopRequireDefault(_keys);
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
 var _assign = require('babel-runtime/core-js/object/assign');
 
@@ -24,9 +36,9 @@ var _immutabilityHelper = require('immutability-helper');
 
 var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
-var _queryParams = require('../util/query-params');
+var _lodash = require('lodash.isequal');
 
-var _queryParams2 = _interopRequireDefault(_queryParams);
+var _lodash2 = _interopRequireDefault(_lodash);
 
 var _query = require('../util/query');
 
@@ -41,16 +53,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var defaultConfig = {
   autoPlan: false,
   debouncePlanTimeMs: 0,
-  realtimeEffectsDisplayThreshold: 120
+  realtimeEffectsDisplayThreshold: 120,
+  operators: []
 
-  // construct the initial/default query
-};var defaultQuery = { routingType: 'ITINERARY' };
-_queryParams2.default.filter(function (qp) {
-  return 'default' in qp;
-}).forEach(function (qp) {
-  defaultQuery[qp.name] = qp.default;
+  // Load user override settings from local storage.
+  // TODO: Make this work with settings fetched from user profile API service.
+};var options = (0, _query.getJSONFromStorage)('otp.defaultQuery');
+var defaultQuery = (0, _assign2.default)((0, _query.getDefaultQuery)(), options);
+var home = (0, _query.getJSONFromStorage)('otp.home', true);
+var work = (0, _query.getJSONFromStorage)('otp.work', true);
+var trackRecent = (0, _query.getJSONFromStorage)('otp.trackRecent', true) || false;
+var recentPlaces = (0, _query.getJSONFromStorage)('otp.recent', true) || [];
+var recentSearches = (0, _query.getJSONFromStorage)('otp.recentSearches', true) || [];
+var locations = [home, work].concat((0, _toConsumableArray3.default)(recentPlaces)).filter(function (p) {
+  return p;
 });
-
 // TODO: parse and merge URL query params w/ default query
 
 // TODO: fire planTrip action if default query is complete/error-free
@@ -58,7 +75,11 @@ _queryParams2.default.filter(function (qp) {
 function createOtpReducer(config, initialQuery) {
   // populate query by merging any provided query params w/ the default params
   var currentQuery = (0, _assign2.default)(defaultQuery, initialQuery);
-
+  if (config.locations) {
+    locations.push.apply(locations, (0, _toConsumableArray3.default)(config.locations.map(function (l) {
+      return (0, _extends3.default)({}, l, { type: 'suggested' });
+    })));
+  }
   var queryModes = currentQuery.mode.split(',');
 
   // If 'TRANSIT' is included in the mode list, replace it with individual modes
@@ -89,6 +110,11 @@ function createOtpReducer(config, initialQuery) {
       },
       sessionSearches: [],
       nearbyStops: []
+    },
+    user: {
+      trackRecent: trackRecent,
+      locations: locations,
+      recentSearches: recentSearches
     },
     searches: {},
     transitIndex: {
@@ -282,7 +308,129 @@ function createOtpReducer(config, initialQuery) {
 
       case 'CLEAR_ACTIVE_SEARCH':
         return (0, _immutabilityHelper2.default)(state, { activeSearchId: { $set: null } });
+      case 'CLEAR_DEFAULT_SETTINGS':
+        window.localStorage.removeItem('otp.defaultQuery');
+        return (0, _immutabilityHelper2.default)(state, { defaults: { $set: null } });
+      case 'STORE_DEFAULT_SETTINGS':
+        window.localStorage.setItem('otp.defaultQuery', (0, _stringify2.default)(action.payload));
+        return (0, _immutabilityHelper2.default)(state, { defaults: { $set: action.payload } });
+      case 'FORGET_PLACE':
+        {
+          var _locations = (0, _clone2.default)(state.user.locations);
+          var locationIndex = _locations.findIndex(function (l) {
+            return l.id === action.payload;
+          });
+          if (action.payload.indexOf('recent') !== -1) {
+            // Remove recent from list of recent places
+            var _recentPlaces = _locations.filter(function (l) {
+              return l.type === 'recent';
+            });
+            var removeIndex = _recentPlaces.findIndex(function (l) {
+              return l.id === action.payload;
+            });
+            _recentPlaces.splice(removeIndex, 1);
+            window.localStorage.setItem('otp.recent', (0, _stringify2.default)(_recentPlaces));
+          } else {
+            window.localStorage.removeItem('otp.' + action.payload);
+          }
+          return locationIndex !== -1 ? (0, _immutabilityHelper2.default)(state, { user: { locations: { $splice: [[locationIndex, 1]] } } }) : state;
+        }
+      case 'TOGGLE_TRACKING':
+        {
+          window.localStorage.setItem('otp.trackRecent', (0, _stringify2.default)(action.payload));
+          var _locations2 = (0, _clone2.default)(state.user.locations);
+          if (!action.payload) {
+            // If user disables tracking, remove recent searches and locations.
+            _locations2 = _locations2.filter(function (l) {
+              return l.type !== 'recent';
+            });
+            window.localStorage.removeItem('otp.recent');
+            window.localStorage.removeItem('otp.recentSearches');
+          }
+          return (0, _immutabilityHelper2.default)(state, { user: {
+              trackRecent: { $set: action.payload },
+              locations: { $set: _locations2 },
+              recentSearches: { $set: [] }
+            } });
+        }
+      case 'REMEMBER_PLACE':
+        {
+          var _action$payload = action.payload,
+              location = _action$payload.location,
+              type = _action$payload.type;
 
+          var _locations3 = (0, _clone2.default)(state.user.locations);
+          var _duplicateIndex = _locations3.findIndex(function (l) {
+            return l.lat === location.lat && l.lon === location.lon;
+          });
+          var locationsUpdate = void 0;
+          if (location.type === 'recent') {
+            var firstIndex = -1;
+            var lastIndex = -1;
+            _locations3.forEach(function (l, i) {
+              if (l.type === 'recent') {
+                if (firstIndex === -1) firstIndex = i;else lastIndex = i;
+              }
+            });
+            var _recentPlaces2 = _locations3.filter(function (l) {
+              return l.type === 'recent';
+            });
+            if (_duplicateIndex !== -1) {
+              // If duplicate index found for a recent place, do not store recent
+              // place (no state change)
+              return state;
+            }
+            // Only keep up to 5 recent locations
+            // FIXME: Check for duplicates
+            if (_recentPlaces2.length >= 5) {
+              _recentPlaces2.splice(lastIndex, 1, location);
+              locationsUpdate = { $splice: [[lastIndex, 1, location]] };
+            } else {
+              _recentPlaces2.push(location);
+              locationsUpdate = { $push: [location] };
+            }
+            window.localStorage.setItem('otp.recent', (0, _stringify2.default)(_recentPlaces2));
+          } else {
+            if (_duplicateIndex !== -1) {}
+            // If a duplicate place was found for a home/work location, that's
+            // not a problem
+
+            // Determine if location type already exists in list
+            var index = _locations3.findIndex(function (l) {
+              return l.type === type;
+            });
+            if (index !== -1) {
+              locationsUpdate = { $splice: [[index, 1, location]] };
+            } else {
+              locationsUpdate = { $push: [location] };
+            }
+            window.localStorage.setItem('otp.' + type, (0, _stringify2.default)(location));
+          }
+          return (0, _immutabilityHelper2.default)(state, { user: { locations: locationsUpdate } });
+        }
+      case 'REMEMBER_SEARCH':
+        var searches = (0, _clone2.default)(state.user.recentSearches);
+        var duplicateIndex = searches.findIndex(function (s) {
+          return (0, _lodash2.default)(s.query, action.payload.query);
+        });
+        // Do not store a duplicate search
+        if (duplicateIndex !== -1) {
+          return state;
+        }
+        searches.push(action.payload);
+        window.localStorage.setItem('otp.recentSearches', (0, _stringify2.default)(searches));
+        return (0, _immutabilityHelper2.default)(state, { user: { searches: { $set: searches } } });
+      case 'FORGET_SEARCH':
+        {
+          var _recentSearches = (0, _clone2.default)(state.user.recentSearches);
+          var _index = _recentSearches.findIndex(function (l) {
+            return l.id === action.payload;
+          });
+          // Remove item from list of recent searches
+          _recentSearches.splice(_index, 1);
+          window.localStorage.setItem('otp.recentSearches', (0, _stringify2.default)(_recentSearches));
+          return _index !== -1 ? (0, _immutabilityHelper2.default)(state, { user: { recentSearches: { $splice: [[_index, 1]] } } }) : state;
+        }
       case 'SET_AUTOPLAN':
         return (0, _immutabilityHelper2.default)(state, {
           config: { autoPlan: { $set: action.payload.autoPlan } }
@@ -515,10 +663,10 @@ function createOtpReducer(config, initialQuery) {
           tnc: {
             rideEstimates: (0, _defineProperty3.default)({}, action.payload.from, function (fromData) {
               fromData = (0, _assign2.default)({}, fromData);
-              var _action$payload = action.payload,
-                  company = _action$payload.company,
-                  rideEstimate = _action$payload.rideEstimate,
-                  to = _action$payload.to;
+              var _action$payload2 = action.payload,
+                  company = _action$payload2.company,
+                  rideEstimate = _action$payload2.rideEstimate,
+                  to = _action$payload2.to;
 
               if (!rideEstimate) {
                 return fromData;

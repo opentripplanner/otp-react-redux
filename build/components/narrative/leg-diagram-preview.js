@@ -40,7 +40,11 @@ var _reactResizeDetector2 = _interopRequireDefault(_reactResizeDetector);
 
 var _map = require('../../actions/map');
 
+var _itinerary = require('../../util/itinerary');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var METERS_TO_FEET = 3.28084;
 
 var LegDiagramPreview = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(LegDiagramPreview, _Component);
@@ -56,44 +60,85 @@ var LegDiagramPreview = (_temp = _class = function (_Component) {
       }
     };
 
+    _this._isActive = function () {
+      var _this$props = _this.props,
+          diagramVisible = _this$props.diagramVisible,
+          leg = _this$props.leg;
+
+      return diagramVisible && diagramVisible.startTime === leg.startTime;
+    };
+
     _this._onExpandClick = function () {
-      _this.props.showLegDiagram(_this.props.leg);
+      var _this$props2 = _this.props,
+          diagramVisible = _this$props2.diagramVisible,
+          leg = _this$props2.leg,
+          showLegDiagram = _this$props2.showLegDiagram;
+
+      if (_this._isActive()) showLegDiagram(null);else showLegDiagram(leg);
+    };
+
+    _this._formatElevation = function (elev) {
+      return Math.round(elev) + '\'';
     };
 
     _this.state = { width: null };
     return _this;
   }
 
+  /**
+   * Determine if the diagram currently visible is for this leg (based on start
+   * time).
+   */
+
+
+  /** Round elevation to whole number and add symbol. */
+
+
   (0, _createClass3.default)(LegDiagramPreview, [{
     key: 'render',
     value: function render() {
-      var leg = this.props.leg;
+      var _props = this.props,
+          diagramVisible = _props.diagramVisible,
+          leg = _props.leg,
+          showElevationProfile = _props.showElevationProfile;
 
+      if (!showElevationProfile) return null;
+      var profile = (0, _itinerary.getElevationProfile)(leg.steps);
       // Don't show for very short legs
-
       if (leg.distance < 500 || leg.mode === 'CAR') return null;
 
       return _react2.default.createElement(
         'div',
-        { className: 'leg-diagram-preview' },
+        { className: 'leg-diagram-preview ' + (this._isActive() ? 'on' : '') },
         _react2.default.createElement(
           'div',
-          { className: 'diagram' },
-          generateSvg(leg.steps, this.state.width),
-          _react2.default.createElement(_reactResizeDetector2.default, { handleWidth: true, onResize: this._onResize })
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'expand-button-container' },
+          {
+            className: 'diagram',
+            tabIndex: '0',
+            title: 'Toggle elevation chart',
+            role: 'button',
+            onClick: this._onExpandClick },
           _react2.default.createElement(
-            _reactBootstrap.Button,
-            {
-              className: 'expand-button',
-              bsSize: 'xsmall',
-              onClick: this._onExpandClick
-            },
-            _react2.default.createElement('i', { className: 'fa fa-expand' })
-          )
+            'div',
+            { className: 'diagram-title text-center' },
+            'Elevation chart',
+            ' ',
+            _react2.default.createElement(
+              'span',
+              { style: { fontSize: 'xx-small', color: 'red' } },
+              '\u2191',
+              this._formatElevation(profile.gain * METERS_TO_FEET),
+              '  '
+            ),
+            _react2.default.createElement(
+              'span',
+              { style: { fontSize: 'xx-small', color: 'green' } },
+              '\u2193',
+              this._formatElevation(-profile.loss * METERS_TO_FEET)
+            )
+          ),
+          profile.points.length > 0 ? generateSvg(profile, this.state.width) : 'No elevation data available.',
+          _react2.default.createElement(_reactResizeDetector2.default, { handleWidth: true, onResize: this._onResize })
         )
       );
     }
@@ -104,30 +149,14 @@ var LegDiagramPreview = (_temp = _class = function (_Component) {
 }, _temp);
 
 
-function generateSvg(steps, width) {
+function generateSvg(profile, width) {
   var height = 30;
-  var minElev = 100000;
-  var maxElev = -100000;
-  var traversed = 0;
-  var ptArr = [];
-
-  // Iterate through the steps, building the array of elevation points and
-  // keeping track of the minimum and maximum elevations reached
-  steps.forEach(function (step) {
-    if (!step.elevation || step.elevation.length === 0) {
-      traversed += step.distance;
-      return;
-    }
-    for (var i = 0; i < step.elevation.length; i++) {
-      var elev = step.elevation[i];
-      if (elev.second < minElev) minElev = elev.second;
-      if (elev.second > maxElev) maxElev = elev.second;
-      ptArr.push([traversed + elev.first, elev.second]);
-    }
-    traversed += step.distance;
-  });
-
+  var minElev = profile.minElev,
+      maxElev = profile.maxElev,
+      ptArr = profile.points,
+      traversed = profile.traversed;
   // Pad the min-max range by 25m on either side
+
   minElev -= 25;
   maxElev += 25;
 
@@ -146,7 +175,7 @@ function generateSvg(steps, width) {
       points: pts,
       fill: 'none',
       stroke: 'black',
-      strokeWidth: 2
+      strokeWidth: 1.3
     })
   );
 }
@@ -154,7 +183,10 @@ function generateSvg(steps, width) {
 // Connect to the redux store
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    diagramVisible: state.otp.ui.diagramLeg,
+    showElevationProfile: Boolean(state.otp.config.elevationProfile)
+  };
 };
 
 var mapDispatchToProps = {

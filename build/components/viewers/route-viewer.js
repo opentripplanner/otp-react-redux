@@ -60,6 +60,19 @@ var _itinerary = require('../../util/itinerary');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function operatorForRoute(operators, route) {
+  return operators.find(function (o) {
+    return o.id.toLowerCase() === route.agency.id.split(':')[0].toLowerCase();
+  });
+}
+
+function operatorIndexForRoute(operators, route) {
+  var index = operators.findIndex(function (o) {
+    return o.id.toLowerCase() === route.agency.id.split(':')[0].toLowerCase();
+  });
+  if (index !== -1 && typeof operators[index].order !== 'undefined') return operators[index].order;else return 0;
+}
+
 var RouteViewer = (_temp2 = _class = function (_Component) {
   (0, _inherits3.default)(RouteViewer, _Component);
 
@@ -97,11 +110,18 @@ var RouteViewer = (_temp2 = _class = function (_Component) {
       var _this2 = this;
 
       var _props = this.props,
+          operators = _props.operators,
           routes = _props.routes,
           hideBackButton = _props.hideBackButton,
           languageConfig = _props.languageConfig;
 
-
+      var sortedRoutes = routes ? (0, _values2.default)(routes).sort(_itinerary.routeComparator) : [];
+      var agencySortedRoutes = operators.length > 0 ? sortedRoutes.sort(function (a, b) {
+        var aOperator = operatorIndexForRoute(operators, a);
+        var bOperator = operatorIndexForRoute(operators, b);
+        if (aOperator - bOperator > 0) return 1;
+        if (aOperator - bOperator < 0) return -1;else return 0;
+      }) : sortedRoutes;
       return _react2.default.createElement(
         'div',
         { className: 'route-viewer' },
@@ -126,13 +146,24 @@ var RouteViewer = (_temp2 = _class = function (_Component) {
             { className: 'header-text' },
             languageConfig.routeViewer || 'Route Viewer'
           ),
+          _react2.default.createElement(
+            'div',
+            { className: '' },
+            languageConfig.routeViewerDetails
+          ),
           _react2.default.createElement('div', { style: { clear: 'both' } })
         ),
         _react2.default.createElement(
           'div',
           { className: 'route-viewer-body' },
-          routes && (0, _values2.default)(routes).sort(_itinerary.routeComparator).map(function (route) {
-            return _react2.default.createElement(RouteRow, (0, _extends3.default)({ key: route.id, route: route }, _this2.props));
+          agencySortedRoutes.map(function (route) {
+            // Find operator based on agency_id (extracted from OTP route ID).
+            var operator = operatorForRoute(operators, route) || {};
+            return _react2.default.createElement(RouteRow, (0, _extends3.default)({
+              key: route.id,
+              operator: operator,
+              route: route
+            }, _this2.props));
           })
         )
       );
@@ -158,14 +189,26 @@ var RouteRow = function (_Component2) {
       args[_key2] = arguments[_key2];
     }
 
-    return _ret2 = (_temp3 = (_this3 = (0, _possibleConstructorReturn3.default)(this, (_ref2 = RouteRow.__proto__ || (0, _getPrototypeOf2.default)(RouteRow)).call.apply(_ref2, [this].concat(args))), _this3), _this3._onClick = function () {
+    return _ret2 = (_temp3 = (_this3 = (0, _possibleConstructorReturn3.default)(this, (_ref2 = RouteRow.__proto__ || (0, _getPrototypeOf2.default)(RouteRow)).call.apply(_ref2, [this].concat(args))), _this3), _this3.isActiveRoute = function () {
       var _this3$props = _this3.props,
           route = _this3$props.route,
-          findRoute = _this3$props.findRoute,
-          setViewedRoute = _this3$props.setViewedRoute;
+          viewedRoute = _this3$props.viewedRoute;
 
-      findRoute({ routeId: route.id });
-      setViewedRoute({ routeId: route.id });
+      return viewedRoute && viewedRoute.routeId === route.id;
+    }, _this3._onClick = function () {
+      var _this3$props2 = _this3.props,
+          route = _this3$props2.route,
+          findRoute = _this3$props2.findRoute,
+          setViewedRoute = _this3$props2.setViewedRoute;
+
+      if (_this3.isActiveRoute()) {
+        // Deselect current route if active.
+        setViewedRoute({ routeId: null });
+      } else {
+        // Otherwise, set active and fetch route patterns.
+        findRoute({ routeId: route.id });
+        setViewedRoute({ routeId: route.id });
+      }
     }, _temp3), (0, _possibleConstructorReturn3.default)(_this3, _ret2);
   }
 
@@ -173,43 +216,70 @@ var RouteRow = function (_Component2) {
     key: 'render',
     value: function render() {
       var _props2 = this.props,
+          operator = _props2.operator,
           route = _props2.route,
           routes = _props2.routes,
           viewedRoute = _props2.viewedRoute;
 
-      var isActiveRoute = viewedRoute && viewedRoute.routeId === route.id;
-      var activeRouteData = void 0;
-      if (isActiveRoute) {
-        activeRouteData = routes[viewedRoute.routeId];
-      }
+      var isActive = this.isActiveRoute();
+      var defaultRouteColor = operator.defaultRouteColor,
+          defaultRouteTextColor = operator.defaultRouteTextColor,
+          longNameSplitter = operator.longNameSplitter;
 
+      var activeRouteData = isActive ? routes[viewedRoute.routeId] : null;
+      var color = '#' + (defaultRouteTextColor || route.textColor || '000000');
+      var backgroundColor = '#' + (defaultRouteColor || route.color || 'ffffff');
+      var longName = longNameSplitter && route.longName && route.longName.split(longNameSplitter).length > 1 ? route.longName.split(longNameSplitter)[1] : route.longName;
       return _react2.default.createElement(
         'div',
-        { style: { borderBottom: '1px solid gray' }, key: route.id },
+        {
+          style: {
+            borderBottom: '1px solid gray',
+            backgroundColor: isActive ? '#f6f8fa' : 'white'
+          } },
         _react2.default.createElement(
           _reactBootstrap.Button,
-          { className: 'clear-button-formatting', style: { padding: 8 },
+          { className: 'clear-button-formatting', style: { padding: 8, width: '100%' },
             onClick: this._onClick
           },
           _react2.default.createElement(
-            'b',
-            null,
-            route.shortName
+            'div',
+            { style: { display: 'inline-block' } },
+            operator && _react2.default.createElement('img', { src: operator.logo, style: { marginRight: '5px' }, height: 25 })
           ),
-          ' ',
-          route.longName
+          _react2.default.createElement(
+            'div',
+            { style: { display: 'inline-block', marginTop: '2px' } },
+            _react2.default.createElement(
+              _reactBootstrap.Label,
+              {
+                style: {
+                  backgroundColor: backgroundColor === '#ffffff' ? 'rgba(0,0,0,0)' : backgroundColor,
+                  fontSize: 'medium',
+                  fontWeight: 400,
+                  color: color
+                } },
+              _react2.default.createElement(
+                'b',
+                null,
+                route.shortName
+              ),
+              ' ',
+              longName
+            )
+          )
         ),
         _react2.default.createElement(
           _velocityReact.VelocityTransitionGroup,
           { enter: { animation: 'slideDown' }, leave: { animation: 'slideUp' } },
-          isActiveRoute && _react2.default.createElement(
+          isActive && _react2.default.createElement(
             'div',
             { style: { padding: 8 } },
-            activeRouteData.url && _react2.default.createElement(
+            activeRouteData.url ? _react2.default.createElement(
               'a',
               { href: activeRouteData.url, target: '_blank' },
               'Route Details'
-            )
+            ) : 'No route URL provided.'
           )
         )
       );
@@ -221,6 +291,7 @@ var RouteRow = function (_Component2) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
+    operators: state.otp.config.operators,
     routes: state.otp.transitIndex.routes,
     viewedRoute: state.otp.ui.viewedRoute,
     languageConfig: state.otp.config.language

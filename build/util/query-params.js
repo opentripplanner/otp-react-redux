@@ -12,9 +12,11 @@ var _getIterator2 = require('babel-runtime/core-js/get-iterator');
 
 var _getIterator3 = _interopRequireDefault(_getIterator2);
 
-var _time = require('../util/time');
+var _query = require('./query');
 
-var _itinerary = require('../util/itinerary');
+var _time = require('./time');
+
+var _itinerary = require('./itinerary');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60,6 +62,9 @@ var formatPlace = function formatPlace(location, alternateName) {
   var name = location.name || (alternateName || 'Place') + ' (' + location.lat + ',' + location.lon + ')';
   return name + '::' + location.lat + ',' + location.lon;
 };
+
+// Load stored default query settings from local storage
+var storedSettings = (0, _query.getJSONFromStorage)('otp.defaultQuery');
 
 var queryParams = [{ /* from - the trip origin. stored internally as a location (lat/lon/name) object  */
   name: 'from',
@@ -432,6 +437,14 @@ var queryParams = [{ /* from - the trip origin. stored internally as a location 
     }
   }
 }];
+// Iterate over stored settings and update query param defaults.
+// FIXME: this does not get updated if the user defaults are cleared
+queryParams.forEach(function (param) {
+  if (param.name in storedSettings) {
+    param.default = storedSettings[param.name];
+    param.userDefaultOverride = true;
+  }
+});
 
 exports.default = queryParams;
 module.exports = exports['default'];

@@ -26,6 +26,10 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class, _temp;
 
+var _lodash = require('lodash.memoize');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -34,11 +38,23 @@ var _reactBootstrap = require('react-bootstrap');
 
 var _reactRedux = require('react-redux');
 
+var _reactResizeDetector = require('react-resize-detector');
+
+var _reactResizeDetector2 = _interopRequireDefault(_reactResizeDetector);
+
 var _map = require('../../actions/map');
 
 var _itinerary = require('../../util/itinerary');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Fixed dimensions for chart
+var height = 160;
+var yAxisPanelWidth = 40; // width of y axis labels
+var BASELINE_Y = height - 20;
+var topElevYPx = 20;
+var bottomElevYPx = height - 40;
+var elevHeight = bottomElevYPx - topElevYPx;
 
 var METERS_TO_FEET = 3.28084;
 
@@ -49,6 +65,22 @@ var LegDiagram = (_temp = _class = function (_Component) {
     (0, _classCallCheck3.default)(this, LegDiagram);
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (LegDiagram.__proto__ || (0, _getPrototypeOf2.default)(LegDiagram)).call(this, props));
+
+    _this._determineCompressionFactor = function (width, leg) {
+      var _this$_getElevationPr = _this._getElevationProfile(leg),
+          traversed = _this$_getElevationPr.traversed;
+
+      if (traversed > 0) {
+        // Determine the appropriate compression factor to scale the elevation
+        // chart to fit the container width (i.e., remove the need for x-scrolling).
+        var xAxisCompression = width / (traversed + yAxisPanelWidth);
+        _this.setState({ xAxisCompression: xAxisCompression, width: width });
+      }
+    };
+
+    _this._onResize = function (width, height) {
+      _this._determineCompressionFactor(width, _this.props.leg);
+    };
 
     _this._onMouseMove = function (evt) {
       var m = evt.clientX - _this.container.getBoundingClientRect().left + _this.container.scrollLeft;
@@ -64,6 +96,15 @@ var LegDiagram = (_temp = _class = function (_Component) {
       _this.props.setElevationPoint(null);
     };
 
+    _this._unitConversion = function () {
+      return _this.state.useImperialUnits ? METERS_TO_FEET : 1;
+    };
+
+    _this._getElevationProfile = (0, _lodash2.default)(function (leg) {
+      if (!leg) return {};
+      return (0, _itinerary.getElevationProfile)(leg.steps, _this._unitConversion());
+    });
+
     _this.state = {
       useImperialUnits: true,
       xAxisCompression: 0.5
@@ -72,9 +113,24 @@ var LegDiagram = (_temp = _class = function (_Component) {
   }
 
   (0, _createClass3.default)(LegDiagram, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      var leg = nextProps.leg;
+
+      if (leg && this.props.leg && leg.startTime !== this.props.leg.startTime) {
+        this._determineCompressionFactor(this.state.width, leg);
+      }
+    }
+
+    /** Set mouse hover location for drawing elevation point. */
+
+  }, {
     key: '_formatElevation',
+
+
+    /** Round elevation to whole number and add symbol. */
     value: function _formatElevation(elev) {
-      return Math.round(elev * 10) / 10 + (this.state.useImperialUnits ? '\'' : 'm');
+      return Math.round(elev) + (this.state.useImperialUnits ? '\'' : 'm');
     }
   }, {
     key: 'render',
@@ -82,12 +138,7 @@ var LegDiagram = (_temp = _class = function (_Component) {
       var _this2 = this;
 
       var elevationPoint = this.props.elevationPoint;
-      var _state = this.state,
-          useImperialUnits = _state.useImperialUnits,
-          xAxisCompression = _state.xAxisCompression;
-
-      var unitConversion = useImperialUnits ? METERS_TO_FEET : 1;
-
+      var xAxisCompression = this.state.xAxisCompression;
       var leg = this.props.leg;
 
       if (!leg) return null;
@@ -98,34 +149,22 @@ var LegDiagram = (_temp = _class = function (_Component) {
       var mainSvgContent = [];
       var foregroundSvgContent = [];
 
-      // Do an initial iteration through all steps to determine the min/max elevation
-      var minElev = 100000;
-      var maxElev = -100000;
-      var traversed = 0;
-      leg.steps.forEach(function (step) {
-        traversed += step.distance;
-        if (!step.elevation || step.elevation.length === 0) return;
-        for (var i = 0; i < step.elevation.length; i++) {
-          var elev = step.elevation[i].second * unitConversion;
-          if (elev < minElev) minElev = elev;
-          if (elev > maxElev) maxElev = elev;
-        }
-      });
+      var _getElevationProfile = this._getElevationProfile(leg),
+          minElev = _getElevationProfile.minElev,
+          maxElev = _getElevationProfile.maxElev,
+          points = _getElevationProfile.points,
+          traversed = _getElevationProfile.traversed;
 
-      var height = 160;
-      var yAxisPanelWidth = 40;
-      var lineY = height - 20;
-      var topElevYPx = 20;
-      var bottomElevYPx = height - 40;
-      var elevHeight = bottomElevYPx - topElevYPx;
-      var width = traversed * xAxisCompression;
-      var rangeUnit = useImperialUnits ? 100 : 50;
+      var SVG_WIDTH = traversed * xAxisCompression;
+      var range = maxElev - minElev;
+      var rangeUnit = range >= 500 ? 100 : 50;
 
-      // Compute the displayed elevation range and draw the y-axis labels & guidelines
+      // Compute the displayed elevation range
       var minDisplayed = Math.floor(minElev / rangeUnit) * rangeUnit;
       var maxDisplayed = Math.ceil(maxElev / rangeUnit) * rangeUnit;
       var displayedRange = maxDisplayed - minDisplayed;
 
+      // Draw the y-axis labels & guidelines
       for (var elev = minDisplayed; elev <= maxDisplayed; elev += rangeUnit) {
         var y = topElevYPx + elevHeight - elevHeight * (elev - minDisplayed) / displayedRange;
         yAxisPanelSvgContent.push(_react2.default.createElement(
@@ -143,7 +182,7 @@ var LegDiagram = (_temp = _class = function (_Component) {
           key: 'axis-guideline-' + elev,
           x1: 0,
           y1: y,
-          x2: width,
+          x2: SVG_WIDTH,
           y2: y,
           strokeWidth: 1,
           stroke: '#ccc',
@@ -154,16 +193,25 @@ var LegDiagram = (_temp = _class = function (_Component) {
       // Process each step in this leg
       var currentX = 0;
       var ptArr = [];
+      var stepArr = [currentX];
+      var stepDetails = [];
+      var previousPair = void 0;
       leg.steps.map(function (step, stepIndex) {
         var stepWidthPx = step.distance * xAxisCompression;
-
+        var gain = 0;
+        var loss = 0;
         // Add this step to the polyline coords
         if (step.elevation && step.elevation.length > 0) {
-          for (var i = 0; i < step.elevation.length; i++) {
-            var elevPair = step.elevation[i];
-            var x = currentX + elevPair.first * xAxisCompression;
-            var _y = topElevYPx + elevHeight - elevHeight * (elevPair.second * unitConversion - minDisplayed) / displayedRange;
+          for (var _i = 0; _i < step.elevation.length; _i++) {
+            var elevPair = step.elevation[_i];
+            if (previousPair) {
+              var diff = (elevPair.second - previousPair.second) * _this2._unitConversion();
+              if (diff > 0) gain += diff;else loss += diff;
+            }
+            var x = currentX + elevPair.first * xAxisCompression; // - firstX
+            var _y = topElevYPx + elevHeight - elevHeight * (elevPair.second * _this2._unitConversion() - minDisplayed) / displayedRange;
             ptArr.push([x, _y]);
+            previousPair = elevPair;
           }
         }
 
@@ -171,15 +219,14 @@ var LegDiagram = (_temp = _class = function (_Component) {
         mainSvgContent.push(_react2.default.createElement('line', {
           key: 'step-' + stepIndex + '-line',
           x1: currentX + 1,
-          y1: lineY,
+          y1: BASELINE_Y,
           x2: currentX + stepWidthPx - 1,
-          y2: lineY,
+          y2: BASELINE_Y,
           strokeWidth: 6,
           stroke: '#aaa'
         }));
-
         // Add The street name label, including clipping path to prevent overflow
-        if (stepWidthPx > 100) {
+        if (stepWidthPx > 30) {
           mainSvgContent.push(_react2.default.createElement(
             'g',
             { key: 'step-' + stepIndex + '-label' },
@@ -192,62 +239,139 @@ var LegDiagram = (_temp = _class = function (_Component) {
               'text',
               {
                 x: currentX + stepWidthPx / 2,
-                y: lineY + 16,
+                y: BASELINE_Y + 16,
                 fontSize: 11,
-                clipPath: 'url(#clip-' + stepIndex + ')',
                 textAnchor: 'middle'
               },
-              compressStreetName(step.streetName)
+              gain >= 10 && _react2.default.createElement(
+                'tspan',
+                { fill: 'red' },
+                '\u2191',
+                _this2._formatElevation(gain),
+                '  '
+              ),
+              loss <= -10 && _react2.default.createElement(
+                'tspan',
+                { fill: 'green' },
+                '\u2193',
+                _this2._formatElevation(-loss)
+              )
             )
           ));
         }
         currentX += stepWidthPx;
+        stepArr.push(currentX);
+        stepDetails.push({ gain: gain, loss: loss });
       });
-
-      // Construct and add the main elevation contour line
-      var pts = ptArr.map(function (pt) {
-        return pt[0] + ',' + pt[1];
+      if (ptArr.length === 0) {
+        console.warn('There is no elevation data to render for leg', leg);
+        return null;
+      }
+      // Add initial point if the first elevation entry does not start at zero
+      // distance.
+      if (ptArr[0][0] !== 0) ptArr.unshift([0, ptArr[0][1]]);
+      // Add final points in order to round out area field.
+      ptArr.push([SVG_WIDTH, ptArr[ptArr.length - 1][1]]);
+      ptArr.push([ptArr[ptArr.length - 1][0], BASELINE_Y]);
+      ptArr.push([0, BASELINE_Y]);
+      // Construct and add the main elevation contour area
+      var pts = ptArr.map(function (pt, i) {
+        return i === 0 ? 'M' + pt[0] + ' ' + pt[1] : 'L' + pt[0] + ' ' + pt[1];
       }).join(' ');
-      mainSvgContent.push(_react2.default.createElement('polyline', {
+      mainSvgContent.unshift(_react2.default.createElement('path', {
         key: 'elev-polyline',
-        points: pts,
-        strokeWidth: 2,
-        stroke: '#000',
-        fill: 'none'
+        d: pts + ' Z',
+        strokeWidth: 0,
+        fill: 'lightsteelblue',
+        fillOpacity: 0.5
       }));
 
-      // Add the highlighted elevation point, if active
+      // Add the highlighted elevation point (on mouse hover), if actively hovering.
       if (elevationPoint) {
-        var _elev = (0, _itinerary.legElevationAtDistance)(leg, elevationPoint) * unitConversion;
+        var _elev = (0, _itinerary.legElevationAtDistance)(points, elevationPoint);
+        var elevConverted = _elev * this._unitConversion();
         var x = elevationPoint * xAxisCompression;
-        var _y2 = topElevYPx + elevHeight - elevHeight * (_elev - minDisplayed) / displayedRange;
+        for (var i = 0; i < stepArr.length; i++) {
+          if (x >= stepArr[i] && x <= stepArr[i + 1]) {
+            var beginStep = stepArr[i];
+            // Mouse hover is at step i, add hover fill for street step and draw
+            // street label
+            var stepWidth = stepArr[i + 1] - beginStep;
+            backgroundSvgContent.push(_react2.default.createElement('rect', {
+              key: 'step-hover-' + i,
+              x: beginStep,
+              y: 0,
+              width: stepWidth,
+              height: 200,
+              fillOpacity: 0.5,
+              fill: '#eee' }));
+            var name = compressStreetName(leg.steps[i].streetName);
+            var fontSize = 22;
+            var midPoint = beginStep + stepWidth / 2;
+            // Determine where to anchor hover street label text (to avoid
+            // clipping on edges of svg).
+            var anchor = 'middle';
+            var _x = midPoint;
+            var halfLabelWidth = (0, _itinerary.getTextWidth)(name) / 2;
+            if (midPoint - halfLabelWidth < 0) {
+              // Anchor left edge of text to left of svg
+              anchor = 'start';
+              _x = 0 + 3;
+            } else if (midPoint + halfLabelWidth > SVG_WIDTH) {
+              // Anchor right edge of text to right of svg
+              anchor = 'end';
+              _x = SVG_WIDTH - 3;
+            }
+            backgroundSvgContent.push(_react2.default.createElement(
+              'text',
+              {
+                key: 'step-text-hover-' + i,
+                x: _x,
+                y: height / 2,
+                fontSize: fontSize,
+                textAnchor: anchor,
+                fill: '#777',
+                opacity: 0.6
+              },
+              name
+            ));
+          }
+        }
+        var _y2 = _elev !== null ? topElevYPx + elevHeight - elevHeight * (elevConverted - minDisplayed) / displayedRange : height / 2;
         backgroundSvgContent.push(_react2.default.createElement('line', {
           key: 'elev-point-line',
           x1: x,
-          y1: _y2,
+          y1: _elev !== null ? _y2 : topElevYPx,
           x2: x,
-          y2: lineY,
+          y2: BASELINE_Y,
           strokeWidth: 1,
           stroke: '#aaa'
         }));
-        foregroundSvgContent.push(_react2.default.createElement('circle', {
-          key: 'elev-point-circle',
-          cx: x,
-          cy: _y2,
-          r: '4',
-          fill: 'blue',
-          stroke: 'white',
-          strokeWidth: '2'
-        }));
-
-        // Add the current elevation text label
-        foregroundSvgContent.push(_react2.default.createElement(
-          'text',
-          { key: 'elev-point-label', x: x, y: _y2 - 10, fontSize: 11, textAnchor: 'middle' },
-          this._formatElevation(_elev)
-        ));
+        // Only add the current elevation indicator and label if there is a data
+        // point available.
+        if (_elev !== null) {
+          foregroundSvgContent.push(_react2.default.createElement('circle', {
+            key: 'elev-point-circle',
+            cx: x,
+            cy: _y2,
+            r: '4',
+            fill: '#084c8d',
+            stroke: 'white',
+            strokeWidth: '0'
+          }));
+          // Add the current elevation text label
+          foregroundSvgContent.push(_react2.default.createElement(
+            'text',
+            {
+              key: 'elev-point-label',
+              x: x,
+              y: _y2 - 10,
+              fontSize: 11,
+              textAnchor: 'middle' },
+            this._formatElevation(elevConverted)
+          ));
+        }
       }
-
       return _react2.default.createElement(
         'div',
         { className: 'leg-diagram' },
@@ -273,11 +397,12 @@ var LegDiagram = (_temp = _class = function (_Component) {
           },
           _react2.default.createElement(
             'svg',
-            { height: height, width: width + 10 },
+            { height: height, width: SVG_WIDTH + 10 },
             backgroundSvgContent,
             mainSvgContent,
             foregroundSvgContent
-          )
+          ),
+          _react2.default.createElement(_reactResizeDetector2.default, { handleWidth: true, onResize: this._onResize })
         ),
         _react2.default.createElement(
           _reactBootstrap.Button,
