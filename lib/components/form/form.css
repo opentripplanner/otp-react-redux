@@ -325,12 +325,24 @@
 
 /* User settings */
 
+.otp .user-settings {
+  padding-top: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 20px;
+  margin: 10px 10px 0 10px;
+  min-height: 150px;
+  background-color: #f0f0f0;
+}
+
 .otp .place-button {
   padding: 5px 0 0 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   text-align: left;
+}
+
+.otp .user-settings .section-header {
+  font-size: small;
+  color: #555;
 }
 
 .otp .place-item {
@@ -341,6 +353,9 @@
 .otp .place-item .place-text {
   display: block;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .otp .place-item .place-detail {
@@ -351,8 +366,7 @@
 
 .otp .user-settings hr {
   border-top: 1px solid #ccc;
-  margin-bottom: 5px;
-  margin-top: 10px;
+  margin: 5px;
 }
 
 .otp .user-settings .btn-link {
