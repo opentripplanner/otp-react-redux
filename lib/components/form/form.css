@@ -350,6 +350,10 @@
   list-style: none;
 }
 
+.otp .user-settings .place-view, .otp .user-settings .place-view {
+  padding-top: 4px;
+}
+
 .otp .place-item .place-text {
   display: block;
   font-weight: 500;
@@ -360,8 +364,11 @@
 
 .otp .place-item .place-detail {
   display: block;
-  font-size: x-small;
+  font-size: smaller;
   padding-left: 22px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .otp .user-settings hr {
@@ -377,13 +384,13 @@
 }
 
 .otp .user-settings .btn-link:hover {
-  background-color: white;
+  background-color: #f5f5f5;
   border: 1px solid lightgrey;
   text-decoration: none;
 }
 
 .otp .user-settings .btn-link:focus {
-  background-color: lightgrey;
+  background-color: #ddd;
   border: 1px solid grey;
   outline: none;
   text-decoration: none;

@@ -212,6 +212,7 @@
   height: 165px;
   z-index: 999999;
   overflow-y: scroll;
+  border-radius: 5px;
 }
 
 /* Stop/Trip/Route Viewer screens */
