@@ -1,7 +1,7 @@
 api:
-  host: https://trimet-otp.ibi-transit.com
+  host: http://localhost
   path: /otp/routers/default
-  # port: 8001
+  port: 8001
 
 map:
   initLat: 45.52
