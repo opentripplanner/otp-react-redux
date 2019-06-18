@@ -112,6 +112,8 @@
 
 .otp .settings-preview {
   cursor: pointer;
+  /* Prevent text overflow from being multi-line. */
+  white-space: nowrap;
 }
 
 .otp.mobile .settings-preview {
@@ -124,6 +126,8 @@
   font-size: 14px;
   line-height: 1.4;
   margin-top: -1px;
+  /* Prevent overflow from being multi-line. 36px is edit button width. */
+  width: calc(100% - 36px);
 }
 
 .otp.mobile .settings-preview .summary {
@@ -317,4 +321,31 @@
 
 .otp .tabbed-form-panel .hide-button {
   font-size: 14px;
+}
+
+/* User settings */
+
+.otp .place-button {
+  padding: 5px 0 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.otp .user-settings .btn-link {
+  border-radius: 3px;
+}
+
+.otp .user-settings .btn-link:hover {
+  background-color: white;
+  border: 1px solid lightgrey;
+  text-decoration: none;
+}
+
+.otp .user-settings .btn-link:focus {
+  background-color: lightgrey;
+  border: 1px solid grey;
+  outline: none;
+  text-decoration: none;
 }
