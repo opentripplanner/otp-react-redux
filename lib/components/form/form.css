@@ -283,7 +283,7 @@
 .otp .tabbed-form-panel .tab-row {
   display: table;
   width: 100%;
-  table-layout: 'fixed';
+  table-layout: fixed;
 }
 
 .otp .tabbed-form-panel .tab {
@@ -333,8 +333,33 @@
   text-align: left;
 }
 
+.otp .place-item {
+  height: 45px;
+  list-style: none;
+}
+
+.otp .place-item .place-text {
+  display: block;
+  font-weight: 500;
+}
+
+.otp .place-item .place-detail {
+  display: block;
+  font-size: x-small;
+  padding-left: 22px;
+}
+
+.otp .user-settings hr {
+  border-top: 1px solid #ccc;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
 .otp .user-settings .btn-link {
+  height: 100%;
+  padding: 2px;
   border-radius: 3px;
+  color: #333;
 }
 
 .otp .user-settings .btn-link:hover {
