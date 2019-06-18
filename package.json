@@ -74,7 +74,7 @@
   },
   "devDependencies": {
     "documentation": "^4.0.0-beta.18",
-    "mastarm": "4.1.1",
+    "mastarm": "^5.0.1",
     "nock": "^9.0.9",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
