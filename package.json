@@ -6,7 +6,7 @@
     "build": "mastarm build",
     "cover": "mastarm test --coverage",
     "jest": "mastarm test",
-    "lint": "mastarm lint \"lib/**/*.js\"",
+    "lint": "mastarm lint lib --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
     "prestart": "yarn",
