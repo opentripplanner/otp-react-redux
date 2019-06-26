@@ -44,7 +44,6 @@ describe('actions > api', () => {
         })
 
       await routingQueryAction(mockDispatch, mockGetState)
-      // Account for random ID generated for routing query.
       expect(mockDispatch.mock.calls).toMatchSnapshot()
     })
 
