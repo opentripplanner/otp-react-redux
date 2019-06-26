@@ -5,11 +5,15 @@ Array [
   Array [
     Object {
       "payload": Object {
+        "activeItinerary": 0,
         "routingType": "ITINERARY",
-        "searchId": 2,
+        "searchId": "0m4nyv3ix",
       },
       "type": "ROUTING_REQUEST",
     },
+  ],
+  Array [
+    [Function],
   ],
 ]
 `;
@@ -19,11 +23,15 @@ Array [
   Array [
     Object {
       "payload": Object {
+        "activeItinerary": 0,
         "routingType": "ITINERARY",
-        "searchId": 1,
+        "searchId": "dmb8yypcy",
       },
       "type": "ROUTING_REQUEST",
     },
+  ],
+  Array [
+    [Function],
   ],
 ]
 `;
