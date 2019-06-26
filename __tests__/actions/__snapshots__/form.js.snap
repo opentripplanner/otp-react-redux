@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions > api > form should debounce numerous requests to plan a trip 1`] = `
+Array [
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+]
+`;
