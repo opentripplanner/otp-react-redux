@@ -2,7 +2,12 @@
 
 import nock from 'nock'
 
-import {routingQuery} from '../../lib/actions/api'
+import * as api from '../../lib/actions/api'
+
+// Use mocked randId function and pass in searchId for routingQuery calls so that
+// snapshots are deterministic (i.e., the random IDs don't change).
+let idCounter = 1234
+const randId = () => `abcd${idCounter++}`
 
 describe('actions > api', () => {
   describe('routingQuery', () => {
@@ -24,9 +29,12 @@ describe('actions > api', () => {
         searches: []
       }
     }
+    // Create mock functions for dispatch and getState used for thunk actions.
+    const mockDispatch = jest.fn()
+    const mockGetState = () => defaultState
 
     it('should make a query to OTP', async () => {
-      const routingQueryAction = routingQuery()
+      const routingQueryAction = api.routingQuery(randId())
 
       nock('http://mock-host.com')
         .get(/api\/plan/)
@@ -35,27 +43,19 @@ describe('actions > api', () => {
           return { fake: 'response' }
         })
 
-      const mockDispatch = jest.fn()
-      await routingQueryAction(mockDispatch, () => {
-        return defaultState
-      })
-
+      await routingQueryAction(mockDispatch, mockGetState)
       expect(mockDispatch.mock.calls).toMatchSnapshot()
     })
 
     it('should gracefully handle bad response', async () => {
-      const routingQueryAction = routingQuery()
+      const routingQueryAction = api.routingQuery(randId())
 
       nock('http://mock-host.com')
         .get(/api\/plan/)
         .reply(500, {
           fake: 'response'
         })
-
-      const mockDispatch = jest.fn()
-      await routingQueryAction(mockDispatch, () => {
-        return defaultState
-      })
+      await routingQueryAction(mockDispatch, mockGetState)
 
       expect(mockDispatch.mock.calls).toMatchSnapshot()
     })

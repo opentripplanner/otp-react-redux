@@ -389,9 +389,27 @@
   text-decoration: none;
 }
 
+.otp .user-settings .remember-settings .btn-link {
+  margin: 0 3px;
+  width: 25px;
+}
+
+.otp .user-settings .remember-settings .btn-link.active {
+  background-color: #084c8d;
+  color: #ffffff;
+}
+
+.otp .user-settings .remember-settings .btn-link.active:hover {
+  border: 1px solid grey;
+}
+
 .otp .user-settings .btn-link:focus {
   background-color: #ddd;
   border: 1px solid grey;
   outline: none;
   text-decoration: none;
+}
+
+.otp .user-settings .disclaimer {
+  font-size: x-small;
 }
