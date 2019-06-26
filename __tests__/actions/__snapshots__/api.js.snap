@@ -7,7 +7,20 @@ Array [
       "payload": Object {
         "activeItinerary": 0,
         "routingType": "ITINERARY",
-        "searchId": "0m4nyv3ix",
+        "searchId": "abcd1234",
+      },
+      "type": "ROUTING_REQUEST",
+    },
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "activeItinerary": 0,
+        "routingType": "ITINERARY",
+        "searchId": "abcd1235",
       },
       "type": "ROUTING_REQUEST",
     },
@@ -25,7 +38,7 @@ Array [
       "payload": Object {
         "activeItinerary": 0,
         "routingType": "ITINERARY",
-        "searchId": "dmb8yypcy",
+        "searchId": "abcd1234",
       },
       "type": "ROUTING_REQUEST",
     },
