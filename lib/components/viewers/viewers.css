@@ -3,6 +3,9 @@
 .otp .stop-viewer-header, .otp .trip-viewer-header, .otp .route-viewer-header {
   background-color: #ddd;
   padding: 12px;
+  position: sticky; /* Ensure header bar sticks to top of scrolling div */
+  top: 0px;
+  z-index: 1; /* Ensure sticky header stays on top of viewer body */
 }
 
 .otp .stop-viewer-body, .otp .trip-viewer-body {

@@ -112,6 +112,8 @@
 
 .otp .settings-preview {
   cursor: pointer;
+  /* Prevent text overflow from being multi-line. */
+  white-space: nowrap;
 }
 
 .otp.mobile .settings-preview {
@@ -124,6 +126,8 @@
   font-size: 14px;
   line-height: 1.4;
   margin-top: -1px;
+  /* Prevent overflow from being multi-line. 36px is edit button width. */
+  width: calc(100% - 36px);
 }
 
 .otp.mobile .settings-preview .summary {
@@ -279,7 +283,7 @@
 .otp .tabbed-form-panel .tab-row {
   display: table;
   width: 100%;
-  table-layout: 'fixed';
+  table-layout: fixed;
 }
 
 .otp .tabbed-form-panel .tab {
@@ -317,4 +321,95 @@
 
 .otp .tabbed-form-panel .hide-button {
   font-size: 14px;
+}
+
+/* User settings */
+
+.otp .user-settings {
+  padding-top: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 20px;
+  margin: 10px 10px 0 10px;
+  min-height: 150px;
+  background-color: #f0f0f0;
+}
+
+.otp .place-button {
+  padding: 5px 0 0 0;
+  text-align: left;
+}
+
+.otp .user-settings .section-header {
+  font-size: small;
+  color: #555;
+}
+
+.otp .place-item {
+  height: 45px;
+  list-style: none;
+}
+
+.otp .user-settings .place-view, .otp .user-settings .place-view {
+  padding-top: 4px;
+}
+
+.otp .place-item .place-text {
+  display: block;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.otp .place-item .place-detail {
+  display: block;
+  font-size: smaller;
+  padding-left: 22px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.otp .user-settings hr {
+  border-top: 1px solid #ccc;
+  margin: 5px;
+}
+
+.otp .user-settings .btn-link {
+  height: 100%;
+  padding: 2px;
+  border-radius: 3px;
+  color: #333;
+}
+
+.otp .user-settings .btn-link:hover {
+  background-color: #f5f5f5;
+  border: 1px solid lightgrey;
+  text-decoration: none;
+}
+
+.otp .user-settings .remember-settings .btn-link {
+  margin: 0 3px;
+  width: 25px;
+}
+
+.otp .user-settings .remember-settings .btn-link.active {
+  background-color: #084c8d;
+  color: #ffffff;
+}
+
+.otp .user-settings .remember-settings .btn-link.active:hover {
+  border: 1px solid grey;
+}
+
+.otp .user-settings .btn-link:focus {
+  background-color: #ddd;
+  border: 1px solid grey;
+  outline: none;
+  text-decoration: none;
+}
+
+.otp .user-settings .disclaimer {
+  font-size: x-small;
 }

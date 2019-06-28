@@ -5,19 +5,15 @@ notifications:
   email: false
   webhooks: https://outlook.office.com/webhook/03fa4a79-572f-4c68-b756-e4e851d0215a@9093f1a3-8771-4fb7-8596-d51eeef18cda/TravisCI/449087910d3647598cf3d7c6387fb8fc/286c079f-6085-4aa0-8f8d-e2a3e8d1f568
 node_js:
-  - '8'
-before_install:
-  - npm i -g yarn codecov
+  - '12' # mastarm 5 requires node.js 10 or greater
 after_success:
+  - bash <(curl -s https://codecov.io/bash)
   - semantic-release
-before_script:
-  - yarn global add codecov
 script:
   - yarn run lint
   - yarn run lint-docs
   - yarn run cover
   - yarn run build
-  - codecov
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
