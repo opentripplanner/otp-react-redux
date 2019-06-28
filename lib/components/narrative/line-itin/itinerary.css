@@ -162,6 +162,18 @@
   );
 }
 
+.otp .line-itin .leg-line-micromobility {
+  left: 7.5px;
+  right: 7.5px;
+  background: repeating-linear-gradient(
+    0deg,
+    #f5a729,
+    #f5a729 8px,
+    white 8px,
+    white 12.5px
+  );
+}
+
 .otp .line-itin .leg-line-transit {
   left: 5px;
   right: 5px;

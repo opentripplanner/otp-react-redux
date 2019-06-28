@@ -64,18 +64,20 @@
   background: none;
 }
 
+/*** Car Rental Map Icons ***/
+
 .otp .car-rental-icon {
   color: gray;
   font-size: 18px;
   text-align: center;
 }
 
-.otp .car-rental-icon-car2go {
-  color: #009cde;
-}
+/*** Micromobility Rental Map Icons ***/
 
-.otp .car-rental-icon-reachnow {
-  color: #007fa3;
+.otp .micromobility-rental-icon {
+  color: gray;
+  font-size: 18px;
+  text-align: center;
 }
 
 /* Stop icon circle css */
