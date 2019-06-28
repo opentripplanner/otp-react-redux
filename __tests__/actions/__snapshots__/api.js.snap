@@ -5,20 +5,28 @@ Array [
   Array [
     Object {
       "payload": Object {
+        "activeItinerary": 0,
         "routingType": "ITINERARY",
-        "searchId": 2,
+        "searchId": "abcd1234",
       },
       "type": "ROUTING_REQUEST",
     },
   ],
   Array [
+    [Function],
+  ],
+  Array [
     Object {
       "payload": Object {
-        "error": [Error: Received error from server],
-        "searchId": 2,
+        "activeItinerary": 0,
+        "routingType": "ITINERARY",
+        "searchId": "abcd1235",
       },
-      "type": "ROUTING_ERROR",
+      "type": "ROUTING_REQUEST",
     },
+  ],
+  Array [
+    [Function],
   ],
 ]
 `;
@@ -28,22 +36,15 @@ Array [
   Array [
     Object {
       "payload": Object {
+        "activeItinerary": 0,
         "routingType": "ITINERARY",
-        "searchId": 1,
+        "searchId": "abcd1234",
       },
       "type": "ROUTING_REQUEST",
     },
   ],
   Array [
-    Object {
-      "payload": Object {
-        "response": Object {
-          "fake": "response",
-        },
-        "searchId": 1,
-      },
-      "type": "ROUTING_RESPONSE",
-    },
+    [Function],
   ],
 ]
 `;
