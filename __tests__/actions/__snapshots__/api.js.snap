@@ -11,6 +11,15 @@ Array [
       "type": "ROUTING_REQUEST",
     },
   ],
+  Array [
+    Object {
+      "payload": Object {
+        "error": [Error: Received error from server],
+        "searchId": 2,
+      },
+      "type": "ROUTING_ERROR",
+    },
+  ],
 ]
 `;
 
@@ -23,6 +32,17 @@ Array [
         "searchId": 1,
       },
       "type": "ROUTING_REQUEST",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "response": Object {
+          "fake": "response",
+        },
+        "searchId": 1,
+      },
+      "type": "ROUTING_RESPONSE",
     },
   ],
 ]
