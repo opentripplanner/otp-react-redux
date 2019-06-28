@@ -1,3 +1,7 @@
+// FIXME: This file has been renamed because formChanged is no longer
+// triggering debounces. See https://github.com/opentripplanner/otp-react-redux/pull/62#discussion_r298272504
+// NOTE: Commenting out the entire test file causes a failure because at least
+// one test must be run per test file.
 // TODO: write tests for form actions
 
 /* globals describe, expect, it, jest */
