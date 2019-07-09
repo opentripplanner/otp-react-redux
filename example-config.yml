@@ -2,6 +2,27 @@ api:
   host: http://localhost
   path: /otp/routers/default
   port: 8001
+# Add suggested locations to be shown as options in the form view.
+# locations:
+#   - id: 'airport'
+#     icon: 'plane'
+#     name: 'Portland International Airport (PDX)'
+#     lat: 45.587579
+#     lon: -122.593084
+#   - id: 'zoo'
+#     icon: building
+#     lat: 45.51010444232195
+#     lon: -122.71607145667079
+#     name: Oregon Zoo, Portland, OR
+
+### The persistence setting is used to enable the storage of places (home, work),
+### recent searches/places, user overrides, and favorite stops. Currently the
+### only strategy is localStorage (which is used by default). It also must be
+### enabled to show the stored locations (see above).
+### TODO: add another server-based strategy
+persistence:
+  enabled: true
+  strategy: localStorage
 
 map:
   initLat: 45.52
