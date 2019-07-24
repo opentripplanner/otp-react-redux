@@ -5936,10 +5936,10 @@ flatten@^1.0.2:
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
   integrity sha1-2uRqnXj74lKSJYzB54CkHZXAN4I=
 
-flow-bin@^0.94.0:
-  version "0.94.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.94.0.tgz#b5d58fe7559705b73a18229f97edfc3ab6ffffcb"
-  integrity sha512-DYF7r9CJ/AksfmmB4+q+TyLMoeQPRnqtF1Pk7KY3zgfkB/nVuA3nXyzqgsIPIvnMSiFEXQcFK4z+iPxSLckZhQ==
+flow-bin@0.84.0:
+  version "0.84.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.84.0.tgz#4cb2364c750fb37a7840524fa62456b53f64cdcb"
+  integrity sha512-ocji8eEYp+YfICsm+F6cIHUcD7v5sb0/ADEXm6gyUKdjQzmSckMrPUdZtyfP973t3YGHKliUMxMvIBHyR5LbXQ==
 
 flow-runtime@^0.17.0:
   version "0.17.0"
@@ -8896,10 +8896,10 @@ marked@^0.6.0:
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.6.2.tgz#c574be8b545a8b48641456ca1dbe0e37b6dccc1a"
   integrity sha512-LqxwVH3P/rqKX4EKGz7+c2G9r98WeM/SW34ybhgNGhUQNKtf1GmmSkJ6cDGJ/t6tiyae49qRkpyTw2B9HOrgUA==
 
-mastarm@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/mastarm/-/mastarm-5.0.1.tgz#9b3e6431df58f791a456e62db508f4a863d84d29"
-  integrity sha512-g0PfS9ifvLMbpzS0+e5gdsGOo3HHoqXLbrBffqy3efcW9hV6f73jNv2ah9HdGSjlJuVqEEBdYqUwoeB7OEL6Fg==
+mastarm@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/mastarm/-/mastarm-5.1.1.tgz#ef8c82cbfd53dff893a27376856b8192b63992d5"
+  integrity sha512-P4KC0zx0i7so/K4FKEYVl2E6cTaODWSnGEUMYRngn4oOpbgnce9HNIOwaENedbf8V82KBg9RyXsUHldeaS118w==
   dependencies:
     "@babel/core" "^7.3.4"
     "@babel/plugin-proposal-class-properties" "^7.3.4"
@@ -8928,6 +8928,7 @@ mastarm@^5.0.1:
     commander "^2.19.0"
     commitizen "^3.0.7"
     concat-stream "^2.0.0"
+    core-js "2"
     cssnano "^4.1.10"
     cz-conventional-changelog "^2.1.0"
     envify "^4.1.0"
@@ -8944,7 +8945,7 @@ mastarm@^5.0.1:
     eslint-plugin-react "^7.12.4"
     eslint-plugin-standard "^4.0.0"
     exorcist "^1.0.1"
-    flow-bin "^0.94.0"
+    flow-bin "0.84.0"
     flow-runtime "^0.17.0"
     glob "^7.1.3"
     isomorphic-fetch "^2.2.1"
@@ -8963,6 +8964,7 @@ mastarm@^5.0.1:
     prettier-eslint-cli "^4.7.1"
     rimraf "^2.6.3"
     slack-node "^0.1.8"
+    sshpk "^1.16.1"
     this-commit "^1.0.0"
     through2 "^3.0.1"
     uglifyify "^5.0.1"
@@ -13610,7 +13612,7 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-sshpk@^1.7.0:
+sshpk@^1.16.1, sshpk@^1.7.0:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/sshpk/-/sshpk-1.16.1.tgz#fb661c0bef29b39db40769ee39fa70093d6f6877"
   integrity sha512-HXXqVUq7+pcKeLqqZj6mHFUMvXtOJt1uoUx09pFW6011inTMxqI8BA8PM95myrIyyKwdnzjdFjLiE6KBPVtJIg==
