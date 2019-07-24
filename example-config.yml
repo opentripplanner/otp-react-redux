@@ -38,17 +38,23 @@ map:
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
 
 geocoder:
+  apiKey: MAPZEN_KEY
   boundary:
     rect:
       minLon: -123.2034
       maxLon: -122.135
       minLat: 45.273
       maxLat: 45.7445
-  MAPZEN_KEY: MAPZEN_KEY
   focusPoint:
     lat: 45.5223452
     lon: -122.6821804
-  # Optional custom Pelias instance (defaults to Mapzen Search)
+  # required geocoder type. Can be either PELIAS or ARCGIS
+  # WARNING: using the ARCGIS geocoder with a persistence strategy of
+  #   `localStorage` will result in an error being thrown because ARCGIS
+  #   requires the use of a paid account to store geocode results.
+  #   See https://developers.arcgis.com/rest/geocode/api-reference/geocoding-free-vs-paid.htm
+  type: PELIAS
+  # Optional custom api endpoint
   # baseUrl: https://geocoder.example.com/pelias/v1
 
 # Use this mode config for the enhanced Transit+ config

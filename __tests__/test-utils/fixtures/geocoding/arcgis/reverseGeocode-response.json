@@ -1,0 +1,32 @@
+{
+  "address": {
+    "Match_addr": "SW Naito Pkwy, Portland, Oregon, 97204",
+    "LongLabel": "SW Naito Pkwy, Portland, OR, 97204, USA",
+    "ShortLabel": "SW Naito Pkwy",
+    "Addr_type": "StreetName",
+    "Type": "",
+    "PlaceName": "",
+    "AddNum": "",
+    "Address": "SW Naito Pkwy",
+    "Block": "",
+    "Sector": "",
+    "Neighborhood": "Downtown",
+    "District": "",
+    "City": "Portland",
+    "MetroArea": "Portland-Vancouver Metro Area",
+    "Subregion": "Multnomah County",
+    "Region": "Oregon",
+    "Territory": "",
+    "Postal": "97204",
+    "PostalExt": "",
+    "CountryCode": "USA"
+  },
+  "location": {
+    "x": -122.67320084756255,
+    "y": 45.516175523600715,
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    }
+  }
+}
