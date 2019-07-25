@@ -78,7 +78,7 @@
     "velocity-react": "^1.3.3"
   },
   "devDependencies": {
-    "documentation": "^4.0.0-beta.18",
+    "documentation": "^12.0.3",
     "mastarm": "^5.1.0",
     "nock": "^9.0.9",
     "react": "^15.4.2",
