@@ -37,6 +37,7 @@ map:
       url: http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
 
+# example config for a Pelias geocoder (https://pelias.io/)
 geocoder:
   apiKey: MAPZEN_KEY
   boundary:
@@ -48,14 +49,30 @@ geocoder:
   focusPoint:
     lat: 45.5223452
     lon: -122.6821804
-  # required geocoder type. Can be either PELIAS or ARCGIS
-  # WARNING: using the ARCGIS geocoder with a persistence strategy of
-  #   `localStorage` will result in an error being thrown because ARCGIS
-  #   requires the use of a paid account to store geocode results.
-  #   See https://developers.arcgis.com/rest/geocode/api-reference/geocoding-free-vs-paid.htm
+  # required geocoder type.
   type: PELIAS
-  # Optional custom api endpoint
-  # baseUrl: https://geocoder.example.com/pelias/v1
+  # This base URL is required as the libraries will default to using now-defunct
+  # mapzen urls
+  baseUrl: https://geocoder.example.com/pelias/v1
+
+# example config for an ArcGIS geocoder
+# (https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm)
+# WARNING: using the ArcGIS geocoder with a persistence strategy of
+#   `localStorage` will result in an error being thrown because ArcGIS
+#   requires the use of a paid account to store geocode results.
+#   See https://developers.arcgis.com/rest/geocode/api-reference/geocoding-free-vs-paid.htm
+# geocoder:
+#   boundary:
+#     rect:
+#       minLon: -123.2034
+#       maxLon: -122.135
+#       minLat: 45.273
+#       maxLat: 45.7445
+#   focusPoint:
+#     lat: 45.5223452
+#     lon: -122.6821804
+#   # required geocoder type.
+#   type: ARCGIS
 
 # Use this mode config for the enhanced Transit+ config
 modes:
