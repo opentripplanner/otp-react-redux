@@ -9,12 +9,15 @@ function mockResponsePath (geocoder, file) {
 describe('geocoder', () => {
   const geocoders = [
     {
+      type: 'ARCGIS'
+    }, {
       apiKey: 'dummy-mapzen-key',
       baseUrl: 'https://ws-st.trimet.org/pelias/v1',
       type: 'PELIAS'
-    }, {
-      type: 'ARCGIS'
-    }
+    },
+    // this entry represents no geocoder configuration. In this case it is
+    // expected that the NoApiGeocoder will be used.
+    undefined
   ]
 
   // nocks for ARCGIS
@@ -54,8 +57,11 @@ describe('geocoder', () => {
     .replyWithFile(200, mockResponsePath('pelias', 'reverse-response.json'))
 
   geocoders.forEach(geocoder => {
+    const geocoderType = geocoder
+      ? geocoder.type
+      : 'NoApiGeocoder'
     // the describe is in quotes to bypass a lint rule
-    describe(`${geocoder.type}`, () => {
+    describe(`${geocoderType}`, () => {
       it('should make autocomplete query', async () => {
         const result = await getGeocoder(geocoder).autocomplete({ text: 'Mill Ends' })
         expect(result).toMatchSnapshot()
@@ -74,7 +80,7 @@ describe('geocoder', () => {
 
       it('should get location from geocode feature', async () => {
         let mockFeature
-        switch (geocoder.type) {
+        switch (geocoderType) {
           case 'ARCGIS':
             mockFeature = {
               magicKey: 'abcd',
@@ -92,6 +98,17 @@ describe('geocoder', () => {
               },
               properties: {
                 label: 'Mill Ends Park, Portland, OR, USA'
+              }
+            }
+            break
+          case 'NoApiGeocoder':
+            mockFeature = {
+              geometry: {
+                coordinates: [-122.673240, 45.516198],
+                type: 'Point'
+              },
+              properties: {
+                label: '45.516198, -122.673240'
               }
             }
             break

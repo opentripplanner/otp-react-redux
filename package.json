@@ -11,7 +11,7 @@
     "prepublish": "mastarm prepublish --config configurations/prepublish",
     "prestart": "yarn",
     "test": "yarn run lint && yarn run lint-docs && yarn run jest",
-    "start": "mastarm build --serve example.js"
+    "start": "mastarm build -e development --serve example.js"
   },
   "standard": {
     "parser": "babel-eslint"

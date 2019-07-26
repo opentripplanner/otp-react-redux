@@ -93,6 +93,34 @@ Object {
 }
 `;
 
+exports[`geocoder NoApiGeocoder should get location from geocode feature 1`] = `
+Object {
+  "lat": 45.516198,
+  "lon": -122.67324,
+  "name": "45.516198, -122.673240",
+}
+`;
+
+exports[`geocoder NoApiGeocoder should make autocomplete query 1`] = `
+Object {
+  "features": Array [],
+}
+`;
+
+exports[`geocoder NoApiGeocoder should make reverse query 1`] = `
+Object {
+  "lat": 45.5162,
+  "lon": -122.67324,
+  "name": "45.5162, -122.67324",
+}
+`;
+
+exports[`geocoder NoApiGeocoder should make search query 1`] = `
+Object {
+  "features": Array [],
+}
+`;
+
 exports[`geocoder PELIAS should get location from geocode feature 1`] = `
 Object {
   "lat": 45.516198,
