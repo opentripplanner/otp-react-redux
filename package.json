@@ -6,12 +6,12 @@
     "build": "mastarm build",
     "cover": "mastarm test --coverage",
     "jest": "mastarm test",
-    "lint": "mastarm lint lib --quiet",
+    "lint": "mastarm lint lib __tests__ --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
     "prestart": "yarn",
     "test": "yarn run lint && yarn run lint-docs && yarn run jest",
-    "start": "mastarm build --serve example.js"
+    "start": "mastarm build -e development --serve example.js"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -27,8 +27,10 @@
   },
   "homepage": "https://github.com/opentripplanner/otp-react-redux#readme",
   "dependencies": {
+    "@conveyal/geocoder-arcgis-geojson": "^0.0.2",
     "@conveyal/lonlat": "^1.1.0",
     "@mapbox/polyline": "^0.2.0",
+    "aggregate-error": "^3.0.0",
     "bootstrap": "^3.3.7",
     "bowser": "^1.9.3",
     "clone": "^2.1.0",
@@ -44,11 +46,12 @@
     "history": "^4.7.2",
     "immutability-helper": "^2.1.1",
     "isomorphic-fetch": "^2.2.1",
-    "isomorphic-mapzen-search": "1.4.1",
+    "isomorphic-mapzen-search": "^1.4.1",
     "leaflet": "^1.3.4",
     "leaflet.polylinemeasure": "github:ppete2/Leaflet.PolylineMeasure",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
+    "lodash.memoize": "^4.1.2",
     "moment": "^2.17.1",
     "moment-timezone": "^0.5.23",
     "object-path": "^0.11.3",
@@ -64,7 +67,6 @@
     "react-redux": "^5.0.2",
     "react-resize-detector": "^2.1.0",
     "react-router": "^4.3.1",
-    "react-select-geocoder": "^1.2.1",
     "react-swipeable-views": "^0.11.2",
     "redux": "^3.6.0",
     "redux-actions": "^1.2.1",
@@ -76,8 +78,8 @@
     "velocity-react": "^1.3.3"
   },
   "devDependencies": {
-    "documentation": "^4.0.0-beta.18",
-    "mastarm": "^5.0.1",
+    "documentation": "^12.0.3",
+    "mastarm": "^5.1.0",
     "nock": "^9.0.9",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
