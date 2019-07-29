@@ -1,0 +1,117 @@
+{
+  "geocoding": {
+    "version": "0.2",
+    "attribution": "http://lb-st-mapgeo.tri-met.org:4000/attribution",
+    "query": {
+      "text": "Mill Ends",
+      "size": 10,
+      "private": false,
+      "focus.point.lat": 45.52,
+      "focus.point.lon": -122.67,
+      "lang": {
+        "name": "English",
+        "iso6391": "en",
+        "iso6393": "eng",
+        "defaulted": true
+      },
+      "querySize": 20,
+      "parser": "addressit",
+      "parsed_text": {}
+    },
+    "warnings": [
+      "Invalid Parameter: api_key"
+    ],
+    "engine": {
+      "name": "Pelias",
+      "author": "Mapzen",
+      "version": "1.0"
+    },
+    "timestamp": 1563949031708
+  },
+  "type": "FeatureCollection",
+  "features": [{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.673377,
+          45.516278
+        ]
+      },
+      "properties": {
+        "id": "node/4243944023",
+        "gid": "openstreetmap:venue:node/4243944023",
+        "layer": "venue",
+        "source": "openstreetmap",
+        "source_id": "node/4243944023",
+        "name": "Mill Ends Park",
+        "confidence": 1,
+        "match_type": "exact",
+        "distance": 0.491,
+        "accuracy": "point",
+        "country": "United States",
+        "country_gid": "whosonfirst:country:85633793",
+        "country_a": "USA",
+        "region": "Oregon",
+        "region_gid": "whosonfirst:region:85688513",
+        "region_a": "OR",
+        "county": "Multnomah County",
+        "county_gid": "whosonfirst:county:102081631",
+        "county_a": "MU",
+        "locality": "Portland",
+        "locality_gid": "whosonfirst:locality:101715829",
+        "neighbourhood": "Downtown",
+        "neighbourhood_gid": "whosonfirst:neighbourhood:85867131",
+        "continent": "North America",
+        "continent_gid": "whosonfirst:continent:102191575",
+        "label": "Mill Ends Park, Portland, OR, USA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.681441,
+          45.511851
+        ]
+      },
+      "properties": {
+        "id": "2584-1136::TRIMET::station",
+        "gid": "transit:station:2584-1136::TRIMET::station",
+        "layer": "station",
+        "source": "transit",
+        "source_id": "2584-1136::trimet::station",
+        "name": "PSU Urban Center/SW 5th & Mill MAX Station",
+        "street": "SW 5th & Mill",
+        "postalcode": "97201",
+        "confidence": 1,
+        "match_type": "exact",
+        "distance": 1.273,
+        "accuracy": "centroid",
+        "country": "United States",
+        "country_gid": "whosonfirst:country:85633793",
+        "country_a": "USA",
+        "region": "Oregon",
+        "region_gid": "whosonfirst:region:85688513",
+        "region_a": "OR",
+        "county": "Multnomah County",
+        "county_gid": "whosonfirst:county:102081631",
+        "county_a": "MU",
+        "locality": "Portland",
+        "locality_gid": "whosonfirst:locality:101715829",
+        "neighbourhood": "Downtown",
+        "neighbourhood_gid": "whosonfirst:neighbourhood:85867131",
+        "continent": "North America",
+        "continent_gid": "whosonfirst:continent:102191575",
+        "label": "PSU Urban Center/SW 5th & Mill MAX Station, Portland, OR, USA"
+      }
+    }
+  ],
+  "bbox": [
+    -122.821522,
+    45.495264,
+    -122.475528,
+    45.516278
+  ]
+}
