@@ -30,7 +30,6 @@
     "@conveyal/geocoder-arcgis-geojson": "^0.0.2",
     "@conveyal/lonlat": "^1.1.0",
     "@mapbox/polyline": "^0.2.0",
-    "aggregate-error": "^3.0.0",
     "bootstrap": "^3.3.7",
     "bowser": "^1.9.3",
     "clone": "^2.1.0",
