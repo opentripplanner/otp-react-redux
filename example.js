@@ -1,4 +1,6 @@
-// import necessary React/Redux libraries
+// import this polyfill in order to make webapp compatible with IE 11
+import 'es6-math'
+
 import { createHashHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import React, { Component } from 'react'
