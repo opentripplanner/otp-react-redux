@@ -6,6 +6,11 @@ describe('lib > reducers > create-otp-reducer', () => {
 
   it('should be able to create the initial state', () => {
     setDefaultTestTime()
-    expect(getInitialState({}, {})).toMatchSnapshot()
+
+    const mockConfig = {
+      homeTimezone: 'America/Los_Angeles'
+    }
+    const mockInitialQuery = {}
+    expect(getInitialState(mockConfig, mockInitialQuery)).toMatchSnapshot()
   })
 })
