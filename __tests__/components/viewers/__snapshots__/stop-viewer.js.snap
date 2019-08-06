@@ -806,11 +806,20 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       <div
                         style={
                           Object {
-                            "fontSize": 14,
+                            "fontSize": 12,
                             "marginLeft": 20,
                           }
                         }
                       >
+                        <div
+                          style={
+                            Object {
+                              "marginBottom": -4,
+                            }
+                          }
+                        >
+                          Monday
+                        </div>
                         <div>
                           18:00
                         </div>
@@ -2448,11 +2457,20 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       <div
                         style={
                           Object {
-                            "fontSize": 14,
+                            "fontSize": 12,
                             "marginLeft": 20,
                           }
                         }
                       >
+                        <div
+                          style={
+                            Object {
+                              "marginBottom": -4,
+                            }
+                          }
+                        >
+                          Monday
+                        </div>
                         <div>
                           17:45
                         </div>

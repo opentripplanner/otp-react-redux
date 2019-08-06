@@ -1,7 +1,11 @@
 import StopViewer from '../../../lib/components/viewers/stop-viewer'
+import {restoreDateNowBehavior, setDefaultTestTime} from '../../test-utils'
 import {getMockInitialState, mockWithProvider} from '../../test-utils/mock-data/store'
 
 describe('components > viewers > stop viewer', () => {
+  afterEach(restoreDateNowBehavior)
+  beforeEach(setDefaultTestTime)
+
   it('should render with initial stop id and no stop times', () => {
     const mockState = getMockInitialState()
     mockState.otp.ui.viewedStop = {

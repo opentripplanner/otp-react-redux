@@ -19,7 +19,7 @@ export function setTestTime (time) {
  * calculations and feed version statuses resolve to a certain state.
  */
 export function setDefaultTestTime () {
-  setTestTime(Date.UTC(2019, 7, 5, 12, 34, 56, 78))
+  setTestTime(Date.UTC(2019, 7, 5, 2, 34, 56, 78))
 }
 
 /**
