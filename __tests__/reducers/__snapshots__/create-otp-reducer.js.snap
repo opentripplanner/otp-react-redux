@@ -6,6 +6,7 @@ Object {
   "config": Object {
     "autoPlan": false,
     "debouncePlanTimeMs": 0,
+    "homeTimezone": "America/Los_Angeles",
     "language": Object {},
     "operators": Array [],
     "realtimeEffectsDisplayThreshold": 120,
