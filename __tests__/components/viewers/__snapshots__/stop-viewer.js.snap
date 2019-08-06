@@ -20,6 +20,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
       findStop={[Function]}
       findStopTimesForStop={[Function]}
       forgetStop={[Function]}
+      homeTimezone="America/Los_Angeles"
       rememberStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
@@ -602,6 +603,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             }
           >
             <PatternRow
+              homeTimezone="America/Los_Angeles"
               key="TriMet:20-Gresham TC"
               pattern={
                 Object {
@@ -884,6 +886,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
               </div>
             </PatternRow>
             <PatternRow
+              homeTimezone="America/Los_Angeles"
               key="TriMet:36-Tualatin Park & Ride"
               pattern={
                 Object {
@@ -1112,6 +1115,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
               </div>
             </PatternRow>
             <PatternRow
+              homeTimezone="America/Los_Angeles"
               key="TriMet:94-Sherwood"
               pattern={
                 Object {
@@ -1394,6 +1398,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
               </div>
             </PatternRow>
             <PatternRow
+              homeTimezone="America/Los_Angeles"
               key="TriMet:94-King City"
               pattern={
                 Object {
@@ -1674,6 +1679,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
       findStop={[Function]}
       findStopTimesForStop={[Function]}
       forgetStop={[Function]}
+      homeTimezone="America/Los_Angeles"
       rememberStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
@@ -2251,6 +2257,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
             }
           >
             <PatternRow
+              homeTimezone="America/Los_Angeles"
               key="TriMet:20-Gresham TC"
               pattern={
                 Object {
@@ -2587,6 +2594,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
       findStop={[Function]}
       findStopTimesForStop={[Function]}
       forgetStop={[Function]}
+      homeTimezone="America/Los_Angeles"
       rememberStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
