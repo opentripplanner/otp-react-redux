@@ -22,9 +22,7 @@ const storeMiddleWare = [
  * Get the initial stop of the redux reducer for otp-rr
  */
 export function getMockInitialState () {
-  const mockConfig = {
-    homeTimezone: 'America/Los_Angeles'
-  }
+  const mockConfig = {}
   const mockInitialQuery = {}
   return clone({
     otp: getInitialState(mockConfig, mockInitialQuery),
