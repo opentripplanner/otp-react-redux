@@ -4,7 +4,7 @@
   "main": "build/index.js",
   "scripts": {
     "build": "mastarm build --env production",
-    "cover": "mastarm test --coverage",
+    "cover": "mastarm test -e test --coverage",
     "jest": "mastarm test -e test",
     "lint": "mastarm lint lib __tests__ --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
