@@ -653,6 +653,470 @@ exports[`components > viewers > stop viewer should render countdown times after 
 </Provider>
 `;
 
+exports[`components > viewers > stop viewer should render countdown times for stop times departing 48+ hours from start of service 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(StopViewer)>
+    <StopViewer
+      autoRefreshStopTimes={true}
+      favoriteStops={Array []}
+      findStop={[Function]}
+      findStopTimesForStop={[Function]}
+      forgetStop={[Function]}
+      homeTimezone="America/Los_Angeles"
+      rememberStop={[Function]}
+      setLocation={[Function]}
+      setMainPanelContent={[Function]}
+      stopData={
+        Object {
+          "agencyName": "TriMet",
+          "amenities": Array [
+            "Crosswalk near stop",
+            "Curb ramp near stop",
+            "Pavement at back door",
+            "Pavement at front door",
+            "Schedule display",
+            "Sidewalk at stop",
+            "Traffic signal",
+          ],
+          "code": "9860",
+          "desc": "Eastbound stop in Portland (Stop ID 9860)",
+          "id": "TriMet:9860",
+          "lat": 45.522919,
+          "lon": -122.689717,
+          "mode": "BUS",
+          "name": "W Burnside & SW 18th",
+          "routes": Array [
+            Object {
+              "agencyName": "TriMet",
+              "id": "TriMet:20",
+              "longName": "Burnside/Stark",
+              "mode": "BUS",
+              "shortName": "20",
+              "sortOrder": 2600,
+              "sortOrderSet": true,
+              "type": 3,
+            },
+          ],
+          "rsn": "20",
+          "stopTimes": Array [
+            Object {
+              "pattern": Object {
+                "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
+                "headsign": "Gresham TC",
+                "id": "TriMet:20:1:04",
+              },
+              "times": Array [
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2041",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 175860,
+                  "realtimeDeparture": 175860,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 175860,
+                  "scheduledDeparture": 175860,
+                  "serviceDay": 1565161200,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230375",
+                },
+              ],
+            },
+          ],
+          "stopTimesLastUpdated": 1565248650040,
+          "type": 3,
+          "url": "http://trimet.org/#tracker/stop/9860",
+        }
+      }
+      stopViewerConfig={
+        Object {
+          "numberOfDepartures": 3,
+          "timeRange": 345600,
+        }
+      }
+      timeFormat="HH:mm"
+      toggleAutoRefresh={[Function]}
+      viewedStop={
+        Object {
+          "stopId": "TriMet:9860",
+        }
+      }
+    >
+      <div
+        className="stop-viewer"
+      >
+        <div
+          className="stop-viewer-header"
+        >
+          <div
+            className="back-button-container"
+          >
+            <Button
+              active={false}
+              block={false}
+              bsClass="btn"
+              bsSize="small"
+              bsStyle="default"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <button
+                className="btn btn-sm btn-default"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                <Icon
+                  type="arrow-left"
+                >
+                  <FontAwesome
+                    fixedWidth={true}
+                    name="arrow-left"
+                    type="arrow-left"
+                  >
+                    <span
+                      aria-hidden={true}
+                      className="fa fa-arrow-left fa-fw"
+                      type="arrow-left"
+                    />
+                  </FontAwesome>
+                </Icon>
+                Back
+              </button>
+            </Button>
+          </div>
+          <div
+            className="header-text"
+          >
+            <span>
+              W Burnside & SW 18th
+            </span>
+          </div>
+          <div
+            style={
+              Object {
+                "clear": "both",
+              }
+            }
+          />
+        </div>
+        <div
+          className="stop-viewer-body"
+        >
+          <div>
+            <div>
+              <b>
+                Stop ID
+              </b>
+              : 
+              9860
+              <button
+                className="link-button pull-right"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "fontSize": "small",
+                  }
+                }
+              >
+                <Icon
+                  className=""
+                  type="refresh"
+                >
+                  <FontAwesome
+                    className=""
+                    fixedWidth={true}
+                    name="refresh"
+                    type="refresh"
+                  >
+                    <span
+                      aria-hidden={true}
+                      className="fa fa-refresh fa-fw"
+                      type="refresh"
+                    />
+                  </FontAwesome>
+                </Icon>
+                 
+                00:17
+              </button>
+            </div>
+            <b>
+              Plan a trip:
+            </b>
+             
+            <LocationIcon
+              type="from"
+            >
+              <i
+                className="fa from-location-icon fa-dot-circle-o"
+              />
+            </LocationIcon>
+             
+            <button
+              className="link-button"
+              onClick={[Function]}
+            >
+              From here
+            </button>
+             
+            |
+             
+            <LocationIcon
+              type="to"
+            >
+              <i
+                className="fa to-location-icon fa-map-marker"
+              />
+            </LocationIcon>
+             
+            <button
+              className="link-button"
+              onClick={[Function]}
+            >
+              To here
+            </button>
+          </div>
+          <div
+            style={
+              Object {
+                "marginTop": 20,
+              }
+            }
+          >
+            <PatternRow
+              homeTimezone="America/Los_Angeles"
+              key="TriMet:20-Gresham TC"
+              pattern={
+                Object {
+                  "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
+                  "headsign": "Gresham TC",
+                  "id": "TriMet:20:1:04",
+                }
+              }
+              route={
+                Object {
+                  "agencyName": "TriMet",
+                  "id": "TriMet:20",
+                  "longName": "Burnside/Stark",
+                  "mode": "BUS",
+                  "shortName": "20",
+                  "sortOrder": 2600,
+                  "sortOrderSet": true,
+                  "type": 3,
+                }
+              }
+              stopTimes={
+                Array [
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2041",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 175860,
+                    "realtimeDeparture": 175860,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 175860,
+                    "scheduledDeparture": 175860,
+                    "serviceDay": 1565161200,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230375",
+                  },
+                ]
+              }
+              stopViewerConfig={
+                Object {
+                  "numberOfDepartures": 3,
+                  "timeRange": 345600,
+                }
+              }
+              timeFormat="HH:mm"
+            >
+              <div
+                className="route-row"
+              >
+                <div
+                  className="header"
+                >
+                  <div
+                    className="route-name"
+                  >
+                    <b>
+                      20
+                    </b>
+                     To 
+                    Gresham TC
+                  </div>
+                  <div
+                    className="next-trip-preview"
+                  >
+                    <div>
+                      <div
+                        style={
+                          Object {
+                            "float": "left",
+                          }
+                        }
+                      >
+                        <Icon
+                          style={
+                            Object {
+                              "color": "#888",
+                              "fontSize": "0.8em",
+                              "marginRight": 2,
+                            }
+                          }
+                          type="clock-o"
+                        >
+                          <FontAwesome
+                            fixedWidth={true}
+                            name="clock-o"
+                            style={
+                              Object {
+                                "color": "#888",
+                                "fontSize": "0.8em",
+                                "marginRight": 2,
+                              }
+                            }
+                            type="clock-o"
+                          >
+                            <span
+                              aria-hidden={true}
+                              className="fa fa-clock-o fa-fw"
+                              style={
+                                Object {
+                                  "color": "#888",
+                                  "fontSize": "0.8em",
+                                  "marginRight": 2,
+                                }
+                              }
+                              type="clock-o"
+                            />
+                          </FontAwesome>
+                        </Icon>
+                      </div>
+                      <div
+                        style={
+                          Object {
+                            "fontSize": 14,
+                            "marginLeft": 20,
+                          }
+                        }
+                      >
+                        <div>
+                          52 min
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="expansion-button-container"
+                  >
+                    <button
+                      className="expansion-button"
+                      onClick={[Function]}
+                    >
+                      <Icon
+                        type="chevron-down"
+                      >
+                        <FontAwesome
+                          fixedWidth={true}
+                          name="chevron-down"
+                          type="chevron-down"
+                        >
+                          <span
+                            aria-hidden={true}
+                            className="fa fa-chevron-down fa-fw"
+                            type="chevron-down"
+                          />
+                        </FontAwesome>
+                      </Icon>
+                    </button>
+                  </div>
+                </div>
+                <VelocityTransitionGroup
+                  enter={
+                    Object {
+                      "animation": "slideDown",
+                    }
+                  }
+                  enterHideStyle={
+                    Object {
+                      "display": "none",
+                    }
+                  }
+                  enterShowStyle={
+                    Object {
+                      "display": "",
+                    }
+                  }
+                  leave={
+                    Object {
+                      "animation": "slideUp",
+                    }
+                  }
+                  runOnMount={false}
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component="div"
+                  >
+                    <div />
+                  </TransitionGroup>
+                </VelocityTransitionGroup>
+              </div>
+            </PatternRow>
+          </div>
+          <div
+            style={
+              Object {
+                "marginTop": "20px",
+              }
+            }
+          >
+            <label
+              style={
+                Object {
+                  "fontSize": "small",
+                  "fontWeight": 300,
+                }
+              }
+            >
+              <input
+                checked={true}
+                name="autoUpdate"
+                onChange={[Function]}
+                type="checkbox"
+              />
+               
+              Auto-refresh arrivals?
+            </label>
+          </div>
+        </div>
+      </div>
+    </StopViewer>
+  </Connect(StopViewer)>
+</Provider>
+`;
+
 exports[`components > viewers > stop viewer should render times after midnight with the correct day of week 1`] = `
 <Provider
   store={

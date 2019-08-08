@@ -1,3 +1,6 @@
+// Sun Aug 04 2019 19:34:56 GMT-0700
+const DEFAULT_TEST_TIME = Date.UTC(2019, 7, 5, 2, 34, 56, 78)
+
 export function timeoutPromise (ms) {
   return new Promise((resolve, reject) => {
     setTimeout(resolve, ms)
@@ -15,7 +18,10 @@ export function timeoutPromise (ms) {
  * Date#now internally).
  */
 export function setTestTime (time) {
-  jest.spyOn(Date, 'now').mockImplementation(() => new Date(time).valueOf())
+  const date = new Date(time)
+  // Log human-readable date to help out human testers.
+  console.log(`Setting test time to ${date}`)
+  jest.spyOn(Date, 'now').mockImplementation(() => date.valueOf())
 }
 
 /**
@@ -23,7 +29,7 @@ export function setTestTime (time) {
  * calculations and feed version statuses resolve to a certain state.
  */
 export function setDefaultTestTime () {
-  setTestTime(Date.UTC(2019, 7, 5, 2, 34, 56, 78))
+  setTestTime(DEFAULT_TEST_TIME)
 }
 
 /**

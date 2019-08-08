@@ -52,14 +52,33 @@ describe('components > viewers > stop viewer', () => {
   })
 
   it('should render countdown times after midnight with no date if it is the previous day', () => {
-    // Override default test time to Wednesday, August 7 at 11:58pm PT (first arrival is at
-    // 12:51am PT Thursday). Note: we're using Date.UTC so we must offset the
-    // time from GMT.
-    setTestTime(Date.UTC(2019, 8, 8, 6, 58, 56, 78))
+    // Test time: Wednesday, August 7 at 11:58pm PT
+    // First departure: Thursday, August 8 12:51am PT
+    setTestTime(Date.UTC(2019, 7, 8, 6, 58, 56, 78))
     const mockState = getMockInitialState()
     const stopId = 'TriMet:9860'
     mockState.otp.ui.viewedStop = { stopId }
     mockState.otp.transitIndex.stops[stopId] = require('./mock-otp-transit-index-data-stop-9860.json')
+
+    expect(
+      mockWithProvider(
+        StopViewer,
+        {},
+        mockState
+      ).snapshot()
+    ).toMatchSnapshot()
+  })
+
+  it('should render countdown times for stop times departing 48+ hours from start of service', () => {
+    // Test time: Thursday, August 8 at 11:58pm PT
+    // First departure: Friday, August 9 12:51am PT
+    // Note: service day for stop time is Wednesday and departure is
+    // 175860 (seconds since midnight).
+    setTestTime(Date.UTC(2019, 7, 9, 6, 58, 56, 78))
+    const mockState = getMockInitialState()
+    const stopId = 'TriMet:9860'
+    mockState.otp.ui.viewedStop = { stopId }
+    mockState.otp.transitIndex.stops[stopId] = require('./mock-otp-transit-index-data-stop-9860-48-hr.json')
 
     expect(
       mockWithProvider(
