@@ -195,12 +195,6 @@ Object {
       "parser": "addressit",
       "private": false,
       "size": 10,
-      "sources": Array [
-        "geonames",
-        "openaddresses",
-        "openstreetmap",
-        "whosonfirst",
-      ],
       "text": "Mill Ends",
       "tokens": Array [
         "Mill",
