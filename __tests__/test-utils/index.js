@@ -9,6 +9,10 @@ export function timeoutPromise (ms) {
  * returns a time that is based off of the given value in milliseconds after
  * the epoch. Typically the method Date.UTC(YYYY, MM, DD) can be used to
  * generate this number.
+ *
+ * Note: this stack overflow page gives more info on why we're using this:
+ * https://stackoverflow.com/a/42787232/915811 (basically, moment.js uses
+ * Date#now internally).
  */
 export function setTestTime (time) {
   jest.spyOn(Date, 'now').mockImplementation(() => new Date(time).valueOf())

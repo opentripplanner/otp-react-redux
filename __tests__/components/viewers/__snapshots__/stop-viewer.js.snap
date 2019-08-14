@@ -1,5 +1,1320 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`components > viewers > stop viewer should render countdown times after midnight with no date if it is the previous day 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(StopViewer)>
+    <StopViewer
+      autoRefreshStopTimes={true}
+      favoriteStops={Array []}
+      findStop={[Function]}
+      findStopTimesForStop={[Function]}
+      forgetStop={[Function]}
+      homeTimezone="America/Los_Angeles"
+      rememberStop={[Function]}
+      setLocation={[Function]}
+      setMainPanelContent={[Function]}
+      stopData={
+        Object {
+          "agencyName": "TriMet",
+          "amenities": Array [
+            "Crosswalk near stop",
+            "Curb ramp near stop",
+            "Pavement at back door",
+            "Pavement at front door",
+            "Schedule display",
+            "Sidewalk at stop",
+            "Traffic signal",
+          ],
+          "code": "9860",
+          "desc": "Eastbound stop in Portland (Stop ID 9860)",
+          "id": "TriMet:9860",
+          "lat": 45.522919,
+          "lon": -122.689717,
+          "mode": "BUS",
+          "name": "W Burnside & SW 18th",
+          "routes": Array [
+            Object {
+              "agencyName": "TriMet",
+              "id": "TriMet:20",
+              "longName": "Burnside/Stark",
+              "mode": "BUS",
+              "shortName": "20",
+              "sortOrder": 2600,
+              "sortOrderSet": true,
+              "type": 3,
+            },
+          ],
+          "rsn": "20",
+          "stopTimes": Array [
+            Object {
+              "pattern": Object {
+                "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
+                "headsign": "Gresham TC",
+                "id": "TriMet:20:1:04",
+              },
+              "times": Array [
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2041",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 89460,
+                  "realtimeDeparture": 89460,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 89460,
+                  "scheduledDeparture": 89460,
+                  "serviceDay": 1565161200,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230375",
+                },
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2043",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 93120,
+                  "realtimeDeparture": 93120,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 93120,
+                  "scheduledDeparture": 93120,
+                  "serviceDay": 1565161200,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230376",
+                },
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2049",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 96780,
+                  "realtimeDeparture": 96780,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 96780,
+                  "scheduledDeparture": 96780,
+                  "serviceDay": 1565161200,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230377",
+                },
+              ],
+            },
+            Object {
+              "pattern": Object {
+                "desc": "20 to Gresham Transit Center (TriMet:2253) from Beaverton Transit Center (TriMet:9978) express",
+                "headsign": "Gresham TC",
+                "id": "TriMet:20:1:01",
+              },
+              "times": Array [
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2067",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 13980,
+                  "realtimeDeparture": 13980,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 13980,
+                  "scheduledDeparture": 13980,
+                  "serviceDay": 1565247600,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230305",
+                },
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2034",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 17580,
+                  "realtimeDeparture": 17580,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 17580,
+                  "scheduledDeparture": 17580,
+                  "serviceDay": 1565247600,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230306",
+                },
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2069",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 19020,
+                  "realtimeDeparture": 19020,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 19020,
+                  "scheduledDeparture": 19020,
+                  "serviceDay": 1565247600,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230307",
+                },
+              ],
+            },
+          ],
+          "stopTimesLastUpdated": 1565248650040,
+          "type": 3,
+          "url": "http://trimet.org/#tracker/stop/9860",
+        }
+      }
+      stopViewerConfig={
+        Object {
+          "numberOfDepartures": 3,
+          "timeRange": 345600,
+        }
+      }
+      timeFormat="HH:mm"
+      toggleAutoRefresh={[Function]}
+      viewedStop={
+        Object {
+          "stopId": "TriMet:9860",
+        }
+      }
+    >
+      <div
+        className="stop-viewer"
+      >
+        <div
+          className="stop-viewer-header"
+        >
+          <div
+            className="back-button-container"
+          >
+            <Button
+              active={false}
+              block={false}
+              bsClass="btn"
+              bsSize="small"
+              bsStyle="default"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <button
+                className="btn btn-sm btn-default"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                <Icon
+                  type="arrow-left"
+                >
+                  <FontAwesome
+                    fixedWidth={true}
+                    name="arrow-left"
+                    type="arrow-left"
+                  >
+                    <span
+                      aria-hidden={true}
+                      className="fa fa-arrow-left fa-fw"
+                      type="arrow-left"
+                    />
+                  </FontAwesome>
+                </Icon>
+                Back
+              </button>
+            </Button>
+          </div>
+          <div
+            className="header-text"
+          >
+            <span>
+              W Burnside & SW 18th
+            </span>
+          </div>
+          <div
+            style={
+              Object {
+                "clear": "both",
+              }
+            }
+          />
+        </div>
+        <div
+          className="stop-viewer-body"
+        >
+          <div>
+            <div>
+              <b>
+                Stop ID
+              </b>
+              : 
+              9860
+              <button
+                className="link-button pull-right"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "fontSize": "small",
+                  }
+                }
+              >
+                <Icon
+                  className=""
+                  type="refresh"
+                >
+                  <FontAwesome
+                    className=""
+                    fixedWidth={true}
+                    name="refresh"
+                    type="refresh"
+                  >
+                    <span
+                      aria-hidden={true}
+                      className="fa fa-refresh fa-fw"
+                      type="refresh"
+                    />
+                  </FontAwesome>
+                </Icon>
+                 
+                00:17
+              </button>
+            </div>
+            <b>
+              Plan a trip:
+            </b>
+             
+            <LocationIcon
+              type="from"
+            >
+              <i
+                className="fa from-location-icon fa-dot-circle-o"
+              />
+            </LocationIcon>
+             
+            <button
+              className="link-button"
+              onClick={[Function]}
+            >
+              From here
+            </button>
+             
+            |
+             
+            <LocationIcon
+              type="to"
+            >
+              <i
+                className="fa to-location-icon fa-map-marker"
+              />
+            </LocationIcon>
+             
+            <button
+              className="link-button"
+              onClick={[Function]}
+            >
+              To here
+            </button>
+          </div>
+          <div
+            style={
+              Object {
+                "marginTop": 20,
+              }
+            }
+          >
+            <PatternRow
+              homeTimezone="America/Los_Angeles"
+              key="TriMet:20-Gresham TC"
+              pattern={
+                Object {
+                  "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
+                  "headsign": "Gresham TC",
+                  "id": "TriMet:20:1:04",
+                }
+              }
+              route={
+                Object {
+                  "agencyName": "TriMet",
+                  "id": "TriMet:20",
+                  "longName": "Burnside/Stark",
+                  "mode": "BUS",
+                  "shortName": "20",
+                  "sortOrder": 2600,
+                  "sortOrderSet": true,
+                  "type": 3,
+                }
+              }
+              stopTimes={
+                Array [
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2041",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 89460,
+                    "realtimeDeparture": 89460,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 89460,
+                    "scheduledDeparture": 89460,
+                    "serviceDay": 1565161200,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230375",
+                  },
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2043",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 93120,
+                    "realtimeDeparture": 93120,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 93120,
+                    "scheduledDeparture": 93120,
+                    "serviceDay": 1565161200,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230376",
+                  },
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2049",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 96780,
+                    "realtimeDeparture": 96780,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 96780,
+                    "scheduledDeparture": 96780,
+                    "serviceDay": 1565161200,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230377",
+                  },
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2067",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 13980,
+                    "realtimeDeparture": 13980,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 13980,
+                    "scheduledDeparture": 13980,
+                    "serviceDay": 1565247600,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230305",
+                  },
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2034",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 17580,
+                    "realtimeDeparture": 17580,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 17580,
+                    "scheduledDeparture": 17580,
+                    "serviceDay": 1565247600,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230306",
+                  },
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2069",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 19020,
+                    "realtimeDeparture": 19020,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 19020,
+                    "scheduledDeparture": 19020,
+                    "serviceDay": 1565247600,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230307",
+                  },
+                ]
+              }
+              stopViewerConfig={
+                Object {
+                  "numberOfDepartures": 3,
+                  "timeRange": 345600,
+                }
+              }
+              timeFormat="HH:mm"
+            >
+              <div
+                className="route-row"
+              >
+                <div
+                  className="header"
+                >
+                  <div
+                    className="route-name"
+                  >
+                    <b>
+                      20
+                    </b>
+                     To 
+                    Gresham TC
+                  </div>
+                  <div
+                    className="next-trip-preview"
+                  >
+                    <div>
+                      <div
+                        style={
+                          Object {
+                            "float": "left",
+                          }
+                        }
+                      >
+                        <Icon
+                          style={
+                            Object {
+                              "color": "#888",
+                              "fontSize": "0.8em",
+                              "marginRight": 2,
+                            }
+                          }
+                          type="clock-o"
+                        >
+                          <FontAwesome
+                            fixedWidth={true}
+                            name="clock-o"
+                            style={
+                              Object {
+                                "color": "#888",
+                                "fontSize": "0.8em",
+                                "marginRight": 2,
+                              }
+                            }
+                            type="clock-o"
+                          >
+                            <span
+                              aria-hidden={true}
+                              className="fa fa-clock-o fa-fw"
+                              style={
+                                Object {
+                                  "color": "#888",
+                                  "fontSize": "0.8em",
+                                  "marginRight": 2,
+                                }
+                              }
+                              type="clock-o"
+                            />
+                          </FontAwesome>
+                        </Icon>
+                      </div>
+                      <div
+                        style={
+                          Object {
+                            "fontSize": 14,
+                            "marginLeft": 20,
+                          }
+                        }
+                      >
+                        <div>
+                          52 min
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="expansion-button-container"
+                  >
+                    <button
+                      className="expansion-button"
+                      onClick={[Function]}
+                    >
+                      <Icon
+                        type="chevron-down"
+                      >
+                        <FontAwesome
+                          fixedWidth={true}
+                          name="chevron-down"
+                          type="chevron-down"
+                        >
+                          <span
+                            aria-hidden={true}
+                            className="fa fa-chevron-down fa-fw"
+                            type="chevron-down"
+                          />
+                        </FontAwesome>
+                      </Icon>
+                    </button>
+                  </div>
+                </div>
+                <VelocityTransitionGroup
+                  enter={
+                    Object {
+                      "animation": "slideDown",
+                    }
+                  }
+                  enterHideStyle={
+                    Object {
+                      "display": "none",
+                    }
+                  }
+                  enterShowStyle={
+                    Object {
+                      "display": "",
+                    }
+                  }
+                  leave={
+                    Object {
+                      "animation": "slideUp",
+                    }
+                  }
+                  runOnMount={false}
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component="div"
+                  >
+                    <div />
+                  </TransitionGroup>
+                </VelocityTransitionGroup>
+              </div>
+            </PatternRow>
+          </div>
+          <div
+            style={
+              Object {
+                "marginTop": "20px",
+              }
+            }
+          >
+            <label
+              style={
+                Object {
+                  "fontSize": "small",
+                  "fontWeight": 300,
+                }
+              }
+            >
+              <input
+                checked={true}
+                name="autoUpdate"
+                onChange={[Function]}
+                type="checkbox"
+              />
+               
+              Auto-refresh arrivals?
+            </label>
+          </div>
+        </div>
+      </div>
+    </StopViewer>
+  </Connect(StopViewer)>
+</Provider>
+`;
+
+exports[`components > viewers > stop viewer should render times after midnight with the correct day of week 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(StopViewer)>
+    <StopViewer
+      autoRefreshStopTimes={true}
+      favoriteStops={Array []}
+      findStop={[Function]}
+      findStopTimesForStop={[Function]}
+      forgetStop={[Function]}
+      homeTimezone="America/Los_Angeles"
+      rememberStop={[Function]}
+      setLocation={[Function]}
+      setMainPanelContent={[Function]}
+      stopData={
+        Object {
+          "agencyName": "TriMet",
+          "amenities": Array [
+            "Crosswalk near stop",
+            "Curb ramp near stop",
+            "Pavement at back door",
+            "Pavement at front door",
+            "Schedule display",
+            "Sidewalk at stop",
+            "Traffic signal",
+          ],
+          "code": "9860",
+          "desc": "Eastbound stop in Portland (Stop ID 9860)",
+          "id": "TriMet:9860",
+          "lat": 45.522919,
+          "lon": -122.689717,
+          "mode": "BUS",
+          "name": "W Burnside & SW 18th",
+          "routes": Array [
+            Object {
+              "agencyName": "TriMet",
+              "id": "TriMet:20",
+              "longName": "Burnside/Stark",
+              "mode": "BUS",
+              "shortName": "20",
+              "sortOrder": 2600,
+              "sortOrderSet": true,
+              "type": 3,
+            },
+          ],
+          "rsn": "20",
+          "stopTimes": Array [
+            Object {
+              "pattern": Object {
+                "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
+                "headsign": "Gresham TC",
+                "id": "TriMet:20:1:04",
+              },
+              "times": Array [
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2041",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 89460,
+                  "realtimeDeparture": 89460,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 89460,
+                  "scheduledDeparture": 89460,
+                  "serviceDay": 1565161200,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230375",
+                },
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2043",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 93120,
+                  "realtimeDeparture": 93120,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 93120,
+                  "scheduledDeparture": 93120,
+                  "serviceDay": 1565161200,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230376",
+                },
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2049",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 96780,
+                  "realtimeDeparture": 96780,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 96780,
+                  "scheduledDeparture": 96780,
+                  "serviceDay": 1565161200,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230377",
+                },
+              ],
+            },
+            Object {
+              "pattern": Object {
+                "desc": "20 to Gresham Transit Center (TriMet:2253) from Beaverton Transit Center (TriMet:9978) express",
+                "headsign": "Gresham TC",
+                "id": "TriMet:20:1:01",
+              },
+              "times": Array [
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2067",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 13980,
+                  "realtimeDeparture": 13980,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 13980,
+                  "scheduledDeparture": 13980,
+                  "serviceDay": 1565247600,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230305",
+                },
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2034",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 17580,
+                  "realtimeDeparture": 17580,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 17580,
+                  "scheduledDeparture": 17580,
+                  "serviceDay": 1565247600,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230306",
+                },
+                Object {
+                  "arrivalDelay": 0,
+                  "blockId": "2069",
+                  "departureDelay": 0,
+                  "headsign": "Gresham TC",
+                  "realtime": false,
+                  "realtimeArrival": 19020,
+                  "realtimeDeparture": 19020,
+                  "realtimeState": "SCHEDULED",
+                  "scheduledArrival": 19020,
+                  "scheduledDeparture": 19020,
+                  "serviceDay": 1565247600,
+                  "stopCount": 132,
+                  "stopId": "TriMet:9860",
+                  "stopIndex": 38,
+                  "timepoint": true,
+                  "tripId": "TriMet:9230307",
+                },
+              ],
+            },
+          ],
+          "stopTimesLastUpdated": 1565248650040,
+          "type": 3,
+          "url": "http://trimet.org/#tracker/stop/9860",
+        }
+      }
+      stopViewerConfig={
+        Object {
+          "numberOfDepartures": 3,
+          "timeRange": 345600,
+        }
+      }
+      timeFormat="HH:mm"
+      toggleAutoRefresh={[Function]}
+      viewedStop={
+        Object {
+          "stopId": "TriMet:9860",
+        }
+      }
+    >
+      <div
+        className="stop-viewer"
+      >
+        <div
+          className="stop-viewer-header"
+        >
+          <div
+            className="back-button-container"
+          >
+            <Button
+              active={false}
+              block={false}
+              bsClass="btn"
+              bsSize="small"
+              bsStyle="default"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <button
+                className="btn btn-sm btn-default"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                <Icon
+                  type="arrow-left"
+                >
+                  <FontAwesome
+                    fixedWidth={true}
+                    name="arrow-left"
+                    type="arrow-left"
+                  >
+                    <span
+                      aria-hidden={true}
+                      className="fa fa-arrow-left fa-fw"
+                      type="arrow-left"
+                    />
+                  </FontAwesome>
+                </Icon>
+                Back
+              </button>
+            </Button>
+          </div>
+          <div
+            className="header-text"
+          >
+            <span>
+              W Burnside & SW 18th
+            </span>
+          </div>
+          <div
+            style={
+              Object {
+                "clear": "both",
+              }
+            }
+          />
+        </div>
+        <div
+          className="stop-viewer-body"
+        >
+          <div>
+            <div>
+              <b>
+                Stop ID
+              </b>
+              : 
+              9860
+              <button
+                className="link-button pull-right"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "fontSize": "small",
+                  }
+                }
+              >
+                <Icon
+                  className=""
+                  type="refresh"
+                >
+                  <FontAwesome
+                    className=""
+                    fixedWidth={true}
+                    name="refresh"
+                    type="refresh"
+                  >
+                    <span
+                      aria-hidden={true}
+                      className="fa fa-refresh fa-fw"
+                      type="refresh"
+                    />
+                  </FontAwesome>
+                </Icon>
+                 
+                00:17
+              </button>
+            </div>
+            <b>
+              Plan a trip:
+            </b>
+             
+            <LocationIcon
+              type="from"
+            >
+              <i
+                className="fa from-location-icon fa-dot-circle-o"
+              />
+            </LocationIcon>
+             
+            <button
+              className="link-button"
+              onClick={[Function]}
+            >
+              From here
+            </button>
+             
+            |
+             
+            <LocationIcon
+              type="to"
+            >
+              <i
+                className="fa to-location-icon fa-map-marker"
+              />
+            </LocationIcon>
+             
+            <button
+              className="link-button"
+              onClick={[Function]}
+            >
+              To here
+            </button>
+          </div>
+          <div
+            style={
+              Object {
+                "marginTop": 20,
+              }
+            }
+          >
+            <PatternRow
+              homeTimezone="America/Los_Angeles"
+              key="TriMet:20-Gresham TC"
+              pattern={
+                Object {
+                  "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
+                  "headsign": "Gresham TC",
+                  "id": "TriMet:20:1:04",
+                }
+              }
+              route={
+                Object {
+                  "agencyName": "TriMet",
+                  "id": "TriMet:20",
+                  "longName": "Burnside/Stark",
+                  "mode": "BUS",
+                  "shortName": "20",
+                  "sortOrder": 2600,
+                  "sortOrderSet": true,
+                  "type": 3,
+                }
+              }
+              stopTimes={
+                Array [
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2041",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 89460,
+                    "realtimeDeparture": 89460,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 89460,
+                    "scheduledDeparture": 89460,
+                    "serviceDay": 1565161200,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230375",
+                  },
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2043",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 93120,
+                    "realtimeDeparture": 93120,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 93120,
+                    "scheduledDeparture": 93120,
+                    "serviceDay": 1565161200,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230376",
+                  },
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2049",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 96780,
+                    "realtimeDeparture": 96780,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 96780,
+                    "scheduledDeparture": 96780,
+                    "serviceDay": 1565161200,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230377",
+                  },
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2067",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 13980,
+                    "realtimeDeparture": 13980,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 13980,
+                    "scheduledDeparture": 13980,
+                    "serviceDay": 1565247600,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230305",
+                  },
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2034",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 17580,
+                    "realtimeDeparture": 17580,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 17580,
+                    "scheduledDeparture": 17580,
+                    "serviceDay": 1565247600,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230306",
+                  },
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "2069",
+                    "departureDelay": 0,
+                    "headsign": "Gresham TC",
+                    "realtime": false,
+                    "realtimeArrival": 19020,
+                    "realtimeDeparture": 19020,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 19020,
+                    "scheduledDeparture": 19020,
+                    "serviceDay": 1565247600,
+                    "stopCount": 132,
+                    "stopId": "TriMet:9860",
+                    "stopIndex": 38,
+                    "timepoint": true,
+                    "tripId": "TriMet:9230307",
+                  },
+                ]
+              }
+              stopViewerConfig={
+                Object {
+                  "numberOfDepartures": 3,
+                  "timeRange": 345600,
+                }
+              }
+              timeFormat="HH:mm"
+            >
+              <div
+                className="route-row"
+              >
+                <div
+                  className="header"
+                >
+                  <div
+                    className="route-name"
+                  >
+                    <b>
+                      20
+                    </b>
+                     To 
+                    Gresham TC
+                  </div>
+                  <div
+                    className="next-trip-preview"
+                  >
+                    <div>
+                      <div
+                        style={
+                          Object {
+                            "float": "left",
+                          }
+                        }
+                      >
+                        <Icon
+                          style={
+                            Object {
+                              "color": "#888",
+                              "fontSize": "0.8em",
+                              "marginRight": 2,
+                            }
+                          }
+                          type="clock-o"
+                        >
+                          <FontAwesome
+                            fixedWidth={true}
+                            name="clock-o"
+                            style={
+                              Object {
+                                "color": "#888",
+                                "fontSize": "0.8em",
+                                "marginRight": 2,
+                              }
+                            }
+                            type="clock-o"
+                          >
+                            <span
+                              aria-hidden={true}
+                              className="fa fa-clock-o fa-fw"
+                              style={
+                                Object {
+                                  "color": "#888",
+                                  "fontSize": "0.8em",
+                                  "marginRight": 2,
+                                }
+                              }
+                              type="clock-o"
+                            />
+                          </FontAwesome>
+                        </Icon>
+                      </div>
+                      <div
+                        style={
+                          Object {
+                            "fontSize": 12,
+                            "marginLeft": 20,
+                          }
+                        }
+                      >
+                        <div
+                          style={
+                            Object {
+                              "marginBottom": -4,
+                            }
+                          }
+                        >
+                          Thursday
+                        </div>
+                        <div>
+                          00:51
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="expansion-button-container"
+                  >
+                    <button
+                      className="expansion-button"
+                      onClick={[Function]}
+                    >
+                      <Icon
+                        type="chevron-down"
+                      >
+                        <FontAwesome
+                          fixedWidth={true}
+                          name="chevron-down"
+                          type="chevron-down"
+                        >
+                          <span
+                            aria-hidden={true}
+                            className="fa fa-chevron-down fa-fw"
+                            type="chevron-down"
+                          />
+                        </FontAwesome>
+                      </Icon>
+                    </button>
+                  </div>
+                </div>
+                <VelocityTransitionGroup
+                  enter={
+                    Object {
+                      "animation": "slideDown",
+                    }
+                  }
+                  enterHideStyle={
+                    Object {
+                      "display": "none",
+                    }
+                  }
+                  enterShowStyle={
+                    Object {
+                      "display": "",
+                    }
+                  }
+                  leave={
+                    Object {
+                      "animation": "slideUp",
+                    }
+                  }
+                  runOnMount={false}
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component="div"
+                  >
+                    <div />
+                  </TransitionGroup>
+                </VelocityTransitionGroup>
+              </div>
+            </PatternRow>
+          </div>
+          <div
+            style={
+              Object {
+                "marginTop": "20px",
+              }
+            }
+          >
+            <label
+              style={
+                Object {
+                  "fontSize": "small",
+                  "fontWeight": 300,
+                }
+              }
+            >
+              <input
+                checked={true}
+                name="autoUpdate"
+                onChange={[Function]}
+                type="checkbox"
+              />
+               
+              Auto-refresh arrivals?
+            </label>
+          </div>
+        </div>
+      </div>
+    </StopViewer>
+  </Connect(StopViewer)>
+</Provider>
+`;
+
 exports[`components > viewers > stop viewer should render with OTP transit index data 1`] = `
 <Provider
   store={
