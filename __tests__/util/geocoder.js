@@ -1,6 +1,6 @@
 import nock from 'nock'
 
-import getGeocoder from '../../lib/util/geocoder'
+import getGeocoder, { PeliasGeocoder } from '../../lib/util/geocoder'
 
 function mockResponsePath (geocoder, file) {
   return `__tests__/test-utils/fixtures/geocoding/${geocoder}/${file}`
@@ -118,6 +118,71 @@ describe('geocoder', () => {
         const result = await getGeocoder(geocoder).getLocationFromGeocodedFeature(mockFeature)
         expect(result).toMatchSnapshot()
       })
+
+      // geocoder-specific tests
+      if (geocoderType === 'PELIAS') {
+        const mockSources = 'gn,oa,osm,wof'
+
+        // sources should not be sent unless they are explicitly defined in the
+        // query. See https://github.com/ibi-group/trimet-mod-otp/issues/239
+        it('should not send sources in autocomplete by default', () => {
+          // create mock API to check query
+          const mockPeliasAPI = {
+            autocomplete: query => {
+              expect(query.sources).not.toBe(expect.anything())
+              return Promise.resolve()
+            }
+          }
+          const pelias = new PeliasGeocoder(mockPeliasAPI, geocoder)
+          pelias.autocomplete({ text: 'Mill Ends' })
+        })
+
+        // should send sources if they're defined in the config
+        it('should send sources in autocomplete if defined in config', () => {
+          // create mock API to check query
+          const mockPeliasAPI = {
+            autocomplete: query => {
+              expect(query.sources).toBe(mockSources)
+              return Promise.resolve()
+            }
+          }
+          const pelias = new PeliasGeocoder(
+            mockPeliasAPI,
+            { ...geocoder, sources: mockSources }
+          )
+          pelias.autocomplete({ text: 'Mill Ends' })
+        })
+
+        // sources should not be sent unless they are explicitly defined in the
+        // query. See https://github.com/ibi-group/trimet-mod-otp/issues/239
+        it('should not send sources in search by default', () => {
+          // create mock API to check query
+          const mockPeliasAPI = {
+            search: query => {
+              expect(query.sources).not.toBe(expect.anything())
+              return Promise.resolve()
+            }
+          }
+          const pelias = new PeliasGeocoder(mockPeliasAPI, geocoder)
+          pelias.search({ text: 'Mill Ends' })
+        })
+
+        // should send sources if they're defined in the config
+        it('should send sources in search if defined in config', () => {
+          // create mock API to check query
+          const mockPeliasAPI = {
+            search: query => {
+              expect(query.sources).toBe(mockSources)
+              return Promise.resolve()
+            }
+          }
+          const pelias = new PeliasGeocoder(
+            mockPeliasAPI,
+            { ...geocoder, sources: mockSources }
+          )
+          pelias.search({ text: 'Mill Ends' })
+        })
+      }
     })
   })
 })

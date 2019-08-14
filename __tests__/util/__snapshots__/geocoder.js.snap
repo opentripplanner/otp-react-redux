@@ -215,7 +215,6 @@ Object {
   },
   "isomorphicMapzenSearchQuery": Object {
     "api_key": "dummy-mapzen-key",
-    "sources": "gn,oa,osm,wof",
     "text": "Mill Ends",
   },
   "type": "FeatureCollection",
