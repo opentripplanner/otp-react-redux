@@ -195,12 +195,6 @@ Object {
       "parser": "addressit",
       "private": false,
       "size": 10,
-      "sources": Array [
-        "geonames",
-        "openaddresses",
-        "openstreetmap",
-        "whosonfirst",
-      ],
       "text": "Mill Ends",
       "tokens": Array [
         "Mill",
@@ -215,7 +209,6 @@ Object {
   },
   "isomorphicMapzenSearchQuery": Object {
     "api_key": "dummy-mapzen-key",
-    "sources": "gn,oa,osm,wof",
     "text": "Mill Ends",
   },
   "type": "FeatureCollection",

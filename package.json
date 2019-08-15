@@ -4,8 +4,8 @@
   "main": "build/index.js",
   "scripts": {
     "build": "mastarm build --env production",
-    "cover": "mastarm test --coverage",
-    "jest": "mastarm test",
+    "cover": "mastarm test -e test --coverage",
+    "jest": "mastarm test -e test",
     "lint": "mastarm lint lib __tests__ --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
@@ -78,11 +78,17 @@
   },
   "devDependencies": {
     "documentation": "^12.0.3",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-15.4": "^1.4.0",
+    "enzyme-to-json": "^3.4.0",
     "es6-math": "^1.0.0",
+    "lodash.clonedeep": "^4.5.0",
     "mastarm": "^5.1.3",
     "nock": "^9.0.9",
     "react": "^15.4.2",
+    "react-addons-test-utils": "^15.6.2",
     "react-dom": "^15.4.2",
+    "redux-mock-store": "^1.5.3",
     "semantic-release": "^15.13.12"
   },
   "peerDependencies": {
@@ -90,7 +96,8 @@
     "react-dom": ">=15.0.0"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/__tests__/test-utils/setup.js",
+    "globalSetup": "<rootDir>/__tests__/test-utils/global-setup.js",
+    "setupFilesAfterEnv": ["<rootDir>/__tests__/test-utils/setup-env.js"],
     "testURL": "http://localhost/"
   }
 }

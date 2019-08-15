@@ -11,12 +11,6 @@
         "Ends"
       ],
       "size": 10,
-      "sources": [
-        "geonames",
-        "openaddresses",
-        "openstreetmap",
-        "whosonfirst"
-      ],
       "private": false,
       "focus.point.lat": 45.52,
       "focus.point.lon": -122.67,

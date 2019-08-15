@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lib > reducers > create-otp-reducer should be able to create the initial state 1`] = `
+Object {
+  "activeSearchId": 0,
+  "config": Object {
+    "autoPlan": false,
+    "debouncePlanTimeMs": 0,
+    "homeTimezone": "America/Los_Angeles",
+    "language": Object {},
+    "operators": Array [],
+    "realtimeEffectsDisplayThreshold": 120,
+    "routingTypes": Array [],
+    "stopViewer": Object {
+      "numberOfDepartures": 3,
+      "timeRange": 345600,
+    },
+  },
+  "currentQuery": Object {
+    "bikeSpeed": 3.58,
+    "companies": null,
+    "date": "2019-08-04",
+    "departArrive": "NOW",
+    "endTime": "09:00",
+    "from": null,
+    "ignoreRealtimeUpdates": false,
+    "maxBikeDistance": 4828,
+    "maxBikeTime": 20,
+    "maxEScooterDistance": 4828,
+    "maxWalkDistance": 1207,
+    "maxWalkTime": 15,
+    "mode": "WALK,TRAM,BUS,SUBWAY,FERRY,RAIL,GONDOLA",
+    "optimize": "QUICK",
+    "optimizeBike": "SAFE",
+    "routingType": "ITINERARY",
+    "showIntermediateStops": true,
+    "startTime": "07:00",
+    "time": "19:34",
+    "to": null,
+    "walkSpeed": 1.34,
+    "watts": 250,
+    "wheelchair": false,
+  },
+  "location": Object {
+    "currentPosition": Object {
+      "coords": null,
+      "error": null,
+      "fetching": false,
+    },
+    "nearbyStops": Array [],
+    "sessionSearches": Array [],
+  },
+  "overlay": Object {
+    "bikeRental": Object {
+      "stations": Array [],
+    },
+    "carRental": Object {
+      "stations": Array [],
+    },
+    "parkAndRide": Object {
+      "locations": null,
+    },
+    "transit": Object {
+      "stops": Array [],
+    },
+    "transitive": null,
+    "vehicleRental": Object {
+      "stations": Array [],
+    },
+    "zipcar": Object {
+      "locations": Array [],
+    },
+  },
+  "searches": Object {},
+  "tnc": Object {
+    "etaEstimates": Object {},
+    "rideEstimates": Object {},
+  },
+  "transitIndex": Object {
+    "stops": Object {},
+    "trips": Object {},
+  },
+  "ui": Object {
+    "diagramLeg": null,
+    "mobileScreen": 1,
+    "printView": false,
+  },
+  "useRealtime": true,
+  "user": Object {
+    "autoRefreshStopTimes": true,
+    "defaults": Object {
+      "bikeSpeed": 3.58,
+      "companies": null,
+      "endTime": "09:00",
+      "ignoreRealtimeUpdates": false,
+      "maxBikeDistance": 4828,
+      "maxBikeTime": 20,
+      "maxEScooterDistance": 4828,
+      "maxWalkDistance": 1207,
+      "maxWalkTime": 15,
+      "mode": "WALK,TRAM,BUS,SUBWAY,FERRY,RAIL,GONDOLA",
+      "optimize": "QUICK",
+      "optimizeBike": "SAFE",
+      "routingType": "ITINERARY",
+      "showIntermediateStops": true,
+      "startTime": "07:00",
+      "walkSpeed": 1.34,
+      "watts": 250,
+      "wheelchair": false,
+    },
+    "favoriteStops": Array [],
+    "locations": Array [],
+    "recentPlaces": Array [],
+    "recentSearches": Array [],
+    "trackRecent": false,
+  },
+}
+`;
