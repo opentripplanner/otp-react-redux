@@ -1,0 +1,350 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`geocoder ARCGIS should get location from geocode feature 1`] = `
+Object {
+  "lat": 51.973520000000065,
+  "lon": 0.1296100000000706,
+  "name": "Mill End, Clavering, Saffron Walden, Essex, England, GBR",
+}
+`;
+
+exports[`geocoder ARCGIS should make autocomplete query 1`] = `
+Object {
+  "features": Array [
+    Object {
+      "isCollection": false,
+      "magicKey": "dHA9MCNsb2M9ODU3OTE0NyNsbmc9MzMjcGw9MzI4OTA3MSNsYnM9MTQ6MjAwNTI3NTc=",
+      "properties": Object {
+        "label": "Mill Ends City Park, Portland, OR, USA",
+      },
+      "text": "Mill Ends City Park, Portland, OR, USA",
+    },
+    Object {
+      "isCollection": false,
+      "magicKey": "dHA9MCNsb2M9OTY5Mzc0MiNsbmc9MzMjcGw9NTA4NTQ2NiNsYnM9MTQ6MjAwNTI3NTI=",
+      "properties": Object {
+        "label": "Mill End Sports & Social, Penn Road, Mill End, Rickmansworth, Hertfordshire, England, WD3 8, GBR",
+      },
+      "text": "Mill End Sports & Social, Penn Road, Mill End, Rickmansworth, Hertfordshire, England, WD3 8, GBR",
+    },
+  ],
+}
+`;
+
+exports[`geocoder ARCGIS should make reverse query 1`] = `
+Object {
+  "lat": 45.516198,
+  "lon": -122.67324,
+  "name": "SW Naito Pkwy, Portland, OR, 97204, USA",
+}
+`;
+
+exports[`geocoder ARCGIS should make search query 1`] = `
+Object {
+  "features": Array [
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          0.1296100000000706,
+          51.973520000000065,
+        ],
+        "type": "point",
+      },
+      "properties": Object {
+        "confidence": 0.875,
+        "country": "GBR",
+        "country_a": "GBR",
+        "county": "Essex",
+        "label": "Mill End, Clavering, Saffron Walden, Essex, England, GBR",
+        "locality": "Saffron Walden",
+        "name": "Mill End",
+        "neighbourhood": "Mill End",
+        "region": "England",
+        "resultId": undefined,
+      },
+      "type": "feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -0.8668999999999301,
+          51.558340000000044,
+        ],
+        "type": "point",
+      },
+      "properties": Object {
+        "confidence": 0.875,
+        "country": "GBR",
+        "country_a": "GBR",
+        "county": "Oxfordshire",
+        "label": "Mill End, Hambleden, Henley-on-Thames, Oxfordshire, England, GBR",
+        "locality": "Henley-on-Thames",
+        "name": "Mill End",
+        "neighbourhood": "Mill End",
+        "region": "England",
+        "resultId": undefined,
+      },
+      "type": "feature",
+    },
+  ],
+  "query": Object {
+    "text": "Mill Ends",
+  },
+}
+`;
+
+exports[`geocoder NoApiGeocoder should get location from geocode feature 1`] = `
+Object {
+  "lat": 45.516198,
+  "lon": -122.67324,
+  "name": "45.516198, -122.673240",
+}
+`;
+
+exports[`geocoder NoApiGeocoder should make autocomplete query 1`] = `
+Object {
+  "features": Array [],
+}
+`;
+
+exports[`geocoder NoApiGeocoder should make reverse query 1`] = `
+Object {
+  "lat": 45.5162,
+  "lon": -122.67324,
+  "name": "45.5162, -122.67324",
+}
+`;
+
+exports[`geocoder NoApiGeocoder should make search query 1`] = `
+Object {
+  "features": Array [],
+}
+`;
+
+exports[`geocoder PELIAS should get location from geocode feature 1`] = `
+Object {
+  "lat": 45.516198,
+  "lon": -122.67324,
+  "name": "Mill Ends Park, Portland, OR, USA",
+}
+`;
+
+exports[`geocoder PELIAS should make autocomplete query 1`] = `
+Object {
+  "bbox": Array [
+    -122.673377,
+    45.516278,
+    -122.673377,
+    45.516278,
+  ],
+  "features": Array [
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -122.673377,
+          45.516278,
+        ],
+        "type": "Point",
+      },
+      "properties": Object {
+        "accuracy": "point",
+        "continent": "North America",
+        "continent_gid": "whosonfirst:continent:102191575",
+        "country": "United States",
+        "country_a": "USA",
+        "country_gid": "whosonfirst:country:85633793",
+        "county": "Multnomah County",
+        "county_a": "MU",
+        "county_gid": "whosonfirst:county:102081631",
+        "distance": 0.491,
+        "gid": "openstreetmap:venue:node/4243944023",
+        "id": "node/4243944023",
+        "label": "Mill Ends Park, Portland, OR, USA",
+        "layer": "venue",
+        "locality": "Portland",
+        "locality_gid": "whosonfirst:locality:101715829",
+        "name": "Mill Ends Park",
+        "neighbourhood": "Downtown",
+        "neighbourhood_gid": "whosonfirst:neighbourhood:85867131",
+        "region": "Oregon",
+        "region_a": "OR",
+        "region_gid": "whosonfirst:region:85688513",
+        "source": "openstreetmap",
+        "source_id": "node/4243944023",
+      },
+      "type": "Feature",
+    },
+  ],
+  "geocoding": Object {
+    "attribution": "http://lb-st-mapgeo.tri-met.org:4000/attribution",
+    "engine": Object {
+      "author": "Mapzen",
+      "name": "Pelias",
+      "version": "1.0",
+    },
+    "query": Object {
+      "focus.point.lat": 45.52,
+      "focus.point.lon": -122.67,
+      "lang": Object {
+        "defaulted": true,
+        "iso6391": "en",
+        "iso6393": "eng",
+        "name": "English",
+      },
+      "parsed_text": Object {},
+      "parser": "addressit",
+      "private": false,
+      "size": 10,
+      "text": "Mill Ends",
+      "tokens": Array [
+        "Mill",
+        "Ends",
+      ],
+    },
+    "timestamp": 1563948844191,
+    "version": "0.2",
+    "warnings": Array [
+      "Invalid Parameter: api_key",
+    ],
+  },
+  "isomorphicMapzenSearchQuery": Object {
+    "api_key": "dummy-mapzen-key",
+    "text": "Mill Ends",
+  },
+  "type": "FeatureCollection",
+}
+`;
+
+exports[`geocoder PELIAS should make reverse query 1`] = `
+Object {
+  "lat": 45.516198,
+  "lon": -122.67324,
+  "name": "Mill Ends Park, Portland, OR, USA",
+}
+`;
+
+exports[`geocoder PELIAS should make search query 1`] = `
+Object {
+  "bbox": Array [
+    -122.821522,
+    45.495264,
+    -122.475528,
+    45.516278,
+  ],
+  "features": Array [
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -122.673377,
+          45.516278,
+        ],
+        "type": "Point",
+      },
+      "properties": Object {
+        "accuracy": "point",
+        "confidence": 1,
+        "continent": "North America",
+        "continent_gid": "whosonfirst:continent:102191575",
+        "country": "United States",
+        "country_a": "USA",
+        "country_gid": "whosonfirst:country:85633793",
+        "county": "Multnomah County",
+        "county_a": "MU",
+        "county_gid": "whosonfirst:county:102081631",
+        "distance": 0.491,
+        "gid": "openstreetmap:venue:node/4243944023",
+        "id": "node/4243944023",
+        "label": "Mill Ends Park, Portland, OR, USA",
+        "layer": "venue",
+        "locality": "Portland",
+        "locality_gid": "whosonfirst:locality:101715829",
+        "match_type": "exact",
+        "name": "Mill Ends Park",
+        "neighbourhood": "Downtown",
+        "neighbourhood_gid": "whosonfirst:neighbourhood:85867131",
+        "region": "Oregon",
+        "region_a": "OR",
+        "region_gid": "whosonfirst:region:85688513",
+        "source": "openstreetmap",
+        "source_id": "node/4243944023",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -122.681441,
+          45.511851,
+        ],
+        "type": "Point",
+      },
+      "properties": Object {
+        "accuracy": "centroid",
+        "confidence": 1,
+        "continent": "North America",
+        "continent_gid": "whosonfirst:continent:102191575",
+        "country": "United States",
+        "country_a": "USA",
+        "country_gid": "whosonfirst:country:85633793",
+        "county": "Multnomah County",
+        "county_a": "MU",
+        "county_gid": "whosonfirst:county:102081631",
+        "distance": 1.273,
+        "gid": "transit:station:2584-1136::TRIMET::station",
+        "id": "2584-1136::TRIMET::station",
+        "label": "PSU Urban Center/SW 5th & Mill MAX Station, Portland, OR, USA",
+        "layer": "station",
+        "locality": "Portland",
+        "locality_gid": "whosonfirst:locality:101715829",
+        "match_type": "exact",
+        "name": "PSU Urban Center/SW 5th & Mill MAX Station",
+        "neighbourhood": "Downtown",
+        "neighbourhood_gid": "whosonfirst:neighbourhood:85867131",
+        "postalcode": "97201",
+        "region": "Oregon",
+        "region_a": "OR",
+        "region_gid": "whosonfirst:region:85688513",
+        "source": "transit",
+        "source_id": "2584-1136::trimet::station",
+        "street": "SW 5th & Mill",
+      },
+      "type": "Feature",
+    },
+  ],
+  "geocoding": Object {
+    "attribution": "http://lb-st-mapgeo.tri-met.org:4000/attribution",
+    "engine": Object {
+      "author": "Mapzen",
+      "name": "Pelias",
+      "version": "1.0",
+    },
+    "query": Object {
+      "focus.point.lat": 45.52,
+      "focus.point.lon": -122.67,
+      "lang": Object {
+        "defaulted": true,
+        "iso6391": "en",
+        "iso6393": "eng",
+        "name": "English",
+      },
+      "parsed_text": Object {},
+      "parser": "addressit",
+      "private": false,
+      "querySize": 20,
+      "size": 10,
+      "text": "Mill Ends",
+    },
+    "timestamp": 1563949031708,
+    "version": "0.2",
+    "warnings": Array [
+      "Invalid Parameter: api_key",
+    ],
+  },
+  "isomorphicMapzenSearchQuery": Object {
+    "api_key": "dummy-mapzen-key",
+    "size": 10,
+    "text": "Mill Ends",
+  },
+  "type": "FeatureCollection",
+}
+`;

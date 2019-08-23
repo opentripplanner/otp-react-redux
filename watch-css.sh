@@ -1,1 +1,1 @@
-fswatch -o lib/ | xargs -n 1 sh ./cpcss.sh
+fswatch -e ".*" -i "\\.css$" lib | xargs -n 1 sh ./cpcss.sh

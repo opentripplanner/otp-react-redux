@@ -1,0 +1,77 @@
+{
+  "geocoding": {
+    "version": "0.2",
+    "attribution": "http://lb-st-mapgeo.tri-met.org:4000/attribution",
+    "query": {
+      "text": "Mill Ends",
+      "parser": "addressit",
+      "parsed_text": {},
+      "tokens": [
+        "Mill",
+        "Ends"
+      ],
+      "size": 10,
+      "private": false,
+      "focus.point.lat": 45.52,
+      "focus.point.lon": -122.67,
+      "lang": {
+        "name": "English",
+        "iso6391": "en",
+        "iso6393": "eng",
+        "defaulted": true
+      }
+    },
+    "warnings": [
+      "Invalid Parameter: api_key"
+    ],
+    "engine": {
+      "name": "Pelias",
+      "author": "Mapzen",
+      "version": "1.0"
+    },
+    "timestamp": 1563948844191
+  },
+  "type": "FeatureCollection",
+  "features": [{
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.673377,
+        45.516278
+      ]
+    },
+    "properties": {
+      "id": "node/4243944023",
+      "gid": "openstreetmap:venue:node/4243944023",
+      "layer": "venue",
+      "source": "openstreetmap",
+      "source_id": "node/4243944023",
+      "name": "Mill Ends Park",
+      "distance": 0.491,
+      "accuracy": "point",
+      "country": "United States",
+      "country_gid": "whosonfirst:country:85633793",
+      "country_a": "USA",
+      "region": "Oregon",
+      "region_gid": "whosonfirst:region:85688513",
+      "region_a": "OR",
+      "county": "Multnomah County",
+      "county_gid": "whosonfirst:county:102081631",
+      "county_a": "MU",
+      "locality": "Portland",
+      "locality_gid": "whosonfirst:locality:101715829",
+      "neighbourhood": "Downtown",
+      "neighbourhood_gid": "whosonfirst:neighbourhood:85867131",
+      "continent": "North America",
+      "continent_gid": "whosonfirst:continent:102191575",
+      "label": "Mill Ends Park, Portland, OR, USA"
+    }
+  }],
+  "bbox": [
+    -122.673377,
+    45.516278,
+    -122.673377,
+    45.516278
+  ]
+}

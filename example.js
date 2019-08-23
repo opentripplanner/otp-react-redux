@@ -1,7 +1,11 @@
-// import necessary React/Redux libraries
+// import this polyfill in order to make webapp compatible with IE 11
+import 'es6-math'
+
+import { createHashHistory } from 'history'
+import { connectRouter, routerMiddleware } from 'connected-react-router'
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
@@ -38,19 +42,29 @@ const initialQuery = {
   type: 'ITINERARY'
 }
 
+const history = createHashHistory()
+const middleware = [
+  thunk,
+  routerMiddleware(history) // for dispatching history actions
+]
+
+// check if app is being run in development mode. If so, enable redux-logger
+if (process.env.NODE_ENV === 'development') {
+  middleware.push(createLogger())
+}
+
 // set up the Redux store
 const store = createStore(
   combineReducers({
-    otp: createOtpReducer(otpConfig) // add optional initial query here
-    // add your own reducers if you want
+    otp: createOtpReducer(otpConfig),
+    router: connectRouter(history)
   }),
-  applyMiddleware(thunk, createLogger())
+  compose(applyMiddleware(...middleware))
 )
 
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
-
     /** desktop view **/
     const desktopView = (
       <div className='otp'>
