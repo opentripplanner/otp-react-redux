@@ -1,54 +1,37 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _distance = require('./distance');
+var distance = _interopRequireWildcard(require("./distance"));
 
-var distance = _interopRequireWildcard(_distance);
+var _geocoder = _interopRequireDefault(require("./geocoder"));
 
-var _geocoder = require('./geocoder');
+var itinerary = _interopRequireWildcard(require("./itinerary"));
 
-var geocoder = _interopRequireWildcard(_geocoder);
+var map = _interopRequireWildcard(require("./map"));
 
-var _itinerary = require('./itinerary');
+var profile = _interopRequireWildcard(require("./profile"));
 
-var itinerary = _interopRequireWildcard(_itinerary);
+var query = _interopRequireWildcard(require("./query"));
 
-var _map = require('./map');
+var reverse = _interopRequireWildcard(require("./reverse"));
 
-var map = _interopRequireWildcard(_map);
+var state = _interopRequireWildcard(require("./state"));
 
-var _profile = require('./profile');
+var time = _interopRequireWildcard(require("./time"));
 
-var profile = _interopRequireWildcard(_profile);
+var ui = _interopRequireWildcard(require("./ui"));
 
-var _query = require('./query');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var query = _interopRequireWildcard(_query);
-
-var _reverse = require('./reverse');
-
-var reverse = _interopRequireWildcard(_reverse);
-
-var _state = require('./state');
-
-var state = _interopRequireWildcard(_state);
-
-var _time = require('./time');
-
-var time = _interopRequireWildcard(_time);
-
-var _ui = require('./ui');
-
-var ui = _interopRequireWildcard(_ui);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 var OtpUtils = {
   distance: distance,
-  geocoder: geocoder,
+  getGeocoder: _geocoder.default,
   itinerary: itinerary,
   map: map,
   profile: profile,
@@ -58,8 +41,8 @@ var OtpUtils = {
   time: time,
   ui: ui
 };
-
-exports.default = OtpUtils;
-module.exports = exports['default'];
+var _default = OtpUtils;
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=index.js

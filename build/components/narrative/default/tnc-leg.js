@@ -1,134 +1,114 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+require("core-js/modules/es6.function.name");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _currencyFormatter = _interopRequireDefault(require("currency-formatter"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _reactRedux = require("react-redux");
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _api = require("../../../actions/api");
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _itinerary = require("../../../util/itinerary");
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _time = require("../../../util/time");
 
-var _class, _temp2;
+var _ui = require("../../../util/ui");
 
-var _currencyFormatter = require('currency-formatter');
-
-var _currencyFormatter2 = _interopRequireDefault(_currencyFormatter);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = require('react-redux');
-
-var _api = require('../../../actions/api');
-
-var _itinerary = require('../../../util/itinerary');
-
-var _time = require('../../../util/time');
-
-var _ui = require('../../../util/ui');
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TransportationNetworkCompanyLeg = (_temp2 = _class = function (_Component) {
-  (0, _inherits3.default)(TransportationNetworkCompanyLeg, _Component);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var TransportationNetworkCompanyLeg =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(TransportationNetworkCompanyLeg, _Component);
 
   function TransportationNetworkCompanyLeg() {
-    var _ref;
+    var _getPrototypeOf2;
 
-    var _temp, _this, _ret;
+    var _this;
 
-    (0, _classCallCheck3.default)(this, TransportationNetworkCompanyLeg);
+    _classCallCheck(this, TransportationNetworkCompanyLeg);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = TransportationNetworkCompanyLeg.__proto__ || (0, _getPrototypeOf2.default)(TransportationNetworkCompanyLeg)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TransportationNetworkCompanyLeg)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {});
+
+    return _this;
   }
 
-  (0, _createClass3.default)(TransportationNetworkCompanyLeg, [{
-    key: 'render',
+  _createClass(TransportationNetworkCompanyLeg, [{
+    key: "render",
     value: function render() {
-      var _props = this.props,
-          leg = _props.leg,
-          legMode = _props.legMode,
-          LYFT_CLIENT_ID = _props.LYFT_CLIENT_ID,
-          UBER_CLIENT_ID = _props.UBER_CLIENT_ID;
-
+      var _this$props = this.props,
+          leg = _this$props.leg,
+          legMode = _this$props.legMode,
+          LYFT_CLIENT_ID = _this$props.LYFT_CLIENT_ID,
+          UBER_CLIENT_ID = _this$props.UBER_CLIENT_ID;
       var universalLinks = {
-        'UBER': 'https://m.uber.com/' + ((0, _ui.isMobile)() ? 'ul/' : '') + '?client_id=' + UBER_CLIENT_ID + '&action=setPickup&pickup[latitude]=' + leg.from.lat + '&pickup[longitude]=' + leg.from.lon + '&pickup[nickname]=' + encodeURI(leg.from.name) + '&dropoff[latitude]=' + leg.to.lat + '&dropoff[longitude]=' + leg.to.lon + '&dropoff[nickname]=' + encodeURI(leg.to.name),
-        'LYFT': 'https://lyft.com/ride?id=' + defaultTncRideTypes['LYFT'] + '&partner=' + LYFT_CLIENT_ID + '&pickup[latitude]=' + leg.from.lat + '&pickup[longitude]=' + leg.from.lon + '&destination[latitude]=' + leg.to.lat + '&destination[longitude]=' + leg.to.lon
+        'UBER': "https://m.uber.com/".concat((0, _ui.isMobile)() ? 'ul/' : '', "?client_id=").concat(UBER_CLIENT_ID, "&action=setPickup&pickup[latitude]=").concat(leg.from.lat, "&pickup[longitude]=").concat(leg.from.lon, "&pickup[nickname]=").concat(encodeURI(leg.from.name), "&dropoff[latitude]=").concat(leg.to.lat, "&dropoff[longitude]=").concat(leg.to.lon, "&dropoff[nickname]=").concat(encodeURI(leg.to.name)),
+        'LYFT': "https://lyft.com/ride?id=".concat(defaultTncRideTypes['LYFT'], "&partner=").concat(LYFT_CLIENT_ID, "&pickup[latitude]=").concat(leg.from.lat, "&pickup[longitude]=").concat(leg.from.lon, "&destination[latitude]=").concat(leg.to.lat, "&destination[longitude]=").concat(leg.to.lon)
       };
       var tncData = leg.tncData;
-
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'p',
-          null,
-          '* estimated travel time does not account for traffic.'
-        ),
-        _react2.default.createElement(
-          'a',
-          {
-            className: 'btn btn-default',
-            href: universalLinks[legMode.label.toUpperCase()],
-            style: { marginBottom: 15 },
-            target: (0, _ui.isMobile)() ? '_self' : '_blank' },
-          'Book Ride'
-        ),
-        tncData && tncData.estimatedArrival ? _react2.default.createElement(
-          'p',
-          null,
-          'ETA for a driver: ',
-          (0, _time.formatDuration)(tncData.estimatedArrival)
-        ) : _react2.default.createElement(
-          'p',
-          null,
-          'Could not obtain eta estimate from ',
-          (0, _itinerary.toSentenceCase)(legMode.label),
-          '!'
-        ),
-        tncData && tncData.minCost ? _react2.default.createElement(
-          'p',
-          null,
-          'Estimated cost: ',
-          _currencyFormatter2.default.format(tncData.minCost, { code: tncData.currency }) + ' - ' + _currencyFormatter2.default.format(tncData.maxCost, { code: tncData.currency })
-        ) : _react2.default.createElement(
-          'p',
-          null,
-          'Could not obtain ride estimate from ',
-          (0, _itinerary.toSentenceCase)(legMode.label),
-          '!'
-        ),
-        '}'
-      );
+      return _react.default.createElement("div", null, _react.default.createElement("p", null, "* estimated travel time does not account for traffic."), _react.default.createElement("a", {
+        className: "btn btn-default",
+        href: universalLinks[legMode.label.toUpperCase()],
+        style: {
+          marginBottom: 15
+        },
+        target: (0, _ui.isMobile)() ? '_self' : '_blank'
+      }, "Book Ride"), tncData && tncData.estimatedArrival ? _react.default.createElement("p", null, "ETA for a driver: ", (0, _time.formatDuration)(tncData.estimatedArrival)) : _react.default.createElement("p", null, "Could not obtain eta estimate from ", (0, _itinerary.toSentenceCase)(legMode.label), "!"), tncData && tncData.minCost ? _react.default.createElement("p", null, "Estimated cost: ", "".concat(_currencyFormatter.default.format(tncData.minCost, {
+        code: tncData.currency
+      }), " - ").concat(_currencyFormatter.default.format(tncData.maxCost, {
+        code: tncData.currency
+      }))) : _react.default.createElement("p", null, "Could not obtain ride estimate from ", (0, _itinerary.toSentenceCase)(legMode.label), "!"), "}");
     }
   }]);
-  return TransportationNetworkCompanyLeg;
-}(_react.Component), _class.propTypes = {
-  leg: _react.PropTypes.object,
-  legMode: _react.PropTypes.object
-}, _temp2);
 
+  return TransportationNetworkCompanyLeg;
+}(_react.Component);
+
+_defineProperty(TransportationNetworkCompanyLeg, "propTypes", {
+  leg: _propTypes.default.object,
+  legMode: _propTypes.default.object
+});
 
 var defaultTncRideTypes = {
   'LYFT': 'lyft',
@@ -139,7 +119,6 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var _state$otp$config = state.otp.config,
       LYFT_CLIENT_ID = _state$otp$config.LYFT_CLIENT_ID,
       UBER_CLIENT_ID = _state$otp$config.UBER_CLIENT_ID;
-
   return {
     companies: state.otp.currentQuery.companies,
     tncData: state.otp.tnc,
@@ -153,7 +132,9 @@ var mapDispatchToProps = {
   getTransportationNetworkCompanyRideEstimate: _api.getTransportationNetworkCompanyRideEstimate
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TransportationNetworkCompanyLeg);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TransportationNetworkCompanyLeg);
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=tnc-leg.js

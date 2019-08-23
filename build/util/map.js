@@ -1,30 +1,48 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _getIterator2 = require('babel-runtime/core-js/get-iterator');
-
-var _getIterator3 = _interopRequireDefault(_getIterator2);
-
-var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
-
-var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
-
 exports.latlngToString = latlngToString;
 exports.coordsToString = coordsToString;
 exports.stringToCoords = stringToCoords;
 exports.constructLocation = constructLocation;
+exports.formatStoredPlaceName = formatStoredPlaceName;
+exports.getDetailText = getDetailText;
+exports.matchLatLon = matchLatLon;
 exports.itineraryToTransitive = itineraryToTransitive;
 exports.isBikeshareStation = isBikeshareStation;
 
-var _itinerary = require('./itinerary');
+require("core-js/modules/es7.symbol.async-iterator");
+
+require("core-js/modules/es6.symbol");
+
+require("core-js/modules/es6.array.iterator");
+
+require("core-js/modules/es6.object.to-string");
+
+require("core-js/modules/web.dom.iterable");
+
+require("core-js/modules/es6.function.name");
+
+require("core-js/modules/es6.regexp.split");
+
+var _moment = _interopRequireDefault(require("moment"));
+
+var _itinerary = require("./itinerary");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function latlngToString(latlng) {
-  return latlng && latlng.lat.toFixed(5) + ', ' + (latlng.lng || latlng.lon).toFixed(5);
+  return latlng && "".concat(latlng.lat.toFixed(5), ", ").concat((latlng.lng || latlng.lon).toFixed(5));
 }
 
 function coordsToString(coords) {
@@ -47,6 +65,39 @@ function constructLocation(latlng) {
   };
 }
 
+function formatStoredPlaceName(location) {
+  var withDetails = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var displayName = location.type === 'home' || location.type === 'work' ? (0, _itinerary.toSentenceCase)(location.type) : location.name;
+
+  if (withDetails) {
+    var detailText = getDetailText(location);
+    if (detailText) displayName += " (".concat(detailText, ")");
+  }
+
+  return displayName;
+}
+
+function getDetailText(location) {
+  var detailText;
+
+  if (location.type === 'home' || location.type === 'work') {
+    detailText = location.name;
+  }
+
+  if (location.type === 'stop') {
+    detailText = location.id;
+  } else if (location.type === 'recent' && location.timestamp) {
+    detailText = (0, _moment.default)(location.timestamp).fromNow();
+  }
+
+  return detailText;
+}
+
+function matchLatLon(location1, location2) {
+  if (!location1 || !location2) return location1 === location2;
+  return location1.lat === location2.lat && location1.lon === location2.lon;
+}
+
 function itineraryToTransitive(itin, includeGeometry) {
   // console.log('itineraryToTransitive', itin);
   var tdata = {
@@ -61,14 +112,13 @@ function itineraryToTransitive(itin, includeGeometry) {
   var stops = {};
   var streetEdgeId = 0;
   var patternId = 0;
-
   var journey = {
     journey_id: 'itin',
     journey_name: 'Iterarary-derived Journey',
-    segments: []
+    segments: [] // add 'from' and 'to' places to the tdata places array
 
-    // add 'from' and 'to' places to the tdata places array
-  };tdata.places.push({
+  };
+  tdata.places.push({
     place_id: 'from',
     place_lat: itin.legs[0].from.lat,
     place_lon: itin.legs[0].from.lon
@@ -78,21 +128,25 @@ function itineraryToTransitive(itin, includeGeometry) {
     place_lat: itin.legs[itin.legs.length - 1].to.lat,
     place_lon: itin.legs[itin.legs.length - 1].to.lon
   });
-
   itin.legs.forEach(function (leg) {
     if (leg.mode === 'WALK' || leg.mode === 'BICYCLE' || leg.mode === 'CAR' || leg.mode === 'MICROMOBILITY') {
-      var fromPlaceId = leg.from.bikeShareId ? 'bicycle_rent_station_' + leg.from.bikeShareId : 'itin_street_' + streetEdgeId + '_from';
-      var toPlaceId = leg.to.bikeShareId ? 'bicycle_rent_station_' + leg.to.bikeShareId : 'itin_street_' + streetEdgeId + '_to';
-
+      var fromPlaceId = leg.from.bikeShareId ? "bicycle_rent_station_".concat(leg.from.bikeShareId) : "itin_street_".concat(streetEdgeId, "_from");
+      var toPlaceId = leg.to.bikeShareId ? "bicycle_rent_station_".concat(leg.to.bikeShareId) : "itin_street_".concat(streetEdgeId, "_to");
       var segment = {
         type: leg.mode,
         streetEdges: [streetEdgeId],
-        from: { type: 'PLACE', place_id: fromPlaceId },
-        to: { type: 'PLACE', place_id: toPlaceId }
-        // For TNC segments, draw using an arc
-      };if (leg.mode === 'CAR' && leg.hailedCar) segment.arc = true;
-      journey.segments.push(segment);
+        from: {
+          type: 'PLACE',
+          place_id: fromPlaceId
+        },
+        to: {
+          type: 'PLACE',
+          place_id: toPlaceId
+        } // For TNC segments, draw using an arc
 
+      };
+      if (leg.mode === 'CAR' && leg.hailedCar) segment.arc = true;
+      journey.segments.push(segment);
       tdata.streetEdges.push({
         edge_id: streetEdgeId,
         geometry: leg.legGeometry
@@ -115,40 +169,38 @@ function itineraryToTransitive(itin, includeGeometry) {
       });
       streetEdgeId++;
     }
+
     if ((0, _itinerary.isTransit)(leg.mode)) {
       // determine if we have valid inter-stop geometry
-      var hasInterStopGeometry = leg.interStopGeometry && leg.interStopGeometry.length === leg.intermediateStops.length + 1;
+      var hasInterStopGeometry = leg.interStopGeometry && leg.interStopGeometry.length === leg.intermediateStops.length + 1; // create leg-specific pattern
 
-      // create leg-specific pattern
       var ptnId = 'ptn_' + patternId;
       var pattern = {
         pattern_id: ptnId,
         pattern_name: 'Pattern ' + patternId,
         route_id: leg.routeId,
-        stops: []
+        stops: [] // add 'from' stop to stops dictionary and pattern object
 
-        // add 'from' stop to stops dictionary and pattern object
-      };stops[leg.from.stopId] = {
+      };
+      stops[leg.from.stopId] = {
         stop_id: leg.from.stopId,
         stop_name: leg.from.name,
         stop_lat: leg.from.lat,
         stop_lon: leg.from.lon
       };
-      pattern.stops.push({ stop_id: leg.from.stopId });
+      pattern.stops.push({
+        stop_id: leg.from.stopId
+      }); // add intermediate stops to stops dictionary and pattern object
 
-      // add intermediate stops to stops dictionary and pattern object
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
 
       try {
-        for (var _iterator = (0, _getIterator3.default)(leg.intermediateStops.entries()), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var _ref = _step.value;
-
-          var _ref2 = (0, _slicedToArray3.default)(_ref, 2);
-
-          var i = _ref2[0];
-          var stop = _ref2[1];
+        for (var _iterator = leg.intermediateStops.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var _step$value = _slicedToArray(_step.value, 2),
+              i = _step$value[0],
+              stop = _step$value[1];
 
           stops[stop.stopId] = {
             stop_id: stop.stopId,
@@ -160,15 +212,14 @@ function itineraryToTransitive(itin, includeGeometry) {
             stop_id: stop.stopId,
             geometry: hasInterStopGeometry && leg.interStopGeometry[i].points
           });
-        }
+        } // add 'to' stop to stops dictionary and pattern object
 
-        // add 'to' stop to stops dictionary and pattern object
       } catch (err) {
         _didIteratorError = true;
         _iteratorError = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
             _iterator.return();
           }
         } finally {
@@ -187,21 +238,19 @@ function itineraryToTransitive(itin, includeGeometry) {
       pattern.stops.push({
         stop_id: leg.to.stopId,
         geometry: hasInterStopGeometry && leg.interStopGeometry[leg.interStopGeometry.length - 1].points
-      });
+      }); // add route to the route dictionary
 
-      // add route to the route dictionary
       routes[leg.routeId] = {
         agency_id: leg.agencyId,
         route_id: leg.routeId,
         route_short_name: leg.routeShortName || '',
         route_long_name: leg.routeLongName || '',
         route_type: leg.routeType,
-        route_color: leg.routeColor
+        route_color: leg.routeColor // add the pattern to the tdata patterns array
 
-        // add the pattern to the tdata patterns array
-      };tdata.patterns.push(pattern);
+      };
+      tdata.patterns.push(pattern); // add the pattern refrerence to the journey object
 
-      // add the pattern refrerence to the journey object
       journey.segments.push({
         type: 'TRANSIT',
         patterns: [{
@@ -210,20 +259,21 @@ function itineraryToTransitive(itin, includeGeometry) {
           to_stop_index: leg.intermediateStops.length + 2 - 1
         }]
       });
-
       patternId++;
     }
-  });
+  }); // add the routes and stops to the tdata arrays
 
-  // add the routes and stops to the tdata arrays
   for (var k in routes) {
     tdata.routes.push(routes[k]);
-  }for (var _k in stops) {
+  }
+
+  for (var _k in stops) {
     tdata.stops.push(stops[_k]);
   } // add the journey to the tdata journeys array
-  tdata.journeys.push(journey);
 
-  // console.log('derived tdata', tdata);
+
+  tdata.journeys.push(journey); // console.log('derived tdata', tdata);
+
   return tdata;
 }
 

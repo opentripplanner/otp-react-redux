@@ -1,144 +1,133 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _react = _interopRequireWildcard(require("react"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _reactRedux = require("react-redux");
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _lodash = _interopRequireDefault(require("lodash.isequal"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _viewerContainer = _interopRequireDefault(require("../viewers/viewer-container"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _defaultSearchForm = _interopRequireDefault(require("../form/default-search-form"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _planTripButton = _interopRequireDefault(require("../form/plan-trip-button"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _userSettings = _interopRequireDefault(require("../form/user-settings"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _narrativeRoutingResults = _interopRequireDefault(require("../narrative/narrative-routing-results"));
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = require('react-redux');
-
-var _lodash = require('lodash.isequal');
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-var _viewerContainer = require('../viewers/viewer-container');
-
-var _viewerContainer2 = _interopRequireDefault(_viewerContainer);
-
-var _defaultSearchForm = require('../form/default-search-form');
-
-var _defaultSearchForm2 = _interopRequireDefault(_defaultSearchForm);
-
-var _planTripButton = require('../form/plan-trip-button');
-
-var _planTripButton2 = _interopRequireDefault(_planTripButton);
-
-var _userSettings = require('../form/user-settings');
-
-var _userSettings2 = _interopRequireDefault(_userSettings);
-
-var _narrativeRoutingResults = require('../narrative/narrative-routing-results');
-
-var _narrativeRoutingResults2 = _interopRequireDefault(_narrativeRoutingResults);
-
-var _state = require('../../util/state');
+var _state = require("../../util/state");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var DefaultMainPanel = function (_Component) {
-  (0, _inherits3.default)(DefaultMainPanel, _Component);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var DefaultMainPanel =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(DefaultMainPanel, _Component);
 
   function DefaultMainPanel() {
-    (0, _classCallCheck3.default)(this, DefaultMainPanel);
-    return (0, _possibleConstructorReturn3.default)(this, (DefaultMainPanel.__proto__ || (0, _getPrototypeOf2.default)(DefaultMainPanel)).apply(this, arguments));
+    _classCallCheck(this, DefaultMainPanel);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(DefaultMainPanel).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(DefaultMainPanel, [{
-    key: 'render',
+  _createClass(DefaultMainPanel, [{
+    key: "render",
     value: function render() {
-      var _props = this.props,
-          customIcons = _props.customIcons,
-          itineraryClass = _props.itineraryClass,
-          itineraryFooter = _props.itineraryFooter,
-          mainPanelContent = _props.mainPanelContent,
-          currentQuery = _props.currentQuery,
-          activeSearch = _props.activeSearch;
-
+      var _this$props = this.props,
+          activeSearch = _this$props.activeSearch,
+          currentQuery = _this$props.currentQuery,
+          customIcons = _this$props.customIcons,
+          itineraryClass = _this$props.itineraryClass,
+          itineraryFooter = _this$props.itineraryFooter,
+          mainPanelContent = _this$props.mainPanelContent,
+          showUserSettings = _this$props.showUserSettings;
       var showPlanTripButton = mainPanelContent === 'EDIT_DATETIME' || mainPanelContent === 'EDIT_SETTINGS';
       var mostRecentQuery = activeSearch ? activeSearch.query : null;
-      var planDisabled = (0, _lodash2.default)(currentQuery, mostRecentQuery);
-      return _react2.default.createElement(
-        _viewerContainer2.default,
-        null,
-        _react2.default.createElement(
-          'div',
-          { style: {
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: showPlanTripButton ? 55 : 0,
-              paddingBottom: 15,
-              overflow: 'auto'
-            } },
-          _react2.default.createElement(_defaultSearchForm2.default, { icons: customIcons }),
-          !activeSearch && !showPlanTripButton && _react2.default.createElement(_userSettings2.default, null),
-          _react2.default.createElement(
-            'div',
-            { className: 'desktop-narrative-container' },
-            _react2.default.createElement(_narrativeRoutingResults2.default, {
-              itineraryClass: itineraryClass,
-              itineraryFooter: itineraryFooter,
-              customIcons: customIcons })
-          )
-        ),
-        showPlanTripButton && _react2.default.createElement('div', {
-          style: {
-            position: 'absolute',
-            left: 0,
-            right: 10,
-            bottom: 55,
-            height: 15
-          },
-          className: 'white-fade' }),
-        showPlanTripButton && _react2.default.createElement(
-          'div',
-          { className: 'bottom-fixed' },
-          _react2.default.createElement(_planTripButton2.default, { disabled: planDisabled })
-        )
-      );
+      var planDisabled = (0, _lodash.default)(currentQuery, mostRecentQuery);
+      return _react.default.createElement(_viewerContainer.default, null, _react.default.createElement("div", {
+        style: {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: showPlanTripButton ? 55 : 0,
+          paddingBottom: 15,
+          overflow: 'auto'
+        }
+      }, _react.default.createElement(_defaultSearchForm.default, {
+        icons: customIcons
+      }), !activeSearch && !showPlanTripButton && showUserSettings && _react.default.createElement(_userSettings.default, null), _react.default.createElement("div", {
+        className: "desktop-narrative-container"
+      }, _react.default.createElement(_narrativeRoutingResults.default, {
+        itineraryClass: itineraryClass,
+        itineraryFooter: itineraryFooter,
+        customIcons: customIcons
+      }))), showPlanTripButton && _react.default.createElement("div", {
+        style: {
+          position: 'absolute',
+          left: 0,
+          right: 10,
+          bottom: 55,
+          height: 15
+        },
+        className: "white-fade"
+      }), showPlanTripButton && _react.default.createElement("div", {
+        className: "bottom-fixed"
+      }, _react.default.createElement(_planTripButton.default, {
+        disabled: planDisabled
+      })));
     }
   }]);
-  return DefaultMainPanel;
-}(_react.Component);
 
-// connect to the redux store
+  return DefaultMainPanel;
+}(_react.Component); // connect to the redux store
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  var showUserSettings = (0, _state.getShowUserSettings)(state.otp);
   return {
-    mainPanelContent: state.otp.ui.mainPanelContent,
+    activeSearch: (0, _state.getActiveSearch)(state.otp),
     currentQuery: state.otp.currentQuery,
-    activeSearch: (0, _state.getActiveSearch)(state.otp)
+    mainPanelContent: state.otp.ui.mainPanelContent,
+    showUserSettings: showUserSettings
   };
 };
 
 var mapDispatchToProps = {};
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(DefaultMainPanel);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(DefaultMainPanel);
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=default-main-panel.js

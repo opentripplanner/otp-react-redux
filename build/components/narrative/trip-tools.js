@@ -1,111 +1,115 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es6.function.name");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.regexp.replace");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+require("core-js/modules/es6.symbol");
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _reactRedux = require("react-redux");
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _reactBootstrap = require("react-bootstrap");
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _copyToClipboard = _interopRequireDefault(require("copy-to-clipboard"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp, _class4, _temp4;
-// import { DropdownButton, MenuItem } from 'react-bootstrap'
-
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = require('react-redux');
-
-var _reactBootstrap = require('react-bootstrap');
-
-var _copyToClipboard = require('copy-to-clipboard');
-
-var _copyToClipboard2 = _interopRequireDefault(_copyToClipboard);
-
-var _bowser = require('bowser');
-
-var _bowser2 = _interopRequireDefault(_bowser);
+var _bowser = _interopRequireDefault(require("bowser"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TripTools = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(TripTools, _Component);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var TripTools =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(TripTools, _Component);
 
   function TripTools() {
-    (0, _classCallCheck3.default)(this, TripTools);
-    return (0, _possibleConstructorReturn3.default)(this, (TripTools.__proto__ || (0, _getPrototypeOf2.default)(TripTools)).apply(this, arguments));
+    _classCallCheck(this, TripTools);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(TripTools).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(TripTools, [{
-    key: 'render',
+  _createClass(TripTools, [{
+    key: "render",
     value: function render() {
-      var _props = this.props,
-          buttonTypes = _props.buttonTypes,
-          reportConfig = _props.reportConfig,
-          reactRouterConfig = _props.reactRouterConfig;
-
-
+      var _this$props = this.props,
+          buttonTypes = _this$props.buttonTypes,
+          reportConfig = _this$props.reportConfig,
+          reactRouterConfig = _this$props.reactRouterConfig;
       var buttonComponents = [];
       buttonTypes.forEach(function (type) {
         switch (type) {
           case 'COPY_URL':
-            buttonComponents.push(_react2.default.createElement(CopyUrlButton, null));
+            buttonComponents.push(_react.default.createElement(CopyUrlButton, null));
             break;
+
           case 'PRINT':
-            buttonComponents.push(_react2.default.createElement(PrintButton, null));
+            buttonComponents.push(_react.default.createElement(PrintButton, null));
             break;
+
           case 'REPORT_ISSUE':
             if (!reportConfig || !reportConfig.mailto) break;
-            buttonComponents.push(_react2.default.createElement(ReportIssueButton, reportConfig));
+            buttonComponents.push(_react.default.createElement(ReportIssueButton, reportConfig));
             break;
+
           case 'START_OVER':
             // Determine "home" URL
             var startOverUrl = '/';
+
             if (reactRouterConfig && reactRouterConfig.basename) {
               startOverUrl += reactRouterConfig.basename;
             }
-            buttonComponents.push(_react2.default.createElement(LinkButton, { icon: 'undo', text: 'Start Over', url: startOverUrl }));
+
+            buttonComponents.push(_react.default.createElement(LinkButton, {
+              icon: "undo",
+              text: "Start Over",
+              url: startOverUrl
+            }));
             break;
         }
       });
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'trip-tools' },
-        buttonComponents.map(function (btn, i) {
-          return _react2.default.createElement(
-            'div',
-            { key: i, className: 'button-container' },
-            btn
-          );
-        })
-      );
+      return _react.default.createElement("div", {
+        className: "trip-tools"
+      }, buttonComponents.map(function (btn, i) {
+        return _react.default.createElement("div", {
+          key: i,
+          className: "button-container"
+        }, btn);
+      }));
     }
   }]);
-  return TripTools;
-}(_react.Component), _class.defaultProps = {
-  buttonTypes: ['COPY_URL', 'PRINT', 'REPORT_ISSUE', 'START_OVER']
-}, _temp);
 
-// Share/Save Dropdown Component -- not used currently
+  return TripTools;
+}(_react.Component); // Share/Save Dropdown Component -- not used currently
 
 /*
 class ShareSaveDropdownButton extends Component {
@@ -128,202 +132,198 @@ class ShareSaveDropdownButton extends Component {
   }
 }
 */
-
 // Copy URL Button
 
-var CopyUrlButton = function (_Component2) {
-  (0, _inherits3.default)(CopyUrlButton, _Component2);
+
+_defineProperty(TripTools, "defaultProps", {
+  buttonTypes: ['COPY_URL', 'PRINT', 'REPORT_ISSUE', 'START_OVER']
+});
+
+var CopyUrlButton =
+/*#__PURE__*/
+function (_Component2) {
+  _inherits(CopyUrlButton, _Component2);
 
   function CopyUrlButton(props) {
-    (0, _classCallCheck3.default)(this, CopyUrlButton);
+    var _this;
 
-    var _this2 = (0, _possibleConstructorReturn3.default)(this, (CopyUrlButton.__proto__ || (0, _getPrototypeOf2.default)(CopyUrlButton)).call(this, props));
+    _classCallCheck(this, CopyUrlButton);
 
-    _this2._onClick = function () {
-      (0, _copyToClipboard2.default)(window.location.href);
-      _this2.setState({ showCopied: true });
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CopyUrlButton).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "_onClick", function () {
+      (0, _copyToClipboard.default)(window.location.href);
+
+      _this.setState({
+        showCopied: true
+      });
+
       setTimeout(function () {
-        _this2.setState({ showCopied: false });
+        _this.setState({
+          showCopied: false
+        });
       }, 2000);
-    };
+    });
 
-    _this2.state = { showCopied: false };
-    return _this2;
+    _this.state = {
+      showCopied: false
+    };
+    return _this;
   }
 
-  (0, _createClass3.default)(CopyUrlButton, [{
-    key: 'render',
+  _createClass(CopyUrlButton, [{
+    key: "render",
     value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          _reactBootstrap.Button,
-          {
-            className: 'tool-button',
-            onClick: this._onClick
-          },
-          this.state.showCopied ? _react2.default.createElement(
-            'span',
-            null,
-            _react2.default.createElement('i', { className: 'fa fa-check' }),
-            ' Copied'
-          ) : _react2.default.createElement(
-            'span',
-            null,
-            _react2.default.createElement('i', { className: 'fa fa-clipboard' }),
-            ' Copy Link'
-          )
-        )
-      );
+      return _react.default.createElement("div", null, _react.default.createElement(_reactBootstrap.Button, {
+        className: "tool-button",
+        onClick: this._onClick
+      }, this.state.showCopied ? _react.default.createElement("span", null, _react.default.createElement("i", {
+        className: "fa fa-check"
+      }), " Copied") : _react.default.createElement("span", null, _react.default.createElement("i", {
+        className: "fa fa-clipboard"
+      }), " Copy Link")));
     }
   }]);
+
   return CopyUrlButton;
-}(_react.Component);
+}(_react.Component); // Print Button Component
 
-// Print Button Component
 
-var PrintButton = function (_Component3) {
-  (0, _inherits3.default)(PrintButton, _Component3);
+var PrintButton =
+/*#__PURE__*/
+function (_Component3) {
+  _inherits(PrintButton, _Component3);
 
   function PrintButton() {
-    var _ref;
+    var _getPrototypeOf2;
 
-    var _temp2, _this3, _ret;
+    var _this2;
 
-    (0, _classCallCheck3.default)(this, PrintButton);
+    _classCallCheck(this, PrintButton);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp2 = (_this3 = (0, _possibleConstructorReturn3.default)(this, (_ref = PrintButton.__proto__ || (0, _getPrototypeOf2.default)(PrintButton)).call.apply(_ref, [this].concat(args))), _this3), _this3._onClick = function () {
+    _this2 = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(PrintButton)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this2), "_onClick", function () {
       // Note: this is designed to work only with hash routing.
       var printUrl = window.location.href.replace('#', '#/print');
       window.open(printUrl, '_blank');
-    }, _temp2), (0, _possibleConstructorReturn3.default)(_this3, _ret);
+    });
+
+    return _this2;
   }
 
-  (0, _createClass3.default)(PrintButton, [{
-    key: 'render',
+  _createClass(PrintButton, [{
+    key: "render",
     value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          _reactBootstrap.Button,
-          {
-            className: 'tool-button',
-            onClick: this._onClick
-          },
-          _react2.default.createElement('i', { className: 'fa fa-print' }),
-          ' Print'
-        )
-      );
+      return _react.default.createElement("div", null, _react.default.createElement(_reactBootstrap.Button, {
+        className: "tool-button",
+        onClick: this._onClick
+      }, _react.default.createElement("i", {
+        className: "fa fa-print"
+      }), " Print"));
     }
   }]);
+
   return PrintButton;
-}(_react.Component);
+}(_react.Component); // Report Issue Button Component
 
-// Report Issue Button Component
 
-var ReportIssueButton = (_temp4 = _class4 = function (_Component4) {
-  (0, _inherits3.default)(ReportIssueButton, _Component4);
+var ReportIssueButton =
+/*#__PURE__*/
+function (_Component4) {
+  _inherits(ReportIssueButton, _Component4);
 
   function ReportIssueButton() {
-    var _ref2;
+    var _getPrototypeOf3;
 
-    var _temp3, _this4, _ret2;
+    var _this3;
 
-    (0, _classCallCheck3.default)(this, ReportIssueButton);
+    _classCallCheck(this, ReportIssueButton);
 
-    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
       args[_key2] = arguments[_key2];
     }
 
-    return _ret2 = (_temp3 = (_this4 = (0, _possibleConstructorReturn3.default)(this, (_ref2 = ReportIssueButton.__proto__ || (0, _getPrototypeOf2.default)(ReportIssueButton)).call.apply(_ref2, [this].concat(args))), _this4), _this4._onClick = function () {
-      var _this4$props = _this4.props,
-          mailto = _this4$props.mailto,
-          subject = _this4$props.subject;
+    _this3 = _possibleConstructorReturn(this, (_getPrototypeOf3 = _getPrototypeOf(ReportIssueButton)).call.apply(_getPrototypeOf3, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_this3), "_onClick", function () {
+      var _this3$props = _this3.props,
+          mailto = _this3$props.mailto,
+          subject = _this3$props.subject;
+      var bodyLines = ['                       *** INSTRUCTIONS TO USER ***', 'This feature allows you to email a report to site administrators for review.', "Please add any additional feedback for this trip under the 'Additional Comments'", 'section below and send using your regular email program.', '', 'SEARCH DATA:', 'Address: ' + window.location.href, 'Browser: ' + _bowser.default.name + ' ' + _bowser.default.version, 'OS: ' + _bowser.default.osname + ' ' + _bowser.default.osversion, '', 'ADDITIONAL COMMENTS:', ''];
+      window.open("mailto:".concat(mailto, "?subject=").concat(subject, "&body=").concat(encodeURIComponent(bodyLines.join('\n'))), '_self');
+    });
 
-      var bodyLines = ['                       *** INSTRUCTIONS TO USER ***', 'This feature allows you to email a report to site administrators for review.', 'Please add any additional feedback for this trip under the \'Additional Comments\'', 'section below and send using your regular email program.', '', 'SEARCH DATA:', 'Address: ' + window.location.href, 'Browser: ' + _bowser2.default.name + ' ' + _bowser2.default.version, 'OS: ' + _bowser2.default.osname + ' ' + _bowser2.default.osversion, '', 'ADDITIONAL COMMENTS:', ''];
-
-      window.open('mailto:' + mailto + '?subject=' + subject + '&body=' + encodeURIComponent(bodyLines.join('\n')), '_self');
-    }, _temp3), (0, _possibleConstructorReturn3.default)(_this4, _ret2);
+    return _this3;
   }
 
-  (0, _createClass3.default)(ReportIssueButton, [{
-    key: 'render',
+  _createClass(ReportIssueButton, [{
+    key: "render",
     value: function render() {
-      return _react2.default.createElement(
-        _reactBootstrap.Button,
-        {
-          className: 'tool-button',
-          onClick: this._onClick
-        },
-        _react2.default.createElement('i', { className: 'fa fa-flag' }),
-        ' Report Issue'
-      );
+      return _react.default.createElement(_reactBootstrap.Button, {
+        className: "tool-button",
+        onClick: this._onClick
+      }, _react.default.createElement("i", {
+        className: "fa fa-flag"
+      }), " Report Issue");
     }
   }]);
+
   return ReportIssueButton;
-}(_react.Component), _class4.defaultProps = {
+}(_react.Component); // Link to URL Button
+
+
+_defineProperty(ReportIssueButton, "defaultProps", {
   subject: 'Reporting an Issue with OpenTripPlanner'
-}, _temp4);
+});
 
-// Link to URL Button
-
-var LinkButton = function (_Component5) {
-  (0, _inherits3.default)(LinkButton, _Component5);
+var LinkButton =
+/*#__PURE__*/
+function (_Component5) {
+  _inherits(LinkButton, _Component5);
 
   function LinkButton() {
-    var _ref3;
+    var _getPrototypeOf4;
 
-    var _temp5, _this5, _ret3;
+    var _this4;
 
-    (0, _classCallCheck3.default)(this, LinkButton);
+    _classCallCheck(this, LinkButton);
 
-    for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+    for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
       args[_key3] = arguments[_key3];
     }
 
-    return _ret3 = (_temp5 = (_this5 = (0, _possibleConstructorReturn3.default)(this, (_ref3 = LinkButton.__proto__ || (0, _getPrototypeOf2.default)(LinkButton)).call.apply(_ref3, [this].concat(args))), _this5), _this5._onClick = function () {
-      window.location.href = _this5.props.url;
-    }, _temp5), (0, _possibleConstructorReturn3.default)(_this5, _ret3);
+    _this4 = _possibleConstructorReturn(this, (_getPrototypeOf4 = _getPrototypeOf(LinkButton)).call.apply(_getPrototypeOf4, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this4), "_onClick", function () {
+      window.location.href = _this4.props.url;
+    });
+
+    return _this4;
   }
 
-  (0, _createClass3.default)(LinkButton, [{
-    key: 'render',
+  _createClass(LinkButton, [{
+    key: "render",
     value: function render() {
-      var _props2 = this.props,
-          icon = _props2.icon,
-          text = _props2.text;
-
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          _reactBootstrap.Button,
-          {
-            className: 'tool-button',
-            onClick: this._onClick
-          },
-          icon && _react2.default.createElement(
-            'span',
-            null,
-            _react2.default.createElement('i', { className: 'fa fa-' + icon }),
-            ' '
-          ),
-          text
-        )
-      );
+      var _this$props2 = this.props,
+          icon = _this$props2.icon,
+          text = _this$props2.text;
+      return _react.default.createElement("div", null, _react.default.createElement(_reactBootstrap.Button, {
+        className: "tool-button",
+        onClick: this._onClick
+      }, icon && _react.default.createElement("span", null, _react.default.createElement("i", {
+        className: "fa fa-".concat(icon)
+      }), " "), text));
     }
   }]);
-  return LinkButton;
-}(_react.Component);
 
-// Connect main class to redux store
+  return LinkButton;
+}(_react.Component); // Connect main class to redux store
+
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
@@ -332,7 +332,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(TripTools);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps)(TripTools);
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=trip-tools.js

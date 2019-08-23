@@ -1,132 +1,127 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+require("core-js/modules/es6.symbol");
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es6.function.name");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _react = _interopRequireWildcard(require("react"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _reactBootstrap = require("react-bootstrap");
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _reactRedux = require("react-redux");
 
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp2;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactBootstrap = require('react-bootstrap');
-
-var _reactRedux = require('react-redux');
-
-var _form = require('../../actions/form');
+var _form = require("../../actions/form");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var DropdownSelector = (_temp2 = _class = function (_Component) {
-  (0, _inherits3.default)(DropdownSelector, _Component);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var DropdownSelector =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(DropdownSelector, _Component);
 
   function DropdownSelector() {
-    var _ref;
+    var _getPrototypeOf2;
 
-    var _temp, _this, _ret;
+    var _this;
 
-    (0, _classCallCheck3.default)(this, DropdownSelector);
+    _classCallCheck(this, DropdownSelector);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DropdownSelector.__proto__ || (0, _getPrototypeOf2.default)(DropdownSelector)).call.apply(_ref, [this].concat(args))), _this), _this._onQueryParamChange = function (evt) {
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DropdownSelector)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "_onQueryParamChange", function (evt) {
       var val = evt.target.value;
-      _this.props.setQueryParam((0, _defineProperty3.default)({}, _this.props.name, isNaN(val) ? val : parseFloat(val)));
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+
+      _this.props.setQueryParam(_defineProperty({}, _this.props.name, isNaN(val) ? val : parseFloat(val)));
+    });
+
+    return _this;
   }
 
-  (0, _createClass3.default)(DropdownSelector, [{
-    key: 'render',
+  _createClass(DropdownSelector, [{
+    key: "render",
     value: function render() {
-      var _props = this.props,
-          value = _props.value,
-          label = _props.label,
-          options = _props.options;
-
-
-      return _react2.default.createElement(
-        _reactBootstrap.Row,
-        null,
-        _react2.default.createElement(
-          _reactBootstrap.Col,
-          { xs: 6, className: 'setting-label' },
-          label
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.Col,
-          { xs: 6 },
-          _react2.default.createElement(
-            _reactBootstrap.Form,
-            null,
-            _react2.default.createElement(
-              _reactBootstrap.FormGroup,
-              { className: 'dropdown-selector-container' },
-              _react2.default.createElement(
-                _reactBootstrap.FormControl,
-                {
-                  className: 'dropdown-selector',
-                  componentClass: 'select',
-                  value: value,
-                  onChange: this._onQueryParamChange
-                },
-                options.map(function (o, i) {
-                  return _react2.default.createElement(
-                    'option',
-                    { key: i, value: o.value },
-                    o.text
-                  );
-                })
-              )
-            )
-          )
-        )
-      );
+      var _this$props = this.props,
+          value = _this$props.value,
+          label = _this$props.label,
+          options = _this$props.options;
+      return _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, {
+        xs: 6,
+        className: "setting-label"
+      }, label), _react.default.createElement(_reactBootstrap.Col, {
+        xs: 6
+      }, _react.default.createElement(_reactBootstrap.Form, null, _react.default.createElement(_reactBootstrap.FormGroup, {
+        className: "dropdown-selector-container"
+      }, _react.default.createElement(_reactBootstrap.FormControl, {
+        className: "dropdown-selector",
+        componentClass: "select",
+        value: value,
+        onChange: this._onQueryParamChange
+      }, options.map(function (o, i) {
+        return _react.default.createElement("option", {
+          key: i,
+          value: o.value
+        }, o.text);
+      }))))));
     }
   }]);
-  return DropdownSelector;
-}(_react.Component), _class.propTypes = {
-  name: _react.PropTypes.string,
-  value: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
-  label: _react.PropTypes.string,
-  options: _react.PropTypes.array,
-  setQueryParam: _react.PropTypes.func
-}, _temp2);
 
+  return DropdownSelector;
+}(_react.Component);
+
+_defineProperty(DropdownSelector, "propTypes", {
+  name: _propTypes.default.string,
+  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+  label: _propTypes.default.string,
+  options: _propTypes.default.array,
+  setQueryParam: _propTypes.default.func
+});
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {};
 };
 
-var mapDispatchToProps = { setQueryParam: _form.setQueryParam };
+var mapDispatchToProps = {
+  setQueryParam: _form.setQueryParam
+};
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(DropdownSelector);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(DropdownSelector);
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=dropdown-selector.js

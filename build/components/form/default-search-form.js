@@ -1,62 +1,61 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _react = _interopRequireWildcard(require("react"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _locationField = _interopRequireDefault(require("./location-field"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _switchButton = _interopRequireDefault(require("./switch-button"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _tabbedFormPanel = _interopRequireDefault(require("./tabbed-form-panel"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _locationField = require('./location-field');
-
-var _locationField2 = _interopRequireDefault(_locationField);
-
-var _switchButton = require('./switch-button');
-
-var _switchButton2 = _interopRequireDefault(_switchButton);
-
-var _tabbedFormPanel = require('./tabbed-form-panel');
-
-var _tabbedFormPanel2 = _interopRequireDefault(_tabbedFormPanel);
+var _icons = _interopRequireDefault(require("../icons"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var DefaultSearchForm = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(DefaultSearchForm, _Component);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var DefaultSearchForm =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(DefaultSearchForm, _Component);
 
   function DefaultSearchForm() {
-    (0, _classCallCheck3.default)(this, DefaultSearchForm);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (DefaultSearchForm.__proto__ || (0, _getPrototypeOf2.default)(DefaultSearchForm)).call(this));
+    _classCallCheck(this, DefaultSearchForm);
 
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DefaultSearchForm).call(this));
     _this.state = {
       desktopDateTimeExpanded: false,
       desktopSettingsExpanded: false
@@ -64,50 +63,51 @@ var DefaultSearchForm = (_temp = _class = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(DefaultSearchForm, [{
-    key: 'render',
+  _createClass(DefaultSearchForm, [{
+    key: "render",
     value: function render() {
-      var _props = this.props,
-          icons = _props.icons,
-          mobile = _props.mobile;
-
+      var _this$props = this.props,
+          icons = _this$props.icons,
+          mobile = _this$props.mobile;
       var actionText = mobile ? 'tap' : 'click';
-
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'div',
-          { className: 'locations' },
-          _react2.default.createElement(_locationField2.default, {
-            type: 'from',
-            label: 'Enter start location or ' + actionText + ' on map...',
-            showClearButton: true
-          }),
-          _react2.default.createElement(_locationField2.default, {
-            type: 'to',
-            label: 'Enter destination or ' + actionText + ' on map...',
-            showClearButton: !mobile
-          }),
-          _react2.default.createElement(
-            'div',
-            { className: 'switch-button-container' },
-            _react2.default.createElement(_switchButton2.default, { content: _react2.default.createElement('i', { className: 'fa fa-exchange fa-rotate-90' }) })
-          )
-        ),
-        _react2.default.createElement(_tabbedFormPanel2.default, { icons: icons })
-      );
+      return _react.default.createElement("div", null, _react.default.createElement("div", {
+        className: "locations"
+      }, _react.default.createElement(_locationField.default, {
+        type: "from",
+        label: "Enter start location or ".concat(actionText, " on map..."),
+        showClearButton: true
+      }), _react.default.createElement(_locationField.default, {
+        type: "to",
+        label: "Enter destination or ".concat(actionText, " on map..."),
+        showClearButton: !mobile
+      }), _react.default.createElement("div", {
+        className: "switch-button-container"
+      }, _react.default.createElement(_switchButton.default, {
+        content: _react.default.createElement("i", {
+          className: "fa fa-exchange fa-rotate-90"
+        })
+      }))), _react.default.createElement(_tabbedFormPanel.default, {
+        icons: icons
+      }));
     }
   }]);
+
   return DefaultSearchForm;
-}(_react.Component), _class.propTypes = {
-  icons: _propTypes2.default.object,
-  mobile: _propTypes2.default.bool
-}, _class.defaultProps = {
+}(_react.Component);
+
+exports.default = DefaultSearchForm;
+
+_defineProperty(DefaultSearchForm, "propTypes", {
+  icons: _propTypes.default.object,
+  mobile: _propTypes.default.bool
+});
+
+_defineProperty(DefaultSearchForm, "defaultProps", {
+  icons: _icons.default,
   showFrom: true,
   showTo: true
-}, _temp);
-exports.default = DefaultSearchForm;
-module.exports = exports['default'];
+});
+
+module.exports = exports.default;
 
 //# sourceMappingURL=default-search-form.js

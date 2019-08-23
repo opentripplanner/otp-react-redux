@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.distanceStringImperial = distanceStringImperial;
 exports.distanceStringMetric = distanceStringMetric;
 exports.distanceString = distanceString;
+
 function distanceStringImperial(meters, abbreviate) {
   var feet = meters * 3.28084;
   if (feet < 528) return Math.round(feet) + (abbreviate === true ? ' ft' : ' feet');
@@ -14,6 +15,7 @@ function distanceStringImperial(meters, abbreviate) {
 
 function distanceStringMetric(meters) {
   var km = meters / 1000;
+
   if (km > 100) {
     // 100 km => 999999999 km
     km = km.toFixed(0);
@@ -31,7 +33,6 @@ function distanceStringMetric(meters) {
 
 function distanceString(meters) {
   var outputMetricUntis = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
   return outputMetricUntis === true ? distanceStringMetric(meters) : distanceStringImperial(meters);
 }
 

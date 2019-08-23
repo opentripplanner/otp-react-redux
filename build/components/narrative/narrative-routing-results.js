@@ -1,105 +1,111 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _react = _interopRequireWildcard(require("react"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _reactRedux = require("react-redux");
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _loading = _interopRequireDefault(require("./loading"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _narrativeProfileOptions = _interopRequireDefault(require("./narrative-profile-options"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _tabbedItineraries = _interopRequireDefault(require("./tabbed-itineraries"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _errorMessage = _interopRequireDefault(require("../form/error-message"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _state = require("../../util/state");
 
-var _class, _temp;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = require('react-redux');
-
-var _loading = require('./loading');
-
-var _loading2 = _interopRequireDefault(_loading);
-
-var _narrativeProfileOptions = require('./narrative-profile-options');
-
-var _narrativeProfileOptions2 = _interopRequireDefault(_narrativeProfileOptions);
-
-var _tabbedItineraries = require('./tabbed-itineraries');
-
-var _tabbedItineraries2 = _interopRequireDefault(_tabbedItineraries);
-
-var _errorMessage = require('../form/error-message');
-
-var _errorMessage2 = _interopRequireDefault(_errorMessage);
-
-var _state = require('../../util/state');
-
-var _ui = require('../../actions/ui');
+var _ui = require("../../actions/ui");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var NarrativeRoutingResults = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(NarrativeRoutingResults, _Component);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var NarrativeRoutingResults =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(NarrativeRoutingResults, _Component);
 
   function NarrativeRoutingResults() {
-    (0, _classCallCheck3.default)(this, NarrativeRoutingResults);
-    return (0, _possibleConstructorReturn3.default)(this, (NarrativeRoutingResults.__proto__ || (0, _getPrototypeOf2.default)(NarrativeRoutingResults)).apply(this, arguments));
+    _classCallCheck(this, NarrativeRoutingResults);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(NarrativeRoutingResults).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(NarrativeRoutingResults, [{
-    key: 'componentWillReceiveProps',
+  _createClass(NarrativeRoutingResults, [{
+    key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       if ((!this.props.itineraries || this.props.itineraries.length === 0) && nextProps.itineraries && nextProps.itineraries.length > 0) {
         this.props.setMainPanelContent(null);
       }
+
       if (!this.props.error && nextProps.error) this.props.setMainPanelContent(null);
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
-      var _props = this.props,
-          customIcons = _props.customIcons,
-          error = _props.error,
-          itineraryClass = _props.itineraryClass,
-          itineraryFooter = _props.itineraryFooter,
-          pending = _props.pending,
-          routingType = _props.routingType,
-          itineraries = _props.itineraries,
-          mainPanelContent = _props.mainPanelContent;
-
-      if (pending) return _react2.default.createElement(_loading2.default, null);
-      if (error) return _react2.default.createElement(_errorMessage2.default, null);
+      var _this$props = this.props,
+          customIcons = _this$props.customIcons,
+          error = _this$props.error,
+          itineraryClass = _this$props.itineraryClass,
+          itineraryFooter = _this$props.itineraryFooter,
+          pending = _this$props.pending,
+          routingType = _this$props.routingType,
+          itineraries = _this$props.itineraries,
+          mainPanelContent = _this$props.mainPanelContent;
+      if (pending) return _react.default.createElement(_loading.default, null);
+      if (error) return _react.default.createElement(_errorMessage.default, null);
       if (mainPanelContent) return null;
-
-      return routingType === 'ITINERARY' ? _react2.default.createElement(_tabbedItineraries2.default, { itineraryClass: itineraryClass, itineraryFooter: itineraryFooter, itineraries: itineraries, customIcons: customIcons }) : _react2.default.createElement(_narrativeProfileOptions2.default, {
+      return routingType === 'ITINERARY' ? _react.default.createElement(_tabbedItineraries.default, {
+        itineraryClass: itineraryClass,
+        itineraryFooter: itineraryFooter,
+        itineraries: itineraries,
+        customIcons: customIcons
+      }) : _react.default.createElement(_narrativeProfileOptions.default, {
         itineraryClass: itineraryClass,
         customIcons: customIcons
       });
     }
   }]);
-  return NarrativeRoutingResults;
-}(_react.Component), _class.propTypes = {
-  customIcons: _react.PropTypes.object,
-  itineraryClass: _react.PropTypes.func,
-  routingType: _react.PropTypes.string
-}, _temp);
 
+  return NarrativeRoutingResults;
+}(_react.Component);
+
+_defineProperty(NarrativeRoutingResults, "propTypes", {
+  customIcons: _propTypes.default.object,
+  itineraryClass: _propTypes.default.func,
+  routingType: _propTypes.default.string
+});
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var activeSearch = (0, _state.getActiveSearch)(state.otp);
@@ -116,7 +122,9 @@ var mapDispatchToProps = {
   setMainPanelContent: _ui.setMainPanelContent
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(NarrativeRoutingResults);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(NarrativeRoutingResults);
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=narrative-routing-results.js

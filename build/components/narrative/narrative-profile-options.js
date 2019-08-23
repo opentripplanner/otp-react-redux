@@ -1,139 +1,139 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _extends3 = _interopRequireDefault(_extends2);
+require("core-js/modules/es7.object.get-own-property-descriptors");
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es6.symbol");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/web.dom.iterable");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+require("core-js/modules/es6.array.iterator");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+require("core-js/modules/es6.object.to-string");
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+require("core-js/modules/es6.object.keys");
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _reactRedux = require("react-redux");
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _narrative = require("../../actions/narrative");
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _defaultItinerary = _interopRequireDefault(require("./default/default-itinerary"));
 
-var _class, _temp;
+var _narrativeProfileSummary = _interopRequireDefault(require("./narrative-profile-summary"));
 
-var _react = require('react');
+var _loading = _interopRequireDefault(require("./loading"));
 
-var _react2 = _interopRequireDefault(_react);
+var _state = require("../../util/state");
 
-var _reactRedux = require('react-redux');
-
-var _narrative = require('../../actions/narrative');
-
-var _defaultItinerary = require('./default/default-itinerary');
-
-var _defaultItinerary2 = _interopRequireDefault(_defaultItinerary);
-
-var _narrativeProfileSummary = require('./narrative-profile-summary');
-
-var _narrativeProfileSummary2 = _interopRequireDefault(_narrativeProfileSummary);
-
-var _loading = require('./loading');
-
-var _loading2 = _interopRequireDefault(_loading);
-
-var _state = require('../../util/state');
-
-var _profile = require('../../util/profile');
+var _profile = require("../../util/profile");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var NarrativeProfileOptions = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(NarrativeProfileOptions, _Component);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var NarrativeProfileOptions =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(NarrativeProfileOptions, _Component);
 
   function NarrativeProfileOptions() {
-    (0, _classCallCheck3.default)(this, NarrativeProfileOptions);
-    return (0, _possibleConstructorReturn3.default)(this, (NarrativeProfileOptions.__proto__ || (0, _getPrototypeOf2.default)(NarrativeProfileOptions)).apply(this, arguments));
+    _classCallCheck(this, NarrativeProfileOptions);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(NarrativeProfileOptions).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(NarrativeProfileOptions, [{
-    key: 'render',
+  _createClass(NarrativeProfileOptions, [{
+    key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this = this;
 
-      var _props = this.props,
-          pending = _props.pending,
-          itineraryClass = _props.itineraryClass,
-          query = _props.query,
-          activeItinerary = _props.activeItinerary;
-
-      if (pending) return _react2.default.createElement(_loading2.default, null);
-
+      var _this$props = this.props,
+          pending = _this$props.pending,
+          itineraryClass = _this$props.itineraryClass,
+          query = _this$props.query,
+          activeItinerary = _this$props.activeItinerary;
+      if (pending) return _react.default.createElement(_loading.default, null);
       var options = this.props.options;
       if (!options) return null;
-
       var itineraries = (0, _profile.profileOptionsToItineraries)(options, query);
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'options profile' },
-        _react2.default.createElement(
-          'div',
-          { className: 'header' },
-          'Your best options:'
-        ),
-        _react2.default.createElement(_narrativeProfileSummary2.default, { options: options, customIcons: this.props.customIcons }),
-        _react2.default.createElement(
-          'div',
-          { className: 'header' },
-          'We found ',
-          _react2.default.createElement(
-            'strong',
-            null,
-            options.length
-          ),
-          ' total options:'
-        ),
-        itineraries.map(function (itinerary, index) {
-          return _react2.default.createElement(itineraryClass, (0, _extends3.default)({
-            itinerary: itinerary,
-            index: index,
-            key: index,
-            active: index === activeItinerary,
-            routingType: 'PROFILE'
-          }, _this2.props));
-        })
-      );
+      return _react.default.createElement("div", {
+        className: "options profile"
+      }, _react.default.createElement("div", {
+        className: "header"
+      }, "Your best options:"), _react.default.createElement(_narrativeProfileSummary.default, {
+        options: options,
+        customIcons: this.props.customIcons
+      }), _react.default.createElement("div", {
+        className: "header"
+      }, "We found ", _react.default.createElement("strong", null, options.length), " total options:"), itineraries.map(function (itinerary, index) {
+        return _react.default.createElement(itineraryClass, _objectSpread({
+          itinerary: itinerary,
+          index: index,
+          key: index,
+          active: index === activeItinerary,
+          routingType: 'PROFILE'
+        }, _this.props));
+      }));
     }
   }]);
-  return NarrativeProfileOptions;
-}(_react.Component), _class.propTypes = {
-  options: _react.PropTypes.array,
-  query: _react.PropTypes.object,
-  itineraryClass: _react.PropTypes.func,
-  pending: _react.PropTypes.bool,
-  activeOption: _react.PropTypes.number,
-  setActiveItinerary: _react.PropTypes.func,
-  setActiveLeg: _react.PropTypes.func,
-  setActiveStep: _react.PropTypes.func,
-  customIcons: _react.PropTypes.object
-}, _class.defaultProps = {
-  itineraryClass: _defaultItinerary2.default
-}, _temp);
 
-// connect to the redux store
+  return NarrativeProfileOptions;
+}(_react.Component); // connect to the redux store
+
+
+_defineProperty(NarrativeProfileOptions, "propTypes", {
+  options: _propTypes.default.array,
+  query: _propTypes.default.object,
+  itineraryClass: _propTypes.default.func,
+  pending: _propTypes.default.bool,
+  activeOption: _propTypes.default.number,
+  setActiveItinerary: _propTypes.default.func,
+  setActiveLeg: _propTypes.default.func,
+  setActiveStep: _propTypes.default.func,
+  customIcons: _propTypes.default.object
+});
+
+_defineProperty(NarrativeProfileOptions, "defaultProps", {
+  itineraryClass: _defaultItinerary.default
+});
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var activeSearch = (0, _state.getActiveSearch)(state.otp);
-  // const { activeItinerary, activeLeg, activeStep } = activeSearch ? activeSearch.activeItinerary : {}
+  var activeSearch = (0, _state.getActiveSearch)(state.otp); // const { activeItinerary, activeLeg, activeStep } = activeSearch ? activeSearch.activeItinerary : {}
+
   var pending = activeSearch && activeSearch.pending;
   return {
     options: activeSearch && activeSearch.response && activeSearch.response.otp ? activeSearch.response.otp.profile : null,
@@ -148,18 +148,28 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     setActiveItinerary: function setActiveItinerary(index) {
-      dispatch((0, _narrative.setActiveItinerary)({ index: index }));
+      dispatch((0, _narrative.setActiveItinerary)({
+        index: index
+      }));
     },
     setActiveLeg: function setActiveLeg(index, leg) {
-      dispatch((0, _narrative.setActiveLeg)({ index: index, leg: leg }));
+      dispatch((0, _narrative.setActiveLeg)({
+        index: index,
+        leg: leg
+      }));
     },
     setActiveStep: function setActiveStep(index, step) {
-      dispatch((0, _narrative.setActiveStep)({ index: index, step: step }));
+      dispatch((0, _narrative.setActiveStep)({
+        index: index,
+        step: step
+      }));
     }
   };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(NarrativeProfileOptions);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(NarrativeProfileOptions);
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=narrative-profile-options.js

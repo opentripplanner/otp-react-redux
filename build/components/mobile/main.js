@@ -1,93 +1,79 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _react = _interopRequireWildcard(require("react"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _reactRedux = require("react-redux");
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _dateTimeScreen = _interopRequireDefault(require("./date-time-screen"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _optionsScreen = _interopRequireDefault(require("./options-screen"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _locationSearch = _interopRequireDefault(require("./location-search"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _welcomeScreen = _interopRequireDefault(require("./welcome-screen"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _resultsScreen = _interopRequireDefault(require("./results-screen"));
 
-var _class, _temp;
+var _searchScreen = _interopRequireDefault(require("./search-screen"));
 
-var _react = require('react');
+var _stopViewer = _interopRequireDefault(require("./stop-viewer"));
 
-var _react2 = _interopRequireDefault(_react);
+var _tripViewer = _interopRequireDefault(require("./trip-viewer"));
 
-var _propTypes = require('prop-types');
+var _routeViewer = _interopRequireDefault(require("./route-viewer"));
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _ui = require("../../actions/ui");
 
-var _reactRedux = require('react-redux');
-
-var _dateTimeScreen = require('./date-time-screen');
-
-var _dateTimeScreen2 = _interopRequireDefault(_dateTimeScreen);
-
-var _optionsScreen = require('./options-screen');
-
-var _optionsScreen2 = _interopRequireDefault(_optionsScreen);
-
-var _locationSearch = require('./location-search');
-
-var _locationSearch2 = _interopRequireDefault(_locationSearch);
-
-var _welcomeScreen = require('./welcome-screen');
-
-var _welcomeScreen2 = _interopRequireDefault(_welcomeScreen);
-
-var _resultsScreen = require('./results-screen');
-
-var _resultsScreen2 = _interopRequireDefault(_resultsScreen);
-
-var _searchScreen = require('./search-screen');
-
-var _searchScreen2 = _interopRequireDefault(_searchScreen);
-
-var _stopViewer = require('./stop-viewer');
-
-var _stopViewer2 = _interopRequireDefault(_stopViewer);
-
-var _tripViewer = require('./trip-viewer');
-
-var _tripViewer2 = _interopRequireDefault(_tripViewer);
-
-var _routeViewer = require('./route-viewer');
-
-var _routeViewer2 = _interopRequireDefault(_routeViewer);
-
-var _ui = require('../../actions/ui');
-
-var _state = require('../../util/state');
+var _state = require("../../util/state");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var MobileMain = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(MobileMain, _Component);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var MobileMain =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(MobileMain, _Component);
 
   function MobileMain() {
-    (0, _classCallCheck3.default)(this, MobileMain);
-    return (0, _possibleConstructorReturn3.default)(this, (MobileMain.__proto__ || (0, _getPrototypeOf2.default)(MobileMain)).apply(this, arguments));
+    _classCallCheck(this, MobileMain);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MobileMain).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(MobileMain, [{
-    key: 'componentWillReceiveProps',
+  _createClass(MobileMain, [{
+    key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       // Check if we are in the welcome screen and both locations have been set OR
       // auto-detect is denied and one location is set
@@ -101,87 +87,92 @@ var MobileMain = (_temp = _class = function (_Component) {
       }
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
-      var _props = this.props,
-          icons = _props.icons,
-          itineraryClass = _props.itineraryClass,
-          itineraryFooter = _props.itineraryFooter,
-          map = _props.map,
-          title = _props.title,
-          uiState = _props.uiState;
-
-      // check for route viewer
+      var _this$props = this.props,
+          icons = _this$props.icons,
+          itineraryClass = _this$props.itineraryClass,
+          itineraryFooter = _this$props.itineraryFooter,
+          map = _this$props.map,
+          title = _this$props.title,
+          uiState = _this$props.uiState; // check for route viewer
 
       if (uiState.mainPanelContent === _ui.MainPanelContent.ROUTE_VIEWER) {
-        return _react2.default.createElement(_routeViewer2.default, null);
-      }
+        return _react.default.createElement(_routeViewer.default, null);
+      } // check for viewed stop
 
-      // check for viewed stop
-      if (uiState.viewedStop) return _react2.default.createElement(_stopViewer2.default, null);
 
-      // check for viewed trip
-      if (uiState.viewedTrip) return _react2.default.createElement(_tripViewer2.default, null);
+      if (uiState.viewedStop) return _react.default.createElement(_stopViewer.default, null); // check for viewed trip
+
+      if (uiState.viewedTrip) return _react.default.createElement(_tripViewer.default, null);
 
       switch (uiState.mobileScreen) {
         case _ui.MobileScreens.WELCOME_SCREEN:
-          return _react2.default.createElement(_welcomeScreen2.default, { map: map, title: title });
+          return _react.default.createElement(_welcomeScreen.default, {
+            map: map,
+            title: title
+          });
 
         case _ui.MobileScreens.SET_INITIAL_LOCATION:
-          return _react2.default.createElement(_locationSearch2.default, {
-            locationType: 'to',
+          return _react.default.createElement(_locationSearch.default, {
+            locationType: "to",
             backScreen: _ui.MobileScreens.WELCOME_SCREEN
           });
 
         case _ui.MobileScreens.SEARCH_FORM:
-          return _react2.default.createElement(_searchScreen2.default, {
+          return _react.default.createElement(_searchScreen.default, {
             icons: icons,
             map: map,
             newScreen: this.newScreen
           });
 
         case _ui.MobileScreens.SET_FROM_LOCATION:
-          return _react2.default.createElement(_locationSearch2.default, {
-            locationType: 'from',
+          return _react.default.createElement(_locationSearch.default, {
+            locationType: "from",
             backScreen: _ui.MobileScreens.SEARCH_FORM
           });
 
         case _ui.MobileScreens.SET_TO_LOCATION:
-          return _react2.default.createElement(_locationSearch2.default, {
-            locationType: 'to',
+          return _react.default.createElement(_locationSearch.default, {
+            locationType: "to",
             backScreen: _ui.MobileScreens.SEARCH_FORM
           });
 
         case _ui.MobileScreens.SET_DATETIME:
-          return _react2.default.createElement(_dateTimeScreen2.default, null);
+          return _react.default.createElement(_dateTimeScreen.default, null);
 
         case _ui.MobileScreens.SET_OPTIONS:
-          return _react2.default.createElement(_optionsScreen2.default, { icons: icons });
+          return _react.default.createElement(_optionsScreen.default, {
+            icons: icons
+          });
 
         case _ui.MobileScreens.RESULTS_SUMMARY:
-          return _react2.default.createElement(_resultsScreen2.default, { map: map, itineraryClass: itineraryClass, itineraryFooter: itineraryFooter, icons: icons });
+          return _react.default.createElement(_resultsScreen.default, {
+            map: map,
+            itineraryClass: itineraryClass,
+            itineraryFooter: itineraryFooter,
+            icons: icons
+          });
 
         default:
-          return _react2.default.createElement(
-            'p',
-            null,
-            'Invalid mobile screen'
-          );
+          return _react.default.createElement("p", null, "Invalid mobile screen");
       }
     }
   }]);
-  return MobileMain;
-}(_react.Component), _class.propTypes = {
-  currentQuery: _propTypes2.default.object,
-  icons: _propTypes2.default.object,
-  itineraryClass: _propTypes2.default.func,
-  map: _propTypes2.default.element,
-  setMobileScreen: _propTypes2.default.func,
-  title: _propTypes2.default.element,
-  uiState: _propTypes2.default.object
-}, _temp);
 
-// connect to the redux store
+  return MobileMain;
+}(_react.Component); // connect to the redux store
+
+
+_defineProperty(MobileMain, "propTypes", {
+  currentQuery: _propTypes.default.object,
+  icons: _propTypes.default.object,
+  itineraryClass: _propTypes.default.func,
+  map: _propTypes.default.element,
+  setMobileScreen: _propTypes.default.func,
+  title: _propTypes.default.element,
+  uiState: _propTypes.default.object
+});
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
@@ -196,7 +187,9 @@ var mapDispatchToProps = {
   setMobileScreen: _ui.setMobileScreen
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(MobileMain);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(MobileMain);
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=main.js

@@ -1,100 +1,106 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _react = _interopRequireDefault(require("react"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _reactRedux = require("react-redux");
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _reactLeaflet = require("react-leaflet");
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = require('react-redux');
-
-var _reactLeaflet = require('react-leaflet');
-
-var _polyline = require('@mapbox/polyline');
-
-var _polyline2 = _interopRequireDefault(_polyline);
+var _polyline = _interopRequireDefault(require("@mapbox/polyline"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TripViewerOverlay = (_temp = _class = function (_MapLayer) {
-  (0, _inherits3.default)(TripViewerOverlay, _MapLayer);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var TripViewerOverlay =
+/*#__PURE__*/
+function (_MapLayer) {
+  _inherits(TripViewerOverlay, _MapLayer);
 
   function TripViewerOverlay() {
-    (0, _classCallCheck3.default)(this, TripViewerOverlay);
-    return (0, _possibleConstructorReturn3.default)(this, (TripViewerOverlay.__proto__ || (0, _getPrototypeOf2.default)(TripViewerOverlay)).apply(this, arguments));
+    _classCallCheck(this, TripViewerOverlay);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(TripViewerOverlay).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(TripViewerOverlay, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {}
-
-    // TODO: determine why the default MapLayer componentWillUnmount() method throws an error
+  _createClass(TripViewerOverlay, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {} // TODO: determine why the default MapLayer componentWillUnmount() method throws an error
 
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {}
   }, {
-    key: 'componentWillReceiveProps',
+    key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       var oldGeometry = this.props.tripData && this.props.tripData.geometry;
       var newGeometry = nextProps.tripData && nextProps.tripData.geometry;
       if (oldGeometry === newGeometry || !newGeometry) return;
-      var pts = _polyline2.default.decode(newGeometry.points);
-      this.context.map.fitBounds(pts);
+
+      var pts = _polyline.default.decode(newGeometry.points);
+
+      this.props.leaflet.map.fitBounds(pts);
     }
   }, {
-    key: 'createLeafletElement',
+    key: "createLeafletElement",
     value: function createLeafletElement() {}
   }, {
-    key: 'updateLeafletElement',
+    key: "updateLeafletElement",
     value: function updateLeafletElement() {}
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var tripData = this.props.tripData;
+      if (!tripData || !tripData.geometry) return _react.default.createElement(_reactLeaflet.FeatureGroup, null);
 
+      var pts = _polyline.default.decode(tripData.geometry.points);
 
-      if (!tripData || !tripData.geometry) return _react2.default.createElement(_reactLeaflet.FeatureGroup, null);
-
-      var pts = _polyline2.default.decode(tripData.geometry.points);
-      return _react2.default.createElement(
-        _reactLeaflet.FeatureGroup,
-        null,
-        _react2.default.createElement(_reactLeaflet.Polyline, { positions: pts, weight: 8, color: '#00bfff', opacity: 0.6 })
-      );
+      return _react.default.createElement(_reactLeaflet.FeatureGroup, null, _react.default.createElement(_reactLeaflet.Polyline, {
+        positions: pts,
+        weight: 8,
+        color: "#00bfff",
+        opacity: 0.6
+      }));
     }
   }]);
-  return TripViewerOverlay;
-}(_reactLeaflet.MapLayer), _class.propTypes = {
-  tripData: _react.PropTypes.object,
-  viewedTrip: _react.PropTypes.object
-}, _temp);
 
-// connect to the redux store
+  return TripViewerOverlay;
+}(_reactLeaflet.MapLayer); // connect to the redux store
+
+
+_defineProperty(TripViewerOverlay, "propTypes", {
+  tripData: _propTypes.default.object,
+  viewedTrip: _propTypes.default.object
+});
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var viewedTrip = state.otp.ui.viewedTrip;
@@ -106,7 +112,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = {};
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TripViewerOverlay);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)((0, _reactLeaflet.withLeaflet)(TripViewerOverlay));
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=trip-viewer-overlay.js

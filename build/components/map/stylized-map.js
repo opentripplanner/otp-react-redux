@@ -1,53 +1,55 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _react = _interopRequireWildcard(require("react"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _reactRedux = require("react-redux");
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _d3Selection = require("d3-selection");
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _d3Zoom = require("d3-zoom");
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _transitiveJs = _interopRequireDefault(require("transitive-js"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _state = require("../../util/state");
 
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = require('react-redux');
-
-var _d3Selection = require('d3-selection');
-
-var _d3Zoom = require('d3-zoom');
-
-var _transitiveJs = require('transitive-js');
-
-var _transitiveJs2 = _interopRequireDefault(_transitiveJs);
-
-var _state = require('../../util/state');
-
-var _map = require('../../util/map');
+var _map = require("../../util/map");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var STYLES = {};
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var STYLES = {};
 STYLES.places = {
   display: function display(_display, place) {
     if (place.getId() !== 'from' && place.getId() !== 'to' && !(0, _map.isBikeshareStation)(place)) {
@@ -59,28 +61,30 @@ STYLES.places = {
   'stroke-width': 2,
   r: 8
 };
-
 STYLES.stops_merged = {
   r: function r(display, data, index, utils) {
     return 6;
   }
 };
 
-var StylizedMap = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(StylizedMap, _Component);
+var StylizedMap =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(StylizedMap, _Component);
 
   function StylizedMap() {
-    (0, _classCallCheck3.default)(this, StylizedMap);
-    return (0, _possibleConstructorReturn3.default)(this, (StylizedMap.__proto__ || (0, _getPrototypeOf2.default)(StylizedMap)).apply(this, arguments));
+    _classCallCheck(this, StylizedMap);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(StylizedMap).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(StylizedMap, [{
-    key: 'componentDidMount',
+  _createClass(StylizedMap, [{
+    key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
+      var _this = this;
 
       var el = document.getElementById('trn-canvas');
-      this._transitive = new _transitiveJs2.default({
+      this._transitive = new _transitiveJs.default({
         el: el,
         display: 'svg',
         styles: STYLES,
@@ -93,17 +97,19 @@ var StylizedMap = (_temp = _class = function (_Component) {
           mergeVertexThreshold: 200
         }]
       });
+
       this._transitive.render();
 
       (0, _d3Selection.select)(el).call((0, _d3Zoom.zoom)().scaleExtent([1 / 2, 4]).on('zoom', function () {
-        _this2._transitive.setTransform(_d3Selection.event.transform);
+        _this._transitive.setTransform(_d3Selection.event.transform);
       }));
     }
   }, {
-    key: 'componentWillReceiveProps',
+    key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.transitiveData !== this.props.transitiveData) {
         this._transitive.updateData(nextProps.transitiveData, true);
+
         this._transitive.render();
       }
 
@@ -112,37 +118,50 @@ var StylizedMap = (_temp = _class = function (_Component) {
         if (nextProps.activeItinerary == null) {
           // no option selected; clear focus
           this._transitive.focusJourney(null);
+
           this._transitive.render();
         } else if (nextProps.transitiveData) {
           this._transitive.focusJourney(nextProps.transitiveData.journeys[nextProps.activeItinerary].journey_id);
+
           this._transitive.render();
         }
       }
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
-      return _react2.default.createElement('div', {
-        id: 'trn-canvas',
-        style: { position: 'absolute', top: 0, bottom: 0, left: 0, right: 0 }
+      return _react.default.createElement("div", {
+        id: "trn-canvas",
+        style: {
+          position: 'absolute',
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0
+        }
       });
     }
   }]);
-  return StylizedMap;
-}(_react.Component), _class.propTypes = {
-  activeItinerary: _react.PropTypes.number,
-  routingType: _react.PropTypes.string,
-  toggleLabel: _react.PropTypes.element,
-  transitiveData: _react.PropTypes.object
-}, _class.defaultProps = {
-  toggleName: 'Stylized'
-}, _temp);
 
-// connect to the redux store
+  return StylizedMap;
+}(_react.Component); // connect to the redux store
+
+
+_defineProperty(StylizedMap, "propTypes", {
+  activeItinerary: _propTypes.default.number,
+  routingType: _propTypes.default.string,
+  toggleLabel: _propTypes.default.element,
+  transitiveData: _propTypes.default.object
+});
+
+_defineProperty(StylizedMap, "defaultProps", {
+  toggleName: 'Stylized'
+});
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var activeSearch = (0, _state.getActiveSearch)(state.otp);
   var transitiveData = null;
+
   if (activeSearch && activeSearch.query.routingType === 'ITINERARY' && activeSearch.response && activeSearch.response.plan) {
     var itins = (0, _state.getActiveItineraries)(state.otp);
     transitiveData = (0, _map.itineraryToTransitive)(itins[activeSearch.activeItinerary]);
@@ -159,7 +178,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = {};
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(StylizedMap);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(StylizedMap);
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=stylized-map.js

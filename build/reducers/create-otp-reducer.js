@@ -1,106 +1,195 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.getInitialState = getInitialState;
+exports.default = void 0;
 
-var _stringify = require('babel-runtime/core-js/json/stringify');
+require("core-js/modules/es7.object.get-own-property-descriptors");
 
-var _stringify2 = _interopRequireDefault(_stringify);
+require("core-js/modules/es6.string.iterator");
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+require("core-js/modules/es6.array.from");
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+require("core-js/modules/es6.regexp.to-string");
 
-var _keys = require('babel-runtime/core-js/object/keys');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _keys2 = _interopRequireDefault(_keys);
+require("core-js/modules/es6.symbol");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+require("core-js/modules/web.dom.iterable");
 
-var _extends3 = _interopRequireDefault(_extends2);
+require("core-js/modules/es6.array.iterator");
 
-var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+require("core-js/modules/es6.object.to-string");
 
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+require("core-js/modules/es6.object.keys");
 
-var _assign = require('babel-runtime/core-js/object/assign');
+require("core-js/modules/es6.function.name");
 
-var _assign2 = _interopRequireDefault(_assign);
+require("core-js/modules/es6.array.find-index");
 
-var _clone = require('clone');
+require("core-js/modules/es7.array.includes");
 
-var _clone2 = _interopRequireDefault(_clone);
+require("core-js/modules/es6.string.includes");
 
-var _immutabilityHelper = require('immutability-helper');
+require("core-js/modules/es6.regexp.split");
 
-var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
+require("core-js/modules/es6.object.assign");
 
-var _lodash = require('lodash.isequal');
+var _clone = _interopRequireDefault(require("clone"));
 
-var _lodash2 = _interopRequireDefault(_lodash);
+var _immutabilityHelper = _interopRequireDefault(require("immutability-helper"));
 
-var _query = require('../util/query');
+var _lodash = _interopRequireDefault(require("lodash.isequal"));
 
-var _itinerary = require('../util/itinerary');
+var _objectPath = _interopRequireDefault(require("object-path"));
 
-var _profile = require('../util/profile');
+var _map = require("../util/map");
 
-var _ui = require('../actions/ui');
+var _query = require("../util/query");
+
+var _itinerary = require("../util/itinerary");
+
+var _profile = require("../util/profile");
+
+var _storage = require("../util/storage");
+
+var _time = require("../util/time");
+
+var _ui = require("../actions/ui");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var defaultConfig = {
-  autoPlan: false,
-  debouncePlanTimeMs: 0,
-  realtimeEffectsDisplayThreshold: 120,
-  operators: []
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-  // Load user override settings from local storage.
-  // TODO: Make this work with settings fetched from user profile API service.
-};var options = (0, _query.getJSONFromStorage)('otp.defaultQuery');
-var defaultQuery = (0, _assign2.default)((0, _query.getDefaultQuery)(), options);
-var home = (0, _query.getJSONFromStorage)('otp.home', true);
-var work = (0, _query.getJSONFromStorage)('otp.work', true);
-var trackRecent = (0, _query.getJSONFromStorage)('otp.trackRecent', true) || false;
-var recentPlaces = (0, _query.getJSONFromStorage)('otp.recent', true) || [];
-var recentSearches = (0, _query.getJSONFromStorage)('otp.recentSearches', true) || [];
-var locations = [home, work].concat((0, _toConsumableArray3.default)(recentPlaces)).filter(function (p) {
-  return p;
-});
-// TODO: parse and merge URL query params w/ default query
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-// TODO: fire planTrip action if default query is complete/error-free
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function createOtpReducer(config, initialQuery) {
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var MAX_RECENT_STORAGE = 5; // TODO: fire planTrip action if default query is complete/error-free
+
+/**
+ * Validates the initial state of the store. This is intended to mainly catch
+ * configuration issues since a manually edited config file is loaded into the
+ * initial state.
+ * TODO: mabye it's a better idea to move all of this to a script that can do
+ *  JSON Schema validation and other stuff.
+ */
+
+function validateInitalState(initialState) {
+  var config = initialState.config;
+  var errors = []; // validate that the ArcGIS geocoder isn't used with a persistence strategy of
+  // `localStorage`. ArcGIS requires the use of a paid account to store geocode
+  // results.
+  // See https://developers.arcgis.com/rest/geocode/api-reference/geocoding-free-vs-paid.htm
+
+  if (_objectPath.default.get(config, 'persistence.enabled') && _objectPath.default.get(config, 'persistence.strategy') === 'localStorage' && _objectPath.default.get(config, 'geocoder.type') === 'ARCGIS') {
+    errors.push(new Error('Local Storage persistence and ARCGIS geocoder cannot be enabled at the same time!'));
+  }
+
+  if (errors.length > 0) {
+    throw new Error(errors.reduce(function (message, error) {
+      return "".concat(message, "\n- ").concat(error.message);
+    }, 'Encountered the following configuration errors:'));
+  }
+}
+/**
+ * Create the initial state of otp-react-redux using user-provided config, any
+ * items in localStorage and a few defaults.
+ */
+
+
+function getInitialState(userDefinedConfig, initialQuery) {
+  var defaultConfig = {
+    autoPlan: false,
+    debouncePlanTimeMs: 0,
+    language: {},
+    operators: [],
+    realtimeEffectsDisplayThreshold: 120,
+    routingTypes: [],
+    stopViewer: {
+      numberOfDepartures: 3,
+      // per pattern
+      // This is set to 345600 (four days) so that, for example, if it is Friday and
+      // a route does not begin service again until Monday, we are showing its next
+      // departure and it is not entirely excluded from display.
+      timeRange: 345600 // four days in seconds
+
+    }
+  };
+  var config = Object.assign(defaultConfig, userDefinedConfig);
+
+  if (!config.homeTimezone) {
+    config.homeTimezone = (0, _time.getUserTimezone)();
+    console.warn("Config value 'homeTimezone' not configured for this webapp!\n\n      This value is recommended in order to properly display stop times for\n      users that are not in the timezone that the transit system is in. The\n      detected user timezone of '".concat(config.homeTimezone, "' will be used. Hopefully\n      that is the right one..."));
+  } // Load user settings from local storage.
+  // TODO: Make this work with settings fetched from alternative storage system
+  //  (e.g., OTP backend middleware containing user profile system).
+  // User overrides determine user's default mode/query parameters.
+
+
+  var userOverrides = (0, _storage.getItem)('defaultQuery', {}); // Combine user overrides with default query to get default search settings.
+
+  var defaults = Object.assign((0, _query.getDefaultQuery)(config), userOverrides); // Whether to auto-refresh stop arrival times in the Stop Viewer.
+
+  var autoRefreshStopTimes = (0, _storage.getItem)('autoRefreshStopTimes', true); // User's home and work locations
+
+  var home = (0, _storage.getItem)('home');
+  var work = (0, _storage.getItem)('work'); // Whether recent searches and places should be tracked in local storage.
+
+  var trackRecent = (0, _storage.getItem)('trackRecent', false); // Recent places used in trip plan searches.
+
+  var recentPlaces = (0, _storage.getItem)('recent', []); // List of user's favorite stops.
+
+  var favoriteStops = (0, _storage.getItem)('favoriteStops', []); // Recent trip plan searches (excluding time/date parameters to avoid complexity).
+
+  var recentSearches = (0, _storage.getItem)('recentSearches', []); // Filter valid locations found into locations list.
+
+  var locations = [home, work].filter(function (p) {
+    return p;
+  }); // TODO: parse and merge URL query params w/ default query
   // populate query by merging any provided query params w/ the default params
-  var currentQuery = (0, _assign2.default)(defaultQuery, initialQuery);
+
+  var currentQuery = Object.assign(defaults, initialQuery); // Add configurable locations to home and work locations
+
   if (config.locations) {
-    locations.push.apply(locations, (0, _toConsumableArray3.default)(config.locations.map(function (l) {
-      return (0, _extends3.default)({}, l, { type: 'suggested' });
+    locations.push.apply(locations, _toConsumableArray(config.locations.map(function (l) {
+      return _objectSpread({}, l, {
+        type: 'suggested'
+      });
     })));
   }
-  var queryModes = currentQuery.mode.split(',');
 
-  // If 'TRANSIT' is included in the mode list, replace it with individual modes
+  var queryModes = currentQuery.mode.split(','); // If 'TRANSIT' is included in the mode list, replace it with individual modes
+
   if (queryModes.includes('TRANSIT')) {
     // Isolate the non-transit modes in queryModes
     queryModes = queryModes.filter(function (m) {
       return !(0, _itinerary.isTransit)(m);
-    });
-    // Add all possible transit modes
-    queryModes = queryModes.concat((0, _itinerary.getTransitModes)(config));
-    // Stringify and set as OTP 'mode' query param
-    currentQuery.mode = queryModes.join(',');
-  }
+    }); // Add all possible transit modes
 
-  // If we are in 'ITINERARY' mode, ensure that one and only one access mode is selected
+    queryModes = queryModes.concat((0, _itinerary.getTransitModes)(config)); // Stringify and set as OTP 'mode' query param
+
+    currentQuery.mode = queryModes.join(',');
+  } // If we are in 'ITINERARY' mode, ensure that one and only one access mode is selected
+
+
   if (currentQuery.routingType === 'ITINERARY') {
     queryModes = (0, _query.ensureSingleAccessMode)(queryModes);
   }
 
-  var initialState = {
-    config: (0, _assign2.default)(defaultConfig, config),
+  return {
+    config: config,
     currentQuery: currentQuery,
     location: {
       currentPosition: {
@@ -112,8 +201,13 @@ function createOtpReducer(config, initialQuery) {
       nearbyStops: []
     },
     user: {
+      autoRefreshStopTimes: autoRefreshStopTimes,
+      // Do not store from/to or date/time in defaults
+      defaults: (0, _query.getTripOptionsFromQuery)(defaults),
+      favoriteStops: favoriteStops,
       trackRecent: trackRecent,
       locations: locations,
+      recentPlaces: recentPlaces,
       recentSearches: recentSearches
     },
     searches: {},
@@ -155,359 +249,634 @@ function createOtpReducer(config, initialQuery) {
       diagramLeg: null
     }
   };
+}
 
+function createOtpReducer(config, initialQuery) {
+  var initialState = getInitialState(config, initialQuery); // validate the inital state
+
+  validateInitalState(initialState);
   return function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-    var action = arguments[1];
-
+    var action = arguments.length > 1 ? arguments[1] : undefined;
     var searchId = action.payload && action.payload.searchId;
+
     switch (action.type) {
       case 'ROUTING_REQUEST':
-        // Compute the initial activeItinerary. If this is the first search of
-        // session (i.e. searches lookup is empty/null) AND an activeItinerary ID
-        // is specified in URL parameters, use that ID. Otherwise, use null/0
-        var activeItinerary = state.currentQuery.routingType === 'ITINERARY' ? 0 : null;
-        // We cannot use window.history.state here to check for the active
-        // itinerary param because it is unreliable in some states (e.g.,
-        // when the print layout component first loads).
-        var urlParams = (0, _query.getUrlParams)();
-        if ((!state.searches || (0, _keys2.default)(state.searches).length === 0) && urlParams.ui_activeItinerary) {
-          activeItinerary = +urlParams.ui_activeItinerary;
-        }
-
-        return (0, _immutabilityHelper2.default)(state, {
-          searches: (0, _defineProperty3.default)({}, searchId, {
+        var activeItinerary = action.payload.activeItinerary;
+        return (0, _immutabilityHelper.default)(state, {
+          searches: _defineProperty({}, searchId, {
             $set: {
               activeItinerary: activeItinerary,
               activeLeg: null,
               activeStep: null,
               pending: true,
-              query: (0, _clone2.default)(state.currentQuery),
+              query: (0, _clone.default)(state.currentQuery),
               response: null
             }
           }),
-          activeSearchId: { $set: searchId }
+          activeSearchId: {
+            $set: searchId
+          }
         });
+
       case 'ROUTING_ERROR':
-        return (0, _immutabilityHelper2.default)(state, {
-          searches: (0, _defineProperty3.default)({}, searchId, {
+        return (0, _immutabilityHelper.default)(state, {
+          searches: _defineProperty({}, searchId, {
             response: {
               $set: {
                 error: action.payload.error
               }
             },
-            pending: { $set: false }
+            pending: {
+              $set: false
+            }
           })
         });
+
       case 'ROUTING_RESPONSE':
         var response = state.currentQuery.routingType === 'PROFILE' ? (0, _profile.filterProfileOptions)(action.payload.response) : action.payload.response;
-
-        return (0, _immutabilityHelper2.default)(state, {
-          searches: (0, _defineProperty3.default)({}, searchId, {
-            response: { $set: response },
-            pending: { $set: false }
+        return (0, _immutabilityHelper.default)(state, {
+          searches: _defineProperty({}, searchId, {
+            response: {
+              $set: response
+            },
+            pending: {
+              $set: false
+            }
           }),
           ui: {
-            diagramLeg: { $set: false }
+            diagramLeg: {
+              $set: false
+            }
           }
         });
+
       case 'NON_REALTIME_ROUTING_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
-          searches: (0, _defineProperty3.default)({}, searchId, {
-            nonRealtimeResponse: { $set: action.payload.response }
+        return (0, _immutabilityHelper.default)(state, {
+          searches: _defineProperty({}, searchId, {
+            nonRealtimeResponse: {
+              $set: action.payload.response
+            }
           })
         });
+
       case 'BIKE_RENTAL_REQUEST':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           overlay: {
             bikeRental: {
-              pending: { $set: true },
-              error: { $set: null }
+              pending: {
+                $set: true
+              },
+              error: {
+                $set: null
+              }
             }
           }
         });
+
       case 'BIKE_RENTAL_ERROR':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           overlay: {
             bikeRental: {
-              pending: { $set: false },
-              error: { $set: action.payload }
+              pending: {
+                $set: false
+              },
+              error: {
+                $set: action.payload
+              }
             }
           }
         });
+
       case 'BIKE_RENTAL_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           overlay: {
             bikeRental: {
-              stations: { $set: action.payload.stations },
-              pending: { $set: false }
+              stations: {
+                $set: action.payload.stations
+              },
+              pending: {
+                $set: false
+              }
             }
           }
         });
+
       case 'CAR_RENTAL_ERROR':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           overlay: {
             carRental: {
-              pending: { $set: false },
-              error: { $set: action.payload }
+              pending: {
+                $set: false
+              },
+              error: {
+                $set: action.payload
+              }
             }
           }
         });
+
       case 'CAR_RENTAL_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           overlay: {
             carRental: {
-              stations: { $set: action.payload.stations },
-              pending: { $set: false }
+              stations: {
+                $set: action.payload.stations
+              },
+              pending: {
+                $set: false
+              }
             }
           }
         });
+
       case 'VEHICLE_RENTAL_ERROR':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           overlay: {
             vehicleRental: {
-              pending: { $set: false },
-              error: { $set: action.payload }
+              pending: {
+                $set: false
+              },
+              error: {
+                $set: action.payload
+              }
             }
           }
         });
+
       case 'VEHICLE_RENTAL_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           overlay: {
             vehicleRental: {
-              stations: { $set: action.payload.stations },
-              pending: { $set: false }
+              stations: {
+                $set: action.payload.stations
+              },
+              pending: {
+                $set: false
+              }
             }
           }
         });
+
       case 'SET_USE_REALTIME_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
-          useRealtime: { $set: action.payload.useRealtime }
+        return (0, _immutabilityHelper.default)(state, {
+          useRealtime: {
+            $set: action.payload.useRealtime
+          }
         });
+
       case 'SET_ACTIVE_ITINERARY':
         if (state.activeSearchId !== null) {
-          return (0, _immutabilityHelper2.default)(state, {
-            searches: (0, _defineProperty3.default)({}, state.activeSearchId, {
-              activeItinerary: { $set: action.payload.index },
-              activeLeg: { $set: null },
-              activeStep: { $set: null }
+          return (0, _immutabilityHelper.default)(state, {
+            searches: _defineProperty({}, state.activeSearchId, {
+              activeItinerary: {
+                $set: action.payload.index
+              },
+              activeLeg: {
+                $set: null
+              },
+              activeStep: {
+                $set: null
+              }
             })
           });
         }
+
         return state;
+
       case 'SET_ACTIVE_LEG':
         if (state.activeSearchId !== null) {
-          return (0, _immutabilityHelper2.default)(state, {
-            searches: (0, _defineProperty3.default)({}, state.activeSearchId, {
-              activeLeg: { $set: action.payload.index },
-              activeStep: { $set: null }
+          return (0, _immutabilityHelper.default)(state, {
+            searches: _defineProperty({}, state.activeSearchId, {
+              activeLeg: {
+                $set: action.payload.index
+              },
+              activeStep: {
+                $set: null
+              }
             })
           });
         }
+
         return state;
+
       case 'SET_ACTIVE_STEP':
         if (state.activeSearchId !== null) {
-          return (0, _immutabilityHelper2.default)(state, {
-            searches: (0, _defineProperty3.default)({}, state.activeSearchId, {
-              activeStep: { $set: action.payload.index }
+          return (0, _immutabilityHelper.default)(state, {
+            searches: _defineProperty({}, state.activeSearchId, {
+              activeStep: {
+                $set: action.payload.index
+              }
             })
           });
         }
+
         return state;
+
       case 'SET_LOCATION':
-        return (0, _immutabilityHelper2.default)(state, {
-          currentQuery: (0, _defineProperty3.default)({}, action.payload.type, { $set: action.payload.location })
+        return (0, _immutabilityHelper.default)(state, {
+          currentQuery: _defineProperty({}, action.payload.type, {
+            $set: action.payload.location
+          })
         });
+
       case 'CLEAR_LOCATION':
-        return (0, _immutabilityHelper2.default)(state, {
-          currentQuery: (0, _defineProperty3.default)({}, action.payload.type, { $set: null })
+        return (0, _immutabilityHelper.default)(state, {
+          currentQuery: _defineProperty({}, action.payload.type, {
+            $set: null
+          })
         });
 
       case 'SET_QUERY_PARAM':
-        console.log('merging QPs', action.payload);
-        return (0, _immutabilityHelper2.default)(state, { currentQuery: { $merge: action.payload } });
+        return (0, _immutabilityHelper.default)(state, {
+          currentQuery: {
+            $merge: action.payload
+          }
+        });
 
       case 'CLEAR_ACTIVE_SEARCH':
-        return (0, _immutabilityHelper2.default)(state, { activeSearchId: { $set: null } });
+        return (0, _immutabilityHelper.default)(state, {
+          activeSearchId: {
+            $set: null
+          }
+        });
+
+      case 'SET_ACTIVE_SEARCH':
+        return (0, _immutabilityHelper.default)(state, {
+          activeSearchId: {
+            $set: action.payload
+          }
+        });
+
       case 'CLEAR_DEFAULT_SETTINGS':
-        window.localStorage.removeItem('otp.defaultQuery');
-        return (0, _immutabilityHelper2.default)(state, { defaults: { $set: null } });
+        (0, _storage.removeItem)('defaultQuery');
+        return (0, _immutabilityHelper.default)(state, {
+          user: {
+            defaults: {
+              $set: null
+            }
+          }
+        });
+
       case 'STORE_DEFAULT_SETTINGS':
-        window.localStorage.setItem('otp.defaultQuery', (0, _stringify2.default)(action.payload));
-        return (0, _immutabilityHelper2.default)(state, { defaults: { $set: action.payload } });
+        (0, _storage.storeItem)('defaultQuery', action.payload);
+        return (0, _immutabilityHelper.default)(state, {
+          user: {
+            defaults: {
+              $set: action.payload
+            }
+          }
+        });
+
       case 'FORGET_PLACE':
         {
-          var _locations = (0, _clone2.default)(state.user.locations);
-          var locationIndex = _locations.findIndex(function (l) {
-            return l.id === action.payload;
-          });
+          // Payload is the place ID.
+          // Recent place IDs contain the string literal 'recent'.
           if (action.payload.indexOf('recent') !== -1) {
-            // Remove recent from list of recent places
-            var _recentPlaces = _locations.filter(function (l) {
-              return l.type === 'recent';
-            });
-            var removeIndex = _recentPlaces.findIndex(function (l) {
+            var recentPlaces = (0, _clone.default)(state.user.recentPlaces); // Remove recent from list of recent places
+
+            var removeIndex = recentPlaces.findIndex(function (l) {
               return l.id === action.payload;
             });
-            _recentPlaces.splice(removeIndex, 1);
-            window.localStorage.setItem('otp.recent', (0, _stringify2.default)(_recentPlaces));
+            recentPlaces.splice(removeIndex, 1);
+            (0, _storage.storeItem)('recent', recentPlaces);
+            return removeIndex !== -1 ? (0, _immutabilityHelper.default)(state, {
+              user: {
+                recentPlaces: {
+                  $splice: [[removeIndex, 1]]
+                }
+              }
+            }) : state;
           } else {
-            window.localStorage.removeItem('otp.' + action.payload);
-          }
-          return locationIndex !== -1 ? (0, _immutabilityHelper2.default)(state, { user: { locations: { $splice: [[locationIndex, 1]] } } }) : state;
-        }
-      case 'TOGGLE_TRACKING':
-        {
-          window.localStorage.setItem('otp.trackRecent', (0, _stringify2.default)(action.payload));
-          var _locations2 = (0, _clone2.default)(state.user.locations);
-          if (!action.payload) {
-            // If user disables tracking, remove recent searches and locations.
-            _locations2 = _locations2.filter(function (l) {
-              return l.type !== 'recent';
+            var locations = (0, _clone.default)(state.user.locations);
+
+            var _removeIndex = locations.findIndex(function (l) {
+              return l.id === action.payload;
             });
-            window.localStorage.removeItem('otp.recent');
-            window.localStorage.removeItem('otp.recentSearches');
+
+            (0, _storage.removeItem)(action.payload);
+            return _removeIndex !== -1 ? (0, _immutabilityHelper.default)(state, {
+              user: {
+                locations: {
+                  $splice: [[_removeIndex, 1]]
+                }
+              }
+            }) : state;
           }
-          return (0, _immutabilityHelper2.default)(state, { user: {
-              trackRecent: { $set: action.payload },
-              locations: { $set: _locations2 },
-              recentSearches: { $set: [] }
-            } });
         }
+
       case 'REMEMBER_PLACE':
         {
           var _action$payload = action.payload,
               location = _action$payload.location,
               type = _action$payload.type;
 
-          var _locations3 = (0, _clone2.default)(state.user.locations);
-          var _duplicateIndex = _locations3.findIndex(function (l) {
-            return l.lat === location.lat && l.lon === location.lon;
-          });
-          var locationsUpdate = void 0;
-          if (location.type === 'recent') {
-            var firstIndex = -1;
-            var lastIndex = -1;
-            _locations3.forEach(function (l, i) {
-              if (l.type === 'recent') {
-                if (firstIndex === -1) firstIndex = i;else lastIndex = i;
-              }
-            });
-            var _recentPlaces2 = _locations3.filter(function (l) {
-              return l.type === 'recent';
-            });
-            if (_duplicateIndex !== -1) {
-              // If duplicate index found for a recent place, do not store recent
-              // place (no state change)
-              return state;
-            }
-            // Only keep up to 5 recent locations
-            // FIXME: Check for duplicates
-            if (_recentPlaces2.length >= 5) {
-              _recentPlaces2.splice(lastIndex, 1, location);
-              locationsUpdate = { $splice: [[lastIndex, 1, location]] };
-            } else {
-              _recentPlaces2.push(location);
-              locationsUpdate = { $push: [location] };
-            }
-            window.localStorage.setItem('otp.recent', (0, _stringify2.default)(_recentPlaces2));
-          } else {
-            if (_duplicateIndex !== -1) {}
-            // If a duplicate place was found for a home/work location, that's
-            // not a problem
+          switch (type) {
+            case 'recent':
+              {
+                var _recentPlaces = (0, _clone.default)(state.user.recentPlaces);
 
-            // Determine if location type already exists in list
-            var index = _locations3.findIndex(function (l) {
-              return l.type === type;
-            });
-            if (index !== -1) {
-              locationsUpdate = { $splice: [[index, 1, location]] };
-            } else {
-              locationsUpdate = { $push: [location] };
-            }
-            window.localStorage.setItem('otp.' + type, (0, _stringify2.default)(location));
+                var index = _recentPlaces.findIndex(function (l) {
+                  return (0, _map.matchLatLon)(l, location);
+                }); // Replace recent place if duplicate found or add to list.
+
+
+                if (index !== -1) _recentPlaces.splice(index, 1, location);else _recentPlaces.push(location);
+
+                var sortedPlaces = _recentPlaces.sort(function (a, b) {
+                  return b.timestamp - a.timestamp;
+                }); // Only keep up to 5 recent locations
+                // FIXME: Check for duplicates
+
+
+                if (_recentPlaces.length >= MAX_RECENT_STORAGE) {
+                  sortedPlaces.splice(MAX_RECENT_STORAGE);
+                }
+
+                (0, _storage.storeItem)('recent', _recentPlaces);
+                return (0, _immutabilityHelper.default)(state, {
+                  user: {
+                    recentPlaces: {
+                      $set: sortedPlaces
+                    }
+                  }
+                });
+              }
+
+            default:
+              {
+                var _locations = (0, _clone.default)(state.user.locations); // Determine if location type (e.g., home or work) already exists in list
+
+
+                var _index = _locations.findIndex(function (l) {
+                  return l.type === type;
+                });
+
+                if (_index !== -1) _locations.splice(_index, 1, location);else _locations.push(location);
+                (0, _storage.storeItem)(type, location);
+                return (0, _immutabilityHelper.default)(state, {
+                  user: {
+                    locations: {
+                      $set: _locations
+                    }
+                  }
+                });
+              }
           }
-          return (0, _immutabilityHelper2.default)(state, { user: { locations: locationsUpdate } });
         }
-      case 'REMEMBER_SEARCH':
-        var searches = (0, _clone2.default)(state.user.recentSearches);
-        var duplicateIndex = searches.findIndex(function (s) {
-          return (0, _lodash2.default)(s.query, action.payload.query);
-        });
-        // Do not store a duplicate search
-        if (duplicateIndex !== -1) {
-          return state;
-        }
-        searches.push(action.payload);
-        window.localStorage.setItem('otp.recentSearches', (0, _stringify2.default)(searches));
-        return (0, _immutabilityHelper2.default)(state, { user: { searches: { $set: searches } } });
-      case 'FORGET_SEARCH':
+
+      case 'FORGET_STOP':
         {
-          var _recentSearches = (0, _clone2.default)(state.user.recentSearches);
-          var _index = _recentSearches.findIndex(function (l) {
+          // Payload is the stop ID.
+          var favoriteStops = (0, _clone.default)(state.user.favoriteStops); // Remove stop from favorites
+
+          var _removeIndex2 = favoriteStops.findIndex(function (l) {
             return l.id === action.payload;
           });
-          // Remove item from list of recent searches
-          _recentSearches.splice(_index, 1);
-          window.localStorage.setItem('otp.recentSearches', (0, _stringify2.default)(_recentSearches));
-          return _index !== -1 ? (0, _immutabilityHelper2.default)(state, { user: { recentSearches: { $splice: [[_index, 1]] } } }) : state;
+
+          favoriteStops.splice(_removeIndex2, 1);
+          (0, _storage.storeItem)('favoriteStops', favoriteStops);
+          return _removeIndex2 !== -1 ? (0, _immutabilityHelper.default)(state, {
+            user: {
+              favoriteStops: {
+                $splice: [[_removeIndex2, 1]]
+              }
+            }
+          }) : state;
         }
+
+      case 'REMEMBER_STOP':
+        {
+          // Payload is stop data. We want to avoid saving other attributes that
+          // might be contained there (like lists of patterns).
+          var _action$payload2 = action.payload,
+              id = _action$payload2.id,
+              name = _action$payload2.name,
+              lat = _action$payload2.lat,
+              lon = _action$payload2.lon;
+          var stop = {
+            type: 'stop',
+            icon: 'bus',
+            id: id,
+            name: name,
+            lat: lat,
+            lon: lon
+          };
+
+          var _favoriteStops = (0, _clone.default)(state.user.favoriteStops);
+
+          if (_favoriteStops.length >= MAX_RECENT_STORAGE) {
+            window.alert("Cannot save more than ".concat(MAX_RECENT_STORAGE, " stops. Remove one before adding more."));
+            return state;
+          }
+
+          var _index2 = _favoriteStops.findIndex(function (s) {
+            return s.id === stop.id;
+          }); // Do nothing if duplicate stop found.
+
+
+          if (_index2 !== -1) {
+            console.warn("Stop with id ".concat(stop.id, " already exists in favorites."));
+            return state;
+          } else {
+            _favoriteStops.unshift(stop);
+          }
+
+          (0, _storage.storeItem)('favoriteStops', _favoriteStops);
+          return (0, _immutabilityHelper.default)(state, {
+            user: {
+              favoriteStops: {
+                $set: _favoriteStops
+              }
+            }
+          });
+        }
+
+      case 'TOGGLE_TRACKING':
+        {
+          (0, _storage.storeItem)('trackRecent', action.payload);
+
+          var _recentPlaces2 = (0, _clone.default)(state.user.recentPlaces);
+
+          var recentSearches = (0, _clone.default)(state.user.recentSearches);
+
+          if (!action.payload) {
+            // If user disables tracking, remove recent searches and locations.
+            _recentPlaces2 = [];
+            recentSearches = [];
+            (0, _storage.removeItem)('recent');
+            (0, _storage.removeItem)('recentSearches');
+          }
+
+          return (0, _immutabilityHelper.default)(state, {
+            user: {
+              trackRecent: {
+                $set: action.payload
+              },
+              recentPlaces: {
+                $set: _recentPlaces2
+              },
+              recentSearches: {
+                $set: recentSearches
+              }
+            }
+          });
+        }
+
+      case 'REMEMBER_SEARCH':
+        var searches = (0, _clone.default)(state.user.recentSearches);
+        var duplicateIndex = searches.findIndex(function (s) {
+          return (0, _lodash.default)(s.query, action.payload.query);
+        }); // Overwrite duplicate search (so that new timestamp is stored).
+
+        if (duplicateIndex !== -1) searches[duplicateIndex] = action.payload;else searches.unshift(action.payload);
+        var sortedSearches = searches.sort(function (a, b) {
+          return b.timestamp - a.timestamp;
+        }); // Ensure recent searches do not extend beyong MAX_RECENT_STORAGE
+
+        if (sortedSearches.length >= MAX_RECENT_STORAGE) {
+          sortedSearches.splice(MAX_RECENT_STORAGE);
+        }
+
+        (0, _storage.storeItem)('recentSearches', sortedSearches);
+        return (0, _immutabilityHelper.default)(state, {
+          user: {
+            searches: {
+              $set: sortedSearches
+            }
+          }
+        });
+
+      case 'FORGET_SEARCH':
+        {
+          var _recentSearches = (0, _clone.default)(state.user.recentSearches);
+
+          var _index3 = _recentSearches.findIndex(function (l) {
+            return l.id === action.payload;
+          }); // Remove item from list of recent searches
+
+
+          _recentSearches.splice(_index3, 1);
+
+          (0, _storage.storeItem)('recentSearches', _recentSearches);
+          return _index3 !== -1 ? (0, _immutabilityHelper.default)(state, {
+            user: {
+              recentSearches: {
+                $splice: [[_index3, 1]]
+              }
+            }
+          }) : state;
+        }
+
       case 'SET_AUTOPLAN':
-        return (0, _immutabilityHelper2.default)(state, {
-          config: { autoPlan: { $set: action.payload.autoPlan } }
+        return (0, _immutabilityHelper.default)(state, {
+          config: {
+            autoPlan: {
+              $set: action.payload.autoPlan
+            }
+          }
         });
+
       case 'SET_MAP_CENTER':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           config: {
             map: {
-              initLat: { $set: action.payload.lat },
-              initLon: { $set: action.payload.lon }
+              initLat: {
+                $set: action.payload.lat
+              },
+              initLon: {
+                $set: action.payload.lon
+              }
             }
           }
         });
+
       case 'SET_MAP_ZOOM':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           config: {
             map: {
-              initZoom: { $set: action.payload.zoom }
+              initZoom: {
+                $set: action.payload.zoom
+              }
             }
           }
         });
+
+      case 'SET_ROUTER_ID':
+        var routerId = action.payload || 'default';
+        return (0, _immutabilityHelper.default)(state, {
+          config: {
+            api: {
+              path: {
+                $set: "/otp/routers/".concat(routerId)
+              }
+            }
+          }
+        });
+
       case 'SHOW_LEG_DIAGRAM':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           ui: {
-            diagramLeg: { $set: action.payload }
+            diagramLeg: {
+              $set: action.payload
+            }
           }
         });
+
       case 'SET_ELEVATION_POINT':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           ui: {
-            elevationPoint: { $set: action.payload }
+            elevationPoint: {
+              $set: action.payload
+            }
           }
         });
+
       case 'SET_MAP_POPUP_LOCATION':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           ui: {
-            mapPopupLocation: { $set: action.payload.location }
+            mapPopupLocation: {
+              $set: action.payload.location
+            }
           }
         });
+
       case 'POSITION_FETCHING':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           location: {
-            currentPosition: { $merge: { fetching: action.payload.type } }
+            currentPosition: {
+              $merge: {
+                fetching: action.payload.type
+              }
+            }
           }
         });
+
       case 'POSITION_ERROR':
-        return (0, _immutabilityHelper2.default)(state, {
-          location: { currentPosition: { $set: action.payload } }
+        return (0, _immutabilityHelper.default)(state, {
+          location: {
+            currentPosition: {
+              $set: action.payload
+            }
+          }
         });
+
       case 'POSITION_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
-          location: { currentPosition: { $set: action.payload.position } }
+        return (0, _immutabilityHelper.default)(state, {
+          location: {
+            currentPosition: {
+              $set: action.payload.position
+            }
+          }
         });
+
       case 'ADD_LOCATION_SEARCH':
-        return (0, _immutabilityHelper2.default)(state, {
-          location: { sessionSearches: { $unshift: [action.payload.location] } }
+        return (0, _immutabilityHelper.default)(state, {
+          location: {
+            sessionSearches: {
+              $unshift: [action.payload.location]
+            }
+          }
         });
 
       case 'NEARBY_STOPS_RESPONSE':
@@ -515,163 +884,329 @@ function createOtpReducer(config, initialQuery) {
         action.payload.stops.forEach(function (s) {
           stopLookup[s.id] = s;
         });
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           location: {
-            nearbyStops: { $set: action.payload.stops.map(function (s) {
+            nearbyStops: {
+              $set: action.payload.stops.map(function (s) {
                 return s.id;
-              }) }
+              })
+            }
           },
-          transitIndex: { stops: { $merge: stopLookup } }
-        });
-      case 'STOPS_WITHIN_BBOX_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
-          overlay: {
-            transit: {
-              stops: { $set: action.payload.stops },
-              pending: { $set: false }
-            }
-          }
-        });
-      case 'CLEAR_STOPS_OVERLAY':
-        return (0, _immutabilityHelper2.default)(state, {
-          overlay: {
-            transit: {
-              stops: { $set: [] },
-              pending: { $set: false }
-            }
-          }
-        });
-      case 'ROUTES_AT_STOP_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
           transitIndex: {
-            stops: (0, _defineProperty3.default)({}, action.payload.stopId, {
-              routes: { $set: action.payload.routes }
+            stops: {
+              $merge: stopLookup
+            }
+          }
+        });
+
+      case 'STOPS_WITHIN_BBOX_RESPONSE':
+        return (0, _immutabilityHelper.default)(state, {
+          overlay: {
+            transit: {
+              stops: {
+                $set: action.payload.stops
+              },
+              pending: {
+                $set: false
+              }
+            }
+          }
+        });
+
+      case 'CLEAR_STOPS_OVERLAY':
+        return (0, _immutabilityHelper.default)(state, {
+          overlay: {
+            transit: {
+              stops: {
+                $set: []
+              },
+              pending: {
+                $set: false
+              }
+            }
+          }
+        });
+
+      case 'ROUTES_AT_STOP_RESPONSE':
+        return (0, _immutabilityHelper.default)(state, {
+          transitIndex: {
+            stops: _defineProperty({}, action.payload.stopId, {
+              routes: {
+                $set: action.payload.routes
+              }
             })
           }
         });
+
       case 'SET_MOBILE_SCREEN':
-        return (0, _immutabilityHelper2.default)(state, { ui: { mobileScreen: { $set: action.payload } } });
-      case 'SET_MAIN_PANEL_CONTENT':
-        return (0, _immutabilityHelper2.default)(state, {
-          ui: { mainPanelContent: { $set: action.payload } }
+        return (0, _immutabilityHelper.default)(state, {
+          ui: {
+            mobileScreen: {
+              $set: action.payload
+            }
+          }
         });
+
+      case 'SET_MAIN_PANEL_CONTENT':
+        return (0, _immutabilityHelper.default)(state, {
+          ui: {
+            mainPanelContent: {
+              $set: action.payload
+            }
+          }
+        });
+
       case 'SET_VIEWED_STOP':
-        return (0, _immutabilityHelper2.default)(state, { ui: { viewedStop: { $set: action.payload } } });
+        if (action.payload) {
+          // If setting to a stop (not null), also set main panel.
+          return (0, _immutabilityHelper.default)(state, {
+            ui: {
+              mainPanelContent: {
+                $set: _ui.MainPanelContent.STOP_VIEWER
+              },
+              viewedStop: {
+                $set: action.payload
+              }
+            }
+          });
+        } else {
+          // Otherwise, just replace viewed stop with null
+          return (0, _immutabilityHelper.default)(state, {
+            ui: {
+              viewedStop: {
+                $set: action.payload
+              }
+            }
+          });
+        }
+
       case 'CLEAR_VIEWED_STOP':
-        return (0, _immutabilityHelper2.default)(state, { ui: { viewedStop: { $set: null } } });
+        return (0, _immutabilityHelper.default)(state, {
+          ui: {
+            viewedStop: {
+              $set: null
+            }
+          }
+        });
 
       case 'SET_VIEWED_TRIP':
-        return (0, _immutabilityHelper2.default)(state, { ui: { viewedTrip: { $set: action.payload } } });
+        return (0, _immutabilityHelper.default)(state, {
+          ui: {
+            viewedTrip: {
+              $set: action.payload
+            }
+          }
+        });
+
       case 'CLEAR_VIEWED_TRIP':
-        return (0, _immutabilityHelper2.default)(state, { ui: { viewedTrip: { $set: null } } });
+        return (0, _immutabilityHelper.default)(state, {
+          ui: {
+            viewedTrip: {
+              $set: null
+            }
+          }
+        });
 
       case 'SET_VIEWED_ROUTE':
-        return (0, _immutabilityHelper2.default)(state, { ui: { viewedRoute: { $set: action.payload } } });
+        if (action.payload) {
+          // If setting to a route (not null), also set main panel.
+          return (0, _immutabilityHelper.default)(state, {
+            ui: {
+              mainPanelContent: {
+                $set: _ui.MainPanelContent.ROUTE_VIEWER
+              },
+              viewedRoute: {
+                $set: action.payload
+              }
+            }
+          });
+        } else {
+          // Otherwise, just replace viewed route with null
+          return (0, _immutabilityHelper.default)(state, {
+            ui: {
+              viewedRoute: {
+                $set: action.payload
+              }
+            }
+          });
+        }
 
       case 'FIND_STOP_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           transitIndex: {
-            stops: (0, _defineProperty3.default)({}, action.payload.id, { $set: action.payload })
+            stops: _defineProperty({}, action.payload.id, {
+              $set: action.payload
+            })
           }
         });
+
       case 'FIND_TRIP_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           transitIndex: {
-            trips: (0, _defineProperty3.default)({}, action.payload.id, { $set: action.payload })
+            trips: _defineProperty({}, action.payload.id, {
+              $set: action.payload
+            })
           }
         });
+
       case 'FIND_STOPS_FOR_TRIP_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           transitIndex: {
-            trips: (0, _defineProperty3.default)({}, action.payload.tripId, { stops: { $set: action.payload.stops } })
+            trips: _defineProperty({}, action.payload.tripId, {
+              stops: {
+                $set: action.payload.stops
+              }
+            })
           }
         });
+
       case 'FIND_STOP_TIMES_FOR_TRIP_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           transitIndex: {
-            trips: (0, _defineProperty3.default)({}, action.payload.tripId, {
-              stopTimes: { $set: action.payload.stopTimes }
+            trips: _defineProperty({}, action.payload.tripId, {
+              stopTimes: {
+                $set: action.payload.stopTimes
+              }
             })
           }
         });
+
       case 'FIND_GEOMETRY_FOR_TRIP_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           transitIndex: {
-            trips: (0, _defineProperty3.default)({}, action.payload.tripId, {
-              geometry: { $set: action.payload.geometry }
+            trips: _defineProperty({}, action.payload.tripId, {
+              geometry: {
+                $set: action.payload.geometry
+              }
             })
           }
         });
+
       case 'FIND_STOP_TIMES_FOR_STOP_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           transitIndex: {
-            stops: (0, _defineProperty3.default)({}, action.payload.stopId, {
-              stopTimes: { $set: action.payload.stopTimes }
+            stops: _defineProperty({}, action.payload.stopId, {
+              stopTimes: {
+                $set: action.payload.stopTimes
+              },
+              stopTimesLastUpdated: {
+                $set: new Date().getTime()
+              }
             })
+          }
+        });
+
+      case 'TOGGLE_AUTO_REFRESH':
+        (0, _storage.storeItem)('autoRefreshStopTimes', action.payload);
+        return (0, _immutabilityHelper.default)(state, {
+          user: {
+            autoRefreshStopTimes: {
+              $set: action.payload
+            }
           }
         });
 
       case 'FIND_ROUTES_RESPONSE':
         // If routes is undefined, initialize it w/ the full payload
         if (!state.transitIndex.routes) {
-          return (0, _immutabilityHelper2.default)(state, {
-            transitIndex: { routes: { $set: action.payload } }
+          return (0, _immutabilityHelper.default)(state, {
+            transitIndex: {
+              routes: {
+                $set: action.payload
+              }
+            }
           });
-        }
-        // Otherwise, merge in only the routes not already defined
-        var currentRouteIds = (0, _keys2.default)(state.transitIndex.routes);
-        var newRoutes = (0, _keys2.default)(action.payload).filter(function (key) {
+        } // Otherwise, merge in only the routes not already defined
+
+
+        var currentRouteIds = Object.keys(state.transitIndex.routes);
+        var newRoutes = Object.keys(action.payload).filter(function (key) {
           return !currentRouteIds.includes(key);
         }).reduce(function (res, key) {
-          return (0, _assign2.default)(res, (0, _defineProperty3.default)({}, key, action.payload[key]));
+          return Object.assign(res, _defineProperty({}, key, action.payload[key]));
         }, {});
-        return (0, _immutabilityHelper2.default)(state, {
-          transitIndex: { routes: { $merge: newRoutes } }
+        return (0, _immutabilityHelper.default)(state, {
+          transitIndex: {
+            routes: {
+              $merge: newRoutes
+            }
+          }
         });
 
       case 'FIND_ROUTE_RESPONSE':
         // If routes is undefined, initialize it w/ this route only
         if (!state.transitIndex.routes) {
-          return (0, _immutabilityHelper2.default)(state, {
-            transitIndex: { routes: { $set: (0, _defineProperty3.default)({}, action.payload.id, action.payload) } }
+          return (0, _immutabilityHelper.default)(state, {
+            transitIndex: {
+              routes: {
+                $set: _defineProperty({}, action.payload.id, action.payload)
+              }
+            }
           });
-        }
-        // Otherwise, overwrite only this route
-        return (0, _immutabilityHelper2.default)(state, {
+        } // Otherwise, overwrite only this route
+
+
+        return (0, _immutabilityHelper.default)(state, {
           transitIndex: {
-            routes: (0, _defineProperty3.default)({}, action.payload.id, { $set: action.payload })
+            routes: _defineProperty({}, action.payload.id, {
+              $set: action.payload
+            })
           }
         });
 
       case 'FIND_PATTERNS_FOR_ROUTE_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        var _action$payload3 = action.payload,
+            patterns = _action$payload3.patterns,
+            routeId = _action$payload3.routeId; // If routes is undefined, initialize it w/ this route only
+
+        if (!state.transitIndex.routes) {
+          return (0, _immutabilityHelper.default)(state, {
+            transitIndex: {
+              routes: {
+                $set: _defineProperty({}, routeId, {
+                  patterns: patterns
+                })
+              }
+            }
+          });
+        } // Otherwise, overwrite only this route
+
+
+        return (0, _immutabilityHelper.default)(state, {
           transitIndex: {
-            routes: (0, _defineProperty3.default)({}, action.payload.routeId, {
-              patterns: { $set: action.payload.patterns }
+            routes: _defineProperty({}, routeId, {
+              patterns: {
+                $set: patterns
+              }
             })
           }
         });
+
       case 'FIND_GEOMETRY_FOR_PATTERN_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           transitIndex: {
-            routes: (0, _defineProperty3.default)({}, action.payload.routeId, {
-              patterns: (0, _defineProperty3.default)({}, action.payload.patternId, {
-                geometry: { $set: action.payload.geometry }
+            routes: _defineProperty({}, action.payload.routeId, {
+              patterns: _defineProperty({}, action.payload.patternId, {
+                geometry: {
+                  $set: action.payload.geometry
+                }
               })
             })
           }
         });
+
       case 'TNC_ETA_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           tnc: {
-            etaEstimates: (0, _defineProperty3.default)({}, action.payload.from, function (fromData) {
-              fromData = (0, _assign2.default)({}, fromData);
+            etaEstimates: _defineProperty({}, action.payload.from, function (fromData) {
+              fromData = Object.assign({}, fromData);
               var estimates = action.payload.estimates || [];
               estimates.forEach(function (estimate) {
                 if (!fromData[estimate.company]) {
                   fromData[estimate.company] = {};
                 }
-                fromData[estimate.company][estimate.productId] = (0, _assign2.default)({
+
+                fromData[estimate.company][estimate.productId] = Object.assign({
                   estimateTimestamp: new Date()
                 }, estimate);
               });
@@ -679,26 +1214,30 @@ function createOtpReducer(config, initialQuery) {
             })
           }
         });
+
       case 'TNC_RIDE_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           tnc: {
-            rideEstimates: (0, _defineProperty3.default)({}, action.payload.from, function (fromData) {
-              fromData = (0, _assign2.default)({}, fromData);
-              var _action$payload2 = action.payload,
-                  company = _action$payload2.company,
-                  rideEstimate = _action$payload2.rideEstimate,
-                  to = _action$payload2.to;
+            rideEstimates: _defineProperty({}, action.payload.from, function (fromData) {
+              fromData = Object.assign({}, fromData);
+              var _action$payload4 = action.payload,
+                  company = _action$payload4.company,
+                  rideEstimate = _action$payload4.rideEstimate,
+                  to = _action$payload4.to;
 
               if (!rideEstimate) {
                 return fromData;
               }
+
               if (!fromData[to]) {
                 fromData[to] = {};
               }
+
               if (!fromData[to][company]) {
                 fromData[to][company] = {};
               }
-              fromData[to][company][rideEstimate.rideType] = (0, _assign2.default)({
+
+              fromData[to][company][rideEstimate.rideType] = Object.assign({
                 estimateTimestamp: new Date()
               }, rideEstimate);
               return fromData;
@@ -707,22 +1246,30 @@ function createOtpReducer(config, initialQuery) {
         });
 
       case 'PARK_AND_RIDE_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           overlay: {
             parkAndRide: {
-              locations: { $set: action.payload },
-              pending: { $set: false }
+              locations: {
+                $set: action.payload
+              },
+              pending: {
+                $set: false
+              }
             }
           }
         });
-
       // TODO: can this be broken out into a separate module?
+
       case 'ZIPCAR_LOCATIONS_RESPONSE':
-        return (0, _immutabilityHelper2.default)(state, {
+        return (0, _immutabilityHelper.default)(state, {
           overlay: {
             zipcar: {
-              locations: { $set: action.payload.locations },
-              pending: { $set: false }
+              locations: {
+                $set: action.payload.locations
+              },
+              pending: {
+                $set: false
+              }
             }
           }
         });
@@ -742,13 +1289,14 @@ function createOtpReducer(config, initialQuery) {
       //       transitive: { $set: }
       //     }
       //   })
+
       default:
         return state;
     }
   };
 }
 
-exports.default = createOtpReducer;
-module.exports = exports['default'];
+var _default = createOtpReducer;
+exports.default = _default;
 
 //# sourceMappingURL=create-otp-reducer.js

@@ -1,146 +1,135 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+require("core-js/modules/es6.function.name");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+require("core-js/modules/es6.string.starts-with");
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireDefault(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _reactRedux = require("react-redux");
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _reactLeaflet = require("react-leaflet");
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _leaflet = require("leaflet");
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _setFromTo = _interopRequireDefault(require("./set-from-to"));
 
-var _class, _temp;
+var _map = require("../../actions/map");
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = require('react-redux');
-
-var _reactLeaflet = require('react-leaflet');
-
-var _leaflet = require('leaflet');
-
-var _setFromTo = require('./set-from-to');
-
-var _setFromTo2 = _interopRequireDefault(_setFromTo);
-
-var _map = require('../../actions/map');
-
-var _api = require('../../actions/api');
+var _api = require("../../actions/api");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ParkAndRideOverlay = (_temp = _class = function (_MapLayer) {
-  (0, _inherits3.default)(ParkAndRideOverlay, _MapLayer);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ParkAndRideOverlay =
+/*#__PURE__*/
+function (_MapLayer) {
+  _inherits(ParkAndRideOverlay, _MapLayer);
 
   function ParkAndRideOverlay() {
-    (0, _classCallCheck3.default)(this, ParkAndRideOverlay);
-    return (0, _possibleConstructorReturn3.default)(this, (ParkAndRideOverlay.__proto__ || (0, _getPrototypeOf2.default)(ParkAndRideOverlay)).apply(this, arguments));
+    _classCallCheck(this, ParkAndRideOverlay);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ParkAndRideOverlay).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(ParkAndRideOverlay, [{
-    key: 'componentDidMount',
+  _createClass(ParkAndRideOverlay, [{
+    key: "componentDidMount",
     value: function componentDidMount() {
       var params = {};
+
       if (this.props.maxTransitDistance) {
         params['maxTransitDistance'] = this.props.maxTransitDistance;
-      }
-      // TODO: support config-defined bounding envelope
+      } // TODO: support config-defined bounding envelope
+
 
       this.props.parkAndRideQuery(params);
     }
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {}
   }, {
-    key: 'createLeafletElement',
+    key: "createLeafletElement",
     value: function createLeafletElement() {}
   }, {
-    key: 'updateLeafletElement',
+    key: "updateLeafletElement",
     value: function updateLeafletElement() {}
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this = this;
 
       var locations = this.props.locations;
-
-      if (!locations || locations.length === 0) return _react2.default.createElement(_reactLeaflet.FeatureGroup, null);
-
+      if (!locations || locations.length === 0) return _react.default.createElement(_reactLeaflet.FeatureGroup, null);
       var markerIcon = (0, _leaflet.divIcon)({
         iconSize: [20, 20],
         popupAnchor: [0, -10],
         html: '<div style="width: 20px; height: 20px; background: #000; color: #fff; border-radius: 10px; font-weight: bold; font-size: 16px; padding-left: 4px; padding-top: 10px; line-height: 0px;">P</div>',
         className: ''
       });
-
-      return _react2.default.createElement(
-        _reactLeaflet.FeatureGroup,
-        null,
-        locations.map(function (location, k) {
-          var name = location.name.startsWith('P+R ') ? location.name.substring(4) : location.name;
-          return _react2.default.createElement(
-            _reactLeaflet.Marker,
-            {
-              icon: markerIcon,
-              key: k,
-              position: [location.y, location.x]
-            },
-            _react2.default.createElement(
-              _reactLeaflet.Popup,
-              null,
-              _react2.default.createElement(
-                'div',
-                { className: 'map-overlay-popup' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'popup-title' },
-                  name
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'popup-row' },
-                  _react2.default.createElement(_setFromTo2.default, {
-                    map: _this2.context.map,
-                    location: {
-                      lat: location.y,
-                      lon: location.x,
-                      name: name
-                    },
-                    setLocation: _this2.props.setLocation
-                  })
-                )
-              )
-            )
-          );
-        })
-      );
+      return _react.default.createElement(_reactLeaflet.FeatureGroup, null, locations.map(function (location, k) {
+        var name = location.name.startsWith('P+R ') ? location.name.substring(4) : location.name;
+        return _react.default.createElement(_reactLeaflet.Marker, {
+          icon: markerIcon,
+          key: k,
+          position: [location.y, location.x]
+        }, _react.default.createElement(_reactLeaflet.Popup, null, _react.default.createElement("div", {
+          className: "map-overlay-popup"
+        }, _react.default.createElement("div", {
+          className: "popup-title"
+        }, name), _react.default.createElement("div", {
+          className: "popup-row"
+        }, _react.default.createElement(_setFromTo.default, {
+          map: _this.props.leaflet.map,
+          location: {
+            lat: location.y,
+            lon: location.x,
+            name: name
+          },
+          setLocation: _this.props.setLocation
+        })))));
+      }));
     }
   }]);
-  return ParkAndRideOverlay;
-}(_reactLeaflet.MapLayer), _class.propTypes = {
-  locations: _react.PropTypes.array,
-  zipcarLocationsQuery: _react.PropTypes.func,
-  setLocation: _react.PropTypes.func
-}, _temp);
 
-// connect to the redux store
+  return ParkAndRideOverlay;
+}(_reactLeaflet.MapLayer); // connect to the redux store
+
+
+_defineProperty(ParkAndRideOverlay, "propTypes", {
+  locations: _propTypes.default.array,
+  zipcarLocationsQuery: _propTypes.default.func,
+  setLocation: _propTypes.default.func
+});
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
@@ -153,7 +142,9 @@ var mapDispatchToProps = {
   parkAndRideQuery: _api.parkAndRideQuery
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ParkAndRideOverlay);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)((0, _reactLeaflet.withLeaflet)(ParkAndRideOverlay));
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=park-and-ride-overlay.js

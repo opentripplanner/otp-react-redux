@@ -1,114 +1,134 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _icon = _interopRequireDefault(require("./icon"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-
-var _icon = require('./icon');
-
-var _icon2 = _interopRequireDefault(_icon);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ModeIcon = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(ModeIcon, _Component);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ModeIcon =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ModeIcon, _Component);
 
   function ModeIcon() {
-    (0, _classCallCheck3.default)(this, ModeIcon);
-    return (0, _possibleConstructorReturn3.default)(this, (ModeIcon.__proto__ || (0, _getPrototypeOf2.default)(ModeIcon)).apply(this, arguments));
+    _classCallCheck(this, ModeIcon);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ModeIcon).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(ModeIcon, [{
-    key: 'render',
+  _createClass(ModeIcon, [{
+    key: "render",
     value: function render() {
-      var _props = this.props,
-          mode = _props.mode,
-          defaultToText = _props.defaultToText;
+      var _this$props = this.props,
+          mode = _this$props.mode,
+          defaultToText = _this$props.defaultToText;
 
       switch (mode) {
         case 'BICYCLE':
-          return _react2.default.createElement(
-            'span',
-            { className: 'mode-icon' },
-            _react2.default.createElement(_icon2.default, { title: 'bicycle', type: 'bicycle' })
-          );
+          return _react.default.createElement("span", {
+            className: "mode-icon"
+          }, _react.default.createElement(_icon.default, {
+            title: 'bicycle',
+            type: "bicycle"
+          }));
+
         case 'BUS':
-          return _react2.default.createElement(
-            'span',
-            { className: 'mode-icon' },
-            _react2.default.createElement(_icon2.default, { title: 'bus', type: 'bus' })
-          );
+          return _react.default.createElement("span", {
+            className: "mode-icon"
+          }, _react.default.createElement(_icon.default, {
+            title: 'bus',
+            type: "bus"
+          }));
+
         case 'CAR':
-          return _react2.default.createElement(
-            'span',
-            { className: 'mode-icon' },
-            _react2.default.createElement(_icon2.default, { title: 'car', type: 'car' })
-          );
+          return _react.default.createElement("span", {
+            className: "mode-icon"
+          }, _react.default.createElement(_icon.default, {
+            title: 'car',
+            type: "car"
+          }));
+
         case 'TRAM':
-          return _react2.default.createElement(
-            'span',
-            { className: 'mode-icon' },
-            _react2.default.createElement(_icon2.default, { title: 'tram', type: 'train' })
-          );
+          return _react.default.createElement("span", {
+            className: "mode-icon"
+          }, _react.default.createElement(_icon.default, {
+            title: 'tram',
+            type: "train"
+          }));
+
         case 'SUBWAY':
-          return _react2.default.createElement(
-            'span',
-            { className: 'mode-icon' },
-            _react2.default.createElement(_icon2.default, { title: 'subway', type: 'subway' })
-          );
+          return _react.default.createElement("span", {
+            className: "mode-icon"
+          }, _react.default.createElement(_icon.default, {
+            title: 'subway',
+            type: "subway"
+          }));
+
         case 'WALK':
-          return _react2.default.createElement(
-            'span',
-            { className: 'mode-icon' },
-            _react2.default.createElement(_icon2.default, { title: 'walk', type: 'male' })
-          );
+          return _react.default.createElement("span", {
+            className: "mode-icon"
+          }, _react.default.createElement(_icon.default, {
+            title: 'walk',
+            type: "male"
+          }));
+
         case 'MICROMOBILITY':
-          return _react2.default.createElement(
-            'span',
-            { className: 'mode-icon' },
-            _react2.default.createElement(_icon2.default, { title: 'micromobility', type: 'flash' })
-          );
+          return _react.default.createElement("span", {
+            className: "mode-icon"
+          }, _react.default.createElement(_icon.default, {
+            title: 'micromobility',
+            type: "flash"
+          }));
+
         default:
-          return defaultToText ? _react2.default.createElement(
-            'span',
-            null,
-            mode
-          ) : null;
+          return defaultToText ? _react.default.createElement("span", null, mode) : null;
       }
     }
   }]);
+
   return ModeIcon;
-}(_react.Component), _class.propTypes = {
-  mode: _react.PropTypes.string
-}, _temp);
+}(_react.Component);
+
 exports.default = ModeIcon;
-module.exports = exports['default'];
+
+_defineProperty(ModeIcon, "propTypes", {
+  mode: _propTypes.default.string
+});
+
+module.exports = exports.default;
 
 //# sourceMappingURL=mode-icon.js

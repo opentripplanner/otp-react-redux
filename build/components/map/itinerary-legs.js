@@ -1,104 +1,115 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _react = _interopRequireWildcard(require("react"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _reactLeaflet = require("react-leaflet");
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _polyline = _interopRequireDefault(require("@mapbox/polyline"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp2;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactLeaflet = require('react-leaflet');
-
-var _polyline = require('@mapbox/polyline');
-
-var _polyline2 = _interopRequireDefault(_polyline);
-
-var _itinerary = require('../../util/itinerary');
+var _itinerary = require("../../util/itinerary");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ItineraryLegs = (_temp2 = _class = function (_Component) {
-  (0, _inherits3.default)(ItineraryLegs, _Component);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ItineraryLegs =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ItineraryLegs, _Component);
 
   function ItineraryLegs() {
-    var _ref;
+    var _getPrototypeOf2;
 
-    var _temp, _this, _ret;
+    var _this;
 
-    (0, _classCallCheck3.default)(this, ItineraryLegs);
+    _classCallCheck(this, ItineraryLegs);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = ItineraryLegs.__proto__ || (0, _getPrototypeOf2.default)(ItineraryLegs)).call.apply(_ref, [this].concat(args))), _this), _this._onLegClick = function (e) {
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ItineraryLegs)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "_onLegClick", function (e) {
       var index = e.layer.feature.geometry.index;
       var leg = _this.props.itinerary.legs[index];
+
       if (index === _this.props.activeLeg) {
         _this.props.setActiveLeg(null);
       } else {
         _this.props.setActiveLeg(index, leg);
       }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    });
+
+    return _this;
   }
 
-  (0, _createClass3.default)(ItineraryLegs, [{
-    key: 'render',
+  _createClass(ItineraryLegs, [{
+    key: "render",
     value: function render() {
       var _this2 = this;
 
-      var _props = this.props,
-          itinerary = _props.itinerary,
-          activeLeg = _props.activeLeg;
+      var _this$props = this.props,
+          itinerary = _this$props.itinerary,
+          activeLeg = _this$props.activeLeg;
+      return _react.default.createElement(_reactLeaflet.FeatureGroup, null, itinerary.legs.map(function (leg, index) {
+        var geojson = _polyline.default.toGeoJSON(leg.legGeometry.points);
 
-      return _react2.default.createElement(
-        _reactLeaflet.FeatureGroup,
-        null,
-        itinerary.legs.map(function (leg, index) {
-          var geojson = _polyline2.default.toGeoJSON(leg.legGeometry.points);
-          geojson.index = index;
-          var active = activeLeg === index;
-          var color = active ? 'yellow' : (0, _itinerary.isTransit)(leg.mode) ? 'blue' : 'black';
-          return _react2.default.createElement(_reactLeaflet.GeoJSON, {
-            key: Math.random(),
-            color: color,
-            onClick: _this2._onLegClick,
-            data: geojson });
-        })
-      );
+        geojson.index = index;
+        var active = activeLeg === index;
+        var color = active ? 'yellow' : (0, _itinerary.isTransit)(leg.mode) ? 'blue' : 'black';
+        return _react.default.createElement(_reactLeaflet.GeoJSON, {
+          key: Math.random(),
+          color: color,
+          onClick: _this2._onLegClick,
+          data: geojson
+        });
+      }));
     }
   }]);
+
   return ItineraryLegs;
-}(_react.Component), _class.propTypes = {
-  itinerary: _react.PropTypes.object,
-  activeLeg: _react.PropTypes.number,
-  setActiveLeg: _react.PropTypes.func
-}, _temp2);
+}(_react.Component);
+
 exports.default = ItineraryLegs;
-module.exports = exports['default'];
+
+_defineProperty(ItineraryLegs, "propTypes", {
+  itinerary: _propTypes.default.object,
+  activeLeg: _propTypes.default.number,
+  setActiveLeg: _propTypes.default.func
+});
+
+module.exports = exports.default;
 
 //# sourceMappingURL=itinerary-legs.js

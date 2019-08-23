@@ -1,200 +1,180 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.storeDefaultSettings = exports.clearDefaultSettings = exports.clearActiveSearch = exports.settingQueryParam = undefined;
-
-var _keys = require('babel-runtime/core-js/object/keys');
-
-var _keys2 = _interopRequireDefault(_keys);
-
-var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
-
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
-
-var _assign = require('babel-runtime/core-js/object/assign');
-
-var _assign2 = _interopRequireDefault(_assign);
-
 exports.resetForm = resetForm;
 exports.setQueryParam = setQueryParam;
 exports.parseUrlQueryString = parseUrlQueryString;
 exports.formChanged = formChanged;
+exports.storeDefaultSettings = exports.clearDefaultSettings = exports.setActiveSearch = exports.clearActiveSearch = exports.settingQueryParam = void 0;
 
-var _lodash = require('lodash.debounce');
+require("core-js/modules/es6.string.iterator");
 
-var _lodash2 = _interopRequireDefault(_lodash);
+require("core-js/modules/es6.array.from");
 
-var _qs = require('qs');
+require("core-js/modules/es6.regexp.to-string");
 
-var _qs2 = _interopRequireDefault(_qs);
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _moment = require('moment');
+require("core-js/modules/es6.symbol");
 
-var _moment2 = _interopRequireDefault(_moment);
+require("core-js/modules/es6.string.starts-with");
 
-var _reduxActions = require('redux-actions');
+require("core-js/modules/web.dom.iterable");
 
-var _lodash3 = require('lodash.isequal');
+require("core-js/modules/es6.array.iterator");
 
-var _lodash4 = _interopRequireDefault(_lodash3);
+require("core-js/modules/es6.object.to-string");
 
-var _query = require('../util/query');
+require("core-js/modules/es6.object.keys");
 
-var _map = require('../util/map');
+require("core-js/modules/es6.object.assign");
 
-var _state = require('../util/state');
+var _lodash = _interopRequireDefault(require("lodash.debounce"));
 
-var _time = require('../util/time');
+var _moment = _interopRequireDefault(require("moment"));
 
-var _ui = require('../util/ui');
+var _reduxActions = require("redux-actions");
 
-var _ui2 = require('../actions/ui');
+var _lodash2 = _interopRequireDefault(require("lodash.isequal"));
 
-var _api = require('./api');
+var _query = require("../util/query");
+
+var _storage = require("../util/storage");
+
+var _state = require("../util/state");
+
+var _time = require("../util/time");
+
+var _ui = require("../util/ui");
+
+var _ui2 = require("../actions/ui");
+
+var _api = require("./api");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var settingQueryParam = exports.settingQueryParam = (0, _reduxActions.createAction)('SET_QUERY_PARAM');
-var clearActiveSearch = exports.clearActiveSearch = (0, _reduxActions.createAction)('CLEAR_ACTIVE_SEARCH');
-var clearDefaultSettings = exports.clearDefaultSettings = (0, _reduxActions.createAction)('CLEAR_DEFAULT_SETTINGS');
-var storeDefaultSettings = exports.storeDefaultSettings = (0, _reduxActions.createAction)('STORE_DEFAULT_SETTINGS');
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var settingQueryParam = (0, _reduxActions.createAction)('SET_QUERY_PARAM');
+exports.settingQueryParam = settingQueryParam;
+var clearActiveSearch = (0, _reduxActions.createAction)('CLEAR_ACTIVE_SEARCH');
+exports.clearActiveSearch = clearActiveSearch;
+var setActiveSearch = (0, _reduxActions.createAction)('SET_ACTIVE_SEARCH');
+exports.setActiveSearch = setActiveSearch;
+var clearDefaultSettings = (0, _reduxActions.createAction)('CLEAR_DEFAULT_SETTINGS');
+exports.clearDefaultSettings = clearDefaultSettings;
+var storeDefaultSettings = (0, _reduxActions.createAction)('STORE_DEFAULT_SETTINGS');
+exports.storeDefaultSettings = storeDefaultSettings;
 
 function resetForm() {
   return function (dispatch, getState) {
     var otpState = getState().otp;
     var transitModes = otpState.config.modes.transitModes;
 
-    if (otpState.defaults) {
-      dispatch(settingQueryParam(otpState.defaults));
+    if (otpState.user.defaults) {
+      dispatch(settingQueryParam(otpState.user.defaults));
     } else {
       // Get user overrides and apply to default query
-      var userOverrides = (0, _query.getJSONFromStorage)('otp.defaultQuery');
-      var defaultQuery = (0, _assign2.default)((0, _query.getDefaultQuery)(), userOverrides);
-      // Filter out non-options (i.e., date, places).
-      var options = (0, _query.getTripOptionsFromQuery)(defaultQuery);
-      // Default mode is currently WALK,TRANSIT. We need to update this value
+      var userOverrides = (0, _storage.getItem)('defaultQuery', {});
+      var defaultQuery = Object.assign((0, _query.getDefaultQuery)(otpState.config), userOverrides); // Filter out non-options (i.e., date, places).
+
+      var options = (0, _query.getTripOptionsFromQuery)(defaultQuery); // Default mode is currently WALK,TRANSIT. We need to update this value
       // here to match the list of modes, otherwise the form will break.
-      options.mode = ['WALK'].concat((0, _toConsumableArray3.default)(transitModes.map(function (m) {
+
+      options.mode = ['WALK'].concat(_toConsumableArray(transitModes.map(function (m) {
         return m.mode;
       }))).join(',');
       dispatch(settingQueryParam(options));
     }
   };
 }
-
 /**
  * Action to update any specified query parameter. Replaces previous series of
- * parameter-specific actions.
+ * parameter-specific actions. If a search ID is provided, a routing query (OTP
+ * search) will be kicked off immediately.
  */
-function setQueryParam(payload) {
+
+
+function setQueryParam(payload, searchId) {
   return function (dispatch, getState) {
     dispatch(settingQueryParam(payload));
+    if (searchId) dispatch((0, _api.routingQuery)(searchId));
   };
 }
 
-function parseUrlQueryString(queryString) {
+function parseUrlQueryString() {
+  var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _query.getUrlParams)();
   return function (dispatch, getState) {
-    // Trim the leading question mark
-    var params = _qs2.default.parse(queryString.substring(1));
     // Filter out the OTP (i.e. non-UI) params and set the initial query
     var planParams = {};
-    (0, _keys2.default)(params).forEach(function (key) {
+    Object.keys(params).forEach(function (key) {
       if (!key.startsWith('ui_')) planParams[key] = params[key];
     });
-    // Convert strings to numbers/objects and dispatch
-    dispatch(setQueryParam(planParamsToQuery(planParams)));
+    var searchId = params.ui_activeSearch || (0, _storage.randId)(); // Convert strings to numbers/objects and dispatch
+
+    dispatch(setQueryParam((0, _query.planParamsToQuery)(planParams, getState().otp.config), searchId));
   };
 }
 
-/**
- * OTP allows passing a location in the form '123 Main St::lat,lon', so we check
- * for the double colon and parse the coordinates accordingly.
- */
-function parseLocationString(value) {
-  var parts = value.split('::');
-  var coordinates = parts[1] ? (0, _map.stringToCoords)(parts[1]) : (0, _map.stringToCoords)(parts[0]);
-  var name = parts[1] ? parts[0] : (0, _map.coordsToString)(coordinates);
-  return coordinates.length === 2 ? {
-    name: name || null,
-    lat: coordinates[0] || null,
-    lon: coordinates[1] || null
-  } : null;
-}
+var debouncedPlanTrip; // store as variable here, so it can be reused.
 
-function planParamsToQuery(params) {
-  var query = {};
-  for (var key in params) {
-    switch (key) {
-      case 'fromPlace':
-        query.from = parseLocationString(params.fromPlace);
-        break;
-      case 'toPlace':
-        query.to = parseLocationString(params.toPlace);
-        break;
-      case 'arriveBy':
-        query.departArrive = params.arriveBy === 'true' ? 'ARRIVE' : params.arriveBy === 'false' ? 'DEPART' : 'NOW';
-        break;
-      case 'date':
-        query.date = params.date || (0, _time.getCurrentDate)();
-        break;
-      case 'time':
-        query.time = params.time || (0, _time.getCurrentTime)();
-        break;
-      default:
-        if (!isNaN(params[key])) query[key] = parseFloat(params[key]);else query[key] = params[key];
-    }
-  }
-  return query;
-}
-
-var debouncedPlanTrip = void 0; // store as variable here, so it can be reused.
-var lastDebouncePlanTimeMs = void 0;
+var lastDebouncePlanTimeMs;
 
 function formChanged(oldQuery, newQuery) {
   return function (dispatch, getState) {
-    var otpState = getState().otp;
+    var otpState = getState().otp; // If departArrive is set to 'NOW', update the query time to current
 
-    // If departArrive is set to 'NOW', update the query time to current
     if (otpState.currentQuery && otpState.currentQuery.departArrive === 'NOW') {
-      dispatch(settingQueryParam({ time: (0, _moment2.default)().format('HH:mm') }));
-    }
+      dispatch(settingQueryParam({
+        time: (0, _moment.default)().format(_time.OTP_API_TIME_FORMAT)
+      }));
+    } // Determine if either from/to location has changed
 
-    // Determine if either from/to location has changed
-    var fromChanged = !(0, _lodash4.default)(oldQuery.from, newQuery.from);
-    var toChanged = !(0, _lodash4.default)(oldQuery.to, newQuery.to);
 
-    // Clear the main panel if location changed
-    if (fromChanged || toChanged) {
-      dispatch((0, _ui2.setViewedStop)(null));
-      dispatch((0, _ui2.setViewedTrip)(null));
-      dispatch((0, _ui2.setViewedRoute)(null));
+    var fromChanged = !(0, _lodash2.default)(oldQuery.from, newQuery.from);
+    var toChanged = !(0, _lodash2.default)(oldQuery.to, newQuery.to); // Only clear the main panel if a single location changed. This prevents
+    // clearing the panel on load if the app is focused on a stop viewer but a
+    // search query should also be visible.
+
+    var oneLocationChanged = fromChanged && !toChanged || !fromChanged && toChanged;
+
+    if (oneLocationChanged) {
       dispatch((0, _ui2.setMainPanelContent)(null));
-    }
+    } // Clear the current search and return to search screen on mobile when
+    // either location changes only if not currently on welcome screen (otherwise
+    // when the current position is auto-set the screen will change unexpectedly).
 
-    // Clear the current search and return to search screen on mobile when either location changes
-    if ((0, _ui.isMobile)() && (fromChanged || toChanged)) {
+
+    if ((0, _ui.isMobile)() && (fromChanged || toChanged) && otpState.ui.mobileScreen !== _ui2.MobileScreens.WELCOME_SCREEN) {
       dispatch(clearActiveSearch());
       dispatch((0, _ui2.setMobileScreen)(_ui2.MobileScreens.SEARCH_FORM));
-    }
+    } // Check whether a trip should be auto-replanned
 
-    // Check whether a trip should be auto-replanned
+
     var _otpState$config = otpState.config,
         autoPlan = _otpState$config.autoPlan,
         debouncePlanTimeMs = _otpState$config.debouncePlanTimeMs;
-
-    var updatePlan = autoPlan || !(0, _ui.isMobile)() && (fromChanged || toChanged) || // TODO: make autoplan configurable at the parameter level?
+    var updatePlan = autoPlan || !(0, _ui.isMobile)() && oneLocationChanged || // TODO: make autoplan configurable at the parameter level?
     (0, _ui.isMobile)() && fromChanged && toChanged;
+
     if (updatePlan && (0, _state.queryIsValid)(otpState)) {
       // trip plan should be made
       // check if debouncing function needs to be (re)created
       if (!debouncedPlanTrip || lastDebouncePlanTimeMs !== debouncePlanTimeMs) {
-        debouncedPlanTrip = (0, _lodash2.default)(function () {
+        debouncedPlanTrip = (0, _lodash.default)(function () {
           return dispatch((0, _api.routingQuery)());
         }, debouncePlanTimeMs);
         lastDebouncePlanTimeMs = debouncePlanTimeMs;
       }
+
       debouncedPlanTrip();
     }
   };

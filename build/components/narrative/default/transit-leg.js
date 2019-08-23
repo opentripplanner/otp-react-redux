@@ -1,69 +1,81 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.array.includes");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.string.includes");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+require("core-js/modules/es6.regexp.split");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+require("core-js/modules/es6.regexp.replace");
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+require("core-js/modules/es6.symbol");
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+require("core-js/modules/es6.function.name");
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _icon = _interopRequireDefault(require("../icon"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _react = _interopRequireWildcard(require("react"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _class, _temp;
+var _modeIcon = _interopRequireDefault(require("../../icons/mode-icon"));
 
-var _icon = require('../icon');
+var _viewTripButton = _interopRequireDefault(require("../../viewers/view-trip-button"));
 
-var _icon2 = _interopRequireDefault(_icon);
+var _viewStopButton = _interopRequireDefault(require("../../viewers/view-stop-button"));
 
-var _react = require('react');
+var _itinerary = require("../../../util/itinerary");
 
-var _react2 = _interopRequireDefault(_react);
+var _time = require("../../../util/time");
 
-var _modeIcon = require('../../icons/mode-icon');
-
-var _modeIcon2 = _interopRequireDefault(_modeIcon);
-
-var _viewTripButton = require('../../viewers/view-trip-button');
-
-var _viewTripButton2 = _interopRequireDefault(_viewTripButton);
-
-var _viewStopButton = require('../../viewers/view-stop-button');
-
-var _viewStopButton2 = _interopRequireDefault(_viewStopButton);
-
-var _itinerary = require('../../../util/itinerary');
-
-var _time = require('../../../util/time');
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TransitLeg = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(TransitLeg, _Component);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var TransitLeg =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(TransitLeg, _Component);
 
   function TransitLeg(props) {
-    (0, _classCallCheck3.default)(this, TransitLeg);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (TransitLeg.__proto__ || (0, _getPrototypeOf2.default)(TransitLeg)).call(this, props));
+    _classCallCheck(this, TransitLeg);
 
-    _this._onClick = function () {
-      _this.setState({ expanded: !_this.state.expanded });
-    };
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TransitLeg).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "_onClick", function () {
+      _this.setState({
+        expanded: !_this.state.expanded
+      });
+    });
 
     _this.state = {
       expanded: false
@@ -71,8 +83,8 @@ var TransitLeg = (_temp = _class = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(TransitLeg, [{
-    key: '_onLegClick',
+  _createClass(TransitLeg, [{
+    key: "_onLegClick",
     value: function _onLegClick(e, leg, index) {
       if (this.props.active) {
         this.props.setActiveLeg(null);
@@ -81,235 +93,161 @@ var TransitLeg = (_temp = _class = function (_Component) {
       }
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _this2 = this;
 
-      var _props = this.props,
-          active = _props.active,
-          index = _props.index,
-          leg = _props.leg;
+      var _this$props = this.props,
+          active = _this$props.active,
+          index = _this$props.index,
+          leg = _this$props.leg;
       var expanded = this.state.expanded;
-
       var numStops = leg.to.stopIndex - leg.from.stopIndex - 1;
-
-      return _react2.default.createElement(
-        'div',
-        {
-          className: 'leg' + (active ? ' active' : '') + ' transit-leg' },
-        _react2.default.createElement(
-          'button',
-          {
-            className: 'header',
-            onClick: function onClick(e) {
-              return _this2._onLegClick(e, leg, index);
-            }
-          },
-          _react2.default.createElement(
-            'div',
-            { className: 'mode-icon-container' },
-            _react2.default.createElement(_modeIcon2.default, { mode: leg.mode })
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'route-name' },
-            _react2.default.createElement(
-              'div',
-              null,
-              leg.routeShortName && _react2.default.createElement(
-                'span',
-                { className: 'route-short-name' },
-                leg.routeShortName
-              ),
-              leg.routeLongName && _react2.default.createElement(
-                'span',
-                { className: 'route-long-name' },
-                leg.routeLongName
-              )
-            ),
-            leg.headsign && _react2.default.createElement(
-              'div',
-              { className: 'headsign' },
-              'To ',
-              leg.headsign
-            )
-          ),
-          leg.realTime ? _react2.default.createElement(_icon2.default, { type: 'rss' }) : null
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'step-by-step' },
-          _react2.default.createElement(
-            'div',
-            { className: 'transit-leg-body' },
-            _react2.default.createElement(
-              'div',
-              { className: 'from-row' },
-              _react2.default.createElement(
-                'div',
-                { className: 'time-cell' },
-                (0, _time.formatTime)(leg.startTime)
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'trip-line-cell' },
-                _react2.default.createElement('div', { className: 'trip-line-top', style: { backgroundColor: (0, _itinerary.getMapColor)(leg.mode) } }),
-                _react2.default.createElement('div', { className: 'stop-bubble' })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'stop-name-cell' },
-                _react2.default.createElement(
-                  'div',
-                  { style: { float: 'right' } },
-                  _react2.default.createElement(_viewStopButton2.default, { stopId: leg.from.stopId })
-                ),
-                formatLocation(leg.from.name)
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'trip-details-row' },
-              _react2.default.createElement('div', { className: 'time-cell' }),
-              _react2.default.createElement(
-                'div',
-                { className: 'trip-line-cell' },
-                _react2.default.createElement('div', { className: 'trip-line-middle', style: { backgroundColor: (0, _itinerary.getMapColor)(leg.mode) } })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'trip-details-cell' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'intermediate-stops' },
-                  _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                      'div',
-                      { style: { float: 'right' } },
-                      _react2.default.createElement(_viewTripButton2.default, {
-                        tripId: leg.tripId,
-                        fromIndex: leg.from.stopIndex,
-                        toIndex: leg.to.stopIndex
-                      })
-                    ),
-                    _react2.default.createElement(
-                      'button',
-                      { className: 'clear-button-formatting', onClick: this._onClick },
-                      _react2.default.createElement(_icon2.default, { type: 'caret-' + (expanded ? 'down' : 'right') }),
-                      _react2.default.createElement(
-                        'span',
-                        { className: 'transit-duration' },
-                        (0, _time.formatDuration)(leg.duration)
-                      ),
-                      ' ',
-                      '(',
-                      numStops ? numStops + ' stops' : 'non-stop',
-                      ')'
-                    ),
-                    _react2.default.createElement('div', { style: { clear: 'both' } })
-                  ),
-                  expanded && _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'stop-list' },
-                      leg.intermediateStops.map(function (s, i) {
-                        return _react2.default.createElement(
-                          'div',
-                          { key: i, className: 'stop-item item' },
-                          _react2.default.createElement('div', { className: 'trip-line-stop', style: { backgroundColor: (0, _itinerary.getMapColor)(leg.mode) } }),
-                          _react2.default.createElement(
-                            'span',
-                            { className: 'stop-name' },
-                            formatLocation(s.name)
-                          )
-                        );
-                      })
-                    )
-                  )
-                ),
-                leg.alerts && _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'item' },
-                    _react2.default.createElement(_icon2.default, { type: 'exclamation-circle' }),
-                    ' Information'
-                  ),
-                  expanded && _react2.default.createElement(
-                    'div',
-                    null,
-                    leg.alerts.map(function (alert, i) {
-                      return _react2.default.createElement(
-                        'div',
-                        { className: 'alert-item item', key: i },
-                        alert.alertDescriptionText,
-                        ' ',
-                        alert.alertUrl ? _react2.default.createElement(
-                          'a',
-                          { target: '_blank', href: alert.alertUrl },
-                          'more info'
-                        ) : null
-                      );
-                    })
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'item info-item' },
-                  _react2.default.createElement(
-                    'span',
-                    { className: 'agency-info' },
-                    'Service operated by ',
-                    _react2.default.createElement(
-                      'a',
-                      { href: leg.agencyUrl },
-                      leg.agencyName
-                    )
-                  )
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'to-row' },
-              _react2.default.createElement(
-                'div',
-                { className: 'time-cell' },
-                (0, _time.formatTime)(leg.endTime)
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'trip-line-cell' },
-                _react2.default.createElement('div', { className: 'trip-line-bottom', style: { backgroundColor: (0, _itinerary.getMapColor)(leg.mode) } }),
-                _react2.default.createElement('div', { className: 'stop-bubble' })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'stop-name-cell' },
-                _react2.default.createElement(
-                  'div',
-                  { style: { float: 'right' } },
-                  _react2.default.createElement(_viewStopButton2.default, { stopId: leg.to.stopId })
-                ),
-                formatLocation(leg.to.name)
-              )
-            )
-          )
-        )
-      );
+      return _react.default.createElement("div", {
+        className: "leg".concat(active ? ' active' : '', " transit-leg")
+      }, _react.default.createElement("button", {
+        className: "header",
+        onClick: function onClick(e) {
+          return _this2._onLegClick(e, leg, index);
+        }
+      }, _react.default.createElement("div", {
+        className: "mode-icon-container"
+      }, _react.default.createElement(_modeIcon.default, {
+        mode: leg.mode
+      })), _react.default.createElement("div", {
+        className: "route-name"
+      }, _react.default.createElement("div", null, leg.routeShortName && _react.default.createElement("span", {
+        className: "route-short-name"
+      }, leg.routeShortName), leg.routeLongName && _react.default.createElement("span", {
+        className: "route-long-name"
+      }, leg.routeLongName)), leg.headsign && _react.default.createElement("div", {
+        className: "headsign"
+      }, "To ", leg.headsign)), leg.realTime ? _react.default.createElement(_icon.default, {
+        type: "rss"
+      }) : null), _react.default.createElement("div", {
+        className: "step-by-step"
+      }, _react.default.createElement("div", {
+        className: "transit-leg-body"
+      }, _react.default.createElement("div", {
+        className: "from-row"
+      }, _react.default.createElement("div", {
+        className: "time-cell"
+      }, (0, _time.formatTime)(leg.startTime)), _react.default.createElement("div", {
+        className: "trip-line-cell"
+      }, _react.default.createElement("div", {
+        className: "trip-line-top",
+        style: {
+          backgroundColor: (0, _itinerary.getMapColor)(leg.mode)
+        }
+      }), _react.default.createElement("div", {
+        className: "stop-bubble"
+      })), _react.default.createElement("div", {
+        className: "stop-name-cell"
+      }, _react.default.createElement("div", {
+        style: {
+          float: 'right'
+        }
+      }, _react.default.createElement(_viewStopButton.default, {
+        stopId: leg.from.stopId
+      })), formatLocation(leg.from.name))), _react.default.createElement("div", {
+        className: "trip-details-row"
+      }, _react.default.createElement("div", {
+        className: "time-cell"
+      }), _react.default.createElement("div", {
+        className: "trip-line-cell"
+      }, _react.default.createElement("div", {
+        className: "trip-line-middle",
+        style: {
+          backgroundColor: (0, _itinerary.getMapColor)(leg.mode)
+        }
+      })), _react.default.createElement("div", {
+        className: "trip-details-cell"
+      }, _react.default.createElement("div", {
+        className: "intermediate-stops"
+      }, _react.default.createElement("div", null, _react.default.createElement("div", {
+        style: {
+          float: 'right'
+        }
+      }, _react.default.createElement(_viewTripButton.default, {
+        tripId: leg.tripId,
+        fromIndex: leg.from.stopIndex,
+        toIndex: leg.to.stopIndex
+      })), _react.default.createElement("button", {
+        className: "clear-button-formatting",
+        onClick: this._onClick
+      }, _react.default.createElement(_icon.default, {
+        type: "caret-".concat(expanded ? 'down' : 'right')
+      }), _react.default.createElement("span", {
+        className: "transit-duration"
+      }, (0, _time.formatDuration)(leg.duration)), ' ', "(", numStops ? "".concat(numStops, " stops") : 'non-stop', ")"), _react.default.createElement("div", {
+        style: {
+          clear: 'both'
+        }
+      })), expanded && _react.default.createElement("div", null, _react.default.createElement("div", {
+        className: "stop-list"
+      }, leg.intermediateStops.map(function (s, i) {
+        return _react.default.createElement("div", {
+          key: i,
+          className: "stop-item item"
+        }, _react.default.createElement("div", {
+          className: "trip-line-stop",
+          style: {
+            backgroundColor: (0, _itinerary.getMapColor)(leg.mode)
+          }
+        }), _react.default.createElement("span", {
+          className: "stop-name"
+        }, formatLocation(s.name)));
+      })))), leg.alerts && _react.default.createElement("div", null, _react.default.createElement("div", {
+        className: "item"
+      }, _react.default.createElement(_icon.default, {
+        type: "exclamation-circle"
+      }), " Information"), expanded && _react.default.createElement("div", null, leg.alerts.map(function (alert, i) {
+        return _react.default.createElement("div", {
+          className: "alert-item item",
+          key: i
+        }, alert.alertDescriptionText, ' ', alert.alertUrl ? _react.default.createElement("a", {
+          target: "_blank",
+          href: alert.alertUrl
+        }, "more info") : null);
+      }))), _react.default.createElement("div", {
+        className: "item info-item"
+      }, _react.default.createElement("span", {
+        className: "agency-info"
+      }, "Service operated by ", _react.default.createElement("a", {
+        href: leg.agencyUrl
+      }, leg.agencyName))))), _react.default.createElement("div", {
+        className: "to-row"
+      }, _react.default.createElement("div", {
+        className: "time-cell"
+      }, (0, _time.formatTime)(leg.endTime)), _react.default.createElement("div", {
+        className: "trip-line-cell"
+      }, _react.default.createElement("div", {
+        className: "trip-line-bottom",
+        style: {
+          backgroundColor: (0, _itinerary.getMapColor)(leg.mode)
+        }
+      }), _react.default.createElement("div", {
+        className: "stop-bubble"
+      })), _react.default.createElement("div", {
+        className: "stop-name-cell"
+      }, _react.default.createElement("div", {
+        style: {
+          float: 'right'
+        }
+      }, _react.default.createElement(_viewStopButton.default, {
+        stopId: leg.to.stopId
+      })), formatLocation(leg.to.name))))));
     }
   }]);
+
   return TransitLeg;
-}(_react.Component), _class.propTypes = {
-  itinerary: _react.PropTypes.object
-}, _temp);
+}(_react.Component);
+
 exports.default = TransitLeg;
 
+_defineProperty(TransitLeg, "propTypes", {
+  itinerary: _propTypes.default.object
+});
 
 function formatLocation(str) {
   return str.trim().toLowerCase().replace('/', ' / ').replace('-', ' - ').replace('@', ' @ ').replace('(', '( ').replace('  ', ' ').split(' ').map(function (s) {
@@ -321,6 +259,7 @@ function formatLocation(str) {
 function capitalizeFirst(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
-module.exports = exports['default'];
+
+module.exports = exports.default;
 
 //# sourceMappingURL=transit-leg.js

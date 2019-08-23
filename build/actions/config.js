@@ -1,16 +1,20 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setMapZoom = exports.setMapCenter = exports.setAutoPlan = undefined;
+exports.setRouterId = exports.setMapZoom = exports.setMapCenter = exports.setAutoPlan = void 0;
 
-var _reduxActions = require('redux-actions');
+var _reduxActions = require("redux-actions");
 
-var setAutoPlan = exports.setAutoPlan = (0, _reduxActions.createAction)('SET_AUTOPLAN');
+var setAutoPlan = (0, _reduxActions.createAction)('SET_AUTOPLAN'); // TODO: this should eventually be handled via mapState
 
-// TODO: this should eventually be handled via mapState
-var setMapCenter = exports.setMapCenter = (0, _reduxActions.createAction)('SET_MAP_CENTER');
-var setMapZoom = exports.setMapZoom = (0, _reduxActions.createAction)('SET_MAP_ZOOM');
+exports.setAutoPlan = setAutoPlan;
+var setMapCenter = (0, _reduxActions.createAction)('SET_MAP_CENTER');
+exports.setMapCenter = setMapCenter;
+var setMapZoom = (0, _reduxActions.createAction)('SET_MAP_ZOOM');
+exports.setMapZoom = setMapZoom;
+var setRouterId = (0, _reduxActions.createAction)('SET_ROUTER_ID');
+exports.setRouterId = setRouterId;
 
 //# sourceMappingURL=config.js

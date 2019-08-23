@@ -1,59 +1,62 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _react = _interopRequireWildcard(require("react"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-var _react = require('react');
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var _react2 = _interopRequireDefault(_react);
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var SimpleRealtimeAnnotation = function (_Component) {
-  (0, _inherits3.default)(SimpleRealtimeAnnotation, _Component);
+var SimpleRealtimeAnnotation =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(SimpleRealtimeAnnotation, _Component);
 
   function SimpleRealtimeAnnotation() {
-    (0, _classCallCheck3.default)(this, SimpleRealtimeAnnotation);
-    return (0, _possibleConstructorReturn3.default)(this, (SimpleRealtimeAnnotation.__proto__ || (0, _getPrototypeOf2.default)(SimpleRealtimeAnnotation)).apply(this, arguments));
+    _classCallCheck(this, SimpleRealtimeAnnotation);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SimpleRealtimeAnnotation).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(SimpleRealtimeAnnotation, [{
-    key: 'render',
+  _createClass(SimpleRealtimeAnnotation, [{
+    key: "render",
     value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: 'simple-realtime-annotation' },
-        _react2.default.createElement('i', { className: 'fa fa-clock-o' }),
-        ' This trip uses real-time traffic and delay information'
-      );
+      return _react.default.createElement("div", {
+        className: "simple-realtime-annotation"
+      }, _react.default.createElement("i", {
+        className: "fa fa-clock-o"
+      }), " This trip uses real-time traffic and delay information");
     }
   }]);
+
   return SimpleRealtimeAnnotation;
 }(_react.Component);
 
 exports.default = SimpleRealtimeAnnotation;
-module.exports = exports['default'];
+module.exports = exports.default;
 
 //# sourceMappingURL=simple-realtime-annotation.js

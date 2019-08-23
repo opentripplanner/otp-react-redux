@@ -1,101 +1,94 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _react = _interopRequireWildcard(require("react"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _reactRedux = require("react-redux");
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _stopViewer = _interopRequireDefault(require("./stop-viewer"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _tripViewer = _interopRequireDefault(require("./trip-viewer"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _routeViewer = _interopRequireDefault(require("./route-viewer"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactRedux = require('react-redux');
-
-var _stopViewer = require('./stop-viewer');
-
-var _stopViewer2 = _interopRequireDefault(_stopViewer);
-
-var _tripViewer = require('./trip-viewer');
-
-var _tripViewer2 = _interopRequireDefault(_tripViewer);
-
-var _routeViewer = require('./route-viewer');
-
-var _routeViewer2 = _interopRequireDefault(_routeViewer);
-
-var _ui = require('../../actions/ui');
+var _ui = require("../../actions/ui");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ViewerContainer = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(ViewerContainer, _Component);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ViewerContainer =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ViewerContainer, _Component);
 
   function ViewerContainer() {
-    (0, _classCallCheck3.default)(this, ViewerContainer);
-    return (0, _possibleConstructorReturn3.default)(this, (ViewerContainer.__proto__ || (0, _getPrototypeOf2.default)(ViewerContainer)).apply(this, arguments));
+    _classCallCheck(this, ViewerContainer);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ViewerContainer).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(ViewerContainer, [{
-    key: 'render',
+  _createClass(ViewerContainer, [{
+    key: "render",
     value: function render() {
-      var uiState = this.props.uiState;
-
-      // check for main panel content
+      var uiState = this.props.uiState; // check for main panel content
 
       if (uiState.mainPanelContent === _ui.MainPanelContent.ROUTE_VIEWER) {
-        return _react2.default.createElement(_routeViewer2.default, null);
-      }
+        return _react.default.createElement(_routeViewer.default, null);
+      } // check for stop viewer
 
-      // check for stop viewer
+
       if (uiState.viewedStop) {
-        return _react2.default.createElement(_stopViewer2.default, null);
+        return _react.default.createElement(_stopViewer.default, null);
       }
 
       if (uiState.viewedTrip) {
-        return _react2.default.createElement(_tripViewer2.default, null);
-      }
-
-      // check for trip viewer
-
+        return _react.default.createElement(_tripViewer.default, null);
+      } // check for trip viewer
       // otherwise, return default content
-      return _react2.default.createElement(
-        'div',
-        null,
-        this.props.children
-      );
+
+
+      return _react.default.createElement("div", null, this.props.children);
     }
   }]);
-  return ViewerContainer;
-}(_react.Component), _class.propTypes = {
-  uiState: _propTypes2.default.object
-}, _temp);
 
-// connect to the redux store
+  return ViewerContainer;
+}(_react.Component); // connect to the redux store
+
+
+_defineProperty(ViewerContainer, "propTypes", {
+  uiState: _propTypes.default.object
+});
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
@@ -103,7 +96,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(ViewerContainer);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps)(ViewerContainer);
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=viewer-container.js

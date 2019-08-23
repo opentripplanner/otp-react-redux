@@ -1,87 +1,63 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _react = require('react');
+require("core-js/modules/es6.string.starts-with");
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _bikeIcon = require('./bike-icon');
+var _bikeIcon = _interopRequireDefault(require("./bike-icon"));
 
-var _bikeIcon2 = _interopRequireDefault(_bikeIcon);
+var _biketownIcon = _interopRequireDefault(require("./biketown-icon"));
 
-var _biketownIcon = require('./biketown-icon');
+var _busIcon = _interopRequireDefault(require("./bus-icon"));
 
-var _biketownIcon2 = _interopRequireDefault(_biketownIcon);
+var _car2goIcon = _interopRequireDefault(require("./car2go-icon"));
 
-var _busIcon = require('./bus-icon');
+var _reachnowIcon = _interopRequireDefault(require("./reachnow-icon"));
 
-var _busIcon2 = _interopRequireDefault(_busIcon);
+var _gondolaIcon = _interopRequireDefault(require("./gondola-icon"));
 
-var _car2goIcon = require('./car2go-icon');
+var _lyftIcon = _interopRequireDefault(require("./lyft-icon"));
 
-var _car2goIcon2 = _interopRequireDefault(_car2goIcon);
+var _railIcon = _interopRequireDefault(require("./rail-icon"));
 
-var _reachnowIcon = require('./reachnow-icon');
+var _streetcarIcon = _interopRequireDefault(require("./streetcar-icon"));
 
-var _reachnowIcon2 = _interopRequireDefault(_reachnowIcon);
+var _tramIcon = _interopRequireDefault(require("./tram-icon"));
 
-var _gondolaIcon = require('./gondola-icon');
+var _transitIcon = _interopRequireDefault(require("./transit-icon"));
 
-var _gondolaIcon2 = _interopRequireDefault(_gondolaIcon);
+var _uberIcon = _interopRequireDefault(require("./uber-icon"));
 
-var _lyftIcon = require('./lyft-icon');
-
-var _lyftIcon2 = _interopRequireDefault(_lyftIcon);
-
-var _railIcon = require('./rail-icon');
-
-var _railIcon2 = _interopRequireDefault(_railIcon);
-
-var _streetcarIcon = require('./streetcar-icon');
-
-var _streetcarIcon2 = _interopRequireDefault(_streetcarIcon);
-
-var _tramIcon = require('./tram-icon');
-
-var _tramIcon2 = _interopRequireDefault(_tramIcon);
-
-var _transitIcon = require('./transit-icon');
-
-var _transitIcon2 = _interopRequireDefault(_transitIcon);
-
-var _uberIcon = require('./uber-icon');
-
-var _uberIcon2 = _interopRequireDefault(_uberIcon);
-
-var _walkIcon = require('./walk-icon');
-
-var _walkIcon2 = _interopRequireDefault(_walkIcon);
+var _walkIcon = _interopRequireDefault(require("./walk-icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // define Portland-specific mode icons
-exports.default = {
-  BICYCLE: _react2.default.createElement(_bikeIcon2.default, null),
-  BICYCLE_RENT: _react2.default.createElement(_biketownIcon2.default, null),
-  BUS: _react2.default.createElement(_busIcon2.default, null),
-  CAR_HAIL_LYFT: _react2.default.createElement(_lyftIcon2.default, null),
-  CAR_HAIL_UBER: _react2.default.createElement(_uberIcon2.default, null),
-  CAR_RENT_CAR2GO: _react2.default.createElement(_car2goIcon2.default, null),
-  CAR_RENT_REACHNOW: _react2.default.createElement(_reachnowIcon2.default, null),
-  GONDOLA: _react2.default.createElement(_gondolaIcon2.default, null),
-  RAIL: _react2.default.createElement(_railIcon2.default, null),
-  STREETCAR: _react2.default.createElement(_streetcarIcon2.default, null),
-  TRAM: _react2.default.createElement(_tramIcon2.default, null),
-  TRANSIT: _react2.default.createElement(_transitIcon2.default, null),
-  WALK: _react2.default.createElement(_walkIcon2.default, null),
+var _default = {
+  BICYCLE: _react.default.createElement(_bikeIcon.default, null),
+  BICYCLE_RENT: _react.default.createElement(_biketownIcon.default, null),
+  BUS: _react.default.createElement(_busIcon.default, null),
+  CAR_HAIL_LYFT: _react.default.createElement(_lyftIcon.default, null),
+  CAR_HAIL_UBER: _react.default.createElement(_uberIcon.default, null),
+  CAR_RENT_CAR2GO: _react.default.createElement(_car2goIcon.default, null),
+  CAR_RENT_REACHNOW: _react.default.createElement(_reachnowIcon.default, null),
+  GONDOLA: _react.default.createElement(_gondolaIcon.default, null),
+  RAIL: _react.default.createElement(_railIcon.default, null),
+  STREETCAR: _react.default.createElement(_streetcarIcon.default, null),
+  TRAM: _react.default.createElement(_tramIcon.default, null),
+  TRANSIT: _react.default.createElement(_transitIcon.default, null),
+  WALK: _react.default.createElement(_walkIcon.default, null),
   customModeForLeg: function customModeForLeg(leg) {
     if (leg.routeLongName && leg.routeLongName.startsWith('Portland Streetcar')) return 'STREETCAR';
     return null;
   }
 };
-module.exports = exports['default'];
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=index.js

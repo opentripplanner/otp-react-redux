@@ -1,290 +1,267 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es6.regexp.split");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.function.name");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+require("core-js/modules/es6.symbol");
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _leaflet = require("leaflet");
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _reactRedux = require("react-redux");
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _reactLeaflet = require("react-leaflet");
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _reactBootstrap = require("react-bootstrap");
 
-var _class, _temp, _class2, _temp3;
+var _setFromTo = _interopRequireDefault(require("./set-from-to"));
 
-var _leaflet = require('leaflet');
+var _ui = require("../../util/ui");
 
-var _react = require('react');
+var _api = require("../../actions/api");
 
-var _react2 = _interopRequireDefault(_react);
+var _map = require("../../actions/map");
 
-var _reactRedux = require('react-redux');
-
-var _reactLeaflet = require('react-leaflet');
-
-var _reactBootstrap = require('react-bootstrap');
-
-var _setFromTo = require('./set-from-to');
-
-var _setFromTo2 = _interopRequireDefault(_setFromTo);
-
-var _itinerary = require('../../util/itinerary');
-
-var _ui = require('../../util/ui');
-
-var _api = require('../../actions/api');
-
-var _map = require('../../actions/map');
-
-var _ui2 = require('../../actions/ui');
+var _ui2 = require("../../actions/ui");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var StopsOverlay = (_temp = _class = function (_MapLayer) {
-  (0, _inherits3.default)(StopsOverlay, _MapLayer);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var StopsOverlay =
+/*#__PURE__*/
+function (_MapLayer) {
+  _inherits(StopsOverlay, _MapLayer);
 
   function StopsOverlay() {
-    (0, _classCallCheck3.default)(this, StopsOverlay);
-    return (0, _possibleConstructorReturn3.default)(this, (StopsOverlay.__proto__ || (0, _getPrototypeOf2.default)(StopsOverlay)).apply(this, arguments));
+    _classCallCheck(this, StopsOverlay);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(StopsOverlay).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(StopsOverlay, [{
-    key: 'componentDidMount',
+  _createClass(StopsOverlay, [{
+    key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
+      var _this = this;
 
       // set up pan/zoom listener
-      this.context.map.on('moveend', function () {
-        _this2._refreshStops();
+      this.props.leaflet.map.on('moveend', function () {
+        _this._refreshStops();
       });
-    }
-
-    // TODO: determine why the default MapLayer componentWillUnmount() method throws an error
+    } // TODO: determine why the default MapLayer componentWillUnmount() method throws an error
 
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {}
   }, {
-    key: '_refreshStops',
+    key: "_refreshStops",
     value: function _refreshStops() {
-      var _this3 = this;
+      var _this2 = this;
 
-      if (this.context.map.getZoom() < this.props.minZoom) {
+      if (this.props.leaflet.map.getZoom() < this.props.minZoom) {
         this.forceUpdate();
         return;
       }
 
-      var bounds = this.context.map.getBounds();
+      var bounds = this.props.leaflet.map.getBounds();
+
       if (!bounds.equals(this.lastBounds)) {
         setTimeout(function () {
-          _this3.props.refreshStops({
+          _this2.props.refreshStops({
             minLat: bounds.getSouth(),
             maxLat: bounds.getNorth(),
             minLon: bounds.getWest(),
             maxLon: bounds.getEast()
           });
-          _this3.lastBounds = bounds;
+
+          _this2.lastBounds = bounds;
         }, 300);
       }
     }
   }, {
-    key: 'createLeafletElement',
+    key: "createLeafletElement",
     value: function createLeafletElement() {}
   }, {
-    key: 'updateLeafletElement',
+    key: "updateLeafletElement",
     value: function updateLeafletElement() {}
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
-      var _props = this.props,
-          minZoom = _props.minZoom,
-          setLocation = _props.setLocation,
-          setViewedStop = _props.setViewedStop,
-          setMainPanelContent = _props.setMainPanelContent,
-          stops = _props.stops,
-          languageConfig = _props.languageConfig;
+      var _this$props = this.props,
+          leaflet = _this$props.leaflet,
+          minZoom = _this$props.minZoom,
+          setLocation = _this$props.setLocation,
+          setViewedStop = _this$props.setViewedStop,
+          setMainPanelContent = _this$props.setMainPanelContent,
+          stops = _this$props.stops,
+          languageConfig = _this$props.languageConfig;
+      var mobileView = (0, _ui.isMobile)(); // Don't render if below zoom threshold or no stops visible
 
-      var mobileView = (0, _ui.isMobile)();
+      if (this.props.leaflet.map.getZoom() < minZoom || !stops || stops.length === 0) {
+        return _react.default.createElement(_reactLeaflet.FeatureGroup, null);
+      } // Helper to create StopMarker from stop
 
-      // Don't render if below zoom threshold or no stops visible
-      if (this.context.map.getZoom() < minZoom || !stops || stops.length === 0) {
-        return _react2.default.createElement(_reactLeaflet.FeatureGroup, null);
-      }
 
-      // Helper to create StopMarker from stop
       var createStopMarker = function createStopMarker(stop) {
-        return _react2.default.createElement(StopMarker, {
+        return _react.default.createElement(StopMarker, {
           key: stop.id,
           stop: stop,
+          leaflet: leaflet,
           mobileView: mobileView,
           setLocation: setLocation,
           setViewedStop: setViewedStop,
           setMainPanelContent: setMainPanelContent,
           languageConfig: languageConfig
         });
-      };
+      }; // Singleton case; return FeatureGroup with single StopMarker
 
-      // Singleton case; return FeatureGroup with single StopMarker
+
       if (stops.length === 1) {
-        return _react2.default.createElement(
-          _reactLeaflet.FeatureGroup,
-          null,
-          createStopMarker(stops[0])
-        );
-      }
+        return _react.default.createElement(_reactLeaflet.FeatureGroup, null, createStopMarker(stops[0]));
+      } // Otherwise, return FeatureGroup with mapped array of StopMarkers
 
-      // Otherwise, return FeatureGroup with mapped array of StopMarkers
-      return _react2.default.createElement(
-        _reactLeaflet.FeatureGroup,
-        null,
-        stops.map(function (stop) {
-          return createStopMarker(stop);
-        })
-      );
+
+      return _react.default.createElement(_reactLeaflet.FeatureGroup, null, stops.map(function (stop) {
+        return createStopMarker(stop);
+      }));
     }
   }]);
+
   return StopsOverlay;
-}(_reactLeaflet.MapLayer), _class.propTypes = {
-  minZoom: _react.PropTypes.number,
-  queryMode: _react.PropTypes.string,
-  stops: _react.PropTypes.array,
-  refreshStops: _react.PropTypes.func
-}, _class.defaultProps = {
+}(_reactLeaflet.MapLayer);
+
+_defineProperty(StopsOverlay, "propTypes", {
+  minZoom: _propTypes.default.number,
+  queryMode: _propTypes.default.string,
+  stops: _propTypes.default.array,
+  refreshStops: _propTypes.default.func
+});
+
+_defineProperty(StopsOverlay, "defaultProps", {
   minZoom: 15
-}, _temp);
-var StopMarker = (_temp3 = _class2 = function (_Component) {
-  (0, _inherits3.default)(StopMarker, _Component);
+});
+
+var StopMarker =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(StopMarker, _Component);
 
   function StopMarker() {
-    var _ref;
+    var _getPrototypeOf2;
 
-    var _temp2, _this4, _ret;
+    var _this3;
 
-    (0, _classCallCheck3.default)(this, StopMarker);
+    _classCallCheck(this, StopMarker);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp2 = (_this4 = (0, _possibleConstructorReturn3.default)(this, (_ref = StopMarker.__proto__ || (0, _getPrototypeOf2.default)(StopMarker)).call.apply(_ref, [this].concat(args))), _this4), _this4._onClickView = function () {
-      _this4.props.setMainPanelContent(null);
-      _this4.props.setViewedStop({ stopId: _this4.props.stop.id });
-    }, _temp2), (0, _possibleConstructorReturn3.default)(_this4, _ret);
+    _this3 = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(StopMarker)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this3), "_onClickView", function () {
+      _this3.props.setMainPanelContent(null);
+
+      _this3.props.setViewedStop({
+        stopId: _this3.props.stop.id
+      });
+    });
+
+    return _this3;
   }
 
-  (0, _createClass3.default)(StopMarker, [{
-    key: 'render',
+  _createClass(StopMarker, [{
+    key: "render",
     value: function render() {
-      var _props2 = this.props,
-          setLocation = _props2.setLocation,
-          stop = _props2.stop,
-          languageConfig = _props2.languageConfig;
+      var _this$props2 = this.props,
+          setLocation = _this$props2.setLocation,
+          stop = _this$props2.stop,
+          languageConfig = _this$props2.languageConfig;
       var id = stop.id,
           name = stop.name,
           lat = stop.lat,
           lon = stop.lon;
-
       var idArr = id.split(':');
       var radius = 20;
       var half = radius / 2;
       var quarter = radius / 4;
-      var html = '<div class="stop-overlay-icon" style="height: ' + half + 'px; width: ' + half + 'px; margin-left: ' + quarter + 'px; margin-top: ' + quarter + 'px;" />';
+      var html = "<div class=\"stop-overlay-icon\" style=\"height: ".concat(half, "px; width: ").concat(half, "px; margin-left: ").concat(quarter, "px; margin-top: ").concat(quarter, "px;\" />");
       var icon = (0, _leaflet.divIcon)({
         html: html,
         className: 'stop-overlay-bg',
         iconSize: radius
       });
-
-      return _react2.default.createElement(
-        _reactLeaflet.Marker,
-        {
-          position: [lat, lon],
-          icon: icon
+      return _react.default.createElement(_reactLeaflet.Marker, {
+        position: [lat, lon],
+        icon: icon
+      }, _react.default.createElement(_reactLeaflet.Popup, null, _react.default.createElement("div", {
+        className: "map-overlay-popup"
+      }, _react.default.createElement("div", {
+        className: "popup-title"
+      }, name), _react.default.createElement("div", {
+        className: "popup-row"
+      }, _react.default.createElement("b", null, "Agency:"), " ", idArr[0]), _react.default.createElement("div", {
+        className: "popup-row"
+      }, _react.default.createElement("span", null, _react.default.createElement("b", null, "Stop ID:"), " ", idArr[1]), _react.default.createElement(_reactBootstrap.Button, {
+        className: "view-stop-button",
+        bsSize: "xsmall",
+        onClick: this._onClickView
+      }, languageConfig.stopViewer || 'Stop Viewer')), _react.default.createElement("div", {
+        className: "popup-row"
+      }, _react.default.createElement(_setFromTo.default, {
+        map: this.props.leaflet.map,
+        location: {
+          lat: lat,
+          lon: lon,
+          name: name
         },
-        _react2.default.createElement(
-          _reactLeaflet.Popup,
-          null,
-          _react2.default.createElement(
-            'div',
-            { className: 'map-overlay-popup' },
-            _react2.default.createElement(
-              'div',
-              { className: 'popup-title' },
-              name
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'popup-row' },
-              _react2.default.createElement(
-                'b',
-                null,
-                'Agency:'
-              ),
-              ' ',
-              idArr[0]
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'popup-row' },
-              _react2.default.createElement(
-                'span',
-                null,
-                _react2.default.createElement(
-                  'b',
-                  null,
-                  'Stop ID:'
-                ),
-                ' ',
-                idArr[1]
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.Button,
-                {
-                  className: 'view-stop-button',
-                  bsSize: 'xsmall',
-                  onClick: this._onClickView
-                },
-                languageConfig.stopViewer || 'Stop Viewer'
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'popup-row' },
-              _react2.default.createElement(_setFromTo2.default, {
-                map: this.context.map,
-                location: { lat: lat, lon: lon, name: name },
-                setLocation: setLocation
-              })
-            )
-          )
-        )
-      );
+        setLocation: setLocation
+      })))));
     }
   }]);
-  return StopMarker;
-}(_react.Component), _class2.propTypes = {
-  mobileView: _react.PropTypes.bool,
-  setLocation: _react.PropTypes.func,
-  setViewedStop: _react.PropTypes.func,
-  setMainPanelContent: _react.PropTypes.func,
-  stop: _react.PropTypes.object
-}, _temp3);
 
-// connect to the redux store
+  return StopMarker;
+}(_react.Component); // connect to the redux store
+
+
+_defineProperty(StopMarker, "propTypes", {
+  mobileView: _propTypes.default.bool,
+  setLocation: _propTypes.default.func,
+  setViewedStop: _propTypes.default.func,
+  setMainPanelContent: _propTypes.default.func,
+  stop: _propTypes.default.object
+});
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
@@ -302,7 +279,9 @@ var mapDispatchToProps = {
   setMainPanelContent: _ui2.setMainPanelContent
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(StopsOverlay);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)((0, _reactLeaflet.withLeaflet)(StopsOverlay));
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=stops-overlay.js

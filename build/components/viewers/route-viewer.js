@@ -1,293 +1,286 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _extends3 = _interopRequireDefault(_extends2);
+require("core-js/modules/es6.symbol");
 
-var _values = require('babel-runtime/core-js/object/values');
+require("core-js/modules/web.dom.iterable");
 
-var _values2 = _interopRequireDefault(_values);
+require("core-js/modules/es6.array.iterator");
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es6.object.to-string");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es7.object.values");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+require("core-js/modules/es6.regexp.split");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+require("core-js/modules/es6.array.find-index");
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _reactBootstrap = require("react-bootstrap");
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _velocityReact = require("velocity-react");
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _reactRedux = require("react-redux");
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _icon = _interopRequireDefault(require("../narrative/icon"));
 
-var _class, _temp2;
+var _ui = require("../../actions/ui");
 
-var _react = require('react');
+var _api = require("../../actions/api");
 
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactBootstrap = require('react-bootstrap');
-
-var _velocityReact = require('velocity-react');
-
-var _reactRedux = require('react-redux');
-
-var _icon = require('../narrative/icon');
-
-var _icon2 = _interopRequireDefault(_icon);
-
-var _ui = require('../../actions/ui');
-
-var _api = require('../../actions/api');
-
-var _itinerary = require('../../util/itinerary');
+var _itinerary = require("../../util/itinerary");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function operatorForRoute(operators, route) {
-  return operators.find(function (o) {
-    return o.id.toLowerCase() === route.agency.id.split(':')[0].toLowerCase();
-  });
-}
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// function operatorForRoute (operators, route) {
+//   return operators.find(o =>
+//     route.agency && o.id.toLowerCase() === route.agency.id.split(':')[0].toLowerCase())
+// }
 function operatorIndexForRoute(operators, route) {
+  if (!route.agency) return 0;
   var index = operators.findIndex(function (o) {
     return o.id.toLowerCase() === route.agency.id.split(':')[0].toLowerCase();
   });
   if (index !== -1 && typeof operators[index].order !== 'undefined') return operators[index].order;else return 0;
 }
 
-var RouteViewer = (_temp2 = _class = function (_Component) {
-  (0, _inherits3.default)(RouteViewer, _Component);
+var RouteViewer =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(RouteViewer, _Component);
 
   function RouteViewer() {
-    var _ref;
+    var _getPrototypeOf2;
 
-    var _temp, _this, _ret;
+    var _this;
 
-    (0, _classCallCheck3.default)(this, RouteViewer);
+    _classCallCheck(this, RouteViewer);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = RouteViewer.__proto__ || (0, _getPrototypeOf2.default)(RouteViewer)).call.apply(_ref, [this].concat(args))), _this), _this._backClicked = function () {
-      _this.props.setMainPanelContent(null);
-      _this.props.setViewedRoute(null);
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(RouteViewer)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "_backClicked", function () {
+      return _this.props.setMainPanelContent(null);
+    });
+
+    return _this;
   }
 
-  (0, _createClass3.default)(RouteViewer, [{
-    key: 'componentWillMount',
+  _createClass(RouteViewer, [{
+    key: "componentWillMount",
     value: function componentWillMount() {
       this.props.findRoutes();
     }
   }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      //this.props.findRoute({ routeId: 'TriMet:1' })
-      //this.props.setViewedRoute({ routeId: 'TriMet:1' })
+    key: "componentDidMount",
+    value: function componentDidMount() {// this.props.findRoute({ routeId: 'TriMet:1' })
+      // this.props.setViewedRoute({ routeId: 'TriMet:1' })
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
-      var _this2 = this;
-
-      var _props = this.props,
-          operators = _props.operators,
-          routes = _props.routes,
-          hideBackButton = _props.hideBackButton,
-          languageConfig = _props.languageConfig;
-
-      var sortedRoutes = routes ? (0, _values2.default)(routes).sort(_itinerary.routeComparator) : [];
+      var _this$props = this.props,
+          findRoute = _this$props.findRoute,
+          hideBackButton = _this$props.hideBackButton,
+          languageConfig = _this$props.languageConfig,
+          operators = _this$props.operators,
+          routes = _this$props.routes,
+          setViewedRoute = _this$props.setViewedRoute,
+          viewedRoute = _this$props.viewedRoute;
+      var sortedRoutes = routes ? Object.values(routes).sort(_itinerary.routeComparator) : [];
       var agencySortedRoutes = operators.length > 0 ? sortedRoutes.sort(function (a, b) {
-        var aOperator = operatorIndexForRoute(operators, a);
-        var bOperator = operatorIndexForRoute(operators, b);
-        if (aOperator - bOperator > 0) return 1;
-        if (aOperator - bOperator < 0) return -1;else return 0;
+        return operatorIndexForRoute(operators, a) - operatorIndexForRoute(operators, b);
       }) : sortedRoutes;
-      return _react2.default.createElement(
-        'div',
-        { className: 'route-viewer' },
-        _react2.default.createElement(
-          'div',
-          { className: 'route-viewer-header' },
-          !hideBackButton && _react2.default.createElement(
-            'div',
-            { className: 'back-button-container' },
-            _react2.default.createElement(
-              _reactBootstrap.Button,
-              {
-                bsSize: 'small',
-                onClick: this._backClicked
-              },
-              _react2.default.createElement(_icon2.default, { type: 'arrow-left' }),
-              'Back'
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'header-text' },
-            languageConfig.routeViewer || 'Route Viewer'
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: '' },
-            languageConfig.routeViewerDetails
-          ),
-          _react2.default.createElement('div', { style: { clear: 'both' } })
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'route-viewer-body' },
-          agencySortedRoutes.map(function (route) {
-            // Find operator based on agency_id (extracted from OTP route ID).
-            var operator = operatorForRoute(operators, route) || {};
-            return _react2.default.createElement(RouteRow, (0, _extends3.default)({
-              key: route.id,
-              operator: operator,
-              route: route
-            }, _this2.props));
-          })
-        )
-      );
+      return _react.default.createElement("div", {
+        className: "route-viewer"
+      }, _react.default.createElement("div", {
+        className: "route-viewer-header"
+      }, !hideBackButton && _react.default.createElement("div", {
+        className: "back-button-container"
+      }, _react.default.createElement(_reactBootstrap.Button, {
+        bsSize: "small",
+        onClick: this._backClicked
+      }, _react.default.createElement(_icon.default, {
+        type: "arrow-left"
+      }), "Back")), _react.default.createElement("div", {
+        className: "header-text"
+      }, languageConfig.routeViewer || 'Route Viewer'), _react.default.createElement("div", {
+        className: ""
+      }, languageConfig.routeViewerDetails), _react.default.createElement("div", {
+        style: {
+          clear: 'both'
+        }
+      })), _react.default.createElement("div", {
+        className: "route-viewer-body"
+      }, agencySortedRoutes.map(function (route) {
+        // Find operator based on agency_id (extracted from OTP route ID).
+        // TODO: re-implement multi-agency logos for route viewer.
+        // const operator = operatorForRoute(operators, route) || {}
+        return _react.default.createElement(RouteRow, {
+          findRoute: findRoute,
+          isActive: viewedRoute && viewedRoute.routeId === route.id,
+          key: route.id
+          /* operator={operator */
+          ,
+          route: route,
+          setViewedRoute: setViewedRoute
+        });
+      })));
     }
   }]);
-  return RouteViewer;
-}(_react.Component), _class.propTypes = {
-  hideBackButton: _propTypes2.default.bool,
-  routes: _propTypes2.default.object
-}, _temp2);
 
-var RouteRow = function (_Component2) {
-  (0, _inherits3.default)(RouteRow, _Component2);
+  return RouteViewer;
+}(_react.Component);
+
+_defineProperty(RouteViewer, "propTypes", {
+  hideBackButton: _propTypes.default.bool,
+  routes: _propTypes.default.object
+});
+
+var RouteRow =
+/*#__PURE__*/
+function (_PureComponent) {
+  _inherits(RouteRow, _PureComponent);
 
   function RouteRow() {
-    var _ref2;
+    var _getPrototypeOf3;
 
-    var _temp3, _this3, _ret2;
+    var _this2;
 
-    (0, _classCallCheck3.default)(this, RouteRow);
+    _classCallCheck(this, RouteRow);
 
-    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
       args[_key2] = arguments[_key2];
     }
 
-    return _ret2 = (_temp3 = (_this3 = (0, _possibleConstructorReturn3.default)(this, (_ref2 = RouteRow.__proto__ || (0, _getPrototypeOf2.default)(RouteRow)).call.apply(_ref2, [this].concat(args))), _this3), _this3.isActiveRoute = function () {
-      var _this3$props = _this3.props,
-          route = _this3$props.route,
-          viewedRoute = _this3$props.viewedRoute;
+    _this2 = _possibleConstructorReturn(this, (_getPrototypeOf3 = _getPrototypeOf(RouteRow)).call.apply(_getPrototypeOf3, [this].concat(args)));
 
-      return viewedRoute && viewedRoute.routeId === route.id;
-    }, _this3._onClick = function () {
-      var _this3$props2 = _this3.props,
-          route = _this3$props2.route,
-          findRoute = _this3$props2.findRoute,
-          setViewedRoute = _this3$props2.setViewedRoute;
+    _defineProperty(_assertThisInitialized(_this2), "_onClick", function () {
+      var _this2$props = _this2.props,
+          findRoute = _this2$props.findRoute,
+          isActive = _this2$props.isActive,
+          route = _this2$props.route,
+          setViewedRoute = _this2$props.setViewedRoute;
 
-      if (_this3.isActiveRoute()) {
+      if (isActive) {
         // Deselect current route if active.
-        setViewedRoute({ routeId: null });
+        setViewedRoute({
+          routeId: null
+        });
       } else {
         // Otherwise, set active and fetch route patterns.
-        findRoute({ routeId: route.id });
-        setViewedRoute({ routeId: route.id });
+        findRoute({
+          routeId: route.id
+        });
+        setViewedRoute({
+          routeId: route.id
+        });
       }
-    }, _temp3), (0, _possibleConstructorReturn3.default)(_this3, _ret2);
+    });
+
+    return _this2;
   }
 
-  (0, _createClass3.default)(RouteRow, [{
-    key: 'render',
+  _createClass(RouteRow, [{
+    key: "render",
     value: function render() {
-      var _props2 = this.props,
-          operator = _props2.operator,
-          route = _props2.route,
-          routes = _props2.routes,
-          viewedRoute = _props2.viewedRoute;
+      var _this$props2 = this.props,
+          isActive = _this$props2.isActive,
+          route = _this$props2.route,
+          operator = _this$props2.operator;
 
-      var isActive = this.isActiveRoute();
-      var defaultRouteColor = operator.defaultRouteColor,
-          defaultRouteTextColor = operator.defaultRouteTextColor,
-          longNameSplitter = operator.longNameSplitter;
+      var _ref = operator || {},
+          defaultRouteColor = _ref.defaultRouteColor,
+          defaultRouteTextColor = _ref.defaultRouteTextColor,
+          longNameSplitter = _ref.longNameSplitter;
 
-      var activeRouteData = isActive ? routes[viewedRoute.routeId] : null;
-      var color = '#' + (defaultRouteTextColor || route.textColor || '000000');
-      var backgroundColor = '#' + (defaultRouteColor || route.color || 'ffffff');
-      var longName = longNameSplitter && route.longName && route.longName.split(longNameSplitter).length > 1 ? route.longName.split(longNameSplitter)[1] : route.longName;
-      return _react2.default.createElement(
-        'div',
-        {
-          style: {
-            borderBottom: '1px solid gray',
-            backgroundColor: isActive ? '#f6f8fa' : 'white'
-          } },
-        _react2.default.createElement(
-          _reactBootstrap.Button,
-          { className: 'clear-button-formatting', style: { padding: 8, width: '100%' },
-            onClick: this._onClick
-          },
-          _react2.default.createElement(
-            'div',
-            { style: { display: 'inline-block' } },
-            operator && _react2.default.createElement('img', { src: operator.logo, style: { marginRight: '5px' }, height: 25 })
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: { display: 'inline-block', marginTop: '2px' } },
-            _react2.default.createElement(
-              _reactBootstrap.Label,
-              {
-                style: {
-                  backgroundColor: backgroundColor === '#ffffff' ? 'rgba(0,0,0,0)' : backgroundColor,
-                  fontSize: 'medium',
-                  fontWeight: 400,
-                  color: color
-                } },
-              _react2.default.createElement(
-                'b',
-                null,
-                route.shortName
-              ),
-              ' ',
-              longName
-            )
-          )
-        ),
-        _react2.default.createElement(
-          _velocityReact.VelocityTransitionGroup,
-          { enter: { animation: 'slideDown' }, leave: { animation: 'slideUp' } },
-          isActive && _react2.default.createElement(
-            'div',
-            { style: { padding: 8 } },
-            activeRouteData.url ? _react2.default.createElement(
-              'a',
-              { href: activeRouteData.url, target: '_blank' },
-              'Route Details'
-            ) : 'No route URL provided.'
-          )
-        )
-      );
+      var color = "#".concat(defaultRouteTextColor || route.textColor || '000000');
+      var backgroundColor = "#".concat(defaultRouteColor || route.color || 'ffffff');
+      var nameParts = route.longName.split(longNameSplitter);
+      var longName = longNameSplitter && route.longName && nameParts.length > 1 ? nameParts[1] : route.longName;
+      return _react.default.createElement("div", {
+        style: {
+          borderBottom: '1px solid gray',
+          backgroundColor: isActive ? '#f6f8fa' : 'white'
+        }
+      }, _react.default.createElement(_reactBootstrap.Button, {
+        className: "clear-button-formatting",
+        style: {
+          padding: 8,
+          width: '100%'
+        },
+        onClick: this._onClick
+      }, _react.default.createElement("div", {
+        style: {
+          display: 'inline-block'
+        }
+      }), _react.default.createElement("div", {
+        style: {
+          display: 'inline-block',
+          marginTop: '2px'
+        }
+      }, _react.default.createElement(_reactBootstrap.Label, {
+        style: {
+          backgroundColor: backgroundColor === '#ffffff' ? 'rgba(0,0,0,0)' : backgroundColor,
+          fontSize: 'medium',
+          fontWeight: 400,
+          color: color
+        }
+      }, _react.default.createElement("b", null, route.shortName), " ", longName))), _react.default.createElement(_velocityReact.VelocityTransitionGroup, {
+        enter: {
+          animation: 'slideDown'
+        },
+        leave: {
+          animation: 'slideUp'
+        }
+      }, isActive && _react.default.createElement("div", {
+        style: {
+          padding: 8
+        }
+      }, route.url ? _react.default.createElement("a", {
+        href: route.url,
+        target: "_blank"
+      }, "Route Details") : 'No route URL provided.')));
     }
   }]);
+
   return RouteRow;
-}(_react.Component);
-// connect to redux store
+}(_react.PureComponent); // connect to redux store
+
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
@@ -305,7 +298,9 @@ var mapDispatchToProps = {
   setViewedRoute: _ui.setViewedRoute
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(RouteViewer);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(RouteViewer);
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=route-viewer.js

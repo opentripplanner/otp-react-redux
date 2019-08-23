@@ -1,154 +1,139 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _react = _interopRequireWildcard(require("react"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _reactBootstrap = require("react-bootstrap");
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _reactRedux = require("react-redux");
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _dateTimePreview = _interopRequireDefault(require("./date-time-preview"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _settingsPreview = _interopRequireDefault(require("./settings-preview"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _dateTimeModal = _interopRequireDefault(require("./date-time-modal"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _settingsSelectorPanel = _interopRequireDefault(require("./settings-selector-panel"));
 
-var _class, _temp2;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactBootstrap = require('react-bootstrap');
-
-var _reactRedux = require('react-redux');
-
-var _dateTimePreview = require('./date-time-preview');
-
-var _dateTimePreview2 = _interopRequireDefault(_dateTimePreview);
-
-var _settingsPreview = require('./settings-preview');
-
-var _settingsPreview2 = _interopRequireDefault(_settingsPreview);
-
-var _dateTimeModal = require('./date-time-modal');
-
-var _dateTimeModal2 = _interopRequireDefault(_dateTimeModal);
-
-var _settingsSelectorPanel = require('./settings-selector-panel');
-
-var _settingsSelectorPanel2 = _interopRequireDefault(_settingsSelectorPanel);
-
-var _ui = require('../../actions/ui');
+var _ui = require("../../actions/ui");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TabbedFormPanel = (_temp2 = _class = function (_Component) {
-  (0, _inherits3.default)(TabbedFormPanel, _Component);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var TabbedFormPanel =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(TabbedFormPanel, _Component);
 
   function TabbedFormPanel() {
-    var _ref;
+    var _getPrototypeOf2;
 
-    var _temp, _this, _ret;
+    var _this;
 
-    (0, _classCallCheck3.default)(this, TabbedFormPanel);
+    _classCallCheck(this, TabbedFormPanel);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = TabbedFormPanel.__proto__ || (0, _getPrototypeOf2.default)(TabbedFormPanel)).call.apply(_ref, [this].concat(args))), _this), _this._onEditDateTimeClick = function () {
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TabbedFormPanel)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "_onEditDateTimeClick", function () {
       var _this$props = _this.props,
           mainPanelContent = _this$props.mainPanelContent,
           setMainPanelContent = _this$props.setMainPanelContent;
-
       setMainPanelContent(mainPanelContent === 'EDIT_DATETIME' ? null : 'EDIT_DATETIME');
-    }, _this._onEditSettingsClick = function () {
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "_onEditSettingsClick", function () {
       var _this$props2 = _this.props,
           mainPanelContent = _this$props2.mainPanelContent,
           setMainPanelContent = _this$props2.setMainPanelContent;
-
       setMainPanelContent(mainPanelContent === 'EDIT_SETTINGS' ? null : 'EDIT_SETTINGS');
-    }, _this._onHideClick = function () {
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "_onHideClick", function () {
       return _this.props.setMainPanelContent(null);
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    });
+
+    return _this;
   }
 
-  (0, _createClass3.default)(TabbedFormPanel, [{
-    key: 'render',
+  _createClass(TabbedFormPanel, [{
+    key: "render",
     value: function render() {
-      var _props = this.props,
-          icons = _props.icons,
-          mainPanelContent = _props.mainPanelContent;
-
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'tabbed-form-panel' },
-        _react2.default.createElement(
-          'div',
-          { className: 'tab-row' },
-          _react2.default.createElement(
-            'div',
-            { className: 'tab left ' + (mainPanelContent === 'EDIT_DATETIME' ? ' selected' : '') },
-            _react2.default.createElement(
-              'div',
-              { className: 'tab-content' },
-              _react2.default.createElement(_dateTimePreview2.default, {
-                onClick: this._onEditDateTimeClick
-              })
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'tab right ' + (mainPanelContent === 'EDIT_SETTINGS' ? ' selected' : '') },
-            _react2.default.createElement(
-              'div',
-              { className: 'tab-content' },
-              _react2.default.createElement(_settingsPreview2.default, { onClick: this._onEditSettingsClick })
-            )
-          )
-        ),
-        (mainPanelContent === 'EDIT_DATETIME' || mainPanelContent === 'EDIT_SETTINGS') && _react2.default.createElement(
-          'div',
-          { className: 'active-panel' },
-          mainPanelContent === 'EDIT_DATETIME' && _react2.default.createElement(_dateTimeModal2.default, null),
-          mainPanelContent === 'EDIT_SETTINGS' && _react2.default.createElement(_settingsSelectorPanel2.default, { icons: icons }),
-          _react2.default.createElement(
-            'div',
-            { className: 'hide-button-row' },
-            _react2.default.createElement(
-              _reactBootstrap.Button,
-              { className: 'hide-button clear-button-formatting', onClick: this._onHideClick },
-              _react2.default.createElement('i', { className: 'fa fa-caret-up' }),
-              ' Hide Settings'
-            )
-          )
-        )
-      );
+      var _this$props3 = this.props,
+          icons = _this$props3.icons,
+          mainPanelContent = _this$props3.mainPanelContent;
+      return _react.default.createElement("div", {
+        className: "tabbed-form-panel"
+      }, _react.default.createElement("div", {
+        className: "tab-row"
+      }, _react.default.createElement("div", {
+        className: "tab left ".concat(mainPanelContent === 'EDIT_DATETIME' ? ' selected' : '')
+      }, _react.default.createElement("div", {
+        className: "tab-content"
+      }, _react.default.createElement(_dateTimePreview.default, {
+        onClick: this._onEditDateTimeClick
+      }))), _react.default.createElement("div", {
+        className: "tab right ".concat(mainPanelContent === 'EDIT_SETTINGS' ? ' selected' : '')
+      }, _react.default.createElement("div", {
+        className: "tab-content"
+      }, _react.default.createElement(_settingsPreview.default, {
+        onClick: this._onEditSettingsClick
+      })))), (mainPanelContent === 'EDIT_DATETIME' || mainPanelContent === 'EDIT_SETTINGS') && _react.default.createElement("div", {
+        className: "active-panel"
+      }, mainPanelContent === 'EDIT_DATETIME' && _react.default.createElement(_dateTimeModal.default, null), mainPanelContent === 'EDIT_SETTINGS' && _react.default.createElement(_settingsSelectorPanel.default, {
+        icons: icons
+      }), _react.default.createElement("div", {
+        className: "hide-button-row"
+      }, _react.default.createElement(_reactBootstrap.Button, {
+        className: "hide-button clear-button-formatting",
+        onClick: this._onHideClick
+      }, _react.default.createElement("i", {
+        className: "fa fa-caret-up"
+      }), " Hide Settings"))));
     }
   }]);
-  return TabbedFormPanel;
-}(_react.Component), _class.propTypes = {
-  icons: _propTypes2.default.object
-}, _temp2);
 
-// connect to redux store
+  return TabbedFormPanel;
+}(_react.Component); // connect to redux store
+
+
+_defineProperty(TabbedFormPanel, "propTypes", {
+  icons: _propTypes.default.object
+});
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
@@ -160,7 +145,9 @@ var mapDispatchToProps = {
   setMainPanelContent: _ui.setMainPanelContent
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TabbedFormPanel);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TabbedFormPanel);
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=tabbed-form-panel.js

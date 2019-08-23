@@ -1,91 +1,84 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
+exports.default = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _extends3 = _interopRequireDefault(_extends2);
+require("core-js/modules/es6.symbol");
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es6.object.assign");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _react = _interopRequireDefault(require("react"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _narrativeItinerary = _interopRequireDefault(require("../narrative-itinerary"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _simpleRealtimeAnnotation = _interopRequireDefault(require("../simple-realtime-annotation"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _itinerary = require("../../../util/itinerary");
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _itinSummary = _interopRequireDefault(require("./itin-summary"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _narrativeItinerary = require('../narrative-itinerary');
-
-var _narrativeItinerary2 = _interopRequireDefault(_narrativeItinerary);
-
-var _simpleRealtimeAnnotation = require('../simple-realtime-annotation');
-
-var _simpleRealtimeAnnotation2 = _interopRequireDefault(_simpleRealtimeAnnotation);
-
-var _itinerary = require('../../../util/itinerary');
-
-var _itinSummary = require('./itin-summary');
-
-var _itinSummary2 = _interopRequireDefault(_itinSummary);
-
-var _itinBody = require('./itin-body');
-
-var _itinBody2 = _interopRequireDefault(_itinBody);
+var _itinBody = _interopRequireDefault(require("./itin-body"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var LineItinerary = function (_NarrativeItinerary) {
-  (0, _inherits3.default)(LineItinerary, _NarrativeItinerary);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var LineItinerary =
+/*#__PURE__*/
+function (_NarrativeItinerary) {
+  _inherits(LineItinerary, _NarrativeItinerary);
 
   function LineItinerary() {
-    (0, _classCallCheck3.default)(this, LineItinerary);
-    return (0, _possibleConstructorReturn3.default)(this, (LineItinerary.__proto__ || (0, _getPrototypeOf2.default)(LineItinerary)).apply(this, arguments));
+    _classCallCheck(this, LineItinerary);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(LineItinerary).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(LineItinerary, [{
-    key: '_headerText',
+  _createClass(LineItinerary, [{
+    key: "_headerText",
     value: function _headerText() {
       var itinerary = this.props.itinerary;
-
       return itinerary.summary || this._getSummary(itinerary);
     }
   }, {
-    key: '_getSummary',
+    key: "_getSummary",
     value: function _getSummary(itinerary) {
       var summary = '';
       var transitModes = [];
       itinerary.legs.forEach(function (leg, index) {
         if ((0, _itinerary.isTransit)(leg.mode)) {
-          var modeStr = (0, _itinerary.getLegModeString)(leg);
+          var modeStr = (0, _itinerary.getLegModeLabel)(leg);
           if (transitModes.indexOf(modeStr) === -1) transitModes.push(modeStr);
         }
-      });
+      }); // check for access mode
 
-      // check for access mode
       if (!(0, _itinerary.isTransit)(itinerary.legs[0].mode)) {
-        summary += (0, _itinerary.getLegModeString)(itinerary.legs[0]);
-      }
+        summary += (0, _itinerary.getLegModeLabel)(itinerary.legs[0]);
+      } // append transit modes, if applicable
 
-      // append transit modes, if applicable
+
       if (transitModes.length > 0) {
         summary += ' to ' + transitModes.join(', ');
       }
@@ -93,49 +86,46 @@ var LineItinerary = function (_NarrativeItinerary) {
       return summary;
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
-      var _props = this.props,
-          active = _props.active,
-          companies = _props.companies,
-          customIcons = _props.customIcons,
-          expanded = _props.expanded,
-          itinerary = _props.itinerary,
-          itineraryFooter = _props.itineraryFooter,
-          showRealtimeAnnotation = _props.showRealtimeAnnotation,
-          onClick = _props.onClick,
-          timeFormat = _props.timeFormat;
-
-
-      console.log('>>>>>> line itin props:', this.props);
+      var _this$props = this.props,
+          active = _this$props.active,
+          companies = _this$props.companies,
+          customIcons = _this$props.customIcons,
+          expanded = _this$props.expanded,
+          itinerary = _this$props.itinerary,
+          itineraryFooter = _this$props.itineraryFooter,
+          showRealtimeAnnotation = _this$props.showRealtimeAnnotation,
+          onClick = _this$props.onClick,
+          timeFormat = _this$props.timeFormat;
 
       if (!itinerary) {
-        return _react2.default.createElement(
-          'div',
-          null,
-          'No Itinerary!'
-        );
+        return _react.default.createElement("div", null, "No Itinerary!");
       }
 
       var timeOptions = {
         format: timeFormat,
         offset: (0, _itinerary.getTimeZoneOffset)(itinerary)
       };
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'line-itin' },
-        _react2.default.createElement(_itinSummary2.default, { companies: companies, itinerary: itinerary, timeOptions: timeOptions, onClick: onClick, customIcons: customIcons }),
-        showRealtimeAnnotation && _react2.default.createElement(_simpleRealtimeAnnotation2.default, null),
-        active || expanded ? _react2.default.createElement(_itinBody2.default, (0, _extends3.default)({}, this.props, { itinerary: itinerary, timeOptions: timeOptions })) : null,
-        itineraryFooter
-      );
+      return _react.default.createElement("div", {
+        className: "line-itin"
+      }, _react.default.createElement(_itinSummary.default, {
+        companies: companies,
+        itinerary: itinerary,
+        timeOptions: timeOptions,
+        onClick: onClick,
+        customIcons: customIcons
+      }), showRealtimeAnnotation && _react.default.createElement(_simpleRealtimeAnnotation.default, null), active || expanded ? _react.default.createElement(_itinBody.default, _extends({}, this.props, {
+        itinerary: itinerary,
+        timeOptions: timeOptions
+      })) : null, itineraryFooter);
     }
   }]);
+
   return LineItinerary;
-}(_narrativeItinerary2.default);
+}(_narrativeItinerary.default);
 
 exports.default = LineItinerary;
-module.exports = exports['default'];
+module.exports = exports.default;
 
 //# sourceMappingURL=line-itinerary.js

@@ -1,67 +1,62 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+require("core-js/modules/es7.symbol.async-iterator");
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+require("core-js/modules/es6.symbol");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _reactLeaflet = require("react-leaflet");
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _leaflet = _interopRequireDefault(require("leaflet"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _reactRedux = require("react-redux");
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _transitiveJs = _interopRequireDefault(require("transitive-js"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _lodash = _interopRequireDefault(require("lodash.isequal"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _state = require("../../util/state");
 
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-
-var _react = require('react');
-
-var _reactLeaflet = require('react-leaflet');
-
-var _leaflet = require('leaflet');
-
-var _leaflet2 = _interopRequireDefault(_leaflet);
-
-var _reactRedux = require('react-redux');
-
-var _transitiveJs = require('transitive-js');
-
-var _transitiveJs2 = _interopRequireDefault(_transitiveJs);
-
-var _lodash = require('lodash.isequal');
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-var _state = require('../../util/state');
-
-var _map = require('../../util/map');
+var _map = require("../../util/map");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-require('./leaflet-canvas-layer');
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-// TODO: move to util?
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+require('./leaflet-canvas-layer'); // TODO: move to util?
+
+
 function checkHiPPI(canvas) {
   if (window.devicePixelRatio > 1) {
     var PIXEL_RATIO = 2;
     canvas.style.width = canvas.width + 'px';
     canvas.style.height = canvas.height + 'px';
-
     canvas.width *= PIXEL_RATIO;
     canvas.height *= PIXEL_RATIO;
-
     var context = canvas.getContext('2d');
     context.scale(PIXEL_RATIO, PIXEL_RATIO);
   }
@@ -76,32 +71,32 @@ var zoomFactors = [{
   useGeographicRendering: true
 }];
 
-var TransitiveCanvasOverlay = (_temp = _class = function (_MapLayer) {
-  (0, _inherits3.default)(TransitiveCanvasOverlay, _MapLayer);
+var TransitiveCanvasOverlay =
+/*#__PURE__*/
+function (_MapLayer) {
+  _inherits(TransitiveCanvasOverlay, _MapLayer);
 
   function TransitiveCanvasOverlay() {
-    (0, _classCallCheck3.default)(this, TransitiveCanvasOverlay);
-    return (0, _possibleConstructorReturn3.default)(this, (TransitiveCanvasOverlay.__proto__ || (0, _getPrototypeOf2.default)(TransitiveCanvasOverlay)).apply(this, arguments));
+    _classCallCheck(this, TransitiveCanvasOverlay);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(TransitiveCanvasOverlay).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(TransitiveCanvasOverlay, [{
-    key: 'componentDidMount',
-
-
-    // React Lifecycle Methods
-
+  _createClass(TransitiveCanvasOverlay, [{
+    key: "componentDidMount",
     value: function componentDidMount() {
-      var map = this.context.map;
+      var map = this.props.leaflet.map;
 
-      _leaflet2.default.canvasLayer().delegate(this) // -- if we do not inherit from L.CanvasLayer  we can setup a delegate to receive events from L.CanvasLayer
+      _leaflet.default.canvasLayer().delegate(this) // -- if we do not inherit from L.CanvasLayer  we can setup a delegate to receive events from L.CanvasLayer
       .addTo(map);
     }
   }, {
-    key: 'componentWillReceiveProps',
+    key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       // Check if we received new transitive data
-      if (this._transitive && !(0, _lodash2.default)(nextProps.transitiveData, this.props.transitiveData)) {
+      if (this._transitive && !(0, _lodash.default)(nextProps.transitiveData, this.props.transitiveData)) {
         this._transitive.updateData(nextProps.transitiveData);
+
         if (!nextProps.transitiveData) this._transitive.render();else this._updateBoundsAndRender();
       }
 
@@ -110,32 +105,32 @@ var TransitiveCanvasOverlay = (_temp = _class = function (_MapLayer) {
         if (nextProps.activeItinerary == null) {
           // no option selected; clear focus
           this._transitive.focusJourney(null);
+
           this._transitive.render();
         } else if (nextProps.transitiveData) {
           this._transitive.focusJourney(nextProps.transitiveData.journeys[nextProps.activeItinerary].journey_id);
+
           this._transitive.render();
         }
       }
     }
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {
       if (this._transitive) {
         this._transitive.updateData(null);
+
         this._transitive.render();
       }
-    }
-
-    // Internal Methods
+    } // Internal Methods
 
   }, {
-    key: '_initTransitive',
+    key: "_initTransitive",
     value: function _initTransitive(canvas) {
-      var map = this.context.map;
+      var map = this.props.leaflet.map; // set up the transitive instance
 
-      // set up the transitive instance
       var mapBounds = map.getBounds();
-      this._transitive = new _transitiveJs2.default({
+      this._transitive = new _transitiveJs.default({
         data: this.props.transitiveData,
         initialBounds: [[mapBounds.getWest(), mapBounds.getSouth()], [mapBounds.getEast(), mapBounds.getNorth()]],
         zoomEnabled: false,
@@ -145,66 +140,71 @@ var TransitiveCanvasOverlay = (_temp = _class = function (_MapLayer) {
         display: 'canvas',
         canvas: canvas
       });
+      checkHiPPI(canvas); // the initial map draw
 
-      checkHiPPI(canvas);
-
-      // the initial map draw
       this._updateBoundsAndRender();
     }
   }, {
-    key: '_updateBoundsAndRender',
+    key: "_updateBoundsAndRender",
     value: function _updateBoundsAndRender() {
       if (!this._transitive) {
         console.log('WARNING: Transitive object not set in transitive-canvas-overlay');
         return;
       }
 
-      var mapBounds = this.context.map.getBounds();
-      this._transitive.setDisplayBounds([[mapBounds.getWest(), mapBounds.getSouth()], [mapBounds.getEast(), mapBounds.getNorth()]]);
-      this._transitive.render();
-    }
+      var mapBounds = this.props.leaflet.map.getBounds();
 
-    // Leaflet Layer API Methods
+      this._transitive.setDisplayBounds([[mapBounds.getWest(), mapBounds.getSouth()], [mapBounds.getEast(), mapBounds.getNorth()]]);
+
+      this._transitive.render();
+    } // Leaflet Layer API Methods
 
   }, {
-    key: 'onDrawLayer',
+    key: "onDrawLayer",
     value: function onDrawLayer(info) {
       if (!this._transitive) this._initTransitive(info.canvas);
+      var mapSize = this.props.leaflet.map.getSize();
 
-      var mapSize = this.context.map.getSize();
       if (this._lastMapSize && (mapSize.x !== this._lastMapSize.x || mapSize.y !== this._lastMapSize.y)) {
         var canvas = info.canvas;
         checkHiPPI(canvas);
+
         this._transitive.display.setDimensions(mapSize.x, mapSize.y);
+
         this._transitive.display.setCanvas(canvas);
       }
 
       this._updateBoundsAndRender();
 
-      this._lastMapSize = this.context.map.getSize();
+      this._lastMapSize = this.props.leaflet.map.getSize();
     }
   }, {
-    key: 'createTile',
+    key: "createTile",
     value: function createTile(coords) {}
   }, {
-    key: 'createLeafletElement',
+    key: "createLeafletElement",
     value: function createLeafletElement(props) {}
   }, {
-    key: 'updateLeafletElement',
+    key: "updateLeafletElement",
     value: function updateLeafletElement(fromProps, toProps) {}
   }]);
-  return TransitiveCanvasOverlay;
-}(_reactLeaflet.MapLayer), _class.propTypes = {
-  transitiveData: _react.PropTypes.object }, _temp);
 
-// connect to the redux store
+  return TransitiveCanvasOverlay;
+}(_reactLeaflet.MapLayer); // connect to the redux store
+
+
+_defineProperty(TransitiveCanvasOverlay, "propTypes", {
+  transitiveData: _propTypes.default.object // React Lifecycle Methods
+
+});
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var activeSearch = (0, _state.getActiveSearch)(state.otp);
   var transitiveData = null;
+
   if (activeSearch && activeSearch.query.routingType === 'ITINERARY' && activeSearch.response && activeSearch.response.plan) {
-    var itins = (0, _state.getActiveItineraries)(state.otp);
-    // TODO: prevent itineraryToTransitive() from being called more than needed
+    var itins = (0, _state.getActiveItineraries)(state.otp); // TODO: prevent itineraryToTransitive() from being called more than needed
+
     transitiveData = (0, _map.itineraryToTransitive)(itins[activeSearch.activeItinerary]);
   } else if (activeSearch && activeSearch.response && activeSearch.response.otp) {
     transitiveData = activeSearch.response.otp;
@@ -219,7 +219,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = {};
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TransitiveCanvasOverlay);
-module.exports = exports['default'];
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)((0, _reactLeaflet.withLeaflet)(TransitiveCanvasOverlay));
+
+exports.default = _default;
+module.exports = exports.default;
 
 //# sourceMappingURL=transitive-overlay.js

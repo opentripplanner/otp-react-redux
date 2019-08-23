@@ -1,38 +1,10 @@
-'use strict';
+"use strict";
+
+require("core-js/modules/es6.regexp.replace");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.clearStops = exports.transportationNetworkCompanyRideError = exports.transportationNetworkCompanyRideResponse = exports.transportationNetworkCompanyEtaError = exports.transportationNetworkCompanyEtaResponse = exports.findPatternsForRouteError = exports.findPatternsForRouteResponse = exports.findRoutesError = exports.findRoutesResponse = exports.findStopTimesForStopError = exports.findStopTimesForStopResponse = exports.findGeometryForTripError = exports.findGeometryForTripResponse = exports.findStopTimesForTripError = exports.findStopTimesForTripResponse = exports.findStopsForTripError = exports.findStopsForTripResponse = exports.findTripError = exports.findTripResponse = exports.findStopError = exports.findStopResponse = exports.vehicleRentalError = exports.vehicleRentalResponse = exports.carRentalError = exports.carRentalResponse = exports.bikeRentalResponse = exports.bikeRentalError = exports.parkAndRideResponse = exports.parkAndRideError = exports.forgetSearch = exports.rememberSearch = exports.toggleTracking = exports.routingError = exports.routingResponse = exports.routingRequest = exports.nonRealtimeRoutingResponse = undefined;
-
-var _stringify = require('babel-runtime/core-js/json/stringify');
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
-var _keys = require('babel-runtime/core-js/object/keys');
-
-var _keys2 = _interopRequireDefault(_keys);
-
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
-
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-var _assign = require('babel-runtime/core-js/object/assign');
-
-var _assign2 = _interopRequireDefault(_assign);
-
-var _regenerator = require('babel-runtime/regenerator');
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
 exports.routingQuery = routingQuery;
 exports.parkAndRideQuery = parkAndRideQuery;
 exports.bikeRentalQuery = bikeRentalQuery;
@@ -46,67 +18,108 @@ exports.findGeometryForTrip = findGeometryForTrip;
 exports.findStopTimesForStop = findStopTimesForStop;
 exports.findRoutes = findRoutes;
 exports.findRoute = findRoute;
+exports.findPatternsForRoute = findPatternsForRoute;
+exports.findGeometryForPattern = findGeometryForPattern;
 exports.getTransportationNetworkCompanyEtaEstimate = getTransportationNetworkCompanyEtaEstimate;
 exports.getTransportationNetworkCompanyRideEstimate = getTransportationNetworkCompanyRideEstimate;
 exports.findNearbyStops = findNearbyStops;
 exports.findRoutesAtStop = findRoutesAtStop;
 exports.findStopsWithinBBox = findStopsWithinBBox;
+exports.setUrlSearch = setUrlSearch;
+exports.updateOtpUrlParams = updateOtpUrlParams;
+exports.clearStops = exports.transportationNetworkCompanyRideError = exports.transportationNetworkCompanyRideResponse = exports.transportationNetworkCompanyEtaError = exports.transportationNetworkCompanyEtaResponse = exports.findRouteError = exports.findRouteResponse = exports.findGeometryForTripError = exports.findGeometryForTripResponse = exports.findStopTimesForTripError = exports.findStopTimesForTripResponse = exports.findStopsForTripError = exports.findStopsForTripResponse = exports.findTripError = exports.findTripResponse = exports.vehicleRentalError = exports.vehicleRentalResponse = exports.carRentalError = exports.carRentalResponse = exports.bikeRentalResponse = exports.bikeRentalError = exports.parkAndRideResponse = exports.parkAndRideError = exports.forgetSearch = exports.rememberSearch = exports.toggleTracking = exports.routingError = exports.routingResponse = exports.routingRequest = exports.nonRealtimeRoutingResponse = void 0;
 
-var _reduxActions = require('redux-actions');
+require("core-js/modules/es6.promise");
 
-var _qs = require('qs');
+require("core-js/modules/es7.object.get-own-property-descriptors");
 
-var _qs2 = _interopRequireDefault(_qs);
+require("core-js/modules/es6.symbol");
 
-var _moment = require('moment');
+require("core-js/modules/es7.array.includes");
 
-var _moment2 = _interopRequireDefault(_moment);
+require("core-js/modules/es6.string.includes");
 
-var _haversine = require('haversine');
+require("core-js/modules/es6.object.assign");
 
-var _haversine2 = _interopRequireDefault(_haversine);
+require("core-js/modules/es6.function.name");
 
-var _map = require('./map');
+require("core-js/modules/es6.array.find");
 
-var _state = require('../util/state');
+require("regenerator-runtime/runtime");
 
-var _queryParams = require('../util/query-params');
+require("core-js/modules/web.dom.iterable");
 
-var _queryParams2 = _interopRequireDefault(_queryParams);
+require("core-js/modules/es6.array.iterator");
 
-var _query = require('../util/query');
+require("core-js/modules/es6.object.to-string");
 
-var _itinerary = require('../util/itinerary');
+require("core-js/modules/es6.object.keys");
+
+var _connectedReactRouter = require("connected-react-router");
+
+var _objectHash = _interopRequireDefault(require("object-hash"));
+
+var _reduxActions = require("redux-actions");
+
+var _qs = _interopRequireDefault(require("qs"));
+
+var _moment = _interopRequireDefault(require("moment"));
+
+var _haversine = _interopRequireDefault(require("haversine"));
+
+var _map = require("./map");
+
+var _itinerary = require("../util/itinerary");
+
+var _query = require("../util/query");
+
+var _queryParams = _interopRequireDefault(require("../util/query-params"));
+
+var _state = require("../util/state");
+
+var _storage = require("../util/storage");
+
+var _time = require("../util/time");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-if (typeof fetch === 'undefined') require('isomorphic-fetch');
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
-// Generic API actions
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-/* globals fetch */
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
-var nonRealtimeRoutingResponse = exports.nonRealtimeRoutingResponse = (0, _reduxActions.createAction)('NON_REALTIME_ROUTING_RESPONSE');
-var routingRequest = exports.routingRequest = (0, _reduxActions.createAction)('ROUTING_REQUEST');
-var routingResponse = exports.routingResponse = (0, _reduxActions.createAction)('ROUTING_RESPONSE');
-var routingError = exports.routingError = (0, _reduxActions.createAction)('ROUTING_ERROR');
-var toggleTracking = exports.toggleTracking = (0, _reduxActions.createAction)('TOGGLE_TRACKING');
-var rememberSearch = exports.rememberSearch = (0, _reduxActions.createAction)('REMEMBER_SEARCH');
-var forgetSearch = exports.forgetSearch = (0, _reduxActions.createAction)('FORGET_SEARCH');
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var lastSearchId = 0;
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function randId() {
-  return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
-}
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+if (typeof fetch === 'undefined') require('isomorphic-fetch'); // Generic API actions
+
+var nonRealtimeRoutingResponse = (0, _reduxActions.createAction)('NON_REALTIME_ROUTING_RESPONSE');
+exports.nonRealtimeRoutingResponse = nonRealtimeRoutingResponse;
+var routingRequest = (0, _reduxActions.createAction)('ROUTING_REQUEST');
+exports.routingRequest = routingRequest;
+var routingResponse = (0, _reduxActions.createAction)('ROUTING_RESPONSE');
+exports.routingResponse = routingResponse;
+var routingError = (0, _reduxActions.createAction)('ROUTING_ERROR');
+exports.routingError = routingError;
+var toggleTracking = (0, _reduxActions.createAction)('TOGGLE_TRACKING');
+exports.toggleTracking = toggleTracking;
+var rememberSearch = (0, _reduxActions.createAction)('REMEMBER_SEARCH');
+exports.rememberSearch = rememberSearch;
+var forgetSearch = (0, _reduxActions.createAction)('FORGET_SEARCH');
+exports.forgetSearch = forgetSearch;
 
 function formatRecentPlace(place) {
-  return (0, _extends3.default)({}, place, {
+  return _objectSpread({}, place, {
     type: 'recent',
     icon: 'clock-o',
-    id: 'recent-' + randId(),
-    timestamp: new Date().getTime(),
-    forgettable: true
+    id: "recent-".concat((0, _storage.randId)()),
+    timestamp: new Date().getTime()
   });
 }
 
@@ -114,73 +127,152 @@ function formatRecentSearch(url, otpState) {
   return {
     query: (0, _query.getTripOptionsFromQuery)(otpState.currentQuery, true),
     url: url,
-    id: randId(),
+    id: (0, _storage.randId)(),
     timestamp: new Date().getTime()
   };
 }
 
+function isStoredPlace(place) {
+  return ['home', 'work', 'suggested', 'stop'].indexOf(place.type) !== -1;
+}
+/**
+ * Compute the initial activeItinerary. If this is the first search of
+ * session (i.e. searches lookup is empty/null) AND an activeItinerary ID
+ * is specified in URL parameters, use that ID. Otherwise, use null/0.
+ */
+
+
+function getActiveItinerary(otpState) {
+  var activeItinerary = otpState.currentQuery.routingType === 'ITINERARY' ? 0 : null; // We cannot use window.history.state here to check for the active
+  // itinerary param because it is unreliable in some states (e.g.,
+  // when the print layout component first loads).
+
+  var urlParams = (0, _query.getUrlParams)();
+
+  if ((!otpState.searches || Object.keys(otpState.searches).length === 0) && urlParams.ui_activeItinerary) {
+    activeItinerary = +urlParams.ui_activeItinerary;
+  }
+
+  return activeItinerary;
+}
+/**
+ * Send a routing query to the OTP backend.
+ *
+ * NOTE: We need a random ID so that when a user reloads the page (clearing the
+ * state), performs searches, and presses back to load previous searches
+ * that are no longer contained in the state we don't confuse the search IDs
+ * with search IDs from the new session. If we were to use sequential numbers
+ * as IDs, we would run into this problem.
+ */
+
+
 function routingQuery() {
-  return function () {
-    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(dispatch, getState) {
-      var otpState, routingType, searchId, query;
-      return _regenerator2.default.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              otpState = getState().otp;
-              routingType = otpState.currentQuery.routingType;
-              searchId = ++lastSearchId;
+  var searchId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee(dispatch, getState) {
+        var otpState, isNewSearch, routingType, activeItinerary, query, params;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                otpState = getState().otp;
+                isNewSearch = !searchId;
+                if (isNewSearch) searchId = (0, _storage.randId)();
+                routingType = otpState.currentQuery.routingType; // Don't permit a routing query if the query is invalid
 
-              if ((0, _state.queryIsValid)(otpState)) {
-                _context.next = 5;
-                break;
-              }
-
-              return _context.abrupt('return');
-
-            case 5:
-              dispatch(routingRequest({ routingType: routingType, searchId: searchId }));
-
-              // fetch a realtime route
-              query = constructRoutingQuery(otpState);
-
-              console.log(query);
-              fetch(query).then(getJsonAndCheckResponse).then(function (json) {
-                dispatch(routingResponse({ response: json, searchId: searchId }));
-                // If tracking is enabled, store locations and search after successful
-                // search is completed.
-                // TODO recent searches
-                if (otpState.user.trackRecent) {
-                  var from = formatRecentPlace(otpState.currentQuery.from);
-                  var to = formatRecentPlace(otpState.currentQuery.to);
-                  dispatch((0, _map.rememberPlace)({ type: 'recent', location: from }));
-                  dispatch((0, _map.rememberPlace)({ type: 'recent', location: to }));
-                  dispatch(rememberSearch(formatRecentSearch(query, otpState)));
+                if ((0, _state.queryIsValid)(otpState)) {
+                  _context.next = 7;
+                  break;
                 }
-              }).catch(function (error) {
-                dispatch(routingError({ error: error, searchId: searchId }));
-              });
 
-              // also fetch a non-realtime route
-              fetch(constructRoutingQuery(otpState, true)).then(getJsonAndCheckResponse).then(function (json) {
-                dispatch(nonRealtimeRoutingResponse({ response: json, searchId: searchId }));
-              }).catch(function (error) {
-                console.error(error);
-                // do nothing
-              });
+                console.warn('Query is invalid. Aborting routing query', otpState.currentQuery);
+                return _context.abrupt("return");
 
-            case 10:
-            case 'end':
-              return _context.stop();
+              case 7:
+                activeItinerary = getActiveItinerary(otpState);
+                dispatch(routingRequest({
+                  activeItinerary: activeItinerary,
+                  routingType: routingType,
+                  searchId: searchId
+                })); // fetch a realtime route
+
+                query = constructRoutingQuery(otpState);
+                fetch(query).then(getJsonAndCheckResponse).then(function (json) {
+                  dispatch(routingResponse({
+                    response: json,
+                    searchId: searchId
+                  })); // If tracking is enabled, store locations and search after successful
+                  // search is completed.
+
+                  if (otpState.user.trackRecent) {
+                    var _otpState$currentQuer = otpState.currentQuery,
+                        from = _otpState$currentQuer.from,
+                        to = _otpState$currentQuer.to;
+
+                    if (!isStoredPlace(from)) {
+                      dispatch((0, _map.rememberPlace)({
+                        type: 'recent',
+                        location: formatRecentPlace(from)
+                      }));
+                    }
+
+                    if (!isStoredPlace(to)) {
+                      dispatch((0, _map.rememberPlace)({
+                        type: 'recent',
+                        location: formatRecentPlace(to)
+                      }));
+                    }
+
+                    dispatch(rememberSearch(formatRecentSearch(query, otpState)));
+                  }
+                }).catch(function (error) {
+                  dispatch(routingError({
+                    error: error,
+                    searchId: searchId
+                  }));
+                }); // Update OTP URL params if a new search. In other words, if we're
+                // performing a search based on query params taken from the URL after a back
+                // button press, we don't need to update the OTP URL.
+                // TODO: For old searches that we are re-running, should we be **replacing**
+                //  the URL params here (instead of **pushing** a new path to history like
+                //  what currently happens in updateOtpUrlParams)? That way we could ensure
+                //  that the path absolutely accurately reflects the app state.
+
+                params = (0, _query.getUrlParams)();
+
+                if (isNewSearch || params.ui_activeSearch !== searchId) {
+                  dispatch(updateOtpUrlParams(otpState, searchId));
+                } // also fetch a non-realtime route
+
+
+                fetch(constructRoutingQuery(otpState, true)).then(getJsonAndCheckResponse).then(function (json) {
+                  // FIXME: This is only performed when ignoring realtimeupdates currently, just
+                  // to ensure it is not repeated twice.
+                  dispatch(nonRealtimeRoutingResponse({
+                    response: json,
+                    searchId: searchId
+                  }));
+                }).catch(function (error) {
+                  console.error(error); // do nothing
+                });
+
+              case 14:
+              case "end":
+                return _context.stop();
+            }
           }
-        }
-      }, _callee, this);
-    }));
+        }, _callee);
+      }));
 
-    return function (_x, _x2) {
-      return _ref.apply(this, arguments);
-    };
-  }();
+      return function (_x, _x2) {
+        return _ref.apply(this, arguments);
+      };
+    }()
+  );
 }
 
 function getJsonAndCheckResponse(res) {
@@ -189,27 +281,32 @@ function getJsonAndCheckResponse(res) {
     error.response = res;
     throw error;
   }
+
   return res.json();
 }
 
 function constructRoutingQuery(otpState, ignoreRealtimeUpdates) {
   var config = otpState.config,
       currentQuery = otpState.currentQuery;
+  var routingType = currentQuery.routingType; // Check for routingType-specific API config; if none, use default API
 
-  var routingType = currentQuery.routingType;
-  var isItinerary = routingType === 'ITINERARY';
-
-  // Check for routingType-specific API config; if none, use default API
   var rt = config.routingTypes && config.routingTypes.find(function (rt) {
     return rt.key === routingType;
   });
   var api = rt && rt.api || config.api;
-  var planEndpoint = '' + api.host + (api.port ? ':' + api.port : '') + api.path + '/plan';
+  var planEndpoint = "".concat(api.host).concat(api.port ? ':' + api.port : '').concat(api.path, "/plan");
+  var params = getRoutingParams(otpState, ignoreRealtimeUpdates);
+  return "".concat(planEndpoint, "?").concat(_qs.default.stringify(params));
+}
 
-  var params = {};
+function getRoutingParams(otpState, ignoreRealtimeUpdates) {
+  var config = otpState.config,
+      currentQuery = otpState.currentQuery;
+  var routingType = currentQuery.routingType;
+  var isItinerary = routingType === 'ITINERARY';
+  var params = {}; // Start with the universe of OTP parameters defined in query-params.js:
 
-  // Start with the universe of OTP parameters defined in query-params.js:
-  _queryParams2.default.filter(function (qp) {
+  _queryParams.default.filter(function (qp) {
     // A given parameter is included in the request if all of the following:
     // 1. Must apply to the active routing type (ITINERARY or PROFILE)
     // 2. Must be included in the current user-defined query
@@ -219,142 +316,230 @@ function constructRoutingQuery(otpState, ignoreRealtimeUpdates) {
     // Translate the applicable parameters according to their rewrite
     // functions (if provided)
     var rewriteFunction = isItinerary ? qp.itineraryRewrite : qp.profileRewrite;
-    params = (0, _assign2.default)(params, rewriteFunction ? rewriteFunction(currentQuery[qp.name]) : (0, _defineProperty3.default)({}, qp.name, currentQuery[qp.name]));
-  });
+    params = Object.assign(params, rewriteFunction ? rewriteFunction(currentQuery[qp.name]) : _defineProperty({}, qp.name, currentQuery[qp.name]));
+  }); // Additional processing specific to ITINERARY mode
 
-  // Additional processing specific to ITINERARY mode
+
   if (isItinerary) {
     // override ignoreRealtimeUpdates if provided
     if (typeof ignoreRealtimeUpdates === 'boolean') {
       params.ignoreRealtimeUpdates = ignoreRealtimeUpdates;
-    }
+    } // check date/time validity; ignore both if either is invalid
 
-    // check date/time validity; ignore both if either is invalid
-    var dateValid = (0, _moment2.default)(params.date, 'YYYY-MM-DD').isValid();
-    var timeValid = (0, _moment2.default)(params.time, 'H:mm').isValid();
+
+    var dateValid = (0, _moment.default)(params.date, _time.OTP_API_DATE_FORMAT).isValid();
+    var timeValid = (0, _moment.default)(params.time, _time.OTP_API_TIME_FORMAT).isValid();
 
     if (!dateValid || !timeValid) {
       delete params.time;
       delete params.date;
-    }
+    } // temp: set additional parameters for CAR_HAIL or CAR_RENT trips
 
-    // temp: set additional parameters for CAR_HAIL or CAR_RENT trips
+
     if (params.mode && (params.mode.includes('CAR_HAIL') || params.mode.includes('CAR_RENT'))) {
-      params.minTransitDistance = '50%';
-      // increase search timeout because these queries can take a while
-      params.searchTimeout = 10000;
-    }
+      params.minTransitDistance = '50%'; // increase search timeout because these queries can take a while
 
-    // set onlyTransitTrips for car rental searches
+      params.searchTimeout = 10000;
+    } // set onlyTransitTrips for car rental searches
+
+
     if (params.mode && params.mode.includes('CAR_RENT')) {
       params.onlyTransitTrips = true;
-    }
+    } // Additional processing specific to PROFILE mode
 
-    // Additional processing specific to PROFILE mode
   } else {
     // check start and end time validity; ignore both if either is invalid
-    var startTimeValid = (0, _moment2.default)(params.startTime, 'H:mm').isValid();
-    var endTimeValid = (0, _moment2.default)(params.endTime, 'H:mm').isValid();
+    var startTimeValid = (0, _moment.default)(params.startTime, _time.OTP_API_TIME_FORMAT).isValid();
+    var endTimeValid = (0, _moment.default)(params.endTime, _time.OTP_API_TIME_FORMAT).isValid();
 
     if (!startTimeValid || !endTimeValid) {
       delete params.startTimeValid;
       delete params.endTimeValid;
     }
-  }
-
-  // TODO: check that valid from/to locations are provided
-
-  // FIXME: This is only performed when ignoring realtimeupdates currently, just
-  // to ensure it is not repeated twice.
-  if (ignoreRealtimeUpdates) (0, _query.updateOtpUrlParams)(params);
-
+  } // TODO: check that valid from/to locations are provided
   // hack to add walking to driving/TNC trips
+
+
   if ((0, _itinerary.hasCar)(params.mode)) {
     params.mode += ',WALK';
   }
 
-  return planEndpoint + '?' + _qs2.default.stringify(params);
-}
+  return params;
+} // Park and Ride location query
 
-// Park and Ride location query
 
-var parkAndRideError = exports.parkAndRideError = (0, _reduxActions.createAction)('PARK_AND_RIDE_ERROR');
-var parkAndRideResponse = exports.parkAndRideResponse = (0, _reduxActions.createAction)('PARK_AND_RIDE_RESPONSE');
+var parkAndRideError = (0, _reduxActions.createAction)('PARK_AND_RIDE_ERROR');
+exports.parkAndRideError = parkAndRideError;
+var parkAndRideResponse = (0, _reduxActions.createAction)('PARK_AND_RIDE_RESPONSE');
+exports.parkAndRideResponse = parkAndRideResponse;
 
 function parkAndRideQuery(params) {
   var endpoint = 'park_and_ride';
-  if (params && (0, _keys2.default)(params).length > 0) {
-    endpoint += '?' + (0, _keys2.default)(params).map(function (key) {
+
+  if (params && Object.keys(params).length > 0) {
+    endpoint += '?' + Object.keys(params).map(function (key) {
       return key + '=' + params[key];
     }).join('&');
   }
+
   return createQueryAction(endpoint, parkAndRideResponse, parkAndRideError);
-}
+} // bike rental station query
 
-// bike rental station query
 
-var bikeRentalError = exports.bikeRentalError = (0, _reduxActions.createAction)('BIKE_RENTAL_ERROR');
-var bikeRentalResponse = exports.bikeRentalResponse = (0, _reduxActions.createAction)('BIKE_RENTAL_RESPONSE');
+var bikeRentalError = (0, _reduxActions.createAction)('BIKE_RENTAL_ERROR');
+exports.bikeRentalError = bikeRentalError;
+var bikeRentalResponse = (0, _reduxActions.createAction)('BIKE_RENTAL_RESPONSE');
+exports.bikeRentalResponse = bikeRentalResponse;
 
 function bikeRentalQuery(params) {
   return createQueryAction('bike_rental', bikeRentalResponse, bikeRentalError);
-}
+} // Car rental (e.g. car2go) locations lookup query
 
-// Car rental (e.g. car2go) locations lookup query
 
-var carRentalResponse = exports.carRentalResponse = (0, _reduxActions.createAction)('CAR_RENTAL_RESPONSE');
-var carRentalError = exports.carRentalError = (0, _reduxActions.createAction)('CAR_RENTAL_ERROR');
+var carRentalResponse = (0, _reduxActions.createAction)('CAR_RENTAL_RESPONSE');
+exports.carRentalResponse = carRentalResponse;
+var carRentalError = (0, _reduxActions.createAction)('CAR_RENTAL_ERROR');
+exports.carRentalError = carRentalError;
 
 function carRentalQuery(params) {
   return createQueryAction('car_rental', carRentalResponse, carRentalError);
-}
+} // Vehicle rental locations lookup query. For now, there are 3 seperate
+// "vehicle" rental endpoints - 1 for cars, 1 for bicycle rentals and another
+// for micromobility. In the future, the hope is to consolidate these 3
+// endpoints into one.
 
-// Vehicle rental (e.g. Lime eScooter) locations lookup query
 
-var vehicleRentalResponse = exports.vehicleRentalResponse = (0, _reduxActions.createAction)('VEHICLE_RENTAL_RESPONSE');
-var vehicleRentalError = exports.vehicleRentalError = (0, _reduxActions.createAction)('VEHICLE_RENTAL_ERROR');
+var vehicleRentalResponse = (0, _reduxActions.createAction)('VEHICLE_RENTAL_RESPONSE');
+exports.vehicleRentalResponse = vehicleRentalResponse;
+var vehicleRentalError = (0, _reduxActions.createAction)('VEHICLE_RENTAL_ERROR');
+exports.vehicleRentalError = vehicleRentalError;
 
 function vehicleRentalQuery(params) {
   return createQueryAction('vehicle_rental', vehicleRentalResponse, vehicleRentalError);
-}
+} // Single stop lookup query
 
-// Single stop lookup query
 
-var findStopResponse = exports.findStopResponse = (0, _reduxActions.createAction)('FIND_STOP_RESPONSE');
-var findStopError = exports.findStopError = (0, _reduxActions.createAction)('FIND_STOP_ERROR');
+var findStopResponse = (0, _reduxActions.createAction)('FIND_STOP_RESPONSE');
+var findStopError = (0, _reduxActions.createAction)('FIND_STOP_ERROR');
 
 function findStop(params) {
-  return createQueryAction('index/stops/' + params.stopId, findStopResponse, findStopError, {
+  return createQueryAction("index/stops/".concat(params.stopId), findStopResponse, findStopError, {
     serviceId: 'stops',
     postprocess: function postprocess(payload, dispatch) {
       dispatch(findRoutesAtStop(params.stopId));
-      dispatch(findStopTimesForStop({ stopId: params.stopId }));
-    }
+      dispatch(findStopTimesForStop(params));
+    },
+    noThrottle: true
   });
-}
-
+} // TODO: Optionally substitute GraphQL queries? Note: this is not currently
+// possible because gtfsdb (the alternative transit index used by TriMet) does not
+// support GraphQL queries.
+// export function findStop (params) {
+//   const query = `
+// query stopQuery($stopId: [String]) {
+//   stops (ids: $stopId) {
+//     id: gtfsId
+//     code
+//     name
+//     url
+//     lat
+//     lon
+//     stoptimesForPatterns {
+//       pattern {
+//         id: semanticHash
+//         route {
+//           id: gtfsId
+//           longName
+//           shortName
+//           sortOrder
+//         }
+//       }
+//       stoptimes {
+//         scheduledArrival
+//         realtimeArrival
+//         arrivalDelay
+//         scheduledDeparture
+//         realtimeDeparture
+//         departureDelay
+//         timepoint
+//         realtime
+//         realtimeState
+//         serviceDay
+//         headsign
+//       }
+//     }
+//   }
+// }
+// `
+//   return createGraphQLQueryAction(
+//     query,
+//     { stopId: params.stopId },
+//     findStopResponse,
+//     findStopError,
+//     {
+//       // find stop should not be throttled since it can make quite frequent
+//       // updates when fetching stop times for a stop
+//       noThrottle: true,
+//       serviceId: 'stops',
+//       rewritePayload: (payload) => {
+//         // convert pattern array to ID-mapped object
+//         const patterns = []
+//         const { stoptimesForPatterns, ...stop } = payload.data.stops[0]
+//         stoptimesForPatterns.forEach(obj => {
+//           const { pattern, stoptimes: stopTimes } = obj
+//           // It's possible that not all stop times for a pattern will share the
+//           // same headsign, but this is probably a minor edge case.
+//           const headsign = stopTimes[0]
+//             ? stopTimes[0].headsign
+//             : pattern.route.longName
+//           const patternIndex = patterns.findIndex(p =>
+//             p.headsign === headsign && pattern.route.id === p.route.id)
+//           if (patternIndex === -1) {
+//             patterns.push({ ...pattern, headsign, stopTimes })
+//           } else {
+//             patterns[patternIndex].stopTimes.push(...stopTimes)
+//           }
+//         })
+//         return {
+//           ...stop,
+//           patterns
+//         }
+//       }
+//     }
+//   )
+// }
 // Single trip lookup query
 
-var findTripResponse = exports.findTripResponse = (0, _reduxActions.createAction)('FIND_TRIP_RESPONSE');
-var findTripError = exports.findTripError = (0, _reduxActions.createAction)('FIND_TRIP_ERROR');
+
+var findTripResponse = (0, _reduxActions.createAction)('FIND_TRIP_RESPONSE');
+exports.findTripResponse = findTripResponse;
+var findTripError = (0, _reduxActions.createAction)('FIND_TRIP_ERROR');
+exports.findTripError = findTripError;
 
 function findTrip(params) {
-  return createQueryAction('index/trips/' + params.tripId, findTripResponse, findTripError, {
+  return createQueryAction("index/trips/".concat(params.tripId), findTripResponse, findTripError, {
     postprocess: function postprocess(payload, dispatch) {
-      dispatch(findStopsForTrip({ tripId: params.tripId }));
-      dispatch(findStopTimesForTrip({ tripId: params.tripId }));
-      dispatch(findGeometryForTrip({ tripId: params.tripId }));
+      dispatch(findStopsForTrip({
+        tripId: params.tripId
+      }));
+      dispatch(findStopTimesForTrip({
+        tripId: params.tripId
+      }));
+      dispatch(findGeometryForTrip({
+        tripId: params.tripId
+      }));
     }
   });
-}
+} // Stops for trip query
 
-// Stops for trip query
 
-var findStopsForTripResponse = exports.findStopsForTripResponse = (0, _reduxActions.createAction)('FIND_STOPS_FOR_TRIP_RESPONSE');
-var findStopsForTripError = exports.findStopsForTripError = (0, _reduxActions.createAction)('FIND_STOPS_FOR_TRIP_ERROR');
+var findStopsForTripResponse = (0, _reduxActions.createAction)('FIND_STOPS_FOR_TRIP_RESPONSE');
+exports.findStopsForTripResponse = findStopsForTripResponse;
+var findStopsForTripError = (0, _reduxActions.createAction)('FIND_STOPS_FOR_TRIP_ERROR');
+exports.findStopsForTripError = findStopsForTripError;
 
 function findStopsForTrip(params) {
-  return createQueryAction('index/trips/' + params.tripId + '/stops', findStopsForTripResponse, findStopsForTripError, {
+  return createQueryAction("index/trips/".concat(params.tripId, "/stops"), findStopsForTripResponse, findStopsForTripError, {
     rewritePayload: function rewritePayload(payload) {
       return {
         tripId: params.tripId,
@@ -362,31 +547,34 @@ function findStopsForTrip(params) {
       };
     }
   });
-}
+} // Stop times for trip query
 
-// Stop times for trip query
 
-var findStopTimesForTripResponse = exports.findStopTimesForTripResponse = (0, _reduxActions.createAction)('FIND_STOP_TIMES_FOR_TRIP_RESPONSE');
-var findStopTimesForTripError = exports.findStopTimesForTripError = (0, _reduxActions.createAction)('FIND_STOP_TIMES_FOR_TRIP_ERROR');
+var findStopTimesForTripResponse = (0, _reduxActions.createAction)('FIND_STOP_TIMES_FOR_TRIP_RESPONSE');
+exports.findStopTimesForTripResponse = findStopTimesForTripResponse;
+var findStopTimesForTripError = (0, _reduxActions.createAction)('FIND_STOP_TIMES_FOR_TRIP_ERROR');
+exports.findStopTimesForTripError = findStopTimesForTripError;
 
 function findStopTimesForTrip(params) {
-  return createQueryAction('index/trips/' + params.tripId + '/stoptimes', findStopTimesForTripResponse, findStopTimesForTripError, {
+  return createQueryAction("index/trips/".concat(params.tripId, "/stoptimes"), findStopTimesForTripResponse, findStopTimesForTripError, {
     rewritePayload: function rewritePayload(payload) {
       return {
         tripId: params.tripId,
         stopTimes: payload
       };
-    }
+    },
+    noThrottle: true
   });
-}
+} // Geometry for trip query
 
-// Geometry for trip query
 
-var findGeometryForTripResponse = exports.findGeometryForTripResponse = (0, _reduxActions.createAction)('FIND_GEOMETRY_FOR_TRIP_RESPONSE');
-var findGeometryForTripError = exports.findGeometryForTripError = (0, _reduxActions.createAction)('FIND_GEOMETRY_FOR_TRIP_ERROR');
+var findGeometryForTripResponse = (0, _reduxActions.createAction)('FIND_GEOMETRY_FOR_TRIP_RESPONSE');
+exports.findGeometryForTripResponse = findGeometryForTripResponse;
+var findGeometryForTripError = (0, _reduxActions.createAction)('FIND_GEOMETRY_FOR_TRIP_ERROR');
+exports.findGeometryForTripError = findGeometryForTripError;
 
 function findGeometryForTrip(params) {
-  return createQueryAction('index/trips/' + params.tripId + '/geometry', findGeometryForTripResponse, findGeometryForTripError, function (payload) {
+  return createQueryAction("index/trips/".concat(params.tripId, "/geometry"), findGeometryForTripResponse, findGeometryForTripError, function (payload) {
     return {
       tripId: params.tripId,
       geometry: payload
@@ -394,82 +582,217 @@ function findGeometryForTrip(params) {
   });
 }
 
-// Stop times for stop query
-// TODO: make timeRange and numberOfDepartures configurable
-
-var findStopTimesForStopResponse = exports.findStopTimesForStopResponse = (0, _reduxActions.createAction)('FIND_STOP_TIMES_FOR_STOP_RESPONSE');
-var findStopTimesForStopError = exports.findStopTimesForStopError = (0, _reduxActions.createAction)('FIND_STOP_TIMES_FOR_STOP_ERROR');
+var findStopTimesForStopResponse = (0, _reduxActions.createAction)('FIND_STOP_TIMES_FOR_STOP_RESPONSE');
+var findStopTimesForStopError = (0, _reduxActions.createAction)('FIND_STOP_TIMES_FOR_STOP_ERROR');
+/**
+ * Stop times for stop query (used in stop viewer).
+ */
 
 function findStopTimesForStop(params) {
-  return createQueryAction('index/stops/' + params.stopId + '/stoptimes?timeRange=345600&numberOfDepartures=5', findStopTimesForStopResponse, findStopTimesForStopError, {
-    rewritePayload: function rewritePayload(payload) {
-      return {
-        stopId: params.stopId,
-        stopTimes: payload
-      };
+  return function (dispatch, getState) {
+    var stopId = params.stopId,
+        otherParams = _objectWithoutProperties(params, ["stopId"]); // If other params not provided, fall back on defaults from stop viewer config.
+
+
+    var queryParams = _objectSpread({}, (0, _state.getStopViewerConfig)(getState().otp), {}, otherParams); // If no start time is provided, pass in the current time. Note: this is not
+    // a required param by the back end, but if a value is not provided, the
+    // time defaults to the server's time, which can make it difficult to test
+    // scenarios when you may want to use a different date/time for your local
+    // testing environment.
+
+
+    if (!queryParams.startTime) {
+      var nowInSeconds = Math.floor(new Date().getTime() / 1000);
+      queryParams.startTime = nowInSeconds;
     }
-  });
-}
 
-// Routes lookup query
+    dispatch(createQueryAction("index/stops/".concat(stopId, "/stoptimes?").concat(_qs.default.stringify(queryParams)), findStopTimesForStopResponse, findStopTimesForStopError, {
+      rewritePayload: function rewritePayload(stopTimes) {
+        return {
+          stopId: stopId,
+          stopTimes: stopTimes
+        };
+      },
+      noThrottle: true
+    }));
+  };
+} // Routes lookup query
 
-var findRoutesResponse = exports.findRoutesResponse = (0, _reduxActions.createAction)('FIND_ROUTES_RESPONSE');
-var findRoutesError = exports.findRoutesError = (0, _reduxActions.createAction)('FIND_ROUTES_ERROR');
+
+var findRoutesResponse = (0, _reduxActions.createAction)('FIND_ROUTES_RESPONSE');
+var findRoutesError = (0, _reduxActions.createAction)('FIND_ROUTES_ERROR');
 
 function findRoutes(params) {
-  var query = '\n{\n  routes {\n    id: gtfsId\n    color\n    longName\n    shortName\n    mode\n    type\n    desc\n    bikesAllowed\n    sortOrder\n    textColor\n    url\n    agency {\n      id: gtfsId\n      name\n      url\n    }\n  }\n}\n  ';
-  return createGraphQLQueryAction(query, {}, findRoutesResponse, findRoutesError, {
+  return createQueryAction('index/routes', findRoutesResponse, findRoutesError, {
     serviceId: 'routes',
     rewritePayload: function rewritePayload(payload) {
       var routes = {};
-      payload.data.routes.forEach(function (rte) {
+      payload.forEach(function (rte) {
         routes[rte.id] = rte;
       });
       return routes;
     }
   });
-}
-
+} // export function findRoutes (params) {
+//   const query = `
+// {
+//   routes {
+//     id: gtfsId
+//     color
+//     longName
+//     shortName
+//     mode
+//     type
+//     desc
+//     bikesAllowed
+//     sortOrder
+//     textColor
+//     url
+//     agency {
+//       id: gtfsId
+//       name
+//       url
+//     }
+//   }
+// }
+//   `
+//   return createGraphQLQueryAction(
+//     query,
+//     {},
+//     findRoutesResponse,
+//     findRoutesError,
+//     {
+//       serviceId: 'routes',
+//       rewritePayload: (payload) => {
+//         const routes = {}
+//         payload.data.routes.forEach(rte => { routes[rte.id] = rte })
+//         return routes
+//       }
+//     }
+//   )
+// }
 // Patterns for Route lookup query
 // TODO: replace with GraphQL query for route => patterns => geometry
-var findPatternsForRouteResponse = exports.findPatternsForRouteResponse = (0, _reduxActions.createAction)('FIND_PATTERNS_FOR_ROUTE_RESPONSE');
-var findPatternsForRouteError = exports.findPatternsForRouteError = (0, _reduxActions.createAction)('FIND_PATTERNS_FOR_ROUTE_ERROR');
+
+
+var findPatternsForRouteResponse = (0, _reduxActions.createAction)('FIND_PATTERNS_FOR_ROUTE_RESPONSE');
+var findPatternsForRouteError = (0, _reduxActions.createAction)('FIND_PATTERNS_FOR_ROUTE_ERROR'); // Single Route lookup query
+
+var findRouteResponse = (0, _reduxActions.createAction)('FIND_ROUTE_RESPONSE');
+exports.findRouteResponse = findRouteResponse;
+var findRouteError = (0, _reduxActions.createAction)('FIND_ROUTE_ERROR');
+exports.findRouteError = findRouteError;
 
 function findRoute(params) {
-  var query = '\n  query routeQuery($routeId: [String]) {\n    routes (ids: $routeId) {\n      id: gtfsId\n      patterns {\n        id: semanticHash\n        directionId\n        headsign\n        name\n        semanticHash\n        geometry {\n          lat\n          lon\n        }\n      }\n    }\n  }\n  ';
-  return createGraphQLQueryAction(query, { routeId: params.routeId }, findPatternsForRouteResponse, findPatternsForRouteError, {
+  return createQueryAction("index/routes/".concat(params.routeId), findRouteResponse, findRouteError, {
+    postprocess: function postprocess(payload, dispatch) {
+      // load patterns
+      dispatch(findPatternsForRoute({
+        routeId: params.routeId
+      }));
+    },
+    noThrottle: true
+  });
+}
+
+function findPatternsForRoute(params) {
+  return createQueryAction("index/routes/".concat(params.routeId, "/patterns"), findPatternsForRouteResponse, findPatternsForRouteError, {
     rewritePayload: function rewritePayload(payload) {
       // convert pattern array to ID-mapped object
       var patterns = {};
-      payload.data.routes[0].patterns.forEach(function (ptn) {
-        patterns[ptn.id] = {
-          routeId: params.routeId,
-          patternId: ptn.id,
-          geometry: ptn.geometry
-        };
+      payload.forEach(function (ptn) {
+        patterns[ptn.id] = ptn;
       });
-
       return {
         routeId: params.routeId,
         patterns: patterns
       };
+    },
+    postprocess: function postprocess(payload, dispatch) {
+      // load geometry for each pattern
+      payload.forEach(function (ptn) {
+        dispatch(findGeometryForPattern({
+          routeId: params.routeId,
+          patternId: ptn.id
+        }));
+      });
     }
   });
-}
+} // Geometry for Pattern lookup query
 
+
+var findGeometryForPatternResponse = (0, _reduxActions.createAction)('FIND_GEOMETRY_FOR_PATTERN_RESPONSE');
+var findGeometryForPatternError = (0, _reduxActions.createAction)('FIND_GEOMETRY_FOR_PATTERN_ERROR');
+
+function findGeometryForPattern(params) {
+  return createQueryAction("index/patterns/".concat(params.patternId, "/geometry"), findGeometryForPatternResponse, findGeometryForPatternError, {
+    rewritePayload: function rewritePayload(payload) {
+      return {
+        routeId: params.routeId,
+        patternId: params.patternId,
+        geometry: payload
+      };
+    }
+  });
+} // export function findRoute (params) {
+//   const query = `
+//   query routeQuery($routeId: [String]) {
+//     routes (ids: $routeId) {
+//       id: gtfsId
+//       patterns {
+//         id: semanticHash
+//         directionId
+//         headsign
+//         name
+//         semanticHash
+//         geometry {
+//           lat
+//           lon
+//         }
+//       }
+//     }
+//   }
+//   `
+//   return createGraphQLQueryAction(
+//     query,
+//     { routeId: params.routeId },
+//     findPatternsForRouteResponse,
+//     findPatternsForRouteError,
+//     {
+//       rewritePayload: (payload) => {
+//         // convert pattern array to ID-mapped object
+//         const patterns = {}
+//         payload.data.routes[0].patterns.forEach(ptn => {
+//           patterns[ptn.id] = {
+//             routeId: params.routeId,
+//             patternId: ptn.id,
+//             geometry: ptn.geometry
+//           }
+//         })
+//
+//         return {
+//           routeId: params.routeId,
+//           patterns
+//         }
+//       }
+//     }
+//   )
+// }
 // TNC ETA estimate lookup query
 
-var transportationNetworkCompanyEtaResponse = exports.transportationNetworkCompanyEtaResponse = (0, _reduxActions.createAction)('TNC_ETA_RESPONSE');
-var transportationNetworkCompanyEtaError = exports.transportationNetworkCompanyEtaError = (0, _reduxActions.createAction)('TNC_ETA_ERROR');
+
+var transportationNetworkCompanyEtaResponse = (0, _reduxActions.createAction)('TNC_ETA_RESPONSE');
+exports.transportationNetworkCompanyEtaResponse = transportationNetworkCompanyEtaResponse;
+var transportationNetworkCompanyEtaError = (0, _reduxActions.createAction)('TNC_ETA_ERROR');
+exports.transportationNetworkCompanyEtaError = transportationNetworkCompanyEtaError;
 
 function getTransportationNetworkCompanyEtaEstimate(params) {
   var companies = params.companies,
       from = params.from;
-
-  return createQueryAction('transportation_network_company/eta_estimate?' + _qs2.default.stringify({
+  return createQueryAction("transportation_network_company/eta_estimate?".concat(_qs.default.stringify({
     companies: companies,
     from: from
-  }), // endpoint
+  })), // endpoint
   transportationNetworkCompanyEtaResponse, // responseAction
   transportationNetworkCompanyEtaError, // errorAction
   {
@@ -480,25 +803,25 @@ function getTransportationNetworkCompanyEtaEstimate(params) {
       };
     }
   });
-}
+} // TNC ride estimate lookup query
 
-// TNC ride estimate lookup query
 
-var transportationNetworkCompanyRideResponse = exports.transportationNetworkCompanyRideResponse = (0, _reduxActions.createAction)('TNC_RIDE_RESPONSE');
-var transportationNetworkCompanyRideError = exports.transportationNetworkCompanyRideError = (0, _reduxActions.createAction)('TNC_RIDE_ERROR');
+var transportationNetworkCompanyRideResponse = (0, _reduxActions.createAction)('TNC_RIDE_RESPONSE');
+exports.transportationNetworkCompanyRideResponse = transportationNetworkCompanyRideResponse;
+var transportationNetworkCompanyRideError = (0, _reduxActions.createAction)('TNC_RIDE_ERROR');
+exports.transportationNetworkCompanyRideError = transportationNetworkCompanyRideError;
 
 function getTransportationNetworkCompanyRideEstimate(params) {
   var company = params.company,
       from = params.from,
       rideType = params.rideType,
       to = params.to;
-
-  return createQueryAction('transportation_network_company/ride_estimate?' + _qs2.default.stringify({
+  return createQueryAction("transportation_network_company/ride_estimate?".concat(_qs.default.stringify({
     company: company,
     from: from,
     rideType: rideType,
     to: to
-  }), // endpoint
+  })), // endpoint
   transportationNetworkCompanyRideResponse, // responseAction
   transportationNetworkCompanyRideError, // errorAction
   {
@@ -511,28 +834,38 @@ function getTransportationNetworkCompanyRideEstimate(params) {
       };
     }
   });
-}
+} // Nearby Stops Query
 
-// Nearby Stops Query
 
 var receivedNearbyStopsResponse = (0, _reduxActions.createAction)('NEARBY_STOPS_RESPONSE');
 var receivedNearbyStopsError = (0, _reduxActions.createAction)('NEARBY_STOPS_ERROR');
 
 function findNearbyStops(params) {
-  return createQueryAction('index/stops?' + _qs2.default.stringify((0, _extends3.default)({ radius: 1000 }, params)), receivedNearbyStopsResponse, receivedNearbyStopsError, {
+  return createQueryAction("index/stops?".concat(_qs.default.stringify(_objectSpread({
+    radius: 1000
+  }, params))), receivedNearbyStopsResponse, receivedNearbyStopsError, {
     serviceId: 'stops',
     rewritePayload: function rewritePayload(stops) {
       if (stops) {
         // Sort the stops by proximity
         stops.forEach(function (stop) {
-          stop.distance = (0, _haversine2.default)({ latitude: params.lat, longitude: params.lon }, { latitude: stop.lat, longitude: stop.lon });
+          stop.distance = (0, _haversine.default)({
+            latitude: params.lat,
+            longitude: params.lon
+          }, {
+            latitude: stop.lat,
+            longitude: stop.lon
+          });
         });
         stops.sort(function (a, b) {
           return a.distance - b.distance;
         });
         if (params.max && stops.length > params.max) stops = stops.slice(0, params.max);
       }
-      return { stops: stops };
+
+      return {
+        stops: stops
+      };
     },
     // retrieve routes for each stop
     postprocess: function postprocess(stops, dispatch, getState) {
@@ -542,40 +875,60 @@ function findNearbyStops(params) {
       });
     }
   });
-}
+} // Routes at Stop query
 
-// Routes at Stop query
 
 var receivedRoutesAtStopResponse = (0, _reduxActions.createAction)('ROUTES_AT_STOP_RESPONSE');
 var receivedRoutesAtStopError = (0, _reduxActions.createAction)('ROUTES_AT_STOP_ERROR');
 
 function findRoutesAtStop(stopId) {
-  return createQueryAction('index/stops/' + stopId + '/routes', receivedRoutesAtStopResponse, receivedRoutesAtStopError, {
+  return createQueryAction("index/stops/".concat(stopId, "/routes"), receivedRoutesAtStopResponse, receivedRoutesAtStopError, {
     serviceId: 'stops/routes',
     rewritePayload: function rewritePayload(routes) {
-      return { stopId: stopId, routes: routes };
-    }
+      return {
+        stopId: stopId,
+        routes: routes
+      };
+    },
+    noThrottle: true
   });
-}
+} // Stops within Bounding Box Query
 
-// Stops within Bounding Box Query
 
 var receivedStopsWithinBBoxResponse = (0, _reduxActions.createAction)('STOPS_WITHIN_BBOX_RESPONSE');
 var receivedStopsWithinBBoxError = (0, _reduxActions.createAction)('STOPS_WITHIN_BBOX_ERROR');
 
 function findStopsWithinBBox(params) {
-  return createQueryAction('index/stops?' + _qs2.default.stringify(params), receivedStopsWithinBBoxResponse, receivedStopsWithinBBoxError, {
+  return createQueryAction("index/stops?".concat(_qs.default.stringify(params)), receivedStopsWithinBBoxResponse, receivedStopsWithinBBoxError, {
     serviceId: 'stops',
     rewritePayload: function rewritePayload(stops) {
-      return { stops: stops };
+      return {
+        stops: stops
+      };
     }
   });
 }
 
-var clearStops = exports.clearStops = (0, _reduxActions.createAction)('CLEAR_STOPS_OVERLAY');
+var clearStops = (0, _reduxActions.createAction)('CLEAR_STOPS_OVERLAY');
+exports.clearStops = clearStops;
+var throttledUrls = {};
 
+function now() {
+  return new Date().getTime();
+}
+
+var TEN_SECONDS = 10000; // automatically clear throttled urls older than 10 seconds
+
+window.setInterval(function () {
+  Object.keys(throttledUrls).forEach(function (key) {
+    if (throttledUrls[key] < now() - TEN_SECONDS) {
+      delete throttledUrls[key];
+    }
+  });
+}, 1000);
 /**
- * Generic helper for constructing API queries
+ * Generic helper for constructing API queries. Automatically throttles queries
+ * to url to no more than once per 10 seconds.
  *
  * @param {string} endpoint - The API endpoint path (does not include
  *   '../otp/routers/router_id/')
@@ -593,91 +946,161 @@ var clearStops = exports.clearStops = (0, _reduxActions.createAction)('CLEAR_STO
  *   - fetchOptions: fetch options (e.g., method, body, headers).
  */
 
-function createQueryAction(endpoint, responseAction, errorAction, options) {
-  return function () {
-    var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(dispatch, getState) {
-      var otpState, url, api, payload, response, error;
-      return _regenerator2.default.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              otpState = getState().otp;
-              url = void 0;
+function createQueryAction(endpoint, responseAction, errorAction) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref3 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2(dispatch, getState) {
+        var otpState, url, api, throttleKey, payload, response, error;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                otpState = getState().otp;
 
-              if (options && options.serviceId && otpState.config.alternateTransitIndex && otpState.config.alternateTransitIndex.services.includes(options.serviceId)) {
-                console.log('Using alt service for ' + options.serviceId);
-                url = otpState.config.alternateTransitIndex.apiRoot + endpoint;
-              } else {
-                api = otpState.config.api;
+                if (options.serviceId && otpState.config.alternateTransitIndex && otpState.config.alternateTransitIndex.services.includes(options.serviceId)) {
+                  console.log('Using alt service for ' + options.serviceId);
+                  url = otpState.config.alternateTransitIndex.apiRoot + endpoint;
+                } else {
+                  api = otpState.config.api;
+                  url = "".concat(api.host).concat(api.port ? ':' + api.port : '').concat(api.path, "/").concat(endpoint);
+                }
 
-                url = '' + api.host + (api.port ? ':' + api.port : '') + api.path + '/' + endpoint;
-              }
-              payload = void 0;
-              _context2.prev = 4;
-              _context2.next = 7;
-              return fetch(url, options.fetchOptions);
+                if (options.noThrottle) {
+                  _context2.next = 10;
+                  break;
+                }
 
-            case 7:
-              response = _context2.sent;
+                // don't make a request to a URL that has already seen the same request
+                // within the last 10 seconds
+                throttleKey = options.fetchOptions ? "".concat(url, "-").concat((0, _objectHash.default)(options.fetchOptions)) : url;
 
-              if (!(response.status >= 400)) {
-                _context2.next = 12;
+                if (!(throttledUrls[throttleKey] && throttledUrls[throttleKey] > now() - TEN_SECONDS)) {
+                  _context2.next = 9;
+                  break;
+                }
+
+                // URL already had a request within last 10 seconds, warn and exit
+                console.warn("Request throttled for url: ".concat(url));
+                return _context2.abrupt("return");
+
+              case 9:
+                throttledUrls[throttleKey] = now();
+
+              case 10:
+                _context2.prev = 10;
+                _context2.next = 13;
+                return fetch(url, options.fetchOptions);
+
+              case 13:
+                response = _context2.sent;
+
+                if (!(response.status >= 400)) {
+                  _context2.next = 18;
+                  break;
+                }
+
+                error = new Error('Received error from server');
+                error.response = response;
+                throw error;
+
+              case 18:
+                _context2.next = 20;
+                return response.json();
+
+              case 20:
+                payload = _context2.sent;
+                _context2.next = 26;
                 break;
-              }
 
-              error = new Error('Received error from server');
+              case 23:
+                _context2.prev = 23;
+                _context2.t0 = _context2["catch"](10);
+                return _context2.abrupt("return", dispatch(errorAction(_context2.t0)));
 
-              error.response = response;
-              throw error;
+              case 26:
+                if (typeof options.rewritePayload === 'function') {
+                  dispatch(responseAction(options.rewritePayload(payload)));
+                } else {
+                  dispatch(responseAction(payload));
+                }
 
-            case 12:
-              _context2.next = 14;
-              return response.json();
+                if (typeof options.postprocess === 'function') {
+                  options.postprocess(payload, dispatch, getState);
+                }
 
-            case 14:
-              payload = _context2.sent;
-              _context2.next = 20;
-              break;
-
-            case 17:
-              _context2.prev = 17;
-              _context2.t0 = _context2['catch'](4);
-              return _context2.abrupt('return', dispatch(errorAction(_context2.t0)));
-
-            case 20:
-
-              if (options && typeof options.rewritePayload === 'function') {
-                dispatch(responseAction(options.rewritePayload(payload)));
-              } else {
-                dispatch(responseAction(payload));
-              }
-
-              if (options && typeof options.postprocess === 'function') {
-                options.postprocess(payload, dispatch, getState);
-              }
-
-            case 22:
-            case 'end':
-              return _context2.stop();
+              case 28:
+              case "end":
+                return _context2.stop();
+            }
           }
-        }
-      }, _callee2, this, [[4, 17]]);
-    }));
+        }, _callee2, null, [[10, 23]]);
+      }));
 
-    return function (_x3, _x4) {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-}
+      return function (_x3, _x4) {
+        return _ref3.apply(this, arguments);
+      };
+    }()
+  );
+} // TODO: Determine how we might be able to use GraphQL with the alternative
+// transit index. Currently this is not easily possible because the alternative
+// transit index does not have support for GraphQL and handling both Rest and
+// GraphQL queries could introduce potential difficulties for maintainers.
+// function createGraphQLQueryAction (query, variables, responseAction, errorAction, options) {
+//   const endpoint = `index/graphql`
+//   const fetchOptions = {
+//     method: 'POST',
+//     body: JSON.stringify({ query, variables }),
+//     headers: { 'Content-Type': 'application/json' }
+//   }
+//   return createQueryAction(
+//     endpoint,
+//     responseAction,
+//     errorAction,
+//     { ...options, fetchOptions }
+//   )
+// }
 
-function createGraphQLQueryAction(query, variables, responseAction, errorAction, options) {
-  var endpoint = 'index/graphql';
-  var fetchOptions = {
-    method: 'POST',
-    body: (0, _stringify2.default)({ query: query, variables: variables }),
-    headers: { 'Content-Type': 'application/json' }
+/**
+ * Update the browser/URL history with new parameters
+ * NOTE: This has not been tested for profile-based journeys.
+ */
+
+
+function setUrlSearch(params) {
+  var replaceCurrent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  return function (dispatch, getState) {
+    var base = getState().router.location.pathname;
+    var path = "".concat(base, "?").concat(_qs.default.stringify(params));
+    if (replaceCurrent) dispatch((0, _connectedReactRouter.replace)(path));else dispatch((0, _connectedReactRouter.push)(path));
   };
-  return createQueryAction(endpoint, responseAction, errorAction, (0, _extends3.default)({}, options, { fetchOptions: fetchOptions }));
+}
+/**
+ * Update the OTP Query parameters in the URL and ensure that the active search
+ * is set correctly. Leaves any other existing URL parameters (e.g., UI) unchanged.
+ */
+
+
+function updateOtpUrlParams(otpState, searchId) {
+  var otpParams = getRoutingParams(otpState, true);
+  return function (dispatch, getState) {
+    var params = {}; // Get all OTP-specific params, which will be retained unchanged in the URL
+
+    var urlParams = (0, _query.getUrlParams)();
+    Object.keys(urlParams).filter(function (key) {
+      return key.indexOf('_') !== -1;
+    }).forEach(function (key) {
+      params[key] = urlParams[key];
+    });
+    params.ui_activeSearch = searchId; // Assumes this is a new search and the active itinerary should be reset.
+
+    params.ui_activeItinerary = 0; // Merge in the provided OTP params and update the URL
+
+    dispatch(setUrlSearch(Object.assign(params, otpParams)));
+  };
 }
 
 //# sourceMappingURL=api.js
