@@ -215,9 +215,9 @@ exports[`components > viewers > stop viewer should render countdown times after 
             <Button
               active={false}
               block={false}
-              bsClass="btn"
+              bsPrefix="btn"
               bsSize="small"
-              bsStyle="default"
+              variant="default"
               disabled={false}
               onClick={[Function]}
             >
@@ -769,9 +769,9 @@ exports[`components > viewers > stop viewer should render countdown times for st
             <Button
               active={false}
               block={false}
-              bsClass="btn"
+              bsPrefix="btn"
               bsSize="small"
-              bsStyle="default"
+              variant="default"
               disabled={false}
               onClick={[Function]}
             >
@@ -1332,9 +1332,9 @@ exports[`components > viewers > stop viewer should render times after midnight w
             <Button
               active={false}
               block={false}
-              bsClass="btn"
+              bsPrefix="btn"
               bsSize="small"
-              bsStyle="default"
+              variant="default"
               disabled={false}
               onClick={[Function]}
             >
@@ -2252,9 +2252,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             <Button
               active={false}
               block={false}
-              bsClass="btn"
+              bsPrefix="btn"
               bsSize="small"
-              bsStyle="default"
+              variant="default"
               disabled={false}
               onClick={[Function]}
             >
@@ -3906,9 +3906,9 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
             <Button
               active={false}
               block={false}
-              bsClass="btn"
+              bsPrefix="btn"
               bsSize="small"
-              bsStyle="default"
+              variant="default"
               disabled={false}
               onClick={[Function]}
             >
@@ -4403,9 +4403,9 @@ exports[`components > viewers > stop viewer should render with initial stop id a
             <Button
               active={false}
               block={false}
-              bsClass="btn"
+              bsPrefix="btn"
               bsSize="small"
-              bsStyle="default"
+              variant="default"
               disabled={false}
               onClick={[Function]}
             >

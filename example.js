@@ -10,8 +10,8 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 
-// import Bootstrap Grid components for layout
-import { Navbar, Grid, Row, Col } from 'react-bootstrap'
+// import Bootstrap Container components for layout
+import { Navbar, Container, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
@@ -69,16 +69,14 @@ class OtpRRExample extends Component {
     const desktopView = (
       <div className='otp'>
         <Navbar>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
-                <AppMenu />
-              </div>
-              <div className='navbar-title' style={{ marginLeft: 50 }}>OpenTripPlanner</div>
-            </Navbar.Brand>
-          </Navbar.Header>
+          <Navbar.Brand>
+            <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
+              <AppMenu />
+            </div>
+            <div className='navbar-title' style={{ marginLeft: 50 }}>OpenTripPlanner</div>
+          </Navbar.Brand>
         </Navbar>
-        <Grid>
+        <Container>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
               <ViewerContainer>
@@ -94,7 +92,7 @@ class OtpRRExample extends Component {
               <Map />
             </Col>
           </Row>
-        </Grid>
+        </Container>
       </div>
     )
 
