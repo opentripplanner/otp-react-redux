@@ -1,6 +1,6 @@
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import Enzyme, {mount} from 'enzyme'
-import EnzymeReactAdapter from 'enzyme-adapter-react-15.4'
+import EnzymeReactAdapter from 'enzyme-adapter-react-16'
 import {mountToJson} from 'enzyme-to-json'
 import { createHashHistory } from 'history'
 import clone from 'lodash/cloneDeep'
