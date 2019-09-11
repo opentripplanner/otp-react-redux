@@ -354,9 +354,17 @@
   font-size: 18px;
 }
 
+.otp .line-itin .leg-body .transit-alerts .transit-alert .alert-header {
+  font-size: 14px;
+  margin-left: 30px;
+  font-weight: 600;
+}
+
 .otp .line-itin .leg-body .transit-alerts .transit-alert .alert-body {
   font-size: 12px;
   margin-left: 30px;
+  /* white space pre-wrap is required to render line breaks correctly. */
+  white-space: pre-wrap;
 }
 
 .otp .line-itin .leg-body .transit-alerts .transit-alert .effective-date {
