@@ -1,0 +1,9 @@
+[ignore]
+.*/node_modules/module-deps/test/invalid_pkg/package.json
+.*/node_modules/accounting/tests/qunit/methods.js
+
+[include]
+
+[libs]
+
+[options]

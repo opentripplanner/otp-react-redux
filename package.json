@@ -5,6 +5,7 @@
   "scripts": {
     "build": "mastarm build --env production",
     "cover": "mastarm test -e test --coverage",
+    "flow": "mastarm flow",
     "jest": "mastarm test -e test",
     "lint": "mastarm lint lib __tests__ --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
