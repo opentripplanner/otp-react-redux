@@ -72,6 +72,7 @@
     "redux-actions": "^1.2.1",
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.3.0",
+    "root": "https://github.com/ibi-group/otp-ui.git#location-icon",
     "throttle-debounce": "^2.0.1",
     "transitive-js": "^0.13.0",
     "turf-along": "^3.0.12",

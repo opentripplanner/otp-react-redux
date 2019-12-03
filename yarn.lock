@@ -13411,6 +13411,10 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+"root@https://github.com/ibi-group/otp-ui.git#location-icon":
+  version "0.0.1"
+  resolved "https://github.com/ibi-group/otp-ui.git#8fe30b5f4944b4557fee5369e9d8007ceb598d51"
+
 rounded-rect@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/rounded-rect/-/rounded-rect-0.0.1.tgz#47d7f0356c6d893a2f6f057e379686b25190e0ac"
