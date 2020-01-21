@@ -129,7 +129,7 @@
 /* Results screen: normal display */
 
 .otp.mobile .mobile-narrative-header {
-  position: fixed,
+  position: fixed;
   height: 40px;
   left: 0;
   right: 0;
