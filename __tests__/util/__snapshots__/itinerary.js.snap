@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`util > itinerary routeComparator should prioritize routes with valid integer shortNames 1`] = `
+Array [
+  Object {
+    "longName": "Loop route",
+    "shortName": "2",
+    "sortOrder": -999,
+  },
+  Object {
+    "longName": "A-line",
+    "shortName": "A",
+    "sortOrder": -999,
+  },
+]
+`;
+
+exports[`util > itinerary routeComparator should prioritize routes with valid sortOrder 1`] = `
+Array [
+  Object {
+    "longName": "Around town",
+    "shortName": "20",
+    "sortOrder": 2,
+  },
+  Object {
+    "longName": "Around another town",
+    "shortName": "3",
+    "sortOrder": -999,
+  },
+]
+`;
+
+exports[`util > itinerary routeComparator should sort routes based off of integer shortName 1`] = `
+Array [
+  Object {
+    "longName": "Loop route",
+    "shortName": "2",
+    "sortOrder": -999,
+  },
+  Object {
+    "longName": "Around another town",
+    "shortName": "3",
+    "sortOrder": -999,
+  },
+]
+`;
+
+exports[`util > itinerary routeComparator should sort routes based off of shortNames 1`] = `
+Array [
+  Object {
+    "longName": "A-line",
+    "shortName": "A",
+    "sortOrder": -999,
+  },
+  Object {
+    "longName": "B-line",
+    "shortName": "B",
+    "sortOrder": -999,
+  },
+]
+`;
+
+exports[`util > itinerary routeComparator should sort routes based off of shortNames and longNames 1`] = `
+Array [
+  Object {
+    "longName": "A meandering route",
+    "sortOrder": -999,
+  },
+  Object {
+    "longName": "B-line",
+    "shortName": "B",
+    "sortOrder": -999,
+  },
+]
+`;
+
+exports[`util > itinerary routeComparator should sort routes based off of sortOrder 1`] = `
+Array [
+  Object {
+    "longName": "Across town",
+    "shortName": "10",
+    "sortOrder": 1,
+  },
+  Object {
+    "longName": "Around town",
+    "shortName": "20",
+    "sortOrder": 2,
+  },
+]
+`;
+
+exports[`util > itinerary routeComparator should sort routes on all of the criteria at once 1`] = `
+Array [
+  Object {
+    "longName": "Across town",
+    "shortName": "10",
+    "sortOrder": 1,
+  },
+  Object {
+    "longName": "Around town",
+    "shortName": "20",
+    "sortOrder": 2,
+  },
+  Object {
+    "longName": "Loop route",
+    "shortName": "2",
+    "sortOrder": -999,
+  },
+  Object {
+    "longName": "Around another town",
+    "shortName": "3",
+    "sortOrder": -999,
+  },
+  Object {
+    "longName": "A-line",
+    "shortName": "A",
+    "sortOrder": -999,
+  },
+  Object {
+    "longName": "A meandering route",
+    "sortOrder": -999,
+  },
+  Object {
+    "longName": "B-line",
+    "shortName": "B",
+    "sortOrder": -999,
+  },
+]
+`;
