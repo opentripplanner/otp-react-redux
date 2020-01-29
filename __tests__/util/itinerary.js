@@ -9,7 +9,7 @@ describe('util > itinerary', () => {
     const route1 = {
       longName: 'Across town',
       shortName: '10',
-      sortOrder: 1
+      sortOrder: 10
     }
     const route2 = {
       longName: 'Around town',
@@ -40,6 +40,21 @@ describe('util > itinerary', () => {
       longName: 'A meandering route',
       sortOrder: -999
     }
+    const route8 = {
+      longName: 'Zig-zagging route',
+      shortName: '30',
+      sortOrder: 2
+    }
+    const route9 = {
+      longName: 'Express route',
+      shortName: '30',
+      sortOrder: 2
+    }
+    const route10 = {
+      longName: 'Variation of express route',
+      shortName: '30',
+      sortOrder: 2
+    }
 
     function sortRouteArray (...routes) {
       routes.sort(routeComparator)
@@ -54,6 +69,10 @@ describe('util > itinerary', () => {
       expect(sortRouteArray(route2, route3)).toMatchSnapshot()
     })
 
+    it('should sort routes based off of integer shortName with routes with same sortOrder', () => {
+      expect(sortRouteArray(route8, route2)).toMatchSnapshot()
+    })
+
     it('should sort routes based off of integer shortName', () => {
       expect(sortRouteArray(route3, route4)).toMatchSnapshot()
     })
@@ -66,8 +85,12 @@ describe('util > itinerary', () => {
       expect(sortRouteArray(route5, route6)).toMatchSnapshot()
     })
 
-    it('should sort routes based off of shortNames and longNames', () => {
+    it('should prioritize routes with shortNames over those with just longNames', () => {
       expect(sortRouteArray(route6, route7)).toMatchSnapshot()
+    })
+
+    it('should sort routes based off of longNames', () => {
+      expect(sortRouteArray(route9, route10)).toMatchSnapshot()
     })
 
     it('should sort routes on all of the criteria at once', () => {
@@ -78,7 +101,10 @@ describe('util > itinerary', () => {
         route4,
         route5,
         route6,
-        route7
+        route7,
+        route8,
+        route9,
+        route10
       )).toMatchSnapshot()
     })
   })
