@@ -44,6 +44,21 @@ Array [
 ]
 `;
 
+exports[`util > itinerary routeComparator should skip integer short name criteria when specified 1`] = `
+Array [
+  Object {
+    "longName": "Variation of express route",
+    "shortName": "30",
+    "sortOrder": 2,
+  },
+  Object {
+    "longName": "Local route",
+    "shortName": "6",
+    "sortOrder": 2,
+  },
+]
+`;
+
 exports[`util > itinerary routeComparator should sort routes based off of integer shortName 1`] = `
 Array [
   Object {
