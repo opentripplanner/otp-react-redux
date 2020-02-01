@@ -1,4 +1,4 @@
-import {isTransit, makeRouteComparator} from '../../lib/util/itinerary'
+import {isTransit, routeComparator} from '../../lib/util/itinerary'
 
 const {
   route1,
@@ -17,7 +17,7 @@ const {
 } = require('./__mocks__/itinerary.json')
 
 function sortRoutes (...routes) {
-  routes.sort(makeRouteComparator())
+  routes.sort(routeComparator)
   return routes
 }
 
@@ -35,7 +35,7 @@ describe('util > itinerary', () => {
       expect(sortRoutes(route2, route3)).toMatchSnapshot()
     })
 
-    it('should sort routes based off of integer shortName with routes with same sortOrder', () => {
+    it('should sort routes based off of alphabetic shortName with routes with same sortOrder', () => {
       expect(sortRoutes(route8, route2)).toMatchSnapshot()
     })
 
@@ -77,16 +77,8 @@ describe('util > itinerary', () => {
       )).toMatchSnapshot()
     })
 
-    it('should skip integer short name criteria when specified', () => {
-      const routes = [route10, route11]
-      routes.sort(makeRouteComparator(false))
-      expect(routes).toMatchSnapshot()
-    })
-
     it('should sort based off of route type', () => {
-      const routes = [route12, route13]
-      routes.sort(makeRouteComparator(false))
-      expect(routes).toMatchSnapshot()
+      expect(sortRoutes(route12, route13)).toMatchSnapshot()
     })
   })
 })
