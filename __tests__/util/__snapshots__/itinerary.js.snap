@@ -180,6 +180,18 @@ Array [
     "sortOrder": 2,
   },
   Object {
+    "longName": "Xpress route C",
+    "mode": "BUS",
+    "shortName": "30C",
+    "sortOrder": 2,
+  },
+  Object {
+    "longName": "Express route X",
+    "mode": "BUS",
+    "shortName": "30X",
+    "sortOrder": 2,
+  },
+  Object {
     "longName": "Across town",
     "mode": "BUS",
     "shortName": "10",
@@ -213,6 +225,23 @@ Array [
     "longName": "A meandering route",
     "mode": "BUS",
     "sortOrder": -999,
+  },
+]
+`;
+
+exports[`util > itinerary routeComparator should sort routes with alphanumeric shortNames 1`] = `
+Array [
+  Object {
+    "longName": "Xpress route C",
+    "mode": "BUS",
+    "shortName": "30C",
+    "sortOrder": 2,
+  },
+  Object {
+    "longName": "Express route X",
+    "mode": "BUS",
+    "shortName": "30X",
+    "sortOrder": 2,
   },
 ]
 `;

@@ -13,7 +13,9 @@ const {
   route10,
   route11,
   route12,
-  route13
+  route13,
+  route14,
+  route15
 } = require('./__mocks__/itinerary.json')
 
 function sortRoutes (...routes) {
@@ -47,6 +49,10 @@ describe('util > itinerary', () => {
       expect(sortRoutes(route5, route6)).toMatchSnapshot()
     })
 
+    it('should sort routes with alphanumeric shortNames', () => {
+      expect(sortRoutes(route14, route15)).toMatchSnapshot()
+    })
+
     it('should prioritize routes with shortNames over those with just longNames', () => {
       expect(sortRoutes(route6, route7)).toMatchSnapshot()
     })
@@ -69,7 +75,9 @@ describe('util > itinerary', () => {
         route10,
         route11,
         route12,
-        route13
+        route13,
+        route14,
+        route15
       )).toMatchSnapshot()
     })
 

@@ -75,5 +75,17 @@
     "mode": "SUBWAY",
     "shortName": "Yellow",
     "sortOrder": 2
+  },
+  "route14": {
+    "longName": "Xpress route C",
+    "mode": "BUS",
+    "shortName": "30C",
+    "sortOrder": 2
+  },
+  "route15": {
+    "longName": "Express route X",
+    "mode": "BUS",
+    "shortName": "30X",
+    "sortOrder": 2
   }
 }
