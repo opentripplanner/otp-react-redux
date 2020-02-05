@@ -1,22 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`util > itinerary routeComparator should prioritize routes with shortNames over those with just longNames 1`] = `
-Array [
-  Object {
-    "longName": "B-line",
-    "mode": "BUS",
-    "shortName": "B",
-    "sortOrder": -999,
-  },
-  Object {
-    "longName": "A meandering route",
-    "mode": "BUS",
-    "sortOrder": -999,
-  },
-]
-`;
-
-exports[`util > itinerary routeComparator should prioritize routes with valid integer shortNames 1`] = `
+exports[`util > itinerary routeComparator should prioritize routes with integer shortNames over alphabetic shortNames 1`] = `
 Array [
   Object {
     "longName": "A-line",
@@ -28,6 +12,22 @@ Array [
     "longName": "Loop route",
     "mode": "BUS",
     "shortName": "2",
+    "sortOrder": -999,
+  },
+]
+`;
+
+exports[`util > itinerary routeComparator should prioritize routes with shortNames over those with just longNames 1`] = `
+Array [
+  Object {
+    "longName": "B-line",
+    "mode": "BUS",
+    "shortName": "B",
+    "sortOrder": -999,
+  },
+  Object {
+    "longName": "A meandering route",
+    "mode": "BUS",
     "sortOrder": -999,
   },
 ]
@@ -62,23 +62,6 @@ Array [
     "longName": "Intercity Train",
     "mode": "RAIL",
     "shortName": "IC",
-    "sortOrder": 2,
-  },
-]
-`;
-
-exports[`util > itinerary routeComparator should sort routes based off of alphabetic shortName with routes with same sortOrder 1`] = `
-Array [
-  Object {
-    "longName": "Around town",
-    "mode": "BUS",
-    "shortName": "20",
-    "sortOrder": 2,
-  },
-  Object {
-    "longName": "Zig-zagging route",
-    "mode": "BUS",
-    "shortName": "30",
     "sortOrder": 2,
   },
 ]

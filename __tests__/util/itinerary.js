@@ -35,15 +35,11 @@ describe('util > itinerary', () => {
       expect(sortRoutes(route2, route3)).toMatchSnapshot()
     })
 
-    it('should sort routes based off of alphabetic shortName with routes with same sortOrder', () => {
-      expect(sortRoutes(route8, route2)).toMatchSnapshot()
-    })
-
     it('should sort routes based off of integer shortName', () => {
       expect(sortRoutes(route3, route4)).toMatchSnapshot()
     })
 
-    it('should prioritize routes with valid integer shortNames', () => {
+    it('should prioritize routes with integer shortNames over alphabetic shortNames', () => {
       expect(sortRoutes(route4, route5)).toMatchSnapshot()
     })
 
