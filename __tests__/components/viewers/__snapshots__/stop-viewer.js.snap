@@ -304,38 +304,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
             <b>
               Plan a trip:
             </b>
-             
-            <LocationIcon
-              type="from"
-            >
-              <i
-                className="fa from-location-icon fa-dot-circle-o"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              From here
-            </button>
-             
-            |
-             
-            <LocationIcon
-              type="to"
-            >
-              <i
-                className="fa to-location-icon fa-map-marker"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              To here
-            </button>
+            <FromToLocationPicker
+              onFromClick={[Function]}
+              onToClick={[Function]}
+            />
           </div>
           <div
             style={
@@ -858,38 +830,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
             <b>
               Plan a trip:
             </b>
-             
-            <LocationIcon
-              type="from"
-            >
-              <i
-                className="fa from-location-icon fa-dot-circle-o"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              From here
-            </button>
-             
-            |
-             
-            <LocationIcon
-              type="to"
-            >
-              <i
-                className="fa to-location-icon fa-map-marker"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              To here
-            </button>
+            <FromToLocationPicker
+              onFromClick={[Function]}
+              onToClick={[Function]}
+            />
           </div>
           <div
             style={
@@ -1421,38 +1365,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
             <b>
               Plan a trip:
             </b>
-             
-            <LocationIcon
-              type="from"
-            >
-              <i
-                className="fa from-location-icon fa-dot-circle-o"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              From here
-            </button>
-             
-            |
-             
-            <LocationIcon
-              type="to"
-            >
-              <i
-                className="fa to-location-icon fa-map-marker"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              To here
-            </button>
+            <FromToLocationPicker
+              onFromClick={[Function]}
+              onToClick={[Function]}
+            />
           </div>
           <div
             style={
@@ -2341,38 +2257,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             <b>
               Plan a trip:
             </b>
-             
-            <LocationIcon
-              type="from"
-            >
-              <i
-                className="fa from-location-icon fa-dot-circle-o"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              From here
-            </button>
-             
-            |
-             
-            <LocationIcon
-              type="to"
-            >
-              <i
-                className="fa to-location-icon fa-map-marker"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              To here
-            </button>
+            <FromToLocationPicker
+              onFromClick={[Function]}
+              onToClick={[Function]}
+            />
           </div>
           <div
             style={
@@ -3995,38 +3883,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
             <b>
               Plan a trip:
             </b>
-             
-            <LocationIcon
-              type="from"
-            >
-              <i
-                className="fa from-location-icon fa-dot-circle-o"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              From here
-            </button>
-             
-            |
-             
-            <LocationIcon
-              type="to"
-            >
-              <i
-                className="fa to-location-icon fa-map-marker"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              To here
-            </button>
+            <FromToLocationPicker
+              onFromClick={[Function]}
+              onToClick={[Function]}
+            />
           </div>
           <div
             style={
