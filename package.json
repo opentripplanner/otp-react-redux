@@ -44,7 +44,7 @@
     "history": "^4.7.2",
     "immutability-helper": "^2.1.1",
     "isomorphic-fetch": "^2.2.1",
-    "isomorphic-mapzen-search": "^1.4.1",
+    "isomorphic-mapzen-search": "^1.5.1",
     "leaflet": "^1.5.1",
     "leaflet.polylinemeasure": "github:ppete2/Leaflet.PolylineMeasure",
     "lodash.debounce": "^4.0.8",

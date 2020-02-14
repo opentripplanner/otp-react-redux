@@ -53,6 +53,10 @@ geocoder:
   focusPoint:
     lat: 45.5223452
     lon: -122.6821804
+  # Custom fetch options to pass to geocoder resource.
+  # options:
+  #   headers:
+  #     x-custom-header: abc123
   # required geocoder type.
   type: PELIAS
   # This base URL is required as the libraries will default to using now-defunct
