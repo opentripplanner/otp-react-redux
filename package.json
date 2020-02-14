@@ -79,13 +79,11 @@
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.8.0",
-    "babel-loader": "^8.0.6",
     "documentation": "^12.0.3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.4.0",
@@ -95,9 +93,7 @@
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.18.3",
-    "eslint-plugin-react-hooks": "1.7.0",
     "eslint-plugin-standard": "^4.0.1",
     "lodash.clonedeep": "^4.5.0",
     "mastarm": "^5.1.3",
@@ -120,13 +116,13 @@
   },
   "eslintConfig": {
     "extends": [
-      "eslint:recommended",
       "standard",
       "plugin:react/recommended"
     ],
     "parser": "babel-eslint",
     "rules": {
       "class-methods-use-this": 0,
+      "lines-between-class-members": 0,
       "no-alert": 0,
       "no-console": 1,
       "no-nested-ternary": 0,
@@ -134,8 +130,6 @@
       "no-plusplus": 0,
       "object-curly-spacing": 0,
       "prefer-destructuring": 0,
-      "react/no-array-index-key": 0,
-      "react/no-string-refs": 0,
       "react/jsx-filename-extension": [
         1,
         {
@@ -146,7 +140,13 @@
         }
       ],
       "react/jsx-no-target-blank": 0,
+      "react/no-array-index-key": 0,
+      "react/no-find-dom-node": 0,
+      "react/no-string-refs": 0,
+      "react/no-unescaped-entities": 0,
       "react/prop-types": 0,
+      "react/react-in-jsx-scope": 0,
+      "react/require-render-return": 0,
       "node/no-extraneous-import": "off",
       "import/no-extraneous-dependencies": "off",
       "import/no-unresolved": "off"
