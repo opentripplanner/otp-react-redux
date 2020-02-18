@@ -13,9 +13,9 @@
   },
   "route3": {
     "longName": "Around another town",
-    "mode": "BUS",
     "shortName": "3",
-    "sortOrder": -999
+    "sortOrder": -999,
+    "type": 3
   },
   "route4": {
     "longName": "Loop route",
