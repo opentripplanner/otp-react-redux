@@ -43,9 +43,9 @@ Array [
   },
   Object {
     "longName": "Around another town",
-    "mode": "BUS",
     "shortName": "3",
     "sortOrder": -999,
+    "type": 3,
   },
 ]
 `;
@@ -77,9 +77,9 @@ Array [
   },
   Object {
     "longName": "Around another town",
-    "mode": "BUS",
     "shortName": "3",
     "sortOrder": -999,
+    "type": 3,
   },
 ]
 `;
@@ -217,9 +217,9 @@ Array [
   },
   Object {
     "longName": "Around another town",
-    "mode": "BUS",
     "shortName": "3",
     "sortOrder": -999,
+    "type": 3,
   },
   Object {
     "longName": "A meandering route",
