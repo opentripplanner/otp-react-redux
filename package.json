@@ -31,6 +31,7 @@
     "@conveyal/lonlat": "^1.1.0",
     "@mapbox/polyline": "^0.2.0",
     "@opentripplanner/from-to-location-picker": "^0.0.14",
+    "@opentripplanner/location-field": "^0.0.16",
     "bootstrap": "^3.3.7",
     "bowser": "^1.9.3",
     "clone": "^2.1.0",
@@ -72,7 +73,6 @@
     "redux-actions": "^1.2.1",
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.0.1",
     "throttle-debounce": "^2.0.1",
     "transitive-js": "^0.13.0",
     "turf-along": "^3.0.12",
@@ -90,11 +90,13 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "redux-mock-store": "^1.5.3",
-    "semantic-release": "^15.13.12"
+    "semantic-release": "^15.13.12",
+    "styled-components": "^5.0.1"
   },
   "peerDependencies": {
     "react": ">=15.0.0",
-    "react-dom": ">=15.0.0"
+    "react-dom": ">=15.0.0",
+    "styled-components": "^5.0.1"
   },
   "jest": {
     "globalSetup": "<rootDir>/__tests__/test-utils/global-setup.js",
