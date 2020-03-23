@@ -1394,6 +1394,15 @@
     styled-icons "^9.1.0"
     velocity-react "^1.4.3"
 
+"@opentripplanner/trip-viewer-overlay@^0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-viewer-overlay/-/trip-viewer-overlay-0.0.18.tgz#7e774378cc274caf7603aa14a08d4b57cd220b14"
+  integrity sha512-iz+KQBFRZORz36w10kXEUHhxS4CwTCXWb8xcLYAwh9LmWkHhbGXPnClwn6PJ+BPj0PcdvLukcQaCUpoxZggfqg==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/core-utils" "^0.0.18"
+    prop-types "^15.7.2"
+
 "@semantic-release/commit-analyzer@^6.1.0":
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/@semantic-release/commit-analyzer/-/commit-analyzer-6.2.0.tgz#5cd25ce67ba9ba5b46e47457505e63629e186695"
