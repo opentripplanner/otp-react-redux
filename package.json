@@ -95,7 +95,8 @@
   },
   "peerDependencies": {
     "react": ">=15.0.0",
-    "react-dom": ">=15.0.0"
+    "react-dom": ">=15.0.0",
+    "styled-components": "^5.0.1"
   },
   "jest": {
     "globalSetup": "<rootDir>/__tests__/test-utils/global-setup.js",
