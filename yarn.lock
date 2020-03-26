@@ -50,15 +50,12 @@
     lodash "^4.17.13"
     source-map "^0.5.0"
 
-"@babel/generator@^7.8.6":
-  version "7.8.6"
-  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.8.6.tgz#57adf96d370c9a63c241cd719f9111468578537a"
-  integrity sha512-4bpOR5ZBz+wWcMeVtcf7FbjcFzCp+817z2/gHNncIRcM9MmKzUhtWCYAq27RAfUrAFwb+OCG1s9WEaVxfi6cjg==
+"@babel/helper-annotate-as-pure@^7.0.0", "@babel/helper-annotate-as-pure@^7.8.3":
+  version "7.8.3"
+  resolved "https://registry.yarnpkg.com/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.8.3.tgz#60bc0bc657f63a0924ff9a4b4a0b24a13cf4deee"
+  integrity sha512-6o+mJrZBxOoEX77Ezv9zwW7WV8DdluouRKNY/IR5u/YTMuKHgugHOzYWlYvYLpLA9nPsQCAAASpCIbjI9Mv+Uw==
   dependencies:
-    "@babel/types" "^7.8.6"
-    jsesc "^2.5.1"
-    lodash "^4.17.13"
-    source-map "^0.5.0"
+    "@babel/types" "^7.8.3"
 
 "@babel/helper-builder-binary-assignment-operator-visitor@^7.8.3":
   version "7.8.3"
@@ -282,15 +279,10 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.9.4.tgz#68a35e6b0319bbc014465be43828300113f2f2e8"
   integrity sha512-bC49otXX6N0/VYhgOMh4gnP26E9xnDZK3TmbNpxYzzz9BQLBosQwfyOe9/cXUU3txYhTzLCbcqd5c8y/OmCjHA==
 
-"@babel/parser@^7.8.6":
-  version "7.8.6"
-  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.8.6.tgz#ba5c9910cddb77685a008e3c587af8d27b67962c"
-  integrity sha512-trGNYSfwq5s0SgM1BMEB8hX3NDmO7EP2wsDGDexiaKMB92BaRpS+qZfpkMqUBhcsOTBwNy9B/jieo4ad/t/z2g==
-
-"@babel/plugin-proposal-async-generator-functions@^7.2.0":
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-async-generator-functions/-/plugin-proposal-async-generator-functions-7.2.0.tgz#b289b306669dce4ad20b0252889a15768c9d417e"
-  integrity sha512-+Dfo/SCQqrwx48ptLVGLdE39YtWRuKc/Y9I5Fy0P1DDBB9lsAHpjcEJQt+4IifuSOSTLBKJObJqMvaO1pIE8LQ==
+"@babel/plugin-proposal-async-generator-functions@^7.8.3":
+  version "7.8.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-async-generator-functions/-/plugin-proposal-async-generator-functions-7.8.3.tgz#bad329c670b382589721b27540c7d288601c6e6f"
+  integrity sha512-NZ9zLv848JsV3hs8ryEh7Uaz/0KsmPLqv0+PdkDJL1cJy0K4kOCFa8zc1E3mp+RHPQcpdfb/6GovEsW4VDrOMw==
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.3"
     "@babel/helper-remap-async-to-generator" "^7.8.3"
@@ -1044,16 +1036,7 @@
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.9.0.tgz#00b064c3df83ad32b2dbf5ff07312b15c7f1efb5"
   integrity sha512-BS9JKfXkzzJl8RluW4JGknzpiUV7ZrvTayM6yfqLTVBEnFtyowVIOu6rqxRd5cVO6yGoWf4T8u8dgK9oB+GCng==
   dependencies:
-    esutils "^2.0.2"
-    lodash "^4.17.13"
-    to-fast-properties "^2.0.0"
-
-"@babel/types@^7.8.3", "@babel/types@^7.8.6":
-  version "7.8.6"
-  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.8.6.tgz#629ecc33c2557fcde7126e58053127afdb3e6d01"
-  integrity sha512-wqz7pgWMIrht3gquyEFPVXeXCti72Rm8ep9b5tQKz9Yg9LzJA3HxosF1SB3Kc81KD1A3XBkkVYtJvCKS2Z/QrA==
-  dependencies:
-    esutils "^2.0.2"
+    "@babel/helper-validator-identifier" "^7.9.0"
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
@@ -1084,9 +1067,9 @@
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
 "@emotion/is-prop-valid@^0.8.3", "@emotion/is-prop-valid@^0.8.6":
-  version "0.8.7"
-  resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.7.tgz#803449993f436f9a6c67752251ea3fc492a1044c"
-  integrity sha512-OPkKzUeiid0vEKjZqnGcy2mzxjIlCffin+L2C02pdz/bVlt5zZZE2VzO0D3XOPnH0NEeF21QNKSXiZphjr4xiQ==
+  version "0.8.8"
+  resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz#db28b1c4368a259b60a97311d6a952d4fd01ac1a"
+  integrity sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==
   dependencies:
     "@emotion/memoize" "0.7.4"
 
@@ -1384,6 +1367,13 @@
     octokit-pagination-methods "^1.1.0"
     once "^1.4.0"
     universal-user-agent "^4.0.0"
+
+"@octokit/types@^2.0.0", "@octokit/types@^2.0.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-2.5.1.tgz#22563b3bb50034bea3176eac1860340c5e812e2a"
+  integrity sha512-q4Wr7RexkPRrkQpXzUYF5Fj/14Mr65RyOHj6B9d/sQACpqGcStkHZj4qMEtlMY5SnD/69jlL9ItGPbDM0dR/dA==
+  dependencies:
+    "@types/node" ">= 8"
 
 "@opentripplanner/core-utils@^0.0.18":
   version "0.0.18"
@@ -3474,9 +3464,9 @@ bootstrap@^3.3.7:
   integrity sha512-yN5oZVmRCwe5aKwzRj6736nSmKDX7pLYwsXiCj/EYmo16hODaBiT4En5btW/jhBF/seV+XMx3aYwukYC3A49DA==
 
 bottleneck@^2.18.1:
-  version "2.19.4"
-  resolved "https://registry.yarnpkg.com/bottleneck/-/bottleneck-2.19.4.tgz#63c505687a0ddaf89a6f515225c75e05833bb079"
-  integrity sha512-2poBdvpAGG+dkMVKZqtDhyuMN6JviD81h89W4bfmt3UO7O60F+qf/84V0alNqL8PM1RByl4SZ1fVMu/ZvxkmcA==
+  version "2.19.5"
+  resolved "https://registry.yarnpkg.com/bottleneck/-/bottleneck-2.19.5.tgz#5df0b90f59fd47656ebe63c78a98419205cadd91"
+  integrity sha512-VHiNCbI1lKdl44tGrhNfU3lup0Tj/ZBMJB5/2ZbNXRCPuRCO7ed2mgcK4r17y+KB2EfuYuRaVlwNbAeaWGSpbw==
 
 bowser@^2.7.0:
   version "2.9.0"
