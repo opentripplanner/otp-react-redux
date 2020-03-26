@@ -27,14 +27,14 @@
   },
   "homepage": "https://github.com/opentripplanner/otp-react-redux#readme",
   "dependencies": {
-    "@conveyal/geocoder-arcgis-geojson": "^0.0.2",
     "@conveyal/lonlat": "^1.1.0",
     "@mapbox/polyline": "^0.2.0",
-    "@opentripplanner/core-utils": "^0.0.17",
-    "@opentripplanner/from-to-location-picker": "^0.0.17",
-    "@opentripplanner/trip-form": "^0.0.17",
+    "@opentripplanner/core-utils": "^0.0.18",
+    "@opentripplanner/from-to-location-picker": "^0.0.18",
+    "@opentripplanner/geocoder": "^0.0.18",
+    "@opentripplanner/location-field": "^0.0.18",
+    "@opentripplanner/trip-form": "^0.0.18",
     "bootstrap": "^3.3.7",
-    "bowser": "^1.9.3",
     "clone": "^2.1.0",
     "connected-react-router": "^6.5.2",
     "copy-to-clipboard": "^3.0.8",
@@ -47,7 +47,6 @@
     "history": "^4.7.2",
     "immutability-helper": "^2.1.1",
     "isomorphic-fetch": "^2.2.1",
-    "isomorphic-mapzen-search": "^1.5.1",
     "leaflet": "^1.5.1",
     "leaflet.polylinemeasure": "github:ppete2/Leaflet.PolylineMeasure",
     "lodash.debounce": "^4.0.8",
@@ -75,7 +74,6 @@
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.1",
-    "throttle-debounce": "^2.0.1",
     "transitive-js": "^0.13.0",
     "turf-along": "^3.0.12",
     "velocity-react": "^1.3.3"
@@ -92,7 +90,8 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "redux-mock-store": "^1.5.3",
-    "semantic-release": "^15.13.12"
+    "semantic-release": "^15.13.12",
+    "styled-components": "^5.0.1"
   },
   "peerDependencies": {
     "react": ">=15.0.0",
