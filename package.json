@@ -43,6 +43,7 @@
     "@opentripplanner/transitive-overlay": "^0.0.18",
     "@opentripplanner/trip-viewer-overlay": "^0.0.18",
     "@opentripplanner/vehicle-rental-overlay": "^0.0.18",
+    "@opentripplanner/trip-form": "^0.0.18",
     "bootstrap": "^3.3.7",
     "clone": "^2.1.0",
     "connected-react-router": "^6.5.2",
