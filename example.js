@@ -15,13 +15,10 @@ import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
-  DefaultSearchForm,
-  ErrorMessage,
+  DefaultMainPanel,
   MobileMain,
-  NarrativeRoutingResults,
   ResponsiveWebapp,
   Map,
-  ViewerContainer,
   AppMenu,
   createOtpReducer
 } from './lib'
@@ -81,15 +78,8 @@ class OtpRRExample extends Component {
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
-              <ViewerContainer>
-                <DefaultSearchForm />
-                <ErrorMessage />
-                <div className='desktop-narrative-container'>
-                  <NarrativeRoutingResults />
-                </div>
-              </ViewerContainer>
+              <DefaultMainPanel />
             </Col>
-
             <Col sm={6} md={8} className='map-container'>
               <Map />
             </Col>
