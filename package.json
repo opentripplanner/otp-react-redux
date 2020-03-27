@@ -41,9 +41,10 @@
     "@opentripplanner/stop-viewer-overlay": "^0.0.18",
     "@opentripplanner/stops-overlay": "^0.0.18",
     "@opentripplanner/transitive-overlay": "^0.0.18",
+    "@opentripplanner/trip-form": "^0.0.18",
     "@opentripplanner/trip-viewer-overlay": "^0.0.18",
     "@opentripplanner/vehicle-rental-overlay": "^0.0.18",
-    "@opentripplanner/trip-form": "^0.0.18",
+    "@turf/along": "^6.0.1",
     "bootstrap": "^3.3.7",
     "clone": "^2.1.0",
     "connected-react-router": "^6.5.2",
@@ -82,7 +83,6 @@
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.3.0",
     "transitive-js": "^0.13.0",
-    "turf-along": "^3.0.12",
     "velocity-react": "^1.3.3"
   },
   "devDependencies": {
