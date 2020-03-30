@@ -50,6 +50,7 @@
     "@opentripplanner/trip-form": "^0.0.19",
     "@turf/along": "^6.0.1",
     "bootstrap": "^3.3.7",
+    "bowser": "^1.9.3",
     "clone": "^2.1.0",
     "connected-react-router": "^6.5.2",
     "copy-to-clipboard": "^3.0.8",
