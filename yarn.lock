@@ -1415,6 +1415,27 @@
   dependencies:
     styled-icons "^9.1.0"
 
+"@opentripplanner/printable-itinerary@^0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-0.0.18.tgz#4137fa0000f8c1164e5fa4226243e0b887412105"
+  integrity sha512-uxUm80WU4m8Pni3OzkBzMI/7kmtgRSR7e3wJqy6N9PpZRyEEzUzzSaDmAS8+/nswgZyrNpeenp5ZK5e+7AJA+g==
+  dependencies:
+    "@opentripplanner/core-utils" "^0.0.18"
+    "@opentripplanner/humanize-distance" "^0.0.18"
+    prop-types "^15.7.2"
+
+"@opentripplanner/trip-details@^0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-0.0.18.tgz#69d8fa4e8a70977c9aaa71a777a34021aec0fa12"
+  integrity sha512-jCBgmPQhl9gsUniYSbPqDvpyFUHqsGNHUwHg+jqAplPHWu60Hn2F/P1oWf5PmjXlBV7ZFOsuTeH7HVmGfVrPrw==
+  dependencies:
+    "@opentripplanner/core-utils" "^0.0.18"
+    "@opentripplanner/humanize-distance" "^0.0.18"
+    moment "^2.24.0"
+    prop-types "^15.7.2"
+    styled-icons "^9.1.0"
+    velocity-react "^1.4.3"
+
 "@opentripplanner/park-and-ride-overlay@^0.0.18":
   version "0.0.18"
   resolved "https://registry.yarnpkg.com/@opentripplanner/park-and-ride-overlay/-/park-and-ride-overlay-0.0.18.tgz#2e466a4e0ab47531d595c58119371a5a2a11ec7a"
@@ -16016,7 +16037,7 @@ velocity-animate@^1.4.0:
   resolved "https://registry.yarnpkg.com/velocity-animate/-/velocity-animate-1.5.2.tgz#5a351d75fca2a92756f5c3867548b873f6c32105"
   integrity sha512-m6EXlCAMetKztO1ppBhGU1/1MR3IiEevO6ESq6rcrSQ3Q77xYSW13jkfXW88o4xMrkXJhy/U7j4wFR/twMB0Eg==
 
-velocity-react@^1.3.3:
+velocity-react@^1.3.3, velocity-react@^1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/velocity-react/-/velocity-react-1.4.3.tgz#63e41d92e334d5a3bea8b2fa02ee170f62ef4d36"
   integrity sha512-zvefGm85A88S3KdF9/dz5vqyFLAiwKYlXGYkHH2EbXl+CZUD1OT0a0aS1tkX/WXWTa/FUYqjBaAzAEFYuSobBQ==
