@@ -1446,7 +1446,10 @@
   dependencies:
     "@opentripplanner/core-utils" "^0.0.19"
     "@opentripplanner/humanize-distance" "^0.0.19"
+    moment "^2.24.0"
     prop-types "^15.7.2"
+    styled-icons "^9.1.0"
+    velocity-react "^1.4.3"
 
 "@opentripplanner/route-viewer-overlay@^0.0.19":
   version "0.0.19"
