@@ -1439,6 +1439,15 @@
     "@opentripplanner/from-to-location-picker" "^0.0.19"
     prop-types "^15.7.2"
 
+"@opentripplanner/printable-itinerary@^0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-0.0.19.tgz#a224cae07e1459c455f7684eaebbac2eca66ea48"
+  integrity sha512-9Ow6YXKuxDJ5dnwlDBXXMEmyLriEtZtetk7IkRiAOXUNgo00un9uGbb0Zu6gYBbTVuLpjLMsZNpzUsnO27DbYw==
+  dependencies:
+    "@opentripplanner/core-utils" "^0.0.19"
+    "@opentripplanner/humanize-distance" "^0.0.19"
+    prop-types "^15.7.2"
+
 "@opentripplanner/route-viewer-overlay@^0.0.19":
   version "0.0.19"
   resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-0.0.19.tgz#d6f8080ec4106ae8d90cfebcd02edd39a7ae2d27"
@@ -1472,6 +1481,18 @@
     "@opentripplanner/core-utils" "^0.0.19"
     lodash.isequal "^4.5.0"
     transitive-js "^0.13.0"
+
+"@opentripplanner/trip-details@^0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-0.0.19.tgz#3379a13188b7fb12387be5abd0b0d071231b366a"
+  integrity sha512-ItRywhXMikvOv+13/qWwYueX1eC57IZnzukDy4Gukd/MtJheQOzwDU2W5pWwK1MmMEikxjdsSCw4vt2m6biTyw==
+  dependencies:
+    "@opentripplanner/core-utils" "^0.0.19"
+    "@opentripplanner/humanize-distance" "^0.0.19"
+    moment "^2.24.0"
+    prop-types "^15.7.2"
+    styled-icons "^9.1.0"
+    velocity-react "^1.4.3"
 
 "@opentripplanner/trip-form@^0.0.19":
   version "0.0.19"
