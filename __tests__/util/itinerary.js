@@ -1,4 +1,6 @@
-import {isTransit, routeComparator} from '../../lib/util/itinerary'
+import { isTransit } from '@opentripplanner/core-utils/lib/itinerary'
+
+import { routeComparator } from '../../lib/util/itinerary'
 
 const {
   route1,
