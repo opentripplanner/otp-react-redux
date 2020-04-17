@@ -9,9 +9,10 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
+// import styled from 'styled-components'
 
 // import Bootstrap Grid components for layout
-import { Navbar, Grid, Row, Col } from 'react-bootstrap'
+import { Nav, Navbar, Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
@@ -22,6 +23,7 @@ import {
   AppMenu,
   createOtpReducer
 } from './lib'
+import NavLoginButton from './lib/components/user/nav-login-button'
 
 // load the OTP configuration
 import otpConfig from './config.yml'
@@ -61,11 +63,17 @@ const store = createStore(
 
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
+  handleSignIn() {}
+
+  handleSignOut() {}
+
+  handleSignUp() {}
+
   render () {
     /** desktop view **/
     const desktopView = (
-      <div className='otp'>
-        <Navbar>
+      <div>
+        <Navbar collapseOnSelect inverse>
           <Navbar.Header>
             <Navbar.Brand>
               <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
@@ -74,6 +82,26 @@ class OtpRRExample extends Component {
               <div className='navbar-title' style={{ marginLeft: 50 }}>OpenTripPlanner</div>
             </Navbar.Brand>
           </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav pullRight>
+              <NavLoginButton
+                id='login-control'
+                links={[ // TODO: Move to config.
+                  {
+                    text: 'My account',
+                    url: 'account'
+                  },
+                  {
+                    text: 'Help',
+                    url: 'help'
+                  }
+                ]}
+                onSignInClick={this.handleSignIn}
+                onSignOutClick={this.handleSignOut}
+                onSignUpClick={this.handleSignUp}
+              />
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
         <Grid>
           <Row className='main-row'>
