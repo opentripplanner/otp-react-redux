@@ -9,7 +9,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
-// import styled from 'styled-components'
+import styled from 'styled-components'
 
 // import Bootstrap Grid components for layout
 import { Nav, Navbar, Grid, Row, Col } from 'react-bootstrap'
@@ -61,6 +61,12 @@ const store = createStore(
   compose(applyMiddleware(...middleware))
 )
 
+const StyledNavbar = styled(Navbar)`
+  > .container {
+    width: 100%;
+  }
+`
+
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   handleSignIn() {}
@@ -72,8 +78,8 @@ class OtpRRExample extends Component {
   render () {
     /** desktop view **/
     const desktopView = (
-      <div>
-        <Navbar collapseOnSelect inverse>
+      <div className='otp'>
+        <StyledNavbar collapseOnSelect inverse>
           <Navbar.Header>
             <Navbar.Brand>
               <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
@@ -102,7 +108,7 @@ class OtpRRExample extends Component {
               />
             </Nav>
           </Navbar.Collapse>
-        </Navbar>
+        </StyledNavbar>
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
