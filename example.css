@@ -1,10 +1,16 @@
 .otp .navbar {
   border-radius: 0;
-  background-color: #444;
+  background-color: #FFE500;
 }
 
 .otp .navbar .container {
   margin-left: 0;
+  width: 100%;
+}
+
+
+.otp .navbar .navbar-header {
+  width:100%
 }
 
 .otp .navbar-brand {
@@ -12,7 +18,7 @@
 }
 
 .otp .navbar-title {
-  color: #fff;
+  color: #25303D;
   font-size: 24px;
   padding-top: 7px;
 }
@@ -40,4 +46,14 @@
   height: 100%;
   margin: 0px;
   padding: 0px;
+}
+
+.login-link {
+  text-align: right;
+  width: 100%;
+  position: absolute;
+  right: 13px;
+  top: 16px;
+  text-decoration: underline;
+  font-weight: bold;
 }

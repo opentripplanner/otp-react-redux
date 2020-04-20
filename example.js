@@ -32,12 +32,12 @@ import otpConfig from './config.yml'
 // create an initial query for demo/testing purposes
 const initialQuery = {
   from: {
-    lat: 45.5246,
-    lon: -122.6710
+    lat: 52.617899, 
+    lon: -2.197704
   },
   to: {
-    lat: 45.5307,
-    lon: -122.6647
+    lat: 52.352798, 
+    lon: -1.406688
   },
   type: 'ITINERARY'
 }
@@ -70,6 +70,8 @@ class OtpRRExample extends Component {
       <div className='otp'>
         <Navbar>
           <Navbar.Header>
+            <div className='login-link'><a href='#'>Login</a></div>
+
             <Navbar.Brand>
               <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
                 <AppMenu />
