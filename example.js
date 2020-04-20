@@ -9,13 +9,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
-import styled from 'styled-components'
 
 // Auth0
 import { push } from 'connected-react-router'
 import qs from 'qs'
 import { Auth0Provider } from 'use-auth0-hooks'
-import { getAuthRedirectUri } from './lib/util/auth'
+import { getAuth0Config, getAuthRedirectUri } from './lib/util/auth'
 import { AUTH0_SCOPE } from './lib/util/constants'
 
 // import Bootstrap Grid components for layout
@@ -34,7 +33,6 @@ import NavLoginButtonAuth0 from './lib/components/user/nav-login-button-auth0'
 
 // load the OTP configuration
 import otpConfig from './config.yml'
-import auth0Config from './auth0config.yml'
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
@@ -69,13 +67,9 @@ const store = createStore(
   compose(applyMiddleware(...middleware))
 )
 
-const StyledNavbar = styled(Navbar)`
-  > .container {
-    width: 100%;
-  }
-`
+// Auth0 config and callbacks.
+const auth0Config = getAuth0Config(otpConfig)
 
-// Auth0 functions
 /**
  * Where to send the user after they have signed in.
  */
@@ -124,7 +118,7 @@ class OtpRRExample extends Component {
     /** desktop view **/
     const desktopView = (
       <div className='otp'>
-        <StyledNavbar collapseOnSelect inverse>
+        <Navbar collapseOnSelect fluid inverse>
           <Navbar.Header>
             <Navbar.Brand>
               <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
@@ -133,24 +127,27 @@ class OtpRRExample extends Component {
               <div className='navbar-title' style={{ marginLeft: 50 }}>OpenTripPlanner</div>
             </Navbar.Brand>
           </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav pullRight>
-              <NavLoginButtonAuth0
-                id='login-control'
-                links={[ // TODO: Move to config.
-                  {
-                    text: 'My account',
-                    url: 'account'
-                  },
-                  {
-                    text: 'Help',
-                    url: 'help'
-                  }
-                ]}
-              />
-            </Nav>
-          </Navbar.Collapse>
-        </StyledNavbar>
+          
+          {auth0Config && (
+            <Navbar.Collapse>
+              <Nav pullRight>
+                <NavLoginButtonAuth0
+                  id='login-control'
+                  links={[ // TODO: Move to config.
+                    {
+                      text: 'My account',
+                      url: 'account'
+                    },
+                    {
+                      text: 'Help',
+                      url: 'help'
+                    }
+                  ]}
+                />
+              </Nav>
+            </Navbar.Collapse>
+          )}
+        </Navbar>
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
@@ -180,18 +177,29 @@ class OtpRRExample extends Component {
 }
 
 // render the app
-render(
-  <Auth0Provider
-    audience={auth0Config.AUTH0_AUDIENCE}
-    scope={AUTH0_SCOPE}
-    domain={auth0Config.AUTH0_DOMAIN}
-    clientId={auth0Config.AUTH0_CLIENT_ID}
-    redirectUri={getAuthRedirectUri()}
-    onLoginError={onLoginError}
-    onAccessTokenError={onAccessTokenError}
-    onRedirecting={onRedirecting}
-    onRedirectCallback={onRedirectCallback}
-  >
+render(auth0Config
+  ? (<Auth0Provider
+      audience={auth0Config.audience}
+      scope={AUTH0_SCOPE}
+      domain={auth0Config.domain}
+      clientId={auth0Config.clientId}
+      redirectUri={getAuthRedirectUri()}
+      onLoginError={onLoginError}
+      onAccessTokenError={onAccessTokenError}
+      onRedirecting={onRedirecting}
+      onRedirectCallback={onRedirectCallback}
+    >
+      <Provider store={store}>
+        { /**
+         * If not using router history, simply include OtpRRExample here:
+         * e.g.
+         * <OtpRRExample />
+         */
+        }
+        <OtpRRExample />
+      </Provider>
+    </Auth0Provider>)
+  : (
     <Provider store={store}>
       { /**
        * If not using router history, simply include OtpRRExample here:
@@ -201,7 +209,7 @@ render(
       }
       <OtpRRExample />
     </Provider>
-  </Auth0Provider>,
+  ),
 
   document.getElementById('root')
 )
