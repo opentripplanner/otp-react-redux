@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 
 import NavLoginButton from '../lib/components/user/nav-login-button'
 
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css)'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 // Example data for stories.
 const auth0UserBasic = {
