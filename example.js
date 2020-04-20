@@ -11,6 +11,13 @@ import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import styled from 'styled-components'
 
+// Auth0
+import { push } from 'connected-react-router'
+import qs from 'qs'
+import { Auth0Provider } from 'use-auth0-hooks'
+import { getAuthRedirectUri } from './lib/util/auth'
+import { AUTH0_SCOPE } from './lib/util/constants'
+
 // import Bootstrap Grid components for layout
 import { Nav, Navbar, Grid, Row, Col } from 'react-bootstrap'
 
@@ -23,10 +30,11 @@ import {
   AppMenu,
   createOtpReducer
 } from './lib'
-import NavLoginButton from './lib/components/user/nav-login-button'
+import NavLoginButtonAuth0 from './lib/components/user/nav-login-button-auth0'
 
 // load the OTP configuration
 import otpConfig from './config.yml'
+import auth0Config from './auth0config.yml'
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
@@ -67,14 +75,51 @@ const StyledNavbar = styled(Navbar)`
   }
 `
 
+// Auth0 functions
+/**
+ * Where to send the user after they have signed in.
+ */
+const onRedirectCallback = appState => {
+  if (appState && appState.returnTo) {
+    push(`${appState.returnTo.pathname}?${qs.stringify(appState.returnTo.query)}`)
+  }
+}
+
+/**
+ * When it hasn't been possible to retrieve a new access token.
+ * @param {Error} err
+ * @param {AccessTokenRequestOptions} options
+ */
+const onAccessTokenError = (err, options) => {
+  console.error('Failed to retrieve access token: ', err)
+}
+
+/**
+ * When signing in fails for some reason, we want to show it here.
+ * @param {Error} err
+ */
+const onLoginError = (err) => {
+  push(`/oops`)
+}
+
+/**
+ * When redirecting to the login page you'll end up in this state where the login page is still loading.
+ * You can render a message to show that the user is being redirected.
+ */
+const onRedirecting = () => {
+  return (
+    <div>
+      <h1>Signing you in</h1>
+      <p>
+        In order to access this page you will need to sign in.
+        Please wait while we redirect you to the login page...
+      </p>
+    </div>
+  )
+}
+
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
-  handleSignIn() {}
-
-  handleSignOut() {}
-
-  handleSignUp() {}
-
   render () {
     /** desktop view **/
     const desktopView = (
@@ -90,7 +135,7 @@ class OtpRRExample extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <NavLoginButton
+              <NavLoginButtonAuth0
                 id='login-control'
                 links={[ // TODO: Move to config.
                   {
@@ -102,9 +147,6 @@ class OtpRRExample extends Component {
                     url: 'help'
                   }
                 ]}
-                onSignInClick={this.handleSignIn}
-                onSignOutClick={this.handleSignOut}
-                onSignUpClick={this.handleSignUp}
               />
             </Nav>
           </Navbar.Collapse>
@@ -139,15 +181,27 @@ class OtpRRExample extends Component {
 
 // render the app
 render(
-  <Provider store={store}>
-    { /**
-     * If not using router history, simply include OtpRRExample here:
-     * e.g.
-     * <OtpRRExample />
-     */
-    }
-    <OtpRRExample />
+  <Auth0Provider
+    audience={auth0Config.AUTH0_AUDIENCE}
+    scope={AUTH0_SCOPE}
+    domain={auth0Config.AUTH0_DOMAIN}
+    clientId={auth0Config.AUTH0_CLIENT_ID}
+    redirectUri={getAuthRedirectUri()}
+    onLoginError={onLoginError}
+    onAccessTokenError={onAccessTokenError}
+    onRedirecting={onRedirecting}
+    onRedirectCallback={onRedirectCallback}
+  >
+    <Provider store={store}>
+      { /**
+       * If not using router history, simply include OtpRRExample here:
+       * e.g.
+       * <OtpRRExample />
+       */
+      }
+      <OtpRRExample />
+    </Provider>
+  </Auth0Provider>,
 
-  </Provider>,
   document.getElementById('root')
 )
