@@ -11,10 +11,8 @@ import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 
 // Auth0
-import { push } from 'connected-react-router'
-import qs from 'qs'
 import { Auth0Provider } from 'use-auth0-hooks'
-import { getAuth0Config, getAuthRedirectUri } from './lib/util/auth'
+import { getAuth0Callbacks, getAuth0Config, getAuthRedirectUri } from './lib/util/auth'
 import { AUTH0_SCOPE } from './lib/util/constants'
 
 // import Bootstrap Grid components for layout
@@ -69,48 +67,7 @@ const store = createStore(
 
 // Auth0 config and callbacks.
 const auth0Config = getAuth0Config(otpConfig)
-
-/**
- * Where to send the user after they have signed in.
- */
-const onRedirectCallback = appState => {
-  if (appState && appState.returnTo) {
-    store.dispatch(push(appState.returnTo))
-  }
-}
-
-/**
- * When it hasn't been possible to retrieve a new access token.
- * @param {Error} err
- * @param {AccessTokenRequestOptions} options
- */
-const onAccessTokenError = (err, options) => {
-  console.error('Failed to retrieve access token: ', err)
-}
-
-/**
- * TODO: When signing in fails for some reason, we want to show it here.
- * @param {Error} err
- */
-const onLoginError = (err) => {
-  store.dispatch(push(`/oops`))
-}
-
-/**
- * When redirecting to the login page you'll end up in this state where the login page is still loading.
- * You can render a message to show that the user is being redirected.
- */
-const onRedirecting = () => {
-  return (
-    <div>
-      <h1>Signing you in</h1>
-      <p>
-        In order to access this page you will need to sign in.
-        Please wait while we redirect you to the login page...
-      </p>
-    </div>
-  )
-}
+const auth0Callbacks = getAuth0Callbacks(store)
 
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
@@ -176,6 +133,18 @@ class OtpRRExample extends Component {
   }
 }
 
+const innerProvider = (
+  <Provider store={store}>
+    { /**
+     * If not using router history, simply include OtpRRExample here:
+     * e.g.
+     * <OtpRRExample />
+     */
+    }
+    <OtpRRExample />
+  </Provider>
+)
+
 // render the app
 render(auth0Config
   ? (<Auth0Provider
@@ -184,32 +153,12 @@ render(auth0Config
       domain={auth0Config.domain}
       clientId={auth0Config.clientId}
       redirectUri={getAuthRedirectUri()}
-      onLoginError={onLoginError}
-      onAccessTokenError={onAccessTokenError}
-      onRedirecting={onRedirecting}
-      onRedirectCallback={onRedirectCallback}
+      {...auth0Callbacks}
     >
-      <Provider store={store}>
-        { /**
-         * If not using router history, simply include OtpRRExample here:
-         * e.g.
-         * <OtpRRExample />
-         */
-        }
-        <OtpRRExample />
-      </Provider>
+      {innerProvider}
     </Auth0Provider>)
-  : (
-    <Provider store={store}>
-      { /**
-       * If not using router history, simply include OtpRRExample here:
-       * e.g.
-       * <OtpRRExample />
-       */
-      }
-      <OtpRRExample />
-    </Provider>
-  ),
+  : innerProvider
+  ,
 
   document.getElementById('root')
 )
