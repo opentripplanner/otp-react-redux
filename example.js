@@ -75,7 +75,7 @@ const auth0Config = getAuth0Config(otpConfig)
  */
 const onRedirectCallback = appState => {
   if (appState && appState.returnTo) {
-    push(`${appState.returnTo.pathname}?${qs.stringify(appState.returnTo.query)}`)
+    store.dispatch(push(appState.returnTo))
   }
 }
 
@@ -89,11 +89,11 @@ const onAccessTokenError = (err, options) => {
 }
 
 /**
- * When signing in fails for some reason, we want to show it here.
+ * TODO: When signing in fails for some reason, we want to show it here.
  * @param {Error} err
  */
 const onLoginError = (err) => {
-  push(`/oops`)
+  store.dispatch(push(`/oops`))
 }
 
 /**
