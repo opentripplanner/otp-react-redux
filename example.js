@@ -75,7 +75,7 @@ class OtpRRExample extends Component {
     /** desktop view **/
     const desktopView = (
       <div className='otp'>
-        <Navbar collapseOnSelect fluid inverse>
+        <Navbar fluid inverse>
           <Navbar.Header>
             <Navbar.Brand>
               <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
