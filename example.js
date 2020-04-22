@@ -12,7 +12,7 @@ import createLogger from 'redux-logger'
 
 // Auth0
 import { Auth0Provider } from 'use-auth0-hooks'
-import { getAuth0Callbacks, getAuth0Config, getAuthRedirectUri } from './lib/util/auth'
+import { accountLinks, getAuth0Callbacks, getAuth0Config, getAuthRedirectUri } from './lib/util/auth'
 import { AUTH0_SCOPE } from './lib/util/constants'
 
 // import Bootstrap Grid components for layout
@@ -90,16 +90,7 @@ class OtpRRExample extends Component {
               <Nav pullRight>
                 <NavLoginButtonAuth0
                   id='login-control'
-                  links={[ // TODO: Move to config.
-                    {
-                      text: 'My account',
-                      url: 'account'
-                    },
-                    {
-                      text: 'Help',
-                      url: 'help'
-                    }
-                  ]}
+                  links={accountLinks}
                 />
               </Nav>
             </Navbar.Collapse>
