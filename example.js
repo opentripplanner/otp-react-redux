@@ -20,14 +20,14 @@ import { Nav, Navbar, Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
-  DefaultMainPanel,
-  MobileMain,
-  ResponsiveWebapp,
-  Map,
   AppMenu,
+  DefaultMainPanel,
+  Map,
+  MobileMain,
+  NavLoginButtonAuth0,
+  ResponsiveWebapp,
   createOtpReducer
 } from './lib'
-import NavLoginButtonAuth0 from './lib/components/user/nav-login-button-auth0'
 
 // load the OTP configuration
 import otpConfig from './config.yml'
