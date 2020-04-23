@@ -8,13 +8,13 @@ Object {
     "debouncePlanTimeMs": 0,
     "homeTimezone": "America/Los_Angeles",
     "language": Object {},
-    "operators": Array [],
     "realtimeEffectsDisplayThreshold": 120,
     "routingTypes": Array [],
     "stopViewer": Object {
       "numberOfDepartures": 3,
       "timeRange": 345600,
     },
+    "transitOperators": Array [],
   },
   "currentQuery": Object {
     "bikeSpeed": 3.58,
