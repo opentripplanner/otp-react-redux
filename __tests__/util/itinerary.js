@@ -1,4 +1,4 @@
-import { isTransit } from '@opentripplanner/core-utils/lib/itinerary'
+import coreUtils from '@opentripplanner/core-utils'
 
 import { routeComparator } from '../../lib/util/itinerary'
 
@@ -27,7 +27,7 @@ function sortRoutes (...routes) {
 
 describe('util > itinerary', () => {
   it('isTransit should work', () => {
-    expect(isTransit('CAR')).toBeFalsy()
+    expect(coreUtils.itinerary.isTransit('CAR')).toBeFalsy()
   })
 
   describe('routeComparator', () => {
