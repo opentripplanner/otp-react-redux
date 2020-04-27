@@ -34,6 +34,7 @@
     "@opentripplanner/endpoints-overlay": "^0.0.19",
     "@opentripplanner/from-to-location-picker": "^0.0.19",
     "@opentripplanner/geocoder": "^0.0.19",
+    "@opentripplanner/humanize-distance": "^0.0.19",
     "@opentripplanner/icons": "^0.0.19",
     "@opentripplanner/itinerary-body": "^0.0.19",
     "@opentripplanner/location-field": "^0.0.19",
