@@ -27,8 +27,8 @@ import {
 // load the OTP configuration
 import otpConfig from './config.yml'
 
-const MyLegIcon = () => <Ferry />
-const MyModeIcon = () => <AerialTram />
+const MyLegIcon = TriMetLegIcon // For testing, you can use () => <Ferry />
+const MyModeIcon = () => TriMetModeIcon // For testing, you can use () => <AerialTram />
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
@@ -103,7 +103,6 @@ class OtpRRExample extends Component {
         desktopView={desktopView}
         mobileView={mobileView}
         LegIcon={MyLegIcon}
-        ModeIcon={MyModeIcon}
       />
     )
   }
