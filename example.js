@@ -1,5 +1,6 @@
 // import this polyfill in order to make webapp compatible with IE 11
 import 'es6-math'
+import { TriMetModeIcon, TriMetLegIcon } from '@opentripplanner/icons'
 
 import { createHashHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
@@ -98,6 +99,8 @@ class OtpRRExample extends Component {
       <ResponsiveWebapp
         desktopView={desktopView}
         mobileView={mobileView}
+        LegIcon={TriMetLegIcon}
+        ModeIcon={TriMetModeIcon}
       />
     )
   }
