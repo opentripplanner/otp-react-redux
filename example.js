@@ -27,8 +27,8 @@ import {
 // load the OTP configuration
 import otpConfig from './config.yml'
 
-const MyIcon = () => <Ferry />
-const ModeIcon = () => <AerialTram />
+const MyLegIcon = () => <Ferry />
+const MyModeIcon = () => <AerialTram />
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
@@ -82,7 +82,7 @@ class OtpRRExample extends Component {
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
-              <DefaultMainPanel LegIcon={MyIcon} />
+              <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
             </Col>
             <Col sm={6} md={8} className='map-container'>
               <Map />
@@ -94,7 +94,7 @@ class OtpRRExample extends Component {
 
     /** mobile view **/
     const mobileView = (
-      <MobileMain LegIcon={MyIcon} ModeIcon={ModeIcon} map={(<Map />)} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
+      <MobileMain LegIcon={MyLegIcon} ModeIcon={MyModeIcon} map={(<Map />)} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
     )
 
     /** the main webapp **/
@@ -102,8 +102,8 @@ class OtpRRExample extends Component {
       <ResponsiveWebapp
         desktopView={desktopView}
         mobileView={mobileView}
-        LegIcon={TriMetLegIcon}
-        ModeIcon={TriMetModeIcon}
+        LegIcon={MyLegIcon}
+        ModeIcon={MyModeIcon}
       />
     )
   }
