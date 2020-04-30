@@ -1,6 +1,6 @@
 // import this polyfill in order to make webapp compatible with IE 11
 import 'es6-math'
-import { TriMetModeIcon, TriMetLegIcon } from '@opentripplanner/icons'
+import { Ferry, TriMetModeIcon, TriMetLegIcon } from '@opentripplanner/icons'
 
 import { createHashHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
@@ -26,6 +26,8 @@ import {
 
 // load the OTP configuration
 import otpConfig from './config.yml'
+
+const MyIcon = () => <Ferry />
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
@@ -79,7 +81,7 @@ class OtpRRExample extends Component {
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
-              <DefaultMainPanel />
+              <DefaultMainPanel LegIcon={MyIcon} />
             </Col>
             <Col sm={6} md={8} className='map-container'>
               <Map />
