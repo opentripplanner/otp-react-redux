@@ -1,6 +1,6 @@
 // import this polyfill in order to make webapp compatible with IE 11
 import 'es6-math'
-import { Ferry, TriMetModeIcon, TriMetLegIcon } from '@opentripplanner/icons'
+import { AerialTram, Ferry, TriMetModeIcon, TriMetLegIcon } from '@opentripplanner/icons'
 
 import { createHashHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
@@ -28,6 +28,7 @@ import {
 import otpConfig from './config.yml'
 
 const MyIcon = () => <Ferry />
+const ModeIcon = () => <AerialTram />
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
@@ -93,7 +94,7 @@ class OtpRRExample extends Component {
 
     /** mobile view **/
     const mobileView = (
-      <MobileMain map={(<Map />)} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
+      <MobileMain LegIcon={MyIcon} ModeIcon={ModeIcon} map={(<Map />)} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
     )
 
     /** the main webapp **/
