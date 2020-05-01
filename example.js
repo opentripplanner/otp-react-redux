@@ -28,7 +28,7 @@ import {
 import otpConfig from './config.yml'
 
 const MyLegIcon = TriMetLegIcon // For testing, you can use () => <Ferry />
-const MyModeIcon = () => TriMetModeIcon // For testing, you can use () => <AerialTram />
+const MyModeIcon = TriMetModeIcon // For testing, you can use () => <AerialTram />
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
