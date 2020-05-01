@@ -27,8 +27,21 @@ import {
 // load the OTP configuration
 import otpConfig from './config.yml'
 
-const MyLegIcon = TriMetLegIcon // For testing, you can use () => <Ferry />
-const MyModeIcon = TriMetModeIcon // For testing, you can use () => <AerialTram />
+// Define icon sets for modes.
+const MyLegIcon = TriMetLegIcon
+const MyModeIcon = TriMetModeIcon
+/**
+ * For testing, try uncommenting the following two statements (and comment the two above),
+ * and see how the icons get changed in:
+ * - the mode options panel (select transit, bike+transit, etc.)
+ * - the itinerary narrative (step-by-step directions).
+ *
+ * For more advanced testing, you can replicate and customize components and observe the change in icons.
+ * - For LegIcon: https://github.com/opentripplanner/otp-ui/blob/master/packages/icons/src/trimet-leg-icon.js
+ * - For ModeIcon: https://github.com/opentripplanner/otp-ui/blob/master/packages/icons/src/trimet-mode-icon.js
+ */
+// const MyLegIcon = () => <Ferry />
+// const MyModeIcon = () => <AerialTram />
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
@@ -94,7 +107,12 @@ class OtpRRExample extends Component {
 
     /** mobile view **/
     const mobileView = (
-      <MobileMain LegIcon={MyLegIcon} ModeIcon={MyModeIcon} map={(<Map />)} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
+      <MobileMain
+        LegIcon={MyLegIcon}
+        ModeIcon={MyModeIcon}
+        map={<Map />}
+        title={<div className='navbar-title'>OpenTripPlanner</div>}
+      />
     )
 
     /** the main webapp **/
