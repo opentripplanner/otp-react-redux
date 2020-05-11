@@ -1,6 +1,16 @@
 // import this polyfill in order to make webapp compatible with IE 11
 import 'es6-math'
-import { AerialTram, Ferry, TriMetModeIcon, TriMetLegIcon } from '@opentripplanner/icons'
+
+// The commented imports below are used in the custom icons example.
+import {
+  // ClassicBus,
+  // ClassicGondola,
+  ClassicLegIcon,
+  ClassicModeIcon,
+  // Ferry,
+  // LegIcon,
+  // StandardGondola
+} from '@opentripplanner/icons'
 
 import { createHashHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
@@ -28,20 +38,55 @@ import {
 import otpConfig from './config.yml'
 
 // Define icon sets for modes.
-const MyLegIcon = TriMetLegIcon
-const MyModeIcon = TriMetModeIcon
+const MyLegIcon = ClassicLegIcon
+const MyModeIcon = ClassicModeIcon
+
 /**
  * For testing, try uncommenting the following two statements (and comment the two above),
  * and see how the icons get changed in:
  * - the mode options panel (select transit, bike+transit, etc.)
  * - the itinerary narrative (step-by-step directions).
- *
- * For more advanced testing, you can replicate and customize components and observe the change in icons.
- * - For LegIcon: https://github.com/opentripplanner/otp-ui/blob/master/packages/icons/src/trimet-leg-icon.js
- * - For ModeIcon: https://github.com/opentripplanner/otp-ui/blob/master/packages/icons/src/trimet-mode-icon.js
  */
 // const MyLegIcon = () => <Ferry />
 // const MyModeIcon = () => <AerialTram />
+
+/** 
+ * For more advanced users, you can replicate and customize components and observe the change in icons.
+ * - For LegIcon: https://github.com/opentripplanner/otp-ui/blob/master/packages/icons/src/trimet-leg-icon.js
+ * - For ModeIcon: https://github.com/opentripplanner/otp-ui/blob/master/packages/icons/src/trimet-mode-icon.js
+ * The example below shuffles some icons around for demonstration purposes.
+ */
+/*
+const CustomTransitIcon = Ferry
+const CustomRailIcon = ClassicGondola
+const CustomStreetcarIcon = StandardGondola
+const CustomBikeRentalIcon = ClassicBus
+
+const MyModeIcon = ({ mode, ...props }) => {
+  if (!mode) return null;
+  switch (mode.toLowerCase()) {
+    // Place custom icons for each mode here.
+    case "transit":
+      return <CustomTransitIcon {...props} />
+    case "rail":
+      return <CustomRailIcon {...props} />
+    default:
+      return <ClassicModeIcon mode={mode} {...props} />
+  }
+}
+
+const MyLegIcon = ({ leg, ...props }) => {
+  if (
+    leg.routeLongName &&
+    leg.routeLongName.startsWith('MAX')
+  ) {
+    return <CustomStreetcarIcon />
+  } else if (leg.rentedBike) {
+    return <CustomBikeRentalIcon />
+  }
+  return <LegIcon leg={leg} ModeIcon={MyModeIcon} {...props} />
+}
+*/
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
