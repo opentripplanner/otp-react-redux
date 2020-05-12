@@ -39,15 +39,6 @@ if (useCustomIcons) {
   MyModeIcon = CustomIcons.CustomModeIcon
 }
 
-/**
- * For testing, try uncommenting the following two statements (and comment the two above),
- * and see how the icons get changed in:
- * - the mode options panel (select transit, bike+transit, etc.)
- * - the itinerary narrative (step-by-step directions).
- */
-// const MyLegIcon = () => <Ferry />
-// const MyModeIcon = () => <AerialTram />
-
 // create an initial query for demo/testing purposes
 const initialQuery = {
   from: {
