@@ -1,17 +1,7 @@
 // import this polyfill in order to make webapp compatible with IE 11
 import 'es6-math'
 
-// The commented imports below are used in the custom icons example.
-import {
-  // ClassicBus,
-  // ClassicGondola,
-  ClassicLegIcon,
-  ClassicModeIcon,
-  // Ferry,
-  // LegIcon,
-  // StandardGondola
-} from '@opentripplanner/icons'
-
+import {ClassicLegIcon, ClassicModeIcon} from '@opentripplanner/icons'
 import { createHashHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import React, { Component } from 'react'
@@ -20,7 +10,6 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
-
 // import Bootstrap Grid components for layout
 import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 
@@ -33,13 +22,22 @@ import {
   AppMenu,
   createOtpReducer
 } from './lib'
-
 // load the OTP configuration
 import otpConfig from './config.yml'
 
+// Set useCustomIcons to true to override classic icons with the exports from
+// custom-icons.js
+const useCustomIcons = true
+
 // Define icon sets for modes.
-const MyLegIcon = ClassicLegIcon
-const MyModeIcon = ClassicModeIcon
+let MyLegIcon = ClassicLegIcon
+let MyModeIcon = ClassicModeIcon
+
+if (useCustomIcons) {
+  const CustomIcons = require('./custom-icons')
+  MyLegIcon = CustomIcons.CustomLegIcon
+  MyModeIcon = CustomIcons.CustomModeIcon
+}
 
 /**
  * For testing, try uncommenting the following two statements (and comment the two above),
@@ -49,44 +47,6 @@ const MyModeIcon = ClassicModeIcon
  */
 // const MyLegIcon = () => <Ferry />
 // const MyModeIcon = () => <AerialTram />
-
-/** 
- * For more advanced users, you can replicate and customize components and observe the change in icons.
- * - For LegIcon: https://github.com/opentripplanner/otp-ui/blob/master/packages/icons/src/trimet-leg-icon.js
- * - For ModeIcon: https://github.com/opentripplanner/otp-ui/blob/master/packages/icons/src/trimet-mode-icon.js
- * The example below shuffles some icons around for demonstration purposes.
- */
-/*
-const CustomTransitIcon = Ferry
-const CustomRailIcon = ClassicGondola
-const CustomStreetcarIcon = StandardGondola
-const CustomBikeRentalIcon = ClassicBus
-
-const MyModeIcon = ({ mode, ...props }) => {
-  if (!mode) return null;
-  switch (mode.toLowerCase()) {
-    // Place custom icons for each mode here.
-    case "transit":
-      return <CustomTransitIcon {...props} />
-    case "rail":
-      return <CustomRailIcon {...props} />
-    default:
-      return <ClassicModeIcon mode={mode} {...props} />
-  }
-}
-
-const MyLegIcon = ({ leg, ...props }) => {
-  if (
-    leg.routeLongName &&
-    leg.routeLongName.startsWith('MAX')
-  ) {
-    return <CustomStreetcarIcon />
-  } else if (leg.rentedBike) {
-    return <CustomBikeRentalIcon />
-  }
-  return <LegIcon leg={leg} ModeIcon={MyModeIcon} {...props} />
-}
-*/
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
