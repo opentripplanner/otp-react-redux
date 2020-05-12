@@ -18,6 +18,8 @@ import { AUTH0_SCOPE } from './lib/util/constants'
 // import Bootstrap Grid components for layout
 import { Nav, Navbar, Grid, Row, Col } from 'react-bootstrap'
 
+import Auth0Wrapper from './lib/components/user/auth0-wrapper'
+
 // import OTP-RR components
 import {
   AppMenu,
@@ -114,13 +116,20 @@ class OtpRRExample extends Component {
       <MobileMain map={(<Map />)} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
     )
 
+    const responsiveWebAppRender = <ResponsiveWebapp
+      desktopView={desktopView}
+      mobileView={mobileView}
+    />
+      
     /** the main webapp **/
-    return (
-      <ResponsiveWebapp
-        desktopView={desktopView}
-        mobileView={mobileView}
-      />
-    )
+    // It seems much better to use our Auth0Wrapper here.
+    // Auth0 data will be passed to ResponsiveWebApp as prop.auth.
+    // Then you don't have to worry about adding the wrapper anywhere else.
+    return auth0Config 
+      ? <Auth0Wrapper awaitToken={false}>
+          {responsiveWebAppRender}
+        </Auth0Wrapper>
+      : {responsiveWebAppRender}
   }
 }
 
