@@ -27,7 +27,7 @@ import otpConfig from './config.yml'
 
 // Set useCustomIcons to true to override classic icons with the exports from
 // custom-icons.js
-const useCustomIcons = true
+const useCustomIcons = false
 
 // Define icon sets for modes.
 let MyLegIcon = ClassicLegIcon
