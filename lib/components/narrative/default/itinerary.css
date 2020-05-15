@@ -4,6 +4,11 @@
   outline: none;
 }
 
+/* If child component is focused, highlight itinerary option */
+.otp .option.default-itin:focus-within {
+  background-color: var(--hover-color);
+}
+
 .otp .option.default-itin {
   margin-bottom: 16px;
   padding: 10px;
@@ -12,11 +17,11 @@
   background-color: #eeeeee;
 }
 
-.otp .option:hover .default-itin {
+.otp .option.default-itin:hover {
   background-color: var(--hover-color);
 }
 
-.otp .option.active .default-itin {
+.otp .option.default-itin.active {
   background-color: #EAF3F2;
 }
 
@@ -30,7 +35,7 @@
 }
 
 .otp .option.default-itin > .header > .summary {
-  text-align: center;
+  /* text-align: center; */
   margin: 8px 0px;
 }
 
