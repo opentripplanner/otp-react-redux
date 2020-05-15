@@ -15,6 +15,7 @@ import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
+  CallTakerPanel,
   DefaultMainPanel,
   MobileMain,
   ResponsiveWebapp,
@@ -80,7 +81,7 @@ const store = createStore(
   }),
   compose(applyMiddleware(...middleware))
 )
-
+const title = otpConfig.title || 'OpenTripPlanner'
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
@@ -93,14 +94,20 @@ class OtpRRExample extends Component {
               <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
                 <AppMenu />
               </div>
-              <div className='navbar-title' style={{ marginLeft: 50 }}>OpenTripPlanner</div>
+              <div className='navbar-title' style={{ marginLeft: 50 }}>
+                {title}
+              </div>
             </Navbar.Brand>
           </Navbar.Header>
         </Navbar>
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
-              <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+              {/* TODO: handle this switch better. This is just for testing. */}
+              {otpConfig.callTakerUrl
+                ? <CallTakerPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                : <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+              }
             </Col>
             <Col sm={6} md={8} className='map-container'>
               <Map />
