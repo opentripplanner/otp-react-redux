@@ -86,7 +86,7 @@ class OtpRRExample extends Component {
               <div className='navbar-title' style={{ marginLeft: 50 }}>OpenTripPlanner</div>
             </Navbar.Brand>
           </Navbar.Header>
-          
+
           {auth0Config && (
             <Navbar.Collapse>
               <Nav pullRight>
@@ -120,16 +120,18 @@ class OtpRRExample extends Component {
       desktopView={desktopView}
       mobileView={mobileView}
     />
-      
+
     /** the main webapp **/
     // It seems much better to use our Auth0Wrapper here.
     // Auth0 data will be passed to ResponsiveWebApp as prop.auth.
     // Then you don't have to worry about adding the wrapper anywhere else.
-    return auth0Config 
-      ? <Auth0Wrapper awaitToken={false}>
+    return auth0Config
+      ? (
+        <Auth0Wrapper awaitToken={false}>
           {responsiveWebAppRender}
         </Auth0Wrapper>
-      : {responsiveWebAppRender}
+      )
+      : responsiveWebAppRender
   }
 }
 
