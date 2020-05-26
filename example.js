@@ -12,8 +12,8 @@ import createLogger from 'redux-logger'
 
 // Auth0
 import { Auth0Provider } from 'use-auth0-hooks'
-import { accountLinks, getAuth0Callbacks, getAuth0Config, getAuthRedirectUri } from './lib/util/auth'
-import { AUTH0_SCOPE } from './lib/util/constants'
+import { accountLinks, getAuth0Callbacks, getAuth0Config } from './lib/util/auth'
+import { AUTH0_SCOPE, URL_ROOT } from './lib/util/constants'
 
 // import Bootstrap Grid components for layout
 import { Nav, Navbar, Grid, Row, Col } from 'react-bootstrap'
@@ -148,17 +148,17 @@ const innerProvider = (
 // render the app
 render(auth0Config
   ? (<Auth0Provider
-      audience={auth0Config.audience}
-      scope={AUTH0_SCOPE}
-      domain={auth0Config.domain}
-      clientId={auth0Config.clientId}
-      redirectUri={getAuthRedirectUri()}
-      {...auth0Callbacks}
-    >
-      {innerProvider}
-    </Auth0Provider>)
+    audience={auth0Config.audience}
+    scope={AUTH0_SCOPE}
+    domain={auth0Config.domain}
+    clientId={auth0Config.clientId}
+    redirectUri={URL_ROOT}
+    {...auth0Callbacks}
+  >
+    {innerProvider}
+  </Auth0Provider>)
   : innerProvider
-  ,
+,
 
-  document.getElementById('root')
+document.getElementById('root')
 )
