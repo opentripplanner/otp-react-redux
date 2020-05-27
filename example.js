@@ -18,7 +18,7 @@ import { AUTH0_SCOPE, URL_ROOT } from './lib/util/constants'
 // import Bootstrap Grid components for layout
 import { Nav, Navbar, Grid, Row, Col } from 'react-bootstrap'
 
-import Auth0Wrapper from './lib/components/user/auth0-wrapper'
+// import Auth0Wrapper from './lib/components/user/auth0-wrapper'
 
 // import OTP-RR components
 import {
@@ -125,6 +125,7 @@ class OtpRRExample extends Component {
     // It seems much better to use our Auth0Wrapper here.
     // Auth0 data will be passed to ResponsiveWebApp as prop.auth.
     // Then you don't have to worry about adding the wrapper anywhere else.
+    /*
     return auth0Config
       ? (
         <Auth0Wrapper awaitToken={false}>
@@ -132,6 +133,8 @@ class OtpRRExample extends Component {
         </Auth0Wrapper>
       )
       : responsiveWebAppRender
+    */
+    return responsiveWebAppRender
   }
 }
 
