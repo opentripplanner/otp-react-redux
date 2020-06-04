@@ -14,7 +14,7 @@ import createLogger from 'redux-logger'
 // Auth0
 import { Auth0Provider } from 'use-auth0-hooks'
 import { accountLinks, getAuth0Callbacks, getAuth0Config } from './lib/util/auth'
-import { AUTH0_SCOPE } from './lib/util/constants'
+import { AUTH0_SCOPE, URL_ROOT } from './lib/util/constants'
 
 // import Bootstrap Grid components for layout
 import { Nav, Navbar, Grid, Row, Col } from 'react-bootstrap'
@@ -163,7 +163,7 @@ render(auth0Config
     scope={AUTH0_SCOPE}
     domain={auth0Config.domain}
     clientId={auth0Config.clientId}
-    redirectUri={`${window.location.protocol}//${window.location.host}`}
+    redirectUri={URL_ROOT}
     {...auth0Callbacks}
   >
     {innerProvider}
