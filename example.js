@@ -68,7 +68,7 @@ const store = createStore(
 )
 
 // Auth0 config and callbacks.
-const auth0Config = getAuth0Config(otpConfig)
+const auth0Config = getAuth0Config(otpConfig.persistence)
 const auth0Callbacks = getAuth0Callbacks(store)
 
 // define a simple responsive UI using Bootstrap and OTP-RR
