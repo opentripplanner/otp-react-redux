@@ -122,18 +122,6 @@ class OtpRRExample extends Component {
     />
 
     /** the main webapp **/
-    // It seems much better to use our Auth0Wrapper here.
-    // Auth0 data will be passed to ResponsiveWebApp as prop.auth.
-    // Then you don't have to worry about adding the wrapper anywhere else.
-    /*
-    return auth0Config
-      ? (
-        <Auth0Wrapper awaitToken={false}>
-          {responsiveWebAppRender}
-        </Auth0Wrapper>
-      )
-      : responsiveWebAppRender
-    */
     return responsiveWebAppRender
   }
 }
