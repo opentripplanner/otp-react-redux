@@ -52,16 +52,19 @@ if (useCustomIcons) {
 // create an initial query for demo/testing purposes
 const initialQuery = {
   from: {
-    lat: 45.5246,
-    lon: -122.6710
+    lat: 28.45119,
+    lon: -81.36818,
+    name: 'P&R'
   },
   to: {
-    lat: 45.5307,
-    lon: -122.6647
+    lat: 28.54834,
+    lon: -81.37745,
+    name: 'Downtownish'
   },
+  numItineraries: 1,
+  maxWalkDistance: 1609.34 * 6, // 2 miles
   type: 'ITINERARY'
 }
-
 const history = createHashHistory()
 const middleware = [
   thunk,
@@ -76,7 +79,7 @@ if (process.env.NODE_ENV === 'development') {
 // set up the Redux store
 const store = createStore(
   combineReducers({
-    otp: createOtpReducer(otpConfig),
+    otp: createOtpReducer(otpConfig, initialQuery),
     router: connectRouter(history)
   }),
   compose(applyMiddleware(...middleware))
@@ -104,7 +107,7 @@ class OtpRRExample extends Component {
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
               {/* TODO: handle this switch better. This is just for testing. */}
-              {otpConfig.callTakerUrl
+              {otpConfig.callTakerUrl || otpConfig.routingTypes.find(t => t.key === 'BATCH')
                 ? <CallTakerPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
                 : <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
               }
