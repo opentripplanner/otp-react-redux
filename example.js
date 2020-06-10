@@ -28,7 +28,8 @@ import {
   MobileMain,
   NavLoginButtonAuth0,
   ResponsiveWebapp,
-  createOtpReducer
+  createOtpReducer,
+  createOtpUserReducer
 } from './lib'
 
 // load the OTP configuration
@@ -62,6 +63,7 @@ if (process.env.NODE_ENV === 'development') {
 const store = createStore(
   combineReducers({
     otp: createOtpReducer(otpConfig),
+    otpUser: createOtpUserReducer(),
     router: connectRouter(history)
   }),
   compose(applyMiddleware(...middleware))
