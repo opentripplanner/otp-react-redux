@@ -19,8 +19,6 @@ import { AUTH0_SCOPE, URL_ROOT } from './lib/util/constants'
 // import Bootstrap Grid components for layout
 import { Nav, Navbar, Grid, Row, Col } from 'react-bootstrap'
 
-// import Auth0Wrapper from './lib/components/user/auth0-wrapper'
-
 // import OTP-RR components
 import {
   AppMenu,
