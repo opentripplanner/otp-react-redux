@@ -1,6 +1,7 @@
 // import this polyfill in order to make webapp compatible with IE 11
 import 'es6-math'
 
+import {ClassicLegIcon, ClassicModeIcon} from '@opentripplanner/icons'
 import { createHashHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import React, { Component } from 'react'
@@ -31,9 +32,22 @@ import {
   createOtpReducer,
   createOtpUserReducer
 } from './lib'
-
 // load the OTP configuration
 import otpConfig from './config.yml'
+
+// Set useCustomIcons to true to override classic icons with the exports from
+// custom-icons.js
+const useCustomIcons = false
+
+// Define icon sets for modes.
+let MyLegIcon = ClassicLegIcon
+let MyModeIcon = ClassicModeIcon
+
+if (useCustomIcons) {
+  const CustomIcons = require('./custom-icons')
+  MyLegIcon = CustomIcons.CustomLegIcon
+  MyModeIcon = CustomIcons.CustomModeIcon
+}
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
@@ -103,7 +117,7 @@ class OtpRRExample extends Component {
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
-              <DefaultMainPanel />
+              <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
             </Col>
             <Col sm={6} md={8} className='map-container'>
               <Map />
@@ -115,16 +129,22 @@ class OtpRRExample extends Component {
 
     /** mobile view **/
     const mobileView = (
-      <MobileMain map={(<Map />)} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
+      <MobileMain
+        LegIcon={MyLegIcon}
+        ModeIcon={MyModeIcon}
+        map={<Map />}
+        title={<div className='navbar-title'>OpenTripPlanner</div>}
+      />
     )
 
-    const responsiveWebAppRender = <ResponsiveWebapp
-      desktopView={desktopView}
-      mobileView={mobileView}
-    />
-
     /** the main webapp **/
-    return responsiveWebAppRender
+    return (
+      <ResponsiveWebapp
+        desktopView={desktopView}
+        mobileView={mobileView}
+        LegIcon={MyLegIcon}
+      />
+    )
   }
 }
 
