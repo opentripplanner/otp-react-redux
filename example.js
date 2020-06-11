@@ -1,6 +1,7 @@
 // import this polyfill in order to make webapp compatible with IE 11
 import 'es6-math'
 
+import {ClassicLegIcon, ClassicModeIcon} from '@opentripplanner/icons'
 import { createHashHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import React, { Component } from 'react'
@@ -13,12 +14,10 @@ import createLogger from 'redux-logger'
 // Auth0
 import { Auth0Provider } from 'use-auth0-hooks'
 import { accountLinks, getAuth0Callbacks, getAuth0Config } from './lib/util/auth'
-import { AUTH0_SCOPE, URL_ROOT } from './lib/util/constants'
+import { AUTH0_AUDIENCE, AUTH0_SCOPE, URL_ROOT } from './lib/util/constants'
 
 // import Bootstrap Grid components for layout
 import { Nav, Navbar, Grid, Row, Col } from 'react-bootstrap'
-
-// import Auth0Wrapper from './lib/components/user/auth0-wrapper'
 
 // import OTP-RR components
 import {
@@ -28,11 +27,25 @@ import {
   MobileMain,
   NavLoginButtonAuth0,
   ResponsiveWebapp,
-  createOtpReducer
+  createOtpReducer,
+  createUserReducer
 } from './lib'
-
 // load the OTP configuration
 import otpConfig from './config.yml'
+
+// Set useCustomIcons to true to override classic icons with the exports from
+// custom-icons.js
+const useCustomIcons = false
+
+// Define icon sets for modes.
+let MyLegIcon = ClassicLegIcon
+let MyModeIcon = ClassicModeIcon
+
+if (useCustomIcons) {
+  const CustomIcons = require('./custom-icons')
+  MyLegIcon = CustomIcons.CustomLegIcon
+  MyModeIcon = CustomIcons.CustomModeIcon
+}
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
@@ -62,13 +75,14 @@ if (process.env.NODE_ENV === 'development') {
 const store = createStore(
   combineReducers({
     otp: createOtpReducer(otpConfig),
+    user: createUserReducer(),
     router: connectRouter(history)
   }),
   compose(applyMiddleware(...middleware))
 )
 
 // Auth0 config and callbacks.
-const auth0Config = getAuth0Config(otpConfig)
+const auth0Config = getAuth0Config(otpConfig.persistence)
 const auth0Callbacks = getAuth0Callbacks(store)
 
 // define a simple responsive UI using Bootstrap and OTP-RR
@@ -101,7 +115,7 @@ class OtpRRExample extends Component {
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
-              <DefaultMainPanel />
+              <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
             </Col>
             <Col sm={6} md={8} className='map-container'>
               <Map />
@@ -113,28 +127,22 @@ class OtpRRExample extends Component {
 
     /** mobile view **/
     const mobileView = (
-      <MobileMain map={(<Map />)} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
+      <MobileMain
+        LegIcon={MyLegIcon}
+        ModeIcon={MyModeIcon}
+        map={<Map />}
+        title={<div className='navbar-title'>OpenTripPlanner</div>}
+      />
     )
 
-    const responsiveWebAppRender = <ResponsiveWebapp
-      desktopView={desktopView}
-      mobileView={mobileView}
-    />
-
     /** the main webapp **/
-    // It seems much better to use our Auth0Wrapper here.
-    // Auth0 data will be passed to ResponsiveWebApp as prop.auth.
-    // Then you don't have to worry about adding the wrapper anywhere else.
-    /*
-    return auth0Config
-      ? (
-        <Auth0Wrapper awaitToken={false}>
-          {responsiveWebAppRender}
-        </Auth0Wrapper>
-      )
-      : responsiveWebAppRender
-    */
-    return responsiveWebAppRender
+    return (
+      <ResponsiveWebapp
+        desktopView={desktopView}
+        mobileView={mobileView}
+        LegIcon={MyLegIcon}
+      />
+    )
   }
 }
 
@@ -152,16 +160,18 @@ const innerProvider = (
 
 // render the app
 render(auth0Config
-  ? (<Auth0Provider
-    audience={auth0Config.audience}
-    scope={AUTH0_SCOPE}
-    domain={auth0Config.domain}
-    clientId={auth0Config.clientId}
-    redirectUri={URL_ROOT}
-    {...auth0Callbacks}
-  >
-    {innerProvider}
-  </Auth0Provider>)
+  ? (
+    <Auth0Provider
+      audience={AUTH0_AUDIENCE}
+      scope={AUTH0_SCOPE}
+      domain={auth0Config.domain}
+      clientId={auth0Config.clientId}
+      redirectUri={URL_ROOT}
+      {...auth0Callbacks}
+    >
+      {innerProvider}
+    </Auth0Provider>
+  )
   : innerProvider
 ,
 

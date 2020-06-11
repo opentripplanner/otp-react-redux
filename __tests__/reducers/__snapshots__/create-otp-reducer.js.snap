@@ -110,7 +110,6 @@ Object {
     },
     "favoriteStops": Array [],
     "locations": Array [],
-    "loggedInUser": null,
     "recentPlaces": Array [],
     "recentSearches": Array [],
     "trackRecent": false,
