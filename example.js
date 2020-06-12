@@ -15,12 +15,15 @@ import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
+  CallTakerControls,
   CallTakerPanel,
+  CallTakerWindows,
   DefaultMainPanel,
   MobileMain,
   ResponsiveWebapp,
   Map,
   AppMenu,
+  createCallTakerReducer,
   createOtpReducer
 } from './lib'
 // load the OTP configuration
@@ -50,21 +53,24 @@ if (useCustomIcons) {
 // const MyModeIcon = () => <AerialTram />
 
 // create an initial query for demo/testing purposes
-const initialQuery = {
-  from: {
-    lat: 28.45119,
-    lon: -81.36818,
-    name: 'P&R'
-  },
-  to: {
-    lat: 28.54834,
-    lon: -81.37745,
-    name: 'Downtownish'
-  },
-  numItineraries: 1,
-  maxWalkDistance: 1609.34 * 6, // 2 miles
-  type: 'ITINERARY'
-}
+// FIXME: Remove. This is just for testing.
+const initialQuery = otpConfig.callTakerUrl
+  ? {}
+  : {
+    from: {
+      lat: 28.45119,
+      lon: -81.36818,
+      name: 'P&R'
+    },
+    to: {
+      lat: 28.54834,
+      lon: -81.37745,
+      name: 'Downtownish'
+    },
+    numItineraries: 1,
+    maxWalkDistance: 1609.34 * 6, // 2 miles
+    type: 'ITINERARY'
+  }
 const history = createHashHistory()
 const middleware = [
   thunk,
@@ -79,6 +85,7 @@ if (process.env.NODE_ENV === 'development') {
 // set up the Redux store
 const store = createStore(
   combineReducers({
+    callTaker: createCallTakerReducer(),
     otp: createOtpReducer(otpConfig, initialQuery),
     router: connectRouter(history)
   }),
@@ -112,7 +119,9 @@ class OtpRRExample extends Component {
                 : <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
               }
             </Col>
+            {otpConfig.callTakerUrl ? <CallTakerControls /> : null}
             <Col sm={6} md={8} className='map-container'>
+              {otpConfig.callTakerUrl ? <CallTakerWindows /> : null}
               <Map />
             </Col>
           </Row>
