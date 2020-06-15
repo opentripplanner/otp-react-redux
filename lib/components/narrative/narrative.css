@@ -8,23 +8,27 @@
   font-size: 16px;
 }
 
-/* Form/Narrative scroll bar  */
-.main-panel::-webkit-scrollbar {
+.otp .options > .list {
+  /* FIXME */
+}
+
+/* Options scroll bar  */
+.otp .options > .list::-webkit-scrollbar {
   width: 10px;
 }
 
 /* Track */
-.main-panel::-webkit-scrollbar-track {
+.otp .options > .list::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
 /* Handle */
-.main-panel::-webkit-scrollbar-thumb {
+.otp .options > .list::-webkit-scrollbar-thumb {
   background: #888;
 }
 
 /* Handle on hover */
-.main-panel::-webkit-scrollbar-thumb:hover {
+.otp .options > .list::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
