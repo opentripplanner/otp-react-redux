@@ -16,8 +16,8 @@ import { Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
-  AppNav,
   DefaultMainPanel,
+  DesktopNav,
   Map,
   MobileMain,
   ResponsiveWebapp,
@@ -81,7 +81,7 @@ class OtpRRExample extends Component {
     /** desktop view **/
     const desktopView = (
       <div className='otp'>
-        <AppNav otpConfig={otpConfig} title='OpenTripPlanner' />
+        <DesktopNav />
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
