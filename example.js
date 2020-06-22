@@ -11,21 +11,15 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 
-// Auth0
-import { Auth0Provider } from 'use-auth0-hooks'
-import { accountLinks, getAuth0Callbacks, getAuth0Config } from './lib/util/auth'
-import { AUTH0_AUDIENCE, AUTH0_SCOPE, URL_ROOT } from './lib/util/constants'
-
 // import Bootstrap Grid components for layout
-import { Nav, Navbar, Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
-  AppMenu,
   DefaultMainPanel,
+  DesktopNav,
   Map,
   MobileMain,
-  NavLoginButtonAuth0,
   ResponsiveWebapp,
   createOtpReducer,
   createUserReducer
@@ -81,37 +75,13 @@ const store = createStore(
   compose(applyMiddleware(...middleware))
 )
 
-// Auth0 config and callbacks.
-const auth0Config = getAuth0Config(otpConfig.persistence)
-const auth0Callbacks = getAuth0Callbacks(store)
-
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
     /** desktop view **/
     const desktopView = (
       <div className='otp'>
-        <Navbar fluid inverse>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
-                <AppMenu />
-              </div>
-              <div className='navbar-title' style={{ marginLeft: 50 }}>OpenTripPlanner</div>
-            </Navbar.Brand>
-          </Navbar.Header>
-
-          {auth0Config && (
-            <Navbar.Collapse>
-              <Nav pullRight>
-                <NavLoginButtonAuth0
-                  id='login-control'
-                  links={accountLinks}
-                />
-              </Nav>
-            </Navbar.Collapse>
-          )}
-        </Navbar>
+        <DesktopNav />
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
@@ -146,34 +116,20 @@ class OtpRRExample extends Component {
   }
 }
 
-const innerProvider = (
-  <Provider store={store}>
-    { /**
+// render the app
+render(
+  (
+    <Provider store={store}>
+      { /**
      * If not using router history, simply include OtpRRExample here:
      * e.g.
      * <OtpRRExample />
      */
-    }
-    <OtpRRExample />
-  </Provider>
-)
-
-// render the app
-render(auth0Config
-  ? (
-    <Auth0Provider
-      audience={AUTH0_AUDIENCE}
-      scope={AUTH0_SCOPE}
-      domain={auth0Config.domain}
-      clientId={auth0Config.clientId}
-      redirectUri={URL_ROOT}
-      {...auth0Callbacks}
-    >
-      {innerProvider}
-    </Auth0Provider>
+      }
+      <OtpRRExample />
+    </Provider>
   )
-  : innerProvider
-,
+  ,
 
-document.getElementById('root')
+  document.getElementById('root')
 )
