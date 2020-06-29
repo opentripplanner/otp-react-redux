@@ -273,7 +273,7 @@
 .otp .line-itin .leg-body .route-short-name {
   display: inline-block;
   background-color: #0f6aac;
-  padding: 2px;
+  padding: 2px 3px;
   color: white;
   font-weight: 500;
   font-size: 14px;
