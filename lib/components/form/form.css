@@ -126,6 +126,11 @@
   font-size: 14px;
   line-height: 1.4;
   margin-top: -1px;
+  white-space: pre-wrap;
+}
+
+.otp .settings-preview .summary.tall {
+  line-height: 2.6;
 }
 
 .otp:not(.mobile) .settings-preview .summary {
