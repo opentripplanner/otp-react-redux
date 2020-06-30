@@ -1,0 +1,1 @@
+{"version":3,"sources":["styled.js"],"names":["LineItineraryContainer","styled","div"],"mappings":";;;;;;;;;AAAA;;;;;;;;;;;;;;;;AAEO,IAAMA,sBAAsB,GAAGC,0BAAOC,GAAV,mBAA5B","sourcesContent":["import styled from 'styled-components'\n\nexport const LineItineraryContainer = styled.div`\n  margin-bottom: 20px;\n`\n"]}
