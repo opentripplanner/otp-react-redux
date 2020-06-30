@@ -1415,10 +1415,10 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^1.0.1":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-1.0.2.tgz#2178880ad776e526f3d3965d058b7f9bf7c321bd"
-  integrity sha512-cINOymRBTpuJ3rkZHWHk9xnN0VFpn60elZjutETo6PKE+2tpHG6gM+FN2z2yol2eApxk7e/T37W30GDHChVjoA==
+"@opentripplanner/core-utils@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-1.0.3.tgz#5b8a0731c935f1fa889214c4fd9de8469c71f59c"
+  integrity sha512-lO4yY5+/aQogCkpn55K/5EGw4sNKwtbqAHFutnVUKSek4jAP6h4XOWoSVws9wP5selPZQToN0hVHOE6UCp5QYQ==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@turf/along" "^6.0.1"
