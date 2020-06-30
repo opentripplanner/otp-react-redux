@@ -1,6 +1,6 @@
 {
   "name": "otp-react-redux",
-  "version": "1.0.0-alpha-alpha"
+  "version": "1.0.0-alpha-alpha",
   "description": "A library for writing modern OpenTripPlanner-compatible multimodal journey planning web applications using React and Redux",
   "main": "build/index.js",
   "scripts": {
