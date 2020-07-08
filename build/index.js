@@ -153,6 +153,18 @@ Object.defineProperty(exports, "MobileMain", {
     return _main.default;
   }
 });
+Object.defineProperty(exports, "NavLoginButton", {
+  enumerable: true,
+  get: function get() {
+    return _navLoginButton.default;
+  }
+});
+Object.defineProperty(exports, "NavLoginButtonAuth0", {
+  enumerable: true,
+  get: function get() {
+    return _navLoginButtonAuth.default;
+  }
+});
 Object.defineProperty(exports, "StopViewer", {
   enumerable: true,
   get: function get() {
@@ -187,6 +199,12 @@ Object.defineProperty(exports, "AppMenu", {
   enumerable: true,
   get: function get() {
     return _appMenu.default;
+  }
+});
+Object.defineProperty(exports, "DesktopNav", {
+  enumerable: true,
+  get: function get() {
+    return _desktopNav.default;
   }
 });
 Object.defineProperty(exports, "DefaultMainPanel", {
@@ -241,6 +259,12 @@ Object.defineProperty(exports, "createOtpReducer", {
   enumerable: true,
   get: function get() {
     return _createOtpReducer.default;
+  }
+});
+Object.defineProperty(exports, "createUserReducer", {
+  enumerable: true,
+  get: function get() {
+    return _createUserReducer.default;
   }
 });
 Object.defineProperty(exports, "otpUtils", {
@@ -300,6 +324,10 @@ var _lineItinerary = _interopRequireDefault(require("./components/narrative/line
 
 var _main = _interopRequireDefault(require("./components/mobile/main"));
 
+var _navLoginButton = _interopRequireDefault(require("./components/user/nav-login-button"));
+
+var _navLoginButtonAuth = _interopRequireDefault(require("./components/user/nav-login-button-auth0"));
+
 var _stopViewer = _interopRequireDefault(require("./components/viewers/stop-viewer"));
 
 var _viewStopButton = _interopRequireDefault(require("./components/viewers/view-stop-button"));
@@ -311,6 +339,8 @@ var _viewerContainer = _interopRequireDefault(require("./components/viewers/view
 var _responsiveWebapp = _interopRequireDefault(require("./components/app/responsive-webapp"));
 
 var _appMenu = _interopRequireDefault(require("./components/app/app-menu"));
+
+var _desktopNav = _interopRequireDefault(require("./components/app/desktop-nav"));
 
 var _defaultMainPanel = _interopRequireDefault(require("./components/app/default-main-panel"));
 
@@ -325,6 +355,8 @@ var _narrative = require("./actions/narrative");
 var _api = require("./actions/api");
 
 var _createOtpReducer = _interopRequireDefault(require("./reducers/create-otp-reducer"));
+
+var _createUserReducer = _interopRequireDefault(require("./reducers/create-user-reducer"));
 
 var _util = _interopRequireDefault(require("./util"));
 

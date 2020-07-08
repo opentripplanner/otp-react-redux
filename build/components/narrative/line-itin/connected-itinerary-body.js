@@ -33,8 +33,6 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 var _map = require("../../../actions/map");
 
-var _narrative = require("../../../actions/narrative");
-
 var _ui = require("../../../actions/ui");
 
 var _connectedTransitLegSubheader = _interopRequireDefault(require("./connected-transit-leg-subheader"));
@@ -160,7 +158,6 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 };
 
 var mapDispatchToProps = {
-  setActiveLeg: _narrative.setActiveLeg,
   setViewedTrip: _ui.setViewedTrip,
   showLegDiagram: _map.showLegDiagram
 };

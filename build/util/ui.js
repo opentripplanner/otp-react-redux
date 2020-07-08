@@ -3,104 +3,46 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isMobile = isMobile;
-exports.enableScrollForSelector = enableScrollForSelector;
-exports.getTitle = getTitle;
+exports.renderChildrenWithProps = renderChildrenWithProps;
 
-var _ui = require("../actions/ui");
+require("core-js/modules/es7.object.get-own-property-descriptors");
 
-var _query = require("./query");
+require("core-js/modules/es6.symbol");
 
-var _state = require("./state");
+require("core-js/modules/web.dom.iterable");
 
-// Set default title to the original document title (on load) set in index.html
-var DEFAULT_TITLE = document.title;
+require("core-js/modules/es6.array.iterator");
 
-function isMobile() {
-  // TODO: consider using 3rd-party library?
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
+require("core-js/modules/es6.object.to-string");
+
+require("core-js/modules/es6.object.keys");
+
+var _react = require("react");
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /**
- * Enables scrolling for a specified selector, while disabling scrolling for all
- * other targets. This is adapted from https://stackoverflow.com/a/41601290/915811
- * and intended to fix issues with iOS elastic scrolling, e.g.,
- * https://github.com/conveyal/trimet-mod-otp/issues/92.
+ * Renders children with additional props.
+ * Modified from
+ * https://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children#32371612
+ * @param children the child elements to modify.
+ * @param newProps the props to add.
  */
-
-
-function enableScrollForSelector(selector) {
-  var _overlay = document.querySelector(selector);
-
-  var _clientY = null; // remember Y position on touch start
-
-  _overlay.addEventListener('touchstart', function (event) {
-    if (event.targetTouches.length === 1) {
-      // detect single touch
-      _clientY = event.targetTouches[0].clientY;
-    }
-  }, false);
-
-  _overlay.addEventListener('touchmove', function (event) {
-    if (event.targetTouches.length === 1) {
-      // detect single touch
-      disableRubberBand(event);
-    }
-  }, false);
-
-  function disableRubberBand(event) {
-    var clientY = event.targetTouches[0].clientY - _clientY;
-
-    if (_overlay.scrollTop === 0 && clientY > 0) {
-      // element is at the top of its scroll
-      event.preventDefault();
+function renderChildrenWithProps(children, newProps) {
+  var childrenWithProps = _react.Children.map(children, function (child) {
+    // Checking isValidElement is the safe way and avoids a TS error too.
+    if ((0, _react.isValidElement)(child)) {
+      return (0, _react.cloneElement)(child, _objectSpread({}, newProps));
     }
 
-    if (isOverlayTotallyScrolled() && clientY < 0) {
-      // element is at the top of its scroll
-      event.preventDefault();
-    }
-  }
+    return child;
+  });
 
-  function isOverlayTotallyScrolled() {
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight#Problems_and_solutions
-    return _overlay.scrollHeight - _overlay.scrollTop <= _overlay.clientHeight;
-  }
-}
-
-function getTitle(state) {
-  // Override title can optionally be provided in config.yml
-  var _state$otp = state.otp,
-      config = _state$otp.config,
-      ui = _state$otp.ui,
-      user = _state$otp.user;
-  var title = config.title || DEFAULT_TITLE;
-  var mainPanelContent = ui.mainPanelContent,
-      viewedRoute = ui.viewedRoute,
-      viewedStop = ui.viewedStop;
-
-  switch (mainPanelContent) {
-    case _ui.MainPanelContent.ROUTE_VIEWER:
-      title += ' | Route';
-      if (viewedRoute && viewedRoute.routeId) title += " ".concat(viewedRoute.routeId);
-      break;
-
-    case _ui.MainPanelContent.STOP_VIEWER:
-      title += ' | Stop';
-      if (viewedStop && viewedStop.stopId) title += " ".concat(viewedStop.stopId);
-      break;
-
-    default:
-      var activeSearch = (0, _state.getActiveSearch)(state.otp);
-
-      if (activeSearch) {
-        title += " | ".concat((0, _query.summarizeQuery)(activeSearch.query, user.locations));
-      }
-
-      break;
-  } // if (printView) title += ' | Print'
-
-
-  return title;
+  return childrenWithProps;
 }
 
 //# sourceMappingURL=ui.js

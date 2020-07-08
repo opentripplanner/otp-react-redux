@@ -17,7 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var viewedStop = state.otp.ui.viewedStop;
   return {
-    stopData: viewedStop ? state.otp.transitIndex.stops[viewedStop.stopId] : null,
+    stop: viewedStop ? state.otp.transitIndex.stops[viewedStop.stopId] : null,
     StopMarker: _defaultStopMarker.default
   };
 };

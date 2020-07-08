@@ -2,6 +2,19 @@
 # yarn lockfile v1
 
 
+"@auth0/auth0-spa-js@^1.2.4":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@auth0/auth0-spa-js/-/auth0-spa-js-1.7.0.tgz#4d19a7271bb031da4f696a2209d4bfe03dc857dd"
+  integrity sha512-OAeNUI0bTBdk3cIWJMBLgf4B1DvyPXmbBBDQI7EpGR3pU0/+9d19sDCPC1b9epp6Aa7pnd4OR5u9JIQCc3eSKw==
+  dependencies:
+    abortcontroller-polyfill "^1.4.0"
+    browser-tabs-lock "^1.2.8"
+    core-js "^3.6.4"
+    es-cookie "^1.3.2"
+    fast-text-encoding "^1.0.1"
+    promise-polyfill "^8.1.3"
+    unfetch "^4.1.0"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -1070,7 +1083,7 @@
     "@conveyal/lonlat" "^1.3.0"
     geocoder-arcgis "^2.0.4"
 
-"@conveyal/lonlat@^1.1.2", "@conveyal/lonlat@^1.3.0", "@conveyal/lonlat@^1.4.0":
+"@conveyal/lonlat@^1.1.0", "@conveyal/lonlat@^1.1.2", "@conveyal/lonlat@^1.3.0", "@conveyal/lonlat@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@conveyal/lonlat/-/lonlat-1.4.0.tgz#18a5c1349078a779e710d24af11bc02b24127ba0"
   integrity sha512-ag1FcRuwRGAZgeZ4e3sUq+gblf1Pgma2c9SaIVXluIrgsZ9Lrq7xhCbV0ErN8chyg/OCOoG8m/l3mgzbycQCnQ==
@@ -1248,6 +1261,11 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
+"@mapbox/polyline@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@mapbox/polyline/-/polyline-0.2.0.tgz#6e25980744aa22331f94b645a542c02d3fcfee97"
+  integrity sha1-biWYB0SqIjMflLZFpULALT/P7pc=
+
 "@mapbox/polyline@^1.1.0":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@mapbox/polyline/-/polyline-1.1.1.tgz#ab96e5e6936f4847a4894e14558daf43e40e3bd2"
@@ -1402,9 +1420,10 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@https://gitpkg.now.sh/ibi-group/otp-ui/packages/core-utils?temp-fix-tz-with-lib":
-  version "0.0.22"
-  resolved "https://gitpkg.now.sh/ibi-group/otp-ui/packages/core-utils?temp-fix-tz-with-lib#2847bfd98b524c970fbc40c061b27a849d9744d7"
+"@opentripplanner/core-utils@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-1.2.0.tgz#000eaa57605b73c522ad6243fc27bbb1f182dd7b"
+  integrity sha512-8FeJFywuuWlLnNHqLIu4ZejApVwVKFTJHX2KHMw2Cv+tmNUMvNfmESqZXQ5cMyEjSCdFtdT980/MB5GND+Fy8Q==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@turf/along" "^6.0.1"
@@ -1415,7 +1434,7 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/endpoints-overlay@^1.0.0":
+"@opentripplanner/endpoints-overlay@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-1.0.0.tgz#ea06146e620eb22c1ffb08c07faea9d1a2af8c4b"
   integrity sha512-p5EEyosil5fgVlYDBck50QcSmd7N5Jw0BCfRFOTWr9eDfTqlohOeUTNqOLujlw1Ui+kBDVN9L6fXNDMHAqnjFQ==
@@ -1453,10 +1472,10 @@
     isomorphic-mapzen-search "^1.5.1"
     lodash.memoize "^4.1.2"
 
-"@opentripplanner/geocoder@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.0.0.tgz#ba6eb0e7dcd0301b07e3d57e4a1db1a1a2936c3b"
-  integrity sha512-ohPpO5PiT9a3CxDkXb+loq67ODsK4b1aiuwn0nI44rMpeYAVImrN+YaCdWNPiu9ScM/xxMOpV8p7fYfIpVR8EQ==
+"@opentripplanner/geocoder@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.0.2.tgz#50c40b9405f9fd8bbde66458d6b0074510a09b00"
+  integrity sha512-VuVW7KTmMySfYkf0oMX19z8a4N2jkpbnGKmhJELCu7msff06n0yVeUoEabTpJggXBIA/CW64hKMMsWNi4WUrWQ==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.2"
     "@conveyal/lonlat" "^1.4.0"
@@ -1484,10 +1503,10 @@
     "@opentripplanner/core-utils" "^0.0.22"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-1.0.0.tgz#778442eeb3db48b301b0e3d17ffd79b50925e016"
-  integrity sha512-qXoLvVGkhX8jCHTzgGpcugF6uxzK4Yde/SQD5XdyX3Hc3vbEoskkGeIsDPeS07TMyitxJjSSVYO9LrO2CTfIBQ==
+"@opentripplanner/itinerary-body@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-1.0.1.tgz#d76c8e95800db71748e18d4e50e683b616770da1"
+  integrity sha512-ekuVG/AJ+pBVLjD8BLNEieorWegTK+VK+mg0CGN25auogDXeWerzoQBxe1yl0SRSPcDnYVKruztzF2NXqACraA==
   dependencies:
     "@opentripplanner/core-utils" "^0.0.22"
     "@opentripplanner/humanize-distance" "^0.0.22"
@@ -1569,19 +1588,19 @@
     "@opentripplanner/core-utils" "^0.0.22"
     "@opentripplanner/from-to-location-picker" "^0.0.22"
 
-"@opentripplanner/transitive-overlay@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-1.0.0.tgz#2012ae248cc8f70495feb834f1b0cc2d80c6f41c"
-  integrity sha512-H7biTH9Q8DyX79t/LDTuw0ubSZz71xBS7V1zY6Ee7aOWiKsIarJC3M0z06zmmwy7ZqQyBK5/pPP0f5nDIXCQ6w==
+"@opentripplanner/transitive-overlay@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-1.0.1.tgz#f5a3236f94084d3520b64bfbd68f761ea6ce7e13"
+  integrity sha512-afNHUCEmGqvqQkRvhQalUdCt2KDkFQUClybWrj/dZLZ44DVYDs+RP9adNy/2PrdmYLHqZ4FxwHrnXtJLOKk1lw==
   dependencies:
     "@opentripplanner/core-utils" "^0.0.22"
     lodash.isequal "^4.5.0"
-    transitive-js "^0.13.2"
+    transitive-js "^0.13.3"
 
-"@opentripplanner/trip-details@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-1.0.0.tgz#ca17f2960b5c16008ddb33b3367c154f3666c84a"
-  integrity sha512-cm3XoojtLeYAfJLx22GVb8fGxeZYtNhEJ8OeCQPaCl63SYpq+9CWFDaDTI6Qn6oT8p9KgWto7ffHzFRDJDCoMA==
+"@opentripplanner/trip-details@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-1.1.0.tgz#d6e3b6fdb28f4eb16d8d66d9e725d36e588b8148"
+  integrity sha512-EV8loand9SLysB/fnlOsMqbT8zcChAWwadZ+jWvT32bc46B5FLxy/hEwboPcesgdqJiJX/hNqfxINwv6BO+TiQ==
   dependencies:
     "@opentripplanner/core-utils" "^0.0.22"
     "@opentripplanner/humanize-distance" "^0.0.22"
@@ -2092,6 +2111,11 @@ abbrev@1, abbrev@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
   integrity sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==
+
+abortcontroller-polyfill@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/abortcontroller-polyfill/-/abortcontroller-polyfill-1.4.0.tgz#0d5eb58e522a461774af8086414f68e1dda7a6c4"
+  integrity sha512-3ZFfCRfDzx3GFjO6RAkYx81lPGpUS20ISxux9gLxuKnqafNcFQo59+IoZqpO2WvQlyc287B62HDnDdNYRmlvWA==
 
 accounting@^0.4.1:
   version "0.4.1"
@@ -3752,6 +3776,11 @@ browser-resolve@^1.11.0, browser-resolve@^1.11.3, browser-resolve@^1.7.0:
   dependencies:
     resolve "1.1.7"
 
+browser-tabs-lock@^1.2.8:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/browser-tabs-lock/-/browser-tabs-lock-1.2.8.tgz#5642cad86df41111065a44c3ba744ce19b2af72f"
+  integrity sha512-Xrj33YUTltPDoGrD1KnaAn5ZuxnnlJFcIW9srVTPHbMNPd9MlcnBCWaGV0STlvGKu8Ok0ad5qxyx5sIwFTr/Ig==
+
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/browserify-aes/-/browserify-aes-1.2.0.tgz#326734642f403dabc3003209853bb70ad428ef48"
@@ -4973,6 +5002,11 @@ core-js@^3.1.4:
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.1.4.tgz#3a2837fc48e582e1ae25907afcd6cf03b0cc7a07"
   integrity sha512-YNZN8lt82XIMLnLirj9MhKDFZHalwzzrL9YLt6eb0T5D0EDl4IQ90IGkua8mHbnxNrkj1d8hbdizMc0Qmg1WnQ==
+
+core-js@^3.6.4:
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
+  integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
 
 core-util-is@1.0.2, "core-util-is@>=1.0.1 <1.1.0-0", core-util-is@~1.0.0:
   version "1.0.2"
@@ -6239,6 +6273,11 @@ es-abstract@^1.17.0-next.1:
     string.prototype.trimleft "^2.1.0"
     string.prototype.trimright "^2.1.0"
 
+es-cookie@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/es-cookie/-/es-cookie-1.3.2.tgz#80e831597f72a25721701bdcb21d990319acd831"
+  integrity sha512-UTlYYhXGLOy05P/vKVT2Ui7WtC7NiRzGtJyAKKn32g5Gvcjn7KAClLPWlipCtxIus934dFg9o9jXiBL0nP+t9Q==
+
 es-to-primitive@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/es-to-primitive/-/es-to-primitive-1.2.0.tgz#edf72478033456e8dda8ef09e00ad9650707f377"
@@ -6796,6 +6835,11 @@ fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
+
+fast-text-encoding@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/fast-text-encoding/-/fast-text-encoding-1.0.2.tgz#ff1ad5677bde049e0f8656aa6083a7ef2c5836e2"
+  integrity sha512-5rQdinSsycpzvAoHga2EDn+LRX1d5xLFsuNG0Kg61JrAT/tASXcLL0nf/33v+sAxlQcfYmWbTURa1mmAf55jGw==
 
 fastparse@^1.1.1:
   version "1.1.2"
@@ -13210,6 +13254,11 @@ promise-inflight@^1.0.1, promise-inflight@~1.0.1:
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
   integrity sha1-mEcocL8igTL8vdhoEputEsPAKeM=
 
+promise-polyfill@^8.1.3:
+  version "8.1.3"
+  resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-8.1.3.tgz#8c99b3cf53f3a91c68226ffde7bde81d7f904116"
+  integrity sha512-MG5r82wBzh7pSKDRa9y+vllNHz3e3d4CNj1PQE4BQYxLme0gKYYBm9YENq+UkEikyZ0XbiGWxYlVw3Rl9O/U8g==
+
 promise-retry@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/promise-retry/-/promise-retry-1.1.1.tgz#6739e968e3051da20ce6497fb2b50f6911df3d6d"
@@ -13404,6 +13453,15 @@ query-string@^6.8.2:
   version "6.9.0"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.9.0.tgz#1c3b727c370cf00f177c99f328fda2108f8fa3dd"
   integrity sha512-KG4bhCFYapExLsUHrFt+kQVEegF2agm4cpF/VNc6pZVthIfCc/GK8t8VyNIE3nyXG9DK3Tf2EGkxjR6/uRdYsA==
+  dependencies:
+    decode-uri-component "^0.2.0"
+    split-on-first "^1.0.0"
+    strict-uri-encode "^2.0.0"
+
+query-string@^6.8.3:
+  version "6.12.1"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.12.1.tgz#2ae4d272db4fba267141665374e49a1de09e8a7c"
+  integrity sha512-OHj+zzfRMyj3rmo/6G8a5Ifvw3AleL/EbcHMD27YA31Q+cO5lfmQxECkImuNVjcskLcvBRVHNAB3w6udMs1eAA==
   dependencies:
     decode-uri-component "^0.2.0"
     split-on-first "^1.0.0"
@@ -16037,10 +16095,10 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
-transitive-js@^0.13.2:
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/transitive-js/-/transitive-js-0.13.2.tgz#ca8adde4ccf5c1fb02623df287ac3c91499c566a"
-  integrity sha512-2r6uoA7pCOyMeecTOWgT+MJMa+gVmLlBR2+s1YKYxBYmusS5Lx24ICqc3RVA2+yE36k9fe+ReMBOcBCoK2mY6w==
+transitive-js@^0.13.3:
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/transitive-js/-/transitive-js-0.13.3.tgz#4c1671628a65551d7b70b53362300d7017fc0ac9"
+  integrity sha512-vm3v3HuCcmoL+64pew5MHltOabN+ONhs/IonHqf6sRWFUcpVgrUBc9OWLzkJpi1DDPiLjZa6KP27WuoZ1Mk/Fg==
   dependencies:
     augment "4.3.0"
     component-each "0.2.6"
@@ -16269,6 +16327,11 @@ underscore@~1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.7.0.tgz#6bbaf0877500d36be34ecaa584e0db9fef035209"
   integrity sha1-a7rwh3UA02vjTsqlhODbn+8DUgk=
+
+unfetch@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-4.1.0.tgz#6ec2dd0de887e58a4dee83a050ded80ffc4137db"
+  integrity sha512-crP/n3eAPUJxZXM9T80/yv0YhkTEx2K1D3h7D1AJM6fzsWZrxdyRuLN0JH/dkZh1LNH8LxCnBzoPFCPbb2iGpg==
 
 unherit@^1.0.4:
   version "1.1.2"
@@ -16550,6 +16613,14 @@ url@^0.11.0, url@~0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-auth0-hooks@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/use-auth0-hooks/-/use-auth0-hooks-0.7.0.tgz#879a930ee36b893c91616ffa9b609ed8f685ff57"
+  integrity sha512-vL+G4jDu0nQduaMwg1+TMdLORpMgMQx72iPq0LGiEw0tXPmLmuIwi/7e7yrGJu+LuwZfD3g1qbI6Pjb+bDV7nw==
+  dependencies:
+    "@auth0/auth0-spa-js" "^1.2.4"
+    query-string "^6.8.3"
 
 use@^3.1.0:
   version "3.1.1"
@@ -16946,9 +17017,9 @@ websocket-driver@>=0.5.1:
     websocket-extensions ">=0.1.1"
 
 websocket-extensions@>=0.1.1:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
-  integrity sha512-nqHUnMXmBzT0w570r2JpJxfiSD1IzoI+HGVdd3aZ0yNi3ngvQ4jv1dtHt5VGxfI2yj5yqImPhOK4vmIh2xMbGg==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
+  integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
 whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.3:
   version "1.0.5"

@@ -9,6 +9,8 @@ require("core-js/modules/es6.function.name");
 
 require("core-js/modules/es6.regexp.replace");
 
+require("core-js/modules/es6.regexp.split");
+
 require("core-js/modules/es7.symbol.async-iterator");
 
 require("core-js/modules/es6.symbol");
@@ -151,18 +153,35 @@ function (_Component2) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CopyUrlButton).call(this, props));
 
+    _defineProperty(_assertThisInitialized(_this), "_resetState", function () {
+      return _this.setState({
+        showCopied: false
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "_onClick", function () {
-      (0, _copyToClipboard.default)(window.location.href);
+      // If special routerId has been set in session storage, construct copy URL
+      // for itinerary with #/start/ prefix to set routerId on page load.
+      var routerId = window.sessionStorage.getItem('routerId');
+      var url = window.location.href;
+
+      if (routerId) {
+        var parts = url.split('#');
+
+        if (parts.length === 2) {
+          url = "".concat(parts[0], "#/start/x/x/x/").concat(routerId).concat(parts[1]);
+        } else {
+          console.warn('URL not formatted as expected, copied URL will not contain session routerId.', routerId);
+        }
+      }
+
+      (0, _copyToClipboard.default)(url);
 
       _this.setState({
         showCopied: true
       });
 
-      setTimeout(function () {
-        _this.setState({
-          showCopied: false
-        });
-      }, 2000);
+      window.setTimeout(_this._resetState, 2000);
     });
 
     _this.state = {

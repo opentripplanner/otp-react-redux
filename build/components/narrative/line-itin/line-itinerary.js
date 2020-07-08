@@ -116,6 +116,7 @@ function (_NarrativeItinerary) {
           itinerary = _this$props.itinerary,
           itineraryFooter = _this$props.itineraryFooter,
           LegIcon = _this$props.LegIcon,
+          setActiveLeg = _this$props.setActiveLeg,
           showRealtimeAnnotation = _this$props.showRealtimeAnnotation,
           onClick = _this$props.onClick,
           timeFormat = _this$props.timeFormat;
@@ -138,7 +139,11 @@ function (_NarrativeItinerary) {
         onClick: onClick
       }), showRealtimeAnnotation && _react.default.createElement(_simpleRealtimeAnnotation.default, null), active || expanded ? _react.default.createElement(_connectedItineraryBody.default, {
         itinerary: itinerary,
-        LegIcon: LegIcon
+        LegIcon: LegIcon // Don't use setActiveLeg as an import
+        // (will cause error when clicking on itinerary suymmary).
+        // Use the one passed by NarrativeItineraries instead.
+        ,
+        setActiveLeg: setActiveLeg
       }) : null, itineraryFooter);
     }
   }]);

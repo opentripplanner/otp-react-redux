@@ -9,6 +9,8 @@ require("core-js/modules/es7.symbol.async-iterator");
 
 require("core-js/modules/es6.symbol");
 
+require("core-js/modules/es6.regexp.match");
+
 var _coreUtils = _interopRequireDefault(require("@opentripplanner/core-utils"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
@@ -18,6 +20,8 @@ var _react = _interopRequireWildcard(require("react"));
 var _reactBootstrap = require("react-bootstrap");
 
 var _reactRedux = require("react-redux");
+
+var _messages = require("../../util/messages");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -58,10 +62,11 @@ function (_Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
+          caret = _this$props.caret,
           config = _this$props.config,
           query = _this$props.query,
-          caret = _this$props.caret,
-          editButtonText = _this$props.editButtonText; // Show dot indicator if the current query differs from the default query.
+          editButtonText = _this$props.editButtonText;
+      var messages = (0, _messages.mergeMessages)(SettingsPreview.defaultProps, this.props); // Show dot indicator if the current query differs from the default query.
 
       var showDot = _coreUtils.default.query.isNotDefaultQuery(query, config);
 
@@ -73,14 +78,17 @@ function (_Component) {
         className: "fa fa-caret-".concat(caret)
       }))), showDot && _react.default.createElement("div", {
         className: "dot"
-      }));
+      })); // Add tall class to account for vertical centering if there is only
+      // one line in the label (default is 2).
 
+
+      var addClass = messages.label.match(/\n/) ? '' : ' tall';
       return _react.default.createElement("div", {
         className: "settings-preview",
         onClick: this.props.onClick
       }, _react.default.createElement("div", {
-        className: "summary"
-      }, "Transit Options", _react.default.createElement("br", null), "& Preferences"), button, _react.default.createElement("div", {
+        className: "summary".concat(addClass)
+      }, messages.label), button, _react.default.createElement("div", {
         style: {
           clear: 'both'
         }
@@ -107,12 +115,16 @@ _defineProperty(SettingsPreview, "propTypes", {
 _defineProperty(SettingsPreview, "defaultProps", {
   editButtonText: _react.default.createElement("i", {
     className: "fa fa-pencil"
-  })
+  }),
+  messages: {
+    label: 'Transit Options\n& Preferences'
+  }
 });
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     config: state.otp.config,
+    messages: state.otp.config.language.settingsPreview,
     query: state.otp.currentQuery
   };
 };

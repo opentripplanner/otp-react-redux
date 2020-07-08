@@ -9,23 +9,27 @@ require("core-js/modules/es7.symbol.async-iterator");
 
 require("core-js/modules/es6.symbol");
 
-var _react = _interopRequireWildcard(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _reactRedux = require("react-redux");
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactBootstrap = require("react-bootstrap");
 
 var _reactFontawesome = _interopRequireDefault(require("react-fontawesome"));
 
-var _appMenu = _interopRequireDefault(require("../app/app-menu"));
+var _reactRedux = require("react-redux");
 
 var _ui = require("../../actions/ui");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _appMenu = _interopRequireDefault(require("../app/app-menu"));
+
+var _navLoginButtonAuth = _interopRequireDefault(require("../../components/user/nav-login-button-auth0"));
+
+var _auth = require("../../util/auth");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -79,9 +83,10 @@ function (_Component) {
     key: "render",
     value: function render() {
       var _this$props2 = this.props,
-          showBackButton = _this$props2.showBackButton,
+          auth0Config = _this$props2.auth0Config,
           headerAction = _this$props2.headerAction,
           headerText = _this$props2.headerText,
+          showBackButton = _this$props2.showBackButton,
           title = _this$props2.title;
       return _react.default.createElement(_reactBootstrap.Navbar, {
         fluid: true,
@@ -99,7 +104,10 @@ function (_Component) {
         className: "mobile-close"
       }, _react.default.createElement("div", {
         className: "mobile-header-action"
-      }, headerAction)));
+      }, headerAction)), auth0Config && _react.default.createElement(_navLoginButtonAuth.default, {
+        id: "login-control",
+        links: _auth.accountLinks
+      }));
     }
   }]);
 
@@ -117,7 +125,9 @@ _defineProperty(MobileNavigationBar, "propTypes", {
 });
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    auth0Config: (0, _auth.getAuth0Config)(state.otp.config.persistence)
+  };
 };
 
 var mapDispatchToProps = {

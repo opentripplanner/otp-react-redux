@@ -37,7 +37,11 @@ var _reactRedux = require("react-redux");
 
 var _reactRouter = require("react-router");
 
+var _useAuth0Hooks = require("use-auth0-hooks");
+
 var _printLayout = _interopRequireDefault(require("./print-layout"));
+
+var authActions = _interopRequireWildcard(require("../../actions/auth"));
 
 var _config = require("../../actions/config");
 
@@ -49,7 +53,19 @@ var _map = require("../../actions/map");
 
 var _ui = require("../../actions/ui");
 
+var _auth2 = require("../../util/auth");
+
+var _constants = require("../../util/constants");
+
 var _state = require("../../util/state");
+
+var _afterSigninScreen = _interopRequireDefault(require("../user/after-signin-screen"));
+
+var _beforeSigninScreen = _interopRequireDefault(require("../user/before-signin-screen"));
+
+var _userAccountScreen = _interopRequireDefault(require("../user/user-account-screen"));
+
+var _withLoggedInUserSupport = _interopRequireDefault(require("../user/with-logged-in-user-support"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -195,23 +211,24 @@ function (_Component) {
         {
           enableHighAccuracy: true
         });
-      }
+      } // Handle routing to a specific part of the app (e.g. stop viewer) on page
+      // load. (This happens prior to routing request in case special routerId is
+      // set from URL.)
+
+
+      this.props.matchContentToUrl(this.props.location);
 
       if (location && location.search) {
         // Set search params and plan trip if routing enabled and a query exists
         // in the URL.
         this.props.parseUrlQueryString();
-      } // Handle routing to a specific part of the app (e.g. stop viewer) on page
-      // load.
-
-
-      this.props.matchContentToUrl(this.props.location);
+      }
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       // Remove on back button press listener.
-      window.removeEventListener('popstate');
+      window.removeEventListener('popstate', this.props.handleBackButtonPress);
     }
   }, {
     key: "render",
@@ -263,26 +280,52 @@ var mapDispatchToProps = {
   setMapZoom: _config.setMapZoom
 };
 var history = (0, _history.createHashHistory)();
-var WebappWithRouter = (0, _reactRouter.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ResponsiveWebapp));
+var WebappWithRouter = (0, _reactRouter.withRouter)((0, _withLoggedInUserSupport.default)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ResponsiveWebapp)));
+/**
+ * The routing component for the application.
+ * This is the top-most "standard" component,
+ * and we initialize the Auth0Provider here
+ * so that Auth0 services are available everywhere.
+ */
 
-var RouterWrapper =
+var RouterWrapperWithAuth0 =
 /*#__PURE__*/
 function (_Component2) {
-  _inherits(RouterWrapper, _Component2);
+  _inherits(RouterWrapperWithAuth0, _Component2);
 
-  function RouterWrapper() {
-    _classCallCheck(this, RouterWrapper);
+  function RouterWrapperWithAuth0() {
+    var _getPrototypeOf2;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(RouterWrapper).apply(this, arguments));
+    var _this2;
+
+    _classCallCheck(this, RouterWrapperWithAuth0);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this2 = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(RouterWrapperWithAuth0)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this2), "_combineProps", function (routerProps) {
+      return _objectSpread({}, _this2.props, {}, routerProps);
+    });
+
+    return _this2;
   }
 
-  _createClass(RouterWrapper, [{
+  _createClass(RouterWrapperWithAuth0, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
-      var routerConfig = this.props.routerConfig;
-      return _react.default.createElement(_connectedReactRouter.ConnectedRouter, {
+      var _this$props4 = this.props,
+          auth0Config = _this$props4.auth0Config,
+          processSignIn = _this$props4.processSignIn,
+          routerConfig = _this$props4.routerConfig,
+          showAccessTokenError = _this$props4.showAccessTokenError,
+          showLoginError = _this$props4.showLoginError;
+
+      var router = _react.default.createElement(_connectedReactRouter.ConnectedRouter, {
         basename: routerConfig && routerConfig.basename,
         history: history
       }, _react.default.createElement("div", null, _react.default.createElement(_reactRouter.Switch, null, _react.default.createElement(_reactRouter.Route, {
@@ -296,36 +339,71 @@ function (_Component2) {
         '/route', '/route/:id', // Stop viewer (and stop ID).
         '/stop', '/stop/:id'],
         render: function render() {
-          return _react.default.createElement(WebappWithRouter, _this2.props);
+          return _react.default.createElement(WebappWithRouter, _this3.props);
+        }
+      }), _react.default.createElement(_reactRouter.Route // This route lets new or existing users edit or set up their account.
+      , {
+        path: '/account',
+        component: function component(routerProps) {
+          var props = _this3._combineProps(routerProps);
+
+          return _react.default.createElement(_userAccountScreen.default, props);
+        }
+      }), _react.default.createElement(_reactRouter.Route // This route is called immediately after login by Auth0
+      // and by the onRedirectCallback function from /lib/util/auth.js.
+      // For new users, it displays the account setup form.
+      // For existing users, it takes the browser back to the itinerary search prior to login.
+      , {
+        path: '/signedin',
+        component: function component(routerProps) {
+          var props = _this3._combineProps(routerProps);
+
+          return _react.default.createElement(_afterSigninScreen.default, props);
         }
       }), _react.default.createElement(_reactRouter.Route, {
         path: "/print",
         component: function component(routerProps) {
-          // combine the router props with the other props that get
-          // passed to the exported component. This way it's possible for
-          // the PrintLayout component to receive the custom icons prop.
-          var props = _objectSpread({}, _this2.props, {}, routerProps);
+          var props = _this3._combineProps(routerProps);
 
           return _react.default.createElement(_printLayout.default, props);
         }
       }), _react.default.createElement(_reactRouter.Route, {
         render: function render() {
-          return _react.default.createElement(WebappWithRouter, _this2.props);
+          return _react.default.createElement(WebappWithRouter, _this3.props);
         }
       }))));
+
+      return auth0Config ? _react.default.createElement(_useAuth0Hooks.Auth0Provider, {
+        audience: _constants.AUTH0_AUDIENCE,
+        clientId: auth0Config.clientId,
+        domain: auth0Config.domain,
+        onAccessTokenError: showAccessTokenError,
+        onLoginError: showLoginError,
+        onRedirectCallback: processSignIn,
+        onRedirecting: _beforeSigninScreen.default,
+        redirectUri: _constants.URL_ROOT,
+        scope: _constants.AUTH0_SCOPE
+      }, router) : router;
     }
   }]);
 
-  return RouterWrapper;
+  return RouterWrapperWithAuth0;
 }(_react.Component);
 
 var mapStateToWrapperProps = function mapStateToWrapperProps(state, ownProps) {
   return {
+    auth0Config: (0, _auth2.getAuth0Config)(state.otp.config.persistence),
     routerConfig: state.otp.config.reactRouter
   };
 };
 
-var _default = (0, _reactRedux.connect)(mapStateToWrapperProps)(RouterWrapper);
+var mapWrapperDispatchToProps = {
+  processSignIn: authActions.processSignIn,
+  showAccessTokenError: authActions.showAccessTokenError,
+  showLoginError: authActions.showLoginError
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToWrapperProps, mapWrapperDispatchToProps)(RouterWrapperWithAuth0);
 
 exports.default = _default;
 module.exports = exports.default;

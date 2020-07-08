@@ -75,6 +75,8 @@ var _map = require("./map");
 
 var _state = require("../util/state");
 
+var _middleware = require("../util/middleware");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -176,25 +178,26 @@ function routingQuery() {
       var _ref = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee(dispatch, getState) {
-        var otpState, isNewSearch, routingType, activeItinerary, query, params;
+        var state, otpState, isNewSearch, routingType, activeItinerary, query, params, user, storeTripHistory;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                otpState = getState().otp;
+                state = getState();
+                otpState = state.otp;
                 isNewSearch = !searchId;
                 if (isNewSearch) searchId = randId();
                 routingType = otpState.currentQuery.routingType; // Don't permit a routing query if the query is invalid
 
                 if ((0, _state.queryIsValid)(otpState)) {
-                  _context.next = 7;
+                  _context.next = 8;
                   break;
                 }
 
                 console.warn('Query is invalid. Aborting routing query', otpState.currentQuery);
                 return _context.abrupt("return");
 
-              case 7:
+              case 8:
                 activeItinerary = getActiveItinerary(otpState);
                 dispatch(routingRequest({
                   activeItinerary: activeItinerary,
@@ -203,7 +206,7 @@ function routingQuery() {
                 })); // fetch a realtime route
 
                 query = constructRoutingQuery(otpState);
-                fetch(query).then(getJsonAndCheckResponse).then(function (json) {
+                fetch(query, getOtpFetchOptions(state)).then(getJsonAndCheckResponse).then(function (json) {
                   dispatch(routingResponse({
                     response: json,
                     searchId: searchId
@@ -248,10 +251,27 @@ function routingQuery() {
 
                 if (isNewSearch || params.ui_activeSearch !== searchId) {
                   dispatch(updateOtpUrlParams(otpState, searchId));
-                } // also fetch a non-realtime route
+                } // Also fetch a non-realtime route.
+                //
+                // FIXME: The statement below may no longer apply with future work
+                // involving realtime info embedded in the OTP response.
+                // (That action records an entry again in the middleware.)
+                // For users who opted in to store trip request history,
+                // to avoid recording the same trip request twice in the middleware,
+                // only add the user Authorization token to the request
+                // when querying the non-realtime route.
+                //
+                // The advantage of using non-realtime route is that the middleware will be able to
+                // record and provide the theoretical itinerary summary without having to query OTP again.
+                // FIXME: Interestingly, and this could be from a side effect elsewhere,
+                // when a logged-in user refreshes the page, the trip request in the URL is not recorded again
+                // (state.user stays unpopulated until after this function is called).
+                //
 
 
-                fetch(constructRoutingQuery(otpState, true)).then(getJsonAndCheckResponse).then(function (json) {
+                user = state.user;
+                storeTripHistory = user && user.loggedInUser && user.loggedInUser.storeTripHistory;
+                fetch(constructRoutingQuery(otpState, true), getOtpFetchOptions(state, storeTripHistory)).then(getJsonAndCheckResponse).then(function (json) {
                   // FIXME: This is only performed when ignoring realtimeupdates currently, just
                   // to ensure it is not repeated twice.
                   dispatch(nonRealtimeRoutingResponse({
@@ -262,7 +282,7 @@ function routingQuery() {
                   console.error(error); // do nothing
                 });
 
-              case 14:
+              case 17:
               case "end":
                 return _context.stop();
             }
@@ -285,6 +305,49 @@ function getJsonAndCheckResponse(res) {
   }
 
   return res.json();
+}
+/**
+ * This method determines the fetch options (including API key and Authorization headers) for the OTP API.
+ * - If the OTP server is not the middleware server (standalone OTP server),
+ *   an empty object is returned.
+ * - If the OTP server is the same as the middleware server,
+ *   then an object is returned with the following:
+ *   - A middleware API key, if it has been set in the configuration (it is most likely required),
+ *   - An Auth0 accessToken, when includeToken is true and a user is logged in (userState.loggedInUser is not null).
+ * This method assumes JSON request bodies.)
+ */
+
+
+function getOtpFetchOptions(state) {
+  var includeToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var apiBaseUrl, apiKey, token;
+  var _state$otp$config = state.otp.config,
+      api = _state$otp$config.api,
+      persistence = _state$otp$config.persistence;
+
+  if (persistence && persistence.otp_middleware) {
+    var _persistence$otp_midd = persistence.otp_middleware;
+    apiBaseUrl = _persistence$otp_midd.apiBaseUrl;
+    apiKey = _persistence$otp_midd.apiKey;
+  }
+
+  var isOtpServerSameAsMiddleware = apiBaseUrl === api.host;
+
+  if (isOtpServerSameAsMiddleware) {
+    if (includeToken && state.user) {
+      var _state$user = state.user,
+          accessToken = _state$user.accessToken,
+          loggedInUser = _state$user.loggedInUser;
+
+      if (accessToken && loggedInUser) {
+        token = accessToken;
+      }
+    }
+
+    return (0, _middleware.getSecureFetchOptions)(token, apiKey);
+  } else {
+    return {};
+  }
 }
 
 function constructRoutingQuery(otpState, ignoreRealtimeUpdates) {
@@ -1090,7 +1153,7 @@ function setUrlSearch(params) {
 
 
 function updateOtpUrlParams(otpState, searchId) {
-  var otpParams = getRoutingParams(otpState, true);
+  var otpParams = getRoutingParams(otpState);
   return function (dispatch, getState) {
     var params = {}; // Get all OTP-specific params, which will be retained unchanged in the URL
 

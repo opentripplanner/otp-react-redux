@@ -10,17 +10,19 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
+
 // import Bootstrap Grid components for layout
-import { Navbar, Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
   DefaultMainPanel,
+  DesktopNav,
+  Map,
   MobileMain,
   ResponsiveWebapp,
-  Map,
-  AppMenu,
-  createOtpReducer
+  createOtpReducer,
+  createUserReducer
 } from './lib'
 // load the OTP configuration
 import otpConfig from './config.yml'
@@ -67,6 +69,7 @@ if (process.env.NODE_ENV === 'development') {
 const store = createStore(
   combineReducers({
     otp: createOtpReducer(otpConfig),
+    user: createUserReducer(),
     router: connectRouter(history)
   }),
   compose(applyMiddleware(...middleware))
@@ -78,16 +81,7 @@ class OtpRRExample extends Component {
     /** desktop view **/
     const desktopView = (
       <div className='otp'>
-        <Navbar>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
-                <AppMenu />
-              </div>
-              <div className='navbar-title' style={{ marginLeft: 50 }}>OpenTripPlanner</div>
-            </Navbar.Brand>
-          </Navbar.Header>
-        </Navbar>
+        <DesktopNav />
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
@@ -124,15 +118,18 @@ class OtpRRExample extends Component {
 
 // render the app
 render(
-  <Provider store={store}>
-    { /**
+  (
+    <Provider store={store}>
+      { /**
      * If not using router history, simply include OtpRRExample here:
      * e.g.
      * <OtpRRExample />
      */
-    }
-    <OtpRRExample />
+      }
+      <OtpRRExample />
+    </Provider>
+  )
+  ,
 
-  </Provider>,
   document.getElementById('root')
 )

@@ -52,13 +52,16 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 /**
- * Wrapper function for history#push that preserves the current search or, if
+ * Wrapper function for history#push (or, if specified, replace, etc.)
+ * that preserves the current search or, if
  * replaceSearch is provided (including an empty string), replaces the search
  * when routing to a new URL path.
  * @param  {[type]} url           path to route to
  * @param  {string} replaceSearch optional search string to replace current one
+ * @param  {func}   routingMethod the connected-react-router method to execute (defaults to push).
  */
 function routeTo(url, replaceSearch) {
+  var routingMethod = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _connectedReactRouter.push;
   return function (dispatch, getState) {
     // Get search to preserve when routing to new path.
     var _getState = getState(),
@@ -73,7 +76,7 @@ function routeTo(url, replaceSearch) {
       path = "".concat(path).concat(search);
     }
 
-    dispatch((0, _connectedReactRouter.push)(path));
+    dispatch(routingMethod(path));
   };
 }
 /**
@@ -134,8 +137,8 @@ function matchContentToUrl(location) {
             routerId = _ref2[3];
 
         if (!lat || !lon) {
-          // Attempt to parse path. (Legacy UI otp.js used slashes in the
-          // pathname to specify lat, lon, etc.)
+          // Attempt to parse path if lat/lon not found. (Legacy UI otp.js used
+          // slashes in the pathname to specify lat, lon, etc.)
           var _idToParams = idToParams(location.pathname, '/');
 
           var _idToParams2 = _slicedToArray(_idToParams, 6);
@@ -144,16 +147,18 @@ function matchContentToUrl(location) {
           lon = _idToParams2[3];
           zoom = _idToParams2[4];
           routerId = _idToParams2[5];
-        } // Update map location/zoom and optionally override router ID.
+        }
 
+        console.log(lat, lon, zoom, routerId); // Update map location/zoom and optionally override router ID.
 
-        dispatch((0, _config.setMapCenter)({
+        if (+lat && +lon) dispatch((0, _config.setMapCenter)({
           lat: lat,
           lon: lon
         }));
-        dispatch((0, _config.setMapZoom)({
+        if (+zoom) dispatch((0, _config.setMapZoom)({
           zoom: zoom
-        }));
+        })); // If router ID is provided, override the default routerId.
+
         if (routerId) dispatch((0, _config.setRouterId)(routerId));
         dispatch(setMainPanelContent(null));
         break;
@@ -165,6 +170,11 @@ function matchContentToUrl(location) {
     }
   };
 }
+/**
+ * Split the path id into its parts (according to specified delimiter). Parse
+ * numbers if detected.
+ */
+
 
 function idToParams(id) {
   var delimiter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ',';

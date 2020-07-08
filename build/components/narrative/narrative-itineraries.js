@@ -165,6 +165,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+  // FIXME: update signature of these methods,
+  // so that only one argument is passed,
+  // e.g. setActiveLeg({ index, leg })
   return {
     setActiveItinerary: function setActiveItinerary(index) {
       dispatch((0, _narrative.setActiveItinerary)({

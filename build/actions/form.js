@@ -122,7 +122,9 @@ function parseUrlQueryString() {
     var searchId = params.ui_activeSearch || _coreUtils.default.storage.randId(); // Convert strings to numbers/objects and dispatch
 
 
-    dispatch(setQueryParam(planParamsToQuery(planParams, getState().otp.config), searchId));
+    planParamsToQuery(planParams, getState().otp.config).then(function (query) {
+      return dispatch(setQueryParam(query, searchId));
+    });
   };
 }
 

@@ -7,11 +7,27 @@ exports.default = void 0;
 
 require("core-js/modules/es6.object.freeze");
 
+require("core-js/modules/es6.object.assign");
+
+require("core-js/modules/es6.function.name");
+
 require("core-js/modules/es7.symbol.async-iterator");
 
 require("core-js/modules/es6.symbol");
 
-require("core-js/modules/es6.object.assign");
+require("core-js/modules/web.dom.iterable");
+
+require("core-js/modules/es6.array.iterator");
+
+require("core-js/modules/es6.object.to-string");
+
+require("core-js/modules/es6.object.keys");
+
+require("core-js/modules/es7.array.includes");
+
+require("core-js/modules/es6.string.includes");
+
+require("core-js/modules/es6.regexp.split");
 
 var _baseMap = _interopRequireDefault(require("@opentripplanner/base-map"));
 
@@ -22,6 +38,8 @@ var _reactRedux = require("react-redux");
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 var _api = require("../../actions/api");
+
+var _config = require("../../actions/config");
 
 var _map = require("../../actions/map");
 
@@ -109,6 +127,73 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DefaultMap)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_this), "_handleQueryChange", function (oldQuery, newQuery) {
+      var overlays = _this.props.overlays;
+
+      if (overlays && oldQuery.mode) {
+        // Determine any added/removed modes
+        var oldModes = oldQuery.mode.split(',');
+        var newModes = newQuery.mode.split(',');
+        var removed = oldModes.filter(function (m) {
+          return !newModes.includes(m);
+        });
+        var added = newModes.filter(function (m) {
+          return !oldModes.includes(m);
+        });
+        var overlayVisibility = {};
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = overlays[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var oConfig = _step.value;
+            if (!oConfig.modes || oConfig.modes.length !== 1) continue; // TODO: support multi-mode overlays
+
+            var overlayMode = oConfig.modes[0];
+
+            if ((overlayMode === 'CAR_RENT' || overlayMode === 'CAR_HAIL' || overlayMode === 'MICROMOBILITY_RENT') && oConfig.companies) {
+              // Special handling for company-based mode overlays (e.g. carshare, car-hail)
+              var overlayCompany = oConfig.companies[0]; // TODO: handle multi-company overlays
+
+              if (added.includes(overlayMode)) {
+                // Company-based mode was just selected; enable overlay iff overlay's company is active
+                if (newQuery.companies.includes(overlayCompany)) overlayVisibility[oConfig.name] = true;
+              } else if (removed.includes(overlayMode)) {
+                // Company-based mode was just deselected; disable overlay (regardless of company)
+                overlayVisibility[oConfig.name] = false;
+              } else if (newModes.includes(overlayMode) && oldQuery.companies !== newQuery.companies) {
+                // Company-based mode remains selected but companies change
+                overlayVisibility[oConfig.name] = newQuery.companies.includes(overlayCompany);
+              }
+            } else {
+              // Default handling for other modes
+              if (added.includes(overlayMode)) overlayVisibility[oConfig.name] = true;
+              if (removed.includes(overlayMode)) overlayVisibility[oConfig.name] = false;
+            }
+          } // Only trigger update action if there are overlays to update.
+
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return != null) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
+        if (Object.keys(overlayVisibility).length > 0) {
+          _this.props.updateOverlayVisibility(overlayVisibility);
+        }
+      }
+    });
+
     _defineProperty(_assertThisInitialized(_this), "onMapClick", function (e) {
       _this.props.setMapPopupLocationAndGeocode(e);
     });
@@ -133,6 +218,12 @@ function (_Component) {
   }
 
   _createClass(DefaultMap, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      // Check if any overlays should be toggled due to mode change
+      this._handleQueryChange(prevProps.query, this.props.query);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props2 = this.props,
@@ -218,11 +309,14 @@ function (_Component) {
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  var overlays = state.otp.config.map && state.otp.config.map.overlays ? state.otp.config.map.overlays : [];
   return {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     mapConfig: state.otp.config.map,
     mapPopupLocation: state.otp.ui.mapPopupLocation,
+    overlays: overlays,
+    query: state.otp.currentQuery,
     vehicleRentalStations: state.otp.overlay.vehicleRental.stations
   };
 };
@@ -233,6 +327,7 @@ var mapDispatchToProps = {
   setLocation: _map.setLocation,
   setMapPopupLocation: _map.setMapPopupLocation,
   setMapPopupLocationAndGeocode: _map.setMapPopupLocationAndGeocode,
+  updateOverlayVisibility: _config.updateOverlayVisibility,
   vehicleRentalQuery: _api.vehicleRentalQuery
 };
 

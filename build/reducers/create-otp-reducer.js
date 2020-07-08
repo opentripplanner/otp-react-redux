@@ -174,6 +174,21 @@ function getInitialState(userDefinedConfig, initialQuery) {
         type: 'suggested'
       });
     })));
+  } // Check for alternative routerId in session storage. This is generally used
+  // for testing single GTFS feed OTP graphs that are deployed to feed-specific
+  // routers (e.g., https://otp.server.com/otp/routers/non_default_router).
+  // This routerId session value is initially set by visiting otp-rr
+  // with the path /start/:latLonZoomRouter, which dispatches the SET_ROUTER_ID
+  // action and stores the value in sessionStorage.
+  // Note: this mechanism assumes that the OTP API path is otp/routers/default.
+
+
+  var routerId = window.sessionStorage.getItem('routerId'); // If routerId is found, update the config.api.path (keep the original config
+  // value at originalPath in case it needs to be reverted.)
+
+  if (routerId) {
+    config.api.originalPath = userDefinedConfig.api.path;
+    config.api.path = "/otp/routers/".concat(routerId);
   }
 
   var queryModes = currentQuery.mode.split(','); // If 'TRANSIT' is included in the mode list, replace it with individual modes
@@ -809,12 +824,23 @@ function createOtpReducer(config, initialQuery) {
         });
 
       case 'SET_ROUTER_ID':
-        var routerId = action.payload || 'default';
+        var routerId = action.payload; // Store original path value in originalPath variable.
+
+        var originalPath = config.api.originalPath || config.api.path || '/otp/routers/default';
+        var path = routerId ? "/otp/routers/".concat(routerId) // If routerId is null, revert to the original config's API path (or
+        // the standard path if that is not found).
+        : originalPath; // Store routerId in session storage (persists through page reloads but
+        // not when a new tab/window is opened).
+
+        if (routerId) window.sessionStorage.setItem('routerId', routerId);else window.sessionStorage.removeItem('routerId');
         return (0, _immutabilityHelper.default)(state, {
           config: {
             api: {
               path: {
-                $set: "/otp/routers/".concat(routerId)
+                $set: path
+              },
+              originalPath: {
+                $set: originalPath
               }
             }
           }
