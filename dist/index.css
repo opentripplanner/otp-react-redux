@@ -2219,6 +2219,10 @@
   font-size: 14px;
   line-height: 1.4;
   margin-top: -1px;
+  white-space: pre-wrap;
+}.otp .settings-preview .summary.tall {
+  line-height: 2.6;
+}.otp:not(.mobile) .settings-preview .summary {
   /* Prevent overflow from being multi-line. 36px is edit button width. */
   width: calc(100% - 36px);
 }.otp.mobile .settings-preview .summary {
@@ -2834,6 +2838,31 @@
   left: 0;
   right: 0;
   height: 200px;
+}/**
+  * HACK: Override bootstrap's defaults, for the <NavLoginButton> implementation
+  * inside the <Navbar> in example.js.
+  * We don't want to use the rendered <NavDropDown> inside a <Nav> while in mobile mode
+  * (otherwise, the menu items get displayed full screen width, which is undesirable).
+  * In mobile mode, the CSS rules below let us fit the sign-in component to the top-right corner
+  * and add back some of the default visuals provided by react-bootstrap's <Nav>.
+  * In desktop and mobile modes, we change the link color to white for consistency with the AppMenu component.
+  */.otp.mobile .navbar .container-fluid > li {
+  display: block;
+  padding: 14px;
+  position: fixed;
+  right: 0;
+  top: 0;
+}.otp.mobile .navbar li.dropdown.open {
+  background-color: #080808;
+}.navbar-inverse .navbar-nav > li > a,
+.otp.mobile .navbar .container-fluid > li > a,
+.otp.mobile .navbar .container-fluid > li.dropdown.open > a {
+  color: #fff;
+  text-decoration: none;
+}.navbar-inverse .navbar-nav > li > a:hover,
+.otp.mobile .navbar .container-fluid > li > a:hover {
+  color: #ddd;
+  text-decoration: none;
 }/* shared stop/trip viewer styles */.otp .stop-viewer-header, .otp .trip-viewer-header, .otp .route-viewer-header {
   background-color: #ddd;
   padding: 12px;

@@ -1,0 +1,1 @@
+{"version":3,"sources":["user.js"],"names":["isNewUser","loggedInUser","hasConsentedToTerms"],"mappings":";;;;;;;AACO,SAASA,SAAT,CAAoBC,YAApB,EAAkC;AACvC,SAAO,CAACA,YAAY,CAACC,mBAArB;AACD","sourcesContent":["\nexport function isNewUser (loggedInUser) {\n  return !loggedInUser.hasConsentedToTerms\n}\n"]}
