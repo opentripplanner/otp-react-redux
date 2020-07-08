@@ -1366,6 +1366,20 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
+"@opentripplanner/core-utils@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-1.2.0.tgz#000eaa57605b73c522ad6243fc27bbb1f182dd7b"
+  integrity sha512-8FeJFywuuWlLnNHqLIu4ZejApVwVKFTJHX2KHMw2Cv+tmNUMvNfmESqZXQ5cMyEjSCdFtdT980/MB5GND+Fy8Q==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    lodash.isequal "^4.5.0"
+    moment "^2.24.0"
+    moment-timezone "^0.5.27"
+    prop-types "^15.7.2"
+    qs "^6.9.1"
+
 "@opentripplanner/endpoints-overlay@^0.0.21":
   version "0.0.21"
   resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-0.0.21.tgz#6b709aac4948ee153ef24438af60c75218a56ee7"
@@ -1393,6 +1407,16 @@
     "@conveyal/geocoder-arcgis-geojson" "^0.0.2"
     "@conveyal/lonlat" "^1.4.0"
     isomorphic-mapzen-search "^1.4.1"
+    lodash.memoize "^4.1.2"
+
+"@opentripplanner/geocoder@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.0.2.tgz#50c40b9405f9fd8bbde66458d6b0074510a09b00"
+  integrity sha512-VuVW7KTmMySfYkf0oMX19z8a4N2jkpbnGKmhJELCu7msff06n0yVeUoEabTpJggXBIA/CW64hKMMsWNi4WUrWQ==
+  dependencies:
+    "@conveyal/geocoder-arcgis-geojson" "^0.0.2"
+    "@conveyal/lonlat" "^1.4.0"
+    isomorphic-mapzen-search "^1.5.1"
     lodash.memoize "^4.1.2"
 
 "@opentripplanner/humanize-distance@^0.0.21":
@@ -8473,7 +8497,7 @@ isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-isomorphic-mapzen-search@^1.4.1:
+isomorphic-mapzen-search@^1.4.1, isomorphic-mapzen-search@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/isomorphic-mapzen-search/-/isomorphic-mapzen-search-1.5.1.tgz#5ac0214cec436fb550e8ef362cf8d11b17de8e9c"
   integrity sha512-38GcjidOqjVQkUzDovx+ceUXHwOliIoFq+qJ/zUzaZwn2h8qEANLMTjaZkFvYN2XdSGB65zBOH5n/iP/Vs1ejA==
