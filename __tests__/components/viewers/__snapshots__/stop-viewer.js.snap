@@ -304,38 +304,184 @@ exports[`components > viewers > stop viewer should render countdown times after 
             <b>
               Plan a trip:
             </b>
-             
-            <LocationIcon
-              type="from"
+            <FromToLocationPicker
+              fromText="From here"
+              location={null}
+              onFromClick={[Function]}
+              onToClick={[Function]}
+              setLocation={null}
+              showIcons={true}
+              toText="To here"
             >
-              <i
-                className="fa from-location-icon fa-dot-circle-o"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              From here
-            </button>
-             
-            |
-             
-            <LocationIcon
-              type="to"
-            >
-              <i
-                className="fa to-location-icon fa-map-marker"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              To here
-            </button>
+              <styled__FromToPickerSpan>
+                <span
+                  className="styled__FromToPickerSpan-p56b41-1 ddYzcs"
+                >
+                  <styled__LocationPickerSpan>
+                    <span
+                      className="styled__LocationPickerSpan-p56b41-0 hDNuMB"
+                    >
+                      <LocationIcon
+                        size="0.9em"
+                        type="from"
+                      >
+                        <styled__FromIcon
+                          size="0.9em"
+                          title="From Location Icon"
+                        >
+                          <DotCircle
+                            className="styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                            size="0.9em"
+                            title="From Location Icon"
+                          >
+                            <Styled(Component)
+                              className="styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                              iconAttrs={
+                                Object {
+                                  "fill": "currentColor",
+                                  "xmlns": "http://www.w3.org/2000/svg",
+                                }
+                              }
+                              iconVerticalAlign="-.125em"
+                              iconViewBox="0 0 512 512"
+                              size="0.9em"
+                              title="From Location Icon"
+                            >
+                              <ForwardRef
+                                className="sc-AxjAm dVOzqR styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="-.125em"
+                                iconViewBox="0 0 512 512"
+                                size="0.9em"
+                                title="From Location Icon"
+                              >
+                                <svg
+                                  className="sc-AxjAm dVOzqR styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="0.9em"
+                                  role="img"
+                                  viewBox="0 0 512 512"
+                                  width="0.9em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <title
+                                    key="icon-title"
+                                  >
+                                    From Location Icon
+                                  </title>
+                                  <path
+                                    d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"
+                                    fill="currentColor"
+                                    key="k0"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </Styled(Component)>
+                          </DotCircle>
+                        </styled__FromIcon>
+                      </LocationIcon>
+                      <styled__Button
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="styled__Button-p56b41-2 bjZNPA"
+                          onClick={[Function]}
+                        >
+                          From here
+                        </button>
+                      </styled__Button>
+                    </span>
+                  </styled__LocationPickerSpan>
+                  <styled__LocationPickerSpan>
+                    <span
+                      className="styled__LocationPickerSpan-p56b41-0 hDNuMB"
+                    >
+                      <LocationIcon
+                        size="0.9em"
+                        type="to"
+                      >
+                        <styled__ToIcon
+                          size="0.9em"
+                          title="To Location Icon"
+                        >
+                          <MapMarkerAlt
+                            className="styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                            size="0.9em"
+                            title="To Location Icon"
+                          >
+                            <Styled(Component)
+                              className="styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                              iconAttrs={
+                                Object {
+                                  "fill": "currentColor",
+                                  "xmlns": "http://www.w3.org/2000/svg",
+                                }
+                              }
+                              iconVerticalAlign="-.125em"
+                              iconViewBox="0 0 384 512"
+                              size="0.9em"
+                              title="To Location Icon"
+                            >
+                              <ForwardRef
+                                className="sc-AxjAm dVOzqR styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="-.125em"
+                                iconViewBox="0 0 384 512"
+                                size="0.9em"
+                                title="To Location Icon"
+                              >
+                                <svg
+                                  className="sc-AxjAm dVOzqR styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="0.9em"
+                                  role="img"
+                                  viewBox="0 0 384 512"
+                                  width="0.9em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <title
+                                    key="icon-title"
+                                  >
+                                    To Location Icon
+                                  </title>
+                                  <path
+                                    d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
+                                    fill="currentColor"
+                                    key="k0"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </Styled(Component)>
+                          </MapMarkerAlt>
+                        </styled__ToIcon>
+                      </LocationIcon>
+                      <styled__Button
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="styled__Button-p56b41-2 bjZNPA"
+                          onClick={[Function]}
+                        >
+                          To here
+                        </button>
+                      </styled__Button>
+                    </span>
+                  </styled__LocationPickerSpan>
+                </span>
+              </styled__FromToPickerSpan>
+            </FromToLocationPicker>
           </div>
           <div
             style={
@@ -858,38 +1004,184 @@ exports[`components > viewers > stop viewer should render countdown times for st
             <b>
               Plan a trip:
             </b>
-             
-            <LocationIcon
-              type="from"
+            <FromToLocationPicker
+              fromText="From here"
+              location={null}
+              onFromClick={[Function]}
+              onToClick={[Function]}
+              setLocation={null}
+              showIcons={true}
+              toText="To here"
             >
-              <i
-                className="fa from-location-icon fa-dot-circle-o"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              From here
-            </button>
-             
-            |
-             
-            <LocationIcon
-              type="to"
-            >
-              <i
-                className="fa to-location-icon fa-map-marker"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              To here
-            </button>
+              <styled__FromToPickerSpan>
+                <span
+                  className="styled__FromToPickerSpan-p56b41-1 ddYzcs"
+                >
+                  <styled__LocationPickerSpan>
+                    <span
+                      className="styled__LocationPickerSpan-p56b41-0 hDNuMB"
+                    >
+                      <LocationIcon
+                        size="0.9em"
+                        type="from"
+                      >
+                        <styled__FromIcon
+                          size="0.9em"
+                          title="From Location Icon"
+                        >
+                          <DotCircle
+                            className="styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                            size="0.9em"
+                            title="From Location Icon"
+                          >
+                            <Styled(Component)
+                              className="styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                              iconAttrs={
+                                Object {
+                                  "fill": "currentColor",
+                                  "xmlns": "http://www.w3.org/2000/svg",
+                                }
+                              }
+                              iconVerticalAlign="-.125em"
+                              iconViewBox="0 0 512 512"
+                              size="0.9em"
+                              title="From Location Icon"
+                            >
+                              <ForwardRef
+                                className="sc-AxjAm dVOzqR styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="-.125em"
+                                iconViewBox="0 0 512 512"
+                                size="0.9em"
+                                title="From Location Icon"
+                              >
+                                <svg
+                                  className="sc-AxjAm dVOzqR styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="0.9em"
+                                  role="img"
+                                  viewBox="0 0 512 512"
+                                  width="0.9em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <title
+                                    key="icon-title"
+                                  >
+                                    From Location Icon
+                                  </title>
+                                  <path
+                                    d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"
+                                    fill="currentColor"
+                                    key="k0"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </Styled(Component)>
+                          </DotCircle>
+                        </styled__FromIcon>
+                      </LocationIcon>
+                      <styled__Button
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="styled__Button-p56b41-2 bjZNPA"
+                          onClick={[Function]}
+                        >
+                          From here
+                        </button>
+                      </styled__Button>
+                    </span>
+                  </styled__LocationPickerSpan>
+                  <styled__LocationPickerSpan>
+                    <span
+                      className="styled__LocationPickerSpan-p56b41-0 hDNuMB"
+                    >
+                      <LocationIcon
+                        size="0.9em"
+                        type="to"
+                      >
+                        <styled__ToIcon
+                          size="0.9em"
+                          title="To Location Icon"
+                        >
+                          <MapMarkerAlt
+                            className="styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                            size="0.9em"
+                            title="To Location Icon"
+                          >
+                            <Styled(Component)
+                              className="styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                              iconAttrs={
+                                Object {
+                                  "fill": "currentColor",
+                                  "xmlns": "http://www.w3.org/2000/svg",
+                                }
+                              }
+                              iconVerticalAlign="-.125em"
+                              iconViewBox="0 0 384 512"
+                              size="0.9em"
+                              title="To Location Icon"
+                            >
+                              <ForwardRef
+                                className="sc-AxjAm dVOzqR styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="-.125em"
+                                iconViewBox="0 0 384 512"
+                                size="0.9em"
+                                title="To Location Icon"
+                              >
+                                <svg
+                                  className="sc-AxjAm dVOzqR styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="0.9em"
+                                  role="img"
+                                  viewBox="0 0 384 512"
+                                  width="0.9em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <title
+                                    key="icon-title"
+                                  >
+                                    To Location Icon
+                                  </title>
+                                  <path
+                                    d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
+                                    fill="currentColor"
+                                    key="k0"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </Styled(Component)>
+                          </MapMarkerAlt>
+                        </styled__ToIcon>
+                      </LocationIcon>
+                      <styled__Button
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="styled__Button-p56b41-2 bjZNPA"
+                          onClick={[Function]}
+                        >
+                          To here
+                        </button>
+                      </styled__Button>
+                    </span>
+                  </styled__LocationPickerSpan>
+                </span>
+              </styled__FromToPickerSpan>
+            </FromToLocationPicker>
           </div>
           <div
             style={
@@ -1421,38 +1713,184 @@ exports[`components > viewers > stop viewer should render times after midnight w
             <b>
               Plan a trip:
             </b>
-             
-            <LocationIcon
-              type="from"
+            <FromToLocationPicker
+              fromText="From here"
+              location={null}
+              onFromClick={[Function]}
+              onToClick={[Function]}
+              setLocation={null}
+              showIcons={true}
+              toText="To here"
             >
-              <i
-                className="fa from-location-icon fa-dot-circle-o"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              From here
-            </button>
-             
-            |
-             
-            <LocationIcon
-              type="to"
-            >
-              <i
-                className="fa to-location-icon fa-map-marker"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              To here
-            </button>
+              <styled__FromToPickerSpan>
+                <span
+                  className="styled__FromToPickerSpan-p56b41-1 ddYzcs"
+                >
+                  <styled__LocationPickerSpan>
+                    <span
+                      className="styled__LocationPickerSpan-p56b41-0 hDNuMB"
+                    >
+                      <LocationIcon
+                        size="0.9em"
+                        type="from"
+                      >
+                        <styled__FromIcon
+                          size="0.9em"
+                          title="From Location Icon"
+                        >
+                          <DotCircle
+                            className="styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                            size="0.9em"
+                            title="From Location Icon"
+                          >
+                            <Styled(Component)
+                              className="styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                              iconAttrs={
+                                Object {
+                                  "fill": "currentColor",
+                                  "xmlns": "http://www.w3.org/2000/svg",
+                                }
+                              }
+                              iconVerticalAlign="-.125em"
+                              iconViewBox="0 0 512 512"
+                              size="0.9em"
+                              title="From Location Icon"
+                            >
+                              <ForwardRef
+                                className="sc-AxjAm dVOzqR styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="-.125em"
+                                iconViewBox="0 0 512 512"
+                                size="0.9em"
+                                title="From Location Icon"
+                              >
+                                <svg
+                                  className="sc-AxjAm dVOzqR styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="0.9em"
+                                  role="img"
+                                  viewBox="0 0 512 512"
+                                  width="0.9em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <title
+                                    key="icon-title"
+                                  >
+                                    From Location Icon
+                                  </title>
+                                  <path
+                                    d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"
+                                    fill="currentColor"
+                                    key="k0"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </Styled(Component)>
+                          </DotCircle>
+                        </styled__FromIcon>
+                      </LocationIcon>
+                      <styled__Button
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="styled__Button-p56b41-2 bjZNPA"
+                          onClick={[Function]}
+                        >
+                          From here
+                        </button>
+                      </styled__Button>
+                    </span>
+                  </styled__LocationPickerSpan>
+                  <styled__LocationPickerSpan>
+                    <span
+                      className="styled__LocationPickerSpan-p56b41-0 hDNuMB"
+                    >
+                      <LocationIcon
+                        size="0.9em"
+                        type="to"
+                      >
+                        <styled__ToIcon
+                          size="0.9em"
+                          title="To Location Icon"
+                        >
+                          <MapMarkerAlt
+                            className="styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                            size="0.9em"
+                            title="To Location Icon"
+                          >
+                            <Styled(Component)
+                              className="styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                              iconAttrs={
+                                Object {
+                                  "fill": "currentColor",
+                                  "xmlns": "http://www.w3.org/2000/svg",
+                                }
+                              }
+                              iconVerticalAlign="-.125em"
+                              iconViewBox="0 0 384 512"
+                              size="0.9em"
+                              title="To Location Icon"
+                            >
+                              <ForwardRef
+                                className="sc-AxjAm dVOzqR styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="-.125em"
+                                iconViewBox="0 0 384 512"
+                                size="0.9em"
+                                title="To Location Icon"
+                              >
+                                <svg
+                                  className="sc-AxjAm dVOzqR styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="0.9em"
+                                  role="img"
+                                  viewBox="0 0 384 512"
+                                  width="0.9em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <title
+                                    key="icon-title"
+                                  >
+                                    To Location Icon
+                                  </title>
+                                  <path
+                                    d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
+                                    fill="currentColor"
+                                    key="k0"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </Styled(Component)>
+                          </MapMarkerAlt>
+                        </styled__ToIcon>
+                      </LocationIcon>
+                      <styled__Button
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="styled__Button-p56b41-2 bjZNPA"
+                          onClick={[Function]}
+                        >
+                          To here
+                        </button>
+                      </styled__Button>
+                    </span>
+                  </styled__LocationPickerSpan>
+                </span>
+              </styled__FromToPickerSpan>
+            </FromToLocationPicker>
           </div>
           <div
             style={
@@ -2341,38 +2779,184 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             <b>
               Plan a trip:
             </b>
-             
-            <LocationIcon
-              type="from"
+            <FromToLocationPicker
+              fromText="From here"
+              location={null}
+              onFromClick={[Function]}
+              onToClick={[Function]}
+              setLocation={null}
+              showIcons={true}
+              toText="To here"
             >
-              <i
-                className="fa from-location-icon fa-dot-circle-o"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              From here
-            </button>
-             
-            |
-             
-            <LocationIcon
-              type="to"
-            >
-              <i
-                className="fa to-location-icon fa-map-marker"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              To here
-            </button>
+              <styled__FromToPickerSpan>
+                <span
+                  className="styled__FromToPickerSpan-p56b41-1 ddYzcs"
+                >
+                  <styled__LocationPickerSpan>
+                    <span
+                      className="styled__LocationPickerSpan-p56b41-0 hDNuMB"
+                    >
+                      <LocationIcon
+                        size="0.9em"
+                        type="from"
+                      >
+                        <styled__FromIcon
+                          size="0.9em"
+                          title="From Location Icon"
+                        >
+                          <DotCircle
+                            className="styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                            size="0.9em"
+                            title="From Location Icon"
+                          >
+                            <Styled(Component)
+                              className="styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                              iconAttrs={
+                                Object {
+                                  "fill": "currentColor",
+                                  "xmlns": "http://www.w3.org/2000/svg",
+                                }
+                              }
+                              iconVerticalAlign="-.125em"
+                              iconViewBox="0 0 512 512"
+                              size="0.9em"
+                              title="From Location Icon"
+                            >
+                              <ForwardRef
+                                className="sc-AxjAm dVOzqR styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="-.125em"
+                                iconViewBox="0 0 512 512"
+                                size="0.9em"
+                                title="From Location Icon"
+                              >
+                                <svg
+                                  className="sc-AxjAm dVOzqR styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="0.9em"
+                                  role="img"
+                                  viewBox="0 0 512 512"
+                                  width="0.9em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <title
+                                    key="icon-title"
+                                  >
+                                    From Location Icon
+                                  </title>
+                                  <path
+                                    d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"
+                                    fill="currentColor"
+                                    key="k0"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </Styled(Component)>
+                          </DotCircle>
+                        </styled__FromIcon>
+                      </LocationIcon>
+                      <styled__Button
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="styled__Button-p56b41-2 bjZNPA"
+                          onClick={[Function]}
+                        >
+                          From here
+                        </button>
+                      </styled__Button>
+                    </span>
+                  </styled__LocationPickerSpan>
+                  <styled__LocationPickerSpan>
+                    <span
+                      className="styled__LocationPickerSpan-p56b41-0 hDNuMB"
+                    >
+                      <LocationIcon
+                        size="0.9em"
+                        type="to"
+                      >
+                        <styled__ToIcon
+                          size="0.9em"
+                          title="To Location Icon"
+                        >
+                          <MapMarkerAlt
+                            className="styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                            size="0.9em"
+                            title="To Location Icon"
+                          >
+                            <Styled(Component)
+                              className="styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                              iconAttrs={
+                                Object {
+                                  "fill": "currentColor",
+                                  "xmlns": "http://www.w3.org/2000/svg",
+                                }
+                              }
+                              iconVerticalAlign="-.125em"
+                              iconViewBox="0 0 384 512"
+                              size="0.9em"
+                              title="To Location Icon"
+                            >
+                              <ForwardRef
+                                className="sc-AxjAm dVOzqR styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="-.125em"
+                                iconViewBox="0 0 384 512"
+                                size="0.9em"
+                                title="To Location Icon"
+                              >
+                                <svg
+                                  className="sc-AxjAm dVOzqR styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="0.9em"
+                                  role="img"
+                                  viewBox="0 0 384 512"
+                                  width="0.9em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <title
+                                    key="icon-title"
+                                  >
+                                    To Location Icon
+                                  </title>
+                                  <path
+                                    d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
+                                    fill="currentColor"
+                                    key="k0"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </Styled(Component)>
+                          </MapMarkerAlt>
+                        </styled__ToIcon>
+                      </LocationIcon>
+                      <styled__Button
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="styled__Button-p56b41-2 bjZNPA"
+                          onClick={[Function]}
+                        >
+                          To here
+                        </button>
+                      </styled__Button>
+                    </span>
+                  </styled__LocationPickerSpan>
+                </span>
+              </styled__FromToPickerSpan>
+            </FromToLocationPicker>
           </div>
           <div
             style={
@@ -3995,38 +4579,184 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
             <b>
               Plan a trip:
             </b>
-             
-            <LocationIcon
-              type="from"
+            <FromToLocationPicker
+              fromText="From here"
+              location={null}
+              onFromClick={[Function]}
+              onToClick={[Function]}
+              setLocation={null}
+              showIcons={true}
+              toText="To here"
             >
-              <i
-                className="fa from-location-icon fa-dot-circle-o"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              From here
-            </button>
-             
-            |
-             
-            <LocationIcon
-              type="to"
-            >
-              <i
-                className="fa to-location-icon fa-map-marker"
-              />
-            </LocationIcon>
-             
-            <button
-              className="link-button"
-              onClick={[Function]}
-            >
-              To here
-            </button>
+              <styled__FromToPickerSpan>
+                <span
+                  className="styled__FromToPickerSpan-p56b41-1 ddYzcs"
+                >
+                  <styled__LocationPickerSpan>
+                    <span
+                      className="styled__LocationPickerSpan-p56b41-0 hDNuMB"
+                    >
+                      <LocationIcon
+                        size="0.9em"
+                        type="from"
+                      >
+                        <styled__FromIcon
+                          size="0.9em"
+                          title="From Location Icon"
+                        >
+                          <DotCircle
+                            className="styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                            size="0.9em"
+                            title="From Location Icon"
+                          >
+                            <Styled(Component)
+                              className="styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                              iconAttrs={
+                                Object {
+                                  "fill": "currentColor",
+                                  "xmlns": "http://www.w3.org/2000/svg",
+                                }
+                              }
+                              iconVerticalAlign="-.125em"
+                              iconViewBox="0 0 512 512"
+                              size="0.9em"
+                              title="From Location Icon"
+                            >
+                              <ForwardRef
+                                className="sc-AxjAm dVOzqR styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="-.125em"
+                                iconViewBox="0 0 512 512"
+                                size="0.9em"
+                                title="From Location Icon"
+                              >
+                                <svg
+                                  className="sc-AxjAm dVOzqR styled__FromIcon-sc-3u4t5y-0 dfSUki"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="0.9em"
+                                  role="img"
+                                  viewBox="0 0 512 512"
+                                  width="0.9em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <title
+                                    key="icon-title"
+                                  >
+                                    From Location Icon
+                                  </title>
+                                  <path
+                                    d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"
+                                    fill="currentColor"
+                                    key="k0"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </Styled(Component)>
+                          </DotCircle>
+                        </styled__FromIcon>
+                      </LocationIcon>
+                      <styled__Button
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="styled__Button-p56b41-2 bjZNPA"
+                          onClick={[Function]}
+                        >
+                          From here
+                        </button>
+                      </styled__Button>
+                    </span>
+                  </styled__LocationPickerSpan>
+                  <styled__LocationPickerSpan>
+                    <span
+                      className="styled__LocationPickerSpan-p56b41-0 hDNuMB"
+                    >
+                      <LocationIcon
+                        size="0.9em"
+                        type="to"
+                      >
+                        <styled__ToIcon
+                          size="0.9em"
+                          title="To Location Icon"
+                        >
+                          <MapMarkerAlt
+                            className="styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                            size="0.9em"
+                            title="To Location Icon"
+                          >
+                            <Styled(Component)
+                              className="styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                              iconAttrs={
+                                Object {
+                                  "fill": "currentColor",
+                                  "xmlns": "http://www.w3.org/2000/svg",
+                                }
+                              }
+                              iconVerticalAlign="-.125em"
+                              iconViewBox="0 0 384 512"
+                              size="0.9em"
+                              title="To Location Icon"
+                            >
+                              <ForwardRef
+                                className="sc-AxjAm dVOzqR styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="-.125em"
+                                iconViewBox="0 0 384 512"
+                                size="0.9em"
+                                title="To Location Icon"
+                              >
+                                <svg
+                                  className="sc-AxjAm dVOzqR styled__ToIcon-sc-3u4t5y-1 hhVGwa"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="0.9em"
+                                  role="img"
+                                  viewBox="0 0 384 512"
+                                  width="0.9em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <title
+                                    key="icon-title"
+                                  >
+                                    To Location Icon
+                                  </title>
+                                  <path
+                                    d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
+                                    fill="currentColor"
+                                    key="k0"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </Styled(Component)>
+                          </MapMarkerAlt>
+                        </styled__ToIcon>
+                      </LocationIcon>
+                      <styled__Button
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="styled__Button-p56b41-2 bjZNPA"
+                          onClick={[Function]}
+                        >
+                          To here
+                        </button>
+                      </styled__Button>
+                    </span>
+                  </styled__LocationPickerSpan>
+                </span>
+              </styled__FromToPickerSpan>
+            </FromToLocationPicker>
           </div>
           <div
             style={
