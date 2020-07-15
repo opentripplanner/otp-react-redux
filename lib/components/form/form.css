@@ -135,6 +135,14 @@
   font-size: 14px;
   line-height: 1.4;
   margin-top: -1px;
+  white-space: pre-wrap;
+}
+
+.otp .settings-preview .summary.tall {
+  line-height: 2.6;
+}
+
+.otp:not(.mobile) .settings-preview .summary {
   /* Prevent overflow from being multi-line. 36px is edit button width. */
   width: calc(100% - 36px);
 }

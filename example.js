@@ -10,8 +10,9 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
+
 // import Bootstrap Grid components for layout
-import { Navbar, Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
@@ -19,12 +20,13 @@ import {
   CallTakerPanel,
   CallTakerWindows,
   DefaultMainPanel,
+  DesktopNav,
+  Map,
   MobileMain,
   ResponsiveWebapp,
-  Map,
-  AppMenu,
   createCallTakerReducer,
-  createOtpReducer
+  createOtpReducer,
+  createUserReducer
 } from './lib'
 // load the OTP configuration
 import otpConfig from './config.yml'
@@ -42,15 +44,6 @@ if (useCustomIcons) {
   MyLegIcon = CustomIcons.CustomLegIcon
   MyModeIcon = CustomIcons.CustomModeIcon
 }
-
-/**
- * For testing, try uncommenting the following two statements (and comment the two above),
- * and see how the icons get changed in:
- * - the mode options panel (select transit, bike+transit, etc.)
- * - the itinerary narrative (step-by-step directions).
- */
-// const MyLegIcon = () => <Ferry />
-// const MyModeIcon = () => <AerialTram />
 
 // create an initial query for demo/testing purposes
 // FIXME: Remove. This is just for testing.
@@ -87,29 +80,18 @@ const store = createStore(
   combineReducers({
     callTaker: createCallTakerReducer(),
     otp: createOtpReducer(otpConfig, initialQuery),
+    user: createUserReducer(),
     router: connectRouter(history)
   }),
   compose(applyMiddleware(...middleware))
 )
-const title = otpConfig.title || 'OpenTripPlanner'
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
     /** desktop view **/
     const desktopView = (
       <div className='otp'>
-        <Navbar>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
-                <AppMenu />
-              </div>
-              <div className='navbar-title' style={{ marginLeft: 50 }}>
-                {title}
-              </div>
-            </Navbar.Brand>
-          </Navbar.Header>
-        </Navbar>
+        <DesktopNav />
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
@@ -152,15 +134,18 @@ class OtpRRExample extends Component {
 
 // render the app
 render(
-  <Provider store={store}>
-    { /**
+  (
+    <Provider store={store}>
+      { /**
      * If not using router history, simply include OtpRRExample here:
      * e.g.
      * <OtpRRExample />
      */
-    }
-    <OtpRRExample />
+      }
+      <OtpRRExample />
+    </Provider>
+  )
+  ,
 
-  </Provider>,
   document.getElementById('root')
 )
