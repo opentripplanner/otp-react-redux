@@ -16,13 +16,29 @@ api:
 #     name: Oregon Zoo, Portland, OR
 
 ### The persistence setting is used to enable the storage of places (home, work),
-### recent searches/places, user overrides, and favorite stops. Currently the
-### only strategy is localStorage (which is used by default). It also must be
-### enabled to show the stored locations (see above).
-### TODO: add another server-based strategy
+### recent searches/places, user overrides, and favorite stops.
+### Pick the strategy that best suits your needs.
+###
+### If you do not require remote storage of preferences,
+### then use the localStorage strategy outlined below (which is used by default).
+### The localStorage strategy will use the browser application storage.
+### It must be enabled to show the stored locations (see above).
 persistence:
   enabled: true
   strategy: localStorage
+
+### If using the OTP Middleware to store user profiles
+### with Auth0 as the authentication mechanism,
+### then use the otp_middleware strategy below instead: 
+# persistence:
+#  enabled: true
+#  strategy: otp_middleware
+#  auth0:
+#    domain: your-auth0-domain
+#    clientId: your-auth0-client-id
+#  otp_middleware:
+#    apiBaseUrl: https://otp-middleware.example.com
+#    apiKey: your-middleware-api-key
 
 map:
   initLat: 45.52
@@ -53,6 +69,10 @@ geocoder:
   focusPoint:
     lat: 45.5223452
     lon: -122.6821804
+  # Custom fetch options to pass to geocoder resource.
+  # options:
+  #   headers:
+  #     x-custom-header: abc123
   # required geocoder type.
   type: PELIAS
   # This base URL is required as the libraries will default to using now-defunct
