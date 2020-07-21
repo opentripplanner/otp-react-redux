@@ -1368,6 +1368,20 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
+"@opentripplanner/core-utils@^2.0.0-alpha.1":
+  version "2.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-2.0.0-alpha.1.tgz#f3549cf559d103672f601820262afb720ecb9628"
+  integrity sha512-U9chJmr1c7NtcWS8YC5TiOBNd966pHVeMmlw6BJlR/EWSDuKK6i5x2L6DeHbs4Pw8qXc/6RAX0fjDWofiWKFHw==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    lodash.isequal "^4.5.0"
+    moment "^2.24.0"
+    moment-timezone "^0.5.27"
+    prop-types "^15.7.2"
+    qs "^6.9.1"
+
 "@opentripplanner/endpoints-overlay@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-1.0.1.tgz#d95f0bbfddc9382b593845799b963340eece2742"
