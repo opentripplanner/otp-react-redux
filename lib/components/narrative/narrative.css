@@ -8,10 +8,6 @@
   font-size: 16px;
 }
 
-.otp .options > .list {
-  /* FIXME */
-}
-
 /* Options scroll bar  */
 .otp .options > .list::-webkit-scrollbar {
   width: 10px;
