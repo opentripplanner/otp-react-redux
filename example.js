@@ -47,7 +47,7 @@ if (useCustomIcons) {
 
 // create an initial query for demo/testing purposes
 // FIXME: Remove. This is just for testing.
-const initialQuery = otpConfig.callTakerUrl
+const initialQuery = otpConfig.datastoreUrl
   ? {}
   : {
     from: {
@@ -96,14 +96,14 @@ class OtpRRExample extends Component {
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
               {/* TODO: handle this switch better. This is just for testing. */}
-              {otpConfig.callTakerUrl || otpConfig.routingTypes.find(t => t.key === 'BATCH')
+              {otpConfig.datastoreUrl || otpConfig.routingTypes.find(t => t.key === 'BATCH')
                 ? <CallTakerPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
                 : <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
               }
             </Col>
-            {otpConfig.callTakerUrl ? <CallTakerControls /> : null}
+            {otpConfig.datastoreUrl ? <CallTakerControls /> : null}
             <Col sm={6} md={8} className='map-container'>
-              {otpConfig.callTakerUrl ? <CallTakerWindows /> : null}
+              {otpConfig.datastoreUrl ? <CallTakerWindows /> : null}
               <Map />
             </Col>
           </Row>
