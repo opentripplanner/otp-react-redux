@@ -6,6 +6,7 @@ Array [
     Object {
       "payload": Object {
         "activeItinerary": 0,
+        "pending": 1,
         "routingType": "ITINERARY",
         "searchId": "abcd1234",
       },
@@ -19,6 +20,7 @@ Array [
     Object {
       "payload": Object {
         "activeItinerary": 0,
+        "pending": 1,
         "routingType": "ITINERARY",
         "searchId": "abcd1235",
       },
@@ -37,6 +39,7 @@ Array [
     Object {
       "payload": Object {
         "activeItinerary": 0,
+        "pending": 1,
         "routingType": "ITINERARY",
         "searchId": "abcd1234",
       },
