@@ -78,7 +78,7 @@ class OtpRRExample extends Component {
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
-              {/* TODO: handle this switch better. This is just for testing. */}
+              {/* TODO: extract the BATCH elements out of CallTakerPanel. */}
               {otpConfig.datastoreUrl || otpConfig.routingTypes.find(t => t.key === 'BATCH')
                 ? <CallTakerPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
                 : <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
