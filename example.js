@@ -45,25 +45,8 @@ if (useCustomIcons) {
   MyModeIcon = CustomIcons.CustomModeIcon
 }
 
-// create an initial query for demo/testing purposes
-// FIXME: Remove. This is just for testing.
-const initialQuery = otpConfig.datastoreUrl
-  ? {}
-  : {
-    from: {
-      lat: 28.45119,
-      lon: -81.36818,
-      name: 'P&R'
-    },
-    to: {
-      lat: 28.54834,
-      lon: -81.37745,
-      name: 'Downtownish'
-    },
-    numItineraries: 1,
-    maxWalkDistance: 1609.34 * 6, // 2 miles
-    type: 'ITINERARY'
-  }
+// Get the initial query from config (for demo/testing purposes).
+const {initialQuery} = otpConfig
 const history = createHashHistory()
 const middleware = [
   thunk,
