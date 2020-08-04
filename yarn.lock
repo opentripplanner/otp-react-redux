@@ -1416,10 +1416,10 @@
     styled-icons "^9.1.0"
     velocity-react "^1.4.3"
 
-"@opentripplanner/trip-form@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-1.0.1.tgz#c100fcda5af6f162aca1a8575babb8c54d63e074"
-  integrity sha512-JM8cEPey07NQaSzsibjgR+EtJrLgHNH2G/PwTcQEwDUDz2etT8AhhxlgOzTlK2qp0kw3rLOUx9rCpgoU5YO8OA==
+"@opentripplanner/trip-form@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-1.0.2.tgz#1283dcb92ed5295dbb055c0ab99cc5fe55b90b30"
+  integrity sha512-RPS3JBNUN5gMXVebDgMwdjMCiU8tb2s9+8sy1gGGFHDNiesNKEVdLXmUAqpg//gxNriLDQ0UtKfBZnHQpagPqw==
   dependencies:
     "@opentripplanner/core-utils" "^1.2.0"
     "@opentripplanner/icons" "^1.0.0"
