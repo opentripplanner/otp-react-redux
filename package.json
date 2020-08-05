@@ -28,7 +28,7 @@
   "homepage": "https://github.com/opentripplanner/otp-react-redux#readme",
   "dependencies": {
     "@opentripplanner/base-map": "^1.0.1",
-    "@opentripplanner/core-utils": "^1.2.0",
+    "@opentripplanner/core-utils": "^1.2.1",
     "@opentripplanner/endpoints-overlay": "^1.0.1",
     "@opentripplanner/from-to-location-picker": "^1.0.1",
     "@opentripplanner/geocoder": "^1.0.2",
@@ -44,7 +44,7 @@
     "@opentripplanner/stops-overlay": "^1.0.1",
     "@opentripplanner/transitive-overlay": "^1.0.2",
     "@opentripplanner/trip-details": "^1.1.1",
-    "@opentripplanner/trip-form": "^1.0.1",
+    "@opentripplanner/trip-form": "^1.0.2",
     "@opentripplanner/trip-viewer-overlay": "^1.0.1",
     "@opentripplanner/vehicle-rental-overlay": "^1.0.1",
     "bootstrap": "^3.3.7",
