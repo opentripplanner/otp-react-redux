@@ -1,6 +1,7 @@
 // import this polyfill in order to make webapp compatible with IE 11
 import 'es6-math'
 
+import {ClassicLegIcon, ClassicModeIcon} from '@opentripplanner/icons'
 import { createHashHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import React, { Component } from 'react'
@@ -11,32 +12,43 @@ import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 
 // import Bootstrap Grid components for layout
-import { Navbar, Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
-  DefaultSearchForm,
-  ErrorMessage,
-  MobileMain,
-  NarrativeRoutingResults,
-  ResponsiveWebapp,
+  DefaultMainPanel,
+  DesktopNav,
   Map,
-  ViewerContainer,
-  AppMenu,
-  createOtpReducer
+  MobileMain,
+  ResponsiveWebapp,
+  createOtpReducer,
+  createUserReducer
 } from './lib'
-
 // load the OTP configuration
 import otpConfig from './config.yml'
+
+// Set useCustomIcons to true to override classic icons with the exports from
+// custom-icons.js
+const useCustomIcons = false
+
+// Define icon sets for modes.
+let MyLegIcon = ClassicLegIcon
+let MyModeIcon = ClassicModeIcon
+
+if (useCustomIcons) {
+  const CustomIcons = require('./custom-icons')
+  MyLegIcon = CustomIcons.CustomLegIcon
+  MyModeIcon = CustomIcons.CustomModeIcon
+}
 
 // create an initial query for demo/testing purposes
 const initialQuery = {
   from: {
-    lat: 52.617899, 
+    lat: 52.617899,
     lon: -2.197704
   },
   to: {
-    lat: 52.352798, 
+    lat: 52.352798,
     lon: -1.406688
   },
   type: 'ITINERARY'
@@ -57,6 +69,7 @@ if (process.env.NODE_ENV === 'development') {
 const store = createStore(
   combineReducers({
     otp: createOtpReducer(otpConfig),
+    user: createUserReducer(),
     router: connectRouter(history)
   }),
   compose(applyMiddleware(...middleware))
@@ -68,30 +81,12 @@ class OtpRRExample extends Component {
     /** desktop view **/
     const desktopView = (
       <div className='otp'>
-        <Navbar>
-          <Navbar.Header>
-            <div className='login-link'><a href='#'>Login</a></div>
-
-            <Navbar.Brand>
-              <div style={{ float: 'left', color: 'white', fontSize: 28 }}>
-                <AppMenu />
-              </div>
-              <div className='navbar-title' style={{ marginLeft: 50 }}>OpenTripPlanner</div>
-            </Navbar.Brand>
-          </Navbar.Header>
-        </Navbar>
+        <DesktopNav />
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
-              <ViewerContainer>
-                <DefaultSearchForm />
-                <ErrorMessage />
-                <div className='desktop-narrative-container'>
-                  <NarrativeRoutingResults />
-                </div>
-              </ViewerContainer>
+              <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
             </Col>
-
             <Col sm={6} md={8} className='map-container'>
               <Map />
             </Col>
@@ -102,7 +97,12 @@ class OtpRRExample extends Component {
 
     /** mobile view **/
     const mobileView = (
-      <MobileMain map={(<Map />)} title={(<div className='navbar-title'>OpenTripPlanner</div>)} />
+      <MobileMain
+        LegIcon={MyLegIcon}
+        ModeIcon={MyModeIcon}
+        map={<Map />}
+        title={<div className='navbar-title'>OpenTripPlanner</div>}
+      />
     )
 
     /** the main webapp **/
@@ -110,6 +110,7 @@ class OtpRRExample extends Component {
       <ResponsiveWebapp
         desktopView={desktopView}
         mobileView={mobileView}
+        LegIcon={MyLegIcon}
       />
     )
   }
@@ -117,15 +118,18 @@ class OtpRRExample extends Component {
 
 // render the app
 render(
-  <Provider store={store}>
-    { /**
+  (
+    <Provider store={store}>
+      { /**
      * If not using router history, simply include OtpRRExample here:
      * e.g.
      * <OtpRRExample />
      */
-    }
-    <OtpRRExample />
+      }
+      <OtpRRExample />
+    </Provider>
+  )
+  ,
 
-  </Provider>,
   document.getElementById('root')
 )
