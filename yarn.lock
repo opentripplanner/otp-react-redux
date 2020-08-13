@@ -932,14 +932,7 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.5", "@babel/runtime@^7.7.6":
-  version "7.8.4"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.4.tgz#d79f5a2040f7caa24d53e563aad49cbc05581308"
-  integrity sha512-neAp3zt80trRVBI1x0azq6c57aNBqYZH8KhMm3TaB7wEI5Q4A2SHfBHE8w9gOhI/lrqxtEbXZgQIrHP+wvSGwQ==
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
-"@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.9.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
   integrity sha512-64AF1xY3OAkFHqOb9s4jpgk1Mm5vDZ4L3acHvAml+53nO1XbXLuDodsVpO4OIUsmemlUHMxNdYMNJmsvOwLrvQ==
@@ -1330,10 +1323,10 @@
     "@opentripplanner/core-utils" "^1.2.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/core-utils@^1.2.0", "@opentripplanner/core-utils@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-1.2.1.tgz#e21f1c6825a0922bd0fe1326fb5a7bbdac2db7f6"
-  integrity sha512-RHSPrGyu/sV9krVSTsuW1R8fTqj+l+CeHCTK8XLj5cYC4HbqkKLtnOXXwvWGGh21Cpt+jkVBiPcYtfluIX1qMQ==
+"@opentripplanner/core-utils@^1.2.0", "@opentripplanner/core-utils@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-1.2.2.tgz#c943983d92c67b1aba2ad7b47f199fb46bbedc02"
+  integrity sha512-xISq454TA/mTu5wjMVvNRszHmeAKppS+jk5E3LRl+TaMWas5ovaNdKwlOXU62djGb41VOty4KYTnECliDPYDJw==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@turf/along" "^6.0.1"
@@ -1344,13 +1337,13 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/endpoints-overlay@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-1.0.1.tgz#d95f0bbfddc9382b593845799b963340eece2742"
-  integrity sha512-FMr8qwB4wDm/N1wWCu89TsPIBPWMepyuC7ZYb4zCrWYgi3/hZtuSUlFmqmg9497KM2jyqqq/41oSiVsG35a2pA==
+"@opentripplanner/endpoints-overlay@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-1.0.2.tgz#165817533832399c8e8c276fba2ec4fafe038853"
+  integrity sha512-ccwvaRYmkzz4VKlM52jVXklSAwu+5UfLiTB8q6lTN/sP3gdPPCWJMUVu4u00R9xNFPVVk6NOB/y6A3NUJzBVlA==
   dependencies:
     "@opentripplanner/core-utils" "^1.2.0"
-    "@opentripplanner/location-icon" "^1.0.0"
+    "@opentripplanner/location-icon" "^1.0.1"
     prop-types "^15.7.2"
     styled-icons "^9.1.0"
 
@@ -1414,10 +1407,10 @@
     styled-icons "^9.1.0"
     throttle-debounce "^2.1.0"
 
-"@opentripplanner/location-icon@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-icon/-/location-icon-1.0.0.tgz#7bdf55e486d9b2bb7519992d01da6677ab6d0f7c"
-  integrity sha512-fOTofupCyMUiqEF5lWQH6K/cMqt1lD1UCFWgP6pG7PFk8pUJ8idr8N9ml0lVT6tLJ2x/uVXPXi4VwZRST1XRKQ==
+"@opentripplanner/location-icon@^1.0.0", "@opentripplanner/location-icon@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-icon/-/location-icon-1.0.1.tgz#5a72f697eeebfb21202bfc205ca0da7c32dfe1d0"
+  integrity sha512-esHrqZBKxJNNPiZyb4XtrWYZhdVrUHcpAr4eCydf8pSDRUX9QVM/YqAPPn2SEwJiH2hi14CYLMMV5SjEHwwJMg==
   dependencies:
     styled-icons "^9.1.0"
 
@@ -7724,15 +7717,7 @@ import-fresh@^2.0.0:
     caller-path "^2.0.0"
     resolve-from "^3.0.0"
 
-import-fresh@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.1.0.tgz#6d33fa1dcef6df930fae003446f33415af905118"
-  integrity sha512-PpuksHKGt8rXfWEr9m9EHIpgyyaltBy8+eF6GJM0QCAxMgxCfucMF3mjecK2QsJr0amJW7gTqh5/wht0z2UhEQ==
-  dependencies:
-    parent-module "^1.0.0"
-    resolve-from "^4.0.0"
-
-import-fresh@^3.1.0:
+import-fresh@^3.0.0, import-fresh@^3.1.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.2.1.tgz#633ff618506e793af5ac91bf48b72677e15cbe66"
   integrity sha512-6e1q1cnWP2RXD9/keSkxHScg508CdXqXWgWBaETNhyuBFz+kUZlKboh+ISK+bU++DmbHimVBrOz/zzPe0sZ3sQ==
@@ -13702,12 +13687,7 @@ regenerator-runtime@^0.12.0:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
   integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
 
-regenerator-runtime@^0.13.2:
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.3.tgz#7cf6a77d8f5c6f60eb73c5fc1955b2ceb01e6bf5"
-  integrity sha512-naKIZz2GQ8JWh///G7L3X6LaQUAMp2lvb1rvwwsURe/VXwD6VMfr+/1NuNw3ag8v2kY1aQ/go5SNn79O9JU7yw==
-
-regenerator-runtime@^0.13.4:
+regenerator-runtime@^0.13.2, regenerator-runtime@^0.13.4:
   version "0.13.5"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.5.tgz#d878a1d094b4306d10b9096484b33ebd55e26697"
   integrity sha512-ZS5w8CpKFinUzOwW3c83oPeVXoNsrLsaCoLtJvAClH135j/R77RuymhiSErhm2lKcwSCIpmvIWSbDkIfAqKQlA==

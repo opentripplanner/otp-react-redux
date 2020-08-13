@@ -16,7 +16,7 @@
 
 /* Only show border is not expanded */
 .otp .option.default-itin:not(.expanded) {
-  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
 }
 
 /* FIXME: don't highlight if not active */
