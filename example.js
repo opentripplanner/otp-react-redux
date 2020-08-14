@@ -21,6 +21,7 @@ import {
   CallTakerWindows,
   DefaultMainPanel,
   DesktopNav,
+  BatchRoutingPanel,
   Map,
   MobileMain,
   ResponsiveWebapp,
@@ -79,9 +80,11 @@ class OtpRRExample extends Component {
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
               {/* TODO: extract the BATCH elements out of CallTakerPanel. */}
-              {otpConfig.datastoreUrl || otpConfig.routingTypes.find(t => t.key === 'BATCH')
+              {otpConfig.datastoreUrl
                 ? <CallTakerPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
-                : <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                : otpConfig.routingTypes.find(t => t.key === 'BATCH')
+                  ? <BatchRoutingPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                  : <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
               }
             </Col>
             {otpConfig.datastoreUrl ? <CallTakerControls /> : null}
