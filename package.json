@@ -28,7 +28,7 @@
   "homepage": "https://github.com/opentripplanner/otp-react-redux#readme",
   "dependencies": {
     "@opentripplanner/base-map": "^1.0.1",
-    "@opentripplanner/core-utils": "^2.1.0",
+    "@opentripplanner/core-utils": "^1.2.1",
     "@opentripplanner/endpoints-overlay": "^1.0.1",
     "@opentripplanner/from-to-location-picker": "^1.0.1",
     "@opentripplanner/geocoder": "^1.0.2",
