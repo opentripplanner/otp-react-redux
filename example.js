@@ -85,7 +85,10 @@ class OtpRRExample extends Component {
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
-              <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+              {/* <main> Needed for accessibility checks. TODO: Find a better place. */}
+              <main>
+                <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+              </main>
             </Col>
             <Col sm={6} md={8} className='map-container'>
               <Map />
@@ -97,12 +100,15 @@ class OtpRRExample extends Component {
 
     /** mobile view **/
     const mobileView = (
-      <MobileMain
-        LegIcon={MyLegIcon}
-        ModeIcon={MyModeIcon}
-        map={<Map />}
-        title={<div className='navbar-title'>OpenTripPlanner</div>}
-      />
+      // <main> Needed for accessibility checks. TODO: Find a better place.
+      <main>
+        <MobileMain
+          LegIcon={MyLegIcon}
+          ModeIcon={MyModeIcon}
+          map={<Map />}
+          title={<div className='navbar-title'>OpenTripPlanner</div>}
+        />
+      </main>
     )
 
     /** the main webapp **/
