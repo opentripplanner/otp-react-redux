@@ -1275,6 +1275,20 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
+"@opentripplanner/core-utils@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-2.1.0.tgz#ab7271a2b560168b21b0dd26c78532f24fd031f5"
+  integrity sha512-sQ3oiZB7f01kCVuTj5SzqsPe4uchupNbla+onLWH+aO3wH+OLZNuLRZZ/7oFFFnvpcFBakyg4TePPxyyEyJlMA==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    lodash.isequal "^4.5.0"
+    moment "^2.24.0"
+    moment-timezone "^0.5.27"
+    prop-types "^15.7.2"
+    qs "^6.9.1"
+
 "@opentripplanner/endpoints-overlay@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-1.0.1.tgz#d95f0bbfddc9382b593845799b963340eece2742"
@@ -1332,12 +1346,12 @@
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
-"@opentripplanner/location-field@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.0.1.tgz#9db5622208739db06d707bfb5b443291598d803e"
-  integrity sha512-V2i1BDQPzQ8OJ1F1JQkH++LNLQzHR3w0nGvIwY31iTEdukDeePSa5raSPFwAXy90uqNtk2Xt6NPRetMII1L//w==
+"@opentripplanner/location-field@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.0.2.tgz#16daeac83be8f10b157fc8c51f32e2a8eb0a8db8"
+  integrity sha512-+YIXXltw6ZuHyvCzbDL97Wfhq+C/FaT2utmWAf1O1g6BGpkF6dHjh8+ZHoH0al/4/t6AyhSVlPMXOEyaj2xERA==
   dependencies:
-    "@opentripplanner/core-utils" "^1.2.0"
+    "@opentripplanner/core-utils" "^2.1.0"
     "@opentripplanner/geocoder" "^1.0.2"
     "@opentripplanner/humanize-distance" "^0.0.22"
     "@opentripplanner/location-icon" "^1.0.0"
