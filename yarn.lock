@@ -1289,6 +1289,20 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
+"@opentripplanner/core-utils@^2.1.1":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-2.1.2.tgz#a19d5d788704f0a6c2aece5206a2c8997c251d16"
+  integrity sha512-i+ADDdHhC+oJNYPrk7o9eu3F/2IMMZ5YAOXR2QGBJbS97kQOYeTAN4pVGfWKTm7ClTTIBG9/NDnVyQMzGuYInw==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    lodash.isequal "^4.5.0"
+    moment "^2.24.0"
+    moment-timezone "^0.5.27"
+    prop-types "^15.7.2"
+    qs "^6.9.1"
+
 "@opentripplanner/endpoints-overlay@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-1.0.1.tgz#d95f0bbfddc9382b593845799b963340eece2742"
@@ -1331,12 +1345,12 @@
     "@opentripplanner/core-utils" "^1.2.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-1.1.0.tgz#6fabc389ad25f6f14db5a5861603a127530e0d9e"
-  integrity sha512-svu2A0z+CnL5vrkDXuaMjJaDoSC4d52utzdGfgkXdfMaK9prO1D/6SHWiVILXmaDJExdBAoF3mxSuA7xPItTTA==
+"@opentripplanner/itinerary-body@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-1.2.0.tgz#96d8b832f26c6918ee2c0e122fce6a57a6e5df1a"
+  integrity sha512-LG8SRTTXdYD8M/7+peJPfuqRFbZlbxilqUBRyGw60efZcnWbAenQW/o5aznuucLHiafDUzVUQpy9SEd0gIqRSQ==
   dependencies:
-    "@opentripplanner/core-utils" "^2.1.0"
+    "@opentripplanner/core-utils" "^2.1.1"
     "@opentripplanner/humanize-distance" "^0.0.22"
     "@opentripplanner/icons" "^1.0.0"
     "@opentripplanner/location-icon" "^1.0.0"
