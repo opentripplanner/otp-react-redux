@@ -124,6 +124,12 @@ routingTypes:
   - key: ITINERARY
     text: Exact Time
 
+# Itinerary options
+itinerary:
+  # Show fares for each transit leg (false if omitted).
+  # (Requires using LineItinerary.)
+  showRouteFares: false
+
 ### Use this config for the standard mode selector
 # modeGroups:
 #   - name: Transit
