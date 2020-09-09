@@ -1323,7 +1323,7 @@
     "@opentripplanner/core-utils" "^1.2.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/core-utils@^1.2.0", "@opentripplanner/core-utils@^1.2.2":
+"@opentripplanner/core-utils@^1.2.0":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-1.2.2.tgz#c943983d92c67b1aba2ad7b47f199fb46bbedc02"
   integrity sha512-xISq454TA/mTu5wjMVvNRszHmeAKppS+jk5E3LRl+TaMWas5ovaNdKwlOXU62djGb41VOty4KYTnECliDPYDJw==
@@ -1337,10 +1337,10 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-2.1.0.tgz#ab7271a2b560168b21b0dd26c78532f24fd031f5"
-  integrity sha512-sQ3oiZB7f01kCVuTj5SzqsPe4uchupNbla+onLWH+aO3wH+OLZNuLRZZ/7oFFFnvpcFBakyg4TePPxyyEyJlMA==
+"@opentripplanner/core-utils@^2.1.0", "@opentripplanner/core-utils@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-2.1.2.tgz#a19d5d788704f0a6c2aece5206a2c8997c251d16"
+  integrity sha512-i+ADDdHhC+oJNYPrk7o9eu3F/2IMMZ5YAOXR2QGBJbS97kQOYeTAN4pVGfWKTm7ClTTIBG9/NDnVyQMzGuYInw==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@turf/along" "^6.0.1"
