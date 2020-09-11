@@ -19,6 +19,7 @@ import {
   CallTakerControls,
   CallTakerPanel,
   CallTakerWindows,
+  FieldTripWindows,
   DefaultMainPanel,
   DesktopNav,
   BatchRoutingPanel,
@@ -96,7 +97,13 @@ class OtpRRExample extends Component {
             </Col>
             {otpConfig.datastoreUrl ? <CallTakerControls /> : null}
             <Col sm={6} md={8} className='map-container'>
-              {otpConfig.datastoreUrl ? <CallTakerWindows /> : null}
+              {otpConfig.datastoreUrl
+                ? <>
+                  <CallTakerWindows />
+                  <FieldTripWindows />
+                </>
+                : null
+              }
               <Map />
             </Col>
           </Row>
