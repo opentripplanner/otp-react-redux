@@ -1315,12 +1315,12 @@
     universal-user-agent "^3.0.0"
     url-template "^2.0.8"
 
-"@opentripplanner/base-map@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-1.0.1.tgz#cef7f9fc181d1cb414aa3f11cddef3a8040ac3fa"
-  integrity sha512-/5versYgxFzaIEekvknmdzAc7ssTTLGaI8Ag+yZefEcio+M+JQNrRKIHfsj0d6x6hfodnTSG+fzaJ/GfklTFAA==
+"@opentripplanner/base-map@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-1.0.2.tgz#039dfdb11116ebb5d330a859f5ee33cfa6b8d768"
+  integrity sha512-QkNDJrZqGgiafO8fxJhnOFPWcpUIsDszlBZIh8q0B3ztFRPZeQA8cFX/c429PhXXmCbpYx5JkerhnxMKz140XA==
   dependencies:
-    "@opentripplanner/core-utils" "^1.2.0"
+    "@opentripplanner/core-utils" "^2.1.0"
     prop-types "^15.7.2"
 
 "@opentripplanner/core-utils@^1.2.0":
