@@ -91,7 +91,7 @@
     "velocity-react": "^1.3.3"
   },
   "devDependencies": {
-    "documentation": "^12.0.3",
+    "documentation": "^13.0.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.4.0",
     "enzyme-to-json": "^3.4.0",
