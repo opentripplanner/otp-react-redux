@@ -6,6 +6,7 @@
 @import url(node_modules/transitive-js/lib/transitive.css);
 @import url(node_modules/leaflet.polylinemeasure/Leaflet.PolylineMeasure.css);
 
+@import url(lib/components/admin/call-taker.css);
 @import url(lib/components/app/app.css);
 @import url(lib/components/map/map.css);
 @import url(lib/components/form/form.css);

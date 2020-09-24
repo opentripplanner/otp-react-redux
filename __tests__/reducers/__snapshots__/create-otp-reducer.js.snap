@@ -46,6 +46,13 @@ Object {
     "watts": 250,
     "wheelchair": false,
   },
+  "filter": Object {
+    "filter": "ALL",
+    "sort": Object {
+      "direction": "ASC",
+      "type": "BEST",
+    },
+  },
   "location": Object {
     "currentPosition": Object {
       "coords": null,
@@ -118,6 +125,7 @@ Object {
       "watts": 250,
       "wheelchair": false,
     },
+    "expandAdvanced": false,
     "favoriteStops": Array [],
     "locations": Array [],
     "recentPlaces": Array [],

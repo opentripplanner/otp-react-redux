@@ -16,11 +16,16 @@ import { Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
+  CallTakerControls,
+  CallTakerPanel,
+  CallTakerWindows,
   DefaultMainPanel,
   DesktopNav,
+  BatchRoutingPanel,
   Map,
   MobileMain,
   ResponsiveWebapp,
+  createCallTakerReducer,
   createOtpReducer,
   createUserReducer
 } from './lib'
@@ -41,19 +46,8 @@ if (useCustomIcons) {
   MyModeIcon = CustomIcons.CustomModeIcon
 }
 
-// create an initial query for demo/testing purposes
-const initialQuery = {
-  from: {
-    lat: 45.5246,
-    lon: -122.6710
-  },
-  to: {
-    lat: 45.5307,
-    lon: -122.6647
-  },
-  type: 'ITINERARY'
-}
-
+// Get the initial query from config (for demo/testing purposes).
+const {initialQuery} = otpConfig
 const history = createHashHistory()
 const middleware = [
   thunk,
@@ -68,13 +62,13 @@ if (process.env.NODE_ENV === 'development') {
 // set up the Redux store
 const store = createStore(
   combineReducers({
-    otp: createOtpReducer(otpConfig),
+    callTaker: createCallTakerReducer(),
+    otp: createOtpReducer(otpConfig, initialQuery),
     user: createUserReducer(),
     router: connectRouter(history)
   }),
   compose(applyMiddleware(...middleware))
 )
-
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
@@ -85,12 +79,24 @@ class OtpRRExample extends Component {
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
-              {/* <main> Needed for accessibility checks. TODO: Find a better place. */}
+              {/*
+                Note: the main tag provides a way for users of screen readers
+                to skip to the primary page content.
+                TODO: Find a better place.
+              */}
               <main>
-                <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                {/* TODO: extract the BATCH elements out of CallTakerPanel. */}
+                {otpConfig.datastoreUrl
+                  ? <CallTakerPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                  : otpConfig.routingTypes.find(t => t.key === 'BATCH')
+                    ? <BatchRoutingPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                    : <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                }
               </main>
             </Col>
+            {otpConfig.datastoreUrl ? <CallTakerControls /> : null}
             <Col sm={6} md={8} className='map-container'>
+              {otpConfig.datastoreUrl ? <CallTakerWindows /> : null}
               <Map />
             </Col>
           </Row>
