@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/opentripplanner/otp-react-redux#readme",
   "dependencies": {
-    "@opentripplanner/base-map": "^1.0.1",
+    "@opentripplanner/base-map": "^1.0.2",
     "@opentripplanner/core-utils": "^2.1.2",
     "@opentripplanner/endpoints-overlay": "^1.0.2",
     "@opentripplanner/from-to-location-picker": "^1.0.1",
@@ -91,7 +91,7 @@
     "velocity-react": "^1.3.3"
   },
   "devDependencies": {
-    "documentation": "^12.0.3",
+    "documentation": "^13.0.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.4.0",
     "enzyme-to-json": "^3.4.0",
