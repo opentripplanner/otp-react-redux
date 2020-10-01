@@ -64,6 +64,15 @@
 
 /* Date/Time selectors */
 
+/* Remove up/down arrows on date/time input (to save on width) */
+.otp .search-options input[type="date"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.otp .search-options input[type="time"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .otp .date-time-selector .col-xs-4,
 .otp .date-time-selector .col-xs-6 {
   padding-left: 5px;
