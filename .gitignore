@@ -15,5 +15,6 @@ coverage
 # built example app
 dist
 
-# secrets
-config.yml
+# secrets. Ignore any versions of config.yml, except for example.
+*config.yml
+!example-config.yml

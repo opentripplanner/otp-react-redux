@@ -3,9 +3,28 @@
 }
 
 .otp .options > .header {
-  margin-top: 20px;
-  margin-bottom: 12px;
+  margin: 20px 10px 12px;
   font-size: 16px;
+}
+
+/* Options scroll bar  */
+.otp .options > .list::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.otp .options > .list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.otp .options > .list::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.otp .options > .list::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 /* REALTIME ALERT */

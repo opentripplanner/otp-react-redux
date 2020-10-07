@@ -16,11 +16,16 @@ import { Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
+  CallTakerControls,
+  CallTakerPanel,
+  CallTakerWindows,
   DefaultMainPanel,
   DesktopNav,
+  BatchRoutingPanel,
   Map,
   MobileMain,
   ResponsiveWebapp,
+  createCallTakerReducer,
   createOtpReducer,
   createUserReducer
 } from './lib'
@@ -68,13 +73,13 @@ if (process.env.NODE_ENV === 'development') {
 // set up the Redux store
 const store = createStore(
   combineReducers({
-    otp: createOtpReducer(otpConfig),
+    callTaker: createCallTakerReducer(),
+    otp: createOtpReducer(otpConfig, initialQuery),
     user: createUserReducer(),
     router: connectRouter(history)
   }),
   compose(applyMiddleware(...middleware))
 )
-
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
@@ -85,9 +90,24 @@ class OtpRRExample extends Component {
         <Grid>
           <Row className='main-row'>
             <Col sm={6} md={4} className='sidebar'>
-              <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+              {/*
+                Note: the main tag provides a way for users of screen readers
+                to skip to the primary page content.
+                TODO: Find a better place.
+              */}
+              <main>
+                {/* TODO: extract the BATCH elements out of CallTakerPanel. */}
+                {otpConfig.datastoreUrl
+                  ? <CallTakerPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                  : otpConfig.routingTypes.find(t => t.key === 'BATCH')
+                    ? <BatchRoutingPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                    : <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                }
+              </main>
             </Col>
+            {otpConfig.datastoreUrl ? <CallTakerControls /> : null}
             <Col sm={6} md={8} className='map-container'>
+              {otpConfig.datastoreUrl ? <CallTakerWindows /> : null}
               <Map />
             </Col>
           </Row>
@@ -97,12 +117,15 @@ class OtpRRExample extends Component {
 
     /** mobile view **/
     const mobileView = (
-      <MobileMain
-        LegIcon={MyLegIcon}
-        ModeIcon={MyModeIcon}
-        map={<Map />}
-        title={<div className='navbar-title'>OpenTripPlanner</div>}
-      />
+      // <main> Needed for accessibility checks. TODO: Find a better place.
+      <main>
+        <MobileMain
+          LegIcon={MyLegIcon}
+          ModeIcon={MyModeIcon}
+          map={<Map />}
+          title={<div className='navbar-title'>OpenTripPlanner</div>}
+        />
+      </main>
     )
 
     /** the main webapp **/
