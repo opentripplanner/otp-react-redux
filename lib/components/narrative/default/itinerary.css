@@ -4,20 +4,24 @@
   outline: none;
 }
 
-.otp .option.default-itin {
-  margin-bottom: 16px;
-  padding: 10px;
-  border: 2px solid #999;
-  border-radius: 4px
-  background-color: #eeeeee;
-}
-
-.otp .option:hover .default-itin {
+/* If child component is focused, highlight itinerary option */
+.otp .option.default-itin:focus-within {
   background-color: var(--hover-color);
 }
 
-.otp .option.active .default-itin {
-  background-color: #EAF3F2;
+.otp .option.default-itin {
+  padding: 10px;
+  background-color: white;
+}
+
+/* Only show border is not expanded */
+.otp .option.default-itin:not(.expanded) {
+  border-top: 1px solid grey;
+}
+
+/* FIXME: don't highlight if not active */
+.otp .option.default-itin:hover:not(.active) {
+  background-color: var(--hover-color);
 }
 
 .otp .option.default-itin > .header {
@@ -26,11 +30,27 @@
 }
 
 .otp .option.default-itin > .header > .title {
-  font-weight: bold;
+  font-weight: 500;
+  font-size: large;
+  display: inline;
+}
+
+.otp .option.default-itin > .header > .itinerary-attributes {
+  display: inline;
+  float: right;
+}
+
+.otp .option.default-itin > .header > .itinerary-attributes > li {
+  font-size: small;
+}
+
+.otp .option.default-itin > .header > .itinerary-attributes > li.main {
+  font-weight: 500;
+  font-size: x-large;
 }
 
 .otp .option.default-itin > .header > .summary {
-  text-align: center;
+  /* text-align: center; */
   margin: 8px 0px;
 }
 

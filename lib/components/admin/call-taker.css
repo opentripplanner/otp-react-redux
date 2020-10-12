@@ -1,0 +1,11 @@
+@keyframes fadeIn {
+  from { opacity: 0; }
+}
+
+.otp .animate-flicker {
+  animation: fadeIn 1s infinite alternate;
+}
+
+.otp .advanced-search-options {
+  box-shadow: 0px 5px 3px 0px rgba(0,0,0,0.32157);
+}
