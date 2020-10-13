@@ -140,3 +140,9 @@ itinerary:
 #     modes:
 #       - WALK
 #       - BICYCLE
+
+### If using OTP Middleware, users can enable phone notifications.
+### The phone number RegEx needs to be set depending on the target country.
+# notifications:
+#   # For US numbers: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html
+#   phoneNumberRegex: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
