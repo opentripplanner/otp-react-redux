@@ -142,7 +142,9 @@ itinerary:
 #       - BICYCLE
 
 ### If using OTP Middleware, users can enable phone notifications.
-### The phone number RegEx needs to be set depending on the target country.
+### - phoneNumberRegExp should be set for the target locale.
+### - phoneNumberPlaceholder is optional.
 # notifications:
 #   # For US numbers: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html
-#   phoneNumberRegex: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+#  phoneNumberRegExp: ^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$
+#  phoneNumberPlaceholder: (555) 555-0123
