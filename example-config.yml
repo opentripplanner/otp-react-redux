@@ -141,10 +141,17 @@ itinerary:
 #       - WALK
 #       - BICYCLE
 
-### If using OTP Middleware, users can enable phone notifications.
-### - phoneNumberRegExp should be set for the target locale.
-### - phoneNumberPlaceholder is optional.
-# notifications:
-#   # For US numbers: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html
-#  phoneNumberRegExp: ^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$
-#  phoneNumberPlaceholder: (555) 555-0123
+### If using OTP Middleware, you can define the optional phone number formats
+### below for the target locale.
+# phoneFormatOptions:
+#   # Regex for validating phone numbers entered by the user
+#   #   For US numbers: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html
+#   validationRegExp: ^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$
+#   # The placeholder displayed in phone number controls
+#   inputPlaceholder: (555) 555-0123
+#   # Regex that defines the groups of digits (the structure) to extract from raw phone numbers shown in +15555550123 format.
+#   # If not specified, phone numbers will be displayed in raw format.
+#   rawStructureRegExp: \+1(\d{3})(\d{3})(\d{4})
+#   # The format for displaying the regex capture groups ($1, $2, ...) of the above structure.
+#   # If not specified, phone numbers will be displayed in raw format.
+#   formattedStructure: ($1) $2-$3
