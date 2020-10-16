@@ -47,6 +47,7 @@
     "@opentripplanner/trip-form": "^1.0.2",
     "@opentripplanner/trip-viewer-overlay": "^1.0.1",
     "@opentripplanner/vehicle-rental-overlay": "^1.0.1",
+    "awesome-phonenumber": "^2.40.0",
     "bootstrap": "^3.3.7",
     "bowser": "^1.9.3",
     "clone": "^2.1.0",
