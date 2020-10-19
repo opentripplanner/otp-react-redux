@@ -8,6 +8,10 @@
   padding: 0px 0px;
 }
 
+.navbar-inverse {
+  border-color: #e7e7e7; /* Same as non-inverse style. */
+}
+
 .otp.mobile .app-menu-button {
   padding: 10px 0px 0px 12px;
 }
