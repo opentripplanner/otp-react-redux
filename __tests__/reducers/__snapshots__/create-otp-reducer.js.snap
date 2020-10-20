@@ -8,6 +8,9 @@ Object {
     "debouncePlanTimeMs": 0,
     "homeTimezone": "America/Los_Angeles",
     "language": Object {},
+    "phoneFormatOptions": Object {
+      "countryCode": "US",
+    },
     "realtimeEffectsDisplayThreshold": 120,
     "routingTypes": Array [],
     "stopViewer": Object {
