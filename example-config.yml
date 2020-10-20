@@ -141,16 +141,7 @@ itinerary:
 #       - WALK
 #       - BICYCLE
 
-### If using OTP Middleware, you can define the optional phone number formats
-### below for the target locale.
+### If using OTP Middleware, you can define the optional phone number options below.
 # phoneFormatOptions:
-#  # The placeholder displayed in phone number controls
-#  inputPlaceholder: (555) 555-0123
-#  # Region code for converting between raw E.164 numbers and national format.
-#  # (defaults to 'US')
-#  regionCode: US
-#  # awesome-phonenumber is a little bit too strict on validating formatted numbers
-#  # (although converting to raw E.164 number still works fine in such cases),
-#  # so we provide our own regex for validating user input instead.
-#  #   For US numbers: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html
-#  validationRegExp: ^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$
+#  # ISO 2-letter country code for phone number formats (defaults to 'US')
+#  countryCode: US
