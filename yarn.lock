@@ -5020,6 +5020,11 @@ cosmiconfig@^6.0.0:
     path-type "^4.0.0"
     yaml "^1.7.2"
 
+country-flag-icons@^1.0.2:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/country-flag-icons/-/country-flag-icons-1.2.5.tgz#784185503f3589e650b30402c93ef7cc2a3225a9"
+  integrity sha512-5V7GEpGLG+uyLUf0qs35Ub80/Nnjtymfax7wwv7DMJFeA9PZWVYIck7OAuBP2FSL8Xxaqm0qMNmpufVyHGEHlw==
+
 create-ecdh@^4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.3.tgz#c9111b6f33045c4697f144787f9254cdc77c45ff"
@@ -8069,6 +8074,13 @@ inline-source-map@~0.6.0:
   dependencies:
     source-map "~0.5.3"
 
+input-format@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/input-format/-/input-format-0.3.0.tgz#f662b1667b6d067769f44c717bcfcc92554bee75"
+  integrity sha512-7ipaXJ5Hnd2o62IxLRTCMcl7AOPzxU2PTfDunPDIaaAjq+Q8DcjI4/nmPo3fXJUvdTCX97BlW8d+7ArUhVTxAA==
+  dependencies:
+    prop-types "^15.7.2"
+
 inquirer@6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-6.2.0.tgz#51adcd776f661369dc1e894859c2560a224abdd8"
@@ -9573,6 +9585,14 @@ libnpx@^10.2.2:
     which "^1.3.0"
     y18n "^4.0.0"
     yargs "^11.0.0"
+
+libphonenumber-js@^1.8.1:
+  version "1.8.4"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.8.4.tgz#e84eaa25b96bfebb2ac1a5c847b7f7f17da5bd59"
+  integrity sha512-s0fTPZRB4hcsfDL9p6wUNOLngVh4y3fBPhH33dL7OfkHA2RirI8p3rlR+4f4SMxdcng9jPNOweS2Z47BivHMYw==
+  dependencies:
+    minimist "^1.2.5"
+    xml2js "^0.4.17"
 
 lines-and-columns@^1.1.6:
   version "1.1.6"
@@ -13435,6 +13455,17 @@ react-overlays@^0.8.0:
     react-transition-group "^2.2.0"
     warning "^3.0.0"
 
+react-phone-number-input@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-phone-number-input/-/react-phone-number-input-3.1.0.tgz#55e153945d8a3c3294c3469e3c58dfdfc2984961"
+  integrity sha512-xJQXmpRtpVmwOM59JNUj8iOOBCRTM6VvV+5PAek+H/R6D+TTKO2QSelu9WMK+C18h17RznHe77QXlBx1Q3S6NA==
+  dependencies:
+    classnames "^2.2.5"
+    country-flag-icons "^1.0.2"
+    input-format "^0.3.0"
+    libphonenumber-js "^1.8.1"
+    prop-types "^15.7.2"
+
 react-portal@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-portal/-/react-portal-3.2.0.tgz#4224e19b2b05d5cbe730a7ba0e34ec7585de0043"
@@ -16919,6 +16950,19 @@ xml2js@0.4.19:
   dependencies:
     sax ">=0.6.0"
     xmlbuilder "~9.0.1"
+
+xml2js@^0.4.17:
+  version "0.4.23"
+  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.23.tgz#a0c69516752421eb2ac758ee4d4ccf58843eac66"
+  integrity sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug==
+  dependencies:
+    sax ">=0.6.0"
+    xmlbuilder "~11.0.0"
+
+xmlbuilder@~11.0.0:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-11.0.1.tgz#be9bae1c8a046e76b31127726347d0ad7002beb3"
+  integrity sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA==
 
 xmlbuilder@~9.0.1:
   version "9.0.7"
