@@ -8,8 +8,16 @@ describe('util > itinerary', () => {
       mode: 'BUS',
       transitLeg: true
     }
-    const rentalLeg = {
+    const rentalBikeLeg = {
       mode: 'BICYCLE_RENT',
+      rentedBike: true
+    }
+    const rentalCarLeg = {
+      mode: 'CAR_RENT',
+      rentedCar: true
+    }
+    const rentalMicromobilityLeg = {
+      mode: 'MICROMOBILITY_RENT',
       rentedVehicle: true
     }
     const walkLeg = {
@@ -29,15 +37,27 @@ describe('util > itinerary', () => {
     }, {
       expected: false,
       itinerary: {
-        legs: [walkLeg, rentalLeg]
+        legs: [walkLeg, rentalBikeLeg]
       },
       title: 'should be false for an itinerary without transit.'
     }, {
       expected: false,
       itinerary: {
-        legs: [walkLeg, transitLeg, rentalLeg]
+        legs: [walkLeg, transitLeg, rentalBikeLeg]
       },
-      title: 'should be false for an itinerary with transit and rental.'
+      title: 'should be false for an itinerary with transit and rental bike.'
+    }, {
+      expected: false,
+      itinerary: {
+        legs: [walkLeg, transitLeg, rentalCarLeg]
+      },
+      title: 'should be false for an itinerary with transit and rental car.'
+    }, {
+      expected: false,
+      itinerary: {
+        legs: [walkLeg, transitLeg, rentalMicromobilityLeg]
+      },
+      title: 'should be false for an itinerary with transit and rental micromobility.'
     }, {
       expected: false,
       itinerary: {
