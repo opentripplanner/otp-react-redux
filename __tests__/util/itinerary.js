@@ -76,7 +76,7 @@ describe('util > itinerary', () => {
 
     testCases.forEach(({ expected, itinerary, title }) => {
       it(title, () => {
-        expect(itineraryCanBeMonitored(itinerary))[expected ? 'toBeTruthy' : 'toBeFalsy']()
+        expect(itineraryCanBeMonitored(itinerary)).toBe(expected)
       })
     })
   })
