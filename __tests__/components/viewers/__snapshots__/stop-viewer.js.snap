@@ -197,6 +197,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
       }
       timeFormat="HH:mm"
       toggleAutoRefresh={[Function]}
+      transitOperators={Array []}
       viewedStop={
         Object {
           "stopId": "TriMet:9860",
@@ -932,6 +933,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
       }
       timeFormat="HH:mm"
       toggleAutoRefresh={[Function]}
+      transitOperators={Array []}
       viewedStop={
         Object {
           "stopId": "TriMet:9860",
@@ -1676,6 +1678,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
       }
       timeFormat="HH:mm"
       toggleAutoRefresh={[Function]}
+      transitOperators={Array []}
       viewedStop={
         Object {
           "stopId": "TriMet:9860",
@@ -2777,6 +2780,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
       }
       timeFormat="HH:mm"
       toggleAutoRefresh={[Function]}
+      transitOperators={Array []}
       viewedStop={
         Object {
           "stopId": "TriMet:715",
@@ -4615,6 +4619,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
       }
       timeFormat="HH:mm"
       toggleAutoRefresh={[Function]}
+      transitOperators={Array []}
       viewedStop={
         Object {
           "stopId": "TriMet:715",
@@ -5293,6 +5298,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
       }
       timeFormat="HH:mm"
       toggleAutoRefresh={[Function]}
+      transitOperators={Array []}
       viewedStop={
         Object {
           "stopId": "TriMet:13170",
