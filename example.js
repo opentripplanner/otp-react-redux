@@ -46,6 +46,13 @@ if (useCustomIcons) {
   MyModeIcon = CustomIcons.CustomModeIcon
 }
 
+// define some application-wide components that should be used in
+// various places
+const components = {
+  LegIcon: MyLegIcon,
+  ModeIcon: MyModeIcon
+}
+
 // Get the initial query from config (for demo/testing purposes).
 const {initialQuery} = otpConfig
 const history = createHashHistory()
@@ -69,6 +76,7 @@ const store = createStore(
   }),
   compose(applyMiddleware(...middleware))
 )
+
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
@@ -87,10 +95,10 @@ class OtpRRExample extends Component {
               <main>
                 {/* TODO: extract the BATCH elements out of CallTakerPanel. */}
                 {otpConfig.datastoreUrl
-                  ? <CallTakerPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                  ? <CallTakerPanel />
                   : otpConfig.routingTypes.find(t => t.key === 'BATCH')
-                    ? <BatchRoutingPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
-                    : <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                    ? <BatchRoutingPanel />
+                    : <DefaultMainPanel />
                 }
               </main>
             </Col>
@@ -109,8 +117,6 @@ class OtpRRExample extends Component {
       // <main> Needed for accessibility checks. TODO: Find a better place.
       <main>
         <MobileMain
-          LegIcon={MyLegIcon}
-          ModeIcon={MyModeIcon}
           map={<Map />}
           title={<div className='navbar-title'>OpenTripPlanner</div>}
         />
@@ -120,9 +126,9 @@ class OtpRRExample extends Component {
     /** the main webapp **/
     return (
       <ResponsiveWebapp
+        components={components}
         desktopView={desktopView}
         mobileView={mobileView}
-        LegIcon={MyLegIcon}
       />
     )
   }
