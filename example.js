@@ -19,6 +19,7 @@ import {
   CallTakerControls,
   CallTakerPanel,
   CallTakerWindows,
+  DefaultItinerary,
   DefaultMainPanel,
   DesktopNav,
   BatchRoutingPanel,
@@ -49,6 +50,7 @@ if (useCustomIcons) {
 // define some application-wide components that should be used in
 // various places
 const components = {
+  ItineraryBody: DefaultItinerary,
   LegIcon: MyLegIcon,
   ModeIcon: MyModeIcon
 }
