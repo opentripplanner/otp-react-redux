@@ -1448,12 +1448,13 @@
     "@opentripplanner/core-utils" "^3.0.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/core-utils@^3.0.0", "@opentripplanner/core-utils@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-3.0.1.tgz#6efa8dabceeae4527343edba2e6a9b06ce1fcb1c"
-  integrity sha512-R6VIJfNL0PnddpV+0uJfCGjy3M4HwtujeKSWDl70YoKJa+7G9AVjtk7rKHagwOefpWaUBI86T03EbklyllZgRQ==
+"@opentripplanner/core-utils@^3.0.0", "@opentripplanner/core-utils@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-3.0.3.tgz#cee56325a975ee09f7a6c6cc9c42362b82183daf"
+  integrity sha512-7x8eZj0v0fQJ5L32P/CGG1NjydmuD1O2edMRClx65LSrm0SwHQb3CgEQsBmZTxCmZ5kMgp87p+GcAB7k6kZxdw==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.0.2"
     "@turf/along" "^6.0.1"
     bowser "^2.7.0"
     lodash.isequal "^4.5.0"
@@ -11091,9 +11092,9 @@ npm-run-path@^2.0.0:
     path-key "^2.0.0"
 
 npm-user-validate@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/npm-user-validate/-/npm-user-validate-1.0.0.tgz#8ceca0f5cea04d4e93519ef72d0557a75122e951"
-  integrity sha1-jOyg9c6gTU6TUZ73LQVXp1Ei6VE=
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/npm-user-validate/-/npm-user-validate-1.0.1.tgz#31428fc5475fe8416023f178c0ab47935ad8c561"
+  integrity sha512-uQwcd/tY+h1jnEaze6cdX/LrhWhoBxfSknxentoqmIuStxUExxjWd3ULMLFPiFUrZKbOVMowH6Jq2FRWfmhcEw==
 
 npm@^6.8.0:
   version "6.14.6"
@@ -11287,10 +11288,10 @@ object-keys@^1.0.11, object-keys@^1.0.12, object-keys@^1.1.1:
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.1.1.tgz#1c47f272df277f3b1daf061677d9c82e2322c60e"
   integrity sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==
 
-object-path@^0.11.3:
-  version "0.11.4"
-  resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.4.tgz#370ae752fbf37de3ea70a861c23bba8915691949"
-  integrity sha1-NwrnUvvzfePqcKhhwju6iRVpGUk=
+object-path@^0.11.5:
+  version "0.11.5"
+  resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.5.tgz#d4e3cf19601a5140a55a16ad712019a9c50b577a"
+  integrity sha512-jgSbThcoR/s+XumvGMTMf81QVBmah+/Q7K7YduKeKVWL7N111unR2d6pZZarSk6kY/caeNxUDyxOvMWyzoU2eg==
 
 object-visit@^1.0.0:
   version "1.0.1"
