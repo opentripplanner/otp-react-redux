@@ -197,6 +197,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
       }
       timeFormat="HH:mm"
       toggleAutoRefresh={[Function]}
+      transitOperators={Array []}
       viewedStop={
         Object {
           "stopId": "TriMet:9860",
@@ -932,6 +933,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
       }
       timeFormat="HH:mm"
       toggleAutoRefresh={[Function]}
+      transitOperators={Array []}
       viewedStop={
         Object {
           "stopId": "TriMet:9860",
@@ -1676,6 +1678,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
       }
       timeFormat="HH:mm"
       toggleAutoRefresh={[Function]}
+      transitOperators={Array []}
       viewedStop={
         Object {
           "stopId": "TriMet:9860",
@@ -2777,6 +2780,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
       }
       timeFormat="HH:mm"
       toggleAutoRefresh={[Function]}
+      transitOperators={Array []}
       viewedStop={
         Object {
           "stopId": "TriMet:715",
@@ -3591,6 +3595,236 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             </PatternRow>
             <PatternRow
               homeTimezone="America/Los_Angeles"
+              key="TriMet:94-King City"
+              pattern={
+                Object {
+                  "desc": "94 to SW Pacific Hwy & Durham (TriMet:8644) from W Burnside & SW 8th (TriMet:715)",
+                  "headsign": "King City",
+                  "id": "TriMet:94:0:02",
+                }
+              }
+              route={
+                Object {
+                  "agencyName": "TriMet",
+                  "id": "TriMet:94",
+                  "longName": "Pacific Hwy/Sherwood",
+                  "mode": "BUS",
+                  "shortName": "94",
+                  "sortOrder": 9100,
+                }
+              }
+              showScheduleView={false}
+              stopTimes={
+                Array [
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "9472",
+                    "departureDelay": 0,
+                    "headsign": "King City",
+                    "realtime": false,
+                    "realtimeArrival": 55320,
+                    "realtimeDeparture": 55320,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 55320,
+                    "scheduledDeparture": 55320,
+                    "serviceDay": 1565074800,
+                    "stopCount": 23,
+                    "stopId": "TriMet:715",
+                    "stopIndex": 0,
+                    "timepoint": true,
+                    "tripId": "TriMet:9238192",
+                  },
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "9472",
+                    "departureDelay": 0,
+                    "headsign": "King City",
+                    "realtime": false,
+                    "realtimeArrival": 55320,
+                    "realtimeDeparture": 55320,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 55320,
+                    "scheduledDeparture": 55320,
+                    "serviceDay": 1565161200,
+                    "stopCount": 23,
+                    "stopId": "TriMet:715",
+                    "stopIndex": 0,
+                    "timepoint": true,
+                    "tripId": "TriMet:9238192",
+                  },
+                  Object {
+                    "arrivalDelay": 0,
+                    "blockId": "9472",
+                    "departureDelay": 0,
+                    "headsign": "King City",
+                    "realtime": false,
+                    "realtimeArrival": 55320,
+                    "realtimeDeparture": 55320,
+                    "realtimeState": "SCHEDULED",
+                    "scheduledArrival": 55320,
+                    "scheduledDeparture": 55320,
+                    "serviceDay": 1565247600,
+                    "stopCount": 23,
+                    "stopId": "TriMet:715",
+                    "stopIndex": 0,
+                    "timepoint": true,
+                    "tripId": "TriMet:9238192",
+                  },
+                ]
+              }
+              stopViewerConfig={
+                Object {
+                  "numberOfDepartures": 3,
+                  "timeRange": 345600,
+                }
+              }
+              timeFormat="HH:mm"
+            >
+              <div
+                className="route-row"
+              >
+                <div
+                  className="header"
+                >
+                  <div
+                    className="route-name"
+                  >
+                    <b>
+                      94
+                    </b>
+                     To 
+                    King City
+                  </div>
+                  <div
+                    className="next-trip-preview"
+                  >
+                    <div>
+                      <div
+                        style={
+                          Object {
+                            "float": "left",
+                          }
+                        }
+                      >
+                        <Icon
+                          style={
+                            Object {
+                              "color": "#888",
+                              "fontSize": "0.8em",
+                              "marginRight": 2,
+                            }
+                          }
+                          type="clock-o"
+                        >
+                          <FontAwesome
+                            fixedWidth={true}
+                            name="clock-o"
+                            style={
+                              Object {
+                                "color": "#888",
+                                "fontSize": "0.8em",
+                                "marginRight": 2,
+                              }
+                            }
+                            type="clock-o"
+                          >
+                            <span
+                              aria-hidden={true}
+                              className="fa fa-clock-o fa-fw"
+                              style={
+                                Object {
+                                  "color": "#888",
+                                  "fontSize": "0.8em",
+                                  "marginRight": 2,
+                                }
+                              }
+                              type="clock-o"
+                            />
+                          </FontAwesome>
+                        </Icon>
+                      </div>
+                      <div
+                        style={
+                          Object {
+                            "fontSize": 12,
+                            "marginLeft": 20,
+                          }
+                        }
+                      >
+                        <div
+                          style={
+                            Object {
+                              "marginBottom": -4,
+                            }
+                          }
+                        >
+                          Tuesday
+                        </div>
+                        <div>
+                          15:22
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="expansion-button-container"
+                  >
+                    <button
+                      className="expansion-button"
+                      onClick={[Function]}
+                    >
+                      <Icon
+                        type="chevron-down"
+                      >
+                        <FontAwesome
+                          fixedWidth={true}
+                          name="chevron-down"
+                          type="chevron-down"
+                        >
+                          <span
+                            aria-hidden={true}
+                            className="fa fa-chevron-down fa-fw"
+                            type="chevron-down"
+                          />
+                        </FontAwesome>
+                      </Icon>
+                    </button>
+                  </div>
+                </div>
+                <VelocityTransitionGroup
+                  enter={
+                    Object {
+                      "animation": "slideDown",
+                    }
+                  }
+                  enterHideStyle={
+                    Object {
+                      "display": "none",
+                    }
+                  }
+                  enterShowStyle={
+                    Object {
+                      "display": "",
+                    }
+                  }
+                  leave={
+                    Object {
+                      "animation": "slideUp",
+                    }
+                  }
+                  runOnMount={false}
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component="div"
+                  >
+                    <div />
+                  </TransitionGroup>
+                </VelocityTransitionGroup>
+              </div>
+            </PatternRow>
+            <PatternRow
+              homeTimezone="America/Los_Angeles"
               key="TriMet:94-Sherwood"
               pattern={
                 Object {
@@ -3812,236 +4046,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         </div>
                         <div>
                           14:28
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="expansion-button-container"
-                  >
-                    <button
-                      className="expansion-button"
-                      onClick={[Function]}
-                    >
-                      <Icon
-                        type="chevron-down"
-                      >
-                        <FontAwesome
-                          fixedWidth={true}
-                          name="chevron-down"
-                          type="chevron-down"
-                        >
-                          <span
-                            aria-hidden={true}
-                            className="fa fa-chevron-down fa-fw"
-                            type="chevron-down"
-                          />
-                        </FontAwesome>
-                      </Icon>
-                    </button>
-                  </div>
-                </div>
-                <VelocityTransitionGroup
-                  enter={
-                    Object {
-                      "animation": "slideDown",
-                    }
-                  }
-                  enterHideStyle={
-                    Object {
-                      "display": "none",
-                    }
-                  }
-                  enterShowStyle={
-                    Object {
-                      "display": "",
-                    }
-                  }
-                  leave={
-                    Object {
-                      "animation": "slideUp",
-                    }
-                  }
-                  runOnMount={false}
-                >
-                  <TransitionGroup
-                    childFactory={[Function]}
-                    component="div"
-                  >
-                    <div />
-                  </TransitionGroup>
-                </VelocityTransitionGroup>
-              </div>
-            </PatternRow>
-            <PatternRow
-              homeTimezone="America/Los_Angeles"
-              key="TriMet:94-King City"
-              pattern={
-                Object {
-                  "desc": "94 to SW Pacific Hwy & Durham (TriMet:8644) from W Burnside & SW 8th (TriMet:715)",
-                  "headsign": "King City",
-                  "id": "TriMet:94:0:02",
-                }
-              }
-              route={
-                Object {
-                  "agencyName": "TriMet",
-                  "id": "TriMet:94",
-                  "longName": "Pacific Hwy/Sherwood",
-                  "mode": "BUS",
-                  "shortName": "94",
-                  "sortOrder": 9100,
-                }
-              }
-              showScheduleView={false}
-              stopTimes={
-                Array [
-                  Object {
-                    "arrivalDelay": 0,
-                    "blockId": "9472",
-                    "departureDelay": 0,
-                    "headsign": "King City",
-                    "realtime": false,
-                    "realtimeArrival": 55320,
-                    "realtimeDeparture": 55320,
-                    "realtimeState": "SCHEDULED",
-                    "scheduledArrival": 55320,
-                    "scheduledDeparture": 55320,
-                    "serviceDay": 1565074800,
-                    "stopCount": 23,
-                    "stopId": "TriMet:715",
-                    "stopIndex": 0,
-                    "timepoint": true,
-                    "tripId": "TriMet:9238192",
-                  },
-                  Object {
-                    "arrivalDelay": 0,
-                    "blockId": "9472",
-                    "departureDelay": 0,
-                    "headsign": "King City",
-                    "realtime": false,
-                    "realtimeArrival": 55320,
-                    "realtimeDeparture": 55320,
-                    "realtimeState": "SCHEDULED",
-                    "scheduledArrival": 55320,
-                    "scheduledDeparture": 55320,
-                    "serviceDay": 1565161200,
-                    "stopCount": 23,
-                    "stopId": "TriMet:715",
-                    "stopIndex": 0,
-                    "timepoint": true,
-                    "tripId": "TriMet:9238192",
-                  },
-                  Object {
-                    "arrivalDelay": 0,
-                    "blockId": "9472",
-                    "departureDelay": 0,
-                    "headsign": "King City",
-                    "realtime": false,
-                    "realtimeArrival": 55320,
-                    "realtimeDeparture": 55320,
-                    "realtimeState": "SCHEDULED",
-                    "scheduledArrival": 55320,
-                    "scheduledDeparture": 55320,
-                    "serviceDay": 1565247600,
-                    "stopCount": 23,
-                    "stopId": "TriMet:715",
-                    "stopIndex": 0,
-                    "timepoint": true,
-                    "tripId": "TriMet:9238192",
-                  },
-                ]
-              }
-              stopViewerConfig={
-                Object {
-                  "numberOfDepartures": 3,
-                  "timeRange": 345600,
-                }
-              }
-              timeFormat="HH:mm"
-            >
-              <div
-                className="route-row"
-              >
-                <div
-                  className="header"
-                >
-                  <div
-                    className="route-name"
-                  >
-                    <b>
-                      94
-                    </b>
-                     To 
-                    King City
-                  </div>
-                  <div
-                    className="next-trip-preview"
-                  >
-                    <div>
-                      <div
-                        style={
-                          Object {
-                            "float": "left",
-                          }
-                        }
-                      >
-                        <Icon
-                          style={
-                            Object {
-                              "color": "#888",
-                              "fontSize": "0.8em",
-                              "marginRight": 2,
-                            }
-                          }
-                          type="clock-o"
-                        >
-                          <FontAwesome
-                            fixedWidth={true}
-                            name="clock-o"
-                            style={
-                              Object {
-                                "color": "#888",
-                                "fontSize": "0.8em",
-                                "marginRight": 2,
-                              }
-                            }
-                            type="clock-o"
-                          >
-                            <span
-                              aria-hidden={true}
-                              className="fa fa-clock-o fa-fw"
-                              style={
-                                Object {
-                                  "color": "#888",
-                                  "fontSize": "0.8em",
-                                  "marginRight": 2,
-                                }
-                              }
-                              type="clock-o"
-                            />
-                          </FontAwesome>
-                        </Icon>
-                      </div>
-                      <div
-                        style={
-                          Object {
-                            "fontSize": 12,
-                            "marginLeft": 20,
-                          }
-                        }
-                      >
-                        <div
-                          style={
-                            Object {
-                              "marginBottom": -4,
-                            }
-                          }
-                        >
-                          Tuesday
-                        </div>
-                        <div>
-                          15:22
                         </div>
                       </div>
                     </div>
@@ -4615,6 +4619,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
       }
       timeFormat="HH:mm"
       toggleAutoRefresh={[Function]}
+      transitOperators={Array []}
       viewedStop={
         Object {
           "stopId": "TriMet:715",
@@ -5293,6 +5298,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
       }
       timeFormat="HH:mm"
       toggleAutoRefresh={[Function]}
+      transitOperators={Array []}
       viewedStop={
         Object {
           "stopId": "TriMet:13170",
