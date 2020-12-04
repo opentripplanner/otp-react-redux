@@ -19,7 +19,7 @@ script:
   - yarn build
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - "[[ $TRAVIS_PULL_REQUEST != 'false' ]] && semantic-release-github-pr || exit 0"
+  - "[[ $TRAVIS_PULL_REQUEST != 'false' ]] && semantic-release-github-pr"
   - semantic-release
 branches:
   except:
