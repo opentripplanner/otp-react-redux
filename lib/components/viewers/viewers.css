@@ -13,6 +13,17 @@
   height: 100%;
 }
 
+@keyframes yellowfade {
+    from { background: yellow; }
+    to { background: transparent; }
+}
+
+/* Used to briefly highlight an element and then fade to transparent. */
+.highlighted-item {
+    animation-name: yellowfade;
+    animation-duration: 1.5s;
+}
+
 /* Remove arrows on date input */
 .otp .stop-viewer-body input[type="date"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
