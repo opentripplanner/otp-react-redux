@@ -990,7 +990,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     </div>
                   </PatternRow>
                 </div>
-                .
                 <div
                   style={
                     Object {
@@ -1045,7 +1044,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     00:17
                   </button>
                 </div>
-                }
               </StopLiveTable>
             </div>
           </styled.div>
@@ -1758,7 +1756,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     </div>
                   </PatternRow>
                 </div>
-                .
                 <div
                   style={
                     Object {
@@ -1813,7 +1810,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     00:17
                   </button>
                 </div>
-                }
               </StopLiveTable>
             </div>
           </styled.div>
@@ -2823,7 +2819,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     </div>
                   </PatternRow>
                 </div>
-                .
                 <div
                   style={
                     Object {
@@ -2878,7 +2873,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     00:17
                   </button>
                 </div>
-                }
               </StopLiveTable>
             </div>
           </styled.div>
@@ -5230,7 +5224,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     </div>
                   </PatternRow>
                 </div>
-                .
                 <div
                   style={
                     Object {
@@ -5285,7 +5278,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     17:50
                   </button>
                 </div>
-                }
               </StopLiveTable>
             </div>
           </styled.div>
@@ -6801,7 +6793,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     </div>
                   </PatternRow>
                 </div>
-                .
                 <div
                   style={
                     Object {
@@ -6856,7 +6847,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     17:38
                   </button>
                 </div>
-                }
               </StopLiveTable>
             </div>
           </styled.div>
