@@ -14,14 +14,16 @@
 }
 
 @keyframes yellowfade {
-    from { background: yellow; }
-    to { background: transparent; }
+  from { background: yellow; }
+  to { background: transparent; }
 }
 
 /* Used to briefly highlight an element and then fade to transparent. */
 .highlighted-item {
-    animation-name: yellowfade;
-    animation-duration: 1.5s;
+  /* Waits until scrolling for this item is (almost) finished before starting the fading effect. */
+  animation-delay: 0.5s;
+  animation-duration: 1.5s;
+  animation-name: yellowfade;
 }
 
 /* Remove arrows on date input */
