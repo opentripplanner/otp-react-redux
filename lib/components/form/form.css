@@ -165,16 +165,6 @@
   height: 100%;
 }
 
-.otp .settings-preview .button-container .dot {
-  position: absolute;
-  top: -3px;
-  right: -3px;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: #f00;
-}
-
 .otp.mobile .settings-preview .button-container {
   float: none;
   display: inline-block;
