@@ -29,7 +29,7 @@ persistence:
 
 ### If using the OTP Middleware to store user profiles
 ### with Auth0 as the authentication mechanism,
-### then use the otp_middleware strategy below instead: 
+### then use the otp_middleware strategy below instead:
 # persistence:
 #  enabled: true
 #  strategy: otp_middleware
@@ -130,6 +130,57 @@ itinerary:
   # (Requires using LineItinerary.)
   showRouteFares: false
 
+# The transitOperators key is a list of transit operators that can be used to
+# order transit agencies when sorting by route. Also, this can optionally
+# provide operator logos that appear in the the route viewer and itineraries).
+# Note: these logos will override the values found in
+# agency.txt#agency_branding_url.
+#
+# When sorting routes, otp-react-redux uses otp-ui's route-comparator which uses
+# multiple criteria to sort routes. (See https://git.io/Jk2Ia). The routes are
+# first sorted according to a comparator value based off of the agency. After
+# sorting routes by the agency, additional sorting criteria is used for routes
+# that yield the same agency comparator value.
+#
+# If the transitOperators key is not defined, route sorting will fall back to
+# using the agency name. If the transitOperators key is defined, the order field
+# defined for each agency is used as a comparator value. Agencies are matched
+# according to both the feedId and agencyId. If no match is found or the order
+# field is not undefined, the associated routes will be placed after all other
+# agencies which did have a match with a defined order value.
+#
+# This works best with the IBI fork of OTP which returns the necessary
+# information in the route index API. Check the build logs of OTP to see what
+# feedIds and agencyIds were found as these IDs can sometimes be auto-generated.
+#
+# Shown below is an example transitOperators config setting for the Portland, OR
+# area which uses 2 GTFS files (from TriMet and C-TRAN).
+#
+# transitOperators:
+#   - feedId: TriMet
+#     agencyId: PSC
+#     logo: https://d2tyb7byn1fef9.cloudfront.net/psc.png
+#     order: 1
+#   - feedId: TriMet
+#     agencyId: TRIMET
+#     name: TriMet
+#     logo: http://news.trimet.org/wordpress/wp-content/uploads/2019/04/TriMet-logo-300x300.png
+#     order: 1
+#   - feedId: TriMet
+#     agencyId: TRAM
+#     logo: https://d2tyb7byn1fef9.cloudfront.net/tram.png
+#     order: 1
+#     # The C-TRAN GTFS feed does not come with feed_id or agency_id filled. The
+#     # value of '1' is a feed_id and agency_id that OTP auto-generated.
+#   - feedId: '1'
+#     agencyId: '1'
+#     name: C-TRAN
+#     logo: https://d2tyb7byn1fef9.cloudfront.net/ctran.png
+#     defaultRouteColor: ffffff
+#     defaultRouteTextColor: '000000'
+#     longNameSplitter: ' - '
+#     order: 2
+
 ### Use this config for the standard mode selector
 # modeGroups:
 #   - name: Transit
@@ -140,3 +191,8 @@ itinerary:
 #     modes:
 #       - WALK
 #       - BICYCLE
+
+### If using OTP Middleware, you can define the optional phone number options below.
+# phoneFormatOptions:
+#  # ISO 2-letter country code for phone number formats (defaults to 'US')
+#  countryCode: US

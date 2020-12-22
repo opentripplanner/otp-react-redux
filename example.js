@@ -19,6 +19,7 @@ import {
   CallTakerControls,
   CallTakerPanel,
   CallTakerWindows,
+  DefaultItinerary,
   FieldTripWindows,
   DefaultMainPanel,
   DesktopNav,
@@ -47,6 +48,18 @@ if (useCustomIcons) {
   MyModeIcon = CustomIcons.CustomModeIcon
 }
 
+// define some application-wide components that should be used in
+// various places. The following components can be provided here:
+// - ItineraryBody (required)
+// - ItineraryFooter (optional)
+// - LegIcon (required)
+// - ModeIcon (required)
+const components = {
+  ItineraryBody: DefaultItinerary,
+  LegIcon: MyLegIcon,
+  ModeIcon: MyModeIcon
+}
+
 // Get the initial query from config (for demo/testing purposes).
 const {initialQuery} = otpConfig
 const history = createHashHistory()
@@ -70,6 +83,7 @@ const store = createStore(
   }),
   compose(applyMiddleware(...middleware))
 )
+
 // define a simple responsive UI using Bootstrap and OTP-RR
 class OtpRRExample extends Component {
   render () {
@@ -88,10 +102,10 @@ class OtpRRExample extends Component {
               <main>
                 {/* TODO: extract the BATCH elements out of CallTakerPanel. */}
                 {otpConfig.datastoreUrl
-                  ? <CallTakerPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                  ? <CallTakerPanel />
                   : otpConfig.routingTypes.find(t => t.key === 'BATCH')
-                    ? <BatchRoutingPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
-                    : <DefaultMainPanel LegIcon={MyLegIcon} ModeIcon={MyModeIcon} />
+                    ? <BatchRoutingPanel />
+                    : <DefaultMainPanel />
                 }
               </main>
             </Col>
@@ -116,20 +130,43 @@ class OtpRRExample extends Component {
       // <main> Needed for accessibility checks. TODO: Find a better place.
       <main>
         <MobileMain
-          LegIcon={MyLegIcon}
-          ModeIcon={MyModeIcon}
           map={<Map />}
           title={<div className='navbar-title'>OpenTripPlanner</div>}
         />
       </main>
     )
 
-    /** the main webapp **/
+    /**
+     * The main webapp.
+     *
+     * Note: the ResponsiveWebapp creates a React context provider
+     * (./util/contexts#ComponentContext to be specific) to supply custom
+     * components to various other subcomponents throughout otp-react-redux. If
+     * the ResponsiveWebapp is not used and instead some subcomponents that use
+     * the components in the `components` variable are imported and rendered
+     * outside of the ResponsiveWebapp component, then the ComponentContext will
+     * need to wrap that component in order for the subcomponents to be able to
+     * access the component context. For example:
+     *
+     * ```js
+     * import RouteViewer from 'otp-react-redux/build/components/viewers/route-viewer'
+     * import { ComponentContext } from 'otp-react-redux/build/util/contexts'
+     *
+     * const components = {
+     *   ModeIcon: MyCustomModeIconComponent
+     * }
+     * const ContextAwareRouteViewer = () => (
+     *   <ComponentContext.Provider value={components}>
+     *     <RouteViewer />
+     *   <ComponentContext.Provider/>
+     * )
+     * ```
+     */
     return (
       <ResponsiveWebapp
+        components={components}
         desktopView={desktopView}
         mobileView={mobileView}
-        LegIcon={MyLegIcon}
       />
     )
   }
