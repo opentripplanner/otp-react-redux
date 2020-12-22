@@ -499,7 +499,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
             <div
               className="sc-AxhUy iGhXwR"
             >
-              <StopLiveTable
+              <LiveStopTimes
                 autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
@@ -1044,7 +1044,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     00:17
                   </button>
                 </div>
-              </StopLiveTable>
+              </LiveStopTimes>
             </div>
           </styled.div>
         </div>
@@ -1454,7 +1454,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
             <div
               className="sc-AxhUy iGhXwR"
             >
-              <StopLiveTable
+              <LiveStopTimes
                 autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
@@ -1810,7 +1810,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     00:17
                   </button>
                 </div>
-              </StopLiveTable>
+              </LiveStopTimes>
             </div>
           </styled.div>
         </div>
@@ -2319,7 +2319,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
             <div
               className="sc-AxhUy iGhXwR"
             >
-              <StopLiveTable
+              <LiveStopTimes
                 autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
@@ -2873,7 +2873,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     00:17
                   </button>
                 </div>
-              </StopLiveTable>
+              </LiveStopTimes>
             </div>
           </styled.div>
         </div>
@@ -3640,7 +3640,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             <div
               className="sc-AxhUy iGhXwR"
             >
-              <StopLiveTable
+              <LiveStopTimes
                 autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
@@ -5278,7 +5278,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     17:50
                   </button>
                 </div>
-              </StopLiveTable>
+              </LiveStopTimes>
             </div>
           </styled.div>
         </div>
@@ -6040,7 +6040,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
             <div
               className="sc-AxhUy iGhXwR"
             >
-              <StopLiveTable
+              <LiveStopTimes
                 autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
@@ -6847,7 +6847,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     17:38
                   </button>
                 </div>
-              </StopLiveTable>
+              </LiveStopTimes>
             </div>
           </styled.div>
         </div>
