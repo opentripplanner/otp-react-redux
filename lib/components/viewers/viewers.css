@@ -5,8 +5,7 @@
   padding: 12px;
 }
 
-.otp .route-viewer, .otp .stop-viewer, .otp .trip-viewer,
-.otp .stop-viewer-body {
+.otp .route-viewer, .otp .stop-viewer, .otp .trip-viewer {
   display: flex;
   flex-direction: column;
   flex-flow: column;
