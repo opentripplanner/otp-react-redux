@@ -13,3 +13,4 @@ jobs:
         with:
           check_filenames: true
           only_warn: 1
+          skip: ./.git,yarn.lock
