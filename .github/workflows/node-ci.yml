@@ -1,0 +1,63 @@
+name: Node.js CI
+
+on: [push, pull_request]
+
+jobs:
+  test-and-build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache npm packages
+        uses: bahmutov/npm-install@v1
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Copy example config
+        run: cp example-config.yml config.yml
+      - name: Lint code
+        run: yarn lint
+      - name: Lint docs
+        run: yarn lint-docs
+      - name: Run tests with coverage
+        run: yarn cover
+      - name: Build example project
+        run: yarn build
+
+      # at this point, the build is successful
+      - name: Codecov
+        uses: codecov/codecov-action@v1.2.0
+        continue-on-error: true
+
+  release:
+    name: Release
+    needs: test-and-build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Cache npm packages
+        uses: bahmutov/npm-install@v1
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Semantic Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: semantic-release
