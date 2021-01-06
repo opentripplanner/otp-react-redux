@@ -1,22 +1,22 @@
 name: Node.js CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
-  test-and-build:
+  test-build-release:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x]
-
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 12.x
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
       - name: Copy example config
@@ -34,24 +34,6 @@ jobs:
       - name: Codecov
         uses: codecov/codecov-action@v1.2.0
         continue-on-error: true
-
-  release:
-    name: Release
-    needs: test-and-build
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: Install npm packages using cache
-        uses: bahmutov/npm-install@v1
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
