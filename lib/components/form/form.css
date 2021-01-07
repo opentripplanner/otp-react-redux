@@ -69,6 +69,12 @@
   -webkit-appearance: none;
 }
 
+/* Prevent the calendar picker from having a white margin that covers the date */
+.otp .search-options input[type="date"]::-webkit-calendar-picker-indicator {
+  background-color: rgba(0, 0, 0, 0.0);
+  margin-left: 0px;
+}
+
 .otp .search-options input[type="time"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
