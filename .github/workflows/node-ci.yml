@@ -1,0 +1,41 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  test-build-release:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install npm packages using cache
+        uses: bahmutov/npm-install@v1
+      - name: Copy example config
+        run: cp example-config.yml config.yml
+      - name: Lint code
+        run: yarn lint
+      - name: Lint docs
+        run: yarn lint-docs
+      - name: Run tests with coverage
+        run: yarn cover
+      - name: Build example project
+        run: yarn build
+
+      # at this point, the build is successful
+      - name: Codecov
+        uses: codecov/codecov-action@v1.2.0
+        continue-on-error: true
+      - name: Semantic Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn semantic-release
