@@ -11,6 +11,7 @@
     "prepublish": "mastarm prepublish --config configurations/prepublish",
     "prestart": "yarn",
     "test": "yarn run lint && yarn run lint-docs && yarn run jest",
+    "semantic-release": "semantic-release",
     "start": "mastarm build -e development --serve example.js"
   },
   "standard": {
