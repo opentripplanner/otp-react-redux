@@ -16,14 +16,14 @@ import { Grid, Row, Col } from 'react-bootstrap'
 
 // import OTP-RR components
 import {
+  BatchRoutingPanel,
   CallTakerControls,
   CallTakerPanel,
   CallTakerWindows,
   DefaultItinerary,
-  FieldTripWindows,
   DefaultMainPanel,
   DesktopNav,
-  BatchRoutingPanel,
+  FieldTripWindows,
   Map,
   MobileMain,
   ResponsiveWebapp,
