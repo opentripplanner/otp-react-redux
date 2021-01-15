@@ -497,7 +497,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
           </div>
           <styled.div>
             <div
-              className="sc-AxhUy jrwjWH"
+              className="sc-AxgMl dxqMbF"
             >
               <LiveStopTimes
                 autoRefreshStopTimes={true}
@@ -1452,7 +1452,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
           </div>
           <styled.div>
             <div
-              className="sc-AxhUy jrwjWH"
+              className="sc-AxgMl dxqMbF"
             >
               <LiveStopTimes
                 autoRefreshStopTimes={true}
@@ -2317,7 +2317,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
           </div>
           <styled.div>
             <div
-              className="sc-AxhUy jrwjWH"
+              className="sc-AxgMl dxqMbF"
             >
               <LiveStopTimes
                 autoRefreshStopTimes={true}
@@ -3638,7 +3638,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
           </div>
           <styled.div>
             <div
-              className="sc-AxhUy jrwjWH"
+              className="sc-AxgMl dxqMbF"
             >
               <LiveStopTimes
                 autoRefreshStopTimes={true}
@@ -6038,7 +6038,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
           </div>
           <styled.div>
             <div
-              className="sc-AxhUy jrwjWH"
+              className="sc-AxgMl dxqMbF"
             >
               <LiveStopTimes
                 autoRefreshStopTimes={true}
