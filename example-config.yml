@@ -196,3 +196,7 @@ itinerary:
 # phoneFormatOptions:
 #  # ISO 2-letter country code for phone number formats (defaults to 'US')
 #  countryCode: US
+
+# Format the date time format for display.
+dateTime:
+  longDateFormat: DD-MM-YYYY
