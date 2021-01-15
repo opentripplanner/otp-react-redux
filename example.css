@@ -1,6 +1,7 @@
 .otp .navbar {
   border-radius: 0;
   background-color: #444;
+  margin: 0px;
 }
 
 .otp .navbar .container {
