@@ -197,6 +197,11 @@ itinerary:
 #  # ISO 2-letter country code for phone number formats (defaults to 'US')
 #  countryCode: US
 
+# set this value to change the absolute number of seconds of deviation from the
+# schedule for a transit stop time to be considered early, on-time or late. The
+# default is 60 seconds.
+# onTimeThresholdDeltaSeconds: 60
+
 # Format the date time format for display.
 dateTime:
   longDateFormat: DD-MM-YYYY
