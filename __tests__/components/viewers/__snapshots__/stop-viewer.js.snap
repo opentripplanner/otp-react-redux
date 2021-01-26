@@ -21,7 +21,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
       findStopTimesForStop={[Function]}
       forgetStop={[Function]}
       homeTimezone="America/Los_Angeles"
-      onTimeThresholdDeltaSeconds={60}
       rememberStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
@@ -500,7 +499,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
             <PatternRow
               homeTimezone="America/Los_Angeles"
               key="TriMet:20-Gresham TC"
-              onTimeThresholdDeltaSeconds={60}
               pattern={
                 Object {
                   "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -858,7 +856,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
       findStopTimesForStop={[Function]}
       forgetStop={[Function]}
       homeTimezone="America/Los_Angeles"
-      onTimeThresholdDeltaSeconds={60}
       rememberStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
@@ -1238,7 +1235,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
             <PatternRow
               homeTimezone="America/Los_Angeles"
               key="TriMet:20-Gresham TC"
-              onTimeThresholdDeltaSeconds={60}
               pattern={
                 Object {
                   "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -1506,7 +1502,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
       findStopTimesForStop={[Function]}
       forgetStop={[Function]}
       homeTimezone="America/Los_Angeles"
-      onTimeThresholdDeltaSeconds={60}
       rememberStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
@@ -1985,7 +1980,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
             <PatternRow
               homeTimezone="America/Los_Angeles"
               key="TriMet:20-Gresham TC"
-              onTimeThresholdDeltaSeconds={60}
               pattern={
                 Object {
                   "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -2352,7 +2346,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
       findStopTimesForStop={[Function]}
       forgetStop={[Function]}
       homeTimezone="America/Los_Angeles"
-      onTimeThresholdDeltaSeconds={60}
       rememberStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
@@ -3089,7 +3082,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             <PatternRow
               homeTimezone="America/Los_Angeles"
               key="TriMet:20-Gresham TC"
-              onTimeThresholdDeltaSeconds={60}
               pattern={
                 Object {
                   "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -3374,7 +3366,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             <PatternRow
               homeTimezone="America/Los_Angeles"
               key="TriMet:36-Tualatin Park & Ride"
-              onTimeThresholdDeltaSeconds={60}
               pattern={
                 Object {
                   "desc": "36 to Tualatin Park & Ride (TriMet:7879) from W Burnside & SW 8th (TriMet:715)",
@@ -3605,7 +3596,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             <PatternRow
               homeTimezone="America/Los_Angeles"
               key="TriMet:94-King City"
-              onTimeThresholdDeltaSeconds={60}
               pattern={
                 Object {
                   "desc": "94 to SW Pacific Hwy & Durham (TriMet:8644) from W Burnside & SW 8th (TriMet:715)",
@@ -3836,7 +3826,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             <PatternRow
               homeTimezone="America/Los_Angeles"
               key="TriMet:94-Sherwood"
-              onTimeThresholdDeltaSeconds={60}
               pattern={
                 Object {
                   "desc": "94 to SW Railroad & Washington (TriMet:3670) from W Burnside & SW 8th (TriMet:715)",
@@ -4201,7 +4190,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
       findStopTimesForStop={[Function]}
       forgetStop={[Function]}
       homeTimezone="America/Los_Angeles"
-      onTimeThresholdDeltaSeconds={60}
       rememberStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
@@ -4933,7 +4921,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
             <PatternRow
               homeTimezone="America/Los_Angeles"
               key="TriMet:20-Gresham TC"
-              onTimeThresholdDeltaSeconds={60}
               pattern={
                 Object {
                   "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -5300,7 +5287,6 @@ exports[`components > viewers > stop viewer should render with initial stop id a
       findStopTimesForStop={[Function]}
       forgetStop={[Function]}
       homeTimezone="America/Los_Angeles"
-      onTimeThresholdDeltaSeconds={60}
       rememberStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
