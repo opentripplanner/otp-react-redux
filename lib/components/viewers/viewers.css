@@ -161,14 +161,15 @@
 }
 
 .otp .stop-viewer .trip-table .status-label {
-  width: 100%;
+  border-radius: 2px;
+  color: white;
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 0px 0px 0px;
   text-align: center;
   text-transform: uppercase;
-  font-weight: 500;
-  border-radius: 2px;
-  font-size: 11px;
-  color: white;
-  padding: 2px 0px 0px 0px;
+  width: 100%;
 }
 
 /* trip viewer styles */
