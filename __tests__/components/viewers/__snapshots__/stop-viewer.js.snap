@@ -497,7 +497,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
           </div>
           <styled.div>
             <div
-              className="sc-AxgMl dxqMbF"
+              className="sc-jrAGrp bDAiGg"
             >
               <LiveStopTimes
                 autoRefreshStopTimes={true}
@@ -846,7 +846,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         >
                           <StopTimeCell
                             homeTimezone="America/Los_Angeles"
-                            showIcon={true}
                             soonText="Due"
                             stopTime={
                               Object {
@@ -869,16 +868,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               }
                             }
                             timeFormat="HH:mm"
-                            useCountdown={true}
-                            useSchedule={false}
                           >
                             <div>
                               <div
-                                style={
-                                  Object {
-                                    "float": "left",
-                                  }
-                                }
+                                class="pull-left"
                               >
                                 <Icon
                                   style={
@@ -1452,7 +1445,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
           </div>
           <styled.div>
             <div
-              className="sc-AxgMl dxqMbF"
+              className="sc-jrAGrp bDAiGg"
             >
               <LiveStopTimes
                 autoRefreshStopTimes={true}
@@ -1612,7 +1605,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         >
                           <StopTimeCell
                             homeTimezone="America/Los_Angeles"
-                            showIcon={true}
                             soonText="Due"
                             stopTime={
                               Object {
@@ -1635,16 +1627,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               }
                             }
                             timeFormat="HH:mm"
-                            useCountdown={true}
-                            useSchedule={false}
                           >
                             <div>
                               <div
-                                style={
-                                  Object {
-                                    "float": "left",
-                                  }
-                                }
+                                class="pull-left"
                               >
                                 <Icon
                                   style={
@@ -2317,7 +2303,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
           </div>
           <styled.div>
             <div
-              className="sc-AxgMl dxqMbF"
+              className="sc-jrAGrp bDAiGg"
             >
               <LiveStopTimes
                 autoRefreshStopTimes={true}
@@ -2666,7 +2652,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         >
                           <StopTimeCell
                             homeTimezone="America/Los_Angeles"
-                            showIcon={true}
                             soonText="Due"
                             stopTime={
                               Object {
@@ -2689,16 +2674,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               }
                             }
                             timeFormat="HH:mm"
-                            useCountdown={true}
-                            useSchedule={false}
                           >
                             <div>
                               <div
-                                style={
-                                  Object {
-                                    "float": "left",
-                                  }
-                                }
+                                class="pull-left"
                               >
                                 <Icon
                                   style={
@@ -3638,7 +3617,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
           </div>
           <styled.div>
             <div
-              className="sc-AxgMl dxqMbF"
+              className="sc-jrAGrp bDAiGg"
             >
               <LiveStopTimes
                 autoRefreshStopTimes={true}
@@ -4243,7 +4222,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         >
                           <StopTimeCell
                             homeTimezone="America/Los_Angeles"
-                            showIcon={true}
                             soonText="Due"
                             stopTime={
                               Object {
@@ -4266,16 +4244,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               }
                             }
                             timeFormat="HH:mm"
-                            useCountdown={true}
-                            useSchedule={false}
                           >
                             <div>
                               <div
-                                style={
-                                  Object {
-                                    "float": "left",
-                                  }
-                                }
+                                class="pull-left"
                               >
                                 <Icon
                                   style={
@@ -4501,7 +4473,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         >
                           <StopTimeCell
                             homeTimezone="America/Los_Angeles"
-                            showIcon={true}
                             soonText="Due"
                             stopTime={
                               Object {
@@ -4524,16 +4495,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               }
                             }
                             timeFormat="HH:mm"
-                            useCountdown={true}
-                            useSchedule={false}
                           >
                             <div>
                               <div
-                                style={
-                                  Object {
-                                    "float": "left",
-                                  }
-                                }
+                                class="pull-left"
                               >
                                 <Icon
                                   style={
@@ -4759,7 +4724,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         >
                           <StopTimeCell
                             homeTimezone="America/Los_Angeles"
-                            showIcon={true}
                             soonText="Due"
                             stopTime={
                               Object {
@@ -4782,16 +4746,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               }
                             }
                             timeFormat="HH:mm"
-                            useCountdown={true}
-                            useSchedule={false}
                           >
                             <div>
                               <div
-                                style={
-                                  Object {
-                                    "float": "left",
-                                  }
-                                }
+                                class="pull-left"
                               >
                                 <Icon
                                   style={
@@ -5071,7 +5029,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         >
                           <StopTimeCell
                             homeTimezone="America/Los_Angeles"
-                            showIcon={true}
                             soonText="Due"
                             stopTime={
                               Object {
@@ -5094,16 +5051,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               }
                             }
                             timeFormat="HH:mm"
-                            useCountdown={true}
-                            useSchedule={false}
                           >
                             <div>
                               <div
-                                style={
-                                  Object {
-                                    "float": "left",
-                                  }
-                                }
+                                class="pull-left"
                               >
                                 <Icon
                                   style={
@@ -6038,7 +5989,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
           </div>
           <styled.div>
             <div
-              className="sc-AxgMl dxqMbF"
+              className="sc-jrAGrp bDAiGg"
             >
               <LiveStopTimes
                 autoRefreshStopTimes={true}
@@ -6640,7 +6591,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         >
                           <StopTimeCell
                             homeTimezone="America/Los_Angeles"
-                            showIcon={true}
                             soonText="Due"
                             stopTime={
                               Object {
@@ -6663,16 +6613,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               }
                             }
                             timeFormat="HH:mm"
-                            useCountdown={true}
-                            useSchedule={false}
                           >
                             <div>
                               <div
-                                style={
-                                  Object {
-                                    "float": "left",
-                                  }
-                                }
+                                class="pull-left"
                               >
                                 <Icon
                                   style={
