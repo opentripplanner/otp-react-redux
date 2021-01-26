@@ -15,6 +15,7 @@ Object {
     "routingTypes": Array [],
     "stopViewer": Object {
       "numberOfDepartures": 3,
+      "showBlockIds": false,
       "timeRange": 345600,
     },
     "transitOperators": Array [],

@@ -192,6 +192,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
       stopViewerConfig={
         Object {
           "numberOfDepartures": 3,
+          "showBlockIds": false,
           "timeRange": 345600,
         }
       }
@@ -671,6 +672,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                 stopViewerConfig={
                   Object {
                     "numberOfDepartures": 3,
+                    "showBlockIds": false,
                     "timeRange": 345600,
                   }
                 }
@@ -821,6 +823,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     stopViewerConfig={
                       Object {
                         "numberOfDepartures": 3,
+                        "showBlockIds": false,
                         "timeRange": 345600,
                       }
                     }
@@ -1140,6 +1143,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
       stopViewerConfig={
         Object {
           "numberOfDepartures": 3,
+          "showBlockIds": false,
           "timeRange": 345600,
         }
       }
@@ -1520,6 +1524,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                 stopViewerConfig={
                   Object {
                     "numberOfDepartures": 3,
+                    "showBlockIds": false,
                     "timeRange": 345600,
                   }
                 }
@@ -1580,6 +1585,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     stopViewerConfig={
                       Object {
                         "numberOfDepartures": 3,
+                        "showBlockIds": false,
                         "timeRange": 345600,
                       }
                     }
@@ -1998,6 +2004,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
       stopViewerConfig={
         Object {
           "numberOfDepartures": 3,
+          "showBlockIds": false,
           "timeRange": 345600,
         }
       }
@@ -2477,6 +2484,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                 stopViewerConfig={
                   Object {
                     "numberOfDepartures": 3,
+                    "showBlockIds": false,
                     "timeRange": 345600,
                   }
                 }
@@ -2627,6 +2635,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     stopViewerConfig={
                       Object {
                         "numberOfDepartures": 3,
+                        "showBlockIds": false,
                         "timeRange": 345600,
                       }
                     }
@@ -3312,6 +3321,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
       stopViewerConfig={
         Object {
           "numberOfDepartures": 3,
+          "showBlockIds": false,
           "timeRange": 345600,
         }
       }
@@ -4049,6 +4059,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                 stopViewerConfig={
                   Object {
                     "numberOfDepartures": 3,
+                    "showBlockIds": false,
                     "timeRange": 345600,
                   }
                 }
@@ -4197,6 +4208,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     stopViewerConfig={
                       Object {
                         "numberOfDepartures": 3,
+                        "showBlockIds": false,
                         "timeRange": 345600,
                       }
                     }
@@ -4448,6 +4460,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     stopViewerConfig={
                       Object {
                         "numberOfDepartures": 3,
+                        "showBlockIds": false,
                         "timeRange": 345600,
                       }
                     }
@@ -4699,6 +4712,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     stopViewerConfig={
                       Object {
                         "numberOfDepartures": 3,
+                        "showBlockIds": false,
                         "timeRange": 345600,
                       }
                     }
@@ -5004,6 +5018,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     stopViewerConfig={
                       Object {
                         "numberOfDepartures": 3,
+                        "showBlockIds": false,
                         "timeRange": 345600,
                       }
                     }
@@ -5684,6 +5699,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
       stopViewerConfig={
         Object {
           "numberOfDepartures": 3,
+          "showBlockIds": false,
           "timeRange": 345600,
         }
       }
@@ -6416,6 +6432,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                 stopViewerConfig={
                   Object {
                     "numberOfDepartures": 3,
+                    "showBlockIds": false,
                     "timeRange": 345600,
                   }
                 }
@@ -6566,6 +6583,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     stopViewerConfig={
                       Object {
                         "numberOfDepartures": 3,
+                        "showBlockIds": false,
                         "timeRange": 345600,
                       }
                     }
@@ -6828,6 +6846,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
       stopViewerConfig={
         Object {
           "numberOfDepartures": 3,
+          "showBlockIds": false,
           "timeRange": 345600,
         }
       }
