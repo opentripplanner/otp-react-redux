@@ -207,7 +207,7 @@ dateTime:
 #   # (defaults to 3 if unspecified).
 #   numberOfDepartures: 3
 #   # Whether to display block IDs with each departure in the schedule mode.
-#   # (defauls to false if unspecified).
+#   # (defaults to false if unspecified).
 #   showBlockIds: false
 #   # Specifies the time window, in seconds, in which to search for next arrivals,
 #   # so that, for example, if it is Friday and a route does
