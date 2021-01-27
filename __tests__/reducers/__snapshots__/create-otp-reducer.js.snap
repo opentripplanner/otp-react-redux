@@ -8,7 +8,7 @@ Object {
     "debouncePlanTimeMs": 0,
     "homeTimezone": "America/Los_Angeles",
     "language": Object {},
-    "onTimeThresholdDeltaSeconds": 60,
+    "onTimeThresholdSeconds": 60,
     "phoneFormatOptions": Object {
       "countryCode": "US",
     },
