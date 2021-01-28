@@ -205,3 +205,18 @@ itinerary:
 # Format the date time format for display.
 dateTime:
   longDateFormat: DD-MM-YYYY
+
+# stopViewer:
+#   # The max. number of departures to show for each trip pattern
+#   # in the stop viewer Next Arrivals mode
+#   # (defaults to 3 if unspecified).
+#   numberOfDepartures: 3
+#   # Whether to display block IDs with each departure in the schedule mode.
+#   # (defaults to false if unspecified).
+#   showBlockIds: false
+#   # Specifies the time window, in seconds, in which to search for next arrivals,
+#   # so that, for example, if it is Friday and a route does
+#   # not begin service again until Monday, we are showing its next
+#   # departure and it is not entirely excluded from display
+#   # (defaults to 4 days/345600s if unspecified).
+#   timeRange: 345600
