@@ -1,6 +1,7 @@
 .otp .navbar {
   border-radius: 0;
   background-color: #444;
+  margin: 0px;
 }
 
 .otp .navbar .container {
@@ -33,7 +34,7 @@
 .sidebar {
   height: 100%;
   padding: 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
   box-shadow: 3px 0px 12px #00000052;
   z-index: 1000;
 }
