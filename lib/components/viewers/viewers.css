@@ -1,11 +1,29 @@
 /* shared stop/trip viewer styles */
 
-.otp .stop-viewer-header, .otp .trip-viewer-header, .otp .route-viewer-header {
+.otp .route-viewer-header, .otp .stop-viewer-header, .otp .trip-viewer-header {
   background-color: #ddd;
   padding: 12px;
-  position: sticky; /* Ensure header bar sticks to top of scrolling div */
-  top: 0px;
-  z-index: 1; /* Ensure sticky header stays on top of viewer body */
+}
+
+.otp .route-viewer, .otp .stop-viewer, .otp .trip-viewer,
+.otp .stop-viewer-body {
+  display: flex;
+  flex-direction: column;
+  flex-flow: column;
+  height: 100%;
+}
+
+@keyframes yellowfade {
+  from { background: yellow; }
+  to { background: transparent; }
+}
+
+/* Used to briefly highlight an element and then fade to transparent. */
+.highlighted-item {
+  /* Waits until scrolling for this item is (almost) finished before starting the fading effect. */
+  animation-delay: 0.5s;
+  animation-duration: 1.5s;
+  animation-name: yellowfade;
 }
 
 /* Remove arrows on date input */
@@ -13,7 +31,8 @@
   -webkit-appearance: none;
 }
 
-.otp .stop-viewer-body, .otp .trip-viewer-body {
+.otp .route-viewer-body, .otp .stop-viewer-body, .otp .trip-viewer-body {
+  overflow-y: auto;
   padding: 12px;
 }
 
@@ -142,14 +161,15 @@
 }
 
 .otp .stop-viewer .trip-table .status-label {
-  width: 100%;
+  border-radius: 2px;
+  color: white;
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 0px 0px 0px;
   text-align: center;
   text-transform: uppercase;
-  font-weight: 500;
-  border-radius: 2px;
-  font-size: 11px;
-  color: white;
-  padding: 2px 0px 0px 0px;
+  width: 100%;
 }
 
 /* trip viewer styles */
