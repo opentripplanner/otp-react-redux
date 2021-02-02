@@ -2,7 +2,7 @@
 
 <img src="https://github.com/opentripplanner/otp-react-redux/raw/master/otprr.png" width="500" />
 
-A library for writing modern [OpenTripPlanner](http://www.opentripplanner.org/)-compatible multimodal journey planning applications using [React]() and [Redux]().
+A library for writing modern [OpenTripPlanner](http://www.opentripplanner.org/)-compatible multimodal journey planning applications using [React](https://reactjs.org/) and [Redux](https://redux.js.org/).
 
 ## Running the Example
 
@@ -32,6 +32,12 @@ yarn start
     - `index.css.map`
 
 Note: only contents produced during build in the `dist/` directory are likely to change over time (the `index.html` and `example.css` files contain minimal code), so subsequent deployments will typically only need to replace the `dist/` contents.
+
+### Building/deploying with webpack
+
+A companion project known as [trimet-mod-otp](https://github.com/ibi-group/trimet-mod-otp/) uses an alternative build approach that shows how otp-react-redux can be imported, re-skinned, and built/served with Webpack. This project serves as the TriMet-specific implementation of the OTP user interface and provides a convenient means of configuring/overriding various application assets with command-line options interpreted by Webpack (e.g., to change the base CSS or swap out certain React components). Together, these options make it easy to manage one or many different implementations of OTP.
+
+Check out [trimet-mod-otp's README](https://github.com/ibi-group/trimet-mod-otp/#using-custom-indexhtml-css-and-js) for more info!
 
 ## Library Documentation
 
