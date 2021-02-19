@@ -96,11 +96,32 @@
   left: 0;
   right: 0;
   height: 250px;
+  box-shadow: 3px 0px 12px #00000052;
 }
 
 .otp.mobile .search-map {
   position: fixed;
   top: 300px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Batch routing search screen */
+
+.otp.mobile .batch-search-settings {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  height: 216px;
+  z-index: 99999999;
+  box-shadow: 3px 0px 12px #00000052;
+}
+
+.otp.mobile .batch-search-map {
+  position: fixed;
+  top: 266px;
   left: 0;
   right: 0;
   bottom: 0;
