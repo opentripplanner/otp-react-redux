@@ -8,6 +8,7 @@ Object {
     "debouncePlanTimeMs": 0,
     "homeTimezone": "America/Los_Angeles",
     "language": Object {},
+    "onTimeThresholdSeconds": 60,
     "phoneFormatOptions": Object {
       "countryCode": "US",
     },
@@ -15,6 +16,7 @@ Object {
     "routingTypes": Array [],
     "stopViewer": Object {
       "numberOfDepartures": 3,
+      "showBlockIds": false,
       "timeRange": 345600,
     },
     "transitOperators": Array [],
