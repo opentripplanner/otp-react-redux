@@ -874,7 +874,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           >
                             <div>
                               <div
-                                class="pull-left"
+                                className="pull-left"
                               >
                                 <Icon
                                   style={
@@ -1636,7 +1636,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           >
                             <div>
                               <div
-                                class="pull-left"
+                                className="pull-left"
                               >
                                 <Icon
                                   style={
@@ -2686,7 +2686,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           >
                             <div>
                               <div
-                                class="pull-left"
+                                className="pull-left"
                               >
                                 <Icon
                                   style={
@@ -4259,7 +4259,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           >
                             <div>
                               <div
-                                class="pull-left"
+                                className="pull-left"
                               >
                                 <Icon
                                   style={
@@ -4511,7 +4511,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           >
                             <div>
                               <div
-                                class="pull-left"
+                                className="pull-left"
                               >
                                 <Icon
                                   style={
@@ -4763,7 +4763,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           >
                             <div>
                               <div
-                                class="pull-left"
+                                className="pull-left"
                               >
                                 <Icon
                                   style={
@@ -5069,7 +5069,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           >
                             <div>
                               <div
-                                class="pull-left"
+                                className="pull-left"
                               >
                                 <Icon
                                   style={
@@ -6634,7 +6634,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           >
                             <div>
                               <div
-                                class="pull-left"
+                                className="pull-left"
                               >
                                 <Icon
                                   style={
