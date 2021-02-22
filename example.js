@@ -77,8 +77,8 @@ const store = createStore(
   combineReducers({
     callTaker: createCallTakerReducer(),
     otp: createOtpReducer(otpConfig, initialQuery),
-    user: createUserReducer(),
-    router: connectRouter(history)
+    router: connectRouter(history),
+    user: createUserReducer(otpConfig)
   }),
   compose(applyMiddleware(...middleware))
 )
@@ -92,7 +92,7 @@ class OtpRRExample extends Component {
         <DesktopNav />
         <Grid>
           <Row className='main-row'>
-            <Col sm={6} md={4} className='sidebar'>
+            <Col className='sidebar' md={4} sm={6}>
               {/*
                 Note: the main tag provides a way for users of screen readers
                 to skip to the primary page content.
@@ -109,7 +109,7 @@ class OtpRRExample extends Component {
               </main>
             </Col>
             {otpConfig.datastoreUrl ? <CallTakerControls /> : null}
-            <Col sm={6} md={8} className='map-container'>
+            <Col className='map-container' md={8} sm={6}>
               {otpConfig.datastoreUrl ? <CallTakerWindows /> : null}
               <Map />
             </Col>
