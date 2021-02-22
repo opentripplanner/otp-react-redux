@@ -32,7 +32,10 @@
 }
 
 .otp .route-viewer-body, .otp .stop-viewer-body, .otp .trip-viewer-body {
+  overflow-x: hidden;
   overflow-y: auto;
+}
+.otp .stop-viewer-body, .otp .trip-viewer-body {
   padding: 12px;
 }
 

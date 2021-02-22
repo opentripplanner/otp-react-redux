@@ -18,6 +18,21 @@ Install the dependencies and start a local instance using the following script:
 yarn start
 ```
 
+## Deploying the UI
+
+1. Build the js/css bundle by running `yarn build`. The build will appear in the `dist/` directory).
+2. Modify the `index.html` to point to `dist/index.js` (instead of `example.js`).
+3. Upload the following files to wherever you're deploying the UI:
+  - `index.html` (modified to point to `dist/index.js`)
+  - `example.css`
+  - `dist/`
+    - `index.js`
+    - `index.js.map`
+    - `index.css`
+    - `index.css.map`
+
+Note: only contents produced during build in the `dist/` directory are likely to change over time (the `index.html` and `example.css` files contain minimal code), so subsequent deployments will typically only need to replace the `dist/` contents.
+
 ## Library Documentation
 
 More coming soon...
