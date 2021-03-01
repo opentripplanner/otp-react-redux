@@ -8,7 +8,8 @@ import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 
-import {getInitialState} from '../../../lib/reducers/create-otp-reducer'
+import { getInitialState } from '../../../lib/reducers/create-otp-reducer'
+import { getUserInitialState } from '../../../lib/reducers/create-user-reducer'
 
 Enzyme.configure({ adapter: new EnzymeReactAdapter() })
 
@@ -26,7 +27,8 @@ export function getMockInitialState () {
   const mockInitialQuery = {}
   return clone({
     otp: getInitialState(mockConfig, mockInitialQuery),
-    router: connectRouter(history)
+    router: connectRouter(history),
+    user: getUserInitialState(mockConfig)
   })
 }
 
