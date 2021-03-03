@@ -13,6 +13,7 @@ import createLogger from 'redux-logger'
 
 // import OTP-RR components
 import {
+  BatchResultsScreen,
   BatchRoutingPanel,
   BatchSearchScreen,
   CallTakerControls,
@@ -20,6 +21,7 @@ import {
   CallTakerWindows,
   DefaultItinerary,
   DefaultMainPanel,
+  MobileResultsScreen,
   MobileSearchScreen,
   ResponsiveWebapp,
   createCallTakerReducer,
@@ -71,6 +73,9 @@ const components = {
       ? BatchRoutingPanel
       : DefaultMainPanel,
   MapWindows: isCallTakerModuleEnabled ? CallTakerWindows : null,
+  MobileResultsScreen: isBatchRoutingEnabled
+    ? BatchResultsScreen
+    : MobileResultsScreen,
   MobileSearchScreen: isBatchRoutingEnabled
     ? BatchSearchScreen
     : MobileSearchScreen,
