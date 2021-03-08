@@ -47,16 +47,35 @@ if (useCustomIcons) {
   MyModeIcon = CustomIcons.CustomModeIcon
 }
 
+// Stubs for terms of service/storage for development purposes only.
+// These components should be placed in their own files with appropriate content.
+const TermsOfService = () => (
+  <>
+    <h1>Terms of Service</h1>
+    <p>Content for terms of service.</p>
+  </>
+)
+const TermsOfStorage = () => (
+  <>
+    <h1>Terms of Storage</h1>
+    <p>Content for terms of storage.</p>
+  </>
+)
+
 // define some application-wide components that should be used in
 // various places. The following components can be provided here:
 // - ItineraryBody (required)
 // - ItineraryFooter (optional)
 // - LegIcon (required)
 // - ModeIcon (required)
+// - PrivacyPolicy (optional)
+// - TermsAndConditions (optional)
 const components = {
   ItineraryBody: DefaultItinerary,
   LegIcon: MyLegIcon,
-  ModeIcon: MyModeIcon
+  ModeIcon: MyModeIcon,
+  TermsOfService,
+  TermsOfStorage
 }
 
 // Get the initial query from config (for demo/testing purposes).
