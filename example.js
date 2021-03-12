@@ -50,6 +50,8 @@ if (useCustomIcons) {
 }
 
 // Stubs for terms of service/storage for development purposes only.
+// They are required if otpConfig.persistence.strategy === 'otp_middleware'
+// (otherwise, a "Content not found" box will be shown).
 // These components should be placed in their own files with appropriate content.
 const TermsOfService = () => (
   <>
@@ -75,8 +77,8 @@ const TermsOfStorage = () => (
 // - MapWindows (optional)
 // - MobileSearchScreen (required)
 // - ModeIcon (required)
-// - PrivacyPolicy (optional)
-// - TermsAndConditions (optional)
+// - TermsOfService (required if otpConfig.persistence.strategy === 'otp_middleware')
+// - TermsOfStorage (required if otpConfig.persistence.strategy === 'otp_middleware')
 const components = {
   defaultMobileTitle: () => <div className='navbar-title'>OpenTripPlanner</div>,
   ItineraryBody: DefaultItinerary,
