@@ -52,7 +52,6 @@ Object {
     "wheelchair": false,
   },
   "filter": Object {
-    "filter": "ALL",
     "sort": Object {
       "direction": "ASC",
       "type": null,
