@@ -60,6 +60,7 @@ if (useCustomIcons) {
 // - MainControls (optional)
 // - MainPanel (required)
 // - MapWindows (optional)
+// - MobileResultsScreen (required)
 // - MobileSearchScreen (required)
 // - ModeIcon (required)
 const components = {
