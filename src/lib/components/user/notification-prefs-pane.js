@@ -336,9 +336,7 @@ class PhoneNumberEditor extends Component {
                   {formatPhoneNumber(initialPhoneNumber)}
                   {' '}
                   {isPending
-                    // eslint-disable-next-line jsx-a11y/label-has-for
                     ? <Label bsStyle='warning'>Pending</Label>
-                    // eslint-disable-next-line jsx-a11y/label-has-for
                     : <Label bsStyle='success'>Verified</Label>
                   }
                 </InlineStatic>

@@ -130,7 +130,6 @@ class LiveStopTimes extends Component {
 
         {/* Auto update controls for realtime arrivals */}
         <div style={{ marginTop: '20px' }}>
-          {/* eslint-disable-next-line jsx-a11y/label-has-for */}
           <label style={{ fontWeight: 300, fontSize: 'small' }}>
             <input
               checked={this.props.autoRefreshStopTimes}

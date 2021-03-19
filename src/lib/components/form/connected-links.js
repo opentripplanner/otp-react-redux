@@ -32,8 +32,6 @@ const mapStateToProps = (state, ownProps) => {
 
 // Enhance routing components, connect the result to redux,
 // and export.
-export default {
-  LinkWithQuery: connect(mapStateToProps)(withQueryParams(Link)),
-  LinkContainerWithQuery: connect(mapStateToProps)(withQueryParams(LinkContainer)),
-  RedirectWithQuery: connect(mapStateToProps)(withQueryParams(Redirect))
-}
+export const LinkContainerWithQuery = connect(mapStateToProps)(withQueryParams(LinkContainer))
+export const LinkWithQuery = connect(mapStateToProps)(withQueryParams(Link))
+export const RedirectWithQuery = connect(mapStateToProps)(withQueryParams(Redirect))

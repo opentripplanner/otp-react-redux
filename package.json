@@ -3,16 +3,15 @@
   "description": "A library for writing modern OpenTripPlanner-compatible multimodal journey planning web applications using React and Redux",
   "main": "build/index.js",
   "scripts": {
-    "build": "mastarm build --env production",
+    "build": "craco build",
     "cover": "mastarm test -e test --coverage",
     "jest": "mastarm test -e test",
     "lint": "mastarm lint lib __tests__ --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
-    "prepublish": "mastarm prepublish --config configurations/prepublish",
     "prestart": "yarn",
     "test": "yarn run lint && yarn run lint-docs && yarn run jest",
     "semantic-release": "semantic-release",
-    "start": "mastarm build -e development --serve example.js"
+    "start": "craco start"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -26,7 +25,6 @@
   "bugs": {
     "url": "https://github.com/opentripplanner/otp-react-redux/issues"
   },
-  "homepage": "https://github.com/opentripplanner/otp-react-redux#readme",
   "dependencies": {
     "@auth0/auth0-react": "^1.1.0",
     "@opentripplanner/base-map": "^1.0.5",
@@ -49,6 +47,10 @@
     "@opentripplanner/trip-form": "^1.0.5",
     "@opentripplanner/trip-viewer-overlay": "^1.0.4",
     "@opentripplanner/vehicle-rental-overlay": "^1.0.6",
+    "@types/jest": "^26.0.21",
+    "@types/node": "^14.14.35",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.2",
     "bootstrap": "^3.3.7",
     "bowser": "^1.9.3",
     "clone": "^2.1.0",
@@ -95,23 +97,30 @@
     "seamless-immutable": "^7.1.3",
     "styled-components": "^5.0.0",
     "transitive-js": "^0.13.4",
+    "typescript": "^4.2.3",
     "velocity-react": "^1.3.3",
     "yup": "^0.29.3"
   },
   "devDependencies": {
+    "@craco/craco": "^6.1.1",
+    "copy-webpack-plugin": "^6.3.2",
     "documentation": "^13.0.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.4.0",
     "enzyme-to-json": "^3.4.0",
     "es6-math": "^1.0.0",
+    "js-yaml": "^4.0.0",
+    "js-yaml-loader": "^1.2.2",
+    "json-loader": "^0.5.7",
     "leaflet": "^1.6.0",
-    "mastarm": "^5.1.3",
     "nock": "^9.0.9",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-leaflet": "^2.6.1",
+    "react-scripts": "^4.0.3",
     "redux-mock-store": "^1.5.3",
-    "semantic-release": "^17.2.3"
+    "semantic-release": "^17.2.3",
+    "yaml-loader": "^0.6.0"
   },
   "peerDependencies": {
     "leaflet": "^1.6.0",
@@ -125,5 +134,17 @@
       "<rootDir>/__tests__/test-utils/setup-env.js"
     ],
     "testURL": "http://localhost/"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
