@@ -1,3 +1,4 @@
+import React from 'react'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import styled from 'styled-components'
 
