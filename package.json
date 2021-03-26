@@ -59,6 +59,7 @@
     "d3-zoom": "^1.7.1",
     "font-awesome": "^4.7.0",
     "formik": "^2.1.5",
+    "formik-error-focus": "^1.1.0",
     "haversine": "^1.1.0",
     "history": "^4.7.2",
     "immutability-helper": "^2.1.1",

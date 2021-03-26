@@ -4,35 +4,36 @@ import 'es6-math'
 import {ClassicLegIcon, ClassicModeIcon} from '@opentripplanner/icons'
 import { createHashHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
-import React, { Component } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 
-// import Bootstrap Grid components for layout
-import { Grid, Row, Col } from 'react-bootstrap'
-
 // import OTP-RR components
 import {
   BatchRoutingPanel,
+  BatchSearchScreen,
   CallTakerControls,
   CallTakerPanel,
   CallTakerWindows,
   DefaultItinerary,
   DefaultMainPanel,
-  DesktopNav,
-  FieldTripWindows,
-  Map,
-  MobileMain,
+  MobileSearchScreen,
   ResponsiveWebapp,
   createCallTakerReducer,
   createOtpReducer,
-  createUserReducer
+  createUserReducer,
+  otpUtils
 } from './lib'
 // load the OTP configuration
 import otpConfig from './config.yml'
+
+const isBatchRoutingEnabled = otpUtils.itinerary.isBatchRoutingEnabled(
+  otpConfig
+)
+const isCallTakerModuleEnabled = !!otpConfig.datastoreUrl
 
 // Set useCustomIcons to true to override classic icons with the exports from
 // custom-icons.js
@@ -48,20 +49,55 @@ if (useCustomIcons) {
   MyModeIcon = CustomIcons.CustomModeIcon
 }
 
+// Stubs for terms of service/storage for development purposes only.
+// They are required if otpConfig.persistence.strategy === 'otp_middleware'
+// (otherwise, a "Content not found" box will be shown).
+// These components should be placed in their own files with appropriate content.
+const TermsOfService = () => (
+  <>
+    <h1>Terms of Service</h1>
+    <p>Content for terms of service.</p>
+  </>
+)
+const TermsOfStorage = () => (
+  <>
+    <h1>Terms of Storage</h1>
+    <p>Content for terms of storage.</p>
+  </>
+)
+
 // define some application-wide components that should be used in
 // various places. The following components can be provided here:
+// - defaultMobileTitle (required)
 // - ItineraryBody (required)
 // - ItineraryFooter (optional)
 // - LegIcon (required)
+// - MainControls (optional)
+// - MainPanel (required)
+// - MapWindows (optional)
+// - MobileSearchScreen (required)
 // - ModeIcon (required)
+// - TermsOfService (required if otpConfig.persistence.strategy === 'otp_middleware')
+// - TermsOfStorage (required if otpConfig.persistence.strategy === 'otp_middleware')
 const components = {
+  defaultMobileTitle: () => <div className='navbar-title'>OpenTripPlanner</div>,
   ItineraryBody: DefaultItinerary,
   LegIcon: MyLegIcon,
-  ModeIcon: MyModeIcon
+  MainControls: isCallTakerModuleEnabled ? CallTakerControls : null,
+  MainPanel: isCallTakerModuleEnabled
+    ? CallTakerPanel
+    : isBatchRoutingEnabled
+      ? BatchRoutingPanel
+      : DefaultMainPanel,
+  MapWindows: isCallTakerModuleEnabled ? CallTakerWindows : null,
+  MobileSearchScreen: isBatchRoutingEnabled
+    ? BatchSearchScreen
+    : MobileSearchScreen,
+  ModeIcon: MyModeIcon,
+  TermsOfService,
+  TermsOfStorage
 }
 
-// Get the initial query from config (for demo/testing purposes).
-const {initialQuery} = otpConfig
 const history = createHashHistory()
 const middleware = [
   thunk,
@@ -77,115 +113,41 @@ if (process.env.NODE_ENV === 'development') {
 const store = createStore(
   combineReducers({
     callTaker: createCallTakerReducer(),
-    otp: createOtpReducer(otpConfig, initialQuery),
+    otp: createOtpReducer(otpConfig),
     user: createUserReducer(),
     router: connectRouter(history)
   }),
   compose(applyMiddleware(...middleware))
 )
 
-// define a simple responsive UI using Bootstrap and OTP-RR
-class OtpRRExample extends Component {
-  render () {
-    /** desktop view **/
-    const desktopView = (
-      <div className='otp'>
-        <DesktopNav />
-        <Grid>
-          <Row className='main-row'>
-            <Col sm={6} md={4} className='sidebar'>
-              {/*
-                Note: the main tag provides a way for users of screen readers
-                to skip to the primary page content.
-                TODO: Find a better place.
-              */}
-              <main>
-                {/* TODO: extract the BATCH elements out of CallTakerPanel. */}
-                {otpConfig.datastoreUrl
-                  ? <CallTakerPanel />
-                  : otpConfig.routingTypes.find(t => t.key === 'BATCH')
-                    ? <BatchRoutingPanel />
-                    : <DefaultMainPanel />
-                }
-              </main>
-            </Col>
-            {otpConfig.datastoreUrl ? <CallTakerControls /> : null}
-            <Col sm={6} md={8} className='map-container'>
-              {otpConfig.datastoreUrl
-                ? <>
-                  <CallTakerWindows />
-                  <FieldTripWindows />
-                </>
-                : null
-              }
-              <Map />
-            </Col>
-          </Row>
-        </Grid>
-      </div>
-    )
-
-    /** mobile view **/
-    const mobileView = (
-      // <main> Needed for accessibility checks. TODO: Find a better place.
-      <main>
-        <MobileMain
-          map={<Map />}
-          title={<div className='navbar-title'>OpenTripPlanner</div>}
-        />
-      </main>
-    )
-
-    /**
-     * The main webapp.
-     *
-     * Note: the ResponsiveWebapp creates a React context provider
-     * (./util/contexts#ComponentContext to be specific) to supply custom
-     * components to various other subcomponents throughout otp-react-redux. If
-     * the ResponsiveWebapp is not used and instead some subcomponents that use
-     * the components in the `components` variable are imported and rendered
-     * outside of the ResponsiveWebapp component, then the ComponentContext will
-     * need to wrap that component in order for the subcomponents to be able to
-     * access the component context. For example:
-     *
-     * ```js
-     * import RouteViewer from 'otp-react-redux/build/components/viewers/route-viewer'
-     * import { ComponentContext } from 'otp-react-redux/build/util/contexts'
-     *
-     * const components = {
-     *   ModeIcon: MyCustomModeIconComponent
-     * }
-     * const ContextAwareRouteViewer = () => (
-     *   <ComponentContext.Provider value={components}>
-     *     <RouteViewer />
-     *   <ComponentContext.Provider/>
-     * )
-     * ```
-     */
-    return (
-      <ResponsiveWebapp
-        components={components}
-        desktopView={desktopView}
-        mobileView={mobileView}
-      />
-    )
-  }
-}
-
 // render the app
 render(
   (
     <Provider store={store}>
-      { /**
-     * If not using router history, simply include OtpRRExample here:
-     * e.g.
-     * <OtpRRExample />
-     */
-      }
-      <OtpRRExample />
+      {/**
+       * Note: the ResponsiveWebapp creates a React context provider
+       * (./util/contexts#ComponentContext to be specific) to supply custom
+       * components to various other subcomponents throughout otp-react-redux. If
+       * the ResponsiveWebapp is not used and instead some subcomponents that use
+       * the components in the `components` variable are imported and rendered
+       * outside of the ResponsiveWebapp component, then the ComponentContext will
+       * need to wrap that component in order for the subcomponents to be able to
+       * access the component context. For example:
+       *
+       * ```js
+       * import RouteViewer from 'otp-react-redux/build/components/viewers/route-viewer'
+       * import { ComponentContext } from 'otp-react-redux/build/util/contexts'
+       *
+       * const components = { ModeIcon: MyCustomModeIconComponent }
+       * const ContextAwareRouteViewer = () => (
+       *   <ComponentContext.Provider value={components}>
+       *     <RouteViewer />
+       *   <ComponentContext.Provider/>
+       * )
+       * ```
+       */}
+      <ResponsiveWebapp components={components} />
     </Provider>
-  )
-  ,
-
+  ),
   document.getElementById('root')
 )
