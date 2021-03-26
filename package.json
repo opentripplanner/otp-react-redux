@@ -5,7 +5,7 @@
   "scripts": {
     "build": "craco build",
     "cover": "mastarm test -e test --coverage",
-    "jest": "mastarm test -e test",
+    "jest": "craco test",
     "lint": "mastarm lint lib __tests__ --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
     "prestart": "yarn",
@@ -129,11 +129,7 @@
     "react-leaflet": "^2.6.1"
   },
   "jest": {
-    "globalSetup": "<rootDir>/__tests__/test-utils/global-setup.js",
-    "setupFilesAfterEnv": [
-      "<rootDir>/__tests__/test-utils/setup-env.js"
-    ],
-    "testURL": "http://localhost/"
+    "globalSetup": "<rootDir>/src/__tests__/test-utils/global-setup.js"
   },
   "browserslist": {
     "production": [

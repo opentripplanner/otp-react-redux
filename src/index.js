@@ -29,7 +29,6 @@ import {
 } from './lib'
 // load the OTP configuration
 import otpConfig from './config.yml'
-console.log(otpConfig)
 const isBatchRoutingEnabled = otpUtils.itinerary.isBatchRoutingEnabled(
   otpConfig
 )
