@@ -27,8 +27,13 @@ import {
   createUserReducer,
   otpUtils
 } from './lib'
+
+import './lib/index.css'
+import './index.css'
+
 // load the OTP configuration
 import otpConfig from './config.yml'
+
 const isBatchRoutingEnabled = otpUtils.itinerary.isBatchRoutingEnabled(
   otpConfig
 )

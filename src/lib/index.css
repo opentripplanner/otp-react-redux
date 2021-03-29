@@ -1,20 +1,20 @@
-@import url(node_modules/bootstrap/dist/css/bootstrap.min.css);
+@import url(../../node_modules/bootstrap/dist/css/bootstrap.min.css);
 
 @import url(https://unpkg.com/leaflet@1.0.3/dist/leaflet.css);
-@import url(node_modules/font-awesome/css/font-awesome.css);
-@import url(node_modules/transitive-js/lib/transitive.css);
+@import url(../../node_modules/font-awesome/css/font-awesome.css);
+@import url(../../node_modules/transitive-js/lib/transitive.css);
 
-@import url(lib/components/admin/call-taker.css);
-@import url(lib/components/app/app.css);
-@import url(lib/components/map/map.css);
-@import url(lib/components/form/form.css);
-@import url(lib/components/narrative/narrative.css);
-@import url(lib/components/narrative/default/itinerary.css);
-@import url(lib/components/mobile/mobile.css);
-@import url(lib/components/user/nav-login-button.css);
-@import url(lib/components/viewers/viewers.css);
+@import url(./components/admin/call-taker.css);
+@import url(./components/app/app.css);
+@import url(./components/map/map.css);
+@import url(./components/form/form.css);
+@import url(./components/narrative/narrative.css);
+@import url(./components/narrative/default/itinerary.css);
+@import url(./components/mobile/mobile.css);
+@import url(./components/user/nav-login-button.css);
+@import url(./components/viewers/viewers.css);
 
-@import url(lib/bike-rental.css);
+@import url(./bike-rental.css);
 
 /* Hide IE/Edge clear button in text input fields. */
 input[type=text]::-ms-clear {
