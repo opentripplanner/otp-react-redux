@@ -51,6 +51,23 @@ if (useCustomIcons) {
   MyModeIcon = CustomIcons.CustomModeIcon
 }
 
+// Stubs for terms of service/storage for development purposes only.
+// They are required if otpConfig.persistence.strategy === 'otp_middleware'
+// (otherwise, a "Content not found" box will be shown).
+// These components should be placed in their own files with appropriate content.
+const TermsOfService = () => (
+  <>
+    <h1>Terms of Service</h1>
+    <p>Content for terms of service.</p>
+  </>
+)
+const TermsOfStorage = () => (
+  <>
+    <h1>Terms of Storage</h1>
+    <p>Content for terms of storage.</p>
+  </>
+)
+
 // define some application-wide components that should be used in
 // various places. The following components can be provided here:
 // - defaultMobileTitle (required)
@@ -63,6 +80,8 @@ if (useCustomIcons) {
 // - MobileResultsScreen (required)
 // - MobileSearchScreen (required)
 // - ModeIcon (required)
+// - TermsOfService (required if otpConfig.persistence.strategy === 'otp_middleware')
+// - TermsOfStorage (required if otpConfig.persistence.strategy === 'otp_middleware')
 const components = {
   defaultMobileTitle: () => <div className='navbar-title'>OpenTripPlanner</div>,
   ItineraryBody: DefaultItinerary,
@@ -80,7 +99,9 @@ const components = {
   MobileSearchScreen: isBatchRoutingEnabled
     ? BatchSearchScreen
     : MobileSearchScreen,
-  ModeIcon: MyModeIcon
+  ModeIcon: MyModeIcon,
+  TermsOfService,
+  TermsOfStorage
 }
 
 const history = createHashHistory()
