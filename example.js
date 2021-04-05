@@ -20,6 +20,7 @@ import {
   CallTakerWindows,
   DefaultItinerary,
   DefaultMainPanel,
+  FieldTripWindows,
   MobileSearchScreen,
   ResponsiveWebapp,
   createCallTakerReducer,
@@ -89,7 +90,12 @@ const components = {
     : isBatchRoutingEnabled
       ? BatchRoutingPanel
       : DefaultMainPanel,
-  MapWindows: isCallTakerModuleEnabled ? CallTakerWindows : null,
+  MapWindows: isCallTakerModuleEnabled
+    ? () => <>
+      <CallTakerWindows />
+      <FieldTripWindows />
+    </>
+    : null,
   MobileSearchScreen: isBatchRoutingEnabled
     ? BatchSearchScreen
     : MobileSearchScreen,
