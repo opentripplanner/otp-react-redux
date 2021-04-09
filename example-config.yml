@@ -15,6 +15,11 @@ api:
 #     lon: -122.71607145667079
 #     name: Oregon Zoo, Portland, OR
 
+### The default query parameters can be overridden be uncommenting this object.
+### Note: the override values must be valid values within otp-ui's query-params.js
+# defaultQueryParams:
+#   maxWalkDistance: 3219 # 2 miles in meters
+
 ### The persistence setting is used to enable the storage of places (home, work),
 ### recent searches/places, user overrides, and favorite stops.
 ### Pick the strategy that best suits your needs.
