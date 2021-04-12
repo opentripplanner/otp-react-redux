@@ -15,10 +15,21 @@ api:
 #     lon: -122.71607145667079
 #     name: Oregon Zoo, Portland, OR
 
+
+### Define the strategies for how to handle auto-planning of a new trip when
+### different query parameters are changes in the form. The default config is
+### shown below, but if autoPlan is set to false, auto-plan will never occur.
+### Other strategies besides those shown below are: ANY (any changed param will
+### cause a re-plan).
+# autoPlan:
+#   mobile: BOTH_LOCATIONS_CHANGED
+#   default: ONE_LOCATION_CHANGED
+
 ### The default query parameters can be overridden be uncommenting this object.
 ### Note: the override values must be valid values within otp-ui's query-params.js
 # defaultQueryParams:
 #   maxWalkDistance: 3219 # 2 miles in meters
+
 
 ### The persistence setting is used to enable the storage of places (home, work),
 ### recent searches/places, user overrides, and favorite stops.
