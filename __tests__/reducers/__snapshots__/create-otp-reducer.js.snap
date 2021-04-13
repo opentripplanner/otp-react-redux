@@ -4,10 +4,14 @@ exports[`lib > reducers > create-otp-reducer should be able to create the initia
 Object {
   "activeSearchId": 0,
   "config": Object {
-    "autoPlan": false,
+    "autoPlan": Object {
+      "default": "ONE_LOCATION_CHANGED",
+      "mobile": "BOTH_LOCATIONS_CHANGED",
+    },
     "debouncePlanTimeMs": 0,
     "homeTimezone": "America/Los_Angeles",
     "language": Object {},
+    "onTimeThresholdSeconds": 60,
     "phoneFormatOptions": Object {
       "countryCode": "US",
     },
@@ -15,6 +19,7 @@ Object {
     "routingTypes": Array [],
     "stopViewer": Object {
       "numberOfDepartures": 3,
+      "showBlockIds": false,
       "timeRange": 345600,
     },
     "transitOperators": Array [],
@@ -50,7 +55,6 @@ Object {
     "wheelchair": false,
   },
   "filter": Object {
-    "filter": "ALL",
     "sort": Object {
       "direction": "ASC",
       "type": null,

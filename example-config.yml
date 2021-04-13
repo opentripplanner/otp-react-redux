@@ -15,6 +15,22 @@ api:
 #     lon: -122.71607145667079
 #     name: Oregon Zoo, Portland, OR
 
+
+### Define the strategies for how to handle auto-planning of a new trip when
+### different query parameters are changes in the form. The default config is
+### shown below, but if autoPlan is set to false, auto-plan will never occur.
+### Other strategies besides those shown below are: ANY (any changed param will
+### cause a re-plan).
+# autoPlan:
+#   mobile: BOTH_LOCATIONS_CHANGED
+#   default: ONE_LOCATION_CHANGED
+
+### The default query parameters can be overridden be uncommenting this object.
+### Note: the override values must be valid values within otp-ui's query-params.js
+# defaultQueryParams:
+#   maxWalkDistance: 3219 # 2 miles in meters
+
+
 ### The persistence setting is used to enable the storage of places (home, work),
 ### recent searches/places, user overrides, and favorite stops.
 ### Pick the strategy that best suits your needs.
@@ -197,6 +213,26 @@ itinerary:
 #  # ISO 2-letter country code for phone number formats (defaults to 'US')
 #  countryCode: US
 
+# set this value to change the absolute number of seconds of deviation from the
+# schedule for a transit stop time to be considered early, on-time or late. The
+# default is 60 seconds.
+# onTimeThresholdSeconds: 60
+
 # Format the date time format for display.
 dateTime:
   longDateFormat: DD-MM-YYYY
+
+# stopViewer:
+#   # The max. number of departures to show for each trip pattern
+#   # in the stop viewer Next Arrivals mode
+#   # (defaults to 3 if unspecified).
+#   numberOfDepartures: 3
+#   # Whether to display block IDs with each departure in the schedule mode.
+#   # (defaults to false if unspecified).
+#   showBlockIds: false
+#   # Specifies the time window, in seconds, in which to search for next arrivals,
+#   # so that, for example, if it is Friday and a route does
+#   # not begin service again until Monday, we are showing its next
+#   # departure and it is not entirely excluded from display
+#   # (defaults to 4 days/345600s if unspecified).
+#   timeRange: 345600
