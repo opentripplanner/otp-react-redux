@@ -7,6 +7,22 @@
   font-size: 16px;
 }
 
+#narrative-issues-tooltip {
+  opacity: 1;
+}
+
+#narrative-issues-tooltip .tooltip-inner {
+  background-color: #fff;
+  border: 1px solid black;
+  color: #000;
+  max-width: 350px;
+  padding: 0;
+}
+
+#narrative-issues-tooltip .list-group-item {
+  padding: 5px;
+}
+
 /* Options scroll bar  */
 .otp .options > .list::-webkit-scrollbar {
   width: 10px;
