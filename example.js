@@ -13,6 +13,7 @@ import createLogger from 'redux-logger'
 
 // import OTP-RR components
 import {
+  BatchResultsScreen,
   BatchRoutingPanel,
   BatchSearchScreen,
   CallTakerControls,
@@ -20,6 +21,8 @@ import {
   CallTakerWindows,
   DefaultItinerary,
   DefaultMainPanel,
+  FieldTripWindows,
+  MobileResultsScreen,
   MobileSearchScreen,
   ResponsiveWebapp,
   createCallTakerReducer,
@@ -75,6 +78,7 @@ const TermsOfStorage = () => (
 // - MainControls (optional)
 // - MainPanel (required)
 // - MapWindows (optional)
+// - MobileResultsScreen (required)
 // - MobileSearchScreen (required)
 // - ModeIcon (required)
 // - TermsOfService (required if otpConfig.persistence.strategy === 'otp_middleware')
@@ -89,7 +93,15 @@ const components = {
     : isBatchRoutingEnabled
       ? BatchRoutingPanel
       : DefaultMainPanel,
-  MapWindows: isCallTakerModuleEnabled ? CallTakerWindows : null,
+  MapWindows: isCallTakerModuleEnabled
+    ? () => <>
+      <CallTakerWindows />
+      <FieldTripWindows />
+    </>
+    : null,
+  MobileResultsScreen: isBatchRoutingEnabled
+    ? BatchResultsScreen
+    : MobileResultsScreen,
   MobileSearchScreen: isBatchRoutingEnabled
     ? BatchSearchScreen
     : MobileSearchScreen,
