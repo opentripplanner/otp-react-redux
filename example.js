@@ -72,6 +72,7 @@ const TermsOfStorage = () => (
 // define some application-wide components that should be used in
 // various places. The following components can be provided here:
 // - defaultMobileTitle (required)
+// - getTransitiveRouteLabel (optional, with signature itineraryLeg => string)
 // - ItineraryBody (required)
 // - ItineraryFooter (optional)
 // - LegIcon (required)
@@ -84,7 +85,18 @@ const TermsOfStorage = () => (
 // - TermsOfService (required if otpConfig.persistence.strategy === 'otp_middleware')
 // - TermsOfStorage (required if otpConfig.persistence.strategy === 'otp_middleware')
 const components = {
+
   defaultMobileTitle: () => <div className='navbar-title'>OpenTripPlanner</div>,
+  /**
+   * Example of a custom route label provider to pass to @opentripplanner/core-utils/map#itineraryToTransitive.
+   * @param {*} itineraryLeg The OTP itinerary leg for which to obtain a custom route label.
+   * @returns A string with the custom label to display for the given leg, or null to render no label.
+   */
+  getTransitiveRouteLabel: itineraryLeg => {
+    if (itineraryLeg.mode === 'RAIL') return 'Train'
+    if (itineraryLeg.mode === 'BUS') return itineraryLeg.routeShortName
+    return null // null or undefined or empty string will tell transitive-js to not render a route label.
+  },
   ItineraryBody: DefaultItinerary,
   LegIcon: MyLegIcon,
   MainControls: isCallTakerModuleEnabled ? CallTakerControls : null,

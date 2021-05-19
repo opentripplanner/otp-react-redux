@@ -30,7 +30,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.1.0",
     "@opentripplanner/base-map": "^1.0.5",
-    "@opentripplanner/core-utils": "^3.1.0",
+    "@opentripplanner/core-utils": "^3.1.1",
     "@opentripplanner/endpoints-overlay": "^1.0.6",
     "@opentripplanner/from-to-location-picker": "^1.0.4",
     "@opentripplanner/geocoder": "^1.0.2",
@@ -44,7 +44,7 @@
     "@opentripplanner/route-viewer-overlay": "^1.0.4",
     "@opentripplanner/stop-viewer-overlay": "^1.0.4",
     "@opentripplanner/stops-overlay": "^3.0.2",
-    "@opentripplanner/transitive-overlay": "^1.0.6",
+    "@opentripplanner/transitive-overlay": "^1.0.7",
     "@opentripplanner/trip-details": "^1.1.4",
     "@opentripplanner/trip-form": "^1.0.5",
     "@opentripplanner/trip-viewer-overlay": "^1.0.4",

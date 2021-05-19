@@ -1495,10 +1495,25 @@
     "@opentripplanner/core-utils" "^3.0.4"
     prop-types "^15.7.2"
 
-"@opentripplanner/core-utils@^3.0.0", "@opentripplanner/core-utils@^3.0.4", "@opentripplanner/core-utils@^3.1.0":
+"@opentripplanner/core-utils@^3.0.0", "@opentripplanner/core-utils@^3.0.4":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-3.1.0.tgz#4626807893874503c5d365b05e5db4a1b3bf163c"
   integrity sha512-EYhIv6nQdmadmkQumuXGrEwvRrhUl8xDPckSv24y3o9FX7uk8h5Gqe4FPdjnBT1eOj/XUj0/fZzNcETHUvZvUg==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.0.2"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    lodash.isequal "^4.5.0"
+    moment "^2.24.0"
+    moment-timezone "^0.5.27"
+    prop-types "^15.7.2"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-3.1.1.tgz#d3582cbfe7a84cd5370d63a857dd26dff17591e5"
+  integrity sha512-20uY3uh2TawPG9PWLLWi5TVJ8F1/bws6cRaRfRNwk11qtdeFQNnVqxZGEd8q1OQSW7UI15cM45SCrK7V7Kxn6A==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.0.2"
@@ -1631,12 +1646,12 @@
     "@opentripplanner/from-to-location-picker" "^1.0.3"
     "@opentripplanner/zoom-based-markers" "^1.0.1"
 
-"@opentripplanner/transitive-overlay@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-1.0.6.tgz#73a1cedbc1df897b950f172e4145924462e88217"
-  integrity sha512-JXRJWEhhwl3cYFJVO4EULaXQywHaAr2TtHnbCulCgc+jmKOHQTnyLx2son5OKo3NR8v5FIo2YaleoHczhLhnWA==
+"@opentripplanner/transitive-overlay@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-1.0.7.tgz#42706fea6ce3fd3c93b75d272c6da1c00e9044e4"
+  integrity sha512-2QgvfGgq/8B2EpzFAtaxrmexP/k97WHZwKMVho4ZNPiAYfcaE5kRsa1ifWy5A5hHXb36ixAgzfJYiVLeadWbQQ==
   dependencies:
-    "@opentripplanner/core-utils" "^3.0.4"
+    "@opentripplanner/core-utils" "^3.1.1"
     lodash.isequal "^4.5.0"
     transitive-js "^0.13.7"
 
