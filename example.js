@@ -124,7 +124,7 @@ if (process.env.NODE_ENV === 'development') {
 // set up the Redux store
 const store = createStore(
   combineReducers({
-    callTaker: createCallTakerReducer(),
+    callTaker: createCallTakerReducer(otpConfig),
     otp: createOtpReducer(otpConfig),
     user: createUserReducer(),
     router: connectRouter(history)
