@@ -1,0 +1,24 @@
+_id: fr-FR
+_name: French
+components:
+  DefaultItinerary:
+    bike: Vélo
+    bikeshare: Vélo en libre-service
+    clickDetails: Cliquez pour afficher les détails
+    departureArrivalTimes: "{startTime}—{endTime}"
+    drive: Voiture
+    multiModeSummary: "{accessMode} + {transitMode}"
+    walk: Marche
+    tripDurationFormatZeroHours: "{minutes, number} mn"
+    tripDurationFormat: "{hours, number} h, {minutes, number} mn"
+
+common:
+  otpModes:
+    TRAM: Tram
+    SUBWAY: Métro
+    RAIL: Train
+    BUS: Bus
+    FERRY: Ferry
+    CABLE_CAR: Tram tiré par câble
+    GONDOLA: Téléphérique
+    FUNICULAR: Funiculaire
