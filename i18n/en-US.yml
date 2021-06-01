@@ -2,24 +2,28 @@ _id: en-US
 _name: English
 components:
   DefaultItinerary:
-    bike: Bike
-    bikeshare: Bikeshare
     clickDetails: Click to view details
     # Use ordered placeholders for the departure-arrival string
     # (this will accommodate right-to-left languages by swapping the order in this string).
     departureArrivalTimes: "{startTime}—{endTime}"
-    drive: Drive
     # Use ordered placeholders when multiple modes are involved
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
     multiModeSummary: "{accessMode} to {transitMode}"
-    walk: Walk
     # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
     tripDurationFormat: "{hours, number} hr {minutes, number} min"
 
 common:
-  otpModes:
+  accessModes:
+    bike: Bike
+    bikeshare: Bikeshare
+    drive: Drive
+    micromobility: E-Scooter
+    micromobilityRent: Rental E-Scooter
+    walk: Walk 
+  
+  otpTransitModes:
     TRAM: Streetcar
     SUBWAY: Subway
     RAIL: Rail

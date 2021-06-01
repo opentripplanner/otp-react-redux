@@ -1,19 +1,23 @@
 _id: fr-FR
-_name: French
+_name: Unofficial French Translations!
 components:
   DefaultItinerary:
-    bike: Vélo
-    bikeshare: Vélo en libre-service
     clickDetails: Cliquez pour afficher les détails
     departureArrivalTimes: "{startTime}—{endTime}"
-    drive: Voiture
     multiModeSummary: "{accessMode} + {transitMode}"
-    walk: Marche
     tripDurationFormatZeroHours: "{minutes, number} mn"
     tripDurationFormat: "{hours, number} h, {minutes, number} mn"
 
 common:
-  otpModes:
+  accessModes:
+    bike: Vélo
+    bikeshare: Vélo en libre-service
+    drive: Voiture
+    micromobility: Trottinette électrique
+    micromobilityRent: Trottinette électrique en libre-service
+    walk: Marche
+
+  otpTransitModes:
     TRAM: Tram
     SUBWAY: Métro
     RAIL: Train
