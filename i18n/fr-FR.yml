@@ -1,5 +1,6 @@
 _id: fr-FR
 _name: Unofficial French Translations!
+
 components:
   DefaultItinerary:
     clickDetails: Cliquez pour afficher les détails
@@ -18,11 +19,11 @@ common:
     walk: Marche
 
   otpTransitModes:
-    TRAM: Tram
-    SUBWAY: Métro
-    RAIL: Train
-    BUS: Bus
-    FERRY: Ferry
-    CABLE_CAR: Tram tiré par câble
-    GONDOLA: Téléphérique
-    FUNICULAR: Funiculaire
+    tram: Tram
+    subway: Métro
+    rail: Train
+    bus: Bus
+    ferry: Ferry
+    cable_car: Tram tiré par câble
+    gondola: Téléphérique
+    funicular: Funiculaire

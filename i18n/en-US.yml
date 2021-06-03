@@ -1,5 +1,6 @@
 _id: en-US
 _name: English
+
 components:
   DefaultItinerary:
     clickDetails: Click to view details
@@ -24,11 +25,11 @@ common:
     walk: Walk 
   
   otpTransitModes:
-    TRAM: Streetcar
-    SUBWAY: Subway
-    RAIL: Rail
-    BUS: Bus
-    FERRY: Ferry
-    CABLE_CAR: Cable Car
-    GONDOLA: Gondola
-    FUNICULAR: Funicular
+    tram: Streetcar
+    subway: Subway
+    rail: Rail
+    bus: Bus
+    ferry: Ferry
+    cable_car: Cable Car
+    gondola: Gondola
+    funicular: Funicular
