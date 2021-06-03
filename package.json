@@ -110,7 +110,6 @@
     "enzyme-adapter-react-16": "^1.4.0",
     "enzyme-to-json": "^3.4.0",
     "es6-math": "^1.0.0",
-    "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-sort-destructure-keys": "^1.3.5",
     "husky": "^6.0.0",
     "leaflet": "^1.6.0",
@@ -137,39 +136,9 @@
     ],
     "testURL": "http://localhost/"
   },
-  "eslintConfig": {
-    "extends": [
-      "../mastarm/lib/eslintrc.json"
-    ],
-    "parser": "babel-eslint",
-    "rules": {
-      "react/jsx-sort-props": [
-        "error",
-        {
-          "ignoreCase": true
-        }
-      ],
-      "sort-destructure-keys/sort-destructure-keys": ["error", {
-        "caseSensitive": false
-      }],
-      "sort-keys": [
-        "error",
-        "asc",
-        {
-          "caseSensitive": false
-        }
-      ],
-      "sort-vars": [
-        "error",
-        {
-          "ignoreCase": true
-        }
-      ]
-    }
-  },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint --fix"
+      "eslint --config eslint-precommit.json --fix"
     ]
   }
 }
