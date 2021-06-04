@@ -110,7 +110,6 @@
     "enzyme-adapter-react-16": "^1.4.0",
     "enzyme-to-json": "^3.4.0",
     "es6-math": "^1.0.0",
-    "eslint-plugin-sort-destructure-keys": "^1.3.5",
     "husky": "^6.0.0",
     "leaflet": "^1.6.0",
     "lint-staged": "^11.0.0",
@@ -138,7 +137,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint --config eslint-precommit.json --fix"
+      "eslint --config node_modules/mastarm/lib/eslintrc.json --fix"
     ]
   }
 }
