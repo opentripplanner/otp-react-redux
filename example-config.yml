@@ -208,6 +208,20 @@ itinerary:
 #       - WALK
 #       - BICYCLE
 
+### Language section to override strings.
+### Strings can be set globally for all languages (e.g. for strings that are brands/nouns,
+### e.g. TriMet's "TransitTracker") or by language.
+### The nested structure should be the same as the language files under the i18n folder.
+# language:
+#   allLanguages
+#     common:
+#       accessModes:
+#         bikeshare: Relay Bike
+#   en-US:
+#     common:
+#       accessModes:
+#         bikeshare: Blue Bike
+
 ### If using OTP Middleware, you can define the optional phone number options below.
 # phoneFormatOptions:
 #  # ISO 2-letter country code for phone number formats (defaults to 'US')
