@@ -1,7 +1,7 @@
 /* globals describe, expect, it */
 
 import {
-  getTransitItineraryDefaultMonitoredDays,
+  getItineraryDefaultMonitoredDays,
   itineraryCanBeMonitored
 } from '../../lib/util/itinerary'
 import { WEEKDAYS, WEEKEND_DAYS } from '../../lib/util/monitored-trip'
@@ -85,7 +85,7 @@ describe('util > itinerary', () => {
       })
     })
   })
-  describe('getTransitItineraryDefaultMonitoredDays', () => {
+  describe('getItineraryDefaultMonitoredDays', () => {
     const transitLegWeekday = {
       mode: 'BUS',
       serviceDate: '20210609', // Wednesday
@@ -121,16 +121,31 @@ describe('util > itinerary', () => {
       },
       title: 'should be [\'saturday\', \'sunday\'] for an itinerary starting on a Sunday.'
     }, {
-      expected: null,
+      expected: WEEKDAYS,
       itinerary: {
-        legs: [walkLeg]
+        legs: [walkLeg],
+        startTime: 1623341891000 // Thursday 2021-06-10 12:18 pm EDT
       },
-      title: 'should be null for an itinerary without transit.'
+      title: 'should be [\'monday\' thru \'friday\'] for an itinerary without transit starting on a weekday (fallback case).'
+    }, {
+      expected: WEEKEND_DAYS,
+      itinerary: {
+        legs: [walkLeg],
+        startTime: 1623514691000 // Saturday 2021-06-12 12:18 pm EDT
+      },
+      title: 'should be [\'saturday\', \'sunday\'] for an itinerary without transit starting on a Saturday (fallback case).'
+    }, {
+      expected: WEEKEND_DAYS,
+      itinerary: {
+        legs: [walkLeg],
+        startTime: 1623601091000 // Sunday 2021-06-13 12:18 pm EDT
+      },
+      title: 'should be [\'saturday\', \'sunday\'] for an itinerary without transit starting on a Sunday (fallback case).'
     }]
 
     testCases.forEach(({ expected, itinerary, title }) => {
       it(title, () => {
-        expect(getTransitItineraryDefaultMonitoredDays(itinerary)).toBe(expected)
+        expect(getItineraryDefaultMonitoredDays(itinerary)).toBe(expected)
       })
     })
   })
