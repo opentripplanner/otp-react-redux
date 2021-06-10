@@ -1,6 +1,14 @@
 /* globals describe, expect, it */
 
-import { itineraryCanBeMonitored } from '../../lib/util/itinerary'
+import {
+  getTransitItineraryDefaultMonitoredDays,
+  itineraryCanBeMonitored
+} from '../../lib/util/itinerary'
+import { WEEKDAYS, WEEKEND_DAYS } from '../../lib/util/monitored-trip'
+
+const walkLeg = {
+  mode: 'WALK'
+}
 
 describe('util > itinerary', () => {
   describe('itineraryCanBeMonitored', () => {
@@ -19,9 +27,6 @@ describe('util > itinerary', () => {
     const rentalMicromobilityLeg = {
       mode: 'MICROMOBILITY_RENT',
       rentedVehicle: true
-    }
-    const walkLeg = {
-      mode: 'WALK'
     }
     const rideHailLeg = {
       mode: 'CAR_HAIL',
@@ -77,6 +82,55 @@ describe('util > itinerary', () => {
     testCases.forEach(({ expected, itinerary, title }) => {
       it(title, () => {
         expect(itineraryCanBeMonitored(itinerary)).toBe(expected)
+      })
+    })
+  })
+  describe('getTransitItineraryDefaultMonitoredDays', () => {
+    const transitLegWeekday = {
+      mode: 'BUS',
+      serviceDate: '20210609', // Wendesday
+      transitLeg: true
+    }
+    const transitLegSaturday = {
+      mode: 'BUS',
+      serviceDate: '20210612', // Saturday
+      transitLeg: true
+    }
+    const transitLegSunday = {
+      mode: 'BUS',
+      serviceDate: '20210613', // Sunday
+      transitLeg: true
+    }
+
+    const testCases = [{
+      expected: WEEKDAYS,
+      itinerary: {
+        legs: [walkLeg, transitLegWeekday]
+      },
+      title: 'should be [\'monday\' thru \'friday\'] for an itinerary starting on a weekday.'
+    }, {
+      expected: WEEKEND_DAYS,
+      itinerary: {
+        legs: [walkLeg, transitLegSaturday]
+      },
+      title: 'should be [\'saturday\', \'sunday\'] for an itinerary starting on a Saturday.'
+    }, {
+      expected: WEEKEND_DAYS,
+      itinerary: {
+        legs: [walkLeg, transitLegSunday]
+      },
+      title: 'should be [\'saturday\', \'sunday\'] for an itinerary starting on a Sunday.'
+    }, {
+      expected: null,
+      itinerary: {
+        legs: [walkLeg]
+      },
+      title: 'should be null for an itinerary without transit.'
+    }]
+
+    testCases.forEach(({ expected, itinerary, title }) => {
+      it(title, () => {
+        expect(getTransitItineraryDefaultMonitoredDays(itinerary)).toBe(expected)
       })
     })
   })
