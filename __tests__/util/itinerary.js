@@ -88,7 +88,7 @@ describe('util > itinerary', () => {
   describe('getTransitItineraryDefaultMonitoredDays', () => {
     const transitLegWeekday = {
       mode: 'BUS',
-      serviceDate: '20210609', // Wendesday
+      serviceDate: '20210609', // Wednesday
       transitLeg: true
     }
     const transitLegSaturday = {
