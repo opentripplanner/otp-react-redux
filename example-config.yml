@@ -222,6 +222,11 @@ itinerary:
 #       accessModes:
 #         bikeshare: Blue Bike
 
+### Localization section to provide language/locale settings
+#localization:
+#  currency: 'USD' 
+#  defaultLocale: 'en-US'
+
 ### If using OTP Middleware, you can define the optional phone number options below.
 # phoneFormatOptions:
 #  # ISO 2-letter country code for phone number formats (defaults to 'US')
