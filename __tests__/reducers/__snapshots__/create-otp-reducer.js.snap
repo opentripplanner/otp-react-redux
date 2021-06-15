@@ -100,7 +100,6 @@ Object {
     "trips": Object {},
   },
   "ui": Object {
-    "currency": "USD",
     "diagramLeg": null,
     "locale": "en-US",
     "mobileScreen": 1,
