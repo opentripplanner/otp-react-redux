@@ -15,17 +15,21 @@ describe('util > state', () => {
     const testCases = [{
       expected: false,
       input: {
-        currentQuery: {
-          from: fakeFromLocation
+        otp: {
+          currentQuery: {
+            from: fakeFromLocation
+          }
         }
       },
       title: 'should not be valid with only from location'
     }, {
       expected: true,
       input: {
-        currentQuery: {
-          from: fakeFromLocation,
-          to: fakeToLocation
+        otp: {
+          currentQuery: {
+            from: fakeFromLocation,
+            to: fakeToLocation
+          }
         }
       },
       title: 'should be valid with from and to locations'
