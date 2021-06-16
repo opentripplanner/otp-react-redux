@@ -69,6 +69,31 @@ map:
     - name: Stamen Toner Lite
       url: http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+  ### Optional transitive.js (route rendering) properties:
+  ### - labeledModes: an array of OTP modes for which the route label should be
+  ###                 rendered on the map. Example of OTP modes: BUS, RAIL, ...
+  ###                 The label is rendered under the condition that a route_short_name is provided
+  ###                 in the GTFS feed for those routes, or that a getTransitiveRouteLabel function is defined
+  ###                 in the ComponentContext (see example.js for more).
+  ### - styles.labels,
+  ###   styles.segment_labels: styles attributes recognized by transitive.js. 
+  ###                         For examples of applicable style attributes, see
+  ###                         https://github.com/conveyal/transitive.js/blob/master/stories/Transitive.stories.js#L47.
+  # transitive:
+  #   labeledModes:
+  #     - BUS
+  #     - RAIL
+  #   styles:
+  #     labels:
+  #       font-size: 14px
+  #       font-family: Hind, sans-serif
+  #     segment_labels:
+  #       border-color: "#FFFFFF"
+  #       border-radius: 6
+  #       border-width: 2
+  #       color: "#FFE0D0"
+  #       font-family: Hind, sans-serif
+  #       font-size: 18px
 
 # it is possible to leave out a geocoder config entirely. In that case only
 # GPS coordinates will be used when finding the origin/destination.
