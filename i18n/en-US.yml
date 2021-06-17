@@ -52,7 +52,7 @@ common:
     walk: Walk 
 
   # OTP transit modes
-  # Note that identifers are OTP modes converted to lowercase.
+  # Note that identifiers are OTP modes converted to lowercase.
   otpTransitModes:
     tram: Streetcar
     subway: Subway
