@@ -135,6 +135,21 @@ modes:
       label: Own Bike
       iconWidth: 18
 
+# # The following modules require the datastoreUrl and trinetReDirect properties
+# # to be set. Note: Most of these components are currently only configured for
+# # TriMet.
+# datastoreUrl: https://localhost:9000
+# trinetReDirect: https://localhost:9001
+# modules:
+#   # Provides UI elements for Call Takers to record calls/trip queries.
+#   - id: call
+#   # Provides UI elements for planning field trips on transit vehicles.
+#   - id: ft
+#   # Provides a form for constructing PDF documents for mailing to customers.
+#   - id: mailables
+#     items:
+#     - name: Rte 1 Schedule (1-Vermont)
+#       largePrint: true
 
 routingTypes:
   - key: ITINERARY
