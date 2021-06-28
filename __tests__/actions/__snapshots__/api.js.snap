@@ -3,6 +3,9 @@
 exports[`actions > api routingQuery should gracefully handle bad response 1`] = `
 Array [
   Array [
+    [Function],
+  ],
+  Array [
     Object {
       "payload": Object {
         "activeItinerary": 0,
@@ -12,6 +15,9 @@ Array [
       },
       "type": "ROUTING_REQUEST",
     },
+  ],
+  Array [
+    [Function],
   ],
   Array [
     [Function],
@@ -35,6 +41,9 @@ Array [
 
 exports[`actions > api routingQuery should make a query to OTP 1`] = `
 Array [
+  Array [
+    [Function],
+  ],
   Array [
     Object {
       "payload": Object {
