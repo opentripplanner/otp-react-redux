@@ -76,7 +76,7 @@ map:
   ###                 in the GTFS feed for those routes, or that a getTransitiveRouteLabel function is defined
   ###                 in the ComponentContext (see example.js for more).
   ### - styles.labels,
-  ###   styles.segment_labels: styles attributes recognized by transitive.js. 
+  ###   styles.segment_labels: styles attributes recognized by transitive.js.
   ###                         For examples of applicable style attributes, see
   ###                         https://github.com/conveyal/transitive.js/blob/master/stories/Transitive.stories.js#L47.
   # transitive:
@@ -160,6 +160,29 @@ modes:
       label: Own Bike
       iconWidth: 18
 
+# # The following modules require the datastoreUrl and trinetReDirect properties
+# # to be set. Note: Most of these components are currently only configured for
+# # TriMet.
+# datastoreUrl: https://localhost:9000
+# trinetReDirect: https://localhost:9001
+# modules:
+#   # Provides UI elements for Call Takers to record calls/trip queries.
+#   - id: call
+#   # Provides UI elements for planning field trips on transit vehicles.
+#   - id: ft
+#   # Provides a form for constructing PDF documents for mailing to customers.
+#   - id: mailables
+#     items:
+#     - name: Rte 1 Schedule (1-Vermont)
+#       largePrint: true
+#     # The below settings allow for customizing the PDF letter.
+#     horizontalMargin: 108
+#     verticalMargin: 120
+#     introduction: 'Thank you for calling us to request information.  We have enclosed for you the following item(s):'
+#     conclusion: Thank you for your patronage!
+#     footer: Transit Agency • 555-555-RIDE
+#     # NOTE: headerGraphic requires a valid URL to a png file.
+#     headerGraphic: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Trimet_logo.svg/1280px-Trimet_logo.svg.png'
 
 routingTypes:
   - key: ITINERARY
