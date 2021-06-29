@@ -76,7 +76,7 @@ map:
   ###                 in the GTFS feed for those routes, or that a getTransitiveRouteLabel function is defined
   ###                 in the ComponentContext (see example.js for more).
   ### - styles.labels,
-  ###   styles.segment_labels: styles attributes recognized by transitive.js. 
+  ###   styles.segment_labels: styles attributes recognized by transitive.js.
   ###                         For examples of applicable style attributes, see
   ###                         https://github.com/conveyal/transitive.js/blob/master/stories/Transitive.stories.js#L47.
   # transitive:
@@ -170,6 +170,9 @@ itinerary:
   # Show fares for each transit leg (false if omitted).
   # (Requires using LineItinerary.)
   showRouteFares: false
+  # Whether the plan first/previous/next/last buttons should be shown along with
+  # plan trip itineraries.
+  showPlanFirstLastButtons: false
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
