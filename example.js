@@ -70,6 +70,11 @@ const TermsOfStorage = () => (
   </>
 )
 
+// Define custom map overlays with the custom vehicle overlay
+const CustomMapOverlays = () => {
+
+}
+
 // define some application-wide components that should be used in
 // various places. The following components can be provided here:
 // - defaultMobileTitle (required)
@@ -106,6 +111,7 @@ const components = {
     : isBatchRoutingEnabled
       ? BatchRoutingPanel
       : DefaultMainPanel,
+  MapOverlays: CustomMapOverlays,
   MapWindows: isCallTakerModuleEnabled
     ? () => <>
       <CallHistoryWindow />
