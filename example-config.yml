@@ -224,6 +224,10 @@ itinerary:
 
 ### Localization section to provide language/locale settings
 #localization:
+#  # An ambient currency should be defined here (defaults to USD).
+#  # In some components such as DefaultItinerary, we display a cost element
+#  # that falls back to $0.00 (or its equivalent in the configured ambient currency
+#  # and in the user-selected locale) if no fare or currency info is available.
 #  currency: 'USD' 
 #  defaultLocale: 'en-US'
 
