@@ -33,7 +33,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.1.0",
     "@opentripplanner/base-map": "^1.0.5",
-    "@opentripplanner/core-utils": "^3.1.1",
+    "@opentripplanner/core-utils": "^3.2.1",
     "@opentripplanner/endpoints-overlay": "^1.0.6",
     "@opentripplanner/from-to-location-picker": "^1.0.4",
     "@opentripplanner/geocoder": "^1.0.2",
