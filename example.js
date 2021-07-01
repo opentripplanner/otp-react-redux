@@ -22,6 +22,7 @@ import {
   DefaultItinerary,
   DefaultMainPanel,
   FieldTripWindows,
+  GtfsRtVehicleOverlay,
   MailablesWindow,
   MobileResultsScreen,
   MobileSearchScreen,
@@ -71,9 +72,9 @@ const TermsOfStorage = () => (
 )
 
 // Define custom map overlays with the custom vehicle overlay
-const CustomMapOverlays = () => {
-
-}
+const CustomMapOverlays = () => (
+  <GtfsRtVehicleOverlay />
+)
 
 // define some application-wide components that should be used in
 // various places. The following components can be provided here:
@@ -91,7 +92,7 @@ const CustomMapOverlays = () => {
 // - TermsOfService (required if otpConfig.persistence.strategy === 'otp_middleware')
 // - TermsOfStorage (required if otpConfig.persistence.strategy === 'otp_middleware')
 const components = {
-
+  CustomMapOverlays,
   defaultMobileTitle: () => <div className='navbar-title'>OpenTripPlanner</div>,
   /**
    * Example of a custom route label provider to pass to @opentripplanner/core-utils/map#itineraryToTransitive.
@@ -111,7 +112,6 @@ const components = {
     : isBatchRoutingEnabled
       ? BatchRoutingPanel
       : DefaultMainPanel,
-  MapOverlays: CustomMapOverlays,
   MapWindows: isCallTakerModuleEnabled
     ? () => <>
       <CallHistoryWindow />
