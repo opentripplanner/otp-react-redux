@@ -65,6 +65,9 @@ describe('actions > api', () => {
   })
 })
 
+/**
+ * Sets the requestId values as needed to deterministic IDs.
+ */
 function setMockRequestIds (calls) {
   calls.forEach(call => {
     call.forEach(action => {
