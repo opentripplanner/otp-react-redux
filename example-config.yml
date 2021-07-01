@@ -170,6 +170,24 @@ modes:
 #   - id: call
 #   # Provides UI elements for planning field trips on transit vehicles.
 #   - id: ft
+#     # An optional maximum number of requests to make to OTP when trying to
+#     # find  itineraries. Defaults to 10 if not provided.
+#     maxRequests: 10
+#     # An optional minimum remaining capacity that a tripId must retain in the
+#     # event that multiple field trips use the same trip. Defaults to 10 if not
+#     # provided.
+#     minimumAllowableRemainingCapacity: 10
+#     # An optional lookup of the field trip capacity for each mode. Defaults
+#     # are shown below if any one of these are not provided.
+#     modeCapacities:
+#       TRAM: 80
+#       SUBWAY: 120
+#       RAIL: 80
+#       BUS: 40
+#       FERRY: 100
+#       CABLE_CAR: 20
+#       GONDOLA: 15
+#       FUNICULAR: 20
 #   # Provides a form for constructing PDF documents for mailing to customers.
 #   - id: mailables
 #     items:
