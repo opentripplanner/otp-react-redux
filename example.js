@@ -73,13 +73,17 @@ const TermsOfStorage = () => (
 
 // Define custom map overlays.
 // customMapOverlays can be a single overlay element or an array of such elements.
-// Each overlay must include a name prop.
+// Each overlay must include a name prop (and a key prop if wrapping in an array).
 // (Wrapping the overlays inside a React Fragment <> or other component will not work.)
 const customMapOverlays = [
-  // <GtfsRtVehicleOverlay key='custom1' name='GTFS-rt Example Vehicles 1' />,
+  <GtfsRtVehicleOverlay
+    key='custom1'
+    liveFeedUrl='https://gtfs-rt.example.com/feed1.pb'
+    name='GTFS-rt Example Vehicles 1'
+  />,
   <GtfsRtVehicleOverlay
     key='custom2'
-    liveFeedUrl='https://fdot-ucf-shuttles.s3.amazonaws.com/vehiclepositions_pb.json'
+    liveFeedUrl='https://gtfs-rt.example.com/feed2.pb'
     name='GTFS-rt Example Vehicles 2'
   />
 ]
