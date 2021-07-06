@@ -38,6 +38,18 @@ components:
     tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
     tripDurationFormat: "{hours, number} hr {minutes, number} min"
+  TripTools:
+    copyLink: Copy link
+    # Text that replaces the copyLink button text after user clicks it.
+    linkCopied: Copied
+    print: Print
+    reportIssue: Report Issue
+    reportEmailSubject: Reporting an Issue with OpenTripPlanner
+    reportEmailTemplate: "                       *** INSTRUCTIONS TO USER ***
+      This feature allows you to email a report to site administrators for review.
+      Please add any additional feedback for this trip under the 'Additional Comments'
+      section below and send using your regular email program."
+    startOver: Start Over # TODO: move to other category (common with hamburger 'Start Over' item)
 
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.

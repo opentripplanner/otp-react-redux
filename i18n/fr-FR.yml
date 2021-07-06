@@ -8,6 +8,18 @@ components:
     multiModeSummary: "{accessMode} + {transitMode}"
     tripDurationFormatZeroHours: "{minutes, number} mn"
     tripDurationFormat: "{hours, number} h, {minutes, number} mn"
+  TripTools:
+    copyLink: Copier le lien
+    # Text that replaces the copyLink button text after user clicks it.
+    linkCopied: Copié
+    print: Imprimer
+    reportIssue: Signaler un problème
+    reportEmailSubject: Signaler un problème avec OpenTripPlanner
+    reportEmailTemplate: "                       *** A L'ATTENTION DE L'UTILISATEUR ***
+      Vous pouvez communiquer votre problème en détail aux administrateurs de ce site, par courriel.
+      Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
+      ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
+    startOver: Recommencer
 
 common:
   accessModes:
