@@ -25,15 +25,12 @@ jobs:
         run: yarn lint
       - name: Lint docs
         run: yarn lint-docs
-      - name: Run tests with coverage
-        run: yarn cover
+      - name: Run tests
+        run: yarn jest
       - name: Build example project
         run: yarn build
 
       # at this point, the build is successful
-      - name: Codecov
-        uses: codecov/codecov-action@v1.2.0
-        continue-on-error: true
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
