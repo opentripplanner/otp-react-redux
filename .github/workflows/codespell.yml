@@ -12,4 +12,5 @@ jobs:
       - uses: codespell-project/actions-codespell@master
         with:
           check_filenames: true
-          skip: ./.git,yarn.lock,./i18n/!(en-US.yml)
+          # skip git, yarn, and i18n non-english resources. 
+          skip: ./.git,yarn.lock,./i18n/fr*
