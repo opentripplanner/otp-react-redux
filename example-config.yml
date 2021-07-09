@@ -171,7 +171,7 @@ modes:
 #   # Provides UI elements for planning field trips on transit vehicles.
 #   - id: ft
 #     # An optional maximum number of requests to make to OTP when trying to
-#     # find  itineraries. Defaults to 10 if not provided.
+#     # find itineraries. Defaults to 10 if not provided.
 #     maxRequests: 10
 #     # An optional minimum remaining capacity that a tripId must retain in the
 #     # event that multiple field trips use the same trip. Defaults to 10 if not
