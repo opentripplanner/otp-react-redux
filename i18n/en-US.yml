@@ -38,6 +38,8 @@ components:
     tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
     tripDurationFormat: "{hours, number} hr {minutes, number} min"
+  SimpleRealtimeAnnotation:
+    usingRealtimeInfo: This trip uses real-time traffic and delay information
   TripTools:
     copyLink: Copy link
     # Text that replaces the copyLink button text after user clicks it.
