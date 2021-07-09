@@ -1487,14 +1487,6 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@opentripplanner/base-map@^1.0.4":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-1.1.0.tgz#7426c1f68db4e11e6e36f27a4ca34a88964e0392"
-  integrity sha512-tSPSfzv92IaS3LLWUQfsDSSOE6PyCrccMmungfZwbfbeZFgflNTT9Z5WS/Jju6KEbPJKI8NRX6Qi8/DI5ZWXOg==
-  dependencies:
-    "@opentripplanner/core-utils" "^3.0.4"
-    prop-types "^15.7.2"
-
 "@opentripplanner/base-map@^1.0.5":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-1.0.5.tgz#b4f92e4e848f340e30b1ed5c6d3a2338d6b8e017"
@@ -1522,6 +1514,21 @@
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-3.1.1.tgz#d3582cbfe7a84cd5370d63a857dd26dff17591e5"
   integrity sha512-20uY3uh2TawPG9PWLLWi5TVJ8F1/bws6cRaRfRNwk11qtdeFQNnVqxZGEd8q1OQSW7UI15cM45SCrK7V7Kxn6A==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.0.2"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    lodash.isequal "^4.5.0"
+    moment "^2.24.0"
+    moment-timezone "^0.5.27"
+    prop-types "^15.7.2"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@^3.2.1", "@opentripplanner/core-utils@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-3.2.2.tgz#5d39b6a16670e7818cbe1a8784d26a6f9699bb4e"
+  integrity sha512-+mmIWbvAtVEfU5lJnxs+3/qxJqhZqJne1kpeobK3Do1pqMXIHs0MVY1cZjd2/SpjXoQy+BYBZUnJmbjgDOdY/w==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.0.2"
@@ -1654,18 +1661,15 @@
     "@opentripplanner/from-to-location-picker" "^1.0.3"
     "@opentripplanner/zoom-based-markers" "^1.0.1"
 
-"@opentripplanner/transit-vehicle-overlay@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-2.1.0.tgz#7fd3232d4fb33c07069a907b94efb99f79592778"
-  integrity sha512-fSXE4aLWteAd6rzRSf1nFGseCRBVsYNEJbbEC2+W9tGBgVsTihIbtrB3sSa/mGgcMZecQrm94Op9MZcX4L7ATw==
+"@opentripplanner/transit-vehicle-overlay@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-2.1.1.tgz#e73b870458a87803ec8004c09e2ea766112a5986"
+  integrity sha512-EG79B4NUi4odepCc8jnOb/bNjf16OzDGf4zXMGryX//IFxKO4x340Mjjp/sEK7I+fiNCDBZlZp49zQkQyieeoQ==
   dependencies:
-    "@opentripplanner/base-map" "^1.0.4"
-    "@opentripplanner/core-utils" "^3.0.4"
+    "@opentripplanner/core-utils" "^3.2.1"
     "@opentripplanner/icons" "^1.0.4"
     "@opentripplanner/zoom-based-markers" "^1.0.1"
     "@turf/nearest-point-on-line" "^6.0.1"
-    es6-promise "^4.2.8"
-    isomorphic-fetch "^2.2.1"
     leaflet-rotatedmarker "^0.2.0"
     lodash.clonedeep "^4.5.0"
     styled-icons "^9.1.0"
@@ -6718,7 +6722,7 @@ es6-math@^1.0.0:
   resolved "https://registry.yarnpkg.com/es6-math/-/es6-math-1.0.0.tgz#5eac891860c2024b728e7122444df388e1d8177a"
   integrity sha1-XqyJGGDCAktyjnEiRE3ziOHYF3o=
 
-es6-promise@^4.0.3, es6-promise@^4.1.1, es6-promise@^4.2.8:
+es6-promise@^4.0.3, es6-promise@^4.1.1:
   version "4.2.8"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.8.tgz#4eb21594c972bc40553d276e510539143db53e0a"
   integrity sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w==
