@@ -1495,25 +1495,10 @@
     "@opentripplanner/core-utils" "^3.0.4"
     prop-types "^15.7.2"
 
-"@opentripplanner/core-utils@^3.0.0", "@opentripplanner/core-utils@^3.0.4":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-3.1.0.tgz#4626807893874503c5d365b05e5db4a1b3bf163c"
-  integrity sha512-EYhIv6nQdmadmkQumuXGrEwvRrhUl8xDPckSv24y3o9FX7uk8h5Gqe4FPdjnBT1eOj/XUj0/fZzNcETHUvZvUg==
-  dependencies:
-    "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^1.0.2"
-    "@turf/along" "^6.0.1"
-    bowser "^2.7.0"
-    lodash.isequal "^4.5.0"
-    moment "^2.24.0"
-    moment-timezone "^0.5.27"
-    prop-types "^15.7.2"
-    qs "^6.9.1"
-
-"@opentripplanner/core-utils@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-3.1.1.tgz#d3582cbfe7a84cd5370d63a857dd26dff17591e5"
-  integrity sha512-20uY3uh2TawPG9PWLLWi5TVJ8F1/bws6cRaRfRNwk11qtdeFQNnVqxZGEd8q1OQSW7UI15cM45SCrK7V7Kxn6A==
+"@opentripplanner/core-utils@^3.0.0", "@opentripplanner/core-utils@^3.0.4", "@opentripplanner/core-utils@^3.1.1", "@opentripplanner/core-utils@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-3.2.2.tgz#5d39b6a16670e7818cbe1a8784d26a6f9699bb4e"
+  integrity sha512-+mmIWbvAtVEfU5lJnxs+3/qxJqhZqJne1kpeobK3Do1pqMXIHs0MVY1cZjd2/SpjXoQy+BYBZUnJmbjgDOdY/w==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.0.2"
