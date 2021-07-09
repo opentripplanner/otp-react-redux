@@ -8,6 +8,12 @@ components:
     multiModeSummary: "{accessMode} + {transitMode}"
     tripDurationFormatZeroHours: "{minutes, number} mn"
     tripDurationFormat: "{hours, number} h, {minutes, number} mn"
+  SaveTripButton:
+    cantSaveText: Impossible d'enregistrer
+    cantSaveTooltip: Seuls les trajets en transports en commun sans location de véhicules et sans course en voiture peuvent être suivis.
+    saveTripText: Enregistrer
+    signInText: Connectez-vous pour enregistrer
+    signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
   TripTools:

@@ -38,6 +38,12 @@ components:
     tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
     tripDurationFormat: "{hours, number} hr {minutes, number} min"
+  SaveTripButton:
+    cantSaveText: Cannot save
+    cantSaveTooltip: Only itineraries that include transit and no rentals or ride hailing can be monitored.
+    saveTripText: Save trip
+    signInText: Sign in to save trip
+    signInTooltip: Please sign in to save trip.
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   TripTools:
