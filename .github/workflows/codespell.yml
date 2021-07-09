@@ -12,4 +12,4 @@ jobs:
       - uses: codespell-project/actions-codespell@master
         with:
           check_filenames: true
-          skip: ./.git,yarn.lock
+          skip: ./.git,yarn.lock,./i18n/!(en-US.yml)
