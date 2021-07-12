@@ -6,8 +6,6 @@ components:
     clickDetails: Cliquez pour afficher les détails
     departureArrivalTimes: "{startTime}—{endTime}"
     multiModeSummary: "{accessMode} + {transitMode}"
-    tripDurationFormatZeroHours: "{minutes, number} mn"
-    tripDurationFormat: "{hours, number} h, {minutes, number} mn"
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
     cantSaveTooltip: Seuls les trajets en transports en commun sans location de véhicules et sans course en voiture peuvent être suivis.
@@ -47,3 +45,7 @@ common:
     cable_car: Tram tiré par câble
     gondola: Téléphérique
     funicular: Funiculaire
+
+  time:
+    tripDurationFormatZeroHours: "{minutes, number} mn"
+    tripDurationFormat: "{hours, number} h, {minutes, number} mn"

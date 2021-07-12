@@ -34,10 +34,10 @@ components:
     # Use ordered placeholders when multiple modes are involved
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
     multiModeSummary: "{accessMode} to {transitMode}"
-    # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} min"
-    # TODO: Distinguish between one hour (singular) and 2 hours or more?
-    tripDurationFormat: "{hours, number} hr {minutes, number} min"
+  ItinerarySummary:
+    calories: Cals
+    transfer: Transfer
+    transferPlural: Transfers
   SaveTripButton:
     cantSaveText: Cannot save
     cantSaveTooltip: Only itineraries that include transit and no rentals or ride hailing can be monitored.
@@ -83,3 +83,9 @@ common:
     cable_car: Cable Car
     gondola: Gondola
     funicular: Funicular
+
+  time: 
+    # If trip is less than one hour only display the minutes.
+    tripDurationFormatZeroHours: "{minutes, number} min"
+    # TODO: Distinguish between one hour (singular) and 2 hours or more?
+    tripDurationFormat: "{hours, number} hr {minutes, number} min"
