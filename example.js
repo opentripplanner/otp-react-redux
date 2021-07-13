@@ -85,6 +85,7 @@ const customMapOverlays = [
     key='custom2'
     liveFeedUrl='https://gtfs-rt.example.com/feed2.pb'
     name='GTFS-rt Example Vehicles 2'
+    routeDefinitionUrl='https://gtfs-rt.example.com/routes.json'
   />
 ]
 
