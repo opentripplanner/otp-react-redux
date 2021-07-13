@@ -25,9 +25,7 @@ Object {
     "transitOperators": Array [],
   },
   "currentQuery": Object {
-    "bannedRoutes": "",
     "bikeSpeed": 3.58,
-    "companies": null,
     "date": "2019-08-04",
     "departArrive": "NOW",
     "endTime": "09:00",
@@ -44,7 +42,6 @@ Object {
     "optimize": "QUICK",
     "optimizeBike": "SAFE",
     "otherThanPreferredRoutesPenalty": 900,
-    "preferredRoutes": "",
     "routingType": "ITINERARY",
     "showIntermediateStops": true,
     "startTime": "07:00",
@@ -101,6 +98,8 @@ Object {
   },
   "ui": Object {
     "diagramLeg": null,
+    "locale": null,
+    "localizedMessages": Object {},
     "mobileScreen": 1,
     "printView": false,
   },
@@ -108,9 +107,7 @@ Object {
   "user": Object {
     "autoRefreshStopTimes": true,
     "defaults": Object {
-      "bannedRoutes": "",
       "bikeSpeed": 3.58,
-      "companies": null,
       "endTime": "09:00",
       "ignoreRealtimeUpdates": false,
       "intermediatePlaces": Array [],
@@ -124,7 +121,6 @@ Object {
       "optimize": "QUICK",
       "optimizeBike": "SAFE",
       "otherThanPreferredRoutesPenalty": 900,
-      "preferredRoutes": "",
       "routingType": "ITINERARY",
       "showIntermediateStops": true,
       "startTime": "07:00",

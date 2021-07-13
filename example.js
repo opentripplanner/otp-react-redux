@@ -16,12 +16,13 @@ import {
   BatchResultsScreen,
   BatchRoutingPanel,
   BatchSearchScreen,
+  CallHistoryWindow,
   CallTakerControls,
   CallTakerPanel,
-  CallTakerWindows,
   DefaultItinerary,
   DefaultMainPanel,
   FieldTripWindows,
+  MailablesWindow,
   MobileResultsScreen,
   MobileSearchScreen,
   ResponsiveWebapp,
@@ -107,8 +108,9 @@ const components = {
       : DefaultMainPanel,
   MapWindows: isCallTakerModuleEnabled
     ? () => <>
-      <CallTakerWindows />
+      <CallHistoryWindow />
       <FieldTripWindows />
+      <MailablesWindow />
     </>
     : null,
   MobileResultsScreen: isBatchRoutingEnabled
@@ -138,8 +140,8 @@ const store = createStore(
   combineReducers({
     callTaker: createCallTakerReducer(otpConfig),
     otp: createOtpReducer(otpConfig),
-    user: createUserReducer(),
-    router: connectRouter(history)
+    router: connectRouter(history),
+    user: createUserReducer()
   }),
   compose(applyMiddleware(...middleware))
 )
