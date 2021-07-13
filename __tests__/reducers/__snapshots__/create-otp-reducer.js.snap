@@ -98,6 +98,8 @@ Object {
   },
   "ui": Object {
     "diagramLeg": null,
+    "locale": null,
+    "localizedMessages": Object {},
     "mobileScreen": 1,
     "printView": false,
   },
