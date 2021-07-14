@@ -22,7 +22,7 @@ import {
   DefaultItinerary,
   DefaultMainPanel,
   FieldTripWindows,
-  GtfsRtVehicleOverlay,
+  // GtfsRtVehicleOverlay,
   MailablesWindow,
   MobileResultsScreen,
   MobileSearchScreen,
@@ -76,17 +76,19 @@ const TermsOfStorage = () => (
 // Each overlay must include a name prop (and a key prop if wrapping in an array).
 // (Wrapping the overlays inside a React Fragment <> or other component will not work.)
 const customMapOverlays = [
-  <GtfsRtVehicleOverlay
-    key='custom1'
-    liveFeedUrl='https://gtfs-rt.example.com/feed1.pb'
-    name='GTFS-rt Example Vehicles 1'
-  />,
-  <GtfsRtVehicleOverlay
-    key='custom2'
-    liveFeedUrl='https://gtfs-rt.example.com/feed2.pb'
-    name='GTFS-rt Example Vehicles 2'
-    routeDefinitionUrl='https://gtfs-rt.example.com/routes.json'
-  />
+  // Uncomment the code below and change props to add GTFS-rt overlays.
+  // <GtfsRtVehicleOverlay
+  //   key='custom1'
+  //   liveFeedUrl='https://gtfs-rt.example.com/feed1.pb'
+  //   name='GTFS-rt Example Vehicles 1'
+  // />,
+  // <GtfsRtVehicleOverlay
+  //   key='custom2'
+  //   liveFeedUrl='https://gtfs-rt.example.com/feed2.pb'
+  //   name='GTFS-rt Example Vehicles 2'
+  //   routeDefinitionUrl='https://gtfs-rt.example.com/routes.json'
+  //   visible
+  // />
 ]
 
 // define some application-wide components that should be used in
