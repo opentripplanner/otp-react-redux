@@ -16,12 +16,14 @@ import {
   BatchResultsScreen,
   BatchRoutingPanel,
   BatchSearchScreen,
+  CallHistoryWindow,
   CallTakerControls,
   CallTakerPanel,
-  CallTakerWindows,
   DefaultItinerary,
   DefaultMainPanel,
   FieldTripWindows,
+  // GtfsRtVehicleOverlay,
+  MailablesWindow,
   MobileResultsScreen,
   MobileSearchScreen,
   ResponsiveWebapp,
@@ -69,9 +71,30 @@ const TermsOfStorage = () => (
   </>
 )
 
+// Define custom map overlays.
+// customMapOverlays can be a single overlay element or an array of such elements.
+// Each overlay must include a name prop (and a key prop if wrapping in an array).
+// (Wrapping the overlays inside a React Fragment <> or other component will not work.)
+const customMapOverlays = [
+  // Uncomment the code below and change props to add GTFS-rt overlays.
+  // <GtfsRtVehicleOverlay
+  //   key='custom1'
+  //   liveFeedUrl='https://gtfs-rt.example.com/feed1.pb'
+  //   name='GTFS-rt Example Vehicles 1'
+  // />,
+  // <GtfsRtVehicleOverlay
+  //   key='custom2'
+  //   liveFeedUrl='https://gtfs-rt.example.com/feed2.pb'
+  //   name='GTFS-rt Example Vehicles 2'
+  //   routeDefinitionUrl='https://gtfs-rt.example.com/routes.json'
+  //   visible
+  // />
+]
+
 // define some application-wide components that should be used in
 // various places. The following components can be provided here:
 // - defaultMobileTitle (required)
+// - getTransitiveRouteLabel (optional, with signature itineraryLeg => string)
 // - ItineraryBody (required)
 // - ItineraryFooter (optional)
 // - LegIcon (required)
@@ -85,6 +108,17 @@ const TermsOfStorage = () => (
 // - TermsOfStorage (required if otpConfig.persistence.strategy === 'otp_middleware')
 const components = {
   defaultMobileTitle: () => <div className='navbar-title'>OpenTripPlanner</div>,
+  getCustomMapOverlays: () => customMapOverlays,
+  /**
+   * Example of a custom route label provider to pass to @opentripplanner/core-utils/map#itineraryToTransitive.
+   * @param {*} itineraryLeg The OTP itinerary leg for which to obtain a custom route label.
+   * @returns A string with the custom label to display for the given leg, or null to render no label.
+   */
+  getTransitiveRouteLabel: itineraryLeg => {
+    if (itineraryLeg.mode === 'RAIL') return 'Train'
+    if (itineraryLeg.mode === 'BUS') return itineraryLeg.routeShortName
+    return null // null or undefined or empty string will tell transitive-js to not render a route label.
+  },
   ItineraryBody: DefaultItinerary,
   LegIcon: MyLegIcon,
   MainControls: isCallTakerModuleEnabled ? CallTakerControls : null,
@@ -95,8 +129,9 @@ const components = {
       : DefaultMainPanel,
   MapWindows: isCallTakerModuleEnabled
     ? () => <>
-      <CallTakerWindows />
+      <CallHistoryWindow />
       <FieldTripWindows />
+      <MailablesWindow />
     </>
     : null,
   MobileResultsScreen: isBatchRoutingEnabled
@@ -124,10 +159,10 @@ if (process.env.NODE_ENV === 'development') {
 // set up the Redux store
 const store = createStore(
   combineReducers({
-    callTaker: createCallTakerReducer(),
+    callTaker: createCallTakerReducer(otpConfig),
     otp: createOtpReducer(otpConfig),
-    user: createUserReducer(),
-    router: connectRouter(history)
+    router: connectRouter(history),
+    user: createUserReducer()
   }),
   compose(applyMiddleware(...middleware))
 )

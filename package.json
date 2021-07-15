@@ -8,7 +8,10 @@
     "jest": "mastarm test -e test",
     "lint": "mastarm lint lib __tests__ --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
+    "postinstall": "husky install",
     "prepublish": "mastarm prepublish --config configurations/prepublish",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable",
     "prestart": "yarn",
     "test": "yarn run lint && yarn run lint-docs && yarn run jest",
     "semantic-release": "semantic-release",
@@ -30,7 +33,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.1.0",
     "@opentripplanner/base-map": "^1.0.5",
-    "@opentripplanner/core-utils": "^3.1.0",
+    "@opentripplanner/core-utils": "^3.2.2",
     "@opentripplanner/endpoints-overlay": "^1.0.6",
     "@opentripplanner/from-to-location-picker": "^1.0.4",
     "@opentripplanner/geocoder": "^1.0.2",
@@ -44,11 +47,13 @@
     "@opentripplanner/route-viewer-overlay": "^1.0.4",
     "@opentripplanner/stop-viewer-overlay": "^1.0.4",
     "@opentripplanner/stops-overlay": "^3.0.2",
-    "@opentripplanner/transitive-overlay": "^1.0.5",
+    "@opentripplanner/transit-vehicle-overlay": "^2.1.1",
+    "@opentripplanner/transitive-overlay": "^1.0.7",
     "@opentripplanner/trip-details": "^1.1.4",
     "@opentripplanner/trip-form": "^1.0.5",
     "@opentripplanner/trip-viewer-overlay": "^1.0.4",
     "@opentripplanner/vehicle-rental-overlay": "^1.0.6",
+    "blob-stream": "^0.1.3",
     "bootstrap": "^3.3.7",
     "bowser": "^1.9.3",
     "clone": "^2.1.0",
@@ -61,6 +66,7 @@
     "font-awesome": "^4.7.0",
     "formik": "^2.1.5",
     "formik-error-focus": "^1.1.0",
+    "gtfs-realtime-bindings": "^0.0.6",
     "haversine": "^1.1.0",
     "history": "^4.7.2",
     "humanize-duration": "^3.25.2",
@@ -75,6 +81,7 @@
     "object-hash": "^1.3.1",
     "object-path": "^0.11.5",
     "object-to-formdata": "^4.1.0",
+    "pdfkit": "^0.12.1",
     "prop-types": "^15.6.0",
     "qs": "^6.3.0",
     "react": "^16.9.0",
@@ -99,7 +106,7 @@
     "reselect": "^4.0.0",
     "seamless-immutable": "^7.1.3",
     "styled-components": "^5.0.0",
-    "transitive-js": "^0.13.4",
+    "transitive-js": "^0.13.7",
     "velocity-react": "^1.3.3",
     "yup": "^0.29.3"
   },
@@ -109,9 +116,12 @@
     "enzyme-adapter-react-16": "^1.4.0",
     "enzyme-to-json": "^3.4.0",
     "es6-math": "^1.0.0",
+    "husky": "^6.0.0",
     "leaflet": "^1.6.0",
+    "lint-staged": "^11.0.0",
     "mastarm": "^5.1.3",
     "nock": "^9.0.9",
+    "pinst": "^2.1.6",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-leaflet": "^2.6.1",
@@ -130,5 +140,10 @@
       "<rootDir>/__tests__/test-utils/setup-env.js"
     ],
     "testURL": "http://localhost/"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --config node_modules/mastarm/lib/eslintrc.json --fix"
+    ]
   }
 }
