@@ -22,6 +22,7 @@ import {
   DefaultItinerary,
   DefaultMainPanel,
   FieldTripWindows,
+  // GtfsRtVehicleOverlay,
   MailablesWindow,
   MobileResultsScreen,
   MobileSearchScreen,
@@ -70,6 +71,26 @@ const TermsOfStorage = () => (
   </>
 )
 
+// Define custom map overlays.
+// customMapOverlays can be a single overlay element or an array of such elements.
+// Each overlay must include a name prop (and a key prop if wrapping in an array).
+// (Wrapping the overlays inside a React Fragment <> or other component will not work.)
+const customMapOverlays = [
+  // Uncomment the code below and change props to add GTFS-rt overlays.
+  // <GtfsRtVehicleOverlay
+  //   key='custom1'
+  //   liveFeedUrl='https://gtfs-rt.example.com/feed1.pb'
+  //   name='GTFS-rt Example Vehicles 1'
+  // />,
+  // <GtfsRtVehicleOverlay
+  //   key='custom2'
+  //   liveFeedUrl='https://gtfs-rt.example.com/feed2.pb'
+  //   name='GTFS-rt Example Vehicles 2'
+  //   routeDefinitionUrl='https://gtfs-rt.example.com/routes.json'
+  //   visible
+  // />
+]
+
 // define some application-wide components that should be used in
 // various places. The following components can be provided here:
 // - defaultMobileTitle (required)
@@ -86,8 +107,8 @@ const TermsOfStorage = () => (
 // - TermsOfService (required if otpConfig.persistence.strategy === 'otp_middleware')
 // - TermsOfStorage (required if otpConfig.persistence.strategy === 'otp_middleware')
 const components = {
-
   defaultMobileTitle: () => <div className='navbar-title'>OpenTripPlanner</div>,
+  getCustomMapOverlays: () => customMapOverlays,
   /**
    * Example of a custom route label provider to pass to @opentripplanner/core-utils/map#itineraryToTransitive.
    * @param {*} itineraryLeg The OTP itinerary leg for which to obtain a custom route label.
@@ -140,8 +161,8 @@ const store = createStore(
   combineReducers({
     callTaker: createCallTakerReducer(otpConfig),
     otp: createOtpReducer(otpConfig),
-    user: createUserReducer(),
-    router: connectRouter(history)
+    router: connectRouter(history),
+    user: createUserReducer()
   }),
   compose(applyMiddleware(...middleware))
 )
