@@ -39,6 +39,15 @@ components:
     # "1 transfer", "2 transfers"...
     transfer: transfer
     transferPlural: transfers
+  RealtimeAnnotation:
+    ignoreServiceDelays: Apply service delays
+    delaysNotShownInResults: "Your trip results are currently being affected by service delays.
+      These delays do not factor into travel times shown below."
+    delaysShownInResults: "Your trip results have been adjusted based on real-time
+      information. Under normal conditions, this trip would take <b>{normalDuration}</b>
+      using the following routes: {routes}."
+    ignoreServiceDelays: Ignore service delays
+    serviceUpdate: Service update
   SaveTripButton:
     cantSaveText: Cannot save
     cantSaveTooltip: Only itineraries that include transit and no rentals or ride hailing can be monitored.

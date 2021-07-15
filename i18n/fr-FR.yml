@@ -11,6 +11,15 @@ components:
     # "1 transfer", "2 transfers"...
     transfer: correspondance
     transferPlural: correspondances
+  RealtimeAnnotation:
+    ignoreServiceDelays: Appliquer les retards
+    delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
+      Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
+    delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
+      En temps normal, ce trajet prendrait <b>{normalDuration}</b>
+      en empruntant les lignes: {routes}."
+    ignoreServiceDelays: Ignorer les retards
+    serviceUpdate: Information sur le service
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
     cantSaveTooltip: Seuls les trajets en transports en commun sans location de véhicules et sans course en voiture peuvent être suivis.
