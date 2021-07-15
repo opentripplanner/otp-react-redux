@@ -6,6 +6,11 @@ components:
     clickDetails: Cliquez pour afficher les détails
     departureArrivalTimes: "{startTime}—{endTime}"
     multiModeSummary: "{accessMode} + {transitMode}"
+  ItinerarySummary:
+    calories: kcal # SI unit
+    # "1 transfer", "2 transfers"...
+    transfer: correspondance
+    transferPlural: correspondances
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
     cantSaveTooltip: Seuls les trajets en transports en commun sans location de véhicules et sans course en voiture peuvent être suivis.

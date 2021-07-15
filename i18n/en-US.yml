@@ -36,8 +36,9 @@ components:
     multiModeSummary: "{accessMode} to {transitMode}"
   ItinerarySummary:
     calories: Cals
-    transfer: Transfer
-    transferPlural: Transfers
+    # "1 transfer", "2 transfers"...
+    transfer: transfer
+    transferPlural: transfers
   SaveTripButton:
     cantSaveText: Cannot save
     cantSaveTooltip: Only itineraries that include transit and no rentals or ride hailing can be monitored.
