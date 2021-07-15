@@ -6,8 +6,40 @@ components:
     clickDetails: Cliquez pour afficher les détails
     departureArrivalTimes: "{startTime}—{endTime}"
     multiModeSummary: "{accessMode} + {transitMode}"
-    tripDurationFormatZeroHours: "{minutes, number} mn"
-    tripDurationFormat: "{hours, number} h, {minutes, number} mn"
+  ItinerarySummary:
+    calories: kcal # SI unit
+    # "1 transfer", "2 transfers"...
+    transfer: correspondance
+    transferPlural: correspondances
+  RealtimeAnnotation:
+    ignoreServiceDelays: Appliquer les retards
+    delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
+      Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
+    delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
+      En temps normal, ce trajet prendrait <b>{normalDuration}</b>
+      en empruntant les lignes: {routes}."
+    ignoreServiceDelays: Ignorer les retards
+    serviceUpdate: Information sur le service
+  SaveTripButton:
+    cantSaveText: Impossible d'enregistrer
+    cantSaveTooltip: Seuls les trajets en transports en commun sans location de véhicules et sans course en voiture peuvent être suivis.
+    saveTripText: Enregistrer
+    signInText: Connectez-vous pour enregistrer
+    signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
+  SimpleRealtimeAnnotation:
+    usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
+  TripTools:
+    copyLink: Copier le lien
+    # Text that replaces the copyLink button text after user clicks it.
+    linkCopied: Copié
+    print: Imprimer
+    reportIssue: Signaler un problème
+    reportEmailSubject: Signaler un problème avec OpenTripPlanner
+    reportEmailTemplate: "                       *** A L'ATTENTION DE L'UTILISATEUR ***
+      Vous pouvez communiquer votre problème en détail aux administrateurs de ce site, par courriel.
+      Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
+      ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
+    startOver: Recommencer
 
 common:
   accessModes:
@@ -27,3 +59,7 @@ common:
     cable_car: Tram tiré par câble
     gondola: Téléphérique
     funicular: Funiculaire
+
+  time:
+    tripDurationFormatZeroHours: "{minutes, number} mn"
+    tripDurationFormat: "{hours, number} h, {minutes, number} mn"
