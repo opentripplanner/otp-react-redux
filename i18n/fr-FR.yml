@@ -4,7 +4,6 @@ _name: Unofficial French Translations!
 components:
   DefaultItinerary:
     clickDetails: Cliquez pour afficher les détails
-    departureArrivalTimes: "{startTime}—{endTime}"
     multiModeSummary: "{accessMode} + {transitMode}"
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
@@ -47,5 +46,7 @@ common:
     funicular: Funiculaire
 
   time:
-    tripDurationFormatZeroHours: "{minutes, number} mn"
-    tripDurationFormat: "{hours, number} h, {minutes, number} mn"
+    departureArrivalTimes: "{startTime}—{endTime}"
+    tripDurationFormat: "{hours, plural, 
+        =0 {{minutes, number} mn}
+        other {{hours, number} h {minutes, number} mn}}"

@@ -28,16 +28,17 @@ _name: English
 components:
   DefaultItinerary:
     clickDetails: Click to view details
-    # Use ordered placeholders for the departure-arrival string
-    # (this will accommodate right-to-left languages by swapping the order in this string).
-    departureArrivalTimes: "{startTime}—{endTime}"
     # Use ordered placeholders when multiple modes are involved
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
     multiModeSummary: "{accessMode} to {transitMode}"
   ItinerarySummary:
-    calories: Cals
-    transfer: Transfer
-    transferPlural: Transfers
+    calories: Cal
+    fareCost: "{useMaxFare, select {
+      true {{minTotalFare} - {maxTotalFare}}
+      false {{minTotalFare}}
+    }}"
+    transfers: "{transfers} {transfers, plural, =0 {Transfer} other {Transfers}"
+    
   SaveTripButton:
     cantSaveText: Cannot save
     cantSaveTooltip: Only itineraries that include transit and no rentals or ride hailing can be monitored.
@@ -84,8 +85,14 @@ common:
     gondola: Gondola
     funicular: Funicular
 
-  time: 
+  time:
+     # Use ordered placeholders for the departure-arrival string
+    # (this will accommodate right-to-left languages by swapping the order in this string).
+    departureArrivalTimes: "{startTime}—{endTime}"
     # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
-    tripDurationFormat: "{hours, number} hr {minutes, number} min"
+    tripDurationFormat: "{hours, plural, 
+        =0 {{minutes, number} min}
+        other {{hours, number} hr {minutes, number} min}}"
+      
