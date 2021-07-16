@@ -29,8 +29,8 @@ describe('util > itinerary', () => {
       rentedVehicle: true
     }
     const rideHailLeg = {
-      mode: 'CAR_HAIL',
-      hailedCar: true
+      hailedCar: true,
+      mode: 'CAR_HAIL'
     }
 
     const testCases = [{
