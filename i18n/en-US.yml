@@ -38,6 +38,37 @@ components:
       false {{minTotalFare}}
     }}"
     transfers: "{transfers} {transfers, plural, =0 {Transfer} other {Transfers}"
+  NarrativeItinerariesHeader:
+    numIssues: "{issueNum, number} issues"
+    resultText: "{pending, select,
+      true {Finding your options...}
+      other {
+        {itineraryNum, number} {itineraryNum, plural,
+          one {itinerary found}
+          other {itineraries found}
+        }
+      }
+    }"
+    selectArrivalTime: Arrival time
+    selectBest: Best option
+    selectCost: Cost
+    selectDepartureTime: Departure time
+    selectDuration: Duration
+    selectWalkTime: Walk time
+    titleText: "{pending, select, 
+      true {Finding your options...}
+      other {
+        {itineraryNum, number} {itineraryNum, plural,
+          one {itinerary}
+          other {itineraries}}
+        {issueNum, plural,
+          =0 {found}
+          one {(and {issueNum, number} issue) found}
+          other {(and {issueNum,number} issues) found}
+        }
+      }
+    }"
+    viewAll: View all options
   RealtimeAnnotation:
     ignoreServiceDelays: Apply service delays
     delaysNotShownInResults: "Your trip results are currently being affected by service delays.
