@@ -37,7 +37,6 @@ components:
       true {{minTotalFare} - {maxTotalFare}}
       other {{minTotalFare}}
     }"
-    transfers: "{transfers, plural, =0 {} one {{transfers} Transfer} other {{transfers} Transfers}}"
   NarrativeItinerariesHeader:
     numIssues: "{issueNum, number} issues"
     resultText: "{pending, select,
@@ -69,6 +68,12 @@ components:
       }
     }"
     viewAll: View all options
+  PlanFirstLastButtons:
+    # Note to translator: these values are width-constrained.
+    first: First
+    last: Last
+    next: Next
+    previous: Previous
   RealtimeAnnotation:
     ignoreServiceDelays: Apply service delays
     delaysNotShownInResults: "Your trip results are currently being affected by service delays.
@@ -78,12 +83,6 @@ components:
       using the following routes: {routes}."
     ignoreServiceDelays: Ignore service delays
     serviceUpdate: Service update
-  PlanFirstLastButtons:
-    # Note to translator: these values are width-constrained.
-    first: First
-    last: Last
-    next: Next
-    previous: Previous
   SaveTripButton:
     cantSaveText: Cannot save
     cantSaveTooltip: Only itineraries that include transit and no rentals or ride hailing can be monitored.
@@ -92,6 +91,12 @@ components:
     signInTooltip: Please sign in to save trip.
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
+  TabbedItineraries:
+    optionNumber: "Option {optionNum,number}"
+    fareCost: "{useMaxFare, select, 
+      true {{minTotalFare}+}
+      other {{minTotalFare}}
+    }"
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue,
     # and startOver are width-constrained.
@@ -117,7 +122,11 @@ common:
     drive: Drive
     micromobility: E-Scooter
     micromobilityRent: Rental E-Scooter
-    walk: Walk 
+    walk: Walk
+
+  itineraryDescriptions:
+    calories: Cal
+    transfers: "{transfers, plural, =0 {} one {{transfers} Transfer} other {{transfers} Transfers}}"
 
   # OTP transit modes
   # Note that identifiers are OTP modes converted to lowercase.
