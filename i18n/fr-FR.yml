@@ -17,6 +17,12 @@ components:
       en empruntant les lignes: {routes}."
     ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
+  PlanFirstLastButtons:
+    # Note to translator: these values are width-constrained.
+    first: Premier
+    last: Dernier
+    next: Suivant
+    previous: Précédent
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
     cantSaveTooltip: Seuls les trajets en transports en commun sans location de véhicules et sans course en voiture peuvent être suivis.
@@ -26,6 +32,8 @@ components:
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
   TripTools:
+    # Note to translator: copyLink, linkCopied, print, reportIssue,
+    # and startOver are width-constrained.
     copyLink: Copier le lien
     # Text that replaces the copyLink button text after user clicks it.
     linkCopied: Copié
@@ -59,6 +67,9 @@ common:
 
   time:
     departureArrivalTimes: "{startTime}—{endTime}"
+    # If trip is less than one hour only display the minutes.
+    tripDurationFormatZeroHours: "{minutes, number} min"
+
     tripDurationFormat: "{hours, plural, 
         =0 {{minutes, number} mn}
         other {{hours, number} h {minutes, number} mn}}"

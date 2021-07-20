@@ -47,6 +47,12 @@ components:
       using the following routes: {routes}."
     ignoreServiceDelays: Ignore service delays
     serviceUpdate: Service update
+  PlanFirstLastButtons:
+    # Note to translator: these values are width-constrained.
+    first: First
+    last: Last
+    next: Next
+    previous: Previous
   SaveTripButton:
     cantSaveText: Cannot save
     cantSaveTooltip: Only itineraries that include transit and no rentals or ride hailing can be monitored.
@@ -56,6 +62,8 @@ components:
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   TripTools:
+    # Note to translator: copyLink, linkCopied, print, reportIssue,
+    # and startOver are width-constrained.
     copyLink: Copy link
     # Text that replaces the copyLink button text after user clicks it.
     linkCopied: Copied
