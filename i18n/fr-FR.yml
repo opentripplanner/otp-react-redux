@@ -6,8 +6,47 @@ components:
     clickDetails: Cliquez pour afficher les détails
     multiModeSummary: "{accessMode} + {transitMode}"
   ItinerarySummary:
-    calories: kcal # SI unit
-    transfers: "{transfers} {transfers, plural, =0 {Correspondance} other {Correspondances}"
+    fareCost: "{useMaxFare, select, 
+      true {{minTotalFare} - {maxTotalFare}}
+      other {{minTotalFare}}
+    }"
+  NarrativeItinerariesHeader:
+    numIssues: "{issueNum, number} problèmes"
+    resultText: "{pending, select,
+      true {Recherche de vos options en cours...}
+      other {
+        {itineraryNum, number} {itineraryNum, plural,
+          one {trajet trouvé}
+          other {trajets trouvés}
+        }
+      }
+    }"
+    selectArrivalTime: Heure d'arrivée
+    selectBest: Meilleure option
+    selectCost: Prix
+    selectDepartureTime: Heure de départ
+    selectDuration: Durée
+    selectWalkTime: Temps de marche
+    titleText: "{pending, select, 
+      true {Recherche de vos options en cours...}
+      other {
+        {itineraryNum, number} {itineraryNum, plural,
+          one {trajet}
+          other {trajets}}
+        {issueNum, plural,
+          =0 {trouvé}
+          one {(et {issueNum, number} problème) trouvé}
+          other {(and {issueNum,number} problèmes) trouvés}
+        }
+      }
+    }"
+    viewAll: Voir toutes les options
+  PlanFirstLastButtons:
+    # Note to translator: these values are width-constrained.
+    first: Premier
+    last: Dernier
+    next: Suivant
+    previous: Précédent
   RealtimeAnnotation:
     ignoreServiceDelays: Appliquer les retards
     delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
@@ -17,12 +56,6 @@ components:
       en empruntant les lignes: {routes}."
     ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
-  PlanFirstLastButtons:
-    # Note to translator: these values are width-constrained.
-    first: Premier
-    last: Dernier
-    next: Suivant
-    previous: Précédent
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
     cantSaveTooltip: Seuls les trajets en transports en commun sans location de véhicules et sans course en voiture peuvent être suivis.
@@ -31,6 +64,12 @@ components:
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
+  TabbedItineraries:
+    optionNumber: "Option {optionNum,number}"
+    fareCost: "{useMaxFare, select, 
+      true {À partir de {minTotalFare}}
+      other {{minTotalFare}}
+    }"
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue,
     # and startOver are width-constrained.
@@ -38,7 +77,7 @@ components:
     # Text that replaces the copyLink button text after user clicks it.
     linkCopied: Copié
     print: Imprimer
-    reportIssue: Signaler un problème
+    reportIssue: Un problème ? # "Signaler un problème" does not fit.
     reportEmailSubject: Signaler un problème avec OpenTripPlanner
     reportEmailTemplate: "                       *** A L'ATTENTION DE L'UTILISATEUR ***
       Vous pouvez communiquer votre problème en détail aux administrateurs de ce site, par courriel.
@@ -53,7 +92,12 @@ common:
     drive: Voiture
     micromobility: Trottinette électrique
     micromobilityRent: Trottinette électrique en libre-service
-    walk: Marche
+    walk: À pied
+
+  itineraryDescriptions:
+    calories: kcal # SI unit
+    transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
+
 
   otpTransitModes:
     tram: Tram

@@ -32,7 +32,6 @@ components:
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
     multiModeSummary: "{accessMode} to {transitMode}"
   ItinerarySummary:
-    calories: Cal #{minTotalFare} - {maxTotalFare} //other { {minTotalFare}}
     fareCost: "{useMaxFare, select, 
       true {{minTotalFare} - {maxTotalFare}}
       other {{minTotalFare}}
@@ -126,7 +125,7 @@ common:
 
   itineraryDescriptions:
     calories: Cal
-    transfers: "{transfers, plural, =0 {} one {{transfers} Transfer} other {{transfers} Transfers}}"
+    transfers: "{transfers, plural, =0 {} one {{transfers} transfer} other {{transfers} transfers}}"
 
   # OTP transit modes
   # Note that identifiers are OTP modes converted to lowercase.
