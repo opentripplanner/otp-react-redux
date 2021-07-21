@@ -132,7 +132,7 @@ common:
   # Shared itinerary description messages
   itineraryDescriptions:
     calories: Cal
-    transfers: "{transfers, plural, =0 {} one {{transfers} Transfer} other {{transfers} Transfers}}"
+    transfers: "{transfers, plural, =0 {} one {{transfers} transfer} other {{transfers} transfers}}"
 
   # OTP transit modes
   # Note that identifiers are OTP modes converted to lowercase.
