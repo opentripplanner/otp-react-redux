@@ -1742,10 +1742,10 @@
     "@opentripplanner/core-utils" "^3.0.4"
     prop-types "^15.7.2"
 
-"@opentripplanner/vehicle-rental-overlay@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/vehicle-rental-overlay/-/vehicle-rental-overlay-1.1.1.tgz#f236459cc9ab589cbdc72f64d43f2a62d3569eb0"
-  integrity sha512-RGT7euClDx+7lZaqBmz5ck9y98UUpLgsxh2UmB+xe08ygBIia1rPRyf/ocWGLHRa6NBNZF+YMoqSQw+bcOTJnQ==
+"@opentripplanner/vehicle-rental-overlay@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/vehicle-rental-overlay/-/vehicle-rental-overlay-1.1.2.tgz#04c670da35205c94786118cd5a8610190c26d71c"
+  integrity sha512-d36c79zj37Y9M+gDW5fE7RU3nVlGh68mIaKxAU3zlqY/jDsPHMjMltp+KRJwAhFVV19vnfMzriqjU6epRqBhwQ==
   dependencies:
     "@opentripplanner/core-utils" "^3.0.4"
     "@opentripplanner/from-to-location-picker" "^1.0.3"
