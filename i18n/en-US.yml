@@ -32,6 +32,15 @@ components:
     earlyHeading: "Trip is in progress and is arriving {deviationHumanDuration} earlier than expected!"
     noDataHeading: Trip is in progress (no realtime updates available).
     onTimeHeading: Trip is in progress and is about on time.
+  BaseRenderer: 
+    bodyDefault: Unknown Trip State
+    lastCheckedDefaultText: Last checked time unknown
+    LastCheckedText: "Last checked: {formattedDuration} ago"
+    toggleSnoozeTripButtonText: "{tripIsSnoozed, select, 
+      true {Unsnooze trip analysis}
+      other {Snooze for rest of today}
+    }"
+    
   DefaultItinerary:
     clickDetails: Click to view details
     # Use ordered placeholders when multiple modes are involved
