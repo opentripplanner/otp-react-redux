@@ -26,13 +26,18 @@ _name: English
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
 components:
+  ActiveTripRenderer:
+    bodyText: "Trip is due to arrive at the destination at {arrivalTime}."
+    delayedHeading: "Trip is in progress and is delayed {deviationHumanDuration}!"
+    earlyHeading: "Trip is in progress and is arriving {deviationHumanDuration} earlier than expected!"
+    noDataHeading: Trip is in progress (no realtime updates available).
+    onTimeHeading: Trip is in progress and is about on time.
   DefaultItinerary:
     clickDetails: Click to view details
     # Use ordered placeholders when multiple modes are involved
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
     multiModeSummary: "{accessMode} to {transitMode}"
   ItinerarySummary:
-    calories: Cal #{minTotalFare} - {maxTotalFare} //other { {minTotalFare}}
     fareCost: "{useMaxFare, select, 
       true {{minTotalFare} - {maxTotalFare}}
       other {{minTotalFare}}
@@ -123,7 +128,8 @@ common:
     micromobility: E-Scooter
     micromobilityRent: Rental E-Scooter
     walk: Walk
-
+    
+  # Shared itinerary description messages
   itineraryDescriptions:
     calories: Cal
     transfers: "{transfers, plural, =0 {} one {{transfers} Transfer} other {{transfers} Transfers}}"
