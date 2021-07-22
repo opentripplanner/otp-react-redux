@@ -12,12 +12,36 @@ Array [
         "pending": 1,
         "routingType": "ITINERARY",
         "searchId": "abcd1234",
+        "updateSearchInReducer": false,
       },
       "type": "ROUTING_REQUEST",
     },
   ],
   Array [
     [Function],
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "requestId": "abcd1238",
+        "response": Object {
+          "fake": "response",
+        },
+        "searchId": "abcd1234",
+      },
+      "type": "ROUTING_RESPONSE",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "error": [TypeError: Cannot read property 'trackRecent' of undefined],
+        "requestId": "abcd1239",
+        "searchId": "abcd1234",
+        "url": "http://mock-host.com:80/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false",
+      },
+      "type": "ROUTING_ERROR",
+    },
   ],
   Array [
     [Function],
@@ -28,13 +52,25 @@ Array [
         "activeItinerary": 0,
         "pending": 1,
         "routingType": "ITINERARY",
-        "searchId": "abcd1235",
+        "searchId": "abcd1237",
+        "updateSearchInReducer": false,
       },
       "type": "ROUTING_REQUEST",
     },
   ],
   Array [
     [Function],
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "error": [Error: Received error from server],
+        "requestId": "abcd1240",
+        "searchId": "abcd1237",
+        "url": "http://mock-host.com:80/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false",
+      },
+      "type": "ROUTING_ERROR",
+    },
   ],
 ]
 `;
@@ -51,12 +87,36 @@ Array [
         "pending": 1,
         "routingType": "ITINERARY",
         "searchId": "abcd1234",
+        "updateSearchInReducer": false,
       },
       "type": "ROUTING_REQUEST",
     },
   ],
   Array [
     [Function],
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "requestId": "abcd1235",
+        "response": Object {
+          "fake": "response",
+        },
+        "searchId": "abcd1234",
+      },
+      "type": "ROUTING_RESPONSE",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "error": [TypeError: Cannot read property 'trackRecent' of undefined],
+        "requestId": "abcd1236",
+        "searchId": "abcd1234",
+        "url": "http://mock-host.com:80/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false",
+      },
+      "type": "ROUTING_ERROR",
+    },
   ],
 ]
 `;
