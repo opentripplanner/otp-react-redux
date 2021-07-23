@@ -99,6 +99,13 @@
 }
 
 /* child stop details */
+
+.otp .stop-viewer .stop-viewer-body .view-child-stop-button  {
+  color: '#000080';
+  border: 'none'; 
+  background: 'none';
+}
+
 .otp .stop-viewer .stop-viewer-body .child-stops-title  {
   background-color: '#ffffff';
   padding: '0.5rem';
