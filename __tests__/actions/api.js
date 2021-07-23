@@ -44,6 +44,8 @@ describe('actions > api', () => {
         })
 
       await routingQueryAction(mockDispatch, mockGetState)
+
+      setMockRequestIds(mockDispatch.mock.calls)
       expect(mockDispatch.mock.calls).toMatchSnapshot()
     })
 
@@ -57,7 +59,21 @@ describe('actions > api', () => {
         })
       await routingQueryAction(mockDispatch, mockGetState)
 
+      setMockRequestIds(mockDispatch.mock.calls)
       expect(mockDispatch.mock.calls).toMatchSnapshot()
     })
   })
 })
+
+/**
+ * Sets the requestId values as needed to deterministic IDs.
+ */
+function setMockRequestIds (calls) {
+  calls.forEach(call => {
+    call.forEach(action => {
+      if (action.payload && action.payload.requestId) {
+        action.payload.requestId = randId()
+      }
+    })
+  })
+}
