@@ -106,7 +106,7 @@
   background: none;
 }
 
-.otp .stop-viewer .stop-viewer-body .child-stops-title  {
+.otp .stop-viewer .stop-viewer-body .related-panel-title  {
   background-color: #ffffff;
   padding: 0.5rem;
   position: relative;
@@ -114,7 +114,7 @@
   margin-left: 1rem;
 }
 
-.otp .stop-viewer .stop-viewer-body .child-stop-container  {
+.otp .stop-viewer .stop-viewer-body .related-panel-container  {
   border: 1px solid;
   border-radius: 7px;
   display: flex;
@@ -180,7 +180,7 @@
   margin-right: 5px;
 }
 
-.otp .stop-viewer .stop-viewer-body .child-stop-expand-view  {
+.otp .stop-viewer .stop-viewer-body .related-panel-expand-view  {
   display: flex;
   background: #fff;
   margin: auto;
