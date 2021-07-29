@@ -100,10 +100,22 @@
 
 /* child stop details */
 
-.otp .stop-viewer .stop-viewer-body .view-child-stop-button  {
+.otp .stop-viewer .stop-viewer-body .stop-label  {
+  display: table;
+  width: 100%;
+}
+
+.otp .stop-viewer .stop-viewer-body .stop-label .stop-name  {
+  display: table-cell;
+}
+
+.otp .stop-viewer .stop-viewer-body .stop-label .view-child-stop-button  {
   color: #000080;
   border: none;
   background: none;
+  display: table-cell;
+  padding: 0px;
+  width: 90px;
 }
 
 .otp .stop-viewer .stop-viewer-body .related-panel-title  {
@@ -117,26 +129,30 @@
 .otp .stop-viewer .stop-viewer-body .related-panel-container  {
   border: 1px solid;
   border-radius: 7px;
-  display: flex;
-  flex-wrap: wrap;
   padding: 0.5rem;
-  justify-content: flex-start;
   align-items: center;
   margin-top: -2.5rem;
 }
 
-.otp .stop-viewer .stop-viewer-body .child-stop-list  {
-  padding: 0px;
+.otp .stop-viewer .stop-viewer-body .related-items-list  {
+  padding-top: 20px;
   width: 100%;
   margin: 0;
 }
 
-.otp .stop-viewer .stop-viewer-body .child-stop  {
+.otp .stop-viewer .stop-viewer-body .related-item  {
   padding: 1rem;
   margin-bottom: 1rem;
 }
 
-.otp .stop-viewer .stop-viewer-body .child-stop-header  {
+.otp .stop-viewer .stop-viewer-body .related-item .item-label  {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  margin-bottom: 10px;
+}
+
+.otp .stop-viewer .stop-viewer-body .related-item .stop-label  {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -144,40 +160,29 @@
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row  {
-  display: flex;
+  display: table;
   width: 100%;
-  justify-content: space-between;
+}
+
+.otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-label {
+  display: table-cell;
+  max-width: 200px;
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .route-name {
   padding-right: 8px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
-.otp .stop-viewer .stop-viewer-body .child-stop-pattern-row-container .footer-left  {
-  display: flex;
-  margin-right: 20px;
-  align-items: center;
+.otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-time {
+  display: table-cell;
+  width: 90px;
+
 }
 
 .otp .stop-viewer .stop-viewer-body .child-stop-icon  {
   margin-right: 5px;
   font-size: 20px;
-}
-
-.child-stop-route-name {
-  border: 1px solid;
-  border-radius: 50%;
-  padding: 4px;
-  font-size: 13px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  letter-spacing: -1.5px;
-  text-align: center;
-  margin-right: 5px;
 }
 
 .otp .stop-viewer .stop-viewer-body .related-panel-expand-view  {
