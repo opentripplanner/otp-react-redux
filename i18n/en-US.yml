@@ -105,12 +105,26 @@ components:
     signInTooltip: Please sign in to save trip.
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
+  SubNav:
+    myAccount: My account
+    settings: Settings
+    trips: Trips
   TabbedItineraries:
     optionNumber: "Option {optionNum,number}"
     fareCost: "{useMaxFare, select, 
       true {{minTotalFare}+}
       other {{minTotalFare}}
     }"
+  TermsOfUsePane:
+    mustAgreeToTerms: You must agree to the terms of service to continue.
+    # For termsOfServiceStatement and termsOfStorageStatement,
+    # use the special <a>...</a> markup to insert the
+    # corresponding link in the text.
+    termsOfServiceStatement: "I confirm that I am at least 18 years old, and I have read and
+      consent to the <termsOfServiceLink>Terms of service</termsOfServiceLink> for using the Trip Planner."
+    termsOfStorageStatement: "Optional: I consent to the Trip Planner storing my historical planned trips in order to
+      improve transit services in my area. <a>More info...</a>"
+
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue,
     # and startOver are width-constrained.
@@ -125,6 +139,15 @@ components:
       Please add any additional feedback for this trip under the 'Additional Comments'
       section below and send using your regular email program."
     startOver: Start Over # TODO: move to other category (common with hamburger 'Start Over' item)
+  UserAccountScreen:
+    confirmDelete: Are you sure you would like to delete your user account? Once you do so, it cannot be recovered.
+  VerifyEmailPane:
+    emailIsVerified: My email is verified!
+    instructions1: "Please check your email inbox and follow the link in the message
+      to verify your email address before finishing your account setup."
+    instructions2: Once you're verified, click the button below to continue.
+    resendVerification: Resend verification email
+
 
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.

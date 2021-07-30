@@ -64,12 +64,25 @@ components:
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
+  SubNav:
+    myAccount: Mon compte
+    settings: Préférences
+    trips: Trajets
   TabbedItineraries:
     optionNumber: "Option {optionNum,number}"
     fareCost: "{useMaxFare, select, 
       true {À partir de {minTotalFare}}
       other {{minTotalFare}}
     }"
+  TermsOfUsePane:
+    mustAgreeToTerms: Vous devez accepter les conditions d'utilisation avant de continuer.
+    # For termsOfServiceStatement and termsOfStorageStatement,
+    # use the special <a>...</a> markup to insert the
+    # corresponding link in the text.
+    termsOfServiceStatement: "J'atteste avoir au moins 18 ans et j'ai lu et consens aux
+      <a>Conditions de service</a> pour utiliser the Plannificateur de trajets."
+    termsOfStorageStatement: "Facultatif: Je consens à ce que le Plannificateur de trajets sauvegarde mes recherches effectuées
+      afin d'améliorer les transports publics dans ma region. <a>Plus d'informations...</a>"
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue,
     # and startOver are width-constrained.
@@ -79,11 +92,19 @@ components:
     print: Imprimer
     reportIssue: Un problème ? # "Signaler un problème" does not fit.
     reportEmailSubject: Signaler un problème avec OpenTripPlanner
-    reportEmailTemplate: "                       *** A L'ATTENTION DE L'UTILISATEUR ***
+    reportEmailTemplate: "                       *** À L'ATTENTION DE L'UTILISATEUR ***
       Vous pouvez communiquer votre problème en détail aux administrateurs de ce site, par courriel.
       Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
       ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
     startOver: Recommencer
+  UserAccountScreen:
+    confirmDelete: "Êtes-vous sûr·e de vouloir supprimer votre compte ? Cette action est irréversible."
+  VerifyEmailPane:
+    emailIsVerified: Mon email est vérifié !
+    instructions1: "Vous devriez recevoir un message par courriel. Cliquez le lien dans le message 
+      pour verifier votre adresse email. Vous pourrez ensuite finir de créer votre compte."
+    instructions2: Une fois votre adresse est vérifiée, cliquez le bouton ci-dessous pour continuer.
+    resendVerification: Envoyer de nouveau le message de vérification
 
 common:
   accessModes:
