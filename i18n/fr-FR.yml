@@ -4,6 +4,19 @@ _name: Unofficial French Translations!
 components:
   AccountSetupFinishPane:
     message: Vous pouvez maintenant commencer à plannifer vos trajets.
+  AfterSignInScreen:
+    mainTitle: Redirection...
+    # For message, use the special <a>...</a> markup to automatically insert the
+    # corresponding link in the text.
+    message: "Si cette page ne se charge pas après quelques secondes, <a>cliquez ici</a>."
+  BackLink:
+    back: Retour
+  BackToTripPlanner:
+    backToTripPlanner: Retour au plannificateur de trajets
+  BeforeSignInScreen:
+    mainTitle: Connexion en cours
+    message: "Pour accéder à cette page, vous devez vous connecter.
+      Veuillez patienter pendant que nous vous redirigeons vers la page de connexion..."
   DefaultItinerary:
     clickDetails: Cliquez pour afficher les détails
     multiModeSummary: "{accessMode} + {transitMode}"

@@ -34,6 +34,11 @@ components:
     earlyHeading: "Trip is in progress and is arriving {deviationHumanDuration} earlier than expected!"
     noDataHeading: Trip is in progress (no realtime updates available).
     onTimeHeading: Trip is in progress and is about on time.
+  AfterSignInScreen:
+    mainTitle: Redirecting...
+    # For message, use the special <a>...</a> markup to automatically insert the
+    # corresponding link in the text.
+    message: "If the page doesn't load after a few seconds, <a>click here</a>."
   BaseRenderer: 
     bodyDefault: Unknown Trip State
     lastCheckedDefaultText: Last checked time unknown
@@ -42,7 +47,14 @@ components:
       true {Unsnooze trip analysis}
       other {Snooze for rest of today}
     }"
-    
+  BackLink:
+    back: Back
+  BackToTripPlanner:
+    backToTripPlanner: Back to trip planner
+  BeforeSignInScreen:
+    mainTitle: Signing you in
+    message: "In order to access this page you will need to sign in.
+      Please wait while we redirect you to the login page..."
   DefaultItinerary:
     clickDetails: Click to view details
     # Use ordered placeholders when multiple modes are involved
@@ -167,10 +179,10 @@ components:
   TermsOfUsePane:
     mustAgreeToTerms: You must agree to the terms of service to continue.
     # For termsOfServiceStatement and termsOfStorageStatement,
-    # use the special <a>...</a> markup to insert the
+    # use the special <a>...</a> markup to automatically insert the
     # corresponding link in the text.
     termsOfServiceStatement: "I confirm that I am at least 18 years old, and I have read and
-      consent to the <termsOfServiceLink>Terms of service</termsOfServiceLink> for using the Trip Planner."
+      consent to the <a>Terms of service</a> for using the Trip Planner."
     termsOfStorageStatement: "Optional: I consent to the Trip Planner storing my historical planned trips in order to
       improve transit services in my area. <a>More info...</a>"
 
