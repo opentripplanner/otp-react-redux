@@ -82,6 +82,31 @@ components:
       }
     }"
     viewAll: View all options
+  NotificationPrefsPane:
+    description: You can receive notifications about trips you frequently take.
+    notificationChannelPrompt: How would you like to receive notifications?
+    notificationEmailDetail: "Notification emails will be sent to:"
+    emailSelect: Email
+    noneSelect: Don't notify me
+    smsSelect: SMS
+  PhoneNumberEditor:
+    cancel: Cancel
+    changeNumber: Change number
+    invalidCode: Please enter 6 digits for the validation code.
+    invalidPhone: Please enter a valid phone number.
+    pending: Pending
+    # Note to translator: placeholder is width-constrained.
+    placeholder: "Enter your phone number"
+    prompt: "Enter your phone number for SMS notifications:"
+    requestNewCode: Request a new code
+    sendVerificationText: Send verification text
+    smsDetail: "SMS notifications will be sent to:"
+    verified: Verified
+    verificationCode: "Verification code:"
+    verificationInstructions: "Please check the SMS messaging app on your mobile phone
+      for a text message with a verification code, and enter the code below
+      (code expires after 10 minutes)."
+    verify: Verify
   PlanFirstLastButtons:
     # Note to translator: these values are width-constrained.
     first: First
@@ -103,8 +128,15 @@ components:
     saveTripText: Save trip
     signInText: Sign in to save trip
     signInTooltip: Please sign in to save trip.
+  SequentialPaneDisplay:
+    back: Back
+    finish: Finish
+    next: Next
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
+  StackedPaneDisplay:
+    cancel: Cancel
+    save: Save preferences
   SubNav:
     myAccount: My account
     settings: Settings

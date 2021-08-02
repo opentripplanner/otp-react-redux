@@ -41,6 +41,30 @@ components:
       }
     }"
     viewAll: Voir toutes les options
+  NotificationPrefsPane:
+    description: Vous pouvez recevoir des notifications sur les trajets que vous effectuez fréquemment.
+    notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
+    notificationEmailDetail: "Les courriers de notification seront envoyés à :"
+    emailSelect: Courriel
+    noneSelect: Ne pas me notifier
+    smsSelect: SMS
+  PhoneNumberEditor:
+    cancel: Annuler
+    changeNumber: Changer de numéro
+    invalidCode: Le code de vérification doit comporter 6 chiffres.
+    invalidPhone: Veuillez entrer un numéro de téléphone valable.
+    pending: Non vérifié
+    # Note to translator: placeholder is width-constrained.
+    placeholder: "Entrez votre numéro"
+    prompt: "Entrez votre numéro de téléphone pour les SMS de notification :"
+    requestNewCode: Envoyer un nouveau code
+    sendVerificationText: Envoyer le SMS de vérification
+    smsDetail: "Les SMS de notification seront envoyés au :"
+    verified: Verifié
+    verificationCode: "Code de vérification :"
+    verificationInstructions: "Un SMS vous a été envoyé avec un code de vérification.
+      Veuillez taper ce code ci-dessous (le code expire après 10 minutes)."
+    verify: Verifier
   PlanFirstLastButtons:
     # Note to translator: these values are width-constrained.
     first: Premier
@@ -62,8 +86,15 @@ components:
     saveTripText: Enregistrer
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
+  SequentialPaneDisplay:
+    back: Retour
+    finish: Terminer
+    next: Suivant
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
+  StackedPaneDisplay:
+    cancel: Annuler
+    save: Enregistrer mes préferences
   SubNav:
     myAccount: Mon compte
     settings: Préférences
