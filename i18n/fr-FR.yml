@@ -2,9 +2,20 @@ _id: fr-FR
 _name: Unofficial French Translations!
 
 components:
+  AccountSetupFinishPane:
+    message: Vous pouvez maintenant commencer à plannifer vos trajets.
   DefaultItinerary:
     clickDetails: Cliquez pour afficher les détails
     multiModeSummary: "{accessMode} + {transitMode}"
+  DeleteUser:
+    deleteMyAccount: Supprimer mon compte
+  ExistingAccountDisplay:
+    mainTitle: Mes préférences
+    notifications: Notifications
+    places: Destinations favorites
+    terms: Conditions d'utilisation
+  FormNavigationButtons:
+    ariaLabel: Navigation du formulaire
   ItinerarySummary:
     fareCost: "{useMaxFare, select, 
       true {{minTotalFare} - {maxTotalFare}}
@@ -41,6 +52,12 @@ components:
       }
     }"
     viewAll: Voir toutes les options
+  NewAccountWizard:
+    finish: Votre nouveau compte est prêt !
+    notifications: Recevez vos notifications
+    places: Ajoutez vos destinations
+    terms: Créez votre nouveau compte
+    verify: Vérifiez votre adresse de courriel
   NotificationPrefsPane:
     description: Vous pouvez recevoir des notifications sur les trajets que vous effectuez fréquemment.
     notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?

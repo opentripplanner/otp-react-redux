@@ -26,6 +26,8 @@ _name: English
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
 components:
+  AccountSetupFinishPane:
+    message: You are ready to start planning your trips.
   ActiveTripRenderer:
     bodyText: "Trip is due to arrive at the destination at {arrivalTime}."
     delayedHeading: "Trip is in progress and is delayed {deviationHumanDuration}!"
@@ -46,6 +48,15 @@ components:
     # Use ordered placeholders when multiple modes are involved
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
     multiModeSummary: "{accessMode} to {transitMode}"
+  DeleteUser:
+    deleteMyAccount: Delete my account
+  ExistingAccountDisplay:
+    mainTitle: My settings
+    notifications: Notifications
+    places: Favorite places
+    terms: Terms
+  FormNavigationButtons:
+    ariaLabel: Form navigation
   ItinerarySummary:
     fareCost: "{useMaxFare, select, 
       true {{minTotalFare} - {maxTotalFare}}
@@ -82,6 +93,12 @@ components:
       }
     }"
     viewAll: View all options
+  NewAccountWizard:
+    finish: Account setup complete!
+    notifications: Notification preferences
+    places: Add your locations
+    terms: Create a new account
+    verify: Verify your email address
   NotificationPrefsPane:
     description: You can receive notifications about trips you frequently take.
     notificationChannelPrompt: How would you like to receive notifications?
