@@ -203,7 +203,13 @@ components:
       consent to the <a>Terms of service</a> for using the Trip Planner."
     termsOfStorageStatement: "Optional: I consent to the Trip Planner storing my historical planned trips in order to
       improve transit services in my area. <a>More info...</a>"
-
+  TripSummary:
+    itinerary: Itinerary
+  TripSummaryPane:
+    happensOnDays: "Happens on: <b>{days}</b>"
+    noItineraryToDisplay: No itinerary to display.
+    notifications: "Notifications: <b>{leadTimeInMinutes} min. before scheduled departure</b>"
+    notificationsDisabled: "Notifications: <b>Disabled</b>"
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue,
     # and startOver are width-constrained.
@@ -239,6 +245,14 @@ common:
     micromobility: E-Scooter
     micromobilityRent: Rental E-Scooter
     walk: Walk
+  daysOfWeek:
+    monday: Monday
+    tuesday: Tuesday
+    wednesday: Wednesday
+    thursday: Thursday
+    friday: Friday
+    saturday: Saturday
+    sunday: Sunday
   # Common form UI messages
   # Note to translator: these values are width-constrained.
   forms:
@@ -270,7 +284,7 @@ common:
     home: home
     work: work # as in "work location"
   time:
-     # Use ordered placeholders for the departure-arrival string
+    # Use ordered placeholders for the departure-arrival string
     # (this will accommodate right-to-left languages by swapping the order in this string).
     departureArrivalTimes: "{startTime}—{endTime}"
     # If trip is less than one hour only display the minutes.

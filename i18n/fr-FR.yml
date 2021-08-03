@@ -162,6 +162,13 @@ components:
       <a>Conditions de service</a> pour utiliser the Plannificateur de trajets."
     termsOfStorageStatement: "Facultatif: Je consens à ce que le Plannificateur de trajets sauvegarde mes recherches effectuées
       afin d'améliorer les transports publics dans ma region. <a>Plus d'informations...</a>"
+  TripSummary:
+    itinerary: Trajet
+  TripSummaryPane:
+    happensOnDays: "Effectué : <b>{days}</b>"
+    noItineraryToDisplay: Aucun trajet à afficher.
+    notifications: "Notifications : <b>{leadTimeInMinutes} mn avant l'heure de départ prévue</b>"
+    notificationsDisabled: "Notifications : <b>Désactivées</b>"
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue,
     # and startOver are width-constrained.
@@ -193,6 +200,14 @@ common:
     micromobility: Trottinette électrique
     micromobilityRent: Trottinette électrique en libre-service
     walk: À pied
+  daysOfWeek:
+    monday: lundi
+    tuesday: mardi
+    wednesday: mercredi
+    thursday: jeudi
+    friday: vendredi
+    saturday: samedi
+    sunday: dimanche
   # Common form UI messages
   # Note to translator: these values are width-constrained.
   forms:
