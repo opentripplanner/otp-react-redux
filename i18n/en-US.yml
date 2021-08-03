@@ -120,6 +120,11 @@ components:
       }
     }"
     viewAll: View all options
+  NavLoginButton:
+    help: Help
+    myAccount: My account
+    signIn: Sign in
+    signOut: Sign out
   NewAccountWizard:
     finish: Account setup complete!
     notifications: Notification preferences

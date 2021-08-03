@@ -80,6 +80,11 @@ components:
       }
     }"
     viewAll: Voir toutes les options
+  NavLoginButton:
+    help: Aide
+    myAccount: Mon compte
+    signIn: Se connecter
+    signOut: Déconnexion
   NewAccountWizard:
     finish: Votre nouveau compte est prêt !
     notifications: Recevez vos notifications
