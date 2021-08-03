@@ -39,7 +39,9 @@ components:
     # For message, use the special <a>...</a> markup to automatically insert the
     # corresponding link in the text.
     message: "If the page doesn't load after a few seconds, <a>click here</a>."
-  BaseRenderer: 
+  BackToTripPlanner:
+    backToTripPlanner: Back to trip planner
+  BaseRenderer:
     bodyDefault: Unknown Trip State
     lastCheckedDefaultText: Last checked time unknown
     LastCheckedText: "Last checked: {formattedDuration} ago"
@@ -47,8 +49,6 @@ components:
       true {Unsnooze trip analysis}
       other {Snooze for rest of today}
     }"
-  BackToTripPlanner:
-    backToTripPlanner: Back to trip planner
   BeforeSignInScreen:
     mainTitle: Signing you in
     message: "In order to access this page you will need to sign in.
@@ -91,6 +91,8 @@ components:
     }"
   NarrativeItinerariesHeader:
     numIssues: "{issueNum, number} issues"
+    # Note to translator: resultText is width-constrained
+    # (about half pane width)
     resultText: "{pending, select,
       true {Finding your options...}
       other {

@@ -4,13 +4,27 @@ _name: Unofficial French Translations!
 components:
   AccountSetupFinishPane:
     message: Vous pouvez maintenant commencer à plannifer vos trajets.
+  ActiveTripRenderer:
+    bodyText: "Pour ce trajet, l'arrivée à destination est prévue à {arrivalTime}."
+    delayedHeading: "Le trajet est en cours et retardé de {deviationHumanDuration}."
+    earlyHeading: "Le trajet est en cours et arrivera {deviationHumanDuration} en avance."
+    noDataHeading: Le trajet est en cours (données en temps-réel non disponibles).
+    onTimeHeading: Le trajet est en cours et prévu à l'heure.
   AfterSignInScreen:
     mainTitle: Redirection...
     # For message, use the special <a>...</a> markup to automatically insert the
     # corresponding link in the text.
-    message: "Si cette page ne se charge pas après quelques secondes, <a>cliquez ici</a>."
+    message: "Si la page ne s'affiche pas après quelques secondes, <a>cliquez ici</a>."
   BackToTripPlanner:
     backToTripPlanner: Retour au plannificateur de trajets
+  BaseRenderer:
+    bodyDefault: Etat du trajet inconnu
+    lastCheckedDefaultText: Dernière vérification inconnue
+    LastCheckedText: "Dernière vérification : il y a {formattedDuration}"
+    toggleSnoozeTripButtonText: "{tripIsSnoozed, select, 
+      true {Reprendre le suivi du trajet}
+      other {Suspendre jusqu'a demain}
+    }"
   BeforeSignInScreen:
     mainTitle: Connexion en cours
     message: "Pour accéder à cette page, vous devez vous connecter.
@@ -51,8 +65,10 @@ components:
     }"
   NarrativeItinerariesHeader:
     numIssues: "{issueNum, number} problèmes"
+    # Note to translator: resultText is width-constrained
+    # (about half pane width)
     resultText: "{pending, select,
-      true {Recherche de vos options en cours...}
+      true {Recherche en cours...}
       other {
         {itineraryNum, number} {itineraryNum, plural,
           one {trajet trouvé}
