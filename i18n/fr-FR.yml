@@ -9,8 +9,6 @@ components:
     # For message, use the special <a>...</a> markup to automatically insert the
     # corresponding link in the text.
     message: "Si cette page ne se charge pas après quelques secondes, <a>cliquez ici</a>."
-  BackLink:
-    back: Retour
   BackToTripPlanner:
     backToTripPlanner: Retour au plannificateur de trajets
   BeforeSignInScreen:
@@ -25,8 +23,25 @@ components:
   ExistingAccountDisplay:
     mainTitle: Mes préférences
     notifications: Notifications
-    places: Destinations favorites
+    places: Lieux favoris
     terms: Conditions d'utilisation
+  FavoritePlaceRow:
+    addAnotherPlace: Ajouter un autre lieu
+    # deleteThisPlace and editThisPlace are aria/tooltip texts.
+    deleteThisPlace: Supprimer ce lieu
+    editThisPlace: Modifier ce lieu
+    setAddressForPlaceType: Entrez l'adresse de votre {placeType}
+  FavoritePlaceScreen:
+    addNewPlace: Ajouter un nouveau lieu
+    editPlace: Modifier le {placeName}
+    editPlaceGeneric: Modifier le lieu
+    invalidAddress: Veuillez entrer l'adresse du lieu.
+    invalidName: Veuillez saisir le nom du lieu.
+    nameAlreadyUsed: Ce nom est déjà utilisé avec un autre lieu. Veuillez saisir un nom différent.
+    placeNotFound: Lieu introuvable
+    placeNotFoundDescription: Le lieu recherché est introuvable.
+  FavoritePlacesList:
+    description: "Ajoutez les lieux que vous fréquentez souvent pour faciliter vos recherches de trajets :"
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
@@ -68,7 +83,7 @@ components:
   NewAccountWizard:
     finish: Votre nouveau compte est prêt !
     notifications: Recevez vos notifications
-    places: Ajoutez vos destinations
+    places: Ajoutez vos lieux
     terms: Créez votre nouveau compte
     verify: Vérifiez votre adresse de courriel
   NotificationPrefsPane:
@@ -79,7 +94,6 @@ components:
     noneSelect: Ne pas me notifier
     smsSelect: SMS
   PhoneNumberEditor:
-    cancel: Annuler
     changeNumber: Changer de numéro
     invalidCode: Le code de vérification doit comporter 6 chiffres.
     invalidPhone: Veuillez entrer un numéro de téléphone valable.
@@ -95,6 +109,10 @@ components:
     verificationInstructions: "Un SMS vous a été envoyé avec un code de vérification.
       Veuillez taper ce code ci-dessous (le code expire après 10 minutes)."
     verify: Verifier
+  PlaceEditor:
+    genericLocationPlaceholder: Adresse du lieu
+    locationPlaceholder: Adresse de votre {placeName}
+    namePlaceholder: Entrez le nom du lieu
   PlanFirstLastButtons:
     # Note to translator: these values are width-constrained.
     first: Premier
@@ -116,15 +134,10 @@ components:
     saveTripText: Enregistrer
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
-  SequentialPaneDisplay:
-    back: Retour
-    finish: Terminer
-    next: Suivant
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
   StackedPaneDisplay:
-    cancel: Annuler
-    save: Enregistrer mes préferences
+    savePreferences: Enregistrer mes préferences
   SubNav:
     myAccount: Mon compte
     settings: Préférences
@@ -175,7 +188,14 @@ common:
     micromobility: Trottinette électrique
     micromobilityRent: Trottinette électrique en libre-service
     walk: À pied
-
+  # Common form UI messages
+  # Note to translator: these values are width-constrained.
+  forms:
+    back: Retour
+    cancel: Annuler
+    finish: Terminer
+    next: Suivant
+    save: Enregistrer
   itineraryDescriptions:
     calories: kcal # SI unit
     transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
@@ -190,7 +210,11 @@ common:
     cable_car: Tram tiré par câble
     gondola: Téléphérique
     funicular: Funiculaire
-
+  # Note to translator: Places names below are used in
+  # contexts such as: "Edit home", "Set home address".
+  places:
+    home: domicile
+    work: lieu de travail
   time:
     departureArrivalTimes: "{startTime}—{endTime}"
     # If trip is less than one hour only display the minutes.
