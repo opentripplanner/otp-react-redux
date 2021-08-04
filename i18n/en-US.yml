@@ -205,6 +205,26 @@ components:
       consent to the <a>Terms of service</a> for using the Trip Planner."
     termsOfStorageStatement: "Optional: I consent to the Trip Planner storing my historical planned trips in order to
       improve transit services in my area. <a>More info...</a>"
+  TripNotificationsPane:
+    advancedSettings: Advanced settings
+    altRouteRecommended: An alternative route or transfer point is recommended
+    emailChannel: email
+    delaysAboveThreshold: There are delays or disruptions of more than
+    howToReceiveAlerts: "To receive alerts for your saved trips, enable notifications
+      in your account settings, and try saving a trip again."
+    monitorThisTrip: Monitor this trip {minutes} before it begins until it ends.
+    notificationsTurnedOff: Notifications are turned off for your account.
+    # Note to translator: The notifyViaChannelWhen message, combined with
+    # altRouteRecommended, delaysAboveTHreshold, realtimeAlertFlagged,
+    # should read like a sentence.
+    notifyViaChannelWhen: "Notify me via {channel} when:"
+    oneHour: 1 hour
+    realtimeAlertFlagged: There is a realtime alert flagged on my journey
+    smsChannel: SMS
+  TripStatus:
+    alerts: "{alerts, plural, one {{alerts} alert!} other {{alerts} alerts!}}"
+    deleteTrip: Delete Trip
+    planNewTrip: Plan New Trip
   TripSummary:
     itinerary: Itinerary
   TripSummaryPane:
@@ -215,7 +235,7 @@ components:
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue,
     # and startOver are width-constrained.
-    copyLink: Copy link
+    copyLink: Copy Link
     # Text that replaces the copyLink button text after user clicks it.
     linkCopied: Copied
     print: Print
@@ -260,9 +280,12 @@ common:
   forms:
     back: Back
     cancel: Cancel
+    defaultValue: "{value} (default)"
     finish: Finish
     next: Next
+    no: No
     save: Save
+    yes: Yes
   # Shared itinerary description messages
   itineraryDescriptions:
     calories: Cal

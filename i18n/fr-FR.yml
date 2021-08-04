@@ -178,6 +178,26 @@ components:
       <a>Conditions de service</a> pour utiliser the Plannificateur de trajets."
     termsOfStorageStatement: "Facultatif: Je consens à ce que le Plannificateur de trajets sauvegarde mes recherches effectuées
       afin d'améliorer les transports publics dans ma region. <a>Plus d'informations...</a>"
+  TripNotificationsPane:
+    advancedSettings: Paramètres avancés
+    altRouteRecommended: Un autre trajet ou une autre correspondance est conseillé·e
+    delaysAboveThreshold: Il y a des perturbations ou retards de plus de
+    emailChannel: courriel
+    howToReceiveAlerts: "Pour recevoir les alertes pour vos trajets suivis, activez les notifications
+      dans la section Préférences de votre compte, et essayez d'enregistrer un trajet à nouveau."
+    monitorThisTrip: Effectuer le suivi du trajet {minutes} avant le départ et jusqu'à l'arrivée.
+    notificationsTurnedOff: Les notifications sont désactivées pour votre compte.
+    # Note to translator: The notifyViaChannelWhen message, combined with
+    # altRouteRecommended, delaysAboveTHreshold, realtimeAlertFlagged,
+    # should read like a sentence.
+    notifyViaChannelWhen: "Recevoir des notifications par {channel} lorsque :"
+    oneHour: 1 heure
+    realtimeAlertFlagged: Une alerte en temps réel affecte mon trajet
+    smsChannel: SMS
+  TripStatus:
+    alerts: "{alerts, plural, =0 {{alerts} alerte !} one {{alerts} alerte !} other {{alerts} alertes !}}"
+    deleteTrip: Supprimer le trajet
+    planNewTrip: Plannifer un nouveau trajet
   TripSummary:
     itinerary: Trajet
   TripSummaryPane:
@@ -229,9 +249,12 @@ common:
   forms:
     back: Retour
     cancel: Annuler
+    defaultValue: "{value} (défaut)"
     finish: Terminer
     next: Suivant
+    no: Non
     save: Enregistrer
+    yes: Oui
   itineraryDescriptions:
     calories: kcal # SI unit
     transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
@@ -254,7 +277,7 @@ common:
   time:
     departureArrivalTimes: "{startTime}—{endTime}"
     # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} min"
+    tripDurationFormatZeroHours: "{minutes, number} mn"
 
     tripDurationFormat: "{hours, plural, 
         =0 {{minutes, number} mn}
