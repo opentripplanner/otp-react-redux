@@ -1,9 +1,19 @@
 _id: fr-FR
 _name: Unofficial French Translations!
 
+# Noteworthy items for translating into French:
+# - trip, itinerary, journey => trajet
+# - trip monitoring => suivi de trajet
+# - place => lieu (destination)
+# - disable, deactivate => désactiver
+# - email => 'e-mail' or 'mail' is widely used in France, although courriel is more common in Canada.
+# - Instruction text is generally less cheerful in French than English (e.g. fewer uses of exclamation marks)
+#   and tends to rely on infinitive tense.
+# 
+
 components:
   AccountSetupFinishPane:
-    message: Vous pouvez maintenant commencer à plannifer vos trajets.
+    message: Vous pouvez maintenant commencer à planifier vos trajets.
   ActiveTripRenderer:
     bodyText: "Pour ce trajet, l'arrivée à destination est prévue à {arrivalTime}."
     delayedHeading: "Le trajet est en cours et retardé de {deviationHumanDuration}."
@@ -16,14 +26,14 @@ components:
     # corresponding link in the text.
     message: "Si la page ne s'affiche pas après quelques secondes, <a>cliquez ici</a>."
   BackToTripPlanner:
-    backToTripPlanner: Retour au plannificateur de trajets
+    backToTripPlanner: Retour au planificateur de trajets
   BaseRenderer:
     bodyDefault: Etat du trajet inconnu
     lastCheckedDefaultText: Dernière vérification inconnue
     LastCheckedText: "Dernière vérification : il y a {formattedDuration}"
     toggleSnoozeTripButtonText: "{tripIsSnoozed, select, 
       true {Reprendre le suivi du trajet}
-      other {Suspendre jusqu'a demain}
+      other {Suspendre jusqu'à demain}
     }"
   BeforeSignInScreen:
     mainTitle: Connexion en cours
@@ -106,12 +116,12 @@ components:
     notifications: Recevez vos notifications
     places: Ajoutez vos lieux
     terms: Créez votre nouveau compte
-    verify: Vérifiez votre adresse de courriel
+    verify: Vérifiez votre adresse e-mail
   NotificationPrefsPane:
     description: Vous pouvez recevoir des notifications sur les trajets que vous effectuez fréquemment.
     notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
     notificationEmailDetail: "Les courriers de notification seront envoyés à :"
-    emailSelect: Courriel
+    emailSelect: E-mail
     noneSelect: Ne pas me notifier
     smsSelect: SMS
   PhoneNumberEditor:
@@ -175,9 +185,29 @@ components:
     # use the special <a>...</a> markup to insert the
     # corresponding link in the text.
     termsOfServiceStatement: "J'atteste avoir au moins 18 ans et j'ai lu et consens aux
-      <a>Conditions de service</a> pour utiliser the Plannificateur de trajets."
-    termsOfStorageStatement: "Facultatif: Je consens à ce que le Plannificateur de trajets sauvegarde mes recherches effectuées
+      <a>Conditions de service</a> pour utiliser the Planificateur de trajets."
+    termsOfStorageStatement: "Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches effectuées
       afin d'améliorer les transports publics dans ma region. <a>Plus d'informations...</a>"
+  TripNotificationsPane:
+    advancedSettings: Paramètres avancés
+    altRouteRecommended: Un autre trajet ou une autre correspondance est conseillé·e
+    delaysAboveThreshold: Il y a des perturbations ou retards de plus de
+    emailChannel: e-mail
+    howToReceiveAlerts: "Pour recevoir les alertes pour vos trajets suivis, activez les notifications
+      dans la section Préférences de votre compte, et essayez d'enregistrer un trajet à nouveau."
+    monitorThisTrip: Effectuer le suivi du trajet {minutes} avant le départ et jusqu'à l'arrivée.
+    notificationsTurnedOff: Les notifications sont désactivées pour votre compte.
+    # Note to translator: The notifyViaChannelWhen message, combined with
+    # altRouteRecommended, delaysAboveTHreshold, realtimeAlertFlagged,
+    # should read like a sentence.
+    notifyViaChannelWhen: "Recevoir des notifications par {channel} lorsque :"
+    oneHour: 1 heure
+    realtimeAlertFlagged: Une alerte en temps réel affecte mon trajet
+    smsChannel: SMS
+  TripStatus:
+    alerts: "{alerts, plural, =0 {{alerts} alerte !} one {{alerts} alerte !} other {{alerts} alertes !}}"
+    deleteTrip: Supprimer le trajet
+    planNewTrip: Planifier un nouveau trajet
   TripSummary:
     itinerary: Trajet
   TripSummaryPane:
@@ -195,18 +225,18 @@ components:
     reportIssue: Un problème ? # "Signaler un problème" does not fit.
     reportEmailSubject: Signaler un problème avec OpenTripPlanner
     reportEmailTemplate: "                       *** À L'ATTENTION DE L'UTILISATEUR ***
-      Vous pouvez communiquer votre problème en détail aux administrateurs de ce site, par courriel.
+      Vous pouvez communiquer votre problème par e-mail et en détail aux administrateurs de ce site.
       Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
       ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
     startOver: Recommencer
   UserAccountScreen:
-    confirmDelete: "Êtes-vous sûr·e de vouloir supprimer votre compte ? Cette action est irréversible."
+    confirmDelete: "Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible."
   VerifyEmailPane:
-    emailIsVerified: Mon email est vérifié !
-    instructions1: "Vous devriez recevoir un message par courriel. Cliquez le lien dans le message 
-      pour verifier votre adresse email. Vous pourrez ensuite finir de créer votre compte."
-    instructions2: Une fois votre adresse est vérifiée, cliquez le bouton ci-dessous pour continuer.
-    resendVerification: Envoyer de nouveau le message de vérification
+    emailIsVerified: Mon email est vérifié
+    instructions1: "Vous devriez recevoir un message par e-mail. Cliquez le lien dans le message 
+      pour verifier votre adresse e-mail. Vous pourrez ensuite finir de créer votre compte."
+    instructions2: Une fois votre adresse vérifiée, cliquez sur le bouton ci-dessous pour continuer.
+    resendVerification: Envoyer un nouveau message de vérification
 
 common:
   accessModes:
@@ -229,9 +259,12 @@ common:
   forms:
     back: Retour
     cancel: Annuler
+    defaultValue: "{value} (défaut)"
     finish: Terminer
     next: Suivant
+    no: Non
     save: Enregistrer
+    yes: Oui
   itineraryDescriptions:
     calories: kcal # SI unit
     transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
@@ -254,7 +287,7 @@ common:
   time:
     departureArrivalTimes: "{startTime}—{endTime}"
     # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} min"
+    tripDurationFormatZeroHours: "{minutes, number} mn"
 
     tripDurationFormat: "{hours, plural, 
         =0 {{minutes, number} mn}
