@@ -30,8 +30,8 @@ components:
     message: You are ready to start planning your trips.
   ActiveTripRenderer:
     bodyText: "Trip is due to arrive at the destination at {arrivalTime}."
-    delayedHeading: "Trip is in progress and is delayed {deviationHumanDuration}!"
-    earlyHeading: "Trip is in progress and is arriving {deviationHumanDuration} earlier than expected!"
+    delayedHeading: "Trip is in progress and is delayed {formattedDuration}!"
+    earlyHeading: "Trip is in progress and is arriving {formattedDuration} earlier than expected!"
     noDataHeading: Trip is in progress (no realtime updates available).
     onTimeHeading: Trip is in progress and is about on time.
   AfterSignInScreen:
@@ -44,11 +44,11 @@ components:
   BaseRenderer:
     bodyDefault: Unknown Trip State
     lastCheckedDefaultText: Last checked time unknown
-    LastCheckedText: "Last checked: {formattedDuration} ago"
-    toggleSnoozeTripButtonText: "{tripIsSnoozed, select, 
-      true {Unsnooze trip analysis}
-      other {Snooze for rest of today}
-    }"
+    lastCheckedText: "Last checked: {formattedDuration} ago"
+    togglePause: Pause
+    tripIsNotSnoozed: "Snooze for rest of today"
+    tripIsSnoozed: "Unsnooze trip analysis"
+    untogglePause: Resume
   BeforeSignInScreen:
     mainTitle: Signing you in
     message: "In order to access this page you will need to sign in.
