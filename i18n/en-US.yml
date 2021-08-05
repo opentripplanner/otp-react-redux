@@ -176,6 +176,11 @@ components:
       using the following routes: {routes}."
     ignoreServiceDelays: Ignore service delays
     serviceUpdate: Service update
+  SavedTripScreen:
+    tooManyTrips: "You already have reached the maximum of five saved trips.
+      Please remove unused trips from your saved trips, and try again."
+    tripNameAlreadyUsed: Another saved trip already uses this name. Please choose a different name.
+    tripNameRequired: Please enter a trip name.
   SaveTripButton:
     cantSaveText: Cannot save
     cantSaveTooltip: Only itineraries that include transit and no rentals or ride hailing can be monitored.
@@ -212,7 +217,6 @@ components:
     tripIsAvailableOnDaysIndicated: Your trip is available on the days of the week as indicated above.
     tripDaysPrompt: What days do you take this trip?
     tripNamePrompt: "Please provide a name for this trip:"
-    tripNameRequired: Please enter a trip name.
     # This is shown in a tooltip.
     tripNotAvailableOnDay: Trip not available on {repeatedDay}
     unsavedChangesNewTrip: You haven't saved your new trip yet. If you leave, it will be lost.

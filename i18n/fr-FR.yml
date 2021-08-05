@@ -162,6 +162,11 @@ components:
       en empruntant les lignes: {routes}."
     ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
+  SavedTripScreen:
+    tooManyTrips: "Vous avez déjà atteint le nombre maximum de 5 trajets enregistrés.
+      Veuillez supprimer les trajets enregistrés qui sont inutilisés, puis réessayez."
+    tripNameAlreadyUsed: Ce nom est déjà utilisé avec un autre trajet. Veuillez choisir un nom différent.
+    tripNameRequired: Veuillez entrer un nom pour ce trajet.
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
     cantSaveTooltip: Seuls les trajets en transports en commun sans location de véhicules et sans course en voiture peuvent être suivis.
@@ -198,7 +203,6 @@ components:
     tripIsAvailableOnDaysIndicated: Votre trajet est possible les jours indiqués ci-dessus.
     tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
     tripNamePrompt: "Saisissez un nom pour ce trajet :"
-    tripNameRequired: Veuillez entrer un nom pour ce trajet.
     # This is shown in a tooltip.
     tripNotAvailableOnDay: Ce trajet n'est pas possible les {repeatedDay}
     unsavedChangesNewTrip: Vous n'avez pas encore enregistré votre nouveau trajet. Si vous annulez, ce trajet sera perdu.
