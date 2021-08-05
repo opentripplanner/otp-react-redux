@@ -189,8 +189,20 @@ components:
     # corresponding link in the text.
     termsOfServiceStatement: "J'atteste avoir au moins 18 ans et j'ai lu et consens aux
       <a>Conditions de service</a> pour utiliser the Planificateur de trajets."
-    termsOfStorageStatement: "Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches effectuées
+    termsOfStorageStatement: "Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches
       afin d'améliorer les transports publics dans ma region. <a>Plus d'informations...</a>"
+  TripBasicsPane:
+    checkingItineraryExistence: Verification de l'existence du trajet pour chaque jour de la semaine...
+    selectAtLeastOneDay: Veuillez choisir au moins un jour pour effectuer le suivi.
+    selectedItinerary: "Trajet selectionné :"
+    tripIsAvailableOnDaysIndicated: Votre trajet est possible les jours indiqués ci-dessus.
+    tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
+    tripNamePrompt: "Saisissez un nom pour ce trajet :"
+    tripNameRequired: Veuillez entrer un nom pour ce trajet.
+    # This is shown in a tooltip.
+    tripNotAvailableOnDay: Ce trajet n'est pas possible les {repeatedDay}
+    unsavedChangesNewTrip: Vous n'avez pas encore enregistré votre nouveau trajet. Si vous annulez, ce trajet sera perdu.
+    unsavedChangesExistingTrip: Vous n'avez pas encore enregistré votre trajet. Si vous annulez, les changements seront perdus.
   TripNotificationsPane:
     advancedSettings: Paramètres avancés
     altRouteRecommended: Un autre trajet ou une autre correspondance est conseillé·e
@@ -215,7 +227,6 @@ components:
     itinerary: Trajet
   TripSummaryPane:
     happensOnDays: "Effectué : <b>{days}</b>"
-    noItineraryToDisplay: Aucun trajet à afficher.
     notifications: "Notifications : <b>{leadTimeInMinutes} mn avant l'heure de départ prévue</b>"
     notificationsDisabled: "Notifications : <b>Désactivées</b>"
   TripTools:
@@ -257,6 +268,22 @@ common:
     friday: vendredi
     saturday: samedi
     sunday: dimanche
+  daysOfWeekCompact:
+    monday: lun.
+    tuesday: mar.
+    wednesday: mer.
+    thursday: jeu.
+    friday: ven.
+    saturday: sam.
+    sunday: dim.
+  daysOfWeekPlural:
+    monday: lundis
+    tuesday: mardis
+    wednesday: mercredis
+    thursday: jeudis
+    friday: vendredis
+    saturday: samedis
+    sunday: dimanches
   # Common form UI messages
   # Note to translator: these values are width-constrained.
   forms:
@@ -270,8 +297,8 @@ common:
     yes: Oui
   itineraryDescriptions:
     calories: kcal # SI unit
+    noItineraryToDisplay: Aucun trajet à afficher.
     transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
-
 
   otpTransitModes:
     tram: Tram

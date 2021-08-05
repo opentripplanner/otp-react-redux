@@ -205,6 +205,18 @@ components:
       consent to the <a>Terms of service</a> for using the Trip Planner."
     termsOfStorageStatement: "Optional: I consent to the Trip Planner storing my historical planned trips in order to
       improve transit services in my area. <a>More info...</a>"
+  TripBasicsPane:
+    checkingItineraryExistence: Checking itinerary existence for each day of the week...
+    selectAtLeastOneDay: Please select at least one day to monitor.
+    selectedItinerary: "Selected itinerary:"
+    tripIsAvailableOnDaysIndicated: Your trip is available on the days of the week as indicated above.
+    tripDaysPrompt: What days do you take this trip?
+    tripNamePrompt: "Please provide a name for this trip:"
+    tripNameRequired: Please enter a trip name.
+    # This is shown in a tooltip.
+    tripNotAvailableOnDay: Trip not available on {repeatedDay}
+    unsavedChangesNewTrip: You haven't saved your new trip yet. If you leave, it will be lost.
+    unsavedChangesExistingTrip: You haven't saved your trip yet. If you leave, changes will be lost.
   TripNotificationsPane:
     advancedSettings: Advanced settings
     altRouteRecommended: An alternative route or transfer point is recommended
@@ -229,7 +241,6 @@ components:
     itinerary: Itinerary
   TripSummaryPane:
     happensOnDays: "Happens on: <b>{days}</b>"
-    noItineraryToDisplay: No itinerary to display.
     notifications: "Notifications: <b>{leadTimeInMinutes} min. before scheduled departure</b>"
     notificationsDisabled: "Notifications: <b>Disabled</b>"
   TripTools:
@@ -275,6 +286,22 @@ common:
     friday: Friday
     saturday: Saturday
     sunday: Sunday
+  daysOfWeekCompact:
+    monday: Mon.
+    tuesday: Tue.
+    wednesday: Wed.
+    thursday: Thu.
+    friday: Fri.
+    saturday: Sat.
+    sunday: Sun.
+  daysOfWeekPlural:
+    monday: Mondays
+    tuesday: Tuesdays
+    wednesday: Wednesdays
+    thursday: Thursdays
+    friday: Fridays
+    saturday: Saturdays
+    sunday: Sundays
   # Common form UI messages
   # Note to translator: these values are width-constrained.
   forms:
@@ -289,6 +316,7 @@ common:
   # Shared itinerary description messages
   itineraryDescriptions:
     calories: Cal
+    noItineraryToDisplay: No itinerary to display.
     transfers: "{transfers, plural, =0 {} one {{transfers} transfer} other {{transfers} transfers}}"
 
   # OTP transit modes
