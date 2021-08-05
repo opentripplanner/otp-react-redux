@@ -16,4 +16,5 @@ test('checks the test page with Axe', async () => {
       'page-has-heading-one' // Heading is provided by logo
     ]
   })
+  await browser.close()
 })
