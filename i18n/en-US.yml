@@ -98,12 +98,10 @@ components:
     # (about half pane width)
     resultText: "{pending, select,
       true {Finding your options...}
-      other {
-        {itineraryNum, number} {itineraryNum, plural,
+      other {{itineraryNum, number} {itineraryNum, plural,
           one {itinerary found}
           other {itineraries found}
-        }
-      }
+      }}
     }"
     selectArrivalTime: Arrival time
     selectBest: Best option
@@ -111,19 +109,18 @@ components:
     selectDepartureTime: Departure time
     selectDuration: Duration
     selectWalkTime: Walk time
-    titleText: "{pending, select, 
-      true {Finding your options...}
-      other {
-        {itineraryNum, number} {itineraryNum, plural,
-          one {itinerary}
-          other {itineraries}}
-        {issueNum, plural,
-          =0 {found}
-          one {(and {issueNum, number} issue) found}
-          other {(and {issueNum,number} issues) found}
+    titleText: "{pending, select,
+        true {Finding your options...}
+        other {
+          {itineraryNum, number} {itineraryNum, plural,
+            one {itinerary}
+            other {itineraries}} {issueNum, plural,
+            =0 {found}
+            one {(and {issueNum, number} issue) found}
+            other {(and {issueNum,number} issues) found}
+          }
         }
-      }
-    }"
+      }"
     viewAll: View all options
   NavLoginButton:
     help: Help
