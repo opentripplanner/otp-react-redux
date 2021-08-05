@@ -138,7 +138,7 @@
 .otp .stop-viewer .trip-table .header {
   display: table-row;
   font-size: 11px;
-  color: gray;
+  color: #685c5c; /* from "gray" to meet WCAG */
   text-align: center;
 }
 
