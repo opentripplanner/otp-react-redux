@@ -30,11 +30,11 @@ components:
   BaseRenderer:
     bodyDefault: Etat du trajet inconnu
     lastCheckedDefaultText: Dernière vérification inconnue
-    LastCheckedText: "Dernière vérification : il y a {formattedDuration}"
-    toggleSnoozeTripButtonText: "{tripIsSnoozed, select, 
-      true {Reprendre le suivi du trajet}
-      other {Suspendre jusqu'à demain}
-    }"
+    lastCheckedText: "Dernière vérification : il y a {formattedDuration}"
+    togglePause: Pause
+    tripIsNotSnoozed: Suspendre jusqu'à demain
+    tripIsSnoozed: Reprendre le suivi du trajet
+    untogglePause: Reprendre
   BeforeSignInScreen:
     mainTitle: Connexion en cours
     message: "Pour accéder à cette page, vous devez vous connecter.
@@ -74,7 +74,10 @@ components:
       other {{minTotalFare}}
     }"
   NarrativeItinerariesHeader:
-    numIssues: "{issueNum, number} problèmes"
+    numIssues: "{issueNum, number} {issueNum, plural, 
+        one {problème}
+        other {problèmes}
+    }"
     # Note to translator: resultText is width-constrained
     # (about half pane width)
     resultText: "{pending, select,
@@ -101,7 +104,7 @@ components:
         {issueNum, plural,
           =0 {trouvé}
           one {(et {issueNum, number} problème) trouvé}
-          other {(and {issueNum,number} problèmes) trouvés}
+          other {(et {issueNum,number} problèmes) trouvés}
         }
       }
     }"
