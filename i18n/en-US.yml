@@ -90,7 +90,10 @@ components:
       other {{minTotalFare}}
     }"
   NarrativeItinerariesHeader:
-    numIssues: "{issueNum, number} issues"
+    numIssues: "{issueNum, number} {issueNum, plural, 
+        one {issue}
+        other {issues}
+    }"
     # Note to translator: resultText is width-constrained
     # (about half pane width)
     resultText: "{pending, select,
