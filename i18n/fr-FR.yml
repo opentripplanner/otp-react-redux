@@ -1,5 +1,5 @@
 _id: fr-FR
-_name: Unofficial French Translations!
+_name: Exemple de traduction pour OTP-react-redux en français !
 
 # Noteworthy items for translating into French:
 # - trip, itinerary, journey => trajet
@@ -162,6 +162,21 @@ components:
       en empruntant les lignes: {routes}."
     ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
+  SavedTripEditor:
+    editSavedTrip: Modifier un trajet enregistré
+    saveNewTrip: Enregistrer un nouveau trajet
+    tripInformation: Informations sur le trajet
+    tripNotFound: Trajet introuvable
+    tripNotFoundDescription: Le trajet recherché est introuvable.
+    tripNotifications: Notifications du trajet
+  SavedTripList:
+    delete: Supprimer
+    edit: Modifier
+    myTrips: Mes trajets
+    noSavedTrips: Vous n'avez aucun trajet enregistré
+    noSavedTripsInstructions: Effectuez une recherche depuis la carte avant de pouvoir enregistrer un nouveau trajet.
+    pause: Arrêter
+    resume: Reprendre
   SavedTripScreen:
     tooManyTrips: "Vous avez déjà atteint le nombre maximum de 5 trajets enregistrés.
       Veuillez supprimer les trajets enregistrés qui sont inutilisés, puis réessayez."

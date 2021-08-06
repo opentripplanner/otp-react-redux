@@ -176,6 +176,21 @@ components:
       using the following routes: {routes}."
     ignoreServiceDelays: Ignore service delays
     serviceUpdate: Service update
+  SavedTripEditor:
+    editSavedTrip: Edit saved trip
+    saveNewTrip: Save new trip
+    tripInformation: Trip information
+    tripNotFound: Trip not found
+    tripNotFoundDescription: Sorry, the requested trip was not found.
+    tripNotifications: Trip notifications
+  SavedTripList:
+    delete: Delete
+    edit: Edit
+    myTrips: My trips
+    noSavedTrips: You have no saved trips
+    noSavedTripsInstructions: Perform a trip search from the map first.
+    pause: Pause
+    resume: Resume
   SavedTripScreen:
     tooManyTrips: "You already have reached the maximum of five saved trips.
       Please remove unused trips from your saved trips, and try again."
