@@ -171,6 +171,9 @@ components:
     waiting: Patientez...
   ResultsScreen:
     header: Option {index}
+  # Used in both desktop and mobile
+  RouteViewer:
+    header: Index des lignes
   SavedTripEditor:
     editSavedTrip: Modifier un trajet enregistré
     saveNewTrip: Enregistrer un nouveau trajet
@@ -195,10 +198,15 @@ components:
     saveTripText: Enregistrer
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
+  SearchScreen:
+    header: Planifiez votre trajet
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
   StackedPaneDisplay:
     savePreferences: Enregistrer mes préferences
+  # Used in both desktop and mobile
+  StopViewer:
+    header: Info arrêt
   SubNav:
     myAccount: Mon compte
     settings: Préférences
@@ -309,6 +317,9 @@ components:
       Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
       ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
     startOver: Recommencer
+  # Used in both desktop and mobile
+  TripViewer:
+    header: Info trajet
   UserAccountScreen:
     confirmDelete: "Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible."
   VerifyEmailPane:

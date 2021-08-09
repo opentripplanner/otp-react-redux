@@ -185,6 +185,9 @@ components:
     waiting: Waiting...
   ResultsScreen:
     header: Option {index}
+  # Used in both desktop and mobile
+  RouteViewer:
+    header: Route Viewer
   SavedTripEditor:
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip
@@ -209,10 +212,15 @@ components:
     saveTripText: Save trip
     signInText: Sign in to save trip
     signInTooltip: Please sign in to save trip.
+  SearchScreen:
+    header: Plan Your Trip
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   StackedPaneDisplay:
     savePreferences: Save preferences
+  # Used in both desktop and mobile
+  StopViewer:
+    header: Stop Viewer
   SubNav:
     myAccount: My account
     settings: Settings
@@ -323,6 +331,9 @@ components:
       Please add any additional feedback for this trip under the 'Additional Comments'
       section below and send using your regular email program."
     startOver: Start Over # TODO: move to other category (common with hamburger 'Start Over' item)
+  # Used in both desktop and mobile
+  TripViewer:
+    header: Trip Viewer
   UserAccountScreen:
     confirmDelete: Are you sure you would like to delete your user account? Once you do so, it cannot be recovered.
   VerifyEmailPane:
