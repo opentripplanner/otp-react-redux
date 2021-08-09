@@ -328,6 +328,8 @@ components:
       pour verifier votre adresse e-mail. Vous pourrez ensuite finir de créer votre compte."
     instructions2: Une fois votre adresse vérifiée, cliquez sur le bouton ci-dessous pour continuer.
     resendVerification: Envoyer un nouveau message de vérification
+  WelcomeScreen:
+    prompt: Où désirez-vous aller ?
 
 common:
   accessModes:

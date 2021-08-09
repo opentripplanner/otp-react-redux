@@ -342,6 +342,8 @@ components:
       to verify your email address before finishing your account setup."
     instructions2: Once you're verified, click the button below to continue.
     resendVerification: Resend verification email
+  WelcomeScreen:
+    prompt: Where do you want to go?
 
 
 # Common messages that appear in multiple components and modules
