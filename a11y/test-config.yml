@@ -1,0 +1,168 @@
+branding: a11y-test
+title: a11y test environment
+homeTimezone: America/Chicago
+
+# Default OTP API
+api:
+  host: http://localhost:9999
+  # host: http://localhost:8001 # For testing against a local OTP instance
+  path: /otp/routers/default
+
+# Enabled multimodal routing types (e.g. interary, profile)
+routingTypes:
+  - key: ITINERARY
+    text: Exact Time
+
+# Show/hide elevation profile chart for walk/bike legs
+# elevationProfile: true
+
+# Map config
+map:
+  # Enabled map views
+  views:
+    - type: DEFAULT
+      text: Map View
+    # Delete/uncomment the following block to disable the stylized map
+    #- type: STYLIZED
+    #  text: Network View
+
+  # Default map center
+  initLat: 29.7604
+  initLon: -95.3698
+  initZoom: 12
+
+  # Base layers for default map
+  baseLayers:
+    - name: Streets
+      url: //api.mapbox.com/styles/v1/mapbox/outdoors-v11/tiles/{z}/{x}/{y}{retina}?access_token=pk.eyJ1IjoiaWJpLXRyYW5zaXQtZGF0YS10ZWFtIiwiYSI6ImNqeTY3Zms2bzBkbjMzbGs5bWpoemRxY3UifQ.IrkMhr7JMhUNcb2qXuzwig
+      attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>"
+      maxZoom: 20
+      hasRetinaSupport: true
+      retina: "@2x"
+
+  overlays:
+    - type: bike-rental
+      name: BCycle Locations
+      modes:
+        - BICYCLE_RENT
+      companies:
+        - BCYCLE
+      mapSymbols:
+        - maxZoom: 12
+          minZoom: 0
+          type: circle
+          pixels: 3
+          fillColor: "#FF2E28"
+          dockStrokeColor: "#000000"
+        - maxZoom: 15
+          minZoom: 13
+          type: circle
+          pixels: 5
+          fillColor: "#FF2E28"
+          dockStrokeColor: "#000000"
+        - maxZoom: 20
+          minZoom: 16
+          fillColor: "#FF2E28"
+          dockStrokeColor: "#000000"
+          type: hubAndFloatingBike
+
+    - type: park-and-ride
+      name: Park & Ride Locations
+      maxTransitDistance: 1000
+      modes:
+        - CAR_PARK
+
+    - type: stops
+      name: Transit Stops
+      visible: true
+
+geocoder:
+  # IBI geocode.earth proxy
+  baseUrl: https://cglx01n2ua.execute-api.us-east-1.amazonaws.com/prod
+  # Geocoding search bounds
+  boundary:
+    rect:
+      minLon: -97.4197
+      maxLon: -93.2674
+      minLat: 28.6093
+      maxLat: 30.9685
+  # fetch options
+  options:
+    headers:
+      # AWS API Gateway key specific to Houston (IBI AWS account):
+      # https://console.aws.amazon.com/apigateway/home?region=us-east-1#/api-keys/fchsdgyys9
+      x-api-key: lvJXqETokn3T338y1c8U843Fjh1ONdgzK3Ar0pl4
+  maxNearbyStops: 6
+  type: PELIAS
+
+# A list of private transportation operators. These are either companies that
+# provide rental vehicles or transportation network companies. Companies that
+# have multiple modes of transport should have all modes listed as a string with
+# commas. For example: BICYCLE_RENT,MICROMOBILITY_RENT.
+companies:
+  - id: BCYCLE
+    label: BCycle
+    modes: BICYCLE_RENT
+
+# Mode selector configuration
+modes:
+  transitModes:
+    - mode: BUS
+      label: Bus
+    - mode: TRAM
+      label: METRORail
+
+  # access to transit modes. These options are all combined with the above
+  # transit modes in the request to OTP
+  accessModes:
+    - mode: BICYCLE
+      label: Transit + Personal bike
+    - mode: BICYCLE_RENT
+      label: Transit + BCycle
+      company: BCYCLE
+    - mode: CAR_PARK
+      label: Park & Ride
+  # which exclusive modes to show. This involves using a single mode and no
+  # transit for the duration of the trip. Further configurations of
+  # `bicycleModes`, `micromobilityModes` and/or `carModes` are needed as
+  # desired, but no extra configuration is needed for a WALK exclusive mode.
+  exclusiveModes:
+    - WALK
+    - BICYCLE
+
+  bicycleModes:
+    - mode: BICYCLE
+      label: Own Bike
+      iconWidth: 18
+    - mode: BICYCLE_RENT
+      label: BCycle
+      iconWidth: 36
+
+errorMessages:
+  - id: 404
+    msg: Sorry, we couldn't find any transit or rideshare/carshare options at the time and/or location you chose. Please try again later, or change the settings of your trip.
+    modes:
+      - CAR_HAIL
+      - CAR_RENT
+  - id: 405
+    msg: Sorry, we couldn't find any transit or rideshare/carshare options at the time and/or location you chose. Please try again later, or change the settings of your trip.
+    modes:
+      - CAR_HAIL
+      - CAR_RENT
+  - id: 480
+    msg: No available transit routes or rideshare/carshare service at origin.
+
+reportIssue:
+  mailto: webmaster@ridemetro.org
+
+# NOTE: Houston GA for production is set in the index.html file because it
+#  a new GA4 site tag that is not supported by react-ga:
+#  https://github.com/react-ga/react-ga/issues/460
+# analytics:
+#   google:
+#     globalSiteTag: UA-XXXXXXX
+
+dateTime:
+  timeFormat: h:mm a
+  dateFormat: MM/DD/YYYY
+  longDateFormat: MMMM D, YYYY
