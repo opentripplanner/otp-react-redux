@@ -28,12 +28,6 @@ _name: English
 components:
   AccountSetupFinishPane:
     message: You are ready to start planning your trips.
-  ActiveTripRenderer:
-    bodyText: "Trip is due to arrive at the destination at {arrivalTime}."
-    delayedHeading: "Trip is in progress and is delayed {formattedDuration}!"
-    earlyHeading: "Trip is in progress and is arriving {formattedDuration} earlier than expected!"
-    noDataHeading: Trip is in progress (no realtime updates available).
-    onTimeHeading: Trip is in progress and is about on time.
   AfterSignInScreen:
     mainTitle: Redirecting...
     # For message, use the special <a>...</a> markup to automatically insert the
@@ -41,14 +35,6 @@ components:
     message: "If the page doesn't load after a few seconds, <a>click here</a>."
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
-  BaseRenderer:
-    bodyDefault: Unknown Trip State
-    lastCheckedDefaultText: Last checked time unknown
-    lastCheckedText: "Last checked: {formattedDuration} ago"
-    togglePause: Pause
-    tripIsNotSnoozed: "Snooze for rest of today"
-    tripIsSnoozed: "Unsnooze trip analysis"
-    untogglePause: Resume
   BeforeSignInScreen:
     mainTitle: Signing you in
     message: "In order to access this page you will need to sign in.
@@ -257,6 +243,20 @@ components:
     deleteTrip: Delete Trip
     planNewTrip: Plan New Trip
   TripStatusRenderers:
+    active:
+      delayedHeading: "Trip is in progress and is delayed {formattedDuration}!"
+      description: "Trip is due to arrive at the destination at {arrivalTime}."
+      earlyHeading: "Trip is in progress and is arriving {formattedDuration} earlier than expected!"
+      noDataHeading: Trip is in progress (no realtime updates available).
+      onTimeHeading: Trip is in progress and is about on time.
+    base:
+      lastCheckedDefaultText: Last checked time unknown
+      lastCheckedText: "Last checked: {formattedDuration} ago"
+      togglePause: Pause
+      tripIsNotSnoozed: "Snooze for rest of today"
+      tripIsSnoozed: "Unsnooze trip analysis"
+      unknownState: Unknown Trip State
+      untogglePause: Resume
     inactive:
       description: Resume trip monitoring to see the updated status
       heading: Trip monitoring is paused

@@ -14,12 +14,6 @@ _name: Exemple de traduction pour OTP-react-redux en français !
 components:
   AccountSetupFinishPane:
     message: Vous pouvez maintenant commencer à planifier vos trajets.
-  ActiveTripRenderer:
-    bodyText: "Arrivée à destination est prévue à {arrivalTime}."
-    delayedHeading: "Trajet en cours, retardé de {deviationHumanDuration}."
-    earlyHeading: "Trajet en cours, en avance de {deviationHumanDuration}."
-    noDataHeading: Trajet en cours (données en temps-réel non disponibles).
-    onTimeHeading: Trajet en cours et prévu à l'heure.
   AfterSignInScreen:
     mainTitle: Redirection...
     # For message, use the special <a>...</a> markup to automatically insert the
@@ -27,14 +21,6 @@ components:
     message: "Si la page ne s'affiche pas après quelques secondes, <a>cliquez ici</a>."
   BackToTripPlanner:
     backToTripPlanner: Retour au planificateur de trajets
-  BaseRenderer:
-    bodyDefault: Etat du trajet inconnu
-    lastCheckedDefaultText: Dernière vérification inconnue
-    lastCheckedText: "Dernière vérification effectuée il y a {formattedDuration}"
-    togglePause: Suspendre le suivi
-    tripIsNotSnoozed: Suspendre jusqu'à demain
-    tripIsSnoozed: Reprendre le suivi du trajet
-    untogglePause: Reprendre
   BeforeSignInScreen:
     mainTitle: Connexion en cours
     message: "Pour accéder à cette page, vous devez vous connecter.
@@ -243,6 +229,20 @@ components:
     deleteTrip: Supprimer le trajet
     planNewTrip: Planifier un nouveau trajet
   TripStatusRenderers:
+    active:
+      delayedHeading: "Trajet en cours, retardé de {deviationHumanDuration}."
+      description: "Arrivée à destination prévue à {arrivalTime}."
+      earlyHeading: "Trajet en cours, en avance de {deviationHumanDuration}."
+      noDataHeading: Trajet en cours (données en temps-réel non disponibles).
+      onTimeHeading: Trajet en cours et prévu à l'heure.
+    base:
+      lastCheckedDefaultText: Dernière vérification inconnue
+      lastCheckedText: "Dernière vérification effectuée il y a {formattedDuration}"
+      togglePause: Suspendre le suivi
+      tripIsNotSnoozed: Suspendre jusqu'à demain
+      tripIsSnoozed: Reprendre le suivi du trajet
+      unknownState: Etat du trajet inconnu
+      untogglePause: Reprendre
     inactive:
       description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
       heading: Suivi suspendu
@@ -267,7 +267,7 @@ components:
       tripStartIsDelayed: Départ retardé de ${duration}.
       tripStartIsEarly: Départ avancé de ${duration} !
       tripStartsSoonNoUpdates: Départ proche (pas de données en temps réel).
-      tripStartsSoonOnTime: Départ proche, prévu à l'heure.
+      tripStartsSoonOnTime: Départ proche et prévu à l'heure.
   TripSummary:
     itinerary: Trajet
   TripSummaryPane:
