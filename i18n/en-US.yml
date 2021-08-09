@@ -256,6 +256,32 @@ components:
     alerts: "{alerts, plural, one {{alerts} alert!} other {{alerts} alerts!}}"
     deleteTrip: Delete Trip
     planNewTrip: Plan New Trip
+  TripStatusRenderers:
+    inactive:
+      description: Resume trip monitoring to see the updated status
+      heading: Trip monitoring is paused
+    nextTripNotPossible:
+      description: "The trip planner was unable to find your trip today.
+        Please try re-planning your itinerary to find an alternative route."
+      heading: Trip is not possible today
+    noLongerPossible:
+      description: "The trip planner was unable to find your trip on any selected days of the week.
+        Please try re-planning your itinerary to find an alternative route."
+      heading: Trip is no longer possible
+    notCalculated:
+      awaiting: Awaiting calculation...
+      description: Please wait a bit for the trip to calculate.
+      heading: Trip not yet calculated
+    snoozed:
+      description: Unsnooze trip monitoring to see the updated status.
+      heading: Trip monitoring is snoozed for today
+    upcoming:
+      nextTripBegins: Next trip starts on {tripDate, date, ::eeeee yyyyMMdd} at {tripTime}.
+      tripBegins: Trip is due to begin at {tripStart}. (Realtime monitoring will begin at {monitoringStart}.)
+      tripStartIsDelayed: Trip start time is delayed ${duration}!
+      tripStartIsEarly: Trip start time is happening ${duration} earlier than expected!
+      tripStartsSoonNoUpdates: Trip is starting soon (no realtime updates available).
+      tripStartsSoonOnTime: Trip is starting soon and is about on time.
   TripSummary:
     itinerary: Itinerary
   TripSummaryPane:
