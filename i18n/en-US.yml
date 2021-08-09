@@ -35,10 +35,17 @@ components:
     message: "If the page doesn't load after a few seconds, <a>click here</a>."
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
+  BatchResultsScreen:
+    expandMap: Expand map
+    showResults: Show results
+  BatchSearchScreen:
+    header: Plan Your Trip
   BeforeSignInScreen:
     mainTitle: Signing you in
     message: "In order to access this page you will need to sign in.
       Please wait while we redirect you to the login page..."
+  DateTimeScreen:
+    header: Set Date/Time
   DefaultItinerary:
     clickDetails: Click to view details
     # Use ordered placeholders when multiple modes are involved
@@ -75,6 +82,14 @@ components:
       true {{minTotalFare} - {maxTotalFare}}
       other {{minTotalFare}}
     }"
+  LocationSearch:
+    enterLocation: Enter location
+    setDestination: Set Destination
+    setOrigin: Set Origin
+  MainMobile:
+    invalidScreen: Invalid mobile screen
+  MobileOptions:
+    header: Set Search Options
   NarrativeItinerariesHeader:
     numIssues: "{issueNum, number} {issueNum, plural, 
         one {issue}
@@ -162,6 +177,14 @@ components:
       using the following routes: {routes}."
     ignoreServiceDelays: Ignore service delays
     serviceUpdate: Service update
+  ResultsError:
+    backToSearch: Back to Search
+  ResultsHeader:
+    noTripFound: No Trip Found
+    tripsFound: We Found {count} {count, plural, one {Option} other {Options}}
+    waiting: Waiting...
+  ResultsScreen:
+    header: Option {index}
   SavedTripEditor:
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip
@@ -170,8 +193,6 @@ components:
     tripNotFoundDescription: Sorry, the requested trip was not found.
     tripNotifications: Trip notifications
   SavedTripList:
-    delete: Delete
-    edit: Edit
     myTrips: My trips
     noSavedTrips: You have no saved trips
     noSavedTripsInstructions: Perform a trip search from the map first.
@@ -353,6 +374,8 @@ common:
     back: Back
     cancel: Cancel
     defaultValue: "{value} (default)"
+    delete: Delete
+    edit: Edit
     finish: Finish
     next: Next
     no: No

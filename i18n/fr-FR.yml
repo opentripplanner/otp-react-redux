@@ -21,10 +21,17 @@ components:
     message: "Si la page ne s'affiche pas après quelques secondes, <a>cliquez ici</a>."
   BackToTripPlanner:
     backToTripPlanner: Retour au planificateur de trajets
+  BatchResultsScreen:
+    expandMap: Étendre la carte
+    showResults: Voir les résultats
+  BatchSearchScreen:
+    header: Planifiez votre trajet
   BeforeSignInScreen:
     mainTitle: Connexion en cours
     message: "Pour accéder à cette page, vous devez vous connecter.
       Veuillez patienter pendant que nous vous redirigeons vers la page de connexion..."
+  DateTimeScreen:
+    header: Jour et heure du trajet
   DefaultItinerary:
     clickDetails: Cliquez pour afficher les détails
     multiModeSummary: "{accessMode} + {transitMode}"
@@ -59,6 +66,14 @@ components:
       true {{minTotalFare} - {maxTotalFare}}
       other {{minTotalFare}}
     }"
+  LocationSearch:
+    enterLocation: Entrez le lieu
+    setDestination: Choisissez la destination
+    setOrigin: Choisissez l'origine
+  MainMobile:
+    invalidScreen: Écran non valable.
+  MobileOptions:
+    header: Options de recherche
   NarrativeItinerariesHeader:
     numIssues: "{issueNum, number} {issueNum, plural, 
         one {problème}
@@ -148,6 +163,14 @@ components:
       en empruntant les lignes: {routes}."
     ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
+  ResultsError:
+    backToSearch: Retour à la recherche
+  ResultsHeader:
+    noTripFound: Aucun trajet trouvé
+    tripsFound: "{count} {count, plural, one {trajet trouvé} other {trajets trouvés}}"
+    waiting: Patientez...
+  ResultsScreen:
+    header: Option {index}
   SavedTripEditor:
     editSavedTrip: Modifier un trajet enregistré
     saveNewTrip: Enregistrer un nouveau trajet
@@ -156,8 +179,6 @@ components:
     tripNotFoundDescription: Le trajet recherché est introuvable.
     tripNotifications: Notifications du trajet
   SavedTripList:
-    delete: Supprimer
-    edit: Modifier
     myTrips: Mes trajets
     noSavedTrips: Vous n'avez aucun trajet enregistré
     noSavedTripsInstructions: Effectuez une recherche depuis la carte avant de pouvoir enregistrer un nouveau trajet.
@@ -335,6 +356,8 @@ common:
     back: Retour
     cancel: Annuler
     defaultValue: "{value} (défaut)"
+    delete: Supprimer
+    edit: Modifier
     finish: Terminer
     next: Suivant
     no: Non
