@@ -415,6 +415,8 @@ common:
   # Note to translator: Places names below are used in
   # contexts such as: "Edit home", "Set home address".
   places:
+    custom: custom
+    dining: dining
     home: home
     work: work # as in "work location"
   time:

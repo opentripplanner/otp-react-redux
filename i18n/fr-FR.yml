@@ -203,7 +203,7 @@ components:
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
   StackedPaneDisplay:
-    savePreferences: Enregistrer mes préferences
+    savePreferences: Enregistrer mes préférences
   # Used in both desktop and mobile
   StopViewer:
     header: Info arrêt
@@ -393,6 +393,8 @@ common:
   # Note to translator: Places names below are used in
   # contexts such as: "Edit home", "Set home address".
   places:
+    custom: divers
+    dining: restaurant
     home: domicile
     work: lieu de travail
   time:
