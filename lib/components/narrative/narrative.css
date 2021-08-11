@@ -195,7 +195,7 @@
 
 .otp .tabbed-itineraries .tab-button .details {
   font-size: 12px;
-  color: #685c5c; /* from "gray" to meet WCAG */
+  color: #685c5c;
 }
 
 .otp .tabbed-itineraries .tab-button:hover .title {

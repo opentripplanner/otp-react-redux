@@ -7,7 +7,7 @@
     "build": "mastarm build --env production",
     "cover": "mastarm test -e test --coverage",
     "jest": "mastarm test -e test __tests__",
-    "lint": "mastarm lint lib __tests__ --quiet",
+    "lint": "mastarm lint lib __tests__ a11y --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
     "postinstall": "husky install",
     "prepublish": "mastarm prepublish --config configurations/prepublish",

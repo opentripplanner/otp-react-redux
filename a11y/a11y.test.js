@@ -10,6 +10,8 @@ const OTP_RR_CONFIG_FILE_PATH = './config.yml'
 const OTP_RR_CONFIG_BACKUP_PATH = './config.non-test.yml'
 const OTP_RR_TEST_CONFIG_PATH = './a11y/test-config.yml'
 
+let server
+
 beforeEach(() => {
   // backup current config file
   if (fs.existsSync(OTP_RR_CONFIG_FILE_PATH)) {
@@ -32,12 +34,12 @@ beforeEach(() => {
 
   // Launch mock OTP server
   const MOCK_SERVER_PORT = 9999
-  mockServer.listen(MOCK_SERVER_PORT, () => {
+  server = mockServer.listen(MOCK_SERVER_PORT, () => {
     console.log(`Mock response server running on http://localhost:${MOCK_SERVER_PORT}`)
   })
 })
 
-afterEach(() => {
+afterEach(async () => {
   fs.unlinkSync(OTP_RR_CONFIG_FILE_PATH)
   if (fs.existsSync(OTP_RR_CONFIG_BACKUP_PATH)) {
     fs.renameSync(
@@ -46,6 +48,8 @@ afterEach(() => {
     )
   }
   console.log('Restored original OTP-RR config file')
+  await server.close()
+  console.log('Closed mock server')
 })
 
 test('checks the test page with Axe', async () => {
