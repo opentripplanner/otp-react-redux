@@ -31,15 +31,6 @@ map:
   initLon: -95.3698
   initZoom: 12
 
-  # Base layers for default map
-  baseLayers:
-    - name: Streets
-      url: //api.mapbox.com/styles/v1/mapbox/outdoors-v11/tiles/{z}/{x}/{y}{retina}?access_token=pk.eyJ1IjoiaWJpLXRyYW5zaXQtZGF0YS10ZWFtIiwiYSI6ImNqeTY3Zms2bzBkbjMzbGs5bWpoemRxY3UifQ.IrkMhr7JMhUNcb2qXuzwig
-      attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>"
-      maxZoom: 20
-      hasRetinaSupport: true
-      retina: "@2x"
-
   overlays:
     - type: bike-rental
       name: BCycle Locations
@@ -75,25 +66,6 @@ map:
     - type: stops
       name: Transit Stops
       visible: true
-
-geocoder:
-  # IBI geocode.earth proxy
-  baseUrl: https://cglx01n2ua.execute-api.us-east-1.amazonaws.com/prod
-  # Geocoding search bounds
-  boundary:
-    rect:
-      minLon: -97.4197
-      maxLon: -93.2674
-      minLat: 28.6093
-      maxLat: 30.9685
-  # fetch options
-  options:
-    headers:
-      # AWS API Gateway key specific to Houston (IBI AWS account):
-      # https://console.aws.amazon.com/apigateway/home?region=us-east-1#/api-keys/fchsdgyys9
-      x-api-key: lvJXqETokn3T338y1c8U843Fjh1ONdgzK3Ar0pl4
-  maxNearbyStops: 6
-  type: PELIAS
 
 # A list of private transportation operators. These are either companies that
 # provide rental vehicles or transportation network companies. Companies that
@@ -137,30 +109,6 @@ modes:
     - mode: BICYCLE_RENT
       label: BCycle
       iconWidth: 36
-
-errorMessages:
-  - id: 404
-    msg: Sorry, we couldn't find any transit or rideshare/carshare options at the time and/or location you chose. Please try again later, or change the settings of your trip.
-    modes:
-      - CAR_HAIL
-      - CAR_RENT
-  - id: 405
-    msg: Sorry, we couldn't find any transit or rideshare/carshare options at the time and/or location you chose. Please try again later, or change the settings of your trip.
-    modes:
-      - CAR_HAIL
-      - CAR_RENT
-  - id: 480
-    msg: No available transit routes or rideshare/carshare service at origin.
-
-reportIssue:
-  mailto: webmaster@ridemetro.org
-
-# NOTE: Houston GA for production is set in the index.html file because it
-#  a new GA4 site tag that is not supported by react-ga:
-#  https://github.com/react-ga/react-ga/issues/460
-# analytics:
-#   google:
-#     globalSiteTag: UA-XXXXXXX
 
 dateTime:
   timeFormat: h:mm a
