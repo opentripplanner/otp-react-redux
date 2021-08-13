@@ -82,6 +82,8 @@ components:
       true {{minTotalFare} - {maxTotalFare}}
       other {{minTotalFare}}
     }"
+  LiveStopTimes:
+    autoRefresh: Auto-refresh arrivals?
   LocationSearch:
     enterLocation: Enter location
     setDestination: Set Destination
@@ -220,7 +222,16 @@ components:
     savePreferences: Save preferences
   # Used in both desktop and mobile
   StopViewer:
+    displayStopId: "<b>Stop ID</b>: {stopId}"
     header: Stop Viewer
+    loadingText: Loading Stop...
+    noStopsFound: No stop times found for date.
+    planTrip: "Plan a trip:"
+    timezoneWarning: "Departure times are shown in <strong>{timezoneCode}</strong>."
+    viewTypeBtnText: "{scheduleView, select,
+      true {View next arrivals}
+      other {View schedule}
+    }"
   SubNav:
     myAccount: My account
     settings: Settings
