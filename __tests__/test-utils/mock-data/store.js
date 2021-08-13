@@ -1,6 +1,7 @@
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import Enzyme, {mount} from 'enzyme'
 import EnzymeReactAdapter from 'enzyme-adapter-react-16'
+import { IntlProvider } from 'react-intl'
 import {mountToJson} from 'enzyme-to-json'
 import { createHashHistory } from 'history'
 import clone from 'lodash/cloneDeep'
@@ -44,9 +45,14 @@ export function mockWithProvider (
 ) {
   const store = configureStore(storeMiddleWare)(storeState)
   const wrapper = mount(
-    <Provider store={store}>
-      <ConnectedComponent {...connectedComponentProps} />
-    </Provider>
+    <IntlProvider
+      defaultLocale={'en-US'}
+      locale={'en-US'}
+    >
+      <Provider store={store}>
+        <ConnectedComponent {...connectedComponentProps} />
+      </Provider>
+    </IntlProvider>
   )
 
   return {
