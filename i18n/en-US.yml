@@ -15,13 +15,22 @@ _name: English
 #
 # It is important that message ids in the code be consistent with
 # the categories in this file. Below are some general guidelines:
-#   - For starters, there is a 'components' category and a 'common' category.
-#     Additional categories may be added as needed.
+#   - For starters, there are an 'actions', 'components' and 'common'
+#     categories. Additional categories may be added as needed.
 #   - Each sub-category under 'components' denotes a component and
 #     should contain messages that are used only by that component (e.g. button captions).
 #   - In contrast, some strings are common to multiple components,
 #     so it makes sense to group them by theme (e.g. accessModes) under the 'common' category.
 
+# Messages that are generated from actions
+actions:
+  callTaker:
+    callQuerySaveError: "Error storing call queries: {err}"
+    callSaveError: "Could not save call: {err}"
+    checkSessionError: "Error establishing auth session: {err}"
+    couldNotFindCallError: Could not find call. Cancelling save queries request.
+    fetchCallsError: "Error fetching calls: {err}"
+    queryFetchError: "Error fetching queries: {err}"
 
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
@@ -74,11 +83,11 @@ components:
     placeNotFound: Place not found
     placeNotFoundDescription: Sorry, the requested place was not found.
   FavoritePlacesList:
-    description: Add the places you frequent often to save time planning trips:
+    description: "Add the places you frequent often to save time planning trips:"
   FormNavigationButtons:
     ariaLabel: Form navigation
   ItinerarySummary:
-    fareCost: "{useMaxFare, select, 
+    fareCost: "{useMaxFare, select,
       true {{minTotalFare} - {maxTotalFare}}
       other {{minTotalFare}}
     }"
@@ -93,7 +102,7 @@ components:
   MobileOptions:
     header: Set Search Options
   NarrativeItinerariesHeader:
-    numIssues: "{issueNum, number} {issueNum, plural, 
+    numIssues: "{issueNum, number} {issueNum, plural,
         one {issue}
         other {issues}
     }"
@@ -171,7 +180,6 @@ components:
     next: Next
     previous: Previous
   RealtimeAnnotation:
-    ignoreServiceDelays: Apply service delays
     delaysNotShownInResults: "Your trip results are currently being affected by service delays.
       These delays do not factor into travel times shown below."
     delaysShownInResults: "Your trip results have been adjusted based on real-time
@@ -238,7 +246,7 @@ components:
     trips: Trips
   TabbedItineraries:
     optionNumber: "Option {optionNum,number}"
-    fareCost: "{useMaxFare, select, 
+    fareCost: "{useMaxFare, select,
       true {{minTotalFare}+}
       other {{minTotalFare}}
     }"
@@ -437,7 +445,6 @@ common:
     # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
-    tripDurationFormat: "{hours, plural, 
+    tripDurationFormat: "{hours, plural,
         =0 {{minutes, number} min}
         other {{hours, number} hr {minutes, number} min}}"
-      
