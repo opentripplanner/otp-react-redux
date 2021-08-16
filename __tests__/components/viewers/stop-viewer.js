@@ -8,7 +8,6 @@ describe('components > viewers > stop viewer', () => {
 
   it('should render with initial stop id and no stop times', () => {
     const mockState = getMockInitialState()
-    console.log('FINDME', mockState.user)
     mockState.otp.ui.viewedStop = {
       stopId: 'TriMet:13170'
     }
