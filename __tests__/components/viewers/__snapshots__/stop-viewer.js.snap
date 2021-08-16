@@ -869,11 +869,18 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           <div
                             className="route-name"
                           >
-                            <b>
-                              20
-                            </b>
-                             To 
-                            Gresham TC
+                            <FormattedMessage
+                              id="components.PatternRow.routeName"
+                              values={
+                                Object {
+                                  "b": [Function],
+                                  "headsign": "Gresham TC",
+                                  "routeName": "20",
+                                }
+                              }
+                            >
+                              components.PatternRow.routeName
+                            </FormattedMessage>
                           </div>
                           <div
                             className="next-trip-preview"
@@ -1667,11 +1674,18 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           <div
                             className="route-name"
                           >
-                            <b>
-                              20
-                            </b>
-                             To 
-                            Gresham TC
+                            <FormattedMessage
+                              id="components.PatternRow.routeName"
+                              values={
+                                Object {
+                                  "b": [Function],
+                                  "headsign": "Gresham TC",
+                                  "routeName": "20",
+                                }
+                              }
+                            >
+                              components.PatternRow.routeName
+                            </FormattedMessage>
                           </div>
                           <div
                             className="next-trip-preview"
@@ -2753,11 +2767,18 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           <div
                             className="route-name"
                           >
-                            <b>
-                              20
-                            </b>
-                             To 
-                            Gresham TC
+                            <FormattedMessage
+                              id="components.PatternRow.routeName"
+                              values={
+                                Object {
+                                  "b": [Function],
+                                  "headsign": "Gresham TC",
+                                  "routeName": "20",
+                                }
+                              }
+                            >
+                              components.PatternRow.routeName
+                            </FormattedMessage>
                           </div>
                           <div
                             className="next-trip-preview"
@@ -4362,11 +4383,18 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           <div
                             className="route-name"
                           >
-                            <b>
-                              20
-                            </b>
-                             To 
-                            Gresham TC
+                            <FormattedMessage
+                              id="components.PatternRow.routeName"
+                              values={
+                                Object {
+                                  "b": [Function],
+                                  "headsign": "Gresham TC",
+                                  "routeName": "20",
+                                }
+                              }
+                            >
+                              components.PatternRow.routeName
+                            </FormattedMessage>
                           </div>
                           <div
                             className="next-trip-preview"
@@ -4614,11 +4642,18 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           <div
                             className="route-name"
                           >
-                            <b>
-                              36
-                            </b>
-                             To 
-                            Tualatin Park & Ride
+                            <FormattedMessage
+                              id="components.PatternRow.routeName"
+                              values={
+                                Object {
+                                  "b": [Function],
+                                  "headsign": "Tualatin Park & Ride",
+                                  "routeName": "36",
+                                }
+                              }
+                            >
+                              components.PatternRow.routeName
+                            </FormattedMessage>
                           </div>
                           <div
                             className="next-trip-preview"
@@ -4866,11 +4901,18 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           <div
                             className="route-name"
                           >
-                            <b>
-                              94
-                            </b>
-                             To 
-                            King City
+                            <FormattedMessage
+                              id="components.PatternRow.routeName"
+                              values={
+                                Object {
+                                  "b": [Function],
+                                  "headsign": "King City",
+                                  "routeName": "94",
+                                }
+                              }
+                            >
+                              components.PatternRow.routeName
+                            </FormattedMessage>
                           </div>
                           <div
                             className="next-trip-preview"
@@ -5172,11 +5214,18 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           <div
                             className="route-name"
                           >
-                            <b>
-                              94
-                            </b>
-                             To 
-                            Sherwood
+                            <FormattedMessage
+                              id="components.PatternRow.routeName"
+                              values={
+                                Object {
+                                  "b": [Function],
+                                  "headsign": "Sherwood",
+                                  "routeName": "94",
+                                }
+                              }
+                            >
+                              components.PatternRow.routeName
+                            </FormattedMessage>
                           </div>
                           <div
                             className="next-trip-preview"
@@ -6773,11 +6822,18 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           <div
                             className="route-name"
                           >
-                            <b>
-                              20
-                            </b>
-                             To 
-                            Gresham TC
+                            <FormattedMessage
+                              id="components.PatternRow.routeName"
+                              values={
+                                Object {
+                                  "b": [Function],
+                                  "headsign": "Gresham TC",
+                                  "routeName": "20",
+                                }
+                              }
+                            >
+                              components.PatternRow.routeName
+                            </FormattedMessage>
                           </div>
                           <div
                             className="next-trip-preview"
