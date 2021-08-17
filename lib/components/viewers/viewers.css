@@ -138,7 +138,7 @@
 .otp .stop-viewer .trip-table .header {
   display: table-row;
   font-size: 11px;
-  color: gray;
+  color: #685c5c;
   text-align: center;
 }
 
@@ -195,14 +195,14 @@
 
 .otp .trip-viewer .strip-map-highlight {
   position: absolute;
-  background-color: cyan;
+  background-color: #13c1c1;
   width: 20px;
   height: 30px;
 }
 
 .otp .trip-viewer .strip-map-highlight-first {
   position: absolute;
-  background-color: cyan;
+  background-color: #13c1c1;
   top: 2px;
   width: 20px;
   height: 28px;
@@ -212,7 +212,7 @@
 
 .otp .trip-viewer .strip-map-highlight-last {
   position: absolute;
-  background-color: cyan;
+  background-color: #13c1c1;
   top: 0px;
   width: 20px;
   height: 28px;
