@@ -3,6 +3,9 @@ const express = require('express')
 const PLAN_REALTIME = require('./mocks/plan.json')
 const STOPS_FIRST = require('./mocks/stops.json')
 const PARK_AND_RIDE = require('./mocks/pr.json')
+const STOP_VIEWER_STOPTIMES = require('./mocks/stopviewer/stoptimes.json')
+const STOP_VIEWER_STOP = require('./mocks/stopviewer/stop.json')
+const STOP_VIEWER_ROUTES = require('./mocks/stopviewer/routes.json')
 
 const app = express()
 // Mock exactly the requests the test link will create requests to
@@ -14,5 +17,14 @@ app.get('/otp/routers/default/index/stops', (req, res) => {
 })
 app.get('/otp/routers/default/park_and_ride', (req, res) => {
   res.send(PARK_AND_RIDE)
+})
+app.get('/otp/routers/default/index/stops/exampleStop', (req, res) => {
+  res.send(STOP_VIEWER_STOP)
+})
+app.get('/otp/routers/default/index/stops/exampleStop/routes', (req, res) => {
+  res.send(STOP_VIEWER_ROUTES)
+})
+app.get('/otp/routers/default/index/stops/exampleStop/stoptimes', (req, res) => {
+  res.send(STOP_VIEWER_STOPTIMES)
 })
 module.exports.mockServer = app
