@@ -50,6 +50,10 @@ actions:
     setGroupSizeError: "Error setting group size: {err}"
     setPaymentError: "Error setting payment info: {err}"
     setRequestStatusError: "Error setting request status: {err}"
+  location:
+    geolocationNotSupportedError: Geolocation not supported by your browser
+    unknownPositionError: Unknown error getting position
+
 
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
