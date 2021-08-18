@@ -268,3 +268,19 @@
   float: right;
   width: 50px;
 }
+
+/* Route Viewer Updates */
+.search-and-filter {
+  margin-top: 5px;
+}
+.search-and-filter select {
+  max-width: 125px;
+  margin: 0 5px;
+}
+
+.route-viewer-body .noRoutesFoundMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+}
