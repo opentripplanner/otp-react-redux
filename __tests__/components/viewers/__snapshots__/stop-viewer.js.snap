@@ -928,6 +928,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           className="expansion-button-container"
                         >
                           <button
+                            aria-label="View all departures"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -1686,6 +1687,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           className="expansion-button-container"
                         >
                           <button
+                            aria-label="View all departures"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -2741,6 +2743,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           className="expansion-button-container"
                         >
                           <button
+                            aria-label="View all departures"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -4310,6 +4313,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           className="expansion-button-container"
                         >
                           <button
+                            aria-label="View all departures"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -4562,6 +4566,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           className="expansion-button-container"
                         >
                           <button
+                            aria-label="View all departures"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -4814,6 +4819,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           className="expansion-button-container"
                         >
                           <button
+                            aria-label="View all departures"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -5120,6 +5126,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           className="expansion-button-container"
                         >
                           <button
+                            aria-label="View all departures"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -6681,6 +6688,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           className="expansion-button-container"
                         >
                           <button
+                            aria-label="View all departures"
                             className="expansion-button"
                             onClick={[Function]}
                           >
