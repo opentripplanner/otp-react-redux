@@ -62,7 +62,7 @@ components:
         {issueNum, plural,
           =0 {found}
           one {(and {issueNum, number} issue) found}
-          other {(and {issueNum,number} issues) found}
+          other {(and {issueNum, number} issues) found}
         }
       }
     }"
@@ -91,7 +91,7 @@ components:
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   TabbedItineraries:
-    optionNumber: "Option {optionNum,number}"
+    optionNumber: "Option {optionNum, number}"
     fareCost: "{useMaxFare, select, 
       true {{minTotalFare}+}
       other {{minTotalFare}}
@@ -124,7 +124,7 @@ common:
     walk: Walk
 
   itineraryDescriptions:
-    calories: Cal
+    calories: "{calories, number} Cal"
     transfers: "{transfers, plural, =0 {} one {{transfers} transfer} other {{transfers} transfers}}"
 
   # OTP transit modes
@@ -144,9 +144,6 @@ common:
      # Use ordered placeholders for the departure-arrival string
     # (this will accommodate right-to-left languages by swapping the order in this string).
     departureArrivalTimes: "{startTime}—{endTime}"
-    # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} min"
-    # TODO: Distinguish between one hour (singular) and 2 hours or more?
     tripDurationFormat: "{hours, plural, 
         =0 {{minutes, number} min}
         other {{hours, number} hr {minutes, number} min}}"

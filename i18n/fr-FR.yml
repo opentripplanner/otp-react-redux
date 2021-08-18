@@ -36,7 +36,7 @@ components:
         {issueNum, plural,
           =0 {trouvé}
           one {(et {issueNum, number} problème) trouvé}
-          other {(and {issueNum,number} problèmes) trouvés}
+          other {(and {issueNum, number} problèmes) trouvés}
         }
       }
     }"
@@ -65,7 +65,7 @@ components:
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
   TabbedItineraries:
-    optionNumber: "Option {optionNum,number}"
+    optionNumber: "Option {optionNum, number}"
     fareCost: "{useMaxFare, select, 
       true {À partir de {minTotalFare}}
       other {{minTotalFare}}
@@ -95,7 +95,7 @@ common:
     walk: À pied
 
   itineraryDescriptions:
-    calories: kcal # SI unit
+    calories: "{calories, number} kcal" # SI unit
     transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
 
 
@@ -111,9 +111,6 @@ common:
 
   time:
     departureArrivalTimes: "{startTime}—{endTime}"
-    # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} min"
-
     tripDurationFormat: "{hours, plural, 
         =0 {{minutes, number} mn}
         other {{hours, number} h {minutes, number} mn}}"
