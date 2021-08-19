@@ -51,3 +51,8 @@
   margin-bottom: 30px;
   box-sizing: border-box;
 }
+
+/* Batch routing panel requires top padding missing from sidebar */
+.batch-routing-panel {
+  padding-top: 10px;
+}
