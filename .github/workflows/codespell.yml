@@ -13,3 +13,4 @@ jobs:
         with:
           check_filenames: true
           skip: ./.git,yarn.lock
+          ignore_words_list: afterAll,beforeAll
