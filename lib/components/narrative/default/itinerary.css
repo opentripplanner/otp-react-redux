@@ -5,7 +5,7 @@
 }
 
 /* If child component is focused, highlight itinerary option */
-.otp .option.default-itin:focus-within {
+.otp .option.default-itin:focus-within:not(.expanded) {
   background-color: var(--hover-color);
 }
 
@@ -17,6 +17,11 @@
 /* Only show border is not expanded */
 .otp .option.default-itin:not(.expanded) {
   border-top: 1px solid grey;
+}
+
+/* Show side border if active and not expanded */
+.otp .option.default-itin.active:not(.expanded) {
+  border-left: 4px teal solid;
 }
 
 /* FIXME: don't highlight if not active */
