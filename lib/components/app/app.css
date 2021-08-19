@@ -51,3 +51,25 @@
   margin-bottom: 30px;
   box-sizing: border-box;
 }
+
+/* View Switcher Styling */
+.view-switcher {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.view-switcher button.btn-link {
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+}
+.view-switcher button.btn-link.active {
+  background: rgba(255, 255, 255, 0.15);
+}
+.view-switcher button.btn-link:hover,
+.view-switcher button.btn-link:focus {
+  text-decoration: none;
+}
+
+.view-switcher button.btn-link:hover {
+  color: #fff;
+}
