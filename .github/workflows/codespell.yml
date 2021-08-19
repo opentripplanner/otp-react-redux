@@ -12,5 +12,5 @@ jobs:
       - uses: codespell-project/actions-codespell@master
         with:
           check_filenames: true
-          skip: ./.git,yarn.lock
           ignore_words_list: afterAll,beforeAll
+          skip: ./.git,yarn.lock,./.github/workflows/codespell.yml
