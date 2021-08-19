@@ -271,11 +271,41 @@
 
 /* Route Viewer Updates */
 .search-and-filter {
-  margin-top: 5px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 .search-and-filter select {
   max-width: 125px;
   margin: 0 5px;
+}
+
+.search-and-filter .routeFilter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-and-filter .routeSearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-and-filter .routeSearch input {
+  border: none;
+  padding: 0.125em 0.5em;
+  border-radius: 5px;
+  margin-left: 5px;
+  width: 145px;
+}
+.routeSearch input::-webkit-search-cancel-button {
+  /* show clear button on webkit browsers */
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+.mobile .routeSearch,
+.mobile .routeSearch input {
+  width: 100%;
 }
 
 .route-viewer-body .noRoutesFoundMessage {
