@@ -92,7 +92,7 @@ components:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   TabbedItineraries:
     optionNumber: "Option {optionNum, number}"
-    fareCost: "{useMaxFare, select, 
+    fareCost: "{hasMaxFare, select, 
       true {{minTotalFare}+}
       other {{minTotalFare}}
     }"

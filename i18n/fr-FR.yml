@@ -66,7 +66,7 @@ components:
     usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
   TabbedItineraries:
     optionNumber: "Option {optionNum, number}"
-    fareCost: "{useMaxFare, select, 
+    fareCost: "{hasMaxFare, select, 
       true {À partir de {minTotalFare}}
       other {{minTotalFare}}
     }"
