@@ -81,7 +81,11 @@ afterAll(async () => {
 
 jest.setTimeout(600000)
 routes.forEach(route => {
-  const {path: pathsToTest} = route
+  const {a11yIgnore, path: pathsToTest} = route
+  if (a11yIgnore) {
+    return
+  }
+
   if (Array.isArray(pathsToTest)) {
     // Run test on each path in list.
     pathsToTest.forEach(async (p) => {
@@ -93,11 +97,11 @@ routes.forEach(route => {
   }
 })
 
-test('Main Trip planner page should pass Axe Tests', async () => {
+test('Mocked Main Trip planner page should pass Axe Tests', async () => {
   await runAxeTestOnPath('/?ui_activeSearch=0qoydlnut&ui_activeItinerary=0&fromPlace=1900%20Main%20Street%2C%20Houston%2C%20TX%2C%20USA%3A%3A29.750144%2C-95.370998&toPlace=800%20Congress%2C%20Houston%2C%20TX%2C%20USA%3A%3A29.76263%2C-95.362178&date=2021-08-04&time=08%3A14&arriveBy=false&mode=WALK%2CBUS%2CTRAM&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&numItineraries=3&otherThanPreferredRoutesPenalty=900')
 })
 
-test('Stop Viewer Dropdown should pass Axe tests', async () => {
+test('Mocked Stop Viewer and Dropdown should pass Axe tests', async () => {
   jest.setTimeout(600000)
   // Test stop viewer
   const stopViewerPage = await runAxeTestOnPath('/stop/Agency')
