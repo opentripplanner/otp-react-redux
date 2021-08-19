@@ -1,12 +1,12 @@
 [
   {
     "pattern": {
-      "id": "exampleStop:1:01",
+      "id": "Agency:1:01",
       "desc": "040 to Glencrest St @ Airport Blvd (Houston:743)"
     },
     "times": [
       {
-        "stopId": "exampleStop:6478",
+        "stopId": "Agency:12345",
         "stopIndex": 44,
         "stopCount": 141,
         "scheduledArrival": 44621,
@@ -27,7 +27,7 @@
         "serviceAreaRadius": 0.0
       },
       {
-        "stopId": "exampleStop:6478",
+        "stopId": "Agency:12345",
         "stopIndex": 44,
         "stopCount": 141,
         "scheduledArrival": 44521,
@@ -48,7 +48,7 @@
         "serviceAreaRadius": 0.0
       },
       {
-        "stopId": "exampleStop:6478",
+        "stopId": "Agency:12345",
         "stopIndex": 44,
         "stopCount": 141,
         "scheduledArrival": 46321,
