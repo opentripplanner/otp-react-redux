@@ -388,7 +388,11 @@ components:
     startOver: Start Over # TODO: move to other category (common with hamburger 'Start Over' item)
   # Used in both desktop and mobile
   TripViewer:
+    accessible: Accessible
+    bicyclesAllowed: Allowed
     header: Trip Viewer
+    routeHeader: "Route: <b>{routeShortName}</b> {routeLongName}"
+    viewStop: View
   UserAccountScreen:
     confirmDelete: Are you sure you would like to delete your user account? Once you do so, it cannot be recovered.
   VerifyEmailPane:

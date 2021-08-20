@@ -329,7 +329,11 @@ components:
     startOver: Recommencer
   # Used in both desktop and mobile
   TripViewer:
+    accessible: Accessible
+    bicyclesAllowed: Autorisés
     header: Info trajet
+    routeHeader: "Ligne : <b>{routeShortName}</b> {routeLongName}"
+    viewStop: Info
   UserAccountScreen:
     confirmDelete: "Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible."
   VerifyEmailPane:
