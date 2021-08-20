@@ -1768,6 +1768,11 @@
   dependencies:
     "@opentripplanner/core-utils" "^3.0.0"
 
+"@popperjs/core@^2.4.0":
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.3.tgz#8b68da1ebd7fc603999cf6ebee34a4899a14b88e"
+  integrity sha512-xDu17cEfh7Kid/d95kB6tZsLOmSWKCZKtprnhVepjsSaCij+lM3mItSJDuuHDMbCWTh8Ejmebwb+KONcCJ0eXQ==
+
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@protobufjs/aspromise/-/aspromise-1.1.2.tgz#9b8b0cc663d669a7d8f6f5d0893a14d348f30fbf"
@@ -4848,6 +4853,11 @@ classnames@^2.2.5:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
+
+classnames@^2.2.6:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
 
 clean-stack@^2.0.0:
   version "2.1.0"
@@ -14711,6 +14721,16 @@ react-phone-number-input@^3.1.0:
     libphonenumber-js "^1.8.1"
     prop-types "^15.7.2"
 
+react-pro-sidebar@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-pro-sidebar/-/react-pro-sidebar-0.6.0.tgz#a2d2eca5ba6ed64808b95a28277d5969bbe59cbf"
+  integrity sha512-koiHc5JIA8hm6FXNORy63cR4vVLZkucsXJ4cpudy8oHttgv/bDiL/pmTtbwMl9OK/uciVePKTlcJj/dwiCYOHw==
+  dependencies:
+    "@popperjs/core" "^2.4.0"
+    classnames "^2.2.6"
+    react-slidedown "^2.4.5"
+    resize-observer-polyfill "^1.5.1"
+
 react-prop-types@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/react-prop-types/-/react-prop-types-0.4.0.tgz#f99b0bfb4006929c9af2051e7c1414a5c75b93d0"
@@ -14800,6 +14820,13 @@ react-select@^3.1.0:
     prop-types "^15.6.0"
     react-input-autosize "^2.2.2"
     react-transition-group "^4.3.0"
+
+react-slidedown@^2.4.5:
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/react-slidedown/-/react-slidedown-2.4.5.tgz#d575404256fa0ba81e60161547a8fa9ff62b935d"
+  integrity sha512-zFDhgqQ1ZLfRr+rQA7p+13OTT/+zUR/+3v3JnwrnXPM8R+1KHhuTNseYHU8jYN3QfxjJXtqve0rgbWCBiFkpiw==
+  dependencies:
+    tslib "^1.9.0"
 
 react-swipeable-views-core@^0.13.1:
   version "0.13.1"
