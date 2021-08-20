@@ -79,6 +79,7 @@ afterAll(async () => {
   console.log('Closed mock server and headless browser')
 })
 
+// Puppeteer can take a long time to load, espeically in some ci environments
 jest.setTimeout(600000)
 routes.forEach(route => {
   const {a11yIgnore, path: pathsToTest} = route
@@ -102,6 +103,7 @@ test('Mocked Main Trip planner page should pass Axe Tests', async () => {
 })
 
 test('Mocked Stop Viewer and Dropdown should pass Axe tests', async () => {
+  // Puppeteer can take a long time to load, espeically in some ci environments
   jest.setTimeout(600000)
   // Test stop viewer
   const stopViewerPage = await runAxeTestOnPath('/stop/Agency')
