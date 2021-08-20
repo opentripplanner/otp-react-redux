@@ -33,10 +33,10 @@ actions:
     queryFetchError: "Error fetching queries: {err}"
   fieldTrip:
     addNoteError: "Error adding field trip note: {err}"
-    confirmOverwriteItineraries: This action will overwrite a previously planned {outbound, select,
+    confirmOverwriteItineraries: "This action will overwrite a previously planned {outbound, select,
         true {outbound}
         other {inbound}
-      } itinerary for this request. Do you wish to continue?
+      } itinerary for this request. Do you wish to continue?"
     deleteItinerariesError: "Error deleting field trip plan: {err}"
     deleteNoteError: "Error deleting field trip note: {err}"
     editSubmitterNotesError: "Error editing submitter notes: {err}"
@@ -213,6 +213,16 @@ components:
       using the following routes: {routes}."
     ignoreServiceDelays: Ignore service delays
     serviceUpdate: Service update
+  RealtimeStatusLabel:
+    # Note to translator: In itinerary body, early or late is single-line
+    # and stacked above/below the delay in minutes depending on word order,
+    # e.g. "5 min\nlate".
+    # In the StopViewer, delay and status are shown in a single line.
+    # Width is constrained for all messages.
+    early: "{minutes} early"
+    late: "{minutes} late"
+    onTime: on time
+    scheduled: scheduled
   ResultsError:
     backToSearch: Back to Search
   ResultsHeader:

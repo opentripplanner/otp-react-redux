@@ -163,6 +163,16 @@ components:
       en empruntant les lignes: {routes}."
     ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
+  RealtimeStatusLabel:
+    # Note to translator: In itinerary body, early or late is single-line
+    # and stacked above/below the delay in minutes depending on word order,
+    # e.g. "5 min\nlate".
+    # In the StopViewer, delay and status are shown in a single line.
+    # Width is constrained for all messages.
+    early: "avance de {minutes}"
+    late: "retard {minutes}"
+    onTime: à l'heure
+    scheduled: horaire
   ResultsError:
     backToSearch: Retour à la recherche
   ResultsHeader:
