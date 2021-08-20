@@ -16,6 +16,9 @@
 
 @import url(lib/bike-rental.css);
 
+@import url(react-pro-sidebar/dist/css/styles.css);
+
+
 /* Hide IE/Edge clear button in text input fields. */
 input[type=text]::-ms-clear {
     display: none;
