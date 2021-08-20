@@ -66,6 +66,8 @@ components:
       true {{minTotalFare} - {maxTotalFare}}
       other {{minTotalFare}}
     }"
+  LiveStopTimes:
+    autoRefresh: Rafraîchir les passages automatiquement ?
   LocationSearch:
     enterLocation: Entrez le lieu
     setDestination: Choisissez la destination
@@ -128,6 +130,9 @@ components:
     emailSelect: E-mail
     noneSelect: Ne pas me notifier
     smsSelect: SMS
+  PatternRow:
+    routeName: "<b>{routeName}</b> vers {headsign}"
+    routeShort: "Vers {headsign}"
   PhoneNumberEditor:
     changeNumber: Changer de numéro
     invalidCode: Le code de vérification doit comporter 6 chiffres.
@@ -214,9 +219,23 @@ components:
     usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
   StackedPaneDisplay:
     savePreferences: Enregistrer mes préférences
+  StopScheduleTable:
+    block: Bloc
+    departure: Départ
+    destination: Destination
+    route: Ligne
   # Used in both desktop and mobile
   StopViewer:
+    displayStopId: "<b>Arrêt n°</b> : {stopId}"
     header: Info arrêt
+    loadingText: Chargement de l'arrêt...
+    noStopsFound: Aucun passage n'a été trouvé pour cette date.
+    planTrip: "Planifer un trajet :"
+    timezoneWarning: "Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>."
+    viewTypeBtnText: "{scheduleView, select,
+      true {Afficher les prochains passages}
+      other {Afficher les horaires}
+    }"
   SubNav:
     myAccount: Mon compte
     settings: Préférences

@@ -264,6 +264,11 @@ components:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   StackedPaneDisplay:
     savePreferences: Save preferences
+  StopScheduleTable:
+    block: Block
+    departure: Departure
+    destination: To
+    route: Route
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<b>Stop ID</b>: {stopId}"
