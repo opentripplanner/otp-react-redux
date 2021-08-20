@@ -22,10 +22,11 @@ _name: English
 #   - In contrast, some strings are common to multiple components,
 #     so it makes sense to group them by theme (e.g. accessModes) under the 'common' category.
 
-
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
 components:
+  BatchRoutingPanel:
+    shortTitle: Plan Trip
   DefaultItinerary:
     clickDetails: Click to view details
     # Use ordered placeholders for the departure-arrival string
@@ -44,6 +45,9 @@ components:
     findARoute: Find A Route
     noFilteredRoutesFound: No routes match your filter!
     noRouteUrl: No route URL provided.
+    title: Route Viewer
+    shortTitle: Routes
+    details: " " # Nothing is default
 
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
