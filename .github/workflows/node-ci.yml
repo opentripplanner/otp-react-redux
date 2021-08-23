@@ -8,7 +8,6 @@ on:
 
 jobs:
   test-build-release:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -29,6 +28,8 @@ jobs:
         run: yarn jest
       - name: Build example project
         run: yarn build
+      - name: Run a11y tests
+        run: yarn a11y-test
 
       # at this point, the build is successful
       - name: Semantic Release
