@@ -934,7 +934,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           <button
                             aria-controls="route-20"
                             aria-expanded={false}
-                            aria-label="Expand all departures for 20"
+                            aria-label="Expand all departures for Route 20"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -1699,7 +1699,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           <button
                             aria-controls="route-20"
                             aria-expanded={false}
-                            aria-label="Expand all departures for 20"
+                            aria-label="Expand all departures for Route 20"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -2761,7 +2761,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           <button
                             aria-controls="route-20"
                             aria-expanded={false}
-                            aria-label="Expand all departures for 20"
+                            aria-label="Expand all departures for Route 20"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -4337,7 +4337,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           <button
                             aria-controls="route-20"
                             aria-expanded={false}
-                            aria-label="Expand all departures for 20"
+                            aria-label="Expand all departures for Route 20"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -4596,7 +4596,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           <button
                             aria-controls="route-36"
                             aria-expanded={false}
-                            aria-label="Expand all departures for 36"
+                            aria-label="Expand all departures for Route 36"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -4855,7 +4855,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           <button
                             aria-controls="route-94"
                             aria-expanded={false}
-                            aria-label="Expand all departures for 94"
+                            aria-label="Expand all departures for Route 94"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -5168,7 +5168,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           <button
                             aria-controls="route-94"
                             aria-expanded={false}
-                            aria-label="Expand all departures for 94"
+                            aria-label="Expand all departures for Route 94"
                             className="expansion-button"
                             onClick={[Function]}
                           >
@@ -6736,7 +6736,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           <button
                             aria-controls="route-20"
                             aria-expanded={false}
-                            aria-label="Expand all departures for 20"
+                            aria-label="Expand all departures for Route 20"
                             className="expansion-button"
                             onClick={[Function]}
                           >
