@@ -55,6 +55,18 @@ actions:
     unknownPositionError: Unknown error getting position
   map:
     currentLocation: (Current Location)
+  user:
+    accountDeleted: Your user account ({email}) has been deleted.
+    authTokenError: Error obtaining an authorization token.
+    confirmDeleteMonitoredTrip: Would you like to remove this trip?
+    confirmDeletePlace: Would you like to remove this place?
+    emailVerificationResent: The email verification message has been resent.
+    genericError: "An error was encountered: {err}"
+    itineraryExistenceCheckFailed: Error checking whether your selected trip is possible.
+    preferencesSaved: Your preferences have been saved.
+    smsInvalidCode: The code you entered is invalid. Please try again.
+    smsResendThrottled: A verification SMS was sent to the indicated phone number less than a minute ago. Please try again in a few moments.
+    smsVerificationFailed: Your phone could not be verified. Perhaps the code you entered has expired. Please request a new code and try again.
 
 
 # Component-specific messages (e.g. button captions)
