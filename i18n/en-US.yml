@@ -79,11 +79,26 @@ components:
     # For message, use the special <a>...</a> markup to automatically insert the
     # corresponding link in the text.
     message: "If the page doesn't load after a few seconds, <a>click here</a>."
+  AppMenu:
+    callHistory: Call History
+    fieldTrip: Field Trip
+    mailables: Mailables
+    routeViewer: Route Viewer
+    startOver: Start Over
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
   BatchResultsScreen:
     expandMap: Expand map
     showResults: Show results
+  BatchRoutingPanel:
+    enterDestination: "Enter destination or {mobile, select,
+        true {tap}
+        other {click}
+      } on map..."
+    enterStartLocation: "Enter start location or {mobile, select,
+        true {tap}
+        other {click}
+      } on map..."
   BatchSearchScreen:
     header: Plan Your Trip
   BeforeSignInScreen:
