@@ -53,6 +53,8 @@ actions:
   location:
     geolocationNotSupportedError: Geolocation not supported by your browser
     unknownPositionError: Unknown error getting position
+  map:
+    currentLocation: (Current Location)
 
 
 # Component-specific messages (e.g. button captions)
@@ -206,8 +208,7 @@ components:
     next: Next
     previous: Previous
   RealtimeAnnotation:
-    delaysNotShownInResults: "Your trip results are currently being affected by service delays.
-      These delays do not factor into travel times shown below."
+    delaysNotShownInResults: "Your trip results are currently being affected by service delays. These delays do not factor into travel times shown below."
     delaysShownInResults: "Your trip results have been adjusted based on real-time
       information. Under normal conditions, this trip would take <b>{normalDuration}</b>
       using the following routes: {routes}."
