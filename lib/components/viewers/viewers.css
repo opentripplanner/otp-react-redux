@@ -26,6 +26,11 @@
   animation-name: yellowfade;
 }
 
+/* Route Details Link a11y compatibility */
+a.routeDetails {
+  color: #2370b3;
+}
+
 /* Remove arrows on date input */
 .otp .stop-viewer-body input[type="date"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
