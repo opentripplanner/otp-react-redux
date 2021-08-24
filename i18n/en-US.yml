@@ -46,7 +46,7 @@ components:
     noFilteredRoutesFound: No routes match your filter!
     noRouteUrl: No route URL provided.
     title: Route Viewer
-    shortTitle: Routes
+    shortTitle: View Routes
     details: " " # Nothing is default
 
 # Common messages that appear in multiple components and modules
