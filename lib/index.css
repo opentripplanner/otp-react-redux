@@ -49,3 +49,9 @@ button.header, button.step, .clear-button-formatting  {
 button.header, button.step {
   width: 100%;
 }
+
+.overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

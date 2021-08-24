@@ -23,10 +23,11 @@ const storeMiddleWare = [
  * Get the initial stop of the redux reducer for otp-rr
  */
 export function getMockInitialState () {
-  const mockConfig = {}
-  const mockInitialQuery = {}
+  const mockConfig = {
+    initialQuery: {}
+  }
   return clone({
-    otp: getInitialState(mockConfig, mockInitialQuery),
+    otp: getInitialState(mockConfig),
     router: connectRouter(history),
     user: getUserInitialState(mockConfig)
   })
