@@ -198,6 +198,9 @@ components:
     places: Add your locations
     terms: Create a new account
     verify: Verify your email address
+  NotFound:
+    description: The content you requested is not available.
+    header: Content not found
   NotificationPrefsPane:
     description: You can receive notifications about trips you frequently take.
     notificationChannelPrompt: How would you like to receive notifications?

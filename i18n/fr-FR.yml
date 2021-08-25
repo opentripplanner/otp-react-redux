@@ -188,6 +188,9 @@ components:
     places: Ajoutez vos lieux
     terms: Créez votre nouveau compte
     verify: Vérifiez votre adresse e-mail
+  NotFound:
+    description: Le contenu que vous avez demandé n'est pas disponible.
+    header: Contenu introuvable
   NotificationPrefsPane:
     description: Vous pouvez recevoir des notifications sur les trajets que vous effectuez fréquemment.
     notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
