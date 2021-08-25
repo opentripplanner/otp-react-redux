@@ -1,0 +1,73 @@
+[
+  {
+    "pattern": {
+      "id": "Agency:1:01",
+      "desc": "040 to Glencrest St @ Airport Blvd (Houston:743)"
+    },
+    "times": [
+      {
+        "stopId": "Agency:12345",
+        "stopIndex": 44,
+        "stopCount": 141,
+        "scheduledArrival": 44621,
+        "scheduledDeparture": 44621,
+        "realtimeArrival": 44719,
+        "realtimeDeparture": 44719,
+        "arrivalDelay": 102,
+        "departureDelay": 102,
+        "timepoint": false,
+        "realtime": true,
+        "realtimeState": "UPDATED",
+        "serviceDay": 1629262800,
+        "tripId": "Houston:9120959",
+        "blockId": "1061601",
+        "headsign": "TEST BUS",
+        "continuousPickup": -999,
+        "continuousDropOff": -999,
+        "serviceAreaRadius": 0.0
+      },
+      {
+        "stopId": "Agency:12345",
+        "stopIndex": 44,
+        "stopCount": 141,
+        "scheduledArrival": 44521,
+        "scheduledDeparture": 44521,
+        "realtimeArrival": 44419,
+        "realtimeDeparture": 44419,
+        "arrivalDelay": -102,
+        "departureDelay": -102,
+        "timepoint": false,
+        "realtime": true,
+        "realtimeState": "UPDATED",
+        "serviceDay": 1629262800,
+        "tripId": "Houston:9120953",
+        "blockId": "1061601",
+        "headsign": "HOBBY AIRPORT",
+        "continuousPickup": -999,
+        "continuousDropOff": -999,
+        "serviceAreaRadius": 0.0
+      },
+      {
+        "stopId": "Agency:12345",
+        "stopIndex": 44,
+        "stopCount": 141,
+        "scheduledArrival": 46321,
+        "scheduledDeparture": 46321,
+        "realtimeArrival": 46321,
+        "realtimeDeparture": 46321,
+        "arrivalDelay": 0,
+        "departureDelay": 0,
+        "timepoint": false,
+        "realtime": false,
+        "realtimeState": "SCHEDULED",
+        "serviceDay": 1629262800,
+        "tripId": "Houston:9120952",
+        "blockId": "1061602",
+        "headsign": "HOBBY AIRPORT",
+        "continuousPickup": -999,
+        "continuousDropOff": -999,
+        "serviceAreaRadius": 0.0
+      }
+    ]
+  }
+]

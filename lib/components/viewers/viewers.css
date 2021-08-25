@@ -1,11 +1,15 @@
 /* shared stop/trip viewer styles */
 
-.otp .route-viewer-header, .otp .stop-viewer-header, .otp .trip-viewer-header {
+.otp .route-viewer-header,
+.otp .stop-viewer-header,
+.otp .trip-viewer-header {
   background-color: #ddd;
   padding: 12px;
 }
 
-.otp .route-viewer, .otp .stop-viewer, .otp .trip-viewer,
+.otp .route-viewer,
+.otp .stop-viewer,
+.otp .trip-viewer,
 .otp .stop-viewer-body {
   display: flex;
   flex-direction: column;
@@ -14,8 +18,12 @@
 }
 
 @keyframes yellowfade {
-  from { background: yellow; }
-  to { background: transparent; }
+  from {
+    background: yellow;
+  }
+  to {
+    background: transparent;
+  }
 }
 
 /* Used to briefly highlight an element and then fade to transparent. */
@@ -31,20 +39,27 @@
   -webkit-appearance: none;
 }
 
-.otp .route-viewer-body, .otp .stop-viewer-body, .otp .trip-viewer-body {
+.otp .route-viewer-body,
+.otp .stop-viewer-body,
+.otp .trip-viewer-body {
   overflow-x: hidden;
   overflow-y: auto;
 }
-.otp .stop-viewer-body, .otp .trip-viewer-body {
+.otp .stop-viewer-body,
+.otp .trip-viewer-body {
   padding: 12px;
 }
 
-.otp .stop-viewer .back-button-container, .otp .trip-viewer .back-button-container, .otp .route-viewer .back-button-container {
+.otp .stop-viewer .back-button-container,
+.otp .trip-viewer .back-button-container,
+.otp .route-viewer .back-button-container {
   float: left;
   margin-right: 10px;
 }
 
-.otp .stop-viewer .header-text, .otp .trip-viewer .header-text, .otp .route-viewer .header-text {
+.otp .stop-viewer .header-text,
+.otp .trip-viewer .header-text,
+.otp .route-viewer .header-text {
   font-weight: 700;
   font-size: 24px;
 }
