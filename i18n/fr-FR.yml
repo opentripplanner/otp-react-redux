@@ -224,6 +224,9 @@ components:
     last: Dernier
     next: Suivant
     previous: Précédent
+  PrintLayout:
+    itinerary: Votre trajet
+    toggleMap: Afficher/masquer la carte
   RealtimeAnnotation:
     delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
       Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
@@ -401,7 +404,6 @@ components:
     copyLink: Copier le lien
     # Text that replaces the copyLink button text after user clicks it.
     linkCopied: Copié
-    print: Imprimer
     reportIssue: Un problème ? # "Signaler un problème" does not fit.
     reportEmailSubject: Signaler un problème avec OpenTripPlanner
     reportEmailTemplate: "                       *** À L'ATTENTION DE L'UTILISATEUR ***
@@ -469,6 +471,7 @@ common:
     finish: Terminer
     next: Suivant
     no: Non
+    print: Imprimer
     save: Enregistrer
     startOver: Recommencer
     yes: Oui

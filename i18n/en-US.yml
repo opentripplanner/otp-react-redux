@@ -235,6 +235,9 @@ components:
     last: Last
     next: Next
     previous: Previous
+  PrintLayout:
+    itinerary: Itinerary
+    toggleMap: Toggle Map
   RealtimeAnnotation:
     delaysNotShownInResults: "Your trip results are currently being affected by service delays. These delays do not factor into travel times shown below."
     delaysShownInResults: "Your trip results have been adjusted based on real-time
@@ -411,7 +414,6 @@ components:
     copyLink: Copy Link
     # Text that replaces the copyLink button text after user clicks it.
     linkCopied: Copied
-    print: Print
     reportIssue: Report Issue
     reportEmailSubject: Reporting an Issue with OpenTripPlanner
     reportEmailTemplate: "                       *** INSTRUCTIONS TO USER ***
@@ -483,6 +485,7 @@ common:
     finish: Finish
     next: Next
     no: No
+    print: Print
     save: Save
     startOver: Start Over
     yes: Yes
