@@ -304,6 +304,11 @@ components:
     departure: Departure
     destination: To
     route: Route
+  StopTimeCell:
+    imminentArrival: "{isDue, select,
+      true {Due}
+      other {{formattedDuration}}
+    }"
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<b>Stop ID</b>: {stopId}"

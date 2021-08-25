@@ -960,7 +960,19 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   }
                                 >
                                   <div>
-                                    52 min
+                                    <FormattedMessage
+                                      id="components.StopTimeCell.imminentArrival"
+                                      values={
+                                        Object {
+                                          "formattedDuration": <FormattedDuration
+                                            duration={3124}
+                                          />,
+                                          "isDue": "false",
+                                        }
+                                      }
+                                    >
+                                      components.StopTimeCell.imminentArrival
+                                    </FormattedMessage>
                                   </div>
                                 </div>
                               </div>
@@ -1765,7 +1777,19 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   }
                                 >
                                   <div>
-                                    52 min
+                                    <FormattedMessage
+                                      id="components.StopTimeCell.imminentArrival"
+                                      values={
+                                        Object {
+                                          "formattedDuration": <FormattedDuration
+                                            duration={3124}
+                                          />,
+                                          "isDue": "false",
+                                        }
+                                      }
+                                    >
+                                      components.StopTimeCell.imminentArrival
+                                    </FormattedMessage>
                                   </div>
                                 </div>
                               </div>
@@ -2864,7 +2888,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       }
                                     }
                                   >
-                                    Thursday
+                                    <FormattedMessage
+                                      id="common.daysOfWeek.thursday"
+                                    >
+                                      common.daysOfWeek.thursday
+                                    </FormattedMessage>
                                   </div>
                                   <div>
                                     12:51 am
@@ -4480,7 +4508,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       }
                                     }
                                   >
-                                    Monday
+                                    <FormattedMessage
+                                      id="common.daysOfWeek.monday"
+                                    >
+                                      common.daysOfWeek.monday
+                                    </FormattedMessage>
                                   </div>
                                   <div>
                                     6:00 pm
@@ -4739,7 +4771,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       }
                                     }
                                   >
-                                    Tuesday
+                                    <FormattedMessage
+                                      id="common.daysOfWeek.tuesday"
+                                    >
+                                      common.daysOfWeek.tuesday
+                                    </FormattedMessage>
                                   </div>
                                   <div>
                                     4:11 pm
@@ -4998,7 +5034,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       }
                                     }
                                   >
-                                    Tuesday
+                                    <FormattedMessage
+                                      id="common.daysOfWeek.tuesday"
+                                    >
+                                      common.daysOfWeek.tuesday
+                                    </FormattedMessage>
                                   </div>
                                   <div>
                                     3:22 pm
@@ -5311,7 +5351,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       }
                                     }
                                   >
-                                    Tuesday
+                                    <FormattedMessage
+                                      id="common.daysOfWeek.tuesday"
+                                    >
+                                      common.daysOfWeek.tuesday
+                                    </FormattedMessage>
                                   </div>
                                   <div>
                                     2:28 pm
@@ -6919,7 +6963,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       }
                                     }
                                   >
-                                    Monday
+                                    <FormattedMessage
+                                      id="common.daysOfWeek.monday"
+                                    >
+                                      common.daysOfWeek.monday
+                                    </FormattedMessage>
                                   </div>
                                   <div>
                                     5:45 pm
