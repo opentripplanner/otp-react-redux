@@ -310,6 +310,19 @@ itinerary:
 # default is 60 seconds.
 # onTimeThresholdSeconds: 60
 
+### You can customize OTP error messages for itinerary searches based on OTP HTTP codes.
+### A separate message can be set for each language or locale if necessary.
+# errorMessages:
+#  - id: 404
+#    msg:
+#      en: Sorry, we couldn't find any transit or rideshare/carshare options at the time and/or location you chose. Please try again later, or change the settings of your trip.
+#      fr-FR: Aucun trajet en transports publics ou en partage de voiture n'a été trouvé pour l'heure et le lieu que vous avez indiqués. Veuillez réessayer plus tard, ou changez les paramètres de votre recherche.
+#    modes:
+#      - CAR_HAIL
+#      - CAR_RENT
+#  - id: 480
+#    msg: No available transit routes or rideshare/carshare service at origin.
+
 # Format the date time format for display.
 dateTime:
   longDateFormat: DD-MM-YYYY
