@@ -11,6 +11,55 @@ _name: Exemple de traduction pour OTP-react-redux en français !
 #   and tends to rely on infinitive tense.
 # 
 
+# Messages that are generated from actions
+actions:
+  callTaker:
+    callQuerySaveError: "Erreur lors de l'enregistrement des requêtes pour l'appel : {err}"
+    callSaveError: "Impossible d'enregistrer l'appel : {err}"
+    checkSessionError: "Erreur durant l'auth-entification : {err}"
+    couldNotFindCallError: Impossible de trouver l'appel. Tentative de sauvegarde des requêtes annulée.
+    fetchCallsError: "Erreur lors du chargement des appels : {err}"
+    queryFetchError: "Erreur lors du chargement des requêtes : {err}"
+  fieldTrip:
+    addNoteError: "Erreur lors de l'ajout d'une note sur le groupe : {err}"
+    confirmOverwriteItineraries: "Cette action replacera un itinéraire {outbound, select,
+        true {aller}
+        other {retour}
+      } planifié préalablement pour cette demande. Voulez-vous continuer ?"
+    deleteItinerariesError: "Erreur lors de la suppression d'un itinéraire de groupe : {err}"
+    deleteNoteError: "Erreur lors de la suppression d'une note sur le groupe : {err}"
+    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur : {err}"
+    fetchFieldTripError: "Erreur de chargement de l'itinéraire du groupe: {err}"
+    fetchFieldTripsError: "Error fetching des itinéraires du groupe : {err}"
+    fetchTripsForDateError: "Error fetching des itinéraires du groupe pour les dates de sorties : {err}"
+    incompatibleTripDateError: La date du trajet planifié ({tripDate}) ne correspond pas à la date demandée ({requestDate}).
+    itineraryCapacityError: "Impossible d'enregistrer les itinéraires : Capacité insuffisante dans un ou plusieurs véhicules. Veuillez relancer votre recherche."
+    maxTripRequestsExceeded: Le nombre de requêtes sans résultats valables a été dépassé.
+    saveItinerariesError: "Erreur lors de l'enregistrement des itinéraires : {err}"
+    setGroupSizeError: "Erreur sur la taille du groupe : {err}"
+    setPaymentError: "Erreur sur les coordonnées de paiement : {err}"
+    setRequestStatusError: "Erreur sur l'état de la requête : {err}"
+  location:
+    geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par votre navigateur.
+    unknownPositionError: Erreur non-gérée lors de la détection de votre emplacement.
+  map:
+    currentLocation: (Emplacement actuel)
+  user:
+    accountDeleted: Votre compte utilisateur ({email}) a été supprimé.
+    authTokenError: Erreur lors de l'obtention d'un jeton d'authentification.
+    confirmDeleteMonitoredTrip: Voulez-vous supprimer ce trajet ?
+    confirmDeletePlace: Voulez-vous supprimer ce lieu ?
+    emailVerificationResent: Le message de vérification de votre adresse e-mail a été envoyé de nouveau.
+    genericError: "Une erreur s'est produite : {err}"
+    itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité du trajet choisi.
+    preferencesSaved: Vos préférences ont été enregistrées.
+    smsInvalidCode: Le code saisi est incorrect. Veuillez réessayer.
+    smsResendThrottled: Un SMS de vérification a été envoyé au numéro de téléphone indiqué il y a moins d'une minute. Patientez quelques moments avant de réessayer.
+    smsVerificationFailed: Votre numéro de téléphone n'a pas pu etre vérifié. Le code que vous avez entré a peut-etre expiré. Veuillez demander un nouveau code puis réessayez.
+
+
+# Component-specific messages (e.g. button captions)
+# are defined for each component under the 'components' category.
 components:
   AccountSetupFinishPane:
     message: Vous pouvez maintenant commencer à planifier vos trajets.
@@ -19,11 +68,26 @@ components:
     # For message, use the special <a>...</a> markup to automatically insert the
     # corresponding link in the text.
     message: "Si la page ne s'affiche pas après quelques secondes, <a>cliquez ici</a>."
+  AppMenu:
+    callHistory: Historique des appels
+    fieldTrip: Groupes scolaires
+    mailables: Prêt-à-poster
+    routeViewer: Index des lignes
+    startOver: Recommencer
   BackToTripPlanner:
     backToTripPlanner: Retour au planificateur de trajets
   BatchResultsScreen:
     expandMap: Étendre la carte
     showResults: Voir les résultats
+  BatchRoutingPanel:
+    enterDestination: "Entrez votre destination ou {mobile, select,
+        true {touchez}
+        other {cliquez sur}
+      } la carte..."
+    enterStartLocation: "Entrez votre point de départ ou {mobile, select,
+        true {touchez}
+        other {cliquez sur}
+      } la carte..."
   BatchSearchScreen:
     header: Planifiez votre trajet
   BeforeSignInScreen:
@@ -73,7 +137,7 @@ components:
   LocationSearch:
     enterLocation: Entrez le lieu
     setDestination: Choisissez la destination
-    setOrigin: Choisissez l'origine
+    setOrigin: Choisissez le point de départ
   MainMobile:
     invalidScreen: Écran non valable.
   MobileOptions:
@@ -162,7 +226,6 @@ components:
     next: Suivant
     previous: Précédent
   RealtimeAnnotation:
-    ignoreServiceDelays: Appliquer les retards
     delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
       Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
     delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
