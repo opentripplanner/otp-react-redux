@@ -290,7 +290,7 @@ components:
     route: Ligne
   # Used in both desktop and mobile
   StopViewer:
-    displayStopId: "<b>Arrêt n°</b> : {stopId}"
+    displayStopId: "<b>Arrêt n°</b> {stopId}"
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
     noStopsFound: Aucun passage n'a été trouvé pour cette date.
@@ -526,3 +526,6 @@ util:
     noTripFoundForMode: Aucun trajet {modes} n'a été trouvé.
     noTripFoundReason: Vos points de départ et d'arrivée ne sont peut-être pas desservis dans le rayon spécifié ou aux heures indiquées, ou ne sont pas accessibles en toute sécurité.
     noTripFoundWithReason: "{noTripFound} {reason}"
+    titleBarRouteId: "Ligne {routeId}"
+    titleBarStopId: "Arrêt {stopId}"
+    titleBarWithStatus: "{title} | {status}"
