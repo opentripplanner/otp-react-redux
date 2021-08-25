@@ -37,6 +37,8 @@ components:
     multiModeSummary: "{accessMode} + {transitMode}"
   DeleteUser:
     deleteMyAccount: Supprimer mon compte
+  ErrorMessage:
+    header: Impossible de planifier le trajet
   ExistingAccountDisplay:
     mainTitle: Mes préférences
     notifications: Notifications
@@ -209,7 +211,7 @@ components:
     tripNameRequired: Veuillez entrer un nom pour ce trajet.
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
-    cantSaveTooltip: Seuls les trajets en transports en commun sans location de véhicules et sans course en voiture peuvent être suivis.
+    cantSaveTooltip: Seuls les trajets en transports publics sans location de véhicules et sans course en voiture peuvent être suivis.
     saveTripText: Enregistrer
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
@@ -411,6 +413,8 @@ common:
     yes: Oui
   itineraryDescriptions:
     calories: kcal # SI unit
+    departure: Départ
+    status: État
     noItineraryToDisplay: Aucun trajet à afficher.
     transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
 
@@ -438,3 +442,26 @@ common:
     tripDurationFormat: "{hours, plural, 
         =0 {{minutes, number} mn}
         other {{hours, number} h {minutes, number} mn}}"
+  # Note to translator: the strings below are used in sentences such as:
+  # "No trip found for bike, walk, and transit."
+  # This set is based on OTP travel modes, in lower case, and accommodates the use
+  # of particles before/after each travel mode in some languages.
+  # In French, the above sentence could read:
+  # "Aucun trajet en velo, à pied, et en transports publics n'a été trouvé."
+  travelBy:
+    bicycle: en vélo
+    bicycle_rent: en vélo en libre-service
+    car: en voiture
+    car_park: en voiture + parc relais
+    micromobility: en trottinette électrique
+    micromobility_rent: en trottinette électrique en libre-service
+    transit: en transports publics
+    walk: à pied
+util:
+  state:
+    errorPlanningTrip: Une erreur s'est produite lors de la planification du trajet.
+    networkUnavailable: Le systeme {network} n'est pas disponible pour le moment.
+    noTripFound: Aucun trajet trouvé.
+    noTripFoundForMode: Aucun trajet {modes} n'a été trouvé.
+    noTripFoundReason: Vos points de départ et d'arrivée ne sont peut-être pas desservis dans le rayon spécifié ou aux heures indiquées, ou ne sont pas accessibles en toute sécurité.
+    noTripFoundWithReason: "{noTripFound} {reason}"

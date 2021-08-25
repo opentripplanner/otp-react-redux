@@ -114,6 +114,8 @@ components:
     multiModeSummary: "{accessMode} to {transitMode}"
   DeleteUser:
     deleteMyAccount: Delete my account
+  ErrorMessage:
+    header: Could Not Plan Trip
   ExistingAccountDisplay:
     mainTitle: My settings
     notifications: Notifications
@@ -523,3 +525,25 @@ common:
     tripDurationFormat: "{hours, plural,
         =0 {{minutes, number} min}
         other {{hours, number} hr {minutes, number} min}}"
+  # Note to translator: the strings below are used in sentences such as:
+  # "No trip found for bike, walk, and transit."
+  # This set is based on OTP travel modes, in lower case, and accommodates the use
+  # of particles before/after each travel mode in some languages.
+  # In French, the above sentence could read:
+  # "Aucun trajet en velo, à pied, et en transports publics n'a été trouvé."
+  travelBy:
+    bicycle: bike
+    bicycle_rent: bikeshare
+    car: car
+    car_park: car park
+    micromobility: e-scooter
+    micromobility_rent: rental e-scooter
+    walk: walk
+util:
+  state:
+    errorPlanningTrip: An error occurred while planning a trip.
+    networkUnavailable: The {network} network is unavailable at this moment.
+    noTripFound: No trip found.
+    noTripFoundForMode: No trip found for {modes}.
+    noTripFoundReason: There may be no transit service within the maximum specified distance or at the specified time, or your start or end point might not be safely accessible.
+    noTripFoundWithReason: "{noTripFound} {reason}"
