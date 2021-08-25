@@ -31,6 +31,14 @@
   color: #ddd;
 }
 
+/* Don't show route viewer link in the app menu on desktop as it is in the navbar */
+.app-menu-route-viewer-link {
+  display: none;
+}
+.otp.mobile .app-menu-route-viewer-link {
+  display: block;
+}
+
 /* PrintLayout styles */
 
 .otp.print-layout {
