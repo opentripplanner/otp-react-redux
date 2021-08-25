@@ -73,7 +73,6 @@ components:
     fieldTrip: Groupes scolaires
     mailables: Prêt-à-poster
     routeViewer: Index des lignes
-    startOver: Recommencer
   BackToTripPlanner:
     backToTripPlanner: Retour au planificateur de trajets
   BatchResultsScreen:
@@ -398,8 +397,7 @@ components:
     notifications: "Notifications : <b>{leadTimeInMinutes} mn avant l'heure de départ prévue</b>"
     notificationsDisabled: "Notifications : <b>Désactivées</b>"
   TripTools:
-    # Note to translator: copyLink, linkCopied, print, reportIssue,
-    # and startOver are width-constrained.
+    # Note to translator: copyLink, linkCopied, print, reportIssue are width-constrained.
     copyLink: Copier le lien
     # Text that replaces the copyLink button text after user clicks it.
     linkCopied: Copié
@@ -410,7 +408,6 @@ components:
       Vous pouvez communiquer votre problème par e-mail et en détail aux administrateurs de ce site.
       Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
       ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
-    startOver: Recommencer
   # Used in both desktop and mobile
   TripViewer:
     accessible: Accessible
@@ -473,6 +470,7 @@ common:
     next: Suivant
     no: Non
     save: Enregistrer
+    startOver: Recommencer
     yes: Oui
   itineraryDescriptions:
     calories: kcal # SI unit

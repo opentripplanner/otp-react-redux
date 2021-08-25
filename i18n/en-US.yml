@@ -84,7 +84,6 @@ components:
     fieldTrip: Field Trip
     mailables: Mailables
     routeViewer: Route Viewer
-    startOver: Start Over
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
   BatchResultsScreen:
@@ -408,8 +407,7 @@ components:
     notifications: "Notifications: <b>{leadTimeInMinutes} min. before scheduled departure</b>"
     notificationsDisabled: "Notifications: <b>Disabled</b>"
   TripTools:
-    # Note to translator: copyLink, linkCopied, print, reportIssue,
-    # and startOver are width-constrained.
+    # Note to translator: copyLink, linkCopied, print, reportIssue are width-constrained.
     copyLink: Copy Link
     # Text that replaces the copyLink button text after user clicks it.
     linkCopied: Copied
@@ -420,7 +418,6 @@ components:
       This feature allows you to email a report to site administrators for review.
       Please add any additional feedback for this trip under the 'Additional Comments'
       section below and send using your regular email program."
-    startOver: Start Over # TODO: move to other category (common with hamburger 'Start Over' item)
   # Used in both desktop and mobile
   TripViewer:
     accessible: Accessible
@@ -487,6 +484,7 @@ common:
     next: Next
     no: No
     save: Save
+    startOver: Start Over
     yes: Yes
   # Shared itinerary description messages
   itineraryDescriptions:
