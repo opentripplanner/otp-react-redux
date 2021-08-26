@@ -63,6 +63,10 @@ actions:
 components:
   AccountSetupFinishPane:
     message: Vous pouvez maintenant commencer à planifier vos trajets.
+  AddPlaceButton:
+    addPlace: Ajouter un point intermédiaire
+    needOriginDestination: Choisissez le départ et l'arrivée avant d'ajouter les points intermédiaires
+    tooManyPlaces: Nombre max. de points intermédiaires atteint
   AfterSignInScreen:
     mainTitle: Redirection...
     # For message, use the special <a>...</a> markup to automatically insert the
@@ -227,6 +231,8 @@ components:
     last: Dernier
     next: Suivant
     previous: Précédent
+  PlanTripButton:
+    planTrip: Planifier le trajet # or simply "Rechercher"
   PrintLayout:
     itinerary: Votre trajet
     toggleMap: Afficher/masquer la carte

@@ -74,6 +74,10 @@ actions:
 components:
   AccountSetupFinishPane:
     message: You are ready to start planning your trips.
+  AddPlaceButton:
+    addPlace: Add place
+    needOriginDestination: Define origin/destination to add intermediate places
+    tooManyPlaces: Maximum intermediate places reached
   AfterSignInScreen:
     mainTitle: Redirecting...
     # For message, use the special <a>...</a> markup to automatically insert the
@@ -238,6 +242,8 @@ components:
     last: Last
     next: Next
     previous: Previous
+  PlanTripButton:
+    planTrip: Plan Trip
   PrintLayout:
     itinerary: Itinerary
     toggleMap: Toggle Map
