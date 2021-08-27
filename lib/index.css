@@ -78,7 +78,7 @@ input[type=text]::-ms-clear {
 
 .menu-item-title img {
   width: 22px;
-  margin-left: -9px;
+  margin-left: -35px;
   margin-right: 13px;
 }
 
@@ -86,6 +86,7 @@ input[type=text]::-ms-clear {
   font-size: 17px;
 }
 
+.menu-item-button a, 
 .sub-menu-item-button a {
   color: #333333;
 }
