@@ -56,6 +56,31 @@ persistence:
 #    apiBaseUrl: https://otp-middleware.example.com
 #    apiKey: your-middleware-api-key
 
+### Adding additional menu items here that are for hyper links 
+### only (no methods when the item is clicked.)
+### props include booleans: containsSubmenu, isSubmenu, isSubmenu
+### and the various icons (url and type). The Item label, and the
+### href attribute.  The menu-items component is set up to to go 2 sub menus deep.
+#menuItems:
+#  - id: Traveler Tools
+#    label: Traveler Tools
+#    iconUrl: https://cdn.icon-icons.com/icons2/2248/PNG/512/tools_icon_137091.png
+#    containsSubmenu: 'true'
+#    href: somelink.com
+#    items: 
+#      - id: Transit Tools
+#        label: Transit Tools
+#        iconType: 'bus'
+#        isSubmenuItem: 'true'
+#        href: somelink.com
+#        containsSubmenu: 'true'
+#        items:
+#          - id: Breeze Mobile
+#            label: Breeze Mobile
+#            iconUrl: https://play-lh.googleusercontent.com/7YyudRPI8a4Fbt63CwNffJxf0xa6WDM4sqwJEl_gGu6PcHdCBL0PxagnI7Ddx1ydqt89=s180-rw
+#            isSubmenuItem: 'true'
+
+
 map:
   initLat: 45.52
   initLon: -122.682
