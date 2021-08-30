@@ -283,3 +283,59 @@
   float: right;
   width: 50px;
 }
+
+/* Route Viewer Updates */
+.search-and-filter {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.search-and-filter select {
+  margin: 0 5px;
+  text-overflow: ellipsis;
+  min-width: 105px;
+
+  border: none;
+  background: #eee;
+  border-radius: 5px;
+  padding: 5px;
+}
+.search-and-filter select option {
+  /* This allows the dropdowns to shrink and stretch */
+  max-width: 0;
+}
+
+.search-and-filter .routeFilter {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 0fr 2fr 1fr;
+  width: 100%;
+}
+.search-and-filter .routeSearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-and-filter .routeSearch input {
+  border: none;
+  padding: 0.125em 0.5em;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+.routeSearch input::-webkit-search-cancel-button {
+  /* show clear button on webkit browsers */
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+.routeSearch,
+.routeSearch input {
+  width: 100%;
+}
+
+.route-viewer-body .noRoutesFoundMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+}

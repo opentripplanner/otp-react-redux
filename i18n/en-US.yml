@@ -22,10 +22,11 @@ _name: English
 #   - In contrast, some strings are common to multiple components,
 #     so it makes sense to group them by theme (e.g. accessModes) under the 'common' category.
 
-
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
 components:
+  BatchRoutingPanel:
+    shortTitle: Plan Trip
   DefaultItinerary:
     clickDetails: Click to view details
     # Use ordered placeholders for the departure-arrival string
@@ -38,10 +39,24 @@ components:
     tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
     tripDurationFormat: "{hours, number} hr {minutes, number} min"
+  RouteViewer:
+    allAgencies: All Agencies
+    allModes: All Modes
+    findARoute: Find A Route
+    noFilteredRoutesFound: No routes match your filter!
+    noRouteUrl: No route URL provided.
+    title: Route Viewer
+    shortTitle: View Routes
+    agencyFilter: Agency Filter
+    modeFilter: Mode Filter
+    details: " " # Nothing is default
 
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
 common:
+  # Standard navigation
+  navigation:
+    back: Back
   # OTP access modes
   accessModes:
     bike: Bike
@@ -49,7 +64,7 @@ common:
     drive: Drive
     micromobility: E-Scooter
     micromobilityRent: Rental E-Scooter
-    walk: Walk 
+    walk: Walk
 
   # OTP transit modes
   # Note that identifiers are OTP modes converted to lowercase.
