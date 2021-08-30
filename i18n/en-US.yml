@@ -47,6 +47,8 @@ components:
     noRouteUrl: No route URL provided.
     title: Route Viewer
     shortTitle: View Routes
+    agencyFilter: Agency Filter
+    modeFilter: Mode Filter
     details: " " # Nothing is default
 
 # Common messages that appear in multiple components and modules
