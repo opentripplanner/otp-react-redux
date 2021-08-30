@@ -52,7 +52,7 @@
   box-sizing: border-box;
 }
 
-/* Batch routing panel requires top padding missing from sidebar */
+/* Batch routing panel requires padding removed from sidebar */
 .batch-routing-panel {
-  padding-top: 10px;
+  padding: 10px;
 }
