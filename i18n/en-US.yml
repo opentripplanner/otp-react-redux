@@ -39,6 +39,10 @@ components:
     tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
     tripDurationFormat: "{hours, number} hr {minutes, number} min"
+  RouteDetails:
+    runBy: "Run by {agencyName}"
+    moreDetails: "More Details"
+    stopsTo: "Stops To"
   RouteViewer:
     allAgencies: All Agencies
     allModes: All Modes
@@ -50,6 +54,13 @@ components:
     agencyFilter: Agency Filter
     modeFilter: Mode Filter
     details: " " # Nothing is default
+  TransitVehicleOverlay:
+    # keys designed to match API output
+    incoming_at: "approaching"
+    stopped_at: "doors open at"
+    in_transit_to: "next stop"
+    travellingAt: "travelling at"
+    relativeTime: "{seconds} ago"
 
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
