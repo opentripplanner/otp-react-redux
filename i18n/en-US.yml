@@ -213,8 +213,10 @@ components:
     noneSelect: Don't notify me
     smsSelect: SMS
   PatternRow:
+    departure: Departure
     routeName: "<b>{routeName}</b> To {headsign}"
     routeShort: "To {headsign}"
+    status: Status
   PhoneNumberEditor:
     changeNumber: Change number
     invalidCode: Please enter 6 digits for the validation code.
@@ -506,8 +508,6 @@ common:
   # Shared itinerary description messages
   itineraryDescriptions:
     calories: Cal
-    departure: DEPARTURE
-    status: STATUS
     noItineraryToDisplay: No itinerary to display.
     transfers: "{transfers, plural, =0 {} one {{transfers} transfer} other {{transfers} transfers}}"
 
