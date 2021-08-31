@@ -335,6 +335,9 @@ components:
     myAccount: My account
     settings: Settings
     trips: Trips
+  SwitchButton:
+    defaultContent: Switch
+    switchLocations: Switch locations
   TabbedItineraries:
     optionNumber: "Option {optionNum,number}"
     fareCost: "{useMaxFare, select,
