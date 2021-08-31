@@ -463,6 +463,12 @@ components:
     viewStop: View
   UserAccountScreen:
     confirmDelete: Are you sure you would like to delete your user account? Once you do so, it cannot be recovered.
+  UserTripSettings:
+    forgetOptions: Forget my options
+    rememberOptions: Remember trip options
+    restoreOptions: "Restore {defaults, select,
+        true {my defaults}
+        other {defaults}}"
   VerifyEmailPane:
     emailIsVerified: My email is verified!
     instructions1: "Please check your email inbox and follow the link in the message
