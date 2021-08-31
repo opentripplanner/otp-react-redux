@@ -24,11 +24,6 @@ input[type=text]::-ms-clear {
     display: none;
 }
 
-.slide-pane_from_left {
-    max-width: 380px !important;
-    width: 100% !important;
-}
-
 .slide-pane__header {
   background-color: #fff;
   border: none;
