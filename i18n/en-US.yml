@@ -338,6 +338,8 @@ components:
   SwitchButton:
     defaultContent: Switch
     switchLocations: Switch locations
+  TabbedFormPanel:
+    hideSettings: " Hide Settings"
   TabbedItineraries:
     optionNumber: "Option {optionNum,number}"
     fareCost: "{useMaxFare, select,
