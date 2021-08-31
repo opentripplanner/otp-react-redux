@@ -303,6 +303,8 @@ components:
     signInTooltip: Please sign in to save trip.
   SearchScreen:
     header: Plan Your Trip
+  SettingsPreview:
+    defaultPreviewText: "Transit Options\n& Preferences"
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   StackedPaneDisplay:
