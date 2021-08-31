@@ -93,6 +93,11 @@ components:
       } la carte..."
   BatchSearchScreen:
     header: Planifiez votre trajet
+  BatchSettings:
+    destination: destination
+    origin: point de départ
+    planTripTooltip: Planifier le trajet
+    validationMessage: "Veuillez définir les champs suivants afin de planifier votre trajet : {issues}"
   BeforeSignInScreen:
     mainTitle: Connexion en cours
     message: "Pour accéder à cette page, vous devez vous connecter.
@@ -145,6 +150,12 @@ components:
     invalidScreen: Écran non valable.
   MobileOptions:
     header: Options de recherche
+  ModeButtons:
+    bicycle: Vélo
+    car: Voiture
+    rent: Location de véhicules
+    transit: Transports publics
+    walk: Marche
   NarrativeItinerariesHeader:
     numIssues: "{issueNum, number} {issueNum, plural, 
         one {problème}
@@ -520,7 +531,7 @@ common:
   # This set is based on OTP travel modes, in lower case, and accommodates the use
   # of particles before/after each travel mode in some languages.
   # In French, the above sentence could read:
-  # "Aucun trajet en velo, à pied, et en transports publics n'a été trouvé."
+  # "Aucun trajet en vélo, à pied, et en transports publics n'a été trouvé."
   travelBy:
     bicycle: en vélo
     bicycle_rent: en vélo en libre-service

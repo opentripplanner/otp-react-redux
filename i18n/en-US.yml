@@ -104,6 +104,11 @@ components:
       } on map..."
   BatchSearchScreen:
     header: Plan Your Trip
+  BatchSettings:
+    destination: destination
+    origin: origin
+    planTripTooltip: Plan trip
+    validationMessage: "Please define the following fields to plan a trip: {issues}"
   BeforeSignInScreen:
     mainTitle: Signing you in
     message: "In order to access this page you will need to sign in.
@@ -158,6 +163,12 @@ components:
     invalidScreen: Invalid mobile screen
   MobileOptions:
     header: Set Search Options
+  ModeButtons:
+    bicycle: Bicycle
+    car: Drive
+    rent: Rental options
+    transit: Transit
+    walk: Walking
   NarrativeItinerariesHeader:
     numIssues: "{issueNum, number} {issueNum, plural,
         one {issue}
@@ -552,7 +563,7 @@ common:
   # This set is based on OTP travel modes, in lower case, and accommodates the use
   # of particles before/after each travel mode in some languages.
   # In French, the above sentence could read:
-  # "Aucun trajet en velo, à pied, et en transports publics n'a été trouvé."
+  # "Aucun trajet en vélo, à pied, et en transports publics n'a été trouvé."
   travelBy:
     bicycle: bike
     bicycle_rent: bikeshare

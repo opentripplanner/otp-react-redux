@@ -32,6 +32,7 @@
   "homepage": "https://github.com/opentripplanner/otp-react-redux#readme",
   "dependencies": {
     "@auth0/auth0-react": "^1.1.0",
+    "@formatjs/intl-listformat": "^6.3.3",
     "@opentripplanner/base-map": "^1.0.5",
     "@opentripplanner/core-utils": "^3.2.2",
     "@opentripplanner/endpoints-overlay": "^1.0.6",
