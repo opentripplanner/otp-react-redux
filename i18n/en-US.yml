@@ -352,7 +352,7 @@ components:
       description: Unsnooze trip monitoring to see the updated status.
       heading: Trip monitoring is snoozed for today
     upcoming:
-      nextTripBegins: Next trip starts on {tripDate, date, ::eeeee yyyyMMdd} at {tripTime, time, short}.
+      nextTripBegins: Next trip starts on {tripDatetime, date, ::eeeee yyyyMMdd} at {tripDatetime, time, short}.
       tripBegins: Trip is due to begin at {tripStart, time, short}. (Realtime monitoring will begin at {monitoringStart, time, short}.)
       tripStartIsDelayed: Trip start time is delayed ${duration}!
       tripStartIsEarly: Trip start time is happening ${duration} earlier than expected!
