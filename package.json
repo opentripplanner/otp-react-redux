@@ -5,7 +5,7 @@
   "scripts": {
     "a11y-test": "craco test a11y  --runInBand --force-exit",
     "build": "craco build",
-    "jest": "craco test --watchAll",
+    "jest": "craco test",
     "lint": "eslint lib __tests__ a11y --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
     "postinstall": "husky install",
@@ -137,6 +137,8 @@
     "execa": "^5.1.1",
     "express": "^4.17.1",
     "husky": "^6.0.0",
+    "jest-transform-stub": "^2.0.0",
+    "jest-yaml-transform": "^0.2.0",
     "leaflet": "^1.6.0",
     "lint-staged": "^11.0.0",
     "nock": "^9.0.9",
@@ -149,6 +151,7 @@
     "react-scripts": "^4.0.3",
     "redux-mock-store": "^1.5.3",
     "semantic-release": "^17.2.3",
+    "tsdx": "https://github.com/ibi-group/tsdx",
     "typescript": "^4.4.2",
     "yaml-loader": "^0.6.0"
   },
@@ -159,8 +162,13 @@
     "react-leaflet": "^2.6.1"
   },
   "jest": {
+    "testMatch": ["**/__tests__/**/*.[jt]s?(x)"],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/__tests__/test-utils"
+    ],
     "globalSetup": "<rootDir>/__tests__/test-utils/global-setup.js"
-  }, 
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
