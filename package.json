@@ -3,9 +3,9 @@
   "description": "A library for writing modern OpenTripPlanner-compatible multimodal journey planning web applications using React and Redux",
   "main": "build/index.js",
   "scripts": {
-    "a11y-test": "craco test a11y  --runInBand --force-exit",
+    "a11y-test": "jest a11y/ --runInBand --force-exit",
     "build": "craco build",
-    "jest": "craco test",
+    "jest": "jest __tests__/",
     "lint": "eslint lib __tests__ a11y --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
     "postinstall": "husky install",
@@ -110,7 +110,10 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/plugin-transform-runtime": "^7.15.0",
     "@craco/craco": "^6.2.0",
+    "@jackwilsdon/craco-use-babelrc": "^1.0.0",
     "@wordpress/jest-puppeteer-axe": "^3.1.0",
     "babel-plugin-add-module-exports": "^1.0.4",
     "babel-plugin-lodash": "^3.3.4",
@@ -162,10 +165,21 @@
     "react-leaflet": "^2.6.1"
   },
   "jest": {
-    "testMatch": ["**/__tests__/**/*.[jt]s?(x)"],
+    "transform": {
+      "\\.[jt]sx?$": "babel-jest"
+    },
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/*.test.[jt]s?(x)"
+    ],
+    "rootDir": "./",
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",
       "<rootDir>/__tests__/test-utils"
+    ],
+    "setupFilesAfterEnv": [
+      "@wordpress/jest-puppeteer-axe",
+      "<rootDir>/__tests__/test-utils/setup-env.js"
     ],
     "globalSetup": "<rootDir>/__tests__/test-utils/global-setup.js"
   },

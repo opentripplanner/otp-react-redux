@@ -26,7 +26,7 @@ const disabledRules = [
  */
 async function runAxeTestOnPath (otpPath) {
   const page = await browser.newPage()
-  const filePath = `file://${path.resolve(__dirname, '../index-for-puppeteer.html')}#${otpPath}`
+  const filePath = `file://${path.resolve(__dirname, '../dist/index.html')}#${otpPath}`
   await Promise.all([
     page.goto(filePath),
     page.waitForNavigation({ waitUntil: 'networkidle2' })
@@ -62,7 +62,7 @@ beforeAll(async () => {
     console.log(`Mock response server running on http://localhost:${MOCK_SERVER_PORT}`)
   })
   // Web security is disabled to allow requests to the mock OTP server
-  browser = await puppeteer.launch({args: ['--disable-web-security']})
+  browser = await puppeteer.launch({args: ['--disable-web-security'], headless: false})
 })
 
 afterAll(async () => {

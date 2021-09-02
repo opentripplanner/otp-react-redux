@@ -3,6 +3,8 @@
  * jest test.
  */
 
+import 'regenerator-runtime/runtime'
+
 window.localStorage = {
-  getItem: () => null
-}
+  getItem: () => null,
+};
