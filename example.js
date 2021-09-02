@@ -32,6 +32,10 @@ import {
   createUserReducer,
   otpUtils
 } from './lib'
+
+import "./example.css";
+import "./index.css";
+
 // load the OTP configuration
 import otpConfig from './config.yml'
 

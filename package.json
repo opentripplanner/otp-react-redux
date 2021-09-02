@@ -3,20 +3,18 @@
   "description": "A library for writing modern OpenTripPlanner-compatible multimodal journey planning web applications using React and Redux",
   "main": "build/index.js",
   "scripts": {
-    "a11y-test": "mastarm test a11y  --runInBand --force-exit",
-    "build": "mastarm build --env production",
-    "cover": "mastarm test -e test --coverage",
-    "jest": "mastarm test -e test __tests__",
-    "lint": "mastarm lint lib __tests__ a11y --quiet",
+    "a11y-test": "craco test a11y  --runInBand --force-exit",
+    "build": "craco build",
+    "jest": "craco test --watchAll",
+    "lint": "eslint lib __tests__ a11y --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
     "postinstall": "husky install",
-    "prepublish": "mastarm prepublish --config configurations/prepublish",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "prestart": "yarn",
     "test": "yarn run lint && yarn run lint-docs && yarn run jest",
     "semantic-release": "semantic-release",
-    "start": "mastarm build -e development --serve example.js"
+    "start": "craco start"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -30,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/opentripplanner/otp-react-redux/issues"
   },
-  "homepage": "https://github.com/opentripplanner/otp-react-redux#readme",
+  "homepage": "",
   "dependencies": {
     "@auth0/auth0-react": "^1.1.0",
     "@opentripplanner/base-map": "^1.2.0",
@@ -48,7 +46,7 @@
     "@opentripplanner/route-viewer-overlay": "^1.1.0",
     "@opentripplanner/stop-viewer-overlay": "^1.1.0",
     "@opentripplanner/stops-overlay": "^3.2.0",
-    "@opentripplanner/transit-vehicle-overlay": "^2.2.0",
+    "@opentripplanner/transit-vehicle-overlay": "../otp-ui/packages/transit-vehicle-overlay",
     "@opentripplanner/transitive-overlay": "^1.1.1",
     "@opentripplanner/trip-details": "^1.3.1",
     "@opentripplanner/trip-form": "^1.3.1",
@@ -112,26 +110,47 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
+    "@craco/craco": "^6.2.0",
     "@wordpress/jest-puppeteer-axe": "^3.1.0",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "babel-plugin-lodash": "^3.3.4",
     "documentation": "^13.0.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.4.0",
     "enzyme-to-json": "^3.4.0",
     "es6-math": "^1.0.0",
+    "eslint-config-prettier": "^3.4.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-config-standard-jsx": "^10.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-sort-destructure-keys": "^1.3.5",
+    "eslint-plugin-sort-keys-fix": "^1.1.1",
+    "eslint-plugin-typescript-sort-keys": "^1.8.0",
     "execa": "^5.1.1",
     "express": "^4.17.1",
     "husky": "^6.0.0",
     "leaflet": "^1.6.0",
     "lint-staged": "^11.0.0",
-    "mastarm": "^5.3.2",
     "nock": "^9.0.9",
     "pinst": "^2.1.6",
+    "prettier": "^2.3.2",
     "puppeteer": "^10.2.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-leaflet": "^2.6.1",
+    "react-scripts": "^4.0.3",
     "redux-mock-store": "^1.5.3",
-    "semantic-release": "^17.2.3"
+    "semantic-release": "^17.2.3",
+    "typescript": "^4.4.2",
+    "yaml-loader": "^0.6.0"
   },
   "peerDependencies": {
     "leaflet": "^1.6.0",
@@ -140,13 +159,13 @@
     "react-leaflet": "^2.6.1"
   },
   "jest": {
-    "globalSetup": "<rootDir>/__tests__/test-utils/global-setup.js",
-    "setupFilesAfterEnv": [
-      "@wordpress/jest-puppeteer-axe",
-      "<rootDir>/__tests__/test-utils/setup-env.js"
-    ],
-    "testURL": "http://localhost/"
-  },
+    "globalSetup": "<rootDir>/__tests__/test-utils/global-setup.js"
+  }, 
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
   "lint-staged": {
     "*.{js,jsx}": [
       "eslint --config node_modules/mastarm/lib/eslintrc.json --fix"

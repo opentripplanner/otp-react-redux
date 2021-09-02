@@ -1,3 +1,4 @@
+import React from 'react'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import Enzyme, {mount} from 'enzyme'
 import EnzymeReactAdapter from 'enzyme-adapter-react-16'

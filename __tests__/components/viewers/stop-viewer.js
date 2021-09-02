@@ -1,3 +1,4 @@
+import React from 'react'
 import StopViewer from '../../../lib/components/viewers/stop-viewer'
 import { restoreDateNowBehavior, setDefaultTestTime, setTestTime } from '../../test-utils'
 import { getMockInitialState, mockWithProvider } from '../../test-utils/mock-data/store'
