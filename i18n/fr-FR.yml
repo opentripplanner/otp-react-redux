@@ -110,7 +110,7 @@ common:
     funicular: Funiculaire
 
   time:
-    departureArrivalTimes: "{startTime}—{endTime}"
+    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     tripDurationFormat: "{hours, plural, 
         =0 {{minutes, number} mn}
         other {{hours, number} h {minutes, number} mn}}"

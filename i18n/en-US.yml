@@ -143,7 +143,7 @@ common:
   time:
      # Use ordered placeholders for the departure-arrival string
     # (this will accommodate right-to-left languages by swapping the order in this string).
-    departureArrivalTimes: "{startTime}—{endTime}"
+    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     tripDurationFormat: "{hours, plural, 
         =0 {{minutes, number} min}
         other {{hours, number} hr {minutes, number} min}}"
