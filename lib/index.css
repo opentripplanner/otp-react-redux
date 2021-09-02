@@ -16,9 +16,79 @@
 
 @import url(lib/bike-rental.css);
 
+@import url(react-sliding-pane/dist/react-sliding-pane.css);
+
+
 /* Hide IE/Edge clear button in text input fields. */
 input[type=text]::-ms-clear {
     display: none;
+}
+
+/* Slide out drop down menu with sub menus, all with icons*/
+.slide-pane__header {
+  background-color: #fff;
+  border: none;
+  margin-bottom: -3rem;
+}
+
+.slide-pane__close {
+    margin-left: 0;
+    font-size: 24px;
+    opacity: 1;
+}
+
+.menu-expansion-button, 
+.menu-item-button {
+    background: transparent;
+    border: none;
+}
+
+.menu-expansion-button {
+  position: absolute;
+  right: 30px;
+  margin-top: -16px;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 0rem 1rem;
+  width: 315px;
+}
+
+.menu-item {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  font-size: 20px;
+  padding: 1rem 0 1rem;
+}
+
+.menu-item-title {
+  cursor: pointer;
+  margin: 0 20px 0 13px;
+}
+
+.menu-item-title img {
+  width: 22px;
+  margin-left: -35px;
+  margin-right: 13px;
+}
+
+.sub-menu-item-button {
+  font-size: 17px;
+}
+
+.menu-item-button a, 
+.sub-menu-item-button a {
+  color: #333333;
+}
+
+.sub-menu-item-button a:hover {
+  text-decoration: none;
 }
 
 /* Buttons */
