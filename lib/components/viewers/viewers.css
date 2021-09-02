@@ -282,7 +282,7 @@ a.routeDetails {
   gap: 10px;
 }
 .search-and-filter select {
-  margin: 0 5px;
+  margin-left: 10px;
   text-overflow: ellipsis;
   min-width: 105px;
 
