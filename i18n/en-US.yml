@@ -78,7 +78,7 @@ components:
     delaysNotShownInResults: "Your trip results are currently being affected by service delays.
       These delays do not factor into travel times shown below."
     delaysShownInResults: "Your trip results have been adjusted based on real-time
-      information. Under normal conditions, this trip would take <b>{normalDuration}</b>
+      information. Under normal conditions, this trip would take {normalDuration}
       using the following routes: {routes}."
     ignoreServiceDelays: Ignore service delays
     serviceUpdate: Service update
