@@ -5,14 +5,14 @@
   "scripts": {
     "a11y-test": "jest a11y/ --runInBand --force-exit",
     "build": "craco build",
-    "jest": "jest __tests__/",
+    "unit": "jest __tests__/",
     "lint": "eslint lib __tests__ a11y --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "prestart": "yarn",
-    "test": "yarn run lint && yarn run lint-docs && yarn run jest",
+    "test": "yarn run lint && yarn run lint-docs && yarn run unit",
     "semantic-release": "semantic-release",
     "start": "craco start"
   },
@@ -181,6 +181,7 @@
       "@wordpress/jest-puppeteer-axe",
       "<rootDir>/__tests__/test-utils/setup-env.js"
     ],
+    "testURL": "http://localhost:9966",
     "globalSetup": "<rootDir>/__tests__/test-utils/global-setup.js"
   },
   "browserslist": [
