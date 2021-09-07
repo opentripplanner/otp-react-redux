@@ -35,8 +35,10 @@
 .app-menu-route-viewer-link {
   display: none;
 }
-.otp.mobile .app-menu-route-viewer-link {
-  display: block;
+@media (max-width: 800px) {
+  .app-menu-route-viewer-link {
+    display: block;
+  }
 }
 
 /* PrintLayout styles */

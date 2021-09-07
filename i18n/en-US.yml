@@ -53,7 +53,7 @@ components:
     shortTitle: View Routes
     agencyFilter: Agency Filter
     modeFilter: Mode Filter
-    details: " " # Nothing is default
+    details: " " # If the string is left blank, React-Intl renders the id
   TransitVehicleOverlay:
     # keys designed to match API output
     incoming_at: "approaching"
@@ -61,6 +61,7 @@ components:
     in_transit_to: "next stop"
     travellingAt: "travelling at"
     relativeTime: "{seconds} ago"
+    details: " " # If the string is left blank, React-Intl renders the id
 
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
