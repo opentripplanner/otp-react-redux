@@ -2299,23 +2299,6 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.1.0.tgz#fd1f879de0366e9b1ac1d4af9450df4296338711"
-  integrity sha512-SGsazdapV7zUxaLg8AM3TgLGqlLHc34qhAoI/6Z3fjFFlbOb5+vFefltFSnKvOh0IYx/33gRJZ35FTcmCSZqkQ==
-  dependencies:
-    "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^1.0.2"
-    "@turf/along" "^6.0.1"
-    bowser "^2.7.0"
-    date-fns "^2.23.0"
-    date-fns-tz "^1.1.4"
-    lodash.clonedeep "^4.5.0"
-    lodash.isequal "^4.5.0"
-    moment "^2.24.0"
-    prop-types "^15.7.2"
-    qs "^6.9.1"
-
 "@opentripplanner/endpoints-overlay@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-1.2.0.tgz#d8bcf347d82b1566352c4c2bc52f4f389bf72f6b"
@@ -2437,18 +2420,9 @@
     "@opentripplanner/from-to-location-picker" "^1.0.3"
     "@opentripplanner/zoom-based-markers" "^1.0.1"
 
-"@opentripplanner/transit-vehicle-overlay@../otp-ui/packages/transit-vehicle-overlay":
-  version "2.2.0"
-  dependencies:
-    "@opentripplanner/core-utils" "^4.1.0"
-    "@opentripplanner/icons" "^1.1.0"
-    "@opentripplanner/zoom-based-markers" "^1.2.0"
-    "@turf/helpers" "^6.5.0"
-    "@turf/nearest-point-on-line" "^6.5.0"
-    leaflet-rotatedmarker "^0.2.0"
-    lodash.clonedeep "^4.5.0"
-    styled-icons "^9.1.0"
-    throttle-debounce "^2.1.0"
+"@opentripplanner/transit-vehicle-overlay@opentripplanner/otp-ui#update-core-utils-in-all-packages":
+  version "0.0.1"
+  resolved "https://codeload.github.com/opentripplanner/otp-ui/tar.gz/11b29b2f50c4160e43d3fb5e6dedbb9351402d2d"
 
 "@opentripplanner/transitive-overlay@^1.1.1":
   version "1.1.1"
@@ -2501,7 +2475,7 @@
     prop-types "^15.7.2"
     styled-icons "^9.1.0"
 
-"@opentripplanner/zoom-based-markers@^1.0.1", "@opentripplanner/zoom-based-markers@^1.2.0":
+"@opentripplanner/zoom-based-markers@^1.0.1":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/zoom-based-markers/-/zoom-based-markers-1.2.0.tgz#3adb4f65960e83f55b38eeb9b3e980b956a09c3e"
   integrity sha512-BWxRXzUFm9EtDGD++krN/X/pe1FgsxHznUfvniDmddOSF+Q7mSD1fcdR158CargEo2BMyom3HDFwjb71WWv3Yg==
@@ -3048,14 +3022,6 @@
     "@turf/helpers" "^6.5.0"
     "@turf/invariant" "^6.5.0"
 
-"@turf/bbox@*":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/bbox/-/bbox-6.5.0.tgz#bec30a744019eae420dac9ea46fb75caa44d8dc5"
-  integrity sha512-RBbLaao5hXTYyyg577iuMtDB8ehxMlUqHEJiMs8jT1GHkFhr6sYre3lmLsPeYEi/ZKj5TP5tt7fkzNdJ4GIVyw==
-  dependencies:
-    "@turf/helpers" "^6.5.0"
-    "@turf/meta" "^6.5.0"
-
 "@turf/bearing@^6.5.0":
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/@turf/bearing/-/bearing-6.5.0.tgz#462a053c6c644434bdb636b39f8f43fb0cd857b0"
@@ -3080,7 +3046,7 @@
     "@turf/helpers" "^6.5.0"
     "@turf/invariant" "^6.5.0"
 
-"@turf/helpers@6.x", "@turf/helpers@^6.5.0":
+"@turf/helpers@^6.5.0":
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-6.5.0.tgz#f79af094bd6b8ce7ed2bd3e089a8493ee6cae82e"
   integrity sha512-VbI1dV5bLFzohYYdgqwikdMVpe7pJ9X3E+dlr425wa2/sMJqYDhTO++ec38/pcPvPE6oD9WEEeU3Xu3gza+VPw==
@@ -3091,46 +3057,6 @@
   integrity sha512-Wv8PRNCtPD31UVbdJE/KVAWKe7l6US+lJItRR/HOEW3eh+U/JwRCSUl/KZ7bmjM/C+zLNoreM2TU6OoLACs4eg==
   dependencies:
     "@turf/helpers" "^6.5.0"
-
-"@turf/line-intersect@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/line-intersect/-/line-intersect-6.5.0.tgz#dea48348b30c093715d2195d2dd7524aee4cf020"
-  integrity sha512-CS6R1tZvVQD390G9Ea4pmpM6mJGPWoL82jD46y0q1KSor9s6HupMIo1kY4Ny+AEYQl9jd21V3Scz20eldpbTVA==
-  dependencies:
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
-    "@turf/line-segment" "^6.5.0"
-    "@turf/meta" "^6.5.0"
-    geojson-rbush "3.x"
-
-"@turf/line-segment@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/line-segment/-/line-segment-6.5.0.tgz#ee73f3ffcb7c956203b64ed966d96af380a4dd65"
-  integrity sha512-jI625Ho4jSuJESNq66Mmi290ZJ5pPZiQZruPVpmHkUw257Pew0alMmb6YrqYNnLUuiVVONxAAKXUVeeUGtycfw==
-  dependencies:
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
-    "@turf/meta" "^6.5.0"
-
-"@turf/meta@6.x", "@turf/meta@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/meta/-/meta-6.5.0.tgz#b725c3653c9f432133eaa04d3421f7e51e0418ca"
-  integrity sha512-RrArvtsV0vdsCBegoBtOalgdSOfkBrTJ07VkpiCnq/491W67hnMWmDu7e6Ztw0C3WldRYTXkg3SumfdzZxLBHA==
-  dependencies:
-    "@turf/helpers" "^6.5.0"
-
-"@turf/nearest-point-on-line@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/nearest-point-on-line/-/nearest-point-on-line-6.5.0.tgz#8e1cd2cdc0b5acaf4c8d8b3b33bb008d3cb99e7b"
-  integrity sha512-WthrvddddvmymnC+Vf7BrkHGbDOUu6Z3/6bFYUGv1kxw8tiZ6n83/VG6kHz4poHOfS0RaNflzXSkmCi64fLBlg==
-  dependencies:
-    "@turf/bearing" "^6.5.0"
-    "@turf/destination" "^6.5.0"
-    "@turf/distance" "^6.5.0"
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
-    "@turf/line-intersect" "^6.5.0"
-    "@turf/meta" "^6.5.0"
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.14", "@types/babel__core@^7.1.7":
   version "7.1.15"
@@ -3194,11 +3120,6 @@
   version "0.0.48"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.48.tgz#18dc8091b285df90db2f25aa7d906cfc394b7f74"
   integrity sha512-LfZwXoGUDo0C3me81HXgkBg5CTQYb6xzEl+fNmbO4JdRiSKQ8A0GD1OBBvKAIsbCUgoyAty7m99GqqMQe784ew==
-
-"@types/geojson@7946.0.8":
-  version "7946.0.8"
-  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.8.tgz#30744afdb385e2945e22f3b033f897f76b1f12ca"
-  integrity sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==
 
 "@types/glob@^7.1.1":
   version "7.1.4"
@@ -7783,16 +7704,6 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-date-fns-tz@^1.1.4:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/date-fns-tz/-/date-fns-tz-1.1.6.tgz#93cbf354e2aeb2cd312ffa32e462c1943cf20a8e"
-  integrity sha512-nyy+URfFI3KUY7udEJozcoftju+KduaqkVfwyTIE0traBiVye09QnyWKLZK7drRr5h9B7sPJITmQnS3U6YOdQg==
-
-date-fns@^2.23.0:
-  version "2.23.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.23.0.tgz#4e886c941659af0cf7b30fafdd1eaa37e88788a9"
-  integrity sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA==
-
 dateformat@^3.0.0:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
@@ -10065,17 +9976,6 @@ geocoder-arcgis@^2.0.4:
     lodash.get "^4.4.2"
     lodash.isobject "^3.0.2"
     lodash.isstring "^4.0.1"
-
-geojson-rbush@3.x:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/geojson-rbush/-/geojson-rbush-3.2.0.tgz#8b543cf0d56f99b78faf1da52bb66acad6dfc290"
-  integrity sha512-oVltQTXolxvsz1sZnutlSuLDEcQAKYC/uXt9zDzJJ6bu0W+baTI8LZBaTup5afzibEH4N3jlq2p+a152wlBJ7w==
-  dependencies:
-    "@turf/bbox" "*"
-    "@turf/helpers" "6.x"
-    "@turf/meta" "6.x"
-    "@types/geojson" "7946.0.8"
-    rbush "^3.0.1"
 
 get-assigned-identifiers@^1.1.0:
   version "1.2.0"
@@ -13143,11 +13043,6 @@ lead@^1.0.0:
   integrity sha1-bxT5mje+Op3XhPVJVpDlkDRm7kI=
   dependencies:
     flush-write-stream "^1.0.2"
-
-leaflet-rotatedmarker@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/leaflet-rotatedmarker/-/leaflet-rotatedmarker-0.2.0.tgz#4467f49f98d1bfd56959bd9c6705203dd2601277"
-  integrity sha1-RGf0n5jRv9VpWb2cZwUgPdJgEnc=
 
 leaflet@^1.6.0:
   version "1.7.1"
@@ -17265,11 +17160,6 @@ quick-lru@^4.0.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
   integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
 
-quickselect@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/quickselect/-/quickselect-2.0.0.tgz#f19680a486a5eefb581303e023e98faaf25dd018"
-  integrity sha512-RKJ22hX8mHe3Y6wH/N3wCM6BWtjaxIyyUIkpHOvfFnxdI4yD4tBXEBKSbriGujF6jnSVkJrffuo6vxACiSSxIw==
-
 quote-stream@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/quote-stream/-/quote-stream-1.0.2.tgz#84963f8c9c26b942e153feeb53aae74652b7e0b2"
@@ -17350,13 +17240,6 @@ raw-body@~1.1.0:
   dependencies:
     bytes "1"
     string_decoder "0.10"
-
-rbush@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/rbush/-/rbush-3.0.1.tgz#5fafa8a79b3b9afdfe5008403a720cc1de882ecf"
-  integrity sha512-XRaVO0YecOpEuIvbhbpTrZgoiI6xBlz6hnlr6EHhd+0x9ase6EmeN+hdwwUaJvLcsFFQ8iWVF1GAK1yB0BWi0w==
-  dependencies:
-    quickselect "^2.0.0"
 
 rc@^1.2.8:
   version "1.2.8"
