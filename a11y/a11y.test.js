@@ -1,3 +1,5 @@
+/* eslint-disable jest/expect-expect */
+/* We use a method to generate our assertions */
 import fs from 'fs'
 import path from 'path'
 
@@ -12,6 +14,8 @@ const OTP_RR_CONFIG_FILE_PATH = './config.yml'
 const OTP_RR_CONFIG_BACKUP_PATH = './config.non-test.yml'
 const OTP_RR_TEST_CONFIG_PATH = './a11y/test-config.yml'
 
+const MOCK_SERVER_PORT = 9999
+
 let browser, server
 // These rules aren't relevant to this project
 const disabledRules = [
@@ -24,9 +28,9 @@ const disabledRules = [
  * Runs a11y tests on a given OTP-RR path using the test build. Relies on
  * the puppeteer browser running
  */
-async function runAxeTestOnPath (otpPath) {
+async function runAxeTestOnPath(otpPath) {
   const page = await browser.newPage()
-  const filePath = `file://${path.resolve(__dirname, '../dist/index.html')}#${otpPath}`
+  const filePath = `http://localhost:${MOCK_SERVER_PORT}/#${otpPath}`
   await Promise.all([
     page.goto(filePath),
     page.waitForNavigation({ waitUntil: 'networkidle2' })
@@ -39,17 +43,11 @@ async function runAxeTestOnPath (otpPath) {
 beforeAll(async () => {
   // backup current config file
   if (fs.existsSync(OTP_RR_CONFIG_FILE_PATH)) {
-    fs.renameSync(
-      OTP_RR_CONFIG_FILE_PATH,
-      OTP_RR_CONFIG_BACKUP_PATH
-    )
+    fs.renameSync(OTP_RR_CONFIG_FILE_PATH, OTP_RR_CONFIG_BACKUP_PATH)
     console.log('Backed up current OTP-RR config file')
   }
   // copy over test config file
-  fs.copyFileSync(
-    OTP_RR_TEST_CONFIG_PATH,
-    OTP_RR_CONFIG_FILE_PATH
-  )
+  fs.copyFileSync(OTP_RR_TEST_CONFIG_PATH, OTP_RR_CONFIG_FILE_PATH)
   console.log('Copied a11y test config file')
 
   // Build OTP-RR main.js using new config file
@@ -57,12 +55,15 @@ beforeAll(async () => {
   console.log('Built OTP-RR')
 
   // Launch mock OTP server
-  const MOCK_SERVER_PORT = 9999
   server = mockServer.listen(MOCK_SERVER_PORT, () => {
-    console.log(`Mock response server running on http://localhost:${MOCK_SERVER_PORT}`)
+    console.log(
+      `Mock response server running on http://localhost:${MOCK_SERVER_PORT}`
+    )
   })
   // Web security is disabled to allow requests to the mock OTP server
-  browser = await puppeteer.launch({args: ['--disable-web-security'], headless: false})
+  browser = await puppeteer.launch({
+    args: ['--disable-web-security']
+  })
 })
 
 afterAll(async () => {
@@ -81,8 +82,8 @@ afterAll(async () => {
 
 // Puppeteer can take a long time to load, espeically in some ci environments
 jest.setTimeout(600000)
-routes.forEach(route => {
-  const {a11yIgnore, path: pathsToTest} = route
+routes.forEach((route) => {
+  const { a11yIgnore, path: pathsToTest } = route
   if (a11yIgnore) {
     return
   }
@@ -94,12 +95,15 @@ routes.forEach(route => {
     })
   } else {
     // Otherwise run test on individual path
-    test(`${pathsToTest} should pass Axe Tests`, async () => runAxeTestOnPath(pathsToTest))
+    test(`${pathsToTest} should pass Axe Tests`, async () =>
+      runAxeTestOnPath(pathsToTest))
   }
 })
 
 test('Mocked Main Trip planner page should pass Axe Tests', async () => {
-  await runAxeTestOnPath('/?ui_activeSearch=0qoydlnut&ui_activeItinerary=0&fromPlace=1900%20Main%20Street%2C%20Houston%2C%20TX%2C%20USA%3A%3A29.750144%2C-95.370998&toPlace=800%20Congress%2C%20Houston%2C%20TX%2C%20USA%3A%3A29.76263%2C-95.362178&date=2021-08-04&time=08%3A14&arriveBy=false&mode=WALK%2CBUS%2CTRAM&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&numItineraries=3&otherThanPreferredRoutesPenalty=900')
+  await runAxeTestOnPath(
+    '/?ui_activeSearch=0qoydlnut&ui_activeItinerary=0&fromPlace=1900%20Main%20Street%2C%20Houston%2C%20TX%2C%20USA%3A%3A29.750144%2C-95.370998&toPlace=800%20Congress%2C%20Houston%2C%20TX%2C%20USA%3A%3A29.76263%2C-95.362178&date=2021-08-04&time=08%3A14&arriveBy=false&mode=WALK%2CBUS%2CTRAM&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&numItineraries=3&otherThanPreferredRoutesPenalty=900'
+  )
 })
 
 test('Mocked Stop Viewer and Dropdown should pass Axe tests', async () => {
