@@ -56,30 +56,45 @@ persistence:
 #    apiBaseUrl: https://otp-middleware.example.com
 #    apiKey: your-middleware-api-key
 
-### Adding additional menu items here that are for hyper links 
-### only (no methods when the item is clicked.)
-### props include booleans: containsSubmenu, isSubmenu, isSubmenu
-### and the various icons (url and type). The Item label, and the
-### href attribute.  The menu-items component is set up to to go 2 sub menus deep.
-#menuItems:
+### Adding additional menu items to the main menu items. Use the separator flag
+### to include a separator line if you have groups of menu items
+### If a Top level menu item contains submenu items (children) then use the 'children' flag.
+### Icon URL is preferable over iconType. If non are given then a 'bus' iconType is used. 
+#App menu
+#extraMenuItems:
 #  - id: Traveler Tools
 #    label: Traveler Tools
-#    iconUrl: https://cdn.icon-icons.com/icons2/2248/PNG/512/tools_icon_137091.png
-#    containsSubmenu: 'true'
-#    href: somelink.com
-#    items: 
-#      - id: Transit Tools
-#        label: Transit Tools
+#    iconType: 'car'
+#    iconUrl: ''
+#    containsChildren: 'true'
+#    children: 
+#      - id: Breeze Mobile
+#        label: Breeze Mobile
 #        iconType: 'bus'
-#        isSubmenuItem: 'true'
-#        href: somelink.com
-#        containsSubmenu: 'true'
-#        items:
-#          - id: Breeze Mobile
-#            label: Breeze Mobile
-#            iconUrl: https://play-lh.googleusercontent.com/7YyudRPI8a4Fbt63CwNffJxf0xa6WDM4sqwJEl_gGu6PcHdCBL0PxagnI7Ddx1ydqt89=s180-rw
-#            isSubmenuItem: 'true'
-
+#        iconUrl: ''
+#        href: ''
+#        separator: 'true'
+#      - id: Log My Commute
+#        label: Log My Commute
+#        iconType: 'car'
+#        iconUrl: ''
+#        href: ''
+#      - id: Car Pool
+#        label: Car Pool
+#        iconType: 'undo'
+#        iconUrl: ''
+#        href: ''
+#      - id: Peach Pass
+#        label: Peach Pass
+#        iconType: 'car'
+#        iconUrl: https://img.icons8.com/fluency/48/000000/peach.png
+#        href: ''
+#        separator: 'true'
+#      - id: Give Us Feedback
+#        label: Give Us Feedback
+#        iconType: 'car'
+#        iconUrl: ''
+#        href: ''
 
 map:
   initLat: 45.52
