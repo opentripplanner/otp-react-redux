@@ -245,6 +245,11 @@ components:
       for a text message with a verification code, and enter the code below
       (code expires after 10 minutes)."
     verify: Verify
+  Place:
+    enterAlert: > 
+      Enter origin/destination in the form (or set via map click) 
+      and click the resulting marker to set as {type} location.
+    viewStop: View Stop
   PlaceEditor:
     genericLocationPlaceholder: Search for location
     locationPlaceholder: Search for {placeName} location
@@ -463,6 +468,20 @@ components:
     viewStop: View
   UserAccountScreen:
     confirmDelete: Are you sure you would like to delete your user account? Once you do so, it cannot be recovered.
+  UserSettings:
+    confirmDeletion: You have recent searches and/or places stored. Disabling storage of recent places/searches will remove these items. Continue?
+    favoriteStops: Favorite stops
+    myPreferences: My preferences
+    noFavoriteStops: No favorite stops
+    recentPlaces: Recent places
+    recentSearches: Recent searches
+    rememberSearches: Remember recent searches/places?
+    storageDisclaimer: >
+      Any preferences, places, or settings you opt 
+      to save will be stored in the local storage of your browser. 
+      TriMet will not have access to knowledge about your home, work, 
+      or any other location. At any point you can opt to turn off 
+      remembering recent places/searches and clear your saved home/work locations and favorite stops.
   UserTripSettings:
     forgetOptions: Forget my options
     rememberOptions: Remember trip options
@@ -519,6 +538,7 @@ common:
   forms:
     back: Back
     cancel: Cancel
+    clear: Clear
     defaultValue: "{value} (default)"
     delete: Delete
     edit: Edit
@@ -558,6 +578,21 @@ common:
     # Use ordered placeholders for the departure-arrival string
     # (this will accommodate right-to-left languages by swapping the order in this string).
     departureArrivalTimes: "{startTime}—{endTime}"
+    # Replacing (sort of) moment.js fromNow() functionality. This is not a direct 1:1, since
+    # moment.js formats text to "a minute ago" once 44 seconds are reached, etc. This has 
+    # been simplified here.
+    fromNowUpdate: "{days, plural,
+      =0 {{hours,plural,
+        =0 {{minutes, plural,
+          =0 {a few seconds ago}
+          =1 {one minute ago}
+          other {{minutes} minutes ago}
+        }}
+        =1 {an hour ago}
+        other {{hours} hours ago}
+      }}
+      other {{days} days ago}
+    }"
     # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
