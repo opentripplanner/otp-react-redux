@@ -198,6 +198,10 @@
   color: #685c5c;
 }
 
+.otp .tabbed-itineraries .tab-button .details > span {
+  display: block;
+}
+
 .otp .tabbed-itineraries .tab-button:hover .title {
   border-bottom: 3px solid #ddd;
 }
