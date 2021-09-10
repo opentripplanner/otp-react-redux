@@ -10,7 +10,6 @@ Object {
     "timestamp": 1970-01-01T00:00:00.000Z,
   },
   "localUser": Object {
-    "autoRefreshStopTimes": true,
     "defaults": Object {
       "bikeSpeed": 3.58,
       "endTime": "09:00",
@@ -33,7 +32,6 @@ Object {
       "watts": 250,
       "wheelchair": false,
     },
-    "expandAdvanced": false,
     "favoriteStops": Array [],
     "recentPlaces": Array [],
     "recentSearches": Array [],
