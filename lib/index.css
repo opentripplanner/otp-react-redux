@@ -154,7 +154,7 @@ input[type=text]::-ms-clear {
   font-size: 2rem !important;
 }
 
-.app-menu-separator {
+.app-menu-divider {
     border-bottom: 1px solid #cccccc;
     margin-bottom: 1.3rem;
     padding-bottom: 2rem !important;
