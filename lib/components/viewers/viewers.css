@@ -112,6 +112,7 @@ a.routeDetails {
 
 .otp .stop-viewer .stop-viewer-body .stop-label .stop-name  {
   display: table-cell;
+  max-width: 300px;
 }
 
 .otp .stop-viewer .stop-viewer-body .stop-label .view-child-stop-button  {
@@ -153,7 +154,7 @@ a.routeDetails {
 .otp .stop-viewer .stop-viewer-body .related-item .item-label  {
   display: flex;
   width: 100%;
-  justify-content: start;
+  justify-content: flex-start;
   margin-bottom: 10px;
 }
 
@@ -185,9 +186,14 @@ a.routeDetails {
 
 }
 
-.otp .stop-viewer .stop-viewer-body .child-stop-icon  {
+.otp .stop-viewer .stop-viewer-body .related-item .child-stop-icon  {
   margin-right: 5px;
   font-size: 20px;
+}
+
+.otp .stop-viewer .stop-viewer-body .related-item .stop-name-text  {
+  vertical-align: top;
+  display: inline-block;
 }
 
 .otp .stop-viewer .stop-viewer-body .related-panel-expand-view  {
