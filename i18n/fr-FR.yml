@@ -251,8 +251,7 @@ components:
     delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
       Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
     delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
-      En temps normal, ce trajet prendrait <b>{normalDuration}</b>
-      en empruntant les lignes: {routes}."
+      En temps normal, ce trajet prendrait {normalDuration} en empruntant les lignes: {routes}."
     ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
   RealtimeStatusLabel:
@@ -328,8 +327,8 @@ components:
     settings: Préférences
     trips: Trajets
   TabbedItineraries:
-    optionNumber: "Option {optionNum,number}"
-    fareCost: "{useMaxFare, select, 
+    optionNumber: "Option {optionNum, number}"
+    fareCost: "{hasMaxFare, select, 
       true {À partir de {minTotalFare}}
       other {{minTotalFare}}
     }"
@@ -496,10 +495,10 @@ common:
     startOver: Recommencer
     yes: Oui
   itineraryDescriptions:
-    calories: kcal # SI unit
+    calories: "{calories, number} kcal" # SI unit
     departure: Départ
-    status: État
     noItineraryToDisplay: Aucun trajet à afficher.
+    status: État
     transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
 
   otpTransitModes:
@@ -519,13 +518,12 @@ common:
     home: domicile
     work: lieu de travail
   time:
-    departureArrivalTimes: "{startTime}—{endTime}"
+    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} mn"
-
     tripDurationFormat: "{hours, plural, 
         =0 {{minutes, number} mn}
         other {{hours, number} h {minutes, number} mn}}"
+    tripDurationFormatZeroHours: "{minutes, number} mn"
   # Note to translator: the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
   # This set is based on OTP travel modes, in lower case, and accommodates the use
