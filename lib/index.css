@@ -60,7 +60,7 @@ input[type=text]::-ms-clear {
 }
 
 .slide-pane {
-  transition: transform 0.4s;
+  transition: all 0.2s ease-in-out;
 }
 
 .slide-pane_from_left {
