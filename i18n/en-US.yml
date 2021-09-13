@@ -38,7 +38,7 @@ components:
     tripDurationFormat: "{hours, number} hr {minutes, number} min"
   RouteViewer:
     allAgencies: All Agencies
-    allModes: All Modes
+    allModes: All Modes # Note to translator: This text is width-constrained.
     findARoute: Find A Route
     noFilteredRoutesFound: No routes match your filter!
     noRouteUrl: No route URL provided.
