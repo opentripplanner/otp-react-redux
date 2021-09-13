@@ -236,12 +236,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   <FontAwesome
                     fixedWidth={true}
                     name="arrow-left"
-                    type="arrow-left"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-arrow-left fa-fw"
-                      type="arrow-left"
                     />
                   </FontAwesome>
                 </Icon>
@@ -316,12 +314,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   <FontAwesome
                     fixedWidth={true}
                     name="calendar"
-                    type="calendar"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-calendar fa-fw"
-                      type="calendar"
                     />
                   </FontAwesome>
                 </Icon>
@@ -918,7 +914,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -930,7 +925,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -966,12 +960,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -1052,12 +1044,15 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         className="fa-spin"
                         fixedWidth={true}
                         name="refresh"
-                        type="refresh"
                       >
                         <span
                           aria-hidden={true}
+<<<<<<< HEAD
                           className="fa fa-refresh fa-fw fa-spin"
                           type="refresh"
+=======
+                          className="fa fa-refresh fa-fw"
+>>>>>>> dev
                         />
                       </FontAwesome>
                     </Icon>
@@ -1793,12 +1788,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   <FontAwesome
                     fixedWidth={true}
                     name="arrow-left"
-                    type="arrow-left"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-arrow-left fa-fw"
-                      type="arrow-left"
                     />
                   </FontAwesome>
                 </Icon>
@@ -1873,12 +1866,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   <FontAwesome
                     fixedWidth={true}
                     name="calendar"
-                    type="calendar"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-calendar fa-fw"
-                      type="calendar"
                     />
                   </FontAwesome>
                 </Icon>
@@ -2286,7 +2277,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -2298,7 +2288,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -2334,12 +2323,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -2420,12 +2407,15 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         className="fa-spin"
                         fixedWidth={true}
                         name="refresh"
-                        type="refresh"
                       >
                         <span
                           aria-hidden={true}
+<<<<<<< HEAD
                           className="fa fa-refresh fa-fw fa-spin"
                           type="refresh"
+=======
+                          className="fa fa-refresh fa-fw"
+>>>>>>> dev
                         />
                       </FontAwesome>
                     </Icon>
@@ -2963,12 +2953,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   <FontAwesome
                     fixedWidth={true}
                     name="arrow-left"
-                    type="arrow-left"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-arrow-left fa-fw"
-                      type="arrow-left"
                     />
                   </FontAwesome>
                 </Icon>
@@ -3043,12 +3031,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   <FontAwesome
                     fixedWidth={true}
                     name="calendar"
-                    type="calendar"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-calendar fa-fw"
-                      type="calendar"
                     />
                   </FontAwesome>
                 </Icon>
@@ -3645,7 +3631,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -3657,7 +3642,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -3702,12 +3686,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -3788,12 +3770,15 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         className="fa-spin"
                         fixedWidth={true}
                         name="refresh"
-                        type="refresh"
                       >
                         <span
                           aria-hidden={true}
+<<<<<<< HEAD
                           className="fa fa-refresh fa-fw fa-spin"
                           type="refresh"
+=======
+                          className="fa fa-refresh fa-fw"
+>>>>>>> dev
                         />
                       </FontAwesome>
                     </Icon>
@@ -4886,12 +4871,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   <FontAwesome
                     fixedWidth={true}
                     name="arrow-left"
-                    type="arrow-left"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-arrow-left fa-fw"
-                      type="arrow-left"
                     />
                   </FontAwesome>
                 </Icon>
@@ -4966,12 +4949,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   <FontAwesome
                     fixedWidth={true}
                     name="calendar"
-                    type="calendar"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-calendar fa-fw"
-                      type="calendar"
                     />
                   </FontAwesome>
                 </Icon>
@@ -6083,7 +6064,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -6095,7 +6075,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -6140,12 +6119,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -6342,7 +6319,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -6354,7 +6330,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -6399,12 +6374,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -6655,7 +6628,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -6667,7 +6639,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -6712,12 +6683,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -7529,6 +7498,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 "stopId": "TriMet:715",
                                 "stopIndex": 0,
                                 "timepoint": true,
+<<<<<<< HEAD
                                 "tripId": "TriMet:9238190",
                               },
                               Object {
@@ -7551,6 +7521,114 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               },
                             ],
                           },
+=======
+                                "tripId": "TriMet:9238187",
+                              }
+                            }
+                            timeFormat="HH:mm"
+                          >
+                            <div>
+                              <div
+                                className="pull-left"
+                              >
+                                <Icon
+                                  style={
+                                    Object {
+                                      "color": "#888",
+                                      "fontSize": "0.8em",
+                                      "marginRight": 2,
+                                    }
+                                  }
+                                  type="clock-o"
+                                >
+                                  <FontAwesome
+                                    fixedWidth={true}
+                                    name="clock-o"
+                                    style={
+                                      Object {
+                                        "color": "#888",
+                                        "fontSize": "0.8em",
+                                        "marginRight": 2,
+                                      }
+                                    }
+                                  >
+                                    <span
+                                      aria-hidden={true}
+                                      className="fa fa-clock-o fa-fw"
+                                      style={
+                                        Object {
+                                          "color": "#888",
+                                          "fontSize": "0.8em",
+                                          "marginRight": 2,
+                                        }
+                                      }
+                                    />
+                                  </FontAwesome>
+                                </Icon>
+                              </div>
+                              <div
+                                style={
+                                  Object {
+                                    "fontSize": 12,
+                                    "marginLeft": 20,
+                                  }
+                                }
+                              >
+                                <div
+                                  style={
+                                    Object {
+                                      "marginBottom": -4,
+                                    }
+                                  }
+                                >
+                                  Tuesday
+                                </div>
+                                <div>
+                                  14:28
+                                </div>
+                              </div>
+                            </div>
+                          </StopTimeCell>
+                        </div>
+                        <div
+                          className="expansion-button-container"
+                        >
+                          <button
+                            aria-controls="route-94"
+                            aria-expanded={false}
+                            aria-label="Expand all departures for Route 94"
+                            className="expansion-button"
+                            onClick={[Function]}
+                          >
+                            <Icon
+                              type="chevron-down"
+                            >
+                              <FontAwesome
+                                fixedWidth={true}
+                                name="chevron-down"
+                              >
+                                <span
+                                  aria-hidden={true}
+                                  className="fa fa-chevron-down fa-fw"
+                                />
+                              </FontAwesome>
+                            </Icon>
+                          </button>
+                        </div>
+                      </div>
+                      <VelocityTransitionGroup
+                        enter={
+                          Object {
+                            "animation": "slideDown",
+                          }
+                        }
+                        enterHideStyle={
+                          Object {
+                            "display": "none",
+                          }
+                        }
+                        enterShowStyle={
+>>>>>>> dev
                           Object {
                             "pattern": Object {
                               "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -8128,6 +8206,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       }
                       timeFormat="HH:mm"
                     >
+<<<<<<< HEAD
                       <RelatedPanel
                         expanded={false}
                         onToggleExpanded={[Function]}
@@ -8165,6 +8244,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       </RelatedPanel>
                     </AmenitiesPanel>
                   </Connect(AmenitiesPanel)>
+=======
+                      <FontAwesome
+                        className=""
+                        fixedWidth={true}
+                        name="refresh"
+                      >
+                        <span
+                          aria-hidden={true}
+                          className="fa fa-refresh fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
+                     
+                    17:50
+                  </button>
+>>>>>>> dev
                 </div>
               </LiveStopTimes>
             </div>
@@ -8665,12 +8760,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   <FontAwesome
                     fixedWidth={true}
                     name="arrow-left"
-                    type="arrow-left"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-arrow-left fa-fw"
-                      type="arrow-left"
                     />
                   </FontAwesome>
                 </Icon>
@@ -9385,6 +9478,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   }
                 }
               >
+<<<<<<< HEAD
                 <div>
                   <PatternRow
                     homeTimezone="America/Los_Angeles"
@@ -9532,6 +9626,45 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     <div
                       className="route-row"
                       role="table"
+=======
+                <Icon
+                  type="calendar"
+                >
+                  <FontAwesome
+                    fixedWidth={true}
+                    name="calendar"
+                  >
+                    <span
+                      aria-hidden={true}
+                      className="fa fa-calendar fa-fw"
+                    />
+                  </FontAwesome>
+                </Icon>
+                 
+                View 
+                schedule
+              </button>
+            </div>
+            <b>
+              Plan a trip:
+            </b>
+            <FromToLocationPicker
+              fromText="From here"
+              location={null}
+              onFromClick={[Function]}
+              onToClick={[Function]}
+              setLocation={null}
+              showIcons={true}
+              toText="To here"
+            >
+              <styled__FromToPickerSpan>
+                <span
+                  className="styled__FromToPickerSpan-p56b41-1 aqwCm"
+                >
+                  <styled__LocationPickerSpan>
+                    <span
+                      className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+>>>>>>> dev
                     >
                       <div
                         className="header"
@@ -9696,6 +9829,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           childFactory={[Function]}
                           component="div"
                         >
+<<<<<<< HEAD
                           <div />
                         </TransitionGroup>
                       </VelocityTransitionGroup>
@@ -9757,6 +9891,46 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   </button>
                   <RelatedStopsPanel
                     stopData={
+=======
+                          To here
+                        </button>
+                      </styled__Button>
+                    </span>
+                  </styled__LocationPickerSpan>
+                </span>
+              </styled__FromToPickerSpan>
+            </FromToLocationPicker>
+          </div>
+          <styled.div>
+            <div
+              className="sc-kEjbxe ddEshv"
+            >
+              <LiveStopTimes
+                autoRefreshStopTimes={true}
+                findStopTimesForStop={[Function]}
+                homeTimezone="America/Los_Angeles"
+                stopData={
+                  Object {
+                    "agencyName": "TriMet",
+                    "amenities": Array [
+                      "Bench near stop",
+                      "Crosswalk near stop",
+                      "Curb ramp near stop",
+                      "Lighting at stop",
+                      "Pavement at back door",
+                      "Pavement at front door",
+                      "Schedule display",
+                      "Sidewalk at stop",
+                    ],
+                    "code": "715",
+                    "desc": "Eastbound stop in Portland (Stop ID 715)",
+                    "id": "TriMet:715",
+                    "lat": 45.522912,
+                    "lon": -122.678538,
+                    "mode": "BUS",
+                    "name": "W Burnside & SW 8th",
+                    "routes": Array [
+>>>>>>> dev
                       Object {
                         "agencyName": "TriMet",
                         "amenities": Array [
@@ -11080,6 +11254,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               <div
                                 className="item-label"
                               >
+<<<<<<< HEAD
                                 <styled.div>
                                   <div
                                     className="sc-gsTCUz jiqUcX"
@@ -11095,6 +11270,177 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       </RelatedPanel>
                     </AmenitiesPanel>
                   </Connect(AmenitiesPanel)>
+=======
+                                <Icon
+                                  style={
+                                    Object {
+                                      "color": "#888",
+                                      "fontSize": "0.8em",
+                                      "marginRight": 2,
+                                    }
+                                  }
+                                  type="clock-o"
+                                >
+                                  <FontAwesome
+                                    fixedWidth={true}
+                                    name="clock-o"
+                                    style={
+                                      Object {
+                                        "color": "#888",
+                                        "fontSize": "0.8em",
+                                        "marginRight": 2,
+                                      }
+                                    }
+                                  >
+                                    <span
+                                      aria-hidden={true}
+                                      className="fa fa-clock-o fa-fw"
+                                      style={
+                                        Object {
+                                          "color": "#888",
+                                          "fontSize": "0.8em",
+                                          "marginRight": 2,
+                                        }
+                                      }
+                                    />
+                                  </FontAwesome>
+                                </Icon>
+                              </div>
+                              <div
+                                style={
+                                  Object {
+                                    "fontSize": 12,
+                                    "marginLeft": 20,
+                                  }
+                                }
+                              >
+                                <div
+                                  style={
+                                    Object {
+                                      "marginBottom": -4,
+                                    }
+                                  }
+                                >
+                                  Monday
+                                </div>
+                                <div>
+                                  17:45
+                                </div>
+                              </div>
+                            </div>
+                          </StopTimeCell>
+                        </div>
+                        <div
+                          className="expansion-button-container"
+                        >
+                          <button
+                            aria-controls="route-20"
+                            aria-expanded={false}
+                            aria-label="Expand all departures for Route 20"
+                            className="expansion-button"
+                            onClick={[Function]}
+                          >
+                            <Icon
+                              type="chevron-down"
+                            >
+                              <FontAwesome
+                                fixedWidth={true}
+                                name="chevron-down"
+                              >
+                                <span
+                                  aria-hidden={true}
+                                  className="fa fa-chevron-down fa-fw"
+                                />
+                              </FontAwesome>
+                            </Icon>
+                          </button>
+                        </div>
+                      </div>
+                      <VelocityTransitionGroup
+                        enter={
+                          Object {
+                            "animation": "slideDown",
+                          }
+                        }
+                        enterHideStyle={
+                          Object {
+                            "display": "none",
+                          }
+                        }
+                        enterShowStyle={
+                          Object {
+                            "display": "",
+                          }
+                        }
+                        leave={
+                          Object {
+                            "animation": "slideUp",
+                          }
+                        }
+                        runOnMount={false}
+                      >
+                        <TransitionGroup
+                          childFactory={[Function]}
+                          component="div"
+                        >
+                          <div />
+                        </TransitionGroup>
+                      </VelocityTransitionGroup>
+                    </div>
+                  </PatternRow>
+                </div>
+                <div
+                  style={
+                    Object {
+                      "marginTop": "20px",
+                    }
+                  }
+                >
+                  <label
+                    style={
+                      Object {
+                        "fontSize": "small",
+                        "fontWeight": 300,
+                      }
+                    }
+                  >
+                    <input
+                      checked={true}
+                      name="autoUpdate"
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                     
+                    Auto-refresh arrivals?
+                  </label>
+                  <button
+                    className="link-button pull-right"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "fontSize": "small",
+                      }
+                    }
+                  >
+                    <Icon
+                      className=""
+                      type="refresh"
+                    >
+                      <FontAwesome
+                        className=""
+                        fixedWidth={true}
+                        name="refresh"
+                      >
+                        <span
+                          aria-hidden={true}
+                          className="fa fa-refresh fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
+                     
+                    17:38
+                  </button>
+>>>>>>> dev
                 </div>
               </LiveStopTimes>
             </div>
@@ -11177,12 +11523,10 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                   <FontAwesome
                     fixedWidth={true}
                     name="arrow-left"
-                    type="arrow-left"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-arrow-left fa-fw"
-                      type="arrow-left"
                     />
                   </FontAwesome>
                 </Icon>
