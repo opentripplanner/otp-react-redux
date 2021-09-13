@@ -79,7 +79,6 @@ input[type=text]::-ms-clear {
 .app-menu {
   margin: 0;
   padding: 0;
-  font-size: 1.3rem;
 }
 
 .app-menu li {
@@ -98,9 +97,10 @@ input[type=text]::-ms-clear {
   outline: none;
 }
 
-.app-menu li a span,
-.expand-submenu-button span span {
-  font-size: 1.9rem;
+/* increase icon size */
+.app-menu li a .fa,
+.expand-submenu-button span .fa {
+  font-size: 2rem;
 }
 
 .app-menu span:not(.expand-menu-chevron) {
@@ -111,7 +111,6 @@ input[type=text]::-ms-clear {
 .app-menu li a span *:hover {
   color: #4c97f5;
 }
-
 
 .expand-menu-chevron {
   margin-right: -2rem;
@@ -142,28 +141,24 @@ input[type=text]::-ms-clear {
 }
 
 .sub-menu-container li a {
-    padding: 1rem 1rem 1rem 2rem;
+  padding: 1rem 1rem 1rem 2rem;
 }
 
 .sub-menu-container li a span {
-  font-size: 1.3rem;
   color: inherit;
 }
 
-.sub-menu-container li a span span {
-  font-size: 2rem !important;
-}
-
 .app-menu-divider {
-    border-bottom: 1px solid #cccccc;
-    margin-bottom: 1.3rem;
-    padding-bottom: 2rem !important;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 1.3rem;
+  padding-bottom: 2rem !important;
 }
-
 
 /* Buttons */
 
-button.header, button.step, .clear-button-formatting  {
+button.header,
+button.step,
+.clear-button-formatting {
   background: transparent;
   color: inherit;
   border: 0;
