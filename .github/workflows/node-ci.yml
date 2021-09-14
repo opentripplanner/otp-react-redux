@@ -12,6 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          # This allows us to work with the repository during the lint step
+          fetch-depth: 1
       - name: Use Node.js 16.x
         uses: actions/setup-node@v1
         with:
