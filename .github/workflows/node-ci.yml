@@ -21,7 +21,8 @@ jobs:
       - name: Copy example config
         run: cp example-config.yml config.yml
       - name: Lint code
-        run: yarn lint
+        # Move everything from latest commit back to staged
+        run: git reset --soft HEAD^ && yarn lint
       - name: Lint docs
         run: yarn lint-docs
       - name: Run tests
