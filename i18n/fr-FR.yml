@@ -144,8 +144,7 @@ components:
     delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
       Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
     delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
-      En temps normal, ce trajet prendrait <b>{normalDuration}</b>
-      en empruntant les lignes: {routes}."
+      En temps normal, ce trajet prendrait {normalDuration} en empruntant les lignes: {routes}."
     ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
   SavedTripEditor:
@@ -183,8 +182,8 @@ components:
     settings: Préférences
     trips: Trajets
   TabbedItineraries:
-    optionNumber: "Option {optionNum,number}"
-    fareCost: "{useMaxFare, select, 
+    optionNumber: "Option {optionNum, number}"
+    fareCost: "{hasMaxFare, select, 
       true {À partir de {minTotalFare}}
       other {{minTotalFare}}
     }"
@@ -341,7 +340,7 @@ common:
     save: Enregistrer
     yes: Oui
   itineraryDescriptions:
-    calories: kcal # SI unit
+    calories: "{calories, number} kcal" # SI unit
     noItineraryToDisplay: Aucun trajet à afficher.
     transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
 
@@ -360,10 +359,9 @@ common:
     home: domicile
     work: lieu de travail
   time:
-    departureArrivalTimes: "{startTime}—{endTime}"
+    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} mn"
-
     tripDurationFormat: "{hours, plural, 
         =0 {{minutes, number} mn}
         other {{hours, number} h {minutes, number} mn}}"

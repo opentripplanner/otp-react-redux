@@ -1,0 +1,12 @@
+{
+  "id": "Agency",
+  "name": "White Oak Dr @ Oxford St",
+  "lat": 29.78149,
+  "lon": -95.391953,
+  "code": "6478",
+  "desc": "WHITE OAK DR & OXFORD ST",
+  "locationType": 0,
+  "wheelchairBoarding": 0,
+  "vehicleType": -999,
+  "vehicleTypeSet": false
+}

@@ -158,7 +158,7 @@ components:
     delaysNotShownInResults: "Your trip results are currently being affected by service delays.
       These delays do not factor into travel times shown below."
     delaysShownInResults: "Your trip results have been adjusted based on real-time
-      information. Under normal conditions, this trip would take <b>{normalDuration}</b>
+      information. Under normal conditions, this trip would take {normalDuration}
       using the following routes: {routes}."
     ignoreServiceDelays: Ignore service delays
     serviceUpdate: Service update
@@ -197,8 +197,8 @@ components:
     settings: Settings
     trips: Trips
   TabbedItineraries:
-    optionNumber: "Option {optionNum,number}"
-    fareCost: "{useMaxFare, select, 
+    optionNumber: "Option {optionNum, number}"
+    fareCost: "{hasMaxFare, select, 
       true {{minTotalFare}+}
       other {{minTotalFare}}
     }"
@@ -360,7 +360,7 @@ common:
     yes: Yes
   # Shared itinerary description messages
   itineraryDescriptions:
-    calories: Cal
+    calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
     transfers: "{transfers, plural, =0 {} one {{transfers} transfer} other {{transfers} transfers}}"
 
@@ -384,11 +384,11 @@ common:
   time:
     # Use ordered placeholders for the departure-arrival string
     # (this will accommodate right-to-left languages by swapping the order in this string).
-    departureArrivalTimes: "{startTime}—{endTime}"
-    # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} min"
-    # TODO: Distinguish between one hour (singular) and 2 hours or more?
+    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     tripDurationFormat: "{hours, plural, 
         =0 {{minutes, number} min}
         other {{hours, number} hr {minutes, number} min}}"
+    # If trip is less than one hour only display the minutes.
+    tripDurationFormatZeroHours: "{minutes, number} min"
+    
       
