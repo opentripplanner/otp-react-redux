@@ -6,7 +6,8 @@
     "a11y-test": "jest a11y/ --runInBand --force-exit",
     "build": "craco build",
     "unit": "jest __tests__/",
-    "lint": "eslint lib __tests__ a11y --quiet",
+    "lint": "lint-staged",
+    "lint-all": "eslint lib __tests__ a11y --quiet",
     "lint-docs": "documentation lint lib/**/*.js",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
@@ -190,7 +191,7 @@
     "not op_mini all"
   ],
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ]
   }
