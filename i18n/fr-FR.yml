@@ -2,21 +2,121 @@ _id: fr-FR
 _name: Unofficial French Translations!
 
 components:
+  BatchRoutingPanel:
+    shortTitle: Planifier un trajet
   DefaultItinerary:
     clickDetails: Cliquez pour afficher les détails
-    departureArrivalTimes: "{startTime}—{endTime}"
     multiModeSummary: "{accessMode} + {transitMode}"
+    # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} mn"
-    tripDurationFormat: "{hours, number} h, {minutes, number} mn"
+    # TODO: Distinguish between one hour (singular) and 2 hours or more?
+    tripDurationFormat: "{hours, number} h {minutes, number} mn"
+  RouteViewer:
+    allAgencies: Tous exploitants
+    allModes: Tous modes # Note to translator: This text is width-constrained.
+    findARoute: Chercher une ligne
+    noFilteredRoutesFound: Aucune ligne ne correspond à vos critères
+    noRouteUrl: Aucun lien fourni pour cette ligne.
+    title: Index des lignes
+    shortTitle: Index des lignes
+    agencyFilter: Filtre pour les exploitants
+    modeFilter: Filtre pour les modes
+    details: " " # If the string is left blank, React-Intl renders the id
+  ItinerarySummary:
+    fareCost: "{useMaxFare, select, 
+      true {{minTotalFare} - {maxTotalFare}}
+      other {{minTotalFare}}
+    }"
+  NarrativeItinerariesHeader:
+    numIssues: "{issueNum, number} problèmes"
+    resultText: "{pending, select,
+      true {Recherche de vos options en cours...}
+      other {
+        {itineraryNum, number} {itineraryNum, plural,
+          one {trajet trouvé}
+          other {trajets trouvés}
+        }
+      }
+    }"
+    selectArrivalTime: Heure d'arrivée
+    selectBest: Meilleure option
+    selectCost: Prix
+    selectDepartureTime: Heure de départ
+    selectDuration: Durée
+    selectWalkTime: Temps de marche
+    titleText: "{pending, select, 
+      true {Recherche de vos options en cours...}
+      other {
+        {itineraryNum, number} {itineraryNum, plural,
+          one {trajet}
+          other {trajets}}
+        {issueNum, plural,
+          =0 {trouvé}
+          one {(et {issueNum, number} problème) trouvé}
+          other {(and {issueNum, number} problèmes) trouvés}
+        }
+      }
+    }"
+    viewAll: Voir toutes les options
+  PlanFirstLastButtons:
+    # Note to translator: these values are width-constrained.
+    first: Premier
+    last: Dernier
+    next: Suivant
+    previous: Précédent
+  RealtimeAnnotation:
+    ignoreServiceDelays: Appliquer les retards
+    delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
+      Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
+    delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
+      En temps normal, ce trajet prendrait {normalDuration} en empruntant les lignes: {routes}."
+    ignoreServiceDelays: Ignorer les retards
+    serviceUpdate: Information sur le service
+  SaveTripButton:
+    cantSaveText: Impossible d'enregistrer
+    cantSaveTooltip: Seuls les trajets en transports en commun sans location de véhicules et sans course en voiture peuvent être suivis.
+    saveTripText: Enregistrer
+    signInText: Connectez-vous pour enregistrer
+    signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
+  SimpleRealtimeAnnotation:
+    usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
+  TabbedItineraries:
+    optionNumber: "Option {optionNum, number}"
+    fareCost: "{hasMaxFare, select, 
+      true {À partir de {minTotalFare}}
+      other {{minTotalFare}}
+    }"
+  TripTools:
+    # Note to translator: copyLink, linkCopied, print, reportIssue,
+    # and startOver are width-constrained.
+    copyLink: Copier le lien
+    # Text that replaces the copyLink button text after user clicks it.
+    linkCopied: Copié
+    print: Imprimer
+    reportIssue: Un problème ? # "Signaler un problème" does not fit.
+    reportEmailSubject: Signaler un problème avec OpenTripPlanner
+    reportEmailTemplate: "                       *** A L'ATTENTION DE L'UTILISATEUR ***
+      Vous pouvez communiquer votre problème en détail aux administrateurs de ce site, par courriel.
+      Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
+      ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
+    startOver: Recommencer
 
 common:
+  # Standard navigation
+  navigation:
+    back: Retour
   accessModes:
     bike: Vélo
     bikeshare: Vélo en libre-service
     drive: Voiture
     micromobility: Trottinette électrique
     micromobilityRent: Trottinette électrique en libre-service
-    walk: Marche
+    walk: À pied
+
+  itineraryDescriptions:
+    calories: "{calories, number} kcal" # SI unit
+    transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
+
 
   otpTransitModes:
     tram: Tram
@@ -27,3 +127,9 @@ common:
     cable_car: Tram tiré par câble
     gondola: Téléphérique
     funicular: Funiculaire
+
+  time:
+    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
+    tripDurationFormat: "{hours, plural, 
+        =0 {{minutes, number} mn}
+        other {{hours, number} h {minutes, number} mn}}"
