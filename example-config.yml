@@ -15,7 +15,6 @@ api:
 #     lon: -122.71607145667079
 #     name: Oregon Zoo, Portland, OR
 
-
 ### Define the strategies for how to handle auto-planning of a new trip when
 ### different query parameters are changes in the form. The default config is
 ### shown below, but if autoPlan is set to false, auto-plan will never occur.
@@ -29,7 +28,6 @@ api:
 ### Note: the override values must be valid values within otp-ui's query-params.js
 # defaultQueryParams:
 #   maxWalkDistance: 3219 # 2 miles in meters
-
 
 ### The persistence setting is used to enable the storage of places (home, work),
 ### recent searches/places, user overrides, and favorite stops.
@@ -62,35 +60,19 @@ persistence:
 ### Icon URL is preferable over iconType. If non are given then a 'bus' iconType is used.
 #App menu
 #extraMenuItems:
-#  - id: Traveler Tools
-#    label: Traveler Tools
-#    iconType: 'car'
+#  - id: link-list
+#    label: List of Links
+#    iconType: 'train'
 #    iconUrl: ''
 #    children:
-#      - id: Breeze Mobile
-#        label: Breeze Mobile
+#      - id: bus-website
+#        label: Bus Website
 #        iconType: 'bus'
 #        iconUrl: ''
 #        href: ''
 #        separator: 'true'
-#      - id: Log My Commute
-#        label: Log My Commute
-#        iconType: 'car'
-#        iconUrl: ''
-#        href: ''
-#      - id: Car Pool
-#        label: Car Pool
-#        iconType: 'undo'
-#        iconUrl: ''
-#        href: ''
-#      - id: Peach Pass
-#        label: Peach Pass
-#        iconType: 'car'
-#        iconUrl: https://img.icons8.com/fluency/48/000000/peach.png
-#        href: ''
-#        separator: 'true'
-#      - id: Give Us Feedback
-#        label: Give Us Feedback
+#      - id: car-website
+#        label: Car Website
 #        iconType: 'car'
 #        iconUrl: ''
 #        href: ''
@@ -101,7 +83,7 @@ map:
   baseLayers:
     - name: Streets
       url: //cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png
-      subdomains: 'abcd'
+      subdomains: "abcd"
       attribution: 'Map tiles: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
       maxZoom: 20
       hasRetinaSupport: true
@@ -336,7 +318,7 @@ itinerary:
 #  # In some components such as DefaultItinerary, we display a cost element
 #  # that falls back to $0.00 (or its equivalent in the configured ambient currency
 #  # and in the user-selected locale) if no fare or currency info is available.
-#  currency: 'USD' 
+#  currency: 'USD'
 #  defaultLocale: 'en-US'
 
 ### If using OTP Middleware, you can define the optional phone number options below.
@@ -352,7 +334,6 @@ itinerary:
 # Format the date time format for display.
 dateTime:
   longDateFormat: DD-MM-YYYY
-
 # stopViewer:
 #   # The max. number of departures to show for each trip pattern
 #   # in the stop viewer Next Arrivals mode

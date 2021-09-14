@@ -18,10 +18,9 @@
 
 @import url(react-sliding-pane/dist/react-sliding-pane.css);
 
-
 /* Hide IE/Edge clear button in text input fields. */
-input[type=text]::-ms-clear {
-    display: none;
+input[type="text"]::-ms-clear {
+  display: none;
 }
 
 /* New app menu */
@@ -38,8 +37,14 @@ input[type=text]::-ms-clear {
   top: 16px;
 }
 
-.menu-top-line, 
-.menu-middle-line, 
+@media only screen and (max-width: 768px) {
+  .app-menu-icon {
+    margin-left: 15px;
+  }
+}
+
+.menu-top-line,
+.menu-middle-line,
 .menu-bottom-line,
 .menu-left-x,
 .menu-right-x {
@@ -137,7 +142,6 @@ input[type=text]::-ms-clear {
 
 .sub-menu-container {
   border-top: 1px solid #cccccc;
-  padding-top: 1rem;
 }
 
 .sub-menu-container li a {
@@ -150,8 +154,8 @@ input[type=text]::-ms-clear {
 
 .app-menu-divider {
   border-bottom: 1px solid #cccccc;
-  margin-bottom: 1.3rem;
-  padding-bottom: 2rem !important;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem !important;
 }
 
 /* Buttons */
@@ -181,7 +185,8 @@ button.step,
   background: none;
 }
 
-button.header, button.step {
+button.header,
+button.step {
   width: 100%;
 }
 
