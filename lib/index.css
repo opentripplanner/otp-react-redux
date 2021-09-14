@@ -98,6 +98,7 @@ input[type="text"]::-ms-clear {
 
 .app-menu li a {
   color: inherit;
+  font-size: 20px;
   text-decoration: none;
   outline: none;
 }
@@ -129,11 +130,10 @@ input[type="text"]::-ms-clear {
   white-space: nowrap;
 }
 
-.expand-submenu-button {
+.expand-submenu-button a {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  margin: 0rem 0rem 0rem -0.5rem;
   background: transparent;
   border: none;
   outline: none;
