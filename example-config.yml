@@ -40,6 +40,10 @@ api:
 persistence:
   enabled: true
   strategy: localStorage
+  ### This variable hides the "more info" link when accepting the terms of storage.
+  ### If no terms of storage page content is set, this removes an otherwise dead link
+  ### False is default in that if the value isn't set, the link isn't shown
+  # terms_of_storage: true
 
 ### If using the OTP Middleware to store user profiles
 ### with Auth0 as the authentication mechanism,

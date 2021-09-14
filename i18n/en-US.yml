@@ -27,9 +27,6 @@ _name: English
 components:
   DefaultItinerary:
     clickDetails: Click to view details
-    # Use ordered placeholders for the departure-arrival string
-    # (this will accommodate right-to-left languages by swapping the order in this string).
-    departureArrivalTimes: "{startTime}—{endTime}"
     # Use ordered placeholders when multiple modes are involved
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
     multiModeSummary: "{accessMode} to {transitMode}"
@@ -41,6 +38,85 @@ components:
     closeMenu: "Close Menu"
     openMenu: "Open Menu"
     menuItemIconAlt: "Icon for {label} menu item"
+  ItinerarySummary:
+    fareCost: "{useMaxFare, select, 
+      true {{minTotalFare} - {maxTotalFare}}
+      other {{minTotalFare}}
+    }"
+  NarrativeItinerariesHeader:
+    numIssues: "{issueNum, number} issues"
+    resultText: "{pending, select,
+      true {Finding your options...}
+      other {
+        {itineraryNum, number} {itineraryNum, plural,
+          one {itinerary found}
+          other {itineraries found}
+        }
+      }
+    }"
+    selectArrivalTime: Arrival time
+    selectBest: Best option
+    selectCost: Cost
+    selectDepartureTime: Departure time
+    selectDuration: Duration
+    selectWalkTime: Walk time
+    titleText: "{pending, select, 
+      true {Finding your options...}
+      other {
+        {itineraryNum, number} {itineraryNum, plural,
+          one {itinerary}
+          other {itineraries}}
+        {issueNum, plural,
+          =0 {found}
+          one {(and {issueNum, number} issue) found}
+          other {(and {issueNum, number} issues) found}
+        }
+      }
+    }"
+    viewAll: View all options
+  PlanFirstLastButtons:
+    # Note to translator: these values are width-constrained.
+    first: First
+    last: Last
+    next: Next
+    previous: Previous
+  RealtimeAnnotation:
+    ignoreServiceDelays: Apply service delays
+    delaysNotShownInResults: "Your trip results are currently being affected by service delays.
+      These delays do not factor into travel times shown below."
+    delaysShownInResults: "Your trip results have been adjusted based on real-time
+      information. Under normal conditions, this trip would take {normalDuration}
+      using the following routes: {routes}."
+    ignoreServiceDelays: Ignore service delays
+    serviceUpdate: Service update
+  SaveTripButton:
+    cantSaveText: Cannot save
+    cantSaveTooltip: Only itineraries that include transit and no rentals or ride hailing can be monitored.
+    saveTripText: Save trip
+    signInText: Sign in to save trip
+    signInTooltip: Please sign in to save trip.
+  SimpleRealtimeAnnotation:
+    usingRealtimeInfo: This trip uses real-time traffic and delay information
+  TabbedItineraries:
+    optionNumber: "Option {optionNum, number}"
+    fareCost: "{hasMaxFare, select, 
+      true {{minTotalFare}+}
+      other {{minTotalFare}}
+    }"
+  TripTools:
+    # Note to translator: copyLink, linkCopied, print, reportIssue,
+    # and startOver are width-constrained.
+    copyLink: Copy link
+    # Text that replaces the copyLink button text after user clicks it.
+    linkCopied: Copied
+    print: Print
+    reportIssue: Report Issue
+    reportEmailSubject: Reporting an Issue with OpenTripPlanner
+    reportEmailTemplate: "                       *** INSTRUCTIONS TO USER ***
+      This feature allows you to email a report to site administrators for review.
+      Please add any additional feedback for this trip under the 'Additional Comments'
+      section below and send using your regular email program."
+    startOver: Start Over # TODO: move to other category (common with hamburger 'Start Over' item)
 
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
@@ -54,6 +130,10 @@ common:
     micromobilityRent: Rental E-Scooter
     walk: Walk
 
+  itineraryDescriptions:
+    calories: "{calories, number} Cal"
+    transfers: "{transfers, plural, =0 {} one {{transfers} transfer} other {{transfers} transfers}}"
+
   # OTP transit modes
   # Note that identifiers are OTP modes converted to lowercase.
   otpTransitModes:
@@ -66,3 +146,12 @@ common:
     cable_car: Cable Car
     gondola: Gondola
     funicular: Funicular
+
+  time:
+     # Use ordered placeholders for the departure-arrival string
+    # (this will accommodate right-to-left languages by swapping the order in this string).
+    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
+    tripDurationFormat: "{hours, plural, 
+        =0 {{minutes, number} min}
+        other {{hours, number} hr {minutes, number} min}}"
+      
