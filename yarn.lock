@@ -2437,8 +2437,10 @@
     "@opentripplanner/from-to-location-picker" "^1.0.3"
     "@opentripplanner/zoom-based-markers" "^1.0.1"
 
-"@opentripplanner/transit-vehicle-overlay@../otp-ui/packages/transit-vehicle-overlay":
-  version "2.2.0"
+"@opentripplanner/transit-vehicle-overlay@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-2.2.1.tgz#24a756f4f0a7805396f7d8dcde4a086ce48bd0af"
+  integrity sha512-eVYgzAJWE5IddDXXV/O2+NHgYBujGPGKRASkRbhfzlUPinyVQTtABPMGLfbhobdaZYzPChNwPmUi7TiPROJ4tQ==
   dependencies:
     "@opentripplanner/core-utils" "^4.1.0"
     "@opentripplanner/icons" "^1.1.0"

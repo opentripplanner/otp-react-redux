@@ -46,7 +46,7 @@
     "@opentripplanner/route-viewer-overlay": "^1.1.0",
     "@opentripplanner/stop-viewer-overlay": "^1.1.0",
     "@opentripplanner/stops-overlay": "^3.2.0",
-    "@opentripplanner/transit-vehicle-overlay": "opentripplanner/otp-ui#update-core-utils-in-all-packages",
+    "@opentripplanner/transit-vehicle-overlay": "^2.2.1",
     "@opentripplanner/transitive-overlay": "^1.1.1",
     "@opentripplanner/trip-details": "^1.3.1",
     "@opentripplanner/trip-form": "^1.3.1",
