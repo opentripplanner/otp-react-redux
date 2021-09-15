@@ -78,7 +78,7 @@ input[type="text"]::-ms-clear {
 }
 
 .slide-pane__content {
-  padding: 24px 0;
+  padding: 6px 0;
 }
 
 .app-menu {
@@ -137,7 +137,6 @@ input[type="text"]::-ms-clear {
   background: transparent;
   border: none;
   outline: none;
-  padding-bottom: 1rem;
 }
 
 .sub-menu-container {
@@ -154,8 +153,6 @@ input[type="text"]::-ms-clear {
 
 .app-menu-divider {
   border-bottom: 1px solid #cccccc;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem !important;
 }
 
 /* Buttons */
