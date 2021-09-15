@@ -1,17 +1,22 @@
+import React from 'react'
 import moment from 'moment-timezone'
 import { FormattedMessage } from 'react-intl'
 
 /**
  * Formats the given duration according to the selected locale.
  */
-export default function FormattedDuration ({duration}) {
+export default function FormattedDuration({
+  duration
+}: {
+  duration: number
+}): JSX.Element {
   const dur = moment.duration(duration, 'seconds')
   const hours = dur.hours()
   const minutes = dur.minutes()
   return (
     <FormattedMessage
-      id='common.time.tripDurationFormat'
-      values={{hours, minutes}}
+      id="common.time.tripDurationFormat"
+      values={{ hours, minutes }}
     />
   )
 }

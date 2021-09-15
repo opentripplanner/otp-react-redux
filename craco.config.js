@@ -1,6 +1,10 @@
 const path = require('path')
 
-const { addBeforeLoader, loaderByName } = require('@craco/craco')
+const {
+  addAfterLoader,
+  addBeforeLoader,
+  loaderByName
+} = require('@craco/craco')
 const BabelRcPlugin = require('@jackwilsdon/craco-use-babelrc')
 
 module.exports = {
@@ -16,6 +20,16 @@ module.exports = {
       paths.appIndexJs = path.resolve(__dirname, 'example.js')
       webpackConfig.entry = paths.appIndexJs
       addBeforeLoader(webpackConfig, loaderByName('file-loader'), yamlLoader)
+
+      const tsLoader = {
+        include: paths.appSrc,
+        loader: require.resolve('ts-loader'),
+        options: { transpileOnly: true },
+        test: /\.(js|mjs|jsx|ts|tsx)$/
+      }
+
+      addAfterLoader(webpackConfig, loaderByName('url-loader'), tsLoader)
+
       return webpackConfig
     }
   }

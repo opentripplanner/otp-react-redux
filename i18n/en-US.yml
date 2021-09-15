@@ -22,7 +22,6 @@ _name: English
 #   - In contrast, some strings are common to multiple components,
 #     so it makes sense to group them by theme (e.g. accessModes) under the 'common' category.
 
-
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
 components:
@@ -32,40 +31,43 @@ components:
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
     multiModeSummary: "{accessMode} to {transitMode}"
   ItinerarySummary:
-    fareCost: "{useMaxFare, select, 
-      true {{minTotalFare} - {maxTotalFare}}
-      other {{minTotalFare}}
-    }"
+    fareCost: >
+      "{useMaxFare, select, 
+        true {{minTotalFare} - {maxTotalFare}}
+        other {{minTotalFare}}
+      }"
   NarrativeItinerariesHeader:
     numIssues: "{issueNum, number} issues"
-    resultText: "{pending, select,
-      true {Finding your options...}
-      other {
-        {itineraryNum, number} {itineraryNum, plural,
-          one {itinerary found}
-          other {itineraries found}
+    resultText: >
+      "{pending, select,
+        true {Finding your options...}
+        other {
+          {itineraryNum, number} {itineraryNum, plural,
+            one {itinerary found}
+            other {itineraries found}
+          }
         }
-      }
-    }"
+      }"
     selectArrivalTime: Arrival time
     selectBest: Best option
     selectCost: Cost
     selectDepartureTime: Departure time
     selectDuration: Duration
     selectWalkTime: Walk time
-    titleText: "{pending, select, 
-      true {Finding your options...}
-      other {
-        {itineraryNum, number} {itineraryNum, plural,
-          one {itinerary}
-          other {itineraries}}
-        {issueNum, plural,
-          =0 {found}
-          one {(and {issueNum, number} issue) found}
-          other {(and {issueNum, number} issues) found}
+    titleText: >
+      "{pending, select, 
+        true {Finding your options...}
+        other {
+          {itineraryNum, number} {itineraryNum, plural,
+            one {itinerary}
+            other {itineraries}}
+          {issueNum, plural,
+            =0 {found}
+            one {(and {issueNum, number} issue) found}
+            other {(and {issueNum, number} issues) found}
+          }
         }
-      }
-    }"
+      }"
     viewAll: View all options
   PlanFirstLastButtons:
     # Note to translator: these values are width-constrained.
@@ -74,10 +76,12 @@ components:
     next: Next
     previous: Previous
   RealtimeAnnotation:
-    ignoreServiceDelays: Apply service delays
-    delaysNotShownInResults: "Your trip results are currently being affected by service delays.
+    applyServiceDelays: Apply service delays
+    delaysNotShownInResults:
+      "Your trip results are currently being affected by service delays.
       These delays do not factor into travel times shown below."
-    delaysShownInResults: "Your trip results have been adjusted based on real-time
+    delaysShownInResults:
+      "Your trip results have been adjusted based on real-time
       information. Under normal conditions, this trip would take {normalDuration}
       using the following routes: {routes}."
     ignoreServiceDelays: Ignore service delays
@@ -92,10 +96,11 @@ components:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   TabbedItineraries:
     optionNumber: "Option {optionNum, number}"
-    fareCost: "{hasMaxFare, select, 
-      true {{minTotalFare}+}
-      other {{minTotalFare}}
-    }"
+    fareCost: >
+      "{hasMaxFare, select, 
+        true {{minTotalFare}+}
+        other {{minTotalFare}}
+      }"
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue,
     # and startOver are width-constrained.
@@ -141,10 +146,9 @@ common:
     funicular: Funicular
 
   time:
-     # Use ordered placeholders for the departure-arrival string
+    # Use ordered placeholders for the departure-arrival string
     # (this will accommodate right-to-left languages by swapping the order in this string).
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
-    tripDurationFormat: "{hours, plural, 
-        =0 {{minutes, number} min}
-        other {{hours, number} hr {minutes, number} min}}"
-      
+    tripDurationFormat: "{hours, plural,
+      =0 {{minutes, number} min}
+      other {{hours, number} hr {minutes, number} min}}"

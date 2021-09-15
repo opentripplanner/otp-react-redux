@@ -36,6 +36,7 @@ module.exports = {
         }
       }
     ],
+    '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/no-var-requires': 0,
     complexity: ['warn', 12],
     'import/order': [
@@ -54,6 +55,9 @@ module.exports = {
         }
       }
     ],
+    // from docs: https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md#how-to-use
+    // it must be disabled to work correctly
+    'no-use-before-define': 'off',
     'object-curly-spacing': 0,
     'prefer-const': [
       'warn',
