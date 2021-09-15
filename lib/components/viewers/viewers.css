@@ -63,6 +63,11 @@
   font-weight: 700;
   font-size: 24px;
 }
+.otp .route-viewer .header-text.route-expanded {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
 /* stop viewer styles */
 

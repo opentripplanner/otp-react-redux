@@ -37,7 +37,7 @@ components:
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
     tripDurationFormat: "{hours, number} hr {minutes, number} min"
   RouteDetails:
-    runBy: "Run by {agencyName}"
+    operatedBy: "Operated by {agencyName}"
     moreDetails: "More Details"
     stopsTo: "Stops To"
   RouteViewer:
@@ -51,13 +51,19 @@ components:
     agencyFilter: Agency Filter
     modeFilter: Mode Filter
     details: " " # If the string is left blank, React-Intl renders the id
+  RouteRow:
+    operatorLogoAltText: '{operatorName} logo'
   TransitVehicleOverlay:
     # keys designed to match API output
-    incoming_at: "approaching"
-    stopped_at: "doors open at"
-    in_transit_to: "next stop"
-    travellingAt: "travelling at"
+    incoming_at: "approaching {stop}"
+    stopped_at: "doors open at {stop}"
+    in_transit_to: "next stop {stop}"
+
+    travellingAt: "travelling at {milesPerHour}"
     relativeTime: "{seconds} ago"
+    routeNumberAndName: "{mode}{name && ' '}{name}"
+    line: "Line"
+    realtimeVehicleName: "{name}: "
     details: " " # If the string is left blank, React-Intl renders the id
   ItinerarySummary:
     fareCost: "{useMaxFare, select, 
