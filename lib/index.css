@@ -87,7 +87,8 @@ input[type="text"]::-ms-clear {
 }
 
 .app-menu li {
-  padding: 1rem 2rem;
+  list-style-type: none;
+  margin: 1rem 2rem;
   cursor: pointer;
 }
 
@@ -120,7 +121,6 @@ input[type="text"]::-ms-clear {
 
 .expand-menu-chevron {
   margin-right: -2rem;
-  justify-self: flex-end;
 }
 
 .dropdown-header {
@@ -144,15 +144,20 @@ input[type="text"]::-ms-clear {
 }
 
 .sub-menu-container li a {
-  padding: 1rem 1rem 1rem 2rem;
+  margin-left: 2rem;
 }
 
 .sub-menu-container li a span {
   color: inherit;
 }
 
-.app-menu-divider {
-  border-bottom: 1px solid #cccccc;
+.app-menu-divider::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #ccc;
+  margin: 1rem;
+  width: 200%; /* ensures the line extends to the edge of the pane */
 }
 
 /* Buttons */
