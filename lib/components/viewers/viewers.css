@@ -326,7 +326,7 @@
   border: none;
   padding: 0.125em 0.5em;
   border-radius: 5px;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 .routeSearch input::-webkit-search-cancel-button {
   /* show clear button on webkit browsers */
