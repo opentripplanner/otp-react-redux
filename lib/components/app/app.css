@@ -78,7 +78,7 @@
 .view-switcher button.btn-link:hover,
 .view-switcher button.btn-link:focus {
   text-decoration: none;
-  outline: none;
+  border-radius: 15px;
 }
 
 .view-switcher button.btn-link:hover {
