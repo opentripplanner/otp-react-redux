@@ -5,6 +5,14 @@ components:
   DefaultItinerary:
     clickDetails: Cliquez pour afficher les détails
     multiModeSummary: "{accessMode} + {transitMode}"
+    # If trip is less than one hour only display the minutes.
+    tripDurationFormatZeroHours: "{minutes, number} mn"
+    # TODO: Distinguish between one hour (singular) and 2 hours or more?
+    tripDurationFormat: "{hours, number} h {minutes, number} mn"
+  AppMenu:
+    closeMenu: "Fermer le menu"
+    openMenu: "Ouvrir le menu"
+    menuItemIconAlt: "Icône pour le menu {label}"
   ItinerarySummary:
     fareCost: "{useMaxFare, select, 
       true {{minTotalFare} - {maxTotalFare}}
