@@ -39,7 +39,8 @@ components:
   RouteDetails:
     operatedBy: "Operated by {agencyName}"
     moreDetails: "More Details"
-    stopsTo: "Stops To"
+    stopsTo: "Towards"
+    selectADirection: "Select a direction..."
   RouteViewer:
     allAgencies: All Agencies
     allModes: All Modes # Note to translator: This text is width-constrained.
