@@ -155,3 +155,6 @@ common:
         =0 {{minutes, number} min}
         other {{hours, number} hr {minutes, number} min}}"
       
+config:
+  menuItems:
+    give-us-feedback: Give Us Feedback!

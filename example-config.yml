@@ -70,7 +70,8 @@ persistence:
 #    iconUrl: ''
 #    children:
 #      - id: bus-website
-#        label: Bus Website
+#        # Label will be overridden by localization file and can be omitted if a localized version is present
+#        # only one of iconType or iconUrl is needed
 #        iconType: 'bus'
 #        iconUrl: ''
 #        href: ''
