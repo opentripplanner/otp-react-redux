@@ -64,7 +64,7 @@ components:
     relativeTime: "{seconds} ago"
     routeNumberAndName: "{mode}{name && ' '}{name}"
     line: "Line"
-    realtimeVehicleName: "{name}: "
+    realtimeVehicleName: "{mode}{headsign}: " # name will include a space if it is set, otherwise be blank
     details: " " # If the string is left blank, React-Intl renders the id
   ItinerarySummary:
     fareCost: "{useMaxFare, select, 
