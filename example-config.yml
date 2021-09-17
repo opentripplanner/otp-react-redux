@@ -269,6 +269,14 @@ itinerary:
 #     defaultRouteTextColor: '000000'
 #     longNameSplitter: ' - '
 #     order: 2
+# Use this config to overwrite the  accessibility score gradation
+# map that ships with otp-ui
+#accessibilityScore:
+#    gradationMap:
+#        0.0:
+#            color: "#ffb5b9"
+#            text: 'Not Accessible'
+#            icon: thumbs-down
 
 ### Use this config for the standard mode selector
 # modeGroups:
