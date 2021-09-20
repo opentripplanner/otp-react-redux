@@ -32,14 +32,14 @@ components:
     multiModeSummary: "{accessMode} to {transitMode}"
   ItinerarySummary:
     fareCost: >
-      "{useMaxFare, select, 
+      {useMaxFare, select, 
         true {{minTotalFare} - {maxTotalFare}}
         other {{minTotalFare}}
-      }"
+      }
   NarrativeItinerariesHeader:
     numIssues: "{issueNum, number} issues"
     resultText: >
-      "{pending, select,
+      {pending, select,
         true {Finding your options...}
         other {
           {itineraryNum, number} {itineraryNum, plural,
@@ -47,7 +47,7 @@ components:
             other {itineraries found}
           }
         }
-      }"
+      }
     selectArrivalTime: Arrival time
     selectBest: Best option
     selectCost: Cost
@@ -55,7 +55,7 @@ components:
     selectDuration: Duration
     selectWalkTime: Walk time
     titleText: >
-      "{pending, select, 
+      {pending, select, 
         true {Finding your options...}
         other {
           {itineraryNum, number} {itineraryNum, plural,
@@ -67,7 +67,7 @@ components:
             other {(and {issueNum, number} issues) found}
           }
         }
-      }"
+      }
     viewAll: View all options
   PlanFirstLastButtons:
     # Note to translator: these values are width-constrained.
@@ -97,10 +97,10 @@ components:
   TabbedItineraries:
     optionNumber: "Option {optionNum, number}"
     fareCost: >
-      "{hasMaxFare, select, 
+      {hasMaxFare, select, 
         true {{minTotalFare}+}
         other {{minTotalFare}}
-      }"
+      }
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue,
     # and startOver are width-constrained.
