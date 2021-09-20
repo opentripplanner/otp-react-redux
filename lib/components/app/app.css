@@ -62,6 +62,10 @@
   box-sizing: border-box;
 }
 
+/* Batch routing panel requires padding removed from sidebar */
+.batch-routing-panel {
+  padding: 10px;
+}
 /* View Switcher Styling */
 .view-switcher {
   align-items: center;
