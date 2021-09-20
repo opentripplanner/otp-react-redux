@@ -37,7 +37,7 @@ components:
 
     vehicleName: "Véhicule {vehicleNumber}: "
     realtimeVehicleInfo: "<b>{vehicleNameOrBlank}</b>{relativeTime}"
-    travellingAt: "Vitesse : {milesPerHour}"
+    travelingAt: "Vitesse : {milesPerHour}"
   ItinerarySummary:
     fareCost: "{useMaxFare, select, 
       true {{minTotalFare} - {maxTotalFare}}
