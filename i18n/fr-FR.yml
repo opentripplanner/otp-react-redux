@@ -11,6 +11,11 @@ components:
     tripDurationFormatZeroHours: "{minutes, number} mn"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
     tripDurationFormat: "{hours, number} h {minutes, number} mn"
+  RouteDetails:
+    operatedBy: "Exploité par {agencyName}"
+    moreDetails: "Plus d'infos"
+    stopsTo: "Direction"
+    selectADirection: "Choisissez une direction..."
   RouteViewer:
     allAgencies: Tous exploitants
     allModes: Tous modes # Note to translator: This text is width-constrained.
@@ -22,6 +27,17 @@ components:
     agencyFilter: Filtre pour les exploitants
     modeFilter: Filtre pour les modes
     details: " " # If the string is left blank, React-Intl renders the id
+  RouteRow:
+    operatorLogoAltText: "Logo de {operatorName}"
+  TransitVehicleOverlay:
+    # keys designed to match API output
+    incoming_at: "Approchant {stop}"
+    stopped_at: "À quai à {stop}"
+    in_transit_to: "Prochain arrêt : {stop}"
+
+    vehicleName: "Véhicule {vehicleNumber}: "
+    realtimeVehicleInfo: "<b>{vehicleNameOrBlank}</b>{relativeTime}"
+    travellingAt: "Vitesse : {milesPerHour}"
   ItinerarySummary:
     fareCost: "{useMaxFare, select, 
       true {{minTotalFare} - {maxTotalFare}}
