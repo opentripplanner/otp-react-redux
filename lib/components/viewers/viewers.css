@@ -170,6 +170,7 @@
 .otp .stop-viewer .stop-viewer-body .related-item .item-label {
   display: flex;
   width: 100%;
+  align-items: baseline;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
