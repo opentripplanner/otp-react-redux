@@ -94,6 +94,7 @@ Object {
     "rideEstimates": Object {},
   },
   "transitIndex": Object {
+    "routes": Object {},
     "stops": Object {},
     "trips": Object {},
   },
@@ -103,6 +104,13 @@ Object {
     "localizedMessages": Object {},
     "mobileScreen": 1,
     "printView": false,
+    "routeViewer": Object {
+      "filter": Object {
+        "agency": null,
+        "mode": null,
+        "search": "",
+      },
+    },
   },
   "useRealtime": true,
   "user": Object {

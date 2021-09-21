@@ -38,7 +38,7 @@
 
 .sidebar {
   height: 100%;
-  padding: 10px;
+  padding: 0;
   box-shadow: 3px 0px 12px #00000052;
   z-index: 1000;
 }
