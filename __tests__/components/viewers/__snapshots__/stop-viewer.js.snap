@@ -1238,9 +1238,15 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       expanded={false}
                       onToggleExpanded={[Function]}
                       title="Related Stops"
+                      titleWidth="13ch"
                     >
                       <h4
                         className="related-panel-title"
+                        style={
+                          Object {
+                            "width": "13ch",
+                          }
+                        }
                       >
                         Related Stops
                       </h4>
@@ -1609,9 +1615,15 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         expanded={false}
                         onToggleExpanded={[Function]}
                         title="Nearby Amenities"
+                        titleWidth="16ch"
                       >
                         <h4
                           className="related-panel-title"
+                          style={
+                            Object {
+                              "width": "16ch",
+                            }
+                          }
                         >
                           Nearby Amenities
                         </h4>
@@ -1629,7 +1641,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-dlfnbm cgTIpU"
+                                    className="sc-dlfnbm eSOmhd"
                                   >
                                     P
                                   </div>
@@ -2504,9 +2516,15 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       expanded={false}
                       onToggleExpanded={[Function]}
                       title="Related Stops"
+                      titleWidth="13ch"
                     >
                       <h4
                         className="related-panel-title"
+                        style={
+                          Object {
+                            "width": "13ch",
+                          }
+                        }
                       >
                         Related Stops
                       </h4>
@@ -2677,9 +2695,15 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         expanded={false}
                         onToggleExpanded={[Function]}
                         title="Nearby Amenities"
+                        titleWidth="16ch"
                       >
                         <h4
                           className="related-panel-title"
+                          style={
+                            Object {
+                              "width": "16ch",
+                            }
+                          }
                         >
                           Nearby Amenities
                         </h4>
@@ -2697,7 +2721,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-dlfnbm cgTIpU"
+                                    className="sc-dlfnbm eSOmhd"
                                   >
                                     P
                                   </div>
@@ -3968,9 +3992,15 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       expanded={false}
                       onToggleExpanded={[Function]}
                       title="Related Stops"
+                      titleWidth="13ch"
                     >
                       <h4
                         className="related-panel-title"
+                        style={
+                          Object {
+                            "width": "13ch",
+                          }
+                        }
                       >
                         Related Stops
                       </h4>
@@ -4339,9 +4369,15 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         expanded={false}
                         onToggleExpanded={[Function]}
                         title="Nearby Amenities"
+                        titleWidth="16ch"
                       >
                         <h4
                           className="related-panel-title"
+                          style={
+                            Object {
+                              "width": "16ch",
+                            }
+                          }
                         >
                           Nearby Amenities
                         </h4>
@@ -4359,7 +4395,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-dlfnbm cgTIpU"
+                                    className="sc-dlfnbm eSOmhd"
                                   >
                                     P
                                   </div>
@@ -7224,9 +7260,15 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       expanded={false}
                       onToggleExpanded={[Function]}
                       title="Related Stops"
+                      titleWidth="13ch"
                     >
                       <h4
                         className="related-panel-title"
+                        style={
+                          Object {
+                            "width": "13ch",
+                          }
+                        }
                       >
                         Related Stops
                       </h4>
@@ -8111,9 +8153,15 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         expanded={false}
                         onToggleExpanded={[Function]}
                         title="Nearby Amenities"
+                        titleWidth="16ch"
                       >
                         <h4
                           className="related-panel-title"
+                          style={
+                            Object {
+                              "width": "16ch",
+                            }
+                          }
                         >
                           Nearby Amenities
                         </h4>
@@ -8131,7 +8179,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-dlfnbm cgTIpU"
+                                    className="sc-dlfnbm eSOmhd"
                                   >
                                     P
                                   </div>
@@ -10161,9 +10209,15 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       expanded={false}
                       onToggleExpanded={[Function]}
                       title="Related Stops"
+                      titleWidth="13ch"
                     >
                       <h4
                         className="related-panel-title"
+                        style={
+                          Object {
+                            "width": "13ch",
+                          }
+                        }
                       >
                         Related Stops
                       </h4>
@@ -11038,9 +11092,15 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         expanded={false}
                         onToggleExpanded={[Function]}
                         title="Nearby Amenities"
+                        titleWidth="16ch"
                       >
                         <h4
                           className="related-panel-title"
+                          style={
+                            Object {
+                              "width": "16ch",
+                            }
+                          }
                         >
                           Nearby Amenities
                         </h4>
@@ -11058,7 +11118,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-dlfnbm cgTIpU"
+                                    className="sc-dlfnbm eSOmhd"
                                   >
                                     P
                                   </div>

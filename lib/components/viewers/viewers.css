@@ -120,17 +120,18 @@
 
 /* child stop details */
 
-.otp .stop-viewer .stop-viewer-body .stop-label  {
+.otp .stop-viewer .stop-viewer-body .stop-label {
   display: table;
   width: 100%;
 }
 
-.otp .stop-viewer .stop-viewer-body .stop-label .stop-name  {
-  display: table-cell;
+.otp .stop-viewer .stop-viewer-body .stop-label .stop-name {
+  display: flex;
+  align-items: center;
   max-width: 300px;
 }
 
-.otp .stop-viewer .stop-viewer-body .stop-label .view-child-stop-button  {
+.otp .stop-viewer .stop-viewer-body .stop-label .view-child-stop-button {
   color: #000080;
   border: none;
   background: none;
@@ -139,7 +140,7 @@
   width: 90px;
 }
 
-.otp .stop-viewer .stop-viewer-body .related-panel-title  {
+.otp .stop-viewer .stop-viewer-body .related-panel-title {
   background-color: #ffffff;
   padding: 0.5rem;
   position: relative;
@@ -147,7 +148,7 @@
   margin-left: 1rem;
 }
 
-.otp .stop-viewer .stop-viewer-body .related-panel-container  {
+.otp .stop-viewer .stop-viewer-body .related-panel-container {
   border: 1px solid;
   border-radius: 7px;
   padding: 0.5rem;
@@ -155,32 +156,32 @@
   margin-top: -2.5rem;
 }
 
-.otp .stop-viewer .stop-viewer-body .related-items-list  {
+.otp .stop-viewer .stop-viewer-body .related-items-list {
   padding-top: 20px;
   width: 100%;
   margin: 0;
 }
 
-.otp .stop-viewer .stop-viewer-body .related-item  {
+.otp .stop-viewer .stop-viewer-body .related-item {
   padding: 1rem;
   margin-bottom: 1rem;
 }
 
-.otp .stop-viewer .stop-viewer-body .related-item .item-label  {
+.otp .stop-viewer .stop-viewer-body .related-item .item-label {
   display: flex;
   width: 100%;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
 
-.otp .stop-viewer .stop-viewer-body .related-item .stop-label  {
+.otp .stop-viewer .stop-viewer-body .related-item .stop-label {
   display: flex;
   width: 100%;
   justify-content: space-between;
   margin-bottom: 10px;
 }
 
-.otp .stop-viewer .stop-viewer-body .next-arrival-row  {
+.otp .stop-viewer .stop-viewer-body .next-arrival-row {
   display: table;
   width: 100%;
 }
@@ -193,25 +194,26 @@
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .route-name {
   padding-right: 8px;
   font-weight: 700;
+  display: inline-block;
+  min-width: 5ch;
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-time {
   display: table-cell;
   width: 90px;
-
 }
 
-.otp .stop-viewer .stop-viewer-body .related-item .child-stop-icon  {
+.otp .stop-viewer .stop-viewer-body .related-item .child-stop-icon {
   margin-right: 5px;
   font-size: 20px;
 }
 
-.otp .stop-viewer .stop-viewer-body .related-item .stop-name-text  {
+.otp .stop-viewer .stop-viewer-body .related-item .stop-name-text {
   vertical-align: top;
   display: inline-block;
 }
 
-.otp .stop-viewer .stop-viewer-body .related-panel-expand-view  {
+.otp .stop-viewer .stop-viewer-body .related-panel-expand-view {
   display: flex;
   background: #fff;
   margin: auto;
@@ -222,7 +224,6 @@
 }
 
 /* end of child-stop-details */
-
 
 /*.otp .stop-viewer .trip-table {
   display: table;
