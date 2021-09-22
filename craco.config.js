@@ -10,6 +10,8 @@ const {
 } = require('@craco/craco')
 const BabelRcPlugin = require('@jackwilsdon/craco-use-babelrc')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
   plugins: [{ plugin: BabelRcPlugin }],
@@ -70,6 +72,9 @@ module.exports = {
         )
       }
       webpackConfig.entry = [paths.appIndexJs]
+      webpackConfig.optimization = {
+        minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
+      }
       webpackConfig.plugins = [
         new HtmlWebpackPlugin({
           filename: 'index.html',
