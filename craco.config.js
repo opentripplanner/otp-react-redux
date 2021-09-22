@@ -9,6 +9,7 @@ const {
   loaderByName
 } = require('@craco/craco')
 const BabelRcPlugin = require('@jackwilsdon/craco-use-babelrc')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   plugins: [{ plugin: BabelRcPlugin }],
@@ -75,6 +76,7 @@ module.exports = {
           inject: 'body',
           template: HTML_FILE
         }),
+        new MiniCssExtractPlugin(),
         new webpack.DefinePlugin({
           CSS: JSON.stringify(CUSTOM_CSS),
           JS_CONFIG: JSON.stringify(customJsFile),
