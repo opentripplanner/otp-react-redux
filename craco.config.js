@@ -6,6 +6,7 @@ const webpack = require('webpack')
 const {
   addAfterLoader,
   addBeforeLoader,
+  getLoaders,
   loaderByName
 } = require('@craco/craco')
 const BabelRcPlugin = require('@jackwilsdon/craco-use-babelrc')
@@ -30,7 +31,7 @@ module.exports = {
   webpack: {
     configure: function (webpackConfig, { paths }) {
       // Config items to adjust behavior to match mastarm behavior
-      paths.appBuild = webpackConfig.output.path = path.resolve('dist')
+      paths.appBuild = webpackConfig.output.path = path.join(__dirname, 'dist')
       paths.appSrc = path.resolve(__dirname, 'lib')
       paths.appIndexJs = path.resolve(__dirname, 'lib/main.js')
 
@@ -41,14 +42,22 @@ module.exports = {
       }
       addBeforeLoader(webpackConfig, loaderByName('file-loader'), yamlLoader)
 
-      // Support typescript
-      const tsLoader = {
-        include: paths.appSrc,
-        loader: require.resolve('ts-loader'),
-        options: { transpileOnly: true },
-        test: /\.(ts|tsx)$/
+      const reactHotLoader = {
+        include: /node_modules/,
+        loader: require.resolve('react-hot-loader/webpack'),
+        test: /\.(js|jsx)$/
       }
-      addAfterLoader(webpackConfig, loaderByName('url-loader'), tsLoader)
+      addAfterLoader(webpackConfig, loaderByName('url-loader'), reactHotLoader)
+
+      // Support typescript
+      const { matches } = getLoaders(
+        webpackConfig,
+        loaderByName('babel-loader')
+      )
+      matches.forEach(({ loader }) => {
+        loader.test = /\.(js|jsx|ts|tsx)$/
+        loader.exclude = /node_modules/
+      })
 
       // trimet-mod-otp integration:
       // Gather the CSS, HTML, YAML, and JS override files.
@@ -71,6 +80,7 @@ module.exports = {
           `./tmp/${splitPath[splitPath.length - 1]}`
         )
       }
+
       webpackConfig.entry = [paths.appIndexJs]
       webpackConfig.optimization = {
         minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
@@ -90,6 +100,15 @@ module.exports = {
           YAML_CONFIG: JSON.stringify(YAML_CONFIG)
         })
       ]
+      webpackConfig.devServer = {
+        hot: true,
+        watchContentBase: true
+      }
+      webpackConfig.output = {
+        filename: 'bundle.js',
+        path: path.join(__dirname, '/dist'),
+        publicPath: ''
+      }
 
       return webpackConfig
     }

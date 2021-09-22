@@ -2,7 +2,6 @@
   "plugins": [
     "babel-plugin-add-module-exports",
     "babel-plugin-lodash",
-    "react-hot-loader/babel"
   ],
   "presets": [
     "@babel/preset-env",
