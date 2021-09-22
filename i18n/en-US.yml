@@ -25,6 +25,8 @@ _name: English
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
 components:
+  BatchRoutingPanel:
+    shortTitle: Plan Trip
   DefaultItinerary:
     clickDetails: Click to view details
     # Use ordered placeholders when multiple modes are involved
@@ -34,10 +36,37 @@ components:
     tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
     tripDurationFormat: "{hours, number} hr {minutes, number} min"
+  RouteDetails:
+    operatedBy: "Operated by {agencyName}"
+    moreDetails: "More Details"
+    stopsTo: "Towards"
+    selectADirection: "Select a direction..."
+  RouteViewer:
+    allAgencies: All Agencies
+    allModes: All Modes # Note to translator: This text is width-constrained.
+    findARoute: Find A Route
+    noFilteredRoutesFound: No routes match your filter!
+    noRouteUrl: No route URL provided.
+    title: Route Viewer
+    shortTitle: View Routes
+    agencyFilter: Agency Filter
+    modeFilter: Mode Filter
+    details: " " # If the string is left blank, React-Intl renders the id
+  RouteRow:
+    operatorLogoAltText: '{operatorName} logo'
+  TransitVehicleOverlay:
+    # keys designed to match API output
+    incoming_at: "approaching {stop}"
+    stopped_at: "doors open at {stop}"
+    in_transit_to: "next stop {stop}"
+
+    vehicleName: "Vehicle {vehicleNumber}: "
+    realtimeVehicleInfo: "<b>{vehicleNameOrBlank}</b>{relativeTime}"
+    travelingAt: "traveling at {milesPerHour}"
   AppMenu:
-    closeMenu: "Close Menu"
-    openMenu: "Open Menu"
-    menuItemIconAlt: "Icon for {label} menu item"
+     closeMenu: "Close Menu"
+     openMenu: "Open Menu"
+     menuItemIconAlt: "Icon for {label} menu item"
   ItinerarySummary:
     fareCost: "{useMaxFare, select, 
       true {{minTotalFare} - {maxTotalFare}}
@@ -121,6 +150,9 @@ components:
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
 common:
+  # Standard navigation
+  navigation:
+    back: Back
   # OTP access modes
   accessModes:
     bike: Bike
@@ -155,6 +187,3 @@ common:
         =0 {{minutes, number} min}
         other {{hours, number} hr {minutes, number} min}}"
       
-config:
-  menuItems:
-    give-us-feedback: Give Us Feedback!
