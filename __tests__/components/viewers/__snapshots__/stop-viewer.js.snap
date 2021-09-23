@@ -22,6 +22,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
       forgetStop={[Function]}
       homeTimezone="America/Los_Angeles"
       rememberStop={[Function]}
+      setHoveredStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
       showNearbyStops={true}
@@ -518,6 +519,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                 autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
+                setHoveredStop={[Function]}
                 showNearbyStops={true}
                 stopData={
                   Object {
@@ -1059,6 +1061,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   </button>
                   <RelatedStopsPanel
                     homeTimezone="America/Los_Angeles"
+                    setHoveredStop={[Function]}
                     stopData={
                       Object {
                         "agencyName": "TriMet",
@@ -1687,6 +1690,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
       forgetStop={[Function]}
       homeTimezone="America/Los_Angeles"
       rememberStop={[Function]}
+      setHoveredStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
       showNearbyStops={true}
@@ -2084,6 +2088,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                 autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
+                setHoveredStop={[Function]}
                 showNearbyStops={true}
                 stopData={
                   Object {
@@ -2436,6 +2441,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   </button>
                   <RelatedStopsPanel
                     homeTimezone="America/Los_Angeles"
+                    setHoveredStop={[Function]}
                     stopData={
                       Object {
                         "agencyName": "TriMet",
@@ -2767,6 +2773,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
       forgetStop={[Function]}
       homeTimezone="America/Los_Angeles"
       rememberStop={[Function]}
+      setHoveredStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
       showNearbyStops={true}
@@ -3263,6 +3270,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                 autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
+                setHoveredStop={[Function]}
                 showNearbyStops={true}
                 stopData={
                   Object {
@@ -3813,6 +3821,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   </button>
                   <RelatedStopsPanel
                     homeTimezone="America/Los_Angeles"
+                    setHoveredStop={[Function]}
                     stopData={
                       Object {
                         "agencyName": "TriMet",
@@ -4441,6 +4450,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
       forgetStop={[Function]}
       homeTimezone="America/Los_Angeles"
       rememberStop={[Function]}
+      setHoveredStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
       showNearbyStops={true}
@@ -5195,6 +5205,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                 autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
+                setHoveredStop={[Function]}
                 showNearbyStops={true}
                 stopData={
                   Object {
@@ -6823,6 +6834,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   </button>
                   <RelatedStopsPanel
                     homeTimezone="America/Los_Angeles"
+                    setHoveredStop={[Function]}
                     stopData={
                       Object {
                         "code": "715",
@@ -8225,6 +8237,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
       forgetStop={[Function]}
       homeTimezone="America/Los_Angeles"
       rememberStop={[Function]}
+      setHoveredStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
       showNearbyStops={true}
@@ -8974,6 +8987,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                 autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
+                setHoveredStop={[Function]}
                 showNearbyStops={true}
                 stopData={
                   Object {
@@ -9777,6 +9791,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   </button>
                   <RelatedStopsPanel
                     homeTimezone="America/Los_Angeles"
+                    setHoveredStop={[Function]}
                     stopData={
                       Object {
                         "agencyName": "TriMet",
@@ -11164,6 +11179,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
       forgetStop={[Function]}
       homeTimezone="America/Los_Angeles"
       rememberStop={[Function]}
+      setHoveredStop={[Function]}
       setLocation={[Function]}
       setMainPanelContent={[Function]}
       showNearbyStops={true}
