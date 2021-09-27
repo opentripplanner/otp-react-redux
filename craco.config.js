@@ -3,19 +3,16 @@ const path = require('path')
 const fs = require('fs-extra')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
-const {
-  addAfterLoader,
-  addBeforeLoader,
-  getLoaders,
-  loaderByName
-} = require('@craco/craco')
+const { addBeforeLoader, getLoaders, loaderByName } = require('@craco/craco')
 const BabelRcPlugin = require('@jackwilsdon/craco-use-babelrc')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const fastRefreshCracoPlugin = require('craco-fast-refresh')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = {
-  plugins: [{ plugin: BabelRcPlugin }],
+  plugins: [{ plugin: BabelRcPlugin }, { plugin: fastRefreshCracoPlugin }],
   // This is disabled as it creates a race condition which prevents load
   // See https://github.com/facebook/create-react-app/issues/10315
   // Type checking is done via babel
@@ -82,6 +79,7 @@ module.exports = {
         minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
       }
       webpackConfig.plugins = [
+        new ReactRefreshWebpackPlugin(),
         new HtmlWebpackPlugin({
           filename: 'index.html',
           inject: 'body',
