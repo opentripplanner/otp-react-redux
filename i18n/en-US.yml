@@ -64,12 +64,12 @@ components:
     realtimeVehicleInfo: "<b>{vehicleNameOrBlank}</b>{relativeTime}"
     travelingAt: "traveling at {milesPerHour}"
   AppMenu:
-     closeMenu: "Close Menu"
-     openMenu: "Open Menu"
-     menuItemIconAlt: "Icon for {label} menu item"
-     callHistory: "Call History"
-     fieldTrip: "Field Trip"
-     mailables: "Mailables"
+    closeMenu: "Close Menu"
+    openMenu: "Open Menu"
+    menuItemIconAlt: "Icon for {label} menu item"
+    callHistory: "Call History"
+    fieldTrip: "Field Trip"
+    mailables: "Mailables"
   ItinerarySummary:
     fareCost: "{useMaxFare, select, 
       true {{minTotalFare} - {maxTotalFare}}

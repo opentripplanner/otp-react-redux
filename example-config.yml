@@ -318,7 +318,7 @@ itinerary:
 #         bikeshare: Blue Bike
 # .    config:
 #        menuItems:
-#         demo-item: Demo Item
+#          demo-item: Demo Item
 
 ### Localization section to provide language/locale settings
 #localization:
