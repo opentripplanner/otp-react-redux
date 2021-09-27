@@ -42,13 +42,6 @@ module.exports = {
       }
       addBeforeLoader(webpackConfig, loaderByName('file-loader'), yamlLoader)
 
-      const reactHotLoader = {
-        include: /node_modules/,
-        loader: require.resolve('react-hot-loader/webpack'),
-        test: /\.(js|jsx)$/
-      }
-      addAfterLoader(webpackConfig, loaderByName('url-loader'), reactHotLoader)
-
       // Support typescript
       const { matches } = getLoaders(
         webpackConfig,
@@ -81,7 +74,10 @@ module.exports = {
         )
       }
 
-      webpackConfig.entry = [paths.appIndexJs]
+      webpackConfig.entry = [
+        require.resolve('react-dev-utils/webpackHotDevClient'),
+        paths.appIndexJs
+      ]
       webpackConfig.optimization = {
         minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
       }
