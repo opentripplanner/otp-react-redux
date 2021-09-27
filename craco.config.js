@@ -102,8 +102,10 @@ module.exports = {
       ]
       webpackConfig.devServer = {
         hot: true,
-        watchContentBase: true
+        static: './dist'
       }
+      webpackConfig.devtool = 'eval-cheap-module-source-map'
+
       webpackConfig.output = {
         filename: 'bundle.js',
         path: path.join(__dirname, '/dist'),
