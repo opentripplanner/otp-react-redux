@@ -275,6 +275,7 @@ itinerary:
 #    gradationMap:
 #        0.0:
 #            color: "#ffb5b9"
+#            # The text can be overridden in the language section
 #            text: 'Not Accessible'
 #            icon: thumbs-down
 
@@ -302,6 +303,10 @@ itinerary:
 #     common:
 #       accessModes:
 #         bikeshare: Blue Bike
+#     acessibilityScore:
+#       gradationMap:
+#         0.0:
+#           text: 'Not Accessible'
 
 ### Localization section to provide language/locale settings
 #localization:
