@@ -61,7 +61,7 @@ persistence:
 ### Adding additional menu items to the main menu items. Use the separator flag
 ### to include a separator line if you have groups of menu items
 ### If a Top level menu item contains submenu items (children) then use the 'children' flag.
-### Icon URL is preferable over iconType. If non are given then a 'bus' iconType is used.
+### Icon URL is preferable over iconType. If none are given then a 'bus' iconType is used.
 #App menu
 #extraMenuItems:
 #  - id: link-list
