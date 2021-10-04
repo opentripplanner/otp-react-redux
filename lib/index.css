@@ -16,14 +16,155 @@
 
 @import url(lib/bike-rental.css);
 
+@import url(react-sliding-pane/dist/react-sliding-pane.css);
+
 /* Hide IE/Edge clear button in text input fields. */
-input[type=text]::-ms-clear {
-    display: none;
+input[type="text"]::-ms-clear {
+  display: none;
+}
+
+/* New app menu */
+.app-menu-icon {
+  width: 21px;
+  height: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+  transition: all 1s ease;
+  top: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+  .app-menu-icon {
+    margin-left: 15px;
+  }
+}
+
+.menu-top-line,
+.menu-middle-line,
+.menu-bottom-line,
+.menu-left-x,
+.menu-right-x {
+  border-bottom: 3px solid #ffffff;
+  transition: all 0.5s ease;
+}
+
+.menu-left-x {
+  transform: rotate(45deg);
+  top: 7px;
+  position: relative;
+}
+
+.menu-right-x {
+  transform: rotate(-45deg);
+  bottom: 5px;
+  position: relative;
+}
+
+.slide-pane {
+  transition: all 0.2s ease-in-out;
+}
+
+.slide-pane_from_left {
+  margin: 52px auto 0 0;
+}
+
+.slide-pane__header,
+.slide-pane__close {
+  display: none;
+}
+
+.slide-pane__content {
+  padding: 6px 0;
+}
+
+.app-menu {
+  margin: 0;
+  padding: 0;
+}
+
+.app-menu li {
+  list-style-type: none;
+  margin: 1rem 2rem;
+  cursor: pointer;
+}
+
+.app-menu li img {
+  width: 25px;
+  margin-right: 2rem;
+}
+
+.app-menu li a {
+  color: inherit;
+  font-size: 20px;
+  text-decoration: none;
+  outline: none;
+}
+
+/* increase icon size */
+.app-menu li a .fa,
+.expand-submenu-button span .fa {
+  font-size: 2rem;
+}
+
+.app-menu span:not(.expand-menu-chevron) {
+  margin-right: 2rem;
+}
+
+.menu-item:hover *,
+.app-menu li a span *:hover {
+  color: #4c97f5;
+}
+
+.expand-menu-chevron {
+  margin-right: -2rem;
+}
+
+.dropdown-header {
+  font-size: inherit;
+  line-height: normal;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.expand-submenu-button a {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.sub-menu-container {
+  border-top: 1px solid #cccccc;
+}
+
+.sub-menu-container li a {
+  margin-left: 2rem;
+}
+
+.sub-menu-container li a span {
+  color: inherit;
+}
+
+.app-menu-divider::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #ccc;
+  margin: 1rem;
+  width: 200%; /* ensures the line extends to the edge of the pane */
 }
 
 /* Buttons */
 
-button.header, button.step, .clear-button-formatting  {
+button.header,
+button.step,
+.clear-button-formatting {
   background: transparent;
   color: inherit;
   border: 0;
@@ -46,7 +187,8 @@ button.header, button.step, .clear-button-formatting  {
   background: none;
 }
 
-button.header, button.step {
+button.header,
+button.step {
   width: 100%;
 }
 
