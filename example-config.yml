@@ -145,6 +145,9 @@ geocoder:
   # This base URL is required as the libraries will default to using now-defunct
   # mapzen urls
   baseUrl: https://geocoder.example.com/pelias/v1
+  # This allows the location field dropdown headers to be colored based on Pelias layer
+  #resultsColors:
+  #  stops: "#007fae"
 
 # example config for an ArcGIS geocoder
 # (https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm)
