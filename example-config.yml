@@ -318,6 +318,7 @@ itinerary:
 # Format the date time format for display.
 dateTime:
   longDateFormat: DD-MM-YYYY
+
 # stopViewer:
 #   # The max. number of departures to show for each trip pattern
 #   # in the stop viewer Next Arrivals mode
