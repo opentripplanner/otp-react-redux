@@ -31,6 +31,16 @@
   color: #ddd;
 }
 
+/* Don't show route viewer link in the app menu on desktop as it is in the navbar */
+.app-menu-route-viewer-link {
+  display: none;
+}
+@media (max-width: 800px) {
+  .app-menu-route-viewer-link {
+    display: block;
+  }
+}
+
 /* PrintLayout styles */
 
 .otp.print-layout {
@@ -50,4 +60,31 @@
   height: 400px;
   margin-bottom: 30px;
   box-sizing: border-box;
+}
+
+/* Batch routing panel requires padding removed from sidebar */
+.batch-routing-panel {
+  padding: 10px;
+}
+/* View Switcher Styling */
+.view-switcher {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.view-switcher button.btn-link {
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+}
+.view-switcher button.btn-link.active {
+  background: rgba(255, 255, 255, 0.15);
+}
+.view-switcher button.btn-link:hover,
+.view-switcher button.btn-link:focus {
+  text-decoration: none;
+  border-radius: 15px;
+}
+
+.view-switcher button.btn-link:hover {
+  color: #fff;
 }

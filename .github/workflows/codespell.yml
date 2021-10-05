@@ -12,6 +12,7 @@ jobs:
       - uses: codespell-project/actions-codespell@master
         with:
           check_filenames: true
-          # The a11y test file has a false positive and the ignore list does not work
+          # skip git, yarn, and i18n non-english resources. 
+          # Also, the a11y test file has a false positive and the ignore list does not work
           # see https://github.com/opentripplanner/otp-react-redux/pull/436/checks?check_run_id=3369380014
-          skip: ./.git,yarn.lock,./a11y/a11y.test.js
+          skip: ./.git,yarn.lock,./a11y/a11y.test.js,./i18n/fr*
