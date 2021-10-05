@@ -15,7 +15,6 @@ api:
 #     lon: -122.71607145667079
 #     name: Oregon Zoo, Portland, OR
 
-
 ### Define the strategies for how to handle auto-planning of a new trip when
 ### different query parameters are changes in the form. The default config is
 ### shown below, but if autoPlan is set to false, auto-plan will never occur.
@@ -29,7 +28,6 @@ api:
 ### Note: the override values must be valid values within otp-ui's query-params.js
 # defaultQueryParams:
 #   maxWalkDistance: 3219 # 2 miles in meters
-
 
 ### The persistence setting is used to enable the storage of places (home, work),
 ### recent searches/places, user overrides, and favorite stops.
@@ -66,7 +64,7 @@ map:
   baseLayers:
     - name: Streets
       url: //cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png
-      subdomains: 'abcd'
+      subdomains: "abcd"
       attribution: 'Map tiles: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
       maxZoom: 20
       hasRetinaSupport: true
@@ -123,6 +121,9 @@ geocoder:
   # This base URL is required as the libraries will default to using now-defunct
   # mapzen urls
   baseUrl: https://geocoder.example.com/pelias/v1
+  # This allows the location field dropdown headers to be colored based on Pelias layer
+  #resultsColors:
+  #  stops: "#007fae"
 
 # example config for an ArcGIS geocoder
 # (https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm)
@@ -301,7 +302,7 @@ itinerary:
 #  # In some components such as DefaultItinerary, we display a cost element
 #  # that falls back to $0.00 (or its equivalent in the configured ambient currency
 #  # and in the user-selected locale) if no fare or currency info is available.
-#  currency: 'USD' 
+#  currency: 'USD'
 #  defaultLocale: 'en-US'
 
 ### If using OTP Middleware, you can define the optional phone number options below.
