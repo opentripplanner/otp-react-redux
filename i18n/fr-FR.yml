@@ -88,7 +88,7 @@ components:
     next: Suivant
     previous: Précédent
   RealtimeAnnotation:
-    ignoreServiceDelays: Appliquer les retards
+    applyServiceDelays: Appliquer les retards
     delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
       Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
     delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
