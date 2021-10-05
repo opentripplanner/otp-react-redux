@@ -113,7 +113,7 @@ components:
     next: Next
     previous: Previous
   RealtimeAnnotation:
-    ignoreServiceDelays: Apply service delays
+    applyServiceDelays: Apply service delays
     delaysNotShownInResults: "Your trip results are currently being affected by service delays.
       These delays do not factor into travel times shown below."
     delaysShownInResults: "Your trip results have been adjusted based on real-time
