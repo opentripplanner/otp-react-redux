@@ -38,6 +38,13 @@ components:
     vehicleName: "Véhicule {vehicleNumber}: "
     realtimeVehicleInfo: "<b>{vehicleNameOrBlank}</b>{relativeTime}"
     travelingAt: "Vitesse : {milesPerHour}"
+  AppMenu:
+    closeMenu: "Fermer le menu"
+    openMenu: "Ouvrir le menu"
+    menuItemIconAlt: "Icône pour le menu {label}"
+    callHistory: "Historique des appels"
+    fieldTrip: "Groupes scolaires"
+    mailables: "Envoi de brochures"
   ItinerarySummary:
     fareCost: "{useMaxFare, select, 
       true {{minTotalFare} - {maxTotalFare}}
@@ -81,7 +88,7 @@ components:
     next: Suivant
     previous: Précédent
   RealtimeAnnotation:
-    ignoreServiceDelays: Appliquer les retards
+    applyServiceDelays: Appliquer les retards
     delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
       Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
     delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
@@ -115,12 +122,12 @@ components:
       Vous pouvez communiquer votre problème en détail aux administrateurs de ce site, par courriel.
       Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
       ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
-    startOver: Recommencer
 
 common:
   # Standard navigation
   navigation:
     back: Retour
+    startOver: Recommencer
   accessModes:
     bike: Vélo
     bikeshare: Vélo en libre-service
