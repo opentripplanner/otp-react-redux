@@ -38,6 +38,13 @@ components:
     vehicleName: "Véhicule {vehicleNumber}: "
     realtimeVehicleInfo: "<b>{vehicleNameOrBlank}</b>{relativeTime}"
     travelingAt: "Vitesse : {milesPerHour}"
+  AppMenu:
+    closeMenu: "Fermer le menu"
+    openMenu: "Ouvrir le menu"
+    menuItemIconAlt: "Icône pour le menu {label}"
+    callHistory: "Historique des appels"
+    fieldTrip: "Groupes scolaires"
+    mailables: "Envoi de brochures"
   ItinerarySummary:
     fareCost: >
       "{useMaxFare, select, 
@@ -122,12 +129,12 @@ components:
       Vous pouvez communiquer votre problème en détail aux administrateurs de ce site, par courriel.
       Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
       ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
-    startOver: Recommencer
 
 common:
   # Standard navigation
   navigation:
     back: Retour
+    startOver: Recommencer
   accessModes:
     bike: Vélo
     bikeshare: Vélo en libre-service

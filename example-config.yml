@@ -58,6 +58,30 @@ persistence:
 #    apiBaseUrl: https://otp-middleware.example.com
 #    apiKey: your-middleware-api-key
 
+### Adding additional menu items to the main menu items. Use the separator flag
+### to include a separator line if you have groups of menu items
+### If a Top level menu item contains submenu items (children) then use the 'children' flag.
+### Icon URL is preferable over iconType. If none are given then a 'bus' iconType is used.
+#App menu
+#extraMenuItems:
+#  - id: link-list
+#    label: List of Links
+#    iconType: 'train'
+#    iconUrl: ''
+#    children:
+#      - id: bus-website
+#        # Label will be overridden by localization file and can be omitted if a localized version is present
+#        # only one of iconType or iconUrl is needed
+#        iconType: 'bus'
+#        iconUrl: ''
+#        href: ''
+#        separator: 'true'
+#      - id: car-website
+#        label: Car Website
+#        iconType: 'car'
+#        iconUrl: ''
+#        href: ''
+
 map:
   initLat: 45.52
   initLon: -122.682
@@ -295,6 +319,9 @@ itinerary:
 #     common:
 #       accessModes:
 #         bikeshare: Blue Bike
+# .    config:
+#        menuItems:
+#          demo-item: Demo Item
 
 ### Localization section to provide language/locale settings
 #localization:
@@ -318,7 +345,6 @@ itinerary:
 # Format the date time format for display.
 dateTime:
   longDateFormat: DD-MM-YYYY
-
 # stopViewer:
 #   # The max. number of departures to show for each trip pattern
 #   # in the stop viewer Next Arrivals mode
