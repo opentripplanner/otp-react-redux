@@ -1,7 +1,5 @@
 /* eslint-disable jest/expect-expect */
 /* We use a method to generate our assertions */
-import fs from 'fs'
-import path from 'path'
 
 import puppeteer from 'puppeteer'
 import execa from 'execa'
@@ -10,9 +8,7 @@ import { routes } from '../lib/components/app/responsive-webapp'
 
 import { mockServer } from './mock-server'
 
-const OTP_RR_CONFIG_FILE_PATH = './config.yml'
-const OTP_RR_CONFIG_BACKUP_PATH = './config.non-test.yml'
-const OTP_RR_TEST_CONFIG_PATH = './a11y/test-config.yml'
+const OTP_RR_TEST_CONFIG_PATH = '../a11y/test-config.yml'
 
 const MOCK_SERVER_PORT = 9999
 
@@ -41,17 +37,8 @@ async function runAxeTestOnPath(otpPath) {
 }
 
 beforeAll(async () => {
-  // backup current config file
-  if (fs.existsSync(OTP_RR_CONFIG_FILE_PATH)) {
-    fs.renameSync(OTP_RR_CONFIG_FILE_PATH, OTP_RR_CONFIG_BACKUP_PATH)
-    console.log('Backed up current OTP-RR config file')
-  }
-  // copy over test config file
-  fs.copyFileSync(OTP_RR_TEST_CONFIG_PATH, OTP_RR_CONFIG_FILE_PATH)
-  console.log('Copied a11y test config file')
-
   // Build OTP-RR main.js using new config file
-  execa.sync('yarn', ['build'])
+  execa.sync('env', [`YAML_CONFIG=${OTP_RR_TEST_CONFIG_PATH}`, 'yarn', 'build'])
   console.log('Built OTP-RR')
 
   // Launch mock OTP server
@@ -67,14 +54,6 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-  fs.unlinkSync(OTP_RR_CONFIG_FILE_PATH)
-  if (fs.existsSync(OTP_RR_CONFIG_BACKUP_PATH)) {
-    fs.renameSync(
-      path.resolve(OTP_RR_CONFIG_BACKUP_PATH),
-      path.resolve(OTP_RR_CONFIG_FILE_PATH)
-    )
-  }
-  console.log('Restored original OTP-RR config file')
   await server.close()
   await browser.close()
   console.log('Closed mock server and headless browser')
