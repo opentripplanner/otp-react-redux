@@ -26,7 +26,7 @@ module.exports = {
    *    yarn start --env.YAML_CONFIG=/absolute/path/to/config.yml
    */
   webpack: {
-    configure: function (webpackConfig, { paths }) {
+    configure: function (webpackConfig, { env, paths }) {
       // Config items to adjust behavior to match mastarm behavior
       paths.appBuild = webpackConfig.output.path = path.join(__dirname, 'dist')
       paths.appSrc = path.resolve(__dirname, 'lib')
@@ -72,10 +72,13 @@ module.exports = {
       }
 
       // Support React hot-reloading
-      webpackConfig.entry = [
-        require.resolve('react-dev-utils/webpackHotDevClient'),
-        paths.appIndexJs
-      ]
+      const hotLoaderEntries = []
+      if (env === 'development') {
+        hotLoaderEntries.push(
+          require.resolve('react-dev-utils/webpackHotDevClient')
+        )
+      }
+      webpackConfig.entry = [...hotLoaderEntries, paths.appIndexJs]
 
       // Allow for manual configuration of optimization plugins
       webpackConfig.optimization = {
@@ -83,8 +86,12 @@ module.exports = {
       }
 
       // Custom plugins to allow trimet-mod-otp integration
+      const hotLoaderPlugins = []
+      if (env === 'development') {
+        hotLoaderPlugins.push(new ReactRefreshWebpackPlugin())
+      }
       webpackConfig.plugins = [
-        new ReactRefreshWebpackPlugin(),
+        ...hotLoaderPlugins,
         new HtmlWebpackPlugin({
           filename: 'index.html',
           inject: 'body',
