@@ -1,15 +1,15 @@
 const path = require('path')
 
-const fs = require('fs-extra')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack')
 const { addBeforeLoader, getLoaders, loaderByName } = require('@craco/craco')
 const BabelRcPlugin = require('@jackwilsdon/craco-use-babelrc')
+const fastRefreshCracoPlugin = require('craco-fast-refresh')
+const fs = require('fs-extra')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
-const fastRefreshCracoPlugin = require('craco-fast-refresh')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   plugins: [{ plugin: BabelRcPlugin }, { plugin: fastRefreshCracoPlugin }],
@@ -71,13 +71,18 @@ module.exports = {
         )
       }
 
+      // Support React hot-reloading
       webpackConfig.entry = [
         require.resolve('react-dev-utils/webpackHotDevClient'),
         paths.appIndexJs
       ]
+
+      // Allow for manual configuration of optimization plugins
       webpackConfig.optimization = {
         minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
       }
+
+      // Custom plugins to allow trimet-mod-otp integration
       webpackConfig.plugins = [
         new ReactRefreshWebpackPlugin(),
         new HtmlWebpackPlugin({
@@ -94,12 +99,17 @@ module.exports = {
           YAML_CONFIG: JSON.stringify(YAML_CONFIG)
         })
       ]
+
+      // Enable hot-reloading
       webpackConfig.devServer = {
         hot: true,
         static: './dist'
       }
+
+      // Make source-maps useful
       webpackConfig.devtool = 'eval-cheap-module-source-map'
 
+      // Match mastarm behavior
       webpackConfig.output = {
         filename: 'bundle.js',
         path: path.join(__dirname, '/dist'),
