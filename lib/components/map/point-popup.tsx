@@ -1,4 +1,7 @@
 import React from 'react'
+// FIXME: typescript
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import styled from 'styled-components'
 
@@ -11,17 +14,20 @@ const PopupTitle = styled.div`
   margin-bottom: 6px;
 `
 
-export default function MapPopup ({
+export default function MapPopup({
   mapPopupLocation,
   onSetLocationFromPopup
-}) {
+}: {
+  mapPopupLocation: { name: string }
+  // TODO: what is this function actually
+  onSetLocationFromPopup: () => void
+}): JSX.Element {
   return (
     <PopupContainer>
       <PopupTitle>
         {mapPopupLocation.name.split(',').length > 3
           ? mapPopupLocation.name.split(',').splice(0, 3).join(',')
-          : mapPopupLocation.name
-        }
+          : mapPopupLocation.name}
       </PopupTitle>
       <div>
         Plan a trip:

@@ -23,9 +23,21 @@ const IssueContents = styled.div`
   text-align: left;
 `
 
-export default function NarrativeItinerariesErrors ({ errorMessages, errors }) {
-  return errors.map((error, idx) => {
-    let icon = <Icon className='text-warning' type='exclamation-triangle' />
+export default function NarrativeItinerariesErrors({
+  errorMessages,
+  errors
+}: {
+  // FIXME: what are these types
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  errorMessages: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  errors: any
+}): JSX.Element {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return errors.map((error: { network: any }, idx: number) => {
+    let icon = (
+      <Icon className="text-warning" type="exclamation-triangle" withSpace />
+    )
     if (error.network) {
       const CompanyIcon = getCompanyIcon(error.network)
       // check if company icon exists to avoid rendering undefined
@@ -35,12 +47,8 @@ export default function NarrativeItinerariesErrors ({ errorMessages, errors }) {
     }
     return (
       <IssueContainer key={idx}>
-        <IssueIconContainer>
-          {icon}
-        </IssueIconContainer>
-        <IssueContents>
-          {getErrorMessage(error, errorMessages)}
-        </IssueContents>
+        <IssueIconContainer>{icon}</IssueIconContainer>
+        <IssueContents>{getErrorMessage(error, errorMessages)}</IssueContents>
       </IssueContainer>
     )
   })

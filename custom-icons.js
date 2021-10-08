@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+// FIXME: This dependency is restricting typescripting of this file
 import {
   ClassicBus,
   ClassicGondola,
@@ -34,15 +36,21 @@ export const CustomModeIcon = ({ mode, ...props }) => {
       return <ClassicModeIcon mode={mode} {...props} />
   }
 }
+CustomModeIcon.propTypes = {
+  mode: PropTypes.string
+}
 
 export const CustomLegIcon = ({ leg, ...props }) => {
-  if (
-    leg.routeLongName &&
-    leg.routeLongName.startsWith('MAX')
-  ) {
+  if (leg.routeLongName && leg.routeLongName.startsWith('MAX')) {
     return <CustomStreetcarIcon />
   } else if (leg.rentedBike) {
     return <CustomBikeRentalIcon />
   }
   return <LegIcon leg={leg} ModeIcon={CustomModeIcon} {...props} />
+}
+CustomLegIcon.propTypes = {
+  leg: PropTypes.shape({
+    rentedBike: PropTypes.bool,
+    routeLongName: PropTypes.string
+  })
 }

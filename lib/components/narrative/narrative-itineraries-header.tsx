@@ -27,7 +27,18 @@ export default function NarrativeItinerariesHeader({
   pending,
   showingErrors,
   sort
-}) {
+}: {
+  errors: unknown[]
+  itineraries: unknown[]
+  itineraryIsExpanded: boolean
+  onSortChange: () => void
+  onSortDirChange: () => void
+  onToggleShowErrors: () => void
+  onViewAllOptions: () => void
+  pending: boolean
+  showingErrors: boolean
+  sort: { direction: string; type: string }
+}): JSX.Element {
   const intl = useIntl()
 
   return (
@@ -63,6 +74,9 @@ export default function NarrativeItinerariesHeader({
             style={{ flexGrow: 1 }}
             title={intl.formatMessage({
               id: 'components.NarrativeItinerariesHeader.titleText',
+              // FIXME: strange react-intl type errors
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               values: {
                 issueNum: errors.length,
                 itineraryNum: itineraries.length,
