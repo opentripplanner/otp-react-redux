@@ -15,7 +15,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
 >
   <Connect(StopViewer)>
     <StopViewer
-      autoRefreshStopTimes={true}
       enableFavoriteStops={false}
       favoriteStops={Array []}
       findStop={[Function]}
@@ -498,7 +497,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
               className="sc-jrAGrp bDAiGg"
             >
               <LiveStopTimes
-                autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
                 stopData={
@@ -1006,7 +1004,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     }
                   >
                     <input
-                      checked={true}
                       name="autoUpdate"
                       onChange={[Function]}
                       type="checkbox"
@@ -1069,7 +1066,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
 >
   <Connect(StopViewer)>
     <StopViewer
-      autoRefreshStopTimes={true}
       enableFavoriteStops={false}
       favoriteStops={Array []}
       findStop={[Function]}
@@ -1453,7 +1449,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
               className="sc-jrAGrp bDAiGg"
             >
               <LiveStopTimes
-                autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
                 stopData={
@@ -1772,7 +1767,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     }
                   >
                     <input
-                      checked={true}
                       name="autoUpdate"
                       onChange={[Function]}
                       type="checkbox"
@@ -1835,7 +1829,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
 >
   <Connect(StopViewer)>
     <StopViewer
-      autoRefreshStopTimes={true}
       enableFavoriteStops={false}
       favoriteStops={Array []}
       findStop={[Function]}
@@ -2318,7 +2311,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
               className="sc-jrAGrp bDAiGg"
             >
               <LiveStopTimes
-                autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
                 stopData={
@@ -2835,7 +2827,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     }
                   >
                     <input
-                      checked={true}
                       name="autoUpdate"
                       onChange={[Function]}
                       type="checkbox"
@@ -2898,7 +2889,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
 >
   <Connect(StopViewer)>
     <StopViewer
-      autoRefreshStopTimes={true}
       enableFavoriteStops={false}
       favoriteStops={Array []}
       findStop={[Function]}
@@ -3639,7 +3629,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
               className="sc-jrAGrp bDAiGg"
             >
               <LiveStopTimes
-                autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
                 stopData={
@@ -5243,7 +5232,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     }
                   >
                     <input
-                      checked={true}
                       name="autoUpdate"
                       onChange={[Function]}
                       type="checkbox"
@@ -5306,7 +5294,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
 >
   <Connect(StopViewer)>
     <StopViewer
-      autoRefreshStopTimes={true}
       enableFavoriteStops={false}
       favoriteStops={Array []}
       findStop={[Function]}
@@ -6042,7 +6029,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
               className="sc-jrAGrp bDAiGg"
             >
               <LiveStopTimes
-                autoRefreshStopTimes={true}
                 findStopTimesForStop={[Function]}
                 homeTimezone="America/Los_Angeles"
                 stopData={
@@ -6812,7 +6798,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     }
                   >
                     <input
-                      checked={true}
                       name="autoUpdate"
                       onChange={[Function]}
                       type="checkbox"
@@ -6875,7 +6860,6 @@ exports[`components > viewers > stop viewer should render with initial stop id a
 >
   <Connect(StopViewer)>
     <StopViewer
-      autoRefreshStopTimes={true}
       enableFavoriteStops={false}
       favoriteStops={Array []}
       findStop={[Function]}
