@@ -35,10 +35,10 @@ components:
     notifications: Notifications
     places: Lieux favoris
     terms: Conditions d'utilisation
-  FavoritePlaceRow:
+  FavoritePlaceList:
     addAnotherPlace: Ajouter un autre lieu
-    # deleteThisPlace and editThisPlace are aria/tooltip texts.
-    deleteThisPlace: Supprimer ce lieu
+    description: "Ajoutez les lieux que vous fréquentez souvent pour faciliter vos recherches de trajets :"
+    # editThisPlace is a tooltip text.
     editThisPlace: Modifier ce lieu
     setAddressForPlaceType: Entrez l'adresse de votre {placeType}
   FavoritePlaceScreen:
@@ -50,8 +50,6 @@ components:
     nameAlreadyUsed: Ce nom est déjà utilisé avec un autre lieu. Veuillez saisir un nom différent.
     placeNotFound: Lieu introuvable
     placeNotFoundDescription: Le lieu recherché est introuvable.
-  FavoritePlacesList:
-    description: "Ajoutez les lieux que vous fréquentez souvent pour faciliter vos recherches de trajets :"
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
@@ -129,6 +127,10 @@ components:
     verificationInstructions: "Un SMS vous a été envoyé avec un code de vérification.
       Veuillez taper ce code ci-dessous (le code expire après 10 minutes)."
     verify: Verifier
+  Place:
+    # deleteThisPlace is an aria/tooltip text.
+    deleteThisPlace: Supprimer ce lieu
+    viewStop: Voir cet arrêt
   PlaceEditor:
     genericLocationPlaceholder: Adresse du lieu
     locationPlaceholder: Adresse de votre {placeName}

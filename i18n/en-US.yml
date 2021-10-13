@@ -51,10 +51,10 @@ components:
     notifications: Notifications
     places: Favorite places
     terms: Terms
-  FavoritePlaceRow:
+  FavoritePlaceList:
     addAnotherPlace: Add another place
-    # deleteThisPlace and editThisPlace are aria/tooltip texts.
-    deleteThisPlace: Delete this place
+    description: "Add the places you frequent often to save time planning trips:"
+    # editThisPlace is a tooltip text.
     editThisPlace: Edit this place
     setAddressForPlaceType: Set your {placeType} address
   FavoritePlaceScreen:
@@ -66,8 +66,6 @@ components:
     nameAlreadyUsed: You are already using this name for another place. Please enter a different name.
     placeNotFound: Place not found
     placeNotFoundDescription: Sorry, the requested place was not found.
-  FavoritePlacesList:
-    description: Add the places you frequent often to save time planning trips:
   FormNavigationButtons:
     ariaLabel: Form navigation
   ItinerarySummary:
@@ -143,6 +141,10 @@ components:
       for a text message with a verification code, and enter the code below
       (code expires after 10 minutes)."
     verify: Verify
+  Place:
+    # deleteThisPlace is an aria/tooltip text.
+    deleteThisPlace: Delete this place
+    viewStop: View stop
   PlaceEditor:
     genericLocationPlaceholder: Search for location
     locationPlaceholder: Search for {placeName} location
