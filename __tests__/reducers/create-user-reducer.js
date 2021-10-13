@@ -6,6 +6,6 @@ describe('lib > reducers > create-user-reducer', () => {
 
   it('should be able to create the initial state', () => {
     setDefaultTestTime()
-    expect(getUserInitialState({}, {})).toMatchSnapshot()
+    expect(getUserInitialState({})).toMatchSnapshot()
   })
 })
