@@ -17,8 +17,17 @@ components:
   AfterSignInScreen:
     mainTitle: Redirection...
     message: "Si la page ne s'affiche pas après quelques secondes, <redirectLink>cliquez ici</redirectLink>."
+  AppMenu:
+    callHistory: "Historique des appels"
+    closeMenu: "Fermer le menu"
+    fieldTrip: "Groupes scolaires"
+    mailables: "Envoi de brochures"
+    menuItemIconAlt: "Icône pour le menu {label}"
+    openMenu: "Ouvrir le menu"
   BackToTripPlanner:
     backToTripPlanner: Retour au planificateur de trajets
+  BatchRoutingPanel:
+    shortTitle: Planifier un trajet
   BeforeSignInScreen:
     mainTitle: Connexion en cours
     message: "Pour accéder à cette page, vous devez vous connecter.
@@ -138,13 +147,31 @@ components:
     next: Suivant
     previous: Précédent
   RealtimeAnnotation:
-    ignoreServiceDelays: Appliquer les retards
+    applyServiceDelays: Appliquer les retards
     delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
       Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
     delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
       En temps normal, ce trajet prendrait <strong>{normalDuration}</strong> en empruntant les lignes: {routes}."
     ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
+   RouteDetails:
+    operatedBy: "Exploité par {agencyName}"
+    moreDetails: "Plus d'infos"
+    stopsTo: "Direction"
+    selectADirection: "Choisissez une direction..."
+  RouteViewer:
+    agencyFilter: Filtre pour les exploitants
+    allAgencies: Tous exploitants
+    allModes: Tous modes # Note to translator: This text is width-constrained.
+    details: " " # If the string is left blank, React-Intl renders the id
+    findARoute: Chercher une ligne
+    modeFilter: Filtre pour les modes
+    noFilteredRoutesFound: Aucune ligne ne correspond à vos critères
+    noRouteUrl: Aucun lien fourni pour cette ligne.
+    shortTitle: Index des lignes
+    title: Index des lignes
+  RouteRow:
+    operatorLogoAltText: "Logo de {operatorName}"
   SavedTripEditor:
     editSavedTrip: Modifier un trajet enregistré
     saveNewTrip: Enregistrer un nouveau trajet
@@ -187,13 +214,18 @@ components:
     }"
   TermsOfUsePane:
     mustAgreeToTerms: Vous devez accepter les conditions d'utilisation avant de continuer.
-    # For termsOfServiceStatement and termsOfStorageStatement,
-    # use the special <a>...</a> markup to insert the
-    # corresponding link in the text.
     termsOfServiceStatement: "J'atteste avoir Mau moins 18 ans et j'ai lu et consens aux
       <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the Planificateur de trajets."
     termsOfStorageStatement: "Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches
       afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>"
+  TransitVehicleOverlay:
+    # keys designed to match API output
+    incoming_at: "Approchant {stop}"
+    stopped_at: "À quai à {stop}"
+    in_transit_to: "Prochain arrêt : {stop}"
+    vehicleName: "Véhicule {vehicleNumber}: "
+    realtimeVehicleInfo: "<strong>{vehicleNameOrBlank}</strong>{relativeTime}"
+    travelingAt: "Vitesse : {milesPerHour}"
   TripBasicsPane:
     checkingItineraryExistence: Verification de l'existence du trajet pour chaque jour de la semaine...
     selectAtLeastOneDay: Veuillez choisir au moins un jour pour effectuer le suivi.
@@ -284,7 +316,6 @@ components:
       Vous pouvez communiquer votre problème par e-mail et en détail aux administrateurs de ce site.
       Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
       ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
-    startOver: Recommencer
   UserAccountScreen:
     confirmDelete: "Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible."
   VerifyEmailPane:
@@ -341,6 +372,11 @@ common:
     calories: "{calories, number} kcal" # SI unit
     noItineraryToDisplay: Aucun trajet à afficher.
     transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
+
+  # Standard navigation
+  navigation:
+    back: Retour
+    startOver: Recommencer
 
   otpTransitModes:
     tram: Tram
