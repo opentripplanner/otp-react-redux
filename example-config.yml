@@ -173,6 +173,9 @@ modes:
   transitModes:
     - mode: BUS
       label: Bus
+      # A mode color can be added, used throughout the application,
+      # most notably in the enhanced stop viewer bubble
+      color: blue
     - mode: TRAM
       label: MAX & Streetcar
     - mode: RAIL
@@ -362,8 +365,3 @@ dateTime:
 #   # departure and it is not entirely excluded from display
 #   # (defaults to 4 days/345600s if unspecified).
 #   timeRange: 345600
-#   # A mapping between modes and colors, used throughout the application,
-#   # most notably in the enhanced stop viewer bubbles
-#   colors:
-#     BUS: 'blue'
-#     SUBWAY: '#22ff00'
