@@ -16,9 +16,7 @@ components:
     message: Vous pouvez maintenant commencer à planifier vos trajets.
   AfterSignInScreen:
     mainTitle: Redirection...
-    # For message, use the special <a>...</a> markup to automatically insert the
-    # corresponding link in the text.
-    message: "Si la page ne s'affiche pas après quelques secondes, <a>cliquez ici</a>."
+    message: "Si la page ne s'affiche pas après quelques secondes, <redirectLink>cliquez ici</redirectLink>."
   BackToTripPlanner:
     backToTripPlanner: Retour au planificateur de trajets
   BeforeSignInScreen:
@@ -144,7 +142,7 @@ components:
     delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
       Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
     delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
-      En temps normal, ce trajet prendrait {normalDuration} en empruntant les lignes: {routes}."
+      En temps normal, ce trajet prendrait <strong>{normalDuration}</strong> en empruntant les lignes: {routes}."
     ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
   SavedTripEditor:
@@ -192,10 +190,10 @@ components:
     # For termsOfServiceStatement and termsOfStorageStatement,
     # use the special <a>...</a> markup to insert the
     # corresponding link in the text.
-    termsOfServiceStatement: "J'atteste avoir au moins 18 ans et j'ai lu et consens aux
-      <a>Conditions de service</a> pour utiliser the Planificateur de trajets."
+    termsOfServiceStatement: "J'atteste avoir Mau moins 18 ans et j'ai lu et consens aux
+      <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the Planificateur de trajets."
     termsOfStorageStatement: "Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches
-      afin d'améliorer les transports publics dans ma region. <a>Plus d'informations...</a>"
+      afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>"
   TripBasicsPane:
     checkingItineraryExistence: Verification de l'existence du trajet pour chaque jour de la semaine...
     selectAtLeastOneDay: Veuillez choisir au moins un jour pour effectuer le suivi.
@@ -270,9 +268,9 @@ components:
   TripSummary:
     itinerary: Trajet
   TripSummaryPane:
-    happensOnDays: "Effectué : <b>{days}</b>"
-    notifications: "Notifications : <b>{leadTimeInMinutes} mn avant l'heure de départ prévue</b>"
-    notificationsDisabled: "Notifications : <b>Désactivées</b>"
+    happensOnDays: "Effectué : <strong>{days}</strong>"
+    notifications: "Notifications : <strong>{leadTimeInMinutes} mn avant l'heure de départ prévue</strong>"
+    notificationsDisabled: "Notifications : <strong>Désactivées</strong>"
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue,
     # and startOver are width-constrained.
@@ -359,7 +357,7 @@ common:
     home: domicile
     work: lieu de travail
   time:
-    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
+    departureArrivalTimes: "{startTime}—{endTime}"
     # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} mn"
     tripDurationFormat: "{hours, plural, 

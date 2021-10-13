@@ -30,9 +30,7 @@ components:
     message: You are ready to start planning your trips.
   AfterSignInScreen:
     mainTitle: Redirecting...
-    # For message, use the special <a>...</a> markup to automatically insert the
-    # corresponding link in the text.
-    message: "If the page doesn't load after a few seconds, <a>click here</a>."
+    message: "If the page doesn't load after a few seconds, <redirectLink>click here</redirectLink>."
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
   BeforeSignInScreen:
@@ -158,7 +156,7 @@ components:
     delaysNotShownInResults: "Your trip results are currently being affected by service delays.
       These delays do not factor into travel times shown below."
     delaysShownInResults: "Your trip results have been adjusted based on real-time
-      information. Under normal conditions, this trip would take {normalDuration}
+      information. Under normal conditions, this trip would take <strong>{normalDuration}</strong>
       using the following routes: {routes}."
     ignoreServiceDelays: Ignore service delays
     serviceUpdate: Service update
@@ -204,13 +202,10 @@ components:
     }"
   TermsOfUsePane:
     mustAgreeToTerms: You must agree to the terms of service to continue.
-    # For termsOfServiceStatement and termsOfStorageStatement,
-    # use the special <a>...</a> markup to automatically insert the
-    # corresponding link in the text.
     termsOfServiceStatement: "I confirm that I am at least 18 years old, and I have read and
-      consent to the <a>Terms of service</a> for using the Trip Planner."
+      consent to the <termsOfUseLink>Terms of service</termsOfUseLink > for using the Trip Planner."
     termsOfStorageStatement: "Optional: I consent to the Trip Planner storing my historical planned trips in order to
-      improve transit services in my area. <a>More info...</a>"
+      improve transit services in my area. <termsOfStorageLink>More info...</termsOfStorageLink>"
   TripBasicsPane:
     checkingItineraryExistence: Checking itinerary existence for each day of the week...
     selectAtLeastOneDay: Please select at least one day to monitor.
@@ -285,9 +280,9 @@ components:
   TripSummary:
     itinerary: Itinerary
   TripSummaryPane:
-    happensOnDays: "Happens on: <b>{days}</b>"
-    notifications: "Notifications: <b>{leadTimeInMinutes} min. before scheduled departure</b>"
-    notificationsDisabled: "Notifications: <b>Disabled</b>"
+    happensOnDays: "Happens on: <strong>{days}</strong>"
+    notifications: "Notifications: <strong>{leadTimeInMinutes} min. before scheduled departure</strong>"
+    notificationsDisabled: "Notifications: <strong>Disabled</strong>"
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue,
     # and startOver are width-constrained.
@@ -384,7 +379,7 @@ common:
   time:
     # Use ordered placeholders for the departure-arrival string
     # (this will accommodate right-to-left languages by swapping the order in this string).
-    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
+    departureArrivalTimes: "{startTime}—{endTime}"
     tripDurationFormat: "{hours, plural, 
         =0 {{minutes, number} min}
         other {{hours, number} hr {minutes, number} min}}"
