@@ -235,12 +235,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   <FontAwesome
                     fixedWidth={true}
                     name="arrow-left"
-                    type="arrow-left"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-arrow-left fa-fw"
-                      type="arrow-left"
                     />
                   </FontAwesome>
                 </Icon>
@@ -294,12 +292,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   <FontAwesome
                     fixedWidth={true}
                     name="calendar"
-                    type="calendar"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-calendar fa-fw"
-                      type="calendar"
                     />
                   </FontAwesome>
                 </Icon>
@@ -494,7 +490,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
           </div>
           <styled.div>
             <div
-              className="sc-jrAGrp bDAiGg"
+              className="sc-kEjbxe ddEshv"
             >
               <LiveStopTimes
                 findStopTimesForStop={[Function]}
@@ -895,7 +891,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -907,7 +902,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -943,12 +937,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -1028,12 +1020,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         className=""
                         fixedWidth={true}
                         name="refresh"
-                        type="refresh"
                       >
                         <span
                           aria-hidden={true}
                           className="fa fa-refresh fa-fw"
-                          type="refresh"
                         />
                       </FontAwesome>
                     </Icon>
@@ -1187,12 +1177,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   <FontAwesome
                     fixedWidth={true}
                     name="arrow-left"
-                    type="arrow-left"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-arrow-left fa-fw"
-                      type="arrow-left"
                     />
                   </FontAwesome>
                 </Icon>
@@ -1246,12 +1234,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   <FontAwesome
                     fixedWidth={true}
                     name="calendar"
-                    type="calendar"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-calendar fa-fw"
-                      type="calendar"
                     />
                   </FontAwesome>
                 </Icon>
@@ -1446,7 +1432,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
           </div>
           <styled.div>
             <div
-              className="sc-jrAGrp bDAiGg"
+              className="sc-kEjbxe ddEshv"
             >
               <LiveStopTimes
                 findStopTimesForStop={[Function]}
@@ -1658,7 +1644,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -1670,7 +1655,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -1706,12 +1690,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -1791,12 +1773,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         className=""
                         fixedWidth={true}
                         name="refresh"
-                        type="refresh"
                       >
                         <span
                           aria-hidden={true}
                           className="fa fa-refresh fa-fw"
-                          type="refresh"
                         />
                       </FontAwesome>
                     </Icon>
@@ -2049,12 +2029,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   <FontAwesome
                     fixedWidth={true}
                     name="arrow-left"
-                    type="arrow-left"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-arrow-left fa-fw"
-                      type="arrow-left"
                     />
                   </FontAwesome>
                 </Icon>
@@ -2108,12 +2086,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   <FontAwesome
                     fixedWidth={true}
                     name="calendar"
-                    type="calendar"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-calendar fa-fw"
-                      type="calendar"
                     />
                   </FontAwesome>
                 </Icon>
@@ -2308,7 +2284,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
           </div>
           <styled.div>
             <div
-              className="sc-jrAGrp bDAiGg"
+              className="sc-kEjbxe ddEshv"
             >
               <LiveStopTimes
                 findStopTimesForStop={[Function]}
@@ -2709,7 +2685,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -2721,7 +2696,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -2766,12 +2740,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -2851,12 +2823,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         className=""
                         fixedWidth={true}
                         name="refresh"
-                        type="refresh"
                       >
                         <span
                           aria-hidden={true}
                           className="fa fa-refresh fa-fw"
-                          type="refresh"
                         />
                       </FontAwesome>
                     </Icon>
@@ -3367,12 +3337,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   <FontAwesome
                     fixedWidth={true}
                     name="arrow-left"
-                    type="arrow-left"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-arrow-left fa-fw"
-                      type="arrow-left"
                     />
                   </FontAwesome>
                 </Icon>
@@ -3426,12 +3394,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   <FontAwesome
                     fixedWidth={true}
                     name="calendar"
-                    type="calendar"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-calendar fa-fw"
-                      type="calendar"
                     />
                   </FontAwesome>
                 </Icon>
@@ -3626,7 +3592,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
           </div>
           <styled.div>
             <div
-              className="sc-jrAGrp bDAiGg"
+              className="sc-kEjbxe ddEshv"
             >
               <LiveStopTimes
                 findStopTimesForStop={[Function]}
@@ -4283,7 +4249,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -4295,7 +4260,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -4340,12 +4304,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -4542,7 +4504,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -4554,7 +4515,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -4599,12 +4559,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -4801,7 +4759,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -4813,7 +4770,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -4858,12 +4814,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -5114,7 +5068,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -5126,7 +5079,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -5171,12 +5123,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -5256,12 +5206,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         className=""
                         fixedWidth={true}
                         name="refresh"
-                        type="refresh"
                       >
                         <span
                           aria-hidden={true}
                           className="fa fa-refresh fa-fw"
-                          type="refresh"
                         />
                       </FontAwesome>
                     </Icon>
@@ -5767,12 +5715,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   <FontAwesome
                     fixedWidth={true}
                     name="arrow-left"
-                    type="arrow-left"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-arrow-left fa-fw"
-                      type="arrow-left"
                     />
                   </FontAwesome>
                 </Icon>
@@ -5826,12 +5772,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   <FontAwesome
                     fixedWidth={true}
                     name="calendar"
-                    type="calendar"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-calendar fa-fw"
-                      type="calendar"
                     />
                   </FontAwesome>
                 </Icon>
@@ -6026,7 +5970,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
           </div>
           <styled.div>
             <div
-              className="sc-jrAGrp bDAiGg"
+              className="sc-kEjbxe ddEshv"
             >
               <LiveStopTimes
                 findStopTimesForStop={[Function]}
@@ -6680,7 +6624,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         "marginRight": 2,
                                       }
                                     }
-                                    type="clock-o"
                                   >
                                     <span
                                       aria-hidden={true}
@@ -6692,7 +6635,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           "marginRight": 2,
                                         }
                                       }
-                                      type="clock-o"
                                     />
                                   </FontAwesome>
                                 </Icon>
@@ -6737,12 +6679,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               <FontAwesome
                                 fixedWidth={true}
                                 name="chevron-down"
-                                type="chevron-down"
                               >
                                 <span
                                   aria-hidden={true}
                                   className="fa fa-chevron-down fa-fw"
-                                  type="chevron-down"
                                 />
                               </FontAwesome>
                             </Icon>
@@ -6822,12 +6762,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         className=""
                         fixedWidth={true}
                         name="refresh"
-                        type="refresh"
                       >
                         <span
                           aria-hidden={true}
                           className="fa fa-refresh fa-fw"
-                          type="refresh"
                         />
                       </FontAwesome>
                     </Icon>
@@ -6915,12 +6853,10 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                   <FontAwesome
                     fixedWidth={true}
                     name="arrow-left"
-                    type="arrow-left"
                   >
                     <span
                       aria-hidden={true}
                       className="fa fa-arrow-left fa-fw"
-                      type="arrow-left"
                     />
                   </FontAwesome>
                 </Icon>

@@ -99,7 +99,7 @@ Object {
   "ui": Object {
     "diagramLeg": null,
     "locale": null,
-    "localizedMessages": Object {},
+    "localizedMessages": null,
     "mobileScreen": 1,
     "printView": false,
   },
