@@ -154,7 +154,7 @@ components:
       En temps normal, ce trajet prendrait <strong>{normalDuration}</strong> en empruntant les lignes: {routes}."
     ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
-   RouteDetails:
+  RouteDetails:
     operatedBy: "Exploité par {agencyName}"
     moreDetails: "Plus d'infos"
     stopsTo: "Direction"
