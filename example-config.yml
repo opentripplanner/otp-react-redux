@@ -346,6 +346,9 @@ itinerary:
 dateTime:
   longDateFormat: DD-MM-YYYY
 # stopViewer:
+#   # The radius (in meters) to use when searching for nearby stops and other
+#   # amenities (rental vehicles, park and rides) to show for the focused stop.
+#   nearbyRadius: 250
 #   # The max. number of departures to show for each trip pattern
 #   # in the stop viewer Next Arrivals mode
 #   # (defaults to 3 if unspecified).
