@@ -201,7 +201,7 @@ components:
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
   StackedPaneDisplay:
-    savePreferences: Enregistrer mes préferences
+    savePreferences: Enregistrer mes préférences
   SubNav:
     myAccount: Mon compte
     settings: Préférences
@@ -214,7 +214,7 @@ components:
     }"
   TermsOfUsePane:
     mustAgreeToTerms: Vous devez accepter les conditions d'utilisation avant de continuer.
-    termsOfServiceStatement: "J'atteste avoir Mau moins 18 ans et j'ai lu et consens aux
+    termsOfServiceStatement: "J'atteste avoir au moins 18 ans et j'ai lu et consens aux
       <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the Planificateur de trajets."
     termsOfStorageStatement: "Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches
       afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>"
@@ -223,7 +223,7 @@ components:
     incoming_at: "Approchant {stop}"
     stopped_at: "À quai à {stop}"
     in_transit_to: "Prochain arrêt : {stop}"
-    vehicleName: "Véhicule {vehicleNumber}: "
+    vehicleName: "Véhicule {vehicleNumber} : "
     realtimeVehicleInfo: "<strong>{vehicleNameOrBlank}</strong>{relativeTime}"
     travelingAt: "Vitesse : {milesPerHour}"
   TripBasicsPane:
@@ -363,6 +363,7 @@ common:
     back: Retour
     cancel: Annuler
     defaultValue: "{value} (défaut)"
+    error: erreur !
     finish: Terminer
     next: Suivant
     no: Non
