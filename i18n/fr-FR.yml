@@ -367,16 +367,12 @@ common:
     next: Suivant
     no: Non
     save: Enregistrer
+    startOver: Recommencer
     yes: Oui
   itineraryDescriptions:
     calories: "{calories, number} kcal" # SI unit
     noItineraryToDisplay: Aucun trajet à afficher.
     transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
-
-  # Standard navigation
-  navigation:
-    back: Retour
-    startOver: Recommencer
 
   otpTransitModes:
     tram: Tram
