@@ -389,7 +389,7 @@ common:
     home: domicile
     work: lieu de travail
   time:
-    departureArrivalTimes: "{startTime}—{endTime}"
+    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} mn"
     tripDurationFormat: "{hours, plural, 
