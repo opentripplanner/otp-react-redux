@@ -291,7 +291,7 @@ components:
       description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
       heading: Suivi suspendu jusqu'à demain
     upcoming: 
-      nextTripBegins: "Prochain départ : {tripDate, date, ::eeeee yyyyMMdd} à {tripTime, time, short}."
+      nextTripBegins: "Prochain départ : {tripDatetime, date, ::eeeee yyyyMMdd} à {tripDatetime, time, short}."
       tripBegins: Départ prévu à {tripStart, time, short}. (Le suivi en temps réel débutera à {monitoringStart, time, short}.)
       tripStartIsDelayed: Départ retardé de ${duration}.
       tripStartIsEarly: Départ avancé de ${duration} !
