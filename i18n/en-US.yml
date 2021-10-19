@@ -161,31 +161,36 @@ components:
   AmenitiesPanel:
     noPRLotsFound: No nearby park and ride lots found.
     # Use plurals to differentiate between company variable being set or not
-    bikesAtStation: "{companyLength, plural,
-    =0 {Bikes at {name}}
-    other {{company} bikes at {name}}
-    }"
-    bikesNearby: "{count, plural,
-      =0 {no floating {company} bikes nearby}
-      one {{count} floating {company} bike nearby}
-      other {{count} floating {company} bikes nearby}
-    }"
-    bikesAvailable: "{count, plural,
-      =0 {No bikes available}
-      one {{count} bike available}
-      other {{count} bikes available}
-    }"
-    spacesAvailable: "{count, plural,
-      =0 {No spaces available}
-      one {{count} space available}
-      other {{count} spaces available}
-    }"
+    bikesAtStation: >
+      "{companyLength, plural,
+        =0 {Bikes at {name}}
+        other {{company} bikes at {name}}
+      }"
+    bikesNearby: >
+      "{count, plural,
+        =0 {no floating {company} bikes nearby}
+        one {{count} floating {company} bike nearby}
+        other {{count} floating {company} bikes nearby}
+      }"
+    bikesAvailable: >
+      "{count, plural,
+        =0 {No bikes available}
+        one {{count} bike available}
+        other {{count} bikes available}
+      }"
+    spacesAvailable: >
+      "{count, plural,
+        =0 {No spaces available}
+        one {{count} space available}
+        other {{count} spaces available}
+      }"
     noNearbyBikes: No nearby bike rentals found.
-    scootersNearby: "{count, plural,
-      =0 {No {company} E-Scooters nearby}
-      one {{count} {company} E-Scooter nearby}
-      other {{count} {company} E-Scooters nearby}
-    }"
+    scootersNearby: >
+      "{count, plural,
+        =0 {No {company} E-Scooters nearby}
+        one {{count} {company} E-Scooter nearby}
+        other {{count} {company} E-Scooters nearby}
+      }"
     noNearbyScooters: No nearby micromobility rentals found.
     nearbyAmenities: Nearby Amenities
   LiveStopTimes:

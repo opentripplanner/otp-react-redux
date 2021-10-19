@@ -71,11 +71,16 @@ class AppMenu extends Component<
   }
 
   _togglePane = () => {
-    const { isPaneOpen } = this.state || false
+    if (!this.state?.isPaneOpen) return
+    const { isPaneOpen } = this.state
     this.setState({ isPaneOpen: !isPaneOpen })
   }
 
   _toggleSubmenu = (id: string) => {
+    if (this.state?.expandedSubmenus?.[id]) {
+      return
+    }
+
     const { expandedSubmenus } = this.state
     const currentlyOpen = expandedSubmenus[id] || false
     this.setState({ expandedSubmenus: { [id]: !currentlyOpen } })
@@ -94,9 +99,9 @@ class AppMenu extends Component<
           label: configLabel,
           subMenuDivider
         } = menuItem
-        const { expandedSubmenus } = this.state
+        const { expandedSubmenus } = this.state || {}
         const { intl } = this.props
-        const isSubmenuExpanded = expandedSubmenus[id]
+        const isSubmenuExpanded = expandedSubmenus?.[id]
 
         const localizationId = `config.menuItems.${id}`
         const localizedLabel = intl.formatMessage({ id: localizationId })
