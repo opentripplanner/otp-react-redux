@@ -154,6 +154,49 @@ components:
       This feature allows you to email a report to site administrators for review.
       Please add any additional feedback for this trip under the 'Additional Comments'
       section below and send using your regular email program."
+  EnhancedStopMarker:
+    stopID: "Stop ID:"
+    stopViewer: Stop Viewer
+    planATrip: "Plan a trip:"
+  AmenitiesPanel:
+    noPRLotsFound: No nearby park and ride lots found.
+    # Use plurals to differentiate between company variable being set or not
+    bikesAtStation: "{companyLength, plural,
+    =0 {Bikes at {name}}
+    other {{company} bikes at {name}}
+    }"
+    bikesNearby: "{count, plural,
+      =0 {no floating {company} bikes nearby}
+      one {{count} floating {company} bike nearby}
+      other {{count} floating {company} bikes nearby}
+    }"
+    bikesAvailable: "{count, plural,
+      =0 {No bikes available}
+      one {{count} bike available}
+      other {{count} bikes available}
+    }"
+    spacesAvailable: "{count, plural,
+      =0 {No spaces available}
+      one {{count} space available}
+      other {{count} spaces available}
+    }"
+    noNearbyBikes: No nearby bike rentals found.
+    scootersNearby: "{count, plural,
+      =0 {No {company} E-Scooters nearby}
+      one {{count} {company} E-Scooter nearby}
+      other {{count} {company} E-Scooters nearby}
+    }"
+    noNearbyScooters: No nearby micromobility rentals found.
+    nearbyAmenities: Nearby Amenities
+  LiveStopTimes:
+    routeToHeadsign: "To {headsign}"
+  RelatedPanel:
+    hideExtraStops: Hide extra stops
+    showExtraStops: "Show {count} extra stops"
+  RelatedStopsPanel:
+    relatedStops: Related Stops
+    viewDetails: View details
+    noArrivalFound: No arrival found
 
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
@@ -162,6 +205,7 @@ common:
   navigation:
     back: Back
     startOver: Start Over
+    error: Error!
   # OTP access modes
   accessModes:
     bike: Bike

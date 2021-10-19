@@ -8,6 +8,7 @@ import clone from 'lodash/cloneDeep'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
+import { IntlProvider } from 'react-intl'
 
 import {getInitialState} from '../../../lib/reducers/create-otp-reducer'
 
@@ -46,7 +47,9 @@ export function mockWithProvider (
   const store = configureStore(storeMiddleWare)(storeState)
   const wrapper = mount(
     <Provider store={store}>
-      <ConnectedComponent {...connectedComponentProps} />
+      <IntlProvider>
+        <ConnectedComponent {...connectedComponentProps} />
+      </IntlProvider>
     </Provider>
   )
 
