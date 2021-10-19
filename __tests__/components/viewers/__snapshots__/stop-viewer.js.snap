@@ -297,38 +297,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   <Icon
                     type="search"
                   >
-<<<<<<< HEAD
-                    <span
-                      aria-hidden={true}
-                      className="fa fa-calendar fa-fw"
-                    />
-                  </FontAwesome>
-                </Icon>
-                 
-                View 
-                schedule
-              </button>
-            </div>
-            <b>
-              Plan a trip:
-            </b>
-            <FromToLocationPicker
-              fromText="From here"
-              location={null}
-              onFromClick={[Function]}
-              onToClick={[Function]}
-              setLocation={null}
-              showIcons={true}
-              toText="To here"
-            >
-              <styled__FromToPickerSpan>
-                <span
-                  className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
-                >
-                  <styled__LocationPickerSpan>
-                    <span
-                      className="styled__LocationPickerSpan-p56b41-0 itKxFO"
-=======
                     <FontAwesome
                       fixedWidth={true}
                       name="search"
@@ -355,7 +323,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     <FontAwesome
                       fixedWidth={true}
                       name="calendar"
->>>>>>> dev
                     >
                       <span
                         aria-hidden={true}
@@ -382,51 +349,28 @@ exports[`components > viewers > stop viewer should render countdown times after 
               >
                 <styled__FromToPickerSpan>
                   <span
-                    className="styled__FromToPickerSpan-p56b41-1 aqwCm"
+                    className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
                   >
                     <styled__LocationPickerSpan>
                       <span
-                        className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                        className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                       >
                         <LocationIcon
                           size="0.9em"
                           type="from"
                         >
-<<<<<<< HEAD
-                          <DotCircle
-                            className="styled__FromIcon-n5xcvc-0 bnFcGf"
-                            size="0.9em"
-                            title="From Location Icon"
-                          >
-                            <Styled(Component)
-                              className="styled__FromIcon-n5xcvc-0 bnFcGf"
-                              iconAttrs={
-                                Object {
-                                  "fill": "currentColor",
-                                  "xmlns": "http://www.w3.org/2000/svg",
-                                }
-                              }
-                              iconVerticalAlign="-.125em"
-                              iconViewBox="0 0 512 512"
-                              size="0.9em"
-                              title="From Location Icon"
-                            >
-                              <ForwardRef
-                                className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
-=======
                           <styled__FromIcon
                             className=""
                             size="0.9em"
                             title="From Location Icon"
                           >
                             <DotCircle
-                              className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                              className="styled__FromIcon-n5xcvc-0 bnFcGf"
                               size="0.9em"
                               title="From Location Icon"
                             >
                               <Styled(Component)
-                                className="styled__FromIcon-n5xcvc-0 fTLtLq"
->>>>>>> dev
+                                className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                 iconAttrs={
                                   Object {
                                     "fill": "currentColor",
@@ -438,19 +382,8 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                 size="0.9em"
                                 title="From Location Icon"
                               >
-<<<<<<< HEAD
-                                <svg
-                                  className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="0.9em"
-                                  role="img"
-                                  viewBox="0 0 512 512"
-                                  width="0.9em"
-                                  xmlns="http://www.w3.org/2000/svg"
-=======
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -461,40 +394,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   iconViewBox="0 0 512 512"
                                   size="0.9em"
                                   title="From Location Icon"
->>>>>>> dev
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
                                     fill="currentColor"
-<<<<<<< HEAD
-                                    key="k0"
-                                  />
-                                </svg>
-                              </ForwardRef>
-                            </Styled(Component)>
-                          </DotCircle>
-                        </styled__FromIcon>
-                      </LocationIcon>
-                      <styled__Button
-                        onClick={[Function]}
-                      >
-                        <button
-                          className="styled__Button-p56b41-2 dMNrPf"
-                          onClick={[Function]}
-                        >
-                          From here
-                        </button>
-                      </styled__Button>
-                    </span>
-                  </styled__LocationPickerSpan>
-                  <styled__LocationPickerSpan>
-                    <span
-                      className="styled__LocationPickerSpan-p56b41-0 itKxFO"
-                    >
-                      <LocationIcon
-                        size="0.9em"
-                        type="to"
-=======
                                     focusable="false"
                                     height="0.9em"
                                     role="img"
@@ -522,7 +425,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           onClick={[Function]}
                         >
                           <button
-                            className="styled__Button-p56b41-2 dnvXjK"
+                            className="styled__Button-p56b41-2 dMNrPf"
                             onClick={[Function]}
                           >
                             From here
@@ -532,48 +435,24 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     </styled__LocationPickerSpan>
                     <styled__LocationPickerSpan>
                       <span
-                        className="styled__LocationPickerSpan-p56b41-0 bujKZP"
->>>>>>> dev
+                        className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                       >
                         <LocationIcon
                           size="0.9em"
                           type="to"
                         >
-<<<<<<< HEAD
-                          <MapMarkerAlt
-                            className="styled__ToIcon-n5xcvc-2 bCTefk"
-                            size="0.9em"
-                            title="To Location Icon"
-                          >
-                            <Styled(Component)
-                              className="styled__ToIcon-n5xcvc-2 bCTefk"
-                              iconAttrs={
-                                Object {
-                                  "fill": "currentColor",
-                                  "xmlns": "http://www.w3.org/2000/svg",
-                                }
-                              }
-                              iconVerticalAlign="-.125em"
-                              iconViewBox="0 0 384 512"
-                              size="0.9em"
-                              title="To Location Icon"
-                            >
-                              <ForwardRef
-                                className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
-=======
                           <styled__ToIcon
                             className=""
                             size="0.9em"
                             title="To Location Icon"
                           >
                             <MapMarkerAlt
-                              className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                              className="styled__ToIcon-n5xcvc-2 bCTefk"
                               size="0.9em"
                               title="To Location Icon"
                             >
                               <Styled(Component)
-                                className="styled__ToIcon-n5xcvc-2 jzAxgN"
->>>>>>> dev
+                                className="styled__ToIcon-n5xcvc-2 bCTefk"
                                 iconAttrs={
                                   Object {
                                     "fill": "currentColor",
@@ -585,19 +464,8 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                 size="0.9em"
                                 title="To Location Icon"
                               >
-<<<<<<< HEAD
-                                <svg
-                                  className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="0.9em"
-                                  role="img"
-                                  viewBox="0 0 384 512"
-                                  width="0.9em"
-                                  xmlns="http://www.w3.org/2000/svg"
-=======
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -608,80 +476,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   iconViewBox="0 0 384 512"
                                   size="0.9em"
                                   title="To Location Icon"
->>>>>>> dev
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
                                     fill="currentColor"
-<<<<<<< HEAD
-                                    key="k0"
-                                  />
-                                </svg>
-                              </ForwardRef>
-                            </Styled(Component)>
-                          </MapMarkerAlt>
-                        </styled__ToIcon>
-                      </LocationIcon>
-                      <styled__Button
-                        onClick={[Function]}
-                      >
-                        <button
-                          className="styled__Button-p56b41-2 dMNrPf"
-                          onClick={[Function]}
-                        >
-                          To here
-                        </button>
-                      </styled__Button>
-                    </span>
-                  </styled__LocationPickerSpan>
-                </span>
-              </styled__FromToPickerSpan>
-            </FromToLocationPicker>
-          </div>
-          <styled.div>
-            <div
-              className="sc-kEjbQP ijoMxW"
-            >
-              <LiveStopTimes
-                autoRefreshStopTimes={true}
-                findStopTimesForStop={[Function]}
-                homeTimezone="America/Los_Angeles"
-                stopData={
-                  Object {
-                    "agencyName": "TriMet",
-                    "amenities": Array [
-                      "Crosswalk near stop",
-                      "Curb ramp near stop",
-                      "Pavement at back door",
-                      "Pavement at front door",
-                      "Schedule display",
-                      "Sidewalk at stop",
-                      "Traffic signal",
-                    ],
-                    "code": "9860",
-                    "desc": "Eastbound stop in Portland (Stop ID 9860)",
-                    "id": "TriMet:9860",
-                    "lat": 45.522919,
-                    "lon": -122.689717,
-                    "mode": "BUS",
-                    "name": "W Burnside & SW 18th",
-                    "routes": Array [
-                      Object {
-                        "agencyName": "TriMet",
-                        "id": "TriMet:20",
-                        "longName": "Burnside/Stark",
-                        "mode": "BUS",
-                        "shortName": "20",
-                        "sortOrder": 2600,
-                        "sortOrderSet": true,
-                        "type": 3,
-                      },
-                    ],
-                    "rsn": "20",
-                    "stopTimes": Array [
-                      Object {
-                        "pattern": Object {
-=======
                                     focusable="false"
                                     height="0.9em"
                                     role="img"
@@ -709,7 +507,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           onClick={[Function]}
                         >
                           <button
-                            className="styled__Button-p56b41-2 dnvXjK"
+                            className="styled__Button-p56b41-2 dMNrPf"
                             onClick={[Function]}
                           >
                             To here
@@ -723,7 +521,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-iqHYmW eJgWDe"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -919,7 +717,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       key="TriMet:20-Gresham TC"
                       pattern={
                         Object {
->>>>>>> dev
                           "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
                           "headsign": "Gresham TC",
                           "id": "TriMet:20:1:04",
@@ -1452,7 +1249,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         expanded={false}
                         onToggleExpanded={[Function]}
                         title={
-                          <UNDEFINED
+                          <Memo(MemoizedFormattedMessage)
                             id="components.RelatedStopsPanel.relatedStops"
                           />
                         }
@@ -1844,6 +1641,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               "formatDateToParts": [Function],
                               "formatDisplayName": [Function],
                               "formatList": [Function],
+                              "formatListToParts": [Function],
                               "formatMessage": [Function],
                               "formatNumber": [Function],
                               "formatNumberToParts": [Function],
@@ -2074,7 +1872,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-dlfnuX cmeMni"
                                       >
                                         P
                                       </div>
@@ -2302,38 +2100,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   <Icon
                     type="search"
                   >
-<<<<<<< HEAD
-                    <span
-                      aria-hidden={true}
-                      className="fa fa-calendar fa-fw"
-                    />
-                  </FontAwesome>
-                </Icon>
-                 
-                View 
-                schedule
-              </button>
-            </div>
-            <b>
-              Plan a trip:
-            </b>
-            <FromToLocationPicker
-              fromText="From here"
-              location={null}
-              onFromClick={[Function]}
-              onToClick={[Function]}
-              setLocation={null}
-              showIcons={true}
-              toText="To here"
-            >
-              <styled__FromToPickerSpan>
-                <span
-                  className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
-                >
-                  <styled__LocationPickerSpan>
-                    <span
-                      className="styled__LocationPickerSpan-p56b41-0 itKxFO"
-=======
                     <FontAwesome
                       fixedWidth={true}
                       name="search"
@@ -2360,7 +2126,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     <FontAwesome
                       fixedWidth={true}
                       name="calendar"
->>>>>>> dev
                     >
                       <span
                         aria-hidden={true}
@@ -2387,51 +2152,28 @@ exports[`components > viewers > stop viewer should render countdown times for st
               >
                 <styled__FromToPickerSpan>
                   <span
-                    className="styled__FromToPickerSpan-p56b41-1 aqwCm"
+                    className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
                   >
                     <styled__LocationPickerSpan>
                       <span
-                        className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                        className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                       >
                         <LocationIcon
                           size="0.9em"
                           type="from"
                         >
-<<<<<<< HEAD
-                          <DotCircle
-                            className="styled__FromIcon-n5xcvc-0 bnFcGf"
-                            size="0.9em"
-                            title="From Location Icon"
-                          >
-                            <Styled(Component)
-                              className="styled__FromIcon-n5xcvc-0 bnFcGf"
-                              iconAttrs={
-                                Object {
-                                  "fill": "currentColor",
-                                  "xmlns": "http://www.w3.org/2000/svg",
-                                }
-                              }
-                              iconVerticalAlign="-.125em"
-                              iconViewBox="0 0 512 512"
-                              size="0.9em"
-                              title="From Location Icon"
-                            >
-                              <ForwardRef
-                                className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
-=======
                           <styled__FromIcon
                             className=""
                             size="0.9em"
                             title="From Location Icon"
                           >
                             <DotCircle
-                              className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                              className="styled__FromIcon-n5xcvc-0 bnFcGf"
                               size="0.9em"
                               title="From Location Icon"
                             >
                               <Styled(Component)
-                                className="styled__FromIcon-n5xcvc-0 fTLtLq"
->>>>>>> dev
+                                className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                 iconAttrs={
                                   Object {
                                     "fill": "currentColor",
@@ -2443,19 +2185,8 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                 size="0.9em"
                                 title="From Location Icon"
                               >
-<<<<<<< HEAD
-                                <svg
-                                  className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="0.9em"
-                                  role="img"
-                                  viewBox="0 0 512 512"
-                                  width="0.9em"
-                                  xmlns="http://www.w3.org/2000/svg"
-=======
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -2466,40 +2197,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   iconViewBox="0 0 512 512"
                                   size="0.9em"
                                   title="From Location Icon"
->>>>>>> dev
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
                                     fill="currentColor"
-<<<<<<< HEAD
-                                    key="k0"
-                                  />
-                                </svg>
-                              </ForwardRef>
-                            </Styled(Component)>
-                          </DotCircle>
-                        </styled__FromIcon>
-                      </LocationIcon>
-                      <styled__Button
-                        onClick={[Function]}
-                      >
-                        <button
-                          className="styled__Button-p56b41-2 dMNrPf"
-                          onClick={[Function]}
-                        >
-                          From here
-                        </button>
-                      </styled__Button>
-                    </span>
-                  </styled__LocationPickerSpan>
-                  <styled__LocationPickerSpan>
-                    <span
-                      className="styled__LocationPickerSpan-p56b41-0 itKxFO"
-                    >
-                      <LocationIcon
-                        size="0.9em"
-                        type="to"
-=======
                                     focusable="false"
                                     height="0.9em"
                                     role="img"
@@ -2527,7 +2228,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           onClick={[Function]}
                         >
                           <button
-                            className="styled__Button-p56b41-2 dnvXjK"
+                            className="styled__Button-p56b41-2 dMNrPf"
                             onClick={[Function]}
                           >
                             From here
@@ -2537,48 +2238,24 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     </styled__LocationPickerSpan>
                     <styled__LocationPickerSpan>
                       <span
-                        className="styled__LocationPickerSpan-p56b41-0 bujKZP"
->>>>>>> dev
+                        className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                       >
                         <LocationIcon
                           size="0.9em"
                           type="to"
                         >
-<<<<<<< HEAD
-                          <MapMarkerAlt
-                            className="styled__ToIcon-n5xcvc-2 bCTefk"
-                            size="0.9em"
-                            title="To Location Icon"
-                          >
-                            <Styled(Component)
-                              className="styled__ToIcon-n5xcvc-2 bCTefk"
-                              iconAttrs={
-                                Object {
-                                  "fill": "currentColor",
-                                  "xmlns": "http://www.w3.org/2000/svg",
-                                }
-                              }
-                              iconVerticalAlign="-.125em"
-                              iconViewBox="0 0 384 512"
-                              size="0.9em"
-                              title="To Location Icon"
-                            >
-                              <ForwardRef
-                                className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
-=======
                           <styled__ToIcon
                             className=""
                             size="0.9em"
                             title="To Location Icon"
                           >
                             <MapMarkerAlt
-                              className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                              className="styled__ToIcon-n5xcvc-2 bCTefk"
                               size="0.9em"
                               title="To Location Icon"
                             >
                               <Styled(Component)
-                                className="styled__ToIcon-n5xcvc-2 jzAxgN"
->>>>>>> dev
+                                className="styled__ToIcon-n5xcvc-2 bCTefk"
                                 iconAttrs={
                                   Object {
                                     "fill": "currentColor",
@@ -2590,19 +2267,8 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                 size="0.9em"
                                 title="To Location Icon"
                               >
-<<<<<<< HEAD
-                                <svg
-                                  className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="0.9em"
-                                  role="img"
-                                  viewBox="0 0 384 512"
-                                  width="0.9em"
-                                  xmlns="http://www.w3.org/2000/svg"
-=======
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -2613,80 +2279,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   iconViewBox="0 0 384 512"
                                   size="0.9em"
                                   title="To Location Icon"
->>>>>>> dev
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
                                     fill="currentColor"
-<<<<<<< HEAD
-                                    key="k0"
-                                  />
-                                </svg>
-                              </ForwardRef>
-                            </Styled(Component)>
-                          </MapMarkerAlt>
-                        </styled__ToIcon>
-                      </LocationIcon>
-                      <styled__Button
-                        onClick={[Function]}
-                      >
-                        <button
-                          className="styled__Button-p56b41-2 dMNrPf"
-                          onClick={[Function]}
-                        >
-                          To here
-                        </button>
-                      </styled__Button>
-                    </span>
-                  </styled__LocationPickerSpan>
-                </span>
-              </styled__FromToPickerSpan>
-            </FromToLocationPicker>
-          </div>
-          <styled.div>
-            <div
-              className="sc-kEjbQP ijoMxW"
-            >
-              <LiveStopTimes
-                autoRefreshStopTimes={true}
-                findStopTimesForStop={[Function]}
-                homeTimezone="America/Los_Angeles"
-                stopData={
-                  Object {
-                    "agencyName": "TriMet",
-                    "amenities": Array [
-                      "Crosswalk near stop",
-                      "Curb ramp near stop",
-                      "Pavement at back door",
-                      "Pavement at front door",
-                      "Schedule display",
-                      "Sidewalk at stop",
-                      "Traffic signal",
-                    ],
-                    "code": "9860",
-                    "desc": "Eastbound stop in Portland (Stop ID 9860)",
-                    "id": "TriMet:9860",
-                    "lat": 45.522919,
-                    "lon": -122.689717,
-                    "mode": "BUS",
-                    "name": "W Burnside & SW 18th",
-                    "routes": Array [
-                      Object {
-                        "agencyName": "TriMet",
-                        "id": "TriMet:20",
-                        "longName": "Burnside/Stark",
-                        "mode": "BUS",
-                        "shortName": "20",
-                        "sortOrder": 2600,
-                        "sortOrderSet": true,
-                        "type": 3,
-                      },
-                    ],
-                    "rsn": "20",
-                    "stopTimes": Array [
-                      Object {
-                        "pattern": Object {
-=======
                                     focusable="false"
                                     height="0.9em"
                                     role="img"
@@ -2714,7 +2310,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           onClick={[Function]}
                         >
                           <button
-                            className="styled__Button-p56b41-2 dnvXjK"
+                            className="styled__Button-p56b41-2 dMNrPf"
                             onClick={[Function]}
                           >
                             To here
@@ -2728,7 +2324,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-iqHYmW eJgWDe"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -2825,7 +2421,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       key="TriMet:20-Gresham TC"
                       pattern={
                         Object {
->>>>>>> dev
                           "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
                           "headsign": "Gresham TC",
                           "id": "TriMet:20:1:04",
@@ -3169,7 +2764,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         expanded={false}
                         onToggleExpanded={[Function]}
                         title={
-                          <UNDEFINED
+                          <Memo(MemoizedFormattedMessage)
                             id="components.RelatedStopsPanel.relatedStops"
                           />
                         }
@@ -3363,6 +2958,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               "formatDateToParts": [Function],
                               "formatDisplayName": [Function],
                               "formatList": [Function],
+                              "formatListToParts": [Function],
                               "formatMessage": [Function],
                               "formatNumber": [Function],
                               "formatNumberToParts": [Function],
@@ -3494,7 +3090,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-dlfnuX cmeMni"
                                       >
                                         P
                                       </div>
@@ -3821,38 +3417,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   <Icon
                     type="search"
                   >
-<<<<<<< HEAD
-                    <span
-                      aria-hidden={true}
-                      className="fa fa-calendar fa-fw"
-                    />
-                  </FontAwesome>
-                </Icon>
-                 
-                View 
-                schedule
-              </button>
-            </div>
-            <b>
-              Plan a trip:
-            </b>
-            <FromToLocationPicker
-              fromText="From here"
-              location={null}
-              onFromClick={[Function]}
-              onToClick={[Function]}
-              setLocation={null}
-              showIcons={true}
-              toText="To here"
-            >
-              <styled__FromToPickerSpan>
-                <span
-                  className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
-                >
-                  <styled__LocationPickerSpan>
-                    <span
-                      className="styled__LocationPickerSpan-p56b41-0 itKxFO"
-=======
                     <FontAwesome
                       fixedWidth={true}
                       name="search"
@@ -3879,7 +3443,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     <FontAwesome
                       fixedWidth={true}
                       name="calendar"
->>>>>>> dev
                     >
                       <span
                         aria-hidden={true}
@@ -3906,51 +3469,28 @@ exports[`components > viewers > stop viewer should render times after midnight w
               >
                 <styled__FromToPickerSpan>
                   <span
-                    className="styled__FromToPickerSpan-p56b41-1 aqwCm"
+                    className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
                   >
                     <styled__LocationPickerSpan>
                       <span
-                        className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                        className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                       >
                         <LocationIcon
                           size="0.9em"
                           type="from"
                         >
-<<<<<<< HEAD
-                          <DotCircle
-                            className="styled__FromIcon-n5xcvc-0 bnFcGf"
-                            size="0.9em"
-                            title="From Location Icon"
-                          >
-                            <Styled(Component)
-                              className="styled__FromIcon-n5xcvc-0 bnFcGf"
-                              iconAttrs={
-                                Object {
-                                  "fill": "currentColor",
-                                  "xmlns": "http://www.w3.org/2000/svg",
-                                }
-                              }
-                              iconVerticalAlign="-.125em"
-                              iconViewBox="0 0 512 512"
-                              size="0.9em"
-                              title="From Location Icon"
-                            >
-                              <ForwardRef
-                                className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
-=======
                           <styled__FromIcon
                             className=""
                             size="0.9em"
                             title="From Location Icon"
                           >
                             <DotCircle
-                              className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                              className="styled__FromIcon-n5xcvc-0 bnFcGf"
                               size="0.9em"
                               title="From Location Icon"
                             >
                               <Styled(Component)
-                                className="styled__FromIcon-n5xcvc-0 fTLtLq"
->>>>>>> dev
+                                className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                 iconAttrs={
                                   Object {
                                     "fill": "currentColor",
@@ -3962,19 +3502,8 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                 size="0.9em"
                                 title="From Location Icon"
                               >
-<<<<<<< HEAD
-                                <svg
-                                  className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="0.9em"
-                                  role="img"
-                                  viewBox="0 0 512 512"
-                                  width="0.9em"
-                                  xmlns="http://www.w3.org/2000/svg"
-=======
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -3985,40 +3514,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   iconViewBox="0 0 512 512"
                                   size="0.9em"
                                   title="From Location Icon"
->>>>>>> dev
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
                                     fill="currentColor"
-<<<<<<< HEAD
-                                    key="k0"
-                                  />
-                                </svg>
-                              </ForwardRef>
-                            </Styled(Component)>
-                          </DotCircle>
-                        </styled__FromIcon>
-                      </LocationIcon>
-                      <styled__Button
-                        onClick={[Function]}
-                      >
-                        <button
-                          className="styled__Button-p56b41-2 dMNrPf"
-                          onClick={[Function]}
-                        >
-                          From here
-                        </button>
-                      </styled__Button>
-                    </span>
-                  </styled__LocationPickerSpan>
-                  <styled__LocationPickerSpan>
-                    <span
-                      className="styled__LocationPickerSpan-p56b41-0 itKxFO"
-                    >
-                      <LocationIcon
-                        size="0.9em"
-                        type="to"
-=======
                                     focusable="false"
                                     height="0.9em"
                                     role="img"
@@ -4046,7 +3545,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           onClick={[Function]}
                         >
                           <button
-                            className="styled__Button-p56b41-2 dnvXjK"
+                            className="styled__Button-p56b41-2 dMNrPf"
                             onClick={[Function]}
                           >
                             From here
@@ -4056,48 +3555,24 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     </styled__LocationPickerSpan>
                     <styled__LocationPickerSpan>
                       <span
-                        className="styled__LocationPickerSpan-p56b41-0 bujKZP"
->>>>>>> dev
+                        className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                       >
                         <LocationIcon
                           size="0.9em"
                           type="to"
                         >
-<<<<<<< HEAD
-                          <MapMarkerAlt
-                            className="styled__ToIcon-n5xcvc-2 bCTefk"
-                            size="0.9em"
-                            title="To Location Icon"
-                          >
-                            <Styled(Component)
-                              className="styled__ToIcon-n5xcvc-2 bCTefk"
-                              iconAttrs={
-                                Object {
-                                  "fill": "currentColor",
-                                  "xmlns": "http://www.w3.org/2000/svg",
-                                }
-                              }
-                              iconVerticalAlign="-.125em"
-                              iconViewBox="0 0 384 512"
-                              size="0.9em"
-                              title="To Location Icon"
-                            >
-                              <ForwardRef
-                                className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
-=======
                           <styled__ToIcon
                             className=""
                             size="0.9em"
                             title="To Location Icon"
                           >
                             <MapMarkerAlt
-                              className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                              className="styled__ToIcon-n5xcvc-2 bCTefk"
                               size="0.9em"
                               title="To Location Icon"
                             >
                               <Styled(Component)
-                                className="styled__ToIcon-n5xcvc-2 jzAxgN"
->>>>>>> dev
+                                className="styled__ToIcon-n5xcvc-2 bCTefk"
                                 iconAttrs={
                                   Object {
                                     "fill": "currentColor",
@@ -4109,19 +3584,8 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                 size="0.9em"
                                 title="To Location Icon"
                               >
-<<<<<<< HEAD
-                                <svg
-                                  className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="0.9em"
-                                  role="img"
-                                  viewBox="0 0 384 512"
-                                  width="0.9em"
-                                  xmlns="http://www.w3.org/2000/svg"
-=======
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -4132,80 +3596,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   iconViewBox="0 0 384 512"
                                   size="0.9em"
                                   title="To Location Icon"
->>>>>>> dev
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
                                     fill="currentColor"
-<<<<<<< HEAD
-                                    key="k0"
-                                  />
-                                </svg>
-                              </ForwardRef>
-                            </Styled(Component)>
-                          </MapMarkerAlt>
-                        </styled__ToIcon>
-                      </LocationIcon>
-                      <styled__Button
-                        onClick={[Function]}
-                      >
-                        <button
-                          className="styled__Button-p56b41-2 dMNrPf"
-                          onClick={[Function]}
-                        >
-                          To here
-                        </button>
-                      </styled__Button>
-                    </span>
-                  </styled__LocationPickerSpan>
-                </span>
-              </styled__FromToPickerSpan>
-            </FromToLocationPicker>
-          </div>
-          <styled.div>
-            <div
-              className="sc-kEjbQP ijoMxW"
-            >
-              <LiveStopTimes
-                autoRefreshStopTimes={true}
-                findStopTimesForStop={[Function]}
-                homeTimezone="America/Los_Angeles"
-                stopData={
-                  Object {
-                    "agencyName": "TriMet",
-                    "amenities": Array [
-                      "Crosswalk near stop",
-                      "Curb ramp near stop",
-                      "Pavement at back door",
-                      "Pavement at front door",
-                      "Schedule display",
-                      "Sidewalk at stop",
-                      "Traffic signal",
-                    ],
-                    "code": "9860",
-                    "desc": "Eastbound stop in Portland (Stop ID 9860)",
-                    "id": "TriMet:9860",
-                    "lat": 45.522919,
-                    "lon": -122.689717,
-                    "mode": "BUS",
-                    "name": "W Burnside & SW 18th",
-                    "routes": Array [
-                      Object {
-                        "agencyName": "TriMet",
-                        "id": "TriMet:20",
-                        "longName": "Burnside/Stark",
-                        "mode": "BUS",
-                        "shortName": "20",
-                        "sortOrder": 2600,
-                        "sortOrderSet": true,
-                        "type": 3,
-                      },
-                    ],
-                    "rsn": "20",
-                    "stopTimes": Array [
-                      Object {
-                        "pattern": Object {
-=======
                                     focusable="false"
                                     height="0.9em"
                                     role="img"
@@ -4233,7 +3627,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           onClick={[Function]}
                         >
                           <button
-                            className="styled__Button-p56b41-2 dnvXjK"
+                            className="styled__Button-p56b41-2 dMNrPf"
                             onClick={[Function]}
                           >
                             To here
@@ -4247,7 +3641,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-iqHYmW eJgWDe"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -4443,7 +3837,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       key="TriMet:20-Gresham TC"
                       pattern={
                         Object {
->>>>>>> dev
                           "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
                           "headsign": "Gresham TC",
                           "id": "TriMet:20:1:04",
@@ -4985,7 +4378,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         expanded={false}
                         onToggleExpanded={[Function]}
                         title={
-                          <UNDEFINED
+                          <Memo(MemoizedFormattedMessage)
                             id="components.RelatedStopsPanel.relatedStops"
                           />
                         }
@@ -5377,6 +4770,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               "formatDateToParts": [Function],
                               "formatDisplayName": [Function],
                               "formatList": [Function],
+                              "formatListToParts": [Function],
                               "formatMessage": [Function],
                               "formatNumber": [Function],
                               "formatNumberToParts": [Function],
@@ -5607,7 +5001,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-dlfnuX cmeMni"
                                       >
                                         P
                                       </div>
@@ -6192,38 +5586,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   <Icon
                     type="search"
                   >
-<<<<<<< HEAD
-                    <span
-                      aria-hidden={true}
-                      className="fa fa-calendar fa-fw"
-                    />
-                  </FontAwesome>
-                </Icon>
-                 
-                View 
-                schedule
-              </button>
-            </div>
-            <b>
-              Plan a trip:
-            </b>
-            <FromToLocationPicker
-              fromText="From here"
-              location={null}
-              onFromClick={[Function]}
-              onToClick={[Function]}
-              setLocation={null}
-              showIcons={true}
-              toText="To here"
-            >
-              <styled__FromToPickerSpan>
-                <span
-                  className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
-                >
-                  <styled__LocationPickerSpan>
-                    <span
-                      className="styled__LocationPickerSpan-p56b41-0 itKxFO"
-=======
                     <FontAwesome
                       fixedWidth={true}
                       name="search"
@@ -6250,7 +5612,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     <FontAwesome
                       fixedWidth={true}
                       name="calendar"
->>>>>>> dev
                     >
                       <span
                         aria-hidden={true}
@@ -6277,51 +5638,28 @@ exports[`components > viewers > stop viewer should render with OTP transit index
               >
                 <styled__FromToPickerSpan>
                   <span
-                    className="styled__FromToPickerSpan-p56b41-1 aqwCm"
+                    className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
                   >
                     <styled__LocationPickerSpan>
                       <span
-                        className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                        className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                       >
                         <LocationIcon
                           size="0.9em"
                           type="from"
                         >
-<<<<<<< HEAD
-                          <DotCircle
-                            className="styled__FromIcon-n5xcvc-0 bnFcGf"
-                            size="0.9em"
-                            title="From Location Icon"
-                          >
-                            <Styled(Component)
-                              className="styled__FromIcon-n5xcvc-0 bnFcGf"
-                              iconAttrs={
-                                Object {
-                                  "fill": "currentColor",
-                                  "xmlns": "http://www.w3.org/2000/svg",
-                                }
-                              }
-                              iconVerticalAlign="-.125em"
-                              iconViewBox="0 0 512 512"
-                              size="0.9em"
-                              title="From Location Icon"
-                            >
-                              <ForwardRef
-                                className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
-=======
                           <styled__FromIcon
                             className=""
                             size="0.9em"
                             title="From Location Icon"
                           >
                             <DotCircle
-                              className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                              className="styled__FromIcon-n5xcvc-0 bnFcGf"
                               size="0.9em"
                               title="From Location Icon"
                             >
                               <Styled(Component)
-                                className="styled__FromIcon-n5xcvc-0 fTLtLq"
->>>>>>> dev
+                                className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                 iconAttrs={
                                   Object {
                                     "fill": "currentColor",
@@ -6333,19 +5671,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 size="0.9em"
                                 title="From Location Icon"
                               >
-<<<<<<< HEAD
-                                <svg
-                                  className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="0.9em"
-                                  role="img"
-                                  viewBox="0 0 512 512"
-                                  width="0.9em"
-                                  xmlns="http://www.w3.org/2000/svg"
-=======
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -6356,40 +5683,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   iconViewBox="0 0 512 512"
                                   size="0.9em"
                                   title="From Location Icon"
->>>>>>> dev
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
                                     fill="currentColor"
-<<<<<<< HEAD
-                                    key="k0"
-                                  />
-                                </svg>
-                              </ForwardRef>
-                            </Styled(Component)>
-                          </DotCircle>
-                        </styled__FromIcon>
-                      </LocationIcon>
-                      <styled__Button
-                        onClick={[Function]}
-                      >
-                        <button
-                          className="styled__Button-p56b41-2 dMNrPf"
-                          onClick={[Function]}
-                        >
-                          From here
-                        </button>
-                      </styled__Button>
-                    </span>
-                  </styled__LocationPickerSpan>
-                  <styled__LocationPickerSpan>
-                    <span
-                      className="styled__LocationPickerSpan-p56b41-0 itKxFO"
-                    >
-                      <LocationIcon
-                        size="0.9em"
-                        type="to"
-=======
                                     focusable="false"
                                     height="0.9em"
                                     role="img"
@@ -6417,7 +5714,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           onClick={[Function]}
                         >
                           <button
-                            className="styled__Button-p56b41-2 dnvXjK"
+                            className="styled__Button-p56b41-2 dMNrPf"
                             onClick={[Function]}
                           >
                             From here
@@ -6427,48 +5724,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     </styled__LocationPickerSpan>
                     <styled__LocationPickerSpan>
                       <span
-                        className="styled__LocationPickerSpan-p56b41-0 bujKZP"
->>>>>>> dev
+                        className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                       >
                         <LocationIcon
                           size="0.9em"
                           type="to"
                         >
-<<<<<<< HEAD
-                          <MapMarkerAlt
-                            className="styled__ToIcon-n5xcvc-2 bCTefk"
-                            size="0.9em"
-                            title="To Location Icon"
-                          >
-                            <Styled(Component)
-                              className="styled__ToIcon-n5xcvc-2 bCTefk"
-                              iconAttrs={
-                                Object {
-                                  "fill": "currentColor",
-                                  "xmlns": "http://www.w3.org/2000/svg",
-                                }
-                              }
-                              iconVerticalAlign="-.125em"
-                              iconViewBox="0 0 384 512"
-                              size="0.9em"
-                              title="To Location Icon"
-                            >
-                              <ForwardRef
-                                className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
-=======
                           <styled__ToIcon
                             className=""
                             size="0.9em"
                             title="To Location Icon"
                           >
                             <MapMarkerAlt
-                              className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                              className="styled__ToIcon-n5xcvc-2 bCTefk"
                               size="0.9em"
                               title="To Location Icon"
                             >
                               <Styled(Component)
-                                className="styled__ToIcon-n5xcvc-2 jzAxgN"
->>>>>>> dev
+                                className="styled__ToIcon-n5xcvc-2 bCTefk"
                                 iconAttrs={
                                   Object {
                                     "fill": "currentColor",
@@ -6480,19 +5753,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 size="0.9em"
                                 title="To Location Icon"
                               >
-<<<<<<< HEAD
-                                <svg
-                                  className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="0.9em"
-                                  role="img"
-                                  viewBox="0 0 384 512"
-                                  width="0.9em"
-                                  xmlns="http://www.w3.org/2000/svg"
-=======
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -6503,86 +5765,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   iconViewBox="0 0 384 512"
                                   size="0.9em"
                                   title="To Location Icon"
->>>>>>> dev
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
                                     fill="currentColor"
-<<<<<<< HEAD
-                                    key="k0"
-                                  />
-                                </svg>
-                              </ForwardRef>
-                            </Styled(Component)>
-                          </MapMarkerAlt>
-                        </styled__ToIcon>
-                      </LocationIcon>
-                      <styled__Button
-                        onClick={[Function]}
-                      >
-                        <button
-                          className="styled__Button-p56b41-2 dMNrPf"
-                          onClick={[Function]}
-                        >
-                          To here
-                        </button>
-                      </styled__Button>
-                    </span>
-                  </styled__LocationPickerSpan>
-                </span>
-              </styled__FromToPickerSpan>
-            </FromToLocationPicker>
-          </div>
-          <styled.div>
-            <div
-              className="sc-kEjbQP ijoMxW"
-            >
-              <LiveStopTimes
-                autoRefreshStopTimes={true}
-                findStopTimesForStop={[Function]}
-                homeTimezone="America/Los_Angeles"
-                stopData={
-                  Object {
-                    "code": "715",
-                    "desc": "Eastbound stop in Portland (Stop ID 715)",
-                    "id": "TriMet:715",
-                    "lat": 45.522912,
-                    "locationType": 0,
-                    "lon": -122.678538,
-                    "name": "W Burnside & SW 8th",
-                    "routes": Array [
-                      Object {
-                        "agencyName": "TriMet",
-                        "id": "TriMet:20",
-                        "longName": "Burnside/Stark",
-                        "mode": "BUS",
-                        "shortName": "20",
-                        "sortOrder": 2600,
-                      },
-                      Object {
-                        "agencyName": "TriMet",
-                        "id": "TriMet:94",
-                        "longName": "Pacific Hwy/Sherwood",
-                        "mode": "BUS",
-                        "shortName": "94",
-                        "sortOrder": 9100,
-                      },
-                      Object {
-                        "agencyName": "TriMet",
-                        "id": "TriMet:36",
-                        "longName": "South Shore",
-                        "mode": "BUS",
-                        "shortName": "36",
-                        "sortOrder": 3900,
-                      },
-                    ],
-                    "stopTimes": Array [
-                      Object {
-                        "pattern": Object {
-                          "desc": "36 to Tualatin Park & Ride (TriMet:7879) from W Burnside & SW 8th (TriMet:715)",
-                          "headsign": "Tualatin Park & Ride",
-                          "id": "TriMet:36:0:04",
-=======
                                     focusable="false"
                                     height="0.9em"
                                     role="img"
@@ -6610,7 +5796,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           onClick={[Function]}
                         >
                           <button
-                            className="styled__Button-p56b41-2 dnvXjK"
+                            className="styled__Button-p56b41-2 dMNrPf"
                             onClick={[Function]}
                           >
                             To here
@@ -6624,7 +5810,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-iqHYmW eJgWDe"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -6649,7 +5835,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           "mode": "BUS",
                           "shortName": "20",
                           "sortOrder": 2600,
->>>>>>> dev
                         },
                         Object {
                           "agencyName": "TriMet",
@@ -8698,7 +7883,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         expanded={false}
                         onToggleExpanded={[Function]}
                         title={
-                          <UNDEFINED
+                          <Memo(MemoizedFormattedMessage)
                             id="components.RelatedStopsPanel.relatedStops"
                           />
                         }
@@ -9606,6 +8791,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               "formatDateToParts": [Function],
                               "formatDisplayName": [Function],
                               "formatList": [Function],
+                              "formatListToParts": [Function],
                               "formatMessage": [Function],
                               "formatNumber": [Function],
                               "formatNumberToParts": [Function],
@@ -10094,7 +9280,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-dlfnuX cmeMni"
                                       >
                                         P
                                       </div>
@@ -10674,38 +9860,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   <Icon
                     type="search"
                   >
-<<<<<<< HEAD
-                    <span
-                      aria-hidden={true}
-                      className="fa fa-calendar fa-fw"
-                    />
-                  </FontAwesome>
-                </Icon>
-                 
-                View 
-                schedule
-              </button>
-            </div>
-            <b>
-              Plan a trip:
-            </b>
-            <FromToLocationPicker
-              fromText="From here"
-              location={null}
-              onFromClick={[Function]}
-              onToClick={[Function]}
-              setLocation={null}
-              showIcons={true}
-              toText="To here"
-            >
-              <styled__FromToPickerSpan>
-                <span
-                  className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
-                >
-                  <styled__LocationPickerSpan>
-                    <span
-                      className="styled__LocationPickerSpan-p56b41-0 itKxFO"
-=======
                     <FontAwesome
                       fixedWidth={true}
                       name="search"
@@ -10732,7 +9886,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     <FontAwesome
                       fixedWidth={true}
                       name="calendar"
->>>>>>> dev
                     >
                       <span
                         aria-hidden={true}
@@ -10759,51 +9912,28 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
               >
                 <styled__FromToPickerSpan>
                   <span
-                    className="styled__FromToPickerSpan-p56b41-1 aqwCm"
+                    className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
                   >
                     <styled__LocationPickerSpan>
                       <span
-                        className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                        className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                       >
                         <LocationIcon
                           size="0.9em"
                           type="from"
                         >
-<<<<<<< HEAD
-                          <DotCircle
-                            className="styled__FromIcon-n5xcvc-0 bnFcGf"
-                            size="0.9em"
-                            title="From Location Icon"
-                          >
-                            <Styled(Component)
-                              className="styled__FromIcon-n5xcvc-0 bnFcGf"
-                              iconAttrs={
-                                Object {
-                                  "fill": "currentColor",
-                                  "xmlns": "http://www.w3.org/2000/svg",
-                                }
-                              }
-                              iconVerticalAlign="-.125em"
-                              iconViewBox="0 0 512 512"
-                              size="0.9em"
-                              title="From Location Icon"
-                            >
-                              <ForwardRef
-                                className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
-=======
                           <styled__FromIcon
                             className=""
                             size="0.9em"
                             title="From Location Icon"
                           >
                             <DotCircle
-                              className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                              className="styled__FromIcon-n5xcvc-0 bnFcGf"
                               size="0.9em"
                               title="From Location Icon"
                             >
                               <Styled(Component)
-                                className="styled__FromIcon-n5xcvc-0 fTLtLq"
->>>>>>> dev
+                                className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                 iconAttrs={
                                   Object {
                                     "fill": "currentColor",
@@ -10815,19 +9945,8 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                 size="0.9em"
                                 title="From Location Icon"
                               >
-<<<<<<< HEAD
-                                <svg
-                                  className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="0.9em"
-                                  role="img"
-                                  viewBox="0 0 512 512"
-                                  width="0.9em"
-                                  xmlns="http://www.w3.org/2000/svg"
-=======
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -10838,40 +9957,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   iconViewBox="0 0 512 512"
                                   size="0.9em"
                                   title="From Location Icon"
->>>>>>> dev
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="sc-bdfBQB VUwgQ styled__FromIcon-n5xcvc-0 bnFcGf"
                                     fill="currentColor"
-<<<<<<< HEAD
-                                    key="k0"
-                                  />
-                                </svg>
-                              </ForwardRef>
-                            </Styled(Component)>
-                          </DotCircle>
-                        </styled__FromIcon>
-                      </LocationIcon>
-                      <styled__Button
-                        onClick={[Function]}
-                      >
-                        <button
-                          className="styled__Button-p56b41-2 dMNrPf"
-                          onClick={[Function]}
-                        >
-                          From here
-                        </button>
-                      </styled__Button>
-                    </span>
-                  </styled__LocationPickerSpan>
-                  <styled__LocationPickerSpan>
-                    <span
-                      className="styled__LocationPickerSpan-p56b41-0 itKxFO"
-                    >
-                      <LocationIcon
-                        size="0.9em"
-                        type="to"
-=======
                                     focusable="false"
                                     height="0.9em"
                                     role="img"
@@ -10899,7 +9988,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           onClick={[Function]}
                         >
                           <button
-                            className="styled__Button-p56b41-2 dnvXjK"
+                            className="styled__Button-p56b41-2 dMNrPf"
                             onClick={[Function]}
                           >
                             From here
@@ -10909,48 +9998,24 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     </styled__LocationPickerSpan>
                     <styled__LocationPickerSpan>
                       <span
-                        className="styled__LocationPickerSpan-p56b41-0 bujKZP"
->>>>>>> dev
+                        className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                       >
                         <LocationIcon
                           size="0.9em"
                           type="to"
                         >
-<<<<<<< HEAD
-                          <MapMarkerAlt
-                            className="styled__ToIcon-n5xcvc-2 bCTefk"
-                            size="0.9em"
-                            title="To Location Icon"
-                          >
-                            <Styled(Component)
-                              className="styled__ToIcon-n5xcvc-2 bCTefk"
-                              iconAttrs={
-                                Object {
-                                  "fill": "currentColor",
-                                  "xmlns": "http://www.w3.org/2000/svg",
-                                }
-                              }
-                              iconVerticalAlign="-.125em"
-                              iconViewBox="0 0 384 512"
-                              size="0.9em"
-                              title="To Location Icon"
-                            >
-                              <ForwardRef
-                                className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
-=======
                           <styled__ToIcon
                             className=""
                             size="0.9em"
                             title="To Location Icon"
                           >
                             <MapMarkerAlt
-                              className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                              className="styled__ToIcon-n5xcvc-2 bCTefk"
                               size="0.9em"
                               title="To Location Icon"
                             >
                               <Styled(Component)
-                                className="styled__ToIcon-n5xcvc-2 jzAxgN"
->>>>>>> dev
+                                className="styled__ToIcon-n5xcvc-2 bCTefk"
                                 iconAttrs={
                                   Object {
                                     "fill": "currentColor",
@@ -10962,19 +10027,8 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                 size="0.9em"
                                 title="To Location Icon"
                               >
-<<<<<<< HEAD
-                                <svg
-                                  className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="0.9em"
-                                  role="img"
-                                  viewBox="0 0 384 512"
-                                  width="0.9em"
-                                  xmlns="http://www.w3.org/2000/svg"
-=======
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -10985,126 +10039,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   iconViewBox="0 0 384 512"
                                   size="0.9em"
                                   title="To Location Icon"
->>>>>>> dev
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="sc-bdfBQB VUwgQ styled__ToIcon-n5xcvc-2 bCTefk"
                                     fill="currentColor"
-<<<<<<< HEAD
-                                    key="k0"
-                                  />
-                                </svg>
-                              </ForwardRef>
-                            </Styled(Component)>
-                          </MapMarkerAlt>
-                        </styled__ToIcon>
-                      </LocationIcon>
-                      <styled__Button
-                        onClick={[Function]}
-                      >
-                        <button
-                          className="styled__Button-p56b41-2 dMNrPf"
-                          onClick={[Function]}
-                        >
-                          To here
-                        </button>
-                      </styled__Button>
-                    </span>
-                  </styled__LocationPickerSpan>
-                </span>
-              </styled__FromToPickerSpan>
-            </FromToLocationPicker>
-          </div>
-          <styled.div>
-            <div
-              className="sc-kEjbQP ijoMxW"
-            >
-              <LiveStopTimes
-                autoRefreshStopTimes={true}
-                findStopTimesForStop={[Function]}
-                homeTimezone="America/Los_Angeles"
-                stopData={
-                  Object {
-                    "agencyName": "TriMet",
-                    "amenities": Array [
-                      "Bench near stop",
-                      "Crosswalk near stop",
-                      "Curb ramp near stop",
-                      "Lighting at stop",
-                      "Pavement at back door",
-                      "Pavement at front door",
-                      "Schedule display",
-                      "Sidewalk at stop",
-                    ],
-                    "code": "715",
-                    "desc": "Eastbound stop in Portland (Stop ID 715)",
-                    "id": "TriMet:715",
-                    "lat": 45.522912,
-                    "lon": -122.678538,
-                    "mode": "BUS",
-                    "name": "W Burnside & SW 8th",
-                    "routes": Array [
-                      Object {
-                        "agencyName": "TriMet",
-                        "id": "TriMet:20",
-                        "longName": "Burnside/Stark",
-                        "mode": "BUS",
-                        "shortName": "20",
-                        "sortOrder": 2600,
-                        "sortOrderSet": true,
-                        "type": 3,
-                      },
-                    ],
-                    "rsn": "20, 36, 94",
-                    "stopTimes": Array [
-                      Object {
-                        "pattern": Object {
-                          "desc": "36 to Tualatin Park & Ride (TriMet:7879) from W Burnside & SW 8th (TriMet:715)",
-                          "headsign": "Tualatin Park & Ride",
-                          "id": "TriMet:36:0:04",
-                        },
-                        "times": Array [
-                          Object {
-                            "arrivalDelay": 0,
-                            "blockId": "3668",
-                            "departureDelay": 0,
-                            "headsign": "Tualatin Park & Ride",
-                            "realtime": false,
-                            "realtimeArrival": 58260,
-                            "realtimeDeparture": 58260,
-                            "realtimeState": "SCHEDULED",
-                            "scheduledArrival": 58260,
-                            "scheduledDeparture": 58260,
-                            "serviceDay": 1565074800,
-                            "stopCount": 63,
-                            "stopId": "TriMet:715",
-                            "stopIndex": 0,
-                            "timepoint": true,
-                            "tripId": "TriMet:9231858",
-                          },
-                          Object {
-                            "arrivalDelay": 0,
-                            "blockId": "3670",
-                            "departureDelay": 0,
-                            "headsign": "Tualatin Park & Ride",
-                            "realtime": false,
-                            "realtimeArrival": 61740,
-                            "realtimeDeparture": 61740,
-                            "realtimeState": "SCHEDULED",
-                            "scheduledArrival": 61740,
-                            "scheduledDeparture": 61740,
-                            "serviceDay": 1565074800,
-                            "stopCount": 63,
-                            "stopId": "TriMet:715",
-                            "stopIndex": 0,
-                            "timepoint": true,
-                            "tripId": "TriMet:9231860",
-                          },
-                          Object {
-                            "arrivalDelay": 0,
-                            "blockId": "3668",
-                            "departureDelay": 0,
-=======
                                     focusable="false"
                                     height="0.9em"
                                     role="img"
@@ -11132,7 +10070,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           onClick={[Function]}
                         >
                           <button
-                            className="styled__Button-p56b41-2 dnvXjK"
+                            className="styled__Button-p56b41-2 dMNrPf"
                             onClick={[Function]}
                           >
                             To here
@@ -11146,7 +10084,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-iqHYmW eJgWDe"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -11191,7 +10129,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         Object {
                           "pattern": Object {
                             "desc": "36 to Tualatin Park & Ride (TriMet:7879) from W Burnside & SW 8th (TriMet:715)",
->>>>>>> dev
                             "headsign": "Tualatin Park & Ride",
                             "id": "TriMet:36:0:04",
                           },
@@ -12390,7 +11327,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         expanded={false}
                         onToggleExpanded={[Function]}
                         title={
-                          <UNDEFINED
+                          <Memo(MemoizedFormattedMessage)
                             id="components.RelatedStopsPanel.relatedStops"
                           />
                         }
@@ -13288,6 +12225,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               "formatDateToParts": [Function],
                               "formatDisplayName": [Function],
                               "formatList": [Function],
+                              "formatListToParts": [Function],
                               "formatMessage": [Function],
                               "formatNumber": [Function],
                               "formatNumberToParts": [Function],
@@ -13771,7 +12709,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-dlfnuX cmeMni"
                                       >
                                         P
                                       </div>
