@@ -321,7 +321,7 @@ components:
   TripStatusRenderers:
     active:
       delayedHeading: "Trip is in progress and is delayed {formattedDuration}!"
-      description: "Trip is due to arrive at the destination at {arrivalTime}."
+      description: "Trip is due to arrive at the destination at {arrivalTime, time, short}."
       earlyHeading: "Trip is in progress and is arriving {formattedDuration} earlier than expected!"
       noDataHeading: Trip is in progress (no realtime updates available).
       onTimeHeading: Trip is in progress and is about on time.
@@ -352,8 +352,8 @@ components:
       description: Unsnooze trip monitoring to see the updated status.
       heading: Trip monitoring is snoozed for today
     upcoming:
-      nextTripBegins: Next trip starts on {tripDate, date, ::eeeee yyyyMMdd} at {tripTime}.
-      tripBegins: Trip is due to begin at {tripStart}. (Realtime monitoring will begin at {monitoringStart}.)
+      nextTripBegins: Next trip starts on {tripDate, date, ::eeeee yyyyMMdd} at {tripTime, time, short}.
+      tripBegins: Trip is due to begin at {tripStart, time, short}. (Realtime monitoring will begin at {monitoringStart, time, short}.)
       tripStartIsDelayed: Trip start time is delayed ${duration}!
       tripStartIsEarly: Trip start time is happening ${duration} earlier than expected!
       tripStartsSoonNoUpdates: Trip is starting soon (no realtime updates available).

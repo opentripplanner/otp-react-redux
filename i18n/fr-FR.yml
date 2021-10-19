@@ -260,7 +260,7 @@ components:
   TripStatusRenderers:
     active:
       delayedHeading: "Trajet en cours, retardé de {deviationHumanDuration}."
-      description: "Arrivée à destination prévue à {arrivalTime}."
+      description: "Arrivée à destination prévue à {arrivalTime, time, short}."
       earlyHeading: "Trajet en cours, en avance de {deviationHumanDuration}."
       noDataHeading: Trajet en cours (données en temps-réel non disponibles).
       onTimeHeading: Trajet en cours et prévu à l'heure.
@@ -291,8 +291,8 @@ components:
       description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
       heading: Suivi suspendu jusqu'à demain
     upcoming: 
-      nextTripBegins: "Prochain départ : {tripDate, date, ::eeeee yyyyMMdd} à {tripTime}."
-      tripBegins: Départ prévu à {tripStart}. (Le suivi en temps réel débutera à {monitoringStart}.)
+      nextTripBegins: "Prochain départ : {tripDate, date, ::eeeee yyyyMMdd} à {tripTime, time, short}."
+      tripBegins: Départ prévu à {tripStart, time, short}. (Le suivi en temps réel débutera à {monitoringStart, time, short}.)
       tripStartIsDelayed: Départ retardé de ${duration}.
       tripStartIsEarly: Départ avancé de ${duration} !
       tripStartsSoonNoUpdates: Départ proche (pas de données en temps réel).
