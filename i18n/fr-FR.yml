@@ -30,8 +30,9 @@ components:
     shortTitle: Planifier un trajet
   BeforeSignInScreen:
     mainTitle: Connexion en cours
-    message: "Pour accéder à cette page, vous devez vous connecter.
-      Veuillez patienter pendant que nous vous redirigeons vers la page de connexion..."
+    message: >
+      Pour accéder à cette page, vous devez vous connecter.
+      Veuillez patienter pendant que nous vous redirigeons vers la page de connexion...
   DefaultItinerary:
     clickDetails: Cliquez pour afficher les détails
     multiModeSummary: "{accessMode} + {transitMode}"
@@ -62,45 +63,49 @@ components:
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
-    fareCost: "{useMaxFare, select, 
-      true {{minTotalFare} - {maxTotalFare}}
-      other {{minTotalFare}}
-    }"
+    fareCost: >
+      {useMaxFare, select, 
+        true {{minTotalFare} - {maxTotalFare}}
+        other {{minTotalFare}}
+      }
   NarrativeItinerariesHeader:
-    numIssues: "{issueNum, number} {issueNum, plural, 
-        one {problème}
-        other {problèmes}
-    }"
+    numIssues: >
+      {issueNum, number} {issueNum, plural, 
+          one {problème}
+          other {problèmes}
+      }
     # Note to translator: resultText is width-constrained
     # (about half pane width)
-    resultText: "{pending, select,
-      true {Recherche en cours...}
-      other {
-        {itineraryNum, number} {itineraryNum, plural,
-          one {trajet trouvé}
-          other {trajets trouvés}
+    resultText: >
+      {pending, select,
+        true {Recherche en cours...}
+        other {
+          {itineraryNum, number} {itineraryNum, plural,
+            one {trajet trouvé}
+            other {trajets trouvés}
+          }
         }
       }
-    }"
     selectArrivalTime: Heure d'arrivée
     selectBest: Meilleure option
     selectCost: Prix
     selectDepartureTime: Heure de départ
     selectDuration: Durée
     selectWalkTime: Temps de marche
-    titleText: "{pending, select, 
-      true {Recherche de vos options en cours...}
-      other {
-        {itineraryNum, number} {itineraryNum, plural,
-          one {trajet}
-          other {trajets}}
-        {issueNum, plural,
-          =0 {trouvé}
-          one {(et {issueNum, number} problème) trouvé}
-          other {(et {issueNum,number} problèmes) trouvés}
+    titleText: >
+      {pending, select, 
+        true {Recherche de vos options en cours...}
+        other {
+          {itineraryNum, number} {itineraryNum, plural,
+            one {trajet}
+            other {trajets}}
+          {issueNum, plural,
+            =0 {trouvé}
+            one {(et {issueNum, number} problème) trouvé}
+            other {(et {issueNum,number} problèmes) trouvés}
+          }
         }
       }
-    }"
     viewAll: Voir toutes les options
   NavLoginButton:
     help: Aide
@@ -117,9 +122,7 @@ components:
     description: Vous pouvez recevoir des notifications sur les trajets que vous effectuez fréquemment.
     notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
     notificationEmailDetail: "Les courriers de notification seront envoyés à :"
-    emailSelect: E-mail
     noneSelect: Ne pas me notifier
-    smsSelect: SMS
   PhoneNumberEditor:
     changeNumber: Changer de numéro
     invalidCode: Le code de vérification doit comporter 6 chiffres.
@@ -133,8 +136,9 @@ components:
     smsDetail: "Les SMS de notification seront envoyés au :"
     verified: Verifié
     verificationCode: "Code de vérification :"
-    verificationInstructions: "Un SMS vous a été envoyé avec un code de vérification.
-      Veuillez taper ce code ci-dessous (le code expire après 10 minutes)."
+    verificationInstructions: >
+      Un SMS vous a été envoyé avec un code de vérification.
+      Veuillez taper ce code ci-dessous (le code expire après 10 minutes).
     verify: Verifier
   PlaceEditor:
     genericLocationPlaceholder: Adresse du lieu
@@ -148,10 +152,12 @@ components:
     previous: Précédent
   RealtimeAnnotation:
     applyServiceDelays: Appliquer les retards
-    delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
-      Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
-    delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
-      En temps normal, ce trajet prendrait <strong>{normalDuration}</strong> en empruntant les lignes: {routes}."
+    delaysNotShownInResults: >
+      Vos trajets recherchés sont perturbés par des retards.
+      Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous.
+    delaysShownInResults: >
+      Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
+      En temps normal, ce trajet prendrait <strong>{normalDuration}</strong> en empruntant les lignes: {routes}.
     ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
   RouteDetails:
@@ -188,8 +194,9 @@ components:
     pause: Arrêter
     resume: Reprendre
   SavedTripScreen:
-    tooManyTrips: "Vous avez déjà atteint le nombre maximum de 5 trajets enregistrés.
-      Veuillez supprimer les trajets enregistrés qui sont inutilisés, puis réessayez."
+    tooManyTrips: >
+      Vous avez déjà atteint le nombre maximum de 5 trajets enregistrés.
+      Veuillez supprimer les trajets enregistrés qui sont inutilisés, puis réessayez.
     tripNameAlreadyUsed: Ce nom est déjà utilisé avec un autre trajet. Veuillez choisir un nom différent.
     tripNameRequired: Veuillez entrer un nom pour ce trajet.
   SaveTripButton:
@@ -208,16 +215,19 @@ components:
     trips: Trajets
   TabbedItineraries:
     optionNumber: "Option {optionNum, number}"
-    fareCost: "{hasMaxFare, select, 
-      true {À partir de {minTotalFare}}
-      other {{minTotalFare}}
-    }"
+    fareCost: >
+      {hasMaxFare, select, 
+        true {À partir de {minTotalFare}}
+        other {{minTotalFare}}
+      }
   TermsOfUsePane:
     mustAgreeToTerms: Vous devez accepter les conditions d'utilisation avant de continuer.
-    termsOfServiceStatement: "J'atteste avoir au moins 18 ans et j'ai lu et consens aux
-      <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the Planificateur de trajets."
-    termsOfStorageStatement: "Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches
-      afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>"
+    termsOfServiceStatement: >
+      J'atteste avoir au moins 18 ans et j'ai lu et consens aux
+      <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the Planificateur de trajets.
+    termsOfStorageStatement: >
+      Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches
+      afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>
   TransitVehicleOverlay:
     # keys designed to match API output
     incoming_at: "Approchant {stop}"
@@ -241,9 +251,9 @@ components:
     advancedSettings: Paramètres avancés
     altRouteRecommended: Un autre trajet ou une autre correspondance est conseillé·e
     delaysAboveThreshold: Il y a des perturbations ou retards de plus de
-    emailChannel: e-mail
-    howToReceiveAlerts: "Pour recevoir les alertes pour vos trajets suivis, activez les notifications
-      dans la section Préférences de votre compte, et essayez d'enregistrer un trajet à nouveau."
+    howToReceiveAlerts: >
+      Pour recevoir les alertes pour vos trajets suivis, activez les notifications
+      dans la section Préférences de votre compte, et essayez d'enregistrer un trajet à nouveau.
     monitorThisTrip: Effectuer le suivi du trajet {minutes} avant le départ et jusqu'à l'arrivée.
     notificationsTurnedOff: Les notifications sont désactivées pour votre compte.
     # Note to translator: The notifyViaChannelWhen message, combined with
@@ -276,12 +286,14 @@ components:
       description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
       heading: Suivi suspendu
     nextTripNotPossible:
-      description: "Le planificateur n'a pas pu trouver votre trajet aujourd'hui.
-        Veuillez replanifier votre trajet pour trouver une alternative."
+      description: >
+        Le planificateur n'a pas pu trouver votre trajet aujourd'hui.
+        Veuillez replanifier votre trajet pour trouver une alternative.
       heading: Trajet infaisable aujourd'hui
     noLongerPossible:
-      description: "Le planificateur n'a pas pu trouver votre trajet pour aucun des jours choisis.
-        Veuillez replanifier votre trajet pour trouver une alternative."
+      description: >
+        Le planificateur n'a pas pu trouver votre trajet pour aucun des jours choisis.
+        Veuillez replanifier votre trajet pour trouver une alternative.
       heading: Le trajet n'est plus possible
     notCalculated:
       awaiting: Calcul des conditions du trajet en cours...
@@ -312,16 +324,18 @@ components:
     print: Imprimer
     reportIssue: Un problème ? # "Signaler un problème" does not fit.
     reportEmailSubject: Signaler un problème avec OpenTripPlanner
-    reportEmailTemplate: "                       *** À L'ATTENTION DE L'UTILISATEUR ***
+    reportEmailTemplate: >
+      *** À L'ATTENTION DE L'UTILISATEUR ***
       Vous pouvez communiquer votre problème par e-mail et en détail aux administrateurs de ce site.
       Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
-      ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
+      ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel.
   UserAccountScreen:
     confirmDelete: "Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible."
   VerifyEmailPane:
     emailIsVerified: Mon email est vérifié
-    instructions1: "Vous devriez recevoir un message par e-mail. Cliquez le lien dans le message 
-      pour verifier votre adresse e-mail. Vous pourrez ensuite finir de créer votre compte."
+    instructions1: >
+      Vous devriez recevoir un message par e-mail. Cliquez le lien dans le message 
+      pour verifier votre adresse e-mail. Vous pourrez ensuite finir de créer votre compte.
     instructions2: Une fois votre adresse vérifiée, cliquez sur le bouton ci-dessous pour continuer.
     resendVerification: Envoyer un nouveau message de vérification
 
@@ -375,6 +389,10 @@ common:
     noItineraryToDisplay: Aucun trajet à afficher.
     transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
 
+  notifications:
+    email: e-mail
+    sms: SMS
+
   otpTransitModes:
     tram: Tram
     subway: Métro
@@ -393,6 +411,7 @@ common:
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} mn"
-    tripDurationFormat: "{hours, plural, 
+    tripDurationFormat: >
+      {hours, plural, 
         =0 {{minutes, number} mn}
-        other {{hours, number} h {minutes, number} mn}}"
+        other {{hours, number} h {minutes, number} mn}}
