@@ -37,6 +37,9 @@
 .otp .plan-trip-button, .view-results-button {
   width: 100%;
 }
+.otp .plan-trip-button[disabled] {
+  opacity: 0.75;
+}
 
 .otp .bottom-fixed {
   position: absolute;
