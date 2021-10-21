@@ -205,9 +205,9 @@ class AppMenu extends Component<
               <Icon type="bus" />
               <FormattedMessage id="components.RouteViewer.shortTitle" />
             </MenuItem>
-            <MenuItem className="menu-item" onClick={this._startOver}>
-              <Icon type="undo" />
-              <FormattedMessage id="common.navigation.startOver" />
+            <MenuItem className='menu-item' onClick={this._startOver}>
+              <Icon type='undo' />
+              <FormattedMessage id='common.forms.startOver' />
             </MenuItem>
             {callTakerEnabled && (
               <MenuItem

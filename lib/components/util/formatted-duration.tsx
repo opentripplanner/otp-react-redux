@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment-timezone'
 import { FormattedMessage } from 'react-intl'
+import PropTypes from 'prop-types'
 
 /**
  * Formats the given duration according to the selected locale.
@@ -19,4 +20,8 @@ export default function FormattedDuration({
       values={{ hours, minutes }}
     />
   )
+}
+
+FormattedDuration.propTypes = {
+  duration: PropTypes.number.isRequired
 }
