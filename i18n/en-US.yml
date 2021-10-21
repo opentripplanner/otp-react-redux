@@ -135,6 +135,7 @@ components:
       true {{minTotalFare}+}
       other {{minTotalFare}}
     }"
+    mustCallAhead: Must call ahead!
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue,
     # and startOver are width-constrained.
