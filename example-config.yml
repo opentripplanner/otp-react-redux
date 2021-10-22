@@ -319,7 +319,7 @@ itinerary:
 #     common:
 #       accessModes:
 #         bikeshare: Blue Bike
-# .    config:
+#      config:
 #        menuItems:
 #          demo-item: Demo Item
 
