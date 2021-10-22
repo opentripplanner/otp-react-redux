@@ -71,17 +71,16 @@ class AppMenu extends Component<
   }
 
   _togglePane = () => {
-    if (!this.state?.isPaneOpen) return
-    const { isPaneOpen } = this.state
+    const { isPaneOpen } = this.state ?? false
     this.setState({ isPaneOpen: !isPaneOpen })
   }
 
   _toggleSubmenu = (id: string) => {
-    if (this.state?.expandedSubmenus?.[id]) {
-      return
+    let { expandedSubmenus } = this.state
+    if (!expandedSubmenus) {
+      expandedSubmenus = {}
     }
 
-    const { expandedSubmenus } = this.state
     const currentlyOpen = expandedSubmenus[id] || false
     this.setState({ expandedSubmenus: { [id]: !currentlyOpen } })
   }
@@ -99,7 +98,7 @@ class AppMenu extends Component<
           label: configLabel,
           subMenuDivider
         } = menuItem
-        const { expandedSubmenus } = this.state || {}
+        const { expandedSubmenus } = this.state ?? {}
         const { intl } = this.props
         const isSubmenuExpanded = expandedSubmenus?.[id]
 
@@ -205,9 +204,9 @@ class AppMenu extends Component<
               <Icon type="bus" />
               <FormattedMessage id="components.RouteViewer.shortTitle" />
             </MenuItem>
-            <MenuItem className='menu-item' onClick={this._startOver}>
-              <Icon type='undo' />
-              <FormattedMessage id='common.forms.startOver' />
+            <MenuItem className="menu-item" onClick={this._startOver}>
+              <Icon type="undo" />
+              <FormattedMessage id="common.forms.startOver" />
             </MenuItem>
             {callTakerEnabled && (
               <MenuItem
