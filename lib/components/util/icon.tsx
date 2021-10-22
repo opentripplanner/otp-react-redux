@@ -2,6 +2,14 @@ import React from 'react'
 import FontAwesome from 'react-fontawesome'
 import styled from 'styled-components'
 
+export type IconProps = {
+  className?: string
+  fixedWidth?: boolean
+  style?: Record<string, unknown>
+  type: string
+  withSpace?: boolean
+}
+
 /**
  * A Font Awesome icon followed by a with a pseudo-element equivalent to a single space.
  */
@@ -23,13 +31,7 @@ const Icon = ({
   type,
   withSpace = false,
   ...props
-}: {
-  className?: string
-  fixedWidth?: boolean
-  style?: Record<string, unknown>
-  type: string
-  withSpace?: boolean
-}): JSX.Element => {
+}: IconProps): JSX.Element => {
   const FontComponent = withSpace ? FontAwesomeWithSpace : FontAwesome
   return <FontComponent fixedWidth={fixedWidth} name={type} {...props} />
 }

@@ -74,6 +74,7 @@ module.exports = {
         trailingComma: 'none'
       }
     ],
+    'react/jsx-handler-names': 'off',
     'react/jsx-sort-props': [
       'error',
       {
