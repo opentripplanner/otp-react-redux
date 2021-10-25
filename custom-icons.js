@@ -1,5 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 // FIXME: This dependency is restricting typescripting of this file
 import {
   ClassicBus,
@@ -24,6 +24,9 @@ const CustomRailIcon = ClassicGondola
 const CustomStreetcarIcon = StandardGondola
 const CustomBikeRentalIcon = ClassicBus
 
+/**
+ * This component renders a custom icon for a passed mode
+ */
 export const CustomModeIcon = ({ mode, ...props }) => {
   if (!mode) return null
   switch (mode.toLowerCase()) {
@@ -40,6 +43,9 @@ CustomModeIcon.propTypes = {
   mode: PropTypes.string
 }
 
+/**
+ * This component renders a custom icon for a mode given a passed leg
+ */
 export const CustomLegIcon = ({ leg, ...props }) => {
   if (leg.routeLongName && leg.routeLongName.startsWith('MAX')) {
     return <CustomStreetcarIcon />

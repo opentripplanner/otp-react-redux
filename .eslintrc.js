@@ -20,6 +20,7 @@ module.exports = {
     'jsx-a11y',
     'react',
     'sort-destructure-keys',
+    'sort-imports-es6-autofix',
     'typescript-sort-keys'
   ],
   rules: {
@@ -74,6 +75,7 @@ module.exports = {
         trailingComma: 'none'
       }
     ],
+    quotes: [2, 'single', { avoidEscape: true }],
     'react/jsx-handler-names': 'off',
     'react/jsx-sort-props': [
       'error',
@@ -85,6 +87,13 @@ module.exports = {
       'error',
       {
         caseSensitive: false
+      }
+    ],
+    'sort-imports-es6-autofix/sort-imports-es6': [
+      2,
+      {
+        ignoreCase: true,
+        ignoreMemberSort: false
       }
     ],
     'sort-keys': [

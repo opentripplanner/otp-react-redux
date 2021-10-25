@@ -49,7 +49,6 @@ module.exports = {
         loader.exclude = /node_modules/
       })
 
-      // trimet-mod-otp integration:
       // Gather the CSS, HTML, YAML, and JS override files.
       const CUSTOM_CSS =
         (process.env && process.env.CUSTOM_CSS) || '../example.css'

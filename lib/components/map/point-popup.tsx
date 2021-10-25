@@ -19,7 +19,7 @@ export default function MapPopup({
   onSetLocationFromPopup
 }: {
   mapPopupLocation: { name: string }
-  // TODO: what is this function actually
+  // TODO: add types for this method
   onSetLocationFromPopup: () => void
 }): JSX.Element {
   return (

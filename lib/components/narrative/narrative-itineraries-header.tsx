@@ -1,6 +1,6 @@
+import { FormattedMessage, useIntl } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
-import { FormattedMessage, useIntl } from 'react-intl'
 
 import Icon from '../util/icon'
 
@@ -56,7 +56,7 @@ export default function NarrativeItinerariesHeader({
             className="clear-button-formatting"
             onClick={onViewAllOptions}
           >
-            <Icon type="arrow-left" />{' '}
+            <Icon type="arrow-left" withSpace />
             <FormattedMessage id="components.NarrativeItinerariesHeader.viewAll" />
           </button>
           {itineraryIsExpanded && (
@@ -72,17 +72,16 @@ export default function NarrativeItinerariesHeader({
         <>
           <div
             style={{ flexGrow: 1 }}
-            title={intl.formatMessage({
-              id: 'components.NarrativeItinerariesHeader.titleText',
-              // FIXME: strange react-intl type errors
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              values: {
+            title={intl.formatMessage(
+              {
+                id: 'components.NarrativeItinerariesHeader.titleText'
+              },
+              {
                 issueNum: errors.length,
                 itineraryNum: itineraries.length,
                 pending: pending ? 'true' : 'false'
               }
-            })}
+            )}
           >
             <span style={{ marginRight: '10px' }}>
               <FormattedMessage

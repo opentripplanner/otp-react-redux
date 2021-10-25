@@ -1,28 +1,25 @@
 /* eslint-disable react/jsx-handler-names */
-import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
+import React, { Component, Fragment } from 'react'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import type { InjectedIntlProps } from 'react-intl'
 import { MenuItem } from 'react-bootstrap'
 import { withRouter } from 'react-router'
 import qs from 'qs'
 import SlidingPane from 'react-sliding-pane'
+import type { InjectedIntlProps } from 'react-intl'
 // No types available, old package
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import VelocityTransitionGroup from 'velocity-react/velocity-transition-group'
 
-import { isModuleEnabled, Modules } from '../../util/config'
-import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
+import { isModuleEnabled, Modules } from '../../util/config'
+import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import Icon from '../util/icon'
 
-/**
- * Sidebar which appears to show user list of options and links
- */
 type AppMenuProps = {
   location: { search: string }
   reactRouterConfig: { basename: string }
@@ -42,6 +39,9 @@ type menuItem = {
   subMenuDivider: boolean
 }
 
+/**
+ * Sidebar which appears to show user list of options and links
+ */
 class AppMenu extends Component<
   AppMenuProps & InjectedIntlProps,
   AppMenuState
