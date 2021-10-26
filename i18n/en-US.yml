@@ -282,6 +282,7 @@ components:
     trips: Trips
   TabbedItineraries:
     optionNumber: "Option {optionNum, number}"
+    mustCallAhead: Must call ahead!
     fareCost: >
       {hasMaxFare, select, 
         true {{minTotalFare}+}
