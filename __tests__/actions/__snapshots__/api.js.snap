@@ -38,7 +38,7 @@ Array [
         "error": [TypeError: Cannot read property 'trackRecent' of undefined],
         "requestId": "abcd1239",
         "searchId": "abcd1234",
-        "url": "http://mock-host.com:80/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false",
+        "url": "http://mock-host.com:80/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false&batchId=abcd1234",
       },
       "type": "ROUTING_ERROR",
     },
@@ -67,7 +67,7 @@ Array [
         "error": [Error: Received error from server],
         "requestId": "abcd1240",
         "searchId": "abcd1237",
-        "url": "http://mock-host.com:80/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false",
+        "url": "http://mock-host.com:80/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false&batchId=abcd1237",
       },
       "type": "ROUTING_ERROR",
     },
@@ -113,7 +113,7 @@ Array [
         "error": [TypeError: Cannot read property 'trackRecent' of undefined],
         "requestId": "abcd1236",
         "searchId": "abcd1234",
-        "url": "http://mock-host.com:80/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false",
+        "url": "http://mock-host.com:80/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false&batchId=abcd1234",
       },
       "type": "ROUTING_ERROR",
     },
@@ -121,4 +121,4 @@ Array [
 ]
 `;
 
-exports[`actions > api routingQuery should make a query to OTP: OTP Query Path 1`] = `"/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false"`;
+exports[`actions > api routingQuery should make a query to OTP: OTP Query Path 1`] = `"/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false&batchId=abcd1234"`;
