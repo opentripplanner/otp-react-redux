@@ -39,6 +39,13 @@ module.exports = {
       }
       addBeforeLoader(webpackConfig, loaderByName('file-loader'), yamlLoader)
 
+      // Support webfonts (for font awesome)
+      const webfontLoader = {
+        loader: ['url-loader'],
+        test: /\.(svg|eot|woff|woff2|ttf)$/
+      }
+      addBeforeLoader(webpackConfig, loaderByName('file-loader'), webfontLoader)
+
       // Support typescript
       const { matches } = getLoaders(
         webpackConfig,
