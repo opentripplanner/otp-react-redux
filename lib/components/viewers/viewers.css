@@ -1,11 +1,15 @@
 /* shared stop/trip viewer styles */
 
-.otp .route-viewer-header, .otp .stop-viewer-header, .otp .trip-viewer-header {
+.otp .route-viewer-header,
+.otp .stop-viewer-header,
+.otp .trip-viewer-header {
   background-color: #ddd;
   padding: 12px;
 }
 
-.otp .route-viewer, .otp .stop-viewer, .otp .trip-viewer,
+.otp .route-viewer,
+.otp .stop-viewer,
+.otp .trip-viewer,
 .otp .stop-viewer-body {
   display: flex;
   flex-direction: column;
@@ -14,8 +18,12 @@
 }
 
 @keyframes yellowfade {
-  from { background: yellow; }
-  to { background: transparent; }
+  from {
+    background: yellow;
+  }
+  to {
+    background: transparent;
+  }
 }
 
 /* Used to briefly highlight an element and then fade to transparent. */
@@ -26,32 +34,39 @@
   animation-name: yellowfade;
 }
 
-/* Route Details Link a11y compatibility */
-a.routeDetails {
-  color: #2370b3;
-}
-
 /* Remove arrows on date input */
 .otp .stop-viewer-body input[type="date"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-.otp .route-viewer-body, .otp .stop-viewer-body, .otp .trip-viewer-body {
+.otp .route-viewer-body,
+.otp .stop-viewer-body,
+.otp .trip-viewer-body {
   overflow-x: hidden;
   overflow-y: auto;
 }
-.otp .stop-viewer-body, .otp .trip-viewer-body {
+.otp .stop-viewer-body,
+.otp .trip-viewer-body {
   padding: 12px;
 }
 
-.otp .stop-viewer .back-button-container, .otp .trip-viewer .back-button-container, .otp .route-viewer .back-button-container {
+.otp .stop-viewer .back-button-container,
+.otp .trip-viewer .back-button-container,
+.otp .route-viewer .back-button-container {
   float: left;
   margin-right: 10px;
 }
 
-.otp .stop-viewer .header-text, .otp .trip-viewer .header-text, .otp .route-viewer .header-text {
+.otp .stop-viewer .header-text,
+.otp .trip-viewer .header-text,
+.otp .route-viewer .header-text {
   font-weight: 700;
   font-size: 24px;
+}
+.otp .route-viewer .header-text.route-expanded {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 /* stop viewer styles */
@@ -102,6 +117,114 @@ a.routeDetails {
 .otp .stop-viewer .route-row .header .expansion-button:focus {
   outline: 0px;
 }
+
+/* child stop details */
+
+.otp .stop-viewer .stop-viewer-body .stop-label {
+  display: table;
+  width: 100%;
+}
+
+.otp .stop-viewer .stop-viewer-body .stop-label .stop-name {
+  display: flex;
+  align-items: center;
+  max-width: 300px;
+}
+
+.otp .stop-viewer .stop-viewer-body .stop-label .view-child-stop-button {
+  color: #000080;
+  border: none;
+  background: none;
+  display: table-cell;
+  padding: 0px;
+  width: 90px;
+}
+
+.otp .stop-viewer .stop-viewer-body .related-panel-title {
+  background-color: #ffffff;
+  padding: 0.5rem;
+  position: relative;
+  width: fit-content;
+  margin-left: 1rem;
+}
+
+.otp .stop-viewer .stop-viewer-body .related-panel-container {
+  border: 1px solid;
+  border-radius: 7px;
+  padding: 0.5rem;
+  align-items: center;
+  margin-top: -2.5rem;
+}
+
+.otp .stop-viewer .stop-viewer-body .related-items-list {
+  padding-top: 20px;
+  width: 100%;
+  margin: 0;
+}
+
+.otp .stop-viewer .stop-viewer-body .related-item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.otp .stop-viewer .stop-viewer-body .related-item .item-label {
+  display: flex;
+  width: 100%;
+  align-items: baseline;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.otp .stop-viewer .stop-viewer-body .related-item .stop-label {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.otp .stop-viewer .stop-viewer-body .next-arrival-row {
+  display: table;
+  width: 100%;
+}
+
+.otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-label {
+  display: table-cell;
+  max-width: 200px;
+}
+
+.otp .stop-viewer .stop-viewer-body .next-arrival-row .route-name {
+  padding-right: 8px;
+  font-weight: 700;
+  display: inline-block;
+  min-width: 5ch;
+}
+
+.otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-time {
+  display: table-cell;
+  width: 90px;
+}
+
+.otp .stop-viewer .stop-viewer-body .related-item .child-stop-icon {
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.otp .stop-viewer .stop-viewer-body .related-item .stop-name-text {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.otp .stop-viewer .stop-viewer-body .related-panel-expand-view {
+  display: flex;
+  background: #fff;
+  margin: auto;
+  border: none;
+  margin-top: -13px;
+  font-size: 12px;
+  color: #000080;
+}
+
+/* end of child-stop-details */
 
 /*.otp .stop-viewer .trip-table {
   display: table;
@@ -277,4 +400,60 @@ a.routeDetails {
 .otp .trip-viewer .stop-button-container {
   float: right;
   width: 50px;
+}
+
+/* Route Viewer Updates */
+.search-and-filter {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.search-and-filter select {
+  margin-left: 10px;
+  text-overflow: ellipsis;
+  min-width: 105px;
+
+  border: none;
+  background: #eee;
+  border-radius: 5px;
+  padding: 5px;
+}
+.search-and-filter select option {
+  /* This allows the dropdowns to shrink and stretch */
+  max-width: 0;
+}
+
+.search-and-filter .routeFilter {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 0fr 2fr 1fr;
+  width: 100%;
+}
+.search-and-filter .routeSearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-and-filter .routeSearch input {
+  border: none;
+  padding: 0.125em 0.5em;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.routeSearch input::-webkit-search-cancel-button {
+  /* show clear button on webkit browsers */
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+.routeSearch,
+.routeSearch input {
+  width: 100%;
+}
+
+.route-viewer-body .noRoutesFoundMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
 }

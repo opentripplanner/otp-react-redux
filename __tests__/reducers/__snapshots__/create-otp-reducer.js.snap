@@ -18,6 +18,7 @@ Object {
     "realtimeEffectsDisplayThreshold": 120,
     "routingTypes": Array [],
     "stopViewer": Object {
+      "nearbyRadius": 250,
       "numberOfDepartures": 3,
       "showBlockIds": false,
       "timeRange": 345600,
@@ -93,6 +94,7 @@ Object {
     "rideEstimates": Object {},
   },
   "transitIndex": Object {
+    "routes": Object {},
     "stops": Object {},
     "trips": Object {},
   },
@@ -102,6 +104,13 @@ Object {
     "localizedMessages": null,
     "mobileScreen": 1,
     "printView": false,
+    "routeViewer": Object {
+      "filter": Object {
+        "agency": null,
+        "mode": null,
+        "search": "",
+      },
+    },
   },
   "useRealtime": true,
   "user": Object {
