@@ -1267,7 +1267,7 @@
     "@formatjs/intl-localematcher" "0.2.20"
     tslib "^2.1.0"
 
-"@formatjs/intl-listformat@6.3.3", "@formatjs/intl-listformat@^6.3.3":
+"@formatjs/intl-listformat@6.3.3":
   version "6.3.3"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-listformat/-/intl-listformat-6.3.3.tgz#0cb83a012c0ae46876e30589a086695298e0fb5c"
   integrity sha512-3nzAKgVS5rePDa5HiH0OwZgAhqxLtzlMc9Pg4QgajRHSP1TqFiMmQnnn52wd3+xVTb7cjZVm3JBnTv51/MhTOg==
