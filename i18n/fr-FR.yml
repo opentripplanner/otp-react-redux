@@ -68,6 +68,12 @@ components:
     addPlace: Ajouter un point intermédiaire
     needOriginDestination: Choisissez le départ et l'arrivée avant d'ajouter les points intermédiaires
     tooManyPlaces: Nombre max. de points intermédiaires atteint
+  AdvancedOptions:
+  # Awaiting translation
+    # bannedRoutes
+    # maxBike: ""
+    # maxWalk: ""
+    # preferredRoutes: 
   AfterSignInScreen:
     mainTitle: Redirection...
     message: "Si la page ne s'affiche pas après quelques secondes, <redirectLink>cliquez ici</redirectLink>."

@@ -79,6 +79,11 @@ components:
     addPlace: Add place
     needOriginDestination: Define origin/destination to add intermediate places
     tooManyPlaces: Maximum intermediate places reached
+  AdvancedOptions:
+    bannedRoutes: Select banned routes...
+    maxBike: "Max bike {unitsString}"
+    maxWalk: "Max walk {unitsString}"
+    preferredRoutes: Select preferred routes...
   AfterSignInScreen:
     mainTitle: Redirecting...
     message: "If the page doesn't load after a few seconds, <redirectLink>click here</redirectLink>."
