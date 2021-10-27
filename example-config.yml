@@ -145,6 +145,9 @@ geocoder:
   # This base URL is required as the libraries will default to using now-defunct
   # mapzen urls
   baseUrl: https://geocoder.example.com/pelias/v1
+  # This allows the location field dropdown headers to be colored based on Pelias layer
+  #resultsColors:
+  #  stops: "#007fae"
 
 # example config for an ArcGIS geocoder
 # (https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm)
@@ -356,6 +359,9 @@ itinerary:
 dateTime:
   longDateFormat: DD-MM-YYYY
 # stopViewer:
+#   # The radius (in meters) to use when searching for nearby stops and other
+#   # amenities (rental vehicles, park and rides) to show for the focused stop.
+#   nearbyRadius: 250
 #   # The max. number of departures to show for each trip pattern
 #   # in the stop viewer Next Arrivals mode
 #   # (defaults to 3 if unspecified).

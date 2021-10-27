@@ -197,3 +197,9 @@ button.step {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.map-container .leaflet-top {
+  /* we need to override this z-index so that the +/- map controls appear below
+  the geocoder search results */
+  z-index: 999;
+}
