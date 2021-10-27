@@ -159,9 +159,12 @@ components:
     message: >
       In order to access this page you will need to sign in.
       Please wait while we redirect you to the login page...
+  DateTimeOptions:
+    arriveBy: Arrive by
+    departAt: Depart at
+    now: Now
   DateTimeScreen:
     header: Set Date/Time
-    
   DefaultItinerary:
     clickDetails: Click to view details
     # Use ordered placeholders when multiple modes are involved

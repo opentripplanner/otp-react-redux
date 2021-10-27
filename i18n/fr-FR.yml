@@ -113,6 +113,11 @@ components:
     message: >
       Pour accéder à cette page, vous devez vous connecter.
       Veuillez patienter pendant que nous vous redirigeons vers la page de connexion...
+  DateTimeOptions:
+    #Awaiting translation
+    #arriveBy:
+    #departAt:
+    #now: 
   DateTimeScreen:
     header: Jour et heure du trajet
   DefaultItinerary:
