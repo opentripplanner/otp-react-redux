@@ -26,7 +26,10 @@ module.exports = {
    *    yarn start --env.YAML_CONFIG=/absolute/path/to/config.yml
    */
   webpack: {
+    // eslint-disable-next-line complexity
     configure: function (webpackConfig, { env, paths }) {
+      const DEV_ENV = env === 'development'
+
       // Config items to adjust behavior to match mastarm behavior
       paths.appBuild = webpackConfig.output.path = path.join(__dirname, 'dist')
       paths.appSrc = path.resolve(__dirname, 'lib')
@@ -79,7 +82,7 @@ module.exports = {
 
       // Support React hot-reloading
       const hotLoaderEntries = []
-      if (env === 'development') {
+      if (DEV_ENV) {
         hotLoaderEntries.push(
           require.resolve('react-dev-utils/webpackHotDevClient')
         )
@@ -111,7 +114,7 @@ module.exports = {
           // files.
           YAML_CONFIG: JSON.stringify(YAML_CONFIG)
         })
-      ]
+      ].concat(DEV_ENV ? [] : [new webpack.optimize.AggressiveMergingPlugin()])
 
       // Enable hot-reloading
       webpackConfig.devServer = {
@@ -120,7 +123,7 @@ module.exports = {
       }
 
       // Make source-maps useful
-      webpackConfig.devtool = 'eval-cheap-module-source-map'
+      webpackConfig.devtool = DEV_ENV ? 'eval-cheap-module-source-map' : 'none'
 
       // Match mastarm behavior
       webpackConfig.output = {
