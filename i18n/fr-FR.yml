@@ -114,10 +114,16 @@ components:
       Pour accéder à cette page, vous devez vous connecter.
       Veuillez patienter pendant que nous vous redirigeons vers la page de connexion...
   DateTimeOptions:
-    #Awaiting translation
+  # Awaiting translation
     #arriveBy:
     #departAt:
     #now: 
+  DateTimePreview:
+  # Awaiting translation
+    #arriveAt:
+    #departAt:
+    #leaveNow:
+    #range: 
   DateTimeScreen:
     header: Jour et heure du trajet
   DefaultItinerary:

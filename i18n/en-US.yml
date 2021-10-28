@@ -163,6 +163,11 @@ components:
     arriveBy: Arrive by
     departAt: Depart at
     now: Now
+  DateTimePreview:
+    arriveAt: "Arrive {arriveTime, time, short}"
+    departAt: "Depart {departTime, time, short}"
+    leaveNow: Leave now
+    range: "{startTime, time, short} to {endTime, time, short}"
   DateTimeScreen:
     header: Set Date/Time
   DefaultItinerary:
