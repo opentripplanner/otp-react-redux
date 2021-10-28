@@ -167,18 +167,15 @@ components:
     invalidScreen: Écran non valable.
   MobileOptions:
     header: Options de recherche
-  ModeButtons:
-    bicycle: Vélo
-    car: Voiture
-    rent: Location de véhicules
-    transit: Transports publics
-    walk: Marche
+  ModeDropdown:
+  # Awaiting translation
+    #exclusiveMode: 
+  NarrativeItinerariesHeader:
     fareCost: >
       {useMaxFare, select, 
         true {{minTotalFare} - {maxTotalFare}}
         other {{minTotalFare}}
       }
-  NarrativeItinerariesHeader:
     numIssues: >
       {issueNum, number} {issueNum, plural, 
           one {problème}
@@ -512,13 +509,6 @@ components:
     prompt: Où désirez-vous aller ?
 
 common:
-  accessModes:
-    bike: Vélo
-    bikeshare: Vélo en libre-service
-    drive: Voiture
-    micromobility: Trottinette électrique
-    micromobilityRent: Trottinette électrique en libre-service
-    walk: À pied
   daysOfWeek:
     monday: lundi
     tuesday: mardi
@@ -566,19 +556,38 @@ common:
     status: État
     transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
 
-  notifications:
-    email: e-mail
-    sms: SMS
-
-  otpTransitModes:
+  # Note to translator: some of the strings below are used in sentences such as:
+  # "No trip found for bike, walk, and transit."
+  # This set is based on OTP travel modes, in lower case, and accommodates the use
+  # of particles before/after each travel mode in some languages.
+  # In French, the above sentence could read:
+  # "Aucun trajet en vélo, à pied, et en transports publics n'a été trouvé."
+  modes:
+    bicycle: En vélo
+    bike: Vélo
+    bicycle_rent: En vélo en libre-service
     bus: Bus
+    # The original OTP mode id is CABLE_CAR. Lowercase makes it cable_car.
     cable_car: Tram tiré par câble
+    car: Voiture
+    car_park: En voiture + parc relais
+    drive: Voiture
     ferry: Ferry
     funicular: Funiculaire
     gondola: Téléphérique
+    micromobility: En trottinette électrique
+    micromobility_rent: En trottinette électrique en libre-service
     rail: Train
+    rent: Location de véhicules
     subway: Métro
     tram: Tram
+    transit: En transports publics
+    walk: À pied
+    walking: Marche
+
+  notifications:
+    email: e-mail
+    sms: SMS
 
   # Note to translator: Places names below are used in
   # contexts such as: "Edit home", "Set home address".
@@ -596,21 +605,7 @@ common:
         other {{hours, number} h {minutes, number} mn}
       }
     tripDurationFormatZeroHours: "{minutes, number} mn"
-  # Note to translator: the strings below are used in sentences such as:
-  # "No trip found for bike, walk, and transit."
-  # This set is based on OTP travel modes, in lower case, and accommodates the use
-  # of particles before/after each travel mode in some languages.
-  # In French, the above sentence could read:
-  # "Aucun trajet en vélo, à pied, et en transports publics n'a été trouvé."
-  travelBy:
-    bicycle: en vélo
-    bicycle_rent: en vélo en libre-service
-    car: en voiture
-    car_park: en voiture + parc relais
-    micromobility: en trottinette électrique
-    micromobility_rent: en trottinette électrique en libre-service
-    transit: en transports publics
-    walk: à pied
+  
 util:
   state:
     errorPlanningTrip: Une erreur s'est produite lors de la planification du trajet.

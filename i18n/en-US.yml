@@ -219,12 +219,8 @@ components:
     invalidScreen: Invalid mobile screen
   MobileOptions:
     header: Set Search Options
-  ModeButtons:
-    bicycle: Bicycle
-    car: Drive
-    rent: Rental options
-    transit: Transit
-    walk: Walking
+  ModeDropdown:
+    exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
     fareCost: >
       {useMaxFare, select, 
@@ -613,14 +609,6 @@ components:
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
 common:
-  # OTP access modes
-  accessModes:
-    bike: Bike
-    bikeshare: Bikeshare
-    drive: Drive
-    micromobility: E-Scooter
-    micromobilityRent: Rental E-Scooter
-    walk: Walk
   daysOfWeek:
     monday: Monday
     tuesday: Tuesday
@@ -667,23 +655,40 @@ common:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
     transfers: "{transfers, plural, =0 {} one {{transfers} transfer} other {{transfers} transfers}}"
+  
+  # Note to translator: the strings below are used in sentences such as:
+  # "No trip found for bike, walk, and transit."
+  # This set is based on OTP travel modes, in lower case, and accommodates the use
+  # of particles before/after each travel mode in some languages.
+  # In French, the above sentence could read:
+  # "Aucun trajet en vélo, à pied, et en transports publics n'a été trouvé."
+  # OTP access modes
+  modes:
+    bicycle: Bicycle
+    bike: Bike
+    bicycle_rent: Bikeshare
+    bus: Bus
+    # The original OTP mode id is CABLE_CAR. Lowercase makes it cable_car.
+    cable_car: Cable Car
+    car: Car
+    car_park: car park
+    drive: Drive
+    ferry: Ferry
+    funicular: Funicular
+    gondola: Gondola
+    micromobility: E-Scooter 
+    micromobility_rent: Rental E-Scooter
+    rail: Rail
+    rent: Rental options
+    subway: Subway
+    tram: Streetcar
+    transit: Transit
+    walk: Walk
+    walking: Walking
 
   notifications:
     email: email
     sms: SMS
-
-  # OTP transit modes
-  # Note that identifiers are OTP modes converted to lowercase.
-  otpTransitModes:
-    bus: Bus
-    # The original OTP mode id is CABLE_CAR. Lowercase makes it cable_car.
-    cable_car: Cable Car
-    ferry: Ferry
-    funicular: Funicular
-    gondola: Gondola
-    rail: Rail
-    subway: Subway
-    tram: Streetcar
 
   # Note to translator: Places names below are used in
   # contexts such as: "Edit home", "Set home address".
@@ -720,21 +725,7 @@ common:
         =0 {{minutes, number} min}
         other {{hours, number} hr {minutes, number} min}
       }
-  # Note to translator: the strings below are used in sentences such as:
-  # "No trip found for bike, walk, and transit."
-  # This set is based on OTP travel modes, in lower case, and accommodates the use
-  # of particles before/after each travel mode in some languages.
-  # In French, the above sentence could read:
-  # "Aucun trajet en vélo, à pied, et en transports publics n'a été trouvé."
-  travelBy:
-    bicycle: bike
-    bicycle_rent: bikeshare
-    car: car
-    car_park: car park
-    micromobility: e-scooter
-    micromobility_rent: rental e-scooter
-    transit: transit
-    walk: walk
+    
 util:
   state:
     errorPlanningTrip: An error occurred while planning a trip.
