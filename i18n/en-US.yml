@@ -8,10 +8,10 @@ _name: English
 #     Use the dot '.' to separate categories and sub-categories in the path.
 #     For instance, for the message defined in YML below:
 #         common
-#           otpTransitModes
+#           modes
 #             subway: Metro#
 #     then use the snippet below with the corresponding message id:
-#         <FormattedMessage id='common.otpTransitModes.subway' /> // renders "Metro".
+#         <FormattedMessage id='common.modes.subway' /> // renders "Metro".
 #
 # It is important that message ids in the code be consistent with
 # the categories in this file. Below are some general guidelines:
@@ -433,7 +433,7 @@ components:
       }
   # Used in both desktop and mobile
   StopViewer:
-    displayStopId: "<b>Stop ID</b>: {stopId}"
+    displayStopId: "<strong>Stop ID</strong>: {stopId}"
     header: Stop Viewer
     loadingText: Loading Stop...
     noStopsFound: No stop times found for date.

@@ -544,7 +544,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-crrsfI kPEpeL"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -896,7 +896,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                 Object {
                                   "headsign": "Gresham TC",
                                   "routeName": "20",
-                                  "strong": undefined,
+                                  "strong": [Function],
                                 }
                               }
                             >
@@ -1917,7 +1917,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-hKgILt eGHVOL"
                                       >
                                         P
                                       </div>
@@ -2392,7 +2392,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-crrsfI kPEpeL"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -2555,7 +2555,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                 Object {
                                   "headsign": "Gresham TC",
                                   "routeName": "20",
-                                  "strong": undefined,
+                                  "strong": [Function],
                                 }
                               }
                             >
@@ -3180,7 +3180,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-hKgILt eGHVOL"
                                       >
                                         P
                                       </div>
@@ -3754,7 +3754,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-crrsfI kPEpeL"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -4106,7 +4106,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                 Object {
                                   "headsign": "Gresham TC",
                                   "routeName": "20",
-                                  "strong": undefined,
+                                  "strong": [Function],
                                 }
                               }
                             >
@@ -4196,11 +4196,15 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       }
                                     }
                                   >
-                                    <FormattedMessage
-                                      id="common.daysOfWeek.thursday"
+                                    <FormattedDayOfWeek
+                                      day="thursday"
                                     >
-                                      common.daysOfWeek.thursday
-                                    </FormattedMessage>
+                                      <FormattedMessage
+                                        id="common.daysOfWeek.thursday"
+                                      >
+                                        common.daysOfWeek.thursday
+                                      </FormattedMessage>
+                                    </FormattedDayOfWeek>
                                   </div>
                                   <div>
                                     12:51 AM
@@ -5128,7 +5132,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-hKgILt eGHVOL"
                                       >
                                         P
                                       </div>
@@ -5960,7 +5964,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-crrsfI kPEpeL"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -6568,7 +6572,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 Object {
                                   "headsign": "Gresham TC",
                                   "routeName": "20",
-                                  "strong": undefined,
+                                  "strong": [Function],
                                 }
                               }
                             >
@@ -6658,11 +6662,15 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       }
                                     }
                                   >
-                                    <FormattedMessage
-                                      id="common.daysOfWeek.monday"
+                                    <FormattedDayOfWeek
+                                      day="monday"
                                     >
-                                      common.daysOfWeek.monday
-                                    </FormattedMessage>
+                                      <FormattedMessage
+                                        id="common.daysOfWeek.monday"
+                                      >
+                                        common.daysOfWeek.monday
+                                      </FormattedMessage>
+                                    </FormattedDayOfWeek>
                                   </div>
                                   <div>
                                     6:00 PM
@@ -6834,7 +6842,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 Object {
                                   "headsign": "Tualatin Park & Ride",
                                   "routeName": "36",
-                                  "strong": undefined,
+                                  "strong": [Function],
                                 }
                               }
                             >
@@ -6924,11 +6932,15 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       }
                                     }
                                   >
-                                    <FormattedMessage
-                                      id="common.daysOfWeek.tuesday"
+                                    <FormattedDayOfWeek
+                                      day="tuesday"
                                     >
-                                      common.daysOfWeek.tuesday
-                                    </FormattedMessage>
+                                      <FormattedMessage
+                                        id="common.daysOfWeek.tuesday"
+                                      >
+                                        common.daysOfWeek.tuesday
+                                      </FormattedMessage>
+                                    </FormattedDayOfWeek>
                                   </div>
                                   <div>
                                     4:11 PM
@@ -7100,7 +7112,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 Object {
                                   "headsign": "King City",
                                   "routeName": "94",
-                                  "strong": undefined,
+                                  "strong": [Function],
                                 }
                               }
                             >
@@ -7190,11 +7202,15 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       }
                                     }
                                   >
-                                    <FormattedMessage
-                                      id="common.daysOfWeek.tuesday"
+                                    <FormattedDayOfWeek
+                                      day="tuesday"
                                     >
-                                      common.daysOfWeek.tuesday
-                                    </FormattedMessage>
+                                      <FormattedMessage
+                                        id="common.daysOfWeek.tuesday"
+                                      >
+                                        common.daysOfWeek.tuesday
+                                      </FormattedMessage>
+                                    </FormattedDayOfWeek>
                                   </div>
                                   <div>
                                     3:22 PM
@@ -7420,7 +7436,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 Object {
                                   "headsign": "Sherwood",
                                   "routeName": "94",
-                                  "strong": undefined,
+                                  "strong": [Function],
                                 }
                               }
                             >
@@ -7510,11 +7526,15 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       }
                                     }
                                   >
-                                    <FormattedMessage
-                                      id="common.daysOfWeek.tuesday"
+                                    <FormattedDayOfWeek
+                                      day="tuesday"
                                     >
-                                      common.daysOfWeek.tuesday
-                                    </FormattedMessage>
+                                      <FormattedMessage
+                                        id="common.daysOfWeek.tuesday"
+                                      >
+                                        common.daysOfWeek.tuesday
+                                      </FormattedMessage>
+                                    </FormattedDayOfWeek>
                                   </div>
                                   <div>
                                     2:28 PM
@@ -9474,7 +9494,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-hKgILt eGHVOL"
                                       >
                                         P
                                       </div>
@@ -10301,7 +10321,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-crrsfI kPEpeL"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -10906,7 +10926,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                 Object {
                                   "headsign": "Gresham TC",
                                   "routeName": "20",
-                                  "strong": undefined,
+                                  "strong": [Function],
                                 }
                               }
                             >
@@ -10996,11 +11016,15 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       }
                                     }
                                   >
-                                    <FormattedMessage
-                                      id="common.daysOfWeek.monday"
+                                    <FormattedDayOfWeek
+                                      day="monday"
                                     >
-                                      common.daysOfWeek.monday
-                                    </FormattedMessage>
+                                      <FormattedMessage
+                                        id="common.daysOfWeek.monday"
+                                      >
+                                        common.daysOfWeek.monday
+                                      </FormattedMessage>
+                                    </FormattedDayOfWeek>
                                   </div>
                                   <div>
                                     5:45 PM
@@ -12940,7 +12964,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-hKgILt eGHVOL"
                                       >
                                         P
                                       </div>
