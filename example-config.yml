@@ -323,9 +323,9 @@ itinerary:
 #        menuItems:
 #          demo-item: Demo Item
 #      flex:
-#         flex-service: Flex Service
-#         call-ahead: "Call to reserve: (555) 555-5555"
-#         continuous-dropoff: Communicate with operator about stop
+#        flex-service: Flex Service
+#        call-ahead: "Call to reserve: (555) 555-5555"
+#        continuous-dropoff: Communicate with operator about stop
 
 ### Localization section to provide language/locale settings
 #localization:

@@ -17,6 +17,8 @@ import {
  * - For ModeIcon: https://github.com/opentripplanner/otp-ui/blob/master/packages/icons/src/trimet-mode-icon.js
  * The example below shuffles some icons around from what you might normally
  * expect for demonstration purposes.
+ *
+ * These are *examples* of mode/leg icon customizations
  */
 
 const CustomTransitIcon = Ferry

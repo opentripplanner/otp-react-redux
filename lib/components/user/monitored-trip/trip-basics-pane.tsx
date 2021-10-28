@@ -2,8 +2,6 @@ import { Field } from 'formik'
 // No Typescript Yet
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import FormikErrorFocus from 'formik-error-focus'
-import React, { Component } from 'react'
 import {
   ControlLabel,
   FormControl,
@@ -13,12 +11,17 @@ import {
   ProgressBar
 } from 'react-bootstrap'
 import { FormattedMessage, injectIntl } from 'react-intl'
+// No Typescript Yet
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import type { InjectedIntlProps } from 'react-intl'
+import FormikErrorFocus from 'formik-error-focus'
+import React, { Component } from 'react'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { connect } from 'react-redux'
 import { Prompt } from 'react-router'
 import styled from 'styled-components'
+import type { InjectedIntlProps } from 'react-intl'
 
 import * as userActions from '../../../actions/user'
 import {
@@ -44,8 +47,7 @@ type TripBasicsProps =
       itineraryExistence: Record<string, { valid: boolean }>
       setFieldValue: (field: string, threshold: number | false) => void
       values: { itinerary: unknown } // FIXME
-    }
-  | InjectedIntlProps
+    } & InjectedIntlProps
 
 // FIXME: move to shared types file
 type errorStates = 'success' | 'warning' | 'error' | null | undefined

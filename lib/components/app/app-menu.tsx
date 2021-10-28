@@ -124,7 +124,6 @@ class AppMenu extends Component<
                   <Icon
                     className="expand-menu-chevron"
                     type={`chevron-${isSubmenuExpanded ? 'up' : 'down'}`}
-                    withSpace={false}
                   />
                 </span>
               </MenuItem>

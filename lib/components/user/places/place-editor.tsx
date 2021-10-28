@@ -2,8 +2,6 @@ import { Field } from 'formik'
 // FIXME: add types to core-utils
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import coreUtils from '@opentripplanner/core-utils'
-import React, { Component } from 'react'
 import {
   FormControl,
   FormGroup,
@@ -12,15 +10,17 @@ import {
   ToggleButtonGroup
 } from 'react-bootstrap'
 import { injectIntl } from 'react-intl'
+import coreUtils from '@opentripplanner/core-utils'
+import React, { Component } from 'react'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import type { InjectedIntlProps } from 'react-intl'
 import styled from 'styled-components'
+import type { InjectedIntlProps } from 'react-intl'
 
-import Icon, { IconProps } from '../../util/icon'
-import { getErrorStates } from '../../../util/ui'
 import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'
+import { getErrorStates } from '../../../util/ui'
 import FormattedValidationError from '../../util/formatted-validation-error'
+import Icon, { IconProps } from '../../util/icon'
 
 import {
   makeLocationFieldLocation,
@@ -67,8 +67,7 @@ class PlaceEditor extends Component<
       // Needed for prop spread
       // eslint-disable-next-line @typescript-eslint/ban-types
       values: Object
-    }
-  | InjectedIntlProps
+    } & InjectedIntlProps
 > {
   _handleLocationChange = ({
     location
