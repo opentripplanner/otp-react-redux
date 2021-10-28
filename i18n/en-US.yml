@@ -136,16 +136,6 @@ components:
     expandMap: Expand map
     showResults: Show results
   BatchRoutingPanel:
-    enterDestination: >
-      Enter destination or {mobile, select,
-        true {tap}
-        other {click}
-      } on map...
-    enterStartLocation: >
-      Enter start location or {mobile, select,
-        true {tap}
-        other {click}
-      } on map...
     shortTitle: Plan Trip
   BatchSearchScreen:
     header: Plan Your Trip
@@ -702,6 +692,19 @@ common:
     dining: dining
     home: home
     work: work # as in "work location"
+
+  searchForms:
+    enterDestination: >
+      Enter destination or {mobile, select,
+        true {tap}
+        other {click}
+      } on map...
+    enterStartLocation: >
+      Enter start location or {mobile, select,
+        true {tap}
+        other {click}
+      } on map...
+
   time:
     # Use ordered placeholders for the departure-arrival string
     # (this will accommodate right-to-left languages by swapping the order in this string).

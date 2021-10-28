@@ -90,16 +90,6 @@ components:
     expandMap: Étendre la carte
     showResults: Voir les résultats
   BatchRoutingPanel:
-    enterDestination: >
-      Entrez votre destination ou {mobile, select,
-        true {touchez}
-        other {cliquez sur}
-      } la carte...
-    enterStartLocation: >
-      Entrez votre point de départ ou {mobile, select,
-        true {touchez}
-        other {cliquez sur}
-      } la carte...
     shortTitle: Planifier un trajet
   BatchSearchScreen:
     header: Planifiez votre trajet
@@ -602,6 +592,19 @@ common:
     dining: restaurant
     home: domicile
     work: lieu de travail
+
+  searchForms:
+    enterDestination: >
+      Entrez votre destination ou {mobile, select,
+        true {touchez}
+        other {cliquez sur}
+      } la carte...
+    enterStartLocation: >
+      Entrez votre point de départ ou {mobile, select,
+        true {touchez}
+        other {cliquez sur}
+      } la carte...
+
   time:
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     # If trip is less than one hour only display the minutes.
