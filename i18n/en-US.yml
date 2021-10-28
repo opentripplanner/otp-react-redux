@@ -149,6 +149,10 @@ components:
     message: >
       In order to access this page you will need to sign in.
       Please wait while we redirect you to the login page...
+  CallTakerPanel:
+    advancedOptions: Advanced options
+    groupSize: "Group size:"
+    intermediateDestination: Enter intermediate destination
   DateTimeOptions:
     arriveBy: Arrive by
     departAt: Depart at

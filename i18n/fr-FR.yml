@@ -103,6 +103,11 @@ components:
     message: >
       Pour accéder à cette page, vous devez vous connecter.
       Veuillez patienter pendant que nous vous redirigeons vers la page de connexion...
+  CallTakerPanel:
+  # Awaiting translation
+    #advancedOptions:
+    #groupSize:
+    #intermediateDestination:
   DateTimeOptions:
   # Awaiting translation
     #arriveBy:
