@@ -172,11 +172,6 @@ components:
   # Awaiting translation
     #exclusiveMode: 
   NarrativeItinerariesHeader:
-    fareCost: >
-      {useMaxFare, select, 
-        true {{minTotalFare} - {maxTotalFare}}
-        other {{minTotalFare}}
-      }
     numIssues: >
       {issueNum, number} {issueNum, plural, 
           one {problème}
@@ -391,6 +386,12 @@ components:
     termsOfStorageStatement: >
       Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches
       afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>
+  TransitLeg:
+    # Awaiting translation
+    # expandStops: 
+    # info: 
+    # moreInfo:
+    # serviceOperator:
   TransitVehicleOverlay:
     # keys designed to match API output
     incoming_at: "Approchant {stop}"
@@ -499,6 +500,28 @@ components:
     viewStop: Info
   UserAccountScreen:
     confirmDelete: "Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible."
+  UserSettings:
+    # Awaiting translation
+    # confirmDeletion: You have recent searches and/or places stored. Disabling storage of recent places/searches will remove these items. Continue?
+    # favoriteStops: Favorite stops
+    # myPreferences: My preferences
+    # noFavoriteStops: No favorite stops
+    # recentPlaces: Recent places
+    # recentSearches: Recent searches
+    # rememberSearches: Remember recent searches/places?
+    # storageDisclaimer: >
+    #   Any preferences, places, or settings you opt 
+    #   to save will be stored in the local storage of your browser. 
+    #   TriMet will not have access to knowledge about your home, work, 
+    #   or any other location. At any point you can opt to turn off 
+    #   remembering recent places/searches and clear your saved home/work locations and favorite stops.
+  UserTripSettings:
+    # Awaiting translation
+    # forgetOptions: Forget my options
+    # rememberOptions: Remember trip options
+    # restoreOptions: "Restore {defaults, select,
+    #     true {my defaults}
+    #     other {defaults}}"
   VerifyEmailPane:
     emailIsVerified: Mon email est vérifié
     instructions1: >
@@ -597,6 +620,10 @@ common:
     dining: restaurant
     home: domicile
     work: lieu de travail
+
+  routing:
+    # Awaiting translation
+    # routeToHeadsign: 
 
   searchForms:
     enterDestination: >

@@ -330,23 +330,29 @@ exports[`components > viewers > stop viewer should render countdown times after 
                 >
                   <Icon
                     type="calendar"
+                    withSpace={true}
                   >
-                    <FontAwesome
+                    <Styled(FontAwesome)
                       fixedWidth={true}
                       name="calendar"
                     >
-                      <span
-                        aria-hidden={true}
-                        className="fa fa-calendar fa-fw"
-                      />
-                    </FontAwesome>
+                      <FontAwesome
+                        className="sc-dlfnbm enwqgG"
+                        fixedWidth={true}
+                        name="calendar"
+                      >
+                        <span
+                          aria-hidden={true}
+                          className="fa fa-calendar fa-fw sc-dlfnbm enwqgG"
+                        />
+                      </FontAwesome>
+                    </Styled(FontAwesome)>
                   </Icon>
-                   
                   <FormattedMessage
                     id="components.StopViewer.viewTypeBtnText"
                     values={
                       Object {
-                        "scheduleView": "false",
+                        "scheduleView": false,
                       }
                     }
                   >
@@ -544,7 +550,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
             </div>
             <styled.div>
               <div
-                className="sc-crrsfI kPEpeL"
+                className="sc-dQppl hBsSER"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -987,7 +993,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           "formattedDuration": <FormattedDuration
                                             duration={3124}
                                           />,
-                                          "isDue": "false",
+                                          "isDue": false,
                                         }
                                       }
                                     >
@@ -1072,13 +1078,20 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         }
                       }
                     >
-                      <input
-                        checked={true}
-                        name="autoUpdate"
-                        onChange={[Function]}
-                        type="checkbox"
-                      />
-                       
+                      <styled.span
+                        margin={0.25}
+                      >
+                        <span
+                          className="sc-hKgILt flfhde"
+                        >
+                          <input
+                            checked={true}
+                            name="autoUpdate"
+                            onChange={[Function]}
+                            type="checkbox"
+                          />
+                        </span>
+                      </styled.span>
                       <FormattedMessage
                         id="components.LiveStopTimes.autoRefresh"
                       >
@@ -1097,20 +1110,31 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       <Icon
                         className="fa-spin"
                         type="refresh"
+                        withSpace={true}
                       >
-                        <FontAwesome
+                        <Styled(FontAwesome)
                           className="fa-spin"
                           fixedWidth={true}
                           name="refresh"
                         >
-                          <span
-                            aria-hidden={true}
-                            className="fa fa-refresh fa-fw fa-spin"
-                          />
-                        </FontAwesome>
+                          <FontAwesome
+                            className="sc-dlfnbm enwqgG fa-spin"
+                            fixedWidth={true}
+                            name="refresh"
+                          >
+                            <span
+                              aria-hidden={true}
+                              className="fa fa-refresh fa-fw sc-dlfnbm enwqgG fa-spin"
+                            />
+                          </FontAwesome>
+                        </Styled(FontAwesome)>
                       </Icon>
-                       
-                      12:17 am
+                      <FormattedTime
+                        timeFormat="short"
+                        value={"2019-08-08T07:17:30.040Z"}
+                      >
+                        3:17 AM
+                      </FormattedTime>
                     </button>
                     <RelatedStopsPanel
                       homeTimezone="America/Los_Angeles"
@@ -1917,7 +1941,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-hKgILt eGHVOL"
+                                        className="sc-eCssSg jugvOI"
                                       >
                                         P
                                       </div>
@@ -2178,23 +2202,29 @@ exports[`components > viewers > stop viewer should render countdown times for st
                 >
                   <Icon
                     type="calendar"
+                    withSpace={true}
                   >
-                    <FontAwesome
+                    <Styled(FontAwesome)
                       fixedWidth={true}
                       name="calendar"
                     >
-                      <span
-                        aria-hidden={true}
-                        className="fa fa-calendar fa-fw"
-                      />
-                    </FontAwesome>
+                      <FontAwesome
+                        className="sc-dlfnbm enwqgG"
+                        fixedWidth={true}
+                        name="calendar"
+                      >
+                        <span
+                          aria-hidden={true}
+                          className="fa fa-calendar fa-fw sc-dlfnbm enwqgG"
+                        />
+                      </FontAwesome>
+                    </Styled(FontAwesome)>
                   </Icon>
-                   
                   <FormattedMessage
                     id="components.StopViewer.viewTypeBtnText"
                     values={
                       Object {
-                        "scheduleView": "false",
+                        "scheduleView": false,
                       }
                     }
                   >
@@ -2392,7 +2422,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
             </div>
             <styled.div>
               <div
-                className="sc-crrsfI kPEpeL"
+                className="sc-dQppl hBsSER"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -2646,7 +2676,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                           "formattedDuration": <FormattedDuration
                                             duration={3124}
                                           />,
-                                          "isDue": "false",
+                                          "isDue": false,
                                         }
                                       }
                                     >
@@ -2731,13 +2761,20 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         }
                       }
                     >
-                      <input
-                        checked={true}
-                        name="autoUpdate"
-                        onChange={[Function]}
-                        type="checkbox"
-                      />
-                       
+                      <styled.span
+                        margin={0.25}
+                      >
+                        <span
+                          className="sc-hKgILt flfhde"
+                        >
+                          <input
+                            checked={true}
+                            name="autoUpdate"
+                            onChange={[Function]}
+                            type="checkbox"
+                          />
+                        </span>
+                      </styled.span>
                       <FormattedMessage
                         id="components.LiveStopTimes.autoRefresh"
                       >
@@ -2756,20 +2793,31 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       <Icon
                         className="fa-spin"
                         type="refresh"
+                        withSpace={true}
                       >
-                        <FontAwesome
+                        <Styled(FontAwesome)
                           className="fa-spin"
                           fixedWidth={true}
                           name="refresh"
                         >
-                          <span
-                            aria-hidden={true}
-                            className="fa fa-refresh fa-fw fa-spin"
-                          />
-                        </FontAwesome>
+                          <FontAwesome
+                            className="sc-dlfnbm enwqgG fa-spin"
+                            fixedWidth={true}
+                            name="refresh"
+                          >
+                            <span
+                              aria-hidden={true}
+                              className="fa fa-refresh fa-fw sc-dlfnbm enwqgG fa-spin"
+                            />
+                          </FontAwesome>
+                        </Styled(FontAwesome)>
                       </Icon>
-                       
-                      12:17 am
+                      <FormattedTime
+                        timeFormat="short"
+                        value={"2019-08-08T07:17:30.040Z"}
+                      >
+                        3:17 AM
+                      </FormattedTime>
                     </button>
                     <RelatedStopsPanel
                       homeTimezone="America/Los_Angeles"
@@ -3180,7 +3228,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-hKgILt eGHVOL"
+                                        className="sc-eCssSg jugvOI"
                                       >
                                         P
                                       </div>
@@ -3540,23 +3588,29 @@ exports[`components > viewers > stop viewer should render times after midnight w
                 >
                   <Icon
                     type="calendar"
+                    withSpace={true}
                   >
-                    <FontAwesome
+                    <Styled(FontAwesome)
                       fixedWidth={true}
                       name="calendar"
                     >
-                      <span
-                        aria-hidden={true}
-                        className="fa fa-calendar fa-fw"
-                      />
-                    </FontAwesome>
+                      <FontAwesome
+                        className="sc-dlfnbm enwqgG"
+                        fixedWidth={true}
+                        name="calendar"
+                      >
+                        <span
+                          aria-hidden={true}
+                          className="fa fa-calendar fa-fw sc-dlfnbm enwqgG"
+                        />
+                      </FontAwesome>
+                    </Styled(FontAwesome)>
                   </Icon>
-                   
                   <FormattedMessage
                     id="components.StopViewer.viewTypeBtnText"
                     values={
                       Object {
-                        "scheduleView": "false",
+                        "scheduleView": false,
                       }
                     }
                   >
@@ -3754,7 +3808,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
             </div>
             <styled.div>
               <div
-                className="sc-crrsfI kPEpeL"
+                className="sc-dQppl hBsSER"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -4287,13 +4341,20 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         }
                       }
                     >
-                      <input
-                        checked={true}
-                        name="autoUpdate"
-                        onChange={[Function]}
-                        type="checkbox"
-                      />
-                       
+                      <styled.span
+                        margin={0.25}
+                      >
+                        <span
+                          className="sc-hKgILt flfhde"
+                        >
+                          <input
+                            checked={true}
+                            name="autoUpdate"
+                            onChange={[Function]}
+                            type="checkbox"
+                          />
+                        </span>
+                      </styled.span>
                       <FormattedMessage
                         id="components.LiveStopTimes.autoRefresh"
                       >
@@ -4312,20 +4373,31 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       <Icon
                         className="fa-spin"
                         type="refresh"
+                        withSpace={true}
                       >
-                        <FontAwesome
+                        <Styled(FontAwesome)
                           className="fa-spin"
                           fixedWidth={true}
                           name="refresh"
                         >
-                          <span
-                            aria-hidden={true}
-                            className="fa fa-refresh fa-fw fa-spin"
-                          />
-                        </FontAwesome>
+                          <FontAwesome
+                            className="sc-dlfnbm enwqgG fa-spin"
+                            fixedWidth={true}
+                            name="refresh"
+                          >
+                            <span
+                              aria-hidden={true}
+                              className="fa fa-refresh fa-fw sc-dlfnbm enwqgG fa-spin"
+                            />
+                          </FontAwesome>
+                        </Styled(FontAwesome)>
                       </Icon>
-                       
-                      12:17 am
+                      <FormattedTime
+                        timeFormat="short"
+                        value={"2019-08-08T07:17:30.040Z"}
+                      >
+                        3:17 AM
+                      </FormattedTime>
                     </button>
                     <RelatedStopsPanel
                       homeTimezone="America/Los_Angeles"
@@ -5132,7 +5204,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-hKgILt eGHVOL"
+                                        className="sc-eCssSg jugvOI"
                                       >
                                         P
                                       </div>
@@ -5750,23 +5822,29 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                 >
                   <Icon
                     type="calendar"
+                    withSpace={true}
                   >
-                    <FontAwesome
+                    <Styled(FontAwesome)
                       fixedWidth={true}
                       name="calendar"
                     >
-                      <span
-                        aria-hidden={true}
-                        className="fa fa-calendar fa-fw"
-                      />
-                    </FontAwesome>
+                      <FontAwesome
+                        className="sc-dlfnbm enwqgG"
+                        fixedWidth={true}
+                        name="calendar"
+                      >
+                        <span
+                          aria-hidden={true}
+                          className="fa fa-calendar fa-fw sc-dlfnbm enwqgG"
+                        />
+                      </FontAwesome>
+                    </Styled(FontAwesome)>
                   </Icon>
-                   
                   <FormattedMessage
                     id="components.StopViewer.viewTypeBtnText"
                     values={
                       Object {
-                        "scheduleView": "false",
+                        "scheduleView": false,
                       }
                     }
                   >
@@ -5964,7 +6042,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             </div>
             <styled.div>
               <div
-                className="sc-crrsfI kPEpeL"
+                className="sc-dQppl hBsSER"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -7617,13 +7695,20 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         }
                       }
                     >
-                      <input
-                        checked={true}
-                        name="autoUpdate"
-                        onChange={[Function]}
-                        type="checkbox"
-                      />
-                       
+                      <styled.span
+                        margin={0.25}
+                      >
+                        <span
+                          className="sc-hKgILt flfhde"
+                        >
+                          <input
+                            checked={true}
+                            name="autoUpdate"
+                            onChange={[Function]}
+                            type="checkbox"
+                          />
+                        </span>
+                      </styled.span>
                       <FormattedMessage
                         id="components.LiveStopTimes.autoRefresh"
                       >
@@ -7642,20 +7727,31 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       <Icon
                         className="fa-spin"
                         type="refresh"
+                        withSpace={true}
                       >
-                        <FontAwesome
+                        <Styled(FontAwesome)
                           className="fa-spin"
                           fixedWidth={true}
                           name="refresh"
                         >
-                          <span
-                            aria-hidden={true}
-                            className="fa fa-refresh fa-fw fa-spin"
-                          />
-                        </FontAwesome>
+                          <FontAwesome
+                            className="sc-dlfnbm enwqgG fa-spin"
+                            fixedWidth={true}
+                            name="refresh"
+                          >
+                            <span
+                              aria-hidden={true}
+                              className="fa fa-refresh fa-fw sc-dlfnbm enwqgG fa-spin"
+                            />
+                          </FontAwesome>
+                        </Styled(FontAwesome)>
                       </Icon>
-                       
-                      5:50 pm
+                      <FormattedTime
+                        timeFormat="short"
+                        value={"2019-08-06T00:50:24.406Z"}
+                      >
+                        8:50 PM
+                      </FormattedTime>
                     </button>
                     <RelatedStopsPanel
                       homeTimezone="America/Los_Angeles"
@@ -9494,7 +9590,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-hKgILt eGHVOL"
+                                        className="sc-eCssSg jugvOI"
                                       >
                                         P
                                       </div>
@@ -10107,23 +10203,29 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                 >
                   <Icon
                     type="calendar"
+                    withSpace={true}
                   >
-                    <FontAwesome
+                    <Styled(FontAwesome)
                       fixedWidth={true}
                       name="calendar"
                     >
-                      <span
-                        aria-hidden={true}
-                        className="fa fa-calendar fa-fw"
-                      />
-                    </FontAwesome>
+                      <FontAwesome
+                        className="sc-dlfnbm enwqgG"
+                        fixedWidth={true}
+                        name="calendar"
+                      >
+                        <span
+                          aria-hidden={true}
+                          className="fa fa-calendar fa-fw sc-dlfnbm enwqgG"
+                        />
+                      </FontAwesome>
+                    </Styled(FontAwesome)>
                   </Icon>
-                   
                   <FormattedMessage
                     id="components.StopViewer.viewTypeBtnText"
                     values={
                       Object {
-                        "scheduleView": "false",
+                        "scheduleView": false,
                       }
                     }
                   >
@@ -10321,7 +10423,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
             </div>
             <styled.div>
               <div
-                className="sc-crrsfI kPEpeL"
+                className="sc-dQppl hBsSER"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -11107,13 +11209,20 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         }
                       }
                     >
-                      <input
-                        checked={true}
-                        name="autoUpdate"
-                        onChange={[Function]}
-                        type="checkbox"
-                      />
-                       
+                      <styled.span
+                        margin={0.25}
+                      >
+                        <span
+                          className="sc-hKgILt flfhde"
+                        >
+                          <input
+                            checked={true}
+                            name="autoUpdate"
+                            onChange={[Function]}
+                            type="checkbox"
+                          />
+                        </span>
+                      </styled.span>
                       <FormattedMessage
                         id="components.LiveStopTimes.autoRefresh"
                       >
@@ -11132,20 +11241,31 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       <Icon
                         className="fa-spin"
                         type="refresh"
+                        withSpace={true}
                       >
-                        <FontAwesome
+                        <Styled(FontAwesome)
                           className="fa-spin"
                           fixedWidth={true}
                           name="refresh"
                         >
-                          <span
-                            aria-hidden={true}
-                            className="fa fa-refresh fa-fw fa-spin"
-                          />
-                        </FontAwesome>
+                          <FontAwesome
+                            className="sc-dlfnbm enwqgG fa-spin"
+                            fixedWidth={true}
+                            name="refresh"
+                          >
+                            <span
+                              aria-hidden={true}
+                              className="fa fa-refresh fa-fw sc-dlfnbm enwqgG fa-spin"
+                            />
+                          </FontAwesome>
+                        </Styled(FontAwesome)>
                       </Icon>
-                       
-                      5:38 pm
+                      <FormattedTime
+                        timeFormat="short"
+                        value={"2019-08-06T00:38:43.389Z"}
+                      >
+                        8:38 PM
+                      </FormattedTime>
                     </button>
                     <RelatedStopsPanel
                       homeTimezone="America/Los_Angeles"
@@ -12964,7 +13084,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-hKgILt eGHVOL"
+                                        className="sc-eCssSg jugvOI"
                                       >
                                         P
                                       </div>

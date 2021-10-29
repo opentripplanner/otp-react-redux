@@ -209,7 +209,6 @@ components:
       }
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
-    routeToHeadsign: "To {headsign}"
   LocationSearch:
     enterLocation: Enter location
     setDestination: Set Destination
@@ -221,11 +220,6 @@ components:
   ModeDropdown:
     exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
-    fareCost: >
-      {useMaxFare, select, 
-        true {{minTotalFare} - {maxTotalFare}}
-        other {{minTotalFare}}
-      }
     numIssues: >
       {issueNum, number} {issueNum, plural,
         one {issue}
@@ -467,6 +461,16 @@ components:
     termsOfStorageStatement: >
       Optional: I consent to the Trip Planner storing my historical planned trips in order to
       improve transit services in my area. <termsOfStorageLink>More info...</termsOfStorageLink>
+  TransitLeg:
+    expandStops: >
+      {numStops, plural, 
+        =0 {non-stop}
+        other {{numStops} stops}
+      }
+    info: Information
+    moreInfo: more info
+    serviceOperator: Service operated by <operatorLink>{agencyName}</operatorLink>
+    
   TransitVehicleOverlay:
     # keys designed to match API output
     incoming_at: "approaching {stop}"
@@ -591,9 +595,11 @@ components:
   UserTripSettings:
     forgetOptions: Forget my options
     rememberOptions: Remember trip options
-    restoreOptions: "Restore {defaults, select,
+    restoreOptions: >
+      Restore {defaults, select,
         true {my defaults}
-        other {defaults}}"
+        other {defaults}
+      }
   VerifyEmailPane:
     emailIsVerified: My email is verified!
     instructions1: >
@@ -696,6 +702,9 @@ common:
     dining: dining
     home: home
     work: work # as in "work location"
+
+  routing: 
+    routeToHeadsign: "To {headsign}"
 
   searchForms:
     enterDestination: >
