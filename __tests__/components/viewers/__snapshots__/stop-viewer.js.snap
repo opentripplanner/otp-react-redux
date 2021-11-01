@@ -731,7 +731,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       "timeRange": 345600,
                     }
                   }
-                  timeFormat="h:mm a"
                   toggleAutoRefresh={[Function]}
                   transitOperators={Array []}
                   viewedStop={
@@ -883,7 +882,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <div
                         className="route-row"
@@ -915,7 +913,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           >
                             <StopTimeCell
                               homeTimezone="America/Los_Angeles"
-                              soonText="Due"
                               stopTime={
                                 Object {
                                   "arrivalDelay": 0,
@@ -936,7 +933,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   "tripId": "TriMet:9230375",
                                 }
                               }
-                              timeFormat="h:mm a"
                             >
                               <div>
                                 <div
@@ -1312,7 +1308,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <RelatedPanel
                         expanded={false}
@@ -1521,7 +1516,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <injectIntl(AmenitiesPanel)
                         stopData={
@@ -1697,7 +1691,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                             "timeRange": 345600,
                           }
                         }
-                        timeFormat="h:mm a"
                       >
                         <AmenitiesPanel
                           intl={
@@ -1909,7 +1902,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               "timeRange": 345600,
                             }
                           }
-                          timeFormat="h:mm a"
                         >
                           <RelatedPanel
                             expanded={false}
@@ -2504,7 +2496,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       "timeRange": 345600,
                     }
                   }
-                  timeFormat="h:mm a"
                   toggleAutoRefresh={[Function]}
                   transitOperators={Array []}
                   viewedStop={
@@ -2566,7 +2557,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <div
                         className="route-row"
@@ -2598,7 +2588,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           >
                             <StopTimeCell
                               homeTimezone="America/Los_Angeles"
-                              soonText="Due"
                               stopTime={
                                 Object {
                                   "arrivalDelay": 0,
@@ -2619,7 +2608,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   "tripId": "TriMet:9230375",
                                 }
                               }
-                              timeFormat="h:mm a"
                             >
                               <div>
                                 <div
@@ -2896,7 +2884,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <RelatedPanel
                         expanded={false}
@@ -3006,7 +2993,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <injectIntl(AmenitiesPanel)
                         stopData={
@@ -3083,7 +3069,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                             "timeRange": 345600,
                           }
                         }
-                        timeFormat="h:mm a"
                       >
                         <AmenitiesPanel
                           intl={
@@ -3196,7 +3181,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               "timeRange": 345600,
                             }
                           }
-                          timeFormat="h:mm a"
                         >
                           <RelatedPanel
                             expanded={false}
@@ -3989,7 +3973,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       "timeRange": 345600,
                     }
                   }
-                  timeFormat="h:mm a"
                   toggleAutoRefresh={[Function]}
                   transitOperators={Array []}
                   viewedStop={
@@ -4141,7 +4124,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <div
                         className="route-row"
@@ -4173,7 +4155,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           >
                             <StopTimeCell
                               homeTimezone="America/Los_Angeles"
-                              soonText="Due"
                               stopTime={
                                 Object {
                                   "arrivalDelay": 0,
@@ -4194,7 +4175,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   "tripId": "TriMet:9230375",
                                 }
                               }
-                              timeFormat="h:mm a"
                             >
                               <div>
                                 <div
@@ -4261,7 +4241,12 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     </FormattedDayOfWeek>
                                   </div>
                                   <div>
-                                    12:51 AM
+                                    <FormattedTime
+                                      timeFormat="short"
+                                      value={1635828660000}
+                                    >
+                                      12:51 AM
+                                    </FormattedTime>
                                   </div>
                                 </div>
                               </div>
@@ -4575,7 +4560,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <RelatedPanel
                         expanded={false}
@@ -4784,7 +4768,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <injectIntl(AmenitiesPanel)
                         stopData={
@@ -4960,7 +4943,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                             "timeRange": 345600,
                           }
                         }
-                        timeFormat="h:mm a"
                       >
                         <AmenitiesPanel
                           intl={
@@ -5172,7 +5154,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               "timeRange": 345600,
                             }
                           }
-                          timeFormat="h:mm a"
                         >
                           <RelatedPanel
                             expanded={false}
@@ -6481,7 +6462,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       "timeRange": 345600,
                     }
                   }
-                  timeFormat="h:mm a"
                   toggleAutoRefresh={[Function]}
                   transitOperators={Array []}
                   viewedStop={
@@ -6631,7 +6611,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <div
                         className="route-row"
@@ -6663,7 +6642,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           >
                             <StopTimeCell
                               homeTimezone="America/Los_Angeles"
-                              soonText="Due"
                               stopTime={
                                 Object {
                                   "arrivalDelay": 0,
@@ -6684,7 +6662,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   "tripId": "TriMet:9230358",
                                 }
                               }
-                              timeFormat="h:mm a"
                             >
                               <div>
                                 <div
@@ -6751,7 +6728,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     </FormattedDayOfWeek>
                                   </div>
                                   <div>
-                                    6:00 PM
+                                    <FormattedTime
+                                      timeFormat="short"
+                                      value={1635804059000}
+                                    >
+                                      6:00 PM
+                                    </FormattedTime>
                                   </div>
                                 </div>
                               </div>
@@ -6901,7 +6883,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <div
                         className="route-row"
@@ -6933,7 +6914,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           >
                             <StopTimeCell
                               homeTimezone="America/Los_Angeles"
-                              soonText="Due"
                               stopTime={
                                 Object {
                                   "arrivalDelay": 0,
@@ -6954,7 +6934,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   "tripId": "TriMet:9231858",
                                 }
                               }
-                              timeFormat="h:mm a"
                             >
                               <div>
                                 <div
@@ -7021,7 +7000,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     </FormattedDayOfWeek>
                                   </div>
                                   <div>
-                                    4:11 PM
+                                    <FormattedTime
+                                      timeFormat="short"
+                                      value={1635797460000}
+                                    >
+                                      4:11 PM
+                                    </FormattedTime>
                                   </div>
                                 </div>
                               </div>
@@ -7171,7 +7155,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <div
                         className="route-row"
@@ -7203,7 +7186,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           >
                             <StopTimeCell
                               homeTimezone="America/Los_Angeles"
-                              soonText="Due"
                               stopTime={
                                 Object {
                                   "arrivalDelay": 0,
@@ -7224,7 +7206,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   "tripId": "TriMet:9238192",
                                 }
                               }
-                              timeFormat="h:mm a"
                             >
                               <div>
                                 <div
@@ -7291,7 +7272,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     </FormattedDayOfWeek>
                                   </div>
                                   <div>
-                                    3:22 PM
+                                    <FormattedTime
+                                      timeFormat="short"
+                                      value={1635794520000}
+                                    >
+                                      3:22 PM
+                                    </FormattedTime>
                                   </div>
                                 </div>
                               </div>
@@ -7495,7 +7481,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <div
                         className="route-row"
@@ -7527,7 +7512,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           >
                             <StopTimeCell
                               homeTimezone="America/Los_Angeles"
-                              soonText="Due"
                               stopTime={
                                 Object {
                                   "arrivalDelay": 0,
@@ -7548,7 +7532,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   "tripId": "TriMet:9238187",
                                 }
                               }
-                              timeFormat="h:mm a"
                             >
                               <div>
                                 <div
@@ -7615,7 +7598,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     </FormattedDayOfWeek>
                                   </div>
                                   <div>
-                                    2:28 PM
+                                    <FormattedTime
+                                      timeFormat="short"
+                                      value={1635791280000}
+                                    >
+                                      2:28 PM
+                                    </FormattedTime>
                                   </div>
                                 </div>
                               </div>
@@ -8187,7 +8175,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <RelatedPanel
                         expanded={false}
@@ -8654,7 +8641,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <injectIntl(AmenitiesPanel)
                         stopData={
@@ -9088,7 +9074,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             "timeRange": 345600,
                           }
                         }
-                        timeFormat="h:mm a"
                       >
                         <AmenitiesPanel
                           intl={
@@ -9558,7 +9543,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               "timeRange": 345600,
                             }
                           }
-                          timeFormat="h:mm a"
                         >
                           <RelatedPanel
                             expanded={false}
@@ -10857,7 +10841,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       "timeRange": 345600,
                     }
                   }
-                  timeFormat="h:mm a"
                   toggleAutoRefresh={[Function]}
                   transitOperators={Array []}
                   viewedStop={
@@ -11009,7 +10992,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <div
                         className="route-row"
@@ -11041,7 +11023,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           >
                             <StopTimeCell
                               homeTimezone="America/Los_Angeles"
-                              soonText="Due"
                               stopTime={
                                 Object {
                                   "arrivalDelay": 0,
@@ -11062,7 +11043,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   "tripId": "TriMet:9230357",
                                 }
                               }
-                              timeFormat="h:mm a"
                             >
                               <div>
                                 <div
@@ -11129,7 +11109,12 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     </FormattedDayOfWeek>
                                   </div>
                                   <div>
-                                    5:45 PM
+                                    <FormattedTime
+                                      timeFormat="short"
+                                      value={1635803159000}
+                                    >
+                                      5:45 PM
+                                    </FormattedTime>
                                   </div>
                                 </div>
                               </div>
@@ -11696,7 +11681,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <RelatedPanel
                         expanded={false}
@@ -12158,7 +12142,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           "timeRange": 345600,
                         }
                       }
-                      timeFormat="h:mm a"
                     >
                       <injectIntl(AmenitiesPanel)
                         stopData={
@@ -12587,7 +12570,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                             "timeRange": 345600,
                           }
                         }
-                        timeFormat="h:mm a"
                       >
                         <AmenitiesPanel
                           intl={
@@ -13052,7 +13034,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               "timeRange": 345600,
                             }
                           }
-                          timeFormat="h:mm a"
                         >
                           <RelatedPanel
                             expanded={false}
