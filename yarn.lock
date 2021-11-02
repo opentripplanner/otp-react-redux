@@ -1127,6 +1127,15 @@
     "@conveyal/lonlat" "^1.3.0"
     geocoder-arcgis "^2.0.4"
 
+"@conveyal/geocoder-arcgis-geojson@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@conveyal/geocoder-arcgis-geojson/-/geocoder-arcgis-geojson-0.0.3.tgz#0d1381c1d4f0e18bcf0ab1958fc63d148e2d80da"
+  integrity sha512-eb6EgqzbaUloxYyB44TF6YIefz302azcwbdUgVYUBJY4CzPLqKxBk6c6V+cx7iqxgtug3DqLuABDCSp1wGWuag==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    eslint-config-standard-jsx "^10.0.0"
+    geocoder-arcgis "^2.0.5"
+
 "@conveyal/lonlat@^1.1.2", "@conveyal/lonlat@^1.3.0", "@conveyal/lonlat@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@conveyal/lonlat/-/lonlat-1.4.0.tgz#18a5c1349078a779e710d24af11bc02b24127ba0"
@@ -1708,17 +1717,17 @@
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
-"@opentripplanner/location-field@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.6.1.tgz#2a439d4c87f1ee2e914fb628ab919eda32498b58"
-  integrity sha512-5RPn1j8o7ACWhJ9v/X9G/NZoORqEq91xplE8y0LGz6dLRhnRjY2brhqIz4DtzKyWM3siMJS51dsxOUWhkJDMDA==
+"@opentripplanner/location-field@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.7.1.tgz#90aa4c06eb13a91a5c95076d33c34ff043fd50b2"
+  integrity sha512-I98YSf0JXdqax2B9f8zlf7f2f3e3g5nw62zv5lGeC2DdmPb8rwDXskUxqq4c9xzsXW8aMN4+ihkuyMpbhhJiNA==
   dependencies:
-    "@opentripplanner/core-utils" "^4.1.0"
-    "@opentripplanner/geocoder" "^1.1.0"
+    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
+    "@opentripplanner/core-utils" "^4.2.0"
+    "@opentripplanner/geocoder" "^1.1.1"
     "@opentripplanner/humanize-distance" "^1.1.0"
-    "@opentripplanner/location-icon" "^1.3.0"
+    "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
-    prop-types "^15.7.2"
     throttle-debounce "^2.1.0"
 
 "@opentripplanner/location-icon@^1.0.1", "@opentripplanner/location-icon@^1.3.0":
@@ -7116,6 +7125,11 @@ escodegen@~1.2.0:
   optionalDependencies:
     source-map "~0.1.30"
 
+eslint-config-standard-jsx@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-standard-jsx/-/eslint-config-standard-jsx-10.0.0.tgz#dc24992661325a2e480e2c3091d669f19034e18d"
+  integrity sha512-hLeA2f5e06W1xyr/93/QJulN/rLbUVUmqTlexv9PRKHFwEC9ffJcH2LvJhMoEqYQBEYafedgGZXH2W8NUpt5lA==
+
 eslint-config-standard-jsx@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/eslint-config-standard-jsx/-/eslint-config-standard-jsx-6.0.2.tgz#90c9aa16ac2c4f8970c13fc7efc608bacd02da70"
@@ -8288,7 +8302,7 @@ gentle-fs@^2.3.0, gentle-fs@^2.3.1:
     read-cmd-shim "^1.0.1"
     slide "^1.1.6"
 
-geocoder-arcgis@^2.0.4:
+geocoder-arcgis@^2.0.4, geocoder-arcgis@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/geocoder-arcgis/-/geocoder-arcgis-2.0.5.tgz#61cd1ff2b5b325e6d36b6e7da8138611936b2f26"
   integrity sha512-KebkgRbjJ5+682DVUswqRrNHGhcCz8CG3kqP21l6xeGWDbaoSkuFzgE+fMHrKs0Ij2NJHe2/R4Z779EaXdR/3w==
