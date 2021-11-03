@@ -296,8 +296,7 @@ components:
       Optional: I consent to the Trip Planner storing my historical planned trips in order to
       improve transit services in my area. <termsOfStorageLink>More info...</termsOfStorageLink>
     confirmDeletionPrompt: >
-      Removing your consent to storage of historical trips will cause all data tied to you to be deleted. 
-      All your other saved locations, trips, and notifications will also be deleted permanently.
+      Removing your consent to storage of historical trips will cause your trip history to be deleted. 
       Are you sure you want to continue?
   TransitVehicleOverlay:
     # keys designed to match API output
