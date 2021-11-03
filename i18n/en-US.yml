@@ -160,6 +160,7 @@ components:
   DateTimePreview:
     arriveAt: "Arrive {arriveTime, time, short}"
     departAt: "Depart {departTime, time, short}"
+    editDepartOrArrival: Edit departure or arrival time
     leaveNow: Leave now
     range: "{startTime, time, short} to {endTime, time, short}"
   DateTimeScreen:
@@ -275,6 +276,11 @@ components:
     notificationEmailDetail: "Notification emails will be sent to:"
     noneSelect: Don't notify me
   PatternRow:
+    collapseOrExpandDepartures: >
+      {expanded, select, 
+        true {Collapse}
+        other {Expand}
+      } all departures for Route {routeName}
     departure: Departure
     routeName: "<strong>{routeName}</strong> To {headsign}"
     routeShort: "To {headsign}"
@@ -505,6 +511,7 @@ components:
     notifyViaChannelWhen: "Notify me via {channel} when:"
     oneHour: 1 hour
     realtimeAlertFlagged: There is a realtime alert flagged on my journey
+    toggleAdvancedSettings: Toggle advanced settings
   TripStatus:
     alerts: "{alerts, plural, one {{alerts} alert!} other {{alerts} alerts!}}"
     deleteTrip: Delete Trip
@@ -607,6 +614,8 @@ components:
       to verify your email address before finishing your account setup.
     instructions2: Once you're verified, click the button below to continue.
     resendVerification: Resend verification email
+  ViewSwitcher:
+    switcher: Switcher
   WelcomeScreen:
     prompt: Where do you want to go?
 
@@ -746,7 +755,7 @@ common:
         =0 {{minutes, number} min}
         other {{hours, number} hr {minutes, number} min}
       }
-    
+
 util:
   state:
     errorPlanningTrip: An error occurred while planning a trip.

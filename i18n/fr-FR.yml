@@ -117,6 +117,7 @@ components:
   # Awaiting translation
     #arriveAt:
     #departAt:
+    #editDepartOrArrival:
     #leaveNow:
     #range: 
   DateTimeScreen:
@@ -230,6 +231,8 @@ components:
     notificationEmailDetail: "Les courriers de notification seront envoyés à :"
     noneSelect: Ne pas me notifier
   PatternRow:
+  # Awaiting translation
+    #collapseOrExpandDepartures: 
     routeName: "<strong>{routeName}</strong> vers {headsign}"
     routeShort: "Vers {headsign}"
   PhoneNumberEditor:
@@ -412,6 +415,7 @@ components:
     unsavedChangesNewTrip: Vous n'avez pas encore enregistré votre nouveau trajet. Si vous annulez, ce trajet sera perdu.
     unsavedChangesExistingTrip: Vous n'avez pas encore enregistré votre trajet. Si vous annulez, les changements seront perdus.
   TripNotificationsPane:
+  # Awaiting translation
     advancedSettings: Paramètres avancés
     altRouteRecommended: Un autre trajet ou une autre correspondance est conseillé·e
     delaysAboveThreshold: Il y a des perturbations ou retards de plus de
@@ -427,6 +431,7 @@ components:
     oneHour: 1 heure
     realtimeAlertFlagged: Une alerte en temps réel affecte mon trajet
     smsChannel: SMS
+    # toggleAdvancedSettings: 
   TripStatus:
     alerts: "{alerts, plural, =0 {{alerts} alerte !} one {{alerts} alerte !} other {{alerts} alertes !}}"
     deleteTrip: Supprimer le trajet
@@ -529,6 +534,9 @@ components:
       pour verifier votre adresse e-mail. Vous pourrez ensuite finir de créer votre compte.
     instructions2: Une fois votre adresse vérifiée, cliquez sur le bouton ci-dessous pour continuer.
     resendVerification: Envoyer un nouveau message de vérification
+  ViewSwitcher:
+    # Awaiting translation
+    # switcher: 
   WelcomeScreen:
     prompt: Où désirez-vous aller ?
 
