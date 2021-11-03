@@ -18,6 +18,7 @@ Object {
     "realtimeEffectsDisplayThreshold": 120,
     "routingTypes": Array [],
     "stopViewer": Object {
+      "nearbyRadius": 250,
       "numberOfDepartures": 3,
       "showBlockIds": false,
       "timeRange": 345600,
@@ -100,7 +101,7 @@ Object {
   "ui": Object {
     "diagramLeg": null,
     "locale": null,
-    "localizedMessages": Object {},
+    "localizedMessages": null,
     "mobileScreen": 1,
     "printView": false,
     "routeViewer": Object {
