@@ -243,6 +243,13 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # If multiple fares are returned by OTP, assign names to the fare keys here
+  #fareKeyNameMap:
+  #  regular: "Transit Fare"
+  #  electronicRegular: "SmartCard Fare"
+  #  student: "Student Fare"
+  # One fare will always be shown by default
+  #defaultFareKey: electronicRegular
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
@@ -294,6 +301,15 @@ itinerary:
 #     defaultRouteTextColor: '000000'
 #     longNameSplitter: ' - '
 #     order: 2
+# Use this config to overwrite the accessibility score gradation
+# map that ships with otp-ui
+#accessibilityScore:
+#    gradationMap:
+#        0.0:
+#            color: "#ffb5b9"
+#            # The text can be overridden in the language section
+#            text: 'Not Accessible'
+#            icon: thumbs-down
 
 ### Use this config for the standard mode selector
 # modeGroups:
@@ -322,10 +338,14 @@ itinerary:
 #      config:
 #        menuItems:
 #          demo-item: Demo Item
-#      flex:
-#        flex-service: Flex Service
-#        call-ahead: "Call to reserve: (555) 555-5555"
-#        continuous-dropoff: Communicate with operator about stop
+#        flex:
+#          flex-service: Flex Service
+#          call-ahead: "Call to reserve: (555) 555-5555"
+#          continuous-dropoff: Communicate with operator about stop
+#        acessibilityScore:
+#          gradationMap:
+#            0.0: 'Not Accessible'
+#            0.9: 'Mostly Accessible'
 
 ### Localization section to provide language/locale settings
 #localization:
