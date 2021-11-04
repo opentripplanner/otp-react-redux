@@ -1631,6 +1631,24 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
+"@opentripplanner/core-utils@^4.3.0", "@opentripplanner/core-utils@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.4.0.tgz#3eb8f9718d32ce50e3b79d975d682559c5a7b0bf"
+  integrity sha512-qCd+NXa0PxwcN2DFR0HX1u/76RzQwHe2r0VGcaOS4GxvQ5HEL4zPyaT+lkxAyE6AFQAvNynyofhxlnMwbxtqEA==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.1.1"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    date-fns "^2.23.0"
+    date-fns-tz "^1.1.4"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    moment "^2.24.0"
+    prop-types "^15.7.2"
+    qs "^6.9.1"
+
 "@opentripplanner/endpoints-overlay@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-1.3.0.tgz#cda25f81963d28a0580d4737f82798de2a143904"
@@ -1813,12 +1831,12 @@
     lodash.isequal "^4.5.0"
     transitive-js "^0.13.7"
 
-"@opentripplanner/trip-details@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-1.4.0.tgz#ddf34619563bc91cd21b05ddffdedfa144701187"
-  integrity sha512-tJxGbuh9OL9Cr0ew31957pMn1XDLCyFgvH9Vl+N94Xu7o09V5RqbGnuZ98HMWzPCWajvQfI8vp9ps44L7l5ZvQ==
+"@opentripplanner/trip-details@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-1.5.0.tgz#81f990130073a93af2115ece27fa832f1a9a3283"
+  integrity sha512-fheJXzmRxQOvTJgvp59Mbq4ZKx4fNIjMgJ5tIvK5+tEp6Qf/MPX5mGxz8Zt43pMJNZQnkczf5sVS8Grf0b5bwQ==
   dependencies:
-    "@opentripplanner/core-utils" "^4.1.0"
+    "@opentripplanner/core-utils" "^4.3.0"
     "@opentripplanner/humanize-distance" "^1.1.0"
     "@styled-icons/fa-solid" "^10.34.0"
     moment "^2.24.0"
