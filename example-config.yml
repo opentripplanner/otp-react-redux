@@ -173,6 +173,9 @@ modes:
   transitModes:
     - mode: BUS
       label: Bus
+      # A mode color can be added, used throughout the application,
+      # most notably in the enhanced stop viewer bubble
+      color: blue
     - mode: TRAM
       label: MAX & Streetcar
     - mode: RAIL
