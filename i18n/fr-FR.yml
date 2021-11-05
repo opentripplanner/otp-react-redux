@@ -228,6 +228,9 @@ components:
     termsOfStorageStatement: >
       Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches
       afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>
+    confirmDeletionPrompt: >
+      En révoquant votre accord sur l'enregistrement de vos recherches de trajets, tout l'historique de vos de trajets sera supprimé. 
+      Voulez-vous continuer ?
   TransitVehicleOverlay:
     # keys designed to match API output
     incoming_at: "Approchant {stop}"
