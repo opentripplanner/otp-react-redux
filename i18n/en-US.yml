@@ -362,7 +362,7 @@ components:
     stopsTo: "Towards"
     selectADirection: "Select a direction..."
   RouteRow:
-    operatorLogoAltText: '{operatorName} logo'
+    operatorLogoAltText: "{operatorName} logo"
   # Used in both desktop and mobile
   RouteViewer:
     agencyFilter: Agency Filter
@@ -460,6 +460,9 @@ components:
         other {{minTotalFare}}
       }
   TermsOfUsePane:
+    confirmDeletionPrompt: >
+        Removing your consent to storage of historical trips will cause your trip history to be deleted. 
+        Are you sure you want to continue?
     mustAgreeToTerms: You must agree to the terms of service to continue.
     termsOfServiceStatement: >
       I confirm that I am at least 18 years old, and I have read and
@@ -476,7 +479,6 @@ components:
     info: Information
     moreInfo: more info
     serviceOperator: Service operated by <operatorLink>{agencyName}</operatorLink>
-    
   TransitVehicleOverlay:
     # keys designed to match API output
     incoming_at: "approaching {stop}"

@@ -173,6 +173,9 @@ modes:
   transitModes:
     - mode: BUS
       label: Bus
+      # A mode color can be added, used throughout the application,
+      # most notably in the enhanced stop viewer bubble
+      color: blue
     - mode: TRAM
       label: MAX & Streetcar
     - mode: RAIL
@@ -243,6 +246,13 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # If multiple fares are returned by OTP, assign names to the fare keys here
+  #fareKeyNameMap:
+  #  regular: "Transit Fare"
+  #  electronicRegular: "SmartCard Fare"
+  #  student: "Student Fare"
+  # One fare will always be shown by default
+  #defaultFareKey: electronicRegular
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
@@ -294,6 +304,15 @@ itinerary:
 #     defaultRouteTextColor: '000000'
 #     longNameSplitter: ' - '
 #     order: 2
+# Use this config to overwrite the accessibility score gradation
+# map that ships with otp-ui
+#accessibilityScore:
+#    gradationMap:
+#        0.0:
+#            color: "#ffb5b9"
+#            # The text can be overridden in the language section
+#            text: 'Not Accessible'
+#            icon: thumbs-down
 
 ### Use this config for the standard mode selector
 # modeGroups:
@@ -319,9 +338,13 @@ itinerary:
 #     common:
 #       accessModes:
 #         bikeshare: Blue Bike
-# .    config:
-#        menuItems:
-#          demo-item: Demo Item
+#     config:
+#       acessibilityScore:
+#         gradationMap:
+#           0.0: 'Not Accessible'
+#           0.9: 'Mostly Accessible'
+#       menuItems:
+#         demo-item: Demo Item
 
 ### Localization section to provide language/locale settings
 #localization:

@@ -382,6 +382,9 @@ components:
         other {{minTotalFare}}
       }
   TermsOfUsePane:
+    confirmDeletionPrompt: >
+        En révoquant votre accord sur l'enregistrement de vos recherches de trajets, tout l'historique de vos de trajets sera supprimé. 
+        Voulez-vous continuer ?
     mustAgreeToTerms: Vous devez accepter les conditions d'utilisation avant de continuer.
     termsOfServiceStatement: >
       J'atteste avoir au moins 18 ans et j'ai lu et consens aux
