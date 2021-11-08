@@ -614,6 +614,8 @@ components:
       to verify your email address before finishing your account setup.
     instructions2: Once you're verified, click the button below to continue.
     resendVerification: Resend verification email
+  #Application mode switcher.
+  #Note to translator: This text is only used as a screen reader label. 
   ViewSwitcher:
     switcher: Switcher
   WelcomeScreen:
