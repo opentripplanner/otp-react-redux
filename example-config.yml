@@ -329,6 +329,8 @@ itinerary:
 ### Strings can be set globally for all languages (e.g. for strings that are brands/nouns,
 ### e.g. TriMet's "TransitTracker") or by language.
 ### The nested structure should be the same as the language files under the i18n folder.
+### You can also customize OTP error messages for itinerary searches based on OTP HTTP codes.
+### A separate message can be set for each language or locale if necessary.
 # language:
 #   allLanguages
 #     common:
@@ -345,6 +347,13 @@ itinerary:
 #           0.9: 'Mostly Accessible'
 #       menuItems:
 #         demo-item: Demo Item
+#     errorMessages:
+#       404:
+#         msg: Sorry, we couldn't find any transit or rideshare/carshare options at the time and/or location you chose. Please try again later, or change the settings of your trip.
+#         # OTP modes in a string to be extracted (Format: [MODE1], [MODE2] (space included))
+#         modes: "CAR_HAIL, CAR_RENT"
+#       480:
+#         msg: No available transit routes or rideshare/carshare service at origin.
 
 ### Localization section to provide language/locale settings
 #localization:
@@ -364,19 +373,6 @@ itinerary:
 # schedule for a transit stop time to be considered early, on-time or late. The
 # default is 60 seconds.
 # onTimeThresholdSeconds: 60
-
-### You can customize OTP error messages for itinerary searches based on OTP HTTP codes.
-### A separate message can be set for each language or locale if necessary.
-# errorMessages:
-#  - id: 404
-#    msg:
-#      en: Sorry, we couldn't find any transit or rideshare/carshare options at the time and/or location you chose. Please try again later, or change the settings of your trip.
-#      fr-FR: Aucun trajet en transports publics ou en partage de voiture n'a été trouvé pour l'heure et le lieu que vous avez indiqués. Veuillez réessayer plus tard, ou changez les paramètres de votre recherche.
-#    modes:
-#      - CAR_HAIL
-#      - CAR_RENT
-#  - id: 480
-#    msg: No available transit routes or rideshare/carshare service at origin.
 
 # Format the date time format for display.
 dateTime:
