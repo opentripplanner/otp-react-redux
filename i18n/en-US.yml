@@ -233,7 +233,7 @@ components:
     stopsTo: "Towards"
     selectADirection: "Select a direction..."
   RouteRow:
-    operatorLogoAltText: '{operatorName} logo'
+    operatorLogoAltText: "{operatorName} logo"
   RouteViewer:
     agencyFilter: Agency Filter
     allAgencies: All Agencies
@@ -295,6 +295,9 @@ components:
     termsOfStorageStatement: >
       Optional: I consent to the Trip Planner storing my historical planned trips in order to
       improve transit services in my area. <termsOfStorageLink>More info...</termsOfStorageLink>
+    confirmDeletionPrompt: >
+      Removing your consent to storage of historical trips will cause your trip history to be deleted. 
+      Are you sure you want to continue?
   TransitVehicleOverlay:
     # keys designed to match API output
     incoming_at: "approaching {stop}"
@@ -404,7 +407,6 @@ components:
       to verify your email address before finishing your account setup.
     instructions2: Once you're verified, click the button below to continue.
     resendVerification: Resend verification email
- 
 
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
@@ -491,4 +493,3 @@ common:
           other {{hours, number} hr {minutes, number} min}}
     # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} min"
-    
