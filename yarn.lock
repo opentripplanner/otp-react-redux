@@ -1112,14 +1112,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@conveyal/geocoder-arcgis-geojson@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@conveyal/geocoder-arcgis-geojson/-/geocoder-arcgis-geojson-0.0.2.tgz#19ddf10160a76aba2a669c0f13ac5c079ba48f6b"
-  integrity sha1-Gd3xAWCnaroqZpwPE6xcB5ukj2s=
-  dependencies:
-    "@conveyal/lonlat" "^1.3.0"
-    geocoder-arcgis "^2.0.4"
-
 "@conveyal/geocoder-arcgis-geojson@^0.0.3":
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@conveyal/geocoder-arcgis-geojson/-/geocoder-arcgis-geojson-0.0.3.tgz#0d1381c1d4f0e18bcf0ab1958fc63d148e2d80da"
@@ -1129,7 +1121,7 @@
     eslint-config-standard-jsx "^10.0.0"
     geocoder-arcgis "^2.0.5"
 
-"@conveyal/lonlat@^1.1.2", "@conveyal/lonlat@^1.3.0", "@conveyal/lonlat@^1.4.0", "@conveyal/lonlat@^1.4.1":
+"@conveyal/lonlat@^1.4.1":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@conveyal/lonlat/-/lonlat-1.4.1.tgz#9970f33a2dc810ac08e89c844901405f18da478b"
   integrity sha512-Z4W1NmvDsnkylhPMDWCk7kLaAjRtA9BVixASFxDPVkQwAiceOxaLEo4UVbZys4jNFzdtbcZ1UVPr6SQHBmEsrA==
@@ -1175,7 +1167,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
   integrity sha512-kBJtf7PH6aWwZ6fka3zQ0p6SBYzx4fl1LoZXE2RrnYST9Xljm7WfKJrU4g/Xr3Beg72MLrp1AWNUmuYJTL7Cow==
 
-"@emotion/is-prop-valid@^0.8.6", "@emotion/is-prop-valid@^0.8.7", "@emotion/is-prop-valid@^0.8.8":
+"@emotion/is-prop-valid@^0.8.7", "@emotion/is-prop-valid@^0.8.8":
   version "0.8.8"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz#db28b1c4368a259b60a97311d6a952d4fd01ac1a"
   integrity sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==
@@ -1569,21 +1561,6 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/core-utils@^3.0.4":
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-3.2.3.tgz#dd8d9107c268308ea922220e843a491411b48100"
-  integrity sha512-c18qsVsPSCNjWmDaDCRgyZTuRWW7FfmHxI3EoOoasWCjJWhkuWdypWCzPjqPPTUXdOs835lPlw9BlkPadSIa0A==
-  dependencies:
-    "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^1.0.2"
-    "@turf/along" "^6.0.1"
-    bowser "^2.7.0"
-    lodash.isequal "^4.5.0"
-    moment "^2.24.0"
-    moment-timezone "^0.5.27"
-    prop-types "^15.7.2"
-    qs "^6.9.1"
-
 "@opentripplanner/core-utils@^4.1.0", "@opentripplanner/core-utils@^4.2.0", "@opentripplanner/core-utils@^4.3.0", "@opentripplanner/core-utils@^4.4.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.4.0.tgz#3eb8f9718d32ce50e3b79d975d682559c5a7b0bf"
@@ -1621,7 +1598,7 @@
     "@opentripplanner/location-icon" "^1.3.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/geocoder@^1.0.2", "@opentripplanner/geocoder@^1.1.0", "@opentripplanner/geocoder@^1.1.1":
+"@opentripplanner/geocoder@^1.1.1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.1.2.tgz#fb4c939f5746705d0bebd9791b3f9d9eb055ce8e"
   integrity sha512-XEHzueckoi6UM1wfgLj/VTjOilEoAj9WA5D26wAM992ItJfvlllis2XfSQecBHDAFc7YbRoKxT6IbsJOmqeMuQ==
@@ -1674,7 +1651,7 @@
     "@styled-icons/fa-solid" "^10.34.0"
     throttle-debounce "^2.1.0"
 
-"@opentripplanner/location-icon@^1.0.1", "@opentripplanner/location-icon@^1.3.0", "@opentripplanner/location-icon@^1.4.0":
+"@opentripplanner/location-icon@^1.3.0", "@opentripplanner/location-icon@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/location-icon/-/location-icon-1.4.0.tgz#49f34b5e61d407a4a76a00922296b746efd41b2e"
   integrity sha512-HlQ2ddAXpgXVnlB0oe8Nz79PLz0+Ew98e7KrSU9PSq66i0IdR7GqAhDiEQfHbiMWeWVU+wXsJCiVwVmgAysXiA==
@@ -1940,14 +1917,6 @@
     "@babel/runtime" "^7.14.0"
     "@styled-icons/styled-icon" "^10.6.3"
 
-"@styled-icons/boxicons-logos@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/boxicons-logos/-/boxicons-logos-9.4.1.tgz#774e7f73839e834445dcc0ae4c0c356221767664"
-  integrity sha512-DN6Za9paJeWkoIXI1newSSfDALIR8ecaAsgzP3ZD+NRJHy6idW+1ouC5p3DlRM29+Cp4yJ/z3bH9whBDbd7YXQ==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
 "@styled-icons/boxicons-regular@^10.38.0":
   version "10.38.0"
   resolved "https://registry.yarnpkg.com/@styled-icons/boxicons-regular/-/boxicons-regular-10.38.0.tgz#1eb80b4f94a18a9b77b11dee5204aa23378d37ec"
@@ -1955,62 +1924,6 @@
   dependencies:
     "@babel/runtime" "^7.15.3"
     "@styled-icons/styled-icon" "^10.6.3"
-
-"@styled-icons/boxicons-regular@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/boxicons-regular/-/boxicons-regular-9.4.1.tgz#742a1d0b5798c54f189b9278810d8110df8f9754"
-  integrity sha512-910zIWCB0JkEgk9I7zIIEdPc8xibg3xrT4Wo7gIu4lGEr4u9OOQT3c0ajJD7F+JlhWcWBVumzjfjOT8A5UjPJw==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/boxicons-solid@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/boxicons-solid/-/boxicons-solid-9.4.1.tgz#5219a0c900f2ccc5dc9056c4ee2d1c180d9dbdf1"
-  integrity sha512-7FvU6KSnxBprsidta3/0grTkimYWDUnSZCyLscT1OwjmfyFPpnLNmJASQDrEtORF2GPw5Y2gc/q6h2RI4OnYcA==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/crypto@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/crypto/-/crypto-9.4.1.tgz#9abe2a3165f78a1592ea1d910aa1e1210b990fef"
-  integrity sha512-qIjzvaw0kFykDN7PTGD8d3HvFVoX7kW7nwlvvzW/pGhVzpUHE7Mh2Syc04HpoknCgO0fCjAzXaxi9Igu3nS9NA==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/entypo-social@^9.5.0":
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/@styled-icons/entypo-social/-/entypo-social-9.5.0.tgz#d5c69c928dbcb83c39d8359e50c148bd497bcaff"
-  integrity sha512-yEpaJtTUriZSZPT/iqxgNONgxDYr0MHXANvoUW2CB0Ey4zTZst+2x7EJ9KgL2CjdBgA0bs8hnx5etGHUi8BtuA==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/entypo@^9.5.0":
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/@styled-icons/entypo/-/entypo-9.5.0.tgz#170c484e53820ec683d338353e44bae71d773611"
-  integrity sha512-gy/CXs45g1o5c61BnSnpd/cb84sXIARPByOa354FkN0aUHqepbF2qtBjZ3Udho6zWpm1nGOOUiawQb53PnG9vg==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/evil@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/evil/-/evil-9.4.1.tgz#159d5c026e7d0689b453684b719ecb13e4ea0fe5"
-  integrity sha512-ejCBH+aXrjtBM+iMJomYlZ/xiJ+NGHVlIfQmkgD6roxtJzMzAmhwXgC5S3p0no2n1EXluUdJiufrI/QtP7iNbA==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/fa-brands@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/fa-brands/-/fa-brands-9.4.1.tgz#ad329324875bb7db00ff5fb68ce98203fbe03b7a"
-  integrity sha512-zqlS/Y3mQLdBgRhZo1op5+twKYYwfS7OjqL90N+etokIWPqv1b7nwPWzwKoRpqDfCt/gyqmgxXqWufFd0CAx7Q==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
 
 "@styled-icons/fa-regular@^10.34.0":
   version "10.34.0"
@@ -2020,14 +1933,6 @@
     "@babel/runtime" "^7.14.0"
     "@styled-icons/styled-icon" "^10.6.3"
 
-"@styled-icons/fa-regular@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/fa-regular/-/fa-regular-9.4.1.tgz#556b1840e97db031b5c07a7175b57103e3fd988b"
-  integrity sha512-tpgLOUPECtWNwVs7G82IaDkb1T13yNyDNZBB85sEO02ldHAZe6tt0Yi5gGCBExtU/p+4/jLTcU+pcoh/mySlVg==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
 "@styled-icons/fa-solid@^10.34.0":
   version "10.34.0"
   resolved "https://registry.yarnpkg.com/@styled-icons/fa-solid/-/fa-solid-10.34.0.tgz#315a6f6f25d38202d3387928191731e4c7a3bb18"
@@ -2035,22 +1940,6 @@
   dependencies:
     "@babel/runtime" "^7.14.0"
     "@styled-icons/styled-icon" "^10.6.3"
-
-"@styled-icons/fa-solid@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/fa-solid/-/fa-solid-9.4.1.tgz#d30de755f8fee6e932032e97fa592cb1eaa21d8e"
-  integrity sha512-ZyPxbCFmuuy3XotCI0SgHyUn3gTvQXm+iVnh+8r0gR8Kd88iTTubTqxgtdS0lrefaB4ayl6vEg20Dv9e9PvYVg==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/feather@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/feather/-/feather-9.4.1.tgz#5e8a4193e70d477e9ad249f921c6d637f9fc631c"
-  integrity sha512-ucMOPhvaCp6N4lxL+z/66Kech20jAdMfewER732jhjV8P3FknoAY2+0CXXE+tBvJoJ/SOJZDOsW58Gr7yAWXOQ==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
 
 "@styled-icons/foundation@^10.34.0":
   version "10.34.0"
@@ -2060,78 +1949,6 @@
     "@babel/runtime" "^7.14.0"
     "@styled-icons/styled-icon" "^10.6.3"
 
-"@styled-icons/foundation@^9.5.0":
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/@styled-icons/foundation/-/foundation-9.5.0.tgz#011ac022ffcb20868385b97bf4fb173cceaf634d"
-  integrity sha512-O4Y62bfZfZjhZDXYtJYd/RsID1vpmMtgLSP54b0KbvY70hjdlFQZ0ZVR2fAzA0YSK90VjbYBbQDCCyqim4v3qA==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/heroicons-outline@^9.5.0":
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/@styled-icons/heroicons-outline/-/heroicons-outline-9.5.0.tgz#235046e3310e10165b9587a122a60e83e94e51de"
-  integrity sha512-MMY5NjVVimhTHhk+ADR4/a2KpjIjbmzW+SNPRCKMWgGyqXx1NjBrD72bnvrzApLdMnDvEsM/DYK6DVUW7UZhKw==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/heroicons-solid@^9.5.0":
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/@styled-icons/heroicons-solid/-/heroicons-solid-9.5.0.tgz#2ed99d05a9a82c742eb7667c75b0d9c319fdee10"
-  integrity sha512-dYQYdxZ0BkGpl3nGQmkvONF1+Yq+E6I9S7snba1mirCDWQpIdgylGm+Z9CM/OvdIlhr5da00D4oZu+2CiGdCFQ==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/icomoon@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/icomoon/-/icomoon-9.4.1.tgz#b75118a6d10cb8f5e7e15ae7a323009dd2f98e7e"
-  integrity sha512-oEw84P55EahJFdhQPBnUbvQqB08LuJKq75AkwaCSqk6w1DIEDbjY72lb6mbAwZB/AwNYeRVJJhTHaF1MNY103A==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/material@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/material/-/material-9.4.1.tgz#26169db802a10e333a5608aec2611878dd45f6fe"
-  integrity sha512-7Ucsm7RxCrnznZb+WDptBrGE45ZVBODm6J0e+fy0hvO9sjWAcuoKffYTcQEhDS2pqC1Rcc/nSZHDbqwZrpGJVw==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/octicons@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/octicons/-/octicons-9.4.1.tgz#9670b6a3fc70eb80961fa0771464d8dbde18a6ea"
-  integrity sha512-MHiMMah2agDpmk8JcNLgeZab74TO3elM8CIYIQahrucyVbHfCY7mX1z8OOyXZwrf/hgrBKK4nUM4jf0wxk70+Q==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/open-iconic@^9.5.0":
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/@styled-icons/open-iconic/-/open-iconic-9.5.0.tgz#03c70256244ee4a1ed422563f3ce3d0270a6beb8"
-  integrity sha512-mSDnCPDKYXhXY+oNfgNKMj2+ltl63k8QIC6bCDsX18bYXDqkeEwKthfNw0minabyP4Tq+yJe/B03RH+EdQWmDg==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/remix-fill@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/remix-fill/-/remix-fill-9.4.1.tgz#afc7141d0c5c0606ef190b0cebe4793a4449b389"
-  integrity sha512-OlxQudeM/u+IAHacSVwwiuSYBDSsQNKA4gr8WSFHpy1CEciLc/hE/aNJP+SLcBETdg/C/kJIj8JNme5B8aYIeg==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/remix-line@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/remix-line/-/remix-line-9.4.1.tgz#1d4fdaef53f3c366a746f054d70dcd138a4e567e"
-  integrity sha512-NAdR8LD7ugeUhmd6W3v+GA5/6OBexe15fjQTt1kFHYclS+2nrLQ7MA4kF5SkwsRQNGPy+3CMN5cQoMy5R8NAtQ==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
 "@styled-icons/styled-icon@^10.6.3":
   version "10.6.3"
   resolved "https://registry.yarnpkg.com/@styled-icons/styled-icon/-/styled-icon-10.6.3.tgz#eae0e5e18fd601ac47e821bb9c2e099810e86403"
@@ -2139,30 +1956,6 @@
   dependencies:
     "@babel/runtime" "^7.10.5"
     "@emotion/is-prop-valid" "^0.8.7"
-
-"@styled-icons/styled-icon@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/styled-icon/-/styled-icon-9.4.1.tgz#9dc236c85afd89edc2bc7265ec7858cbc35d4234"
-  integrity sha512-qF0E2QOcyR1e6rh1QkKGsFt9vuayhZBJEKRa8erbHpOYLRNiEmoF1dLEVVMUKjnj5jAzzk0fNd8jSz0su3kpKg==
-  dependencies:
-    "@emotion/is-prop-valid" "^0.8.6"
-    tslib "^1.9.3"
-
-"@styled-icons/typicons@^9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@styled-icons/typicons/-/typicons-9.4.1.tgz#b201080bc3985cab1f0ff0e8827350aea14cb309"
-  integrity sha512-gV3W836B7k7FuNjZJt2H7WYcV+wPf7L5RYJQUL99lPdvADeOUhG2hIVIKvmS4F2Tc3XbyYbRmSBPTHtu4Fcftg==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
-
-"@styled-icons/zondicons@^9.5.0":
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/@styled-icons/zondicons/-/zondicons-9.5.0.tgz#27f184764f586f31aa9256905ab3db1cd833bfa8"
-  integrity sha512-26PYTzSr85tf1+P/N1zaqbLuJLG1YP9rp3QN1TsCcM19gT0Y3WzVUmiNHdv15jGO9bH/jpV9b7TjuT+1gkMPCw==
-  dependencies:
-    "@styled-icons/styled-icon" "^9.4.1"
-    tslib "^1.9.3"
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -2217,7 +2010,7 @@
   resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-6.5.0.tgz#f79af094bd6b8ce7ed2bd3e089a8493ee6cae82e"
   integrity sha512-VbI1dV5bLFzohYYdgqwikdMVpe7pJ9X3E+dlr425wa2/sMJqYDhTO++ec38/pcPvPE6oD9WEEeU3Xu3gza+VPw==
 
-"@turf/invariant@6.x", "@turf/invariant@^6.4.0", "@turf/invariant@^6.5.0":
+"@turf/invariant@6.x", "@turf/invariant@^6.5.0":
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/@turf/invariant/-/invariant-6.5.0.tgz#970afc988023e39c7ccab2341bd06979ddc7463f"
   integrity sha512-Wv8PRNCtPD31UVbdJE/KVAWKe7l6US+lJItRR/HOEW3eh+U/JwRCSUl/KZ7bmjM/C+zLNoreM2TU6OoLACs4eg==
@@ -8149,7 +7942,7 @@ gentle-fs@^2.3.0, gentle-fs@^2.3.1:
     read-cmd-shim "^1.0.1"
     slide "^1.1.6"
 
-geocoder-arcgis@^2.0.4, geocoder-arcgis@^2.0.5:
+geocoder-arcgis@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/geocoder-arcgis/-/geocoder-arcgis-2.0.5.tgz#61cd1ff2b5b325e6d36b6e7da8138611936b2f26"
   integrity sha512-KebkgRbjJ5+682DVUswqRrNHGhcCz8CG3kqP21l6xeGWDbaoSkuFzgE+fMHrKs0Ij2NJHe2/R4Z779EaXdR/3w==
@@ -8998,7 +8791,7 @@ inflight@^1.0.4, inflight@~1.0.6:
     once "^1.3.0"
     wrappy "1"
 
-inherits@2, inherits@2.0.4, inherits@^2.0.1, inherits@^2.0.3, inherits@^2.0.4, inherits@~2.0.1, inherits@~2.0.3:
+inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@^2.0.4, inherits@~2.0.1, inherits@~2.0.3:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
@@ -9719,7 +9512,7 @@ isomorphic-fetch@^3.0.0:
     node-fetch "^2.6.1"
     whatwg-fetch "^3.4.1"
 
-isomorphic-mapzen-search@^1.5.1, isomorphic-mapzen-search@^1.6.0:
+isomorphic-mapzen-search@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/isomorphic-mapzen-search/-/isomorphic-mapzen-search-1.6.0.tgz#eb368756d6132016a32c76435d6f34a38da5279f"
   integrity sha512-90Zp8jxWuMCk582S7d6b85lHO2Lj4Nybv8o6ShqQX2SRP7SFh1fzHx67eilNUGNjBeamKYQJHmijZ1/wSzFe3A==
@@ -11805,7 +11598,7 @@ mold-source-map@~0.4.0:
     convert-source-map "^1.1.0"
     through "~2.2.7"
 
-moment-timezone@^0.5.27, moment-timezone@^0.5.33:
+moment-timezone@^0.5.33:
   version "0.5.33"
   resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.33.tgz#b252fd6bb57f341c9b59a5ab61a8e51a73bbd22c"
   integrity sha512-PTc2vcT8K9J5/9rDEPe5czSIKgLoGsH8UNpA4qZTVw0Vd/Uz19geE9abbIOQKaAQFcnQ3v5YEXrbSc5BpshH+w==
@@ -15876,7 +15669,7 @@ safe-buffer@5.1.2, safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, 
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
 
-safe-buffer@^5.2.0, safe-buffer@~5.2.0:
+safe-buffer@^5.2.0:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
   integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
@@ -16885,36 +16678,6 @@ styled-components@^5.0.0:
     shallowequal "^1.1.0"
     supports-color "^5.5.0"
 
-styled-icons@^9.1.0:
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/styled-icons/-/styled-icons-9.5.0.tgz#d1f6c8dcc3ea81c3d30fe20dfda5d39a8afc593c"
-  integrity sha512-nby51U6+SRY5010P15XogBZubrqblqXTV50+lA/xBkC1QrTap1BIgCvoJwH9FF5kYI+LKFl/xeco/drwqIR2Pw==
-  dependencies:
-    "@styled-icons/boxicons-logos" "^9.4.1"
-    "@styled-icons/boxicons-regular" "^9.4.1"
-    "@styled-icons/boxicons-solid" "^9.4.1"
-    "@styled-icons/crypto" "^9.4.1"
-    "@styled-icons/entypo" "^9.5.0"
-    "@styled-icons/entypo-social" "^9.5.0"
-    "@styled-icons/evil" "^9.4.1"
-    "@styled-icons/fa-brands" "^9.4.1"
-    "@styled-icons/fa-regular" "^9.4.1"
-    "@styled-icons/fa-solid" "^9.4.1"
-    "@styled-icons/feather" "^9.4.1"
-    "@styled-icons/foundation" "^9.5.0"
-    "@styled-icons/heroicons-outline" "^9.5.0"
-    "@styled-icons/heroicons-solid" "^9.5.0"
-    "@styled-icons/icomoon" "^9.4.1"
-    "@styled-icons/material" "^9.4.1"
-    "@styled-icons/octicons" "^9.4.1"
-    "@styled-icons/open-iconic" "^9.5.0"
-    "@styled-icons/remix-fill" "^9.4.1"
-    "@styled-icons/remix-line" "^9.4.1"
-    "@styled-icons/styled-icon" "^9.4.1"
-    "@styled-icons/typicons" "^9.4.1"
-    "@styled-icons/zondicons" "^9.5.0"
-    tslib "^1.9.3"
-
 stylehacks@^4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/stylehacks/-/stylehacks-4.0.3.tgz#6718fcaf4d1e07d8a1318690881e8d96726a71d5"
@@ -17455,7 +17218,7 @@ trough@^1.0.0:
   resolved "https://registry.yarnpkg.com/trough/-/trough-1.0.4.tgz#3b52b1f13924f460c3fbfd0df69b587dbcbc762e"
   integrity sha512-tdzBRDGWcI1OpPVmChbdSKhvSVurznZ8X36AYURAcl+0o2ldlCY2XPzyXNNxwJwwyIU+rIglTCG4kxtNKBQH7Q==
 
-tslib@^1.10.0, tslib@^1.9.0, tslib@^1.9.3:
+tslib@^1.10.0, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
@@ -18594,11 +18357,6 @@ xml2js@0.4.19, xml2js@^0.4.17:
   dependencies:
     sax ">=0.6.0"
     xmlbuilder "~9.0.1"
-
-xmlbuilder@~11.0.0:
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-11.0.1.tgz#be9bae1c8a046e76b31127726347d0ad7002beb3"
-  integrity sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA==
 
 xmlbuilder@~9.0.1:
   version "9.0.7"
