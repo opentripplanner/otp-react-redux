@@ -5034,9 +5034,9 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         <FormattedTime
                                           timeFormat="short"
                                           timezone="America/Los_Angeles"
-                                          value={1565239860000}
+                                          value={1565250660000}
                                         >
-                                          12:51 AM
+                                          3:51 AM
                                         </FormattedTime>
                                       </div>
                                     </div>
@@ -7842,9 +7842,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         <FormattedTime
                                           timeFormat="short"
                                           timezone="America/Los_Angeles"
-                                          value={1565042459000}
+                                          value={1565053259000}
                                         >
-                                          6:00 PM
+                                          9:00 PM
                                         </FormattedTime>
                                       </div>
                                     </div>
@@ -8327,9 +8327,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         <FormattedTime
                                           timeFormat="short"
                                           timezone="America/Los_Angeles"
-                                          value={1565122260000}
+                                          value={1565133060000}
                                         >
-                                          4:11 PM
+                                          7:11 PM
                                         </FormattedTime>
                                       </div>
                                     </div>
@@ -8812,9 +8812,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         <FormattedTime
                                           timeFormat="short"
                                           timezone="America/Los_Angeles"
-                                          value={1565119320000}
+                                          value={1565130120000}
                                         >
-                                          3:22 PM
+                                          6:22 PM
                                         </FormattedTime>
                                       </div>
                                     </div>
@@ -9459,9 +9459,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         <FormattedTime
                                           timeFormat="short"
                                           timezone="America/Los_Angeles"
-                                          value={1565116080000}
+                                          value={1565126880000}
                                         >
-                                          2:28 PM
+                                          5:28 PM
                                         </FormattedTime>
                                       </div>
                                     </div>
@@ -13295,9 +13295,9 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         <FormattedTime
                                           timeFormat="short"
                                           timezone="America/Los_Angeles"
-                                          value={1565041559000}
+                                          value={1565052359000}
                                         >
-                                          5:45 PM
+                                          8:45 PM
                                         </FormattedTime>
                                       </div>
                                     </div>
