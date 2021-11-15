@@ -1453,7 +1453,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         timeFormat="short"
                         value={"2019-08-08T07:17:30.040Z"}
                       >
-                        12:17 AM
+                        3:17 AM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
@@ -3272,7 +3272,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         timeFormat="short"
                         value={"2019-08-08T07:17:30.040Z"}
                       >
-                        12:17 AM
+                        3:17 AM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
@@ -5033,7 +5033,8 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       <div>
                                         <FormattedTime
                                           timeFormat="short"
-                                          value={1636447860000}
+                                          timezone="America/Los_Angeles"
+                                          value={1565239860000}
                                         >
                                           12:51 AM
                                         </FormattedTime>
@@ -5173,7 +5174,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         timeFormat="short"
                         value={"2019-08-08T07:17:30.040Z"}
                       >
-                        12:17 AM
+                        3:17 AM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
@@ -7840,7 +7841,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       <div>
                                         <FormattedTime
                                           timeFormat="short"
-                                          value={1636423259000}
+                                          timezone="America/Los_Angeles"
+                                          value={1565042459000}
                                         >
                                           6:00 PM
                                         </FormattedTime>
@@ -8324,7 +8326,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       <div>
                                         <FormattedTime
                                           timeFormat="short"
-                                          value={1636416660000}
+                                          timezone="America/Los_Angeles"
+                                          value={1565122260000}
                                         >
                                           4:11 PM
                                         </FormattedTime>
@@ -8808,7 +8811,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       <div>
                                         <FormattedTime
                                           timeFormat="short"
-                                          value={1636413720000}
+                                          timezone="America/Los_Angeles"
+                                          value={1565119320000}
                                         >
                                           3:22 PM
                                         </FormattedTime>
@@ -9454,7 +9458,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       <div>
                                         <FormattedTime
                                           timeFormat="short"
-                                          value={1636410480000}
+                                          timezone="America/Los_Angeles"
+                                          value={1565116080000}
                                         >
                                           2:28 PM
                                         </FormattedTime>
@@ -9594,7 +9599,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         timeFormat="short"
                         value={"2019-08-06T00:50:24.406Z"}
                       >
-                        5:50 PM
+                        8:50 PM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
@@ -13289,7 +13294,8 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       <div>
                                         <FormattedTime
                                           timeFormat="short"
-                                          value={1636422359000}
+                                          timezone="America/Los_Angeles"
+                                          value={1565041559000}
                                         >
                                           5:45 PM
                                         </FormattedTime>
@@ -13429,7 +13435,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         timeFormat="short"
                         value={"2019-08-06T00:38:43.389Z"}
                       >
-                        5:38 PM
+                        8:38 PM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
