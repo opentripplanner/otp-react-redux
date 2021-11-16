@@ -73,6 +73,8 @@ actions:
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
 components:
+  AccessLeg: 
+    summary: "<strong>{mode}</strong> <durationSpan>{formattedDuration}</durationSpan> <distanceSpan>{distance}</distanceSpan>"
   AccountSetupFinishPane:
     message: You are ready to start planning your trips.
   AddPlaceButton:
@@ -477,7 +479,7 @@ components:
         other {{numStops} stops}
       }
     info: Information
-    moreInfo: more info
+    moreInfo: "<alertLink>more info</alertLink>"
     serviceOperator: Service operated by <operatorLink>{agencyName}</operatorLink>
   TransitVehicleOverlay:
     # keys designed to match API output
