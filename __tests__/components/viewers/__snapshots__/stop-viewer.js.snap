@@ -1451,9 +1451,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       </Icon>
                       <FormattedTime
                         timeStyle="short"
-                        value={"2019-08-08T07:17:30.040Z"}
+                        timeZone="America/Los_Angeles"
+                        value={1565248650040}
                       >
-                        3:17 AM
+                        12:17 AM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
@@ -3270,9 +3271,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       </Icon>
                       <FormattedTime
                         timeStyle="short"
-                        value={"2019-08-08T07:17:30.040Z"}
+                        timeZone="America/Los_Angeles"
+                        value={1565248650040}
                       >
-                        3:17 AM
+                        12:17 AM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
@@ -5172,9 +5174,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       </Icon>
                       <FormattedTime
                         timeStyle="short"
-                        value={"2019-08-08T07:17:30.040Z"}
+                        timeZone="America/Los_Angeles"
+                        value={1565248650040}
                       >
-                        3:17 AM
+                        12:17 AM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
@@ -9597,9 +9600,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       </Icon>
                       <FormattedTime
                         timeStyle="short"
-                        value={"2019-08-06T00:50:24.406Z"}
+                        timeZone="America/Los_Angeles"
+                        value={1565052624406}
                       >
-                        8:50 PM
+                        5:50 PM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
@@ -13433,9 +13437,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       </Icon>
                       <FormattedTime
                         timeStyle="short"
-                        value={"2019-08-06T00:38:43.389Z"}
+                        timeZone="America/Los_Angeles"
+                        value={1565051923389}
                       >
-                        8:38 PM
+                        5:38 PM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
