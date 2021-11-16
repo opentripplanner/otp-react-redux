@@ -1450,8 +1450,9 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         </Styled(FontAwesome)>
                       </Icon>
                       <FormattedTime
-                        timeFormat="short"
-                        value={"2019-08-08T07:17:30.040Z"}
+                        timeStyle="short"
+                        timeZone="America/Los_Angeles"
+                        value={1565248650040}
                       >
                         3:17 AM
                       </FormattedTime>
@@ -3269,8 +3270,9 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         </Styled(FontAwesome)>
                       </Icon>
                       <FormattedTime
-                        timeFormat="short"
-                        value={"2019-08-08T07:17:30.040Z"}
+                        timeStyle="short"
+                        timeZone="America/Los_Angeles"
+                        value={1565248650040}
                       >
                         3:17 AM
                       </FormattedTime>
@@ -5032,8 +5034,9 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       </div>
                                       <div>
                                         <FormattedTime
-                                          timeFormat="short"
-                                          value={1564980660000}
+                                          timeStyle="short"
+                                          timeZone="America/Los_Angeles"
+                                          value={1565250660000}
                                         >
                                           12:51 AM
                                         </FormattedTime>
@@ -5170,8 +5173,9 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         </Styled(FontAwesome)>
                       </Icon>
                       <FormattedTime
-                        timeFormat="short"
-                        value={"2019-08-08T07:17:30.040Z"}
+                        timeStyle="short"
+                        timeZone="America/Los_Angeles"
+                        value={1565248650040}
                       >
                         3:17 AM
                       </FormattedTime>
@@ -7839,8 +7843,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       </div>
                                       <div>
                                         <FormattedTime
-                                          timeFormat="short"
-                                          value={1564956059000}
+                                          timeStyle="short"
+                                          timeZone="America/Los_Angeles"
+                                          value={1565053259000}
                                         >
                                           6:00 PM
                                         </FormattedTime>
@@ -8323,8 +8328,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       </div>
                                       <div>
                                         <FormattedTime
-                                          timeFormat="short"
-                                          value={1564949460000}
+                                          timeStyle="short"
+                                          timeZone="America/Los_Angeles"
+                                          value={1565133060000}
                                         >
                                           4:11 PM
                                         </FormattedTime>
@@ -8807,8 +8813,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       </div>
                                       <div>
                                         <FormattedTime
-                                          timeFormat="short"
-                                          value={1564946520000}
+                                          timeStyle="short"
+                                          timeZone="America/Los_Angeles"
+                                          value={1565130120000}
                                         >
                                           3:22 PM
                                         </FormattedTime>
@@ -9453,8 +9460,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       </div>
                                       <div>
                                         <FormattedTime
-                                          timeFormat="short"
-                                          value={1564943280000}
+                                          timeStyle="short"
+                                          timeZone="America/Los_Angeles"
+                                          value={1565126880000}
                                         >
                                           2:28 PM
                                         </FormattedTime>
@@ -9591,8 +9599,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         </Styled(FontAwesome)>
                       </Icon>
                       <FormattedTime
-                        timeFormat="short"
-                        value={"2019-08-06T00:50:24.406Z"}
+                        timeStyle="short"
+                        timeZone="America/Los_Angeles"
+                        value={1565052624406}
                       >
                         8:50 PM
                       </FormattedTime>
@@ -13288,8 +13297,9 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       </div>
                                       <div>
                                         <FormattedTime
-                                          timeFormat="short"
-                                          value={1564955159000}
+                                          timeStyle="short"
+                                          timeZone="America/Los_Angeles"
+                                          value={1565052359000}
                                         >
                                           5:45 PM
                                         </FormattedTime>
@@ -13426,8 +13436,9 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         </Styled(FontAwesome)>
                       </Icon>
                       <FormattedTime
-                        timeFormat="short"
-                        value={"2019-08-06T00:38:43.389Z"}
+                        timeStyle="short"
+                        timeZone="America/Los_Angeles"
+                        value={1565051923389}
                       >
                         8:38 PM
                       </FormattedTime>
