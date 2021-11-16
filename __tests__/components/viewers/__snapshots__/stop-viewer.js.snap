@@ -1454,7 +1454,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         timeZone="America/Los_Angeles"
                         value={1565248650040}
                       >
-                        3:17 AM
+                        12:17 AM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
@@ -3274,7 +3274,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         timeZone="America/Los_Angeles"
                         value={1565248650040}
                       >
-                        3:17 AM
+                        12:17 AM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
@@ -5177,7 +5177,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         timeZone="America/Los_Angeles"
                         value={1565248650040}
                       >
-                        3:17 AM
+                        12:17 AM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
@@ -9603,7 +9603,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         timeZone="America/Los_Angeles"
                         value={1565052624406}
                       >
-                        8:50 PM
+                        5:50 PM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
@@ -13440,7 +13440,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         timeZone="America/Los_Angeles"
                         value={1565051923389}
                       >
-                        8:38 PM
+                        5:38 PM
                       </FormattedTime>
                     </button>
                     <RelatedStopsPanel
