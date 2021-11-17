@@ -369,7 +369,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               size="0.9em"
                               title="From Location Icon"
                             >
-                              <Styled(Component)
+                              <StyledIconBase
                                 className="styled__FromIcon-n5xcvc-0 fTLtLq"
                                 iconAttrs={
                                   Object {
@@ -377,26 +377,26 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     "xmlns": "http://www.w3.org/2000/svg",
                                   }
                                 }
-                                iconVerticalAlign="-.125em"
+                                iconVerticalAlign="middle"
                                 iconViewBox="0 0 512 512"
                                 size="0.9em"
                                 title="From Location Icon"
                               >
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
                                       "xmlns": "http://www.w3.org/2000/svg",
                                     }
                                   }
-                                  iconVerticalAlign="-.125em"
+                                  iconVerticalAlign="middle"
                                   iconViewBox="0 0 512 512"
                                   size="0.9em"
                                   title="From Location Icon"
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
                                     fill="currentColor"
                                     focusable="false"
                                     height="0.9em"
@@ -413,11 +413,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     <path
                                       d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"
                                       fill="currentColor"
-                                      key="k0"
                                     />
                                   </svg>
                                 </ForwardRef>
-                              </Styled(Component)>
+                              </StyledIconBase>
                             </DotCircle>
                           </styled__FromIcon>
                         </LocationIcon>
@@ -451,7 +450,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               size="0.9em"
                               title="To Location Icon"
                             >
-                              <Styled(Component)
+                              <StyledIconBase
                                 className="styled__ToIcon-n5xcvc-2 jzAxgN"
                                 iconAttrs={
                                   Object {
@@ -459,26 +458,26 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     "xmlns": "http://www.w3.org/2000/svg",
                                   }
                                 }
-                                iconVerticalAlign="-.125em"
+                                iconVerticalAlign="middle"
                                 iconViewBox="0 0 384 512"
                                 size="0.9em"
                                 title="To Location Icon"
                               >
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
                                       "xmlns": "http://www.w3.org/2000/svg",
                                     }
                                   }
-                                  iconVerticalAlign="-.125em"
+                                  iconVerticalAlign="middle"
                                   iconViewBox="0 0 384 512"
                                   size="0.9em"
                                   title="To Location Icon"
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
                                     fill="currentColor"
                                     focusable="false"
                                     height="0.9em"
@@ -495,11 +494,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     <path
                                       d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
                                       fill="currentColor"
-                                      key="k0"
                                     />
                                   </svg>
                                 </ForwardRef>
-                              </Styled(Component)>
+                              </StyledIconBase>
                             </MapMarkerAlt>
                           </styled__ToIcon>
                         </LocationIcon>
@@ -521,7 +519,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-kEjbxe ddEshv"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -1871,7 +1869,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-gsTCUz kuRGam"
                                       >
                                         P
                                       </div>
@@ -2171,7 +2169,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               size="0.9em"
                               title="From Location Icon"
                             >
-                              <Styled(Component)
+                              <StyledIconBase
                                 className="styled__FromIcon-n5xcvc-0 fTLtLq"
                                 iconAttrs={
                                   Object {
@@ -2179,26 +2177,26 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     "xmlns": "http://www.w3.org/2000/svg",
                                   }
                                 }
-                                iconVerticalAlign="-.125em"
+                                iconVerticalAlign="middle"
                                 iconViewBox="0 0 512 512"
                                 size="0.9em"
                                 title="From Location Icon"
                               >
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
                                       "xmlns": "http://www.w3.org/2000/svg",
                                     }
                                   }
-                                  iconVerticalAlign="-.125em"
+                                  iconVerticalAlign="middle"
                                   iconViewBox="0 0 512 512"
                                   size="0.9em"
                                   title="From Location Icon"
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
                                     fill="currentColor"
                                     focusable="false"
                                     height="0.9em"
@@ -2215,11 +2213,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     <path
                                       d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"
                                       fill="currentColor"
-                                      key="k0"
                                     />
                                   </svg>
                                 </ForwardRef>
-                              </Styled(Component)>
+                              </StyledIconBase>
                             </DotCircle>
                           </styled__FromIcon>
                         </LocationIcon>
@@ -2253,7 +2250,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               size="0.9em"
                               title="To Location Icon"
                             >
-                              <Styled(Component)
+                              <StyledIconBase
                                 className="styled__ToIcon-n5xcvc-2 jzAxgN"
                                 iconAttrs={
                                   Object {
@@ -2261,26 +2258,26 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     "xmlns": "http://www.w3.org/2000/svg",
                                   }
                                 }
-                                iconVerticalAlign="-.125em"
+                                iconVerticalAlign="middle"
                                 iconViewBox="0 0 384 512"
                                 size="0.9em"
                                 title="To Location Icon"
                               >
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
                                       "xmlns": "http://www.w3.org/2000/svg",
                                     }
                                   }
-                                  iconVerticalAlign="-.125em"
+                                  iconVerticalAlign="middle"
                                   iconViewBox="0 0 384 512"
                                   size="0.9em"
                                   title="To Location Icon"
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
                                     fill="currentColor"
                                     focusable="false"
                                     height="0.9em"
@@ -2297,11 +2294,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     <path
                                       d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
                                       fill="currentColor"
-                                      key="k0"
                                     />
                                   </svg>
                                 </ForwardRef>
-                              </Styled(Component)>
+                              </StyledIconBase>
                             </MapMarkerAlt>
                           </styled__ToIcon>
                         </LocationIcon>
@@ -2323,7 +2319,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-kEjbxe ddEshv"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -3088,7 +3084,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-gsTCUz kuRGam"
                                       >
                                         P
                                       </div>
@@ -3487,7 +3483,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               size="0.9em"
                               title="From Location Icon"
                             >
-                              <Styled(Component)
+                              <StyledIconBase
                                 className="styled__FromIcon-n5xcvc-0 fTLtLq"
                                 iconAttrs={
                                   Object {
@@ -3495,26 +3491,26 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     "xmlns": "http://www.w3.org/2000/svg",
                                   }
                                 }
-                                iconVerticalAlign="-.125em"
+                                iconVerticalAlign="middle"
                                 iconViewBox="0 0 512 512"
                                 size="0.9em"
                                 title="From Location Icon"
                               >
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
                                       "xmlns": "http://www.w3.org/2000/svg",
                                     }
                                   }
-                                  iconVerticalAlign="-.125em"
+                                  iconVerticalAlign="middle"
                                   iconViewBox="0 0 512 512"
                                   size="0.9em"
                                   title="From Location Icon"
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
                                     fill="currentColor"
                                     focusable="false"
                                     height="0.9em"
@@ -3531,11 +3527,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     <path
                                       d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"
                                       fill="currentColor"
-                                      key="k0"
                                     />
                                   </svg>
                                 </ForwardRef>
-                              </Styled(Component)>
+                              </StyledIconBase>
                             </DotCircle>
                           </styled__FromIcon>
                         </LocationIcon>
@@ -3569,7 +3564,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               size="0.9em"
                               title="To Location Icon"
                             >
-                              <Styled(Component)
+                              <StyledIconBase
                                 className="styled__ToIcon-n5xcvc-2 jzAxgN"
                                 iconAttrs={
                                   Object {
@@ -3577,26 +3572,26 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     "xmlns": "http://www.w3.org/2000/svg",
                                   }
                                 }
-                                iconVerticalAlign="-.125em"
+                                iconVerticalAlign="middle"
                                 iconViewBox="0 0 384 512"
                                 size="0.9em"
                                 title="To Location Icon"
                               >
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
                                       "xmlns": "http://www.w3.org/2000/svg",
                                     }
                                   }
-                                  iconVerticalAlign="-.125em"
+                                  iconVerticalAlign="middle"
                                   iconViewBox="0 0 384 512"
                                   size="0.9em"
                                   title="To Location Icon"
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
                                     fill="currentColor"
                                     focusable="false"
                                     height="0.9em"
@@ -3613,11 +3608,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     <path
                                       d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
                                       fill="currentColor"
-                                      key="k0"
                                     />
                                   </svg>
                                 </ForwardRef>
-                              </Styled(Component)>
+                              </StyledIconBase>
                             </MapMarkerAlt>
                           </styled__ToIcon>
                         </LocationIcon>
@@ -3639,7 +3633,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-kEjbxe ddEshv"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -4998,7 +4992,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-gsTCUz kuRGam"
                                       >
                                         P
                                       </div>
@@ -5655,7 +5649,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               size="0.9em"
                               title="From Location Icon"
                             >
-                              <Styled(Component)
+                              <StyledIconBase
                                 className="styled__FromIcon-n5xcvc-0 fTLtLq"
                                 iconAttrs={
                                   Object {
@@ -5663,26 +5657,26 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     "xmlns": "http://www.w3.org/2000/svg",
                                   }
                                 }
-                                iconVerticalAlign="-.125em"
+                                iconVerticalAlign="middle"
                                 iconViewBox="0 0 512 512"
                                 size="0.9em"
                                 title="From Location Icon"
                               >
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
                                       "xmlns": "http://www.w3.org/2000/svg",
                                     }
                                   }
-                                  iconVerticalAlign="-.125em"
+                                  iconVerticalAlign="middle"
                                   iconViewBox="0 0 512 512"
                                   size="0.9em"
                                   title="From Location Icon"
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
                                     fill="currentColor"
                                     focusable="false"
                                     height="0.9em"
@@ -5699,11 +5693,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     <path
                                       d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"
                                       fill="currentColor"
-                                      key="k0"
                                     />
                                   </svg>
                                 </ForwardRef>
-                              </Styled(Component)>
+                              </StyledIconBase>
                             </DotCircle>
                           </styled__FromIcon>
                         </LocationIcon>
@@ -5737,7 +5730,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               size="0.9em"
                               title="To Location Icon"
                             >
-                              <Styled(Component)
+                              <StyledIconBase
                                 className="styled__ToIcon-n5xcvc-2 jzAxgN"
                                 iconAttrs={
                                   Object {
@@ -5745,26 +5738,26 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     "xmlns": "http://www.w3.org/2000/svg",
                                   }
                                 }
-                                iconVerticalAlign="-.125em"
+                                iconVerticalAlign="middle"
                                 iconViewBox="0 0 384 512"
                                 size="0.9em"
                                 title="To Location Icon"
                               >
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
                                       "xmlns": "http://www.w3.org/2000/svg",
                                     }
                                   }
-                                  iconVerticalAlign="-.125em"
+                                  iconVerticalAlign="middle"
                                   iconViewBox="0 0 384 512"
                                   size="0.9em"
                                   title="To Location Icon"
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
                                     fill="currentColor"
                                     focusable="false"
                                     height="0.9em"
@@ -5781,11 +5774,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     <path
                                       d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
                                       fill="currentColor"
-                                      key="k0"
                                     />
                                   </svg>
                                 </ForwardRef>
-                              </Styled(Component)>
+                              </StyledIconBase>
                             </MapMarkerAlt>
                           </styled__ToIcon>
                         </LocationIcon>
@@ -5807,7 +5799,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-kEjbxe ddEshv"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -9276,7 +9268,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-gsTCUz kuRGam"
                                       >
                                         P
                                       </div>
@@ -9928,7 +9920,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               size="0.9em"
                               title="From Location Icon"
                             >
-                              <Styled(Component)
+                              <StyledIconBase
                                 className="styled__FromIcon-n5xcvc-0 fTLtLq"
                                 iconAttrs={
                                   Object {
@@ -9936,26 +9928,26 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     "xmlns": "http://www.w3.org/2000/svg",
                                   }
                                 }
-                                iconVerticalAlign="-.125em"
+                                iconVerticalAlign="middle"
                                 iconViewBox="0 0 512 512"
                                 size="0.9em"
                                 title="From Location Icon"
                               >
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
                                       "xmlns": "http://www.w3.org/2000/svg",
                                     }
                                   }
-                                  iconVerticalAlign="-.125em"
+                                  iconVerticalAlign="middle"
                                   iconViewBox="0 0 512 512"
                                   size="0.9em"
                                   title="From Location Icon"
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
                                     fill="currentColor"
                                     focusable="false"
                                     height="0.9em"
@@ -9972,11 +9964,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     <path
                                       d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"
                                       fill="currentColor"
-                                      key="k0"
                                     />
                                   </svg>
                                 </ForwardRef>
-                              </Styled(Component)>
+                              </StyledIconBase>
                             </DotCircle>
                           </styled__FromIcon>
                         </LocationIcon>
@@ -10010,7 +10001,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               size="0.9em"
                               title="To Location Icon"
                             >
-                              <Styled(Component)
+                              <StyledIconBase
                                 className="styled__ToIcon-n5xcvc-2 jzAxgN"
                                 iconAttrs={
                                   Object {
@@ -10018,26 +10009,26 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     "xmlns": "http://www.w3.org/2000/svg",
                                   }
                                 }
-                                iconVerticalAlign="-.125em"
+                                iconVerticalAlign="middle"
                                 iconViewBox="0 0 384 512"
                                 size="0.9em"
                                 title="To Location Icon"
                               >
                                 <ForwardRef
-                                  className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
                                       "xmlns": "http://www.w3.org/2000/svg",
                                     }
                                   }
-                                  iconVerticalAlign="-.125em"
+                                  iconVerticalAlign="middle"
                                   iconViewBox="0 0 384 512"
                                   size="0.9em"
                                   title="To Location Icon"
                                 >
                                   <svg
-                                    className="sc-bdfBwQ eCizyM styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
                                     fill="currentColor"
                                     focusable="false"
                                     height="0.9em"
@@ -10054,11 +10045,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     <path
                                       d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
                                       fill="currentColor"
-                                      key="k0"
                                     />
                                   </svg>
                                 </ForwardRef>
-                              </Styled(Component)>
+                              </StyledIconBase>
                             </MapMarkerAlt>
                           </styled__ToIcon>
                         </LocationIcon>
@@ -10080,7 +10070,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
             </div>
             <styled.div>
               <div
-                className="sc-iqHYGH RZjpG"
+                className="sc-kEjbxe ddEshv"
               >
                 <LiveStopTimes
                   autoRefreshStopTimes={true}
@@ -12704,7 +12694,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-dlfnbm eSOmhd"
+                                        className="sc-gsTCUz kuRGam"
                                       >
                                         P
                                       </div>
