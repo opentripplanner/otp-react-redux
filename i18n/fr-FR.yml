@@ -378,6 +378,8 @@ components:
     trips: Trajets
   TabbedItineraries:
     optionNumber: "Option {optionNum, number}"
+    # Note to translator: This text is width-constrained.
+    mustCallAhead: Résa. obligatoire
     fareCost: >
       {hasMaxFare, select, 
         true {À partir de {minTotalFare}}

@@ -456,6 +456,8 @@ components:
     hideSettings: " Hide Settings"
   TabbedItineraries:
     optionNumber: "Option {optionNum, number}"
+    # Note to translator: This text is width-constrained.
+    mustCallAhead: Must call ahead!
     fareCost: >
       {hasMaxFare, select, 
         true {{minTotalFare}+}
