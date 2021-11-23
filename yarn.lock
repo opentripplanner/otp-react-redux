@@ -1561,13 +1561,31 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/core-utils@^4.1.0", "@opentripplanner/core-utils@^4.2.0", "@opentripplanner/core-utils@^4.3.0", "@opentripplanner/core-utils@^4.4.0":
+"@opentripplanner/core-utils@^4.1.0", "@opentripplanner/core-utils@^4.2.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.4.0.tgz#3eb8f9718d32ce50e3b79d975d682559c5a7b0bf"
   integrity sha512-qCd+NXa0PxwcN2DFR0HX1u/76RzQwHe2r0VGcaOS4GxvQ5HEL4zPyaT+lkxAyE6AFQAvNynyofhxlnMwbxtqEA==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.1.1"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    date-fns "^2.23.0"
+    date-fns-tz "^1.1.4"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    moment "^2.24.0"
+    prop-types "^15.7.2"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@^4.5.0", "@opentripplanner/core-utils@^4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.6.0.tgz#f0f9924a2312b89a3f84d0a34c1a2d9f6c1ca615"
+  integrity sha512-LQs8BrwqFXKHJOgRduKic9wEGqnNAcyrypTgKmx//Jzz6OmZyXNskrFNJwLR6HIgsps7isN/7hi3NuVFticgIA==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.1.2"
     "@styled-icons/foundation" "^10.34.0"
     "@turf/along" "^6.0.1"
     bowser "^2.7.0"
@@ -1598,7 +1616,7 @@
     "@opentripplanner/location-icon" "^1.3.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/geocoder@^1.1.1":
+"@opentripplanner/geocoder@^1.1.1", "@opentripplanner/geocoder@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.1.2.tgz#fb4c939f5746705d0bebd9791b3f9d9eb055ce8e"
   integrity sha512-XEHzueckoi6UM1wfgLj/VTjOilEoAj9WA5D26wAM992ItJfvlllis2XfSQecBHDAFc7YbRoKxT6IbsJOmqeMuQ==
@@ -1621,15 +1639,23 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-2.5.0.tgz#c533712b7a7f1da2e9625739d0b36a26a5587c99"
-  integrity sha512-r1ZRUpK0GuvCiRV/3hakQKtt4cQe9xYqUAMghh/V/EhBDa3MAW1mX5bGC/4QUBRa4rmU2HGQKALn5j8qrcDzrA==
+"@opentripplanner/icons@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-1.2.1.tgz#aaaf4c7ac5c11a64cc3387be031fb1a71acb3806"
+  integrity sha512-LMPRxc8S34CklMJEciOw/fGFx7YEc4lwJJqyFKofisslObTK2Tx1Q7dCFFYCO2APqKDGuGxTUIkvYyv5wlFaxQ==
   dependencies:
     "@opentripplanner/core-utils" "^4.1.0"
+    prop-types "^15.7.2"
+
+"@opentripplanner/itinerary-body@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-2.7.0.tgz#ba5ae119bc97deb30d68936d15fc683bbd15e865"
+  integrity sha512-9i3uXPTssyZPr+4a+2QX5QywF+8b11Km3RRDpZFcr4bwTDllfX21mvt36miqhZ/l6mYmloMzybQM+XIJWlQHtA==
+  dependencies:
+    "@opentripplanner/core-utils" "^4.5.0"
     "@opentripplanner/humanize-distance" "^1.1.0"
-    "@opentripplanner/icons" "^1.1.0"
-    "@opentripplanner/location-icon" "^1.3.0"
+    "@opentripplanner/icons" "^1.2.1"
+    "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
     "@styled-icons/foundation" "^10.34.0"
     currency-formatter "^1.5.5"
@@ -1727,12 +1753,12 @@
     lodash.isequal "^4.5.0"
     transitive-js "^0.13.7"
 
-"@opentripplanner/trip-details@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-1.5.0.tgz#81f990130073a93af2115ece27fa832f1a9a3283"
-  integrity sha512-fheJXzmRxQOvTJgvp59Mbq4ZKx4fNIjMgJ5tIvK5+tEp6Qf/MPX5mGxz8Zt43pMJNZQnkczf5sVS8Grf0b5bwQ==
+"@opentripplanner/trip-details@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-1.6.0.tgz#0f67bfbd2d147ca4c1618cf99c7cb3251b530d39"
+  integrity sha512-7yBRDSAHed14FjIDpozf06aZYOfNSBntDVWBZn9RQzjXm9t9CIrqehIXLbQvipTGcmZT7LqndfzEVOkKb8sCqQ==
   dependencies:
-    "@opentripplanner/core-utils" "^4.3.0"
+    "@opentripplanner/core-utils" "^4.5.0"
     "@opentripplanner/humanize-distance" "^1.1.0"
     "@styled-icons/fa-solid" "^10.34.0"
     moment "^2.24.0"
