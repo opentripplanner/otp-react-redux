@@ -13,14 +13,22 @@ const FLEX_COLOR_LIGHT = tinycolor(FLEX_COLOR).lighten(40).toHexString()
 
 // FIXME: type once the support-gtfs-flex branch is merged
 // eslint-disable-next-line react/prop-types
-const FlexNotice = ({ faKey, showText, text }) => (
+const FlexNotice = ({
+  faKey,
+  showText,
+  text
+}: {
+  faKey: string
+  showText: boolean
+  text: string | React.ReactElement
+}) => (
   <>
-    <Icon name={faKey} />
+    <Icon type={faKey} />
     {showText && <p>{text}</p>}
   </>
 )
 
-const FlexIndicatorWrapper = styled.div`
+const FlexIndicatorWrapper = styled.div<{ shrink: boolean }>`
   background: ${FLEX_COLOR_LIGHT};
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
@@ -58,6 +66,8 @@ const FlexIndicatorWrapper = styled.div`
     font-size: 13px;
     grid-column: 3 / span 2;
     grid-row: 2;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
   }
 
   /* Barber pole at left */
@@ -72,9 +82,18 @@ const FlexIndicatorWrapper = styled.div`
     width: 20px;
   }
 `
-// FIXME: type once the support-gtfs-flex branch is merged
-// eslint-disable-next-line react/prop-types
-export const FlexIndicator = ({ isCallAhead, isContinuousDropoff, shrink }) => (
+
+export const FlexIndicator = ({
+  isCallAhead,
+  isContinuousDropoff,
+  phoneNumber,
+  shrink
+}: {
+  isCallAhead: boolean
+  isContinuousDropoff: boolean
+  phoneNumber: string
+  shrink: boolean
+}): React.ReactElement => (
   <FlexIndicatorWrapper shrink={shrink}>
     {!shrink && (
       <h4>
@@ -85,7 +104,12 @@ export const FlexIndicator = ({ isCallAhead, isContinuousDropoff, shrink }) => (
       <FlexNotice
         faKey="phone"
         showText={!shrink}
-        text={<FormattedMessage id="config.flex.call-ahead" />}
+        text={
+          <FormattedMessage
+            id="config.flex.call-ahead"
+            values={{ phoneNumber }}
+          />
+        }
       />
     )}
     {/* Only show continuous dropoff message if call ahead message isn't shown */}

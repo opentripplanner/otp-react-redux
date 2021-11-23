@@ -2,6 +2,13 @@ api:
   host: http://localhost
   path: /otp/routers/default
   port: 8001
+
+# Support OTP-2 in parallel for certain requests
+# api_v2:
+#  host: http://localhost
+#  path: /otp/routers/default
+#  port: 8002
+
 # Add suggested locations to be shown as options in the form view.
 # locations:
 #   - id: 'airport'
@@ -338,17 +345,17 @@ itinerary:
 #     common:
 #       accessModes:
 #         bikeshare: Blue Bike
-#      config:
-#        menuItems:
-#          demo-item: Demo Item
-#        flex:
-#          flex-service: Flex Service
-#          call-ahead: "Call to reserve: (555) 555-5555"
-#          continuous-dropoff: Communicate with operator about stop
-#        acessibilityScore:
-#          gradationMap:
-#            0.0: 'Not Accessible'
-#            0.9: 'Mostly Accessible'
+#     config:
+#       menuItems:
+#         demo-item: Demo Item
+#       flex:
+#         flex-service: Flex Service
+#         call-ahead: "Call to reserve: (555) 555-5555"
+#         continuous-dropoff: Communicate with operator about stop
+#       acessibilityScore:
+#         gradationMap:
+#           0.0: 'Not Accessible'
+#           0.9: 'Mostly Accessible'
 
 ### Localization section to provide language/locale settings
 #localization:
