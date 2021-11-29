@@ -1215,62 +1215,74 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@formatjs/ecma402-abstract@1.7.1":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.7.1.tgz#1459a9dad654d5d5ec34765965b8e4f22ad6ff81"
-  integrity sha512-FjewVLB2DVEVCvvC7IMffzXVhysvi442i6ed0H7qcrT6xtUpO4vr0oZgpOmsv6D9I4Io0GVebIuySwteS/k3gg==
+"@formatjs/ecma402-abstract@1.9.8":
+  version "1.9.8"
+  resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.9.8.tgz#f3dad447fbc7f063f88e2a148b7a353161740e74"
+  integrity sha512-2U4n11bLmTij/k4ePCEFKJILPYwdMcJTdnKVBi+JMWBgu5O1N+XhCazlE6QXqVO1Agh2Doh0b/9Jf1mSmSVfhA==
+  dependencies:
+    "@formatjs/intl-localematcher" "0.2.20"
+    tslib "^2.1.0"
+
+"@formatjs/fast-memoize@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@formatjs/fast-memoize/-/fast-memoize-1.2.0.tgz#1123bfcc5d21d761f15d8b1c32d10e1b6530355d"
+  integrity sha512-fObitP9Tlc31SKrPHgkPgQpGo4+4yXfQQITTCNH8AZdEqB7Mq4nPrjpUL/tNGN3lEeJcFxDbi0haX8HM7QvQ8w==
   dependencies:
     tslib "^2.1.0"
 
-"@formatjs/fast-memoize@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@formatjs/fast-memoize/-/fast-memoize-1.1.1.tgz#3006b58aca1e39a98aca213356b42da5d173f26b"
-  integrity sha512-mIqBr5uigIlx13eZTOPSEh2buDiy3BCdMYUtewICREQjbb4xarDiVWoXSnrERM7NanZ+0TAHNXSqDe6HpEFQUg==
-
-"@formatjs/icu-messageformat-parser@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@formatjs/icu-messageformat-parser/-/icu-messageformat-parser-2.0.1.tgz#a3b542542b92958f1cdd090f1cb475cb7cb4e21a"
-  integrity sha512-GXHsATo6/9OMgrfAuyX86fYPMLeQXDN93TOKXQeW7A7ULCy9eEOp3beNwhrVFxaGIjVy/haLLqHMT36iyhwvCA==
+"@formatjs/icu-messageformat-parser@2.0.11":
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/@formatjs/icu-messageformat-parser/-/icu-messageformat-parser-2.0.11.tgz#e4ba40b9a8aefc8bccfc96be5906d3bca305b4b3"
+  integrity sha512-5mWb8U8aulYGwnDZWrr+vdgn5PilvtrqQYQ1pvpgzQes/osi85TwmL2GqTGLlKIvBKD2XNA61kAqXYY95w4LWg==
   dependencies:
-    "@formatjs/ecma402-abstract" "1.7.1"
-    "@formatjs/icu-skeleton-parser" "1.2.2"
+    "@formatjs/ecma402-abstract" "1.9.8"
+    "@formatjs/icu-skeleton-parser" "1.2.12"
     tslib "^2.1.0"
 
-"@formatjs/icu-skeleton-parser@1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@formatjs/icu-skeleton-parser/-/icu-skeleton-parser-1.2.2.tgz#6e9a6eff16e3c7b69d67d40b292d4b499e37228e"
-  integrity sha512-peBBPIiNzJdPsvEzFGCicD7ARvlcaUYOVZ5dljvzzcHqc5OHlH58OrUNWwYgxFS6Dnb3Ncy4qFwlTdPGTTvw1g==
+"@formatjs/icu-skeleton-parser@1.2.12":
+  version "1.2.12"
+  resolved "https://registry.yarnpkg.com/@formatjs/icu-skeleton-parser/-/icu-skeleton-parser-1.2.12.tgz#45426eb1448c0c08c931eb9f0672283c0e4d0062"
+  integrity sha512-DTFxWmEA02ZNW6fsYjGYSADvtrqqjCYF7DSgCmMfaaE0gLP4pCdAgOPE+lkXXU+jP8iCw/YhMT2Seyk/C5lBWg==
   dependencies:
-    "@formatjs/ecma402-abstract" "1.7.1"
+    "@formatjs/ecma402-abstract" "1.9.8"
     tslib "^2.1.0"
 
-"@formatjs/intl-displaynames@4.0.16":
-  version "4.0.16"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-displaynames/-/intl-displaynames-4.0.16.tgz#f310b9a43313c6c3da736a912fc27bce395742b4"
-  integrity sha512-2vmY2yKu7VvtLmuZhPAGAZ6AtQMQpbUGEW/5IEwFub0AGR5iF/ayC7nbrQvg2NWVRVdVBt/HlTws/QWTZaRCyg==
+"@formatjs/intl-displaynames@5.2.3":
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-displaynames/-/intl-displaynames-5.2.3.tgz#a0cebc81e89c5414177ade71a2f2388d799ee6e8"
+  integrity sha512-5BmhSurLbfgdeo0OBcNPPkIS8ikMMYaHe2NclxEQZqcMvrnQzNMNnUE2dDF5vZx+mkvKq77aQYzpc8RfqVsRCQ==
   dependencies:
-    "@formatjs/ecma402-abstract" "1.7.1"
+    "@formatjs/ecma402-abstract" "1.9.8"
+    "@formatjs/intl-localematcher" "0.2.20"
     tslib "^2.1.0"
 
-"@formatjs/intl-listformat@5.0.17":
-  version "5.0.17"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-listformat/-/intl-listformat-5.0.17.tgz#baa4474a95bab26d5dd0c1a4aad246ed193e5505"
-  integrity sha512-3WU1cmcoGk1zgNR7BoD/GIOaIJSjWa6GXArEOPiE+ocM6ZgYIYsDcjfQOso0z2NNN1k8CPOlfzWY4olwdKAtxQ==
+"@formatjs/intl-listformat@6.3.3":
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-listformat/-/intl-listformat-6.3.3.tgz#0cb83a012c0ae46876e30589a086695298e0fb5c"
+  integrity sha512-3nzAKgVS5rePDa5HiH0OwZgAhqxLtzlMc9Pg4QgajRHSP1TqFiMmQnnn52wd3+xVTb7cjZVm3JBnTv51/MhTOg==
   dependencies:
-    "@formatjs/ecma402-abstract" "1.7.1"
+    "@formatjs/ecma402-abstract" "1.9.8"
+    "@formatjs/intl-localematcher" "0.2.20"
     tslib "^2.1.0"
 
-"@formatjs/intl@1.10.6":
-  version "1.10.6"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-1.10.6.tgz#fc3810ccfdc0b81a735c7fe8298e6ff335843b7a"
-  integrity sha512-Szxu18bG2LSXWlMHQyNap9AibOaCYgK4/1JlBy2o2UB89fjqJfXaotF7rNGD9dJc+JGzcUYhhBH0ofyN9uSXLg==
+"@formatjs/intl-localematcher@0.2.20":
+  version "0.2.20"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-localematcher/-/intl-localematcher-0.2.20.tgz#782aef53d1c1b6112ee67468dc59f9b8d1ba7b17"
+  integrity sha512-/Ro85goRZnCojzxOegANFYL0LaDIpdPjAukR7xMTjOtRx+3yyjR0ifGTOW3/Kjhmab3t6GnyHBYWZSudxEOxPA==
   dependencies:
-    "@formatjs/ecma402-abstract" "1.7.1"
-    "@formatjs/fast-memoize" "1.1.1"
-    "@formatjs/icu-messageformat-parser" "2.0.1"
-    "@formatjs/intl-displaynames" "4.0.16"
-    "@formatjs/intl-listformat" "5.0.17"
-    intl-messageformat "9.6.13"
+    tslib "^2.1.0"
+
+"@formatjs/intl@1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-1.14.1.tgz#03e12f7e2cf557defdd1a5aeb1c143efb8cfbc7b"
+  integrity sha512-mtL8oBgFwTu0GHFnxaF93fk/zNzNkPzl+27Fwg5AZ88pWHWb7037dpODzoCBnaIVk4FBO5emUn/6jI9Byj8hOw==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.9.8"
+    "@formatjs/fast-memoize" "1.2.0"
+    "@formatjs/icu-messageformat-parser" "2.0.11"
+    "@formatjs/intl-displaynames" "5.2.3"
+    "@formatjs/intl-listformat" "6.3.3"
+    intl-messageformat "9.9.1"
     tslib "^2.1.0"
 
 "@iarna/cli@^1.2.0":
@@ -1561,13 +1573,31 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/core-utils@^4.1.0", "@opentripplanner/core-utils@^4.2.0", "@opentripplanner/core-utils@^4.3.0", "@opentripplanner/core-utils@^4.4.0":
+"@opentripplanner/core-utils@^4.1.0", "@opentripplanner/core-utils@^4.2.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.4.0.tgz#3eb8f9718d32ce50e3b79d975d682559c5a7b0bf"
   integrity sha512-qCd+NXa0PxwcN2DFR0HX1u/76RzQwHe2r0VGcaOS4GxvQ5HEL4zPyaT+lkxAyE6AFQAvNynyofhxlnMwbxtqEA==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.1.1"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    date-fns "^2.23.0"
+    date-fns-tz "^1.1.4"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    moment "^2.24.0"
+    prop-types "^15.7.2"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@^4.5.0", "@opentripplanner/core-utils@^4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.6.0.tgz#f0f9924a2312b89a3f84d0a34c1a2d9f6c1ca615"
+  integrity sha512-LQs8BrwqFXKHJOgRduKic9wEGqnNAcyrypTgKmx//Jzz6OmZyXNskrFNJwLR6HIgsps7isN/7hi3NuVFticgIA==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.1.2"
     "@styled-icons/foundation" "^10.34.0"
     "@turf/along" "^6.0.1"
     bowser "^2.7.0"
@@ -1598,7 +1628,7 @@
     "@opentripplanner/location-icon" "^1.3.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/geocoder@^1.1.1":
+"@opentripplanner/geocoder@^1.1.1", "@opentripplanner/geocoder@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.1.2.tgz#fb4c939f5746705d0bebd9791b3f9d9eb055ce8e"
   integrity sha512-XEHzueckoi6UM1wfgLj/VTjOilEoAj9WA5D26wAM992ItJfvlllis2XfSQecBHDAFc7YbRoKxT6IbsJOmqeMuQ==
@@ -1621,15 +1651,23 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-2.5.0.tgz#c533712b7a7f1da2e9625739d0b36a26a5587c99"
-  integrity sha512-r1ZRUpK0GuvCiRV/3hakQKtt4cQe9xYqUAMghh/V/EhBDa3MAW1mX5bGC/4QUBRa4rmU2HGQKALn5j8qrcDzrA==
+"@opentripplanner/icons@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-1.2.1.tgz#aaaf4c7ac5c11a64cc3387be031fb1a71acb3806"
+  integrity sha512-LMPRxc8S34CklMJEciOw/fGFx7YEc4lwJJqyFKofisslObTK2Tx1Q7dCFFYCO2APqKDGuGxTUIkvYyv5wlFaxQ==
   dependencies:
     "@opentripplanner/core-utils" "^4.1.0"
+    prop-types "^15.7.2"
+
+"@opentripplanner/itinerary-body@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-2.7.0.tgz#ba5ae119bc97deb30d68936d15fc683bbd15e865"
+  integrity sha512-9i3uXPTssyZPr+4a+2QX5QywF+8b11Km3RRDpZFcr4bwTDllfX21mvt36miqhZ/l6mYmloMzybQM+XIJWlQHtA==
+  dependencies:
+    "@opentripplanner/core-utils" "^4.5.0"
     "@opentripplanner/humanize-distance" "^1.1.0"
-    "@opentripplanner/icons" "^1.1.0"
-    "@opentripplanner/location-icon" "^1.3.0"
+    "@opentripplanner/icons" "^1.2.1"
+    "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
     "@styled-icons/foundation" "^10.34.0"
     currency-formatter "^1.5.5"
@@ -1727,12 +1765,12 @@
     lodash.isequal "^4.5.0"
     transitive-js "^0.13.7"
 
-"@opentripplanner/trip-details@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-1.5.0.tgz#81f990130073a93af2115ece27fa832f1a9a3283"
-  integrity sha512-fheJXzmRxQOvTJgvp59Mbq4ZKx4fNIjMgJ5tIvK5+tEp6Qf/MPX5mGxz8Zt43pMJNZQnkczf5sVS8Grf0b5bwQ==
+"@opentripplanner/trip-details@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-1.6.0.tgz#0f67bfbd2d147ca4c1618cf99c7cb3251b530d39"
+  integrity sha512-7yBRDSAHed14FjIDpozf06aZYOfNSBntDVWBZn9RQzjXm9t9CIrqehIXLbQvipTGcmZT7LqndfzEVOkKb8sCqQ==
   dependencies:
-    "@opentripplanner/core-utils" "^4.3.0"
+    "@opentripplanner/core-utils" "^4.5.0"
     "@opentripplanner/humanize-distance" "^1.1.0"
     "@styled-icons/fa-solid" "^10.34.0"
     moment "^2.24.0"
@@ -2167,6 +2205,15 @@
   version "17.0.5"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.5.tgz#3d887570c4489011f75a3fc8f965bf87d09a1bea"
   integrity sha512-bj4biDB9ZJmGAYTWSKJly6bMr4BLUiBrx9ujiJEoP9XIDY9CTaPGxE5QWN/1WjpPLzYF7/jRNnV2nNxNe970sw==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@17":
+  version "17.0.20"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.20.tgz#a4284b184d47975c71658cd69e759b6bd37c3b8c"
+  integrity sha512-wWZrPlihslrPpcKyCSlmIlruakxr57/buQN1RjlIeaaTWDLtJkTtRW429MoQJergvVKc4IWBpRhWw7YNh/7GVA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -8913,13 +8960,13 @@ interpret@^1.0.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
   integrity sha512-mT34yGKMNceBQUoVn7iCDKDntA7SC6gycMAWzGx1z/CMCTV7b2AAtXlo3nRyHZ1FelRkQbQjprHSYGwzLtkVbw==
 
-intl-messageformat@9.6.13:
-  version "9.6.13"
-  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-9.6.13.tgz#7c4ace385b3b8cc5010bfd774451ed0c50a73a9b"
-  integrity sha512-F8OHdgdZYdY3O7TSkQtIGY1qBL7ttbbfIb6g9sgjLw1SQ9SlN3rlaUa1tv9RK3sX0qVkqNLqlPVuOfHlhXpm2Q==
+intl-messageformat@9.9.1:
+  version "9.9.1"
+  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-9.9.1.tgz#255d453b0656b4f7e741f31d2b4a95bf2adfe064"
+  integrity sha512-cuzS/XKHn//hvKka77JKU2dseiVY2dofQjIOZv6ZFxFt4Z9sPXnZ7KQ9Ak2r+4XBCjI04MqJ1PhKs/3X22AkfA==
   dependencies:
-    "@formatjs/fast-memoize" "1.1.1"
-    "@formatjs/icu-messageformat-parser" "2.0.1"
+    "@formatjs/fast-memoize" "1.2.0"
+    "@formatjs/icu-messageformat-parser" "2.0.11"
     tslib "^2.1.0"
 
 into-stream@^5.0.0:
@@ -14502,19 +14549,20 @@ react-input-autosize@^2.2.2:
   dependencies:
     prop-types "^15.5.8"
 
-react-intl@^5.17.5:
-  version "5.17.5"
-  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.17.5.tgz#8e70fcb6c9a70d20c066f514cb34ad48620c6b75"
-  integrity sha512-CCGZnb69TUXlDm/GL6R6VAD4RFTqPcIlotRs8RA5SjZX5gxJVgVokvlM9T3sA5BWInGNZUXXNOiZE7yROVUDIg==
+react-intl@^5.20.10:
+  version "5.20.10"
+  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.20.10.tgz#8b0f18a5b76e9f8f5a3ccc993deb0c4cef9dcde0"
+  integrity sha512-zy0ZQhpjkGsKcK1BFo2HbGM/q8GBVovzoXZGQ76DowR0yr6UzQuPLkrlIrObL2zxIYiDaxaz+hUJaoa2a1xqOQ==
   dependencies:
-    "@formatjs/ecma402-abstract" "1.7.1"
-    "@formatjs/icu-messageformat-parser" "2.0.1"
-    "@formatjs/intl" "1.10.6"
-    "@formatjs/intl-displaynames" "4.0.16"
-    "@formatjs/intl-listformat" "5.0.17"
+    "@formatjs/ecma402-abstract" "1.9.8"
+    "@formatjs/icu-messageformat-parser" "2.0.11"
+    "@formatjs/intl" "1.14.1"
+    "@formatjs/intl-displaynames" "5.2.3"
+    "@formatjs/intl-listformat" "6.3.3"
     "@types/hoist-non-react-statics" "^3.3.1"
+    "@types/react" "17"
     hoist-non-react-statics "^3.3.2"
-    intl-messageformat "9.6.13"
+    intl-messageformat "9.9.1"
     tslib "^2.1.0"
 
 react-is@^16.3.2, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6, react-is@^16.9.0:

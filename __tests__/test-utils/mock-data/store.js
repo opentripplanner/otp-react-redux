@@ -4,10 +4,10 @@ import EnzymeReactAdapter from 'enzyme-adapter-react-16'
 import {mountToJson} from 'enzyme-to-json'
 import { createHashHistory } from 'history'
 import clone from 'lodash/cloneDeep'
-import { Provider } from 'react-redux'
-import configureStore from 'redux-mock-store'
-import thunk from 'redux-thunk'
 import { IntlProvider } from 'react-intl'
+import configureStore from 'redux-mock-store'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 
 import {getInitialState} from '../../../lib/reducers/create-otp-reducer'
 
@@ -45,11 +45,14 @@ export function mockWithProvider (
 ) {
   const store = configureStore(storeMiddleWare)(storeState)
   const wrapper = mount(
-    <Provider store={store}>
-      <IntlProvider>
+    <IntlProvider
+      defaultLocale={'en-US'}
+      locale={'en-US'}
+    >
+      <Provider store={store}>
         <ConnectedComponent {...connectedComponentProps} />
-      </IntlProvider>
-    </Provider>
+      </Provider>
+    </IntlProvider>
   )
 
   return {
