@@ -152,6 +152,7 @@ components:
     arriveAt: "Arrivée {arriveTime, time, short}"
     departAt: "Départ {departTime, time, short}"
     editDepartOrArrival: Modifier l'heure de départ ou d'arrivée
+    lastWeek: "{formattedDayOfWeek} dernier" #translation needs review
     leaveNow: Tout de suite
     range: "{startTime, time, short} à {endTime, time, short}"
   DateTimeScreen:
@@ -610,6 +611,11 @@ components:
     prompt: Où désirez-vous aller ?
 
 common:
+  dateExpressions:
+    today: Aujourd'hui #translation needs review
+    tomorrow: Demain #translation needs review
+    yesterday: Hier #translation needs review
+
   daysOfWeek:
     monday: lundi
     tuesday: mardi
