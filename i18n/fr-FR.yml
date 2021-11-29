@@ -429,6 +429,8 @@ components:
         true {Afficher les prochains passages}
         other {Afficher les horaires}
       }
+    zoomToStop: Zoomer sur l'arrêt # Translation needs review
+
   SubNav:
     myAccount: Mon compte
     settings: Préférences

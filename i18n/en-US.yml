@@ -445,6 +445,8 @@ components:
         true {View next arrivals}
         other {View schedule}
       }
+    zoomToStop: Zoom to stop
+
   SubNav:
     myAccount: My account
     settings: Settings
