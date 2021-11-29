@@ -180,6 +180,7 @@ components:
     stopViewer: Stop Viewer
   ErrorMessage:
     header: Could Not Plan Trip
+    warning: Warning
   ExistingAccountDisplay:
     mainTitle: My settings
     notifications: Notifications
