@@ -6,7 +6,13 @@ import React from 'react'
  * Returns a FormattedMessage component for realtime status labels such that i18n IDs
  * are hardcoded and can be kept track of by format.js CLI tools
  */
-const FormattedRealtimeStatusLabel = ({ minutes, status }) => {
+const FormattedRealtimeStatusLabel = ({
+  minutes,
+  status
+}: {
+  minutes: number
+  status: string
+}): JSX.Element | null => {
   switch (status) {
     case 'early':
       return (
