@@ -90,7 +90,7 @@
     "react-draggable": "^4.4.3",
     "react-fontawesome": "^1.5.0",
     "react-ga": "^3.3.0",
-    "react-intl": "^5.17.5",
+    "react-intl": "^5.20.10",
     "react-loading-skeleton": "^2.1.1",
     "react-phone-number-input": "^3.1.0",
     "react-redux": "^7.1.0",

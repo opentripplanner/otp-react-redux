@@ -100,8 +100,8 @@ class TripBasicsPane extends Component<TripBasicsProps> {
 
   componentDidMount() {
     // Check itinerary availability (existence) for all days.
-    const { checkItineraryExistence, values: monitoredTrip } = this.props
-    checkItineraryExistence(monitoredTrip)
+    const { checkItineraryExistence, intl, values: monitoredTrip } = this.props
+    checkItineraryExistence(monitoredTrip, intl)
   }
 
   componentDidUpdate(prevProps: TripBasicsProps) {

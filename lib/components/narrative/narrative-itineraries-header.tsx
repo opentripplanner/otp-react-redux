@@ -73,13 +73,11 @@ export default function NarrativeItinerariesHeader({
           <div
             style={{ flexGrow: 1 }}
             title={intl.formatMessage(
-              {
-                id: 'components.NarrativeItinerariesHeader.titleText'
-              },
+              { id: 'components.NarrativeItinerariesHeader.titleText' },
               {
                 issueNum: errors.length,
                 itineraryNum: itineraries.length,
-                pending: pending ? 'true' : 'false'
+                pending
               }
             )}
           >
@@ -88,7 +86,7 @@ export default function NarrativeItinerariesHeader({
                 id="components.NarrativeItinerariesHeader.resultText"
                 values={{
                   itineraryNum: itineraries.length,
-                  pending: pending ? 'true' : 'false'
+                  pending
                 }}
               />
             </span>

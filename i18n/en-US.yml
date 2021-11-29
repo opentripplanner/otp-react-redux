@@ -8,41 +8,93 @@ _name: English
 #     Use the dot '.' to separate categories and sub-categories in the path.
 #     For instance, for the message defined in YML below:
 #         common
-#           otpTransitModes
+#           modes
 #             subway: Metro#
 #     then use the snippet below with the corresponding message id:
-#         <FormattedMessage id='common.otpTransitModes.subway' /> // renders "Metro".
+#         <FormattedMessage id='common.modes.subway' /> // renders "Metro".
 #
 # It is important that message ids in the code be consistent with
 # the categories in this file. Below are some general guidelines:
-#   - For starters, there is a 'components' category and a 'common' category.
-#     Additional categories may be added as needed.
+#   - For starters, there are an 'actions', 'components' and 'common'
+#     categories. Additional categories may be added as needed.
 #   - Each sub-category under 'components' denotes a component and
 #     should contain messages that are used only by that component (e.g. button captions).
 #   - In contrast, some strings are common to multiple components,
 #     so it makes sense to group them by theme (e.g. accessModes) under the 'common' category.
 
+# Messages that are generated from actions
+actions:
+  callTaker:
+    callQuerySaveError: "Error storing call queries: {err}"
+    callSaveError: "Could not save call: {err}"
+    checkSessionError: "Error establishing auth session: {err}"
+    couldNotFindCallError: Could not find call. Cancelling save queries request.
+    fetchCallsError: "Error fetching calls: {err}"
+    queryFetchError: "Error fetching queries: {err}"
+  fieldTrip:
+    addNoteError: "Error adding field trip note: {err}"
+    confirmOverwriteItineraries: >
+      This action will overwrite a previously planned {outbound, select,
+          true {outbound}
+          other {inbound}
+        } itinerary for this request. Do you wish to continue?
+    deleteItinerariesError: "Error deleting field trip plan: {err}"
+    deleteNoteError: "Error deleting field trip note: {err}"
+    editSubmitterNotesError: "Error editing submitter notes: {err}"
+    fetchFieldTripError: "Error fetching field trip: {err}"
+    fetchFieldTripsError: "Error fetching field trips: {err}"
+    fetchTripsForDateError: "Error fetching trips for field trip travel date: {err}"
+    incompatibleTripDateError: Planned trip date ({tripDate}) is not the requested day of travel ({requestDate})
+    itineraryCapacityError: "Cannot Save Plan: This plan could not be saved due to a lack of capacity on one or more vehicles. Please re-plan your trip."
+    maxTripRequestsExceeded: Number of trip requests exceeded without valid results
+    saveItinerariesError: "Failed to save itineraries: {err}"
+    setGroupSizeError: "Error setting group size: {err}"
+    setPaymentError: "Error setting payment info: {err}"
+    setRequestStatusError: "Error setting request status: {err}"
+  location:
+    geolocationNotSupportedError: Geolocation not supported by your browser
+    unknownPositionError: Unknown error getting position
+  map:
+    currentLocation: (Current Location)
+  user:
+    accountDeleted: Your user account ({email}) has been deleted.
+    authTokenError: Error obtaining an authorization token.
+    confirmDeleteMonitoredTrip: Would you like to remove this trip?
+    confirmDeletePlace: Would you like to remove this place?
+    emailVerificationResent: The email verification message has been resent.
+    genericError: "An error was encountered: {err}"
+    itineraryExistenceCheckFailed: Error checking whether your selected trip is possible.
+    preferencesSaved: Your preferences have been saved.
+    smsInvalidCode: The code you entered is invalid. Please try again.
+    smsResendThrottled: A verification SMS was sent to the indicated phone number less than a minute ago. Please try again in a few moments.
+    smsVerificationFailed: Your phone could not be verified. Perhaps the code you entered has expired. Please request a new code and try again.
+
+
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
 components:
+  AccessLeg: 
+    summary: "<strong>{mode}</strong> <durationSpan>{formattedDuration}</durationSpan> <distanceSpan>{distance}</distanceSpan>"
   AccountSetupFinishPane:
     message: You are ready to start planning your trips.
+  AddPlaceButton:
+    addPlace: Add place
+    needOriginDestination: Define origin/destination to add intermediate places
+    tooManyPlaces: Maximum intermediate places reached
+  AdvancedOptions:
+    bannedRoutes: Select banned routes...
+    maxBike: "Max bike {unitsString}"
+    maxWalk: "Max walk {unitsString}"
+    preferredRoutes: Select preferred routes...
   AfterSignInScreen:
     mainTitle: Redirecting...
     message: "If the page doesn't load after a few seconds, <redirectLink>click here</redirectLink>."
   AmenitiesPanel:
-    noPRLotsFound: No nearby park and ride lots found.
     # Use plurals to differentiate between company variable being set or not
     bikesAtStation: >
       {companyLength, plural,
-      =0 {Bikes at {name}}
-      other {{company} bikes at {name}}
-      }
-    bikesNearby: >
-      {count, plural,
-        =0 {no floating {company} bikes nearby}
-        one {{count} floating {company} bike nearby}
-        other {{count} floating {company} bikes nearby}
+        =0 {Bikes at {name}}
+        other {{company} bikes at {name}}
       }
     bikesAvailable: >
       {count, plural,
@@ -50,37 +102,71 @@ components:
         one {{count} bike available}
         other {{count} bikes available}
       }
-    spacesAvailable: >
+    bikesNearby: >
       {count, plural,
-        =0 {No spaces available}
-        one {{count} space available}
-        other {{count} spaces available}
+        =0 {no floating {company} bikes nearby}
+        one {{count} floating {company} bike nearby}
+        other {{count} floating {company} bikes nearby}
       }
+    nearbyAmenities: Nearby Amenities
     noNearbyBikes: No nearby bike rentals found.
+    noNearbyScooters: No nearby micromobility rentals found.
+    noPRLotsFound: No nearby park and ride lots found.
     scootersNearby: >
       {count, plural,
         =0 {No {company} E-Scooters nearby}
         one {{count} {company} E-Scooter nearby}
         other {{count} {company} E-Scooters nearby}
       }
-    noNearbyScooters: No nearby micromobility rentals found.
-    nearbyAmenities: Nearby Amenities
+    spacesAvailable: >
+      {count, plural,
+        =0 {No spaces available}
+        one {{count} space available}
+        other {{count} spaces available}
+      }
   AppMenu:
-    callHistory: "Call History"
-    closeMenu: "Close Menu"
-    fieldTrip: "Field Trip"
-    mailables: "Mailables"
+    callHistory: Call History
+    closeMenu: Close Menu
+    fieldTrip: Field Trip
+    mailables: Mailables
     menuItemIconAlt: "Icon for {label} menu item"
-    openMenu: "Open Menu"
+    openMenu: Open Menu
+    routeViewer: Route Viewer
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
+  BatchResultsScreen:
+    expandMap: Expand map
+    showResults: Show results
   BatchRoutingPanel:
     shortTitle: Plan Trip
+  BatchSearchScreen:
+    header: Plan Your Trip
+  BatchSettings:
+    destination: destination
+    origin: origin
+    planTripTooltip: Plan trip
+    validationMessage: "Please define the following fields to plan a trip: {issues}"
   BeforeSignInScreen:
     mainTitle: Signing you in
     message: >
       In order to access this page you will need to sign in.
       Please wait while we redirect you to the login page...
+  CallTakerPanel:
+    advancedOptions: Advanced options
+    groupSize: "Group size:"
+    intermediateDestination: Enter intermediate destination
+  DateTimeOptions:
+    arriveBy: Arrive by
+    departAt: Depart at
+    now: Now
+  DateTimePreview:
+    arriveAt: "Arrive {arriveTime, time, short}"
+    departAt: "Depart {departTime, time, short}"
+    editDepartOrArrival: Edit departure or arrival time
+    leaveNow: Leave now
+    range: "{startTime, time, short} to {endTime, time, short}"
+  DateTimeScreen:
+    header: Set Date/Time
   DefaultItinerary:
     clickDetails: Click to view details
     # Use ordered placeholders when multiple modes are involved
@@ -89,9 +175,11 @@ components:
   DeleteUser:
     deleteMyAccount: Delete my account
   EnhancedStopMarker:
+    planATrip: "Plan a trip:"
     stopID: "Stop ID:"
     stopViewer: Stop Viewer
-    planATrip: "Plan a trip:"
+  ErrorMessage:
+    header: Could Not Plan Trip
   ExistingAccountDisplay:
     mainTitle: My settings
     notifications: Notifications
@@ -102,10 +190,10 @@ components:
     # deleteThisPlace and editThisPlace are aria/tooltip texts.
     deleteThisPlace: Delete this place
     editThisPlace: Edit this place
-    setAddressForPlaceType: Set your {placeType} address
+    setAddressForPlaceType: "Set your {placeType} address"
   FavoritePlaceScreen:
     addNewPlace: Add new place
-    editPlace: Edit {placeName}
+    editPlace: "Edit {placeName}"
     editPlaceGeneric: Edit place
     invalidAddress: Please set a location for this place.
     invalidName: Please enter a name for this place.
@@ -116,23 +204,29 @@ components:
     description: "Add the places you frequent often to save time planning trips:"
   FormNavigationButtons:
     ariaLabel: Form navigation
-    # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} min"
-    # TODO: Distinguish between one hour (singular) and 2 hours or more?
-    tripDurationFormat: "{hours, number} hr {minutes, number} min"
   ItinerarySummary:
     fareCost: >
-      {useMaxFare, select, 
+      {useMaxFare, select,
         true {{minTotalFare} - {maxTotalFare}}
         other {{minTotalFare}}
       }
   LiveStopTimes:
-    routeToHeadsign: "To {headsign}"
+    autoRefresh: Auto-refresh arrivals?
+  LocationSearch:
+    enterLocation: Enter location
+    setDestination: Set Destination
+    setOrigin: Set Origin
+  MainMobile:
+    invalidScreen: Invalid mobile screen
+  MobileOptions:
+    header: Set Search Options
+  ModeDropdown:
+    exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
     numIssues: >
-      {issueNum, number} {issueNum, plural, 
-          one {issue}
-          other {issues}
+      {issueNum, number} {issueNum, plural,
+        one {issue}
+        other {issues}
       }
     # Note to translator: resultText is width-constrained
     # (about half pane width)
@@ -175,12 +269,24 @@ components:
     places: Add your locations
     terms: Create a new account
     verify: Verify your email address
+  NotFound:
+    description: The content you requested is not available.
+    header: Content not found
   NotificationPrefsPane:
     description: You can receive notifications about trips you frequently take.
     notificationChannelPrompt: How would you like to receive notifications?
     notificationEmailDetail: "Notification emails will be sent to:"
     noneSelect: Don't notify me
-
+  PatternRow:
+    collapseOrExpandDepartures: >
+      {expanded, select, 
+        true {Collapse}
+        other {Expand}
+      } all departures for Route {routeName}
+    departure: Departure
+    routeName: "<strong>{routeName}</strong> To {headsign}"
+    routeShort: "To {headsign}"
+    status: Status
   PhoneNumberEditor:
     changeNumber: Change number
     invalidCode: Please enter 6 digits for the validation code.
@@ -199,9 +305,14 @@ components:
       for a text message with a verification code, and enter the code below
       (code expires after 10 minutes).
     verify: Verify
+  Place:
+    enterAlert: > 
+      Enter origin/destination in the form (or set via map click) 
+      and click the resulting marker to set as {type} location.
+    viewStop: View Stop
   PlaceEditor:
     genericLocationPlaceholder: Search for location
-    locationPlaceholder: Search for {placeName} location
+    locationPlaceholder: "Search for {placeName} location"
     namePlaceholder: Set place name
   PlanFirstLastButtons:
     # Note to translator: these values are width-constrained.
@@ -209,7 +320,56 @@ components:
     last: Last
     next: Next
     previous: Previous
+  PlanTripButton:
+    planTrip: Plan Trip
+  PrintLayout:
+    itinerary: Itinerary
+    toggleMap: Toggle Map
   RealtimeAnnotation:
+    delaysNotShownInResults: Your trip results are currently being affected by service delays. These delays do not factor into travel times shown below.
+    delaysShownInResults: >
+      Your trip results have been adjusted based on real-time
+      information. Under normal conditions, this trip would take {normalDuration}
+      using the following routes: {routes}.
+    ignoreServiceDelays: Ignore service delays
+    serviceUpdate: Service update
+  RealtimeStatusLabel:
+    # Note to translator: In itinerary body, early or late is single-line
+    # and stacked above/below the delay in minutes depending on word order,
+    # e.g. "5 min\nlate".
+    # In the StopViewer, delay and status are shown in a single line.
+    # Width is constrained for all messages.
+    early: "{minutes} early"
+    late: "{minutes} late"
+    onTime: on time
+    scheduled: scheduled
+  RelatedPanel:
+    hideExtraStops: Hide extra stops
+    showExtraStops: "Show {count} extra stops"
+  RelatedStopsPanel:
+    relatedStops: Related Stops
+    viewDetails: View details
+    noArrivalFound: No arrival found
+  ResultsError:
+    backToSearch: Back to Search
+  ResultsHeader:
+    noTripFound: No Trip Found
+    tripsFound: "We Found {count} {count, plural, one {Option} other {Options}}"
+    waiting: Waiting...
+  ResultsScreen:
+    header: Option {index}
+  RouteDetails:
+    operatedBy: "Operated by {agencyName}"
+    moreDetails: "More Details"
+    stopsTo: "Towards"
+    selectADirection: "Select a direction..."
+  RouteRow:
+    operatorLogoAltText: "{operatorName} logo"
+  # Used in both desktop and mobile
+  RouteViewer:
+    agencyFilter: Agency Filter
+    allAgencies: All Agencies
+    allModes: All Modes # Note to translator: This text is width-constrained.
     applyServiceDelays: Apply service delays
     delaysNotShownInResults: >
       Your trip results are currently being affected by service delays.
@@ -218,31 +378,14 @@ components:
       Your trip results have been adjusted based on real-time
       information. Under normal conditions, this trip would take <strong>{normalDuration}</strong>
       using the following routes: {routes}.
-    ignoreServiceDelays: Ignore service delays
-    serviceUpdate: Service update
-  RelatedPanel:
-    hideExtraStops: Hide extra stops
-    showExtraStops: "Show {count} extra stops"
-  RelatedStopsPanel:
-    relatedStops: Related Stops
-    viewDetails: View details
-    noArrivalFound: No arrival found
-  RouteDetails:
-    operatedBy: "Operated by {agencyName}"
-    moreDetails: "More Details"
-    stopsTo: "Towards"
-    selectADirection: "Select a direction..."
-  RouteRow:
-    operatorLogoAltText: "{operatorName} logo"
-  RouteViewer:
-    agencyFilter: Agency Filter
-    allAgencies: All Agencies
-    allModes: All Modes # Note to translator: This text is width-constrained.
     details: " " # If the string is left blank, React-Intl renders the id
     findARoute: Find A Route
+    header: Route Viewer
+    ignoreServiceDelays: Ignore service delays
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
     noRouteUrl: No route URL provided.
+    serviceUpdate: Service update
     shortTitle: View Routes
     title: Route Viewer
   SavedTripEditor:
@@ -253,8 +396,6 @@ components:
     tripNotFoundDescription: Sorry, the requested trip was not found.
     tripNotifications: Trip notifications
   SavedTripList:
-    delete: Delete
-    edit: Edit
     myTrips: My trips
     noSavedTrips: You have no saved trips
     noSavedTripsInstructions: Perform a trip search from the map first.
@@ -272,14 +413,47 @@ components:
     saveTripText: Save trip
     signInText: Sign in to save trip
     signInTooltip: Please sign in to save trip.
+  SearchScreen:
+    header: Plan Your Trip
+  SettingsPreview:
+    defaultPreviewText: "Transit Options\n& Preferences"
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   StackedPaneDisplay:
     savePreferences: Save preferences
+  StopScheduleTable:
+    block: Block
+    departure: Departure
+    destination: To
+    route: Route
+  StopTimeCell:
+    imminentArrival: >
+      {isDue, select,
+        true {Due}
+        other {{formattedDuration}}
+      }
+  # Used in both desktop and mobile
+  StopViewer:
+    displayStopId: "<strong>Stop ID</strong>: {stopId}"
+    header: Stop Viewer
+    loadingText: Loading Stop...
+    noStopsFound: No stop times found for date.
+    planTrip: "Plan a trip:"
+    timezoneWarning: "Departure times are shown in <strong>{timezoneCode}</strong>."
+    viewTypeBtnText: >
+      {scheduleView, select,
+        true {View next arrivals}
+        other {View schedule}
+      }
   SubNav:
     myAccount: My account
     settings: Settings
     trips: Trips
+  SwitchButton:
+    defaultContent: Switch
+    switchLocations: Switch locations
+  TabbedFormPanel:
+    hideSettings: " Hide Settings"
   TabbedItineraries:
     optionNumber: "Option {optionNum, number}"
     # Note to translator: This text is width-constrained.
@@ -290,6 +464,9 @@ components:
         other {{minTotalFare}}
       }
   TermsOfUsePane:
+    confirmDeletionPrompt: >
+        Removing your consent to storage of historical trips will cause your trip history to be deleted. 
+        Are you sure you want to continue?
     mustAgreeToTerms: You must agree to the terms of service to continue.
     termsOfServiceStatement: >
       I confirm that I am at least 18 years old, and I have read and
@@ -297,17 +474,23 @@ components:
     termsOfStorageStatement: >
       Optional: I consent to the Trip Planner storing my historical planned trips in order to
       improve transit services in my area. <termsOfStorageLink>More info...</termsOfStorageLink>
-    confirmDeletionPrompt: >
-      Removing your consent to storage of historical trips will cause your trip history to be deleted. 
-      Are you sure you want to continue?
+  TransitLeg:
+    expandStops: >
+      {numStops, plural, 
+        =0 {non-stop}
+        other {{numStops} stops}
+      }
+    info: Information
+    moreInfo: "<alertLink>more info</alertLink>"
+    serviceOperator: Service operated by <operatorLink>{agencyName}</operatorLink>
   TransitVehicleOverlay:
     # keys designed to match API output
     incoming_at: "approaching {stop}"
     in_transit_to: "next stop {stop}"
-    vehicleName: "Vehicle {vehicleNumber}: "
     realtimeVehicleInfo: "<strong>{vehicleNameOrBlank}</strong>{relativeTime}"
     stopped_at: "doors open at {stop}"
     travelingAt: "traveling at {milesPerHour}"
+    vehicleName: "Vehicle {vehicleNumber}: "
   TripBasicsPane:
     checkingItineraryExistence: Checking itinerary existence for each day of the week...
     selectAtLeastOneDay: Please select at least one day to monitor.
@@ -334,6 +517,7 @@ components:
     notifyViaChannelWhen: "Notify me via {channel} when:"
     oneHour: 1 hour
     realtimeAlertFlagged: There is a realtime alert flagged on my journey
+    toggleAdvancedSettings: Toggle advanced settings
   TripStatus:
     alerts: "{alerts, plural, one {{alerts} alert!} other {{alerts} alerts!}}"
     deleteTrip: Delete Trip
@@ -387,21 +571,48 @@ components:
     notifications: "Notifications: <strong>{leadTimeInMinutes} min. before scheduled departure</strong>"
     notificationsDisabled: "Notifications: <strong>Disabled</strong>"
   TripTools:
-    # Note to translator: copyLink, linkCopied, print, reportIssue,
-    # and startOver are width-constrained.
+    # Note to translator: copyLink, linkCopied, print, reportIssue are width-constrained.
     copyLink: Copy Link
     # Text that replaces the copyLink button text after user clicks it.
     linkCopied: Copied
-    print: Print
     reportIssue: Report Issue
     reportEmailSubject: Reporting an Issue with OpenTripPlanner
     reportEmailTemplate: >
       ***INSTRUCTIONS TO USER***
       This feature allows you to email a report to site administrators for review.
       Please add any additional feedback for this trip under the 'Additional Comments'
-      section below and send using your regular email program.
+      section below and send using your regular email program."
+  # Used in both desktop and mobile
+  TripViewer:
+    accessible: Accessible
+    bicyclesAllowed: Allowed
+    header: Trip Viewer
+    routeHeader: "Route: <strong>{routeShortName}</strong> {routeLongName}"
+    viewStop: View
   UserAccountScreen:
     confirmDelete: Are you sure you would like to delete your user account? Once you do so, it cannot be recovered.
+  UserSettings:
+    confirmDeletion: You have recent searches and/or places stored. Disabling storage of recent places/searches will remove these items. Continue?
+    favoriteStops: Favorite stops
+    myPreferences: My preferences
+    noFavoriteStops: No favorite stops
+    recentPlaces: Recent places
+    recentSearches: Recent searches
+    rememberSearches: Remember recent searches/places?
+    storageDisclaimer: >
+      Any preferences, places, or settings you opt 
+      to save will be stored in the local storage of your browser. 
+      TriMet will not have access to knowledge about your home, work, 
+      or any other location. At any point you can opt to turn off 
+      remembering recent places/searches and clear your saved home/work locations and favorite stops.
+  UserTripSettings:
+    forgetOptions: Forget my options
+    rememberOptions: Remember trip options
+    restoreOptions: >
+      Restore {defaults, select,
+        true {my defaults}
+        other {defaults}
+      }
   VerifyEmailPane:
     emailIsVerified: My email is verified!
     instructions1: >
@@ -409,18 +620,17 @@ components:
       to verify your email address before finishing your account setup.
     instructions2: Once you're verified, click the button below to continue.
     resendVerification: Resend verification email
+  #Application mode switcher.
+  #Note to translator: This text is only used as a screen reader label. 
+  ViewSwitcher:
+    switcher: Switcher
+  WelcomeScreen:
+    prompt: Where do you want to go?
+
 
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
 common:
-  # OTP access modes
-  accessModes:
-    bike: Bike
-    bikeshare: Bikeshare
-    drive: Drive
-    micromobility: E-Scooter
-    micromobilityRent: Rental E-Scooter
-    walk: Walk
   daysOfWeek:
     monday: Monday
     tuesday: Tuesday
@@ -450,11 +660,15 @@ common:
   forms:
     back: Back
     cancel: Cancel
+    clear: Clear
     error: error!
     defaultValue: "{value} (default)"
+    delete: Delete
+    edit: Edit
     finish: Finish
     next: Next
     no: No
+    print: Print
     save: Save
     startOver: Start Over
     yes: Yes
@@ -463,35 +677,102 @@ common:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
     transfers: "{transfers, plural, =0 {} one {{transfers} transfer} other {{transfers} transfers}}"
+  
+  # Note to translator: the strings below are used in sentences such as:
+  # "No trip found for bike, walk, and transit."
+  # This set is based on OTP travel modes, in lower case, and accommodates the use
+  # of particles before/after each travel mode in some languages.
+  # In French, the above sentence could read:
+  # "Aucun trajet en vélo, à pied, et en transports publics n'a été trouvé."
+  # OTP access modes
+  modes:
+    bicycle: Bicycle
+    bike: Bike
+    bicycle_rent: Bikeshare
+    bus: Bus
+    # The original OTP mode id is CABLE_CAR. Lowercase makes it cable_car.
+    cable_car: Cable Car
+    car: Car
+    car_park: car park
+    drive: Drive
+    ferry: Ferry
+    funicular: Funicular
+    gondola: Gondola
+    micromobility: E-Scooter 
+    micromobility_rent: Rental E-Scooter
+    rail: Rail
+    rent: Rental options
+    subway: Subway
+    tram: Streetcar
+    transit: Transit
+    walk: Walk
+    walking: Walking
 
   notifications:
     email: email
     sms: SMS
 
-  # OTP transit modes
-  # Note that identifiers are OTP modes converted to lowercase.
-  otpTransitModes:
-    tram: Streetcar
-    subway: Subway
-    rail: Rail
-    bus: Bus
-    ferry: Ferry
-    # The original OTP mode id is CABLE_CAR. Lowercase makes it cable_car.
-    cable_car: Cable Car
-    gondola: Gondola
-    funicular: Funicular
   # Note to translator: Places names below are used in
   # contexts such as: "Edit home", "Set home address".
   places:
+    custom: custom
+    dining: dining
     home: home
     work: work # as in "work location"
+
+  routing: 
+    routeToHeadsign: "To {headsign}"
+
+  searchForms:
+    enterDestination: >
+      Enter destination or {mobile, select,
+        true {tap}
+        other {click}
+      } on map...
+    enterStartLocation: >
+      Enter start location or {mobile, select,
+        true {tap}
+        other {click}
+      } on map...
+
   time:
     # Use ordered placeholders for the departure-arrival string
     # (this will accommodate right-to-left languages by swapping the order in this string).
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
-    tripDurationFormat: >
-      {hours, plural, 
-          =0 {{minutes, number} min}
-          other {{hours, number} hr {minutes, number} min}}
+    # Replacing (sort of) moment.js fromNow() functionality. This is not a direct 1:1, since
+    # moment.js formats text to "a minute ago" once 44 seconds are reached, etc. This has 
+    # been simplified here.
+    fromNowUpdate: >
+      {days, plural,
+        =0 {{hours,plural,
+          =0 {{minutes, plural,
+            =0 {a few seconds ago}
+            =1 {one minute ago}
+            other {{minutes} minutes ago}
+          }}
+          =1 {an hour ago}
+          other {{hours} hours ago}
+        }}
+        other {{days} days ago}
+      }
     # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} min"
+    # TODO: Distinguish between one hour (singular) and 2 hours or more?
+    tripDurationFormat: >
+      {hours, plural, 
+        =0 {{minutes, number} min}
+        other {{hours, number} hr {minutes, number} min}
+      }
+
+util:
+  state:
+    errorPlanningTrip: An error occurred while planning a trip.
+    networkUnavailable: The {network} network is unavailable at this moment.
+    noTripFound: No trip found.
+    noTripFoundForMode: No trip found for {modes}.
+    noTripFoundReason: There may be no transit service within the maximum specified distance or at the specified time, or your start or end point might not be safely accessible.
+    noTripFoundWithReason: "{noTripFound} {reason}"
+    titleBarRouteId: "Route {routeId}"
+    titleBarStopId: "Stop {stopId}"
+    titleBarWithStatus: "{title} | {status}"
+    

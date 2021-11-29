@@ -336,6 +336,8 @@ itinerary:
 ### Strings can be set globally for all languages (e.g. for strings that are brands/nouns,
 ### e.g. TriMet's "TransitTracker") or by language.
 ### The nested structure should be the same as the language files under the i18n folder.
+### You can also customize OTP error messages for itinerary searches based on OTP HTTP codes.
+### A separate message can be set for each language or locale if necessary.
 # language:
 #   allLanguages
 #     common:
@@ -346,8 +348,6 @@ itinerary:
 #       accessModes:
 #         bikeshare: Blue Bike
 #     config:
-#       menuItems:
-#         demo-item: Demo Item
 #       flex:
 #         flex-service: Flex Service
 #         call-ahead: "Call to reserve: (555) 555-5555"
@@ -356,6 +356,15 @@ itinerary:
 #         gradationMap:
 #           0.0: 'Not Accessible'
 #           0.9: 'Mostly Accessible'
+#       menuItems:
+#         demo-item: Demo Item
+#     errorMessages:
+#       404:
+#         msg: Sorry, we couldn't find any transit or rideshare/carshare options at the time and/or location you chose. Please try again later, or change the settings of your trip.
+#         # OTP modes in a string to be extracted (Format: [MODE1], [MODE2] (space included))
+#         modes: "CAR_HAIL, CAR_RENT"
+#       480:
+#         msg: No available transit routes or rideshare/carshare service at origin.
 
 ### Localization section to provide language/locale settings
 #localization:

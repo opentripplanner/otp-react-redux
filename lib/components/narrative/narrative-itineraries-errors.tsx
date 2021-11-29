@@ -1,9 +1,10 @@
-import React from 'react'
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
+import { useIntl } from 'react-intl'
+import React from 'react'
 import styled from 'styled-components'
 
-import Icon from '../util/icon'
 import { getErrorMessage } from '../../util/state'
+import Icon from '../util/icon'
 
 const IssueContainer = styled.div`
   border-top: 1px solid grey;
@@ -24,7 +25,6 @@ const IssueContents = styled.div`
 `
 
 export default function NarrativeItinerariesErrors({
-  errorMessages,
   errors
 }: {
   // FIXME: what are these types
@@ -33,11 +33,10 @@ export default function NarrativeItinerariesErrors({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors: any
 }): JSX.Element {
+  const intl = useIntl()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return errors.map((error: { network: any }, idx: number) => {
-    let icon = (
-      <Icon className="text-warning" type="exclamation-triangle" withSpace />
-    )
+    let icon = <Icon className="text-warning" type="exclamation-triangle" />
     if (error.network) {
       const CompanyIcon = getCompanyIcon(error.network)
       // check if company icon exists to avoid rendering undefined
@@ -48,7 +47,7 @@ export default function NarrativeItinerariesErrors({
     return (
       <IssueContainer key={idx}>
         <IssueIconContainer>{icon}</IssueIconContainer>
-        <IssueContents>{getErrorMessage(error, errorMessages)}</IssueContents>
+        <IssueContents>{getErrorMessage(error, intl)}</IssueContents>
       </IssueContainer>
     )
   })
