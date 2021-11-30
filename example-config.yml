@@ -348,8 +348,6 @@ itinerary:
 #       accessModes:
 #         bikeshare: Blue Bike
 #     config:
-#       menuItems:
-#         demo-item: Demo Item
 #       flex:
 #         flex-service: Flex Service
 #         call-ahead: "Call to reserve: (555) 555-5555"

@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types'
+import React from 'react'
+// FIXME: This dependency is restricting typescripting of this file
 import {
   ClassicBus,
   ClassicGondola,
@@ -14,6 +17,8 @@ import {
  * - For ModeIcon: https://github.com/opentripplanner/otp-ui/blob/master/packages/icons/src/trimet-mode-icon.js
  * The example below shuffles some icons around from what you might normally
  * expect for demonstration purposes.
+ *
+ * These are *examples* of mode/leg icon customizations
  */
 
 const CustomTransitIcon = Ferry
@@ -21,6 +26,9 @@ const CustomRailIcon = ClassicGondola
 const CustomStreetcarIcon = StandardGondola
 const CustomBikeRentalIcon = ClassicBus
 
+/**
+ * This component renders a custom icon for a passed mode
+ */
 export const CustomModeIcon = ({ mode, ...props }) => {
   if (!mode) return null
   switch (mode.toLowerCase()) {
@@ -33,15 +41,24 @@ export const CustomModeIcon = ({ mode, ...props }) => {
       return <ClassicModeIcon mode={mode} {...props} />
   }
 }
+CustomModeIcon.propTypes = {
+  mode: PropTypes.string
+}
 
+/**
+ * This component renders a custom icon for a mode given a passed leg
+ */
 export const CustomLegIcon = ({ leg, ...props }) => {
-  if (
-    leg.routeLongName &&
-    leg.routeLongName.startsWith('MAX')
-  ) {
+  if (leg.routeLongName && leg.routeLongName.startsWith('MAX')) {
     return <CustomStreetcarIcon />
   } else if (leg.rentedBike) {
     return <CustomBikeRentalIcon />
   }
   return <LegIcon leg={leg} ModeIcon={CustomModeIcon} {...props} />
+}
+CustomLegIcon.propTypes = {
+  leg: PropTypes.shape({
+    rentedBike: PropTypes.bool,
+    routeLongName: PropTypes.string
+  })
 }

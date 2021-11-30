@@ -1,32 +1,51 @@
-import React, { Component, Fragment } from 'react'
+/* eslint-disable react/jsx-handler-names */
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
+import React, { Component, Fragment } from 'react'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { MenuItem } from 'react-bootstrap'
 import { withRouter } from 'react-router'
-import PropTypes from 'prop-types'
 import qs from 'qs'
 import SlidingPane from 'react-sliding-pane'
+import type { InjectedIntlProps } from 'react-intl'
+// No types available, old package
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import VelocityTransitionGroup from 'velocity-react/velocity-transition-group'
 
-import { isModuleEnabled, Modules } from '../../util/config'
-import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
+import { isModuleEnabled, Modules } from '../../util/config'
+import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import Icon from '../util/icon'
+
+type AppMenuProps = {
+  location: { search: string }
+  reactRouterConfig: { basename: string }
+  setMainPanelContent: (panel: number) => void
+}
+type AppMenuState = {
+  expandedSubmenus: Record<string, boolean>
+  isPaneOpen: boolean
+}
+type menuItem = {
+  children: menuItem[]
+  href: string
+  iconType: string
+  iconUrl: string
+  id: string
+  label: string
+  subMenuDivider: boolean
+}
 
 /**
  * Sidebar which appears to show user list of options and links
  */
-class AppMenu extends Component {
-  static propTypes = {
-    setMainPanelContent: PropTypes.func
-  }
-
-  state = {
-    expandedSubmenus: {},
-    isPaneOpen: false
-  }
-
+class AppMenu extends Component<
+  AppMenuProps & InjectedIntlProps,
+  AppMenuState
+> {
   _showRouteViewer = () => {
     this.props.setMainPanelContent(MainPanelContent.ROUTE_VIEWER)
     this._togglePane()
@@ -52,17 +71,21 @@ class AppMenu extends Component {
   }
 
   _togglePane = () => {
-    const { isPaneOpen } = this.state
+    const { isPaneOpen } = this.state ?? false
     this.setState({ isPaneOpen: !isPaneOpen })
   }
 
-  _toggleSubmenu = (id) => {
-    const { expandedSubmenus } = this.state
+  _toggleSubmenu = (id: string) => {
+    let { expandedSubmenus } = this.state
+    if (!expandedSubmenus) {
+      expandedSubmenus = {}
+    }
+
     const currentlyOpen = expandedSubmenus[id] || false
     this.setState({ expandedSubmenus: { [id]: !currentlyOpen } })
   }
 
-  _addExtraMenuItems = (menuItems) => {
+  _addExtraMenuItems = (menuItems: menuItem[]) => {
     return (
       menuItems &&
       menuItems.map((menuItem) => {
@@ -75,20 +98,21 @@ class AppMenu extends Component {
           label: configLabel,
           subMenuDivider
         } = menuItem
-        const { expandedSubmenus } = this.state
+        const { expandedSubmenus } = this.state ?? {}
         const { intl } = this.props
-        const isSubmenuExpanded = expandedSubmenus[id]
+        const isSubmenuExpanded = expandedSubmenus?.[id]
 
         const localizationId = `config.menuItems.${id}`
-        const localizedLabel = intl.formatMessage({id: localizationId})
+        const localizedLabel = intl.formatMessage({ id: localizationId })
         // Override the config label if a localized label exists
-        const label = localizedLabel === localizationId ? configLabel : localizedLabel
+        const label =
+          localizedLabel === localizationId ? configLabel : localizedLabel
 
         if (children) {
           return (
             <Fragment key={id}>
               <MenuItem
-                className='expansion-button-container menu-item expand-submenu-button'
+                className="expansion-button-container menu-item expand-submenu-button"
                 onSelect={() => this._toggleSubmenu(id)}
               >
                 <IconAndLabel
@@ -98,7 +122,7 @@ class AppMenu extends Component {
                 />
                 <span>
                   <Icon
-                    className='expand-menu-chevron'
+                    className="expand-menu-chevron"
                     type={`chevron-${isSubmenuExpanded ? 'up' : 'down'}`}
                   />
                 </span>
@@ -108,7 +132,7 @@ class AppMenu extends Component {
                 leave={{ animation: 'slideUp' }}
               >
                 {isSubmenuExpanded && (
-                  <div className='sub-menu-container'>
+                  <div className="sub-menu-container">
                     {this._addExtraMenuItems(children)}
                   </div>
                 )}
@@ -132,7 +156,7 @@ class AppMenu extends Component {
     )
   }
 
-  render () {
+  render() {
     const {
       callTakerEnabled,
       extraMenuItems,
@@ -144,7 +168,7 @@ class AppMenu extends Component {
       toggleMailables
     } = this.props
 
-    const { isPaneOpen } = this.state
+    const { isPaneOpen } = this.state || false
     return (
       <>
         <div
@@ -153,10 +177,10 @@ class AppMenu extends Component {
               ? intl.formatMessage({ id: 'components.AppMenu.closeMenu' })
               : intl.formatMessage({ id: 'components.AppMenu.openMenu' })
           }
-          className='app-menu-icon'
+          className="app-menu-icon"
           onClick={this._togglePane}
           onKeyDown={this._togglePane}
-          role='button'
+          role="button"
           tabIndex={0}
         >
           <span className={isPaneOpen ? 'menu-left-x' : 'menu-top-line'} />
@@ -164,48 +188,51 @@ class AppMenu extends Component {
           <span className={isPaneOpen ? 'menu-right-x' : 'menu-bottom-line'} />
         </div>
         <SlidingPane
-          from='left'
+          from="left"
           isOpen={isPaneOpen}
           onRequestClose={this._togglePane}
-          width='320px'
+          width="320px"
         >
-          <ul className='app-menu'>
+          <div className="app-menu">
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
-            <MenuItem className='app-menu-route-viewer-link' onClick={this._showRouteViewer}>
-              <Icon type='bus' />
-              <FormattedMessage id='components.RouteViewer.shortTitle' />
+            <MenuItem
+              className="app-menu-route-viewer-link"
+              onClick={this._showRouteViewer}
+            >
+              <Icon type="bus" />
+              <FormattedMessage id="components.RouteViewer.shortTitle" />
             </MenuItem>
-            <MenuItem className='menu-item' onClick={this._startOver}>
-              <Icon name='undo' />
-              <FormattedMessage id='common.forms.startOver' />
+            <MenuItem className="menu-item" onClick={this._startOver}>
+              <Icon type="undo" />
+              <FormattedMessage id="common.forms.startOver" />
             </MenuItem>
             {callTakerEnabled && (
               <MenuItem
-                className='menu-item'
+                className="menu-item"
                 onClick={resetAndToggleCallHistory}
               >
-                <Icon name='history' />
-                <FormattedMessage id='components.AppMenu.callHistory' />
+                <Icon type="history" />
+                <FormattedMessage id="components.AppMenu.callHistory" />
               </MenuItem>
             )}
             {fieldTripEnabled && (
               <MenuItem
-                className='menu-item'
+                className="menu-item"
                 onClick={resetAndToggleFieldTrips}
               >
-                <Icon name='graduation-cap' />
-                <FormattedMessage id='components.AppMenu.fieldTrip' />
+                <Icon type="graduation-cap" />
+                <FormattedMessage id="components.AppMenu.fieldTrip" />
               </MenuItem>
             )}
             {mailablesEnabled && (
-              <MenuItem className='menu-item' onClick={toggleMailables}>
-                <Icon name='envelope-o' />
-                <FormattedMessage id='components.AppMenu.mailables' />
+              <MenuItem className="menu-item" onClick={toggleMailables}>
+                <Icon type="envelope-o" />
+                <FormattedMessage id="components.AppMenu.mailables" />
               </MenuItem>
             )}
             {this._addExtraMenuItems(extraMenuItems)}
-          </ul>
+          </div>
         </SlidingPane>
       </>
     )
@@ -214,7 +241,9 @@ class AppMenu extends Component {
 
 // connect to the redux store
 
-const mapStateToProps = (state, ownProps) => {
+// FIXME: type otp config
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const mapStateToProps = (state: Record<string, any>) => {
   const { extraMenuItems } = state.otp.config
   return {
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
@@ -232,16 +261,21 @@ const mapDispatchToProps = {
 }
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(injectIntl(AppMenu))
+  connect(mapStateToProps, mapDispatchToProps)(injectIntl(AppMenu))
 )
 
 /**
  * Renders a label and icon either from url or font awesome type
  */
-const IconAndLabel = ({ iconType, iconUrl, label }) => {
+const IconAndLabel = ({
+  iconType,
+  iconUrl,
+  label
+}: {
+  iconType: string
+  iconUrl: string
+  label: string
+}): JSX.Element => {
   const intl = useIntl()
 
   return (
@@ -257,7 +291,7 @@ const IconAndLabel = ({ iconType, iconUrl, label }) => {
           src={iconUrl}
         />
       ) : (
-        <Icon name={iconType || 'external-link-square'} />
+        <Icon type={iconType || 'external-link-square'} />
       )}
       {label}
     </span>
