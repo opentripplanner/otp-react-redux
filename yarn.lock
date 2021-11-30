@@ -2621,16 +2621,14 @@
     lodash.isequal "^4.5.0"
     transitive-js "^0.13.7"
 
-"@opentripplanner/trip-details@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-1.6.0.tgz#0f67bfbd2d147ca4c1618cf99c7cb3251b530d39"
-  integrity sha512-7yBRDSAHed14FjIDpozf06aZYOfNSBntDVWBZn9RQzjXm9t9CIrqehIXLbQvipTGcmZT7LqndfzEVOkKb8sCqQ==
+"@opentripplanner/trip-details@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-2.0.0.tgz#ab168e4acbf168e31e9b6f36c83c9706db49f78b"
+  integrity sha512-njnwHr6nF1xmcnwh5tx1XVym6rCgIWSPadVy8LeOyZsHA5NlTeBHRVKwew0H+Dt5HuJtj/PjZpzArJMBZGMitg==
   dependencies:
     "@opentripplanner/core-utils" "^4.5.0"
-    "@opentripplanner/humanize-distance" "^1.1.0"
     "@styled-icons/fa-solid" "^10.34.0"
-    moment "^2.24.0"
-    prop-types "^15.7.2"
+    flat "^5.0.2"
     velocity-react "^1.4.3"
 
 "@opentripplanner/trip-form@^1.6.0":
