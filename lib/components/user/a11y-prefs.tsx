@@ -10,7 +10,11 @@ const A11yPrefs = ({
   handleBlur, // Formik prop
   handleChange, // Formik prop
   values: userData
-}) => {
+}: {
+  handleBlur: () => void
+  handleChange: () => void
+  values: { accessibilityRoutingByDefault: boolean }
+}): JSX.Element => {
   const { accessibilityRoutingByDefault } = userData
   return (
     <FormGroup>

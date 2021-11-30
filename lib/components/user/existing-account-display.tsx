@@ -13,7 +13,10 @@ import TermsOfUsePane from './terms-of-use-pane'
 /**
  * This component handles the existing account display.
  */
-const ExistingAccountDisplay = (props) => {
+const ExistingAccountDisplay = (props: {
+  onCancel: () => void
+  wheelchairEnabled: boolean
+}) => {
   // The props include Formik props that provide access to the current user data
   // and to its own blur/change/submit event handlers that automate the state.
   // We forward the props to each pane so that their individual controls
@@ -62,10 +65,15 @@ const ExistingAccountDisplay = (props) => {
     </div>
   )
 }
-const mapStateToProps = (state, ownProps) => {
+// TODO: state type
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const mapStateToProps = (state: any) => {
   const { accessModes } = state.otp.config?.modes
   const wheelchairEnabled =
-    accessModes && accessModes.some((mode) => mode.showWheelchairSetting)
+    accessModes &&
+    accessModes.some(
+      (mode: { showWheelchairSetting: boolean }) => mode.showWheelchairSetting
+    )
   return {
     wheelchairEnabled
   }
