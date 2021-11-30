@@ -1,7 +1,7 @@
-import React from 'react'
-import moment from 'moment-timezone'
 import { FormattedMessage } from 'react-intl'
+import moment from 'moment-timezone'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 /**
  * Formats the given duration according to the selected locale.

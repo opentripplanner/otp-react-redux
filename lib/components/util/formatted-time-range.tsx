@@ -1,6 +1,6 @@
-import React from 'react'
-import moment from 'moment-timezone'
 import { FormattedMessage } from 'react-intl'
+import moment from 'moment-timezone'
+import React from 'react'
 
 /**
  * Renders a time range e.g. 3:45pm-4:15pm according to the

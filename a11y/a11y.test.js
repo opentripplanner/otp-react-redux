@@ -1,8 +1,8 @@
 /* eslint-disable jest/expect-expect */
 /* We use a method to generate our assertions */
 
-import puppeteer from 'puppeteer'
 import execa from 'execa'
+import puppeteer from 'puppeteer'
 
 import { routes } from '../lib/components/app/responsive-webapp'
 

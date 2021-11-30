@@ -167,6 +167,7 @@ components:
     stopViewer: Info arrêt
   ErrorMessage:
     header: Impossible de planifier le trajet
+    warning: Attention
   ExistingAccountDisplay:
     mainTitle: Mes préférences
     notifications: Notifications
