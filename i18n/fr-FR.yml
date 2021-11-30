@@ -9,7 +9,7 @@ _name: Exemple de traduction pour OTP-react-redux en français !
 # - email => 'e-mail' or 'mail' is widely used in France, although courriel is more common in Canada.
 # - Instruction text is generally less cheerful in French than English (e.g. fewer uses of exclamation marks)
 #   and tends to rely on infinitive tense.
-# 
+#
 
 # Messages that are generated from actions
 actions:
