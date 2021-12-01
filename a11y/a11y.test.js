@@ -4,7 +4,7 @@
 import execa from 'execa'
 import puppeteer from 'puppeteer'
 
-import { routes } from '../lib/components/app/responsive-webapp'
+import routes from '../lib/util/webapp-routes'
 
 import { mockServer } from './mock-server'
 
