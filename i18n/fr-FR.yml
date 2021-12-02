@@ -62,6 +62,8 @@ actions:
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
 components:
+  A11yPrefs:
+    accessibilityRoutingByDefault: Privilégier par défaut les trajets accessibles
   AccessLeg:
     summary: "<strong>{mode}</strong> <durationSpan>{formattedDuration}</durationSpan> <distanceSpan>{distance}</distanceSpan>"
   AccountSetupFinishPane:
@@ -169,6 +171,7 @@ components:
     header: Impossible de planifier le trajet
     warning: Attention
   ExistingAccountDisplay:
+    a11y: Accessibilité
     mainTitle: Mes préférences
     notifications: Notifications
     places: Lieux favoris
@@ -267,7 +270,7 @@ components:
     noneSelect: Ne pas me notifier
   PatternRow:
     collapseOrExpandDepartures: >
-      {expanded, select, 
+      {expanded, select,
         true {Masquer}
         other {Étendre}
       } tous les départs pour la ligne {routeName}
@@ -293,8 +296,8 @@ components:
       Veuillez taper ce code ci-dessous (le code expire après 10 minutes).
     verify: Verifier
   Place:
-    enterAlert: > 
-      Entrez votre point de départ/destination dans le formulaire (ou cliquez sur la carte) 
+    enterAlert: >
+      Entrez votre point de départ/destination dans le formulaire (ou cliquez sur la carte)
       puis cliquez sur le marqueur qui apparaît pour définir le type d'emplacement ({type}).
     viewStop: Voir l'arrêt
   PlaceEditor:
@@ -444,14 +447,14 @@ components:
     # Note to translator: This text is width-constrained.
     mustCallAhead: Résa. obligatoire
     fareCost: >
-      {hasMaxFare, select, 
+      {hasMaxFare, select,
         true {À partir de {minTotalFare}}
         other {{minTotalFare}}
       }
   TermsOfUsePane:
     confirmDeletionPrompt: >
-        En révoquant votre accord sur l'enregistrement de vos recherches de trajets, tout l'historique de vos de trajets sera supprimé. 
-        Voulez-vous continuer ?
+      En révoquant votre accord sur l'enregistrement de vos recherches de trajets, tout l'historique de vos de trajets sera supprimé.
+      Voulez-vous continuer ?
     mustAgreeToTerms: Vous devez accepter les conditions d'utilisation avant de continuer.
     termsOfServiceStatement: >
       J'atteste avoir au moins 18 ans et j'ai lu et consens aux
@@ -461,7 +464,7 @@ components:
       afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>
   TransitLeg:
     expandStops: >
-      {numStops, plural, 
+      {numStops, plural,
         =0 {direct}
         other {{numStops} arrêts}
       }
@@ -585,9 +588,9 @@ components:
     recentSearches: Recherches récentes
     rememberSearches: Enregistrer les recherches/lieux récents ?
     storageDisclaimer: >
-      En activant cette option, tous vos lieux, préférences et paramètres 
-      seront enregistrés dans le cache de votre navigateur. 
-      TriMet n'aura pas accès aux données concernant votre domicile, lieu de travail, 
+      En activant cette option, tous vos lieux, préférences et paramètres
+      seront enregistrés dans le cache de votre navigateur.
+      TriMet n'aura pas accès aux données concernant votre domicile, lieu de travail,
       ou autre endroit. Vous pouvez à tout moment désactiver la collecte de vos
       recherches/lieux récents et effacer vos domicile, lieu de travail, et arrêts favoris.
   UserTripSettings:
@@ -599,7 +602,7 @@ components:
   VerifyEmailPane:
     emailIsVerified: Mon email est vérifié
     instructions1: >
-      Vous devriez recevoir un message par e-mail. Cliquez le lien dans le message 
+      Vous devriez recevoir un message par e-mail. Cliquez le lien dans le message
       pour verifier votre adresse e-mail. Vous pourrez ensuite finir de créer votre compte.
     instructions2: Une fois votre adresse vérifiée, cliquez sur le bouton ci-dessous pour continuer.
     resendVerification: Envoyer un nouveau message de vérification
@@ -730,7 +733,7 @@ common:
     # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} mn"
     tripDurationFormat: >
-      {hours, plural, 
+      {hours, plural,
         =0 {{minutes, number} mn}
         other {{hours, number} h {minutes, number} mn}
       }
@@ -746,4 +749,3 @@ util:
     titleBarRouteId: "Ligne {routeId}"
     titleBarStopId: "Arrêt {stopId}"
     titleBarWithStatus: "{title} | {status}"
-
