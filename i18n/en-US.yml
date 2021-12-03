@@ -69,11 +69,12 @@ actions:
     smsResendThrottled: A verification SMS was sent to the indicated phone number less than a minute ago. Please try again in a few moments.
     smsVerificationFailed: Your phone could not be verified. Perhaps the code you entered has expired. Please request a new code and try again.
 
-
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
 components:
-  AccessLeg: 
+  A11yPrefs:
+    accessibilityRoutingByDefault: Prefer accessible trips by default
+  AccessLeg:
     summary: "<strong>{mode}</strong> <durationSpan>{formattedDuration}</durationSpan> <distanceSpan>{distance}</distanceSpan>"
   AccountSetupFinishPane:
     message: You are ready to start planning your trips.
@@ -183,6 +184,7 @@ components:
     header: Could Not Plan Trip
     warning: Warning
   ExistingAccountDisplay:
+    a11y: Accessibility
     mainTitle: My settings
     notifications: Notifications
     places: Favorite places
@@ -308,7 +310,7 @@ components:
       (code expires after 10 minutes).
     verify: Verify
   Place:
-    enterAlert: > 
+    enterAlert: >
       Enter origin/destination in the form (or set via map click) 
       and click the resulting marker to set as {type} location.
     viewStop: View Stop
@@ -469,8 +471,8 @@ components:
       }
   TermsOfUsePane:
     confirmDeletionPrompt: >
-        Removing your consent to storage of historical trips will cause your trip history to be deleted. 
-        Are you sure you want to continue?
+      Removing your consent to storage of historical trips will cause your trip history to be deleted. 
+      Are you sure you want to continue?
     mustAgreeToTerms: You must agree to the terms of service to continue.
     termsOfServiceStatement: >
       I confirm that I am at least 18 years old, and I have read and
@@ -625,12 +627,11 @@ components:
     instructions2: Once you're verified, click the button below to continue.
     resendVerification: Resend verification email
   #Application mode switcher.
-  #Note to translator: This text is only used as a screen reader label. 
+  #Note to translator: This text is only used as a screen reader label.
   ViewSwitcher:
     switcher: Switcher
   WelcomeScreen:
     prompt: Where do you want to go?
-
 
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
@@ -686,7 +687,7 @@ common:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
     transfers: "{transfers, plural, =0 {} one {{transfers} transfer} other {{transfers} transfers}}"
-  
+
   # Note to translator: the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
   # This set is based on OTP travel modes, in lower case, and accommodates the use
@@ -707,7 +708,7 @@ common:
     ferry: Ferry
     funicular: Funicular
     gondola: Gondola
-    micromobility: E-Scooter 
+    micromobility: E-Scooter
     micromobility_rent: Rental E-Scooter
     rail: Rail
     rent: Rental options
@@ -729,7 +730,7 @@ common:
     home: home
     work: work # as in "work location"
 
-  routing: 
+  routing:
     routeToHeadsign: "To {headsign}"
 
   searchForms:
@@ -749,7 +750,7 @@ common:
     # (this will accommodate right-to-left languages by swapping the order in this string).
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     # Replacing (sort of) moment.js fromNow() functionality. This is not a direct 1:1, since
-    # moment.js formats text to "a minute ago" once 44 seconds are reached, etc. This has 
+    # moment.js formats text to "a minute ago" once 44 seconds are reached, etc. This has
     # been simplified here.
     fromNowUpdate: >
       {days, plural,
@@ -784,4 +785,3 @@ util:
     titleBarRouteId: "Route {routeId}"
     titleBarStopId: "Stop {stopId}"
     titleBarWithStatus: "{title} | {status}"
-    
