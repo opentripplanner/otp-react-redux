@@ -566,13 +566,13 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTCUz fbCMhp"
+                          className="sc-gsTEea iqivwV"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTCUz fbCMhp"
+                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -607,11 +607,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                 >
                   <styled__FromToPickerSpan>
                     <span
-                      className="styled__FromToPickerSpan-p56b41-1 aqwCm"
+                      className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
                     >
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -623,12 +623,12 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               title="From Location Icon"
                             >
                               <DotCircle
-                                className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                                className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                 size="0.9em"
                                 title="From Location Icon"
                               >
                                 <StyledIconBase
-                                  className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -641,7 +641,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   title="From Location Icon"
                                 >
                                   <ForwardRef
-                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="StyledIconBase-ea9ulj-0 iuNRof styled__FromIcon-n5xcvc-0 bnFcGf"
                                     iconAttrs={
                                       Object {
                                         "fill": "currentColor",
@@ -654,7 +654,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     title="From Location Icon"
                                   >
                                     <svg
-                                      className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof styled__FromIcon-n5xcvc-0 bnFcGf"
                                       fill="currentColor"
                                       focusable="false"
                                       height="0.9em"
@@ -682,7 +682,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dnvXjK"
+                              className="styled__Button-p56b41-2 dMNrPf"
                               onClick={[Function]}
                             >
                               From here
@@ -692,7 +692,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       </styled__LocationPickerSpan>
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -704,12 +704,12 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               title="To Location Icon"
                             >
                               <MapMarkerAlt
-                                className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                                className="styled__ToIcon-n5xcvc-2 bCTefk"
                                 size="0.9em"
                                 title="To Location Icon"
                               >
                                 <StyledIconBase
-                                  className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="styled__ToIcon-n5xcvc-2 bCTefk"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -722,7 +722,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   title="To Location Icon"
                                 >
                                   <ForwardRef
-                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="StyledIconBase-ea9ulj-0 iuNRof styled__ToIcon-n5xcvc-2 bCTefk"
                                     iconAttrs={
                                       Object {
                                         "fill": "currentColor",
@@ -735,7 +735,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     title="To Location Icon"
                                   >
                                     <svg
-                                      className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof styled__ToIcon-n5xcvc-2 bCTefk"
                                       fill="currentColor"
                                       focusable="false"
                                       height="0.9em"
@@ -763,7 +763,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dnvXjK"
+                              className="styled__Button-p56b41-2 dMNrPf"
                               onClick={[Function]}
                             >
                               To here
@@ -777,7 +777,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
               </div>
               <styled.div>
                 <div
-                  className="sc-crrsfI kPEpeL"
+                  className="sc-crrszt jgWhKL"
                 >
                   <LiveStopTimes
                     autoRefreshStopTimes={true}
@@ -1484,7 +1484,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnbm ftmMbw"
+                            className="sc-dlfnuX jzpRQX"
                           >
                             <input
                               checked={true}
@@ -1520,13 +1520,13 @@ exports[`components > viewers > stop viewer should render countdown times after 
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTCUz fbCMhp fa-spin"
+                              className="sc-gsTEea iqivwV fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTCUz fbCMhp fa-spin"
+                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -1720,7 +1720,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           expanded={false}
                           onToggleExpanded={[Function]}
                           title={
-                            <UNDEFINED
+                            <Memo(MemoizedFormattedMessage)
                               id="components.RelatedStopsPanel.relatedStops"
                             />
                           }
@@ -2340,7 +2340,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgILt eGHVOL"
+                                          className="sc-hKgJUU hryKBt"
                                         >
                                           P
                                         </div>
@@ -2739,13 +2739,13 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTCUz fbCMhp"
+                          className="sc-gsTEea iqivwV"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTCUz fbCMhp"
+                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -2780,11 +2780,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                 >
                   <styled__FromToPickerSpan>
                     <span
-                      className="styled__FromToPickerSpan-p56b41-1 aqwCm"
+                      className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
                     >
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -2796,12 +2796,12 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               title="From Location Icon"
                             >
                               <DotCircle
-                                className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                                className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                 size="0.9em"
                                 title="From Location Icon"
                               >
                                 <StyledIconBase
-                                  className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -2814,7 +2814,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   title="From Location Icon"
                                 >
                                   <ForwardRef
-                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="StyledIconBase-ea9ulj-0 iuNRof styled__FromIcon-n5xcvc-0 bnFcGf"
                                     iconAttrs={
                                       Object {
                                         "fill": "currentColor",
@@ -2827,7 +2827,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     title="From Location Icon"
                                   >
                                     <svg
-                                      className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof styled__FromIcon-n5xcvc-0 bnFcGf"
                                       fill="currentColor"
                                       focusable="false"
                                       height="0.9em"
@@ -2855,7 +2855,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dnvXjK"
+                              className="styled__Button-p56b41-2 dMNrPf"
                               onClick={[Function]}
                             >
                               From here
@@ -2865,7 +2865,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       </styled__LocationPickerSpan>
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -2877,12 +2877,12 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               title="To Location Icon"
                             >
                               <MapMarkerAlt
-                                className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                                className="styled__ToIcon-n5xcvc-2 bCTefk"
                                 size="0.9em"
                                 title="To Location Icon"
                               >
                                 <StyledIconBase
-                                  className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="styled__ToIcon-n5xcvc-2 bCTefk"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -2895,7 +2895,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   title="To Location Icon"
                                 >
                                   <ForwardRef
-                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="StyledIconBase-ea9ulj-0 iuNRof styled__ToIcon-n5xcvc-2 bCTefk"
                                     iconAttrs={
                                       Object {
                                         "fill": "currentColor",
@@ -2908,7 +2908,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     title="To Location Icon"
                                   >
                                     <svg
-                                      className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof styled__ToIcon-n5xcvc-2 bCTefk"
                                       fill="currentColor"
                                       focusable="false"
                                       height="0.9em"
@@ -2936,7 +2936,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dnvXjK"
+                              className="styled__Button-p56b41-2 dMNrPf"
                               onClick={[Function]}
                             >
                               To here
@@ -2950,7 +2950,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
               </div>
               <styled.div>
                 <div
-                  className="sc-crrsfI kPEpeL"
+                  className="sc-crrszt jgWhKL"
                 >
                   <LiveStopTimes
                     autoRefreshStopTimes={true}
@@ -3378,7 +3378,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnbm ftmMbw"
+                            className="sc-dlfnuX jzpRQX"
                           >
                             <input
                               checked={true}
@@ -3414,13 +3414,13 @@ exports[`components > viewers > stop viewer should render countdown times for st
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTCUz fbCMhp fa-spin"
+                              className="sc-gsTEea iqivwV fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTCUz fbCMhp fa-spin"
+                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -3515,7 +3515,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           expanded={false}
                           onToggleExpanded={[Function]}
                           title={
-                            <UNDEFINED
+                            <Memo(MemoizedFormattedMessage)
                               id="components.RelatedStopsPanel.relatedStops"
                             />
                           }
@@ -3838,7 +3838,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgILt eGHVOL"
+                                          className="sc-hKgJUU hryKBt"
                                         >
                                           P
                                         </div>
@@ -4435,13 +4435,13 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTCUz fbCMhp"
+                          className="sc-gsTEea iqivwV"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTCUz fbCMhp"
+                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -4476,11 +4476,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                 >
                   <styled__FromToPickerSpan>
                     <span
-                      className="styled__FromToPickerSpan-p56b41-1 aqwCm"
+                      className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
                     >
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -4492,12 +4492,12 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               title="From Location Icon"
                             >
                               <DotCircle
-                                className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                                className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                 size="0.9em"
                                 title="From Location Icon"
                               >
                                 <StyledIconBase
-                                  className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -4510,7 +4510,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   title="From Location Icon"
                                 >
                                   <ForwardRef
-                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="StyledIconBase-ea9ulj-0 iuNRof styled__FromIcon-n5xcvc-0 bnFcGf"
                                     iconAttrs={
                                       Object {
                                         "fill": "currentColor",
@@ -4523,7 +4523,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     title="From Location Icon"
                                   >
                                     <svg
-                                      className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof styled__FromIcon-n5xcvc-0 bnFcGf"
                                       fill="currentColor"
                                       focusable="false"
                                       height="0.9em"
@@ -4551,7 +4551,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dnvXjK"
+                              className="styled__Button-p56b41-2 dMNrPf"
                               onClick={[Function]}
                             >
                               From here
@@ -4561,7 +4561,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       </styled__LocationPickerSpan>
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -4573,12 +4573,12 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               title="To Location Icon"
                             >
                               <MapMarkerAlt
-                                className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                                className="styled__ToIcon-n5xcvc-2 bCTefk"
                                 size="0.9em"
                                 title="To Location Icon"
                               >
                                 <StyledIconBase
-                                  className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="styled__ToIcon-n5xcvc-2 bCTefk"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -4591,7 +4591,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   title="To Location Icon"
                                 >
                                   <ForwardRef
-                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="StyledIconBase-ea9ulj-0 iuNRof styled__ToIcon-n5xcvc-2 bCTefk"
                                     iconAttrs={
                                       Object {
                                         "fill": "currentColor",
@@ -4604,7 +4604,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     title="To Location Icon"
                                   >
                                     <svg
-                                      className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof styled__ToIcon-n5xcvc-2 bCTefk"
                                       fill="currentColor"
                                       focusable="false"
                                       height="0.9em"
@@ -4632,7 +4632,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dnvXjK"
+                              className="styled__Button-p56b41-2 dMNrPf"
                               onClick={[Function]}
                             >
                               To here
@@ -4646,7 +4646,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
               </div>
               <styled.div>
                 <div
-                  className="sc-crrsfI kPEpeL"
+                  className="sc-crrszt jgWhKL"
                 >
                   <LiveStopTimes
                     autoRefreshStopTimes={true}
@@ -5364,7 +5364,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnbm ftmMbw"
+                            className="sc-dlfnuX jzpRQX"
                           >
                             <input
                               checked={true}
@@ -5400,13 +5400,13 @@ exports[`components > viewers > stop viewer should render times after midnight w
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTCUz fbCMhp fa-spin"
+                              className="sc-gsTEea iqivwV fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTCUz fbCMhp fa-spin"
+                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -5600,7 +5600,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           expanded={false}
                           onToggleExpanded={[Function]}
                           title={
-                            <UNDEFINED
+                            <Memo(MemoizedFormattedMessage)
                               id="components.RelatedStopsPanel.relatedStops"
                             />
                           }
@@ -6220,7 +6220,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgILt eGHVOL"
+                                          className="sc-hKgJUU hryKBt"
                                         >
                                           P
                                         </div>
@@ -7333,13 +7333,13 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTCUz fbCMhp"
+                          className="sc-gsTEea iqivwV"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTCUz fbCMhp"
+                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -7374,11 +7374,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                 >
                   <styled__FromToPickerSpan>
                     <span
-                      className="styled__FromToPickerSpan-p56b41-1 aqwCm"
+                      className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
                     >
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -7390,12 +7390,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               title="From Location Icon"
                             >
                               <DotCircle
-                                className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                                className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                 size="0.9em"
                                 title="From Location Icon"
                               >
                                 <StyledIconBase
-                                  className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -7408,7 +7408,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   title="From Location Icon"
                                 >
                                   <ForwardRef
-                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="StyledIconBase-ea9ulj-0 iuNRof styled__FromIcon-n5xcvc-0 bnFcGf"
                                     iconAttrs={
                                       Object {
                                         "fill": "currentColor",
@@ -7421,7 +7421,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     title="From Location Icon"
                                   >
                                     <svg
-                                      className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof styled__FromIcon-n5xcvc-0 bnFcGf"
                                       fill="currentColor"
                                       focusable="false"
                                       height="0.9em"
@@ -7449,7 +7449,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dnvXjK"
+                              className="styled__Button-p56b41-2 dMNrPf"
                               onClick={[Function]}
                             >
                               From here
@@ -7459,7 +7459,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       </styled__LocationPickerSpan>
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -7471,12 +7471,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               title="To Location Icon"
                             >
                               <MapMarkerAlt
-                                className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                                className="styled__ToIcon-n5xcvc-2 bCTefk"
                                 size="0.9em"
                                 title="To Location Icon"
                               >
                                 <StyledIconBase
-                                  className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="styled__ToIcon-n5xcvc-2 bCTefk"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -7489,7 +7489,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   title="To Location Icon"
                                 >
                                   <ForwardRef
-                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="StyledIconBase-ea9ulj-0 iuNRof styled__ToIcon-n5xcvc-2 bCTefk"
                                     iconAttrs={
                                       Object {
                                         "fill": "currentColor",
@@ -7502,7 +7502,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     title="To Location Icon"
                                   >
                                     <svg
-                                      className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof styled__ToIcon-n5xcvc-2 bCTefk"
                                       fill="currentColor"
                                       focusable="false"
                                       height="0.9em"
@@ -7530,7 +7530,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dnvXjK"
+                              className="styled__Button-p56b41-2 dMNrPf"
                               onClick={[Function]}
                             >
                               To here
@@ -7544,7 +7544,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
               </div>
               <styled.div>
                 <div
-                  className="sc-crrsfI kPEpeL"
+                  className="sc-crrszt jgWhKL"
                 >
                   <LiveStopTimes
                     autoRefreshStopTimes={true}
@@ -9812,7 +9812,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnbm ftmMbw"
+                            className="sc-dlfnuX jzpRQX"
                           >
                             <input
                               checked={true}
@@ -9848,13 +9848,13 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTCUz fbCMhp fa-spin"
+                              className="sc-gsTEea iqivwV fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTCUz fbCMhp fa-spin"
+                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -10306,7 +10306,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           expanded={false}
                           onToggleExpanded={[Function]}
                           title={
-                            <UNDEFINED
+                            <Memo(MemoizedFormattedMessage)
                               id="components.RelatedStopsPanel.relatedStops"
                             />
                           }
@@ -11700,7 +11700,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgILt eGHVOL"
+                                          className="sc-hKgJUU hryKBt"
                                         >
                                           P
                                         </div>
@@ -12803,13 +12803,13 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTCUz fbCMhp"
+                          className="sc-gsTEea iqivwV"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTCUz fbCMhp"
+                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -12844,11 +12844,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                 >
                   <styled__FromToPickerSpan>
                     <span
-                      className="styled__FromToPickerSpan-p56b41-1 aqwCm"
+                      className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
                     >
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -12860,12 +12860,12 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               title="From Location Icon"
                             >
                               <DotCircle
-                                className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                                className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                 size="0.9em"
                                 title="From Location Icon"
                               >
                                 <StyledIconBase
-                                  className="styled__FromIcon-n5xcvc-0 fTLtLq"
+                                  className="styled__FromIcon-n5xcvc-0 bnFcGf"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -12878,7 +12878,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   title="From Location Icon"
                                 >
                                   <ForwardRef
-                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
+                                    className="StyledIconBase-ea9ulj-0 iuNRof styled__FromIcon-n5xcvc-0 bnFcGf"
                                     iconAttrs={
                                       Object {
                                         "fill": "currentColor",
@@ -12891,7 +12891,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     title="From Location Icon"
                                   >
                                     <svg
-                                      className="StyledIconBase-ea9ulj-0 cKCFNq styled__FromIcon-n5xcvc-0 fTLtLq"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof styled__FromIcon-n5xcvc-0 bnFcGf"
                                       fill="currentColor"
                                       focusable="false"
                                       height="0.9em"
@@ -12919,7 +12919,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dnvXjK"
+                              className="styled__Button-p56b41-2 dMNrPf"
                               onClick={[Function]}
                             >
                               From here
@@ -12929,7 +12929,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       </styled__LocationPickerSpan>
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 bujKZP"
+                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -12941,12 +12941,12 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               title="To Location Icon"
                             >
                               <MapMarkerAlt
-                                className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                                className="styled__ToIcon-n5xcvc-2 bCTefk"
                                 size="0.9em"
                                 title="To Location Icon"
                               >
                                 <StyledIconBase
-                                  className="styled__ToIcon-n5xcvc-2 jzAxgN"
+                                  className="styled__ToIcon-n5xcvc-2 bCTefk"
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -12959,7 +12959,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   title="To Location Icon"
                                 >
                                   <ForwardRef
-                                    className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
+                                    className="StyledIconBase-ea9ulj-0 iuNRof styled__ToIcon-n5xcvc-2 bCTefk"
                                     iconAttrs={
                                       Object {
                                         "fill": "currentColor",
@@ -12972,7 +12972,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     title="To Location Icon"
                                   >
                                     <svg
-                                      className="StyledIconBase-ea9ulj-0 cKCFNq styled__ToIcon-n5xcvc-2 jzAxgN"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof styled__ToIcon-n5xcvc-2 bCTefk"
                                       fill="currentColor"
                                       focusable="false"
                                       height="0.9em"
@@ -13000,7 +13000,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dnvXjK"
+                              className="styled__Button-p56b41-2 dMNrPf"
                               onClick={[Function]}
                             >
                               To here
@@ -13014,7 +13014,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
               </div>
               <styled.div>
                 <div
-                  className="sc-crrsfI kPEpeL"
+                  className="sc-crrszt jgWhKL"
                 >
                   <LiveStopTimes
                     autoRefreshStopTimes={true}
@@ -13985,7 +13985,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnbm ftmMbw"
+                            className="sc-dlfnuX jzpRQX"
                           >
                             <input
                               checked={true}
@@ -14021,13 +14021,13 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTCUz fbCMhp fa-spin"
+                              className="sc-gsTEea iqivwV fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTCUz fbCMhp fa-spin"
+                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -14474,7 +14474,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           expanded={false}
                           onToggleExpanded={[Function]}
                           title={
-                            <UNDEFINED
+                            <Memo(MemoizedFormattedMessage)
                               id="components.RelatedStopsPanel.relatedStops"
                             />
                           }
@@ -15853,7 +15853,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgILt eGHVOL"
+                                          className="sc-hKgJUU hryKBt"
                                         >
                                           P
                                         </div>
