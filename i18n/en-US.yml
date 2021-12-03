@@ -633,11 +633,12 @@ components:
 otpUi:
   TripDetails:
     calories: "Calories Burned: <strong>{calories, number, ::.}</strong>"
-    caloriesDescription: "Calories burned is based on
+    caloriesDescription: >
+      Calories burned is based on
       <strong>{walkMinutes, plural, one {# minute} other {# minutes}}</strong> spent walking and
       <strong>{bikeMinutes, plural, one {# minute} other {# minutes}}</strong> spent biking during this trip.
-      Adapted from <dietaryLink>Dietary Guidelines for Americans 2005, page 16, Table 4</dietaryLink>."
-    departure: "Depart <strong>{departureDate, date, long}</strong> at <strong>{departureDate, time, short}</strong>"
+      Adapted from <dietaryLink>Dietary Guidelines for Americans 2005, page 16, Table 4</dietaryLink>.
+    departure: Depart <strong>{departureDate, date, long}</strong> at <strong>{departureDate, time, short}</strong>
     flexDropOffMessage: >
       {hasLeadTime, select,
         true {To get off at your destination, you must call
@@ -655,9 +656,9 @@ otpUi:
         true { at least {leadDays, plural, one {# day} other {# days}} in advance}
         other {}
       }.
-    title: "Trip Details"
+    title: Trip Details
     tncFare: "{companies} Fare: <strong>{minTNCFare} - {maxTNCFare}</strong>"
-    transitFare: "Transit Fare"
+    transitFare: Transit Fare
     transitFareEntry: "{name}: <strong>{value}</strong>"
     tripIncludesFlex: This trip includes flexible routes.
 
