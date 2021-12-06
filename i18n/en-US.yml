@@ -630,6 +630,38 @@ components:
   WelcomeScreen:
     prompt: Where do you want to go?
 
+otpUi:
+  TripDetails:
+    calories: "Calories Burned: <strong>{calories, number, ::.}</strong>"
+    caloriesDescription: >
+      Calories burned is based on
+      <strong>{walkMinutes, plural, one {# minute} other {# minutes}}</strong> spent walking and
+      <strong>{bikeMinutes, plural, one {# minute} other {# minutes}}</strong> spent biking during this trip.
+      Adapted from <dietaryLink>Dietary Guidelines for Americans 2005, page 16, Table 4</dietaryLink>.
+    departure: Depart <strong>{departureDate, date, long}</strong> at <strong>{departureDate, time, short}</strong>
+    flexDropOffMessage: >
+      {hasLeadTime, select,
+        true {To get off at your destination, you must call
+          {hasPhone, select,
+            true {{phoneNumber}}
+            other {ahead}
+          } at least {leadDays, plural, one {# day} other {# days}} in advance}
+        other {You must tell the operator where you want to get off.}
+      }.
+    flexPickupMessage: >
+      To take this route, you must call {hasPhone, select,
+        true {{phoneNumber}}
+        other {ahead}
+      }{hasLeadTime, select,
+        true { at least {leadDays, plural, one {# day} other {# days}} in advance}
+        other {}
+      }.
+    title: Trip Details
+    tncFare: "{companies} Fare: <strong>{minTNCFare} - {maxTNCFare}</strong>"
+    transitFare: Transit Fare
+    transitFareEntry: "{name}: <strong>{value}</strong>"
+    tripIncludesFlex: This trip includes flexible routes.
+
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
 common:
