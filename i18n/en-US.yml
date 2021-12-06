@@ -100,14 +100,14 @@ components:
     bikesAvailable: >
       {count, plural,
         =0 {No bikes available}
-        one {{count} bike available}
-        other {{count} bikes available}
+        one {# bike available}
+        other {# bikes available}
       }
     bikesNearby: >
       {count, plural,
         =0 {no floating {company} bikes nearby}
-        one {{count} floating {company} bike nearby}
-        other {{count} floating {company} bikes nearby}
+        one {# floating {company} bike nearby}
+        other {# floating {company} bikes nearby}
       }
     nearbyAmenities: Nearby Amenities
     noNearbyBikes: No nearby bike rentals found.
@@ -116,14 +116,14 @@ components:
     scootersNearby: >
       {count, plural,
         =0 {No {company} E-Scooters nearby}
-        one {{count} {company} E-Scooter nearby}
-        other {{count} {company} E-Scooters nearby}
+        one {# {company} E-Scooter nearby}
+        other {# {company} E-Scooters nearby}
       }
     spacesAvailable: >
       {count, plural,
         =0 {No spaces available}
-        one {{count} space available}
-        other {{count} spaces available}
+        one {# space available}
+        other {# spaces available}
       }
   AppMenu:
     callHistory: Call History
@@ -256,8 +256,8 @@ components:
               one {itinerary}
               other {itineraries}} {issueNum, plural,
               =0 {found}
-              one {(and {issueNum, number} issue) found}
-              other {(and {issueNum,number} issues) found}
+              one {(and # issue) found}
+              other {(and # issues) found}
             }
           }
       }
@@ -484,7 +484,7 @@ components:
     expandStops: >
       {numStops, plural, 
         =0 {non-stop}
-        other {{numStops} stops}
+        other {# stops}
       }
     info: Information
     moreInfo: "<alertLink>more info</alertLink>"
@@ -525,7 +525,7 @@ components:
     realtimeAlertFlagged: There is a realtime alert flagged on my journey
     toggleAdvancedSettings: Toggle advanced settings
   TripStatus:
-    alerts: "{alerts, plural, one {{alerts} alert!} other {{alerts} alerts!}}"
+    alerts: "{alerts, plural, one {# alert!} other {# alerts!}}"
     deleteTrip: Delete Trip
     planNewTrip: Plan New Trip
   TripStatusRenderers:
@@ -686,7 +686,7 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
-    transfers: "{transfers, plural, =0 {} one {{transfers} transfer} other {{transfers} transfers}}"
+    transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
 
   # Note to translator: the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
@@ -758,12 +758,12 @@ common:
           =0 {{minutes, plural,
             =0 {a few seconds ago}
             =1 {one minute ago}
-            other {{minutes} minutes ago}
+            other {# minutes ago}
           }}
           =1 {an hour ago}
-          other {{hours} hours ago}
+          other {# hours ago}
         }}
-        other {{days} days ago}
+        other {# days ago}
       }
     # If trip is less than one hour only display the minutes.
     tripDurationFormatZeroHours: "{minutes, number} min"
@@ -771,7 +771,7 @@ common:
     tripDurationFormat: >
       {hours, plural, 
         =0 {{minutes, number} min}
-        other {{hours, number} hr {minutes, number} min}
+        other {# hr {minutes, number} min}
       }
 
 util:

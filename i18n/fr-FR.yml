@@ -90,14 +90,14 @@ components:
     bikesAvailable: >
       {count, plural,
         =0 {Aucun vélo disponible}
-        one {{count} vélo disponible}
-        other {{count} vélos disponibles}
+        one {# vélo disponible}
+        other {# vélos disponibles}
       }
     bikesNearby: >
       {count, plural,
         =0 {Aucun vélo partagé {company} à proximité}
-        one {{count} vélo partagé {company} à proximité}
-        other {{count} vélos partagés {company} à proximité}
+        one {# vélo partagé {company} à proximité}
+        other {# vélos partagés {company} à proximité}
       }
     nearbyAmenities: Services à proximité
     noNearbyBikes: Aucun vélo partagé à proximité.
@@ -106,14 +106,14 @@ components:
     scootersNearby: >
       {count, plural,
         =0 {Aucune trottinette {company} à proximité}
-        one {{count} trottinette {company} à proximité}
-        other {{count} trottinettes {company} à proximité}
+        one {# trottinette {company} à proximité}
+        other {# trottinettes {company} à proximité}
       }
     spacesAvailable: >
       {count, plural,
         =0 {Aucun emplacement disponible}
-        one {{count} emplacement disponible}
-        other {{count} emplacements disponibles}
+        one {# emplacement disponible}
+        other {# emplacements disponibles}
       }
   AppMenu:
     callHistory: Historique des appels
@@ -244,8 +244,8 @@ components:
             one {trajet}
             other {trajets}} {issueNum, plural,
             =0 {trouvé}
-            one {(et {issueNum, number} problème) trouvé}
-            other {(et {issueNum,number} problèmes) trouvés}
+            one {(et # problème) trouvé}
+            other {(et # problèmes) trouvés}
           }
         }
       }
@@ -469,7 +469,7 @@ components:
     expandStops: >
       {numStops, plural,
         =0 {direct}
-        other {{numStops} arrêts}
+        other {# arrêts}
       }
     info: Information
     moreInfo: "<alertLink>Plus d'infos</alertLink>"
@@ -510,7 +510,7 @@ components:
     realtimeAlertFlagged: Une alerte en temps réel affecte mon trajet
     toggleAdvancedSettings: Paramètres avancés
   TripStatus:
-    alerts: "{alerts, plural, =0 {{alerts} alerte !} one {{alerts} alerte !} other {{alerts} alertes !}}"
+    alerts: "{alerts, plural, =0 {# alerte !} one {# alerte !} other {# alertes !}}"
     deleteTrip: Supprimer le trajet
     planNewTrip: Planifier un nouveau trajet
   TripStatusRenderers:
@@ -664,7 +664,7 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} kcal" # SI unit
     noItineraryToDisplay: Aucun trajet à afficher.
-    transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
+    transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
 
   # Note to translator: some of the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
@@ -730,12 +730,12 @@ common:
           =0 {{minutes, plural,
             =0 {il y a quelques secondes}
             =1 {il y a une minute}
-            other {il y a {minutes} minutes}
+            other {il y a # minutes}
           }}
           =1 {il y a une heure}
-          other {il y a {hours} heures}
+          other {il y a # heures}
         }}
-        other {il y a {days} jours}
+        other {il y a # jours}
       }
 
     # If trip is less than one hour only display the minutes.
@@ -743,7 +743,7 @@ common:
     tripDurationFormat: >
       {hours, plural,
         =0 {{minutes, number} mn}
-        other {{hours, number} h {minutes, number} mn}
+        other {# h {minutes, number} mn}
       }
 
 util:
