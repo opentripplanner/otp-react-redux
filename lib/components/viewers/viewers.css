@@ -166,6 +166,10 @@
   padding: 1rem;
   margin-bottom: 1rem;
 }
+.otp .stop-viewer .stop-viewer-body .related-item:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
 
 .otp .stop-viewer .stop-viewer-body .related-item .item-label {
   display: flex;
@@ -289,6 +293,11 @@
 
 .otp .stop-viewer .trip-table .status-column {
   width: 80px;
+}
+
+.otp .stop-viewer .trip-table .header .time-column,
+.otp .stop-viewer .trip-table .header .status-column {
+  text-transform: uppercase;
 }
 
 .otp .stop-viewer .trip-table .status-label {
