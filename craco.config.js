@@ -20,10 +20,10 @@ module.exports = {
   /**
    * Webpack can be passed a few environment variables to override the default
    * files used to run this project. The environment variables are CUSTOM_CSS,
-   * HTML_FILE, YAML_CONFIG, and JS_CONFIG. They must each be passed in the
-   * format --env.*=/path/to/file. For example:
+   * HTML_FILE, YAML_CONFIG, and JS_CONFIG. They must each be passed via env
+   * variables *=/path/to/file. For example:
    *
-   *    yarn start --env.YAML_CONFIG=/absolute/path/to/config.yml
+   *    env YAML_CONFIG=/absolute/path/to/config.yml yarn start
    */
   webpack: {
     // eslint-disable-next-line complexity
