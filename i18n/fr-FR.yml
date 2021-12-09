@@ -154,7 +154,7 @@ components:
     arriveAt: "Arrivée {arriveTime, time, short}"
     departAt: "Départ {departTime, time, short}"
     editDepartOrArrival: Modifier l'heure de départ ou d'arrivée
-    lastWeek: "{formattedDayOfWeek} dernier" #translation needs review
+    dayLastWeek: "{formattedDayOfWeek} dernier"
     leaveNow: Tout de suite
     range: "{startTime, time, short} à {endTime, time, short}"
   DateTimeScreen:
@@ -434,7 +434,7 @@ components:
         true {Afficher les prochains passages}
         other {Afficher les horaires}
       }
-    zoomToStop: Zoomer sur l'arrêt # Translation needs review
+    zoomToStop: Zoomer sur l'arrêt
 
   SubNav:
     myAccount: Mon compte
@@ -616,9 +616,9 @@ components:
 
 common:
   dateExpressions:
-    today: Aujourd'hui #translation needs review
-    tomorrow: Demain #translation needs review
-    yesterday: Hier #translation needs review
+    today: Aujourd'hui
+    tomorrow: Demain
+    yesterday: Hier
 
   daysOfWeek:
     monday: lundi

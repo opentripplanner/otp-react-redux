@@ -164,7 +164,7 @@ components:
     arriveAt: "Arrive {arriveTime, time, short}"
     departAt: "Depart {departTime, time, short}"
     editDepartOrArrival: Edit departure or arrival time
-    lastWeek: "Last {formattedDayOfWeek}"
+    dayLastWeek: "Last {formattedDayOfWeek}"
     leaveNow: Leave now
     range: "{startTime, time, short} to {endTime, time, short}"
   DateTimeScreen:
