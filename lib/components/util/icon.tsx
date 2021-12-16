@@ -1,14 +1,21 @@
-import PropTypes from 'prop-types'
-import React from 'react'
 import FontAwesome from 'react-fontawesome'
+import React from 'react'
 import styled from 'styled-components'
+
+export type IconProps = {
+  className?: string
+  fixedWidth?: boolean
+  style?: Record<string, unknown>
+  type: string
+  withSpace?: boolean
+}
 
 /**
  * A Font Awesome icon followed by a with a pseudo-element equivalent to a single space.
  */
 const FontAwesomeWithSpace = styled(FontAwesome)`
   &::after {
-    content: "";
+    content: '';
     margin: 0 0.125em;
   }
 `
@@ -19,23 +26,14 @@ const FontAwesomeWithSpace = styled(FontAwesome)`
  * and that should work for both left-to-right and right-to-left layouts.
  * Other props from FontAwesome are passed to that component.
  */
-const Icon = ({ fixedWidth = true, type, withSpace, ...props }) => {
-  const FontComponent = withSpace
-    ? FontAwesomeWithSpace
-    : FontAwesome
-  return (
-    <FontComponent
-      fixedWidth={fixedWidth}
-      name={type}
-      {...props}
-    />
-  )
-}
-
-Icon.propTypes = {
-  fixedWidth: PropTypes.bool,
-  type: PropTypes.string.isRequired,
-  withSpace: PropTypes.bool
+const Icon = ({
+  fixedWidth = true,
+  type,
+  withSpace = false,
+  ...props
+}: IconProps): JSX.Element => {
+  const FontComponent = withSpace ? FontAwesomeWithSpace : FontAwesome
+  return <FontComponent fixedWidth={fixedWidth} name={type} {...props} />
 }
 
 export default Icon
