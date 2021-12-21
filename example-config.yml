@@ -405,3 +405,7 @@ dateTime:
 #   # departure and it is not entirely excluded from display
 #   # (defaults to 4 days/345600s if unspecified).
 #   timeRange: 345600
+# routeViewer:
+#   # Whether to render routes within flex zones of a route's patterns. If set to true,
+#   # routes will not be rendered within flex zones.
+#   clipRouteRenderToPatternStops: true
