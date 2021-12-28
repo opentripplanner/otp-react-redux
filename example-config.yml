@@ -408,4 +408,4 @@ dateTime:
 # routeViewer:
 #   # Whether to render routes within flex zones of a route's patterns. If set to true,
 #   # routes will not be rendered within flex zones.
-#   clipRouteRenderToPatternStops: true
+#   hideRouteShapesWithinFlexZones: true
