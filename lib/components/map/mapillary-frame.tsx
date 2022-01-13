@@ -42,6 +42,7 @@ const MapillaryFrame = ({
         title="Imagery of the street"
       />
       <Button
+        aria-label="Close"
         className="mapillary-close-button close-button clear-button-formatting"
         onClick={onClose}
       >
