@@ -634,6 +634,50 @@ components:
     prompt: Where do you want to go?
 
 otpUi:
+  DateTimeSelector:
+    arrive: Arrive by
+    depart: Depart at
+    now: Leave now
+  queryParameters:
+    bikeSpeed: Bicycle Speed
+    # 1 mile = 100 "centimiles"
+    # There are exceptions in English for 1/10 mile , 1/4 mile, 1/2 mile etc.
+    distanceInMiles: >
+      {centimiles, select, 
+        10 {1/10 mile}
+        25 {1/4 mile}
+        50 {1/2 mile}
+        75 {3/4 mile}
+        other {{miles, number, :: unit/mile unit-width-full-name}}
+      }
+    maxBikeDistance: Maximum Bike
+    maxBikeTime: Max Bike Time
+    maxEScooterDistance: Maximum E-scooter Distance
+    maxWalkDistance: Maximum Walk
+    maxWalkTime: Max Walk Time
+    optimizeBikeFlat: Flat Trip
+    optimizeBikeFriendly: Bike-Friendly Trip
+    optimizeBikeSpeed: Speed
+    optimizeFor: Optimize for
+    optimizeQuick: Speed
+    optimizeTransfers: Fewest Transfers
+    speedInMilesPerHour: "{mph} MPH" # Original units were all caps.
+    walkSpeed: Walk Speed
+    watts: E-scooter Power
+    watts125kidsHoverboard: Kid's hoverboard (6 mph)
+    watts1500powerfulEscooter: Powerful E-scooter (24 mph)
+    watts250entryLevelEscooter: Entry-level scooter (11 mph)
+    watts500robustEscooter: Robust E-scooter (18 mph)
+    # Note to translator: This text is width-constrained.
+    wheelchair: Prefer Wheelchair Accessible Routes
+  SettingsSelectorPanel:
+    bikeOnly: Bike Only
+    escooterOnly: E-scooter Only
+    takeTransit: Take Transit
+    travelPreferences: Travel Preferences
+    use: Use # as in "Use bus, train, subway".
+    useCompanies: Use companies # as in :"Use companies: Spin, Lime, Bolt"
+    walkOnly: Walk Only
   TripDetails:
     calories: "Calories Burned: <strong>{calories, number, ::.}</strong>"
     caloriesDescription: >
