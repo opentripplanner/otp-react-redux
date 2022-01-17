@@ -338,12 +338,16 @@ itinerary:
 ### The nested structure should be the same as the language files under the i18n folder.
 ### You can also customize OTP error messages for itinerary searches based on OTP HTTP codes.
 ### A separate message can be set for each language or locale if necessary.
+### All available languages should have an entry with at least a name identifier in this section so that
+### they may be rendered in the locale selector. 
+### Language display icons (flags) should be configured in config.js
 # language:
 #   allLanguages
 #     common:
 #       accessModes:
 #         bikeshare: Relay Bike
 #   en-US:
+#     name: English (US)
 #     common:
 #       accessModes:
 #         bikeshare: Blue Bike
@@ -365,6 +369,37 @@ itinerary:
 #         modes: "CAR_HAIL, CAR_RENT"
 #       480:
 #         msg: No available transit routes or rideshare/carshare service at origin.
+  # fr-FR:
+  #   name: French (France)
+  #   flag: 🇫🇷
+  #   config:
+  #     # App (hamburger) menu items
+  #     menuItems:
+  #       car-pool: Covoiturage
+  #       give-us-feedback: Donnez votre avis
+  #       log-my-commute: Mes trajets verts
+  #       traveler-tools: Outils du voyageur
+
+  # ko-KR:
+  #   name: 한국인
+
+  # vi-VN: 
+  #   name: Tiếng Việt
+
+  # zh-CN:
+  #   name: 中国人
+
+  # es-ES: 
+  #   name: Español
+
+  # ko-KR:
+  #   name: 한국인
+
+  # vi-VN: 
+  #   name: Tiếng Việt
+
+  # zh-CN:
+  #   name: 中国人
 
 ### Localization section to provide language/locale settings
 #localization:

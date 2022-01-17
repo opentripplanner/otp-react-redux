@@ -1,0 +1,25 @@
+_id: es-ES
+_name: Spanish
+
+# This file contains localized strings (a.k.a. messages) for the language indicated above:
+#   - Messages are organized in various categories and sub-categories.
+#   - A component or JS module can use messages from one or more categories.
+#   - In the code, messages are retrieved using an ID that is simply the path to the message.
+#     Use the dot '.' to separate categories and sub-categories in the path.
+#     For instance, for the message defined in YML below:
+#         common
+#           modes
+#             subway: Metro#
+#     then use the snippet below with the corresponding message id:
+#         <FormattedMessage id='common.modes.subway' /> // renders "Metro".
+#
+# It is important that message ids in the code be consistent with
+# the categories in this file. Below are some general guidelines:
+#   - For starters, there are an 'actions', 'components' and 'common'
+#     categories. Additional categories may be added as needed.
+#   - Each sub-category under 'components' denotes a component and
+#     should contain messages that are used only by that component (e.g. button captions).
+#   - In contrast, some strings are common to multiple components,
+#     so it makes sense to group them by theme (e.g. accessModes) under the 'common' category.
+
+# Messages that are generated from actions
