@@ -4,7 +4,7 @@ import React from 'react'
 
 import { accountLinks, getAuth0Config } from '../../util/auth'
 import { DEFAULT_APP_TITLE } from '../../util/constants'
-import NavLoginButtonAuth0 from '../user/nav-login-button-auth0.js'
+import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
 
 import AppMenu from './app-menu'
 import LocaleSelector from './locale-selector'
@@ -22,9 +22,9 @@ import ViewSwitcher from './view-switcher'
  * TODO: merge with the mobile navigation bar.
  */
 export type otpConfigType = {
-  branding: string,
-  language?: Record<string, unknown>,
-  persistence: any,
+  branding: string
+  language?: Record<string, unknown>
+  persistence: any
   title: string
 }
 
