@@ -2446,10 +2446,28 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^4.5.0", "@opentripplanner/core-utils@^4.6.0":
+"@opentripplanner/core-utils@^4.5.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.6.0.tgz#f0f9924a2312b89a3f84d0a34c1a2d9f6c1ca615"
   integrity sha512-LQs8BrwqFXKHJOgRduKic9wEGqnNAcyrypTgKmx//Jzz6OmZyXNskrFNJwLR6HIgsps7isN/7hi3NuVFticgIA==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.1.2"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    date-fns "^2.23.0"
+    date-fns-tz "^1.1.4"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    moment "^2.24.0"
+    prop-types "^15.7.2"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@^4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.7.0.tgz#0a59f26344702e6a9b45f977c338c58d1773dc45"
+  integrity sha512-YqGbIG1vnZSaBsZO3ss0IZ16Tdx6Ze29iHOVO+kC3Plqu7HPv7/lhzA/3qCqlTLwNp+rkfsDlv06H/Gqr1mjHg==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.1.2"
@@ -2631,19 +2649,21 @@
     flat "^5.0.2"
     velocity-react "^1.4.3"
 
-"@opentripplanner/trip-form@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-1.6.0.tgz#d681b6dc34a9a682bd20dcc5f8a68a621d62cfb5"
-  integrity sha512-y7jR9HigmS3khepPwSKvJmYdStvBhR9q0QioGY0ErVH+PfW1aIo4V7ClVHo0TGH4vOFSJakRVyrVnOC+ENRQJw==
+"@opentripplanner/trip-form@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-1.10.0.tgz#d58b8cf4890c58dcdd1f219cb537dd4333d5cf55"
+  integrity sha512-skk6NLz33RTi8TYlXI1vhWqhDJNUlpFlyzKhqF7VwBShLqw4633DH7CvObv9ho95ULwH2tYX+uuSDxMqV1F0NQ==
   dependencies:
-    "@opentripplanner/core-utils" "^4.1.0"
-    "@opentripplanner/icons" "^1.2.0"
+    "@opentripplanner/core-utils" "^4.5.0"
+    "@opentripplanner/icons" "^1.2.1"
     "@styled-icons/bootstrap" "^10.34.0"
     "@styled-icons/boxicons-regular" "^10.38.0"
     "@styled-icons/fa-regular" "^10.34.0"
     "@styled-icons/fa-solid" "^10.34.0"
+    flat "^5.0.2"
     moment "^2.17.1"
     react-indiana-drag-scroll "^2.0.1"
+    react-inlinesvg "^2.3.0"
 
 "@opentripplanner/trip-viewer-overlay@^1.1.1":
   version "1.1.1"
@@ -8898,7 +8918,7 @@ execa@^5.0.0, execa@^5.1.1:
     signal-exit "^3.0.3"
     strip-final-newline "^2.0.0"
 
-exenv@^1.2.0:
+exenv@^1.2.0, exenv@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
   integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
@@ -16439,6 +16459,11 @@ react-fontawesome@^1.5.0:
   dependencies:
     prop-types "^15.5.6"
 
+react-from-dom@^0.6.0:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/react-from-dom/-/react-from-dom-0.6.1.tgz#6740f5a3d79e0c354703e5c096b8fdfe0db71b0f"
+  integrity sha512-7aAZx7LhRnmR51W5XtmTBYHGFl2n1AdEk1uoXLuzHa1OoGXrxOW/iwLcudvgp6BGX/l4Yh1rtMrIzvhlvbVddg==
+
 react-ga@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-3.3.0.tgz#c91f407198adcb3b49e2bc5c12b3fe460039b3ca"
@@ -16452,6 +16477,14 @@ react-indiana-drag-scroll@^2.0.1:
     classnames "^2.2.6"
     debounce "^1.2.0"
     easy-bem "^1.1.1"
+
+react-inlinesvg@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-inlinesvg/-/react-inlinesvg-2.3.0.tgz#62283c0ce7e9d11d8190ec3e89589102288830fd"
+  integrity sha512-fEGOdDf4k4bcveArbEpj01pJcH8pOCKLxmSj2POFdGvEk5YK0NZVnH6BXpW/PzACHPRsuh1YKAhNZyFnD28oxg==
+  dependencies:
+    exenv "^1.2.2"
+    react-from-dom "^0.6.0"
 
 react-input-autosize@^3.0.0:
   version "3.0.0"

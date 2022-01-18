@@ -615,6 +615,41 @@ components:
     prompt: Où désirez-vous aller ?
 
 otpUi:
+  DateTimeSelector:
+    arrive: Arrivée
+    depart: Départ
+    now: Tout de suite
+  queryParameters:
+    bikeSpeed: Vitesse à vélo
+    distanceInMiles: "{miles, number, :: unit/mile unit-width-full-name}"
+    maxBikeDistance: Distance max. à vélo
+    maxBikeTime: Durée max. à vélo
+    maxEScooterDistance: Distance max. en trottinette
+    maxWalkDistance: Distance max. à pied
+    maxWalkTime: Durée max. à pied
+    optimizeBikeFlat: avec moins de reliefs
+    optimizeBikeFriendly: plus pratiques à vélo
+    optimizeBikeSpeed: plus rapides
+    optimizeFor: Privilégier les trajets
+    optimizeQuick: plus rapides
+    optimizeTransfers: avec moins de correspondances
+    speedInMilesPerHour: "{mph} mi/h"
+    walkSpeed: Vitesse à pied
+    watts: Puissance de la trottinette électrique
+    watts125kidsHoverboard: Hoverboard pour enfants (10 km/h)
+    watts1500powerfulEscooter: Trottinette puissante (40 km/h)
+    watts250entryLevelEscooter: Trottinette de base (18 km/h)
+    watts500robustEscooter: Trottinette robuste (30 km/h)
+    # Note to translator: This text is width-constrained.
+    wheelchair: Trajets accessibles en fauteuil roulant
+  SettingsSelectorPanel:
+    bikeOnly: Vélo uniquement
+    escooterOnly: Trottinette uniquement
+    takeTransit: En transports
+    travelPreferences: Préférences de trajet
+    use: Utiliser # as in "Use bus, train, subway"
+    useCompanies: Prestataires # as in "Use companies: Spin, Lime, Bolt"
+    walkOnly: À pied uniquement
   TripDetails:
     calories: "Calories dépensées : <strong>{calories, number, ::.}</strong>"
     caloriesDescription: >
