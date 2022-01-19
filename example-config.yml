@@ -371,7 +371,6 @@ itinerary:
 #         msg: No available transit routes or rideshare/carshare service at origin.
   # fr-FR:
   #   name: French (France)
-  #   flag: 🇫🇷
   #   config:
   #     # App (hamburger) menu items
   #     menuItems:

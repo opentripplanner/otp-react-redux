@@ -21,11 +21,9 @@ import ViewSwitcher from './view-switcher'
  *
  * TODO: merge with the mobile navigation bar.
  */
+// Typscript TODO: otpConfig type
 export type otpConfigType = {
-  branding: string
-  language?: Record<string, unknown>
-  persistence: any
-  title: string
+  otpConfig: any
 }
 
 const DesktopNav = ({ otpConfig }: otpConfigType) => {
@@ -87,8 +85,8 @@ const DesktopNav = ({ otpConfig }: otpConfigType) => {
 }
 
 // connect to the redux store
-
-const mapStateToProps = (state) => {
+// Typescript TODO: state type
+const mapStateToProps = (state: any) => {
   return {
     otpConfig: state.otp.config
   }

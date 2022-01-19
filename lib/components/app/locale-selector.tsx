@@ -1,12 +1,27 @@
-import { connect } from 'react-redux'
+import { CN, ES, FR, KR, US, VN } from 'country-flag-icons/react/3x2'
+import { connect, ConnectedProps } from 'react-redux'
 import { MenuItem, NavDropdown } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
-import React from 'react'
+import React, { MouseEvent } from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
-import { FLAG_ICON_MAPPING } from '../../config'
+
+/**
+ * Renders flag icons for supported languages
+ * using emojis would be a simpler solution, but they are not available on Windows
+ * Exporting this in the config.js causes the a11y tests to fail. A better solution
+ * will need to be found if further customization is required.
+ */
+const FLAG_ICON_MAPPING: Record<string, React.ReactElement> = {
+  'en-US': <US style={{ width: 15 }} />,
+  'es-ES': <ES style={{ width: 15 }} />,
+  'fr-FR': <FR style={{ width: 15 }} />,
+  'ko-KR': <KR style={{ width: 15 }} />,
+  'vi-VN': <VN style={{ width: 15 }} />,
+  'zh-CN': <CN style={{ width: 15 }} />
+}
 
 const FlagContainer = styled.span`
   &::after {
@@ -14,15 +29,12 @@ const FlagContainer = styled.span`
   }
 `
 
-export type LocaleSelectorProps = {
-  // TODO configLanguageType
-  configLanguages: Record<string, unknown>
-  createOrUpdateUser: typeof userActions.createOrUpdateUser
-  currentLocale: string
-  locale: string
-  // TODO: add loggedInUserType
-  loggedInUser?: Record<string, unknown>
-  setLocale: typeof uiActions.setLocale
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+interface LocaleSelectorProps extends PropsFromRedux {
+  // Typescript TODO configLanguageType
+  configLanguages: Record<string, any>
+  style?: any
 }
 
 const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
@@ -35,7 +47,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
   } = props
   const intl = useIntl()
 
-  const handleLocaleSelection = (e, locale) => {
+  const handleLocaleSelection = (e: MouseEvent<Element>, locale: string) => {
     e.stopPropagation()
 
     window.localStorage.setItem('lang', locale)
@@ -52,12 +64,14 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
   }
 
   return (
-    <NavDropdown title={FLAG_ICON_MAPPING[currentLocale]}>
+    <NavDropdown id="locale-selector" title={FLAG_ICON_MAPPING[currentLocale]}>
       {Object.keys(configLanguages).map(
         (key) =>
           /* Key is locale code, e.g. 'en-US' */
           key !== currentLocale && (
-            <MenuItem onClick={(e) => handleLocaleSelection(e, key)}>
+            <MenuItem
+              onClick={(e: MouseEvent) => handleLocaleSelection(e, key)}
+            >
               <FlagContainer>{FLAG_ICON_MAPPING[key]}</FlagContainer>
               {configLanguages[key].name}
             </MenuItem>
@@ -67,7 +81,8 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
   )
 }
 
-const mapStateToProps = (state, ownProps) => {
+// Typescript TODO: create state types and type state, ownProps properly
+const mapStateToProps = (state: any, ownProps: Record<string, any>) => {
   return {
     locale: state.otp.ui.locale,
     loggedInUser: state.user.loggedInUser
@@ -79,4 +94,5 @@ const mapDispatchToProps = {
   setLocale: uiActions.setLocale
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LocaleSelector)
+const connector = connect(mapStateToProps, mapDispatchToProps)
+export default connector(LocaleSelector)
