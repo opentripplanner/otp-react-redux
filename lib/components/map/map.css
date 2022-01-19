@@ -69,6 +69,7 @@
   border-radius: 0 0 1em;
   display: block;
   left: 0;
+  max-width: 40px;
   padding: 0.5em;
   position: absolute;
   top: 0;
