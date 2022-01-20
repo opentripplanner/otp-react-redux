@@ -1,3 +1,5 @@
+// Typescript TODO: these types are a bit useless without types for config, query, and queryparam
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // import {DropdownSelector} from '@opentripplanner/trip-form'
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
@@ -9,7 +11,12 @@ import { setQueryParam } from '../../actions/form'
 import { StyledBatchPreferences } from './batch-styled'
 import UserTripSettings from './user-trip-settings'
 
-class BatchPreferences extends Component {
+class BatchPreferences extends Component<{
+  config: any
+  query: any
+  setQueryParam: (newQueryParam: any) => void
+  showUserSettings: boolean
+}> {
   static contextType = ComponentContext
 
   render() {
@@ -90,7 +97,9 @@ class BatchPreferences extends Component {
 
 // connect to redux store
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state: {
+  otp: { config: any; currentQuery: any }
+}) => {
   const { config, currentQuery } = state.otp
   return {
     config,
