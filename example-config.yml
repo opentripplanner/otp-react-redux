@@ -341,6 +341,11 @@ itinerary:
 ### All available languages should have an entry with at least a name identifier in this section so that
 ### they may be rendered in the locale selector. 
 ### Language display icons (flags) should be configured in config.js
+# LocalizationEnabled also provides a method to toggle the new localization functionality, which requires 
+# a config file of the format below. The previous language format (w/ strings defined in the first layer)
+# is not compatible with localization
+
+# localizationEnabled: true
 # language:
 #   allLanguages
 #     common:
