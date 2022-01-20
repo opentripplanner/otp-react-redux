@@ -345,7 +345,7 @@ itinerary:
 # a config file of the format below. The previous language format (w/ strings defined in the first layer)
 # is not compatible with localization
 
-# localizationEnabled: true
+# localizationOverrideEnabled: true
 # language:
 #   allLanguages
 #     common:
