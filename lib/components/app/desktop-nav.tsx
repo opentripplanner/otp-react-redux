@@ -28,7 +28,6 @@ export type otpConfigType = {
 
 const DesktopNav = ({ otpConfig }: otpConfigType) => {
   const { branding, persistence, title = DEFAULT_APP_TITLE } = otpConfig
-  const { localeSelectorEnabled } = otpConfig
   const { language: configLanguages } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
 
@@ -70,10 +69,15 @@ const DesktopNav = ({ otpConfig }: otpConfigType) => {
 
       <Navbar.Collapse>
         <Nav pullRight>
-          {/* Don't render locale selector if we have only one language defined */}
-          {localeSelectorEnabled &&
-            configLanguages &&
-            Object.keys(configLanguages).length > 1 && (
+          {configLanguages &&
+            // Avoid rendering the LocaleSelector for configs without languages
+            !Object.keys(configLanguages).find(
+              (key) => key !== 'allLanguages' && !configLanguages[key].name
+            ) &&
+            // Ensure that > 1 valid language is defined
+            Object.keys(configLanguages).filter(
+              (key) => key !== 'allLanguages' && configLanguages[key].name
+            ).length > 1 && (
               <LocaleSelector
                 configLanguages={configLanguages}
                 style={{ maxWidth: 60 }}

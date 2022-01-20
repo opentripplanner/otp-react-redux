@@ -66,14 +66,14 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
   return (
     <NavDropdown id="locale-selector" title={FLAG_ICON_MAPPING[currentLocale]}>
       {Object.keys(configLanguages).map(
-        (key) =>
-          /* Key is locale code, e.g. 'en-US' */
-          key !== currentLocale && (
+        (locale) =>
+          locale !== 'allLanguages' &&
+          locale !== currentLocale && (
             <MenuItem
-              onClick={(e: MouseEvent) => handleLocaleSelection(e, key)}
+              onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
             >
-              <FlagContainer>{FLAG_ICON_MAPPING[key]}</FlagContainer>
-              {configLanguages[key].name}
+              <FlagContainer>{FLAG_ICON_MAPPING[locale]}</FlagContainer>
+              {configLanguages[locale].name}
             </MenuItem>
           )
       )}
@@ -81,8 +81,8 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
   )
 }
 
-// Typescript TODO: create state types and type state, ownProps properly
-const mapStateToProps = (state: any, ownProps: Record<string, any>) => {
+// Typescript TODO: type state properly
+const mapStateToProps = (state: any) => {
   return {
     locale: state.otp.ui.locale,
     loggedInUser: state.user.loggedInUser
