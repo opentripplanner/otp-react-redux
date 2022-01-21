@@ -11,6 +11,22 @@ import { setQueryParam } from '../../actions/form'
 import { StyledBatchPreferences } from './batch-styled'
 import UserTripSettings from './user-trip-settings'
 
+// TODO: Central type source
+type Combination = {
+  mode: string
+  params?: { [key: string]: number | string }
+}
+
+export const replaceTransitMode =
+  (newQueryParamsMode: string) =>
+  (combination: Combination): Combination => {
+    // Split out walk so it's not duplicated
+    const newMode = (newQueryParamsMode || 'WALK,TRANSIT').split('WALK,')?.[1]
+    // Replace TRANSIT with the newly selected parameters
+    const mode = combination.mode.replace('TRANSIT', newMode)
+    return { ...combination, mode }
+  }
+
 class BatchPreferences extends Component<{
   config: any
   query: any
@@ -27,19 +43,14 @@ class BatchPreferences extends Component<{
    * Typescript TODO: combinations and queryParams need types
    */
   onQueryParamChange = (newQueryParams: any) => {
-    const { config, setQueryParam } = this.props
-    const combinations = config.modes.combinations.map(
-      (combination: {
-        mode: string
-        params?: { [key: string]: number | string }
-      }) => {
-        // Split out walk so it's not duplicated
-        const newMode = newQueryParams.mode.split('WALK,')[1]
-        // Replace TRANSIT with the newly selected parameters
-        const mode = combination.mode.replace('TRANSIT', newMode)
-        return { ...combination, mode }
-      }
-    )
+    const { config, query, setQueryParam } = this.props
+    const disabledModes = query.disabledModes || []
+    const combinations = config.modes.combinations
+      .filter((combination: Combination) => {
+        const modesInCombination = combination.mode.split(',')
+        return !modesInCombination.find((m) => disabledModes.includes(m))
+      })
+      .map(replaceTransitMode(newQueryParams.mode))
     setQueryParam({ ...newQueryParams, combinations })
   }
 
