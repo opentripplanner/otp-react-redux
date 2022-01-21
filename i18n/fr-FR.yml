@@ -424,6 +424,7 @@ components:
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<strong>Arrêt n°</strong>{stopId}"
+    flexStop: Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande. Une réservation préalable peut être exigée pour obtenir la desserte.
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
     noStopsFound: Aucun passage n'a été trouvé pour cette date.
