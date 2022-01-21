@@ -19,8 +19,32 @@ class BatchPreferences extends Component<{
 }> {
   static contextType = ComponentContext
 
+  /**
+   * When the queryParam changes, the mode is correctly updated but the
+   * active combinations are not. This method updates the currentQuery combinations
+   * and ensures that they all contain the correct modes
+   *
+   * Typescript TODO: combinations and queryParams need types
+   */
+  onQueryParamChange = (newQueryParams: any) => {
+    const { config, setQueryParam } = this.props
+    const combinations = config.modes.combinations.map(
+      (combination: {
+        mode: string
+        params?: { [key: string]: number | string }
+      }) => {
+        // Split out walk so it's not duplicated
+        const newMode = newQueryParams.mode.split('WALK,')[1]
+        // Replace TRANSIT with the newly selected parameters
+        const mode = combination.mode.replace('TRANSIT', newMode)
+        return { ...combination, mode }
+      }
+    )
+    setQueryParam({ ...newQueryParams, combinations })
+  }
+
   render() {
-    const { config, query, setQueryParam, showUserSettings } = this.props
+    const { config, query, showUserSettings } = this.props
     const { ModeIcon } = this.context
 
     return (
@@ -30,7 +54,7 @@ class BatchPreferences extends Component<{
 
           <StyledBatchPreferences
             ModeIcon={ModeIcon}
-            onQueryParamChange={setQueryParam}
+            onQueryParamChange={this.onQueryParamChange}
             queryParams={query}
             supportedCompanies={config.companies}
             supportedModes={config.modes}
