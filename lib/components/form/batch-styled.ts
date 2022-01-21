@@ -1,18 +1,18 @@
 import * as TripFormClasses from '@opentripplanner/trip-form/lib/styled'
 import { SettingsSelectorPanel } from '@opentripplanner/trip-form'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 
+import { commonInputCss, modeButtonButtonCss } from './styled'
 import DateTimePreview from './date-time-preview'
-import {commonInputCss, modeButtonButtonCss} from './styled'
 
 const SHADOW = 'inset 0px 0px 5px #c1c1c1'
 
 const activeCss = css`
   background: #e5e5e5;
   -webkit-box-shadow: ${SHADOW};
-     -moz-box-shadow: ${SHADOW};
-          box-shadow: ${SHADOW};
-   outline: none;
+  -moz-box-shadow: ${SHADOW};
+  box-shadow: ${SHADOW};
+  outline: none;
 `
 
 export const buttonCss = css`
@@ -40,18 +40,18 @@ export const StyledDateTimePreview = styled(DateTimePreview)`
   text-align: left;
   white-space: nowrap;
   width: 120px;
-  ${props => props.expanded ? activeCss : null}
+  ${(props) => (props.expanded ? activeCss : null)}
 `
-export const SettingsPreview = styled(Button)`
+export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
   line-height: 22px;
   margin-right: 5px;
   padding: 10px 0px;
   position: relative;
-  ${props => props.expanded ? activeCss : null}
+  ${(props) => (props.expanded ? activeCss : null)}
 `
 
 export const PlanTripButton = styled(Button)`
-  background-color: #F5F5A7;
+  background-color: #f5f5a7;
   margin-left: auto;
   padding: 5px;
   &:active {
@@ -122,14 +122,15 @@ export const StyledBatchPreferences = styled(SettingsSelectorPanel)`
 
       &:focus {
         border-color: #66afe9;
-        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+          0 0 8px rgba(102, 175, 233, 0.6);
         outline: 0;
       }
     }
     > div:last-child::after {
       box-sizing: border-box;
       color: #000;
-      content: "▼";
+      content: '▼';
       font-size: 67%;
       pointer-events: none;
       position: absolute;
@@ -176,7 +177,7 @@ export const StyledBatchPreferences = styled(SettingsSelectorPanel)`
       font-weight: 800;
       height: 46px;
       > svg {
-        margin: 0 0.20em;
+        margin: 0 0.2em;
       }
     }
   }

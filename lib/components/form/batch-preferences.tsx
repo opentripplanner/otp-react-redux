@@ -12,7 +12,7 @@ import { StyledBatchPreferences } from './batch-styled'
 import UserTripSettings from './user-trip-settings'
 
 // TODO: Central type source
-type Combination = {
+export type Combination = {
   mode: string
   params?: { [key: string]: number | string }
 }
