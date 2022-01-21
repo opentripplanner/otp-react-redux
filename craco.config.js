@@ -11,6 +11,17 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
 
+const findBackwardsCompatibleEnvVar = (varName) => {
+  let value = null
+  if (!process.env[varName]) {
+    value = process.argv.find((arg) => arg.includes(`--env.${varName}`))
+    if (value) {
+      value = value.split(`--env.${varName}=`)[1] || null
+    }
+  }
+  return value
+}
+
 module.exports = {
   plugins: [{ plugin: BabelRcPlugin }, { plugin: fastRefreshCracoPlugin }],
   // This is disabled as it creates a race condition which prevents load
@@ -20,14 +31,25 @@ module.exports = {
   /**
    * Webpack can be passed a few environment variables to override the default
    * files used to run this project. The environment variables are CUSTOM_CSS,
-   * HTML_FILE, YAML_CONFIG, and JS_CONFIG. They must each be passed in the
-   * format --env.*=/path/to/file. For example:
+   * HTML_FILE, YAML_CONFIG, and JS_CONFIG. For example:
    *
-   *    yarn start --env.YAML_CONFIG=/absolute/path/to/config.yml
+   *    env YAML_CONFIG=/absolute/path/to/config.yml yarn start
    */
   webpack: {
     // eslint-disable-next-line complexity
     configure: function (webpackConfig, { env, paths }) {
+      // First, check for env variables passed in the "old" way, and
+      // convert them to "proper" env variables
+      const backwardsCompatibleEnv = {}
+      backwardsCompatibleEnv.YAML_CONFIG =
+        findBackwardsCompatibleEnvVar('YAML_CONFIG')
+      backwardsCompatibleEnv.JS_CONFIG =
+        findBackwardsCompatibleEnvVar('JS_CONFIG')
+      backwardsCompatibleEnv.HTML_FILE =
+        findBackwardsCompatibleEnvVar('HTML_FILE')
+      backwardsCompatibleEnv.CUSTOM_CSS =
+        findBackwardsCompatibleEnvVar('CUSTOM_CSS')
+
       const DEV_ENV = env === 'development'
 
       // Config items to adjust behavior to match mastarm behavior
@@ -61,23 +83,30 @@ module.exports = {
 
       // Gather the CSS, HTML, YAML, and JS override files.
       const CUSTOM_CSS =
-        (process.env && process.env.CUSTOM_CSS) || '../example.css'
+        (process.env && process.env.CUSTOM_CSS) ||
+        backwardsCompatibleEnv.CUSTOM_CSS ||
+        '../example.css'
       const HTML_FILE =
-        (process.env && process.env.HTML_FILE) || 'lib/index.tpl.html'
+        (process.env && process.env.HTML_FILE) ||
+        backwardsCompatibleEnv.HTML_FILE ||
+        'lib/index.tpl.html'
       const YAML_CONFIG =
-        (process.env && process.env.YAML_CONFIG) || '../example-config.yml'
+        (process.env && process.env.YAML_CONFIG) ||
+        backwardsCompatibleEnv.YAML_CONFIG ||
+        '../example-config.yml'
       // resolve the custom js file. If it is present, copy the file to a
       // temporary folder within this project so that the file will be able to
       // use the node_modules from this project
       let customJsFile = './config.js'
-      if (process.env && process.env.JS_CONFIG) {
-        const splitPath = process.env.JS_CONFIG.split(path.sep)
+      const JS_CONFIG =
+        (process.env && process.env.JS_CONFIG) ||
+        backwardsCompatibleEnv.JS_CONFIG ||
+        null
+      if (JS_CONFIG) {
+        const splitPath = JS_CONFIG.split(path.sep)
         customJsFile = `../tmp/${splitPath[splitPath.length - 1]}`
         // copy location is relative to root, while js file for app is relative to lib
-        fs.copySync(
-          process.env.JS_CONFIG,
-          `./tmp/${splitPath[splitPath.length - 1]}`
-        )
+        fs.copySync(JS_CONFIG, `./tmp/${splitPath[splitPath.length - 1]}`)
       }
 
       // Support React hot-reloading

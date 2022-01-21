@@ -90,14 +90,14 @@ components:
     bikesAvailable: >
       {count, plural,
         =0 {Aucun vélo disponible}
-        one {{count} vélo disponible}
-        other {{count} vélos disponibles}
+        one {# vélo disponible}
+        other {# vélos disponibles}
       }
     bikesNearby: >
       {count, plural,
         =0 {Aucun vélo partagé {company} à proximité}
-        one {{count} vélo partagé {company} à proximité}
-        other {{count} vélos partagés {company} à proximité}
+        one {# vélo partagé {company} à proximité}
+        other {# vélos partagés {company} à proximité}
       }
     nearbyAmenities: Services à proximité
     noNearbyBikes: Aucun vélo partagé à proximité.
@@ -106,14 +106,14 @@ components:
     scootersNearby: >
       {count, plural,
         =0 {Aucune trottinette {company} à proximité}
-        one {{count} trottinette {company} à proximité}
-        other {{count} trottinettes {company} à proximité}
+        one {# trottinette {company} à proximité}
+        other {# trottinettes {company} à proximité}
       }
     spacesAvailable: >
       {count, plural,
         =0 {Aucun emplacement disponible}
-        one {{count} emplacement disponible}
-        other {{count} emplacements disponibles}
+        one {# emplacement disponible}
+        other {# emplacements disponibles}
       }
   AppMenu:
     callHistory: Historique des appels
@@ -154,6 +154,7 @@ components:
     arriveAt: "Arrivée {arriveTime, time, short}"
     departAt: "Départ {departTime, time, short}"
     editDepartOrArrival: Modifier l'heure de départ ou d'arrivée
+    dayLastWeek: "{formattedDayOfWeek} dernier"
     leaveNow: Tout de suite
     range: "{startTime, time, short} à {endTime, time, short}"
   DateTimeScreen:
@@ -243,8 +244,8 @@ components:
             one {trajet}
             other {trajets}} {issueNum, plural,
             =0 {trouvé}
-            one {(et {issueNum, number} problème) trouvé}
-            other {(et {issueNum,number} problèmes) trouvés}
+            one {(et # problème) trouvé}
+            other {(et # problèmes) trouvés}
           }
         }
       }
@@ -423,6 +424,7 @@ components:
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<strong>Arrêt n°</strong>{stopId}"
+    flexStop: Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande. Une réservation préalable peut être exigée pour obtenir la desserte.
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
     noStopsFound: Aucun passage n'a été trouvé pour cette date.
@@ -433,6 +435,8 @@ components:
         true {Afficher les prochains passages}
         other {Afficher les horaires}
       }
+    zoomToStop: Zoomer sur l'arrêt
+
   SubNav:
     myAccount: Mon compte
     settings: Préférences
@@ -466,7 +470,7 @@ components:
     expandStops: >
       {numStops, plural,
         =0 {direct}
-        other {{numStops} arrêts}
+        other {# arrêts}
       }
     info: Information
     moreInfo: "<alertLink>Plus d'infos</alertLink>"
@@ -507,7 +511,7 @@ components:
     realtimeAlertFlagged: Une alerte en temps réel affecte mon trajet
     toggleAdvancedSettings: Paramètres avancés
   TripStatus:
-    alerts: "{alerts, plural, =0 {{alerts} alerte !} one {{alerts} alerte !} other {{alerts} alertes !}}"
+    alerts: "{alerts, plural, =0 {# alerte !} one {# alerte !} other {# alertes !}}"
     deleteTrip: Supprimer le trajet
     planNewTrip: Planifier un nouveau trajet
   TripStatusRenderers:
@@ -611,7 +615,79 @@ components:
   WelcomeScreen:
     prompt: Où désirez-vous aller ?
 
+otpUi:
+  DateTimeSelector:
+    arrive: Arrivée
+    depart: Départ
+    now: Tout de suite
+  queryParameters:
+    bikeSpeed: Vitesse à vélo
+    distanceInMiles: "{miles, number, :: unit/mile unit-width-full-name}"
+    maxBikeDistance: Distance max. à vélo
+    maxBikeTime: Durée max. à vélo
+    maxEScooterDistance: Distance max. en trottinette
+    maxWalkDistance: Distance max. à pied
+    maxWalkTime: Durée max. à pied
+    optimizeBikeFlat: avec moins de reliefs
+    optimizeBikeFriendly: plus pratiques à vélo
+    optimizeBikeSpeed: plus rapides
+    optimizeFor: Privilégier les trajets
+    optimizeQuick: plus rapides
+    optimizeTransfers: avec moins de correspondances
+    speedInMilesPerHour: "{mph} mi/h"
+    walkSpeed: Vitesse à pied
+    watts: Puissance de la trottinette électrique
+    watts125kidsHoverboard: Hoverboard pour enfants (10 km/h)
+    watts1500powerfulEscooter: Trottinette puissante (40 km/h)
+    watts250entryLevelEscooter: Trottinette de base (18 km/h)
+    watts500robustEscooter: Trottinette robuste (30 km/h)
+    # Note to translator: This text is width-constrained.
+    wheelchair: Trajets accessibles en fauteuil roulant
+  SettingsSelectorPanel:
+    bikeOnly: Vélo uniquement
+    escooterOnly: Trottinette uniquement
+    takeTransit: En transports
+    travelPreferences: Préférences de trajet
+    use: Utiliser # as in "Use bus, train, subway"
+    useCompanies: Prestataires # as in "Use companies: Spin, Lime, Bolt"
+    walkOnly: À pied uniquement
+  TripDetails:
+    calories: "Calories dépensées : <strong>{calories, number, ::.}</strong>"
+    caloriesDescription: >
+      La dépense calorique est calculée sur la base de
+      {walkMinutes, plural, one {<strong># minute</strong> effectuée} other {<strong># minutes</strong> effectuées}} à pied et
+      {bikeMinutes, plural, one {<strong># minute</strong> effectuée} other {<strong># minutes</strong> effectuées}} en vélo sur ce trajet.
+      (d'après <dietaryLink>Dietary Guidelines for Americans 2005, page 16, Table 4</dietaryLink>)
+    departure: Départ le <strong>{departureDate, date, long}</strong> à <strong>{departureDate, time, short}</strong>
+    flexDropOffMessage: >
+      {hasLeadTime, select,
+        true {Pour descendre à votre destination, vous devez faire une réservation préalable
+          {hasPhone, select,
+            true {au {phoneNumber}}
+            other {}
+          } au moins {leadDays, plural, one {# jour} other {# jours}} à l'avance.}
+        other {Vous devez informer le conducteur de votre destination.}
+      }.
+    flexPickupMessage: >
+      Pour ce trajet, vous devez faire une réservation préalable {hasPhone, select,
+        true {au {phoneNumber}}
+        other {}
+      }{hasLeadTime, select,
+        true { au moins {leadDays, plural, one {# jour} other {# jours}} à l'avance}
+        other {}
+      }.
+    title: Détails du trajet
+    tncFare: "Tarif {companies} : <strong>{minTNCFare} - {maxTNCFare}</strong>"
+    transitFare: Tarif en transports
+    transitFareEntry: "{name} : <strong>{value}</strong>"
+    tripIncludesFlex: Ce trajet comprend un service à la demande (Flex).
+    
 common:
+  dateExpressions:
+    today: Aujourd'hui
+    tomorrow: Demain
+    yesterday: Hier
+
   daysOfWeek:
     monday: lundi
     tuesday: mardi
@@ -656,7 +732,7 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} kcal" # SI unit
     noItineraryToDisplay: Aucun trajet à afficher.
-    transfers: "{transfers, plural, =0 {} one {{transfers} correspondance} other {{transfers} correspondances}}"
+    transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
 
   # Note to translator: some of the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
@@ -722,12 +798,12 @@ common:
           =0 {{minutes, plural,
             =0 {il y a quelques secondes}
             =1 {il y a une minute}
-            other {il y a {minutes} minutes}
+            other {il y a # minutes}
           }}
           =1 {il y a une heure}
-          other {il y a {hours} heures}
+          other {il y a # heures}
         }}
-        other {il y a {days} jours}
+        other {il y a # jours}
       }
 
     # If trip is less than one hour only display the minutes.
@@ -735,7 +811,7 @@ common:
     tripDurationFormat: >
       {hours, plural,
         =0 {{minutes, number} mn}
-        other {{hours, number} h {minutes, number} mn}
+        other {# h {minutes, number} mn}
       }
 
 util:
