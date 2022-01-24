@@ -178,6 +178,9 @@
     "react-leaflet": "^2.6.1"
   },
   "jest": {
+    "moduleNameMapper": {
+      "i18n/(.*)\\.yml$": "<rootDir>__tests__/test-utils/mock-data/empty-yml.js"
+    },
     "transform": {
       "\\.[jt]sx?$": "babel-jest"
     },
