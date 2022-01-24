@@ -2,6 +2,13 @@ api:
   host: http://localhost
   path: /otp/routers/default
   port: 8001
+
+# Support OTP-2 in parallel for certain requests
+# api_v2:
+#  host: http://localhost
+#  path: /otp/routers/default
+#  port: 8002
+
 # Add suggested locations to be shown as options in the form view.
 # locations:
 #   - id: 'airport'
@@ -14,7 +21,6 @@ api:
 #     lat: 45.51010444232195
 #     lon: -122.71607145667079
 #     name: Oregon Zoo, Portland, OR
-
 
 ### Define the strategies for how to handle auto-planning of a new trip when
 ### different query parameters are changes in the form. The default config is
@@ -29,7 +35,6 @@ api:
 ### Note: the override values must be valid values within otp-ui's query-params.js
 # defaultQueryParams:
 #   maxWalkDistance: 3219 # 2 miles in meters
-
 
 ### The persistence setting is used to enable the storage of places (home, work),
 ### recent searches/places, user overrides, and favorite stops.
@@ -60,13 +65,37 @@ persistence:
 #    apiBaseUrl: https://otp-middleware.example.com
 #    apiKey: your-middleware-api-key
 
+### Adding additional menu items to the main menu items. Use the separator flag
+### to include a separator line if you have groups of menu items
+### If a Top level menu item contains submenu items (children) then use the 'children' flag.
+### Icon URL is preferable over iconType. If none are given then a 'bus' iconType is used.
+#App menu
+#extraMenuItems:
+#  - id: link-list
+#    label: List of Links
+#    iconType: 'train'
+#    iconUrl: ''
+#    children:
+#      - id: bus-website
+#        # Label will be overridden by localization file and can be omitted if a localized version is present
+#        # only one of iconType or iconUrl is needed
+#        iconType: 'bus'
+#        iconUrl: ''
+#        href: ''
+#        separator: 'true'
+#      - id: car-website
+#        label: Car Website
+#        iconType: 'car'
+#        iconUrl: ''
+#        href: ''
+
 map:
   initLat: 45.52
   initLon: -122.682
   baseLayers:
     - name: Streets
       url: //cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png
-      subdomains: 'abcd'
+      subdomains: "abcd"
       attribution: 'Map tiles: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
       maxZoom: 20
       hasRetinaSupport: true
@@ -123,6 +152,9 @@ geocoder:
   # This base URL is required as the libraries will default to using now-defunct
   # mapzen urls
   baseUrl: https://geocoder.example.com/pelias/v1
+  # This allows the location field dropdown headers to be colored based on Pelias layer
+  #resultsColors:
+  #  stops: "#007fae"
 
 # example config for an ArcGIS geocoder
 # (https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm)
@@ -148,6 +180,9 @@ modes:
   transitModes:
     - mode: BUS
       label: Bus
+      # A mode color can be added, used throughout the application,
+      # most notably in the enhanced stop viewer bubble
+      color: blue
     - mode: TRAM
       label: MAX & Streetcar
     - mode: RAIL
@@ -218,6 +253,13 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # If multiple fares are returned by OTP, assign names to the fare keys here
+  #fareKeyNameMap:
+  #  regular: "Transit Fare"
+  #  electronicRegular: "SmartCard Fare"
+  #  student: "Student Fare"
+  # One fare will always be shown by default
+  #defaultFareKey: electronicRegular
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
@@ -269,6 +311,15 @@ itinerary:
 #     defaultRouteTextColor: '000000'
 #     longNameSplitter: ' - '
 #     order: 2
+# Use this config to overwrite the accessibility score gradation
+# map that ships with otp-ui
+#accessibilityScore:
+#    gradationMap:
+#        0.0:
+#            color: "#ffb5b9"
+#            # The text can be overridden in the language section
+#            text: 'Not Accessible'
+#            icon: thumbs-down
 
 ### Use this config for the standard mode selector
 # modeGroups:
@@ -285,6 +336,8 @@ itinerary:
 ### Strings can be set globally for all languages (e.g. for strings that are brands/nouns,
 ### e.g. TriMet's "TransitTracker") or by language.
 ### The nested structure should be the same as the language files under the i18n folder.
+### You can also customize OTP error messages for itinerary searches based on OTP HTTP codes.
+### A separate message can be set for each language or locale if necessary.
 # language:
 #   allLanguages
 #     common:
@@ -294,6 +347,24 @@ itinerary:
 #     common:
 #       accessModes:
 #         bikeshare: Blue Bike
+#     config:
+#       flex:
+#         flex-service: Flex Service
+#         call-ahead: "Call to reserve: (555) 555-5555"
+#         continuous-dropoff: Communicate with operator about stop
+#       acessibilityScore:
+#         gradationMap:
+#           0.0: 'Not Accessible'
+#           0.9: 'Mostly Accessible'
+#       menuItems:
+#         demo-item: Demo Item
+#     errorMessages:
+#       404:
+#         msg: Sorry, we couldn't find any transit or rideshare/carshare options at the time and/or location you chose. Please try again later, or change the settings of your trip.
+#         # OTP modes in a string to be extracted (Format: [MODE1], [MODE2] (space included))
+#         modes: "CAR_HAIL, CAR_RENT"
+#       480:
+#         msg: No available transit routes or rideshare/carshare service at origin.
 
 ### Localization section to provide language/locale settings
 #localization:
@@ -301,7 +372,7 @@ itinerary:
 #  # In some components such as DefaultItinerary, we display a cost element
 #  # that falls back to $0.00 (or its equivalent in the configured ambient currency
 #  # and in the user-selected locale) if no fare or currency info is available.
-#  currency: 'USD' 
+#  currency: 'USD'
 #  defaultLocale: 'en-US'
 
 ### If using OTP Middleware, you can define the optional phone number options below.
@@ -317,8 +388,10 @@ itinerary:
 # Format the date time format for display.
 dateTime:
   longDateFormat: DD-MM-YYYY
-
 # stopViewer:
+#   # The radius (in meters) to use when searching for nearby stops and other
+#   # amenities (rental vehicles, park and rides) to show for the focused stop.
+#   nearbyRadius: 250
 #   # The max. number of departures to show for each trip pattern
 #   # in the stop viewer Next Arrivals mode
 #   # (defaults to 3 if unspecified).
@@ -332,3 +405,7 @@ dateTime:
 #   # departure and it is not entirely excluded from display
 #   # (defaults to 4 days/345600s if unspecified).
 #   timeRange: 345600
+# routeViewer:
+#   # Whether to render routes within flex zones of a route's patterns. If set to true,
+#   # routes will not be rendered within flex zones.
+#   hideRouteShapesWithinFlexZones: true

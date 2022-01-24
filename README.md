@@ -10,7 +10,7 @@ An example of an OTP-RR application is included in the repository. The example p
 
 To run, first clone the repo and install [yarn](https://yarnpkg.com/) if needed.
 
-Copy `example-config.yml` to `config.yml`. Update `config.yml` with the needed API keys, and optionally, the OTP endpoint and initial map origin. (The default values are for a test server for Portland, OR.).
+Update `example-config.yml` with the needed API keys, and optionally, the OTP endpoint and initial map origin. (The default values are for a test server for Portland, OR.).
 
 Install the dependencies and start a local instance using the following script:
 
@@ -18,20 +18,21 @@ Install the dependencies and start a local instance using the following script:
 yarn start
 ```
 
+Should you want to maintain multiple configuration files, OTP-RR can be made to use a custom config file by using environment variables. Other environment variables also exist. `CUSTOM_CSS` can be used to point to a css file to inject, and `JS_CONFIG` can be used to point to a `config.js` file to override the one shipped with OTP-RR.
+
+```bash
+env YAML_CONFIG=/absolute/path/to/config.yml yarn start
+```
+
 ## Deploying the UI
 
-1. Build the js/css bundle by running `yarn build`. The build will appear in the `dist/` directory).
-2. Modify the `index.html` to point to `dist/index.js` (instead of `example.js`).
-3. Upload the following files to wherever you're deploying the UI:
-  - `index.html` (modified to point to `dist/index.js`)
-  - `example.css`
-  - `dist/`
-    - `index.js`
-    - `index.js.map`
-    - `index.css`
-    - `index.css.map`
+Build the js/css bundle by running `yarn build`. The build will appear in the `dist/` directory).
 
-Note: only contents produced during build in the `dist/` directory are likely to change over time (the `index.html` and `example.css` files contain minimal code), so subsequent deployments will typically only need to replace the `dist/` contents.
+The same environment variables which affect the behavior of `yarn start` also affect `yarn build`. Running the following command builds OTP-RR with customized js and css:
+
+```bash
+env JS_CONFIG=my-custom-js.js CUSTOM_CSS=my-custom-css.css yarn build
+```
 
 ## Library Documentation
 

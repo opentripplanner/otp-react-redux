@@ -1,3 +1,5 @@
+const path = require('path')
+
 const express = require('express')
 
 const PLAN_REALTIME = require('./mocks/plan.json')
@@ -9,6 +11,9 @@ const STOP_VIEWER_STOP = require('./mocks/stopviewer/stop.json')
 const STOP_VIEWER_ROUTES = require('./mocks/stopviewer/routes.json')
 
 const app = express()
+
+app.get('*', express.static(path.join(__dirname, '../dist')))
+
 // Mock exactly the requests the test link will create requests to
 app.get('/otp/routers/default/plan', (req, res) => {
   res.send(PLAN_REALTIME)

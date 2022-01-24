@@ -1,11 +1,13 @@
 import { connectRouter, routerMiddleware } from 'connected-react-router'
-import Enzyme, {mount} from 'enzyme'
-import EnzymeReactAdapter from 'enzyme-adapter-react-16'
-import {mountToJson} from 'enzyme-to-json'
 import { createHashHistory } from 'history'
-import clone from 'lodash/cloneDeep'
+import { IntlProvider } from 'react-intl'
+import { mountToJson } from 'enzyme-to-json'
 import { Provider } from 'react-redux'
+import clone from 'lodash/cloneDeep'
 import configureStore from 'redux-mock-store'
+import Enzyme, { mount } from 'enzyme'
+import EnzymeReactAdapter from 'enzyme-adapter-react-16'
+import React from 'react'
 import thunk from 'redux-thunk'
 
 import { getInitialState } from '../../../lib/reducers/create-otp-reducer'
@@ -22,7 +24,7 @@ const storeMiddleWare = [
 /**
  * Get the initial stop of the redux reducer for otp-rr
  */
-export function getMockInitialState () {
+export function getMockInitialState() {
   const mockConfig = {
     initialQuery: {}
   }
@@ -39,16 +41,18 @@ export function getMockInitialState () {
  * This function is primarily used for taking snapshots of components and
  * containers in order to verify that they are rendering expected values.
  */
-export function mockWithProvider (
+export function mockWithProvider(
   ConnectedComponent,
   connectedComponentProps,
   storeState = getMockInitialState()
 ) {
   const store = configureStore(storeMiddleWare)(storeState)
   const wrapper = mount(
-    <Provider store={store}>
-      <ConnectedComponent {...connectedComponentProps} />
-    </Provider>
+    <IntlProvider defaultLocale="en-US" locale="en-US">
+      <Provider store={store}>
+        <ConnectedComponent {...connectedComponentProps} />
+      </Provider>
+    </IntlProvider>
   )
 
   return {
