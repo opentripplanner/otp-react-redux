@@ -2428,7 +2428,7 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/core-utils@^4.1.0", "@opentripplanner/core-utils@^4.2.0":
+"@opentripplanner/core-utils@^4.1.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.4.0.tgz#3eb8f9718d32ce50e3b79d975d682559c5a7b0bf"
   integrity sha512-qCd+NXa0PxwcN2DFR0HX1u/76RzQwHe2r0VGcaOS4GxvQ5HEL4zPyaT+lkxAyE6AFQAvNynyofhxlnMwbxtqEA==
@@ -2549,14 +2549,14 @@
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
-"@opentripplanner/location-field@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.8.0.tgz#a210c9b7fbddd7a503b1077bdfbcfdd3c1dca579"
-  integrity sha512-0CKWy9kV/odd0mpSSCPm+F/XinYkus5xUHXsBjKcN4Fc5y+uA9mR9pfXaL7ztNARbdQMWwtPhenzsO+qae8D/Q==
+"@opentripplanner/location-field@^1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.11.1.tgz#78ed05d1191f2aed3a7253841627ed39c2425575"
+  integrity sha512-zVBSp9K693UJZrU0yLUqGsZHIBGQv0Y9VTKPYzHtBOrLjV6rnbAClRFWzl75eVXL/OIP0uf79SagAinePRwfWA==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
-    "@opentripplanner/core-utils" "^4.2.0"
-    "@opentripplanner/geocoder" "^1.1.1"
+    "@opentripplanner/core-utils" "^4.5.0"
+    "@opentripplanner/geocoder" "^1.1.2"
     "@opentripplanner/humanize-distance" "^1.1.0"
     "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
