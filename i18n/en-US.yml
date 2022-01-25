@@ -602,10 +602,12 @@ components:
     confirmDeletion: You have recent searches and/or places stored. Disabling storage of recent places/searches will remove these items. Continue?
     favoriteStops: Favorite stops
     myPreferences: My preferences
+    mySavedPlaces: My saved places (<manageLink>manage</manageLink>)
     noFavoriteStops: No favorite stops
     recentPlaces: Recent places
     recentSearches: Recent searches
     rememberSearches: Remember recent searches/places?
+    stopId: "Stop ID: {stopId}"
     storageDisclaimer: >
       Any preferences, places, or settings you opt 
       to save will be stored in the local storage of your browser. 

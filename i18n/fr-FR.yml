@@ -587,10 +587,12 @@ components:
     confirmDeletion: Vous avez des recherches et/ou lieux récemment enregistrés qui vont être supprimés. Voulez-vous continuer ?
     favoriteStops: Arrêts favoris
     myPreferences: Mes préférences
+    mySavedPlaces: Mes lieux favoris (<manageLink>modifier</manageLink>)
     noFavoriteStops: Aucun arrêt favori
     recentPlaces: Lieux récents
     recentSearches: Recherches récentes
     rememberSearches: Enregistrer les recherches/lieux récents ?
+    stopId: "Arrêt n° {stopId}"
     storageDisclaimer: >
       En activant cette option, tous vos lieux, préférences et paramètres
       seront enregistrés dans le cache de votre navigateur.
