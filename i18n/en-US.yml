@@ -312,7 +312,7 @@ components:
     deleteThisPlace: Delete this place
     enterAlert: >
       Enter origin/destination in the form (or set via map click) 
-      and click the resulting marker to set as {type} location.
+      and click the resulting marker to set as {placeType} location.
     viewStop: View Stop
   PlaceEditor:
     genericLocationPlaceholder: Search for location
@@ -606,6 +606,7 @@ components:
     noFavoriteStops: No favorite stops
     recentPlaces: Recent places
     recentSearches: Recent searches
+    recentSearchSummary: "{mode} from {from} to {to}"
     rememberSearches: Remember recent searches/places?
     stopId: "Stop ID: {stopId}"
     storageDisclaimer: >

@@ -298,8 +298,8 @@ components:
     # deleteThisPlace is an aria/tooltip text.
     deleteThisPlace: Supprimer ce lieu
     enterAlert: >
-      Entrez votre point de départ/destination dans le formulaire (ou cliquez sur la carte)
-      puis cliquez sur le marqueur qui apparaît pour définir le type d'emplacement ({type}).
+      Entrez votre point de départ/destination dans le formulaire (ou cliquez sur la carte),
+      puis cliquez sur le marqueur qui apparaît afin de définir votre {placeType}.
     viewStop: Voir cet arrêt
   PlaceEditor:
     genericLocationPlaceholder: Adresse du lieu
@@ -591,6 +591,7 @@ components:
     noFavoriteStops: Aucun arrêt favori
     recentPlaces: Lieux récents
     recentSearches: Recherches récentes
+    recentSearchSummary: "{mode} de {from} à {to}"
     rememberSearches: Enregistrer les recherches/lieux récents ?
     stopId: "Arrêt n° {stopId}"
     storageDisclaimer: >
@@ -761,7 +762,7 @@ common:
     rent: Location de véhicules
     subway: Métro
     tram: Tram
-    transit: En transports publics
+    transit: En transports
     walk: À pied
     walking: Marche
 
