@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore otp-ui is not typed yet
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { useIntl } from 'react-intl'
 import React from 'react'

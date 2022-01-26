@@ -8,7 +8,8 @@ import { MenuItem } from 'react-bootstrap'
 import { withRouter } from 'react-router'
 import qs from 'qs'
 import SlidingPane from 'react-sliding-pane'
-import type { InjectedIntlProps } from 'react-intl'
+import type { RouteComponentProps } from 'react-router'
+import type { WrappedComponentProps } from 'react-intl'
 // No types available, old package
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -21,9 +22,16 @@ import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import Icon from '../util/icon'
 
 type AppMenuProps = {
+  callTakerEnabled?: boolean
+  extraMenuItems?: menuItem[]
+  fieldTripEnabled?: boolean
   location: { search: string }
+  mailablesEnabled?: boolean
   reactRouterConfig: { basename: string }
+  resetAndToggleCallHistory?: () => void
+  resetAndToggleFieldTrips?: () => void
   setMainPanelContent: (panel: number) => void
+  toggleMailables: () => void
 }
 type AppMenuState = {
   expandedSubmenus: Record<string, boolean>
@@ -43,7 +51,7 @@ type menuItem = {
  * Sidebar which appears to show user list of options and links
  */
 class AppMenu extends Component<
-  AppMenuProps & InjectedIntlProps,
+  AppMenuProps & WrappedComponentProps & RouteComponentProps,
   AppMenuState
 > {
   _showRouteViewer = () => {
@@ -85,7 +93,7 @@ class AppMenu extends Component<
     this.setState({ expandedSubmenus: { [id]: !currentlyOpen } })
   }
 
-  _addExtraMenuItems = (menuItems: menuItem[]) => {
+  _addExtraMenuItems = (menuItems?: menuItem[]) => {
     return (
       menuItems &&
       menuItems.map((menuItem) => {
@@ -260,8 +268,8 @@ const mapDispatchToProps = {
   toggleMailables: callTakerActions.toggleMailables
 }
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(injectIntl(AppMenu))
+export default injectIntl(
+  withRouter(connect(mapStateToProps, mapDispatchToProps)(AppMenu))
 )
 
 /**
