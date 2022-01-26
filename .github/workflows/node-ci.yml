@@ -30,8 +30,10 @@ jobs:
         # TODO: remove this once project is typescripted
       - name: Lint all code (ignoring errors)
         run: yarn lint-all || true
+      - name: Run type check
+        run: yarn typecheck
       - name: Run tests
-        run: yarn jest
+        run: yarn unit
       - name: Build example project
         run: yarn build
       - name: Run a11y tests
