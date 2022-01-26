@@ -25,6 +25,7 @@ const FLAG_ICON_MAPPING: Record<string, React.ReactElement> = {
 
 const FlagContainer = styled.span`
   &::after {
+    content: '';
     margin: 0 0.125em;
   }
 `
