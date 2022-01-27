@@ -112,7 +112,6 @@ Object {
       },
     },
   },
-  "useRealtime": true,
   "user": Object {
     "autoRefreshStopTimes": true,
     "defaults": Object {
