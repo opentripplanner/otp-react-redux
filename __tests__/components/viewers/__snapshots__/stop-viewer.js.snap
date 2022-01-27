@@ -1483,7 +1483,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           margin={0.25}
                         >
                           <span
-                            className="sc-gKseQn qNOdL"
+                            className="sc-dlfnuX jzpRQX"
                           >
                             <input
                               name="autoUpdate"
@@ -2338,7 +2338,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-iBPTik frYtny"
+                                          className="sc-hKgJUU hryKBt"
                                         >
                                           P
                                         </div>
@@ -3375,7 +3375,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           margin={0.25}
                         >
                           <span
-                            className="sc-gKseQn qNOdL"
+                            className="sc-dlfnuX jzpRQX"
                           >
                             <input
                               name="autoUpdate"
@@ -3834,7 +3834,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-iBPTik frYtny"
+                                          className="sc-hKgJUU hryKBt"
                                         >
                                           P
                                         </div>
@@ -5359,7 +5359,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           margin={0.25}
                         >
                           <span
-                            className="sc-gKseQn qNOdL"
+                            className="sc-dlfnuX jzpRQX"
                           >
                             <input
                               name="autoUpdate"
@@ -6214,7 +6214,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-iBPTik frYtny"
+                                          className="sc-hKgJUU hryKBt"
                                         >
                                           P
                                         </div>
@@ -9805,7 +9805,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           margin={0.25}
                         >
                           <span
-                            className="sc-gKseQn qNOdL"
+                            className="sc-dlfnuX jzpRQX"
                           >
                             <input
                               name="autoUpdate"
@@ -11692,7 +11692,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-iBPTik frYtny"
+                                          className="sc-hKgJUU hryKBt"
                                         >
                                           P
                                         </div>
@@ -13976,7 +13976,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           margin={0.25}
                         >
                           <span
-                            className="sc-gKseQn qNOdL"
+                            className="sc-dlfnuX jzpRQX"
                           >
                             <input
                               name="autoUpdate"
@@ -15843,7 +15843,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-iBPTik frYtny"
+                                          className="sc-hKgJUU hryKBt"
                                         >
                                           P
                                         </div>
