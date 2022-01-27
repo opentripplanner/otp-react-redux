@@ -25,6 +25,7 @@ const Container = styled.div<{ withBackground?: boolean }>`
 
 const TimeStruck = styled.div`
   text-decoration: line-through;
+  opacity: 0.4;
 `
 
 const TimeBlock = styled.div`
