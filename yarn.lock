@@ -2428,7 +2428,7 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/core-utils@^4.1.0", "@opentripplanner/core-utils@^4.2.0":
+"@opentripplanner/core-utils@^4.1.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.4.0.tgz#3eb8f9718d32ce50e3b79d975d682559c5a7b0bf"
   integrity sha512-qCd+NXa0PxwcN2DFR0HX1u/76RzQwHe2r0VGcaOS4GxvQ5HEL4zPyaT+lkxAyE6AFQAvNynyofhxlnMwbxtqEA==
@@ -2549,14 +2549,14 @@
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
-"@opentripplanner/location-field@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.8.0.tgz#a210c9b7fbddd7a503b1077bdfbcfdd3c1dca579"
-  integrity sha512-0CKWy9kV/odd0mpSSCPm+F/XinYkus5xUHXsBjKcN4Fc5y+uA9mR9pfXaL7ztNARbdQMWwtPhenzsO+qae8D/Q==
+"@opentripplanner/location-field@^1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.11.1.tgz#78ed05d1191f2aed3a7253841627ed39c2425575"
+  integrity sha512-zVBSp9K693UJZrU0yLUqGsZHIBGQv0Y9VTKPYzHtBOrLjV6rnbAClRFWzl75eVXL/OIP0uf79SagAinePRwfWA==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
-    "@opentripplanner/core-utils" "^4.2.0"
-    "@opentripplanner/geocoder" "^1.1.1"
+    "@opentripplanner/core-utils" "^4.5.0"
+    "@opentripplanner/geocoder" "^1.1.2"
     "@opentripplanner/humanize-distance" "^1.1.0"
     "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
@@ -2606,14 +2606,14 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/stops-overlay@^3.3.1":
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-3.3.1.tgz#02a51522bda0667e84d058562a484c917b9547f7"
-  integrity sha512-8BBMdd2a40jbcjMcIPo7gfTVfKRCNg7+AB5F01d+9TVRZoM1++9ffeLuiFpebD3OR1Cip6gepyz1i0O/FV55mg==
+"@opentripplanner/stops-overlay@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-3.4.0.tgz#0ded677db2dead7e02a968fca4177c341b527033"
+  integrity sha512-cq40s9iy5t9L1fN3/cyaFjf4OzNsecCSdZC5f+N9/FL8/lLgpE8bsEh03Ggy40T6T3mY23sRPGw3Fqk+rEI62A==
   dependencies:
-    "@opentripplanner/core-utils" "^4.1.0"
-    "@opentripplanner/from-to-location-picker" "^1.2.1"
-    "@opentripplanner/zoom-based-markers" "^1.2.0"
+    "@opentripplanner/core-utils" "^4.5.0"
+    "@opentripplanner/from-to-location-picker" "^1.3.0"
+    "@opentripplanner/zoom-based-markers" "^1.2.1"
 
 "@opentripplanner/transit-vehicle-overlay@^2.3.1":
   version "2.3.1"
@@ -2686,7 +2686,7 @@
     lodash.memoize "^4.1.2"
     prop-types "^15.7.2"
 
-"@opentripplanner/zoom-based-markers@^1.2.0":
+"@opentripplanner/zoom-based-markers@^1.2.0", "@opentripplanner/zoom-based-markers@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/zoom-based-markers/-/zoom-based-markers-1.2.1.tgz#a6ce157ed0169b1098d1ddad3691a712fb6b243b"
   integrity sha512-2MatM0+PrymcOzRsaCwmHO1nBkJfsBraGUqVkl04oUdwXQx9qKuzba2zq5CEPLacnGOF3EViZcT0kSd/wLzUpA==

@@ -439,6 +439,7 @@ components:
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<strong>Stop ID</strong>: {stopId}"
+    flexStop: This is a flex stop. Vehicles will drop off and pick up passengers in this flexible zone by request. You may have to call ahead for service in this area.
     header: Stop Viewer
     loadingText: Loading Stop...
     noStopsFound: No stop times found for date.
