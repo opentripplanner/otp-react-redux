@@ -10,8 +10,8 @@ const FormattedRealtimeStatusLabel = ({
   minutes,
   status
 }: {
-  // TYPESCRIPT TODO: This type doesn't feel correct, but for some reason the FormattedMessage doesn't mind
-  minutes: number | JSX.Element | boolean
+  // This will usually become a string, but the type is a React Element since it is a FormattedMessage
+  minutes: JSX.Element
   status: string
 }): JSX.Element | null => {
   switch (status) {

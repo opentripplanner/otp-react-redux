@@ -119,10 +119,12 @@ const RealtimeStatusLabel = ({
       <MainContent>
         <FormattedRealtimeStatusLabel
           minutes={
-            isEarlyOrLate && (
+            isEarlyOrLate ? (
               <DelayText>
                 <FormattedDuration duration={Math.abs(delay)} />
               </DelayText>
+            ) : (
+              <>{null}</>
             )
           }
           // @ts-ignore getTripStatus is not typed yet
