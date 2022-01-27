@@ -70,10 +70,6 @@ const DesktopNav = ({ otpConfig }: otpConfigType) => {
       <Navbar.Collapse>
         <Nav pullRight>
           {configLanguages &&
-            // Avoid rendering the LocaleSelector for configs without languages
-            !Object.keys(configLanguages).find(
-              (key) => key !== 'allLanguages' && !configLanguages[key].name
-            ) &&
             // Ensure that > 1 valid language is defined
             Object.keys(configLanguages).filter(
               (key) => key !== 'allLanguages' && configLanguages[key].name
