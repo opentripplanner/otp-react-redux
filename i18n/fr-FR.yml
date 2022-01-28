@@ -317,11 +317,8 @@ components:
     itinerary: Votre trajet
     toggleMap: Afficher/masquer la carte
   RealtimeAnnotation:
-    delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
-      Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
     delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
       En temps normal, ce trajet prendrait {normalDuration} en empruntant les lignes: {routes}."
-    ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
   RealtimeStatusLabel:
     # Note to translator: In itinerary body, early or late is single-line
@@ -360,17 +357,12 @@ components:
     agencyFilter: Filtrer les transporteurs
     allAgencies: Tous transporteurs
     allModes: Tous modes # Note to translator: This text is width-constrained.
-    applyServiceDelays: Appliquer les retards
-    delaysNotShownInResults: >
-      Vos trajets recherchés sont perturbés par des retards.
-      Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous.
     delaysShownInResults: >
       Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
       En temps normal, ce trajet prendrait <strong>{normalDuration}</strong> en empruntant les lignes: {routes}.
     details: " " # If the string is left blank, React-Intl renders the id
     findARoute: Chercher une ligne
     header: Index des lignes
-    ignoreServiceDelays: Ignorer les retards
     modeFilter: Filtre pour les modes
     noFilteredRoutesFound: Aucune ligne ne correspond à vos critères
     noRouteUrl: Aucun lien fourni pour cette ligne.
