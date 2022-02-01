@@ -565,7 +565,10 @@ components:
       *** À L'ATTENTION DE L'UTILISATEUR ***
       Vous pouvez communiquer votre problème par e-mail et en détail aux administrateurs de ce site.
       Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
-      ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
+      ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel.
+
+  #    TODO: UPDATE TRANSlATION
+
   # Used in both desktop and mobile
   TripViewer:
     accessible: Accessible

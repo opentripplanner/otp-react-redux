@@ -580,8 +580,16 @@ components:
     reportEmailTemplate: >
       ***INSTRUCTIONS TO USER***
       This feature allows you to email a report to site administrators for review.
-      Please add any additional feedback for this trip under the 'Additional Comments'
-      section below and send using your regular email program."
+      Please fill out the prompts below and send using your regular email program.
+
+      *** PLEASE COMPLETE THE FOLLOWING ***
+
+      Issue encountered:
+
+      Type of trip you wanted to take (ex. walk + transit, bike + transit, car + transit):
+
+      *** TECHNICAL DETAILS ***
+
   # Used in both desktop and mobile
   TripViewer:
     accessible: Accessible
