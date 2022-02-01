@@ -1,17 +1,21 @@
+import { connect } from 'react-redux'
+import { injectIntl, IntlShape } from 'react-intl'
+// FIXME: type OTP-UI
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
-import { injectIntl } from 'react-intl'
-import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
+import {
+  getActiveSearch,
+  getShowUserSettings,
+  hasValidLocation
+} from '../../util/state'
 import Icon from '../util/icon'
-import { hasValidLocation, getActiveSearch, getShowUserSettings } from '../../util/state'
 
-import BatchPreferences from './batch-preferences'
-import DateTimeModal from './date-time-modal'
-import ModeButtons, {getModeOptions, StyledModeButton} from './mode-buttons'
 import {
   BatchPreferencesContainer,
   DateTimeModalContainer,
@@ -21,6 +25,10 @@ import {
   StyledDateTimePreview
 } from './batch-styled'
 import { Dot } from './styled'
+import BatchPreferences, { replaceTransitMode } from './batch-preferences'
+import DateTimeModal from './date-time-modal'
+import ModeButtons, { getModeOptions, StyledModeButton } from './mode-buttons'
+import type { Combination } from './batch-preferences'
 
 /**
  * Simple utility to check whether a list of mode strings contains the provided
@@ -31,12 +39,12 @@ import { Dot } from './styled'
  * the 'contains' check. E.g., we might not want to remove WALK,TRANSIT if walk
  * is turned off, but we DO want to remove it if TRANSIT is turned off.
  */
-function listHasMode (modes, mode) {
-  return modes.some(m => mode.indexOf(m) !== -1)
+function listHasMode(modes: string[], mode: string) {
+  return modes.some((m: string) => mode.indexOf(m) !== -1)
 }
 
-function combinationHasAnyOfModes (combination, modes) {
-  return combination.mode.split(',').some(m => listHasMode(modes, m))
+function combinationHasAnyOfModes(combination: Combination, modes: string[]) {
+  return combination.mode.split(',').some((m: string) => listHasMode(modes, m))
 }
 
 const ModeButtonsFullWidthContainer = styled.div`
@@ -75,71 +83,86 @@ const ModeButtonsCompressed = styled(ModeButtons)`
 /**
  * Main panel for the batch/trip comparison form.
  */
-class BatchSettings extends Component {
+// TYPESCRIPT TODO: better types
+class BatchSettings extends Component<{
+  config: any
+  currentQuery: any
+  intl: IntlShape
+  possibleCombinations: Combination[]
+  routingQuery: any
+  setQueryParam: (queryParam: any) => void
+}> {
   state = {
     expanded: null,
-    selectedModes: getModeOptions(this.props.intl).map(m => m.mode)
+    selectedModes: getModeOptions(this.props.intl).map((m) => m.mode)
   }
 
-  _onClickMode = (mode) => {
-    const {possibleCombinations, setQueryParam} = this.props
-    const {selectedModes} = this.state
+  _onClickMode = (mode: string) => {
+    const { currentQuery, possibleCombinations, setQueryParam } = this.props
+    const { selectedModes } = this.state
     const index = selectedModes.indexOf(mode)
     const enableMode = index === -1
     const newModes = [...selectedModes]
     if (enableMode) newModes.push(mode)
     else newModes.splice(index, 1)
     // Update selected modes for mode buttons.
-    this.setState({selectedModes: newModes})
+    this.setState({ selectedModes: newModes })
     // Update the available mode combinations based on the new modes selection.
-    const possibleModes = getModeOptions(this.props.intl).map(m => m.mode)
-    const disabledModes = possibleModes.filter(m => !newModes.includes(m))
+    const possibleModes = getModeOptions(this.props.intl).map((m) => m.mode)
+    const disabledModes = possibleModes.filter((m) => !newModes.includes(m))
     // Do not include combination if any of its modes are found in disabled
     // modes list.
     const newCombinations = possibleCombinations
-      .filter(c => !combinationHasAnyOfModes(c, disabledModes))
-    setQueryParam({combinations: newCombinations})
+      .filter((c) => !combinationHasAnyOfModes(c, disabledModes))
+      .map(replaceTransitMode(currentQuery.mode))
+    setQueryParam({ combinations: newCombinations, disabledModes })
   }
 
   _planTrip = () => {
-    const {currentQuery, intl, routingQuery} = this.props
+    const { currentQuery, intl, routingQuery } = this.props
     // Check for any validation issues in query.
     const issues = []
     if (!hasValidLocation(currentQuery, 'from')) {
-      issues.push(intl.formatMessage({id: 'components.BatchSettings.origin'}))
+      issues.push(intl.formatMessage({ id: 'components.BatchSettings.origin' }))
     }
     if (!hasValidLocation(currentQuery, 'to')) {
-      issues.push(intl.formatMessage({id: 'components.BatchSettings.destination'}))
+      issues.push(
+        intl.formatMessage({ id: 'components.BatchSettings.destination' })
+      )
     }
     if (issues.length > 0) {
       // TODO: replace with less obtrusive validation.
-      window.alert(intl.formatMessage(
-        {id: 'components.BatchSettings.validationMessage'},
-        {issues: intl.formatList(issues, {type: 'conjunction'})}
-      ))
+      window.alert(
+        intl.formatMessage(
+          { id: 'components.BatchSettings.validationMessage' },
+          { issues: intl.formatList(issues, { type: 'conjunction' }) }
+        )
+      )
       return
     }
     // Close any expanded panels.
-    this.setState({expanded: null})
+    this.setState({ expanded: null })
 
     // Plan trip.
     routingQuery()
   }
 
-  _updateExpanded = (type) => ({expanded: this.state.expanded === type ? null : type})
+  _updateExpanded = (type: string) => ({
+    expanded: this.state.expanded === type ? null : type
+  })
 
   _toggleDateTime = () => this.setState(this._updateExpanded('DATE_TIME'))
 
   _toggleSettings = () => this.setState(this._updateExpanded('SETTINGS'))
 
-  render () {
-    const {config, currentQuery, intl} = this.props
-    const {expanded, selectedModes} = this.state
+  render() {
+    const { config, currentQuery, intl } = this.props
+    const { expanded, selectedModes } = this.state
     return (
       <>
-        <ModeButtonsFullWidthContainer className='hidden-lg'>
+        <ModeButtonsFullWidthContainer className="hidden-lg">
           <ModeButtonsFullWidth
-            className='flex'
+            className="flex"
             onClick={this._onClickMode}
             selectedModes={selectedModes}
           />
@@ -149,47 +172,51 @@ class BatchSettings extends Component {
             expanded={expanded === 'SETTINGS'}
             onClick={this._toggleSettings}
           >
-            {coreUtils.query.isNotDefaultQuery(currentQuery, config) &&
-              <Dot className='dot' />
-            }
-            <Icon className='fa-2x' type='cog' />
+            {coreUtils.query.isNotDefaultQuery(currentQuery, config) && (
+              <Dot className="dot" />
+            )}
+            <Icon className="fa-2x" type="cog" />
           </SettingsPreview>
           <StyledDateTimePreview
             // as='button'
             expanded={expanded === 'DATE_TIME'}
             hideButton
-            onClick={this._toggleDateTime} />
+            onClick={this._toggleDateTime}
+          />
           <ModeButtonsContainerCompressed>
             <ModeButtonsCompressed
-              className='visible-lg straight-corners'
+              className="visible-lg straight-corners"
               onClick={this._onClickMode}
               selectedModes={selectedModes}
             />
           </ModeButtonsContainerCompressed>
           <PlanTripButton
             onClick={this._planTrip}
-            title={intl.formatMessage({id: 'components.BatchSettings.planTripTooltip'})}
+            title={intl.formatMessage({
+              id: 'components.BatchSettings.planTripTooltip'
+            })}
           >
-            <Icon className='fa-2x' type='search' />
+            <Icon className="fa-2x" type="search" />
           </PlanTripButton>
         </MainSettingsRow>
-        {expanded === 'DATE_TIME' &&
+        {expanded === 'DATE_TIME' && (
           <DateTimeModalContainer>
             <DateTimeModal />
           </DateTimeModalContainer>
-        }
-        {expanded === 'SETTINGS' &&
+        )}
+        {expanded === 'SETTINGS' && (
           <BatchPreferencesContainer>
             <BatchPreferences />
           </BatchPreferencesContainer>
-        }
+        )}
       </>
     )
   }
 }
 
 // connect to the redux store
-const mapStateToProps = (state, ownProps) => {
+// TODO: Typescript
+const mapStateToProps = (state: any) => {
   const showUserSettings = getShowUserSettings(state)
   return {
     activeSearch: getActiveSearch(state),
@@ -206,6 +233,7 @@ const mapDispatchToProps = {
   setQueryParam: formActions.setQueryParam
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  injectIntl(BatchSettings)
-)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(BatchSettings))
