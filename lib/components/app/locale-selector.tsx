@@ -7,12 +7,18 @@ import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
+import Icon from '../util/icon'
 
 const FlagContainer = styled.span`
   &::after {
     content: '';
     margin: 0 0.125em;
   }
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
 `
 
 type PropsFromRedux = ConnectedProps<typeof connector>
@@ -37,7 +43,10 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
 
   const handleLocaleSelection = (e: MouseEvent<Element>, locale: string) => {
     e.stopPropagation()
-
+    if (locale === currentLocale) {
+      e.preventDefault()
+      return
+    }
     window.localStorage.setItem('lang', locale)
 
     if (loggedInUser) {
@@ -57,34 +66,19 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
     >
       {Object.keys(configLanguages).map((locale) => {
         const Flag = flags[configLanguages[locale].flag]
-        if (locale === currentLocale)
-          return (
-            <MenuItem>
+        return (
+          locale !== 'allLanguages' && (
+            <MenuItem
+              onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
+            >
               <FlagContainer>
-                <span
-                  aria-label="checkbox"
-                  role="img"
-                  style={{ float: 'left' }}
-                >
-                  ☑️
-                </span>
+                {locale === currentLocale && <Icon type="check-square" />}
+                {locale !== currentLocale && <Flag />}
               </FlagContainer>
               {configLanguages[locale].name}
             </MenuItem>
           )
-        else
-          return (
-            locale !== 'allLanguages' && (
-              <MenuItem
-                onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
-              >
-                <FlagContainer>
-                  <Flag style={{ width: 15 }} />
-                </FlagContainer>
-                {configLanguages[locale].name}
-              </MenuItem>
-            )
-          )
+        )
       })}
     </NavDropdown>
   )
