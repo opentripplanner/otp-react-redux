@@ -330,12 +330,10 @@ components:
     itinerary: Itinerary
     toggleMap: Toggle Map
   RealtimeAnnotation:
-    delaysNotShownInResults: Your trip results are currently being affected by service delays. These delays do not factor into travel times shown below.
     delaysShownInResults: >
       Your trip results have been adjusted based on real-time
       information. Under normal conditions, this trip would take {normalDuration}
       using the following routes: {routes}.
-    ignoreServiceDelays: Ignore service delays
     serviceUpdate: Service update
   RealtimeStatusLabel:
     # Note to translator: In itinerary body, early or late is single-line
@@ -374,10 +372,6 @@ components:
     agencyFilter: Agency Filter
     allAgencies: All Agencies
     allModes: All Modes # Note to translator: This text is width-constrained.
-    applyServiceDelays: Apply service delays
-    delaysNotShownInResults: >
-      Your trip results are currently being affected by service delays.
-      These delays do not factor into travel times shown below.
     delaysShownInResults: >
       Your trip results have been adjusted based on real-time
       information. Under normal conditions, this trip would take <strong>{normalDuration}</strong>
@@ -385,7 +379,6 @@ components:
     details: " " # If the string is left blank, React-Intl renders the id
     findARoute: Find A Route
     header: Route Viewer
-    ignoreServiceDelays: Ignore service delays
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
     noRouteUrl: No route URL provided.
@@ -439,6 +432,7 @@ components:
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<strong>Stop ID</strong>: {stopId}"
+    flexStop: This is a flex stop. Vehicles will drop off and pick up passengers in this flexible zone by request. You may have to call ahead for service in this area.
     header: Stop Viewer
     loadingText: Loading Stop...
     noStopsFound: No stop times found for date.

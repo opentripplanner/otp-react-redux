@@ -67,7 +67,7 @@ const FlexIndicatorWrapper = styled.div<{ shrink: boolean }>`
     grid-column: 3 / span 2;
     grid-row: 2;
     text-overflow: ellipsis;
-    overflow-y: hidden;
+    overflow-y: clip;
   }
 
   /* Barber pole at left */
