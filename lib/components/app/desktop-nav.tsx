@@ -74,10 +74,7 @@ const DesktopNav = ({ otpConfig }: otpConfigType) => {
             Object.keys(configLanguages).filter(
               (key) => key !== 'allLanguages' && configLanguages[key].name
             ).length > 1 && (
-              <LocaleSelector
-                configLanguages={configLanguages}
-                style={{ maxWidth: 60 }}
-              />
+              <LocaleSelector configLanguages={configLanguages} />
             )}
           {showLogin && (
             <NavLoginButtonAuth0 id="login-control" links={accountLinks} />

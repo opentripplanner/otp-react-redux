@@ -1,4 +1,4 @@
-import { CN, ES, FR, KR, US, VN } from 'country-flag-icons/react/3x2'
+import * as flags from 'country-flag-icons/react/3x2'
 import { connect, ConnectedProps } from 'react-redux'
 import { MenuItem, NavDropdown } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
@@ -7,21 +7,6 @@ import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
-
-/**
- * Renders flag icons for supported languages
- * using emojis would be a simpler solution, but they are not available on Windows
- * Exporting this in the config.js causes the a11y tests to fail. A better solution
- * will need to be found if further customization is required.
- */
-const FLAG_ICON_MAPPING: Record<string, React.ReactElement> = {
-  'en-US': <US style={{ width: 15 }} />,
-  'es-ES': <ES style={{ width: 15 }} />,
-  'fr-FR': <FR style={{ width: 15 }} />,
-  'ko-KR': <KR style={{ width: 15 }} />,
-  'vi-VN': <VN style={{ width: 15 }} />,
-  'zh-CN': <CN style={{ width: 15 }} />
-}
 
 const FlagContainer = styled.span`
   &::after {
@@ -46,6 +31,8 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
     loggedInUser,
     setLocale
   } = props
+
+  const CurrentLocaleFlag = flags[configLanguages[currentLocale].flag]
   const intl = useIntl()
 
   const handleLocaleSelection = (e: MouseEvent<Element>, locale: string) => {
@@ -59,25 +46,46 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
     }
     setLocale(locale)
 
-    // Hack: Reload the page (IntlProvider is at too high a level to listen to the redux store)
-    // TODO: move IntlProvider to Responsive Webapp for reload.
     document.location.reload()
   }
 
   return (
-    <NavDropdown id="locale-selector" title={FLAG_ICON_MAPPING[currentLocale]}>
-      {Object.keys(configLanguages).map(
-        (locale) =>
-          locale !== 'allLanguages' &&
-          locale !== currentLocale && (
-            <MenuItem
-              onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
-            >
-              <FlagContainer>{FLAG_ICON_MAPPING[locale]}</FlagContainer>
+    <NavDropdown
+      id="locale-selector"
+      pullRight
+      title={<CurrentLocaleFlag style={{ width: 15 }} />}
+    >
+      {Object.keys(configLanguages).map((locale) => {
+        const Flag = flags[configLanguages[locale].flag]
+        if (locale === currentLocale)
+          return (
+            <MenuItem>
+              <FlagContainer>
+                <span
+                  aria-label="checkbox"
+                  role="img"
+                  style={{ float: 'left' }}
+                >
+                  ☑️
+                </span>
+              </FlagContainer>
               {configLanguages[locale].name}
             </MenuItem>
           )
-      )}
+        else
+          return (
+            locale !== 'allLanguages' && (
+              <MenuItem
+                onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
+              >
+                <FlagContainer>
+                  <Flag style={{ width: 15 }} />
+                </FlagContainer>
+                {configLanguages[locale].name}
+              </MenuItem>
+            )
+          )
+      })}
     </NavDropdown>
   )
 }

@@ -338,6 +338,7 @@ itinerary:
 ### The nested structure should be the same as the language files under the i18n folder.
 ### You can also customize OTP error messages for itinerary searches based on OTP HTTP codes.
 ### A separate message can be set for each language or locale if necessary.
+### Languages defined may be region-specific (e.g. en-US) or language-specific (e.g. es, kr)
 ### The LocaleSelector component, which provides a dropdown for the user to change their locale, will
 ### only be rendered if more than one valid language (all languages must have "name" defined) is included
 ### in the language config. Locale icons (flags) are currently defined in locale-selector.tsx file. 
@@ -380,26 +381,17 @@ itinerary:
 #         log-my-commute: Mes trajets verts
 #         traveler-tools: Outils du voyageur
 
-#   ko-KR:
+#   ko:
 #     name: 한국인
 
-#   vi-VN:
+#   vi:
 #     name: Tiếng Việt
 
-#   zh-CN:
+#   zh:
 #     name: 中国人
 
-#   es-ES: 
+#   es: 
 #     name: Español
-
-#   ko-KR:
-#     name: 한국인
-
-#   vi-VN: 
-#     name: Tiếng Việt
-
-#   zh-CN:
-#     name: 中国人
 
 ### Localization section to provide language/locale settings
 #localization:
