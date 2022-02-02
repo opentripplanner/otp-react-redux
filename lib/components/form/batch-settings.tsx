@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import { connect } from 'react-redux'
-import { injectIntl } from 'react-intl'
+import { injectIntl, IntlShape } from 'react-intl'
+// FIXME: type OTP-UI
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'
@@ -19,9 +22,10 @@ import {
   StyledDateTimePreview
 } from './batch-styled'
 import { Dot } from './styled'
-import BatchPreferences from './batch-preferences'
+import BatchPreferences, { replaceTransitMode } from './batch-preferences'
 import DateTimeModal from './date-time-modal'
 import ModeButtons, { getModeOptions, StyledModeButton } from './mode-buttons'
+import type { Combination } from './batch-preferences'
 
 /**
  * Simple utility to check whether a list of mode strings contains the provided
@@ -32,12 +36,12 @@ import ModeButtons, { getModeOptions, StyledModeButton } from './mode-buttons'
  * the 'contains' check. E.g., we might not want to remove WALK,TRANSIT if walk
  * is turned off, but we DO want to remove it if TRANSIT is turned off.
  */
-function listHasMode(modes, mode) {
-  return modes.some((m) => mode.indexOf(m) !== -1)
+function listHasMode(modes: string[], mode: string) {
+  return modes.some((m: string) => mode.indexOf(m) !== -1)
 }
 
-function combinationHasAnyOfModes(combination, modes) {
-  return combination.mode.split(',').some((m) => listHasMode(modes, m))
+function combinationHasAnyOfModes(combination: Combination, modes: string[]) {
+  return combination.mode.split(',').some((m: string) => listHasMode(modes, m))
 }
 
 const ModeButtonsFullWidthContainer = styled.div`
@@ -76,14 +80,22 @@ const ModeButtonsCompressed = styled(ModeButtons)`
 /**
  * Main panel for the batch/trip comparison form.
  */
-class BatchSettings extends Component {
+// TYPESCRIPT TODO: better types
+class BatchSettings extends Component<{
+  config: any
+  currentQuery: any
+  intl: IntlShape
+  possibleCombinations: Combination[]
+  routingQuery: any
+  setQueryParam: (queryParam: any) => void
+}> {
   state = {
     expanded: null,
     selectedModes: getModeOptions(this.props.intl).map((m) => m.mode)
   }
 
-  _onClickMode = (mode) => {
-    const { possibleCombinations, setQueryParam } = this.props
+  _onClickMode = (mode: string) => {
+    const { currentQuery, possibleCombinations, setQueryParam } = this.props
     const { selectedModes } = this.state
     const index = selectedModes.indexOf(mode)
     const enableMode = index === -1
@@ -97,10 +109,10 @@ class BatchSettings extends Component {
     const disabledModes = possibleModes.filter((m) => !newModes.includes(m))
     // Do not include combination if any of its modes are found in disabled
     // modes list.
-    const newCombinations = possibleCombinations.filter(
-      (c) => !combinationHasAnyOfModes(c, disabledModes)
-    )
-    setQueryParam({ combinations: newCombinations })
+    const newCombinations = possibleCombinations
+      .filter((c) => !combinationHasAnyOfModes(c, disabledModes))
+      .map(replaceTransitMode(currentQuery.mode))
+    setQueryParam({ combinations: newCombinations, disabledModes })
   }
 
   _planTrip = () => {
@@ -132,7 +144,7 @@ class BatchSettings extends Component {
     routingQuery()
   }
 
-  _updateExpanded = (type) => ({
+  _updateExpanded = (type: string) => ({
     expanded: this.state.expanded === type ? null : type
   })
 
@@ -200,13 +212,12 @@ class BatchSettings extends Component {
 }
 
 // connect to the redux store
-const mapStateToProps = (state) => {
-  return {
-    config: state.otp.config,
-    currentQuery: state.otp.currentQuery,
-    possibleCombinations: state.otp.config.modes.combinations
-  }
-}
+// TODO: Typescript
+const mapStateToProps = (state: any) => ({
+  config: state.otp.config,
+  currentQuery: state.otp.currentQuery,
+  possibleCombinations: state.otp.config.modes.combinations
+})
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
