@@ -581,14 +581,10 @@ components:
       ***INSTRUCTIONS TO USER***
       This feature allows you to email a report to site administrators for review.
       Please fill out the prompts below and send using your regular email program.
-
-      *** PLEASE COMPLETE THE FOLLOWING ***
-
-      Issue encountered:
-
-      Type of trip you wanted to take (ex. walk + transit, bike + transit, car + transit):
-
-      *** TECHNICAL DETAILS ***
+      {br}*** PLEASE COMPLETE THE FOLLOWING ***
+      {br}Issue encountered:
+      {br}Type of trip you wanted to take (ex. walk + transit, bike + transit, car + transit):
+      {br}*** TECHNICAL DETAILS ***
 
   # Used in both desktop and mobile
   TripViewer:
