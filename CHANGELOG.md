@@ -23,9 +23,9 @@
 ## [3.3.0](https://github.com/opentripplanner/otp-react-redux/releases/tag/v3.3.0) (2021-07-22)
 
 - Field trip module
-- Add save button
-- Add delete button
-- Allow configuration of capacity
+  - Add save button
+  - Add delete button
+  - Allow configuration of capacity
 
 ## [3.4.0](https://github.com/opentripplanner/otp-react-redux/releases/tag/v3.4.0) (2021-08-18)
 
@@ -60,4 +60,4 @@
 - Fix crashes reported to us
 - Improve screen reader experience
 - Add user setting for planning accessible trips by default
-- Support internationalization of most component
+- Support internationalization of most components
