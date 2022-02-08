@@ -32,19 +32,15 @@
 .otp .option.default-itin > .header {
   font-size: 16px;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
 }
 
 .otp .option.default-itin > .header > .title {
   font-weight: 500;
   font-size: large;
-  display: inline;
-  flex: 2;
+  display: inline-block;
 }
 
 .otp .option.default-itin > .header > .itinerary-attributes {
-  display: inline;
   float: right;
 }
 
