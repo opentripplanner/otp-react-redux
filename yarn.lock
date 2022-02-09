@@ -2511,7 +2511,7 @@
     isomorphic-mapzen-search "^1.6.0"
     lodash.memoize "^4.1.2"
 
-"@opentripplanner/geocoder@^1.2.0":
+"@opentripplanner/geocoder@^1.2.0", "@opentripplanner/geocoder@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.2.1.tgz#5ba3a3c7664f387b6f1cf7959b91ad77170bf2b7"
   integrity sha512-3RLeRQis9ptIhqeBfBxuPI04/WeGhiYcY5aJONZm9005eFhX4QVesGQpT/qcfC7Wjp55Pnikroh0fMcl+oFvFA==
