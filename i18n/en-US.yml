@@ -682,7 +682,11 @@ otpUi:
     geocoderUnreachable: Could not reach geocoder
     myPlaces: My Places
     nearby: Nearby Stops
-    noResultsFound: No results found for '{input}'
+    noResultsFound: >
+      No results found for {input, select,
+        null {your query}
+        other {{input}}
+      }
     other: Other
     recentlySearched: Recently Searched
     stations: Stations
