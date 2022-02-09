@@ -332,7 +332,7 @@ itinerary:
 #       - WALK
 #       - BICYCLE
 
-### Confugre here the carbon output in grams per meter for each mode.
+### Configure here the carbon output in grams per meter for each mode.
 ### massUnits can be 'pound', 'kilogram', 'ounce', or 'gram'
 # co2:
 #   carbonIntensity:
