@@ -54,7 +54,13 @@ const TimeCell = styled.td`
  * Table showing scheduled departure times for the specified stop organized
  * chronologically.
  */
-class StopScheduleTable extends Component {
+class StopScheduleTable extends Component<{
+  date: any
+  findStopTimesForStop: () => void
+  showBlockIds: boolean
+  // TODO TYPESCRIPT shared types
+  stopData: any
+}> {
   /**
    * Link to the DOM for the next departure row, so we can scroll to it if needed.
    */
@@ -63,23 +69,25 @@ class StopScheduleTable extends Component {
   /**
    * Scroll to the first stop time that is departing from now.
    */
-  _scrollToFirstDeparture = () => {
+  _scrollToFirstDeparture = (): void => {
     const { current } = this.targetDepartureRef
     if (current) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore TYPESCRIPT TODO: what is this type supposed to be?
       current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     this._scrollToFirstDeparture()
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(): void {
     // Should only happen if user changes date and a new stopData is passed.
     this._scrollToFirstDeparture()
   }
 
-  render() {
+  render(): JSX.Element {
     const { date, showBlockIds, stopData } = this.props
     // Show loading spinner if times are still being fetched.
     if (stopData.fetchStatus === FETCH_STATUS.FETCHING) {
@@ -121,7 +129,7 @@ class StopScheduleTable extends Component {
             const { blockId, headsign, route } = stopTime
             // Highlight if this row is the imminent departure and schedule is shown for today.
             const highlightRow = stopTime === highlightedStopTime
-            const className = highlightRow ? 'highlighted-item' : null
+            const className = highlightRow ? 'highlighted-item' : ''
             // This is a bit of a hack to account for the sticky table
             // header interfering with the scrollIntoView. If the next stop time
             // is the imminent departure, we'll set the scrollTo to this row (the
@@ -139,9 +147,11 @@ class StopScheduleTable extends Component {
               .add(stopTime.scheduledDeparture, 's')
               .valueOf()
             // Add ref to scroll to the first stop time departing from now.
-            const refProp = scrollToRow ? this.targetDepartureRef : null
+            const refProp = scrollToRow ? this.targetDepartureRef : undefined
 
             return (
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore TYEPSCRIPT TODO: ref
               <tr className={className} key={index} ref={refProp}>
                 {showBlockIds && (
                   <BlockCell title={blockId}>{blockId}</BlockCell>
