@@ -56,7 +56,8 @@ const TimeCell = styled.td`
  */
 class StopScheduleTable extends Component<{
   date: any
-  findStopTimesForStop: () => void
+  // TODO TYPESCRIPT shared types
+  findStopTimesForStop: (options: any) => void
   showBlockIds: boolean
   // TODO TYPESCRIPT shared types
   stopData: any
@@ -80,6 +81,9 @@ class StopScheduleTable extends Component<{
 
   componentDidMount(): void {
     this._scrollToFirstDeparture()
+
+    const { findStopTimesForStop, stopData } = this.props
+    findStopTimesForStop({ numberOfDepartures: 50, stopId: stopData.id })
   }
 
   componentDidUpdate(): void {
