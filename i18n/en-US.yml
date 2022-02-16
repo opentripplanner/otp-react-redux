@@ -757,6 +757,12 @@ common:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
+    # This string will have a formatted number before it, including units.
+    relativeCo2: >
+     {isMore, select,
+      true {more}
+      other {less}
+      } CO2 than driving alone.
 
   # Note to translator: the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
