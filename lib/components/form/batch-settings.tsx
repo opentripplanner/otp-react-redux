@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
 // FIXME: type OTP-UI
@@ -9,11 +10,7 @@ import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
-import {
-  getActiveSearch,
-  getShowUserSettings,
-  hasValidLocation
-} from '../../util/state'
+import { hasValidLocation } from '../../util/state'
 import Icon from '../util/icon'
 
 import {
@@ -216,17 +213,11 @@ class BatchSettings extends Component<{
 
 // connect to the redux store
 // TODO: Typescript
-const mapStateToProps = (state: any) => {
-  const showUserSettings = getShowUserSettings(state)
-  return {
-    activeSearch: getActiveSearch(state),
-    config: state.otp.config,
-    currentQuery: state.otp.currentQuery,
-    expandAdvanced: state.otp.user.expandAdvanced,
-    possibleCombinations: state.otp.config.modes.combinations,
-    showUserSettings
-  }
-}
+const mapStateToProps = (state: any) => ({
+  config: state.otp.config,
+  currentQuery: state.otp.currentQuery,
+  possibleCombinations: state.otp.config.modes.combinations
+})
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,

@@ -32,50 +32,46 @@
 .otp .option.default-itin > .header {
   font-size: 16px;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
 }
 
-.otp .option.default-itin > .header > .title {
+.otp .option.default-itin > .header .title {
+  flex: 2;
   font-weight: 500;
   font-size: large;
-  display: inline;
-  flex: 2;
 }
 
-.otp .option.default-itin > .header > .itinerary-attributes {
-  display: inline;
+.otp .option.default-itin > .header .itinerary-attributes {
   float: right;
 }
 
-.otp .option.default-itin > .header > .itinerary-attributes > li {
+.otp .option.default-itin > .header .itinerary-attributes > li {
   font-size: small;
 }
 
-.otp .option.default-itin > .header > .itinerary-attributes > li.main {
+.otp .option.default-itin > .header .itinerary-attributes > li.main {
   font-weight: 500;
   font-size: x-large;
 }
 
-.otp .option.default-itin > .header > .title > .summary {
+.otp .option.default-itin > .header .title > .summary {
   /* text-align: center; */
   margin: 0px 0px;
 }
 
-.otp .option.default-itin > .header > .title > .summary > .summary-block {
+.otp .option.default-itin > .header .title > .summary > .summary-block {
   display: inline-block;
   vertical-align: middle;
 }
-.otp .option.default-itin > .header > .title > .summary > .summary-block > svg {
+.otp .option.default-itin > .header .title > .summary > .summary-block > svg {
   margin-bottom: 2px;
 }
 
-.otp .option.default-itin > .header > .title > .summary > .mode-block {
+.otp .option.default-itin > .header .title > .summary > .mode-block {
   height: 18px;
   width: 18px;
 }
 
-.otp .option.default-itin > .header > .title > .summary > .arrow-block {
+.otp .option.default-itin > .header .title > .summary > .arrow-block {
   padding-top: 4px;
   font-size: 13px;
 }

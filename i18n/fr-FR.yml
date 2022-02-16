@@ -177,10 +177,10 @@ components:
     notifications: Notifications
     places: Lieux favoris
     terms: Conditions d'utilisation
-  FavoritePlaceRow:
+  FavoritePlaceList:
     addAnotherPlace: Ajouter un autre lieu
-    # deleteThisPlace and editThisPlace are aria/tooltip texts.
-    deleteThisPlace: Supprimer ce lieu
+    description: "Ajoutez les lieux que vous fréquentez souvent pour faciliter vos recherches de trajets :"
+    # editThisPlace is a tooltip text.
     editThisPlace: Modifier ce lieu
     setAddressForPlaceType: Entrez l'adresse de votre {placeType}
   FavoritePlaceScreen:
@@ -192,8 +192,6 @@ components:
     nameAlreadyUsed: Ce nom est déjà utilisé avec un autre lieu. Veuillez saisir un nom différent.
     placeNotFound: Lieu introuvable
     placeNotFoundDescription: Le lieu recherché est introuvable.
-  FavoritePlacesList:
-    description: "Ajoutez les lieux que vous fréquentez souvent pour faciliter vos recherches de trajets :"
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
@@ -297,10 +295,12 @@ components:
       Veuillez taper ce code ci-dessous (le code expire après 10 minutes).
     verify: Verifier
   Place:
+    # deleteThisPlace is an aria/tooltip text.
+    deleteThisPlace: Supprimer ce lieu
     enterAlert: >
-      Entrez votre point de départ/destination dans le formulaire (ou cliquez sur la carte)
-      puis cliquez sur le marqueur qui apparaît pour définir le type d'emplacement ({type}).
-    viewStop: Voir l'arrêt
+      Entrez votre point de départ/destination dans le formulaire (ou cliquez sur la carte),
+      puis cliquez sur le marqueur qui apparaît afin de définir votre {placeType}.
+    viewStop: Voir cet arrêt
   PlaceEditor:
     genericLocationPlaceholder: Adresse du lieu
     locationPlaceholder: Adresse de votre {placeName}
@@ -561,11 +561,18 @@ components:
     linkCopied: Copié
     reportIssue: Un problème ? # "Signaler un problème" does not fit.
     reportEmailSubject: Signaler un problème avec OpenTripPlanner
-    reportEmailTemplate: >
-      *** À L'ATTENTION DE L'UTILISATEUR ***
-      Vous pouvez communiquer votre problème par e-mail et en détail aux administrateurs de ce site.
-      Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
-      ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
+    reportEmailTemplate: |+
+      *** CONSIGNES POUR L'UTILISATEUR ***
+      Cet email signalera votre problème aux administrateurs de ce site.
+      Veuillez remplir les détails ci-dessous, puis envoyez depuis votre logiciel de messagerie habituel.
+
+      *** VEUILLEZ REMPLIR CI-DESSOUS ***
+
+      Problème rencontré :
+
+      Type de trajet recherché (ex. à pied + transports, vélo + transports, voiture + transports) :
+
+      *** DÉTAILS TECHNIQUES ***
   # Used in both desktop and mobile
   TripViewer:
     accessible: Accessible
@@ -579,10 +586,13 @@ components:
     confirmDeletion: Vous avez des recherches et/ou lieux récemment enregistrés qui vont être supprimés. Voulez-vous continuer ?
     favoriteStops: Arrêts favoris
     myPreferences: Mes préférences
+    mySavedPlaces: Mes lieux favoris (<manageLink>modifier</manageLink>)
     noFavoriteStops: Aucun arrêt favori
     recentPlaces: Lieux récents
     recentSearches: Recherches récentes
+    recentSearchSummary: "{mode} de {from} à {to}"
     rememberSearches: Enregistrer les recherches/lieux récents ?
+    stopId: "Arrêt n° {stopId}"
     storageDisclaimer: >
       En activant cette option, tous vos lieux, préférences et paramètres
       seront enregistrés dans le cache de votre navigateur.
@@ -751,7 +761,7 @@ common:
     rent: Location de véhicules
     subway: Métro
     tram: Tram
-    transit: En transports publics
+    transit: En transports
     walk: À pied
     walking: Marche
 
