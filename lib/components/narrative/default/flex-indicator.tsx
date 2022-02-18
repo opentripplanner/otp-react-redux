@@ -37,18 +37,19 @@ const FlexIndicatorWrapper = styled.div<{ shrink: boolean }>`
   grid-template-columns: 1fr 2fr 3fr 2fr;
   grid-template-rows: 1fr 2fr;
   grid-column-gap: ${(props) => (props.shrink ? '8px' : 'inherit')};
-  height: ${(props) => (props.shrink ? '40px' : '90px')};
+  height: ${(props) => (props.shrink ? '40px' : '70px')};
+  align-items: center;
   margin-right: 1em;
-  max-width: ${(props) => (props.shrink ? '60px' : '160px')};
+  max-width: ${(props) => (props.shrink ? '60px' : '180px')};
   padding-right: 0.25em;
-  padding-top: 0.25em;
 
   /* "Flex Service" text */
   h4 {
-    grid-column: 3 / span 2;
+    grid-column: 2 / span 3;
     grid-row: 1;
     margin: 0;
-    padding-top: 2px;
+    margin-left: 1ch;
+    padding-top: 0.25em;
     text-align: left;
   }
 
@@ -77,7 +78,6 @@ const FlexIndicatorWrapper = styled.div<{ shrink: boolean }>`
     display: block;
     grid-row: 1 / span 2;
     height: inherit;
-    margin-top: -0.25em;
     position: relative;
     width: 20px;
   }
