@@ -679,7 +679,7 @@ otpUi:
     clearLocation: Clear location
     currentLocationUnavailable: Current location not available ({error})
     fetchingLocation: Fetching location...
-    geocoderUnreachable: Could not reach geocoder
+    geocoderUnreachable: Could not reach geocoder{error, select, undefined {} other { ({error})}}
     myPlaces: My Places
     nearby: Nearby Stops
     noResultsFound: >
