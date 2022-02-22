@@ -411,5 +411,6 @@ dateTime:
 #   hideRouteShapesWithinFlexZones: true
 
 # API key to make Mapillary API calls. These are used to show street imagery.
+# Mapillary calls these "Client Tokens". They can be created at https://www.mapillary.com/dashboard/developers
 # mapillary:
 #   key: <Mapillary Key>
