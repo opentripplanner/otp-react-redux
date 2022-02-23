@@ -15,9 +15,9 @@ const FlagContainer = styled.span`
     margin: 0 0.125em;
   }
 
+  align-items: center;
   display: inline-flex;
   justify-content: center;
-  align-items: center;
   width: 15px;
 `
 
