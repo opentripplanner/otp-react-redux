@@ -2532,10 +2532,10 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-2.7.0.tgz#ba5ae119bc97deb30d68936d15fc683bbd15e865"
-  integrity sha512-9i3uXPTssyZPr+4a+2QX5QywF+8b11Km3RRDpZFcr4bwTDllfX21mvt36miqhZ/l6mYmloMzybQM+XIJWlQHtA==
+"@opentripplanner/itinerary-body@^2.9.0":
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-2.9.0.tgz#85623aa9e3605ba425b929d3eb949b5bcf36935a"
+  integrity sha512-aCwRwiq32uhWMBS0uMp5C3vEyNEkA/5C7sPBWgJRhytAR5HsSfdbGkUeM6EUbY+9Ki3QldWR4BHpNd7wqWvF9Q==
   dependencies:
     "@opentripplanner/core-utils" "^4.5.0"
     "@opentripplanner/humanize-distance" "^1.1.0"
