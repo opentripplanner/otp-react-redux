@@ -34,9 +34,19 @@
   animation-name: yellowfade;
 }
 
+.otp .stop-viewer-body input[type="date"] {
+  border: none;
+  clear: right;
+  outline: none;
+  width: 125px;
+}
 /* Remove arrows on date input */
 .otp .stop-viewer-body input[type="date"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
+}
+/* For Chromium browsers, remove extra space between date and the calendar icon. */
+.otp .stop-viewer-body input[type="date"]::-webkit-calendar-picker-indicator {
+  margin: 0;
 }
 
 .otp .route-viewer-body,

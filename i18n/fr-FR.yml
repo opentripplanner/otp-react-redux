@@ -274,8 +274,8 @@ components:
         other {Étendre}
       } tous les départs pour la ligne {routeName}
     departure: Départ
-    routeName: "<strong>{routeName}</strong> vers {headsign}"
-    routeShort: "Vers {headsign}"
+    routeName: "<strong>{routeName}</strong> Direction {headsign}"
+    routeShort: "Direction {headsign}"
     status: État
   PhoneNumberEditor:
     changeNumber: Changer de numéro
@@ -335,7 +335,7 @@ components:
     showExtraStops: "Afficher {count} arrêts à proximité"
   RelatedStopsPanel:
     relatedStops: Arrêts à proximité
-    viewDetails: Afficher les détails
+    viewDetails: Détails
     noArrivalFound: Aucun passage prévu
   ResultsError:
     backToSearch: Retour à la recherche
@@ -405,7 +405,7 @@ components:
   StopScheduleTable:
     block: Bloc
     departure: Départ
-    destination: Destination
+    destination: Direction
     route: Ligne
   StopTimeCell:
     imminentArrival: >
@@ -415,17 +415,17 @@ components:
       }
   # Used in both desktop and mobile
   StopViewer:
-    displayStopId: "<strong>Arrêt n°</strong>{stopId}"
+    displayStopId: "<strong>Arrêt n°</strong> {stopId}"
     flexStop: Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande. Une réservation préalable peut être exigée pour obtenir la desserte.
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
-    noStopsFound: Aucun passage n'a été trouvé pour cette date.
-    planTrip: "Planifer un trajet :"
+    noStopsFound: Aucun horaire pour la date choisie.
+    planTrip: "Faire un trajet :"
     timezoneWarning: "Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>."
     viewTypeBtnText: >
       {scheduleView, select,
-        true {Afficher les prochains passages}
-        other {Afficher les horaires}
+        true {Prochains passages}
+        other {Horaires}
       }
     zoomToStop: Zoomer sur l'arrêt
 
