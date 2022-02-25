@@ -35,7 +35,7 @@ Array [
   Array [
     Object {
       "payload": Object {
-        "error": [TypeError: Cannot read properties of undefined (reading 'trackRecent')],
+        "error": [TypeError: Cannot read property 'trackRecent' of undefined],
         "requestId": "abcd1239",
         "searchId": "abcd1234",
         "url": "http://mock-host.com:80/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false&batchId=abcd1234",
@@ -110,7 +110,7 @@ Array [
   Array [
     Object {
       "payload": Object {
-        "error": [TypeError: Cannot read properties of undefined (reading 'trackRecent')],
+        "error": [TypeError: Cannot read property 'trackRecent' of undefined],
         "requestId": "abcd1236",
         "searchId": "abcd1234",
         "url": "http://mock-host.com:80/api/plan?fromPlace=Origin%20%2812%2C34%29%3A%3A12%2C34&toPlace=Destination%20%2834%2C12%29%3A%3A34%2C12&mode=WALK%2CTRANSIT&ignoreRealtimeUpdates=false&batchId=abcd1234",

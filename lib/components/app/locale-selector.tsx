@@ -38,7 +38,10 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
     setLocale
   } = props
 
-  const CurrentLocaleFlag = flags[configLanguages[currentLocale].flag]
+  // If the currentLocale does not exist, avoid error by rendering US flag
+  const CurrentLocaleFlag = configLanguages[currentLocale]
+    ? flags[configLanguages[currentLocale].flag]
+    : flags[configLanguages['en-US'].flag]
   const intl = useIntl()
 
   const handleLocaleSelection = (e: MouseEvent<Element>, locale: string) => {
@@ -73,7 +76,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
             >
               <FlagContainer>
                 {locale === currentLocale && <Icon type="check-square" />}
-                {locale !== currentLocale && <Flag />}
+                {locale !== currentLocale && <Flag style={{ width: 15 }} />}
               </FlagContainer>
               {configLanguages[locale].name}
             </MenuItem>
