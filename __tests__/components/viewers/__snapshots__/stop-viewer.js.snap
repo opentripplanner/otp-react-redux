@@ -581,7 +581,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       id="components.StopViewer.viewTypeBtnText"
                       values={
                         Object {
-                          "scheduleView": false,
+                          "isShowingSchedule": false,
                         }
                       }
                     >
@@ -2752,7 +2752,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       id="components.StopViewer.viewTypeBtnText"
                       values={
                         Object {
-                          "scheduleView": false,
+                          "isShowingSchedule": false,
                         }
                       }
                     >
@@ -4446,7 +4446,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       id="components.StopViewer.viewTypeBtnText"
                       values={
                         Object {
-                          "scheduleView": false,
+                          "isShowingSchedule": false,
                         }
                       }
                     >
@@ -7342,7 +7342,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       id="components.StopViewer.viewTypeBtnText"
                       values={
                         Object {
-                          "scheduleView": false,
+                          "isShowingSchedule": false,
                         }
                       }
                     >
@@ -12810,7 +12810,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       id="components.StopViewer.viewTypeBtnText"
                       values={
                         Object {
-                          "scheduleView": false,
+                          "isShowingSchedule": false,
                         }
                       }
                     >
