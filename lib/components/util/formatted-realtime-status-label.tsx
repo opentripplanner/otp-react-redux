@@ -10,7 +10,8 @@ const FormattedRealtimeStatusLabel = ({
   minutes,
   status
 }: {
-  minutes: number
+  // This will usually become a string, but the type is a React Element since it is a FormattedMessage
+  minutes: JSX.Element
   status: string
 }): JSX.Element | null => {
   switch (status) {

@@ -189,10 +189,10 @@ components:
     notifications: Notifications
     places: Favorite places
     terms: Terms
-  FavoritePlaceRow:
+  FavoritePlaceList:
     addAnotherPlace: Add another place
-    # deleteThisPlace and editThisPlace are aria/tooltip texts.
-    deleteThisPlace: Delete this place
+    description: "Add the places you frequent often to save time planning trips:"
+    # editThisPlace is a tooltip text.
     editThisPlace: Edit this place
     setAddressForPlaceType: "Set your {placeType} address"
   FavoritePlaceScreen:
@@ -204,8 +204,6 @@ components:
     nameAlreadyUsed: You are already using this name for another place. Please enter a different name.
     placeNotFound: Place not found
     placeNotFoundDescription: Sorry, the requested place was not found.
-  FavoritePlacesList:
-    description: "Add the places you frequent often to save time planning trips:"
   FormNavigationButtons:
     ariaLabel: Form navigation
   ItinerarySummary:
@@ -310,9 +308,11 @@ components:
       (code expires after 10 minutes).
     verify: Verify
   Place:
+    # deleteThisPlace is an aria/tooltip text.
+    deleteThisPlace: Delete this place
     enterAlert: >
       Enter origin/destination in the form (or set via map click) 
-      and click the resulting marker to set as {type} location.
+      and click the resulting marker to set as {placeType} location.
     viewStop: View Stop
   PlaceEditor:
     genericLocationPlaceholder: Search for location
@@ -330,12 +330,10 @@ components:
     itinerary: Itinerary
     toggleMap: Toggle Map
   RealtimeAnnotation:
-    delaysNotShownInResults: Your trip results are currently being affected by service delays. These delays do not factor into travel times shown below.
     delaysShownInResults: >
       Your trip results have been adjusted based on real-time
       information. Under normal conditions, this trip would take {normalDuration}
       using the following routes: {routes}.
-    ignoreServiceDelays: Ignore service delays
     serviceUpdate: Service update
   RealtimeStatusLabel:
     # Note to translator: In itinerary body, early or late is single-line
@@ -374,10 +372,6 @@ components:
     agencyFilter: Agency Filter
     allAgencies: All Agencies
     allModes: All Modes # Note to translator: This text is width-constrained.
-    applyServiceDelays: Apply service delays
-    delaysNotShownInResults: >
-      Your trip results are currently being affected by service delays.
-      These delays do not factor into travel times shown below.
     delaysShownInResults: >
       Your trip results have been adjusted based on real-time
       information. Under normal conditions, this trip would take <strong>{normalDuration}</strong>
@@ -385,7 +379,6 @@ components:
     details: " " # If the string is left blank, React-Intl renders the id
     findARoute: Find A Route
     header: Route Viewer
-    ignoreServiceDelays: Ignore service delays
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
     noRouteUrl: No route URL provided.
@@ -439,6 +432,7 @@ components:
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<strong>Stop ID</strong>: {stopId}"
+    flexStop: This is a flex stop. Vehicles will drop off and pick up passengers in this flexible zone by request. You may have to call ahead for service in this area.
     header: Stop Viewer
     loadingText: Loading Stop...
     noStopsFound: No stop times found for date.
@@ -583,11 +577,18 @@ components:
     linkCopied: Copied
     reportIssue: Report Issue
     reportEmailSubject: Reporting an Issue with OpenTripPlanner
-    reportEmailTemplate: >
-      ***INSTRUCTIONS TO USER***
+    reportEmailTemplate: |+
+      *** INSTRUCTIONS TO USER ***
       This feature allows you to email a report to site administrators for review.
-      Please add any additional feedback for this trip under the 'Additional Comments'
-      section below and send using your regular email program."
+      Please fill out the prompts below and send using your regular email program.
+
+      *** PLEASE COMPLETE THE FOLLOWING ***
+
+      Issue encountered:
+
+      Type of trip you wanted to take (ex. walk + transit, bike + transit, car + transit):
+
+      *** TECHNICAL DETAILS ***
   # Used in both desktop and mobile
   TripViewer:
     accessible: Accessible
@@ -601,10 +602,13 @@ components:
     confirmDeletion: You have recent searches and/or places stored. Disabling storage of recent places/searches will remove these items. Continue?
     favoriteStops: Favorite stops
     myPreferences: My preferences
+    mySavedPlaces: My saved places (<manageLink>manage</manageLink>)
     noFavoriteStops: No favorite stops
     recentPlaces: Recent places
     recentSearches: Recent searches
+    recentSearchSummary: "{mode} from {from} to {to}"
     rememberSearches: Remember recent searches/places?
+    stopId: "Stop ID: {stopId}"
     storageDisclaimer: >
       Any preferences, places, or settings you opt 
       to save will be stored in the local storage of your browser. 
@@ -634,6 +638,50 @@ components:
     prompt: Where do you want to go?
 
 otpUi:
+  DateTimeSelector:
+    arrive: Arrive by
+    depart: Depart at
+    now: Leave now
+  queryParameters:
+    bikeSpeed: Bicycle Speed
+    # 1 mile = 100 "centimiles"
+    # There are exceptions in English for 1/10 mile , 1/4 mile, 1/2 mile etc.
+    distanceInMiles: >
+      {centimiles, select, 
+        10 {1/10 mile}
+        25 {1/4 mile}
+        50 {1/2 mile}
+        75 {3/4 mile}
+        other {{miles, number, :: unit/mile unit-width-full-name}}
+      }
+    maxBikeDistance: Maximum Bike
+    maxBikeTime: Max Bike Time
+    maxEScooterDistance: Maximum E-scooter Distance
+    maxWalkDistance: Maximum Walk
+    maxWalkTime: Max Walk Time
+    optimizeBikeFlat: Flat Trip
+    optimizeBikeFriendly: Bike-Friendly Trip
+    optimizeBikeSpeed: Speed
+    optimizeFor: Optimize for
+    optimizeQuick: Speed
+    optimizeTransfers: Fewest Transfers
+    speedInMilesPerHour: "{mph} MPH" # Original units were all caps.
+    walkSpeed: Walk Speed
+    watts: E-scooter Power
+    watts125kidsHoverboard: Kid's hoverboard (6 mph)
+    watts1500powerfulEscooter: Powerful E-scooter (24 mph)
+    watts250entryLevelEscooter: Entry-level scooter (11 mph)
+    watts500robustEscooter: Robust E-scooter (18 mph)
+    # Note to translator: This text is width-constrained.
+    wheelchair: Prefer Wheelchair Accessible Routes
+  SettingsSelectorPanel:
+    bikeOnly: Bike Only
+    escooterOnly: E-scooter Only
+    takeTransit: Take Transit
+    travelPreferences: Travel Preferences
+    use: Use # as in "Use bus, train, subway".
+    useCompanies: Use companies # as in :"Use companies: Spin, Lime, Bolt"
+    walkOnly: Walk Only
   TripDetails:
     calories: "Calories Burned: <strong>{calories, number, ::.}</strong>"
     caloriesDescription: >

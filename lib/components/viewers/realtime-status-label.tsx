@@ -1,11 +1,13 @@
-import React from 'react'
-import { FormattedTime } from 'react-intl'
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// Typescript TODO: Waiting on viewer.js being typed
 import { connect } from 'react-redux'
+import { FormattedTime } from 'react-intl'
+import React from 'react'
 import styled from 'styled-components'
 
+import { getTripStatus, REALTIME_STATUS } from '../../util/viewer'
 import FormattedDuration from '../util/formatted-duration'
 import FormattedRealtimeStatusLabel from '../util/formatted-realtime-status-label'
-import { getTripStatus, REALTIME_STATUS } from '../../util/viewer'
 
 // If shown, keep the '5 min' portion of the status string on the same line.
 export const DelayText = styled.span`
@@ -14,15 +16,16 @@ export const DelayText = styled.span`
 
 export const MainContent = styled.div``
 
-const Container = styled.div`
-${props => props.withBackground
-    ? `background-color: ${props.color};`
-    : `color: ${props.color};`
-}
+const Container = styled.div<{ withBackground?: boolean }>`
+  ${(props) =>
+    props.withBackground
+      ? `background-color: ${props.color};`
+      : `color: ${props.color};`}
 `
 
 const TimeStruck = styled.div`
   text-decoration: line-through;
+  opacity: 0.5;
 `
 
 const TimeBlock = styled.div`
@@ -64,40 +67,47 @@ const RealtimeStatusLabel = ({
   originalTime,
   time,
   withBackground
-}) => {
-  const status = getTripStatus(isRealtime, delay, onTimeThresholdSeconds)
-  const isEarlyOrLate = status === REALTIME_STATUS.EARLY || status === REALTIME_STATUS.LATE
+}: {
+  className?: string
+  delay: number
+  isRealtime?: boolean
+  onTimeThresholdSeconds?: number
+  originalTime?: number
+  time?: number
+  withBackground?: boolean
+}): JSX.Element => {
+  // @ts-ignore getTripStatus is not typed yet
+  const status: typeof REALTIME_STATUS = getTripStatus(
+    isRealtime,
+    delay,
+    onTimeThresholdSeconds
+  )
+  const isEarlyOrLate =
+    // @ts-ignore getTripStatus is not typed yet
+    status === REALTIME_STATUS.EARLY || status === REALTIME_STATUS.LATE
   // Use a default background color if the status object doesn't set a color
   // (e.g. for 'Scheduled' status), but only in withBackground mode.
+  // @ts-ignore getTripStatus is not typed yet
   const color = STATUS[status].color || (withBackground && '#6D6C6C')
   // Render time if provided.
   let renderedTime
   if (time) {
     // If transit vehicle is not on time, strike the original scheduled time
     // and display the updated time underneath.
-    renderedTime = isEarlyOrLate
-      ? (
-        <TimeBlock>
-          <TimeStruck>
-            <FormattedTime
-              timeStyle='short'
-              value={originalTime}
-            />
-          </TimeStruck>
-          <div>
-            <FormattedTime
-              timeStyle='short'
-              value={time}
-            />
-          </div>
-        </TimeBlock>
-      )
-      : <div>
-        <FormattedTime
-          timeStyle='short'
-          value={time}
-        />
+    renderedTime = isEarlyOrLate ? (
+      <TimeBlock>
+        <TimeStruck>
+          <FormattedTime timeStyle="short" value={originalTime} />
+        </TimeStruck>
+        <div>
+          <FormattedTime timeStyle="short" value={time} />
+        </div>
+      </TimeBlock>
+    ) : (
+      <div>
+        <FormattedTime timeStyle="short" value={time} />
       </div>
+    )
   }
   return (
     <Container
@@ -108,11 +118,16 @@ const RealtimeStatusLabel = ({
       {renderedTime}
       <MainContent>
         <FormattedRealtimeStatusLabel
-          minutes={isEarlyOrLate && (
-            <DelayText>
-              <FormattedDuration duration={Math.abs(delay)} />
-            </DelayText>
-          )}
+          minutes={
+            isEarlyOrLate ? (
+              <DelayText>
+                <FormattedDuration duration={Math.abs(delay)} />
+              </DelayText>
+            ) : (
+              <>{null}</>
+            )
+          }
+          // @ts-ignore getTripStatus is not typed yet
           status={STATUS[status].label}
         />
       </MainContent>
@@ -120,7 +135,10 @@ const RealtimeStatusLabel = ({
   )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: {
+  // Typescript TODO: type state
+  otp: { config: { onTimeThresholdSeconds: any } }
+}) => ({
   onTimeThresholdSeconds: state.otp.config.onTimeThresholdSeconds
 })
 
