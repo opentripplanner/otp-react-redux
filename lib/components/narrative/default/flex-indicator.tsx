@@ -29,6 +29,7 @@ const FlexNotice = ({
 )
 
 const FlexIndicatorWrapper = styled.div<{ shrink: boolean }>`
+  align-items: center;
   background: ${FLEX_COLOR_LIGHT};
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
@@ -38,7 +39,6 @@ const FlexIndicatorWrapper = styled.div<{ shrink: boolean }>`
   grid-template-rows: 1fr 2fr;
   grid-column-gap: ${(props) => (props.shrink ? '8px' : 'inherit')};
   height: ${(props) => (props.shrink ? '40px' : '70px')};
-  align-items: center;
   margin-right: 1em;
   max-width: ${(props) => (props.shrink ? '60px' : '180px')};
   padding-right: 0.25em;
