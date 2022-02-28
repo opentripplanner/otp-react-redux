@@ -1,34 +1,71 @@
+// Typescript TODO: these types are a bit useless without types for config, query, and queryparam
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // import {DropdownSelector} from '@opentripplanner/trip-form'
-import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import React, { Component } from 'react'
 
-import { setQueryParam } from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
 import { getShowUserSettings } from '../../util/state'
+import { setQueryParam } from '../../actions/form'
 
 import { StyledBatchPreferences } from './batch-styled'
 import UserTripSettings from './user-trip-settings'
 
-class BatchPreferences extends Component {
+// TODO: Central type source
+export type Combination = {
+  mode: string
+  params?: { [key: string]: number | string }
+}
+
+export const replaceTransitMode =
+  (newQueryParamsMode: string) =>
+  (combination: Combination): Combination => {
+    // Split out walk so it's not duplicated
+    const newMode = (newQueryParamsMode || 'WALK,TRANSIT').split('WALK,')?.[1]
+    // Replace TRANSIT with the newly selected parameters
+    const mode = combination.mode.replace('TRANSIT', newMode)
+    return { ...combination, mode }
+  }
+
+class BatchPreferences extends Component<{
+  config: any
+  query: any
+  setQueryParam: (newQueryParam: any) => void
+  showUserSettings: boolean
+}> {
   static contextType = ComponentContext
 
-  render () {
-    const {
-      config,
-      query,
-      setQueryParam,
-      showUserSettings
-    } = this.props
+  /**
+   * When the queryParam changes, the mode is correctly updated but the
+   * active combinations are not. This method updates the currentQuery combinations
+   * and ensures that they all contain the correct modes
+   *
+   * Typescript TODO: combinations and queryParams need types
+   */
+  onQueryParamChange = (newQueryParams: any) => {
+    const { config, query, setQueryParam } = this.props
+    const disabledModes = query.disabledModes || []
+    const combinations = config.modes.combinations
+      .filter((combination: Combination) => {
+        const modesInCombination = combination.mode.split(',')
+        return !modesInCombination.find((m) => disabledModes.includes(m))
+      })
+      .map(replaceTransitMode(newQueryParams.mode))
+    setQueryParam({ ...newQueryParams, combinations })
+  }
+
+  render() {
+    const { config, query, showUserSettings } = this.props
     const { ModeIcon } = this.context
 
     return (
-      <div className='settings-selector-panel'>
-        <div className='modes-panel'>
+      <div className="settings-selector-panel">
+        <div className="modes-panel">
           {showUserSettings && <UserTripSettings />}
 
           <StyledBatchPreferences
             ModeIcon={ModeIcon}
-            onQueryParamChange={setQueryParam}
+            onQueryParamChange={this.onQueryParamChange}
             queryParams={query}
             supportedCompanies={config.companies}
             supportedModes={config.modes}
@@ -95,7 +132,9 @@ class BatchPreferences extends Component {
 
 // connect to redux store
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state: {
+  otp: { config: any; currentQuery: any }
+}) => {
   const { config, currentQuery } = state.otp
   return {
     config,

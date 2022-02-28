@@ -24,7 +24,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
   >
     <Connect(injectIntl(StopViewer))>
       <injectIntl(StopViewer)
-        autoRefreshStopTimes={true}
+        enableFavoriteStops={false}
         favoriteStops={Array []}
         fetchStopInfo={[Function]}
         findStopTimesForStop={[Function]}
@@ -218,7 +218,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
         zoomToStop={[Function]}
       >
         <StopViewer
-          autoRefreshStopTimes={true}
+          enableFavoriteStops={false}
           favoriteStops={Array []}
           fetchStopInfo={[Function]}
           findStopTimesForStop={[Function]}
@@ -780,7 +780,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   className="sc-crrszt jgWhKL"
                 >
                   <LiveStopTimes
-                    autoRefreshStopTimes={true}
                     findStopTimesForStop={[Function]}
                     homeTimezone="America/Los_Angeles"
                     setHoveredStop={[Function]}
@@ -1487,7 +1486,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                             className="sc-dlfnuX jzpRQX"
                           >
                             <input
-                              checked={true}
                               name="autoUpdate"
                               onChange={[Function]}
                               type="checkbox"
@@ -2395,7 +2393,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
   >
     <Connect(injectIntl(StopViewer))>
       <injectIntl(StopViewer)
-        autoRefreshStopTimes={true}
+        enableFavoriteStops={false}
         favoriteStops={Array []}
         fetchStopInfo={[Function]}
         findStopTimesForStop={[Function]}
@@ -2490,7 +2488,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
         zoomToStop={[Function]}
       >
         <StopViewer
-          autoRefreshStopTimes={true}
+          enableFavoriteStops={false}
           favoriteStops={Array []}
           fetchStopInfo={[Function]}
           findStopTimesForStop={[Function]}
@@ -2953,7 +2951,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   className="sc-crrszt jgWhKL"
                 >
                   <LiveStopTimes
-                    autoRefreshStopTimes={true}
                     findStopTimesForStop={[Function]}
                     homeTimezone="America/Los_Angeles"
                     setHoveredStop={[Function]}
@@ -3381,7 +3378,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                             className="sc-dlfnuX jzpRQX"
                           >
                             <input
-                              checked={true}
                               name="autoUpdate"
                               onChange={[Function]}
                               type="checkbox"
@@ -3893,7 +3889,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
   >
     <Connect(injectIntl(StopViewer))>
       <injectIntl(StopViewer)
-        autoRefreshStopTimes={true}
+        enableFavoriteStops={false}
         favoriteStops={Array []}
         fetchStopInfo={[Function]}
         findStopTimesForStop={[Function]}
@@ -4087,7 +4083,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
         zoomToStop={[Function]}
       >
         <StopViewer
-          autoRefreshStopTimes={true}
+          enableFavoriteStops={false}
           favoriteStops={Array []}
           fetchStopInfo={[Function]}
           findStopTimesForStop={[Function]}
@@ -4649,7 +4645,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   className="sc-crrszt jgWhKL"
                 >
                   <LiveStopTimes
-                    autoRefreshStopTimes={true}
                     findStopTimesForStop={[Function]}
                     homeTimezone="America/Los_Angeles"
                     setHoveredStop={[Function]}
@@ -5367,7 +5362,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                             className="sc-dlfnuX jzpRQX"
                           >
                             <input
-                              checked={true}
                               name="autoUpdate"
                               onChange={[Function]}
                               type="checkbox"
@@ -6275,7 +6269,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
   >
     <Connect(injectIntl(StopViewer))>
       <injectIntl(StopViewer)
-        autoRefreshStopTimes={true}
+        enableFavoriteStops={false}
         favoriteStops={Array []}
         fetchStopInfo={[Function]}
         findStopTimesForStop={[Function]}
@@ -6727,7 +6721,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
         zoomToStop={[Function]}
       >
         <StopViewer
-          autoRefreshStopTimes={true}
+          enableFavoriteStops={false}
           favoriteStops={Array []}
           fetchStopInfo={[Function]}
           findStopTimesForStop={[Function]}
@@ -7547,7 +7541,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   className="sc-crrszt jgWhKL"
                 >
                   <LiveStopTimes
-                    autoRefreshStopTimes={true}
                     findStopTimesForStop={[Function]}
                     homeTimezone="America/Los_Angeles"
                     setHoveredStop={[Function]}
@@ -9815,7 +9808,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             className="sc-dlfnuX jzpRQX"
                           >
                             <input
-                              checked={true}
                               name="autoUpdate"
                               onChange={[Function]}
                               type="checkbox"
@@ -11755,7 +11747,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
   >
     <Connect(injectIntl(StopViewer))>
       <injectIntl(StopViewer)
-        autoRefreshStopTimes={true}
+        enableFavoriteStops={false}
         favoriteStops={Array []}
         fetchStopInfo={[Function]}
         findStopTimesForStop={[Function]}
@@ -12202,7 +12194,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
         zoomToStop={[Function]}
       >
         <StopViewer
-          autoRefreshStopTimes={true}
+          enableFavoriteStops={false}
           favoriteStops={Array []}
           fetchStopInfo={[Function]}
           findStopTimesForStop={[Function]}
@@ -13017,7 +13009,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   className="sc-crrszt jgWhKL"
                 >
                   <LiveStopTimes
-                    autoRefreshStopTimes={true}
                     findStopTimesForStop={[Function]}
                     homeTimezone="America/Los_Angeles"
                     setHoveredStop={[Function]}
@@ -13988,7 +13979,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                             className="sc-dlfnuX jzpRQX"
                           >
                             <input
-                              checked={true}
                               name="autoUpdate"
                               onChange={[Function]}
                               type="checkbox"
@@ -15908,7 +15898,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
   >
     <Connect(injectIntl(StopViewer))>
       <injectIntl(StopViewer)
-        autoRefreshStopTimes={true}
+        enableFavoriteStops={false}
         favoriteStops={Array []}
         fetchStopInfo={[Function]}
         findStopTimesForStop={[Function]}
@@ -15937,7 +15927,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
         zoomToStop={[Function]}
       >
         <StopViewer
-          autoRefreshStopTimes={true}
+          enableFavoriteStops={false}
           favoriteStops={Array []}
           fetchStopInfo={[Function]}
           findStopTimesForStop={[Function]}

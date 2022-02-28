@@ -37,9 +37,9 @@ const FlexIndicatorWrapper = styled.div<{ shrink: boolean }>`
   grid-template-columns: 1fr 2fr 3fr 2fr;
   grid-template-rows: 1fr 2fr;
   grid-column-gap: ${(props) => (props.shrink ? '8px' : 'inherit')};
-  height: ${(props) => (props.shrink ? '40px' : '80px')};
+  height: ${(props) => (props.shrink ? '40px' : '90px')};
   margin-right: 1em;
-  max-width: ${(props) => (props.shrink ? '60px' : '190px')};
+  max-width: ${(props) => (props.shrink ? '60px' : '160px')};
   padding-right: 0.25em;
   padding-top: 0.25em;
 
