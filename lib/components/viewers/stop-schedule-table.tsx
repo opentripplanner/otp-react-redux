@@ -9,6 +9,7 @@ import {
   mergeAndSortStopTimes
 } from '../../util/viewer'
 import Loading from '../narrative/loading'
+import type { StopData } from '../util/types'
 
 // Styles for the schedule table and its contents.
 const StyledTable = styled.table`
@@ -55,10 +56,10 @@ const TimeCell = styled.td`
  * chronologically.
  */
 class StopScheduleTable extends Component<{
-  date: any
+  date: string
   showBlockIds: boolean
-  // TODO TYPESCRIPT shared types
-  stopData: any
+  // TODO TYPESCRIPT: move this type to a shared type
+  stopData: StopData
 }> {
   /**
    * Link to the DOM for the next departure row, so we can scroll to it if needed.
