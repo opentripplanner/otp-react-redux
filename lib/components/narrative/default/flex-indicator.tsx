@@ -1,5 +1,5 @@
-// Craco will require this. FIXME: remove line once migrated to craco
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore TODO: migrate to typescript
 import { barberPole } from '@opentripplanner/itinerary-body/lib/otp-react-redux/line-column-content'
 import { FormattedMessage } from 'react-intl'
 import React from 'react'
