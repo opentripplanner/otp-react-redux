@@ -6997,6 +6997,11 @@ country-flag-icons@^1.0.2:
   resolved "https://registry.yarnpkg.com/country-flag-icons/-/country-flag-icons-1.4.7.tgz#6f9acb18fae373528ba38834ba80e30084f24e7f"
   integrity sha512-tsF7fPalAub3f328OcZL6sUxC+g7Ndua+M4xXCm+Q3f/p2XtNmJNrZTopA9iyS82ddYyKZ5ClPZUhifWv6fn2g==
 
+country-flag-icons@^1.4.19:
+  version "1.4.19"
+  resolved "https://registry.yarnpkg.com/country-flag-icons/-/country-flag-icons-1.4.19.tgz#410879a4a1b06ab28d4fc56261b391f221eba957"
+  integrity sha512-1hmXFJ4UURQt0Ex0990B7oOL4n9KLpT9NOSEmZoYh+/5DQ7/pikyqaptqCLUFFv/bYHyvYFeo0fqV82XxU6VOA==
+
 craco-fast-refresh@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/craco-fast-refresh/-/craco-fast-refresh-1.1.0.tgz#0e672ffb63b7428c8e79566e81d8107f10291ac6"
