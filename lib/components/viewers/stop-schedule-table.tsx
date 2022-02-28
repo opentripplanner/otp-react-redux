@@ -64,7 +64,7 @@ class StopScheduleTable extends Component<{
   /**
    * Link to the DOM for the next departure row, so we can scroll to it if needed.
    */
-  targetDepartureRef = createRef()
+  targetDepartureRef = createRef<HTMLElement>()
 
   /**
    * Scroll to the first stop time that is departing from now.
@@ -72,8 +72,6 @@ class StopScheduleTable extends Component<{
   _scrollToFirstDeparture = (): void => {
     const { current } = this.targetDepartureRef
     if (current) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore TYPESCRIPT TODO: what is this type supposed to be?
       current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }
