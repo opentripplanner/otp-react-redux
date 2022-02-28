@@ -8,10 +8,6 @@
   * In desktop and mobile modes, we change the link color to white for consistency with the AppMenu component.
   */
 
-.otp.mobile .navbar .mobile-navbar-container { 
-  
-}
-
 .otp.mobile .navbar .container-fluid .locale-selector-and-login {
   position: fixed;
   right: 0;
