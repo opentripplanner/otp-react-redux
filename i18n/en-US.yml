@@ -674,6 +674,24 @@ otpUi:
     watts500robustEscooter: Robust E-scooter (18 mph)
     # Note to translator: This text is width-constrained.
     wheelchair: Prefer Wheelchair Accessible Routes
+  LocationField:
+    beingTypingPrompt: Begin typing to search for locations
+    clearLocation: Clear location
+    currentLocationUnavailable: Current location not available ({error})
+    fetchingLocation: Fetching location...
+    geocoderUnreachable: Could not reach geocoder{error, select, undefined {} other { ({error})}}
+    myPlaces: My Places
+    nearby: Nearby Stops
+    noResultsFound: >
+      No results found for {input, select,
+        null {your query}
+        other {{input}}
+      }
+    other: Other
+    recentlySearched: Recently Searched
+    stations: Stations
+    stops: Stops
+    useCurrentLocation: Use Current Location
   SettingsSelectorPanel:
     bikeOnly: Bike Only
     escooterOnly: E-scooter Only

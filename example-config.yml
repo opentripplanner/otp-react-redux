@@ -338,6 +338,11 @@ itinerary:
 ### The nested structure should be the same as the language files under the i18n folder.
 ### You can also customize OTP error messages for itinerary searches based on OTP HTTP codes.
 ### A separate message can be set for each language or locale if necessary.
+### Languages defined may be region-specific (e.g. en-US) or language-specific (e.g. es, kr)
+### The LocaleSelector component, which provides a dropdown for the user to change their locale, will
+### only be rendered if more than one valid language (all languages must have "name" defined) is included
+### in the language config. Locale icons (flags) are rendered based on the country code provided below (i.e. flag: US)
+
 # language:
 #   allLanguages
 #     common:
@@ -365,6 +370,35 @@ itinerary:
 #         modes: "CAR_HAIL, CAR_RENT"
 #       480:
 #         msg: No available transit routes or rideshare/carshare service at origin.
+#     flag: US
+#     name: English (US)
+#
+#   fr:
+#     config:
+#       # App (hamburger) menu items
+#       menuItems:
+#         car-pool: Covoiturage
+#         give-us-feedback: Donnez votre avis
+#         log-my-commute: Mes trajets verts
+#         traveler-tools: Outils du voyageur
+#     flag: FR
+#     name: French
+
+#   ko:
+#     flag: KR
+#     name: 한국인
+
+#   vi:
+#     flag: VN
+#     name: Tiếng Việt
+
+#   zh:
+#     flag: CN
+#     name: 中国人
+
+#   es:
+#     flag: ES
+#     name: Español
 
 ### Localization section to provide language/locale settings
 #localization:
@@ -409,3 +443,8 @@ dateTime:
 #   # Whether to render routes within flex zones of a route's patterns. If set to true,
 #   # routes will not be rendered within flex zones.
 #   hideRouteShapesWithinFlexZones: true
+
+# API key to make Mapillary API calls. These are used to show street imagery.
+# Mapillary calls these "Client Tokens". They can be created at https://www.mapillary.com/dashboard/developers
+# mapillary:
+#   key: <Mapillary Key>
