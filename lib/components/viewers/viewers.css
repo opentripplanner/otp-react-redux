@@ -37,6 +37,7 @@
 .otp .stop-viewer-body input[type="date"] {
   border: none;
   clear: right;
+  cursor: pointer;
   outline: none;
   width: 125px;
 }
