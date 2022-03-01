@@ -61,3 +61,14 @@
 - Improve screen reader experience
 - Add user setting for planning accessible trips by default
 - Support internationalization of most components
+
+## [4.0.0](https://github.com/opentripplanner/otp-react-redux/releases/tag/v4.0.0) (2022-02-10)
+
+- Migrate to webpack-based build system
+- Enhance rendering of flex routes
+- Clean up and modernize call taker interface
+- Internationalize and modernize codebase of `trip-form` component
+- Internationalize `location-field` component
+- GTFS Flex support in stop viewer, route viewer, and trip viewer
+- Improve styling of batch itinerary viewer
+- Support showing recently searched and saved places in main panel
