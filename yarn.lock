@@ -2630,12 +2630,12 @@
     lodash.clonedeep "^4.5.0"
     throttle-debounce "^2.1.0"
 
-"@opentripplanner/transitive-overlay@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-1.1.2.tgz#a83ababee44a15d364c2ae81005189a1d628e964"
-  integrity sha512-svNoXZIecCVZK8x5JOy3jiZTCHjs8YSFHLmBBYBzd4uvZdYJkCbeRwiWEtFOOSauEbE+dpMZwLOROG0EwVLq6g==
+"@opentripplanner/transitive-overlay@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-1.1.3.tgz#be6e1e7eab52d7beb58e5de945c453ec976683e1"
+  integrity sha512-zgZ3N3AC8G5JoCZmcO6c2Teim4KEUWA3pGhpKcsNfkMciIotuJLxL6AWcrVu767sohS6ny0fFJENT7jo5TPFqQ==
   dependencies:
-    "@opentripplanner/core-utils" "^4.1.0"
+    "@opentripplanner/core-utils" "^4.5.0"
     lodash.isequal "^4.5.0"
     transitive-js "^0.13.7"
 
