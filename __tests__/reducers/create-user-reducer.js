@@ -1,5 +1,5 @@
-import {getUserInitialState} from '../../lib/reducers/create-user-reducer'
-import {restoreDateNowBehavior, setDefaultTestTime} from '../test-utils'
+import { getUserInitialState } from '../../lib/reducers/create-user-reducer'
+import { restoreDateNowBehavior, setDefaultTestTime } from '../test-utils'
 
 describe('lib > reducers > create-user-reducer', () => {
   afterEach(restoreDateNowBehavior)
