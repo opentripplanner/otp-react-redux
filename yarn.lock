@@ -2617,10 +2617,10 @@
     "@opentripplanner/humanize-distance" "^1.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/route-viewer-overlay@^1.2.1-alpha.2":
-  version "1.2.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-1.2.1-alpha.2.tgz#fb0bbb5d2c0e08c07aefcd4835ebbd9ea054cc06"
-  integrity sha512-wNRUOawtMyKjt6Oz9anajlmGVNUqWR2Q7Anv+BUC5cYRXU9k653NZtohKead3CPrqvxtMGRMUWOLN/2TA00Njw==
+"@opentripplanner/route-viewer-overlay@^1.2.1-alpha.3":
+  version "1.2.1-alpha.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-1.2.1-alpha.3.tgz#959c2511bf595995de5b9451768135a091391f4e"
+  integrity sha512-gLyP6X/fY4OBa5OtGlO7feF1uqohir5YFSglBzsLCStmwpUdobYoT6VtLD6DscPcfpgBJmjLjdOUDlnsoYXc3Q==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/core-utils" "^4.5.0"
