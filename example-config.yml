@@ -106,6 +106,7 @@ map:
   ###   styles.segment_labels: styles attributes recognized by transitive.js.
   ###                         For examples of applicable style attributes, see
   ###                         https://github.com/conveyal/transitive.js/blob/master/stories/Transitive.stories.js#L47.
+  ### - disableFlexArc: optional parameter to disable rendering flex itinerary legs as an arc. 
   # transitive:
   #   labeledModes:
   #     - BUS
@@ -121,6 +122,7 @@ map:
   #       color: "#FFE0D0"
   #       font-family: Hind, sans-serif
   #       font-size: 18px
+  #   disableFlexArc: true
 
 # it is possible to leave out a geocoder config entirely. In that case only
 # GPS coordinates will be used when finding the origin/destination.
