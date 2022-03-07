@@ -2,6 +2,7 @@ api:
   host: http://localhost
   path: /otp/routers/default
   port: 8001
+# v2: false
 
 # Add suggested locations to be shown as options in the form view.
 # locations:
