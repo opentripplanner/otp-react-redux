@@ -801,9 +801,10 @@ common:
     # The original OTP mode id is CABLE_CAR. Lowercase makes it cable_car.
     cable_car: Cable Car
     car: Car
-    car_park: car park
+    car_park: Park and Ride
     drive: Drive
     ferry: Ferry
+    flex: Flexible Routes
     funicular: Funicular
     gondola: Gondola
     micromobility: E-Scooter
