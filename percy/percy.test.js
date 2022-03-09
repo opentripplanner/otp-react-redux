@@ -54,7 +54,7 @@ beforeAll(async () => {
       'https://otp-repo.s3.amazonaws.com/ATL-fix_03-09-2022-14-40-46.har',
       '-s',
       '--output',
-      '/tmp/ATL.har'
+      'ATL.har'
     ])
   } catch (error) {
     console.log(error)
@@ -67,7 +67,7 @@ beforeAll(async () => {
     }).stdout.pipe(process.stdout)
 
     // Launch mock OTP server
-    execa('npx', ['har-express', '-p', '9999', '/tmp/ATL.har'], {
+    execa('npx', ['har-express', '-p', '9999', 'ATL.har'], {
       signal: harAbortController.signal
     }).stdout.pipe(process.stdout)
 
@@ -82,11 +82,13 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-  serveAbortController.abort()
-  harAbortController.abort()
-
-  //   await browser.close()
-
+  try {
+    serveAbortController.abort()
+    harAbortController.abort()
+    await browser.close()
+  } catch (error) {
+    console.log(error)
+  }
   console.log('Closed mock server and headless browser')
 })
 
