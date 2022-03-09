@@ -61,20 +61,24 @@ beforeAll(async () => {
   }
   console.log('Built OTP-RR and downloaded HAR data')
 
-  execa('npx', ['serve', 'dist', '-p', MOCK_SERVER_PORT], {
-    signal: serveAbortController.signal
-  }).stdout.pipe(process.stdout)
+  try {
+    execa('npx', ['serve', 'dist', '-p', MOCK_SERVER_PORT], {
+      signal: serveAbortController.signal
+    }).stdout.pipe(process.stdout)
 
-  // Launch mock OTP server
-  execa('npx', ['har-express', '-p', '9999', '/tmp/ATL.har'], {
-    signal: harAbortController.signal
-  }).stdout.pipe(process.stdout)
+    // Launch mock OTP server
+    execa('npx', ['har-express', '-p', '9999', '/tmp/ATL.har'], {
+      signal: harAbortController.signal
+    }).stdout.pipe(process.stdout)
 
-  // Web security is disabled to allow requests to the mock OTP server
-  browser = await puppeteer.launch({
-    args: ['--disable-web-security']
-    // headless: false
-  })
+    // Web security is disabled to allow requests to the mock OTP server
+    browser = await puppeteer.launch({
+      args: ['--disable-web-security']
+      // headless: false
+    })
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 afterAll(async () => {
