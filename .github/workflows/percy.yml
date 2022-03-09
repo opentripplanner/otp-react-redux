@@ -1,0 +1,26 @@
+name: Percy
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  test-build-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # This allows us to work with the repository during the lint step
+          fetch-depth: 2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - name: Install npm packages using cache
+        uses: bahmutov/npm-install@v1
+      - name: Take Percy Snapshots
+        # Move everything from latest commit back to staged
+        run: npx percy exec -- npx jest percy/percy.test.js
