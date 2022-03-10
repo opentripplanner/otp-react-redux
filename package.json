@@ -216,5 +216,12 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ]
+  },
+  "percy": {
+    "version": 2,
+    "snapshot": {
+      "enable-javascript": true,
+      "percy-css": ".link-button.pull-right { display: none; }"
+    }
   }
 }

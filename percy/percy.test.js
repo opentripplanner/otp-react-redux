@@ -18,10 +18,7 @@ jest.setTimeout(600000)
 const PERCY_EXTRA_WAIT = 5000
 const percySnapshotWithWait = async (page, name) => {
   await page.waitForTimeout(PERCY_EXTRA_WAIT)
-  await percySnapshot(page, name, {
-    enableJavascript: true,
-    percyCSS: '.link-button.pull-right: {display:none!important}'
-  })
+  await percySnapshot(page, name)
 }
 
 let browser
