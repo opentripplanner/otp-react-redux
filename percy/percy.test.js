@@ -18,7 +18,7 @@ jest.setTimeout(600000)
 const PERCY_EXTRA_WAIT = 5000
 const percySnapshotWithWait = async (page, name) => {
   await page.waitForTimeout(PERCY_EXTRA_WAIT)
-  await percySnapshot(page, name)
+  await percySnapshot(page, name, { enableJavascript: true })
 }
 
 let browser
@@ -76,6 +76,15 @@ beforeAll(async () => {
       args: ['--disable-web-security']
       // headless: false
     })
+
+    // Fix time
+    browser.on('targetchanged', async (target) => {
+      const targetPage = await target.page()
+      const client = await targetPage.target().createCDPSession()
+      await client.send('Runtime.evaluate', {
+        expression: 'Date.now = function() { return 1646835742000; }'
+      })
+    })
   } catch (error) {
     console.log(error)
   }
@@ -100,11 +109,6 @@ jest.setTimeout(600000)
 
 test('OTP-RR', async () => {
   const page = await loadPath('/')
-  await page.evaluate(() => {
-    Date.now = () => {
-      return 1636363636
-    }
-  })
   await page.setViewport({
     height: 1080,
     width: 1920
@@ -148,7 +152,7 @@ test('OTP-RR', async () => {
   // Open schedule view
   await page.waitForSelector('button.link-button.pull-right')
   await page.click('button.link-button.pull-right')
-  await page.waitForTimeout(9000) // Slow animation
+  await page.waitForTimeout(3000) // Slow animation
   await percySnapshotWithWait(page, 'Schedule Viewer')
 
   // Open route viewer
@@ -163,7 +167,7 @@ test('OTP-RR', async () => {
 
   // Open Specific Route`
   const [busRouteButton] = await page.$x(
-    "//button[contains(., 'Sugarloaf Mills - Lindbergh Center')]"
+    "//span[contains(., 'Sugarloaf Mills - Lindbergh Center')]"
   )
   await busRouteButton.click()
   await page.waitForSelector('#headsign-selector')
