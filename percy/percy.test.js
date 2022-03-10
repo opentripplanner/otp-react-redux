@@ -51,7 +51,7 @@ beforeAll(async () => {
 
     // grab ATL har file to tmp
     await execa('curl', [
-      'https://otp-repo.s3.amazonaws.com/ATL-fix_03-09-2022-14-40-46_03-10-2022-08-56-53.har',
+      'https://otp-repo.s3.amazonaws.com/ATL-fix_03-09-2022-14-40-46_03-10-2022-09-08-49.har',
       '-s',
       '--output',
       'ATL.har'
