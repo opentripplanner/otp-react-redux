@@ -62,12 +62,12 @@ beforeAll(async () => {
   console.log('Built OTP-RR and downloaded HAR data')
 
   try {
-    execa('npx', ['serve', 'dist', '-p', MOCK_SERVER_PORT], {
+    execa('yarn', ['percy-serve', 'dist', '-p', MOCK_SERVER_PORT], {
       signal: serveAbortController.signal
     }).stdout.pipe(process.stdout)
 
     // Launch mock OTP server
-    execa('npx', ['har-express', '-p', '9999', 'ATL.har'], {
+    execa('yarn', ['percy-har-express', '-p', '9999', 'ATL.har'], {
       signal: harAbortController.signal
     }).stdout.pipe(process.stdout)
 

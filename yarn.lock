@@ -10285,6 +10285,13 @@ handlebars@^4.7.6:
   optionalDependencies:
     uglify-js "^3.1.4"
 
+har-express@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/har-express/-/har-express-1.1.0.tgz#79646068c6a981d8778eca0745dac98bfa3a4290"
+  integrity sha512-rzJ5I4wJHhjraaRuUOxoAXMNsJNHe9farMNAqUz1YZ+LA333axL+pT4haTkYeKL1HCcRdn2Y7zfjryPqSD59yQ==
+  dependencies:
+    express "^4.17.1"
+
 har-schema@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/har-schema/-/har-schema-2.0.0.tgz#a94c2224ebcac04782a0d9035521f24735b7ec92"

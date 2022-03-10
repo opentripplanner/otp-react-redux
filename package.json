@@ -14,7 +14,9 @@
     "prestart": "yarn",
     "test": "yarn run lint && yarn run unit",
     "semantic-release": "semantic-release",
-    "start": "craco start"
+    "start": "craco start",
+    "percy-serve": "serve",
+    "percy-har-express": "har-express"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -156,6 +158,7 @@
     "eslint-plugin-typescript-sort-keys": "^1.8.0",
     "execa": "^5.1.1",
     "express": "^4.17.1",
+    "har-express": "^1.1.0",
     "husky": "^6.0.0",
     "jest-transform-stub": "^2.0.0",
     "jest-yaml-transform": "^0.2.0",
