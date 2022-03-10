@@ -84,6 +84,9 @@ beforeAll(async () => {
       await client.send('Runtime.evaluate', {
         expression: 'Date.now = function() { return 1646835742000; }'
       })
+      await client.send('Runtime.evaluate', {
+        expression: 'Date.getTime = function() { return 1646835742000; }'
+      })
     })
   } catch (error) {
     console.log(error)
