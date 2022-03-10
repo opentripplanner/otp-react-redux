@@ -79,6 +79,9 @@ beforeAll(async () => {
   } catch (error) {
     console.log(error)
   }
+
+  // Give servers time to start up
+  await execa('sleep', ['5'])
 })
 
 afterAll(async () => {
