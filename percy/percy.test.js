@@ -82,10 +82,8 @@ beforeAll(async () => {
       const targetPage = await target.page()
       const client = await targetPage.target().createCDPSession()
       await client.send('Runtime.evaluate', {
-        expression: 'Date.now = function() { return 1646835742000; }'
-      })
-      await client.send('Runtime.evaluate', {
-        expression: 'Date.getTime = function() { return 1646835742000; }'
+        expression:
+          'Date.now = function() { return 1646835742000; };Date.getTime = function() { return 1646835742000; }'
       })
     })
   } catch (error) {
