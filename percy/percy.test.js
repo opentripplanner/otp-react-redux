@@ -20,7 +20,7 @@ const percySnapshotWithWait = async (page, name) => {
   await page.waitForTimeout(PERCY_EXTRA_WAIT)
   await percySnapshot(page, name, {
     enableJavascript: true,
-    percyCSS: '.link-button.pull-right: {display:none}'
+    percyCSS: '.link-button.pull-right: {display:none!important}'
   })
 }
 
