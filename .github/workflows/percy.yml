@@ -23,6 +23,6 @@ jobs:
         uses: bahmutov/npm-install@v1
       - name: Take Percy Snapshots
         # Move everything from latest commit back to staged
-        run: npx percy exec -- npx jest percy/percy.test.js
+        run: npx percy exec -- npx jest percy/percy.test.js --force-exit
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
