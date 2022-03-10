@@ -157,7 +157,7 @@ test('OTP-RR', async () => {
   )
   await routeViewerButton.click()
   await page.waitForSelector('.route-viewer')
-  await page.waitFortimeout(5000)
+  await page.waitForTimeout(5000)
 
   await percySnapshotWithWait(page, 'Route Viewer')
 
