@@ -15,6 +15,7 @@ import UserTripSettings from './user-trip-settings'
 export type Combination = {
   mode: string
   params?: { [key: string]: number | string }
+  requiredModes: string[]
 }
 
 export const replaceTransitMode =
@@ -44,12 +45,11 @@ class BatchPreferences extends Component<{
    */
   onQueryParamChange = (newQueryParams: any) => {
     const { config, query, setQueryParam } = this.props
-    const disabledModes = query.disabledModes || []
+    const enabledModes = query.enabledModes || config.modes.modeOptions
     const combinations = config.modes.combinations
-      .filter((combination: Combination) => {
-        const modesInCombination = combination.mode.split(',')
-        return !modesInCombination.find((m) => disabledModes.includes(m))
-      })
+      .filter((c: Combination) =>
+        c.requiredModes.every((m) => enabledModes.includes(m))
+      )
       .map(replaceTransitMode(newQueryParams.mode))
     setQueryParam({ ...newQueryParams, combinations })
   }

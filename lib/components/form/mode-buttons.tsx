@@ -1,4 +1,3 @@
-import { IntlShape, useIntl } from 'react-intl'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
@@ -8,38 +7,10 @@ import Icon from '../util/icon'
 
 import { buttonCss } from './batch-styled'
 
-type Mode = {
+export type Mode = {
   icon?: string
   label: string
   mode: string
-}
-
-export function getModeOptions(intl: IntlShape): Mode[] {
-  // intl.formatMessage is used here instead of <FormattedMessage> because the text is
-  // rendered inside <OverlayTrigger>, which renders outside of the <IntlProvider> context.
-  return [
-    {
-      label: intl.formatMessage({ id: 'common.modes.transit' }),
-      mode: 'TRANSIT'
-    },
-    {
-      label: intl.formatMessage({ id: 'common.modes.walking' }),
-      mode: 'WALK'
-    },
-    {
-      label: intl.formatMessage({ id: 'common.modes.drive' }),
-      mode: 'CAR'
-    },
-    {
-      label: intl.formatMessage({ id: 'common.modes.bicycle' }),
-      mode: 'BICYCLE'
-    },
-    {
-      icon: 'mobile',
-      label: intl.formatMessage({ id: 'common.modes.rent' }),
-      mode: 'RENT' // TODO: include HAIL?
-    }
-  ]
 }
 
 const CheckMarkIcon = styled(Icon)`
@@ -97,17 +68,18 @@ export const StyledModeButton = styled(ModeButton)`
 
 const ModeButtons = ({
   className,
+  modeOptions,
   onClick,
   selectedModes = []
 }: {
   className: string
+  modeOptions: Mode[]
   onClick: (mode: string) => void
   selectedModes: string[]
 }): JSX.Element => {
-  const intl = useIntl()
   return (
     <>
-      {getModeOptions(intl).map((item, index) => (
+      {modeOptions.map((item) => (
         <StyledModeButton
           className={className}
           item={item}

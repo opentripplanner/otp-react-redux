@@ -26,6 +26,7 @@ import BatchPreferences, { replaceTransitMode } from './batch-preferences'
 import DateTimeModal from './date-time-modal'
 import ModeButtons, { getModeOptions, StyledModeButton } from './mode-buttons'
 import type { Combination } from './batch-preferences'
+import type { Mode } from './mode-buttons'
 
 /**
  * Simple utility to check whether a list of mode strings contains the provided
@@ -92,7 +93,7 @@ class BatchSettings extends Component<{
 }> {
   state = {
     expanded: null,
-    selectedModes: getModeOptions(this.props.intl).map((m) => m.mode)
+    selectedModes: this.props.modeOptions.map((m) => m.mode)
   }
 
   _onClickMode = (mode: string) => {
@@ -108,19 +109,17 @@ class BatchSettings extends Component<{
     this.setState({ selectedModes: newModes })
     // Update the available mode combinations based on the new modes selection.
     const possibleModes = modeOptions.map((m) => m.mode)
-    const disabledModes = possibleModes.filter(
-      // WALK will be filtered out separately, later
-      // Since we don't want to remove walk+other combos when walk is deselected.
-      (m) => !newModes.includes(m) && m !== 'WALK'
-    )
-    // Do not include combination if any of its modes are found in disabled
-    // modes list.
+    const disabledModes = possibleModes.filter((m) => !newModes.includes(m))
+    // Only include a combination if it every required mode is enabled.
     const newCombinations = possibleCombinations
-      // Filter out WALK only mode if walk is disabled
-      .filter((c) => newModes.includes('WALK') || c.mode !== 'WALK')
-      .filter((c) => !combinationHasAnyOfModes(c, disabledModes))
+      .filter((c) => c.requiredModes.every((m) => newModes.includes(m)))
       .map(replaceTransitMode(currentQuery.mode))
-    setQueryParam({ combinations: newCombinations, disabledModes })
+
+    setQueryParam({
+      combinations: newCombinations,
+      disabledModes,
+      enabledModes: newModes
+    })
   }
 
   _planTrip = () => {
