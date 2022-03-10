@@ -51,7 +51,7 @@ beforeAll(async () => {
 
     // grab ATL har file to tmp
     await execa('curl', [
-      'https://otp-repo.s3.amazonaws.com/ATL-fix_03-09-2022-14-40-46.har',
+      'https://otp-repo.s3.amazonaws.com/ATL-fix_03-09-2022-14-40-46_03-10-2022-08-56-53.har',
       '-s',
       '--output',
       'ATL.har'
@@ -148,7 +148,7 @@ test('OTP-RR', async () => {
   // Open schedule view
   await page.waitForSelector('button.link-button.pull-right')
   await page.click('button.link-button.pull-right')
-  await page.waitForTimeout(3000) // Slow animation
+  await page.waitForTimeout(9000) // Slow animation
   await percySnapshotWithWait(page, 'Schedule Viewer')
 
   // Open route viewer
@@ -157,6 +157,7 @@ test('OTP-RR', async () => {
   )
   await routeViewerButton.click()
   await page.waitForSelector('.route-viewer')
+  await page.waitFortimeout(5000)
 
   await percySnapshotWithWait(page, 'Route Viewer')
 
