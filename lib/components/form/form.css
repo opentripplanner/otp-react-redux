@@ -429,3 +429,20 @@
 .otp .user-settings .disclaimer {
   font-size: x-small;
 }
+
+/* For Chrome/ium desktop browsers, if so configured,
+   set the date/time input controls to automatically show the date-time picker on focus.
+   This changes do not seem to affect Chrome/ium mobile browsers. */
+.otp .date-time-modal .date-time-selector.with-desktop-touchscreen input {
+  position: relative;
+}
+.otp .date-time-modal .date-time-selector.with-desktop-touchscreen input::-webkit-calendar-picker-indicator {
+  background-position-x: right;
+  margin-inline-end: 8px;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+.otp .date-time-modal .date-time-selector.with-desktop-touchscreen input::-webkit-datetime-edit {
+  margin-inline-end: 8px;
+}
