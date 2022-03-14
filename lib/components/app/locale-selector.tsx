@@ -46,7 +46,9 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
     <NavDropdown
       id="locale-selector"
       pullRight
-      title={<Icon style={{ color: '#fff' }} type="globe" />}
+      title={
+        <Icon style={{ color: 'rgba(255, 255, 255, 0.85)' }} type="globe" />
+      }
     >
       {Object.keys(configLanguages).map((locale) => {
         return (
