@@ -100,7 +100,16 @@ export const FlexIndicator = ({
         <FormattedMessage id="config.flex.flex-service" />
       </h4>
     )}
-    {isCallAhead && (
+    {isCallAhead && isContinuousDropoff && (
+      <FlexNotice
+        faKey="share"
+        showText={!shrink}
+        text={
+          <FormattedMessage id="config.flex.both" values={{ phoneNumber }} />
+        }
+      />
+    )}
+    {isCallAhead && !isContinuousDropoff && (
       <FlexNotice
         faKey="phone"
         showText={!shrink}
