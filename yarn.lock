@@ -2617,10 +2617,10 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/stops-overlay@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-3.4.0.tgz#0ded677db2dead7e02a968fca4177c341b527033"
-  integrity sha512-cq40s9iy5t9L1fN3/cyaFjf4OzNsecCSdZC5f+N9/FL8/lLgpE8bsEh03Ggy40T6T3mY23sRPGw3Fqk+rEI62A==
+"@opentripplanner/stops-overlay@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-3.4.1.tgz#a8f791e7927ad93d950c529c90a3f056c80cf0f5"
+  integrity sha512-yrYrdAv7HHqqzA13OoglperS5p4004+NtjSP34yu25K3HYQ4ogIUhsz2p428YI23io5W5sKRuGCUjxEI9/s8rw==
   dependencies:
     "@opentripplanner/core-utils" "^4.5.0"
     "@opentripplanner/from-to-location-picker" "^1.3.0"
