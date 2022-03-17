@@ -2464,10 +2464,28 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^4.7.0", "@opentripplanner/core-utils@^4.7.1":
+"@opentripplanner/core-utils@^4.7.0":
   version "4.7.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.7.1.tgz#72e708d3818f6764726b489192d7501e86d012d3"
   integrity sha512-AGtNEqqNLYMp+elLiQKVf6QcP4KIoMugN7oZ4+G1p5a1eMMtP5wrxk/2IidCkkz2c+wacljoPZ2pWF630gvj7w==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.1.2"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    date-fns "^2.23.0"
+    date-fns-tz "^1.1.4"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    moment "^2.24.0"
+    prop-types "^15.7.2"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@^4.8.0":
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.8.0.tgz#54f42fe038c0a9e011f0e126c42fe2f31db3148a"
+  integrity sha512-vv1vDd5xTBpLoViPwa0fjYBS+u0OD/Sgp+97Q83HmRr4V8Lj/LXSdjtQWIWZHuN3TUIhDGH2Cuk+f1UVhGHJDw==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.1.2"
@@ -2599,10 +2617,10 @@
     "@opentripplanner/humanize-distance" "^1.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/route-viewer-overlay@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-1.2.0.tgz#b1a8954fa9f3cad15f1ee06b665813e8f4539448"
-  integrity sha512-W0jRot7pWWll33NdXDkG/lV+hgVfybqAx1C7at0CcAHTLWk9l92HmPhbXaZExYJYL2ZY9szWvNIAehCmbxIuxQ==
+"@opentripplanner/route-viewer-overlay@^1.3.0-alpha.2":
+  version "1.3.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-1.3.0-alpha.2.tgz#1b2a6c4f277295dd971cd0251ca1e7f4dd7c7507"
+  integrity sha512-HkYEMYWGqEtiw9kXrVFgpAg+7wu/cbm7twqchrT+M3yDv1hYj4BJNoEUmjLMrCfbfK8kgDVSoiWmunz/EgMQtg==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/core-utils" "^4.5.0"
@@ -2641,12 +2659,12 @@
     lodash.clonedeep "^4.5.0"
     throttle-debounce "^2.1.0"
 
-"@opentripplanner/transitive-overlay@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-1.1.2.tgz#a83ababee44a15d364c2ae81005189a1d628e964"
-  integrity sha512-svNoXZIecCVZK8x5JOy3jiZTCHjs8YSFHLmBBYBzd4uvZdYJkCbeRwiWEtFOOSauEbE+dpMZwLOROG0EwVLq6g==
+"@opentripplanner/transitive-overlay@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-1.1.3.tgz#be6e1e7eab52d7beb58e5de945c453ec976683e1"
+  integrity sha512-zgZ3N3AC8G5JoCZmcO6c2Teim4KEUWA3pGhpKcsNfkMciIotuJLxL6AWcrVu767sohS6ny0fFJENT7jo5TPFqQ==
   dependencies:
-    "@opentripplanner/core-utils" "^4.1.0"
+    "@opentripplanner/core-utils" "^4.5.0"
     lodash.isequal "^4.5.0"
     transitive-js "^0.13.7"
 
