@@ -18,7 +18,9 @@ jest.setTimeout(600000)
 const PERCY_EXTRA_WAIT = 5000
 const percySnapshotWithWait = async (page, name, enableJavaScript) => {
   await page.waitForTimeout(PERCY_EXTRA_WAIT)
-  await percySnapshot(page, name, { enableJavaScript })
+
+  const namePrefix = process.env.PERCY_OTP_CONFIG_OVERRIDE || 'Mock OTP1 Server'
+  await percySnapshot(page, `${namePrefix} - ${name}`, { enableJavaScript })
 }
 
 let browser
@@ -43,19 +45,16 @@ beforeAll(async () => {
   try {
     // Build OTP-RR main.js using new config file
     await execa('env', [
-      `YAML_CONFIG=${OTP_RR_TEST_CONFIG_PATH}`,
+      `YAML_CONFIG=${
+        process.env.PERCY_OTP_CONFIG_OVERRIDE || OTP_RR_TEST_CONFIG_PATH
+      }`,
       `JS_CONFIG=${OTP_RR_TEST_JS_CONFIG_PATH}`,
       'yarn',
       'build'
     ])
 
     // grab ATL har file to tmp
-    await execa('curl', [
-      'https://otp-repo.s3.amazonaws.com/ATL-fix_03-09-2022-14-40-46_03-10-2022-09-08-49.har',
-      '-s',
-      '--output',
-      'ATL.har'
-    ])
+    await execa('curl', [process.env.HAR_URL, '-s', '--output', 'mock.har'])
   } catch (error) {
     console.log(error)
   }
@@ -67,7 +66,7 @@ beforeAll(async () => {
     }).stdout.pipe(process.stdout)
 
     // Launch mock OTP server
-    execa('yarn', ['percy-har-express', '-p', '9999', 'ATL.har'], {
+    execa('yarn', ['percy-har-express', '-p', '9999', 'mock.har'], {
       signal: harAbortController.signal
     }).stdout.pipe(process.stdout)
 

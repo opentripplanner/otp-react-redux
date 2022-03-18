@@ -26,3 +26,4 @@ jobs:
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          HAR_URL: ${{ secrets.PERCY_HAR_URL }}
