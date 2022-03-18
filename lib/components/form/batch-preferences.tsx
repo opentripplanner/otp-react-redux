@@ -5,11 +5,9 @@ import { connect } from 'react-redux'
 import React, { Component } from 'react'
 
 import { ComponentContext } from '../../util/contexts'
-import { getShowUserSettings } from '../../util/state'
 import { setQueryParam } from '../../actions/form'
 
 import { StyledBatchPreferences } from './batch-styled'
-import UserTripSettings from './user-trip-settings'
 
 // TODO: Central type source
 export type Combination = {
@@ -31,7 +29,6 @@ class BatchPreferences extends Component<{
   config: any
   query: any
   setQueryParam: (newQueryParam: any) => void
-  showUserSettings: boolean
 }> {
   static contextType = ComponentContext
 
@@ -55,14 +52,12 @@ class BatchPreferences extends Component<{
   }
 
   render() {
-    const { config, query, showUserSettings } = this.props
+    const { config, query } = this.props
     const { ModeIcon } = this.context
 
     return (
       <div className="settings-selector-panel">
         <div className="modes-panel">
-          {showUserSettings && <UserTripSettings />}
-
           <StyledBatchPreferences
             ModeIcon={ModeIcon}
             onQueryParamChange={this.onQueryParamChange}
@@ -138,8 +133,7 @@ const mapStateToProps = (state: {
   const { config, currentQuery } = state.otp
   return {
     config,
-    query: currentQuery,
-    showUserSettings: getShowUserSettings(state)
+    query: currentQuery
   }
 }
 

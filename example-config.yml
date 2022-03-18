@@ -112,6 +112,7 @@ map:
   ###   styles.segment_labels: styles attributes recognized by transitive.js.
   ###                         For examples of applicable style attributes, see
   ###                         https://github.com/conveyal/transitive.js/blob/master/stories/Transitive.stories.js#L47.
+  ### - disableFlexArc: optional parameter to disable rendering flex itinerary legs as an arc. 
   # transitive:
   #   labeledModes:
   #     - BUS
@@ -127,6 +128,7 @@ map:
   #       color: "#FFE0D0"
   #       font-family: Hind, sans-serif
   #       font-size: 18px
+  #   disableFlexArc: true
 
 # it is possible to leave out a geocoder config entirely. In that case only
 # GPS coordinates will be used when finding the origin/destination.
@@ -338,6 +340,11 @@ itinerary:
 ### The nested structure should be the same as the language files under the i18n folder.
 ### You can also customize OTP error messages for itinerary searches based on OTP HTTP codes.
 ### A separate message can be set for each language or locale if necessary.
+### Languages defined may be region-specific (e.g. en-US) or language-specific (e.g. es, kr)
+### The LocaleSelector component, which provides a dropdown for the user to change their locale, will
+### only be rendered if more than one valid language (all languages must have "name" defined) is included
+### in the language config. 
+
 # language:
 #   allLanguages
 #     common:
@@ -365,6 +372,29 @@ itinerary:
 #         modes: "CAR_HAIL, CAR_RENT"
 #       480:
 #         msg: No available transit routes or rideshare/carshare service at origin.
+#     name: English (US)
+#
+#   fr:
+#     config:
+#       # App (hamburger) menu items
+#       menuItems:
+#         car-pool: Covoiturage
+#         give-us-feedback: Donnez votre avis
+#         log-my-commute: Mes trajets verts
+#         traveler-tools: Outils du voyageur
+#     name: French
+
+#   ko:
+#     name: 한국인
+
+#   vi:
+#     name: Tiếng Việt
+
+#   zh:
+#     name: 中国人
+
+#   es:
+#     name: Español
 
 ### Localization section to provide language/locale settings
 #localization:
@@ -414,3 +444,7 @@ dateTime:
 # Mapillary calls these "Client Tokens". They can be created at https://www.mapillary.com/dashboard/developers
 # mapillary:
 #   key: <Mapillary Key>
+
+### Setting to enable touch-friendly behavior
+### e.g. on touch-screen kiosks that run a desktop OS.
+# isTouchScreenOnDesktop: true
