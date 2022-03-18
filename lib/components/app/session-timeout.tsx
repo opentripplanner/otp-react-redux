@@ -7,30 +7,47 @@ import * as uiActions from '../../actions/ui'
 
 class SessionTimeout extends Component {
   state = {
-    showTimeoutWarning: false
+    showTimeoutWarning: false,
+    timeoutObject: null,
+    timeoutStartMillis: 0
+  }
+
+  componentDidMount() {
+    console.log('Session Timeout Mounted!')
+    // Wait ~one second or so after loading before probing for changes
+    // so that initialization actions can complete.
+    setTimeout(this.handleAfterInitialActions, 1500)
   }
 
   componentWillUnmount() {
-    clearInterval(this.timeoutWatch)
+    clearInterval(this.state.timeoutObject)
+  }
+
+  handleAfterInitialActions = () => {
+    this.setState({
+      timeoutObject: setInterval(this.handleTimeoutWatch, 10000),
+      timeoutStartMillis: new Date().valueOf()
+    })
+    console.log('timeout start millis: ' + new Date().valueOf())
   }
 
   handleTimeoutWatch = () => {
     const { lastActionMillis, sessionTimeoutSeconds, startOverFromInitialUrl } =
       this.props
-    const idleMillis = new Date().valueOf() - lastActionMillis
-    const secondsToTimeout = sessionTimeoutSeconds - idleMillis / 1000
-    console.log('Seconds to timeout: ' + secondsToTimeout)
-    if (secondsToTimeout >= 0 && secondsToTimeout <= 60) {
-      // If within a minute of timeout, display dialog
-      this.setState({
-        showTimeoutWarning: true
-      })
-    } else if (secondsToTimeout <= 0) {
-      startOverFromInitialUrl()
-    } else {
-      this.setState({
-        showTimeoutWarning: false
-      })
+    if (lastActionMillis > this.state.timeoutStartMillis) {
+      const idleMillis = new Date().valueOf() - lastActionMillis
+      const secondsToTimeout = sessionTimeoutSeconds - idleMillis / 1000
+      console.log('Seconds to timeout: ' + secondsToTimeout)
+
+      if (secondsToTimeout < 0) {
+        // Reload initial URL (page state is lost after this point)
+        startOverFromInitialUrl()
+      } else {
+        this.setState({
+          // If within a minute of timeout, display dialog, don't otherwise.
+          showTimeoutWarning: secondsToTimeout >= 0 && secondsToTimeout <= 60
+        })
+      }
     }
   }
 
@@ -40,11 +57,6 @@ class SessionTimeout extends Component {
     })
     this.props.resetSessionTimeout()
   }
-
-  /**
-   * Check session timeout every 10 seconds.
-   */
-  timeoutWatch = setInterval(this.handleTimeoutWatch, 10000)
 
   render() {
     const { showTimeoutWarning } = this.state
