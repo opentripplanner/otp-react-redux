@@ -44,6 +44,9 @@ class SessionTimeout extends Component {
       const secondsToTimeout = sessionTimeoutSeconds - idleMillis / 1000
 
       if (secondsToTimeout < 0) {
+        // TODO: If OTP middleware persistence is enabled,
+        // log out the logged-in user before resetting the page.
+
         // Reload initial URL (page state is lost after this point)
         startOverFromInitialUrl()
       } else {
