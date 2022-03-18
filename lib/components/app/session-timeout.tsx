@@ -4,7 +4,14 @@ import { connect } from 'react-redux'
 import React, { Component } from 'react'
 
 import * as uiActions from '../../actions/ui'
+import { FormattedMessage } from 'react-intl'
 
+/**
+ * This component makes the current session timeout
+ * by displaying a timeout warning one minute before the timeout,
+ * and by reloading the initial URL if there is no user-initiated
+ * actions within the timeout window.
+ */
 class SessionTimeout extends Component {
   state = {
     showTimeoutWarning: false,
@@ -13,8 +20,7 @@ class SessionTimeout extends Component {
   }
 
   componentDidMount() {
-    console.log('Session Timeout Mounted!')
-    // Wait ~one second or so after loading before probing for changes
+    // Wait one second or so after loading before probing for changes
     // so that initialization actions can complete.
     setTimeout(this.handleAfterInitialActions, 1500)
   }
@@ -59,21 +65,26 @@ class SessionTimeout extends Component {
   }
 
   render() {
+    const { startOverFromInitialUrl } = this.props
     const { showTimeoutWarning } = this.state
     return showTimeoutWarning ? (
       <Modal.Dialog>
         <Modal.Header>
-          <Modal.Title>Session about to timeout!</Modal.Title>
+          <Modal.Title>
+            <FormattedMessage id="components.SessionTimeout.header" />
+          </Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          Your session will expire within a minute, unless you click 'Keep
-          Session'.
+          <FormattedMessage id="components.SessionTimeout.body" />
         </Modal.Body>
 
         <Modal.Footer>
+          <Button onClick={startOverFromInitialUrl}>
+            <FormattedMessage id="common.forms.startOver" />
+          </Button>
           <Button bsStyle="primary" onClick={this.handleKeepSession}>
-            Keep Session
+            <FormattedMessage id="components.SessionTimeout.keepSession" />
           </Button>
         </Modal.Footer>
       </Modal.Dialog>

@@ -396,6 +396,10 @@ components:
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SearchScreen:
     header: Planifiez votre trajet
+  SessionTimeout:
+    body: Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma session' pour conserver votre recherche. 
+    header: Votre session va expirer
+    keepSession: Prolonger ma session
   SettingsPreview:
     defaultPreviewText: "Choix du mode\n& préférences"
   SimpleRealtimeAnnotation:
