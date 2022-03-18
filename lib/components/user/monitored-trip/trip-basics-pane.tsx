@@ -21,7 +21,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Prompt } from 'react-router'
 import styled from 'styled-components'
-import type { InjectedIntlProps } from 'react-intl'
+import type { IntlShape, WrappedComponentProps } from 'react-intl'
 
 import * as userActions from '../../../actions/user'
 import {
@@ -38,16 +38,16 @@ import TripSummary from './trip-summary'
 type TripBasicsProps =
   | {
       canceled: boolean
-      checkItineraryExistence: (monitoredTrip: unknown) => void
+      checkItineraryExistence: (monitoredTrip: unknown, intl: IntlShape) => void
       clearItineraryExistence: () => void
       dirty: boolean
-      errors: Record<string, boolean>[]
+      errors: { tripName?: string }
       isCreating: boolean
       isSubmitting: boolean
       itineraryExistence: Record<string, { valid: boolean }>
       setFieldValue: (field: string, threshold: number | false) => void
-      values: { itinerary: unknown } // FIXME
-    } & InjectedIntlProps
+      values: { [key: string]: string; itinerary: any } // FIXME
+    } & WrappedComponentProps
 
 // FIXME: move to shared types file
 type errorStates = 'success' | 'warning' | 'error' | null | undefined
@@ -148,7 +148,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
       // - monitoredTrip.tripName is not blank and that tripName is not already used.
       // - no day is selected (show a combined error indication).
       // FIXME: type getErrorStates
-      const errorStates: Record<string, errorStates> = getErrorStates(
+      const errorStates: Record<string, errorStates | any> = getErrorStates(
         this.props
       )
 
@@ -207,27 +207,29 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                     )
                   : null
                 return (
-                  <TripDayLabel
-                    className={boxClass}
-                    key={day}
-                    title={notAvailableText}
-                  >
-                    <span>
-                      <FormattedDayOfWeekCompact day={day} />
-                    </span>
-                    {
-                      // Let users save an existing trip, even though it may not be available on some days.
-                      // TODO: improve checking trip availability.
-                      isDayDisabled && isCreating ? (
-                        <Glyphicon
-                          aria-label={notAvailableText}
-                          glyph="ban-circle"
-                        />
-                      ) : (
-                        <Field name={day} type="checkbox" />
-                      )
-                    }
-                  </TripDayLabel>
+                  notAvailableText && (
+                    <TripDayLabel
+                      className={boxClass}
+                      key={day}
+                      title={notAvailableText}
+                    >
+                      <span>
+                        <FormattedDayOfWeekCompact day={day} />
+                      </span>
+                      {
+                        // Let users save an existing trip, even though it may not be available on some days.
+                        // TODO: improve checking trip availability.
+                        isDayDisabled && isCreating ? (
+                          <Glyphicon
+                            aria-label={notAvailableText}
+                            glyph="ban-circle"
+                          />
+                        ) : (
+                          <Field name={day} type="checkbox" />
+                        )
+                      }
+                    </TripDayLabel>
+                  )
                 )
               })}
               <div style={{ clear: 'both' }} />
