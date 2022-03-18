@@ -197,10 +197,22 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Route Viewer Showing Route 410')
 
   // View multiple patterns
-  await page.select('#headsign-selector', '6:410:1:01')
+  // Click second option
+  const sugarloafOption = await page.$$eval(
+    'option',
+    (options) => options.find((o) => o.innerText.includes('Sugarloaf'))?.value
+  )
+  await page.select('select#headsign-selector', sugarloafOption)
+
   await page.waitForSelector('#headsign-selector-label')
   await page.waitForTimeout(1000)
-  await page.select('#headsign-selector', '6:410:0:01')
+
+  // Click first option
+  const lindberghOption = await page.$$eval(
+    'option',
+    (options) => options.find((o) => o.innerText.includes('Lindbergh'))?.value
+  )
+  await page.select('select#headsign-selector', lindberghOption)
   await page.waitForTimeout(1000)
 
   await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 410')
