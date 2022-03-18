@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { Button, Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { FormattedMessage } from 'react-intl'
 import React, { Component } from 'react'
 
 import * as uiActions from '../../actions/ui'
-import { FormattedMessage } from 'react-intl'
 
 /**
  * This component makes the current session timeout
@@ -34,7 +34,6 @@ class SessionTimeout extends Component {
       timeoutObject: setInterval(this.handleTimeoutWatch, 10000),
       timeoutStartMillis: new Date().valueOf()
     })
-    console.log('timeout start millis: ' + new Date().valueOf())
   }
 
   handleTimeoutWatch = () => {
@@ -43,7 +42,6 @@ class SessionTimeout extends Component {
     if (lastActionMillis > this.state.timeoutStartMillis) {
       const idleMillis = new Date().valueOf() - lastActionMillis
       const secondsToTimeout = sessionTimeoutSeconds - idleMillis / 1000
-      console.log('Seconds to timeout: ' + secondsToTimeout)
 
       if (secondsToTimeout < 0) {
         // Reload initial URL (page state is lost after this point)
