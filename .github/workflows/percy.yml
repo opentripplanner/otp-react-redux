@@ -27,7 +27,7 @@ jobs:
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
           HAR_URL: ${{ secrets.PERCY_HAR_URL }}
- run-pixel-tests-with-otp2-real-server:
+  run-pixel-tests-with-otp2-real-server:
     runs-on: ubuntu-latest
 
     steps:
