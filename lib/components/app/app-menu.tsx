@@ -27,7 +27,7 @@ type AppMenuProps = {
   fieldTripEnabled?: boolean
   location: { search: string }
   mailablesEnabled?: boolean
-  reactRouterConfig: { basename: string }
+  reactRouterConfig?: { basename: string }
   resetAndToggleCallHistory?: () => void
   resetAndToggleFieldTrips?: () => void
   setMainPanelContent: (panel: number) => void

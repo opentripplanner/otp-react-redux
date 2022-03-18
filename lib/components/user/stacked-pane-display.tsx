@@ -4,6 +4,12 @@ import React, { useState } from 'react'
 import { PageHeading, StackedPaneContainer } from './styled'
 import FormNavigationButtons from './form-navigation-buttons'
 
+type Props = {
+  onCancel: () => void
+  paneSequence: any[]
+  title?: string | JSX.Element
+}
+
 /**
  * This component handles the flow between screens for new OTP user accounts.
  *
@@ -13,11 +19,7 @@ const StackedPaneDisplay = ({
   onCancel,
   paneSequence,
   title
-}: {
-  onCancel: () => void
-  paneSequence: any[]
-  title?: string | JSX.Element
-}): JSX.Element => {
+}: Props): JSX.Element => {
   // Create indicator of if cancel button was clicked so that child components can know
   const [isBeingCanceled, updateBeingCanceled] = useState(false)
 
