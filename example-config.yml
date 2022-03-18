@@ -448,3 +448,8 @@ dateTime:
 ### Setting to enable touch-friendly behavior
 ### e.g. on touch-screen kiosks that run a desktop OS.
 # isTouchScreenOnDesktop: true
+
+### Approximate duration in seconds after which, if there is no user activity,
+### the UI is reset to an initial URL.
+### TODO: If OTP middleware persistence is enabled, log out that user before resetting the page.
+# sessionTimeoutSeconds: 180
