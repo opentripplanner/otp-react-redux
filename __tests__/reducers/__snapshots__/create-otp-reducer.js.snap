@@ -59,7 +59,7 @@ Object {
     },
   },
   "initialUrl": "http://localhost:9966/",
-  "lastActionMillis": 1647622883532,
+  "lastActionMillis": 0,
   "location": Object {
     "currentPosition": Object {
       "coords": null,
