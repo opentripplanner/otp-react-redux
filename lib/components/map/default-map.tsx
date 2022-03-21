@@ -10,7 +10,7 @@ import {
   vehicleRentalQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
-import { getActiveItinerary } from '../../util/state'
+import { getActiveItinerary, getActiveSearch } from '../../util/state'
 import {
   setLocation,
   setMapPopupLocation,
@@ -135,6 +135,7 @@ class DefaultMap extends Component {
       itinerary,
       mapConfig,
       mapPopupLocation,
+      pending,
       vehicleRentalQuery,
       vehicleRentalStations
     } = this.props
@@ -220,9 +221,9 @@ class DefaultMap extends Component {
                 return null
             }
           })}
-          {/* Render custom overlays, if set, and pass visibility argument. */}
+          {/* If set, custom overlays are shown if no active itinerary is shown or pending. */}
           {typeof getCustomMapOverlays === 'function' &&
-            getCustomMapOverlays(!itinerary)}
+            getCustomMapOverlays(!itinerary && !pending)}
         </BaseMap>
       </MapContainer>
     )
@@ -232,10 +233,8 @@ class DefaultMap extends Component {
 // connect to the redux store
 
 const mapStateToProps = (state) => {
-  const overlays =
-    state.otp.config.map && state.otp.config.map.overlays
-      ? state.otp.config.map.overlays
-      : []
+  const activeSearch = getActiveSearch(state)
+  const overlays = state.otp.config.map?.overlays || []
 
   return {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
@@ -244,6 +243,7 @@ const mapStateToProps = (state) => {
     mapConfig: state.otp.config.map,
     mapPopupLocation: state.otp.ui.mapPopupLocation,
     overlays,
+    pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
     vehicleRentalStations: state.otp.overlay.vehicleRental.stations
   }
