@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { connect } from 'react-redux'
 import BaseMap from '@opentripplanner/base-map'
 import React, { Component } from 'react'
