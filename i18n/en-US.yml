@@ -784,8 +784,9 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
-    transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
+    # Note to translator: noTransitFareProvided is width-constrained.
     noTransitFareProvided: No fare info
+    transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
 
   # Note to translator: the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
