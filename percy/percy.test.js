@@ -1,6 +1,3 @@
-/* eslint-disable jest/expect-expect */
-/* We use a method to generate our assertions */
-
 import execa from 'execa'
 import puppeteer from 'puppeteer'
 
@@ -130,6 +127,8 @@ test('OTP-RR Fixed Routes', async () => {
 })
 */
 
+// Percy screenshot is not an assertion, but that's ok
+// eslint-disable-next-line jest/expect-expect
 test('OTP-RR', async () => {
   const page = await loadPath('/')
   await page.setViewport({
