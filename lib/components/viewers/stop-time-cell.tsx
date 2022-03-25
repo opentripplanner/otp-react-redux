@@ -108,7 +108,7 @@ const StopTimeCell = ({
             />
           </div>
         )}
-        <div>
+        <div className="percy-hide">
           {showCountdown ? (
             // Show countdown string (e.g., 3 min or Due)
             <FormattedMessage

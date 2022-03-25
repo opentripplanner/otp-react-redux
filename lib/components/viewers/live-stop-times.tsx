@@ -183,7 +183,7 @@ class LiveStopTimes extends Component<Props, State> {
             <FormattedMessage id="components.LiveStopTimes.autoRefresh" />
           </label>
           <button
-            className="link-button pull-right"
+            className="link-button pull-right percy-hide"
             onClick={this._refreshStopTimes}
             style={{ fontSize: 'small' }}
           >

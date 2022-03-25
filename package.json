@@ -221,7 +221,7 @@
   "percy": {
     "version": 2,
     "snapshot": {
-      "percy-css": ".link-button.pull-right { display: none; }"
+      "percy-css": ".percy-hide { display: none; } "
     }
   }
 }
