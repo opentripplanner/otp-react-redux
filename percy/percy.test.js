@@ -11,7 +11,7 @@ const OTP_RR_TEST_JS_CONFIG_PATH = './percy/har-mock-config.js'
 
 const MOCK_SERVER_PORT = 5000
 
-// Puppeteer can take a long time to load, espeically in some ci environments
+// Puppeteer can take a long time to load, especially in some ci environments
 jest.setTimeout(600000)
 
 // How long to wait for each page to fully render before taking a screenshot
@@ -86,7 +86,7 @@ beforeAll(async () => {
       const client = await targetPage.target().createCDPSession()
       await client.send('Runtime.evaluate', {
         expression:
-          'Date.now = function() { return 1646835742000; };Date.getTime = function() { return 1646835742000; }'
+          'Date.now = function() { return 1646835742000; }; Date.getTime = function() { return 1646835742000; }'
       })
     })
   } catch (error) {
@@ -112,9 +112,10 @@ afterAll(async () => {
 jest.setTimeout(600000)
 
 /* These fixed routes allow us to test features that the static html screenshots
- * don't allow us to test. Unfortuantley, they don't currently work
+ * don't allow us to test. This is disabled, as percy doesn't support transitive.js
+ * out of the box, even with javascript enabled.
  *
- * TODO
+ * TODO: make transitive.js work with Percy, then complete this test suite
  */
 // eslint-disable-next-line jest/no-commented-out-tests
 /*
@@ -198,21 +199,21 @@ test('OTP-RR', async () => {
 
   // View multiple patterns
   // Click second option
-  const sugarloafOption = await page.$$eval(
+  const secondPatternOption = await page.$$eval(
     'option',
     (options) => options.find((o) => o.innerText.includes('Sugarloaf'))?.value
   )
-  await page.select('select#headsign-selector', sugarloafOption)
+  await page.select('select#headsign-selector', secondPatternOption)
 
   await page.waitForSelector('#headsign-selector-label')
   await page.waitForTimeout(1000)
 
   // Click first option
-  const lindberghOption = await page.$$eval(
+  const firstPatternOption = await page.$$eval(
     'option',
     (options) => options.find((o) => o.innerText.includes('Lindbergh'))?.value
   )
-  await page.select('select#headsign-selector', lindberghOption)
+  await page.select('select#headsign-selector', firstPatternOption)
   await page.waitForTimeout(1000)
 
   await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 410')
