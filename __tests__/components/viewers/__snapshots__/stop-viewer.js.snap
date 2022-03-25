@@ -1385,7 +1385,9 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         }
                                       }
                                     >
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedMessage
                                           id="components.StopTimeCell.imminentArrival"
                                           values={
@@ -1499,7 +1501,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         </FormattedMessage>
                       </label>
                       <button
-                        className="link-button pull-right"
+                        className="link-button pull-right percy-hide"
                         onClick={[Function]}
                         style={
                           Object {
@@ -3277,7 +3279,9 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         }
                                       }
                                     >
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedMessage
                                           id="components.StopTimeCell.imminentArrival"
                                           values={
@@ -3391,7 +3395,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         </FormattedMessage>
                       </label>
                       <button
-                        className="link-button pull-right"
+                        className="link-button pull-right percy-hide"
                         onClick={[Function]}
                         style={
                           Object {
@@ -5267,7 +5271,9 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           </FormattedMessage>
                                         </FormattedDayOfWeek>
                                       </div>
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedTime
                                           timeStyle="short"
                                           timeZone="America/Los_Angeles"
@@ -5375,7 +5381,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         </FormattedMessage>
                       </label>
                       <button
-                        className="link-button pull-right"
+                        className="link-button pull-right percy-hide"
                         onClick={[Function]}
                         style={
                           Object {
@@ -8417,7 +8423,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </FormattedMessage>
                                         </FormattedDayOfWeek>
                                       </div>
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedTime
                                           timeStyle="short"
                                           timeZone="America/Los_Angeles"
@@ -8813,7 +8821,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </FormattedMessage>
                                         </FormattedDayOfWeek>
                                       </div>
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedTime
                                           timeStyle="short"
                                           timeZone="America/Los_Angeles"
@@ -9209,7 +9219,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </FormattedMessage>
                                         </FormattedDayOfWeek>
                                       </div>
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedTime
                                           timeStyle="short"
                                           timeZone="America/Los_Angeles"
@@ -9713,7 +9725,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </FormattedMessage>
                                         </FormattedDayOfWeek>
                                       </div>
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedTime
                                           timeStyle="short"
                                           timeZone="America/Los_Angeles"
@@ -9821,7 +9835,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         </FormattedMessage>
                       </label>
                       <button
-                        className="link-button pull-right"
+                        className="link-button pull-right percy-hide"
                         onClick={[Function]}
                         style={
                           Object {
@@ -13884,7 +13898,9 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           </FormattedMessage>
                                         </FormattedDayOfWeek>
                                       </div>
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedTime
                                           timeStyle="short"
                                           timeZone="America/Los_Angeles"
@@ -13992,7 +14008,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         </FormattedMessage>
                       </label>
                       <button
-                        className="link-button pull-right"
+                        className="link-button pull-right percy-hide"
                         onClick={[Function]}
                         style={
                           Object {
