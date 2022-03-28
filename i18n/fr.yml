@@ -734,6 +734,8 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} kcal" # SI unit
     noItineraryToDisplay: Aucun trajet à afficher.
+    # Note to translator: noTransitFareProvided is width-constrained.
+    noTransitFareProvided: Tarif inconnu 
     transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
 
   # Note to translator: some of the strings below are used in sentences such as:
