@@ -1,4 +1,4 @@
-_id: fr-FR
+_id: fr
 _name: Exemple de traduction pour OTP-react-redux en français !
 
 # Noteworthy items for translating into French:
@@ -177,10 +177,10 @@ components:
     notifications: Notifications
     places: Lieux favoris
     terms: Conditions d'utilisation
-  FavoritePlaceRow:
+  FavoritePlaceList:
     addAnotherPlace: Ajouter un autre lieu
-    # deleteThisPlace and editThisPlace are aria/tooltip texts.
-    deleteThisPlace: Supprimer ce lieu
+    description: "Ajoutez les lieux que vous fréquentez souvent pour faciliter vos recherches de trajets :"
+    # editThisPlace is a tooltip text.
     editThisPlace: Modifier ce lieu
     setAddressForPlaceType: Entrez l'adresse de votre {placeType}
   FavoritePlaceScreen:
@@ -192,8 +192,6 @@ components:
     nameAlreadyUsed: Ce nom est déjà utilisé avec un autre lieu. Veuillez saisir un nom différent.
     placeNotFound: Lieu introuvable
     placeNotFoundDescription: Le lieu recherché est introuvable.
-  FavoritePlacesList:
-    description: "Ajoutez les lieux que vous fréquentez souvent pour faciliter vos recherches de trajets :"
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
@@ -276,8 +274,8 @@ components:
         other {Étendre}
       } tous les départs pour la ligne {routeName}
     departure: Départ
-    routeName: "<strong>{routeName}</strong> vers {headsign}"
-    routeShort: "Vers {headsign}"
+    routeName: "<strong>{routeName}</strong> Direction {headsign}"
+    routeShort: "Direction {headsign}"
     status: État
   PhoneNumberEditor:
     changeNumber: Changer de numéro
@@ -297,10 +295,12 @@ components:
       Veuillez taper ce code ci-dessous (le code expire après 10 minutes).
     verify: Verifier
   Place:
+    # deleteThisPlace is an aria/tooltip text.
+    deleteThisPlace: Supprimer ce lieu
     enterAlert: >
-      Entrez votre point de départ/destination dans le formulaire (ou cliquez sur la carte)
-      puis cliquez sur le marqueur qui apparaît pour définir le type d'emplacement ({type}).
-    viewStop: Voir l'arrêt
+      Entrez votre point de départ/destination dans le formulaire (ou cliquez sur la carte),
+      puis cliquez sur le marqueur qui apparaît afin de définir votre {placeType}.
+    viewStop: Voir cet arrêt
   PlaceEditor:
     genericLocationPlaceholder: Adresse du lieu
     locationPlaceholder: Adresse de votre {placeName}
@@ -317,11 +317,8 @@ components:
     itinerary: Votre trajet
     toggleMap: Afficher/masquer la carte
   RealtimeAnnotation:
-    delaysNotShownInResults: "Vos trajets recherchés sont perturbés par des retards.
-      Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous."
     delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
       En temps normal, ce trajet prendrait {normalDuration} en empruntant les lignes: {routes}."
-    ignoreServiceDelays: Ignorer les retards
     serviceUpdate: Information sur le service
   RealtimeStatusLabel:
     # Note to translator: In itinerary body, early or late is single-line
@@ -338,7 +335,7 @@ components:
     showExtraStops: "Afficher {count} arrêts à proximité"
   RelatedStopsPanel:
     relatedStops: Arrêts à proximité
-    viewDetails: Afficher les détails
+    viewDetails: Détails
     noArrivalFound: Aucun passage prévu
   ResultsError:
     backToSearch: Retour à la recherche
@@ -360,17 +357,12 @@ components:
     agencyFilter: Filtrer les transporteurs
     allAgencies: Tous transporteurs
     allModes: Tous modes # Note to translator: This text is width-constrained.
-    applyServiceDelays: Appliquer les retards
-    delaysNotShownInResults: >
-      Vos trajets recherchés sont perturbés par des retards.
-      Ces retards ne sont pas pris en compte dans les temps de trajet ci-dessous.
     delaysShownInResults: >
       Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
       En temps normal, ce trajet prendrait <strong>{normalDuration}</strong> en empruntant les lignes: {routes}.
     details: " " # If the string is left blank, React-Intl renders the id
     findARoute: Chercher une ligne
     header: Index des lignes
-    ignoreServiceDelays: Ignorer les retards
     modeFilter: Filtre pour les modes
     noFilteredRoutesFound: Aucune ligne ne correspond à vos critères
     noRouteUrl: Aucun lien fourni pour cette ligne.
@@ -413,7 +405,7 @@ components:
   StopScheduleTable:
     block: Bloc
     departure: Départ
-    destination: Destination
+    destination: Direction
     route: Ligne
   StopTimeCell:
     imminentArrival: >
@@ -423,16 +415,17 @@ components:
       }
   # Used in both desktop and mobile
   StopViewer:
-    displayStopId: "<strong>Arrêt n°</strong>{stopId}"
+    displayStopId: "<strong>Arrêt n°</strong> {stopId}"
+    flexStop: Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande. Une réservation préalable peut être exigée pour obtenir la desserte.
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
-    noStopsFound: Aucun passage n'a été trouvé pour cette date.
-    planTrip: "Planifer un trajet :"
+    noStopsFound: Aucun horaire pour la date choisie.
+    planTrip: "Faire un trajet :"
     timezoneWarning: "Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>."
     viewTypeBtnText: >
       {scheduleView, select,
-        true {Afficher les prochains passages}
-        other {Afficher les horaires}
+        true {Prochains passages}
+        other {Horaires}
       }
     zoomToStop: Zoomer sur l'arrêt
 
@@ -568,11 +561,18 @@ components:
     linkCopied: Copié
     reportIssue: Un problème ? # "Signaler un problème" does not fit.
     reportEmailSubject: Signaler un problème avec OpenTripPlanner
-    reportEmailTemplate: >
-      *** À L'ATTENTION DE L'UTILISATEUR ***
-      Vous pouvez communiquer votre problème par e-mail et en détail aux administrateurs de ce site.
-      Veuillez ajouter toute remarque sur cet itinéraire dans la section 'Additional Comments'
-      ci-dessous, puis envoyez depuis votre logiciel de messagerie usuel."
+    reportEmailTemplate: |+
+      *** CONSIGNES POUR L'UTILISATEUR ***
+      Cet email signalera votre problème aux administrateurs de ce site.
+      Veuillez remplir les détails ci-dessous, puis envoyez depuis votre logiciel de messagerie habituel.
+
+      *** VEUILLEZ REMPLIR CI-DESSOUS ***
+
+      Problème rencontré :
+
+      Type de trajet recherché (ex. à pied + transports, vélo + transports, voiture + transports) :
+
+      *** DÉTAILS TECHNIQUES ***
   # Used in both desktop and mobile
   TripViewer:
     accessible: Accessible
@@ -586,10 +586,13 @@ components:
     confirmDeletion: Vous avez des recherches et/ou lieux récemment enregistrés qui vont être supprimés. Voulez-vous continuer ?
     favoriteStops: Arrêts favoris
     myPreferences: Mes préférences
+    mySavedPlaces: Mes lieux favoris (<manageLink>modifier</manageLink>)
     noFavoriteStops: Aucun arrêt favori
     recentPlaces: Lieux récents
     recentSearches: Recherches récentes
+    recentSearchSummary: "{mode} de {from} à {to}"
     rememberSearches: Enregistrer les recherches/lieux récents ?
+    stopId: "Arrêt n° {stopId}"
     storageDisclaimer: >
       En activant cette option, tous vos lieux, préférences et paramètres
       seront enregistrés dans le cache de votre navigateur.
@@ -615,6 +618,41 @@ components:
     prompt: Où désirez-vous aller ?
 
 otpUi:
+  DateTimeSelector:
+    arrive: Arrivée
+    depart: Départ
+    now: Tout de suite
+  queryParameters:
+    bikeSpeed: Vitesse à vélo
+    distanceInMiles: "{miles, number, :: unit/mile unit-width-full-name}"
+    maxBikeDistance: Distance max. à vélo
+    maxBikeTime: Durée max. à vélo
+    maxEScooterDistance: Distance max. en trottinette
+    maxWalkDistance: Distance max. à pied
+    maxWalkTime: Durée max. à pied
+    optimizeBikeFlat: avec moins de reliefs
+    optimizeBikeFriendly: plus pratiques à vélo
+    optimizeBikeSpeed: plus rapides
+    optimizeFor: Privilégier les trajets
+    optimizeQuick: plus rapides
+    optimizeTransfers: avec moins de correspondances
+    speedInMilesPerHour: "{mph} mi/h"
+    walkSpeed: Vitesse à pied
+    watts: Puissance de la trottinette électrique
+    watts125kidsHoverboard: Hoverboard pour enfants (10 km/h)
+    watts1500powerfulEscooter: Trottinette puissante (40 km/h)
+    watts250entryLevelEscooter: Trottinette de base (18 km/h)
+    watts500robustEscooter: Trottinette robuste (30 km/h)
+    # Note to translator: This text is width-constrained.
+    wheelchair: Trajets accessibles en fauteuil roulant
+  SettingsSelectorPanel:
+    bikeOnly: Vélo uniquement
+    escooterOnly: Trottinette uniquement
+    takeTransit: En transports
+    travelPreferences: Préférences de trajet
+    use: Utiliser # as in "Use bus, train, subway"
+    useCompanies: Prestataires # as in "Use companies: Spin, Lime, Bolt"
+    walkOnly: À pied uniquement
   TripDetails:
     calories: "Calories dépensées : <strong>{calories, number, ::.}</strong>"
     caloriesDescription: >
@@ -696,6 +734,8 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} kcal" # SI unit
     noItineraryToDisplay: Aucun trajet à afficher.
+    # Note to translator: noTransitFareProvided is width-constrained.
+    noTransitFareProvided: Tarif inconnu 
     transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
 
   # Note to translator: some of the strings below are used in sentences such as:
@@ -723,7 +763,7 @@ common:
     rent: Location de véhicules
     subway: Métro
     tram: Tram
-    transit: En transports publics
+    transit: En transports
     walk: À pied
     walking: Marche
 

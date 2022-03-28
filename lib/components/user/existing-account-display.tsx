@@ -5,7 +5,7 @@ import React from 'react'
 import A11yPrefs from './a11y-prefs'
 import BackToTripPlanner from './back-to-trip-planner'
 import DeleteUser from './delete-user'
-import FavoritePlacesList from './places/favorite-places-list'
+import FavoritePlaceList from './places/favorite-place-list'
 import NotificationPrefsPane from './notification-prefs-pane'
 import StackedPaneDisplay from './stacked-pane-display'
 import TermsOfUsePane from './terms-of-use-pane'
@@ -24,7 +24,7 @@ const ExistingAccountDisplay = (props: {
   const { onCancel, wheelchairEnabled } = props
   const paneSequence = [
     {
-      pane: FavoritePlacesList,
+      pane: FavoritePlaceList,
       props,
       title: <FormattedMessage id="components.ExistingAccountDisplay.places" />
     },

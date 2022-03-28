@@ -1,14 +1,14 @@
-import React from 'react'
-import { Nav, Navbar } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { Nav, Navbar } from 'react-bootstrap'
+import React from 'react'
 
-import NavLoginButtonAuth0 from '../user/nav-login-button-auth0.js'
 import { accountLinks, getAuth0Config } from '../../util/auth'
 import { DEFAULT_APP_TITLE } from '../../util/constants'
+import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
 
 import AppMenu from './app-menu'
+import LocaleSelector from './locale-selector'
 import ViewSwitcher from './view-switcher'
-
 /**
  * The desktop navigation bar, featuring a `branding` logo or a `title` text
  * defined in config.yml, and a sign-in button/menu with account links.
@@ -21,8 +21,14 @@ import ViewSwitcher from './view-switcher'
  *
  * TODO: merge with the mobile navigation bar.
  */
-const DesktopNav = ({ otpConfig }) => {
+// Typscript TODO: otpConfig type
+export type otpConfigType = {
+  otpConfig: any
+}
+
+const DesktopNav = ({ otpConfig }: otpConfigType) => {
   const { branding, persistence, title = DEFAULT_APP_TITLE } = otpConfig
+  const { language: configLanguages } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
 
   // Display branding and title in the order as described in the class summary.
@@ -37,49 +43,56 @@ const DesktopNav = ({ otpConfig }) => {
     )
   } else {
     brandingOrTitle = (
-      <div className='navbar-title' style={{ marginLeft: 50 }}>{title}</div>
+      <div className="navbar-title" style={{ marginLeft: 50 }}>
+        {title}
+      </div>
     )
   }
 
   return (
     <Navbar fluid inverse>
       {/* Required to allow the hamburger button to be clicked */}
-      <Navbar.Header style={{position: 'relative', zIndex: 2}}>
+      <Navbar.Header style={{ position: 'relative', zIndex: 2 }}>
         <Navbar.Brand>
           {/* TODO: Reconcile CSS class and inline style. */}
-          <div className='app-menu-container' style={{ color: 'white', float: 'left', marginTop: '5px' }}>
+          <div
+            className="app-menu-container"
+            style={{ color: 'white', float: 'left', marginTop: '5px' }}
+          >
             <AppMenu />
           </div>
 
           {brandingOrTitle}
-
         </Navbar.Brand>
       </Navbar.Header>
       <ViewSwitcher sticky />
 
-      {showLogin && (
-        <Navbar.Collapse>
-          <Nav pullRight>
-            <NavLoginButtonAuth0
-              id='login-control'
-              links={accountLinks}
-            />
-          </Nav>
-        </Navbar.Collapse>
-      )}
+      <Navbar.Collapse>
+        <Nav pullRight>
+          {configLanguages &&
+            // Ensure that > 1 valid language is defined
+            Object.keys(configLanguages).filter(
+              (key) => key !== 'allLanguages' && configLanguages[key].name
+            ).length > 1 && (
+              <LocaleSelector configLanguages={configLanguages} />
+            )}
+          {showLogin && (
+            <NavLoginButtonAuth0 id="login-control" links={accountLinks} />
+          )}
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   )
 }
 
 // connect to the redux store
-
-const mapStateToProps = (state, ownProps) => {
+// Typescript TODO: state type
+const mapStateToProps = (state: any) => {
   return {
     otpConfig: state.otp.config
   }
 }
 
-const mapDispatchToProps = {
-}
+const mapDispatchToProps = {}
 
 export default connect(mapStateToProps, mapDispatchToProps)(DesktopNav)
