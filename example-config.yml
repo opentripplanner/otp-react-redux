@@ -107,7 +107,7 @@ map:
   ###   styles.segment_labels: styles attributes recognized by transitive.js.
   ###                         For examples of applicable style attributes, see
   ###                         https://github.com/conveyal/transitive.js/blob/master/stories/Transitive.stories.js#L47.
-  ### - disableFlexArc: optional parameter to disable rendering flex itinerary legs as an arc. 
+  ### - disableFlexArc: optional parameter to disable rendering flex itinerary legs as an arc.
   # transitive:
   #   labeledModes:
   #     - BUS
@@ -338,7 +338,7 @@ itinerary:
 ### Languages defined may be region-specific (e.g. en-US) or language-specific (e.g. es, kr)
 ### The LocaleSelector component, which provides a dropdown for the user to change their locale, will
 ### only be rendered if more than one valid language (all languages must have "name" defined) is included
-### in the language config. 
+### in the language config.
 
 # language:
 #   allLanguages
@@ -352,6 +352,7 @@ itinerary:
 #     config:
 #       flex:
 #         flex-service: Flex Service
+#         both: See bottom of itinerary for details.
 #         call-ahead: "Call to reserve: (555) 555-5555"
 #         continuous-dropoff: Communicate with operator about stop
 #       acessibilityScore:

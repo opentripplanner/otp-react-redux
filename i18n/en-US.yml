@@ -886,3 +886,11 @@ util:
     titleBarRouteId: "Route {routeId}"
     titleBarStopId: "Stop {stopId}"
     titleBarWithStatus: "{title} | {status}"
+
+# Default values for Flex Indicator (set in configuration as well)
+config:
+  flex:
+    flex-service: Flex Service
+    both: See bottom of itinerary for details
+    call-ahead: Call to reserve
+    continuous-dropoff: Communicate with operator about stop

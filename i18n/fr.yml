@@ -829,3 +829,11 @@ util:
     titleBarRouteId: "Ligne {routeId}"
     titleBarStopId: "Arrêt {stopId}"
     titleBarWithStatus: "{title} | {status}"
+
+# Default values for Flex Indicator (set in configuration as well)
+config:
+  flex:
+    flex-service: Service Flex
+    both: Plus de détails au bas de l'itinéraire
+    call-ahead: Appelez pour réserver
+    continuous-dropoff: Demandez l'arrêt au conducteur
