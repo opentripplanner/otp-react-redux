@@ -24,7 +24,7 @@ import {
 import { Dot } from './styled'
 import BatchPreferences, { replaceTransitMode } from './batch-preferences'
 import DateTimeModal from './date-time-modal'
-import ModeButtons, { getModeOptions, StyledModeButton } from './mode-buttons'
+import ModeButtons, { StyledModeButton } from './mode-buttons'
 import type { Combination } from './batch-preferences'
 import type { Mode } from './mode-buttons'
 
