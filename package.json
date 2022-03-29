@@ -15,7 +15,9 @@
     "test": "yarn run lint && yarn run typecheck && yarn run unit",
     "typecheck": "yarn tsc",
     "semantic-release": "semantic-release",
-    "start": "craco start"
+    "start": "craco start",
+    "percy-serve": "serve",
+    "percy-har-express": "har-express"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -122,6 +124,8 @@
     "@babel/preset-typescript": "^7.15.0",
     "@craco/craco": "^6.3.0",
     "@jackwilsdon/craco-use-babelrc": "^1.0.0",
+    "@percy/cli": "^1.0.0-beta.76",
+    "@percy/puppeteer": "^2.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
     "@types/qs": "^6.9.7",
     "@types/react-bootstrap": "^0.32.26",
@@ -156,6 +160,7 @@
     "eslint-plugin-typescript-sort-keys": "^1.8.0",
     "execa": "^5.1.1",
     "express": "^4.17.1",
+    "har-express": "^1.1.0",
     "husky": "^6.0.0",
     "jest-transform-stub": "^2.0.0",
     "jest-yaml-transform": "^0.2.0",
@@ -170,6 +175,7 @@
     "react-scripts": "^4.0.3",
     "redux-mock-store": "^1.5.3",
     "semantic-release": "^17.2.3",
+    "serve": "^13.0.2",
     "tsdx": "https://github.com/ibi-group/tsdx",
     "typescript": "^4.4.2",
     "yaml-loader": "^0.6.0"
@@ -212,5 +218,11 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ]
+  },
+  "percy": {
+    "version": 2,
+    "snapshot": {
+      "percy-css": ".percy-hide { opacity: 0; } "
+    }
   }
 }
