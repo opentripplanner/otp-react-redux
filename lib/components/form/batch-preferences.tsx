@@ -8,6 +8,7 @@ import { ComponentContext } from '../../util/contexts'
 import { getShowUserSettings } from '../../util/state'
 import { setQueryParam } from '../../actions/form'
 
+import { defaultModeOptions, Mode } from './mode-buttons'
 import { StyledBatchPreferences } from './batch-styled'
 import UserTripSettings from './user-trip-settings'
 
@@ -15,7 +16,7 @@ import UserTripSettings from './user-trip-settings'
 export type Combination = {
   mode: string
   params?: { [key: string]: number | string }
-  requiredModes: string[]
+  requiredModes?: string[]
 }
 
 export const replaceTransitMode =
@@ -30,6 +31,7 @@ export const replaceTransitMode =
 
 class BatchPreferences extends Component<{
   config: any
+  modeOptions: Mode[]
   query: any
   setQueryParam: (newQueryParam: any) => void
   showUserSettings: boolean
@@ -44,12 +46,19 @@ class BatchPreferences extends Component<{
    * Typescript TODO: combinations and queryParams need types
    */
   onQueryParamChange = (newQueryParams: any) => {
-    const { config, query, setQueryParam } = this.props
-    const enabledModes = query.enabledModes || config.modes.modeOptions
+    const { config, modeOptions, query, setQueryParam } = this.props
+    const enabledModes = query.enabledModes || modeOptions
     const combinations = config.modes.combinations
-      .filter((c: Combination) =>
-        c.requiredModes.every((m) => enabledModes.includes(m))
-      )
+      .filter((c: Combination) => {
+        if (c.requiredModes) {
+          return c.requiredModes.every((m) => enabledModes.includes(m))
+        } else {
+          // This is for backwards compatability
+          // In case a combination does not include requiredModes.
+          const modesInCombination = c.mode.split(',')
+          return modesInCombination.every((m) => enabledModes.includes(m))
+        }
+      })
       .map(replaceTransitMode(newQueryParams.mode))
     setQueryParam({ ...newQueryParams, combinations })
   }
@@ -138,6 +147,7 @@ const mapStateToProps = (state: {
   const { config, currentQuery } = state.otp
   return {
     config,
+    modeOptions: config.modes.modeOptions || defaultModeOptions,
     query: currentQuery,
     showUserSettings: getShowUserSettings(state)
   }

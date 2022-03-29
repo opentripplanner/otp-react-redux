@@ -2,14 +2,16 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 
-import { ComponentContext } from '../../util/contexts'
-import Icon from '../util/icon'
-
 import { buttonCss } from './batch-styled'
+import { ComponentContext } from '../../util/contexts'
+import { getFormattedMode } from '../../util/i18n'
+import { injectIntl, IntlProvider, IntlShape } from 'react-intl'
+import FormattedMode from '../util/formatted-mode'
+import Icon from '../util/icon'
 
 export type Mode = {
   icon?: string
-  label: string
+  label?: string
   mode: string
 }
 
@@ -22,11 +24,13 @@ const CheckMarkIcon = styled(Icon)`
 
 const ModeButton = ({
   className,
+  intl,
   item,
   onClick,
   selected
 }: {
   className: string
+  intl: IntlShape
   item: Mode
   onClick: (mode: string) => void
   selected: boolean
@@ -36,17 +40,18 @@ const ModeButton = ({
   // @ts-ignore
   const { ModeIcon } = useContext(ComponentContext)
   const { icon, label, mode } = item
+  const overlayTooltip = (
+    <Tooltip id={mode}>{label || getFormattedMode(mode, intl)}</Tooltip>
+  )
   return (
-    <OverlayTrigger
-      overlay={<Tooltip id={mode}>{label}</Tooltip>}
-      placement="bottom"
-    >
+    <OverlayTrigger overlay={overlayTooltip} placement="bottom">
       <button className={className} onClick={() => onClick(mode)}>
         {icon ? (
           <Icon className="fa-2x" type={icon} />
         ) : (
           <ModeIcon height={25} mode={mode} />
         )}
+        <FormattedMode mode={mode} />
         {selected && <CheckMarkIcon type="check" />}
       </button>
     </OverlayTrigger>
@@ -70,9 +75,11 @@ const ModeButtons = ({
   className,
   modeOptions,
   onClick,
+  intl,
   selectedModes = []
 }: {
   className: string
+  intl: IntlShape
   modeOptions: Mode[]
   onClick: (mode: string) => void
   selectedModes: string[]
@@ -82,6 +89,7 @@ const ModeButtons = ({
       {modeOptions.map((item) => (
         <StyledModeButton
           className={className}
+          intl={intl}
           item={item}
           key={item.mode}
           onClick={onClick}
@@ -92,4 +100,24 @@ const ModeButtons = ({
   )
 }
 
-export default ModeButtons
+// These mode options are used when they are not provided in the config.
+export const defaultModeOptions: Mode[] = [
+  {
+    mode: 'TRANSIT'
+  },
+  {
+    mode: 'WALK'
+  },
+  {
+    mode: 'CAR'
+  },
+  {
+    mode: 'BICYCLE'
+  },
+  {
+    icon: 'mobile',
+    mode: 'RENT' // TODO: include HAIL?
+  }
+]
+
+export default injectIntl(ModeButtons)

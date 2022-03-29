@@ -24,7 +24,10 @@ import {
 import { Dot } from './styled'
 import BatchPreferences, { replaceTransitMode } from './batch-preferences'
 import DateTimeModal from './date-time-modal'
-import ModeButtons, { StyledModeButton } from './mode-buttons'
+import ModeButtons, {
+  defaultModeOptions,
+  StyledModeButton
+} from './mode-buttons'
 import type { Combination } from './batch-preferences'
 import type { Mode } from './mode-buttons'
 
@@ -112,7 +115,16 @@ class BatchSettings extends Component<{
     const disabledModes = possibleModes.filter((m) => !newModes.includes(m))
     // Only include a combination if it every required mode is enabled.
     const newCombinations = possibleCombinations
-      .filter((c) => c.requiredModes.every((m) => newModes.includes(m)))
+      .filter((c) => {
+        if (c.requiredModes) {
+          return c.requiredModes.every((m) => newModes.includes(m))
+        } else {
+          // This is for backwards compatability
+          // In case a combination does not include requiredModes.
+          const modesInCombination = c.mode.split(',')
+          return modesInCombination.every((m) => newModes.includes(m))
+        }
+      })
       .map(replaceTransitMode(currentQuery.mode))
 
     setQueryParam({
@@ -225,7 +237,7 @@ class BatchSettings extends Component<{
 const mapStateToProps = (state: any) => ({
   config: state.otp.config,
   currentQuery: state.otp.currentQuery,
-  modeOptions: state.otp.config.modes.modeOptions,
+  modeOptions: state.otp.config.modes.modeOptions || defaultModeOptions,
   possibleCombinations: state.otp.config.modes.combinations
 })
 
