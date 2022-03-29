@@ -102,7 +102,7 @@ const StopTimeCell = ({
 
       <div style={{ fontSize: showDayOfWeek ? 12 : 14, marginLeft: 20 }}>
         {showDayOfWeek && (
-          <div style={{ marginBottom: -4 }}>
+          <div className="percy-hide" style={{ marginBottom: -4 }}>
             <FormattedDayOfWeek
               day={departureDay.format('dddd').toLowerCase()}
             />
