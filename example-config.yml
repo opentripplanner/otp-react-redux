@@ -175,17 +175,14 @@ geocoder:
 # Use this mode config for the enhanced Transit+ config
 modes:
   modeOptions:
-    - label: "Transit"
-      mode: TRANSIT
-    - label: Walk
-      mode: WALK
-    - label: Car
-      mode: CAR
-    - label: Bicycle
-      mode: BICYCLE
-    - label: Micromobility
-      mode: RENT
+    - mode: TRANSIT
+    - mode: WALK
+    - mode: CAR
+    - mode: BICYCLE
+    - mode: RENT
       icon: mobile
+      # This overrides the label generated from the i18n. It's not recommended.
+      # label: Rental 
       
   transitModes:
     - mode: BUS
