@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { injectIntl, WrappedComponentProps } from 'react-intl'
 // FIXME: typescript
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -18,17 +19,18 @@ const PopupTitle = styled.div`
 `
 
 function MapPopup({
+  intl,
   mapPopupLocation,
   onSetLocationFromPopup,
   setMapZoom,
   zoom
 }: {
-  mapPopupLocation: { name: string }
+  mapPopupLocation: { lat: number; lon: number; name?: string }
   // TODO: add types for this method
   onSetLocationFromPopup: () => void
   setMapZoom: ({ zoom }: { zoom: number }) => void
   zoom: number
-}): JSX.Element {
+} & WrappedComponentProps): JSX.Element {
   // Zoom out if zoomed in very far
   useEffect(() => {
     if (zoom > 15) {
@@ -37,12 +39,22 @@ function MapPopup({
     // Only check zoom if popup appears in a new place
   }, [mapPopupLocation, setMapZoom, zoom])
 
+  const popupName =
+    mapPopupLocation?.name ||
+    intl.formatMessage(
+      { id: 'common.coordinates' },
+      {
+        lat: mapPopupLocation.lat.toFixed(5),
+        lon: mapPopupLocation.lon.toFixed(5)
+      }
+    )
+
   return (
     <PopupContainer>
       <PopupTitle>
-        {mapPopupLocation.name.split(',').length > 3
-          ? mapPopupLocation.name.split(',').splice(0, 3).join(',')
-          : mapPopupLocation.name}
+        {popupName.split(',').length > 3
+          ? popupName.split(',').splice(0, 3).join(',')
+          : popupName}
       </PopupTitle>
       <div>
         Plan a trip:
@@ -66,4 +78,7 @@ const mapDispatchToProps = {
   setMapZoom
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapPopup)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(MapPopup))

@@ -9,6 +9,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import { ComponentContext } from '../../../util/contexts'
+import { getFare } from '../../../util/state'
 import FormattedDuration from '../../util/formatted-duration'
 
 // TODO: make this a prop
@@ -101,11 +102,12 @@ export class ItinerarySummary extends Component<Props> {
     const { currency, defaultFareKey, itinerary, timeOptions } = this.props
     const { LegIcon } = this.context
 
-    const { maxTNCFare, minTNCFare, transitFares } =
-      coreUtils.itinerary.calculateFares(itinerary, true)
-    const transitFare =
-      (transitFares?.[defaultFareKey] || transitFares.regular)?.transitFare || 0
-    // TODO: support non-USD
+    const { fareCurrency, maxTNCFare, minTNCFare, transitFare } = getFare(
+      itinerary,
+      defaultFareKey,
+      currency
+    )
+
     const minTotalFare = minTNCFare * 100 + transitFare
     const maxTotalFare = maxTNCFare * 100 + transitFare
 
@@ -142,7 +144,7 @@ export class ItinerarySummary extends Component<Props> {
                   values={{
                     maxTotalFare: (
                       <FormattedNumber
-                        currency={currency}
+                        currency={fareCurrency}
                         currencyDisplay="narrowSymbol"
                         // This isn't a "real" style prop
                         // eslint-disable-next-line react/style-prop-object
@@ -152,7 +154,7 @@ export class ItinerarySummary extends Component<Props> {
                     ),
                     minTotalFare: (
                       <FormattedNumber
-                        currency={currency}
+                        currency={fareCurrency}
                         currencyDisplay="narrowSymbol"
                         // This isn't a "real" style prop
                         // eslint-disable-next-line react/style-prop-object
