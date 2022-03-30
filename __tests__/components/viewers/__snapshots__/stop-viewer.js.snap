@@ -777,7 +777,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
               </div>
               <styled.div>
                 <div
-                  className="sc-crrszt jgWhKL"
+                  className="sc-iwyWTf frukpT"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -1485,7 +1485,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnuX jzpRQX"
+                            className="sc-hBEYId kYwHch"
                           >
                             <input
                               name="autoUpdate"
@@ -2340,7 +2340,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgJUU hryKBt"
+                                          className="sc-fodVek klHrRi"
                                         >
                                           P
                                         </div>
@@ -2950,7 +2950,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
               </div>
               <styled.div>
                 <div
-                  className="sc-crrszt jgWhKL"
+                  className="sc-iwyWTf frukpT"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -3379,7 +3379,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnuX jzpRQX"
+                            className="sc-hBEYId kYwHch"
                           >
                             <input
                               name="autoUpdate"
@@ -3838,7 +3838,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgJUU hryKBt"
+                                          className="sc-fodVek klHrRi"
                                         >
                                           P
                                         </div>
@@ -4646,7 +4646,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
               </div>
               <styled.div>
                 <div
-                  className="sc-crrszt jgWhKL"
+                  className="sc-iwyWTf frukpT"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -5366,7 +5366,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnuX jzpRQX"
+                            className="sc-hBEYId kYwHch"
                           >
                             <input
                               name="autoUpdate"
@@ -6221,7 +6221,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgJUU hryKBt"
+                                          className="sc-fodVek klHrRi"
                                         >
                                           P
                                         </div>
@@ -7545,7 +7545,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
               </div>
               <styled.div>
                 <div
-                  className="sc-crrszt jgWhKL"
+                  className="sc-iwyWTf frukpT"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -9824,7 +9824,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnuX jzpRQX"
+                            className="sc-hBEYId kYwHch"
                           >
                             <input
                               name="autoUpdate"
@@ -11711,7 +11711,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgJUU hryKBt"
+                                          className="sc-fodVek klHrRi"
                                         >
                                           P
                                         </div>
@@ -13025,7 +13025,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
               </div>
               <styled.div>
                 <div
-                  className="sc-crrszt jgWhKL"
+                  className="sc-iwyWTf frukpT"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -13998,7 +13998,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnuX jzpRQX"
+                            className="sc-hBEYId kYwHch"
                           >
                             <input
                               name="autoUpdate"
@@ -15865,7 +15865,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgJUU hryKBt"
+                                          className="sc-fodVek klHrRi"
                                         >
                                           P
                                         </div>
