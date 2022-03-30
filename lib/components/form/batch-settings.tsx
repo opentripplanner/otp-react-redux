@@ -31,23 +31,6 @@ import ModeButtons, {
 import type { Combination } from './batch-preferences'
 import type { Mode } from './mode-buttons'
 
-/**
- * Simple utility to check whether a list of mode strings contains the provided
- * mode. This handles exact match and prefix/suffix matches (i.e., checking
- * 'BICYCLE' will return true if 'BICYCLE' or 'BICYCLE_RENT' is in the list).
- *
- * FIXME: This might need to be modified to be a bit looser in how it handles
- * the 'contains' check. E.g., we might not want to remove WALK,TRANSIT if walk
- * is turned off, but we DO want to remove it if TRANSIT is turned off.
- */
-function listHasMode(modes: string[], mode: string) {
-  return modes.some((m: string) => mode.indexOf(m) !== -1)
-}
-
-function combinationHasAnyOfModes(combination: Combination, modes: string[]) {
-  return combination.mode.split(',').some((m: string) => listHasMode(modes, m))
-}
-
 const ModeButtonsFullWidthContainer = styled.div`
   display: flex;
   justify-content: space-between;
