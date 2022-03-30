@@ -104,6 +104,9 @@ class BatchSettings extends Component<{
         } else {
           // This is for backwards compatability
           // In case a combination does not include requiredModes.
+          console.warn(
+            `Combination ${c.mode} does not have any specified required modes.`
+          )
           const modesInCombination = c.mode.split(',')
           return modesInCombination.every((m) => newModes.includes(m))
         }
