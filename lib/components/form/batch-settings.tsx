@@ -102,7 +102,7 @@ class BatchSettings extends Component<{
         if (c.requiredModes) {
           return c.requiredModes.every((m) => newModes.includes(m))
         } else {
-          // This is for backwards compatability
+          // This is for backwards compatibility
           // In case a combination does not include requiredModes.
           console.warn(
             `Combination ${c.mode} does not have any specified required modes.`
