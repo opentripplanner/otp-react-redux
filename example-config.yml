@@ -107,7 +107,7 @@ map:
   ###   styles.segment_labels: styles attributes recognized by transitive.js.
   ###                         For examples of applicable style attributes, see
   ###                         https://github.com/conveyal/transitive.js/blob/master/stories/Transitive.stories.js#L47.
-  ### - disableFlexArc: optional parameter to disable rendering flex itinerary legs as an arc. 
+  ### - disableFlexArc: optional parameter to disable rendering flex itinerary legs as an arc.
   # transitive:
   #   labeledModes:
   #     - BUS
@@ -348,7 +348,7 @@ itinerary:
 ### Languages defined may be region-specific (e.g. en-US) or language-specific (e.g. es, kr)
 ### The LocaleSelector component, which provides a dropdown for the user to change their locale, will
 ### only be rendered if more than one valid language (all languages must have "name" defined) is included
-### in the language config. Locale icons (flags) are rendered based on the country code provided below (i.e. flag: US)
+### in the language config.
 
 # language:
 #   allLanguages
@@ -362,6 +362,7 @@ itinerary:
 #     config:
 #       flex:
 #         flex-service: Flex Service
+#         both: See bottom of itinerary for details.
 #         call-ahead: "Call to reserve: (555) 555-5555"
 #         continuous-dropoff: Communicate with operator about stop
 #       acessibilityScore:
@@ -377,7 +378,6 @@ itinerary:
 #         modes: "CAR_HAIL, CAR_RENT"
 #       480:
 #         msg: No available transit routes or rideshare/carshare service at origin.
-#     flag: US
 #     name: English (US)
 #
 #   fr:
@@ -388,23 +388,18 @@ itinerary:
 #         give-us-feedback: Donnez votre avis
 #         log-my-commute: Mes trajets verts
 #         traveler-tools: Outils du voyageur
-#     flag: FR
 #     name: French
 
 #   ko:
-#     flag: KR
 #     name: 한국인
 
 #   vi:
-#     flag: VN
 #     name: Tiếng Việt
 
 #   zh:
-#     flag: CN
 #     name: 中国人
 
 #   es:
-#     flag: ES
 #     name: Español
 
 ### Localization section to provide language/locale settings
@@ -455,3 +450,7 @@ dateTime:
 # Mapillary calls these "Client Tokens". They can be created at https://www.mapillary.com/dashboard/developers
 # mapillary:
 #   key: <Mapillary Key>
+
+### Setting to enable touch-friendly behavior
+### e.g. on touch-screen kiosks that run a desktop OS.
+# isTouchScreenOnDesktop: true

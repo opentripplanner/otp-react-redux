@@ -784,6 +784,8 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
+    # Note to translator: noTransitFareProvided is width-constrained.
+    noTransitFareProvided: No fare info
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
 
   # Note to translator: the strings below are used in sentences such as:
@@ -884,3 +886,11 @@ util:
     titleBarRouteId: "Route {routeId}"
     titleBarStopId: "Stop {stopId}"
     titleBarWithStatus: "{title} | {status}"
+
+# Default values for Flex Indicator (set in configuration as well)
+config:
+  flex:
+    flex-service: Flex Service
+    both: See bottom of itinerary for details
+    call-ahead: Call to reserve
+    continuous-dropoff: Communicate with operator about stop

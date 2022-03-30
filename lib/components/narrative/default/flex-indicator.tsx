@@ -1,5 +1,5 @@
-// Craco will require this. FIXME: remove line once migrated to craco
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore TODO: migrate to typescript
 import { barberPole } from '@opentripplanner/itinerary-body/lib/otp-react-redux/line-column-content'
 import { FormattedMessage } from 'react-intl'
 import React from 'react'
@@ -100,7 +100,16 @@ export const FlexIndicator = ({
         <FormattedMessage id="config.flex.flex-service" />
       </h4>
     )}
-    {isCallAhead && (
+    {isCallAhead && isContinuousDropoff && (
+      <FlexNotice
+        faKey="share"
+        showText={!shrink}
+        text={
+          <FormattedMessage id="config.flex.both" values={{ phoneNumber }} />
+        }
+      />
+    )}
+    {isCallAhead && !isContinuousDropoff && (
       <FlexNotice
         faKey="phone"
         showText={!shrink}
