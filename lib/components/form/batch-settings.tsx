@@ -31,6 +31,27 @@ import ModeButtons, {
 import type { Combination } from './batch-preferences'
 import type { Mode } from './mode-buttons'
 
+/**
+ * A function that generates a filter to be used to filter a list of combinations.
+ * @param enabledModes A list of the modes enabled in the UI
+ * @returns Filter function to filter combinations
+ */
+export const combinationFilter =
+  (enabledModes: string[]) =>
+  (c: Combination): boolean => {
+    if (c.requiredModes) {
+      return c.requiredModes.every((m) => enabledModes.includes(m))
+    } else {
+      // This is for backwards compatibility
+      // In case a combination does not include requiredModes.
+      console.warn(
+        `Combination ${c.mode} does not have any specified required modes.`
+      )
+      const modesInCombination = c.mode.split(',')
+      return modesInCombination.every((m) => enabledModes.includes(m))
+    }
+  }
+
 const ModeButtonsFullWidthContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -98,19 +119,7 @@ class BatchSettings extends Component<{
     const disabledModes = possibleModes.filter((m) => !newModes.includes(m))
     // Only include a combination if it every required mode is enabled.
     const newCombinations = possibleCombinations
-      .filter((c) => {
-        if (c.requiredModes) {
-          return c.requiredModes.every((m) => newModes.includes(m))
-        } else {
-          // This is for backwards compatibility
-          // In case a combination does not include requiredModes.
-          console.warn(
-            `Combination ${c.mode} does not have any specified required modes.`
-          )
-          const modesInCombination = c.mode.split(',')
-          return modesInCombination.every((m) => newModes.includes(m))
-        }
-      })
+      .filter(combinationFilter(newModes))
       .map(replaceTransitMode(currentQuery.mode))
 
     setQueryParam({

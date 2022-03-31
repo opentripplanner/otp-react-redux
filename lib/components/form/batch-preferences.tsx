@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import { ComponentContext } from '../../util/contexts'
 import { setQueryParam } from '../../actions/form'
 
+import { combinationFilter } from './batch-settings'
 import { defaultModeOptions, Mode } from './mode-buttons'
 import { StyledBatchPreferences } from './batch-styled'
 
@@ -46,19 +47,7 @@ class BatchPreferences extends Component<{
     const { config, modeOptions, query, setQueryParam } = this.props
     const enabledModes = query.enabledModes || modeOptions
     const combinations = config.modes.combinations
-      .filter((c: Combination) => {
-        if (c.requiredModes) {
-          return c.requiredModes.every((m) => enabledModes.includes(m))
-        } else {
-          // This is for backwards compatibility
-          // In case a combination does not include requiredModes.
-          console.warn(
-            `Combination ${c.mode} does not have any specified required modes.`
-          )
-          const modesInCombination = c.mode.split(',')
-          return modesInCombination.every((m) => enabledModes.includes(m))
-        }
-      })
+      .filter(combinationFilter(enabledModes))
       .map(replaceTransitMode(newQueryParams.mode))
     setQueryParam({ ...newQueryParams, combinations })
   }
