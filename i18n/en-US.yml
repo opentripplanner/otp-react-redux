@@ -326,7 +326,6 @@ components:
     previous: Previous
   PlanTripButton:
     planTrip: Plan Trip
-  PointPopup:
   PrintLayout:
     itinerary: Itinerary
     toggleMap: Toggle Map
