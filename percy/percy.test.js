@@ -49,10 +49,12 @@ beforeAll(async () => {
       'yarn',
       'build'
     ])
+    console.log('Built OTP-RR')
 
     // grab ATL har file to tmp
     if (process.env.HAR_URL) {
       await execa('curl', [process.env.HAR_URL, '-s', '--output', 'mock.har'])
+      console.log('Downloaded HAR data')
     }
   } catch (error) {
     console.log(error)
