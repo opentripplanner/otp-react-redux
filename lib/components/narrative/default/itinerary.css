@@ -42,6 +42,8 @@
 
 .otp .option.default-itin > .header .itinerary-attributes {
   float: right;
+  min-width: 6em;
+  text-align: right;
 }
 
 .otp .option.default-itin > .header .itinerary-attributes > li {
