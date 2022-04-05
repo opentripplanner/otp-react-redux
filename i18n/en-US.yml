@@ -173,7 +173,7 @@ components:
     clickDetails: Click to view details
     # Use ordered placeholders when multiple modes are involved
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
-    multiModeSummary: "{accessMode} to {transitMode} {primaryRoute}"
+    multiModeSummary: "{accessMode} to {transitMode}"
   DeleteUser:
     deleteMyAccount: Delete my account
   EnhancedStopMarker:
