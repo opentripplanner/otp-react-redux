@@ -250,6 +250,11 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # Whether to render route names and colors in the blocks inside
+  # the batch ui rows
+  renderRouteNamesInBlocks: true
+  # Whether the mode icons should be colored as well
+  fillModeIcons: true
   # If multiple fares are returned by OTP, assign names to the fare keys here
   #fareKeyNameMap:
   #  regular: "Transit Fare"
