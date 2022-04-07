@@ -850,9 +850,6 @@ common:
     # Use ordered placeholders for the departure-arrival string
     # (this will accommodate right-to-left languages by swapping the order in this string).
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
-    multiDepartureTimes: "{startTime, time, short}, {secondStartTime, time, short}{thirdStartTime, plural,
-      =0 {}
-      other {, {thirdStartTime, time, short}}}"
     # Replacing (sort of) moment.js fromNow() functionality. This is not a direct 1:1, since
     # moment.js formats text to "a minute ago" once 44 seconds are reached, etc. This has
     # been simplified here.
