@@ -51,7 +51,6 @@ const ModeButton = ({
         ) : (
           <ModeIcon height={25} mode={mode} />
         )}
-        <FormattedMode mode={mode} />
         {selected && <CheckMarkIcon type="check" />}
       </button>
     </OverlayTrigger>
@@ -73,9 +72,9 @@ export const StyledModeButton = styled(ModeButton)`
 
 const ModeButtons = ({
   className,
+  intl,
   modeOptions,
   onClick,
-  intl,
   selectedModes = []
 }: {
   className: string
