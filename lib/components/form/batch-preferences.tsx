@@ -7,12 +7,15 @@ import React, { Component } from 'react'
 import { ComponentContext } from '../../util/contexts'
 import { setQueryParam } from '../../actions/form'
 
+import { combinationFilter } from './batch-settings'
+import { defaultModeOptions, Mode } from './mode-buttons'
 import { StyledBatchPreferences } from './batch-styled'
 
 // TODO: Central type source
 export type Combination = {
   mode: string
   params?: { [key: string]: number | string }
+  requiredModes?: string[]
 }
 
 export const replaceTransitMode =
@@ -27,6 +30,7 @@ export const replaceTransitMode =
 
 class BatchPreferences extends Component<{
   config: any
+  modeOptions: Mode[]
   query: any
   setQueryParam: (newQueryParam: any) => void
 }> {
@@ -40,13 +44,10 @@ class BatchPreferences extends Component<{
    * Typescript TODO: combinations and queryParams need types
    */
   onQueryParamChange = (newQueryParams: any) => {
-    const { config, query, setQueryParam } = this.props
-    const disabledModes = query.disabledModes || []
+    const { config, modeOptions, query, setQueryParam } = this.props
+    const enabledModes = query.enabledModes || modeOptions
     const combinations = config.modes.combinations
-      .filter((combination: Combination) => {
-        const modesInCombination = combination.mode.split(',')
-        return !modesInCombination.find((m) => disabledModes.includes(m))
-      })
+      .filter(combinationFilter(enabledModes))
       .map(replaceTransitMode(newQueryParams.mode))
     setQueryParam({ ...newQueryParams, combinations })
   }
@@ -133,6 +134,7 @@ const mapStateToProps = (state: {
   const { config, currentQuery } = state.otp
   return {
     config,
+    modeOptions: config.modes.modeOptions || defaultModeOptions,
     query: currentQuery
   }
 }
