@@ -45,7 +45,8 @@ class BatchPreferences extends Component<{
    */
   onQueryParamChange = (newQueryParams: any) => {
     const { config, modeOptions, query, setQueryParam } = this.props
-    const enabledModes = query.enabledModes || modeOptions
+    const enabledModes =
+      query.enabledModes || modeOptions.filter((m) => !m.defaultUnselected)
     const combinations = config.modes.combinations
       .filter(combinationFilter(enabledModes))
       .map(replaceTransitMode(newQueryParams.mode))

@@ -100,7 +100,9 @@ class BatchSettings extends Component<{
 }> {
   state = {
     expanded: null,
-    selectedModes: this.props.modeOptions.map((m) => m.mode)
+    selectedModes: this.props.modeOptions
+      .filter((m) => !m.defaultUnselected)
+      .map((m) => m.mode)
   }
 
   _onClickMode = (mode: string) => {

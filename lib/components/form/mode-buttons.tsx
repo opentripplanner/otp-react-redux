@@ -6,10 +6,10 @@ import { buttonCss } from './batch-styled'
 import { ComponentContext } from '../../util/contexts'
 import { getFormattedMode } from '../../util/i18n'
 import { injectIntl, IntlProvider, IntlShape } from 'react-intl'
-import FormattedMode from '../util/formatted-mode'
 import Icon from '../util/icon'
 
 export type Mode = {
+  defaultUnselected: boolean
   icon?: string
   label?: string
   mode: string
