@@ -1,15 +1,16 @@
+import { injectIntl, IntlShape } from 'react-intl'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 
-import { buttonCss } from './batch-styled'
 import { ComponentContext } from '../../util/contexts'
 import { getFormattedMode } from '../../util/i18n'
-import { injectIntl, IntlProvider, IntlShape } from 'react-intl'
 import Icon from '../util/icon'
 
+import { buttonCss } from './batch-styled'
+
 export type Mode = {
-  defaultUnselected: boolean
+  defaultUnselected?: boolean
   icon?: string
   label?: string
   mode: string
