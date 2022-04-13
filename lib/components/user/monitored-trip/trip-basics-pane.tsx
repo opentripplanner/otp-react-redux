@@ -200,12 +200,11 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                   : monitoredTrip[day]
                   ? 'bg-primary'
                   : ''
-                const notAvailableText = isDayDisabled
-                  ? intl.formatMessage(
-                      { id: 'components.TripBasicsPane.tripNotAvailableOnDay' },
-                      { repeatedDay: getFormattedDayOfWeekPlural(day, intl) }
-                    )
-                  : null
+                const notAvailableText = intl.formatMessage(
+                  { id: 'components.TripBasicsPane.tripNotAvailableOnDay' },
+                  { repeatedDay: getFormattedDayOfWeekPlural(day, intl) }
+                )
+
                 return (
                   notAvailableText && (
                     <TripDayLabel

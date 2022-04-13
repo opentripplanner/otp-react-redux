@@ -64,15 +64,18 @@ class PlaceEditor extends Component<
     values: any
   } & WrappedComponentProps
 > {
-  _handleLocationChange = ({
-    location
-  }: {
-    location: {
-      lat: number
-      lon: number
-      name: string
+  _handleLocationChange = (
+    _: unknown, // Ignore intl object. TODO: localize name?
+    {
+      location
+    }: {
+      location: {
+        lat: number
+        lon: number
+        name: string
+      }
     }
-  }) => {
+  ) => {
     const { setValues, values } = this.props
     const { lat, lon, name } = location
     setValues({
