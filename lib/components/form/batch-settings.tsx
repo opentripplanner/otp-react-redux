@@ -24,25 +24,33 @@ import {
 import { Dot } from './styled'
 import BatchPreferences, { replaceTransitMode } from './batch-preferences'
 import DateTimeModal from './date-time-modal'
-import ModeButtons, { getModeOptions, StyledModeButton } from './mode-buttons'
+import ModeButtons, {
+  defaultModeOptions,
+  StyledModeButton
+} from './mode-buttons'
 import type { Combination } from './batch-preferences'
+import type { Mode } from './mode-buttons'
 
 /**
- * Simple utility to check whether a list of mode strings contains the provided
- * mode. This handles exact match and prefix/suffix matches (i.e., checking
- * 'BICYCLE' will return true if 'BICYCLE' or 'BICYCLE_RENT' is in the list).
- *
- * FIXME: This might need to be modified to be a bit looser in how it handles
- * the 'contains' check. E.g., we might not want to remove WALK,TRANSIT if walk
- * is turned off, but we DO want to remove it if TRANSIT is turned off.
+ * A function that generates a filter to be used to filter a list of combinations.
+ * @param enabledModes A list of the modes enabled in the UI
+ * @returns Filter function to filter combinations
  */
-function listHasMode(modes: string[], mode: string) {
-  return modes.some((m: string) => mode.indexOf(m) !== -1)
-}
-
-function combinationHasAnyOfModes(combination: Combination, modes: string[]) {
-  return combination.mode.split(',').some((m: string) => listHasMode(modes, m))
-}
+export const combinationFilter =
+  (enabledModes: string[]) =>
+  (c: Combination): boolean => {
+    if (c.requiredModes) {
+      return c.requiredModes.every((m) => enabledModes.includes(m))
+    } else {
+      // This is for backwards compatibility
+      // In case a combination does not include requiredModes.
+      console.warn(
+        `Combination ${c.mode} does not have any specified required modes.`
+      )
+      const modesInCombination = c.mode.split(',')
+      return modesInCombination.every((m) => enabledModes.includes(m))
+    }
+  }
 
 const ModeButtonsFullWidthContainer = styled.div`
   display: flex;
@@ -85,17 +93,19 @@ class BatchSettings extends Component<{
   config: any
   currentQuery: any
   intl: IntlShape
+  modeOptions: Mode[]
   possibleCombinations: Combination[]
   routingQuery: any
   setQueryParam: (queryParam: any) => void
 }> {
   state = {
     expanded: null,
-    selectedModes: getModeOptions(this.props.intl).map((m) => m.mode)
+    selectedModes: this.props.modeOptions.map((m) => m.mode)
   }
 
   _onClickMode = (mode: string) => {
-    const { currentQuery, possibleCombinations, setQueryParam } = this.props
+    const { currentQuery, modeOptions, possibleCombinations, setQueryParam } =
+      this.props
     const { selectedModes } = this.state
     const index = selectedModes.indexOf(mode)
     const enableMode = index === -1
@@ -105,14 +115,18 @@ class BatchSettings extends Component<{
     // Update selected modes for mode buttons.
     this.setState({ selectedModes: newModes })
     // Update the available mode combinations based on the new modes selection.
-    const possibleModes = getModeOptions(this.props.intl).map((m) => m.mode)
+    const possibleModes = modeOptions.map((m) => m.mode)
     const disabledModes = possibleModes.filter((m) => !newModes.includes(m))
-    // Do not include combination if any of its modes are found in disabled
-    // modes list.
+    // Only include a combination if it every required mode is enabled.
     const newCombinations = possibleCombinations
-      .filter((c) => !combinationHasAnyOfModes(c, disabledModes))
+      .filter(combinationFilter(newModes))
       .map(replaceTransitMode(currentQuery.mode))
-    setQueryParam({ combinations: newCombinations, disabledModes })
+
+    setQueryParam({
+      combinations: newCombinations,
+      disabledModes,
+      enabledModes: newModes
+    })
   }
 
   _planTrip = () => {
@@ -153,13 +167,14 @@ class BatchSettings extends Component<{
   _toggleSettings = () => this.setState(this._updateExpanded('SETTINGS'))
 
   render() {
-    const { config, currentQuery, intl } = this.props
+    const { config, currentQuery, intl, modeOptions } = this.props
     const { expanded, selectedModes } = this.state
     return (
       <>
         <ModeButtonsFullWidthContainer className="hidden-lg">
           <ModeButtonsFullWidth
             className="flex"
+            modeOptions={modeOptions}
             onClick={this._onClickMode}
             selectedModes={selectedModes}
           />
@@ -183,6 +198,7 @@ class BatchSettings extends Component<{
           <ModeButtonsContainerCompressed>
             <ModeButtonsCompressed
               className="visible-lg straight-corners"
+              modeOptions={modeOptions}
               onClick={this._onClickMode}
               selectedModes={selectedModes}
             />
@@ -216,6 +232,7 @@ class BatchSettings extends Component<{
 const mapStateToProps = (state: any) => ({
   config: state.otp.config,
   currentQuery: state.otp.currentQuery,
+  modeOptions: state.otp.config.modes.modeOptions || defaultModeOptions,
   possibleCombinations: state.otp.config.modes.combinations
 })
 

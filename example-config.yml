@@ -174,6 +174,16 @@ geocoder:
 
 # Use this mode config for the enhanced Transit+ config
 modes:
+  modeOptions:
+    - mode: TRANSIT
+    - mode: WALK
+    - mode: CAR
+    - mode: BICYCLE
+    - mode: RENT
+      icon: mobile
+      # This overrides the label generated from the i18n. Use when defining modes that are not supported by OTP i18n
+      # label: Rental 
+      
   transitModes:
     - mode: BUS
       label: Bus
