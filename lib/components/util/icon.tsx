@@ -1,4 +1,4 @@
-import { injectIntl, IntlShape } from 'react-intl'
+import { IntlShape } from 'react-intl'
 import FontAwesome from 'react-fontawesome'
 import React from 'react'
 import styled from 'styled-components'
@@ -8,6 +8,7 @@ import { getFormattedMode } from '../../util/i18n'
 export type IconProps = {
   className?: string
   fixedWidth?: boolean
+  intl?: IntlShape
   style?: Record<string, unknown>
   type: string
   withSpace?: boolean
@@ -35,11 +36,11 @@ const Icon = ({
   type,
   withSpace = false,
   ...props
-}: IconProps & { intl: IntlShape }): JSX.Element => {
+}: IconProps): JSX.Element => {
   const FontComponent = withSpace ? FontAwesomeWithSpace : FontAwesome
   return (
     <FontComponent
-      aria-label={getFormattedMode(type, intl, true)}
+      aria-label={intl ? getFormattedMode(type, intl, true) : ''}
       fixedWidth={fixedWidth}
       name={type}
       {...props}
@@ -47,4 +48,4 @@ const Icon = ({
   )
 }
 
-export default injectIntl(Icon)
+export default Icon
