@@ -40,7 +40,7 @@ const Icon = ({
   const FontComponent = withSpace ? FontAwesomeWithSpace : FontAwesome
   return (
     <FontComponent
-      aria-label={getFormattedMode(type, intl)}
+      aria-label={getFormattedMode(type, intl, true)}
       fixedWidth={fixedWidth}
       name={type}
       {...props}
