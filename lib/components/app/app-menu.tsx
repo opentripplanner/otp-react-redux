@@ -185,6 +185,7 @@ class AppMenu extends Component<
               ? intl.formatMessage({ id: 'components.AppMenu.closeMenu' })
               : intl.formatMessage({ id: 'components.AppMenu.openMenu' })
           }
+          aria-roledescription="button"
           className="app-menu-icon"
           onClick={this._togglePane}
           onKeyDown={this._togglePane}

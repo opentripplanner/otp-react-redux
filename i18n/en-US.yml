@@ -456,6 +456,7 @@ components:
     hideSettings: " Hide Settings"
   TabbedItineraries:
     optionNumber: "Option {optionNum, number}"
+    optionDetails: "Itinerary details"
     # Note to translator: This text is width-constrained.
     mustCallAhead: Must call ahead!
     fareCost: >
@@ -593,6 +594,7 @@ components:
   TripViewer:
     accessible: Accessible
     bicyclesAllowed: Allowed
+    description: Trip Viewer showing all stops and stop times on route with stops served in trip itinerary highlighted
     header: Trip Viewer
     routeHeader: "Route: <strong>{routeShortName}</strong> {routeLongName}"
     viewStop: View
