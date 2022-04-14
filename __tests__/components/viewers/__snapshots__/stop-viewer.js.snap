@@ -471,61 +471,21 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     onClick={[Function]}
                     type="button"
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="arrow-left"
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="arrow-left"
+                      <FontAwesome
+                        aria-label=""
+                        fixedWidth={true}
+                        name="arrow-left"
                       >
-                        <FontAwesome
+                        <span
+                          aria-hidden={true}
                           aria-label=""
-                          fixedWidth={true}
-                          name="arrow-left"
-                        >
-                          <span
-                            aria-hidden={true}
-                            aria-label=""
-                            className="fa fa-arrow-left fa-fw"
-                          />
-                        </FontAwesome>
-                      </Icon>
-                    </injectIntl(Icon)>
+                          className="fa fa-arrow-left fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
                     <FormattedMessage
                       id="common.forms.back"
                     >
@@ -576,61 +536,21 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="search"
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="search"
+                      <FontAwesome
+                        aria-label=""
+                        fixedWidth={true}
+                        name="search"
                       >
-                        <FontAwesome
+                        <span
+                          aria-hidden={true}
                           aria-label=""
-                          fixedWidth={true}
-                          name="search"
-                        >
-                          <span
-                            aria-hidden={true}
-                            aria-label=""
-                            className="fa fa-search fa-fw"
-                          />
-                        </FontAwesome>
-                      </Icon>
-                    </injectIntl(Icon)>
+                          className="fa fa-search fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
                   </button>
                   <button
                     className="link-button pull-right"
@@ -641,70 +561,29 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       }
                     }
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="calendar"
                       withSpace={true}
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="calendar"
-                        withSpace={true}
+                      <Styled(FontAwesome)
+                        aria-label=""
+                        fixedWidth={true}
+                        name="calendar"
                       >
-                        <Styled(FontAwesome)
+                        <FontAwesome
                           aria-label=""
+                          className="sc-gsTEea iqivwV"
                           fixedWidth={true}
                           name="calendar"
                         >
-                          <FontAwesome
+                          <span
+                            aria-hidden={true}
                             aria-label=""
-                            className="sc-gsTEea iqivwV"
-                            fixedWidth={true}
-                            name="calendar"
-                          >
-                            <span
-                              aria-hidden={true}
-                              aria-label=""
-                              className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
-                            />
-                          </FontAwesome>
-                        </Styled(FontAwesome)>
-                      </Icon>
-                    </injectIntl(Icon)>
+                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                          />
+                        </FontAwesome>
+                      </Styled(FontAwesome)>
+                    </Icon>
                     <FormattedMessage
                       id="components.StopViewer.viewTypeBtnText"
                       values={
@@ -1470,7 +1349,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     <div
                                       className="pull-left"
                                     >
-                                      <injectIntl(Icon)
+                                      <Icon
                                         style={
                                           Object {
                                             "color": "#888",
@@ -1480,43 +1359,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         }
                                         type="clock-o"
                                       >
-                                        <Icon
-                                          intl={
-                                            Object {
-                                              "defaultFormats": Object {},
-                                              "defaultLocale": "en-US",
-                                              "defaultRichTextElements": undefined,
-                                              "formatDate": [Function],
-                                              "formatDateTimeRange": [Function],
-                                              "formatDateToParts": [Function],
-                                              "formatDisplayName": [Function],
-                                              "formatList": [Function],
-                                              "formatListToParts": [Function],
-                                              "formatMessage": [Function],
-                                              "formatNumber": [Function],
-                                              "formatNumberToParts": [Function],
-                                              "formatPlural": [Function],
-                                              "formatRelativeTime": [Function],
-                                              "formatTime": [Function],
-                                              "formatTimeToParts": [Function],
-                                              "formats": Object {},
-                                              "formatters": Object {
-                                                "getDateTimeFormat": [Function],
-                                                "getDisplayNames": [Function],
-                                                "getListFormat": [Function],
-                                                "getMessageFormat": [Function],
-                                                "getNumberFormat": [Function],
-                                                "getPluralRules": [Function],
-                                                "getRelativeTimeFormat": [Function],
-                                              },
-                                              "locale": "en-US",
-                                              "messages": Object {},
-                                              "onError": [Function],
-                                              "textComponent": Symbol(react.fragment),
-                                              "timeZone": undefined,
-                                              "wrapRichTextChunksInFragment": undefined,
-                                            }
-                                          }
+                                        <FontAwesome
+                                          aria-label=""
+                                          fixedWidth={true}
+                                          name="clock-o"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -1524,12 +1370,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                               "marginRight": 2,
                                             }
                                           }
-                                          type="clock-o"
                                         >
-                                          <FontAwesome
+                                          <span
+                                            aria-hidden={true}
                                             aria-label=""
-                                            fixedWidth={true}
-                                            name="clock-o"
+                                            className="fa fa-clock-o fa-fw"
                                             style={
                                               Object {
                                                 "color": "#888",
@@ -1537,22 +1382,9 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                 "marginRight": 2,
                                               }
                                             }
-                                          >
-                                            <span
-                                              aria-hidden={true}
-                                              aria-label=""
-                                              className="fa fa-clock-o fa-fw"
-                                              style={
-                                                Object {
-                                                  "color": "#888",
-                                                  "fontSize": "0.8em",
-                                                  "marginRight": 2,
-                                                }
-                                              }
-                                            />
-                                          </FontAwesome>
-                                        </Icon>
-                                      </injectIntl(Icon)>
+                                          />
+                                        </FontAwesome>
+                                      </Icon>
                                     </div>
                                     <div
                                       style={
@@ -1593,61 +1425,21 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   className="expansion-button"
                                   onClick={[Function]}
                                 >
-                                  <injectIntl(Icon)
+                                  <Icon
                                     type="chevron-down"
                                   >
-                                    <Icon
-                                      intl={
-                                        Object {
-                                          "defaultFormats": Object {},
-                                          "defaultLocale": "en-US",
-                                          "defaultRichTextElements": undefined,
-                                          "formatDate": [Function],
-                                          "formatDateTimeRange": [Function],
-                                          "formatDateToParts": [Function],
-                                          "formatDisplayName": [Function],
-                                          "formatList": [Function],
-                                          "formatListToParts": [Function],
-                                          "formatMessage": [Function],
-                                          "formatNumber": [Function],
-                                          "formatNumberToParts": [Function],
-                                          "formatPlural": [Function],
-                                          "formatRelativeTime": [Function],
-                                          "formatTime": [Function],
-                                          "formatTimeToParts": [Function],
-                                          "formats": Object {},
-                                          "formatters": Object {
-                                            "getDateTimeFormat": [Function],
-                                            "getDisplayNames": [Function],
-                                            "getListFormat": [Function],
-                                            "getMessageFormat": [Function],
-                                            "getNumberFormat": [Function],
-                                            "getPluralRules": [Function],
-                                            "getRelativeTimeFormat": [Function],
-                                          },
-                                          "locale": "en-US",
-                                          "messages": Object {},
-                                          "onError": [Function],
-                                          "textComponent": Symbol(react.fragment),
-                                          "timeZone": undefined,
-                                          "wrapRichTextChunksInFragment": undefined,
-                                        }
-                                      }
-                                      type="chevron-down"
+                                    <FontAwesome
+                                      aria-label=""
+                                      fixedWidth={true}
+                                      name="chevron-down"
                                     >
-                                      <FontAwesome
+                                      <span
+                                        aria-hidden={true}
                                         aria-label=""
-                                        fixedWidth={true}
-                                        name="chevron-down"
-                                      >
-                                        <span
-                                          aria-hidden={true}
-                                          aria-label=""
-                                          className="fa fa-chevron-down fa-fw"
-                                        />
-                                      </FontAwesome>
-                                    </Icon>
-                                  </injectIntl(Icon)>
+                                        className="fa fa-chevron-down fa-fw"
+                                      />
+                                    </FontAwesome>
+                                  </Icon>
                                 </button>
                               </div>
                             </div>
@@ -1728,73 +1520,31 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           }
                         }
                       >
-                        <injectIntl(Icon)
+                        <Icon
                           className="fa-spin"
                           type="refresh"
                           withSpace={true}
                         >
-                          <Icon
+                          <Styled(FontAwesome)
+                            aria-label=""
                             className="fa-spin"
-                            intl={
-                              Object {
-                                "defaultFormats": Object {},
-                                "defaultLocale": "en-US",
-                                "defaultRichTextElements": undefined,
-                                "formatDate": [Function],
-                                "formatDateTimeRange": [Function],
-                                "formatDateToParts": [Function],
-                                "formatDisplayName": [Function],
-                                "formatList": [Function],
-                                "formatListToParts": [Function],
-                                "formatMessage": [Function],
-                                "formatNumber": [Function],
-                                "formatNumberToParts": [Function],
-                                "formatPlural": [Function],
-                                "formatRelativeTime": [Function],
-                                "formatTime": [Function],
-                                "formatTimeToParts": [Function],
-                                "formats": Object {},
-                                "formatters": Object {
-                                  "getDateTimeFormat": [Function],
-                                  "getDisplayNames": [Function],
-                                  "getListFormat": [Function],
-                                  "getMessageFormat": [Function],
-                                  "getNumberFormat": [Function],
-                                  "getPluralRules": [Function],
-                                  "getRelativeTimeFormat": [Function],
-                                },
-                                "locale": "en-US",
-                                "messages": Object {},
-                                "onError": [Function],
-                                "textComponent": Symbol(react.fragment),
-                                "timeZone": undefined,
-                                "wrapRichTextChunksInFragment": undefined,
-                              }
-                            }
-                            type="refresh"
-                            withSpace={true}
+                            fixedWidth={true}
+                            name="refresh"
                           >
-                            <Styled(FontAwesome)
+                            <FontAwesome
                               aria-label=""
-                              className="fa-spin"
+                              className="sc-gsTEea iqivwV fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
-                              <FontAwesome
+                              <span
+                                aria-hidden={true}
                                 aria-label=""
-                                className="sc-gsTEea iqivwV fa-spin"
-                                fixedWidth={true}
-                                name="refresh"
-                              >
-                                <span
-                                  aria-hidden={true}
-                                  aria-label=""
-                                  className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
-                                />
-                              </FontAwesome>
-                            </Styled(FontAwesome)>
-                          </Icon>
-                        </injectIntl(Icon)>
+                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                              />
+                            </FontAwesome>
+                          </Styled(FontAwesome)>
+                        </Icon>
                         <FormattedTime
                           timeStyle="short"
                           timeZone="America/Los_Angeles"
@@ -2908,61 +2658,21 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     onClick={[Function]}
                     type="button"
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="arrow-left"
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="arrow-left"
+                      <FontAwesome
+                        aria-label=""
+                        fixedWidth={true}
+                        name="arrow-left"
                       >
-                        <FontAwesome
+                        <span
+                          aria-hidden={true}
                           aria-label=""
-                          fixedWidth={true}
-                          name="arrow-left"
-                        >
-                          <span
-                            aria-hidden={true}
-                            aria-label=""
-                            className="fa fa-arrow-left fa-fw"
-                          />
-                        </FontAwesome>
-                      </Icon>
-                    </injectIntl(Icon)>
+                          className="fa fa-arrow-left fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
                     <FormattedMessage
                       id="common.forms.back"
                     >
@@ -3013,61 +2723,21 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="search"
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="search"
+                      <FontAwesome
+                        aria-label=""
+                        fixedWidth={true}
+                        name="search"
                       >
-                        <FontAwesome
+                        <span
+                          aria-hidden={true}
                           aria-label=""
-                          fixedWidth={true}
-                          name="search"
-                        >
-                          <span
-                            aria-hidden={true}
-                            aria-label=""
-                            className="fa fa-search fa-fw"
-                          />
-                        </FontAwesome>
-                      </Icon>
-                    </injectIntl(Icon)>
+                          className="fa fa-search fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
                   </button>
                   <button
                     className="link-button pull-right"
@@ -3078,70 +2748,29 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       }
                     }
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="calendar"
                       withSpace={true}
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="calendar"
-                        withSpace={true}
+                      <Styled(FontAwesome)
+                        aria-label=""
+                        fixedWidth={true}
+                        name="calendar"
                       >
-                        <Styled(FontAwesome)
+                        <FontAwesome
                           aria-label=""
+                          className="sc-gsTEea iqivwV"
                           fixedWidth={true}
                           name="calendar"
                         >
-                          <FontAwesome
+                          <span
+                            aria-hidden={true}
                             aria-label=""
-                            className="sc-gsTEea iqivwV"
-                            fixedWidth={true}
-                            name="calendar"
-                          >
-                            <span
-                              aria-hidden={true}
-                              aria-label=""
-                              className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
-                            />
-                          </FontAwesome>
-                        </Styled(FontAwesome)>
-                      </Icon>
-                    </injectIntl(Icon)>
+                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                          />
+                        </FontAwesome>
+                      </Styled(FontAwesome)>
+                    </Icon>
                     <FormattedMessage
                       id="components.StopViewer.viewTypeBtnText"
                       values={
@@ -3628,7 +3257,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     <div
                                       className="pull-left"
                                     >
-                                      <injectIntl(Icon)
+                                      <Icon
                                         style={
                                           Object {
                                             "color": "#888",
@@ -3638,43 +3267,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         }
                                         type="clock-o"
                                       >
-                                        <Icon
-                                          intl={
-                                            Object {
-                                              "defaultFormats": Object {},
-                                              "defaultLocale": "en-US",
-                                              "defaultRichTextElements": undefined,
-                                              "formatDate": [Function],
-                                              "formatDateTimeRange": [Function],
-                                              "formatDateToParts": [Function],
-                                              "formatDisplayName": [Function],
-                                              "formatList": [Function],
-                                              "formatListToParts": [Function],
-                                              "formatMessage": [Function],
-                                              "formatNumber": [Function],
-                                              "formatNumberToParts": [Function],
-                                              "formatPlural": [Function],
-                                              "formatRelativeTime": [Function],
-                                              "formatTime": [Function],
-                                              "formatTimeToParts": [Function],
-                                              "formats": Object {},
-                                              "formatters": Object {
-                                                "getDateTimeFormat": [Function],
-                                                "getDisplayNames": [Function],
-                                                "getListFormat": [Function],
-                                                "getMessageFormat": [Function],
-                                                "getNumberFormat": [Function],
-                                                "getPluralRules": [Function],
-                                                "getRelativeTimeFormat": [Function],
-                                              },
-                                              "locale": "en-US",
-                                              "messages": Object {},
-                                              "onError": [Function],
-                                              "textComponent": Symbol(react.fragment),
-                                              "timeZone": undefined,
-                                              "wrapRichTextChunksInFragment": undefined,
-                                            }
-                                          }
+                                        <FontAwesome
+                                          aria-label=""
+                                          fixedWidth={true}
+                                          name="clock-o"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -3682,12 +3278,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                               "marginRight": 2,
                                             }
                                           }
-                                          type="clock-o"
                                         >
-                                          <FontAwesome
+                                          <span
+                                            aria-hidden={true}
                                             aria-label=""
-                                            fixedWidth={true}
-                                            name="clock-o"
+                                            className="fa fa-clock-o fa-fw"
                                             style={
                                               Object {
                                                 "color": "#888",
@@ -3695,22 +3290,9 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                                 "marginRight": 2,
                                               }
                                             }
-                                          >
-                                            <span
-                                              aria-hidden={true}
-                                              aria-label=""
-                                              className="fa fa-clock-o fa-fw"
-                                              style={
-                                                Object {
-                                                  "color": "#888",
-                                                  "fontSize": "0.8em",
-                                                  "marginRight": 2,
-                                                }
-                                              }
-                                            />
-                                          </FontAwesome>
-                                        </Icon>
-                                      </injectIntl(Icon)>
+                                          />
+                                        </FontAwesome>
+                                      </Icon>
                                     </div>
                                     <div
                                       style={
@@ -3751,61 +3333,21 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   className="expansion-button"
                                   onClick={[Function]}
                                 >
-                                  <injectIntl(Icon)
+                                  <Icon
                                     type="chevron-down"
                                   >
-                                    <Icon
-                                      intl={
-                                        Object {
-                                          "defaultFormats": Object {},
-                                          "defaultLocale": "en-US",
-                                          "defaultRichTextElements": undefined,
-                                          "formatDate": [Function],
-                                          "formatDateTimeRange": [Function],
-                                          "formatDateToParts": [Function],
-                                          "formatDisplayName": [Function],
-                                          "formatList": [Function],
-                                          "formatListToParts": [Function],
-                                          "formatMessage": [Function],
-                                          "formatNumber": [Function],
-                                          "formatNumberToParts": [Function],
-                                          "formatPlural": [Function],
-                                          "formatRelativeTime": [Function],
-                                          "formatTime": [Function],
-                                          "formatTimeToParts": [Function],
-                                          "formats": Object {},
-                                          "formatters": Object {
-                                            "getDateTimeFormat": [Function],
-                                            "getDisplayNames": [Function],
-                                            "getListFormat": [Function],
-                                            "getMessageFormat": [Function],
-                                            "getNumberFormat": [Function],
-                                            "getPluralRules": [Function],
-                                            "getRelativeTimeFormat": [Function],
-                                          },
-                                          "locale": "en-US",
-                                          "messages": Object {},
-                                          "onError": [Function],
-                                          "textComponent": Symbol(react.fragment),
-                                          "timeZone": undefined,
-                                          "wrapRichTextChunksInFragment": undefined,
-                                        }
-                                      }
-                                      type="chevron-down"
+                                    <FontAwesome
+                                      aria-label=""
+                                      fixedWidth={true}
+                                      name="chevron-down"
                                     >
-                                      <FontAwesome
+                                      <span
+                                        aria-hidden={true}
                                         aria-label=""
-                                        fixedWidth={true}
-                                        name="chevron-down"
-                                      >
-                                        <span
-                                          aria-hidden={true}
-                                          aria-label=""
-                                          className="fa fa-chevron-down fa-fw"
-                                        />
-                                      </FontAwesome>
-                                    </Icon>
-                                  </injectIntl(Icon)>
+                                        className="fa fa-chevron-down fa-fw"
+                                      />
+                                    </FontAwesome>
+                                  </Icon>
                                 </button>
                               </div>
                             </div>
@@ -3886,73 +3428,31 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           }
                         }
                       >
-                        <injectIntl(Icon)
+                        <Icon
                           className="fa-spin"
                           type="refresh"
                           withSpace={true}
                         >
-                          <Icon
+                          <Styled(FontAwesome)
+                            aria-label=""
                             className="fa-spin"
-                            intl={
-                              Object {
-                                "defaultFormats": Object {},
-                                "defaultLocale": "en-US",
-                                "defaultRichTextElements": undefined,
-                                "formatDate": [Function],
-                                "formatDateTimeRange": [Function],
-                                "formatDateToParts": [Function],
-                                "formatDisplayName": [Function],
-                                "formatList": [Function],
-                                "formatListToParts": [Function],
-                                "formatMessage": [Function],
-                                "formatNumber": [Function],
-                                "formatNumberToParts": [Function],
-                                "formatPlural": [Function],
-                                "formatRelativeTime": [Function],
-                                "formatTime": [Function],
-                                "formatTimeToParts": [Function],
-                                "formats": Object {},
-                                "formatters": Object {
-                                  "getDateTimeFormat": [Function],
-                                  "getDisplayNames": [Function],
-                                  "getListFormat": [Function],
-                                  "getMessageFormat": [Function],
-                                  "getNumberFormat": [Function],
-                                  "getPluralRules": [Function],
-                                  "getRelativeTimeFormat": [Function],
-                                },
-                                "locale": "en-US",
-                                "messages": Object {},
-                                "onError": [Function],
-                                "textComponent": Symbol(react.fragment),
-                                "timeZone": undefined,
-                                "wrapRichTextChunksInFragment": undefined,
-                              }
-                            }
-                            type="refresh"
-                            withSpace={true}
+                            fixedWidth={true}
+                            name="refresh"
                           >
-                            <Styled(FontAwesome)
+                            <FontAwesome
                               aria-label=""
-                              className="fa-spin"
+                              className="sc-gsTEea iqivwV fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
-                              <FontAwesome
+                              <span
+                                aria-hidden={true}
                                 aria-label=""
-                                className="sc-gsTEea iqivwV fa-spin"
-                                fixedWidth={true}
-                                name="refresh"
-                              >
-                                <span
-                                  aria-hidden={true}
-                                  aria-label=""
-                                  className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
-                                />
-                              </FontAwesome>
-                            </Styled(FontAwesome)>
-                          </Icon>
-                        </injectIntl(Icon)>
+                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                              />
+                            </FontAwesome>
+                          </Styled(FontAwesome)>
+                        </Icon>
                         <FormattedTime
                           timeStyle="short"
                           timeZone="America/Los_Angeles"
@@ -4868,61 +4368,21 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     onClick={[Function]}
                     type="button"
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="arrow-left"
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="arrow-left"
+                      <FontAwesome
+                        aria-label=""
+                        fixedWidth={true}
+                        name="arrow-left"
                       >
-                        <FontAwesome
+                        <span
+                          aria-hidden={true}
                           aria-label=""
-                          fixedWidth={true}
-                          name="arrow-left"
-                        >
-                          <span
-                            aria-hidden={true}
-                            aria-label=""
-                            className="fa fa-arrow-left fa-fw"
-                          />
-                        </FontAwesome>
-                      </Icon>
-                    </injectIntl(Icon)>
+                          className="fa fa-arrow-left fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
                     <FormattedMessage
                       id="common.forms.back"
                     >
@@ -4973,61 +4433,21 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="search"
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="search"
+                      <FontAwesome
+                        aria-label=""
+                        fixedWidth={true}
+                        name="search"
                       >
-                        <FontAwesome
+                        <span
+                          aria-hidden={true}
                           aria-label=""
-                          fixedWidth={true}
-                          name="search"
-                        >
-                          <span
-                            aria-hidden={true}
-                            aria-label=""
-                            className="fa fa-search fa-fw"
-                          />
-                        </FontAwesome>
-                      </Icon>
-                    </injectIntl(Icon)>
+                          className="fa fa-search fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
                   </button>
                   <button
                     className="link-button pull-right"
@@ -5038,70 +4458,29 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       }
                     }
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="calendar"
                       withSpace={true}
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="calendar"
-                        withSpace={true}
+                      <Styled(FontAwesome)
+                        aria-label=""
+                        fixedWidth={true}
+                        name="calendar"
                       >
-                        <Styled(FontAwesome)
+                        <FontAwesome
                           aria-label=""
+                          className="sc-gsTEea iqivwV"
                           fixedWidth={true}
                           name="calendar"
                         >
-                          <FontAwesome
+                          <span
+                            aria-hidden={true}
                             aria-label=""
-                            className="sc-gsTEea iqivwV"
-                            fixedWidth={true}
-                            name="calendar"
-                          >
-                            <span
-                              aria-hidden={true}
-                              aria-label=""
-                              className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
-                            />
-                          </FontAwesome>
-                        </Styled(FontAwesome)>
-                      </Icon>
-                    </injectIntl(Icon)>
+                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                          />
+                        </FontAwesome>
+                      </Styled(FontAwesome)>
+                    </Icon>
                     <FormattedMessage
                       id="components.StopViewer.viewTypeBtnText"
                       values={
@@ -5867,7 +5246,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     <div
                                       className="pull-left"
                                     >
-                                      <injectIntl(Icon)
+                                      <Icon
                                         style={
                                           Object {
                                             "color": "#888",
@@ -5877,43 +5256,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         }
                                         type="clock-o"
                                       >
-                                        <Icon
-                                          intl={
-                                            Object {
-                                              "defaultFormats": Object {},
-                                              "defaultLocale": "en-US",
-                                              "defaultRichTextElements": undefined,
-                                              "formatDate": [Function],
-                                              "formatDateTimeRange": [Function],
-                                              "formatDateToParts": [Function],
-                                              "formatDisplayName": [Function],
-                                              "formatList": [Function],
-                                              "formatListToParts": [Function],
-                                              "formatMessage": [Function],
-                                              "formatNumber": [Function],
-                                              "formatNumberToParts": [Function],
-                                              "formatPlural": [Function],
-                                              "formatRelativeTime": [Function],
-                                              "formatTime": [Function],
-                                              "formatTimeToParts": [Function],
-                                              "formats": Object {},
-                                              "formatters": Object {
-                                                "getDateTimeFormat": [Function],
-                                                "getDisplayNames": [Function],
-                                                "getListFormat": [Function],
-                                                "getMessageFormat": [Function],
-                                                "getNumberFormat": [Function],
-                                                "getPluralRules": [Function],
-                                                "getRelativeTimeFormat": [Function],
-                                              },
-                                              "locale": "en-US",
-                                              "messages": Object {},
-                                              "onError": [Function],
-                                              "textComponent": Symbol(react.fragment),
-                                              "timeZone": undefined,
-                                              "wrapRichTextChunksInFragment": undefined,
-                                            }
-                                          }
+                                        <FontAwesome
+                                          aria-label=""
+                                          fixedWidth={true}
+                                          name="clock-o"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -5921,12 +5267,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                               "marginRight": 2,
                                             }
                                           }
-                                          type="clock-o"
                                         >
-                                          <FontAwesome
+                                          <span
+                                            aria-hidden={true}
                                             aria-label=""
-                                            fixedWidth={true}
-                                            name="clock-o"
+                                            className="fa fa-clock-o fa-fw"
                                             style={
                                               Object {
                                                 "color": "#888",
@@ -5934,22 +5279,9 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                 "marginRight": 2,
                                               }
                                             }
-                                          >
-                                            <span
-                                              aria-hidden={true}
-                                              aria-label=""
-                                              className="fa fa-clock-o fa-fw"
-                                              style={
-                                                Object {
-                                                  "color": "#888",
-                                                  "fontSize": "0.8em",
-                                                  "marginRight": 2,
-                                                }
-                                              }
-                                            />
-                                          </FontAwesome>
-                                        </Icon>
-                                      </injectIntl(Icon)>
+                                          />
+                                        </FontAwesome>
+                                      </Icon>
                                     </div>
                                     <div
                                       style={
@@ -6002,61 +5334,21 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   className="expansion-button"
                                   onClick={[Function]}
                                 >
-                                  <injectIntl(Icon)
+                                  <Icon
                                     type="chevron-down"
                                   >
-                                    <Icon
-                                      intl={
-                                        Object {
-                                          "defaultFormats": Object {},
-                                          "defaultLocale": "en-US",
-                                          "defaultRichTextElements": undefined,
-                                          "formatDate": [Function],
-                                          "formatDateTimeRange": [Function],
-                                          "formatDateToParts": [Function],
-                                          "formatDisplayName": [Function],
-                                          "formatList": [Function],
-                                          "formatListToParts": [Function],
-                                          "formatMessage": [Function],
-                                          "formatNumber": [Function],
-                                          "formatNumberToParts": [Function],
-                                          "formatPlural": [Function],
-                                          "formatRelativeTime": [Function],
-                                          "formatTime": [Function],
-                                          "formatTimeToParts": [Function],
-                                          "formats": Object {},
-                                          "formatters": Object {
-                                            "getDateTimeFormat": [Function],
-                                            "getDisplayNames": [Function],
-                                            "getListFormat": [Function],
-                                            "getMessageFormat": [Function],
-                                            "getNumberFormat": [Function],
-                                            "getPluralRules": [Function],
-                                            "getRelativeTimeFormat": [Function],
-                                          },
-                                          "locale": "en-US",
-                                          "messages": Object {},
-                                          "onError": [Function],
-                                          "textComponent": Symbol(react.fragment),
-                                          "timeZone": undefined,
-                                          "wrapRichTextChunksInFragment": undefined,
-                                        }
-                                      }
-                                      type="chevron-down"
+                                    <FontAwesome
+                                      aria-label=""
+                                      fixedWidth={true}
+                                      name="chevron-down"
                                     >
-                                      <FontAwesome
+                                      <span
+                                        aria-hidden={true}
                                         aria-label=""
-                                        fixedWidth={true}
-                                        name="chevron-down"
-                                      >
-                                        <span
-                                          aria-hidden={true}
-                                          aria-label=""
-                                          className="fa fa-chevron-down fa-fw"
-                                        />
-                                      </FontAwesome>
-                                    </Icon>
-                                  </injectIntl(Icon)>
+                                        className="fa fa-chevron-down fa-fw"
+                                      />
+                                    </FontAwesome>
+                                  </Icon>
                                 </button>
                               </div>
                             </div>
@@ -6137,73 +5429,31 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           }
                         }
                       >
-                        <injectIntl(Icon)
+                        <Icon
                           className="fa-spin"
                           type="refresh"
                           withSpace={true}
                         >
-                          <Icon
+                          <Styled(FontAwesome)
+                            aria-label=""
                             className="fa-spin"
-                            intl={
-                              Object {
-                                "defaultFormats": Object {},
-                                "defaultLocale": "en-US",
-                                "defaultRichTextElements": undefined,
-                                "formatDate": [Function],
-                                "formatDateTimeRange": [Function],
-                                "formatDateToParts": [Function],
-                                "formatDisplayName": [Function],
-                                "formatList": [Function],
-                                "formatListToParts": [Function],
-                                "formatMessage": [Function],
-                                "formatNumber": [Function],
-                                "formatNumberToParts": [Function],
-                                "formatPlural": [Function],
-                                "formatRelativeTime": [Function],
-                                "formatTime": [Function],
-                                "formatTimeToParts": [Function],
-                                "formats": Object {},
-                                "formatters": Object {
-                                  "getDateTimeFormat": [Function],
-                                  "getDisplayNames": [Function],
-                                  "getListFormat": [Function],
-                                  "getMessageFormat": [Function],
-                                  "getNumberFormat": [Function],
-                                  "getPluralRules": [Function],
-                                  "getRelativeTimeFormat": [Function],
-                                },
-                                "locale": "en-US",
-                                "messages": Object {},
-                                "onError": [Function],
-                                "textComponent": Symbol(react.fragment),
-                                "timeZone": undefined,
-                                "wrapRichTextChunksInFragment": undefined,
-                              }
-                            }
-                            type="refresh"
-                            withSpace={true}
+                            fixedWidth={true}
+                            name="refresh"
                           >
-                            <Styled(FontAwesome)
+                            <FontAwesome
                               aria-label=""
-                              className="fa-spin"
+                              className="sc-gsTEea iqivwV fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
-                              <FontAwesome
+                              <span
+                                aria-hidden={true}
                                 aria-label=""
-                                className="sc-gsTEea iqivwV fa-spin"
-                                fixedWidth={true}
-                                name="refresh"
-                              >
-                                <span
-                                  aria-hidden={true}
-                                  aria-label=""
-                                  className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
-                                />
-                              </FontAwesome>
-                            </Styled(FontAwesome)>
-                          </Icon>
-                        </injectIntl(Icon)>
+                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                              />
+                            </FontAwesome>
+                          </Styled(FontAwesome)>
+                        </Icon>
                         <FormattedTime
                           timeStyle="short"
                           timeZone="America/Los_Angeles"
@@ -8031,61 +7281,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     onClick={[Function]}
                     type="button"
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="arrow-left"
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="arrow-left"
+                      <FontAwesome
+                        aria-label=""
+                        fixedWidth={true}
+                        name="arrow-left"
                       >
-                        <FontAwesome
+                        <span
+                          aria-hidden={true}
                           aria-label=""
-                          fixedWidth={true}
-                          name="arrow-left"
-                        >
-                          <span
-                            aria-hidden={true}
-                            aria-label=""
-                            className="fa fa-arrow-left fa-fw"
-                          />
-                        </FontAwesome>
-                      </Icon>
-                    </injectIntl(Icon)>
+                          className="fa fa-arrow-left fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
                     <FormattedMessage
                       id="common.forms.back"
                     >
@@ -8136,61 +7346,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="search"
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="search"
+                      <FontAwesome
+                        aria-label=""
+                        fixedWidth={true}
+                        name="search"
                       >
-                        <FontAwesome
+                        <span
+                          aria-hidden={true}
                           aria-label=""
-                          fixedWidth={true}
-                          name="search"
-                        >
-                          <span
-                            aria-hidden={true}
-                            aria-label=""
-                            className="fa fa-search fa-fw"
-                          />
-                        </FontAwesome>
-                      </Icon>
-                    </injectIntl(Icon)>
+                          className="fa fa-search fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
                   </button>
                   <button
                     className="link-button pull-right"
@@ -8201,70 +7371,29 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       }
                     }
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="calendar"
                       withSpace={true}
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="calendar"
-                        withSpace={true}
+                      <Styled(FontAwesome)
+                        aria-label=""
+                        fixedWidth={true}
+                        name="calendar"
                       >
-                        <Styled(FontAwesome)
+                        <FontAwesome
                           aria-label=""
+                          className="sc-gsTEea iqivwV"
                           fixedWidth={true}
                           name="calendar"
                         >
-                          <FontAwesome
+                          <span
+                            aria-hidden={true}
                             aria-label=""
-                            className="sc-gsTEea iqivwV"
-                            fixedWidth={true}
-                            name="calendar"
-                          >
-                            <span
-                              aria-hidden={true}
-                              aria-label=""
-                              className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
-                            />
-                          </FontAwesome>
-                        </Styled(FontAwesome)>
-                      </Icon>
-                    </injectIntl(Icon)>
+                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                          />
+                        </FontAwesome>
+                      </Styled(FontAwesome)>
+                    </Icon>
                     <FormattedMessage
                       id="components.StopViewer.viewTypeBtnText"
                       values={
@@ -9284,7 +8413,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     <div
                                       className="pull-left"
                                     >
-                                      <injectIntl(Icon)
+                                      <Icon
                                         style={
                                           Object {
                                             "color": "#888",
@@ -9294,43 +8423,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                         type="clock-o"
                                       >
-                                        <Icon
-                                          intl={
-                                            Object {
-                                              "defaultFormats": Object {},
-                                              "defaultLocale": "en-US",
-                                              "defaultRichTextElements": undefined,
-                                              "formatDate": [Function],
-                                              "formatDateTimeRange": [Function],
-                                              "formatDateToParts": [Function],
-                                              "formatDisplayName": [Function],
-                                              "formatList": [Function],
-                                              "formatListToParts": [Function],
-                                              "formatMessage": [Function],
-                                              "formatNumber": [Function],
-                                              "formatNumberToParts": [Function],
-                                              "formatPlural": [Function],
-                                              "formatRelativeTime": [Function],
-                                              "formatTime": [Function],
-                                              "formatTimeToParts": [Function],
-                                              "formats": Object {},
-                                              "formatters": Object {
-                                                "getDateTimeFormat": [Function],
-                                                "getDisplayNames": [Function],
-                                                "getListFormat": [Function],
-                                                "getMessageFormat": [Function],
-                                                "getNumberFormat": [Function],
-                                                "getPluralRules": [Function],
-                                                "getRelativeTimeFormat": [Function],
-                                              },
-                                              "locale": "en-US",
-                                              "messages": Object {},
-                                              "onError": [Function],
-                                              "textComponent": Symbol(react.fragment),
-                                              "timeZone": undefined,
-                                              "wrapRichTextChunksInFragment": undefined,
-                                            }
-                                          }
+                                        <FontAwesome
+                                          aria-label=""
+                                          fixedWidth={true}
+                                          name="clock-o"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -9338,12 +8434,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "marginRight": 2,
                                             }
                                           }
-                                          type="clock-o"
                                         >
-                                          <FontAwesome
+                                          <span
+                                            aria-hidden={true}
                                             aria-label=""
-                                            fixedWidth={true}
-                                            name="clock-o"
+                                            className="fa fa-clock-o fa-fw"
                                             style={
                                               Object {
                                                 "color": "#888",
@@ -9351,22 +8446,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 "marginRight": 2,
                                               }
                                             }
-                                          >
-                                            <span
-                                              aria-hidden={true}
-                                              aria-label=""
-                                              className="fa fa-clock-o fa-fw"
-                                              style={
-                                                Object {
-                                                  "color": "#888",
-                                                  "fontSize": "0.8em",
-                                                  "marginRight": 2,
-                                                }
-                                              }
-                                            />
-                                          </FontAwesome>
-                                        </Icon>
-                                      </injectIntl(Icon)>
+                                          />
+                                        </FontAwesome>
+                                      </Icon>
                                     </div>
                                     <div
                                       style={
@@ -9419,61 +8501,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   className="expansion-button"
                                   onClick={[Function]}
                                 >
-                                  <injectIntl(Icon)
+                                  <Icon
                                     type="chevron-down"
                                   >
-                                    <Icon
-                                      intl={
-                                        Object {
-                                          "defaultFormats": Object {},
-                                          "defaultLocale": "en-US",
-                                          "defaultRichTextElements": undefined,
-                                          "formatDate": [Function],
-                                          "formatDateTimeRange": [Function],
-                                          "formatDateToParts": [Function],
-                                          "formatDisplayName": [Function],
-                                          "formatList": [Function],
-                                          "formatListToParts": [Function],
-                                          "formatMessage": [Function],
-                                          "formatNumber": [Function],
-                                          "formatNumberToParts": [Function],
-                                          "formatPlural": [Function],
-                                          "formatRelativeTime": [Function],
-                                          "formatTime": [Function],
-                                          "formatTimeToParts": [Function],
-                                          "formats": Object {},
-                                          "formatters": Object {
-                                            "getDateTimeFormat": [Function],
-                                            "getDisplayNames": [Function],
-                                            "getListFormat": [Function],
-                                            "getMessageFormat": [Function],
-                                            "getNumberFormat": [Function],
-                                            "getPluralRules": [Function],
-                                            "getRelativeTimeFormat": [Function],
-                                          },
-                                          "locale": "en-US",
-                                          "messages": Object {},
-                                          "onError": [Function],
-                                          "textComponent": Symbol(react.fragment),
-                                          "timeZone": undefined,
-                                          "wrapRichTextChunksInFragment": undefined,
-                                        }
-                                      }
-                                      type="chevron-down"
+                                    <FontAwesome
+                                      aria-label=""
+                                      fixedWidth={true}
+                                      name="chevron-down"
                                     >
-                                      <FontAwesome
+                                      <span
+                                        aria-hidden={true}
                                         aria-label=""
-                                        fixedWidth={true}
-                                        name="chevron-down"
-                                      >
-                                        <span
-                                          aria-hidden={true}
-                                          aria-label=""
-                                          className="fa fa-chevron-down fa-fw"
-                                        />
-                                      </FontAwesome>
-                                    </Icon>
-                                  </injectIntl(Icon)>
+                                        className="fa fa-chevron-down fa-fw"
+                                      />
+                                    </FontAwesome>
+                                  </Icon>
                                 </button>
                               </div>
                             </div>
@@ -9774,7 +8816,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     <div
                                       className="pull-left"
                                     >
-                                      <injectIntl(Icon)
+                                      <Icon
                                         style={
                                           Object {
                                             "color": "#888",
@@ -9784,43 +8826,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                         type="clock-o"
                                       >
-                                        <Icon
-                                          intl={
-                                            Object {
-                                              "defaultFormats": Object {},
-                                              "defaultLocale": "en-US",
-                                              "defaultRichTextElements": undefined,
-                                              "formatDate": [Function],
-                                              "formatDateTimeRange": [Function],
-                                              "formatDateToParts": [Function],
-                                              "formatDisplayName": [Function],
-                                              "formatList": [Function],
-                                              "formatListToParts": [Function],
-                                              "formatMessage": [Function],
-                                              "formatNumber": [Function],
-                                              "formatNumberToParts": [Function],
-                                              "formatPlural": [Function],
-                                              "formatRelativeTime": [Function],
-                                              "formatTime": [Function],
-                                              "formatTimeToParts": [Function],
-                                              "formats": Object {},
-                                              "formatters": Object {
-                                                "getDateTimeFormat": [Function],
-                                                "getDisplayNames": [Function],
-                                                "getListFormat": [Function],
-                                                "getMessageFormat": [Function],
-                                                "getNumberFormat": [Function],
-                                                "getPluralRules": [Function],
-                                                "getRelativeTimeFormat": [Function],
-                                              },
-                                              "locale": "en-US",
-                                              "messages": Object {},
-                                              "onError": [Function],
-                                              "textComponent": Symbol(react.fragment),
-                                              "timeZone": undefined,
-                                              "wrapRichTextChunksInFragment": undefined,
-                                            }
-                                          }
+                                        <FontAwesome
+                                          aria-label=""
+                                          fixedWidth={true}
+                                          name="clock-o"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -9828,12 +8837,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "marginRight": 2,
                                             }
                                           }
-                                          type="clock-o"
                                         >
-                                          <FontAwesome
+                                          <span
+                                            aria-hidden={true}
                                             aria-label=""
-                                            fixedWidth={true}
-                                            name="clock-o"
+                                            className="fa fa-clock-o fa-fw"
                                             style={
                                               Object {
                                                 "color": "#888",
@@ -9841,22 +8849,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 "marginRight": 2,
                                               }
                                             }
-                                          >
-                                            <span
-                                              aria-hidden={true}
-                                              aria-label=""
-                                              className="fa fa-clock-o fa-fw"
-                                              style={
-                                                Object {
-                                                  "color": "#888",
-                                                  "fontSize": "0.8em",
-                                                  "marginRight": 2,
-                                                }
-                                              }
-                                            />
-                                          </FontAwesome>
-                                        </Icon>
-                                      </injectIntl(Icon)>
+                                          />
+                                        </FontAwesome>
+                                      </Icon>
                                     </div>
                                     <div
                                       style={
@@ -9909,61 +8904,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   className="expansion-button"
                                   onClick={[Function]}
                                 >
-                                  <injectIntl(Icon)
+                                  <Icon
                                     type="chevron-down"
                                   >
-                                    <Icon
-                                      intl={
-                                        Object {
-                                          "defaultFormats": Object {},
-                                          "defaultLocale": "en-US",
-                                          "defaultRichTextElements": undefined,
-                                          "formatDate": [Function],
-                                          "formatDateTimeRange": [Function],
-                                          "formatDateToParts": [Function],
-                                          "formatDisplayName": [Function],
-                                          "formatList": [Function],
-                                          "formatListToParts": [Function],
-                                          "formatMessage": [Function],
-                                          "formatNumber": [Function],
-                                          "formatNumberToParts": [Function],
-                                          "formatPlural": [Function],
-                                          "formatRelativeTime": [Function],
-                                          "formatTime": [Function],
-                                          "formatTimeToParts": [Function],
-                                          "formats": Object {},
-                                          "formatters": Object {
-                                            "getDateTimeFormat": [Function],
-                                            "getDisplayNames": [Function],
-                                            "getListFormat": [Function],
-                                            "getMessageFormat": [Function],
-                                            "getNumberFormat": [Function],
-                                            "getPluralRules": [Function],
-                                            "getRelativeTimeFormat": [Function],
-                                          },
-                                          "locale": "en-US",
-                                          "messages": Object {},
-                                          "onError": [Function],
-                                          "textComponent": Symbol(react.fragment),
-                                          "timeZone": undefined,
-                                          "wrapRichTextChunksInFragment": undefined,
-                                        }
-                                      }
-                                      type="chevron-down"
+                                    <FontAwesome
+                                      aria-label=""
+                                      fixedWidth={true}
+                                      name="chevron-down"
                                     >
-                                      <FontAwesome
+                                      <span
+                                        aria-hidden={true}
                                         aria-label=""
-                                        fixedWidth={true}
-                                        name="chevron-down"
-                                      >
-                                        <span
-                                          aria-hidden={true}
-                                          aria-label=""
-                                          className="fa fa-chevron-down fa-fw"
-                                        />
-                                      </FontAwesome>
-                                    </Icon>
-                                  </injectIntl(Icon)>
+                                        className="fa fa-chevron-down fa-fw"
+                                      />
+                                    </FontAwesome>
+                                  </Icon>
                                 </button>
                               </div>
                             </div>
@@ -10264,7 +9219,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     <div
                                       className="pull-left"
                                     >
-                                      <injectIntl(Icon)
+                                      <Icon
                                         style={
                                           Object {
                                             "color": "#888",
@@ -10274,43 +9229,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                         type="clock-o"
                                       >
-                                        <Icon
-                                          intl={
-                                            Object {
-                                              "defaultFormats": Object {},
-                                              "defaultLocale": "en-US",
-                                              "defaultRichTextElements": undefined,
-                                              "formatDate": [Function],
-                                              "formatDateTimeRange": [Function],
-                                              "formatDateToParts": [Function],
-                                              "formatDisplayName": [Function],
-                                              "formatList": [Function],
-                                              "formatListToParts": [Function],
-                                              "formatMessage": [Function],
-                                              "formatNumber": [Function],
-                                              "formatNumberToParts": [Function],
-                                              "formatPlural": [Function],
-                                              "formatRelativeTime": [Function],
-                                              "formatTime": [Function],
-                                              "formatTimeToParts": [Function],
-                                              "formats": Object {},
-                                              "formatters": Object {
-                                                "getDateTimeFormat": [Function],
-                                                "getDisplayNames": [Function],
-                                                "getListFormat": [Function],
-                                                "getMessageFormat": [Function],
-                                                "getNumberFormat": [Function],
-                                                "getPluralRules": [Function],
-                                                "getRelativeTimeFormat": [Function],
-                                              },
-                                              "locale": "en-US",
-                                              "messages": Object {},
-                                              "onError": [Function],
-                                              "textComponent": Symbol(react.fragment),
-                                              "timeZone": undefined,
-                                              "wrapRichTextChunksInFragment": undefined,
-                                            }
-                                          }
+                                        <FontAwesome
+                                          aria-label=""
+                                          fixedWidth={true}
+                                          name="clock-o"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -10318,12 +9240,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "marginRight": 2,
                                             }
                                           }
-                                          type="clock-o"
                                         >
-                                          <FontAwesome
+                                          <span
+                                            aria-hidden={true}
                                             aria-label=""
-                                            fixedWidth={true}
-                                            name="clock-o"
+                                            className="fa fa-clock-o fa-fw"
                                             style={
                                               Object {
                                                 "color": "#888",
@@ -10331,22 +9252,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 "marginRight": 2,
                                               }
                                             }
-                                          >
-                                            <span
-                                              aria-hidden={true}
-                                              aria-label=""
-                                              className="fa fa-clock-o fa-fw"
-                                              style={
-                                                Object {
-                                                  "color": "#888",
-                                                  "fontSize": "0.8em",
-                                                  "marginRight": 2,
-                                                }
-                                              }
-                                            />
-                                          </FontAwesome>
-                                        </Icon>
-                                      </injectIntl(Icon)>
+                                          />
+                                        </FontAwesome>
+                                      </Icon>
                                     </div>
                                     <div
                                       style={
@@ -10399,61 +9307,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   className="expansion-button"
                                   onClick={[Function]}
                                 >
-                                  <injectIntl(Icon)
+                                  <Icon
                                     type="chevron-down"
                                   >
-                                    <Icon
-                                      intl={
-                                        Object {
-                                          "defaultFormats": Object {},
-                                          "defaultLocale": "en-US",
-                                          "defaultRichTextElements": undefined,
-                                          "formatDate": [Function],
-                                          "formatDateTimeRange": [Function],
-                                          "formatDateToParts": [Function],
-                                          "formatDisplayName": [Function],
-                                          "formatList": [Function],
-                                          "formatListToParts": [Function],
-                                          "formatMessage": [Function],
-                                          "formatNumber": [Function],
-                                          "formatNumberToParts": [Function],
-                                          "formatPlural": [Function],
-                                          "formatRelativeTime": [Function],
-                                          "formatTime": [Function],
-                                          "formatTimeToParts": [Function],
-                                          "formats": Object {},
-                                          "formatters": Object {
-                                            "getDateTimeFormat": [Function],
-                                            "getDisplayNames": [Function],
-                                            "getListFormat": [Function],
-                                            "getMessageFormat": [Function],
-                                            "getNumberFormat": [Function],
-                                            "getPluralRules": [Function],
-                                            "getRelativeTimeFormat": [Function],
-                                          },
-                                          "locale": "en-US",
-                                          "messages": Object {},
-                                          "onError": [Function],
-                                          "textComponent": Symbol(react.fragment),
-                                          "timeZone": undefined,
-                                          "wrapRichTextChunksInFragment": undefined,
-                                        }
-                                      }
-                                      type="chevron-down"
+                                    <FontAwesome
+                                      aria-label=""
+                                      fixedWidth={true}
+                                      name="chevron-down"
                                     >
-                                      <FontAwesome
+                                      <span
+                                        aria-hidden={true}
                                         aria-label=""
-                                        fixedWidth={true}
-                                        name="chevron-down"
-                                      >
-                                        <span
-                                          aria-hidden={true}
-                                          aria-label=""
-                                          className="fa fa-chevron-down fa-fw"
-                                        />
-                                      </FontAwesome>
-                                    </Icon>
-                                  </injectIntl(Icon)>
+                                        className="fa fa-chevron-down fa-fw"
+                                      />
+                                    </FontAwesome>
+                                  </Icon>
                                 </button>
                               </div>
                             </div>
@@ -10862,7 +9730,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     <div
                                       className="pull-left"
                                     >
-                                      <injectIntl(Icon)
+                                      <Icon
                                         style={
                                           Object {
                                             "color": "#888",
@@ -10872,43 +9740,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                         type="clock-o"
                                       >
-                                        <Icon
-                                          intl={
-                                            Object {
-                                              "defaultFormats": Object {},
-                                              "defaultLocale": "en-US",
-                                              "defaultRichTextElements": undefined,
-                                              "formatDate": [Function],
-                                              "formatDateTimeRange": [Function],
-                                              "formatDateToParts": [Function],
-                                              "formatDisplayName": [Function],
-                                              "formatList": [Function],
-                                              "formatListToParts": [Function],
-                                              "formatMessage": [Function],
-                                              "formatNumber": [Function],
-                                              "formatNumberToParts": [Function],
-                                              "formatPlural": [Function],
-                                              "formatRelativeTime": [Function],
-                                              "formatTime": [Function],
-                                              "formatTimeToParts": [Function],
-                                              "formats": Object {},
-                                              "formatters": Object {
-                                                "getDateTimeFormat": [Function],
-                                                "getDisplayNames": [Function],
-                                                "getListFormat": [Function],
-                                                "getMessageFormat": [Function],
-                                                "getNumberFormat": [Function],
-                                                "getPluralRules": [Function],
-                                                "getRelativeTimeFormat": [Function],
-                                              },
-                                              "locale": "en-US",
-                                              "messages": Object {},
-                                              "onError": [Function],
-                                              "textComponent": Symbol(react.fragment),
-                                              "timeZone": undefined,
-                                              "wrapRichTextChunksInFragment": undefined,
-                                            }
-                                          }
+                                        <FontAwesome
+                                          aria-label=""
+                                          fixedWidth={true}
+                                          name="clock-o"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -10916,12 +9751,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "marginRight": 2,
                                             }
                                           }
-                                          type="clock-o"
                                         >
-                                          <FontAwesome
+                                          <span
+                                            aria-hidden={true}
                                             aria-label=""
-                                            fixedWidth={true}
-                                            name="clock-o"
+                                            className="fa fa-clock-o fa-fw"
                                             style={
                                               Object {
                                                 "color": "#888",
@@ -10929,22 +9763,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 "marginRight": 2,
                                               }
                                             }
-                                          >
-                                            <span
-                                              aria-hidden={true}
-                                              aria-label=""
-                                              className="fa fa-clock-o fa-fw"
-                                              style={
-                                                Object {
-                                                  "color": "#888",
-                                                  "fontSize": "0.8em",
-                                                  "marginRight": 2,
-                                                }
-                                              }
-                                            />
-                                          </FontAwesome>
-                                        </Icon>
-                                      </injectIntl(Icon)>
+                                          />
+                                        </FontAwesome>
+                                      </Icon>
                                     </div>
                                     <div
                                       style={
@@ -10997,61 +9818,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   className="expansion-button"
                                   onClick={[Function]}
                                 >
-                                  <injectIntl(Icon)
+                                  <Icon
                                     type="chevron-down"
                                   >
-                                    <Icon
-                                      intl={
-                                        Object {
-                                          "defaultFormats": Object {},
-                                          "defaultLocale": "en-US",
-                                          "defaultRichTextElements": undefined,
-                                          "formatDate": [Function],
-                                          "formatDateTimeRange": [Function],
-                                          "formatDateToParts": [Function],
-                                          "formatDisplayName": [Function],
-                                          "formatList": [Function],
-                                          "formatListToParts": [Function],
-                                          "formatMessage": [Function],
-                                          "formatNumber": [Function],
-                                          "formatNumberToParts": [Function],
-                                          "formatPlural": [Function],
-                                          "formatRelativeTime": [Function],
-                                          "formatTime": [Function],
-                                          "formatTimeToParts": [Function],
-                                          "formats": Object {},
-                                          "formatters": Object {
-                                            "getDateTimeFormat": [Function],
-                                            "getDisplayNames": [Function],
-                                            "getListFormat": [Function],
-                                            "getMessageFormat": [Function],
-                                            "getNumberFormat": [Function],
-                                            "getPluralRules": [Function],
-                                            "getRelativeTimeFormat": [Function],
-                                          },
-                                          "locale": "en-US",
-                                          "messages": Object {},
-                                          "onError": [Function],
-                                          "textComponent": Symbol(react.fragment),
-                                          "timeZone": undefined,
-                                          "wrapRichTextChunksInFragment": undefined,
-                                        }
-                                      }
-                                      type="chevron-down"
+                                    <FontAwesome
+                                      aria-label=""
+                                      fixedWidth={true}
+                                      name="chevron-down"
                                     >
-                                      <FontAwesome
+                                      <span
+                                        aria-hidden={true}
                                         aria-label=""
-                                        fixedWidth={true}
-                                        name="chevron-down"
-                                      >
-                                        <span
-                                          aria-hidden={true}
-                                          aria-label=""
-                                          className="fa fa-chevron-down fa-fw"
-                                        />
-                                      </FontAwesome>
-                                    </Icon>
-                                  </injectIntl(Icon)>
+                                        className="fa fa-chevron-down fa-fw"
+                                      />
+                                    </FontAwesome>
+                                  </Icon>
                                 </button>
                               </div>
                             </div>
@@ -11132,73 +9913,31 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           }
                         }
                       >
-                        <injectIntl(Icon)
+                        <Icon
                           className="fa-spin"
                           type="refresh"
                           withSpace={true}
                         >
-                          <Icon
+                          <Styled(FontAwesome)
+                            aria-label=""
                             className="fa-spin"
-                            intl={
-                              Object {
-                                "defaultFormats": Object {},
-                                "defaultLocale": "en-US",
-                                "defaultRichTextElements": undefined,
-                                "formatDate": [Function],
-                                "formatDateTimeRange": [Function],
-                                "formatDateToParts": [Function],
-                                "formatDisplayName": [Function],
-                                "formatList": [Function],
-                                "formatListToParts": [Function],
-                                "formatMessage": [Function],
-                                "formatNumber": [Function],
-                                "formatNumberToParts": [Function],
-                                "formatPlural": [Function],
-                                "formatRelativeTime": [Function],
-                                "formatTime": [Function],
-                                "formatTimeToParts": [Function],
-                                "formats": Object {},
-                                "formatters": Object {
-                                  "getDateTimeFormat": [Function],
-                                  "getDisplayNames": [Function],
-                                  "getListFormat": [Function],
-                                  "getMessageFormat": [Function],
-                                  "getNumberFormat": [Function],
-                                  "getPluralRules": [Function],
-                                  "getRelativeTimeFormat": [Function],
-                                },
-                                "locale": "en-US",
-                                "messages": Object {},
-                                "onError": [Function],
-                                "textComponent": Symbol(react.fragment),
-                                "timeZone": undefined,
-                                "wrapRichTextChunksInFragment": undefined,
-                              }
-                            }
-                            type="refresh"
-                            withSpace={true}
+                            fixedWidth={true}
+                            name="refresh"
                           >
-                            <Styled(FontAwesome)
+                            <FontAwesome
                               aria-label=""
-                              className="fa-spin"
+                              className="sc-gsTEea iqivwV fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
-                              <FontAwesome
+                              <span
+                                aria-hidden={true}
                                 aria-label=""
-                                className="sc-gsTEea iqivwV fa-spin"
-                                fixedWidth={true}
-                                name="refresh"
-                              >
-                                <span
-                                  aria-hidden={true}
-                                  aria-label=""
-                                  className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
-                                />
-                              </FontAwesome>
-                            </Styled(FontAwesome)>
-                          </Icon>
-                        </injectIntl(Icon)>
+                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                              />
+                            </FontAwesome>
+                          </Styled(FontAwesome)>
+                        </Icon>
                         <FormattedTime
                           timeStyle="short"
                           timeZone="America/Los_Angeles"
@@ -14048,61 +12787,21 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     onClick={[Function]}
                     type="button"
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="arrow-left"
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="arrow-left"
+                      <FontAwesome
+                        aria-label=""
+                        fixedWidth={true}
+                        name="arrow-left"
                       >
-                        <FontAwesome
+                        <span
+                          aria-hidden={true}
                           aria-label=""
-                          fixedWidth={true}
-                          name="arrow-left"
-                        >
-                          <span
-                            aria-hidden={true}
-                            aria-label=""
-                            className="fa fa-arrow-left fa-fw"
-                          />
-                        </FontAwesome>
-                      </Icon>
-                    </injectIntl(Icon)>
+                          className="fa fa-arrow-left fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
                     <FormattedMessage
                       id="common.forms.back"
                     >
@@ -14153,61 +12852,21 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="search"
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="search"
+                      <FontAwesome
+                        aria-label=""
+                        fixedWidth={true}
+                        name="search"
                       >
-                        <FontAwesome
+                        <span
+                          aria-hidden={true}
                           aria-label=""
-                          fixedWidth={true}
-                          name="search"
-                        >
-                          <span
-                            aria-hidden={true}
-                            aria-label=""
-                            className="fa fa-search fa-fw"
-                          />
-                        </FontAwesome>
-                      </Icon>
-                    </injectIntl(Icon)>
+                          className="fa fa-search fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
                   </button>
                   <button
                     className="link-button pull-right"
@@ -14218,70 +12877,29 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       }
                     }
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="calendar"
                       withSpace={true}
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="calendar"
-                        withSpace={true}
+                      <Styled(FontAwesome)
+                        aria-label=""
+                        fixedWidth={true}
+                        name="calendar"
                       >
-                        <Styled(FontAwesome)
+                        <FontAwesome
                           aria-label=""
+                          className="sc-gsTEea iqivwV"
                           fixedWidth={true}
                           name="calendar"
                         >
-                          <FontAwesome
+                          <span
+                            aria-hidden={true}
                             aria-label=""
-                            className="sc-gsTEea iqivwV"
-                            fixedWidth={true}
-                            name="calendar"
-                          >
-                            <span
-                              aria-hidden={true}
-                              aria-label=""
-                              className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
-                            />
-                          </FontAwesome>
-                        </Styled(FontAwesome)>
-                      </Icon>
-                    </injectIntl(Icon)>
+                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                          />
+                        </FontAwesome>
+                      </Styled(FontAwesome)>
+                    </Icon>
                     <FormattedMessage
                       id="components.StopViewer.viewTypeBtnText"
                       values={
@@ -15300,7 +13918,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     <div
                                       className="pull-left"
                                     >
-                                      <injectIntl(Icon)
+                                      <Icon
                                         style={
                                           Object {
                                             "color": "#888",
@@ -15310,43 +13928,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         }
                                         type="clock-o"
                                       >
-                                        <Icon
-                                          intl={
-                                            Object {
-                                              "defaultFormats": Object {},
-                                              "defaultLocale": "en-US",
-                                              "defaultRichTextElements": undefined,
-                                              "formatDate": [Function],
-                                              "formatDateTimeRange": [Function],
-                                              "formatDateToParts": [Function],
-                                              "formatDisplayName": [Function],
-                                              "formatList": [Function],
-                                              "formatListToParts": [Function],
-                                              "formatMessage": [Function],
-                                              "formatNumber": [Function],
-                                              "formatNumberToParts": [Function],
-                                              "formatPlural": [Function],
-                                              "formatRelativeTime": [Function],
-                                              "formatTime": [Function],
-                                              "formatTimeToParts": [Function],
-                                              "formats": Object {},
-                                              "formatters": Object {
-                                                "getDateTimeFormat": [Function],
-                                                "getDisplayNames": [Function],
-                                                "getListFormat": [Function],
-                                                "getMessageFormat": [Function],
-                                                "getNumberFormat": [Function],
-                                                "getPluralRules": [Function],
-                                                "getRelativeTimeFormat": [Function],
-                                              },
-                                              "locale": "en-US",
-                                              "messages": Object {},
-                                              "onError": [Function],
-                                              "textComponent": Symbol(react.fragment),
-                                              "timeZone": undefined,
-                                              "wrapRichTextChunksInFragment": undefined,
-                                            }
-                                          }
+                                        <FontAwesome
+                                          aria-label=""
+                                          fixedWidth={true}
+                                          name="clock-o"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -15354,12 +13939,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                               "marginRight": 2,
                                             }
                                           }
-                                          type="clock-o"
                                         >
-                                          <FontAwesome
+                                          <span
+                                            aria-hidden={true}
                                             aria-label=""
-                                            fixedWidth={true}
-                                            name="clock-o"
+                                            className="fa fa-clock-o fa-fw"
                                             style={
                                               Object {
                                                 "color": "#888",
@@ -15367,22 +13951,9 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                 "marginRight": 2,
                                               }
                                             }
-                                          >
-                                            <span
-                                              aria-hidden={true}
-                                              aria-label=""
-                                              className="fa fa-clock-o fa-fw"
-                                              style={
-                                                Object {
-                                                  "color": "#888",
-                                                  "fontSize": "0.8em",
-                                                  "marginRight": 2,
-                                                }
-                                              }
-                                            />
-                                          </FontAwesome>
-                                        </Icon>
-                                      </injectIntl(Icon)>
+                                          />
+                                        </FontAwesome>
+                                      </Icon>
                                     </div>
                                     <div
                                       style={
@@ -15435,61 +14006,21 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   className="expansion-button"
                                   onClick={[Function]}
                                 >
-                                  <injectIntl(Icon)
+                                  <Icon
                                     type="chevron-down"
                                   >
-                                    <Icon
-                                      intl={
-                                        Object {
-                                          "defaultFormats": Object {},
-                                          "defaultLocale": "en-US",
-                                          "defaultRichTextElements": undefined,
-                                          "formatDate": [Function],
-                                          "formatDateTimeRange": [Function],
-                                          "formatDateToParts": [Function],
-                                          "formatDisplayName": [Function],
-                                          "formatList": [Function],
-                                          "formatListToParts": [Function],
-                                          "formatMessage": [Function],
-                                          "formatNumber": [Function],
-                                          "formatNumberToParts": [Function],
-                                          "formatPlural": [Function],
-                                          "formatRelativeTime": [Function],
-                                          "formatTime": [Function],
-                                          "formatTimeToParts": [Function],
-                                          "formats": Object {},
-                                          "formatters": Object {
-                                            "getDateTimeFormat": [Function],
-                                            "getDisplayNames": [Function],
-                                            "getListFormat": [Function],
-                                            "getMessageFormat": [Function],
-                                            "getNumberFormat": [Function],
-                                            "getPluralRules": [Function],
-                                            "getRelativeTimeFormat": [Function],
-                                          },
-                                          "locale": "en-US",
-                                          "messages": Object {},
-                                          "onError": [Function],
-                                          "textComponent": Symbol(react.fragment),
-                                          "timeZone": undefined,
-                                          "wrapRichTextChunksInFragment": undefined,
-                                        }
-                                      }
-                                      type="chevron-down"
+                                    <FontAwesome
+                                      aria-label=""
+                                      fixedWidth={true}
+                                      name="chevron-down"
                                     >
-                                      <FontAwesome
+                                      <span
+                                        aria-hidden={true}
                                         aria-label=""
-                                        fixedWidth={true}
-                                        name="chevron-down"
-                                      >
-                                        <span
-                                          aria-hidden={true}
-                                          aria-label=""
-                                          className="fa fa-chevron-down fa-fw"
-                                        />
-                                      </FontAwesome>
-                                    </Icon>
-                                  </injectIntl(Icon)>
+                                        className="fa fa-chevron-down fa-fw"
+                                      />
+                                    </FontAwesome>
+                                  </Icon>
                                 </button>
                               </div>
                             </div>
@@ -15570,73 +14101,31 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           }
                         }
                       >
-                        <injectIntl(Icon)
+                        <Icon
                           className="fa-spin"
                           type="refresh"
                           withSpace={true}
                         >
-                          <Icon
+                          <Styled(FontAwesome)
+                            aria-label=""
                             className="fa-spin"
-                            intl={
-                              Object {
-                                "defaultFormats": Object {},
-                                "defaultLocale": "en-US",
-                                "defaultRichTextElements": undefined,
-                                "formatDate": [Function],
-                                "formatDateTimeRange": [Function],
-                                "formatDateToParts": [Function],
-                                "formatDisplayName": [Function],
-                                "formatList": [Function],
-                                "formatListToParts": [Function],
-                                "formatMessage": [Function],
-                                "formatNumber": [Function],
-                                "formatNumberToParts": [Function],
-                                "formatPlural": [Function],
-                                "formatRelativeTime": [Function],
-                                "formatTime": [Function],
-                                "formatTimeToParts": [Function],
-                                "formats": Object {},
-                                "formatters": Object {
-                                  "getDateTimeFormat": [Function],
-                                  "getDisplayNames": [Function],
-                                  "getListFormat": [Function],
-                                  "getMessageFormat": [Function],
-                                  "getNumberFormat": [Function],
-                                  "getPluralRules": [Function],
-                                  "getRelativeTimeFormat": [Function],
-                                },
-                                "locale": "en-US",
-                                "messages": Object {},
-                                "onError": [Function],
-                                "textComponent": Symbol(react.fragment),
-                                "timeZone": undefined,
-                                "wrapRichTextChunksInFragment": undefined,
-                              }
-                            }
-                            type="refresh"
-                            withSpace={true}
+                            fixedWidth={true}
+                            name="refresh"
                           >
-                            <Styled(FontAwesome)
+                            <FontAwesome
                               aria-label=""
-                              className="fa-spin"
+                              className="sc-gsTEea iqivwV fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
-                              <FontAwesome
+                              <span
+                                aria-hidden={true}
                                 aria-label=""
-                                className="sc-gsTEea iqivwV fa-spin"
-                                fixedWidth={true}
-                                name="refresh"
-                              >
-                                <span
-                                  aria-hidden={true}
-                                  aria-label=""
-                                  className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
-                                />
-                              </FontAwesome>
-                            </Styled(FontAwesome)>
-                          </Icon>
-                        </injectIntl(Icon)>
+                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                              />
+                            </FontAwesome>
+                          </Styled(FontAwesome)>
+                        </Icon>
                         <FormattedTime
                           timeStyle="short"
                           timeZone="America/Los_Angeles"
@@ -17630,61 +16119,21 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                     onClick={[Function]}
                     type="button"
                   >
-                    <injectIntl(Icon)
+                    <Icon
                       type="arrow-left"
                     >
-                      <Icon
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en-US",
-                            "defaultRichTextElements": undefined,
-                            "formatDate": [Function],
-                            "formatDateTimeRange": [Function],
-                            "formatDateToParts": [Function],
-                            "formatDisplayName": [Function],
-                            "formatList": [Function],
-                            "formatListToParts": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatNumberToParts": [Function],
-                            "formatPlural": [Function],
-                            "formatRelativeTime": [Function],
-                            "formatTime": [Function],
-                            "formatTimeToParts": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getDisplayNames": [Function],
-                              "getListFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralRules": [Function],
-                              "getRelativeTimeFormat": [Function],
-                            },
-                            "locale": "en-US",
-                            "messages": Object {},
-                            "onError": [Function],
-                            "textComponent": Symbol(react.fragment),
-                            "timeZone": undefined,
-                            "wrapRichTextChunksInFragment": undefined,
-                          }
-                        }
-                        type="arrow-left"
+                      <FontAwesome
+                        aria-label=""
+                        fixedWidth={true}
+                        name="arrow-left"
                       >
-                        <FontAwesome
+                        <span
+                          aria-hidden={true}
                           aria-label=""
-                          fixedWidth={true}
-                          name="arrow-left"
-                        >
-                          <span
-                            aria-hidden={true}
-                            aria-label=""
-                            className="fa fa-arrow-left fa-fw"
-                          />
-                        </FontAwesome>
-                      </Icon>
-                    </injectIntl(Icon)>
+                          className="fa fa-arrow-left fa-fw"
+                        />
+                      </FontAwesome>
+                    </Icon>
                     <FormattedMessage
                       id="common.forms.back"
                     >
