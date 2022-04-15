@@ -180,6 +180,7 @@ class AppMenu extends Component<
     return (
       <>
         <div
+          aria-expanded={isPaneOpen}
           aria-label={
             isPaneOpen
               ? intl.formatMessage({ id: 'components.AppMenu.closeMenu' })
