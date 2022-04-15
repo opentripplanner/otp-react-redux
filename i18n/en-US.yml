@@ -594,7 +594,7 @@ components:
   TripViewer:
     accessible: Accessible
     bicyclesAllowed: Allowed
-    description: Trip Viewer showing all stops and stop times on route with stops served in trip itinerary highlighted
+    description: The Trip Viewer highlights the subset of stops and stop times of a transit route traveled on the itinerary you selected.
     header: Trip Viewer
     routeHeader: "Route: <strong>{routeShortName}</strong> {routeLongName}"
     viewStop: View
