@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, FormattedNumber } from 'react-intl'
-// TYPESCRIPT TODO: add leg, itinerary types all over the place here
+// TYPESCRIPT TODO: wait for typescripted core-utils
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import coreUtils from '@opentripplanner/core-utils'
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import type { Itinerary, Leg, TimeOptions } from '@opentripplanner/types'
 
 import { ComponentContext } from '../../../util/contexts'
 import { getFare } from '../../../util/state'
@@ -60,7 +60,7 @@ const Routes = styled.div`
   text-align: right;
 `
 
-const ShortName = styled.div<{ leg: any }>`
+const ShortName = styled.div<{ leg: Leg }>`
   background-color: ${(props) => getRouteColorForBadge(props.leg)};
   border-radius: 15px;
   border: 2px solid white;
@@ -81,17 +81,12 @@ const ShortName = styled.div<{ leg: any }>`
 type Props = {
   currency?: string
   defaultFareKey: string
-  itinerary: any
-  // TODO unified types
+  itinerary: Itinerary
   onClick: () => void
-  timeOptions: { offset: number }
+  timeOptions: TimeOptions
 }
 
 export class ItinerarySummary extends Component<Props> {
-  static propTypes = {
-    itinerary: PropTypes.object
-  }
-
   static contextType = ComponentContext
 
   _onSummaryClicked = (): void => {
@@ -111,8 +106,8 @@ export class ItinerarySummary extends Component<Props> {
     const minTotalFare = minTNCFare * 100 + transitFare
     const maxTotalFare = maxTNCFare * 100 + transitFare
 
-    const startTime = itinerary.startTime + timeOptions.offset
-    const endTime = itinerary.endTime + timeOptions.offset
+    const startTime = itinerary.startTime + parseInt(timeOptions?.offset || '0')
+    const endTime = itinerary.endTime + parseInt(timeOptions?.offset || '0')
 
     const { caloriesBurned } =
       coreUtils.itinerary.calculatePhysicalActivity(itinerary)
@@ -184,10 +179,10 @@ export class ItinerarySummary extends Component<Props> {
         </Details>
         <Routes>
           {itinerary.legs
-            .filter((leg: any) => {
+            .filter((leg: Leg) => {
               return !(leg.mode === 'WALK' && itinerary.transitTime > 0)
             })
-            .map((leg: any, k: string) => {
+            .map((leg: Leg, k: number) => {
               return (
                 <RoutePreview key={k}>
                   <LegIconContainer>
@@ -209,6 +204,7 @@ export class ItinerarySummary extends Component<Props> {
 
 // Helper functions
 
+// Leg is any for now until types package is updated with correct Leg type
 function getRouteLongName(leg: any) {
   return leg.routes && leg.routes.length > 0
     ? leg.routes[0].longName
@@ -233,7 +229,7 @@ function getRouteNameForBadge(leg: any) {
   return shortName || longName
 }
 
-function getRouteColorForBadge(leg: any): string {
+function getRouteColorForBadge(leg: Leg): string {
   return leg.routeColor ? '#' + leg.routeColor : defaultRouteColor
 }
 

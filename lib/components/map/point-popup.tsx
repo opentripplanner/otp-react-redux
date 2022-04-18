@@ -6,7 +6,9 @@ import { injectIntl, WrappedComponentProps } from 'react-intl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import type { Place } from '@opentripplanner/types'
 
+import { renderCoordinates } from '../form/user-settings'
 import { setMapZoom } from '../../actions/config'
 
 const PopupContainer = styled.div`
@@ -25,7 +27,7 @@ function MapPopup({
   setMapZoom,
   zoom
 }: {
-  mapPopupLocation: { lat: number; lon: number; name?: string }
+  mapPopupLocation: Place
   // TODO: add types for this method
   onSetLocationFromPopup: () => void
   setMapZoom: ({ zoom }: { zoom: number }) => void
@@ -43,16 +45,13 @@ function MapPopup({
     mapPopupLocation?.name ||
     intl.formatMessage(
       { id: 'common.coordinates' },
-      {
-        lat: mapPopupLocation.lat.toFixed(5),
-        lon: mapPopupLocation.lon.toFixed(5)
-      }
+      renderCoordinates(intl, mapPopupLocation)
     )
 
   return (
     <PopupContainer>
       <PopupTitle>
-        {popupName.split(',').length > 3
+        {typeof popupName === 'string' && popupName.split(',').length > 3
           ? popupName.split(',').splice(0, 3).join(',')
           : popupName}
       </PopupTitle>
