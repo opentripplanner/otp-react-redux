@@ -2577,10 +2577,10 @@
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
-"@opentripplanner/location-field@1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.0.tgz#29a2b2394c92c6ba2867eeebe099d3e82a49faa4"
-  integrity sha512-VueroM7SLLxnURTdFSBjnjAk9KXVb8as+nzYHNrlMx2XJqQS4I4qvTXhMjr8xjd4tRaGez6Zp3xB3bEtXeDAiw==
+"@opentripplanner/location-field@1.12.1":
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.1.tgz#07d13683d2fc3000f08ccf76df994dc1860d769f"
+  integrity sha512-sv+u1erMghZJvP2mMEDTSdYwJLObzHGG43dg13ck0kZyo7U8qezbSHHXUeoL1xSZdA3VKreFS3b9M6bRaveF1g==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@opentripplanner/core-utils" "^4.7.0"
@@ -2588,7 +2588,6 @@
     "@opentripplanner/humanize-distance" "^1.1.0"
     "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
-    flat "^5.0.2"
     throttle-debounce "^2.1.0"
 
 "@opentripplanner/location-icon@^1.3.0", "@opentripplanner/location-icon@^1.4.0":
@@ -2617,10 +2616,10 @@
     "@opentripplanner/humanize-distance" "^1.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/route-viewer-overlay@^1.4.0-alpha.1":
-  version "1.4.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-1.4.0-alpha.1.tgz#58c9489d494031507b3153396e738fa1c008ad63"
-  integrity sha512-h9aV9buZc6xOLyM+ZQ2+ITqpzb31ZrdtNdCsqEOBiZLekjf31ucZUTq966LUv2fhUgk7x55r0ij3GiXh4UxZKA==
+"@opentripplanner/route-viewer-overlay@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-1.4.0.tgz#b239407f9975109bdd61faa9a144bcf21dcad5e9"
+  integrity sha512-M+JNVIupXuvlG9mX7fGJxB3sflharjEQMjY3qtCBSC/ogLs8wJxOz9ZxelLUheFXjlMsp9RMe8yaLrw6Y6y5LA==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/core-utils" "^4.5.0"
