@@ -66,7 +66,7 @@ class PlaceEditor extends Component<
   } & WrappedComponentProps
 > {
   _handleLocationChange = (
-    _: IntlShape, // Ignore intl object. TODO: localize name?
+    _: IntlShape, // Ignore intl object. TODO: localize the name field of the returned location object?
     { location }: { location: Location }
   ) => {
     const { setValues, values } = this.props
