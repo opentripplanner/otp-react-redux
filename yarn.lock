@@ -2544,6 +2544,11 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.1.0.tgz#aa5ecdd70f33cfbdd214c76da4ba799a8ab473a5"
   integrity sha512-U+rANHgl+Fz6srX2lZ6LNLkDKPaUvWb27pZeVs9f8qsA/hLlx8X3FY1T9BrYaXwxgSlwAha+YzcKUC/2SfQjJQ==
 
+"@opentripplanner/humanize-distance@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.2.0.tgz#71cf5d5d1b756adef15300edbba0995ccd4b35ee"
+  integrity sha512-x0QRXMDhypFeazZ6r6vzrdU8vhiV56nZ/WX6zUbxpgp6T9Oclw0gwR2Zdw6DZiiFpSYVNeVNxVzZwsu6NRGjcA==
+
 "@opentripplanner/icons@^1.1.0", "@opentripplanner/icons@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-1.2.0.tgz#00751e17aad99620bd08b47af0c09c94cb99cf74"
@@ -2560,20 +2565,19 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^2.9.0":
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-2.9.0.tgz#85623aa9e3605ba425b929d3eb949b5bcf36935a"
-  integrity sha512-aCwRwiq32uhWMBS0uMp5C3vEyNEkA/5C7sPBWgJRhytAR5HsSfdbGkUeM6EUbY+9Ki3QldWR4BHpNd7wqWvF9Q==
+"@opentripplanner/itinerary-body@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.0.0.tgz#205474999acd4c791e9025fa10191908f582bb56"
+  integrity sha512-34uSwpnHcPEXEsUfOxz7uVSIlfSBAow2aFQKb9LXT2e+Grwb/QtuJZbvgYEVYzH5KAu/TSKUytxrEDvVfZv1Vw==
   dependencies:
-    "@opentripplanner/core-utils" "^4.5.0"
-    "@opentripplanner/humanize-distance" "^1.1.0"
+    "@opentripplanner/core-utils" "^4.8.0"
+    "@opentripplanner/humanize-distance" "^1.2.0"
     "@opentripplanner/icons" "^1.2.1"
     "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
     "@styled-icons/foundation" "^10.34.0"
-    currency-formatter "^1.5.5"
+    flat "^5.0.2"
     moment "^2.24.0"
-    prop-types "^15.7.2"
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
@@ -2608,14 +2612,12 @@
     "@opentripplanner/from-to-location-picker" "^1.2.1"
     prop-types "^15.7.2"
 
-"@opentripplanner/printable-itinerary@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-1.3.1.tgz#e82ecfc91ecd5fb8f4ec4d7d3cc1548f33b3da7e"
-  integrity sha512-3T+r/U+0Pfe6CvUSWbqBBFS5uUyq3T3v19xV3jb7KplsQpYLy4nKjQcqO2/doxf/fVpWZ3XPXAFMntFHqx7pTA==
+"@opentripplanner/printable-itinerary@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-2.0.0.tgz#7a2d8bcc0db2bdcbabd71af53e93beeb30e6c3ff"
+  integrity sha512-mOVDU4bSDsgngjLn6VN17wKOcYlaX85NmEyJfHpKa9EX0eHg3zCew9pNAYPSylr7G5/SDceWqtx3uQJ5DnbzOQ==
   dependencies:
-    "@opentripplanner/core-utils" "^4.1.0"
-    "@opentripplanner/humanize-distance" "^1.1.0"
-    prop-types "^15.7.2"
+    "@opentripplanner/itinerary-body" "^3.0.0"
 
 "@opentripplanner/route-viewer-overlay@^1.3.0":
   version "1.3.0"
@@ -2702,6 +2704,11 @@
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
+
+"@opentripplanner/types@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-1.2.1.tgz#fbd193ab0b9ea8eb937e5df42dcdd2800b701b3e"
+  integrity sha512-K2JCBYNwaIJRrqt0OLmlL8g8cpOLujlnBUISqqZXtH6C3Uiw/QPlKTLI9FI0UG0xWpRDAnJIPeaTGHdi1dmwfw==
 
 "@opentripplanner/vehicle-rental-overlay@^1.2.1":
   version "1.3.0"
@@ -7695,7 +7702,7 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.8.tgz#d2266a792729fb227cd216fb572f43728e1ad340"
   integrity sha512-jXKhWqXPmlUeoQnF/EhTtTl4C9SnrxSH/jZUih3jmO6lBKr99rP3/+FmrMj4EFpOXzMtXHAZkd3x0E6h6Fgflw==
 
-currency-formatter@^1.4.2, currency-formatter@^1.5.5:
+currency-formatter@^1.4.2:
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/currency-formatter/-/currency-formatter-1.5.8.tgz#5c2a18673d966fc355bac901f7423ccce607b983"
   integrity sha512-/Oim4XnX82wf+JknrObifmBHpXnSQZC3FrCi+Oss4olXm3nqGWd8eY3sL2Tf0pZ/zuUqj1stU7f//5Hh27+cSQ==
