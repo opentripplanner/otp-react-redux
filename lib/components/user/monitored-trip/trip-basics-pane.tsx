@@ -200,35 +200,35 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                   : monitoredTrip[day]
                   ? 'bg-primary'
                   : ''
-                const notAvailableText = intl.formatMessage(
-                  { id: 'components.TripBasicsPane.tripNotAvailableOnDay' },
-                  { repeatedDay: getFormattedDayOfWeekPlural(day, intl) }
-                )
+                const notAvailableText = isDayDisabled
+                  ? intl.formatMessage(
+                      { id: 'components.TripBasicsPane.tripNotAvailableOnDay' },
+                      { repeatedDay: getFormattedDayOfWeekPlural(day, intl) }
+                    )
+                  : ''
 
                 return (
-                  notAvailableText && (
-                    <TripDayLabel
-                      className={boxClass}
-                      key={day}
-                      title={notAvailableText}
-                    >
-                      <span>
-                        <FormattedDayOfWeekCompact day={day} />
-                      </span>
-                      {
-                        // Let users save an existing trip, even though it may not be available on some days.
-                        // TODO: improve checking trip availability.
-                        isDayDisabled && isCreating ? (
-                          <Glyphicon
-                            aria-label={notAvailableText}
-                            glyph="ban-circle"
-                          />
-                        ) : (
-                          <Field name={day} type="checkbox" />
-                        )
-                      }
-                    </TripDayLabel>
-                  )
+                  <TripDayLabel
+                    className={boxClass}
+                    key={day}
+                    title={notAvailableText}
+                  >
+                    <span>
+                      <FormattedDayOfWeekCompact day={day} />
+                    </span>
+                    {
+                      // Let users save an existing trip, even though it may not be available on some days.
+                      // TODO: improve checking trip availability.
+                      isDayDisabled && isCreating ? (
+                        <Glyphicon
+                          aria-label={notAvailableText}
+                          glyph="ban-circle"
+                        />
+                      ) : (
+                        <Field name={day} type="checkbox" />
+                      )
+                    }
+                  </TripDayLabel>
                 )
               })}
               <div style={{ clear: 'both' }} />
