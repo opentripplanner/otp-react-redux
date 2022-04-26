@@ -7,8 +7,8 @@ import { setMainPanelContent, setViewedStop } from '../../../actions/ui'
 
 interface Props {
   leg: Leg
-  setMainPanelContent: (any) => void
-  setViewedStop: ({ stopId: string }) => void
+  setMainPanelContent: (content: any) => void
+  setViewedStop: (payload: { stopId: string }) => void
 }
 
 class ConnectedTransitLegSubheader extends Component<Props> {
