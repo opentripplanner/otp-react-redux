@@ -640,6 +640,7 @@ components:
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
 common:
+  coordinates: "{lat}, {lon}"
   dateExpressions:
     today: Today
     tomorrow: Tomorrow

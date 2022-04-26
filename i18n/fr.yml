@@ -685,6 +685,7 @@ otpUi:
     tripIncludesFlex: Ce trajet comprend un service à la demande (Flex).
     
 common:
+  coordinates: "{lat}; {lon}"
   dateExpressions:
     today: Aujourd'hui
     tomorrow: Demain
