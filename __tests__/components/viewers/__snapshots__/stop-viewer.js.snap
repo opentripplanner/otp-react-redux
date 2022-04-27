@@ -597,21 +597,16 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   </FormattedMessage>
                 </b>
                 <FromToLocationPicker
-                  fromText="From here"
-                  location={null}
                   onFromClick={[Function]}
                   onToClick={[Function]}
-                  setLocation={null}
-                  showIcons={true}
-                  toText="To here"
                 >
                   <styled__FromToPickerSpan>
                     <span
-                      className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
+                      className="styled__FromToPickerSpan-vb4790-1 ffynex"
                     >
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
+                          className="styled__LocationPickerSpan-vb4790-0 iSKUvQ"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -682,17 +677,22 @@ exports[`components > viewers > stop viewer should render countdown times after 
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dMNrPf"
+                              className="styled__Button-vb4790-2 jUxRQl"
                               onClick={[Function]}
                             >
-                              From here
+                              <FormattedMessage
+                                description="Text for the 'from' button of the picker"
+                                id="otpUi.FromToLocationPicker.from"
+                              >
+                                otpUi.FromToLocationPicker.from
+                              </FormattedMessage>
                             </button>
                           </styled__Button>
                         </span>
                       </styled__LocationPickerSpan>
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
+                          className="styled__LocationPickerSpan-vb4790-0 iSKUvQ"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -763,10 +763,15 @@ exports[`components > viewers > stop viewer should render countdown times after 
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dMNrPf"
+                              className="styled__Button-vb4790-2 jUxRQl"
                               onClick={[Function]}
                             >
-                              To here
+                              <FormattedMessage
+                                description="Text for the 'to' button of the picker"
+                                id="otpUi.FromToLocationPicker.to"
+                              >
+                                otpUi.FromToLocationPicker.to
+                              </FormattedMessage>
                             </button>
                           </styled__Button>
                         </span>
@@ -2770,21 +2775,16 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   </FormattedMessage>
                 </b>
                 <FromToLocationPicker
-                  fromText="From here"
-                  location={null}
                   onFromClick={[Function]}
                   onToClick={[Function]}
-                  setLocation={null}
-                  showIcons={true}
-                  toText="To here"
                 >
                   <styled__FromToPickerSpan>
                     <span
-                      className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
+                      className="styled__FromToPickerSpan-vb4790-1 ffynex"
                     >
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
+                          className="styled__LocationPickerSpan-vb4790-0 iSKUvQ"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -2855,17 +2855,22 @@ exports[`components > viewers > stop viewer should render countdown times for st
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dMNrPf"
+                              className="styled__Button-vb4790-2 jUxRQl"
                               onClick={[Function]}
                             >
-                              From here
+                              <FormattedMessage
+                                description="Text for the 'from' button of the picker"
+                                id="otpUi.FromToLocationPicker.from"
+                              >
+                                otpUi.FromToLocationPicker.from
+                              </FormattedMessage>
                             </button>
                           </styled__Button>
                         </span>
                       </styled__LocationPickerSpan>
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
+                          className="styled__LocationPickerSpan-vb4790-0 iSKUvQ"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -2936,10 +2941,15 @@ exports[`components > viewers > stop viewer should render countdown times for st
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dMNrPf"
+                              className="styled__Button-vb4790-2 jUxRQl"
                               onClick={[Function]}
                             >
-                              To here
+                              <FormattedMessage
+                                description="Text for the 'to' button of the picker"
+                                id="otpUi.FromToLocationPicker.to"
+                              >
+                                otpUi.FromToLocationPicker.to
+                              </FormattedMessage>
                             </button>
                           </styled__Button>
                         </span>
@@ -4466,21 +4476,16 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   </FormattedMessage>
                 </b>
                 <FromToLocationPicker
-                  fromText="From here"
-                  location={null}
                   onFromClick={[Function]}
                   onToClick={[Function]}
-                  setLocation={null}
-                  showIcons={true}
-                  toText="To here"
                 >
                   <styled__FromToPickerSpan>
                     <span
-                      className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
+                      className="styled__FromToPickerSpan-vb4790-1 ffynex"
                     >
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
+                          className="styled__LocationPickerSpan-vb4790-0 iSKUvQ"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -4551,17 +4556,22 @@ exports[`components > viewers > stop viewer should render times after midnight w
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dMNrPf"
+                              className="styled__Button-vb4790-2 jUxRQl"
                               onClick={[Function]}
                             >
-                              From here
+                              <FormattedMessage
+                                description="Text for the 'from' button of the picker"
+                                id="otpUi.FromToLocationPicker.from"
+                              >
+                                otpUi.FromToLocationPicker.from
+                              </FormattedMessage>
                             </button>
                           </styled__Button>
                         </span>
                       </styled__LocationPickerSpan>
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
+                          className="styled__LocationPickerSpan-vb4790-0 iSKUvQ"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -4632,10 +4642,15 @@ exports[`components > viewers > stop viewer should render times after midnight w
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dMNrPf"
+                              className="styled__Button-vb4790-2 jUxRQl"
                               onClick={[Function]}
                             >
-                              To here
+                              <FormattedMessage
+                                description="Text for the 'to' button of the picker"
+                                id="otpUi.FromToLocationPicker.to"
+                              >
+                                otpUi.FromToLocationPicker.to
+                              </FormattedMessage>
                             </button>
                           </styled__Button>
                         </span>
@@ -7365,21 +7380,16 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   </FormattedMessage>
                 </b>
                 <FromToLocationPicker
-                  fromText="From here"
-                  location={null}
                   onFromClick={[Function]}
                   onToClick={[Function]}
-                  setLocation={null}
-                  showIcons={true}
-                  toText="To here"
                 >
                   <styled__FromToPickerSpan>
                     <span
-                      className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
+                      className="styled__FromToPickerSpan-vb4790-1 ffynex"
                     >
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
+                          className="styled__LocationPickerSpan-vb4790-0 iSKUvQ"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -7450,17 +7460,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dMNrPf"
+                              className="styled__Button-vb4790-2 jUxRQl"
                               onClick={[Function]}
                             >
-                              From here
+                              <FormattedMessage
+                                description="Text for the 'from' button of the picker"
+                                id="otpUi.FromToLocationPicker.from"
+                              >
+                                otpUi.FromToLocationPicker.from
+                              </FormattedMessage>
                             </button>
                           </styled__Button>
                         </span>
                       </styled__LocationPickerSpan>
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
+                          className="styled__LocationPickerSpan-vb4790-0 iSKUvQ"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -7531,10 +7546,15 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dMNrPf"
+                              className="styled__Button-vb4790-2 jUxRQl"
                               onClick={[Function]}
                             >
-                              To here
+                              <FormattedMessage
+                                description="Text for the 'to' button of the picker"
+                                id="otpUi.FromToLocationPicker.to"
+                              >
+                                otpUi.FromToLocationPicker.to
+                              </FormattedMessage>
                             </button>
                           </styled__Button>
                         </span>
@@ -12845,21 +12865,16 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   </FormattedMessage>
                 </b>
                 <FromToLocationPicker
-                  fromText="From here"
-                  location={null}
                   onFromClick={[Function]}
                   onToClick={[Function]}
-                  setLocation={null}
-                  showIcons={true}
-                  toText="To here"
                 >
                   <styled__FromToPickerSpan>
                     <span
-                      className="styled__FromToPickerSpan-p56b41-1 jdIKdb"
+                      className="styled__FromToPickerSpan-vb4790-1 ffynex"
                     >
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
+                          className="styled__LocationPickerSpan-vb4790-0 iSKUvQ"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -12930,17 +12945,22 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dMNrPf"
+                              className="styled__Button-vb4790-2 jUxRQl"
                               onClick={[Function]}
                             >
-                              From here
+                              <FormattedMessage
+                                description="Text for the 'from' button of the picker"
+                                id="otpUi.FromToLocationPicker.from"
+                              >
+                                otpUi.FromToLocationPicker.from
+                              </FormattedMessage>
                             </button>
                           </styled__Button>
                         </span>
                       </styled__LocationPickerSpan>
                       <styled__LocationPickerSpan>
                         <span
-                          className="styled__LocationPickerSpan-p56b41-0 itKxFO"
+                          className="styled__LocationPickerSpan-vb4790-0 iSKUvQ"
                         >
                           <LocationIcon
                             size="0.9em"
@@ -13011,10 +13031,15 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                             onClick={[Function]}
                           >
                             <button
-                              className="styled__Button-p56b41-2 dMNrPf"
+                              className="styled__Button-vb4790-2 jUxRQl"
                               onClick={[Function]}
                             >
-                              To here
+                              <FormattedMessage
+                                description="Text for the 'to' button of the picker"
+                                id="otpUi.FromToLocationPicker.to"
+                              >
+                                otpUi.FromToLocationPicker.to
+                              </FormattedMessage>
                             </button>
                           </styled__Button>
                         </span>
