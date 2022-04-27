@@ -33,15 +33,22 @@ import type { Mode } from './mode-buttons'
 
 /**
  * A function that generates a filter to be used to filter a list of combinations.
- * @param enabledModesMysteryType A list of the modes enabled in the UI
+ *
+ * TS FIXME: use the ModeOption type that is currently defined
+ * in @opentripplanner/trip-form/types.ts (That type
+ * needs to be moved first to @opentripplanner/types first,
+ * with the defaultUnselected attribute added).
+ *
+ * @param enabledModesDirty A list of the modes enabled in the UI
  * @returns Filter function to filter combinations
  */
 export const combinationFilter =
-  (enabledModesMysteryType: string[] | { mode: string }[]) =>
+  (enabledModesDirty: string[] | { mode: string }[]) =>
   (c: Combination): boolean => {
-    // Ensure enabledModes is string array. This should be handled by typescript,
+    // TS FIXME: Ensure enabledModes is string array. This should be handled by typescript,
     // but typescript is not fully enabled yet.
-    const enabledModes = enabledModesMysteryType.map((mode) => {
+    // For now, we "clean" the list
+    const enabledModes = enabledModesDirty.map((mode) => {
       if (typeof mode === 'string') return mode
       if (mode.mode) return mode.mode
     })

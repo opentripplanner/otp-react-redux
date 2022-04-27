@@ -9,6 +9,8 @@ import Icon from '../util/icon'
 
 import { buttonCss } from './batch-styled'
 
+// TS TODO: merge this type with FullModeOption from
+// @opentripplanner/trip-form/types.ts and move to @opentripplanner/types.
 export type Mode = {
   defaultUnselected?: boolean
   icon?: string
