@@ -777,7 +777,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
               </div>
               <styled.div>
                 <div
-                  className="sc-crrszt jgWhKL"
+                  className="sc-iwyWTf frukpT"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -1385,7 +1385,9 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         }
                                       }
                                     >
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedMessage
                                           id="components.StopTimeCell.imminentArrival"
                                           values={
@@ -1483,7 +1485,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnuX jzpRQX"
+                            className="sc-hBEYId kYwHch"
                           >
                             <input
                               name="autoUpdate"
@@ -1499,7 +1501,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         </FormattedMessage>
                       </label>
                       <button
-                        className="link-button pull-right"
+                        className="link-button pull-right percy-hide"
                         onClick={[Function]}
                         style={
                           Object {
@@ -2338,7 +2340,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgJUU hryKBt"
+                                          className="sc-fodVek klHrRi"
                                         >
                                           P
                                         </div>
@@ -2948,7 +2950,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
               </div>
               <styled.div>
                 <div
-                  className="sc-crrszt jgWhKL"
+                  className="sc-iwyWTf frukpT"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -3277,7 +3279,9 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         }
                                       }
                                     >
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedMessage
                                           id="components.StopTimeCell.imminentArrival"
                                           values={
@@ -3375,7 +3379,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnuX jzpRQX"
+                            className="sc-hBEYId kYwHch"
                           >
                             <input
                               name="autoUpdate"
@@ -3391,7 +3395,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         </FormattedMessage>
                       </label>
                       <button
-                        className="link-button pull-right"
+                        className="link-button pull-right percy-hide"
                         onClick={[Function]}
                         style={
                           Object {
@@ -3834,7 +3838,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgJUU hryKBt"
+                                          className="sc-fodVek klHrRi"
                                         >
                                           P
                                         </div>
@@ -4642,7 +4646,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
               </div>
               <styled.div>
                 <div
-                  className="sc-crrszt jgWhKL"
+                  className="sc-iwyWTf frukpT"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -5251,6 +5255,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       }
                                     >
                                       <div
+                                        className="percy-hide"
                                         style={
                                           Object {
                                             "marginBottom": -4,
@@ -5267,7 +5272,9 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           </FormattedMessage>
                                         </FormattedDayOfWeek>
                                       </div>
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedTime
                                           timeStyle="short"
                                           timeZone="America/Los_Angeles"
@@ -5359,7 +5366,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnuX jzpRQX"
+                            className="sc-hBEYId kYwHch"
                           >
                             <input
                               name="autoUpdate"
@@ -5375,7 +5382,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         </FormattedMessage>
                       </label>
                       <button
-                        className="link-button pull-right"
+                        className="link-button pull-right percy-hide"
                         onClick={[Function]}
                         style={
                           Object {
@@ -6214,7 +6221,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgJUU hryKBt"
+                                          className="sc-fodVek klHrRi"
                                         >
                                           P
                                         </div>
@@ -7538,7 +7545,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
               </div>
               <styled.div>
                 <div
-                  className="sc-crrszt jgWhKL"
+                  className="sc-iwyWTf frukpT"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -8401,6 +8408,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       }
                                     >
                                       <div
+                                        className="percy-hide"
                                         style={
                                           Object {
                                             "marginBottom": -4,
@@ -8417,7 +8425,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </FormattedMessage>
                                         </FormattedDayOfWeek>
                                       </div>
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedTime
                                           timeStyle="short"
                                           timeZone="America/Los_Angeles"
@@ -8797,6 +8807,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       }
                                     >
                                       <div
+                                        className="percy-hide"
                                         style={
                                           Object {
                                             "marginBottom": -4,
@@ -8813,7 +8824,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </FormattedMessage>
                                         </FormattedDayOfWeek>
                                       </div>
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedTime
                                           timeStyle="short"
                                           timeZone="America/Los_Angeles"
@@ -9193,6 +9206,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       }
                                     >
                                       <div
+                                        className="percy-hide"
                                         style={
                                           Object {
                                             "marginBottom": -4,
@@ -9209,7 +9223,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </FormattedMessage>
                                         </FormattedDayOfWeek>
                                       </div>
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedTime
                                           timeStyle="short"
                                           timeZone="America/Los_Angeles"
@@ -9697,6 +9713,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       }
                                     >
                                       <div
+                                        className="percy-hide"
                                         style={
                                           Object {
                                             "marginBottom": -4,
@@ -9713,7 +9730,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </FormattedMessage>
                                         </FormattedDayOfWeek>
                                       </div>
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedTime
                                           timeStyle="short"
                                           timeZone="America/Los_Angeles"
@@ -9805,7 +9824,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnuX jzpRQX"
+                            className="sc-hBEYId kYwHch"
                           >
                             <input
                               name="autoUpdate"
@@ -9821,7 +9840,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         </FormattedMessage>
                       </label>
                       <button
-                        className="link-button pull-right"
+                        className="link-button pull-right percy-hide"
                         onClick={[Function]}
                         style={
                           Object {
@@ -11692,7 +11711,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgJUU hryKBt"
+                                          className="sc-fodVek klHrRi"
                                         >
                                           P
                                         </div>
@@ -13006,7 +13025,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
               </div>
               <styled.div>
                 <div
-                  className="sc-crrszt jgWhKL"
+                  className="sc-iwyWTf frukpT"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -13868,6 +13887,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       }
                                     >
                                       <div
+                                        className="percy-hide"
                                         style={
                                           Object {
                                             "marginBottom": -4,
@@ -13884,7 +13904,9 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           </FormattedMessage>
                                         </FormattedDayOfWeek>
                                       </div>
-                                      <div>
+                                      <div
+                                        className="percy-hide"
+                                      >
                                         <FormattedTime
                                           timeStyle="short"
                                           timeZone="America/Los_Angeles"
@@ -13976,7 +13998,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           margin={0.25}
                         >
                           <span
-                            className="sc-dlfnuX jzpRQX"
+                            className="sc-hBEYId kYwHch"
                           >
                             <input
                               name="autoUpdate"
@@ -13992,7 +14014,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         </FormattedMessage>
                       </label>
                       <button
-                        className="link-button pull-right"
+                        className="link-button pull-right percy-hide"
                         onClick={[Function]}
                         style={
                           Object {
@@ -15843,7 +15865,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-hKgJUU hryKBt"
+                                          className="sc-fodVek klHrRi"
                                         >
                                           P
                                         </div>

@@ -637,103 +637,10 @@ components:
   WelcomeScreen:
     prompt: Where do you want to go?
 
-otpUi:
-  DateTimeSelector:
-    arrive: Arrive by
-    depart: Depart at
-    now: Leave now
-  queryParameters:
-    bikeSpeed: Bicycle Speed
-    # 1 mile = 100 "centimiles"
-    # There are exceptions in English for 1/10 mile , 1/4 mile, 1/2 mile etc.
-    distanceInMiles: >
-      {centimiles, select, 
-        10 {1/10 mile}
-        25 {1/4 mile}
-        50 {1/2 mile}
-        75 {3/4 mile}
-        other {{miles, number, :: unit/mile unit-width-full-name}}
-      }
-    maxBikeDistance: Maximum Bike
-    maxBikeTime: Max Bike Time
-    maxEScooterDistance: Maximum E-scooter Distance
-    maxWalkDistance: Maximum Walk
-    maxWalkTime: Max Walk Time
-    optimizeBikeFlat: Flat Trip
-    optimizeBikeFriendly: Bike-Friendly Trip
-    optimizeBikeSpeed: Speed
-    optimizeFor: Optimize for
-    optimizeQuick: Speed
-    optimizeTransfers: Fewest Transfers
-    speedInMilesPerHour: "{mph} MPH" # Original units were all caps.
-    walkSpeed: Walk Speed
-    watts: E-scooter Power
-    watts125kidsHoverboard: Kid's hoverboard (6 mph)
-    watts1500powerfulEscooter: Powerful E-scooter (24 mph)
-    watts250entryLevelEscooter: Entry-level scooter (11 mph)
-    watts500robustEscooter: Robust E-scooter (18 mph)
-    # Note to translator: This text is width-constrained.
-    wheelchair: Prefer Wheelchair Accessible Routes
-  LocationField:
-    beingTypingPrompt: Begin typing to search for locations
-    clearLocation: Clear location
-    currentLocationUnavailable: Current location not available ({error})
-    fetchingLocation: Fetching location...
-    geocoderUnreachable: Could not reach geocoder{error, select, undefined {} other { ({error})}}
-    myPlaces: My Places
-    nearby: Nearby Stops
-    noResultsFound: >
-      No results found for {input, select,
-        null {your query}
-        other {{input}}
-      }
-    other: Other
-    recentlySearched: Recently Searched
-    stations: Stations
-    stops: Stops
-    useCurrentLocation: Use Current Location
-  SettingsSelectorPanel:
-    bikeOnly: Bike Only
-    escooterOnly: E-scooter Only
-    takeTransit: Take Transit
-    travelPreferences: Travel Preferences
-    use: Use # as in "Use bus, train, subway".
-    useCompanies: Use companies # as in :"Use companies: Spin, Lime, Bolt"
-    walkOnly: Walk Only
-  TripDetails:
-    calories: "Calories Burned: <strong>{calories, number, ::.}</strong>"
-    caloriesDescription: >
-      Calories burned is based on
-      <strong>{walkMinutes, plural, one {# minute} other {# minutes}}</strong> spent walking and
-      <strong>{bikeMinutes, plural, one {# minute} other {# minutes}}</strong> spent biking during this trip.
-      Adapted from <dietaryLink>Dietary Guidelines for Americans 2005, page 16, Table 4</dietaryLink>.
-    departure: Depart <strong>{departureDate, date, long}</strong> at <strong>{departureDate, time, short}</strong>
-    flexDropOffMessage: >
-      {hasLeadTime, select,
-        true {To get off at your destination, you must call
-          {hasPhone, select,
-            true {{phoneNumber}}
-            other {ahead}
-          } at least {leadDays, plural, one {# day} other {# days}} in advance}
-        other {You must tell the operator where you want to get off.}
-      }.
-    flexPickupMessage: >
-      To take this route, you must call {hasPhone, select,
-        true {{phoneNumber}}
-        other {ahead}
-      }{hasLeadTime, select,
-        true { at least {leadDays, plural, one {# day} other {# days}} in advance}
-        other {}
-      }.
-    title: Trip Details
-    tncFare: "{companies} Fare: <strong>{minTNCFare} - {maxTNCFare}</strong>"
-    transitFare: Transit Fare
-    transitFareEntry: "{name}: <strong>{value}</strong>"
-    tripIncludesFlex: This trip includes flexible routes.
-
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
 common:
+  coordinates: "{lat}, {lon}"
   dateExpressions:
     today: Today
     tomorrow: Tomorrow

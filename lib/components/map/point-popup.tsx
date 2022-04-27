@@ -1,11 +1,14 @@
 import { connect } from 'react-redux'
+import { injectIntl, WrappedComponentProps } from 'react-intl'
 // FIXME: typescript
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import type { Place } from '@opentripplanner/types'
 
+import { renderCoordinates } from '../form/user-settings'
 import { setMapZoom } from '../../actions/config'
 
 const PopupContainer = styled.div`
@@ -18,17 +21,18 @@ const PopupTitle = styled.div`
 `
 
 function MapPopup({
+  intl,
   mapPopupLocation,
   onSetLocationFromPopup,
   setMapZoom,
   zoom
 }: {
-  mapPopupLocation: { name: string }
+  mapPopupLocation: Place
   // TODO: add types for this method
   onSetLocationFromPopup: () => void
   setMapZoom: ({ zoom }: { zoom: number }) => void
   zoom: number
-}): JSX.Element {
+} & WrappedComponentProps): JSX.Element {
   // Zoom out if zoomed in very far
   useEffect(() => {
     if (zoom > 15) {
@@ -37,12 +41,19 @@ function MapPopup({
     // Only check zoom if popup appears in a new place
   }, [mapPopupLocation, setMapZoom, zoom])
 
+  const popupName =
+    mapPopupLocation?.name ||
+    intl.formatMessage(
+      { id: 'common.coordinates' },
+      renderCoordinates(intl, mapPopupLocation)
+    )
+
   return (
     <PopupContainer>
       <PopupTitle>
-        {mapPopupLocation.name.split(',').length > 3
-          ? mapPopupLocation.name.split(',').splice(0, 3).join(',')
-          : mapPopupLocation.name}
+        {typeof popupName === 'string' && popupName.split(',').length > 3
+          ? popupName.split(',').splice(0, 3).join(',')
+          : popupName}
       </PopupTitle>
       <div>
         Plan a trip:
@@ -66,4 +77,7 @@ const mapDispatchToProps = {
   setMapZoom
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapPopup)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(MapPopup))
