@@ -10,6 +10,7 @@ import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
+import { getDefaultModes } from '../../util/itinerary'
 import { hasValidLocation } from '../../util/state'
 import Icon from '../util/icon'
 
@@ -114,9 +115,7 @@ class BatchSettings extends Component<{
 }> {
   state = {
     expanded: null,
-    selectedModes: this.props.modeOptions
-      .filter((m) => !m.defaultUnselected)
-      .map((m) => m.mode)
+    selectedModes: getDefaultModes(this.props.modeOptions)
   }
 
   _onClickMode = (mode: string) => {
