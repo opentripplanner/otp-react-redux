@@ -2447,9 +2447,9 @@
     qs "^6.9.1"
 
 "@opentripplanner/core-utils@^4.10.0":
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.10.0.tgz#5ddb96bf4a9f3c46988f8d09bdef5f4afe7ec70a"
-  integrity sha512-LC91HJDGUZtzJ/lwuus7oSKwDWGASOAgEkDkh1x99eHtTSTgEMddvuP3WVKWNJ9axTHCDS8FF1H0hW6ZGlP0/g==
+  version "4.11.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.11.2.tgz#c5742e4590d03769e3113d87d4725821c7209115"
+  integrity sha512-rGN9ISYatE3lRKxVX7q0FqwbUgvrs80wGZccEgJMklqytBy3h33Y1jL80R6l21z8oHXtW1DEG4DWFqt4z5My9A==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.1.2"
@@ -2518,6 +2518,14 @@
     "@opentripplanner/core-utils" "^4.1.0"
     "@opentripplanner/location-icon" "^1.3.0"
     prop-types "^15.7.2"
+
+"@opentripplanner/from-to-location-picker@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/from-to-location-picker/-/from-to-location-picker-2.1.0.tgz#cca855bf1fc711586e5d70733939056667f822ae"
+  integrity sha512-5x4HliDNCyOAiVQUcF2GRBQ0pVHu8ER6iMXqAyl8ncstVWxC2kmLmDTfHSuMtfDiLDGbRAUwk2Kz749up9ZQPg==
+  dependencies:
+    "@opentripplanner/location-icon" "^1.4.0"
+    flat "^5.0.2"
 
 "@opentripplanner/geocoder@^1.1.1", "@opentripplanner/geocoder@^1.1.2":
   version "1.1.2"
@@ -2708,15 +2716,16 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-1.2.0.tgz#1d9163ddb5ddc27b9ced52a6e1fe2941c195d5e9"
   integrity sha512-kURxBFXV8z4pApducBwTHxKaAApdLJMewbkQ3cD9ykMt64Jw2TIHLK3D8d8okd2rAMykvZ9o0CPztfaLBwJrJQ==
 
-"@opentripplanner/vehicle-rental-overlay@^1.2.1":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/vehicle-rental-overlay/-/vehicle-rental-overlay-1.3.0.tgz#a77c3e040faf59091fdb3c8f9fb0ad46e1af8532"
-  integrity sha512-PbFyDFweag8GvTXUuyEBpff3g9E6/8KC1b2LxR8T0f2yoqynIqUEYitJKCVvXeQroQ5s0V6JxRr+kWU0vwNPyg==
+"@opentripplanner/vehicle-rental-overlay@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/vehicle-rental-overlay/-/vehicle-rental-overlay-1.4.0.tgz#c02e386e4dbe24730d4876058b268a68cb21bca9"
+  integrity sha512-mAup3b1UeX50RvriWewn0OOHU47gSFA5GbdfTWbvIx2d3ziFj9ZIOJu5aYbhy8Yz2HyUKMYLjBSN/atGZHy2Bg==
   dependencies:
-    "@opentripplanner/core-utils" "^4.1.0"
-    "@opentripplanner/from-to-location-picker" "^1.2.1"
-    "@opentripplanner/zoom-based-markers" "^1.2.0"
+    "@opentripplanner/core-utils" "^4.5.0"
+    "@opentripplanner/from-to-location-picker" "^2.1.0"
+    "@opentripplanner/zoom-based-markers" "^1.2.1"
     "@styled-icons/fa-solid" "^10.34.0"
+    flat "^5.0.2"
     lodash.memoize "^4.1.2"
     prop-types "^15.7.2"
 
