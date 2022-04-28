@@ -44,16 +44,8 @@ import type { Mode } from './mode-buttons'
  * @returns Filter function to filter combinations
  */
 export const combinationFilter =
-  (enabledModesDirty: string[] | { mode: string }[]) =>
+  (enabledModes: string[]) =>
   (c: Combination): boolean => {
-    // TS FIXME: Ensure enabledModes is string array. This should be handled by typescript,
-    // but typescript is not fully enabled yet.
-    // For now, we "clean" the list
-    const enabledModes = enabledModesDirty.map((mode) => {
-      if (typeof mode === 'string') return mode
-      if (mode.mode) return mode.mode
-    })
-
     if (c.requiredModes) {
       return c.requiredModes.every((m) => enabledModes.includes(m))
     } else {
