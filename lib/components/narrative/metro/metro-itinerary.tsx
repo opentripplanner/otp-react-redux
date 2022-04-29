@@ -1,6 +1,7 @@
 // This is a large file being touched by open PRs. It should be typescripted
 // in a separate PR.
 /* eslint-disable */
+// @ts-expect-error not typescripted yet
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 import {
@@ -8,17 +9,20 @@ import {
   FormattedMessage,
   FormattedNumber,
   FormattedTime,
-  injectIntl
+  injectIntl,
+  IntlShape
 } from 'react-intl'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+// @ts-expect-error not typescripted yet
 import { AccessibilityRating } from '@opentripplanner/itinerary-body'
 
-import FieldTripGroupSize from '../../admin/field-trip-itinerary-group-size'
+import * as uiActions from '../../../actions/ui'
 import NarrativeItinerary from '../narrative-itinerary'
 import ItineraryBody from '../line-itin/connected-itinerary-body'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 import FormattedDuration from '../../util/formatted-duration'
+import FormattedMode from '../../util/formatted-mode'
 import { getTotalFare } from '../../../util/state'
 import {
   getAccessibilityScoreForItinerary,
@@ -26,10 +30,12 @@ import {
 } from '../../../util/accessibility-routing'
 import Icon from '../../util/icon'
 
-import { FlexIndicator } from './flex-indicator'
-import ItinerarySummary from './itinerary-summary'
-import { getMainItineraryModes, ItineraryDescription } from './itinerary-description'
+import { FlexIndicator } from '../default/flex-indicator'
+import ItinerarySummary from '../default/itinerary-summary'
+import { Itinerary, Leg } from '@opentripplanner/types'
 
+const { ItineraryView } = uiActions
+const { isBicycle, isMicromobility, isTransit, isFlex, isOptional, isContinuousDropoff } = coreUtils.itinerary
 
 // Styled components
 const LegIconWrapper = styled.div`
@@ -58,82 +64,31 @@ const DetailsHint = styled.div`
   text-align: center;
 `
 
-const ItinerarySummaryWrapper = styled.div`
+const ItineraryWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  background: #fffffffb;
+  color: #333;
+  padding: 1em;
+
 `
 
-const ITINERARY_ATTRIBUTES = [
-  {
-    alias: 'best',
-    id: 'duration',
-    order: 0,
-    render: (itinerary, options) => (
-      <FormattedDuration duration={itinerary.duration} />
-    )
-  },
-  {
-    alias: 'departureTime',
-    id: 'arrivalTime',
-    order: 1,
-    render: (itinerary, options) => {
-      const startTimeWithOffset = itinerary.startTime + options.offset
-      const endTimeWithOffset = itinerary.endTime + options.offset
 
-      if (options.selection === 'ARRIVALTIME') {
-        return <FormattedTime value={endTimeWithOffset} />
-      }
-      if (options.selection !== 'DEPARTURETIME' && itinerary.allStartTimes) {
-        const allStartTimes = Array.from(itinerary.allStartTimes).sort()
-        return (
-          <FormattedList
-            type='conjunction'
-            value={allStartTimes.map(time => <FormattedTime value={time} />)}
-          />
-        )
-      }
-      return <FormattedTime value={startTimeWithOffset} />
-    }
-  },
-  {
-    id: 'cost',
-    order: 2,
-    render: (itinerary, options, defaultFareKey = 'regular') => {
-      const fareInCents = getTotalFare(itinerary, options.configCosts, defaultFareKey)
-      const fareCurrency = itinerary.fare?.fare?.regular?.currency?.currencyCode
-      const fare = fareInCents === null ? null : fareInCents / 100
-      if (fare === null || fare < 0) return <FormattedMessage id="common.itineraryDescriptions.noTransitFareProvided" />
-      return (
-        <FormattedNumber
-          // Currency from itinerary fare or from config.
-          currency={fareCurrency || options.currency}
-          currencyDisplay='narrowSymbol'
-          style='currency'
-          value={fare}
-        />
-      )
-    }
-  },
-  {
-    id: 'walkTime',
-    order: 3,
-    render: (itinerary, options) => {
-      const leg = itinerary.legs[0]
-      const { LegIcon } = options
-      return (
-        // FIXME: For CAR mode, walk time considers driving time.
-        <>
-          <FormattedDuration duration={itinerary.walkTime} />
-          <LegIconWrapper>
-            <LegIcon leg={leg} size={5} />
-          </LegIconWrapper>
-        </>
-      )
-    }
-  }
-]
 
-class DefaultItinerary extends NarrativeItinerary {
+type Props = {
+  accessibilityScoreGradationMap: { [value: number]: string }
+  active: boolean,
+  expanded: boolean,
+  itinerary: Itinerary,
+  intl: IntlShape,
+  LegIcon: React.ReactNode,
+  setActiveLeg: (leg: Leg) => void,
+  setItineraryView: (view: string) => void,
+  showRealtimeAnnotation: () => void,
+  timeFormat: any // TODO
+}
+
+class MetroItinerary<Props> extends NarrativeItinerary {
   _onMouseEnter = () => {
     const { active, index, setVisibleItinerary, visibleItinerary } = this.props
     // Set this itinerary as visible if not already visible.
@@ -153,18 +108,6 @@ class DefaultItinerary extends NarrativeItinerary {
     }
   }
 
-  _isSortingOnAttribute = (attribute) => {
-    const { sort } = this.props
-    if (sort && sort.type) {
-      const type = sort.type.toLowerCase()
-      return (
-        attribute.id.toLowerCase() === type ||
-        (attribute.alias && attribute.alias.toLowerCase() === type)
-      )
-    }
-    return false
-  }
-
   render() {
     const {
       accessibilityScoreGradationMap,
@@ -176,6 +119,7 @@ class DefaultItinerary extends NarrativeItinerary {
       itinerary,
       LegIcon,
       setActiveLeg,
+      setItineraryView,
       showRealtimeAnnotation,
       timeFormat
     } = this.props
@@ -188,21 +132,18 @@ class DefaultItinerary extends NarrativeItinerary {
     const isContinuousDropoff = itinerary.legs.some(coreUtils.itinerary.isContinuousDropoff)
 
     // Use first leg's agency as a fallback
-    const agency = itinerary.legs.map(leg => leg?.agencyName).filter(name => !!name)[0]
-    let phone = `contact ${agency}`
+    let phone = itinerary.legs.map((leg: Leg) => leg?.agencyName).filter((name: string) => !!name)[0]
 
     if (isCallAhead) {
       // Picking 0 ensures that if multiple flex legs with
       // different phone numbers, the first leg is prioritized
       phone = itinerary.legs
-        .map((leg) => leg.pickupBookingInfo?.contactInfo?.phoneNumber)
-        .filter((number) => !!number)[0]
+        .map((leg: Leg) => leg.pickupBookingInfo?.contactInfo?.phoneNumber)
+        .filter((number: string) => !!number)[0]
     }
-
-    const { mainMode, transitMode } = getMainItineraryModes(itinerary)
     return (
       <div
-        className={`option default-itin${active ? ' active' : ''}${expanded ? ' expanded' : ''
+        className={`option metro-itin${active ? ' active' : ''}${expanded ? ' expanded' : ''
           }`}
         onMouseEnter={this._onMouseEnter}
         onMouseLeave={this._onMouseLeave}
@@ -210,14 +151,18 @@ class DefaultItinerary extends NarrativeItinerary {
       >
         <button
           className='header'
-          // _onHeaderClick comes from super component (NarrativeItinerary).
-          onClick={this._onHeaderClick}
+          // TODO: use _onHeaderClick for tap only -- this will require disabling
+          // this onClick handler after a touchStart
+          onClick={() => {
+            setActiveLeg(null, null)
+            setItineraryView(ItineraryView.FULL)
+          }}
         >
-          {/* FIXME: semantics - replace the divs with span (we are inside a button) */}
-          <ItinerarySummaryWrapper>
+          <ItineraryWrapper>
             <div className='title'>
-              <ItineraryDescription itinerary={itinerary} />
-              <ItinerarySummary itinerary={itinerary} LegIcon={LegIcon} />
+              This one takes <FormattedDuration duration={itinerary.duration} />
+              {/* <ItineraryDescription itinerary={itinerary} /> */}
+              {/* <ItinerarySummary itinerary={itinerary} LegIcon={LegIcon} /> */}
               {itineraryHasAccessibilityScores(itinerary) && (
                 <AccessibilityRating
                   gradationMap={accessibilityScoreGradationMap}
@@ -229,44 +174,13 @@ class DefaultItinerary extends NarrativeItinerary {
             {isFlexItinerary && (
               <FlexIndicator
                 isCallAhead={isCallAhead}
+                shrink={false}
                 isContinuousDropoff={isContinuousDropoff}
                 phoneNumber={phone}
               />
             )}
-            <ul className='list-unstyled itinerary-attributes'>
-              {ITINERARY_ATTRIBUTES.sort((a, b) => {
-                const aSelected = this._isSortingOnAttribute(a)
-                const bSelected = this._isSortingOnAttribute(b)
-                if (aSelected) return -1
-                if (bSelected) return 1
-                return a.order - b.order
-              }).map((attribute) => {
-                const isSelected = this._isSortingOnAttribute(attribute)
-                const options = attribute.id === 'arrivalTime' ? timeOptions : {}
-                if (isSelected) {
-                  options.isSelected = true
-                  options.selection = this.props.sort.type
-                }
-                options.LegIcon = LegIcon
-                options.configCosts = configCosts
-                options.currency = currency
-                return (
-                  <li
-                    className={`${attribute.id}${isSelected ? ' main' : ''}`}
-                    key={attribute.id}
-                  >
-                    {attribute.render(itinerary, options, defaultFareKey)}
-                  </li>
-                )
-              })}
-            </ul>
-            <FieldTripGroupSize itinerary={itinerary} />
-          </ItinerarySummaryWrapper>
-          {active && !expanded && (
-            <DetailsHint>
-              <FormattedMessage id='components.DefaultItinerary.clickDetails' />
-            </DetailsHint>
-          )}
+          </ItineraryWrapper>
+
         </button>
         {active && expanded && (
           <>
@@ -285,7 +199,8 @@ class DefaultItinerary extends NarrativeItinerary {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+// TODO: state type
+const mapStateToProps = (state: any, ownProps: Props) => {
   const { intl } = ownProps
   const gradationMap = state.otp.config.accessibilityScore?.gradationMap
 
@@ -319,4 +234,12 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default injectIntl(connect(mapStateToProps)(DefaultItinerary))
+// TS TODO: correct redux types
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    setItineraryView: (payload: any) =>
+      dispatch(uiActions.setItineraryView(payload)),
+  }
+}
+
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(MetroItinerary))
