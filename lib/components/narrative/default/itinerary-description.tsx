@@ -1,14 +1,16 @@
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, IntlShape } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
 // @ts-expect-error Not typescripted yet
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 
-import FormattedMode from '../../util/formatted-mode'
+import { getFormattedMode } from '../../../util/i18n'
+
 const { isBicycle, isMicromobility, isTransit } = coreUtils.itinerary
 
 type Props = {
   combineTransitModes?: boolean
+  intl: IntlShape
   itinerary: Itinerary
 }
 
@@ -17,10 +19,11 @@ type Props = {
  */
 export function getMainItineraryModes({
   combineTransitModes,
+  intl,
   itinerary
 }: Props): {
-  mainMode: string | JSX.Element
-  transitMode?: string | JSX.Element
+  mainMode: string
+  transitMode?: string
 } {
   let primaryTransitDuration = 0
   let accessModeId = 'walk'
@@ -30,10 +33,9 @@ export function getMainItineraryModes({
     if (isTransit(mode) && duration > primaryTransitDuration) {
       // TODO: convert OTP's TRAM mode to the correct wording for Portland
       primaryTransitDuration = duration
-      transitMode = (
-        <FormattedMode
-          mode={combineTransitModes ? 'transit' : mode.toLowerCase()}
-        />
+      transitMode = getFormattedMode(
+        combineTransitModes ? 'transit' : mode.toLowerCase(),
+        intl
       )
     }
     if (isBicycle(mode)) accessModeId = 'bicycle'
@@ -43,10 +45,10 @@ export function getMainItineraryModes({
     if (mode === 'CAR') accessModeId = 'drive'
   })
 
-  return { mainMode: <FormattedMode mode={accessModeId} />, transitMode }
+  return { mainMode: getFormattedMode(accessModeId, intl), transitMode }
 }
 
-export function ItineraryDescription(props: Props) {
+export function ItineraryDescription(props: Props): React.ReactNode {
   const { mainMode, transitMode } = getMainItineraryModes(props)
 
   return transitMode ? (
@@ -57,4 +59,19 @@ export function ItineraryDescription(props: Props) {
   ) : (
     mainMode
   )
+}
+
+export function getItineraryDescription(props: Props): string {
+  const { intl } = props
+  const { mainMode, transitMode } = getMainItineraryModes(props)
+
+  return transitMode
+    ? intl.formatMessage(
+        { id: 'components.DefaultItinerary.multiModeSummary' },
+        {
+          accessMode: mainMode,
+          transitMode
+        }
+      )
+    : mainMode
 }

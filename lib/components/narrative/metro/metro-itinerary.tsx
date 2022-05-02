@@ -70,7 +70,6 @@ const ItineraryWrapper = styled.div`
   background: #fffffffb;
   color: #333;
   padding: 1em;
-
 `
 
 
@@ -80,9 +79,11 @@ type Props = {
   active: boolean,
   expanded: boolean,
   itinerary: Itinerary,
+  mini?: boolean,
   intl: IntlShape,
   LegIcon: React.ReactNode,
   setActiveLeg: (leg: Leg) => void,
+  setActiveItinerary: ()=>void,
   setItineraryView: (view: string) => void,
   showRealtimeAnnotation: () => void,
   timeFormat: any // TODO
@@ -118,7 +119,9 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       expanded,
       itinerary,
       LegIcon,
+      setActiveItinerary,
       setActiveLeg,
+      mini,
       setItineraryView,
       showRealtimeAnnotation,
       timeFormat
@@ -127,12 +130,12 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       format: timeFormat,
       offset: coreUtils.itinerary.getTimeZoneOffset(itinerary)
     }
-    const isFlexItinerary = itinerary.legs.some(coreUtils.itinerary.isFlex)
-    const isCallAhead = itinerary.legs.some(coreUtils.itinerary.isReservationRequired)
-    const isContinuousDropoff = itinerary.legs.some(coreUtils.itinerary.isContinuousDropoff)
+    const isFlexItinerary = itinerary.legs?.some(coreUtils.itinerary.isFlex)
+    const isCallAhead = itinerary.legs?.some(coreUtils.itinerary.isReservationRequired)
+    const isContinuousDropoff = itinerary.legs?.some(coreUtils.itinerary.isContinuousDropoff)
 
     // Use first leg's agency as a fallback
-    let phone = itinerary.legs.map((leg: Leg) => leg?.agencyName).filter((name: string) => !!name)[0]
+    let phone = itinerary.legs?.map((leg: Leg) => leg?.agencyName).filter((name: string) => !!name)[0]
 
     if (isCallAhead) {
       // Picking 0 ensures that if multiple flex legs with
@@ -154,6 +157,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
           // TODO: use _onHeaderClick for tap only -- this will require disabling
           // this onClick handler after a touchStart
           onClick={() => {
+            setActiveItinerary(itinerary)
             setActiveLeg(null, null)
             setItineraryView(ItineraryView.FULL)
           }}
@@ -161,9 +165,10 @@ class MetroItinerary<Props> extends NarrativeItinerary {
           <ItineraryWrapper>
             <div className='title'>
               This one takes <FormattedDuration duration={itinerary.duration} />
+              {mini && 'small indicator test'}
               {/* <ItineraryDescription itinerary={itinerary} /> */}
               {/* <ItinerarySummary itinerary={itinerary} LegIcon={LegIcon} /> */}
-              {itineraryHasAccessibilityScores(itinerary) && (
+              {!mini && itineraryHasAccessibilityScores(itinerary) && (
                 <AccessibilityRating
                   gradationMap={accessibilityScoreGradationMap}
                   large
@@ -171,7 +176,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                 />
               )}
             </div>
-            {isFlexItinerary && (
+            {!mini && isFlexItinerary && (
               <FlexIndicator
                 isCallAhead={isCallAhead}
                 shrink={false}
