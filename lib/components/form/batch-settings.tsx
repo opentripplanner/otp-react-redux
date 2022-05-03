@@ -209,7 +209,7 @@ class BatchSettings extends Component<{
               id: 'components.BatchSettings.planTripTooltip'
             })}
           >
-            <Icon className="fa-2x" type="search" />
+            <Icon className="fa-2x" type="refresh" />
           </PlanTripButton>
         </MainSettingsRow>
         {expanded === 'DATE_TIME' && (
