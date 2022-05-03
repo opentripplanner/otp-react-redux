@@ -24,6 +24,20 @@
   cursor: auto;
 }
 
+.otp .option.metro-itin:last-of-type button div {
+  border: none;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.otp .option.metro-itin:first-of-type button div {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.otp .option.metro-itin {
+  display: block;
+  margin-bottom: -1ch;
+}
+
 /* Show side border if active and not expanded */
 .otp .option.default-itin.active:not(.expanded) {
   border-left: 4px teal solid;

@@ -33,43 +33,33 @@ import Icon from '../../util/icon'
 import { FlexIndicator } from '../default/flex-indicator'
 import ItinerarySummary from '../default/itinerary-summary'
 import { Itinerary, Leg } from '@opentripplanner/types'
+import { departureTimes } from './attribute-utils'
 
 const { ItineraryView } = uiActions
 const { isBicycle, isMicromobility, isTransit, isFlex, isOptional, isContinuousDropoff } = coreUtils.itinerary
 
 // Styled components
-const LegIconWrapper = styled.div`
-  display: inline-block;
-  height: 20px;
-  padding-bottom: 6px;
-  padding-left: 2px;
-  width: 20px;
-
-  /* Equivalent of a single space before the leg icon. */
-  &::before {
-    content: "";
-    margin: 0 0.125em;
-  }
-
-  &::before {
-    content: "";
-    margin: 0 0.125em;
-  }
-`
-
-const DetailsHint = styled.div`
-  clear: both;
-  color: #685c5c;
-  font-size: small;
-  text-align: center;
-`
-
 const ItineraryWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
   background: #fffffffb;
   color: #333;
-  padding: 1em;
+  padding: 0;
+
+  border-bottom: 1.1ch solid #33333333;
+`
+
+const DepartureTimes = styled.span``
+
+const ItineraryGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+
+  padding: 0 1em;
+
+  ${DepartureTimes} {
+    grid-row: 5;
+    grid-column: 1 / 8;
+  } 
 `
 
 
@@ -83,7 +73,7 @@ type Props = {
   intl: IntlShape,
   LegIcon: React.ReactNode,
   setActiveLeg: (leg: Leg) => void,
-  setActiveItinerary: ()=>void,
+  setActiveItinerary: () => void,
   setItineraryView: (view: string) => void,
   showRealtimeAnnotation: () => void,
   timeFormat: any // TODO
@@ -163,11 +153,9 @@ class MetroItinerary<Props> extends NarrativeItinerary {
           }}
         >
           <ItineraryWrapper>
-            <div className='title'>
-              This one takes <FormattedDuration duration={itinerary.duration} />
+            <ItineraryGrid>
+              <DepartureTimes>{departureTimes(itinerary)}</DepartureTimes>
               {mini && 'small indicator test'}
-              {/* <ItineraryDescription itinerary={itinerary} /> */}
-              {/* <ItinerarySummary itinerary={itinerary} LegIcon={LegIcon} /> */}
               {!mini && itineraryHasAccessibilityScores(itinerary) && (
                 <AccessibilityRating
                   gradationMap={accessibilityScoreGradationMap}
@@ -175,15 +163,15 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                   score={getAccessibilityScoreForItinerary(itinerary)}
                 />
               )}
-            </div>
-            {!mini && isFlexItinerary && (
-              <FlexIndicator
-                isCallAhead={isCallAhead}
-                shrink={false}
-                isContinuousDropoff={isContinuousDropoff}
-                phoneNumber={phone}
-              />
-            )}
+              {!mini && isFlexItinerary && (
+                <FlexIndicator
+                  isCallAhead={isCallAhead}
+                  shrink={false}
+                  isContinuousDropoff={isContinuousDropoff}
+                  phoneNumber={phone}
+                />
+              )}
+            </ItineraryGrid>
           </ItineraryWrapper>
 
         </button>
