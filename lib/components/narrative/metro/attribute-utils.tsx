@@ -2,18 +2,30 @@ import { FormattedList, FormattedTime } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
 import React from 'react'
 
+import { containsRealtimeLeg } from '../../../util/viewer'
+
 export const departureTimes = (
-  itinerary: Itinerary & { allStartTimes: number[] }
+  itinerary: Itinerary & {
+    allStartTimes: { realtime: boolean; time: number }[]
+  }
 ): JSX.Element => {
   if (!itinerary.allStartTimes) {
-    return <FormattedTime value={itinerary.startTime} />
+    return (
+      <span className={containsRealtimeLeg(itinerary) ? 'realtime' : ''}>
+        <FormattedTime value={itinerary.startTime} />
+      </span>
+    )
   }
-  const allStartTimes = Array.from(itinerary.allStartTimes).sort()
+  const allStartTimes = Array.from(itinerary.allStartTimes).sort(
+    (a, b) => a.time - b.time
+  )
   return (
     <FormattedList
       type="conjunction"
       value={allStartTimes.map((time) => (
-        <FormattedTime key={time} value={time} />
+        <span className={time.realtime ? 'realtime' : ''} key={time.time}>
+          <FormattedTime key={time.time} value={time.time} />
+        </span>
       ))}
     />
   )

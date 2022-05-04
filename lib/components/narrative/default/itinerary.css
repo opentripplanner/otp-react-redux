@@ -45,6 +45,13 @@
   background: #fffffff0;
 }
 
+.otp .option.metro-itin span.realtime {
+  color: orange;
+}
+.otp .option.metro-itin span.realtime::before {
+  content: "Realtime";
+}
+
 /* Show side border if active and not expanded */
 .otp .option.default-itin.active:not(.expanded) {
   border-left: 4px teal solid;
