@@ -75,20 +75,43 @@ const PrimaryInfo = styled.span`
   font-weight: 600;
   font-size: 22px;
   color: #000000cc;
+  text-align: right;
 `;
+
+const SecondaryInfo = styled.span`
+  font-size: 12px;
+  color: #090909cc;
+  opacity: 0.7;
+  text-align: right;
+`
+
+const Spacer = styled.span``
 
 const ItineraryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(10, 8px);
 
-  padding: 0 1em;
-  padding-top: 10px;
-  padding-bottom: 4px;
+  padding: 10px 1em;
 
   ${DepartureTimes} {
-    grid-row: 5;
+    grid-row: 9 / 11;
     grid-column: 1 / 8;
+  }
+
+  ${PrimaryInfo} {
+    grid-row: 1 / span 3;
+    grid-column: 8 / 11;
+  }
+
+  ${Spacer} {
+    grid-row: span 1;
+    grid-column: 8 / 11;
+  }
+
+  ${SecondaryInfo} {
+    grid-column: 8 / 11;
+    grid-row: span 2;
   }
 `;
 
@@ -191,10 +214,12 @@ class MetroItinerary<Props> extends NarrativeItinerary {
         >
           <ItineraryWrapper>
             <ItineraryGrid>
-              <DepartureTimes>{departureTimes(itinerary)}</DepartureTimes>
-              <Info>
-                <PrimaryInfo>29 Min</PrimaryInfo>hello
-              </Info>
+              <DepartureTimes><FormattedMessage id="components.MetroUI.leaveAt" /> {departureTimes(itinerary)}</DepartureTimes>
+                <PrimaryInfo>29 Min</PrimaryInfo>
+                <Spacer></Spacer>
+                <SecondaryInfo>hello one</SecondaryInfo>
+                <SecondaryInfo>hello two</SecondaryInfo>
+                <SecondaryInfo>hello 333</SecondaryInfo>
               {mini && "small indicator test"}
               {!mini && itineraryHasAccessibilityScores(itinerary) && (
                 <AccessibilityRating

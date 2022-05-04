@@ -220,6 +220,8 @@ components:
     setOrigin: Set Origin
   MainMobile:
     invalidScreen: Invalid mobile screen
+  MetroUI:
+    leaveAt: Leave at
   MobileOptions:
     header: Set Search Options
   ModeDropdown:

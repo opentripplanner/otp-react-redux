@@ -38,7 +38,7 @@
   margin-bottom: -1ch;
 }
 .otp .option.metro-itin button div {
-  background: #ffffffe0;
+  background: #ffffffd0;
   transition: all 0.1s ease-in-out;
 }
 .otp .option.metro-itin button div:hover {
