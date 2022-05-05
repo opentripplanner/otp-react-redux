@@ -6,7 +6,7 @@ import {
   ToggleButton,
   ToggleButtonGroup
 } from 'react-bootstrap'
-import { injectIntl } from 'react-intl'
+import { injectIntl, IntlShape } from 'react-intl'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import type { WrappedComponentProps } from 'react-intl'
@@ -15,6 +15,7 @@ import type { WrappedComponentProps } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import type { Location } from '@opentripplanner/types'
 
 import { capitalizeFirst, getErrorStates } from '../../../util/ui'
 import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'
@@ -64,15 +65,10 @@ class PlaceEditor extends Component<
     values: any
   } & WrappedComponentProps
 > {
-  _handleLocationChange = ({
-    location
-  }: {
-    location: {
-      lat: number
-      lon: number
-      name: string
-    }
-  }) => {
+  _handleLocationChange = (
+    _: IntlShape, // Ignore intl object.
+    { location }: { location: Location }
+  ) => {
     const { setValues, values } = this.props
     const { lat, lon, name } = location
     setValues({
