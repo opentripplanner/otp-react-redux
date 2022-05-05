@@ -102,6 +102,7 @@ Object {
     "diagramLeg": null,
     "locale": null,
     "localizedMessages": null,
+    "mainPanelContent": null,
     "mobileScreen": 1,
     "printView": false,
     "routeViewer": Object {
