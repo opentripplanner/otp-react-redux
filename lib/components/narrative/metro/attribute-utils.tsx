@@ -22,8 +22,13 @@ export const departureTimes = (
   return (
     <FormattedList
       type="conjunction"
-      value={allStartTimes.map((time) => (
-        <span className={time.realtime ? 'realtime' : ''} key={time.time}>
+      value={allStartTimes.map((time, index) => (
+        <span
+          className={`${time.realtime ? 'realtime' : ''} ${
+            index === 0 ? 'first' : ''
+          }`}
+          key={index}
+        >
           <FormattedTime key={time.time} value={time.time} />
         </span>
       ))}

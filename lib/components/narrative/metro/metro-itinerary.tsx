@@ -61,6 +61,12 @@ const DepartureTimes = styled.span`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: pre;
+  color: #0909098f;
+
+  .first {
+    color: #090909ee;
+
+  }
 `;
 
 const Info = styled.div`
