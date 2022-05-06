@@ -56,8 +56,8 @@ function MapPopup({
           : popupName}
       </PopupTitle>
       <div>
-        Plan a trip:
         <FromToLocationPicker
+          label
           location={mapPopupLocation}
           setLocation={onSetLocationFromPopup}
         />

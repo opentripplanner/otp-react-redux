@@ -165,7 +165,6 @@ components:
   DeleteUser:
     deleteMyAccount: Supprimer mon compte
   EnhancedStopMarker:
-    planATrip: "Planifier un trajet :"
     stopID: "Arrêt nº"
     stopViewer: Info arrêt
   ErrorMessage:
@@ -420,7 +419,6 @@ components:
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
     noStopsFound: Aucun horaire pour la date choisie.
-    planTrip: "Faire un trajet :"
     timezoneWarning: "Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>."
     viewTypeBtnText: >
       {scheduleView, select,
