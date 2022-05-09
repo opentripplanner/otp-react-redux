@@ -21,6 +21,7 @@ import {
   itineraryHasAccessibilityScores
 } from '../../../util/accessibility-routing'
 import { getFare } from '../../../util/state'
+import { ItineraryDescription } from '../default/itinerary-description'
 import FormattedDuration from '../../util/formatted-duration'
 import Icon from '../../util/icon'
 import ItineraryBody from '../line-itin/connected-itinerary-body'
@@ -142,6 +143,31 @@ const ItineraryGrid = styled.div`
   }
 `
 
+const ItineraryGridSmall = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(10, 8px);
+
+  padding: 10px 1em;
+
+  border-radius: 10px;
+
+  ${PrimaryInfo} {
+    grid-column: 2;
+    grid-row: 2 / 5;
+    line-height: 1;
+  }
+
+  ${SecondaryInfo} {
+    grid-column: 2;
+    grid-row: 8;
+  }
+
+  svg {
+    grid-row: 2 / 5;
+  }
+`
+
 type Props = {
   LegIcon: React.ReactNode
   accessibilityScoreGradationMap: { [value: number]: string }
@@ -189,6 +215,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       currency,
       defaultFareKey,
       expanded,
+      intl,
       itinerary,
       LegIcon,
       mini,
@@ -217,6 +244,23 @@ class MetroItinerary<Props> extends NarrativeItinerary {
 
     const { RouteRenderer } = this.context
 
+    const routeBlocks = itinerary.legs
+      .filter(removeInsignifigantWalkLegs)
+      .map((leg: Leg, index: number, filteredLegs: Leg[]) => {
+        const previousLegMode =
+          (index > 0 && filteredLegs[index - 1].mode) || undefined
+        return (
+          <RouteBlock
+            key={index}
+            last={filteredLegs.length === index + 1}
+            leg={leg}
+            LegIcon={LegIcon}
+            previousLegMode={previousLegMode}
+            RouteRenderer={RouteRenderer}
+          />
+        )
+      })
+
     // Use first leg's agency as a fallback
     return (
       <div
@@ -237,31 +281,14 @@ class MetroItinerary<Props> extends NarrativeItinerary {
             setItineraryView(ItineraryView.FULL)
           }}
         >
-          <ItineraryWrapper className="itin-wrapper">
+          <ItineraryWrapper className={`itin-wrapper${mini ? '-small' : ''}`}>
             {!mini && (
               <ItineraryGrid className="itin-grid">
                 <DepartureTimes>
                   <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
                   {departureTimes(itinerary)}
                 </DepartureTimes>
-                <Routes>
-                  {itinerary.legs
-                    .filter(removeInsignifigantWalkLegs)
-                    .map((leg: Leg, index: number, filteredLegs: Leg[]) => {
-                      const previousLegMode =
-                        (index > 0 && filteredLegs[index - 1].mode) || undefined
-                      return (
-                        <RouteBlock
-                          key={index}
-                          last={filteredLegs.length === index + 1}
-                          leg={leg}
-                          LegIcon={LegIcon}
-                          previousLegMode={previousLegMode}
-                          RouteRenderer={RouteRenderer}
-                        />
-                      )
-                    })}
-                </Routes>
+                <Routes>{routeBlocks}</Routes>
                 <PrimaryInfo>
                   <FormattedDuration duration={itinerary.duration} />
                 </PrimaryInfo>
@@ -328,12 +355,15 @@ class MetroItinerary<Props> extends NarrativeItinerary {
               </ItineraryGrid>
             )}
             {mini && (
-              <ItineraryGrid>
+              <ItineraryGridSmall>
                 <PrimaryInfo>
                   <FormattedDuration duration={itinerary.duration} />
                 </PrimaryInfo>
-                'small indicator test'
-              </ItineraryGrid>
+                <SecondaryInfo>
+                  {ItineraryDescription({ intl, itinerary })}
+                </SecondaryInfo>
+                {routeBlocks}
+              </ItineraryGridSmall>
             )}
           </ItineraryWrapper>
         </button>

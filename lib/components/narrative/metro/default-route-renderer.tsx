@@ -7,7 +7,6 @@ const Route = styled.section<{ color: string }>`
   padding: 2px 5px;
   border-top: 5px solid #${(props) => props.color};
   border-radius: 5px;
-  min-width: 25px;
   text-align: center;
 `
 
