@@ -14,6 +14,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../../actions/ui'
+import { ComponentContext } from '../../../util/contexts'
 import { FlexIndicator } from '../default/flex-indicator'
 import {
   getAccessibilityScoreForItinerary,
@@ -32,6 +33,8 @@ import {
   getFlexAttirbutes,
   removeInsignifigantWalkLegs
 } from './attribute-utils'
+import arrow from './arrow'
+import RouteBlock from './route-block'
 
 const { ItineraryView } = uiActions
 
@@ -89,7 +92,8 @@ const Routes = styled.section`
     display: flex;
   }
   span:not(:first-child)::before {
-    content: url("data:image/svg+xml, %3Csvg height='20px' version='1.1' viewBox='0 0 12 20' width='12px' xmlns='http://www.w3.org/2000/svg' %3E%3Cg fill='none' fillOpacity='0.4' fillRule='evenodd' id='Page-1' stroke='none' strokeWidth='1' %3E%3Cg fill='%23000000' id='Triangle' transform='translate(0.000000, -2.000000)' %3E%3Cpath d='M7.65090642,6.97587891 L14.344369,14.0630746 C15.1027924,14.8661111 15.0666263,16.1319245 14.2635898,16.890348 C13.8923297,17.2409825 13.4010075,17.4363217 12.8903427,17.4363217 L-0.496582467,17.4363217 C-1.60115197,17.4363217 -2.49658247,16.5408912 -2.49658247,15.4363217 C-2.49658247,14.9256568 -2.30124327,14.4343346 -1.95060877,14.0630746 L4.74285381,6.97587891 C5.50127722,6.17284236 6.76709062,6.13667626 7.57012718,6.89509968 C7.59781727,6.92125143 7.62475466,6.94818883 7.65090642,6.97587891 Z' transform='translate(6.196880, 11.436322) rotate(89.000000) translate(-6.196880, -11.436322) ' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E ");
+    content: url(${arrow});
+    opacity: 0.4;
     width: 12px;
     height: 20px;
     margin: 0 6px;
@@ -148,6 +152,8 @@ type Props = {
 }
 
 class MetroItinerary<Props> extends NarrativeItinerary {
+  static contextType?: React.Context<any> = ComponentContext
+
   _onMouseEnter = () => {
     const { active, index, setVisibleItinerary, visibleItinerary } = this.props
     // Set this itinerary as visible if not already visible.
@@ -204,6 +210,8 @@ class MetroItinerary<Props> extends NarrativeItinerary {
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
 
+    const { RouteRenderer } = this.context
+
     // Use first leg's agency as a fallback
     return (
       <div
@@ -234,9 +242,13 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                 <Routes>
                   {itinerary.legs
                     .filter(removeInsignifigantWalkLegs)
-                    .map((leg: Leg) => {
-                      return <span key={leg.startTime}>{leg.mode}</span>
-                    })}
+                    .map((leg: Leg, index: number) => (
+                      <RouteBlock
+                        key={index}
+                        leg={leg}
+                        RouteRenderer={RouteRenderer}
+                      />
+                    ))}
                 </Routes>
                 <PrimaryInfo>
                   <FormattedDuration duration={itinerary.duration} />
