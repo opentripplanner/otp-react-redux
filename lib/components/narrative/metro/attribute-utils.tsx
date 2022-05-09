@@ -11,7 +11,9 @@ export const departureTimes = (
 ): JSX.Element => {
   if (!itinerary.allStartTimes) {
     return (
-      <span className={containsRealtimeLeg(itinerary) ? 'realtime' : ''}>
+      <span
+        className={containsRealtimeLeg(itinerary) ? 'realtime first' : 'first'}
+      >
         <FormattedTime value={itinerary.startTime} />
       </span>
     )
