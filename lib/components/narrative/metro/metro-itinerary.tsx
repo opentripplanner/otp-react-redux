@@ -141,6 +141,11 @@ const ItineraryGrid = styled.div`
     overflow: hidden;
     white-space: nowrap;
   }
+
+  svg {
+    /* Fix for safari, where svg needs explict width to render */
+    width: 28px;
+  }
 `
 
 const ItineraryGridSmall = styled.div`
