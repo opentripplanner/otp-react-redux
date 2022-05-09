@@ -24,12 +24,12 @@
   cursor: auto;
 }
 
-.otp .option.metro-itin:last-of-type button div {
+.otp .option.metro-itin:last-of-type button .itin-wrapper {
   border: none;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-.otp .option.metro-itin:first-of-type button div {
+.otp .option.metro-itin:first-of-type button .itin-wrapper {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -37,11 +37,13 @@
   display: block;
   margin-bottom: -1ch;
 }
-.otp .option.metro-itin button div {
+.otp .option.metro-itin button .itin-wrapper {
+  background: #fffffffa;
+  overflow: hidden;
   transition: all 0.075s ease-out;
 }
-.otp .option.metro-itin button div:hover {
-  background: #fffffff0;
+.otp .option.metro-itin button .itin-wrapper:hover {
+  background: #ffffffff;
 }
 
 .otp .option.metro-itin span.realtime::before {

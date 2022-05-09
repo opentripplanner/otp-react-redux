@@ -1,3 +1,4 @@
+import { Leg } from '@opentripplanner/types'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -11,16 +12,11 @@ const Route = styled.section<{ color: string }>`
 `
 
 type RouteRendererProps = {
-  agencyId?: string
-  color?: string
-  routeShortName: string
+  leg: Leg
 }
 
-const DefaultRouteRenderer = ({
-  color,
-  routeShortName
-}: RouteRendererProps): JSX.Element => (
-  <Route color={color || '#33333333'}>{routeShortName}</Route>
+const DefaultRouteRenderer = ({ leg }: RouteRendererProps): JSX.Element => (
+  <Route color={leg.routeColor || '#33333333'}>{leg.routeShortName}</Route>
 )
 export default DefaultRouteRenderer
 export type { RouteRendererProps }

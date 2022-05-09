@@ -43,8 +43,8 @@ const ItineraryWrapper = styled.div`
   color: #333;
   padding: 0;
 
-  /* after the -1ch margin this is a 0.1ch margin */
-  border-bottom: 1.1ch solid #33333333;
+  /* after the -1ch margin this is a 0.7ch margin */
+  border-bottom: 0.3ch solid #33333333;
 `
 
 const DepartureTimes = styled.span`
@@ -237,9 +237,9 @@ class MetroItinerary<Props> extends NarrativeItinerary {
             setItineraryView(ItineraryView.FULL)
           }}
         >
-          <ItineraryWrapper>
+          <ItineraryWrapper className="itin-wrapper">
             {!mini && (
-              <ItineraryGrid>
+              <ItineraryGrid className="itin-grid">
                 <DepartureTimes>
                   <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
                   {departureTimes(itinerary)}
