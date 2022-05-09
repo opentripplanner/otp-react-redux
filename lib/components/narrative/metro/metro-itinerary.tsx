@@ -33,7 +33,6 @@ import {
   getFlexAttirbutes,
   removeInsignifigantWalkLegs
 } from './attribute-utils'
-import arrow from './arrow'
 import RouteBlock from './route-block'
 
 const { ItineraryView } = uiActions
@@ -87,16 +86,22 @@ const Spacer = styled.span``
 
 const Routes = styled.section`
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 
   span {
     display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  span:first-child {
+    margin-right: -5px;
   }
   span:not(:first-child)::before {
-    content: url(${arrow});
+    content: '•';
     opacity: 0.4;
-    width: 12px;
+    width: 5px;
     height: 20px;
-    margin: 0 6px;
   }
 `
 
@@ -113,7 +118,7 @@ const ItineraryGrid = styled.div`
   }
 
   ${Routes} {
-    grid-row: 2 / 8;
+    grid-row: 1 / 8;
     grid-column: 1 / 8;
   }
 
@@ -242,13 +247,20 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                 <Routes>
                   {itinerary.legs
                     .filter(removeInsignifigantWalkLegs)
-                    .map((leg: Leg, index: number) => (
-                      <RouteBlock
-                        key={index}
-                        leg={leg}
-                        RouteRenderer={RouteRenderer}
-                      />
-                    ))}
+                    .map((leg: Leg, index: number, filteredLegs: Leg[]) => {
+                      const previousLegMode =
+                        (index > 0 && filteredLegs[index - 1].mode) || undefined
+                      return (
+                        <RouteBlock
+                          key={index}
+                          last={filteredLegs.length === index + 1}
+                          leg={leg}
+                          LegIcon={LegIcon}
+                          previousLegMode={previousLegMode}
+                          RouteRenderer={RouteRenderer}
+                        />
+                      )
+                    })}
                 </Routes>
                 <PrimaryInfo>
                   <FormattedDuration duration={itinerary.duration} />

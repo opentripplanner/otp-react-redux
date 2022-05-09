@@ -81,5 +81,5 @@ export const getFlexAttirbutes = (
 }
 
 export const removeInsignifigantWalkLegs = (leg: Leg): boolean =>
-  // Return true only for non walk-legs or walking legs over 5 minutes
-  leg.mode !== 'WALK' || leg.duration > 300
+  // Return true only for non walk-legs or walking legs over 400 meters
+  leg.mode !== 'WALK' || leg.distance > 400
