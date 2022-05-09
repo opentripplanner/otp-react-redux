@@ -8,18 +8,16 @@ import DefaultRouteRenderer, {
 type Props = {
   LegIcon: ({ height, leg }: { height: number; leg: Leg }) => React.ReactElement
   RouteRenderer?: ({ leg }: RouteRendererProps) => React.ReactElement
-  last: boolean
   leg: Leg
   previousLegMode?: string
 }
 
 const RouteBlock = ({
-  last,
   leg,
   LegIcon,
   previousLegMode,
   RouteRenderer
-}: Props): React.ReactElement => {
+}: Props): React.ReactElement | null => {
   const RouteBlock = RouteRenderer || DefaultRouteRenderer
   return (
     <span>

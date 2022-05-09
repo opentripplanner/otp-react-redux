@@ -40,8 +40,9 @@ export function getMainItineraryModes({
     }
     if (isBicycle(mode)) accessModeId = 'bicycle'
     if (isMicromobility(mode)) accessModeId = 'micromobility'
-    if (rentedVehicle) accessModeId = 'micromobility_rent'
-    if (rentedBike) accessModeId = 'bicycle_rent'
+    if (rentedVehicle || (isMicromobility(mode) && rentedBike))
+      accessModeId = 'micromobility_rent'
+    if (isBicycle(mode) && rentedBike) accessModeId = 'bicycle_rent'
     if (mode === 'CAR') accessModeId = 'drive'
   })
 

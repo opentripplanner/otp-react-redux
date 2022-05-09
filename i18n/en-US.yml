@@ -173,7 +173,7 @@ components:
     clickDetails: Click to view details
     # Use ordered placeholders when multiple modes are involved
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
-    multiModeSummary: "{accessMode} to {transitMode}"
+    multiModeSummary: "{accessMode} + {transitMode}"
   DeleteUser:
     deleteMyAccount: Delete my account
   EnhancedStopMarker:
@@ -721,7 +721,7 @@ common:
     funicular: Funicular
     gondola: Gondola
     micromobility: E-Scooter
-    micromobility_rent: Rental E-Scooter
+    micromobility_rent: E-Scooter
     rail: Rail
     rent: Rental options
     subway: Subway

@@ -244,22 +244,25 @@ class MetroItinerary<Props> extends NarrativeItinerary {
 
     const { RouteRenderer } = this.context
 
-    const routeBlocks = itinerary.legs
-      .filter(removeInsignifigantWalkLegs)
-      .map((leg: Leg, index: number, filteredLegs: Leg[]) => {
-        const previousLegMode =
-          (index > 0 && filteredLegs[index - 1].mode) || undefined
-        return (
-          <RouteBlock
-            key={index}
-            last={filteredLegs.length === index + 1}
-            leg={leg}
-            LegIcon={LegIcon}
-            previousLegMode={previousLegMode}
-            RouteRenderer={RouteRenderer}
-          />
-        )
-      })
+    const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
+      const routeBlocks = legs
+        .filter(removeInsignifigantWalkLegs)
+        .map((leg: Leg, index: number, filteredLegs: Leg[]) => {
+          const previousLegMode =
+            (index > 0 && filteredLegs[index - 1].mode) || undefined
+          return (
+            <RouteBlock
+              key={index}
+              leg={leg}
+              LegIcon={LegIcon}
+              previousLegMode={previousLegMode}
+              RouteRenderer={RouteRenderer}
+            />
+          )
+        })
+      if (firstOnly) return routeBlocks[0]
+      return routeBlocks
+    }
 
     // Use first leg's agency as a fallback
     return (
@@ -288,7 +291,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                   <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
                   {departureTimes(itinerary)}
                 </DepartureTimes>
-                <Routes>{routeBlocks}</Routes>
+                <Routes>{renderRouteBlocks(itinerary.legs)}</Routes>
                 <PrimaryInfo>
                   <FormattedDuration duration={itinerary.duration} />
                 </PrimaryInfo>
@@ -362,7 +365,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                 <SecondaryInfo>
                   {ItineraryDescription({ intl, itinerary })}
                 </SecondaryInfo>
-                {routeBlocks}
+                {renderRouteBlocks(itinerary.legs, true)}
               </ItineraryGridSmall>
             )}
           </ItineraryWrapper>
