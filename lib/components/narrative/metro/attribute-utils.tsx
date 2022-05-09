@@ -1,5 +1,7 @@
 import { FormattedList, FormattedTime } from 'react-intl'
-import { Itinerary } from '@opentripplanner/types'
+import { Itinerary, Leg } from '@opentripplanner/types'
+// @ts-expect-error no typescript yet
+import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 
 import { containsRealtimeLeg } from '../../../util/viewer'
@@ -36,4 +38,44 @@ export const departureTimes = (
       ))}
     />
   )
+}
+
+export const getFirstTransitLegStop = (
+  itinerary: Itinerary
+): string | undefined =>
+  itinerary.legs?.find((leg: Leg) => leg?.from?.vertexType === 'TRANSIT')?.from
+    ?.name
+
+export const getFlexAttirbutes = (
+  itinerary: Itinerary
+): {
+  isCallAhead: boolean
+  isContinuousDropoff: boolean
+  isFlexItinerary: boolean
+  phone: string
+} => {
+  const isCallAhead = itinerary.legs?.some(
+    coreUtils.itinerary.isReservationRequired
+  )
+
+  let phone = itinerary.legs
+    .map((leg: Leg) => leg?.agencyName)
+    .filter((name: string | undefined) => !!name)[0]
+
+  if (isCallAhead) {
+    // Picking 0 ensures that if multiple flex legs with
+    // different phone numbers, the first leg is prioritized
+    phone = itinerary.legs
+      .map((leg: Leg) => leg.pickupBookingInfo?.contactInfo?.phoneNumber)
+      .filter((number: string | undefined) => !!number)[0]
+  }
+
+  return {
+    isCallAhead,
+    isContinuousDropoff: itinerary.legs?.some(
+      coreUtils.itinerary.isContinuousDropoff
+    ),
+    isFlexItinerary: itinerary.legs?.some(coreUtils.itinerary.isFlex),
+    phone: phone || ''
+  }
 }

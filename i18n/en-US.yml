@@ -222,6 +222,8 @@ components:
     invalidScreen: Invalid mobile screen
   MetroUI:
     leaveAt: Leave at
+    timeWalking: "{time} walking"
+    fromStop: "from {stop}"
   MobileOptions:
     header: Set Search Options
   ModeDropdown:
