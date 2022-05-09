@@ -79,3 +79,7 @@ export const getFlexAttirbutes = (
     phone: phone || ''
   }
 }
+
+export const removeInsignifigantWalkLegs = (leg: Leg): boolean =>
+  // Return true only for non walk-legs or walking legs over 5 minutes
+  leg.mode !== 'WALK' || leg.duration > 300

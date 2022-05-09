@@ -29,7 +29,8 @@ import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 import {
   departureTimes,
   getFirstTransitLegStop,
-  getFlexAttirbutes
+  getFlexAttirbutes,
+  removeInsignifigantWalkLegs
 } from './attribute-utils'
 
 const { ItineraryView } = uiActions
@@ -81,6 +82,20 @@ const SecondaryInfo = styled.span`
 
 const Spacer = styled.span``
 
+const Routes = styled.section`
+  display: flex;
+
+  span {
+    display: flex;
+  }
+  span:not(:first-child)::before {
+    content: url("data:image/svg+xml, %3Csvg height='20px' version='1.1' viewBox='0 0 12 20' width='12px' xmlns='http://www.w3.org/2000/svg' %3E%3Cg fill='none' fillOpacity='0.4' fillRule='evenodd' id='Page-1' stroke='none' strokeWidth='1' %3E%3Cg fill='%23000000' id='Triangle' transform='translate(0.000000, -2.000000)' %3E%3Cpath d='M7.65090642,6.97587891 L14.344369,14.0630746 C15.1027924,14.8661111 15.0666263,16.1319245 14.2635898,16.890348 C13.8923297,17.2409825 13.4010075,17.4363217 12.8903427,17.4363217 L-0.496582467,17.4363217 C-1.60115197,17.4363217 -2.49658247,16.5408912 -2.49658247,15.4363217 C-2.49658247,14.9256568 -2.30124327,14.4343346 -1.95060877,14.0630746 L4.74285381,6.97587891 C5.50127722,6.17284236 6.76709062,6.13667626 7.57012718,6.89509968 C7.59781727,6.92125143 7.62475466,6.94818883 7.65090642,6.97587891 Z' transform='translate(6.196880, 11.436322) rotate(89.000000) translate(-6.196880, -11.436322) ' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E ");
+    width: 12px;
+    height: 20px;
+    margin: 0 6px;
+  }
+`
+
 const ItineraryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -90,6 +105,11 @@ const ItineraryGrid = styled.div`
 
   ${DepartureTimes} {
     grid-row: 9 / 11;
+    grid-column: 1 / 8;
+  }
+
+  ${Routes} {
+    grid-row: 2 / 8;
     grid-column: 1 / 8;
   }
 
@@ -150,6 +170,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
     }
   }
 
+  // eslint-disable-next-line complexity
   render() {
     const {
       accessibilityScoreGradationMap,
@@ -204,76 +225,92 @@ class MetroItinerary<Props> extends NarrativeItinerary {
           }}
         >
           <ItineraryWrapper>
-            <ItineraryGrid>
-              <DepartureTimes>
-                <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
-                {departureTimes(itinerary)}
-              </DepartureTimes>
-              <PrimaryInfo>
-                <FormattedDuration duration={itinerary.duration} />
-              </PrimaryInfo>
-              <Spacer />
-              <SecondaryInfo>
-                {firstTransitStop && (
+            {!mini && (
+              <ItineraryGrid>
+                <DepartureTimes>
+                  <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
+                  {departureTimes(itinerary)}
+                </DepartureTimes>
+                <Routes>
+                  {itinerary.legs
+                    .filter(removeInsignifigantWalkLegs)
+                    .map((leg: Leg) => {
+                      return <span key={leg.startTime}>{leg.mode}</span>
+                    })}
+                </Routes>
+                <PrimaryInfo>
+                  <FormattedDuration duration={itinerary.duration} />
+                </PrimaryInfo>
+                <Spacer />
+                <SecondaryInfo>
+                  {firstTransitStop && (
+                    <FormattedMessage
+                      id="components.MetroUI.fromStop"
+                      values={{ stop: firstTransitStop }}
+                    />
+                  )}
+                </SecondaryInfo>
+                <SecondaryInfo>
                   <FormattedMessage
-                    id="components.MetroUI.fromStop"
-                    values={{ stop: firstTransitStop }}
+                    id="components.ItinerarySummary.fareCost"
+                    values={{
+                      maxTotalFare: (
+                        <FormattedNumber
+                          currency={fareCurrency}
+                          currencyDisplay="narrowSymbol"
+                          // This isn't a "real" style prop
+                          // eslint-disable-next-line react/style-prop-object
+                          style="currency"
+                          value={maxTotalFare / 100}
+                        />
+                      ),
+                      minTotalFare: (
+                        <FormattedNumber
+                          currency={fareCurrency}
+                          currencyDisplay="narrowSymbol"
+                          // This isn't a "real" style prop
+                          // eslint-disable-next-line react/style-prop-object
+                          style="currency"
+                          value={minTotalFare / 100}
+                        />
+                      ),
+                      useMaxFare: minTotalFare !== maxTotalFare
+                    }}
+                  />
+                </SecondaryInfo>
+                <SecondaryInfo>
+                  <FormattedMessage
+                    id="components.MetroUI.timeWalking"
+                    values={{
+                      time: <FormattedDuration duration={itinerary.walkTime} />
+                    }}
+                  />
+                </SecondaryInfo>
+                {itineraryHasAccessibilityScores(itinerary) && (
+                  <AccessibilityRating
+                    gradationMap={accessibilityScoreGradationMap}
+                    large
+                    score={getAccessibilityScoreForItinerary(itinerary)}
                   />
                 )}
-              </SecondaryInfo>
-              <SecondaryInfo>
-                <FormattedMessage
-                  id="components.ItinerarySummary.fareCost"
-                  values={{
-                    maxTotalFare: (
-                      <FormattedNumber
-                        currency={fareCurrency}
-                        currencyDisplay="narrowSymbol"
-                        // This isn't a "real" style prop
-                        // eslint-disable-next-line react/style-prop-object
-                        style="currency"
-                        value={maxTotalFare / 100}
-                      />
-                    ),
-                    minTotalFare: (
-                      <FormattedNumber
-                        currency={fareCurrency}
-                        currencyDisplay="narrowSymbol"
-                        // This isn't a "real" style prop
-                        // eslint-disable-next-line react/style-prop-object
-                        style="currency"
-                        value={minTotalFare / 100}
-                      />
-                    ),
-                    useMaxFare: minTotalFare !== maxTotalFare
-                  }}
-                />
-              </SecondaryInfo>
-              <SecondaryInfo>
-                <FormattedMessage
-                  id="components.MetroUI.timeWalking"
-                  values={{
-                    time: <FormattedDuration duration={itinerary.walkTime} />
-                  }}
-                />
-              </SecondaryInfo>
-              {mini && 'small indicator test'}
-              {!mini && itineraryHasAccessibilityScores(itinerary) && (
-                <AccessibilityRating
-                  gradationMap={accessibilityScoreGradationMap}
-                  large
-                  score={getAccessibilityScoreForItinerary(itinerary)}
-                />
-              )}
-              {!mini && isFlexItinerary && (
-                <FlexIndicator
-                  isCallAhead={isCallAhead}
-                  isContinuousDropoff={isContinuousDropoff}
-                  phoneNumber={phone}
-                  shrink={false}
-                />
-              )}
-            </ItineraryGrid>
+                {isFlexItinerary && (
+                  <FlexIndicator
+                    isCallAhead={isCallAhead}
+                    isContinuousDropoff={isContinuousDropoff}
+                    phoneNumber={phone}
+                    shrink={false}
+                  />
+                )}
+              </ItineraryGrid>
+            )}
+            {mini && (
+              <ItineraryGrid>
+                <PrimaryInfo>
+                  <FormattedDuration duration={itinerary.duration} />
+                </PrimaryInfo>
+                'small indicator test'
+              </ItineraryGrid>
+            )}
           </ItineraryWrapper>
         </button>
         {active && expanded && (
