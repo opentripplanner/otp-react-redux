@@ -39,7 +39,6 @@ const { ItineraryView } = uiActions
 
 // Styled components
 const ItineraryWrapper = styled.div`
-  background: #fffffffb;
   color: #333;
   padding: 0;
 

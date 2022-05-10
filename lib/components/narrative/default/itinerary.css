@@ -41,12 +41,14 @@
   display: block;
   margin-bottom: -1ch;
 }
-.otp .option.metro-itin button .itin-wrapper {
-  background: #fffffffa;
+.otp .option.metro-itin button .itin-wrapper,
+.otp .option.metro-itin button .itin-wrapper-small {
+  background: #fffffff0;
   overflow: hidden;
   transition: all 0.075s ease-out;
 }
-.otp .option.metro-itin button .itin-wrapper:hover {
+.otp .option.metro-itin button .itin-wrapper:hover,
+.otp .option.metro-itin button .itin-wrapper-small:hover {
   background: #ffffffff;
 }
 
