@@ -35,7 +35,7 @@
 }
 .otp .option.metro-itin .itin-wrapper-small {
   border-radius: 10px;
-  width: 140px;
+  border: none;
 }
 .otp .option.metro-itin {
   display: block;

@@ -1,4 +1,3 @@
-// @ts-expect-error no typescript yet
 import { AccessibilityRating } from '@opentripplanner/itinerary-body'
 import { connect } from 'react-redux'
 import {
@@ -59,14 +58,6 @@ const DepartureTimes = styled.span`
   .first {
     color: #090909ee;
   }
-`
-
-const Info = styled.div`
-  display: grid;
-  grid-template-rows: 2fr 1fr 1fr 1fr;
-
-  grid-row: 1 / 6;
-  grid-column: 9 / 11;
 `
 
 const PrimaryInfo = styled.span`
@@ -150,7 +141,7 @@ const ItineraryGrid = styled.div`
 
 const ItineraryGridSmall = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(10, 8px);
 
   padding: 10px 1em;
