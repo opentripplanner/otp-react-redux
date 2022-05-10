@@ -141,6 +141,7 @@ const ItineraryGrid = styled.div`
 const ItineraryGridSmall = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
+  gap: 0 2px;
   grid-template-rows: repeat(10, 8px);
 
   padding: 10px 1em;
