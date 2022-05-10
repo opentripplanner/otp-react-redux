@@ -133,7 +133,7 @@ const ItineraryGrid = styled.div`
   }
 
   svg {
-    /* Fix for safari, where svg needs explict width to render */
+    /* Fix for safari, where svg needs explicit width to render */
     width: 28px;
   }
 `
