@@ -42,8 +42,8 @@ const ItineraryWrapper = styled.div`
   color: #333;
   padding: 0;
 
-  /* after the -1ch margin this is a 0.7ch margin */
-  border-bottom: 0.3ch solid #33333333;
+  border-bottom: 0.1ch solid #33333333;
+  display: grid; /* We don't use grid here, but "block" and "inline" cause problems with Firefox */
 `
 
 const DepartureTimes = styled.span`

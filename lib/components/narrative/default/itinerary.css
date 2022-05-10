@@ -39,11 +39,10 @@
 }
 .otp .option.metro-itin {
   display: block;
-  margin-bottom: -1ch;
 }
 .otp .option.metro-itin button .itin-wrapper,
 .otp .option.metro-itin button .itin-wrapper-small {
-  background: #fffffff0;
+  background: #fffffffa;
   overflow: hidden;
   transition: all 0.075s ease-out;
 }
