@@ -10,6 +10,7 @@ import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
+import { getDefaultModes } from '../../util/itinerary'
 import { hasValidLocation } from '../../util/state'
 import Icon from '../util/icon'
 
@@ -33,7 +34,13 @@ import type { Mode } from './mode-buttons'
 
 /**
  * A function that generates a filter to be used to filter a list of combinations.
- * @param enabledModes A list of the modes enabled in the UI
+ *
+ * TS FIXME: use the ModeOption type that is currently defined
+ * in @opentripplanner/trip-form/types.ts (That type
+ * needs to be moved first to @opentripplanner/types first,
+ * with the defaultUnselected attribute added).
+ *
+ * @param enabledModesDirty A list of the modes enabled in the UI
  * @returns Filter function to filter combinations
  */
 export const combinationFilter =
@@ -84,12 +91,8 @@ const ModeButtonsCompressed = styled(ModeButtons)`
     border-radius: 0px 5px 5px 0px;
   }
 `
-
-/**
- * Main panel for the batch/trip comparison form.
- */
 // TYPESCRIPT TODO: better types
-class BatchSettings extends Component<{
+type Props = {
   config: any
   currentQuery: any
   intl: IntlShape
@@ -97,10 +100,23 @@ class BatchSettings extends Component<{
   possibleCombinations: Combination[]
   routingQuery: any
   setQueryParam: (queryParam: any) => void
-}> {
-  state = {
-    expanded: null,
-    selectedModes: this.props.modeOptions.map((m) => m.mode)
+}
+
+type State = {
+  expanded?: string | null
+  selectedModes: string[]
+}
+
+/**
+ * Main panel for the batch/trip comparison form.
+ */
+class BatchSettings extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props)
+    this.state = {
+      expanded: null,
+      selectedModes: getDefaultModes(props.modeOptions) || []
+    }
   }
 
   _onClickMode = (mode: string) => {
