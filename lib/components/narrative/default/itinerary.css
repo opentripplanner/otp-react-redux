@@ -59,6 +59,9 @@
   /* text-align: center; */
   margin: 0px 0px;
 }
+.otp .option.default-itin > .header > .summary {
+  display: flex;
+}
 
 .otp .option.default-itin > .header .title > .summary > .summary-block {
   display: inline-block;

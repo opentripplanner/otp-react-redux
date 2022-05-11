@@ -177,7 +177,6 @@ components:
   DeleteUser:
     deleteMyAccount: Delete my account
   EnhancedStopMarker:
-    planATrip: "Plan a trip:"
     stopID: "Stop ID:"
     stopViewer: Stop Viewer
   ErrorMessage:
@@ -436,7 +435,6 @@ components:
     header: Stop Viewer
     loadingText: Loading Stop...
     noStopsFound: No stop times found for date.
-    planTrip: "Plan a trip:"
     timezoneWarning: "Departure times are shown in <strong>{timezoneCode}</strong>."
     viewTypeBtnText: >
       {scheduleView, select,
@@ -640,6 +638,7 @@ components:
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
 common:
+  coordinates: "{lat}, {lon}"
   dateExpressions:
     today: Today
     tomorrow: Tomorrow
