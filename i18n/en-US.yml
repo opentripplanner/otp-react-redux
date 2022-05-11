@@ -219,6 +219,14 @@ components:
     setOrigin: Set Origin
   MainMobile:
     invalidScreen: Invalid mobile screen
+  MapLayers:
+    bike-rental: Bikeshare Locations
+    car-rental: Rental Car Locations
+    micromobility-rental: E-Scooter Locations
+    park-and-ride: Park & Ride Locations
+    satellite: Satellite
+    stops: Transit Stops
+    streets: Streets    
   MobileOptions:
     header: Set Search Options
   ModeDropdown:
