@@ -219,6 +219,8 @@ components:
     setOrigin: Set Origin
   MainMobile:
     invalidScreen: Invalid mobile screen
+  Mapillary:
+    altText: Imagery of the street
   MobileOptions:
     header: Set Search Options
   ModeDropdown:
