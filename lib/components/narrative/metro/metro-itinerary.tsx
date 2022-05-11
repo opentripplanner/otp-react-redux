@@ -13,7 +13,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../../actions/ui'
-import { ComponentContext } from '../../../util/contexts'
 import { FlexIndicator } from '../default/flex-indicator'
 import {
   getAccessibilityScoreForItinerary,
@@ -159,7 +158,7 @@ const ItineraryGridSmall = styled.div`
     grid-row: 8;
   }
 
-  svg {
+  span.route-block-wrapper {
     grid-row: 2 / 5;
   }
 `
@@ -179,8 +178,6 @@ type Props = {
 }
 
 class MetroItinerary<Props> extends NarrativeItinerary {
-  static contextType?: React.Context<any> = ComponentContext
-
   _onMouseEnter = () => {
     const { active, index, setVisibleItinerary, visibleItinerary } = this.props
     // Set this itinerary as visible if not already visible.
@@ -238,8 +235,6 @@ class MetroItinerary<Props> extends NarrativeItinerary {
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
 
-    const { RouteRenderer } = this.context
-
     const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
       const routeBlocks = legs
         .filter(removeInsignifigantWalkLegs)
@@ -248,11 +243,11 @@ class MetroItinerary<Props> extends NarrativeItinerary {
             (index > 0 && filteredLegs[index - 1].mode) || undefined
           return (
             <RouteBlock
+              hideLongName
               key={index}
               leg={leg}
               LegIcon={LegIcon}
               previousLegMode={previousLegMode}
-              RouteRenderer={RouteRenderer}
             />
           )
         })
@@ -373,6 +368,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
               accessibilityScoreGradationMap={accessibilityScoreGradationMap}
               itinerary={itinerary}
               LegIcon={LegIcon}
+              RouteDescriptionOverride={RouteBlock}
               setActiveLeg={setActiveLeg}
               timeOptions={timeOptions}
             />
