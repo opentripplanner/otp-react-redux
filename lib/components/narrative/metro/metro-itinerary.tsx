@@ -273,6 +273,12 @@ class MetroItinerary<Props> extends NarrativeItinerary {
             setActiveItinerary(itinerary)
             setActiveLeg(null, null)
             setItineraryView(ItineraryView.FULL)
+            // Reset the scroll. Refs would be the more
+            // appropriate way to do this, but they don't work
+            setTimeout(
+              () => document.querySelector('.metro-itin')?.scrollIntoView(),
+              10
+            )
           }}
         >
           <ItineraryWrapper className={`itin-wrapper${mini ? '-small' : ''}`}>
