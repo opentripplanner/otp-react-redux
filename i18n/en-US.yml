@@ -220,7 +220,7 @@ components:
   MainMobile:
     invalidScreen: Invalid mobile screen
   MapLayers:
-    bike-rental: "{conpanies} Shared Bikes"
+    bike-rental: "{companies} Shared Bikes"
     car-rental: Rental Car Locations
     micromobility-rental: "{companies} E-Scooters"
     park-and-ride: Park & Ride Locations
