@@ -223,6 +223,7 @@ components:
     leaveAt: Leave at
     timeWalking: "{time} walking"
     fromStop: "from {stop}"
+    or: or
   MobileOptions:
     header: Set Search Options
   ModeDropdown:

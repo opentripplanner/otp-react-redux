@@ -1,6 +1,6 @@
+import { FormattedMessage, useIntl } from 'react-intl'
 import { Leg } from '@opentripplanner/types'
 import { RouteLongName } from '@opentripplanner/itinerary-body/lib/defaults'
-import { useIntl } from 'react-intl'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 
@@ -14,12 +14,7 @@ type Props = {
   hideLongName?: boolean
   leg: Leg & {
     alternateRoutes?: {
-      [id: string]: {
-        agencyId?: string
-        mode?: string
-        routeColor?: string
-        routeShortName?: string
-      }
+      [id: string]: Leg
     }
   }
   previousLegMode?: string
@@ -78,6 +73,13 @@ const LegIconWrapper = styled.span`
   width: 28px;
 `
 
+const MultiRouteLongName = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 5px;
+`
+
 const RouteBlock = ({
   hideLongName,
   leg,
@@ -109,7 +111,22 @@ const RouteBlock = ({
           })}
         </MultiWrapper>
       )}
-      {!hideLongName && leg.routeLongName && <RouteLongName leg={leg} />}
+      {!hideLongName && leg.routeLongName && (
+        <MultiRouteLongName>
+          <RouteLongName leg={leg} />
+          {Object.entries(leg?.alternateRoutes || {})?.map((altRoute) => {
+            const route = altRoute[1]
+            return (
+              <React.Fragment key={altRoute[0]}>
+                <em style={{ marginRight: 10 }}>
+                  <FormattedMessage id="components.MetroUI.or" />
+                </em>
+                <RouteLongName leg={route} />
+              </React.Fragment>
+            )
+          })}
+        </MultiRouteLongName>
+      )}
     </Wrapper>
   )
 }
