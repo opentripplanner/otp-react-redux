@@ -208,9 +208,9 @@ components:
   MainMobile:
     invalidScreen: Écran non valable.
   MapLayers:
-    bike-rental: Vélos partagés
+    bike-rental: Vélos partagés {companies}
     car-rental: Voitures en location
-    micromobility-rental: Trottinettes électriques
+    micromobility-rental: Trottinettes {companies}
     park-and-ride: Parcs relais
     satellite: Satellite
     stops: Arrêts et stations
