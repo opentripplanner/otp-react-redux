@@ -273,7 +273,7 @@ itinerary:
   # One fare will always be shown by default
   #defaultFareKey: electronicRegular
 
-  # The following setings must be set to these values to use the new
+  # The following settings must be set to these values to use the new
   # "Metro" UI. The settings can be used without the Metro UI, but
   # this may have unexpected effects.
 
