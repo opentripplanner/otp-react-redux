@@ -84,10 +84,10 @@ const Routes = styled.section`
     align-items: center;
     gap: 5px;
   }
-  span:first-child {
+  .route-block-wrapper:first-child {
     margin-right: -5px;
   }
-  span:not(:first-child)::before {
+  .route-block-wrapper:not(:first-child)::before {
     content: '•';
     opacity: 0.4;
     width: 5px;
