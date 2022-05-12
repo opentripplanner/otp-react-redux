@@ -45,7 +45,7 @@ jobs:
       - name: Download OTP2 config file
         run: curl $PERCY_OTP2_CONFIG_URL --output /tmp/otp2config.yml
         env:
-          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_OTP2_CONFIG_URL }}
+          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_OTP2_CONFIG_URL_METRO }}
       - name: Take Percy Snapshots
         # Move everything from latest commit back to staged
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
