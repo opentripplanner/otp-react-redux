@@ -1,9 +1,11 @@
 import { Leg } from '@opentripplanner/types'
 import { RouteLongName } from '@opentripplanner/itinerary-body/lib/defaults'
+import { useIntl } from 'react-intl'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import { ComponentContext } from '../../../util/contexts'
+import { getFormattedMode } from '../../../util/i18n'
 
 import DefaultRouteRenderer from './default-route-renderer'
 
@@ -23,7 +25,9 @@ type Props = {
   previousLegMode?: string
 }
 
-const Wrapper = styled.span`
+const Wrapper = styled.span.attrs((props) => {
+  return { 'aria-label': props['aria-label'] }
+})`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -82,10 +86,15 @@ const RouteBlock = ({
 }: Props): React.ReactElement | null => {
   // @ts-expect-error React context is populated dynamically
   const { RouteRenderer } = useContext(ComponentContext)
+  const intl = useIntl()
   const Route = RouteRenderer || DefaultRouteRenderer
 
   return (
-    <Wrapper className="route-block-wrapper">
+    <Wrapper
+      // TODO: include route names in aria label
+      aria-label={getFormattedMode(leg.mode, intl)}
+      className="route-block-wrapper"
+    >
       {leg.mode !== previousLegMode && (
         <LegIconWrapper>
           <LegIcon height={28} leg={leg} />
