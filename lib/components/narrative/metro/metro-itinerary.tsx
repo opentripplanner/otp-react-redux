@@ -20,7 +20,9 @@ import {
 } from '../../../util/accessibility-routing'
 import { getFare } from '../../../util/state'
 import { ItineraryDescription } from '../default/itinerary-description'
-import FormattedDuration from '../../util/formatted-duration'
+import FormattedDuration, {
+  formatDuration
+} from '../../util/formatted-duration'
 import Icon from '../../util/icon'
 import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
@@ -30,6 +32,7 @@ import {
   departureTimes,
   getFirstTransitLegStop,
   getFlexAttirbutes,
+  getItineraryRoutes,
   removeInsignifigantWalkLegs
 } from './attribute-utils'
 import RouteBlock from './route-block'
@@ -37,7 +40,9 @@ import RouteBlock from './route-block'
 const { ItineraryView } = uiActions
 
 // Styled components
-const ItineraryWrapper = styled.div`
+const ItineraryWrapper = styled.div.attrs((props) => {
+  return { 'aria-label': props['aria-label'] }
+})`
   color: #333;
   padding: 0;
 
@@ -287,7 +292,18 @@ class MetroItinerary<Props> extends NarrativeItinerary {
             )
           }}
         >
-          <ItineraryWrapper className={`itin-wrapper${mini ? '-small' : ''}`}>
+          <ItineraryWrapper
+            aria-label={intl.formatMessage(
+              {
+                id: 'components.MetroUI.itineraryDescription'
+              },
+              {
+                routes: getItineraryRoutes(itinerary, intl),
+                time: formatDuration(itinerary.duration, intl)
+              }
+            )}
+            className={`itin-wrapper${mini ? '-small' : ''}`}
+          >
             {!mini && (
               <ItineraryGrid className="itin-grid">
                 <Routes>{renderRouteBlocks(itinerary.legs)}</Routes>

@@ -1,4 +1,4 @@
-import { FormattedList, FormattedTime } from 'react-intl'
+import { FormattedList, FormattedTime, IntlShape } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
 // @ts-expect-error no typescript yet
 import coreUtils from '@opentripplanner/core-utils'
@@ -83,3 +83,20 @@ export const getFlexAttirbutes = (
 export const removeInsignifigantWalkLegs = (leg: Leg): boolean =>
   // Return true only for non walk-legs or walking legs over 400 meters
   leg.mode !== 'WALK' || leg.distance > 400
+
+/**
+ * Generate text for all routes used in an itinerary.
+ * TODO: include all alternate routes inside alternateRoutes as well!
+ */
+export const getItineraryRoutes = (
+  itinerary: Itinerary,
+  intl: IntlShape
+): React.ReactNode => {
+  return intl.formatList(
+    itinerary.legs
+      .map((leg: Leg) => {
+        return leg.routeShortName
+      })
+      .filter((name) => !!name)
+  )
+}
