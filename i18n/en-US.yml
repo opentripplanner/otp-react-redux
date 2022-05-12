@@ -800,6 +800,7 @@ util:
 config:
   flex:
     flex-service: Flex Service
+    flex-service-colon: "Flex Service:"
     both: See bottom of itinerary for details
     call-ahead: Call to reserve
     continuous-dropoff: Communicate with operator about stop

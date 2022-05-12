@@ -26,11 +26,15 @@ type Props = {
 const Wrapper = styled.span`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   gap: 7.5px;
 `
 
 const MultiWrapper = styled.span<{ multi?: boolean }>`
+  flex-direction: row;
+  display: flex;
+  gap: 5px;
+
   ${({ multi }) =>
     multi
       ? `

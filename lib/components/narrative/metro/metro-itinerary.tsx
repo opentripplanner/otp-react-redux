@@ -98,12 +98,11 @@ const Routes = styled.section`
 const ItineraryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 8px);
+  grid-template-rows: minmax(8px, fit-content);
 
   padding: 10px 1em;
 
   ${DepartureTimes} {
-    grid-row: 9 / 11;
     grid-column: 1 / 8;
   }
 
@@ -129,6 +128,13 @@ const ItineraryGrid = styled.div`
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+
+    &.flex {
+      color: orangered;
+      white-space: normal;
+      text-overflow: inherit;
+      grid-row: span 4;
+    }
   }
 
   svg {
@@ -284,21 +290,27 @@ class MetroItinerary<Props> extends NarrativeItinerary {
           <ItineraryWrapper className={`itin-wrapper${mini ? '-small' : ''}`}>
             {!mini && (
               <ItineraryGrid className="itin-grid">
-                <DepartureTimes>
-                  <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
-                  {departureTimes(itinerary)}
-                </DepartureTimes>
                 <Routes>{renderRouteBlocks(itinerary.legs)}</Routes>
                 <PrimaryInfo>
                   <FormattedDuration duration={itinerary.duration} />
                 </PrimaryInfo>
                 <Spacer />
-                <SecondaryInfo>
-                  {firstTransitStop && (
-                    <FormattedMessage
-                      id="components.MetroUI.fromStop"
-                      values={{ stop: firstTransitStop }}
+                <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
+                  {isFlexItinerary ? (
+                    <FlexIndicator
+                      isCallAhead={isCallAhead}
+                      isContinuousDropoff={isContinuousDropoff}
+                      phoneNumber={phone}
+                      shrink={false}
+                      textOnly
                     />
+                  ) : (
+                    firstTransitStop && (
+                      <FormattedMessage
+                        id="components.MetroUI.fromStop"
+                        values={{ stop: firstTransitStop }}
+                      />
+                    )
                   )}
                 </SecondaryInfo>
                 <SecondaryInfo>
@@ -344,14 +356,10 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                     score={getAccessibilityScoreForItinerary(itinerary)}
                   />
                 )}
-                {isFlexItinerary && (
-                  <FlexIndicator
-                    isCallAhead={isCallAhead}
-                    isContinuousDropoff={isContinuousDropoff}
-                    phoneNumber={phone}
-                    shrink={false}
-                  />
-                )}
+                <DepartureTimes>
+                  <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
+                  {departureTimes(itinerary)}
+                </DepartureTimes>
               </ItineraryGrid>
             )}
             {mini && (
