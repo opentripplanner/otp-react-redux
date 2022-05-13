@@ -162,6 +162,7 @@ const ItineraryGridSmall = styled.div`
     grid-column: 2;
     grid-row: 2 / 5;
     line-height: 1;
+    font-size: 100%;
   }
 
   ${SecondaryInfo} {

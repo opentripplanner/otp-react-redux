@@ -4,7 +4,7 @@ import { Itinerary, Leg } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 
-import { firstLegIsRealtime } from '../../../util/viewer'
+import { firstTransitLegIsRealtime } from '../../../util/viewer'
 
 export const departureTimes = (
   itinerary: Itinerary & {
@@ -14,7 +14,9 @@ export const departureTimes = (
   if (!itinerary.allStartTimes) {
     return (
       <span
-        className={firstLegIsRealtime(itinerary) ? 'realtime first' : 'first'}
+        className={
+          firstTransitLegIsRealtime(itinerary) ? 'realtime first' : 'first'
+        }
       >
         <FormattedTime value={itinerary.startTime} />
       </span>
