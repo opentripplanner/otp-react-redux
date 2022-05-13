@@ -4,7 +4,7 @@ import { Itinerary, Leg } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 
-import { containsRealtimeLeg } from '../../../util/viewer'
+import { firstLegIsRealtime } from '../../../util/viewer'
 
 export const departureTimes = (
   itinerary: Itinerary & {
@@ -14,15 +14,13 @@ export const departureTimes = (
   if (!itinerary.allStartTimes) {
     return (
       <span
-        className={containsRealtimeLeg(itinerary) ? 'realtime first' : 'first'}
+        className={firstLegIsRealtime(itinerary) ? 'realtime first' : 'first'}
       >
         <FormattedTime value={itinerary.startTime} />
       </span>
     )
   }
-  const allStartTimes = Array.from(itinerary.allStartTimes).sort(
-    (a, b) => a.time - b.time
-  )
+  const allStartTimes = itinerary.allStartTimes.sort((a, b) => a.time - b.time)
   return (
     <FormattedList
       type="conjunction"
