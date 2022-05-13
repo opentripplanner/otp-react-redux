@@ -2426,21 +2426,12 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.1.0.tgz#aa5ecdd70f33cfbdd214c76da4ba799a8ab473a5"
   integrity sha512-U+rANHgl+Fz6srX2lZ6LNLkDKPaUvWb27pZeVs9f8qsA/hLlx8X3FY1T9BrYaXwxgSlwAha+YzcKUC/2SfQjJQ==
 
-"@opentripplanner/humanize-distance@^1.2.0", "@opentripplanner/icons@^1.1.0":
-  name "@opentripplanner/humanize-distance"
+"@opentripplanner/humanize-distance@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.2.0.tgz#71cf5d5d1b756adef15300edbba0995ccd4b35ee"
   integrity sha512-x0QRXMDhypFeazZ6r6vzrdU8vhiV56nZ/WX6zUbxpgp6T9Oclw0gwR2Zdw6DZiiFpSYVNeVNxVzZwsu6NRGjcA==
 
-"@opentripplanner/icons@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-1.2.1.tgz#aaaf4c7ac5c11a64cc3387be031fb1a71acb3806"
-  integrity sha512-LMPRxc8S34CklMJEciOw/fGFx7YEc4lwJJqyFKofisslObTK2Tx1Q7dCFFYCO2APqKDGuGxTUIkvYyv5wlFaxQ==
-  dependencies:
-    "@opentripplanner/core-utils" "^4.1.0"
-    prop-types "^15.7.2"
-
-"@opentripplanner/icons@^1.2.2":
+"@opentripplanner/icons@^1.2.1", "@opentripplanner/icons@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-1.2.2.tgz#18c93ce34afe2d83a2f0fc6ecea85aa587d14366"
   integrity sha512-SwHAGyayHAPSVKIVbY1mNXq+ZLA1If61onE0mATKh+sifKnKpjRWgHeEHDpeZu6Dz0mIXnY82tcNUvArjeSxig==
@@ -2545,17 +2536,18 @@
     "@opentripplanner/zoom-based-markers" "^1.2.1"
     flat "^5.0.2"
 
-"@opentripplanner/transit-vehicle-overlay@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-2.3.1.tgz#58f9c957c57787cbeb76dffc6add0938ebaaa914"
-  integrity sha512-TSZ3rdhsS4MS2gofNaiVEZfNRtC+JXITWadhRAXh2OV7C/XVrpUZ8v4RirT2dWGRHRQHcPyWM4Fqz1lt7NeTeQ==
+"@opentripplanner/transit-vehicle-overlay@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-2.4.0.tgz#338ebc92b2af5dcb7813e11d8ffbd33b780f9b7a"
+  integrity sha512-c7vnn1e2NiN+65HtlB5Wv4iO3wAnJzJoBpCBqgLEoulgM1ppdZaiETYf6CERLN+QLH2p0CV+Sw7V+pFOmEnTzA==
   dependencies:
-    "@opentripplanner/core-utils" "^4.1.0"
-    "@opentripplanner/icons" "^1.1.0"
-    "@opentripplanner/zoom-based-markers" "^1.2.0"
+    "@opentripplanner/core-utils" "^4.5.0"
+    "@opentripplanner/icons" "^1.2.1"
+    "@opentripplanner/zoom-based-markers" "^1.2.1"
     "@styled-icons/fa-solid" "^10.34.0"
     "@turf/helpers" "^6.5.0"
     "@turf/nearest-point-on-line" "^6.5.0"
+    flat "^5.0.2"
     leaflet-rotatedmarker "^0.2.0"
     lodash.clonedeep "^4.5.0"
     throttle-debounce "^2.1.0"
@@ -2622,7 +2614,7 @@
     lodash.memoize "^4.1.2"
     prop-types "^15.7.2"
 
-"@opentripplanner/zoom-based-markers@^1.2.0", "@opentripplanner/zoom-based-markers@^1.2.1":
+"@opentripplanner/zoom-based-markers@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/zoom-based-markers/-/zoom-based-markers-1.2.1.tgz#a6ce157ed0169b1098d1ddad3691a712fb6b243b"
   integrity sha512-2MatM0+PrymcOzRsaCwmHO1nBkJfsBraGUqVkl04oUdwXQx9qKuzba2zq5CEPLacnGOF3EViZcT0kSd/wLzUpA==
