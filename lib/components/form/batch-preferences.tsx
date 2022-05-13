@@ -2,9 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import {DropdownSelector} from '@opentripplanner/trip-form'
 import { connect } from 'react-redux'
+import { injectIntl } from 'react-intl'
 import React, { Component } from 'react'
 
 import { ComponentContext } from '../../util/contexts'
+import { getSupportedModes } from '../../util/i18n'
 import { setQueryParam } from '../../actions/form'
 
 import { combinationFilter } from './batch-settings'
@@ -55,7 +57,7 @@ class BatchPreferences extends Component<{
   }
 
   render() {
-    const { config, query } = this.props
+    const { config, intl, query } = this.props
     const { ModeIcon } = this.context
 
     return (
@@ -66,7 +68,7 @@ class BatchPreferences extends Component<{
             onQueryParamChange={this.onQueryParamChange}
             queryParams={query}
             supportedCompanies={config.companies}
-            supportedModes={config.modes}
+            supportedModes={getSupportedModes(config, intl)}
           />
           {/*
             FIXME: use these instead? They're currently cut off by the short
@@ -145,4 +147,7 @@ const mapDispatchToProps = {
   setQueryParam
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BatchPreferences)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(BatchPreferences))
