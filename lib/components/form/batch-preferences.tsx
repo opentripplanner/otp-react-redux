@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import {DropdownSelector} from '@opentripplanner/trip-form'
 import { connect } from 'react-redux'
-import { injectIntl } from 'react-intl'
+import { injectIntl, IntlShape } from 'react-intl'
 import React, { Component } from 'react'
 
 import { ComponentContext } from '../../util/contexts'
@@ -12,6 +12,14 @@ import { setQueryParam } from '../../actions/form'
 import { combinationFilter } from './batch-settings'
 import { defaultModeOptions, Mode } from './mode-buttons'
 import { StyledBatchPreferences } from './batch-styled'
+
+interface Props {
+  config: any
+  intl: IntlShape
+  modeOptions: Mode[]
+  query: any
+  setQueryParam: (newQueryParam: any) => void
+}
 
 // TODO: Central type source
 export type Combination = {
@@ -30,12 +38,7 @@ export const replaceTransitMode =
     return { ...combination, mode }
   }
 
-class BatchPreferences extends Component<{
-  config: any
-  modeOptions: Mode[]
-  query: any
-  setQueryParam: (newQueryParam: any) => void
-}> {
+class BatchPreferences extends Component<Props> {
   static contextType = ComponentContext
 
   /**
