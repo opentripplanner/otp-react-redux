@@ -838,6 +838,12 @@ config:
     car_park: Parc relais
     micromobility: Transports + Trottinnette pers.
     micromobility_rent: Transports + Trottinette partagée
+  bicycleModes:
+    bicycle: Vélo pers.
+    bicycle_rent: Vélo partagé
+  micromobilityModes:
+    micromobility: Trottinnette pers.
+    micromobility_rent: Trottinette partagée
   # Default values for Flex Indicator (set in configuration as well)
   flex:
     flex-service: Service Flex
