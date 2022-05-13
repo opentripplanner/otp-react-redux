@@ -178,6 +178,7 @@ test('OTP-RR', async () => {
   await page.click('button.link-button.pull-right')
   await page.waitForTimeout(3000) // Slow animation
   await percySnapshotWithWait(page, 'Schedule Viewer')
+  // TODO: is the schedule date wrong?
 
   // Open route viewer
   const [routeViewerButton] = await page.$x(
@@ -244,6 +245,10 @@ test('OTP-RR', async () => {
   )
   await viewAllOptionsButton.click()
   await page.waitForTimeout(1000)
+
+  // Need to explicitly select the first itinerary to reset map position
+  await page.goto(`${page.url()}&ui_activeItinerary=1`)
+  await page.waitForTimeout(2000)
 
   await percySnapshotWithWait(page, 'Batch Itinerary Showing Bikes')
 })
