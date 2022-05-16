@@ -19406,6 +19406,23 @@ transitive-js@^0.13.7:
     sphericalmercator "^1.0.5"
     svg.js "^2.6.5"
 
+transitive-js@^0.14.1:
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/transitive-js/-/transitive-js-0.14.1.tgz#0826ad3cc3b5cc950266ca8031e264974eae9124"
+  integrity sha512-jWtOEhSoiNZq1iwfjNSevampZNMYuOnpxwxib/UZ6mk68pRtwffZ4auN9bRqyuQ4R36msOSm61ZKdNXs2fgxkA==
+  dependencies:
+    augment "4.3.0"
+    component-each "0.2.6"
+    component-emitter "1.2.1"
+    d3 "^3.5.8"
+    debug "^2.5.1"
+    lodash.foreach "^4.5.0"
+    measure-text "^0.0.4"
+    priorityqueuejs "1.0.0"
+    rounded-rect "^0.0.1"
+    sphericalmercator "^1.0.5"
+    svg.js "^2.6.5"
+
 traverse@~0.6.6:
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/traverse/-/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
