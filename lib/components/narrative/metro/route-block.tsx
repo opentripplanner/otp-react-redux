@@ -51,6 +51,7 @@ const MultiWrapper = styled.span<{ multi?: boolean }>`
     padding-left: 11px;
     padding-right: 11px;
     margin-left: -10px;
+    border-radius: 0;
   }
   /* Last route block, with only left side triangulated */
   section:last-of-type {

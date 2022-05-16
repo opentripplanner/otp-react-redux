@@ -305,6 +305,12 @@ class MetroItinerary<Props> extends NarrativeItinerary {
             )}
             className={`itin-wrapper${mini ? '-small' : ''}`}
           >
+            {itineraryHasAccessibilityScores(itinerary) && (
+              <AccessibilityRating
+                gradationMap={accessibilityScoreGradationMap}
+                score={getAccessibilityScoreForItinerary(itinerary)}
+              />
+            )}
             {!mini && (
               <ItineraryGrid className="itin-grid">
                 <Routes>{renderRouteBlocks(itinerary.legs)}</Routes>
@@ -366,13 +372,6 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                     }}
                   />
                 </SecondaryInfo>
-                {itineraryHasAccessibilityScores(itinerary) && (
-                  <AccessibilityRating
-                    gradationMap={accessibilityScoreGradationMap}
-                    large
-                    score={getAccessibilityScoreForItinerary(itinerary)}
-                  />
-                )}
                 <DepartureTimes>
                   <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
                   {departureTimes(itinerary)}

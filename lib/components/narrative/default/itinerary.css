@@ -33,12 +33,26 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+.otp .option.metro-itin.expanded:first-of-type button .itin-wrapper {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
 .otp .option.metro-itin .itin-wrapper-small {
   border-radius: 10px;
   border: none;
 }
 .otp .option.metro-itin {
   display: block;
+}
+
+/* Sadly this hack is the only way to select the AccessibilityRating */
+.otp .option.metro-itin button .itin-wrapper div:not(.itinerary-grid) {
+  max-width: inherit;
+  border-radius: 0;
+  margin-top: 0;
+}
+.otp .option.metro-itin button .itin-wrapper div:not(.itinerary-grid) svg {
+  flex: inherit !important;
 }
 .otp .option.metro-itin button .itin-wrapper,
 .otp .option.metro-itin button .itin-wrapper-small {
