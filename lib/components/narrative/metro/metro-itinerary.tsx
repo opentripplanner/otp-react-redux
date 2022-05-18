@@ -89,14 +89,12 @@ const Routes = styled.section`
     align-items: center;
     gap: 5px;
   }
-  .route-block-wrapper:first-child {
-    margin-right: -5px;
-  }
   .route-block-wrapper:not(:first-child)::before {
     content: '•';
     opacity: 0.4;
     width: 5px;
     height: 20px;
+    margin-left: -7.5px;
   }
 `
 
