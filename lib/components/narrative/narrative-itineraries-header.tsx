@@ -40,6 +40,18 @@ export default function NarrativeItinerariesHeader({
   sort: { direction: string; type: string }
 }): JSX.Element {
   const intl = useIntl()
+  const itinerariesFound = intl.formatMessage(
+    {
+      id: 'components.NarrativeItinerariesHeader.itinerariesFound'
+    },
+    { itineraryNum: itineraries.length }
+  )
+  const numIssues = intl.formatMessage(
+    {
+      id: 'components.NarrativeItinerariesHeader.numIssues'
+    },
+    { issueNum: errors.length }
+  )
 
   return (
     <div
@@ -72,33 +84,33 @@ export default function NarrativeItinerariesHeader({
         <>
           <div
             style={{ flexGrow: 1 }}
-            title={intl.formatMessage(
-              { id: 'components.NarrativeItinerariesHeader.titleText' },
-              {
-                issueNum: errors.length,
-                itineraryNum: itineraries.length,
-                pending
-              }
-            )}
+            title={
+              pending
+                ? intl.formatMessage({
+                    id: 'components.NarrativeItinerariesHeader.searching'
+                  })
+                : intl.formatMessage(
+                    {
+                      id: 'components.NarrativeItinerariesHeader.itinerariesAndIssues'
+                    },
+                    {
+                      itinerariesFound,
+                      numIssues
+                    }
+                  )
+            }
           >
             <span style={{ marginRight: '10px' }}>
-              <FormattedMessage
-                id="components.NarrativeItinerariesHeader.resultText"
-                values={{
-                  itineraryNum: itineraries.length,
-                  pending
-                }}
-              />
+              {pending ? (
+                <FormattedMessage id="components.NarrativeItinerariesHeader.searching" />
+              ) : (
+                itinerariesFound
+              )}
             </span>
             {errors.length > 0 && (
               <IssueButton onClick={onToggleShowErrors}>
                 <Icon style={{ fontSize: 11, marginRight: 2 }} type="warning" />
-                <span>
-                  <FormattedMessage
-                    id="components.NarrativeItinerariesHeader.numIssues"
-                    values={{ issueNum: errors.length }}
-                  />
-                </span>
+                <span>{numIssues}</span>
               </IssueButton>
             )}
           </div>

@@ -224,40 +224,24 @@ components:
   ModeDropdown:
     exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
-    numIssues: >
-      {issueNum, number} {issueNum, plural,
-        one {issue}
-        other {issues}
-      }
-    # Note to translator: resultText is width-constrained
-    # (about half pane width)
-    resultText: >
-      {pending, select,
-        true {Finding your options...}
-        other {{itineraryNum, number} {itineraryNum, plural,
-            one {itinerary found}
-            other {itineraries found}
-        }}
-      }
+    itinerariesAndIssues: "{itinerariesFound} and {numIssues}"
+    itinerariesFound: "{itineraryNum, plural,
+        one {# itinerary found}
+        other {# itineraries found}
+      }"
+    numIssues: "{issueNum, plural,
+        one {# issue}
+        other {# issues}
+      }"
+    # Note to translator: text below is width-constrained
+    # (about half-pane width, or half-screen width in mobile views).
+    searching: Finding your options...
     selectArrivalTime: Arrival time
     selectBest: Best option
     selectCost: Cost
     selectDepartureTime: Departure time
     selectDuration: Duration
     selectWalkTime: Walk time
-    titleText: >
-      {pending, select,
-          true {Finding your options...}
-          other {
-            {itineraryNum, number} {itineraryNum, plural,
-              one {itinerary}
-              other {itineraries}} {issueNum, plural,
-              =0 {found}
-              one {(and # issue) found}
-              other {(and # issues) found}
-            }
-          }
-      }
     viewAll: View all options
   NavLoginButton:
     help: Help
