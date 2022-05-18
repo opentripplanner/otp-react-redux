@@ -423,11 +423,7 @@ components:
     destination: To
     route: Route
   StopTimeCell:
-    imminentArrival: >
-      {isDue, select,
-        true {Due}
-        other {{formattedDuration}}
-      }
+    imminentArrival: Due
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<strong>Stop ID</strong>: {stopId}"
@@ -436,11 +432,8 @@ components:
     loadingText: Loading Stop...
     noStopsFound: No stop times found for date.
     timezoneWarning: "Departure times are shown in <strong>{timezoneCode}</strong>."
-    viewTypeBtnText: >
-      {scheduleView, select,
-        true {View next arrivals}
-        other {View schedule}
-      }
+    viewNextArrivals: View next arrivals
+    viewSchedule: View schedule
     zoomToStop: Zoom to stop
 
   SubNav:

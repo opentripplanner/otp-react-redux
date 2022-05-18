@@ -407,11 +407,7 @@ components:
     destination: Direction
     route: Ligne
   StopTimeCell:
-    imminentArrival: >
-      {isDue, select,
-        true {Imminent}
-        other {{formattedDuration}}
-      }
+    imminentArrival: Imminent
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<strong>Arrêt n°</strong> {stopId}"
@@ -420,11 +416,8 @@ components:
     loadingText: Chargement de l'arrêt...
     noStopsFound: Aucun horaire pour la date choisie.
     timezoneWarning: "Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>."
-    viewTypeBtnText: >
-      {scheduleView, select,
-        true {Prochains passages}
-        other {Horaires}
-      }
+    viewNextArrivals: Prochains passages
+    viewSchedule: Horaires
     zoomToStop: Zoomer sur l'arrêt
 
   SubNav:
