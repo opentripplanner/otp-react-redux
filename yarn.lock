@@ -2445,10 +2445,10 @@
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
-"@opentripplanner/itinerary-body@v3.0.5-alpha.1":
-  version "3.0.5-alpha.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.0.5-alpha.1.tgz#f65fb3ec836b79513f69841f27a59974705b5711"
-  integrity sha512-XxWXoq0+b486cABXP90OHU6UXmC4+LQedAI1a8f1c7vCFYnQYHEjd51e9WCj/7CKgwl+PkV9cVzxWqm750iVgQ==
+"@opentripplanner/itinerary-body@^3.0.3":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.0.4.tgz#ca9f1f575d6ad1ffe355d805a7ac0b9f9f126d81"
+  integrity sha512-OKnjcmTZJ8wLbjyQf76GGBS1reojh5E3iLVagJPcd0+cjy5QciqVwOahnoT+j7IQtyA5PCtAyqkC//bJvu24/Q==
   dependencies:
     "@opentripplanner/core-utils" "^4.11.2"
     "@opentripplanner/humanize-distance" "^1.2.0"
