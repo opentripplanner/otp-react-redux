@@ -56,7 +56,7 @@
 }
 .otp .option.metro-itin button .itin-wrapper,
 .otp .option.metro-itin button .itin-wrapper-small {
-  background: #fffffffa;
+  background: #fffffff8;
   overflow: hidden;
   transition: all 0.075s ease-out;
 }
