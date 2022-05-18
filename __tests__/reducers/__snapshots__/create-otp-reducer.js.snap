@@ -9,6 +9,7 @@ Object {
       "mobile": "BOTH_LOCATIONS_CHANGED",
     },
     "debouncePlanTimeMs": 0,
+    "focusRoute": false,
     "homeTimezone": "America/Los_Angeles",
     "language": Object {},
     "onTimeThresholdSeconds": 60,

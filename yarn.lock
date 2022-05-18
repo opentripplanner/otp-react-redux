@@ -2498,10 +2498,10 @@
   dependencies:
     "@opentripplanner/itinerary-body" "^3.0.0"
 
-"@opentripplanner/route-viewer-overlay@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-1.3.0.tgz#9a50efea8c06719ff03b413e8451d7cc48f91915"
-  integrity sha512-FW0Evav6S9wf50iNrZ/gDej7VeCDUKYTQkpnAKQQFWrM1V/nIT1+oFuG9lNSpAOtlO5/HaPTGmerhnDUBwjdhA==
+"@opentripplanner/route-viewer-overlay@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-1.4.0.tgz#b239407f9975109bdd61faa9a144bcf21dcad5e9"
+  integrity sha512-M+JNVIupXuvlG9mX7fGJxB3sflharjEQMjY3qtCBSC/ogLs8wJxOz9ZxelLUheFXjlMsp9RMe8yaLrw6Y6y5LA==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/core-utils" "^4.5.0"
@@ -3863,6 +3863,11 @@
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
+
+"@yarnpkg/lockfile@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@yarnpkg/lockfile/-/lockfile-1.1.0.tgz#e77a97fbd345b76d83245edcd17d393b1b41fb31"
+  integrity sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
@@ -7158,7 +7163,7 @@ create-react-context@^0.2.2:
     fbjs "^0.8.0"
     gud "^1.0.0"
 
-cross-spawn@6.0.5, cross-spawn@^6.0.0:
+cross-spawn@6.0.5, cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
   integrity sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ==
@@ -9499,6 +9504,13 @@ find-versions@^4.0.0:
   dependencies:
     semver-regex "^3.1.2"
 
+find-yarn-workspace-root@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/find-yarn-workspace-root/-/find-yarn-workspace-root-2.0.0.tgz#f47fb8d239c900eb78179aa81b66673eac88f7bd"
+  integrity sha512-1IMnbjt4KzsQfnhnzNd8wUEgXZ44IzZaZmnLYx7D5FZlaHt2gW20Cri8Q+E/t5tIj4+epTBub+2Zxu/vNILzqQ==
+  dependencies:
+    micromatch "^4.0.2"
+
 findup-sync@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/findup-sync/-/findup-sync-4.0.0.tgz#956c9cdde804052b881b428512905c4a5f2cdef0"
@@ -9700,7 +9712,7 @@ fs-extra@^10.0.0:
     jsonfile "^6.0.1"
     universalify "^2.0.0"
 
-fs-extra@^7.0.0:
+fs-extra@^7.0.0, fs-extra@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
   integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
@@ -12635,6 +12647,13 @@ kind-of@^6.0.0, kind-of@^6.0.2, kind-of@^6.0.3:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
+klaw-sync@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/klaw-sync/-/klaw-sync-6.0.0.tgz#1fd2cfd56ebb6250181114f0a581167099c2b28c"
+  integrity sha512-nIeuVSzdCCs6TDPTqI8w1Yre34sSq7AkZ4B3sfOBbI2CgVSB4Du4aLQijFU2+lhAFCwt9+42Hel6lQNIv6AntQ==
+  dependencies:
+    graceful-fs "^4.1.11"
+
 kleur@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
@@ -13840,9 +13859,9 @@ nan@^2.12.1:
   integrity sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==
 
 nanoid@^3.1.23:
-  version "3.1.25"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.25.tgz#09ca32747c0e543f0e1814b7d3793477f9c8e152"
-  integrity sha512-rdwtIXaXCLFAQbnfqDRnI6jaRHp9fTcYBjtFKE8eezcZ7LuLjhUaQGNeMXf1HmRoCH32CLz6XwX0TtxEOS/A3Q==
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.1.tgz#6347a18cac88af88f58af0b3594b723d5e99bb35"
+  integrity sha512-n6Vs/3KGyxPQd6uO0eH4Bv0ojGSUvuLlIHtC3Y0kEO23YRge8H9x1GCzLn28YX0H66pMkxuaeESFq4tKISKwdw==
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -14472,7 +14491,7 @@ onetime@^5.1.0, onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
-open@^7.0.2:
+open@^7.0.2, open@^7.4.2:
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/open/-/open-7.4.2.tgz#b8147e26dcf3e426316c730089fd71edd29c2321"
   integrity sha512-MVHddDVweXZF3awtlAS+6pgKLlm/JgxZ90+/NBurBoQctVOOB/zDdVjcyPzQ+0laDGbsWgrRkflI65sQeOgT9Q==
@@ -14837,6 +14856,25 @@ pascalcase@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
   integrity sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ=
+
+patch-package@^6.4.7:
+  version "6.4.7"
+  resolved "https://registry.yarnpkg.com/patch-package/-/patch-package-6.4.7.tgz#2282d53c397909a0d9ef92dae3fdeb558382b148"
+  integrity sha512-S0vh/ZEafZ17hbhgqdnpunKDfzHQibQizx9g8yEf5dcVk3KOflOfdufRXQX8CSEkyOQwuM/bNz1GwKvFj54kaQ==
+  dependencies:
+    "@yarnpkg/lockfile" "^1.1.0"
+    chalk "^2.4.2"
+    cross-spawn "^6.0.5"
+    find-yarn-workspace-root "^2.0.0"
+    fs-extra "^7.0.1"
+    is-ci "^2.0.0"
+    klaw-sync "^6.0.0"
+    minimist "^1.2.0"
+    open "^7.4.2"
+    rimraf "^2.6.3"
+    semver "^5.6.0"
+    slash "^2.0.0"
+    tmp "^0.0.33"
 
 path-browserify@0.0.1:
   version "0.0.1"
@@ -18217,6 +18255,11 @@ slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
   integrity sha1-xB8vbDn8FtHNF61LXYlhFK5HDVU=
+
+slash@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/slash/-/slash-2.0.0.tgz#de552851a1759df3a8f206535442f5ec4ddeab44"
+  integrity sha512-ZYKh3Wh2z1PpEXWr0MpSBZ0V6mZHAQfYevttO11c51CaWjGTaadiKZ+wVt1PbMlDV5qhMFslpZCemhwOK7C89A==
 
 slash@^3.0.0:
   version "3.0.0"
