@@ -578,9 +578,9 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       </Styled(FontAwesome)>
                     </Icon>
                     <FormattedMessage
-                      id="components.StopViewer.viewNextArrivals"
+                      id="components.StopViewer.viewSchedule"
                     >
-                      components.StopViewer.viewNextArrivals
+                      components.StopViewer.viewSchedule
                     </FormattedMessage>
                   </button>
                 </div>
@@ -2755,9 +2755,9 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       </Styled(FontAwesome)>
                     </Icon>
                     <FormattedMessage
-                      id="components.StopViewer.viewNextArrivals"
+                      id="components.StopViewer.viewSchedule"
                     >
-                      components.StopViewer.viewNextArrivals
+                      components.StopViewer.viewSchedule
                     </FormattedMessage>
                   </button>
                 </div>
@@ -4455,9 +4455,9 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       </Styled(FontAwesome)>
                     </Icon>
                     <FormattedMessage
-                      id="components.StopViewer.viewNextArrivals"
+                      id="components.StopViewer.viewSchedule"
                     >
-                      components.StopViewer.viewNextArrivals
+                      components.StopViewer.viewSchedule
                     </FormattedMessage>
                   </button>
                 </div>
@@ -7356,9 +7356,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       </Styled(FontAwesome)>
                     </Icon>
                     <FormattedMessage
-                      id="components.StopViewer.viewNextArrivals"
+                      id="components.StopViewer.viewSchedule"
                     >
-                      components.StopViewer.viewNextArrivals
+                      components.StopViewer.viewSchedule
                     </FormattedMessage>
                   </button>
                 </div>
@@ -12838,9 +12838,9 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       </Styled(FontAwesome)>
                     </Icon>
                     <FormattedMessage
-                      id="components.StopViewer.viewNextArrivals"
+                      id="components.StopViewer.viewSchedule"
                     >
-                      components.StopViewer.viewNextArrivals
+                      components.StopViewer.viewSchedule
                     </FormattedMessage>
                   </button>
                 </div>
