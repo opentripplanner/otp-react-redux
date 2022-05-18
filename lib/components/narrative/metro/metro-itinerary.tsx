@@ -143,6 +143,10 @@ const ItineraryGrid = styled.div`
   svg {
     /* Fix for safari, where svg needs explicit width to render */
     width: 28px;
+    /* Fix for our svg icons, which tend to be slightly off-center */
+    &:not(.no-centering-fix) {
+      margin-left: -1px;
+    }
   }
 `
 
