@@ -15,7 +15,9 @@ type RouteRendererProps = {
 }
 
 const DefaultRouteRenderer = ({ leg }: RouteRendererProps): JSX.Element => (
-  <Block color={leg.routeColor || '333333'}>{leg.routeShortName}</Block>
+  <Block color={leg.routeColor || '333333'}>
+    {leg.routeShortName || leg.route || leg.routeLongName}
+  </Block>
 )
 export default DefaultRouteRenderer
 export type { RouteRendererProps }

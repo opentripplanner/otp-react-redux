@@ -95,7 +95,7 @@ const RouteBlock = ({
           <LegIcon height={28} leg={leg} />
         </LegIconWrapper>
       )}
-      {leg.routeShortName && (
+      {(leg.routeShortName || leg.route || leg.routeLongName) && (
         <MultiWrapper multi={!!leg.alternateRoutes}>
           <Route leg={leg} />
           {Object.entries(leg?.alternateRoutes || {})?.map((altRoute) => {
