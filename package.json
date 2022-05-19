@@ -41,7 +41,7 @@
     "@opentripplanner/geocoder": "^1.2.1",
     "@opentripplanner/humanize-distance": "^1.2.0",
     "@opentripplanner/icons": "^1.2.2",
-    "@opentripplanner/itinerary-body": "^3.0.4",
+    "@opentripplanner/itinerary-body": "^3.0.5-alpha.2",
     "@opentripplanner/location-field": "1.12.2",
     "@opentripplanner/location-icon": "^1.4.0",
     "@opentripplanner/park-and-ride-overlay": "^1.2.4",

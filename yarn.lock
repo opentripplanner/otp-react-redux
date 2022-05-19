@@ -2431,10 +2431,26 @@
     "@opentripplanner/core-utils" "^4.5.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^3.0.1", "@opentripplanner/itinerary-body@^3.0.4":
+"@opentripplanner/itinerary-body@^3.0.1":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.0.4.tgz#ca9f1f575d6ad1ffe355d805a7ac0b9f9f126d81"
   integrity sha512-OKnjcmTZJ8wLbjyQf76GGBS1reojh5E3iLVagJPcd0+cjy5QciqVwOahnoT+j7IQtyA5PCtAyqkC//bJvu24/Q==
+  dependencies:
+    "@opentripplanner/core-utils" "^4.11.2"
+    "@opentripplanner/humanize-distance" "^1.2.0"
+    "@opentripplanner/icons" "^1.2.2"
+    "@opentripplanner/location-icon" "^1.4.0"
+    "@styled-icons/fa-solid" "^10.34.0"
+    "@styled-icons/foundation" "^10.34.0"
+    flat "^5.0.2"
+    moment "^2.24.0"
+    react-resize-detector "^4.2.1"
+    velocity-react "^1.4.3"
+
+"@opentripplanner/itinerary-body@^3.0.5-alpha.2":
+  version "3.0.5-alpha.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.0.5-alpha.2.tgz#3017c3a3897232bd7d090fb845006f6ffb6c2029"
+  integrity sha512-oUmkRU/N2tfhvnkvooWiA1eyU115z6sSLa0mXoRvrWysN60GYKEy4oaMSvQiyc9C3lIuT3HeoQgetichR/yTkw==
   dependencies:
     "@opentripplanner/core-utils" "^4.11.2"
     "@opentripplanner/humanize-distance" "^1.2.0"
