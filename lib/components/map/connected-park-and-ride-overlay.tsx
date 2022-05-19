@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+// @ts-expect-error overlay not typescripted yet
 import ParkAndRideOverlay from '@opentripplanner/park-and-ride-overlay'
 import React, { Component } from 'react'
 
