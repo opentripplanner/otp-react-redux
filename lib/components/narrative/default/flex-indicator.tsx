@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore TODO: migrate to typescript
 import { barberPole } from '@opentripplanner/itinerary-body/lib/otp-react-redux/line-column-content'
 import { FormattedMessage } from 'react-intl'
 import React from 'react'

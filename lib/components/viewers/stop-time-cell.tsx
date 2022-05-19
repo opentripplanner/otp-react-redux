@@ -1,8 +1,5 @@
 import 'moment-timezone'
 import { FormattedMessage, FormattedTime } from 'react-intl'
-// TODO: typescript core-utils, add common types (pattern, stop, configs)
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import coreUtils from '@opentripplanner/core-utils'
 import moment from 'moment'
 import React from 'react'

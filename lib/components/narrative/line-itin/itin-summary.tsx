@@ -1,8 +1,5 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, FormattedNumber } from 'react-intl'
-// TYPESCRIPT TODO: wait for typescripted core-utils
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'

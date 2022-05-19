@@ -1,6 +1,5 @@
 import { FormattedMessage, IntlShape } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
-// @ts-expect-error Not typescripted yet
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 

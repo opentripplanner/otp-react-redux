@@ -1,6 +1,5 @@
 import { FormattedList, FormattedTime, IntlShape } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
-// @ts-expect-error no typescript yet
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 

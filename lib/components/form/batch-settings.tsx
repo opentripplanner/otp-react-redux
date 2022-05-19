@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
 import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
-// FIXME: type OTP-UI
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'
