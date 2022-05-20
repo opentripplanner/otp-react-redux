@@ -8,6 +8,7 @@ const Block = styled.section<{ color: string }>`
   border-top: 5px solid #${(props) => props.color};
   border-radius: 5px;
   text-align: center;
+  display: inline-block;
 `
 
 type RouteRendererProps = {

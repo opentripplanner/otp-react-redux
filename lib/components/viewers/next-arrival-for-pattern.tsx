@@ -1,11 +1,14 @@
 import { injectIntl, IntlShape } from 'react-intl'
 import { Route } from '@opentripplanner/types'
-import React from 'react'
+import React, { useContext } from 'react'
 
+import { ComponentContext } from '../../util/contexts'
 import {
   extractHeadsignFromPattern,
+  generateFakeLegForRouteRenderer,
   stopTimeComparator
 } from '../../util/viewer'
+import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import type { Pattern, StopTime } from '../util/types'
 
 import StopTimeCell from './stop-time-cell'
@@ -25,6 +28,10 @@ type Props = {
 function NextArrivalForPattern(props: Props) {
   const { homeTimezone, intl, pattern, route, stopTimes, stopViewerConfig } =
     props
+
+  // @ts-expect-error React context is populated dynamically
+  const { RouteRenderer: CustomRouteRenderer } = useContext(ComponentContext)
+  const RouteRenderer = CustomRouteRenderer || DefaultRouteRenderer
 
   // sort stop times by next departure
   let sortedStopTimes = []
@@ -60,7 +67,9 @@ function NextArrivalForPattern(props: Props) {
     <div className="next-arrival-row">
       {/* route name */}
       <div className="next-arrival-label overflow-ellipsis" title={title}>
-        <span className="route-name">{routeName}</span>
+        <span className="route-name">
+          <RouteRenderer leg={generateFakeLegForRouteRenderer(route)} />
+        </span>
         {toHeadsign}
       </div>
       {/* next departure preview */}

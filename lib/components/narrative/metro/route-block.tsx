@@ -67,9 +67,7 @@ const MultiWrapper = styled.span<{ multi?: boolean }>`
       : ''}
 `
 
-const LegIconWrapper = styled.span`
-  width: 28px;
-`
+const LegIconWrapper = styled.span``
 
 const MultiRouteLongName = styled.div`
   display: flex;

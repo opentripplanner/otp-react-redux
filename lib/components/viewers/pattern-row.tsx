@@ -4,8 +4,13 @@ import { VelocityTransitionGroup } from 'velocity-react'
 import React, { Component } from 'react'
 import type { Route } from '@opentripplanner/types'
 
+import { ComponentContext } from '../../util/contexts'
+import {
+  generateFakeLegForRouteRenderer,
+  stopTimeComparator
+} from '../../util/viewer'
 import { Pattern, StopTime } from '../util/types'
-import { stopTimeComparator } from '../../util/viewer'
+import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import Icon from '../util/icon'
 import Strong from '../util/strong-text'
 
@@ -32,11 +37,15 @@ class PatternRow extends Component<Props, State> {
     this.state = { expanded: false }
   }
 
+  static contextType = ComponentContext
+
   _toggleExpandedView = () => {
     this.setState({ expanded: !this.state.expanded })
   }
 
   render() {
+    const { RouteRenderer: CustomRouteRenderer } = this.context
+    const RouteRenderer = CustomRouteRenderer || DefaultRouteRenderer
     const { homeTimezone, intl, pattern, route, stopTimes, stopViewerConfig } =
       this.props
 
@@ -58,17 +67,21 @@ class PatternRow extends Component<Props, State> {
     }
 
     const routeName = route.shortName ? route.shortName : route.longName
+
     return (
       <div className="route-row" role="table">
         {/* header row */}
         <div className="header" role="row">
           {/* route name */}
           <div className="route-name">
+            <strong>
+              <RouteRenderer leg={generateFakeLegForRouteRenderer(route)} />
+            </strong>
             <FormattedMessage
               id="components.PatternRow.routeName"
               values={{
                 headsign: pattern.headsign,
-                routeName: routeName,
+                routeName: '',
                 strong: Strong
               }}
             />
