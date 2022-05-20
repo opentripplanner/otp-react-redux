@@ -78,23 +78,20 @@ const SecondaryInfo = styled.span`
 
 const Spacer = styled.span``
 
-const Routes = styled.section`
+const Routes = styled.section<{ enableDot?: boolean }>`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 
-  span {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .route-block-wrapper:not(:first-child)::before {
-    content: '•';
-    opacity: 0.4;
-    width: 5px;
-    height: 20px;
-    margin-left: -7.5px;
-  }
+  ${(props) =>
+    !props?.enableDot &&
+    `
+    .route-block-wrapper {
+      background: rgba(0,0,0,0.05);
+      border-radius: 10px;
+      padding: 6px;
+    }
+  `}
 `
 
 const ItineraryGrid = styled.div`
@@ -144,7 +141,7 @@ const ItineraryGrid = styled.div`
     width: 28px;
     /* Fix for our svg icons, which tend to be slightly off-center */
     &:not(.no-centering-fix) {
-      margin-left: -1px;
+      margin-left: 0px;
     }
   }
 `
@@ -220,6 +217,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       active,
       currency,
       defaultFareKey,
+      enableDot,
       expanded,
       intl,
       itinerary,
@@ -228,6 +226,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       setActiveItinerary,
       setActiveLeg,
       setItineraryView,
+      showLegDurations,
       showRealtimeAnnotation,
       timeFormat
     } = this.props
@@ -256,11 +255,17 @@ class MetroItinerary<Props> extends NarrativeItinerary {
             (index > 0 && filteredLegs[index - 1].mode) || undefined
           return (
             <RouteBlock
+              footer={
+                showLegDurations && (
+                  <FormattedDuration duration={leg.duration} />
+                )
+              }
               hideLongName
               key={index}
               leg={leg}
               LegIcon={LegIcon}
               previousLegMode={previousLegMode}
+              showDivider={enableDot}
             />
           )
         })
@@ -314,7 +319,9 @@ class MetroItinerary<Props> extends NarrativeItinerary {
             )}
             {!mini && (
               <ItineraryGrid className="itin-grid">
-                <Routes>{renderRouteBlocks(itinerary.legs)}</Routes>
+                <Routes enableDot={enableDot}>
+                  {renderRouteBlocks(itinerary.legs)}
+                </Routes>
                 <PrimaryInfo>
                   <FormattedDuration duration={itinerary.duration} />
                 </PrimaryInfo>
@@ -441,7 +448,10 @@ const mapStateToProps = (state: any, ownProps: Props) => {
     // of itineraries whether they include a fare or not, in which case
     // we show $0.00 or its equivalent in the configured currency and selected locale.
     currency: state.otp.config.localization?.currency || 'USD',
-    defaultFareKey: state.otp.config.itinerary?.defaultFareKey
+
+    defaultFareKey: state.otp.config.itinerary?.defaultFareKey,
+    enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
+    showLegDurations: state.otp.config.itinerary?.showLegDurations
   }
 }
 

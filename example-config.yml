@@ -290,6 +290,11 @@ itinerary:
   # Whether to show the first itinerary on the map. If this is set to false, routes
   # will only show on the map on hover or click
   showFirstResultByDefault: false
+  # This flag disables the dot between legs in the metro itnerary summary, replacing it with
+  # a gray background
+  disableMetroSeperatorDot: false
+  # Shows the duration of a leg below the leg in the metro itinerary summary
+  showLegDurations: false
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
