@@ -1,9 +1,10 @@
-// REMOVE THIS LINE BEFORE EDITING THIS FILE
-/* eslint-disable  */
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+// @ts-expect-error no types available
 import { VelocityTransitionGroup } from 'velocity-react'
 import React, { Component } from 'react'
+import type { Route } from '@opentripplanner/types'
 
+import { Pattern, StopTime } from '../util/types'
 import { stopTimeComparator } from '../../util/viewer'
 import Icon from '../util/icon'
 import Strong from '../util/strong-text'
@@ -11,13 +12,23 @@ import Strong from '../util/strong-text'
 import RealtimeStatusLabel from './realtime-status-label'
 import StopTimeCell from './stop-time-cell'
 
+type Props = {
+  homeTimezone?: any
+  intl: IntlShape
+  pattern: Pattern
+  route: Route
+  stopTimes: StopTime[]
+  stopViewerArriving: React.ReactNode
+  stopViewerConfig: { numberOfDepartures: number }
+}
+type State = { expanded: boolean }
 /**
  * Represents a single pattern row for displaying arrival times in the stop
  * viewer.
  */
-class PatternRow extends Component {
-  constructor() {
-    super()
+class PatternRow extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props)
     this.state = { expanded: false }
   }
 
@@ -26,15 +37,8 @@ class PatternRow extends Component {
   }
 
   render() {
-    const {
-      homeTimezone,
-      intl,
-      pattern,
-      route,
-      stopTimes,
-      stopViewerArriving,
-      stopViewerConfig
-    } = this.props
+    const { homeTimezone, intl, pattern, route, stopTimes, stopViewerConfig } =
+      this.props
 
     // sort stop times by next departure
     let sortedStopTimes = []
@@ -74,7 +78,6 @@ class PatternRow extends Component {
             <div className="next-trip-preview" role="columnheader">
               <StopTimeCell
                 homeTimezone={homeTimezone}
-                soonText={stopViewerArriving}
                 stopTime={sortedStopTimes[0]}
               />
             </div>
@@ -143,7 +146,6 @@ class PatternRow extends Component {
                         <div className="cell time-column" role="cell">
                           <StopTimeCell
                             homeTimezone={homeTimezone}
-                            soonText={stopViewerArriving}
                             stopTime={stopTime}
                           />
                         </div>

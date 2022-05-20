@@ -2588,10 +2588,10 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/types@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-1.2.3.tgz#85da8839f397c04aacc6a6fd14740c795f94816c"
-  integrity sha512-QiPVPMmLKvD20xwU7LrIpgdeQk6X5avk0VkmbbUSORuA6OMSxow7YG+vPGOhqWFAFivtsvbBeYDkWDh/2YOfMA==
+"@opentripplanner/types@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-2.0.0.tgz#81c937530c9f9ae7e66dfb0aab222d2508ea9f99"
+  integrity sha512-7O4OeYs8jfLQQ1B3kRokFzwzyvMonOXkhJD8pgxrLqgbMIBet21X5LCbgctRW1qK6FV4tCkgejHNvQizWfovyw==
 
 "@opentripplanner/vehicle-rental-overlay@^1.4.1":
   version "1.4.1"
