@@ -223,7 +223,7 @@ components:
     leaveAt: Leave at
     timeWalking: "{time} walking"
     fromStop: "from {stop}"
-    or: or
+    orAlternatives: or other routes in the same direction
     itineraryDescription: "{time} itinerary using {routes}"
   MobileOptions:
     header: Set Search Options

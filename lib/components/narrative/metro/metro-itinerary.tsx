@@ -250,6 +250,8 @@ class MetroItinerary<Props> extends NarrativeItinerary {
     const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
       const routeBlocks = legs
         .filter(removeInsignifigantWalkLegs)
+        // If firstOnly is set to true, sort to ensure non-walk leg is first
+        .sort((a, b) => (firstOnly ? b.distance - a.distance : 0))
         .map((leg: Leg, index: number, filteredLegs: Leg[]) => {
           const previousLegMode =
             (index > 0 && filteredLegs[index - 1].mode) || undefined

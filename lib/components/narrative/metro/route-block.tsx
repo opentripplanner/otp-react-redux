@@ -99,7 +99,6 @@ const Divider = styled.span`
   display: flex;
   align-items: center;
   opacity: 0.4;
-  height: 100%;
   margin: 0 -5px;
 `
 
@@ -136,17 +135,11 @@ const RouteBlock = ({
         {!hideLongName && leg.routeLongName && (
           <MultiRouteLongName>
             <RouteLongName leg={leg} />
-            {Object.entries(leg?.alternateRoutes || {})?.map((altRoute) => {
-              const route = altRoute[1]
-              return (
-                <React.Fragment key={altRoute[0]}>
-                  <em style={{ marginRight: 10 }}>
-                    <FormattedMessage id="components.MetroUI.or" />
-                  </em>
-                  <RouteLongName leg={route} />
-                </React.Fragment>
-              )
-            })}
+            {Object.entries(leg?.alternateRoutes || {})?.length > 0 && (
+              <em style={{ marginRight: 10 }}>
+                <FormattedMessage id="components.MetroUI.orAlternatives" />
+              </em>
+            )}
           </MultiRouteLongName>
         )}
         {footer && <footer>{footer}</footer>}

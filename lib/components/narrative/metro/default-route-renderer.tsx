@@ -9,6 +9,7 @@ const Block = styled.section<{ color: string }>`
   border-radius: 5px;
   text-align: center;
   display: inline-block;
+  max-width: 12vw;
 `
 
 type RouteRendererProps = {
