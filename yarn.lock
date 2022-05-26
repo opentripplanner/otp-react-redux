@@ -2365,6 +2365,24 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
+"@opentripplanner/core-utils@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-5.0.1.tgz#0b99a492611bc5b467a985c7de4a9f3643194e4e"
+  integrity sha512-J5+SOT2iYj4Cc7sVBbGZAJ0oV+nqrjKqxk9XYl/syOcnuTFCtllXlOnpIFhsv4xO0KhX3l4MuyIs37bLGlg8vw==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.2.2"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    date-fns "^2.23.0"
+    date-fns-tz "^1.1.4"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    moment "^2.24.0"
+    prop-types "^15.7.2"
+    qs "^6.9.1"
+
 "@opentripplanner/endpoints-overlay@^1.4.1":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-1.4.1.tgz#67c6ed98b0c08d70fc2aef22ccc97ef5b69f5cc9"
@@ -2447,12 +2465,12 @@
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
-"@opentripplanner/itinerary-body@^3.0.5-alpha.2":
-  version "3.0.5-alpha.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.0.5-alpha.2.tgz#3017c3a3897232bd7d090fb845006f6ffb6c2029"
-  integrity sha512-oUmkRU/N2tfhvnkvooWiA1eyU115z6sSLa0mXoRvrWysN60GYKEy4oaMSvQiyc9C3lIuT3HeoQgetichR/yTkw==
+"@opentripplanner/itinerary-body@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.0.5.tgz#f3239c4aaf8649b5a48b12cd08c293a10bcf277e"
+  integrity sha512-ixvXxIv4mFWt1IdwUrgOtGmbyBb5DzEXSkPSzeF4qq5jsVUsB58omtHNCmTxnm5V+JVXoMPiyoY9YE7SfNK6OQ==
   dependencies:
-    "@opentripplanner/core-utils" "^4.11.2"
+    "@opentripplanner/core-utils" "^5.0.0"
     "@opentripplanner/humanize-distance" "^1.2.0"
     "@opentripplanner/icons" "^1.2.2"
     "@opentripplanner/location-icon" "^1.4.0"
@@ -2593,13 +2611,13 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-2.0.0.tgz#81c937530c9f9ae7e66dfb0aab222d2508ea9f99"
   integrity sha512-7O4OeYs8jfLQQ1B3kRokFzwzyvMonOXkhJD8pgxrLqgbMIBet21X5LCbgctRW1qK6FV4tCkgejHNvQizWfovyw==
 
-"@opentripplanner/vehicle-rental-overlay@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/vehicle-rental-overlay/-/vehicle-rental-overlay-1.4.1.tgz#65e3fd485a00194aad1039026777329e1ec23f51"
-  integrity sha512-yyarj9IBdpxIg0zSsvIs8EkeHAZ4LjGnHuGuvOlqvDNSUlu5CuBUm5NAxlETWwc0Cze+W9AbSlw8Q94TT91n9A==
+"@opentripplanner/vehicle-rental-overlay@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/vehicle-rental-overlay/-/vehicle-rental-overlay-1.4.3.tgz#7e78faa50af10c21ecc39fdbd5502a9333543d4d"
+  integrity sha512-tqDNG/zmeDh4HTsgy32er6kbk2kObYLvu5W43W80J/PDQ4Rb38MIx/7qLzaPFKEXFgNZh+EELayykIkncN8wxA==
   dependencies:
     "@opentripplanner/core-utils" "^4.5.0"
-    "@opentripplanner/from-to-location-picker" "^2.1.0"
+    "@opentripplanner/from-to-location-picker" "^2.1.2"
     "@opentripplanner/zoom-based-markers" "^1.2.1"
     "@styled-icons/fa-solid" "^10.34.0"
     flat "^5.0.2"
