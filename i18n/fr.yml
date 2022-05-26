@@ -207,45 +207,37 @@ components:
     setOrigin: Choisissez le point de départ
   MainMobile:
     invalidScreen: Écran non valable.
+  MapLayers:
+    bike-rental: Vélos partagés {companies}
+    car-rental: Voitures en location
+    micromobility-rental: Trottinettes {companies}
+    park-and-ride: Parcs relais
+    satellite: Satellite
+    stops: Arrêts et stations
+    streets: Plan des rues    
   MobileOptions:
     header: Options de recherche
   ModeDropdown:
     exclusiveMode: "{mode} uniquement"
   NarrativeItinerariesHeader:
-    numIssues: >
-      {issueNum, number} {issueNum, plural,
-        one {problème}
-        other {problèmes}
-      }
-    # Note to translator: resultText is width-constrained
-    # (about half pane width)
-    resultText: >
-      {pending, select,
-        true {Recherche en cours...}
-        other {{itineraryNum, number} {itineraryNum, plural,
-            one {trajet trouvé}
-            other {trajets trouvés}
-        }}
-      }
+    itinerariesAndIssues: "{itinerariesFound} et {numIssues}"
+    itinerariesFound: "{itineraryNum, plural,
+        one {# trajet trouvé}
+        other {# trajets trouvés}
+      }"
+    numIssues: "{issueNum, plural,
+        one {# problème}
+        other {# problèmes}
+      }"
+    # Note to translator: text below is width-constrained
+    # (about half-pane width, or half-screen width in mobile views).
+    searching: Recherche...
     selectArrivalTime: Heure d'arrivée
     selectBest: Meilleure option
     selectCost: Prix
     selectDepartureTime: Heure de départ
     selectDuration: Durée
     selectWalkTime: Temps de marche
-    titleText: >
-      {pending, select,
-        true {Recherche en cours...}
-        other {
-          {itineraryNum, number} {itineraryNum, plural,
-            one {trajet}
-            other {trajets}} {issueNum, plural,
-            =0 {trouvé}
-            one {(et # problème) trouvé}
-            other {(et # problèmes) trouvés}
-          }
-        }
-      }
     viewAll: Toutes les options
   NavLoginButton:
     help: Aide
@@ -407,11 +399,7 @@ components:
     destination: Direction
     route: Ligne
   StopTimeCell:
-    imminentArrival: >
-      {isDue, select,
-        true {Imminent}
-        other {{formattedDuration}}
-      }
+    imminentArrival: Imminent
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<strong>Arrêt n°</strong> {stopId}"
@@ -420,11 +408,8 @@ components:
     loadingText: Chargement de l'arrêt...
     noStopsFound: Aucun horaire pour la date choisie.
     timezoneWarning: "Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>."
-    viewTypeBtnText: >
-      {scheduleView, select,
-        true {Prochains passages}
-        other {Horaires}
-      }
+    viewNextArrivals: Prochains passages
+    viewSchedule: Horaires
     zoomToStop: Zoomer sur l'arrêt
 
   SubNav:

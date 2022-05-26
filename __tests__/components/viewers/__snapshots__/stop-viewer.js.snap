@@ -578,14 +578,9 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       </Styled(FontAwesome)>
                     </Icon>
                     <FormattedMessage
-                      id="components.StopViewer.viewTypeBtnText"
-                      values={
-                        Object {
-                          "scheduleView": false,
-                        }
-                      }
+                      id="components.StopViewer.viewSchedule"
                     >
-                      components.StopViewer.viewTypeBtnText
+                      components.StopViewer.viewSchedule
                     </FormattedMessage>
                   </button>
                 </div>
@@ -1420,19 +1415,21 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       <div
                                         className="percy-hide"
                                       >
-                                        <FormattedMessage
-                                          id="components.StopTimeCell.imminentArrival"
-                                          values={
-                                            Object {
-                                              "formattedDuration": <FormattedDuration
-                                                duration={3124}
-                                              />,
-                                              "isDue": false,
-                                            }
-                                          }
+                                        <FormattedDuration
+                                          duration={3124}
                                         >
-                                          components.StopTimeCell.imminentArrival
-                                        </FormattedMessage>
+                                          <FormattedMessage
+                                            id="common.time.tripDurationFormat"
+                                            values={
+                                              Object {
+                                                "hours": 0,
+                                                "minutes": 52,
+                                              }
+                                            }
+                                          >
+                                            common.time.tripDurationFormat
+                                          </FormattedMessage>
+                                        </FormattedDuration>
                                       </div>
                                     </div>
                                   </div>
@@ -2783,14 +2780,9 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       </Styled(FontAwesome)>
                     </Icon>
                     <FormattedMessage
-                      id="components.StopViewer.viewTypeBtnText"
-                      values={
-                        Object {
-                          "scheduleView": false,
-                        }
-                      }
+                      id="components.StopViewer.viewSchedule"
                     >
-                      components.StopViewer.viewTypeBtnText
+                      components.StopViewer.viewSchedule
                     </FormattedMessage>
                   </button>
                 </div>
@@ -3346,19 +3338,21 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       <div
                                         className="percy-hide"
                                       >
-                                        <FormattedMessage
-                                          id="components.StopTimeCell.imminentArrival"
-                                          values={
-                                            Object {
-                                              "formattedDuration": <FormattedDuration
-                                                duration={3124}
-                                              />,
-                                              "isDue": false,
-                                            }
-                                          }
+                                        <FormattedDuration
+                                          duration={3124}
                                         >
-                                          components.StopTimeCell.imminentArrival
-                                        </FormattedMessage>
+                                          <FormattedMessage
+                                            id="common.time.tripDurationFormat"
+                                            values={
+                                              Object {
+                                                "hours": 0,
+                                                "minutes": 52,
+                                              }
+                                            }
+                                          >
+                                            common.time.tripDurationFormat
+                                          </FormattedMessage>
+                                        </FormattedDuration>
                                       </div>
                                     </div>
                                   </div>
@@ -4511,14 +4505,9 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       </Styled(FontAwesome)>
                     </Icon>
                     <FormattedMessage
-                      id="components.StopViewer.viewTypeBtnText"
-                      values={
-                        Object {
-                          "scheduleView": false,
-                        }
-                      }
+                      id="components.StopViewer.viewSchedule"
                     >
-                      components.StopViewer.viewTypeBtnText
+                      components.StopViewer.viewSchedule
                     </FormattedMessage>
                   </button>
                 </div>
@@ -7442,14 +7431,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       </Styled(FontAwesome)>
                     </Icon>
                     <FormattedMessage
-                      id="components.StopViewer.viewTypeBtnText"
-                      values={
-                        Object {
-                          "scheduleView": false,
-                        }
-                      }
+                      id="components.StopViewer.viewSchedule"
                     >
-                      components.StopViewer.viewTypeBtnText
+                      components.StopViewer.viewSchedule
                     </FormattedMessage>
                   </button>
                 </div>
@@ -13029,14 +13013,9 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       </Styled(FontAwesome)>
                     </Icon>
                     <FormattedMessage
-                      id="components.StopViewer.viewTypeBtnText"
-                      values={
-                        Object {
-                          "scheduleView": false,
-                        }
-                      }
+                      id="components.StopViewer.viewSchedule"
                     >
-                      components.StopViewer.viewTypeBtnText
+                      components.StopViewer.viewSchedule
                     </FormattedMessage>
                   </button>
                 </div>

@@ -81,6 +81,8 @@ const StopTimeCell = ({
   // Show the exact time if the departure happens within an hour.
   const showCountdown =
     secondsUntilDeparture < ONE_HOUR_IN_SECONDS && departsInFuture
+  // Whether to display "Due" or a countdown (used in conjunction with showCountdown).
+  const isDue = secondsUntilDeparture < 60
 
   // We only want to show the day of the week if the arrival is on a
   // different day and we're not showing the countdown string. This avoids
@@ -108,17 +110,11 @@ const StopTimeCell = ({
         <div className="percy-hide">
           {showCountdown ? (
             // Show countdown string (e.g., 3 min or Due)
-            <FormattedMessage
-              id="components.StopTimeCell.imminentArrival"
-              values={{
-                formattedDuration: (
-                  <FormattedDuration
-                    duration={Math.round(secondsUntilDeparture)}
-                  />
-                ),
-                isDue: secondsUntilDeparture < 60
-              }}
-            />
+            isDue ? (
+              <FormattedMessage id="components.StopTimeCell.imminentArrival" />
+            ) : (
+              <FormattedDuration duration={secondsUntilDeparture} />
+            )
           ) : (
             // Show formatted time (with timezone if user is not in home timezone)
             <FormattedTime
