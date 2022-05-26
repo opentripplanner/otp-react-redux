@@ -91,6 +91,13 @@ const Routes = styled.section<{ enableDot?: boolean }>`
       border-radius: 10px;
       padding: 6px;
     }
+    /* Slight margin adjustments for "bubble" */
+    .route-block-wrapper svg:first-of-type {
+      margin-left: 5px;
+    }
+    .route-block-wrapper section:first-of-type {
+      margin-left: -4px;
+    }
   `}
 `
 
