@@ -628,6 +628,8 @@ common:
   forms:
     back: Retour
     cancel: Annuler
+    clear: Effacer
+    close: Fermer
     error: erreur !
     defaultValue: "{value} (défaut)"
     delete: Supprimer
