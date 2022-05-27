@@ -132,7 +132,6 @@ components:
     mailables: Mailables
     menuItemIconAlt: "Icon for {label} menu item"
     openMenu: Open Menu
-    routeViewer: Route Viewer
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
   BatchResultsScreen:
@@ -217,8 +216,6 @@ components:
     enterLocation: Enter location
     setDestination: Set Destination
     setOrigin: Set Origin
-  MainMobile:
-    invalidScreen: Invalid mobile screen
   MapLayers:
     bike-rental: "{companies} Shared Bikes"
     car-rental: Rental Car Locations
@@ -363,17 +360,11 @@ components:
     agencyFilter: Agency Filter
     allAgencies: All Agencies
     allModes: All Modes # Note to translator: This text is width-constrained.
-    delaysShownInResults: >
-      Your trip results have been adjusted based on real-time
-      information. Under normal conditions, this trip would take <strong>{normalDuration}</strong>
-      using the following routes: {routes}.
     details: " " # If the string is left blank, React-Intl renders the id
     findARoute: Find A Route
     header: Route Viewer
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
-    noRouteUrl: No route URL provided.
-    serviceUpdate: Service update
     shortTitle: View Routes
     title: Route Viewer
   SavedTripEditor:
@@ -687,7 +678,6 @@ common:
   # "Aucun trajet en vélo, à pied, et en transports publics n'a été trouvé."
   # OTP access modes
   modes:
-    bicycle: Bicycle
     bike: Bike
     bicycle_rent: Bikeshare
     bus: Bus
@@ -708,7 +698,6 @@ common:
     tram: Streetcar
     transit: Transit
     walk: Walk
-    walking: Walking
 
   notifications:
     email: email

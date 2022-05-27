@@ -122,7 +122,6 @@ components:
     mailables: Prêt-à-poster
     menuItemIconAlt: "Icône pour le menu {label}"
     openMenu: "Ouvrir le menu"
-    routeViewer: Index des lignes
   BackToTripPlanner:
     backToTripPlanner: Retour au planificateur de trajets
   BatchResultsScreen:
@@ -205,8 +204,6 @@ components:
     enterLocation: Entrez le lieu
     setDestination: Choisissez la destination
     setOrigin: Choisissez le point de départ
-  MainMobile:
-    invalidScreen: Écran non valable.
   MapLayers:
     bike-rental: Vélos partagés {companies}
     car-rental: Voitures en location
@@ -348,16 +345,11 @@ components:
     agencyFilter: Filtrer les transporteurs
     allAgencies: Tous transporteurs
     allModes: Tous modes # Note to translator: This text is width-constrained.
-    delaysShownInResults: >
-      Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
-      En temps normal, ce trajet prendrait <strong>{normalDuration}</strong> en empruntant les lignes: {routes}.
     details: " " # If the string is left blank, React-Intl renders the id
     findARoute: Chercher une ligne
     header: Index des lignes
     modeFilter: Filtre pour les modes
     noFilteredRoutesFound: Aucune ligne ne correspond à vos critères
-    noRouteUrl: Aucun lien fourni pour cette ligne.
-    serviceUpdate: Information sur le service
     shortTitle: Index des lignes
     title: Index des lignes
   SavedTripEditor:
@@ -600,73 +592,6 @@ components:
   WelcomeScreen:
     prompt: Où désirez-vous aller ?
 
-otpUi:
-  DateTimeSelector:
-    arrive: Arrivée
-    depart: Départ
-    now: Tout de suite
-  queryParameters:
-    bikeSpeed: Vitesse à vélo
-    distanceInMiles: "{miles, number, :: unit/mile unit-width-full-name}"
-    maxBikeDistance: Distance max. à vélo
-    maxBikeTime: Durée max. à vélo
-    maxEScooterDistance: Distance max. en trottinette
-    maxWalkDistance: Distance max. à pied
-    maxWalkTime: Durée max. à pied
-    optimizeBikeFlat: avec moins de reliefs
-    optimizeBikeFriendly: plus pratiques à vélo
-    optimizeBikeSpeed: plus rapides
-    optimizeFor: Privilégier les trajets
-    optimizeQuick: plus rapides
-    optimizeTransfers: avec moins de correspondances
-    speedInMilesPerHour: "{mph} mi/h"
-    walkSpeed: Vitesse à pied
-    watts: Puissance de la trottinette électrique
-    watts125kidsHoverboard: Hoverboard pour enfants (10 km/h)
-    watts1500powerfulEscooter: Trottinette puissante (40 km/h)
-    watts250entryLevelEscooter: Trottinette de base (18 km/h)
-    watts500robustEscooter: Trottinette robuste (30 km/h)
-    # Note to translator: This text is width-constrained.
-    wheelchair: Trajets accessibles en fauteuil roulant
-  SettingsSelectorPanel:
-    bikeOnly: Vélo uniquement
-    escooterOnly: Trottinette uniquement
-    takeTransit: En transports
-    travelPreferences: Préférences de trajet
-    use: Utiliser # as in "Use bus, train, subway"
-    useCompanies: Prestataires # as in "Use companies: Spin, Lime, Bolt"
-    walkOnly: À pied uniquement
-  TripDetails:
-    calories: "Calories dépensées : <strong>{calories, number, ::.}</strong>"
-    caloriesDescription: >
-      La dépense calorique est calculée sur la base de
-      {walkMinutes, plural, one {<strong># minute</strong> effectuée} other {<strong># minutes</strong> effectuées}} à pied et
-      {bikeMinutes, plural, one {<strong># minute</strong> effectuée} other {<strong># minutes</strong> effectuées}} en vélo sur ce trajet.
-      (d'après <dietaryLink>Dietary Guidelines for Americans 2005, page 16, Table 4</dietaryLink>)
-    departure: Départ le <strong>{departureDate, date, long}</strong> à <strong>{departureDate, time, short}</strong>
-    flexDropOffMessage: >
-      {hasLeadTime, select,
-        true {Pour descendre à votre destination, vous devez faire une réservation préalable
-          {hasPhone, select,
-            true {au {phoneNumber}}
-            other {}
-          } au moins {leadDays, plural, one {# jour} other {# jours}} à l'avance.}
-        other {Vous devez informer le conducteur de votre destination.}
-      }.
-    flexPickupMessage: >
-      Pour ce trajet, vous devez faire une réservation préalable {hasPhone, select,
-        true {au {phoneNumber}}
-        other {}
-      }{hasLeadTime, select,
-        true { au moins {leadDays, plural, one {# jour} other {# jours}} à l'avance}
-        other {}
-      }.
-    title: Détails du trajet
-    tncFare: "Tarif {companies} : <strong>{minTNCFare} - {maxTNCFare}</strong>"
-    transitFare: Tarif en transports
-    transitFareEntry: "{name} : <strong>{value}</strong>"
-    tripIncludesFlex: Ce trajet comprend un service à la demande (Flex).
-    
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -730,7 +655,6 @@ common:
   # In French, the above sentence could read:
   # "Aucun trajet en vélo, à pied, et en transports publics n'a été trouvé."
   modes:
-    bicycle: En vélo
     bike: Vélo
     bicycle_rent: En vélo en libre-service
     bus: Bus
@@ -740,6 +664,7 @@ common:
     car_park: En voiture + parc relais
     drive: Voiture
     ferry: Ferry
+    flex: Service Flex
     funicular: Funiculaire
     gondola: Téléphérique
     micromobility: En trottinette électrique
@@ -750,7 +675,6 @@ common:
     tram: Tram
     transit: En transports
     walk: À pied
-    walking: Marche
 
   notifications:
     email: e-mail
