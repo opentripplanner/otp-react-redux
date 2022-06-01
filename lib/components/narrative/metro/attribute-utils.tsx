@@ -7,8 +7,9 @@ import { firstTransitLegIsRealtime } from '../../../util/viewer'
 
 export const departureTimes = (
   itinerary: Itinerary & {
-    allStartTimes: { realtime: boolean; time: number }[]
-  }
+    allStartTimes: { arrival: number; realtime: boolean; time: number }[]
+  },
+  intl: IntlShape
 ): JSX.Element => {
   if (!itinerary.allStartTimes) {
     return (
@@ -16,6 +17,10 @@ export const departureTimes = (
         className={
           firstTransitLegIsRealtime(itinerary) ? 'realtime first' : 'first'
         }
+        title={intl.formatMessage(
+          { id: 'components.MetroUI.arriveAtTime' },
+          { time: intl.formatTime(itinerary.endTime) }
+        )}
       >
         <FormattedTime value={itinerary.startTime} />
       </span>
@@ -24,13 +29,17 @@ export const departureTimes = (
   const allStartTimes = itinerary.allStartTimes.sort((a, b) => a.time - b.time)
   return (
     <FormattedList
-      type="conjunction"
+      type="disjunction"
       value={allStartTimes.map((time, index) => (
         <span
           className={`${time.realtime ? 'realtime' : ''} ${
             index === 0 ? 'first' : ''
           }`}
           key={index}
+          title={intl.formatMessage(
+            { id: 'components.MetroUI.arriveAtTime' },
+            { time: intl.formatTime(time.arrival) }
+          )}
         >
           <FormattedTime key={time.time} value={time.time} />
         </span>

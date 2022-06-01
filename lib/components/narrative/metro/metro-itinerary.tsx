@@ -391,7 +391,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                 </SecondaryInfo>
                 <DepartureTimes>
                   <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
-                  {departureTimes(itinerary)}
+                  {departureTimes(itinerary, intl)}
                 </DepartureTimes>
               </ItineraryGrid>
             )}

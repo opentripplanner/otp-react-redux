@@ -225,7 +225,9 @@ components:
     stops: Transit Stops
     streets: Streets    
   MetroUI:
-    leaveAt: Leave at
+    leaveAt: You leave
+    arriveAt: You arrive
+    arriveAtTime: "Arrive at {time}" 
     timeWalking: "{time} walking"
     fromStop: "from {stop}"
     orAlternatives: or other routes in the same direction
