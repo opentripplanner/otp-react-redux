@@ -143,6 +143,7 @@ const RouteBlock = ({
             )}
           </MultiRouteLongName>
         )}
+        {/** TODO: should this be a footer tag? */}
         {footer && <footer>{footer}</footer>}
       </Wrapper>
     </>
