@@ -354,32 +354,36 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                   )}
                 </SecondaryInfo>
                 <SecondaryInfo>
-                  <FormattedMessage
-                    id="components.ItinerarySummary.fareCost"
-                    values={{
-                      maxTotalFare: (
-                        <FormattedNumber
-                          currency={fareCurrency}
-                          currencyDisplay="narrowSymbol"
-                          // This isn't a "real" style prop
-                          // eslint-disable-next-line react/style-prop-object
-                          style="currency"
-                          value={maxTotalFare / 100}
-                        />
-                      ),
-                      minTotalFare: (
-                        <FormattedNumber
-                          currency={fareCurrency}
-                          currencyDisplay="narrowSymbol"
-                          // This isn't a "real" style prop
-                          // eslint-disable-next-line react/style-prop-object
-                          style="currency"
-                          value={minTotalFare / 100}
-                        />
-                      ),
-                      useMaxFare: minTotalFare !== maxTotalFare
-                    }}
-                  />
+                  {maxTotalFare === null || maxTotalFare < 0 ? (
+                    <FormattedMessage id="common.itineraryDescriptions.noTransitFareProvided" />
+                  ) : (
+                    <FormattedMessage
+                      id="components.ItinerarySummary.fareCost"
+                      values={{
+                        maxTotalFare: (
+                          <FormattedNumber
+                            currency={fareCurrency}
+                            currencyDisplay="narrowSymbol"
+                            // This isn't a "real" style prop
+                            // eslint-disable-next-line react/style-prop-object
+                            style="currency"
+                            value={maxTotalFare / 100}
+                          />
+                        ),
+                        minTotalFare: (
+                          <FormattedNumber
+                            currency={fareCurrency}
+                            currencyDisplay="narrowSymbol"
+                            // This isn't a "real" style prop
+                            // eslint-disable-next-line react/style-prop-object
+                            style="currency"
+                            value={minTotalFare / 100}
+                          />
+                        ),
+                        useMaxFare: minTotalFare !== maxTotalFare
+                      }}
+                    />
+                  )}
                 </SecondaryInfo>
                 <SecondaryInfo>
                   <FormattedMessage
