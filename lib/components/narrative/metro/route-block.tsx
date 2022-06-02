@@ -53,6 +53,7 @@ const MultiWrapper = styled.span<{ multi?: boolean }>`
     padding-right: 10px;
     padding-left: 5px;
     margin-right: 2px;
+    max-width: 100px;
   }
   section:first-of-type {
     border-top-right-radius: 0!important;
