@@ -60,6 +60,11 @@
   overflow: hidden;
   transition: all 0.075s ease-out;
 }
+.otp .option.metro-itin:not(.expanded) button .itin-wrapper,
+.otp .option.metro-itin:not(.expanded) button .itin-wrapper-small {
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
+}
 .otp .option.metro-itin button .itin-wrapper:hover,
 .otp .option.metro-itin button .itin-wrapper-small:hover {
   background: #ffffffff;
