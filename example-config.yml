@@ -2,12 +2,7 @@ api:
   host: http://localhost
   path: /otp/routers/default
   port: 8001
-
-# Support OTP-2 in parallel for certain requests
-# api_v2:
-#  host: http://localhost
-#  path: /otp/routers/default
-#  port: 8002
+# v2: false
 
 # Add suggested locations to be shown as options in the form view.
 # locations:
@@ -112,6 +107,7 @@ map:
   ###   styles.segment_labels: styles attributes recognized by transitive.js.
   ###                         For examples of applicable style attributes, see
   ###                         https://github.com/conveyal/transitive.js/blob/master/stories/Transitive.stories.js#L47.
+  ### - disableFlexArc: optional parameter to disable rendering flex itinerary legs as an arc.
   # transitive:
   #   labeledModes:
   #     - BUS
@@ -127,6 +123,7 @@ map:
   #       color: "#FFE0D0"
   #       font-family: Hind, sans-serif
   #       font-size: 18px
+  #   disableFlexArc: true
 
 # it is possible to leave out a geocoder config entirely. In that case only
 # GPS coordinates will be used when finding the origin/destination.
@@ -177,6 +174,16 @@ geocoder:
 
 # Use this mode config for the enhanced Transit+ config
 modes:
+  modeOptions:
+    - mode: TRANSIT
+    - mode: WALK
+    - mode: CAR
+    - mode: BICYCLE
+    - mode: RENT
+      icon: mobile
+      # This overrides the label generated from the i18n. Use when defining modes that are not supported by OTP i18n
+      # label: Rental 
+      
   transitModes:
     - mode: BUS
       label: Bus
@@ -253,6 +260,11 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # Whether to render route names and colors in the blocks inside
+  # the batch ui rows
+  renderRouteNamesInBlocks: true
+  # Whether the mode icons should be colored as well
+  fillModeIcons: true
   # If multiple fares are returned by OTP, assign names to the fare keys here
   #fareKeyNameMap:
   #  regular: "Transit Fare"
@@ -360,6 +372,11 @@ itinerary:
 ### The nested structure should be the same as the language files under the i18n folder.
 ### You can also customize OTP error messages for itinerary searches based on OTP HTTP codes.
 ### A separate message can be set for each language or locale if necessary.
+### Languages defined may be region-specific (e.g. en-US) or language-specific (e.g. es, kr)
+### The LocaleSelector component, which provides a dropdown for the user to change their locale, will
+### only be rendered if more than one valid language (all languages must have "name" defined) is included
+### in the language config.
+
 # language:
 #   allLanguages
 #     common:
@@ -372,6 +389,7 @@ itinerary:
 #     config:
 #       flex:
 #         flex-service: Flex Service
+#         both: See bottom of itinerary for details.
 #         call-ahead: "Call to reserve: (555) 555-5555"
 #         continuous-dropoff: Communicate with operator about stop
 #       acessibilityScore:
@@ -387,6 +405,29 @@ itinerary:
 #         modes: "CAR_HAIL, CAR_RENT"
 #       480:
 #         msg: No available transit routes or rideshare/carshare service at origin.
+#     name: English (US)
+#
+#   fr:
+#     config:
+#       # App (hamburger) menu items
+#       menuItems:
+#         car-pool: Covoiturage
+#         give-us-feedback: Donnez votre avis
+#         log-my-commute: Mes trajets verts
+#         traveler-tools: Outils du voyageur
+#     name: French
+
+#   ko:
+#     name: 한국인
+
+#   vi:
+#     name: Tiếng Việt
+
+#   zh:
+#     name: 中国人
+
+#   es:
+#     name: Español
 
 ### Localization section to provide language/locale settings
 #localization:
@@ -431,3 +472,12 @@ dateTime:
 #   # Whether to render routes within flex zones of a route's patterns. If set to true,
 #   # routes will not be rendered within flex zones.
 #   hideRouteShapesWithinFlexZones: true
+
+# API key to make Mapillary API calls. These are used to show street imagery.
+# Mapillary calls these "Client Tokens". They can be created at https://www.mapillary.com/dashboard/developers
+# mapillary:
+#   key: <Mapillary Key>
+
+### Setting to enable touch-friendly behavior
+### e.g. on touch-screen kiosks that run a desktop OS.
+# isTouchScreenOnDesktop: true

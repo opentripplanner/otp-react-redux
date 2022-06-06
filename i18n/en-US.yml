@@ -132,7 +132,6 @@ components:
     mailables: Mailables
     menuItemIconAlt: "Icon for {label} menu item"
     openMenu: Open Menu
-    routeViewer: Route Viewer
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
   BatchResultsScreen:
@@ -177,7 +176,6 @@ components:
   DeleteUser:
     deleteMyAccount: Delete my account
   EnhancedStopMarker:
-    planATrip: "Plan a trip:"
     stopID: "Stop ID:"
     stopViewer: Stop Viewer
   ErrorMessage:
@@ -218,47 +216,37 @@ components:
     enterLocation: Enter location
     setDestination: Set Destination
     setOrigin: Set Origin
-  MainMobile:
-    invalidScreen: Invalid mobile screen
+  MapLayers:
+    bike-rental: "{companies} Shared Bikes"
+    car-rental: Rental Car Locations
+    micromobility-rental: "{companies} E-Scooters"
+    park-and-ride: Park & Ride Locations
+    satellite: Satellite
+    stops: Transit Stops
+    streets: Streets    
   MobileOptions:
     header: Set Search Options
   ModeDropdown:
     exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
-    numIssues: >
-      {issueNum, number} {issueNum, plural,
-        one {issue}
-        other {issues}
-      }
-    # Note to translator: resultText is width-constrained
-    # (about half pane width)
-    resultText: >
-      {pending, select,
-        true {Finding your options...}
-        other {{itineraryNum, number} {itineraryNum, plural,
-            one {itinerary found}
-            other {itineraries found}
-        }}
-      }
+    itinerariesAndIssues: "{itinerariesFound} and {numIssues}"
+    itinerariesFound: "{itineraryNum, plural,
+        one {# itinerary found}
+        other {# itineraries found}
+      }"
+    numIssues: "{issueNum, plural,
+        one {# issue}
+        other {# issues}
+      }"
+    # Note to translator: text below is width-constrained
+    # (about half-pane width, or half-screen width in mobile views).
+    searching: Finding your options...
     selectArrivalTime: Arrival time
     selectBest: Best option
     selectCost: Cost
     selectDepartureTime: Departure time
     selectDuration: Duration
     selectWalkTime: Walk time
-    titleText: >
-      {pending, select,
-          true {Finding your options...}
-          other {
-            {itineraryNum, number} {itineraryNum, plural,
-              one {itinerary}
-              other {itineraries}} {issueNum, plural,
-              =0 {found}
-              one {(and # issue) found}
-              other {(and # issues) found}
-            }
-          }
-      }
     viewAll: View all options
   NavLoginButton:
     help: Help
@@ -372,17 +360,11 @@ components:
     agencyFilter: Agency Filter
     allAgencies: All Agencies
     allModes: All Modes # Note to translator: This text is width-constrained.
-    delaysShownInResults: >
-      Your trip results have been adjusted based on real-time
-      information. Under normal conditions, this trip would take <strong>{normalDuration}</strong>
-      using the following routes: {routes}.
     details: " " # If the string is left blank, React-Intl renders the id
     findARoute: Find A Route
     header: Route Viewer
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
-    noRouteUrl: No route URL provided.
-    serviceUpdate: Service update
     shortTitle: View Routes
     title: Route Viewer
   SavedTripEditor:
@@ -424,11 +406,7 @@ components:
     destination: To
     route: Route
   StopTimeCell:
-    imminentArrival: >
-      {isDue, select,
-        true {Due}
-        other {{formattedDuration}}
-      }
+    imminentArrival: Due
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<strong>Stop ID</strong>: {stopId}"
@@ -436,13 +414,9 @@ components:
     header: Stop Viewer
     loadingText: Loading Stop...
     noStopsFound: No stop times found for date.
-    planTrip: "Plan a trip:"
     timezoneWarning: "Departure times are shown in <strong>{timezoneCode}</strong>."
-    viewTypeBtnText: >
-      {scheduleView, select,
-        true {View next arrivals}
-        other {View schedule}
-      }
+    viewNextArrivals: View next arrivals
+    viewSchedule: View schedule
     zoomToStop: Zoom to stop
 
   SubNav:
@@ -637,85 +611,10 @@ components:
   WelcomeScreen:
     prompt: Where do you want to go?
 
-otpUi:
-  DateTimeSelector:
-    arrive: Arrive by
-    depart: Depart at
-    now: Leave now
-  queryParameters:
-    bikeSpeed: Bicycle Speed
-    # 1 mile = 100 "centimiles"
-    # There are exceptions in English for 1/10 mile , 1/4 mile, 1/2 mile etc.
-    distanceInMiles: >
-      {centimiles, select, 
-        10 {1/10 mile}
-        25 {1/4 mile}
-        50 {1/2 mile}
-        75 {3/4 mile}
-        other {{miles, number, :: unit/mile unit-width-full-name}}
-      }
-    maxBikeDistance: Maximum Bike
-    maxBikeTime: Max Bike Time
-    maxEScooterDistance: Maximum E-scooter Distance
-    maxWalkDistance: Maximum Walk
-    maxWalkTime: Max Walk Time
-    optimizeBikeFlat: Flat Trip
-    optimizeBikeFriendly: Bike-Friendly Trip
-    optimizeBikeSpeed: Speed
-    optimizeFor: Optimize for
-    optimizeQuick: Speed
-    optimizeTransfers: Fewest Transfers
-    speedInMilesPerHour: "{mph} MPH" # Original units were all caps.
-    walkSpeed: Walk Speed
-    watts: E-scooter Power
-    watts125kidsHoverboard: Kid's hoverboard (6 mph)
-    watts1500powerfulEscooter: Powerful E-scooter (24 mph)
-    watts250entryLevelEscooter: Entry-level scooter (11 mph)
-    watts500robustEscooter: Robust E-scooter (18 mph)
-    # Note to translator: This text is width-constrained.
-    wheelchair: Prefer Wheelchair Accessible Routes
-  SettingsSelectorPanel:
-    bikeOnly: Bike Only
-    escooterOnly: E-scooter Only
-    takeTransit: Take Transit
-    travelPreferences: Travel Preferences
-    use: Use # as in "Use bus, train, subway".
-    useCompanies: Use companies # as in :"Use companies: Spin, Lime, Bolt"
-    walkOnly: Walk Only
-  TripDetails:
-    calories: "Calories Burned: <strong>{calories, number, ::.}</strong>"
-    caloriesDescription: >
-      Calories burned is based on
-      <strong>{walkMinutes, plural, one {# minute} other {# minutes}}</strong> spent walking and
-      <strong>{bikeMinutes, plural, one {# minute} other {# minutes}}</strong> spent biking during this trip.
-      Adapted from <dietaryLink>Dietary Guidelines for Americans 2005, page 16, Table 4</dietaryLink>.
-    departure: Depart <strong>{departureDate, date, long}</strong> at <strong>{departureDate, time, short}</strong>
-    flexDropOffMessage: >
-      {hasLeadTime, select,
-        true {To get off at your destination, you must call
-          {hasPhone, select,
-            true {{phoneNumber}}
-            other {ahead}
-          } at least {leadDays, plural, one {# day} other {# days}} in advance}
-        other {You must tell the operator where you want to get off.}
-      }.
-    flexPickupMessage: >
-      To take this route, you must call {hasPhone, select,
-        true {{phoneNumber}}
-        other {ahead}
-      }{hasLeadTime, select,
-        true { at least {leadDays, plural, one {# day} other {# days}} in advance}
-        other {}
-      }.
-    title: Trip Details
-    tncFare: "{companies} Fare: <strong>{minTNCFare} - {maxTNCFare}</strong>"
-    transitFare: Transit Fare
-    transitFareEntry: "{name}: <strong>{value}</strong>"
-    tripIncludesFlex: This trip includes flexible routes.
-
 # Common messages that appear in multiple components and modules
 # are grouped below by topic.
 common:
+  coordinates: "{lat}, {lon}"
   dateExpressions:
     today: Today
     tomorrow: Tomorrow
@@ -751,6 +650,7 @@ common:
     back: Back
     cancel: Cancel
     clear: Clear
+    close: Close
     error: error!
     defaultValue: "{value} (default)"
     delete: Delete
@@ -766,6 +666,8 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
+    # Note to translator: noTransitFareProvided is width-constrained.
+    noTransitFareProvided: No fare info
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
     # This string will have a formatted number before it, including units.
     relativeCo2: >
@@ -782,16 +684,16 @@ common:
   # "Aucun trajet en vélo, à pied, et en transports publics n'a été trouvé."
   # OTP access modes
   modes:
-    bicycle: Bicycle
     bike: Bike
     bicycle_rent: Bikeshare
     bus: Bus
     # The original OTP mode id is CABLE_CAR. Lowercase makes it cable_car.
     cable_car: Cable Car
     car: Car
-    car_park: car park
+    car_park: Park and Ride
     drive: Drive
     ferry: Ferry
+    flex: Flex Routes
     funicular: Funicular
     gondola: Gondola
     micromobility: E-Scooter
@@ -802,7 +704,6 @@ common:
     tram: Streetcar
     transit: Transit
     walk: Walk
-    walking: Walking
 
   notifications:
     email: email
@@ -871,3 +772,24 @@ util:
     titleBarRouteId: "Route {routeId}"
     titleBarStopId: "Stop {stopId}"
     titleBarWithStatus: "{title} | {status}"
+
+config:
+  accessModes:
+    bicycle: Transit + Personal bike
+    bicycle_rent: Transit + Bikeshare
+    car_hail: Ride Hail
+    car_park: Park & Ride
+    micromobility: Transit + Personal scooter
+    micromobility_rent: Transit + E-scooter rental
+  bicycleModes:
+    bicycle: Own Bike
+    bicycle_rent: Bikeshare
+  micromobilityModes:
+    micromobility: Own E-scooter
+    micromobility_rent: Rented E-scooter
+  # Default values for Flex Indicator (set in configuration as well)
+  flex:
+    flex-service: Flex Service
+    both: See bottom of itinerary for details
+    call-ahead: Call to reserve
+    continuous-dropoff: Communicate with operator about stop

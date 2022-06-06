@@ -39,14 +39,12 @@ const mapStateToProps = (state: {
 }) => {
   const { locations } = state.otp.overlay?.parkAndRide
 
-  // object type indicates error
-  if (typeof locations === 'object') {
-    return {}
-  }
-
-  return {
-    parkAndRideLocations: locations
-  }
+  // If locations is not an array, it is an error, in which case don't render anything.
+  return Array.isArray(locations)
+    ? {
+        parkAndRideLocations: locations
+      }
+    : {}
 }
 
 const mapDispatchToProps = {

@@ -6,15 +6,16 @@ import {
   ToggleButton,
   ToggleButtonGroup
 } from 'react-bootstrap'
-import { injectIntl } from 'react-intl'
+import { injectIntl, IntlShape } from 'react-intl'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import type { InjectedIntlProps } from 'react-intl'
+import type { WrappedComponentProps } from 'react-intl'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import type { Location } from '@opentripplanner/types'
 
 import { capitalizeFirst, getErrorStates } from '../../../util/ui'
 import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'
@@ -56,25 +57,18 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)`
  */
 class PlaceEditor extends Component<
   {
-    // FIXME: shared type for errors
-    errors: Record<string, boolean>[]
+    // FIXME: shared type for errors, places
+    errors: any
     handleBlur: () => void
     handleChange: () => void
     setValues: (values: unknown) => void
-    // Needed for prop spread
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    values: Object
-  } & InjectedIntlProps
+    values: any
+  } & WrappedComponentProps
 > {
-  _handleLocationChange = ({
-    location
-  }: {
-    location: {
-      lat: number
-      lon: number
-      name: string
-    }
-  }) => {
+  _handleLocationChange = (
+    _: IntlShape, // Ignore intl object.
+    { location }: { location: Location }
+  ) => {
     const { setValues, values } = this.props
     const { lat, lon, name } = location
     setValues({

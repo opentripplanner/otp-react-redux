@@ -1,5 +1,5 @@
-// Craco will require this. FIXME: remove line once migrated to craco
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore TODO: migrate to typescript
 import { barberPole } from '@opentripplanner/itinerary-body/lib/otp-react-redux/line-column-content'
 import { FormattedMessage } from 'react-intl'
 import React from 'react'
@@ -29,6 +29,7 @@ const FlexNotice = ({
 )
 
 const FlexIndicatorWrapper = styled.div<{ shrink: boolean }>`
+  align-items: center;
   background: ${FLEX_COLOR_LIGHT};
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
@@ -37,18 +38,18 @@ const FlexIndicatorWrapper = styled.div<{ shrink: boolean }>`
   grid-template-columns: 1fr 2fr 3fr 2fr;
   grid-template-rows: 1fr 2fr;
   grid-column-gap: ${(props) => (props.shrink ? '8px' : 'inherit')};
-  height: ${(props) => (props.shrink ? '40px' : '90px')};
+  height: ${(props) => (props.shrink ? '40px' : '70px')};
   margin-right: 1em;
-  max-width: ${(props) => (props.shrink ? '60px' : '160px')};
+  max-width: ${(props) => (props.shrink ? '60px' : '180px')};
   padding-right: 0.25em;
-  padding-top: 0.25em;
 
   /* "Flex Service" text */
   h4 {
-    grid-column: 3 / span 2;
+    grid-column: 2 / span 3;
     grid-row: 1;
     margin: 0;
-    padding-top: 2px;
+    margin-left: 1ch;
+    padding-top: 0.25em;
     text-align: left;
   }
 
@@ -77,7 +78,6 @@ const FlexIndicatorWrapper = styled.div<{ shrink: boolean }>`
     display: block;
     grid-row: 1 / span 2;
     height: inherit;
-    margin-top: -0.25em;
     position: relative;
     width: 20px;
   }
@@ -100,7 +100,16 @@ export const FlexIndicator = ({
         <FormattedMessage id="config.flex.flex-service" />
       </h4>
     )}
-    {isCallAhead && (
+    {isCallAhead && isContinuousDropoff && (
+      <FlexNotice
+        faKey="share"
+        showText={!shrink}
+        text={
+          <FormattedMessage id="config.flex.both" values={{ phoneNumber }} />
+        }
+      />
+    )}
+    {isCallAhead && !isContinuousDropoff && (
       <FlexNotice
         faKey="phone"
         showText={!shrink}
