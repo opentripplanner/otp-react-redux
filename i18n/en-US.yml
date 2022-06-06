@@ -687,7 +687,7 @@ common:
     car_park: Park and Ride
     drive: Drive
     ferry: Ferry
-    flex: Flexible Routes
+    flex: Flex Routes
     funicular: Funicular
     gondola: Gondola
     micromobility: E-Scooter
@@ -767,8 +767,21 @@ util:
     titleBarStopId: "Stop {stopId}"
     titleBarWithStatus: "{title} | {status}"
 
-# Default values for Flex Indicator (set in configuration as well)
 config:
+  accessModes:
+    bicycle: Transit + Personal bike
+    bicycle_rent: Transit + Bikeshare
+    car_hail: Ride Hail
+    car_park: Park & Ride
+    micromobility: Transit + Personal scooter
+    micromobility_rent: Transit + E-scooter rental
+  bicycleModes:
+    bicycle: Own Bike
+    bicycle_rent: Bikeshare
+  micromobilityModes:
+    micromobility: Own E-scooter
+    micromobility_rent: Rented E-scooter
+  # Default values for Flex Indicator (set in configuration as well)
   flex:
     flex-service: Flex Service
     both: See bottom of itinerary for details

@@ -661,7 +661,7 @@ common:
     # The original OTP mode id is CABLE_CAR. Lowercase makes it cable_car.
     cable_car: Tram tiré par câble
     car: Voiture
-    car_park: En voiture + parc relais
+    car_park: Parc relais
     drive: Voiture
     ferry: Ferry
     flex: Service Flex
@@ -739,8 +739,21 @@ util:
     titleBarStopId: "Arrêt {stopId}"
     titleBarWithStatus: "{title} | {status}"
 
-# Default values for Flex Indicator (set in configuration as well)
 config:
+  accessModes:
+    bicycle: Transports + Vélo personnel
+    bicycle_rent: Transports + Vélo partagé
+    car_hail: Course en voiture
+    car_park: Parc relais
+    micromobility: Transports + Trottinnette pers.
+    micromobility_rent: Transports + Trottinette partagée
+  bicycleModes:
+    bicycle: Vélo pers.
+    bicycle_rent: Vélo partagé
+  micromobilityModes:
+    micromobility: Trottinnette pers.
+    micromobility_rent: Trottinette partagée
+  # Default values for Flex Indicator (set in configuration as well)
   flex:
     flex-service: Service Flex
     both: Plus de détails au bas de l'itinéraire
