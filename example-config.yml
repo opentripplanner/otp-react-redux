@@ -277,6 +277,8 @@ itinerary:
   # "Metro" UI. The settings can be used without the Metro UI, but
   # this may have unexpected effects.
 
+  # When using the metro UI, it is recommended to have 8+ itineraries returned by OTP
+
   # Whether to show the "# itineraries found" text above the itinerary results
   showHeaderText: false
   # Whether to hide the gray loading bars that appear while results are loading

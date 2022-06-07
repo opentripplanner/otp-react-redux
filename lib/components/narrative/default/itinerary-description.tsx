@@ -30,7 +30,6 @@ export function getMainItineraryModes({
   itinerary.legs.forEach((leg, i) => {
     const { duration, mode, rentedBike, rentedVehicle } = leg
     if (isTransit(mode) && duration > primaryTransitDuration) {
-      // TODO: convert OTP's TRAM mode to the correct wording for Portland
       primaryTransitDuration = duration
       transitMode = getFormattedMode(
         combineTransitModes ? 'transit' : mode.toLowerCase(),

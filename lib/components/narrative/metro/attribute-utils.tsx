@@ -30,20 +30,24 @@ export const departureTimes = (
   return (
     <FormattedList
       type="disjunction"
-      value={allStartTimes.map((time, index) => (
-        <span
-          className={`${time.realtime ? 'realtime' : ''} ${
-            index === 0 ? 'first' : ''
-          }`}
-          key={index}
-          title={intl.formatMessage(
-            { id: 'components.MetroUI.arriveAtTime' },
-            { time: intl.formatTime(time.arrival) }
-          )}
-        >
-          <FormattedTime key={time.time} value={time.time} />
-        </span>
-      ))}
+      value={allStartTimes.map((time, index) => {
+        const classNames = []
+        if (time.realtime) classNames.push('realtime')
+        if (index === 0) classNames.push('first')
+
+        return (
+          <span
+            className={classNames.join(' ')}
+            key={index}
+            title={intl.formatMessage(
+              { id: 'components.MetroUI.arriveAtTime' },
+              { time: intl.formatTime(time.arrival) }
+            )}
+          >
+            <FormattedTime key={time.time} value={time.time} />
+          </span>
+        )
+      })}
     />
   )
 }
@@ -90,6 +94,7 @@ export const getFlexAttirbutes = (
 
 export const removeInsignifigantWalkLegs = (leg: Leg): boolean =>
   // Return true only for non walk-legs or walking legs over 400 meters
+  // TODO: Make the 400 meters configurable?
   leg.mode !== 'WALK' || leg.distance > 400
 
 /**
