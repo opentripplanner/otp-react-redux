@@ -566,13 +566,13 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTEea iqivwV"
+                          className="sc-bdfBQB decmux"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                            className="fa fa-calendar fa-fw sc-bdfBQB decmux"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -1524,13 +1524,13 @@ exports[`components > viewers > stop viewer should render countdown times after 
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTEea iqivwV fa-spin"
+                              className="sc-bdfBQB decmux fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                                className="fa fa-refresh fa-fw sc-bdfBQB decmux fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -2743,13 +2743,13 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTEea iqivwV"
+                          className="sc-bdfBQB decmux"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                            className="fa fa-calendar fa-fw sc-bdfBQB decmux"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -3422,13 +3422,13 @@ exports[`components > viewers > stop viewer should render countdown times for st
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTEea iqivwV fa-spin"
+                              className="sc-bdfBQB decmux fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                                className="fa fa-refresh fa-fw sc-bdfBQB decmux fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -4443,13 +4443,13 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTEea iqivwV"
+                          className="sc-bdfBQB decmux"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                            className="fa fa-calendar fa-fw sc-bdfBQB decmux"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -5411,13 +5411,13 @@ exports[`components > viewers > stop viewer should render times after midnight w
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTEea iqivwV fa-spin"
+                              className="sc-bdfBQB decmux fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                                className="fa fa-refresh fa-fw sc-bdfBQB decmux fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -7344,13 +7344,13 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTEea iqivwV"
+                          className="sc-bdfBQB decmux"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                            className="fa fa-calendar fa-fw sc-bdfBQB decmux"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -9871,13 +9871,13 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTEea iqivwV fa-spin"
+                              className="sc-bdfBQB decmux fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                                className="fa fa-refresh fa-fw sc-bdfBQB decmux fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -12826,13 +12826,13 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTEea iqivwV"
+                          className="sc-bdfBQB decmux"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                            className="fa fa-calendar fa-fw sc-bdfBQB decmux"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -14047,13 +14047,13 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTEea iqivwV fa-spin"
+                              className="sc-bdfBQB decmux fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                                className="fa fa-refresh fa-fw sc-bdfBQB decmux fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
