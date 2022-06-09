@@ -1,12 +1,13 @@
 import { Company, Itinerary, Leg } from '@opentripplanner/types'
 import { connect } from 'react-redux'
+import { useIntl } from 'react-intl'
 import React from 'react'
 import TransitiveCanvasOverlay, {
   itineraryToTransitive
+  // @ts-expect-error transitive-overlay is not typescripted
 } from '@opentripplanner/transitive-overlay'
 
 import { getTransitiveData } from '../../util/state'
-import { useIntl } from 'react-intl'
 
 type Props = {
   itineraryData: {
@@ -86,13 +87,14 @@ const mapStateToProps = (state: Record<string, any>, ownProps: Props) => {
     hasResponse: boolean
     itineraryToRender: Itinerary
     otpResponse: unknown
+    // @ts-expect-error state.js is not typescripted
   } = getTransitiveData(state, ownProps)
 
   const obj = {
     itineraryData: transitiveData,
     labeledModes,
     styles
-  }
+  } // generate implicit type
   return obj
 }
 
