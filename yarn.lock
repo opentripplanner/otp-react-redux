@@ -2275,67 +2275,13 @@
     "@opentripplanner/core-utils" "^4.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/core-utils@^4.1.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.4.0.tgz#3eb8f9718d32ce50e3b79d975d682559c5a7b0bf"
-  integrity sha512-qCd+NXa0PxwcN2DFR0HX1u/76RzQwHe2r0VGcaOS4GxvQ5HEL4zPyaT+lkxAyE6AFQAvNynyofhxlnMwbxtqEA==
-  dependencies:
-    "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^1.1.1"
-    "@styled-icons/foundation" "^10.34.0"
-    "@turf/along" "^6.0.1"
-    bowser "^2.7.0"
-    date-fns "^2.23.0"
-    date-fns-tz "^1.1.4"
-    lodash.clonedeep "^4.5.0"
-    lodash.isequal "^4.5.0"
-    moment "^2.24.0"
-    prop-types "^15.7.2"
-    qs "^6.9.1"
-
-"@opentripplanner/core-utils@^4.11.0":
-  version "4.11.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.11.3.tgz#7f3ede053e8f3d64fe9a8efa139f097bdd983b04"
-  integrity sha512-QlSFBDg65AItwJPtgIDtChE1yMpkmASr1nLIoFjkrRip6Det/w0ttoZjslOInJ4cGNPvRMoqdwfiZp16KNajEQ==
-  dependencies:
-    "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^1.1.2"
-    "@styled-icons/foundation" "^10.34.0"
-    "@turf/along" "^6.0.1"
-    bowser "^2.7.0"
-    date-fns "^2.23.0"
-    date-fns-tz "^1.1.4"
-    lodash.clonedeep "^4.5.0"
-    lodash.isequal "^4.5.0"
-    moment "^2.24.0"
-    prop-types "^15.7.2"
-    qs "^6.9.1"
-
-"@opentripplanner/core-utils@^4.11.2":
+"@opentripplanner/core-utils@^4.1.0", "@opentripplanner/core-utils@^4.11.0", "@opentripplanner/core-utils@^4.11.2", "@opentripplanner/core-utils@^4.5.0":
   version "4.11.5"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.11.5.tgz#ac90d443009fab02aae971d4ed6c1e0fc7da134f"
   integrity sha512-oVVfbQqzHaY82cYLRm/GpybCo5LsDa8PTJQDU/w/DJLqSqyYm2I2sitQxk6jvmP6Zq80asdxMRvM8Si8yI77aQ==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.2.2"
-    "@styled-icons/foundation" "^10.34.0"
-    "@turf/along" "^6.0.1"
-    bowser "^2.7.0"
-    date-fns "^2.23.0"
-    date-fns-tz "^1.1.4"
-    lodash.clonedeep "^4.5.0"
-    lodash.isequal "^4.5.0"
-    moment "^2.24.0"
-    prop-types "^15.7.2"
-    qs "^6.9.1"
-
-"@opentripplanner/core-utils@^4.5.0":
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.6.0.tgz#f0f9924a2312b89a3f84d0a34c1a2d9f6c1ca615"
-  integrity sha512-LQs8BrwqFXKHJOgRduKic9wEGqnNAcyrypTgKmx//Jzz6OmZyXNskrFNJwLR6HIgsps7isN/7hi3NuVFticgIA==
-  dependencies:
-    "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^1.1.2"
     "@styled-icons/foundation" "^10.34.0"
     "@turf/along" "^6.0.1"
     bowser "^2.7.0"
@@ -2401,27 +2347,7 @@
     "@opentripplanner/location-icon" "^1.4.0"
     flat "^5.0.2"
 
-"@opentripplanner/geocoder@^1.1.1":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.1.2.tgz#fb4c939f5746705d0bebd9791b3f9d9eb055ce8e"
-  integrity sha512-XEHzueckoi6UM1wfgLj/VTjOilEoAj9WA5D26wAM992ItJfvlllis2XfSQecBHDAFc7YbRoKxT6IbsJOmqeMuQ==
-  dependencies:
-    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
-    "@conveyal/lonlat" "^1.4.1"
-    isomorphic-mapzen-search "^1.6.0"
-    lodash.memoize "^4.1.2"
-
-"@opentripplanner/geocoder@^1.1.2", "@opentripplanner/geocoder@^1.2.0", "@opentripplanner/geocoder@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.2.1.tgz#5ba3a3c7664f387b6f1cf7959b91ad77170bf2b7"
-  integrity sha512-3RLeRQis9ptIhqeBfBxuPI04/WeGhiYcY5aJONZm9005eFhX4QVesGQpT/qcfC7Wjp55Pnikroh0fMcl+oFvFA==
-  dependencies:
-    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
-    "@conveyal/lonlat" "^1.4.1"
-    isomorphic-mapzen-search "^1.6.1"
-    lodash.memoize "^4.1.2"
-
-"@opentripplanner/geocoder@^1.2.2":
+"@opentripplanner/geocoder@^1.2.0", "@opentripplanner/geocoder@^1.2.1", "@opentripplanner/geocoder@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.2.2.tgz#dbbb9fb5f9dc395db1464bad85ae04852be979c1"
   integrity sha512-sSkGYO+A4Mliw4xNDkbzZJOHyT/q5yvoTtPmjDQQwLy6HZgloa0FckFiI38UlQDftDPkrOQN0urrmFAgYqGaZQ==
@@ -2431,12 +2357,7 @@
     isomorphic-mapzen-search "^1.6.1"
     lodash.memoize "^4.1.2"
 
-"@opentripplanner/humanize-distance@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.1.0.tgz#aa5ecdd70f33cfbdd214c76da4ba799a8ab473a5"
-  integrity sha512-U+rANHgl+Fz6srX2lZ6LNLkDKPaUvWb27pZeVs9f8qsA/hLlx8X3FY1T9BrYaXwxgSlwAha+YzcKUC/2SfQjJQ==
-
-"@opentripplanner/humanize-distance@^1.2.0":
+"@opentripplanner/humanize-distance@^1.1.0", "@opentripplanner/humanize-distance@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.2.0.tgz#71cf5d5d1b756adef15300edbba0995ccd4b35ee"
   integrity sha512-x0QRXMDhypFeazZ6r6vzrdU8vhiV56nZ/WX6zUbxpgp6T9Oclw0gwR2Zdw6DZiiFpSYVNeVNxVzZwsu6NRGjcA==
@@ -11415,7 +11336,7 @@ isomorphic-fetch@^3.0.0:
     node-fetch "^2.6.1"
     whatwg-fetch "^3.4.1"
 
-isomorphic-mapzen-search@^1.6.0, isomorphic-mapzen-search@^1.6.1:
+isomorphic-mapzen-search@^1.6.0:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/isomorphic-mapzen-search/-/isomorphic-mapzen-search-1.6.1.tgz#5310e8b845ba70ae4fdd2604c3964264939abe53"
   integrity sha512-MWVko9xX8nhJ2zWx7Zx+9pGQkWd+iy5YIRhT372Rp11/anZ8u5WmOAAxsVA2t2UFmtYEkvNImXCKoFlNg63J+w==
