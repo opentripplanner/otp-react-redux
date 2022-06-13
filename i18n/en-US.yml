@@ -48,10 +48,10 @@ actions:
     itineraryCapacityError: "Cannot Save Plan: This plan could not be saved due to a lack of capacity on one or more vehicles. Please re-plan your trip."
     maxTripRequestsExceeded: Number of trip requests exceeded without valid results
     saveItinerariesError: "Failed to save itineraries: {err}"
-    setDateError: "Error setting date: {err}"
-    setGroupSizeError: "Error setting group size: {err}"
-    setPaymentError: "Error setting payment info: {err}"
-    setRequestStatusError: "Error setting request status: {err}"
+    setDateError: "Error setting date:"
+    setGroupSizeError: "Error setting group size:"
+    setPaymentError: "Error setting payment info:"
+    setRequestStatusError: "Error setting request status:"
   location:
     geolocationNotSupportedError: Geolocation not supported by your browser
     unknownPositionError: Unknown error getting position
