@@ -2350,10 +2350,10 @@
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
-"@opentripplanner/location-field@1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.2.tgz#90d5b0d16f143ee380d1c7d709987536af2316fe"
-  integrity sha512-g9n/eVBchJGUomaQCc/4TrSEO5V+0RgzEfq2kU6KBCTDnRYkxa8S61PQQwoxrH6OfohA8k5BcPh1WWXKvFlqog==
+"@opentripplanner/location-field@1.12.3":
+  version "1.12.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.3.tgz#0ff027f941e45880e01470ed88a044e4fda19500"
+  integrity sha512-MFqEANrfuC3rG7lnQEvRqiMo/D1MDKhKQE9nlfWoT3OHkcWOOwYronBM15+ypkKELWR12eb9OTTCTTd6Ae+Vtw==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@opentripplanner/core-utils" "^4.11.0"
