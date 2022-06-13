@@ -48,6 +48,7 @@ actions:
     itineraryCapacityError: "Cannot Save Plan: This plan could not be saved due to a lack of capacity on one or more vehicles. Please re-plan your trip."
     maxTripRequestsExceeded: Number of trip requests exceeded without valid results
     saveItinerariesError: "Failed to save itineraries: {err}"
+    setDateError: "Error setting date: {err}"
     setGroupSizeError: "Error setting group size: {err}"
     setPaymentError: "Error setting payment info: {err}"
     setRequestStatusError: "Error setting request status: {err}"

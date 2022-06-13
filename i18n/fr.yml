@@ -37,6 +37,7 @@ actions:
     itineraryCapacityError: "Impossible d'enregistrer les itinéraires : Capacité insuffisante dans un ou plusieurs véhicules. Veuillez relancer votre recherche."
     maxTripRequestsExceeded: Le nombre de requêtes sans résultats valables a été dépassé.
     saveItinerariesError: "Erreur lors de l'enregistrement des itinéraires : {err}"
+    setDateError: "Erreur sur la date : {err}"
     setGroupSizeError: "Erreur sur la taille du groupe : {err}"
     setPaymentError: "Erreur sur les coordonnées de paiement : {err}"
     setRequestStatusError: "Erreur sur l'état de la requête : {err}"
