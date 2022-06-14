@@ -27,9 +27,9 @@ actions:
         true {aller}
         other {retour}
       } planifié préalablement pour cette demande. Voulez-vous continuer ?
-    deleteItinerariesError: "Erreur lors de la suppression d'un itinéraire de groupe : {err}"
-    deleteNoteError: "Erreur lors de la suppression d'une note sur le groupe : {err}"
-    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur : {err}"
+    deleteItinerariesError: "Erreur lors de la suppression d'un itinéraire de groupe :"
+    deleteNoteError: "Erreur lors de la suppression d'une note sur le groupe :"
+    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur :"
     fetchFieldTripError: "Erreur de chargement de l'itinéraire du groupe: {err}"
     fetchFieldTripsError: "Error fetching des itinéraires du groupe : {err}"
     fetchTripsForDateError: "Error fetching des itinéraires du groupe pour les dates de sorties : {err}"

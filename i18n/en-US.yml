@@ -38,9 +38,9 @@ actions:
           true {outbound}
           other {inbound}
         } itinerary for this request. Do you wish to continue?
-    deleteItinerariesError: "Error deleting field trip plan: {err}"
-    deleteNoteError: "Error deleting field trip note: {err}"
-    editSubmitterNotesError: "Error editing submitter notes: {err}"
+    deleteItinerariesError: "Error deleting field trip plan:"
+    deleteNoteError: "Error deleting field trip note:"
+    editSubmitterNotesError: "Error editing submitter notes:"
     fetchFieldTripError: "Error fetching field trip: {err}"
     fetchFieldTripsError: "Error fetching field trips: {err}"
     fetchTripsForDateError: "Error fetching trips for field trip travel date: {err}"
