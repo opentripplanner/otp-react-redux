@@ -44,13 +44,12 @@ const ConnectedTransitiveOverlay = (props: Props) => {
   if (hasResponse) {
     if (hasItineraryResponse) {
       transitiveData = itineraryToRender
-        ? itineraryToTransitive(
-            itineraryToRender,
+        ? itineraryToTransitive(itineraryToRender, {
             companies,
-            getTransitiveRouteLabel,
             disableFlexArc,
+            getTransitiveRouteLabel,
             intl
-          )
+          })
         : null
     } else if (otpResponse) {
       transitiveData = otpResponse
