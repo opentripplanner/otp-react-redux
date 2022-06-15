@@ -1,4 +1,3 @@
-import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore TYPESCRIPT TODO: wait for typescripted core-utils
@@ -168,8 +167,4 @@ class StopScheduleTable extends Component<{
   }
 }
 
-const mapStateToProps = (state: Record<string, any>) => ({
-  homeTimezone: state.otp.config.homeTimezone
-})
-
-export default connect(mapStateToProps)(StopScheduleTable)
+export default StopScheduleTable
