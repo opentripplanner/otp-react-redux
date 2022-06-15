@@ -1,7 +1,5 @@
 import { connect } from 'react-redux'
-import { FormattedMessage, FormattedTime } from 'react-intl'
-import { zonedTimeToUtc } from 'date-fns-tz'
-import addSeconds from 'date-fns/addSeconds'
+import { FormattedMessage } from 'react-intl'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore TYPESCRIPT TODO: wait for typescripted core-utils
 import coreUtils from '@opentripplanner/core-utils'
@@ -15,6 +13,8 @@ import {
 } from '../../util/viewer'
 import Loading from '../narrative/loading'
 import type { StopData } from '../util/types'
+
+import DepartureTime from './departure-time'
 
 // Styles for the schedule table and its contents.
 const StyledTable = styled.table`
@@ -101,9 +101,6 @@ class StopScheduleTable extends Component<{
 
     const today = coreUtils.time.getCurrentDate(homeTimezone)
 
-    // Compute the UTC date that corresponds to midnight (00:00) of the given date in homeTimezone
-    const startOfDate = zonedTimeToUtc(date, homeTimezone)
-
     // Find the next stop time that is departing.
     // We will scroll to that stop time entry (if showing schedules for today).
     const shouldHighlightFirstDeparture =
@@ -148,10 +145,7 @@ class StopScheduleTable extends Component<{
               ? nextStopTime === highlightedStopTime
               : highlightRow
             const routeName = route.shortName ? route.shortName : route.longName
-            const departureTimestamp = addSeconds(
-              startOfDate,
-              stopTime.scheduledDeparture
-            )
+
             // Add ref to scroll to the first stop time departing from now.
             const refProp = scrollToRow ? this.targetDepartureRef : undefined
 
@@ -163,7 +157,7 @@ class StopScheduleTable extends Component<{
                 <RouteCell>{routeName}</RouteCell>
                 <td>{headsign}</td>
                 <TimeCell>
-                  <FormattedTime timeStyle="short" value={departureTimestamp} />
+                  <DepartureTime stopTime={stopTime} />
                 </TimeCell>
               </tr>
             )

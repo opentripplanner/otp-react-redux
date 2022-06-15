@@ -1,5 +1,5 @@
 import 'moment-timezone'
-import { FormattedMessage, FormattedTime } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 // TODO: typescript core-utils, add common types (pattern, stop, configs)
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -8,9 +8,12 @@ import moment from 'moment'
 import React from 'react'
 
 import { getSecondsUntilDeparture } from '../../util/viewer'
+import { Time } from '../util/types'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import FormattedDuration from '../util/formatted-duration'
 import Icon from '../util/icon'
+
+import DepartureTime from './departure-time'
 
 const { getUserTimezone } = coreUtils.time
 const ONE_HOUR_IN_SECONDS = 3600
@@ -20,8 +23,7 @@ type Props = {
   /** If configured, the timezone of the area */
   homeTimezone?: string
   /** A stopTime object as received from a transit index API */
-  // TODO: common shared types
-  stopTime: any
+  stopTime: Time
 }
 
 /**
@@ -50,18 +52,9 @@ const StopTimeCell = ({
       </div>
     )
   }
-  const userTimezone = getUserTimezone()
   const departureTime = stopTime.realtimeDeparture
   const now = moment().tz(homeTimezone)
   const serviceDay = moment(stopTime.serviceDay * 1000).tz(homeTimezone)
-
-  // Convert seconds after midnight to unix (milliseconds) for FormattedTime
-  // Convert to userTimezone rather than spying on startOf for tests
-  const departureMoment = moment(stopTime.serviceDay * 1000)
-    .tz(userTimezone)
-    .startOf('day')
-  departureMoment.add(departureTime, 's')
-  const departureTimestamp = departureMoment.valueOf()
 
   // Determine if arrival occurs on different day, making sure to account for
   // any extra days added to the service day if it arrives after midnight. Note:
@@ -119,12 +112,7 @@ const StopTimeCell = ({
               <FormattedDuration duration={secondsUntilDeparture} />
             )
           ) : (
-            // Show formatted time (with timezone if user is not in home timezone)
-            <FormattedTime
-              timeStyle="short"
-              timeZone={homeTimezone}
-              value={departureTimestamp}
-            />
+            <DepartureTime realTime stopTime={stopTime} />
           )}
         </div>
       </div>
