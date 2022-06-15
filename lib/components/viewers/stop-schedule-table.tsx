@@ -1,5 +1,10 @@
+import { connect } from 'react-redux'
 import { FormattedMessage, FormattedTime } from 'react-intl'
-import moment from 'moment'
+import { zonedTimeToUtc } from 'date-fns-tz'
+import addSeconds from 'date-fns/addSeconds'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore TYPESCRIPT TODO: wait for typescripted core-utils
+import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, createRef } from 'react'
 import styled from 'styled-components'
 
@@ -57,6 +62,7 @@ const TimeCell = styled.td`
  */
 class StopScheduleTable extends Component<{
   date: string
+  homeTimezone: string
   showBlockIds: boolean
   // TODO TYPESCRIPT: move this type to a shared type
   stopData: StopData
@@ -64,7 +70,7 @@ class StopScheduleTable extends Component<{
   /**
    * Link to the DOM for the next departure row, so we can scroll to it if needed.
    */
-  targetDepartureRef = createRef<HTMLElement>()
+  targetDepartureRef = createRef<HTMLTableRowElement>()
 
   /**
    * Scroll to the first stop time that is departing from now.
@@ -86,14 +92,18 @@ class StopScheduleTable extends Component<{
   }
 
   render(): JSX.Element {
-    const { date, showBlockIds, stopData } = this.props
+    const { date, homeTimezone, showBlockIds, stopData } = this.props
     // Show loading spinner if times are still being fetched.
     if (stopData.fetchStatus === FETCH_STATUS.FETCHING) {
       return <Loading small />
     }
     const mergedStopTimes = mergeAndSortStopTimes(stopData)
 
-    const today = moment().startOf('day').format('YYYY-MM-DD')
+    const today = coreUtils.time.getCurrentDate(homeTimezone)
+
+    // Compute the UTC date that corresponds to midnight (00:00) of the given date in homeTimezone
+    const startOfDate = zonedTimeToUtc(date, homeTimezone)
+
     // Find the next stop time that is departing.
     // We will scroll to that stop time entry (if showing schedules for today).
     const shouldHighlightFirstDeparture =
@@ -138,18 +148,14 @@ class StopScheduleTable extends Component<{
               ? nextStopTime === highlightedStopTime
               : highlightRow
             const routeName = route.shortName ? route.shortName : route.longName
-
-            // Convert to milliseconds for FormattedTime
-            const departureTimestamp = moment()
-              .startOf('day')
-              .add(stopTime.scheduledDeparture, 's')
-              .valueOf()
+            const departureTimestamp = addSeconds(
+              startOfDate,
+              stopTime.scheduledDeparture
+            )
             // Add ref to scroll to the first stop time departing from now.
             const refProp = scrollToRow ? this.targetDepartureRef : undefined
 
             return (
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore TYEPSCRIPT TODO: ref
               <tr className={className} key={index} ref={refProp}>
                 {showBlockIds && (
                   <BlockCell title={blockId}>{blockId}</BlockCell>
@@ -168,4 +174,8 @@ class StopScheduleTable extends Component<{
   }
 }
 
-export default StopScheduleTable
+const mapStateToProps = (state: Record<string, any>) => ({
+  homeTimezone: state.otp.config.homeTimezone
+})
+
+export default connect(mapStateToProps)(StopScheduleTable)
