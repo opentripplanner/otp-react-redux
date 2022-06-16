@@ -42,20 +42,19 @@ const { ItineraryView } = uiActions
 const ItineraryWrapper = styled.div.attrs((props) => {
   return { 'aria-label': props['aria-label'] }
 })`
-  color: #333;
-  padding: 0;
-
   border-bottom: 0.1ch solid #33333333;
+  color: #333;
   display: grid; /* We don't use grid here, but "block" and "inline" cause problems with Firefox */
+  padding: 0;
 `
 
 const DepartureTimes = styled.span`
-  font-size: 14px;
-  width: 100%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: pre;
   color: #0909098f;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  width: 100%;
 
   .first {
     color: #090909ee;
@@ -63,15 +62,15 @@ const DepartureTimes = styled.span`
 `
 
 const PrimaryInfo = styled.span`
-  font-weight: 600;
-  font-size: 22px;
   color: #000000cc;
+  font-size: 22px;
+  font-weight: 600;
   text-align: right;
 `
 
 const SecondaryInfo = styled.span`
-  font-size: 12px;
   color: #090909cc;
+  font-size: 12px;
   opacity: 0.7;
   text-align: right;
 `
@@ -105,7 +104,6 @@ const ItineraryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: minmax(8px, fit-content);
-
   padding: 10px 1em;
 
   ${DepartureTimes} {
@@ -113,26 +111,25 @@ const ItineraryGrid = styled.div`
   }
 
   ${Routes} {
-    grid-row: 1 / 8;
     grid-column: 1 / 8;
+    grid-row: 1 / 8;
   }
 
   ${PrimaryInfo} {
-    grid-row: 1 / span 3;
     grid-column: 8 / 11;
+    grid-row: 1 / span 3;
   }
 
   ${Spacer} {
-    grid-row: span 1;
     grid-column: 8 / 11;
+    grid-row: span 1;
   }
 
   ${SecondaryInfo} {
     grid-column: 8 / 11;
     grid-row: span 2;
-
-    text-overflow: ellipsis;
     overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
 
     &.flex {
@@ -154,20 +151,18 @@ const ItineraryGrid = styled.div`
 `
 
 const ItineraryGridSmall = styled.div`
+  border-radius: 10px;
   display: grid;
-  grid-template-columns: 1fr 3fr;
   gap: 0 2px;
+  grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(10, 8px);
-
   padding: 10px 1em;
 
-  border-radius: 10px;
-
   ${PrimaryInfo} {
+    font-size: 100%;
     grid-column: 2;
     grid-row: 2 / 5;
     line-height: 1;
-    font-size: 100%;
   }
 
   ${SecondaryInfo} {
