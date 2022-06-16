@@ -22,27 +22,27 @@ type Props = {
 }
 
 const Wrapper = styled.span`
-  display: grid;
   align-items: center;
   column-gap: 4px;
-  margin-left: -4px; /* counteract gap */
+  display: grid;
   grid-template-columns: fit-content(100%);
+  margin-left: -4px; /* counteract gap */
 
   footer {
     align-self: center;
-    justify-self: center;
-    grid-column: 1 / span 2;
     font-size: 12px;
+    grid-column: 1 / span 2;
+    justify-self: center;
     opacity: 0.7;
   }
 `
 
 const MultiWrapper = styled.span<{ multi?: boolean }>`
-  flex-direction: row;
   display: flex;
+  flex-direction: row;
   gap: 5px;
-  grid-row: 1;
   grid-column: 2;
+  grid-row: 1;
 
   ${({ multi }) =>
     multi
@@ -50,32 +50,31 @@ const MultiWrapper = styled.span<{ multi?: boolean }>`
   /* All Route blocks start with only right side triangulated */
   section {
     clip-path: polygon(0% 0, 100% 0%, 75% 100%, 0% 100%);
-    padding-right: 10px;
-    padding-left: 5px;
     margin-right: 2px;
     max-width: 100px;
+    padding-left: 5px;
+    padding-right: 10px;
   }
   section:first-of-type {
-    border-top-right-radius: 0!important;
     border-bottom-right-radius: 0!important;
+    border-top-right-radius: 0!important;
   }
   /* Middle route block(s), with both sides triangulated */
   section:not(:first-of-type):not(:last-of-type) {
+    border-radius: 0;
     clip-path: polygon(25% 0, 100% 0%, 75% 100%, 0% 100%);
+    margin-left: -10px;
     padding-left: 11px;
     padding-right: 11px;
-    margin-left: -10px;
-    border-radius: 0;
   }
   /* Last route block, with only left side triangulated */
   section:last-of-type {
-    clip-path: polygon(25% 0, 100% 0%, 100% 100%, 0% 100%);
-    padding-left: 10px;
-    margin-left: -10px;
-    padding-right: 5px;
-
     border-bottom-left-radius: 0!important;
     border-top-left-radius: 0!important;
+    clip-path: polygon(25% 0, 100% 0%, 100% 100%, 0% 100%);
+    margin-left: -10px;
+    padding-left: 10px;
+    padding-right: 5px;
   }
   `
       : ''}
@@ -86,21 +85,20 @@ const LegIconWrapper = styled.span`
 `
 
 const MultiRouteLongName = styled.div`
-  display: flex;
-  justify-content: space-between;
   align-items: baseline;
-  gap: 5px;
-
-  grid-row: 1;
-  grid-column: 3;
   align-self: center;
+  display: flex;
+  gap: 5px;
+  grid-column: 3;
+  grid-row: 1;
+  justify-content: space-between;
 `
 
 const Divider = styled.span`
-  display: flex;
   align-items: center;
-  opacity: 0.4;
+  display: flex;
   margin: 0 -5px;
+  opacity: 0.4;
 `
 
 const RouteBlock = ({
