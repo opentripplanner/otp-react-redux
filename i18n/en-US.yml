@@ -649,7 +649,6 @@ common:
   forms:
     back: Back
     cancel: Cancel
-    clear: Clear
     close: Close
     error: error!
     defaultValue: "{value} (default)"
