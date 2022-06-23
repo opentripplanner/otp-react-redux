@@ -2531,10 +2531,10 @@
     flat "^5.0.2"
     velocity-react "^1.4.3"
 
-"@opentripplanner/trip-form@^1.11.3":
-  version "1.11.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-1.11.3.tgz#a341f169102eacd32037e29d596adde3a14becd7"
-  integrity sha512-InP6VCRdeKFQ7AKyQEzW9cdNmO4hk+vGdKyY4hGscaUD+G4jY7DVCyFIejxz5olhBRiQWeA2cF5idWLxa1PyYg==
+"@opentripplanner/trip-form@^1.11.4":
+  version "1.11.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-1.11.4.tgz#6a9c672f6b4c6e28d5af3c212dadd7d657bcfe20"
+  integrity sha512-Ej/gYjJjqIUIxLvOECKjyUUY/FxDPy8D9hechA2mLBisZVQDfPPXOu5JThNuTkwMbtAGoTCPN3x3iIBrGAs7dw==
   dependencies:
     "@opentripplanner/core-utils" "^4.11.2"
     "@opentripplanner/icons" "^1.2.2"
