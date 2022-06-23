@@ -239,13 +239,11 @@ class MetroItinerary<Props> extends NarrativeItinerary {
     const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
       getFlexAttirbutes(itinerary)
 
-    const { fareCurrency, maxTNCFare, minTNCFare, transitFare } = getFare(
+    const { fareCurrency, transitFare } = getFare(
       itinerary,
       defaultFareKey,
       currency
     )
-    const minTotalFare = minTNCFare * 100 + transitFare
-    const maxTotalFare = maxTNCFare * 100 + transitFare
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
 
@@ -349,22 +347,14 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                   )}
                 </SecondaryInfo>
                 <SecondaryInfo>
-                  {maxTotalFare === null || maxTotalFare < 0 ? (
+                  {transitFare === null || transitFare < 0 ? (
                     <FormattedMessage id="common.itineraryDescriptions.noTransitFareProvided" />
                   ) : (
                     <FormattedMessage
                       id="components.ItinerarySummary.fareCost"
                       values={{
-                        maxTotalFare: (
-                          <FormattedNumber
-                            currency={fareCurrency}
-                            currencyDisplay="narrowSymbol"
-                            // This isn't a "real" style prop
-                            // eslint-disable-next-line react/style-prop-object
-                            style="currency"
-                            value={maxTotalFare / 100}
-                          />
-                        ),
+                        // TODO: re-implement TNC fares for metro UI?
+                        maxTotalFare: null,
                         minTotalFare: (
                           <FormattedNumber
                             currency={fareCurrency}
@@ -372,10 +362,10 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                             // This isn't a "real" style prop
                             // eslint-disable-next-line react/style-prop-object
                             style="currency"
-                            value={minTotalFare / 100}
+                            value={transitFare / 100}
                           />
                         ),
-                        useMaxFare: minTotalFare !== maxTotalFare
+                        useMaxFare: false
                       }}
                     />
                   )}
