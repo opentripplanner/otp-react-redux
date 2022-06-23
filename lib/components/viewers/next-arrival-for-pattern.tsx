@@ -9,7 +9,7 @@ import {
   stopTimeComparator
 } from '../../util/viewer'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
-import type { Pattern, StopTime } from '../util/types'
+import type { Pattern, Time } from '../util/types'
 
 import StopTimeCell from './stop-time-cell'
 
@@ -18,7 +18,7 @@ type Props = {
   intl: IntlShape
   pattern: Pattern
   route: Route
-  stopTimes: StopTime[]
+  stopTimes: Time[]
   stopViewerArriving: React.ReactNode
   stopViewerConfig: { numberOfDepartures: number }
 }

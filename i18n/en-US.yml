@@ -226,7 +226,6 @@ components:
     streets: Streets    
   MetroUI:
     leaveAt: You leave
-    arriveAt: You arrive
     arriveAtTime: "Arrive at {time}" 
     timeWalking: "{time} walking"
     fromStop: "from {stop}"
