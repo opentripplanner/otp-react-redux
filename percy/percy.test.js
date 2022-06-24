@@ -79,13 +79,13 @@ beforeAll(async () => {
       // headless: false
     })
 
-    // Fix time
+    // Fix time to Monday, March 14, 2022 14:22:22 GMT (10:22:22 AM EDT).
     browser.on('targetchanged', async (target) => {
       const targetPage = await target.page()
       const client = await targetPage.target().createCDPSession()
       await client.send('Runtime.evaluate', {
         expression:
-          'Date.now = function() { return 1646835742000; }; Date.getTime = function() { return 1646835742000; }'
+          'Date.now = function() { return 1647267742000; }; Date.getTime = function() { return 1647267742000; }'
       })
     })
   } catch (error) {
