@@ -390,7 +390,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                   <FormattedDuration duration={itinerary.duration} />
                 </PrimaryInfo>
                 <SecondaryInfo>
-                  {ItineraryDescription({ intl, itinerary })}
+                  <ItineraryDescription itinerary={itinerary} />
                 </SecondaryInfo>
                 {renderRouteBlocks(itinerary.legs, true)}
               </ItineraryGridSmall>

@@ -1,15 +1,16 @@
 import { FormattedMessage, IntlShape } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
-import React from 'react'
+import React, { useContext } from 'react'
 
+import { ComponentContext } from '../../../util/contexts'
 import { getFormattedMode } from '../../../util/i18n'
+import FormattedMode from '../../util/formatted-mode'
 
 const { isBicycle, isMicromobility, isTransit } = coreUtils.itinerary
 
 type Props = {
   combineTransitModes?: boolean
-  intl: IntlShape
   itinerary: Itinerary
 }
 
@@ -20,7 +21,7 @@ export function getMainItineraryModes({
   combineTransitModes,
   intl,
   itinerary
-}: Props): {
+}: Props & { intl: IntlShape }): {
   mainMode: string
   transitMode?: string
 } {
@@ -47,9 +48,40 @@ export function getMainItineraryModes({
   return { mainMode: getFormattedMode(accessModeId, intl), transitMode }
 }
 
-export function ItineraryDescription(props: Props): React.ReactNode {
-  const { mainMode, transitMode } = getMainItineraryModes(props)
+/**
+ * Obtains the description of an itinerary in the given locale.
+ */
+export function ItineraryDescription({ itinerary }: Props): JSX.Element {
+  // FIXME: type context
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { TransitModes } = useContext(ComponentContext)
 
+  let primaryTransitDuration = 0
+  let accessModeId = 'walk'
+  let transitMode
+  itinerary.legs.forEach((leg) => {
+    const { duration, mode, rentedBike, rentedVehicle } = leg
+    if (isTransit(mode) && duration > primaryTransitDuration) {
+      primaryTransitDuration = duration
+
+      // If custom TransitModes have been defined for the given mode/leg, attempt to use them,
+      // otherwise fall back on built-in mode rendering.
+      transitMode = TransitModes ? (
+        <TransitModes leg={leg} />
+      ) : (
+        <FormattedMode mode={mode} />
+      )
+    }
+
+    if (isBicycle(mode)) accessModeId = 'bicycle'
+    if (isMicromobility(mode)) accessModeId = 'micromobility'
+    if (rentedVehicle) accessModeId = 'micromobility_rent'
+    if (rentedBike) accessModeId = 'bicycle_rent'
+    if (mode === 'CAR') accessModeId = 'drive'
+  })
+
+  const mainMode = <FormattedMode mode={accessModeId} />
   return transitMode ? (
     <FormattedMessage
       id="components.DefaultItinerary.multiModeSummary"
@@ -60,7 +92,9 @@ export function ItineraryDescription(props: Props): React.ReactNode {
   )
 }
 
-export function getItineraryDescription(props: Props): string {
+export function getItineraryDescription(
+  props: Props & { intl: IntlShape }
+): string {
   const { intl } = props
   const { mainMode, transitMode } = getMainItineraryModes(props)
 
