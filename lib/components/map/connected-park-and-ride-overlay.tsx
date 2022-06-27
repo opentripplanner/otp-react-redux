@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-// @ts-expect-error ParkAndRideOverlay is not typescripted yet
 import ParkAndRideOverlay from '@opentripplanner/park-and-ride-overlay'
 import React, { Component } from 'react'
 
@@ -25,6 +24,7 @@ class ConnectedParkAndRideOverlay extends Component<
   }
 
   render() {
+    // @ts-expect-error TODO: re-write this component as a functional component and properly type
     return <ParkAndRideOverlay {...this.props} />
   }
 }
