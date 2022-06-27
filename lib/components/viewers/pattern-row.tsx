@@ -9,7 +9,7 @@ import {
   generateFakeLegForRouteRenderer,
   stopTimeComparator
 } from '../../util/viewer'
-import { Pattern, StopTime } from '../util/types'
+import { Pattern, Time } from '../util/types'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import Icon from '../util/icon'
 import Strong from '../util/strong-text'
@@ -22,7 +22,7 @@ type Props = {
   intl: IntlShape
   pattern: Pattern
   route: Route
-  stopTimes: StopTime[]
+  stopTimes: Time[]
   stopViewerArriving: React.ReactNode
   stopViewerConfig: { numberOfDepartures: number }
 }

@@ -1,13 +1,17 @@
-import 'moment-timezone'
+import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage, FormattedTime } from 'react-intl'
+import addDays from 'date-fns/addDays'
 import coreUtils from '@opentripplanner/core-utils'
-import moment from 'moment'
+import isSameDay from 'date-fns/isSameDay'
 import React from 'react'
 
 import { getSecondsUntilDeparture } from '../../util/viewer'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import FormattedDuration from '../util/formatted-duration'
 import Icon from '../util/icon'
+import type { Time } from '../util/types'
+
+import DepartureTime from './departure-time'
 
 const { getUserTimezone } = coreUtils.time
 const ONE_HOUR_IN_SECONDS = 3600
@@ -17,8 +21,7 @@ type Props = {
   /** If configured, the timezone of the area */
   homeTimezone?: string
   /** A stopTime object as received from a transit index API */
-  // TODO: common shared types
-  stopTime: any
+  stopTime: Time
 }
 
 /**
@@ -39,7 +42,7 @@ const StopTimeCell = ({
       </div>
     )
   }
-  if (!moment.tz.zone(homeTimezone)) {
+  if (isNaN(getTimezoneOffset(homeTimezone))) {
     console.warn(`homeTimezone '${homeTimezone}' is invalid`)
     return (
       <div>
@@ -47,18 +50,12 @@ const StopTimeCell = ({
       </div>
     )
   }
-  const userTimezone = getUserTimezone()
   const departureTime = stopTime.realtimeDeparture
-  const now = moment().tz(homeTimezone)
-  const serviceDay = moment(stopTime.serviceDay * 1000).tz(homeTimezone)
-
-  // Convert seconds after midnight to unix (milliseconds) for FormattedTime
-  // Convert to userTimezone rather than spying on startOf for tests
-  const departureMoment = moment(stopTime.serviceDay * 1000)
-    .tz(userTimezone)
-    .startOf('day')
-  departureMoment.add(departureTime, 's')
-  const departureTimestamp = departureMoment.valueOf()
+  const now = utcToZonedTime(Date.now(), homeTimezone)
+  const serviceDay = utcToZonedTime(
+    new Date(stopTime.serviceDay * 1000),
+    homeTimezone
+  )
 
   // Determine if arrival occurs on different day, making sure to account for
   // any extra days added to the service day if it arrives after midnight. Note:
@@ -67,8 +64,8 @@ const StopTimeCell = ({
   const departureTimeRemainder = departureTime % ONE_DAY_IN_SECONDS
   const daysAfterServiceDay =
     (departureTime - departureTimeRemainder) / ONE_DAY_IN_SECONDS
-  const departureDay = serviceDay.add(daysAfterServiceDay, 'day')
-  const vehicleDepartsToday = now.dayOfYear() === departureDay?.dayOfYear()
+  const departureDay = addDays(serviceDay, daysAfterServiceDay)
+  const vehicleDepartsToday = isSameDay(now, departureDay)
 
   // Determine whether to show departure as countdown (e.g. "5 min") or as HH:mm
   // time, using realtime updates if available.
@@ -103,7 +100,11 @@ const StopTimeCell = ({
         {showDayOfWeek && (
           <div className="percy-hide" style={{ marginBottom: -4 }}>
             <FormattedDayOfWeek
-              day={departureDay.format('dddd').toLowerCase()}
+              // 'iiii' returns the long ISO day of the week (independent of browser locale).
+              // See https://date-fns.org/v2.28.0/docs/format
+              day={format(departureDay, 'iiii', {
+                timeZone: homeTimezone
+              }).toLowerCase()}
             />
           </div>
         )}
@@ -116,12 +117,7 @@ const StopTimeCell = ({
               <FormattedDuration duration={secondsUntilDeparture} />
             )
           ) : (
-            // Show formatted time (with timezone if user is not in home timezone)
-            <FormattedTime
-              timeStyle="short"
-              timeZone={homeTimezone}
-              value={departureTimestamp}
-            />
+            <DepartureTime realTime stopTime={stopTime} />
           )}
         </div>
       </div>

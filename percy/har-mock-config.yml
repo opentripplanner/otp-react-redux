@@ -1,6 +1,6 @@
 branding: HAR test
 title: test environment
-homeTimezone: America/Chicago
+homeTimezone: America/New_York
 
 # Default OTP API
 api:
