@@ -2381,7 +2381,7 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^5.0.2":
+"@opentripplanner/core-utils@^5.0.1", "@opentripplanner/core-utils@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-5.0.2.tgz#5340897aefeebc1cf3ff8b8fdd588659a524d370"
   integrity sha512-gqNCLYhgeZmABMAbmiHoK2JPKhp+UwPLSnl3tyaxpsHt40qz51FFa27XkEFMR8+NZdWKSfjSlTO2njuY2WsTEA==
@@ -2440,12 +2440,10 @@
     "@opentripplanner/core-utils" "^4.5.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^3.0.1":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.0.4.tgz#ca9f1f575d6ad1ffe355d805a7ac0b9f9f126d81"
-  integrity sha512-OKnjcmTZJ8wLbjyQf76GGBS1reojh5E3iLVagJPcd0+cjy5QciqVwOahnoT+j7IQtyA5PCtAyqkC//bJvu24/Q==
+"@opentripplanner/itinerary-body@../otp-ui/packages/itinerary-body":
+  version "3.0.5"
   dependencies:
-    "@opentripplanner/core-utils" "^4.11.2"
+    "@opentripplanner/core-utils" "^5.0.0"
     "@opentripplanner/humanize-distance" "^1.2.0"
     "@opentripplanner/icons" "^1.2.2"
     "@opentripplanner/location-icon" "^1.4.0"
@@ -2456,12 +2454,12 @@
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
-"@opentripplanner/itinerary-body@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.0.5.tgz#f3239c4aaf8649b5a48b12cd08c293a10bcf277e"
-  integrity sha512-ixvXxIv4mFWt1IdwUrgOtGmbyBb5DzEXSkPSzeF4qq5jsVUsB58omtHNCmTxnm5V+JVXoMPiyoY9YE7SfNK6OQ==
+"@opentripplanner/itinerary-body@^3.0.1":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.0.4.tgz#ca9f1f575d6ad1ffe355d805a7ac0b9f9f126d81"
+  integrity sha512-OKnjcmTZJ8wLbjyQf76GGBS1reojh5E3iLVagJPcd0+cjy5QciqVwOahnoT+j7IQtyA5PCtAyqkC//bJvu24/Q==
   dependencies:
-    "@opentripplanner/core-utils" "^5.0.0"
+    "@opentripplanner/core-utils" "^4.11.2"
     "@opentripplanner/humanize-distance" "^1.2.0"
     "@opentripplanner/icons" "^1.2.2"
     "@opentripplanner/location-icon" "^1.4.0"
@@ -2573,12 +2571,10 @@
     lodash.isequal "^4.5.0"
     transitive-js "^0.13.7"
 
-"@opentripplanner/trip-details@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-2.0.0.tgz#ab168e4acbf168e31e9b6f36c83c9706db49f78b"
-  integrity sha512-njnwHr6nF1xmcnwh5tx1XVym6rCgIWSPadVy8LeOyZsHA5NlTeBHRVKwew0H+Dt5HuJtj/PjZpzArJMBZGMitg==
+"@opentripplanner/trip-details@../otp-ui/packages/trip-details":
+  version "2.0.2"
   dependencies:
-    "@opentripplanner/core-utils" "^4.5.0"
+    "@opentripplanner/core-utils" "^5.0.1"
     "@styled-icons/fa-solid" "^10.34.0"
     flat "^5.0.2"
     velocity-react "^1.4.3"
