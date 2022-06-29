@@ -2616,6 +2616,7 @@
     "@mapbox/polyline" "^1.1.1"
     "@opentripplanner/base-map" "^3.0.0-alpha.1"
     "@opentripplanner/core-utils" "^5.0.1"
+    "@turf/bbox" "^6.5.0"
     lodash.isequal "^4.5.0"
     transitive-js "^0.14.1"
 
@@ -3239,6 +3240,14 @@
   dependencies:
     "@turf/helpers" "^6.4.0"
     "@turf/meta" "^6.4.0"
+
+"@turf/bbox@^6.5.0":
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/@turf/bbox/-/bbox-6.5.0.tgz#bec30a744019eae420dac9ea46fb75caa44d8dc5"
+  integrity sha512-RBbLaao5hXTYyyg577iuMtDB8ehxMlUqHEJiMs8jT1GHkFhr6sYre3lmLsPeYEi/ZKj5TP5tt7fkzNdJ4GIVyw==
+  dependencies:
+    "@turf/helpers" "^6.5.0"
+    "@turf/meta" "^6.5.0"
 
 "@turf/bearing@^6.5.0":
   version "6.5.0"
