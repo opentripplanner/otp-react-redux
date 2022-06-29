@@ -273,6 +273,31 @@ itinerary:
   # One fare will always be shown by default
   #defaultFareKey: electronicRegular
 
+  # The following settings must be set to these values to use the new
+  # "Metro" UI. The settings can be used without the Metro UI, but
+  # this may have unexpected effects.
+
+  # When using the metro UI, it is recommended to have 8+ itineraries returned by OTP
+
+  # Whether to show the "# itineraries found" text above the itinerary results
+  showHeaderText: false
+  # Whether to hide the gray loading bars that appear while results are loading
+  hideSkeletons: true
+  # Whether the itinerary listing background should match the header
+  customBatchUiBackground: true
+  # Whether to render itineraries below a mode description header
+  groupByMode: true
+  # Whether to merge itineraries with the same origin, destination, and transit modes
+  groupTransitModes: true
+  # Whether to show the first itinerary on the map. If this is set to false, routes
+  # will only show on the map on hover or click
+  showFirstResultByDefault: false
+  # This flag disables the dot between legs in the metro itnerary summary, replacing it with
+  # a gray background
+  disableMetroSeperatorDot: false
+  # Shows the duration of a leg below the leg in the metro itinerary summary
+  showLegDurations: false
+
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
 # provide operator logos that appear in the the route viewer and itineraries).

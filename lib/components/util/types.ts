@@ -31,8 +31,13 @@ export interface Route {
   sortOrder: number
 }
 
+// FIXME: incomplete
 export interface StopTime {
+  departureDelay: number
+  headsign: string
   pattern: Pattern
+  realtimeDeparture: boolean
+  realtimeState: string
   times: Time[]
 }
 

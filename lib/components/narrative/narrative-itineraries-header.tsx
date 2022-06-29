@@ -17,6 +17,7 @@ const IssueButton = styled.button`
 `
 
 export default function NarrativeItinerariesHeader({
+  customBatchUiBackground,
   errors,
   itineraries,
   itineraryIsExpanded,
@@ -25,9 +26,11 @@ export default function NarrativeItinerariesHeader({
   onToggleShowErrors,
   onViewAllOptions,
   pending,
+  showHeaderText = true,
   showingErrors,
   sort
 }: {
+  customBatchUiBackground?: boolean
   errors: unknown[]
   itineraries: unknown[]
   itineraryIsExpanded: boolean
@@ -36,6 +39,7 @@ export default function NarrativeItinerariesHeader({
   onToggleShowErrors: () => void
   onViewAllOptions: () => void
   pending: boolean
+  showHeaderText: boolean
   showingErrors: boolean
   sort: { direction: string; type: string }
 }): JSX.Element {
@@ -82,45 +86,61 @@ export default function NarrativeItinerariesHeader({
         </>
       ) : (
         <>
-          <div
-            style={{ flexGrow: 1 }}
-            title={
-              pending
-                ? intl.formatMessage({
-                    id: 'components.NarrativeItinerariesHeader.searching'
-                  })
-                : intl.formatMessage(
-                    {
-                      id: 'components.NarrativeItinerariesHeader.itinerariesAndIssues'
-                    },
-                    {
-                      itinerariesFound,
-                      numIssues
-                    }
-                  )
-            }
-          >
-            <span style={{ marginRight: '10px' }}>
-              {pending ? (
-                <FormattedMessage id="components.NarrativeItinerariesHeader.searching" />
-              ) : (
-                itinerariesFound
+          {showHeaderText && (
+            <div
+              style={{ flexGrow: 1 }}
+              title={
+                pending
+                  ? intl.formatMessage({
+                      id: 'components.NarrativeItinerariesHeader.searching'
+                    })
+                  : intl.formatMessage(
+                      {
+                        id: 'components.NarrativeItinerariesHeader.itinerariesAndIssues'
+                      },
+                      {
+                        itinerariesFound,
+                        numIssues
+                      }
+                    )
+              }
+            >
+              <span style={{ marginRight: '10px' }}>
+                {pending ? (
+                  <FormattedMessage id="components.NarrativeItinerariesHeader.searching" />
+                ) : (
+                  itinerariesFound
+                )}
+              </span>
+              {errors.length > 0 && (
+                <IssueButton onClick={onToggleShowErrors}>
+                  <Icon
+                    style={{ fontSize: 11, marginRight: 2 }}
+                    type="warning"
+                  />
+                  <span>{numIssues}</span>
+                </IssueButton>
               )}
-            </span>
-            {errors.length > 0 && (
-              <IssueButton onClick={onToggleShowErrors}>
-                <Icon style={{ fontSize: 11, marginRight: 2 }} type="warning" />
-                <span>{numIssues}</span>
-              </IssueButton>
-            )}
-          </div>
-          <div style={{ display: 'flex', float: 'right' }}>
+            </div>
+          )}
+          <div
+            style={{
+              display: 'flex',
+              float: 'right',
+              marginLeft: showHeaderText ? 'inherit' : 'auto'
+            }}
+          >
             <button
               className="clear-button-formatting"
               onClick={onSortDirChange}
-              style={{ marginRight: '5px' }}
+              style={{
+                marginRight: '5px'
+              }}
             >
-              <Icon type={`sort-amount-${sort.direction.toLowerCase()}`} />
+              <Icon
+                className={`${customBatchUiBackground && 'base-color-bg'}`}
+                type={`sort-amount-${sort.direction.toLowerCase()}`}
+              />
             </button>
             <select
               onBlur={onSortChange}

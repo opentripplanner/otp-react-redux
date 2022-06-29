@@ -1,9 +1,6 @@
 import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage } from 'react-intl'
 import addDays from 'date-fns/addDays'
-// TODO: typescript core-utils, add common types (pattern, stop, configs)
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import coreUtils from '@opentripplanner/core-utils'
 import isSameDay from 'date-fns/isSameDay'
 import React from 'react'

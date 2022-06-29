@@ -1,40 +1,53 @@
-// REMOVE THIS LINE BEFORE EDITING THIS FILE
-/* eslint-disable  */
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+// @ts-expect-error no types available
 import { VelocityTransitionGroup } from 'velocity-react'
 import React, { Component } from 'react'
+import type { Route } from '@opentripplanner/types'
 
-import { stopTimeComparator } from '../../util/viewer'
+import { ComponentContext } from '../../util/contexts'
+import {
+  generateFakeLegForRouteRenderer,
+  stopTimeComparator
+} from '../../util/viewer'
+import { Pattern, Time } from '../util/types'
+import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import Icon from '../util/icon'
 import Strong from '../util/strong-text'
 
 import RealtimeStatusLabel from './realtime-status-label'
 import StopTimeCell from './stop-time-cell'
 
+type Props = {
+  homeTimezone?: any
+  intl: IntlShape
+  pattern: Pattern
+  route: Route
+  stopTimes: Time[]
+  stopViewerArriving: React.ReactNode
+  stopViewerConfig: { numberOfDepartures: number }
+}
+type State = { expanded: boolean }
 /**
  * Represents a single pattern row for displaying arrival times in the stop
  * viewer.
  */
-class PatternRow extends Component {
-  constructor() {
-    super()
+class PatternRow extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props)
     this.state = { expanded: false }
   }
+
+  static contextType = ComponentContext
 
   _toggleExpandedView = () => {
     this.setState({ expanded: !this.state.expanded })
   }
 
   render() {
-    const {
-      homeTimezone,
-      intl,
-      pattern,
-      route,
-      stopTimes,
-      stopViewerArriving,
-      stopViewerConfig
-    } = this.props
+    const { RouteRenderer: CustomRouteRenderer } = this.context
+    const RouteRenderer = CustomRouteRenderer || DefaultRouteRenderer
+    const { homeTimezone, intl, pattern, route, stopTimes, stopViewerConfig } =
+      this.props
 
     // sort stop times by next departure
     let sortedStopTimes = []
@@ -54,17 +67,21 @@ class PatternRow extends Component {
     }
 
     const routeName = route.shortName ? route.shortName : route.longName
+
     return (
       <div className="route-row" role="table">
         {/* header row */}
         <div className="header" role="row">
           {/* route name */}
           <div className="route-name">
+            <strong>
+              <RouteRenderer leg={generateFakeLegForRouteRenderer(route)} />
+            </strong>
             <FormattedMessage
               id="components.PatternRow.routeName"
               values={{
                 headsign: pattern.headsign,
-                routeName: routeName,
+                routeName: '',
                 strong: Strong
               }}
             />
@@ -74,7 +91,6 @@ class PatternRow extends Component {
             <div className="next-trip-preview" role="columnheader">
               <StopTimeCell
                 homeTimezone={homeTimezone}
-                soonText={stopViewerArriving}
                 stopTime={sortedStopTimes[0]}
               />
             </div>
@@ -143,7 +159,6 @@ class PatternRow extends Component {
                         <div className="cell time-column" role="cell">
                           <StopTimeCell
                             homeTimezone={homeTimezone}
-                            soonText={stopViewerArriving}
                             stopTime={stopTime}
                           />
                         </div>
