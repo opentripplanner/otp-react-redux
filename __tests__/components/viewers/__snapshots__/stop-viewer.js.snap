@@ -1317,7 +1317,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-fFucqa YlQvI"
+                                        className="sc-fFucqa kUqmgT"
                                         color="333333"
                                       >
                                         20
@@ -3240,7 +3240,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-fFucqa YlQvI"
+                                        className="sc-fFucqa kUqmgT"
                                         color="333333"
                                       >
                                         20
@@ -5244,7 +5244,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-fFucqa YlQvI"
+                                        className="sc-fFucqa kUqmgT"
                                         color="333333"
                                       >
                                         20
@@ -8447,7 +8447,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-fFucqa YlQvI"
+                                        className="sc-fFucqa kUqmgT"
                                         color="333333"
                                       >
                                         20
@@ -8894,7 +8894,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-fFucqa YlQvI"
+                                        className="sc-fFucqa kUqmgT"
                                         color="333333"
                                       >
                                         36
@@ -9341,7 +9341,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-fFucqa YlQvI"
+                                        className="sc-fFucqa kUqmgT"
                                         color="333333"
                                       >
                                         94
@@ -9896,7 +9896,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-fFucqa YlQvI"
+                                        className="sc-fFucqa kUqmgT"
                                         color="333333"
                                       >
                                         94
@@ -14120,7 +14120,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-fFucqa YlQvI"
+                                        className="sc-fFucqa kUqmgT"
                                         color="333333"
                                       >
                                         20
