@@ -6,7 +6,7 @@ import styled from 'styled-components'
 // doesn't allow us to style it from within the RouteBlock
 const Block = styled.section<{ color: string }>`
   background: #${(props) => props.color}1A;
-  padding: 2px 5px;
+  padding: 3px 7px;
   border-top: 5px solid #${(props) => props.color};
   border-radius: 5px;
   text-align: center;

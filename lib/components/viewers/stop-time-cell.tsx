@@ -1,5 +1,5 @@
 import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
-import { FormattedMessage, FormattedTime } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import addDays from 'date-fns/addDays'
 import coreUtils from '@opentripplanner/core-utils'
 import isSameDay from 'date-fns/isSameDay'
