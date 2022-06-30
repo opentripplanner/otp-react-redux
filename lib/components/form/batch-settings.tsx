@@ -222,7 +222,15 @@ class BatchSettings extends Component<Props, State> {
               id: 'components.BatchSettings.planTripTooltip'
             })}
           >
-            <Icon className="fa-2x" type="refresh" />
+            <Icon
+              className="fa-2x"
+              type={
+                hasValidLocation(currentQuery, 'from') ||
+                hasValidLocation(currentQuery, 'to')
+                  ? 'refresh'
+                  : 'search'
+              }
+            />
           </PlanTripButton>
         </MainSettingsRow>
         {expanded === 'DATE_TIME' && (
