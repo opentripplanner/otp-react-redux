@@ -50,7 +50,7 @@
     "@opentripplanner/route-viewer-overlay": "../otp-ui/packages/route-viewer-overlay",
     "@opentripplanner/stop-viewer-overlay": "../otp-ui/packages/stop-viewer-overlay",
     "@opentripplanner/stops-overlay": "../otp-ui/packages/stops-overlay",
-    "@opentripplanner/transit-vehicle-overlay": "^2.4.0",
+    "@opentripplanner/transit-vehicle-overlay": "../otp-ui/packages/transit-vehicle-overlay",
     "@opentripplanner/transitive-overlay": "../otp-ui/packages/transitive-overlay",
     "@opentripplanner/trip-details": "^2.0.0",
     "@opentripplanner/trip-viewer-overlay": "../otp-ui/packages/trip-viewer-overlay",

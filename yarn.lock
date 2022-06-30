@@ -2400,7 +2400,7 @@
     maplibre-gl "^2.1.9"
     react-map-gl "^7.0.15"
 
-"@opentripplanner/core-utils@^4.1.0", "@opentripplanner/core-utils@^4.11.0", "@opentripplanner/core-utils@^4.11.2", "@opentripplanner/core-utils@^4.11.5", "@opentripplanner/core-utils@^4.5.0":
+"@opentripplanner/core-utils@^4.11.0", "@opentripplanner/core-utils@^4.11.2", "@opentripplanner/core-utils@^4.11.5", "@opentripplanner/core-utils@^4.5.0":
   version "4.11.5"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-4.11.5.tgz#ac90d443009fab02aae971d4ed6c1e0fc7da134f"
   integrity sha512-oVVfbQqzHaY82cYLRm/GpybCo5LsDa8PTJQDU/w/DJLqSqyYm2I2sitQxk6jvmP6Zq80asdxMRvM8Si8yI77aQ==
@@ -2486,7 +2486,7 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.2.0.tgz#71cf5d5d1b756adef15300edbba0995ccd4b35ee"
   integrity sha512-x0QRXMDhypFeazZ6r6vzrdU8vhiV56nZ/WX6zUbxpgp6T9Oclw0gwR2Zdw6DZiiFpSYVNeVNxVzZwsu6NRGjcA==
 
-"@opentripplanner/icons@^1.2.1", "@opentripplanner/icons@^1.2.2":
+"@opentripplanner/icons@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-1.2.2.tgz#18c93ce34afe2d83a2f0fc6ecea85aa587d14366"
   integrity sha512-SwHAGyayHAPSVKIVbY1mNXq+ZLA1If61onE0mATKh+sifKnKpjRWgHeEHDpeZu6Dz0mIXnY82tcNUvArjeSxig==
@@ -2594,21 +2594,11 @@
     "@opentripplanner/from-to-location-picker" "^2.1.2"
     flat "^5.0.2"
 
-"@opentripplanner/transit-vehicle-overlay@^2.4.0":
+"@opentripplanner/transit-vehicle-overlay@../otp-ui/packages/transit-vehicle-overlay":
   version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-2.4.0.tgz#338ebc92b2af5dcb7813e11d8ffbd33b780f9b7a"
-  integrity sha512-c7vnn1e2NiN+65HtlB5Wv4iO3wAnJzJoBpCBqgLEoulgM1ppdZaiETYf6CERLN+QLH2p0CV+Sw7V+pFOmEnTzA==
   dependencies:
-    "@opentripplanner/core-utils" "^4.5.0"
-    "@opentripplanner/icons" "^1.2.1"
-    "@opentripplanner/zoom-based-markers" "^1.2.1"
-    "@styled-icons/fa-solid" "^10.34.0"
-    "@turf/helpers" "^6.5.0"
-    "@turf/nearest-point-on-line" "^6.5.0"
+    "@opentripplanner/base-map" "^3.0.0-alpha.1"
     flat "^5.0.2"
-    leaflet-rotatedmarker "^0.2.0"
-    lodash.clonedeep "^4.5.0"
-    throttle-debounce "^2.1.0"
 
 "@opentripplanner/transitive-overlay@../otp-ui/packages/transitive-overlay":
   version "1.1.5"
@@ -2668,13 +2658,6 @@
     flat "^5.0.2"
     lodash.memoize "^4.1.2"
     react-map-gl "^7.0.15"
-
-"@opentripplanner/zoom-based-markers@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/zoom-based-markers/-/zoom-based-markers-1.2.1.tgz#a6ce157ed0169b1098d1ddad3691a712fb6b243b"
-  integrity sha512-2MatM0+PrymcOzRsaCwmHO1nBkJfsBraGUqVkl04oUdwXQx9qKuzba2zq5CEPLacnGOF3EViZcT0kSd/wLzUpA==
-  dependencies:
-    "@opentripplanner/core-utils" "^4.1.0"
 
 "@percy/cli-build@1.0.0-beta.76":
   version "1.0.0-beta.76"
@@ -3233,14 +3216,6 @@
     "@turf/helpers" "^6.5.0"
     "@turf/invariant" "^6.5.0"
 
-"@turf/bbox@*":
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/@turf/bbox/-/bbox-6.4.0.tgz#aeca4ce9e5146cddbc133d8bbb9884b058d8c653"
-  integrity sha512-eASq6Op3sGAA293Qo3gTwuQAvdoQCKah4rgA5FZkQ2xvkYquQnkUhV2U18bFgw58aSP1g2Y+rpmSEPHDFX6/6g==
-  dependencies:
-    "@turf/helpers" "^6.4.0"
-    "@turf/meta" "^6.4.0"
-
 "@turf/bbox@^6.5.0":
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/@turf/bbox/-/bbox-6.5.0.tgz#bec30a744019eae420dac9ea46fb75caa44d8dc5"
@@ -3273,7 +3248,7 @@
     "@turf/helpers" "^6.5.0"
     "@turf/invariant" "^6.5.0"
 
-"@turf/helpers@6.x", "@turf/helpers@^6.4.0", "@turf/helpers@^6.5.0":
+"@turf/helpers@^6.5.0":
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-6.5.0.tgz#f79af094bd6b8ce7ed2bd3e089a8493ee6cae82e"
   integrity sha512-VbI1dV5bLFzohYYdgqwikdMVpe7pJ9X3E+dlr425wa2/sMJqYDhTO++ec38/pcPvPE6oD9WEEeU3Xu3gza+VPw==
@@ -3285,45 +3260,12 @@
   dependencies:
     "@turf/helpers" "^6.5.0"
 
-"@turf/line-intersect@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/line-intersect/-/line-intersect-6.5.0.tgz#dea48348b30c093715d2195d2dd7524aee4cf020"
-  integrity sha512-CS6R1tZvVQD390G9Ea4pmpM6mJGPWoL82jD46y0q1KSor9s6HupMIo1kY4Ny+AEYQl9jd21V3Scz20eldpbTVA==
-  dependencies:
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
-    "@turf/line-segment" "^6.5.0"
-    "@turf/meta" "^6.5.0"
-    geojson-rbush "3.x"
-
-"@turf/line-segment@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/line-segment/-/line-segment-6.5.0.tgz#ee73f3ffcb7c956203b64ed966d96af380a4dd65"
-  integrity sha512-jI625Ho4jSuJESNq66Mmi290ZJ5pPZiQZruPVpmHkUw257Pew0alMmb6YrqYNnLUuiVVONxAAKXUVeeUGtycfw==
-  dependencies:
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
-    "@turf/meta" "^6.5.0"
-
-"@turf/meta@6.x", "@turf/meta@^6.4.0", "@turf/meta@^6.5.0":
+"@turf/meta@^6.5.0":
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/@turf/meta/-/meta-6.5.0.tgz#b725c3653c9f432133eaa04d3421f7e51e0418ca"
   integrity sha512-RrArvtsV0vdsCBegoBtOalgdSOfkBrTJ07VkpiCnq/491W67hnMWmDu7e6Ztw0C3WldRYTXkg3SumfdzZxLBHA==
   dependencies:
     "@turf/helpers" "^6.5.0"
-
-"@turf/nearest-point-on-line@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/nearest-point-on-line/-/nearest-point-on-line-6.5.0.tgz#8e1cd2cdc0b5acaf4c8d8b3b33bb008d3cb99e7b"
-  integrity sha512-WthrvddddvmymnC+Vf7BrkHGbDOUu6Z3/6bFYUGv1kxw8tiZ6n83/VG6kHz4poHOfS0RaNflzXSkmCi64fLBlg==
-  dependencies:
-    "@turf/bearing" "^6.5.0"
-    "@turf/destination" "^6.5.0"
-    "@turf/distance" "^6.5.0"
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
-    "@turf/line-intersect" "^6.5.0"
-    "@turf/meta" "^6.5.0"
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.14", "@types/babel__core@^7.1.7":
   version "7.1.15"
@@ -3390,7 +3332,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/geojson@*", "@types/geojson@7946.0.8", "@types/geojson@^7946.0.8":
+"@types/geojson@*", "@types/geojson@^7946.0.8":
   version "7946.0.8"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.8.tgz#30744afdb385e2945e22f3b033f897f76b1f12ca"
   integrity sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==
@@ -10120,17 +10062,6 @@ geocoder-arcgis@^2.0.5:
     lodash.isobject "^3.0.2"
     lodash.isstring "^4.0.1"
 
-geojson-rbush@3.x:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/geojson-rbush/-/geojson-rbush-3.2.0.tgz#8b543cf0d56f99b78faf1da52bb66acad6dfc290"
-  integrity sha512-oVltQTXolxvsz1sZnutlSuLDEcQAKYC/uXt9zDzJJ6bu0W+baTI8LZBaTup5afzibEH4N3jlq2p+a152wlBJ7w==
-  dependencies:
-    "@turf/bbox" "*"
-    "@turf/helpers" "6.x"
-    "@turf/meta" "6.x"
-    "@types/geojson" "7946.0.8"
-    rbush "^3.0.1"
-
 geojson-vt@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/geojson-vt/-/geojson-vt-3.2.1.tgz#f8adb614d2c1d3f6ee7c4265cad4bbf3ad60c8b7"
@@ -13013,11 +12944,6 @@ lcid@^1.0.0:
   integrity sha1-MIrMr6C8SDo4Z7S28rlQYlHRuDU=
   dependencies:
     invert-kv "^1.0.0"
-
-leaflet-rotatedmarker@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/leaflet-rotatedmarker/-/leaflet-rotatedmarker-0.2.0.tgz#4467f49f98d1bfd56959bd9c6705203dd2601277"
-  integrity sha1-RGf0n5jRv9VpWb2cZwUgPdJgEnc=
 
 leven@^3.1.0:
   version "3.1.0"
@@ -16964,13 +16890,6 @@ raw-body@2.4.0:
     http-errors "1.7.2"
     iconv-lite "0.4.24"
     unpipe "1.0.0"
-
-rbush@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/rbush/-/rbush-3.0.1.tgz#5fafa8a79b3b9afdfe5008403a720cc1de882ecf"
-  integrity sha512-XRaVO0YecOpEuIvbhbpTrZgoiI6xBlz6hnlr6EHhd+0x9ase6EmeN+hdwwUaJvLcsFFQ8iWVF1GAK1yB0BWi0w==
-  dependencies:
-    quickselect "^2.0.0"
 
 rc@^1.0.1, rc@^1.1.6, rc@^1.2.8:
   version "1.2.8"
