@@ -1,7 +1,4 @@
 import { FormattedTime } from 'react-intl'
-// TYPESCRIPT TODO: wait for typescripted core-utils
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { isTransit } from '@opentripplanner/core-utils/lib/itinerary'
 import { Leg } from '@opentripplanner/types'
 import React, { ReactElement } from 'react'

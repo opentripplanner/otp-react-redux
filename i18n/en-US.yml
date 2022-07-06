@@ -172,7 +172,7 @@ components:
     clickDetails: Click to view details
     # Use ordered placeholders when multiple modes are involved
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
-    multiModeSummary: "{accessMode} to {transitMode}"
+    multiModeSummary: "{accessMode} + {transitMode}"
   DeleteUser:
     deleteMyAccount: Delete my account
   EnhancedStopMarker:
@@ -224,6 +224,13 @@ components:
     satellite: Satellite
     stops: Transit Stops
     streets: Streets    
+  MetroUI:
+    leaveAt: You leave
+    arriveAtTime: "Arrive at {time}" 
+    timeWalking: "{time} walking"
+    fromStop: "from {stop}"
+    orAlternatives: or other routes in the same direction
+    itineraryDescription: "{time} itinerary using {routes}"
   MobileOptions:
     header: Set Search Options
   ModeDropdown:
@@ -649,7 +656,6 @@ common:
   forms:
     back: Back
     cancel: Cancel
-    clear: Clear
     close: Close
     error: error!
     defaultValue: "{value} (default)"
@@ -691,7 +697,7 @@ common:
     funicular: Funicular
     gondola: Gondola
     micromobility: E-Scooter
-    micromobility_rent: Rental E-Scooter
+    micromobility_rent: E-Scooter
     rail: Rail
     rent: Rental options
     subway: Subway
@@ -784,6 +790,7 @@ config:
   # Default values for Flex Indicator (set in configuration as well)
   flex:
     flex-service: Flex Service
+    flex-service-colon: "Flex Service:"
     both: See bottom of itinerary for details
     call-ahead: Call to reserve
     continuous-dropoff: Communicate with operator about stop
