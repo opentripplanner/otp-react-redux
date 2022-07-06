@@ -9,16 +9,18 @@ import TransitiveCanvasOverlay, {
 
 import { getTransitiveData } from '../../util/state'
 
+type ItineraryData = {
+  companies?: Company[]
+  disableFlexArc: boolean
+  getTransitiveRouteLabel: (leg: Leg) => string
+  hasItineraryResponse: boolean
+  hasResponse: boolean
+  itineraryToRender: Itinerary
+  otpResponse: unknown
+}
+
 type Props = {
-  itineraryData: {
-    companies: Company[]
-    disableFlexArc: boolean
-    getTransitiveRouteLabel: (leg: Leg) => string
-    hasItineraryResponse: boolean
-    hasResponse: boolean
-    itineraryToRender: Itinerary
-    otpResponse: unknown
-  }
+  itineraryData: ItineraryData
   labeledModes: string[]
   styles: {
     labels: Record<string, unknown>
@@ -28,6 +30,8 @@ type Props = {
 
 const ConnectedTransitiveOverlay = (props: Props) => {
   const { itineraryData, labeledModes, styles } = props
+  const intl = useIntl()
+  if (!itineraryData) return null
   const {
     companies,
     disableFlexArc,
@@ -37,8 +41,6 @@ const ConnectedTransitiveOverlay = (props: Props) => {
     itineraryToRender,
     otpResponse
   } = itineraryData
-
-  const intl = useIntl()
 
   let transitiveData
   if (hasResponse) {
@@ -78,19 +80,11 @@ const mapStateToProps = (state: Record<string, any>, ownProps: Props) => {
     return {}
   }
 
-  const transitiveData: {
-    companies: Company[]
-    disableFlexArc: boolean
-    getTransitiveRouteLabel: (leg: Leg) => string
-    hasItineraryResponse: boolean
-    hasResponse: boolean
-    itineraryToRender: Itinerary
-    otpResponse: unknown
-    // @ts-expect-error state.js is not typescripted
-  } = getTransitiveData(state, ownProps)
+  // @ts-expect-error state.js is not typescripted
+  const itineraryData: ItineraryData = getTransitiveData(state, ownProps)
 
   const obj = {
-    itineraryData: transitiveData,
+    itineraryData,
     labeledModes,
     styles
   } // generate implicit type
