@@ -2363,10 +2363,10 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-5.0.0.tgz#15665da74d3a216576b95f48905efb7f9a780ed0"
-  integrity sha512-wxuIdsLi0JzRDiJPKxOsdVBAuDDaZZRqwVVWWMmZEMi1sVLt90G5vtcpEbzx3ry7FAmYYki+DWzJLLs5+dGP/g==
+"@opentripplanner/core-utils@^5.0.0", "@opentripplanner/core-utils@^5.0.1":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-5.0.2.tgz#5340897aefeebc1cf3ff8b8fdd588659a524d370"
+  integrity sha512-gqNCLYhgeZmABMAbmiHoK2JPKhp+UwPLSnl3tyaxpsHt40qz51FFa27XkEFMR8+NZdWKSfjSlTO2njuY2WsTEA==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.2.2"
@@ -2381,10 +2381,10 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-5.0.2.tgz#5340897aefeebc1cf3ff8b8fdd588659a524d370"
-  integrity sha512-gqNCLYhgeZmABMAbmiHoK2JPKhp+UwPLSnl3tyaxpsHt40qz51FFa27XkEFMR8+NZdWKSfjSlTO2njuY2WsTEA==
+"@opentripplanner/core-utils@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-6.0.0.tgz#0e1fd2d6070146c6e11569933fa7a65c75bc69b6"
+  integrity sha512-iIpDK9v+9BRtawWl+4rxBA+wu6/a1WZeJ08RNHEDjBVuTSL146YqwfOeMMKtTvGOkEvH9NjlPAK5IESwYhww3g==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.2.2"
@@ -2456,10 +2456,26 @@
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
-"@opentripplanner/itinerary-body@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.0.5.tgz#f3239c4aaf8649b5a48b12cd08c293a10bcf277e"
-  integrity sha512-ixvXxIv4mFWt1IdwUrgOtGmbyBb5DzEXSkPSzeF4qq5jsVUsB58omtHNCmTxnm5V+JVXoMPiyoY9YE7SfNK6OQ==
+"@opentripplanner/itinerary-body@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.1.1.tgz#854e83022de09cb023e7f96ae38bb6e625db82b5"
+  integrity sha512-fGKu7xSHok5FcKK5lEHtintHiEpcsUm1NE35ZZHRW7b5ejqBedq8/Be4Fo5WocEWZz9MWb1yyG2YqctceBYofw==
+  dependencies:
+    "@opentripplanner/core-utils" "^5.0.0"
+    "@opentripplanner/humanize-distance" "^1.2.0"
+    "@opentripplanner/icons" "^1.2.2"
+    "@opentripplanner/location-icon" "^1.4.0"
+    "@styled-icons/fa-solid" "^10.34.0"
+    "@styled-icons/foundation" "^10.34.0"
+    flat "^5.0.2"
+    moment "^2.24.0"
+    react-resize-detector "^4.2.1"
+    velocity-react "^1.4.3"
+
+"@opentripplanner/itinerary-body@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.0.0.tgz#ddddb9279c62d38613fbfc6c8e51a4a25975479b"
+  integrity sha512-rGv8ZRiQxQ9lzXJsGZd67DMl7pc2byqJ7wUUYgSjUZ53uTvcXmdg16kHRLxEOdW09fjpMQ1Dv3ZYHrgvIhwhpw==
   dependencies:
     "@opentripplanner/core-utils" "^5.0.0"
     "@opentripplanner/humanize-distance" "^1.2.0"
@@ -2564,14 +2580,15 @@
     lodash.clonedeep "^4.5.0"
     throttle-debounce "^2.1.0"
 
-"@opentripplanner/transitive-overlay@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-1.1.4.tgz#569d00b07bd32d78af178a2b64bbc5d211e01c2a"
-  integrity sha512-2kCgLg447H3l27qpX0ZquubqdkQQNWQwuuscLY135KwCkQOmqjwznw0yGN9E9EdA+1LOmMiZA//gnc6GkB3yUg==
+"@opentripplanner/transitive-overlay@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-2.0.0.tgz#b4ba2dd8a3566232625671d0a216bdbf65553623"
+  integrity sha512-CXR0vbWdj5Ccie9ugDAG5t7ivomNPRkALq6ITGqlcOy8IybUxDxXfSEB9uaUVvfisYi+oBK36dx2Fe+CL6r6iw==
   dependencies:
-    "@opentripplanner/core-utils" "^4.5.0"
+    "@opentripplanner/core-utils" "^5.0.1"
+    "@opentripplanner/itinerary-body" "^3.1.1"
     lodash.isequal "^4.5.0"
-    transitive-js "^0.13.7"
+    transitive-js "^0.14.1"
 
 "@opentripplanner/trip-details@^2.0.0":
   version "2.0.0"
@@ -19632,23 +19649,6 @@ tr46@^2.1.0:
   integrity sha512-15Ih7phfcdP5YxqiB+iDtLoaTz4Nd35+IiAv0kQ5FNKHzXgdWqPoTIqEDDJmXceQt4JZk6lVPT8lnDlPpGDppw==
   dependencies:
     punycode "^2.1.1"
-
-transitive-js@^0.13.7:
-  version "0.13.8"
-  resolved "https://registry.yarnpkg.com/transitive-js/-/transitive-js-0.13.8.tgz#da06b459c53f8248ef861d913bb847a2c7e92071"
-  integrity sha512-cLDsOHfuNikFUPMZeCrVbJJCfmJCItlZnyAWsknr5TAnsZrnAP5hZqabyVFf1UAhBhNlcXktT3Y4kihaqcT/1Q==
-  dependencies:
-    augment "4.3.0"
-    component-each "0.2.6"
-    component-emitter "1.2.1"
-    d3 "^3.5.8"
-    debug "^2.5.1"
-    lodash.foreach "^4.5.0"
-    measure-text "^0.0.4"
-    priorityqueuejs "1.0.0"
-    rounded-rect "^0.0.1"
-    sphericalmercator "^1.0.5"
-    svg.js "^2.6.5"
 
 transitive-js@^0.14.1:
   version "0.14.1"
