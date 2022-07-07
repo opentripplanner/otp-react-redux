@@ -1,20 +1,23 @@
-// import moment from 'moment'
 import React, { Component } from 'react'
+
+interface State {
+  counterString: number
+}
 
 /**
  * Component that displays the call time (ticking with each second)
  * for an active call (assumes that mount time corresponds with call start).
  */
-export default class CallTimeCounter extends Component {
+export default class CallTimeCounter extends Component<HTMLDivElement, State> {
   state = {
     counterString: 0
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this._startRefresh()
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this._stopRefresh()
   }
 
@@ -29,7 +32,7 @@ export default class CallTimeCounter extends Component {
 
   _refreshCounter = () => {
     const counterString = this.state.counterString + 1
-    this.setState({counterString})
+    this.setState({ counterString })
   }
 
   _startRefresh = () => {
@@ -42,14 +45,14 @@ export default class CallTimeCounter extends Component {
     window.clearInterval(this.state.timer)
   }
 
-  render () {
-    const {className} = this.props
+  render() {
+    const { className } = this.props
     return (
       <div
         // Pass the className for styling with
         // styled-components
         className={className}
-        style={{display: 'inline'}}
+        style={{ display: 'inline' }}
       >
         {this._formatSeconds(this.state.counterString)}
       </div>
