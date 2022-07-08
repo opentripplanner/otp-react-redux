@@ -1,7 +1,5 @@
-import { Company, Itinerary, Leg } from '@opentripplanner/types'
 import { connect } from 'react-redux'
-import { injectIntl, IntlShape, useIntl } from 'react-intl'
-import React from 'react'
+import { injectIntl, IntlShape } from 'react-intl'
 // @ts-expect-error state.js is not typescripted
 import TransitiveCanvasOverlay from '@opentripplanner/transitive-overlay'
 
