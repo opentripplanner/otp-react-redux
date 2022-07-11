@@ -1,7 +1,6 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-import { Itinerary } from '@opentripplanner/types'
 // @ts-expect-error not typescripted yet
 import PrintableItinerary from '@opentripplanner/printable-itinerary'
 import React, { Component } from 'react'
@@ -14,6 +13,7 @@ import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary } from '../../util/state'
 import { parseUrlQueryString } from '../../actions/form'
 import { routingQuery } from '../../actions/api'
+import { setMapCenter } from '../../actions/config'
 import DefaultMap from '../map/default-map'
 import Icon from '../util/icon'
 import SpanWithSpace from '../util/span-with-space'
@@ -22,10 +22,12 @@ import TripDetails from '../narrative/connected-trip-details'
 type Props = {
   // TODO: Typescript config type
   config: any
+  currentQuery: any
   // TODO: typescript state.js
   itinerary: any
   location?: { search?: string }
   parseUrlQueryString: (params?: any, source?: string) => any
+  setMapCenter: ({ lat, lon }: { lat: number; lon: number }) => void
 }
 type State = {
   mapVisible?: boolean
@@ -54,7 +56,17 @@ class PrintLayout extends Component<Props, State> {
   }
 
   componentDidMount() {
-    const { itinerary, location, parseUrlQueryString } = this.props
+    const {
+      currentQuery,
+      itinerary,
+      location,
+      parseUrlQueryString,
+      setMapCenter
+    } = this.props
+    // TODO: this is an annoying hack. Ideally we wouldn't wipe out initLat and initLon
+    // TODO: is there a way to adjust transitiveData to force the transitive overlay to re-adjust bounds?
+    const { lat, lon } = currentQuery.from
+
     // Add print-view class to html tag to ensure that iOS scroll fix only applies
     // to non-print views.
     addPrintViewClassToRootHtml()
@@ -62,6 +74,8 @@ class PrintLayout extends Component<Props, State> {
     if (!itinerary && location && location.search) {
       parseUrlQueryString()
     }
+
+    setMapCenter({ lat, lon })
   }
 
   componentWillUnmount() {
@@ -126,13 +140,15 @@ class PrintLayout extends Component<Props, State> {
 const mapStateToProps = (state: any) => {
   return {
     config: state.otp.config,
+    currentQuery: state.otp.currentQuery,
     itinerary: getActiveItinerary(state)
   }
 }
 
 const mapDispatchToProps = {
   parseUrlQueryString,
-  routingQuery
+  routingQuery,
+  setMapCenter
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PrintLayout)
