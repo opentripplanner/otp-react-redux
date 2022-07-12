@@ -6,9 +6,9 @@ import TransitiveCanvasOverlay from '@opentripplanner/transitive-overlay'
 import { getTransitiveData } from '../../util/state'
 
 type Props = {
-  intl: IntlShape
-  labeledModes: string[]
-  styles: {
+  intl?: IntlShape
+  labeledModes?: string[]
+  styles?: {
     labels: Record<string, unknown>
     segmentLabels: Record<string, unknown>
   }
