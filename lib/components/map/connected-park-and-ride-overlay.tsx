@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import ParkAndRideOverlay from '@opentripplanner/park-and-ride-overlay'
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 
 import { parkAndRideQuery } from '../../actions/api'
 import { setLocation } from '../../actions/map'
@@ -10,23 +10,18 @@ type ParkAndRideParams = {
   // FIXME: properly type
 }
 
-class ConnectedParkAndRideOverlay extends Component<
-  { parkAndRideQuery: (params: ParkAndRideParams) => void } & ParkAndRideParams
-> {
-  componentDidMount() {
+// rewrote this as a functional component, still need to add more Typescript
+function ConnectedParkAndRideOverlay(props: any): JSX.Element {
+  useEffect(() => {
     const params: ParkAndRideParams = {}
-    if (this.props.maxTransitDistance) {
-      params.maxTransitDistance = this.props.maxTransitDistance
+    if (props.maxTransitDistance) {
+      params.maxTransitDistance = props.maxTransitDistance
     }
-    // TODO: support config-defined bounding envelope
 
-    this.props.parkAndRideQuery(params)
-  }
+    props.parkAndRideQuery(params)
+  }, [])
 
-  render() {
-    // @ts-expect-error TODO: re-write this component as a functional component and properly type
-    return <ParkAndRideOverlay {...this.props} />
-  }
+  return <ParkAndRideOverlay {...props} />
 }
 
 // connect to the redux store
