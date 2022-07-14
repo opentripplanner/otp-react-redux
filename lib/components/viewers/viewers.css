@@ -3,8 +3,11 @@
 .otp .route-viewer-header,
 .otp .stop-viewer-header,
 .otp .trip-viewer-header {
-  background-color: #ddd;
+  background-color: #FFF;
   padding: 12px;
+  border: 1px solid #a6a6a6;
+  margin: 10px;
+  border-radius: 10px;
 }
 
 .otp .route-viewer,
