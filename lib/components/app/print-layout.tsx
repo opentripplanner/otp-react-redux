@@ -29,6 +29,7 @@ type Props = {
   parseUrlQueryString: (params?: any, source?: string) => any
   setMapCenter: ({ lat, lon }: { lat: number; lon: number }) => void
 }
+
 type State = {
   mapVisible?: boolean
 }
