@@ -566,13 +566,13 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTEea iqivwV"
+                          className="sc-gInthZ fFpLwO"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                            className="fa fa-calendar fa-fw sc-gInthZ fFpLwO"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -779,7 +779,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
               </div>
               <styled.div>
                 <div
-                  className="sc-iwyWTf frukpT"
+                  className="sc-fHYyUA dsBqmr"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -1300,12 +1300,37 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               <div
                                 className="route-name"
                               >
+                                <strong>
+                                  <DefaultRouteRenderer
+                                    leg={
+                                      Object {
+                                        "agencyId": undefined,
+                                        "mode": "BUS",
+                                        "routeColor": undefined,
+                                        "routeLongName": "Burnside/Stark",
+                                        "routeShortName": "20",
+                                        "routeTextColor": undefined,
+                                      }
+                                    }
+                                  >
+                                    <styled.section
+                                      color="333333"
+                                    >
+                                      <section
+                                        className="sc-eFuaqX gcNSTz"
+                                        color="333333"
+                                      >
+                                        20
+                                      </section>
+                                    </styled.section>
+                                  </DefaultRouteRenderer>
+                                </strong>
                                 <FormattedMessage
                                   id="components.PatternRow.routeName"
                                   values={
                                     Object {
                                       "headsign": "Gresham TC",
-                                      "routeName": "20",
+                                      "routeName": "",
                                       "strong": [Function],
                                     }
                                   }
@@ -1489,7 +1514,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           margin={0.25}
                         >
                           <span
-                            className="sc-hBEYId kYwHch"
+                            className="sc-FyeoB fqliIl"
                           >
                             <input
                               name="autoUpdate"
@@ -1524,13 +1549,13 @@ exports[`components > viewers > stop viewer should render countdown times after 
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTEea iqivwV fa-spin"
+                              className="sc-gInthZ fFpLwO fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                                className="fa fa-refresh fa-fw sc-gInthZ fFpLwO fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -2344,7 +2369,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-fodVek klHrRi"
+                                          className="sc-jXktde kmcqbz"
                                         >
                                           P
                                         </div>
@@ -2743,13 +2768,13 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTEea iqivwV"
+                          className="sc-gInthZ fFpLwO"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                            className="fa fa-calendar fa-fw sc-gInthZ fFpLwO"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -2956,7 +2981,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
               </div>
               <styled.div>
                 <div
-                  className="sc-iwyWTf frukpT"
+                  className="sc-fHYyUA dsBqmr"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -3198,12 +3223,37 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               <div
                                 className="route-name"
                               >
+                                <strong>
+                                  <DefaultRouteRenderer
+                                    leg={
+                                      Object {
+                                        "agencyId": undefined,
+                                        "mode": "BUS",
+                                        "routeColor": undefined,
+                                        "routeLongName": "Burnside/Stark",
+                                        "routeShortName": "20",
+                                        "routeTextColor": undefined,
+                                      }
+                                    }
+                                  >
+                                    <styled.section
+                                      color="333333"
+                                    >
+                                      <section
+                                        className="sc-eFuaqX gcNSTz"
+                                        color="333333"
+                                      >
+                                        20
+                                      </section>
+                                    </styled.section>
+                                  </DefaultRouteRenderer>
+                                </strong>
                                 <FormattedMessage
                                   id="components.PatternRow.routeName"
                                   values={
                                     Object {
                                       "headsign": "Gresham TC",
-                                      "routeName": "20",
+                                      "routeName": "",
                                       "strong": [Function],
                                     }
                                   }
@@ -3387,7 +3437,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           margin={0.25}
                         >
                           <span
-                            className="sc-hBEYId kYwHch"
+                            className="sc-FyeoB fqliIl"
                           >
                             <input
                               name="autoUpdate"
@@ -3422,13 +3472,13 @@ exports[`components > viewers > stop viewer should render countdown times for st
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTEea iqivwV fa-spin"
+                              className="sc-gInthZ fFpLwO fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                                className="fa fa-refresh fa-fw sc-gInthZ fFpLwO fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -3846,7 +3896,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-fodVek klHrRi"
+                                          className="sc-jXktde kmcqbz"
                                         >
                                           P
                                         </div>
@@ -4443,13 +4493,13 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTEea iqivwV"
+                          className="sc-gInthZ fFpLwO"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                            className="fa fa-calendar fa-fw sc-gInthZ fFpLwO"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -4656,7 +4706,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
               </div>
               <styled.div>
                 <div
-                  className="sc-iwyWTf frukpT"
+                  className="sc-fHYyUA dsBqmr"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -5177,12 +5227,37 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               <div
                                 className="route-name"
                               >
+                                <strong>
+                                  <DefaultRouteRenderer
+                                    leg={
+                                      Object {
+                                        "agencyId": undefined,
+                                        "mode": "BUS",
+                                        "routeColor": undefined,
+                                        "routeLongName": "Burnside/Stark",
+                                        "routeShortName": "20",
+                                        "routeTextColor": undefined,
+                                      }
+                                    }
+                                  >
+                                    <styled.section
+                                      color="333333"
+                                    >
+                                      <section
+                                        className="sc-eFuaqX gcNSTz"
+                                        color="333333"
+                                      >
+                                        20
+                                      </section>
+                                    </styled.section>
+                                  </DefaultRouteRenderer>
+                                </strong>
                                 <FormattedMessage
                                   id="components.PatternRow.routeName"
                                   values={
                                     Object {
                                       "headsign": "Gresham TC",
-                                      "routeName": "20",
+                                      "routeName": "",
                                       "strong": [Function],
                                     }
                                   }
@@ -5285,13 +5360,36 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       <div
                                         className="percy-hide"
                                       >
-                                        <FormattedTime
-                                          timeStyle="short"
-                                          timeZone="America/Los_Angeles"
-                                          value={1565250660000}
+                                        <DepartureTime
+                                          realTime={true}
+                                          stopTime={
+                                            Object {
+                                              "arrivalDelay": 0,
+                                              "blockId": "2041",
+                                              "departureDelay": 0,
+                                              "headsign": "Gresham TC",
+                                              "realtime": false,
+                                              "realtimeArrival": 89460,
+                                              "realtimeDeparture": 89460,
+                                              "realtimeState": "SCHEDULED",
+                                              "scheduledArrival": 89460,
+                                              "scheduledDeparture": 89460,
+                                              "serviceDay": 1565161200,
+                                              "stopCount": 132,
+                                              "stopId": "TriMet:9860",
+                                              "stopIndex": 38,
+                                              "timepoint": true,
+                                              "tripId": "TriMet:9230375",
+                                            }
+                                          }
                                         >
-                                          12:51 AM
-                                        </FormattedTime>
+                                          <FormattedTime
+                                            timeStyle="short"
+                                            value={2019-08-08T07:51:00.000Z}
+                                          >
+                                            12:51 AM
+                                          </FormattedTime>
+                                        </DepartureTime>
                                       </div>
                                     </div>
                                   </div>
@@ -5376,7 +5474,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           margin={0.25}
                         >
                           <span
-                            className="sc-hBEYId kYwHch"
+                            className="sc-FyeoB fqliIl"
                           >
                             <input
                               name="autoUpdate"
@@ -5411,13 +5509,13 @@ exports[`components > viewers > stop viewer should render times after midnight w
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTEea iqivwV fa-spin"
+                              className="sc-gInthZ fFpLwO fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                                className="fa fa-refresh fa-fw sc-gInthZ fFpLwO fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -6231,7 +6329,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-fodVek klHrRi"
+                                          className="sc-jXktde kmcqbz"
                                         >
                                           P
                                         </div>
@@ -7344,13 +7442,13 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTEea iqivwV"
+                          className="sc-gInthZ fFpLwO"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                            className="fa fa-calendar fa-fw sc-gInthZ fFpLwO"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -7557,7 +7655,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
               </div>
               <styled.div>
                 <div
-                  className="sc-iwyWTf frukpT"
+                  className="sc-fHYyUA dsBqmr"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -8332,12 +8430,37 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               <div
                                 className="route-name"
                               >
+                                <strong>
+                                  <DefaultRouteRenderer
+                                    leg={
+                                      Object {
+                                        "agencyId": undefined,
+                                        "mode": "BUS",
+                                        "routeColor": undefined,
+                                        "routeLongName": "Burnside/Stark",
+                                        "routeShortName": "20",
+                                        "routeTextColor": undefined,
+                                      }
+                                    }
+                                  >
+                                    <styled.section
+                                      color="333333"
+                                    >
+                                      <section
+                                        className="sc-eFuaqX gcNSTz"
+                                        color="333333"
+                                      >
+                                        20
+                                      </section>
+                                    </styled.section>
+                                  </DefaultRouteRenderer>
+                                </strong>
                                 <FormattedMessage
                                   id="components.PatternRow.routeName"
                                   values={
                                     Object {
                                       "headsign": "Gresham TC",
-                                      "routeName": "20",
+                                      "routeName": "",
                                       "strong": [Function],
                                     }
                                   }
@@ -8440,13 +8563,36 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       <div
                                         className="percy-hide"
                                       >
-                                        <FormattedTime
-                                          timeStyle="short"
-                                          timeZone="America/Los_Angeles"
-                                          value={1565053259000}
+                                        <DepartureTime
+                                          realTime={true}
+                                          stopTime={
+                                            Object {
+                                              "arrivalDelay": 0,
+                                              "blockId": "2045",
+                                              "departureDelay": 0,
+                                              "headsign": "Gresham TC",
+                                              "realtime": false,
+                                              "realtimeArrival": 64859,
+                                              "realtimeDeparture": 64859,
+                                              "realtimeState": "SCHEDULED",
+                                              "scheduledArrival": 64859,
+                                              "scheduledDeparture": 64859,
+                                              "serviceDay": 1564988400,
+                                              "stopCount": 132,
+                                              "stopId": "TriMet:715",
+                                              "stopIndex": 42,
+                                              "timepoint": false,
+                                              "tripId": "TriMet:9230358",
+                                            }
+                                          }
                                         >
-                                          6:00 PM
-                                        </FormattedTime>
+                                          <FormattedTime
+                                            timeStyle="short"
+                                            value={2019-08-06T01:00:59.000Z}
+                                          >
+                                            6:00 PM
+                                          </FormattedTime>
+                                        </DepartureTime>
                                       </div>
                                     </div>
                                   </div>
@@ -8731,12 +8877,37 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               <div
                                 className="route-name"
                               >
+                                <strong>
+                                  <DefaultRouteRenderer
+                                    leg={
+                                      Object {
+                                        "agencyId": undefined,
+                                        "mode": "BUS",
+                                        "routeColor": undefined,
+                                        "routeLongName": "South Shore",
+                                        "routeShortName": "36",
+                                        "routeTextColor": undefined,
+                                      }
+                                    }
+                                  >
+                                    <styled.section
+                                      color="333333"
+                                    >
+                                      <section
+                                        className="sc-eFuaqX gcNSTz"
+                                        color="333333"
+                                      >
+                                        36
+                                      </section>
+                                    </styled.section>
+                                  </DefaultRouteRenderer>
+                                </strong>
                                 <FormattedMessage
                                   id="components.PatternRow.routeName"
                                   values={
                                     Object {
                                       "headsign": "Tualatin Park & Ride",
-                                      "routeName": "36",
+                                      "routeName": "",
                                       "strong": [Function],
                                     }
                                   }
@@ -8839,13 +9010,36 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       <div
                                         className="percy-hide"
                                       >
-                                        <FormattedTime
-                                          timeStyle="short"
-                                          timeZone="America/Los_Angeles"
-                                          value={1565133060000}
+                                        <DepartureTime
+                                          realTime={true}
+                                          stopTime={
+                                            Object {
+                                              "arrivalDelay": 0,
+                                              "blockId": "3668",
+                                              "departureDelay": 0,
+                                              "headsign": "Tualatin Park & Ride",
+                                              "realtime": false,
+                                              "realtimeArrival": 58260,
+                                              "realtimeDeparture": 58260,
+                                              "realtimeState": "SCHEDULED",
+                                              "scheduledArrival": 58260,
+                                              "scheduledDeparture": 58260,
+                                              "serviceDay": 1565074800,
+                                              "stopCount": 63,
+                                              "stopId": "TriMet:715",
+                                              "stopIndex": 0,
+                                              "timepoint": true,
+                                              "tripId": "TriMet:9231858",
+                                            }
+                                          }
                                         >
-                                          4:11 PM
-                                        </FormattedTime>
+                                          <FormattedTime
+                                            timeStyle="short"
+                                            value={2019-08-06T23:11:00.000Z}
+                                          >
+                                            4:11 PM
+                                          </FormattedTime>
+                                        </DepartureTime>
                                       </div>
                                     </div>
                                   </div>
@@ -9130,12 +9324,37 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               <div
                                 className="route-name"
                               >
+                                <strong>
+                                  <DefaultRouteRenderer
+                                    leg={
+                                      Object {
+                                        "agencyId": undefined,
+                                        "mode": "BUS",
+                                        "routeColor": undefined,
+                                        "routeLongName": "Pacific Hwy/Sherwood",
+                                        "routeShortName": "94",
+                                        "routeTextColor": undefined,
+                                      }
+                                    }
+                                  >
+                                    <styled.section
+                                      color="333333"
+                                    >
+                                      <section
+                                        className="sc-eFuaqX gcNSTz"
+                                        color="333333"
+                                      >
+                                        94
+                                      </section>
+                                    </styled.section>
+                                  </DefaultRouteRenderer>
+                                </strong>
                                 <FormattedMessage
                                   id="components.PatternRow.routeName"
                                   values={
                                     Object {
                                       "headsign": "King City",
-                                      "routeName": "94",
+                                      "routeName": "",
                                       "strong": [Function],
                                     }
                                   }
@@ -9238,13 +9457,36 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       <div
                                         className="percy-hide"
                                       >
-                                        <FormattedTime
-                                          timeStyle="short"
-                                          timeZone="America/Los_Angeles"
-                                          value={1565130120000}
+                                        <DepartureTime
+                                          realTime={true}
+                                          stopTime={
+                                            Object {
+                                              "arrivalDelay": 0,
+                                              "blockId": "9472",
+                                              "departureDelay": 0,
+                                              "headsign": "King City",
+                                              "realtime": false,
+                                              "realtimeArrival": 55320,
+                                              "realtimeDeparture": 55320,
+                                              "realtimeState": "SCHEDULED",
+                                              "scheduledArrival": 55320,
+                                              "scheduledDeparture": 55320,
+                                              "serviceDay": 1565074800,
+                                              "stopCount": 23,
+                                              "stopId": "TriMet:715",
+                                              "stopIndex": 0,
+                                              "timepoint": true,
+                                              "tripId": "TriMet:9238192",
+                                            }
+                                          }
                                         >
-                                          3:22 PM
-                                        </FormattedTime>
+                                          <FormattedTime
+                                            timeStyle="short"
+                                            value={2019-08-06T22:22:00.000Z}
+                                          >
+                                            3:22 PM
+                                          </FormattedTime>
+                                        </DepartureTime>
                                       </div>
                                     </div>
                                   </div>
@@ -9637,12 +9879,37 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               <div
                                 className="route-name"
                               >
+                                <strong>
+                                  <DefaultRouteRenderer
+                                    leg={
+                                      Object {
+                                        "agencyId": undefined,
+                                        "mode": "BUS",
+                                        "routeColor": undefined,
+                                        "routeLongName": "Pacific Hwy/Sherwood",
+                                        "routeShortName": "94",
+                                        "routeTextColor": undefined,
+                                      }
+                                    }
+                                  >
+                                    <styled.section
+                                      color="333333"
+                                    >
+                                      <section
+                                        className="sc-eFuaqX gcNSTz"
+                                        color="333333"
+                                      >
+                                        94
+                                      </section>
+                                    </styled.section>
+                                  </DefaultRouteRenderer>
+                                </strong>
                                 <FormattedMessage
                                   id="components.PatternRow.routeName"
                                   values={
                                     Object {
                                       "headsign": "Sherwood",
-                                      "routeName": "94",
+                                      "routeName": "",
                                       "strong": [Function],
                                     }
                                   }
@@ -9745,13 +10012,36 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       <div
                                         className="percy-hide"
                                       >
-                                        <FormattedTime
-                                          timeStyle="short"
-                                          timeZone="America/Los_Angeles"
-                                          value={1565126880000}
+                                        <DepartureTime
+                                          realTime={true}
+                                          stopTime={
+                                            Object {
+                                              "arrivalDelay": 0,
+                                              "blockId": "9468",
+                                              "departureDelay": 0,
+                                              "headsign": "Sherwood",
+                                              "realtime": false,
+                                              "realtimeArrival": 52080,
+                                              "realtimeDeparture": 52080,
+                                              "realtimeState": "SCHEDULED",
+                                              "scheduledArrival": 52080,
+                                              "scheduledDeparture": 52080,
+                                              "serviceDay": 1565074800,
+                                              "stopCount": 40,
+                                              "stopId": "TriMet:715",
+                                              "stopIndex": 0,
+                                              "timepoint": true,
+                                              "tripId": "TriMet:9238187",
+                                            }
+                                          }
                                         >
-                                          2:28 PM
-                                        </FormattedTime>
+                                          <FormattedTime
+                                            timeStyle="short"
+                                            value={2019-08-06T21:28:00.000Z}
+                                          >
+                                            2:28 PM
+                                          </FormattedTime>
+                                        </DepartureTime>
                                       </div>
                                     </div>
                                   </div>
@@ -9836,7 +10126,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           margin={0.25}
                         >
                           <span
-                            className="sc-hBEYId kYwHch"
+                            className="sc-FyeoB fqliIl"
                           >
                             <input
                               name="autoUpdate"
@@ -9871,13 +10161,13 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTEea iqivwV fa-spin"
+                              className="sc-gInthZ fFpLwO fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                                className="fa fa-refresh fa-fw sc-gInthZ fFpLwO fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -11723,7 +12013,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-fodVek klHrRi"
+                                          className="sc-jXktde kmcqbz"
                                         >
                                           P
                                         </div>
@@ -12826,13 +13116,13 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         name="calendar"
                       >
                         <FontAwesome
-                          className="sc-gsTEea iqivwV"
+                          className="sc-gInthZ fFpLwO"
                           fixedWidth={true}
                           name="calendar"
                         >
                           <span
                             aria-hidden={true}
-                            className="fa fa-calendar fa-fw sc-gsTEea iqivwV"
+                            className="fa fa-calendar fa-fw sc-gInthZ fFpLwO"
                           />
                         </FontAwesome>
                       </Styled(FontAwesome)>
@@ -13039,7 +13329,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
               </div>
               <styled.div>
                 <div
-                  className="sc-iwyWTf frukpT"
+                  className="sc-fHYyUA dsBqmr"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -13813,12 +14103,37 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               <div
                                 className="route-name"
                               >
+                                <strong>
+                                  <DefaultRouteRenderer
+                                    leg={
+                                      Object {
+                                        "agencyId": undefined,
+                                        "mode": "BUS",
+                                        "routeColor": undefined,
+                                        "routeLongName": "Burnside/Stark",
+                                        "routeShortName": "20",
+                                        "routeTextColor": undefined,
+                                      }
+                                    }
+                                  >
+                                    <styled.section
+                                      color="333333"
+                                    >
+                                      <section
+                                        className="sc-eFuaqX gcNSTz"
+                                        color="333333"
+                                      >
+                                        20
+                                      </section>
+                                    </styled.section>
+                                  </DefaultRouteRenderer>
+                                </strong>
                                 <FormattedMessage
                                   id="components.PatternRow.routeName"
                                   values={
                                     Object {
                                       "headsign": "Gresham TC",
-                                      "routeName": "20",
+                                      "routeName": "",
                                       "strong": [Function],
                                     }
                                   }
@@ -13921,13 +14236,36 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       <div
                                         className="percy-hide"
                                       >
-                                        <FormattedTime
-                                          timeStyle="short"
-                                          timeZone="America/Los_Angeles"
-                                          value={1565052359000}
+                                        <DepartureTime
+                                          realTime={true}
+                                          stopTime={
+                                            Object {
+                                              "arrivalDelay": 0,
+                                              "blockId": "2067",
+                                              "departureDelay": 0,
+                                              "headsign": "Gresham TC",
+                                              "realtime": false,
+                                              "realtimeArrival": 63959,
+                                              "realtimeDeparture": 63959,
+                                              "realtimeState": "SCHEDULED",
+                                              "scheduledArrival": 63959,
+                                              "scheduledDeparture": 63959,
+                                              "serviceDay": 1564988400,
+                                              "stopCount": 132,
+                                              "stopId": "TriMet:715",
+                                              "stopIndex": 42,
+                                              "timepoint": false,
+                                              "tripId": "TriMet:9230357",
+                                            }
+                                          }
                                         >
-                                          5:45 PM
-                                        </FormattedTime>
+                                          <FormattedTime
+                                            timeStyle="short"
+                                            value={2019-08-06T00:45:59.000Z}
+                                          >
+                                            5:45 PM
+                                          </FormattedTime>
+                                        </DepartureTime>
                                       </div>
                                     </div>
                                   </div>
@@ -14012,7 +14350,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           margin={0.25}
                         >
                           <span
-                            className="sc-hBEYId kYwHch"
+                            className="sc-FyeoB fqliIl"
                           >
                             <input
                               name="autoUpdate"
@@ -14047,13 +14385,13 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                             name="refresh"
                           >
                             <FontAwesome
-                              className="sc-gsTEea iqivwV fa-spin"
+                              className="sc-gInthZ fFpLwO fa-spin"
                               fixedWidth={true}
                               name="refresh"
                             >
                               <span
                                 aria-hidden={true}
-                                className="fa fa-refresh fa-fw sc-gsTEea iqivwV fa-spin"
+                                className="fa fa-refresh fa-fw sc-gInthZ fFpLwO fa-spin"
                               />
                             </FontAwesome>
                           </Styled(FontAwesome)>
@@ -15879,7 +16217,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-fodVek klHrRi"
+                                          className="sc-jXktde kmcqbz"
                                         >
                                           P
                                         </div>
