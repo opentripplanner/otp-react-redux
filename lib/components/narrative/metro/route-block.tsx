@@ -101,6 +101,7 @@ const Divider = styled.span`
   opacity: 0.4;
 `
 
+// eslint-disable-next-line complexity
 const RouteBlock = ({
   footer,
   hideLongName,

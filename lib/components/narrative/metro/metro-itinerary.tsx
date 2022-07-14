@@ -77,6 +77,17 @@ const SecondaryInfo = styled.span`
 
 const Spacer = styled.span``
 
+const ItineraryNote = styled.div`
+  background: mediumseagreen;
+  color: white;
+  padding: 4px 8px;
+  text-align: right;
+`
+
+const ItineraryNoteIcon = styled(Icon)`
+  margin: 0 4px;
+`
+
 const Routes = styled.section<{ enableDot?: boolean }>`
   display: flex;
   flex-wrap: wrap;
@@ -232,10 +243,12 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       showRealtimeAnnotation,
       timeFormat
     } = this.props
+
     const timeOptions = {
       format: timeFormat,
       offset: coreUtils.itinerary.getTimeZoneOffset(itinerary)
     }
+
     const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
       getFlexAttirbutes(itinerary)
 
@@ -243,6 +256,25 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       itinerary,
       defaultFareKey,
       currency
+    )
+
+    const co2VsBaseline = Math.round(itinerary.co2VsBaseline * 100)
+    const emissionsNote = !mini && co2VsBaseline < -20 && (
+      <>
+        <ItineraryNoteIcon type="leaf" />
+        <FormattedNumber
+          style="unit"
+          unit="percent"
+          unitDisplay="narrow"
+          value={Math.abs(co2VsBaseline)}
+        />{' '}
+        <FormattedMessage
+          id="common.itineraryDescriptions.relativeCo2"
+          values={{
+            isMore: co2VsBaseline > 0
+          }}
+        />
+      </>
     )
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
@@ -313,6 +345,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
             )}
             className={`itin-wrapper${mini ? '-small' : ''}`}
           >
+            {emissionsNote && <ItineraryNote>{emissionsNote}</ItineraryNote>}
             {itineraryHasAccessibilityScores(itinerary) && (
               <AccessibilityRating
                 gradationMap={accessibilityScoreGradationMap}
