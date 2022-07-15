@@ -35,6 +35,7 @@ import {
   removeInsignifigantWalkLegs
 } from './attribute-utils'
 import RouteBlock from './route-block'
+import Sub from '../../util/sub-text'
 
 const { ItineraryView } = uiActions
 
@@ -271,7 +272,8 @@ class MetroItinerary<Props> extends NarrativeItinerary {
         <FormattedMessage
           id="common.itineraryDescriptions.relativeCo2"
           values={{
-            isMore: co2VsBaseline > 0
+            isMore: co2VsBaseline > 0,
+            sub: Sub
           }}
         />
       </>
