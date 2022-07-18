@@ -1,17 +1,25 @@
 import { FormattedMessage } from 'react-intl'
-import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 
 import { PageHeading, StackedPaneContainer } from './styled'
 import FormNavigationButtons from './form-navigation-buttons'
+
+type Props = {
+  onCancel: () => void
+  paneSequence: any[]
+  title?: string | JSX.Element
+}
 
 /**
  * This component handles the flow between screens for new OTP user accounts.
  *
  * TODO: add types once Pane type exists
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const StackedPaneDisplay = ({ onCancel, paneSequence, title }) => {
+const StackedPaneDisplay = ({
+  onCancel,
+  paneSequence,
+  title
+}: Props): JSX.Element => {
   // Create indicator of if cancel button was clicked so that child components can know
   const [isBeingCanceled, updateBeingCanceled] = useState(false)
 
@@ -48,11 +56,4 @@ const StackedPaneDisplay = ({ onCancel, paneSequence, title }) => {
     </>
   )
 }
-
-StackedPaneDisplay.propTypes = {
-  onCancel: PropTypes.func.isRequired,
-  paneSequence: PropTypes.array.isRequired,
-  title: PropTypes.string
-}
-
 export default StackedPaneDisplay

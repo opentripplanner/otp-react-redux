@@ -1,15 +1,15 @@
 import 'moment-timezone'
+import { FormattedMessage, FormattedTime } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
-import { FormattedMessage, FormattedTime } from 'react-intl'
 
-import Icon from '../util/icon'
-import SpanWithSpace from '../util/span-with-space'
 import {
   getRouteIdForPattern,
   getStopTimesByPattern,
   routeIsValid
 } from '../../util/viewer'
+import Icon from '../util/icon'
+import SpanWithSpace from '../util/span-with-space'
 
 import AmenitiesPanel from './amenities-panel'
 import PatternRow from './pattern-row'
@@ -22,14 +22,34 @@ const defaultState = {
   timer: null
 }
 
+type Props = {
+  autoRefreshStopTimes: boolean
+  findStopTimesForStop: ({ stopId }: { stopId: string }) => void
+  homeTimezone?: string
+  nearbyStops: any // TODO: shared types
+  setHoveredStop: (stopId: string) => void
+  showNearbyStops: boolean
+  stopData: any // TODO: shared types
+  stopViewerArriving: any // TODO: shared types
+  stopViewerConfig: any // TODO: shared types
+  toggleAutoRefresh: (enable: boolean) => void
+  transitOperators: any // TODO: shared types
+  viewedStop: { stopId: string }
+}
+
+type State = {
+  spin?: boolean
+  timer?: number | null
+}
+
 /**
  * Table showing next arrivals (refreshing every 10 seconds) for the specified
  * stop organized by route pattern.
  */
-class LiveStopTimes extends Component {
+class LiveStopTimes extends Component<Props, State> {
   state = defaultState
 
-  _refreshStopTimes = () => {
+  _refreshStopTimes = (): void => {
     const { findStopTimesForStop, viewedStop } = this.props
     findStopTimesForStop({ stopId: viewedStop.stopId })
     // FIXME: We need to refresh child stop arrivals, but this could be a ton of
@@ -43,7 +63,7 @@ class LiveStopTimes extends Component {
     window.setTimeout(this._stopSpin, 1000)
   }
 
-  _onToggleAutoRefresh = () => {
+  _onToggleAutoRefresh = (): void => {
     const { autoRefreshStopTimes, toggleAutoRefresh } = this.props
     if (autoRefreshStopTimes) {
       toggleAutoRefresh(false)
@@ -54,29 +74,30 @@ class LiveStopTimes extends Component {
     }
   }
 
-  _stopSpin = () => this.setState({ spin: false })
+  _stopSpin = (): void => this.setState({ spin: false })
 
-  _startAutoRefresh = () => {
+  _startAutoRefresh = (): void => {
     const timer = window.setInterval(this._refreshStopTimes, 10000)
     this.setState({ timer })
   }
 
-  _stopAutoRefresh = () => {
+  _stopAutoRefresh = (): void => {
+    if (!this.state.timer) return
     window.clearInterval(this.state.timer)
   }
 
-  componentDidMount () {
+  componentDidMount(): void {
     this._refreshStopTimes()
     // Turn on stop times refresh if enabled.
     if (this.props.autoRefreshStopTimes) this._startAutoRefresh()
   }
 
-  componentWillUnmount () {
+  componentWillUnmount(): void {
     // Turn off auto refresh unconditionally (just in case).
     this._stopAutoRefresh()
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate(prevProps: Props): void {
     if (
       prevProps.viewedStop &&
       this.props.viewedStop &&
@@ -85,11 +106,13 @@ class LiveStopTimes extends Component {
       this._refreshStopTimes()
     }
     // Handle stopping or starting the auto refresh timer.
-    if (prevProps.autoRefreshStopTimes && !this.props.autoRefreshStopTimes) this._stopAutoRefresh()
-    else if (!prevProps.autoRefreshStopTimes && this.props.autoRefreshStopTimes) this._startAutoRefresh()
+    if (prevProps.autoRefreshStopTimes && !this.props.autoRefreshStopTimes)
+      this._stopAutoRefresh()
+    else if (!prevProps.autoRefreshStopTimes && this.props.autoRefreshStopTimes)
+      this._startAutoRefresh()
   }
 
-  render () {
+  render(): JSX.Element {
     const {
       homeTimezone,
       nearbyStops,
@@ -105,18 +128,16 @@ class LiveStopTimes extends Component {
     // construct a lookup table mapping pattern (e.g. 'ROUTE_ID-HEADSIGN') to
     // an array of stoptimes
     const stopTimesByPattern = getStopTimesByPattern(stopData)
-    const routeComparator = coreUtils.route.makeRouteComparator(
-      transitOperators
-    )
+    const routeComparator =
+      coreUtils.route.makeRouteComparator(transitOperators)
     const patternHeadsignComparator = coreUtils.route.makeStringValueComparator(
-      pattern => pattern.pattern.headsign
+      // TODO: Shared types
+      (pattern: any) => pattern.pattern.headsign
     )
-    const patternComparator = (patternA, patternB) => {
+    // TODO: Shared types
+    const patternComparator = (patternA: any, patternB: any) => {
       // first sort by routes
-      const routeCompareValue = routeComparator(
-        patternA.route,
-        patternB.route
-      )
+      const routeCompareValue = routeComparator(patternA.route, patternB.route)
       if (routeCompareValue !== 0) return routeCompareValue
 
       // if same route, sort by headsign
@@ -130,21 +151,18 @@ class LiveStopTimes extends Component {
             .sort(patternComparator)
             .map(({ id, pattern, route, times }) => {
               // Only add pattern if route info is returned by OTP.
-              return routeIsValid(route, getRouteIdForPattern(pattern))
-                ? (
-                  <PatternRow
-                    homeTimezone={homeTimezone}
-                    key={id}
-                    pattern={pattern}
-                    route={route}
-                    stopTimes={times}
-                    stopViewerArriving={stopViewerArriving}
-                    stopViewerConfig={stopViewerConfig}
-                  />
-                )
-                : null
-            })
-          }
+              return routeIsValid(route, getRouteIdForPattern(pattern)) ? (
+                <PatternRow
+                  homeTimezone={homeTimezone}
+                  key={id}
+                  pattern={pattern}
+                  route={route}
+                  stopTimes={times}
+                  stopViewerArriving={stopViewerArriving}
+                  stopViewerConfig={stopViewerConfig}
+                />
+              ) : null
+            })}
         </div>
 
         {/* Auto update controls for realtime arrivals */}
@@ -154,30 +172,26 @@ class LiveStopTimes extends Component {
             <SpanWithSpace margin={0.25}>
               <input
                 checked={this.props.autoRefreshStopTimes}
-                name='autoUpdate'
+                name="autoUpdate"
                 onChange={this._onToggleAutoRefresh}
-                type='checkbox'
+                type="checkbox"
               />
             </SpanWithSpace>
-            <FormattedMessage id='components.LiveStopTimes.autoRefresh' />
+            <FormattedMessage id="components.LiveStopTimes.autoRefresh" />
           </label>
           <button
-            className='link-button pull-right'
+            className="link-button pull-right percy-hide"
             onClick={this._refreshStopTimes}
             style={{ fontSize: 'small' }}
           >
-            <Icon
-              className={spin ? 'fa-spin' : ''}
-              type='refresh'
-              withSpace
-            />
+            <Icon className={spin ? 'fa-spin' : ''} type="refresh" withSpace />
             <FormattedTime
-              timeStyle='short'
+              timeStyle="short"
               timeZone={userTimezone}
               value={stopData.stopTimesLastUpdated}
             />
           </button>
-          {showNearbyStops &&
+          {showNearbyStops && (
             <>
               <RelatedStopsPanel
                 homeTimezone={homeTimezone}
@@ -193,7 +207,7 @@ class LiveStopTimes extends Component {
                 stopViewerConfig={stopViewerConfig}
               />
             </>
-          }
+          )}
         </div>
       </>
     )
