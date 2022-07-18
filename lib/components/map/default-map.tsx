@@ -126,8 +126,8 @@ class DefaultMap extends Component {
    * TODO: Implement for the batch interface.
    */
   _handleQueryChange = (oldQuery, newQuery) => {
-    const { overlays } = this.props
-    if (overlays && oldQuery.mode) {
+    const { overlays = [] } = this.props.mapConfig || {}
+    if (oldQuery.mode) {
       // Determine any added/removed modes
       const oldModes = oldQuery.mode.split(',')
       const newModes = newQuery.mode.split(',')
@@ -362,7 +362,6 @@ class DefaultMap extends Component {
 
 const mapStateToProps = (state) => {
   const activeSearch = getActiveSearch(state)
-  const overlays = state.otp.config.map?.overlays || []
 
   return {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
@@ -371,7 +370,6 @@ const mapStateToProps = (state) => {
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
     mapPopupLocation: state.otp.ui.mapPopupLocation,
-    overlays,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
     vehicleRentalStations: state.otp.overlay.vehicleRental.stations
