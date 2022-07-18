@@ -142,11 +142,10 @@ class DefaultMap extends Component {
       vehicleRentalStations
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel } = this.context
+    const { baseLayers, initLat, initLon, initZoom, maxZoom, overlays } =
+      mapConfig || {}
 
-    const center =
-      mapConfig && mapConfig.initLat && mapConfig.initLon
-        ? [mapConfig.initLat, mapConfig.initLon]
-        : null
+    const center = initLat && initLon ? [initLat, initLon] : null
 
     const popup = mapPopupLocation && {
       contents: (
@@ -161,13 +160,13 @@ class DefaultMap extends Component {
     return (
       <MapContainer>
         <BaseMap
-          baseLayers={mapConfig.baseLayers}
+          baseLayers={baseLayers}
           center={center}
-          maxZoom={mapConfig.maxZoom}
+          maxZoom={maxZoom}
           onClick={this.onMapClick}
           onPopupClosed={this.onPopupClosed}
           popup={popup}
-          zoom={mapConfig.initZoom || 13}
+          zoom={initZoom || 13}
         >
           {/* The default overlays */}
           <BoundsUpdatingOverlay />
@@ -182,7 +181,7 @@ class DefaultMap extends Component {
           <ElevationPointMarker />
 
           {/* The configurable overlays */}
-          {mapConfig.overlays?.map((overlayConfig, k) => {
+          {overlays?.map((overlayConfig, k) => {
             switch (overlayConfig.type) {
               case 'bike-rental':
                 return (
