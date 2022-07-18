@@ -1,7 +1,5 @@
 import { connect } from 'react-redux'
-// FIXME: type OTP-UI
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+// @ts-expect-error ParkAndRideOverlay is not typescripted yet
 import ParkAndRideOverlay from '@opentripplanner/park-and-ride-overlay'
 import React, { Component } from 'react'
 
@@ -39,14 +37,12 @@ const mapStateToProps = (state: {
 }) => {
   const { locations } = state.otp.overlay?.parkAndRide
 
-  // object type indicates error
-  if (typeof locations === 'object') {
-    return {}
-  }
-
-  return {
-    parkAndRideLocations: locations
-  }
+  // If locations is not an array, it is an error, in which case don't render anything.
+  return Array.isArray(locations)
+    ? {
+        parkAndRideLocations: locations
+      }
+    : {}
 }
 
 const mapDispatchToProps = {

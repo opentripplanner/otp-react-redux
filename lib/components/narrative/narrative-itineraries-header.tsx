@@ -17,6 +17,7 @@ const IssueButton = styled.button`
 `
 
 export default function NarrativeItinerariesHeader({
+  customBatchUiBackground,
   errors,
   itineraries,
   itineraryIsExpanded,
@@ -25,9 +26,11 @@ export default function NarrativeItinerariesHeader({
   onToggleShowErrors,
   onViewAllOptions,
   pending,
+  showHeaderText = true,
   showingErrors,
   sort
 }: {
+  customBatchUiBackground?: boolean
   errors: unknown[]
   itineraries: unknown[]
   itineraryIsExpanded: boolean
@@ -36,10 +39,23 @@ export default function NarrativeItinerariesHeader({
   onToggleShowErrors: () => void
   onViewAllOptions: () => void
   pending: boolean
+  showHeaderText: boolean
   showingErrors: boolean
   sort: { direction: string; type: string }
 }): JSX.Element {
   const intl = useIntl()
+  const itinerariesFound = intl.formatMessage(
+    {
+      id: 'components.NarrativeItinerariesHeader.itinerariesFound'
+    },
+    { itineraryNum: itineraries.length }
+  )
+  const numIssues = intl.formatMessage(
+    {
+      id: 'components.NarrativeItinerariesHeader.numIssues'
+    },
+    { issueNum: errors.length }
+  )
 
   return (
     <div
@@ -70,45 +86,61 @@ export default function NarrativeItinerariesHeader({
         </>
       ) : (
         <>
-          <div
-            style={{ flexGrow: 1 }}
-            title={intl.formatMessage(
-              { id: 'components.NarrativeItinerariesHeader.titleText' },
-              {
-                issueNum: errors.length,
-                itineraryNum: itineraries.length,
+          {showHeaderText && (
+            <div
+              style={{ flexGrow: 1 }}
+              title={
                 pending
+                  ? intl.formatMessage({
+                      id: 'components.NarrativeItinerariesHeader.searching'
+                    })
+                  : intl.formatMessage(
+                      {
+                        id: 'components.NarrativeItinerariesHeader.itinerariesAndIssues'
+                      },
+                      {
+                        itinerariesFound,
+                        numIssues
+                      }
+                    )
               }
-            )}
-          >
-            <span style={{ marginRight: '10px' }}>
-              <FormattedMessage
-                id="components.NarrativeItinerariesHeader.resultText"
-                values={{
-                  itineraryNum: itineraries.length,
-                  pending
-                }}
-              />
-            </span>
-            {errors.length > 0 && (
-              <IssueButton onClick={onToggleShowErrors}>
-                <Icon style={{ fontSize: 11, marginRight: 2 }} type="warning" />
-                <span>
-                  <FormattedMessage
-                    id="components.NarrativeItinerariesHeader.numIssues"
-                    values={{ issueNum: errors.length }}
+            >
+              <span style={{ marginRight: '10px' }}>
+                {pending ? (
+                  <FormattedMessage id="components.NarrativeItinerariesHeader.searching" />
+                ) : (
+                  itinerariesFound
+                )}
+              </span>
+              {errors.length > 0 && (
+                <IssueButton onClick={onToggleShowErrors}>
+                  <Icon
+                    style={{ fontSize: 11, marginRight: 2 }}
+                    type="warning"
                   />
-                </span>
-              </IssueButton>
-            )}
-          </div>
-          <div style={{ display: 'flex', float: 'right' }}>
+                  <span>{numIssues}</span>
+                </IssueButton>
+              )}
+            </div>
+          )}
+          <div
+            style={{
+              display: 'flex',
+              float: 'right',
+              marginLeft: showHeaderText ? 'inherit' : 'auto'
+            }}
+          >
             <button
               className="clear-button-formatting"
               onClick={onSortDirChange}
-              style={{ marginRight: '5px' }}
+              style={{
+                marginRight: '5px'
+              }}
             >
-              <Icon type={`sort-amount-${sort.direction.toLowerCase()}`} />
+              <Icon
+                className={`${customBatchUiBackground && 'base-color-bg'}`}
+                type={`sort-amount-${sort.direction.toLowerCase()}`}
+              />
             </button>
             <select
               onBlur={onSortChange}

@@ -2,12 +2,7 @@ api:
   host: http://localhost
   path: /otp/routers/default
   port: 8001
-
-# Support OTP-2 in parallel for certain requests
-# api_v2:
-#  host: http://localhost
-#  path: /otp/routers/default
-#  port: 8002
+# v2: false
 
 # Add suggested locations to be shown as options in the form view.
 # locations:
@@ -112,7 +107,7 @@ map:
   ###   styles.segment_labels: styles attributes recognized by transitive.js.
   ###                         For examples of applicable style attributes, see
   ###                         https://github.com/conveyal/transitive.js/blob/master/stories/Transitive.stories.js#L47.
-  ### - disableFlexArc: optional parameter to disable rendering flex itinerary legs as an arc. 
+  ### - disableFlexArc: optional parameter to disable rendering flex itinerary legs as an arc.
   # transitive:
   #   labeledModes:
   #     - BUS
@@ -179,6 +174,16 @@ geocoder:
 
 # Use this mode config for the enhanced Transit+ config
 modes:
+  modeOptions:
+    - mode: TRANSIT
+    - mode: WALK
+    - mode: CAR
+    - mode: BICYCLE
+    - mode: RENT
+      icon: mobile
+      # This overrides the label generated from the i18n. Use when defining modes that are not supported by OTP i18n
+      # label: Rental 
+      
   transitModes:
     - mode: BUS
       label: Bus
@@ -255,6 +260,11 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # Whether to render route names and colors in the blocks inside
+  # the batch ui rows
+  renderRouteNamesInBlocks: true
+  # Whether the mode icons should be colored as well
+  fillModeIcons: true
   # If multiple fares are returned by OTP, assign names to the fare keys here
   #fareKeyNameMap:
   #  regular: "Transit Fare"
@@ -262,6 +272,31 @@ itinerary:
   #  student: "Student Fare"
   # One fare will always be shown by default
   #defaultFareKey: electronicRegular
+
+  # The following settings must be set to these values to use the new
+  # "Metro" UI. The settings can be used without the Metro UI, but
+  # this may have unexpected effects.
+
+  # When using the metro UI, it is recommended to have 8+ itineraries returned by OTP
+
+  # Whether to show the "# itineraries found" text above the itinerary results
+  showHeaderText: false
+  # Whether to hide the gray loading bars that appear while results are loading
+  hideSkeletons: true
+  # Whether the itinerary listing background should match the header
+  customBatchUiBackground: true
+  # Whether to render itineraries below a mode description header
+  groupByMode: true
+  # Whether to merge itineraries with the same origin, destination, and transit modes
+  groupTransitModes: true
+  # Whether to show the first itinerary on the map. If this is set to false, routes
+  # will only show on the map on hover or click
+  showFirstResultByDefault: false
+  # This flag disables the dot between legs in the metro itnerary summary, replacing it with
+  # a gray background
+  disableMetroSeperatorDot: false
+  # Shows the duration of a leg below the leg in the metro itinerary summary
+  showLegDurations: false
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
@@ -343,7 +378,7 @@ itinerary:
 ### Languages defined may be region-specific (e.g. en-US) or language-specific (e.g. es, kr)
 ### The LocaleSelector component, which provides a dropdown for the user to change their locale, will
 ### only be rendered if more than one valid language (all languages must have "name" defined) is included
-### in the language config. 
+### in the language config.
 
 # language:
 #   allLanguages
@@ -357,6 +392,7 @@ itinerary:
 #     config:
 #       flex:
 #         flex-service: Flex Service
+#         both: See bottom of itinerary for details.
 #         call-ahead: "Call to reserve: (555) 555-5555"
 #         continuous-dropoff: Communicate with operator about stop
 #       acessibilityScore:
