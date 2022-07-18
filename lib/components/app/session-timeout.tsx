@@ -53,9 +53,15 @@ class SessionTimeout extends Component {
         // Reload initial URL (page state is lost after this point)
         startOverFromInitialUrl()
       } else {
+        // If session is going to expire, display warning dialog, don't otherwise.
+        // For session timeouts of more than 180 seconds, display warning within one minute.
+        // For timeouts shorter than that, set the warning to 1/3 of the session timeout.
+        const timeoutWarningSeconds =
+          sessionTimeoutSeconds >= 180 ? 60 : sessionTimeoutSeconds / 3
+
         this.setState({
-          // If within a minute of timeout, display dialog, don't otherwise.
-          showTimeoutWarning: secondsToTimeout >= 0 && secondsToTimeout <= 60
+          showTimeoutWarning:
+            secondsToTimeout >= 0 && secondsToTimeout <= timeoutWarningSeconds
         })
       }
     }
