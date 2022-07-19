@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 interface State {
   counterString: number
+  timer?: number
 }
 
 /**
@@ -10,42 +11,43 @@ interface State {
  */
 export default class CallTimeCounter extends Component<HTMLDivElement, State> {
   state = {
-    counterString: 0
+    counterString: 0,
+    timer: undefined
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     this._startRefresh()
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     this._stopRefresh()
   }
 
   /**
    * Formats seconds as hh:mm:ss string.
    */
-  _formatSeconds = (seconds) => {
+  _formatSeconds = (seconds: number): string => {
     const date = new Date(0)
     date.setSeconds(seconds)
     return date.toISOString().substr(11, 8)
   }
 
-  _refreshCounter = () => {
+  _refreshCounter = (): void => {
     const counterString = this.state.counterString + 1
     this.setState({ counterString })
   }
 
-  _startRefresh = () => {
+  _startRefresh = (): void => {
     // Set refresh to every second.
     const timer = window.setInterval(this._refreshCounter, 1000)
     this.setState({ timer })
   }
 
-  _stopRefresh = () => {
+  _stopRefresh = (): void => {
     window.clearInterval(this.state.timer)
   }
 
-  render() {
+  render(): JSX.Element {
     const { className } = this.props
     return (
       <div
