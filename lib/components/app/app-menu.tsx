@@ -6,6 +6,7 @@ import React, { Component, Fragment } from 'react'
 // @ts-ignore
 import { MenuItem } from 'react-bootstrap'
 import { withRouter } from 'react-router'
+import AnimateHeight from 'react-animate-height'
 import qs from 'qs'
 import SlidingPane from 'react-sliding-pane'
 import type { RouteComponentProps } from 'react-router'
@@ -135,16 +136,14 @@ class AppMenu extends Component<
                   />
                 </span>
               </MenuItem>
-              <VelocityTransitionGroup
-                enter={{ animation: 'slideDown' }}
-                leave={{ animation: 'slideUp' }}
+              <AnimateHeight
+                duration={500}
+                height={isSubmenuExpanded ? 'auto' : 0}
               >
-                {isSubmenuExpanded && (
-                  <div className="sub-menu-container">
-                    {this._addExtraMenuItems(children)}
-                  </div>
-                )}
-              </VelocityTransitionGroup>
+                <div className="sub-menu-container">
+                  {this._addExtraMenuItems(children)}
+                </div>
+              </AnimateHeight>
             </Fragment>
           )
         }
