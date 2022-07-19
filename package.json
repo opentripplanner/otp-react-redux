@@ -18,7 +18,8 @@
     "semantic-release": "semantic-release",
     "start": "craco start",
     "percy-serve": "serve",
-    "percy-har-express": "har-express"
+    "percy-har-express": "har-express",
+    "analyze": "REACT_APP_INTERACTIVE_ANALYZE=1 npm run build"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -127,8 +128,8 @@
     "@babel/preset-typescript": "^7.15.0",
     "@craco/craco": "^6.3.0",
     "@jackwilsdon/craco-use-babelrc": "^1.0.0",
-    "@opentripplanner/types": "^2.0.0",
     "@opentripplanner/scripts": "^1.0.1",
+    "@opentripplanner/types": "^2.0.0",
     "@percy/cli": "^1.0.0-beta.76",
     "@percy/puppeteer": "^2.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
@@ -184,6 +185,7 @@
     "serve": "^13.0.2",
     "tsdx": "https://github.com/ibi-group/tsdx",
     "typescript": "^4.4.2",
+    "webpack-bundle-analyzer": "^4.5.0",
     "yaml-loader": "^0.6.0"
   },
   "peerDependencies": {

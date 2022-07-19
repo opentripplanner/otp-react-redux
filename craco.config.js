@@ -9,6 +9,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const webpack = require('webpack')
 
 const findBackwardsCompatibleEnvVar = (varName) => {
@@ -144,6 +146,15 @@ module.exports = {
           YAML_CONFIG: JSON.stringify(YAML_CONFIG)
         })
       ].concat(DEV_ENV ? [] : [new webpack.optimize.AggressiveMergingPlugin()])
+
+      const analyzerMode = process.env.REACT_APP_INTERACTIVE_ANALYZE
+        ? 'server'
+        : 'json'
+      const isProductionBuild = process.env.NODE_ENV === 'production'
+
+      if (isProductionBuild) {
+        webpackConfig.plugins.push(new BundleAnalyzerPlugin({ analyzerMode }))
+      }
 
       // Enable hot-reloading
       webpackConfig.devServer = {
