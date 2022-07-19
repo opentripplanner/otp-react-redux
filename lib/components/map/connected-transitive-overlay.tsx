@@ -1,16 +1,14 @@
-import { Company, Itinerary, Leg } from '@opentripplanner/types'
 import { connect } from 'react-redux'
-import { injectIntl, IntlShape, useIntl } from 'react-intl'
-import React from 'react'
-// @ts-expect-error transitive-overlay not typescripted
+import { injectIntl, IntlShape } from 'react-intl'
+// @ts-expect-error transitive-overlay is not typescripted
 import TransitiveCanvasOverlay from '@opentripplanner/transitive-overlay'
 
 import { getTransitiveData } from '../../util/state'
 
 type Props = {
-  intl: IntlShape
-  labeledModes: string[]
-  styles: {
+  intl?: IntlShape
+  labeledModes?: string[]
+  styles?: {
     labels: Record<string, unknown>
     segmentLabels: Record<string, unknown>
   }
