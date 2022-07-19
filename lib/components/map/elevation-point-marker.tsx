@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { LeafletStyleMarker } from '@opentripplanner/base-map/lib/styled'
 import { Leg } from '@opentripplanner/types'
 import { Marker } from 'react-map-gl'
 import coreUtils from '@opentripplanner/core-utils'
@@ -20,6 +19,15 @@ type Props = {
 class ElevationPointMarker extends Component<Props> {
   render() {
     const { diagramLeg, elevationPoint, showElevationProfile } = this.props
+
+    const markerStyle = {
+      backgroundColor: '#87CEFA',
+      border: '2px solid #FFF',
+      borderRadius: '50%',
+      height: '15px',
+      width: '15px'
+    }
+
     // Compute the elevation point marker, if activeLeg and elevation profile is enabled.
     let elevationPointMarker = null
     if (showElevationProfile && diagramLeg && elevationPoint) {
@@ -30,12 +38,7 @@ class ElevationPointMarker extends Component<Props> {
       if (pos) {
         elevationPointMarker = (
           <Marker latitude={pos[0]} longitude={pos[1]}>
-            <LeafletStyleMarker
-              color="#084c8d"
-              size={9}
-              stroke={4}
-              strokeColor="#555555"
-            />
+            <div style={markerStyle} />
           </Marker>
         )
       }
