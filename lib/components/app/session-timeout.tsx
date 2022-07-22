@@ -14,7 +14,7 @@ interface Props {
 
 interface State {
   showTimeoutWarning: boolean
-  timeoutObject: NodeJS.Timer
+  timeoutObject?: NodeJS.Timer
   timeoutStartMillis: number
 }
 
@@ -27,7 +27,7 @@ interface State {
 class SessionTimeout extends Component<Props, State> {
   state = {
     showTimeoutWarning: false,
-    timeoutObject: null,
+    timeoutObject: undefined,
     timeoutStartMillis: 0
   }
 
@@ -111,7 +111,7 @@ class SessionTimeout extends Component<Props, State> {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   const { config, lastActionMillis } = state.otp
   const { sessionTimeoutSeconds } = config
   return {
