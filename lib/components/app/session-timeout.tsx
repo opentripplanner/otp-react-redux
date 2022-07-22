@@ -34,6 +34,8 @@ class SessionTimeout extends Component<Props, State> {
   componentDidMount() {
     // Wait one second or so after loading before probing for changes
     // so that initialization actions can complete.
+    // This just delays the start of the session timer, so that checks under `this.handleTimeoutWatch`
+    // don't get performed unnecessarily with all the stuff that normally occurs during a page load.
     setTimeout(this.handleAfterInitialActions, 1500)
   }
 
@@ -51,6 +53,7 @@ class SessionTimeout extends Component<Props, State> {
   handleTimeoutWatch = () => {
     const { lastActionMillis, sessionTimeoutSeconds, startOverFromInitialUrl } =
       this.props
+    // Ignore actions happening before the session timer is started.
     if (lastActionMillis > this.state.timeoutStartMillis) {
       const idleMillis = new Date().valueOf() - lastActionMillis
       const secondsToTimeout = sessionTimeoutSeconds - idleMillis / 1000
