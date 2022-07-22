@@ -113,10 +113,11 @@ class CallTakerControls extends Component<Props> {
       callTakerEnabled,
       fieldTripEnabled,
       resetAndToggleCallHistory,
-      resetAndToggleFieldTrips
+      resetAndToggleFieldTrips,
+      session
     } = this.props
     // If no valid session is found, do not show calltaker controls.
-    // if (!session) return null
+    if (!session) return null
     return (
       <ControlsContainer>
         {/* Start/End Call button */}
