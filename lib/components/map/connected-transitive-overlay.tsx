@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
 import TransitiveCanvasOverlay from '@opentripplanner/transitive-overlay'
 
-import { getTransitiveData } from '../../util/state'
+import { getActiveLeg, getTransitiveData } from '../../util/state'
 
 type Props = {
   intl?: IntlShape
@@ -28,6 +28,7 @@ const mapStateToProps = (state: Record<string, any>, ownProps: Props) => {
   }
 
   const obj = {
+    activeLeg: getActiveLeg(state),
     labeledModes,
     styles,
     // @ts-expect-error state.js is not typescripted
