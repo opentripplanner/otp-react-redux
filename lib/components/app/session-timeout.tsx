@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable react/prop-types */
 import { Button, Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
@@ -7,13 +5,26 @@ import React, { Component } from 'react'
 
 import * as uiActions from '../../actions/ui'
 
+interface Props {
+  lastActionMillis: number
+  resetSessionTimeout: () => void
+  sessionTimeoutSeconds: number
+  startOverFromInitialUrl: () => void
+}
+
+interface State {
+  showTimeoutWarning: boolean
+  timeoutObject: NodeJS.Timer
+  timeoutStartMillis: number
+}
+
 /**
  * This component makes the current session timeout
  * by displaying a timeout warning one minute before the timeout,
  * and by reloading the initial URL if there is no user-initiated
  * actions within the timeout window.
  */
-class SessionTimeout extends Component {
+class SessionTimeout extends Component<Props, State> {
   state = {
     showTimeoutWarning: false,
     timeoutObject: null,
@@ -27,7 +38,6 @@ class SessionTimeout extends Component {
   }
 
   componentWillUnmount() {
-    // @ts-ignore SessionTimeout is not typed yet
     clearInterval(this.state.timeoutObject)
   }
 
@@ -39,7 +49,6 @@ class SessionTimeout extends Component {
   }
 
   handleTimeoutWatch = () => {
-    // @ts-ignore SessionTimeout is not typed yet
     const { lastActionMillis, sessionTimeoutSeconds, startOverFromInitialUrl } =
       this.props
     if (lastActionMillis > this.state.timeoutStartMillis) {
@@ -68,18 +77,14 @@ class SessionTimeout extends Component {
   }
 
   handleKeepSession = () => {
-    // @ts-ignore SessionTimeout is not typed yet
     this.setState({
       showTimeoutWarning: false
     })
-    // @ts-ignore SessionTimeout is not typed yet
     this.props.resetSessionTimeout()
   }
 
   render() {
-    // @ts-ignore SessionTimeout is not typed yet
     const { startOverFromInitialUrl } = this.props
-    // @ts-ignore SessionTimeout is not typed yet
     const { showTimeoutWarning } = this.state
     return showTimeoutWarning ? (
       <Modal.Dialog>
@@ -106,7 +111,6 @@ class SessionTimeout extends Component {
   }
 }
 
-// @ts-ignore SessionTimeout is not typed yet
 const mapStateToProps = (state) => {
   const { config, lastActionMillis } = state.otp
   const { sessionTimeoutSeconds } = config
