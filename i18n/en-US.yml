@@ -402,9 +402,9 @@ components:
   SearchScreen:
     header: Plan Your Trip
   SessionTimeout:
-    body: Your session will expire within a minute. Press 'Keep Session' to keep your search.
+    body: Your session will expire within a minute. Press 'Continue Session' to keep your search.
     header: Session about to timeout!
-    keepSession: Keep Session
+    keepSession: Continue Session
   SettingsPreview:
     defaultPreviewText: "Transit Options\n& Preferences"
   SimpleRealtimeAnnotation:
