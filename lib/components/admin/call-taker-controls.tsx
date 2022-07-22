@@ -1,13 +1,19 @@
-import React, { Component } from 'react'
-import { injectIntl } from 'react-intl'
 import { connect } from 'react-redux'
+import { injectIntl, IntlShape, WrappedComponentProps } from 'react-intl'
+import React, { Component } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
+import {
+  GraduationCap,
+  History,
+  Phone,
+  Plus,
+  Stop
+} from '@styled-icons/fa-solid'
 import { isModuleEnabled, Modules } from '../../util/config'
-import Icon from '../util/icon'
 
 import {
   CallHistoryButton,
@@ -16,6 +22,28 @@ import {
   FieldTripsButton,
   ToggleCallButton
 } from './styled'
+import StyledIconWrapper from '../util/styledIcon'
+
+type Props = {
+  beginCall: () => void
+  callTaker: {
+    activeCall: any
+    callHistory: {
+      calls: {
+        data: Array<any>
+      }
+      visible: boolean
+    }
+  }
+  callTakerEnabled: boolean
+  endCall: (intl: IntlShape) => void
+  fetchCalls: (intl: IntlShape) => void
+  fetchFieldTrips: (intl: IntlShape) => void
+  fieldTripEnabled: boolean
+  resetAndToggleCallHistory: () => void
+  resetAndToggleFieldTrips: () => void
+  session: string
+} & WrappedComponentProps
 
 /**
  * This component displays the controls for the Call Taker/Field Trip modules,
@@ -24,8 +52,8 @@ import {
  *  - view call list
  *  - view field trip list
  */
-class CallTakerControls extends Component {
-  componentDidUpdate (prevProps) {
+class CallTakerControls extends Component<Props> {
+  componentDidUpdate(prevProps: Props) {
     const {
       callTakerEnabled,
       fetchCalls,
@@ -54,84 +82,82 @@ class CallTakerControls extends Component {
     // Show stop button if call not in progress.
     if (this._callInProgress()) {
       return (
-        <Icon className='fa-3x' style={{marginLeft: '3px'}} type='stop' />
+        <StyledIconWrapper size="4x">
+          <Stop />
+        </StyledIconWrapper>
       )
     }
     // No call is in progress.
     return (
       <>
-        <Icon
+        <StyledIconWrapper
           style={{
-            marginLeft: '17px',
-            marginTop: '6px',
+            marginLeft: '37px',
+            marginTop: '16px',
             position: 'absolute'
           }}
-          type='plus' />
-        <Icon className='fa-4x fa-flip-horizontal' type='phone' />
+        >
+          <Plus />
+        </StyledIconWrapper>
+        <StyledIconWrapper flipHorizontal size="4x">
+          <Phone />
+        </StyledIconWrapper>
       </>
     )
   }
 
   _callInProgress = () => Boolean(this.props.callTaker.activeCall)
 
-  render () {
+  render() {
     const {
       callTakerEnabled,
       fieldTripEnabled,
       resetAndToggleCallHistory,
-      resetAndToggleFieldTrips,
-      session
+      resetAndToggleFieldTrips
     } = this.props
     // If no valid session is found, do not show calltaker controls.
-    if (!session) return null
+    // if (!session) return null
     return (
       <ControlsContainer>
         {/* Start/End Call button */}
-        {callTakerEnabled &&
+        {callTakerEnabled && (
           <ToggleCallButton
             callInProgress={this._callInProgress()}
-            className='call-taker-button'
+            className="call-taker-button"
             onClick={this._onClickCall}
           >
             {this._renderCallButtonIcon()}
           </ToggleCallButton>
-        }
-        {this._callInProgress()
-          ? <CallTimeCounter />
-          : null
-        }
+        )}
+        {this._callInProgress() ? <CallTimeCounter /> : null}
         {/* Call History toggle button */}
-        {callTakerEnabled &&
+        {callTakerEnabled && (
           <CallHistoryButton
-            className='call-taker-button'
+            className="call-taker-button"
             onClick={resetAndToggleCallHistory}
           >
-            <Icon
-              className='fa-2x'
-              style={{marginLeft: '-3px'}}
-              type='history'
-            />
+            <StyledIconWrapper size="2x">
+              <History />
+            </StyledIconWrapper>
           </CallHistoryButton>
-        }
+        )}
         {/* Field Trip toggle button */}
-        {fieldTripEnabled &&
+        {fieldTripEnabled && (
           <FieldTripsButton
-            className='call-taker-button'
+            className="call-taker-button"
             onClick={resetAndToggleFieldTrips}
           >
-            <Icon
-              className='fa-2x'
-              style={{marginLeft: '2px', marginTop: '3px'}}
-              type='graduation-cap'
-            />
+            <StyledIconWrapper size="2x">
+              <GraduationCap />
+            </StyledIconWrapper>
           </FieldTripsButton>
-        }
+        )}
       </ControlsContainer>
     )
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state: Record<string, any>) => {
   return {
     callTaker: state.callTaker,
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
@@ -151,6 +177,7 @@ const mapDispatchToProps = {
   setMainPanelContent: uiActions.setMainPanelContent
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  injectIntl(CallTakerControls)
-)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(CallTakerControls))
