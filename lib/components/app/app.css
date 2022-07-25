@@ -84,3 +84,12 @@
 .view-switcher button.btn-link:hover {
   color: #fff;
 }
+
+/* Full screen modal styling */
+.fullscreen-modal {
+  width: 90vw;
+  height: 100vh;
+}
+.fullscreen-modal .modal-content {
+  height: 90vh;
+}
