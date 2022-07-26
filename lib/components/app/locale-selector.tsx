@@ -1,11 +1,12 @@
 import { connect, ConnectedProps } from 'react-redux'
+import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
 import { MenuItem, NavDropdown } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
 import React, { MouseEvent } from 'react'
 
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
-import Icon from '../util/icon'
+import StyledIconWrapper from '../util/styledIcon'
 
 type PropsFromRedux = ConnectedProps<typeof connector>
 
@@ -47,7 +48,9 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
       id="locale-selector"
       pullRight
       title={
-        <Icon style={{ color: 'rgba(255, 255, 255, 0.85)' }} type="globe" />
+        <StyledIconWrapper style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
+          <GlobeAmericas />
+        </StyledIconWrapper>
       }
     >
       {Object.keys(configLanguages).map((locale) => {
