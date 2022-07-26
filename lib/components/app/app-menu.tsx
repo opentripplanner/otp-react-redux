@@ -17,6 +17,7 @@ import VelocityTransitionGroup from 'velocity-react/velocity-transition-group'
 
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
+import * as uiActions from '../../actions/ui'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import Icon from '../util/icon'
@@ -27,10 +28,12 @@ type AppMenuProps = {
   fieldTripEnabled?: boolean
   location: { search: string }
   mailablesEnabled?: boolean
+  popupTarget: string
   reactRouterConfig?: { basename: string }
   resetAndToggleCallHistory?: () => void
   resetAndToggleFieldTrips?: () => void
   setMainPanelContent: (panel: number) => void
+  setPopupContent: (url: string) => void
   toggleMailables: () => void
 }
 type AppMenuState = {
@@ -76,6 +79,12 @@ class AppMenu extends Component<
       }
     }
     window.location.href = startOverUrl
+  }
+
+  _triggerPopup = () => {
+    const { popupTarget, setPopupContent } = this.props
+    setPopupContent(popupTarget)
+    this._togglePane()
   }
 
   _togglePane = () => {
@@ -171,6 +180,7 @@ class AppMenu extends Component<
       fieldTripEnabled,
       intl,
       mailablesEnabled,
+      popupTarget,
       resetAndToggleCallHistory,
       resetAndToggleFieldTrips,
       toggleMailables
@@ -215,6 +225,12 @@ class AppMenu extends Component<
               <Icon type="undo" />
               <FormattedMessage id="common.forms.startOver" />
             </MenuItem>
+            {popupTarget && (
+              <MenuItem className="menu-item" onClick={this._triggerPopup}>
+                <Icon type="external-link-square" />
+                <FormattedMessage id={`popups.${popupTarget}`} />
+              </MenuItem>
+            )}
             {callTakerEnabled && (
               <MenuItem
                 className="menu-item"
@@ -257,7 +273,8 @@ const mapStateToProps = (state: Record<string, any>) => {
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
     extraMenuItems,
     fieldTripEnabled: isModuleEnabled(state, Modules.FIELD_TRIP),
-    mailablesEnabled: isModuleEnabled(state, Modules.MAILABLES)
+    mailablesEnabled: isModuleEnabled(state, Modules.MAILABLES),
+    popupTarget: state.otp.config?.popups?.launchers?.sidebarLink
   }
 }
 
@@ -265,6 +282,7 @@ const mapDispatchToProps = {
   resetAndToggleCallHistory: callTakerActions.resetAndToggleCallHistory,
   resetAndToggleFieldTrips: fieldTripActions.resetAndToggleFieldTrips,
   setMainPanelContent,
+  setPopupContent: uiActions.setPopupContent,
   toggleMailables: callTakerActions.toggleMailables
 }
 

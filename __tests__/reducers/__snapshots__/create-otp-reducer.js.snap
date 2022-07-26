@@ -106,7 +106,7 @@ Object {
     "mainPanelContent": null,
     "mobileScreen": 1,
     "popup": Object {
-      "content": null,
+      "id": null,
     },
     "printView": false,
     "routeViewer": Object {
