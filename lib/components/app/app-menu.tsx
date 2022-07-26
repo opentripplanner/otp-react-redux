@@ -1,12 +1,17 @@
 /* eslint-disable react/jsx-handler-names */
+import { Bus } from '@styled-icons/fa-solid/Bus'
+import { ChevronDown } from '@styled-icons/fa-solid/ChevronDown'
+import { ChevronUp } from '@styled-icons/fa-solid/ChevronUp'
 import { connect } from 'react-redux'
+import { Envelope } from '@styled-icons/fa-regular/Envelope'
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
-import React, { Component, Fragment } from 'react'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
+import { History } from '@styled-icons/fa-solid/History'
 import { MenuItem } from 'react-bootstrap'
+import { Undo } from '@styled-icons/fa-solid/Undo'
 import { withRouter } from 'react-router'
 import qs from 'qs'
+import React, { Component, Fragment } from 'react'
 import SlidingPane from 'react-sliding-pane'
 import type { RouteComponentProps } from 'react-router'
 import type { WrappedComponentProps } from 'react-intl'
@@ -20,6 +25,7 @@ import * as fieldTripActions from '../../actions/field-trip'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import Icon from '../util/icon'
+import StyledIconWrapper from '../util/styledIcon'
 
 type AppMenuProps = {
   callTakerEnabled?: boolean
@@ -128,12 +134,9 @@ class AppMenu extends Component<
                   iconUrl={iconUrl}
                   label={label}
                 />
-                <span>
-                  <Icon
-                    className="expand-menu-chevron"
-                    type={`chevron-${isSubmenuExpanded ? 'up' : 'down'}`}
-                  />
-                </span>
+                <StyledIconWrapper className="expand-menu-chevron">
+                  {isSubmenuExpanded ? <ChevronUp /> : <ChevronDown />}
+                </StyledIconWrapper>
               </MenuItem>
               <VelocityTransitionGroup
                 enter={{ animation: 'slideDown' }}
@@ -208,11 +211,15 @@ class AppMenu extends Component<
               className="app-menu-route-viewer-link"
               onClick={this._showRouteViewer}
             >
-              <Icon type="bus" />
+              <StyledIconWrapper>
+                <Bus />
+              </StyledIconWrapper>
               <FormattedMessage id="components.RouteViewer.shortTitle" />
             </MenuItem>
             <MenuItem className="menu-item" onClick={this._startOver}>
-              <Icon type="undo" />
+              <StyledIconWrapper>
+                <Undo />
+              </StyledIconWrapper>
               <FormattedMessage id="common.forms.startOver" />
             </MenuItem>
             {callTakerEnabled && (
@@ -220,7 +227,9 @@ class AppMenu extends Component<
                 className="menu-item"
                 onClick={resetAndToggleCallHistory}
               >
-                <Icon type="history" />
+                <StyledIconWrapper>
+                  <History />
+                </StyledIconWrapper>
                 <FormattedMessage id="components.AppMenu.callHistory" />
               </MenuItem>
             )}
@@ -229,13 +238,17 @@ class AppMenu extends Component<
                 className="menu-item"
                 onClick={resetAndToggleFieldTrips}
               >
-                <Icon type="graduation-cap" />
+                <StyledIconWrapper>
+                  <GraduationCap />
+                </StyledIconWrapper>
                 <FormattedMessage id="components.AppMenu.fieldTrip" />
               </MenuItem>
             )}
             {mailablesEnabled && (
               <MenuItem className="menu-item" onClick={toggleMailables}>
-                <Icon type="envelope-o" />
+                <StyledIconWrapper>
+                  <Envelope />
+                </StyledIconWrapper>
                 <FormattedMessage id="components.AppMenu.mailables" />
               </MenuItem>
             )}
@@ -299,6 +312,7 @@ const IconAndLabel = ({
           src={iconUrl}
         />
       ) : (
+        // TODO: Replace FontAwesome icon
         <Icon type={iconType || 'external-link-square'} />
       )}
       {label}
