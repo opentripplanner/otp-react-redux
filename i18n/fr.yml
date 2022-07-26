@@ -213,6 +213,13 @@ components:
     satellite: Satellite
     stops: Arrêts et stations
     streets: Plan des rues    
+  MetroUI:
+    leaveAt: You leave
+    arriveAtTime: "Arrive at {time}" 
+    timeWalking: "{time} walking"
+    fromStop: "from {stop}"
+    orAlternatives: or other routes in the same direction
+    itineraryDescription: "{time} itinerary using {routes}"
   MobileOptions:
     header: Options de recherche
   ModeDropdown:
@@ -380,6 +387,10 @@ components:
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SearchScreen:
     header: Planifiez votre trajet
+  SessionTimeout:
+    body: Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma session' pour conserver votre recherche. 
+    header: Votre session va expirer
+    keepSession: Prolonger ma session
   SettingsPreview:
     defaultPreviewText: "Choix du mode\n& préférences"
   SimpleRealtimeAnnotation:
@@ -629,7 +640,6 @@ common:
   forms:
     back: Retour
     cancel: Annuler
-    clear: Effacer
     close: Fermer
     error: erreur !
     defaultValue: "{value} (défaut)"
@@ -757,6 +767,7 @@ config:
   # Default values for Flex Indicator (set in configuration as well)
   flex:
     flex-service: Service Flex
+    flex-service-colon: "Service Flex:"
     both: Plus de détails au bas de l'itinéraire
     call-ahead: Appelez pour réserver
     continuous-dropoff: Demandez l'arrêt au conducteur

@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 import BaseMap from '@opentripplanner/base-map'
@@ -11,6 +13,7 @@ import {
   vehicleRentalQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
+import { getActiveItinerary, getActiveSearch } from '../../util/state'
 import {
   setLocation,
   setMapPopupLocation,
@@ -23,6 +26,7 @@ import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
 import ParkAndRideOverlay from './connected-park-and-ride-overlay'
 import PointPopup from './point-popup'
+import RoutePreviewOverlay from './route-preview-overlay'
 import RouteViewerOverlay from './connected-route-viewer-overlay'
 import StopsOverlay from './connected-stops-overlay'
 import StopViewerOverlay from './connected-stop-viewer-overlay'
@@ -82,6 +86,7 @@ function getLayerName(overlay, config, intl) {
     case 'satellite':
       return intl.formatMessage({ id: 'components.MapLayers.satellite' })
     case 'bike-rental':
+    case 'otp2-bike-rental':
       return intl.formatMessage(
         { id: 'components.MapLayers.bike-rental' },
         {
@@ -91,6 +96,7 @@ function getLayerName(overlay, config, intl) {
     case 'car-rental':
       return intl.formatMessage({ id: 'components.MapLayers.car-rental' })
     case 'micromobility-rental':
+    case 'otp2-micromobility-rental':
       return intl.formatMessage(
         {
           id: 'components.MapLayers.micromobility-rental'
@@ -122,8 +128,8 @@ class DefaultMap extends Component {
    * TODO: Implement for the batch interface.
    */
   _handleQueryChange = (oldQuery, newQuery) => {
-    const { overlays } = this.props
-    if (overlays && oldQuery.mode) {
+    const { overlays = [] } = this.props.mapConfig || {}
+    if (oldQuery.mode) {
       // Determine any added/removed modes
       const oldModes = oldQuery.mode.split(',')
       const newModes = newQuery.mode.split(',')
@@ -138,7 +144,8 @@ class DefaultMap extends Component {
         if (
           (overlayMode === 'CAR_RENT' ||
             overlayMode === 'CAR_HAIL' ||
-            overlayMode === 'MICROMOBILITY_RENT') &&
+            overlayMode === 'MICROMOBILITY_RENT' ||
+            overlayMode === 'SCOOTER') &&
           oConfig.companies
         ) {
           // Special handling for company-based mode overlays (e.g. carshare, car-hail)
@@ -218,17 +225,18 @@ class DefaultMap extends Component {
       carRentalStations,
       config,
       intl,
+      itinerary,
       mapConfig,
       mapPopupLocation,
+      pending,
       vehicleRentalQuery,
       vehicleRentalStations
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel } = this.context
+    const { baseLayers, initLat, initLon, initZoom, maxZoom, overlays } =
+      mapConfig || {}
 
-    const center =
-      mapConfig && mapConfig.initLat && mapConfig.initLon
-        ? [mapConfig.initLat, mapConfig.initLon]
-        : null
+    const center = initLat && initLon ? [initLat, initLon] : null
 
     const popup = mapPopupLocation && {
       contents: (
@@ -240,7 +248,19 @@ class DefaultMap extends Component {
       location: [mapPopupLocation.lat, mapPopupLocation.lon]
     }
 
-    const baseLayersWithNames = mapConfig.baseLayers?.map((baseLayer) => ({
+    const bikeStations = [
+      ...bikeRentalStations.filter(
+        (station) => station.isFloatingVehicle === false
+      ),
+      ...vehicleRentalStations.filter(
+        (station) => station.isFloatingBike === true
+      )
+    ]
+    const scooterStations = vehicleRentalStations.filter(
+      (station) => station.isFloatingBike === false && station.isFloatingVehicle
+    )
+
+    const baseLayersWithNames = baseLayers?.map((baseLayer) => ({
       ...baseLayer,
       name: getLayerName(baseLayer, config, intl)
     }))
@@ -250,11 +270,11 @@ class DefaultMap extends Component {
         <BaseMap
           baseLayers={baseLayersWithNames}
           center={center}
-          maxZoom={mapConfig.maxZoom}
+          maxZoom={maxZoom}
           onClick={this.onMapClick}
           onPopupClosed={this.onPopupClosed}
           popup={popup}
-          zoom={mapConfig.initZoom || 13}
+          zoom={initZoom || 13}
         >
           {/* The default overlays */}
           <BoundsUpdatingOverlay />
@@ -265,11 +285,12 @@ class DefaultMap extends Component {
           <TransitiveOverlay
             getTransitiveRouteLabel={getTransitiveRouteLabel}
           />
+          <RoutePreviewOverlay />
           <TripViewerOverlay />
           <ElevationPointMarker />
 
           {/* The configurable overlays */}
-          {mapConfig.overlays?.map((overlayConfig, k) => {
+          {overlays?.map((overlayConfig, k) => {
             const namedLayerProps = {
               ...overlayConfig,
               key: k,
@@ -308,12 +329,31 @@ class DefaultMap extends Component {
                 )
               case 'zipcar':
                 return <ZipcarOverlay key={k} {...overlayConfig} />
+              case 'otp2-micromobility-rental':
+                return (
+                  <VehicleRentalOverlay
+                    key={k}
+                    {...namedLayerProps}
+                    refreshVehicles={vehicleRentalQuery}
+                    stations={scooterStations}
+                  />
+                )
+              case 'otp2-bike-rental':
+                return (
+                  <VehicleRentalOverlay
+                    key={k}
+                    {...namedLayerProps}
+                    refreshVehicles={bikeRentalQuery}
+                    stations={bikeStations}
+                  />
+                )
               default:
                 return null
             }
           })}
-          {/* Render custom overlays, if set. */}
-          {typeof getCustomMapOverlays === 'function' && getCustomMapOverlays()}
+          {/* If set, custom overlays are shown if no active itinerary is shown or pending. */}
+          {typeof getCustomMapOverlays === 'function' &&
+            getCustomMapOverlays(!itinerary && !pending)}
         </BaseMap>
       </MapContainer>
     )
@@ -323,18 +363,16 @@ class DefaultMap extends Component {
 // connect to the redux store
 
 const mapStateToProps = (state) => {
-  const overlays =
-    state.otp.config.map && state.otp.config.map.overlays
-      ? state.otp.config.map.overlays
-      : []
+  const activeSearch = getActiveSearch(state)
 
   return {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     config: state.otp.config,
+    itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
     mapPopupLocation: state.otp.ui.mapPopupLocation,
-    overlays,
+    pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
     vehicleRentalStations: state.otp.overlay.vehicleRental.stations
   }
