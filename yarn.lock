@@ -2390,10 +2390,10 @@
     maplibre-gl "^2.1.9"
     react-map-gl "^7.0.15"
 
-"@opentripplanner/base-map@^3.0.0-alpha.1":
-  version "3.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.0-alpha.1.tgz#6ab96ce1f33ae377367777e2fc7f4b0d6789cb24"
-  integrity sha512-GMiWSITX4hbs6darpOJEVL0De97ghI5f3FhZS6XyQlrlB1NS7o/ixbEFIpCLCF4dewjcNE9nKOCBijZPaF3mAw==
+"@opentripplanner/base-map@^3.0.0-alpha.3":
+  version "3.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.0-alpha.3.tgz#7343e7e075865cc5e31f5267d9b52ee580b55398"
+  integrity sha512-LRcRjboRuE4Q5dBaHUmKvCMSIwvPTxURm37mSk9/BAHJlszDYC4yG3Jg1N+0B6a3mAx2S8kpwNDMXrgYBfvDfA==
   dependencies:
     "@opentripplanner/types" "^2.0.0"
     mapbox-gl "npm:empty-npm-package@1.0.0"
@@ -2457,7 +2457,7 @@
 "@opentripplanner/endpoints-overlay@../otp-ui/packages/endpoints-overlay":
   version "1.4.1"
   dependencies:
-    "@opentripplanner/base-map" "^3.0.0-alpha.1"
+    "@opentripplanner/base-map" "^3.0.0-alpha.3"
     "@opentripplanner/core-utils" "^6.0.0"
     "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
@@ -2550,7 +2550,7 @@
 "@opentripplanner/park-and-ride-overlay@../otp-ui/packages/park-and-ride-overlay":
   version "1.2.4"
   dependencies:
-    "@opentripplanner/base-map" "^3.0.0-alpha.1"
+    "@opentripplanner/base-map" "^3.0.0-alpha.3"
     "@opentripplanner/from-to-location-picker" "^2.1.2"
 
 "@opentripplanner/printable-itinerary@^2.0.1":
@@ -2564,7 +2564,7 @@
   version "1.4.0"
   dependencies:
     "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/base-map" "^3.0.0-alpha.1"
+    "@opentripplanner/base-map" "^3.0.0-alpha.3"
     "@opentripplanner/core-utils" "^6.0.0"
     point-in-polygon "^1.1.0"
     react-map-gl "^7.0.15"
@@ -2583,20 +2583,20 @@
 "@opentripplanner/stop-viewer-overlay@../otp-ui/packages/stop-viewer-overlay":
   version "1.1.1"
   dependencies:
-    "@opentripplanner/base-map" "^3.0.0-alpha.1"
+    "@opentripplanner/base-map" "^3.0.0-alpha.3"
     "@opentripplanner/core-utils" "^6.0.0"
 
 "@opentripplanner/stops-overlay@../otp-ui/packages/stops-overlay":
   version "4.0.0"
   dependencies:
-    "@opentripplanner/base-map" "^3.0.0-alpha.1"
+    "@opentripplanner/base-map" "^3.0.0-alpha.3"
     "@opentripplanner/from-to-location-picker" "^2.1.2"
     flat "^5.0.2"
 
 "@opentripplanner/transit-vehicle-overlay@../otp-ui/packages/transit-vehicle-overlay":
   version "2.4.0"
   dependencies:
-    "@opentripplanner/base-map" "^3.0.0-alpha.1"
+    "@opentripplanner/base-map" "^3.0.0-alpha.3"
     "@opentripplanner/core-utils" "^6.0.0"
     "@opentripplanner/icons" "1.2.2"
     flat "^5.0.2"
@@ -2605,7 +2605,7 @@
   version "2.0.0"
   dependencies:
     "@mapbox/polyline" "^1.1.1"
-    "@opentripplanner/base-map" "^3.0.0-alpha.1"
+    "@opentripplanner/base-map" "^3.0.0-alpha.3"
     "@opentripplanner/core-utils" "^6.0.0"
     "@opentripplanner/itinerary-body" "^4.0.0"
     "@turf/bbox" "^6.5.0"
@@ -2642,7 +2642,7 @@
   version "1.1.1"
   dependencies:
     "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/base-map" "^3.0.0-alpha.1"
+    "@opentripplanner/base-map" "^3.0.0-alpha.3"
     "@opentripplanner/core-utils" "^6.0.0"
 
 "@opentripplanner/types@^2.0.0":
@@ -2653,7 +2653,7 @@
 "@opentripplanner/vehicle-rental-overlay@../otp-ui/packages/vehicle-rental-overlay":
   version "1.4.3"
   dependencies:
-    "@opentripplanner/base-map" "^3.0.0-alpha.1"
+    "@opentripplanner/base-map" "^3.0.0-alpha.3"
     "@opentripplanner/core-utils" "^6.0.0"
     "@opentripplanner/from-to-location-picker" "^2.1.2"
     "@styled-icons/fa-solid" "^10.34.0"
