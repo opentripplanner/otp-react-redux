@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 interface Props {
   flipHorizontal?: boolean
+  noMargin?: boolean
   size?: string
   spaceRight?: boolean
 }
@@ -30,7 +31,7 @@ const StyledIconWrapper = styled.span<Props>`
     height: 1em;
     top: 0.0125em;
     position: relative;
-    margin: 0 0.125em;
+    margin: ${(props) => (props.noMargin ? '0' : '0 0.125em')};
     font-size: ${(props) => getFontSize(props.size)};
     transform: ${(props) => (props.flipHorizontal ? 'scale(-1,1)' : '')};
   }
