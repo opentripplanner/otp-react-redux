@@ -32,7 +32,7 @@ actions:
     fetchCallsError: "Error fetching calls: {err}"
     queryFetchError: "Error fetching queries: {err}"
   fieldTrip:
-    addNoteError: "Error adding field trip note: {err}"
+    addNoteError: "Error adding field trip note:"
     confirmOverwriteItineraries: >
       This action will overwrite a previously planned {outbound, select,
           true {outbound}
