@@ -505,3 +505,8 @@ dateTime:
 ### Setting to enable touch-friendly behavior
 ### e.g. on touch-screen kiosks that run a desktop OS.
 # isTouchScreenOnDesktop: true
+
+### Approximate duration in seconds after which, if there is no user activity, the UI is reset to an initial URL.
+### The value should be at least over a minute, so that users have enough time to extend their session if needed.
+### A warning is shown when a minute or a third of the session time remains, whichever is shorter.
+# sessionTimeoutSeconds: 180
