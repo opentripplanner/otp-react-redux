@@ -1,6 +1,7 @@
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 // @ts-expect-error no types available
 import { VelocityTransitionGroup } from 'velocity-react'
+import AnimateHeight from 'react-animate-height'
 import React, { Component } from 'react'
 import type { Route } from '@opentripplanner/types'
 
@@ -117,66 +118,61 @@ class PatternRow extends Component<Props, State> {
         </div>
 
         {/* expanded view */}
-        <VelocityTransitionGroup
-          enter={{ animation: 'slideDown' }}
-          leave={{ animation: 'slideUp' }}
-        >
-          {this.state.expanded && (
-            <div id={`route-${routeName}`}>
-              <div className="trip-table" role="table">
-                {/* trips table header row */}
-                <div className="header" role="row">
-                  <div className="cell" role="columnheader" />
-                  <div className="cell time-column" role="columnheader">
-                    <FormattedMessage id="components.PatternRow.departure" />
-                  </div>
-                  <div className="cell status-column" role="columnheader">
-                    <FormattedMessage id="components.PatternRow.status" />
-                  </div>
+        <AnimateHeight duration={500} height={this.state.expanded ? 'auto' : 0}>
+          <div id={`route-${routeName}`}>
+            <div className="trip-table" role="table">
+              {/* trips table header row */}
+              <div className="header" role="row">
+                <div className="cell" role="columnheader" />
+                <div className="cell time-column" role="columnheader">
+                  <FormattedMessage id="components.PatternRow.departure" />
                 </div>
-
-                {/* list of upcoming trips */}
-                {hasStopTimes &&
-                  sortedStopTimes.map((stopTime, i) => {
-                    const { departureDelay: delay, realtimeState } = stopTime
-                    return (
-                      <div
-                        className="trip-row"
-                        key={i}
-                        role="row"
-                        style={{
-                          display: 'table-row',
-                          fontSize: 14,
-                          marginTop: 6
-                        }}
-                      >
-                        <div className="cell" role="cell">
-                          <FormattedMessage
-                            id="components.PatternRow.routeShort"
-                            values={{ headsign: stopTime.headsign }}
-                          />
-                        </div>
-                        <div className="cell time-column" role="cell">
-                          <StopTimeCell
-                            homeTimezone={homeTimezone}
-                            stopTime={stopTime}
-                          />
-                        </div>
-                        <div className="cell status-column" role="cell">
-                          <RealtimeStatusLabel
-                            className="status-label"
-                            delay={delay}
-                            isRealtime={realtimeState === 'UPDATED'}
-                            withBackground
-                          />
-                        </div>
-                      </div>
-                    )
-                  })}
+                <div className="cell status-column" role="columnheader">
+                  <FormattedMessage id="components.PatternRow.status" />
+                </div>
               </div>
+
+              {/* list of upcoming trips */}
+              {hasStopTimes &&
+                sortedStopTimes.map((stopTime, i) => {
+                  const { departureDelay: delay, realtimeState } = stopTime
+                  return (
+                    <div
+                      className="trip-row"
+                      key={i}
+                      role="row"
+                      style={{
+                        display: 'table-row',
+                        fontSize: 14,
+                        marginTop: 6
+                      }}
+                    >
+                      <div className="cell" role="cell">
+                        <FormattedMessage
+                          id="components.PatternRow.routeShort"
+                          values={{ headsign: stopTime.headsign }}
+                        />
+                      </div>
+                      <div className="cell time-column" role="cell">
+                        <StopTimeCell
+                          homeTimezone={homeTimezone}
+                          stopTime={stopTime}
+                        />
+                      </div>
+                      <div className="cell status-column" role="cell">
+                        <RealtimeStatusLabel
+                          className="status-label"
+                          delay={delay}
+                          isRealtime={realtimeState === 'UPDATED'}
+                          withBackground
+                        />
+                      </div>
+                    </div>
+                  )
+                })}
             </div>
-          )}
-        </VelocityTransitionGroup>
+          </div>
+        </AnimateHeight>
       </div>
     )
   }
