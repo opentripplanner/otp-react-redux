@@ -35,7 +35,7 @@ const StyledIconWrapper = styled.span<Props>`
     font-size: ${(props) => getFontSize(props.size)};
     transform: ${(props) => (props.flipHorizontal ? 'scale(-1,1)' : '')};
   }
-  margin: ${(props) => (props.spaceRight ? '0 0.125em' : '0 0')};
+  margin-right: ${(props) => (props.spaceRight ? '0.125em' : '0')};
 `
 
 export default StyledIconWrapper
