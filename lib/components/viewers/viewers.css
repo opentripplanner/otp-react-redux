@@ -91,9 +91,18 @@
 /* stop viewer styles */
 
 .otp .stop-viewer .route-row {
-  border: 1px solid #111;
+  border: 1px solid #1113;
+  border-top: none;
+}
+.otp .stop-viewer .route-row:first-of-type {
+  border-top: 1px solid #1113;
   margin-top: 10px;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.otp .stop-viewer .route-row:last-of-type {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .otp .stop-viewer .route-row .header {
@@ -109,7 +118,7 @@
 .otp .stop-viewer .route-row .header .next-trip-preview {
   display: table-cell;
   width: 100px;
-  border-left: 1px solid gray;
+  border-left: 1px solid #1113;
   padding: 9px 6px;
   font-size: 14px;
 }
@@ -117,7 +126,7 @@
 .otp .stop-viewer .route-row .header .expansion-button-container {
   display: table-cell;
   width: 36px;
-  border-left: 1px solid gray;
+  border-left: 1px solid #1113;
   padding: 0px;
   cursor: pointer;
   vertical-align: middle;
@@ -283,7 +292,7 @@
   display: table;
   width: 100%;
   padding: 8px;
-  border-top: 1px solid gray;
+  border-top: 1px solid #1113;
 }
 
 .otp .stop-viewer .trip-table .header {
