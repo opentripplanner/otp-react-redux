@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
+import { ExclamationCircle } from '@styled-icons/fa-solid/ExclamationCircle'
 import { FormattedMessage, useIntl } from 'react-intl'
 import React from 'react'
 
 import { getActiveError, getErrorMessage } from '../../util/state'
-import Icon from '../util/icon'
+import StyledIconWrapper from '../util/styledIcon'
 import TripTools from '../narrative/trip-tools'
 
 /**
@@ -31,7 +32,9 @@ const ErrorMessage = ({
   return (
     <div className="error-message">
       <div className="header">
-        <Icon type="exclamation-circle" />
+        <StyledIconWrapper spaceRight>
+          <ExclamationCircle />
+        </StyledIconWrapper>
         {warning ? (
           <FormattedMessage id="components.ErrorMessage.warning" />
         ) : (
