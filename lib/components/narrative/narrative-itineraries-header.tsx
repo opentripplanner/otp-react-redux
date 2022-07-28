@@ -1,11 +1,14 @@
+import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
+import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
+import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
 import React from 'react'
 import styled from 'styled-components'
 
-import Icon from '../util/icon'
-
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
+import StyledIconWrapper from '../util/styledIcon'
 
 const IssueButton = styled.button`
   background-color: #ecbe03;
@@ -72,7 +75,9 @@ export default function NarrativeItinerariesHeader({
             className="clear-button-formatting"
             onClick={onViewAllOptions}
           >
-            <Icon type="arrow-left" withSpace />
+            <StyledIconWrapper spaceRight>
+              <ArrowLeft />
+            </StyledIconWrapper>
             <FormattedMessage id="components.NarrativeItinerariesHeader.viewAll" />
           </button>
           {itineraryIsExpanded && (
@@ -114,10 +119,9 @@ export default function NarrativeItinerariesHeader({
               </span>
               {errors.length > 0 && (
                 <IssueButton onClick={onToggleShowErrors}>
-                  <Icon
-                    style={{ fontSize: 11, marginRight: 2 }}
-                    type="warning"
-                  />
+                  <StyledIconWrapper spaceRight>
+                    <ExclamationTriangle />
+                  </StyledIconWrapper>
                   <span>{numIssues}</span>
                 </IssueButton>
               )}
@@ -137,10 +141,15 @@ export default function NarrativeItinerariesHeader({
                 marginRight: '5px'
               }}
             >
-              <Icon
+              <StyledIconWrapper
                 className={`${customBatchUiBackground && 'base-color-bg'}`}
-                type={`sort-amount-${sort.direction.toLowerCase()}`}
-              />
+              >
+                {sort.direction.toLowerCase() === 'asc' ? (
+                  <SortAmountUp />
+                ) : (
+                  <SortAmountDown />
+                )}
+              </StyledIconWrapper>
             </button>
             <select
               onBlur={onSortChange}
