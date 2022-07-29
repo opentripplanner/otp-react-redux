@@ -1,5 +1,6 @@
 import 'moment-timezone'
 import { FormattedMessage, FormattedTime } from 'react-intl'
+import { Redo } from '@styled-icons/fa-solid/Redo'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 
@@ -8,8 +9,8 @@ import {
   getStopTimesByPattern,
   routeIsValid
 } from '../../util/viewer'
-import Icon from '../util/icon'
 import SpanWithSpace from '../util/span-with-space'
+import StyledIconWrapper from '../util/styledIcon'
 
 import AmenitiesPanel from './amenities-panel'
 import PatternRow from './pattern-row'
@@ -184,7 +185,9 @@ class LiveStopTimes extends Component<Props, State> {
             onClick={this._refreshStopTimes}
             style={{ fontSize: 'small' }}
           >
-            <Icon className={spin ? 'fa-spin' : ''} type="refresh" withSpace />
+            <StyledIconWrapper spaceRight spin={spin}>
+              <Redo />
+            </StyledIconWrapper>
             <FormattedTime
               timeStyle="short"
               timeZone={userTimezone}

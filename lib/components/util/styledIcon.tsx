@@ -1,11 +1,12 @@
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 interface Props {
   flipHorizontal?: boolean
   noMargin?: boolean
   size?: string
   spaceRight?: boolean
+  spin?: boolean
 }
 
 const getFontSize = (size?: string) => {
@@ -21,11 +22,22 @@ const getFontSize = (size?: string) => {
   }
 }
 
+const rotateAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`
+
 const StyledIconWrapper = styled.span<Props>`
   top: 0.125em;
   position: relative;
   display: inline-flex;
   align-self: center;
+  animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1.2s linear
+    infinite;
   ${StyledIconBase} {
     width: 1em;
     height: 1em;
