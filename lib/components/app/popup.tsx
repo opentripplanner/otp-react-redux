@@ -27,25 +27,18 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
   }`
 
   useEffect(() => {
-    if (isMobile) {
-      window.open(compiledUrl)
+    if (isMobile && shown) {
+      window.open(compiledUrl, '_blank')
     }
-  }, [isMobile, compiledUrl])
+  }, [compiledUrl, isMobile, shown])
 
   if (isMobile) return null
 
   return (
-    <Modal
-      dialogClassName="fullscreen-modal"
-      onHide={() => {
-        hideModal()
-      }}
-      show={shown}
-    >
+    <Modal dialogClassName="fullscreen-modal" onHide={hideModal} show={shown}>
       <iframe
         src={compiledUrl}
-        style={{ height: '100%', width: '100%' }}
-        title={intl.formatMessage({ id: `popups.${id}` })}
+        title={intl.formatMessage({ id: `config.popups.${id}` })}
       />
     </Modal>
   )

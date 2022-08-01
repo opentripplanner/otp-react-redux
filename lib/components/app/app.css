@@ -93,3 +93,7 @@
 .fullscreen-modal .modal-content {
   height: 90vh;
 }
+.fullscreen-modal iframe {
+  height: 100%;
+  width: 100%;
+}

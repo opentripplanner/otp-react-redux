@@ -137,7 +137,7 @@ export default function NarrativeItinerariesHeader({
           >
             {popupTarget && (
               <button onClick={() => setPopupContent(popupTarget)}>
-                <FormattedMessage id={`popups.${popupTarget}`} />
+                <FormattedMessage id={`config.popups.${popupTarget}`} />
               </button>
             )}
             <button

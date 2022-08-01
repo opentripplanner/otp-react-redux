@@ -228,7 +228,7 @@ class AppMenu extends Component<
             {popupTarget && (
               <MenuItem className="menu-item" onClick={this._triggerPopup}>
                 <Icon type="external-link-square" />
-                <FormattedMessage id={`popups.${popupTarget}`} />
+                <FormattedMessage id={`config.popups.${popupTarget}`} />
               </MenuItem>
             )}
             {callTakerEnabled && (

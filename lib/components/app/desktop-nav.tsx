@@ -75,7 +75,7 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
         <Nav pullRight>
           {popupTarget && (
             <NavItem onClick={() => setPopupContent(popupTarget)}>
-              <FormattedMessage id={`popups.${popupTarget}`} />
+              <FormattedMessage id={`config.popups.${popupTarget}`} />
             </NavItem>
           )}
           {configLanguages &&
