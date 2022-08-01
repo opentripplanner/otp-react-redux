@@ -8,6 +8,8 @@ type Props = {
   hideModal: () => void
 }
 
+const isMobile = coreUtils.ui.isMobile()
+
 /**
  * This component renders a bootstrap modal featuring a URL passed in via a content object.
  * On mobile, the link is opened in a popup window.
@@ -20,7 +22,6 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
   const { appendLocale, id, url } = content
   const shown = !!url
 
-  const isMobile = coreUtils.ui.isMobile()
   // appendLocale is true by default, so undefined is true
   const compiledUrl = `${url}${
     appendLocale !== false ? intl.defaultLocale : ''
@@ -30,7 +31,7 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
     if (isMobile && shown) {
       window.open(compiledUrl, '_blank')
     }
-  }, [compiledUrl, isMobile, shown])
+  }, [compiledUrl, shown])
 
   if (isMobile) return null
 
