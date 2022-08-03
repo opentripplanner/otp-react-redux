@@ -4,7 +4,7 @@ import coreUtils from '@opentripplanner/core-utils'
 import React, { useEffect } from 'react'
 
 type Props = {
-  content: { appendLocale?: boolean; id?: string; url?: string }
+  content?: { appendLocale?: boolean; id?: string; url?: string }
   hideModal: () => void
 }
 
@@ -19,7 +19,8 @@ const isMobile = coreUtils.ui.isMobile()
  */
 const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
   const intl = useIntl()
-  const { appendLocale, id, url } = content
+
+  const { appendLocale, id, url } = content || {}
   const shown = !!url
 
   // appendLocale is true by default, so undefined is true
@@ -33,7 +34,7 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
     }
   }, [compiledUrl, shown])
 
-  if (isMobile) return null
+  if (!compiledUrl || isMobile) return null
 
   return (
     <Modal dialogClassName="fullscreen-modal" onHide={hideModal} show={shown}>
