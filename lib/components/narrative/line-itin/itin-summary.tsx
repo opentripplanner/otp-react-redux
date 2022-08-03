@@ -1,8 +1,5 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, FormattedNumber } from 'react-intl'
-// TYPESCRIPT TODO: wait for typescripted core-utils
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'
@@ -106,8 +103,8 @@ export class ItinerarySummary extends Component<Props> {
     const minTotalFare = minTNCFare * 100 + transitFare
     const maxTotalFare = maxTNCFare * 100 + transitFare
 
-    const startTime = itinerary.startTime + parseInt(timeOptions?.offset || '0')
-    const endTime = itinerary.endTime + parseInt(timeOptions?.offset || '0')
+    const startTime = itinerary.startTime + (timeOptions?.offset || 0)
+    const endTime = itinerary.endTime + (timeOptions?.offset || 0)
 
     const { caloriesBurned } =
       coreUtils.itinerary.calculatePhysicalActivity(itinerary)

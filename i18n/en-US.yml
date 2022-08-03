@@ -132,7 +132,6 @@ components:
     mailables: Mailables
     menuItemIconAlt: "Icon for {label} menu item"
     openMenu: Open Menu
-    routeViewer: Route Viewer
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
   BatchResultsScreen:
@@ -173,7 +172,7 @@ components:
     clickDetails: Click to view details
     # Use ordered placeholders when multiple modes are involved
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
-    multiModeSummary: "{accessMode} to {transitMode}"
+    multiModeSummary: "{accessMode} + {transitMode}"
   DeleteUser:
     deleteMyAccount: Delete my account
   EnhancedStopMarker:
@@ -217,47 +216,44 @@ components:
     enterLocation: Enter location
     setDestination: Set Destination
     setOrigin: Set Origin
-  MainMobile:
-    invalidScreen: Invalid mobile screen
+  MapLayers:
+    bike-rental: "{companies} Shared Bikes"
+    car-rental: Rental Car Locations
+    micromobility-rental: "{companies} E-Scooters"
+    park-and-ride: Park & Ride Locations
+    satellite: Satellite
+    stops: Transit Stops
+    streets: Streets    
+  MetroUI:
+    leaveAt: You leave
+    arriveAtTime: "Arrive at {time}" 
+    timeWalking: "{time} walking"
+    fromStop: "from {stop}"
+    orAlternatives: or other routes in the same direction
+    itineraryDescription: "{time} itinerary using {routes}"
   MobileOptions:
     header: Set Search Options
   ModeDropdown:
     exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
-    numIssues: >
-      {issueNum, number} {issueNum, plural,
-        one {issue}
-        other {issues}
-      }
-    # Note to translator: resultText is width-constrained
-    # (about half pane width)
-    resultText: >
-      {pending, select,
-        true {Finding your options...}
-        other {{itineraryNum, number} {itineraryNum, plural,
-            one {itinerary found}
-            other {itineraries found}
-        }}
-      }
+    itinerariesAndIssues: "{itinerariesFound} and {numIssues}"
+    itinerariesFound: "{itineraryNum, plural,
+        one {# itinerary found}
+        other {# itineraries found}
+      }"
+    numIssues: "{issueNum, plural,
+        one {# issue}
+        other {# issues}
+      }"
+    # Note to translator: text below is width-constrained
+    # (about half-pane width, or half-screen width in mobile views).
+    searching: Finding your options...
     selectArrivalTime: Arrival time
     selectBest: Best option
     selectCost: Cost
     selectDepartureTime: Departure time
     selectDuration: Duration
     selectWalkTime: Walk time
-    titleText: >
-      {pending, select,
-          true {Finding your options...}
-          other {
-            {itineraryNum, number} {itineraryNum, plural,
-              one {itinerary}
-              other {itineraries}} {issueNum, plural,
-              =0 {found}
-              one {(and # issue) found}
-              other {(and # issues) found}
-            }
-          }
-      }
     viewAll: View all options
   NavLoginButton:
     help: Help
@@ -371,17 +367,11 @@ components:
     agencyFilter: Agency Filter
     allAgencies: All Agencies
     allModes: All Modes # Note to translator: This text is width-constrained.
-    delaysShownInResults: >
-      Your trip results have been adjusted based on real-time
-      information. Under normal conditions, this trip would take <strong>{normalDuration}</strong>
-      using the following routes: {routes}.
     details: " " # If the string is left blank, React-Intl renders the id
     findARoute: Find A Route
     header: Route Viewer
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
-    noRouteUrl: No route URL provided.
-    serviceUpdate: Service update
     shortTitle: View Routes
     title: Route Viewer
   SavedTripEditor:
@@ -411,6 +401,10 @@ components:
     signInTooltip: Please sign in to save trip.
   SearchScreen:
     header: Plan Your Trip
+  SessionTimeout:
+    body: Your session will expire within a minute. Press 'Continue Session' to keep your search.
+    header: Session about to timeout!
+    keepSession: Continue Session
   SettingsPreview:
     defaultPreviewText: "Transit Options\n& Preferences"
   SimpleRealtimeAnnotation:
@@ -423,11 +417,7 @@ components:
     destination: To
     route: Route
   StopTimeCell:
-    imminentArrival: >
-      {isDue, select,
-        true {Due}
-        other {{formattedDuration}}
-      }
+    imminentArrival: Due
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<strong>Stop ID</strong>: {stopId}"
@@ -436,11 +426,8 @@ components:
     loadingText: Loading Stop...
     noStopsFound: No stop times found for date.
     timezoneWarning: "Departure times are shown in <strong>{timezoneCode}</strong>."
-    viewTypeBtnText: >
-      {scheduleView, select,
-        true {View next arrivals}
-        other {View schedule}
-      }
+    viewNextArrivals: View next arrivals
+    viewSchedule: View schedule
     zoomToStop: Zoom to stop
 
   SubNav:
@@ -673,7 +660,7 @@ common:
   forms:
     back: Back
     cancel: Cancel
-    clear: Clear
+    close: Close
     error: error!
     defaultValue: "{value} (default)"
     delete: Delete
@@ -701,7 +688,6 @@ common:
   # "Aucun trajet en vélo, à pied, et en transports publics n'a été trouvé."
   # OTP access modes
   modes:
-    bicycle: Bicycle
     bike: Bike
     bicycle_rent: Bikeshare
     bus: Bus
@@ -711,18 +697,17 @@ common:
     car_park: Park and Ride
     drive: Drive
     ferry: Ferry
-    flex: Flexible Routes
+    flex: Flex Routes
     funicular: Funicular
     gondola: Gondola
     micromobility: E-Scooter
-    micromobility_rent: Rental E-Scooter
+    micromobility_rent: E-Scooter
     rail: Rail
     rent: Rental options
     subway: Subway
     tram: Streetcar
     transit: Transit
     walk: Walk
-    walking: Walking
 
   notifications:
     email: email
@@ -792,10 +777,24 @@ util:
     titleBarStopId: "Stop {stopId}"
     titleBarWithStatus: "{title} | {status}"
 
-# Default values for Flex Indicator (set in configuration as well)
 config:
+  accessModes:
+    bicycle: Transit + Personal bike
+    bicycle_rent: Transit + Bikeshare
+    car_hail: Ride Hail
+    car_park: Park & Ride
+    micromobility: Transit + Personal scooter
+    micromobility_rent: Transit + E-scooter rental
+  bicycleModes:
+    bicycle: Own Bike
+    bicycle_rent: Bikeshare
+  micromobilityModes:
+    micromobility: Own E-scooter
+    micromobility_rent: Rented E-scooter
+  # Default values for Flex Indicator (set in configuration as well)
   flex:
     flex-service: Flex Service
+    flex-service-colon: "Flex Service:"
     both: See bottom of itinerary for details
     call-ahead: Call to reserve
     continuous-dropoff: Communicate with operator about stop

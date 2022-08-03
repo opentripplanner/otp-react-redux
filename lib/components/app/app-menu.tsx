@@ -1,18 +1,14 @@
-/* eslint-disable react/jsx-handler-names */
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
-import React, { Component, Fragment } from 'react'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { MenuItem } from 'react-bootstrap'
 import { withRouter } from 'react-router'
+import AnimateHeight from 'react-animate-height'
 import qs from 'qs'
+import React, { Component, Fragment } from 'react'
 import SlidingPane from 'react-sliding-pane'
 import type { RouteComponentProps } from 'react-router'
 import type { WrappedComponentProps } from 'react-intl'
-// No types available, old package
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+// @ts-expect-error Velocity-React not typescripted
 import VelocityTransitionGroup from 'velocity-react/velocity-transition-group'
 
 import * as callTakerActions from '../../actions/call-taker'
@@ -135,16 +131,14 @@ class AppMenu extends Component<
                   />
                 </span>
               </MenuItem>
-              <VelocityTransitionGroup
-                enter={{ animation: 'slideDown' }}
-                leave={{ animation: 'slideUp' }}
+              <AnimateHeight
+                duration={500}
+                height={isSubmenuExpanded ? 'auto' : 0}
               >
-                {isSubmenuExpanded && (
-                  <div className="sub-menu-container">
-                    {this._addExtraMenuItems(children)}
-                  </div>
-                )}
-              </VelocityTransitionGroup>
+                <div className="sub-menu-container">
+                  {this._addExtraMenuItems(children)}
+                </div>
+              </AnimateHeight>
             </Fragment>
           )
         }

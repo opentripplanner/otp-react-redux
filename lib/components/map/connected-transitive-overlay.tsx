@@ -1,11 +1,21 @@
-import TransitiveCanvasOverlay from '@opentripplanner/transitive-overlay'
 import { connect } from 'react-redux'
+import { injectIntl, IntlShape } from 'react-intl'
+// @ts-expect-error transitive-overlay is not typescripted
+import TransitiveCanvasOverlay from '@opentripplanner/transitive-overlay'
 
 import { getTransitiveData } from '../../util/state'
 
-// connect to the redux store
+type Props = {
+  intl?: IntlShape
+  labeledModes?: string[]
+  styles?: {
+    labels: Record<string, unknown>
+    segmentLabels: Record<string, unknown>
+  }
+}
 
-const mapStateToProps = (state, ownProps) => {
+// connect to the redux store
+const mapStateToProps = (state: Record<string, any>, ownProps: Props) => {
   const { labeledModes, styles } = state.otp.config.map.transitive || {}
   const { viewedRoute } = state.otp.ui
 
@@ -18,11 +28,13 @@ const mapStateToProps = (state, ownProps) => {
     return {}
   }
 
-  return {
+  const obj = {
     labeledModes,
     styles,
+    // @ts-expect-error state.js is not typescripted
     transitiveData: getTransitiveData(state, ownProps)
-  }
+  } // generate implicit type
+  return obj
 }
 
-export default connect(mapStateToProps)(TransitiveCanvasOverlay)
+export default injectIntl(connect(mapStateToProps)(TransitiveCanvasOverlay))

@@ -38,9 +38,8 @@ const ModeButton = ({
   onClick: (mode: string) => void
   selected: boolean
 }): JSX.Element => {
-  // FIXME: type context
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+  // FIXME: add types to context
+  // @ts-expect-error No type on ComponentContext
   const { ModeIcon } = useContext(ComponentContext)
   const { icon, label, mode } = item
   const overlayTooltip = (
