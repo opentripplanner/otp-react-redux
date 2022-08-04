@@ -176,7 +176,7 @@ geocoder:
 modes:
   # This is the default behavior for flex merging.
   # If set to false, each FLEX mode (FLEX_EGRESS,FLEX_ACCESS,FLEX_DIRECT) will 
-  # be treated seperately. If set to true, a single FLEX mode will automatically 
+  # be treated separately. If set to true, a single FLEX mode will automatically 
   # be expanded and reduced to those three modes.
   mergeFlex: true 
   modeOptions:
