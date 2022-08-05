@@ -26,6 +26,7 @@ const Wrapper = styled.span`
   column-gap: 4px;
   display: grid;
   grid-template-columns: fit-content(100%);
+  justify-content: flex-start;
   margin-left: -4px; /* counteract gap */
 
   footer {
@@ -82,6 +83,7 @@ const MultiWrapper = styled.span<{ multi?: boolean }>`
 
 const LegIconWrapper = styled.span`
   height: 28px;
+  max-width: 28px;
 `
 
 const MultiRouteLongName = styled.div`
