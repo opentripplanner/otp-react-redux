@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
-// @ts-expect-error state.js is not typescripted
+// @ts-expect-error transitive-overlay is not typescripted
 import TransitiveCanvasOverlay from '@opentripplanner/transitive-overlay'
 
 import { getTransitiveData } from '../../util/state'

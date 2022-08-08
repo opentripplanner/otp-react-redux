@@ -29,6 +29,8 @@ export default function NarrativeItinerariesHeader({
   onToggleShowErrors,
   onViewAllOptions,
   pending,
+  popupTarget,
+  setPopupContent,
   showHeaderText = true,
   showingErrors,
   sort
@@ -42,6 +44,8 @@ export default function NarrativeItinerariesHeader({
   onToggleShowErrors: () => void
   onViewAllOptions: () => void
   pending: boolean
+  popupTarget: string
+  setPopupContent: (url: string) => void
   showHeaderText: boolean
   showingErrors: boolean
   sort: { direction: string; type: string }
@@ -131,15 +135,18 @@ export default function NarrativeItinerariesHeader({
             style={{
               display: 'flex',
               float: 'right',
+              gap: 5,
               marginLeft: showHeaderText ? 'inherit' : 'auto'
             }}
           >
+            {popupTarget && (
+              <button onClick={() => setPopupContent(popupTarget)}>
+                <FormattedMessage id={`config.popups.${popupTarget}`} />
+              </button>
+            )}
             <button
               className="clear-button-formatting"
               onClick={onSortDirChange}
-              style={{
-                marginRight: '5px'
-              }}
             >
               <StyledIconWrapper
                 className={`${customBatchUiBackground && 'base-color-bg'}`}

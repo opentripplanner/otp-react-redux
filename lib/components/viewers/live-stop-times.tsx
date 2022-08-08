@@ -1,4 +1,3 @@
-import 'moment-timezone'
 import { FormattedMessage, FormattedTime } from 'react-intl'
 import { Redo } from '@styled-icons/fa-solid/Redo'
 import coreUtils from '@opentripplanner/core-utils'
