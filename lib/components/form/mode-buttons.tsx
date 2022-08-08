@@ -1,13 +1,13 @@
+import { Check } from '@styled-icons/fa-solid/Check'
 import { injectIntl, IntlShape } from 'react-intl'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 
+import { buttonCss } from './batch-styled'
 import { ComponentContext } from '../../util/contexts'
 import { getFormattedMode } from '../../util/i18n'
-import Icon from '../util/icon'
-
-import { buttonCss } from './batch-styled'
+import StyledIconWrapper from '../util/styledIcon'
 
 // TS TODO: merge this type with FullModeOption from
 // @opentripplanner/trip-form/types.ts and move to @opentripplanner/types.
@@ -18,10 +18,11 @@ export type Mode = {
   mode: string
 }
 
-const CheckMarkIcon = styled(Icon)`
+const CheckMarkIcon = styled(StyledIconWrapper)`
   position: absolute;
   bottom: 2px;
   right: 2px;
+  top: inherit;
   color: green;
 `
 
@@ -40,7 +41,7 @@ const ModeButton = ({
 }): JSX.Element => {
   // FIXME: add types to context
   // @ts-expect-error No type on ComponentContext
-  const { ModeIcon } = useContext(ComponentContext)
+  const { ModeIcon, SvgIcon } = useContext(ComponentContext)
   const { icon, label, mode } = item
   const overlayTooltip = (
     <Tooltip id={mode}>{label || getFormattedMode(mode, intl)}</Tooltip>
@@ -49,11 +50,17 @@ const ModeButton = ({
     <OverlayTrigger overlay={overlayTooltip} placement="bottom">
       <button className={className} onClick={() => onClick(mode)}>
         {icon ? (
-          <Icon className="fa-2x" type={icon} />
+          <StyledIconWrapper style={{ fontSize: '24px' }}>
+            <SvgIcon iconName={icon} style={{ marginBottom: '4px' }} />
+          </StyledIconWrapper>
         ) : (
           <ModeIcon height={25} mode={mode} />
         )}
-        {selected && <CheckMarkIcon type="check" />}
+        {selected && (
+          <CheckMarkIcon>
+            <Check />
+          </CheckMarkIcon>
+        )}
       </button>
     </OverlayTrigger>
   )
