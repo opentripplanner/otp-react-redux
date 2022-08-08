@@ -4,6 +4,7 @@ import styled, { keyframes } from 'styled-components'
 interface Props {
   flipHorizontal?: boolean
   noMargin?: boolean
+  rotate90?: boolean
   size?: string
   spaceRight?: boolean
   spin?: boolean
@@ -45,7 +46,10 @@ const StyledIconWrapper = styled.span<Props>`
     position: relative;
     margin: ${(props) => (props.noMargin ? '0' : '0 0.125em')};
     font-size: ${(props) => getFontSize(props.size)};
-    transform: ${(props) => (props.flipHorizontal ? 'scale(-1,1)' : '')};
+    transform: ${(props) => `
+      ${props.flipHorizontal ? 'scale(-1,1) ' : ''}
+      ${props.rotate90 ? 'rotate(90deg)' : ''}
+      `};
   }
   margin-right: ${(props) => (props.spaceRight ? '0.125em' : '0')};
 `
