@@ -3,6 +3,7 @@ import { ChevronDown } from '@styled-icons/fa-solid/ChevronDown'
 import { ChevronUp } from '@styled-icons/fa-solid/ChevronUp'
 import { connect } from 'react-redux'
 import { Envelope } from '@styled-icons/fa-regular/Envelope'
+import { ExternalLinkSquareAlt } from '@styled-icons/fa-solid/ExternalLinkSquareAlt'
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
 import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
@@ -11,7 +12,7 @@ import { Undo } from '@styled-icons/fa-solid/Undo'
 import { withRouter } from 'react-router'
 import AnimateHeight from 'react-animate-height'
 import qs from 'qs'
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, useContext } from 'react'
 import SlidingPane from 'react-sliding-pane'
 import type { RouteComponentProps } from 'react-router'
 import type { WrappedComponentProps } from 'react-intl'
@@ -19,9 +20,9 @@ import type { WrappedComponentProps } from 'react-intl'
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
+import { ComponentContext } from '../../util/contexts'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
-import Icon from '../util/icon'
 import StyledIconWrapper from '../util/styledIcon'
 
 type AppMenuProps = {
@@ -228,7 +229,9 @@ class AppMenu extends Component<
             </MenuItem>
             {popupTarget && (
               <MenuItem className="menu-item" onClick={this._triggerPopup}>
-                <Icon type="external-link-square" />
+                <StyledIconWrapper>
+                  <ExternalLinkSquareAlt />
+                </StyledIconWrapper>
                 <FormattedMessage id={`config.popups.${popupTarget}`} />
               </MenuItem>
             )}
@@ -310,9 +313,13 @@ const IconAndLabel = ({
   label: string
 }): JSX.Element => {
   const intl = useIntl()
+  // FIXME: add types to context
+  // @ts-expect-error No type on ComponentContext
+  const { SvgIcon } = useContext(ComponentContext)
 
   return (
     <span>
+      {/* TODO: clean up double ternary */}
       {iconUrl ? (
         <img
           alt={intl.formatMessage(
@@ -324,8 +331,13 @@ const IconAndLabel = ({
           src={iconUrl}
         />
       ) : (
-        // TODO: Replace FontAwesome icon
-        <Icon type={iconType || 'external-link-square'} />
+        <StyledIconWrapper>
+          {iconType ? (
+            <SvgIcon iconName={iconType} />
+          ) : (
+            <ExternalLinkSquareAlt />
+          )}
+        </StyledIconWrapper>
       )}
       {label}
     </span>
