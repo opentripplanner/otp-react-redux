@@ -1,10 +1,13 @@
 import { barberPole } from '@opentripplanner/itinerary-body/lib/otp-react-redux/line-column-content'
+import { CompressArrowsAlt } from '@styled-icons/fa-solid/CompressArrowsAlt'
 import { FormattedMessage } from 'react-intl'
+import { HandPaper } from '@styled-icons/fa-regular/HandPaper'
+import { Phone } from '@styled-icons/fa-solid/Phone'
 import React from 'react'
 import styled from 'styled-components'
 import tinycolor from 'tinycolor2'
 
-import Icon from '../../util/icon'
+import StyledIconWrapper from '../../util/styledIcon'
 
 export const FLEX_COLOR = '#FA6400'
 const FLEX_COLOR_LIGHT = tinycolor(FLEX_COLOR).lighten(40).toHexString()
@@ -18,14 +21,14 @@ type FlexIndicatorProps = {
 }
 
 type FlexNoticeProps = {
-  faKey: string
+  Icon: React.ElementType
   showText: boolean
   text: string | React.ReactElement
 }
 
-const FlexNotice = ({ faKey, showText, text }: FlexNoticeProps) => (
+const FlexNotice = ({ Icon, showText, text }: FlexNoticeProps) => (
   <>
-    <Icon type={faKey} />
+    <StyledIconWrapper>{Icon && <Icon />}</StyledIconWrapper>
     {showText && <p>{text}</p>}
   </>
 )
@@ -93,21 +96,22 @@ export const FlexIndicator = ({
   textOnly
 }: FlexIndicatorProps): React.ReactElement => {
   let text = <></>
-  let icon = ''
+  let Icon = null
   if (isCallAhead && isContinuousDropoff) {
     text = <FormattedMessage id="config.flex.both" values={{ phoneNumber }} />
-    icon = 'shrink'
+    // icon = 'shrink'
+    Icon = CompressArrowsAlt
   }
   if (isCallAhead && !isContinuousDropoff) {
     text = (
       <FormattedMessage id="config.flex.call-ahead" values={{ phoneNumber }} />
     )
-    icon = 'phone'
+    Icon = Phone
   }
   // Only show continuous dropoff message if call ahead message isn't shown
   if (isContinuousDropoff && !isCallAhead) {
     text = <FormattedMessage id="config.flex.continuous-dropoff" />
-    icon = 'hand-paper-o'
+    Icon = HandPaper
   }
 
   if (textOnly)
@@ -124,7 +128,7 @@ export const FlexIndicator = ({
           <FormattedMessage id="config.flex.flex-service" />
         </h4>
       )}
-      <FlexNotice faKey={icon} showText={!shrink} text={text} />
+      <FlexNotice Icon={Icon} showText={!shrink} text={text} />
     </FlexIndicatorWrapper>
   )
 }
