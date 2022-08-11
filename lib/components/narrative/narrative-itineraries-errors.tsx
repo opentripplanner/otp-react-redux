@@ -1,12 +1,12 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore otp-ui is not typed yet
+import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
+// @ts-expect-error No typescript
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { useIntl } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
 
 import { getErrorMessage } from '../../util/state'
-import Icon from '../util/icon'
+import StyledIconWrapper from '../util/styledIcon'
 
 const IssueContainer = styled.div`
   border-top: 1px solid grey;
@@ -38,7 +38,11 @@ export default function NarrativeItinerariesErrors({
   const intl = useIntl()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return errors.map((error: { network: any }, idx: number) => {
-    let icon = <Icon className="text-warning" type="exclamation-triangle" />
+    let icon = (
+      <StyledIconWrapper className="text-warning">
+        <ExclamationTriangle />
+      </StyledIconWrapper>
+    )
     if (error.network) {
       const CompanyIcon = getCompanyIcon(error.network)
       // check if company icon exists to avoid rendering undefined
