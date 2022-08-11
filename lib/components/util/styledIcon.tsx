@@ -18,6 +18,8 @@ const getFontSize = (size?: string) => {
       return '3em'
     case '4x':
       return '4em'
+    case '5x':
+      return '5em'
     default:
       return 'inherit'
   }
