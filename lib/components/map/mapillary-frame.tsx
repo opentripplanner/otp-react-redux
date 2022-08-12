@@ -1,8 +1,7 @@
 import { Button } from 'react-bootstrap'
 import { Spinner } from '@styled-icons/fa-solid/Spinner'
+import { Times } from '@styled-icons/fa-solid/Times'
 import React, { useEffect, useState } from 'react'
-
-// eslint-disable-next-line sort-imports-es6-autofix/sort-imports-es6
 
 import StyledIconWrapper from '../util/styledIcon'
 
@@ -50,7 +49,9 @@ const MapillaryFrame = ({
         className="mapillary-close-button close-button clear-button-formatting"
         onClick={onClose}
       >
-        <i className="fa fa-close" />
+        <StyledIconWrapper>
+          <Times />
+        </StyledIconWrapper>
       </Button>
     </div>
   )
