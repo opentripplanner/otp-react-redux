@@ -12,6 +12,8 @@ interface Props {
 
 const getFontSize = (size?: string) => {
   switch (size) {
+    case '1.5x':
+      return '1.5em'
     case '2x':
       return '2em'
     case '3x':
