@@ -1,6 +1,6 @@
+import { ChevronDown } from '@styled-icons/fa-solid/ChevronDown'
+import { ChevronUp } from '@styled-icons/fa-solid/ChevronUp'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-// @ts-expect-error no types available
-import { VelocityTransitionGroup } from 'velocity-react'
 import AnimateHeight from 'react-animate-height'
 import React, { Component } from 'react'
 import type { Route } from '@opentripplanner/types'
@@ -12,11 +12,11 @@ import {
 } from '../../util/viewer'
 import { Pattern, Time } from '../util/types'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
-import Icon from '../util/icon'
 import Strong from '../util/strong-text'
 
 import RealtimeStatusLabel from './realtime-status-label'
 import StopTimeCell from './stop-time-cell'
+import StyledIconWrapper from '../util/styledIcon'
 
 type Props = {
   homeTimezone?: any
@@ -112,7 +112,9 @@ class PatternRow extends Component<Props, State> {
               className="expansion-button"
               onClick={this._toggleExpandedView}
             >
-              <Icon type={`chevron-${this.state.expanded ? 'up' : 'down'}`} />
+              <StyledIconWrapper>
+                {this.state.expanded ? <ChevronUp /> : <ChevronDown />}
+              </StyledIconWrapper>
             </button>
           </div>
         </div>
