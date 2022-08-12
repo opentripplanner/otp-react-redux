@@ -12,6 +12,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../../actions/ui'
+import { ComponentContext } from '../../../util/contexts'
 import { FlexIndicator } from '../default/flex-indicator'
 import {
   getAccessibilityScoreForItinerary,
@@ -22,7 +23,6 @@ import { ItineraryDescription } from '../default/itinerary-description'
 import FormattedDuration, {
   formatDuration
 } from '../../util/formatted-duration'
-import Icon from '../../util/icon'
 import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
@@ -35,6 +35,7 @@ import {
   removeInsignifigantWalkLegs
 } from './attribute-utils'
 import RouteBlock from './route-block'
+import StyledIconWrapper from '../../util/styledIcon'
 
 const { ItineraryView } = uiActions
 
@@ -190,6 +191,8 @@ type Props = {
 }
 
 class MetroItinerary<Props> extends NarrativeItinerary {
+  static contextType = ComponentContext
+
   _onMouseEnter = () => {
     const { active, index, setVisibleItinerary, visibleItinerary } = this.props
     // Set this itinerary as visible if not already visible.
@@ -232,6 +235,8 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       showRealtimeAnnotation,
       timeFormat
     } = this.props
+    const { SvgIcon } = this.context
+
     const timeOptions = {
       format: timeFormat,
       offset: coreUtils.itinerary.getTimeZoneOffset(itinerary)
@@ -244,6 +249,17 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       defaultFareKey,
       currency
     )
+
+    Object.keys(accessibilityScoreGradationMap).forEach((key) => {
+      const iconName = accessibilityScoreGradationMap[key].icon
+      if (typeof iconName === 'string') {
+        accessibilityScoreGradationMap[key].icon = (
+          <StyledIconWrapper>
+            <SvgIcon iconName={iconName} />
+          </StyledIconWrapper>
+        )
+      }
+    })
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
 
@@ -420,15 +436,11 @@ const mapStateToProps = (state: any, ownProps: Props) => {
   const { intl } = ownProps
   const gradationMap = state.otp.config.accessibilityScore?.gradationMap
 
+  console.log(gradationMap)
   // Generate icons based on fa icon keys in config
   // Override text fields if translation set
   gradationMap &&
     Object.keys(gradationMap).forEach((key) => {
-      const { icon } = gradationMap[key]
-      if (icon && typeof icon === 'string') {
-        gradationMap[key].icon = <Icon type={icon} />
-      }
-
       // As these localization keys are in the config, rather than
       // standard language files, the message ids must be dynamically generated
       const localizationId = `config.acessibilityScore.gradationMap.${key}`
