@@ -386,7 +386,7 @@ itinerary:
 #   targets:
 #     testTarget: # To set a name for this target, create the i18n string "config.popups.testTarget"
 #       url: http://example.com/ 
-#       iframe: false # Whether to always launch the popup as a browser popup
+#       modal: false # Whether to always launch the popup as a browser popup
 #     secondTarget: 
 #       url: http://test.com/
 #       appendLocale: false # Defaults to true, if set to false otp-rr will not append the current i18n language to the popup URL.

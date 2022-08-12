@@ -7,7 +7,7 @@ type Props = {
   content?: {
     appendLocale?: boolean
     id?: string
-    iframe?: boolean
+    modal?: boolean
     url?: string
   }
   hideModal: () => void
@@ -25,10 +25,10 @@ const isMobile = coreUtils.ui.isMobile()
 const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
   const intl = useIntl()
 
-  const { appendLocale, id, iframe, url } = content || {}
-  const shown = !!url
+  const { appendLocale, id, modal, url } = content || {}
 
-  const useIframe = !isMobile && iframe
+  const useIframe = !isMobile && modal
+  const shown = !!url
 
   // appendLocale is true by default, so undefined is true
   const compiledUrl = `${url}${
@@ -38,8 +38,9 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
   useEffect(() => {
     if (!useIframe && shown) {
       window.open(compiledUrl, '_blank')
+      hideModal()
     }
-  }, [compiledUrl, useIframe, shown])
+  }, [compiledUrl, hideModal, useIframe, shown])
 
   if (!compiledUrl || !useIframe) return null
 
