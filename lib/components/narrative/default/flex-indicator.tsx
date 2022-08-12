@@ -96,7 +96,7 @@ export const FlexIndicator = ({
   textOnly
 }: FlexIndicatorProps): React.ReactElement => {
   let text = <></>
-  let Icon = null
+  let Icon
   if (isCallAhead && isContinuousDropoff) {
     text = <FormattedMessage id="config.flex.both" values={{ phoneNumber }} />
     // icon = 'shrink'
