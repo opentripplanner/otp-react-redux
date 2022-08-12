@@ -8,6 +8,7 @@ interface Props {
   size?: string
   spaceRight?: boolean
   spin?: boolean
+  static?: boolean
 }
 
 const getFontSize = (size?: string) => {
@@ -38,7 +39,7 @@ const rotateAnimation = keyframes`
 
 const StyledIconWrapper = styled.span<Props>`
   top: 0.125em;
-  position: relative;
+  position: ${(props) => (props.static ? 'static' : 'relative')};
   display: inline-flex;
   align-self: center;
   animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1.2s linear
