@@ -1,4 +1,3 @@
-import 'moment-timezone'
 import { FormattedMessage, FormattedTime } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'

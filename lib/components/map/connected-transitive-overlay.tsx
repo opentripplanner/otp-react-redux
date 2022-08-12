@@ -27,14 +27,13 @@ const mapStateToProps = (state: Record<string, any>, ownProps: Props) => {
     return {}
   }
 
-  const obj = {
+  return {
     activeLeg: getActiveLeg(state),
     labeledModes,
     styles,
-    // @ts-expect-error state.js is not typescripted
-    transitiveData: getTransitiveData(state, ownProps)
-  } // generate implicit type
-  return obj
+    transitiveData: getTransitiveData(state)
+  }
 }
 
+// @ts-expect-error state.js being typescripted will fix this error
 export default injectIntl(connect(mapStateToProps)(TransitiveCanvasOverlay))

@@ -7,6 +7,7 @@ import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
+import { combinationFilter } from '../../util/combination-filter'
 import { getDefaultModes } from '../../util/itinerary'
 import { hasValidLocation } from '../../util/state'
 import Icon from '../util/icon'
@@ -28,33 +29,6 @@ import ModeButtons, {
 } from './mode-buttons'
 import type { Combination } from './batch-preferences'
 import type { Mode } from './mode-buttons'
-
-/**
- * A function that generates a filter to be used to filter a list of combinations.
- *
- * TS FIXME: use the ModeOption type that is currently defined
- * in @opentripplanner/trip-form/types.ts (That type
- * needs to be moved first to @opentripplanner/types first,
- * with the defaultUnselected attribute added).
- *
- * @param enabledModesDirty A list of the modes enabled in the UI
- * @returns Filter function to filter combinations
- */
-export const combinationFilter =
-  (enabledModes: string[]) =>
-  (c: Combination): boolean => {
-    if (c.requiredModes) {
-      return c.requiredModes.every((m) => enabledModes.includes(m))
-    } else {
-      // This is for backwards compatibility
-      // In case a combination does not include requiredModes.
-      console.warn(
-        `Combination ${c.mode} does not have any specified required modes.`
-      )
-      const modesInCombination = c.mode.split(',')
-      return modesInCombination.every((m) => enabledModes.includes(m))
-    }
-  }
 
 const ModeButtonsFullWidthContainer = styled.div`
   display: flex;
