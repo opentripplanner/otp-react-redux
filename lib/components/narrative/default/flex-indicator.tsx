@@ -21,7 +21,7 @@ type FlexIndicatorProps = {
 }
 
 type FlexNoticeProps = {
-  Icon: React.ElementType
+  Icon?: React.ElementType
   showText: boolean
   text: string | React.ReactElement
 }
