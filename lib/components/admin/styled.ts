@@ -1,7 +1,7 @@
 import { Button as BsButton } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
 
-import Icon from '../util/icon'
+import StyledIconWrapper from '../util/styledIcon'
 
 import DefaultCounter from './call-time-counter'
 
@@ -90,7 +90,7 @@ export const CallRecordButton = styled.button`
   width: 100%;
 `
 
-export const CallRecordIcon = styled(Icon)`
+export const CallRecordIcon = styled(StyledIconWrapper)`
   margin-right: 3px;
   padding-top: 4px;
 `
