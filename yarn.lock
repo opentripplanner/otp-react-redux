@@ -2381,10 +2381,10 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-6.0.0.tgz#0e1fd2d6070146c6e11569933fa7a65c75bc69b6"
-  integrity sha512-iIpDK9v+9BRtawWl+4rxBA+wu6/a1WZeJ08RNHEDjBVuTSL146YqwfOeMMKtTvGOkEvH9NjlPAK5IESwYhww3g==
+"@opentripplanner/core-utils@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-6.1.0.tgz#5426178a7f8e092d66370d99dad77c61b85cd610"
+  integrity sha512-plTyeI+Rhok25HAcDJYRMojMaot/lBKOAoWbzJ6LodNavCDA3PM7AkhDpAXD3O9XQggLc/Q+YSoQgPIOs+ckPQ==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.2.2"
