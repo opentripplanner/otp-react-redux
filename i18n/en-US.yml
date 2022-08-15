@@ -401,6 +401,10 @@ components:
     signInTooltip: Please sign in to save trip.
   SearchScreen:
     header: Plan Your Trip
+  SessionTimeout:
+    body: Your session will expire within a minute. Press 'Continue Session' to keep your search.
+    header: Session about to timeout!
+    keepSession: Continue Session
   SettingsPreview:
     defaultPreviewText: "Transit Options\n& Preferences"
   SimpleRealtimeAnnotation:

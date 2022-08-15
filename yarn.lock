@@ -2440,23 +2440,7 @@
     "@opentripplanner/core-utils" "^4.5.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^3.0.1":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.0.4.tgz#ca9f1f575d6ad1ffe355d805a7ac0b9f9f126d81"
-  integrity sha512-OKnjcmTZJ8wLbjyQf76GGBS1reojh5E3iLVagJPcd0+cjy5QciqVwOahnoT+j7IQtyA5PCtAyqkC//bJvu24/Q==
-  dependencies:
-    "@opentripplanner/core-utils" "^4.11.2"
-    "@opentripplanner/humanize-distance" "^1.2.0"
-    "@opentripplanner/icons" "^1.2.2"
-    "@opentripplanner/location-icon" "^1.4.0"
-    "@styled-icons/fa-solid" "^10.34.0"
-    "@styled-icons/foundation" "^10.34.0"
-    flat "^5.0.2"
-    moment "^2.24.0"
-    react-resize-detector "^4.2.1"
-    velocity-react "^1.4.3"
-
-"@opentripplanner/itinerary-body@^3.1.1":
+"@opentripplanner/itinerary-body@^3.0.5", "@opentripplanner/itinerary-body@^3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.1.1.tgz#854e83022de09cb023e7f96ae38bb6e625db82b5"
   integrity sha512-fGKu7xSHok5FcKK5lEHtintHiEpcsUm1NE35ZZHRW7b5ejqBedq8/Be4Fo5WocEWZz9MWb1yyG2YqctceBYofw==
@@ -2472,10 +2456,10 @@
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
-"@opentripplanner/itinerary-body@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.0.0.tgz#ddddb9279c62d38613fbfc6c8e51a4a25975479b"
-  integrity sha512-rGv8ZRiQxQ9lzXJsGZd67DMl7pc2byqJ7wUUYgSjUZ53uTvcXmdg16kHRLxEOdW09fjpMQ1Dv3ZYHrgvIhwhpw==
+"@opentripplanner/itinerary-body@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.0.1.tgz#18142449b8e7593e7d65e51824203b0d717de362"
+  integrity sha512-qkV95MdH7/E7ETr/Sze55bjFrHCoXDZvstIX9sNkys7Y+TlTYa5LUag6L2wh5iyVIsqIGurhNgCeF/QxUz/ADw==
   dependencies:
     "@opentripplanner/core-utils" "^5.0.0"
     "@opentripplanner/humanize-distance" "^1.2.0"
@@ -2488,10 +2472,10 @@
     react-resize-detector "^4.2.1"
     velocity-react "^1.4.3"
 
-"@opentripplanner/location-field@1.12.3":
-  version "1.12.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.3.tgz#0ff027f941e45880e01470ed88a044e4fda19500"
-  integrity sha512-MFqEANrfuC3rG7lnQEvRqiMo/D1MDKhKQE9nlfWoT3OHkcWOOwYronBM15+ypkKELWR12eb9OTTCTTd6Ae+Vtw==
+"@opentripplanner/location-field@1.12.4":
+  version "1.12.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.4.tgz#3848b63e171162aae517345a0101e60808227ae9"
+  integrity sha512-wo4ocVbEOZEWQ8QrHZabDXq8wb2/Ir8tcBMsJrv/QfrDAQOBZb6/k8Fos2ujbrU862JMvzim0l/SFkr9OgKBSg==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@opentripplanner/core-utils" "^4.11.0"
@@ -2518,12 +2502,12 @@
     "@opentripplanner/from-to-location-picker" "^2.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/printable-itinerary@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-2.0.1.tgz#d1606dafd53350737f9a97918532687c76fdab68"
-  integrity sha512-bkb1s2ptzAENOmkdemCy70OrelwmNHNu3q/2C1OBqzOXyiBPO1qc3FW9BR6Io2Hw9wMSaoD03McrL/1SEGZlhQ==
+"@opentripplanner/printable-itinerary@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-2.0.2.tgz#71d4bad158a1adfbfe9808dac5a2a920a397609f"
+  integrity sha512-TN21p52Y2a9JTwOSlC6KUMaxjYbIXqQN6L7tkW/A6RFE1I1guFTttZlEQaBdkvnJiKZk04V/UaX1golNq+eVGA==
   dependencies:
-    "@opentripplanner/itinerary-body" "^3.0.1"
+    "@opentripplanner/itinerary-body" "^3.0.5"
 
 "@opentripplanner/route-viewer-overlay@^1.4.0":
   version "1.4.0"
@@ -2590,12 +2574,12 @@
     lodash.isequal "^4.5.0"
     transitive-js "^0.14.1"
 
-"@opentripplanner/trip-details@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-2.0.0.tgz#ab168e4acbf168e31e9b6f36c83c9706db49f78b"
-  integrity sha512-njnwHr6nF1xmcnwh5tx1XVym6rCgIWSPadVy8LeOyZsHA5NlTeBHRVKwew0H+Dt5HuJtj/PjZpzArJMBZGMitg==
+"@opentripplanner/trip-details@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-2.1.2.tgz#911feed76d6addde6a386d8ded19b37c0bf27b08"
+  integrity sha512-Qw/qjO3r0P9fK0cnccic0Ro6mDZsNWidC/133IroZon34SFr3qHu7fw3u4B1ylRI86CX5tzUzZNeef8mq15PYg==
   dependencies:
-    "@opentripplanner/core-utils" "^4.5.0"
+    "@opentripplanner/core-utils" "^5.0.1"
     "@styled-icons/fa-solid" "^10.34.0"
     flat "^5.0.2"
     velocity-react "^1.4.3"
@@ -6615,7 +6599,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5, classnames@^2.2.6:
+classnames@^2.2.5, classnames@^2.2.6, classnames@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -14024,14 +14008,7 @@ modify-values@^1.0.0:
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
-moment-timezone@^0.5.33:
-  version "0.5.33"
-  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.33.tgz#b252fd6bb57f341c9b59a5ab61a8e51a73bbd22c"
-  integrity sha512-PTc2vcT8K9J5/9rDEPe5czSIKgLoGsH8UNpA4qZTVw0Vd/Uz19geE9abbIOQKaAQFcnQ3v5YEXrbSc5BpshH+w==
-  dependencies:
-    moment ">= 2.9.0"
-
-"moment@>= 2.9.0", moment@^2.17.1, moment@^2.24.0:
+moment@^2.17.1, moment@^2.24.0:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
@@ -16839,6 +16816,13 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.8:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-animate-height@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-animate-height/-/react-animate-height-3.0.4.tgz#80c9cc25e8569709ad1c626b968dbe5108d0ce46"
+  integrity sha512-k+mBS8yCzpFp+7BdrHsL5bXd6CO/2bYO2SvRGKfxK+Ss3nzplAJLlgnd6Zhcxe/avdpy/CgcziicFj7pIHgG5g==
+  dependencies:
+    classnames "^2.3.1"
 
 react-app-polyfill@^2.0.0:
   version "2.0.0"
@@ -20328,7 +20312,7 @@ velocity-animate@^1.4.0:
   resolved "https://registry.yarnpkg.com/velocity-animate/-/velocity-animate-1.5.2.tgz#5a351d75fca2a92756f5c3867548b873f6c32105"
   integrity sha512-m6EXlCAMetKztO1ppBhGU1/1MR3IiEevO6ESq6rcrSQ3Q77xYSW13jkfXW88o4xMrkXJhy/U7j4wFR/twMB0Eg==
 
-velocity-react@^1.3.3, velocity-react@^1.4.3:
+velocity-react@^1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/velocity-react/-/velocity-react-1.4.3.tgz#63e41d92e334d5a3bea8b2fa02ee170f62ef4d36"
   integrity sha512-zvefGm85A88S3KdF9/dz5vqyFLAiwKYlXGYkHH2EbXl+CZUD1OT0a0aS1tkX/WXWTa/FUYqjBaAzAEFYuSobBQ==
