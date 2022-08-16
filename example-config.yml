@@ -4,6 +4,10 @@ api:
   port: 8001
 # v2: false
 
+# Add Bugsnag key for error reporting
+# bugsnag:
+#   key: BUGSNAG_KEY
+
 # Add suggested locations to be shown as options in the form view.
 # locations:
 #   - id: 'airport'
