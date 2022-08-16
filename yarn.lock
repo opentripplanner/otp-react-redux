@@ -2397,12 +2397,12 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/endpoints-overlay@^1.4.3":
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-1.4.3.tgz#333f47da44c7db39309cb7f5c381de3f489e7841"
-  integrity sha512-sAxDtKYMAXi38dvRjuNri+q2DkvJ79jadEILfd65dIMbpo/YK7r4Zeodg45MOXfUqCa73HJ3M0wABcaaj8iR6Q==
+"@opentripplanner/endpoints-overlay@1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-1.4.1.tgz#67c6ed98b0c08d70fc2aef22ccc97ef5b69f5cc9"
+  integrity sha512-aghe6THmdUDgudOdXbYpezWwbONyTxWrrGIrcgIO4/WoRSUFdmSSlWtSM2CmfAbYPMLUo2J5t7r4gjIAS4tLOA==
   dependencies:
-    "@opentripplanner/core-utils" "^7.0.0"
+    "@opentripplanner/core-utils" "^4.5.0"
     "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
     flat "^5.0.2"

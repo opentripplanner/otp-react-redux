@@ -37,7 +37,7 @@
     "@auth0/auth0-react": "^1.1.0",
     "@opentripplanner/base-map": "^2.0.0",
     "@opentripplanner/core-utils": "^7.0.0",
-    "@opentripplanner/endpoints-overlay": "^1.4.3",
+    "@opentripplanner/endpoints-overlay": "1.4.1",
     "@opentripplanner/from-to-location-picker": "^2.1.2",
     "@opentripplanner/geocoder": "^1.3.0",
     "@opentripplanner/humanize-distance": "^1.2.0",
