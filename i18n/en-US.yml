@@ -32,15 +32,15 @@ actions:
     fetchCallsError: "Error fetching calls: {err}"
     queryFetchError: "Error fetching queries: {err}"
   fieldTrip:
-    addNoteError: "Error adding field trip note: {err}"
+    addNoteError: "Error adding field trip note:"
     confirmOverwriteItineraries: >
       This action will overwrite a previously planned {outbound, select,
           true {outbound}
           other {inbound}
         } itinerary for this request. Do you wish to continue?
-    deleteItinerariesError: "Error deleting field trip plan: {err}"
-    deleteNoteError: "Error deleting field trip note: {err}"
-    editSubmitterNotesError: "Error editing submitter notes: {err}"
+    deleteItinerariesError: "Error deleting field trip plan:"
+    deleteNoteError: "Error deleting field trip note:"
+    editSubmitterNotesError: "Error editing submitter notes:"
     fetchFieldTripError: "Error fetching field trip: {err}"
     fetchFieldTripsError: "Error fetching field trips: {err}"
     fetchTripsForDateError: "Error fetching trips for field trip travel date: {err}"
@@ -48,9 +48,10 @@ actions:
     itineraryCapacityError: "Cannot Save Plan: This plan could not be saved due to a lack of capacity on one or more vehicles. Please re-plan your trip."
     maxTripRequestsExceeded: Number of trip requests exceeded without valid results
     saveItinerariesError: "Failed to save itineraries: {err}"
-    setGroupSizeError: "Error setting group size: {err}"
-    setPaymentError: "Error setting payment info: {err}"
-    setRequestStatusError: "Error setting request status: {err}"
+    setDateError: "Error setting date:"
+    setGroupSizeError: "Error setting group size:"
+    setPaymentError: "Error setting payment info:"
+    setRequestStatusError: "Error setting request status:"
   location:
     geolocationNotSupportedError: Geolocation not supported by your browser
     unknownPositionError: Unknown error getting position
