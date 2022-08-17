@@ -250,7 +250,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       currency
     )
 
-    Object.keys(accessibilityScoreGradationMap).forEach((key) => {
+    Object.keys(accessibilityScoreGradationMap || {}).forEach((key) => {
       const iconName = accessibilityScoreGradationMap[key].icon
       if (typeof iconName === 'string') {
         accessibilityScoreGradationMap[key].icon = (
