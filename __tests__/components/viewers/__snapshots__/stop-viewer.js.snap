@@ -473,7 +473,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   >
                     <styled.span>
                       <span
-                        className="sc-gInthZ nlpYM"
+                        className="sc-gInthZ igMgFg"
                       >
                         <ArrowLeft>
                           <StyledIconBase
@@ -567,7 +567,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   >
                     <styled.span>
                       <span
-                        className="sc-gInthZ nlpYM"
+                        className="sc-gInthZ igMgFg"
                       >
                         <Search>
                           <StyledIconBase
@@ -623,7 +623,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       spaceRight={true}
                     >
                       <span
-                        className="sc-gInthZ klbtbQ"
+                        className="sc-gInthZ eQrys"
                       >
                         <Calendar>
                           <StyledIconBase
@@ -1467,7 +1467,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ nlpYM"
+                                          className="sc-gInthZ igMgFg"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -1560,7 +1560,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ nlpYM"
+                                      className="sc-gInthZ igMgFg"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -1726,7 +1726,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -1924,7 +1924,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -2155,7 +2155,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -2375,7 +2375,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           spin={true}
                         >
                           <span
-                            className="sc-gInthZ egCaaK"
+                            className="sc-gInthZ jhyduO"
                           >
                             <Redo>
                               <StyledIconBase
@@ -3532,7 +3532,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   >
                     <styled.span>
                       <span
-                        className="sc-gInthZ nlpYM"
+                        className="sc-gInthZ igMgFg"
                       >
                         <ArrowLeft>
                           <StyledIconBase
@@ -3626,7 +3626,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   >
                     <styled.span>
                       <span
-                        className="sc-gInthZ nlpYM"
+                        className="sc-gInthZ igMgFg"
                       >
                         <Search>
                           <StyledIconBase
@@ -3682,7 +3682,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       spaceRight={true}
                     >
                       <span
-                        className="sc-gInthZ klbtbQ"
+                        className="sc-gInthZ eQrys"
                       >
                         <Calendar>
                           <StyledIconBase
@@ -4247,7 +4247,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ nlpYM"
+                                          className="sc-gInthZ igMgFg"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -4340,7 +4340,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ nlpYM"
+                                      className="sc-gInthZ igMgFg"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -4506,7 +4506,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -4693,7 +4693,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           spin={true}
                         >
                           <span
-                            className="sc-gInthZ egCaaK"
+                            className="sc-gInthZ jhyduO"
                           >
                             <Redo>
                               <StyledIconBase
@@ -5652,7 +5652,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   >
                     <styled.span>
                       <span
-                        className="sc-gInthZ nlpYM"
+                        className="sc-gInthZ igMgFg"
                       >
                         <ArrowLeft>
                           <StyledIconBase
@@ -5746,7 +5746,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   >
                     <styled.span>
                       <span
-                        className="sc-gInthZ nlpYM"
+                        className="sc-gInthZ igMgFg"
                       >
                         <Search>
                           <StyledIconBase
@@ -5802,7 +5802,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       spaceRight={true}
                     >
                       <span
-                        className="sc-gInthZ klbtbQ"
+                        className="sc-gInthZ eQrys"
                       >
                         <Calendar>
                           <StyledIconBase
@@ -6646,7 +6646,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ nlpYM"
+                                          className="sc-gInthZ igMgFg"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -6772,7 +6772,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ nlpYM"
+                                      className="sc-gInthZ igMgFg"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -6938,7 +6938,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -7169,7 +7169,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -7400,7 +7400,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -7620,7 +7620,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           spin={true}
                         >
                           <span
-                            className="sc-gInthZ egCaaK"
+                            className="sc-gInthZ jhyduO"
                           >
                             <Redo>
                               <StyledIconBase
@@ -9491,7 +9491,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   >
                     <styled.span>
                       <span
-                        className="sc-gInthZ nlpYM"
+                        className="sc-gInthZ igMgFg"
                       >
                         <ArrowLeft>
                           <StyledIconBase
@@ -9585,7 +9585,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   >
                     <styled.span>
                       <span
-                        className="sc-gInthZ nlpYM"
+                        className="sc-gInthZ igMgFg"
                       >
                         <Search>
                           <StyledIconBase
@@ -9641,7 +9641,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       spaceRight={true}
                     >
                       <span
-                        className="sc-gInthZ klbtbQ"
+                        className="sc-gInthZ eQrys"
                       >
                         <Calendar>
                           <StyledIconBase
@@ -10739,7 +10739,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ nlpYM"
+                                          className="sc-gInthZ igMgFg"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -10865,7 +10865,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ nlpYM"
+                                      className="sc-gInthZ igMgFg"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -11031,7 +11031,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -11262,7 +11262,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -11493,7 +11493,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -11963,7 +11963,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ nlpYM"
+                                          className="sc-gInthZ igMgFg"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -12089,7 +12089,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ nlpYM"
+                                      className="sc-gInthZ igMgFg"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -12255,7 +12255,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -12486,7 +12486,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -12717,7 +12717,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -13187,7 +13187,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ nlpYM"
+                                          className="sc-gInthZ igMgFg"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -13313,7 +13313,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ nlpYM"
+                                      className="sc-gInthZ igMgFg"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -13479,7 +13479,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -13710,7 +13710,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -13941,7 +13941,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -14519,7 +14519,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ nlpYM"
+                                          className="sc-gInthZ igMgFg"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -14645,7 +14645,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ nlpYM"
+                                      className="sc-gInthZ igMgFg"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -14811,7 +14811,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -15042,7 +15042,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -15273,7 +15273,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -15493,7 +15493,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           spin={true}
                         >
                           <span
-                            className="sc-gInthZ egCaaK"
+                            className="sc-gInthZ jhyduO"
                           >
                             <Redo>
                               <StyledIconBase
@@ -18386,7 +18386,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   >
                     <styled.span>
                       <span
-                        className="sc-gInthZ nlpYM"
+                        className="sc-gInthZ igMgFg"
                       >
                         <ArrowLeft>
                           <StyledIconBase
@@ -18480,7 +18480,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   >
                     <styled.span>
                       <span
-                        className="sc-gInthZ nlpYM"
+                        className="sc-gInthZ igMgFg"
                       >
                         <Search>
                           <StyledIconBase
@@ -18536,7 +18536,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       spaceRight={true}
                     >
                       <span
-                        className="sc-gInthZ klbtbQ"
+                        className="sc-gInthZ eQrys"
                       >
                         <Calendar>
                           <StyledIconBase
@@ -19633,7 +19633,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ nlpYM"
+                                          className="sc-gInthZ igMgFg"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -19759,7 +19759,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ nlpYM"
+                                      className="sc-gInthZ igMgFg"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -19925,7 +19925,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -20156,7 +20156,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -20387,7 +20387,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ nlpYM"
+                                                    className="sc-gInthZ igMgFg"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -20607,7 +20607,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           spin={true}
                         >
                           <span
-                            className="sc-gInthZ egCaaK"
+                            className="sc-gInthZ jhyduO"
                           >
                             <Redo>
                               <StyledIconBase
@@ -22644,7 +22644,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                   >
                     <styled.span>
                       <span
-                        className="sc-gInthZ nlpYM"
+                        className="sc-gInthZ igMgFg"
                       >
                         <ArrowLeft>
                           <StyledIconBase
