@@ -228,7 +228,12 @@ class BatchSettings extends Component<Props, State> {
               id: 'components.BatchSettings.planTripTooltip'
             })}
           >
-            <StyledIconWrapper noMargin size="2x">
+            <StyledIconWrapper
+              noMargin
+              size="2x"
+              static
+              style={{ height: '100%', width: '100%' }}
+            >
               {hasValidLocation(currentQuery, 'from') ||
               hasValidLocation(currentQuery, 'to') ? (
                 <SyncAlt />

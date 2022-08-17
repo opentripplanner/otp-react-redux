@@ -57,6 +57,7 @@ export const PlanTripButton = styled(Button)`
   color: #ffffffdd;
   margin-left: auto;
   padding: 5px;
+  position: relative;
   &:active {
     ${activeCss}
     filter: saturate(50%);

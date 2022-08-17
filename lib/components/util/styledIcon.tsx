@@ -40,8 +40,8 @@ const rotateAnimation = keyframes`
 const StyledIconWrapper = styled.span<Props>`
   top: 0.125em;
   position: ${(props) => (props.static ? 'static' : 'relative')};
-  display: inline-flex;
-  align-self: center;
+  display: inline-grid;
+  place-content: center;
   animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1.2s linear
     infinite;
   ${StyledIconBase} {
