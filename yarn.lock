@@ -2363,24 +2363,6 @@
     prop-types "^15.7.2"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^5.0.0":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-5.0.2.tgz#5340897aefeebc1cf3ff8b8fdd588659a524d370"
-  integrity sha512-gqNCLYhgeZmABMAbmiHoK2JPKhp+UwPLSnl3tyaxpsHt40qz51FFa27XkEFMR8+NZdWKSfjSlTO2njuY2WsTEA==
-  dependencies:
-    "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^1.2.2"
-    "@styled-icons/foundation" "^10.34.0"
-    "@turf/along" "^6.0.1"
-    bowser "^2.7.0"
-    date-fns "^2.23.0"
-    date-fns-tz "^1.1.4"
-    lodash.clonedeep "^4.5.0"
-    lodash.isequal "^4.5.0"
-    moment "^2.24.0"
-    prop-types "^15.7.2"
-    qs "^6.9.1"
-
 "@opentripplanner/core-utils@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-7.0.0.tgz#9ed73970aabbbb3aa792ed625283c6b08e0e3bbb"
@@ -2456,22 +2438,6 @@
     "@opentripplanner/core-utils" "^7.0.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^3.0.5":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-3.1.1.tgz#854e83022de09cb023e7f96ae38bb6e625db82b5"
-  integrity sha512-fGKu7xSHok5FcKK5lEHtintHiEpcsUm1NE35ZZHRW7b5ejqBedq8/Be4Fo5WocEWZz9MWb1yyG2YqctceBYofw==
-  dependencies:
-    "@opentripplanner/core-utils" "^5.0.0"
-    "@opentripplanner/humanize-distance" "^1.2.0"
-    "@opentripplanner/icons" "^1.2.2"
-    "@opentripplanner/location-icon" "^1.4.0"
-    "@styled-icons/fa-solid" "^10.34.0"
-    "@styled-icons/foundation" "^10.34.0"
-    flat "^5.0.2"
-    moment "^2.24.0"
-    react-resize-detector "^4.2.1"
-    velocity-react "^1.4.3"
-
 "@opentripplanner/itinerary-body@^4.0.0", "@opentripplanner/itinerary-body@^4.0.3":
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.0.3.tgz#6dc3ebebfc7843c464999ba056844bf237e83336"
@@ -2519,12 +2485,12 @@
     "@opentripplanner/from-to-location-picker" "^2.1.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/printable-itinerary@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-2.0.2.tgz#71d4bad158a1adfbfe9808dac5a2a920a397609f"
-  integrity sha512-TN21p52Y2a9JTwOSlC6KUMaxjYbIXqQN6L7tkW/A6RFE1I1guFTttZlEQaBdkvnJiKZk04V/UaX1golNq+eVGA==
+"@opentripplanner/printable-itinerary@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-2.0.3.tgz#8ba72ebe00d2d841bf81c3d90c0f7559ad33bbf4"
+  integrity sha512-ga/Mg+0mKaibysDEc+Z6jKCxpurVEKBhZbnxUGF2jxqUU/M4bpW/+kz9gibHbjmXuRSBjaKGi92wEeNZRCg+vw==
   dependencies:
-    "@opentripplanner/itinerary-body" "^3.0.5"
+    "@opentripplanner/itinerary-body" "^4.0.3"
 
 "@opentripplanner/route-viewer-overlay@^1.4.2":
   version "1.4.2"
