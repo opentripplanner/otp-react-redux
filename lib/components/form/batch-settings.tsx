@@ -3,7 +3,7 @@ import { Cog } from '@styled-icons/fa-solid/Cog'
 import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
 import { Search } from '@styled-icons/fa-solid/Search'
-import { Sync } from '@styled-icons/fa-solid/Sync'
+import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'
@@ -231,7 +231,7 @@ class BatchSettings extends Component<Props, State> {
             <StyledIconWrapper noMargin size="2x">
               {hasValidLocation(currentQuery, 'from') ||
               hasValidLocation(currentQuery, 'to') ? (
-                <Sync />
+                <SyncAlt />
               ) : (
                 <Search />
               )}
