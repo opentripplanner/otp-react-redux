@@ -436,7 +436,6 @@ const mapStateToProps = (state: any, ownProps: Props) => {
   const { intl } = ownProps
   const gradationMap = state.otp.config.accessibilityScore?.gradationMap
 
-  console.log(gradationMap)
   // Generate icons based on fa icon keys in config
   // Override text fields if translation set
   gradationMap &&
