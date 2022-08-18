@@ -229,6 +229,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
     const {
       accessibilityScoreGradationMap,
       active,
+      co2Config,
       currency,
       defaultFareKey,
       enableDot,
@@ -259,25 +260,29 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       currency
     )
 
-    const co2VsBaseline = Math.round(itinerary.co2VsBaseline * 100)
-    const emissionsNote = !mini && co2VsBaseline < -20 && (
-      <>
-        <ItineraryNoteIcon type="leaf" />
-        <FormattedNumber
-          style="unit"
-          unit="percent"
-          unitDisplay="narrow"
-          value={Math.abs(co2VsBaseline)}
-        />{' '}
-        <FormattedMessage
-          id="common.itineraryDescriptions.relativeCo2"
-          values={{
-            isMore: co2VsBaseline > 0,
-            sub: Sub
-          }}
-        />
-      </>
-    )
+    const roundedCo2VsBaseline = Math.round(itinerary.co2VsBaseline * 100)
+    console.log(roundedCo2VsBaseline)
+    console.log(co2Config.co2Cutoff)
+    const emissionsNote = !mini &&
+      Math.abs(roundedCo2VsBaseline) >= (co2Config.co2Cutoff || 0) &&
+      co2Config.enabled && (
+        <>
+          <ItineraryNoteIcon type="leaf" />
+          <FormattedNumber
+            style="unit"
+            unit="percent"
+            unitDisplay="narrow"
+            value={Math.abs(roundedCo2VsBaseline)}
+          />{' '}
+          <FormattedMessage
+            id="common.itineraryDescriptions.relativeCo2"
+            values={{
+              isMore: roundedCo2VsBaseline > 0,
+              sub: Sub
+            }}
+          />
+        </>
+      )
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
 
@@ -476,12 +481,12 @@ const mapStateToProps = (state: any, ownProps: Props) => {
 
   return {
     accessibilityScoreGradationMap: gradationMap,
+    co2Config: state.otp.config.co2,
     configCosts: state.otp.config.itinerary?.costs,
     // The configured (ambient) currency is needed for rendering the cost
     // of itineraries whether they include a fare or not, in which case
     // we show $0.00 or its equivalent in the configured currency and selected locale.
     currency: state.otp.config.localization?.currency || 'USD',
-
     defaultFareKey: state.otp.config.itinerary?.defaultFareKey,
     enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
     showLegDurations: state.otp.config.itinerary?.showLegDurations
