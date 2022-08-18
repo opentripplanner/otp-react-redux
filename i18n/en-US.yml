@@ -681,6 +681,7 @@ common:
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
     # This string will have a formatted number before it, including units.
     relativeCo2: >
+      {co2}
       {isMore, select,
       true {more}
       other {less}

@@ -266,15 +266,17 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       co2Config.enabled && (
         <>
           <ItineraryNoteIcon type="leaf" />
-          <FormattedNumber
-            style="unit"
-            unit="percent"
-            unitDisplay="narrow"
-            value={Math.abs(roundedCo2VsBaseline)}
-          />{' '}
           <FormattedMessage
             id="common.itineraryDescriptions.relativeCo2"
             values={{
+              co2: (
+                <FormattedNumber
+                  style="unit"
+                  unit="percent"
+                  unitDisplay="narrow"
+                  value={Math.abs(roundedCo2VsBaseline)}
+                />
+              ),
               isMore: roundedCo2VsBaseline > 0,
               sub: Sub
             }}
