@@ -2,7 +2,6 @@ import { useAuth0 } from '@auth0/auth0-react'
 import React from 'react'
 
 import { getCurrentRoute } from '../../util/ui'
-import { URL_ROOT } from '../../util/constants'
 
 import NavLoginButton from './nav-login-button'
 
@@ -37,7 +36,7 @@ const NavLoginButtonAuth0 = ({
   const handleLogout = () =>
     logout({
       // Logout to the map with no search.
-      returnTo: URL_ROOT
+      returnTo: window.location.origin
     })
 
   // On logout, it is better to "clear" the screen, so

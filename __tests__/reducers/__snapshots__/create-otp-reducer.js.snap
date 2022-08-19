@@ -59,6 +59,8 @@ Object {
       "type": null,
     },
   },
+  "initialUrl": "http://localhost:9966/",
+  "lastActionMillis": 0,
   "location": Object {
     "currentPosition": Object {
       "coords": null,
@@ -105,6 +107,9 @@ Object {
     "localizedMessages": null,
     "mainPanelContent": null,
     "mobileScreen": 1,
+    "popup": Object {
+      "id": null,
+    },
     "printView": false,
     "routeViewer": Object {
       "filter": Object {

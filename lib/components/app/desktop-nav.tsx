@@ -1,7 +1,9 @@
 import { connect } from 'react-redux'
-import { Nav, Navbar } from 'react-bootstrap'
+import { FormattedMessage } from 'react-intl'
+import { Nav, Navbar, NavItem } from 'react-bootstrap'
 import React from 'react'
 
+import * as uiActions from '../../actions/ui'
 import { accountLinks, getAuth0Config } from '../../util/auth'
 import { DEFAULT_APP_TITLE } from '../../util/constants'
 import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
@@ -22,11 +24,13 @@ import ViewSwitcher from './view-switcher'
  * TODO: merge with the mobile navigation bar.
  */
 // Typscript TODO: otpConfig type
-export type otpConfigType = {
+export type Props = {
   otpConfig: any
+  popupTarget?: string
+  setPopupContent: (url: string) => void
 }
 
-const DesktopNav = ({ otpConfig }: otpConfigType) => {
+const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
   const { branding, persistence, title = DEFAULT_APP_TITLE } = otpConfig
   const { language: configLanguages } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
@@ -69,6 +73,11 @@ const DesktopNav = ({ otpConfig }: otpConfigType) => {
 
       <Navbar.Collapse>
         <Nav pullRight>
+          {popupTarget && (
+            <NavItem onClick={() => setPopupContent(popupTarget)}>
+              <FormattedMessage id={`config.popups.${popupTarget}`} />
+            </NavItem>
+          )}
           {configLanguages &&
             // Ensure that > 1 valid language is defined
             Object.keys(configLanguages).filter(
@@ -89,10 +98,13 @@ const DesktopNav = ({ otpConfig }: otpConfigType) => {
 // Typescript TODO: state type
 const mapStateToProps = (state: any) => {
   return {
-    otpConfig: state.otp.config
+    otpConfig: state.otp.config,
+    popupTarget: state.otp.config?.popups?.launchers?.toolbar
   }
 }
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  setPopupContent: uiActions.setPopupContent
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(DesktopNav)
