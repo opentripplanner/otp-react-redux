@@ -4,6 +4,10 @@ api:
   port: 8001
 # v2: false
 
+# Add Bugsnag key for error reporting
+# bugsnag:
+#   key: BUGSNAG_KEY
+
 # Add suggested locations to be shown as options in the form view.
 # locations:
 #   - id: 'airport'
@@ -386,6 +390,7 @@ itinerary:
 #   targets:
 #     testTarget: # To set a name for this target, create the i18n string "config.popups.testTarget"
 #       url: http://example.com/ 
+#       modal: false # Setting this to false always launches the popup as a browser popup
 #     secondTarget: 
 #       url: http://test.com/
 #       appendLocale: false # Defaults to true, if set to false otp-rr will not append the current i18n language to the popup URL.

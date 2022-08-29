@@ -260,7 +260,8 @@ class DefaultMap extends Component {
 
     const bikeStations = [
       ...bikeRentalStations.filter(
-        (station) => station.isFloatingVehicle === false
+        (station) =>
+          !station.isFloatingVehicle || station.isFloatingVehicle === false
       ),
       ...vehicleRentalStations.filter(
         (station) => station.isFloatingBike === true

@@ -36,6 +36,8 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.1.0",
     "@opentripplanner/base-map": "../otp-ui/packages/base-map",
+    "@bugsnag/js": "^7.17.0",
+    "@bugsnag/plugin-react": "^7.17.0",
     "@opentripplanner/core-utils": "^6.0.0",
     "@opentripplanner/endpoints-overlay": "../otp-ui/packages/endpoints-overlay",
     "@opentripplanner/from-to-location-picker": "^2.1.2",
