@@ -99,7 +99,6 @@ export const FlexIndicator = ({
   let Icon
   if (isCallAhead && isContinuousDropoff) {
     text = <FormattedMessage id="config.flex.both" values={{ phoneNumber }} />
-    // icon = 'shrink'
     Icon = CompressArrowsAlt
   }
   if (isCallAhead && !isContinuousDropoff) {

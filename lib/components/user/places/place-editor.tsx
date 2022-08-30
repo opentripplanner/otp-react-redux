@@ -139,7 +139,6 @@ class PlaceEditor extends Component<
 
         <FlexContainer>
           {/* For fixed places, just show the icon for place type instead of all inputs and selectors */}
-          {/* {isFixed && <FixedPlaceIcon type={place.icon} />} */}
           {isFixed && (
             <FixedPlaceIconWrapper size="1.5x" spaceRight>
               <SvgIcon iconName={place.icon} />
