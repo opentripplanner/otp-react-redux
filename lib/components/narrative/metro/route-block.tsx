@@ -123,6 +123,8 @@ const RouteBlock = ({
     leg?.alternateRoutes &&
     Object.entries(leg.alternateRoutes || {}).every(
       (altRoute) =>
+        // This 7 does a good job at filtering out most problematic short names,
+        // but may be revistited in the future depending on what feeds cause issues
         altRoute[1].routeShortName && altRoute[1].routeShortName.length > 7
     )
 
