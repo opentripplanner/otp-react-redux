@@ -20,6 +20,7 @@ import {
 } from '../../../util/accessibility-routing'
 import { getFare } from '../../../util/state'
 import { ItineraryDescription } from '../default/itinerary-description'
+import { localizeGradationMap } from '../utils'
 import FormattedDuration, {
   formatDuration
 } from '../../util/formatted-duration'
@@ -35,7 +36,6 @@ import {
   removeInsignifigantWalkLegs
 } from './attribute-utils'
 import RouteBlock from './route-block'
-import StyledIconWrapper from '../../util/styledIcon'
 
 const { ItineraryView } = uiActions
 
@@ -250,16 +250,11 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       currency
     )
 
-    Object.keys(accessibilityScoreGradationMap || {}).forEach((key) => {
-      const iconName = accessibilityScoreGradationMap[key].icon
-      if (typeof iconName === 'string') {
-        accessibilityScoreGradationMap[key].icon = (
-          <StyledIconWrapper>
-            <SvgIcon iconName={iconName} />
-          </StyledIconWrapper>
-        )
-      }
-    })
+    const localizedGradationMapWithIcons = localizeGradationMap(
+      intl,
+      SvgIcon,
+      accessibilityScoreGradationMap
+    )
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
 
@@ -331,7 +326,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
           >
             {itineraryHasAccessibilityScores(itinerary) && (
               <AccessibilityRating
-                gradationMap={accessibilityScoreGradationMap}
+                gradationMap={localizedGradationMapWithIcons}
                 score={getAccessibilityScoreForItinerary(itinerary)}
               />
             )}
@@ -417,7 +412,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
           <>
             {showRealtimeAnnotation && <SimpleRealtimeAnnotation />}
             <ItineraryBody
-              accessibilityScoreGradationMap={accessibilityScoreGradationMap}
+              accessibilityScoreGradationMap={localizedGradationMapWithIcons}
               itinerary={itinerary}
               LegIcon={LegIcon}
               RouteDescriptionOverride={RouteBlock}
@@ -433,25 +428,9 @@ class MetroItinerary<Props> extends NarrativeItinerary {
 
 // TODO: state type
 const mapStateToProps = (state: any, ownProps: Props) => {
-  const { intl } = ownProps
-  const gradationMap = state.otp.config.accessibilityScore?.gradationMap
-
-  // Generate icons based on fa icon keys in config
-  // Override text fields if translation set
-  gradationMap &&
-    Object.keys(gradationMap).forEach((key) => {
-      // As these localization keys are in the config, rather than
-      // standard language files, the message ids must be dynamically generated
-      const localizationId = `config.acessibilityScore.gradationMap.${key}`
-      const localizedText = intl.formatMessage({ id: localizationId })
-      // Override the config label if a localized label exists
-      if (localizationId !== localizedText) {
-        gradationMap[key].text = localizedText
-      }
-    })
-
   return {
-    accessibilityScoreGradationMap: gradationMap,
+    accessibilityScoreGradationMap:
+      state.otp.config.accessibilityScore?.gradationMap,
     configCosts: state.otp.config.itinerary?.costs,
     // The configured (ambient) currency is needed for rendering the cost
     // of itineraries whether they include a fare or not, in which case
