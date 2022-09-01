@@ -7,7 +7,6 @@ import {
   IntlShape
 } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
-import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -190,7 +189,7 @@ type Props = {
   showRealtimeAnnotation: () => void
 }
 
-class MetroItinerary<Props> extends NarrativeItinerary {
+class MetroItinerary extends NarrativeItinerary {
   static contextType = ComponentContext
 
   _onMouseEnter = () => {
@@ -232,15 +231,10 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       setActiveLeg,
       setItineraryView,
       showLegDurations,
-      showRealtimeAnnotation,
-      timeFormat
+      showRealtimeAnnotation
     } = this.props
     const { SvgIcon } = this.context
 
-    const timeOptions = {
-      format: timeFormat,
-      offset: coreUtils.itinerary.getTimeZoneOffset(itinerary)
-    }
     const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
       getFlexAttirbutes(itinerary)
 
@@ -417,7 +411,6 @@ class MetroItinerary<Props> extends NarrativeItinerary {
               LegIcon={LegIcon}
               RouteDescriptionOverride={RouteBlock}
               setActiveLeg={setActiveLeg}
-              timeOptions={timeOptions}
             />
           </>
         )}
