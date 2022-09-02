@@ -31,7 +31,8 @@ const mapStateToProps = (state: Record<string, any>, ownProps: Props) => {
     activeLeg: getActiveLeg(state),
     labeledModes,
     styles,
-    transitiveData: getTransitiveData(state)
+    // @ts-expect-error typescript is confused by the complex redux reducer. Both params are needed
+    transitiveData: getTransitiveData(state, ownProps)
   }
 }
 
