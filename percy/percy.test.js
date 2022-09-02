@@ -191,6 +191,11 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Route Viewer')
 
   // Open Specific Route`
+  try {
+    await page.$x("//span[contains(., 'Sugarloaf Mills - Lindbergh Center')]")
+  } catch {
+    await page.reload({ waitUntil: 'networkidle0' })
+  }
   const [busRouteButton] = await page.$x(
     "//span[contains(., 'Sugarloaf Mills - Lindbergh Center')]"
   )
