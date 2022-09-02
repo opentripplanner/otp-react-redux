@@ -1,4 +1,4 @@
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { Leg } from '@opentripplanner/types'
 import { RouteLongName } from '@opentripplanner/itinerary-body/lib/defaults'
 import React, { useContext } from 'react'
@@ -38,13 +38,14 @@ const Wrapper = styled.span`
   }
 `
 
-const MultiWrapper = styled.span<{ multi?: boolean }>`
+const MultiWrapper = styled.span<{ italic?: boolean; multi?: boolean }>`
   display: flex;
   flex-direction: row;
   gap: 5px;
   grid-column: 2;
   grid-row: 1;
 
+  ${({ italic }) => italic && 'font-style: italic;'}
   ${({ multi }) =>
     multi
       ? `
@@ -103,17 +104,42 @@ const Divider = styled.span`
   opacity: 0.4;
 `
 
+// eslint-disable-next-line complexity
 const RouteBlock = ({
   footer,
   hideLongName,
-  leg,
+  leg: rawLeg,
   LegIcon,
   previousLegMode,
   showDivider
 }: Props): React.ReactElement | null => {
   // @ts-expect-error React context is populated dynamically
   const { RouteRenderer } = useContext(ComponentContext)
+  const intl = useIntl()
+
   const Route = RouteRenderer || DefaultRouteRenderer
+  const leg = { ...rawLeg }
+
+  // Determine if the routeShortName will fit!
+  const alternateRoutesAreTooLongToDisplay =
+    leg?.alternateRoutes &&
+    Object.entries(leg.alternateRoutes || {}).every(
+      (altRoute) =>
+        // This 7 does a good job at filtering out most problematic short names,
+        // but may be revistited in the future depending on what feeds cause issues
+        altRoute[1].routeShortName && altRoute[1].routeShortName.length > 7
+    )
+
+  // If there are too many characters, disable the multiple route display
+  if (alternateRoutesAreTooLongToDisplay) {
+    leg.alternateRoutes = undefined
+    // Only overwrite the name if we're NOT rendering the long name
+    if (hideLongName) {
+      leg.routeShortName = intl.formatMessage({
+        id: 'components.MetroUI.multipleOptions'
+      })
+    }
+  }
 
   return (
     <>
@@ -125,7 +151,10 @@ const RouteBlock = ({
           </LegIconWrapper>
         )}
         {(leg.routeShortName || leg.route || leg.routeLongName) && (
-          <MultiWrapper multi={!!leg.alternateRoutes}>
+          <MultiWrapper
+            italic={alternateRoutesAreTooLongToDisplay && hideLongName}
+            multi={!!leg.alternateRoutes}
+          >
             <Route leg={leg} />
             {Object.entries(leg?.alternateRoutes || {})?.map((altRoute) => {
               const route = altRoute[1]
