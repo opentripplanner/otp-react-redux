@@ -31,7 +31,7 @@ const mapStateToProps = (state: Record<string, any>, ownProps: Props) => {
     activeLeg: getActiveLeg(state),
     labeledModes,
     styles,
-    transitiveData: getTransitiveData(state, ownProps)
+    transitiveData: getTransitiveData(state)
   }
 }
 
