@@ -226,6 +226,11 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 410')
 
   // Stop viewer from pattern viewer
+  try {
+    await page.$x("//a[contains(., 'Sugarloaf Mills GCT Park and Ride')]")
+  } catch {
+    await page.reload({ waitUntil: 'networkidle0' })
+  }
   const [patternStopButton] = await page.$x(
     "//a[contains(., 'Sugarloaf Mills GCT Park and Ride')]"
   )
