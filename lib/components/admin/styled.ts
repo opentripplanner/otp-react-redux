@@ -27,7 +27,6 @@ export const CallHistoryButton = styled.button`
   background-color: ${GREEN};
   margin-left: 69px;
   top: 140px;
-  aspect-ratio: 1/1;
 `
 
 export const CallTimeCounter = styled(DefaultCounter)`
@@ -86,7 +85,7 @@ export const CallRecordRow = styled.div``
 
 export const CallRecordButton = styled.button`
   display: flex;
-  flexdirection: row;
+  flex-direction: row;
   width: 100%;
 `
 
