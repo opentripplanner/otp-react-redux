@@ -216,7 +216,7 @@
     "globalSetup": "<rootDir>/__tests__/test-utils/global-setup.js"
   },
   "browserslist": [
-    ">0.2%",
+    ">20%",
     "not dead",
     "not op_mini all"
   ],
