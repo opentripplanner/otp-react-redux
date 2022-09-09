@@ -4,18 +4,27 @@ import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 
 import { firstTransitLegIsRealtime } from '../../../util/viewer'
+import {
+  getFirstLegStartTime,
+  getLastLegEndTime
+} from '../../../util/itinerary'
 
 export const departureTimes = (
   itinerary: Itinerary & {
-    allStartTimes: { arrival: number; realtime: boolean; time: number }[]
+    allStartTimes: {
+      legs: Leg[]
+      realtime: boolean
+    }[]
   },
-  intl: IntlShape
+  setItineraryTimeIndex: (index: number) => void,
+  intl: IntlShape,
+  activeItineraryTimeIndex?: number
 ): JSX.Element => {
   if (!itinerary.allStartTimes) {
     return (
-      <span
+      <button
         className={
-          firstTransitLegIsRealtime(itinerary) ? 'realtime first' : 'first'
+          firstTransitLegIsRealtime(itinerary) ? 'realtime active' : 'active'
         }
         title={intl.formatMessage(
           { id: 'components.MetroUI.arriveAtTime' },
@@ -23,29 +32,37 @@ export const departureTimes = (
         )}
       >
         <FormattedTime value={itinerary.startTime} />
-      </span>
+      </button>
     )
   }
-  const allStartTimes = itinerary.allStartTimes.sort((a, b) => a.time - b.time)
+
+  const allStartTimes = itinerary.allStartTimes.sort(
+    (a, b) => getFirstLegStartTime(a.legs) - getFirstLegStartTime(b.legs)
+  )
+
   return (
     <FormattedList
       type="disjunction"
       value={allStartTimes.map((time, index) => {
         const classNames = []
         if (time.realtime) classNames.push('realtime')
-        if (index === 0) classNames.push('first')
+        if (index === (activeItineraryTimeIndex || 0)) classNames.push('active')
 
         return (
-          <span
+          <button
             className={classNames.join(' ')}
             key={index}
+            onClick={() => setItineraryTimeIndex(index)}
             title={intl.formatMessage(
               { id: 'components.MetroUI.arriveAtTime' },
-              { time: intl.formatTime(time.arrival) }
+              { time: intl.formatTime(getLastLegEndTime(time.legs)) }
             )}
           >
-            <FormattedTime key={time.time} value={time.time} />
-          </span>
+            <FormattedTime
+              key={getFirstLegStartTime(time.legs)}
+              value={getFirstLegStartTime(time.legs)}
+            />
+          </button>
         )
       })}
     />

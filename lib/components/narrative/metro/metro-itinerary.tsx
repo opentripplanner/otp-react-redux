@@ -10,13 +10,14 @@ import { Itinerary, Leg } from '@opentripplanner/types'
 import React from 'react'
 import styled from 'styled-components'
 
+import * as narriativeActions from '../../../actions/narrative'
 import * as uiActions from '../../../actions/ui'
 import { FlexIndicator } from '../default/flex-indicator'
 import {
   getAccessibilityScoreForItinerary,
   itineraryHasAccessibilityScores
 } from '../../../util/accessibility-routing'
-import { getFare } from '../../../util/state'
+import { getActiveSearch, getFare } from '../../../util/state'
 import { ItineraryDescription } from '../default/itinerary-description'
 import FormattedDuration, {
   formatDuration
@@ -55,8 +56,25 @@ const DepartureTimes = styled.span`
   white-space: pre;
   width: 100%;
 
-  .first {
+  .active {
     color: #090909ee;
+    cursor: auto;
+  }
+
+  button:not(.active) {
+    text-decoration: underline;
+  }
+  button:not(.active):hover {
+    color: #090909ef;
+  }
+
+  button {
+    background: none;
+    transition: all 0.05s ease-out;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: inline;
   }
 `
 
@@ -216,6 +234,7 @@ class MetroItinerary extends NarrativeItinerary {
     const {
       accessibilityScoreGradationMap,
       active,
+      activeItineraryTimeIndex,
       currency,
       defaultFareKey,
       enableDot,
@@ -226,10 +245,12 @@ class MetroItinerary extends NarrativeItinerary {
       mini,
       setActiveItinerary,
       setActiveLeg,
+      setItineraryTimeIndex,
       setItineraryView,
       showLegDurations,
       showRealtimeAnnotation
     } = this.props
+
     const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
       getFlexAttirbutes(itinerary)
 
@@ -374,7 +395,12 @@ class MetroItinerary extends NarrativeItinerary {
                 </SecondaryInfo>
                 <DepartureTimes>
                   <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
-                  {departureTimes(itinerary, intl)}
+                  {departureTimes(
+                    itinerary,
+                    setItineraryTimeIndex,
+                    intl,
+                    activeItineraryTimeIndex
+                  )}
                 </DepartureTimes>
               </ItineraryGrid>
             )}
@@ -432,8 +458,14 @@ const mapStateToProps = (state: any, ownProps: Props) => {
       }
     })
 
+  const activeSearch = getActiveSearch(state)
+  const activeItineraryTimeIndex =
+    // @ts-expect-error state is not yet typed
+    activeSearch && activeSearch.activeItineraryTimeIndex
+
   return {
     accessibilityScoreGradationMap: gradationMap,
+    activeItineraryTimeIndex,
     configCosts: state.otp.config.itinerary?.costs,
     // The configured (ambient) currency is needed for rendering the cost
     // of itineraries whether they include a fare or not, in which case
@@ -449,6 +481,8 @@ const mapStateToProps = (state: any, ownProps: Props) => {
 // TS TODO: correct redux types
 const mapDispatchToProps = (dispatch: any) => {
   return {
+    setItineraryTimeIndex: (payload: number) =>
+      dispatch(narriativeActions.setActiveItineraryTime(payload)),
     setItineraryView: (payload: any) =>
       dispatch(uiActions.setItineraryView(payload))
   }

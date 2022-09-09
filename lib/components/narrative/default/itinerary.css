@@ -77,7 +77,7 @@
   background: #ffffffff;
 }
 
-.otp .option.metro-itin span.realtime::before {
+.otp .option.metro-itin .realtime::before {
   display: inline-block;
   content: "";
   background: rgb(0, 180, 0);
