@@ -12,7 +12,7 @@ describe('util > user', () => {
           id: 'id123',
           lat: 12,
           lon: 34,
-          name: 'Home',
+          name: '123 Main street',
           type: 'home'
         },
         input: {
@@ -31,7 +31,7 @@ describe('util > user', () => {
           id: 'id123',
           lat: 12,
           lon: 34,
-          name: 'Work',
+          name: '123 Main street',
           type: 'work'
         },
         input: {
