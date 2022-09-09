@@ -2,6 +2,7 @@ import { StyledIconBase } from '@styled-icons/styled-icon'
 import styled, { keyframes } from 'styled-components'
 
 interface Props {
+  block?: boolean
   flipHorizontal?: boolean
   noMargin?: boolean
   rotate90?: boolean
@@ -40,7 +41,7 @@ const rotateAnimation = keyframes`
 const StyledIconWrapper = styled.span<Props>`
   top: 0.125em;
   position: ${(props) => (props.static ? 'static' : 'relative')};
-  display: inline-grid;
+  display: ${(props) => (props.block ? 'grid' : 'inline-grid')};
   place-content: center;
   animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1.2s linear
     infinite;

@@ -46,6 +46,7 @@ export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
   margin-right: 5px;
   position: relative;
   display: inline-flex;
+  padding: 0;
   align-items: center;
   justify-content: center;
   align-content: center;

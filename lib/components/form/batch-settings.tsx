@@ -205,6 +205,7 @@ class BatchSettings extends Component<Props, State> {
               <Dot className="dot" />
             )}
             <StyledIconWrapper
+              block
               noMargin
               size="2x"
               static
@@ -234,10 +235,11 @@ class BatchSettings extends Component<Props, State> {
             })}
           >
             <StyledIconWrapper
+              block
               noMargin
               size="2x"
               static
-              style={{ height: '100%', width: '100%' }}
+              style={{ fontSize: '0.9em' }}
             >
               {hasValidLocation(currentQuery, 'from') ||
               hasValidLocation(currentQuery, 'to') ? (
