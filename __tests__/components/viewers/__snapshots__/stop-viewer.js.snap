@@ -1304,7 +1304,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   <DefaultRouteRenderer
                                     leg={
                                       Object {
-                                        "agencyId": undefined,
+                                        "agencyName": "TriMet",
                                         "mode": "BUS",
                                         "routeColor": undefined,
                                         "routeLongName": "Burnside/Stark",
@@ -3840,7 +3840,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   <DefaultRouteRenderer
                                     leg={
                                       Object {
-                                        "agencyId": undefined,
+                                        "agencyName": "TriMet",
                                         "mode": "BUS",
                                         "routeColor": undefined,
                                         "routeLongName": "Burnside/Stark",
@@ -6045,7 +6045,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   <DefaultRouteRenderer
                                     leg={
                                       Object {
-                                        "agencyId": undefined,
+                                        "agencyName": "TriMet",
                                         "mode": "BUS",
                                         "routeColor": undefined,
                                         "routeLongName": "Burnside/Stark",
@@ -9894,7 +9894,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   <DefaultRouteRenderer
                                     leg={
                                       Object {
-                                        "agencyId": undefined,
+                                        "agencyName": "TriMet",
                                         "mode": "BUS",
                                         "routeColor": undefined,
                                         "routeLongName": "Burnside/Stark",
@@ -10987,7 +10987,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   <DefaultRouteRenderer
                                     leg={
                                       Object {
-                                        "agencyId": undefined,
+                                        "agencyName": "TriMet",
                                         "mode": "BUS",
                                         "routeColor": undefined,
                                         "routeLongName": "South Shore",
@@ -12080,7 +12080,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   <DefaultRouteRenderer
                                     leg={
                                       Object {
-                                        "agencyId": undefined,
+                                        "agencyName": "TriMet",
                                         "mode": "BUS",
                                         "routeColor": undefined,
                                         "routeLongName": "Pacific Hwy/Sherwood",
@@ -13281,7 +13281,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   <DefaultRouteRenderer
                                     leg={
                                       Object {
-                                        "agencyId": undefined,
+                                        "agencyName": "TriMet",
                                         "mode": "BUS",
                                         "routeColor": undefined,
                                         "routeLongName": "Pacific Hwy/Sherwood",
@@ -18151,7 +18151,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   <DefaultRouteRenderer
                                     leg={
                                       Object {
-                                        "agencyId": undefined,
+                                        "agencyName": "TriMet",
                                         "mode": "BUS",
                                         "routeColor": undefined,
                                         "routeLongName": "Burnside/Stark",
