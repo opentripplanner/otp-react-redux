@@ -307,6 +307,7 @@ class DefaultMap extends Component {
           <TransitiveOverlay
             getTransitiveRouteLabel={getTransitiveRouteLabel}
           />
+          {/* TODO: bring this back? or focus time on migrating transitive to webgl? */}
           {/* <RoutePreviewOverlay /> */}
           <TripViewerOverlay />
           <ElevationPointMarker />
@@ -340,8 +341,6 @@ class DefaultMap extends Component {
                 return <ParkAndRideOverlay {...namedLayerProps} />
               case 'stops':
                 return <StopsOverlay {...namedLayerProps} />
-              // case 'tile':
-              // return <TileOverlay key={k} {...overlayConfig} />
               case 'micromobility-rental':
                 return (
                   <VehicleRentalOverlay
@@ -350,8 +349,6 @@ class DefaultMap extends Component {
                     stations={vehicleRentalStations}
                   />
                 )
-              // case 'zipcar':
-              // return <ZipcarOverlay key={k} {...overlayConfig} />
               case 'otp2-micromobility-rental':
                 return (
                   <VehicleRentalOverlay
@@ -377,7 +374,7 @@ class DefaultMap extends Component {
           {/* If set, custom overlays are shown if no active itinerary is shown or pending. */}
           {typeof getCustomMapOverlays === 'function' &&
             getCustomMapOverlays(!itinerary && !pending)}
-          <NavigationControl position="bottom-right" visualizePitch />
+          <NavigationControl position="bottom-right" />
         </BaseMap>
       </MapContainer>
     )
