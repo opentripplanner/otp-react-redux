@@ -94,15 +94,10 @@
 }
 .otp .stop-viewer .route-row-container {
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 .otp .stop-viewer .route-row:first-of-type {
   margin-top: 10px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-.otp .stop-viewer .route-row:last-of-type {
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 
 .otp .stop-viewer .route-row .header {
