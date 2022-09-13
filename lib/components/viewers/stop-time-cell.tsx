@@ -87,41 +87,44 @@ const StopTimeCell = ({
   // Thursday 12:19am. We don't want the time to read: 'Thursday, 24 minutes'.
   const showDayOfWeek = !vehicleDepartsToday && !showCountdown
 
+  const realtime = stopTime.realtimeState === 'UPDATED'
   return (
-    <div>
-      <div className="pull-left">
-        <Icon
-          style={{ color: '#888', fontSize: '0.8em', marginRight: 2 }}
-          type={stopTime.realtimeState === 'UPDATED' ? 'rss' : 'clock-o'}
-        />
-      </div>
+    <>
+      {/* Once font-awesome is removed this code will look less silly */}
+      <Icon
+        style={{
+          fontSize: '0.6em',
+          marginRight: 2,
+          transform: `scaleX(${realtime ? '-1' : '1'})`
+        }}
+        type={realtime ? 'rss' : 'clock-o'}
+        withSpace
+      />
 
-      <div style={{ fontSize: showDayOfWeek ? 12 : 14, marginLeft: 20 }}>
-        {showDayOfWeek && (
-          <div className="percy-hide" style={{ marginBottom: -4 }}>
-            <FormattedDayOfWeek
-              // 'iiii' returns the long ISO day of the week (independent of browser locale).
-              // See https://date-fns.org/v2.28.0/docs/format
-              day={format(departureDay, 'iiii', {
-                timeZone: homeTimezone
-              }).toLowerCase()}
-            />
-          </div>
-        )}
-        <div className="percy-hide">
-          {showCountdown ? (
-            // Show countdown string (e.g., 3 min or Due)
-            isDue ? (
-              <FormattedMessage id="components.StopTimeCell.imminentArrival" />
-            ) : (
-              <FormattedDuration duration={secondsUntilDeparture} />
-            )
+      {showDayOfWeek && (
+        <span className="percy-hide" style={{ marginBottom: -4 }}>
+          <FormattedDayOfWeek
+            // 'iiii' returns the long ISO day of the week (independent of browser locale).
+            // See https://date-fns.org/v2.28.0/docs/format
+            day={format(departureDay, 'iiii', {
+              timeZone: homeTimezone
+            }).toLowerCase()}
+          />{' '}
+        </span>
+      )}
+      <span className="percy-hide">
+        {showCountdown ? (
+          // Show countdown string (e.g., 3 min or Due)
+          isDue ? (
+            <FormattedMessage id="components.StopTimeCell.imminentArrival" />
           ) : (
-            <DepartureTime realTime stopTime={stopTime} />
-          )}
-        </div>
-      </div>
-    </div>
+            <FormattedDuration duration={secondsUntilDeparture} />
+          )
+        ) : (
+          <DepartureTime realTime stopTime={stopTime} />
+        )}
+      </span>
+    </>
   )
 }
 

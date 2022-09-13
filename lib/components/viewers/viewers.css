@@ -3,7 +3,6 @@
 .otp .route-viewer-header,
 .otp .stop-viewer-header,
 .otp .trip-viewer-header {
-  background-color: #fff;
   padding: 12px;
   margin: 5px;
 }
@@ -43,6 +42,7 @@
 }
 
 .otp .stop-viewer-body input[type="date"] {
+  background: inherit;
   border: none;
   clear: right;
   cursor: pointer;
@@ -91,11 +91,11 @@
 /* stop viewer styles */
 
 .otp .stop-viewer .route-row {
-  border: 1px solid #1113;
-  border-top: none;
+}
+.otp .stop-viewer .route-row-container {
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
 }
 .otp .stop-viewer .route-row:first-of-type {
-  border-top: 1px solid #1113;
   margin-top: 10px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -106,21 +106,36 @@
 }
 
 .otp .stop-viewer .route-row .header {
-  display: table;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
   width: 100%;
 }
 .otp .stop-viewer .route-row .header .route-name {
-  display: table-cell;
-  padding: 8px;
-  vertical-align: middle;
+  display: grid;
+  padding-left: 5px;
+  grid-template-columns: 4ch 2fr;
+  gap: 5px;
+  font-size: 42px;
+  align-items: center;
+}
+.otp .stop-viewer .route-row .header .route-name span {
+  font-size: 15px;
 }
 
 .otp .stop-viewer .route-row .header .next-trip-preview {
-  display: table-cell;
-  width: 100px;
-  border-left: 1px solid #1113;
-  padding: 9px 6px;
-  font-size: 14px;
+  justify-self: end;
+  display: grid;
+  width: 100%;
+  text-align: right;
+  grid-template-rows: fit-content(8ch);
+  padding: 15px;
+  white-space: nowrap;
+}
+
+.otp .stop-viewer .route-row .header .next-trip-preview span:first-of-type {
+  font-weight: 700;
+  font-size: 24px;
 }
 
 .otp .stop-viewer .route-row .header .expansion-button-container {
@@ -225,7 +240,6 @@
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .route-name {
-  padding-right: 8px;
   font-weight: 700;
   display: inline-block;
   min-width: 5ch;
@@ -338,6 +352,14 @@
   text-align: center;
   text-transform: uppercase;
   width: 100%;
+}
+
+.otp .stop-viewer .stop-viewer-controls button {
+  color: inherit;
+}
+.otp .stop-viewer .stop-viewer-controls svg {
+  color: inherit;
+  fill: inherit;
 }
 
 /* trip viewer styles */

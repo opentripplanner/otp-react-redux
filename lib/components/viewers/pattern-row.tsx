@@ -3,14 +3,15 @@ import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { VelocityTransitionGroup } from 'velocity-react'
 import AnimateHeight from 'react-animate-height'
 import React, { Component } from 'react'
-import type { Route } from '@opentripplanner/types'
+import type { Route, Stop } from '@opentripplanner/types'
 
 import { ComponentContext } from '../../util/contexts'
 import {
   generateFakeLegForRouteRenderer,
+  getContrastYIQ,
   stopTimeComparator
 } from '../../util/viewer'
-import { Pattern, Time } from '../util/types'
+import { Pattern, StopTime, Time } from '../util/types'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import Icon from '../util/icon'
 import Strong from '../util/strong-text'
@@ -51,7 +52,7 @@ class PatternRow extends Component<Props, State> {
       this.props
 
     // sort stop times by next departure
-    let sortedStopTimes = []
+    let sortedStopTimes: Time[] = []
     const hasStopTimes = stopTimes && stopTimes.length > 0
     if (hasStopTimes) {
       sortedStopTimes = stopTimes
@@ -68,111 +69,48 @@ class PatternRow extends Component<Props, State> {
     }
 
     const routeName = route.shortName ? route.shortName : route.longName
+    const routeColor = route.color ? `#${route.color}` : '#333'
 
     return (
       <div className="route-row" role="table">
         {/* header row */}
-        <div className="header" role="row">
+        <div
+          className="header"
+          role="row"
+          style={{
+            backgroundColor: routeColor,
+            color: `#${getContrastYIQ(routeColor)}`
+          }}
+        >
           {/* route name */}
           <div className="route-name">
-            <strong>
+            <strong
+              style={
+                routeName && routeName?.length >= 4 ? { fontSize: '3vb' } : {}
+              }
+            >
               <RouteRenderer leg={generateFakeLegForRouteRenderer(route)} />
             </strong>
-            <FormattedMessage
-              id="components.PatternRow.routeName"
-              values={{
-                headsign: pattern.headsign,
-                routeName: '',
-                strong: Strong
-              }}
-            />
+            <span>{pattern.headsign}</span>
           </div>
           {/* next departure preview */}
           {hasStopTimes && (
-            <div className="next-trip-preview" role="columnheader">
-              <StopTimeCell
-                homeTimezone={homeTimezone}
-                stopTime={sortedStopTimes[0]}
-              />
+            <div className="next-trip-preview">
+              {[0, 1, 2].map(
+                (index) =>
+                  sortedStopTimes?.[index] && (
+                    <span>
+                      <StopTimeCell
+                        homeTimezone={homeTimezone}
+                        key={index}
+                        stopTime={sortedStopTimes[index]}
+                      />
+                    </span>
+                  )
+              )}
             </div>
           )}
-
-          {/* expansion chevron button */}
-          <div className="expansion-button-container">
-            <button
-              aria-controls={`route-${routeName}`}
-              aria-expanded={this.state.expanded}
-              aria-label={intl.formatMessage(
-                { id: 'components.PatternRow.collapseOrExpandDepartures' },
-                {
-                  expanded: this.state.expanded,
-                  routeName
-                }
-              )}
-              className="expansion-button"
-              onClick={this._toggleExpandedView}
-            >
-              <Icon type={`chevron-${this.state.expanded ? 'up' : 'down'}`} />
-            </button>
-          </div>
         </div>
-
-        {/* expanded view */}
-        <AnimateHeight duration={500} height={this.state.expanded ? 'auto' : 0}>
-          <div id={`route-${routeName}`}>
-            <div className="trip-table" role="table">
-              {/* trips table header row */}
-              <div className="header" role="row">
-                <div className="cell" role="columnheader" />
-                <div className="cell time-column" role="columnheader">
-                  <FormattedMessage id="components.PatternRow.departure" />
-                </div>
-                <div className="cell status-column" role="columnheader">
-                  <FormattedMessage id="components.PatternRow.status" />
-                </div>
-              </div>
-
-              {/* list of upcoming trips */}
-              {hasStopTimes &&
-                sortedStopTimes.map((stopTime, i) => {
-                  const { departureDelay: delay, realtimeState } = stopTime
-                  return (
-                    <div
-                      className="trip-row"
-                      key={i}
-                      role="row"
-                      style={{
-                        display: 'table-row',
-                        fontSize: 14,
-                        marginTop: 6
-                      }}
-                    >
-                      <div className="cell" role="cell">
-                        <FormattedMessage
-                          id="components.PatternRow.routeShort"
-                          values={{ headsign: stopTime.headsign }}
-                        />
-                      </div>
-                      <div className="cell time-column" role="cell">
-                        <StopTimeCell
-                          homeTimezone={homeTimezone}
-                          stopTime={stopTime}
-                        />
-                      </div>
-                      <div className="cell status-column" role="cell">
-                        <RealtimeStatusLabel
-                          className="status-label"
-                          delay={delay}
-                          isRealtime={realtimeState === 'UPDATED'}
-                          withBackground
-                        />
-                      </div>
-                    </div>
-                  )
-                })}
-            </div>
-          </div>
-        </AnimateHeight>
       </div>
     )
   }

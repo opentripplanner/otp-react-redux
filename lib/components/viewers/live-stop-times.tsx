@@ -145,7 +145,7 @@ class LiveStopTimes extends Component<Props, State> {
 
     return (
       <>
-        <div>
+        <div className="route-row-container">
           {Object.values(stopTimesByPattern)
             .sort(patternComparator)
             .map(({ id, pattern, route, times }) => {

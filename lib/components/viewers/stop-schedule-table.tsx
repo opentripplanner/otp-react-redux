@@ -21,7 +21,6 @@ const StyledTable = styled.table`
   height: 100%;
   width: 100%;
   th {
-    background-color: #fff;
     box-shadow: 0 1px 0px 0px #ccc;
     font-size: 75%;
     position: sticky;
@@ -113,17 +112,17 @@ class StopScheduleTable extends Component<{
         <thead>
           <tr>
             {showBlockIds && (
-              <th>
+              <th className="base-color-bg">
                 <FormattedMessage id="components.StopScheduleTable.block" />
               </th>
             )}
-            <th>
+            <th className="base-color-bg">
               <FormattedMessage id="components.StopScheduleTable.route" />
             </th>
-            <th>
+            <th className="base-color-bg">
               <FormattedMessage id="components.StopScheduleTable.destination" />
             </th>
-            <th>
+            <th className="base-color-bg">
               <FormattedMessage id="components.StopScheduleTable.departure" />
             </th>
           </tr>
