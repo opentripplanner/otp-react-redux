@@ -214,12 +214,12 @@ components:
     stops: Arrêts et stations
     streets: Plan des rues    
   MetroUI:
-    leaveAt: You leave
-    arriveAtTime: "Arrive at {time}" 
-    timeWalking: "{time} walking"
-    fromStop: "from {stop}"
-    orAlternatives: or other routes in the same direction
-    itineraryDescription: "{time} itinerary using {routes}"
+    leaveAt: Partez à
+    arriveAtTime: "Arrivée à {time}" 
+    timeWalking: "{time} de marche"
+    fromStop: "de {stop}"
+    orAlternatives: ou autres lignes dans la même direction
+    itineraryDescription: "Trajet de {time} par les lignes {routes}"
   MobileOptions:
     header: Options de recherche
   ModeDropdown:
