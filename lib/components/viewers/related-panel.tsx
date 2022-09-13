@@ -15,15 +15,12 @@ function RelatedPanel({
   count,
   expanded,
   onToggleExpanded,
-  title,
-  titleWidth
+  title
 }: Props): JSX.Element {
   return (
-    <>
-      <h4 className="related-panel-title" style={{ width: titleWidth }}>
-        {title}
-      </h4>
-      <div className="related-panel-container">{children}</div>
+    <div className="related-panel-container">
+      <h2>{title}</h2>
+      {children}
       {count > 2 && (
         <button
           className="related-panel-expand-view"
@@ -39,7 +36,7 @@ function RelatedPanel({
           )}
         </button>
       )}
-    </>
+    </div>
   )
 }
 
