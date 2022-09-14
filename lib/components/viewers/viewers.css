@@ -87,6 +87,10 @@
   align-items: center;
   gap: 10px;
 }
+.otp .route-viewer .header-text.route-expanded span {
+  padding: 0;
+  margin: 0;
+}
 
 /* stop viewer styles */
 
