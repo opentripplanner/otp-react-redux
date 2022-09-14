@@ -19,10 +19,10 @@
 }
 
 .otp .route-viewer-body::before {
+  background-color: #33333333;
   content: "";
   display: block;
   height: 2px;
-  background-color: #33333333;
 }
 
 @keyframes yellowfade {

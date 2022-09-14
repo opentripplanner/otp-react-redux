@@ -1,17 +1,27 @@
 import { connect } from 'react-redux'
+import { Location } from '@opentripplanner/types'
 import ParkAndRideOverlay from '@opentripplanner/park-and-ride-overlay'
-import React, { Component, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import { parkAndRideQuery } from '../../actions/api'
 import { setLocation } from '../../actions/map'
 
 type ParkAndRideParams = {
   maxTransitDistance?: number
-  // FIXME: properly type
+}
+type Props = ParkAndRideParams & {
+  id?: string
+  keyboard?: boolean
+  parkAndRideLocations?: { name: string; x: number; y: number }[]
+  parkAndRideQuery: (params: ParkAndRideParams) => void
+  setLocation: (location: {
+    location: Location
+    locationType: string
+    reverseGeocode: boolean
+  }) => void
 }
 
-// rewrote this as a functional component, still need to add more Typescript
-function ConnectedParkAndRideOverlay(props: any): JSX.Element {
+function ConnectedParkAndRideOverlay(props: Props): JSX.Element {
   useEffect(() => {
     const params: ParkAndRideParams = {}
     if (props.maxTransitDistance) {
@@ -19,8 +29,9 @@ function ConnectedParkAndRideOverlay(props: any): JSX.Element {
     }
 
     props.parkAndRideQuery(params)
-  }, [])
+  }, [props])
 
+  // @ts-expect-error the package isn't typed to handle an empty array even though it can
   return <ParkAndRideOverlay {...props} />
 }
 

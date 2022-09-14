@@ -20,11 +20,7 @@ import {
   setMapPopupLocation,
   setMapPopupLocationAndGeocode
 } from '../../actions/map'
-import {
-  setMapCenter,
-  setMapZoom,
-  updateOverlayVisibility
-} from '../../actions/config'
+import { setMapCenter, updateOverlayVisibility } from '../../actions/config'
 
 import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
@@ -284,6 +280,8 @@ class DefaultMap extends Component {
           center={center}
           mapLibreProps={{ reuseMaps: true }}
           maxZoom={maxZoom}
+          // In Leaflet, this was an onclick handler. Creating a click handler in
+          // MapLibreGL would require writing a custom event handler for all mouse events
           onContextMenu={this.onMapClick}
           onPopupClosed={this.onPopupClosed}
           onViewportChanged={() => {
@@ -406,7 +404,6 @@ const mapDispatchToProps = {
   setMapCenter,
   setMapPopupLocation,
   setMapPopupLocationAndGeocode,
-  setMapZoom,
   updateOverlayVisibility,
   vehicleRentalQuery
 }
