@@ -57,13 +57,8 @@ class PrintLayout extends Component<Props, State> {
   }
 
   componentDidMount() {
-    const {
-      currentQuery,
-      itinerary,
-      location,
-      parseUrlQueryString,
-      setMapCenter
-    } = this.props
+    const { currentQuery, itinerary, location, parseUrlQueryString } =
+      this.props
 
     // Add print-view class to html tag to ensure that iOS scroll fix only applies
     // to non-print views.
@@ -73,7 +68,6 @@ class PrintLayout extends Component<Props, State> {
       parseUrlQueryString()
     }
 
-    // TODO: this is an annoying hack. Ideally we wouldn't wipe out initLat and initLon
     // TODO: is there a way to adjust transitiveData to force the transitive overlay to re-adjust bounds?
     setMapCenter(currentQuery.from)
   }
@@ -147,8 +141,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   parseUrlQueryString,
-  routingQuery,
-  setMapCenter
+  routingQuery
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PrintLayout)

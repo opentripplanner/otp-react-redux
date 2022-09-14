@@ -22,6 +22,7 @@ import {
 } from '../../actions/map'
 import { setMapCenter, updateOverlayVisibility } from '../../actions/config'
 
+import BoundsUpdatingOverlay from './bounds-updating-overlay'
 import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
 import ParkAndRideOverlay from './connected-park-and-ride-overlay'
@@ -226,7 +227,6 @@ class DefaultMap extends Component {
       mapConfig,
       mapPopupLocation,
       pending,
-      setMapCenter,
       vehicleRentalQuery,
       vehicleRentalStations
     } = this.props
@@ -234,7 +234,7 @@ class DefaultMap extends Component {
     const { baseLayers, initLat, initLon, initZoom, maxZoom, overlays } =
       mapConfig || {}
 
-    const center = initLat && initLon ? [initLat, initLon] : [null, null]
+    const initCenter = initLat && initLon ? [initLat, initLon] : [null, null]
 
     const popup = mapPopupLocation && (
       <Popup
@@ -277,27 +277,19 @@ class DefaultMap extends Component {
         <BaseMap
           // Only 1 base layer is supported at the moment
           baseLayer={baseLayersWithNames?.[0]?.url}
-          center={center}
+          center={initCenter}
           mapLibreProps={{ reuseMaps: true }}
           maxZoom={maxZoom}
           // In Leaflet, this was an onclick handler. Creating a click handler in
           // MapLibreGL would require writing a custom event handler for all mouse events
           onContextMenu={this.onMapClick}
           onPopupClosed={this.onPopupClosed}
-          onViewportChanged={() => {
-            // This hack is needed to get the zoom functionality to work
-            // Redux only fires the render method if the prop changes,
-            // so it must be set to null so it can be "re-set" to an
-            // actual value.
-            if (mapConfig.initLat || mapConfig.initLon) {
-              setMapCenter({ lat: null, lon: null })
-            }
-          }}
           popup={popup}
           zoom={initZoom || 13}
         >
           {popup}
           {/* The default overlays */}
+          <BoundsUpdatingOverlay />
           <EndpointsOverlay />
           <RouteViewerOverlay />
           <TransitVehicleOverlay />
