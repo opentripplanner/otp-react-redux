@@ -105,6 +105,11 @@ Object {
     "locale": null,
     "localizedMessages": null,
     "mainPanelContent": null,
+    "map": Object {
+      "lat": null,
+      "lon": null,
+      "zoom": 12,
+    },
     "mobileScreen": 1,
     "popup": Object {
       "id": null,

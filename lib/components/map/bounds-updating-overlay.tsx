@@ -19,12 +19,11 @@ const BoundsUpdatingOverlay = (props: Props): JSX.Element => {
 
   useEffect(() => {
     if (lon && lat) {
-      const center: [number, number] = [lon, lat]
-      mapGlMap?.flyTo({ center, zoom })
-      // Reset redux so this componet updates the next time the redux variable updates
+      mapGlMap?.flyTo({ center: { lat, lon }, duration: 500, zoom })
+      // Reset redux so this component updates the next time the redux variable updates
       setMapCenter({ lat: null, lon: null })
     }
-  }, [lat, lon, setMapCenter, zoom, mapGlMap])
+  }, [lat, lon, mapGlMap, setMapCenter, zoom])
 
   return <></>
 }
