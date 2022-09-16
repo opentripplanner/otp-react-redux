@@ -7,7 +7,6 @@ import { transit_realtime as transitRealtime } from 'gtfs-realtime-bindings'
 import React, { useEffect, useState } from 'react'
 
 import { getModeFromRoute } from '../../util/viewer'
-import useInterval from '../util/use-interval-hook'
 
 type Props = {
   /** URL to GTFS-rt feed in protocol buffer format. */
