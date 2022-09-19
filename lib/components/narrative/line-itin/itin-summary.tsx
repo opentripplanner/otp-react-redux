@@ -1,12 +1,9 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, FormattedNumber } from 'react-intl'
-// TYPESCRIPT TODO: wait for typescripted core-utils
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import type { Itinerary, Leg, TimeOptions } from '@opentripplanner/types'
+import type { Itinerary, Leg } from '@opentripplanner/types'
 
 import { ComponentContext } from '../../../util/contexts'
 import { getFare } from '../../../util/state'
@@ -83,7 +80,6 @@ type Props = {
   defaultFareKey: string
   itinerary: Itinerary
   onClick: () => void
-  timeOptions: TimeOptions
 }
 
 export class ItinerarySummary extends Component<Props> {
@@ -94,7 +90,7 @@ export class ItinerarySummary extends Component<Props> {
   }
 
   render(): JSX.Element {
-    const { currency, defaultFareKey, itinerary, timeOptions } = this.props
+    const { currency, defaultFareKey, itinerary } = this.props
     const { LegIcon } = this.context
 
     const { fareCurrency, maxTNCFare, minTNCFare, transitFare } = getFare(
@@ -106,8 +102,7 @@ export class ItinerarySummary extends Component<Props> {
     const minTotalFare = minTNCFare * 100 + transitFare
     const maxTotalFare = maxTNCFare * 100 + transitFare
 
-    const startTime = itinerary.startTime + parseInt(timeOptions?.offset || '0')
-    const endTime = itinerary.endTime + parseInt(timeOptions?.offset || '0')
+    const { endTime, startTime } = itinerary
 
     const { caloriesBurned } =
       coreUtils.itinerary.calculatePhysicalActivity(itinerary)

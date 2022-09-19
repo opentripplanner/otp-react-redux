@@ -1,7 +1,5 @@
 import { connect } from 'react-redux'
-// FIXME: type OTP-UI
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+// @ts-expect-error ParkAndRideOverlay is not typescripted yet
 import ParkAndRideOverlay from '@opentripplanner/park-and-ride-overlay'
 import React, { Component } from 'react'
 

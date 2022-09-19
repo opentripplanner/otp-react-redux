@@ -32,15 +32,15 @@ actions:
     fetchCallsError: "Error fetching calls: {err}"
     queryFetchError: "Error fetching queries: {err}"
   fieldTrip:
-    addNoteError: "Error adding field trip note: {err}"
+    addNoteError: "Error adding field trip note:"
     confirmOverwriteItineraries: >
       This action will overwrite a previously planned {outbound, select,
           true {outbound}
           other {inbound}
         } itinerary for this request. Do you wish to continue?
-    deleteItinerariesError: "Error deleting field trip plan: {err}"
-    deleteNoteError: "Error deleting field trip note: {err}"
-    editSubmitterNotesError: "Error editing submitter notes: {err}"
+    deleteItinerariesError: "Error deleting field trip plan:"
+    deleteNoteError: "Error deleting field trip note:"
+    editSubmitterNotesError: "Error editing submitter notes:"
     fetchFieldTripError: "Error fetching field trip: {err}"
     fetchFieldTripsError: "Error fetching field trips: {err}"
     fetchTripsForDateError: "Error fetching trips for field trip travel date: {err}"
@@ -48,9 +48,10 @@ actions:
     itineraryCapacityError: "Cannot Save Plan: This plan could not be saved due to a lack of capacity on one or more vehicles. Please re-plan your trip."
     maxTripRequestsExceeded: Number of trip requests exceeded without valid results
     saveItinerariesError: "Failed to save itineraries: {err}"
-    setGroupSizeError: "Error setting group size: {err}"
-    setPaymentError: "Error setting payment info: {err}"
-    setRequestStatusError: "Error setting request status: {err}"
+    setDateError: "Error setting date:"
+    setGroupSizeError: "Error setting group size:"
+    setPaymentError: "Error setting payment info:"
+    setRequestStatusError: "Error setting request status:"
   location:
     geolocationNotSupportedError: Geolocation not supported by your browser
     unknownPositionError: Unknown error getting position
@@ -172,7 +173,7 @@ components:
     clickDetails: Click to view details
     # Use ordered placeholders when multiple modes are involved
     # (this will accommodate right-to-left languages by swapping the order/separator in this string).
-    multiModeSummary: "{accessMode} to {transitMode}"
+    multiModeSummary: "{accessMode} + {transitMode}"
   DeleteUser:
     deleteMyAccount: Delete my account
   EnhancedStopMarker:
@@ -224,6 +225,14 @@ components:
     satellite: Satellite
     stops: Transit Stops
     streets: Streets    
+  MetroUI:
+    leaveAt: You leave
+    arriveAtTime: "Arrive at {time}" 
+    timeWalking: "{time} walking"
+    fromStop: "from {stop}"
+    orAlternatives: or other routes in the same direction
+    itineraryDescription: "{time} itinerary using {routes}"
+    multipleOptions: Multiple Options
   MobileOptions:
     header: Set Search Options
   ModeDropdown:
@@ -394,6 +403,10 @@ components:
     signInTooltip: Please sign in to save trip.
   SearchScreen:
     header: Plan Your Trip
+  SessionTimeout:
+    body: Your session will expire within a minute. Press 'Continue Session' to keep your search.
+    header: Session about to timeout!
+    keepSession: Continue Session
   SettingsPreview:
     defaultPreviewText: "Transit Options\n& Preferences"
   SimpleRealtimeAnnotation:
@@ -649,7 +662,6 @@ common:
   forms:
     back: Back
     cancel: Cancel
-    clear: Clear
     close: Close
     error: error!
     defaultValue: "{value} (default)"
@@ -691,7 +703,7 @@ common:
     funicular: Funicular
     gondola: Gondola
     micromobility: E-Scooter
-    micromobility_rent: Rental E-Scooter
+    micromobility_rent: E-Scooter
     rail: Rail
     rent: Rental options
     subway: Subway
@@ -784,6 +796,7 @@ config:
   # Default values for Flex Indicator (set in configuration as well)
   flex:
     flex-service: Flex Service
+    flex-service-colon: "Flex Service:"
     both: See bottom of itinerary for details
     call-ahead: Call to reserve
     continuous-dropoff: Communicate with operator about stop

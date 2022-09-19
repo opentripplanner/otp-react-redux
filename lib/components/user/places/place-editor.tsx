@@ -9,13 +9,11 @@ import {
 import { injectIntl, IntlShape } from 'react-intl'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import type { WrappedComponentProps } from 'react-intl'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import type { Location } from '@opentripplanner/types'
+import type { WrappedComponentProps } from 'react-intl'
 
 import { capitalizeFirst, getErrorStates } from '../../../util/ui'
 import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'

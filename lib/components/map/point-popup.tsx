@@ -1,8 +1,5 @@
 import { connect } from 'react-redux'
 import { injectIntl, WrappedComponentProps } from 'react-intl'
-// FIXME: typescript
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
@@ -58,7 +55,7 @@ function MapPopup({
       <div>
         <FromToLocationPicker
           label
-          location={mapPopupLocation}
+          location={{ ...mapPopupLocation, name: popupName }}
           setLocation={onSetLocationFromPopup}
         />
       </div>
