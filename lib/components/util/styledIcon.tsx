@@ -48,8 +48,6 @@ const StyledIconWrapper = styled.span<Props>`
   ${StyledIconBase} {
     width: 1em;
     height: 1em;
-    top: 0.0125em;
-    position: relative;
     margin: ${(props) => (props.noMargin ? '0' : '0 0.125em')};
     font-size: ${(props) => getFontSize(props.size)};
     transform: ${(props) => `
