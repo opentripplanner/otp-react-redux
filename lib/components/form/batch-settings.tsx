@@ -204,13 +204,7 @@ class BatchSettings extends Component<Props, State> {
             {coreUtils.query.isNotDefaultQuery(currentQuery, config) && (
               <Dot className="dot" />
             )}
-            <StyledIconWrapper
-              block
-              noMargin
-              size="2x"
-              static
-              style={{ height: '100%', width: '100%' }}
-            >
+            <StyledIconWrapper size="2x" static>
               <Cog />
             </StyledIconWrapper>
           </SettingsPreview>
@@ -234,13 +228,7 @@ class BatchSettings extends Component<Props, State> {
               id: 'components.BatchSettings.planTripTooltip'
             })}
           >
-            <StyledIconWrapper
-              block
-              noMargin
-              size="2x"
-              static
-              style={{ fontSize: '0.9em' }}
-            >
+            <StyledIconWrapper block static style={{ fontSize: '1.6em' }}>
               {hasValidLocation(currentQuery, 'from') ||
               hasValidLocation(currentQuery, 'to') ? (
                 <SyncAlt />
