@@ -204,7 +204,7 @@ class BatchSettings extends Component<Props, State> {
             {coreUtils.query.isNotDefaultQuery(currentQuery, config) && (
               <Dot className="dot" />
             )}
-            <StyledIconWrapper size="2x" static>
+            <StyledIconWrapper block size="2x" static>
               <Cog />
             </StyledIconWrapper>
           </SettingsPreview>

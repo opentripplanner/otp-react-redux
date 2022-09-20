@@ -45,11 +45,7 @@ export const StyledDateTimePreview = styled(DateTimePreview)`
 export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
   margin-right: 5px;
   position: relative;
-  display: inline-flex;
   padding: 0;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
   ${(props) => (props.expanded ? activeCss : null)}
 `
 
@@ -58,7 +54,6 @@ export const PlanTripButton = styled(Button)`
   color: #ffffffdd;
   margin-left: auto;
   padding: 5px;
-  position: relative;
   &:active {
     ${activeCss}
     filter: saturate(50%);
