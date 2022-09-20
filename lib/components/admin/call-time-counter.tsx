@@ -1,19 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 
 interface State {
   counterString: number
   timer?: number
 }
 
-interface Props {
-  className?: string
-}
-
 /**
  * Component that displays the call time (ticking with each second)
  * for an active call (assumes that mount time corresponds with call start).
  */
-export default class CallTimeCounter extends Component<Props, State> {
+export default class CallTimeCounter extends Component<
+  HTMLAttributes<HTMLDivElement>,
+  State
+> {
   state = {
     counterString: 0,
     timer: undefined
