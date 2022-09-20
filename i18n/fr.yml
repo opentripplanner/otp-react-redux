@@ -21,15 +21,15 @@ actions:
     fetchCallsError: "Erreur lors du chargement des appels : {err}"
     queryFetchError: "Erreur lors du chargement des requêtes : {err}"
   fieldTrip:
-    addNoteError: "Erreur lors de l'ajout d'une note sur le groupe : {err}"
+    addNoteError: "Erreur lors de l'ajout d'une note sur le groupe :"
     confirmOverwriteItineraries: >
       Cette action replacera un itinéraire {outbound, select,
         true {aller}
         other {retour}
       } planifié préalablement pour cette demande. Voulez-vous continuer ?
-    deleteItinerariesError: "Erreur lors de la suppression d'un itinéraire de groupe : {err}"
-    deleteNoteError: "Erreur lors de la suppression d'une note sur le groupe : {err}"
-    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur : {err}"
+    deleteItinerariesError: "Erreur lors de la suppression d'un itinéraire de groupe :"
+    deleteNoteError: "Erreur lors de la suppression d'une note sur le groupe :"
+    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur :"
     fetchFieldTripError: "Erreur de chargement de l'itinéraire du groupe: {err}"
     fetchFieldTripsError: "Error fetching des itinéraires du groupe : {err}"
     fetchTripsForDateError: "Error fetching des itinéraires du groupe pour les dates de sorties : {err}"
@@ -37,9 +37,10 @@ actions:
     itineraryCapacityError: "Impossible d'enregistrer les itinéraires : Capacité insuffisante dans un ou plusieurs véhicules. Veuillez relancer votre recherche."
     maxTripRequestsExceeded: Le nombre de requêtes sans résultats valables a été dépassé.
     saveItinerariesError: "Erreur lors de l'enregistrement des itinéraires : {err}"
-    setGroupSizeError: "Erreur sur la taille du groupe : {err}"
-    setPaymentError: "Erreur sur les coordonnées de paiement : {err}"
-    setRequestStatusError: "Erreur sur l'état de la requête : {err}"
+    setDateError: "Erreur sur la date :"
+    setGroupSizeError: "Erreur sur la taille du groupe :"
+    setPaymentError: "Erreur sur les coordonnées de paiement :"
+    setRequestStatusError: "Erreur sur l'état de la requête :"
   location:
     geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par votre navigateur.
     unknownPositionError: Erreur non-gérée lors de la détection de votre emplacement.
@@ -386,6 +387,10 @@ components:
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SearchScreen:
     header: Planifiez votre trajet
+  SessionTimeout:
+    body: Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma session' pour conserver votre recherche. 
+    header: Votre session va expirer
+    keepSession: Prolonger ma session
   SettingsPreview:
     defaultPreviewText: "Choix du mode\n& préférences"
   SimpleRealtimeAnnotation:

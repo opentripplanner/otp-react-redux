@@ -55,7 +55,7 @@ function MapPopup({
       <div>
         <FromToLocationPicker
           label
-          location={mapPopupLocation}
+          location={{ ...mapPopupLocation, name: popupName }}
           setLocation={onSetLocationFromPopup}
         />
       </div>
