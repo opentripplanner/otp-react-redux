@@ -1,4 +1,5 @@
 import { StyledIconBase } from '@styled-icons/styled-icon'
+import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 interface Props {
@@ -10,6 +11,11 @@ interface Props {
   spaceAfter?: boolean
   spin?: boolean
   static?: boolean
+}
+
+interface IconProps extends Props {
+  Icon: React.ElementType
+  text?: React.ReactElement
 }
 
 const getFontSize = (size?: string) => {
@@ -61,5 +67,20 @@ const StyledIconWrapper = styled.span<Props>`
     content: '';
   }
 `
+
+export const Icon = ({
+  Icon,
+  text,
+  ...props
+}: IconProps): React.ReactElement => {
+  return (
+    <>
+      <StyledIconWrapper {...props} spaceAfter>
+        <Icon />
+      </StyledIconWrapper>
+      {text && <span>{text}</span>}
+    </>
+  )
+}
 
 export default StyledIconWrapper
