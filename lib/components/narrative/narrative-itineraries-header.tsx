@@ -79,7 +79,7 @@ export default function NarrativeItinerariesHeader({
             className="clear-button-formatting"
             onClick={onViewAllOptions}
           >
-            <StyledIconWrapper spaceRight>
+            <StyledIconWrapper spaceAfter>
               <ArrowLeft />
             </StyledIconWrapper>
             <FormattedMessage id="components.NarrativeItinerariesHeader.viewAll" />
@@ -123,7 +123,7 @@ export default function NarrativeItinerariesHeader({
               </span>
               {errors.length > 0 && (
                 <IssueButton onClick={onToggleShowErrors}>
-                  <StyledIconWrapper spaceRight>
+                  <StyledIconWrapper spaceAfter>
                     <ExclamationTriangle />
                   </StyledIconWrapper>
                   <span>{numIssues}</span>

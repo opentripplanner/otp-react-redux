@@ -32,7 +32,7 @@ const ErrorMessage = ({
   return (
     <div className="error-message">
       <div className="header">
-        <StyledIconWrapper spaceRight>
+        <StyledIconWrapper spaceAfter>
           <ExclamationCircle />
         </StyledIconWrapper>
         {warning ? (

@@ -7,7 +7,7 @@ interface Props {
   noMargin?: boolean
   rotate90?: boolean
   size?: string
-  spaceRight?: boolean
+  spaceAfter?: boolean
   spin?: boolean
   static?: boolean
 }
@@ -42,6 +42,7 @@ const StyledIconWrapper = styled.span<Props>`
   top: 0.125em;
   position: ${(props) => (props.static ? 'static' : 'relative')};
   display: ${(props) => (props.block ? 'grid' : 'inline-grid')};
+  grid-template-columns: auto auto;
   place-content: center;
   animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1.2s linear
     infinite;
@@ -55,7 +56,10 @@ const StyledIconWrapper = styled.span<Props>`
       ${props.rotate90 ? 'rotate(90deg)' : ''}
       `};
   }
-  margin-right: ${(props) => (props.spaceRight ? '0.125em' : '0')};
+  &:after {
+    margin: 0 ${(props) => (props.spaceAfter ? '0.125em' : '0')};
+    content: '';
+  }
 `
 
 export default StyledIconWrapper

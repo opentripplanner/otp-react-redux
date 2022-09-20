@@ -33,7 +33,7 @@ function CallHistoryWindow(props: Props) {
     <DraggableWindow
       header={
         <WindowHeader>
-          <StyledIconWrapper spaceRight>
+          <StyledIconWrapper spaceAfter>
             <History />
           </StyledIconWrapper>
           Call history

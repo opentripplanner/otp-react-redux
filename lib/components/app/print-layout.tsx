@@ -81,7 +81,7 @@ class PrintLayout extends Component<Props, State> {
           <div style={{ float: 'right' }}>
             <SpanWithSpace margin={0.25}>
               <Button bsSize="small" onClick={this._toggleMap}>
-                <StyledIconWrapper spaceRight>
+                <StyledIconWrapper spaceAfter>
                   <Map />
                 </StyledIconWrapper>
                 <FormattedMessage id="components.PrintLayout.toggleMap" />
@@ -89,14 +89,14 @@ class PrintLayout extends Component<Props, State> {
             </SpanWithSpace>
             <SpanWithSpace margin={0.25}>
               <Button bsSize="small" onClick={this._print}>
-                <StyledIconWrapper spaceRight>
+                <StyledIconWrapper spaceAfter>
                   <Print />
                 </StyledIconWrapper>
                 <FormattedMessage id="common.forms.print" />
               </Button>
             </SpanWithSpace>
             <Button bsSize="small" onClick={this._close}>
-              <StyledIconWrapper spaceRight>
+              <StyledIconWrapper spaceAfter>
                 <Times />
               </StyledIconWrapper>
               <FormattedMessage id="common.forms.close" />

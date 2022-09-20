@@ -27,7 +27,7 @@ const AddPlaceButton = ({
       onClick={onClick}
       style={{ marginBottom: '5px', marginLeft: '10px' }}
     >
-      <StyledIconWrapper spaceRight>
+      <StyledIconWrapper spaceAfter>
         <PlusCircle />
       </StyledIconWrapper>
       {maxPlacesDefined ? (
