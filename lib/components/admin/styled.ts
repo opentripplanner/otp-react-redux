@@ -13,13 +13,13 @@ const GREEN = '#6B931B'
 const PURPLE = '#8134D3'
 
 const circleButtonStyle = css`
+  aspect-ratio: 1/1;
   border: none;
   border-radius: 50%;
   box-shadow: 2px 2px 4px #000000;
   color: white;
   position: absolute;
   z-index: 999999;
-  aspect-ratio: 1/1;
 `
 
 export const CallHistoryButton = styled.button`
