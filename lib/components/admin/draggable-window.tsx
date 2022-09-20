@@ -1,18 +1,16 @@
 import { Times } from '@styled-icons/fa-solid'
 import Draggable, { DraggableProps } from 'react-draggable'
-import React, { Component, CSSProperties, ReactNode } from 'react'
+import React, { Component, HTMLAttributes, ReactNode } from 'react'
 
 import StyledIconWrapper from '../util/styledIcon'
 
-interface Props {
-  children: ReactNode[]
+interface Props extends HTMLAttributes<HTMLDivElement> {
   draggableProps?: DraggableProps
   footer?: ReactNode
   header?: ReactNode
   height?: string
   onClickClose?: () => null
   scroll?: boolean
-  style?: CSSProperties
 }
 
 export default class DraggableWindow extends Component<Props> {
