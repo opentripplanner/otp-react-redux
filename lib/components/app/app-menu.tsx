@@ -53,6 +53,11 @@ class AppMenu extends Component<
   AppMenuProps & WrappedComponentProps & RouteComponentProps,
   AppMenuState
 > {
+  state = {
+    expandedSubmenus: {},
+    isPaneOpen: false
+  }
+
   _showRouteViewer = () => {
     this.props.setMainPanelContent(MainPanelContent.ROUTE_VIEWER)
     this._togglePane()
@@ -84,16 +89,12 @@ class AppMenu extends Component<
   }
 
   _togglePane = () => {
-    const { isPaneOpen } = this.state ?? false
+    const { isPaneOpen } = this.state
     this.setState({ isPaneOpen: !isPaneOpen })
   }
 
   _toggleSubmenu = (id: string) => {
-    let { expandedSubmenus } = this.state
-    if (!expandedSubmenus) {
-      expandedSubmenus = {}
-    }
-
+    const { expandedSubmenus } = this.state
     const currentlyOpen = expandedSubmenus[id] || false
     this.setState({ expandedSubmenus: { [id]: !currentlyOpen } })
   }
@@ -111,7 +112,7 @@ class AppMenu extends Component<
           label: configLabel,
           subMenuDivider
         } = menuItem
-        const { expandedSubmenus } = this.state ?? {}
+        const { expandedSubmenus } = this.state
         const { intl } = this.props
         const isSubmenuExpanded = expandedSubmenus?.[id]
 
@@ -180,7 +181,7 @@ class AppMenu extends Component<
       toggleMailables
     } = this.props
 
-    const { isPaneOpen } = this.state || false
+    const { isPaneOpen } = this.state
     return (
       <>
         <div
