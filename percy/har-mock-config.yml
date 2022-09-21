@@ -113,3 +113,6 @@ modes:
 dateTime:
   timeFormat: h:mm a
   dateFormat: MM/dd/yyyy
+
+itinerary:
+  mergeItineraries: true
