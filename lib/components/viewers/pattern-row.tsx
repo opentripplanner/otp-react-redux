@@ -1,6 +1,4 @@
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-// @ts-expect-error no types available
-import { VelocityTransitionGroup } from 'velocity-react'
 import AnimateHeight from 'react-animate-height'
 import React, { Component } from 'react'
 import type { Route } from '@opentripplanner/types'

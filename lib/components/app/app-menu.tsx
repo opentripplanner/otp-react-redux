@@ -8,8 +8,6 @@ import React, { Component, Fragment } from 'react'
 import SlidingPane from 'react-sliding-pane'
 import type { RouteComponentProps } from 'react-router'
 import type { WrappedComponentProps } from 'react-intl'
-// @ts-expect-error Velocity-React not typescripted
-import VelocityTransitionGroup from 'velocity-react/velocity-transition-group'
 
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
