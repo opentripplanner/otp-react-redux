@@ -89,6 +89,14 @@
   );
 }
 
+/* multiple itinerary underline only when expanded */
+.metro-itin.expanded button.header button:not(.active) {
+  text-decoration: underline;
+}
+.metro-itin.expanded button.header button:not(.active):hover {
+  color: #090909ef;
+}
+
 @keyframes pulse-opacity {
   0% {
     opacity: 1;

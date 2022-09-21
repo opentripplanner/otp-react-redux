@@ -10,7 +10,7 @@ import { Itinerary, Leg } from '@opentripplanner/types'
 import React from 'react'
 import styled from 'styled-components'
 
-import * as narriativeActions from '../../../actions/narrative'
+import * as narrativeActions from '../../../actions/narrative'
 import * as uiActions from '../../../actions/ui'
 import { FlexIndicator } from '../default/flex-indicator'
 import {
@@ -61,20 +61,13 @@ const DepartureTimes = styled.span`
     cursor: auto;
   }
 
-  button:not(.active) {
-    text-decoration: underline;
-  }
-  button:not(.active):hover {
-    color: #090909ef;
-  }
-
   button {
     background: none;
-    transition: all 0.05s ease-out;
     border: none;
-    padding: 0;
-    margin: 0;
     display: inline;
+    margin: 0;
+    padding: 0;
+    transition: all 0.1s ease-out;
   }
 `
 
@@ -482,7 +475,7 @@ const mapStateToProps = (state: any, ownProps: Props) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     setItineraryTimeIndex: (payload: number) =>
-      dispatch(narriativeActions.setActiveItineraryTime(payload)),
+      dispatch(narrativeActions.setActiveItineraryTime(payload)),
     setItineraryView: (payload: any) =>
       dispatch(uiActions.setItineraryView(payload))
   }

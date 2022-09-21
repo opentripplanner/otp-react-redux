@@ -51,17 +51,14 @@ export const departureTimes = (
         return (
           <button
             className={classNames.join(' ')}
-            key={index}
+            key={getFirstLegStartTime(time.legs)}
             onClick={() => setItineraryTimeIndex(index)}
             title={intl.formatMessage(
               { id: 'components.MetroUI.arriveAtTime' },
               { time: intl.formatTime(getLastLegEndTime(time.legs)) }
             )}
           >
-            <FormattedTime
-              key={getFirstLegStartTime(time.legs)}
-              value={getFirstLegStartTime(time.legs)}
-            />
+            <FormattedTime value={getFirstLegStartTime(time.legs)} />
           </button>
         )
       })}
