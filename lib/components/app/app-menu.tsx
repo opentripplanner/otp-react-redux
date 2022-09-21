@@ -54,7 +54,7 @@ class AppMenu extends Component<
   AppMenuState
 > {
   state = {
-    expandedSubmenus: {},
+    expandedSubmenus: {} as Record<string, boolean>,
     isPaneOpen: false
   }
 

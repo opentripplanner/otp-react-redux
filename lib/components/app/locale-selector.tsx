@@ -59,7 +59,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
             onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
           >
             <span
-              style={locale === currentLocale ? { fontWeight: 'bold' } : null}
+              style={locale === currentLocale ? { fontWeight: 'bold' } : {}}
             >
               {configLanguages[locale].name}
             </span>
