@@ -24,6 +24,7 @@ import { updateOverlayVisibility } from '../../actions/config'
 
 import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
+import InitialLocation from './initial-location'
 import ParkAndRideOverlay from './connected-park-and-ride-overlay'
 import PointPopup from './point-popup'
 import RouteViewerOverlay from './connected-route-viewer-overlay'
@@ -115,6 +116,22 @@ function getLayerName(overlay, config, intl) {
 class DefaultMap extends Component {
   static contextType = ComponentContext
 
+  constructor(props) {
+    super(props)
+    // We have to maintain the map state because the underlying map also (incorrectly?) uses a state.
+    // Not maintaining a state causes re-renders to the map's configured coordinates.
+    const {
+      initLat: lat = null,
+      initLon: lon = null,
+      initZoom: zoom = 13
+    } = props.mapConfig || {}
+    this.state = {
+      lat,
+      lon,
+      zoom
+    }
+  }
+
   /**
    * Checks whether the modes have changed between old and new queries and
    * whether to update the map overlays accordingly (e.g., to show rental vehicle
@@ -199,10 +216,6 @@ class DefaultMap extends Component {
     this.props.setMapPopupLocationAndGeocode(e)
   }
 
-  onPopupClosed = () => {
-    this.props.setMapPopupLocation({ location: null })
-  }
-
   onSetLocationFromPopup = (payload) => {
     const { setLocation, setMapPopupLocation } = this.props
     setMapPopupLocation({ location: null })
@@ -224,34 +237,13 @@ class DefaultMap extends Component {
       intl,
       itinerary,
       mapConfig,
-      mapPopupLocation,
       pending,
       vehicleRentalQuery,
       vehicleRentalStations
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel } = this.context
-    const { baseLayers, initLat, initLon, initZoom, maxZoom, overlays } =
-      mapConfig || {}
-
-    const center = initLat && initLon ? [initLat, initLon] : [null, null]
-
-    const popup = mapPopupLocation && (
-      <Popup
-        closeButton={false}
-        closeOnClick
-        closeOnMove
-        latitude={mapPopupLocation.lat}
-        longitude={mapPopupLocation.lon}
-        onClose={() => {
-          this.props.setMapPopupLocation({ location: null })
-        }}
-      >
-        <PointPopup
-          mapPopupLocation={mapPopupLocation}
-          onSetLocationFromPopup={this.onSetLocationFromPopup}
-        />
-      </Popup>
-    )
+    const { baseLayers, initLat, initLon, maxZoom, overlays } = mapConfig || {}
+    const { lat, lon, zoom } = this.state
 
     const bikeStations = [
       ...bikeRentalStations.filter(
@@ -276,17 +268,28 @@ class DefaultMap extends Component {
         <BaseMap
           // Only 1 base layer is supported at the moment
           baseLayer={baseLayersWithNames?.[0]?.url}
-          center={center}
+          center={[lat, lon]}
           mapLibreProps={{ reuseMaps: true }}
           maxZoom={maxZoom}
           // In Leaflet, this was an onclick handler. Creating a click handler in
           // MapLibreGL would require writing a custom event handler for all mouse events
           onContextMenu={this.onMapClick}
-          onPopupClosed={this.onPopupClosed}
-          popup={popup}
-          zoom={initZoom || 13}
+          onViewportChanged={(e) => {
+            // HACK: Set state lat and lon to null to prevent re-rendering of the
+            // underlying OTP-UI map.
+            if (
+              (lat !== null || lon !== null) &&
+              (lat !== initLat || lon !== initLon)
+            ) {
+              this.setState({
+                lat: null,
+                lon: null
+              })
+            }
+          }}
+          zoom={zoom}
         >
-          {popup}
+          <PointPopup onSetLocationFromPopup={this.onSetLocationFromPopup} />
           {/* The default overlays */}
           <EndpointsOverlay />
           <RouteViewerOverlay />
@@ -380,7 +383,6 @@ const mapStateToProps = (state) => {
     config: state.otp.config,
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
-    mapPopupLocation: state.otp.ui.mapPopupLocation,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
     vehicleRentalStations: state.otp.overlay.vehicleRental.stations
