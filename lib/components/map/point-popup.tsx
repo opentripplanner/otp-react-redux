@@ -1,12 +1,11 @@
-import { connect } from 'react-redux'
-import { injectIntl, WrappedComponentProps } from 'react-intl'
+import { useIntl, WrappedComponentProps } from 'react-intl'
+import { useMap } from 'react-map-gl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import type { Place } from '@opentripplanner/types'
 
 import { renderCoordinates } from '../form/user-settings'
-import { setMapZoom } from '../../actions/config'
 
 const PopupContainer = styled.div`
   width: 240px;
@@ -18,25 +17,23 @@ const PopupTitle = styled.div`
 `
 
 function MapPopup({
-  intl,
   mapPopupLocation,
-  onSetLocationFromPopup,
-  setMapZoom,
-  zoom
+  onSetLocationFromPopup
 }: {
   mapPopupLocation: Place
   // TODO: add types for this method
   onSetLocationFromPopup: () => void
-  setMapZoom: ({ zoom }: { zoom: number }) => void
-  zoom: number
 } & WrappedComponentProps): JSX.Element {
+  const intl = useIntl()
+  const { current: map } = useMap()
+  const currentZoom = map ? map.getZoom() : null
   // Zoom out if zoomed in very far
   useEffect(() => {
-    if (zoom > 15) {
-      setMapZoom({ zoom: 15 })
+    if (currentZoom !== null && currentZoom > 15) {
+      map.setZoom(15)
     }
     // Only check zoom if popup appears in a new place
-  }, [mapPopupLocation, setMapZoom, zoom])
+  }, [mapPopupLocation, map, currentZoom])
 
   const popupName =
     mapPopupLocation?.name ||
@@ -63,18 +60,4 @@ function MapPopup({
   )
 }
 
-const mapStateToProps = (state: {
-  // FIXME: properly type
-  otp: { config: { map: { initZoom: number } } }
-}) => {
-  return { zoom: state.otp.config.map.initZoom }
-}
-
-const mapDispatchToProps = {
-  setMapZoom
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectIntl(MapPopup))
+export default MapPopup
