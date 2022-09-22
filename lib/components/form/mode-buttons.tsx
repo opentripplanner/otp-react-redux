@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { buttonCss } from './batch-styled'
 import { ComponentContext } from '../../util/contexts'
 import { getFormattedMode } from '../../util/i18n'
-import StyledIconWrapper from '../util/styledIcon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 // TS TODO: merge this type with FullModeOption from
 // @opentripplanner/trip-form/types.ts and move to @opentripplanner/types.

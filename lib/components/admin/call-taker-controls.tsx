@@ -22,7 +22,7 @@ import {
   FieldTripsButton,
   ToggleCallButton
 } from './styled'
-import StyledIconWrapper from '../util/styledIcon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 type Props = {
   beginCall: () => void

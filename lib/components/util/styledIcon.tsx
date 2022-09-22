@@ -42,7 +42,7 @@ const rotateAnimation = keyframes`
   }
 `
 
-const StyledIconWrapper = styled.span<Props>`
+export const StyledIconWrapper = styled.span<Props>`
   animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1.2s linear
     infinite;
   ${StyledIconBase} {
@@ -87,5 +87,3 @@ export const Icon = ({ Icon, ...props }: IconProps): React.ReactElement => (
     <Icon />
   </StyledIconWrapper>
 )
-
-export default StyledIconWrapper

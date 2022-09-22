@@ -11,12 +11,12 @@ import {
   stopTimeComparator
 } from '../../util/viewer'
 import { Pattern, Time } from '../util/types'
+import { StyledIconWrapper } from '../util/styledIcon'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import Strong from '../util/strong-text'
 
 import RealtimeStatusLabel from './realtime-status-label'
 import StopTimeCell from './stop-time-cell'
-import StyledIconWrapper from '../util/styledIcon'
 
 type Props = {
   homeTimezone?: any

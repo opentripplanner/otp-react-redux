@@ -2,7 +2,7 @@ import { Times } from '@styled-icons/fa-solid'
 import Draggable, { DraggableProps } from 'react-draggable'
 import React, { HTMLAttributes, ReactNode } from 'react'
 
-import StyledIconWrapper from '../util/styledIcon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   draggableProps?: DraggableProps

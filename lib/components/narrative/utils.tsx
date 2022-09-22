@@ -1,7 +1,7 @@
 import { IntlShape } from 'react-intl'
 import React from 'react'
 
-import StyledIconWrapper from '../util/styledIcon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 /**
  * Takes a gradation map and overrides the text with intl strings when available.

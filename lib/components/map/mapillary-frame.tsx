@@ -3,7 +3,7 @@ import { Spinner } from '@styled-icons/fa-solid/Spinner'
 import { Times } from '@styled-icons/fa-solid/Times'
 import React, { useEffect, useState } from 'react'
 
-import StyledIconWrapper from '../util/styledIcon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 const MapillaryFrame = ({
   id,

@@ -1,7 +1,7 @@
 import { Button as BsButton } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
 
-import StyledIconWrapper from '../util/styledIcon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 import DefaultCounter from './call-time-counter'
 

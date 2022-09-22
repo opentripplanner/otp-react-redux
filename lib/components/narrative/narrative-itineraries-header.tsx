@@ -6,7 +6,7 @@ import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
 import React from 'react'
 import styled from 'styled-components'
 
-import StyledIconWrapper, { IconWithText } from '../util/styledIcon'
+import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
 
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'

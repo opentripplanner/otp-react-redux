@@ -6,7 +6,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { getErrorMessage } from '../../util/state'
-import StyledIconWrapper from '../util/styledIcon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 const IssueContainer = styled.div`
   border-top: 1px solid grey;

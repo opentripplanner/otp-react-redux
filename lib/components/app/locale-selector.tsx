@@ -6,7 +6,7 @@ import React, { MouseEvent } from 'react'
 
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
-import StyledIconWrapper from '../util/styledIcon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 type PropsFromRedux = ConnectedProps<typeof connector>
 

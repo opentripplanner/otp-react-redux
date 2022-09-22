@@ -23,7 +23,7 @@ import {
   makeLocationFieldLocation,
   PlaceLocationField
 } from './place-location-field'
-import StyledIconWrapper from '../../util/styledIcon'
+import { StyledIconWrapper } from '../../util/styledIcon'
 
 const { isMobile } = coreUtils.ui
 

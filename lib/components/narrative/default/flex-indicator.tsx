@@ -7,7 +7,7 @@ import React from 'react'
 import styled from 'styled-components'
 import tinycolor from 'tinycolor2'
 
-import StyledIconWrapper from '../../util/styledIcon'
+import { StyledIconWrapper } from '../../util/styledIcon'
 
 export const FLEX_COLOR = '#FA6400'
 const FLEX_COLOR_LIGHT = tinycolor(FLEX_COLOR).lighten(40).toHexString()

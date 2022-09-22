@@ -23,7 +23,7 @@ import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
-import StyledIconWrapper from '../util/styledIcon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 type AppMenuProps = {
   callTakerEnabled?: boolean

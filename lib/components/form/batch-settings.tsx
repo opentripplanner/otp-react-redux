@@ -22,14 +22,13 @@ import {
   StyledDateTimePreview
 } from './batch-styled'
 import { Dot } from './styled'
+import { StyledIconWrapper } from '../util/styledIcon'
 import BatchPreferences, { replaceTransitMode } from './batch-preferences'
 import DateTimeModal from './date-time-modal'
 import ModeButtons, {
   defaultModeOptions,
   StyledModeButton
 } from './mode-buttons'
-import StyledIconWrapper from '../util/styledIcon'
-
 import type { Combination } from './batch-preferences'
 import type { Mode } from './mode-buttons'
 
