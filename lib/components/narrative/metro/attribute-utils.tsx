@@ -1,4 +1,4 @@
-import { FormattedList, FormattedTime, IntlShape } from 'react-intl'
+import { FormattedList, FormattedTime, IntlShape, useIntl } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
@@ -9,17 +9,20 @@ import {
   getLastLegEndTime
 } from '../../../util/itinerary'
 
-export const departureTimes = (
+type DepartureTimesProps = {
+  activeItineraryTimeIndex?: number
   itinerary: Itinerary & {
     allStartTimes: {
       legs: Leg[]
       realtime: boolean
     }[]
-  },
-  setItineraryTimeIndex: (index: number) => void,
-  intl: IntlShape,
-  activeItineraryTimeIndex?: number
-): JSX.Element => {
+  }
+  setItineraryTimeIndex: (index: number) => void
+}
+
+export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
+  const { activeItineraryTimeIndex, itinerary, setItineraryTimeIndex } = props
+  const intl = useIntl()
   if (!itinerary.allStartTimes) {
     return (
       <button

@@ -28,7 +28,7 @@ import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 
 import {
-  departureTimes,
+  DepartureTimesList,
   getFirstTransitLegStop,
   getFlexAttirbutes,
   getItineraryRoutes,
@@ -388,12 +388,11 @@ class MetroItinerary extends NarrativeItinerary {
                 </SecondaryInfo>
                 <DepartureTimes>
                   <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
-                  {departureTimes(
-                    itinerary,
-                    setItineraryTimeIndex,
-                    intl,
-                    activeItineraryTimeIndex
-                  )}
+                  <DepartureTimesList
+                    activeItineraryTimeIndex={activeItineraryTimeIndex}
+                    itinerary={itinerary}
+                    setItineraryTimeIndex={setItineraryTimeIndex}
+                  />
                 </DepartureTimes>
               </ItineraryGrid>
             )}
