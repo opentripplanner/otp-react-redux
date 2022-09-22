@@ -471,23 +471,21 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     onClick={[Function]}
                     type="button"
                   >
-                    <styled.span>
-                      <span
-                        className="sc-gInthZ ihVyKW"
-                      >
-                        <ArrowLeft>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
-                            }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 448 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                    <IconWithText
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "ArrowLeft",
+                          "render": [Function],
+                        }
+                      }
+                    >
+                      <Styled(styled.span)>
+                        <span
+                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                        >
+                          <ArrowLeft>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -497,29 +495,41 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 448 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 448 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 448 512"
                               >
-                                <path
-                                  d="m257.5 445.1-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </ArrowLeft>
-                      </span>
-                    </styled.span>
-                    <FormattedMessage
-                      id="common.forms.back"
-                    >
-                      common.forms.back
-                    </FormattedMessage>
+                                  focusable="false"
+                                  viewBox="0 0 448 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="m257.5 445.1-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </ArrowLeft>
+                        </span>
+                      </Styled(styled.span)>
+                      <FormattedMessage
+                        id="common.forms.back"
+                      >
+                        common.forms.back
+                      </FormattedMessage>
+                    </IconWithText>
                   </button>
                 </Button>
               </div>
@@ -565,9 +575,20 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <styled.span>
+                    <styled.span
+                      style={
+                        Object {
+                          "marginLeft": "0.2em",
+                        }
+                      }
+                    >
                       <span
-                        className="sc-gInthZ ihVyKW"
+                        className="sc-gInthZ dCqqjT"
+                        style={
+                          Object {
+                            "marginLeft": "0.2em",
+                          }
+                        }
                       >
                         <Search>
                           <StyledIconBase
@@ -619,25 +640,21 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       }
                     }
                   >
-                    <styled.span
-                      spaceAfter={true}
+                    <IconWithText
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "Calendar",
+                          "render": [Function],
+                        }
+                      }
                     >
-                      <span
-                        className="sc-gInthZ bEIljS"
-                      >
-                        <Calendar>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
-                            }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 448 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                      <Styled(styled.span)>
+                        <span
+                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                        >
+                          <Calendar>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -647,29 +664,41 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 448 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 448 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 448 512"
                               >
-                                <path
-                                  d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </Calendar>
-                      </span>
-                    </styled.span>
-                    <FormattedMessage
-                      id="components.StopViewer.viewSchedule"
-                    >
-                      components.StopViewer.viewSchedule
-                    </FormattedMessage>
+                                  focusable="false"
+                                  viewBox="0 0 448 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </Calendar>
+                        </span>
+                      </Styled(styled.span)>
+                      <FormattedMessage
+                        id="components.StopViewer.viewSchedule"
+                      >
+                        components.StopViewer.viewSchedule
+                      </FormattedMessage>
+                    </IconWithText>
                   </button>
                 </div>
                 <FromToLocationPicker
@@ -867,7 +896,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
               </div>
               <styled.div>
                 <div
-                  className="sc-fHYyUA dsBqmr"
+                  className="sc-gyUflj heQDAy"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -1405,7 +1434,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-eFuaqX gcNSTz"
+                                        className="sc-fmlJrY fflxRz"
                                         color="333333"
                                       >
                                         20
@@ -1457,7 +1486,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     <div
                                       className="pull-left"
                                     >
-                                      <styled.span
+                                      <Styled(styled.span)
                                         style={
                                           Object {
                                             "color": "#888",
@@ -1467,7 +1496,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ ihVyKW"
+                                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -1515,7 +1544,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             </StyledIconBase>
                                           </Clock>
                                         </span>
-                                      </styled.span>
+                                      </Styled(styled.span)>
                                     </div>
                                     <div
                                       style={
@@ -1560,7 +1589,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ ihVyKW"
+                                      className="sc-gInthZ dCqqjT"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -1716,7 +1745,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -1726,7 +1755,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -1774,7 +1803,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -1831,12 +1860,12 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -1914,7 +1943,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -1924,7 +1953,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -1972,7 +2001,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -2062,12 +2091,12 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -2145,7 +2174,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -2155,7 +2184,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -2203,7 +2232,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -2293,12 +2322,12 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -2346,7 +2375,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           margin={0.25}
                         >
                           <span
-                            className="sc-FyeoB fqliIl"
+                            className="sc-jXktde fKyBCi"
                           >
                             <input
                               name="autoUpdate"
@@ -2370,26 +2399,21 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           }
                         }
                       >
-                        <styled.span
-                          spaceAfter={true}
-                          spin={true}
+                        <IconWithText
+                          Icon={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "displayName": "Redo",
+                              "render": [Function],
+                            }
+                          }
                         >
-                          <span
-                            className="sc-gInthZ kDfcOA"
-                          >
-                            <Redo>
-                              <StyledIconBase
-                                iconAttrs={
-                                  Object {
-                                    "fill": "currentColor",
-                                    "xmlns": "http://www.w3.org/2000/svg",
-                                  }
-                                }
-                                iconVerticalAlign="middle"
-                                iconViewBox="0 0 512 512"
-                              >
-                                <ForwardRef
-                                  className="StyledIconBase-ea9ulj-0 iuNRof"
+                          <Styled(styled.span)>
+                            <span
+                              className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                            >
+                              <Redo>
+                                <StyledIconBase
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -2399,31 +2423,43 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   iconVerticalAlign="middle"
                                   iconViewBox="0 0 512 512"
                                 >
-                                  <svg
-                                    aria-hidden="true"
+                                  <ForwardRef
                                     className="StyledIconBase-ea9ulj-0 iuNRof"
-                                    fill="currentColor"
-                                    focusable="false"
-                                    viewBox="0 0 512 512"
-                                    xmlns="http://www.w3.org/2000/svg"
+                                    iconAttrs={
+                                      Object {
+                                        "fill": "currentColor",
+                                        "xmlns": "http://www.w3.org/2000/svg",
+                                      }
+                                    }
+                                    iconVerticalAlign="middle"
+                                    iconViewBox="0 0 512 512"
                                   >
-                                    <path
-                                      d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z"
+                                    <svg
+                                      aria-hidden="true"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof"
                                       fill="currentColor"
-                                    />
-                                  </svg>
-                                </ForwardRef>
-                              </StyledIconBase>
-                            </Redo>
-                          </span>
-                        </styled.span>
-                        <FormattedTime
-                          timeStyle="short"
-                          timeZone="America/Los_Angeles"
-                          value={1565248650040}
-                        >
-                          12:17 AM
-                        </FormattedTime>
+                                      focusable="false"
+                                      viewBox="0 0 512 512"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </ForwardRef>
+                                </StyledIconBase>
+                              </Redo>
+                            </span>
+                          </Styled(styled.span)>
+                          <FormattedTime
+                            timeStyle="short"
+                            timeZone="America/Los_Angeles"
+                            value={1565248650040}
+                          >
+                            12:17 AM
+                          </FormattedTime>
+                        </IconWithText>
                       </button>
                       <RelatedStopsPanel
                         homeTimezone="America/Los_Angeles"
@@ -3226,7 +3262,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-jXktde kmcqbz"
+                                          className="sc-eFuaqX eZHYvB"
                                         >
                                           P
                                         </div>
@@ -3530,23 +3566,21 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     onClick={[Function]}
                     type="button"
                   >
-                    <styled.span>
-                      <span
-                        className="sc-gInthZ ihVyKW"
-                      >
-                        <ArrowLeft>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
-                            }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 448 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                    <IconWithText
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "ArrowLeft",
+                          "render": [Function],
+                        }
+                      }
+                    >
+                      <Styled(styled.span)>
+                        <span
+                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                        >
+                          <ArrowLeft>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -3556,29 +3590,41 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 448 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 448 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 448 512"
                               >
-                                <path
-                                  d="m257.5 445.1-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </ArrowLeft>
-                      </span>
-                    </styled.span>
-                    <FormattedMessage
-                      id="common.forms.back"
-                    >
-                      common.forms.back
-                    </FormattedMessage>
+                                  focusable="false"
+                                  viewBox="0 0 448 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="m257.5 445.1-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </ArrowLeft>
+                        </span>
+                      </Styled(styled.span)>
+                      <FormattedMessage
+                        id="common.forms.back"
+                      >
+                        common.forms.back
+                      </FormattedMessage>
+                    </IconWithText>
                   </button>
                 </Button>
               </div>
@@ -3624,9 +3670,20 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <styled.span>
+                    <styled.span
+                      style={
+                        Object {
+                          "marginLeft": "0.2em",
+                        }
+                      }
+                    >
                       <span
-                        className="sc-gInthZ ihVyKW"
+                        className="sc-gInthZ dCqqjT"
+                        style={
+                          Object {
+                            "marginLeft": "0.2em",
+                          }
+                        }
                       >
                         <Search>
                           <StyledIconBase
@@ -3678,25 +3735,21 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       }
                     }
                   >
-                    <styled.span
-                      spaceAfter={true}
+                    <IconWithText
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "Calendar",
+                          "render": [Function],
+                        }
+                      }
                     >
-                      <span
-                        className="sc-gInthZ bEIljS"
-                      >
-                        <Calendar>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
-                            }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 448 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                      <Styled(styled.span)>
+                        <span
+                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                        >
+                          <Calendar>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -3706,29 +3759,41 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 448 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 448 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 448 512"
                               >
-                                <path
-                                  d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </Calendar>
-                      </span>
-                    </styled.span>
-                    <FormattedMessage
-                      id="components.StopViewer.viewSchedule"
-                    >
-                      components.StopViewer.viewSchedule
-                    </FormattedMessage>
+                                  focusable="false"
+                                  viewBox="0 0 448 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </Calendar>
+                        </span>
+                      </Styled(styled.span)>
+                      <FormattedMessage
+                        id="components.StopViewer.viewSchedule"
+                      >
+                        components.StopViewer.viewSchedule
+                      </FormattedMessage>
+                    </IconWithText>
                   </button>
                 </div>
                 <FromToLocationPicker
@@ -3926,7 +3991,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
               </div>
               <styled.div>
                 <div
-                  className="sc-fHYyUA dsBqmr"
+                  className="sc-gyUflj heQDAy"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -4185,7 +4250,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-eFuaqX gcNSTz"
+                                        className="sc-fmlJrY fflxRz"
                                         color="333333"
                                       >
                                         20
@@ -4237,7 +4302,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     <div
                                       className="pull-left"
                                     >
-                                      <styled.span
+                                      <Styled(styled.span)
                                         style={
                                           Object {
                                             "color": "#888",
@@ -4247,7 +4312,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ ihVyKW"
+                                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -4295,7 +4360,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                             </StyledIconBase>
                                           </Clock>
                                         </span>
-                                      </styled.span>
+                                      </Styled(styled.span)>
                                     </div>
                                     <div
                                       style={
@@ -4340,7 +4405,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ ihVyKW"
+                                      className="sc-gInthZ dCqqjT"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -4496,7 +4561,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -4506,7 +4571,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -4554,7 +4619,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -4611,12 +4676,12 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -4664,7 +4729,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           margin={0.25}
                         >
                           <span
-                            className="sc-FyeoB fqliIl"
+                            className="sc-jXktde fKyBCi"
                           >
                             <input
                               name="autoUpdate"
@@ -4688,26 +4753,21 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           }
                         }
                       >
-                        <styled.span
-                          spaceAfter={true}
-                          spin={true}
+                        <IconWithText
+                          Icon={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "displayName": "Redo",
+                              "render": [Function],
+                            }
+                          }
                         >
-                          <span
-                            className="sc-gInthZ kDfcOA"
-                          >
-                            <Redo>
-                              <StyledIconBase
-                                iconAttrs={
-                                  Object {
-                                    "fill": "currentColor",
-                                    "xmlns": "http://www.w3.org/2000/svg",
-                                  }
-                                }
-                                iconVerticalAlign="middle"
-                                iconViewBox="0 0 512 512"
-                              >
-                                <ForwardRef
-                                  className="StyledIconBase-ea9ulj-0 iuNRof"
+                          <Styled(styled.span)>
+                            <span
+                              className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                            >
+                              <Redo>
+                                <StyledIconBase
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -4717,31 +4777,43 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   iconVerticalAlign="middle"
                                   iconViewBox="0 0 512 512"
                                 >
-                                  <svg
-                                    aria-hidden="true"
+                                  <ForwardRef
                                     className="StyledIconBase-ea9ulj-0 iuNRof"
-                                    fill="currentColor"
-                                    focusable="false"
-                                    viewBox="0 0 512 512"
-                                    xmlns="http://www.w3.org/2000/svg"
+                                    iconAttrs={
+                                      Object {
+                                        "fill": "currentColor",
+                                        "xmlns": "http://www.w3.org/2000/svg",
+                                      }
+                                    }
+                                    iconVerticalAlign="middle"
+                                    iconViewBox="0 0 512 512"
                                   >
-                                    <path
-                                      d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z"
+                                    <svg
+                                      aria-hidden="true"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof"
                                       fill="currentColor"
-                                    />
-                                  </svg>
-                                </ForwardRef>
-                              </StyledIconBase>
-                            </Redo>
-                          </span>
-                        </styled.span>
-                        <FormattedTime
-                          timeStyle="short"
-                          timeZone="America/Los_Angeles"
-                          value={1565248650040}
-                        >
-                          12:17 AM
-                        </FormattedTime>
+                                      focusable="false"
+                                      viewBox="0 0 512 512"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </ForwardRef>
+                                </StyledIconBase>
+                              </Redo>
+                            </span>
+                          </Styled(styled.span)>
+                          <FormattedTime
+                            timeStyle="short"
+                            timeZone="America/Los_Angeles"
+                            value={1565248650040}
+                          >
+                            12:17 AM
+                          </FormattedTime>
+                        </IconWithText>
                       </button>
                       <RelatedStopsPanel
                         homeTimezone="America/Los_Angeles"
@@ -5148,7 +5220,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-jXktde kmcqbz"
+                                          className="sc-eFuaqX eZHYvB"
                                         >
                                           P
                                         </div>
@@ -5650,23 +5722,21 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     onClick={[Function]}
                     type="button"
                   >
-                    <styled.span>
-                      <span
-                        className="sc-gInthZ ihVyKW"
-                      >
-                        <ArrowLeft>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
-                            }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 448 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                    <IconWithText
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "ArrowLeft",
+                          "render": [Function],
+                        }
+                      }
+                    >
+                      <Styled(styled.span)>
+                        <span
+                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                        >
+                          <ArrowLeft>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -5676,29 +5746,41 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 448 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 448 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 448 512"
                               >
-                                <path
-                                  d="m257.5 445.1-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </ArrowLeft>
-                      </span>
-                    </styled.span>
-                    <FormattedMessage
-                      id="common.forms.back"
-                    >
-                      common.forms.back
-                    </FormattedMessage>
+                                  focusable="false"
+                                  viewBox="0 0 448 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="m257.5 445.1-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </ArrowLeft>
+                        </span>
+                      </Styled(styled.span)>
+                      <FormattedMessage
+                        id="common.forms.back"
+                      >
+                        common.forms.back
+                      </FormattedMessage>
+                    </IconWithText>
                   </button>
                 </Button>
               </div>
@@ -5744,9 +5826,20 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <styled.span>
+                    <styled.span
+                      style={
+                        Object {
+                          "marginLeft": "0.2em",
+                        }
+                      }
+                    >
                       <span
-                        className="sc-gInthZ ihVyKW"
+                        className="sc-gInthZ dCqqjT"
+                        style={
+                          Object {
+                            "marginLeft": "0.2em",
+                          }
+                        }
                       >
                         <Search>
                           <StyledIconBase
@@ -5798,25 +5891,21 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       }
                     }
                   >
-                    <styled.span
-                      spaceAfter={true}
+                    <IconWithText
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "Calendar",
+                          "render": [Function],
+                        }
+                      }
                     >
-                      <span
-                        className="sc-gInthZ bEIljS"
-                      >
-                        <Calendar>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
-                            }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 448 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                      <Styled(styled.span)>
+                        <span
+                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                        >
+                          <Calendar>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -5826,29 +5915,41 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 448 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 448 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 448 512"
                               >
-                                <path
-                                  d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </Calendar>
-                      </span>
-                    </styled.span>
-                    <FormattedMessage
-                      id="components.StopViewer.viewSchedule"
-                    >
-                      components.StopViewer.viewSchedule
-                    </FormattedMessage>
+                                  focusable="false"
+                                  viewBox="0 0 448 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </Calendar>
+                        </span>
+                      </Styled(styled.span)>
+                      <FormattedMessage
+                        id="components.StopViewer.viewSchedule"
+                      >
+                        components.StopViewer.viewSchedule
+                      </FormattedMessage>
+                    </IconWithText>
                   </button>
                 </div>
                 <FromToLocationPicker
@@ -6046,7 +6147,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
               </div>
               <styled.div>
                 <div
-                  className="sc-fHYyUA dsBqmr"
+                  className="sc-gyUflj heQDAy"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -6584,7 +6685,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-eFuaqX gcNSTz"
+                                        className="sc-fmlJrY fflxRz"
                                         color="333333"
                                       >
                                         20
@@ -6636,7 +6737,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     <div
                                       className="pull-left"
                                     >
-                                      <styled.span
+                                      <Styled(styled.span)
                                         style={
                                           Object {
                                             "color": "#888",
@@ -6646,7 +6747,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ ihVyKW"
+                                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -6694,7 +6795,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             </StyledIconBase>
                                           </Clock>
                                         </span>
-                                      </styled.span>
+                                      </Styled(styled.span)>
                                     </div>
                                     <div
                                       style={
@@ -6772,7 +6873,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ ihVyKW"
+                                      className="sc-gInthZ dCqqjT"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -6928,7 +7029,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -6938,7 +7039,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -6986,7 +7087,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -7076,12 +7177,12 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -7159,7 +7260,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -7169,7 +7270,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -7217,7 +7318,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -7307,12 +7408,12 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -7390,7 +7491,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -7400,7 +7501,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -7448,7 +7549,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -7538,12 +7639,12 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -7591,7 +7692,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           margin={0.25}
                         >
                           <span
-                            className="sc-FyeoB fqliIl"
+                            className="sc-jXktde fKyBCi"
                           >
                             <input
                               name="autoUpdate"
@@ -7615,26 +7716,21 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           }
                         }
                       >
-                        <styled.span
-                          spaceAfter={true}
-                          spin={true}
+                        <IconWithText
+                          Icon={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "displayName": "Redo",
+                              "render": [Function],
+                            }
+                          }
                         >
-                          <span
-                            className="sc-gInthZ kDfcOA"
-                          >
-                            <Redo>
-                              <StyledIconBase
-                                iconAttrs={
-                                  Object {
-                                    "fill": "currentColor",
-                                    "xmlns": "http://www.w3.org/2000/svg",
-                                  }
-                                }
-                                iconVerticalAlign="middle"
-                                iconViewBox="0 0 512 512"
-                              >
-                                <ForwardRef
-                                  className="StyledIconBase-ea9ulj-0 iuNRof"
+                          <Styled(styled.span)>
+                            <span
+                              className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                            >
+                              <Redo>
+                                <StyledIconBase
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -7644,31 +7740,43 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   iconVerticalAlign="middle"
                                   iconViewBox="0 0 512 512"
                                 >
-                                  <svg
-                                    aria-hidden="true"
+                                  <ForwardRef
                                     className="StyledIconBase-ea9ulj-0 iuNRof"
-                                    fill="currentColor"
-                                    focusable="false"
-                                    viewBox="0 0 512 512"
-                                    xmlns="http://www.w3.org/2000/svg"
+                                    iconAttrs={
+                                      Object {
+                                        "fill": "currentColor",
+                                        "xmlns": "http://www.w3.org/2000/svg",
+                                      }
+                                    }
+                                    iconVerticalAlign="middle"
+                                    iconViewBox="0 0 512 512"
                                   >
-                                    <path
-                                      d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z"
+                                    <svg
+                                      aria-hidden="true"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof"
                                       fill="currentColor"
-                                    />
-                                  </svg>
-                                </ForwardRef>
-                              </StyledIconBase>
-                            </Redo>
-                          </span>
-                        </styled.span>
-                        <FormattedTime
-                          timeStyle="short"
-                          timeZone="America/Los_Angeles"
-                          value={1565248650040}
-                        >
-                          12:17 AM
-                        </FormattedTime>
+                                      focusable="false"
+                                      viewBox="0 0 512 512"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </ForwardRef>
+                                </StyledIconBase>
+                              </Redo>
+                            </span>
+                          </Styled(styled.span)>
+                          <FormattedTime
+                            timeStyle="short"
+                            timeZone="America/Los_Angeles"
+                            value={1565248650040}
+                          >
+                            12:17 AM
+                          </FormattedTime>
+                        </IconWithText>
                       </button>
                       <RelatedStopsPanel
                         homeTimezone="America/Los_Angeles"
@@ -8471,7 +8579,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-jXktde kmcqbz"
+                                          className="sc-eFuaqX eZHYvB"
                                         >
                                           P
                                         </div>
@@ -9489,23 +9597,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     onClick={[Function]}
                     type="button"
                   >
-                    <styled.span>
-                      <span
-                        className="sc-gInthZ ihVyKW"
-                      >
-                        <ArrowLeft>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
-                            }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 448 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                    <IconWithText
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "ArrowLeft",
+                          "render": [Function],
+                        }
+                      }
+                    >
+                      <Styled(styled.span)>
+                        <span
+                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                        >
+                          <ArrowLeft>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -9515,29 +9621,41 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 448 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 448 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 448 512"
                               >
-                                <path
-                                  d="m257.5 445.1-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </ArrowLeft>
-                      </span>
-                    </styled.span>
-                    <FormattedMessage
-                      id="common.forms.back"
-                    >
-                      common.forms.back
-                    </FormattedMessage>
+                                  focusable="false"
+                                  viewBox="0 0 448 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="m257.5 445.1-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </ArrowLeft>
+                        </span>
+                      </Styled(styled.span)>
+                      <FormattedMessage
+                        id="common.forms.back"
+                      >
+                        common.forms.back
+                      </FormattedMessage>
+                    </IconWithText>
                   </button>
                 </Button>
               </div>
@@ -9583,9 +9701,20 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <styled.span>
+                    <styled.span
+                      style={
+                        Object {
+                          "marginLeft": "0.2em",
+                        }
+                      }
+                    >
                       <span
-                        className="sc-gInthZ ihVyKW"
+                        className="sc-gInthZ dCqqjT"
+                        style={
+                          Object {
+                            "marginLeft": "0.2em",
+                          }
+                        }
                       >
                         <Search>
                           <StyledIconBase
@@ -9637,25 +9766,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       }
                     }
                   >
-                    <styled.span
-                      spaceAfter={true}
+                    <IconWithText
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "Calendar",
+                          "render": [Function],
+                        }
+                      }
                     >
-                      <span
-                        className="sc-gInthZ bEIljS"
-                      >
-                        <Calendar>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
-                            }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 448 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                      <Styled(styled.span)>
+                        <span
+                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                        >
+                          <Calendar>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -9665,29 +9790,41 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 448 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 448 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 448 512"
                               >
-                                <path
-                                  d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </Calendar>
-                      </span>
-                    </styled.span>
-                    <FormattedMessage
-                      id="components.StopViewer.viewSchedule"
-                    >
-                      components.StopViewer.viewSchedule
-                    </FormattedMessage>
+                                  focusable="false"
+                                  viewBox="0 0 448 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </Calendar>
+                        </span>
+                      </Styled(styled.span)>
+                      <FormattedMessage
+                        id="components.StopViewer.viewSchedule"
+                      >
+                        components.StopViewer.viewSchedule
+                      </FormattedMessage>
+                    </IconWithText>
                   </button>
                 </div>
                 <FromToLocationPicker
@@ -9885,7 +10022,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
               </div>
               <styled.div>
                 <div
-                  className="sc-fHYyUA dsBqmr"
+                  className="sc-gyUflj heQDAy"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -10677,7 +10814,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-eFuaqX gcNSTz"
+                                        className="sc-fmlJrY fflxRz"
                                         color="333333"
                                       >
                                         20
@@ -10729,7 +10866,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     <div
                                       className="pull-left"
                                     >
-                                      <styled.span
+                                      <Styled(styled.span)
                                         style={
                                           Object {
                                             "color": "#888",
@@ -10739,7 +10876,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ ihVyKW"
+                                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -10787,7 +10924,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             </StyledIconBase>
                                           </Clock>
                                         </span>
-                                      </styled.span>
+                                      </Styled(styled.span)>
                                     </div>
                                     <div
                                       style={
@@ -10865,7 +11002,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ ihVyKW"
+                                      className="sc-gInthZ dCqqjT"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -11021,7 +11158,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -11031,7 +11168,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -11079,7 +11216,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -11169,12 +11306,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -11252,7 +11389,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -11262,7 +11399,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -11310,7 +11447,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -11400,12 +11537,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -11483,7 +11620,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -11493,7 +11630,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -11541,7 +11678,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -11631,12 +11768,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -11901,7 +12038,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-eFuaqX gcNSTz"
+                                        className="sc-fmlJrY fflxRz"
                                         color="333333"
                                       >
                                         36
@@ -11953,7 +12090,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     <div
                                       className="pull-left"
                                     >
-                                      <styled.span
+                                      <Styled(styled.span)
                                         style={
                                           Object {
                                             "color": "#888",
@@ -11963,7 +12100,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ ihVyKW"
+                                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -12011,7 +12148,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             </StyledIconBase>
                                           </Clock>
                                         </span>
-                                      </styled.span>
+                                      </Styled(styled.span)>
                                     </div>
                                     <div
                                       style={
@@ -12089,7 +12226,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ ihVyKW"
+                                      className="sc-gInthZ dCqqjT"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -12245,7 +12382,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -12255,7 +12392,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -12303,7 +12440,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -12393,12 +12530,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -12476,7 +12613,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -12486,7 +12623,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -12534,7 +12671,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -12624,12 +12761,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -12707,7 +12844,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -12717,7 +12854,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -12765,7 +12902,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -12855,12 +12992,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -13125,7 +13262,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-eFuaqX gcNSTz"
+                                        className="sc-fmlJrY fflxRz"
                                         color="333333"
                                       >
                                         94
@@ -13177,7 +13314,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     <div
                                       className="pull-left"
                                     >
-                                      <styled.span
+                                      <Styled(styled.span)
                                         style={
                                           Object {
                                             "color": "#888",
@@ -13187,7 +13324,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ ihVyKW"
+                                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -13235,7 +13372,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             </StyledIconBase>
                                           </Clock>
                                         </span>
-                                      </styled.span>
+                                      </Styled(styled.span)>
                                     </div>
                                     <div
                                       style={
@@ -13313,7 +13450,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ ihVyKW"
+                                      className="sc-gInthZ dCqqjT"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -13469,7 +13606,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -13479,7 +13616,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -13527,7 +13664,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -13617,12 +13754,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -13700,7 +13837,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -13710,7 +13847,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -13758,7 +13895,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -13848,12 +13985,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -13931,7 +14068,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -13941,7 +14078,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -13989,7 +14126,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -14079,12 +14216,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -14457,7 +14594,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-eFuaqX gcNSTz"
+                                        className="sc-fmlJrY fflxRz"
                                         color="333333"
                                       >
                                         94
@@ -14509,7 +14646,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     <div
                                       className="pull-left"
                                     >
-                                      <styled.span
+                                      <Styled(styled.span)
                                         style={
                                           Object {
                                             "color": "#888",
@@ -14519,7 +14656,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ ihVyKW"
+                                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -14567,7 +14704,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             </StyledIconBase>
                                           </Clock>
                                         </span>
-                                      </styled.span>
+                                      </Styled(styled.span)>
                                     </div>
                                     <div
                                       style={
@@ -14645,7 +14782,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ ihVyKW"
+                                      className="sc-gInthZ dCqqjT"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -14801,7 +14938,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -14811,7 +14948,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -14859,7 +14996,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -14949,12 +15086,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -15032,7 +15169,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -15042,7 +15179,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -15090,7 +15227,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -15180,12 +15317,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -15263,7 +15400,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -15273,7 +15410,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -15321,7 +15458,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -15411,12 +15548,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -15464,7 +15601,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           margin={0.25}
                         >
                           <span
-                            className="sc-FyeoB fqliIl"
+                            className="sc-jXktde fKyBCi"
                           >
                             <input
                               name="autoUpdate"
@@ -15488,26 +15625,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           }
                         }
                       >
-                        <styled.span
-                          spaceAfter={true}
-                          spin={true}
+                        <IconWithText
+                          Icon={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "displayName": "Redo",
+                              "render": [Function],
+                            }
+                          }
                         >
-                          <span
-                            className="sc-gInthZ kDfcOA"
-                          >
-                            <Redo>
-                              <StyledIconBase
-                                iconAttrs={
-                                  Object {
-                                    "fill": "currentColor",
-                                    "xmlns": "http://www.w3.org/2000/svg",
-                                  }
-                                }
-                                iconVerticalAlign="middle"
-                                iconViewBox="0 0 512 512"
-                              >
-                                <ForwardRef
-                                  className="StyledIconBase-ea9ulj-0 iuNRof"
+                          <Styled(styled.span)>
+                            <span
+                              className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                            >
+                              <Redo>
+                                <StyledIconBase
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -15517,31 +15649,43 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   iconVerticalAlign="middle"
                                   iconViewBox="0 0 512 512"
                                 >
-                                  <svg
-                                    aria-hidden="true"
+                                  <ForwardRef
                                     className="StyledIconBase-ea9ulj-0 iuNRof"
-                                    fill="currentColor"
-                                    focusable="false"
-                                    viewBox="0 0 512 512"
-                                    xmlns="http://www.w3.org/2000/svg"
+                                    iconAttrs={
+                                      Object {
+                                        "fill": "currentColor",
+                                        "xmlns": "http://www.w3.org/2000/svg",
+                                      }
+                                    }
+                                    iconVerticalAlign="middle"
+                                    iconViewBox="0 0 512 512"
                                   >
-                                    <path
-                                      d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z"
+                                    <svg
+                                      aria-hidden="true"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof"
                                       fill="currentColor"
-                                    />
-                                  </svg>
-                                </ForwardRef>
-                              </StyledIconBase>
-                            </Redo>
-                          </span>
-                        </styled.span>
-                        <FormattedTime
-                          timeStyle="short"
-                          timeZone="America/Los_Angeles"
-                          value={1565052624406}
-                        >
-                          5:50 PM
-                        </FormattedTime>
+                                      focusable="false"
+                                      viewBox="0 0 512 512"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </ForwardRef>
+                                </StyledIconBase>
+                              </Redo>
+                            </span>
+                          </Styled(styled.span)>
+                          <FormattedTime
+                            timeStyle="short"
+                            timeZone="America/Los_Angeles"
+                            value={1565052624406}
+                          >
+                            5:50 PM
+                          </FormattedTime>
+                        </IconWithText>
                       </button>
                       <RelatedStopsPanel
                         homeTimezone="America/Los_Angeles"
@@ -17376,7 +17520,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-jXktde kmcqbz"
+                                          className="sc-eFuaqX eZHYvB"
                                         >
                                           P
                                         </div>
@@ -18384,23 +18528,21 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     onClick={[Function]}
                     type="button"
                   >
-                    <styled.span>
-                      <span
-                        className="sc-gInthZ ihVyKW"
-                      >
-                        <ArrowLeft>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
-                            }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 448 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                    <IconWithText
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "ArrowLeft",
+                          "render": [Function],
+                        }
+                      }
+                    >
+                      <Styled(styled.span)>
+                        <span
+                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                        >
+                          <ArrowLeft>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -18410,29 +18552,41 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 448 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 448 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 448 512"
                               >
-                                <path
-                                  d="m257.5 445.1-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </ArrowLeft>
-                      </span>
-                    </styled.span>
-                    <FormattedMessage
-                      id="common.forms.back"
-                    >
-                      common.forms.back
-                    </FormattedMessage>
+                                  focusable="false"
+                                  viewBox="0 0 448 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="m257.5 445.1-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </ArrowLeft>
+                        </span>
+                      </Styled(styled.span)>
+                      <FormattedMessage
+                        id="common.forms.back"
+                      >
+                        common.forms.back
+                      </FormattedMessage>
+                    </IconWithText>
                   </button>
                 </Button>
               </div>
@@ -18478,9 +18632,20 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <styled.span>
+                    <styled.span
+                      style={
+                        Object {
+                          "marginLeft": "0.2em",
+                        }
+                      }
+                    >
                       <span
-                        className="sc-gInthZ ihVyKW"
+                        className="sc-gInthZ dCqqjT"
+                        style={
+                          Object {
+                            "marginLeft": "0.2em",
+                          }
+                        }
                       >
                         <Search>
                           <StyledIconBase
@@ -18532,25 +18697,21 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       }
                     }
                   >
-                    <styled.span
-                      spaceAfter={true}
+                    <IconWithText
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "Calendar",
+                          "render": [Function],
+                        }
+                      }
                     >
-                      <span
-                        className="sc-gInthZ bEIljS"
-                      >
-                        <Calendar>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
-                            }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 448 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                      <Styled(styled.span)>
+                        <span
+                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                        >
+                          <Calendar>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -18560,29 +18721,41 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 448 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 448 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 448 512"
                               >
-                                <path
-                                  d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </Calendar>
-                      </span>
-                    </styled.span>
-                    <FormattedMessage
-                      id="components.StopViewer.viewSchedule"
-                    >
-                      components.StopViewer.viewSchedule
-                    </FormattedMessage>
+                                  focusable="false"
+                                  viewBox="0 0 448 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </Calendar>
+                        </span>
+                      </Styled(styled.span)>
+                      <FormattedMessage
+                        id="components.StopViewer.viewSchedule"
+                      >
+                        components.StopViewer.viewSchedule
+                      </FormattedMessage>
+                    </IconWithText>
                   </button>
                 </div>
                 <FromToLocationPicker
@@ -18780,7 +18953,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
               </div>
               <styled.div>
                 <div
-                  className="sc-fHYyUA dsBqmr"
+                  className="sc-gyUflj heQDAy"
                 >
                   <LiveStopTimes
                     findStopTimesForStop={[Function]}
@@ -19571,7 +19744,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       color="333333"
                                     >
                                       <section
-                                        className="sc-eFuaqX gcNSTz"
+                                        className="sc-fmlJrY fflxRz"
                                         color="333333"
                                       >
                                         20
@@ -19623,7 +19796,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     <div
                                       className="pull-left"
                                     >
-                                      <styled.span
+                                      <Styled(styled.span)
                                         style={
                                           Object {
                                             "color": "#888",
@@ -19633,7 +19806,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         }
                                       >
                                         <span
-                                          className="sc-gInthZ ihVyKW"
+                                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                           style={
                                             Object {
                                               "color": "#888",
@@ -19681,7 +19854,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             </StyledIconBase>
                                           </Clock>
                                         </span>
-                                      </styled.span>
+                                      </Styled(styled.span)>
                                     </div>
                                     <div
                                       style={
@@ -19759,7 +19932,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                 >
                                   <styled.span>
                                     <span
-                                      className="sc-gInthZ ihVyKW"
+                                      className="sc-gInthZ dCqqjT"
                                     >
                                       <ChevronDown>
                                         <StyledIconBase
@@ -19915,7 +20088,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -19925,7 +20098,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -19973,7 +20146,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -20063,12 +20236,12 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -20146,7 +20319,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -20156,7 +20329,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -20204,7 +20377,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -20294,12 +20467,12 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -20377,7 +20550,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                               <div
                                                 className="pull-left"
                                               >
-                                                <styled.span
+                                                <Styled(styled.span)
                                                   style={
                                                     Object {
                                                       "color": "#888",
@@ -20387,7 +20560,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                   }
                                                 >
                                                   <span
-                                                    className="sc-gInthZ ihVyKW"
+                                                    className="sc-gInthZ sc-euMpEg dCqqjT KEner"
                                                     style={
                                                       Object {
                                                         "color": "#888",
@@ -20435,7 +20608,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                       </StyledIconBase>
                                                     </Clock>
                                                   </span>
-                                                </styled.span>
+                                                </Styled(styled.span)>
                                               </div>
                                               <div
                                                 style={
@@ -20525,12 +20698,12 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                                 withBackground={true}
                                               >
                                                 <div
-                                                  className="sc-jmhFuu cSHERF status-label"
+                                                  className="sc-dUrmIn hjHlot status-label"
                                                   color="#6D6C6C"
                                                 >
                                                   <styled.div>
                                                     <div
-                                                      className="sc-ljRaeN"
+                                                      className="sc-jmhFuu"
                                                     >
                                                       <FormattedRealtimeStatusLabel
                                                         minutes={<React.Fragment />}
@@ -20578,7 +20751,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           margin={0.25}
                         >
                           <span
-                            className="sc-FyeoB fqliIl"
+                            className="sc-jXktde fKyBCi"
                           >
                             <input
                               name="autoUpdate"
@@ -20602,26 +20775,21 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           }
                         }
                       >
-                        <styled.span
-                          spaceAfter={true}
-                          spin={true}
+                        <IconWithText
+                          Icon={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "displayName": "Redo",
+                              "render": [Function],
+                            }
+                          }
                         >
-                          <span
-                            className="sc-gInthZ kDfcOA"
-                          >
-                            <Redo>
-                              <StyledIconBase
-                                iconAttrs={
-                                  Object {
-                                    "fill": "currentColor",
-                                    "xmlns": "http://www.w3.org/2000/svg",
-                                  }
-                                }
-                                iconVerticalAlign="middle"
-                                iconViewBox="0 0 512 512"
-                              >
-                                <ForwardRef
-                                  className="StyledIconBase-ea9ulj-0 iuNRof"
+                          <Styled(styled.span)>
+                            <span
+                              className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                            >
+                              <Redo>
+                                <StyledIconBase
                                   iconAttrs={
                                     Object {
                                       "fill": "currentColor",
@@ -20631,31 +20799,43 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   iconVerticalAlign="middle"
                                   iconViewBox="0 0 512 512"
                                 >
-                                  <svg
-                                    aria-hidden="true"
+                                  <ForwardRef
                                     className="StyledIconBase-ea9ulj-0 iuNRof"
-                                    fill="currentColor"
-                                    focusable="false"
-                                    viewBox="0 0 512 512"
-                                    xmlns="http://www.w3.org/2000/svg"
+                                    iconAttrs={
+                                      Object {
+                                        "fill": "currentColor",
+                                        "xmlns": "http://www.w3.org/2000/svg",
+                                      }
+                                    }
+                                    iconVerticalAlign="middle"
+                                    iconViewBox="0 0 512 512"
                                   >
-                                    <path
-                                      d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z"
+                                    <svg
+                                      aria-hidden="true"
+                                      className="StyledIconBase-ea9ulj-0 iuNRof"
                                       fill="currentColor"
-                                    />
-                                  </svg>
-                                </ForwardRef>
-                              </StyledIconBase>
-                            </Redo>
-                          </span>
-                        </styled.span>
-                        <FormattedTime
-                          timeStyle="short"
-                          timeZone="America/Los_Angeles"
-                          value={1565051923389}
-                        >
-                          5:38 PM
-                        </FormattedTime>
+                                      focusable="false"
+                                      viewBox="0 0 512 512"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </ForwardRef>
+                                </StyledIconBase>
+                              </Redo>
+                            </span>
+                          </Styled(styled.span)>
+                          <FormattedTime
+                            timeStyle="short"
+                            timeZone="America/Los_Angeles"
+                            value={1565051923389}
+                          >
+                            5:38 PM
+                          </FormattedTime>
+                        </IconWithText>
                       </button>
                       <RelatedStopsPanel
                         homeTimezone="America/Los_Angeles"
@@ -22470,7 +22650,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-jXktde kmcqbz"
+                                          className="sc-eFuaqX eZHYvB"
                                         >
                                           P
                                         </div>
@@ -22642,23 +22822,21 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                     onClick={[Function]}
                     type="button"
                   >
-                    <styled.span>
-                      <span
-                        className="sc-gInthZ ihVyKW"
-                      >
-                        <ArrowLeft>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
-                            }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 448 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                    <IconWithText
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "ArrowLeft",
+                          "render": [Function],
+                        }
+                      }
+                    >
+                      <Styled(styled.span)>
+                        <span
+                          className="sc-gInthZ sc-euMpEg dCqqjT KEner"
+                        >
+                          <ArrowLeft>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -22668,29 +22846,41 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 448 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 448 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 448 512"
                               >
-                                <path
-                                  d="m257.5 445.1-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </ArrowLeft>
-                      </span>
-                    </styled.span>
-                    <FormattedMessage
-                      id="common.forms.back"
-                    >
-                      common.forms.back
-                    </FormattedMessage>
+                                  focusable="false"
+                                  viewBox="0 0 448 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="m257.5 445.1-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </ArrowLeft>
+                        </span>
+                      </Styled(styled.span)>
+                      <FormattedMessage
+                        id="common.forms.back"
+                      >
+                        common.forms.back
+                      </FormattedMessage>
+                    </IconWithText>
                   </button>
                 </Button>
               </div>
