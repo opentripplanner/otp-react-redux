@@ -20,7 +20,7 @@ import {
   setMapPopupLocation,
   setMapPopupLocationAndGeocode
 } from '../../actions/map'
-import { setMapCenter, updateOverlayVisibility } from '../../actions/config'
+import { updateOverlayVisibility } from '../../actions/config'
 
 import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
@@ -226,7 +226,6 @@ class DefaultMap extends Component {
       mapConfig,
       mapPopupLocation,
       pending,
-      setMapCenter,
       vehicleRentalQuery,
       vehicleRentalStations
     } = this.props
@@ -284,15 +283,6 @@ class DefaultMap extends Component {
           // MapLibreGL would require writing a custom event handler for all mouse events
           onContextMenu={this.onMapClick}
           onPopupClosed={this.onPopupClosed}
-          onViewportChanged={() => {
-            // This hack is needed to get the zoom functionality to work
-            // Redux only fires the render method if the prop changes,
-            // so it must be set to null so it can be "re-set" to an
-            // actual value.
-            if (mapConfig.initLat || mapConfig.initLon) {
-              setMapCenter({ lat: null, lon: null })
-            }
-          }}
           popup={popup}
           zoom={initZoom || 13}
         >
@@ -401,7 +391,6 @@ const mapDispatchToProps = {
   bikeRentalQuery,
   carRentalQuery,
   setLocation,
-  setMapCenter,
   setMapPopupLocation,
   setMapPopupLocationAndGeocode,
   updateOverlayVisibility,
