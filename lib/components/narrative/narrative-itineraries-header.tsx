@@ -6,9 +6,10 @@ import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
 import React from 'react'
 import styled from 'styled-components'
 
+import StyledIconWrapper, { IconWithText } from '../util/styledIcon'
+
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
-import StyledIconWrapper from '../util/styledIcon'
 
 const IssueButton = styled.button`
   background-color: #ecbe03;
@@ -79,10 +80,9 @@ export default function NarrativeItinerariesHeader({
             className="clear-button-formatting"
             onClick={onViewAllOptions}
           >
-            <StyledIconWrapper spaceAfter>
-              <ArrowLeft />
-            </StyledIconWrapper>
-            <FormattedMessage id="components.NarrativeItinerariesHeader.viewAll" />
+            <IconWithText Icon={ArrowLeft}>
+              <FormattedMessage id="components.NarrativeItinerariesHeader.viewAll" />
+            </IconWithText>
           </button>
           {itineraryIsExpanded && (
             // marginLeft: auto is a way of making something "float right"
@@ -123,10 +123,9 @@ export default function NarrativeItinerariesHeader({
               </span>
               {errors.length > 0 && (
                 <IssueButton onClick={onToggleShowErrors}>
-                  <StyledIconWrapper spaceAfter>
-                    <ExclamationTriangle />
-                  </StyledIconWrapper>
-                  <span>{numIssues}</span>
+                  <IconWithText Icon={ExclamationTriangle}>
+                    <span>{numIssues}</span>
+                  </IconWithText>
                 </IssueButton>
               )}
             </div>

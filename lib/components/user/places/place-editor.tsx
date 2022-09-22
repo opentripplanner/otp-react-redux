@@ -29,7 +29,7 @@ const { isMobile } = coreUtils.ui
 
 // Styled components
 const FixedPlaceIconWrapper = styled(StyledIconWrapper)`
-  margin-bottom: 15px;
+  margin-right: 5px;
 `
 const FlexContainer = styled.div`
   display: flex;
@@ -140,7 +140,7 @@ class PlaceEditor extends Component<
         <FlexContainer>
           {/* For fixed places, just show the icon for place type instead of all inputs and selectors */}
           {isFixed && (
-            <FixedPlaceIconWrapper size="1.5x" spaceAfter>
+            <FixedPlaceIconWrapper size="1.5x">
               <SvgIcon iconName={place.icon} />
             </FixedPlaceIconWrapper>
           )}

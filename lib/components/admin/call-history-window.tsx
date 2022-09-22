@@ -4,11 +4,11 @@ import { injectIntl, IntlShape, WrappedComponentProps } from 'react-intl'
 import React from 'react'
 
 import * as callTakerActions from '../../actions/call-taker'
+import { IconWithText } from '../util/styledIcon'
 
 import { WindowHeader } from './styled'
 import CallRecord from './call-record'
 import DraggableWindow from './draggable-window'
-import StyledIconWrapper from '../util/styledIcon'
 
 type Props = {
   callTaker: {
@@ -33,10 +33,7 @@ function CallHistoryWindow(props: Props) {
     <DraggableWindow
       header={
         <WindowHeader>
-          <StyledIconWrapper spaceAfter>
-            <History />
-          </StyledIconWrapper>
-          Call history
+          <IconWithText Icon={History}>Call history</IconWithText>
         </WindowHeader>
       }
       onClickClose={toggleCallHistory}

@@ -8,8 +8,8 @@ import {
   getStopTimesByPattern,
   routeIsValid
 } from '../../util/viewer'
+import { IconWithText } from '../util/styledIcon'
 import SpanWithSpace from '../util/span-with-space'
-import StyledIconWrapper from '../util/styledIcon'
 
 import AmenitiesPanel from './amenities-panel'
 import PatternRow from './pattern-row'
@@ -184,14 +184,13 @@ class LiveStopTimes extends Component<Props, State> {
             onClick={this._refreshStopTimes}
             style={{ fontSize: 'small' }}
           >
-            <StyledIconWrapper spaceAfter spin={spin}>
-              <Redo />
-            </StyledIconWrapper>
-            <FormattedTime
-              timeStyle="short"
-              timeZone={userTimezone}
-              value={stopData.stopTimesLastUpdated}
-            />
+            <IconWithText Icon={Redo}>
+              <FormattedTime
+                timeStyle="short"
+                timeZone={userTimezone}
+                value={stopData.stopTimesLastUpdated}
+              />
+            </IconWithText>
           </button>
           {showNearbyStops && (
             <>

@@ -3,18 +3,16 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 interface Props {
-  block?: boolean
   flipHorizontal?: boolean
-  noMargin?: boolean
   rotate90?: boolean
   size?: string
-  spaceAfter?: boolean
   spin?: boolean
-  static?: boolean
+  textAlign?: boolean
 }
 
 interface IconProps extends Props {
   Icon: React.ElementType
+  children: React.ReactNode
   text?: React.ReactElement
 }
 
@@ -45,42 +43,49 @@ const rotateAnimation = keyframes`
 `
 
 const StyledIconWrapper = styled.span<Props>`
-  top: 0.125em;
-  position: ${(props) => (props.static ? 'static' : 'relative')};
-  display: ${(props) => (props.block ? 'grid' : 'inline-grid')};
-  grid-template-columns: auto auto;
-  place-content: center;
   animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1.2s linear
     infinite;
   ${StyledIconBase} {
     width: 1em;
     height: 1em;
-    margin: ${(props) => (props.noMargin ? '0' : '0 0.125em')};
     font-size: ${(props) => getFontSize(props.size)};
     transform: ${(props) => `
       ${props.flipHorizontal ? 'scale(-1,1) ' : ''}
       ${props.rotate90 ? 'rotate(90deg)' : ''}
       `};
   }
+`
+
+export const StyledIconWrapperTextAlign = styled(StyledIconWrapper)<Props>`
+  ${StyledIconBase} {
+    margin: -0.125em 0;
+    vertical-align: baseline;
+  }
   &:after {
-    margin: 0 ${(props) => (props.spaceAfter ? '0.125em' : '0')};
+    margin: 0 0.125em;
     content: '';
   }
 `
 
-export const Icon = ({
+export const IconWithText = ({
+  children,
   Icon,
-  text,
-  ...props
+  size
 }: IconProps): React.ReactElement => {
   return (
     <>
-      <StyledIconWrapper {...props} spaceAfter>
+      <StyledIconWrapperTextAlign size={size}>
         <Icon />
-      </StyledIconWrapper>
-      {text && <span>{text}</span>}
+      </StyledIconWrapperTextAlign>
+      {children}
     </>
   )
 }
+
+export const Icon = ({ Icon, ...props }: IconProps): React.ReactElement => (
+  <StyledIconWrapper {...props}>
+    <Icon />
+  </StyledIconWrapper>
+)
 
 export default StyledIconWrapper

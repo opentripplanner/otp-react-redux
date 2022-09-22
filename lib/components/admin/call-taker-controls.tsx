@@ -82,7 +82,7 @@ class CallTakerControls extends Component<Props> {
     // Show stop button if call not in progress.
     if (this._callInProgress()) {
       return (
-        <StyledIconWrapper size="4x">
+        <StyledIconWrapper size="4x" style={{ padding: '6px' }}>
           <Stop />
         </StyledIconWrapper>
       )

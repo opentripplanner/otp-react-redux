@@ -2,7 +2,7 @@ import { FormattedMessage } from 'react-intl'
 import { PlusCircle } from '@styled-icons/fa-solid/PlusCircle'
 import React from 'react'
 
-import StyledIconWrapper from '../util/styledIcon'
+import { IconWithText } from '../util/styledIcon'
 
 type Props = {
   from: unknown
@@ -27,16 +27,15 @@ const AddPlaceButton = ({
       onClick={onClick}
       style={{ marginBottom: '5px', marginLeft: '10px' }}
     >
-      <StyledIconWrapper spaceAfter>
-        <PlusCircle />
-      </StyledIconWrapper>
-      {maxPlacesDefined ? (
-        <FormattedMessage id="components.AddPlaceButton.tooManyPlaces" />
-      ) : disabled ? (
-        <FormattedMessage id="components.AddPlaceButton.needOriginDestination" />
-      ) : (
-        <FormattedMessage id="components.AddPlaceButton.addPlace" />
-      )}
+      <IconWithText Icon={PlusCircle}>
+        {maxPlacesDefined ? (
+          <FormattedMessage id="components.AddPlaceButton.tooManyPlaces" />
+        ) : disabled ? (
+          <FormattedMessage id="components.AddPlaceButton.needOriginDestination" />
+        ) : (
+          <FormattedMessage id="components.AddPlaceButton.addPlace" />
+        )}
+      </IconWithText>
     </button>
   )
 }

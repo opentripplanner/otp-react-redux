@@ -3,7 +3,7 @@ import { Itinerary } from '@opentripplanner/types'
 import { User } from '@styled-icons/fa-solid/User'
 import React from 'react'
 
-import StyledIconWrapper from '../util/styledIcon'
+import { IconWithText } from '../util/styledIcon'
 
 type Props = {
   itinerary: Itinerary & { fieldTripGroupSize: number }
@@ -16,10 +16,7 @@ export default function FieldTripGroupSize({
     return null
   return (
     <Badge>
-      <StyledIconWrapper spaceAfter>
-        <User />
-      </StyledIconWrapper>
-      {itinerary.fieldTripGroupSize}
+      <IconWithText Icon={User}>{itinerary.fieldTripGroupSize}</IconWithText>
     </Badge>
   )
 }

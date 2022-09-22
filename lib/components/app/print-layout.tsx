@@ -14,11 +14,11 @@ import {
 } from '../../util/print'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary } from '../../util/state'
+import { IconWithText } from '../util/styledIcon'
 import { parseUrlQueryString } from '../../actions/form'
 import { routingQuery } from '../../actions/api'
 import DefaultMap from '../map/default-map'
 import SpanWithSpace from '../util/span-with-space'
-import StyledIconWrapper from '../util/styledIcon'
 import TripDetails from '../narrative/connected-trip-details'
 
 type Props = {
@@ -81,25 +81,22 @@ class PrintLayout extends Component<Props, State> {
           <div style={{ float: 'right' }}>
             <SpanWithSpace margin={0.25}>
               <Button bsSize="small" onClick={this._toggleMap}>
-                <StyledIconWrapper spaceAfter>
-                  <Map />
-                </StyledIconWrapper>
-                <FormattedMessage id="components.PrintLayout.toggleMap" />
+                <IconWithText Icon={Map}>
+                  <FormattedMessage id="components.PrintLayout.toggleMap" />
+                </IconWithText>
               </Button>
             </SpanWithSpace>
             <SpanWithSpace margin={0.25}>
               <Button bsSize="small" onClick={this._print}>
-                <StyledIconWrapper spaceAfter>
-                  <Print />
-                </StyledIconWrapper>
-                <FormattedMessage id="common.forms.print" />
+                <IconWithText Icon={Print}>
+                  <FormattedMessage id="common.forms.print" />
+                </IconWithText>
               </Button>
             </SpanWithSpace>
             <Button bsSize="small" onClick={this._close}>
-              <StyledIconWrapper spaceAfter>
-                <Times />
-              </StyledIconWrapper>
-              <FormattedMessage id="common.forms.close" />
+              <IconWithText Icon={Times}>
+                <FormattedMessage id="common.forms.close" />
+              </IconWithText>
             </Button>
           </div>
           <FormattedMessage id="components.PrintLayout.itinerary" />

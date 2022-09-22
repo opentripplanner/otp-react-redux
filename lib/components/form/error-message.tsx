@@ -4,7 +4,7 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import React from 'react'
 
 import { getActiveError, getErrorMessage } from '../../util/state'
-import StyledIconWrapper from '../util/styledIcon'
+import { IconWithText } from '../util/styledIcon'
 import TripTools from '../narrative/trip-tools'
 
 /**
@@ -32,14 +32,13 @@ const ErrorMessage = ({
   return (
     <div className="error-message">
       <div className="header">
-        <StyledIconWrapper spaceAfter>
-          <ExclamationCircle />
-        </StyledIconWrapper>
-        {warning ? (
-          <FormattedMessage id="components.ErrorMessage.warning" />
-        ) : (
-          <FormattedMessage id="components.ErrorMessage.header" />
-        )}
+        <IconWithText Icon={ExclamationCircle}>
+          {warning ? (
+            <FormattedMessage id="components.ErrorMessage.warning" />
+          ) : (
+            <FormattedMessage id="components.ErrorMessage.header" />
+          )}
+        </IconWithText>
       </div>
       <div className="message">{message}</div>
       {!warning && <TripTools buttonTypes={['START_OVER', 'REPORT_ISSUE']} />}

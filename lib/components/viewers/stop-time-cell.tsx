@@ -8,12 +8,12 @@ import isSameDay from 'date-fns/isSameDay'
 import React from 'react'
 
 import { getSecondsUntilDeparture } from '../../util/viewer'
+import { StyledIconWrapperTextAlign } from '../util/styledIcon'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import FormattedDuration from '../util/formatted-duration'
 import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
-import StyledIconWrapper from '../util/styledIcon'
 
 const { getUserTimezone } = coreUtils.time
 const ONE_HOUR_IN_SECONDS = 3600
@@ -92,11 +92,11 @@ const StopTimeCell = ({
   return (
     <div>
       <div className="pull-left">
-        <StyledIconWrapper
+        <StyledIconWrapperTextAlign
           style={{ color: '#888', fontSize: '0.8em', marginRight: 2 }}
         >
           {stopTime.realtimeState === 'UPDATED' ? <Rss /> : <Clock />}
-        </StyledIconWrapper>
+        </StyledIconWrapperTextAlign>
       </div>
 
       <div style={{ fontSize: showDayOfWeek ? 12 : 14, marginLeft: 20 }}>
