@@ -1,5 +1,5 @@
 import { MapRef, useMap } from 'react-map-gl'
-import React, { Component, FC } from 'react'
+import React, { ClassicComponentClass, FC } from 'react'
 
 /**
  * Higher-order component that passes a map prop to its children.
@@ -7,7 +7,7 @@ import React, { Component, FC } from 'react'
  * Function components should use react-map-gl's useMap instead.
  */
 export default function withMap<T>(
-  ClassComponent: Component<T>
+  ClassComponent: ClassicComponentClass<T>
 ): FC<T & { map: MapRef }> {
   const WrappedComponent = (props: T): JSX.Element => {
     const { current: map } = useMap()

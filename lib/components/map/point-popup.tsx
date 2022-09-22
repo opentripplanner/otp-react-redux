@@ -4,7 +4,7 @@ import { useIntl, WrappedComponentProps } from 'react-intl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import type { Place } from '@opentripplanner/types'
+import type { Location } from '@opentripplanner/types'
 
 import * as mapActions from '../../actions/map'
 import { renderCoordinates } from '../form/user-settings'
@@ -18,15 +18,17 @@ const PopupTitle = styled.div`
   margin-bottom: 6px;
 `
 
+type Props = {
+  mapPopupLocation: Location
+  onSetLocationFromPopup: () => void
+  setMapPopupLocation: (arg: { location: Location | null }) => void
+} & WrappedComponentProps
+
 function MapPopup({
   mapPopupLocation,
   onSetLocationFromPopup,
   setMapPopupLocation
-}: {
-  mapPopupLocation: Place
-  onSetLocationFromPopup: () => void
-  setMapPopupLocation: () => void
-} & WrappedComponentProps): JSX.Element {
+}: Props): JSX.Element | null {
   const intl = useIntl()
   const { current: map } = useMap()
   const currentZoom = map ? map.getZoom() : null
