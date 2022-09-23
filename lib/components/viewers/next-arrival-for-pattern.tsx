@@ -6,6 +6,7 @@ import { ComponentContext } from '../../util/contexts'
 import {
   extractHeadsignFromPattern,
   generateFakeLegForRouteRenderer,
+  getContrastYIQ,
   stopTimeComparator
 } from '../../util/viewer'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
@@ -64,7 +65,13 @@ function NextArrivalForPattern(props: Props) {
   const title = `${routeName} ${toHeadsign}`
 
   return (
-    <div className="next-arrival-row">
+    <div
+      className="next-arrival-row"
+      style={{
+        backgroundColor: '#' + route.color,
+        color: '#' + getContrastYIQ(route.color)
+      }}
+    >
       {/* route name */}
       <div className="next-arrival-label overflow-ellipsis" title={title}>
         <span className="route-name">

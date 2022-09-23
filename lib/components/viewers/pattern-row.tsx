@@ -1,9 +1,6 @@
-import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-// @ts-expect-error no types available
-import { VelocityTransitionGroup } from 'velocity-react'
-import AnimateHeight from 'react-animate-height'
+import { injectIntl, IntlShape } from 'react-intl'
 import React, { Component } from 'react'
-import type { Route, Stop } from '@opentripplanner/types'
+import type { Route } from '@opentripplanner/types'
 
 import { ComponentContext } from '../../util/contexts'
 import {
@@ -11,12 +8,9 @@ import {
   getContrastYIQ,
   stopTimeComparator
 } from '../../util/viewer'
-import { Pattern, StopTime, Time } from '../util/types'
+import { Pattern, Time } from '../util/types'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
-import Icon from '../util/icon'
-import Strong from '../util/strong-text'
 
-import RealtimeStatusLabel from './realtime-status-label'
 import StopTimeCell from './stop-time-cell'
 
 type Props = {
@@ -48,7 +42,7 @@ class PatternRow extends Component<Props, State> {
   render() {
     const { RouteRenderer: CustomRouteRenderer } = this.context
     const RouteRenderer = CustomRouteRenderer || DefaultRouteRenderer
-    const { homeTimezone, intl, pattern, route, stopTimes, stopViewerConfig } =
+    const { homeTimezone, pattern, route, stopTimes, stopViewerConfig } =
       this.props
 
     // sort stop times by next departure
@@ -79,7 +73,7 @@ class PatternRow extends Component<Props, State> {
           role="row"
           style={{
             backgroundColor: routeColor,
-            color: `#${getContrastYIQ(routeColor)}`
+            color: `#${route.textColor || getContrastYIQ(routeColor)}`
           }}
         >
           {/* route name */}
