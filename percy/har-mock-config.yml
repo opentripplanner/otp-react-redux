@@ -113,4 +113,6 @@ modes:
 dateTime:
   timeFormat: h:mm a
   dateFormat: MM/dd/yyyy
-  longDateFormat: MMMM D, YYYY
+
+itinerary:
+  mergeItineraries: true
