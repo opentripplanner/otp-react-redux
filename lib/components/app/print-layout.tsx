@@ -102,6 +102,7 @@ class PrintLayout extends Component<Props, State> {
         {/* The map, if visible */}
         {this.state.mapVisible && (
           <div className="map-container">
+            {/* FIXME: Improve reframing/setting map bounds when itinerary is received. */}
             <DefaultMap />
           </div>
         )}
