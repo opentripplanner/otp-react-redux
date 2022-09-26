@@ -174,7 +174,7 @@ class LiveStopTimes extends Component<Props, State> {
                 name="autoUpdate"
                 onChange={this._onToggleAutoRefresh}
                 type="checkbox"
-                value={this.props.autoRefreshStopTimes}
+                value={this.props.autoRefreshStopTimes?.toString()}
               />
             </SpanWithSpace>
             <FormattedMessage id="components.LiveStopTimes.autoRefresh" />
