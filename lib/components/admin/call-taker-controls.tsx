@@ -22,7 +22,7 @@ import {
   FieldTripsButton,
   ToggleCallButton
 } from './styled'
-import { StyledIconWrapper } from '../util/styledIcon'
+import { Icon, StyledIconWrapper } from '../util/styledIcon'
 
 type Props = {
   beginCall: () => void
@@ -81,11 +81,7 @@ class CallTakerControls extends Component<Props> {
   _renderCallButtonIcon = () => {
     // Show stop button if call not in progress.
     if (this._callInProgress()) {
-      return (
-        <StyledIconWrapper size="4x" style={{ padding: '6px' }}>
-          <Stop />
-        </StyledIconWrapper>
-      )
+      return <Icon Icon={Stop} size="4x" style={{ padding: '6px' }} />
     }
     // No call is in progress.
     return (

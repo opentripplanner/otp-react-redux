@@ -1,5 +1,5 @@
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 import styled, { keyframes } from 'styled-components'
 
 interface Props {
@@ -7,13 +7,17 @@ interface Props {
   rotate90?: boolean
   size?: string
   spin?: boolean
+  style?: Record<string, any>
   textAlign?: boolean
 }
 
 interface IconProps extends Props {
   Icon: React.ElementType
+}
+
+interface IconPropsWithText extends Props {
+  Icon: React.ElementType
   children: React.ReactNode
-  text?: React.ReactElement
 }
 
 const getFontSize = (size?: string) => {
@@ -71,7 +75,7 @@ export const IconWithText = ({
   children,
   Icon,
   size
-}: IconProps): React.ReactElement => {
+}: IconPropsWithText): React.ReactElement => {
   return (
     <>
       <StyledIconWrapperTextAlign size={size}>

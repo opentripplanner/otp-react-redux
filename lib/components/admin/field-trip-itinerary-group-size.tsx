@@ -12,8 +12,9 @@ type Props = {
 export default function FieldTripGroupSize({
   itinerary
 }: Props): React.ReactNode {
-  if (!itinerary.fieldTripGroupSize || itinerary.fieldTripGroupSize <= 0)
+  if (!itinerary.fieldTripGroupSize || itinerary.fieldTripGroupSize < 0) {
     return null
+  }
   return (
     <Badge>
       <IconWithText Icon={User}>{itinerary.fieldTripGroupSize}</IconWithText>
