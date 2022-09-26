@@ -4,6 +4,10 @@ api:
   port: 8001
 # v2: false
 
+# Add Bugsnag key for error reporting
+# bugsnag:
+#   key: BUGSNAG_KEY
+
 # Add suggested locations to be shown as options in the form view.
 # locations:
 #   - id: 'airport'
@@ -292,8 +296,10 @@ itinerary:
   customBatchUiBackground: true
   # Whether to render itineraries below a mode description header
   groupByMode: true
-  # Whether to merge itineraries with the same origin, destination, and transit modes
+  # Whether to merge groups of itineraries with the same primary mode (Bike, Walk, etc)
   groupTransitModes: true
+  # Whether to merge itineraries with the same origin, destination, and transit modes
+  mergeItineraries: true
   # Whether to show the first itinerary on the map. If this is set to false, routes
   # will only show on the map on hover or click
   showFirstResultByDefault: false
@@ -410,6 +416,7 @@ itinerary:
 #   targets:
 #     testTarget: # To set a name for this target, create the i18n string "config.popups.testTarget"
 #       url: http://example.com/ 
+#       modal: false # Setting this to false always launches the popup as a browser popup
 #     secondTarget: 
 #       url: http://test.com/
 #       appendLocale: false # Defaults to true, if set to false otp-rr will not append the current i18n language to the popup URL.
@@ -503,9 +510,6 @@ itinerary:
 # default is 60 seconds.
 # onTimeThresholdSeconds: 60
 
-# Format the date time format for display.
-dateTime:
-  longDateFormat: DD-MM-YYYY
 # stopViewer:
 #   # The radius (in meters) to use when searching for nearby stops and other
 #   # amenities (rental vehicles, park and rides) to show for the focused stop.

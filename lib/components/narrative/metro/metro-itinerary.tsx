@@ -7,17 +7,17 @@ import {
   IntlShape
 } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
-import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 import styled from 'styled-components'
 
+import * as narrativeActions from '../../../actions/narrative'
 import * as uiActions from '../../../actions/ui'
 import { FlexIndicator } from '../default/flex-indicator'
 import {
   getAccessibilityScoreForItinerary,
   itineraryHasAccessibilityScores
 } from '../../../util/accessibility-routing'
-import { getFare } from '../../../util/state'
+import { getActiveSearch, getFare } from '../../../util/state'
 import { ItineraryDescription } from '../default/itinerary-description'
 import FormattedDuration, {
   formatDuration
@@ -27,8 +27,8 @@ import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 
+import { DepartureTimesList } from './departure-times-list'
 import {
-  departureTimes,
   getFirstTransitLegStop,
   getFlexAttirbutes,
   getItineraryRoutes,
@@ -57,8 +57,18 @@ const DepartureTimes = styled.span`
   white-space: pre;
   width: 100%;
 
-  .first {
+  .active {
     color: #090909ee;
+    cursor: auto;
+  }
+
+  button {
+    background: none;
+    border: none;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    transition: all 0.1s ease-out;
   }
 `
 
@@ -201,7 +211,7 @@ type Props = {
   showRealtimeAnnotation: () => void
 }
 
-class MetroItinerary<Props> extends NarrativeItinerary {
+class MetroItinerary extends NarrativeItinerary {
   _onMouseEnter = () => {
     const { active, index, setVisibleItinerary, visibleItinerary } = this.props
     // Set this itinerary as visible if not already visible.
@@ -229,6 +239,7 @@ class MetroItinerary<Props> extends NarrativeItinerary {
     const {
       accessibilityScoreGradationMap,
       active,
+      activeItineraryTimeIndex,
       co2Config,
       currency,
       defaultFareKey,
@@ -240,16 +251,11 @@ class MetroItinerary<Props> extends NarrativeItinerary {
       mini,
       setActiveItinerary,
       setActiveLeg,
+      setItineraryTimeIndex,
       setItineraryView,
       showLegDurations,
-      showRealtimeAnnotation,
-      timeFormat
+      showRealtimeAnnotation
     } = this.props
-
-    const timeOptions = {
-      format: timeFormat,
-      offset: coreUtils.itinerary.getTimeZoneOffset(itinerary)
-    }
 
     const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
       getFlexAttirbutes(itinerary)
@@ -420,7 +426,11 @@ class MetroItinerary<Props> extends NarrativeItinerary {
                 </SecondaryInfo>
                 <DepartureTimes>
                   <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
-                  {departureTimes(itinerary, intl)}
+                  <DepartureTimesList
+                    activeItineraryTimeIndex={activeItineraryTimeIndex}
+                    itinerary={itinerary}
+                    setItineraryTimeIndex={setItineraryTimeIndex}
+                  />
                 </DepartureTimes>
               </ItineraryGrid>
             )}
@@ -446,7 +456,6 @@ class MetroItinerary<Props> extends NarrativeItinerary {
               LegIcon={LegIcon}
               RouteDescriptionOverride={RouteBlock}
               setActiveLeg={setActiveLeg}
-              timeOptions={timeOptions}
             />
           </>
         )}
@@ -479,8 +488,14 @@ const mapStateToProps = (state: any, ownProps: Props) => {
       }
     })
 
+  const activeSearch = getActiveSearch(state)
+  const activeItineraryTimeIndex =
+    // @ts-expect-error state is not yet typed
+    activeSearch && activeSearch.activeItineraryTimeIndex
+
   return {
     accessibilityScoreGradationMap: gradationMap,
+    activeItineraryTimeIndex,
     co2Config: state.otp.config.co2,
     configCosts: state.otp.config.itinerary?.costs,
     // The configured (ambient) currency is needed for rendering the cost
@@ -496,6 +511,8 @@ const mapStateToProps = (state: any, ownProps: Props) => {
 // TS TODO: correct redux types
 const mapDispatchToProps = (dispatch: any) => {
   return {
+    setItineraryTimeIndex: (payload: number) =>
+      dispatch(narrativeActions.setActiveItineraryTime(payload)),
     setItineraryView: (payload: any) =>
       dispatch(uiActions.setItineraryView(payload))
   }
