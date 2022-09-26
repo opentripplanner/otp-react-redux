@@ -3,7 +3,7 @@
 // @ts-nocheck
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
-import { NavigationControl, Popup } from 'react-map-gl'
+import { NavigationControl } from 'react-map-gl'
 import BaseMap from '@opentripplanner/base-map'
 import React, { Component } from 'react'
 import styled from 'styled-components'
@@ -24,7 +24,6 @@ import { updateOverlayVisibility } from '../../actions/config'
 
 import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
-import InitialLocation from './initial-location'
 import ParkAndRideOverlay from './connected-park-and-ride-overlay'
 import PointPopup from './point-popup'
 import RouteViewerOverlay from './connected-route-viewer-overlay'
@@ -34,6 +33,7 @@ import TransitiveOverlay from './connected-transitive-overlay'
 import TransitVehicleOverlay from './connected-transit-vehicle-overlay'
 import TripViewerOverlay from './connected-trip-viewer-overlay'
 import VehicleRentalOverlay from './connected-vehicle-rental-overlay'
+import withMap from './with-map'
 
 const MapContainer = styled.div`
   height: 100%;
@@ -222,6 +222,15 @@ class DefaultMap extends Component {
     setLocation(payload)
   }
 
+  componentDidMount() {
+    // HACK: Set state lat and lon to null to prevent re-rendering of the
+    // underlying OTP-UI map.
+    this.setState({
+      lat: null,
+      lon: null
+    })
+  }
+
   componentDidUpdate(prevProps) {
     // Check if any overlays should be toggled due to mode change
     this._handleQueryChange(prevProps.query, this.props.query)
@@ -274,19 +283,6 @@ class DefaultMap extends Component {
           // In Leaflet, this was an onclick handler. Creating a click handler in
           // MapLibreGL would require writing a custom event handler for all mouse events
           onContextMenu={this.onMapClick}
-          onViewportChanged={(e) => {
-            // HACK: Set state lat and lon to null to prevent re-rendering of the
-            // underlying OTP-UI map.
-            if (
-              (lat !== null || lon !== null) &&
-              (lat !== initLat || lon !== initLon)
-            ) {
-              this.setState({
-                lat: null,
-                lon: null
-              })
-            }
-          }}
           zoom={zoom}
         >
           <PointPopup onSetLocationFromPopup={this.onSetLocationFromPopup} />
@@ -402,4 +398,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(injectIntl(DefaultMap))
+)(injectIntl(withMap(DefaultMap)))
