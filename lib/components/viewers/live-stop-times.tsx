@@ -170,10 +170,11 @@ class LiveStopTimes extends Component<Props, State> {
           <label style={{ fontSize: 'small', fontWeight: 300 }}>
             <SpanWithSpace margin={0.25}>
               <input
-                checked={this.props.autoRefreshStopTimes}
+                defaultChecked={this.props.autoRefreshStopTimes}
                 name="autoUpdate"
                 onChange={this._onToggleAutoRefresh}
                 type="checkbox"
+                value={this.props.autoRefreshStopTimes}
               />
             </SpanWithSpace>
             <FormattedMessage id="components.LiveStopTimes.autoRefresh" />
