@@ -575,34 +575,37 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <styled.span
+                    <Icon
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "Search",
+                          "render": [Function],
+                        }
+                      }
                       style={
                         Object {
                           "marginLeft": "0.2em",
                         }
                       }
                     >
-                      <span
-                        className="sc-gInthZ dCqqjT"
+                      <styled.span
                         style={
                           Object {
                             "marginLeft": "0.2em",
                           }
                         }
                       >
-                        <Search>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
+                        <span
+                          className="sc-gInthZ dCqqjT"
+                          style={
+                            Object {
+                              "marginLeft": "0.2em",
                             }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 512 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                          }
+                        >
+                          <Search>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -612,24 +615,36 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 512 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 512 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 512 512"
                               >
-                                <path
-                                  d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </Search>
-                      </span>
-                    </styled.span>
+                                  focusable="false"
+                                  viewBox="0 0 512 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </Search>
+                        </span>
+                      </styled.span>
+                    </Icon>
                   </button>
                   <button
                     className="link-button pull-right"
@@ -2407,6 +2422,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               "render": [Function],
                             }
                           }
+                          spin={true}
                         >
                           <Styled(styled.span)>
                             <span
@@ -3670,34 +3686,37 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <styled.span
+                    <Icon
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "Search",
+                          "render": [Function],
+                        }
+                      }
                       style={
                         Object {
                           "marginLeft": "0.2em",
                         }
                       }
                     >
-                      <span
-                        className="sc-gInthZ dCqqjT"
+                      <styled.span
                         style={
                           Object {
                             "marginLeft": "0.2em",
                           }
                         }
                       >
-                        <Search>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
+                        <span
+                          className="sc-gInthZ dCqqjT"
+                          style={
+                            Object {
+                              "marginLeft": "0.2em",
                             }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 512 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                          }
+                        >
+                          <Search>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -3707,24 +3726,36 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 512 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 512 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 512 512"
                               >
-                                <path
-                                  d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </Search>
-                      </span>
-                    </styled.span>
+                                  focusable="false"
+                                  viewBox="0 0 512 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </Search>
+                        </span>
+                      </styled.span>
+                    </Icon>
                   </button>
                   <button
                     className="link-button pull-right"
@@ -4761,6 +4792,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               "render": [Function],
                             }
                           }
+                          spin={true}
                         >
                           <Styled(styled.span)>
                             <span
@@ -5826,34 +5858,37 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <styled.span
+                    <Icon
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "Search",
+                          "render": [Function],
+                        }
+                      }
                       style={
                         Object {
                           "marginLeft": "0.2em",
                         }
                       }
                     >
-                      <span
-                        className="sc-gInthZ dCqqjT"
+                      <styled.span
                         style={
                           Object {
                             "marginLeft": "0.2em",
                           }
                         }
                       >
-                        <Search>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
+                        <span
+                          className="sc-gInthZ dCqqjT"
+                          style={
+                            Object {
+                              "marginLeft": "0.2em",
                             }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 512 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                          }
+                        >
+                          <Search>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -5863,24 +5898,36 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 512 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 512 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 512 512"
                               >
-                                <path
-                                  d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </Search>
-                      </span>
-                    </styled.span>
+                                  focusable="false"
+                                  viewBox="0 0 512 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </Search>
+                        </span>
+                      </styled.span>
+                    </Icon>
                   </button>
                   <button
                     className="link-button pull-right"
@@ -7724,6 +7771,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               "render": [Function],
                             }
                           }
+                          spin={true}
                         >
                           <Styled(styled.span)>
                             <span
@@ -9701,34 +9749,37 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <styled.span
+                    <Icon
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "Search",
+                          "render": [Function],
+                        }
+                      }
                       style={
                         Object {
                           "marginLeft": "0.2em",
                         }
                       }
                     >
-                      <span
-                        className="sc-gInthZ dCqqjT"
+                      <styled.span
                         style={
                           Object {
                             "marginLeft": "0.2em",
                           }
                         }
                       >
-                        <Search>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
+                        <span
+                          className="sc-gInthZ dCqqjT"
+                          style={
+                            Object {
+                              "marginLeft": "0.2em",
                             }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 512 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                          }
+                        >
+                          <Search>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -9738,24 +9789,36 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 512 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 512 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 512 512"
                               >
-                                <path
-                                  d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </Search>
-                      </span>
-                    </styled.span>
+                                  focusable="false"
+                                  viewBox="0 0 512 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </Search>
+                        </span>
+                      </styled.span>
+                    </Icon>
                   </button>
                   <button
                     className="link-button pull-right"
@@ -15633,6 +15696,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               "render": [Function],
                             }
                           }
+                          spin={true}
                         >
                           <Styled(styled.span)>
                             <span
@@ -18632,34 +18696,37 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     onClick={[Function]}
                     title="components.StopViewer.zoomToStop"
                   >
-                    <styled.span
+                    <Icon
+                      Icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "Search",
+                          "render": [Function],
+                        }
+                      }
                       style={
                         Object {
                           "marginLeft": "0.2em",
                         }
                       }
                     >
-                      <span
-                        className="sc-gInthZ dCqqjT"
+                      <styled.span
                         style={
                           Object {
                             "marginLeft": "0.2em",
                           }
                         }
                       >
-                        <Search>
-                          <StyledIconBase
-                            iconAttrs={
-                              Object {
-                                "fill": "currentColor",
-                                "xmlns": "http://www.w3.org/2000/svg",
-                              }
+                        <span
+                          className="sc-gInthZ dCqqjT"
+                          style={
+                            Object {
+                              "marginLeft": "0.2em",
                             }
-                            iconVerticalAlign="middle"
-                            iconViewBox="0 0 512 512"
-                          >
-                            <ForwardRef
-                              className="StyledIconBase-ea9ulj-0 iuNRof"
+                          }
+                        >
+                          <Search>
+                            <StyledIconBase
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -18669,24 +18736,36 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               iconVerticalAlign="middle"
                               iconViewBox="0 0 512 512"
                             >
-                              <svg
-                                aria-hidden="true"
+                              <ForwardRef
                                 className="StyledIconBase-ea9ulj-0 iuNRof"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 512 512"
-                                xmlns="http://www.w3.org/2000/svg"
+                                iconAttrs={
+                                  Object {
+                                    "fill": "currentColor",
+                                    "xmlns": "http://www.w3.org/2000/svg",
+                                  }
+                                }
+                                iconVerticalAlign="middle"
+                                iconViewBox="0 0 512 512"
                               >
-                                <path
-                                  d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                                <svg
+                                  aria-hidden="true"
+                                  className="StyledIconBase-ea9ulj-0 iuNRof"
                                   fill="currentColor"
-                                />
-                              </svg>
-                            </ForwardRef>
-                          </StyledIconBase>
-                        </Search>
-                      </span>
-                    </styled.span>
+                                  focusable="false"
+                                  viewBox="0 0 512 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </Search>
+                        </span>
+                      </styled.span>
+                    </Icon>
                   </button>
                   <button
                     className="link-button pull-right"
@@ -20783,6 +20862,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               "render": [Function],
                             }
                           }
+                          spin={true}
                         >
                           <Styled(styled.span)>
                             <span
