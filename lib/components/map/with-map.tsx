@@ -10,7 +10,7 @@ export default function withMap<T>(
   ClassComponent: ClassicComponentClass<T>
 ): FC<T & { map: MapRef }> {
   const WrappedComponent = (props: T): JSX.Element => {
-    const { current: map } = useMap()
+    const { default: map } = useMap()
     return <ClassComponent {...props} map={map} />
   }
 
