@@ -50,22 +50,21 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
         <Icon style={{ color: 'rgba(255, 255, 255, 0.85)' }} type="globe" />
       }
     >
-      {Object.keys(configLanguages).map((locale) => {
-        return (
-          locale !== 'allLanguages' && (
-            <MenuItem
-              className="locale-name"
-              onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
+      {Object.keys(configLanguages)
+        .filter((locale) => locale !== 'allLanguages')
+        .map((locale) => (
+          <MenuItem
+            className="locale-name"
+            key={locale}
+            onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
+          >
+            <span
+              style={locale === currentLocale ? { fontWeight: 'bold' } : {}}
             >
-              <span
-                style={locale === currentLocale ? { fontWeight: 'bold' } : {}}
-              >
-                {configLanguages[locale].name}
-              </span>
-            </MenuItem>
-          )
-        )
-      })}
+              {configLanguages[locale].name}
+            </span>
+          </MenuItem>
+        ))}
     </NavDropdown>
   )
 }
