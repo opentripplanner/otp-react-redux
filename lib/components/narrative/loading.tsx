@@ -1,6 +1,7 @@
+import { Redo } from '@styled-icons/fa-solid/Redo'
 import React from 'react'
 
-import Icon from '../util/icon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 type Props = {
   small?: boolean
@@ -9,7 +10,9 @@ type Props = {
 const Loading = ({ small }: Props): JSX.Element => {
   return (
     <p className="text-center percy-hide" style={{ marginTop: '15px' }}>
-      <Icon className={`${small ? 'fa-3x' : 'fa-5x'} fa-spin`} type="refresh" />
+      <StyledIconWrapper size={small ? '3x' : '5x'} spin>
+        <Redo />
+      </StyledIconWrapper>
     </p>
   )
 }

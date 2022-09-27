@@ -1,8 +1,9 @@
 import { Button } from 'react-bootstrap'
+import { Spinner } from '@styled-icons/fa-solid/Spinner'
+import { Times } from '@styled-icons/fa-solid/Times'
 import React, { useEffect, useState } from 'react'
 
-// eslint-disable-next-line sort-imports-es6-autofix/sort-imports-es6
-import Icon from '../util/icon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 const MapillaryFrame = ({
   id,
@@ -29,7 +30,9 @@ const MapillaryFrame = ({
           justifyContent: 'center'
         }}
       >
-        <Icon className="fa-spin" type="spinner" />
+        <StyledIconWrapper size="2x" spin>
+          <Spinner />
+        </StyledIconWrapper>
       </div>
       <iframe
         frameBorder="0"
@@ -46,7 +49,9 @@ const MapillaryFrame = ({
         className="mapillary-close-button close-button clear-button-formatting"
         onClick={onClose}
       >
-        <i className="fa fa-close" />
+        <StyledIconWrapper>
+          <Times />
+        </StyledIconWrapper>
       </Button>
     </div>
   )
