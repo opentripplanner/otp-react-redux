@@ -3,7 +3,7 @@ import { Popup as MapGlPopup, MapRef, useMap } from 'react-map-gl'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { useIntl, WrappedComponentProps } from 'react-intl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import type { Location } from '@opentripplanner/types'
 
@@ -54,20 +54,6 @@ function MapPopup({
 }: Props): JSX.Element | null {
   const intl = useIntl()
   const { current: map } = useMap()
-  const currentZoom = map ? map.getZoom() : null
-
-  // Zoom out if zoomed in very far
-  useEffect(() => {
-    if (
-      map &&
-      mapPopupLocation &&
-      currentZoom !== null &&
-      currentZoom > DEFAULT_ZOOM
-    ) {
-      map.setZoom(DEFAULT_ZOOM)
-    }
-    // Only check zoom if popup appears in a new place
-  }, [mapPopupLocation, map, currentZoom])
 
   // Memoize this callback because it shouldn't change (unlike the zoom click one).
   const onPopupClose = useCallback(
@@ -127,7 +113,6 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   setMapPopupLocation: mapActions.setMapPopupLocation,
-  setMapPopupLocationAndGeocode: mapActions.setMapPopupLocationAndGeocode,
   zoomToPlace: mapActions.zoomToPlace
 }
 
