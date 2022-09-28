@@ -262,16 +262,6 @@ components:
     notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
     notificationEmailDetail: "Les courriers de notification seront envoyés à :"
     noneSelect: Ne pas me notifier
-  PatternRow:
-    collapseOrExpandDepartures: >
-      {expanded, select,
-        true {Masquer}
-        other {Étendre}
-      } tous les départs pour la ligne {routeName}
-    departure: Départ
-    routeName: "<strong>{routeName}</strong> Direction {headsign}"
-    routeShort: "Direction {headsign}"
-    status: État
   PhoneNumberEditor:
     changeNumber: Changer de numéro
     invalidCode: Le code de vérification doit comporter 6 chiffres.

@@ -274,16 +274,6 @@ components:
     notificationChannelPrompt: How would you like to receive notifications?
     notificationEmailDetail: "Notification emails will be sent to:"
     noneSelect: Don't notify me
-  PatternRow:
-    collapseOrExpandDepartures: >
-      {expanded, select, 
-        true {Collapse}
-        other {Expand}
-      } all departures for Route {routeName}
-    departure: Departure
-    routeName: "<strong>{routeName}</strong> To {headsign}"
-    routeShort: "To {headsign}"
-    status: Status
   PhoneNumberEditor:
     changeNumber: Change number
     invalidCode: Please enter 6 digits for the validation code.
