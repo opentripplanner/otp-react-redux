@@ -1,3 +1,5 @@
+import { ChevronDown } from '@styled-icons/fa-solid/ChevronDown'
+import { ChevronUp } from '@styled-icons/fa-solid/ChevronUp'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import AnimateHeight from 'react-animate-height'
 import React, { Component } from 'react'
@@ -9,8 +11,8 @@ import {
   stopTimeComparator
 } from '../../util/viewer'
 import { Pattern, Time } from '../util/types'
+import { StyledIconWrapper } from '../util/styledIcon'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
-import Icon from '../util/icon'
 import Strong from '../util/strong-text'
 
 import RealtimeStatusLabel from './realtime-status-label'
@@ -110,7 +112,9 @@ class PatternRow extends Component<Props, State> {
               className="expansion-button"
               onClick={this._toggleExpandedView}
             >
-              <Icon type={`chevron-${this.state.expanded ? 'up' : 'down'}`} />
+              <StyledIconWrapper>
+                {this.state.expanded ? <ChevronUp /> : <ChevronDown />}
+              </StyledIconWrapper>
             </button>
           </div>
         </div>

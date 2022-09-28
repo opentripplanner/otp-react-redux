@@ -43,10 +43,9 @@ export const StyledDateTimePreview = styled(DateTimePreview)`
   ${(props) => (props.expanded ? activeCss : null)}
 `
 export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
-  line-height: 22px;
   margin-right: 5px;
-  padding: 10px 0px;
   position: relative;
+  padding: 0;
   ${(props) => (props.expanded ? activeCss : null)}
 `
 
