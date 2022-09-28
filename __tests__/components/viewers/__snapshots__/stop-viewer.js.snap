@@ -327,7 +327,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                 "stopId": "TriMet:9860",
               }
             }
-            zoomToStop={[Function]}
+            zoomToPlace={[Function]}
           >
             <div
               className="stop-viewer"
@@ -3420,7 +3420,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                 "stopId": "TriMet:9860",
               }
             }
-            zoomToStop={[Function]}
+            zoomToPlace={[Function]}
           >
             <div
               className="stop-viewer"
@@ -5475,7 +5475,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                 "stopId": "TriMet:9860",
               }
             }
-            zoomToStop={[Function]}
+            zoomToPlace={[Function]}
           >
             <div
               className="stop-viewer"
@@ -8991,7 +8991,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                 "stopId": "TriMet:715",
               }
             }
-            zoomToStop={[Function]}
+            zoomToPlace={[Function]}
           >
             <div
               className="stop-viewer"
@@ -17568,7 +17568,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                 "stopId": "TriMet:715",
               }
             }
-            zoomToStop={[Function]}
+            zoomToPlace={[Function]}
           >
             <div
               className="stop-viewer"
@@ -21926,7 +21926,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                 "stopId": "TriMet:13170",
               }
             }
-            zoomToStop={[Function]}
+            zoomToPlace={[Function]}
           >
             <div
               className="stop-viewer"
