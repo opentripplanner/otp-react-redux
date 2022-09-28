@@ -34,12 +34,12 @@ const ZoomButton = styled.button`
 `
 
 type Props = {
+  clearMapPopupLocation: () => void
   mapPopupLocation: Location
-  onSetLocationFromPopup: () => void
-  setMapPopupLocation: (arg: { location: Location | null }) => void
+  setLocation: (arg: unknown) => void
   zoomToPlace: (
-    map: MapRef,
-    place: { lat: number; lon: number },
+    map?: MapRef,
+    place?: { lat: number; lon: number },
     zoom?: number
   ) => void
 } & WrappedComponentProps
@@ -47,18 +47,21 @@ type Props = {
 const DEFAULT_ZOOM = 15
 
 function MapPopup({
+  clearMapPopupLocation,
   mapPopupLocation,
-  onSetLocationFromPopup,
-  setMapPopupLocation,
+  setLocation,
   zoomToPlace
 }: Props): JSX.Element | null {
   const intl = useIntl()
   const { current: map } = useMap()
 
-  // Memoize this callback because it shouldn't change (unlike the zoom click one).
-  const onPopupClose = useCallback(
-    () => setMapPopupLocation({ location: null }),
-    [setMapPopupLocation]
+  // Memoize callbacks that shouldn't change from one render to the next.
+  const onSetLocationFromPopup = useCallback(
+    (payload) => {
+      clearMapPopupLocation()
+      setLocation(payload)
+    },
+    [setLocation, clearMapPopupLocation]
   )
 
   if (!mapPopupLocation) return null
@@ -76,7 +79,7 @@ function MapPopup({
       closeOnClick
       latitude={mapPopupLocation.lat}
       longitude={mapPopupLocation.lon}
-      onClose={onPopupClose}
+      onClose={clearMapPopupLocation}
     >
       <ZoomButton
         className="pull-right"
@@ -112,7 +115,8 @@ const mapStateToProps = (state: any) => {
 }
 
 const mapDispatchToProps = {
-  setMapPopupLocation: mapActions.setMapPopupLocation,
+  clearMapPopupLocation: mapActions.clearMapPopupLocation,
+  setLocation: mapActions.setLocation,
   zoomToPlace: mapActions.zoomToPlace
 }
 
