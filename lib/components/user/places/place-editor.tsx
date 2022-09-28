@@ -7,8 +7,6 @@ import {
   ToggleButtonGroup
 } from 'react-bootstrap'
 import { injectIntl, IntlShape } from 'react-intl'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'
@@ -16,25 +14,22 @@ import type { Location } from '@opentripplanner/types'
 import type { WrappedComponentProps } from 'react-intl'
 
 import { capitalizeFirst, getErrorStates } from '../../../util/ui'
+import { ComponentContext } from '../../../util/contexts'
 import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'
 import { getFormattedPlaces } from '../../../util/i18n'
 import FormattedValidationError from '../../util/formatted-validation-error'
-import Icon, { IconProps } from '../../util/icon'
 
 import {
   makeLocationFieldLocation,
   PlaceLocationField
 } from './place-location-field'
+import { StyledIconWrapper } from '../../util/styledIcon'
 
 const { isMobile } = coreUtils.ui
 
 // Styled components
-const LargeIcon = styled(Icon)<IconProps>`
-  font-size: 150%;
-`
-const FixedPlaceIcon = styled(LargeIcon)<IconProps>`
-  margin-right: 10px;
-  padding-top: 6px;
+const FixedPlaceIconWrapper = styled(StyledIconWrapper)`
+  margin-right: 5px;
 `
 const FlexContainer = styled.div`
   display: flex;
@@ -63,6 +58,8 @@ class PlaceEditor extends Component<
     values: any
   } & WrappedComponentProps
 > {
+  static contextType = ComponentContext
+
   _handleLocationChange = (
     _: IntlShape, // Ignore intl object.
     { location }: { location: Location }
@@ -79,6 +76,7 @@ class PlaceEditor extends Component<
 
   render() {
     const { errors, handleBlur, handleChange, intl, values: place } = this.props
+    const { SvgIcon } = this.context
     const isFixed = isHomeOrWork(place)
     const errorStates = getErrorStates(this.props)
     const namePlaceholder = intl.formatMessage({
@@ -128,7 +126,9 @@ class PlaceEditor extends Component<
                       title={title}
                       value={type}
                     >
-                      <LargeIcon type={icon} />
+                      <StyledIconWrapper size="1.5x">
+                        <SvgIcon iconName={icon} />
+                      </StyledIconWrapper>
                     </ToggleButton>
                   )
                 })}
@@ -139,7 +139,11 @@ class PlaceEditor extends Component<
 
         <FlexContainer>
           {/* For fixed places, just show the icon for place type instead of all inputs and selectors */}
-          {isFixed && <FixedPlaceIcon type={place.icon} />}
+          {isFixed && (
+            <FixedPlaceIconWrapper size="1.5x">
+              <SvgIcon iconName={place.icon} />
+            </FixedPlaceIconWrapper>
+          )}
 
           {/* TODO: properly type errorStates
              eslint-disable-next-line @typescript-eslint/ban-ts-comment //

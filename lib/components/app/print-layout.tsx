@@ -1,6 +1,9 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
+import { Map } from '@styled-icons/fa-solid/Map'
+import { Print } from '@styled-icons/fa-solid/Print'
+import { Times } from '@styled-icons/fa-solid/Times'
 // @ts-expect-error not typescripted yet
 import PrintableItinerary from '@opentripplanner/printable-itinerary'
 import React, { Component } from 'react'
@@ -11,11 +14,11 @@ import {
 } from '../../util/print'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary } from '../../util/state'
+import { IconWithText } from '../util/styledIcon'
 import { parseUrlQueryString } from '../../actions/form'
 import { routingQuery } from '../../actions/api'
 import { setMapCenter } from '../../actions/config'
 import DefaultMap from '../map/default-map'
-import Icon from '../util/icon'
 import SpanWithSpace from '../util/span-with-space'
 import TripDetails from '../narrative/connected-trip-details'
 
@@ -94,19 +97,22 @@ class PrintLayout extends Component<Props, State> {
           <div style={{ float: 'right' }}>
             <SpanWithSpace margin={0.25}>
               <Button bsSize="small" onClick={this._toggleMap}>
-                <Icon type="map" withSpace />
-                <FormattedMessage id="components.PrintLayout.toggleMap" />
+                <IconWithText Icon={Map}>
+                  <FormattedMessage id="components.PrintLayout.toggleMap" />
+                </IconWithText>
               </Button>
             </SpanWithSpace>
             <SpanWithSpace margin={0.25}>
               <Button bsSize="small" onClick={this._print}>
-                <Icon type="print" withSpace />
-                <FormattedMessage id="common.forms.print" />
+                <IconWithText Icon={Print}>
+                  <FormattedMessage id="common.forms.print" />
+                </IconWithText>
               </Button>
             </SpanWithSpace>
             <Button bsSize="small" onClick={this._close}>
-              <Icon type="close" withSpace />
-              <FormattedMessage id="common.forms.close" />
+              <IconWithText Icon={Times}>
+                <FormattedMessage id="common.forms.close" />
+              </IconWithText>
             </Button>
           </div>
           <FormattedMessage id="components.PrintLayout.itinerary" />
