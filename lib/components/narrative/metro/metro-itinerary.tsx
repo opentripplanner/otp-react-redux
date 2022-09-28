@@ -12,6 +12,7 @@ import styled from 'styled-components'
 
 import * as narrativeActions from '../../../actions/narrative'
 import * as uiActions from '../../../actions/ui'
+import { ComponentContext } from '../../../util/contexts'
 import { FlexIndicator } from '../default/flex-indicator'
 import {
   getAccessibilityScoreForItinerary,
@@ -19,10 +20,10 @@ import {
 } from '../../../util/accessibility-routing'
 import { getActiveSearch, getFare } from '../../../util/state'
 import { ItineraryDescription } from '../default/itinerary-description'
+import { localizeGradationMap } from '../utils'
 import FormattedDuration, {
   formatDuration
 } from '../../util/formatted-duration'
-import Icon from '../../util/icon'
 import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
@@ -200,6 +201,8 @@ type Props = {
 }
 
 class MetroItinerary extends NarrativeItinerary {
+  static contextType = ComponentContext
+
   _onMouseEnter = () => {
     const { active, index, setVisibleItinerary, visibleItinerary } = this.props
     // Set this itinerary as visible if not already visible.
@@ -243,6 +246,7 @@ class MetroItinerary extends NarrativeItinerary {
       showLegDurations,
       showRealtimeAnnotation
     } = this.props
+    const { SvgIcon } = this.context
 
     const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
       getFlexAttirbutes(itinerary)
@@ -251,6 +255,12 @@ class MetroItinerary extends NarrativeItinerary {
       itinerary,
       defaultFareKey,
       currency
+    )
+
+    const localizedGradationMapWithIcons = localizeGradationMap(
+      intl,
+      SvgIcon,
+      accessibilityScoreGradationMap
     )
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
@@ -323,7 +333,7 @@ class MetroItinerary extends NarrativeItinerary {
           >
             {itineraryHasAccessibilityScores(itinerary) && (
               <AccessibilityRating
-                gradationMap={accessibilityScoreGradationMap}
+                gradationMap={localizedGradationMapWithIcons}
                 score={getAccessibilityScoreForItinerary(itinerary)}
               />
             )}
@@ -413,7 +423,7 @@ class MetroItinerary extends NarrativeItinerary {
           <>
             {showRealtimeAnnotation && <SimpleRealtimeAnnotation />}
             <ItineraryBody
-              accessibilityScoreGradationMap={accessibilityScoreGradationMap}
+              accessibilityScoreGradationMap={localizedGradationMapWithIcons}
               itinerary={itinerary}
               LegIcon={LegIcon}
               RouteDescriptionOverride={RouteBlock}
@@ -428,35 +438,14 @@ class MetroItinerary extends NarrativeItinerary {
 
 // TODO: state type
 const mapStateToProps = (state: any, ownProps: Props) => {
-  const { intl } = ownProps
-  const gradationMap = state.otp.config.accessibilityScore?.gradationMap
-
-  // Generate icons based on fa icon keys in config
-  // Override text fields if translation set
-  gradationMap &&
-    Object.keys(gradationMap).forEach((key) => {
-      const { icon } = gradationMap[key]
-      if (icon && typeof icon === 'string') {
-        gradationMap[key].icon = <Icon type={icon} />
-      }
-
-      // As these localization keys are in the config, rather than
-      // standard language files, the message ids must be dynamically generated
-      const localizationId = `config.acessibilityScore.gradationMap.${key}`
-      const localizedText = intl.formatMessage({ id: localizationId })
-      // Override the config label if a localized label exists
-      if (localizationId !== localizedText) {
-        gradationMap[key].text = localizedText
-      }
-    })
-
   const activeSearch = getActiveSearch(state)
   const activeItineraryTimeIndex =
     // @ts-expect-error state is not yet typed
     activeSearch && activeSearch.activeItineraryTimeIndex
 
   return {
-    accessibilityScoreGradationMap: gradationMap,
+    accessibilityScoreGradationMap:
+      state.otp.config.accessibilityScore?.gradationMap,
     activeItineraryTimeIndex,
     configCosts: state.otp.config.itinerary?.costs,
     // The configured (ambient) currency is needed for rendering the cost

@@ -75,8 +75,6 @@ actions:
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Prefer accessible trips by default
-  AccessLeg:
-    summary: "<strong>{mode}</strong> <durationSpan>{formattedDuration}</durationSpan> <distanceSpan>{distance}</distanceSpan>"
   AccountSetupFinishPane:
     message: You are ready to start planning your trips.
   AddPlaceButton:
@@ -461,15 +459,6 @@ components:
     termsOfStorageStatement: >
       Optional: I consent to the Trip Planner storing my historical planned trips in order to
       improve transit services in my area. <termsOfStorageLink>More info...</termsOfStorageLink>
-  TransitLeg:
-    expandStops: >
-      {numStops, plural, 
-        =0 {non-stop}
-        other {# stops}
-      }
-    info: Information
-    moreInfo: "<alertLink>more info</alertLink>"
-    serviceOperator: Service operated by <operatorLink>{agencyName}</operatorLink>
   TransitVehicleOverlay:
     # keys designed to match API output
     incoming_at: "approaching {stop}"
