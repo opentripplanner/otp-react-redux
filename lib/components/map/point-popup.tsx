@@ -95,7 +95,9 @@ function MapPopup({
       <ZoomButton
         className="pull-right"
         onClick={() => zoomToPlace(map, mapPopupLocation, DEFAULT_ZOOM)}
-        title="Zoom to location"
+        title={intl.formatMessage({
+          id: 'components.PointPopup.zoomToLocation'
+        })}
       >
         <Icon Icon={Search} />
       </ZoomButton>
