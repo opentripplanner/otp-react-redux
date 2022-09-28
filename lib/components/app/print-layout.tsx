@@ -8,6 +8,8 @@ import { Times } from '@styled-icons/fa-solid/Times'
 import PrintableItinerary from '@opentripplanner/printable-itinerary'
 import React, { Component } from 'react'
 
+import * as apiActions from '../../actions/api'
+import * as formActions from '../../actions/form'
 import {
   addPrintViewClassToRootHtml,
   clearClassFromRootHtml
@@ -15,9 +17,6 @@ import {
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary } from '../../util/state'
 import { IconWithText } from '../util/styledIcon'
-import { parseUrlQueryString } from '../../actions/form'
-import { routingQuery } from '../../actions/api'
-import { setMapCenter } from '../../actions/config'
 import DefaultMap from '../map/default-map'
 import SpanWithSpace from '../util/span-with-space'
 import TripDetails from '../narrative/connected-trip-details'
@@ -30,7 +29,6 @@ type Props = {
   itinerary: any
   location?: { search?: string }
   parseUrlQueryString: (params?: any, source?: string) => any
-  setMapCenter: ({ lat, lon }: { lat: number; lon: number }) => void
 }
 
 type State = {
@@ -60,13 +58,7 @@ class PrintLayout extends Component<Props, State> {
   }
 
   componentDidMount() {
-    const {
-      currentQuery,
-      itinerary,
-      location,
-      parseUrlQueryString,
-      setMapCenter
-    } = this.props
+    const { itinerary, location, parseUrlQueryString } = this.props
 
     // Add print-view class to html tag to ensure that iOS scroll fix only applies
     // to non-print views.
@@ -75,10 +67,6 @@ class PrintLayout extends Component<Props, State> {
     if (!itinerary && location && location.search) {
       parseUrlQueryString()
     }
-
-    // TODO: this is an annoying hack. Ideally we wouldn't wipe out initLat and initLon
-    // TODO: is there a way to adjust transitiveData to force the transitive overlay to re-adjust bounds?
-    setMapCenter(currentQuery.from)
   }
 
   componentWillUnmount() {
@@ -120,6 +108,7 @@ class PrintLayout extends Component<Props, State> {
         {/* The map, if visible */}
         {this.state.mapVisible && (
           <div className="map-container">
+            {/* FIXME: Improve reframing/setting map bounds when itinerary is received. */}
             <DefaultMap />
           </div>
         )}
@@ -152,9 +141,8 @@ const mapStateToProps = (state: any) => {
 }
 
 const mapDispatchToProps = {
-  parseUrlQueryString,
-  routingQuery,
-  setMapCenter
+  parseUrlQueryString: formActions.parseUrlQueryString,
+  routingQuery: apiActions.routingQuery
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PrintLayout)
