@@ -381,7 +381,7 @@
 .otp .place-item .place-detail {
   display: block;
   font-size: smaller;
-  padding-left: 22px;
+  padding-left: 18px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

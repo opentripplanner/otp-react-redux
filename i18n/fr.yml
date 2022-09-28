@@ -65,8 +65,6 @@ actions:
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Privilégier par défaut les trajets accessibles
-  AccessLeg:
-    summary: "<strong>{mode}</strong> <durationSpan>{formattedDuration}</durationSpan> <distanceSpan>{distance}</distanceSpan>"
   AccountSetupFinishPane:
     message: Vous pouvez maintenant commencer à planifier vos trajets.
   AddPlaceButton:
@@ -214,13 +212,13 @@ components:
     stops: Arrêts et stations
     streets: Plan des rues    
   MetroUI:
-    leaveAt: You leave
-    arriveAtTime: "Arrive at {time}" 
-    timeWalking: "{time} walking"
-    fromStop: "from {stop}"
-    orAlternatives: or other routes in the same direction
-    itineraryDescription: "{time} itinerary using {routes}"
-    multipleOptions: "options multiples"
+    arriveAtTime: "Arrivée à {time}" 
+    fromStop: "de {stop}"
+    itineraryDescription: "Trajet de {time} par les lignes {routes}"
+    leaveAt: Partez à
+    multipleOptions: Plusieurs options
+    orAlternatives: ou autres lignes dans la même direction
+    timeWalking: "{time} de marche"
   MobileOptions:
     header: Options de recherche
   ModeDropdown:
@@ -446,15 +444,6 @@ components:
     termsOfStorageStatement: >
       Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches
       afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>
-  TransitLeg:
-    expandStops: >
-      {numStops, plural,
-        =0 {direct}
-        other {# arrêts}
-      }
-    info: Information
-    moreInfo: "<alertLink>Plus d'infos</alertLink>"
-    serviceOperator: Exploité par <operatorLink>{agencyName}</operatorLink>
   TransitVehicleOverlay:
     # keys designed to match API output
     incoming_at: "Approchant {stop}"

@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
+import { Cog } from '@styled-icons/fa-solid/Cog'
 import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
+import { Search } from '@styled-icons/fa-solid/Search'
+import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'
@@ -10,7 +13,6 @@ import * as formActions from '../../actions/form'
 import { combinationFilter } from '../../util/combination-filter'
 import { getDefaultModes } from '../../util/itinerary'
 import { hasValidLocation } from '../../util/state'
-import Icon from '../util/icon'
 
 import {
   BatchPreferencesContainer,
@@ -21,6 +23,7 @@ import {
   StyledDateTimePreview
 } from './batch-styled'
 import { Dot } from './styled'
+import { StyledIconWrapper } from '../util/styledIcon'
 import BatchPreferences, { replaceTransitMode } from './batch-preferences'
 import DateTimeModal from './date-time-modal'
 import ModeButtons, {
@@ -174,7 +177,9 @@ class BatchSettings extends Component<Props, State> {
             {coreUtils.query.isNotDefaultQuery(currentQuery, config) && (
               <Dot className="dot" />
             )}
-            <Icon className="fa-2x" type="cog" />
+            <StyledIconWrapper size="2x">
+              <Cog />
+            </StyledIconWrapper>
           </SettingsPreview>
           <StyledDateTimePreview
             // as='button'
@@ -196,15 +201,14 @@ class BatchSettings extends Component<Props, State> {
               id: 'components.BatchSettings.planTripTooltip'
             })}
           >
-            <Icon
-              className="fa-2x"
-              type={
-                hasValidLocation(currentQuery, 'from') ||
-                hasValidLocation(currentQuery, 'to')
-                  ? 'refresh'
-                  : 'search'
-              }
-            />
+            <StyledIconWrapper style={{ fontSize: '1.6em' }}>
+              {hasValidLocation(currentQuery, 'from') ||
+              hasValidLocation(currentQuery, 'to') ? (
+                <SyncAlt />
+              ) : (
+                <Search />
+              )}
+            </StyledIconWrapper>
           </PlanTripButton>
         </MainSettingsRow>
         {expanded === 'DATE_TIME' && (

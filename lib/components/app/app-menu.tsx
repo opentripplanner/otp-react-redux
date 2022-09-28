@@ -1,22 +1,29 @@
+import { Bus } from '@styled-icons/fa-solid/Bus'
+import { ChevronDown } from '@styled-icons/fa-solid/ChevronDown'
+import { ChevronUp } from '@styled-icons/fa-solid/ChevronUp'
 import { connect } from 'react-redux'
+import { Envelope } from '@styled-icons/fa-regular/Envelope'
+import { ExternalLinkSquareAlt } from '@styled-icons/fa-solid/ExternalLinkSquareAlt'
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
+import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
+import { History } from '@styled-icons/fa-solid/History'
 import { MenuItem } from 'react-bootstrap'
+import { Undo } from '@styled-icons/fa-solid/Undo'
 import { withRouter } from 'react-router'
 import AnimateHeight from 'react-animate-height'
 import qs from 'qs'
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, useContext } from 'react'
 import SlidingPane from 'react-sliding-pane'
 import type { RouteComponentProps } from 'react-router'
 import type { WrappedComponentProps } from 'react-intl'
-// @ts-expect-error Velocity-React not typescripted
-import VelocityTransitionGroup from 'velocity-react/velocity-transition-group'
 
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
+import { ComponentContext } from '../../util/contexts'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
-import Icon from '../util/icon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 type AppMenuProps = {
   callTakerEnabled?: boolean
@@ -53,6 +60,11 @@ class AppMenu extends Component<
   AppMenuProps & WrappedComponentProps & RouteComponentProps,
   AppMenuState
 > {
+  state = {
+    expandedSubmenus: {} as Record<string, boolean>,
+    isPaneOpen: false
+  }
+
   _showRouteViewer = () => {
     this.props.setMainPanelContent(MainPanelContent.ROUTE_VIEWER)
     this._togglePane()
@@ -84,16 +96,12 @@ class AppMenu extends Component<
   }
 
   _togglePane = () => {
-    const { isPaneOpen } = this.state ?? false
+    const { isPaneOpen } = this.state
     this.setState({ isPaneOpen: !isPaneOpen })
   }
 
   _toggleSubmenu = (id: string) => {
-    let { expandedSubmenus } = this.state
-    if (!expandedSubmenus) {
-      expandedSubmenus = {}
-    }
-
+    const { expandedSubmenus } = this.state
     const currentlyOpen = expandedSubmenus[id] || false
     this.setState({ expandedSubmenus: { [id]: !currentlyOpen } })
   }
@@ -111,7 +119,7 @@ class AppMenu extends Component<
           label: configLabel,
           subMenuDivider
         } = menuItem
-        const { expandedSubmenus } = this.state ?? {}
+        const { expandedSubmenus } = this.state
         const { intl } = this.props
         const isSubmenuExpanded = expandedSubmenus?.[id]
 
@@ -133,12 +141,9 @@ class AppMenu extends Component<
                   iconUrl={iconUrl}
                   label={label}
                 />
-                <span>
-                  <Icon
-                    className="expand-menu-chevron"
-                    type={`chevron-${isSubmenuExpanded ? 'up' : 'down'}`}
-                  />
-                </span>
+                <StyledIconWrapper className="expand-menu-chevron">
+                  {isSubmenuExpanded ? <ChevronUp /> : <ChevronDown />}
+                </StyledIconWrapper>
               </MenuItem>
               <AnimateHeight
                 duration={500}
@@ -180,7 +185,7 @@ class AppMenu extends Component<
       toggleMailables
     } = this.props
 
-    const { isPaneOpen } = this.state || false
+    const { isPaneOpen } = this.state
     return (
       <>
         <div
@@ -212,16 +217,22 @@ class AppMenu extends Component<
               className="app-menu-route-viewer-link"
               onClick={this._showRouteViewer}
             >
-              <Icon type="bus" />
+              <StyledIconWrapper>
+                <Bus />
+              </StyledIconWrapper>
               <FormattedMessage id="components.RouteViewer.shortTitle" />
             </MenuItem>
             <MenuItem className="menu-item" onClick={this._startOver}>
-              <Icon type="undo" />
+              <StyledIconWrapper>
+                <Undo />
+              </StyledIconWrapper>
               <FormattedMessage id="common.forms.startOver" />
             </MenuItem>
             {popupTarget && (
               <MenuItem className="menu-item" onClick={this._triggerPopup}>
-                <Icon type="external-link-square" />
+                <StyledIconWrapper>
+                  <ExternalLinkSquareAlt />
+                </StyledIconWrapper>
                 <FormattedMessage id={`config.popups.${popupTarget}`} />
               </MenuItem>
             )}
@@ -230,7 +241,9 @@ class AppMenu extends Component<
                 className="menu-item"
                 onClick={resetAndToggleCallHistory}
               >
-                <Icon type="history" />
+                <StyledIconWrapper>
+                  <History />
+                </StyledIconWrapper>
                 <FormattedMessage id="components.AppMenu.callHistory" />
               </MenuItem>
             )}
@@ -239,13 +252,17 @@ class AppMenu extends Component<
                 className="menu-item"
                 onClick={resetAndToggleFieldTrips}
               >
-                <Icon type="graduation-cap" />
+                <StyledIconWrapper>
+                  <GraduationCap />
+                </StyledIconWrapper>
                 <FormattedMessage id="components.AppMenu.fieldTrip" />
               </MenuItem>
             )}
             {mailablesEnabled && (
               <MenuItem className="menu-item" onClick={toggleMailables}>
-                <Icon type="envelope-o" />
+                <StyledIconWrapper>
+                  <Envelope />
+                </StyledIconWrapper>
                 <FormattedMessage id="components.AppMenu.mailables" />
               </MenuItem>
             )}
@@ -297,9 +314,13 @@ const IconAndLabel = ({
   label: string
 }): JSX.Element => {
   const intl = useIntl()
+  // FIXME: add types to context
+  // @ts-expect-error No type on ComponentContext
+  const { SvgIcon } = useContext(ComponentContext)
 
   return (
     <span>
+      {/* TODO: clean up double ternary */}
       {iconUrl ? (
         <img
           alt={intl.formatMessage(
@@ -311,7 +332,13 @@ const IconAndLabel = ({
           src={iconUrl}
         />
       ) : (
-        <Icon type={iconType || 'external-link-square'} />
+        <StyledIconWrapper>
+          {iconType ? (
+            <SvgIcon iconName={iconType} />
+          ) : (
+            <ExternalLinkSquareAlt />
+          )}
+        </StyledIconWrapper>
       )}
       {label}
     </span>
