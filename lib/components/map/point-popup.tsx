@@ -80,6 +80,8 @@ function MapPopup({
       latitude={mapPopupLocation.lat}
       longitude={mapPopupLocation.lon}
       onClose={clearMapPopupLocation}
+      // Override inline style supplied by react-map-gl to accommodate long "plan a trip" translations.
+      style={{ maxWidth: '260px', width: '260px' }}
     >
       <ZoomButton
         className="pull-right"
