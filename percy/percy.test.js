@@ -198,6 +198,11 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Route Viewer')
 
   // Open Specific Route`
+  try {
+    await page.$x("//span[contains(., 'Sugarloaf Mills - Lindbergh Center')]")
+  } catch {
+    await page.reload({ waitUntil: 'networkidle0' })
+  }
   const [busRouteButton] = await page.$x(
     "//span[contains(., 'Sugarloaf Mills - Lindbergh Center')]"
   )
@@ -228,6 +233,11 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 410')
 
   // Stop viewer from pattern viewer
+  try {
+    await page.$x("//a[contains(., 'Sugarloaf Mills GCT Park and Ride')]")
+  } catch {
+    await page.reload({ waitUntil: 'networkidle0' })
+  }
   const [patternStopButton] = await page.$x(
     "//a[contains(., 'Sugarloaf Mills GCT Park and Ride')]"
   )
