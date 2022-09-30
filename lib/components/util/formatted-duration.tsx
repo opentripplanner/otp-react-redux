@@ -1,17 +1,8 @@
 import { FormattedMessage, IntlShape } from 'react-intl'
-import moment from 'moment-timezone'
-import PropTypes from 'prop-types'
+import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 
-/**
- * Helper function to split out hours and minutes
- */
-const splitDuration = (
-  duration: number
-): { hours: number; minutes: number } => {
-  const dur = moment.duration(duration, 'seconds')
-  return { hours: dur.hours(), minutes: dur.minutes() }
-}
+const { toHoursMinutesSeconds } = coreUtils.time
 
 /**
  * Formats the given duration according to the selected locale.
@@ -21,7 +12,7 @@ export default function FormattedDuration({
 }: {
   duration: number
 }): JSX.Element {
-  const { hours, minutes } = splitDuration(duration)
+  const { hours, minutes } = toHoursMinutesSeconds(duration)
   return (
     <FormattedMessage
       id="common.time.tripDurationFormat"
@@ -35,7 +26,7 @@ export default function FormattedDuration({
  * Formats the given duration according to the selected locale.
  */
 const formatDuration = (duration: number, intl: IntlShape): string => {
-  const { hours, minutes } = splitDuration(duration)
+  const { hours, minutes } = toHoursMinutesSeconds(duration)
   return intl.formatMessage(
     { id: 'common.time.tripDurationFormat' },
     {
@@ -45,7 +36,3 @@ const formatDuration = (duration: number, intl: IntlShape): string => {
   )
 }
 export { formatDuration }
-
-FormattedDuration.propTypes = {
-  duration: PropTypes.number.isRequired
-}

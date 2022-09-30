@@ -4,6 +4,10 @@ api:
   port: 8001
 # v2: false
 
+# Add Bugsnag key for error reporting
+# bugsnag:
+#   key: BUGSNAG_KEY
+
 # Add suggested locations to be shown as options in the form view.
 # locations:
 #   - id: 'airport'
@@ -174,6 +178,11 @@ geocoder:
 
 # Use this mode config for the enhanced Transit+ config
 modes:
+  # This is the default behavior for flex merging.
+  # If set to false, each FLEX mode (FLEX_EGRESS,FLEX_ACCESS,FLEX_DIRECT) will 
+  # be treated separately. If set to true, a single FLEX mode will automatically 
+  # be expanded and reduced to those three modes.
+  mergeFlex: true 
   modeOptions:
     - mode: TRANSIT
     - mode: WALK
@@ -287,8 +296,10 @@ itinerary:
   customBatchUiBackground: true
   # Whether to render itineraries below a mode description header
   groupByMode: true
-  # Whether to merge itineraries with the same origin, destination, and transit modes
+  # Whether to merge groups of itineraries with the same primary mode (Bike, Walk, etc)
   groupTransitModes: true
+  # Whether to merge itineraries with the same origin, destination, and transit modes
+  mergeItineraries: true
   # Whether to show the first itinerary on the map. If this is set to false, routes
   # will only show on the map on hover or click
   showFirstResultByDefault: false
@@ -369,6 +380,28 @@ itinerary:
 #       - WALK
 #       - BICYCLE
 
+### Popup config
+### OTP-RR supports a full-screen modal popup that can be launched from a set of
+### pre-set locations. Each button can be configured to open a different popup.
+### Popup "targets" define a URL that is opened. Their ID is used to give them names
+### via the language section below. For example, a target with the id "testTarget"
+### can be named with the i18n string "config.popups.testTarget" (see the language section below for an example)
+###
+### Each popup button location can have a target assigned to it
+# popups:
+#   targets:
+#     testTarget: # To set a name for this target, create the i18n string "config.popups.testTarget"
+#       url: http://example.com/ 
+#       modal: false # Setting this to false always launches the popup as a browser popup
+#     secondTarget: 
+#       url: http://test.com/
+#       appendLocale: false # Defaults to true, if set to false otp-rr will not append the current i18n language to the popup URL.
+#   launchers:
+#     toolbar: testTarget # This button is rendered in the top right of the toolbar (desktop view only!)
+#     itineraryFooter: testTarget # This button is rendered at the bottom of a selected itinerary
+#     optionFilter: secondTarget # This button is rendered to the left of the itinerary filter in the batch and metro UIs
+#     sidebarLink: testTarget # this button is rendered in the sidebar
+
 ### Language section to override strings.
 ### Strings can be set globally for all languages (e.g. for strings that are brands/nouns,
 ### e.g. TriMet's "TransitTracker") or by language.
@@ -399,6 +432,8 @@ itinerary:
 #         gradationMap:
 #           0.0: 'Not Accessible'
 #           0.9: 'Mostly Accessible'
+#       popups:
+#         testTarget: Test Target!
 #       menuItems:
 #         demo-item: Demo Item
 #     errorMessages:
@@ -451,9 +486,6 @@ itinerary:
 # default is 60 seconds.
 # onTimeThresholdSeconds: 60
 
-# Format the date time format for display.
-dateTime:
-  longDateFormat: DD-MM-YYYY
 # stopViewer:
 #   # The radius (in meters) to use when searching for nearby stops and other
 #   # amenities (rental vehicles, park and rides) to show for the focused stop.
@@ -484,3 +516,8 @@ dateTime:
 ### Setting to enable touch-friendly behavior
 ### e.g. on touch-screen kiosks that run a desktop OS.
 # isTouchScreenOnDesktop: true
+
+### Approximate duration in seconds after which, if there is no user activity, the UI is reset to an initial URL.
+### The value should be at least over a minute, so that users have enough time to extend their session if needed.
+### A warning is shown when a minute or a third of the session time remains, whichever is shorter.
+# sessionTimeoutSeconds: 180
