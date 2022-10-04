@@ -116,12 +116,8 @@ function BatchSettings({
   routingQuery
 }: Props) {
   const [expanded, setExpanded] = useState<null | string>(null)
-  const [testqp, setTestqp] = useQueryParam('test')
-  console.log(testqp)
 
   const _planTrip = () => {
-    setTestqp(Number(testqp) || 0 + 1)
-    console.log(testqp)
     // Check for any validation issues in query.
     const issues = []
     if (!hasValidLocation(currentQuery, 'from')) {
