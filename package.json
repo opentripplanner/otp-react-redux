@@ -34,6 +34,9 @@
   },
   "homepage": "",
   "dependencies": {
+    "@floating-ui/react-dom": "^1.0.0",
+    "@floating-ui/react-dom-interactions": "^0.9.3",
+    "use-query-params": "^2.1.1",
     "@auth0/auth0-react": "^1.1.0",
     "@bugsnag/js": "^7.17.0",
     "@bugsnag/plugin-react": "^7.17.0",

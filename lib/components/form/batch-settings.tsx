@@ -2,15 +2,17 @@
 import { Cog } from '@styled-icons/fa-solid/Cog'
 import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
+import { MetroModeSelector, useModeState } from '@opentripplanner/trip-form'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
+import { useQueryParam } from 'use-query-params'
 import coreUtils from '@opentripplanner/core-utils'
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
-import { getDefaultModes } from '../../util/itinerary'
+import { Bicycle, Bus, Walking } from '@styled-icons/fa-solid'
 import { hasValidLocation } from '../../util/state'
 
 import {
@@ -23,6 +25,7 @@ import {
 } from './batch-styled'
 import { Dot } from './styled'
 import { StyledIconWrapper } from '../util/styledIcon'
+
 import BatchPreferences, { replaceTransitMode } from './batch-preferences'
 import DateTimeModal from './date-time-modal'
 import ModeButtons, {
@@ -102,51 +105,23 @@ type Props = {
   setQueryParam: (queryParam: any) => void
 }
 
-type State = {
-  expanded?: string | null
-  selectedModes: string[]
-}
-
 /**
  * Main panel for the batch/trip comparison form.
  */
-class BatchSettings extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props)
-    this.state = {
-      expanded: null,
-      selectedModes: getDefaultModes(props.modeOptions) || []
-    }
-  }
+function BatchSettings({
+  config,
+  currentQuery,
+  intl,
+  modeOptions,
+  routingQuery
+}: Props) {
+  const [expanded, setExpanded] = useState<null | string>(null)
+  const [testqp, setTestqp] = useQueryParam('test')
+  console.log(testqp)
 
-  _onClickMode = (mode: string) => {
-    const { currentQuery, modeOptions, possibleCombinations, setQueryParam } =
-      this.props
-    const { selectedModes } = this.state
-    const index = selectedModes.indexOf(mode)
-    const enableMode = index === -1
-    const newModes = [...selectedModes]
-    if (enableMode) newModes.push(mode)
-    else newModes.splice(index, 1)
-    // Update selected modes for mode buttons.
-    this.setState({ selectedModes: newModes })
-    // Update the available mode combinations based on the new modes selection.
-    const possibleModes = modeOptions.map((m) => m.mode)
-    const disabledModes = possibleModes.filter((m) => !newModes.includes(m))
-    // Only include a combination if it every required mode is enabled.
-    const newCombinations = possibleCombinations
-      .filter(combinationFilter(newModes))
-      .map(replaceTransitMode(currentQuery.mode))
-
-    setQueryParam({
-      combinations: newCombinations,
-      disabledModes,
-      enabledModes: newModes
-    })
-  }
-
-  _planTrip = () => {
-    const { currentQuery, intl, routingQuery } = this.props
+  const _planTrip = () => {
+    setTestqp(Number(testqp) || 0 + 1)
+    console.log(testqp)
     // Check for any validation issues in query.
     const issues = []
     if (!hasValidLocation(currentQuery, 'from')) {
@@ -168,88 +143,125 @@ class BatchSettings extends Component<Props, State> {
       return
     }
     // Close any expanded panels.
-    this.setState({ expanded: null })
+    setExpanded(null)
 
     // Plan trip.
     routingQuery()
   }
 
-  _updateExpanded = (type: string) => ({
-    expanded: this.state.expanded === type ? null : type
+  const _updateExpanded = (type: string) => (expanded === type ? null : type)
+
+  const _toggleDateTime = () => setExpanded(_updateExpanded('DATE_TIME'))
+
+  const _toggleSettings = () => setExpanded(_updateExpanded('SETTINGS'))
+
+  const combinations = [
+    {
+      Icon: Bus,
+      key: 'TRANSIT',
+      label: 'Transit',
+      modes: [
+        {
+          mode: 'TRANSIT'
+        }
+      ]
+    },
+    {
+      Icon: Walking,
+      key: 'WALK',
+      label: 'Walking',
+      modes: [{ mode: 'WALK' }]
+    },
+    {
+      Icon: Bicycle,
+      key: 'BIKE',
+      label: 'Bike',
+      modes: [{ mode: 'BICYCLE' }, { mode: 'BIKESHARE' }]
+    }
+  ]
+
+  const initialState = {
+    enabledCombinations: ['TRANSIT'],
+    modeSettingValues: {}
+  }
+
+  const {
+    combinations: combinationsFromState,
+    setModeSettingValue,
+    toggleCombination
+  } = useModeState(combinations, initialState, [], {
+    queryParamState: true
   })
 
-  _toggleDateTime = () => this.setState(this._updateExpanded('DATE_TIME'))
-
-  _toggleSettings = () => this.setState(this._updateExpanded('SETTINGS'))
-
-  render() {
-    const { config, currentQuery, intl, modeOptions } = this.props
-    const { expanded, selectedModes } = this.state
-    return (
-      <>
-        <ModeButtonsFullWidthContainer className="hidden-lg">
-          <ModeButtonsFullWidth
-            className="flex"
+  return (
+    <>
+      <ModeButtonsFullWidthContainer className="hidden-lg">
+        {/* <ModeButtonsFullWidth
+          className="flex"
+          modeOptions={modeOptions}
+          onClick={_onClickMode}
+          selectedModes={selectedModes}
+        /> */}
+      </ModeButtonsFullWidthContainer>
+      <MainSettingsRow>
+        <SettingsPreview
+          expanded={expanded === 'SETTINGS'}
+          onClick={_toggleSettings}
+        >
+          {coreUtils.query.isNotDefaultQuery(currentQuery, config) && (
+            <Dot className="dot" />
+          )}
+          <StyledIconWrapper size="2x">
+            <Cog />
+          </StyledIconWrapper>
+        </SettingsPreview>
+        <StyledDateTimePreview
+          // as='button'
+          expanded={expanded === 'DATE_TIME'}
+          hideButton
+          onClick={_toggleDateTime}
+        />
+        <ModeButtonsContainerCompressed>
+          {/* <ModeButtonsCompressed
+            className="visible-lg straight-corners"
             modeOptions={modeOptions}
-            onClick={this._onClickMode}
+            onClick={_onClickMode}
             selectedModes={selectedModes}
+          /> */}
+          <MetroModeSelector
+            combinations={combinationsFromState}
+            onSettingsUpdate={setModeSettingValue}
+            onToggleCombination={toggleCombination}
           />
-        </ModeButtonsFullWidthContainer>
-        <MainSettingsRow>
-          <SettingsPreview
-            expanded={expanded === 'SETTINGS'}
-            onClick={this._toggleSettings}
-          >
-            {coreUtils.query.isNotDefaultQuery(currentQuery, config) && (
-              <Dot className="dot" />
+        </ModeButtonsContainerCompressed>
+        <PlanTripButton
+          onClick={_planTrip}
+          title={intl.formatMessage({
+            id: 'components.BatchSettings.planTripTooltip'
+          })}
+        >
+          <StyledIconWrapper style={{ fontSize: '1.6em' }}>
+            {hasValidLocation(currentQuery, 'from') ||
+            hasValidLocation(currentQuery, 'to') ? (
+              <SyncAlt />
+            ) : (
+              <Search />
             )}
-            <StyledIconWrapper size="2x">
-              <Cog />
-            </StyledIconWrapper>
-          </SettingsPreview>
-          <StyledDateTimePreview
-            // as='button'
-            expanded={expanded === 'DATE_TIME'}
-            hideButton
-            onClick={this._toggleDateTime}
-          />
-          <ModeButtonsContainerCompressed>
-            <ModeButtonsCompressed
-              className="visible-lg straight-corners"
-              modeOptions={modeOptions}
-              onClick={this._onClickMode}
-              selectedModes={selectedModes}
-            />
-          </ModeButtonsContainerCompressed>
-          <PlanTripButton
-            onClick={this._planTrip}
-            title={intl.formatMessage({
-              id: 'components.BatchSettings.planTripTooltip'
-            })}
-          >
-            <StyledIconWrapper style={{ fontSize: '1.6em' }}>
-              {hasValidLocation(currentQuery, 'from') ||
-              hasValidLocation(currentQuery, 'to') ? (
-                <SyncAlt />
-              ) : (
-                <Search />
-              )}
-            </StyledIconWrapper>
-          </PlanTripButton>
-        </MainSettingsRow>
-        {expanded === 'DATE_TIME' && (
-          <DateTimeModalContainer>
-            <DateTimeModal />
-          </DateTimeModalContainer>
-        )}
-        {expanded === 'SETTINGS' && (
-          <BatchPreferencesContainer>
-            <BatchPreferences />
-          </BatchPreferencesContainer>
-        )}
-      </>
-    )
-  }
+          </StyledIconWrapper>
+        </PlanTripButton>
+      </MainSettingsRow>
+      {expanded === 'DATE_TIME' && (
+        <DateTimeModalContainer>
+          <DateTimeModal />
+        </DateTimeModalContainer>
+      )}
+      {expanded === 'SETTINGS' && (
+        <BatchPreferencesContainer>
+          <BatchPreferences />
+        </BatchPreferencesContainer>
+      )}
+    </>
+  )
 }
 
 // connect to the redux store
