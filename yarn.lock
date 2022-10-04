@@ -2505,6 +2505,14 @@
     "@opentripplanner/core-utils" "^7.0.0"
     prop-types "^15.7.2"
 
+"@opentripplanner/icons@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-1.2.5.tgz#f7dc379f4f6ce4c414eca37f1beb309ec3987b54"
+  integrity sha512-EazOvFTzVort1FC3cZi9bWOV5oe+KWF1ZLEicZTRegPcB5Eli79xyxIt33Sn4HT5VyfxaTeRmEF1TIlf/jr8xw==
+  dependencies:
+    "@opentripplanner/core-utils" "^7.0.1"
+    prop-types "^15.7.2"
+
 "@opentripplanner/itinerary-body@^4.0.4":
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.0.5.tgz#6970bcf6733f0972324cdde57e9dbd7660411b9e"

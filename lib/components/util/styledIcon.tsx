@@ -49,6 +49,7 @@ const rotateAnimation = keyframes`
 export const StyledIconWrapper = styled.span<Props>`
   animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1.2s linear
     infinite;
+  display: ${(props) => (props.spin ? 'block' : 'initial')};
   ${StyledIconBase} {
     width: 1em;
     height: 1em;

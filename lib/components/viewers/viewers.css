@@ -18,10 +18,10 @@
 }
 
 .otp .route-viewer-body::before {
+  background-color: #33333333;
   content: "";
   display: block;
   height: 2px;
-  background-color: #33333333;
 }
 
 @keyframes yellowfade {
@@ -86,6 +86,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+.otp .route-viewer .header-text.route-expanded span {
+  margin: 0;
+  padding: 0;
 }
 
 /* stop viewer styles */

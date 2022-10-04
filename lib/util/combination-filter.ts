@@ -2,6 +2,7 @@ import type { Combination } from '../components/form/batch-preferences'
 
 /**
  * A function that generates a filter to be used to filter a list of combinations.
+ * This is used to determine whether a mode combination for an OTP itinerary search has all the specified modes
  *
  * TS FIXME: use the ModeOption type that is currently defined
  * in @opentripplanner/trip-form/types.ts (That type
