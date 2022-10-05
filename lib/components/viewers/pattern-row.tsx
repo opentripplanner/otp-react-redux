@@ -1,3 +1,4 @@
+import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
 import { injectIntl, IntlShape } from 'react-intl'
 import React, { Component } from 'react'
 import type { Route } from '@opentripplanner/types'
@@ -5,7 +6,6 @@ import type { Route } from '@opentripplanner/types'
 import { ComponentContext } from '../../util/contexts'
 import {
   generateFakeLegForRouteRenderer,
-  getContrastYIQ,
   stopTimeComparator
 } from '../../util/viewer'
 import { Pattern, Time } from '../util/types'
@@ -73,7 +73,7 @@ class PatternRow extends Component<Props, State> {
           role="row"
           style={{
             backgroundColor: routeColor,
-            color: `#${route.textColor || getContrastYIQ(routeColor)}`
+            color: getMostReadableTextColor(routeColor, route?.textColor)
           }}
         >
           {/* route name */}

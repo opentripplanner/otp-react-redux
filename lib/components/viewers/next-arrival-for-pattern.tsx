@@ -1,3 +1,4 @@
+import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
 import { injectIntl, IntlShape } from 'react-intl'
 import { Route } from '@opentripplanner/types'
 import React, { useContext } from 'react'
@@ -6,7 +7,6 @@ import { ComponentContext } from '../../util/contexts'
 import {
   extractHeadsignFromPattern,
   generateFakeLegForRouteRenderer,
-  getContrastYIQ,
   stopTimeComparator
 } from '../../util/viewer'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
@@ -69,7 +69,7 @@ function NextArrivalForPattern(props: Props) {
       className="next-arrival-row"
       style={{
         backgroundColor: '#' + route.color,
-        color: '#' + getContrastYIQ(route.color)
+        color: getMostReadableTextColor('#' + route.color, route?.textColor)
       }}
     >
       {/* route name */}
