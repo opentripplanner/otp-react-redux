@@ -1,0 +1,28 @@
+
+- applicableMode: WALK
+  type: SLIDER
+  key: walkReluctance
+  default: 0
+  low: 0
+  high: 10
+  step: 0.5
+  label: Walk Reluctance
+  labelLow: More Walking
+  labelHigh: More Transit
+- applicableMode: WALK
+  type: CHECKBOX
+  key: onlyArtic
+  default: true
+  label: Only Articulated Bus
+- applicableMode: TRANSIT
+  type: DROPDOWN
+  key: busColor
+  default: BLUE
+  label: Preferred Bus Color
+  options:
+    - text: Red
+      value: RED
+    - text: Blue
+      value: BLUE
+    - text: Green
+      value: GREEN

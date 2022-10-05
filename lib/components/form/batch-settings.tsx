@@ -5,7 +5,6 @@ import { injectIntl, IntlShape } from 'react-intl'
 import { MetroModeSelector, useModeState } from '@opentripplanner/trip-form'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
-import { useQueryParam } from 'use-query-params'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useState } from 'react'
 import styled from 'styled-components'
@@ -14,24 +13,23 @@ import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { Bicycle, Bus, Walking } from '@styled-icons/fa-solid'
 import { hasValidLocation } from '../../util/state'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 import {
   BatchPreferencesContainer,
   DateTimeModalContainer,
   MainSettingsRow,
-  PlanTripButton,
-  SettingsPreview,
-  StyledDateTimePreview
+  StyledDateTimePreview,
+  StyledPlanTripButton
 } from './batch-styled'
 import { Dot } from './styled'
-import { StyledIconWrapper } from '../util/styledIcon'
-
-import BatchPreferences, { replaceTransitMode } from './batch-preferences'
+import BatchPreferences from './batch-preferences'
 import DateTimeModal from './date-time-modal'
 import ModeButtons, {
   defaultModeOptions,
   StyledModeButton
 } from './mode-buttons'
+import modeSettings from './modeSettings.yml'
 import type { Combination } from './batch-preferences'
 import type { Mode } from './mode-buttons'
 
@@ -149,8 +147,6 @@ function BatchSettings({
 
   const _toggleDateTime = () => setExpanded(_updateExpanded('DATE_TIME'))
 
-  const _toggleSettings = () => setExpanded(_updateExpanded('SETTINGS'))
-
   const combinations = [
     {
       Icon: Bus,
@@ -185,7 +181,7 @@ function BatchSettings({
     combinations: combinationsFromState,
     setModeSettingValue,
     toggleCombination
-  } = useModeState(combinations, initialState, [], {
+  } = useModeState(combinations, initialState, modeSettings, {
     queryParamState: true
   })
 
@@ -200,17 +196,6 @@ function BatchSettings({
         /> */}
       </ModeButtonsFullWidthContainer>
       <MainSettingsRow>
-        <SettingsPreview
-          expanded={expanded === 'SETTINGS'}
-          onClick={_toggleSettings}
-        >
-          {coreUtils.query.isNotDefaultQuery(currentQuery, config) && (
-            <Dot className="dot" />
-          )}
-          <StyledIconWrapper size="2x">
-            <Cog />
-          </StyledIconWrapper>
-        </SettingsPreview>
         <StyledDateTimePreview
           // as='button'
           expanded={expanded === 'DATE_TIME'}
@@ -230,7 +215,7 @@ function BatchSettings({
             onToggleCombination={toggleCombination}
           />
         </ModeButtonsContainerCompressed>
-        <PlanTripButton
+        <StyledPlanTripButton
           onClick={_planTrip}
           title={intl.formatMessage({
             id: 'components.BatchSettings.planTripTooltip'
@@ -244,7 +229,7 @@ function BatchSettings({
               <Search />
             )}
           </StyledIconWrapper>
-        </PlanTripButton>
+        </StyledPlanTripButton>
       </MainSettingsRow>
       {expanded === 'DATE_TIME' && (
         <DateTimeModalContainer>

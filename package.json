@@ -34,12 +34,11 @@
   },
   "homepage": "",
   "dependencies": {
-    "@floating-ui/react-dom": "^1.0.0",
-    "@floating-ui/react-dom-interactions": "^0.9.3",
-    "use-query-params": "^2.1.1",
     "@auth0/auth0-react": "^1.1.0",
     "@bugsnag/js": "^7.17.0",
     "@bugsnag/plugin-react": "^7.17.0",
+    "@floating-ui/react-dom": "^1.0.0",
+    "@floating-ui/react-dom-interactions": "^0.9.3",
     "@opentripplanner/base-map": "^2.0.0",
     "@opentripplanner/core-utils": "^7.0.0",
     "@opentripplanner/endpoints-overlay": "1.4.4",
@@ -122,6 +121,7 @@
     "styled-components": "^5.0.0",
     "tinycolor2": "^1.4.2",
     "transitive-js": "^0.14.1",
+    "use-query-params": "^2.1.1",
     "yup": "^0.29.3"
   },
   "devDependencies": {
@@ -135,6 +135,7 @@
     "@percy/cli": "^1.0.0-beta.76",
     "@percy/puppeteer": "^2.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
+    "@types/clone": "^2.1.1",
     "@types/qs": "^6.9.7",
     "@types/react-bootstrap": "^0.32.26",
     "@types/react-router": "^5.1.17",
