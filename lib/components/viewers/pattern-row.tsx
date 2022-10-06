@@ -1,7 +1,7 @@
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
 import { injectIntl, IntlShape } from 'react-intl'
 import React, { Component } from 'react'
-import type { Route } from '@opentripplanner/types'
+import type { Route, TransitOperator } from '@opentripplanner/types'
 
 import { ComponentContext } from '../../util/contexts'
 import {
@@ -10,6 +10,7 @@ import {
 } from '../../util/viewer'
 import { Pattern, Time } from '../util/types'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
+import OperatorLogo from '../util/operator-logo'
 
 import StopTimeCell from './stop-time-cell'
 
@@ -17,7 +18,7 @@ type Props = {
   homeTimezone?: any
   intl: IntlShape
   pattern: Pattern
-  route: Route
+  route: Route & { operator?: TransitOperator }
   stopTimes: Time[]
   stopViewerArriving: React.ReactNode
   stopViewerConfig: { numberOfDepartures: number }
@@ -83,7 +84,10 @@ class PatternRow extends Component<Props, State> {
                 routeName && routeName?.length >= 4 ? { fontSize: '3vb' } : {}
               }
             >
-              <RouteRenderer leg={generateFakeLegForRouteRenderer(route)} />
+              <div style={{ whiteSpace: 'nowrap' }}>
+                <OperatorLogo operator={route?.operator} />
+                <RouteRenderer leg={generateFakeLegForRouteRenderer(route)} />
+              </div>
             </strong>
             <span>{pattern.headsign}</span>
           </div>

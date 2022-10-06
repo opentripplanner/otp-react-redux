@@ -9,6 +9,7 @@ import {
   routeIsValid
 } from '../../util/viewer'
 import { IconWithText } from '../util/styledIcon'
+import { Route, TransitOperator } from '@opentripplanner/types'
 import SpanWithSpace from '../util/span-with-space'
 
 import AmenitiesPanel from './amenities-panel'
@@ -134,6 +135,10 @@ class LiveStopTimes extends Component<Props, State> {
       // TODO: Shared types
       (pattern: any) => pattern.pattern.headsign
     )
+
+    const agencyCount = new Set(stopData.routes.map((r: Route) => r.agencyId))
+      .size
+
     // TODO: Shared types
     const patternComparator = (patternA: any, patternB: any) => {
       // first sort by routes
@@ -156,7 +161,15 @@ class LiveStopTimes extends Component<Props, State> {
                   homeTimezone={homeTimezone}
                   key={id}
                   pattern={pattern}
-                  route={route}
+                  route={{
+                    ...route,
+                    operator:
+                      // Don't provide operator information unless there are multiple to differentiate between
+                      agencyCount > 1 &&
+                      transitOperators.find(
+                        (o: TransitOperator) => o.agencyId === route.agencyId
+                      )
+                  }}
                   stopTimes={times}
                   stopViewerArriving={stopViewerArriving}
                   stopViewerConfig={stopViewerConfig}
