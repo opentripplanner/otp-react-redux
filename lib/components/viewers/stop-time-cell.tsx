@@ -1,17 +1,18 @@
 import { Clock } from '@styled-icons/fa-regular/Clock'
 import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { Rss } from '@styled-icons/fa-solid/Rss'
 import addDays from 'date-fns/addDays'
 import coreUtils from '@opentripplanner/core-utils'
 import isSameDay from 'date-fns/isSameDay'
 import React from 'react'
+import styled from 'styled-components'
 
-import { getSecondsUntilDeparture } from '../../util/viewer'
+import { getSecondsUntilDeparture, getTripStatus } from '../../util/viewer'
 import { StyledIconWrapperTextAlign } from '../util/styledIcon'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import FormattedDuration from '../util/formatted-duration'
-import styled from 'styled-components'
+import getRealtimeStatusLabel from '../util/get-realtime-status-label'
 import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
@@ -39,6 +40,8 @@ const StopTimeCell = ({
   homeTimezone = getUserTimezone(),
   stopTime
 }: Props): JSX.Element => {
+  const intl = useIntl()
+
   if (!homeTimezone || !stopTime) {
     console.warn(
       'Missing required prop(s) for StopTimeCell: homeTimezone, stopTime'
@@ -119,7 +122,14 @@ const StopTimeCell = ({
           />{' '}
         </span>
       )}
-      <span className="percy-hide">
+      <span
+        className="percy-hide"
+        title={getRealtimeStatusLabel({
+          intl,
+          minutes: Math.abs(Math.ceil(stopTime.departureDelay / 60)),
+          status: getTripStatus(realtime, stopTime.departureDelay, 30)
+        })}
+      >
         {showCountdown ? (
           // Show countdown string (e.g., 3 min or Due)
           isDue ? (
