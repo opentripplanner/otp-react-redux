@@ -69,7 +69,7 @@ function NextArrivalForPattern(props: Props) {
       className="next-arrival-row"
       style={{
         backgroundColor: '#' + route.color,
-        color: getMostReadableTextColor('#' + route.color, route?.textColor)
+        color: getMostReadableTextColor(route?.color, route?.textColor)
       }}
     >
       {/* route name */}

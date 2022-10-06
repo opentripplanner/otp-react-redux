@@ -11,6 +11,7 @@ import { getSecondsUntilDeparture } from '../../util/viewer'
 import { StyledIconWrapperTextAlign } from '../util/styledIcon'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import FormattedDuration from '../util/formatted-duration'
+import styled from 'styled-components'
 import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
@@ -18,6 +19,10 @@ import DepartureTime from './departure-time'
 const { getUserTimezone } = coreUtils.time
 const ONE_HOUR_IN_SECONDS = 3600
 const ONE_DAY_IN_SECONDS = 86400
+
+const PulsingRss = styled(Rss)`
+  animation: pulse-opacity 2s ease-in-out infinite;
+`
 
 type Props = {
   /** If configured, the timezone of the area */
@@ -100,7 +105,7 @@ const StopTimeCell = ({
           transform: `scaleX(${realtime ? '-1' : '1'})`
         }}
       >
-        {stopTime.realtimeState === 'UPDATED' ? <Rss /> : <Clock />}
+        {stopTime.realtimeState === 'UPDATED' ? <PulsingRss /> : <Clock />}
       </StyledIconWrapperTextAlign>
 
       {showDayOfWeek && (
