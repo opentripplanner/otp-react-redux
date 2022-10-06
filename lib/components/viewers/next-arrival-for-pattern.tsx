@@ -18,7 +18,9 @@ type Props = {
   homeTimezone?: string
   intl: IntlShape
   pattern: Pattern
-  route: Route
+  // Not the true operator type, but the one that's used here
+  route: Route & { operator?: { colorMode?: string } }
+  routeColor: string
   stopTimes: Time[]
   stopViewerArriving: React.ReactNode
   stopViewerConfig: { numberOfDepartures: number }
@@ -27,8 +29,15 @@ type Props = {
  * Shows the next arrival for a pattern within the related stops view.
  */
 function NextArrivalForPattern(props: Props) {
-  const { homeTimezone, intl, pattern, route, stopTimes, stopViewerConfig } =
-    props
+  const {
+    homeTimezone,
+    intl,
+    pattern,
+    route,
+    routeColor,
+    stopTimes,
+    stopViewerConfig
+  } = props
 
   // @ts-expect-error React context is populated dynamically
   const { RouteRenderer: CustomRouteRenderer } = useContext(ComponentContext)
@@ -68,14 +77,18 @@ function NextArrivalForPattern(props: Props) {
     <div
       className="next-arrival-row"
       style={{
-        backgroundColor: '#' + route.color,
-        color: getMostReadableTextColor(route?.color, route?.textColor)
+        backgroundColor: routeColor,
+        color: getMostReadableTextColor(routeColor, route?.textColor)
       }}
     >
       {/* route name */}
       <div className="next-arrival-label overflow-ellipsis" title={title}>
         <span className="route-name">
-          <RouteRenderer leg={generateFakeLegForRouteRenderer(route)} />
+          <RouteRenderer
+            hideTopBorder={route.operator?.colorMode?.includes('gtfs')}
+            // All GTFS bg colors look strange with the top border
+            leg={generateFakeLegForRouteRenderer(route)}
+          />
         </span>
         {toHeadsign}
       </div>

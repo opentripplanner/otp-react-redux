@@ -163,13 +163,12 @@ class LiveStopTimes extends Component<Props, State> {
                   pattern={pattern}
                   route={{
                     ...route,
-                    operator:
-                      // Don't provide operator information unless there are multiple to differentiate between
-                      agencyCount > 1 &&
-                      transitOperators.find(
-                        (o: TransitOperator) => o.agencyId === route.agencyId
-                      )
+                    operator: transitOperators.find(
+                      (o: TransitOperator) => o.agencyId === route.agencyId
+                    )
                   }}
+                  // Only show operator logos if there are multiple operators to differentiate between
+                  showOperatorLogos={agencyCount > 1}
                   stopTimes={times}
                   stopViewerArriving={stopViewerArriving}
                   stopViewerConfig={stopViewerConfig}
@@ -215,6 +214,7 @@ class LiveStopTimes extends Component<Props, State> {
                 stopData={stopData}
                 stopViewerArriving={stopViewerArriving}
                 stopViewerConfig={stopViewerConfig}
+                transitOperators={transitOperators}
               />
               <AmenitiesPanel
                 stopData={stopData}

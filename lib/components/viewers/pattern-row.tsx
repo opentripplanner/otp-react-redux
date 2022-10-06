@@ -6,6 +6,7 @@ import type { Route, TransitOperator } from '@opentripplanner/types'
 import { ComponentContext } from '../../util/contexts'
 import {
   generateFakeLegForRouteRenderer,
+  getRouteColorBasedOnSettings,
   stopTimeComparator
 } from '../../util/viewer'
 import { Pattern, Time } from '../util/types'
@@ -18,7 +19,8 @@ type Props = {
   homeTimezone?: any
   intl: IntlShape
   pattern: Pattern
-  route: Route & { operator?: TransitOperator }
+  route: Route & { operator?: TransitOperator & { colorMode?: string } }
+  showOperatorLogos?: boolean
   stopTimes: Time[]
   stopViewerArriving: React.ReactNode
   stopViewerConfig: { numberOfDepartures: number }
@@ -43,8 +45,14 @@ class PatternRow extends Component<Props, State> {
   render() {
     const { RouteRenderer: CustomRouteRenderer } = this.context
     const RouteRenderer = CustomRouteRenderer || DefaultRouteRenderer
-    const { homeTimezone, pattern, route, stopTimes, stopViewerConfig } =
-      this.props
+    const {
+      homeTimezone,
+      pattern,
+      route,
+      showOperatorLogos,
+      stopTimes,
+      stopViewerConfig
+    } = this.props
 
     // sort stop times by next departure
     let sortedStopTimes: Time[] = []
@@ -64,7 +72,7 @@ class PatternRow extends Component<Props, State> {
     }
 
     const routeName = route.shortName ? route.shortName : route.longName
-    const routeColor = route.color ? `#${route.color}` : '#333'
+    const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
     return (
       <div className="route-row" role="table">
@@ -84,9 +92,22 @@ class PatternRow extends Component<Props, State> {
                 routeName && routeName?.length >= 4 ? { fontSize: '3vb' } : {}
               }
             >
-              <div style={{ whiteSpace: 'nowrap' }}>
-                <OperatorLogo operator={route?.operator} />
-                <RouteRenderer leg={generateFakeLegForRouteRenderer(route)} />
+              <div
+                style={{
+                  alignContent: 'center',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                {showOperatorLogos && (
+                  <OperatorLogo operator={route?.operator} />
+                )}
+                <RouteRenderer
+                  // All GTFS bg colors look strange with the top border
+                  hideTopBorder={route?.operator?.colorMode?.includes('gtfs')}
+                  leg={generateFakeLegForRouteRenderer(route)}
+                />
               </div>
             </strong>
             <span>{pattern.headsign}</span>

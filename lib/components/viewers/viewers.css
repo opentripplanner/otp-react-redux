@@ -245,10 +245,15 @@
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .route-name {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25em;
   font-size: 22px;
   font-weight: 700;
   min-width: 5ch;
+}
+.otp .stop-viewer .stop-viewer-body .next-arrival-row .route-name section {
+  border-top: none;
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-time {
