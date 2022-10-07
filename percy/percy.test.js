@@ -75,8 +75,9 @@ beforeAll(async () => {
 
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
-      args: ['--disable-web-security']
-      // headless: false
+      args: ['--disable-web-security'],
+      dumpio: true
+      // ,headless: false
     })
 
     // Fix time to Monday, March 14, 2022 14:22:22 GMT (10:22:22 AM EDT).
@@ -136,6 +137,37 @@ test('OTP-RR', async () => {
   await page.setViewport({
     height: 1080,
     width: 1920
+  })
+  page.on('console', async (msg) => {
+    const args = await msg.args()
+    args.forEach(async (arg) => {
+      const val = await arg.jsonValue()
+      // value is serializable
+      if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
+      // value is unserializable (or an empty oject)
+      else {
+        const { description, subtype, type } = arg._remoteObject
+        console.log(
+          `type: ${type}, subtype: ${subtype}, description:\n ${description}`
+        )
+      }
+    })
+  })
+  // log all errors that were logged to the browser console
+  page.on('warn', (warn) => {
+    console.log(warn)
+  })
+  page.on('error', (error) => {
+    console.error(error)
+    console.error(error.stack)
+  })
+  // log all uncaught exceptions
+  page.on('pageerror', (error) => {
+    console.error(`Page Error: ${error}`)
+  })
+  // log all failed requests
+  page.on('requestfailed', (req) => {
+    console.error(`Request failed: ${req.method()} ${req.url()}`)
   })
 
   await percySnapshotWithWait(page, 'Main Page (without styling)')

@@ -1358,7 +1358,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           hideTopBorder={false}
                                         >
                                           <section
-                                            className="sc-fmlJrY gyZhk"
+                                            className="sc-fmlJrY ebQLfs"
                                             color="333333"
                                           >
                                             20
@@ -3678,7 +3678,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                           hideTopBorder={false}
                                         >
                                           <section
-                                            className="sc-fmlJrY gyZhk"
+                                            className="sc-fmlJrY ebQLfs"
                                             color="333333"
                                           >
                                             20
@@ -5696,7 +5696,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           hideTopBorder={false}
                                         >
                                           <section
-                                            className="sc-fmlJrY gyZhk"
+                                            className="sc-fmlJrY ebQLfs"
                                             color="333333"
                                           >
                                             20
@@ -8940,7 +8940,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           hideTopBorder={false}
                                         >
                                           <section
-                                            className="sc-fmlJrY gyZhk"
+                                            className="sc-fmlJrY ebQLfs"
                                             color="333333"
                                           >
                                             20
@@ -9648,7 +9648,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           hideTopBorder={false}
                                         >
                                           <section
-                                            className="sc-fmlJrY gyZhk"
+                                            className="sc-fmlJrY ebQLfs"
                                             color="333333"
                                           >
                                             36
@@ -10356,7 +10356,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           hideTopBorder={false}
                                         >
                                           <section
-                                            className="sc-fmlJrY gyZhk"
+                                            className="sc-fmlJrY ebQLfs"
                                             color="333333"
                                           >
                                             94
@@ -11172,7 +11172,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           hideTopBorder={false}
                                         >
                                           <section
-                                            className="sc-fmlJrY gyZhk"
+                                            className="sc-fmlJrY ebQLfs"
                                             color="333333"
                                           >
                                             94
@@ -15442,7 +15442,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           hideTopBorder={false}
                                         >
                                           <section
-                                            className="sc-fmlJrY gyZhk"
+                                            className="sc-fmlJrY ebQLfs"
                                             color="333333"
                                           >
                                             20
