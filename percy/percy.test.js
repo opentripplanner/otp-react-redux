@@ -183,7 +183,7 @@ test('OTP-RR', async () => {
   // Open schedule view
   await page.waitForSelector('button.link-button.pull-right')
   await page.click('button.link-button.pull-right')
-  await page.waitForTimeout(3000) // Slow animation
+  await page.waitForTimeout(6000) // Slow animation
   await percySnapshotWithWait(page, 'Schedule Viewer')
   // TODO: is the schedule date wrong?
 
