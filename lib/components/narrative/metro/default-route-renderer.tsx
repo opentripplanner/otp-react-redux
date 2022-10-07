@@ -6,12 +6,13 @@ import styled from 'styled-components'
 // doesn't allow us to style it from within the RouteBlock
 const Block = styled.section<{ color: string; hideTopBorder?: boolean }>`
   background: #${(props) => props.color}1A;
-  padding: 3px 7px;
-  border-top: 5px solid #${(props) => props.color};
   border-radius: 5px;
-  text-align: center;
+  border-top: 5px solid #${(props) => props.color};
   display: inline-block;
   max-width: 12vw;
+  padding: 3px 7px;
+  text-align: center;
+  white-space: break-spaces;
 
   ${(props) => props.hideTopBorder && 'border-top: none'}
 `
