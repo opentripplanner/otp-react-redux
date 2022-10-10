@@ -113,7 +113,6 @@
 }
 .otp .stop-viewer .route-row .header .route-name {
   display: grid;
-  padding-left: 5px;
   grid-template-columns: 4ch 2fr;
   gap: 5px;
   font-size: 42px;
