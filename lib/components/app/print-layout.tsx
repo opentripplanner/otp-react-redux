@@ -67,6 +67,8 @@ class PrintLayout extends Component<Props, State> {
     if (!itinerary && location && location.search) {
       parseUrlQueryString()
     }
+
+    // TODO: use currentQuery to pan/zoom to the correct part of the map
   }
 
   componentWillUnmount() {
