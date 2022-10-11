@@ -1,6 +1,6 @@
 @import url(node_modules/bootstrap/dist/css/bootstrap.min.css);
 
-@import url(https://unpkg.com/leaflet@1.0.3/dist/leaflet.css);
+@import url(node_modules/maplibre-gl/dist/maplibre-gl.css);
 
 @import url(lib/components/admin/call-taker.css);
 @import url(lib/components/app/app.css);
