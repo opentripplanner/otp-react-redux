@@ -1,32 +1,38 @@
 import { connect } from 'react-redux'
-// @ts-expect-error ParkAndRideOverlay is not typescripted yet
+import { Location } from '@opentripplanner/types'
 import ParkAndRideOverlay from '@opentripplanner/park-and-ride-overlay'
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 
 import { parkAndRideQuery } from '../../actions/api'
 import { setLocation } from '../../actions/map'
 
 type ParkAndRideParams = {
   maxTransitDistance?: number
-  // FIXME: properly type
+}
+type Props = ParkAndRideParams & {
+  id?: string
+  keyboard?: boolean
+  parkAndRideLocations?: { name: string; x: number; y: number }[]
+  parkAndRideQuery: (params: ParkAndRideParams) => void
+  setLocation: (location: {
+    location: Location
+    locationType: string
+    reverseGeocode: boolean
+  }) => void
 }
 
-class ConnectedParkAndRideOverlay extends Component<
-  { parkAndRideQuery: (params: ParkAndRideParams) => void } & ParkAndRideParams
-> {
-  componentDidMount() {
+function ConnectedParkAndRideOverlay(props: Props): JSX.Element {
+  useEffect(() => {
     const params: ParkAndRideParams = {}
-    if (this.props.maxTransitDistance) {
-      params.maxTransitDistance = this.props.maxTransitDistance
+    if (props.maxTransitDistance) {
+      params.maxTransitDistance = props.maxTransitDistance
     }
-    // TODO: support config-defined bounding envelope
 
-    this.props.parkAndRideQuery(params)
-  }
+    props.parkAndRideQuery(params)
+  }, [props])
 
-  render() {
-    return <ParkAndRideOverlay {...this.props} />
-  }
+  // @ts-expect-error the package isn't typed to handle an empty array even though it can
+  return <ParkAndRideOverlay {...props} />
 }
 
 // connect to the redux store
