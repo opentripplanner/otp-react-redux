@@ -3,13 +3,13 @@ import { Redo } from '@styled-icons/fa-solid/Redo'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 
+import { Route, TransitOperator } from '@opentripplanner/types'
 import {
   getRouteIdForPattern,
   getStopTimesByPattern,
   routeIsValid
 } from '../../util/viewer'
 import { IconWithText } from '../util/styledIcon'
-import { Route, TransitOperator } from '@opentripplanner/types'
 import SpanWithSpace from '../util/span-with-space'
 
 import AmenitiesPanel from './amenities-panel'
@@ -136,7 +136,7 @@ class LiveStopTimes extends Component<Props, State> {
       (pattern: any) => pattern.pattern.headsign
     )
 
-    const agencyCount = new Set(stopData.routes.map((r: Route) => r.agencyId))
+    const agencyCount = new Set(stopData?.routes?.map((r: Route) => r.agencyId))
       .size
 
     // TODO: Shared types
