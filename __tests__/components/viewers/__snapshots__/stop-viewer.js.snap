@@ -418,7 +418,14 @@ exports[`components > viewers > stop viewer should render countdown times after 
                 <div
                   className="header-text"
                 >
-                  <span>
+                  <OperatorLogo />
+                  <span
+                    style={
+                      Object {
+                        "paddingLeft": "0.5ch",
+                      }
+                    }
+                  >
                     W Burnside & SW 18th
                   </span>
                 </div>
@@ -801,6 +808,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       homeTimezone="America/Los_Angeles"
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
+                      showOperatorLogos={false}
                       stopData={
                         Object {
                           "agencyName": "TriMet",
@@ -2647,7 +2655,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                 expanded={false}
                                 onToggleExpanded={[Function]}
                                 title="components.AmenitiesPanel.nearbyAmenities"
-                                titleWidth="16ch"
                               >
                                 <div
                                   className="related-panel-container"
@@ -3017,7 +3024,14 @@ exports[`components > viewers > stop viewer should render countdown times for st
                 <div
                   className="header-text"
                 >
-                  <span>
+                  <OperatorLogo />
+                  <span
+                    style={
+                      Object {
+                        "paddingLeft": "0.5ch",
+                      }
+                    }
+                  >
                     W Burnside & SW 18th
                   </span>
                 </div>
@@ -3400,6 +3414,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       homeTimezone="America/Los_Angeles"
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
+                      showOperatorLogos={false}
                       stopData={
                         Object {
                           "agencyName": "TriMet",
@@ -4287,7 +4302,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                 expanded={false}
                                 onToggleExpanded={[Function]}
                                 title="components.AmenitiesPanel.nearbyAmenities"
-                                titleWidth="16ch"
                               >
                                 <div
                                   className="related-panel-container"
@@ -4756,7 +4770,14 @@ exports[`components > viewers > stop viewer should render times after midnight w
                 <div
                   className="header-text"
                 >
-                  <span>
+                  <OperatorLogo />
+                  <span
+                    style={
+                      Object {
+                        "paddingLeft": "0.5ch",
+                      }
+                    }
+                  >
                     W Burnside & SW 18th
                   </span>
                 </div>
@@ -5139,6 +5160,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       homeTimezone="America/Los_Angeles"
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
+                      showOperatorLogos={false}
                       stopData={
                         Object {
                           "agencyName": "TriMet",
@@ -7019,7 +7041,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                 expanded={false}
                                 onToggleExpanded={[Function]}
                                 title="components.AmenitiesPanel.nearbyAmenities"
-                                titleWidth="16ch"
                               >
                                 <div
                                   className="related-panel-container"
@@ -7746,7 +7767,14 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                 <div
                   className="header-text"
                 >
-                  <span>
+                  <OperatorLogo />
+                  <span
+                    style={
+                      Object {
+                        "paddingLeft": "0.5ch",
+                      }
+                    }
+                  >
                     W Burnside & SW 8th
                   </span>
                 </div>
@@ -8129,6 +8157,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       homeTimezone="America/Los_Angeles"
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
+                      showOperatorLogos={false}
                       stopData={
                         Object {
                           "code": "715",
@@ -13527,7 +13556,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 expanded={false}
                                 onToggleExpanded={[Function]}
                                 title="components.AmenitiesPanel.nearbyAmenities"
-                                titleWidth="16ch"
                               >
                                 <div
                                   className="related-panel-container"
@@ -14249,7 +14277,14 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                 <div
                   className="header-text"
                 >
-                  <span>
+                  <OperatorLogo />
+                  <span
+                    style={
+                      Object {
+                        "paddingLeft": "0.5ch",
+                      }
+                    }
+                  >
                     W Burnside & SW 8th
                   </span>
                 </div>
@@ -14632,6 +14667,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       homeTimezone="America/Los_Angeles"
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
+                      showOperatorLogos={false}
                       stopData={
                         Object {
                           "agencyName": "TriMet",
@@ -17777,7 +17813,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                 expanded={false}
                                 onToggleExpanded={[Function]}
                                 title="components.AmenitiesPanel.nearbyAmenities"
-                                titleWidth="16ch"
                               >
                                 <div
                                   className="related-panel-container"

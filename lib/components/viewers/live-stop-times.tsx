@@ -1,9 +1,9 @@
 import { FormattedMessage, FormattedTime } from 'react-intl'
 import { Redo } from '@styled-icons/fa-solid/Redo'
+import { TransitOperator } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 
-import { Route, TransitOperator } from '@opentripplanner/types'
 import {
   getRouteIdForPattern,
   getStopTimesByPattern,
@@ -30,11 +30,16 @@ type Props = {
   nearbyStops: any // TODO: shared types
   setHoveredStop: (stopId: string) => void
   showNearbyStops: boolean
-  stopData: any // TODO: shared types
-  stopViewerArriving: any // TODO: shared types
-  stopViewerConfig: any // TODO: shared types
+  showOperatorLogos?: boolean
+  // TODO: shared types
+  stopData: any
+  // TODO: shared types
+  stopViewerArriving: any
+  // TODO: shared types
+  stopViewerConfig: any
   toggleAutoRefresh: (enable: boolean) => void
-  transitOperators: any // TODO: shared types
+  // TODO: shared types
+  transitOperators: any
   viewedStop: { stopId: string }
 }
 
@@ -119,6 +124,7 @@ class LiveStopTimes extends Component<Props, State> {
       nearbyStops,
       setHoveredStop,
       showNearbyStops,
+      showOperatorLogos,
       stopData,
       stopViewerArriving,
       stopViewerConfig,
@@ -135,9 +141,6 @@ class LiveStopTimes extends Component<Props, State> {
       // TODO: Shared types
       (pattern: any) => pattern.pattern.headsign
     )
-
-    const agencyCount = new Set(stopData?.routes?.map((r: Route) => r.agencyId))
-      .size
 
     // TODO: Shared types
     const patternComparator = (patternA: any, patternB: any) => {
@@ -167,8 +170,7 @@ class LiveStopTimes extends Component<Props, State> {
                       (o: TransitOperator) => o.agencyId === route.agencyId
                     )
                   }}
-                  // Only show operator logos if there are multiple operators to differentiate between
-                  showOperatorLogos={agencyCount > 1}
+                  showOperatorLogos={showOperatorLogos}
                   stopTimes={times}
                   stopViewerArriving={stopViewerArriving}
                   stopViewerConfig={stopViewerConfig}
