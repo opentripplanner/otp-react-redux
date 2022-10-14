@@ -28,6 +28,11 @@ async function runAxeTestOnPath(otpPath) {
   const page = await browser.newPage()
   const filePath = `http://localhost:${MOCK_SERVER_PORT}/#${otpPath}`
   await Promise.all([
+    page.setViewport({
+      deviceScaleFactor: 1,
+      height: 1080,
+      width: 1920
+    }),
     page.goto(filePath),
     page.waitForNavigation({ waitUntil: 'networkidle2' })
   ])
