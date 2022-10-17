@@ -1,9 +1,8 @@
 import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
-// @ts-expect-error transitive-overlay is not typescripted
 import TransitiveCanvasOverlay from '@opentripplanner/transitive-overlay'
 
-import { getTransitiveData } from '../../util/state'
+import { getActiveLeg, getTransitiveData } from '../../util/state'
 
 type Props = {
   intl?: IntlShape
@@ -28,13 +27,14 @@ const mapStateToProps = (state: Record<string, any>, ownProps: Props) => {
     return {}
   }
 
-  const obj = {
+  return {
+    activeLeg: getActiveLeg(state),
     labeledModes,
     styles,
-    // @ts-expect-error state.js is not typescripted
+    // @ts-expect-error typescript is confused by the complex redux reducer. Both params are needed
     transitiveData: getTransitiveData(state, ownProps)
-  } // generate implicit type
-  return obj
+  }
 }
 
+// @ts-expect-error state.js being typescripted will fix this error
 export default injectIntl(connect(mapStateToProps)(TransitiveCanvasOverlay))

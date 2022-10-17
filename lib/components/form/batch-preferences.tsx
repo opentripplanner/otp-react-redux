@@ -5,11 +5,11 @@ import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
 import React, { Component } from 'react'
 
+import { combinationFilter } from '../../util/combination-filter'
 import { ComponentContext } from '../../util/contexts'
 import { getSupportedModes } from '../../util/i18n'
 import { setQueryParam } from '../../actions/form'
 
-import { combinationFilter } from './batch-settings'
 import { defaultModeOptions, Mode } from './mode-buttons'
 import { StyledBatchPreferences } from './batch-styled'
 
