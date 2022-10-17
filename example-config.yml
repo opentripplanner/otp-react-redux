@@ -296,8 +296,10 @@ itinerary:
   customBatchUiBackground: true
   # Whether to render itineraries below a mode description header
   groupByMode: true
-  # Whether to merge itineraries with the same origin, destination, and transit modes
+  # Whether to merge groups of itineraries with the same primary mode (Bike, Walk, etc)
   groupTransitModes: true
+  # Whether to merge itineraries with the same origin, destination, and transit modes
+  mergeItineraries: true
   # Whether to show the first itinerary on the map. If this is set to false, routes
   # will only show on the map on hover or click
   showFirstResultByDefault: false
@@ -484,9 +486,6 @@ itinerary:
 # default is 60 seconds.
 # onTimeThresholdSeconds: 60
 
-# Format the date time format for display.
-dateTime:
-  longDateFormat: DD-MM-YYYY
 # stopViewer:
 #   # The radius (in meters) to use when searching for nearby stops and other
 #   # amenities (rental vehicles, park and rides) to show for the focused stop.

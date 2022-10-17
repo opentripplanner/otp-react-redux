@@ -142,7 +142,7 @@ test('OTP-RR', async () => {
 
   // Plan a trip
   await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2022-05-09&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=false&numItineraries=3&otherThanPreferredRoutesPenalty=900`
+    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2022-10-10&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=false&numItineraries=3&otherThanPreferredRoutesPenalty=900`
   )
   await page.waitForNavigation({ waitUntil: 'networkidle2' })
   await page.waitForSelector('.title')
@@ -160,6 +160,13 @@ test('OTP-RR', async () => {
   const [tripViewerButton] = await page.$x(
     "//button[contains(., 'Trip Viewer')]"
   )
+
+  // If the trip viewer button didn't appear, perhaps we need to click the itinerary again
+  if (!tripViewerButton) {
+    await page.click('.title:nth-of-type(1)')
+    await page.waitForTimeout(2000)
+  }
+
   await tripViewerButton.click()
   await page.waitForSelector('div.trip-viewer-body')
   await page.waitForTimeout(1000)
@@ -191,6 +198,11 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Route Viewer')
 
   // Open Specific Route`
+  try {
+    await page.$x("//span[contains(., 'Sugarloaf Mills - Lindbergh Center')]")
+  } catch {
+    await page.reload({ waitUntil: 'networkidle0' })
+  }
   const [busRouteButton] = await page.$x(
     "//span[contains(., 'Sugarloaf Mills - Lindbergh Center')]"
   )
@@ -221,6 +233,11 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 410')
 
   // Stop viewer from pattern viewer
+  try {
+    await page.$x("//a[contains(., 'Sugarloaf Mills GCT Park and Ride')]")
+  } catch {
+    await page.reload({ waitUntil: 'networkidle0' })
+  }
   const [patternStopButton] = await page.$x(
     "//a[contains(., 'Sugarloaf Mills GCT Park and Ride')]"
   )

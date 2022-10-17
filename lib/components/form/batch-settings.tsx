@@ -1,15 +1,18 @@
 /* eslint-disable react/prop-types */
+import { Cog } from '@styled-icons/fa-solid/Cog'
 import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
+import { Search } from '@styled-icons/fa-solid/Search'
+import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
+import { combinationFilter } from '../../util/combination-filter'
 import { getDefaultModes } from '../../util/itinerary'
 import { hasValidLocation } from '../../util/state'
-import Icon from '../util/icon'
 
 import {
   BatchPreferencesContainer,
@@ -20,6 +23,7 @@ import {
   StyledDateTimePreview
 } from './batch-styled'
 import { Dot } from './styled'
+import { StyledIconWrapper } from '../util/styledIcon'
 import BatchPreferences, { replaceTransitMode } from './batch-preferences'
 import DateTimeModal from './date-time-modal'
 import ModeButtons, {
@@ -28,33 +32,6 @@ import ModeButtons, {
 } from './mode-buttons'
 import type { Combination } from './batch-preferences'
 import type { Mode } from './mode-buttons'
-
-/**
- * A function that generates a filter to be used to filter a list of combinations.
- *
- * TS FIXME: use the ModeOption type that is currently defined
- * in @opentripplanner/trip-form/types.ts (That type
- * needs to be moved first to @opentripplanner/types first,
- * with the defaultUnselected attribute added).
- *
- * @param enabledModesDirty A list of the modes enabled in the UI
- * @returns Filter function to filter combinations
- */
-export const combinationFilter =
-  (enabledModes: string[]) =>
-  (c: Combination): boolean => {
-    if (c.requiredModes) {
-      return c.requiredModes.every((m) => enabledModes.includes(m))
-    } else {
-      // This is for backwards compatibility
-      // In case a combination does not include requiredModes.
-      console.warn(
-        `Combination ${c.mode} does not have any specified required modes.`
-      )
-      const modesInCombination = c.mode.split(',')
-      return modesInCombination.every((m) => enabledModes.includes(m))
-    }
-  }
 
 const ModeButtonsFullWidthContainer = styled.div`
   display: flex;
@@ -200,7 +177,9 @@ class BatchSettings extends Component<Props, State> {
             {coreUtils.query.isNotDefaultQuery(currentQuery, config) && (
               <Dot className="dot" />
             )}
-            <Icon className="fa-2x" type="cog" />
+            <StyledIconWrapper size="2x">
+              <Cog />
+            </StyledIconWrapper>
           </SettingsPreview>
           <StyledDateTimePreview
             // as='button'
@@ -222,15 +201,14 @@ class BatchSettings extends Component<Props, State> {
               id: 'components.BatchSettings.planTripTooltip'
             })}
           >
-            <Icon
-              className="fa-2x"
-              type={
-                hasValidLocation(currentQuery, 'from') ||
-                hasValidLocation(currentQuery, 'to')
-                  ? 'refresh'
-                  : 'search'
-              }
-            />
+            <StyledIconWrapper style={{ fontSize: '1.6em' }}>
+              {hasValidLocation(currentQuery, 'from') ||
+              hasValidLocation(currentQuery, 'to') ? (
+                <SyncAlt />
+              ) : (
+                <Search />
+              )}
+            </StyledIconWrapper>
           </PlanTripButton>
         </MainSettingsRow>
         {expanded === 'DATE_TIME' && (

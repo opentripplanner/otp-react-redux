@@ -1,14 +1,16 @@
+import { Clock } from '@styled-icons/fa-regular/Clock'
 import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage } from 'react-intl'
+import { Rss } from '@styled-icons/fa-solid/Rss'
 import addDays from 'date-fns/addDays'
 import coreUtils from '@opentripplanner/core-utils'
 import isSameDay from 'date-fns/isSameDay'
 import React from 'react'
 
 import { getSecondsUntilDeparture } from '../../util/viewer'
+import { StyledIconWrapperTextAlign } from '../util/styledIcon'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import FormattedDuration from '../util/formatted-duration'
-import Icon from '../util/icon'
 import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
@@ -90,10 +92,11 @@ const StopTimeCell = ({
   return (
     <div>
       <div className="pull-left">
-        <Icon
+        <StyledIconWrapperTextAlign
           style={{ color: '#888', fontSize: '0.8em', marginRight: 2 }}
-          type={stopTime.realtimeState === 'UPDATED' ? 'rss' : 'clock-o'}
-        />
+        >
+          {stopTime.realtimeState === 'UPDATED' ? <Rss /> : <Clock />}
+        </StyledIconWrapperTextAlign>
       </div>
 
       <div style={{ fontSize: showDayOfWeek ? 12 : 14, marginLeft: 20 }}>
