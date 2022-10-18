@@ -34,6 +34,26 @@ The same environment variables which affect the behavior of `yarn start` also af
 env JS_CONFIG=my-custom-js.js CUSTOM_CSS=my-custom-css.css yarn build
 ```
 
+## Internationalization
+
+OTP-react-redux uses `react-intl` from the [`formatjs`](https://github.com/formatjs/formatjs) library for internationalization.
+Both `react-intl` and `formatjs` take advantage of the 
+
+Language-specific content is located in YML files under the `i18n` folder
+(e.g. `en-US.yml` for American English, `fr.yml` for generic French, etc.).
+
+Most textual content can also be customized using the `language` section of `config.yml`,
+whether for all languages at once or for each supported individual language.
+
+### Contributing translations
+
+OTP-react-redux now uses [Weblate](https://www.weblate.org) to manage translations!
+Translations from the community are welcome and very much appreciated,
+please see instructions at https://hosted.weblate.org/projects/otp-react-redux/.
+Community input from Weblate will appear as pull requests with changes to files in the `i18n` folder for our review.
+
+If changes to a specific language file is needed but not enabled in Weblate, please open an issue or a pull request with the changes needed.
+
 ## Library Documentation
 
 More coming soon...
