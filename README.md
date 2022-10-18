@@ -37,7 +37,7 @@ env JS_CONFIG=my-custom-js.js CUSTOM_CSS=my-custom-css.css yarn build
 ## Internationalization
 
 OTP-react-redux uses `react-intl` from the [`formatjs`](https://github.com/formatjs/formatjs) library for internationalization.
-Both `react-intl` and `formatjs` take advantage of the 
+Both `react-intl` and `formatjs` take advantage of native internationalization features provided by web browsers.
 
 Language-specific content is located in YML files under the `i18n` folder
 (e.g. `en-US.yml` for American English, `fr.yml` for generic French, etc.).
