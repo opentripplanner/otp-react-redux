@@ -144,6 +144,7 @@ components:
     destination: destination
     origin: origin
     planTripTooltip: Plan trip
+    settings: Settings
     validationMessage: "Please define the following fields to plan a trip: {issues}"
   BeforeSignInScreen:
     mainTitle: Signing you in

@@ -48,7 +48,11 @@ const ModeButton = ({
   )
   return (
     <OverlayTrigger overlay={overlayTooltip} placement="bottom">
-      <button className={className} onClick={() => onClick(mode)}>
+      <button
+        aria-label={label || getFormattedMode(mode, intl)}
+        className={className}
+        onClick={() => onClick(mode)}
+      >
         {icon ? (
           <StyledIconWrapper style={{ fontSize: '24px' }}>
             <SvgIcon iconName={icon} style={{ marginBottom: '4px' }} />
@@ -96,6 +100,7 @@ const ModeButtons = ({
     <>
       {modeOptions.map((item) => (
         <StyledModeButton
+          ariaLabel={item.mode}
           className={className}
           intl={intl}
           item={item}

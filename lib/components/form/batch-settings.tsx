@@ -171,6 +171,9 @@ class BatchSettings extends Component<Props, State> {
         </ModeButtonsFullWidthContainer>
         <MainSettingsRow>
           <SettingsPreview
+            aria-label={intl.formatMessage({
+              id: 'components.BatchSettings.settings'
+            })}
             expanded={expanded === 'SETTINGS'}
             onClick={this._toggleSettings}
           >
