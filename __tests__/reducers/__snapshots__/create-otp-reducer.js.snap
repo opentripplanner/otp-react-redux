@@ -97,6 +97,7 @@ Object {
   },
   "transitIndex": Object {
     "routes": Object {},
+    "routesFetchStatus": 0,
     "stops": Object {},
     "trips": Object {},
   },
