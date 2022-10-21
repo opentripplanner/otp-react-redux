@@ -100,7 +100,6 @@ const ModeButtons = ({
     <>
       {modeOptions.map((item) => (
         <StyledModeButton
-          ariaLabel={item.mode}
           className={className}
           intl={intl}
           item={item}
