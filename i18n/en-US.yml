@@ -246,9 +246,11 @@ components:
         one {# issue}
         other {# issues}
       }"
+    changeSortDir: "Change sort direction"
     # Note to translator: text below is width-constrained
     # (about half-pane width, or half-screen width in mobile views).
     searching: Finding your options...
+    selectTitle: Sort By
     selectArrivalTime: Arrival time
     selectBest: Best option
     selectCost: Cost

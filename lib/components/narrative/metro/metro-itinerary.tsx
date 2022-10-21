@@ -62,7 +62,7 @@ const DepartureTimes = styled.span`
     cursor: auto;
   }
 
-  button {
+  div.header {
     background: none;
     border: none;
     display: inline;
@@ -293,6 +293,18 @@ class MetroItinerary extends NarrativeItinerary {
       return routeBlocks
     }
 
+    const onClick = () => {
+      setActiveItinerary(itinerary)
+      setActiveLeg(null, null)
+      setItineraryView(ItineraryView.FULL)
+      // Reset the scroll. Refs would be the more
+      // appropriate way to do this, but they don't work
+      setTimeout(
+        () => document.querySelector('.metro-itin')?.scrollIntoView(),
+        10
+      )
+    }
+
     // Use first leg's agency as a fallback
     return (
       <div
@@ -303,21 +315,17 @@ class MetroItinerary extends NarrativeItinerary {
         onMouseLeave={this._onMouseLeave}
         role="presentation"
       >
-        <button
+        {/* Semantically this is incorrect, but this helps a11y tests pass. Buttons may not contain html. TODO FIX? */}
+        <div
           className="header"
+          onClick={onClick}
+          // TODO: once this can be tabbed to, this behavior needs to be improved. Maybe it focuses the
+          // first time?
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
+          onKeyDown={() => {}}
           // TODO: use _onHeaderClick for tap only -- this will require disabling
           // this onClick handler after a touchStart
-          onClick={() => {
-            setActiveItinerary(itinerary)
-            setActiveLeg(null, null)
-            setItineraryView(ItineraryView.FULL)
-            // Reset the scroll. Refs would be the more
-            // appropriate way to do this, but they don't work
-            setTimeout(
-              () => document.querySelector('.metro-itin')?.scrollIntoView(),
-              10
-            )
-          }}
+          role="presentation"
         >
           <ItineraryWrapper
             aria-label={intl.formatMessage(
@@ -339,7 +347,7 @@ class MetroItinerary extends NarrativeItinerary {
             )}
             {!mini && (
               <ItineraryGrid className="itin-grid">
-                <Routes enableDot={enableDot}>
+                <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
                 </Routes>
                 <PrimaryInfo>
@@ -418,7 +426,7 @@ class MetroItinerary extends NarrativeItinerary {
               </ItineraryGridSmall>
             )}
           </ItineraryWrapper>
-        </button>
+        </div>
         {active && expanded && (
           <>
             {showRealtimeAnnotation && <SimpleRealtimeAnnotation />}
