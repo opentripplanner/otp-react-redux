@@ -105,8 +105,8 @@ components:
     mainTitle: Mis ajustes
     terms: Términos
   ItinerarySummary:
-    fareCost: "\"{useMaxFare, select,\n  true {{minTotalFare} - {maxTotalFare}}\n\
-      \  other {{minTotalFare}}\n }\"\n"
+    fareCost: "{useMaxFare, select,\n  true {{minTotalFare} - {maxTotalFare}}\n  other\
+      \ {{minTotalFare}}\n }\n"
   MapLayers:
     bike-rental: '{companies} Bicicleta Compartida'
     car-rental: Ubicaciones de los coches de alquiler
@@ -127,6 +127,9 @@ components:
     selectDuration: Duración
     selectWalkTime: Tiempo de caminata
     viewAll: Ver todas las opciones
+    itinerariesFound: '{itineraryNum, plural, one {# itinerario encontrado} other
+      {# itinerarios encontrados}}'
+    numIssues: '{issueNum, plural, one {# problema} other {# problemas}}'
   NewAccountWizard:
     terms: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
@@ -147,6 +150,8 @@ components:
     routeName: <strong>{routeName}</strong> A {headsign}
     routeShort: A {headsign}
     status: Estado
+    collapseOrExpandDepartures: "{expanded, select, \n true {Desplegable}\n other\
+      \ {Ampliar}\n } para las salidas de Route {routeName}\n"
   PhoneNumberEditor:
     invalidPhone: Por favor, introduzca un número de teléfono válido.
     requestNewCode: Solicitar un nuevo código
@@ -160,9 +165,16 @@ components:
     smsDetail: 'Las notificaciones por SMS se enviarán a:'
     verificationCode: 'Código de verificación:'
     verified: Verificado
+    verificationInstructions: "Por favor, compruebe en la aplicación de mensajería\
+      \ SMS de su teléfono móvil si hay un mensaje de texto con un código de verificación,\
+      \ e introduzca el código que aparece a continuación. El código caduca a los\
+      \ 10 minutos.\n"
   Place:
     viewStop: Ver parada
     deleteThisPlace: Borrar este lugar
+    enterAlert: "Introduzca el origen/destino en el formulario (o establezca mediante\
+      \ un clic en el mapa) y haga clic en el marcador resultante para establecerlo\
+      \ como lugar de {placeType}.\n"
   PlanFirstLastButtons:
     first: Primero
     previous: Anteriormente
@@ -391,6 +403,19 @@ components:
     noPRLotsFound: No hay Park-and-Ride cerca.
     nearbyAmenities: Servicios cercanos
     noNearbyBikes: No se ha encontrado ningún alquiler de bicicletas cercano.
+    bikesAtStation: "{companyLength, plural,\n =0 {Bicicletas en la {name}}\n other\
+      \ {Bicicletas de {company} en la{name}}\n }\n"
+    bikesAvailable: "{count, plural,\n =0 {No hay bicicletas disponibles}\n one {#\
+      \ bicicleta disponible}\n other {# bicicletas disponibles}\n }\n"
+    bikesNearby: "{count, plural,\n =0 {No hay bicicletas de {company} cerca}\n one\
+      \ {# bicicleta de {company} cerca}\n other {#bicicletas de {company} cerca}\n\
+      \ }\n"
+    scootersNearby: "{count, plural,\n =0 {No hay e-scooters de {company} cerca}\n\
+      \ one {# e-scooter de {company} cerca}\n other {# e-scooters de {company} cerca}\n\
+      \ }\n"
+    spacesAvailable: "{count, plural,\n =0 {No hay plazas de aparcamiento disponibles}\n\
+      \ one {# plaza de aparcamiento disponible}\n other {# plazas de aparcamiento\
+      \ disponibles}\n }\n"
   AppMenu:
     closeMenu: Cerrar Menú
     fieldTrip: Título del viaje
