@@ -11,8 +11,9 @@ import styled from 'styled-components'
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { combinationFilter } from '../../util/combination-filter'
+import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { getDefaultModes } from '../../util/itinerary'
-import { hasValidLocation } from '../../util/state'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 import {
   BatchPreferencesContainer,
@@ -23,7 +24,6 @@ import {
   StyledDateTimePreview
 } from './batch-styled'
 import { Dot } from './styled'
-import { StyledIconWrapper } from '../util/styledIcon'
 import BatchPreferences, { replaceTransitMode } from './batch-preferences'
 import DateTimeModal from './date-time-modal'
 import ModeButtons, {
@@ -67,6 +67,7 @@ const ModeButtonsCompressed = styled(ModeButtons)`
 `
 // TYPESCRIPT TODO: better types
 type Props = {
+  activeSearch: any
   config: any
   currentQuery: any
   intl: IntlShape
@@ -157,7 +158,7 @@ class BatchSettings extends Component<Props, State> {
   _toggleSettings = () => this.setState(this._updateExpanded('SETTINGS'))
 
   render() {
-    const { config, currentQuery, intl, modeOptions } = this.props
+    const { activeSearch, config, currentQuery, intl, modeOptions } = this.props
     const { expanded, selectedModes } = this.state
     return (
       <>
@@ -202,8 +203,9 @@ class BatchSettings extends Component<Props, State> {
             })}
           >
             <StyledIconWrapper style={{ fontSize: '1.6em' }}>
-              {hasValidLocation(currentQuery, 'from') ||
-              hasValidLocation(currentQuery, 'to') ? (
+              {hasValidLocation(currentQuery, 'from') &&
+              hasValidLocation(currentQuery, 'to') &&
+              !!activeSearch ? (
                 <SyncAlt />
               ) : (
                 <Search />
@@ -229,6 +231,7 @@ class BatchSettings extends Component<Props, State> {
 // connect to the redux store
 // TODO: Typescript
 const mapStateToProps = (state: any) => ({
+  activeSearch: getActiveSearch(state),
   config: state.otp.config,
   currentQuery: state.otp.currentQuery,
   modeOptions: state.otp.config.modes.modeOptions || defaultModeOptions,
