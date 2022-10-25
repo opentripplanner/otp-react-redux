@@ -19,7 +19,7 @@ export function localizeGradationMap(
   gradationMap?: Record<string, any>
 ): Record<string, any> {
   if (!gradationMap) return {}
-  const newGradationMap: Record<string, any> = {}
+  const newGradationMap: Record<string, any> = { ...gradationMap }
 
   Object.keys(newGradationMap).forEach((key) => {
     // As these localization keys are in the config, rather than
