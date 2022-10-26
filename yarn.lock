@@ -2461,17 +2461,7 @@
     "@opentripplanner/location-icon" "^1.4.0"
     flat "^5.0.2"
 
-"@opentripplanner/geocoder@^1.2.0", "@opentripplanner/geocoder@^1.2.2", "@opentripplanner/geocoder@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.3.0.tgz#187f26702778b798b1a7c9148640f1bf427a06bc"
-  integrity sha512-SvZxpL62onv/TXoDGpGo5vWqWcsRbuvrkiwPOqFIAZIvhhAFmlNnIh7JjPDikOPieLH6+OK9LsKz+4R3EJP7/w==
-  dependencies:
-    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
-    "@conveyal/lonlat" "^1.4.1"
-    isomorphic-mapzen-search "^1.6.1"
-    lodash.memoize "^4.1.2"
-
-"@opentripplanner/geocoder@^1.3.2":
+"@opentripplanner/geocoder@1.3.2", "@opentripplanner/geocoder@^1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.3.2.tgz#cd67132cb00d6089457d33eb1d4526ef47c0914a"
   integrity sha512-gTkJlAy0lURZxjG/+bm1qx+M2oLdjSuQEOjLaWhHsA/K7kQWRGhIFhe2vKJF1qZJE+sVe2WCHJDmGKO3I/Nvsw==
@@ -2481,7 +2471,17 @@
     isomorphic-mapzen-search "^1.6.1"
     lodash.memoize "^4.1.2"
 
-"@opentripplanner/humanize-distance@^1.1.0", "@opentripplanner/humanize-distance@^1.2.0":
+"@opentripplanner/geocoder@^1.2.2", "@opentripplanner/geocoder@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.3.0.tgz#187f26702778b798b1a7c9148640f1bf427a06bc"
+  integrity sha512-SvZxpL62onv/TXoDGpGo5vWqWcsRbuvrkiwPOqFIAZIvhhAFmlNnIh7JjPDikOPieLH6+OK9LsKz+4R3EJP7/w==
+  dependencies:
+    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
+    "@conveyal/lonlat" "^1.4.1"
+    isomorphic-mapzen-search "^1.6.1"
+    lodash.memoize "^4.1.2"
+
+"@opentripplanner/humanize-distance@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.2.0.tgz#71cf5d5d1b756adef15300edbba0995ccd4b35ee"
   integrity sha512-x0QRXMDhypFeazZ6r6vzrdU8vhiV56nZ/WX6zUbxpgp6T9Oclw0gwR2Zdw6DZiiFpSYVNeVNxVzZwsu6NRGjcA==
@@ -2511,15 +2511,15 @@
     react-animate-height "^3.0.4"
     react-resize-detector "^4.2.1"
 
-"@opentripplanner/location-field@1.12.6":
-  version "1.12.6"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.6.tgz#ee7e2cd00a30d9dbcc7c74e35b870d20175028be"
-  integrity sha512-l1fOZWrCgwVI59IRcbgMRUw5eqOgTvJBUSKnXySYeaBwXyqdPuJ1UXz4xWyEog1WeQRpCrh38tT9ubPVOrfcBA==
+"@opentripplanner/location-field@1.12.8":
+  version "1.12.8"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.8.tgz#63f2a15b649a4412418d3a6263817f6ae74c9078"
+  integrity sha512-gmRkuZbFvxoMUMY9JQFSTlDI/kYR5sHTl3DhK5v/qb6nS1i/hDsceIJBKnQHLpPmhpbVn6neaI0DnDTnzPUXCg==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
-    "@opentripplanner/core-utils" "^7.0.0"
-    "@opentripplanner/geocoder" "^1.2.0"
-    "@opentripplanner/humanize-distance" "^1.1.0"
+    "@opentripplanner/core-utils" "^7.0.3"
+    "@opentripplanner/geocoder" "^1.3.2"
+    "@opentripplanner/humanize-distance" "^1.2.0"
     "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
     throttle-debounce "^2.1.0"
