@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { connect } from 'react-redux'
 import { differenceInDays } from 'date-fns'
-import { injectIntl } from 'react-intl'
+import { injectIntl, IntlShape } from 'react-intl'
 import clone from 'clone'
 import coreUtils from '@opentripplanner/core-utils'
 import PropTypes from 'prop-types'
@@ -45,7 +45,10 @@ type Props = {
   customBatchUiBackground: unknown
   errorMessages: unknown
   errors: unknown
+  groupItineraries: boolean
+  groupTransitModes: boolean
   hideFirstResultByDefault: unknown
+  intl: IntlShape
   itineraries: Itinerary[]
   itineraryIsExpanded: unknown
   mergeItineraries: unknown
@@ -71,6 +74,7 @@ type Props = {
 // FIXME: move to typescript once shared types exist
 const NarrativeItineraries = ({
   activeItinerary,
+  activeItineraryTimeIndex,
   activeLeg,
   activeSearch,
   activeStep,
@@ -78,6 +82,9 @@ const NarrativeItineraries = ({
   customBatchUiBackground,
   errorMessages,
   errors,
+  groupItineraries,
+  groupTransitModes,
+  intl,
   itineraries,
   itineraryIsExpanded,
   mergeItineraries,
@@ -168,7 +175,7 @@ const NarrativeItineraries = ({
     ))
   }
 
-  const _renderItineraryRow = (itinerary, mini = false) => {
+  const _renderItineraryRow = (itinerary: Itinerary, mini = false) => {
     const showRealtimeAnnotation =
       realtimeEffects.isAffectedByRealtimeData &&
       (realtimeEffects.exceedsThreshold || realtimeEffects.routesDiffer)
@@ -205,6 +212,7 @@ const NarrativeItineraries = ({
   }
 
   if (!activeSearch) return null
+  console.log(activeSearch)
 
   // Merge duplicate itineraries together and save multiple departure times
   const mergedItineraries = mergeItineraries

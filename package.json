@@ -37,6 +37,7 @@
     "@auth0/auth0-react": "^1.1.0",
     "@bugsnag/js": "^7.17.0",
     "@bugsnag/plugin-react": "^7.17.0",
+    "@floating-ui/react-dom-interactions": "^0.10.1",
     "@opentripplanner/base-map": "^3.0.1",
     "@opentripplanner/core-utils": "^7.0.2",
     "@opentripplanner/endpoints-overlay": "2.0.1",

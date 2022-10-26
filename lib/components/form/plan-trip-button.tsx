@@ -3,12 +3,14 @@ import { Bicycle, Bus, Walking } from '@styled-icons/fa-solid'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
+import { useModeState } from '@opentripplanner/trip-form'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 
+import { Combination } from './batch-preferences'
 import { routingQuery } from '../../actions/api'
 import { setMainPanelContent } from '../../actions/ui'
-import { useModeState } from '@opentripplanner/trip-form'
+
 // @ts-expect-error hah typescript what are you gonna do now huh are you gonna complain ??
 import modeSettings from './modeSettings.yml'
 
@@ -17,6 +19,7 @@ type Props = {
   onClick: () => void
   planTrip: () => void
   profileTrip: () => void
+  routingQuery: (combinations: Combination[]) => void
   routingType: string
   setMainPanelContent: () => void
   text: string
@@ -58,20 +61,22 @@ function PlanTripButton({
   onClick,
   planTrip,
   profileTrip,
+  routingQuery,
   routingType,
   setMainPanelContent,
   text
 }: Props) {
-  const {
-    combinations: combinationsFromState,
-    setModeSettingValue,
-    toggleCombination
-  } = useModeState(combinations, initialState, modeSettings, {
-    queryParamState: true
-  })
+  const { enabledCombinations } = useModeState(
+    combinations,
+    initialState,
+    modeSettings,
+    {
+      queryParamState: true
+    }
+  )
 
   const _onClick = () => {
-    // this.props.routingQuery()
+    routingQuery(null, enabledCombinations)
 
     if (typeof onClick === 'function') onClick()
     if (!coreUtils.ui.isMobile()) setMainPanelContent(null)
