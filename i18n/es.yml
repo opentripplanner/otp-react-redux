@@ -23,17 +23,3 @@ _name: Spanish
 #     so it makes sense to group them by theme (e.g. accessModes) under the 'common' category.
 
 # Messages that are generated from actions
-actions:
-  fieldTrip:
-    setDateError: 'Error al establecer la fecha:'
-    itineraryCapacityError: 'No se puede guardar el plan: este plan no se pudo guardar
-      debido a la falta de capacidad en uno o más vehículos. Por favor, vuelva a planificar
-      su viaje.'
-    maxTripRequestsExceeded: Se superó el número máximo de solicitudes de viaje sin
-      resultados válidos.
-    saveItinerariesError: 'No se pudieron guardar los itinerarios: {err}'
-    fetchFieldTripError: 'Error al obtener el viaje: {err}'
-    fetchFieldTripsError: 'Error al obtener viajes: {err}'
-    fetchTripsForDateError: 'Error al obtener viajes para la fecha de viaje: {err}'
-    incompatibleTripDateError: La fecha de viaje planificada ({tripDate}) no es el
-      día de viaje solicitado ({requestDate})
