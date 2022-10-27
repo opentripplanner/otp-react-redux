@@ -293,7 +293,7 @@ class MetroItinerary extends NarrativeItinerary {
       return routeBlocks
     }
 
-    const onClick = () => {
+    const handleClick = () => {
       setActiveItinerary(itinerary)
       setActiveLeg(null, null)
       setItineraryView(ItineraryView.FULL)
@@ -318,7 +318,7 @@ class MetroItinerary extends NarrativeItinerary {
         {/* Semantically this is incorrect, but this helps a11y tests pass. Buttons may not contain html. TODO FIX? */}
         <div
           className="header"
-          onClick={onClick}
+          onClick={handleClick}
           // TODO: once this can be tabbed to, this behavior needs to be improved. Maybe it focuses the
           // first time?
           // eslint-disable-next-line @typescript-eslint/no-empty-function
