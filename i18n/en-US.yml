@@ -144,7 +144,7 @@ components:
     destination: destination
     origin: origin
     planTripTooltip: Plan trip
-    settings: Settings
+    settings: Trip Settings
     validationMessage: "Please define the following fields to plan a trip: {issues}"
   BeforeSignInScreen:
     mainTitle: Signing you in
@@ -250,7 +250,7 @@ components:
     # Note to translator: text below is width-constrained
     # (about half-pane width, or half-screen width in mobile views).
     searching: Finding your options...
-    selectTitle: Sort By
+    sortBy: Sort By
     selectArrivalTime: Arrival time
     selectBest: Best option
     selectCost: Cost

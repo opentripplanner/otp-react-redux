@@ -162,12 +162,12 @@ export default function NarrativeItinerariesHeader({
             </button>
             <select
               aria-label={intl.formatMessage({
-                id: 'components.NarrativeItinerariesHeader.selectTitle'
+                id: 'components.NarrativeItinerariesHeader.sortBy'
               })}
               onBlur={onSortChange}
               onChange={onSortChange}
               title={intl.formatMessage({
-                id: 'components.NarrativeItinerariesHeader.selectTitle'
+                id: 'components.NarrativeItinerariesHeader.sortBy'
               })}
               value={sort.type}
             >
