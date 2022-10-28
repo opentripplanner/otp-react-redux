@@ -207,6 +207,7 @@ components:
     bike-rental: Vélos partagés {companies}
     car-rental: Voitures en location
     micromobility-rental: Trottinettes {companies}
+    shared-vehicles: "Shared Vehicles"
     park-and-ride: Parcs relais
     satellite: Satellite
     stops: Arrêts et stations

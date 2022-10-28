@@ -2,6 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { connect } from 'react-redux'
+import { generateOTP2TileLayers } from '@opentripplanner/otp2-tile-overlay'
 import { injectIntl } from 'react-intl'
 import { NavigationControl } from 'react-map-gl'
 import BaseMap from '@opentripplanner/base-map'
@@ -11,6 +12,7 @@ import styled from 'styled-components'
 import {
   bikeRentalQuery,
   carRentalQuery,
+  makeApiUrl,
   vehicleRentalQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
@@ -20,6 +22,7 @@ import {
   setMapPopupLocation,
   setMapPopupLocationAndGeocode
 } from '../../actions/map'
+import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
 
 import ElevationPointMarker from './elevation-point-marker'
@@ -85,6 +88,7 @@ function getLayerName(overlay, config, intl) {
       return intl.formatMessage({ id: 'components.MapLayers.satellite' })
     case 'bike-rental':
     case 'otp2-bike-rental':
+    case 'rentalStations':
       return intl.formatMessage(
         { id: 'components.MapLayers.bike-rental' },
         {
@@ -107,6 +111,11 @@ function getLayerName(overlay, config, intl) {
       return intl.formatMessage({ id: 'components.MapLayers.park-and-ride' })
     case 'stops':
       return intl.formatMessage({ id: 'components.MapLayers.stops' })
+    case 'rentalVehicles':
+      if (overlay.network)
+        return getCompanyNames([overlay.network], config, intl)
+
+      return intl.formatMessage({ id: 'components.MapLayers.shared-vehicles' })
     default:
       console.warn(`No name found for overlay type ${type}.`)
       return type
@@ -247,12 +256,15 @@ class DefaultMap extends Component {
       itinerary,
       mapConfig,
       pending,
+      setLocation,
+      setViewedStop,
       vehicleRentalQuery,
       vehicleRentalStations
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel } = this.context
     const { baseLayers, initLat, initLon, maxZoom, overlays } = mapConfig || {}
     const { lat, lon, zoom } = this.state
+    const vectorTilesEndpoint = makeApiUrl(config, 'vectorTiles', {})
 
     const bikeStations = [
       ...bikeRentalStations.filter(
@@ -354,6 +366,20 @@ class DefaultMap extends Component {
                     stations={bikeStations}
                   />
                 )
+              case 'otp2':
+                // This must be a method that returns an array of JSX
+                // as the base-map requires that every toggleable layer
+                // is its own component, and not a subcomponent of another component
+                return generateOTP2TileLayers(
+                  overlayConfig.layers.map((l) => ({
+                    ...l,
+                    name: getLayerName(l, config, intl) || l.network || l.type
+                  })),
+                  vectorTilesEndpoint,
+                  setLocation,
+                  setViewedStop,
+                  config.companies
+                )
               default:
                 return null
             }
@@ -391,6 +417,7 @@ const mapDispatchToProps = {
   setLocation,
   setMapPopupLocation,
   setMapPopupLocationAndGeocode,
+  setViewedStop,
   updateOverlayVisibility,
   vehicleRentalQuery
 }

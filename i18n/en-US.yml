@@ -219,6 +219,7 @@ components:
     bike-rental: "{companies} Shared Bikes"
     car-rental: Rental Car Locations
     micromobility-rental: "{companies} E-Scooters"
+    shared-vehicles: "Shared Vehicles"
     park-and-ride: Park & Ride Locations
     satellite: Satellite
     stops: Transit Stops
