@@ -2,10 +2,10 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { connect } from 'react-redux'
-import { generateOTP2TileLayers } from '@opentripplanner/otp2-tile-overlay'
 import { injectIntl } from 'react-intl'
 import { NavigationControl } from 'react-map-gl'
 import BaseMap from '@opentripplanner/base-map'
+import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
