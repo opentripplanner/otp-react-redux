@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      # This step will scan for the US english strings file.
+      - run: cp ./i18n/en-US.yml ./i18n/en-US.yaml
       - uses: codespell-project/actions-codespell@master
         with:
           check_filenames: true
@@ -16,4 +18,4 @@ jobs:
           # and all i18n resources (negative globs to only scan the English file don't seem to work).
           # Also, the a11y test file has a false positive and the ignore list does not work
           # see https://github.com/opentripplanner/otp-react-redux/pull/436/checks?check_run_id=3369380014
-          skip: ./.git,yarn.lock,./a11y/a11y.test.js,./percy/percy.test.js,./i18n/!(en-US).yml
+          skip: ./.git,yarn.lock,./a11y/a11y.test.js,./percy/percy.test.js,./i18n/*.yml
