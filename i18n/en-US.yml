@@ -56,7 +56,7 @@ actions:
     geolocationNotSupportedError: Geolocation not supported by your browser
     unknownPositionError: Unknown error getting position
   map:
-    currentLocation: (Current Location)
+    currentLocation: (Currenttt Location)
   user:
     accountDeleted: Your user account ({email}) has been deleted.
     authTokenError: Error obtaining an authorization token.
