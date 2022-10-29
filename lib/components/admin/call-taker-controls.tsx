@@ -1,18 +1,16 @@
 import { connect } from 'react-redux'
+import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
+import { History } from '@styled-icons/fa-solid/History'
 import { injectIntl, IntlShape, WrappedComponentProps } from 'react-intl'
+import { Phone } from '@styled-icons/fa-solid/Phone'
+import { Plus } from '@styled-icons/fa-solid/Plus'
+import { Stop } from '@styled-icons/fa-solid/Stop'
 import React, { Component } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
-import {
-  GraduationCap,
-  History,
-  Phone,
-  Plus,
-  Stop
-} from '@styled-icons/fa-solid'
 import { isModuleEnabled, Modules } from '../../util/config'
 
 import {

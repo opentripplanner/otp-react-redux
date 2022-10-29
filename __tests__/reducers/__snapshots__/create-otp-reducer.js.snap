@@ -9,7 +9,6 @@ Object {
       "mobile": "BOTH_LOCATIONS_CHANGED",
     },
     "debouncePlanTimeMs": 0,
-    "focusRoute": false,
     "homeTimezone": "America/Los_Angeles",
     "language": Object {},
     "onTimeThresholdSeconds": 60,
@@ -98,6 +97,7 @@ Object {
   },
   "transitIndex": Object {
     "routes": Object {},
+    "routesFetchStatus": 0,
     "stops": Object {},
     "trips": Object {},
   },

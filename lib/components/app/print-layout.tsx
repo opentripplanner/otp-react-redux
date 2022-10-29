@@ -8,6 +8,8 @@ import { Times } from '@styled-icons/fa-solid/Times'
 import PrintableItinerary from '@opentripplanner/printable-itinerary'
 import React, { Component } from 'react'
 
+import * as apiActions from '../../actions/api'
+import * as formActions from '../../actions/form'
 import {
   addPrintViewClassToRootHtml,
   clearClassFromRootHtml
@@ -15,8 +17,6 @@ import {
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary } from '../../util/state'
 import { IconWithText } from '../util/styledIcon'
-import { parseUrlQueryString } from '../../actions/form'
-import { routingQuery } from '../../actions/api'
 import DefaultMap from '../map/default-map'
 import SpanWithSpace from '../util/span-with-space'
 import TripDetails from '../narrative/connected-trip-details'
@@ -24,11 +24,13 @@ import TripDetails from '../narrative/connected-trip-details'
 type Props = {
   // TODO: Typescript config type
   config: any
+  currentQuery: any
   // TODO: typescript state.js
   itinerary: any
   location?: { search?: string }
   parseUrlQueryString: (params?: any, source?: string) => any
 }
+
 type State = {
   mapVisible?: boolean
 }
@@ -57,6 +59,7 @@ class PrintLayout extends Component<Props, State> {
 
   componentDidMount() {
     const { itinerary, location, parseUrlQueryString } = this.props
+
     // Add print-view class to html tag to ensure that iOS scroll fix only applies
     // to non-print views.
     addPrintViewClassToRootHtml()
@@ -64,6 +67,8 @@ class PrintLayout extends Component<Props, State> {
     if (!itinerary && location && location.search) {
       parseUrlQueryString()
     }
+
+    // TODO: use currentQuery to pan/zoom to the correct part of the map
   }
 
   componentWillUnmount() {
@@ -105,6 +110,7 @@ class PrintLayout extends Component<Props, State> {
         {/* The map, if visible */}
         {this.state.mapVisible && (
           <div className="map-container">
+            {/* FIXME: Improve reframing/setting map bounds when itinerary is received. */}
             <DefaultMap />
           </div>
         )}
@@ -131,13 +137,14 @@ class PrintLayout extends Component<Props, State> {
 const mapStateToProps = (state: any) => {
   return {
     config: state.otp.config,
+    currentQuery: state.otp.currentQuery,
     itinerary: getActiveItinerary(state)
   }
 }
 
 const mapDispatchToProps = {
-  parseUrlQueryString,
-  routingQuery
+  parseUrlQueryString: formActions.parseUrlQueryString,
+  routingQuery: apiActions.routingQuery
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PrintLayout)
