@@ -84,6 +84,7 @@ const NarrativeItineraries = ({
   errors,
   groupItineraries,
   groupTransitModes,
+  hideFirstResultByDefault,
   intl,
   itineraries,
   itineraryIsExpanded,
