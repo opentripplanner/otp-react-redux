@@ -2256,14 +2256,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               "url": "http://trimet.org/#tracker/stop/9860",
                             }
                           }
-                          stopViewerConfig={
-                            Object {
-                              "nearbyRadius": 250,
-                              "numberOfDepartures": 3,
-                              "showBlockIds": false,
-                              "timeRange": 345600,
-                            }
-                          }
                         >
                           <injectIntl(AmenitiesPanel)
                             stopData={
@@ -2429,14 +2421,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                 "stopTimesLastUpdated": 1565248650040,
                                 "type": 3,
                                 "url": "http://trimet.org/#tracker/stop/9860",
-                              }
-                            }
-                            stopViewerConfig={
-                              Object {
-                                "nearbyRadius": 250,
-                                "numberOfDepartures": 3,
-                                "showBlockIds": false,
-                                "timeRange": 345600,
                               }
                             }
                           >
@@ -2642,16 +2626,9 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   "url": "http://trimet.org/#tracker/stop/9860",
                                 }
                               }
-                              stopViewerConfig={
-                                Object {
-                                  "nearbyRadius": 250,
-                                  "numberOfDepartures": 3,
-                                  "showBlockIds": false,
-                                  "timeRange": 345600,
-                                }
-                              }
                             >
                               <RelatedPanel
+                                count={0}
                                 expanded={false}
                                 onToggleExpanded={[Function]}
                                 title="components.AmenitiesPanel.nearbyAmenities"
@@ -4101,14 +4078,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               "url": "http://trimet.org/#tracker/stop/9860",
                             }
                           }
-                          stopViewerConfig={
-                            Object {
-                              "nearbyRadius": 250,
-                              "numberOfDepartures": 3,
-                              "showBlockIds": false,
-                              "timeRange": 345600,
-                            }
-                          }
                         >
                           <injectIntl(AmenitiesPanel)
                             stopData={
@@ -4175,14 +4144,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                 "stopTimesLastUpdated": 1565248650040,
                                 "type": 3,
                                 "url": "http://trimet.org/#tracker/stop/9860",
-                              }
-                            }
-                            stopViewerConfig={
-                              Object {
-                                "nearbyRadius": 250,
-                                "numberOfDepartures": 3,
-                                "showBlockIds": false,
-                                "timeRange": 345600,
                               }
                             }
                           >
@@ -4289,16 +4250,9 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   "url": "http://trimet.org/#tracker/stop/9860",
                                 }
                               }
-                              stopViewerConfig={
-                                Object {
-                                  "nearbyRadius": 250,
-                                  "numberOfDepartures": 3,
-                                  "showBlockIds": false,
-                                  "timeRange": 345600,
-                                }
-                              }
                             >
                               <RelatedPanel
+                                count={0}
                                 expanded={false}
                                 onToggleExpanded={[Function]}
                                 title="components.AmenitiesPanel.nearbyAmenities"
@@ -6642,14 +6596,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               "url": "http://trimet.org/#tracker/stop/9860",
                             }
                           }
-                          stopViewerConfig={
-                            Object {
-                              "nearbyRadius": 250,
-                              "numberOfDepartures": 3,
-                              "showBlockIds": false,
-                              "timeRange": 345600,
-                            }
-                          }
                         >
                           <injectIntl(AmenitiesPanel)
                             stopData={
@@ -6815,14 +6761,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                 "stopTimesLastUpdated": 1565248650040,
                                 "type": 3,
                                 "url": "http://trimet.org/#tracker/stop/9860",
-                              }
-                            }
-                            stopViewerConfig={
-                              Object {
-                                "nearbyRadius": 250,
-                                "numberOfDepartures": 3,
-                                "showBlockIds": false,
-                                "timeRange": 345600,
                               }
                             }
                           >
@@ -7028,16 +6966,9 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   "url": "http://trimet.org/#tracker/stop/9860",
                                 }
                               }
-                              stopViewerConfig={
-                                Object {
-                                  "nearbyRadius": 250,
-                                  "numberOfDepartures": 3,
-                                  "showBlockIds": false,
-                                  "timeRange": 345600,
-                                }
-                              }
                             >
                               <RelatedPanel
+                                count={0}
                                 expanded={false}
                                 onToggleExpanded={[Function]}
                                 title="components.AmenitiesPanel.nearbyAmenities"
@@ -12641,14 +12572,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               "zoneId": "B",
                             }
                           }
-                          stopViewerConfig={
-                            Object {
-                              "nearbyRadius": 250,
-                              "numberOfDepartures": 3,
-                              "showBlockIds": false,
-                              "timeRange": 345600,
-                            }
-                          }
                         >
                           <injectIntl(AmenitiesPanel)
                             stopData={
@@ -13072,14 +12995,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 "vehicleTypeSet": false,
                                 "wheelchairBoarding": 0,
                                 "zoneId": "B",
-                              }
-                            }
-                            stopViewerConfig={
-                              Object {
-                                "nearbyRadius": 250,
-                                "numberOfDepartures": 3,
-                                "showBlockIds": false,
-                                "timeRange": 345600,
                               }
                             }
                           >
@@ -13543,16 +13458,9 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   "zoneId": "B",
                                 }
                               }
-                              stopViewerConfig={
-                                Object {
-                                  "nearbyRadius": 250,
-                                  "numberOfDepartures": 3,
-                                  "showBlockIds": false,
-                                  "timeRange": 345600,
-                                }
-                              }
                             >
                               <RelatedPanel
+                                count={0}
                                 expanded={false}
                                 onToggleExpanded={[Function]}
                                 title="components.AmenitiesPanel.nearbyAmenities"
@@ -16908,14 +16816,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               "url": "http://trimet.org/#tracker/stop/715",
                             }
                           }
-                          stopViewerConfig={
-                            Object {
-                              "nearbyRadius": 250,
-                              "numberOfDepartures": 3,
-                              "showBlockIds": false,
-                              "timeRange": 345600,
-                            }
-                          }
                         >
                           <injectIntl(AmenitiesPanel)
                             stopData={
@@ -17334,14 +17234,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                 "stopTimesLastUpdated": 1565051923389,
                                 "type": 3,
                                 "url": "http://trimet.org/#tracker/stop/715",
-                              }
-                            }
-                            stopViewerConfig={
-                              Object {
-                                "nearbyRadius": 250,
-                                "numberOfDepartures": 3,
-                                "showBlockIds": false,
-                                "timeRange": 345600,
                               }
                             }
                           >
@@ -17800,16 +17692,9 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   "url": "http://trimet.org/#tracker/stop/715",
                                 }
                               }
-                              stopViewerConfig={
-                                Object {
-                                  "nearbyRadius": 250,
-                                  "numberOfDepartures": 3,
-                                  "showBlockIds": false,
-                                  "timeRange": 345600,
-                                }
-                              }
                             >
                               <RelatedPanel
+                                count={0}
                                 expanded={false}
                                 onToggleExpanded={[Function]}
                                 title="components.AmenitiesPanel.nearbyAmenities"

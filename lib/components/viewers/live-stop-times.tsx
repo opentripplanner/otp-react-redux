@@ -33,8 +33,7 @@ type Props = {
   showOperatorLogos?: boolean
   // TODO: shared types
   stopData: any
-  // TODO: shared types
-  stopViewerArriving: any
+  stopViewerArriving: React.ReactNode
   // TODO: shared types
   stopViewerConfig: any
   toggleAutoRefresh: (enable: boolean) => void
@@ -218,11 +217,7 @@ class LiveStopTimes extends Component<Props, State> {
                 stopViewerConfig={stopViewerConfig}
                 transitOperators={transitOperators}
               />
-              <AmenitiesPanel
-                stopData={stopData}
-                stopViewerArriving={stopViewerArriving}
-                stopViewerConfig={stopViewerConfig}
-              />
+              <AmenitiesPanel stopData={stopData} />
             </>
           )}
         </div>

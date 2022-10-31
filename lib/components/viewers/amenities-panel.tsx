@@ -1,5 +1,7 @@
+import { ConfiguredCompany, Station, Stop } from '@opentripplanner/types'
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+// @ts-expect-error not typescripted yet
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import React, { Component } from 'react'
 import styled from 'styled-components'
@@ -27,8 +29,21 @@ const StyledParkAndRideIcon = styled.div`
 
 const parkAndRideMarker = <StyledParkAndRideIcon>P</StyledParkAndRideIcon>
 
-class AmenitiesPanel extends Component {
-  constructor(props) {
+type Props = {
+  configCompanies: ConfiguredCompany[]
+  intl: IntlShape
+  stopData: Stop & {
+    bikeRental: any
+    parkAndRideLocations: any
+    vehicleRental: any
+  }
+}
+type State = {
+  expanded: boolean
+}
+
+class AmenitiesPanel extends Component<Props, State> {
+  constructor(props: Props) {
     super(props)
     this.state = {
       expanded: false
@@ -44,7 +59,8 @@ class AmenitiesPanel extends Component {
   _renderParkAndRides = () => {
     const { parkAndRideLocations } = this.props.stopData
     return parkAndRideLocations && parkAndRideLocations.length > 0 ? (
-      parkAndRideLocations.map((parkAndRide) => (
+      // TODO Type for P+R
+      parkAndRideLocations.map((parkAndRide: any) => (
         <li className="related-item" key={parkAndRide.name}>
           <div className="item-label">
             <div
@@ -72,8 +88,9 @@ class AmenitiesPanel extends Component {
     const { intl, stopData } = this.props
     if (!stopData || !stopData.bikeRental) return null
     const { stations } = stopData.bikeRental
-    const stationCounts = {}
-    stations.forEach((station) => {
+    // TODO: Rewrite this in a way that the types make sense
+    const stationCounts: { [key: string]: any } = {}
+    stations.forEach((station: Station) => {
       const isHub = !station.isFloatingBike
       const key = `${station.networks[0]}${isHub ? station.id : ''}`
       if (!stationCounts[key]) {
@@ -144,7 +161,7 @@ class AmenitiesPanel extends Component {
     )
   }
 
-  _getModeIcon = (mode) => {
+  _getModeIcon = (mode: string) => {
     const { ModeIcon } = this.context
     return (
       <ModeIcon
@@ -156,7 +173,7 @@ class AmenitiesPanel extends Component {
     )
   }
 
-  _getStationIcon = (mode, station) => {
+  _getStationIcon = (mode: string, station: Station) => {
     const CompanyIcon = getCompanyIcon(station?.networks[0])
     return CompanyIcon ? (
       <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
@@ -165,7 +182,7 @@ class AmenitiesPanel extends Component {
     )
   }
 
-  _getCompany = (station) => {
+  _getCompany = (station: Station) => {
     return (
       this.props?.configCompanies?.find((c) => c.id === station.networks[0])
         ?.label || ''
@@ -176,8 +193,8 @@ class AmenitiesPanel extends Component {
     const { stopData } = this.props
     if (!stopData || !stopData.vehicleRental) return null
     const { stations } = stopData.vehicleRental
-    const companyCounts = {}
-    stations.forEach((station) => {
+    const companyCounts: { [key: string]: any } = {}
+    stations.forEach((station: Station) => {
       if (!companyCounts[station.networks[0]]) {
         companyCounts[station.networks[0]] = {
           icon: this._getStationIcon('MICROMOBILITY', station),
@@ -219,6 +236,7 @@ class AmenitiesPanel extends Component {
     const { expanded } = this.state
     return (
       <RelatedPanel
+        count={0}
         expanded={expanded}
         onToggleExpanded={this._toggleExpandedView}
         title={intl.formatMessage({
@@ -235,7 +253,7 @@ class AmenitiesPanel extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state: any) => {
   return {
     configCompanies: state.otp.config.companies
   }
