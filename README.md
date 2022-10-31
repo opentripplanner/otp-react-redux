@@ -34,6 +34,37 @@ The same environment variables which affect the behavior of `yarn start` also af
 env JS_CONFIG=my-custom-js.js CUSTOM_CSS=my-custom-css.css yarn build
 ```
 
+## Internationalization
+
+OTP-react-redux uses `react-intl` from the [`formatjs`](https://github.com/formatjs/formatjs) library for internationalization.
+Both `react-intl` and `formatjs` take advantage of native internationalization features provided by web browsers.
+
+Language-specific content is located in YML files under the `i18n` folder
+(e.g. `en-US.yml` for American English, `fr.yml` for generic French, etc.).
+
+Most textual content can also be customized using the `language` section of `config.yml`,
+whether for all languages at once or for each supported individual language.
+
+### Contributing translations
+
+OTP-react-redux now uses [Hosted Weblate](https://www.weblate.org) to manage translations!
+
+<figure>
+  <a href="https://hosted.weblate.org/engage/otp-react-redux/">
+    <img src="https://hosted.weblate.org/widgets/otp-react-redux/-/horizontal-auto.svg" alt="Translation status" />
+  </a>
+  <figcaption>Translation status for
+    <a href="https://hosted.weblate.org/engage/otp-react-redux/">OTP-react-redux and OTP-UI on Hosted Weblate</a>
+  </figcaption>
+</figure>
+
+
+Translations from the community are welcome and very much appreciated,
+please see instructions at https://hosted.weblate.org/projects/otp-react-redux/.
+Community input from Weblate will appear as pull requests with changes to files in the `i18n` folder for our review.
+
+If changes to a specific language file is needed but not enabled in Weblate, please open an issue or a pull request with the changes needed.
+
 ## Library Documentation
 
 More coming soon...

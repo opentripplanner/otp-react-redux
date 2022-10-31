@@ -308,6 +308,8 @@ itinerary:
   disableMetroSeperatorDot: false
   # Shows the duration of a leg below the leg in the metro itinerary summary
   showLegDurations: false
+  # Allows calorie counts to be hidden
+  displayCalories: true
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
