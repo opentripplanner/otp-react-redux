@@ -360,11 +360,11 @@ components:
   TripSummary:
     itinerary: Hành trình
   TripTools:
-    reportEmailTemplate: "\"*** HƯỚNG DẪN SỬ DỤNG ***\n Tính năng này cho phép bạn\
-      \ gửi báo cáo qua email cho quản trị viên trang web để xem xét.\n Vui lòng điền\
+    reportEmailTemplate: "*** HƯỚNG DẪN SỬ DỤNG ***\n Tính năng này cho phép bạn gửi\
+      \ báo cáo qua email cho quản trị viên trang web để xem xét.\n Vui lòng điền\
       \ vào lời nhắc bên dưới và gửi bằng chương trình email thông thường của bạn.\n\
       \ \n *** VUI LÒNG ĐIỀN ĐẦY ĐỦ SAU ***\n \n Sự cố gặp phải:\n \n Loại chuyến\
-      \ đi bạn muốn thực hiệ:\n \n *** CHI TIẾT KỸ THUẬT***\"\n"
+      \ đi bạn muốn thực hiệ:\n \n *** CHI TIẾT KỸ THUẬT***\n"
     reportEmailSubject: Báo cáo sự cố với OpenTripPlanner
     copyLink: Sao chép đường dẫn
     linkCopied: Đã sao chép
