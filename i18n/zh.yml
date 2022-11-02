@@ -1,5 +1,5 @@
 _id: zh
-_name: Chinese
+_name: Chinese (Simplified)
 
 # This file contains localized strings (a.k.a. messages) for the language indicated above:
 #   - Messages are organized in various categories and sub-categories.
@@ -23,3 +23,601 @@ _name: Chinese
 #     so it makes sense to group them by theme (e.g. accessModes) under the 'common' category.
 
 # Messages that are generated from actions
+actions:
+  fieldTrip:
+    addNoteError: '添加行程记录时出错: {err}'
+    deleteItinerariesError: '删除行程计划时出错: {err}'
+    deleteNoteError: '删除行程记录时出错: {err}'
+    setGroupSizeError: '设置组大小时出错: {err}'
+    confirmOverwriteItineraries: "此操作将覆盖此请求的先前计划的{outbound, select,\n  true {出站}\n\
+      \  other {入站}\n  } 行程. 你想继续吗?\n"
+    itineraryCapacityError: '无法保存计划: 由于一辆或多辆车辆容量不足, 无法保存此计划. 请重新计划您的旅行.'
+    maxTripRequestsExceeded: 超出了没有有效结果的行程请求数
+    setRequestStatusError: '设置请求状态时出错: {err}'
+    fetchFieldTripError: '获取行程时出错: {err}'
+    fetchFieldTripsError: '获取行程时出错: {err}'
+    fetchTripsForDateError: '获取旅行日期的行程时出错: {err}'
+    incompatibleTripDateError: 计划的旅行日期 ({tripDate}) 不是请求的旅行日期 ({requestDate})
+    saveItinerariesError: '未能保存行程: {err}'
+    setDateError: 设置日期时出错：
+    setPaymentError: '设置付款信息时出错: {err}'
+    editSubmitterNotesError: '编辑提交者备注时出错: {err}'
+  user:
+    confirmDeleteMonitoredTrip: 你想取消这次旅行吗?
+    emailVerificationResent: 电子邮件验证信息已被重新发送.
+    genericError: '遇到了一个错误: {err}'
+    itineraryExistenceCheckFailed: 检查你选择的旅行是否可行的错误.
+    confirmDeletePlace: 你想删除这个地方吗?
+    accountDeleted: 您的用户账户({email})已被删除.
+    authTokenError: 获取授权令牌错误.
+    preferencesSaved: 您的偏好已被保存.
+    smsInvalidCode: 您输入的代码是无效的. 请再试一次.
+    smsResendThrottled: 不到一分钟前一条验证短信已经发送到指定的电话号码上. 请稍后再试.
+    smsVerificationFailed: 您的手机无法被验证. 也许你输入的代码已经过期. 请申请一个新的代码并重新尝试.
+  callTaker:
+    callQuerySaveError: '存储呼叫查询时出错: {err}'
+    callSaveError: '无法保存通话: {err}'
+    checkSessionError: '建立授权会话时出错: {err}'
+    couldNotFindCallError: 找不到. 取消保存查询请求.
+    fetchCallsError: '获取呼叫时出错: {err}'
+    queryFetchError: '获取查询时出错: {err}'
+  location:
+    geolocationNotSupportedError: 您的浏览器不支持地理定位
+    unknownPositionError: 获取位置的未知错误
+  map:
+    currentLocation: (当前位置)
+components:
+  BatchSettings:
+    planTripTooltip: 计划行程
+    destination: 目的地
+    origin: 起源
+    validationMessage: '请定义以下字段来计划旅行: {issues}'
+  BeforeSignInScreen:
+    mainTitle: 签到
+    message: "为了访问这个页面 你将需要登录. 请稍等我们会将您重定向到登录页面.\n"
+  CallTakerPanel:
+    advancedOptions: 高级选项
+    groupSize: '团体规模:'
+    intermediateDestination: 输入中间目的地
+  DateTimePreview:
+    arriveAt: 到达 {arriveTime, time, short}
+    dayLastWeek: 上 {formattedDayOfWeek}
+    departAt: 出发 {departTime, time, short}
+    leaveNow: 现在离开
+    range: '{startTime, time, short} 到 {endTime, time, short}'
+    editDepartOrArrival: 编辑出发或到达时间
+  DefaultItinerary:
+    clickDetails: 点击查看详情
+    multiModeSummary: '{accessMode} + {transitMode}'
+  ExistingAccountDisplay:
+    a11y: 无障碍
+    mainTitle: 我的设置
+    notifications: 通知
+    places: 最喜欢的地方
+    terms: 条款
+  FavoritePlaceScreen:
+    editPlace: 编辑 {placeName}
+    placeNotFoundDescription: 对不起, 没有找到要求的地方.
+    addNewPlace: 添加新的地方
+    editPlaceGeneric: 编辑地点
+    invalidAddress: 请为这个地方设定一个位置.
+    invalidName: 请为这个地方输入一个名称.
+    nameAlreadyUsed: 你已经在另一个地方使用这个名字. 请输入一个不同的名字.
+    placeNotFound: 未找到地点
+  LiveStopTimes:
+    autoRefresh: 自动刷新传入的到达?
+  LocationSearch:
+    enterLocation: 输入位置
+    setDestination: 选择目的地
+    setOrigin: 选择一个产地
+  ItinerarySummary:
+    fareCost: "{useMaxFare, select,\n  true {{minTotalFare} - {maxTotalFare}}\n  other\
+      \ {{minTotalFare}}\n }\n"
+  MapLayers:
+    satellite: 卫星
+    streets: 街道
+    bike-rental: '{companies} 共享单车'
+    car-rental: 租车地点
+    micromobility-rental: '{companies} 电动滑板车'
+    park-and-ride: 停车和乘车地点
+    stops: 公共交通站点
+  MetroUI:
+    leaveAt: 离开
+    timeWalking: 步行时间
+    orAlternatives: 或同一方向的其他路线
+    multipleOptions: 多种选择
+    arriveAtTime: 到达 {time}
+    fromStop: 从 {stop}
+    itineraryDescription: '{time} 乘坐 {routes}'
+  MobileOptions:
+    header: 设置搜索选项
+  ModeDropdown:
+    exclusiveMode: 仅 {mode}
+  NarrativeItinerariesHeader:
+    itinerariesFound: "{itineraryNum, plural,\n one {发现#条行程}\n other {发现#条行程}\n }"
+    searching: 寻找你的选择…
+    selectArrivalTime: 抵达时间
+    selectBest: 最佳选择
+    selectDepartureTime: 出发时间
+    itinerariesAndIssues: '{itinerariesFound} 和 {numIssues}'
+    selectCost: 费用
+    selectDuration: 旅行时长
+    selectWalkTime: 步行时间
+    viewAll: 查看所有选项
+    numIssues: "{issueNum, plural,\n one {# 问题}\n other {# 个问题}\n }"
+  NavLoginButton:
+    help: 帮助
+    myAccount: 我的账户
+    signIn: 登录
+    signOut: 签出
+  NewAccountWizard:
+    finish: 账户设置完成!
+    notifications: 通知偏好
+    places: 添加您的位置
+    verify: 验证您的电子邮件地址
+    terms: 创建一个新账户
+  NotificationPrefsPane:
+    noneSelect: 不要通知我
+    description: 你可以收到关于你经常出游的通知.
+    notificationChannelPrompt: 您希望如何接收通知?
+    notificationEmailDetail: '通知邮件将被发送至:'
+  PatternRow:
+    departure: 离开
+    routeName: <strong>{routeName}</strong> 到 {headsign}
+    collapseOrExpandDepartures: "{expanded, select, \n true {折叠}\n other {展开}\n }\
+      \ 所有 {routeName} 时刻表\n"
+    routeShort: 到 {headsign}
+    status: 状态
+  PhoneNumberEditor:
+    changeNumber: 更改电话号码
+    invalidCode: 请输入6位数的验证码.
+    placeholder: 输入你的电话号码
+    requestNewCode: 申请一个新的代码
+    invalidPhone: 请输入一个有效的电话号码.
+    pending: 待定
+    prompt: '输入你的电话号码以便收到短信通知:'
+    sendVerificationText: 发送验证短信
+    smsDetail: '短信通知将被发送到:'
+    verificationCode: '验证码:'
+    verified: 已验证
+    verify: 核实
+    verificationInstructions: "请检查您手机上的短信应用查看是否有验证码的短信并输入以下代码 (代码在10分钟后失效).\n"
+  Place:
+    deleteThisPlace: 删除这个地方
+    viewStop: 查看车站
+    enterAlert: "在表格中输入出发地/目的地(或通过地图点击设置)并点击产生的标记设置为 {placeType} 地点.\n"
+  PlaceEditor:
+    genericLocationPlaceholder: 搜索地点
+    locationPlaceholder: 搜索 {placeName} 位置
+    namePlaceholder: 设置地名
+  PlanFirstLastButtons:
+    first: 首先
+    previous: 上一篇
+    last: 最后一次
+    next: 下一个
+  PlanTripButton:
+    planTrip: 计划行程
+  PrintLayout:
+    itinerary: 行程安排
+    toggleMap: 切换地图
+  RealtimeAnnotation:
+    serviceUpdate: 服务更新
+    delaysShownInResults: "你的旅行结果已经根据实时信息进行了调整. 在正常情况下使用以下路线, 这个行程需要 {normalDuration}:\
+      \ {routes}.\n"
+  RealtimeStatusLabel:
+    early: 提前 {minutes}
+    scheduled: 预定的
+    late: 迟到 {minutes}
+    onTime: 准时
+  RelatedPanel:
+    hideExtraStops: 隐藏额外车站
+    showExtraStops: 显示 {count}个额外的车站
+  ResultsError:
+    backToSearch: 返回搜索
+  RouteDetails:
+    selectADirection: 选择一个方向…
+    moreDetails: 更多细节
+    operatedBy: 公交运营商 {agencyName}
+    stopsTo: 邁向
+  RouteViewer:
+    agencyFilter: 运输机构过滤器
+    allModes: 所有模式
+    header: 路线查看器
+    modeFilter: 旅行模式过滤器
+    noFilteredRoutesFound: 没有符合你的过滤器的路线!
+    shortTitle: 查看路线
+    allAgencies: 所有运输机构
+    findARoute: 查找路线
+    title: 路线查看器
+  SavedTripEditor:
+    saveNewTrip: 保存新的旅行
+    editSavedTrip: 编辑已保存的行程
+    tripInformation: 旅程信息
+    tripNotFound: 未找到行程
+    tripNotFoundDescription: 对不起, 没有找到所要求的行程.
+    tripNotifications: 旅程通知
+  SavedTripList:
+    myTrips: 我的旅行
+    noSavedTrips: 你没有保存的旅行
+    pause: 暂停
+    resume: 继续
+    noSavedTripsInstructions: 首先从地图上进行行程搜索.
+  SaveTripButton:
+    saveTripText: 保存行程
+    signInText: 登录以保存行程
+    cantSaveText: 无法保存
+    cantSaveTooltip: 只有包括交通的行程而没有租车或叫车的行程可以被监控.
+    signInTooltip: 请登录以保存行程.
+  SimpleRealtimeAnnotation:
+    usingRealtimeInfo: 这个行程使用实时交通和延迟信息
+  SettingsPreview:
+    defaultPreviewText: 公共交通选择和偏好
+  StackedPaneDisplay:
+    savePreferences: 保存偏好
+  StopScheduleTable:
+    block: 堵塞
+    departure: 离开
+    route: 路线
+    destination: 到
+  StopViewer:
+    displayStopId: '<strong>公交车站ID</strong>: {stopId}'
+    header: 车站查看器
+    loadingText: 加载车站信息…
+    noStopsFound: 未找到该日期的车站时间.
+    timezoneWarning: 出发时间以 <strong>{timezoneCode}</strong> 显示.
+    viewNextArrivals: 查看下一个公共交通到达
+    viewSchedule: 查看时间表
+    zoomToStop: 缩放到车站
+    flexStop: 此站为灵活站. 根据要求车辆将在这个灵活的区域上下乘客. 在这个区域, 你可能需要提前打电话申请服务.
+  TabbedFormPanel:
+    hideSettings: ' 隐藏设定'
+  TabbedItineraries:
+    mustCallAhead: 必须提前打电话!
+    fareCost: "{hasMaxFare, select, \n true {{minTotalFare}+}\n other {{minTotalFare}}\n\
+      \ }\n"
+    optionNumber: 选项 {optionNum, number}
+  TermsOfUsePane:
+    mustAgreeToTerms: 您必须同意服务条款才能继续.
+    termsOfStorageStatement: "可选的: 我同意 Trip Planner 存储我的历史计划行程，以改善我所在地区的交通服务. <termsOfStorageLink>更多信息...</termsOfStorageLink>\n"
+    confirmDeletionPrompt: "取消您对存储历史旅行的同意将导致您的旅行历史被删除. 你确定你要继续吗？\n"
+    termsOfServiceStatement: "我确认我已年满 18 岁并且我已阅读并同意 <termsOfUseLink>服务条款</termsOfUseLink\
+      \ > 使用 Trip Planner.\n"
+  TransitVehicleOverlay:
+    incoming_at: 接近 {stop}
+    in_transit_to: 下一车站 {stop}
+    vehicleName: '车辆 {vehicleNumber}: '
+    realtimeVehicleInfo: <strong>{vehicleNameOrBlank}</strong>{relativeTime}
+    stopped_at: 巴士车门在 {stop} 打开
+    travelingAt: 以 {milesPerHour}
+  TripNotificationsPane:
+    altRouteRecommended: 建议采用替代路线或换乘点
+    monitorThisTrip: 在此行程开始前 {minutes} 监控并持续到结束.
+    notificationsTurnedOff: 你的账户的通知被关闭了.
+    realtimeAlertFlagged: 在我的旅程中有一个实时警报标志着
+    advancedSettings: 高级设置
+    howToReceiveAlerts: "要接收已保存行程的提醒, 请在你的账户设置中启用通知, 并尝试再次保存一个行程.\n"
+    delaysAboveThreshold: 延误或中断超过
+    notifyViaChannelWhen: '通过 {channel} 通知我当:'
+    oneHour: 1小时
+    toggleAdvancedSettings: 切换高级设置
+  TripStatus:
+    deleteTrip: 删除行程
+    planNewTrip: 计划新的旅行
+    alerts: '{alerts, plural, one {# 警报!} other {# 警报!}}'
+  TripStatusRenderers:
+    base:
+      lastCheckedDefaultText: 最后一次检查时间未知
+      unknownState: 未知的旅行状态
+      lastCheckedText: '上次检查: {formattedDuration} 前'
+      togglePause: 暂停
+      tripIsNotSnoozed: 今天剩下的时间都在打瞌睡
+      tripIsSnoozed: 重新开启行程分析功能
+      untogglePause: 继续
+    noLongerPossible:
+      heading: 旅程已不可能
+      description: "行程规划器无法找到您在一周内任何选定日期的行程。请尝试重新规划您的行程，寻找其他路线。\n"
+    snoozed:
+      heading: 旅程监测今天被搁置
+      description: 重新启用行程监控以查看最新状态.
+    upcoming:
+      nextTripBegins: 下一趟旅程于 {tripDatetime, date, ::eeeee yyyyMMdd} {tripDatetime,
+        time, short} 开始.
+      tripStartIsDelayed: 行程开始时间延迟 ${duration}!
+      tripStartsSoonOnTime: 旅程即将开始而且大约是准时的.
+      tripBegins: 您的行程将于 {tripStart, time, short} 开始. (实时跟踪将于{monitoringStart, time,
+        short}开始).
+      tripStartIsEarly: 开始时间比预期早 ${duration}!
+      tripStartsSoonNoUpdates: 旅程即将开始 (没有实时更新).
+    active:
+      delayedHeading: 旅程正在进行中并延迟了{formattedDuration}!
+      description: 旅程将于 {arrivalTime, time, short} 到达目的地.
+      earlyHeading: 旅程正在进行中将比预计时间早 {formattedDuration} 到达!
+      noDataHeading: 旅程正在进行中 (没有可用的实时更新).
+      onTimeHeading: 旅程正在进行中而且大约是准时的.
+    inactive:
+      description: 恢复行程监控以查看最新状态
+      heading: 行程监控暂停了
+    nextTripNotPossible:
+      heading: 今天的旅行是不可能的
+      description: "行程规划器无法找到您今天的行程. 请尝试重新规划您的行程寻找其他路线.\n"
+    notCalculated:
+      awaiting: 等待计算…
+      description: 请稍等一下以便计算行程.
+      heading: 尚未计算的行程
+  TripSummaryPane:
+    notificationsDisabled: '通知: <strong>已禁用</strong>'
+    happensOnDays: '发生在: <strong>{days}</strong>'
+    notifications: '通知: <strong>预定出发前 {leadTimeInMinutes} </strong>'
+  TripTools:
+    linkCopied: 抄袭
+    reportEmailSubject: 报告OpenTripPlanner的问题
+    reportEmailTemplate: "***对用户的指示***\n 该功能允许你通过电子邮件将报告发送给网站管理员进行审查.请填写下面的提示并使用你的常规电子邮件程序发送.\n\
+      \ \n ***请填写以下内容***\n \n 遇到的问题:\n \n 你想要的旅行类型:\n \n ***技术细节***\n"
+    copyLink: 复制链接
+    reportIssue: 报告问题
+  TripViewer:
+    accessible: 易接近
+    bicyclesAllowed: 允许的
+    routeHeader: 路线:<strong>{routeShortName}</strong> {routeLongName}
+    header: 行程查看器
+    viewStop: 看法
+  UserAccountScreen:
+    confirmDelete: 你确定要删除你的用户账户吗?一旦你这样做, 它就无法恢复.
+  UserSettings:
+    favoriteStops: 最喜爱的车站
+    mySavedPlaces: 我保存的位置 (<manageLink>管理</manageLink>)
+    confirmDeletion: 你有最近的搜索或地点存储.禁用存储最近的地点或搜索将删除这些项目.继续吗?
+    myPreferences: 我的偏好
+    noFavoriteStops: 没有最喜欢的车站
+    recentPlaces: 最近的地方
+    recentSearchSummary: 从 {from} {mode} 到 {to}
+    recentSearches: 最近的搜索
+    rememberSearches: 还记得最近的搜索/地方吗?
+    stopId: '车站 ID: {stopId}'
+    storageDisclaimer: "您选择保存的任何偏好, 地点或设置将被保存在您的浏览器的本地存储中. 我们将无法获得关于你的家, 工作或任何其他地点的知识.\
+      \ 在任何时候, 你都可以选择关闭记忆最近的地方或搜索, 并清除你保存的家庭或工作地点和最喜欢的车站.\n"
+  VerifyEmailPane:
+    emailIsVerified: 我的电子邮件被验证了!
+    resendVerification: 重新发送验证邮件
+    instructions1: "在完成账户设置之前请检查您的电子邮件收件箱并按照信息中的链接来验证您的电子邮件地址.\n"
+    instructions2: 一旦你被验证点击下面的按钮继续.
+  UserTripSettings:
+    restoreOptions: "恢复 {defaults, select,\n true {我的默认值}\n other {默认设置}\n }\n"
+    forgetOptions: 忘记我的选择
+    rememberOptions: 记住行程选择
+  AccountSetupFinishPane:
+    message: 你已经准备好开始计划你的旅行.
+  AmenitiesPanel:
+    noNearbyScooters: 附近没有微型交通工具出租.
+    bikesAtStation: "{companyLength, plural,\n =0 {{name} 有辆自行车 }\n other {{name}\
+      \ 有 {company} 自行车 }\n }\n"
+    bikesAvailable: "{count, plural,\n =0 {自行车不可用}\n one {# 辆自行车可用}\n other {# 辆自行车可用}\n\
+      \ }\n"
+    bikesNearby: "{count, plural,\n =0 {附近没有 {company} 自行车}\n one {附近有 # 辆 {company}\
+      \ 自行车}\n other {附近有 # 辆 {company} 自行车}\n }\n"
+    nearbyAmenities: 附近的设施
+    noNearbyBikes: 附近没有发现自行车出租.
+    noPRLotsFound: 附近没有Park-and-Ride.
+    scootersNearby: "{count, plural,\n =0 {附近没有 {company} 电动滑板车}\n one {附近有 # {company}\
+      \ 电动滑板车}\n other {附近有 # {company} 电动滑板车}\n }\n"
+    spacesAvailable: "{count, plural,\n =0 {没有可用的车位}\n one {# 个可车位}\n other {# 个可车位}\n\
+      \ }\n"
+  AppMenu:
+    callHistory: 呼叫历史
+    closeMenu: 关闭菜单
+    fieldTrip: 旅行标题
+    mailables: 准备发布
+    menuItemIconAlt: '{label} 菜单项的图标'
+    openMenu: 打开菜单
+  StopTimeCell:
+    imminentArrival: 到达
+  SubNav:
+    myAccount: 我的帐户
+    settings: 设置
+    trips: 旅行
+  SwitchButton:
+    defaultContent: 切换
+    switchLocations: 开关位置
+  WelcomeScreen:
+    prompt: 你想去哪里？
+  ViewSwitcher:
+    switcher: 开关按钮
+  A11yPrefs:
+    accessibilityRoutingByDefault: 默认情况下优先选择无障碍旅行
+  AddPlaceButton:
+    addPlace: 添加地点
+    needOriginDestination: 定义原产地或目的地以增加中间地点
+    tooManyPlaces: 达到的最大中间位置
+  AdvancedOptions:
+    bannedRoutes: 选择一条被封锁的路线…
+    maxBike: 最大骑自行车 {unitsString}
+    maxWalk: 最大步行 {unitsString}
+    preferredRoutes: 选择首选路线…
+  AfterSignInScreen:
+    mainTitle: 重定向…
+    message: 如果几秒钟后页面没有加载, 请 <redirectLink>点击这里</redirectLink>.
+  BackToTripPlanner:
+    backToTripPlanner: 返回到行程计划表
+  BatchResultsScreen:
+    expandMap: 扩大地图
+    showResults: 显示结果
+  BatchRoutingPanel:
+    shortTitle: 计划行程
+  BatchSearchScreen:
+    header: 计划行程
+  DateTimeOptions:
+    arriveBy: 到达
+    now: 现在
+    departAt: 出发时间
+  DateTimeScreen:
+    header: 设置日期/时间
+  DeleteUser:
+    deleteMyAccount: 删除我的账户
+  EnhancedStopMarker:
+    stopID: '车站 ID: {stopId}'
+    stopViewer: 车站查看器
+  ErrorMessage:
+    header: 无法计划行程
+    warning: 警告
+  FavoritePlaceList:
+    addAnotherPlace: 再加一个地方
+    description: '添加你经常去的地方以节省计划旅行的时间:'
+    editThisPlace: 编辑此位置
+    setAddressForPlaceType: 设置你的 {placeType} 地址
+  FormNavigationButtons:
+    ariaLabel: 表格导航
+  NotFound:
+    description: 您要求的内容不存在.
+    header: 未找到内容
+  RelatedStopsPanel:
+    noArrivalFound: 未发现抵达者
+    relatedStops: 相关车站
+    viewDetails: 查看详情
+  ResultsHeader:
+    noTripFound: 没有找到旅行
+    tripsFound: 我们发现了 {count} {count, plural, one {选项} other {选项}}
+    waiting: 等待...
+  ResultsScreen:
+    header: 选项 {index}
+  RouteRow:
+    operatorLogoAltText: '{operatorName} 标志'
+  SavedTripScreen:
+    tripNameAlreadyUsed: 另一个保存的旅行已经使用了这个名字. 请选择一个不同的名字.
+    tripNameRequired: 请输入一个行程名称.
+    tooManyTrips: "你已经达到了所保存的五次旅行的上限. 请从你保存的旅行中删除未使用的旅行然后再试一次.\n"
+  SearchScreen:
+    header: 计划行程
+  TripBasicsPane:
+    checkingItineraryExistence: 检查一周中每一天的行程存在…
+    selectAtLeastOneDay: 请至少选择一天进行监测.
+    selectedItinerary: '选定的行程:'
+    tripDaysPrompt: 你这次旅行是在哪天进行的?
+    tripIsAvailableOnDaysIndicated: 您的行程可以在上述一周的日子里进行.
+    tripNamePrompt: '请为这次旅行提供一个名称:'
+    tripNotAvailableOnDay: 此行程每 {repeatedDay} 不举行!
+    unsavedChangesExistingTrip: 你还没有保存你的行程. 如果你离开了变化就会丢失.
+    unsavedChangesNewTrip: 你还没有保存你的新旅行. 如果你离开它就会丢失.
+  TripSummary:
+    itinerary: 行程
+common:
+  daysOfWeekCompact:
+    tuesday: 周二
+    friday: 周五
+    saturday: 周六
+    monday: 星期一
+    sunday: 星期天
+    thursday: 星期四
+    wednesday: 周三
+  daysOfWeekPlural:
+    friday: 每周五
+    tuesday: 每周二
+    monday: 每星期一
+    saturday: 每周六
+    sunday: 每星期天
+    thursday: 每星期四
+    wednesday: 每周三
+  forms:
+    cancel: 取消
+    finish: 完成
+    next: 下一页
+    no: 否
+    back: 后退
+    close: 关
+    defaultValue: '{value} (默认)'
+    delete: 删除
+    edit: 编辑
+    error: 错误!
+    print: 打印
+    save: 保存
+    startOver: 重新开始
+    yes: 是
+  itineraryDescriptions:
+    calories: '{calories, number} 大卡'
+    noTransitFareProvided: 没有票价信息
+    noItineraryToDisplay: 没有显示行程.
+    transfers: '{transfers, plural, =0 {} one {# 换乘} other {# 换乘}}'
+  time:
+    tripDurationFormatZeroHours: '{minutes, number} 分'
+    departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
+    fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
+      \ =0 {几秒钟前}\n =1 {一分钟前}\n other {# 分钟前}\n }}\n =1 {一小时前}\n other {# 小时前}\n }}\n\
+      \ other {# 天之前}\n }\n"
+    tripDurationFormat: "{hours, plural, \n =0 {{minutes, number} 分钟}\n other {# 小时\
+      \ {minutes, number} 分钟}\n }\n"
+  dateExpressions:
+    today: 今天
+    tomorrow: 明天
+    yesterday: 昨日
+  modes:
+    car_park: 停车和乘车
+    drive: 驾驶
+    flex: Flex Routes
+    micromobility_rent: 电动滑板车
+    subway: 地铁
+    tram: 电车
+    bicycle_rent: 共享单车
+    bike: 自行车
+    bus: 公共汽车
+    cable_car: 缆车
+    car: 汽车
+    ferry: 渡船
+    funicular: 缆车
+    gondola: 贡多拉
+    micromobility: 电动滑板车
+    rail: 火车
+    rent: 租赁选择
+    transit: 公共交通
+    walk: 步行
+  daysOfWeek:
+    friday: 星期五
+    monday: 星期一
+    saturday: 星期六
+    sunday: 周日
+    thursday: 星期四
+    tuesday: 星期二
+    wednesday: 星期三
+  notifications:
+    email: 电子邮件
+    sms: 短信
+  places:
+    custom: 习俗
+    dining: 用餐
+    home: 家
+    work: 工作
+  routing:
+    routeToHeadsign: 到 {headsign}
+  coordinates: '{lat}, {lon}'
+  searchForms:
+    enterDestination: "输入目的地名称或 {mobile, select,\n true {点击}\n other {点击}\n } 地图…\n"
+    enterStartLocation: "输入出发地点或 {mobile, select,\n true {点击}\n other {点击}\n } 地图…\n"
+config:
+  bicycleModes:
+    bicycle: 我的自行车
+    bicycle_rent: 共享单车
+  flex:
+    both: 详见行程表底部
+    continuous-dropoff: 与操作人员沟通停止事宜
+    flex-service: 灵活的服务
+    flex-service-colon: 'Flex Service:'
+    call-ahead: 打电话预约
+  accessModes:
+    bicycle: 公共交通 + 我的自行车
+    bicycle_rent: 公共交通 + 共享单车
+    car_hail: Ride Hail
+    car_park: Park & Ride
+    micromobility: 公共交通 + 我的电动滑板车
+    micromobility_rent: 公共交通 + 租用的电动滑板车
+  micromobilityModes:
+    micromobility: 我的电动滑板车
+    micromobility_rent: 租用的电动滑板车
+util:
+  state:
+    noTripFound: 没有找到旅行.
+    errorPlanningTrip: 在计划旅行时发生了一个错误.
+    networkUnavailable: '{network} 网络目前无法使用.'
+    noTripFoundForMode: 没有发现 {modes} 的行程.
+    noTripFoundReason: 在指定的最大距离内或在指定的时间可能没有公交服务, 或者您的起点或终点可能无法安全访问.
+    noTripFoundWithReason: '{noTripFound} {reason}'
+    titleBarRouteId: 路线 {routeId}
+    titleBarStopId: 车站 {stopId}
+    titleBarWithStatus: '{title} | {status}'
