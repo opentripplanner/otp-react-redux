@@ -75,11 +75,10 @@ class PatternRow extends Component<Props, State> {
     const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
     return (
-      <div className="route-row" role="table">
+      <div className="route-row" role="group">
         {/* header row */}
         <div
           className="header"
-          role="row"
           style={{
             backgroundColor: routeColor,
             color: getMostReadableTextColor(routeColor, route?.textColor)
