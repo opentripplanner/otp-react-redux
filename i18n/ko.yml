@@ -332,9 +332,9 @@ components:
     reportEmailSubject: OpenTripPlanner로 문제보고
     reportIssue: 문제보고
     copyLink: 링크 복사
-    reportEmailTemplate: "\"*** 사용자 지침 ***\n 이 기능을 사용하면 검토를 위해 사이트 관리자에게 보고서를 이메일로\
-      \ 보낼 수 있습니다.\n 아래 프롬프트를 작성하고 일반 이메일 프로그램을 사용하여 보내주십시오.\n \n *** 다음을 완료하세요 ***\n\
-      \ \n 발생한 문제:\n \n 가고 싶었던 여행의 종류:\n \n *** 기술적 세부 사항 ***\"\n"
+    reportEmailTemplate: "*** 사용자 지침 ***\n 이 기능을 사용하면 검토를 위해 사이트 관리자에게 보고서를 이메일로 보낼\
+      \ 수 있습니다.\n 아래 프롬프트를 작성하고 일반 이메일 프로그램을 사용하여 보내주십시오.\n \n *** 다음을 완료하세요 ***\n\
+      \ \n 발생한 문제:\n \n 가고 싶었던 여행의 종류:\n \n *** 기술적 세부 사항 ***\n"
   TripViewer:
     accessible: 얻기 쉬운
     bicyclesAllowed: 허용됨
