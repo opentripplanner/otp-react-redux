@@ -2500,10 +2500,19 @@
   dependencies:
     "@octokit/openapi-types" "^10.0.0"
 
-"@opentripplanner/base-map@^3.0.1", "@opentripplanner/base-map@^3.0.2":
+"@opentripplanner/base-map@^3.0.1":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.2.tgz#ff7e5a81ee3937f4cf982d5eb03066fbf90f3e44"
   integrity sha512-PuLh6XfJeYQmZAs2JruT3QfWzAmwoK8nPMAVE2bjmN032SXlaGUJru2kERGD2vkmaUud+XqQIvdQ6ZlcQkpS1g==
+  dependencies:
+    mapbox-gl "npm:empty-npm-package@1.0.0"
+    maplibre-gl "^2.1.9"
+    react-map-gl "^7.0.15"
+
+"@opentripplanner/base-map@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.3.tgz#d471aeae46822ad4366ecf438320704f619a1872"
+  integrity sha512-uDfX7Yj9a9L5IKjwe6KZ2FcJx5wNkzWkQgBMoQnquNJgZpc9t+tKUmCNX/xO/3K6VMifzMUHSpjgcUXRZJ2z8Q==
   dependencies:
     mapbox-gl "npm:empty-npm-package@1.0.0"
     maplibre-gl "^2.1.9"
@@ -2697,10 +2706,10 @@
     "@turf/bbox" "^6.5.0"
     lodash.isequal "^4.5.0"
 
-"@opentripplanner/trip-details@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-2.2.4.tgz#09d879942b1c7b94c2d2ea1b62b9815b7ed17dfd"
-  integrity sha512-ueQH79vxsMEvDAdoWo9LDZs8iJ96GPS0BkRvDnF2jshLtXrtypwzdyExMH34N5kUZFMIxMtoQGTqD7wsVPwl0g==
+"@opentripplanner/trip-details@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-2.2.5.tgz#7414637b36046d0b64da9e08a747a1bcb519faeb"
+  integrity sha512-yUzqNa7urSHj9TOTXCrzdkC8QfWmcYatJZaM3CoqDSP3FHUAQFs8lsKh9GK1CtJorS+63QxIh/D7Dc4T3LxLYw==
   dependencies:
     "@opentripplanner/core-utils" "^7.0.3"
     "@styled-icons/fa-solid" "^10.34.0"
