@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
-import { Popup as MapGlPopup, MapRef, useMap } from 'react-map-gl'
+import { MapRef, useMap } from 'react-map-gl'
+import { Popup } from '@opentripplanner/base-map'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { useIntl, WrappedComponentProps } from 'react-intl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
@@ -11,25 +12,22 @@ import * as mapActions from '../../actions/map'
 import { Icon } from '../util/styledIcon'
 import { renderCoordinates } from '../form/user-settings'
 
-/**
- * Adds a box shadow and tweaks border radius to make popups easier to read.
- */
-const Popup = styled(MapGlPopup)`
-  & > .maplibregl-popup-content,
-  & > .mapboxgl-popup-content {
-    border-radius: 6px;
-    box-shadow: 0 3px 14px rgb(0 0 0 / 40%);
-  }
+const PopupTitleWrapper = styled.div`
+  align-items: flex-start;
+  display: flex;
+  margin-bottom: 6px;
+  width: 100%;
 `
 
 const PopupTitle = styled.div`
+  flex-grow: 1;
   font-size: 14px;
-  margin-bottom: 6px;
 `
 
 const ZoomButton = styled.button`
   background: none;
   border: none;
+  margin-top: -1px;
   padding-top: 0;
 `
 
@@ -83,20 +81,22 @@ function MapPopup({
       // Override inline style supplied by react-map-gl to accommodate long "plan a trip" translations.
       style={{ maxWidth: '260px', width: '260px' }}
     >
-      <ZoomButton
-        className="pull-right"
-        onClick={() => zoomToPlace(map, mapPopupLocation, DEFAULT_ZOOM)}
-        title={intl.formatMessage({
-          id: 'components.PointPopup.zoomToLocation'
-        })}
-      >
-        <Icon Icon={Search} />
-      </ZoomButton>
-      <PopupTitle>
-        {typeof popupName === 'string' && popupName.split(',').length > 3
-          ? popupName.split(',').splice(0, 3).join(',')
-          : popupName}
-      </PopupTitle>
+      <PopupTitleWrapper>
+        <PopupTitle>
+          {typeof popupName === 'string' && popupName.split(',').length > 3
+            ? popupName.split(',').splice(0, 3).join(',')
+            : popupName}
+        </PopupTitle>
+        <ZoomButton
+          // className="pull-right"
+          onClick={() => zoomToPlace(map, mapPopupLocation, DEFAULT_ZOOM)}
+          title={intl.formatMessage({
+            id: 'components.PointPopup.zoomToLocation'
+          })}
+        >
+          <Icon Icon={Search} />
+        </ZoomButton>
+      </PopupTitleWrapper>
       <div>
         <FromToLocationPicker
           label
