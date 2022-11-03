@@ -1,4 +1,4 @@
-import { Times } from '@styled-icons/fa-solid'
+import { Times } from '@styled-icons/fa-solid/Times'
 import Draggable, { DraggableProps } from 'react-draggable'
 import React, { HTMLAttributes, ReactNode } from 'react'
 
