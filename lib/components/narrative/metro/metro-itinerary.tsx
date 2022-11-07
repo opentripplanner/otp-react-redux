@@ -347,6 +347,7 @@ class MetroItinerary extends NarrativeItinerary {
             )}
             {!mini && (
               <ItineraryGrid className="itin-grid">
+                {/* TODO: a11y: add aria-label to parent element */}
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
                 </Routes>
