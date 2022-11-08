@@ -70,6 +70,9 @@ function MapPopup({
       { id: 'common.coordinates' },
       renderCoordinates(intl, mapPopupLocation)
     )
+  const zoomButtonLabel = intl.formatMessage({
+    id: 'components.PointPopup.zoomToLocation'
+  })
 
   return (
     <Popup
@@ -88,11 +91,9 @@ function MapPopup({
             : popupName}
         </PopupTitle>
         <ZoomButton
-          // className="pull-right"
+          aria-label={zoomButtonLabel}
           onClick={() => zoomToPlace(map, mapPopupLocation, DEFAULT_ZOOM)}
-          title={intl.formatMessage({
-            id: 'components.PointPopup.zoomToLocation'
-          })}
+          title={zoomButtonLabel}
         >
           <Icon Icon={Search} />
         </ZoomButton>
