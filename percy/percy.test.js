@@ -75,8 +75,8 @@ beforeAll(async () => {
 
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
-      args: ['--disable-web-security'],
-      headless: false
+      args: ['--disable-web-security']
+      // headless: false
     })
 
     // Fix time to Monday, March 14, 2022 14:22:22 GMT (10:22:22 AM EDT).
@@ -147,7 +147,22 @@ test('OTP-RR', async () => {
   await page.waitForNavigation({ waitUntil: 'networkidle2' })
   await page.waitForSelector('.option.metro-itin')
 
-  await percySnapshotWithWait(page, 'Metro Itinerary')
+  // Change the modes
+  await page.click('.visible-lg.straight-corners:first-of-type')
+  await page.click('#plan-trip')
+
+  await percySnapshotWithWait(page, 'Metro Itinerary No Transit')
+
+  // Restore transit
+  await page.click('.visible-lg.straight-corners:first-of-type')
+
+  // Change the time
+  await page.click('.summary')
+  await page.focus('input[type="time"]')
+  await page.keyboard.type('10')
+  await page.waitForTimeout(200)
+  await page.click('#plan-trip')
+
   // Select a trip
   await page.waitForSelector('.option.metro-itin:nth-of-type(1)')
   await page.click('.option.metro-itin:nth-of-type(1)')
@@ -266,5 +281,8 @@ test('OTP-RR', async () => {
   await page.goto(`${page.url()}&ui_activeItinerary=1`)
   await page.waitForTimeout(2000)
 
-  await percySnapshotWithWait(page, 'Batch Itinerary Showing Bikes')
+  await percySnapshotWithWait(
+    page,
+    'Batch Itinerary With Transit Showing Bikes'
+  )
 })
