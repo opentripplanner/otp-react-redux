@@ -45,6 +45,7 @@ components:
     planTripTooltip: Lên kế hoạch cho chuyến đi
     validationMessage: 'Vui lòng xác định các trường sau để lên kế hoạch cho một chuyến
       đi: {issues}'
+    settings: Cài đặt chuyến đi
   CallTakerPanel:
     groupSize: 'Quy mô nhóm:'
     advancedOptions: Tùy chọn nâng cao
@@ -127,6 +128,8 @@ components:
     itinerariesAndIssues: '{itinerariesFound} và {numIssues}'
     searching: Tìm lựa chọn của bạn…
     selectCost: Phí tổn
+    changeSortDir: Thay đổi hướng sắp xếp
+    sortBy: Sắp xếp theo
   NewAccountWizard:
     finish: Thiết lập tài khoản hoàn tất!
     notifications: Tùy chọn thông báo
@@ -217,6 +220,7 @@ components:
     noFilteredRoutesFound: Không có tuyến đường phù hợp với bộ lọc của bạn!
     shortTitle: Xem các tuyến đường
     title: Trình xem Tuyến đường
+    details: ' '
   SaveTripButton:
     cantSaveText: Không thể tiết kiệm
     saveTripText: Lưu chuyến đi
@@ -515,6 +519,8 @@ components:
     switcher: Nút bật tắt
   WelcomeScreen:
     prompt: Bạn muốn đi đâu?
+  PointPopup:
+    zoomToLocation: Thu phóng đến vị trí
 common:
   coordinates: '{lat}, {lon}'
   daysOfWeek:
