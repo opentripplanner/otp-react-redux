@@ -15,7 +15,7 @@ import {
   BatchResultsScreen,
   BatchRoutingPanel,
   BatchSearchScreen,
-  DefaultItinerary
+  MetroItinerary
   // Webpack sets this file to run from a subdirectory within otp-react-redux
   // ../lib points to the index file of otp-react-redux's source code
 } from '../lib'
@@ -73,7 +73,7 @@ const TermsOfStorage = () => (
 export function configure(otpConfig) {
   return {
     defaultMobileTitle: <div className={`icon-${otpConfig.branding} mobile`} />,
-    ItineraryBody: DefaultItinerary,
+    ItineraryBody: MetroItinerary,
     ItineraryFooter,
     LegIcon: StandardLegIcon,
     MainPanel: BatchRoutingPanel,
