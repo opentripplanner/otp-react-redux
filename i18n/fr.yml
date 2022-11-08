@@ -308,6 +308,8 @@ components:
     previous: Précédent
   PlanTripButton:
     planTrip: Planifier le trajet # or simply "Rechercher"
+  PointPopup:
+    zoomToLocation: Zoomer sur cet endroit
   PrintLayout:
     itinerary: Votre trajet
     toggleMap: Afficher/masquer la carte
