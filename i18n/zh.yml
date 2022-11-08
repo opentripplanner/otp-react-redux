@@ -72,6 +72,7 @@ components:
     destination: 目的地
     origin: 起源
     validationMessage: '请定义以下字段来计划旅行: {issues}'
+    settings: 行程设置
   BeforeSignInScreen:
     mainTitle: 签到
     message: "为了访问这个页面 你将需要登录. 请稍等我们会将您重定向到登录页面.\n"
@@ -145,6 +146,8 @@ components:
     selectWalkTime: 步行时间
     viewAll: 查看所有选项
     numIssues: "{issueNum, plural,\n one {# 问题}\n other {# 个问题}\n }"
+    sortBy: 排序方式
+    changeSortDir: 改变排序方向
   NavLoginButton:
     help: 帮助
     myAccount: 我的账户
@@ -229,6 +232,7 @@ components:
     allAgencies: 所有运输机构
     findARoute: 查找路线
     title: 路线查看器
+    details: ' '
   SavedTripEditor:
     saveNewTrip: 保存新的旅行
     editSavedTrip: 编辑已保存的行程
@@ -499,6 +503,12 @@ components:
     unsavedChangesNewTrip: 你还没有保存你的新旅行. 如果你离开它就会丢失.
   TripSummary:
     itinerary: 行程
+  SessionTimeout:
+    header: 会话即将超时！
+    keepSession: 继续会话
+    body: 您的会话将在一分钟内到期。 按“继续会话”以继续您的搜索。
+  PointPopup:
+    zoomToLocation: 缩放到位置
 common:
   daysOfWeekCompact:
     tuesday: 周二
