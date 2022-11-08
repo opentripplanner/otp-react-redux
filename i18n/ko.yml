@@ -74,6 +74,7 @@ components:
     destination: 목적지
     origin: 기원
     planTripTooltip: 여행 계획
+    settings: 여행 설정
   BeforeSignInScreen:
     mainTitle: 서명
     message: "이 페이지에 액세스하려면 로그인해야합니다. 로그인 페이지로 리디렉션하는 동안 기다려주세요…\n"
@@ -139,6 +140,8 @@ components:
     selectCost: 비용
     selectDuration: 계속기간
     selectDepartureTime: 출발 시각
+    changeSortDir: 정렬 방향 변경
+    sortBy: 정렬 기준
   NavLoginButton:
     myAccount: 내 계정
     signIn: 로그인
@@ -205,6 +208,7 @@ components:
     allAgencies: 모든 대행사
     allModes: 모든 모드
     title: 경로 뷰어
+    details: ' '
   SavedTripEditor:
     saveNewTrip: 새로운 여행을 저장하십시오
     tripInformation: 여행 정보
@@ -507,6 +511,12 @@ components:
     instructions1: "이메일받은 편지함을 확인하고 메시지의 링크를 따라 계정 설정을 마치기 전에 이메일 주소를 확인하십시오.\n"
   SettingsPreview:
     defaultPreviewText: 대중 교통 옵션 및 기본 설정
+  SessionTimeout:
+    header: 세션 시간이 초과됩니다!
+    body: 세션이 1분 이내에 만료됩니다. 검색을 유지하려면 '세션 계속'을 누르십시오.
+    keepSession: 세션 계속
+  PointPopup:
+    zoomToLocation: 위치로 확대
 common:
   dateExpressions:
     tomorrow: 내일
