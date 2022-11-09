@@ -20,22 +20,22 @@
 }
 
 /* Reset cursor when expanded */
-.otp .option.metro-itin.expanded button.header {
+.otp .option.metro-itin.expanded div.header {
   cursor: auto;
 }
 
-.otp .option.metro-itin:last-of-type button .itin-wrapper,
+.otp .option.metro-itin:last-of-type div.header .itin-wrapper,
 .route-row:last-of-type .header {
   border: none;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-.otp .option.metro-itin:first-of-type button .itin-wrapper,
+.otp .option.metro-itin:first-of-type div.header .itin-wrapper,
 .route-row:first-of-type .header {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-.otp .option.metro-itin.expanded:first-of-type button .itin-wrapper {
+.otp .option.metro-itin.expanded:first-of-type div.header .itin-wrapper {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -48,35 +48,40 @@
 }
 
 /* Sadly this hack is the only way to select the AccessibilityRating */
-.otp .option.metro-itin button .itin-wrapper div:not(.itinerary-grid),
-.otp .option.metro-itin button .itin-wrapper-small div:not(.itinerary-grid) {
+.otp .option.metro-itin div.header .itin-wrapper div:not(.itinerary-grid),
+.otp
+  .option.metro-itin
+  div.header
+  .itin-wrapper-small
+  div:not(.itinerary-grid) {
   max-width: inherit;
   border-radius: 0;
   margin-top: 0;
 }
-.otp .option.metro-itin button .itin-wrapper div:not(.itinerary-grid) svg,
+.otp .option.metro-itin div.header .itin-wrapper div:not(.itinerary-grid) svg,
 .otp
   .option.metro-itin
-  button
+  div.header
   .itin-wrapper-small
   div:not(.itinerary-grid)
   svg {
   flex: inherit !important;
 }
-.otp .option.metro-itin button .itin-wrapper,
-.otp .option.metro-itin button .itin-wrapper-small {
+.otp .option.metro-itin div.header .itin-wrapper,
+.otp .option.metro-itin div.header .itin-wrapper-small {
   background: #fffffff8;
   overflow: hidden;
   transition: all 0.075s ease-out;
 }
-.otp .option.metro-itin:not(.expanded) button .itin-wrapper,
-.otp .option.metro-itin:not(.expanded) button .itin-wrapper-small {
+.otp .option.metro-itin:not(.expanded) div.header .itin-wrapper,
+.otp .option.metro-itin:not(.expanded) div.header .itin-wrapper-small {
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
 }
-.otp .option.metro-itin button .itin-wrapper:hover,
-.otp .option.metro-itin button .itin-wrapper-small:hover {
+.otp .option.metro-itin div.header .itin-wrapper:hover,
+.otp .option.metro-itin div.header .itin-wrapper-small:hover {
   background: #ffffffff;
+  cursor: pointer;
 }
 
 .otp .option.metro-itin .realtime::before {
@@ -91,11 +96,19 @@
   );
 }
 
+/* remove button styling */
+.metro-itin div.header button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
 /* multiple itinerary underline only when expanded */
-.metro-itin.expanded button.header button:not(.active) {
+.metro-itin.expanded div.header button:not(.active) {
   text-decoration: underline;
 }
-.metro-itin.expanded button.header button:not(.active):hover {
+.metro-itin.expanded div.header button:not(.active):hover {
   color: #090909ef;
 }
 

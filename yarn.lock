@@ -1233,13 +1233,6 @@
     core-js-pure "^3.16.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0.tgz#adeb78fedfc855aa05bc041640f3f6f98e85424c"
-  integrity sha512-7hGhzlcmg01CvH1EHdSPVXYX1aJ8KCEyz6I9xYIi/asDtzBPMyMhVibhM/K6g/5qnKBwjZtp10bNZIEFTRW1MA==
-  dependencies:
-    regenerator-runtime "^0.12.0"
-
 "@babel/runtime@7.12.1":
   version "7.12.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.1.tgz#b4116a6b6711d010b2dad3b7b6e43bf1b9954740"
@@ -1247,10 +1240,17 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.0", "@babel/runtime@^7.15.3", "@babel/runtime@^7.2.0", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.0", "@babel/runtime@^7.15.3", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.12.13":
+  version "7.19.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.19.0.tgz#22b11c037b094d27a8a2504ea4dcff00f50e2259"
+  integrity sha512-eR8Lo9hnDS7tqkO7NsV+mKvCmv5boaXFSZ70DnfhcgiEne8hv9oCEd36Klw74EtizEqLsy4YnW8UWwpBVolHZA==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -2509,10 +2509,10 @@
     maplibre-gl "^2.1.9"
     react-map-gl "^7.0.15"
 
-"@opentripplanner/base-map@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.3.tgz#d471aeae46822ad4366ecf438320704f619a1872"
-  integrity sha512-uDfX7Yj9a9L5IKjwe6KZ2FcJx5wNkzWkQgBMoQnquNJgZpc9t+tKUmCNX/xO/3K6VMifzMUHSpjgcUXRZJ2z8Q==
+"@opentripplanner/base-map@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.4.tgz#fb63b7e5ed9328bbfa9b3fd8dfa505e3a42693f1"
+  integrity sha512-XYPKO2vmEm0AV/Z4S7PcSDi4xCMRoOqa7zjgnB0D5+xfzUIt/+OIBVU7T5W0nPuE5LmjXZo1/ctnPWrfSyi9AQ==
   dependencies:
     mapbox-gl "npm:empty-npm-package@1.0.0"
     maplibre-gl "^2.1.9"
@@ -2551,12 +2551,12 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/endpoints-overlay@2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-2.0.3.tgz#420aea28b2b0a52f05b151b2d9fb10ba558f6b76"
-  integrity sha512-fD3xTR2gsdwS6/9ndPl8xxStBAi+1OodoAdkDygYu2p1XNkkeRZ8skBSsDM0D2A53didt1V04qnJnRuwPc1Mkw==
+"@opentripplanner/endpoints-overlay@2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-2.0.4.tgz#7596756ed789b7a56f83f03bb189decdcaa06254"
+  integrity sha512-ZGgstFxhlp9SE/5Y/f6l5uWb0coU/urlko5NaD8hXDOIV6KUuDjPBFy4/8sCg4Uh0LS3zsLBeFwrPKl/lAqHDg==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.1"
+    "@opentripplanner/base-map" "^3.0.4"
     "@opentripplanner/core-utils" "^7.0.3"
     "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
@@ -2631,12 +2631,12 @@
     "@styled-icons/fa-regular" "^10.34.0"
     "@styled-icons/fa-solid" "^10.34.0"
 
-"@opentripplanner/park-and-ride-overlay@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/park-and-ride-overlay/-/park-and-ride-overlay-2.0.2.tgz#f8ec67e37616507d6de771321f7a1f336c98523e"
-  integrity sha512-WMO0xKmGa1G/rudImY954+omA6x0OkMR/iu8GltTtDxUBTPDXaPTsqhwfnlc6gLM6hp5ZPjCrU2xklB0OJkIhQ==
+"@opentripplanner/park-and-ride-overlay@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/park-and-ride-overlay/-/park-and-ride-overlay-2.0.3.tgz#ce8d47bf0620365deccf4314f6041d17267873fa"
+  integrity sha512-qFWOggnvgb2HphfByqEgEJm9Ykb+lrCW3XTL/ivmOKxLqrT4Xwg2ndrFurmWhOp39uDNwVoEXX5qNS0y/7tmUQ==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.1"
+    "@opentripplanner/base-map" "^3.0.4"
     "@opentripplanner/from-to-location-picker" "^2.1.3"
 
 "@opentripplanner/printable-itinerary@^2.0.5":
@@ -2667,29 +2667,29 @@
     glob-promise "^4.2.2"
     js-yaml "^4.1.0"
 
-"@opentripplanner/stop-viewer-overlay@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/stop-viewer-overlay/-/stop-viewer-overlay-2.0.2.tgz#c08afb3e6f2fbf73c90ccfac379f903239962611"
-  integrity sha512-KFAU+2t+/E++8LNVw+jPb1OI3F7z8xygYlNRHwgAj4PO9MMlU+aSq1hyo3eYbYudiJbJPvIrJBt0vmav/6K7KQ==
+"@opentripplanner/stop-viewer-overlay@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/stop-viewer-overlay/-/stop-viewer-overlay-2.0.3.tgz#602f5b687f7462b41023d9084bf5de17449c8f73"
+  integrity sha512-9MFcmY1SpeVITEjOrkO8esiOpgMIqYx1XNO+u31dALhjSWunDWqTvByZKe8SyQxTis7AE21ANcnr1VO/7RIoMQ==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.1"
+    "@opentripplanner/base-map" "^3.0.4"
     "@opentripplanner/core-utils" "^7.0.3"
 
-"@opentripplanner/stops-overlay@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-5.0.2.tgz#63f68dd569e52790739c7fb5fcb6457801d5f895"
-  integrity sha512-UZfJz/htPlORxrd40W06EiqiKkiCUTnWYXQRTeBPgw5nPoURmr6On63PqWqzTeHPVTfcTRgbK48pP6SafCaYaw==
+"@opentripplanner/stops-overlay@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-5.0.3.tgz#1f31238c12a4925918a9919088ac739fb2591490"
+  integrity sha512-jHEAuBOzkHN5MoGkRnwp0yguDpa14ZgK3N0Z8QokenH9tj77H0O03BFjftfDXrOww/PhO3ZAMMe4qSz5u42PkA==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.1"
+    "@opentripplanner/base-map" "^3.0.4"
     "@opentripplanner/from-to-location-picker" "^2.1.3"
     flat "^5.0.2"
 
-"@opentripplanner/transit-vehicle-overlay@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-3.0.2.tgz#7e16e58f8aa2fdd8f535122bd6e428a79d1ff877"
-  integrity sha512-5nsI/aVxkHSqIq5qr9+ovbMSUpXlTTVcWwZ5PEDoYajz0NCsgZ+FXFYDXWK+lMmTPefV54HoRL63k1PRDR0p8w==
+"@opentripplanner/transit-vehicle-overlay@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-3.0.3.tgz#52068188171a2c4a68fd1d476fa3269818ed0d13"
+  integrity sha512-TJlZqEBGpz0iOUWpr80x0VUPwewBjhrCgL13W8evB846yrBj+ww1XxseGFP1qmfIgA29f51fZhMnqEeEBtBNfQ==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.1"
+    "@opentripplanner/base-map" "^3.0.4"
     "@opentripplanner/core-utils" "^7.0.3"
     "@opentripplanner/icons" "^1.2.5"
     flat "^5.0.2"
@@ -2746,12 +2746,12 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-4.0.2.tgz#5eff9d8d69adeb7475099b7c5296fbf23c8b0dd7"
   integrity sha512-cHfMKAfkdy8WH+O42ekROw1hiPKtoMKH9OxaWbM8tJfUsbzYEyUult+OJznS1RbCXc/xNO00Ktj6mx2z9d0IeQ==
 
-"@opentripplanner/vehicle-rental-overlay@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/vehicle-rental-overlay/-/vehicle-rental-overlay-2.0.2.tgz#8dc18475faba8fac2ce3b56067626e4fec29533e"
-  integrity sha512-opNVKXhlWytlseBVO+nzF7NkPm117PET6yqdgCCUwNHkcgyULLvuuHmOKVjOE0BpojvW66R8Y+NnHMmtxa+qCg==
+"@opentripplanner/vehicle-rental-overlay@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/vehicle-rental-overlay/-/vehicle-rental-overlay-2.0.3.tgz#600a9222bc5b2a696b84452f1757a72c3350a8a2"
+  integrity sha512-Fs0TeJLXSLkg5oASHvJbIoA7KLkBbgCn+m7vlREEXY4UhkWGj6D+Y+qfKD7C5ovG8zOeiRoJaCKN5lTkHIh4uw==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.1"
+    "@opentripplanner/base-map" "^3.0.4"
     "@opentripplanner/core-utils" "^7.0.3"
     "@opentripplanner/from-to-location-picker" "^2.1.3"
     "@styled-icons/fa-solid" "^10.34.0"
@@ -4573,7 +4573,7 @@ arrify@^2.0.1:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-2.0.1.tgz#c9655e9331e0abcd588d2a7cad7e9956f66701fa"
   integrity sha512-3duEwti880xqi4eAMN8AyR4a0ByT90zoYdLlevfrvU43vb0YZwZVfxOgxWrLXXXpyugL0hNZc9G6BiB5B3nUug==
 
-asap@^2.0.0, asap@~2.0.3, asap@~2.0.6:
+asap@^2.0.0, asap@~2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
@@ -6358,11 +6358,6 @@ core-js-pure@^3.16.0, core-js-pure@^3.8.1:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.18.1.tgz#097d34d24484be45cea700a448d1e74622646c80"
   integrity sha512-kmW/k8MaSuqpvA1xm2l3TVlBuvW+XBkcaOroFUpO3D4lsTGQWBTb/tBDCf/PNkkPLrwgrkQRIYNPB0CeqGJWGQ==
 
-core-js@^1.0.0:
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
-  integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
-
 core-js@^2.4.0, core-js@^2.6.5:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
@@ -6453,14 +6448,6 @@ create-hmac@^1.1.0, create-hmac@^1.1.4, create-hmac@^1.1.7:
     ripemd160 "^2.0.0"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
-
-create-react-context@^0.2.2:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
-  integrity sha512-CQBmD0+QGgTaxDL3OX1IDXYqjkp2It4RIbcb99jS6AEg27Ga+a9G3JtK6SIu0HBwPLZlmwt9F7UwWA4Bn92Rag==
-  dependencies:
-    fbjs "^0.8.0"
-    gud "^1.0.0"
 
 cross-spawn@6.0.5, cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
@@ -8401,19 +8388,6 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
-fbjs@^0.8.0:
-  version "0.8.17"
-  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
-  integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
-  dependencies:
-    core-js "^1.0.0"
-    isomorphic-fetch "^2.1.1"
-    loose-envify "^1.0.0"
-    object-assign "^4.1.0"
-    promise "^7.1.1"
-    setimmediate "^1.0.5"
-    ua-parser-js "^0.7.18"
-
 fd-slicer@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/fd-slicer/-/fd-slicer-1.1.0.tgz#25c7c89cb1f9077f8891bbe61d8f390eae256f1e"
@@ -9158,11 +9132,6 @@ gtfs-realtime-bindings@^0.0.6:
   dependencies:
     protobufjs "6.8.6"
 
-gud@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
-  integrity sha512-zGEOVKFM5sVPPrYs7J5/hYEw2Pof8KCyOwyhG8sAF26mCAeUFAcYPu1mwB7hhpIP29zOIBaDqwuHdLp0jvZXjw==
-
 gzip-size@5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-5.1.1.tgz#cb9bee692f87c0612b232840a873904e4c135274"
@@ -9320,7 +9289,7 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
-history@^4.7.2, history@^4.8.0-beta.0, history@^4.9.0:
+history@^4.7.2, history@^4.9.0:
   version "4.10.1"
   resolved "https://registry.yarnpkg.com/history/-/history-4.10.1.tgz#33371a65e3a83b267434e2b3f3b1b4c58aad4cf3"
   integrity sha512-36nwAD620w12kuzPAsyINPWJqlNbij+hpK1k9XRloDtym8mxzGYl2c17LnV6IAGB2Dmg4tEa7G7DlawS0+qjew==
@@ -10322,7 +10291,7 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
-isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
+isomorphic-fetch@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   integrity sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=
@@ -11541,7 +11510,7 @@ kdbush@^3.0.0:
   resolved "https://registry.yarnpkg.com/kdbush/-/kdbush-3.0.0.tgz#f8484794d47004cc2d85ed3a79353dbe0abc2bf0"
   integrity sha512-hRkd6/XW4HTsA9vjVpY9tuXJYLSlelnkTmVFu4M9/7MIYQtFcHpbugAU7UbOfjOiVSVYl2fqgBuJ32JUmRo5Ew==
 
-keycode@^2.1.7, keycode@^2.2.0:
+keycode@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.2.0.tgz#3d0af56dc7b8b8e5cba8d0a97f107204eec22b04"
   integrity sha1-PQr1bce4uOXLqNCpfxByBO7CKwQ=
@@ -14679,13 +14648,6 @@ promise-retry@^2.0.1:
     err-code "^2.0.2"
     retry "^0.12.0"
 
-promise@^7.1.1:
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/promise/-/promise-7.3.1.tgz#064b72602b18f90f29192b8b1bc418ffd1ebd3bf"
-  integrity sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg==
-  dependencies:
-    asap "~2.0.3"
-
 promise@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/promise/-/promise-8.1.0.tgz#697c25c3dfe7435dd79fcd58c38a135888eaf05e"
@@ -14725,7 +14687,7 @@ prop-types-extra@^1.0.1:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -15097,15 +15059,6 @@ react-error-overlay@^6.0.9:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
 
-react-event-listener@^0.6.0:
-  version "0.6.6"
-  resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.6.6.tgz#758f7b991cad9086dd39fd29fad72127e1d8962a"
-  integrity sha512-+hCNqfy7o9wvO6UgjqFmBzARJS7qrNoda0VqzvOuioEpoEXKutiKuv92dSz6kP7rYLmyHPyYNLesi5t/aH1gfw==
-  dependencies:
-    "@babel/runtime" "^7.2.0"
-    prop-types "^15.6.0"
-    warning "^4.0.1"
-
 react-fast-compare@^2.0.1:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
@@ -15280,26 +15233,25 @@ react-router-bootstrap@^0.25.0:
   dependencies:
     prop-types "^15.5.10"
 
-react-router-dom@^4.4.0-beta.8:
-  version "4.4.0-beta.8"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.4.0-beta.8.tgz#bc85cb4bdc9347f5fe270f3e4555cd5038ae7a9f"
-  integrity sha512-7BvXPfOAu5t7Xbg42zlKfaWzNKWEL9Jd+/iPE4vafZChZ7qvIaaA3IsUeMc0M+6NDFSqtZl9f8nQKDdfcPthhg==
+react-router-dom@^5.3.4:
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-5.3.4.tgz#2ed62ffd88cae6db134445f4a0c0ae8b91d2e5e6"
+  integrity sha512-m4EqFMHv/Ih4kpcBCONHbkT68KoAeHN4p3lAGoNryfHi0dMy0kCzEZakiKRsvg5wHZ/JLrLW8o8KomWiz/qbYQ==
   dependencies:
-    "@babel/runtime" "^7.1.2"
-    history "^4.8.0-beta.0"
+    "@babel/runtime" "^7.12.13"
+    history "^4.9.0"
     loose-envify "^1.3.1"
     prop-types "^15.6.2"
-    react-router "^4.4.0-beta.8"
+    react-router "5.3.4"
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-router@^4.4.0-beta.8:
-  version "4.4.0-beta.8"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.4.0-beta.8.tgz#6001c87bd191961adc25e84e495bb2bf4d62e59d"
-  integrity sha512-kt25GUhKCPqzyEnr0PH/o2GiimdJLvkqheP+pqRjFyiKPqgXjQVpiIsxUhMin+pheU8cqkQ3jjLprYhshd+WwQ==
+react-router@5.3.4, react-router@^5.3.4:
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-5.3.4.tgz#8ca252d70fcc37841e31473c7a151cf777887bb5"
+  integrity sha512-Ys9K+ppnJah3QuaRiLxk+jDWOR1MekYQrlytiXxC1RyfbdsZkS5pvKAzCCr031xHixZwpnsYNT5xysdFHQaYsA==
   dependencies:
-    "@babel/runtime" "^7.1.2"
-    create-react-context "^0.2.2"
+    "@babel/runtime" "^7.12.13"
     history "^4.9.0"
     hoist-non-react-statics "^3.1.0"
     loose-envify "^1.3.1"
@@ -15396,37 +15348,6 @@ react-sliding-pane@^7.0.0:
   dependencies:
     prop-types "^15.7.2"
     react-modal "^3.12.1"
-
-react-swipeable-views-core@^0.13.7:
-  version "0.13.7"
-  resolved "https://registry.yarnpkg.com/react-swipeable-views-core/-/react-swipeable-views-core-0.13.7.tgz#c082b553f26e83fd20fc17f934200eb717023c8a"
-  integrity sha512-ekn9oDYfBt0oqJSGGwLEhKvn+QaqMGTy//9dURTLf+vp7W5j6GvmKryYdnwJCDITaPFI2hujXV4CH9krhvaE5w==
-  dependencies:
-    "@babel/runtime" "7.0.0"
-    warning "^4.0.1"
-
-react-swipeable-views-utils@^0.13.9:
-  version "0.13.9"
-  resolved "https://registry.yarnpkg.com/react-swipeable-views-utils/-/react-swipeable-views-utils-0.13.9.tgz#a66e98f2f4502d8b00182901f80d13b2f903e10f"
-  integrity sha512-QLGxRKrbJCbWz94vkWLzb1Daaa2Y/TZKmsNKQ6WSNrS+chrlfZ3z9tqZ7YUJlW6pRWp3QZdLSY3UE3cN0TXXmw==
-  dependencies:
-    "@babel/runtime" "7.0.0"
-    keycode "^2.1.7"
-    prop-types "^15.6.0"
-    react-event-listener "^0.6.0"
-    react-swipeable-views-core "^0.13.7"
-    shallow-equal "^1.2.1"
-
-react-swipeable-views@^0.13.3:
-  version "0.13.9"
-  resolved "https://registry.yarnpkg.com/react-swipeable-views/-/react-swipeable-views-0.13.9.tgz#d6a6c508bf5288ad55509f9c65916db5df0f2cec"
-  integrity sha512-WXC2FKYvZ9QdJ31v9LjEJEl1bA7E4AcaloTkbW0uU0dYf5uvv4aOpiyxubvOkVl1a5L2UAHmKSif4TmJ9usrSg==
-  dependencies:
-    "@babel/runtime" "7.0.0"
-    prop-types "^15.5.4"
-    react-swipeable-views-core "^0.13.7"
-    react-swipeable-views-utils "^0.13.9"
-    warning "^4.0.1"
 
 react-test-renderer@^16.0.0-0:
   version "16.14.0"
@@ -15671,11 +15592,6 @@ regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
-
-regenerator-runtime@^0.12.0:
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
-  integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
 
 regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.7:
   version "0.13.9"
@@ -16474,7 +16390,7 @@ set-value@^2.0.0, set-value@^2.0.1:
     is-plain-object "^2.0.3"
     split-string "^3.0.1"
 
-setimmediate@^1.0.4, setimmediate@^1.0.5:
+setimmediate@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/setimmediate/-/setimmediate-1.0.5.tgz#290cbb232e306942d7d7ea9b83732ab7856f8285"
   integrity sha1-KQy7Iy4waULX1+qbg3Mqt4VvgoU=
@@ -16501,11 +16417,6 @@ shallow-copy@~0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/shallow-copy/-/shallow-copy-0.0.1.tgz#415f42702d73d810330292cc5ee86eae1a11a170"
   integrity sha1-QV9CcC1z2BAzApLMXuhurhoRoXA=
-
-shallow-equal@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/shallow-equal/-/shallow-equal-1.2.1.tgz#4c16abfa56043aa20d050324efa68940b0da79da"
-  integrity sha512-S4vJDjHHMBaiZuT9NPb616CSmLf618jawtv3sufLl6ivK8WocjAo58cXwbRV1cgqxH0Qbv+iUt6m05eqEa2IRA==
 
 shallowequal@^1.1.0:
   version "1.1.0"
@@ -17915,11 +17826,6 @@ typescript@^4.4.2, typescript@^4.5:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
   integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
 
-ua-parser-js@^0.7.18:
-  version "0.7.28"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
-  integrity sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==
-
 uglify-js@^3.1.4:
   version "3.14.1"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.14.1.tgz#e2cb9fe34db9cb4cf7e35d1d26dfea28e09a7d06"
@@ -18318,7 +18224,7 @@ warning@^3.0.0:
   dependencies:
     loose-envify "^1.0.0"
 
-warning@^4.0.0, warning@^4.0.1, warning@^4.0.3:
+warning@^4.0.0, warning@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
   integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==

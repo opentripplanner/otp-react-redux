@@ -134,6 +134,7 @@ components:
     destination: destination
     origin: point de départ
     planTripTooltip: Planifier le trajet
+    settings: Trip Settings
     validationMessage: "Veuillez définir les champs suivants afin de planifier votre trajet : {issues}"
   BeforeSignInScreen:
     mainTitle: Connexion en cours
@@ -233,6 +234,8 @@ components:
         one {# problème}
         other {# problèmes}
       }"
+    changeSortDir: "Change sort direction"
+    sortBy: Sort By
     # Note to translator: text below is width-constrained
     # (about half-pane width, or half-screen width in mobile views).
     searching: Recherche...
@@ -298,6 +301,8 @@ components:
     previous: Précédent
   PlanTripButton:
     planTrip: Planifier le trajet # or simply "Rechercher"
+  PointPopup:
+    zoomToLocation: Zoomer sur cet endroit
   PrintLayout:
     itinerary: Votre trajet
     toggleMap: Afficher/masquer la carte
@@ -328,8 +333,6 @@ components:
     noTripFound: Aucun trajet trouvé
     tripsFound: "{count} {count, plural, one {trajet trouvé} other {trajets trouvés}}"
     waiting: Patientez...
-  ResultsScreen:
-    header: Option {index}
   RouteDetails:
     operatedBy: "Exploité par {agencyName}"
     moreDetails: "Plus d'infos"
@@ -374,8 +377,6 @@ components:
     saveTripText: Enregistrer
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
-  SearchScreen:
-    header: Planifiez votre trajet
   SessionTimeout:
     body: Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma session' pour conserver votre recherche. 
     header: Votre session va expirer
@@ -412,17 +413,6 @@ components:
   SwitchButton:
     defaultContent: Permuter
     switchLocations: Permuter les lieux
-  TabbedFormPanel:
-    hideSettings: "Masquer les paramètres"
-  TabbedItineraries:
-    optionNumber: "Option {optionNum, number}"
-    # Note to translator: This text is width-constrained.
-    mustCallAhead: Résa. obligatoire
-    fareCost: >
-      {hasMaxFare, select,
-        true {À partir de {minTotalFare}}
-        other {{minTotalFare}}
-      }
   TermsOfUsePane:
     confirmDeletionPrompt: >
       En révoquant votre accord sur l'enregistrement de vos recherches de trajets, tout l'historique de vos de trajets sera supprimé.
