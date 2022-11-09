@@ -87,7 +87,7 @@ function NextArrivalForPattern(props: Props) {
           <RouteRenderer
             hideTopBorder={route.operator?.colorMode?.includes('gtfs')}
             // All GTFS bg colors look strange with the top border
-            leg={generateFakeLegForRouteRenderer(route)}
+            leg={generateFakeLegForRouteRenderer(route, true)}
           />
         </span>
         {toHeadsign}

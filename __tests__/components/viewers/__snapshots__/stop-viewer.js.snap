@@ -1351,7 +1351,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": false,
+                                            "hideTopBorder": true,
                                             "mode": "BUS",
                                             "routeColor": undefined,
                                             "routeLongName": "Burnside/Stark",
@@ -1362,10 +1362,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={false}
+                                          hideTopBorder={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY ebQLfs"
+                                            className="sc-fmlJrY bUwBaS"
                                             color="333333"
                                           >
                                             20
@@ -3654,7 +3654,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": false,
+                                            "hideTopBorder": true,
                                             "mode": "BUS",
                                             "routeColor": undefined,
                                             "routeLongName": "Burnside/Stark",
@@ -3665,10 +3665,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={false}
+                                          hideTopBorder={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY ebQLfs"
+                                            className="sc-fmlJrY bUwBaS"
                                             color="333333"
                                           >
                                             20
@@ -5655,7 +5655,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": false,
+                                            "hideTopBorder": true,
                                             "mode": "BUS",
                                             "routeColor": undefined,
                                             "routeLongName": "Burnside/Stark",
@@ -5666,10 +5666,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={false}
+                                          hideTopBorder={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY ebQLfs"
+                                            className="sc-fmlJrY bUwBaS"
                                             color="333333"
                                           >
                                             20
@@ -8882,7 +8882,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": false,
+                                            "hideTopBorder": true,
                                             "mode": "BUS",
                                             "routeColor": undefined,
                                             "routeLongName": "Burnside/Stark",
@@ -8893,10 +8893,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={false}
+                                          hideTopBorder={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY ebQLfs"
+                                            className="sc-fmlJrY bUwBaS"
                                             color="333333"
                                           >
                                             20
@@ -9589,7 +9589,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": false,
+                                            "hideTopBorder": true,
                                             "mode": "BUS",
                                             "routeColor": undefined,
                                             "routeLongName": "South Shore",
@@ -9600,10 +9600,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={false}
+                                          hideTopBorder={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY ebQLfs"
+                                            className="sc-fmlJrY bUwBaS"
                                             color="333333"
                                           >
                                             36
@@ -10296,7 +10296,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": false,
+                                            "hideTopBorder": true,
                                             "mode": "BUS",
                                             "routeColor": undefined,
                                             "routeLongName": "Pacific Hwy/Sherwood",
@@ -10307,10 +10307,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={false}
+                                          hideTopBorder={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY ebQLfs"
+                                            className="sc-fmlJrY bUwBaS"
                                             color="333333"
                                           >
                                             94
@@ -11111,7 +11111,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": false,
+                                            "hideTopBorder": true,
                                             "mode": "BUS",
                                             "routeColor": undefined,
                                             "routeLongName": "Pacific Hwy/Sherwood",
@@ -11122,10 +11122,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={false}
+                                          hideTopBorder={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY ebQLfs"
+                                            className="sc-fmlJrY bUwBaS"
                                             color="333333"
                                           >
                                             94
@@ -15364,7 +15364,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": false,
+                                            "hideTopBorder": true,
                                             "mode": "BUS",
                                             "routeColor": undefined,
                                             "routeLongName": "Burnside/Stark",
@@ -15375,10 +15375,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={false}
+                                          hideTopBorder={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY ebQLfs"
+                                            className="sc-fmlJrY bUwBaS"
                                             color="333333"
                                           >
                                             20
