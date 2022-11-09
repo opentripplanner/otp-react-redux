@@ -35,9 +35,9 @@ actions:
     editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur\
       \ :"
     fetchFieldTripError: "Erreur de chargement de l'itinéraire du groupe: {err}"
-    fetchFieldTripsError: "Error fetching des itinéraires du groupe : {err}"
-    fetchTripsForDateError: "Error fetching des itinéraires du groupe pour les dates\
-      \ de sorties : {err}"
+    fetchFieldTripsError: "Erreur lors du chargement des itinéraires du groupe : {err}"
+    fetchTripsForDateError: "Erreur lors du chargement des itinéraires du groupe pour\
+      \ les dates de sorties : {err}"
     incompatibleTripDateError: La date du trajet planifié ({tripDate}) ne correspond
       pas à la date demandée ({requestDate}).
     itineraryCapacityError: "Impossible d'enregistrer les itinéraires : Capacité insuffisante\
