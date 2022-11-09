@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
 import React, { Component } from 'react'
 
-import { combinationFilter } from '../../util/combination-filter'
 import { ComponentContext } from '../../util/contexts'
 import { getSupportedModes } from '../../util/i18n'
 import { setQueryParam } from '../../actions/form'
@@ -21,43 +20,8 @@ interface Props {
   setQueryParam: (newQueryParam: any) => void
 }
 
-// TODO: Central type source
-export type Combination = {
-  mode: string
-  params?: { [key: string]: number | string }
-  requiredModes?: string[]
-}
-
-export const replaceTransitMode =
-  (newQueryParamsMode: string) =>
-  (combination: Combination): Combination => {
-    // Split out walk so it's not duplicated
-    const newMode = (newQueryParamsMode || 'WALK,TRANSIT').split('WALK,')?.[1]
-    // Replace TRANSIT with the newly selected parameters
-    const mode = combination.mode.replace('TRANSIT', newMode)
-    return { ...combination, mode }
-  }
-
 class BatchPreferences extends Component<Props> {
   static contextType = ComponentContext
-
-  /**
-   * When the queryParam changes, the mode is correctly updated but the
-   * active combinations are not. This method updates the currentQuery combinations
-   * and ensures that they all contain the correct modes
-   *
-   * Typescript TODO: combinations and queryParams need types
-   */
-  onQueryParamChange = (newQueryParams: any) => {
-    const { config, modeOptions, query, setQueryParam } = this.props
-    const enabledModes =
-      query.enabledModes ||
-      modeOptions.filter((m) => !m.defaultUnselected).map((m) => m.mode)
-    const combinations = config.modes.combinations
-      .filter(combinationFilter(enabledModes))
-      .map(replaceTransitMode(newQueryParams.mode))
-    setQueryParam({ ...newQueryParams, combinations })
-  }
 
   render() {
     const { config, intl, query } = this.props
@@ -68,7 +32,6 @@ class BatchPreferences extends Component<Props> {
         <div className="modes-panel">
           <StyledBatchPreferences
             ModeIcon={ModeIcon}
-            onQueryParamChange={this.onQueryParamChange}
             queryParams={query}
             supportedCompanies={config.companies}
             supportedModes={getSupportedModes(config, intl)}

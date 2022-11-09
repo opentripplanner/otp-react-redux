@@ -15,6 +15,8 @@ import { Bicycle, Bus, Walking } from '@styled-icons/fa-solid'
 import { hasValidLocation } from '../../util/state'
 import { StyledIconWrapper } from '../util/styledIcon'
 
+import type { ModeButtonDefinition } from '@opentripplanner/types'
+
 import {
   BatchPreferencesContainer,
   DateTimeModalContainer,
@@ -30,7 +32,6 @@ import ModeButtons, {
   StyledModeButton
 } from './mode-buttons'
 import modeSettings from './modeSettings.yml'
-import type { Combination } from './batch-preferences'
 import type { Mode } from './mode-buttons'
 
 const ModeButtonsFullWidthContainer = styled.div`
@@ -70,8 +71,7 @@ type Props = {
   config: any
   currentQuery: any
   intl: IntlShape
-  modeOptions: Mode[]
-  possibleCombinations: Combination[]
+  modeButtonOptions: ModeButtonDefinition[]
   routingQuery: any
   setQueryParam: (queryParam: any) => void
 }
@@ -79,14 +79,47 @@ type Props = {
 /**
  * Main panel for the batch/trip comparison form.
  */
-function BatchSettings({
-  config,
-  currentQuery,
-  intl,
-  modeOptions,
-  routingQuery
-}: Props) {
+function BatchSettings({ config, currentQuery, intl, routingQuery }: Props) {
   const [expanded, setExpanded] = useState<null | string>(null)
+
+  const combinations: ModeButtonDefinition[] = [
+    {
+      Icon: Bus,
+      key: 'TRANSIT',
+      label: 'Transit',
+      modes: [
+        {
+          mode: 'TRANSIT'
+        }
+      ]
+    },
+    {
+      Icon: Walking,
+      key: 'WALK',
+      label: 'Walking',
+      modes: [{ mode: 'WALK' }]
+    },
+    {
+      Icon: Bicycle,
+      key: 'BIKE',
+      label: 'Bike',
+      modes: [{ mode: 'BICYCLE' }, { mode: 'BIKESHARE' }]
+    }
+  ]
+
+  const initialState = {
+    enabledModeButtons: ['TRANSIT'],
+    modeSettingValues: {}
+  }
+
+  const {
+    buttonsWithSettings,
+    enabledModes,
+    setModeSettingValue,
+    toggleModeButton
+  } = useModeState(combinations, initialState, modeSettings, {
+    queryParamState: true
+  })
 
   const _planTrip = () => {
     // Check for any validation issues in query.
@@ -113,50 +146,12 @@ function BatchSettings({
     setExpanded(null)
 
     // Plan trip.
-    routingQuery()
+    routingQuery(undefined, false, enabledModes, modeSettings)
   }
 
   const _updateExpanded = (type: string) => (expanded === type ? null : type)
 
   const _toggleDateTime = () => setExpanded(_updateExpanded('DATE_TIME'))
-
-  const combinations = [
-    {
-      Icon: Bus,
-      key: 'TRANSIT',
-      label: 'Transit',
-      modes: [
-        {
-          mode: 'TRANSIT'
-        }
-      ]
-    },
-    {
-      Icon: Walking,
-      key: 'WALK',
-      label: 'Walking',
-      modes: [{ mode: 'WALK' }]
-    },
-    {
-      Icon: Bicycle,
-      key: 'BIKE',
-      label: 'Bike',
-      modes: [{ mode: 'BICYCLE' }, { mode: 'BIKESHARE' }]
-    }
-  ]
-
-  const initialState = {
-    enabledCombinations: ['TRANSIT'],
-    modeSettingValues: {}
-  }
-
-  const {
-    combinations: combinationsFromState,
-    setModeSettingValue,
-    toggleCombination
-  } = useModeState(combinations, initialState, modeSettings, {
-    queryParamState: true
-  })
 
   return (
     <>
@@ -183,9 +178,9 @@ function BatchSettings({
             selectedModes={selectedModes}
           /> */}
           <MetroModeSelector
-            combinations={combinationsFromState}
+            modeButtons={buttonsWithSettings}
             onSettingsUpdate={setModeSettingValue}
-            onToggleCombination={toggleCombination}
+            onToggleModeButton={toggleModeButton}
           />
         </ModeButtonsContainerCompressed>
         <StyledPlanTripButton

@@ -19,7 +19,11 @@ type Props = {
   onClick: () => void
   planTrip: () => void
   profileTrip: () => void
-  routingQuery: (combinations: Combination[]) => void
+  routingQuery: (
+    searchId?: string,
+    updateSearchInReducer?: boolean,
+    combinations?: Combination[]
+  ) => void
   routingType: string
   setMainPanelContent: () => void
   text: string
@@ -66,18 +70,7 @@ function PlanTripButton({
   setMainPanelContent,
   text
 }: Props) {
-  const { enabledCombinations } = useModeState(
-    combinations,
-    initialState,
-    modeSettings,
-    {
-      queryParamState: true
-    }
-  )
-
   const _onClick = () => {
-    routingQuery(null, enabledCombinations)
-
     if (typeof onClick === 'function') onClick()
     if (!coreUtils.ui.isMobile()) setMainPanelContent(null)
   }

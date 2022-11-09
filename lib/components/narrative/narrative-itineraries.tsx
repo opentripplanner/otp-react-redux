@@ -20,6 +20,7 @@ import {
 } from '../../util/state'
 import { getFirstLegStartTime, itinerariesAreEqual } from '../../util/itinerary'
 import { Itinerary, Leg } from '@opentripplanner/types'
+
 import {
   setActiveItinerary,
   setActiveLeg,
@@ -111,7 +112,6 @@ const NarrativeItineraries = ({
 
   const [showingErrors, setShowingErrors] = useState(false)
 
-  // TODO IMOPRT LEG
   const _setActiveLeg = (index: number, leg: Leg) => {
     const isSameLeg = activeLeg === index
     if (isSameLeg) {
@@ -213,7 +213,6 @@ const NarrativeItineraries = ({
   }
 
   if (!activeSearch) return null
-  console.log(activeSearch)
 
   // Merge duplicate itineraries together and save multiple departure times
   const mergedItineraries = mergeItineraries
