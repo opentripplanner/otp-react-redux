@@ -105,8 +105,7 @@ components:
     mainTitle: Mis ajustes
     terms: Términos
   ItinerarySummary:
-    fareCost: "{useMaxFare, select,\n  true {{minTotalFare} - {maxTotalFare}}\n  other\
-      \ {{minTotalFare}}\n }\n"
+    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   MapLayers:
     bike-rental: '{companies} Bicicleta Compartida'
     car-rental: Ubicaciones de los coches de alquiler
@@ -259,9 +258,6 @@ components:
     timezoneWarning: Las horas de salida se indican en <strong>{timezoneCode}</strong>.
     viewNextArrivals: Ver próximas llegadas
     zoomToStop: Zoom a la parada
-  TabbedItineraries:
-    mustCallAhead: ¡Hay que llamar con antelación.
-    optionNumber: Opción {optionNum, number}
   TransitVehicleOverlay:
     vehicleName: 'Vehículo {vehicleNumber}: '
     in_transit_to: Próxima parada {stop}
@@ -475,7 +471,7 @@ components:
     backToSearch: Volver a la búsqueda
   ResultsHeader:
     noTripFound: No se encontró ningún viaje
-    tripsFound: Encontramos {count} {count, plural, one {opción} other {opciones}}
+    tripsFound: Encontramos {count, plural, one {# opción} other {# opciones}}
     waiting: Espera...
   ResultsScreen:
     header: Opción {index}
@@ -517,8 +513,6 @@ components:
       \ almacene mis viajes planificados históricos para mejorar los servicios de\
       \ tránsito en mi área. <termsOfStorageLink>Más información...</termsOfStorageLink>\n"
     mustAgreeToTerms: Debe aceptar los términos de servicio para continuar.
-  TabbedFormPanel:
-    hideSettings: ' Ocultar configuración'
   AccountSetupFinishPane:
     message: Ya está listo para empezar a planificar sus viajes.
   AddPlaceButton:
@@ -621,13 +615,11 @@ common:
     enterStartLocation: "Introduzca la ubicación de inicio o {mobile, select,\n true\
       \ {toque}\n other {haga clic}\n } en el mapa…\n"
   time:
-    tripDurationFormat: "{hours, plural, \n =0 {{minutes, number} min}\n other {#\
-      \ hr {minutes, number} min}\n }\n"
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
-    tripDurationFormatZeroHours: '{minutes, number} min'
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {hace unos segundos}\n =1 {hace un minuto}\n other {hace # minutos}\n }}\n\
       \ =1 {hace una hora}\n other {hace # horas}\n }}\n other {hace # días}\n }\n"
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min"
   places:
     custom: personalizado
     dining: restaurante

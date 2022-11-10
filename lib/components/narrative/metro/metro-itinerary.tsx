@@ -377,23 +377,14 @@ class MetroItinerary extends NarrativeItinerary {
                   {transitFare === null || transitFare < 0 ? (
                     <FormattedMessage id="common.itineraryDescriptions.noTransitFareProvided" />
                   ) : (
-                    <FormattedMessage
-                      id="components.ItinerarySummary.fareCost"
-                      values={{
-                        // TODO: re-implement TNC fares for metro UI?
-                        maxTotalFare: null,
-                        minTotalFare: (
-                          <FormattedNumber
-                            currency={fareCurrency}
-                            currencyDisplay="narrowSymbol"
-                            // This isn't a "real" style prop
-                            // eslint-disable-next-line react/style-prop-object
-                            style="currency"
-                            value={transitFare / 100}
-                          />
-                        ),
-                        useMaxFare: false
-                      }}
+                    // TODO: re-implement TNC fares for metro UI?
+                    <FormattedNumber
+                      currency={fareCurrency}
+                      currencyDisplay="narrowSymbol"
+                      // This isn't a "real" style prop
+                      // eslint-disable-next-line react/style-prop-object
+                      style="currency"
+                      value={transitFare / 100}
                     />
                   )}
                 </SecondaryInfo>

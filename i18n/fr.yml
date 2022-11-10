@@ -192,11 +192,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
-    fareCost: >
-      {useMaxFare, select,
-        true {{minTotalFare} - {maxTotalFare}}
-        other {{minTotalFare}}
-      }
+    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Rafraîchir les horaires automatiquement ?
   LocationSearch:
@@ -338,7 +334,7 @@ components:
     backToSearch: Retour à la recherche
   ResultsHeader:
     noTripFound: Aucun trajet trouvé
-    tripsFound: "{count} {count, plural, one {trajet trouvé} other {trajets trouvés}}"
+    tripsFound: "{count, plural, one {# trajet trouvé} other {# trajets trouvés}}"
     waiting: Patientez...
   ResultsScreen:
     header: Option {index}
@@ -424,17 +420,6 @@ components:
   SwitchButton:
     defaultContent: Permuter
     switchLocations: Permuter les lieux
-  TabbedFormPanel:
-    hideSettings: "Masquer les paramètres"
-  TabbedItineraries:
-    optionNumber: "Option {optionNum, number}"
-    # Note to translator: This text is width-constrained.
-    mustCallAhead: Résa. obligatoire
-    fareCost: >
-      {hasMaxFare, select,
-        true {À partir de {minTotalFare}}
-        other {{minTotalFare}}
-      }
   TermsOfUsePane:
     confirmDeletionPrompt: >
       En révoquant votre accord sur l'enregistrement de vos recherches de trajets, tout l'historique de vos de trajets sera supprimé.
@@ -721,14 +706,7 @@ common:
         }}
         other {il y a # jours}
       }
-
-    # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} mn"
-    tripDurationFormat: >
-      {hours, plural,
-        =0 {{minutes, number} mn}
-        other {# h {minutes, number} mn}
-      }
+    tripDurationFormat: "{hours, plural, =0 {} other {# h }}{minutes} mn"
 
 util:
   state:

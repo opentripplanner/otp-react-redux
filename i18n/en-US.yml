@@ -205,11 +205,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Form navigation
   ItinerarySummary:
-    fareCost: >
-      {useMaxFare, select,
-        true {{minTotalFare} - {maxTotalFare}}
-        other {{minTotalFare}}
-      }
+    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
   LocationSearch:
@@ -356,7 +352,7 @@ components:
     backToSearch: Back to Search
   ResultsHeader:
     noTripFound: No Trip Found
-    tripsFound: "We Found {count} {count, plural, one {Option} other {Options}}"
+    tripsFound: "We Found {count, plural, one {# Option} other {# Options}}"
     waiting: Waiting...
   ResultsScreen:
     header: Option {index}
@@ -442,17 +438,6 @@ components:
   SwitchButton:
     defaultContent: Switch
     switchLocations: Switch locations
-  TabbedFormPanel:
-    hideSettings: " Hide Settings"
-  TabbedItineraries:
-    optionNumber: "Option {optionNum, number}"
-    # Note to translator: This text is width-constrained.
-    mustCallAhead: Must call ahead!
-    fareCost: >
-      {hasMaxFare, select, 
-        true {{minTotalFare}+}
-        other {{minTotalFare}}
-      }
   TermsOfUsePane:
     confirmDeletionPrompt: >
       Removing your consent to storage of historical trips will cause your trip history to be deleted. 
@@ -752,14 +737,8 @@ common:
         }}
         other {# days ago}
       }
-    # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
-    tripDurationFormat: >
-      {hours, plural, 
-        =0 {{minutes, number} min}
-        other {# hr {minutes, number} min}
-      }
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min"
 
 util:
   state:
