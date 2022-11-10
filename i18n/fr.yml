@@ -336,8 +336,6 @@ components:
     noTripFound: Aucun trajet trouvé
     tripsFound: "{count, plural, one {# trajet trouvé} other {# trajets trouvés}}"
     waiting: Patientez...
-  ResultsScreen:
-    header: Option {index}
   RouteDetails:
     operatedBy: "Exploité par {agencyName}"
     moreDetails: "Plus d'infos"
@@ -382,8 +380,6 @@ components:
     saveTripText: Enregistrer
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
-  SearchScreen:
-    header: Planifiez votre trajet
   SessionTimeout:
     body: Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma session' pour conserver votre recherche. 
     header: Votre session va expirer

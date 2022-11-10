@@ -354,8 +354,6 @@ components:
     noTripFound: No Trip Found
     tripsFound: "We Found {count, plural, one {# Option} other {# Options}}"
     waiting: Waiting...
-  ResultsScreen:
-    header: Option {index}
   RouteDetails:
     operatedBy: "Operated by {agencyName}"
     moreDetails: "More Details"
@@ -400,8 +398,6 @@ components:
     saveTripText: Save trip
     signInText: Sign in to save trip
     signInTooltip: Please sign in to save trip.
-  SearchScreen:
-    header: Plan Your Trip
   SessionTimeout:
     body: Your session will expire within a minute. Press 'Continue Session' to keep your search.
     header: Session about to timeout!

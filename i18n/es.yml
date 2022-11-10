@@ -242,8 +242,6 @@ components:
       y no los alquileres o los viajes en coche.
     saveTripText: Salvar el viaje
     signInText: Iniciar sesión para guardar el viaje
-  SearchScreen:
-    header: Planifica tu viaje
   SettingsPreview:
     defaultPreviewText: Opciones y preferencias de tránsito
   StopViewer:
@@ -473,8 +471,6 @@ components:
     noTripFound: No se encontró ningún viaje
     tripsFound: Encontramos {count, plural, one {# opción} other {# opciones}}
     waiting: Espera...
-  ResultsScreen:
-    header: Opción {index}
   RouteRow:
     operatorLogoAltText: logotipo de {operatorName}
   SimpleRealtimeAnnotation:
