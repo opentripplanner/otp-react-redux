@@ -702,16 +702,10 @@ common:
     routeToHeadsign: "To {headsign}"
 
   searchForms:
-    enterDestination: >
-      Enter destination or {mobile, select,
-        true {tap}
-        other {click}
-      } on map...
-    enterStartLocation: >
-      Enter start location or {mobile, select,
-        true {tap}
-        other {click}
-      } on map...
+    click: click
+    enterDestination: Enter destination or {mapAction} on map…
+    enterStartLocation: Enter start location or {mapAction} on map…
+    tap: tap
 
   time:
     # Use ordered placeholders for the departure-arrival string

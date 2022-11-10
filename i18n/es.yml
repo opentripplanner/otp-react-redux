@@ -606,10 +606,10 @@ common:
   routing:
     routeToHeadsign: A {headsign}
   searchForms:
-    enterDestination: "Introduzca el destino o {mobile, select,\n true {toque}\n other\
-      \ {haga clic}\n } en el mapa…\n"
-    enterStartLocation: "Introduzca la ubicación de inicio o {mobile, select,\n true\
-      \ {toque}\n other {haga clic}\n } en el mapa…\n"
+    click: haga clic
+    enterDestination: Introduzca el destino o {mapAction} en el mapa…
+    enterStartLocation: Introduzca la ubicación de inicio o {mapAction} en el mapa…
+    tap: toque
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\

@@ -676,16 +676,10 @@ common:
     routeToHeadsign: "Direction {headsign}"
 
   searchForms:
-    enterDestination: >
-      Entrez votre destination ou {mobile, select,
-        true {touchez}
-        other {cliquez sur}
-      } la carte...
-    enterStartLocation: >
-      Entrez votre point de départ ou {mobile, select,
-        true {touchez}
-        other {cliquez sur}
-      } la carte...
+    click: cliquez
+    enterDestination: Entrez votre destination ou {mapAction} sur la carte…
+    enterStartLocation: Entrez votre point de départ ou {mapAction} sur la carte…
+    tap: appuyez
 
   time:
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
