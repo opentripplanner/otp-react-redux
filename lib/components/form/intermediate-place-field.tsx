@@ -6,6 +6,7 @@ import {
   InputGroupAddon,
   MenuItemA
 } from '@opentripplanner/location-field/lib/styled'
+import { Location } from '@opentripplanner/types'
 import LocationField from '@opentripplanner/location-field'
 import React, { Component } from 'react'
 import styled from 'styled-components'
@@ -54,12 +55,24 @@ const StyledIntermediatePlace = styled(LocationField)`
   }
 `
 
+type Props = {
+  index: number
+  location: Location
+  onLocationCleared: ({
+    index,
+    location
+  }: {
+    index: number
+    location: Location
+  }) => void
+}
+
 /**
  * Component that leverages LocationField to allow selecting an intermediate
  * place (e.g., stopover on the way from origin to the destination).
  * TODO: move this to otp-ui?
  */
-class IntermediatePlaceField extends Component {
+class IntermediatePlaceField extends Component<Props> {
   _removeIntermediatePlace = () => {
     const { index, location, onLocationCleared } = this.props
     onLocationCleared && onLocationCleared({ index, location })
@@ -72,6 +85,7 @@ class IntermediatePlaceField extends Component {
         id="intermediate-place-input"
         {...this.props}
         clearLocation={this._removeIntermediatePlace}
+        // @ts-expect-error the location field type is wrong
         locationType={`intermediate-place-${index}`}
       />
     )

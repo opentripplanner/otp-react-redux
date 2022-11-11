@@ -388,7 +388,7 @@ test('OTP-RR', async () => {
     "//button[contains(., 'Plan Trip')]"
   )
   await tripPlannerButton.click()
-  await page.waitForSelector('.batch-routing-panel')
+  await page.waitForSelector('.option')
   await page.waitForTimeout(3000)
   const [viewAllOptionsButton] = await page.$x(
     "//button[contains(., 'View all options')]"

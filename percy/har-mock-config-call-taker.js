@@ -13,11 +13,11 @@ import React from 'react'
 
 import {
   BatchResultsScreen,
-  CallTakerPanel,
   BatchSearchScreen,
   CallHistoryWindow,
-  MailablesWindow,
+  CallTakerPanel,
   FieldTripWindows,
+  MailablesWindow,
   MetroItinerary
   // Webpack sets this file to run from a subdirectory within otp-react-redux
   // ../lib points to the index file of otp-react-redux's source code
@@ -80,6 +80,7 @@ export function configure(otpConfig) {
     ItineraryFooter,
     LegIcon: StandardLegIcon,
     MainPanel: CallTakerPanel,
+    // eslint-disable-next-line react/display-name
     MapWindows: () => (
       <>
         <CallHistoryWindow />
