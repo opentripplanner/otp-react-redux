@@ -4,7 +4,10 @@ import puppeteer from 'puppeteer'
 const percySnapshot = require('@percy/puppeteer')
 
 const OTP_RR_TEST_CONFIG_PATH = '../percy/har-mock-config.yml'
-const OTP_RR_TEST_JS_CONFIG_PATH = './percy/har-mock-config.js'
+const { OTP_RR_PERCY_CALL_TAKER } = process.env
+const OTP_RR_TEST_JS_CONFIG_PATH = OTP_RR_PERCY_CALL_TAKER
+  ? './percy/har-mock-config-call-taker.js'
+  : './percy/har-mock-config.js'
 
 const MOCK_SERVER_PORT = 5000
 
@@ -147,21 +150,43 @@ test('OTP-RR', async () => {
   await page.waitForNavigation({ waitUntil: 'networkidle2' })
   await page.waitForSelector('.option.metro-itin')
 
-  // Change the modes
-  await page.click('.visible-lg.straight-corners:first-of-type')
-  await page.click('#plan-trip')
+  if (!OTP_RR_PERCY_CALL_TAKER) {
+    // Change the modes
+    await page.click('.visible-lg.straight-corners:first-of-type')
+    await page.click('#plan-trip')
 
-  await percySnapshotWithWait(page, 'Metro Itinerary No Transit')
+    await percySnapshotWithWait(page, 'Metro Itinerary No Transit')
+    // Restore transit
+    await page.click('.visible-lg.straight-corners:first-of-type')
 
-  // Restore transit
-  await page.click('.visible-lg.straight-corners:first-of-type')
+    // Change the time
+    await page.click('.summary')
+    await page.focus('input[type="time"]')
+    await page.keyboard.type('10')
+    await page.waitForTimeout(200)
+    await page.click('#plan-trip')
+  } else {
+    // take initial screenshot
+    await percySnapshotWithWait(page, 'Call Taker')
 
-  // Change the time
-  await page.click('.summary')
-  await page.focus('input[type="time"]')
-  await page.keyboard.type('10')
-  await page.waitForTimeout(200)
-  await page.click('#plan-trip')
+    // add intermedaite stop
+    await page.click(
+      '#main > div > div > div > div.sidebar.col-md-4.col-sm-6 > main > div > div.form > button'
+    )
+    await page.waitForSelector('.intermediate-place-0-form-control')
+    await page.focus('.intermediate-place-0-form-control')
+    await page.keyboard.type('arts center')
+    await page.waitForTimeout(2000)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Enter')
+
+    await page.click('.search-plan-button-container button')
+    await page.waitForTimeout(2000)
+
+    // take screenshot
+    await percySnapshotWithWait(page, 'Call Taker With Settings Adjusted')
+  }
 
   // Select a trip
   await page.waitForSelector('.option.metro-itin:nth-of-type(1)')
