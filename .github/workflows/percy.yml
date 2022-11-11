@@ -75,6 +75,6 @@ jobs:
         # Move everything from latest commit back to staged
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
         env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_OTP2 }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_CALL_TAKER_OTP2 }}
           PERCY_OTP_CONFIG_OVERRIDE: /tmp/otp2config.yml
           OTP_RR_PERCY_CALL_TAKER: true
