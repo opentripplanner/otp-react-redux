@@ -2500,25 +2500,25 @@
   dependencies:
     "@octokit/openapi-types" "^10.0.0"
 
-"@opentripplanner/base-map@^3.0.1":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.2.tgz#ff7e5a81ee3937f4cf982d5eb03066fbf90f3e44"
-  integrity sha512-PuLh6XfJeYQmZAs2JruT3QfWzAmwoK8nPMAVE2bjmN032SXlaGUJru2kERGD2vkmaUud+XqQIvdQ6ZlcQkpS1g==
+"@opentripplanner/base-map@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.4.tgz#fb63b7e5ed9328bbfa9b3fd8dfa505e3a42693f1"
+  integrity sha512-XYPKO2vmEm0AV/Z4S7PcSDi4xCMRoOqa7zjgnB0D5+xfzUIt/+OIBVU7T5W0nPuE5LmjXZo1/ctnPWrfSyi9AQ==
   dependencies:
     mapbox-gl "npm:empty-npm-package@1.0.0"
     maplibre-gl "^2.1.9"
     react-map-gl "^7.0.15"
 
-"@opentripplanner/base-map@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.3.tgz#d471aeae46822ad4366ecf438320704f619a1872"
-  integrity sha512-uDfX7Yj9a9L5IKjwe6KZ2FcJx5wNkzWkQgBMoQnquNJgZpc9t+tKUmCNX/xO/3K6VMifzMUHSpjgcUXRZJ2z8Q==
+"@opentripplanner/base-map@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.5.tgz#f398546955830f5f7c168f86bd806e61590f9fdb"
+  integrity sha512-8t/B7/VERbGzl3YnR2WjlhbGGrxlEsK7BvkcsqfrdkB707OUDGxZt89zQjyr2qGH11jkijiUNOS6KxKTl7e1Dg==
   dependencies:
     mapbox-gl "npm:empty-npm-package@1.0.0"
     maplibre-gl "^2.1.9"
     react-map-gl "^7.0.15"
 
-"@opentripplanner/core-utils@^7.0.3", "@opentripplanner/core-utils@^7.0.4":
+"@opentripplanner/core-utils@^7.0.3":
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-7.0.4.tgz#8fdbd547d4ca02ccef22c4e69a77941f84af7dc5"
   integrity sha512-RQU27pKmUDCnBdSkuTmOXB00c0iscp8en4ECZwgUCfo5FDLPkfV+i/UT25WokV6ES14zqTu2aa7y6NSKhJjBjA==
@@ -2534,21 +2534,63 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/endpoints-overlay@2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-2.0.2.tgz#9e48e755cf0b156aafe9174c400811ff8b6112ac"
-  integrity sha512-CqT9BuakqhJFLVnOxy+S5aFUrBSVaeNxRBcQkqt57vhAkNw0LIYQutgojiCwLjcGusouEH557osFatsRNOcTCQ==
+"@opentripplanner/core-utils@^7.0.5":
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-7.0.5.tgz#4ddc9146cc3fe44652128c0a3d9dc93c46c9d536"
+  integrity sha512-bgkmAPoY6ie5MKBt2PRgO10EfvvGrhpFK9Q2GlulkcARjUCUX/jidoRvbpBCo86Oa6jOs1axBL4d53zoVi+cAg==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.1"
-    "@opentripplanner/core-utils" "^7.0.3"
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.3.2"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@^7.0.6":
+  version "7.0.6"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-7.0.6.tgz#5cf036e131fb18b984287a7edecdd92fd721f836"
+  integrity sha512-Nbo5qei3VaefP/bwUZx+NUs0xiIbFkX+Chs2G8C6iPGKtR1RgMtfByJLyH7nVoSLrhadEM4TAXp3SF2flBftRw==
+  dependencies:
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.3.2"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    qs "^6.9.1"
+
+"@opentripplanner/endpoints-overlay@2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-2.0.5.tgz#8cb407d1192f3f9e667f53b4ebe52896af8d9723"
+  integrity sha512-n23kfSh10gCYZj8nSVhpkRJZOsbq15sCx2Osi18bObF25ptFwr5kln/On+2sbd2W/2K/dFAPiQx3RmuD0Q0w4Q==
+  dependencies:
+    "@opentripplanner/base-map" "^3.0.4"
+    "@opentripplanner/core-utils" "^7.0.5"
     "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
     flat "^5.0.2"
 
-"@opentripplanner/from-to-location-picker@^2.1.3", "@opentripplanner/from-to-location-picker@^2.1.4":
+"@opentripplanner/from-to-location-picker@^2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@opentripplanner/from-to-location-picker/-/from-to-location-picker-2.1.4.tgz#a44e7931b2fed52b311fb9ea681805bcc4edfaf7"
   integrity sha512-Klv523A4TDqESk8yqmTTNYEo4zFoWwOeGli3YP+3C2Ik6xWS4jxXf2ry9wOjhaoyelHVuTPYWOS1Zkr0ubcxFA==
+  dependencies:
+    "@opentripplanner/location-icon" "^1.4.0"
+    flat "^5.0.2"
+
+"@opentripplanner/from-to-location-picker@^2.1.5":
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/from-to-location-picker/-/from-to-location-picker-2.1.5.tgz#4293b7cb360ca810a13aab667919fd95d6c5dd21"
+  integrity sha512-x9osa180RNR0QduLnMBF3gOtJCdFVbLMXqfKu3rn8pfwWwc6hmURsMqVJayyLtpH2fBJSgfDKqTQv3ydw35Xbw==
   dependencies:
     "@opentripplanner/location-icon" "^1.4.0"
     flat "^5.0.2"
@@ -2568,7 +2610,7 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.2.0.tgz#71cf5d5d1b756adef15300edbba0995ccd4b35ee"
   integrity sha512-x0QRXMDhypFeazZ6r6vzrdU8vhiV56nZ/WX6zUbxpgp6T9Oclw0gwR2Zdw6DZiiFpSYVNeVNxVzZwsu6NRGjcA==
 
-"@opentripplanner/icons@^1.2.5", "@opentripplanner/icons@^1.2.6":
+"@opentripplanner/icons@^1.2.5":
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-1.2.6.tgz#8222c089a1c498c93fd5d7cf2affb72eb6ffdcdc"
   integrity sha512-8ZRbottKNpV4wV6WJeVAuMRyOAc8fYtGjFDLtYpDVJLodKoCvs/GkMxP6upNgLaMvsppAHdXtCn58Djk8Rkkeg==
@@ -2576,10 +2618,26 @@
     "@opentripplanner/core-utils" "^7.0.3"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^4.1.1", "@opentripplanner/itinerary-body@^4.1.2":
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.1.2.tgz#4ec2a28b5523e2351f2dc31873d7200aa6b1fbe3"
-  integrity sha512-ZnfqEycHD8dcIMGfvsWhcHhaFHVuv2hpBwRFb+reaSKe+AU3TjWRJv+BcoToC0ZegK3Qy854Dzkt2zDxEvKUkQ==
+"@opentripplanner/icons@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-2.0.0.tgz#6a8782c4c8fe8902adff1491028275df55b5a2b7"
+  integrity sha512-uo9VQrNtUiqJ+p41FiGuRL9wNBT26KrsNMlwTA3578WTIP0WoG3pB/CCkfxKm/mjajn+Mr8fVx++IMiNS40ELQ==
+  dependencies:
+    "@opentripplanner/core-utils" "^7.0.3"
+    prop-types "^15.7.2"
+
+"@opentripplanner/icons@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-2.0.1.tgz#d17b6e58318ffdcc9a39b03851ff4bc73b3d3458"
+  integrity sha512-l2HZqrtc1LDjRRUkvxpdh3YMiS82Tu15fl8DIdh+kgpTocvCeISkJovbTuQ0BGkX9J2IktJqjcm+GZtdLmygkg==
+  dependencies:
+    "@opentripplanner/core-utils" "^7.0.5"
+    prop-types "^15.7.2"
+
+"@opentripplanner/itinerary-body@^4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.1.3.tgz#36fb5944c73fded1cb6eb9f6d3406b35ba7c9e4d"
+  integrity sha512-1sak17/gZZj1DjxPoVGf6rUirFrpN2p0e+CM8RZCc2jFau+8vfFDgUanSYrXEDvblagpUBcRJ/ksCFQvcrcScQ==
   dependencies:
     "@opentripplanner/core-utils" "^7.0.3"
     "@opentripplanner/humanize-distance" "^1.2.0"
@@ -2593,13 +2651,30 @@
     react-animate-height "^3.0.4"
     react-resize-detector "^4.2.1"
 
-"@opentripplanner/location-field@1.12.8":
-  version "1.12.8"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.8.tgz#63f2a15b649a4412418d3a6263817f6ae74c9078"
-  integrity sha512-gmRkuZbFvxoMUMY9JQFSTlDI/kYR5sHTl3DhK5v/qb6nS1i/hDsceIJBKnQHLpPmhpbVn6neaI0DnDTnzPUXCg==
+"@opentripplanner/itinerary-body@^4.1.4":
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.1.4.tgz#ec384e745c4704995885cb03948a94dbda379816"
+  integrity sha512-0x9/W/RHNLSawiY21PWlw5Ql0RfjgFufN5uziaokuCLIJ5FkfZjHQqauZf8bmaiRH7QMmUhYSiY/ORY5GTpHdg==
+  dependencies:
+    "@opentripplanner/core-utils" "^7.0.5"
+    "@opentripplanner/humanize-distance" "^1.2.0"
+    "@opentripplanner/icons" "^2.0.0"
+    "@opentripplanner/location-icon" "^1.4.0"
+    "@styled-icons/fa-solid" "^10.34.0"
+    "@styled-icons/foundation" "^10.34.0"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    flat "^5.0.2"
+    react-animate-height "^3.0.4"
+    react-resize-detector "^4.2.1"
+
+"@opentripplanner/location-field@1.12.9":
+  version "1.12.9"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.9.tgz#6eac62d9812471c501adb8cfcb26813d90c5f5ec"
+  integrity sha512-o5sKDiWcvlrSuJyt5zuiaN+jSBVpPHlXatfpIfgRDOClq1/7aaTKbHyAKigOwJoDrvxuhew5VDBmD61UdlfM/w==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
-    "@opentripplanner/core-utils" "^7.0.3"
+    "@opentripplanner/core-utils" "^7.0.5"
     "@opentripplanner/geocoder" "^1.3.2"
     "@opentripplanner/humanize-distance" "^1.2.0"
     "@opentripplanner/location-icon" "^1.4.0"
@@ -2614,29 +2689,29 @@
     "@styled-icons/fa-regular" "^10.34.0"
     "@styled-icons/fa-solid" "^10.34.0"
 
-"@opentripplanner/park-and-ride-overlay@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/park-and-ride-overlay/-/park-and-ride-overlay-2.0.2.tgz#f8ec67e37616507d6de771321f7a1f336c98523e"
-  integrity sha512-WMO0xKmGa1G/rudImY954+omA6x0OkMR/iu8GltTtDxUBTPDXaPTsqhwfnlc6gLM6hp5ZPjCrU2xklB0OJkIhQ==
+"@opentripplanner/park-and-ride-overlay@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/park-and-ride-overlay/-/park-and-ride-overlay-2.0.4.tgz#f266862df548925350d3f327881d7a8605482be9"
+  integrity sha512-gOQ24F9jXS1+8T87EoDqrlW9y9f4ixiD9X3jnjfiseFb0Jif9CQ7Xmsuv9shpQut6Rx3ePZcrnqlGl482KWITw==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.1"
-    "@opentripplanner/from-to-location-picker" "^2.1.3"
+    "@opentripplanner/base-map" "^3.0.4"
+    "@opentripplanner/from-to-location-picker" "^2.1.4"
 
-"@opentripplanner/printable-itinerary@^2.0.5":
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-2.0.5.tgz#111a2883e7373fc9f7a5b3948dc66cc8c59bcda9"
-  integrity sha512-e1BGI+ShSa06drVf7MY4ZZcc5zwiHuOS8iJV3e4qrfIqhKnsJX65FuMesnW2D89VzzycIf7ePZq5BeXWYtz/LQ==
+"@opentripplanner/printable-itinerary@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-2.0.6.tgz#73ab3feac6a44bf83ad8f4198c052abee7d514ce"
+  integrity sha512-hcCdI+JHVgDalRq2iwpcV5d1JIte6Yys2MWE/6FvcGd6qQkEwOJ49PM/baV7OqAfr6LRrpYutVvJXwUmWB/Xyg==
   dependencies:
-    "@opentripplanner/itinerary-body" "^4.1.1"
+    "@opentripplanner/itinerary-body" "^4.1.3"
 
-"@opentripplanner/route-viewer-overlay@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-2.0.2.tgz#0737bf0c247d89f3f726567a3799cd443989755f"
-  integrity sha512-xxviNzTAJl2EJSNLJN8ZJdBTbSqWiGan7lWwfYJA/Mz0f9jclM/kWY/ms84+F4zsxUYeNJgF30xzG5tdbD08Eg==
+"@opentripplanner/route-viewer-overlay@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-2.0.4.tgz#6919c2e0a44931ff7be8c453fde46e10f2af1584"
+  integrity sha512-4pF5KsaMbfLCL6mwtnZl6yqjobue/na3f0pnpxuu24OHbvyNK8ZaBiVLtTmYE0AK1vjFQKQUu66Ly7zQASElsQ==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/base-map" "^3.0.1"
-    "@opentripplanner/core-utils" "^7.0.3"
+    "@opentripplanner/base-map" "^3.0.4"
+    "@opentripplanner/core-utils" "^7.0.5"
     point-in-polygon "^1.1.0"
 
 "@opentripplanner/scripts@^1.0.2":
@@ -2650,62 +2725,62 @@
     glob-promise "^4.2.2"
     js-yaml "^4.1.0"
 
-"@opentripplanner/stop-viewer-overlay@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/stop-viewer-overlay/-/stop-viewer-overlay-2.0.2.tgz#c08afb3e6f2fbf73c90ccfac379f903239962611"
-  integrity sha512-KFAU+2t+/E++8LNVw+jPb1OI3F7z8xygYlNRHwgAj4PO9MMlU+aSq1hyo3eYbYudiJbJPvIrJBt0vmav/6K7KQ==
+"@opentripplanner/stop-viewer-overlay@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/stop-viewer-overlay/-/stop-viewer-overlay-2.0.4.tgz#850584d179a95335eebf0e33db83583d9ad23276"
+  integrity sha512-t4mPDQrwdTtz+7jMU3dFKOQiVOdQngXQEqexOIuDM3luuUCWL888NAf+usCjplSC5Q0xzu2pPwxdXubBmOXcuQ==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.1"
-    "@opentripplanner/core-utils" "^7.0.3"
+    "@opentripplanner/base-map" "^3.0.4"
+    "@opentripplanner/core-utils" "^7.0.5"
 
-"@opentripplanner/stops-overlay@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-5.0.2.tgz#63f68dd569e52790739c7fb5fcb6457801d5f895"
-  integrity sha512-UZfJz/htPlORxrd40W06EiqiKkiCUTnWYXQRTeBPgw5nPoURmr6On63PqWqzTeHPVTfcTRgbK48pP6SafCaYaw==
+"@opentripplanner/stops-overlay@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-5.0.4.tgz#f2cadf475227f06361cbcbaa0e0c6d8bbbeff45c"
+  integrity sha512-amsuzS8VEpA8s6CGI/qJuihHnD7x5W6waieQLrgSwa8UmdN99xUIm/W2Ib2wIZ71+gzobDpXwyTb9hEXr44mNw==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.1"
-    "@opentripplanner/from-to-location-picker" "^2.1.3"
+    "@opentripplanner/base-map" "^3.0.4"
+    "@opentripplanner/from-to-location-picker" "^2.1.4"
     flat "^5.0.2"
 
-"@opentripplanner/transit-vehicle-overlay@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-3.0.2.tgz#7e16e58f8aa2fdd8f535122bd6e428a79d1ff877"
-  integrity sha512-5nsI/aVxkHSqIq5qr9+ovbMSUpXlTTVcWwZ5PEDoYajz0NCsgZ+FXFYDXWK+lMmTPefV54HoRL63k1PRDR0p8w==
+"@opentripplanner/transit-vehicle-overlay@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-3.0.4.tgz#7c425108010abee95a2737a82bf2bf14624851a8"
+  integrity sha512-dTjKmc/cOP3IiqoljtFkuZGPQ70W217xVxuKLqX4mcRb8/BPRpGlbp72K/EAQSf2gzu1RO09DEmd0eKK5QGyeg==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.1"
-    "@opentripplanner/core-utils" "^7.0.3"
-    "@opentripplanner/icons" "^1.2.5"
+    "@opentripplanner/base-map" "^3.0.4"
+    "@opentripplanner/core-utils" "^7.0.5"
+    "@opentripplanner/icons" "^2.0.0"
     flat "^5.0.2"
 
-"@opentripplanner/transitive-overlay@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-3.0.3.tgz#26cd6e0edf1dad576151780d5d12bfe09f9d1d65"
-  integrity sha512-fFhrMOdnt8XzeDhR0Eq7xcmB+8+XPzivds1ZNN7Kb87iQDk421+kmhEzmrBckG/4gx0Y5j9CzA6AL0o8bFFJjw==
+"@opentripplanner/transitive-overlay@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-3.0.5.tgz#11f91ec86d97a9624b1225e6a22ebcf9804c13a9"
+  integrity sha512-63e4NEz/88hN5weAwuxqj5iNC45mkQLcjpcaBOrBFsNHZKrpAUL+6n+iqjY+H+waaPR8wTJfckvlpp9sjVlEtA==
   dependencies:
     "@mapbox/polyline" "^1.1.1"
-    "@opentripplanner/base-map" "^3.0.1"
-    "@opentripplanner/core-utils" "^7.0.3"
-    "@opentripplanner/itinerary-body" "^4.1.1"
+    "@opentripplanner/base-map" "^3.0.4"
+    "@opentripplanner/core-utils" "^7.0.5"
+    "@opentripplanner/itinerary-body" "^4.1.3"
     "@turf/bbox" "^6.5.0"
     lodash.isequal "^4.5.0"
 
-"@opentripplanner/trip-details@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-2.2.3.tgz#9af2e8466c8d7ee59749e81353ed1caa22284c24"
-  integrity sha512-Ky0SYND1Z2GofxHYCavgxLNQcbslc4S81f7chTdvpww/TPt4TTr2j0WGcBVnoW3uNo2QCSSCXk7J65kPoDLQsQ==
+"@opentripplanner/trip-details@^2.2.6":
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-2.2.6.tgz#fbfaea7195c389757cc9e2c1a9e726f2315a72a0"
+  integrity sha512-T+QeKsobSSXFLJRuw+04AC+WfJBOzxQQMa59zY8IPlGUtiZzpPdhBfJgQHJeQ5QacpO4wHvT2+x5/7epRG605Q==
   dependencies:
-    "@opentripplanner/core-utils" "^7.0.3"
+    "@opentripplanner/core-utils" "^7.0.5"
     "@styled-icons/fa-solid" "^10.34.0"
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-2.0.3.tgz#78959999f0dbbbfb843b2ba6a19848dfb1a67df4"
-  integrity sha512-vf/tq/m2KmNrUZFf3xOzejXC07uH2R2PvFaxNEzOudSggXd/zRuT9YAoHA/dOAXLVhTFETzV/xh90YIV1DxoDg==
+"@opentripplanner/trip-form@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.0.1.tgz#b02cbbebc6542811a19ef339d288b656049092d6"
+  integrity sha512-bBDhSG3yrUKe12pQQuZODyMhmRHnde3YZtUhQrcieA7Ur3t1gO2N5akdCb5h2ox0jNLzKe/oP9ENlIsvIa5Hbg==
   dependencies:
-    "@opentripplanner/core-utils" "^7.0.3"
-    "@opentripplanner/icons" "^1.2.5"
+    "@opentripplanner/core-utils" "^7.0.5"
+    "@opentripplanner/icons" "^2.0.0"
     "@styled-icons/bootstrap" "^10.34.0"
     "@styled-icons/boxicons-regular" "^10.38.0"
     "@styled-icons/fa-regular" "^10.34.0"
@@ -2715,28 +2790,28 @@
     react-indiana-drag-scroll "^2.0.1"
     react-inlinesvg "^2.3.0"
 
-"@opentripplanner/trip-viewer-overlay@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-viewer-overlay/-/trip-viewer-overlay-2.0.2.tgz#7b39988eee07d8f343c6752b756340c86a046bf4"
-  integrity sha512-/n+v9qg+xFN8z31Wispdk3s9WbAxnM+FOwb2AHh2i7cN8rWHXYlu6iU6fh+z/ZZKjdx8zssVbJJ9ltegFwwewQ==
+"@opentripplanner/trip-viewer-overlay@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-viewer-overlay/-/trip-viewer-overlay-2.0.3.tgz#341aa923f67f93dd3a1cd3c23e66b6868a0d0c20"
+  integrity sha512-O4MSpwTU5oViiXFNxVxb6zoE/5PRqHG+RQ5Cq/lqSSF8QzhN00gM4v03OAZLIw+dBFZhkV8ey+RaT/8po1Tuew==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/base-map" "^3.0.1"
-    "@opentripplanner/core-utils" "^7.0.3"
+    "@opentripplanner/base-map" "^3.0.4"
+    "@opentripplanner/core-utils" "^7.0.5"
 
-"@opentripplanner/types@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-4.0.1.tgz#592d8b98c115865ceff76051d74939783605d899"
-  integrity sha512-8SIU2SgtQTnK7Sv1YAdKD6a61IQ9mY3UCNLHJETRb4q3ETVDwJGa6wMWIYQPOmLjnHo8bJM03FSpSVcszhR0tQ==
+"@opentripplanner/types@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-4.0.2.tgz#5eff9d8d69adeb7475099b7c5296fbf23c8b0dd7"
+  integrity sha512-cHfMKAfkdy8WH+O42ekROw1hiPKtoMKH9OxaWbM8tJfUsbzYEyUult+OJznS1RbCXc/xNO00Ktj6mx2z9d0IeQ==
 
-"@opentripplanner/vehicle-rental-overlay@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/vehicle-rental-overlay/-/vehicle-rental-overlay-2.0.2.tgz#8dc18475faba8fac2ce3b56067626e4fec29533e"
-  integrity sha512-opNVKXhlWytlseBVO+nzF7NkPm117PET6yqdgCCUwNHkcgyULLvuuHmOKVjOE0BpojvW66R8Y+NnHMmtxa+qCg==
+"@opentripplanner/vehicle-rental-overlay@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/vehicle-rental-overlay/-/vehicle-rental-overlay-2.0.4.tgz#e9b54411f510b5a31e09ecda4a858b3fea95c36c"
+  integrity sha512-M2WEUDEd3+fFdTt3oREA60ri8RDDBgtnc2BxO8Cmyx6UoEo3A6Gq/oVY9/aVyG0JGGRrGmCJ6yIDbaJ2d2opNg==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.1"
-    "@opentripplanner/core-utils" "^7.0.3"
-    "@opentripplanner/from-to-location-picker" "^2.1.3"
+    "@opentripplanner/base-map" "^3.0.4"
+    "@opentripplanner/core-utils" "^7.0.5"
+    "@opentripplanner/from-to-location-picker" "^2.1.4"
     "@styled-icons/fa-solid" "^10.34.0"
     flat "^5.0.2"
     lodash.memoize "^4.1.2"
@@ -5734,6 +5809,11 @@ chownr@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
+
+chroma-js@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/chroma-js/-/chroma-js-2.4.2.tgz#dffc214ed0c11fa8eefca2c36651d8e57cbfb2b0"
+  integrity sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==
 
 chrome-trace-event@^1.0.2:
   version "1.0.3"
