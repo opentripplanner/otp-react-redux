@@ -1,10 +1,12 @@
+// Percy screenshot is not an assertion, but that's ok
+/* eslint-disable jest/expect-expect */
 import execa from 'execa'
 import puppeteer from 'puppeteer'
 
 const percySnapshot = require('@percy/puppeteer')
 
 const OTP_RR_TEST_CONFIG_PATH = '../percy/har-mock-config.yml'
-const { OTP_RR_PERCY_CALL_TAKER } = process.env
+const { OTP_RR_PERCY_CALL_TAKER, OTP_RR_PERCY_MOBILE } = process.env
 const OTP_RR_TEST_JS_CONFIG_PATH = OTP_RR_PERCY_CALL_TAKER
   ? './percy/har-mock-config-call-taker.js'
   : './percy/har-mock-config.js'
@@ -79,7 +81,7 @@ beforeAll(async () => {
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
       args: ['--disable-web-security']
-      // headless: false
+      // ,headless: false
     })
 
     // Fix time to Monday, March 14, 2022 14:22:22 GMT (10:22:22 AM EDT).
@@ -132,8 +134,100 @@ test('OTP-RR Fixed Routes', async () => {
 })
 */
 
-// Percy screenshot is not an assertion, but that's ok
-// eslint-disable-next-line jest/expect-expect
+if (OTP_RR_PERCY_MOBILE) {
+  test('OTP-RR Mobile', async () => {
+    const page = await loadPath('/')
+    await page.setUserAgent('android')
+    await page.setViewport({
+      height: 1134,
+      width: 750
+    })
+    // Need to reload to load mobile view properly
+    await page.reload()
+
+    await percySnapshotWithWait(page, 'Mobile Main Page')
+
+    await page.click('.app-menu-icon')
+    // Wait for animation
+    await page.waitForTimeout(200)
+    await percySnapshotWithWait(page, 'Mobile Sidebar')
+
+    await page.click('.app-menu-route-viewer-link')
+    await page.waitForSelector('.route-viewer')
+    await page.waitForTimeout(5000)
+
+    // Open Specific Route`
+    try {
+      await page.$x("//span[contains(., 'Green')]")
+    } catch {
+      await page.reload({ waitUntil: 'networkidle0' })
+    }
+    const [subwayRouteButton] = await page.$x("//span[contains(., 'Green')]")
+    await subwayRouteButton.click()
+    await page.waitForSelector('#headsign-selector')
+    const secondPatternOption = await page.$$eval(
+      'option',
+      (options) => options.find((o) => o.innerText.includes('Vine City'))?.value
+    )
+    await page.select('select#headsign-selector', secondPatternOption)
+
+    await page.waitForSelector('#headsign-selector-label')
+    await page.waitForTimeout(1000)
+
+    await percySnapshotWithWait(page, 'Mobile Route Viewer Showing Green Line')
+
+    // Open stop viewer
+    const [patternStopButton] = await page.$x(
+      "//a[contains(., 'Ashby Station')]"
+    )
+    await patternStopButton.click()
+    await page.waitForSelector('.stop-viewer')
+    // Screenshot here?
+
+    // Return to main page
+    await page.click('.mobile-back')
+    await page.waitForSelector('.welcome-location')
+    await page.click('.welcome-location div span input')
+    await page.waitForSelector('.to-form-control')
+
+    await page.focus('.to-form-control')
+    await page.keyboard.type('ashby')
+    await page.waitForTimeout(2000)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Enter')
+
+    // Wait for page to load
+    await page.waitForTimeout(300)
+
+    await page.click('.from-form-control')
+    // Wait for page to load
+    await page.waitForTimeout(300)
+
+    await page.focus('.from-form-control')
+    await page.keyboard.type('amazon ATL5')
+    await page.waitForTimeout(2000)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Enter')
+
+    await page.waitForTimeout(300)
+    await page.click('.switch-button')
+
+    await page.waitForSelector('.route-block-wrapper')
+    await percySnapshotWithWait(page, 'Mobile Itinerary Results')
+
+    await page.click('.route-block-wrapper')
+    await page.waitForTimeout(500)
+    await page.click('button .route-block-wrapper')
+    await percySnapshotWithWait(page, 'Mobile Itinerary Selected')
+
+    await page.click('.button-container:nth-of-type(2)')
+    await page.waitForTimeout(500)
+    await percySnapshotWithWait(page, 'Mobile Printable Itinerary')
+  })
+}
+
 test('OTP-RR', async () => {
   const page = await loadPath('/')
   await page.setViewport({

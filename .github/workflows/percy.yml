@@ -52,6 +52,7 @@ jobs:
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_OTP2 }}
           PERCY_OTP_CONFIG_OVERRIDE: /tmp/otp2config.yml
+          OTP_RR_PERCY_MOBILE: true
   run-pixel-tests-with-otp2-real-server-call-taker:
     runs-on: ubuntu-latest
 
