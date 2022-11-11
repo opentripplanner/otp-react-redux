@@ -24,7 +24,7 @@ const percySnapshotWithWait = async (page, name, enableJavaScript) => {
   const namePrefix = process.env.PERCY_OTP_CONFIG_OVERRIDE || 'Mock OTP1 Server'
   await percySnapshot(
     page,
-    `${OTP_RR_PERCY_CALL_TAKER && 'Call Taker - '}${namePrefix} - ${name}`,
+    `${OTP_RR_PERCY_CALL_TAKER ? 'Call Taker - ' : ''}${namePrefix} - ${name}`,
     { enableJavaScript }
   )
 }
