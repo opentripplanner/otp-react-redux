@@ -393,6 +393,8 @@ components:
     destination: Direction
     route: Ligne
   StopTimeCell:
+    realtime: Based on realtime data
+    scheduled: Based on schedule data
     imminentArrival: Imminent
   # Used in both desktop and mobile
   StopViewer:
