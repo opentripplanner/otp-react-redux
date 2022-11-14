@@ -333,7 +333,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
               className="stop-viewer base-color-bg"
             >
               <div
-                className="stop-viewer-header base-color-bg"
+                className="stop-viewer-header"
               >
                 <div
                   className="back-button-container"
@@ -438,7 +438,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                 />
               </div>
               <div
-                className="stop-viewer-body base-color-bg"
+                className="stop-viewer-body"
               >
                 <div
                   className="stop-viewer-controls"
@@ -2915,7 +2915,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
               className="stop-viewer base-color-bg"
             >
               <div
-                className="stop-viewer-header base-color-bg"
+                className="stop-viewer-header"
               >
                 <div
                   className="back-button-container"
@@ -3020,7 +3020,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                 />
               </div>
               <div
-                className="stop-viewer-body base-color-bg"
+                className="stop-viewer-body"
               >
                 <div
                   className="stop-viewer-controls"
@@ -4637,7 +4637,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
               className="stop-viewer base-color-bg"
             >
               <div
-                className="stop-viewer-header base-color-bg"
+                className="stop-viewer-header"
               >
                 <div
                   className="back-button-container"
@@ -4742,7 +4742,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                 />
               </div>
               <div
-                className="stop-viewer-body base-color-bg"
+                className="stop-viewer-body"
               >
                 <div
                   className="stop-viewer-controls"
@@ -7610,7 +7610,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
               className="stop-viewer base-color-bg"
             >
               <div
-                className="stop-viewer-header base-color-bg"
+                className="stop-viewer-header"
               >
                 <div
                   className="back-button-container"
@@ -7715,7 +7715,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                 />
               </div>
               <div
-                className="stop-viewer-body base-color-bg"
+                className="stop-viewer-body"
               >
                 <div
                   className="stop-viewer-controls"
@@ -14093,7 +14093,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
               className="stop-viewer base-color-bg"
             >
               <div
-                className="stop-viewer-header base-color-bg"
+                className="stop-viewer-header"
               >
                 <div
                   className="back-button-container"
@@ -14198,7 +14198,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                 />
               </div>
               <div
-                className="stop-viewer-body base-color-bg"
+                className="stop-viewer-body"
               >
                 <div
                   className="stop-viewer-controls"
@@ -17908,7 +17908,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
               className="stop-viewer base-color-bg"
             >
               <div
-                className="stop-viewer-header base-color-bg"
+                className="stop-viewer-header"
               >
                 <div
                   className="back-button-container"
