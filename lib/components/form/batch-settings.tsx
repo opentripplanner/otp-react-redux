@@ -6,7 +6,7 @@ import { MetroModeSelector, useModeState } from '@opentripplanner/trip-form'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import coreUtils from '@opentripplanner/core-utils'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
@@ -24,6 +24,7 @@ import {
   StyledDateTimePreview,
   StyledPlanTripButton
 } from './batch-styled'
+import { ComponentContext } from '../../util/contexts'
 import { Dot } from './styled'
 import BatchPreferences from './batch-preferences'
 import DateTimeModal from './date-time-modal'
@@ -81,45 +82,29 @@ type Props = {
  */
 function BatchSettings({ config, currentQuery, intl, routingQuery }: Props) {
   const [expanded, setExpanded] = useState<null | string>(null)
+  const { ModeIcon } = useContext(ComponentContext)
 
-  const combinations: ModeButtonDefinition[] = [
-    {
-      Icon: Bus,
-      key: 'TRANSIT',
-      label: 'Transit',
-      modes: [
-        {
-          mode: 'TRANSIT'
-        }
-      ]
-    },
-    {
-      Icon: Walking,
-      key: 'WALK',
-      label: 'Walking',
-      modes: [{ mode: 'WALK' }]
-    },
-    {
-      Icon: Bicycle,
-      key: 'BIKE',
-      label: 'Bike',
-      modes: [{ mode: 'BICYCLE' }, { mode: 'BIKESHARE' }]
-    }
-  ]
-
-  const initialState = {
-    enabledModeButtons: ['TRANSIT'],
-    modeSettingValues: {}
-  }
+  const modeButtonsWithIcons: ModeButtonDefinition[] =
+    config.modes.modeButtons.map((button: ModeButtonDefinition) => ({
+      ...button,
+      Icon: React.memo(function ModeButtonIcon() {
+        return <ModeIcon mode={button.iconName} />
+      })
+    }))
 
   const {
     buttonsWithSettings,
     enabledModes,
     setModeSettingValue,
     toggleModeButton
-  } = useModeState(combinations, initialState, modeSettings, {
-    queryParamState: true
-  })
+  } = useModeState(
+    modeButtonsWithIcons,
+    config.modes.initialState,
+    modeSettings,
+    {
+      queryParamState: true
+    }
+  )
 
   const _planTrip = () => {
     // Check for any validation issues in query.
