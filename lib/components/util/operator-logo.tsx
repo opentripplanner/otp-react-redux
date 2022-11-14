@@ -1,8 +1,11 @@
 import { TransitOperator } from '@opentripplanner/types'
 import { useIntl } from 'react-intl'
 import React from 'react'
+import styled from 'styled-components'
 
-import { OperatorImg } from '../viewers/RouteRow'
+const OperatorImg = styled.img`
+  height: 25px;
+`
 
 type Props = {
   operator?: TransitOperator

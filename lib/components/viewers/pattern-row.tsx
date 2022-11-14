@@ -75,7 +75,7 @@ class PatternRow extends Component<Props, State> {
     const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
     return (
-      <div className="route-row" role="group">
+      <li className="route-row">
         {/* header row */}
         <div
           className="header"
@@ -104,8 +104,10 @@ class PatternRow extends Component<Props, State> {
                 )}
                 <RouteRenderer
                   // All GTFS bg colors look strange with the top border
-                  hideTopBorder={route?.operator?.colorMode?.includes('gtfs')}
                   leg={generateFakeLegForRouteRenderer(route, true)}
+                  onColoredBackground={route?.operator?.colorMode?.includes(
+                    'gtfs'
+                  )}
                 />
               </div>
             </strong>
@@ -113,23 +115,23 @@ class PatternRow extends Component<Props, State> {
           </div>
           {/* next departure preview */}
           {hasStopTimes && (
-            <div className="next-trip-preview">
+            <ol className="next-trip-preview">
               {[0, 1, 2].map(
                 (index) =>
                   sortedStopTimes?.[index] && (
-                    <span>
+                    <li>
                       <StopTimeCell
                         homeTimezone={homeTimezone}
                         key={index}
                         stopTime={sortedStopTimes[index]}
                       />
-                    </span>
+                    </li>
                   )
               )}
-            </div>
+            </ol>
           )}
         </div>
-      </div>
+      </li>
     )
   }
 }

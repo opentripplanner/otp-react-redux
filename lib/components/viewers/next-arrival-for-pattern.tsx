@@ -28,17 +28,15 @@ type Props = {
 /**
  * Shows the next arrival for a pattern within the related stops view.
  */
-function NextArrivalForPattern(props: Props) {
-  const {
-    homeTimezone,
-    intl,
-    pattern,
-    route,
-    routeColor,
-    stopTimes,
-    stopViewerConfig
-  } = props
-
+function NextArrivalForPattern({
+  homeTimezone,
+  intl,
+  pattern,
+  route,
+  routeColor,
+  stopTimes,
+  stopViewerConfig
+}: Props) {
   // @ts-expect-error React context is populated dynamically
   const { RouteRenderer: CustomRouteRenderer } = useContext(ComponentContext)
   const RouteRenderer = CustomRouteRenderer || DefaultRouteRenderer
@@ -85,9 +83,9 @@ function NextArrivalForPattern(props: Props) {
       <div className="next-arrival-label overflow-ellipsis" title={title}>
         <span className="route-name">
           <RouteRenderer
-            hideTopBorder={route.operator?.colorMode?.includes('gtfs')}
-            // All GTFS bg colors look strange with the top border
             leg={generateFakeLegForRouteRenderer(route, true)}
+            // All GTFS bg colors look strange with the top border
+            onColoredBackground={route.operator?.colorMode?.includes('gtfs')}
           />
         </span>
         {toHeadsign}

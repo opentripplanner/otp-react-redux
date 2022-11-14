@@ -153,12 +153,15 @@ class LiveStopTimes extends Component<Props, State> {
 
     return (
       <>
-        <div className="route-row-container">
+        <ul className="route-row-container">
           {Object.values(stopTimesByPattern)
             .sort(patternComparator)
+            .filter(({ pattern, route }) =>
+              routeIsValid(route, getRouteIdForPattern(pattern))
+            )
             .map(({ id, pattern, route, times }) => {
               // Only add pattern if route info is returned by OTP.
-              return routeIsValid(route, getRouteIdForPattern(pattern)) ? (
+              return (
                 <PatternRow
                   homeTimezone={homeTimezone}
                   key={id}
@@ -174,9 +177,9 @@ class LiveStopTimes extends Component<Props, State> {
                   stopViewerArriving={stopViewerArriving}
                   stopViewerConfig={stopViewerConfig}
                 />
-              ) : null
+              )
             })}
-        </div>
+        </ul>
 
         {/* Auto update controls for realtime arrivals */}
         <div style={{ marginTop: '20px' }}>

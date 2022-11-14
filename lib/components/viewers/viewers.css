@@ -98,52 +98,55 @@
 }
 .otp .stop-viewer .route-row-container,
 .related-panel-container {
-  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+  padding-left: 0;
 }
 .otp .stop-viewer .route-row:first-of-type {
   margin-top: 10px;
 }
 
 .otp .stop-viewer .route-row .header {
+  align-items: center;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  align-items: center;
   width: 100%;
 }
 .otp .stop-viewer .route-row .header .route-name {
-  display: grid;
-  grid-template-columns: 4ch 2fr;
-  gap: 5px;
-  font-size: 42px;
   align-items: center;
+  display: grid;
+  font-size: 42px;
+  gap: 5px;
+  grid-template-columns: 4ch 2fr;
 }
 .otp .stop-viewer .route-row .header .route-name span {
   font-size: 15px;
 }
 
 .otp .stop-viewer .route-row .header .next-trip-preview {
-  justify-self: end;
   display: grid;
-  width: 100%;
-  text-align: right;
   grid-template-rows: fit-content(8ch);
+  justify-self: end;
+  list-style-type: none;
   padding: 15px;
+  text-align: right;
   white-space: nowrap;
+  width: 100%;
 }
 
-.otp .stop-viewer .route-row .header .next-trip-preview span:first-of-type {
-  font-weight: 700;
+.otp .stop-viewer .route-row .header .next-trip-preview li:first-of-type {
   font-size: 24px;
+  font-weight: 700;
 }
 
 .otp .stop-viewer .route-row .header .expansion-button-container {
-  display: table-cell;
-  width: 36px;
   border-left: 1px solid #1113;
-  padding: 0px;
   cursor: pointer;
+  display: table-cell;
+  padding: 0px;
   vertical-align: middle;
+  width: 36px;
 }
 
 .otp .stop-viewer .route-row .header .expansion-button {
@@ -206,14 +209,6 @@
 .otp .stop-viewer .stop-viewer-body .related-item:hover {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-}
-
-.otp .stop-viewer .stop-viewer-body .related-item .item-label {
-  display: flex;
-  width: 100%;
-  align-items: baseline;
-  justify-content: flex-start;
-  margin-bottom: 10px;
 }
 
 .otp .stop-viewer .stop-viewer-body .related-item .stop-label {

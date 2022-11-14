@@ -801,7 +801,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                 </div>
                 <styled.div>
                   <div
-                    className="sc-eltbHq ieRMbj"
+                    className="sc-gVgoRu bqiCoT"
                   >
                     <LiveStopTimes
                       findStopTimesForStop={[Function]}
@@ -990,7 +990,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         }
                       }
                     >
-                      <div
+                      <ul
                         className="route-row-container"
                       >
                         <injectIntl(PatternRow)
@@ -1318,9 +1318,8 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               }
                             }
                           >
-                            <div
+                            <li
                               className="route-row"
-                              role="group"
                             >
                               <div
                                 className="header"
@@ -1351,8 +1350,8 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": true,
                                             "mode": "BUS",
+                                            "onColoredBackground": true,
                                             "routeColor": undefined,
                                             "routeLongName": "Burnside/Stark",
                                             "routeShortName": "20",
@@ -1362,11 +1361,12 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={true}
+                                          onColoredBackground={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY bUwBaS"
+                                            className="sc-ljRaeN iONJZy"
                                             color="333333"
+                                            onColoredBackground={true}
                                           >
                                             20
                                           </section>
@@ -1378,10 +1378,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     Gresham TC
                                   </span>
                                 </div>
-                                <div
+                                <ol
                                   className="next-trip-preview"
                                 >
-                                  <span>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="0"
@@ -1488,8 +1488,8 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         </FormattedDuration>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="1"
@@ -1630,8 +1630,8 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="2"
@@ -1772,13 +1772,13 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                </div>
+                                  </li>
+                                </ol>
                               </div>
-                            </div>
+                            </li>
                           </PatternRow>
                         </injectIntl(PatternRow)>
-                      </div>
+                      </ul>
                       <div
                         style={
                           Object {
@@ -1798,7 +1798,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                             margin={0.25}
                           >
                             <span
-                              className="sc-jXktde fKyBCi"
+                              className="sc-eFuaqX hYymuk"
                             >
                               <input
                                 name="autoUpdate"
@@ -2644,22 +2644,18 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     <li
                                       className="related-item"
                                     >
-                                      <div
-                                        className="item-label"
-                                      >
-                                        <styled.div>
-                                          <div
-                                            className="sc-eFuaqX eZHYvB"
-                                          >
-                                            P
-                                          </div>
-                                        </styled.div>
-                                        <FormattedMessage
-                                          id="components.AmenitiesPanel.noPRLotsFound"
+                                      <styled.div>
+                                        <div
+                                          className="sc-fmlJrY jfVTXd"
                                         >
-                                          components.AmenitiesPanel.noPRLotsFound
-                                        </FormattedMessage>
-                                      </div>
+                                          P
+                                        </div>
+                                      </styled.div>
+                                      <FormattedMessage
+                                        id="components.AmenitiesPanel.noPRLotsFound"
+                                      >
+                                        components.AmenitiesPanel.noPRLotsFound
+                                      </FormattedMessage>
                                     </li>
                                   </ul>
                                 </div>
@@ -3383,7 +3379,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                 </div>
                 <styled.div>
                   <div
-                    className="sc-eltbHq ieRMbj"
+                    className="sc-gVgoRu bqiCoT"
                   >
                     <LiveStopTimes
                       findStopTimesForStop={[Function]}
@@ -3473,7 +3469,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         }
                       }
                     >
-                      <div
+                      <ul
                         className="route-row-container"
                       >
                         <injectIntl(PatternRow)
@@ -3621,9 +3617,8 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               }
                             }
                           >
-                            <div
+                            <li
                               className="route-row"
-                              role="group"
                             >
                               <div
                                 className="header"
@@ -3654,8 +3649,8 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": true,
                                             "mode": "BUS",
+                                            "onColoredBackground": true,
                                             "routeColor": undefined,
                                             "routeLongName": "Burnside/Stark",
                                             "routeShortName": "20",
@@ -3665,11 +3660,12 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={true}
+                                          onColoredBackground={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY bUwBaS"
+                                            className="sc-ljRaeN iONJZy"
                                             color="333333"
+                                            onColoredBackground={true}
                                           >
                                             20
                                           </section>
@@ -3681,10 +3677,10 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     Gresham TC
                                   </span>
                                 </div>
-                                <div
+                                <ol
                                   className="next-trip-preview"
                                 >
-                                  <span>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="0"
@@ -3791,13 +3787,13 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         </FormattedDuration>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                </div>
+                                  </li>
+                                </ol>
                               </div>
-                            </div>
+                            </li>
                           </PatternRow>
                         </injectIntl(PatternRow)>
-                      </div>
+                      </ul>
                       <div
                         style={
                           Object {
@@ -3817,7 +3813,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                             margin={0.25}
                           >
                             <span
-                              className="sc-jXktde fKyBCi"
+                              className="sc-eFuaqX hYymuk"
                             >
                               <input
                                 name="autoUpdate"
@@ -4267,22 +4263,18 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     <li
                                       className="related-item"
                                     >
-                                      <div
-                                        className="item-label"
-                                      >
-                                        <styled.div>
-                                          <div
-                                            className="sc-eFuaqX eZHYvB"
-                                          >
-                                            P
-                                          </div>
-                                        </styled.div>
-                                        <FormattedMessage
-                                          id="components.AmenitiesPanel.noPRLotsFound"
+                                      <styled.div>
+                                        <div
+                                          className="sc-fmlJrY jfVTXd"
                                         >
-                                          components.AmenitiesPanel.noPRLotsFound
-                                        </FormattedMessage>
-                                      </div>
+                                          P
+                                        </div>
+                                      </styled.div>
+                                      <FormattedMessage
+                                        id="components.AmenitiesPanel.noPRLotsFound"
+                                      >
+                                        components.AmenitiesPanel.noPRLotsFound
+                                      </FormattedMessage>
                                     </li>
                                   </ul>
                                 </div>
@@ -5105,7 +5097,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                 </div>
                 <styled.div>
                   <div
-                    className="sc-eltbHq ieRMbj"
+                    className="sc-gVgoRu bqiCoT"
                   >
                     <LiveStopTimes
                       findStopTimesForStop={[Function]}
@@ -5294,7 +5286,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         }
                       }
                     >
-                      <div
+                      <ul
                         className="route-row-container"
                       >
                         <injectIntl(PatternRow)
@@ -5622,9 +5614,8 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               }
                             }
                           >
-                            <div
+                            <li
                               className="route-row"
-                              role="group"
                             >
                               <div
                                 className="header"
@@ -5655,8 +5646,8 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": true,
                                             "mode": "BUS",
+                                            "onColoredBackground": true,
                                             "routeColor": undefined,
                                             "routeLongName": "Burnside/Stark",
                                             "routeShortName": "20",
@@ -5666,11 +5657,12 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={true}
+                                          onColoredBackground={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY bUwBaS"
+                                            className="sc-ljRaeN iONJZy"
                                             color="333333"
+                                            onColoredBackground={true}
                                           >
                                             20
                                           </section>
@@ -5682,10 +5674,10 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     Gresham TC
                                   </span>
                                 </div>
-                                <div
+                                <ol
                                   className="next-trip-preview"
                                 >
-                                  <span>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="0"
@@ -5826,8 +5818,8 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="1"
@@ -5968,8 +5960,8 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="2"
@@ -6110,13 +6102,13 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                </div>
+                                  </li>
+                                </ol>
                               </div>
-                            </div>
+                            </li>
                           </PatternRow>
                         </injectIntl(PatternRow)>
-                      </div>
+                      </ul>
                       <div
                         style={
                           Object {
@@ -6136,7 +6128,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                             margin={0.25}
                           >
                             <span
-                              className="sc-jXktde fKyBCi"
+                              className="sc-eFuaqX hYymuk"
                             >
                               <input
                                 name="autoUpdate"
@@ -6982,22 +6974,18 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     <li
                                       className="related-item"
                                     >
-                                      <div
-                                        className="item-label"
-                                      >
-                                        <styled.div>
-                                          <div
-                                            className="sc-eFuaqX eZHYvB"
-                                          >
-                                            P
-                                          </div>
-                                        </styled.div>
-                                        <FormattedMessage
-                                          id="components.AmenitiesPanel.noPRLotsFound"
+                                      <styled.div>
+                                        <div
+                                          className="sc-fmlJrY jfVTXd"
                                         >
-                                          components.AmenitiesPanel.noPRLotsFound
-                                        </FormattedMessage>
-                                      </div>
+                                          P
+                                        </div>
+                                      </styled.div>
+                                      <FormattedMessage
+                                        id="components.AmenitiesPanel.noPRLotsFound"
+                                      >
+                                        components.AmenitiesPanel.noPRLotsFound
+                                      </FormattedMessage>
                                     </li>
                                   </ul>
                                 </div>
@@ -8078,7 +8066,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                 </div>
                 <styled.div>
                   <div
-                    className="sc-eltbHq ieRMbj"
+                    className="sc-gVgoRu bqiCoT"
                   >
                     <LiveStopTimes
                       findStopTimesForStop={[Function]}
@@ -8525,7 +8513,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         }
                       }
                     >
-                      <div
+                      <ul
                         className="route-row-container"
                       >
                         <injectIntl(PatternRow)
@@ -8849,9 +8837,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               }
                             }
                           >
-                            <div
+                            <li
                               className="route-row"
-                              role="group"
                             >
                               <div
                                 className="header"
@@ -8882,8 +8869,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": true,
                                             "mode": "BUS",
+                                            "onColoredBackground": true,
                                             "routeColor": undefined,
                                             "routeLongName": "Burnside/Stark",
                                             "routeShortName": "20",
@@ -8893,11 +8880,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={true}
+                                          onColoredBackground={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY bUwBaS"
+                                            className="sc-ljRaeN iONJZy"
                                             color="333333"
+                                            onColoredBackground={true}
                                           >
                                             20
                                           </section>
@@ -8909,10 +8897,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     Gresham TC
                                   </span>
                                 </div>
-                                <div
+                                <ol
                                   className="next-trip-preview"
                                 >
-                                  <span>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="0"
@@ -9053,8 +9041,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="1"
@@ -9195,8 +9183,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="2"
@@ -9337,10 +9325,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                </div>
+                                  </li>
+                                </ol>
                               </div>
-                            </div>
+                            </li>
                           </PatternRow>
                         </injectIntl(PatternRow)>
                         <injectIntl(PatternRow)
@@ -9556,9 +9544,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               }
                             }
                           >
-                            <div
+                            <li
                               className="route-row"
-                              role="group"
                             >
                               <div
                                 className="header"
@@ -9589,8 +9576,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": true,
                                             "mode": "BUS",
+                                            "onColoredBackground": true,
                                             "routeColor": undefined,
                                             "routeLongName": "South Shore",
                                             "routeShortName": "36",
@@ -9600,11 +9587,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={true}
+                                          onColoredBackground={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY bUwBaS"
+                                            className="sc-ljRaeN iONJZy"
                                             color="333333"
+                                            onColoredBackground={true}
                                           >
                                             36
                                           </section>
@@ -9616,10 +9604,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     Tualatin Park & Ride
                                   </span>
                                 </div>
-                                <div
+                                <ol
                                   className="next-trip-preview"
                                 >
-                                  <span>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="0"
@@ -9760,8 +9748,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="1"
@@ -9902,8 +9890,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="2"
@@ -10044,10 +10032,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                </div>
+                                  </li>
+                                </ol>
                               </div>
-                            </div>
+                            </li>
                           </PatternRow>
                         </injectIntl(PatternRow)>
                         <injectIntl(PatternRow)
@@ -10263,9 +10251,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               }
                             }
                           >
-                            <div
+                            <li
                               className="route-row"
-                              role="group"
                             >
                               <div
                                 className="header"
@@ -10296,8 +10283,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": true,
                                             "mode": "BUS",
+                                            "onColoredBackground": true,
                                             "routeColor": undefined,
                                             "routeLongName": "Pacific Hwy/Sherwood",
                                             "routeShortName": "94",
@@ -10307,11 +10294,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={true}
+                                          onColoredBackground={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY bUwBaS"
+                                            className="sc-ljRaeN iONJZy"
                                             color="333333"
+                                            onColoredBackground={true}
                                           >
                                             94
                                           </section>
@@ -10323,10 +10311,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     King City
                                   </span>
                                 </div>
-                                <div
+                                <ol
                                   className="next-trip-preview"
                                 >
-                                  <span>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="0"
@@ -10467,8 +10455,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="1"
@@ -10609,8 +10597,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="2"
@@ -10751,10 +10739,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                </div>
+                                  </li>
+                                </ol>
                               </div>
-                            </div>
+                            </li>
                           </PatternRow>
                         </injectIntl(PatternRow)>
                         <injectIntl(PatternRow)
@@ -11078,9 +11066,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               }
                             }
                           >
-                            <div
+                            <li
                               className="route-row"
-                              role="group"
                             >
                               <div
                                 className="header"
@@ -11111,8 +11098,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": true,
                                             "mode": "BUS",
+                                            "onColoredBackground": true,
                                             "routeColor": undefined,
                                             "routeLongName": "Pacific Hwy/Sherwood",
                                             "routeShortName": "94",
@@ -11122,11 +11109,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={true}
+                                          onColoredBackground={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY bUwBaS"
+                                            className="sc-ljRaeN iONJZy"
                                             color="333333"
+                                            onColoredBackground={true}
                                           >
                                             94
                                           </section>
@@ -11138,10 +11126,10 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     Sherwood
                                   </span>
                                 </div>
-                                <div
+                                <ol
                                   className="next-trip-preview"
                                 >
-                                  <span>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="0"
@@ -11282,8 +11270,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="1"
@@ -11424,8 +11412,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="2"
@@ -11566,13 +11554,13 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                </div>
+                                  </li>
+                                </ol>
                               </div>
-                            </div>
+                            </li>
                           </PatternRow>
                         </injectIntl(PatternRow)>
-                      </div>
+                      </ul>
                       <div
                         style={
                           Object {
@@ -11592,7 +11580,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             margin={0.25}
                           >
                             <span
-                              className="sc-jXktde fKyBCi"
+                              className="sc-eFuaqX hYymuk"
                             >
                               <input
                                 name="autoUpdate"
@@ -13470,22 +13458,18 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     <li
                                       className="related-item"
                                     >
-                                      <div
-                                        className="item-label"
-                                      >
-                                        <styled.div>
-                                          <div
-                                            className="sc-eFuaqX eZHYvB"
-                                          >
-                                            P
-                                          </div>
-                                        </styled.div>
-                                        <FormattedMessage
-                                          id="components.AmenitiesPanel.noPRLotsFound"
+                                      <styled.div>
+                                        <div
+                                          className="sc-fmlJrY jfVTXd"
                                         >
-                                          components.AmenitiesPanel.noPRLotsFound
-                                        </FormattedMessage>
-                                      </div>
+                                          P
+                                        </div>
+                                      </styled.div>
+                                      <FormattedMessage
+                                        id="components.AmenitiesPanel.noPRLotsFound"
+                                      >
+                                        components.AmenitiesPanel.noPRLotsFound
+                                      </FormattedMessage>
                                     </li>
                                   </ul>
                                 </div>
@@ -14561,7 +14545,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                 </div>
                 <styled.div>
                   <div
-                    className="sc-eltbHq ieRMbj"
+                    className="sc-gVgoRu bqiCoT"
                   >
                     <LiveStopTimes
                       findStopTimesForStop={[Function]}
@@ -15003,7 +14987,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         }
                       }
                     >
-                      <div
+                      <ul
                         className="route-row-container"
                       >
                         <injectIntl(PatternRow)
@@ -15331,9 +15315,8 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               }
                             }
                           >
-                            <div
+                            <li
                               className="route-row"
-                              role="group"
                             >
                               <div
                                 className="header"
@@ -15364,8 +15347,8 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         leg={
                                           Object {
                                             "agencyName": "TriMet",
-                                            "hideTopBorder": true,
                                             "mode": "BUS",
+                                            "onColoredBackground": true,
                                             "routeColor": undefined,
                                             "routeLongName": "Burnside/Stark",
                                             "routeShortName": "20",
@@ -15375,11 +15358,12 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       >
                                         <styled.section
                                           color="333333"
-                                          hideTopBorder={true}
+                                          onColoredBackground={true}
                                         >
                                           <section
-                                            className="sc-fmlJrY bUwBaS"
+                                            className="sc-ljRaeN iONJZy"
                                             color="333333"
+                                            onColoredBackground={true}
                                           >
                                             20
                                           </section>
@@ -15391,10 +15375,10 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     Gresham TC
                                   </span>
                                 </div>
-                                <div
+                                <ol
                                   className="next-trip-preview"
                                 >
-                                  <span>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="0"
@@ -15535,8 +15519,8 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="1"
@@ -15677,8 +15661,8 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                  <span>
+                                  </li>
+                                  <li>
                                     <StopTimeCell
                                       homeTimezone="America/Los_Angeles"
                                       key="2"
@@ -15819,13 +15803,13 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         </DepartureTime>
                                       </span>
                                     </StopTimeCell>
-                                  </span>
-                                </div>
+                                  </li>
+                                </ol>
                               </div>
-                            </div>
+                            </li>
                           </PatternRow>
                         </injectIntl(PatternRow)>
-                      </div>
+                      </ul>
                       <div
                         style={
                           Object {
@@ -15845,7 +15829,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                             margin={0.25}
                           >
                             <span
-                              className="sc-jXktde fKyBCi"
+                              className="sc-eFuaqX hYymuk"
                             >
                               <input
                                 name="autoUpdate"
@@ -17703,22 +17687,18 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     <li
                                       className="related-item"
                                     >
-                                      <div
-                                        className="item-label"
-                                      >
-                                        <styled.div>
-                                          <div
-                                            className="sc-eFuaqX eZHYvB"
-                                          >
-                                            P
-                                          </div>
-                                        </styled.div>
-                                        <FormattedMessage
-                                          id="components.AmenitiesPanel.noPRLotsFound"
+                                      <styled.div>
+                                        <div
+                                          className="sc-fmlJrY jfVTXd"
                                         >
-                                          components.AmenitiesPanel.noPRLotsFound
-                                        </FormattedMessage>
-                                      </div>
+                                          P
+                                        </div>
+                                      </styled.div>
+                                      <FormattedMessage
+                                        id="components.AmenitiesPanel.noPRLotsFound"
+                                      >
+                                        components.AmenitiesPanel.noPRLotsFound
+                                      </FormattedMessage>
                                     </li>
                                   </ul>
                                 </div>

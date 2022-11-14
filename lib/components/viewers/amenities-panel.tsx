@@ -61,25 +61,19 @@ class AmenitiesPanel extends Component<Props, State> {
     return parkAndRideLocations && parkAndRideLocations.length > 0 ? (
       // TODO Type for P+R
       parkAndRideLocations.map((parkAndRide: any) => (
-        <li className="related-item" key={parkAndRide.name}>
-          <div className="item-label">
-            <div
-              className="overflow-ellipsis"
-              style={{ display: 'flex' }}
-              title={parkAndRide.name}
-            >
-              {parkAndRideMarker}
-              {parkAndRide.name}
-            </div>
-          </div>
+        <li
+          className="related-item"
+          key={parkAndRide.name}
+          title={parkAndRide.name}
+        >
+          {parkAndRideMarker}
+          {parkAndRide.name}
         </li>
       ))
     ) : (
       <li className="related-item">
-        <div className="item-label">
-          {parkAndRideMarker}
-          <FormattedMessage id="components.AmenitiesPanel.noPRLotsFound" />
-        </div>
+        {parkAndRideMarker}
+        <FormattedMessage id="components.AmenitiesPanel.noPRLotsFound" />
       </li>
     )
   }
@@ -127,13 +121,9 @@ class AmenitiesPanel extends Component<Props, State> {
               }
             )
         return (
-          <li className="related-item" key={key}>
-            <div className="item-label">
-              <div className="overflow-ellipsis" title={label}>
-                {company.icon}
-                {label}
-              </div>
-            </div>
+          <li className="related-item" key={key} title={label}>
+            {company.icon}
+            {label}
             {company.isHub && (
               <>
                 <div>
@@ -210,16 +200,14 @@ class AmenitiesPanel extends Component<Props, State> {
         const company = companyCounts[key]
         return (
           <li className="related-item" key={key}>
-            <div className="item-label">
-              {company.icon}
-              <FormattedMessage
-                id="components.AmenitiesPanel.scootersNearby"
-                values={{
-                  company: company.name,
-                  count: company.stations.length
-                }}
-              />
-            </div>
+            {company.icon}
+            <FormattedMessage
+              id="components.AmenitiesPanel.scootersNearby"
+              values={{
+                company: company.name,
+                count: company.stations.length
+              }}
+            />
           </li>
         )
       })

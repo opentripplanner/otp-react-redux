@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 // TODO: This should not be a section, but using div/span
 // doesn't allow us to style it from within the RouteBlock
-const Block = styled.section<{ color: string; hideTopBorder?: boolean }>`
+const Block = styled.section<{ color: string; onColoredBackground?: boolean }>`
   background: #${(props) => props.color}1A;
   border-radius: 5px;
   border-top: 5px solid #${(props) => props.color};
@@ -14,15 +14,18 @@ const Block = styled.section<{ color: string; hideTopBorder?: boolean }>`
   text-align: center;
   white-space: break-spaces;
 
-  ${(props) => props.hideTopBorder && 'border-top: none'}
+  ${(props) => props.onColoredBackground && 'border-top: none'}
 `
 
 type RouteRendererProps = {
-  leg: Leg & { hideTopBorder?: boolean }
+  leg: Leg & { onColoredBackground?: boolean }
 }
 
 const DefaultRouteRenderer = ({ leg }: RouteRendererProps): JSX.Element => (
-  <Block color={leg.routeColor || '333333'} hideTopBorder={leg.hideTopBorder}>
+  <Block
+    color={leg.routeColor || '333333'}
+    onColoredBackground={leg.onColoredBackground}
+  >
     {leg.routeShortName || leg.route || leg.routeLongName}
   </Block>
 )
