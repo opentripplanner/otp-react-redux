@@ -1415,6 +1415,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -1426,6 +1427,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -1523,6 +1525,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -1534,6 +1537,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -1665,6 +1669,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -1676,6 +1681,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -3718,6 +3724,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -3729,6 +3736,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -5719,6 +5727,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -5730,6 +5739,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -5861,6 +5871,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -5872,6 +5883,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -6003,6 +6015,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -6014,6 +6027,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -8946,6 +8960,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -8957,6 +8972,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -9088,6 +9104,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -9099,6 +9116,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -9230,6 +9248,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -9241,6 +9260,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -9653,6 +9673,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -9664,6 +9685,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -9795,6 +9817,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -9806,6 +9829,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -9937,6 +9961,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -9948,6 +9973,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -10360,6 +10386,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -10371,6 +10398,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -10502,6 +10530,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -10513,6 +10542,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -10644,6 +10674,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -10655,6 +10686,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -11175,6 +11207,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -11186,6 +11219,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -11317,6 +11351,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -11328,6 +11363,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -11459,6 +11495,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -11470,6 +11507,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -15428,6 +15466,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -15439,6 +15478,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -15570,6 +15610,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -15581,6 +15622,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase
@@ -15712,6 +15754,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             "transform": "scaleX(1)",
                                           }
                                         }
+                                        title="components.StopTimeCell.scheduled"
                                       >
                                         <span
                                           className="sc-gInthZ sc-euMpEg dOezsE KEner"
@@ -15723,6 +15766,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                               "transform": "scaleX(1)",
                                             }
                                           }
+                                          title="components.StopTimeCell.scheduled"
                                         >
                                           <Clock>
                                             <StyledIconBase

@@ -408,6 +408,8 @@ components:
     destination: To
     route: Route
   StopTimeCell:
+    realtime: Based on realtime data
+    scheduled: Based on schedule data
     imminentArrival: Due
   # Used in both desktop and mobile
   StopViewer:

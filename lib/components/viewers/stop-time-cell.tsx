@@ -98,6 +98,13 @@ const StopTimeCell = ({
   const showDayOfWeek = !vehicleDepartsToday && !showCountdown
 
   const realtime = stopTime.realtimeState === 'UPDATED'
+  const realtimeLabel = realtime
+    ? intl.formatMessage({
+        id: 'components.StopTimeCell.realtime'
+      })
+    : intl.formatMessage({
+        id: 'components.StopTimeCell.scheduled'
+      })
   return (
     <>
       <StyledIconWrapperTextAlign
@@ -107,8 +114,9 @@ const StopTimeCell = ({
           marginRight: 2,
           transform: `scaleX(${realtime ? '-1' : '1'})`
         }}
+        title={realtimeLabel}
       >
-        {stopTime.realtimeState === 'UPDATED' ? <PulsingRss /> : <Clock />}
+        {realtime ? <PulsingRss /> : <Clock />}
       </StyledIconWrapperTextAlign>
 
       {showDayOfWeek && (
