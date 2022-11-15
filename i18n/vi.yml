@@ -91,9 +91,6 @@ components:
     enterLocation: Nhập vị trí
     setOrigin: Chọn nguồn gốc
     setDestination: Chọn điểm đến
-  ItinerarySummary:
-    fareCost: "{useMaxFare, select,\n  true {{minTotalFare} - {maxTotalFare}}\n  other\
-      \ {{minTotalFare}}\n }\n"
   MapLayers:
     bike-rental: '{companies} Xe đạp chung'
     car-rental: Địa điểm cho thuê xe
@@ -203,8 +200,6 @@ components:
     noTripFound: Không tìm thấy chuyến đi nào
     tripsFound: Chúng tôi đã tìm thấy {count} {count, plural, one {tùy chọn} other
       {tùy chọn}}
-  ResultsScreen:
-    header: lựa chọn {index}
   RouteDetails:
     stopsTo: Hướng
     selectADirection: Chọn một hướng…
@@ -266,11 +261,8 @@ components:
     myAccount: Tài khoản của tôi
     settings: Cài đặt
     trips: Chuyến đi
-  TabbedFormPanel:
-    hideSettings: ' Ẩn cài đặt'
   TabbedItineraries:
     optionNumber: Lựa chọn {optionNum, number}
-    mustCallAhead: Phải gọi trước!
     fareCost: "{hasMaxFare, select, \n true {{minTotalFare}+}\n other {{minTotalFare}}\n\
       \ }\n"
   TransitVehicleOverlay:
@@ -500,8 +492,6 @@ components:
     noSavedTripsInstructions: Thực hiện tìm kiếm chuyến đi từ bản đồ trước.
     pause: Tạm ngừng
     resume: Tiếp tục
-  SearchScreen:
-    header: Lên kế hoạch cho chuyến đi của bạn
   StopTimeCell:
     imminentArrival: Đến hạn
   TermsOfUsePane:
@@ -602,7 +592,6 @@ common:
       \ other {nhấp}\n } vào bản đồ…\n"
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
-    tripDurationFormatZeroHours: '{minutes, number} phút'
     tripDurationFormat: "{hours, plural, \n =0 {{minutes, number} phút}\n other {#\
       \ giờ {minutes, number} phút}\n }\n"
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\

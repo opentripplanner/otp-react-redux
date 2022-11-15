@@ -108,9 +108,6 @@ components:
     placeNotFoundDescription: 죄송합니다 요청 된 장소는 찾을 수 없었습니다.
   LiveStopTimes:
     autoRefresh: 도착을 자동 새로 고침 하시겠습니까?
-  ItinerarySummary:
-    fareCost: "{useMaxFare, select,\n  true {{minTotalFare} - {maxTotalFare}}\n  other\
-      \ {{minTotalFare}}\n }\n"
   MapLayers:
     car-rental: 렌터카 위치
     park-and-ride: Park & Ride위치
@@ -250,8 +247,6 @@ components:
   SwitchButton:
     switchLocations: 위치를 바꾸다
     defaultContent: 바꾸다
-  TabbedFormPanel:
-    hideSettings: ' 설정 숨기기'
   TermsOfUsePane:
     termsOfServiceStatement: "본인은 만 18세 이상임을 확인하며, 트립플래너 이용을 위한 <termsOfUseLink>이용약관/termsOfUseLink\
       \ > 을 읽었으며 이에 동의합니다.\n"
@@ -446,10 +441,7 @@ components:
     destination: 에
     route: 노선
   TabbedItineraries:
-    mustCallAhead: 미리 전화해야합니다!
     optionNumber: 옵션 {optionNum, number}
-    fareCost: "{hasMaxFare, select, \n true {{minTotalFare}+}\n other {{minTotalFare}}\n\
-      \ }\n"
   TripSummary:
     itinerary: 여정
   TripSummaryPane:
@@ -490,12 +482,8 @@ components:
   RelatedPanel:
     hideExtraStops: 여분의 정지를 숨 깁니다
     showExtraStops: 추가 정거장 {count} 개를 보여줍니다
-  ResultsScreen:
-    header: 옵션 {index}
   RouteRow:
     operatorLogoAltText: '{operatorName} 심벌 마크'
-  SearchScreen:
-    header: 여행 계획
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: 이 여행은 실시간 트래픽과 지연 정보를 사용합니다
   StackedPaneDisplay:
@@ -602,7 +590,6 @@ common:
     sunday: 일요일
     tuesday: 화요일
   time:
-    tripDurationFormatZeroHours: '{minutes, number} 분'
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {몇 초 전에}\n =1 {1 분 전}\n other {# 분 전}\n }}\n =1 {한 시간 전에}\n other {# 시간\
