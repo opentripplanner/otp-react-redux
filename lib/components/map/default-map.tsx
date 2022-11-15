@@ -225,12 +225,6 @@ class DefaultMap extends Component {
     this.props.setMapPopupLocationAndGeocode(e)
   }
 
-  onSetLocationFromPopup = (payload) => {
-    const { setLocation, setMapPopupLocation } = this.props
-    setMapPopupLocation({ location: null })
-    setLocation(payload)
-  }
-
   componentDidMount() {
     // HACK: Set state lat and lon to null to prevent re-rendering of the
     // underlying OTP-UI map.
@@ -262,7 +256,7 @@ class DefaultMap extends Component {
       vehicleRentalStations
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel } = this.context
-    const { baseLayers, initLat, initLon, maxZoom, overlays } = mapConfig || {}
+    const { baseLayers, maxZoom, overlays } = mapConfig || {}
     const { lat, lon, zoom } = this.state
     const vectorTilesEndpoint = makeApiUrl(config, 'vectorTiles', {})
 
@@ -297,7 +291,7 @@ class DefaultMap extends Component {
           onContextMenu={this.onMapClick}
           zoom={zoom}
         >
-          <PointPopup onSetLocationFromPopup={this.onSetLocationFromPopup} />
+          <PointPopup />
           {/* The default overlays */}
           <EndpointsOverlay />
           <RouteViewerOverlay />
@@ -414,8 +408,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   bikeRentalQuery,
   carRentalQuery,
-  setLocation,
-  setMapPopupLocation,
   setMapPopupLocationAndGeocode,
   setViewedStop,
   updateOverlayVisibility,

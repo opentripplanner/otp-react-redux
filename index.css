@@ -78,6 +78,9 @@ input[type="text"]::-ms-clear {
 .slide-pane__content {
   padding: 6px 0;
 }
+.slide-pane__overlay {
+  z-index: 1000;
+}
 
 .app-menu {
   margin: 0;

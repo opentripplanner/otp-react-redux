@@ -52,3 +52,29 @@ jobs:
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_OTP2 }}
           PERCY_OTP_CONFIG_OVERRIDE: /tmp/otp2config.yml
+          OTP_RR_PERCY_MOBILE: true
+  run-pixel-tests-with-otp2-real-server-call-taker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # This allows us to work with the repository during the lint step
+          fetch-depth: 2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - name: Install npm packages using cache
+        uses: bahmutov/npm-install@v1
+      - name: Download OTP2 config file
+        run: curl $PERCY_OTP2_CONFIG_URL --output /tmp/otp2config.yml
+        env:
+          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_OTP2_CONFIG_URL_METRO }}
+      - name: Take Percy Snapshots
+        # Move everything from latest commit back to staged
+        run: npx percy exec -- npx jest percy/percy.test.js --force-exit
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_CALL_TAKER_OTP2 }}
+          PERCY_OTP_CONFIG_OVERRIDE: /tmp/otp2config.yml
+          OTP_RR_PERCY_CALL_TAKER: true
