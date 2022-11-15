@@ -200,6 +200,7 @@ class BatchSettings extends Component<Props, State> {
             />
           </ModeButtonsContainerCompressed>
           <PlanTripButton
+            id="plan-trip"
             onClick={this._planTrip}
             title={intl.formatMessage({
               id: 'components.BatchSettings.planTripTooltip'
