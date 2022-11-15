@@ -211,11 +211,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
-    fareCost: >
-      {useMaxFare, select,
-        true {{minTotalFare} - {maxTotalFare}}
-        other {{minTotalFare}}
-      }
+    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Rafraîchir les horaires automatiquement ?
   LocationSearch:
@@ -357,10 +353,8 @@ components:
     backToSearch: Retour à la recherche
   ResultsHeader:
     noTripFound: Aucun trajet trouvé
-    tripsFound: "{count} {count, plural, one {trajet trouvé} other {trajets trouvés}}"
+    tripsFound: "{count, plural, one {# trajet trouvé} other {# trajets trouvés}}"
     waiting: Patientez...
-  ResultsScreen:
-    header: Option {index}
   RouteDetails:
     operatedBy: "Exploité par {agencyName}"
     moreDetails: "Plus d'infos"
@@ -408,8 +402,6 @@ components:
     saveTripText: Enregistrer
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
-  SearchScreen:
-    header: Planifiez votre trajet
   SessionTimeout:
     body: Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma session'
       pour conserver votre recherche.
@@ -449,17 +441,6 @@ components:
   SwitchButton:
     defaultContent: Permuter
     switchLocations: Permuter les lieux
-  TabbedFormPanel:
-    hideSettings: "Masquer les paramètres"
-  TabbedItineraries:
-    optionNumber: "Option {optionNum, number}"
-    # Note to translator: This text is width-constrained.
-    mustCallAhead: Résa. obligatoire
-    fareCost: >
-      {hasMaxFare, select,
-        true {À partir de {minTotalFare}}
-        other {{minTotalFare}}
-      }
   TermsOfUsePane:
     confirmDeletionPrompt: >
       En révoquant votre accord sur l'enregistrement de vos recherches de trajets,
@@ -737,16 +718,10 @@ common:
     routeToHeadsign: "Direction {headsign}"
 
   searchForms:
-    enterDestination: >
-      Entrez votre destination ou {mobile, select,
-        true {touchez}
-        other {cliquez sur}
-      } la carte...
-    enterStartLocation: >
-      Entrez votre point de départ ou {mobile, select,
-        true {touchez}
-        other {cliquez sur}
-      } la carte...
+    click: cliquez
+    enterDestination: Entrez votre destination ou {mapAction} sur la carte…
+    enterStartLocation: Entrez votre point de départ ou {mapAction} sur la carte…
+    tap: appuyez
 
   time:
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
@@ -763,14 +738,7 @@ common:
         }}
         other {il y a # jours}
       }
-
-    # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} mn"
-    tripDurationFormat: >
-      {hours, plural,
-        =0 {{minutes, number} mn}
-        other {# h {minutes, number} mn}
-      }
+    tripDurationFormat: "{hours, plural, =0 {} other {# h }}{minutes} mn"
 
 util:
   state:
