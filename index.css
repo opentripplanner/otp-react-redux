@@ -78,6 +78,7 @@ input[type="text"]::-ms-clear {
 .slide-pane__content {
   padding: 6px 0;
 }
+
 .slide-pane__overlay {
   z-index: 1000;
 }
@@ -107,13 +108,14 @@ input[type="text"]::-ms-clear {
 
 .view-switcher {
   display: none;
-} 
+}
 
-@media (min-width: 768px){
-.view-switcher {
-  display: flex;
+@media (min-width: 768px) {
+  .view-switcher {
+    display: flex;
+  }
 }
-}
+
 /* increase icon size */
 .app-menu li a .fa,
 .expand-submenu-button span .fa {
