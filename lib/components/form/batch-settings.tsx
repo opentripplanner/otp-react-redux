@@ -1,21 +1,25 @@
 /* eslint-disable react/prop-types */
+import { Bicycle, Bus, Walking } from '@styled-icons/fa-solid'
 import { Cog } from '@styled-icons/fa-solid/Cog'
 import { connect } from 'react-redux'
+import {
+  defaultModeSettings,
+  MetroModeSelector,
+  useModeState
+} from '@opentripplanner/trip-form'
 import { injectIntl, IntlShape } from 'react-intl'
-import { MetroModeSelector, useModeState } from '@opentripplanner/trip-form'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
+import type { ModeButtonDefinition } from '@opentripplanner/types'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
-import { Bicycle, Bus, Walking } from '@styled-icons/fa-solid'
+import { ComponentContext } from '../../util/contexts'
 import { hasValidLocation } from '../../util/state'
 import { StyledIconWrapper } from '../util/styledIcon'
-
-import type { ModeButtonDefinition } from '@opentripplanner/types'
 
 import {
   BatchPreferencesContainer,
@@ -24,16 +28,12 @@ import {
   StyledDateTimePreview,
   StyledPlanTripButton
 } from './batch-styled'
-import { ComponentContext } from '../../util/contexts'
-import { Dot } from './styled'
 import BatchPreferences from './batch-preferences'
 import DateTimeModal from './date-time-modal'
 import ModeButtons, {
   defaultModeOptions,
   StyledModeButton
 } from './mode-buttons'
-import modeSettings from './modeSettings.yml'
-import type { Mode } from './mode-buttons'
 
 const ModeButtonsFullWidthContainer = styled.div`
   display: flex;
@@ -95,12 +95,13 @@ function BatchSettings({ config, currentQuery, intl, routingQuery }: Props) {
   const {
     buttonsWithSettings,
     enabledModes,
+    modeSettings,
     setModeSettingValue,
     toggleModeButton
   } = useModeState(
     modeButtonsWithIcons,
     config.modes.initialState,
-    modeSettings,
+    defaultModeSettings,
     {
       queryParamState: true
     }
