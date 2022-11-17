@@ -18,32 +18,24 @@ import type { ModeButtonDefinition } from '@opentripplanner/types'
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
-import {
-  getActiveSearch,
-  hasValidLocation,
-  hasValidLocation
-} from '../../util/state'
-import {
-  StyledIconWrapper,
-  StyledIconWrapper,
-  StyledIconWrapper
-} from '../util/styledIcon'
+import { getActiveSearch, hasValidLocation } from '../../util/state'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 import {
   BatchPreferencesContainer,
   DateTimeModalContainer,
   MainSettingsRow,
-  PlanTripButton,
   StyledDateTimePreview,
   StyledPlanTripButton
 } from './batch-styled'
 import { Dot } from './styled'
-import BatchPreferences, { replaceTransitMode } from './batch-preferences'
+import BatchPreferences from './batch-preferences'
 import DateTimeModal from './date-time-modal'
 import ModeButtons, {
   defaultModeOptions,
   StyledModeButton
 } from './mode-buttons'
+import PlanTripButton from './plan-trip-button'
 
 const ModeButtonsFullWidthContainer = styled.div`
   display: flex;
@@ -149,7 +141,7 @@ function BatchSettings({
     setExpanded(null)
 
     // Plan trip.
-    routingQuery(undefined, false, enabledModes, modeSettings)
+    routingQuery()
   }
 
   const _updateExpanded = (type: string) => (expanded === type ? null : type)
