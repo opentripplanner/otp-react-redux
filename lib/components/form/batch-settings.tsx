@@ -18,17 +18,27 @@ import type { ModeButtonDefinition } from '@opentripplanner/types'
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
-import { hasValidLocation } from '../../util/state'
-import { StyledIconWrapper } from '../util/styledIcon'
+import {
+  getActiveSearch,
+  hasValidLocation,
+  hasValidLocation
+} from '../../util/state'
+import {
+  StyledIconWrapper,
+  StyledIconWrapper,
+  StyledIconWrapper
+} from '../util/styledIcon'
 
 import {
   BatchPreferencesContainer,
   DateTimeModalContainer,
   MainSettingsRow,
+  PlanTripButton,
   StyledDateTimePreview,
   StyledPlanTripButton
 } from './batch-styled'
-import BatchPreferences from './batch-preferences'
+import { Dot } from './styled'
+import BatchPreferences, { replaceTransitMode } from './batch-preferences'
 import DateTimeModal from './date-time-modal'
 import ModeButtons, {
   defaultModeOptions,
@@ -69,6 +79,7 @@ const ModeButtonsCompressed = styled(ModeButtons)`
 `
 // TYPESCRIPT TODO: better types
 type Props = {
+  activeSearch: any
   config: any
   currentQuery: any
   intl: IntlShape
@@ -80,7 +91,13 @@ type Props = {
 /**
  * Main panel for the batch/trip comparison form.
  */
-function BatchSettings({ config, currentQuery, intl, routingQuery }: Props) {
+function BatchSettings({
+  activeSearch,
+  config,
+  currentQuery,
+  intl,
+  routingQuery
+}: Props) {
   const [expanded, setExpanded] = useState<null | string>(null)
   const { ModeIcon } = useContext(ComponentContext)
 
@@ -169,21 +186,23 @@ function BatchSettings({ config, currentQuery, intl, routingQuery }: Props) {
             onToggleModeButton={toggleModeButton}
           />
         </ModeButtonsContainerCompressed>
-        <StyledPlanTripButton
+        <PlanTripButton
+          id="plan-trip"
           onClick={_planTrip}
           title={intl.formatMessage({
             id: 'components.BatchSettings.planTripTooltip'
           })}
         >
           <StyledIconWrapper style={{ fontSize: '1.6em' }}>
-            {hasValidLocation(currentQuery, 'from') ||
-            hasValidLocation(currentQuery, 'to') ? (
+            {hasValidLocation(currentQuery, 'from') &&
+            hasValidLocation(currentQuery, 'to') &&
+            !!activeSearch ? (
               <SyncAlt />
             ) : (
               <Search />
             )}
           </StyledIconWrapper>
-        </StyledPlanTripButton>
+        </PlanTripButton>
       </MainSettingsRow>
       {expanded === 'DATE_TIME' && (
         <DateTimeModalContainer>
@@ -202,6 +221,7 @@ function BatchSettings({ config, currentQuery, intl, routingQuery }: Props) {
 // connect to the redux store
 // TODO: Typescript
 const mapStateToProps = (state: any) => ({
+  activeSearch: getActiveSearch(state),
   config: state.otp.config,
   currentQuery: state.otp.currentQuery,
   modeOptions: state.otp.config.modes.modeOptions || defaultModeOptions,
