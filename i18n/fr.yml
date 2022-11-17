@@ -14,10 +14,12 @@ _name: Exemple de traduction pour OTP-react-redux en français !
 # Messages that are generated from actions
 actions:
   callTaker:
-    callQuerySaveError: "Erreur lors de l'enregistrement des requêtes pour l'appel : {err}"
+    callQuerySaveError: "Erreur lors de l'enregistrement des requêtes pour l'appel\
+      \ : {err}"
     callSaveError: "Impossible d'enregistrer l'appel : {err}"
     checkSessionError: "Erreur durant l'auth-entification : {err}"
-    couldNotFindCallError: Impossible de trouver l'appel. Tentative de sauvegarde des requêtes annulée.
+    couldNotFindCallError: Impossible de trouver l'appel. Tentative de sauvegarde
+      des requêtes annulée.
     fetchCallsError: "Erreur lors du chargement des appels : {err}"
     queryFetchError: "Erreur lors du chargement des requêtes : {err}"
   fieldTrip:
@@ -27,14 +29,19 @@ actions:
         true {aller}
         other {retour}
       } planifié préalablement pour cette demande. Voulez-vous continuer ?
-    deleteItinerariesError: "Erreur lors de la suppression d'un itinéraire de groupe :"
+    deleteItinerariesError: "Erreur lors de la suppression d'un itinéraire de groupe\
+      \ :"
     deleteNoteError: "Erreur lors de la suppression d'une note sur le groupe :"
-    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur :"
+    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur\
+      \ :"
     fetchFieldTripError: "Erreur de chargement de l'itinéraire du groupe: {err}"
-    fetchFieldTripsError: "Error fetching des itinéraires du groupe : {err}"
-    fetchTripsForDateError: "Error fetching des itinéraires du groupe pour les dates de sorties : {err}"
-    incompatibleTripDateError: La date du trajet planifié ({tripDate}) ne correspond pas à la date demandée ({requestDate}).
-    itineraryCapacityError: "Impossible d'enregistrer les itinéraires : Capacité insuffisante dans un ou plusieurs véhicules. Veuillez relancer votre recherche."
+    fetchFieldTripsError: "Erreur lors du chargement des itinéraires du groupe : {err}"
+    fetchTripsForDateError: "Erreur lors du chargement des itinéraires du groupe pour\
+      \ les dates de sorties : {err}"
+    incompatibleTripDateError: La date du trajet planifié ({tripDate}) ne correspond
+      pas à la date demandée ({requestDate}).
+    itineraryCapacityError: "Impossible d'enregistrer les itinéraires : Capacité insuffisante\
+      \ dans un ou plusieurs véhicules. Veuillez relancer votre recherche."
     maxTripRequestsExceeded: Le nombre de requêtes sans résultats valables a été dépassé.
     saveItinerariesError: "Erreur lors de l'enregistrement des itinéraires : {err}"
     setDateError: "Erreur sur la date :"
@@ -42,7 +49,8 @@ actions:
     setPaymentError: "Erreur sur les coordonnées de paiement :"
     setRequestStatusError: "Erreur sur l'état de la requête :"
   location:
-    geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par votre navigateur.
+    geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par
+      votre navigateur.
     unknownPositionError: Erreur non-gérée lors de la détection de votre emplacement.
   map:
     currentLocation: (Emplacement actuel)
@@ -51,13 +59,18 @@ actions:
     authTokenError: Erreur lors de l'obtention d'un jeton d'authentification.
     confirmDeleteMonitoredTrip: Voulez-vous supprimer ce trajet ?
     confirmDeletePlace: Voulez-vous supprimer ce lieu ?
-    emailVerificationResent: Le message de vérification de votre adresse e-mail a été envoyé de nouveau.
+    emailVerificationResent: Le message de vérification de votre adresse e-mail a
+      été envoyé de nouveau.
     genericError: "Une erreur s'est produite : {err}"
-    itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité du trajet choisi.
+    itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité du
+      trajet choisi.
     preferencesSaved: Vos préférences ont été enregistrées.
     smsInvalidCode: Le code saisi est incorrect. Veuillez réessayer.
-    smsResendThrottled: Un SMS de vérification a été envoyé au numéro de téléphone indiqué il y a moins d'une minute. Patientez quelques moments avant de réessayer.
-    smsVerificationFailed: Votre numéro de téléphone n'a pas pu etre vérifié. Le code que vous avez entré a peut-etre expiré. Veuillez demander un nouveau code puis réessayez.
+    smsResendThrottled: Un SMS de vérification a été envoyé au numéro de téléphone
+      indiqué il y a moins d'une minute. Patientez quelques moments avant de réessayer.
+    smsVerificationFailed: Votre numéro de téléphone n'a pas pu etre vérifié. Le code
+      que vous avez entré a peut-etre expiré. Veuillez demander un nouveau code puis
+      réessayez.
 
 
 # Component-specific messages (e.g. button captions)
@@ -69,7 +82,8 @@ components:
     message: Vous pouvez maintenant commencer à planifier vos trajets.
   AddPlaceButton:
     addPlace: Ajouter un point intermédiaire
-    needOriginDestination: Choisissez le départ et l'arrivée avant d'ajouter les points intermédiaires
+    needOriginDestination: Choisissez le départ et l'arrivée avant d'ajouter les points
+      intermédiaires
     tooManyPlaces: Nombre max. de points intermédiaires atteint
   AdvancedOptions:
     bannedRoutes: Choisissez les lignes à éviter
@@ -78,7 +92,8 @@ components:
     preferredRoutes: Choisissez les lignes preferées
   AfterSignInScreen:
     mainTitle: Redirection...
-    message: "Si la page ne s'affiche pas après quelques secondes, <redirectLink>cliquez ici</redirectLink>."
+    message: "Si la page ne s'affiche pas après quelques secondes, <redirectLink>cliquez\
+      \ ici</redirectLink>."
   AmenitiesPanel:
     # Use plurals to differentiate between company variable being set or not
     bikesAtStation: >
@@ -134,8 +149,9 @@ components:
     destination: destination
     origin: point de départ
     planTripTooltip: Planifier le trajet
-    settings: Trip Settings
-    validationMessage: "Veuillez définir les champs suivants afin de planifier votre trajet : {issues}"
+    validationMessage: "Veuillez définir les champs suivants afin de planifier votre\
+      \ trajet : {issues}"
+    settings: Préférences du trajet
   BeforeSignInScreen:
     mainTitle: Connexion en cours
     message: >
@@ -177,7 +193,8 @@ components:
     terms: Conditions d'utilisation
   FavoritePlaceList:
     addAnotherPlace: Ajouter un autre lieu
-    description: "Ajoutez les lieux que vous fréquentez souvent pour faciliter vos recherches de trajets :"
+    description: "Ajoutez les lieux que vous fréquentez souvent pour faciliter vos\
+      \ recherches de trajets :"
     # editThisPlace is a tooltip text.
     editThisPlace: Modifier ce lieu
     setAddressForPlaceType: Entrez l'adresse de votre {placeType}
@@ -187,17 +204,14 @@ components:
     editPlaceGeneric: Modifier le lieu
     invalidAddress: Veuillez entrer l'adresse du lieu.
     invalidName: Veuillez saisir le nom du lieu.
-    nameAlreadyUsed: Ce nom est déjà utilisé avec un autre lieu. Veuillez saisir un nom différent.
+    nameAlreadyUsed: Ce nom est déjà utilisé avec un autre lieu. Veuillez saisir un
+      nom différent.
     placeNotFound: Lieu introuvable
     placeNotFoundDescription: Le lieu recherché est introuvable.
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
-    fareCost: >
-      {useMaxFare, select,
-        true {{minTotalFare} - {maxTotalFare}}
-        other {{minTotalFare}}
-      }
+    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Rafraîchir les horaires automatiquement ?
   LocationSearch:
@@ -211,9 +225,9 @@ components:
     park-and-ride: Parcs relais
     satellite: Satellite
     stops: Arrêts et stations
-    streets: Plan des rues    
+    streets: Plan des rues
   MetroUI:
-    arriveAtTime: "Arrivée à {time}" 
+    arriveAtTime: "Arrivée à {time}"
     fromStop: "de {stop}"
     itineraryDescription: "Trajet de {time} par les lignes {routes}"
     leaveAt: Partez à
@@ -226,16 +240,9 @@ components:
     exclusiveMode: "{mode} uniquement"
   NarrativeItinerariesHeader:
     itinerariesAndIssues: "{itinerariesFound} et {numIssues}"
-    itinerariesFound: "{itineraryNum, plural,
-        one {# trajet trouvé}
-        other {# trajets trouvés}
-      }"
-    numIssues: "{issueNum, plural,
-        one {# problème}
-        other {# problèmes}
-      }"
-    changeSortDir: "Change sort direction"
-    sortBy: Sort By
+    itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets\
+      \ trouvés} }"
+    numIssues: "{issueNum, plural, one {# problème} other {# problèmes} }"
     # Note to translator: text below is width-constrained
     # (about half-pane width, or half-screen width in mobile views).
     searching: Recherche...
@@ -246,6 +253,8 @@ components:
     selectDuration: Durée
     selectWalkTime: Temps de marche
     viewAll: Toutes les options
+    changeSortDir: Changer l'ordre de tri
+    sortBy: Trier par
   NavLoginButton:
     help: Aide
     myAccount: Mon compte
@@ -261,7 +270,8 @@ components:
     description: Le contenu que vous avez demandé n'est pas disponible.
     header: Contenu introuvable
   NotificationPrefsPane:
-    description: Vous pouvez recevoir des notifications sur les trajets que vous effectuez fréquemment.
+    description: Vous pouvez recevoir des notifications sur les trajets que vous effectuez
+      fréquemment.
     notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
     notificationEmailDetail: "Les courriers de notification seront envoyés à :"
     noneSelect: Ne pas me notifier
@@ -286,7 +296,8 @@ components:
     # deleteThisPlace is an aria/tooltip text.
     deleteThisPlace: Supprimer ce lieu
     enterAlert: >
-      Entrez votre point de départ/destination dans le formulaire (ou cliquez sur la carte),
+      Entrez votre point de départ/destination dans le formulaire (ou cliquez sur
+      la carte),
       puis cliquez sur le marqueur qui apparaît afin de définir votre {placeType}.
     viewStop: Voir cet arrêt
   PlaceEditor:
@@ -307,8 +318,9 @@ components:
     itinerary: Votre trajet
     toggleMap: Afficher/masquer la carte
   RealtimeAnnotation:
-    delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions en temps réel.
-      En temps normal, ce trajet prendrait {normalDuration} en empruntant les lignes: {routes}."
+    delaysShownInResults: "Vos trajets recherchés ont été mis à jour avec les conditions\
+      \ en temps réel. En temps normal, ce trajet prendrait {normalDuration} en empruntant\
+      \ les lignes : {routes}.\n"
     serviceUpdate: Information sur le service
   RealtimeStatusLabel:
     # Note to translator: In itinerary body, early or late is single-line
@@ -331,7 +343,7 @@ components:
     backToSearch: Retour à la recherche
   ResultsHeader:
     noTripFound: Aucun trajet trouvé
-    tripsFound: "{count} {count, plural, one {trajet trouvé} other {trajets trouvés}}"
+    tripsFound: "{count, plural, one {# trajet trouvé} other {# trajets trouvés}}"
     waiting: Patientez...
   RouteDetails:
     operatedBy: "Exploité par {agencyName}"
@@ -362,29 +374,34 @@ components:
   SavedTripList:
     myTrips: Mes trajets
     noSavedTrips: Vous n'avez aucun trajet enregistré
-    noSavedTripsInstructions: Effectuez une recherche depuis la carte avant de pouvoir enregistrer un nouveau trajet.
+    noSavedTripsInstructions: Effectuez une recherche depuis la carte avant de pouvoir
+      enregistrer un nouveau trajet.
     pause: Arrêter
     resume: Reprendre
   SavedTripScreen:
     tooManyTrips: >
       Vous avez déjà atteint le nombre maximum de 5 trajets enregistrés.
       Veuillez supprimer les trajets enregistrés qui sont inutilisés, puis réessayez.
-    tripNameAlreadyUsed: Ce nom est déjà utilisé avec un autre trajet. Veuillez choisir un nom différent.
+    tripNameAlreadyUsed: Ce nom est déjà utilisé avec un autre trajet. Veuillez choisir
+      un nom différent.
     tripNameRequired: Veuillez entrer un nom pour ce trajet.
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
-    cantSaveTooltip: Seuls les trajets en transports publics sans location de véhicules et sans course en voiture peuvent être suivis.
+    cantSaveTooltip: Seuls les trajets en transports publics sans location de véhicules
+      et sans course en voiture peuvent être suivis.
     saveTripText: Enregistrer
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SessionTimeout:
-    body: Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma session' pour conserver votre recherche. 
+    body: Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma session'
+      pour conserver votre recherche.
     header: Votre session va expirer
     keepSession: Prolonger ma session
   SettingsPreview:
     defaultPreviewText: "Choix du mode\n& préférences"
   SimpleRealtimeAnnotation:
-    usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic et les retards
+    usingRealtimeInfo: Ce trajet utilise les informations en temps réel sur le trafic
+      et les retards
   StackedPaneDisplay:
     savePreferences: Enregistrer mes préférences
   StopScheduleTable:
@@ -399,7 +416,8 @@ components:
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<strong>Arrêt n°</strong> {stopId}"
-    flexStop: Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande. Une réservation préalable peut être exigée pour obtenir la desserte.
+    flexStop: Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande.
+      Une réservation préalable peut être exigée pour obtenir la desserte.
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
     noStopsFound: Aucun horaire pour la date choisie.
@@ -417,15 +435,18 @@ components:
     switchLocations: Permuter les lieux
   TermsOfUsePane:
     confirmDeletionPrompt: >
-      En révoquant votre accord sur l'enregistrement de vos recherches de trajets, tout l'historique de vos de trajets sera supprimé.
+      En révoquant votre accord sur l'enregistrement de vos recherches de trajets,
+      tout l'historique de vos de trajets sera supprimé.
       Voulez-vous continuer ?
     mustAgreeToTerms: Vous devez accepter les conditions d'utilisation avant de continuer.
     termsOfServiceStatement: >
       J'atteste avoir au moins 18 ans et j'ai lu et consens aux
-      <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the Planificateur de trajets.
+      <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the Planificateur
+      de trajets.
     termsOfStorageStatement: >
       Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches
-      afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>
+      afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus
+      d'informations...</termsOfStorageLink>
   TransitVehicleOverlay:
     # keys designed to match API output
     incoming_at: "Approchant {stop}"
@@ -443,16 +464,20 @@ components:
     tripNamePrompt: "Saisissez un nom pour ce trajet :"
     # This is shown in a tooltip.
     tripNotAvailableOnDay: Ce trajet n'est pas possible les {repeatedDay}.
-    unsavedChangesNewTrip: Vous n'avez pas encore enregistré votre nouveau trajet. Si vous annulez, ce trajet sera perdu.
-    unsavedChangesExistingTrip: Vous n'avez pas encore enregistré votre trajet. Si vous annulez, les changements seront perdus.
+    unsavedChangesNewTrip: Vous n'avez pas encore enregistré votre nouveau trajet.
+      Si vous annulez, ce trajet sera perdu.
+    unsavedChangesExistingTrip: Vous n'avez pas encore enregistré votre trajet. Si
+      vous annulez, les changements seront perdus.
   TripNotificationsPane:
     advancedSettings: Paramètres avancés
     altRouteRecommended: Un autre trajet ou une autre correspondance est conseillé·e
     delaysAboveThreshold: Il y a des perturbations ou retards de plus de
     howToReceiveAlerts: >
       Pour recevoir les alertes pour vos trajets suivis, activez les notifications
-      dans la section Préférences de votre compte, et essayez d'enregistrer un trajet à nouveau.
-    monitorThisTrip: Effectuer le suivi du trajet {minutes} avant le départ et jusqu'à l'arrivée.
+      dans la section Préférences de votre compte, et essayez d'enregistrer un trajet
+      à nouveau.
+    monitorThisTrip: Effectuer le suivi du trajet {minutes} avant le départ et jusqu'à
+      l'arrivée.
     notificationsTurnedOff: Les notifications sont désactivées pour votre compte.
     # Note to translator: The notifyViaChannelWhen message, combined with
     # altRouteRecommended, delaysAboveTHreshold, realtimeAlertFlagged,
@@ -481,7 +506,8 @@ components:
       unknownState: Etat du trajet inconnu
       untogglePause: Reprendre
     inactive:
-      description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
+      description: Reprenez le suivi pour obtenir des dernières conditions de votre
+        trajet.
       heading: Suivi suspendu
     nextTripNotPossible:
       description: >
@@ -495,14 +521,18 @@ components:
       heading: Le trajet n'est plus possible
     notCalculated:
       awaiting: Calcul des conditions du trajet en cours...
-      description: Veuillez patienter pendant que les conditions du trajet soient déterminées.
+      description: Veuillez patienter pendant que les conditions du trajet soient
+        déterminées.
       heading: Conditions du trajet indéterminées
     snoozed:
-      description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
+      description: Reprenez le suivi pour obtenir des dernières conditions de votre
+        trajet.
       heading: Suivi suspendu jusqu'à demain
     upcoming:
-      nextTripBegins: "Prochain départ : {tripDatetime, date, ::eeeee yyyyMMdd} à {tripDatetime, time, short}."
-      tripBegins: Départ prévu à {tripStart, time, short}. (Le suivi en temps réel débutera à {monitoringStart, time, short}.)
+      nextTripBegins: "Prochain départ : {tripDatetime, date, ::eeeee yyyyMMdd} à\
+        \ {tripDatetime, time, short}."
+      tripBegins: Départ prévu à {tripStart, time, short}. (Le suivi en temps réel
+        débutera à {monitoringStart, time, short}.)
       tripStartIsDelayed: Départ retardé de ${duration}.
       tripStartIsEarly: Départ avancé de ${duration} !
       tripStartsSoonNoUpdates: Départ proche (pas de données en temps réel).
@@ -511,7 +541,8 @@ components:
     itinerary: Trajet
   TripSummaryPane:
     happensOnDays: "Effectué : <strong>{days}</strong>"
-    notifications: "Notifications : <strong>{leadTimeInMinutes} mn avant l'heure de départ prévue</strong>"
+    notifications: "Notifications : <strong>{leadTimeInMinutes} mn avant l'heure de\
+      \ départ prévue</strong>"
     notificationsDisabled: "Notifications : <strong>Désactivées</strong>"
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue are width-constrained.
@@ -520,7 +551,7 @@ components:
     linkCopied: Copié
     reportIssue: Un problème ? # "Signaler un problème" does not fit.
     reportEmailSubject: Signaler un problème avec OpenTripPlanner
-    reportEmailTemplate: |+
+    reportEmailTemplate: |
       *** CONSIGNES POUR L'UTILISATEUR ***
       Cet email signalera votre problème aux administrateurs de ce site.
       Veuillez remplir les détails ci-dessous, puis envoyez depuis votre logiciel de messagerie habituel.
@@ -540,9 +571,11 @@ components:
     routeHeader: "Ligne : <strong>{routeShortName}</strong> {routeLongName}"
     viewStop: Info
   UserAccountScreen:
-    confirmDelete: "Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible."
+    confirmDelete: "Voulez-vous vraiment supprimer votre compte ? Cette action est\
+      \ irréversible."
   UserSettings:
-    confirmDeletion: Vous avez des recherches et/ou lieux récemment enregistrés qui vont être supprimés. Voulez-vous continuer ?
+    confirmDeletion: Vous avez des recherches et/ou lieux récemment enregistrés qui
+      vont être supprimés. Voulez-vous continuer ?
     favoriteStops: Arrêts favoris
     myPreferences: Mes préférences
     mySavedPlaces: Mes lieux favoris (<manageLink>modifier</manageLink>)
@@ -557,19 +590,21 @@ components:
       seront enregistrés dans le cache de votre navigateur.
       TriMet n'aura pas accès aux données concernant votre domicile, lieu de travail,
       ou autre endroit. Vous pouvez à tout moment désactiver la collecte de vos
-      recherches/lieux récents et effacer vos domicile, lieu de travail, et arrêts favoris.
+      recherches/lieux récents et effacer vos domicile, lieu de travail, et arrêts
+      favoris.
   UserTripSettings:
     forgetOptions: Oublier mes options
     rememberOptions: Enregistrer les options de trajet
-    restoreOptions: "{defaults, select,
-        true {Restaurer mes préférences}
-        other {Paramètres par défaut}}"
+    restoreOptions: "{defaults, select, true {Restaurer mes préférences} other {Paramètres\
+      \ par défaut}}"
   VerifyEmailPane:
     emailIsVerified: Mon email est vérifié
     instructions1: >
       Vous devriez recevoir un message par e-mail. Cliquez le lien dans le message
-      pour verifier votre adresse e-mail. Vous pourrez ensuite finir de créer votre compte.
-    instructions2: Une fois votre adresse vérifiée, cliquez sur le bouton ci-dessous pour continuer.
+      pour verifier votre adresse e-mail. Vous pourrez ensuite finir de créer votre
+      compte.
+    instructions2: Une fois votre adresse vérifiée, cliquez sur le bouton ci-dessous
+      pour continuer.
     resendVerification: Envoyer un nouveau message de vérification
   ViewSwitcher:
     switcher: Sélecteur de vues
@@ -628,7 +663,7 @@ common:
     calories: "{calories, number} kcal" # SI unit
     noItineraryToDisplay: Aucun trajet à afficher.
     # Note to translator: noTransitFareProvided is width-constrained.
-    noTransitFareProvided: Tarif inconnu 
+    noTransitFareProvided: Tarif inconnu
     transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
 
   # Note to translator: some of the strings below are used in sentences such as:
@@ -651,7 +686,7 @@ common:
     funicular: Funiculaire
     gondola: Téléphérique
     micromobility: En trottinette électrique
-    micromobility_rent: En trottinette électrique en libre-service
+    micromobility_rent: En trottinette
     rail: Train
     rent: Location de véhicules
     subway: Métro
@@ -675,16 +710,10 @@ common:
     routeToHeadsign: "Direction {headsign}"
 
   searchForms:
-    enterDestination: >
-      Entrez votre destination ou {mobile, select,
-        true {touchez}
-        other {cliquez sur}
-      } la carte...
-    enterStartLocation: >
-      Entrez votre point de départ ou {mobile, select,
-        true {touchez}
-        other {cliquez sur}
-      } la carte...
+    click: cliquez
+    enterDestination: Entrez votre destination ou {mapAction} sur la carte…
+    enterStartLocation: Entrez votre point de départ ou {mapAction} sur la carte…
+    tap: appuyez
 
   time:
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
@@ -701,14 +730,7 @@ common:
         }}
         other {il y a # jours}
       }
-
-    # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} mn"
-    tripDurationFormat: >
-      {hours, plural,
-        =0 {{minutes, number} mn}
-        other {# h {minutes, number} mn}
-      }
+    tripDurationFormat: "{hours, plural, =0 {} other {# h }}{minutes} mn"
 
 util:
   state:
@@ -716,7 +738,9 @@ util:
     networkUnavailable: Le systeme {network} n'est pas disponible pour le moment.
     noTripFound: Aucun trajet trouvé.
     noTripFoundForMode: Aucun trajet {modes} n'a été trouvé.
-    noTripFoundReason: Vos points de départ et d'arrivée ne sont peut-être pas desservis dans le rayon spécifié ou aux heures indiquées, ou ne sont pas accessibles en toute sécurité.
+    noTripFoundReason: Vos points de départ et d'arrivée ne sont peut-être pas desservis
+      dans le rayon spécifié ou aux heures indiquées, ou ne sont pas accessibles en
+      toute sécurité.
     noTripFoundWithReason: "{noTripFound} {reason}"
     titleBarRouteId: "Ligne {routeId}"
     titleBarStopId: "Arrêt {stopId}"
