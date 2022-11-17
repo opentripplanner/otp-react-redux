@@ -260,9 +260,6 @@ components:
     myAccount: Tài khoản của tôi
     settings: Cài đặt
     trips: Chuyến đi
-  TabbedItineraries:
-    fareCost: "{hasMaxFare, select, \n true {{minTotalFare}+}\n other {{minTotalFare}}\n\
-      \ }\n"
   TransitVehicleOverlay:
     incoming_at: Đang tiếp cận {stop}
     in_transit_to: Điểm dừng tiếp theo {stop}

@@ -270,8 +270,6 @@ components:
     viewSchedule: 查看时间表
     zoomToStop: 缩放到车站
     flexStop: 此站为灵活站. 根据要求车辆将在这个灵活的区域上下乘客. 在这个区域, 你可能需要提前打电话申请服务.
-  TabbedItineraries:
-    optionNumber: 选项 {optionNum, number}
   TermsOfUsePane:
     mustAgreeToTerms: 您必须同意服务条款才能继续.
     termsOfStorageStatement: "可选的: 我同意 Trip Planner 存储我的历史计划行程，以改善我所在地区的交通服务. <termsOfStorageLink>更多信息...</termsOfStorageLink>\n"
