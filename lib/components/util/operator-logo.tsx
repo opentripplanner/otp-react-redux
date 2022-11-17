@@ -24,6 +24,12 @@ const OperatorLogo = ({ operator }: Props): JSX.Element | null => {
         },
         { operatorName: operator.name }
       )}
+      aria-label={intl.formatMessage(
+        {
+          id: 'components.RouteRow.operatorLogoAriaLabel'
+        },
+        { operatorName: operator.name }
+      )}
       src={operator.logo}
     />
   )

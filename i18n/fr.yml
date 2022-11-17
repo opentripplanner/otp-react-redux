@@ -351,6 +351,7 @@ components:
     stopsTo: "Direction"
     selectADirection: "Choisissez une direction..."
   RouteRow:
+    operatorLogoAriaLabel: "{operatorName} stop:"
     operatorLogoAltText: "Logo de {operatorName}"
   # Used in both desktop and mobile
   RouteViewer:

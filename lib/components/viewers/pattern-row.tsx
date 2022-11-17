@@ -20,7 +20,7 @@ type Props = {
   intl: IntlShape
   pattern: Pattern
   route: Route & { operator?: TransitOperator & { colorMode?: string } }
-  showOperatorLogos?: boolean
+  showOperatorLogo?: boolean
   stopTimes: Time[]
   stopViewerArriving: React.ReactNode
   stopViewerConfig: { numberOfDepartures: number }
@@ -49,7 +49,7 @@ class PatternRow extends Component<Props, State> {
       homeTimezone,
       pattern,
       route,
-      showOperatorLogos,
+      showOperatorLogo,
       stopTimes,
       stopViewerConfig
     } = this.props
@@ -99,7 +99,7 @@ class PatternRow extends Component<Props, State> {
                   whiteSpace: 'nowrap'
                 }}
               >
-                {showOperatorLogos && (
+                {showOperatorLogo && (
                   <OperatorLogo operator={route?.operator} />
                 )}
                 <RouteRenderer

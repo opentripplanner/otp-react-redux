@@ -30,7 +30,7 @@ type Props = {
   nearbyStops: any // TODO: shared types
   setHoveredStop: (stopId: string) => void
   showNearbyStops: boolean
-  showOperatorLogos?: boolean
+  showOperatorLogo?: boolean
   // TODO: shared types
   stopData: any
   stopViewerArriving: React.ReactNode
@@ -123,7 +123,7 @@ class LiveStopTimes extends Component<Props, State> {
       nearbyStops,
       setHoveredStop,
       showNearbyStops,
-      showOperatorLogos,
+      showOperatorLogo,
       stopData,
       stopViewerArriving,
       stopViewerConfig,
@@ -172,7 +172,7 @@ class LiveStopTimes extends Component<Props, State> {
                       (o: TransitOperator) => o.agencyId === route.agencyId
                     )
                   }}
-                  showOperatorLogos={showOperatorLogos}
+                  showOperatorLogo={showOperatorLogo}
                   stopTimes={times}
                   stopViewerArriving={stopViewerArriving}
                   stopViewerConfig={stopViewerConfig}

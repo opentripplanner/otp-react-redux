@@ -808,7 +808,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       homeTimezone="America/Los_Angeles"
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
-                      showOperatorLogos={false}
+                      showOperatorLogo={false}
                       stopData={
                         Object {
                           "agencyName": "TriMet",
@@ -1016,7 +1016,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               "type": 3,
                             }
                           }
-                          showOperatorLogos={false}
+                          showOperatorLogo={false}
                           stopTimes={
                             Array [
                               Object {
@@ -1196,7 +1196,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                 "type": 3,
                               }
                             }
-                            showOperatorLogos={false}
+                            showOperatorLogo={false}
                             stopTimes={
                               Array [
                                 Object {
@@ -1412,7 +1412,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -1424,7 +1423,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -1522,7 +1520,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -1534,7 +1531,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -1666,7 +1662,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -1678,7 +1673,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -3392,7 +3386,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       homeTimezone="America/Los_Angeles"
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
-                      showOperatorLogos={false}
+                      showOperatorLogo={false}
                       stopData={
                         Object {
                           "agencyName": "TriMet",
@@ -3501,7 +3495,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               "type": 3,
                             }
                           }
-                          showOperatorLogos={false}
+                          showOperatorLogo={false}
                           stopTimes={
                             Array [
                               Object {
@@ -3591,7 +3585,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                 "type": 3,
                               }
                             }
-                            showOperatorLogos={false}
+                            showOperatorLogo={false}
                             stopTimes={
                               Array [
                                 Object {
@@ -3717,7 +3711,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -3729,7 +3722,6 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -5112,7 +5104,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       homeTimezone="America/Los_Angeles"
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
-                      showOperatorLogos={false}
+                      showOperatorLogo={false}
                       stopData={
                         Object {
                           "agencyName": "TriMet",
@@ -5320,7 +5312,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               "type": 3,
                             }
                           }
-                          showOperatorLogos={false}
+                          showOperatorLogo={false}
                           stopTimes={
                             Array [
                               Object {
@@ -5500,7 +5492,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                 "type": 3,
                               }
                             }
-                            showOperatorLogos={false}
+                            showOperatorLogo={false}
                             stopTimes={
                               Array [
                                 Object {
@@ -5716,7 +5708,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -5728,7 +5719,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -5860,7 +5850,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -5872,7 +5861,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -6004,7 +5992,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -6016,7 +6003,6 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -8087,7 +8073,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       homeTimezone="America/Los_Angeles"
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
-                      showOperatorLogos={false}
+                      showOperatorLogo={false}
                       stopData={
                         Object {
                           "code": "715",
@@ -8551,7 +8537,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               "sortOrder": 2600,
                             }
                           }
-                          showOperatorLogos={false}
+                          showOperatorLogo={false}
                           stopTimes={
                             Array [
                               Object {
@@ -8729,7 +8715,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 "sortOrder": 2600,
                               }
                             }
-                            showOperatorLogos={false}
+                            showOperatorLogo={false}
                             stopTimes={
                               Array [
                                 Object {
@@ -8945,7 +8931,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -8957,7 +8942,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -9089,7 +9073,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -9101,7 +9084,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -9233,7 +9215,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -9245,7 +9226,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -9372,7 +9352,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               "sortOrder": 3900,
                             }
                           }
-                          showOperatorLogos={false}
+                          showOperatorLogo={false}
                           stopTimes={
                             Array [
                               Object {
@@ -9496,7 +9476,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 "sortOrder": 3900,
                               }
                             }
-                            showOperatorLogos={false}
+                            showOperatorLogo={false}
                             stopTimes={
                               Array [
                                 Object {
@@ -9658,7 +9638,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -9670,7 +9649,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -9802,7 +9780,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -9814,7 +9791,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -9946,7 +9922,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -9958,7 +9933,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -10085,7 +10059,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               "sortOrder": 9100,
                             }
                           }
-                          showOperatorLogos={false}
+                          showOperatorLogo={false}
                           stopTimes={
                             Array [
                               Object {
@@ -10209,7 +10183,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 "sortOrder": 9100,
                               }
                             }
-                            showOperatorLogos={false}
+                            showOperatorLogo={false}
                             stopTimes={
                               Array [
                                 Object {
@@ -10371,7 +10345,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -10383,7 +10356,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -10515,7 +10487,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -10527,7 +10498,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -10659,7 +10629,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -10671,7 +10640,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -10798,7 +10766,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               "sortOrder": 9100,
                             }
                           }
-                          showOperatorLogos={false}
+                          showOperatorLogo={false}
                           stopTimes={
                             Array [
                               Object {
@@ -10976,7 +10944,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 "sortOrder": 9100,
                               }
                             }
-                            showOperatorLogos={false}
+                            showOperatorLogo={false}
                             stopTimes={
                               Array [
                                 Object {
@@ -11192,7 +11160,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -11204,7 +11171,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -11336,7 +11302,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -11348,7 +11313,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -11480,7 +11444,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -11492,7 +11455,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -14590,7 +14552,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       homeTimezone="America/Los_Angeles"
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
-                      showOperatorLogos={false}
+                      showOperatorLogo={false}
                       stopData={
                         Object {
                           "agencyName": "TriMet",
@@ -15051,7 +15013,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               "type": 3,
                             }
                           }
-                          showOperatorLogos={false}
+                          showOperatorLogo={false}
                           stopTimes={
                             Array [
                               Object {
@@ -15231,7 +15193,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                 "type": 3,
                               }
                             }
-                            showOperatorLogos={false}
+                            showOperatorLogo={false}
                             stopTimes={
                               Array [
                                 Object {
@@ -15447,7 +15409,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -15459,7 +15420,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -15591,7 +15551,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -15603,7 +15562,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"
@@ -15735,7 +15693,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             "fontSize": "0.6em",
                                             "margin": 0,
                                             "marginRight": 2,
-                                            "transform": "scaleX(1)",
                                           }
                                         }
                                         title="components.StopTimeCell.scheduled"
@@ -15747,7 +15704,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                               "fontSize": "0.6em",
                                               "margin": 0,
                                               "marginRight": 2,
-                                              "transform": "scaleX(1)",
                                             }
                                           }
                                           title="components.StopTimeCell.scheduled"

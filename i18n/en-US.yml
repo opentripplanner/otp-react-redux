@@ -351,6 +351,7 @@ components:
     selectADirection: "Select a direction..."
   RouteRow:
     operatorLogoAltText: "logo for {operatorName}"
+    operatorLogoAriaLabel: "{operatorName} stop:"
   # Used in both desktop and mobile
   RouteViewer:
     agencyFilter: Agency Filter

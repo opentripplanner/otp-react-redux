@@ -23,6 +23,7 @@ const ONE_DAY_IN_SECONDS = 86400
 
 const PulsingRss = styled(Rss)`
   animation: pulse-opacity 2s ease-in-out infinite;
+  transform: scaleX(-1);
 `
 
 type Props = {
@@ -111,8 +112,7 @@ const StopTimeCell = ({
         style={{
           fontSize: '0.6em',
           margin: 0,
-          marginRight: 2,
-          transform: `scaleX(${realtime ? '-1' : '1'})`
+          marginRight: 2
         }}
         title={realtimeLabel}
       >
