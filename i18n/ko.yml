@@ -108,9 +108,6 @@ components:
     placeNotFoundDescription: 죄송합니다 요청 된 장소는 찾을 수 없었습니다.
   LiveStopTimes:
     autoRefresh: 도착을 자동 새로 고침 하시겠습니까?
-  ItinerarySummary:
-    fareCost: "{useMaxFare, select,\n  true {{minTotalFare} - {maxTotalFare}}\n  other\
-      \ {{minTotalFare}}\n }\n"
   MapLayers:
     car-rental: 렌터카 위치
     park-and-ride: Park & Ride위치
@@ -191,7 +188,7 @@ components:
     backToSearch: 검색으로 돌아갑니다
   ResultsHeader:
     noTripFound: 여행을 찾을 수 없습니다
-    tripsFound: '{count} 개의 {count, plural, one {옵션} other {옵션}} 을 찾았습니다'
+    tripsFound: '{count} 개의 옵션 을 찾았습니다'
     waiting: 기다리는...
   RouteDetails:
     selectADirection: 방향을 선택하십시오…
@@ -250,8 +247,6 @@ components:
   SwitchButton:
     switchLocations: 위치를 바꾸다
     defaultContent: 바꾸다
-  TabbedFormPanel:
-    hideSettings: ' 설정 숨기기'
   TermsOfUsePane:
     termsOfServiceStatement: "본인은 만 18세 이상임을 확인하며, 트립플래너 이용을 위한 <termsOfUseLink>이용약관/termsOfUseLink\
       \ > 을 읽었으며 이에 동의합니다.\n"
@@ -445,11 +440,6 @@ components:
     departure: 출발
     destination: 에
     route: 노선
-  TabbedItineraries:
-    mustCallAhead: 미리 전화해야합니다!
-    optionNumber: 옵션 {optionNum, number}
-    fareCost: "{hasMaxFare, select, \n true {{minTotalFare}+}\n other {{minTotalFare}}\n\
-      \ }\n"
   TripSummary:
     itinerary: 여정
   TripSummaryPane:
@@ -490,12 +480,8 @@ components:
   RelatedPanel:
     hideExtraStops: 여분의 정지를 숨 깁니다
     showExtraStops: 추가 정거장 {count} 개를 보여줍니다
-  ResultsScreen:
-    header: 옵션 {index}
   RouteRow:
     operatorLogoAltText: '{operatorName} 심벌 마크'
-  SearchScreen:
-    header: 여행 계획
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: 이 여행은 실시간 트래픽과 지연 정보를 사용합니다
   StackedPaneDisplay:
@@ -517,6 +503,8 @@ components:
     keepSession: 세션 계속
   PointPopup:
     zoomToLocation: 위치로 확대
+  ItinerarySummary:
+    minMaxFare: '{minTotalFare} - {maxTotalFare}'
 common:
   dateExpressions:
     tomorrow: 내일
@@ -589,10 +577,10 @@ common:
   routing:
     routeToHeadsign: 에 {headsign}
   searchForms:
-    enterStartLocation: "시작 위치를 입력하거나 지도를{mobile, select,\n true {클릭}\n other {클릭}\n\
-      \ } 하십시오\n"
-    enterDestination: "목적지를 입력하거나 지도를{mobile, select,\n true {클릭}\n other {클릭}\n }\
-      \ 하십시오\n"
+    enterStartLocation: "시작 위치를 입력하거나 지도를{mapAction} 하십시오"
+    enterDestination: "목적지를 입력하거나 지도를{mapAction} 하십시오"
+    click: 클릭
+    tap: 클릭
   daysOfWeekPlural:
     friday: 금요일
     thursday: 목요일
@@ -602,13 +590,11 @@ common:
     sunday: 일요일
     tuesday: 화요일
   time:
-    tripDurationFormatZeroHours: '{minutes, number} 분'
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {몇 초 전에}\n =1 {1 분 전}\n other {# 분 전}\n }}\n =1 {한 시간 전에}\n other {# 시간\
       \ 전}\n }}\n other {# 일 전}\n }\n"
-    tripDurationFormat: "{hours, plural, \n =0 {{minutes, number} 분}\n other {# 시간\
-      \ {minutes, number} 분}\n }\n"
+    tripDurationFormat: "{hours, plural, =0 {} other {# 시간 }}{minutes, number} 분"
   coordinates: '{lat}, {lon}'
 util:
   state:
