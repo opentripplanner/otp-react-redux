@@ -111,9 +111,6 @@ components:
     enterLocation: 输入位置
     setDestination: 选择目的地
     setOrigin: 选择一个产地
-  ItinerarySummary:
-    fareCost: "{useMaxFare, select,\n  true {{minTotalFare} - {maxTotalFare}}\n  other\
-      \ {{minTotalFare}}\n }\n"
   MapLayers:
     satellite: 卫星
     streets: 街道
@@ -273,13 +270,6 @@ components:
     viewSchedule: 查看时间表
     zoomToStop: 缩放到车站
     flexStop: 此站为灵活站. 根据要求车辆将在这个灵活的区域上下乘客. 在这个区域, 你可能需要提前打电话申请服务.
-  TabbedFormPanel:
-    hideSettings: ' 隐藏设定'
-  TabbedItineraries:
-    mustCallAhead: 必须提前打电话!
-    fareCost: "{hasMaxFare, select, \n true {{minTotalFare}+}\n other {{minTotalFare}}\n\
-      \ }\n"
-    optionNumber: 选项 {optionNum, number}
   TermsOfUsePane:
     mustAgreeToTerms: 您必须同意服务条款才能继续.
     termsOfStorageStatement: "可选的: 我同意 Trip Planner 存储我的历史计划行程，以改善我所在地区的交通服务. <termsOfStorageLink>更多信息...</termsOfStorageLink>\n"
@@ -479,18 +469,14 @@ components:
     viewDetails: 查看详情
   ResultsHeader:
     noTripFound: 没有找到旅行
-    tripsFound: 我们发现了 {count} {count, plural, one {选项} other {选项}}
+    tripsFound: 我们发现了 {count} 选项
     waiting: 等待...
-  ResultsScreen:
-    header: 选项 {index}
   RouteRow:
     operatorLogoAltText: '{operatorName} 标志'
   SavedTripScreen:
     tripNameAlreadyUsed: 另一个保存的旅行已经使用了这个名字. 请选择一个不同的名字.
     tripNameRequired: 请输入一个行程名称.
     tooManyTrips: "你已经达到了所保存的五次旅行的上限. 请从你保存的旅行中删除未使用的旅行然后再试一次.\n"
-  SearchScreen:
-    header: 计划行程
   TripBasicsPane:
     checkingItineraryExistence: 检查一周中每一天的行程存在…
     selectAtLeastOneDay: 请至少选择一天进行监测.
@@ -509,6 +495,8 @@ components:
     body: 您的会话将在一分钟内到期。 按“继续会话”以继续您的搜索。
   PointPopup:
     zoomToLocation: 缩放到位置
+  ItinerarySummary:
+    minMaxFare: '{minTotalFare} - {maxTotalFare}'
 common:
   daysOfWeekCompact:
     tuesday: 周二
@@ -547,13 +535,11 @@ common:
     noItineraryToDisplay: 没有显示行程.
     transfers: '{transfers, plural, =0 {} one {# 换乘} other {# 换乘}}'
   time:
-    tripDurationFormatZeroHours: '{minutes, number} 分'
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {几秒钟前}\n =1 {一分钟前}\n other {# 分钟前}\n }}\n =1 {一小时前}\n other {# 小时前}\n }}\n\
       \ other {# 天之前}\n }\n"
-    tripDurationFormat: "{hours, plural, \n =0 {{minutes, number} 分钟}\n other {# 小时\
-      \ {minutes, number} 分钟}\n }\n"
+    tripDurationFormat: "{hours, plural, =0 {} other {# 小时 }}{minutes} 分钟}"
   dateExpressions:
     today: 今天
     tomorrow: 明天
@@ -598,8 +584,10 @@ common:
     routeToHeadsign: 到 {headsign}
   coordinates: '{lat}, {lon}'
   searchForms:
-    enterDestination: "输入目的地名称或 {mobile, select,\n true {点击}\n other {点击}\n } 地图…\n"
-    enterStartLocation: "输入出发地点或 {mobile, select,\n true {点击}\n other {点击}\n } 地图…\n"
+    enterDestination: "输入目的地名称或{mapAction}地图…"
+    enterStartLocation: "输入出发地点或{mapAction}地图…"
+    tap: 点击
+    click: 点击
 config:
   bicycleModes:
     bicycle: 我的自行车

@@ -106,6 +106,18 @@ export class ItinerarySummary extends Component<Props> {
 
     const { caloriesBurned } =
       coreUtils.itinerary.calculatePhysicalActivity(itinerary)
+
+    const minTotalFareFormatted = minTotalFare > 0 && (
+      <FormattedNumber
+        currency={fareCurrency}
+        currencyDisplay="narrowSymbol"
+        // This isn't a "real" style prop
+        // eslint-disable-next-line react/style-prop-object
+        style="currency"
+        value={minTotalFare / 100}
+      />
+    )
+
     return (
       <Container onClick={this._onSummaryClicked}>
         <Details>
@@ -129,32 +141,26 @@ export class ItinerarySummary extends Component<Props> {
           <Detail>
             {minTotalFare > 0 && (
               <span>
-                <FormattedMessage
-                  id="components.ItinerarySummary.fareCost"
-                  values={{
-                    maxTotalFare: (
-                      <FormattedNumber
-                        currency={fareCurrency}
-                        currencyDisplay="narrowSymbol"
-                        // This isn't a "real" style prop
-                        // eslint-disable-next-line react/style-prop-object
-                        style="currency"
-                        value={maxTotalFare / 100}
-                      />
-                    ),
-                    minTotalFare: (
-                      <FormattedNumber
-                        currency={fareCurrency}
-                        currencyDisplay="narrowSymbol"
-                        // This isn't a "real" style prop
-                        // eslint-disable-next-line react/style-prop-object
-                        style="currency"
-                        value={minTotalFare / 100}
-                      />
-                    ),
-                    useMaxFare: minTotalFare !== maxTotalFare
-                  }}
-                />
+                {minTotalFare === maxTotalFare ? (
+                  minTotalFareFormatted
+                ) : (
+                  <FormattedMessage
+                    id="components.ItinerarySummary.minMaxFare"
+                    values={{
+                      maxTotalFare: (
+                        <FormattedNumber
+                          currency={fareCurrency}
+                          currencyDisplay="narrowSymbol"
+                          // This isn't a "real" style prop
+                          // eslint-disable-next-line react/style-prop-object
+                          style="currency"
+                          value={maxTotalFare / 100}
+                        />
+                      ),
+                      minTotalFare: minTotalFareFormatted
+                    }}
+                  />
+                )}
                 <span> &bull; </span>
               </span>
             )}

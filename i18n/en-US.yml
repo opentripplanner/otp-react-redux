@@ -205,11 +205,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Form navigation
   ItinerarySummary:
-    fareCost: >
-      {useMaxFare, select,
-        true {{minTotalFare} - {maxTotalFare}}
-        other {{minTotalFare}}
-      }
+    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
   LocationSearch:
@@ -356,10 +352,8 @@ components:
     backToSearch: Back to Search
   ResultsHeader:
     noTripFound: No Trip Found
-    tripsFound: "We Found {count} {count, plural, one {Option} other {Options}}"
+    tripsFound: "We Found {count, plural, one {# Option} other {# Options}}"
     waiting: Waiting...
-  ResultsScreen:
-    header: Option {index}
   RouteDetails:
     operatedBy: "Operated by {agencyName}"
     moreDetails: "More Details"
@@ -404,8 +398,6 @@ components:
     saveTripText: Save trip
     signInText: Sign in to save trip
     signInTooltip: Please sign in to save trip.
-  SearchScreen:
-    header: Plan Your Trip
   SessionTimeout:
     body: Your session will expire within a minute. Press 'Continue Session' to keep your search.
     header: Session about to timeout!
@@ -442,17 +434,6 @@ components:
   SwitchButton:
     defaultContent: Switch
     switchLocations: Switch locations
-  TabbedFormPanel:
-    hideSettings: " Hide Settings"
-  TabbedItineraries:
-    optionNumber: "Option {optionNum, number}"
-    # Note to translator: This text is width-constrained.
-    mustCallAhead: Must call ahead!
-    fareCost: >
-      {hasMaxFare, select, 
-        true {{minTotalFare}+}
-        other {{minTotalFare}}
-      }
   TermsOfUsePane:
     confirmDeletionPrompt: >
       Removing your consent to storage of historical trips will cause your trip history to be deleted. 
@@ -721,16 +702,10 @@ common:
     routeToHeadsign: "To {headsign}"
 
   searchForms:
-    enterDestination: >
-      Enter destination or {mobile, select,
-        true {tap}
-        other {click}
-      } on map...
-    enterStartLocation: >
-      Enter start location or {mobile, select,
-        true {tap}
-        other {click}
-      } on map...
+    click: click
+    enterDestination: Enter destination or {mapAction} on map…
+    enterStartLocation: Enter start location or {mapAction} on map…
+    tap: tap
 
   time:
     # Use ordered placeholders for the departure-arrival string
@@ -752,14 +727,8 @@ common:
         }}
         other {# days ago}
       }
-    # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
-    tripDurationFormat: >
-      {hours, plural, 
-        =0 {{minutes, number} min}
-        other {# hr {minutes, number} min}
-      }
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min"
 
 util:
   state:

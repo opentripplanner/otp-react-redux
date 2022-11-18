@@ -91,9 +91,6 @@ components:
     enterLocation: Nhập vị trí
     setOrigin: Chọn nguồn gốc
     setDestination: Chọn điểm đến
-  ItinerarySummary:
-    fareCost: "{useMaxFare, select,\n  true {{minTotalFare} - {maxTotalFare}}\n  other\
-      \ {{minTotalFare}}\n }\n"
   MapLayers:
     bike-rental: '{companies} Xe đạp chung'
     car-rental: Địa điểm cho thuê xe
@@ -201,10 +198,7 @@ components:
   ResultsHeader:
     waiting: Đang chờ đợi...
     noTripFound: Không tìm thấy chuyến đi nào
-    tripsFound: Chúng tôi đã tìm thấy {count} {count, plural, one {tùy chọn} other
-      {tùy chọn}}
-  ResultsScreen:
-    header: lựa chọn {index}
+    tripsFound: Đã tìm thấy {count} tùy chọn
   RouteDetails:
     stopsTo: Hướng
     selectADirection: Chọn một hướng…
@@ -266,13 +260,6 @@ components:
     myAccount: Tài khoản của tôi
     settings: Cài đặt
     trips: Chuyến đi
-  TabbedFormPanel:
-    hideSettings: ' Ẩn cài đặt'
-  TabbedItineraries:
-    optionNumber: Lựa chọn {optionNum, number}
-    mustCallAhead: Phải gọi trước!
-    fareCost: "{hasMaxFare, select, \n true {{minTotalFare}+}\n other {{minTotalFare}}\n\
-      \ }\n"
   TransitVehicleOverlay:
     incoming_at: Đang tiếp cận {stop}
     in_transit_to: Điểm dừng tiếp theo {stop}
@@ -500,8 +487,6 @@ components:
     noSavedTripsInstructions: Thực hiện tìm kiếm chuyến đi từ bản đồ trước.
     pause: Tạm ngừng
     resume: Tiếp tục
-  SearchScreen:
-    header: Lên kế hoạch cho chuyến đi của bạn
   StopTimeCell:
     imminentArrival: Đến hạn
   TermsOfUsePane:
@@ -521,6 +506,8 @@ components:
     prompt: Bạn muốn đi đâu?
   PointPopup:
     zoomToLocation: Thu phóng đến vị trí
+  ItinerarySummary:
+    minMaxFare: '{minTotalFare} - {maxTotalFare}'
 common:
   coordinates: '{lat}, {lon}'
   daysOfWeek:
@@ -596,15 +583,13 @@ common:
     home: Nhà
     work: công việc
   searchForms:
-    enterDestination: "Nhập điểm đến hoặc {mobile, select,\n true {Nhấn}\n other {nhấp}\n\
-      \ } vào bản đồ…\n"
-    enterStartLocation: "Nhập vị trí bắt đầu hoặc {mobile, select,\n true {Nhấn}\n\
-      \ other {nhấp}\n } vào bản đồ…\n"
+    enterDestination: "Nhập điểm đến hoặc {mapAction} vào bản đồ…"
+    enterStartLocation: "Nhập vị trí bắt đầu hoặc {mapAction} vào bản đồ…"
+    tap: chạm
+    click: nhấp
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
-    tripDurationFormatZeroHours: '{minutes, number} phút'
-    tripDurationFormat: "{hours, plural, \n =0 {{minutes, number} phút}\n other {#\
-      \ giờ {minutes, number} phút}\n }\n"
+    tripDurationFormat: "{hours, plural, =0 {} other {# giờ }}{minutes} phút"
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {vài giây trước}\n =1 {một phút trước}\n other {# phút trước}\n }}\n =1\
       \ {một tiếng trước}\n other {# giờ trước}\n }}\n other {# ngày trước}\n }\n"
