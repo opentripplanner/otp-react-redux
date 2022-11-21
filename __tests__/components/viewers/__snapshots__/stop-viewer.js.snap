@@ -2644,18 +2644,22 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     <li
                                       className="related-item"
                                     >
-                                      <styled.div>
-                                        <div
-                                          className="sc-fmlJrY jfVTXd"
-                                        >
-                                          P
-                                        </div>
-                                      </styled.div>
-                                      <FormattedMessage
-                                        id="components.AmenitiesPanel.noPRLotsFound"
+                                      <div
+                                        className="item-label"
                                       >
-                                        components.AmenitiesPanel.noPRLotsFound
-                                      </FormattedMessage>
+                                        <styled.div>
+                                          <div
+                                            className="sc-fmlJrY jfVTXd"
+                                          >
+                                            P
+                                          </div>
+                                        </styled.div>
+                                        <FormattedMessage
+                                          id="components.AmenitiesPanel.noPRLotsFound"
+                                        >
+                                          components.AmenitiesPanel.noPRLotsFound
+                                        </FormattedMessage>
+                                      </div>
                                     </li>
                                   </ul>
                                 </div>
@@ -4263,18 +4267,22 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     <li
                                       className="related-item"
                                     >
-                                      <styled.div>
-                                        <div
-                                          className="sc-fmlJrY jfVTXd"
-                                        >
-                                          P
-                                        </div>
-                                      </styled.div>
-                                      <FormattedMessage
-                                        id="components.AmenitiesPanel.noPRLotsFound"
+                                      <div
+                                        className="item-label"
                                       >
-                                        components.AmenitiesPanel.noPRLotsFound
-                                      </FormattedMessage>
+                                        <styled.div>
+                                          <div
+                                            className="sc-fmlJrY jfVTXd"
+                                          >
+                                            P
+                                          </div>
+                                        </styled.div>
+                                        <FormattedMessage
+                                          id="components.AmenitiesPanel.noPRLotsFound"
+                                        >
+                                          components.AmenitiesPanel.noPRLotsFound
+                                        </FormattedMessage>
+                                      </div>
                                     </li>
                                   </ul>
                                 </div>
@@ -6974,18 +6982,22 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     <li
                                       className="related-item"
                                     >
-                                      <styled.div>
-                                        <div
-                                          className="sc-fmlJrY jfVTXd"
-                                        >
-                                          P
-                                        </div>
-                                      </styled.div>
-                                      <FormattedMessage
-                                        id="components.AmenitiesPanel.noPRLotsFound"
+                                      <div
+                                        className="item-label"
                                       >
-                                        components.AmenitiesPanel.noPRLotsFound
-                                      </FormattedMessage>
+                                        <styled.div>
+                                          <div
+                                            className="sc-fmlJrY jfVTXd"
+                                          >
+                                            P
+                                          </div>
+                                        </styled.div>
+                                        <FormattedMessage
+                                          id="components.AmenitiesPanel.noPRLotsFound"
+                                        >
+                                          components.AmenitiesPanel.noPRLotsFound
+                                        </FormattedMessage>
+                                      </div>
                                     </li>
                                   </ul>
                                 </div>
@@ -13458,18 +13470,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     <li
                                       className="related-item"
                                     >
-                                      <styled.div>
-                                        <div
-                                          className="sc-fmlJrY jfVTXd"
-                                        >
-                                          P
-                                        </div>
-                                      </styled.div>
-                                      <FormattedMessage
-                                        id="components.AmenitiesPanel.noPRLotsFound"
+                                      <div
+                                        className="item-label"
                                       >
-                                        components.AmenitiesPanel.noPRLotsFound
-                                      </FormattedMessage>
+                                        <styled.div>
+                                          <div
+                                            className="sc-fmlJrY jfVTXd"
+                                          >
+                                            P
+                                          </div>
+                                        </styled.div>
+                                        <FormattedMessage
+                                          id="components.AmenitiesPanel.noPRLotsFound"
+                                        >
+                                          components.AmenitiesPanel.noPRLotsFound
+                                        </FormattedMessage>
+                                      </div>
                                     </li>
                                   </ul>
                                 </div>
@@ -17687,18 +17703,22 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     <li
                                       className="related-item"
                                     >
-                                      <styled.div>
-                                        <div
-                                          className="sc-fmlJrY jfVTXd"
-                                        >
-                                          P
-                                        </div>
-                                      </styled.div>
-                                      <FormattedMessage
-                                        id="components.AmenitiesPanel.noPRLotsFound"
+                                      <div
+                                        className="item-label"
                                       >
-                                        components.AmenitiesPanel.noPRLotsFound
-                                      </FormattedMessage>
+                                        <styled.div>
+                                          <div
+                                            className="sc-fmlJrY jfVTXd"
+                                          >
+                                            P
+                                          </div>
+                                        </styled.div>
+                                        <FormattedMessage
+                                          id="components.AmenitiesPanel.noPRLotsFound"
+                                        >
+                                          components.AmenitiesPanel.noPRLotsFound
+                                        </FormattedMessage>
+                                      </div>
                                     </li>
                                   </ul>
                                 </div>
