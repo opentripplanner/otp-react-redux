@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import { ConfiguredCompany, Station, Stop } from '@opentripplanner/types'
-import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 // @ts-expect-error not typescripted yet
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
-import React, { Component } from 'react'
+// Disabled for now because this file should be removed when switching to the nearby view
+import { connect } from 'react-redux'
+import React, { Component, Suspense } from 'react'
 import styled from 'styled-components'
 
 import { ComponentContext } from '../../util/contexts'
@@ -61,19 +63,25 @@ class AmenitiesPanel extends Component<Props, State> {
     return parkAndRideLocations && parkAndRideLocations.length > 0 ? (
       // TODO Type for P+R
       parkAndRideLocations.map((parkAndRide: any) => (
-        <li
-          className="related-item"
-          key={parkAndRide.name}
-          title={parkAndRide.name}
-        >
-          {parkAndRideMarker}
-          {parkAndRide.name}
+        <li className="related-item" key={parkAndRide.name}>
+          <div className="item-label">
+            <div
+              className="overflow-ellipsis"
+              style={{ display: 'flex' }}
+              title={parkAndRide.name}
+            >
+              {parkAndRideMarker}
+              {parkAndRide.name}
+            </div>
+          </div>
         </li>
       ))
     ) : (
       <li className="related-item">
-        {parkAndRideMarker}
-        <FormattedMessage id="components.AmenitiesPanel.noPRLotsFound" />
+        <div className="item-label">
+          {parkAndRideMarker}
+          <FormattedMessage id="components.AmenitiesPanel.noPRLotsFound" />
+        </div>
       </li>
     )
   }
@@ -121,9 +129,13 @@ class AmenitiesPanel extends Component<Props, State> {
               }
             )
         return (
-          <li className="related-item" key={key} title={label}>
-            {company.icon}
-            {label}
+          <li className="related-item" key={key}>
+            <div className="item-label">
+              <div className="overflow-ellipsis" title={label}>
+                {company.icon}
+                {label}
+              </div>
+            </div>
             {company.isHub && (
               <>
                 <div>
@@ -166,7 +178,9 @@ class AmenitiesPanel extends Component<Props, State> {
   _getStationIcon = (mode: string, station: Station) => {
     const CompanyIcon = getCompanyIcon(station?.networks[0])
     return CompanyIcon ? (
-      <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
+      <Suspense fallback={<span>{station?.networks[0]}</span>}>
+        <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
+      </Suspense>
     ) : (
       this._getModeIcon(mode)
     )
@@ -200,14 +214,16 @@ class AmenitiesPanel extends Component<Props, State> {
         const company = companyCounts[key]
         return (
           <li className="related-item" key={key}>
-            {company.icon}
-            <FormattedMessage
-              id="components.AmenitiesPanel.scootersNearby"
-              values={{
-                company: company.name,
-                count: company.stations.length
-              }}
-            />
+            <div className="item-label">
+              {company.icon}
+              <FormattedMessage
+                id="components.AmenitiesPanel.scootersNearby"
+                values={{
+                  company: company.name,
+                  count: company.stations.length
+                }}
+              />
+            </div>
           </li>
         )
       })
