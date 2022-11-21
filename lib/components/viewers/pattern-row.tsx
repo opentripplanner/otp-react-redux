@@ -88,7 +88,7 @@ class PatternRow extends Component<Props, State> {
           <div className="route-name">
             <strong
               style={
-                routeName && routeName?.length >= 4 ? { fontSize: '3vb' } : {}
+                routeName && routeName?.length >= 4 ? { fontSize: '50%' } : {}
               }
             >
               <div
