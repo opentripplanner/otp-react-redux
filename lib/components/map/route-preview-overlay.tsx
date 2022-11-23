@@ -27,12 +27,8 @@ const GeometryPreviewOverlay = ({ geometries, visible }: Props) => {
       features: uniqueGeometries
         .filter((s) => !!s)
         .map((segment) => {
-          const pts = polyline.decode(segment)
           return {
-            geometry: {
-              coordinates: pts.map((pt: [number, number]) => [pt[1], pt[0]]),
-              type: 'LineString'
-            },
+            geometry: polyline.toGeoJSON(segment),
             properties: [],
             type: 'Feature'
           }
@@ -88,7 +84,6 @@ const mapStateToProps = (state: any) => {
 
   return {
     geometries,
-
     visible:
       // We need an explicit check for undefined and null because 0
       // is for us true
