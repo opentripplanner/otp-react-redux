@@ -129,6 +129,7 @@
     "@percy/cli": "^1.14.0",
     "@percy/puppeteer": "^2.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
+    "@types/mapbox__polyline": "^1.0.2",
     "@types/qs": "^6.9.7",
     "@types/react-bootstrap": "^0.32.26",
     "@types/react-router": "^5.1.17",
