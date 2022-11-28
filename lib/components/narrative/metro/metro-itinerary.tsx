@@ -272,6 +272,7 @@ class MetroItinerary extends NarrativeItinerary {
     const roundedCo2VsBaseline = Math.round(itinerary.co2VsBaseline * 100)
     const emissionsNote = !mini &&
       Math.abs(roundedCo2VsBaseline) >= (co2Config?.cutoffPercentage || 0) &&
+      (roundedCo2VsBaseline < 0 || co2Config?.showIfHigher) &&
       co2Config?.enabled && (
         <IconWithText Icon={Leaf}>
           <FormattedMessage
