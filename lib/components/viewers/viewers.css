@@ -250,7 +250,7 @@
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-time {
-  display: table-cell;
+  flex-shrink: 0;
   font-weight: 700;
   width: 90px;
 }
