@@ -37,6 +37,16 @@ actions:
     fetchTripsForDateError: 'Error al obtener viajes para la fecha de viaje: {err}'
     incompatibleTripDateError: La fecha de viaje planificada ({tripDate}) no es el
       día de viaje solicitado ({requestDate})
+    editSubmitterNotesError: 'Error al editar las notas del remitente:'
+    setRequestStatusError: 'Error al establecer el estado de la solicitud:'
+    addNoteError: 'Error al agregar la nota de campo:'
+    setPaymentError: 'Error al configurar la información de pago:'
+    deleteNoteError: 'Error al eliminar nota de viaje:'
+    deleteItinerariesError: 'Error al eliminar el plan de viaje:'
+    setGroupSizeError: 'No se pudo establecer el tamaño del grupo:'
+    confirmOverwriteItineraries: "Esta acción anulará un itinerario {outbound, select,\n\
+      \  true {saliente}\n  other {entrante}\n  } previamente planificado para esta\
+      \ solicitud. ¿Desea continuar?\n"
   user:
     accountDeleted: El ({email}) de su cuenta de usuario ha sido eliminado.
     authTokenError: Error al obtener un token de autorización.
@@ -80,6 +90,7 @@ components:
       viaje: {issues}'
     destination: destino
     origin: origen
+    settings: Preferencias de viaje
   BeforeSignInScreen:
     mainTitle: Te iniciando sesión
     message: "Para acceder a esta página deberá iniciar sesión. Por favor, espere\
@@ -105,8 +116,7 @@ components:
     mainTitle: Mis ajustes
     terms: Términos
   ItinerarySummary:
-    fareCost: "{useMaxFare, select,\n  true {{minTotalFare} - {maxTotalFare}}\n  other\
-      \ {{minTotalFare}}\n }\n"
+    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   MapLayers:
     bike-rental: '{companies} Bicicleta Compartida'
     car-rental: Ubicaciones de los coches de alquiler
@@ -130,6 +140,8 @@ components:
     itinerariesFound: '{itineraryNum, plural, one {# itinerario encontrado} other
       {# itinerarios encontrados}}'
     numIssues: '{issueNum, plural, one {# problema} other {# problemas}}'
+    sortBy: Ordenar por
+    changeSortDir: Cambiar la dirección de clasificación
   NewAccountWizard:
     terms: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
@@ -217,6 +229,7 @@ components:
     allModes: Todos los modos
     header: Visor de rutas
     noFilteredRoutesFound: ¡No hay rutas que coincidan con tu filtro!
+    details: ' '
   SavedTripEditor:
     editSavedTrip: Editar el viaje guardado
     saveNewTrip: Guardar un nuevo viaje
@@ -243,8 +256,6 @@ components:
       y no los alquileres o los viajes en coche.
     saveTripText: Salvar el viaje
     signInText: Iniciar sesión para guardar el viaje
-  SearchScreen:
-    header: Planifica tu viaje
   SettingsPreview:
     defaultPreviewText: Opciones y preferencias de tránsito
   StopViewer:
@@ -259,9 +270,6 @@ components:
     timezoneWarning: Las horas de salida se indican en <strong>{timezoneCode}</strong>.
     viewNextArrivals: Ver próximas llegadas
     zoomToStop: Zoom a la parada
-  TabbedItineraries:
-    mustCallAhead: ¡Hay que llamar con antelación.
-    optionNumber: Opción {optionNum, number}
   TransitVehicleOverlay:
     vehicleName: 'Vehículo {vehicleNumber}: '
     in_transit_to: Próxima parada {stop}
@@ -386,9 +394,17 @@ components:
     recentSearchSummary: '{mode} de {from} al {to}'
     recentSearches: Búsquedas recientes
     stopId: 'ID de Parada: {stopId}'
+    storageDisclaimer: "Cualquier preferencia, lugar o configuración que opte por\
+      \ guardar se guardará en el almacenamiento local de su navegador. No tendremos\
+      \ acceso al conocimiento de su casa, trabajo o cualquier otra ubicación. En\
+      \ cualquier momento puedes optar por desactivar el recuerdo de lugares o búsquedas\
+      \ recientes y borrar las ubicaciones de casa o del trabajo y las paradas favoritas\
+      \ guardadas.\n"
   UserTripSettings:
     forgetOptions: Olvidar mis opciones
     rememberOptions: Recuerde las opciones de viaje
+    restoreOptions: "Restaurar {defaults, select,\n true {mis valores predeterminados}\n\
+      \ other {los valores predeterminados}\n }\n"
   VerifyEmailPane:
     emailIsVerified: ¡Mi correo electrónico está verificado!
     instructions1: "Por favor compruebe su buzón de correo electrónico y siga el enlace\
@@ -460,6 +476,10 @@ components:
     arriveAtTime: Llegar a {time}
     fromStop: de {stop}
     itineraryDescription: '{time} itinerario en {routes}'
+    leaveAt: Partir a
+    timeWalking: '{time} caminando'
+    orAlternatives: u otras líneas en la misma dirección
+    multipleOptions: Múltiples opciones
   MobileOptions:
     header: Configurar las opciones de búsqueda
   NavLoginButton:
@@ -475,10 +495,8 @@ components:
     backToSearch: Volver a la búsqueda
   ResultsHeader:
     noTripFound: No se encontró ningún viaje
-    tripsFound: Encontramos {count} {count, plural, one {opción} other {opciones}}
+    tripsFound: Encontramos {count, plural, one {# opción} other {# opciones}}
     waiting: Espera...
-  ResultsScreen:
-    header: Opción {index}
   RouteRow:
     operatorLogoAltText: logotipo de {operatorName}
   SimpleRealtimeAnnotation:
@@ -517,8 +535,6 @@ components:
       \ almacene mis viajes planificados históricos para mejorar los servicios de\
       \ tránsito en mi área. <termsOfStorageLink>Más información...</termsOfStorageLink>\n"
     mustAgreeToTerms: Debe aceptar los términos de servicio para continuar.
-  TabbedFormPanel:
-    hideSettings: ' Ocultar configuración'
   AccountSetupFinishPane:
     message: Ya está listo para empezar a planificar sus viajes.
   AddPlaceButton:
@@ -541,6 +557,13 @@ components:
     multiModeSummary: '{accessMode} a {transitMode}'
   DeleteUser:
     deleteMyAccount: Eliminar mi cuenta
+  SessionTimeout:
+    body: Su sesión caducará en un minuto. Pulse 'Continuar sesión' para mantener
+      su búsqueda.
+    header: ¡Sesión a punto de agotarse!
+    keepSession: Continuar sesión
+  PointPopup:
+    zoomToLocation: Acercar a la ubicación
 common:
   coordinates: '{lat}, {lon}'
   dateExpressions:
@@ -610,24 +633,23 @@ common:
     micromobility: E-Scooter
     rent: Opciones de alquiler
     subway: Metro
+    flex: Líneas Flex
   notifications:
     email: correo electrónico
     sms: SMS
   routing:
     routeToHeadsign: A {headsign}
   searchForms:
-    enterDestination: "Introduzca el destino o {mobile, select,\n true {toque}\n other\
-      \ {haga clic}\n } en el mapa…\n"
-    enterStartLocation: "Introduzca la ubicación de inicio o {mobile, select,\n true\
-      \ {toque}\n other {haga clic}\n } en el mapa…\n"
+    click: haga clic
+    enterDestination: Introduzca el destino o {mapAction} en el mapa…
+    enterStartLocation: Introduzca la ubicación de inicio o {mapAction} en el mapa…
+    tap: toque
   time:
-    tripDurationFormat: "{hours, plural, \n =0 {{minutes, number} min}\n other {#\
-      \ hr {minutes, number} min}\n }\n"
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
-    tripDurationFormatZeroHours: '{minutes, number} min'
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {hace unos segundos}\n =1 {hace un minuto}\n other {hace # minutos}\n }}\n\
       \ =1 {hace una hora}\n other {hace # horas}\n }}\n other {hace # días}\n }\n"
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min"
   places:
     custom: personalizado
     dining: restaurante
@@ -646,3 +668,23 @@ util:
     noTripFoundReason: Es posible que no haya servicio de tránsito dentro de la distancia
       máxima especificada o en el momento especificado, o es posible que su punto
       de inicio o final no sea accesible de manera segura.
+config:
+  accessModes:
+    bicycle: Transportes + Bicicleta personal
+    bicycle_rent: Transportes + Bicicleta compartida
+    micromobility: Transportes + Patineta personal
+    car_hail: Viajar a pedido
+    car_park: Aparcar y andar
+    micromobility_rent: Transportes + Patineta compartida
+  flex:
+    flex-service: Servicio Flex
+    flex-service-colon: 'Servicio Flex:'
+    both: Ver la parte inferior del itinerario para más detalles.
+    call-ahead: Llama para reservar
+    continuous-dropoff: Solicite la parada al conductor
+  bicycleModes:
+    bicycle_rent: Bicicleta compartida
+    bicycle: Bicicleta personal
+  micromobilityModes:
+    micromobility: Patineta personal
+    micromobility_rent: Patineta alquilada

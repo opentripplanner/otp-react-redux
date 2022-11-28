@@ -79,6 +79,10 @@ input[type="text"]::-ms-clear {
   padding: 6px 0;
 }
 
+.slide-pane__overlay {
+  z-index: 1000;
+}
+
 .app-menu {
   margin: 0;
   padding: 0;
@@ -100,6 +104,16 @@ input[type="text"]::-ms-clear {
   font-size: 20px;
   text-decoration: none;
   outline: none;
+}
+
+.view-switcher {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .view-switcher {
+    display: flex;
+  }
 }
 
 /* increase icon size */

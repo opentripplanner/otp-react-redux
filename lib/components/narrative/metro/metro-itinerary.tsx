@@ -66,7 +66,7 @@ const DepartureTimes = styled.span`
     cursor: auto;
   }
 
-  button {
+  div.header {
     background: none;
     border: none;
     display: inline;
@@ -327,6 +327,18 @@ class MetroItinerary extends NarrativeItinerary {
       return routeBlocks
     }
 
+    const handleClick = () => {
+      setActiveItinerary(itinerary)
+      setActiveLeg(null, null)
+      setItineraryView(ItineraryView.FULL)
+      // Reset the scroll. Refs would be the more
+      // appropriate way to do this, but they don't work
+      setTimeout(
+        () => document.querySelector('.metro-itin')?.scrollIntoView(),
+        10
+      )
+    }
+
     // Use first leg's agency as a fallback
     return (
       <div
@@ -337,21 +349,17 @@ class MetroItinerary extends NarrativeItinerary {
         onMouseLeave={this._onMouseLeave}
         role="presentation"
       >
-        <button
+        {/* Semantically this is incorrect, but this helps a11y tests pass. Buttons may not contain html. TODO FIX? */}
+        <div
           className="header"
+          onClick={handleClick}
+          // TODO: once this can be tabbed to, this behavior needs to be improved. Maybe it focuses the
+          // first time?
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
+          onKeyDown={() => {}}
           // TODO: use _onHeaderClick for tap only -- this will require disabling
           // this onClick handler after a touchStart
-          onClick={() => {
-            setActiveItinerary(itinerary)
-            setActiveLeg(null, null)
-            setItineraryView(ItineraryView.FULL)
-            // Reset the scroll. Refs would be the more
-            // appropriate way to do this, but they don't work
-            setTimeout(
-              () => document.querySelector('.metro-itin')?.scrollIntoView(),
-              10
-            )
-          }}
+          role="presentation"
         >
           <ItineraryWrapper
             aria-label={intl.formatMessage(
@@ -374,7 +382,8 @@ class MetroItinerary extends NarrativeItinerary {
             )}
             {!mini && (
               <ItineraryGrid className="itin-grid">
-                <Routes enableDot={enableDot}>
+                {/* TODO: a11y: add aria-label to parent element */}
+                <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
                 </Routes>
                 <PrimaryInfo>
@@ -403,23 +412,14 @@ class MetroItinerary extends NarrativeItinerary {
                   {transitFare === null || transitFare < 0 ? (
                     <FormattedMessage id="common.itineraryDescriptions.noTransitFareProvided" />
                   ) : (
-                    <FormattedMessage
-                      id="components.ItinerarySummary.fareCost"
-                      values={{
-                        // TODO: re-implement TNC fares for metro UI?
-                        maxTotalFare: null,
-                        minTotalFare: (
-                          <FormattedNumber
-                            currency={fareCurrency}
-                            currencyDisplay="narrowSymbol"
-                            // This isn't a "real" style prop
-                            // eslint-disable-next-line react/style-prop-object
-                            style="currency"
-                            value={transitFare / 100}
-                          />
-                        ),
-                        useMaxFare: false
-                      }}
+                    // TODO: re-implement TNC fares for metro UI?
+                    <FormattedNumber
+                      currency={fareCurrency}
+                      currencyDisplay="narrowSymbol"
+                      // This isn't a "real" style prop
+                      // eslint-disable-next-line react/style-prop-object
+                      style="currency"
+                      value={transitFare / 100}
                     />
                   )}
                 </SecondaryInfo>
@@ -453,7 +453,7 @@ class MetroItinerary extends NarrativeItinerary {
               </ItineraryGridSmall>
             )}
           </ItineraryWrapper>
-        </button>
+        </div>
         {active && expanded && (
           <>
             {showRealtimeAnnotation && <SimpleRealtimeAnnotation />}
