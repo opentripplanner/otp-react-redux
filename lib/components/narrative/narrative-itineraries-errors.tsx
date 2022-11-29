@@ -2,7 +2,7 @@ import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 // @ts-expect-error No typescript
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { useIntl } from 'react-intl'
-import React from 'react'
+import React, { Suspense } from 'react'
 import styled from 'styled-components'
 
 import { getErrorMessage } from '../../util/state'
@@ -47,7 +47,11 @@ export default function NarrativeItinerariesErrors({
       const CompanyIcon = getCompanyIcon(error.network)
       // check if company icon exists to avoid rendering undefined
       if (CompanyIcon) {
-        icon = <CompanyIcon />
+        icon = (
+          <Suspense fallback={<span>Loading...</span>}>
+            <CompanyIcon />
+          </Suspense>
+        )
       }
     }
     return (
