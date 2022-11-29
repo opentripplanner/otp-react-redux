@@ -240,7 +240,8 @@ class DefaultMap extends Component {
       vehicleRentalQuery,
       vehicleRentalStations
     } = this.props
-    const { getCustomMapOverlays, getTransitiveRouteLabel } = this.context
+    const { getCustomMapOverlays, getTransitiveRouteLabel, ModeIcon } =
+      this.context
     const { baseLayers, maxZoom, overlays } = mapConfig || {}
     const { lat, lon, zoom } = this.state
 
@@ -279,7 +280,7 @@ class DefaultMap extends Component {
           {/* The default overlays */}
           <EndpointsOverlay />
           <RouteViewerOverlay />
-          <TransitVehicleOverlay />
+          <TransitVehicleOverlay ModeIcon={ModeIcon} />
           <StopViewerOverlay />
           <TransitiveOverlay
             getTransitiveRouteLabel={getTransitiveRouteLabel}
