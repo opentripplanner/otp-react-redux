@@ -2453,10 +2453,10 @@
   dependencies:
     "@opentripplanner/itinerary-body" "^4.1.3"
 
-"@opentripplanner/route-viewer-overlay@^2.0.5":
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-2.0.5.tgz#6166ec699d994f474ced0f3c11f4cf797ecfbc41"
-  integrity sha512-jhEy50etRQ5lObOBFr0oLLRpoo40wccd89f1MVFa6mJtPj3sf13KGhtJda/2PT3EKYRl3P17+98ODsqtSn5d7w==
+"@opentripplanner/route-viewer-overlay@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-2.0.6.tgz#446c789372eb2909c23a6b6f65167b3dda43e88e"
+  integrity sha512-LhElfIML/BRslQ9X0AO/r59/Du0PNCBD1RqJcL3Pn+Pfxq1pzyYMOeKSJYE0+4ucIY2VKAwPKBXf0oivlfHcpw==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/base-map" "^3.0.4"
