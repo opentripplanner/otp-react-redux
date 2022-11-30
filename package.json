@@ -49,7 +49,7 @@
     "@opentripplanner/location-icon": "^1.4.0",
     "@opentripplanner/park-and-ride-overlay": "^2.0.4",
     "@opentripplanner/printable-itinerary": "^2.0.6",
-    "@opentripplanner/route-viewer-overlay": "^2.0.4",
+    "@opentripplanner/route-viewer-overlay": "^2.0.5",
     "@opentripplanner/stop-viewer-overlay": "^2.0.4",
     "@opentripplanner/stops-overlay": "^5.0.5",
     "@opentripplanner/transit-vehicle-overlay": "^4.0.0",
