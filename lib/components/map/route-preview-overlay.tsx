@@ -18,7 +18,7 @@ type Props = {
  * This overlay will display thin gray lines for a set of geometries. It's to be used
  * as a stopgap until we make full use of Transitive!
  */
-const GeometryPreviewOverlay = ({ geometries, visible }: Props) => {
+const RoutePreviewOverlay = ({ geometries, visible }: Props) => {
   if (!geometries || !visible) return <></>
 
   const uniqueGeometries = Array.from(new Set(geometries))
@@ -36,25 +36,23 @@ const GeometryPreviewOverlay = ({ geometries, visible }: Props) => {
       type: 'FeatureCollection'
     }
     return (
-      <>
-        <Source data={geojson} id="route" type="geojson">
-          <Layer
-            id="route-preview"
-            layout={{
-              'line-cap': 'round',
-              'line-join': 'round'
-            }}
-            paint={{
-              'line-blur': 4,
-              'line-color': '#333',
-              'line-dasharray': [1, 2],
-              'line-opacity': 0.6,
-              'line-width': 4
-            }}
-            type="line"
-          />
-        </Source>
-      </>
+      <Source data={geojson} id="route" type="geojson">
+        <Layer
+          id="route-preview"
+          layout={{
+            'line-cap': 'round',
+            'line-join': 'round'
+          }}
+          paint={{
+            'line-blur': 4,
+            'line-color': '#333',
+            'line-dasharray': [1, 2],
+            'line-opacity': 0.6,
+            'line-width': 4
+          }}
+          type="line"
+        />
+      </Source>
     )
   } catch (error) {
     console.warn(`Can't create geojson from route ${geometries}: ${error}`)
@@ -92,9 +90,4 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-const mapDispatchToProps = {}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GeometryPreviewOverlay)
+export default connect(mapStateToProps)(RoutePreviewOverlay)
