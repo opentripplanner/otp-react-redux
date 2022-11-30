@@ -222,8 +222,6 @@ if (OTP_RR_PERCY_MOBILE) {
     await percySnapshotWithWait(page, 'Mobile Itinerary Results')
 
     await page.click('.route-block-wrapper')
-    await page.waitForTimeout(500)
-    await page.click('button .route-block-wrapper')
     await percySnapshotWithWait(page, 'Mobile Itinerary Selected')
 
     await page.click('.button-container:nth-of-type(2)')
