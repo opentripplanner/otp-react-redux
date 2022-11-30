@@ -7,8 +7,13 @@ const Block = styled.span<{ color: string }>`
   border-radius: 5px;
   border-top: 5px solid #${(props) => props.color};
   display: inline-block;
-  max-width: 150px;
   padding: 3px 7px;
+
+  /* Below is for route names that are too long: cut-off and show ellipsis. */
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 
 type RouteRendererProps = {
