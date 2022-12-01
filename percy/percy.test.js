@@ -263,6 +263,7 @@ test('OTP-RR', async () => {
     await page.click('#plan-trip')
   } else {
     // take initial screenshot
+    await page.waitForTimeout(1000) // wait extra time for all results to load
     await percySnapshotWithWait(page, 'Call Taker')
 
     // add intermedaite stop
