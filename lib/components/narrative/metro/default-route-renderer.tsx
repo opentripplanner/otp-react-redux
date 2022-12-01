@@ -13,6 +13,8 @@ const Block = styled.span<{ color: string }>`
   max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
+  /* (Change the vertical alignment when changing the overflow attribute.) */
+  vertical-align: middle;
   white-space: nowrap;
 `
 
