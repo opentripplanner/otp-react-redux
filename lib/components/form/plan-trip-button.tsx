@@ -7,57 +7,18 @@ import { useModeState } from '@opentripplanner/trip-form'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 
-import { Combination } from './batch-preferences'
 import { routingQuery } from '../../actions/api'
 import { setMainPanelContent } from '../../actions/ui'
-
-// @ts-expect-error hah typescript what are you gonna do now huh are you gonna complain ??
-import modeSettings from './modeSettings.yml'
 
 type Props = {
   disabled: boolean
   onClick: () => void
   planTrip: () => void
   profileTrip: () => void
-  routingQuery: (
-    searchId?: string,
-    updateSearchInReducer?: boolean,
-    combinations?: Combination[]
-  ) => void
+  routingQuery: (searchId?: string, updateSearchInReducer?: boolean) => void
   routingType: string
   setMainPanelContent: () => void
   text: string
-}
-
-const combinations = [
-  {
-    Icon: Bus,
-    key: 'TRANSIT',
-    label: 'Transit',
-    modes: [
-      {
-        mode: 'TRANSIT'
-      }
-    ]
-  },
-  {
-    Icon: Walking,
-    key: 'WALK',
-    label: 'Walking',
-    modes: [{ mode: 'WALK' }]
-  },
-  {
-    Icon: Bicycle,
-    key: 'BIKE',
-    label: 'Bike',
-    modes: [{ mode: 'BICYCLE' }, { mode: 'BIKESHARE' }]
-  }
-]
-
-// TODO: take this from redux
-const initialState = {
-  enabledCombinations: ['TRANSIT'],
-  modeSettingValues: {}
 }
 
 function PlanTripButton({
