@@ -25,8 +25,8 @@ import {
   BatchPreferencesContainer,
   DateTimeModalContainer,
   MainSettingsRow,
-  StyledDateTimePreview,
-  StyledPlanTripButton
+  PlanTripButton,
+  StyledDateTimePreview
 } from './batch-styled'
 import { Dot } from './styled'
 import BatchPreferences from './batch-preferences'
@@ -35,7 +35,6 @@ import ModeButtons, {
   defaultModeOptions,
   StyledModeButton
 } from './mode-buttons'
-import PlanTripButton from './plan-trip-button'
 
 const ModeButtonsFullWidthContainer = styled.div`
   display: flex;
@@ -101,20 +100,15 @@ function BatchSettings({
       })
     }))
 
-  const {
-    buttonsWithSettings,
-    enabledModes,
-    modeSettings,
-    setModeSettingValue,
-    toggleModeButton
-  } = useModeState(
-    modeButtonsWithIcons,
-    config.modes.initialState,
-    defaultModeSettings,
-    {
-      queryParamState: true
-    }
-  )
+  const { buttonsWithSettings, setModeSettingValue, toggleModeButton } =
+    useModeState(
+      modeButtonsWithIcons,
+      config.modes.initialState,
+      defaultModeSettings,
+      {
+        queryParamState: true
+      }
+    )
 
   const _planTrip = () => {
     // Check for any validation issues in query.
@@ -150,14 +144,8 @@ function BatchSettings({
 
   return (
     <>
-      <ModeButtonsFullWidthContainer className="hidden-lg">
-        {/* <ModeButtonsFullWidth
-          className="flex"
-          modeOptions={modeOptions}
-          onClick={_onClickMode}
-          selectedModes={selectedModes}
-        /> */}
-      </ModeButtonsFullWidthContainer>
+      {/* <ModeButtonsFullWidthContainer className="hidden-lg">
+      </ModeButtonsFullWidthContainer> */}
       <MainSettingsRow>
         <StyledDateTimePreview
           // as='button'
@@ -166,12 +154,6 @@ function BatchSettings({
           onClick={_toggleDateTime}
         />
         <ModeButtonsContainerCompressed>
-          {/* <ModeButtonsCompressed
-            className="visible-lg straight-corners"
-            modeOptions={modeOptions}
-            onClick={_onClickMode}
-            selectedModes={selectedModes}
-          /> */}
           <MetroModeSelector
             modeButtons={buttonsWithSettings}
             onSettingsUpdate={setModeSettingValue}

@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components'
 
 import { commonInputCss, modeButtonButtonCss } from './styled'
 import DateTimePreview from './date-time-preview'
-import PlanTripButton from './plan-trip-button'
 
 const SHADOW = 'inset 0px 0px 5px #c1c1c1'
 
@@ -50,10 +49,9 @@ export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
   ${(props) => (props.expanded ? activeCss : null)}
 `
 
-export const StyledPlanTripButton = styled(PlanTripButton)`
+export const PlanTripButton = styled(Button)`
   background-color: green;
   color: #ffffffdd;
-  margin-left: auto;
   padding: 5px;
   &:active {
     ${activeCss}
@@ -90,7 +88,7 @@ export const MainSettingsRow = styled.div`
   align-items: top;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-bottom: 5px;
 `
 
