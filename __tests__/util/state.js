@@ -40,6 +40,7 @@ describe('util > state', () => {
     ]
 
     testCases.forEach((testCase) => {
+      // eslint-disable-next-line jest/valid-title
       it(testCase.title, () => {
         expect(queryIsValid(testCase.input))[
           testCase.expected ? 'toBeTruthy' : 'toBeFalsy'

@@ -10,6 +10,19 @@ import * as api from '../../lib/actions/api'
 let idCounter = 1234
 const randId = () => `abcd${idCounter++}`
 
+/**
+ * Sets the requestId values as needed to deterministic IDs.
+ */
+function setMockRequestIds(calls) {
+  calls.forEach((call) => {
+    call.forEach((action) => {
+      if (action.payload && action.payload.requestId) {
+        action.payload.requestId = randId()
+      }
+    })
+  })
+}
+
 describe('actions > api', () => {
   describe('routingQuery', () => {
     const defaultState = {
@@ -65,16 +78,3 @@ describe('actions > api', () => {
     })
   })
 })
-
-/**
- * Sets the requestId values as needed to deterministic IDs.
- */
-function setMockRequestIds(calls) {
-  calls.forEach((call) => {
-    call.forEach((action) => {
-      if (action.payload && action.payload.requestId) {
-        action.payload.requestId = randId()
-      }
-    })
-  })
-}
