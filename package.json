@@ -161,7 +161,7 @@
     "eslint-plugin-sort-keys-fix": "^1.1.1",
     "eslint-plugin-typescript-sort-keys": "^1.8.0",
     "execa": "^5.1.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "har-express": "^1.1.0",
     "husky": "^6.0.0",
     "jest-transform-stub": "^2.0.0",
