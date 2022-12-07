@@ -1381,7 +1381,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   >
                                     <div>
                                       <div
-                                        className="pull-left"
+                                        className="pull-left percy-hide"
                                       >
                                         <Styled(styled.span)
                                           style={
@@ -1640,7 +1640,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -1838,7 +1838,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -2069,7 +2069,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -4195,7 +4195,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   >
                                     <div>
                                       <div
-                                        className="pull-left"
+                                        className="pull-left percy-hide"
                                       >
                                         <Styled(styled.span)
                                           style={
@@ -4454,7 +4454,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -6529,7 +6529,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   >
                                     <div>
                                       <div
-                                        className="pull-left"
+                                        className="pull-left percy-hide"
                                       >
                                         <Styled(styled.span)
                                           style={
@@ -6821,7 +6821,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -7052,7 +7052,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -7283,7 +7283,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -10299,7 +10299,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   >
                                     <div>
                                       <div
-                                        className="pull-left"
+                                        className="pull-left percy-hide"
                                       >
                                         <Styled(styled.span)
                                           style={
@@ -10591,7 +10591,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -10822,7 +10822,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -11053,7 +11053,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -11523,7 +11523,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   >
                                     <div>
                                       <div
-                                        className="pull-left"
+                                        className="pull-left percy-hide"
                                       >
                                         <Styled(styled.span)
                                           style={
@@ -11815,7 +11815,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -12046,7 +12046,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -12277,7 +12277,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -12747,7 +12747,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   >
                                     <div>
                                       <div
-                                        className="pull-left"
+                                        className="pull-left percy-hide"
                                       >
                                         <Styled(styled.span)
                                           style={
@@ -13039,7 +13039,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -13270,7 +13270,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -13501,7 +13501,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -14079,7 +14079,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   >
                                     <div>
                                       <div
-                                        className="pull-left"
+                                        className="pull-left percy-hide"
                                       >
                                         <Styled(styled.span)
                                           style={
@@ -14371,7 +14371,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -14602,7 +14602,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -14833,7 +14833,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -18875,7 +18875,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   >
                                     <div>
                                       <div
-                                        className="pull-left"
+                                        className="pull-left percy-hide"
                                       >
                                         <Styled(styled.span)
                                           style={
@@ -19167,7 +19167,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -19398,7 +19398,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
@@ -19629,7 +19629,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             >
                                               <div>
                                                 <div
-                                                  className="pull-left"
+                                                  className="pull-left percy-hide"
                                                 >
                                                   <Styled(styled.span)
                                                     style={
