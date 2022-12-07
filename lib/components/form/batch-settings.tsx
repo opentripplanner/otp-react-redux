@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-import { Bicycle, Bus, Walking } from '@styled-icons/fa-solid'
-import { Cog } from '@styled-icons/fa-solid/Cog'
 import { connect } from 'react-redux'
 import {
   defaultModeSettings,
@@ -10,7 +8,6 @@ import {
 import { injectIntl, IntlShape } from 'react-intl'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
-import coreUtils from '@opentripplanner/core-utils'
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import type { ModeButtonDefinition } from '@opentripplanner/types'
