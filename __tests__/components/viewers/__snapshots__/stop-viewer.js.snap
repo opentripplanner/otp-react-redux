@@ -1327,16 +1327,16 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         }
                                       }
                                     >
-                                      <styled.section
+                                      <styled.span
                                         color="333333"
                                       >
-                                        <section
-                                          className="sc-fmlJrY fflxRz"
+                                        <span
+                                          className="sc-fmlJrY bUSHCh"
                                           color="333333"
                                         >
                                           20
-                                        </section>
-                                      </styled.section>
+                                        </span>
+                                      </styled.span>
                                     </DefaultRouteRenderer>
                                   </strong>
                                   <FormattedMessage
@@ -4141,16 +4141,16 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         }
                                       }
                                     >
-                                      <styled.section
+                                      <styled.span
                                         color="333333"
                                       >
-                                        <section
-                                          className="sc-fmlJrY fflxRz"
+                                        <span
+                                          className="sc-fmlJrY bUSHCh"
                                           color="333333"
                                         >
                                           20
-                                        </section>
-                                      </styled.section>
+                                        </span>
+                                      </styled.span>
                                     </DefaultRouteRenderer>
                                   </strong>
                                   <FormattedMessage
@@ -6475,16 +6475,16 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         }
                                       }
                                     >
-                                      <styled.section
+                                      <styled.span
                                         color="333333"
                                       >
-                                        <section
-                                          className="sc-fmlJrY fflxRz"
+                                        <span
+                                          className="sc-fmlJrY bUSHCh"
                                           color="333333"
                                         >
                                           20
-                                        </section>
-                                      </styled.section>
+                                        </span>
+                                      </styled.span>
                                     </DefaultRouteRenderer>
                                   </strong>
                                   <FormattedMessage
@@ -10245,16 +10245,16 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                       }
                                     >
-                                      <styled.section
+                                      <styled.span
                                         color="333333"
                                       >
-                                        <section
-                                          className="sc-fmlJrY fflxRz"
+                                        <span
+                                          className="sc-fmlJrY bUSHCh"
                                           color="333333"
                                         >
                                           20
-                                        </section>
-                                      </styled.section>
+                                        </span>
+                                      </styled.span>
                                     </DefaultRouteRenderer>
                                   </strong>
                                   <FormattedMessage
@@ -11469,16 +11469,16 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                       }
                                     >
-                                      <styled.section
+                                      <styled.span
                                         color="333333"
                                       >
-                                        <section
-                                          className="sc-fmlJrY fflxRz"
+                                        <span
+                                          className="sc-fmlJrY bUSHCh"
                                           color="333333"
                                         >
                                           36
-                                        </section>
-                                      </styled.section>
+                                        </span>
+                                      </styled.span>
                                     </DefaultRouteRenderer>
                                   </strong>
                                   <FormattedMessage
@@ -12693,16 +12693,16 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                       }
                                     >
-                                      <styled.section
+                                      <styled.span
                                         color="333333"
                                       >
-                                        <section
-                                          className="sc-fmlJrY fflxRz"
+                                        <span
+                                          className="sc-fmlJrY bUSHCh"
                                           color="333333"
                                         >
                                           94
-                                        </section>
-                                      </styled.section>
+                                        </span>
+                                      </styled.span>
                                     </DefaultRouteRenderer>
                                   </strong>
                                   <FormattedMessage
@@ -14025,16 +14025,16 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         }
                                       }
                                     >
-                                      <styled.section
+                                      <styled.span
                                         color="333333"
                                       >
-                                        <section
-                                          className="sc-fmlJrY fflxRz"
+                                        <span
+                                          className="sc-fmlJrY bUSHCh"
                                           color="333333"
                                         >
                                           94
-                                        </section>
-                                      </styled.section>
+                                        </span>
+                                      </styled.span>
                                     </DefaultRouteRenderer>
                                   </strong>
                                   <FormattedMessage
@@ -18821,16 +18821,16 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         }
                                       }
                                     >
-                                      <styled.section
+                                      <styled.span
                                         color="333333"
                                       >
-                                        <section
-                                          className="sc-fmlJrY fflxRz"
+                                        <span
+                                          className="sc-fmlJrY bUSHCh"
                                           color="333333"
                                         >
                                           20
-                                        </section>
-                                      </styled.section>
+                                        </span>
+                                      </styled.span>
                                     </DefaultRouteRenderer>
                                   </strong>
                                   <FormattedMessage
