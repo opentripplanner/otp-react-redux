@@ -1378,33 +1378,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@floating-ui/core@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.0.1.tgz#00e64d74e911602c8533957af0cce5af6b2e93c8"
-  integrity sha512-bO37brCPfteXQfFY0DyNDGB3+IMe4j150KFQcgJ5aBP295p9nBGeHEs/p0czrRbtlHq4Px/yoPXO/+dOCcF4uA==
-
-"@floating-ui/dom@^1.0.0":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.0.2.tgz#c5184c52c6f50abd11052d71204f4be2d9245237"
-  integrity sha512-5X9WSvZ8/fjy3gDu8yx9HAA4KG1lazUN2P4/VnaXLxTO9Dz53HI1oYoh1OlhqFNlHgGDiwFX5WhFCc2ljbW3yA==
-  dependencies:
-    "@floating-ui/core" "^1.0.1"
-
-"@floating-ui/react-dom-interactions@^0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom-interactions/-/react-dom-interactions-0.10.1.tgz#45fc7c3d9a2ae58f0ef39078660e97594f484af8"
-  integrity sha512-mb9Sn/cnPjVlEucSZTSt4Iu7NAvqnXTvmzeE5EtfdRhVQO6L94dqqT+DPTmJmbiw4XqzoyGP+Q6J+I5iK2p6bw==
-  dependencies:
-    "@floating-ui/react-dom" "^1.0.0"
-    aria-hidden "^1.1.3"
-
-"@floating-ui/react-dom@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-1.0.0.tgz#e0975966694433f1f0abffeee5d8e6bb69b7d16e"
-  integrity sha512-uiOalFKPG937UCLm42RxjESTWUVpbbatvlphQAU6bsv+ence6IoVG8JOUZcy8eW81NkU+Idiwvx10WFLmR4MIg==
-  dependencies:
-    "@floating-ui/dom" "^1.0.0"
-
 "@formatjs/cli@^4.2.33":
   version "4.8.4"
   resolved "https://registry.yarnpkg.com/@formatjs/cli/-/cli-4.8.4.tgz#c4f4e589b8c77c950b659948dbf0e877a4d910fd"
@@ -2342,19 +2315,19 @@
   dependencies:
     "@octokit/openapi-types" "^10.0.0"
 
-"@opentripplanner/base-map@^3.0.4", "@opentripplanner/base-map@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.5.tgz#f398546955830f5f7c168f86bd806e61590f9fdb"
-  integrity sha512-8t/B7/VERbGzl3YnR2WjlhbGGrxlEsK7BvkcsqfrdkB707OUDGxZt89zQjyr2qGH11jkijiUNOS6KxKTl7e1Dg==
+"@opentripplanner/base-map@^3.0.4", "@opentripplanner/base-map@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.6.tgz#397cde7cc5d63cde55079bf72a796241a226b52a"
+  integrity sha512-oZTbHdXaWBDllyLs/DkvTp7JowGyBPGe9iZpcr8fMc8foLc2y7tzD5TT4B3qH9rnbz4c5LKUi1krcDBBKLAbMw==
   dependencies:
     mapbox-gl "npm:empty-npm-package@1.0.0"
     maplibre-gl "^2.1.9"
     react-map-gl "^7.0.15"
 
-"@opentripplanner/core-utils@^7.0.5":
-  version "7.0.8"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-7.0.8.tgz#8c8136081151a373e41794252288294e9485621c"
-  integrity sha512-atJSndItbC0Qh3CE2ZxjO2mEqsASr7nJsvzIL43VtCIS9KF+0x+EERGN/OmHP7T1P3uEe/CFockl+vtkJYmTDQ==
+"@opentripplanner/core-utils@^7.0.10":
+  version "7.0.10"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-7.0.10.tgz#697aa2309cee35716bcc3f38311739a75353172c"
+  integrity sha512-dDioXTuhP+Slg7GRWsLayDgwx0XaLQVDP7NtRGHBQ+pEFjgm66Xq4SkmyV+8UCi1uIDp7v49nTU3gBmnsywicQ==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.3.2"
@@ -2368,7 +2341,7 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^7.0.9":
+"@opentripplanner/core-utils@^7.0.5":
   version "7.0.9"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-7.0.9.tgz#d0193cb088768cd53a10149c4a5d4f62c020ff45"
   integrity sha512-Fot7D5pvMW8vQuGekPVxDCJtqQGtnFYFhhOoGZejipvk2DcURAl4rWCoUO1QeGFVqvLpV7JvCqLfciB8lca+iw==
@@ -2403,6 +2376,16 @@
   dependencies:
     "@opentripplanner/location-icon" "^1.4.0"
     flat "^5.0.2"
+
+"@opentripplanner/geocoder@1.3.3", "@opentripplanner/geocoder@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.3.3.tgz#7ba1f90e59a30d0306ebe641e8394cb60bd1a1d0"
+  integrity sha512-fBTdLg75OZ1Xsr3l1/XJIYlS+IDVPqm2k8fDwLYOFm+NzBo97ZZIdOkOt1ujCg0uJEv+W1KUR1WqOHwaJ0xk4Q==
+  dependencies:
+    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
+    "@conveyal/lonlat" "^1.4.1"
+    isomorphic-mapzen-search "^1.6.1"
+    lodash.memoize "^4.1.2"
 
 "@opentripplanner/geocoder@^1.3.2":
   version "1.3.2"
@@ -2444,14 +2427,14 @@
     react-animate-height "^3.0.4"
     react-resize-detector "^4.2.1"
 
-"@opentripplanner/location-field@1.12.9":
-  version "1.12.9"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.9.tgz#6eac62d9812471c501adb8cfcb26813d90c5f5ec"
-  integrity sha512-o5sKDiWcvlrSuJyt5zuiaN+jSBVpPHlXatfpIfgRDOClq1/7aaTKbHyAKigOwJoDrvxuhew5VDBmD61UdlfM/w==
+"@opentripplanner/location-field@1.12.11":
+  version "1.12.11"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.11.tgz#ed62de5ea20bfbbbc0f3d5ae65dc0cefcce54f69"
+  integrity sha512-HwZl/qLC0opsKoJPdxFJh7Ukf1Xf6M8+ybaIj/YpDZMa5afjqm454W3tHVwW0U0UOcF2w5oh7TNieM7Ug0lU3Q==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@opentripplanner/core-utils" "^7.0.5"
-    "@opentripplanner/geocoder" "^1.3.2"
+    "@opentripplanner/geocoder" "1.3.3"
     "@opentripplanner/humanize-distance" "^1.2.0"
     "@opentripplanner/location-icon" "^1.4.0"
     "@styled-icons/fa-solid" "^10.34.0"
@@ -2480,13 +2463,13 @@
   dependencies:
     "@opentripplanner/itinerary-body" "^4.1.3"
 
-"@opentripplanner/route-viewer-overlay@^2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-2.0.6.tgz#446c789372eb2909c23a6b6f65167b3dda43e88e"
-  integrity sha512-LhElfIML/BRslQ9X0AO/r59/Du0PNCBD1RqJcL3Pn+Pfxq1pzyYMOeKSJYE0+4ucIY2VKAwPKBXf0oivlfHcpw==
+"@opentripplanner/route-viewer-overlay@^2.0.8":
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-2.0.8.tgz#e99eb214699dc1ae3bd18d6086eb7ad16b60b478"
+  integrity sha512-srntD58xwc/5Ha9qFMmkTOAH+zqQpiQYi0QAHxFW8lSIwpNgARP0j6bZ9EHOoqBFgiMyNk+hIER+QbiWocKBTA==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/base-map" "^3.0.4"
+    "@opentripplanner/base-map" "^3.0.6"
     "@opentripplanner/core-utils" "^7.0.5"
     point-in-polygon "^1.1.0"
 
@@ -2528,22 +2511,22 @@
     "@opentripplanner/icons" "^2.0.0"
     flat "^5.0.2"
 
-"@opentripplanner/transitive-overlay@^3.0.8":
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-3.0.8.tgz#030b773900d92d8dbcc7dd6a6d246469b09faf06"
-  integrity sha512-26c2WW+hALgmo9Vv29q7AXayE5B9veKVR/YujzH2dZSmbGyN31CWwAunl3V2z/fMy+Ptq4rfIz0AU/cOTDTN2w==
+"@opentripplanner/transitive-overlay@^3.0.9":
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-3.0.9.tgz#23b7505b48da0a98af712b5a77aaf3f1a6baf5b8"
+  integrity sha512-KkByuOOGtMWbh+bXSuED9ltxrjw5GcrxAr9QXaXQC8Wq06ia5KuE+ItGO1v4lCJy9r7jjIwvjJTIeiTllLW/7A==
   dependencies:
     "@mapbox/polyline" "^1.1.1"
-    "@opentripplanner/base-map" "^3.0.4"
+    "@opentripplanner/base-map" "^3.0.6"
     "@opentripplanner/core-utils" "^7.0.5"
     "@opentripplanner/itinerary-body" "^4.1.3"
     "@turf/bbox" "^6.5.0"
     lodash.isequal "^4.5.0"
 
-"@opentripplanner/trip-details@^2.2.6":
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-2.2.6.tgz#fbfaea7195c389757cc9e2c1a9e726f2315a72a0"
-  integrity sha512-T+QeKsobSSXFLJRuw+04AC+WfJBOzxQQMa59zY8IPlGUtiZzpPdhBfJgQHJeQ5QacpO4wHvT2+x5/7epRG605Q==
+"@opentripplanner/trip-details@^2.2.7":
+  version "2.2.7"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-2.2.7.tgz#f117267c116df404efbccf9e5fd48f0ab31aca99"
+  integrity sha512-Rtt0pOZPjOx01Xb6cWYcNMraOS558Lz8uKsnTcebdwuwMQ+8ALQpCxdtx4NsOovA2C3q/GVTQUHI6uFgxUxRog==
   dependencies:
     "@opentripplanner/core-utils" "^7.0.5"
     "@styled-icons/fa-solid" "^10.34.0"
@@ -2566,19 +2549,19 @@
     react-indiana-drag-scroll "^2.0.1"
     react-inlinesvg "^2.3.0"
 
-"@opentripplanner/trip-viewer-overlay@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-viewer-overlay/-/trip-viewer-overlay-2.0.3.tgz#341aa923f67f93dd3a1cd3c23e66b6868a0d0c20"
-  integrity sha512-O4MSpwTU5oViiXFNxVxb6zoE/5PRqHG+RQ5Cq/lqSSF8QzhN00gM4v03OAZLIw+dBFZhkV8ey+RaT/8po1Tuew==
+"@opentripplanner/trip-viewer-overlay@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-viewer-overlay/-/trip-viewer-overlay-2.0.4.tgz#54e032ae31eaa4931cf2052645c6f2622dafe3e5"
+  integrity sha512-U3d7OlMxyXJJrJTho97pvhbtxUh128/+Ot2B98Pacx53c51yK22Q5EkZU8w3kaix0AF3uWQ1r9Dj4T1xI95BNg==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/base-map" "^3.0.4"
+    "@opentripplanner/base-map" "^3.0.6"
     "@opentripplanner/core-utils" "^7.0.5"
 
-"@opentripplanner/types@^4.0.3":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-4.0.3.tgz#37230f6f47d131e15cd6c4fb424c8add31145f6d"
-  integrity sha512-XW0gWvYcY5OLVdY9ezuKVp4xXe2fIrU79RFNrsC8jezFTP8vlNs8DT9Z9genojcr9h+zBEWfuLoQPew+j5elgA==
+"@opentripplanner/types@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-4.0.4.tgz#fd9d0de7075a1b38d384561815b73f4cd3aec19d"
+  integrity sha512-fW9JCdz8bmoOE5pJFiEreRsIPIQdwJwlISODrBHD7PBznuNHBbluCRJTsc3FD3qqS6mLwMzLzYLuuADi0Om5fg==
 
 "@opentripplanner/vehicle-rental-overlay@^2.0.4":
   version "2.0.4"
@@ -2592,105 +2575,105 @@
     flat "^5.0.2"
     lodash.memoize "^4.1.2"
 
-"@percy/cli-app@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/cli-app/-/cli-app-1.14.0.tgz#8a95f520a3364cce3dea2c6c5a161da9b96c5433"
-  integrity sha512-EhvQZ6QeZzTj2MRCc1IibOzha5FaCwkAzp1PJUKEmu7PWpFtOeK2G0cOst6l35tJ0fHnhcpuf1SP4/3D32ucQw==
+"@percy/cli-app@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/cli-app/-/cli-app-1.16.0.tgz#573b0adf8cc2d56f9ef18ecbbd7e6a57dc341cde"
+  integrity sha512-Igmkod0vGcBj1KSB5JZrKoXuUSRPuceHVm+BjR23R5O/Gv9whKT7Zn1wEGhWNTS7cFz0B0Qg9uKiqjUcU9jNHQ==
   dependencies:
-    "@percy/cli-command" "1.14.0"
-    "@percy/cli-exec" "1.14.0"
+    "@percy/cli-command" "1.16.0"
+    "@percy/cli-exec" "1.16.0"
 
-"@percy/cli-build@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/cli-build/-/cli-build-1.14.0.tgz#b63d45d5d7fc8ed104f02d364cd69d996543b375"
-  integrity sha512-eUi6Erv3vWP7FaWbbabp2gjwDVrB/bAD3OcHGGyX22hprrMN3teWtuS7c7xOeQ7vjBFMawpoDz9DF8gWUnBRNA==
+"@percy/cli-build@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/cli-build/-/cli-build-1.16.0.tgz#8084ea3806f76f93c8ffa5429666c0fc5a47e98e"
+  integrity sha512-23rEYqwCtpXprvduwEOAlQLfOZhO0KTVMNM/25nrmiOwPvcEcB8cLeGdCq48JNR3GvbZrDaXP8UxJaCmkTiZow==
   dependencies:
-    "@percy/cli-command" "1.14.0"
+    "@percy/cli-command" "1.16.0"
 
-"@percy/cli-command@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/cli-command/-/cli-command-1.14.0.tgz#c3ff425491c38afd0d1612b62cccccaf06913c9d"
-  integrity sha512-ydX2eIxG1lozvRx3vgIfF5eeTYRlCUx6imcEd3uNts0S/QtaX48BAz0oe8WEXKM+EmSXYx16yLaHCetc5bHkbw==
+"@percy/cli-command@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/cli-command/-/cli-command-1.16.0.tgz#18fd0d1f2d7eff07ef851367c40e6a163e5c4a30"
+  integrity sha512-MXRyDA9iRfFTVpSL/+GWEGnB19EU+qb16u1fdSHlSp/BHNiGIFmF2yRw4TepAKkiYuJmzFNyqEcdKAnwWB77qA==
   dependencies:
-    "@percy/config" "1.14.0"
-    "@percy/core" "1.14.0"
-    "@percy/logger" "1.14.0"
+    "@percy/config" "1.16.0"
+    "@percy/core" "1.16.0"
+    "@percy/logger" "1.16.0"
 
-"@percy/cli-config@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/cli-config/-/cli-config-1.14.0.tgz#e23431abfcff5304850b181152609fa53bf05c56"
-  integrity sha512-k/Jd/4SV5u8B1k9UFJ5M4aWBMA//YiHmOVdrxNroMnj1EVstjdcD/JywW2/uUMIksrC+cqTKicnWMCGRJW3yig==
+"@percy/cli-config@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/cli-config/-/cli-config-1.16.0.tgz#8454ae91d39bb807f135bad8ef912f6c2021c33c"
+  integrity sha512-wsGGpqhcFVjRoq9sZl9LxKho5FOaasSYzxBlNGnfbrcCxZEhSmiszoss/115IgBaioSFBwybu3z0crGhbffS5g==
   dependencies:
-    "@percy/cli-command" "1.14.0"
+    "@percy/cli-command" "1.16.0"
 
-"@percy/cli-exec@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/cli-exec/-/cli-exec-1.14.0.tgz#2d85151c1a0a2bb4b787907c4489abbbb5ed4836"
-  integrity sha512-EK02ry9aGSKrNBnDF6pb9QSRxi2Jpdr1HM7rRGLHPnAnQD4bp9RvKwjVDxguPDARYCg2IEKV9XxtH5seAfNHSw==
+"@percy/cli-exec@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/cli-exec/-/cli-exec-1.16.0.tgz#c8bd57e76e3de7261cdb966353a85fc73a263289"
+  integrity sha512-INZA1lCATlTpZLxd3GeWzbxd3dARsBYW/NvtnlWNs5svoMHYgzjNqraodZFfKLCdmiZ4uH2D6az8P/Ho4h+4Fw==
   dependencies:
-    "@percy/cli-command" "1.14.0"
+    "@percy/cli-command" "1.16.0"
     cross-spawn "^7.0.3"
     which "^2.0.2"
 
-"@percy/cli-snapshot@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/cli-snapshot/-/cli-snapshot-1.14.0.tgz#2ce94f255f52b67bc2f2f96ce5bc0d759c3de9a0"
-  integrity sha512-JSzCmLCAioc722GSUYJEsTRQ/Zx5/igPGj9ABh2UdLnVn+aNX3QGT1ohcYZaUvurU2D2FHXzX2gOKfMHCJUlSg==
+"@percy/cli-snapshot@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/cli-snapshot/-/cli-snapshot-1.16.0.tgz#1af3e5aca759a68bb7c860e520815fbb04312c5f"
+  integrity sha512-t92+vTWxfL/5BLZncMy9yWgTIvwDuANXEfCb3EjWuW5s9WY0rlG/Vl+LMY4wffDyT+Kcc63dW7kQSgSLS7t/bw==
   dependencies:
-    "@percy/cli-command" "1.14.0"
+    "@percy/cli-command" "1.16.0"
     yaml "^2.0.0"
 
-"@percy/cli-upload@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/cli-upload/-/cli-upload-1.14.0.tgz#7aba1c82a1aa7bb08feed5996ba8197d0ec1d7e3"
-  integrity sha512-8T+ntRmbSfu3T8QMq7ufO6GdbyFbT/qGbe2B8ZPqWNQ1PRgVZxVaA0T7iPZv4+PB36tq08hMNRWljoH72VhiFQ==
+"@percy/cli-upload@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/cli-upload/-/cli-upload-1.16.0.tgz#b0062788097a03e90cb672fdfe677375c49a72dd"
+  integrity sha512-syRiw/wAuW7z644SspgAgEjcf7xtiY7mxEqXjJFuhxa3nYm1TjTSgYsQHecYAOhWAc4rbngNnVNuben3F8mqFg==
   dependencies:
-    "@percy/cli-command" "1.14.0"
+    "@percy/cli-command" "1.16.0"
     fast-glob "^3.2.11"
     image-size "^1.0.0"
 
-"@percy/cli@^1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/cli/-/cli-1.14.0.tgz#3c8d6c0501d73b44002ce13e3151ba75789ca083"
-  integrity sha512-F/dxBRXr6WWJd5BkRjnUkyUuQgoIyGir3wUqWQEZRjkIdLlo91PC6cyQXquCcQ4G97tMkWP4rfWvpE5EvQRMrg==
+"@percy/cli@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/cli/-/cli-1.16.0.tgz#4d91e20982d06eb193b0253ae89711e6c47b4e41"
+  integrity sha512-ICvtqlCVFnyUO3hJjza5CzeCDiA8dzfzZEmDf3pBxQox2p1xlO/p6/HE+8OR8vi8xNwNU+iytEfbpl0t8NQxHw==
   dependencies:
-    "@percy/cli-app" "1.14.0"
-    "@percy/cli-build" "1.14.0"
-    "@percy/cli-command" "1.14.0"
-    "@percy/cli-config" "1.14.0"
-    "@percy/cli-exec" "1.14.0"
-    "@percy/cli-snapshot" "1.14.0"
-    "@percy/cli-upload" "1.14.0"
-    "@percy/client" "1.14.0"
-    "@percy/logger" "1.14.0"
+    "@percy/cli-app" "1.16.0"
+    "@percy/cli-build" "1.16.0"
+    "@percy/cli-command" "1.16.0"
+    "@percy/cli-config" "1.16.0"
+    "@percy/cli-exec" "1.16.0"
+    "@percy/cli-snapshot" "1.16.0"
+    "@percy/cli-upload" "1.16.0"
+    "@percy/client" "1.16.0"
+    "@percy/logger" "1.16.0"
 
-"@percy/client@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/client/-/client-1.14.0.tgz#8c4c0a097629bb30fa6b3ab74f9784f45aed39d2"
-  integrity sha512-Fs3WNkKM0qvPIGJPe1+YIUDuIpEcILBI/KIPuN/nuKziz077nV0qCMb/thSE2qw9ER1GQ9/N7Wx9ZR2mWrWp8w==
+"@percy/client@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/client/-/client-1.16.0.tgz#f48c63fb37e02ce5f9438c4f871315f0b8d74dc5"
+  integrity sha512-P0vbuKIE2H5lk/47HWDM6T8bJzv9pBQjY5LFQ3vQdvsRWah2fY/EV02D5WLh4qyBow5RdnFrbpV24oRKs1tX9A==
   dependencies:
-    "@percy/env" "1.14.0"
-    "@percy/logger" "1.14.0"
+    "@percy/env" "1.16.0"
+    "@percy/logger" "1.16.0"
 
-"@percy/config@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/config/-/config-1.14.0.tgz#11f6d7d4c1f9b01d6aad05a4d13cdf5784eb7659"
-  integrity sha512-N2yzDU93LYseq6bBjK4/Zf9ANM0TezBaNNalolhOepQnYceff3TkvRtC9Bq8Hrxt+/fTWxSG9CXvr/erwvagNQ==
+"@percy/config@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/config/-/config-1.16.0.tgz#016426f8b9377ae4ff076e874e520f521c6f72a4"
+  integrity sha512-yF9iYh9HwoRgCAeHcYG4tZMsU8fv4lL+YNQPdJazxBMnNxxMegxFGMf51gMbn5OBallRjRlWMnOif0IiQz4Siw==
   dependencies:
-    "@percy/logger" "1.14.0"
+    "@percy/logger" "1.16.0"
     ajv "^8.6.2"
     cosmiconfig "^7.0.0"
     yaml "^2.0.0"
 
-"@percy/core@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/core/-/core-1.14.0.tgz#47d68620c0a6fa414a6acbf6ee6d08c6dc8d6b09"
-  integrity sha512-iSKJ5WDCfW4d+3Oi1HzMXUKXdBFu5i+Kgz60PDJyDn7lBXrCKRfAACvPG97X+tg+vmvSanODFhFWKjX5f2wlzw==
+"@percy/core@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/core/-/core-1.16.0.tgz#5744e5f9bccb86be4959af34cdde8e3cf909540d"
+  integrity sha512-J342BLq7DY5Z/2EX5z2XYGftS/yRAf7FKTcT4J40VB4c6dX54e0uMm+t7yu/djkFEdbzXQvMWuGGaQj3WYW+4w==
   dependencies:
-    "@percy/client" "1.14.0"
-    "@percy/config" "1.14.0"
-    "@percy/dom" "1.14.0"
-    "@percy/logger" "1.14.0"
+    "@percy/client" "1.16.0"
+    "@percy/config" "1.16.0"
+    "@percy/dom" "1.16.0"
+    "@percy/logger" "1.16.0"
     content-disposition "^0.5.4"
     cross-spawn "^7.0.3"
     extract-zip "^2.0.1"
@@ -2701,39 +2684,32 @@
     rimraf "^3.0.2"
     ws "^8.0.0"
 
-"@percy/dom@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/dom/-/dom-1.14.0.tgz#3cb173d95d453a92d683b28bfd77397128c9fafe"
-  integrity sha512-fNXFXAFu/yoEWpT2KTJ5nflQWPO7dcgTnPyjlK2h/ktoHElT9bab9NX/Dl2fhzTd6UCVzAN4RmRD+NSqy3xilg==
+"@percy/dom@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/dom/-/dom-1.16.0.tgz#e53df5e519f0873b04888073dc02e6ae5d91af08"
+  integrity sha512-jAH9gwQ8vjRm6EAYlk59b5je4jlqh+lM7YiGADCxwHDpbAvgJxu/getnaNAxvygeXnmTn87ZwInPhIa4WeBYIg==
 
-"@percy/env@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/env/-/env-1.14.0.tgz#2ab6cc39a621068c870c12054030f4fc4a05a04f"
-  integrity sha512-nqvqDR1CGNwb/ewRgglbiXid0cAp8LGHIPsRPy2hoIcfRx8dVvHKdFF6uL7Bysz17MEK/exJyjqykT+MWm0/1w==
+"@percy/env@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/env/-/env-1.16.0.tgz#cef30cff069ccbb51749f4f9ea91aa7702769dba"
+  integrity sha512-MRyUk5fQ9EXNVirupSYX5OaMAsvE7db8OVeJrM2RyzcEB16xMmI5rpj7HPu7eTU6Spe0KXbqaDze3Slr5aPHpA==
 
-"@percy/logger@1.0.0-beta.76":
-  version "1.0.0-beta.76"
-  resolved "https://registry.yarnpkg.com/@percy/logger/-/logger-1.0.0-beta.76.tgz#1a75c583670acc078389a43d8b7410fd655c0b92"
-  integrity sha512-v5zIMNv1xqdcWBAOK5A6ZEO99ZBwzWS3phLEfkKbIlGIUxvjkJHSfZv/k1dnt2RRfpDNkM6X5pMg2yI8j1+d+g==
+"@percy/logger@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/logger/-/logger-1.16.0.tgz#e6804d1770869266226eff77fdc2e5cf9992473b"
+  integrity sha512-u9zTj6BcUmqknrcikrunRpkRr+uQlENhgK/m0Zokxtv9CgkmNzR8oLoseJjU5P4zGZEiJE/v7wnzNC1ezvS9nQ==
 
-"@percy/logger@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@percy/logger/-/logger-1.14.0.tgz#9c6e72bd9a250db01297a004e5dca71e9dcb023a"
-  integrity sha512-Bv9klBhjA44hTL/roAh8YBQdJ1Q+PzVpelEt1xk4oF51lbXKc+jlGXzS9xXpXm1qqZj+Kg+sqhCBT2X6X3ErTA==
-
-"@percy/puppeteer@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@percy/puppeteer/-/puppeteer-2.0.0.tgz#f9a06f1572a1966177a95eb336ec827a98675b3e"
-  integrity sha512-AAErUA1NEELBmOIscHBJB064+6x7N2ZIA9EisBfB6ff1HJK58t2x7VGRNQjGsXvq/RP0wrLzmUY3uSSb2gQhVQ==
+"@percy/puppeteer@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@percy/puppeteer/-/puppeteer-2.0.2.tgz#3143e882d9e2250b8d934034e1af51c6992ef9de"
+  integrity sha512-DPyh5UyttPPXMNl3o6Owox7bnV54aQ7sIWfcsXUBZ6q1wLVmBjc5KP4x51dpPiuTDn3SMzFExMrXBFugfDJHPA==
   dependencies:
-    "@percy/sdk-utils" "^1.0.0-beta.32"
+    "@percy/sdk-utils" "^1.0.0"
 
-"@percy/sdk-utils@^1.0.0-beta.32":
-  version "1.0.0-beta.76"
-  resolved "https://registry.yarnpkg.com/@percy/sdk-utils/-/sdk-utils-1.0.0-beta.76.tgz#71b4d7a7664b7029761aea5850295defeb134f98"
-  integrity sha512-5B070+VlTiCjxmwHU5Q8+ow1dGdmOkukY8TkSBkkbSs2OE4IPcYBlb+t/hGhpw7D34znPXc2dmUrZrbXwkRd2A==
-  dependencies:
-    "@percy/logger" "1.0.0-beta.76"
+"@percy/sdk-utils@^1.0.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@percy/sdk-utils/-/sdk-utils-1.16.0.tgz#d5076d83701e9dad9383283877e63f433165d051"
+  integrity sha512-/nPyK4NCjFGYNVQ7vOivfuEYveOJhA4gWzB7w2PjCkw/Y3kCtu+axRpUiDPEybTz2H6RTvr+I526DbtUYguqVw==
 
 "@pmmmwh/react-refresh-webpack-plugin@0.4.3", "@pmmmwh/react-refresh-webpack-plugin@^0.4.3":
   version "0.4.3"
@@ -4235,12 +4211,12 @@ anymatch@^3.0.0, anymatch@^3.0.3, anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-aproba@^1.0.3, "aproba@^1.0.3 || ^2.0.0", aproba@^1.1.1:
+aproba@^1.0.3, aproba@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.2.0.tgz#6802e6264efd18c790a1b0d517f0f2627bf2c94a"
   integrity sha512-Y9J6ZjXtoYh8RnXVCMOU/ttDmk1aBjunq9vO0ta5x85WDQiQfUF9sIPBITdbiiIVcBo03Hi3jMxigBtsddlXRw==
 
-aproba@^2.0.0:
+"aproba@^1.0.3 || ^2.0.0", aproba@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-2.0.0.tgz#52520b8ae5b569215b354efc0caa3fe1e45a8adc"
   integrity sha512-lYe4Gx7QT+MKGbDsA+Z+he/Wtef0BiwDOlK/XkBrdfsh9J/jPPXbX0tE9x9cl27Tmu5gg3QUbUrQYa/y+KOHPQ==
@@ -4284,13 +4260,6 @@ argv-formatter@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/argv-formatter/-/argv-formatter-1.0.0.tgz#a0ca0cbc29a5b73e836eebe1cbf6c5e0e4eb82f9"
   integrity sha1-oMoMvCmltz6Dbuvhy/bF4OTrgvk=
-
-aria-hidden@^1.1.3:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/aria-hidden/-/aria-hidden-1.2.1.tgz#ad8c1edbde360b454eb2bf717ea02da00bfee0f8"
-  integrity sha512-PN344VAf9j1EAi+jyVHOJ8XidQdPVssGco39eNcsGdM4wcsILtxrKLkbuiMfLWYROK1FjRQasMWCBttrhjnr6A==
-  dependencies:
-    tslib "^2.0.0"
 
 aria-query@^4.2.2:
   version "4.2.2"
@@ -15919,12 +15888,12 @@ sade@^1.4.2:
   dependencies:
     mri "^1.1.0"
 
-safe-buffer@5.1.2, safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
+safe-buffer@5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
 
-safe-buffer@5.2.1, safe-buffer@^5.2.0:
+safe-buffer@5.2.1, safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@^5.2.0:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
   integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
@@ -16887,14 +16856,14 @@ strip-ansi@6.0.0:
   dependencies:
     ansi-regex "^5.0.0"
 
-strip-ansi@^3.0.0, strip-ansi@^3.0.1, "strip-ansi@^3.0.1 || ^4.0.0":
+strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-3.0.1.tgz#6a385fb8853d952d5ff05d0e8aaf94278dc63dcf"
   integrity sha1-ajhfuIU9lS1f8F0Oiq+UJ43GPc8=
   dependencies:
     ansi-regex "^2.0.0"
 
-strip-ansi@^4.0.0:
+"strip-ansi@^3.0.1 || ^4.0.0", strip-ansi@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-4.0.0.tgz#a8479022eb1ac368a871389b635262c505ee368f"
   integrity sha1-qEeQIusaw2iocTibY1JixQXuNo8=
@@ -17546,11 +17515,6 @@ tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
-
-tslib@^2.0.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
-  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
 
 tslib@^2.0.3, tslib@^2.1.0, tslib@^2.2.0:
   version "2.3.1"

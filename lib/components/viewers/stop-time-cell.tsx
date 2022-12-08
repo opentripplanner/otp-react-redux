@@ -91,7 +91,7 @@ const StopTimeCell = ({
 
   return (
     <div>
-      <div className="pull-left">
+      <div className="pull-left percy-hide">
         <StyledIconWrapperTextAlign
           style={{ color: '#888', fontSize: '0.8em', marginRight: 2 }}
         >

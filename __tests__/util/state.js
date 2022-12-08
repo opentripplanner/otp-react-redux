@@ -1,6 +1,7 @@
 /* globals describe, expect, it */
 
-import {queryIsValid} from '../../lib/util/state'
+import '../test-utils/mock-window-url'
+import { queryIsValid } from '../../lib/util/state'
 
 describe('util > state', () => {
   describe('queryIsValid', () => {
@@ -12,32 +13,38 @@ describe('util > state', () => {
       lat: 34,
       lon: 12
     }
-    const testCases = [{
-      expected: false,
-      input: {
-        otp: {
-          currentQuery: {
-            from: fakeFromLocation
+    const testCases = [
+      {
+        expected: false,
+        input: {
+          otp: {
+            currentQuery: {
+              from: fakeFromLocation
+            }
           }
-        }
+        },
+        title: 'should not be valid with only from location'
       },
-      title: 'should not be valid with only from location'
-    }, {
-      expected: true,
-      input: {
-        otp: {
-          currentQuery: {
-            from: fakeFromLocation,
-            to: fakeToLocation
+      {
+        expected: true,
+        input: {
+          otp: {
+            currentQuery: {
+              from: fakeFromLocation,
+              to: fakeToLocation
+            }
           }
-        }
-      },
-      title: 'should be valid with from and to locations'
-    }]
+        },
+        title: 'should be valid with from and to locations'
+      }
+    ]
 
     testCases.forEach((testCase) => {
+      // eslint-disable-next-line jest/valid-title
       it(testCase.title, () => {
-        expect(queryIsValid(testCase.input))[testCase.expected ? 'toBeTruthy' : 'toBeFalsy']()
+        expect(queryIsValid(testCase.input))[
+          testCase.expected ? 'toBeTruthy' : 'toBeFalsy'
+        ]()
       })
     })
   })
