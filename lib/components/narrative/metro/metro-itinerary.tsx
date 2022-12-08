@@ -20,6 +20,7 @@ import {
 } from '../../../util/accessibility-routing'
 import { getActiveSearch, getFare } from '../../../util/state'
 import { ItineraryDescription } from '../default/itinerary-description'
+import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import { localizeGradationMap } from '../utils'
 import FormattedDuration, {
   formatDuration
@@ -35,7 +36,10 @@ import {
   getItineraryRoutes,
   removeInsignifigantWalkLegs
 } from './attribute-utils'
+import { IconWithText } from '../../util/styledIcon'
 import RouteBlock from './route-block'
+
+import Sub from '../../util/sub-text'
 
 const { ItineraryView } = uiActions
 
@@ -87,6 +91,13 @@ const SecondaryInfo = styled.span`
 `
 
 const Spacer = styled.span``
+
+const ItineraryNote = styled.div`
+  background: mediumseagreen;
+  color: white;
+  padding: 4px 8px;
+  text-align: right;
+`
 
 const Routes = styled.section<{ enableDot?: boolean }>`
   display: flex;
@@ -231,6 +242,7 @@ class MetroItinerary extends NarrativeItinerary {
       accessibilityScoreGradationMap,
       active,
       activeItineraryTimeIndex,
+      co2Config,
       currency,
       defaultFareKey,
       enableDot,
@@ -257,6 +269,29 @@ class MetroItinerary extends NarrativeItinerary {
       currency
     )
 
+    const roundedCo2VsBaseline = Math.round(itinerary.co2VsBaseline * 100)
+    const emissionsNote = !mini &&
+      Math.abs(roundedCo2VsBaseline) >= (co2Config?.cutoffPercentage || 0) &&
+      (roundedCo2VsBaseline < 0 || co2Config?.showIfHigher) &&
+      co2Config?.enabled && (
+        <IconWithText Icon={Leaf}>
+          <FormattedMessage
+            id="common.itineraryDescriptions.relativeCo2"
+            values={{
+              co2: (
+                <FormattedNumber
+                  style="unit"
+                  unit="percent"
+                  unitDisplay="narrow"
+                  value={Math.abs(roundedCo2VsBaseline)}
+                />
+              ),
+              isMore: roundedCo2VsBaseline > 0,
+              sub: Sub
+            }}
+          />
+        </IconWithText>
+      )
     const localizedGradationMapWithIcons = localizeGradationMap(
       intl,
       SvgIcon,
@@ -339,6 +374,7 @@ class MetroItinerary extends NarrativeItinerary {
             )}
             className={`itin-wrapper${mini ? '-small' : ''}`}
           >
+            {emissionsNote && <ItineraryNote>{emissionsNote}</ItineraryNote>}
             {itineraryHasAccessibilityScores(itinerary) && (
               <AccessibilityRating
                 gradationMap={localizedGradationMapWithIcons}
@@ -447,12 +483,12 @@ const mapStateToProps = (state: any, ownProps: Props) => {
     accessibilityScoreGradationMap:
       state.otp.config.accessibilityScore?.gradationMap,
     activeItineraryTimeIndex,
+    co2Config: state.otp.config.co2,
     configCosts: state.otp.config.itinerary?.costs,
     // The configured (ambient) currency is needed for rendering the cost
     // of itineraries whether they include a fare or not, in which case
     // we show $0.00 or its equivalent in the configured currency and selected locale.
     currency: state.otp.config.localization?.currency || 'USD',
-
     defaultFareKey: state.otp.config.itinerary?.defaultFareKey,
     enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
     showLegDurations: state.otp.config.itinerary?.showLegDurations

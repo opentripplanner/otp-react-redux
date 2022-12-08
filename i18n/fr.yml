@@ -673,6 +673,13 @@ common:
     # Note to translator: noTransitFareProvided is width-constrained.
     noTransitFareProvided: Tarif inconnu
     transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
+    relativeCo2: >
+      {co2}
+      de CO<sub>2</sub> en 
+      {isMore, select,
+      true {plus}
+      other {moins}
+      } qu'en voiture.
 
   # Note to translator: some of the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
