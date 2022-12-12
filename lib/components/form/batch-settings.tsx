@@ -50,7 +50,11 @@ const ModeButtonsFullWidth = styled(ModeButtons)`
 `
 
 const ModeButtonsContainerCompressed = styled.div`
-  display: contents;
+  display: flex;
+
+  @media (max-width: 355px), (min-width: 991px) and (max-width: 1110px) {
+    display: contents;
+  }
 `
 
 const ModeButtonsCompressed = styled(ModeButtons)`
@@ -156,24 +160,24 @@ function BatchSettings({
             onSettingsUpdate={setModeSettingValue}
             onToggleModeButton={toggleModeButton}
           />
+          <PlanTripButton
+            id="plan-trip"
+            onClick={_planTrip}
+            title={intl.formatMessage({
+              id: 'components.BatchSettings.planTripTooltip'
+            })}
+          >
+            <StyledIconWrapper style={{ fontSize: '1.6em' }}>
+              {hasValidLocation(currentQuery, 'from') &&
+              hasValidLocation(currentQuery, 'to') &&
+              !!activeSearch ? (
+                <SyncAlt />
+              ) : (
+                <Search />
+              )}
+            </StyledIconWrapper>
+          </PlanTripButton>
         </ModeButtonsContainerCompressed>
-        <PlanTripButton
-          id="plan-trip"
-          onClick={_planTrip}
-          title={intl.formatMessage({
-            id: 'components.BatchSettings.planTripTooltip'
-          })}
-        >
-          <StyledIconWrapper style={{ fontSize: '1.6em' }}>
-            {hasValidLocation(currentQuery, 'from') &&
-            hasValidLocation(currentQuery, 'to') &&
-            !!activeSearch ? (
-              <SyncAlt />
-            ) : (
-              <Search />
-            )}
-          </StyledIconWrapper>
-        </PlanTripButton>
       </MainSettingsRow>
       {expanded === 'DATE_TIME' && (
         <DateTimeModalContainer>

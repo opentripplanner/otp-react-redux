@@ -16,13 +16,20 @@ const activeCss = css`
 `
 
 export const buttonCss = css`
-  height: 45px;
-  width: 45px;
+  height: 51px;
+  width: 51px;
   margin: 0px;
   border: 0px;
   border-radius: 5px;
+  transition: all 250ms cubic-bezier(0.27, 0.01, 0.38, 1.06);
   &:active {
     ${activeCss}
+  }
+
+  &:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05),
+      0 4px 10px rgba(0, 123, 255, 0.25);
+    transition: all 250ms cubic-bezier(0.27, 0.01, 0.38, 1.06);
   }
 `
 
@@ -53,6 +60,10 @@ export const PlanTripButton = styled(Button)`
   background-color: green;
   color: #ffffffdd;
   padding: 5px;
+  grid-row: 2;
+  grid-column: -1;
+  align-item: right;
+
   &:active {
     ${activeCss}
     filter: saturate(50%);
@@ -83,13 +94,19 @@ export const BatchPreferencesContainer = styled.div`
   ${expandableBoxCss}
   padding: 5px 10px;
 `
-
 export const MainSettingsRow = styled.div`
   align-items: top;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 5px;
+
+  @media (max-width: 355px), (min-width: 991px) and (max-width: 1110px) {
+    display: grid;
+    grid-template-columns: repeat(4, 20%);
+    grid-auto-rows: 1fr;
+    gap: 15px 0;
+  }
 `
 
 // FIXME: This is identical to StyledSettingsSelectorPanel, with a
