@@ -101,7 +101,7 @@ export const StyledBatchPreferences = styled(SettingsSelectorPanel)`
   ${TripFormClasses.SettingLabel} {
     color: #686868;
     font-size: 14px;
-    font-weight: 100;
+    font-weight: inherit;
     letter-spacing: 1px;
     padding-top: 8px;
     text-transform: uppercase;
