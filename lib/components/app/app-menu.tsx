@@ -11,7 +11,6 @@ import { MenuItem } from 'react-bootstrap'
 import { Undo } from '@styled-icons/fa-solid/Undo'
 import { withRouter } from 'react-router'
 import AnimateHeight from 'react-animate-height'
-import qs from 'qs'
 import React, { Component, Fragment, useContext } from 'react'
 import SlidingPane from 'react-sliding-pane'
 import type { RouteComponentProps } from 'react-router'
@@ -61,6 +60,8 @@ class AppMenu extends Component<
   AppMenuProps & WrappedComponentProps & RouteComponentProps,
   AppMenuState
 > {
+  static contextType = ComponentContext
+
   state = {
     expandedSubmenus: {} as Record<string, boolean>,
     isPaneOpen: false
@@ -174,6 +175,7 @@ class AppMenu extends Component<
     } = this.props
 
     const { isPaneOpen } = this.state
+    const { SvgIcon } = this.context
     return (
       <>
         <div
@@ -219,7 +221,7 @@ class AppMenu extends Component<
             {popupTarget && (
               <MenuItem className="menu-item" onClick={this._triggerPopup}>
                 <StyledIconWrapper>
-                  <ExternalLinkSquareAlt />
+                  <SvgIcon iconName={popupTarget} />
                 </StyledIconWrapper>
                 <FormattedMessage id={`config.popups.${popupTarget}`} />
               </MenuItem>
