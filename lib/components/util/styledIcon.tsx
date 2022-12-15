@@ -50,7 +50,7 @@ export const StyledIconWrapper = styled.span<Props>`
   animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1.2s linear
     infinite;
   display: ${(props) => (props.spin ? 'block' : 'initial')};
-  ${StyledIconBase} {
+  svg {
     width: 1em;
     height: 1em;
     font-size: ${(props) => getFontSize(props.size)};
@@ -62,7 +62,7 @@ export const StyledIconWrapper = styled.span<Props>`
 `
 
 export const StyledIconWrapperTextAlign = styled(StyledIconWrapper)<Props>`
-  ${StyledIconBase} {
+  svg {
     margin: -0.125em 0;
     vertical-align: baseline;
   }
