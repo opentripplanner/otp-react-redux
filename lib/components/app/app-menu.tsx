@@ -319,14 +319,10 @@ const IconAndLabel = ({
           )}
           src={iconUrl}
         />
+      ) : iconType ? (
+        <SvgIcon iconName={iconType} />
       ) : (
-        <StyledIconWrapper>
-          {iconType ? (
-            <SvgIcon iconName={iconType} />
-          ) : (
-            <ExternalLinkSquareAlt />
-          )}
-        </StyledIconWrapper>
+        <ExternalLinkSquareAlt />
       )}
       {label}
     </span>
