@@ -460,6 +460,7 @@ itinerary:
 #           0.9: 'Mostly Accessible'
 #       popups:
 #         testTarget: Test Target!
+#         testTarget-narrow: Target! # used for narrow UI elements such as link buttons under trip details.
 #       menuItems:
 #         demo-item: Demo Item
 #     errorMessages:
