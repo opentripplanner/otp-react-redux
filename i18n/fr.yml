@@ -89,6 +89,7 @@ components:
     bannedRoutes: Choisissez les lignes à éviter
     maxBike: Dist. à vélo ({unitsString})
     maxWalk: Dist. à pied ({unitsString})
+    walkReluctance: Réticence à marcher
     preferredRoutes: Choisissez les lignes preferées
   AfterSignInScreen:
     mainTitle: Redirection...
