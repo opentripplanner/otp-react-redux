@@ -20,6 +20,7 @@ import {
 } from '../../../util/accessibility-routing'
 import { getActiveSearch, getFare } from '../../../util/state'
 import { ItineraryDescription } from '../default/itinerary-description'
+import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import { localizeGradationMap } from '../utils'
 import FormattedDuration, {
   formatDuration
@@ -35,7 +36,10 @@ import {
   getItineraryRoutes,
   removeInsignifigantWalkLegs
 } from './attribute-utils'
+import { IconWithText } from '../../util/styledIcon'
 import RouteBlock from './route-block'
+
+import Sub from '../../util/sub-text'
 
 const { ItineraryView } = uiActions
 
@@ -62,7 +66,7 @@ const DepartureTimes = styled.span`
     cursor: auto;
   }
 
-  button {
+  div.header {
     background: none;
     border: none;
     display: inline;
@@ -87,6 +91,13 @@ const SecondaryInfo = styled.span`
 `
 
 const Spacer = styled.span``
+
+const ItineraryNote = styled.div`
+  background: mediumseagreen;
+  color: white;
+  padding: 4px 8px;
+  text-align: right;
+`
 
 const Routes = styled.section<{ enableDot?: boolean }>`
   display: flex;
@@ -231,6 +242,7 @@ class MetroItinerary extends NarrativeItinerary {
       accessibilityScoreGradationMap,
       active,
       activeItineraryTimeIndex,
+      co2Config,
       currency,
       defaultFareKey,
       enableDot,
@@ -257,6 +269,29 @@ class MetroItinerary extends NarrativeItinerary {
       currency
     )
 
+    const roundedCo2VsBaseline = Math.round(itinerary.co2VsBaseline * 100)
+    const emissionsNote = !mini &&
+      Math.abs(roundedCo2VsBaseline) >= (co2Config?.cutoffPercentage || 0) &&
+      (roundedCo2VsBaseline < 0 || co2Config?.showIfHigher) &&
+      co2Config?.enabled && (
+        <IconWithText Icon={Leaf}>
+          <FormattedMessage
+            id="common.itineraryDescriptions.relativeCo2"
+            values={{
+              co2: (
+                <FormattedNumber
+                  style="unit"
+                  unit="percent"
+                  unitDisplay="narrow"
+                  value={Math.abs(roundedCo2VsBaseline)}
+                />
+              ),
+              isMore: roundedCo2VsBaseline > 0,
+              sub: Sub
+            }}
+          />
+        </IconWithText>
+      )
     const localizedGradationMapWithIcons = localizeGradationMap(
       intl,
       SvgIcon,
@@ -293,6 +328,18 @@ class MetroItinerary extends NarrativeItinerary {
       return routeBlocks
     }
 
+    const handleClick = () => {
+      setActiveItinerary(itinerary)
+      setActiveLeg(null, null)
+      setItineraryView(ItineraryView.FULL)
+      // Reset the scroll. Refs would be the more
+      // appropriate way to do this, but they don't work
+      setTimeout(
+        () => document.querySelector('.metro-itin')?.scrollIntoView(),
+        10
+      )
+    }
+
     // Use first leg's agency as a fallback
     return (
       <div
@@ -303,21 +350,17 @@ class MetroItinerary extends NarrativeItinerary {
         onMouseLeave={this._onMouseLeave}
         role="presentation"
       >
-        <button
+        {/* Semantically this is incorrect, but this helps a11y tests pass. Buttons may not contain html. TODO FIX? */}
+        <div
           className="header"
+          onClick={handleClick}
+          // TODO: once this can be tabbed to, this behavior needs to be improved. Maybe it focuses the
+          // first time?
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
+          onKeyDown={() => {}}
           // TODO: use _onHeaderClick for tap only -- this will require disabling
           // this onClick handler after a touchStart
-          onClick={() => {
-            setActiveItinerary(itinerary)
-            setActiveLeg(null, null)
-            setItineraryView(ItineraryView.FULL)
-            // Reset the scroll. Refs would be the more
-            // appropriate way to do this, but they don't work
-            setTimeout(
-              () => document.querySelector('.metro-itin')?.scrollIntoView(),
-              10
-            )
-          }}
+          role="presentation"
         >
           <ItineraryWrapper
             aria-label={intl.formatMessage(
@@ -331,6 +374,7 @@ class MetroItinerary extends NarrativeItinerary {
             )}
             className={`itin-wrapper${mini ? '-small' : ''}`}
           >
+            {emissionsNote && <ItineraryNote>{emissionsNote}</ItineraryNote>}
             {itineraryHasAccessibilityScores(itinerary) && (
               <AccessibilityRating
                 gradationMap={localizedGradationMapWithIcons}
@@ -339,7 +383,8 @@ class MetroItinerary extends NarrativeItinerary {
             )}
             {!mini && (
               <ItineraryGrid className="itin-grid">
-                <Routes enableDot={enableDot}>
+                {/* TODO: a11y: add aria-label to parent element */}
+                <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
                 </Routes>
                 <PrimaryInfo>
@@ -368,23 +413,14 @@ class MetroItinerary extends NarrativeItinerary {
                   {transitFare === null || transitFare < 0 ? (
                     <FormattedMessage id="common.itineraryDescriptions.noTransitFareProvided" />
                   ) : (
-                    <FormattedMessage
-                      id="components.ItinerarySummary.fareCost"
-                      values={{
-                        // TODO: re-implement TNC fares for metro UI?
-                        maxTotalFare: null,
-                        minTotalFare: (
-                          <FormattedNumber
-                            currency={fareCurrency}
-                            currencyDisplay="narrowSymbol"
-                            // This isn't a "real" style prop
-                            // eslint-disable-next-line react/style-prop-object
-                            style="currency"
-                            value={transitFare / 100}
-                          />
-                        ),
-                        useMaxFare: false
-                      }}
+                    // TODO: re-implement TNC fares for metro UI?
+                    <FormattedNumber
+                      currency={fareCurrency}
+                      currencyDisplay="narrowSymbol"
+                      // This isn't a "real" style prop
+                      // eslint-disable-next-line react/style-prop-object
+                      style="currency"
+                      value={transitFare / 100}
                     />
                   )}
                 </SecondaryInfo>
@@ -418,7 +454,7 @@ class MetroItinerary extends NarrativeItinerary {
               </ItineraryGridSmall>
             )}
           </ItineraryWrapper>
-        </button>
+        </div>
         {active && expanded && (
           <>
             {showRealtimeAnnotation && <SimpleRealtimeAnnotation />}
@@ -447,12 +483,12 @@ const mapStateToProps = (state: any, ownProps: Props) => {
     accessibilityScoreGradationMap:
       state.otp.config.accessibilityScore?.gradationMap,
     activeItineraryTimeIndex,
+    co2Config: state.otp.config.co2,
     configCosts: state.otp.config.itinerary?.costs,
     // The configured (ambient) currency is needed for rendering the cost
     // of itineraries whether they include a fare or not, in which case
     // we show $0.00 or its equivalent in the configured currency and selected locale.
     currency: state.otp.config.localization?.currency || 'USD',
-
     defaultFareKey: state.otp.config.itinerary?.defaultFareKey,
     enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
     showLegDurations: state.otp.config.itinerary?.showLegDurations

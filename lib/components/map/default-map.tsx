@@ -15,17 +15,14 @@ import {
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
-import {
-  setLocation,
-  setMapPopupLocation,
-  setMapPopupLocationAndGeocode
-} from '../../actions/map'
+import { setMapPopupLocationAndGeocode } from '../../actions/map'
 import { updateOverlayVisibility } from '../../actions/config'
 
 import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
 import ParkAndRideOverlay from './connected-park-and-ride-overlay'
 import PointPopup from './point-popup'
+import RoutePreviewOverlay from './route-preview-overlay'
 import RouteViewerOverlay from './connected-route-viewer-overlay'
 import StopsOverlay from './connected-stops-overlay'
 import StopViewerOverlay from './connected-stop-viewer-overlay'
@@ -216,12 +213,6 @@ class DefaultMap extends Component {
     this.props.setMapPopupLocationAndGeocode(e)
   }
 
-  onSetLocationFromPopup = (payload) => {
-    const { setLocation, setMapPopupLocation } = this.props
-    setMapPopupLocation({ location: null })
-    setLocation(payload)
-  }
-
   componentDidMount() {
     // HACK: Set state lat and lon to null to prevent re-rendering of the
     // underlying OTP-UI map.
@@ -250,8 +241,9 @@ class DefaultMap extends Component {
       vehicleRentalQuery,
       vehicleRentalStations
     } = this.props
-    const { getCustomMapOverlays, getTransitiveRouteLabel } = this.context
-    const { baseLayers, initLat, initLon, maxZoom, overlays } = mapConfig || {}
+    const { getCustomMapOverlays, getTransitiveRouteLabel, ModeIcon } =
+      this.context
+    const { baseLayers, maxZoom, overlays } = mapConfig || {}
     const { lat, lon, zoom } = this.state
 
     const bikeStations = [
@@ -285,17 +277,16 @@ class DefaultMap extends Component {
           onContextMenu={this.onMapClick}
           zoom={zoom}
         >
-          <PointPopup onSetLocationFromPopup={this.onSetLocationFromPopup} />
+          <PointPopup />
+          <RoutePreviewOverlay />
           {/* The default overlays */}
           <EndpointsOverlay />
           <RouteViewerOverlay />
-          <TransitVehicleOverlay />
+          <TransitVehicleOverlay ModeIcon={ModeIcon} />
           <StopViewerOverlay />
           <TransitiveOverlay
             getTransitiveRouteLabel={getTransitiveRouteLabel}
           />
-          {/* TODO: bring this back? or focus time on migrating transitive to webgl? */}
-          {/* <RoutePreviewOverlay /> */}
           <TripViewerOverlay />
           <ElevationPointMarker />
 
@@ -388,8 +379,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   bikeRentalQuery,
   carRentalQuery,
-  setLocation,
-  setMapPopupLocation,
   setMapPopupLocationAndGeocode,
   updateOverlayVisibility,
   vehicleRentalQuery

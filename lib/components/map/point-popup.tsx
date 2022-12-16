@@ -1,45 +1,66 @@
 import { connect } from 'react-redux'
-import { Popup, useMap } from 'react-map-gl'
+import { MapRef, useMap } from 'react-map-gl'
+import { Popup } from '@opentripplanner/base-map'
+import { Search } from '@styled-icons/fa-solid/Search'
 import { useIntl, WrappedComponentProps } from 'react-intl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React, { useEffect } from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import type { Location } from '@opentripplanner/types'
 
 import * as mapActions from '../../actions/map'
+import { Icon } from '../util/styledIcon'
 import { renderCoordinates } from '../form/user-settings'
 
-const PopupContainer = styled.div`
-  width: 240px;
+const PopupTitleWrapper = styled.div`
+  align-items: flex-start;
+  display: flex;
+  margin-bottom: 6px;
+  width: 100%;
 `
 
 const PopupTitle = styled.div`
+  flex-grow: 1;
   font-size: 14px;
-  margin-bottom: 6px;
+`
+
+const ZoomButton = styled.button`
+  background: none;
+  border: none;
+  margin-top: -1px;
+  padding-top: 0;
 `
 
 type Props = {
+  clearMapPopupLocation: () => void
   mapPopupLocation: Location
-  onSetLocationFromPopup: () => void
-  setMapPopupLocation: (arg: { location: Location | null }) => void
+  setLocation: (arg: unknown) => void
+  zoomToPlace: (
+    map?: MapRef,
+    place?: { lat: number; lon: number },
+    zoom?: number
+  ) => void
 } & WrappedComponentProps
 
+const DEFAULT_ZOOM = 15
+
 function MapPopup({
+  clearMapPopupLocation,
   mapPopupLocation,
-  onSetLocationFromPopup,
-  setMapPopupLocation
+  setLocation,
+  zoomToPlace
 }: Props): JSX.Element | null {
   const intl = useIntl()
   const { current: map } = useMap()
-  const currentZoom = map ? map.getZoom() : null
 
-  // Zoom out if zoomed in very far
-  useEffect(() => {
-    if (map && mapPopupLocation && currentZoom !== null && currentZoom > 15) {
-      map.setZoom(15)
-    }
-    // Only check zoom if popup appears in a new place
-  }, [mapPopupLocation, map, currentZoom])
+  // Memoize callbacks that shouldn't change from one render to the next.
+  const onSetLocationFromPopup = useCallback(
+    (payload) => {
+      clearMapPopupLocation()
+      setLocation(payload)
+    },
+    [setLocation, clearMapPopupLocation]
+  )
 
   if (!mapPopupLocation) return null
 
@@ -49,6 +70,9 @@ function MapPopup({
       { id: 'common.coordinates' },
       renderCoordinates(intl, mapPopupLocation)
     )
+  const zoomButtonLabel = intl.formatMessage({
+    id: 'components.PointPopup.zoomToLocation'
+  })
 
   return (
     <Popup
@@ -56,22 +80,31 @@ function MapPopup({
       closeOnClick
       latitude={mapPopupLocation.lat}
       longitude={mapPopupLocation.lon}
-      onClose={() => setMapPopupLocation({ location: null })}
+      onClose={clearMapPopupLocation}
+      // Override inline style supplied by react-map-gl to accommodate long "plan a trip" translations.
+      style={{ maxWidth: '260px', width: '260px' }}
     >
-      <PopupContainer>
+      <PopupTitleWrapper>
         <PopupTitle>
           {typeof popupName === 'string' && popupName.split(',').length > 3
             ? popupName.split(',').splice(0, 3).join(',')
             : popupName}
         </PopupTitle>
-        <div>
-          <FromToLocationPicker
-            label
-            location={{ ...mapPopupLocation, name: popupName }}
-            setLocation={onSetLocationFromPopup}
-          />
-        </div>
-      </PopupContainer>
+        <ZoomButton
+          aria-label={zoomButtonLabel}
+          onClick={() => zoomToPlace(map, mapPopupLocation, DEFAULT_ZOOM)}
+          title={zoomButtonLabel}
+        >
+          <Icon Icon={Search} />
+        </ZoomButton>
+      </PopupTitleWrapper>
+      <div>
+        <FromToLocationPicker
+          label
+          location={{ ...mapPopupLocation, name: popupName }}
+          setLocation={onSetLocationFromPopup}
+        />
+      </div>
     </Popup>
   )
 }
@@ -85,8 +118,9 @@ const mapStateToProps = (state: any) => {
 }
 
 const mapDispatchToProps = {
-  setMapPopupLocation: mapActions.setMapPopupLocation,
-  setMapPopupLocationAndGeocode: mapActions.setMapPopupLocationAndGeocode
+  clearMapPopupLocation: mapActions.clearMapPopupLocation,
+  setLocation: mapActions.setLocation,
+  zoomToPlace: mapActions.zoomToPlace
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapPopup)

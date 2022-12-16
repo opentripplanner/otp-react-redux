@@ -1,6 +1,14 @@
+import '../../test-utils/mock-window-url'
+import {
+  getMockInitialState,
+  mockWithProvider
+} from '../../test-utils/mock-data/store'
+import {
+  restoreDateNowBehavior,
+  setDefaultTestTime,
+  setTestTime
+} from '../../test-utils'
 import StopViewer from '../../../lib/components/viewers/stop-viewer'
-import { restoreDateNowBehavior, setDefaultTestTime, setTestTime } from '../../test-utils'
-import { getMockInitialState, mockWithProvider } from '../../test-utils/mock-data/store'
 
 describe('components > viewers > stop viewer', () => {
   afterEach(restoreDateNowBehavior)
@@ -13,11 +21,7 @@ describe('components > viewers > stop viewer', () => {
     }
 
     expect(
-      mockWithProvider(
-        StopViewer,
-        {},
-        mockState
-      ).snapshot()
+      mockWithProvider(StopViewer, {}, mockState).snapshot()
     ).toMatchSnapshot()
   })
 
@@ -25,14 +29,12 @@ describe('components > viewers > stop viewer', () => {
     const mockState = getMockInitialState()
     const stopId = 'TriMet:715'
     mockState.otp.ui.viewedStop = { stopId }
-    mockState.otp.transitIndex.stops[stopId] = require('./mock-otp-transit-index-data.json')
+    mockState.otp.transitIndex.stops[
+      stopId
+    ] = require('./mock-otp-transit-index-data.json')
 
     expect(
-      mockWithProvider(
-        StopViewer,
-        {},
-        mockState
-      ).snapshot()
+      mockWithProvider(StopViewer, {}, mockState).snapshot()
     ).toMatchSnapshot()
   })
 
@@ -40,14 +42,12 @@ describe('components > viewers > stop viewer', () => {
     const mockState = getMockInitialState()
     const stopId = 'TriMet:9860'
     mockState.otp.ui.viewedStop = { stopId }
-    mockState.otp.transitIndex.stops[stopId] = require('./mock-otp-transit-index-data-stop-9860.json')
+    mockState.otp.transitIndex.stops[
+      stopId
+    ] = require('./mock-otp-transit-index-data-stop-9860.json')
 
     expect(
-      mockWithProvider(
-        StopViewer,
-        {},
-        mockState
-      ).snapshot()
+      mockWithProvider(StopViewer, {}, mockState).snapshot()
     ).toMatchSnapshot()
   })
 
@@ -58,14 +58,12 @@ describe('components > viewers > stop viewer', () => {
     const mockState = getMockInitialState()
     const stopId = 'TriMet:9860'
     mockState.otp.ui.viewedStop = { stopId }
-    mockState.otp.transitIndex.stops[stopId] = require('./mock-otp-transit-index-data-stop-9860.json')
+    mockState.otp.transitIndex.stops[
+      stopId
+    ] = require('./mock-otp-transit-index-data-stop-9860.json')
 
     expect(
-      mockWithProvider(
-        StopViewer,
-        {},
-        mockState
-      ).snapshot()
+      mockWithProvider(StopViewer, {}, mockState).snapshot()
     ).toMatchSnapshot()
   })
 
@@ -78,14 +76,12 @@ describe('components > viewers > stop viewer', () => {
     const mockState = getMockInitialState()
     const stopId = 'TriMet:9860'
     mockState.otp.ui.viewedStop = { stopId }
-    mockState.otp.transitIndex.stops[stopId] = require('./mock-otp-transit-index-data-stop-9860-48-hr.json')
+    mockState.otp.transitIndex.stops[
+      stopId
+    ] = require('./mock-otp-transit-index-data-stop-9860-48-hr.json')
 
     expect(
-      mockWithProvider(
-        StopViewer,
-        {},
-        mockState
-      ).snapshot()
+      mockWithProvider(StopViewer, {}, mockState).snapshot()
     ).toMatchSnapshot()
   })
 
@@ -94,14 +90,12 @@ describe('components > viewers > stop viewer', () => {
     mockState.otp.ui.viewedStop = {
       stopId: 'TriMet:715'
     }
-    mockState.otp.transitIndex.stops['TriMet:715'] = require('./mock-trimet-transit-index-data.json')
+    mockState.otp.transitIndex.stops[
+      'TriMet:715'
+    ] = require('./mock-trimet-transit-index-data.json')
 
     expect(
-      mockWithProvider(
-        StopViewer,
-        {},
-        mockState
-      ).snapshot()
+      mockWithProvider(StopViewer, {}, mockState).snapshot()
     ).toMatchSnapshot()
   })
 })

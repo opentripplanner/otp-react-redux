@@ -145,6 +145,7 @@ components:
     destination: destination
     origin: origin
     planTripTooltip: Plan trip
+    settings: Trip Settings
     validationMessage: "Please define the following fields to plan a trip: {issues}"
   BeforeSignInScreen:
     mainTitle: Signing you in
@@ -205,11 +206,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Form navigation
   ItinerarySummary:
-    fareCost: >
-      {useMaxFare, select,
-        true {{minTotalFare} - {maxTotalFare}}
-        other {{minTotalFare}}
-      }
+    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
   LocationSearch:
@@ -246,9 +243,11 @@ components:
         one {# issue}
         other {# issues}
       }"
+    changeSortDir: "Change sort direction"
     # Note to translator: text below is width-constrained
     # (about half-pane width, or half-screen width in mobile views).
     searching: Finding your options...
+    sortBy: Sort By
     selectArrivalTime: Arrival time
     selectBest: Best option
     selectCost: Cost
@@ -322,6 +321,8 @@ components:
     previous: Previous
   PlanTripButton:
     planTrip: Plan Trip
+  PointPopup:
+    zoomToLocation: Zoom to location
   PrintLayout:
     itinerary: Itinerary
     toggleMap: Toggle Map
@@ -352,10 +353,8 @@ components:
     backToSearch: Back to Search
   ResultsHeader:
     noTripFound: No Trip Found
-    tripsFound: "We Found {count} {count, plural, one {Option} other {Options}}"
+    tripsFound: "We Found {count, plural, one {# Option} other {# Options}}"
     waiting: Waiting...
-  ResultsScreen:
-    header: Option {index}
   RouteDetails:
     operatedBy: "Operated by {agencyName}"
     moreDetails: "More Details"
@@ -400,8 +399,6 @@ components:
     saveTripText: Save trip
     signInText: Sign in to save trip
     signInTooltip: Please sign in to save trip.
-  SearchScreen:
-    header: Plan Your Trip
   SessionTimeout:
     body: Your session will expire within a minute. Press 'Continue Session' to keep your search.
     header: Session about to timeout!
@@ -438,17 +435,6 @@ components:
   SwitchButton:
     defaultContent: Switch
     switchLocations: Switch locations
-  TabbedFormPanel:
-    hideSettings: " Hide Settings"
-  TabbedItineraries:
-    optionNumber: "Option {optionNum, number}"
-    # Note to translator: This text is width-constrained.
-    mustCallAhead: Must call ahead!
-    fareCost: >
-      {hasMaxFare, select, 
-        true {{minTotalFare}+}
-        other {{minTotalFare}}
-      }
   TermsOfUsePane:
     confirmDeletionPrompt: >
       Removing your consent to storage of historical trips will cause your trip history to be deleted. 
@@ -671,6 +657,13 @@ common:
     # Note to translator: noTransitFareProvided is width-constrained.
     noTransitFareProvided: No fare info
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
+    # This string will have a formatted number before it, including units.
+    relativeCo2: >
+      {co2}
+      {isMore, select,
+      true {more}
+      other {less}
+      } CO<sub>2</sub> than driving alone.
 
   # Note to translator: the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
@@ -717,16 +710,10 @@ common:
     routeToHeadsign: "To {headsign}"
 
   searchForms:
-    enterDestination: >
-      Enter destination or {mobile, select,
-        true {tap}
-        other {click}
-      } on map...
-    enterStartLocation: >
-      Enter start location or {mobile, select,
-        true {tap}
-        other {click}
-      } on map...
+    click: click
+    enterDestination: Enter destination or {mapAction} on map…
+    enterStartLocation: Enter start location or {mapAction} on map…
+    tap: tap
 
   time:
     # Use ordered placeholders for the departure-arrival string
@@ -748,14 +735,8 @@ common:
         }}
         other {# days ago}
       }
-    # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
-    tripDurationFormat: >
-      {hours, plural, 
-        =0 {{minutes, number} min}
-        other {# hr {minutes, number} min}
-      }
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min"
 
 util:
   state:

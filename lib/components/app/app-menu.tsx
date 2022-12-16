@@ -24,6 +24,7 @@ import { ComponentContext } from '../../util/contexts'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import { StyledIconWrapper } from '../util/styledIcon'
+import startOver from '../util/start-over'
 
 type AppMenuProps = {
   callTakerEnabled?: boolean
@@ -73,20 +74,7 @@ class AppMenu extends Component<
   _startOver = () => {
     const { location, reactRouterConfig } = this.props
     const { search } = location
-    let startOverUrl = '/'
-    if (reactRouterConfig && reactRouterConfig.basename) {
-      startOverUrl += reactRouterConfig.basename
-    }
-    // If search contains sessionId, preserve this so that the current session
-    // is not lost when the page reloads.
-    if (search) {
-      const params = qs.parse(search, { ignoreQueryPrefix: true })
-      const { sessionId } = params
-      if (sessionId) {
-        startOverUrl += `?${qs.stringify({ sessionId })}`
-      }
-    }
-    window.location.href = startOverUrl
+    window.location.href = startOver(reactRouterConfig?.basename, search)
   }
 
   _triggerPopup = () => {

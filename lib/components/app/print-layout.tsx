@@ -123,7 +123,7 @@ class PrintLayout extends Component<Props, State> {
               itinerary={itinerary}
               LegIcon={LegIcon}
             />
-            <TripDetails itinerary={itinerary} />
+            <TripDetails className="percy-hide" itinerary={itinerary} />
           </>
         )}
       </div>

@@ -172,6 +172,9 @@ class BatchSettings extends Component<Props, State> {
         </ModeButtonsFullWidthContainer>
         <MainSettingsRow>
           <SettingsPreview
+            aria-label={intl.formatMessage({
+              id: 'components.BatchSettings.settings'
+            })}
             expanded={expanded === 'SETTINGS'}
             onClick={this._toggleSettings}
           >
@@ -197,6 +200,7 @@ class BatchSettings extends Component<Props, State> {
             />
           </ModeButtonsContainerCompressed>
           <PlanTripButton
+            id="plan-trip"
             onClick={this._planTrip}
             title={intl.formatMessage({
               id: 'components.BatchSettings.planTripTooltip'

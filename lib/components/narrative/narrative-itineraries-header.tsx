@@ -146,6 +146,9 @@ export default function NarrativeItinerariesHeader({
             <button
               className="clear-button-formatting"
               onClick={onSortDirChange}
+              title={intl.formatMessage({
+                id: 'components.NarrativeItinerariesHeader.changeSortDir'
+              })}
             >
               <StyledIconWrapper
                 className={`${customBatchUiBackground && 'base-color-bg'}`}
@@ -158,8 +161,14 @@ export default function NarrativeItinerariesHeader({
               </StyledIconWrapper>
             </button>
             <select
+              aria-label={intl.formatMessage({
+                id: 'components.NarrativeItinerariesHeader.sortBy'
+              })}
               onBlur={onSortChange}
               onChange={onSortChange}
+              title={intl.formatMessage({
+                id: 'components.NarrativeItinerariesHeader.sortBy'
+              })}
               value={sort.type}
             >
               <option value="BEST">
