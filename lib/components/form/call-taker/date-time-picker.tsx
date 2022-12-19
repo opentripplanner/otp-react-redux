@@ -35,6 +35,8 @@ const SUPPORTED_TIME_FORMATS = [
   'h:mmaaaaa',
   'hmmaaaaa',
   'haaaaa',
+  'haaa',
+  'hmmaaa',
   'Hmm',
   'Hm',
   'H:mm',
@@ -186,7 +188,11 @@ const DateTimeOptions = ({
             width: '50px'
           }}
           // Don't use intl.formatTime, so that users can enter time in 12hr or 24hr format at their leisure.
-          value={time || format(dateTime, 'H:mm', { timeZone: homeTimezone })}
+          value={
+            time && time?.length > 1
+              ? time || format(dateTime, 'H:mm', { timeZone: homeTimezone })
+              : time
+          }
         />
       </OverlayTrigger>
       <input
