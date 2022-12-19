@@ -4,17 +4,27 @@ import styled from 'styled-components'
 
 // TODO: This should not be a section, but using div/span
 // doesn't allow us to style it from within the RouteBlock
-const Block = styled.section<{ color: string; onColoredBackground?: boolean }>`
+const Block = styled.span<{ color: string; onColoredBackground?: boolean }>`
   background: #${(props) => props.color}1A;
   border-radius: 5px;
   border-top: 5px solid #${(props) => props.color};
   display: inline-block;
-  max-width: 12vw;
+  margin-top: -2px;
   padding: 3px 7px;
-  text-align: center;
-  white-space: break-spaces;
+  /* Below is for route names that are too long: cut-off and show ellipsis. */
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* (Change the vertical alignment when changing the overflow attribute.) */
+  vertical-align: middle;
+  white-space: nowrap;
 
-  ${(props) => props.onColoredBackground && 'border-top: none'}
+  ${(props) =>
+    props.onColoredBackground &&
+    `
+    border-top: none;
+    text-overflow: unset;
+  `}
 `
 
 type RouteRendererProps = {

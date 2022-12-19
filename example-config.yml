@@ -389,6 +389,30 @@ itinerary:
 #       - WALK
 #       - BICYCLE
 
+### Configure here the carbon output in grams per meter for each mode.
+### massUnits can be 'pound', 'kilogram', 'ounce', or 'gram'
+# co2:
+# . enabled: true
+#   carbonIntensity:
+#     walk: 0
+#     bicycle: 0
+#     car: 0.283
+#     tram: 0.041
+#     subway: 0.041
+#     rail: 0.041
+#     bus: 0.105
+#     ferry: 0.082
+#     cable_car: 0.021
+#     gondola: 0.021
+#     funicular: 0.041
+#     transit: 0.041
+#     leg_switch: 0
+#     airplane: 0.382
+#     micromobility: 0
+#   massUnit: "ounce"
+#   showIfHigher: false // show the relative CO2 even if it's higher than driving
+#   cutoffPercentage: 33 // Only show the CO2 comparison if the % difference from driving is at least this much
+
 ### Popup config
 ### OTP-RR supports a full-screen modal popup that can be launched from a set of
 ### pre-set locations. Each button can be configured to open a different popup.

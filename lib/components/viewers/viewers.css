@@ -123,6 +123,9 @@
 .otp .stop-viewer .route-row .header .route-name span {
   font-size: 15px;
 }
+.otp .stop-viewer .route-row .header .route-name strong span {
+  font-size: 32px;
+}
 
 .otp .stop-viewer .route-row .header .next-trip-preview {
   display: grid;

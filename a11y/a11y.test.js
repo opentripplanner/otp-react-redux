@@ -4,6 +4,8 @@
 import execa from 'execa'
 import puppeteer from 'puppeteer'
 
+import '../__tests__/test-utils/mock-window-url'
+
 import routes from '../lib/util/webapp-routes'
 
 import { mockServer } from './mock-server'

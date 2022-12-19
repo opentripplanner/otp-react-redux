@@ -107,7 +107,7 @@ const StopTimeCell = ({
         id: 'components.StopTimeCell.scheduled'
       })
   return (
-    <>
+    <div className="percy-hide">
       <StyledIconWrapperTextAlign
         style={{
           fontSize: '0.6em',
@@ -149,7 +149,7 @@ const StopTimeCell = ({
           <DepartureTime realTime stopTime={stopTime} />
         )}
       </span>
-    </>
+    </div>
   )
 }
 

@@ -2,12 +2,26 @@
 
 import nock from 'nock'
 
+import '../test-utils/mock-window-url'
 import * as api from '../../lib/actions/api'
 
 // Use mocked randId function and pass in searchId for routingQuery calls so that
 // snapshots are deterministic (i.e., the random IDs don't change).
 let idCounter = 1234
 const randId = () => `abcd${idCounter++}`
+
+/**
+ * Sets the requestId values as needed to deterministic IDs.
+ */
+function setMockRequestIds(calls) {
+  calls.forEach((call) => {
+    call.forEach((action) => {
+      if (action.payload && action.payload.requestId) {
+        action.payload.requestId = randId()
+      }
+    })
+  })
+}
 
 describe('actions > api', () => {
   describe('routingQuery', () => {
@@ -64,16 +78,3 @@ describe('actions > api', () => {
     })
   })
 })
-
-/**
- * Sets the requestId values as needed to deterministic IDs.
- */
-function setMockRequestIds (calls) {
-  calls.forEach(call => {
-    call.forEach(action => {
-      if (action.payload && action.payload.requestId) {
-        action.payload.requestId = randId()
-      }
-    })
-  })
-}
