@@ -1,3 +1,4 @@
+import '../test-utils/mock-window-url'
 import {
   getMockInitialState,
   mockWithProvider

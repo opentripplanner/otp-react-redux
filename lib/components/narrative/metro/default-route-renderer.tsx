@@ -2,16 +2,21 @@ import { Leg } from '@opentripplanner/types'
 import React from 'react'
 import styled from 'styled-components'
 
-// TODO: This should not be a section, but using div/span
-// doesn't allow us to style it from within the RouteBlock
-const Block = styled.section<{ color: string }>`
+const Block = styled.span<{ color: string }>`
   background: #${(props) => props.color}1A;
-  padding: 3px 7px;
-  border-top: 5px solid #${(props) => props.color};
   border-radius: 5px;
-  text-align: center;
+  border-top: 5px solid #${(props) => props.color};
   display: inline-block;
-  max-width: 12vw;
+  margin-top: -2px;
+  padding: 3px 7px;
+
+  /* Below is for route names that are too long: cut-off and show ellipsis. */
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* (Change the vertical alignment when changing the overflow attribute.) */
+  vertical-align: middle;
+  white-space: nowrap;
 `
 
 type RouteRendererProps = {

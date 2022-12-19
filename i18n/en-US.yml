@@ -85,6 +85,7 @@ components:
     bannedRoutes: Select banned routes...
     maxBike: "Max bike {unitsString}"
     maxWalk: "Max walk {unitsString}"
+    walkReluctance: "Walk Reluctance"
     preferredRoutes: Select preferred routes...
   AfterSignInScreen:
     mainTitle: Redirecting...
@@ -656,6 +657,13 @@ common:
     # Note to translator: noTransitFareProvided is width-constrained.
     noTransitFareProvided: No fare info
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
+    # This string will have a formatted number before it, including units.
+    relativeCo2: >
+      {co2}
+      {isMore, select,
+      true {more}
+      other {less}
+      } CO<sub>2</sub> than driving alone.
 
   # Note to translator: the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."

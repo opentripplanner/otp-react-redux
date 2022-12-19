@@ -101,7 +101,8 @@ export const StyledBatchPreferences = styled(SettingsSelectorPanel)`
   ${TripFormClasses.SettingLabel} {
     color: #686868;
     font-size: 14px;
-    font-weight: 100;
+    /* Override bootstrap's font-weight on labels so they don't appear bold in batch settings. */
+    font-weight: inherit;
     letter-spacing: 1px;
     padding-top: 8px;
     text-transform: uppercase;

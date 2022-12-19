@@ -1,37 +1,3 @@
-/* Location field */
-
-.otp .location-field .dropdown-menu .last-option {
-  margin-bottom: 10px;
-}
-
-.otp .location-field.static .dropdown-menu {
-  position: static;
-  display: block;
-  border: none;
-  box-shadow: none;
-}
-
-.otp .location-field .location-option .route {
-  background-color: gray;
-  color: white;
-  padding: 2px 3px 0px;
-  margin-right: 5px;
-}
-
-/* .otp .location-field .input-group-addon {
-  border: none;
-  background: none;
-  cursor: pointer;
-} */
-
-.otp .location-field .clear-button {
-  border: none;
-  background: none;
-  color: #888;
-  margin: 0;
-  padding: 0px 5px;
-}
-
 /* Plan trip button */
 
 .otp .plan-trip-button, .view-results-button {
@@ -265,10 +231,6 @@
 }
 
 /* General settings */
-
-.otp .general-settings-panel .row {
-  margin-bottom: 5px;
-}
 
 .otp.mobile .dropdown-selector {
   font-size: 16px;
