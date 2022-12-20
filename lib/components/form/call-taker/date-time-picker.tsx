@@ -55,6 +55,7 @@ const safeFormat = (date: Date | string, time: string, options: any) => {
 }
 
 type Props = {
+  date?: string
   homeTimezone: string
   onKeyDown: () => void
   setQueryParam: ({
@@ -66,6 +67,7 @@ type Props = {
     departArrive: string
     time: string
   }) => void
+  time?: string
   timeFormat: string
 }
 /**
@@ -83,14 +85,18 @@ type Props = {
  */
 
 const DateTimeOptions = ({
+  date: initialDate,
   homeTimezone,
   onKeyDown,
   setQueryParam,
+  time: initialTime,
   timeFormat
 }: Props) => {
-  const [departArrive, setDepartArrive] = useState('NOW')
-  const [date, setDate] = useState<string | undefined>(undefined)
-  const [time, setTime] = useState<string | undefined>(undefined)
+  const [departArrive, setDepartArrive] = useState(
+    initialDate || initialTime ? 'DEPART' : 'NOW'
+  )
+  const [date, setDate] = useState<string | undefined>(initialDate)
+  const [time, setTime] = useState<string | undefined>(initialTime)
 
   const intl = useIntl()
 
@@ -122,7 +128,7 @@ const DateTimeOptions = ({
 
   // Handler for setting the query parameters
   useEffect(() => {
-    if (safeFormat(dateTime, OTP_API_DATE_FORMAT, {}) !== '') {
+    if (safeFormat(dateTime, OTP_API_DATE_FORMAT, {}) !== '' && setQueryParam) {
       setQueryParam({
         date: safeFormat(dateTime, OTP_API_DATE_FORMAT, {
           timeZone: homeTimezone

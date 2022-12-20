@@ -22,139 +22,96 @@ exports[`components > form > call-taker > date time options should correctly han
       }
     }
   >
-    <Connect(injectIntl(DateTimeOptions))
+    <Connect(DateTimeOptions)
       date="2022-11-17"
       time="12a"
     >
-      <injectIntl(DateTimeOptions)
+      <DateTimeOptions
         date="2022-11-17"
         dispatch={[Function]}
         homeTimezone="America/Los_Angeles"
         time="12a"
         timeFormat="h:mm a"
       >
-        <DateTimeOptions
-          date="2022-11-17"
-          dispatch={[Function]}
-          homeTimezone="America/Los_Angeles"
-          intl={
-            Object {
-              "defaultFormats": Object {},
-              "defaultLocale": "en-US",
-              "defaultRichTextElements": undefined,
-              "formatDate": [Function],
-              "formatDateTimeRange": [Function],
-              "formatDateToParts": [Function],
-              "formatDisplayName": [Function],
-              "formatList": [Function],
-              "formatListToParts": [Function],
-              "formatMessage": [Function],
-              "formatNumber": [Function],
-              "formatNumberToParts": [Function],
-              "formatPlural": [Function],
-              "formatRelativeTime": [Function],
-              "formatTime": [Function],
-              "formatTimeToParts": [Function],
-              "formats": Object {},
-              "formatters": Object {
-                "getDateTimeFormat": [Function],
-                "getDisplayNames": [Function],
-                "getListFormat": [Function],
-                "getMessageFormat": [Function],
-                "getNumberFormat": [Function],
-                "getPluralRules": [Function],
-                "getRelativeTimeFormat": [Function],
-              },
-              "locale": "en-US",
-              "messages": Object {},
-              "onError": [Function],
-              "textComponent": Symbol(react.fragment),
-              "timeZone": undefined,
-              "wrapRichTextChunksInFragment": undefined,
-            }
-          }
-          time="12a"
-          timeFormat="h:mm a"
+        <select
+          onBlur={[Function]}
+          onChange={[Function]}
+          value="DEPART"
         >
-          <select
-            onBlur={[Function]}
-            onChange={[Function]}
+          <option
+            key="NOW"
+            value="NOW"
           >
-            <option
-              key="NOW"
-              value="NOW"
-            >
-              components.DateTimeOptions.now
-            </option>
-            <option
-              key="DEPART"
-              value="DEPART"
-            >
-              components.DateTimeOptions.departAt
-            </option>
-            <option
-              key="ARRIVE"
-              value="ARRIVE"
-            >
-              components.DateTimeOptions.arriveBy
-            </option>
-          </select>
-          <OverlayTrigger
-            defaultOverlayShown={false}
-            overlay={
-              <Tooltip
-                bsClass="tooltip"
-                id="time-tooltip"
-                placement="right"
-              >
-                12:00 AM
-              </Tooltip>
-            }
-            placement="bottom"
-            trigger={
-              Array [
-                "focus",
-                "hover",
-              ]
-            }
+            components.DateTimeOptions.now
+          </option>
+          <option
+            key="DEPART"
+            value="DEPART"
           >
-            <input
-              className="datetime-slim"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={null}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
-              style={
-                Object {
-                  "fontSize": "inherit",
-                  "lineHeight": ".8em",
-                  "marginLeft": "3px",
-                  "padding": "0px",
-                  "width": "50px",
-                }
-              }
-              value=""
-            />
-          </OverlayTrigger>
+            components.DateTimeOptions.departAt
+          </option>
+          <option
+            key="ARRIVE"
+            value="ARRIVE"
+          >
+            components.DateTimeOptions.arriveBy
+          </option>
+        </select>
+        <OverlayTrigger
+          defaultOverlayShown={false}
+          overlay={
+            <Tooltip
+              bsClass="tooltip"
+              id="time-tooltip"
+              placement="right"
+            >
+              12:00 AM
+            </Tooltip>
+          }
+          placement="bottom"
+          trigger={
+            Array [
+              "focus",
+              "hover",
+            ]
+          }
+        >
           <input
             className="datetime-slim"
+            onBlur={[Function]}
             onChange={[Function]}
+            onClick={null}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
             style={
               Object {
-                "fontSize": "14px",
-                "lineHeight": "1em",
-                "outline": "none",
-                "width": "109px",
+                "fontSize": "inherit",
+                "lineHeight": ".8em",
+                "marginLeft": "3px",
+                "padding": "0px",
+                "width": "50px",
               }
             }
-            type="date"
-            value="2022-11-17"
+            value="12a"
           />
-        </DateTimeOptions>
-      </injectIntl(DateTimeOptions)>
-    </Connect(injectIntl(DateTimeOptions))>
+        </OverlayTrigger>
+        <input
+          className="datetime-slim"
+          onChange={[Function]}
+          style={
+            Object {
+              "fontSize": "14px",
+              "lineHeight": "1em",
+              "outline": "none",
+              "width": "109px",
+            }
+          }
+          type="date"
+          value="2022-11-17"
+        />
+      </DateTimeOptions>
+    </Connect(DateTimeOptions)>
   </Provider>
 </IntlProvider>
 `;
@@ -181,139 +138,96 @@ exports[`components > form > call-taker > date time options should correctly han
       }
     }
   >
-    <Connect(injectIntl(DateTimeOptions))
+    <Connect(DateTimeOptions)
       date="2022-11-17"
       time="12p"
     >
-      <injectIntl(DateTimeOptions)
+      <DateTimeOptions
         date="2022-11-17"
         dispatch={[Function]}
         homeTimezone="America/Los_Angeles"
         time="12p"
         timeFormat="h:mm a"
       >
-        <DateTimeOptions
-          date="2022-11-17"
-          dispatch={[Function]}
-          homeTimezone="America/Los_Angeles"
-          intl={
-            Object {
-              "defaultFormats": Object {},
-              "defaultLocale": "en-US",
-              "defaultRichTextElements": undefined,
-              "formatDate": [Function],
-              "formatDateTimeRange": [Function],
-              "formatDateToParts": [Function],
-              "formatDisplayName": [Function],
-              "formatList": [Function],
-              "formatListToParts": [Function],
-              "formatMessage": [Function],
-              "formatNumber": [Function],
-              "formatNumberToParts": [Function],
-              "formatPlural": [Function],
-              "formatRelativeTime": [Function],
-              "formatTime": [Function],
-              "formatTimeToParts": [Function],
-              "formats": Object {},
-              "formatters": Object {
-                "getDateTimeFormat": [Function],
-                "getDisplayNames": [Function],
-                "getListFormat": [Function],
-                "getMessageFormat": [Function],
-                "getNumberFormat": [Function],
-                "getPluralRules": [Function],
-                "getRelativeTimeFormat": [Function],
-              },
-              "locale": "en-US",
-              "messages": Object {},
-              "onError": [Function],
-              "textComponent": Symbol(react.fragment),
-              "timeZone": undefined,
-              "wrapRichTextChunksInFragment": undefined,
-            }
-          }
-          time="12p"
-          timeFormat="h:mm a"
+        <select
+          onBlur={[Function]}
+          onChange={[Function]}
+          value="DEPART"
         >
-          <select
-            onBlur={[Function]}
-            onChange={[Function]}
+          <option
+            key="NOW"
+            value="NOW"
           >
-            <option
-              key="NOW"
-              value="NOW"
-            >
-              components.DateTimeOptions.now
-            </option>
-            <option
-              key="DEPART"
-              value="DEPART"
-            >
-              components.DateTimeOptions.departAt
-            </option>
-            <option
-              key="ARRIVE"
-              value="ARRIVE"
-            >
-              components.DateTimeOptions.arriveBy
-            </option>
-          </select>
-          <OverlayTrigger
-            defaultOverlayShown={false}
-            overlay={
-              <Tooltip
-                bsClass="tooltip"
-                id="time-tooltip"
-                placement="right"
-              >
-                12:00 PM
-              </Tooltip>
-            }
-            placement="bottom"
-            trigger={
-              Array [
-                "focus",
-                "hover",
-              ]
-            }
+            components.DateTimeOptions.now
+          </option>
+          <option
+            key="DEPART"
+            value="DEPART"
           >
-            <input
-              className="datetime-slim"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={null}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
-              style={
-                Object {
-                  "fontSize": "inherit",
-                  "lineHeight": ".8em",
-                  "marginLeft": "3px",
-                  "padding": "0px",
-                  "width": "50px",
-                }
-              }
-              value=""
-            />
-          </OverlayTrigger>
+            components.DateTimeOptions.departAt
+          </option>
+          <option
+            key="ARRIVE"
+            value="ARRIVE"
+          >
+            components.DateTimeOptions.arriveBy
+          </option>
+        </select>
+        <OverlayTrigger
+          defaultOverlayShown={false}
+          overlay={
+            <Tooltip
+              bsClass="tooltip"
+              id="time-tooltip"
+              placement="right"
+            >
+              12:00 PM
+            </Tooltip>
+          }
+          placement="bottom"
+          trigger={
+            Array [
+              "focus",
+              "hover",
+            ]
+          }
+        >
           <input
             className="datetime-slim"
+            onBlur={[Function]}
             onChange={[Function]}
+            onClick={null}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
             style={
               Object {
-                "fontSize": "14px",
-                "lineHeight": "1em",
-                "outline": "none",
-                "width": "109px",
+                "fontSize": "inherit",
+                "lineHeight": ".8em",
+                "marginLeft": "3px",
+                "padding": "0px",
+                "width": "50px",
               }
             }
-            type="date"
-            value="2022-11-17"
+            value="12p"
           />
-        </DateTimeOptions>
-      </injectIntl(DateTimeOptions)>
-    </Connect(injectIntl(DateTimeOptions))>
+        </OverlayTrigger>
+        <input
+          className="datetime-slim"
+          onChange={[Function]}
+          style={
+            Object {
+              "fontSize": "14px",
+              "lineHeight": "1em",
+              "outline": "none",
+              "width": "109px",
+            }
+          }
+          type="date"
+          value="2022-11-17"
+        />
+      </DateTimeOptions>
+    </Connect(DateTimeOptions)>
   </Provider>
 </IntlProvider>
 `;
@@ -340,139 +254,96 @@ exports[`components > form > call-taker > date time options should correctly han
       }
     }
   >
-    <Connect(injectIntl(DateTimeOptions))
+    <Connect(DateTimeOptions)
       date="2022-11-17"
       time="133"
     >
-      <injectIntl(DateTimeOptions)
+      <DateTimeOptions
         date="2022-11-17"
         dispatch={[Function]}
         homeTimezone="America/Los_Angeles"
         time="133"
         timeFormat="h:mm a"
       >
-        <DateTimeOptions
-          date="2022-11-17"
-          dispatch={[Function]}
-          homeTimezone="America/Los_Angeles"
-          intl={
-            Object {
-              "defaultFormats": Object {},
-              "defaultLocale": "en-US",
-              "defaultRichTextElements": undefined,
-              "formatDate": [Function],
-              "formatDateTimeRange": [Function],
-              "formatDateToParts": [Function],
-              "formatDisplayName": [Function],
-              "formatList": [Function],
-              "formatListToParts": [Function],
-              "formatMessage": [Function],
-              "formatNumber": [Function],
-              "formatNumberToParts": [Function],
-              "formatPlural": [Function],
-              "formatRelativeTime": [Function],
-              "formatTime": [Function],
-              "formatTimeToParts": [Function],
-              "formats": Object {},
-              "formatters": Object {
-                "getDateTimeFormat": [Function],
-                "getDisplayNames": [Function],
-                "getListFormat": [Function],
-                "getMessageFormat": [Function],
-                "getNumberFormat": [Function],
-                "getPluralRules": [Function],
-                "getRelativeTimeFormat": [Function],
-              },
-              "locale": "en-US",
-              "messages": Object {},
-              "onError": [Function],
-              "textComponent": Symbol(react.fragment),
-              "timeZone": undefined,
-              "wrapRichTextChunksInFragment": undefined,
-            }
-          }
-          time="133"
-          timeFormat="h:mm a"
+        <select
+          onBlur={[Function]}
+          onChange={[Function]}
+          value="DEPART"
         >
-          <select
-            onBlur={[Function]}
-            onChange={[Function]}
+          <option
+            key="NOW"
+            value="NOW"
           >
-            <option
-              key="NOW"
-              value="NOW"
-            >
-              components.DateTimeOptions.now
-            </option>
-            <option
-              key="DEPART"
-              value="DEPART"
-            >
-              components.DateTimeOptions.departAt
-            </option>
-            <option
-              key="ARRIVE"
-              value="ARRIVE"
-            >
-              components.DateTimeOptions.arriveBy
-            </option>
-          </select>
-          <OverlayTrigger
-            defaultOverlayShown={false}
-            overlay={
-              <Tooltip
-                bsClass="tooltip"
-                id="time-tooltip"
-                placement="right"
-              >
-                1:03 PM
-              </Tooltip>
-            }
-            placement="bottom"
-            trigger={
-              Array [
-                "focus",
-                "hover",
-              ]
-            }
+            components.DateTimeOptions.now
+          </option>
+          <option
+            key="DEPART"
+            value="DEPART"
           >
-            <input
-              className="datetime-slim"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={null}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
-              style={
-                Object {
-                  "fontSize": "inherit",
-                  "lineHeight": ".8em",
-                  "marginLeft": "3px",
-                  "padding": "0px",
-                  "width": "50px",
-                }
-              }
-              value=""
-            />
-          </OverlayTrigger>
+            components.DateTimeOptions.departAt
+          </option>
+          <option
+            key="ARRIVE"
+            value="ARRIVE"
+          >
+            components.DateTimeOptions.arriveBy
+          </option>
+        </select>
+        <OverlayTrigger
+          defaultOverlayShown={false}
+          overlay={
+            <Tooltip
+              bsClass="tooltip"
+              id="time-tooltip"
+              placement="right"
+            >
+              1:03 PM
+            </Tooltip>
+          }
+          placement="bottom"
+          trigger={
+            Array [
+              "focus",
+              "hover",
+            ]
+          }
+        >
           <input
             className="datetime-slim"
+            onBlur={[Function]}
             onChange={[Function]}
+            onClick={null}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
             style={
               Object {
-                "fontSize": "14px",
-                "lineHeight": "1em",
-                "outline": "none",
-                "width": "109px",
+                "fontSize": "inherit",
+                "lineHeight": ".8em",
+                "marginLeft": "3px",
+                "padding": "0px",
+                "width": "50px",
               }
             }
-            type="date"
-            value="2022-11-17"
+            value="133"
           />
-        </DateTimeOptions>
-      </injectIntl(DateTimeOptions)>
-    </Connect(injectIntl(DateTimeOptions))>
+        </OverlayTrigger>
+        <input
+          className="datetime-slim"
+          onChange={[Function]}
+          style={
+            Object {
+              "fontSize": "14px",
+              "lineHeight": "1em",
+              "outline": "none",
+              "width": "109px",
+            }
+          }
+          type="date"
+          value="2022-11-17"
+        />
+      </DateTimeOptions>
+    </Connect(DateTimeOptions)>
   </Provider>
 </IntlProvider>
 `;
@@ -499,139 +370,96 @@ exports[`components > form > call-taker > date time options should correctly han
       }
     }
   >
-    <Connect(injectIntl(DateTimeOptions))
+    <Connect(DateTimeOptions)
       date="2022-11-17"
       time="133p"
     >
-      <injectIntl(DateTimeOptions)
+      <DateTimeOptions
         date="2022-11-17"
         dispatch={[Function]}
         homeTimezone="America/Los_Angeles"
         time="133p"
         timeFormat="h:mm a"
       >
-        <DateTimeOptions
-          date="2022-11-17"
-          dispatch={[Function]}
-          homeTimezone="America/Los_Angeles"
-          intl={
-            Object {
-              "defaultFormats": Object {},
-              "defaultLocale": "en-US",
-              "defaultRichTextElements": undefined,
-              "formatDate": [Function],
-              "formatDateTimeRange": [Function],
-              "formatDateToParts": [Function],
-              "formatDisplayName": [Function],
-              "formatList": [Function],
-              "formatListToParts": [Function],
-              "formatMessage": [Function],
-              "formatNumber": [Function],
-              "formatNumberToParts": [Function],
-              "formatPlural": [Function],
-              "formatRelativeTime": [Function],
-              "formatTime": [Function],
-              "formatTimeToParts": [Function],
-              "formats": Object {},
-              "formatters": Object {
-                "getDateTimeFormat": [Function],
-                "getDisplayNames": [Function],
-                "getListFormat": [Function],
-                "getMessageFormat": [Function],
-                "getNumberFormat": [Function],
-                "getPluralRules": [Function],
-                "getRelativeTimeFormat": [Function],
-              },
-              "locale": "en-US",
-              "messages": Object {},
-              "onError": [Function],
-              "textComponent": Symbol(react.fragment),
-              "timeZone": undefined,
-              "wrapRichTextChunksInFragment": undefined,
-            }
-          }
-          time="133p"
-          timeFormat="h:mm a"
+        <select
+          onBlur={[Function]}
+          onChange={[Function]}
+          value="DEPART"
         >
-          <select
-            onBlur={[Function]}
-            onChange={[Function]}
+          <option
+            key="NOW"
+            value="NOW"
           >
-            <option
-              key="NOW"
-              value="NOW"
-            >
-              components.DateTimeOptions.now
-            </option>
-            <option
-              key="DEPART"
-              value="DEPART"
-            >
-              components.DateTimeOptions.departAt
-            </option>
-            <option
-              key="ARRIVE"
-              value="ARRIVE"
-            >
-              components.DateTimeOptions.arriveBy
-            </option>
-          </select>
-          <OverlayTrigger
-            defaultOverlayShown={false}
-            overlay={
-              <Tooltip
-                bsClass="tooltip"
-                id="time-tooltip"
-                placement="right"
-              >
-                1:33 PM
-              </Tooltip>
-            }
-            placement="bottom"
-            trigger={
-              Array [
-                "focus",
-                "hover",
-              ]
-            }
+            components.DateTimeOptions.now
+          </option>
+          <option
+            key="DEPART"
+            value="DEPART"
           >
-            <input
-              className="datetime-slim"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={null}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
-              style={
-                Object {
-                  "fontSize": "inherit",
-                  "lineHeight": ".8em",
-                  "marginLeft": "3px",
-                  "padding": "0px",
-                  "width": "50px",
-                }
-              }
-              value=""
-            />
-          </OverlayTrigger>
+            components.DateTimeOptions.departAt
+          </option>
+          <option
+            key="ARRIVE"
+            value="ARRIVE"
+          >
+            components.DateTimeOptions.arriveBy
+          </option>
+        </select>
+        <OverlayTrigger
+          defaultOverlayShown={false}
+          overlay={
+            <Tooltip
+              bsClass="tooltip"
+              id="time-tooltip"
+              placement="right"
+            >
+              1:33 PM
+            </Tooltip>
+          }
+          placement="bottom"
+          trigger={
+            Array [
+              "focus",
+              "hover",
+            ]
+          }
+        >
           <input
             className="datetime-slim"
+            onBlur={[Function]}
             onChange={[Function]}
+            onClick={null}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
             style={
               Object {
-                "fontSize": "14px",
-                "lineHeight": "1em",
-                "outline": "none",
-                "width": "109px",
+                "fontSize": "inherit",
+                "lineHeight": ".8em",
+                "marginLeft": "3px",
+                "padding": "0px",
+                "width": "50px",
               }
             }
-            type="date"
-            value="2022-11-17"
+            value="133p"
           />
-        </DateTimeOptions>
-      </injectIntl(DateTimeOptions)>
-    </Connect(injectIntl(DateTimeOptions))>
+        </OverlayTrigger>
+        <input
+          className="datetime-slim"
+          onChange={[Function]}
+          style={
+            Object {
+              "fontSize": "14px",
+              "lineHeight": "1em",
+              "outline": "none",
+              "width": "109px",
+            }
+          }
+          type="date"
+          value="2022-11-17"
+        />
+      </DateTimeOptions>
+    </Connect(DateTimeOptions)>
   </Provider>
 </IntlProvider>
 `;
@@ -658,139 +486,96 @@ exports[`components > form > call-taker > date time options should correctly han
       }
     }
   >
-    <Connect(injectIntl(DateTimeOptions))
+    <Connect(DateTimeOptions)
       date="2022-11-17"
       time="135p"
     >
-      <injectIntl(DateTimeOptions)
+      <DateTimeOptions
         date="2022-11-17"
         dispatch={[Function]}
         homeTimezone="America/Los_Angeles"
         time="135p"
         timeFormat="h:mm a"
       >
-        <DateTimeOptions
-          date="2022-11-17"
-          dispatch={[Function]}
-          homeTimezone="America/Los_Angeles"
-          intl={
-            Object {
-              "defaultFormats": Object {},
-              "defaultLocale": "en-US",
-              "defaultRichTextElements": undefined,
-              "formatDate": [Function],
-              "formatDateTimeRange": [Function],
-              "formatDateToParts": [Function],
-              "formatDisplayName": [Function],
-              "formatList": [Function],
-              "formatListToParts": [Function],
-              "formatMessage": [Function],
-              "formatNumber": [Function],
-              "formatNumberToParts": [Function],
-              "formatPlural": [Function],
-              "formatRelativeTime": [Function],
-              "formatTime": [Function],
-              "formatTimeToParts": [Function],
-              "formats": Object {},
-              "formatters": Object {
-                "getDateTimeFormat": [Function],
-                "getDisplayNames": [Function],
-                "getListFormat": [Function],
-                "getMessageFormat": [Function],
-                "getNumberFormat": [Function],
-                "getPluralRules": [Function],
-                "getRelativeTimeFormat": [Function],
-              },
-              "locale": "en-US",
-              "messages": Object {},
-              "onError": [Function],
-              "textComponent": Symbol(react.fragment),
-              "timeZone": undefined,
-              "wrapRichTextChunksInFragment": undefined,
-            }
-          }
-          time="135p"
-          timeFormat="h:mm a"
+        <select
+          onBlur={[Function]}
+          onChange={[Function]}
+          value="DEPART"
         >
-          <select
-            onBlur={[Function]}
-            onChange={[Function]}
+          <option
+            key="NOW"
+            value="NOW"
           >
-            <option
-              key="NOW"
-              value="NOW"
-            >
-              components.DateTimeOptions.now
-            </option>
-            <option
-              key="DEPART"
-              value="DEPART"
-            >
-              components.DateTimeOptions.departAt
-            </option>
-            <option
-              key="ARRIVE"
-              value="ARRIVE"
-            >
-              components.DateTimeOptions.arriveBy
-            </option>
-          </select>
-          <OverlayTrigger
-            defaultOverlayShown={false}
-            overlay={
-              <Tooltip
-                bsClass="tooltip"
-                id="time-tooltip"
-                placement="right"
-              >
-                1:35 PM
-              </Tooltip>
-            }
-            placement="bottom"
-            trigger={
-              Array [
-                "focus",
-                "hover",
-              ]
-            }
+            components.DateTimeOptions.now
+          </option>
+          <option
+            key="DEPART"
+            value="DEPART"
           >
-            <input
-              className="datetime-slim"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={null}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
-              style={
-                Object {
-                  "fontSize": "inherit",
-                  "lineHeight": ".8em",
-                  "marginLeft": "3px",
-                  "padding": "0px",
-                  "width": "50px",
-                }
-              }
-              value=""
-            />
-          </OverlayTrigger>
+            components.DateTimeOptions.departAt
+          </option>
+          <option
+            key="ARRIVE"
+            value="ARRIVE"
+          >
+            components.DateTimeOptions.arriveBy
+          </option>
+        </select>
+        <OverlayTrigger
+          defaultOverlayShown={false}
+          overlay={
+            <Tooltip
+              bsClass="tooltip"
+              id="time-tooltip"
+              placement="right"
+            >
+              1:35 PM
+            </Tooltip>
+          }
+          placement="bottom"
+          trigger={
+            Array [
+              "focus",
+              "hover",
+            ]
+          }
+        >
           <input
             className="datetime-slim"
+            onBlur={[Function]}
             onChange={[Function]}
+            onClick={null}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
             style={
               Object {
-                "fontSize": "14px",
-                "lineHeight": "1em",
-                "outline": "none",
-                "width": "109px",
+                "fontSize": "inherit",
+                "lineHeight": ".8em",
+                "marginLeft": "3px",
+                "padding": "0px",
+                "width": "50px",
               }
             }
-            type="date"
-            value="2022-11-17"
+            value="135p"
           />
-        </DateTimeOptions>
-      </injectIntl(DateTimeOptions)>
-    </Connect(injectIntl(DateTimeOptions))>
+        </OverlayTrigger>
+        <input
+          className="datetime-slim"
+          onChange={[Function]}
+          style={
+            Object {
+              "fontSize": "14px",
+              "lineHeight": "1em",
+              "outline": "none",
+              "width": "109px",
+            }
+          }
+          type="date"
+          value="2022-11-17"
+        />
+      </DateTimeOptions>
+    </Connect(DateTimeOptions)>
   </Provider>
 </IntlProvider>
 `;
@@ -817,139 +602,96 @@ exports[`components > form > call-taker > date time options should correctly han
       }
     }
   >
-    <Connect(injectIntl(DateTimeOptions))
+    <Connect(DateTimeOptions)
       date="2022-11-17"
       time="1335"
     >
-      <injectIntl(DateTimeOptions)
+      <DateTimeOptions
         date="2022-11-17"
         dispatch={[Function]}
         homeTimezone="America/Los_Angeles"
         time="1335"
         timeFormat="h:mm a"
       >
-        <DateTimeOptions
-          date="2022-11-17"
-          dispatch={[Function]}
-          homeTimezone="America/Los_Angeles"
-          intl={
-            Object {
-              "defaultFormats": Object {},
-              "defaultLocale": "en-US",
-              "defaultRichTextElements": undefined,
-              "formatDate": [Function],
-              "formatDateTimeRange": [Function],
-              "formatDateToParts": [Function],
-              "formatDisplayName": [Function],
-              "formatList": [Function],
-              "formatListToParts": [Function],
-              "formatMessage": [Function],
-              "formatNumber": [Function],
-              "formatNumberToParts": [Function],
-              "formatPlural": [Function],
-              "formatRelativeTime": [Function],
-              "formatTime": [Function],
-              "formatTimeToParts": [Function],
-              "formats": Object {},
-              "formatters": Object {
-                "getDateTimeFormat": [Function],
-                "getDisplayNames": [Function],
-                "getListFormat": [Function],
-                "getMessageFormat": [Function],
-                "getNumberFormat": [Function],
-                "getPluralRules": [Function],
-                "getRelativeTimeFormat": [Function],
-              },
-              "locale": "en-US",
-              "messages": Object {},
-              "onError": [Function],
-              "textComponent": Symbol(react.fragment),
-              "timeZone": undefined,
-              "wrapRichTextChunksInFragment": undefined,
-            }
-          }
-          time="1335"
-          timeFormat="h:mm a"
+        <select
+          onBlur={[Function]}
+          onChange={[Function]}
+          value="DEPART"
         >
-          <select
-            onBlur={[Function]}
-            onChange={[Function]}
+          <option
+            key="NOW"
+            value="NOW"
           >
-            <option
-              key="NOW"
-              value="NOW"
-            >
-              components.DateTimeOptions.now
-            </option>
-            <option
-              key="DEPART"
-              value="DEPART"
-            >
-              components.DateTimeOptions.departAt
-            </option>
-            <option
-              key="ARRIVE"
-              value="ARRIVE"
-            >
-              components.DateTimeOptions.arriveBy
-            </option>
-          </select>
-          <OverlayTrigger
-            defaultOverlayShown={false}
-            overlay={
-              <Tooltip
-                bsClass="tooltip"
-                id="time-tooltip"
-                placement="right"
-              >
-                1:35 PM
-              </Tooltip>
-            }
-            placement="bottom"
-            trigger={
-              Array [
-                "focus",
-                "hover",
-              ]
-            }
+            components.DateTimeOptions.now
+          </option>
+          <option
+            key="DEPART"
+            value="DEPART"
           >
-            <input
-              className="datetime-slim"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={null}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
-              style={
-                Object {
-                  "fontSize": "inherit",
-                  "lineHeight": ".8em",
-                  "marginLeft": "3px",
-                  "padding": "0px",
-                  "width": "50px",
-                }
-              }
-              value=""
-            />
-          </OverlayTrigger>
+            components.DateTimeOptions.departAt
+          </option>
+          <option
+            key="ARRIVE"
+            value="ARRIVE"
+          >
+            components.DateTimeOptions.arriveBy
+          </option>
+        </select>
+        <OverlayTrigger
+          defaultOverlayShown={false}
+          overlay={
+            <Tooltip
+              bsClass="tooltip"
+              id="time-tooltip"
+              placement="right"
+            >
+              1:35 PM
+            </Tooltip>
+          }
+          placement="bottom"
+          trigger={
+            Array [
+              "focus",
+              "hover",
+            ]
+          }
+        >
           <input
             className="datetime-slim"
+            onBlur={[Function]}
             onChange={[Function]}
+            onClick={null}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
             style={
               Object {
-                "fontSize": "14px",
-                "lineHeight": "1em",
-                "outline": "none",
-                "width": "109px",
+                "fontSize": "inherit",
+                "lineHeight": ".8em",
+                "marginLeft": "3px",
+                "padding": "0px",
+                "width": "50px",
               }
             }
-            type="date"
-            value="2022-11-17"
+            value="1335"
           />
-        </DateTimeOptions>
-      </injectIntl(DateTimeOptions)>
-    </Connect(injectIntl(DateTimeOptions))>
+        </OverlayTrigger>
+        <input
+          className="datetime-slim"
+          onChange={[Function]}
+          style={
+            Object {
+              "fontSize": "14px",
+              "lineHeight": "1em",
+              "outline": "none",
+              "width": "109px",
+            }
+          }
+          type="date"
+          value="2022-11-17"
+        />
+      </DateTimeOptions>
+    </Connect(DateTimeOptions)>
   </Provider>
 </IntlProvider>
 `;
@@ -976,139 +718,96 @@ exports[`components > form > call-taker > date time options should render 1`] = 
       }
     }
   >
-    <Connect(injectIntl(DateTimeOptions))
+    <Connect(DateTimeOptions)
       date="2022-11-17"
       time="12:34"
     >
-      <injectIntl(DateTimeOptions)
+      <DateTimeOptions
         date="2022-11-17"
         dispatch={[Function]}
         homeTimezone="America/Los_Angeles"
         time="12:34"
         timeFormat="h:mm a"
       >
-        <DateTimeOptions
-          date="2022-11-17"
-          dispatch={[Function]}
-          homeTimezone="America/Los_Angeles"
-          intl={
-            Object {
-              "defaultFormats": Object {},
-              "defaultLocale": "en-US",
-              "defaultRichTextElements": undefined,
-              "formatDate": [Function],
-              "formatDateTimeRange": [Function],
-              "formatDateToParts": [Function],
-              "formatDisplayName": [Function],
-              "formatList": [Function],
-              "formatListToParts": [Function],
-              "formatMessage": [Function],
-              "formatNumber": [Function],
-              "formatNumberToParts": [Function],
-              "formatPlural": [Function],
-              "formatRelativeTime": [Function],
-              "formatTime": [Function],
-              "formatTimeToParts": [Function],
-              "formats": Object {},
-              "formatters": Object {
-                "getDateTimeFormat": [Function],
-                "getDisplayNames": [Function],
-                "getListFormat": [Function],
-                "getMessageFormat": [Function],
-                "getNumberFormat": [Function],
-                "getPluralRules": [Function],
-                "getRelativeTimeFormat": [Function],
-              },
-              "locale": "en-US",
-              "messages": Object {},
-              "onError": [Function],
-              "textComponent": Symbol(react.fragment),
-              "timeZone": undefined,
-              "wrapRichTextChunksInFragment": undefined,
-            }
-          }
-          time="12:34"
-          timeFormat="h:mm a"
+        <select
+          onBlur={[Function]}
+          onChange={[Function]}
+          value="DEPART"
         >
-          <select
-            onBlur={[Function]}
-            onChange={[Function]}
+          <option
+            key="NOW"
+            value="NOW"
           >
-            <option
-              key="NOW"
-              value="NOW"
-            >
-              components.DateTimeOptions.now
-            </option>
-            <option
-              key="DEPART"
-              value="DEPART"
-            >
-              components.DateTimeOptions.departAt
-            </option>
-            <option
-              key="ARRIVE"
-              value="ARRIVE"
-            >
-              components.DateTimeOptions.arriveBy
-            </option>
-          </select>
-          <OverlayTrigger
-            defaultOverlayShown={false}
-            overlay={
-              <Tooltip
-                bsClass="tooltip"
-                id="time-tooltip"
-                placement="right"
-              >
-                12:34 PM
-              </Tooltip>
-            }
-            placement="bottom"
-            trigger={
-              Array [
-                "focus",
-                "hover",
-              ]
-            }
+            components.DateTimeOptions.now
+          </option>
+          <option
+            key="DEPART"
+            value="DEPART"
           >
-            <input
-              className="datetime-slim"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={null}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
-              style={
-                Object {
-                  "fontSize": "inherit",
-                  "lineHeight": ".8em",
-                  "marginLeft": "3px",
-                  "padding": "0px",
-                  "width": "50px",
-                }
-              }
-              value=""
-            />
-          </OverlayTrigger>
+            components.DateTimeOptions.departAt
+          </option>
+          <option
+            key="ARRIVE"
+            value="ARRIVE"
+          >
+            components.DateTimeOptions.arriveBy
+          </option>
+        </select>
+        <OverlayTrigger
+          defaultOverlayShown={false}
+          overlay={
+            <Tooltip
+              bsClass="tooltip"
+              id="time-tooltip"
+              placement="right"
+            >
+              12:34 PM
+            </Tooltip>
+          }
+          placement="bottom"
+          trigger={
+            Array [
+              "focus",
+              "hover",
+            ]
+          }
+        >
           <input
             className="datetime-slim"
+            onBlur={[Function]}
             onChange={[Function]}
+            onClick={null}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
             style={
               Object {
-                "fontSize": "14px",
-                "lineHeight": "1em",
-                "outline": "none",
-                "width": "109px",
+                "fontSize": "inherit",
+                "lineHeight": ".8em",
+                "marginLeft": "3px",
+                "padding": "0px",
+                "width": "50px",
               }
             }
-            type="date"
-            value="2022-11-17"
+            value="12:34"
           />
-        </DateTimeOptions>
-      </injectIntl(DateTimeOptions)>
-    </Connect(injectIntl(DateTimeOptions))>
+        </OverlayTrigger>
+        <input
+          className="datetime-slim"
+          onChange={[Function]}
+          style={
+            Object {
+              "fontSize": "14px",
+              "lineHeight": "1em",
+              "outline": "none",
+              "width": "109px",
+            }
+          }
+          type="date"
+          value="2022-11-17"
+        />
+      </DateTimeOptions>
+    </Connect(DateTimeOptions)>
   </Provider>
 </IntlProvider>
 `;
