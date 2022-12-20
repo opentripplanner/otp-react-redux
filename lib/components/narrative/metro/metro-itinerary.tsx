@@ -7,8 +7,9 @@ import {
   IntlShape
 } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
+import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 import * as narrativeActions from '../../../actions/narrative'
 import * as uiActions from '../../../actions/ui'
@@ -20,7 +21,6 @@ import {
 } from '../../../util/accessibility-routing'
 import { getActiveSearch, getFare } from '../../../util/state'
 import { ItineraryDescription } from '../default/itinerary-description'
-import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import { localizeGradationMap } from '../utils'
 import FormattedDuration, {
   formatDuration
@@ -197,6 +197,19 @@ const ItineraryGridSmall = styled.div`
   }
 `
 
+const BLUR_AMOUNT = 3
+const blurAnimation = keyframes`
+ 0% { filter: blur(${BLUR_AMOUNT + 1}px); }
+ 50% { filter: blur(${BLUR_AMOUNT}px) }
+`
+
+const LoadingBlurred = styled.span<{ loading: boolean }>`
+  ${(props) => props.loading && `filter: blur(${BLUR_AMOUNT}px)`};
+  animation-name: ${(props) => (props.loading ? blurAnimation : '')};
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+`
+
 type Props = {
   LegIcon: React.ReactNode
   accessibilityScoreGradationMap: { [value: number]: string }
@@ -251,6 +264,7 @@ class MetroItinerary extends NarrativeItinerary {
       itinerary,
       LegIcon,
       mini,
+      pending,
       setActiveItinerary,
       setActiveLeg,
       setItineraryTimeIndex,
@@ -279,12 +293,14 @@ class MetroItinerary extends NarrativeItinerary {
             id="common.itineraryDescriptions.relativeCo2"
             values={{
               co2: (
-                <FormattedNumber
-                  style="unit"
-                  unit="percent"
-                  unitDisplay="narrow"
-                  value={Math.abs(roundedCo2VsBaseline)}
-                />
+                <LoadingBlurred loading={pending}>
+                  <FormattedNumber
+                    style="unit"
+                    unit="percent"
+                    unitDisplay="narrow"
+                    value={Math.abs(roundedCo2VsBaseline)}
+                  />
+                </LoadingBlurred>
               ),
               isMore: roundedCo2VsBaseline > 0,
               sub: Sub
@@ -479,6 +495,9 @@ const mapStateToProps = (state: any, ownProps: Props) => {
     // @ts-expect-error state is not yet typed
     activeSearch && activeSearch.activeItineraryTimeIndex
 
+  // @ts-expect-error TODO: type activeSearch
+  const pending = activeSearch ? Boolean(activeSearch.pending) : false
+
   return {
     accessibilityScoreGradationMap:
       state.otp.config.accessibilityScore?.gradationMap,
@@ -491,6 +510,7 @@ const mapStateToProps = (state: any, ownProps: Props) => {
     currency: state.otp.config.localization?.currency || 'USD',
     defaultFareKey: state.otp.config.itinerary?.defaultFareKey,
     enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
+    pending,
     showLegDurations: state.otp.config.itinerary?.showLegDurations
   }
 }
