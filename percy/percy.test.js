@@ -260,11 +260,14 @@ test('OTP-RR', async () => {
     await page.focus('input[type="time"]')
     await page.keyboard.type('10')
     await page.waitForTimeout(200)
-    // Check that a11y can be triggered on and off without issue
+    // Check submode selector
     await page.click('.dot')
     await page.waitForTimeout(500)
+    const [streetcarButton] = await page.$x("//span[contains(., 'Streetcar')]")
+    await streetcarButton.click()
+    // Disable accessible routing
     await page.click('#id-query-param-wheelchair')
-    await page.click('#id-query-param-wheelchair')
+
     await page.click('.dot')
     await page.waitForTimeout(200)
 
@@ -357,7 +360,7 @@ test('OTP-RR', async () => {
   // Click second option
   const secondPatternOption = await page.$$eval(
     'option',
-    (options) => options.find((o) => o.innerText.includes('County Line'))?.value
+    (options) => options.find((o) => o.innerText.includes('Decatur'))?.value
   )
   await page.select('select#headsign-selector', secondPatternOption)
 
@@ -367,7 +370,7 @@ test('OTP-RR', async () => {
   // Click first option
   const firstPatternOption = await page.$$eval(
     'option',
-    (options) => options.find((o) => o.innerText.includes('Cedar'))?.value
+    (options) => options.find((o) => o.innerText.includes('Linecrest'))?.value
   )
   await page.select('select#headsign-selector', firstPatternOption)
   await page.waitForTimeout(1000)
