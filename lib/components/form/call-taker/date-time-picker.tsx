@@ -172,7 +172,9 @@ const DateTimeOptions = ({
           <Tooltip id="time-tooltip">
             {safeFormat(dateTime, timeFormat, {
               timeZone: homeTimezone
-            })}
+            }) ||
+              // TODO: there doesn't seem to be an intl object present?
+              'Invalid Time'}
           </Tooltip>
         }
         placement="bottom"
@@ -203,6 +205,7 @@ const DateTimeOptions = ({
       </OverlayTrigger>
       <input
         className="datetime-slim"
+        disabled={!dateTime}
         onChange={(e) => {
           setDate(e.target.value)
           unsetNow()
