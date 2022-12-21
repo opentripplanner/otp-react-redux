@@ -264,7 +264,7 @@ test('OTP-RR', async () => {
     await page.click('.dot')
     await page.waitForTimeout(500)
     const [streetcarButton] = await page.$x("//span[contains(., 'Streetcar')]")
-    await streetcarButton.click()
+    if (streetcarButton) await streetcarButton.click()
     // Disable accessible routing
     await page.click('#id-query-param-wheelchair')
 
