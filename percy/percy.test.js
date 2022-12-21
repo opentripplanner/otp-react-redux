@@ -346,21 +346,21 @@ test('OTP-RR', async () => {
 
   // Open Specific Route`
   try {
-    await page.$x("//span[contains(., 'Candler Road')]")
+    await page.$x("//span[contains(., 'Marietta Blvd')]")
   } catch {
     await page.reload({ waitUntil: 'networkidle0' })
   }
-  const [busRouteButton] = await page.$x("//span[contains(., 'Candler Road')]")
+  const [busRouteButton] = await page.$x("//span[contains(., 'Marietta Blvd')]")
   await busRouteButton.click()
   await page.waitForSelector('#headsign-selector')
 
-  await percySnapshotWithWait(page, 'Route Viewer Showing Route 15')
+  await percySnapshotWithWait(page, 'Route Viewer Showing Route 1')
 
   // View multiple patterns
   // Click second option
   const secondPatternOption = await page.$$eval(
     'option',
-    (options) => options.find((o) => o.innerText.includes('Decatur'))?.value
+    (options) => options.find((o) => o.innerText.includes('Moores'))?.value
   )
   await page.select('select#headsign-selector', secondPatternOption)
 
@@ -370,20 +370,20 @@ test('OTP-RR', async () => {
   // Click first option
   const firstPatternOption = await page.$$eval(
     'option',
-    (options) => options.find((o) => o.innerText.includes('Linecrest'))?.value
+    (options) => options.find((o) => o.innerText.includes('West'))?.value
   )
   await page.select('select#headsign-selector', firstPatternOption)
   await page.waitForTimeout(1000)
 
-  await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 15')
+  await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 1')
 
   // Stop viewer from pattern viewer
   try {
-    await page.$x("//a[contains(., 'Decatur')]")
+    await page.$x("//a[contains(., 'West')]")
   } catch {
     await page.reload({ waitUntil: 'networkidle0' })
   }
-  const [patternStopButton] = await page.$x("//a[contains(., 'Decatur')]")
+  const [patternStopButton] = await page.$x("//a[contains(., 'West')]")
   await patternStopButton.click()
   await page.waitForSelector('.stop-viewer')
 
