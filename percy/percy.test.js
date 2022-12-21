@@ -260,6 +260,13 @@ test('OTP-RR', async () => {
     await page.focus('input[type="time"]')
     await page.keyboard.type('10')
     await page.waitForTimeout(200)
+    // Check that a11y can be triggered on and off without issue
+    await page.click('.dot')
+    await page.click('#id-query-param-wheelchair')
+    await page.click('#id-query-param-wheelchair')
+    await page.click('.dot')
+    await page.waitForTimeout(200)
+
     await page.click('#plan-trip')
   } else {
     // take initial screenshot
