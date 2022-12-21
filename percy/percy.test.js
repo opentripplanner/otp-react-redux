@@ -262,6 +262,7 @@ test('OTP-RR', async () => {
     await page.waitForTimeout(200)
     // Check that a11y can be triggered on and off without issue
     await page.click('.dot')
+    await page.waitForTimeout(500)
     await page.click('#id-query-param-wheelchair')
     await page.click('#id-query-param-wheelchair')
     await page.click('.dot')
