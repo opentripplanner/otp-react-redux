@@ -2,9 +2,7 @@ import { Leg } from '@opentripplanner/types'
 import React from 'react'
 import styled from 'styled-components'
 
-// TODO: This should not be a section, but using div/span
-// doesn't allow us to style it from within the RouteBlock
-const Block = styled.span<{ color: string; onColoredBackground?: boolean }>`
+const Block = styled.span<{ color: string; isOnColoredBackground?: boolean }>`
   background: #${(props) => props.color}1A;
   border-radius: 5px;
   border-top: 5px solid #${(props) => props.color};
@@ -20,7 +18,7 @@ const Block = styled.span<{ color: string; onColoredBackground?: boolean }>`
   white-space: nowrap;
 
   ${(props) =>
-    props.onColoredBackground &&
+    props.isOnColoredBackground &&
     `
     border-top: none;
     text-overflow: unset;
@@ -34,7 +32,7 @@ type RouteRendererProps = {
 const DefaultRouteRenderer = ({ leg }: RouteRendererProps): JSX.Element => (
   <Block
     color={leg.routeColor || '333333'}
-    onColoredBackground={leg.onColoredBackground}
+    isOnColoredBackground={leg.onColoredBackground}
   >
     {leg.routeShortName || leg.route || leg.routeLongName}
   </Block>

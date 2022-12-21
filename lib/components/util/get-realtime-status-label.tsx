@@ -10,7 +10,7 @@ const getRealtimeStatusLabel = ({
 }: {
   intl: IntlShape
   minutes: number
-  status: string
+  status: 'early' | 'late' | 'on_time' | 'scheduled'
 }): string => {
   const mins = intl.formatMessage(
     { id: 'common.time.tripDurationFormat' },

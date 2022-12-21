@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import { ConfiguredCompany, Station, Stop } from '@opentripplanner/types'
+import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 // @ts-expect-error not typescripted yet
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
-// Disabled for now because this file should be removed when switching to the nearby view
-import { connect } from 'react-redux'
 import React, { Component, Suspense } from 'react'
 import styled from 'styled-components'
 
@@ -90,8 +89,10 @@ class AmenitiesPanel extends Component<Props, State> {
     const { intl, stopData } = this.props
     if (!stopData || !stopData.bikeRental) return null
     const { stations } = stopData.bikeRental
-    // TODO: Rewrite this in a way that the types make sense
-    const stationCounts: { [key: string]: any } = {}
+    const stationCounts: Record<
+      string,
+      { icon: any; isHub: boolean; name: string; stations: Array<Station> }
+    > = {}
     stations.forEach((station: Station) => {
       const isHub = !station.isFloatingBike
       const key = `${station.networks[0]}${isHub ? station.id : ''}`
@@ -197,7 +198,14 @@ class AmenitiesPanel extends Component<Props, State> {
     const { stopData } = this.props
     if (!stopData || !stopData.vehicleRental) return null
     const { stations } = stopData.vehicleRental
-    const companyCounts: { [key: string]: any } = {}
+    const companyCounts: Record<
+      string,
+      {
+        icon: any
+        name: string
+        stations: Array<Station>
+      }
+    > = {}
     stations.forEach((station: Station) => {
       if (!companyCounts[station.networks[0]]) {
         companyCounts[station.networks[0]] = {

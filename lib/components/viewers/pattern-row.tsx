@@ -104,10 +104,10 @@ class PatternRow extends Component<Props, State> {
                 )}
                 <RouteRenderer
                   // All GTFS bg colors look strange with the top border
-                  leg={generateFakeLegForRouteRenderer(route, true)}
-                  onColoredBackground={route?.operator?.colorMode?.includes(
+                  isOnColoredBackground={route?.operator?.colorMode?.includes(
                     'gtfs'
                   )}
+                  leg={generateFakeLegForRouteRenderer(route, true)}
                 />
               </div>
             </strong>
