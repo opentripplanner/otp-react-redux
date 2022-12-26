@@ -5,7 +5,8 @@ import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
-import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
+import { MainPanelContent } from '../../actions/ui-constants'
+import { setMainPanelContent } from '../../actions/ui'
 
 type Props = {
   activePanel: number | null

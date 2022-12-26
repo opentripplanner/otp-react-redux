@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import React, { Component } from 'react'
 
-import { MobileScreens, setMobileScreen } from '../../actions/ui'
+import { MobileScreens } from '../../actions/ui-constants'
+import { setMobileScreen } from '../../actions/ui'
 import ConnectedSettingsSelectorPanel from '../form/connected-settings-selector-panel'
 import PlanTripButton from '../form/plan-trip-button'
 
