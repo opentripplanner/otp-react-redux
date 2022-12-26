@@ -124,7 +124,7 @@ module.exports = {
         minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
       }
 
-      const existingCycles = 13
+      const existingCycles = 10
       let detectedCycles = []
 
       // Custom plugins to allow trimet-mod-otp integration
