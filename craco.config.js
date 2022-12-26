@@ -2,6 +2,7 @@ const path = require('path')
 
 const { addBeforeLoader, getLoaders, loaderByName } = require('@craco/craco')
 const BabelRcPlugin = require('@jackwilsdon/craco-use-babelrc')
+const CircularDependencyPlugin = require('circular-dependency-plugin')
 const fastRefreshCracoPlugin = require('craco-fast-refresh')
 const fs = require('fs-extra')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -123,6 +124,9 @@ module.exports = {
         minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
       }
 
+      const existingCycles = 13
+      let detectedCycles = []
+
       // Custom plugins to allow trimet-mod-otp integration
       const hotLoaderPlugins = []
       if (env === 'development') {
@@ -142,6 +146,32 @@ module.exports = {
           // Optionally override the default config files with some other
           // files.
           YAML_CONFIG: JSON.stringify(YAML_CONFIG)
+        }),
+        new CircularDependencyPlugin({
+          allowAsyncCycles: false,
+          cwd: './lib',
+          exclude: /node_modules/,
+          failOnError: true,
+          include: /lib/,
+          onDetected({ compilation, module: webpackModuleRecord, paths }) {
+            detectedCycles.push(paths.join(' -> '))
+          },
+          onEnd({ compilation }) {
+            if (detectedCycles.length > existingCycles) {
+              compilation.errors.push(
+                new Error(
+                  `Detected ${
+                    detectedCycles.length
+                  } cycles which exceeds configured limit of ${existingCycles}:\n${detectedCycles.join(
+                    '\n'
+                  )}`
+                )
+              )
+            }
+          },
+          onStart({ compilation }) {
+            detectedCycles = []
+          }
         })
       ].concat(DEV_ENV ? [] : [new webpack.optimize.AggressiveMergingPlugin()])
 
