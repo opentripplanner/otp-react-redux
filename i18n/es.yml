@@ -158,12 +158,8 @@ components:
     notificationEmailDetail: 'Los correos electrónicos de notificación se enviarán
       a:'
   PatternRow:
-    departure: Salida
     routeName: <strong>{routeName}</strong> A {headsign}
-    routeShort: A {headsign}
     status: Estado
-    collapseOrExpandDepartures: "{expanded, select, \n true {Desplegable}\n other\
-      \ {Ampliar}\n } para las salidas de Route {routeName}\n"
   PhoneNumberEditor:
     invalidPhone: Por favor, introduzca un número de teléfono válido.
     requestNewCode: Solicitar un nuevo código
