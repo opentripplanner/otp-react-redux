@@ -1,7 +1,7 @@
+import { FormattedMessage } from 'react-intl'
+import { MenuItem, NavDropdown, NavItem } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { MenuItem, NavDropdown, NavItem } from 'react-bootstrap'
-import { FormattedMessage } from 'react-intl'
 import styled from 'styled-components'
 
 import { LinkContainerWithQuery } from '../form/connected-links'
@@ -43,7 +43,7 @@ export default class NavLoginButton extends Component {
     profile: null
   }
 
-  render () {
+  render() {
     const {
       className,
       id,
@@ -67,31 +67,40 @@ export default class NavLoginButton extends Component {
         <NavDropdown
           {...commonProps}
           pullRight
-          title={<span>
-            <Avatar
-              alt={displayedName}
-              src={profile.picture}
-              title={`${displayedName}\n(${profile.email})`}
-            />
-          </span>
-          }>
+          title={
+            <span>
+              <Avatar
+                alt={displayedName}
+                src={profile.picture}
+                title={`${displayedName}\n(${profile.email})`}
+              />
+            </span>
+          }
+        >
           <MenuItem header>{displayedName}</MenuItem>
 
-          {links && links.map((link, i) => (
-            <LinkContainerWithQuery exact key={i} target={link.target} to={link.url}>
-              <MenuItem>
-                {link.messageId === 'myAccount' // messageId is 'myAccount' or 'help'
-                  ? <FormattedMessage id={'components.NavLoginButton.myAccount'} />
-                  : <FormattedMessage id={'components.NavLoginButton.help'} />
-                }
-              </MenuItem>
-            </LinkContainerWithQuery>
-          ))}
+          {links &&
+            links.map((link, i) => (
+              <LinkContainerWithQuery
+                exact
+                key={i}
+                target={link.target}
+                to={link.url}
+              >
+                <MenuItem>
+                  {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
+                    <FormattedMessage id="components.NavLoginButton.myAccount" />
+                  ) : (
+                    <FormattedMessage id="components.NavLoginButton.help" />
+                  )}
+                </MenuItem>
+              </LinkContainerWithQuery>
+            ))}
 
           <MenuItem divider />
 
           <MenuItem onSelect={onSignOutClick}>
-            <FormattedMessage id='components.NavLoginButton.signOut' />
+            <FormattedMessage id="components.NavLoginButton.signOut" />
           </MenuItem>
         </NavDropdown>
       )
@@ -100,7 +109,7 @@ export default class NavLoginButton extends Component {
     // Display the sign-in link if no profile is passed (user is not logged in).
     return (
       <NavItem {...commonProps} onClick={onSignInClick}>
-        <FormattedMessage id='components.NavLoginButton.signIn' />
+        <FormattedMessage id="components.NavLoginButton.signIn" />
       </NavItem>
     )
   }
