@@ -12,7 +12,9 @@ import { getSecondsUntilDeparture, getTripStatus } from '../../util/viewer'
 import { StyledIconWrapperTextAlign } from '../util/styledIcon'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import FormattedDuration from '../util/formatted-duration'
-import getRealtimeStatusLabel from '../util/get-realtime-status-label'
+import getRealtimeStatusLabel, {
+  status
+} from '../util/get-realtime-status-label'
 import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
@@ -135,7 +137,7 @@ const StopTimeCell = ({
         title={getRealtimeStatusLabel({
           intl,
           minutes: Math.abs(Math.ceil(stopTime.departureDelay / 60)),
-          status: getTripStatus(realtime, stopTime.departureDelay, 30)
+          status: getTripStatus(realtime, stopTime.departureDelay, 30) as status
         })}
       >
         {showCountdown ? (

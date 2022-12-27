@@ -1,4 +1,5 @@
 import { IntlShape } from 'react-intl'
+type status = 'early' | 'late' | 'on_time' | 'scheduled'
 /**
  * Returns a FormattedMessage component for realtime status labels such that i18n IDs
  * are hardcoded and can be kept track of by format.js CLI tools
@@ -10,7 +11,7 @@ const getRealtimeStatusLabel = ({
 }: {
   intl: IntlShape
   minutes: number
-  status: 'early' | 'late' | 'on_time' | 'scheduled'
+  status: status
 }): string => {
   const mins = intl.formatMessage(
     { id: 'common.time.tripDurationFormat' },
@@ -39,3 +40,5 @@ const getRealtimeStatusLabel = ({
 }
 
 export default getRealtimeStatusLabel
+
+export type { status }
