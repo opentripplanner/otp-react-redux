@@ -241,7 +241,7 @@ test('OTP-RR', async () => {
 
   // Plan a trip
   await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2022-12-12&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
+    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2023-01-12&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
   )
   await page.waitForNavigation({ waitUntil: 'networkidle2' })
   await page.waitForSelector('.option.metro-itin')
@@ -260,6 +260,17 @@ test('OTP-RR', async () => {
     await page.focus('input[type="time"]')
     await page.keyboard.type('10')
     await page.waitForTimeout(200)
+    // Check submode selector
+    await page.click('button[aria-label="Trip Settings"]')
+    await page.waitForTimeout(500)
+    const [streetcarButton] = await page.$x("//span[contains(., 'Streetcar')]")
+    await streetcarButton.click()
+    // Disable accessible routing
+    await page.click('#id-query-param-wheelchair')
+
+    await page.click('button[aria-label="Trip Settings"]')
+    await page.waitForTimeout(200)
+
     await page.click('#plan-trip')
   } else {
     // take initial screenshot
@@ -335,23 +346,21 @@ test('OTP-RR', async () => {
 
   // Open Specific Route`
   try {
-    await page.$x("//span[contains(., 'Sugarloaf Mills - Lindbergh Center')]")
+    await page.$x("//span[contains(., 'Marietta Blvd')]")
   } catch {
     await page.reload({ waitUntil: 'networkidle0' })
   }
-  const [busRouteButton] = await page.$x(
-    "//span[contains(., 'Sugarloaf Mills - Lindbergh Center')]"
-  )
+  const [busRouteButton] = await page.$x("//span[contains(., 'Marietta Blvd')]")
   await busRouteButton.click()
   await page.waitForSelector('#headsign-selector')
 
-  await percySnapshotWithWait(page, 'Route Viewer Showing Route 410')
+  await percySnapshotWithWait(page, 'Route Viewer Showing Route 1')
 
   // View multiple patterns
   // Click second option
   const secondPatternOption = await page.$$eval(
     'option',
-    (options) => options.find((o) => o.innerText.includes('Sugarloaf'))?.value
+    (options) => options.find((o) => o.innerText.includes('Moores'))?.value
   )
   await page.select('select#headsign-selector', secondPatternOption)
 
@@ -361,22 +370,20 @@ test('OTP-RR', async () => {
   // Click first option
   const firstPatternOption = await page.$$eval(
     'option',
-    (options) => options.find((o) => o.innerText.includes('Lindbergh'))?.value
+    (options) => options.find((o) => o.innerText.includes('West'))?.value
   )
   await page.select('select#headsign-selector', firstPatternOption)
   await page.waitForTimeout(1000)
 
-  await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 410')
+  await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 1')
 
   // Stop viewer from pattern viewer
   try {
-    await page.$x("//a[contains(., 'Sugarloaf Mills GCT Park and Ride')]")
+    await page.$x("//a[contains(., 'West')]")
   } catch {
     await page.reload({ waitUntil: 'networkidle0' })
   }
-  const [patternStopButton] = await page.$x(
-    "//a[contains(., 'Sugarloaf Mills GCT Park and Ride')]"
-  )
+  const [patternStopButton] = await page.$x("//a[contains(., 'West')]")
   await patternStopButton.click()
   await page.waitForSelector('.stop-viewer')
 
