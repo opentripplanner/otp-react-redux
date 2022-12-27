@@ -1,7 +1,7 @@
 import { FormattedMessage } from 'react-intl'
 import { MenuItem, NavDropdown, NavItem } from 'react-bootstrap'
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React, { Component, CSSProperties } from 'react'
 import styled from 'styled-components'
 
 import { LinkContainerWithQuery } from '../form/connected-links'
@@ -18,13 +18,29 @@ const linkType = PropTypes.shape({
   url: PropTypes.string.isRequired
 })
 
+type Link = {
+  messageId: string
+  target?: string
+  url: string
+}
+
+type Props = {
+  className?: string
+  id: string
+  links: Link[]
+  onSignInClick: () => void
+  onSignOutClick: () => void
+  profile: { email: string; name: string; nickname?: string; picture?: string }
+  style?: CSSProperties | undefined
+}
+
 /**
  * This component displays the sign-in status in the nav bar.
  * - When a user is not logged in: display 'Sign In' as a link or button.
  * - When a user is logged in, display an 'avatar' (retrieved from the profile prop)
  *   and a dropdown button so the user can access more options.
  */
-export default class NavLoginButton extends Component {
+export default class NavLoginButton extends Component<Props> {
   static propTypes = {
     id: PropTypes.string.isRequired,
     links: PropTypes.arrayOf(linkType),
@@ -43,7 +59,7 @@ export default class NavLoginButton extends Component {
     profile: null
   }
 
-  render() {
+  render(): JSX.Element {
     const {
       className,
       id,
