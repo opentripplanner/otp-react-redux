@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  run-pixel-tests-with-otp1-mock-server:
+  run-pixel-tests-with-otp1-real-server:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,12 +22,16 @@ jobs:
           node-version: 16.x
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
+      - name: Download OTP1 config file
+        run: curl $PERCY_OTP1_CONFIG_URL --output /tmp/otp1config.yml
+        env:
+          PERCY_OTP1_CONFIG_URL: ${{ secrets.PERCY_OTP1_CONFIG_URL_METRO }}
       - name: Take Percy Snapshots
         # Move everything from latest commit back to staged
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          HAR_URL: ${{ secrets.PERCY_HAR_URL }}
+          PERCY_OTP_CONFIG_OVERRIDE: /tmp/otp1config.yml
   run-pixel-tests-with-otp2-real-server:
     runs-on: ubuntu-latest
 
