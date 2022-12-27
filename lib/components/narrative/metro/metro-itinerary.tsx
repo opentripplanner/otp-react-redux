@@ -199,8 +199,8 @@ const ItineraryGridSmall = styled.div`
 
 const BLUR_AMOUNT = 3
 const blurAnimation = keyframes`
- 0% { filter: blur(${BLUR_AMOUNT + 1}px); }
- 50% { filter: blur(${BLUR_AMOUNT}px) }
+ 0% { filter: blur(${BLUR_AMOUNT}px); }
+ 50% { filter: blur(${BLUR_AMOUNT + 1}px) }
 `
 
 const LoadingBlurred = styled.span<{ loading: boolean }>`
@@ -208,6 +208,7 @@ const LoadingBlurred = styled.span<{ loading: boolean }>`
   animation-name: ${(props) => (props.loading ? blurAnimation : '')};
   animation-duration: 1s;
   animation-iteration-count: infinite;
+  transition: all 0.2s ease-in-out;
 `
 
 type Props = {
