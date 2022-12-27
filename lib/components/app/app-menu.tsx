@@ -11,7 +11,6 @@ import { MenuItem } from 'react-bootstrap'
 import { Undo } from '@styled-icons/fa-solid/Undo'
 import { withRouter } from 'react-router'
 import AnimateHeight from 'react-animate-height'
-import qs from 'qs'
 import React, { Component, Fragment, useContext } from 'react'
 import SlidingPane from 'react-sliding-pane'
 import type { RouteComponentProps } from 'react-router'
@@ -24,6 +23,7 @@ import { ComponentContext } from '../../util/contexts'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import { StyledIconWrapper } from '../util/styledIcon'
+import startOver from '../util/start-over'
 
 type AppMenuProps = {
   callTakerEnabled?: boolean
@@ -60,6 +60,8 @@ class AppMenu extends Component<
   AppMenuProps & WrappedComponentProps & RouteComponentProps,
   AppMenuState
 > {
+  static contextType = ComponentContext
+
   state = {
     expandedSubmenus: {} as Record<string, boolean>,
     isPaneOpen: false
@@ -73,20 +75,7 @@ class AppMenu extends Component<
   _startOver = () => {
     const { location, reactRouterConfig } = this.props
     const { search } = location
-    let startOverUrl = '/'
-    if (reactRouterConfig && reactRouterConfig.basename) {
-      startOverUrl += reactRouterConfig.basename
-    }
-    // If search contains sessionId, preserve this so that the current session
-    // is not lost when the page reloads.
-    if (search) {
-      const params = qs.parse(search, { ignoreQueryPrefix: true })
-      const { sessionId } = params
-      if (sessionId) {
-        startOverUrl += `?${qs.stringify({ sessionId })}`
-      }
-    }
-    window.location.href = startOverUrl
+    window.location.href = startOver(reactRouterConfig?.basename, search)
   }
 
   _triggerPopup = () => {
@@ -186,6 +175,7 @@ class AppMenu extends Component<
     } = this.props
 
     const { isPaneOpen } = this.state
+    const { SvgIcon } = this.context
     return (
       <>
         <div
@@ -231,7 +221,7 @@ class AppMenu extends Component<
             {popupTarget && (
               <MenuItem className="menu-item" onClick={this._triggerPopup}>
                 <StyledIconWrapper>
-                  <ExternalLinkSquareAlt />
+                  <SvgIcon iconName={popupTarget} />
                 </StyledIconWrapper>
                 <FormattedMessage id={`config.popups.${popupTarget}`} />
               </MenuItem>
@@ -331,14 +321,10 @@ const IconAndLabel = ({
           )}
           src={iconUrl}
         />
+      ) : iconType ? (
+        <SvgIcon iconName={iconType} />
       ) : (
-        <StyledIconWrapper>
-          {iconType ? (
-            <SvgIcon iconName={iconType} />
-          ) : (
-            <ExternalLinkSquareAlt />
-          )}
-        </StyledIconWrapper>
+        <ExternalLinkSquareAlt />
       )}
       {label}
     </span>

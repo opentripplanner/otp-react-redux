@@ -1,16 +1,20 @@
 import { Clock } from '@styled-icons/fa-regular/Clock'
 import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { Rss } from '@styled-icons/fa-solid/Rss'
 import addDays from 'date-fns/addDays'
 import coreUtils from '@opentripplanner/core-utils'
 import isSameDay from 'date-fns/isSameDay'
 import React from 'react'
+import styled from 'styled-components'
 
-import { getSecondsUntilDeparture } from '../../util/viewer'
+import { getSecondsUntilDeparture, getTripStatus } from '../../util/viewer'
 import { StyledIconWrapperTextAlign } from '../util/styledIcon'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import FormattedDuration from '../util/formatted-duration'
+import getRealtimeStatusLabel, {
+  status
+} from '../util/get-realtime-status-label'
 import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
@@ -18,6 +22,11 @@ import DepartureTime from './departure-time'
 const { getUserTimezone } = coreUtils.time
 const ONE_HOUR_IN_SECONDS = 3600
 const ONE_DAY_IN_SECONDS = 86400
+
+const PulsingRss = styled(Rss)`
+  animation: pulse-opacity 2s ease-in-out infinite;
+  transform: scaleX(-1);
+`
 
 type Props = {
   /** If configured, the timezone of the area */
@@ -34,6 +43,8 @@ const StopTimeCell = ({
   homeTimezone = getUserTimezone(),
   stopTime
 }: Props): JSX.Element => {
+  const intl = useIntl()
+
   if (!homeTimezone || !stopTime) {
     console.warn(
       'Missing required prop(s) for StopTimeCell: homeTimezone, stopTime'
@@ -89,41 +100,57 @@ const StopTimeCell = ({
   // Thursday 12:19am. We don't want the time to read: 'Thursday, 24 minutes'.
   const showDayOfWeek = !vehicleDepartsToday && !showCountdown
 
+  const realtime = stopTime.realtimeState === 'UPDATED'
+  const realtimeLabel = realtime
+    ? intl.formatMessage({
+        id: 'components.StopTimeCell.realtime'
+      })
+    : intl.formatMessage({
+        id: 'components.StopTimeCell.scheduled'
+      })
   return (
-    <div>
-      <div className="pull-left">
-        <StyledIconWrapperTextAlign
-          style={{ color: '#888', fontSize: '0.8em', marginRight: 2 }}
-        >
-          {stopTime.realtimeState === 'UPDATED' ? <Rss /> : <Clock />}
-        </StyledIconWrapperTextAlign>
-      </div>
+    <div className="percy-hide">
+      <StyledIconWrapperTextAlign
+        style={{
+          fontSize: '0.6em',
+          margin: 0,
+          marginRight: 2
+        }}
+        title={realtimeLabel}
+      >
+        {realtime ? <PulsingRss /> : <Clock />}
+      </StyledIconWrapperTextAlign>
 
-      <div style={{ fontSize: showDayOfWeek ? 12 : 14, marginLeft: 20 }}>
-        {showDayOfWeek && (
-          <div className="percy-hide" style={{ marginBottom: -4 }}>
-            <FormattedDayOfWeek
-              // 'iiii' returns the long ISO day of the week (independent of browser locale).
-              // See https://date-fns.org/v2.28.0/docs/format
-              day={format(departureDay, 'iiii', {
-                timeZone: homeTimezone
-              }).toLowerCase()}
-            />
-          </div>
-        )}
-        <div className="percy-hide">
-          {showCountdown ? (
-            // Show countdown string (e.g., 3 min or Due)
-            isDue ? (
-              <FormattedMessage id="components.StopTimeCell.imminentArrival" />
-            ) : (
-              <FormattedDuration duration={secondsUntilDeparture} />
-            )
+      {showDayOfWeek && (
+        <span className="percy-hide" style={{ marginBottom: -4 }}>
+          <FormattedDayOfWeek
+            // 'iiii' returns the long ISO day of the week (independent of browser locale).
+            // See https://date-fns.org/v2.28.0/docs/format
+            day={format(departureDay, 'iiii', {
+              timeZone: homeTimezone
+            }).toLowerCase()}
+          />{' '}
+        </span>
+      )}
+      <span
+        className="percy-hide"
+        title={getRealtimeStatusLabel({
+          intl,
+          minutes: Math.abs(Math.ceil(stopTime.departureDelay / 60)),
+          status: getTripStatus(realtime, stopTime.departureDelay, 30) as status
+        })}
+      >
+        {showCountdown ? (
+          // Show countdown string (e.g., 3 min or Due)
+          isDue ? (
+            <FormattedMessage id="components.StopTimeCell.imminentArrival" />
           ) : (
-            <DepartureTime realTime stopTime={stopTime} />
-          )}
-        </div>
-      </div>
+            <FormattedDuration duration={secondsUntilDeparture} />
+          )
+        ) : (
+          <DepartureTime realTime stopTime={stopTime} />
+        )}
+      </span>
     </div>
   )
 }

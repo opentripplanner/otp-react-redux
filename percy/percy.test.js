@@ -222,8 +222,6 @@ if (OTP_RR_PERCY_MOBILE) {
     await percySnapshotWithWait(page, 'Mobile Itinerary Results')
 
     await page.click('.route-block-wrapper')
-    await page.waitForTimeout(500)
-    await page.click('button .route-block-wrapper')
     await percySnapshotWithWait(page, 'Mobile Itinerary Selected')
 
     await page.click('.button-container:nth-of-type(2)')
@@ -238,12 +236,43 @@ test('OTP-RR', async () => {
     height: 1080,
     width: 1920
   })
+  page.on('console', async (msg) => {
+    const args = await msg.args()
+    args.forEach(async (arg) => {
+      const val = await arg.jsonValue()
+      // value is serializable
+      if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
+      // value is unserializable (or an empty oject)
+      else {
+        const { description, subtype, type } = arg._remoteObject
+        console.log(
+          `type: ${type}, subtype: ${subtype}, description:\n ${description}`
+        )
+      }
+    })
+  })
+  // log all errors that were logged to the browser console
+  page.on('warn', (warn) => {
+    console.log(warn)
+  })
+  page.on('error', (error) => {
+    console.error(error)
+    console.error(error.stack)
+  })
+  // log all uncaught exceptions
+  page.on('pageerror', (error) => {
+    console.error(`Page Error: ${error}`)
+  })
+  // log all failed requests
+  page.on('requestfailed', (req) => {
+    console.error(`Request failed: ${req.method()} ${req.url()}`)
+  })
 
   await percySnapshotWithWait(page, 'Main Page (without styling)')
 
   // Plan a trip
   await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2022-10-10&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
+    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2023-01-12&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
   )
   await page.waitForNavigation({ waitUntil: 'networkidle2' })
   await page.waitForSelector('.option.metro-itin')
@@ -262,9 +291,21 @@ test('OTP-RR', async () => {
     await page.focus('input[type="time"]')
     await page.keyboard.type('10')
     await page.waitForTimeout(200)
+    // Check submode selector
+    await page.click('button[aria-label="Trip Settings"]')
+    await page.waitForTimeout(500)
+    const [streetcarButton] = await page.$x("//span[contains(., 'Streetcar')]")
+    await streetcarButton.click()
+    // Disable accessible routing
+    await page.click('#id-query-param-wheelchair')
+
+    await page.click('button[aria-label="Trip Settings"]')
+    await page.waitForTimeout(200)
+
     await page.click('#plan-trip')
   } else {
     // take initial screenshot
+    await page.waitForTimeout(1000) // wait extra time for all results to load
     await percySnapshotWithWait(page, 'Call Taker')
 
     // add intermedaite stop
@@ -320,7 +361,7 @@ test('OTP-RR', async () => {
   // Open schedule view
   await page.waitForSelector('button.link-button.pull-right')
   await page.click('button.link-button.pull-right')
-  await page.waitForTimeout(3000) // Slow animation
+  await page.waitForTimeout(6000) // Slow animation
   await percySnapshotWithWait(page, 'Schedule Viewer')
   // TODO: is the schedule date wrong?
 
@@ -336,23 +377,21 @@ test('OTP-RR', async () => {
 
   // Open Specific Route`
   try {
-    await page.$x("//span[contains(., 'Sugarloaf Mills - Lindbergh Center')]")
+    await page.$x("//span[contains(., 'Marietta Blvd')]")
   } catch {
     await page.reload({ waitUntil: 'networkidle0' })
   }
-  const [busRouteButton] = await page.$x(
-    "//span[contains(., 'Sugarloaf Mills - Lindbergh Center')]"
-  )
+  const [busRouteButton] = await page.$x("//span[contains(., 'Marietta Blvd')]")
   await busRouteButton.click()
   await page.waitForSelector('#headsign-selector')
 
-  await percySnapshotWithWait(page, 'Route Viewer Showing Route 410')
+  await percySnapshotWithWait(page, 'Route Viewer Showing Route 1')
 
   // View multiple patterns
   // Click second option
   const secondPatternOption = await page.$$eval(
     'option',
-    (options) => options.find((o) => o.innerText.includes('Sugarloaf'))?.value
+    (options) => options.find((o) => o.innerText.includes('Moores'))?.value
   )
   await page.select('select#headsign-selector', secondPatternOption)
 
@@ -362,22 +401,20 @@ test('OTP-RR', async () => {
   // Click first option
   const firstPatternOption = await page.$$eval(
     'option',
-    (options) => options.find((o) => o.innerText.includes('Lindbergh'))?.value
+    (options) => options.find((o) => o.innerText.includes('West'))?.value
   )
   await page.select('select#headsign-selector', firstPatternOption)
   await page.waitForTimeout(1000)
 
-  await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 410')
+  await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 1')
 
   // Stop viewer from pattern viewer
   try {
-    await page.$x("//a[contains(., 'Sugarloaf Mills GCT Park and Ride')]")
+    await page.$x("//a[contains(., 'West')]")
   } catch {
     await page.reload({ waitUntil: 'networkidle0' })
   }
-  const [patternStopButton] = await page.$x(
-    "//a[contains(., 'Sugarloaf Mills GCT Park and Ride')]"
-  )
+  const [patternStopButton] = await page.$x("//a[contains(., 'West')]")
   await patternStopButton.click()
   await page.waitForSelector('.stop-viewer')
 

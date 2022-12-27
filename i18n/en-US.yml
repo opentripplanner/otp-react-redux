@@ -85,6 +85,7 @@ components:
     bannedRoutes: Select banned routes...
     maxBike: "Max bike {unitsString}"
     maxWalk: "Max walk {unitsString}"
+    walkReluctance: "Walk Reluctance"
     preferredRoutes: Select preferred routes...
   AfterSignInScreen:
     mainTitle: Redirecting...
@@ -205,11 +206,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Form navigation
   ItinerarySummary:
-    fareCost: >
-      {useMaxFare, select,
-        true {{minTotalFare} - {maxTotalFare}}
-        other {{minTotalFare}}
-      }
+    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
   LocationSearch:
@@ -278,16 +275,6 @@ components:
     notificationChannelPrompt: How would you like to receive notifications?
     notificationEmailDetail: "Notification emails will be sent to:"
     noneSelect: Don't notify me
-  PatternRow:
-    collapseOrExpandDepartures: >
-      {expanded, select, 
-        true {Collapse}
-        other {Expand}
-      } all departures for Route {routeName}
-    departure: Departure
-    routeName: "<strong>{routeName}</strong> To {headsign}"
-    routeShort: "To {headsign}"
-    status: Status
   PhoneNumberEditor:
     changeNumber: Change number
     invalidCode: Please enter 6 digits for the validation code.
@@ -357,17 +344,16 @@ components:
     backToSearch: Back to Search
   ResultsHeader:
     noTripFound: No Trip Found
-    tripsFound: "We Found {count} {count, plural, one {Option} other {Options}}"
+    tripsFound: "We Found {count, plural, one {# Option} other {# Options}}"
     waiting: Waiting...
-  ResultsScreen:
-    header: Option {index}
   RouteDetails:
     operatedBy: "Operated by {agencyName}"
     moreDetails: "More Details"
     stopsTo: "Towards"
     selectADirection: "Select a direction..."
   RouteRow:
-    operatorLogoAltText: "{operatorName} logo"
+    operatorLogoAltText: "logo for {operatorName}"
+    operatorLogoAriaLabel: "{operatorName} stop:"
   # Used in both desktop and mobile
   RouteViewer:
     agencyFilter: Agency Filter
@@ -405,8 +391,6 @@ components:
     saveTripText: Save trip
     signInText: Sign in to save trip
     signInTooltip: Please sign in to save trip.
-  SearchScreen:
-    header: Plan Your Trip
   SessionTimeout:
     body: Your session will expire within a minute. Press 'Continue Session' to keep your search.
     header: Session about to timeout!
@@ -423,6 +407,8 @@ components:
     destination: To
     route: Route
   StopTimeCell:
+    realtime: Based on realtime data
+    scheduled: Based on schedule data
     imminentArrival: Due
   # Used in both desktop and mobile
   StopViewer:
@@ -443,17 +429,6 @@ components:
   SwitchButton:
     defaultContent: Switch
     switchLocations: Switch locations
-  TabbedFormPanel:
-    hideSettings: " Hide Settings"
-  TabbedItineraries:
-    optionNumber: "Option {optionNum, number}"
-    # Note to translator: This text is width-constrained.
-    mustCallAhead: Must call ahead!
-    fareCost: >
-      {hasMaxFare, select, 
-        true {{minTotalFare}+}
-        other {{minTotalFare}}
-      }
   TermsOfUsePane:
     confirmDeletionPrompt: >
       Removing your consent to storage of historical trips will cause your trip history to be deleted. 
@@ -676,6 +651,13 @@ common:
     # Note to translator: noTransitFareProvided is width-constrained.
     noTransitFareProvided: No fare info
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
+    # This string will have a formatted number before it, including units.
+    relativeCo2: >
+      {co2}
+      {isMore, select,
+      true {more}
+      other {less}
+      } CO<sub>2</sub> than driving alone.
 
   # Note to translator: the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
@@ -722,16 +704,10 @@ common:
     routeToHeadsign: "To {headsign}"
 
   searchForms:
-    enterDestination: >
-      Enter destination or {mobile, select,
-        true {tap}
-        other {click}
-      } on map...
-    enterStartLocation: >
-      Enter start location or {mobile, select,
-        true {tap}
-        other {click}
-      } on map...
+    click: click
+    enterDestination: Enter destination or {mapAction} on map…
+    enterStartLocation: Enter start location or {mapAction} on map…
+    tap: tap
 
   time:
     # Use ordered placeholders for the departure-arrival string
@@ -753,14 +729,8 @@ common:
         }}
         other {# days ago}
       }
-    # If trip is less than one hour only display the minutes.
-    tripDurationFormatZeroHours: "{minutes, number} min"
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
-    tripDurationFormat: >
-      {hours, plural, 
-        =0 {{minutes, number} min}
-        other {# hr {minutes, number} min}
-      }
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min"
 
 util:
   state:

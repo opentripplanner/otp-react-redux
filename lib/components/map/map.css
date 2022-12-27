@@ -9,6 +9,9 @@
   padding: 0px 0px;
   color: #000080;
 }
+.otp .base-color-bg .link-button {
+  color: inherit;
+}
 
 .otp .link-button:hover {
   text-decoration: underline;
@@ -97,14 +100,14 @@
 /* Stop icon circle css */
 
 .otp .stop-overlay-bg {
-  background: rgba(0,0,0,0);
+  background: rgba(0, 0, 0, 0);
   border: none;
 }
 
 .otp .stop-overlay-icon {
   border: 1px solid black;
-  background-color: #FFFFFF;
-  border-radius:50%;
+  background-color: #ffffff;
+  border-radius: 50%;
 }
 
 /* Overlay Popups */

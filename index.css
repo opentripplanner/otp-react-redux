@@ -78,6 +78,7 @@ input[type="text"]::-ms-clear {
 .slide-pane__content {
   padding: 6px 0;
 }
+
 .slide-pane__overlay {
   z-index: 1000;
 }
@@ -93,9 +94,12 @@ input[type="text"]::-ms-clear {
   cursor: pointer;
 }
 
-.app-menu li img {
-  width: 25px;
+.app-menu li img,
+.app-menu li svg {
+  max-height: 1em;
   margin-right: 2rem;
+  vertical-align: middle;
+  width: 1em;
 }
 
 .app-menu li a {
@@ -105,14 +109,20 @@ input[type="text"]::-ms-clear {
   outline: none;
 }
 
+.view-switcher {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .view-switcher {
+    display: flex;
+  }
+}
+
 /* increase icon size */
 .app-menu li a .fa,
 .expand-submenu-button span .fa {
   font-size: 2rem;
-}
-
-.app-menu span:not(.expand-menu-chevron) {
-  margin-right: 2rem;
 }
 
 .menu-item:hover *,
