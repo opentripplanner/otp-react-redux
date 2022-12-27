@@ -1,7 +1,8 @@
-// Disabled for now because this file should be removed when switching to the nearby view
 /* eslint-disable react/prop-types */
+import { ConfiguredCompany, Station, Stop } from '@opentripplanner/types'
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+// @ts-expect-error not typescripted yet
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import React, { Component, Suspense } from 'react'
 import styled from 'styled-components'
@@ -29,8 +30,21 @@ const StyledParkAndRideIcon = styled.div`
 
 const parkAndRideMarker = <StyledParkAndRideIcon>P</StyledParkAndRideIcon>
 
-class AmenitiesPanel extends Component {
-  constructor(props) {
+type Props = {
+  configCompanies: ConfiguredCompany[]
+  intl: IntlShape
+  stopData: Stop & {
+    bikeRental: any
+    parkAndRideLocations: any
+    vehicleRental: any
+  }
+}
+type State = {
+  expanded: boolean
+}
+
+class AmenitiesPanel extends Component<Props, State> {
+  constructor(props: Props) {
     super(props)
     this.state = {
       expanded: false
@@ -46,7 +60,8 @@ class AmenitiesPanel extends Component {
   _renderParkAndRides = () => {
     const { parkAndRideLocations } = this.props.stopData
     return parkAndRideLocations && parkAndRideLocations.length > 0 ? (
-      parkAndRideLocations.map((parkAndRide) => (
+      // TODO Type for P+R
+      parkAndRideLocations.map((parkAndRide: any) => (
         <li className="related-item" key={parkAndRide.name}>
           <div className="item-label">
             <div
@@ -74,8 +89,11 @@ class AmenitiesPanel extends Component {
     const { intl, stopData } = this.props
     if (!stopData || !stopData.bikeRental) return null
     const { stations } = stopData.bikeRental
-    const stationCounts = {}
-    stations.forEach((station) => {
+    const stationCounts: Record<
+      string,
+      { icon: any; isHub: boolean; name: string; stations: Array<Station> }
+    > = {}
+    stations.forEach((station: Station) => {
       const isHub = !station.isFloatingBike
       const key = `${station.networks[0]}${isHub ? station.id : ''}`
       if (!stationCounts[key]) {
@@ -146,7 +164,7 @@ class AmenitiesPanel extends Component {
     )
   }
 
-  _getModeIcon = (mode) => {
+  _getModeIcon = (mode: string) => {
     const { ModeIcon } = this.context
     return (
       <ModeIcon
@@ -158,7 +176,7 @@ class AmenitiesPanel extends Component {
     )
   }
 
-  _getStationIcon = (mode, station) => {
+  _getStationIcon = (mode: string, station: Station) => {
     const CompanyIcon = getCompanyIcon(station?.networks[0])
     return CompanyIcon ? (
       <Suspense fallback={<span>{station?.networks[0]}</span>}>
@@ -169,9 +187,9 @@ class AmenitiesPanel extends Component {
     )
   }
 
-  _getCompany = (station) => {
+  _getCompany = (station: Station) => {
     return (
-      this.props.configCompanies.find((c) => c.id === station.networks[0])
+      this.props?.configCompanies?.find((c) => c.id === station.networks[0])
         ?.label || ''
     )
   }
@@ -180,8 +198,15 @@ class AmenitiesPanel extends Component {
     const { stopData } = this.props
     if (!stopData || !stopData.vehicleRental) return null
     const { stations } = stopData.vehicleRental
-    const companyCounts = {}
-    stations.forEach((station) => {
+    const companyCounts: Record<
+      string,
+      {
+        icon: any
+        name: string
+        stations: Array<Station>
+      }
+    > = {}
+    stations.forEach((station: Station) => {
       if (!companyCounts[station.networks[0]]) {
         companyCounts[station.networks[0]] = {
           icon: this._getStationIcon('MICROMOBILITY', station),
@@ -223,13 +248,12 @@ class AmenitiesPanel extends Component {
     const { expanded } = this.state
     return (
       <RelatedPanel
+        count={0}
         expanded={expanded}
         onToggleExpanded={this._toggleExpandedView}
         title={intl.formatMessage({
           id: 'components.AmenitiesPanel.nearbyAmenities'
         })}
-        // FIXME: this needs to ideally change with the string length...
-        titleWidth="16ch"
       >
         <ul className="related-items-list list-unstyled">
           {this._renderParkAndRides()}
@@ -241,7 +265,7 @@ class AmenitiesPanel extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state: any) => {
   return {
     configCompanies: state.otp.config.companies
   }

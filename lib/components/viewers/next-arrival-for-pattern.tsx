@@ -1,3 +1,4 @@
+import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
 import { injectIntl, IntlShape } from 'react-intl'
 import { Route } from '@opentripplanner/types'
 import React, { useContext } from 'react'
@@ -17,7 +18,12 @@ type Props = {
   homeTimezone?: string
   intl: IntlShape
   pattern: Pattern
-  route: Route
+  // Not the true operator type, but the one that's used here
+  // It is annoying to shoehorn the operator in here like this, but passing
+  // it in indvidually would cause a situation where a list of routes
+  // needs to be matched up with a list of operators
+  route: Route & { operator?: { colorMode?: string } }
+  routeColor: string
   stopTimes: Time[]
   stopViewerArriving: React.ReactNode
   stopViewerConfig: { numberOfDepartures: number }
@@ -25,10 +31,15 @@ type Props = {
 /**
  * Shows the next arrival for a pattern within the related stops view.
  */
-function NextArrivalForPattern(props: Props) {
-  const { homeTimezone, intl, pattern, route, stopTimes, stopViewerConfig } =
-    props
-
+function NextArrivalForPattern({
+  homeTimezone,
+  intl,
+  pattern,
+  route,
+  routeColor,
+  stopTimes,
+  stopViewerConfig
+}: Props) {
   // @ts-expect-error React context is populated dynamically
   const { RouteRenderer: CustomRouteRenderer } = useContext(ComponentContext)
   const RouteRenderer = CustomRouteRenderer || DefaultRouteRenderer
@@ -64,11 +75,21 @@ function NextArrivalForPattern(props: Props) {
   const title = `${routeName} ${toHeadsign}`
 
   return (
-    <div className="next-arrival-row">
+    <div
+      className="next-arrival-row"
+      style={{
+        backgroundColor: routeColor,
+        color: getMostReadableTextColor(routeColor, route?.textColor)
+      }}
+    >
       {/* route name */}
       <div className="next-arrival-label overflow-ellipsis" title={title}>
         <span className="route-name">
-          <RouteRenderer leg={generateFakeLegForRouteRenderer(route)} />
+          <RouteRenderer
+            isOnColoredBackground={route.operator?.colorMode?.includes('gtfs')}
+            // All GTFS bg colors look strange with the top border
+            leg={generateFakeLegForRouteRenderer(route, true)}
+          />
         </span>
         {toHeadsign}
       </div>

@@ -36,7 +36,7 @@ export const getFlexAttirbutes = (
   return {
     isCallAhead,
     isContinuousDropoff: itinerary.legs?.some(
-      coreUtils.itinerary.isContinuousDropoff
+      coreUtils.itinerary.isCoordinationRequired
     ),
     isFlexItinerary: itinerary.legs?.some(coreUtils.itinerary.isFlex),
     phone: phone || ''

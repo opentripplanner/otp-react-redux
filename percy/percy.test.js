@@ -236,6 +236,37 @@ test('OTP-RR', async () => {
     height: 1080,
     width: 1920
   })
+  page.on('console', async (msg) => {
+    const args = await msg.args()
+    args.forEach(async (arg) => {
+      const val = await arg.jsonValue()
+      // value is serializable
+      if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
+      // value is unserializable (or an empty oject)
+      else {
+        const { description, subtype, type } = arg._remoteObject
+        console.log(
+          `type: ${type}, subtype: ${subtype}, description:\n ${description}`
+        )
+      }
+    })
+  })
+  // log all errors that were logged to the browser console
+  page.on('warn', (warn) => {
+    console.log(warn)
+  })
+  page.on('error', (error) => {
+    console.error(error)
+    console.error(error.stack)
+  })
+  // log all uncaught exceptions
+  page.on('pageerror', (error) => {
+    console.error(`Page Error: ${error}`)
+  })
+  // log all failed requests
+  page.on('requestfailed', (req) => {
+    console.error(`Request failed: ${req.method()} ${req.url()}`)
+  })
 
   await percySnapshotWithWait(page, 'Main Page (without styling)')
 
@@ -330,7 +361,7 @@ test('OTP-RR', async () => {
   // Open schedule view
   await page.waitForSelector('button.link-button.pull-right')
   await page.click('button.link-button.pull-right')
-  await page.waitForTimeout(3000) // Slow animation
+  await page.waitForTimeout(6000) // Slow animation
   await percySnapshotWithWait(page, 'Schedule Viewer')
   // TODO: is the schedule date wrong?
 
