@@ -126,6 +126,7 @@ components:
         other {# spaces available}
       }
   AppMenu:
+    appMenu: App Menu
     callHistory: Call History
     closeMenu: Close Menu
     fieldTrip: Field Trip

@@ -200,7 +200,12 @@ class AppMenu extends Component<
           onRequestClose={this._togglePane}
           width="320px"
         >
-          <div className="app-menu">
+          <nav
+            aria-label={intl.formatMessage({
+              id: 'components.AppMenu.appMenu'
+            })}
+            className="app-menu"
+          >
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
             <MenuItem
@@ -257,7 +262,7 @@ class AppMenu extends Component<
               </MenuItem>
             )}
             {this._addExtraMenuItems(extraMenuItems)}
-          </div>
+          </nav>
         </SlidingPane>
       </>
     )
