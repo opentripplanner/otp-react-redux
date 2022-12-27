@@ -18,8 +18,6 @@ import {
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
 import {
-  setLocation,
-  setMapPopupLocation,
   setMapPopupLocationAndGeocode
 } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'

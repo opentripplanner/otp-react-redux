@@ -2494,7 +2494,7 @@
     "@opentripplanner/from-to-location-picker" "^2.1.5"
     flat "^5.0.2"
 
-"@opentripplanner/otp2-tile-overlay@^1.0.0-alpha.2":
+"@opentripplanner/otp2-tile-overlay@^1.0.0-alpha.3":
   version "1.0.0-alpha.3"
   resolved "https://registry.yarnpkg.com/@opentripplanner/otp2-tile-overlay/-/otp2-tile-overlay-1.0.0-alpha.3.tgz#99ca5b104bf97480a02b9f299ff5e9f9ac33c1c2"
   integrity sha512-LehV1kSTPOBp7YoteI1HaBjXqZQSevDOeMoqtrVm1C+KKSPt27Ag14NjxxP8rwTPfX9/KXE33jIA6taKOJLUrA==
