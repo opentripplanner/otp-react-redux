@@ -348,9 +348,10 @@ class MetroItinerary extends NarrativeItinerary {
         }`}
         onMouseEnter={this._onMouseEnter}
         onMouseLeave={this._onMouseLeave}
-        role="presentation"
+        role="menuitem"
+        // TODO test this with a screen reader
+        tabIndex={expanded ? 1 : 0}
       >
-        {/* Semantically this is incorrect, but this helps a11y tests pass. Buttons may not contain html. TODO FIX? */}
         <div
           className="header"
           onClick={handleClick}
@@ -360,7 +361,9 @@ class MetroItinerary extends NarrativeItinerary {
           onKeyDown={() => {}}
           // TODO: use _onHeaderClick for tap only -- this will require disabling
           // this onClick handler after a touchStart
-          role="presentation"
+          role="menuitem"
+          // TODO test this with a screen reader
+          tabIndex={expanded ? 1 : 0}
         >
           <ItineraryWrapper
             aria-label={intl.formatMessage(
