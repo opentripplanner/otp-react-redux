@@ -131,6 +131,7 @@ components:
         other {# emplacements disponibles}
       }
   AppMenu:
+    appMenu: App Menu
     callHistory: Historique des appels
     closeMenu: Fermer le menu
     fieldTrip: Groupes scolaires

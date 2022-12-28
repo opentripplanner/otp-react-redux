@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import React from 'react'
+import React, { CSSProperties } from 'react'
 
 import { getCurrentRoute } from '../../util/ui'
 
@@ -11,10 +11,10 @@ type AccountLink = {
 }
 
 interface NavLoginButtonAuth0Props {
-  className?: string
+  className?: string | undefined
   id: string
   links: Array<AccountLink>
-  style?: string
+  style?: CSSProperties | undefined
 }
 
 /**
@@ -25,7 +25,7 @@ const NavLoginButtonAuth0 = ({
   id,
   links,
   style
-}: NavLoginButtonAuth0Props) => {
+}: NavLoginButtonAuth0Props): JSX.Element => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
 
   // On login, preserve the current trip query if any.

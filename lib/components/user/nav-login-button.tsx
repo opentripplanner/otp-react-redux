@@ -1,5 +1,6 @@
 import { FormattedMessage } from 'react-intl'
 import { MenuItem, NavDropdown, NavItem } from 'react-bootstrap'
+import { User } from '@auth0/auth0-react'
 import PropTypes from 'prop-types'
 import React, { Component, CSSProperties } from 'react'
 import styled from 'styled-components'
@@ -30,7 +31,7 @@ type Props = {
   links: Link[]
   onSignInClick: () => void
   onSignOutClick: () => void
-  profile: { email: string; name: string; nickname?: string; picture?: string }
+  profile: User | null | undefined
   style?: CSSProperties | undefined
 }
 
