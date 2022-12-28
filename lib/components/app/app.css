@@ -74,6 +74,7 @@
 }
 .view-switcher button.btn-link.active {
   background: rgba(0, 0, 0, 0.15);
+  font-weight: 600;
 }
 .view-switcher button.btn-link:hover,
 .view-switcher button.btn-link:focus {

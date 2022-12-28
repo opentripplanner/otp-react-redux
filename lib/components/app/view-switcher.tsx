@@ -26,6 +26,7 @@ class ViewSwitcher extends Component<Props> {
   }
 
   _showRouteViewer = () => {
+    this.props.setMainPanelContent(null)
     this.props.setMainPanelContent(MainPanelContent.ROUTE_VIEWER)
   }
 
