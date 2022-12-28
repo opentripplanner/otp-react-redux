@@ -47,7 +47,7 @@ class ViewSwitcher extends Component<Props> {
         })}
         className="view-switcher"
         id="view-switcher"
-        role="tabpanel"
+        role="tablist"
         style={
           sticky
             ? {

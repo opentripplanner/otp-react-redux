@@ -348,9 +348,7 @@ class MetroItinerary extends NarrativeItinerary {
         }`}
         onMouseEnter={this._onMouseEnter}
         onMouseLeave={this._onMouseLeave}
-        role="menuitem"
-        // TODO test this with a screen reader
-        tabIndex={expanded ? 1 : 0}
+        role="presentation"
       >
         <div
           className="header"
