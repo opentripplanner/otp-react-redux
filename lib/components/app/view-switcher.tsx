@@ -37,13 +37,17 @@ class ViewSwitcher extends Component<Props> {
   render() {
     const { activePanel, intl, sticky } = this.props
 
+    const tripPlannerActive = activePanel === null
+    const routeViewerActive = activePanel === MainPanelContent.ROUTE_VIEWER
+
     return (
       <div
         aria-label={intl.formatMessage({
           id: 'components.ViewSwitcher.switcher'
         })}
         className="view-switcher"
-        role="navigation"
+        id="view-switcher"
+        role="tabpanel"
         style={
           sticky
             ? {
@@ -56,18 +60,28 @@ class ViewSwitcher extends Component<Props> {
         }
       >
         <Button
+          aria-controls="view-switcher"
+          aria-label={intl.formatMessage({
+            id: 'components.BatchRoutingPanel.shortTitle'
+          })}
+          aria-selected={tripPlannerActive}
           bsStyle="link"
-          className={`${activePanel === null && 'active'}`}
+          className={`${tripPlannerActive && 'active'}`}
           onClick={this._showTripPlanner}
+          role="tab"
         >
           <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
         </Button>
         <Button
+          aria-controls="view-switcher"
+          aria-label={intl.formatMessage({
+            id: 'components.RouteViewer.shortTitle'
+          })}
+          aria-selected={routeViewerActive}
           bsStyle="link"
-          className={`${
-            activePanel === MainPanelContent.ROUTE_VIEWER && 'active'
-          }`}
+          className={`${routeViewerActive && 'active'}`}
           onClick={this._showRouteViewer}
+          role="tab"
         >
           <FormattedMessage id="components.RouteViewer.shortTitle" />
         </Button>
