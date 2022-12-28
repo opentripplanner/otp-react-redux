@@ -276,16 +276,6 @@ components:
     notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
     notificationEmailDetail: "Les courriers de notification seront envoyés à :"
     noneSelect: Ne pas me notifier
-  PatternRow:
-    collapseOrExpandDepartures: >
-      {expanded, select,
-        true {Masquer}
-        other {Étendre}
-      } tous les départs pour la ligne {routeName}
-    departure: Départ
-    routeName: "<strong>{routeName}</strong> Direction {headsign}"
-    routeShort: "Direction {headsign}"
-    status: État
   PhoneNumberEditor:
     changeNumber: Changer de numéro
     invalidCode: Le code de vérification doit comporter 6 chiffres.
@@ -362,6 +352,7 @@ components:
     stopsTo: "Direction"
     selectADirection: "Choisissez une direction..."
   RouteRow:
+    operatorLogoAriaLabel: "{operatorName} stop:"
     operatorLogoAltText: "Logo de {operatorName}"
   # Used in both desktop and mobile
   RouteViewer:
@@ -421,6 +412,8 @@ components:
     destination: Direction
     route: Ligne
   StopTimeCell:
+    realtime: Based on realtime data
+    scheduled: Based on schedule data
     imminentArrival: Imminent
   # Used in both desktop and mobile
   StopViewer:

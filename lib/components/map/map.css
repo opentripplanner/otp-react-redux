@@ -9,6 +9,9 @@
   padding: 0px 0px;
   color: #000080;
 }
+.otp .base-color-bg .link-button {
+  color: inherit;
+}
 
 .otp .link-button:hover {
   text-decoration: underline;
@@ -78,4 +81,49 @@
 .otp .leg-diagram .mapillary-close-button:hover {
   background: rgba(200, 200, 200, 0.85);
   color: #333;
+}
+
+/*** Car Rental Map Icons ***/
+
+.otp .car-rental-icon {
+  font-size: 18px;
+  text-align: center;
+}
+
+/*** Micromobility Rental Map Icons ***/
+
+.otp .micromobility-rental-icon {
+  font-size: 18px;
+  text-align: center;
+}
+
+/* Stop icon circle css */
+
+.otp .stop-overlay-bg {
+  background: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.otp .stop-overlay-icon {
+  border: 1px solid black;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+/* Overlay Popups */
+
+.otp .map-overlay-popup {
+  min-width: 250px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.otp .map-overlay-popup .popup-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.otp .map-overlay-popup .popup-row {
+  margin-top: 6px;
 }

@@ -274,16 +274,6 @@ components:
     notificationChannelPrompt: How would you like to receive notifications?
     notificationEmailDetail: "Notification emails will be sent to:"
     noneSelect: Don't notify me
-  PatternRow:
-    collapseOrExpandDepartures: >
-      {expanded, select, 
-        true {Collapse}
-        other {Expand}
-      } all departures for Route {routeName}
-    departure: Departure
-    routeName: "<strong>{routeName}</strong> To {headsign}"
-    routeShort: "To {headsign}"
-    status: Status
   PhoneNumberEditor:
     changeNumber: Change number
     invalidCode: Please enter 6 digits for the validation code.
@@ -361,7 +351,8 @@ components:
     stopsTo: "Towards"
     selectADirection: "Select a direction..."
   RouteRow:
-    operatorLogoAltText: "{operatorName} logo"
+    operatorLogoAltText: "logo for {operatorName}"
+    operatorLogoAriaLabel: "{operatorName} stop:"
   # Used in both desktop and mobile
   RouteViewer:
     agencyFilter: Agency Filter
@@ -415,6 +406,8 @@ components:
     destination: To
     route: Route
   StopTimeCell:
+    realtime: Based on realtime data
+    scheduled: Based on schedule data
     imminentArrival: Due
   # Used in both desktop and mobile
   StopViewer:
