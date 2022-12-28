@@ -1,28 +1,26 @@
-import { ChevronDown } from '@styled-icons/fa-solid/ChevronDown'
-import { ChevronUp } from '@styled-icons/fa-solid/ChevronUp'
-import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-import AnimateHeight from 'react-animate-height'
+import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
+import { injectIntl, IntlShape } from 'react-intl'
 import React, { Component } from 'react'
-import type { Route } from '@opentripplanner/types'
+import type { Route, TransitOperator } from '@opentripplanner/types'
 
 import { ComponentContext } from '../../util/contexts'
 import {
   generateFakeLegForRouteRenderer,
+  getRouteColorBasedOnSettings,
   stopTimeComparator
 } from '../../util/viewer'
 import { Pattern, Time } from '../util/types'
-import { StyledIconWrapper } from '../util/styledIcon'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
-import Strong from '../util/strong-text'
+import OperatorLogo from '../util/operator-logo'
 
-import RealtimeStatusLabel from './realtime-status-label'
 import StopTimeCell from './stop-time-cell'
 
 type Props = {
   homeTimezone?: any
   intl: IntlShape
   pattern: Pattern
-  route: Route
+  route: Route & { operator?: TransitOperator & { colorMode?: string } }
+  showOperatorLogo?: boolean
   stopTimes: Time[]
   stopViewerArriving: React.ReactNode
   stopViewerConfig: { numberOfDepartures: number }
@@ -47,11 +45,17 @@ class PatternRow extends Component<Props, State> {
   render() {
     const { RouteRenderer: CustomRouteRenderer } = this.context
     const RouteRenderer = CustomRouteRenderer || DefaultRouteRenderer
-    const { homeTimezone, intl, pattern, route, stopTimes, stopViewerConfig } =
-      this.props
+    const {
+      homeTimezone,
+      pattern,
+      route,
+      showOperatorLogo,
+      stopTimes,
+      stopViewerConfig
+    } = this.props
 
     // sort stop times by next departure
-    let sortedStopTimes = []
+    let sortedStopTimes: Time[] = []
     const hasStopTimes = stopTimes && stopTimes.length > 0
     if (hasStopTimes) {
       sortedStopTimes = stopTimes
@@ -68,114 +72,66 @@ class PatternRow extends Component<Props, State> {
     }
 
     const routeName = route.shortName ? route.shortName : route.longName
+    const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
     return (
-      <div className="route-row" role="table">
+      <li className="route-row">
         {/* header row */}
-        <div className="header" role="row">
+        <div
+          className="header"
+          style={{
+            backgroundColor: routeColor,
+            color: getMostReadableTextColor(routeColor, route?.textColor)
+          }}
+        >
           {/* route name */}
           <div className="route-name">
-            <strong>
-              <RouteRenderer leg={generateFakeLegForRouteRenderer(route)} />
+            <strong
+              style={
+                routeName && routeName?.length >= 4 ? { fontSize: '50%' } : {}
+              }
+            >
+              <div
+                style={{
+                  alignContent: 'center',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                {showOperatorLogo && (
+                  <OperatorLogo operator={route?.operator} />
+                )}
+                <RouteRenderer
+                  // All GTFS bg colors look strange with the top border
+                  isOnColoredBackground={route?.operator?.colorMode?.includes(
+                    'gtfs'
+                  )}
+                  leg={generateFakeLegForRouteRenderer(route, true)}
+                />
+              </div>
             </strong>
-            <FormattedMessage
-              id="components.PatternRow.routeName"
-              values={{
-                headsign: pattern.headsign,
-                routeName: '',
-                strong: Strong
-              }}
-            />
+            <span>{pattern.headsign}</span>
           </div>
           {/* next departure preview */}
           {hasStopTimes && (
-            <div className="next-trip-preview" role="columnheader">
-              <StopTimeCell
-                homeTimezone={homeTimezone}
-                stopTime={sortedStopTimes[0]}
-              />
-            </div>
-          )}
-
-          {/* expansion chevron button */}
-          <div className="expansion-button-container">
-            <button
-              aria-controls={`route-${routeName}`}
-              aria-expanded={this.state.expanded}
-              aria-label={intl.formatMessage(
-                { id: 'components.PatternRow.collapseOrExpandDepartures' },
-                {
-                  expanded: this.state.expanded,
-                  routeName
-                }
-              )}
-              className="expansion-button"
-              onClick={this._toggleExpandedView}
-            >
-              <StyledIconWrapper>
-                {this.state.expanded ? <ChevronUp /> : <ChevronDown />}
-              </StyledIconWrapper>
-            </button>
-          </div>
-        </div>
-
-        {/* expanded view */}
-        <AnimateHeight duration={500} height={this.state.expanded ? 'auto' : 0}>
-          <div id={`route-${routeName}`}>
-            <div className="trip-table" role="table">
-              {/* trips table header row */}
-              <div className="header" role="row">
-                <div className="cell" role="columnheader" />
-                <div className="cell time-column" role="columnheader">
-                  <FormattedMessage id="components.PatternRow.departure" />
-                </div>
-                <div className="cell status-column" role="columnheader">
-                  <FormattedMessage id="components.PatternRow.status" />
-                </div>
-              </div>
-
-              {/* list of upcoming trips */}
-              {hasStopTimes &&
-                sortedStopTimes.map((stopTime, i) => {
-                  const { departureDelay: delay, realtimeState } = stopTime
-                  return (
-                    <div
-                      className="trip-row"
-                      key={i}
-                      role="row"
-                      style={{
-                        display: 'table-row',
-                        fontSize: 14,
-                        marginTop: 6
-                      }}
-                    >
-                      <div className="cell" role="cell">
-                        <FormattedMessage
-                          id="components.PatternRow.routeShort"
-                          values={{ headsign: stopTime.headsign }}
-                        />
-                      </div>
-                      <div className="cell time-column" role="cell">
-                        <StopTimeCell
-                          homeTimezone={homeTimezone}
-                          stopTime={stopTime}
-                        />
-                      </div>
-                      <div className="cell status-column" role="cell">
-                        <RealtimeStatusLabel
-                          className="status-label"
-                          delay={delay}
-                          isRealtime={realtimeState === 'UPDATED'}
-                          withBackground
-                        />
-                      </div>
-                    </div>
+            <ol className="next-trip-preview">
+              {[0, 1, 2].map(
+                (index) =>
+                  sortedStopTimes?.[index] && (
+                    <li>
+                      <StopTimeCell
+                        homeTimezone={homeTimezone}
+                        key={index}
+                        stopTime={sortedStopTimes[index]}
+                      />
+                    </li>
                   )
-                })}
-            </div>
-          </div>
-        </AnimateHeight>
-      </div>
+              )}
+            </ol>
+          )}
+        </div>
+      </li>
     )
   }
 }

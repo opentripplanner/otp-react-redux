@@ -1,5 +1,6 @@
 import { FormattedMessage, FormattedTime } from 'react-intl'
 import { Redo } from '@styled-icons/fa-solid/Redo'
+import { TransitOperator } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 
@@ -29,11 +30,15 @@ type Props = {
   nearbyStops: any // TODO: shared types
   setHoveredStop: (stopId: string) => void
   showNearbyStops: boolean
-  stopData: any // TODO: shared types
-  stopViewerArriving: any // TODO: shared types
-  stopViewerConfig: any // TODO: shared types
+  showOperatorLogo?: boolean
+  // TODO: shared types
+  stopData: any
+  stopViewerArriving: React.ReactNode
+  // TODO: shared types
+  stopViewerConfig: any
   toggleAutoRefresh: (enable: boolean) => void
-  transitOperators: any // TODO: shared types
+  // TODO: shared types
+  transitOperators: any
   viewedStop: { stopId: string }
 }
 
@@ -118,6 +123,7 @@ class LiveStopTimes extends Component<Props, State> {
       nearbyStops,
       setHoveredStop,
       showNearbyStops,
+      showOperatorLogo,
       stopData,
       stopViewerArriving,
       stopViewerConfig,
@@ -134,6 +140,7 @@ class LiveStopTimes extends Component<Props, State> {
       // TODO: Shared types
       (pattern: any) => pattern.pattern.headsign
     )
+
     // TODO: Shared types
     const patternComparator = (patternA: any, patternB: any) => {
       // first sort by routes
@@ -146,24 +153,33 @@ class LiveStopTimes extends Component<Props, State> {
 
     return (
       <>
-        <div>
+        <ul className="route-row-container">
           {Object.values(stopTimesByPattern)
             .sort(patternComparator)
+            .filter(({ pattern, route }) =>
+              routeIsValid(route, getRouteIdForPattern(pattern))
+            )
             .map(({ id, pattern, route, times }) => {
               // Only add pattern if route info is returned by OTP.
-              return routeIsValid(route, getRouteIdForPattern(pattern)) ? (
+              return (
                 <PatternRow
                   homeTimezone={homeTimezone}
                   key={id}
                   pattern={pattern}
-                  route={route}
+                  route={{
+                    ...route,
+                    operator: transitOperators.find(
+                      (o: TransitOperator) => o.agencyId === route.agencyId
+                    )
+                  }}
+                  showOperatorLogo={showOperatorLogo}
                   stopTimes={times}
                   stopViewerArriving={stopViewerArriving}
                   stopViewerConfig={stopViewerConfig}
                 />
-              ) : null
+              )
             })}
-        </div>
+        </ul>
 
         {/* Auto update controls for realtime arrivals */}
         <div style={{ marginTop: '20px' }}>
@@ -202,12 +218,9 @@ class LiveStopTimes extends Component<Props, State> {
                 stopData={stopData}
                 stopViewerArriving={stopViewerArriving}
                 stopViewerConfig={stopViewerConfig}
+                transitOperators={transitOperators}
               />
-              <AmenitiesPanel
-                stopData={stopData}
-                stopViewerArriving={stopViewerArriving}
-                stopViewerConfig={stopViewerConfig}
-              />
+              <AmenitiesPanel stopData={stopData} />
             </>
           )}
         </div>

@@ -26,6 +26,7 @@ const storeMiddleWare = [
  */
 export function getMockInitialState() {
   const mockConfig = {
+    dateTime: { timeFormat: 'h:mm a' },
     initialQuery: {}
   }
   return clone({
