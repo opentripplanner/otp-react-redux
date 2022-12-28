@@ -98,6 +98,7 @@ exports[`components > form > call-taker > date time options should correctly han
         </OverlayTrigger>
         <input
           className="datetime-slim"
+          disabled={false}
           onChange={[Function]}
           style={
             Object {
@@ -214,6 +215,7 @@ exports[`components > form > call-taker > date time options should correctly han
         </OverlayTrigger>
         <input
           className="datetime-slim"
+          disabled={false}
           onChange={[Function]}
           style={
             Object {
@@ -330,6 +332,7 @@ exports[`components > form > call-taker > date time options should correctly han
         </OverlayTrigger>
         <input
           className="datetime-slim"
+          disabled={false}
           onChange={[Function]}
           style={
             Object {
@@ -446,6 +449,7 @@ exports[`components > form > call-taker > date time options should correctly han
         </OverlayTrigger>
         <input
           className="datetime-slim"
+          disabled={false}
           onChange={[Function]}
           style={
             Object {
@@ -562,6 +566,7 @@ exports[`components > form > call-taker > date time options should correctly han
         </OverlayTrigger>
         <input
           className="datetime-slim"
+          disabled={false}
           onChange={[Function]}
           style={
             Object {
@@ -678,6 +683,7 @@ exports[`components > form > call-taker > date time options should correctly han
         </OverlayTrigger>
         <input
           className="datetime-slim"
+          disabled={false}
           onChange={[Function]}
           style={
             Object {
@@ -794,6 +800,7 @@ exports[`components > form > call-taker > date time options should render 1`] = 
         </OverlayTrigger>
         <input
           className="datetime-slim"
+          disabled={false}
           onChange={[Function]}
           style={
             Object {
