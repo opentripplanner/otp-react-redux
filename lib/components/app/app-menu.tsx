@@ -7,6 +7,7 @@ import { ExternalLinkSquareAlt } from '@styled-icons/fa-solid/ExternalLinkSquare
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
 import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
+import { MapMarked } from '@styled-icons/fa-solid'
 import { MenuItem } from 'react-bootstrap'
 import { Undo } from '@styled-icons/fa-solid/Undo'
 import { withRouter } from 'react-router'
@@ -65,6 +66,11 @@ class AppMenu extends Component<
   state = {
     expandedSubmenus: {} as Record<string, boolean>,
     isPaneOpen: false
+  }
+
+  _showTripPlanner = () => {
+    this.props.setMainPanelContent(null)
+    this._togglePane()
   }
 
   _showRouteViewer = () => {
@@ -206,6 +212,17 @@ class AppMenu extends Component<
             })}
             className="app-menu"
           >
+            {/* This item is duplicated by the view-switcher, but only shown on mobile
+            when the view switcher isn't shown (using css) */}
+            <MenuItem
+              className="app-menu-trip-planner-link"
+              onClick={this._showTripPlanner}
+            >
+              <StyledIconWrapper>
+                <MapMarked />
+              </StyledIconWrapper>
+              <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
+            </MenuItem>
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
             <MenuItem
