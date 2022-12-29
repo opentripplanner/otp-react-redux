@@ -32,6 +32,13 @@
   display: inline-block;
 }
 
+@media (max-width: 800px) {
+  .otp .navbar .mobile-header-text {
+    font-size: 3vw;
+    margin-top: 2px;
+  }
+}
+
 .otp .navbar .mobile-header-action {
   display: inline-block;
 }
