@@ -423,6 +423,7 @@ components:
     zoomToStop: Zoom to stop
 
   SubNav:
+    languageSelector: Select language
     myAccount: My account
     settings: Settings
     trips: Trips

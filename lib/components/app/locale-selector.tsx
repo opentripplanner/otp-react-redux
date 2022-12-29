@@ -6,6 +6,7 @@ import React, { MouseEvent } from 'react'
 
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
+import { handleLocaleSelection } from '../../util/locale'
 import { StyledIconWrapper } from '../util/styledIcon'
 
 type PropsFromRedux = ConnectedProps<typeof connector>
@@ -26,25 +27,11 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
 
   const intl = useIntl()
 
-  const handleLocaleSelection = (e: MouseEvent<Element>, locale: string) => {
-    e.stopPropagation()
-    if (locale === currentLocale) {
-      e.preventDefault()
-      return
-    }
-    window.localStorage.setItem('lang', locale)
-
-    if (loggedInUser) {
-      loggedInUser.preferredLanguage = locale
-      createOrUpdateUser(loggedInUser, false, intl)
-    }
-    setLocale(locale)
-
-    document.location.reload()
-  }
-
   return (
     <NavDropdown
+      aria-label={intl.formatMessage({
+        id: 'components.SubNav.languageSelector'
+      })}
       id="locale-selector"
       pullRight
       title={
@@ -59,7 +46,17 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
           <MenuItem
             className="locale-name"
             key={locale}
-            onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
+            onClick={(e: MouseEvent) =>
+              handleLocaleSelection(
+                e,
+                locale,
+                currentLocale,
+                loggedInUser,
+                createOrUpdateUser,
+                setLocale,
+                intl
+                // eslint-disable-next-line prettier/prettier
+              )}
           >
             <span
               style={locale === currentLocale ? { fontWeight: 'bold' } : {}}
