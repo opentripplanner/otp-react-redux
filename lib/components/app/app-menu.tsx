@@ -36,7 +36,7 @@ type AppMenuProps = {
   reactRouterConfig?: { basename: string }
   resetAndToggleCallHistory?: () => void
   resetAndToggleFieldTrips?: () => void
-  setMainPanelContent: (panel: number) => void
+  setMainPanelContent: (panel: number | null) => void
   setPopupContent: (url: string) => void
   toggleMailables: () => void
 }
@@ -310,6 +310,7 @@ const mapDispatchToProps = {
 }
 
 export default injectIntl(
+  // @ts-expect-error TODO: type setMainPanelContent
   withRouter(connect(mapStateToProps, mapDispatchToProps)(AppMenu))
 )
 
