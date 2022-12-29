@@ -9,7 +9,10 @@ import PlanTripButton from '../form/plan-trip-button'
 import MobileContainer from './container'
 import MobileNavigationBar from './navigation-bar'
 
-class MobileOptionsScreen extends Component {
+type Props = {
+  setMobileScreen: (screen: number) => void
+}
+class MobileOptionsScreen extends Component<Props> {
   _planTripClicked = () => {
     this.props.setMobileScreen(MobileScreens.RESULTS_SUMMARY)
   }
@@ -36,7 +39,7 @@ class MobileOptionsScreen extends Component {
 
 // connect to the redux store
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = () => {
   return {}
 }
 
