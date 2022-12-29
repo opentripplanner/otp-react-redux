@@ -189,7 +189,11 @@ if (OTP_RR_PERCY_MOBILE) {
     // Screenshot here?
 
     // Return to main page
-    await page.click('.mobile-back')
+    await page.click('.app-menu-icon')
+    await page.waitForTimeout(1000)
+    await page.click('.app-menu-trip-planner-link')
+    await page.waitForTimeout(1000)
+
     await page.waitForSelector('.welcome-location')
     await page.click('.welcome-location div span input')
     await page.waitForSelector('.to-form-control')
