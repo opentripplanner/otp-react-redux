@@ -20,6 +20,7 @@ import {
   itineraryHasAccessibilityScores
 } from '../../../util/accessibility-routing'
 import { getActiveSearch, getFare } from '../../../util/state'
+import { IconWithText } from '../../util/styledIcon'
 import { ItineraryDescription } from '../default/itinerary-description'
 import { localizeGradationMap } from '../utils'
 import FormattedDuration, {
@@ -28,6 +29,7 @@ import FormattedDuration, {
 import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
+import Sub from '../../util/sub-text'
 
 import { DepartureTimesList } from './departure-times-list'
 import {
@@ -36,10 +38,7 @@ import {
   getItineraryRoutes,
   removeInsignifigantWalkLegs
 } from './attribute-utils'
-import { IconWithText } from '../../util/styledIcon'
 import RouteBlock from './route-block'
-
-import Sub from '../../util/sub-text'
 
 const { ItineraryView } = uiActions
 
@@ -496,9 +495,6 @@ const mapStateToProps = (state: any, ownProps: Props) => {
     // @ts-expect-error state is not yet typed
     activeSearch && activeSearch.activeItineraryTimeIndex
 
-  // @ts-expect-error TODO: type activeSearch
-  const pending = activeSearch ? Boolean(activeSearch.pending) : false
-
   return {
     accessibilityScoreGradationMap:
       state.otp.config.accessibilityScore?.gradationMap,
@@ -511,7 +507,8 @@ const mapStateToProps = (state: any, ownProps: Props) => {
     currency: state.otp.config.localization?.currency || 'USD',
     defaultFareKey: state.otp.config.itinerary?.defaultFareKey,
     enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
-    pending,
+    // @ts-expect-error TODO: type activeSearch
+    pending: activeSearch ? Boolean(activeSearch.pending) : false,
     showLegDurations: state.otp.config.itinerary?.showLegDurations
   }
 }
