@@ -419,8 +419,6 @@ components:
     header: 검색 옵션을 설정합니다
   ModeDropdown:
     exclusiveMode: '{mode} 만'
-  PatternRow:
-    routeShort: 에 {headsign}
   PlaceEditor:
     genericLocationPlaceholder: 위치를 검색하십시오
     locationPlaceholder: '{placeName} 위치를 검색하십시오'

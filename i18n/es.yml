@@ -157,8 +157,6 @@ components:
     notificationChannelPrompt: ¿Cómo desea recibir las notificaciones?
     notificationEmailDetail: 'Los correos electrónicos de notificación se enviarán
       a:'
-  PatternRow:
-    status: Estado
   PhoneNumberEditor:
     invalidPhone: Por favor, introduzca un número de teléfono válido.
     requestNewCode: Solicitar un nuevo código
