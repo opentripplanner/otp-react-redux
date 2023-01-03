@@ -140,8 +140,6 @@ components:
     notificationChannelPrompt: Bạn muốn nhận thông báo như thế nào?
     notificationEmailDetail: 'Email thông báo sẽ được gửi đến:'
   PatternRow:
-    collapseOrExpandDepartures: "{expanded, select, \n true {Giảm thiểu}\n other {Mở\
-      \ rộng}\n } tất cả các chuyến khởi hành cho tuyến {routeName}\n"
     routeShort: Hướng {headsign}
   PhoneNumberEditor:
     sendVerificationText: Gửi văn bản xác minh

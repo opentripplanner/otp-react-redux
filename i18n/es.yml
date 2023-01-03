@@ -158,7 +158,6 @@ components:
     notificationEmailDetail: 'Los correos electrónicos de notificación se enviarán
       a:'
   PatternRow:
-    routeName: <strong>{routeName}</strong> A {headsign}
     status: Estado
   PhoneNumberEditor:
     invalidPhone: Por favor, introduzca un número de teléfono válido.

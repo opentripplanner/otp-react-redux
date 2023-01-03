@@ -162,7 +162,6 @@ components:
     notificationChannelPrompt: 您希望如何接收通知?
     notificationEmailDetail: '通知邮件将被发送至:'
   PatternRow:
-    routeName: <strong>{routeName}</strong> 到 {headsign}
     routeShort: 到 {headsign}
   PhoneNumberEditor:
     changeNumber: 更改电话号码

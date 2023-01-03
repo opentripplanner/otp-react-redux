@@ -420,7 +420,6 @@ components:
   ModeDropdown:
     exclusiveMode: '{mode} 만'
   PatternRow:
-    departure: 출발
     routeShort: 에 {headsign}
   PlaceEditor:
     genericLocationPlaceholder: 위치를 검색하십시오
