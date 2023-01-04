@@ -358,13 +358,10 @@ class MetroItinerary extends NarrativeItinerary {
 
     // Use first leg's agency as a fallback
     return (
-      <div
+      <li
         className={`option metro-itin${active ? ' active' : ''}${
           expanded ? ' expanded' : ''
         }`}
-        onMouseEnter={this._onMouseEnter}
-        onMouseLeave={this._onMouseLeave}
-        role="presentation"
       >
         {/* Semantically this is incorrect, but this helps a11y tests pass. Buttons may not contain html. TODO FIX? */}
         <div
@@ -374,6 +371,8 @@ class MetroItinerary extends NarrativeItinerary {
           // first time?
           // eslint-disable-next-line @typescript-eslint/no-empty-function
           onKeyDown={() => {}}
+          onMouseEnter={this._onMouseEnter}
+          onMouseLeave={this._onMouseLeave}
           // TODO: use _onHeaderClick for tap only -- this will require disabling
           // this onClick handler after a touchStart
           role="presentation"
@@ -483,7 +482,7 @@ class MetroItinerary extends NarrativeItinerary {
             />
           </>
         )}
-      </div>
+      </li>
     )
   }
 }

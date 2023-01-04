@@ -44,6 +44,20 @@
 }
 
 /* TRIP TOOLS ROW */
+
+.otp .trip-tools-container {
+  margin: 15px 5px;
+  padding: 10px 16px;
+  background-color: #eee;
+  border-radius: 6px;
+
+}
+
+.otp .trip-tools-container h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 0;
+}
 .otp .trip-tools {
   margin-top: 10px;
   text-align: center;
