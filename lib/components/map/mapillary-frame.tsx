@@ -1,6 +1,7 @@
 import { Button } from 'react-bootstrap'
 import { Spinner } from '@styled-icons/fa-solid/Spinner'
 import { Times } from '@styled-icons/fa-solid/Times'
+import { useIntl } from 'react-intl'
 import React, { useEffect, useState } from 'react'
 
 import { StyledIconWrapper } from '../util/styledIcon'
@@ -12,6 +13,7 @@ const MapillaryFrame = ({
   id: string
   onClose?: () => void
 }): React.ReactElement => {
+  const intl = useIntl()
   const [fakeLoad, setFakeLoad] = useState(false)
   useEffect(() => {
     // If the ID changed, show a "fake" loading screen to indicate to the user
@@ -42,10 +44,10 @@ const MapillaryFrame = ({
           height: '100%',
           width: '100%'
         }}
-        title="Imagery of the street"
+        title={intl.formatMessage({ id: 'components.MapillaryFrame.title' })}
       />
       <Button
-        aria-label="Close"
+        aria-label={intl.formatMessage({ id: 'common.forms.close' })}
         className="mapillary-close-button close-button clear-button-formatting"
         onClick={onClose}
       >
