@@ -209,7 +209,15 @@ class AppMenu extends Component<
             id: configLanguages[locale].name,
             label:
               activeLocale === locale ? (
-                <strong>{configLanguages[locale].name}</strong>
+                <>
+                  <strong
+                    aria-label={intl.formatMessage({
+                      id: 'components.SubNav.activeLanguage'
+                    })}
+                  >
+                    {configLanguages[locale].name}
+                  </strong>
+                </>
               ) : (
                 configLanguages[locale].name
               ),

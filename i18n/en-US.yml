@@ -423,6 +423,7 @@ components:
 
   SubNav:
     languageSelector: Select language
+    activeLanguage: Active language
     myAccount: My account
     settings: Settings
     trips: Trips
