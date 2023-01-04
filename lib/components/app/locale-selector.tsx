@@ -5,8 +5,6 @@ import { useIntl } from 'react-intl'
 import React, { MouseEvent } from 'react'
 
 import * as uiActions from '../../actions/ui'
-import * as userActions from '../../actions/user'
-import { handleLocaleSelection } from '../../util/locale'
 import { StyledIconWrapper } from '../util/styledIcon'
 
 type PropsFromRedux = ConnectedProps<typeof connector>
@@ -17,13 +15,7 @@ interface LocaleSelectorProps extends PropsFromRedux {
 }
 
 const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
-  const {
-    configLanguages,
-    createOrUpdateUser,
-    locale: currentLocale,
-    loggedInUser,
-    setLocale
-  } = props
+  const { configLanguages, locale: currentLocale, setLocale } = props
 
   const intl = useIntl()
 
@@ -46,17 +38,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
           <MenuItem
             className="locale-name"
             key={locale}
-            onClick={(e: MouseEvent) =>
-              handleLocaleSelection(
-                e,
-                locale,
-                currentLocale,
-                loggedInUser,
-                createOrUpdateUser,
-                setLocale,
-                intl
-                // eslint-disable-next-line prettier/prettier
-              )}
+            onClick={() => setLocale(locale)}
           >
             <span
               style={locale === currentLocale ? { fontWeight: 'bold' } : {}}
@@ -72,13 +54,11 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
 // Typescript TODO: type state properly
 const mapStateToProps = (state: any) => {
   return {
-    locale: state.otp.ui.locale,
-    loggedInUser: state.user.loggedInUser
+    locale: state.otp.ui.locale
   }
 }
 
 const mapDispatchToProps = {
-  createOrUpdateUser: userActions.createOrUpdateUser,
   setLocale: uiActions.setLocale
 }
 

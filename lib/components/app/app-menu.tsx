@@ -4,14 +4,13 @@ import { ChevronUp } from '@styled-icons/fa-solid/ChevronUp'
 import { connect } from 'react-redux'
 import { Envelope } from '@styled-icons/fa-regular/Envelope'
 import { ExternalLinkSquareAlt } from '@styled-icons/fa-solid/ExternalLinkSquareAlt'
-import { FormattedMessage, injectIntl, IntlShape, useIntl } from 'react-intl'
+import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
 import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
 import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
 import { MapMarked } from '@styled-icons/fa-solid/MapMarked'
 import { MenuItem } from 'react-bootstrap'
 import { Undo } from '@styled-icons/fa-solid/Undo'
-import { User } from '@auth0/auth0-react'
 import { withRouter } from 'react-router'
 import AnimateHeight from 'react-animate-height'
 import React, { Component, Fragment, useContext } from 'react'
@@ -24,7 +23,6 @@ import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
 import { ComponentContext } from '../../util/contexts'
-import { handleLocaleSelection } from '../../util/locale'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import { StyledIconWrapper } from '../util/styledIcon'
@@ -35,11 +33,9 @@ type AppMenuProps = {
   callTakerEnabled?: boolean
   // Typescript TODO configLanguageType
   configLanguages?: Record<string, any>
-  createOrUpdateUser: (user: User, silent: boolean, intl: IntlShape) => void
   extraMenuItems?: menuItem[]
   fieldTripEnabled?: boolean
   location: { search: string }
-  loggedInUser: User
   mailablesEnabled?: boolean
   popupTarget: string
   reactRouterConfig?: { basename: string }
@@ -187,11 +183,9 @@ class AppMenu extends Component<
       activeLocale,
       callTakerEnabled,
       configLanguages,
-      createOrUpdateUser,
       extraMenuItems,
       fieldTripEnabled,
       intl,
-      loggedInUser,
       mailablesEnabled,
       popupTarget,
       resetAndToggleCallHistory,
@@ -221,17 +215,7 @@ class AppMenu extends Component<
               ) : (
                 configLanguages[locale].name
               ),
-            onClick: (e: MouseEvent) =>
-              handleLocaleSelection(
-                // @ts-expect-error TODO: correct this type pipeline
-                e,
-                locale,
-                activeLocale,
-                loggedInUser,
-                createOrUpdateUser,
-                setLocale,
-                intl
-              ),
+            onClick: () => setLocale(locale),
             subMenuDivider: false
           })),
         iconType: <GlobeAmericas />,
@@ -364,14 +348,12 @@ const mapStateToProps = (state: Record<string, any>) => {
     configLanguages: language,
     extraMenuItems,
     fieldTripEnabled: isModuleEnabled(state, Modules.FIELD_TRIP),
-    loggedInUser: state.user.loggedInUser,
     mailablesEnabled: isModuleEnabled(state, Modules.MAILABLES),
     popupTarget: state.otp.config?.popups?.launchers?.sidebarLink
   }
 }
 
 const mapDispatchToProps = {
-  createOrUpdateUser: userActions.createOrUpdateUser,
   resetAndToggleCallHistory: callTakerActions.resetAndToggleCallHistory,
   resetAndToggleFieldTrips: fieldTripActions.resetAndToggleFieldTrips,
   setLocale: uiActions.setLocale,
