@@ -22,6 +22,7 @@ const MapillaryFrame = ({
     setTimeout(() => setFakeLoad(false), 750)
   }, [id])
 
+  const closeLabel = intl.formatMessage({ id: 'common.forms.close' })
   return (
     <div className="leg-diagram" style={{ height: '50vh', zIndex: 999 }}>
       <div
@@ -47,9 +48,10 @@ const MapillaryFrame = ({
         title={intl.formatMessage({ id: 'components.MapillaryFrame.title' })}
       />
       <Button
-        aria-label={intl.formatMessage({ id: 'common.forms.close' })}
+        aria-label={closeLabel}
         className="mapillary-close-button close-button clear-button-formatting"
         onClick={onClose}
+        title={closeLabel}
       >
         <StyledIconWrapper>
           <Times />
