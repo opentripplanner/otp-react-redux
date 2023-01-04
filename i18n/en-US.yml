@@ -131,7 +131,6 @@ components:
     closeMenu: Close Menu
     fieldTrip: Field Trip
     mailables: Mailables
-    menuItemIconAlt: "Icon for {label} menu item"
     openMenu: Open Menu
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner

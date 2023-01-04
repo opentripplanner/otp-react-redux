@@ -34,7 +34,7 @@ type AppMenuProps = {
   activeLocale: string
   callTakerEnabled?: boolean
   // Typescript TODO configLanguageType
-  configLanguages: Record<string, any> | undefined
+  configLanguages?: Record<string, any>
   createOrUpdateUser: (user: User, silent: boolean, intl: IntlShape) => void
   extraMenuItems?: menuItem[]
   fieldTripEnabled?: boolean
@@ -205,7 +205,7 @@ class AppMenu extends Component<
         children: Object.keys(configLanguages)
           .filter((locale) => locale !== 'allLanguages')
           .map((locale) => ({
-            iconType: <></>,
+            iconType: <svg />,
             id: configLanguages[locale].name,
             label:
               activeLocale === locale ? (
@@ -265,76 +265,78 @@ class AppMenu extends Component<
             })}
             className="app-menu"
           >
-            {/* This item is duplicated by the view-switcher, but only shown on mobile
+            <ul>
+              {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
-            <MenuItem
-              className="app-menu-trip-planner-link"
-              onClick={this._showTripPlanner}
-            >
-              <StyledIconWrapper>
-                <MapMarked />
-              </StyledIconWrapper>
-              <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
-            </MenuItem>
-            {/* This item is duplicated by the view-switcher, but only shown on mobile
-            when the view switcher isn't shown (using css) */}
-            <MenuItem
-              className="app-menu-route-viewer-link"
-              onClick={this._showRouteViewer}
-            >
-              <StyledIconWrapper>
-                <Bus />
-              </StyledIconWrapper>
-              <FormattedMessage id="components.RouteViewer.shortTitle" />
-            </MenuItem>
-            <MenuItem className="menu-item" onClick={this._startOver}>
-              <StyledIconWrapper>
-                <Undo />
-              </StyledIconWrapper>
-              <FormattedMessage id="common.forms.startOver" />
-            </MenuItem>
-            {popupTarget && (
-              <MenuItem className="menu-item" onClick={this._triggerPopup}>
-                <StyledIconWrapper>
-                  <SvgIcon iconName={popupTarget} />
-                </StyledIconWrapper>
-                <FormattedMessage id={`config.popups.${popupTarget}`} />
-              </MenuItem>
-            )}
-            {callTakerEnabled && (
               <MenuItem
-                className="menu-item"
-                onClick={resetAndToggleCallHistory}
+                className="menu-item app-menu-trip-planner-link"
+                onClick={this._showTripPlanner}
               >
                 <StyledIconWrapper>
-                  <History />
+                  <MapMarked />
                 </StyledIconWrapper>
-                <FormattedMessage id="components.AppMenu.callHistory" />
+                <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
               </MenuItem>
-            )}
-            {fieldTripEnabled && (
+              {/* This item is duplicated by the view-switcher, but only shown on mobile
+            when the view switcher isn't shown (using css) */}
               <MenuItem
-                className="menu-item"
-                onClick={resetAndToggleFieldTrips}
+                className="menu-item app-menu-route-viewer-link app-menu-divider"
+                onClick={this._showRouteViewer}
               >
                 <StyledIconWrapper>
-                  <GraduationCap />
+                  <Bus />
                 </StyledIconWrapper>
-                <FormattedMessage id="components.AppMenu.fieldTrip" />
+                <FormattedMessage id="components.RouteViewer.shortTitle" />
               </MenuItem>
-            )}
-            {mailablesEnabled && (
-              <MenuItem className="menu-item" onClick={toggleMailables}>
+              <MenuItem className="menu-item" onClick={this._startOver}>
                 <StyledIconWrapper>
-                  <Envelope />
+                  <Undo />
                 </StyledIconWrapper>
-                <FormattedMessage id="components.AppMenu.mailables" />
+                <FormattedMessage id="common.forms.startOver" />
               </MenuItem>
-            )}
-            {this._addExtraMenuItems([
-              ...(extraMenuItems || []),
-              ...(languageMenuItems || [])
-            ])}
+              {popupTarget && (
+                <MenuItem className="menu-item" onClick={this._triggerPopup}>
+                  <StyledIconWrapper>
+                    <SvgIcon iconName={popupTarget} />
+                  </StyledIconWrapper>
+                  <FormattedMessage id={`config.popups.${popupTarget}`} />
+                </MenuItem>
+              )}
+              {callTakerEnabled && (
+                <MenuItem
+                  className="menu-item"
+                  onClick={resetAndToggleCallHistory}
+                >
+                  <StyledIconWrapper>
+                    <History />
+                  </StyledIconWrapper>
+                  <FormattedMessage id="components.AppMenu.callHistory" />
+                </MenuItem>
+              )}
+              {fieldTripEnabled && (
+                <MenuItem
+                  className="menu-item"
+                  onClick={resetAndToggleFieldTrips}
+                >
+                  <StyledIconWrapper>
+                    <GraduationCap />
+                  </StyledIconWrapper>
+                  <FormattedMessage id="components.AppMenu.fieldTrip" />
+                </MenuItem>
+              )}
+              {mailablesEnabled && (
+                <MenuItem className="menu-item" onClick={toggleMailables}>
+                  <StyledIconWrapper>
+                    <Envelope />
+                  </StyledIconWrapper>
+                  <FormattedMessage id="components.AppMenu.mailables" />
+                </MenuItem>
+              )}
+              {this._addExtraMenuItems([
+                ...(extraMenuItems || []),
+                ...(languageMenuItems || [])
+              ])}
+            </ul>
           </nav>
         </SlidingPane>
       </>
@@ -396,15 +398,7 @@ const IconAndLabel = ({
     <span>
       {/* TODO: clean up double ternary */}
       {iconUrl ? (
-        <img
-          alt={intl.formatMessage(
-            {
-              id: 'components.AppMenu.menuItemIconAlt'
-            },
-            { label: typeof label === 'string' ? label : '' }
-          )}
-          src={iconUrl}
-        />
+        <img alt="" src={iconUrl} />
       ) : iconType ? (
         typeof iconType === 'string' ? (
           <SvgIcon iconName={iconType} />

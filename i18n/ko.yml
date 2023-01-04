@@ -392,7 +392,6 @@ components:
   AppMenu:
     callHistory: 통화 기록
     closeMenu: 메뉴를 닫습니다
-    menuItemIconAlt: '{label} 메뉴 항목의 아이콘'
     fieldTrip: 여행 제목
     mailables: 게시 준비
     openMenu: 메뉴 열기

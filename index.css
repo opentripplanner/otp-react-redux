@@ -88,6 +88,14 @@ input[type="text"]::-ms-clear {
   padding: 0;
 }
 
+.app-menu ul {
+  padding-left: 0;
+}
+
+.app-menu .rah-static {
+  overflow: initial !important;
+}
+
 .app-menu li {
   list-style-type: none;
   margin: 1rem 2rem;
@@ -117,12 +125,6 @@ input[type="text"]::-ms-clear {
   .view-switcher {
     display: flex;
   }
-}
-
-/* increase icon size */
-.app-menu li a .fa,
-.expand-submenu-button span .fa {
-  font-size: 2rem;
 }
 
 .menu-item:hover *,

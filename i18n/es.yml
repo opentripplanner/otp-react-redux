@@ -436,7 +436,6 @@ components:
     closeMenu: Cerrar Menú
     fieldTrip: Título del viaje
     mailables: Lista para publicar
-    menuItemIconAlt: Icono del menú de {label}
     openMenu: Abrir Menú
     callHistory: Historial de llamadas
   BackToTripPlanner:
