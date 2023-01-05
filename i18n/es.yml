@@ -510,6 +510,8 @@ components:
     destination: A
     route: 'Ruta:'
   StopTimeCell:
+    realtime: Based on realtime data
+    scheduled: Based on schedule data
     imminentArrival: Debido
   SubNav:
     myAccount: Mi cuenta

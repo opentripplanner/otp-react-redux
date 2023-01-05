@@ -342,6 +342,13 @@ itinerary:
 #     agencyId: PSC
 #     logo: https://d2tyb7byn1fef9.cloudfront.net/psc.png
 #     order: 1
+#     colorMode: gtfs # One of gtfs, gtfs-softened, disabled. see util/viewer.js for more details.
+#     # Mode color overrides. If a GTFS supplies weird colors for
+#     # a mode, they can be overridden here. This is treated as GTFS data.
+#     modeColors:
+#       BUS: # Any OTP mode
+#         color: 00FF00 # HEX color without the # (like GTFS)
+#         textColor: FFFFFF # HEX color without the # (like GTFS)
 #   - feedId: TriMet
 #     agencyId: TRIMET
 #     name: TriMet

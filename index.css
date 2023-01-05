@@ -119,12 +119,6 @@ input[type="text"]::-ms-clear {
   }
 }
 
-/* increase icon size */
-.app-menu li a .fa,
-.expand-submenu-button span .fa {
-  font-size: 2rem;
-}
-
 .menu-item:hover *,
 .app-menu li a span *:hover {
   color: #4c97f5;
