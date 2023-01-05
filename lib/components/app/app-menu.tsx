@@ -21,7 +21,6 @@ import type { WrappedComponentProps } from 'react-intl'
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
-import * as userActions from '../../actions/user'
 import { ComponentContext } from '../../util/contexts'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
@@ -204,13 +203,11 @@ class AppMenu extends Component<
             label:
               activeLocale === locale ? (
                 <>
-                  <strong
-                    aria-label={intl.formatMessage({
-                      id: 'components.SubNav.activeLanguage'
-                    })}
-                  >
-                    {configLanguages[locale].name}
-                  </strong>
+                  {/* // Text is screen-reader only */}
+                  <span style={{ textIndent: -10_000 }}>
+                    <FormattedMessage id="components.SubNav.activeLangauge" />
+                  </span>
+                  <strong>{configLanguages[locale].name}</strong>
                 </>
               ) : (
                 configLanguages[locale].name

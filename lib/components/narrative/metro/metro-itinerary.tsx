@@ -7,6 +7,7 @@ import {
   IntlShape
 } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
+import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -19,8 +20,8 @@ import {
   itineraryHasAccessibilityScores
 } from '../../../util/accessibility-routing'
 import { getActiveSearch, getFare } from '../../../util/state'
+import { IconWithText } from '../../util/styledIcon'
 import { ItineraryDescription } from '../default/itinerary-description'
-import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import { localizeGradationMap } from '../utils'
 import FormattedDuration, {
   formatDuration
@@ -28,6 +29,7 @@ import FormattedDuration, {
 import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
+import Sub from '../../util/sub-text'
 
 import { DepartureTimesList } from './departure-times-list'
 import {
@@ -36,10 +38,7 @@ import {
   getItineraryRoutes,
   removeInsignifigantWalkLegs
 } from './attribute-utils'
-import { IconWithText } from '../../util/styledIcon'
 import RouteBlock from './route-block'
-
-import Sub from '../../util/sub-text'
 
 const { ItineraryView } = uiActions
 
@@ -201,6 +200,7 @@ type Props = {
   LegIcon: React.ReactNode
   accessibilityScoreGradationMap: { [value: number]: string }
   active: boolean
+  /** This is true when there is only one itinerary being shown and the itinerary-body is visible */
   expanded: boolean
   intl: IntlShape
   itinerary: Itinerary

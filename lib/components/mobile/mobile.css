@@ -32,7 +32,7 @@
   display: inline-block;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .otp .navbar .mobile-header-text {
     font-size: 3vw;
     margin-top: 2px;

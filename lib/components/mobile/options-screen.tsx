@@ -39,12 +39,8 @@ class MobileOptionsScreen extends Component<Props> {
 
 // connect to the redux store
 
-const mapStateToProps = () => {
-  return {}
-}
-
 const mapDispatchToProps = {
   setMobileScreen
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MobileOptionsScreen)
+export default connect(null, mapDispatchToProps)(MobileOptionsScreen)

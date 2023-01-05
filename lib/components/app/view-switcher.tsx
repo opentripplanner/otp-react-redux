@@ -2,7 +2,6 @@ import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { withRouter } from 'react-router'
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
@@ -19,12 +18,6 @@ type Props = {
  * the main views of the application.
  */
 class ViewSwitcher extends Component<Props> {
-  static propTypes = {
-    activePanel: PropTypes.number,
-    setMainPanelContent: PropTypes.func,
-    sticky: PropTypes.bool
-  }
-
   _showRouteViewer = () => {
     this.props.setMainPanelContent(null)
     this.props.setMainPanelContent(MainPanelContent.ROUTE_VIEWER)
@@ -61,9 +54,6 @@ class ViewSwitcher extends Component<Props> {
       >
         <Button
           aria-controls="view-switcher"
-          aria-label={intl.formatMessage({
-            id: 'components.BatchRoutingPanel.shortTitle'
-          })}
           aria-selected={tripPlannerActive}
           bsStyle="link"
           className={`${tripPlannerActive && 'active'}`}
@@ -74,9 +64,6 @@ class ViewSwitcher extends Component<Props> {
         </Button>
         <Button
           aria-controls="view-switcher"
-          aria-label={intl.formatMessage({
-            id: 'components.RouteViewer.shortTitle'
-          })}
           aria-selected={routeViewerActive}
           bsStyle="link"
           className={`${routeViewerActive && 'active'}`}

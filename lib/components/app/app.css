@@ -36,7 +36,7 @@
 .app-menu-trip-planner-link {
   display: none;
 }
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .app-menu-route-viewer-link,
   .app-menu-trip-planner-link {
     display: inherit;
