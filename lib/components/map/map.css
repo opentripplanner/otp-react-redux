@@ -127,3 +127,12 @@
 .otp .map-overlay-popup .popup-row {
   margin-top: 6px;
 }
+
+/* 
+  HACK: maplibre has a tendency to place the marker for the active stop in the stop viewer
+  at the bottom of the map (i.e. first). This change puts the active stop on top so it is easier to see.
+ */
+.maplibregl-marker:first-of-type,
+.mapboxgl-marker:first-of-type {
+  z-index: 100;
+}
