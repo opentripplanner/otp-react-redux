@@ -29,13 +29,17 @@ type RouteRendererProps = {
   leg: Leg & { onColoredBackground?: boolean }
 }
 
-const DefaultRouteRenderer = ({ leg }: RouteRendererProps): JSX.Element => (
-  <Block
-    color={leg.routeColor || '333333'}
-    isOnColoredBackground={leg.onColoredBackground}
-  >
-    {leg.routeShortName || leg.route || leg.routeLongName}
-  </Block>
-)
+const DefaultRouteRenderer = ({ leg }: RouteRendererProps): JSX.Element => {
+  const routeTitle = leg.routeShortName || leg.route || leg.routeLongName
+  return (
+    <Block
+      color={leg.routeColor || '333333'}
+      isOnColoredBackground={leg.onColoredBackground}
+      title={routeTitle}
+    >
+      {routeTitle}
+    </Block>
+  )
+}
 export default DefaultRouteRenderer
 export type { RouteRendererProps }
