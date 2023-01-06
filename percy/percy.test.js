@@ -377,11 +377,11 @@ test('OTP-RR', async () => {
 
   // Open Specific Route`
   try {
-    await page.$x("//h1[contains(., 'Marietta Blvd')]")
+    await page.$x("//span[contains(., 'Marietta Blvd')]")
   } catch {
     await page.reload({ waitUntil: 'networkidle0' })
   }
-  const [busRouteButton] = await page.$x("//h1[contains(., 'Marietta Blvd')]")
+  const [busRouteButton] = await page.$x("//span[contains(., 'Marietta Blvd')]")
   await busRouteButton.click()
   await page.waitForSelector('#headsign-selector')
 
