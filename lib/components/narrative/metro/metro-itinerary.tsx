@@ -359,9 +359,10 @@ class MetroItinerary extends NarrativeItinerary {
           onKeyDown={() => {}}
           // TODO: use _onHeaderClick for tap only -- this will require disabling
           // this onClick handler after a touchStart
-          role="menuitem"
+          // TODO: CORRECT THIS ARIA ROLE
+          role="presentation"
           // TODO test this with a screen reader
-          tabIndex={expanded ? 1 : 0}
+          // tabIndex={expanded ? 1 : 0}
         >
           <ItineraryWrapper
             aria-label={intl.formatMessage(
