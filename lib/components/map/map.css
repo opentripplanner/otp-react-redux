@@ -136,3 +136,9 @@
 .mapboxgl-marker:first-of-type {
   z-index: 100;
 }
+
+/* Make sure popups stay on top of markers above. */
+.maplibregl-popup,
+.mapboxgl-popup {
+  z-index: 101;
+}
