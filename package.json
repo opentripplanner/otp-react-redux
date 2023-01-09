@@ -47,6 +47,7 @@
     "@opentripplanner/itinerary-body": "^4.1.5",
     "@opentripplanner/location-field": "1.12.11",
     "@opentripplanner/location-icon": "^1.4.0",
+    "@opentripplanner/map-popup": "^2.0.0",
     "@opentripplanner/otp2-tile-overlay": "^1.0.0",
     "@opentripplanner/park-and-ride-overlay": "^2.0.4",
     "@opentripplanner/printable-itinerary": "^2.0.7",
