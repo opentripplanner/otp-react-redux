@@ -657,7 +657,7 @@ common:
       {isMore, select,
       true {more}
       other {less}
-      } CO<sub>2</sub> than driving alone.
+      } CO<sub>2</sub> than driving alone
 
   # Note to translator: the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
