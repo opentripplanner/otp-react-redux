@@ -93,11 +93,10 @@ map:
   initLon: -122.682
   baseLayers:
     - name: Streets
-      url: //cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png
-      subdomains: "abcd"
+      # These tiles are free to use, but not in production
+      url: //basemaps.cartocdn.com/gl/positron-gl-style/style.json
       attribution: 'Map tiles: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
       maxZoom: 20
-      hasRetinaSupport: true
     - name: Stamen Toner Lite
       url: http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
@@ -342,6 +341,13 @@ itinerary:
 #     agencyId: PSC
 #     logo: https://d2tyb7byn1fef9.cloudfront.net/psc.png
 #     order: 1
+#     colorMode: gtfs # One of gtfs, gtfs-softened, disabled. see util/viewer.js for more details.
+#     # Mode color overrides. If a GTFS supplies weird colors for
+#     # a mode, they can be overridden here. This is treated as GTFS data.
+#     modeColors:
+#       BUS: # Any OTP mode
+#         color: 00FF00 # HEX color without the # (like GTFS)
+#         textColor: FFFFFF # HEX color without the # (like GTFS)
 #   - feedId: TriMet
 #     agencyId: TRIMET
 #     name: TriMet
@@ -381,6 +387,30 @@ itinerary:
 #     modes:
 #       - WALK
 #       - BICYCLE
+
+### Configure here the carbon output in grams per meter for each mode.
+### massUnits can be 'pound', 'kilogram', 'ounce', or 'gram'
+# co2:
+# . enabled: true
+#   carbonIntensity:
+#     walk: 0
+#     bicycle: 0
+#     car: 0.283
+#     tram: 0.041
+#     subway: 0.041
+#     rail: 0.041
+#     bus: 0.105
+#     ferry: 0.082
+#     cable_car: 0.021
+#     gondola: 0.021
+#     funicular: 0.041
+#     transit: 0.041
+#     leg_switch: 0
+#     airplane: 0.382
+#     micromobility: 0
+#   massUnit: "ounce"
+#   showIfHigher: false // show the relative CO2 even if it's higher than driving
+#   cutoffPercentage: 33 // Only show the CO2 comparison if the % difference from driving is at least this much
 
 ### Popup config
 ### OTP-RR supports a full-screen modal popup that can be launched from a set of
@@ -436,6 +466,8 @@ itinerary:
 #           0.9: 'Mostly Accessible'
 #       popups:
 #         testTarget: Test Target!
+#         # Optional string used for narrow UI elements such as link buttons under trip details.
+#         testTarget-narrow: Target!
 #       menuItems:
 #         demo-item: Demo Item
 #     errorMessages:

@@ -7,8 +7,9 @@ import {
   IntlShape
 } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
+import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 import * as narrativeActions from '../../../actions/narrative'
 import * as uiActions from '../../../actions/ui'
@@ -19,6 +20,7 @@ import {
   itineraryHasAccessibilityScores
 } from '../../../util/accessibility-routing'
 import { getActiveSearch, getFare } from '../../../util/state'
+import { IconWithText } from '../../util/styledIcon'
 import { ItineraryDescription } from '../default/itinerary-description'
 import { localizeGradationMap } from '../utils'
 import FormattedDuration, {
@@ -27,6 +29,7 @@ import FormattedDuration, {
 import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
+import Sub from '../../util/sub-text'
 
 import { DepartureTimesList } from './departure-times-list'
 import {
@@ -87,6 +90,13 @@ const SecondaryInfo = styled.span`
 `
 
 const Spacer = styled.span``
+
+const ItineraryNote = styled.div`
+  background: mediumseagreen;
+  color: white;
+  padding: 4px 8px;
+  text-align: right;
+`
 
 const Routes = styled.section<{ enableDot?: boolean }>`
   display: flex;
@@ -186,6 +196,20 @@ const ItineraryGridSmall = styled.div`
   }
 `
 
+const BLUR_AMOUNT = 3
+const blurAnimation = keyframes`
+ 0% { filter: blur(${BLUR_AMOUNT}px); }
+ 50% { filter: blur(${BLUR_AMOUNT + 1}px) }
+`
+
+const LoadingBlurred = styled.span<{ loading: boolean }>`
+  ${(props) => props.loading && `filter: blur(${BLUR_AMOUNT}px)`};
+  animation-name: ${(props) => (props.loading ? blurAnimation : '')};
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  transition: all 0.2s ease-in-out;
+`
+
 type Props = {
   LegIcon: React.ReactNode
   accessibilityScoreGradationMap: { [value: number]: string }
@@ -231,6 +255,7 @@ class MetroItinerary extends NarrativeItinerary {
       accessibilityScoreGradationMap,
       active,
       activeItineraryTimeIndex,
+      co2Config,
       currency,
       defaultFareKey,
       enableDot,
@@ -239,6 +264,7 @@ class MetroItinerary extends NarrativeItinerary {
       itinerary,
       LegIcon,
       mini,
+      pending,
       setActiveItinerary,
       setActiveLeg,
       setItineraryTimeIndex,
@@ -257,6 +283,31 @@ class MetroItinerary extends NarrativeItinerary {
       currency
     )
 
+    const roundedCo2VsBaseline = Math.round(itinerary.co2VsBaseline * 100)
+    const emissionsNote = !mini &&
+      Math.abs(roundedCo2VsBaseline) >= (co2Config?.cutoffPercentage || 0) &&
+      (roundedCo2VsBaseline < 0 || co2Config?.showIfHigher) &&
+      co2Config?.enabled && (
+        <IconWithText Icon={Leaf}>
+          <FormattedMessage
+            id="common.itineraryDescriptions.relativeCo2"
+            values={{
+              co2: (
+                <LoadingBlurred loading={pending}>
+                  <FormattedNumber
+                    style="unit"
+                    unit="percent"
+                    unitDisplay="narrow"
+                    value={Math.abs(roundedCo2VsBaseline)}
+                  />
+                </LoadingBlurred>
+              ),
+              isMore: roundedCo2VsBaseline > 0,
+              sub: Sub
+            }}
+          />
+        </IconWithText>
+      )
     const localizedGradationMapWithIcons = localizeGradationMap(
       intl,
       SvgIcon,
@@ -339,6 +390,7 @@ class MetroItinerary extends NarrativeItinerary {
             )}
             className={`itin-wrapper${mini ? '-small' : ''}`}
           >
+            {emissionsNote && <ItineraryNote>{emissionsNote}</ItineraryNote>}
             {itineraryHasAccessibilityScores(itinerary) && (
               <AccessibilityRating
                 gradationMap={localizedGradationMapWithIcons}
@@ -447,14 +499,16 @@ const mapStateToProps = (state: any, ownProps: Props) => {
     accessibilityScoreGradationMap:
       state.otp.config.accessibilityScore?.gradationMap,
     activeItineraryTimeIndex,
+    co2Config: state.otp.config.co2,
     configCosts: state.otp.config.itinerary?.costs,
     // The configured (ambient) currency is needed for rendering the cost
     // of itineraries whether they include a fare or not, in which case
     // we show $0.00 or its equivalent in the configured currency and selected locale.
     currency: state.otp.config.localization?.currency || 'USD',
-
     defaultFareKey: state.otp.config.itinerary?.defaultFareKey,
     enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
+    // @ts-expect-error TODO: type activeSearch
+    pending: activeSearch ? Boolean(activeSearch.pending) : false,
     showLegDurations: state.otp.config.itinerary?.showLegDurations
   }
 }

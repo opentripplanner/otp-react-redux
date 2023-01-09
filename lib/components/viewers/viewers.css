@@ -3,7 +3,6 @@
 .otp .route-viewer-header,
 .otp .stop-viewer-header,
 .otp .trip-viewer-header {
-  background-color: #fff;
   padding: 12px;
   margin: 5px;
 }
@@ -43,6 +42,7 @@
 }
 
 .otp .stop-viewer-body input[type="date"] {
+  background: inherit;
   border: none;
   clear: right;
   cursor: pointer;
@@ -95,45 +95,61 @@
 /* stop viewer styles */
 
 .otp .stop-viewer .route-row {
-  border: 1px solid #1113;
-  border-top: none;
+}
+.otp .stop-viewer .route-row-container,
+.related-panel-container {
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+  padding-left: 0;
 }
 .otp .stop-viewer .route-row:first-of-type {
-  border-top: 1px solid #1113;
   margin-top: 10px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-.otp .stop-viewer .route-row:last-of-type {
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 
 .otp .stop-viewer .route-row .header {
-  display: table;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   width: 100%;
 }
 .otp .stop-viewer .route-row .header .route-name {
-  display: table-cell;
-  padding: 8px;
-  vertical-align: middle;
+  align-items: center;
+  display: grid;
+  font-size: 42px;
+  gap: 5px;
+  grid-template-columns: 4ch 2fr;
+}
+.otp .stop-viewer .route-row .header .route-name span {
+  font-size: 15px;
+}
+.otp .stop-viewer .route-row .header .route-name strong span {
+  font-size: 32px;
 }
 
 .otp .stop-viewer .route-row .header .next-trip-preview {
-  display: table-cell;
-  width: 100px;
-  border-left: 1px solid #1113;
-  padding: 9px 6px;
-  font-size: 14px;
+  display: grid;
+  grid-template-rows: fit-content(8ch);
+  justify-self: end;
+  list-style-type: none;
+  padding: 15px;
+  text-align: right;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.otp .stop-viewer .route-row .header .next-trip-preview li:first-of-type {
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .otp .stop-viewer .route-row .header .expansion-button-container {
-  display: table-cell;
-  width: 36px;
   border-left: 1px solid #1113;
-  padding: 0px;
   cursor: pointer;
+  display: table-cell;
+  padding: 0px;
   vertical-align: middle;
+  width: 36px;
 }
 
 .otp .stop-viewer .route-row .header .expansion-button {
@@ -171,21 +187,16 @@
   padding: 0px;
   width: 90px;
 }
-
-.otp .stop-viewer .stop-viewer-body .related-panel-title {
-  background-color: #ffffff;
-  padding: 0.5rem;
-  position: relative;
-  width: fit-content;
-  margin-left: 1rem;
-}
-
 .otp .stop-viewer .stop-viewer-body .related-panel-container {
-  border: 1px solid;
-  border-radius: 7px;
+  background: #fffffff8;
+  color: #333;
   padding: 0.5rem;
+  margin: 1.5rem 0;
   align-items: center;
-  margin-top: -2.5rem;
+}
+.otp .stop-viewer .stop-viewer-body .related-panel-container h2 {
+  padding: 1rem 1rem 0;
+  margin: 0;
 }
 
 .otp .stop-viewer .stop-viewer-body .related-items-list {
@@ -203,14 +214,6 @@
   border-radius: 10px;
 }
 
-.otp .stop-viewer .stop-viewer-body .related-item .item-label {
-  display: flex;
-  width: 100%;
-  align-items: baseline;
-  justify-content: flex-start;
-  margin-bottom: 10px;
-}
-
 .otp .stop-viewer .stop-viewer-body .related-item .stop-label {
   display: flex;
   width: 100%;
@@ -219,24 +222,39 @@
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row {
-  display: table;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
   width: 100%;
+}
+.otp .stop-viewer .stop-viewer-body .next-arrival-row:last-of-type {
+  margin-bottom: 0;
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-label {
-  display: table-cell;
-  max-width: 200px;
+  align-items: center;
+  display: flex;
+  max-width: 250px;
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .route-name {
-  padding-right: 8px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25em;
+  font-size: 22px;
   font-weight: 700;
-  display: inline-block;
-  min-width: 5ch;
+}
+.otp .stop-viewer .stop-viewer-body .next-arrival-row .route-name section {
+  border-top: none;
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-time {
-  display: table-cell;
+  flex-shrink: 0;
+  font-weight: 700;
   width: 90px;
 }
 
@@ -252,10 +270,9 @@
 
 .otp .stop-viewer .stop-viewer-body .related-panel-expand-view {
   display: flex;
-  background: #fff;
+  background: transparent;
   margin: auto;
   border: none;
-  margin-top: -13px;
   font-size: 12px;
   color: #000080;
 }
@@ -342,6 +359,14 @@
   text-align: center;
   text-transform: uppercase;
   width: 100%;
+}
+
+.otp .stop-viewer .stop-viewer-controls button {
+  color: inherit;
+}
+.otp .stop-viewer .stop-viewer-controls svg {
+  color: inherit;
+  fill: inherit;
 }
 
 /* trip viewer styles */

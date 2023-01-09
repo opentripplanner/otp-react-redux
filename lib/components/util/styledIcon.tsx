@@ -1,5 +1,5 @@
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import React, { HTMLAttributes } from 'react'
+import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 interface Props {

@@ -94,9 +94,12 @@ input[type="text"]::-ms-clear {
   cursor: pointer;
 }
 
-.app-menu li img {
-  width: 25px;
+.app-menu li img,
+.app-menu li svg {
+  max-height: 1em;
   margin-right: 2rem;
+  vertical-align: middle;
+  width: 1em;
 }
 
 .app-menu li a {
@@ -114,16 +117,6 @@ input[type="text"]::-ms-clear {
   .view-switcher {
     display: flex;
   }
-}
-
-/* increase icon size */
-.app-menu li a .fa,
-.expand-submenu-button span .fa {
-  font-size: 2rem;
-}
-
-.app-menu span:not(.expand-menu-chevron) {
-  margin-right: 2rem;
 }
 
 .menu-item:hover *,

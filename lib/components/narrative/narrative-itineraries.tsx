@@ -4,8 +4,7 @@ import { differenceInDays } from 'date-fns'
 import { injectIntl, IntlShape } from 'react-intl'
 import clone from 'clone'
 import coreUtils from '@opentripplanner/core-utils'
-import PropTypes from 'prop-types'
-import React, { Component, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 import * as uiActions from '../../actions/ui'
@@ -39,9 +38,11 @@ const { ItineraryView } = uiActions
 
 type Props = {
   activeItinerary: unknown
+  activeItineraryTimeIndex: unknown
   activeLeg: unknown
   activeSearch: unknown
   activeStep: unknown
+  co2Config: unknown
   containerStyle: unknown
   customBatchUiBackground: unknown
   errorMessages: unknown
@@ -79,6 +80,7 @@ const NarrativeItineraries = ({
   activeLeg,
   activeSearch,
   activeStep,
+  co2Config,
   containerStyle,
   customBatchUiBackground,
   errorMessages,
@@ -126,6 +128,32 @@ const NarrativeItineraries = ({
     setItineraryView(newView)
     // Reset the active leg.
     setActiveLeg(null, null)
+  }
+  // Returns a car itinerary if there is one, otherwise returns false
+  const _getCarItin = () => {
+    const isCarOnly = (itin: Itinerary) =>
+      itin.legs.length === 1 && itin.legs[0].mode.startsWith('CAR')
+    return (
+      !!itineraries.filter(isCarOnly).length && itineraries.filter(isCarOnly)[0]
+    )
+  }
+
+  const _getBaselineCo2 = () => {
+    // Sums the sum of the leg distances for each leg
+    const avgDistance =
+      itineraries.reduce(
+        (sum, itin) =>
+          sum + itin.legs.reduce((legsum, leg) => legsum + leg.distance, 0),
+        0
+      ) / itineraries.length
+
+    // If we do not have a drive yourself itinerary, estimate the distance based on avg of transit distances.
+    return coreUtils.itinerary.calculateEmissions(
+      // TODO: Fix types on coreutils calculateEmissions, use Omit<>
+      _getCarItin() || { legs: [{ distance: avgDistance, mode: 'CAR' }] },
+      co2Config?.carbonIntensity,
+      co2Config?.massUnit
+    )
   }
 
   // TODO
@@ -278,8 +306,23 @@ const NarrativeItineraries = ({
       }, [])
     : itineraries.map((itin, index) => ({ ...itin, index }))
 
+  const baselineCo2 = _getBaselineCo2()
+  const itinerariesWithCo2 =
+    mergedItineraries?.map((itin) => {
+      const emissions = coreUtils.itinerary.calculateEmissions(
+        itin,
+        co2Config?.carbonIntensity,
+        co2Config?.massUnit
+      )
+      return {
+        ...itin,
+        co2: emissions,
+        co2VsBaseline: (emissions - baselineCo2) / baselineCo2
+      }
+    }) || []
+
   // This loop determines if an itinerary uses a single or multiple modes
-  const groupedMergedItineraries = mergedItineraries.reduce(
+  const groupedMergedItineraries = itinerariesWithCo2.reduce(
     (prev, cur) => {
       // Create a clone of our buckets
       const modeItinMap = clone(prev)
@@ -316,7 +359,7 @@ const NarrativeItineraries = ({
       <NarrativeItinerariesHeader
         customBatchUiBackground={customBatchUiBackground}
         errors={errors}
-        itineraries={mergedItineraries}
+        itineraries={itinerariesWithCo2}
         itineraryIsExpanded={itineraryIsExpanded}
         onSortChange={_onSortChange}
         onSortDirChange={_onSortDirChange}
@@ -355,7 +398,7 @@ const NarrativeItineraries = ({
                     </div>
                   )
                 })
-              : mergedItineraries.map((itin) => _renderItineraryRow(itin))}
+              : itinerariesWithCo2.map((itin) => _renderItineraryRow(itin))}
             {_renderLoadingDivs()}
             <S.SingleModeRowContainer>
               {groupItineraries &&
@@ -380,7 +423,7 @@ const mapStateToProps = (state) => {
   const activeItinerary = activeSearch && activeSearch.activeItinerary
   const activeItineraryTimeIndex =
     activeSearch && activeSearch.activeItineraryTimeIndex
-  const { errorMessages, modes } = state.otp.config
+  const { co2, errorMessages, modes } = state.otp.config
   const { sort } = state.otp.filter
   const pending = activeSearch ? Boolean(activeSearch.pending) : false
   const itineraries = getActiveItineraries(state)
@@ -412,6 +455,7 @@ const mapStateToProps = (state) => {
     activeLeg: activeSearch && activeSearch.activeLeg,
     activeSearch,
     activeStep: activeSearch && activeSearch.activeStep,
+    co2Config: co2,
     customBatchUiBackground,
     errorMessages,
     errors: getResponsesWithErrors(state),
