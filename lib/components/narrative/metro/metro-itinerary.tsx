@@ -358,7 +358,7 @@ class MetroItinerary extends NarrativeItinerary {
 
     // Use first leg's agency as a fallback
     return (
-      <li
+      <div
         className={`option metro-itin${active ? ' active' : ''}${
           expanded ? ' expanded' : ''
         }`}
@@ -482,7 +482,7 @@ class MetroItinerary extends NarrativeItinerary {
             />
           </>
         )}
-      </li>
+      </div>
     )
   }
 }
