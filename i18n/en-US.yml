@@ -550,6 +550,7 @@ components:
     accessible: Accessible
     bicyclesAllowed: Allowed
     header: Trip Viewer
+    listOfRouteStops: List of stops on this route
     routeHeader: "Route: <strong>{routeShortName}</strong> {routeLongName}"
     viewStop: View
   UserAccountScreen:
