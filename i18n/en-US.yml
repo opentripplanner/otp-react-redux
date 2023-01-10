@@ -364,7 +364,7 @@ components:
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
     shortTitle: View Routes
-    stopsInDirectionofTravel: "Stops in this direction of travel:"
+    stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
   SavedTripEditor:
     editSavedTrip: Edit saved trip
