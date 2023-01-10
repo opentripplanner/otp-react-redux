@@ -213,6 +213,8 @@ components:
     enterLocation: Enter location
     setDestination: Set Destination
     setOrigin: Set Origin
+  MapillaryFrame:
+    title: Imagery of the street
   MapLayers:
     bike-rental: "{companies} Shared Bikes"
     car-rental: Rental Car Locations
