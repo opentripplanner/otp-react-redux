@@ -204,8 +204,8 @@ class AppMenu extends Component<
               activeLocale === locale ? (
                 <>
                   {/* // Text is screen-reader only */}
-                  <span style={{ textIndent: -10_000 }}>
-                    <FormattedMessage id="components.SubNav.activeLangauge" />
+                  <span style={{ display: 'none' }}>
+                    <FormattedMessage id="components.SubNav.activeLanguage" />
                   </span>
                   <strong>{configLanguages[locale].name}</strong>
                 </>
