@@ -1,10 +1,8 @@
 import { Bus } from '@styled-icons/fa-solid/Bus'
-import { ChevronDown } from '@styled-icons/fa-solid/ChevronDown'
-import { ChevronUp } from '@styled-icons/fa-solid/ChevronUp'
 import { connect } from 'react-redux'
 import { Envelope } from '@styled-icons/fa-regular/Envelope'
 import { ExternalLinkSquareAlt } from '@styled-icons/fa-solid/ExternalLinkSquareAlt'
-import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
 import { Undo } from '@styled-icons/fa-solid/Undo'
@@ -21,8 +19,9 @@ import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
-import { StyledIconWrapper } from '../util/styledIcon'
 import startOver from '../util/start-over'
+
+import AppMenuItem from './app-menu-item'
 
 type AppMenuProps = {
   callTakerEnabled?: boolean
@@ -128,20 +127,15 @@ class AppMenu extends Component<
         if (children) {
           return (
             <Fragment key={id}>
-              <MenuItem
-                className="expand-submenu-button"
+              <AppMenuItem
                 // TODO: add aria-expanded etc.
+                icon={<Icon iconType={iconType} iconUrl={iconUrl} />}
+                isDropdown
+                isExpanded={isSubmenuExpanded}
                 onClick={() => this._toggleSubmenu(id)}
               >
-                <IconAndLabel
-                  iconType={iconType}
-                  iconUrl={iconUrl}
-                  label={label}
-                />
-                <StyledIconWrapper className="expand-menu-chevron">
-                  {isSubmenuExpanded ? <ChevronUp /> : <ChevronDown />}
-                </StyledIconWrapper>
-              </MenuItem>
+                {label}
+              </AppMenuItem>
               <AnimateHeight
                 duration={500}
                 height={isSubmenuExpanded ? 'auto' : 0}
@@ -155,13 +149,14 @@ class AppMenu extends Component<
         }
 
         return (
-          <MenuItem
+          <AppMenuItem
             className={subMenuDivider ? 'app-menu-divider' : ''}
             href={href}
+            icon={<Icon iconType={iconType} iconUrl={iconUrl} />}
             key={id}
           >
-            <IconAndLabel iconType={iconType} iconUrl={iconUrl} label={label} />
-          </MenuItem>
+            {label}
+          </AppMenuItem>
         )
       })
     )
@@ -211,52 +206,44 @@ class AppMenu extends Component<
           <div className="app-menu">
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
-            <MenuItem
+            <AppMenuItem
               className="app-menu-route-viewer-link"
+              icon={<Bus />}
               onClick={this._showRouteViewer}
             >
-              <StyledIconWrapper>
-                <Bus />
-              </StyledIconWrapper>
               <FormattedMessage id="components.RouteViewer.shortTitle" />
-            </MenuItem>
-            <MenuItem onClick={this._startOver}>
-              <StyledIconWrapper>
-                <Undo />
-              </StyledIconWrapper>
+            </AppMenuItem>
+            <AppMenuItem icon={<Undo />} onClick={this._startOver}>
               <FormattedMessage id="common.forms.startOver" />
-            </MenuItem>
+            </AppMenuItem>
             {popupTarget && (
-              <MenuItem onClick={this._triggerPopup}>
-                <StyledIconWrapper>
-                  <SvgIcon iconName={popupTarget} />
-                </StyledIconWrapper>
+              <AppMenuItem
+                icon={<SvgIcon iconName={popupTarget} />}
+                onClick={this._triggerPopup}
+              >
                 <FormattedMessage id={`config.popups.${popupTarget}`} />
-              </MenuItem>
+              </AppMenuItem>
             )}
             {callTakerEnabled && (
-              <MenuItem onClick={resetAndToggleCallHistory}>
-                <StyledIconWrapper>
-                  <History />
-                </StyledIconWrapper>
+              <AppMenuItem
+                icon={<History />}
+                onClick={resetAndToggleCallHistory}
+              >
                 <FormattedMessage id="components.AppMenu.callHistory" />
-              </MenuItem>
+              </AppMenuItem>
             )}
             {fieldTripEnabled && (
-              <MenuItem onClick={resetAndToggleFieldTrips}>
-                <StyledIconWrapper>
-                  <GraduationCap />
-                </StyledIconWrapper>
+              <AppMenuItem
+                icon={<GraduationCap />}
+                onClick={resetAndToggleFieldTrips}
+              >
                 <FormattedMessage id="components.AppMenu.fieldTrip" />
-              </MenuItem>
+              </AppMenuItem>
             )}
             {mailablesEnabled && (
-              <MenuItem onClick={toggleMailables}>
-                <StyledIconWrapper>
-                  <Envelope />
-                </StyledIconWrapper>
+              <AppMenuItem icon={<Envelope />} onClick={toggleMailables}>
                 <FormattedMessage id="components.AppMenu.mailables" />
-              </MenuItem>
+              </AppMenuItem>
             )}
             {this._addExtraMenuItems(extraMenuItems)}
           </div>
@@ -296,39 +283,21 @@ export default injectIntl(
 /**
  * Renders a label and icon either from url or font awesome type
  */
-const IconAndLabel = ({
+const Icon = ({
   iconType,
-  iconUrl,
-  label
+  iconUrl
 }: {
   iconType: string
   iconUrl: string
-  label: string
 }): JSX.Element => {
-  const intl = useIntl()
   // FIXME: add types to context
   // @ts-expect-error No type on ComponentContext
   const { SvgIcon } = useContext(ComponentContext)
-
-  return (
-    <span>
-      {/* TODO: clean up double ternary */}
-      {iconUrl ? (
-        <img
-          alt={intl.formatMessage(
-            {
-              id: 'components.AppMenu.menuItemIconAlt'
-            },
-            { label }
-          )}
-          src={iconUrl}
-        />
-      ) : iconType ? (
-        <SvgIcon iconName={iconType} />
-      ) : (
-        <ExternalLinkSquareAlt />
-      )}
-      {label}
-    </span>
+  return iconUrl ? (
+    <img alt="" src={iconUrl} />
+  ) : iconType ? (
+    <SvgIcon iconName={iconType} />
+  ) : (
+    <ExternalLinkSquareAlt />
   )
 }
