@@ -26,8 +26,8 @@ const IssueButton = styled.button`
 
 const InvisibleHeader = styled.h1`
   height: 0;
-  width: 0;
   overflow: hidden;
+  width: 0;
 `
 
 export default function NarrativeItinerariesHeader({
