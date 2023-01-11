@@ -137,10 +137,7 @@ input[type="text"]::-ms-clear {
 .sub-menu-container {
   border-top: 1px solid #cccccc;
   margin-top: 0.5rem;
-}
-
-.sub-menu-container > * {
-  margin-left: 2rem;
+  padding-left: 2rem;
 }
 
 .app-menu .app-menu-divider {

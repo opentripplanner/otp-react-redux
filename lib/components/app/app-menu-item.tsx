@@ -26,8 +26,14 @@ export default class AppMenuItem extends Component<Props, State> {
   _handleKeyDown = (e: KeyboardEvent): void => {
     console.log('keydown', e)
     switch (e.keyCode) {
+      case 37: // arrow left
+        this.setState({ isExpanded: false })
+        break
       case 38: // arrow up
         e.target.previousSibling?.focus()
+        break
+      case 39: // arrow right
+        this.setState({ isExpanded: true })
         break
       case 40: // arrow down
         e.target.nextSibling?.focus()
@@ -47,6 +53,7 @@ export default class AppMenuItem extends Component<Props, State> {
     return (
       <>
         <Comp
+          // TODO: add aria-expanded, controls etc.
           onClick={subItems ? this._toggleSubmenu : onClick}
           onKeyDown={this._handleKeyDown}
           {...otherProps}
