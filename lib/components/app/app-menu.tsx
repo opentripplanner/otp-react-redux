@@ -7,7 +7,6 @@ import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
 import { Undo } from '@styled-icons/fa-solid/Undo'
 import { withRouter } from 'react-router'
-import AnimateHeight from 'react-animate-height'
 import React, { Component, Fragment, useContext } from 'react'
 import SlidingPane from 'react-sliding-pane'
 import type { RouteComponentProps } from 'react-router'
@@ -38,7 +37,6 @@ type AppMenuProps = {
   toggleMailables: () => void
 }
 type AppMenuState = {
-  expandedSubmenus: Record<string, boolean>
   isPaneOpen: boolean
 }
 type menuItem = {
@@ -61,7 +59,6 @@ class AppMenu extends Component<
   static contextType = ComponentContext
 
   state = {
-    expandedSubmenus: {} as Record<string, boolean>,
     isPaneOpen: false
   }
 
@@ -87,12 +84,6 @@ class AppMenu extends Component<
     this.setState({ isPaneOpen: !isPaneOpen })
   }
 
-  _toggleSubmenu = (id: string) => {
-    const { expandedSubmenus } = this.state
-    const currentlyOpen = expandedSubmenus[id] || false
-    this.setState({ expandedSubmenus: { [id]: !currentlyOpen } })
-  }
-
   _addExtraMenuItems = (menuItems?: menuItem[]) => {
     return (
       menuItems &&
@@ -106,45 +97,21 @@ class AppMenu extends Component<
           label: configLabel,
           subMenuDivider
         } = menuItem
-        const { expandedSubmenus } = this.state
         const { intl } = this.props
-        const isSubmenuExpanded = expandedSubmenus?.[id]
-
         const localizationId = `config.menuItems.${id}`
         const localizedLabel = intl.formatMessage({ id: localizationId })
         // Override the config label if a localized label exists
         const label =
           localizedLabel === localizationId ? configLabel : localizedLabel
 
-        if (children) {
-          return (
-            <Fragment key={id}>
-              <AppMenuItem
-                // TODO: add aria-expanded etc.
-                icon={<Icon iconType={iconType} iconUrl={iconUrl} />}
-                isDropdown
-                isExpanded={isSubmenuExpanded}
-                onClick={() => this._toggleSubmenu(id)}
-                text={label}
-              />
-              <AnimateHeight
-                duration={500}
-                height={isSubmenuExpanded ? 'auto' : 0}
-              >
-                <div className="sub-menu-container">
-                  {this._addExtraMenuItems(children)}
-                </div>
-              </AnimateHeight>
-            </Fragment>
-          )
-        }
-
         return (
           <AppMenuItem
             className={subMenuDivider ? 'app-menu-divider' : ''}
+            // TODO: add aria-expanded etc.
             href={href}
             icon={<Icon iconType={iconType} iconUrl={iconUrl} />}
             key={id}
+            subItems={this._addExtraMenuItems(children)}
             text={label}
           />
         )
