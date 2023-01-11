@@ -8,7 +8,7 @@ import { History } from '@styled-icons/fa-solid/History'
 import { Undo } from '@styled-icons/fa-solid/Undo'
 import { withRouter } from 'react-router'
 import AnimateHeight from 'react-animate-height'
-import React, { Component, Fragment, HTMLAttributes, useContext } from 'react'
+import React, { Component, Fragment, useContext } from 'react'
 import SlidingPane from 'react-sliding-pane'
 import type { RouteComponentProps } from 'react-router'
 import type { WrappedComponentProps } from 'react-intl'
@@ -49,14 +49,6 @@ type menuItem = {
   id: string
   label: string
   subMenuDivider: boolean
-}
-interface MenuItemProps extends HTMLAttributes<HTMLElement> {
-  href?: string
-}
-
-const MenuItem = (props: MenuItemProps) => {
-  const Comp = props.href ? 'a' : 'button'
-  return <Comp {...props} />
 }
 
 /**
@@ -133,9 +125,8 @@ class AppMenu extends Component<
                 isDropdown
                 isExpanded={isSubmenuExpanded}
                 onClick={() => this._toggleSubmenu(id)}
-              >
-                {label}
-              </AppMenuItem>
+                text={label}
+              />
               <AnimateHeight
                 duration={500}
                 height={isSubmenuExpanded ? 'auto' : 0}
@@ -154,9 +145,8 @@ class AppMenu extends Component<
             href={href}
             icon={<Icon iconType={iconType} iconUrl={iconUrl} />}
             key={id}
-          >
-            {label}
-          </AppMenuItem>
+            text={label}
+          />
         )
       })
     )
@@ -210,40 +200,40 @@ class AppMenu extends Component<
               className="app-menu-route-viewer-link"
               icon={<Bus />}
               onClick={this._showRouteViewer}
-            >
-              <FormattedMessage id="components.RouteViewer.shortTitle" />
-            </AppMenuItem>
-            <AppMenuItem icon={<Undo />} onClick={this._startOver}>
-              <FormattedMessage id="common.forms.startOver" />
-            </AppMenuItem>
+              text={<FormattedMessage id="components.RouteViewer.shortTitle" />}
+            />
+            <AppMenuItem
+              icon={<Undo />}
+              onClick={this._startOver}
+              text={<FormattedMessage id="common.forms.startOver" />}
+            />
             {popupTarget && (
               <AppMenuItem
                 icon={<SvgIcon iconName={popupTarget} />}
                 onClick={this._triggerPopup}
-              >
-                <FormattedMessage id={`config.popups.${popupTarget}`} />
-              </AppMenuItem>
+                text={<FormattedMessage id={`config.popups.${popupTarget}`} />}
+              />
             )}
             {callTakerEnabled && (
               <AppMenuItem
                 icon={<History />}
                 onClick={resetAndToggleCallHistory}
-              >
-                <FormattedMessage id="components.AppMenu.callHistory" />
-              </AppMenuItem>
+                text={<FormattedMessage id="components.AppMenu.callHistory" />}
+              />
             )}
             {fieldTripEnabled && (
               <AppMenuItem
                 icon={<GraduationCap />}
                 onClick={resetAndToggleFieldTrips}
-              >
-                <FormattedMessage id="components.AppMenu.fieldTrip" />
-              </AppMenuItem>
+                text={<FormattedMessage id="components.AppMenu.fieldTrip" />}
+              />
             )}
             {mailablesEnabled && (
-              <AppMenuItem icon={<Envelope />} onClick={toggleMailables}>
-                <FormattedMessage id="components.AppMenu.mailables" />
-              </AppMenuItem>
+              <AppMenuItem
+                icon={<Envelope />}
+                onClick={toggleMailables}
+                text={<FormattedMessage id="components.AppMenu.mailables" />}
+              />
             )}
             {this._addExtraMenuItems(extraMenuItems)}
           </div>

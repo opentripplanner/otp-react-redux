@@ -35,14 +35,15 @@ export default class AppMenuItem extends Component<Props, State> {
   }
 
   render(): JSX.Element {
-    const Comp = this.props.href ? 'a' : 'button'
+    const { icon, isDropdown, isExpanded, text, ...otherProps } = this.props
+    const Comp = otherProps.href ? 'a' : 'button'
     return (
-      <Comp onKeyDown={this._handleKeyDown} {...this.props}>
-        <span>{this.props.icon}</span>
-        <span>{this.props.children}</span>
-        {this.props.isDropdown && (
+      <Comp onKeyDown={this._handleKeyDown} {...otherProps}>
+        <span>{icon}</span>
+        <span>{text}</span>
+        {isDropdown && (
           <span className="expand-menu-chevron">
-            {this.props.isExpanded ? <ChevronUp /> : <ChevronDown />}
+            {isExpanded ? <ChevronUp /> : <ChevronDown />}
           </span>
         )}
       </Comp>
