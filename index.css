@@ -23,43 +23,45 @@ input[type="text"]::-ms-clear {
 
 /* New app menu */
 .app-menu-icon {
-  width: 21px;
-  height: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
+  height: 15px;
   justify-content: space-between;
-  cursor: pointer;
+  padding: 0;
   position: absolute;
-  z-index: 10;
-  transition: all 1s ease;
   top: 16px;
+  transition: all 1s ease;
+  width: 21px;
+  z-index: 10;
 }
 
 @media only screen and (max-width: 768px) {
   .app-menu-icon {
-    margin-left: 15px;
+    left: 15px;
   }
 }
 
-.menu-top-line,
-.menu-middle-line,
-.menu-bottom-line,
-.menu-left-x,
-.menu-right-x {
+.app-menu-icon > span {
   border-bottom: 3px solid #ffffff;
+  display: block;
+  position: relative;
   transition: all 0.5s ease;
+  width: 100%;
 }
 
-.menu-left-x {
+.app-menu-icon.open span:first-child {
   transform: rotate(45deg);
   top: 7px;
-  position: relative;
 }
-
-.menu-right-x {
+.app-menu-icon.open span:last-child {
   transform: rotate(-45deg);
   bottom: 5px;
-  position: relative;
+}
+.app-menu-icon.open span:nth-child(2) {
+  display: none;
 }
 
 .slide-pane {

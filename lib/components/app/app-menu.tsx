@@ -176,28 +176,30 @@ class AppMenu extends Component<
 
     const { isPaneOpen } = this.state
     const { SvgIcon } = this.context
+    const buttonLabel = isPaneOpen
+      ? intl.formatMessage({ id: 'components.AppMenu.closeMenu' })
+      : intl.formatMessage({ id: 'components.AppMenu.openMenu' })
+
     return (
       <>
-        <div
-          aria-label={
-            isPaneOpen
-              ? intl.formatMessage({ id: 'components.AppMenu.closeMenu' })
-              : intl.formatMessage({ id: 'components.AppMenu.openMenu' })
-          }
-          className="app-menu-icon"
+        <button
+          aria-label={buttonLabel}
+          // TODO: add aria-expanded?
+          className={`app-menu-icon ${isPaneOpen ? 'open' : ''}`}
           onClick={this._togglePane}
-          onKeyDown={this._togglePane}
-          role="button"
-          tabIndex={0}
+          title={buttonLabel}
         >
-          <span className={isPaneOpen ? 'menu-left-x' : 'menu-top-line'} />
-          <span className={isPaneOpen ? '' : 'menu-middle-line'} />
-          <span className={isPaneOpen ? 'menu-right-x' : 'menu-bottom-line'} />
-        </div>
+          <span />
+          <span />
+          <span />
+        </button>
         <SlidingPane
           from="left"
+          hideHeader
           isOpen={isPaneOpen}
           onRequestClose={this._togglePane}
+          shouldCloseOnEsc
+          title="App menu" // TODO: i18n
           width="320px"
         >
           <div className="app-menu">
