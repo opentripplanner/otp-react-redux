@@ -208,12 +208,12 @@ class AppMenu extends Component<
             when the view switcher isn't shown (using css) */}
             <AppMenuItem
               className="app-menu-route-viewer-link"
-              icon={<Bus />}
+              IconClass={Bus}
               onClick={this._showRouteViewer}
             >
               <FormattedMessage id="components.RouteViewer.shortTitle" />
             </AppMenuItem>
-            <AppMenuItem icon={<Undo />} onClick={this._startOver}>
+            <AppMenuItem IconClass={Undo} onClick={this._startOver}>
               <FormattedMessage id="common.forms.startOver" />
             </AppMenuItem>
             {popupTarget && (
@@ -226,7 +226,7 @@ class AppMenu extends Component<
             )}
             {callTakerEnabled && (
               <AppMenuItem
-                icon={<History />}
+                IconClass={History}
                 onClick={resetAndToggleCallHistory}
               >
                 <FormattedMessage id="components.AppMenu.callHistory" />
@@ -234,14 +234,14 @@ class AppMenu extends Component<
             )}
             {fieldTripEnabled && (
               <AppMenuItem
-                icon={<GraduationCap />}
+                IconClass={GraduationCap}
                 onClick={resetAndToggleFieldTrips}
               >
                 <FormattedMessage id="components.AppMenu.fieldTrip" />
               </AppMenuItem>
             )}
             {mailablesEnabled && (
-              <AppMenuItem icon={<Envelope />} onClick={toggleMailables}>
+              <AppMenuItem IconClass={Envelope} onClick={toggleMailables}>
                 <FormattedMessage id="components.AppMenu.mailables" />
               </AppMenuItem>
             )}
