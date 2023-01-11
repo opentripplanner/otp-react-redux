@@ -22,6 +22,14 @@ const IssueButton = styled.button`
   padding: 2px 4px;
 `
 
+// h1 element for a11y purposes
+
+const InvisibleHeader = styled.h1`
+  height: 0;
+  width: 0;
+  overflow: hidden;
+`
+
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
   errors,
@@ -88,9 +96,9 @@ export default function NarrativeItinerariesHeader({
               <FormattedMessage id="components.NarrativeItinerariesHeader.viewAll" />
             </IconWithText>
           </button>
-          <h1 style={{ height: 0, visibility: 'hidden', width: 0 }}>
+          <InvisibleHeader>
             <ItineraryDescription itinerary={itinerary} />
-          </h1>
+          </InvisibleHeader>
           {itineraryIsExpanded && (
             // marginLeft: auto is a way of making something "float right"
             // within a flex container
@@ -102,7 +110,7 @@ export default function NarrativeItinerariesHeader({
         </>
       ) : (
         <>
-          {showHeaderText && (
+          {showHeaderText ? (
             <div
               style={{ flexGrow: 1 }}
               title={
@@ -142,6 +150,8 @@ export default function NarrativeItinerariesHeader({
                 </IssueButton>
               )}
             </div>
+          ) : (
+            <InvisibleHeader>{itinerariesFound}</InvisibleHeader>
           )}
           <div
             style={{
@@ -151,9 +161,6 @@ export default function NarrativeItinerariesHeader({
               marginLeft: showHeaderText ? 'inherit' : 'auto'
             }}
           >
-            <h1 style={{ height: 0, visibility: 'hidden', width: 0 }}>
-              {itinerariesFound}
-            </h1>
             {popupTarget && (
               <button onClick={() => setPopupContent(popupTarget)}>
                 <FormattedMessage id={`config.popups.${popupTarget}`} />

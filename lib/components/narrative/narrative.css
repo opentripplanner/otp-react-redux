@@ -46,10 +46,10 @@
 /* TRIP TOOLS ROW */
 
 .otp .trip-tools-container {
+  background-color: #eee;
+  border-radius: 6px;
   margin: 15px 5px;
   padding: 10px 16px;
-  border-radius: 6px;
-  background-color: #eee;
 
 }
 
