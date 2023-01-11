@@ -88,7 +88,7 @@ export default function NarrativeItinerariesHeader({
               <FormattedMessage id="components.NarrativeItinerariesHeader.viewAll" />
             </IconWithText>
           </button>
-          <h1 style={{ display: 'none' }}>
+          <h1 style={{ height: 0, visibility: 'hidden', width: 0 }}>
             <ItineraryDescription itinerary={itinerary} />
           </h1>
           {itineraryIsExpanded && (
@@ -151,7 +151,9 @@ export default function NarrativeItinerariesHeader({
               marginLeft: showHeaderText ? 'inherit' : 'auto'
             }}
           >
-            <h1 style={{ display: 'none' }}>{itinerariesFound}</h1>
+            <h1 style={{ height: 0, visibility: 'hidden', width: 0 }}>
+              {itinerariesFound}
+            </h1>
             {popupTarget && (
               <button onClick={() => setPopupContent(popupTarget)}>
                 <FormattedMessage id={`config.popups.${popupTarget}`} />
