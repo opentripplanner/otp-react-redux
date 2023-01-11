@@ -72,11 +72,6 @@ input[type="text"]::-ms-clear {
   margin: 52px auto 0 0;
 }
 
-.slide-pane__header,
-.slide-pane__close {
-  display: none;
-}
-
 .slide-pane__content {
   padding: 6px 0;
 }
@@ -87,29 +82,35 @@ input[type="text"]::-ms-clear {
 
 .app-menu {
   margin: 0;
-  padding: 0;
+  padding: 0.5rem 0;
 }
 
-.app-menu li {
-  list-style-type: none;
-  margin: 1rem 2rem;
-  cursor: pointer;
-}
-
-.app-menu li img,
-.app-menu li svg {
+.app-menu img,
+.app-menu svg {
   max-height: 1em;
   margin-right: 2rem;
   vertical-align: middle;
   width: 1em;
 }
 
-.app-menu li a {
+.app-menu a,
+.app-menu button {
+  background: none;
+  border: none;
   color: inherit;
+  cursor: pointer;
+  display: flex;
   font-size: 20px;
+  padding: 0.5rem 2rem;
   text-decoration: none;
-  outline: none;
+  width: 100%;
 }
+
+.app-menu a:hover,
+.app-menu button:hover {
+  color: #4c97f5;
+}
+
 
 .view-switcher {
   display: none;
@@ -119,11 +120,6 @@ input[type="text"]::-ms-clear {
   .view-switcher {
     display: flex;
   }
-}
-
-.menu-item:hover *,
-.app-menu li a span *:hover {
-  color: #4c97f5;
 }
 
 .expand-menu-chevron {
@@ -137,34 +133,22 @@ input[type="text"]::-ms-clear {
   white-space: nowrap;
 }
 
-.expand-submenu-button a {
-  display: flex;
-  width: 100%;
+.expand-submenu-button {
   justify-content: space-between;
-  background: transparent;
-  border: none;
-  outline: none;
 }
 
 .sub-menu-container {
   border-top: 1px solid #cccccc;
+  margin-top: 0.5rem;
 }
 
-.sub-menu-container li a {
+.sub-menu-container > * {
   margin-left: 2rem;
 }
 
-.sub-menu-container li a span {
-  color: inherit;
-}
-
-.app-menu-divider::after {
-  content: "";
-  display: block;
-  height: 1px;
-  background: #ccc;
-  margin: 1rem;
-  width: 200%; /* ensures the line extends to the edge of the pane */
+.app-menu .app-menu-divider {
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 2rem;
 }
 
 /* Buttons */

@@ -7,11 +7,10 @@ import { ExternalLinkSquareAlt } from '@styled-icons/fa-solid/ExternalLinkSquare
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
 import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
-import { MenuItem } from 'react-bootstrap'
 import { Undo } from '@styled-icons/fa-solid/Undo'
 import { withRouter } from 'react-router'
 import AnimateHeight from 'react-animate-height'
-import React, { Component, Fragment, useContext } from 'react'
+import React, { Component, Fragment, HTMLAttributes, useContext } from 'react'
 import SlidingPane from 'react-sliding-pane'
 import type { RouteComponentProps } from 'react-router'
 import type { WrappedComponentProps } from 'react-intl'
@@ -51,6 +50,14 @@ type menuItem = {
   id: string
   label: string
   subMenuDivider: boolean
+}
+interface MenuItemProps extends HTMLAttributes<HTMLElement> {
+  href?: string
+}
+
+const MenuItem = (props: MenuItemProps) => {
+  const Comp = props.href ? 'a' : 'button'
+  return <Comp {...props} />
 }
 
 /**
@@ -122,8 +129,9 @@ class AppMenu extends Component<
           return (
             <Fragment key={id}>
               <MenuItem
-                className="expansion-button-container menu-item expand-submenu-button"
-                onSelect={() => this._toggleSubmenu(id)}
+                className="expand-submenu-button"
+                // TODO: add aria-expanded etc.
+                onClick={() => this._toggleSubmenu(id)}
               >
                 <IconAndLabel
                   iconType={iconType}
@@ -148,9 +156,7 @@ class AppMenu extends Component<
 
         return (
           <MenuItem
-            className={
-              subMenuDivider ? 'app-menu-divider menu-item' : 'menu-item'
-            }
+            className={subMenuDivider ? 'app-menu-divider' : ''}
             href={href}
             key={id}
           >
@@ -214,14 +220,14 @@ class AppMenu extends Component<
               </StyledIconWrapper>
               <FormattedMessage id="components.RouteViewer.shortTitle" />
             </MenuItem>
-            <MenuItem className="menu-item" onClick={this._startOver}>
+            <MenuItem onClick={this._startOver}>
               <StyledIconWrapper>
                 <Undo />
               </StyledIconWrapper>
               <FormattedMessage id="common.forms.startOver" />
             </MenuItem>
             {popupTarget && (
-              <MenuItem className="menu-item" onClick={this._triggerPopup}>
+              <MenuItem onClick={this._triggerPopup}>
                 <StyledIconWrapper>
                   <SvgIcon iconName={popupTarget} />
                 </StyledIconWrapper>
@@ -229,10 +235,7 @@ class AppMenu extends Component<
               </MenuItem>
             )}
             {callTakerEnabled && (
-              <MenuItem
-                className="menu-item"
-                onClick={resetAndToggleCallHistory}
-              >
+              <MenuItem onClick={resetAndToggleCallHistory}>
                 <StyledIconWrapper>
                   <History />
                 </StyledIconWrapper>
@@ -240,10 +243,7 @@ class AppMenu extends Component<
               </MenuItem>
             )}
             {fieldTripEnabled && (
-              <MenuItem
-                className="menu-item"
-                onClick={resetAndToggleFieldTrips}
-              >
+              <MenuItem onClick={resetAndToggleFieldTrips}>
                 <StyledIconWrapper>
                   <GraduationCap />
                 </StyledIconWrapper>
@@ -251,7 +251,7 @@ class AppMenu extends Component<
               </MenuItem>
             )}
             {mailablesEnabled && (
-              <MenuItem className="menu-item" onClick={toggleMailables}>
+              <MenuItem onClick={toggleMailables}>
                 <StyledIconWrapper>
                   <Envelope />
                 </StyledIconWrapper>
