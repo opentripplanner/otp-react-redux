@@ -38,22 +38,23 @@ export default class AppMenuItem extends Component<Props, State> {
   }
 
   _handleKeyDown = ({ key, target }: KeyboardEvent): void => {
+    const { subItems } = this.props
     switch (key) {
       case 'ArrowLeft':
-        this.setState({ isExpanded: false })
+        subItems && this.setState({ isExpanded: false })
         break
       case 'ArrowUp':
         getEntryRelative(target, -1)?.focus()
         break
       case 'ArrowRight':
-        this.setState({ isExpanded: true })
+        subItems && this.setState({ isExpanded: true })
         break
       case 'ArrowDown':
         getEntryRelative(target, 1)?.focus()
         break
       case ' ':
         // For links (tagName "A" uppercase), trigger link on space for consistency with buttons.
-        if (target.tagName === 'A') target.click()
+        target.tagName === 'A' && target.click()
         break
       default:
     }
