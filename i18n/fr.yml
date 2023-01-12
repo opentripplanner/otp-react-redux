@@ -135,7 +135,6 @@ components:
     closeMenu: Fermer le menu
     fieldTrip: Groupes scolaires
     mailables: Prêt-à-poster
-    menuItemIconAlt: "Icône pour le menu {label}"
     openMenu: "Ouvrir le menu"
   BackToTripPlanner:
     backToTripPlanner: Retour au planificateur de trajets

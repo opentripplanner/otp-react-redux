@@ -168,7 +168,6 @@ class AppMenu extends Component<
           onClick={this._togglePane}
           onKeyDown={this._handleMenuButtonKeyDown}
           ref={this.appMenuButtonRef}
-          title={buttonLabel}
         >
           <span />
           <span />
@@ -181,7 +180,6 @@ class AppMenu extends Component<
           onAfterOpen={this._handleAfterOpen}
           onRequestClose={this._togglePane}
           shouldCloseOnEsc
-          title="App menu" // TODO: i18n
           width="320px"
         >
           <div
