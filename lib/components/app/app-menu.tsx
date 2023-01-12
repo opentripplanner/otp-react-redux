@@ -58,7 +58,6 @@ class AppMenu extends Component<
 > {
   static contextType = ComponentContext
 
-  appMenuButtonRef = React.createRef()
   appMenuContainerRef = React.createRef()
 
   state = {
@@ -85,11 +84,6 @@ class AppMenu extends Component<
   _togglePane = () => {
     const { isPaneOpen } = this.state
     this.setState({ isPaneOpen: !isPaneOpen })
-  }
-
-  _handleAfterOpen = () => {
-    // a11y: Return the keyboard focus to the app menu button after the side menu appears.
-    this.appMenuButtonRef.current.focus()
   }
 
   _handleMenuButtonKeyDown = (e: KeyboardEvent) => {
@@ -171,7 +165,6 @@ class AppMenu extends Component<
           className={`app-menu-icon ${isPaneOpen ? 'open' : ''}`}
           onClick={this._togglePane}
           onKeyDown={this._handleMenuButtonKeyDown}
-          ref={this.appMenuButtonRef}
         >
           <span />
           <span />
@@ -189,7 +182,6 @@ class AppMenu extends Component<
           from="left"
           hideHeader
           isOpen={isPaneOpen}
-          onAfterOpen={this._handleAfterOpen}
           onRequestClose={this._togglePane}
           shouldCloseOnEsc
           width="320px"
