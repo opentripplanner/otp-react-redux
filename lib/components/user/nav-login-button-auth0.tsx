@@ -14,7 +14,7 @@ interface NavLoginButtonAuth0Props {
   className?: string
   id: string
   links: Array<AccountLink>
-  style?: string
+  style?: { [key: string]: any }
 }
 
 /**

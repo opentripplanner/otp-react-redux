@@ -428,6 +428,7 @@ components:
     myAccount: My account
     settings: Settings
     trips: Trips
+    userMenu: Profile options
   SwitchButton:
     defaultContent: Switch
     switchLocations: Switch locations

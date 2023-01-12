@@ -36,6 +36,9 @@ input[type="text"]::-ms-clear {
 }
 
 @media only screen and (max-width: 768px) {
+  #locale-selector-wrapper {
+    display: none;
+  }
   .app-menu-icon {
     margin-left: 15px;
   }
