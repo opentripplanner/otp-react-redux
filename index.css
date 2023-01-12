@@ -118,6 +118,11 @@ input[type="text"]::-ms-clear {
   outline-offset: -2px;
 }
 
+.skip-nav-button {
+  position: fixed;
+  top: -30px;
+}
+
 .view-switcher {
   display: none;
 }

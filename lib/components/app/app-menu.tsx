@@ -104,6 +104,10 @@ class AppMenu extends Component<
     }
   }
 
+  _handleSkipNavigation = () => {
+    document.querySelector('main')?.focus()
+  }
+
   _addExtraMenuItems = (menuItems?: menuItem[]) => {
     return (
       menuItems &&
@@ -172,6 +176,14 @@ class AppMenu extends Component<
           <span />
           <span />
           <span />
+        </button>
+        {/* Use a button for skipping navigation. A regular <a> element would modify the URL,
+            and such change would be captured by the router without changing the focused element. */}
+        <button
+          className="skip-nav-button"
+          onClick={this._handleSkipNavigation}
+        >
+          <FormattedMessage id="components.AppMenu.skipNavigation" />
         </button>
         <SlidingPane
           from="left"

@@ -131,6 +131,7 @@ components:
     fieldTrip: Field Trip
     mailables: Mailables
     openMenu: Open Menu
+    skipNavigation: Skip navigation
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
   BatchResultsScreen:
