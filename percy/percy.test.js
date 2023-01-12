@@ -352,7 +352,7 @@ test('OTP-RR', async () => {
 
   // Open stop viewer from trip viewer
   await page.click(
-    'div.trip-viewer-body > div:nth-child(3) > div.stop-button-container > button'
+    'div.trip-viewer-body > ol > li:nth-child(3) > div.stop-button-container > button'
   )
   await page.waitForSelector('.stop-viewer')
 
