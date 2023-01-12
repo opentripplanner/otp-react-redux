@@ -17,4 +17,13 @@ const Loading = ({ small }: Props): JSX.Element => {
   )
 }
 
+const InlineLoading = (): JSX.Element => {
+  return (
+    <StyledIconWrapper spin>
+      <Redo />
+    </StyledIconWrapper>
+  )
+}
+
 export default Loading
+export { InlineLoading }
