@@ -90,6 +90,7 @@ const mapStateToProps = (state: any) => {
   activePanel = (activePanel && activePanel[1]) || null
 
   return {
+    // TODO: more reliable way of detecting these things, such as terms of storage page
     accountsActive: state.router.location.pathname.includes('/account'),
     activePanel
   }
