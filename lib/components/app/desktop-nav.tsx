@@ -69,6 +69,7 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
           {brandingOrTitle}
         </Navbar.Brand>
       </Navbar.Header>
+      {/* @ts-expect-error something is deeply wrong with the types on this component */}
       <ViewSwitcher sticky />
 
       <Navbar.Collapse>
