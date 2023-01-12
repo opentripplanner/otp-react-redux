@@ -126,10 +126,10 @@ class AppMenu extends Component<
 
         return (
           <AppMenuItem
-            className={subMenuDivider ? 'app-menu-divider' : ''}
-            // TODO: add aria-expanded etc.
+            className={subMenuDivider ? 'app-menu-divider' : null}
             href={href}
             icon={<Icon iconType={iconType} iconUrl={iconUrl} />}
+            id={id}
             key={id}
             subItems={this._addExtraMenuItems(children)}
             text={label}
@@ -161,8 +161,9 @@ class AppMenu extends Component<
     return (
       <>
         <button
+          aria-controls="app-menu"
+          aria-expanded={isPaneOpen}
           aria-label={buttonLabel}
-          // TODO: add aria-expanded?
           className={`app-menu-icon ${isPaneOpen ? 'open' : ''}`}
           onClick={this._togglePane}
           onKeyDown={this._handleMenuButtonKeyDown}
@@ -183,7 +184,11 @@ class AppMenu extends Component<
           title="App menu" // TODO: i18n
           width="320px"
         >
-          <div className="app-menu" ref={this.appMenuContainerRef}>
+          <div
+            className="app-menu"
+            id="app-menu"
+            ref={this.appMenuContainerRef}
+          >
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
             <AppMenuItem

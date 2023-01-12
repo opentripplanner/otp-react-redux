@@ -64,13 +64,15 @@ export default class AppMenuItem extends Component<Props, State> {
   }
 
   render(): JSX.Element {
-    const { icon, onClick, subItems, text, ...otherProps } = this.props
+    const { icon, id, onClick, subItems, text, ...otherProps } = this.props
     const { isExpanded } = this.state
     const Element = otherProps.href ? 'a' : 'button'
+    const containerId = `${id}-container`
     return (
       <>
         <Element
-          // TODO: add aria-expanded, controls etc.
+          aria-controls={subItems && containerId}
+          aria-expanded={subItems && isExpanded}
           onClick={subItems ? this._toggleSubmenu : onClick}
           onKeyDown={this._handleKeyDown}
           {...otherProps}
@@ -85,8 +87,9 @@ export default class AppMenuItem extends Component<Props, State> {
         </Element>
         {subItems && (
           <AnimateHeight duration={500} height={isExpanded ? 'auto' : 0}>
-            {/* TODO Add group role */}
-            <div className="sub-menu-container">{subItems}</div>
+            <div className="sub-menu-container" id={containerId}>
+              {subItems}
+            </div>
           </AnimateHeight>
         )}
       </>
