@@ -9,10 +9,11 @@ interface Props extends HTMLAttributes<HTMLElement> {
   isDropdown?: boolean
   onClick?: () => void
   subItems?: unknown[]
+  text: JSX.Element | string
 }
 
 interface State {
-  isExpanded
+  isExpanded: boolean
 }
 
 /**
@@ -21,12 +22,12 @@ interface State {
  * The query is limited to the app menu so that arrow navigation is contained within
  * (tab navigation is not restricted).
  */
-function getEntryRelative(element, offset) {
+function getEntryRelativeTo(element: EventTarget, offset: 1 | -1): HTMLElement {
   const entries = Array.from(
     document.querySelectorAll('.app-menu a, .app-menu button')
   )
-  const elementIndex = entries.indexOf(element)
-  return entries[elementIndex + offset]
+  const elementIndex = entries.indexOf(element as HTMLElement)
+  return entries[elementIndex + offset] as HTMLElement
 }
 
 /**
@@ -37,24 +38,25 @@ export default class AppMenuItem extends Component<Props, State> {
     isExpanded: false
   }
 
-  _handleKeyDown = ({ key, target }: KeyboardEvent): void => {
+  _handleKeyDown = (e: KeyboardEvent): void => {
     const { subItems } = this.props
-    switch (key) {
+    const element = e.target as HTMLElement
+    switch (e.key) {
       case 'ArrowLeft':
         subItems && this.setState({ isExpanded: false })
         break
       case 'ArrowUp':
-        getEntryRelative(target, -1)?.focus()
+        getEntryRelativeTo(element, -1)?.focus()
         break
       case 'ArrowRight':
         subItems && this.setState({ isExpanded: true })
         break
       case 'ArrowDown':
-        getEntryRelative(target, 1)?.focus()
+        getEntryRelativeTo(element, 1)?.focus()
         break
       case ' ':
         // For links (tagName "A" uppercase), trigger link on space for consistency with buttons.
-        target.tagName === 'A' && target.click()
+        element.tagName === 'A' && element.click()
         break
       default:
     }

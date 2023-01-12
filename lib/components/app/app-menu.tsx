@@ -58,8 +58,6 @@ class AppMenu extends Component<
 > {
   static contextType = ComponentContext
 
-  appMenuContainerRef = React.createRef()
-
   state = {
     isPaneOpen: false
   }
@@ -84,18 +82,6 @@ class AppMenu extends Component<
   _togglePane = () => {
     const { isPaneOpen } = this.state
     this.setState({ isPaneOpen: !isPaneOpen })
-  }
-
-  _handleMenuButtonKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'ArrowDown') {
-      if (this.state.isPaneOpen) {
-        this.appMenuContainerRef.current
-          .querySelector('a, button')
-          ?.focus({ focusVisible: true })
-      } else {
-        this._togglePane()
-      }
-    }
   }
 
   _handleSkipNavigation = () => {
@@ -124,7 +110,7 @@ class AppMenu extends Component<
 
         return (
           <AppMenuItem
-            className={subMenuDivider ? 'app-menu-divider' : null}
+            className={subMenuDivider ? 'app-menu-divider' : undefined}
             href={href}
             icon={<Icon iconType={iconType} iconUrl={iconUrl} />}
             id={id}
@@ -164,7 +150,6 @@ class AppMenu extends Component<
           aria-label={buttonLabel}
           className={`app-menu-icon ${isPaneOpen ? 'open' : ''}`}
           onClick={this._togglePane}
-          onKeyDown={this._handleMenuButtonKeyDown}
         >
           <span />
           <span />
@@ -186,11 +171,7 @@ class AppMenu extends Component<
           shouldCloseOnEsc
           width="320px"
         >
-          <div
-            className="app-menu"
-            id="app-menu"
-            ref={this.appMenuContainerRef}
-          >
+          <div className="app-menu" id="app-menu">
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
             <AppMenuItem
