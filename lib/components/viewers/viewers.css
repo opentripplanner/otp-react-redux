@@ -63,6 +63,7 @@
 .otp .trip-viewer-body {
   overflow-x: hidden;
   overflow-y: auto;
+  padding-left: 0;
 }
 .otp .stop-viewer-body,
 .otp .trip-viewer-body {
@@ -81,6 +82,7 @@
 .otp .route-viewer .header-text {
   font-weight: 700;
   font-size: 24px;
+  margin: 0;
 }
 .otp .route-viewer .header-text.route-expanded {
   display: flex;

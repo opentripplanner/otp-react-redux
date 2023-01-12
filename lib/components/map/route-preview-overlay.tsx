@@ -36,7 +36,7 @@ const RoutePreviewOverlay = ({ geometries, visible }: Props) => {
       type: 'FeatureCollection'
     }
     return (
-      <Source data={geojson} id="route" type="geojson">
+      <Source data={geojson} id="route-preview-source" type="geojson">
         <Layer
           id="route-preview"
           layout={{

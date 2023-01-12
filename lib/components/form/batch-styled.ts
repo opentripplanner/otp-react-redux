@@ -53,15 +53,15 @@ export const PlanTripButton = styled(Button)`
   background-color: green;
   color: #ffffffdd;
   margin-left: auto;
-  padding: 5px;
   &:active {
     ${activeCss}
     filter: saturate(50%);
     background: green;
   }
 
-  span.fa {
-    margin-left: -2.5px; /* without HiDPI things still look fine, just a little off center */
+  span {
+    display: inline-block;
+    margin-top: -5px;
   }
 `
 
