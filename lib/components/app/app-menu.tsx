@@ -58,6 +58,9 @@ class AppMenu extends Component<
 > {
   static contextType = ComponentContext
 
+  appMenuButtonRef = React.createRef()
+  appMenuContainerRef = React.createRef()
+
   state = {
     isPaneOpen: false
   }
@@ -82,6 +85,23 @@ class AppMenu extends Component<
   _togglePane = () => {
     const { isPaneOpen } = this.state
     this.setState({ isPaneOpen: !isPaneOpen })
+  }
+
+  _handleAfterOpen = () => {
+    // a11y: Return the keyboard focus to the app menu button after the side menu appears.
+    this.appMenuButtonRef.current.focus()
+  }
+
+  _handleMenuButtonKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'ArrowDown') {
+      if (this.state.isPaneOpen) {
+        this.appMenuContainerRef.current
+          .querySelector('a, button')
+          ?.focus({ focusVisible: true })
+      } else {
+        this._togglePane()
+      }
+    }
   }
 
   _addExtraMenuItems = (menuItems?: menuItem[]) => {
@@ -145,6 +165,8 @@ class AppMenu extends Component<
           // TODO: add aria-expanded?
           className={`app-menu-icon ${isPaneOpen ? 'open' : ''}`}
           onClick={this._togglePane}
+          onKeyDown={this._handleMenuButtonKeyDown}
+          ref={this.appMenuButtonRef}
           title={buttonLabel}
         >
           <span />
@@ -155,12 +177,13 @@ class AppMenu extends Component<
           from="left"
           hideHeader
           isOpen={isPaneOpen}
+          onAfterOpen={this._handleAfterOpen}
           onRequestClose={this._togglePane}
           shouldCloseOnEsc
           title="App menu" // TODO: i18n
           width="320px"
         >
-          <div className="app-menu">
+          <div className="app-menu" ref={this.appMenuContainerRef}>
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
             <AppMenuItem

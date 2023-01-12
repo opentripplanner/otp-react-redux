@@ -111,6 +111,12 @@ input[type="text"]::-ms-clear {
   color: #4c97f5;
 }
 
+.app-menu a:focus,
+.app-menu button:focus {
+  background-color: #ddd;
+  outline: 2px solid #4c97f5;
+  outline-offset: -2px;
+}
 
 .view-switcher {
   display: none;
