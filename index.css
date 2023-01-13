@@ -44,7 +44,7 @@ input[type="text"]::-ms-clear {
   }
 }
 
-.app-menu-icon > span {
+.app-menu-icon .menu-line {
   border-bottom: 3px solid #ffffff;
   display: block;
   position: relative;
@@ -52,15 +52,15 @@ input[type="text"]::-ms-clear {
   width: 100%;
 }
 
-.app-menu-icon.open span:first-child {
+.app-menu-icon[aria-expanded="true"] .menu-line.top {
   transform: rotate(45deg);
   top: 7px;
 }
-.app-menu-icon.open span:last-child {
+.app-menu-icon[aria-expanded="true"] .menu-line.bottom {
   transform: rotate(-45deg);
   bottom: 5px;
 }
-.app-menu-icon.open span:nth-child(2) {
+.app-menu-icon[aria-expanded="true"] .menu-line.middle {
   display: none;
 }
 

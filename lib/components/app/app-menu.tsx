@@ -141,6 +141,7 @@ class AppMenu extends Component<
     const buttonLabel = isPaneOpen
       ? intl.formatMessage({ id: 'components.AppMenu.closeMenu' })
       : intl.formatMessage({ id: 'components.AppMenu.openMenu' })
+    const Bar = 'span'
 
     return (
       <>
@@ -148,14 +149,14 @@ class AppMenu extends Component<
           aria-controls="app-menu"
           aria-expanded={isPaneOpen}
           aria-label={buttonLabel}
-          className={`app-menu-icon ${isPaneOpen ? 'open' : ''}`}
+          className="app-menu-icon"
           onClick={this._togglePane}
         >
-          <span />
-          <span />
-          <span />
+          <Bar className="menu-line top" />
+          <Bar className="menu-line middle" />
+          <Bar className="menu-line bottom" />
         </button>
-        {/* Use a button for skipping navigation. A regular <a> element would modify the URL,
+        {/* Use a button for skipping navigation. A regular <a href=...> element would modify the URL,
             and such change would be captured by the router without changing the focused element. */}
         <button
           className="skip-nav-button"
