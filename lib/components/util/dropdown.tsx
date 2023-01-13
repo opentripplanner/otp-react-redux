@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 interface Props extends HTMLAttributes<HTMLElement> {
   children: React.ReactNode
+  label?: string
   name: JSX.Element
   pullRight?: boolean
 }
@@ -66,11 +67,11 @@ const DropdownContainer = styled.li``
 const Dropdown = ({
   children,
   id,
+  label,
   name,
   pullRight,
   style
 }: Props): JSX.Element => {
-  const intl = useIntl()
   const [open, setOpen] = useState(false)
   const containerRef = useRef(null)
   useEffect(() => {
@@ -101,11 +102,10 @@ const Dropdown = ({
         aria-controls={id}
         aria-expanded={open}
         aria-haspopup="listbox"
-        aria-label={intl.formatMessage({ id: 'components.SubNav.userMenu' })}
+        aria-label={label}
         className={`${open && 'active'}`}
         id={`${id}-label`}
         onClick={() => setOpen(!open)}
-        role="combobox"
         style={style}
         tabIndex={0}
       >

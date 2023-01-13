@@ -46,6 +46,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
   return (
     <Dropdown
       id="locale-selector"
+      label={intl.formatMessage({ id: 'components.SubNav.localeSelector' })}
       // TODO: Make this a button for reasons outlined here: https://github.com/opentripplanner/otp-react-redux/pull/751#discussion_r1069764631
       name={
         <span
