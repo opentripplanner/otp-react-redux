@@ -32,11 +32,11 @@
 }
 
 /* Don't show route viewer link in the app menu on desktop as it is in the navbar */
-.app-menu-route-viewer-link {
+.app-menu .app-menu-route-viewer-link {
   display: none;
 }
 @media (max-width: 800px) {
-  .app-menu-route-viewer-link {
+  .app-menu .app-menu-route-viewer-link {
     display: block;
   }
 }
