@@ -52,6 +52,16 @@ const ItineraryWrapper = styled.div.attrs((props) => {
   padding: 0;
 `
 
+// invisible header rendered for screen readers and a11y technologies
+const InvisibleHeader = styled.h3`
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  //place it in an unused grid cell so it doesn't add a row
+  grid-row: 2;
+  grid-column: 2;
+`
+
 const DepartureTimes = styled.span`
   color: #0909098f;
   font-size: 14px;
@@ -75,14 +85,24 @@ const DepartureTimes = styled.span`
   }
 `
 
-const PrimaryInfo = styled.span`
+const ItineraryDetails = styled.ul`
+  display: flex;
+  flex-direction: column;
+  grid-column-start: -1;
+  justify-self: right;
+  list-style: none;
+  overflow: hidden;
+  padding: 0;
+  width: 90%;
+`
+const PrimaryInfo = styled.li`
   color: #000000cc;
   font-size: 22px;
   font-weight: 600;
   text-align: right;
 `
 
-const SecondaryInfo = styled.span`
+const SecondaryInfo = styled.li`
   color: #090909cc;
   font-size: 12px;
   opacity: 0.7;
@@ -99,9 +119,12 @@ const ItineraryNote = styled.div`
 `
 
 const Routes = styled.section<{ enableDot?: boolean }>`
+  align-items: start;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  grid-column-start: 1;
+  margin-top: 10px;
 
   ${(props) =>
     !props?.enableDot &&
@@ -123,32 +146,26 @@ const Routes = styled.section<{ enableDot?: boolean }>`
 
 const ItineraryGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: minmax(8px, fit-content);
+  gap: 7px;
+  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   padding: 10px 1em;
 
-  ${DepartureTimes} {
-    grid-column: 1 / 8;
-  }
+  ${ItineraryDetails} {
+    ${SecondaryInfo} {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
-  ${Routes} {
-    grid-column: 1 / 8;
-    grid-row: 1 / 8;
-  }
-
-  ${PrimaryInfo} {
-    grid-column: 8 / 11;
-    grid-row: 1 / span 3;
-  }
-
-  ${Spacer} {
-    grid-column: 8 / 11;
-    grid-row: span 1;
+      &.flex {
+        color: orangered;
+        white-space: normal;
+        text-overflow: inherit;
+        grid-row: span 4;
+      }
+    }
   }
 
   ${SecondaryInfo} {
-    grid-column: 8 / 11;
-    grid-row: span 2;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -157,7 +174,6 @@ const ItineraryGrid = styled.div`
       color: orangered;
       white-space: normal;
       text-overflow: inherit;
-      grid-row: span 4;
     }
   }
 
@@ -316,6 +332,20 @@ class MetroItinerary extends NarrativeItinerary {
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
 
+    const renderAccessibilityHeader = (legs: Leg[]) => {
+      const routeLegs = legs.filter(removeInsignifigantWalkLegs)
+      const routeHeader = routeLegs.map((leg: Leg, index: number) => {
+        const legHeader = `${leg.routeShortName ? leg.routeShortName : ''} ${
+          leg.mode
+        }`
+        if (index === routeLegs.length) {
+          return legHeader
+        }
+        return ` ${legHeader}`
+      })
+      return routeHeader.toString()
+    }
+
     const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
       const routeBlocks = legs
         .filter(removeInsignifigantWalkLegs)
@@ -400,54 +430,65 @@ class MetroItinerary extends NarrativeItinerary {
             {!mini && (
               <ItineraryGrid className="itin-grid">
                 {/* TODO: a11y: add aria-label to parent element */}
+                <InvisibleHeader as={expanded && 'h2'}>
+                  {renderAccessibilityHeader(itinerary.legs)}
+                </InvisibleHeader>
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
                 </Routes>
-                <PrimaryInfo>
-                  <FormattedDuration duration={itinerary.duration} />
-                </PrimaryInfo>
-                <Spacer />
-                <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
-                  {isFlexItinerary ? (
-                    <FlexIndicator
-                      isCallAhead={isCallAhead}
-                      isContinuousDropoff={isContinuousDropoff}
-                      phoneNumber={phone}
-                      shrink={false}
-                      textOnly
-                    />
-                  ) : (
-                    firstTransitStop && (
-                      <FormattedMessage
-                        id="components.MetroUI.fromStop"
-                        values={{ stop: firstTransitStop }}
+                <ItineraryDetails
+                  aria-label={intl.formatMessage({
+                    id: 'components.RouteDetails.moreDetails'
+                  })}
+                >
+                  <PrimaryInfo>
+                    <FormattedDuration duration={itinerary.duration} />
+                  </PrimaryInfo>
+                  <Spacer />
+                  <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
+                    {isFlexItinerary ? (
+                      <FlexIndicator
+                        isCallAhead={isCallAhead}
+                        isContinuousDropoff={isContinuousDropoff}
+                        phoneNumber={phone}
+                        shrink={false}
+                        textOnly
                       />
-                    )
-                  )}
-                </SecondaryInfo>
-                <SecondaryInfo>
-                  {transitFare === null || transitFare < 0 ? (
-                    <FormattedMessage id="common.itineraryDescriptions.noTransitFareProvided" />
-                  ) : (
-                    // TODO: re-implement TNC fares for metro UI?
-                    <FormattedNumber
-                      currency={fareCurrency}
-                      currencyDisplay="narrowSymbol"
-                      // This isn't a "real" style prop
-                      // eslint-disable-next-line react/style-prop-object
-                      style="currency"
-                      value={transitFare / 100}
+                    ) : (
+                      firstTransitStop && (
+                        <FormattedMessage
+                          id="components.MetroUI.fromStop"
+                          values={{ stop: firstTransitStop }}
+                        />
+                      )
+                    )}
+                  </SecondaryInfo>
+                  <SecondaryInfo>
+                    {transitFare === null || transitFare < 0 ? (
+                      <FormattedMessage id="common.itineraryDescriptions.noTransitFareProvided" />
+                    ) : (
+                      // TODO: re-implement TNC fares for metro UI?
+                      <FormattedNumber
+                        currency={fareCurrency}
+                        currencyDisplay="narrowSymbol"
+                        // This isn't a "real" style prop
+                        // eslint-disable-next-line react/style-prop-object
+                        style="currency"
+                        value={transitFare / 100}
+                      />
+                    )}
+                  </SecondaryInfo>
+                  <SecondaryInfo>
+                    <FormattedMessage
+                      id="components.MetroUI.timeWalking"
+                      values={{
+                        time: (
+                          <FormattedDuration duration={itinerary.walkTime} />
+                        )
+                      }}
                     />
-                  )}
-                </SecondaryInfo>
-                <SecondaryInfo>
-                  <FormattedMessage
-                    id="components.MetroUI.timeWalking"
-                    values={{
-                      time: <FormattedDuration duration={itinerary.walkTime} />
-                    }}
-                  />
-                </SecondaryInfo>
+                  </SecondaryInfo>
+                </ItineraryDetails>
                 <DepartureTimes>
                   <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
                   <DepartureTimesList
