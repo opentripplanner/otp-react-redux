@@ -4,6 +4,7 @@ import styled from 'styled-components'
 interface Props extends HTMLAttributes<HTMLElement> {
   children: React.ReactNode
   label?: string
+  listLabel?: string
   name: JSX.Element
   pullRight?: boolean
 }
@@ -67,6 +68,7 @@ const Dropdown = ({
   children,
   id,
   label,
+  listLabel,
   name,
   pullRight,
   style
@@ -115,7 +117,8 @@ const Dropdown = ({
       </DropdownButton>
       {open && (
         <DropdownMenu
-          aria-labelledby={`${id}-label`}
+          aria-label={listLabel}
+          aria-labelledby={listLabel ? '' : `${id}-label`}
           id={id}
           role="list"
           tabIndex={-1}

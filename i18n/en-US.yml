@@ -426,7 +426,8 @@ components:
 
   SubNav:
     myAccount: My account
-    localeSelector: Locale Selector
+    languages: "Languages"
+    selectALanguage: Select a language
     settings: Settings
     trips: Trips
     userMenu: Profile options
