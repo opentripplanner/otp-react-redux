@@ -1,4 +1,3 @@
-import { useIntl } from 'react-intl'
 import React, { HTMLAttributes, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 
@@ -95,7 +94,7 @@ const Dropdown = ({
     <DropdownContainer
       id={`${id}-wrapper`}
       ref={containerRef}
-      role="presentation"
+      role="group"
       style={{ float: pullRight ? 'right' : 'left' }}
     >
       <DropdownButton
@@ -106,6 +105,8 @@ const Dropdown = ({
         className={`${open && 'active'}`}
         id={`${id}-label`}
         onClick={() => setOpen(!open)}
+        onKeyPress={() => setOpen(!open)}
+        role="button"
         style={style}
         tabIndex={0}
       >
@@ -116,7 +117,7 @@ const Dropdown = ({
         <DropdownMenu
           aria-labelledby={`${id}-label`}
           id={id}
-          role="listbox"
+          role="list"
           tabIndex={-1}
         >
           {children}

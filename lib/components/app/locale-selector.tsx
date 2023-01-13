@@ -2,11 +2,18 @@ import { connect, ConnectedProps } from 'react-redux'
 import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
 import { useIntl } from 'react-intl'
 import React, { MouseEvent } from 'react'
+import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
-import { StyledIconWrapper } from '../util/styledIcon'
 import Dropdown from '../util/dropdown'
+
+const UnstyledButton = styled.button`
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+`
 
 type PropsFromRedux = ConnectedProps<typeof connector>
 
@@ -60,27 +67,25 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
       // TODO: How to make this work without block ruby?
       style={{ display: 'block ruby' }}
     >
-      <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-        {Object.keys(configLanguages)
-          .filter((locale) => locale !== 'allLanguages')
-          .map((locale) => (
-            <li
-              aria-selected={locale === currentLocale}
-              key={locale}
-              onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
-              onKeyPress={(e: any) => handleLocaleSelection(e, locale)}
-              // We are correct, not eslint: https://w3c.github.io/aria-practices/examples/combobox/combobox-select-only.html
-              // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-              role="option"
+      {Object.keys(configLanguages)
+        .filter((locale) => locale !== 'allLanguages')
+        .map((locale) => (
+          <li
+            aria-selected={locale === currentLocale}
+            key={locale}
+            onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
+            onKeyPress={(e: any) => handleLocaleSelection(e, locale)}
+            // We are correct, not eslint: https://w3c.github.io/aria-practices/examples/combobox/combobox-select-only.html
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+            role="option"
+          >
+            <UnstyledButton
+              style={locale === currentLocale ? { fontWeight: 'bold' } : {}}
             >
-              <span
-                style={locale === currentLocale ? { fontWeight: 'bold' } : {}}
-              >
-                {configLanguages[locale].name}
-              </span>
-            </li>
-          ))}
-      </ul>
+              {configLanguages[locale].name}
+            </UnstyledButton>
+          </li>
+        ))}
     </Dropdown>
   )
 }
