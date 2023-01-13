@@ -1,19 +1,17 @@
 import { useIntl } from 'react-intl'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { HTMLAttributes, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 
-type Props = {
-  children: JSX.Element
-  id: string
+interface Props extends HTMLAttributes<HTMLElement> {
+  children: React.ReactNode
+  name: JSX.Element
   pullRight?: boolean
-  style?: { [key: string]: any }
-  title: JSX.Element
 }
 
 const DropdownButton = styled.a`
   border: none;
-  display: block;
   color: inherit;
+  display: block;
   transition: all 0.1s ease-in-out;
 
   &:hover {
@@ -30,8 +28,8 @@ const DropdownMenu = styled.ul`
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  cursor: default;
   color: #111;
+  cursor: default;
   float: left;
   list-style: none;
   margin: 2px 0 0;
@@ -44,12 +42,12 @@ const DropdownMenu = styled.ul`
   z-index: 1000;
 
   hr {
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
   li {
-    padding: 5px 15px;
     cursor: pointer;
+    padding: 5px 15px;
   }
   li.header {
     cursor: default;
@@ -60,12 +58,17 @@ const DropdownMenu = styled.ul`
 `
 const DropdownContainer = styled.li``
 
+/**
+ * Renders a dropdown menu. By default, only a passed "name" is rendered. If clicked,
+ * a floating div is rendered below the "name" with list contents inside. Clicking anywhere
+ * outside the floating div will close the dropdown.
+ */
 const Dropdown = ({
   children,
   id,
+  name,
   pullRight,
-  style,
-  title
+  style
 }: Props): JSX.Element => {
   const intl = useIntl()
   const [open, setOpen] = useState(false)
@@ -106,7 +109,7 @@ const Dropdown = ({
         style={style}
         tabIndex={0}
       >
-        {title}
+        {name}
         <span className="caret" style={{ marginLeft: 5 }} />
       </DropdownButton>
       {open && (

@@ -46,17 +46,18 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
   return (
     <Dropdown
       id="locale-selector"
-      // TODO: How to make this work without block ruby?
-      style={{ display: 'block ruby' }}
-      title={
+      // TODO: Make this a button for reasons outlined here: https://github.com/opentripplanner/otp-react-redux/pull/751#discussion_r1069764631
+      name={
         <span
           style={{
             color: 'rgba(255, 255, 255, 0.85)'
           }}
         >
-          <GlobeAmericas />
+          <GlobeAmericas height="18px" />
         </span>
       }
+      // TODO: How to make this work without block ruby?
+      style={{ display: 'block ruby' }}
     >
       <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
         {Object.keys(configLanguages)

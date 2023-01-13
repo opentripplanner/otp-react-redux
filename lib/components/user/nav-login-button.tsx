@@ -1,7 +1,7 @@
 import { FormattedMessage } from 'react-intl'
 import { NavItem } from 'react-bootstrap'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import { User } from '@auth0/auth0-react'
+import React, { Component, HTMLAttributes } from 'react'
 import styled from 'styled-components'
 
 import { LinkContainerWithQuery } from '../form/connected-links'
@@ -13,11 +13,18 @@ const Avatar = styled.img`
   width: 2em;
 `
 
-const linkType = PropTypes.shape({
-  messageId: PropTypes.string.isRequired,
-  target: PropTypes.string,
-  url: PropTypes.string.isRequired
-})
+type Link = {
+  messageId: string
+  target?: string
+  url: string
+}
+
+interface Props extends HTMLAttributes<HTMLElement> {
+  links: Link[]
+  onSignInClick: () => void
+  onSignOutClick: () => void
+  profile?: User | null
+}
 
 /**
  * This component displays the sign-in status in the nav bar.
@@ -25,28 +32,13 @@ const linkType = PropTypes.shape({
  * - When a user is logged in, display an 'avatar' (retrieved from the profile prop)
  *   and a dropdown button so the user can access more options.
  */
-export default class NavLoginButton extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    id: PropTypes.string.isRequired,
-    links: PropTypes.arrayOf(linkType),
-    onSignInClick: PropTypes.func.isRequired,
-    onSignOutClick: PropTypes.func.isRequired,
-    profile: PropTypes.shape({
-      email: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      nickname: PropTypes.string,
-      picture: PropTypes.string
-    }),
-    style: PropTypes.object
-  }
-
+export default class NavLoginButton extends Component<Props> {
   static defaultProps = {
     links: null,
     profile: null
   }
 
-  render() {
+  render(): JSX.Element {
     const {
       className,
       id,
@@ -69,8 +61,7 @@ export default class NavLoginButton extends Component {
       return (
         <Dropdown
           id="user-selector"
-          pullRight
-          title={
+          name={
             <span>
               <Avatar
                 alt={displayedName}
@@ -79,6 +70,7 @@ export default class NavLoginButton extends Component {
               />
             </span>
           }
+          pullRight
         >
           <li className="header">{displayedName}</li>
 
