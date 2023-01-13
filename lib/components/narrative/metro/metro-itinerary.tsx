@@ -63,6 +63,7 @@ const InvisibleHeader = styled.h3`
 `
 
 const DepartureTimes = styled.span`
+  align-self: center;
   color: #0909098f;
   font-size: 14px;
   overflow: hidden;
@@ -89,8 +90,10 @@ const ItineraryDetails = styled.ul`
   display: flex;
   flex-direction: column;
   grid-column-start: -1;
+  grid-row: 1 / span 2;
   justify-self: right;
   list-style: none;
+  margin: 0;
   overflow: hidden;
   padding: 0;
   width: 90%;
