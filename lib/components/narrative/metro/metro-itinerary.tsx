@@ -109,8 +109,6 @@ const SecondaryInfo = styled.li`
   text-align: right;
 `
 
-const Spacer = styled.span``
-
 const ItineraryNote = styled.div`
   background: mediumseagreen;
   color: white;
@@ -444,7 +442,6 @@ class MetroItinerary extends NarrativeItinerary {
                   <PrimaryInfo>
                     <FormattedDuration duration={itinerary.duration} />
                   </PrimaryInfo>
-                  <Spacer />
                   <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
                     {isFlexItinerary ? (
                       <FlexIndicator
@@ -501,10 +498,10 @@ class MetroItinerary extends NarrativeItinerary {
             )}
             {mini && (
               <ItineraryGridSmall>
-                <PrimaryInfo>
+                <PrimaryInfo as="span">
                   <FormattedDuration duration={itinerary.duration} />
                 </PrimaryInfo>
-                <SecondaryInfo>
+                <SecondaryInfo as="span">
                   <ItineraryDescription itinerary={itinerary} />
                 </SecondaryInfo>
                 {renderRouteBlocks(itinerary.legs, true)}
