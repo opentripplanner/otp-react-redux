@@ -263,14 +263,14 @@ class DefaultMap extends Component {
       ...baseLayer,
       name: getLayerName(baseLayer, config, intl)
     }))
-    const baseLayerUrls = baseLayersWithNames.map((bl) => bl.url)
-    const baseLayerNames = baseLayersWithNames.map((bl) => bl.name)
+    const baseLayerUrls = baseLayersWithNames?.map((bl) => bl.url)
+    const baseLayerNames = baseLayersWithNames?.map((bl) => bl.name)
 
     return (
       <MapContainer>
         <BaseMap
           baseLayer={
-            baseLayerUrls.length > 1 ? baseLayerUrls : baseLayerUrls[0]
+            baseLayerUrls?.length > 1 ? baseLayerUrls : baseLayerUrls?.[0]
           }
           baseLayerNames={baseLayerNames}
           center={[lat, lon]}
