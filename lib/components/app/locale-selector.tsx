@@ -2,18 +2,11 @@ import { connect, ConnectedProps } from 'react-redux'
 import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
 import { useIntl } from 'react-intl'
 import React, { MouseEvent } from 'react'
-import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
+import { UnstyledButton } from '../util/unstyled-button'
 import Dropdown from '../util/dropdown'
-
-const UnstyledButton = styled.button`
-  background: transparent;
-  border: none;
-  margin: 0;
-  padding: 0;
-`
 
 type PropsFromRedux = ConnectedProps<typeof connector>
 
@@ -64,8 +57,8 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
           <GlobeAmericas height="18px" />
         </span>
       }
-      // TODO: How to make this work without block ruby?
       style={{ display: 'block ruby' }}
+      // TODO: How to make this work without block ruby?
     >
       {Object.keys(configLanguages)
         .filter((locale) => locale !== 'allLanguages')
@@ -78,9 +71,11 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
             // We are correct, not eslint: https://w3c.github.io/aria-practices/examples/combobox/combobox-select-only.html
             // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
             role="option"
+            tabIndex={0}
           >
             <UnstyledButton
               style={locale === currentLocale ? { fontWeight: 'bold' } : {}}
+              tabIndex={-1}
             >
               {configLanguages[locale].name}
             </UnstyledButton>

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import { FormattedMessage, useIntl } from 'react-intl'
 import { NavItem } from 'react-bootstrap'
 import { User } from '@auth0/auth0-react'
@@ -5,6 +6,7 @@ import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
 
 import { LinkContainerWithQuery } from '../form/connected-links'
+import { UnstyledButton } from '../util/unstyled-button'
 import Dropdown from '../util/dropdown'
 
 const Avatar = styled.img`
@@ -77,20 +79,24 @@ const NavLoginButton = ({
               target={link.target}
               to={link.url}
             >
-              <li>
-                {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
-                  <FormattedMessage id="components.NavLoginButton.myAccount" />
-                ) : (
-                  <FormattedMessage id="components.NavLoginButton.help" />
-                )}
+              <li tabIndex={0}>
+                <UnstyledButton tabIndex={-1}>
+                  {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
+                    <FormattedMessage id="components.NavLoginButton.myAccount" />
+                  ) : (
+                    <FormattedMessage id="components.NavLoginButton.help" />
+                  )}
+                </UnstyledButton>
               </li>
             </LinkContainerWithQuery>
           ))}
 
         <hr role="presentation" />
 
-        <li onSelect={onSignOutClick}>
-          <FormattedMessage id="components.NavLoginButton.signOut" />
+        <li onSelect={onSignOutClick} tabIndex={0}>
+          <UnstyledButton tabIndex={-1}>
+            <FormattedMessage id="components.NavLoginButton.signOut" />
+          </UnstyledButton>
         </li>
       </Dropdown>
     )

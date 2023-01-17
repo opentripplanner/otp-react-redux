@@ -77,7 +77,7 @@ const Dropdown = ({
   const containerRef = useRef(null)
   useEffect(() => {
     // TODO: TYPE
-    const handleClick = (e: any) => {
+    const handleExternalAction = (e: any) => {
       if (
         !!containerRef.current &&
         // @ts-expect-error Typescript doesn't like this check
@@ -86,18 +86,65 @@ const Dropdown = ({
         setOpen(false)
       }
     }
-    document.addEventListener('mousedown', handleClick)
+    document.addEventListener('mousedown', handleExternalAction)
+    document.addEventListener('keydown', handleExternalAction)
     return () => {
-      document.removeEventListener('mousedown', handleClick)
+      document.removeEventListener('mousedown', handleExternalAction)
+      document.removeEventListener('keydown', handleExternalAction)
     }
   }, [containerRef])
+
+  const _handleKeyDown = (e: any): void => {
+    const element = e.target as HTMLElement
+    switch (e.key) {
+      case 'ArrowUp':
+        e.preventDefault()
+        getEntryRelativeTo(element, -1)?.focus()
+        break
+      case 'ArrowDown':
+        e.preventDefault()
+        getEntryRelativeTo(element, 1)?.focus()
+        break
+      case 'Escape':
+        setOpen(false)
+        break
+      case ' ':
+      case 'Enter':
+        element.click()
+        if (element.id === `${id}-label` || element.id === `${id}-wrapper`) {
+          setOpen(!open)
+        }
+        break
+      default:
+    }
+  }
+
+  /**
+   * Helper method to find the element within dropdown menu at the given offset
+   * (e.g. previous or next) relative to the specified element.
+   * The query is limited to the dropdown so that arrow navigation is contained within
+   * (tab navigation is not restricted).
+   */
+  function getEntryRelativeTo(
+    element: EventTarget,
+    offset: 1 | -1
+  ): HTMLElement {
+    const entries = Array.from(
+      document.querySelectorAll(`#${id} li, #${id}-label`)
+    )
+    const elementIndex = entries.indexOf(element as HTMLElement)
+
+    return entries[elementIndex + offset] as HTMLElement
+  }
 
   return (
     <DropdownContainer
       id={`${id}-wrapper`}
+      onKeyDown={_handleKeyDown}
       ref={containerRef}
       role="group"
       style={{ float: pullRight ? 'right' : 'left' }}
+      tabIndex={0}
     >
       <DropdownButton
         aria-controls={id}
@@ -107,13 +154,12 @@ const Dropdown = ({
         className={`${open && 'active'}`}
         id={`${id}-label`}
         onClick={() => setOpen(!open)}
-        onKeyPress={() => setOpen(!open)}
         role="button"
         style={style}
         tabIndex={0}
       >
         {name}
-        <span className="caret" style={{ marginLeft: 5 }} />
+        <span className="caret" role="presentation" style={{ marginLeft: 5 }} />
       </DropdownButton>
       {open && (
         <DropdownMenu
