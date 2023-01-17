@@ -87,9 +87,11 @@ const Dropdown = ({
       }
     }
     document.addEventListener('mousedown', handleExternalAction)
+    document.addEventListener('focus', handleExternalAction)
     document.addEventListener('keydown', handleExternalAction)
     return () => {
       document.removeEventListener('mousedown', handleExternalAction)
+      document.removeEventListener('focus', handleExternalAction)
       document.removeEventListener('keydown', handleExternalAction)
     }
   }, [containerRef])
