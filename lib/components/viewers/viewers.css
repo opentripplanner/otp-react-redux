@@ -375,11 +375,11 @@
 
 .otp .trip-viewer .stop-time {
   float: left;
-  width: 55px;
   font-size: 11px;
-  padding-top: 7px;
   padding-right: 5px;
+  padding-top: 12px;
   text-align: right;
+  width: 55px;
 }
 
 .otp .trip-viewer .strip-map-container {
@@ -452,17 +452,18 @@
 
 .otp .trip-viewer .stop-name {
   font-size: 14px;
-  margin-left: 80px;
-  margin-right: 55px;
-  padding-top: 6px;
+  margin-left: 10px;
+  padding-top: 8px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .otp .trip-viewer .stop-button-container {
-  float: right;
-  width: 50px;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 5px;
+  width: 100%;
 }
 
 /* Route Viewer Updates */
