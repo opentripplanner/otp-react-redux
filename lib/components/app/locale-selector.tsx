@@ -66,6 +66,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
           <li
             aria-selected={locale === currentLocale}
             key={locale}
+            lang={locale}
             onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
             onKeyPress={(e: any) => handleLocaleSelection(e, locale)}
             // We are correct, not eslint: https://w3c.github.io/aria-practices/examples/combobox/combobox-select-only.html

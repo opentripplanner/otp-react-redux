@@ -1,4 +1,10 @@
-import React, { HTMLAttributes, useEffect, useRef, useState } from 'react'
+import React, {
+  HTMLAttributes,
+  KeyboardEvent,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 import styled from 'styled-components'
 
 interface Props extends HTMLAttributes<HTMLElement> {
@@ -9,6 +15,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
   pullRight?: boolean
 }
 
+// TODO: make this a button once bootstrap is removed
 const DropdownButton = styled.a`
   border: none;
   color: inherit;
@@ -52,6 +59,7 @@ const DropdownMenu = styled.ul`
   }
   li.header {
     cursor: default;
+    font-weight: 600;
   }
   li:not(.header):hover {
     background: rgba(0, 0, 0, 0.1);
@@ -75,9 +83,16 @@ const Dropdown = ({
 }: Props): JSX.Element => {
   const [open, setOpen] = useState(false)
   const containerRef = useRef(null)
+
+  const toggleOpen = () => setOpen(!open)
+
+  // Adding document event listeners allows us to close the dropdown
+  // when the user interacts with any part of the page that isn't the dropdown
   useEffect(() => {
     // TODO: TYPE
-    const handleExternalAction = (e: any) => {
+    const handleExternalAction = (
+      e: MouseEvent | FocusEvent | KeyboardEvent
+    ) => {
       if (
         !!containerRef.current &&
         // @ts-expect-error Typescript doesn't like this check
@@ -88,10 +103,12 @@ const Dropdown = ({
     }
     document.addEventListener('mousedown', handleExternalAction)
     document.addEventListener('focus', handleExternalAction)
+    // @ts-expect-error not sure what type is expected here
     document.addEventListener('keydown', handleExternalAction)
     return () => {
       document.removeEventListener('mousedown', handleExternalAction)
       document.removeEventListener('focus', handleExternalAction)
+      // @ts-expect-error not sure what type is expected here
       document.removeEventListener('keydown', handleExternalAction)
     }
   }, [containerRef])
@@ -114,7 +131,7 @@ const Dropdown = ({
       case 'Enter':
         element.click()
         if (element.id === `${id}-label` || element.id === `${id}-wrapper`) {
-          setOpen(!open)
+          toggleOpen()
         }
         break
       default:
@@ -155,7 +172,7 @@ const Dropdown = ({
         aria-label={label}
         className={`${open && 'active'}`}
         id={`${id}-label`}
-        onClick={() => setOpen(!open)}
+        onClick={toggleOpen}
         role="button"
         style={style}
         tabIndex={0}
