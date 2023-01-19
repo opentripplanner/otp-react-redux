@@ -124,7 +124,9 @@ input[type="text"]::-ms-clear {
   top: -30px;
 }
 .skip-nav-button:focus {
-  top: 0;
+  padding: 7px 24px;
+  top: 7px;
+  z-index: 100
 }
 
 .view-switcher {
