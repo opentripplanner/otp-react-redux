@@ -65,7 +65,7 @@ const InvisibleHeader = styled.h3`
 `
 
 const DepartureTimes = styled.span`
-  align-self: center;
+  align-self: flex-end;
   color: #0909098f;
   font-size: 14px;
   overflow: hidden;
