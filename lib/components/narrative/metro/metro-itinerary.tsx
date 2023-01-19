@@ -1,11 +1,13 @@
 import { AccessibilityRating } from '@opentripplanner/itinerary-body'
 import { connect } from 'react-redux'
 import {
+  FormattedList,
   FormattedMessage,
   FormattedNumber,
   injectIntl,
   IntlShape
 } from 'react-intl'
+import { getFormattedMode } from '../../../util/i18n'
 import { Itinerary, Leg } from '@opentripplanner/types'
 import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
@@ -87,8 +89,6 @@ const DepartureTimes = styled.span`
 `
 
 const ItineraryDetails = styled.ul`
-  display: flex;
-  flex-direction: column;
   grid-column-start: -1;
   grid-row: 1 / span 2;
   justify-self: right;
@@ -332,26 +332,17 @@ class MetroItinerary extends NarrativeItinerary {
     )
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
+    const routeLegs = itinerary.legs.filter(removeInsignifigantWalkLegs)
+    const routeAndModeStrings = routeLegs.map((leg: Leg, index: number) => {
+      return `${
+        leg.routeShortName ? leg.routeShortName : ''
+      } ${getFormattedMode(leg.mode, intl)}`
+    })
 
-    const renderAccessibilityHeader = (legs: Leg[]) => {
-      const routeLegs = legs.filter(removeInsignifigantWalkLegs)
-      const routeHeader = routeLegs.map((leg: Leg, index: number) => {
-        const legHeader = `${leg.routeShortName ? leg.routeShortName : ''} ${
-          leg.mode
-        }`
-        if (index === routeLegs.length) {
-          return legHeader
-        }
-        return ` ${legHeader}`
-      })
-      return routeHeader.toString()
-    }
-
-    const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
-      const routeBlocks = legs
-        .filter(removeInsignifigantWalkLegs)
+    const renderRouteBlocks = (firstOnly = false) => {
+      const routeBlocks = routeLegs
         // If firstOnly is set to true, sort to ensure non-walk leg is first
-        .sort((a, b) => (firstOnly ? b.distance - a.distance : 0))
+        .sort((a: Leg, b: Leg) => (firstOnly ? b.distance - a.distance : 0))
         .map((leg: Leg, index: number, filteredLegs: Leg[]) => {
           const previousLegMode =
             (index > 0 && filteredLegs[index - 1].mode) || undefined
@@ -432,7 +423,10 @@ class MetroItinerary extends NarrativeItinerary {
               <ItineraryGrid className="itin-grid">
                 {/* TODO: a11y: add aria-label to parent element */}
                 <InvisibleHeader as={expanded && 'h2'}>
-                  {renderAccessibilityHeader(itinerary.legs)}
+                  <FormattedList
+                    type="conjunction"
+                    value={routeAndModeStrings}
+                  />
                 </InvisibleHeader>
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
@@ -507,7 +501,7 @@ class MetroItinerary extends NarrativeItinerary {
                 <SecondaryInfo as="span">
                   <ItineraryDescription itinerary={itinerary} />
                 </SecondaryInfo>
-                {renderRouteBlocks(itinerary.legs, true)}
+                {renderRouteBlocks(true)}
               </ItineraryGridSmall>
             )}
           </ItineraryWrapper>
