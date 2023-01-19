@@ -119,8 +119,12 @@ input[type="text"]::-ms-clear {
 }
 
 .skip-nav-button {
+  color: initial;
   position: fixed;
   top: -30px;
+}
+.skip-nav-button:focus {
+  top: 0;
 }
 
 .view-switcher {

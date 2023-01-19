@@ -37,7 +37,7 @@
 }
 @media (max-width: 800px) {
   .app-menu .app-menu-route-viewer-link {
-    display: block;
+    display: flex;
   }
 }
 

@@ -145,6 +145,14 @@ class AppMenu extends Component<
 
     return (
       <>
+        {/* Use a button for skipping navigation. A regular <a href=...> element would modify the URL,
+            and such change would be captured by the router without changing the focused element. */}
+        <button
+          className="skip-nav-button"
+          onClick={this._handleSkipNavigation}
+        >
+          <FormattedMessage id="components.AppMenu.skipNavigation" />
+        </button>
         <button
           aria-controls="app-menu"
           aria-expanded={isPaneOpen}
@@ -155,14 +163,6 @@ class AppMenu extends Component<
           <Bar className="menu-line top" />
           <Bar className="menu-line middle" />
           <Bar className="menu-line bottom" />
-        </button>
-        {/* Use a button for skipping navigation. A regular <a href=...> element would modify the URL,
-            and such change would be captured by the router without changing the focused element. */}
-        <button
-          className="skip-nav-button"
-          onClick={this._handleSkipNavigation}
-        >
-          <FormattedMessage id="components.AppMenu.skipNavigation" />
         </button>
         <SlidingPane
           from="left"
