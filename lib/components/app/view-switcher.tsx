@@ -40,7 +40,7 @@ class ViewSwitcher extends Component<Props> {
         })}
         className="view-switcher"
         id="view-switcher"
-        role="tablist"
+        role="group"
         style={
           sticky
             ? {
@@ -58,7 +58,6 @@ class ViewSwitcher extends Component<Props> {
           bsStyle="link"
           className={`${tripPlannerActive && 'active'}`}
           onClick={this._showTripPlanner}
-          role="tab"
         >
           <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
         </Button>
@@ -68,7 +67,6 @@ class ViewSwitcher extends Component<Props> {
           bsStyle="link"
           className={`${routeViewerActive && 'active'}`}
           onClick={this._showRouteViewer}
-          role="tab"
         >
           <FormattedMessage id="components.RouteViewer.shortTitle" />
         </Button>
