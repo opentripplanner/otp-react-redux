@@ -339,7 +339,7 @@ class MetroItinerary extends NarrativeItinerary {
       } ${getFormattedMode(leg.mode, intl)}`
     })
 
-    const renderRouteBlocks = (firstOnly = false) => {
+    const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
       const routeBlocks = routeLegs
         // If firstOnly is set to true, sort to ensure non-walk leg is first
         .sort((a: Leg, b: Leg) => (firstOnly ? b.distance - a.distance : 0))
@@ -501,7 +501,7 @@ class MetroItinerary extends NarrativeItinerary {
                 <SecondaryInfo as="span">
                   <ItineraryDescription itinerary={itinerary} />
                 </SecondaryInfo>
-                {renderRouteBlocks(true)}
+                {renderRouteBlocks(itinerary.legs, true)}
               </ItineraryGridSmall>
             )}
           </ItineraryWrapper>
