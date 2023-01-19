@@ -132,6 +132,7 @@ components:
     fieldTrip: Field Trip
     mailables: Mailables
     openMenu: Open Menu
+    skipNavigation: Skip navigation
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
   BatchResultsScreen:
@@ -213,6 +214,8 @@ components:
     enterLocation: Enter location
     setDestination: Set Destination
     setOrigin: Set Origin
+  MapillaryFrame:
+    title: Imagery of the street
   MapLayers:
     bike-rental: "{companies} Shared Bikes"
     car-rental: Rental Car Locations
@@ -364,6 +367,7 @@ components:
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
     shortTitle: View Routes
+    stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
   SavedTripEditor:
     editSavedTrip: Edit saved trip
@@ -552,6 +556,7 @@ components:
     accessible: Accessible
     bicyclesAllowed: Allowed
     header: Trip Viewer
+    listOfRouteStops: List of stops on this route
     routeHeader: "Route: <strong>{routeShortName}</strong> {routeLongName}"
     viewStop: View
   UserAccountScreen:
@@ -658,7 +663,7 @@ common:
       {isMore, select,
       true {more}
       other {less}
-      } CO<sub>2</sub> than driving alone.
+      } CO<sub>2</sub> than driving alone
 
   # Note to translator: the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
