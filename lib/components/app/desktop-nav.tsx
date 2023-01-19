@@ -56,7 +56,7 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
   return (
     <Navbar fluid inverse>
       {/* Required to allow the hamburger button to be clicked */}
-      <Navbar.Header style={{ position: 'relative', zIndex: 2 }}>
+      <Navbar.Header role="banner" style={{ position: 'relative', zIndex: 2 }}>
         <Navbar.Brand>
           {/* TODO: Reconcile CSS class and inline style. */}
           <div
