@@ -3,25 +3,26 @@ import { FormattedMessage } from 'react-intl'
 import React, { useCallback } from 'react'
 
 import * as uiActions from '../../actions/ui'
-import ConnectedSettingsSelectorPanel from '../form/connected-settings-selector-panel'
+import DateTimeModal from '../form/date-time-modal'
 import PlanTripButton from '../form/plan-trip-button'
 
 import MobileContainer from './container'
 import MobileNavigationBar from './navigation-bar'
 
-type Props = {
+interface Props {
   setMobileScreen: (screen: number) => void
 }
 
-const MobileOptionsScreen = ({ setMobileScreen }: Props) => (
+const MobileDateTimeScreen = ({ setMobileScreen }: Props) => (
   <MobileContainer>
     <MobileNavigationBar
       backScreen={uiActions.MobileScreens.SEARCH_FORM}
-      headerText={<FormattedMessage id="components.MobileOptions.header" />}
+      headerText={<FormattedMessage id="components.DateTimeScreen.header" />}
+      showBackButton
     />
     <main tabIndex={-1}>
       <div className="options-main-content mobile-padding">
-        <ConnectedSettingsSelectorPanel />
+        <DateTimeModal />
       </div>
 
       <div className="options-lower-tray mobile-padding">
@@ -42,4 +43,4 @@ const mapDispatchToProps = {
   setMobileScreen: uiActions.setMobileScreen
 }
 
-export default connect(null, mapDispatchToProps)(MobileOptionsScreen)
+export default connect(null, mapDispatchToProps)(MobileDateTimeScreen)

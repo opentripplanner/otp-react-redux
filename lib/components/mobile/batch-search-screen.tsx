@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 import { ExchangeAlt } from '@styled-icons/fa-solid/ExchangeAlt'
 import { FormattedMessage } from 'react-intl'
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
 import * as uiActions from '../../actions/ui'
@@ -17,12 +16,12 @@ import MobileNavigationBar from './navigation-bar'
 const { SET_DATETIME, SET_FROM_LOCATION, SET_TO_LOCATION } =
   uiActions.MobileScreens
 
-class BatchSearchScreen extends Component {
-  static propTypes = {
-    map: PropTypes.element,
-    setMobileScreen: PropTypes.func
-  }
+interface Props {
+  map: React.ReactElement
+  setMobileScreen: (screen: number) => void
+}
 
+class BatchSearchScreen extends Component<Props> {
   _fromFieldClicked = () => this.props.setMobileScreen(SET_FROM_LOCATION)
 
   _toFieldClicked = () => this.props.setMobileScreen(SET_TO_LOCATION)
