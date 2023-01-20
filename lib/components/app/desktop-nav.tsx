@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { Nav, Navbar, NavItem } from 'react-bootstrap'
 import React from 'react'
+import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import { accountLinks, getAuth0Config } from '../../util/auth'
@@ -11,6 +12,14 @@ import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
 import AppMenu from './app-menu'
 import LocaleSelector from './locale-selector'
 import ViewSwitcher from './view-switcher'
+
+const NavItemOnLargeScreens = styled(NavItem)`
+  display: block;
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+`
+
 /**
  * The desktop navigation bar, featuring a `branding` logo or a `title` text
  * defined in config.yml, and a sign-in button/menu with account links.
@@ -56,7 +65,7 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
   return (
     <Navbar fluid inverse>
       {/* Required to allow the hamburger button to be clicked */}
-      <Navbar.Header style={{ position: 'relative', zIndex: 2 }}>
+      <Navbar.Header style={{ position: 'relative', width: '100%', zIndex: 2 }}>
         <Navbar.Brand>
           {/* TODO: Reconcile CSS class and inline style. */}
           <div
@@ -68,15 +77,13 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
 
           {brandingOrTitle}
         </Navbar.Brand>
-      </Navbar.Header>
-      <ViewSwitcher sticky />
+        <ViewSwitcher sticky />
 
-      <Navbar.Collapse>
         <Nav pullRight>
           {popupTarget && (
-            <NavItem onClick={() => setPopupContent(popupTarget)}>
+            <NavItemOnLargeScreens onClick={() => setPopupContent(popupTarget)}>
               <FormattedMessage id={`config.popups.${popupTarget}`} />
-            </NavItem>
+            </NavItemOnLargeScreens>
           )}
           {configLanguages &&
             // Ensure that > 1 valid language is defined
@@ -86,10 +93,14 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
               <LocaleSelector configLanguages={configLanguages} />
             )}
           {showLogin && (
-            <NavLoginButtonAuth0 id="login-control" links={accountLinks} />
+            <NavLoginButtonAuth0
+              id="login-control"
+              links={accountLinks}
+              style={{ float: 'right' }}
+            />
           )}
         </Nav>
-      </Navbar.Collapse>
+      </Navbar.Header>
     </Navbar>
   )
 }

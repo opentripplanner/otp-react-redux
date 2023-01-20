@@ -394,7 +394,6 @@ components:
     closeMenu: 关闭菜单
     fieldTrip: 旅行标题
     mailables: 准备发布
-    menuItemIconAlt: '{label} 菜单项的图标'
     openMenu: 打开菜单
   StopTimeCell:
     imminentArrival: 到达
