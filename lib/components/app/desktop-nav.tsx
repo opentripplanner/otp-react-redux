@@ -38,7 +38,7 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
   const showLogin = Boolean(getAuth0Config(persistence))
 
   return (
-    <div role="banner">
+    <header>
       <Navbar fluid inverse>
         <Navbar.Header>
           <Navbar.Brand>
@@ -75,7 +75,7 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </div>
+    </header>
   )
 }
 
