@@ -54,7 +54,6 @@ class ViewSwitcher extends Component<Props> {
       >
         <Button
           aria-controls="view-switcher"
-          aria-selected={tripPlannerActive}
           bsStyle="link"
           className={`${tripPlannerActive && 'active'}`}
           onClick={this._showTripPlanner}
@@ -63,7 +62,6 @@ class ViewSwitcher extends Component<Props> {
         </Button>
         <Button
           aria-controls="view-switcher"
-          aria-selected={routeViewerActive}
           bsStyle="link"
           className={`${routeViewerActive && 'active'}`}
           onClick={this._showRouteViewer}
