@@ -125,10 +125,10 @@ class AppMenu extends Component<
             className={subMenuDivider ? 'app-menu-divider' : undefined}
             href={href}
             icon={
-              typeof iconType === 'string' ? (
-                <Icon iconType={iconType} iconUrl={iconUrl} />
-              ) : (
+              iconType && typeof iconType !== 'string' ? (
                 iconType
+              ) : (
+                <Icon iconType={iconType} iconUrl={iconUrl} />
               )
             }
             id={id}
@@ -167,7 +167,7 @@ class AppMenu extends Component<
             id: configLanguages[locale].name,
             label:
               activeLocale === locale ? (
-                <strong aria-selected>{configLanguages[locale].name}</strong>
+                <strong>{configLanguages[locale].name}</strong>
               ) : (
                 configLanguages[locale].name
               ),

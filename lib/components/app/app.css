@@ -37,7 +37,7 @@
 .app-menu #app-menu-locale-selector {
   display: none;
 }
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .app-menu .app-menu-route-viewer-link,
   .app-menu .app-menu-trip-planner-link,
   .app-menu #app-menu-locale-selector {
