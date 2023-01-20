@@ -163,7 +163,6 @@ const Dropdown = ({
       ref={containerRef}
       role="group"
       style={{ float: pullRight ? 'right' : 'left' }}
-      tabIndex={0}
     >
       <DropdownButton
         aria-controls={id}
