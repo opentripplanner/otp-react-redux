@@ -7,6 +7,7 @@ import {
   injectIntl,
   IntlShape
 } from 'react-intl'
+
 import { getFormattedMode } from '../../../util/i18n'
 import { Itinerary, Leg } from '@opentripplanner/types'
 import { Leaf } from '@styled-icons/fa-solid/Leaf'
@@ -333,10 +334,8 @@ class MetroItinerary extends NarrativeItinerary {
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
     const routeLegs = itinerary.legs.filter(removeInsignifigantWalkLegs)
-    const routeAndModeStrings = routeLegs.map((leg: Leg, index: number) => {
-      return `${
-        leg.routeShortName ? leg.routeShortName : ''
-      } ${getFormattedMode(leg.mode, intl)}`
+    const modeStrings = routeLegs.map((leg: Leg) => {
+      return getFormattedMode(leg.mode, intl)
     })
 
     const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
@@ -420,13 +419,10 @@ class MetroItinerary extends NarrativeItinerary {
               />
             )}
             {!mini && (
-              <ItineraryGrid className="itin-grid">
+              <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
                 <InvisibleHeader as={expanded && 'h2'}>
-                  <FormattedList
-                    type="conjunction"
-                    value={routeAndModeStrings}
-                  />
+                  <FormattedList type="conjunction" value={modeStrings} />
                 </InvisibleHeader>
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
