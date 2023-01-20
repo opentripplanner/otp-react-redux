@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import React, { Component } from 'react'
 
-import { MobileScreens, setMobileScreen } from '../../actions/ui'
+import * as uiActions from '../../actions/ui'
 import ConnectedSettingsSelectorPanel from '../form/connected-settings-selector-panel'
 import PlanTripButton from '../form/plan-trip-button'
 
@@ -14,7 +14,7 @@ type Props = {
 }
 class MobileOptionsScreen extends Component<Props> {
   _planTripClicked = () => {
-    this.props.setMobileScreen(MobileScreens.RESULTS_SUMMARY)
+    this.props.setMobileScreen(uiActions.MobileScreens.RESULTS_SUMMARY)
   }
 
   render() {
@@ -24,14 +24,15 @@ class MobileOptionsScreen extends Component<Props> {
           backScreen={MobileScreens.SEARCH_FORM}
           headerText={<FormattedMessage id="components.MobileOptions.header" />}
         />
+        <main tabIndex={-1}>
+          <div className="options-main-content mobile-padding">
+            <ConnectedSettingsSelectorPanel />
+          </div>
 
-        <div className="options-main-content mobile-padding">
-          <ConnectedSettingsSelectorPanel />
-        </div>
-
-        <div className="options-lower-tray mobile-padding">
-          <PlanTripButton onClick={this._planTripClicked} />
-        </div>
+          <div className="options-lower-tray mobile-padding">
+            <PlanTripButton onClick={this._planTripClicked} />
+          </div>
+        </main>
       </MobileContainer>
     )
   }
@@ -40,7 +41,7 @@ class MobileOptionsScreen extends Component<Props> {
 // connect to the redux store
 
 const mapDispatchToProps = {
-  setMobileScreen
+  setMobileScreen: uiActions.setMobileScreen
 }
 
 export default connect(null, mapDispatchToProps)(MobileOptionsScreen)
