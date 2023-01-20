@@ -428,9 +428,12 @@ components:
   SubNav:
     languageSelector: Select language
     activeLanguage: Active language
+    languages: "Languages"
     myAccount: My account
+    selectALanguage: Select a language
     settings: Settings
     trips: Trips
+    userMenu: Profile options
   SwitchButton:
     defaultContent: Switch
     switchLocations: Switch locations

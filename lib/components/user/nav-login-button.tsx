@@ -1,10 +1,13 @@
-import { FormattedMessage } from 'react-intl'
-import { MenuItem, NavDropdown, NavItem } from 'react-bootstrap'
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+import { FormattedMessage, useIntl } from 'react-intl'
+import { NavItem } from 'react-bootstrap'
 import { User } from '@auth0/auth0-react'
-import React, { CSSProperties } from 'react'
+import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
 
 import { LinkContainerWithQuery } from '../form/connected-links'
+import { UnstyledButton } from '../util/unstyled-button'
+import Dropdown from '../util/dropdown'
 
 const Avatar = styled.img`
   height: 2em;
@@ -18,14 +21,11 @@ type Link = {
   url: string
 }
 
-type Props = {
-  className?: string
-  id: string
+interface Props extends HTMLAttributes<HTMLElement> {
   links: Link[]
   onSignInClick: () => void
   onSignOutClick: () => void
-  profile: User | null | undefined
-  style?: CSSProperties | undefined
+  profile?: User | null
 }
 
 /**
@@ -34,16 +34,16 @@ type Props = {
  * - When a user is logged in, display an 'avatar' (retrieved from the profile prop)
  *   and a dropdown button so the user can access more options.
  */
-const NavLoginButton = (props: Props): JSX.Element => {
-  const {
-    className,
-    id,
-    links,
-    onSignInClick,
-    onSignOutClick,
-    profile,
-    style
-  } = props
+const NavLoginButton = ({
+  className,
+  id,
+  links,
+  onSignInClick,
+  onSignOutClick,
+  profile,
+  style
+}: Props): JSX.Element => {
+  const intl = useIntl()
 
   const commonProps = {
     className,
@@ -55,12 +55,11 @@ const NavLoginButton = (props: Props): JSX.Element => {
   if (profile) {
     const displayedName = profile.nickname || profile.name
     return (
-      <NavDropdown
-        {...commonProps}
-        pullRight
-        title={
+      <Dropdown
+        id="user-selector"
+        label={intl.formatMessage({ id: 'components.SubNav.userMenu' })}
+        name={
           <span>
-            {/** TODO: Add aria summary: https://github.com/opentripplanner/otp-react-redux/pull/739#discussion_r1061794620 */}
             <Avatar
               alt={displayedName}
               src={profile.picture}
@@ -68,8 +67,9 @@ const NavLoginButton = (props: Props): JSX.Element => {
             />
           </span>
         }
+        pullRight
       >
-        <MenuItem header>{displayedName}</MenuItem>
+        <li className="header">{displayedName}</li>
 
         {links &&
           links.map((link, i) => (
@@ -79,22 +79,26 @@ const NavLoginButton = (props: Props): JSX.Element => {
               target={link.target}
               to={link.url}
             >
-              <MenuItem>
-                {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
-                  <FormattedMessage id="components.NavLoginButton.myAccount" />
-                ) : (
-                  <FormattedMessage id="components.NavLoginButton.help" />
-                )}
-              </MenuItem>
+              <li tabIndex={0}>
+                <UnstyledButton tabIndex={-1}>
+                  {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
+                    <FormattedMessage id="components.NavLoginButton.myAccount" />
+                  ) : (
+                    <FormattedMessage id="components.NavLoginButton.help" />
+                  )}
+                </UnstyledButton>
+              </li>
             </LinkContainerWithQuery>
           ))}
 
-        <MenuItem divider />
+        <hr role="presentation" />
 
-        <MenuItem onSelect={onSignOutClick}>
-          <FormattedMessage id="components.NavLoginButton.signOut" />
-        </MenuItem>
-      </NavDropdown>
+        <li onSelect={onSignOutClick} tabIndex={0}>
+          <UnstyledButton tabIndex={-1}>
+            <FormattedMessage id="components.NavLoginButton.signOut" />
+          </UnstyledButton>
+        </li>
+      </Dropdown>
     )
   }
 

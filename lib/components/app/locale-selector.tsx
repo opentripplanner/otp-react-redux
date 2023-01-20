@@ -1,11 +1,13 @@
 import { connect, ConnectedProps } from 'react-redux'
 import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
-import { MenuItem, NavDropdown } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
 import React, { MouseEvent } from 'react'
 
 import * as uiActions from '../../actions/ui'
+import * as userActions from '../../actions/user'
 import { StyledIconWrapper } from '../util/styledIcon'
+import { UnstyledButton } from '../util/unstyled-button'
+import Dropdown from '../util/dropdown'
 
 type PropsFromRedux = ConnectedProps<typeof connector>
 
@@ -20,34 +22,45 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
   const intl = useIntl()
 
   return (
-    <NavDropdown
-      aria-label={intl.formatMessage({
-        id: 'components.SubNav.languageSelector'
-      })}
+    <Dropdown
       id="locale-selector"
-      pullRight
-      title={
-        <StyledIconWrapper style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
-          <GlobeAmericas />
-        </StyledIconWrapper>
+      label={intl.formatMessage({ id: 'components.SubNav.selectALanguage' })}
+      listLabel={intl.formatMessage({ id: 'components.SubNav.languages' })}
+      name={
+        <span
+          style={{
+            color: 'rgba(255, 255, 255, 0.85)'
+          }}
+        >
+          <GlobeAmericas height="18px" />
+        </span>
       }
+      style={{ display: 'block ruby' }}
+      // TODO: How to make this work without block ruby?
     >
       {Object.keys(configLanguages)
         .filter((locale) => locale !== 'allLanguages')
         .map((locale) => (
-          <MenuItem
-            className="locale-name"
+          <li
+            aria-selected={locale === currentLocale}
             key={locale}
+            lang={locale}
             onClick={() => setLocale(locale)}
+            onKeyPress={() => setLocale(locale)}
+            // We are correct, not eslint: https://w3c.github.io/aria-practices/examples/combobox/combobox-select-only.html
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+            role="option"
+            tabIndex={0}
           >
-            <span
+            <UnstyledButton
               style={locale === currentLocale ? { fontWeight: 'bold' } : {}}
+              tabIndex={-1}
             >
               {configLanguages[locale].name}
-            </span>
-          </MenuItem>
+            </UnstyledButton>
+          </li>
         ))}
-    </NavDropdown>
+    </Dropdown>
   )
 }
 
