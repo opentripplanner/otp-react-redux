@@ -44,8 +44,10 @@ actions:
     fetchFieldTripError: "Error fetching field trip: {err}"
     fetchFieldTripsError: "Error fetching field trips: {err}"
     fetchTripsForDateError: "Error fetching trips for field trip travel date: {err}"
-    incompatibleTripDateError: Planned trip date ({tripDate}) is not the requested day of travel ({requestDate})
-    itineraryCapacityError: "Cannot Save Plan: This plan could not be saved due to a lack of capacity on one or more vehicles. Please re-plan your trip."
+    incompatibleTripDateError: Planned trip date ({tripDate}) is not the requested
+      day of travel ({requestDate})
+    itineraryCapacityError: "Cannot Save Plan: This plan could not be saved due to\
+      \ a lack of capacity on one or more vehicles. Please re-plan your trip."
     maxTripRequestsExceeded: Number of trip requests exceeded without valid results
     saveItinerariesError: "Failed to save itineraries: {err}"
     setDateError: "Error setting date:"
@@ -61,14 +63,16 @@ actions:
     accountDeleted: Your user account ({email}) has been deleted.
     authTokenError: Error obtaining an authorization token.
     confirmDeleteMonitoredTrip: Would you like to remove this trip?
-    confirmDeletePlace: Would you like to remove this place?
+    confirmDeletePlace: Remove this place?
     emailVerificationResent: The email verification message has been resent.
     genericError: "An error was encountered: {err}"
     itineraryExistenceCheckFailed: Error checking whether your selected trip is possible.
     preferencesSaved: Your preferences have been saved.
     smsInvalidCode: The code you entered is invalid. Please try again.
-    smsResendThrottled: A verification SMS was sent to the indicated phone number less than a minute ago. Please try again in a few moments.
-    smsVerificationFailed: Your phone could not be verified. Perhaps the code you entered has expired. Please request a new code and try again.
+    smsResendThrottled: A verification SMS was sent to the indicated phone number
+      less than a minute ago. Please try again in a few moments.
+    smsVerificationFailed: Your phone could not be verified. Perhaps the code you
+      entered has expired. Please request a new code and try again.
 
 # Component-specific messages (e.g. button captions)
 # are defined for each component under the 'components' category.
@@ -82,7 +86,7 @@ components:
     needOriginDestination: Define origin/destination to add intermediate places
     tooManyPlaces: Maximum intermediate places reached
   AdvancedOptions:
-    bannedRoutes: Select banned routes...
+    bannedRoutes: Select banned routes…
     maxBike: "Max bike {unitsString}"
     maxWalk: "Max walk {unitsString}"
     walkReluctance: "Walk Reluctance"
@@ -201,7 +205,8 @@ components:
     editPlaceGeneric: Edit place
     invalidAddress: Please set a location for this place.
     invalidName: Please enter a name for this place.
-    nameAlreadyUsed: You are already using this name for another place. Please enter a different name.
+    nameAlreadyUsed: You are already using this name for another place. Please enter
+      a different name.
     placeNotFound: Place not found
     placeNotFoundDescription: Sorry, the requested place was not found.
   FormNavigationButtons:
@@ -225,10 +230,10 @@ components:
     park-and-ride: Park & Ride Locations
     satellite: Satellite
     stops: Transit Stops
-    streets: Streets    
+    streets: Streets
   MetroUI:
     leaveAt: You leave
-    arriveAtTime: "Arrive at {time}" 
+    arriveAtTime: "Arrive at {time}"
     timeWalking: "{time} walking"
     fromStop: "from {stop}"
     orAlternatives: or other routes in the same direction
@@ -241,14 +246,9 @@ components:
     exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
     itinerariesAndIssues: "{itinerariesFound} and {numIssues}"
-    itinerariesFound: "{itineraryNum, plural,
-        one {# itinerary found}
-        other {# itineraries found}
-      }"
-    numIssues: "{issueNum, plural,
-        one {# issue}
-        other {# issues}
-      }"
+    itinerariesFound: "{itineraryNum, plural, one {# itinerary found} other {# itineraries\
+      \ found} }"
+    numIssues: "{issueNum, plural, one {# issue} other {# issues} }"
     changeSortDir: "Change sort direction"
     # Note to translator: text below is width-constrained
     # (about half-pane width, or half-screen width in mobile views).
@@ -271,7 +271,7 @@ components:
     notifications: Notification preferences
     places: Add your locations
     terms: Create a new account
-    verify: Verify your email address
+    verify: Verify your e-mail address
   NotFound:
     description: The content you requested is not available.
     header: Content not found
@@ -302,8 +302,8 @@ components:
     # deleteThisPlace is an aria/tooltip text.
     deleteThisPlace: Delete this place
     enterAlert: >
-      Enter origin/destination in the form (or set via map click) 
-      and click the resulting marker to set as {placeType} location.
+      Enter origin/destination in the form (or set via map click)  and click the resulting
+      marker to set as {placeType} location.
     viewStop: View Stop
   PlaceEditor:
     addressPrompt: "Address:"
@@ -392,16 +392,19 @@ components:
     tooManyTrips: >
       You already have reached the maximum of five saved trips.
       Please remove unused trips from your saved trips, and try again.
-    tripNameAlreadyUsed: Another saved trip already uses this name. Please choose a different name.
+    tripNameAlreadyUsed: Another saved trip already uses this name. Please choose
+      a different name.
     tripNameRequired: Please enter a trip name.
   SaveTripButton:
     cantSaveText: Cannot save
-    cantSaveTooltip: Only itineraries that include transit and no rentals or ride hailing can be monitored.
+    cantSaveTooltip: Only itineraries that include transit and no rentals or ride
+      hailing can be monitored.
     saveTripText: Save trip
     signInText: Sign in to save trip
     signInTooltip: Please sign in to save trip.
   SessionTimeout:
-    body: Your session will expire within a minute. Press 'Continue Session' to keep your search.
+    body: Your session will expire within a minute. Press 'Continue Session' to keep
+      your search.
     header: Session about to timeout!
     keepSession: Continue Session
   SettingsPreview:
@@ -422,7 +425,9 @@ components:
   # Used in both desktop and mobile
   StopViewer:
     displayStopId: "<strong>Stop ID</strong>: {stopId}"
-    flexStop: This is a flex stop. Vehicles will drop off and pick up passengers in this flexible zone by request. You may have to call ahead for service in this area.
+    flexStop: This is a flex stop. Vehicles will drop off and pick up passengers in
+      this flexible zone by request. You may have to call ahead for service in this
+      area.
     header: Stop Viewer
     loadingText: Loading Stop...
     noStopsFound: No stop times found for date.
@@ -445,14 +450,16 @@ components:
     switchLocations: Switch locations
   TermsOfUsePane:
     confirmDeletionPrompt: >
-      Removing your consent to storage of historical trips will cause your trip history to be deleted. 
-      Are you sure you want to continue?
+      Removing your consent to storage of historical trips will cause your trip history
+      to be deleted.  Are you sure you want to continue?
     mustAgreeToTerms: You must agree to the terms of service to continue.
     termsOfServiceStatement: >
       I confirm that I am at least 18 years old, and I have read and
-      consent to the <termsOfUseLink>Terms of service</termsOfUseLink > for using the Trip Planner.
+      consent to the <termsOfUseLink>Terms of service</termsOfUseLink > for using
+      the Trip Planner.
     termsOfStorageStatement: >
-      Optional: I consent to the Trip Planner storing my historical planned trips in order to
+      Optional: I consent to the Trip Planner storing my historical planned trips
+      in order to
       improve transit services in my area. <termsOfStorageLink>More info...</termsOfStorageLink>
   TransitVehicleOverlay:
     # keys designed to match API output
@@ -465,13 +472,16 @@ components:
     checkingItineraryExistence: Checking itinerary existence for each day of the week...
     selectAtLeastOneDay: Please select at least one day to monitor.
     selectedItinerary: "Selected itinerary:"
-    tripIsAvailableOnDaysIndicated: Your trip is available on the days of the week as indicated above.
+    tripIsAvailableOnDaysIndicated: Your trip is available on the days of the week
+      as indicated above.
     tripDaysPrompt: What days do you take this trip?
     tripNamePrompt: "Please provide a name for this trip:"
     # This is shown in a tooltip.
     tripNotAvailableOnDay: Trip not available on {repeatedDay}
-    unsavedChangesNewTrip: You haven't saved your new trip yet. If you leave, it will be lost.
-    unsavedChangesExistingTrip: You haven't saved your trip yet. If you leave, changes will be lost.
+    unsavedChangesNewTrip: You haven't saved your new trip yet. If you leave, it will
+      be lost.
+    unsavedChangesExistingTrip: You haven't saved your trip yet. If you leave, changes
+      will be lost.
   TripNotificationsPane:
     advancedSettings: Advanced settings
     altRouteRecommended: An alternative route or transfer point is recommended
@@ -496,8 +506,10 @@ components:
   TripStatusRenderers:
     active:
       delayedHeading: "Trip is in progress and is delayed {formattedDuration}!"
-      description: "Trip is due to arrive at the destination at {arrivalTime, time, short}."
-      earlyHeading: "Trip is in progress and is arriving {formattedDuration} earlier than expected!"
+      description: "Trip is due to arrive at the destination at {arrivalTime, time,\
+        \ short}."
+      earlyHeading: "Trip is in progress and is arriving {formattedDuration} earlier\
+        \ than expected!"
       noDataHeading: Trip is in progress (no realtime updates available).
       onTimeHeading: Trip is in progress and is about on time.
     base:
@@ -518,7 +530,8 @@ components:
       heading: Trip is not possible today
     noLongerPossible:
       description: >
-        The trip planner was unable to find your trip on any selected days of the week.
+        The trip planner was unable to find your trip on any selected days of the
+        week.
         Please try re-planning your itinerary to find an alternative route.
       heading: Trip is no longer possible
     notCalculated:
@@ -529,8 +542,10 @@ components:
       description: Unsnooze trip monitoring to see the updated status.
       heading: Trip monitoring is snoozed for today
     upcoming:
-      nextTripBegins: Next trip starts on {tripDatetime, date, ::eeeee yyyyMMdd} at {tripDatetime, time, short}.
-      tripBegins: Trip is due to begin at {tripStart, time, short}. (Realtime monitoring will begin at {monitoringStart, time, short}.)
+      nextTripBegins: Next trip starts on {tripDatetime, date, ::eeeee yyyyMMdd} at
+        {tripDatetime, time, short}.
+      tripBegins: Trip is due to begin at {tripStart, time, short}. (Realtime monitoring
+        will begin at {monitoringStart, time, short}.)
       tripStartIsDelayed: Trip start time is delayed ${duration}!
       tripStartIsEarly: Trip start time is happening ${duration} earlier than expected!
       tripStartsSoonNoUpdates: Trip is starting soon (no realtime updates available).
@@ -539,7 +554,8 @@ components:
     itinerary: Itinerary
   TripSummaryPane:
     happensOnDays: "Happens on: <strong>{days}</strong>"
-    notifications: "Notifications: <strong>{leadTimeInMinutes} min. before scheduled departure</strong>"
+    notifications: "Notifications: <strong>{leadTimeInMinutes} min. before scheduled\
+      \ departure</strong>"
     notificationsDisabled: "Notifications: <strong>Disabled</strong>"
   TripTools:
     # Note to translator: copyLink, linkCopied, print, reportIssue are width-constrained.
@@ -548,7 +564,7 @@ components:
     linkCopied: Copied
     reportIssue: Report Issue
     reportEmailSubject: Reporting an Issue with OpenTripPlanner
-    reportEmailTemplate: |+
+    reportEmailTemplate: |
       *** INSTRUCTIONS TO USER ***
       This feature allows you to email a report to site administrators for review.
       Please fill out the prompts below and send using your regular email program.
@@ -572,9 +588,11 @@ components:
     routeHeader: "Route: <strong>{routeShortName}</strong> {routeLongName}"
     viewStop: View
   UserAccountScreen:
-    confirmDelete: Are you sure you would like to delete your user account? Once you do so, it cannot be recovered.
+    confirmDelete: Are you sure you would like to delete your user account? Once you
+      do so, it cannot be recovered.
   UserSettings:
-    confirmDeletion: You have recent searches and/or places stored. Disabling storage of recent places/searches will remove these items. Continue?
+    confirmDeletion: You have recent searches and/or places stored. Disabling storage
+      of recent places/searches will remove these items. Continue?
     favoriteStops: Favorite stops
     myPreferences: My preferences
     mySavedPlaces: My saved places (<manageLink>manage</manageLink>)
@@ -585,11 +603,11 @@ components:
     rememberSearches: Remember recent searches/places?
     stopId: "Stop ID: {stopId}"
     storageDisclaimer: >
-      Any preferences, places, or settings you opt 
-      to save will be stored in the local storage of your browser. 
-      TriMet will not have access to knowledge about your home, work, 
-      or any other location. At any point you can opt to turn off 
-      remembering recent places/searches and clear your saved home/work locations and favorite stops.
+      Any preferences, places, or settings you opt  to save will be stored in the
+      local storage of your browser.  TriMet will not have access to knowledge about
+      your home, work,  or any other location. At any point you can opt to turn off  remembering
+      recent places/searches and clear your saved home/work locations and favorite
+      stops.
   UserTripSettings:
     forgetOptions: Forget my options
     rememberOptions: Remember trip options
@@ -756,7 +774,9 @@ util:
     networkUnavailable: The {network} network is unavailable at this moment.
     noTripFound: No trip found.
     noTripFoundForMode: No trip found for {modes}.
-    noTripFoundReason: There may be no transit service within the maximum specified distance or at the specified time, or your start or end point might not be safely accessible.
+    noTripFoundReason: There may be no transit service within the maximum specified
+      distance or at the specified time, or your start or end point might not be safely
+      accessible.
     noTripFoundWithReason: "{noTripFound} {reason}"
     titleBarRouteId: "Route {routeId}"
     titleBarStopId: "Stop {stopId}"
