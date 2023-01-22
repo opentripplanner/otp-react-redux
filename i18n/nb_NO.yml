@@ -1,3 +1,89 @@
 actions:
   callTaker:
     callSaveError: 'Kunne ikke lagre anrop: {err}'
+  user:
+    smsInvalidCode: Koden du har skrevet inn er ugyldig. Prøv igjen.
+    confirmDeletePlace: Fjern dette stedet?
+components:
+  RouteViewer:
+    shortTitle: Vis ruter
+    title: Ruteviser
+    details: ' '
+    findARoute: Finn en rute
+  SavedTripEditor:
+    tripNotifications: Turmerknader
+    saveNewTrip: Lagre ny tur
+    editSavedTrip: Rediger lagret tur
+    tripInformation: Turinfo
+  SavedTripList:
+    noSavedTrips: Du har ingen lagrede turer
+    pause: Pause
+    resume: Fortsett
+    myTrips: Mine turer
+  StackedPaneDisplay:
+    savePreferences: Lagre innstillinger
+  BatchRoutingPanel:
+    shortTitle: Planlegg tur
+  CallTakerPanel:
+    advancedOptions: Avanserte innstillinger
+    groupSize: 'Gruppestørrelse:'
+  ExistingAccountDisplay:
+    places: Favorittsteder
+    mainTitle: Mine innstillinger
+    terms: Vilkår
+    notifications: Merknader
+    a11y: Tilgjengelighet
+  BatchSettings:
+    settings: Turinnstillinger
+    planTripTooltip: Planlegg tur
+    destination: mål
+  FavoritePlaceList:
+    editThisPlace: Rediger dette stedet
+    addAnotherPlace: Legg til nytt sted
+  AppMenu:
+    callHistory: Anropshistorikk
+    closeMenu: Lukk menyen
+  BatchResultsScreen:
+    showResults: Vis resultater
+  Place:
+    deleteThisPlace: Slett dette stedet
+  ErrorMessage:
+    warning: Advarsel
+  NewAccountWizard:
+    terms: Opprett ny konto
+    verify: Bekreft din e-postadresse
+    places: Legg til dine steder
+  BatchSearchScreen:
+    header: Planlegg turen din
+  DateTimeOptions:
+    now: Nå
+  MapLayers:
+    streets: Gater
+  FavoritePlaceScreen:
+    addNewPlace: Legg til nytt sted
+    editPlace: Rediger {placeName}
+    editPlaceGeneric: Rediger sted
+  LocationSearch:
+    setDestination: Sett mål
+  PhoneNumberEditor:
+    invalidPhone: Skriv inn et gyldig telefonnummer.
+    verified: Bekreftet
+    requestNewCode: Forespør ny kode
+    placeholder: Skriv inn dit telefonnummer
+    sendVerificationText: Send bekreftelsestekst
+    verificationCode: Bekreftelseskode
+    verify: Bekreft
+  PlanFirstLastButtons:
+    last: Sist
+    first: Først
+    next: Neste
+    previous: Forrige
+  PlanTripButton:
+    planTrip: Planlegg tur
+  SaveTripButton:
+    saveTripText: Lagre tur
+    cantSaveText: Kan ikke lagre
+  SessionTimeout:
+    keepSession: Fortsett økt
+  RouteDetails:
+    moreDetails: Flere detaljer
