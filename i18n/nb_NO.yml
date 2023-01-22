@@ -1,1 +1,3 @@
-{}
+actions:
+  callTaker:
+    callSaveError: 'Kunne ikke lagre anrop: {err}'
