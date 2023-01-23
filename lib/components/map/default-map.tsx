@@ -263,12 +263,16 @@ class DefaultMap extends Component {
       ...baseLayer,
       name: getLayerName(baseLayer, config, intl)
     }))
+    const baseLayerUrls = baseLayersWithNames?.map((bl) => bl.url)
+    const baseLayerNames = baseLayersWithNames?.map((bl) => bl.name)
 
     return (
       <MapContainer>
         <BaseMap
-          // Only 1 base layer is supported at the moment
-          baseLayer={baseLayersWithNames?.[0]?.url}
+          baseLayer={
+            baseLayerUrls?.length > 1 ? baseLayerUrls : baseLayerUrls?.[0]
+          }
+          baseLayerNames={baseLayerNames}
           center={[lat, lon]}
           mapLibreProps={{ reuseMaps: true }}
           maxZoom={maxZoom}

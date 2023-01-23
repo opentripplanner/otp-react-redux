@@ -130,8 +130,8 @@ components:
     closeMenu: Close Menu
     fieldTrip: Field Trip
     mailables: Mailables
-    menuItemIconAlt: "Icon for {label} menu item"
     openMenu: Open Menu
+    skipNavigation: Skip navigation
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
   BatchResultsScreen:
@@ -425,9 +425,12 @@ components:
     zoomToStop: Zoom to stop
 
   SubNav:
+    languages: "Languages"
     myAccount: My account
+    selectALanguage: Select a language
     settings: Settings
     trips: Trips
+    userMenu: Profile options
   SwitchButton:
     defaultContent: Switch
     switchLocations: Switch locations

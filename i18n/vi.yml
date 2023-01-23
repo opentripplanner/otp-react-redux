@@ -399,7 +399,6 @@ components:
       \ {# xe đạp của {company} gần đó}\n }\n"
   AppMenu:
     mailables: Sẵn sàng để đăng
-    menuItemIconAlt: Biểu tượng cho mục menu {label}
     openMenu: Mở thực đơn
     callHistory: Lịch sử cuộc gọi
     closeMenu: Đóng menu
