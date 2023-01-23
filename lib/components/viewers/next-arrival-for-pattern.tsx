@@ -77,6 +77,7 @@ function NextArrivalForPattern({
   return (
     <div
       className="next-arrival-row"
+      role="listitem"
       style={{
         backgroundColor: routeColor,
         color: getMostReadableTextColor(routeColor, route?.textColor)

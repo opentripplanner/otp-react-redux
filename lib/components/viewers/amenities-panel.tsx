@@ -28,7 +28,9 @@ const StyledParkAndRideIcon = styled.div`
   padding-left: 1px;
 `
 
-const parkAndRideMarker = <StyledParkAndRideIcon>P</StyledParkAndRideIcon>
+const parkAndRideMarker = (
+  <StyledParkAndRideIcon aria-hidden>P</StyledParkAndRideIcon>
+)
 
 type Props = {
   configCompanies: ConfiguredCompany[]
@@ -133,7 +135,7 @@ class AmenitiesPanel extends Component<Props, State> {
           <li className="related-item" key={key}>
             <div className="item-label">
               <div className="overflow-ellipsis" title={label}>
-                {company.icon}
+                <span aria-hidden>{company.icon}</span>
                 {label}
               </div>
             </div>
