@@ -161,7 +161,7 @@ const Dropdown = ({
       id={`${id}-wrapper`}
       onKeyDown={_handleKeyDown}
       ref={containerRef}
-      role="group"
+      role="listitem"
       style={{ float: pullRight ? 'right' : 'left' }}
     >
       <DropdownButton
