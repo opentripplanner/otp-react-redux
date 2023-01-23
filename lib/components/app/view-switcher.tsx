@@ -1,7 +1,7 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { useHistory, withRouter } from 'react-router'
+import { useHistory } from 'react-router'
 import React from 'react'
 
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
@@ -66,7 +66,9 @@ const ViewSwitcher = ({
       <Button
         bsStyle="link"
         className={
-          activePanel === MainPanelContent.ROUTE_VIEWER ? 'active' : ''
+          activePanel === MainPanelContent.ROUTE_VIEWER && !accountsActive
+            ? 'active'
+            : ''
         }
         onClick={_showRouteViewer}
       >
@@ -82,12 +84,12 @@ const mapStateToProps = (state: any) => {
   const { mainPanelContent } = state.otp.ui
 
   // Reverse the ID to string mapping
-  const activePanels: [string, number] | undefined = Object.entries(
-    MainPanelContent
-  ).find((keyValuePair) => keyValuePair[1] === mainPanelContent)
+  const activePanels = Object.entries(MainPanelContent).find(
+    (keyValuePair) => keyValuePair[1] === mainPanelContent
+  )
   // activePanel is array of form [string, ID]
   // The trip planner has id null
-  const activePanel: number | null = (activePanels && activePanels[1]) || null
+  const activePanel = (activePanels && activePanels[1]) || null
 
   return {
     // TODO: more reliable way of detecting these things, such as terms of storage page
@@ -100,7 +102,4 @@ const mapDispatchToProps = {
   setMainPanelContent
 }
 
-export default withRouter(
-  // @ts-expect-error TODO: not sure why this is failing, it works.
-  connect(mapStateToProps, mapDispatchToProps)(ViewSwitcher)
-)
+export default connect(mapStateToProps, mapDispatchToProps)(ViewSwitcher)
