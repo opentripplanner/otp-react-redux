@@ -142,7 +142,6 @@ function BatchSettings({
   const _updateExpanded = (type: string) => (expanded === type ? null : type)
 
   const _toggleDateTime = () => setExpanded(_updateExpanded('DATE_TIME'))
-
   return (
     <>
       {/* <ModeButtonsFullWidthContainer className="hidden-lg">
@@ -156,6 +155,7 @@ function BatchSettings({
         />
         <ModeButtonsContainerCompressed>
           <MetroModeSelector
+            fillModeIcons={false}
             modeButtons={buttonsWithSettings}
             onSettingsUpdate={setModeSettingValue}
             onToggleModeButton={toggleModeButton}
