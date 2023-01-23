@@ -50,19 +50,19 @@ const MultiWrapper = styled.span<{ italic?: boolean; multi?: boolean }>`
     multi
       ? `
   /* All Route blocks start with only right side triangulated */
-  section {
+  span {
     clip-path: polygon(0% 0, 100% 0%, 75% 100%, 0% 100%);
     margin-right: 2px;
     max-width: 100px;
     padding-left: 5px;
     padding-right: 10px;
   }
-  section:first-of-type {
+  span:first-of-type {
     border-bottom-right-radius: 0!important;
     border-top-right-radius: 0!important;
   }
   /* Middle route block(s), with both sides triangulated */
-  section:not(:first-of-type):not(:last-of-type) {
+  span:not(:first-of-type):not(:last-of-type) {
     border-radius: 0;
     clip-path: polygon(25% 0, 100% 0%, 75% 100%, 0% 100%);
     margin-left: -10px;
@@ -70,7 +70,7 @@ const MultiWrapper = styled.span<{ italic?: boolean; multi?: boolean }>`
     padding-right: 11px;
   }
   /* Last route block, with only left side triangulated */
-  section:last-of-type {
+  span:last-of-type {
     border-bottom-left-radius: 0!important;
     border-top-left-radius: 0!important;
     clip-path: polygon(25% 0, 100% 0%, 100% 100%, 0% 100%);
