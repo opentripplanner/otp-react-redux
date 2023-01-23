@@ -43,6 +43,7 @@ const StackedPaneDisplay = ({
 
       <FormNavigationButtons
         backButton={{
+          disabled: buttonClicked === 'okay',
           onClick: () => {
             setButtonClicked('back')
             updateBeingCanceled(true)
@@ -56,6 +57,7 @@ const StackedPaneDisplay = ({
             )
         }}
         okayButton={{
+          disabled: buttonClicked === 'okay',
           onClick: () => {
             setButtonClicked('okay')
           },
