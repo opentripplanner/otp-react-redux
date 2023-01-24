@@ -170,6 +170,14 @@ input[type="text"]::-ms-clear {
   padding: 1rem 0;
 }
 
+/* Header image or title */
+/* If an icon is used, visually-hide the title (but keep it visible to screen readers). */
+.with-icon div.navbar-title {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
 /* Buttons */
 
 button.header,

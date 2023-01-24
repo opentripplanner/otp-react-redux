@@ -1,6 +1,7 @@
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { Itinerary } from '@opentripplanner/types'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
 import React from 'react'
@@ -8,6 +9,7 @@ import styled from 'styled-components'
 
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
 
+import { ItineraryDescription } from './default/itinerary-description'
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
 
@@ -20,10 +22,19 @@ const IssueButton = styled.button`
   padding: 2px 4px;
 `
 
+// h1 element for a11y purposes
+
+const InvisibleHeader = styled.h1`
+  height: 0;
+  overflow: hidden;
+  width: 0;
+`
+
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
   errors,
   itineraries,
+  itinerary,
   itineraryIsExpanded,
   onSortChange,
   onSortDirChange,
@@ -39,6 +50,7 @@ export default function NarrativeItinerariesHeader({
   customBatchUiBackground?: boolean
   errors: unknown[]
   itineraries: unknown[]
+  itinerary: Itinerary
   itineraryIsExpanded: boolean
   onSortChange: () => void
   onSortDirChange: () => void
@@ -84,6 +96,9 @@ export default function NarrativeItinerariesHeader({
               <FormattedMessage id="components.NarrativeItinerariesHeader.viewAll" />
             </IconWithText>
           </button>
+          <InvisibleHeader>
+            <ItineraryDescription itinerary={itinerary} />
+          </InvisibleHeader>
           {itineraryIsExpanded && (
             // marginLeft: auto is a way of making something "float right"
             // within a flex container
@@ -95,7 +110,7 @@ export default function NarrativeItinerariesHeader({
         </>
       ) : (
         <>
-          {showHeaderText && (
+          {showHeaderText ? (
             <div
               style={{ flexGrow: 1 }}
               title={
@@ -114,13 +129,19 @@ export default function NarrativeItinerariesHeader({
                     )
               }
             >
-              <span style={{ marginRight: '10px' }}>
+              <h1
+                style={{
+                  display: 'inline',
+                  fontSize: '15px',
+                  marginRight: '10px'
+                }}
+              >
                 {pending ? (
                   <FormattedMessage id="components.NarrativeItinerariesHeader.searching" />
                 ) : (
                   itinerariesFound
                 )}
-              </span>
+              </h1>
               {errors.length > 0 && (
                 <IssueButton onClick={onToggleShowErrors}>
                   <IconWithText Icon={ExclamationTriangle}>
@@ -129,6 +150,8 @@ export default function NarrativeItinerariesHeader({
                 </IssueButton>
               )}
             </div>
+          ) : (
+            <InvisibleHeader>{itinerariesFound}</InvisibleHeader>
           )}
           <div
             style={{

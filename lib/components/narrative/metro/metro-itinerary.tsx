@@ -363,9 +363,6 @@ class MetroItinerary extends NarrativeItinerary {
         className={`option metro-itin${active ? ' active' : ''}${
           expanded ? ' expanded' : ''
         }`}
-        onMouseEnter={this._onMouseEnter}
-        onMouseLeave={this._onMouseLeave}
-        role="presentation"
       >
         <div
           className="header"
@@ -374,6 +371,8 @@ class MetroItinerary extends NarrativeItinerary {
           // first time?
           // eslint-disable-next-line @typescript-eslint/no-empty-function
           onKeyDown={() => {}}
+          onMouseEnter={this._onMouseEnter}
+          onMouseLeave={this._onMouseLeave}
           // TODO: use _onHeaderClick for tap only -- this will require disabling
           // this onClick handler after a touchStart
           // TODO: CORRECT THIS ARIA ROLE

@@ -1,76 +1,83 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-import { withRouter } from 'react-router'
-import React, { Component } from 'react'
+import { FormattedMessage, useIntl } from 'react-intl'
+import { useHistory } from 'react-router'
+import React from 'react'
 
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 
 type Props = {
+  accountsActive: boolean
   activePanel: number | null
-  intl: IntlShape
-  setMainPanelContent: (panel?: number | null) => void
-  sticky: boolean
+  setMainPanelContent: (payload: number | null) => void
+  sticky?: boolean
 }
-
 /**
  * This component is a switcher between
  * the main views of the application.
  */
-class ViewSwitcher extends Component<Props> {
-  _showRouteViewer = () => {
-    this.props.setMainPanelContent(null)
-    this.props.setMainPanelContent(MainPanelContent.ROUTE_VIEWER)
+const ViewSwitcher = ({
+  accountsActive,
+  activePanel,
+  setMainPanelContent,
+  sticky
+}: Props) => {
+  const history = useHistory()
+  const intl = useIntl()
+
+  const _showRouteViewer = () => {
+    setMainPanelContent(MainPanelContent.ROUTE_VIEWER)
   }
 
-  _showTripPlanner = () => {
-    this.props.setMainPanelContent(null)
+  const _showTripPlanner = () => {
+    if (accountsActive) {
+      // Go up to root while preserving query parameters
+      history.push('..' + history.location.search)
+    } else {
+      setMainPanelContent(null)
+    }
   }
 
-  render() {
-    const { activePanel, intl, sticky } = this.props
+  const tripPlannerActive = activePanel === null
+  const routeViewerActive = activePanel === MainPanelContent.ROUTE_VIEWER
 
-    const tripPlannerActive = activePanel === null
-    const routeViewerActive = activePanel === MainPanelContent.ROUTE_VIEWER
-
-    return (
-      <div
-        aria-label={intl.formatMessage({
-          id: 'components.ViewSwitcher.switcher'
-        })}
-        className="view-switcher"
-        id="view-switcher"
-        role="group"
-        style={
-          sticky
-            ? {
-                height: '100%',
-                left: 0,
-                position: 'absolute',
-                width: '100%'
-              }
-            : {}
-        }
+  return (
+    <div
+      aria-label={intl.formatMessage({
+        id: 'components.ViewSwitcher.switcher'
+      })}
+      className="view-switcher"
+      id="view-switcher"
+      role="group"
+      style={
+        sticky
+          ? {
+              height: '100%',
+              left: 0,
+              position: 'absolute',
+              width: '100%'
+            }
+          : {}
+      }
+    >
+      <Button
+        aria-controls="view-switcher"
+        bsStyle="link"
+        className={`${tripPlannerActive && 'active'}`}
+        onClick={_showTripPlanner}
       >
-        <Button
-          aria-controls="view-switcher"
-          bsStyle="link"
-          className={`${tripPlannerActive && 'active'}`}
-          onClick={this._showTripPlanner}
-        >
-          <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
-        </Button>
-        <Button
-          aria-controls="view-switcher"
-          bsStyle="link"
-          className={`${routeViewerActive && 'active'}`}
-          onClick={this._showRouteViewer}
-        >
-          <FormattedMessage id="components.RouteViewer.shortTitle" />
-        </Button>
-      </div>
-    )
-  }
+        <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
+      </Button>
+      <Button
+        aria-controls="view-switcher"
+        bsStyle="link"
+        className={`${routeViewerActive && 'active'}`}
+        onClick={_showRouteViewer}
+      >
+        <FormattedMessage id="components.RouteViewer.shortTitle" />
+      </Button>
+    </div>
+  )
 }
 
 // connect to the redux store
@@ -87,6 +94,8 @@ const mapStateToProps = (state: any) => {
   const activePanel = (activePanelPair && activePanelPair[1]) || null
 
   return {
+    // TODO: more reliable way of detecting these things, such as terms of storage page
+    accountsActive: state.router.location.pathname.includes('/account'),
     activePanel
   }
 }
@@ -95,7 +104,4 @@ const mapDispatchToProps = {
   setMainPanelContent
 }
 
-export default withRouter(
-  // @ts-expect-error TODO: figure out what's going on here
-  connect(mapStateToProps, mapDispatchToProps)(injectIntl(ViewSwitcher))
-)
+export default connect(mapStateToProps, mapDispatchToProps)(ViewSwitcher)
