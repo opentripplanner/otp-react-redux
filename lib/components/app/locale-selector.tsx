@@ -51,10 +51,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
           role="option"
           tabIndex={0}
         >
-          <UnstyledButton
-            style={locale === currentLocale ? { fontWeight: 'bold' } : {}}
-            tabIndex={-1}
-          >
+          <UnstyledButton tabIndex={-1}>
             {languageOptions[locale].name}
           </UnstyledButton>
         </li>

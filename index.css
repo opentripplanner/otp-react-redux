@@ -121,6 +121,11 @@ input[type="text"]::-ms-clear {
   outline-offset: -2px;
 }
 
+.app-menu button[aria-selected="true"],
+#locale-selector button[aria-selected="true"] {
+  font-weight: bold;
+}
+
 .skip-nav-button {
   color: initial;
   position: fixed;

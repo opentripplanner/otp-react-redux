@@ -52,7 +52,9 @@ type menuItem = {
   iconUrl?: string
   id: string
   isRadio?: boolean
+  isSelected?: boolean
   label: string | JSX.Element
+  lang?: string
   onClick?: () => void
   subMenuDivider: boolean
 }
@@ -112,7 +114,9 @@ class AppMenu extends Component<
           iconUrl,
           id,
           isRadio,
+          isSelected,
           label: configLabel,
+          lang,
           onClick,
           subMenuDivider
         } = menuItem
@@ -125,6 +129,7 @@ class AppMenu extends Component<
 
         return (
           <AppMenuItem
+            aria-selected={isSelected || undefined}
             className={subMenuDivider ? 'app-menu-divider' : undefined}
             href={href}
             icon={
@@ -135,9 +140,10 @@ class AppMenu extends Component<
               )
             }
             id={id}
-            isRadio={isRadio}
             key={id}
+            lang={lang}
             onClick={onClick}
+            role={isRadio ? 'option' : undefined}
             subItems={this._addExtraMenuItems(children) || undefined}
             text={label}
           />
@@ -170,12 +176,9 @@ class AppMenu extends Component<
           iconType: <svg />,
           id: locale,
           isRadio: true,
-          label:
-            activeLocale === locale ? (
-              <strong>{languageOptions[locale].name}</strong>
-            ) : (
-              languageOptions[locale].name
-            ),
+          isSelected: activeLocale === locale,
+          label: languageOptions[locale].name,
+          lang: locale,
           onClick: () => setLocale(locale),
           subMenuDivider: false
         })),
