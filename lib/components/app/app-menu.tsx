@@ -305,7 +305,6 @@ const mapDispatchToProps = {
 }
 
 export default injectIntl(
-  // @ts-expect-error TODO: type setMainPanelContent correctly
   withRouter(connect(mapStateToProps, mapDispatchToProps)(AppMenu))
 )
 
