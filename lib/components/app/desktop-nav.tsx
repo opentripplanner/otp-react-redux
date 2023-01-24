@@ -62,7 +62,6 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
             </div>
           </Navbar.Brand>
 
-          {/* @ts-expect-error something is deeply wrong with the types on this component */}
           <ViewSwitcher sticky />
 
           <Nav pullRight>
