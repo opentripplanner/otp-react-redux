@@ -7,8 +7,9 @@ interface Props extends HTMLAttributes<HTMLElement> {
   href?: string
   icon?: JSX.Element
   isDropdown?: boolean
+  isRadio?: boolean
   onClick?: () => void
-  subItems?: unknown[]
+  subItems?: JSX.Element[]
   text: JSX.Element | string
 }
 
@@ -67,7 +68,8 @@ export default class AppMenuItem extends Component<Props, State> {
   }
 
   render(): JSX.Element {
-    const { icon, id, onClick, subItems, text, ...otherProps } = this.props
+    const { icon, id, isRadio, onClick, subItems, text, ...otherProps } =
+      this.props
     const { isExpanded } = this.state
     const Element = otherProps.href ? 'a' : 'button'
     const containerId = `${id}-container`
@@ -79,6 +81,7 @@ export default class AppMenuItem extends Component<Props, State> {
           id={id}
           onClick={subItems ? this._toggleSubmenu : onClick}
           onKeyDown={this._handleKeyDown}
+          role={isRadio ? 'option' : undefined}
           {...otherProps}
         >
           <span>{icon}</span>

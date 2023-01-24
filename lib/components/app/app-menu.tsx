@@ -51,6 +51,7 @@ type menuItem = {
   iconType: string | JSX.Element
   iconUrl?: string
   id: string
+  isRadio?: boolean
   label: string | JSX.Element
   onClick?: () => void
   subMenuDivider: boolean
@@ -100,7 +101,7 @@ class AppMenu extends Component<
     document.querySelector('main')?.focus()
   }
 
-  _addExtraMenuItems = (menuItems?: menuItem[]) => {
+  _addExtraMenuItems = (menuItems?: menuItem[] | null) => {
     return (
       menuItems &&
       menuItems.map((menuItem) => {
@@ -110,6 +111,7 @@ class AppMenu extends Component<
           iconType,
           iconUrl,
           id,
+          isRadio,
           label: configLabel,
           onClick,
           subMenuDivider
@@ -133,9 +135,10 @@ class AppMenu extends Component<
               )
             }
             id={id}
+            isRadio={isRadio}
             key={id}
             onClick={onClick}
-            subItems={this._addExtraMenuItems(children)}
+            subItems={this._addExtraMenuItems(children) || undefined}
             text={label}
           />
         )
@@ -166,6 +169,7 @@ class AppMenu extends Component<
         children: Object.keys(languageOptions).map((locale: string) => ({
           iconType: <svg />,
           id: locale,
+          isRadio: true,
           label:
             activeLocale === locale ? (
               <strong>{languageOptions[locale].name}</strong>
