@@ -86,13 +86,7 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
               <FormattedMessage id={`config.popups.${popupTarget}`} />
             </NavItemOnLargeScreens>
           )}
-          {configLanguages &&
-            // Ensure that > 1 valid language is defined
-            Object.keys(configLanguages).filter(
-              (key) => key !== 'allLanguages' && configLanguages[key].name
-            ).length > 1 && (
-              <LocaleSelector configLanguages={configLanguages} />
-            )}
+          <LocaleSelector configLanguages={configLanguages} />
           {showLogin && (
             <NavLoginButtonAuth0
               id="login-control"

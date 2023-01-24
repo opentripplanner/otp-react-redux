@@ -17,6 +17,7 @@ import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
+import { getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import startOver from '../util/start-over'
@@ -158,22 +159,22 @@ class AppMenu extends Component<
       toggleMailables
     } = this.props
 
-    const languageMenuItems: menuItem[] | undefined = configLanguages && [
+    const languageOptions: Record<string, any> | null =
+      getLanguageOptions(configLanguages)
+    const languageMenuItems: menuItem[] | null = languageOptions && [
       {
-        children: Object.keys(configLanguages)
-          .filter((locale) => locale !== 'allLanguages')
-          .map((locale) => ({
-            iconType: <svg />,
-            id: configLanguages[locale].name,
-            label:
-              activeLocale === locale ? (
-                <strong>{configLanguages[locale].name}</strong>
-              ) : (
-                configLanguages[locale].name
-              ),
-            onClick: () => setLocale(locale),
-            subMenuDivider: false
-          })),
+        children: Object.keys(languageOptions).map((locale: string) => ({
+          iconType: <svg />,
+          id: locale,
+          label:
+            activeLocale === locale ? (
+              <strong>{languageOptions[locale].name}</strong>
+            ) : (
+              languageOptions[locale].name
+            ),
+          onClick: () => setLocale(locale),
+          subMenuDivider: false
+        })),
         iconType: <GlobeAmericas />,
         id: 'app-menu-locale-selector',
         label: <FormattedMessage id="components.SubNav.languageSelector" />,
