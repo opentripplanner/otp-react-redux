@@ -41,7 +41,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
     >
       {Object.keys(languageOptions).map((locale: string) => (
         <li
-          aria-selected={locale === currentLocale}
+          aria-selected={locale === currentLocale || undefined}
           key={locale}
           lang={locale}
           onClick={() => setLocale(locale)}
