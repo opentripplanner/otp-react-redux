@@ -59,7 +59,8 @@ const StackedPaneDisplay = ({
         okayButton={{
           disabled: buttonClicked === 'okay',
           onClick: () => {
-            setButtonClicked('okay')
+            // Some browsers need this to happen after the formik action finishes firing
+            setTimeout(() => setButtonClicked('okay'), 10)
           },
           text:
             buttonClicked === 'okay' ? (
