@@ -1,9 +1,4 @@
-import React, { ReactElement } from 'react'
 import styled from 'styled-components'
-
-interface Props {
-  children: React.ReactNode
-}
 
 const Alert = styled.div`
   background-color: rgba(19, 193, 193, 0.2);
@@ -13,5 +8,4 @@ const Alert = styled.div`
   margin-bottom: 1em;
   padding: 0.75em 1em;
 `
-
 export default Alert
