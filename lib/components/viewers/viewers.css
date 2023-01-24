@@ -453,10 +453,9 @@
 .otp .trip-viewer .stop-name {
   font-size: 14px;
   margin-left: 10px;
+  overflow: hidden;
   padding-top: 8px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .otp .trip-viewer .stop-button-container {

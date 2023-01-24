@@ -554,7 +554,7 @@ components:
     bicyclesAllowed: Allowed
     header: Trip Viewer
     listOfRouteStops: List of stops on this route
-    tripDescription: Board at <strong>{boardAtStop}</strong> and disembark at <strong>{disembarkAtStop}</strong>
+    tripDescription: Board at {boardAtStop} and disembark at {disembarkAtStop}
     startOfTrip: Trip begins here
     endOfTrip: Trip ends here
     routeHeader: "Route: <strong>{routeShortName}</strong> {routeLongName}"
