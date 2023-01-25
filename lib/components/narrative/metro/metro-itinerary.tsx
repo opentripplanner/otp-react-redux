@@ -329,18 +329,6 @@ class MetroItinerary extends NarrativeItinerary {
       return getFormattedMode(leg.mode, intl)
     })
 
-    /* HACK: Passing the 'as' prop in a styled component is causing the CI tests to
-    fail, so use a different method to switch between h2/h3 and use inline styles. */
-    const ItineraryHeaderLevel = active && expanded ? 'h2' : 'h3'
-    const itineraryHeaderStyles = {
-      // place it in an unused grid cell so it doesn't add a row
-      gridColumn: 2,
-      gridRow: 2,
-      height: 0,
-      overflow: 'hidden',
-      width: 0
-    }
-
     const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
       const routeBlocks = routeLegs
         // If firstOnly is set to true, sort to ensure non-walk leg is first
@@ -425,9 +413,6 @@ class MetroItinerary extends NarrativeItinerary {
             {!mini && (
               <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
-                <ItineraryHeaderLevel style={itineraryHeaderStyles}>
-                  <FormattedList type="conjunction" value={modeStrings} />
-                </ItineraryHeaderLevel>
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
                 </Routes>
