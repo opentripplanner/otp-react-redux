@@ -57,12 +57,12 @@ const ItineraryWrapper = styled.div.attrs((props) => {
 
 // invisible header rendered for screen readers and a11y technologies
 const InvisibleHeader = styled.h3`
-  width: 0;
+  //place it in an unused grid cell so it doesn't add a row
+  grid-column: 2;
+  grid-row: 2;
   height: 0;
   overflow: hidden;
-  //place it in an unused grid cell so it doesn't add a row
-  grid-row: 2;
-  grid-column: 2;
+  width: 0;
 `
 
 const DepartureTimes = styled.span`
