@@ -429,7 +429,7 @@ class MetroItinerary extends NarrativeItinerary {
                 </Routes>
                 <ItineraryDetails
                   aria-label={intl.formatMessage({
-                    id: 'components.RouteDetails.moreDetails'
+                    id: 'components.ItinerarySummary.itineraryDetails'
                   })}
                 >
                   <PrimaryInfo>

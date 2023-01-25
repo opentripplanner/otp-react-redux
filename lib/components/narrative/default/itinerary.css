@@ -142,6 +142,11 @@
   font-size: large;
 }
 
+.otp .option.default-itin > .header .title h3 {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
 .otp .option.default-itin > .header .itinerary-attributes {
   float: right;
   min-width: 6em;

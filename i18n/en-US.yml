@@ -206,6 +206,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Form navigation
   ItinerarySummary:
+    itineraryDetails: Itinerary details
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
