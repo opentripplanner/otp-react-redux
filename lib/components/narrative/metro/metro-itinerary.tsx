@@ -331,8 +331,7 @@ class MetroItinerary extends NarrativeItinerary {
 
     /* HACK: Passing the 'as' prop in a styled component is causing the CI tests to
     fail, so use a different method to switch between h2/h3 and use inline styles. */
-
-    const ItineraryHeaderLevel = expanded ? 'h2' : 'h3'
+    const ItineraryHeaderLevel = active && expanded ? 'h2' : 'h3'
     const itineraryHeaderStyles = {
       // place it in an unused grid cell so it doesn't add a row
       gridColumn: 2,
