@@ -51,7 +51,6 @@ type menuItem = {
   iconType: string | JSX.Element
   iconUrl?: string
   id: string
-  isRadio?: boolean
   isSelected?: boolean
   label: string | JSX.Element
   lang?: string
@@ -113,7 +112,6 @@ class AppMenu extends Component<
           iconType,
           iconUrl,
           id,
-          isRadio,
           isSelected,
           label: configLabel,
           lang,
@@ -143,7 +141,7 @@ class AppMenu extends Component<
             key={id}
             lang={lang}
             onClick={onClick}
-            role={isRadio ? 'option' : undefined}
+            role={isSelected !== undefined ? 'option' : undefined}
             subItems={this._addExtraMenuItems(children) || undefined}
             text={label}
           />
@@ -175,7 +173,6 @@ class AppMenu extends Component<
         children: Object.keys(languageOptions).map((locale: string) => ({
           iconType: <svg />,
           id: locale,
-          isRadio: true,
           isSelected: activeLocale === locale,
           label: languageOptions[locale].name,
           lang: locale,
