@@ -33,10 +33,13 @@ function getDepartureOptions(intl: IntlShape) {
  */
 const SUPPORTED_TIME_FORMATS = [
   'h:mmaaaaa',
+  'h:mmaaaa',
   'hmmaaaaa',
   'haaaaa',
+  'haaaa',
   'haaa',
   'hmmaaa',
+  'hmmaaaa',
   'Hmm',
   'Hm',
   'H:mm',
