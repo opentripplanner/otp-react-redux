@@ -6,9 +6,8 @@ import React, { Component, HTMLAttributes, KeyboardEvent } from 'react'
 interface Props extends HTMLAttributes<HTMLElement> {
   href?: string
   icon?: JSX.Element
-  isDropdown?: boolean
   onClick?: () => void
-  subItems?: unknown[]
+  subItems?: JSX.Element[]
   text: JSX.Element | string
 }
 
@@ -81,7 +80,7 @@ export default class AppMenuItem extends Component<Props, State> {
           onKeyDown={this._handleKeyDown}
           {...otherProps}
         >
-          <span>{icon}</span>
+          <span aria-hidden>{icon}</span>
           <span>{text}</span>
           {subItems && (
             <span className="expand-menu-chevron">
@@ -91,7 +90,7 @@ export default class AppMenuItem extends Component<Props, State> {
         </Element>
         {subItems && (
           <AnimateHeight duration={500} height={isExpanded ? 'auto' : 0}>
-            <div className="sub-menu-container" id={containerId}>
+            <div className="sub-menu-container" id={containerId} role="group">
               {subItems}
             </div>
           </AnimateHeight>
