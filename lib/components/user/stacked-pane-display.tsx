@@ -1,6 +1,8 @@
 import { FormattedMessage } from 'react-intl'
 import React, { useState } from 'react'
 
+import { InlineLoading } from '../narrative/loading'
+
 import { PageHeading, StackedPaneContainer } from './styled'
 import FormNavigationButtons from './form-navigation-buttons'
 
@@ -22,6 +24,7 @@ const StackedPaneDisplay = ({
 }: Props): JSX.Element => {
   // Create indicator of if cancel button was clicked so that child components can know
   const [isBeingCanceled, updateBeingCanceled] = useState(false)
+  const [buttonClicked, setButtonClicked] = useState('')
 
   return (
     <>
@@ -40,16 +43,30 @@ const StackedPaneDisplay = ({
 
       <FormNavigationButtons
         backButton={{
+          disabled: buttonClicked === 'okay',
           onClick: () => {
+            setButtonClicked('back')
             updateBeingCanceled(true)
             onCancel()
           },
-          text: <FormattedMessage id="common.forms.cancel" />
+          text:
+            buttonClicked === 'back' ? (
+              <InlineLoading />
+            ) : (
+              <FormattedMessage id="common.forms.cancel" />
+            )
         }}
         okayButton={{
-          text: (
-            <FormattedMessage id="components.StackedPaneDisplay.savePreferences" />
-          ),
+          disabled: buttonClicked === 'okay',
+          onClick: () => {
+            setButtonClicked('okay')
+          },
+          text:
+            buttonClicked === 'okay' ? (
+              <InlineLoading />
+            ) : (
+              <FormattedMessage id="components.StackedPaneDisplay.savePreferences" />
+            ),
           type: 'submit'
         }}
       />

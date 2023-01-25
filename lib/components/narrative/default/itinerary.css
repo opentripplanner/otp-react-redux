@@ -24,13 +24,14 @@
   cursor: auto;
 }
 
-.otp .option.metro-itin:last-of-type div.header .itin-wrapper,
+.otp ul li.result:last-of-type div.header .itin-wrapper,
 .route-row:last-of-type .header {
   border: none;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-.otp .option.metro-itin:first-of-type div.header .itin-wrapper,
+
+.otp ul li.result:first-of-type div.header .itin-wrapper,
 .route-row:first-of-type .header {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
