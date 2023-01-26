@@ -121,6 +121,11 @@ input[type="text"]::-ms-clear {
   outline-offset: -2px;
 }
 
+.app-menu button[aria-selected="true"],
+#locale-selector li[aria-selected="true"] {
+  font-weight: bold;
+}
+
 .skip-nav-button {
   color: initial;
   position: fixed;
@@ -129,7 +134,7 @@ input[type="text"]::-ms-clear {
 .skip-nav-button:focus {
   padding: 7px 24px;
   top: 7px;
-  z-index: 100
+  z-index: 100;
 }
 
 .view-switcher {

@@ -126,6 +126,7 @@ components:
         other {# spaces available}
       }
   AppMenu:
+    appMenu: App Menu
     callHistory: Call History
     closeMenu: Close Menu
     fieldTrip: Field Trip
@@ -426,6 +427,8 @@ components:
     zoomToStop: Zoom to stop
 
   SubNav:
+    languageSelector: Select language
+    activeLanguage: Active language
     languages: "Languages"
     myAccount: My account
     selectALanguage: Select a language

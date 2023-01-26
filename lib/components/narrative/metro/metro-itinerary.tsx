@@ -55,16 +55,6 @@ const ItineraryWrapper = styled.div.attrs((props) => {
   padding: 0;
 `
 
-// invisible header rendered for screen readers and a11y technologies
-const InvisibleHeader = styled.h3`
-  //place it in an unused grid cell so it doesn't add a row
-  grid-column: 2;
-  grid-row: 2;
-  height: 0;
-  overflow: hidden;
-  width: 0;
-`
-
 const DepartureTimes = styled.span`
   align-self: flex-end;
   color: #0909098f;
@@ -232,6 +222,7 @@ type Props = {
   LegIcon: React.ReactNode
   accessibilityScoreGradationMap: { [value: number]: string }
   active: boolean
+  /** This is true when there is only one itinerary being shown and the itinerary-body is visible */
   expanded: boolean
   intl: IntlShape
   itinerary: Itinerary
@@ -384,7 +375,6 @@ class MetroItinerary extends NarrativeItinerary {
           expanded ? ' expanded' : ''
         }`}
       >
-        {/* Semantically this is incorrect, but this helps a11y tests pass. Buttons may not contain html. TODO FIX? */}
         <div
           className="header"
           onClick={handleClick}
@@ -396,7 +386,10 @@ class MetroItinerary extends NarrativeItinerary {
           onMouseLeave={this._onMouseLeave}
           // TODO: use _onHeaderClick for tap only -- this will require disabling
           // this onClick handler after a touchStart
+          // TODO: CORRECT THIS ARIA ROLE
           role="presentation"
+          // TODO test this with a screen reader
+          // tabIndex={expanded ? 1 : 0}
         >
           <ItineraryWrapper
             aria-label={intl.formatMessage(
@@ -420,9 +413,6 @@ class MetroItinerary extends NarrativeItinerary {
             {!mini && (
               <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
-                <InvisibleHeader as={expanded && 'h2'}>
-                  <FormattedList type="conjunction" value={modeStrings} />
-                </InvisibleHeader>
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
                 </Routes>

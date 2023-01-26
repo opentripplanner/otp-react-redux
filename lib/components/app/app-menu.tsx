@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Envelope } from '@styled-icons/fa-regular/Envelope'
 import { ExternalLinkSquareAlt } from '@styled-icons/fa-solid/ExternalLinkSquareAlt'
 import { FormattedMessage, injectIntl } from 'react-intl'
+import { GlobeAmericas, MapMarked } from '@styled-icons/fa-solid'
 import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
 import { Undo } from '@styled-icons/fa-solid/Undo'
@@ -16,6 +17,7 @@ import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
+import { getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import startOver from '../util/start-over'
@@ -23,7 +25,10 @@ import startOver from '../util/start-over'
 import AppMenuItem from './app-menu-item'
 
 type AppMenuProps = {
+  activeLocale: string
   callTakerEnabled?: boolean
+  // Typescript TODO configLanguageType
+  configLanguages?: Record<string, any>
   extraMenuItems?: menuItem[]
   fieldTripEnabled?: boolean
   location: { search: string }
@@ -32,7 +37,8 @@ type AppMenuProps = {
   reactRouterConfig?: { basename: string }
   resetAndToggleCallHistory?: () => void
   resetAndToggleFieldTrips?: () => void
-  setMainPanelContent: (panel: number) => void
+  setLocale: (locale: string) => void
+  setMainPanelContent: (panel: number | null) => void
   setPopupContent: (url: string) => void
   toggleMailables: () => void
 }
@@ -40,12 +46,15 @@ type AppMenuState = {
   isPaneOpen: boolean
 }
 type menuItem = {
-  children: menuItem[]
-  href: string
-  iconType: string
-  iconUrl: string
+  children?: menuItem[]
+  href?: string
+  iconType: string | JSX.Element
+  iconUrl?: string
   id: string
-  label: string
+  isSelected?: boolean
+  label: string | JSX.Element
+  lang?: string
+  onClick?: () => void
   subMenuDivider: boolean
 }
 
@@ -84,11 +93,16 @@ class AppMenu extends Component<
     this.setState({ isPaneOpen: !isPaneOpen })
   }
 
+  _showTripPlanner = () => {
+    this.props.setMainPanelContent(null)
+    this._togglePane()
+  }
+
   _handleSkipNavigation = () => {
     document.querySelector('main')?.focus()
   }
 
-  _addExtraMenuItems = (menuItems?: menuItem[]) => {
+  _addExtraMenuItems = (menuItems?: menuItem[] | null) => {
     return (
       menuItems &&
       menuItems.map((menuItem) => {
@@ -98,7 +112,10 @@ class AppMenu extends Component<
           iconType,
           iconUrl,
           id,
+          isSelected,
           label: configLabel,
+          lang,
+          onClick,
           subMenuDivider
         } = menuItem
         const { intl } = this.props
@@ -110,12 +127,22 @@ class AppMenu extends Component<
 
         return (
           <AppMenuItem
+            aria-selected={isSelected || undefined}
             className={subMenuDivider ? 'app-menu-divider' : undefined}
             href={href}
-            icon={<Icon iconType={iconType} iconUrl={iconUrl} />}
+            icon={
+              iconType && typeof iconType !== 'string' ? (
+                iconType
+              ) : (
+                <Icon iconType={iconType} iconUrl={iconUrl} />
+              )
+            }
             id={id}
             key={id}
-            subItems={this._addExtraMenuItems(children)}
+            lang={lang}
+            onClick={onClick}
+            role={isSelected !== undefined ? 'option' : undefined}
+            subItems={this._addExtraMenuItems(children) || undefined}
             text={label}
           />
         )
@@ -125,7 +152,9 @@ class AppMenu extends Component<
 
   render() {
     const {
+      activeLocale,
       callTakerEnabled,
+      configLanguages,
       extraMenuItems,
       fieldTripEnabled,
       intl,
@@ -133,8 +162,29 @@ class AppMenu extends Component<
       popupTarget,
       resetAndToggleCallHistory,
       resetAndToggleFieldTrips,
+      setLocale,
       toggleMailables
     } = this.props
+
+    const languageOptions: Record<string, any> | null =
+      getLanguageOptions(configLanguages)
+    const languageMenuItems: menuItem[] | null = languageOptions && [
+      {
+        children: Object.keys(languageOptions).map((locale: string) => ({
+          iconType: <svg />,
+          id: locale,
+          isSelected: activeLocale === locale,
+          label: languageOptions[locale].name,
+          lang: locale,
+          onClick: () => setLocale(locale),
+          subMenuDivider: false
+        })),
+        iconType: <GlobeAmericas />,
+        id: 'app-menu-locale-selector',
+        label: <FormattedMessage id="components.SubNav.languageSelector" />,
+        subMenuDivider: false
+      }
+    ]
 
     const { isPaneOpen } = this.state
     const { SvgIcon } = this.context
@@ -173,6 +223,16 @@ class AppMenu extends Component<
           width="320px"
         >
           <div className="app-menu" id="app-menu">
+            {/* This item is duplicated by the view-switcher, but only shown on mobile
+            when the view switcher isn't shown (using css) */}
+            <AppMenuItem
+              className="app-menu-trip-planner-link"
+              icon={<MapMarked />}
+              onClick={this._showTripPlanner}
+              text={
+                <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
+              }
+            />
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
             <AppMenuItem
@@ -215,6 +275,7 @@ class AppMenu extends Component<
               />
             )}
             {this._addExtraMenuItems(extraMenuItems)}
+            {this._addExtraMenuItems(languageMenuItems)}
           </div>
         </SlidingPane>
       </>
@@ -227,9 +288,11 @@ class AppMenu extends Component<
 // FIXME: type otp config
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const mapStateToProps = (state: Record<string, any>) => {
-  const { extraMenuItems } = state.otp.config
+  const { extraMenuItems, language } = state.otp.config
   return {
+    activeLocale: state.otp.ui.locale,
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
+    configLanguages: language,
     extraMenuItems,
     fieldTripEnabled: isModuleEnabled(state, Modules.FIELD_TRIP),
     mailablesEnabled: isModuleEnabled(state, Modules.MAILABLES),
@@ -240,6 +303,7 @@ const mapStateToProps = (state: Record<string, any>) => {
 const mapDispatchToProps = {
   resetAndToggleCallHistory: callTakerActions.resetAndToggleCallHistory,
   resetAndToggleFieldTrips: fieldTripActions.resetAndToggleFieldTrips,
+  setLocale: uiActions.setLocale,
   setMainPanelContent,
   setPopupContent: uiActions.setPopupContent,
   toggleMailables: callTakerActions.toggleMailables
@@ -257,7 +321,7 @@ const Icon = ({
   iconUrl
 }: {
   iconType: string
-  iconUrl: string
+  iconUrl?: string
 }): JSX.Element => {
   // FIXME: add types to context
   // @ts-expect-error No type on ComponentContext

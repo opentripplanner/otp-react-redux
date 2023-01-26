@@ -11,6 +11,7 @@ type AccountLink = {
 }
 
 interface NavLoginButtonAuth0Props extends HTMLAttributes<HTMLElement> {
+  id: string
   links: Array<AccountLink>
 }
 
