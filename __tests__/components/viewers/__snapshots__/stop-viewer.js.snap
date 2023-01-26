@@ -1369,7 +1369,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           isOnColoredBackground={true}
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                           >
                                             20
@@ -3692,7 +3692,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                           isOnColoredBackground={true}
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                           >
                                             20
@@ -5705,7 +5705,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           isOnColoredBackground={true}
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                           >
                                             20
@@ -8952,7 +8952,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           isOnColoredBackground={true}
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                           >
                                             20
@@ -9670,7 +9670,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           isOnColoredBackground={true}
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                           >
                                             36
@@ -10388,7 +10388,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           isOnColoredBackground={true}
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                           >
                                             94
@@ -11214,7 +11214,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           isOnColoredBackground={true}
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                           >
                                             94
@@ -15487,7 +15487,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           isOnColoredBackground={true}
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                           >
                                             20

@@ -1,33 +1,35 @@
-import React, { Component } from 'react'
-import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
+import { FormattedMessage } from 'react-intl'
+import React, { Component } from 'react'
 
+import { MobileScreens, setMobileScreen } from '../../actions/ui'
 import ConnectedSettingsSelectorPanel from '../form/connected-settings-selector-panel'
 import PlanTripButton from '../form/plan-trip-button'
-import { MobileScreens, setMobileScreen } from '../../actions/ui'
 
-import MobileNavigationBar from './navigation-bar'
 import MobileContainer from './container'
+import MobileNavigationBar from './navigation-bar'
 
-class MobileOptionsScreen extends Component {
+type Props = {
+  setMobileScreen: (screen: number) => void
+}
+class MobileOptionsScreen extends Component<Props> {
   _planTripClicked = () => {
     this.props.setMobileScreen(MobileScreens.RESULTS_SUMMARY)
   }
 
-  render () {
+  render() {
     return (
       <MobileContainer>
         <MobileNavigationBar
           backScreen={MobileScreens.SEARCH_FORM}
-          headerText={<FormattedMessage id='components.MobileOptions.header' />}
-          showBackButton
+          headerText={<FormattedMessage id="components.MobileOptions.header" />}
         />
 
-        <div className='options-main-content mobile-padding'>
+        <div className="options-main-content mobile-padding">
           <ConnectedSettingsSelectorPanel />
         </div>
 
-        <div className='options-lower-tray mobile-padding'>
+        <div className="options-lower-tray mobile-padding">
           <PlanTripButton onClick={this._planTripClicked} />
         </div>
       </MobileContainer>
@@ -37,12 +39,8 @@ class MobileOptionsScreen extends Component {
 
 // connect to the redux store
 
-const mapStateToProps = (state, ownProps) => {
-  return { }
-}
-
 const mapDispatchToProps = {
   setMobileScreen
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MobileOptionsScreen)
+export default connect(null, mapDispatchToProps)(MobileOptionsScreen)

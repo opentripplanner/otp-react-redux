@@ -7,7 +7,7 @@ import { setMainPanelContent, setViewedStop } from '../../../actions/ui'
 
 interface Props {
   leg: Leg
-  setMainPanelContent: (content: any) => void
+  setMainPanelContent: (content: number | null) => void
   setViewedStop: (payload: { stopId: string }) => void
 }
 
