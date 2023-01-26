@@ -1,32 +1,32 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { ExchangeAlt } from '@styled-icons/fa-solid/ExchangeAlt'
 import { useIntl } from 'react-intl'
-import React, { ReactNode } from 'react'
+import React from 'react'
 
 import * as formActions from '../../actions/form'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 interface Props {
-  content?: ReactNode
-  onClick?: () => void
   switchLocations: () => void
 }
 
-function SwitchButton({ content, onClick }: Props) {
+function SwitchButton({ switchLocations }: Props) {
   const intl = useIntl()
-
-  const buttonContent =
-    content ??
-    intl.formatMessage({ id: 'components.SwitchButton.defaultContent' })
-
   return (
     <Button
       className="switch-button"
-      onClick={props.onClick || props.switchLocations}
+      onClick={switchLocations}
       title={intl.formatMessage({
         id: 'components.SwitchButton.switchLocations'
       })}
     >
-      {buttonContent}
+      <StyledIconWrapper rotate90>
+        <ExchangeAlt />
+      </StyledIconWrapper>
+      <span className="hidden">
+        {intl.formatMessage({ id: 'components.SwitchButton.defaultContent' })}
+      </span>
     </Button>
   )
 }

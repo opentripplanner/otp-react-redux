@@ -1,11 +1,9 @@
 import { connect } from 'react-redux'
-import { ExchangeAlt } from '@styled-icons/fa-solid/ExchangeAlt'
 import { FormattedMessage } from 'react-intl'
 import React, { Component } from 'react'
 
 import * as uiActions from '../../actions/ui'
 import { MobileScreens } from '../../actions/ui-constants'
-import { StyledIconWrapper } from '../util/styledIcon'
 import BatchSettings from '../form/batch-settings'
 import DefaultMap from '../map/default-map'
 import LocationField from '../form/connected-location-field'
@@ -49,13 +47,7 @@ class BatchSearchScreen extends Component<Props> {
               showClearButton={false}
             />
             <div className="switch-button-container-mobile">
-              <SwitchButton
-                content={
-                  <StyledIconWrapper rotate90>
-                    <ExchangeAlt />
-                  </StyledIconWrapper>
-                }
-              />
+              <SwitchButton />
             </div>
             <BatchSettings />
           </div>
