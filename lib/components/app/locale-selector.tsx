@@ -21,6 +21,12 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
     getLanguageOptions(configLanguages)
   const intl = useIntl()
 
+  const onEnterOrSpace = (e: KeyboardEvent, action: () => void): void => {
+    if (e.key === 'Space' || e.key === 'Enter') {
+      action()
+    }
+  }
+
   // Only render if two or more languages are configured.
   return languageOptions ? (
     <Dropdown
@@ -45,7 +51,8 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
           key={locale}
           lang={locale}
           onClick={() => setLocale(locale)}
-          onKeyPress={() => setLocale(locale)}
+          // @ts-expect-error TODO: repair this type. Handler is not guaranteed to have 'key'
+          onKeyPress={(e) => onEnterOrSpace(e, () => setLocale(locale))}
           // We are correct, not eslint: https://w3c.github.io/aria-practices/examples/combobox/combobox-select-only.html
           // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
           role="option"

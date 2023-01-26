@@ -63,7 +63,7 @@ const ViewSwitcher = ({
       <Button
         aria-controls="view-switcher"
         bsStyle="link"
-        className={`${tripPlannerActive && 'active'}`}
+        className={`${tripPlannerActive ? 'active' : ''}`}
         onClick={_showTripPlanner}
       >
         <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
@@ -71,7 +71,7 @@ const ViewSwitcher = ({
       <Button
         aria-controls="view-switcher"
         bsStyle="link"
-        className={`${routeViewerActive && 'active'}`}
+        className={`${routeViewerActive ? 'active' : ''}`}
         onClick={_showRouteViewer}
       >
         <FormattedMessage id="components.RouteViewer.shortTitle" />
