@@ -126,12 +126,13 @@ components:
         other {# spaces available}
       }
   AppMenu:
+    appMenu: App Menu
     callHistory: Call History
     closeMenu: Close Menu
     fieldTrip: Field Trip
     mailables: Mailables
-    menuItemIconAlt: "Icon for {label} menu item"
     openMenu: Open Menu
+    skipNavigation: Skip navigation
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
   BatchResultsScreen:
@@ -206,6 +207,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Form navigation
   ItinerarySummary:
+    itineraryDetails: Itinerary details
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
@@ -425,9 +427,14 @@ components:
     zoomToStop: Zoom to stop
 
   SubNav:
+    languageSelector: Select language
+    activeLanguage: Active language
+    languages: "Languages"
     myAccount: My account
+    selectALanguage: Select a language
     settings: Settings
     trips: Trips
+    userMenu: Profile options
   SwitchButton:
     defaultContent: Switch
     switchLocations: Switch locations
@@ -554,6 +561,9 @@ components:
     bicyclesAllowed: Allowed
     header: Trip Viewer
     listOfRouteStops: List of stops on this route
+    tripDescription: Board at {boardAtStop} and disembark at {disembarkAtStop}
+    startOfTrip: Trip begins here
+    endOfTrip: Trip ends here
     routeHeader: "Route: <strong>{routeShortName}</strong> {routeLongName}"
     viewStop: View
   UserAccountScreen:

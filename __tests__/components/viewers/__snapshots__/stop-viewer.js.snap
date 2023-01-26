@@ -1365,7 +1365,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           title="20"
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                             title="20"
                                           >
@@ -3681,7 +3681,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                           title="20"
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                             title="20"
                                           >
@@ -5687,7 +5687,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           title="20"
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                             title="20"
                                           >
@@ -8927,7 +8927,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="20"
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                             title="20"
                                           >
@@ -9647,7 +9647,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="36"
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                             title="36"
                                           >
@@ -10367,7 +10367,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="94"
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                             title="94"
                                           >
@@ -11195,7 +11195,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="94"
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                             title="94"
                                           >
@@ -15461,7 +15461,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           title="20"
                                         >
                                           <span
-                                            className="sc-ljRaeN ipRFHf"
+                                            className="sc-ljRaeN dFtn"
                                             color="333333"
                                             title="20"
                                           >

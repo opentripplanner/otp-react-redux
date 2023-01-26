@@ -15,13 +15,13 @@ import * as mapActions from '../../actions/map'
 
 import connectLocationField from './connect-location-field'
 
+// TODO: Merge with connected-location-field.js
 const StyledIntermediatePlace = styled(LocationField)`
   width: 100%;
 
   ${DropdownContainer} {
-    display: table-cell;
-    vertical-align: middle;
-    width: 1%;
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
   }
 
   ${FormGroup} {
@@ -31,9 +31,7 @@ const StyledIntermediatePlace = styled(LocationField)`
   }
 
   ${Input} {
-    display: table-cell;
     padding: 6px 12px;
-    width: 100%;
   }
 
   ${InputGroup} {
@@ -41,9 +39,8 @@ const StyledIntermediatePlace = styled(LocationField)`
   }
 
   ${InputGroupAddon} {
-    display: table-cell;
-    vertical-align: middle;
-    width: 1%;
+    align-self: baseline;
+    justify-self: center;
   }
 
   ${MenuItemA} {
