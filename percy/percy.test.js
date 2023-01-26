@@ -191,7 +191,7 @@ if (OTP_RR_PERCY_MOBILE) {
     // Return to main page
     await page.click('.app-menu-icon')
     await page.waitForTimeout(1000)
-    await page.click('.app-menu-trip-planner-link a')
+    await page.click('.app-menu-trip-planner-link span')
     await page.waitForTimeout(1000)
 
     await page.waitForSelector('.welcome-location')
@@ -356,7 +356,7 @@ test('OTP-RR', async () => {
 
   // Open stop viewer from trip viewer
   await page.click(
-    'div.trip-viewer-body > div:nth-child(3) > div.stop-button-container > button'
+    'div.trip-viewer-body > ol > li:nth-child(3) > div.stop-button-container > button'
   )
   await page.waitForSelector('.stop-viewer')
 

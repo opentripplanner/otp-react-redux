@@ -48,14 +48,9 @@ class ViewTripButton extends Component<Props> {
   }
 }
 
-const mapStateToProps = () => {
-  return {}
-}
-
 const mapDispatchToProps = {
   setMainPanelContent,
   setViewedTrip
 }
 
-// @ts-expect-error setMainPanelContent not typescripted yet
-export default connect(mapStateToProps, mapDispatchToProps)(ViewTripButton)
+export default connect(null, mapDispatchToProps)(ViewTripButton)

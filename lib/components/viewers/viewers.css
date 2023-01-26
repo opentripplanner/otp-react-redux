@@ -63,6 +63,7 @@
 .otp .trip-viewer-body {
   overflow-x: hidden;
   overflow-y: auto;
+  padding-left: 0;
 }
 .otp .stop-viewer-body,
 .otp .trip-viewer-body {
@@ -81,6 +82,7 @@
 .otp .route-viewer .header-text {
   font-weight: 700;
   font-size: 24px;
+  margin: 0;
 }
 .otp .route-viewer .header-text.route-expanded {
   display: flex;
@@ -373,11 +375,11 @@
 
 .otp .trip-viewer .stop-time {
   float: left;
-  width: 55px;
   font-size: 11px;
-  padding-top: 7px;
   padding-right: 5px;
+  padding-top: 12px;
   text-align: right;
+  width: 60px;
 }
 
 .otp .trip-viewer .strip-map-container {
@@ -388,30 +390,30 @@
 }
 
 .otp .trip-viewer .strip-map-highlight {
-  position: absolute;
-  background-color: #13c1c1;
-  width: 20px;
+  background-color: rgba(19, 193, 193, 0.5);
   height: 30px;
+  position: absolute;
+  width: 20px;
 }
 
 .otp .trip-viewer .strip-map-highlight-first {
-  position: absolute;
-  background-color: #13c1c1;
-  top: 2px;
-  width: 20px;
-  height: 28px;
+  background-color: rgba(19, 193, 193, 0.5);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  height: 28px;
+  position: absolute;
+  top: 2px;
+  width: 20px;
 }
 
 .otp .trip-viewer .strip-map-highlight-last {
-  position: absolute;
-  background-color: #13c1c1;
-  top: 0px;
-  width: 20px;
-  height: 28px;
+  background-color: rgba(19, 193, 193, 0.5);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  height: 28px;
+  position: absolute;
+  top: 0px;
+  width: 20px;
 }
 
 .otp .trip-viewer .strip-map-line {
@@ -450,17 +452,17 @@
 
 .otp .trip-viewer .stop-name {
   font-size: 14px;
-  margin-left: 80px;
-  margin-right: 55px;
-  padding-top: 6px;
-  white-space: nowrap;
+  margin-left: 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  padding-top: 8px;
+  white-space: nowrap;
 }
 
 .otp .trip-viewer .stop-button-container {
-  float: right;
-  width: 50px;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 5px;
+  width: 100%;
 }
 
 /* Route Viewer Updates */

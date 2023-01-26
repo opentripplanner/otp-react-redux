@@ -24,13 +24,14 @@
   cursor: auto;
 }
 
-.otp .option.metro-itin:last-of-type div.header .itin-wrapper,
+.otp ul li.result:last-of-type div.header .itin-wrapper,
 .route-row:last-of-type .header {
   border: none;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-.otp .option.metro-itin:first-of-type div.header .itin-wrapper,
+
+.otp ul li.result:first-of-type div.header .itin-wrapper,
 .route-row:first-of-type .header {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -140,6 +141,11 @@
   flex: 2;
   font-weight: 500;
   font-size: large;
+}
+
+.otp .option.default-itin > .header .title h3 {
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 .otp .option.default-itin > .header .itinerary-attributes {

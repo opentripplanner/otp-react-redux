@@ -29,5 +29,4 @@ const mapDispatchToProps = {
   setViewedStop
 }
 
-// @ts-expect-error TODO: type setMainPanelContent
 export default connect(null, mapDispatchToProps)(ConnectedTransitLegSubheader)

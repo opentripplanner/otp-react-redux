@@ -1,11 +1,13 @@
-import { FormattedMessage } from 'react-intl'
-import { MenuItem, NavDropdown, NavItem } from 'react-bootstrap'
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+import { FormattedMessage, useIntl } from 'react-intl'
+import { NavItem } from 'react-bootstrap'
 import { User } from '@auth0/auth0-react'
-import PropTypes from 'prop-types'
-import React, { Component, CSSProperties } from 'react'
+import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
 
 import { LinkContainerWithQuery } from '../form/connected-links'
+import { UnstyledButton } from '../util/unstyled-button'
+import Dropdown from '../util/dropdown'
 
 const Avatar = styled.img`
   height: 2em;
@@ -13,26 +15,17 @@ const Avatar = styled.img`
   width: 2em;
 `
 
-const linkType = PropTypes.shape({
-  messageId: PropTypes.string.isRequired,
-  target: PropTypes.string,
-  url: PropTypes.string.isRequired
-})
-
 type Link = {
   messageId: string
   target?: string
   url: string
 }
 
-type Props = {
-  className?: string
-  id: string
+interface Props extends HTMLAttributes<HTMLElement> {
   links: Link[]
   onSignInClick: () => void
   onSignOutClick: () => void
-  profile: User | null | undefined
-  style?: CSSProperties | undefined
+  profile?: User | null
 }
 
 /**
@@ -41,93 +34,80 @@ type Props = {
  * - When a user is logged in, display an 'avatar' (retrieved from the profile prop)
  *   and a dropdown button so the user can access more options.
  */
-export default class NavLoginButton extends Component<Props> {
-  static propTypes = {
-    id: PropTypes.string.isRequired,
-    links: PropTypes.arrayOf(linkType),
-    onSignInClick: PropTypes.func.isRequired,
-    onSignOutClick: PropTypes.func.isRequired,
-    profile: PropTypes.shape({
-      email: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      nickname: PropTypes.string,
-      picture: PropTypes.string
-    })
+const NavLoginButton = ({
+  className,
+  id,
+  links,
+  onSignInClick,
+  onSignOutClick,
+  profile,
+  style
+}: Props): JSX.Element => {
+  const intl = useIntl()
+
+  const commonProps = {
+    className,
+    id,
+    style
   }
 
-  static defaultProps = {
-    links: null,
-    profile: null
-  }
+  // If a profile is passed (a user is logged in), display avatar and drop-down menu.
+  if (profile) {
+    const displayedName = profile.nickname || profile.name
+    return (
+      <Dropdown
+        id="user-selector"
+        label={intl.formatMessage({ id: 'components.SubNav.userMenu' })}
+        name={
+          <span>
+            <Avatar
+              alt={displayedName}
+              src={profile.picture}
+              title={`${displayedName}\n(${profile.email})`}
+            />
+          </span>
+        }
+        pullRight
+      >
+        <li className="header">{displayedName}</li>
 
-  render(): JSX.Element {
-    const {
-      className,
-      id,
-      links,
-      onSignInClick,
-      onSignOutClick,
-      profile,
-      style
-    } = this.props
-
-    const commonProps = {
-      className,
-      id,
-      style
-    }
-
-    // If a profile is passed (a user is logged in), display avatar and drop-down menu.
-    if (profile) {
-      const displayedName = profile.nickname || profile.name
-      return (
-        <NavDropdown
-          {...commonProps}
-          pullRight
-          title={
-            <span>
-              <Avatar
-                alt={displayedName}
-                src={profile.picture}
-                title={`${displayedName}\n(${profile.email})`}
-              />
-            </span>
-          }
-        >
-          <MenuItem header>{displayedName}</MenuItem>
-
-          {links &&
-            links.map((link, i) => (
-              <LinkContainerWithQuery
-                exact
-                key={i}
-                target={link.target}
-                to={link.url}
-              >
-                <MenuItem>
+        {links &&
+          links.map((link, i) => (
+            <LinkContainerWithQuery
+              exact
+              key={i}
+              target={link.target}
+              to={link.url}
+            >
+              <li tabIndex={0}>
+                <UnstyledButton tabIndex={-1}>
                   {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
                     <FormattedMessage id="components.NavLoginButton.myAccount" />
                   ) : (
                     <FormattedMessage id="components.NavLoginButton.help" />
                   )}
-                </MenuItem>
-              </LinkContainerWithQuery>
-            ))}
+                </UnstyledButton>
+              </li>
+            </LinkContainerWithQuery>
+          ))}
 
-          <MenuItem divider />
+        <hr role="presentation" />
 
-          <MenuItem onSelect={onSignOutClick}>
+        <li onSelect={onSignOutClick} tabIndex={0}>
+          <UnstyledButton tabIndex={-1}>
             <FormattedMessage id="components.NavLoginButton.signOut" />
-          </MenuItem>
-        </NavDropdown>
-      )
-    }
-
-    // Display the sign-in link if no profile is passed (user is not logged in).
-    return (
-      <NavItem {...commonProps} onClick={onSignInClick}>
-        <FormattedMessage id="components.NavLoginButton.signIn" />
-      </NavItem>
+          </UnstyledButton>
+        </li>
+      </Dropdown>
     )
   }
+
+  // Display the sign-in link if no profile is passed (user is not logged in).
+  return (
+    <NavItem {...commonProps} onClick={onSignInClick}>
+      <FormattedMessage id="components.NavLoginButton.signIn" />
+    </NavItem>
+  )
 }
+
+export default NavLoginButton
