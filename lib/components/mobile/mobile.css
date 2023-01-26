@@ -18,18 +18,29 @@
 }
 
 .otp .navbar .mobile-header {
-  position: fixed;
-  top: 5px;
+  align-items: center;
+  display: flex;
+  height: 50px;
+  justify-content: center;
   left: 50px;
+  max-width: 90%;
+  position: fixed;
   right: 50px;
   text-align: center;
 }
 
 .otp .navbar .mobile-header-text {
   color: white;
-  padding-top: 9px;
-  font-size: 18px;
   display: inline-block;
+  font-size: 18px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .otp .navbar .mobile-header-text {
+    margin-top: 2px;
+    word-break: break-all;
+  }
 }
 
 .otp .navbar .mobile-header-action {

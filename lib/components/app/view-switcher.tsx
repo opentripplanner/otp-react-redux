@@ -38,13 +38,17 @@ const ViewSwitcher = ({
     }
   }
 
+  const tripPlannerActive = activePanel === null
+  const routeViewerActive = activePanel === MainPanelContent.ROUTE_VIEWER
+
   return (
     <div
       aria-label={intl.formatMessage({
         id: 'components.ViewSwitcher.switcher'
       })}
       className="view-switcher"
-      role="navigation"
+      id="view-switcher"
+      role="group"
       style={
         sticky
           ? {
@@ -57,19 +61,17 @@ const ViewSwitcher = ({
       }
     >
       <Button
+        aria-controls="view-switcher"
         bsStyle="link"
-        className={activePanel === null && !accountsActive ? 'active' : ''}
+        className={`${tripPlannerActive ? 'active' : ''}`}
         onClick={_showTripPlanner}
       >
         <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
       </Button>
       <Button
+        aria-controls="view-switcher"
         bsStyle="link"
-        className={
-          activePanel === MainPanelContent.ROUTE_VIEWER && !accountsActive
-            ? 'active'
-            : ''
-        }
+        className={`${routeViewerActive ? 'active' : ''}`}
         onClick={_showRouteViewer}
       >
         <FormattedMessage id="components.RouteViewer.shortTitle" />
@@ -84,12 +86,12 @@ const mapStateToProps = (state: any) => {
   const { mainPanelContent } = state.otp.ui
 
   // Reverse the ID to string mapping
-  const activePanels = Object.entries(MainPanelContent).find(
+  const activePanelPair = Object.entries(MainPanelContent).find(
     (keyValuePair) => keyValuePair[1] === mainPanelContent
   )
   // activePanel is array of form [string, ID]
   // The trip planner has id null
-  const activePanel = (activePanels && activePanels[1]) || null
+  const activePanel = (activePanelPair && activePanelPair[1]) || null
 
   return {
     // TODO: more reliable way of detecting these things, such as terms of storage page
