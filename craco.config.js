@@ -124,7 +124,7 @@ module.exports = {
         minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
       }
 
-      const existingCycles = 10
+      const MAX_IMPORT_CYCLES = 8
       let detectedCycles = []
 
       // Custom plugins to allow trimet-mod-otp integration
@@ -157,16 +157,21 @@ module.exports = {
             detectedCycles.push(paths.join(' -> '))
           },
           onEnd({ compilation }) {
-            if (detectedCycles.length > existingCycles) {
+            if (detectedCycles.length > MAX_IMPORT_CYCLES) {
               compilation.errors.push(
                 new Error(
-                  `Detected ${
+                  `Too many circular dependencies. Detected: ${
                     detectedCycles.length
-                  } cycles which exceeds configured limit of ${existingCycles}:\n${detectedCycles.join(
+                  }, Allowed: ${MAX_IMPORT_CYCLES} (see config):\n${detectedCycles.join(
                     '\n'
                   )}`
                 )
               )
+            } else if (detectedCycles.length > 0) {
+              console.warn(
+                `${detectedCycles.length} circular dependencies were found:`
+              )
+              console.warn(detectedCycles.join('\n'))
             }
           },
           onStart({ compilation }) {
