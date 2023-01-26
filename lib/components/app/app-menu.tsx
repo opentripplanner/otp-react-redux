@@ -17,6 +17,7 @@ import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
+import { getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
 import startOver from '../util/start-over'
@@ -50,7 +51,9 @@ type menuItem = {
   iconType: string | JSX.Element
   iconUrl?: string
   id: string
+  isSelected?: boolean
   label: string | JSX.Element
+  lang?: string
   onClick?: () => void
   subMenuDivider: boolean
 }
@@ -99,7 +102,7 @@ class AppMenu extends Component<
     document.querySelector('main')?.focus()
   }
 
-  _addExtraMenuItems = (menuItems?: menuItem[]) => {
+  _addExtraMenuItems = (menuItems?: menuItem[] | null) => {
     return (
       menuItems &&
       menuItems.map((menuItem) => {
@@ -109,7 +112,9 @@ class AppMenu extends Component<
           iconType,
           iconUrl,
           id,
+          isSelected,
           label: configLabel,
+          lang,
           onClick,
           subMenuDivider
         } = menuItem
@@ -122,6 +127,7 @@ class AppMenu extends Component<
 
         return (
           <AppMenuItem
+            aria-selected={isSelected || undefined}
             className={subMenuDivider ? 'app-menu-divider' : undefined}
             href={href}
             icon={
@@ -133,8 +139,10 @@ class AppMenu extends Component<
             }
             id={id}
             key={id}
+            lang={lang}
             onClick={onClick}
-            subItems={this._addExtraMenuItems(children)}
+            role={isSelected !== undefined ? 'option' : undefined}
+            subItems={this._addExtraMenuItems(children) || undefined}
             text={label}
           />
         )
@@ -158,22 +166,19 @@ class AppMenu extends Component<
       toggleMailables
     } = this.props
 
-    const languageMenuItems: menuItem[] | undefined = configLanguages && [
+    const languageOptions: Record<string, any> | null =
+      getLanguageOptions(configLanguages)
+    const languageMenuItems: menuItem[] | null = languageOptions && [
       {
-        children: Object.keys(configLanguages)
-          .filter((locale) => locale !== 'allLanguages')
-          .map((locale) => ({
-            iconType: <svg />,
-            id: configLanguages[locale].name,
-            label:
-              activeLocale === locale ? (
-                <strong>{configLanguages[locale].name}</strong>
-              ) : (
-                configLanguages[locale].name
-              ),
-            onClick: () => setLocale(locale),
-            subMenuDivider: false
-          })),
+        children: Object.keys(languageOptions).map((locale: string) => ({
+          iconType: <svg />,
+          id: locale,
+          isSelected: activeLocale === locale,
+          label: languageOptions[locale].name,
+          lang: locale,
+          onClick: () => setLocale(locale),
+          subMenuDivider: false
+        })),
         iconType: <GlobeAmericas />,
         id: 'app-menu-locale-selector',
         label: <FormattedMessage id="components.SubNav.languageSelector" />,
@@ -305,7 +310,6 @@ const mapDispatchToProps = {
 }
 
 export default injectIntl(
-  // @ts-expect-error TODO: type setMainPanelContent correctly
   withRouter(connect(mapStateToProps, mapDispatchToProps)(AppMenu))
 )
 

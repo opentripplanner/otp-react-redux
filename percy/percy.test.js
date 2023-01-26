@@ -191,7 +191,7 @@ if (OTP_RR_PERCY_MOBILE) {
     // Return to main page
     await page.click('.app-menu-icon')
     await page.waitForTimeout(1000)
-    await page.click('.app-menu-trip-planner-link a')
+    await page.click('.app-menu-trip-planner-link span')
     await page.waitForTimeout(1000)
 
     await page.waitForSelector('.welcome-location')

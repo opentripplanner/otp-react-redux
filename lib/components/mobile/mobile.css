@@ -20,21 +20,20 @@
 .otp .navbar .mobile-header {
   align-items: center;
   display: flex;
-  height: 60px;
+  height: 50px;
   justify-content: center;
   left: 50px;
-  max-width: 70%;
+  max-width: 90%;
   position: fixed;
   right: 50px;
   text-align: center;
-  top: -11px;
 }
 
 .otp .navbar .mobile-header-text {
   color: white;
   display: inline-block;
   font-size: 18px;
-  padding-top: 9px;
+  margin: 0;
 }
 
 @media (max-width: 768px) {

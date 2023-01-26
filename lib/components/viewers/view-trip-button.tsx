@@ -56,5 +56,4 @@ const mapDispatchToProps = {
   setViewedTrip
 }
 
-// @ts-expect-error setMainPanelContent not typescripted yet
 export default connect(null, mapDispatchToProps)(ViewTripButton)
