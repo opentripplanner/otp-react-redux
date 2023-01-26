@@ -124,7 +124,7 @@ module.exports = {
         minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
       }
 
-      const MAX_IMPORT_CYCLES = 8
+      const MAX_IMPORT_CYCLES = 7 // based on existing cycles.
       let detectedCycles = []
 
       // Custom plugins to allow trimet-mod-otp integration
@@ -153,7 +153,7 @@ module.exports = {
           exclude: /node_modules/,
           failOnError: true,
           include: /lib/,
-          onDetected({ compilation, module: webpackModuleRecord, paths }) {
+          onDetected({ paths }) {
             detectedCycles.push(paths.join(' -> '))
           },
           onEnd({ compilation }) {
@@ -174,7 +174,7 @@ module.exports = {
               console.warn(detectedCycles.join('\n'))
             }
           },
-          onStart({ compilation }) {
+          onStart() {
             detectedCycles = []
           }
         })
