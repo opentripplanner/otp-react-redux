@@ -225,7 +225,7 @@ class AmenitiesPanel extends Component<Props, State> {
         return (
           <li className="related-item" key={key}>
             <div className="item-label">
-              {company.icon}
+              <span aria-hidden>{company.icon}</span>
               <FormattedMessage
                 id="components.AmenitiesPanel.scootersNearby"
                 values={{
