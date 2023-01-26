@@ -10,7 +10,7 @@ import type { Location } from '@opentripplanner/types'
 
 import * as mapActions from '../../actions/map'
 import { Icon } from '../util/styledIcon'
-import { renderCoordinates } from '../form/user-settings-i18n'
+import { renderCoordinates } from '../../util/i18n'
 
 const PopupTitleWrapper = styled.div`
   align-items: flex-start;
