@@ -7,7 +7,7 @@
   * and add back some of the default visuals provided by react-bootstrap's <Nav>.
   * In desktop and mobile modes, we change the link color to white for consistency with the AppMenu component.
   */
-  
+
 /* Locale selector dropdown width override (default bootstrap dropdown is 120px)*/
 .dropdown > .dropdown-menu {
   min-width: 0px;
@@ -27,7 +27,12 @@
 }
 .navbar-inverse .navbar-nav > li > a,
 .otp.mobile .navbar .container-fluid .locale-selector-and-login > li > a,
-.otp.mobile .navbar .container-fluid .locale-selector-and-login > li.dropdown.open > a {
+.otp.mobile
+  .navbar
+  .container-fluid
+  .locale-selector-and-login
+  > li.dropdown.open
+  > a {
   color: #fff;
   text-decoration: none;
 }
@@ -35,4 +40,17 @@
 .otp.mobile .navbar .container-fluid .locale-selector-and-login > li > a:hover {
   color: #ddd;
   text-decoration: none;
+}
+
+#app-menu-locale-selector {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #locale-selector {
+    display: none;
+  }
+  #app-menu-locale-selector {
+    display: flex;
+  }
 }
