@@ -22,16 +22,19 @@ type DepartureTimesProps = {
 export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
   const { activeItineraryTimeIndex, itinerary, setItineraryTimeIndex } = props
   const intl = useIntl()
+  const isRealTime = firstTransitLegIsRealtime(itinerary)
   if (!itinerary.allStartTimes) {
     return (
       <button
-        className={
-          firstTransitLegIsRealtime(itinerary) ? 'realtime active' : 'active'
-        }
-        title={intl.formatMessage(
+        className={isRealTime ? 'realtime active' : 'active'}
+        title={`${intl.formatMessage(
           { id: 'components.MetroUI.arriveAtTime' },
           { time: intl.formatTime(itinerary.endTime) }
-        )}
+        )} ${
+          isRealTime
+            ? intl.formatMessage({ id: 'components.StopTimeCell.realtime' })
+            : ''
+        }`}
       >
         <FormattedTime value={itinerary.startTime} />
       </button>
@@ -55,10 +58,14 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
             className={classNames.join(' ')}
             key={getFirstLegStartTime(time.legs)}
             onClick={() => setItineraryTimeIndex(index)}
-            title={intl.formatMessage(
+            title={`${intl.formatMessage(
               { id: 'components.MetroUI.arriveAtTime' },
               { time: intl.formatTime(getLastLegEndTime(time.legs)) }
-            )}
+            )} ${
+              time.realtime
+                ? intl.formatMessage({ id: 'components.StopTimeCell.realtime' })
+                : ''
+            }`}
           >
             <FormattedTime value={getFirstLegStartTime(time.legs)} />
           </button>

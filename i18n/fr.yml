@@ -131,12 +131,13 @@ components:
         other {# emplacements disponibles}
       }
   AppMenu:
+    appMenu: App Menu
     callHistory: Historique des appels
     closeMenu: Fermer le menu
     fieldTrip: Groupes scolaires
     mailables: Prêt-à-poster
-    menuItemIconAlt: "Icône pour le menu {label}"
-    openMenu: "Ouvrir le menu"
+    openMenu: Ouvrir le menu
+    skipNavigation: Sauter la navigation
   BackToTripPlanner:
     backToTripPlanner: Retour au planificateur de trajets
   BatchResultsScreen:
@@ -219,6 +220,8 @@ components:
     enterLocation: Entrez le lieu
     setDestination: Choisissez la destination
     setOrigin: Choisissez le point de départ
+  MapillaryFrame:
+    title: Vue panoramique
   MapLayers:
     bike-rental: Vélos partagés {companies}
     car-rental: Voitures en location

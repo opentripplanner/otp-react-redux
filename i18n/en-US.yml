@@ -126,12 +126,13 @@ components:
         other {# spaces available}
       }
   AppMenu:
+    appMenu: App Menu
     callHistory: Call History
     closeMenu: Close Menu
     fieldTrip: Field Trip
     mailables: Mailables
-    menuItemIconAlt: "Icon for {label} menu item"
     openMenu: Open Menu
+    skipNavigation: Skip navigation
   BackToTripPlanner:
     backToTripPlanner: Back to trip planner
   BatchResultsScreen:
@@ -206,6 +207,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Form navigation
   ItinerarySummary:
+    itineraryDetails: Itinerary details
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
@@ -213,6 +215,8 @@ components:
     enterLocation: Enter location
     setDestination: Set Destination
     setOrigin: Set Origin
+  MapillaryFrame:
+    title: Imagery of the street
   MapLayers:
     bike-rental: "{companies} Shared Bikes"
     car-rental: Rental Car Locations
@@ -365,6 +369,7 @@ components:
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
     shortTitle: View Routes
+    stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
   SavedTripEditor:
     editSavedTrip: Edit saved trip
@@ -423,9 +428,14 @@ components:
     zoomToStop: Zoom to stop
 
   SubNav:
+    languageSelector: Select language
+    activeLanguage: Active language
+    languages: "Languages"
     myAccount: My account
+    selectALanguage: Select a language
     settings: Settings
     trips: Trips
+    userMenu: Profile options
   SwitchButton:
     defaultContent: Switch
     switchLocations: Switch locations
@@ -551,6 +561,10 @@ components:
     accessible: Accessible
     bicyclesAllowed: Allowed
     header: Trip Viewer
+    listOfRouteStops: List of stops on this route
+    tripDescription: Board at {boardAtStop} and disembark at {disembarkAtStop}
+    startOfTrip: Trip begins here
+    endOfTrip: Trip ends here
     routeHeader: "Route: <strong>{routeShortName}</strong> {routeLongName}"
     viewStop: View
   UserAccountScreen:

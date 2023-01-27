@@ -15,7 +15,7 @@ const Block = styled.span<{ color: string; isOnColoredBackground?: boolean }>`
   text-overflow: ellipsis;
   /* (Change the vertical alignment when changing the overflow attribute.) */
   vertical-align: middle;
-  white-space: nowrap;
+  white-space: break-spaces;
 
   ${(props) =>
     props.isOnColoredBackground &&
