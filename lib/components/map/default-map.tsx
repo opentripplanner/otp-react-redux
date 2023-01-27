@@ -17,9 +17,7 @@ import {
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
-import {
-  setMapPopupLocationAndGeocode
-} from '../../actions/map'
+import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
 
@@ -411,6 +409,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   bikeRentalQuery,
   carRentalQuery,
+  setLocation,
   setMapPopupLocationAndGeocode,
   setViewedStop,
   updateOverlayVisibility,

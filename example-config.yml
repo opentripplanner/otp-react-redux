@@ -113,8 +113,8 @@ map:
   ### - disableFlexArc: optional parameter to disable rendering flex itinerary legs as an arc.
   # Custom Overlays
   # overlays:
-  #    The OTP2 overlay is slightly more difficult to use
-  #    - type: otp2
+  #   The OTP2 overlay is slightly more difficult to use
+  #   - type: otp2
   #   Each OTP2 overlay has to be configured here. The "type" must match
   #   what's configured in router-config.json
   #   layers:
