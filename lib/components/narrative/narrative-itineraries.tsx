@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { connect } from 'react-redux'
 import { differenceInDays } from 'date-fns'
-import { injectIntl, IntlShape } from 'react-intl'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import clone from 'clone'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useContext, useState } from 'react'
@@ -74,6 +74,7 @@ type Props = {
 }
 
 // FIXME: move to typescript once shared types exist
+// eslint-disable-next-line complexity
 const NarrativeItineraries = ({
   activeItinerary,
   activeItineraryTimeIndex,
@@ -111,6 +112,7 @@ const NarrativeItineraries = ({
   visibleItinerary
 }: Props) => {
   const { ItineraryBody, LegIcon } = useContext(ComponentContext)
+  const ListItem = itineraryIsExpanded ? 'div' : 'li'
 
   const [showingErrors, setShowingErrors] = useState(false)
 
@@ -214,33 +216,39 @@ const NarrativeItineraries = ({
     if (!active && itineraryIsExpanded) return null
 
     return (
-      <ItineraryBody
-        active={active}
-        activeItineraryTimeIndex={activeItineraryTimeIndex}
-        activeLeg={activeLeg}
-        activeStep={activeStep}
-        expanded={showDetails}
-        index={itinerary.index}
-        itinerary={itinerary}
-        // Ensure we update if either index changes
-        key={(activeItineraryTimeIndex << 8) | itinerary.index}
-        LegIcon={LegIcon}
-        mini={mini}
-        onClick={active ? _toggleDetailedItinerary : undefined}
-        routingType="ITINERARY"
-        setActiveItinerary={setActiveItinerary}
-        setActiveLeg={_setActiveLeg}
-        setActiveStep={setActiveStep}
-        setVisibleItinerary={setVisibleItinerary}
-        showRealtimeAnnotation={showRealtimeAnnotation}
-        sort={sort}
-        timeFormat={timeFormat}
-        visibleItinerary={visibleItinerary}
-      />
+      <ListItem className="result">
+        <ItineraryBody
+          active={active}
+          activeItineraryTimeIndex={activeItineraryTimeIndex}
+          activeLeg={activeLeg}
+          activeStep={activeStep}
+          expanded={showDetails}
+          index={itinerary.index}
+          itinerary={itinerary}
+          // Ensure we update if either index changes
+          key={(activeItineraryTimeIndex << 8) | itinerary.index}
+          LegIcon={LegIcon}
+          mini={mini}
+          onClick={active ? _toggleDetailedItinerary : undefined}
+          role="listitem"
+          routingType="ITINERARY"
+          setActiveItinerary={setActiveItinerary}
+          setActiveLeg={_setActiveLeg}
+          setActiveStep={setActiveStep}
+          setVisibleItinerary={setVisibleItinerary}
+          showRealtimeAnnotation={showRealtimeAnnotation}
+          sort={sort}
+          timeFormat={timeFormat}
+          visibleItinerary={visibleItinerary}
+        />
+      </ListItem>
     )
   }
 
   if (!activeSearch) return null
+
+  // render lists become divs if itinerary is expanded, to avoid rendering a list with list item
+  const ListContainer = itineraryIsExpanded ? 'div' : S.ULContainer
 
   // Merge duplicate itineraries together and save multiple departure times
   const mergedItineraries = mergeItineraries
@@ -306,6 +314,7 @@ const NarrativeItineraries = ({
       }, [])
     : itineraries.map((itin, index) => ({ ...itin, index }))
 
+  const itinerary = itineraries?.[activeItinerary]
   const baselineCo2 = _getBaselineCo2()
   const itinerariesWithCo2 =
     mergedItineraries?.map((itin) => {
@@ -360,6 +369,7 @@ const NarrativeItineraries = ({
         customBatchUiBackground={customBatchUiBackground}
         errors={errors}
         itineraries={itinerariesWithCo2}
+        itinerary={itinerary}
         itineraryIsExpanded={itineraryIsExpanded}
         onSortChange={_onSortChange}
         onSortDirChange={_onSortDirChange}
@@ -375,8 +385,9 @@ const NarrativeItineraries = ({
       <div
         // FIXME: Change to a ul with li children?
         className="list"
+        id="itinerary-menu"
         style={{
-          flexGrow: '1',
+          flexGrow: 1,
           overflowY: 'auto'
         }}
       >
@@ -387,28 +398,39 @@ const NarrativeItineraries = ({
           />
         ) : (
           <>
-            {groupItineraries && !itineraryIsExpanded
-              ? Object.keys(groupedMergedItineraries.multi).map((mode) => {
-                  return (
-                    <div key={mode} style={{ padding: '0 1em' }}>
-                      <h2>{mode}</h2>
+            {groupItineraries && !itineraryIsExpanded ? (
+              Object.keys(groupedMergedItineraries.multi).map((mode) => {
+                return (
+                  <S.ModeResultContainer key={mode}>
+                    <h2>{mode}</h2>
+                    <ListContainer>
                       {groupedMergedItineraries.multi[mode].map((itin) =>
                         _renderItineraryRow(itin)
                       )}
-                    </div>
-                  )
-                })
-              : itinerariesWithCo2.map((itin) => _renderItineraryRow(itin))}
+                    </ListContainer>
+                  </S.ModeResultContainer>
+                )
+              })
+            ) : (
+              <ListContainer>
+                {itinerariesWithCo2.map((itin) => _renderItineraryRow(itin))}
+              </ListContainer>
+            )}
             {_renderLoadingDivs()}
-            <S.SingleModeRowContainer>
-              {groupItineraries &&
-                !itineraryIsExpanded &&
-                Object.keys(groupedMergedItineraries.single).map((mode) =>
-                  groupedMergedItineraries.single[mode].map((itin) =>
-                    _renderItineraryRow(itin, true)
-                  )
-                )}
-            </S.SingleModeRowContainer>
+            {groupItineraries && !itineraryIsExpanded && (
+              <S.ModeResultContainer>
+                <h2>
+                  <FormattedMessage id="otpUi.LocationField.other" />
+                </h2>
+                <S.SingleModeRowContainer>
+                  {Object.keys(groupedMergedItineraries.single).map((mode) =>
+                    groupedMergedItineraries.single[mode].map((itin) =>
+                      _renderItineraryRow(itin, true)
+                    )
+                  )}
+                </S.SingleModeRowContainer>
+              </S.ModeResultContainer>
+            )}
           </>
         )}
       </div>

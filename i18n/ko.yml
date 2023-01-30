@@ -392,7 +392,6 @@ components:
   AppMenu:
     callHistory: 통화 기록
     closeMenu: 메뉴를 닫습니다
-    menuItemIconAlt: '{label} 메뉴 항목의 아이콘'
     fieldTrip: 여행 제목
     mailables: 게시 준비
     openMenu: 메뉴 열기
@@ -419,13 +418,6 @@ components:
     header: 검색 옵션을 설정합니다
   ModeDropdown:
     exclusiveMode: '{mode} 만'
-  PatternRow:
-    status: 상태
-    departure: 출발
-    routeName: <strong>{routeName}</strong> 에 {headsign}
-    routeShort: 에 {headsign}
-    collapseOrExpandDepartures: "모든 Route {routeName} 출발 {expanded, select, \n true\
-      \ {숨기기}\n other {보기}\n }\n"
   PlaceEditor:
     genericLocationPlaceholder: 위치를 검색하십시오
     locationPlaceholder: '{placeName} 위치를 검색하십시오'

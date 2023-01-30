@@ -5,17 +5,20 @@ import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 import { NavigationControl } from 'react-map-gl'
 import BaseMap from '@opentripplanner/base-map'
+import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import {
   bikeRentalQuery,
   carRentalQuery,
+  makeApiUrl,
   vehicleRentalQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
-import { setMapPopupLocationAndGeocode } from '../../actions/map'
+import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
+import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
 
 import ElevationPointMarker from './elevation-point-marker'
@@ -82,6 +85,7 @@ function getLayerName(overlay, config, intl) {
       return intl.formatMessage({ id: 'components.MapLayers.satellite' })
     case 'bike-rental':
     case 'otp2-bike-rental':
+    case 'rentalStations':
       return intl.formatMessage(
         { id: 'components.MapLayers.bike-rental' },
         {
@@ -104,6 +108,11 @@ function getLayerName(overlay, config, intl) {
       return intl.formatMessage({ id: 'components.MapLayers.park-and-ride' })
     case 'stops':
       return intl.formatMessage({ id: 'components.MapLayers.stops' })
+    case 'rentalVehicles':
+      if (overlay.network)
+        return getCompanyNames([overlay.network], config, intl)
+
+      return intl.formatMessage({ id: 'components.MapLayers.shared-vehicles' })
     default:
       console.warn(`No name found for overlay type ${type}.`)
       return type
@@ -238,6 +247,8 @@ class DefaultMap extends Component {
       itinerary,
       mapConfig,
       pending,
+      setLocation,
+      setViewedStop,
       vehicleRentalQuery,
       vehicleRentalStations
     } = this.props
@@ -245,6 +256,7 @@ class DefaultMap extends Component {
       this.context
     const { baseLayers, maxZoom, overlays } = mapConfig || {}
     const { lat, lon, zoom } = this.state
+    const vectorTilesEndpoint = makeApiUrl(config, 'vectorTiles', {})
 
     const bikeStations = [
       ...bikeRentalStations.filter(
@@ -263,12 +275,16 @@ class DefaultMap extends Component {
       ...baseLayer,
       name: getLayerName(baseLayer, config, intl)
     }))
+    const baseLayerUrls = baseLayersWithNames?.map((bl) => bl.url)
+    const baseLayerNames = baseLayersWithNames?.map((bl) => bl.name)
 
     return (
       <MapContainer>
         <BaseMap
-          // Only 1 base layer is supported at the moment
-          baseLayer={baseLayersWithNames?.[0]?.url}
+          baseLayer={
+            baseLayerUrls?.length > 1 ? baseLayerUrls : baseLayerUrls?.[0]
+          }
+          baseLayerNames={baseLayerNames}
           center={[lat, lon]}
           mapLibreProps={{ reuseMaps: true }}
           maxZoom={maxZoom}
@@ -345,6 +361,20 @@ class DefaultMap extends Component {
                     stations={bikeStations}
                   />
                 )
+              case 'otp2':
+                // This must be a method that returns an array of JSX
+                // as the base-map requires that every toggleable layer
+                // is its own component, and not a subcomponent of another component
+                return generateOTP2TileLayers(
+                  overlayConfig.layers.map((l) => ({
+                    ...l,
+                    name: getLayerName(l, config, intl) || l.network || l.type
+                  })),
+                  vectorTilesEndpoint,
+                  setLocation,
+                  setViewedStop,
+                  config.companies
+                )
               default:
                 return null
             }
@@ -379,7 +409,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   bikeRentalQuery,
   carRentalQuery,
+  setLocation,
   setMapPopupLocationAndGeocode,
+  setViewedStop,
   updateOverlayVisibility,
   vehicleRentalQuery
 }
