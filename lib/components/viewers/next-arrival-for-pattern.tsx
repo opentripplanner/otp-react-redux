@@ -75,7 +75,7 @@ function NextArrivalForPattern({
   const title = `${routeName} ${toHeadsign}`
 
   return (
-    <div
+    <li
       className="next-arrival-row"
       style={{
         backgroundColor: routeColor,
@@ -102,7 +102,7 @@ function NextArrivalForPattern({
           />
         </div>
       )}
-    </div>
+    </li>
   )
 }
 

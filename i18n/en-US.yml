@@ -126,6 +126,7 @@ components:
         other {# spaces available}
       }
   AppMenu:
+    appMenu: App Menu
     callHistory: Call History
     closeMenu: Close Menu
     fieldTrip: Field Trip
@@ -206,6 +207,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Form navigation
   ItinerarySummary:
+    itineraryDetails: Itinerary details
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
@@ -219,6 +221,7 @@ components:
     bike-rental: "{companies} Shared Bikes"
     car-rental: Rental Car Locations
     micromobility-rental: "{companies} E-Scooters"
+    shared-vehicles: "Shared Vehicles"
     park-and-ride: Park & Ride Locations
     satellite: Satellite
     stops: Transit Stops
@@ -425,6 +428,8 @@ components:
     zoomToStop: Zoom to stop
 
   SubNav:
+    languageSelector: Select language
+    activeLanguage: Active language
     languages: "Languages"
     myAccount: My account
     selectALanguage: Select a language
@@ -557,6 +562,9 @@ components:
     bicyclesAllowed: Allowed
     header: Trip Viewer
     listOfRouteStops: List of stops on this route
+    tripDescription: Board at {boardAtStop} and disembark at {disembarkAtStop}
+    startOfTrip: Trip begins here
+    endOfTrip: Trip ends here
     routeHeader: "Route: <strong>{routeShortName}</strong> {routeLongName}"
     viewStop: View
   UserAccountScreen:

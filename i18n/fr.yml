@@ -131,6 +131,7 @@ components:
         other {# emplacements disponibles}
       }
   AppMenu:
+    appMenu: App Menu
     callHistory: Historique des appels
     closeMenu: Fermer le menu
     fieldTrip: Groupes scolaires
@@ -225,6 +226,7 @@ components:
     bike-rental: Vélos partagés {companies}
     car-rental: Voitures en location
     micromobility-rental: Trottinettes {companies}
+    shared-vehicles: "Véhicules partagés"
     park-and-ride: Parcs relais
     satellite: Satellite
     stops: Arrêts et stations
