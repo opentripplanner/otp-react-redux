@@ -1,5 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
+
+import { GRAY_ON_WHITE } from '../../util/colors'
 
 import Place, {
   ActionButton,
@@ -16,7 +17,9 @@ import Place, {
 
 const FAVORITE_PLACE_HEIGHT_PX = '60px'
 
-const StyledFavoritePlace = styled(Place)`
+export const StyledFavoritePlace = styled(Place).attrs({
+  largeIcon: true
+})`
   align-items: stretch;
   display: flex;
   height: ${FAVORITE_PLACE_HEIGHT_PX};
@@ -35,11 +38,11 @@ const StyledFavoritePlace = styled(Place)`
     margin-left: 10px;
   }
   ${PlaceDetail} {
-    color: #888;
+    color: ${GRAY_ON_WHITE};
     display: block;
   }
   ${IconWrapper} {
-    color: #888;
+    color: ${GRAY_ON_WHITE};
     flex-shrink: 0;
   }
   ${ActionButton}, ${ActionButtonPlaceholder} {
@@ -47,10 +50,6 @@ const StyledFavoritePlace = styled(Place)`
     width: ${FAVORITE_PLACE_HEIGHT_PX};
   }
 `
-
-export const FavoritePlace = (props) => (
-  <StyledFavoritePlace largeIcon {...props} />
-)
 
 // Styles and exports for the place component
 // used in the main panel.

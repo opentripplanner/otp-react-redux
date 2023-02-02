@@ -3,20 +3,22 @@ import { FormattedMessage } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
 
+import { RED_ON_WHITE } from '../util/colors'
+
 interface Props {
   onDelete: () => void
 }
 
 const DeleteButton = styled(Button)`
   background-color: white;
-  border-color: #d1332e;
-  color: #d1332e;
+  border-color: ${RED_ON_WHITE};
+  color: ${RED_ON_WHITE};
   :active,
   :focus,
   :focus:active,
   :hover {
-    border-color: #d1332e;
-    color: #d1332e;
+    border-color: ${RED_ON_WHITE};
+    color: ${RED_ON_WHITE};
   }
 `
 
