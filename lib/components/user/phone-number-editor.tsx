@@ -27,18 +27,16 @@ interface Fields {
 
 interface Props {
   errors: FormikErrors<Fields>
-  initialPhoneNumber: string
-  initialPhoneNumberVerified: boolean
+  initialPhoneNumber?: string
+  initialPhoneNumberVerified?: boolean
   intl: IntlShape
-  isPhoneNumberVerified: boolean
   onRequestCode: (code: string) => void
   onSubmitCode: (code: string) => void
   phoneFormatOptions: {
     countryCode: string
   }
-  phoneNumber: string
   resetForm: () => void
-  touched: Fields
+  touched: Record<string, boolean>
   values: Fields
 }
 
@@ -178,8 +176,9 @@ class PhoneNumberEditor extends Component<Props, State> {
     // If new phone number and verified status are received,
     // then reset/clear the inputs.
     if (
-      this.props.phoneNumber !== prevProps.phoneNumber ||
-      this.props.isPhoneNumberVerified !== prevProps.isPhoneNumberVerified
+      this.props.initialPhoneNumber !== prevProps.initialPhoneNumber ||
+      this.props.initialPhoneNumberVerified !==
+        prevProps.initialPhoneNumberVerified
     ) {
       this._handleCancelEditNumber()
       this.props.resetForm()

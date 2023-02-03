@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+// @ts-expect-error Package yup does not have type declarations.
 import * as yup from 'yup'
 import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
 import { FormattedMessage } from 'react-intl'
@@ -7,6 +7,26 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
 import PhoneNumberEditor from './phone-number-editor'
+
+interface Fields {
+  notificationChannel: string
+}
+
+interface Props {
+  handleBlur: () => void // Formik prop
+  handleChange: () => void // Formik prop
+  loggedInUser: {
+    email: string
+    isPhoneNumberVerified?: boolean
+    phoneNumber?: string
+  }
+  onRequestPhoneVerificationCode: (code: string) => void
+  onSendPhoneVerificationCode: (code: string) => void
+  phoneFormatOptions: {
+    countryCode: string
+  }
+  values: Fields // Formik prop
+}
 
 const allowedNotificationChannels = ['email', 'sms', 'none']
 
@@ -72,11 +92,9 @@ const NotificationPrefsPane = ({
   onSendPhoneVerificationCode,
   phoneFormatOptions,
   values: userData // Formik prop
-}) => {
+}: Props): JSX.Element => {
   const { email, isPhoneNumberVerified, phoneNumber } = loggedInUser
-
   const { notificationChannel } = userData
-
   const initialFormikValues = {
     validationCode: ''
   }
@@ -147,6 +165,7 @@ const NotificationPrefsPane = ({
           </FormGroup>
         )}
         {notificationChannel === 'sms' && (
+          // @ts-expect-error onSubmit is not passed to Formik because PhoneNumberEditor handles code submission on its own.
           <Formik
             initialValues={initialFormikValues}
             validateOnChange
@@ -155,18 +174,16 @@ const NotificationPrefsPane = ({
             {
               // Pass Formik props to the component rendered so Formik can manage its validation.
               // (The validation for this component is independent of the validation set in UserAccountScreen.)
-              (innerProps) => {
-                return (
-                  <PhoneNumberEditor
-                    {...innerProps}
-                    initialPhoneNumber={phoneNumber}
-                    initialPhoneNumberVerified={isPhoneNumberVerified}
-                    onRequestCode={onRequestPhoneVerificationCode}
-                    onSubmitCode={onSendPhoneVerificationCode}
-                    phoneFormatOptions={phoneFormatOptions}
-                  />
-                )
-              }
+              (innerProps) => (
+                <PhoneNumberEditor
+                  {...innerProps}
+                  initialPhoneNumber={phoneNumber}
+                  initialPhoneNumberVerified={isPhoneNumberVerified}
+                  onRequestCode={onRequestPhoneVerificationCode}
+                  onSubmitCode={onSendPhoneVerificationCode}
+                  phoneFormatOptions={phoneFormatOptions}
+                />
+              )
             }
           </Formik>
         )}
