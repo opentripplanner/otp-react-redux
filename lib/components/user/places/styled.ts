@@ -29,17 +29,22 @@ export const StyledFavoritePlace = styled(Place).attrs({
     align-items: center;
     display: flex;
     flex: 1 0 0;
-    overflow: hidden;
     text-align: left;
-    text-overflow: ellipsis;
   }
   ${PlaceContent} {
-    display: inline-block;
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
     margin-left: 10px;
+    /* overflow is needed here for the nested overflow to take effect. */
+    overflow: hidden;
   }
   ${PlaceDetail} {
     color: ${GRAY_ON_WHITE};
     display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
   }
   ${IconWrapper} {
     color: ${GRAY_ON_WHITE};
