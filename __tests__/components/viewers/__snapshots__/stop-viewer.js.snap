@@ -804,9 +804,12 @@ exports[`components > viewers > stop viewer should render countdown times after 
                     </FromToLocationPicker>
                   </span>
                 </div>
-                <styled.div>
+                <styled.div
+                  tabIndex={0}
+                >
                   <div
                     className="sc-gVgoRu bqiCoT"
+                    tabIndex={0}
                   >
                     <LiveStopTimes
                       findStopTimesForStop={[Function]}
@@ -3406,9 +3409,12 @@ exports[`components > viewers > stop viewer should render countdown times for st
                     </FromToLocationPicker>
                   </span>
                 </div>
-                <styled.div>
+                <styled.div
+                  tabIndex={0}
+                >
                   <div
                     className="sc-gVgoRu bqiCoT"
+                    tabIndex={0}
                   >
                     <LiveStopTimes
                       findStopTimesForStop={[Function]}
@@ -5140,9 +5146,12 @@ exports[`components > viewers > stop viewer should render times after midnight w
                     </FromToLocationPicker>
                   </span>
                 </div>
-                <styled.div>
+                <styled.div
+                  tabIndex={0}
+                >
                   <div
                     className="sc-gVgoRu bqiCoT"
+                    tabIndex={0}
                   >
                     <LiveStopTimes
                       findStopTimesForStop={[Function]}
@@ -8133,9 +8142,12 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                     </FromToLocationPicker>
                   </span>
                 </div>
-                <styled.div>
+                <styled.div
+                  tabIndex={0}
+                >
                   <div
                     className="sc-gVgoRu bqiCoT"
+                    tabIndex={0}
                   >
                     <LiveStopTimes
                       findStopTimesForStop={[Function]}
@@ -14669,9 +14681,12 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                     </FromToLocationPicker>
                   </span>
                 </div>
-                <styled.div>
+                <styled.div
+                  tabIndex={0}
+                >
                   <div
                     className="sc-gVgoRu bqiCoT"
+                    tabIndex={0}
                   >
                     <LiveStopTimes
                       findStopTimesForStop={[Function]}
