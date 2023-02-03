@@ -182,7 +182,7 @@ if (OTP_RR_PERCY_MOBILE) {
 
     // Open stop viewer
     const [patternStopButton] = await page.$x(
-      "//a[contains(., 'Ashby Station')]"
+      "//button[contains(., 'Ashby Station')]"
     )
     await patternStopButton.click()
     await page.waitForSelector('.stop-viewer')
