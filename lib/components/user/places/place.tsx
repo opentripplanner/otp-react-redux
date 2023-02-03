@@ -2,14 +2,38 @@ import { Button } from 'react-bootstrap'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { TrashAlt } from '@styled-icons/fa-solid/TrashAlt'
 import { useIntl } from 'react-intl'
-import PropTypes from 'prop-types'
-import React, { useContext } from 'react'
+import React, { ReactNode, useContext } from 'react'
 import styled from 'styled-components'
 
 import { ComponentContext } from '../../../util/contexts'
 import { LinkContainerWithQuery } from '../../form/connected-links'
 import { StyledIconWrapper } from '../../util/styledIcon'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+
+interface Props extends HTMLAttributes<HTMLLIElement> {
+  /** The action text shown for accessibility purposes */
+  actionText?: string
+  /** The detail content displayed for the place */
+  detailText?: ReactNode
+  /** The font-awesome icon name for the place. */
+  icon?: string
+  /** Whether to render icons large. */
+  largeIcon?: boolean
+  /** The displayed content for the place. */
+  mainText?: ReactNode
+  /** Called when the "main" button is clicked. Takes precedence over the path prop. */
+  onClick?: () => void
+  /** Determines whether the Delete button is shown. Called when the Delete button is clicked. */
+  onDelete?: () => void
+  /** Determines whether the View button is shown. Called when the View button is clicked. */
+  onView?: () => void
+  /** The path to navigate to on click. */
+  path?: string
+  /** The HTML tag to render to. */
+  tag?: string
+  /** The title for the main button */
+  title?: string
+}
 
 const Container = styled.li`
   align-items: stretch;
@@ -62,7 +86,7 @@ const Place = ({
   path,
   tag = 'li',
   title = `${mainText}${detailText && ` (${detailText})`}`
-}) => {
+}: Props): Jsx.Element => {
   const intl = useIntl()
   const { SvgIcon } = useContext(ComponentContext)
   const viewStopLabel = intl.formatMessage({ id: 'components.Place.viewStop' })
@@ -127,33 +151,6 @@ const Place = ({
       )}
     </Container>
   )
-}
-
-Place.propTypes = {
-  /** The action text shown for accessibility purposes */
-  actionText: PropTypes.string,
-  /** Optional CSS class name */
-  className: PropTypes.string,
-  /** The detail text displayed for the place */
-  detailText: PropTypes.node,
-  /** The font-awesome icon name for the place. */
-  icon: PropTypes.string,
-  /** Whether to render icons large. */
-  largeIcon: PropTypes.bool,
-  /** The displayed name for the place. */
-  mainText: PropTypes.node,
-  /** Called when the "main" button is clicked. Takes precedence over the path prop. */
-  onClick: PropTypes.func,
-  /** Determines whether the Delete button is shown. Called when the Delete button is clicked. */
-  onDelete: PropTypes.func,
-  /** Determines whether the View button is shown. Called when the View button is clicked. */
-  onView: PropTypes.func,
-  /** The path to navigate to on click. */
-  path: PropTypes.string,
-  /** The HTML tag to render to. */
-  tag: PropTypes.string,
-  /** The title for the main button */
-  title: PropTypes.string
 }
 
 export default Place
