@@ -418,7 +418,7 @@ test('OTP-RR', async () => {
   } catch {
     await page.reload({ waitUntil: 'networkidle0' })
   }
-  const [patternStopButton] = await page.$x("//a[contains(., 'West')]")
+  const [patternStopButton] = await page.$x("//button[contains(., 'West')]")
   await patternStopButton.click()
   await page.waitForSelector('.stop-viewer')
 
