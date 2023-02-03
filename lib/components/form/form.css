@@ -408,3 +408,26 @@
 .otp .date-time-modal .date-time-selector.with-desktop-touchscreen input::-webkit-datetime-edit {
   margin-inline-end: 8px;
 }
+
+.batch-routing-panel-location-fields {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 40px 10px;
+}
+
+.batch-routing-panel-location-fields div {
+  grid-column: 1/-1;
+}
+.batch-routing-panel-location-fields div:nth-of-type(1) {
+  grid-row: 1;
+}
+
+.batch-routing-panel-location-fields div:nth-of-type(2) {
+  grid-row: 2;
+}
+.batch-routing-panel-location-fields div.switch-button-container-grid {
+  grid-row: 1;
+  grid-column: 2;
+  position: relative;
+  top: 22px;
+}
