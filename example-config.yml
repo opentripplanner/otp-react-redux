@@ -527,6 +527,9 @@ itinerary:
 #  currency: 'USD'
 #  defaultLocale: 'en-US'
 
+### Show metric or imperial units
+# outputMetricUnits: false
+    
 ### If using OTP Middleware, you can define the optional phone number options below.
 # phoneFormatOptions:
 #  # ISO 2-letter country code for phone number formats (defaults to 'US')
