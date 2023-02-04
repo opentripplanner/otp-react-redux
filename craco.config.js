@@ -2,6 +2,7 @@ const path = require('path')
 
 const { addBeforeLoader, getLoaders, loaderByName } = require('@craco/craco')
 const BabelRcPlugin = require('@jackwilsdon/craco-use-babelrc')
+const CircularDependencyPlugin = require('circular-dependency-plugin')
 const fastRefreshCracoPlugin = require('craco-fast-refresh')
 const fs = require('fs-extra')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -123,6 +124,9 @@ module.exports = {
         minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
       }
 
+      const MAX_IMPORT_CYCLES = 7 // based on existing cycles.
+      let detectedCycles = []
+
       // Custom plugins to allow trimet-mod-otp integration
       const hotLoaderPlugins = []
       if (env === 'development') {
@@ -142,6 +146,37 @@ module.exports = {
           // Optionally override the default config files with some other
           // files.
           YAML_CONFIG: JSON.stringify(YAML_CONFIG)
+        }),
+        new CircularDependencyPlugin({
+          allowAsyncCycles: false,
+          cwd: './lib',
+          exclude: /node_modules/,
+          failOnError: true,
+          include: /lib/,
+          onDetected({ paths }) {
+            detectedCycles.push(paths.join(' -> '))
+          },
+          onEnd({ compilation }) {
+            if (detectedCycles.length > MAX_IMPORT_CYCLES) {
+              compilation.errors.push(
+                new Error(
+                  `Too many circular dependencies. Detected: ${
+                    detectedCycles.length
+                  }, Allowed: ${MAX_IMPORT_CYCLES} (see config):\n${detectedCycles.join(
+                    '\n'
+                  )}`
+                )
+              )
+            } else if (detectedCycles.length > 0) {
+              console.warn(
+                `${detectedCycles.length} circular dependencies were found:`
+              )
+              console.warn(detectedCycles.join('\n'))
+            }
+          },
+          onStart() {
+            detectedCycles = []
+          }
         })
       ].concat(DEV_ENV ? [] : [new webpack.optimize.AggressiveMergingPlugin()])
 

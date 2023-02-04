@@ -37,6 +37,7 @@
   border-top-right-radius: 10px;
 }
 .otp .option.metro-itin.expanded:first-of-type div.header .itin-wrapper {
+  border-bottom: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
