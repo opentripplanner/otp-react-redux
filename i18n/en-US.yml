@@ -192,7 +192,7 @@ components:
   FavoritePlaceList:
     addAnotherPlace: Add another place
     description: "Add the places you frequent often to save time planning trips:"
-    # editThisPlace is a tooltip text.
+    # editThisPlace is used as the button's visibly-hidden text and tooltip text.
     editThisPlace: Edit this place
     setAddressForPlaceType: "Set your {placeType} address"
   FavoritePlaceScreen:
