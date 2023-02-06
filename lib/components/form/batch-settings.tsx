@@ -155,7 +155,7 @@ function BatchSettings({
         />
         <ModeButtonsContainerCompressed>
           <MetroModeSelector
-            fillModeIcons={false}
+            fillModeIcons={config.itinerary?.fillModeIcons}
             modeButtons={buttonsWithSettings}
             onSettingsUpdate={setModeSettingValue}
             onToggleModeButton={toggleModeButton}
