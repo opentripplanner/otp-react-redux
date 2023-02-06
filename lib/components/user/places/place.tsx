@@ -2,7 +2,7 @@ import { Button } from 'react-bootstrap'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { TrashAlt } from '@styled-icons/fa-solid/TrashAlt'
 import { useIntl } from 'react-intl'
-import React, { ReactNode, useContext } from 'react'
+import React, { HTMLAttributes, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
 
 import { ComponentContext } from '../../../util/contexts'
@@ -34,7 +34,11 @@ interface Props extends HTMLAttributes<HTMLLIElement> {
   /** The title for the main button */
   title?: string
 }
-
+/*
+interface ConfigContext extends Context {
+  SvgIcon: ComponentType<{ iconName?: string }>
+}
+*/
 const Container = styled.li`
   align-items: stretch;
   display: flex;
@@ -86,16 +90,18 @@ const Place = ({
   path,
   tag = 'li',
   title = `${mainText}${detailText && ` (${detailText})`}`
-}: Props): Jsx.Element => {
+}: Props): JSX.Element => {
   const intl = useIntl()
+  // @ts-expect-error TODO: Add types to ComponentContext
   const { SvgIcon } = useContext(ComponentContext)
   const viewStopLabel = intl.formatMessage({ id: 'components.Place.viewStop' })
   const deletePlaceLabel = intl.formatMessage({
     id: 'components.Place.deleteThisPlace'
   })
   const to = onClick ? null : path
-  const iconSize = largeIcon && '2x'
+  const iconSize = largeIcon ? '2x' : undefined
   return (
+    // @ts-expect-error Prop 'as' from styled-components is not recognized by TypeScript.
     <Container as={tag} className={className}>
       <LinkContainerWithQuery
         // Don't highlight component if 'to' is null.
