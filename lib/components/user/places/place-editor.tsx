@@ -1,4 +1,4 @@
-import { Field } from 'formik'
+import { Field, FormikProps } from 'formik'
 import {
   FormControl,
   FormGroup,
@@ -17,13 +17,25 @@ import { capitalizeFirst, getErrorStates } from '../../../util/ui'
 import { ComponentContext } from '../../../util/contexts'
 import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'
 import { getFormattedPlaces } from '../../../util/i18n'
+import { StyledIconWrapper } from '../../util/styledIcon'
 import FormattedValidationError from '../../util/formatted-validation-error'
 
 import {
   makeLocationFieldLocation,
   PlaceLocationField
 } from './place-location-field'
-import { StyledIconWrapper } from '../../util/styledIcon'
+
+// TODO: Share with OTP middleware user types.
+interface Fields {
+  address?: string
+  icon?: string
+  lat?: number
+  lon?: number
+  name?: string
+  type?: string
+}
+
+type Props = WrappedComponentProps & FormikProps<Fields>
 
 const { isMobile } = coreUtils.ui
 
@@ -48,16 +60,7 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)`
  * This component uses Formik props that are passed
  * within the Formik context set up by FavoritePlaceScreen.
  */
-class PlaceEditor extends Component<
-  {
-    // FIXME: shared type for errors, places
-    errors: any
-    handleBlur: () => void
-    handleChange: () => void
-    setValues: (values: unknown) => void
-    values: any
-  } & WrappedComponentProps
-> {
+class PlaceEditor extends Component<Props> {
   static contextType = ComponentContext
 
   _handleLocationChange = (
