@@ -64,7 +64,7 @@ class PlaceEditor extends Component<
     _: IntlShape, // Ignore intl object.
     { location }: { location: Location }
   ) => {
-    const { setValues, values } = this.props
+    const { setTouched, setValues, values } = this.props
     const { lat, lon, name } = location
     setValues({
       ...values,
@@ -72,6 +72,7 @@ class PlaceEditor extends Component<
       lat,
       lon
     })
+    setTouched({ address: true })
   }
 
   render() {
