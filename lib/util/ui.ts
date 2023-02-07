@@ -37,7 +37,7 @@ export function getErrorStates(
 ): Record<string, 'error' | null> {
   const { errors, touched } = props
   const errorStates: Record<string, 'error' | null> = {}
-  Object.keys(errors).forEach((name: string) => {
+  Object.keys(errors).forEach((name) => {
     errorStates[name] = touched[name] && errors[name] ? 'error' : null
   })
 

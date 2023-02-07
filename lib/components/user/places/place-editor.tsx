@@ -91,9 +91,6 @@ class PlaceEditor extends Component<Props> {
       <div>
         {!isFixed && (
           <>
-            {/* TODO: properly type errorStates
-             eslint-disable-next-line @typescript-eslint/ban-ts-comment //
-            @ts-ignore */}
             <FormGroup validationState={errorStates.name}>
               {/* onBlur, onChange, and value are passed automatically. */}
               <Field
@@ -116,8 +113,7 @@ class PlaceEditor extends Component<Props> {
                 type="radio"
               >
                 {Object.keys(CUSTOM_PLACE_TYPES).map((k) => {
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-ignore
+                  // @ts-expect-error TODO: add types to CUSTOM_PLACE_TYPES
                   const { icon, type } = CUSTOM_PLACE_TYPES[k]
                   const title = capitalizeFirst(getFormattedPlaces(k, intl))
                   return (
@@ -149,9 +145,6 @@ class PlaceEditor extends Component<Props> {
             </FixedPlaceIconWrapper>
           )}
 
-          {/* TODO: properly type errorStates
-             eslint-disable-next-line @typescript-eslint/ban-ts-comment //
-            @ts-ignore */}
           <FlexFormGroup validationState={errorStates.address}>
             <PlaceLocationField
               className="form-control"
