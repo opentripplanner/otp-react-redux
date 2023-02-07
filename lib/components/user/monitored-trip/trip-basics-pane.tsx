@@ -1,7 +1,4 @@
-import { Field } from 'formik'
-// No Typescript Yet
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+import { connect } from 'react-redux'
 import {
   ControlLabel,
   FormControl,
@@ -10,47 +7,59 @@ import {
   HelpBlock,
   ProgressBar
 } from 'react-bootstrap'
+import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl } from 'react-intl'
-// No Typescript Yet
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+import { Itinerary } from '@opentripplanner/types'
+import { Prompt } from 'react-router'
+// @ts-expect-error FormikErrorFocus does not support TypeScript yet.
 import FormikErrorFocus from 'formik-error-focus'
 import React, { Component } from 'react'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { connect } from 'react-redux'
-import { Prompt } from 'react-router'
 import styled from 'styled-components'
 import type { IntlShape, WrappedComponentProps } from 'react-intl'
 
 import * as userActions from '../../../actions/user'
-import {
-  ALL_DAYS,
-  getFormattedDayOfWeekPlural
-} from '../../../util/monitored-trip'
 import { getErrorStates } from '../../../util/ui'
+import { getFormattedDayOfWeekPlural } from '../../../util/monitored-trip'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 import FormattedValidationError from '../../util/formatted-validation-error'
 
 import TripStatus from './trip-status'
 import TripSummary from './trip-summary'
 
-type TripBasicsProps =
-  | {
-      canceled: boolean
-      checkItineraryExistence: (monitoredTrip: unknown, intl: IntlShape) => void
-      clearItineraryExistence: () => void
-      dirty: boolean
-      errors: { tripName?: string }
-      isCreating: boolean
-      isSubmitting: boolean
-      itineraryExistence: Record<string, { valid: boolean }>
-      setFieldValue: (field: string, threshold: number | false) => void
-      values: { [key: string]: string; itinerary: any } // FIXME
-    } & WrappedComponentProps
+interface Fields {
+  friday: boolean
+  itinerary: Itinerary
+  monday: boolean
+  saturday: boolean
+  sunday: boolean
+  thursday: boolean
+  tripName: string
+  tuesday: boolean
+  wednesday: boolean
+}
+
+type TripBasicsProps = WrappedComponentProps &
+  FormikProps<Fields> & {
+    canceled: boolean
+    checkItineraryExistence: (monitoredTrip: unknown, intl: IntlShape) => void
+    clearItineraryExistence: () => void
+    isCreating: boolean
+    itineraryExistence: Record<string, { valid: boolean }>
+  }
 
 // FIXME: move to shared types file
-type errorStates = 'success' | 'warning' | 'error' | null | undefined
+type ErrorStates = 'success' | 'warning' | 'error' | null | undefined
+
+// FIXME: combine back with monitored trips when that is typed.
+const ALL_DAYS = [
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+  'sunday'
+] as const
 
 // Styles.
 const TripDayLabel = styled.label`
@@ -147,12 +156,9 @@ class TripBasicsPane extends Component<TripBasicsProps> {
       // Show an error indication when
       // - monitoredTrip.tripName is not blank and that tripName is not already used.
       // - no day is selected (show a combined error indication).
-      // FIXME: type getErrorStates
-      const errorStates: Record<string, errorStates | any> = getErrorStates(
-        this.props
-      )
+      const errorStates = getErrorStates(this.props)
 
-      let monitoredDaysValidationState: errorStates | null = null
+      let monitoredDaysValidationState: ErrorStates = null
       ALL_DAYS.forEach((day) => {
         if (!monitoredDaysValidationState) {
           monitoredDaysValidationState = errorStates[day]
@@ -263,10 +269,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
 
 // Connect to redux store
 
-// TODO: state type
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   const { itineraryExistence } = state.user
   return {
     itineraryExistence

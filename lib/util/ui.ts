@@ -1,8 +1,10 @@
+import { FormikProps } from 'formik'
+
 /**
- * @param {*} string the string to test.
+ * @param string the string to test.
  * @returns true if the string is null or of zero length.
  */
-export function isBlank (string) {
+export function isBlank(string?: string): boolean {
   return !(!!string && string.length)
 }
 
@@ -11,7 +13,7 @@ export function isBlank (string) {
  * e.g. if the URL is http://www.example.com/path/#/route?param=value,
  * only /route?param=value is returned. A blank string is returned at the minimum per substr() function.
  */
-export function getCurrentRoute () {
+export function getCurrentRoute(): string {
   return window.location.hash.substr(1)
 }
 
@@ -30,11 +32,13 @@ export const RETURN_TO_CURRENT_ROUTE = {
  * @returns An object where each field is set to 'error' if the
  *          corresponding Formik props denote an error for that field.
  */
-export function getErrorStates (props) {
+export function getErrorStates(
+  props: FormikProps<any>
+): Record<string, 'error' | null> {
   const { errors, touched } = props
-  const errorStates = {}
-  Object.keys(errors).forEach(name => {
-    errorStates[name] = touched[name] && errors[name] && 'error'
+  const errorStates: Record<string, 'error' | null> = {}
+  Object.keys(errors).forEach((name: string) => {
+    errorStates[name] = touched[name] && errors[name] ? 'error' : null
   })
 
   return errorStates
@@ -43,12 +47,12 @@ export function getErrorStates (props) {
 /**
  * Browser navigate back.
  */
-export const navigateBack = () => window.history.back()
+export const navigateBack = (): void => window.history.back()
 
 /**
  * Capitalizes the first letter of a string.
  */
-export function capitalizeFirst (str) {
+export function capitalizeFirst(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
@@ -57,9 +61,9 @@ export function capitalizeFirst (str) {
  * @param  {...any} parts   List of string components to assemble into path
  * @returns                 A path made of the components passed in
  */
-export function getPathFromParts (...parts) {
+export function getPathFromParts(...parts: string[]): string {
   let path = ''
-  parts.forEach(p => {
+  parts.forEach((p: string) => {
     if (p) path += `/${p}`
   })
   return path
