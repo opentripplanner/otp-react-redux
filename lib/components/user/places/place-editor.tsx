@@ -19,6 +19,7 @@ import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'
 import { getFormattedPlaces } from '../../../util/i18n'
 import { StyledIconWrapper } from '../../util/styledIcon'
 import FormattedValidationError from '../../util/formatted-validation-error'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import {
   makeLocationFieldLocation,
@@ -92,10 +93,13 @@ class PlaceEditor extends Component<Props> {
         {!isFixed && (
           <>
             <FormGroup validationState={errorStates.name}>
+              <InvisibleA11yLabel as="label" htmlFor="name">
+                {namePlaceholder}
+              </InvisibleA11yLabel>
               {/* onBlur, onChange, and value are passed automatically. */}
               <Field
-                aria-label={namePlaceholder}
                 as={FormControl}
+                id="name"
                 name="name"
                 placeholder={namePlaceholder}
               />
