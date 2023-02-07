@@ -2,7 +2,7 @@
 import * as yup from 'yup'
 import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
 import { FormattedMessage } from 'react-intl'
-import { Formik } from 'formik'
+import { Formik, FormikProps } from 'formik'
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
@@ -12,9 +12,7 @@ interface Fields {
   notificationChannel: string
 }
 
-interface Props {
-  handleBlur: () => void // Formik prop
-  handleChange: () => void // Formik prop
+interface Props extends FormikProps<Fields> {
   loggedInUser: {
     email: string
     isPhoneNumberVerified?: boolean
@@ -25,7 +23,6 @@ interface Props {
   phoneFormatOptions: {
     countryCode: string
   }
-  values: Fields // Formik prop
 }
 
 const allowedNotificationChannels = ['email', 'sms', 'none']
