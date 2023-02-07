@@ -41,6 +41,10 @@ export const StyledFavoritePlace = styled(Place).attrs({
   }
   ${PlaceDetail} {
     color: ${GRAY_ON_WHITE};
+  }
+
+  ${PlaceName},
+  ${PlaceDetail} {
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
