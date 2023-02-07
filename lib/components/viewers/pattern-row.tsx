@@ -73,12 +73,21 @@ class PatternRow extends Component<Props, State> {
 
     const routeName = route.shortName ? route.shortName : route.longName
     const routeColor = getRouteColorBasedOnSettings(route.operator, route)
+    console.log(stopTimes)
+    let style
+    if (routeName && routeName?.length >= 4 && routeName?.length <= 6) {
+      style = { fontSize: '20px' }
+    } else if (routeName && routeName?.length > 7) {
+      style = { fontSize: '16px' }
+    } else {
+      style = { fontSize: '32px' }
+    }
 
     return (
       <li className="route-row">
         {/* header row */}
         <div
-          className="header"
+          className="header stop-view"
           style={{
             backgroundColor: routeColor,
             color: getMostReadableTextColor(routeColor, route?.textColor)
@@ -86,11 +95,7 @@ class PatternRow extends Component<Props, State> {
         >
           {/* route name */}
           <div className="route-name">
-            <strong
-              style={
-                routeName && routeName?.length >= 4 ? { fontSize: '50%' } : {}
-              }
-            >
+            <strong style={style}>
               <div
                 style={{
                   alignContent: 'center',
@@ -98,6 +103,7 @@ class PatternRow extends Component<Props, State> {
                   justifyContent: 'center',
                   whiteSpace: 'nowrap'
                 }}
+                title={routeName}
               >
                 {showOperatorLogo && (
                   <OperatorLogo operator={route?.operator} />
@@ -111,7 +117,7 @@ class PatternRow extends Component<Props, State> {
                 />
               </div>
             </strong>
-            <span>{pattern.headsign}</span>
+            <span title={pattern.headsign}>{pattern.headsign}</span>
           </div>
           {/* next departure preview */}
           {hasStopTimes && (

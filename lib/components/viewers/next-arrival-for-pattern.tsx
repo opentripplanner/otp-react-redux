@@ -83,7 +83,7 @@ function NextArrivalForPattern({
       }}
     >
       {/* route name */}
-      <div className="next-arrival-label overflow-ellipsis" title={title}>
+      <div className="next-arrival-label" title={title}>
         <span className="route-name">
           <RouteRenderer
             isOnColoredBackground={route.operator?.colorMode?.includes('gtfs')}
@@ -91,7 +91,7 @@ function NextArrivalForPattern({
             leg={generateFakeLegForRouteRenderer(route, true)}
           />
         </span>
-        {toHeadsign}
+        <span className="overflow-ellipsis">{toHeadsign}</span>
       </div>
       {/* next departure preview */}
       {hasStopTimes && (
