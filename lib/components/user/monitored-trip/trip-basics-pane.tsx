@@ -174,11 +174,11 @@ class TripBasicsPane extends Component<TripBasicsProps> {
           <TripSummary monitoredTrip={monitoredTrip} />
 
           <FormGroup validationState={errorStates.tripName}>
-            <ControlLabel>
+            <ControlLabel htmlFor="tripName">
               <FormattedMessage id="components.TripBasicsPane.tripNamePrompt" />
             </ControlLabel>
             {/* onBlur, onChange, and value are passed automatically. */}
-            <Field as={FormControl} name="tripName" />
+            <Field as={FormControl} id="tripName" name="tripName" />
             <FormControl.Feedback />
             {errors.tripName && (
               <HelpBlock>
