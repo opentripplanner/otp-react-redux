@@ -77,6 +77,12 @@
 }
 
 /* switch button */
+.otp .switch-button .hidden {
+  display: inline-block;
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
 
 .otp .switch-button-container {
   position: absolute;
