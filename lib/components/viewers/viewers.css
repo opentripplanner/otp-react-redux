@@ -147,6 +147,7 @@
 .otp .stop-viewer .route-row .header .route-name span {
   display: -webkit-box;
   font-size: 15px;
+  overflow: hidden;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
