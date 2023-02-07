@@ -231,7 +231,7 @@ class LiveStopTimes extends Component<Props, State> {
           )}
           {tomorrowTimes.length > 0 && (
             <div className="list-container">
-              <p>
+              <p className="day-label">
                 <FormattedDayOfWeek
                   // 'iiii' returns the long ISO day of the week (independent of browser locale).
                   // See https://date-fns.org/v2.28.0/docs/format
@@ -265,7 +265,7 @@ class LiveStopTimes extends Component<Props, State> {
           )}
           {dayAfterTomorrowTimes.length > 0 && (
             <div className="list-container">
-              <p>
+              <p className="day-label">
                 <FormattedDayOfWeek
                   day={format(dayAfterTomorrow, 'iiii', {
                     timeZone: homeTimezone

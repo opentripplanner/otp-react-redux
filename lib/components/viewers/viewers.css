@@ -112,6 +112,10 @@
   border-radius: 0;
 } 
 
+.otp .stop-viewer .list-container .day-label {
+  font-weight: 500;
+}
+
 .otp .stop-viewer .list-container:first-of-type .route-row-container li:first-of-type .header.stop-view {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
