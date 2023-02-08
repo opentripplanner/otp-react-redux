@@ -365,7 +365,6 @@ class MetroItinerary extends NarrativeItinerary {
       return routeBlocks
     }
 
-    console.log(expanded)
     const handleClick = () => {
       setActiveItinerary(itinerary)
       setActiveLeg(null, null)
