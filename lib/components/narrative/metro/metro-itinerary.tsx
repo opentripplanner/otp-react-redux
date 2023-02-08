@@ -204,6 +204,16 @@ const ItineraryGridSmall = styled.div`
   }
 `
 
+// invisible header rendered for screen readers and a11y technologies
+const InvisibleHeader = styled.h3`
+  //place it in an unused grid cell so it doesn't add a row
+  grid-column: 2;
+  grid-row: 2;
+  height: 0;
+  overflow: hidden;
+  width: 0;
+`
+
 const BLUR_AMOUNT = 3
 const blurAnimation = keyframes`
  0% { filter: blur(${BLUR_AMOUNT}px); }
@@ -413,6 +423,15 @@ class MetroItinerary extends NarrativeItinerary {
             {!mini && (
               <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
+                {expanded ? (
+                  <InvisibleHeader as="h2">
+                    <FormattedList type="conjunction" value={modeStrings} />
+                  </InvisibleHeader>
+                ) : (
+                  <InvisibleHeader>
+                    <FormattedList type="conjunction" value={modeStrings} />
+                  </InvisibleHeader>
+                )}
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
                 </Routes>
