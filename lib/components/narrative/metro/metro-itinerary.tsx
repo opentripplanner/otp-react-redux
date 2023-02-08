@@ -432,15 +432,11 @@ class MetroItinerary extends NarrativeItinerary {
             {!mini && (
               <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
-                {expanded ? (
-                  <InvisibleH2>
-                    <FormattedList type="conjunction" value={modeStrings} />
-                  </InvisibleH2>
-                ) : (
-                  <InvisibleH3>
-                    <FormattedList type="conjunction" value={modeStrings} />
-                  </InvisibleH3>
-                )}
+
+                <InvisibleH2>
+                  <FormattedList type="conjunction" value={modeStrings} />
+                </InvisibleH2>
+
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
                 </Routes>
