@@ -45,10 +45,8 @@ const FixedPlaceIconWrapper = styled(StyledIconWrapper)`
   margin-right: 5px;
 `
 const FlexContainer = styled.div`
+  align-items: center;
   display: flex;
-`
-const FlexFormGroup = styled(FormGroup)`
-  flex-grow: 1;
 `
 const StyledButtonGroup = styled(ButtonGroup)`
   & > label {
@@ -102,6 +100,7 @@ class PlaceEditor extends Component<Props> {
                 id="name"
                 name="name"
                 placeholder={nameExample}
+                required
               />
               <FormControl.Feedback />
               {errors.name && (
@@ -162,18 +161,18 @@ class PlaceEditor extends Component<Props> {
           </>
         )}
 
-        <FlexContainer>
-          {/* For fixed places, just show the icon for place type instead of all inputs and selectors */}
-          {isFixed && (
-            <FixedPlaceIconWrapper size="1.5x">
-              <SvgIcon iconName={place.icon} />
-            </FixedPlaceIconWrapper>
-          )}
+        <FormGroup validationState={errorStates.address}>
+          <ControlLabel>
+            <FormattedMessage id="components.PlaceEditor.addressPrompt" />
+          </ControlLabel>
+          <FlexContainer>
+            {/* For fixed places, just show the icon for place type instead of all inputs and selectors */}
+            {isFixed && (
+              <FixedPlaceIconWrapper size="1.5x">
+                <SvgIcon iconName={place.icon} />
+              </FixedPlaceIconWrapper>
+            )}
 
-          <FlexFormGroup validationState={errorStates.address}>
-            <ControlLabel>
-              <FormattedMessage id="components.PlaceEditor.addressPrompt" />
-            </ControlLabel>
             <PlaceLocationField
               className="form-control"
               inputPlaceholder={
@@ -186,20 +185,21 @@ class PlaceEditor extends Component<Props> {
                       id: 'components.PlaceEditor.genericLocationPlaceholder'
                     })
               }
+              isRequired
               location={makeLocationFieldLocation(place)}
               locationType="to"
               onLocationSelected={this._handleLocationChange}
               showClearButton={false}
               static={isMobile()}
             />
-            <FormControl.Feedback />
-            {errors.address && (
-              <HelpBlock>
-                <FormattedValidationError type={errors.address} />
-              </HelpBlock>
-            )}
-          </FlexFormGroup>
-        </FlexContainer>
+          </FlexContainer>
+          <FormControl.Feedback />
+          {errors.address && (
+            <HelpBlock>
+              <FormattedValidationError type={errors.address} />
+            </HelpBlock>
+          )}
+        </FormGroup>
       </div>
     )
   }
