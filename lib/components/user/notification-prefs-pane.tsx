@@ -1,8 +1,8 @@
 // @ts-expect-error Package yup does not have type declarations.
 import * as yup from 'yup'
 import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
+import { Field, Formik, FormikProps } from 'formik'
 import { FormattedMessage } from 'react-intl'
-import { Formik, FormikProps } from 'formik'
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
@@ -50,8 +50,6 @@ const codeValidationSchema = yup.object({
  * User notification preferences pane.
  */
 const NotificationPrefsPane = ({
-  handleBlur, // Formik prop
-  handleChange, // Formik prop
   loggedInUser,
   onRequestPhoneVerificationCode,
   onSendPhoneVerificationCode,
@@ -74,7 +72,7 @@ const NotificationPrefsPane = ({
           <legend>
             <FormattedMessage id="components.NotificationPrefsPane.notificationChannelPrompt" />
           </legend>
-          {allowedNotificationChannels.map((type, index) => {
+          {allowedNotificationChannels.map((type) => {
             // TODO: If removing the Save/Cancel buttons on the account screen,
             // persist changes immediately when onChange is triggered.
             const inputId = `notification-channel-${type}`
@@ -82,30 +80,17 @@ const NotificationPrefsPane = ({
             return (
               <Fragment key={type}>
                 {/* Note: labels are placed after inputs so that the CSS focus selector can be easily applied. */}
-                <input
-                  checked={isChecked}
+                <Field
                   id={inputId}
                   name="notificationChannel"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
                   type="radio"
                   value={type}
                 />
                 <label
-                  className={`btn ${
-                    isChecked ? 'btn-primary active' : 'btn-default'
-                  }`}
-                  htmlFor={inputId}
-                  // An inline style needs to be used for the first element.
-                  // The bootstrap CSS will other override .btn:first-child content.
-                  style={
-                    index === 0
-                      ? {
-                          borderBottomLeftRadius: '4px',
-                          borderTopLeftRadius: '4px'
-                        }
-                      : {}
+                  className={
+                    isChecked ? 'btn btn-primary active' : 'btn btn-default'
                   }
+                  htmlFor={inputId}
                 >
                   {type === 'email' ? (
                     <FormattedMessage id="common.notifications.email" />

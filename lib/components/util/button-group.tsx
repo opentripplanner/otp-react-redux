@@ -33,6 +33,17 @@ const ButtonGroup = styled.fieldset.attrs({
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
   }
+
+  /* Without !important, round borders get overwritten by bootstrap's CSS. */
+  label:first-of-type {
+    border-bottom-left-radius: 4px !important;
+    border-top-left-radius: 4px !important;
+  }
+
+  /* This is to have the between-labels border to be 1px. */
+  label:not(label:first-of-type) {
+    margin-left: -1px;
+  }
 `
 
 export default ButtonGroup
