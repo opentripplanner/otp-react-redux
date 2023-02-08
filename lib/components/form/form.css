@@ -86,8 +86,8 @@
 
 .otp .switch-button-container {
   position: absolute;
-  top: 32px;
-  right: 45px;
+  top: 22px;
+  right: 32px;
   z-index: 100000;
 }
 
@@ -416,24 +416,6 @@
 }
 
 .batch-routing-panel-location-fields {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 40px 10px;
-}
-
-.batch-routing-panel-location-fields div {
-  grid-column: 1/-1;
-}
-.batch-routing-panel-location-fields div:nth-of-type(1) {
-  grid-row: 1;
-}
-
-.batch-routing-panel-location-fields div:nth-of-type(2) {
-  grid-row: 2;
-}
-.batch-routing-panel-location-fields div.switch-button-container-grid {
-  grid-row: 1;
-  grid-column: 2;
+  display: block;
   position: relative;
-  top: 22px;
 }
