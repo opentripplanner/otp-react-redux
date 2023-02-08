@@ -306,7 +306,7 @@ components:
       puis cliquez sur le marqueur qui apparaît afin de définir votre {placeType}.
     viewStop: Voir cet arrêt
   PlaceEditor:
-    addressPrompt: "Adresse:"
+    addressPrompt: "Adresse :"
     genericLocationPlaceholder: Adresse du lieu
     locationPlaceholder: Adresse de votre {placeName}
     locationTypePrompt: "Type de lieu :"
