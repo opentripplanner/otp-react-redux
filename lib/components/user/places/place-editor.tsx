@@ -103,11 +103,9 @@ class PlaceEditor extends Component<Props> {
                 required
               />
               <FormControl.Feedback />
-              {errors.name && (
-                <HelpBlock>
-                  <FormattedValidationError type={errors.name} />
-                </HelpBlock>
-              )}
+              <HelpBlock role="alert">
+                {errors.name && <FormattedValidationError type={errors.name} />}
+              </HelpBlock>
             </FormGroup>
             <FormGroup>
               <StyledButtonGroup>
@@ -194,11 +192,11 @@ class PlaceEditor extends Component<Props> {
             />
           </FlexContainer>
           <FormControl.Feedback />
-          {errors.address && (
-            <HelpBlock>
+          <HelpBlock role="alert">
+            {errors.address && (
               <FormattedValidationError type={errors.address} />
-            </HelpBlock>
-          )}
+            )}
+          </HelpBlock>
         </FormGroup>
       </div>
     )
