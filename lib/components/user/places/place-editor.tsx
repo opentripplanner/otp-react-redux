@@ -121,7 +121,7 @@ class PlaceEditor extends Component<Props> {
                 <legend>
                   <FormattedMessage id="components.PlaceEditor.locationTypePrompt" />
                 </legend>
-                {Object.keys(CUSTOM_PLACE_TYPES).map((k, index) => {
+                {Object.keys(CUSTOM_PLACE_TYPES).map((k) => {
                   // @ts-expect-error TODO: add types to CUSTOM_PLACE_TYPES
                   const { icon, type } = CUSTOM_PLACE_TYPES[k]
                   const title = capitalizeFirst(getFormattedPlaces(k, intl))
@@ -138,20 +138,12 @@ class PlaceEditor extends Component<Props> {
                         value={type}
                       />
                       <label
-                        className={`btn ${
-                          isChecked ? 'btn-primary active' : 'btn-default'
-                        }`}
-                        htmlFor={inputId}
-                        // An inline style needs to be used for the first element.
-                        // The bootstrap CSS will otherwise override .btn:first-child content.
-                        style={
-                          index === 0
-                            ? {
-                                borderBottomLeftRadius: '4px',
-                                borderTopLeftRadius: '4px'
-                              }
-                            : {}
+                        className={
+                          isChecked
+                            ? 'btn btn-primary active'
+                            : 'btn btn-default'
                         }
+                        htmlFor={inputId}
                       >
                         <StyledIconWrapper size="1.5x">
                           <SvgIcon iconName={icon} />
