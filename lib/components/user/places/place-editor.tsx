@@ -53,6 +53,12 @@ const StyledButtonGroup = styled(ButtonGroup)`
     padding: 5px;
   }
 `
+// Move invalid symbol a few pixels down to center vertically inside text fields.
+const StyledFormGroup = styled(FormGroup)`
+  &.has-feedback label ~ .form-control-feedback {
+    top: 28px;
+  }
+`
 
 /**
  * Contains the fields for editing a favorite place.
@@ -78,7 +84,7 @@ class PlaceEditor extends Component<Props> {
   }
 
   render() {
-    const { errors, handleBlur, handleChange, intl, values: place } = this.props
+    const { errors, intl, values: place } = this.props
     const { SvgIcon } = this.context
     const isFixed = isHomeOrWork(place)
     const errorStates = getErrorStates(this.props)
@@ -90,7 +96,7 @@ class PlaceEditor extends Component<Props> {
       <div>
         {!isFixed && (
           <>
-            <FormGroup validationState={errorStates.name}>
+            <StyledFormGroup validationState={errorStates.name}>
               <ControlLabel htmlFor="name">
                 <FormattedMessage id="components.PlaceEditor.namePrompt" />
               </ControlLabel>
@@ -107,7 +113,7 @@ class PlaceEditor extends Component<Props> {
               <HelpBlock role="alert">
                 {errors.name && <FormattedValidationError type={errors.name} />}
               </HelpBlock>
-            </FormGroup>
+            </StyledFormGroup>
             <FormGroup>
               <StyledButtonGroup>
                 <legend>
@@ -121,13 +127,11 @@ class PlaceEditor extends Component<Props> {
                   const isChecked = place.type === type
                   return (
                     <Fragment key={type}>
-                      {/* Note: labels are placed after inputs so that the CSS focus selector can be easily applied. */}
-                      <input
-                        checked={isChecked}
+                      {/* Note: labels are placed after their respective input <Field>
+                          so that the CSS focus selector can be easily applied. */}
+                      <Field
                         id={inputId}
                         name="type"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
                         type="radio"
                         value={type}
                       />
@@ -160,7 +164,7 @@ class PlaceEditor extends Component<Props> {
           </>
         )}
 
-        <FormGroup validationState={errorStates.address}>
+        <StyledFormGroup validationState={errorStates.address}>
           <ControlLabel>
             <FormattedMessage id="components.PlaceEditor.addressPrompt" />
           </ControlLabel>
@@ -199,7 +203,7 @@ class PlaceEditor extends Component<Props> {
               <FormattedValidationError type={errors.address} />
             )}
           </HelpBlock>
-        </FormGroup>
+        </StyledFormGroup>
       </div>
     )
   }
