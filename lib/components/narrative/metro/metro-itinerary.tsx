@@ -205,7 +205,7 @@ const ItineraryGridSmall = styled.div`
 `
 
 // invisible header rendered for screen readers and a11y technologies
-const InvisibleH3 = styled.h3`
+const InvisibleHeader = styled.span`
   //place it in an unused grid cell so it doesn't add a row
   grid-column: 2;
   grid-row: 2;
@@ -213,16 +213,6 @@ const InvisibleH3 = styled.h3`
   overflow: hidden;
   width: 0;
 `
-
-const InvisibleH2 = styled.h2`
-  //place it in an unused grid cell so it doesn't add a row
-  grid-column: 2;
-  grid-row: 2;
-  height: 0;
-  overflow: hidden;
-  width: 0;
-`
-
 const BLUR_AMOUNT = 3
 const blurAnimation = keyframes`
  0% { filter: blur(${BLUR_AMOUNT}px); }
@@ -375,6 +365,7 @@ class MetroItinerary extends NarrativeItinerary {
       return routeBlocks
     }
 
+    console.log(expanded)
     const handleClick = () => {
       setActiveItinerary(itinerary)
       setActiveLeg(null, null)
@@ -432,11 +423,9 @@ class MetroItinerary extends NarrativeItinerary {
             {!mini && (
               <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
-
-                <InvisibleH2>
+                <InvisibleHeader as={expanded && 'h2'}>
                   <FormattedList type="conjunction" value={modeStrings} />
-                </InvisibleH2>
-
+                </InvisibleHeader>
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
                 </Routes>
