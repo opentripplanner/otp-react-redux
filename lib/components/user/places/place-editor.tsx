@@ -111,7 +111,9 @@ class PlaceEditor extends Component<Props> {
               />
               <FormControl.Feedback />
               <HelpBlock role="alert">
-                {errors.name && <FormattedValidationError type={errors.name} />}
+                {errorStates.name && (
+                  <FormattedValidationError type={errors.name} />
+                )}
               </HelpBlock>
             </StyledFormGroup>
             <FormGroup>
@@ -199,7 +201,7 @@ class PlaceEditor extends Component<Props> {
           </FlexContainer>
           <FormControl.Feedback />
           <HelpBlock role="alert">
-            {errors.address && (
+            {errorStates.address && (
               <FormattedValidationError type={errors.address} />
             )}
           </HelpBlock>

@@ -29,16 +29,18 @@ export const RETURN_TO_CURRENT_ROUTE = {
 /**
  * Computes the Bootstrap error states based on Formik's validation props.
  * @param {*} props The Formik props from which to extract the error states.
- * @returns An object where each field is set to 'error' if the
- *          corresponding Formik props denote an error for that field.
+ * @returns An object where each field is set to 'error' if:
+ *   - the corresponding Formik props denote an error for that field, and.
+ *   - the form has been submitted or a given field hasa been touched.
  */
 export function getErrorStates(
   props: FormikProps<any>
 ): Record<string, 'error' | null> {
-  const { errors, touched } = props
+  const { errors, submitCount, touched } = props
   const errorStates: Record<string, 'error' | null> = {}
   Object.keys(errors).forEach((name) => {
-    errorStates[name] = touched[name] && errors[name] ? 'error' : null
+    errorStates[name] =
+      (submitCount > 0 || touched[name]) && errors[name] ? 'error' : null
   })
 
   return errorStates
