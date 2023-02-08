@@ -96,11 +96,12 @@ class PlaceEditor extends Component<Props> {
               </ControlLabel>
               {/* onBlur, onChange, and value are passed automatically. */}
               <Field
+                aria-invalid={!!errors.name}
+                aria-required
                 as={FormControl}
                 id="name"
                 name="name"
                 placeholder={nameExample}
-                required
               />
               <FormControl.Feedback />
               <HelpBlock role="alert">
@@ -184,6 +185,7 @@ class PlaceEditor extends Component<Props> {
                     })
               }
               isRequired
+              isValid={!!errors.address}
               location={makeLocationFieldLocation(place)}
               locationType="to"
               onLocationSelected={this._handleLocationChange}
