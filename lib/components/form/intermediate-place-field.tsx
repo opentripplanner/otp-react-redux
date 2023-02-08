@@ -11,7 +11,7 @@ import LocationField from '@opentripplanner/location-field'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import * as mapActions from '../../actions/map'
+import * as formActions from '../../actions/form'
 
 import connectLocationField from './connect-location-field'
 
@@ -91,6 +91,6 @@ class IntermediatePlaceField extends Component<Props> {
 
 export default connectLocationField(IntermediatePlaceField, {
   actions: {
-    clearLocation: mapActions.clearLocation
+    clearLocation: formActions.clearLocation
   }
 })
