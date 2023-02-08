@@ -306,9 +306,12 @@ components:
       puis cliquez sur le marqueur qui apparaît afin de définir votre {placeType}.
     viewStop: Voir cet arrêt
   PlaceEditor:
+    addressPrompt: "Adresse:"
     genericLocationPlaceholder: Adresse du lieu
     locationPlaceholder: Adresse de votre {placeName}
-    namePlaceholder: Entrez le nom du lieu
+    locationTypePrompt: "Type de lieu :"
+    nameExample: Mon café du coin
+    namePrompt: "Nom du lieu :"
   PlanFirstLastButtons:
     # Note to translator: these values are width-constrained.
     first: Premier

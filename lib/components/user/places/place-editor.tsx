@@ -1,14 +1,13 @@
-import { Field, FormikProps } from 'formik'
 import {
+  ControlLabel,
   FormControl,
   FormGroup,
-  HelpBlock,
-  ToggleButton,
-  ToggleButtonGroup
+  HelpBlock
 } from 'react-bootstrap'
-import { injectIntl, IntlShape } from 'react-intl'
+import { Field, FormikProps } from 'formik'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import type { Location } from '@opentripplanner/types'
 import type { WrappedComponentProps } from 'react-intl'
@@ -18,6 +17,7 @@ import { ComponentContext } from '../../../util/contexts'
 import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'
 import { getFormattedPlaces } from '../../../util/i18n'
 import { StyledIconWrapper } from '../../util/styledIcon'
+import ButtonGroup from '../../util/button-group'
 import FormattedValidationError from '../../util/formatted-validation-error'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
@@ -50,7 +50,7 @@ const FlexContainer = styled.div`
 const FlexFormGroup = styled(FormGroup)`
   flex-grow: 1;
 `
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)`
+const StyledButtonGroup = styled(ButtonGroup)`
   & > label {
     padding: 5px;
   }
@@ -84,8 +84,8 @@ class PlaceEditor extends Component<Props> {
     const { SvgIcon } = this.context
     const isFixed = isHomeOrWork(place)
     const errorStates = getErrorStates(this.props)
-    const namePlaceholder = intl.formatMessage({
-      id: 'components.PlaceEditor.namePlaceholder'
+    const nameExample = intl.formatMessage({
+      id: 'components.PlaceEditor.nameExample'
     })
 
     return (
@@ -93,15 +93,15 @@ class PlaceEditor extends Component<Props> {
         {!isFixed && (
           <>
             <FormGroup validationState={errorStates.name}>
-              <InvisibleA11yLabel as="label" htmlFor="name">
-                {namePlaceholder}
-              </InvisibleA11yLabel>
+              <ControlLabel htmlFor="name">
+                <FormattedMessage id="components.PlaceEditor.namePrompt" />
+              </ControlLabel>
               {/* onBlur, onChange, and value are passed automatically. */}
               <Field
                 as={FormControl}
                 id="name"
                 name="name"
-                placeholder={namePlaceholder}
+                placeholder={nameExample}
               />
               <FormControl.Feedback />
               {errors.name && (
@@ -111,32 +111,53 @@ class PlaceEditor extends Component<Props> {
               )}
             </FormGroup>
             <FormGroup>
-              <StyledToggleButtonGroup
-                defaultValue={place.type}
-                name="type"
-                type="radio"
-              >
-                {Object.keys(CUSTOM_PLACE_TYPES).map((k) => {
+              <StyledButtonGroup>
+                <legend>
+                  <FormattedMessage id="components.PlaceEditor.locationTypePrompt" />
+                </legend>
+                {Object.keys(CUSTOM_PLACE_TYPES).map((k, index) => {
                   // @ts-expect-error TODO: add types to CUSTOM_PLACE_TYPES
                   const { icon, type } = CUSTOM_PLACE_TYPES[k]
                   const title = capitalizeFirst(getFormattedPlaces(k, intl))
+                  const inputId = `location-type-${type}`
+                  const isChecked = place.type === type
                   return (
-                    <ToggleButton
-                      key={type}
-                      // onBlur and onChange have to be set on individual controls instead of the control group
-                      // in order for Formik to correctly process the changes.
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      title={title}
-                      value={type}
-                    >
-                      <StyledIconWrapper size="1.5x">
-                        <SvgIcon iconName={icon} />
-                      </StyledIconWrapper>
-                    </ToggleButton>
+                    <Fragment key={type}>
+                      {/* Note: labels are placed after inputs so that the CSS focus selector can be easily applied. */}
+                      <input
+                        checked={isChecked}
+                        id={inputId}
+                        name="type"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        type="radio"
+                        value={type}
+                      />
+                      <label
+                        className={`btn ${
+                          isChecked ? 'btn-primary active' : 'btn-default'
+                        }`}
+                        htmlFor={inputId}
+                        // An inline style needs to be used for the first element.
+                        // The bootstrap CSS will otherwise override .btn:first-child content.
+                        style={
+                          index === 0
+                            ? {
+                                borderBottomLeftRadius: '4px',
+                                borderTopLeftRadius: '4px'
+                              }
+                            : {}
+                        }
+                      >
+                        <StyledIconWrapper size="1.5x">
+                          <SvgIcon iconName={icon} />
+                        </StyledIconWrapper>
+                        <InvisibleA11yLabel>{title}</InvisibleA11yLabel>
+                      </label>
+                    </Fragment>
                   )
                 })}
-              </StyledToggleButtonGroup>
+              </StyledButtonGroup>
             </FormGroup>
           </>
         )}
@@ -150,6 +171,9 @@ class PlaceEditor extends Component<Props> {
           )}
 
           <FlexFormGroup validationState={errorStates.address}>
+            <ControlLabel>
+              <FormattedMessage id="components.PlaceEditor.addressPrompt" />
+            </ControlLabel>
             <PlaceLocationField
               className="form-control"
               inputPlaceholder={
