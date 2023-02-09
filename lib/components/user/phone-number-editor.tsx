@@ -101,7 +101,7 @@ class PhoneNumberEditor extends Component<Props, State> {
     })
   }
 
-  _handleNewPhoneNumberChange = (newPhoneNumber: string) => {
+  _handleNewPhoneNumberChange = (newPhoneNumber = '') => {
     this.setState({
       newPhoneNumber
     })
