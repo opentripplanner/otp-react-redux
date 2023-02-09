@@ -4,6 +4,7 @@ import React, { useCallback } from 'react'
 
 import * as mapActions from '../../actions/map'
 import * as uiActions from '../../actions/ui'
+import { MobileScreens } from '../../actions/ui-constants'
 import DefaultMap from '../map/default-map'
 import LocationField from '../form/connected-location-field'
 
@@ -18,7 +19,7 @@ const MobileWelcomeScreen = ({ setMobileScreen }: Props) => {
   const intl = useIntl()
 
   const toFieldClicked = useCallback(
-    () => setMobileScreen(uiActions.MobileScreens.SET_INITIAL_LOCATION),
+    () => setMobileScreen(MobileScreens.SET_INITIAL_LOCATION),
     [setMobileScreen]
   )
 

@@ -42,6 +42,7 @@ interface Props {
 
 interface State {
   isEditing: boolean
+  isSubmitted: boolean
   newPhoneNumber: string
 }
 
@@ -84,6 +85,9 @@ class PhoneNumberEditor extends Component<Props, State> {
       // For new users, render component in editing state.
       isEditing: isBlank(initialPhoneNumber),
 
+      // Whether the new number was submitted for verification.
+      isSubmitted: false,
+
       // Holds the new phone number (+15555550123 format) entered by the user
       // (outside of Formik because (Phone)Input does not have a standard onChange event or simple valitity test).
       newPhoneNumber: ''
@@ -97,7 +101,7 @@ class PhoneNumberEditor extends Component<Props, State> {
     })
   }
 
-  _handleNewPhoneNumberChange = (newPhoneNumber: string) => {
+  _handleNewPhoneNumberChange = (newPhoneNumber = '') => {
     this.setState({
       newPhoneNumber
     })
@@ -105,7 +109,8 @@ class PhoneNumberEditor extends Component<Props, State> {
 
   _handleCancelEditNumber = () => {
     this.setState({
-      isEditing: false
+      isEditing: false,
+      isSubmitted: false
     })
   }
 
@@ -154,6 +159,8 @@ class PhoneNumberEditor extends Component<Props, State> {
     }
 
     if (submittedNumber) {
+      // TODO: disable submit while submitting.
+      this.setState({ isSubmitted: true })
       onRequestCode(submittedNumber)
     }
   }
@@ -193,8 +200,8 @@ class PhoneNumberEditor extends Component<Props, State> {
       phoneFormatOptions,
       touched // Formik prop
     } = this.props
-    const { isEditing, newPhoneNumber } = this.state
-    const isPending = this._isPhoneNumberPending()
+    const { isEditing, isSubmitted, newPhoneNumber } = this.state
+    const isPending = isSubmitted || this._isPhoneNumberPending()
 
     // Here are the states we are dealing with:
     // - First time entering a phone number/validation code (blank value, not modified)
@@ -260,7 +267,9 @@ class PhoneNumberEditor extends Component<Props, State> {
             <ControlStrip>
               <InlineStatic>
                 <SpanWithSpace margin={0.5}>
-                  {formatPhoneNumber(initialPhoneNumber)}
+                  {formatPhoneNumber(
+                    isSubmitted ? newPhoneNumber : initialPhoneNumber
+                  )}
                 </SpanWithSpace>
                 {isPending ? (
                   // eslint-disable-next-line jsx-a11y/label-has-for

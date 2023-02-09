@@ -1,5 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
+
+import { GRAY_ON_WHITE } from '../../util/colors'
 
 import Place, {
   ActionButton,
@@ -16,7 +17,9 @@ import Place, {
 
 const FAVORITE_PLACE_HEIGHT_PX = '60px'
 
-const StyledFavoritePlace = styled(Place)`
+export const StyledFavoritePlace = styled(Place).attrs({
+  largeIcon: true
+})`
   align-items: stretch;
   display: flex;
   height: ${FAVORITE_PLACE_HEIGHT_PX};
@@ -26,20 +29,29 @@ const StyledFavoritePlace = styled(Place)`
     align-items: center;
     display: flex;
     flex: 1 0 0;
-    overflow: hidden;
     text-align: left;
-    text-overflow: ellipsis;
   }
   ${PlaceContent} {
-    display: inline-block;
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
     margin-left: 10px;
+    /* overflow is needed here for the nested overflow to take effect. */
+    overflow: hidden;
   }
   ${PlaceDetail} {
-    color: #888;
+    color: ${GRAY_ON_WHITE};
+  }
+
+  ${PlaceName},
+  ${PlaceDetail} {
     display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
   }
   ${IconWrapper} {
-    color: #888;
+    color: ${GRAY_ON_WHITE};
     flex-shrink: 0;
   }
   ${ActionButton}, ${ActionButtonPlaceholder} {
@@ -47,10 +59,6 @@ const StyledFavoritePlace = styled(Place)`
     width: ${FAVORITE_PLACE_HEIGHT_PX};
   }
 `
-
-export const FavoritePlace = (props) => (
-  <StyledFavoritePlace largeIcon {...props} />
-)
 
 // Styles and exports for the place component
 // used in the main panel.

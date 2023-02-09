@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl'
 import React, { useCallback } from 'react'
 
 import * as uiActions from '../../actions/ui'
+import { MobileScreens } from '../../actions/ui-constants'
 import ConnectedSettingsSelectorPanel from '../form/connected-settings-selector-panel'
 import PlanTripButton from '../form/plan-trip-button'
 
@@ -16,7 +17,7 @@ type Props = {
 const MobileOptionsScreen = ({ setMobileScreen }: Props) => (
   <MobileContainer>
     <MobileNavigationBar
-      backScreen={uiActions.MobileScreens.SEARCH_FORM}
+      backScreen={MobileScreens.SEARCH_FORM}
       headerText={<FormattedMessage id="components.MobileOptions.header" />}
     />
     <main tabIndex={-1}>
@@ -27,7 +28,7 @@ const MobileOptionsScreen = ({ setMobileScreen }: Props) => (
       <div className="options-lower-tray mobile-padding">
         <PlanTripButton
           onClick={useCallback(
-            () => setMobileScreen(uiActions.MobileScreens.RESULTS_SUMMARY),
+            () => setMobileScreen(MobileScreens.RESULTS_SUMMARY),
             [setMobileScreen]
           )}
         />

@@ -182,7 +182,7 @@ if (OTP_RR_PERCY_MOBILE) {
 
     // Open stop viewer
     const [patternStopButton] = await page.$x(
-      "//a[contains(., 'Ashby Station')]"
+      "//button[contains(., 'Ashby Station')]"
     )
     await patternStopButton.click()
     await page.waitForSelector('.stop-viewer')
@@ -418,7 +418,7 @@ test('OTP-RR', async () => {
   } catch {
     await page.reload({ waitUntil: 'networkidle0' })
   }
-  const [patternStopButton] = await page.$x("//a[contains(., 'West')]")
+  const [patternStopButton] = await page.$x("//button[contains(., 'West')]")
   await patternStopButton.click()
   await page.waitForSelector('.stop-viewer')
 
