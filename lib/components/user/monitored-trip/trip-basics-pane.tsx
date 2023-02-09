@@ -218,13 +218,18 @@ class TripBasicsPane extends Component<TripBasicsProps> {
               <FormattedMessage id="components.TripBasicsPane.tripNamePrompt" />
             </ControlLabel>
             {/* onBlur, onChange, and value are passed automatically. */}
-            <Field as={FormControl} id="tripName" name="tripName" />
+            <Field
+              aria-invalid={!!errorStates.tripName}
+              as={FormControl}
+              id="tripName"
+              name="tripName"
+            />
             <FormControl.Feedback />
-            {errors.tripName && (
-              <HelpBlock>
+            <HelpBlock role="alert">
+              {errors.tripName && (
                 <FormattedValidationError type={errors.tripName} />
-              </HelpBlock>
-            )}
+              )}
+            </HelpBlock>
           </FormGroup>
 
           <FormGroup validationState={monitoredDaysValidationState}>
@@ -250,6 +255,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                 return (
                   <span className={boxClass} key={day} title={notAvailableText}>
                     <Field
+                      aria-invalid={!!monitoredDaysValidationState}
                       // Let users save an existing trip, even though it may not be available on some days.
                       // TODO: improve checking trip availability.
                       disabled={isDayDisabled && isCreating}
@@ -272,7 +278,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                 )
               })}
             </AvailableDays>
-            <HelpBlock>
+            <HelpBlock role="status">
               {itineraryExistence ? (
                 <FormattedMessage id="components.TripBasicsPane.tripIsAvailableOnDaysIndicated" />
               ) : (
@@ -285,11 +291,11 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                 />
               )}
             </HelpBlock>
-            {monitoredDaysValidationState && (
-              <HelpBlock>
+            <HelpBlock role="alert">
+              {monitoredDaysValidationState && (
                 <FormattedMessage id="components.TripBasicsPane.selectAtLeastOneDay" />
-              </HelpBlock>
-            )}
+              )}
+            </HelpBlock>
 
             {/* Scroll to the trip name/days fields if submitting and there is an error on these fields. */}
             <FormikErrorFocus align="middle" duration={200} />
