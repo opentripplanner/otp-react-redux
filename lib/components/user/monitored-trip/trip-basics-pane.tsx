@@ -29,8 +29,10 @@ import {
   getFormattedDayOfWeekPlural
 } from '../../../util/monitored-trip'
 import { getErrorStates } from '../../../util/ui'
+import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 import FormattedValidationError from '../../util/formatted-validation-error'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import TripStatus from './trip-status'
 import TripSummary from './trip-summary'
@@ -53,23 +55,61 @@ type TripBasicsProps =
 type errorStates = 'success' | 'warning' | 'error' | null | undefined
 
 // Styles.
-const TripDayLabel = styled.label`
-  border: 1px solid #ccc;
-  border-left: none;
-  box-sizing: border-box;
-  display: inline-block;
-  font-weight: inherit;
-  float: left;
-  height: 3em;
-  max-width: 150px;
-  min-width: 14.28%;
-  text-align: center;
-  & > span:first-of-type {
-    display: block;
-    width: 100%;
+const AvailableDays = styled.fieldset`
+  /* Format <legend> like labels. */
+  legend {
+    border: none;
+    font-size: inherit;
+    font-weight: 700;
+    margin-bottom: 5px;
   }
-  &:first-of-type {
+
+  & > span {
+    border: 1px solid #ccc;
+    border-left: none;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 3em;
+    max-width: 150px;
+    min-width: 14.28%;
+    position: relative;
+    text-align: center;
+  }
+  & > span:first-of-type {
     border-left: 1px solid #ccc;
+  }
+
+  .glyphicon {
+    display: none;
+  }
+
+  input,
+  .glyphicon::before {
+    margin-top: 1.8em;
+  }
+
+  /* Check boxes for disabled days are replaced with the cross mark. */
+  input[disabled] {
+    clip: rect(0, 0, 0, 0);
+    height: 0;
+    margin: 0;
+    width: 0;
+    z-index: -1;
+  }
+  input[disabled] ~ .glyphicon {
+    display: block;
+  }
+
+  /* Make labels occupy the whole space, so the entire block is clickable.
+     The labels are absolutely placed in the background of the box,
+     and not vice-versa so that inputs and not-available symbol appear centered. */
+  label {
+    font-weight: inherit;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
 `
 
@@ -188,10 +228,10 @@ class TripBasicsPane extends Component<TripBasicsProps> {
           </FormGroup>
 
           <FormGroup validationState={monitoredDaysValidationState}>
-            <ControlLabel>
-              <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
-            </ControlLabel>
-            <div>
+            <AvailableDays>
+              <legend className="control-label">
+                <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
+              </legend>
               {ALL_DAYS.map((day) => {
                 const isDayDisabled =
                   itineraryExistence && !itineraryExistence[day].valid
@@ -208,31 +248,30 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                   : ''
 
                 return (
-                  <TripDayLabel
-                    className={boxClass}
-                    key={day}
-                    title={notAvailableText}
-                  >
-                    <span>
-                      <FormattedDayOfWeekCompact day={day} />
-                    </span>
-                    {
+                  <span className={boxClass} key={day} title={notAvailableText}>
+                    <Field
                       // Let users save an existing trip, even though it may not be available on some days.
                       // TODO: improve checking trip availability.
-                      isDayDisabled && isCreating ? (
-                        <Glyphicon
-                          aria-label={notAvailableText}
-                          glyph="ban-circle"
-                        />
-                      ) : (
-                        <Field name={day} type="checkbox" />
-                      )
-                    }
-                  </TripDayLabel>
+                      disabled={isDayDisabled && isCreating}
+                      id={day}
+                      name={day}
+                      type="checkbox"
+                    />
+                    <label htmlFor={day}>
+                      <InvisibleA11yLabel>
+                        <FormattedDayOfWeek day={day} />
+                      </InvisibleA11yLabel>
+                      <span aria-hidden>
+                        {/* The abbreviated text is visual. Screen readers  */}
+                        <FormattedDayOfWeekCompact day={day} />
+                      </span>
+                    </label>
+                    <Glyphicon aria-hidden glyph="ban-circle" />
+                    <InvisibleA11yLabel>{notAvailableText}</InvisibleA11yLabel>
+                  </span>
                 )
               })}
-              <div style={{ clear: 'both' }} />
-            </div>
+            </AvailableDays>
             <HelpBlock>
               {itineraryExistence ? (
                 <FormattedMessage id="components.TripBasicsPane.tripIsAvailableOnDaysIndicated" />
