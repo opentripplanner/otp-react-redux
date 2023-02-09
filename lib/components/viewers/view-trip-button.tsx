@@ -3,11 +3,8 @@ import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import React, { Component } from 'react'
 
-import {
-  MainPanelContent,
-  setMainPanelContent,
-  setViewedTrip
-} from '../../actions/ui'
+import { MainPanelContent } from '../../actions/ui-constants'
+import { setMainPanelContent, setViewedTrip } from '../../actions/ui'
 
 type Props = {
   fromIndex: number
