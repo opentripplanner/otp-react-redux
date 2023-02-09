@@ -7,7 +7,8 @@ import React, { Component } from 'react'
 import {
   getRouteIdForPattern,
   getStopTimesByPattern,
-  routeIsValid
+  routeIsValid,
+  stopTimeComparator
 } from '../../util/viewer'
 import { IconWithText } from '../util/styledIcon'
 import SpanWithSpace from '../util/span-with-space'
@@ -134,27 +135,20 @@ class LiveStopTimes extends Component<Props, State> {
     // construct a lookup table mapping pattern (e.g. 'ROUTE_ID-HEADSIGN') to
     // an array of stoptimes
     const stopTimesByPattern = getStopTimesByPattern(stopData)
-    const routeComparator =
-      coreUtils.route.makeRouteComparator(transitOperators)
-    const patternHeadsignComparator = coreUtils.route.makeStringValueComparator(
-      // TODO: Shared types
-      (pattern: any) => pattern.pattern.headsign
-    )
 
     // TODO: Shared types
     const patternComparator = (patternA: any, patternB: any) => {
-      // first sort by routes
-      const routeCompareValue = routeComparator(patternA.route, patternB.route)
-      if (routeCompareValue !== 0) return routeCompareValue
-
-      // if same route, sort by headsign
-      return patternHeadsignComparator(patternA, patternB)
+      const arrayA = [].concat(patternA.times).sort(stopTimeComparator)
+      const arrayB = [].concat(patternB.times).sort(stopTimeComparator)
+      // sort by first departure time
+      return stopTimeComparator(arrayA[0], arrayB[0])
     }
 
     return (
       <>
         <ul className="route-row-container">
           {Object.values(stopTimesByPattern)
+            .filter(({ times }) => times.length !== 0)
             .sort(patternComparator)
             .filter(({ pattern, route }) =>
               routeIsValid(route, getRouteIdForPattern(pattern))
