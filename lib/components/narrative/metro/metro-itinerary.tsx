@@ -1,14 +1,11 @@
 import { AccessibilityRating } from '@opentripplanner/itinerary-body'
 import { connect } from 'react-redux'
 import {
-  FormattedList,
   FormattedMessage,
   FormattedNumber,
   injectIntl,
   IntlShape
 } from 'react-intl'
-
-import { getFormattedMode } from '../../../util/i18n'
 import { Itinerary, Leg } from '@opentripplanner/types'
 import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
@@ -334,9 +331,6 @@ class MetroItinerary extends NarrativeItinerary {
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
     const routeLegs = itinerary.legs.filter(removeInsignifigantWalkLegs)
-    const modeStrings = routeLegs.map((leg: Leg) => {
-      return getFormattedMode(leg.mode, intl)
-    })
 
     const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
       const routeBlocks = routeLegs
@@ -347,6 +341,7 @@ class MetroItinerary extends NarrativeItinerary {
             (index > 0 && filteredLegs[index - 1].mode) || undefined
           return (
             <RouteBlock
+              aria-hidden
               footer={
                 showLegDurations && (
                   <FormattedDuration duration={leg.duration} />
@@ -400,18 +395,7 @@ class MetroItinerary extends NarrativeItinerary {
           // TODO test this with a screen reader
           // tabIndex={expanded ? 1 : 0}
         >
-          <ItineraryWrapper
-            aria-label={intl.formatMessage(
-              {
-                id: 'components.MetroUI.itineraryDescription'
-              },
-              {
-                routes: getItineraryRoutes(itinerary, intl),
-                time: formatDuration(itinerary.duration, intl)
-              }
-            )}
-            className={`itin-wrapper${mini ? '-small' : ''}`}
-          >
+          <ItineraryWrapper className={`itin-wrapper${mini ? '-small' : ''}`}>
             {emissionsNote && <ItineraryNote>{emissionsNote}</ItineraryNote>}
             {itineraryHasAccessibilityScores(itinerary) && (
               <AccessibilityRating
@@ -423,7 +407,13 @@ class MetroItinerary extends NarrativeItinerary {
               <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
                 <InvisibleHeader as={expanded && 'h2'}>
-                  <FormattedList type="conjunction" value={modeStrings} />
+                  <FormattedMessage
+                    id="components.MetroUI.itineraryDescription"
+                    values={{
+                      routes: getItineraryRoutes(itinerary, intl),
+                      time: formatDuration(itinerary.duration, intl)
+                    }}
+                  />
                 </InvisibleHeader>
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
