@@ -81,11 +81,19 @@ const AvailableDays = styled.fieldset`
 
   .glyphicon {
     display: none;
+    /* Remove top attribute set by Bootstrap. */
+    top: inherit;
+  }
+
+  input {
+    display: block;
   }
 
   input,
-  .glyphicon::before {
-    margin-top: 1.8em;
+  .glyphicon {
+    bottom: 6px;
+    position: absolute;
+    width: 100%;
   }
 
   /* Check boxes for disabled days are replaced with the cross mark. */
@@ -100,15 +108,10 @@ const AvailableDays = styled.fieldset`
     display: block;
   }
 
-  /* Make labels occupy the whole space, so the entire block is clickable.
-     The labels are absolutely placed in the background of the box,
-     and not vice-versa so that inputs and not-available symbol appear centered. */
+  /* Make labels occupy the whole space, so the entire block is clickable. */
   label {
     font-weight: inherit;
     height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
     width: 100%;
   }
 `
@@ -268,7 +271,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                         <FormattedDayOfWeek day={day} />
                       </InvisibleA11yLabel>
                       <span aria-hidden>
-                        {/* The abbreviated text is visual. Screen readers  */}
+                        {/* The abbreviated text is visual only. Screen readers should read out the full day. */}
                         <FormattedDayOfWeekCompact day={day} />
                       </span>
                     </label>
