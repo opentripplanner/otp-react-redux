@@ -3,10 +3,7 @@ import { Itinerary, Leg } from '@opentripplanner/types'
 import React from 'react'
 
 import { firstTransitLegIsRealtime } from '../../../util/viewer'
-import {
-  getFirstLegStartTime,
-  getLastLegEndTime
-} from '../../../util/itinerary'
+import { getFirstLegStartTime } from '../../../util/itinerary'
 
 type DepartureTimesProps = {
   activeItineraryTimeIndex?: number
@@ -27,10 +24,7 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
     return (
       <button
         className={isRealTime ? 'realtime active' : 'active'}
-        title={`${intl.formatMessage(
-          { id: 'components.MetroUI.arriveAtTime' },
-          { time: intl.formatTime(itinerary.endTime) }
-        )} ${
+        title={`${intl.formatTime(itinerary.startTime)} ${
           isRealTime
             ? intl.formatMessage({ id: 'components.StopTimeCell.realtime' })
             : ''
@@ -58,10 +52,7 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
             className={classNames.join(' ')}
             key={getFirstLegStartTime(time.legs)}
             onClick={() => setItineraryTimeIndex(index)}
-            title={`${intl.formatMessage(
-              { id: 'components.MetroUI.arriveAtTime' },
-              { time: intl.formatTime(getLastLegEndTime(time.legs)) }
-            )} ${
+            title={`${intl.formatTime(getFirstLegStartTime(time.legs))} ${
               time.realtime
                 ? intl.formatMessage({ id: 'components.StopTimeCell.realtime' })
                 : ''

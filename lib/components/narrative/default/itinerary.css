@@ -1,9 +1,5 @@
 /* ITINERARY OPTION */
 
-.otp .option.default-itin button:focus {
-  outline: none;
-}
-
 /* If child component is focused, highlight itinerary option */
 .otp .option.default-itin:focus-within:not(.expanded) {
   background-color: var(--hover-color);
@@ -102,8 +98,18 @@
 .metro-itin div.header button {
   border: none;
   background: transparent;
-  padding: 0;
+  padding: 2px;
   margin: 0;
+}
+
+.metro-itin div.header button.other-itin {
+  padding: 10px 1em;
+  position: relative;
+}
+
+.metro-itin div.header button.other-itin:focus,
+.metro-itin div.header button.other-itin:focus-visible {
+  outline-offset:-3px;
 }
 
 /* multiple itinerary underline only when expanded */

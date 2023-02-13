@@ -121,7 +121,6 @@ components:
     fromStop: ~에서 {stop}
     timeWalking: '걷는 시간: {time}'
     orAlternatives: 또는 같은 방향의 다른 경로
-    arriveAtTime: 도착 {time}
     itineraryDescription: '{time} {routes} 여행'
     multipleOptions: 여러 옵션
   NarrativeItinerariesHeader:

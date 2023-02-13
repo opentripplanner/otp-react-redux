@@ -124,7 +124,6 @@ components:
     timeWalking: 步行时间
     orAlternatives: 或同一方向的其他路线
     multipleOptions: 多种选择
-    arriveAtTime: 到达 {time}
     fromStop: 从 {stop}
     itineraryDescription: '{time} 乘坐 {routes}'
   MobileOptions:

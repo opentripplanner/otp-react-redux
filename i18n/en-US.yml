@@ -228,7 +228,6 @@ components:
     streets: Streets    
   MetroUI:
     leaveAt: You leave
-    arriveAtTime: "Arrive at {time}" 
     timeWalking: "{time} walking"
     fromStop: "from {stop}"
     orAlternatives: or other routes in the same direction

@@ -101,7 +101,6 @@ components:
     stops: "Phương tiện công cộng dừng lại\n BD: Alternative: trạm dừng xe buýt và\
       \ nhà ga"
   MetroUI:
-    arriveAtTime: Đến nơi {time}
     leaveAt: Rời đi lúc
     fromStop: từ {stop}
     itineraryDescription: '{time} hành trình sử dụng {routes}'
