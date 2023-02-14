@@ -85,8 +85,8 @@ const NavLoginButton = ({
               target={link.target}
               to={link.url}
             >
-              <li tabIndex={0}>
-                <UnstyledButton tabIndex={-1}>
+              <li>
+                <UnstyledButton>
                   {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
                     <FormattedMessage id="components.NavLoginButton.myAccount" />
                   ) : (
@@ -99,9 +99,8 @@ const NavLoginButton = ({
 
         <hr role="presentation" />
 
-        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-        <li onClick={onSignOutClick} onKeyDown={handleKeydown} tabIndex={0}>
-          <UnstyledButton tabIndex={-1}>
+        <li>
+          <UnstyledButton onClick={onSignOutClick}>
             <FormattedMessage id="components.NavLoginButton.signOut" />
           </UnstyledButton>
         </li>
