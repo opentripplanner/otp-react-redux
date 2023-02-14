@@ -2506,16 +2506,16 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/location-field@1.12.12":
-  version "1.12.12"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.12.tgz#5fa55cfd3008b599fd11fc4775d61114c512cbf3"
-  integrity sha512-4cPE3WPBm3WvKdbPGd7RfPPl9mzoR+Lx6GvTweYDqNlqlVIWw6qP6wAkQUreZfEDFyxsMiBx6Jb+HyptVboJxw==
+"@opentripplanner/location-field@1.12.13":
+  version "1.12.13"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.13.tgz#3ee5d23bc189b1c12f28306c388f991ba3ae3056"
+  integrity sha512-88UwFV2TcmGnr1evAJRw/3YLj8zsAEKlOF6FS5j1WbBJ7oqfyXEfkodWlqJ7kt55iG2ITMBJOnJ22ScEKk/p6Q==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
-    "@opentripplanner/core-utils" "^8.0.0"
+    "@opentripplanner/core-utils" "^8.0.1"
     "@opentripplanner/geocoder" "1.3.4"
     "@opentripplanner/humanize-distance" "^1.2.0"
-    "@opentripplanner/location-icon" "^1.4.0"
+    "@opentripplanner/location-icon" "^1.4.1"
     "@styled-icons/fa-solid" "^10.34.0"
     throttle-debounce "^2.1.0"
 
