@@ -2385,9 +2385,9 @@
     qs "^6.9.1"
 
 "@opentripplanner/core-utils@^8.0.1":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-8.1.0.tgz#c0fa30c4483140de5f27772d509150d7fd392978"
-  integrity sha512-Y4K/VBSoqwFHihDU+xgj/xO6JyLlmI7ZQLdv/HJYnVNJgd8y264Teq6cScid/LR5/p9O9My530BAQ1u9f0/JjA==
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-8.0.1.tgz#66c1fdf177ce2980da6d14b8078ddf2da202c0e5"
+  integrity sha512-oMG8Kpx4qwDuC52J07Sve66wGWRK4jvk6ONsFsRg9jYmHtn5NWdRpBukNInem2OY5AapDwSGnTmHQSHCLQyX6g==
   dependencies:
     "@mapbox/polyline" "^1.1.0"
     "@opentripplanner/geocoder" "^1.3.4"
@@ -2488,24 +2488,6 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/itinerary-body@^4.1.9":
-  version "4.1.9"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.1.9.tgz#0ee742aad30ec5c947ceb104fd822b956682e6e2"
-  integrity sha512-rfeUu7GsQCGmVCwNU8fyeBgINsg5RVTJNov2+mjWSnue+iQOOdSLhkmag9WxNophfq+mlSXeyug2tnvtnlYKdQ==
-  dependencies:
-    "@opentripplanner/core-utils" "^8.0.1"
-    "@opentripplanner/humanize-distance" "^1.2.0"
-    "@opentripplanner/icons" "^2.0.1"
-    "@opentripplanner/location-icon" "^1.4.1"
-    "@styled-icons/fa-solid" "^10.34.0"
-    "@styled-icons/foundation" "^10.34.0"
-    date-fns "^2.28.0"
-    date-fns-tz "^1.2.2"
-    flat "^5.0.2"
-    react-animate-height "^3.0.4"
-    react-resize-detector "^4.2.1"
-    string-similarity "^4.0.4"
-
 "@opentripplanner/location-field@1.12.13":
   version "1.12.13"
   resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-1.12.13.tgz#3ee5d23bc189b1c12f28306c388f991ba3ae3056"
@@ -2545,22 +2527,22 @@
     "@opentripplanner/from-to-location-picker" "^2.1.5"
     flat "^5.0.2"
 
-"@opentripplanner/map-popup@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-2.0.0.tgz#ca669600bdaa388bd51719a19b03bb42b26e8a43"
-  integrity sha512-Wb8840g5d+m/mXmNiNYDKaNQPRZf2/0Mi1n8I/6RqpjKE6XFqOjyUcG5J8Klpeeglhb9zrE1pCJJmEnA8x8Jig==
+"@opentripplanner/map-popup@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-2.0.1.tgz#f7dba101b3d5f955aba66e082ef37dc007ad342e"
+  integrity sha512-Zoi24weAA9dCrzMrYh1qMGPd17Rn8ylOPTaKczjt5a8cuA7bZqDQ7sN6PSizhHKC8D8BPfU1ahS2MeVB2d27yg==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.8"
+    "@opentripplanner/base-map" "^3.0.9"
     "@opentripplanner/core-utils" "^8.0.0"
     "@opentripplanner/from-to-location-picker" "^2.1.5"
     flat "^5.0.2"
 
-"@opentripplanner/otp2-tile-overlay@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/otp2-tile-overlay/-/otp2-tile-overlay-1.0.0.tgz#75b85af2bf8a985ffdedfd7b87d73dfb2b5148b2"
-  integrity sha512-i6hA2O4Zr2TxGDx88Z1C9MVwn6qD5xovP7VZCMBF/RCinFBlYKia/ycrcLXp+TvZdkNKs6ruKzspJ6n0FbaFRw==
+"@opentripplanner/otp2-tile-overlay@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/otp2-tile-overlay/-/otp2-tile-overlay-1.0.1.tgz#afb206585f75b15fe5840d26f38f2e700408a6c5"
+  integrity sha512-Mq6SmQUYpP91quTgCKzwKpPVwxfaZe8qQoj9Oi9pWzpWmMfX2HBs+2VU27xPnvsjKG78NbqJ/KEfKfJnTmEFwQ==
   dependencies:
-    "@opentripplanner/map-popup" "^1.0.0"
+    "@opentripplanner/map-popup" "^2.0.1"
 
 "@opentripplanner/park-and-ride-overlay@^2.0.4":
   version "2.0.4"
@@ -2679,10 +2661,10 @@
     "@opentripplanner/base-map" "^3.0.6"
     "@opentripplanner/core-utils" "^7.0.5"
 
-"@opentripplanner/types@^4.0.4":
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-4.0.4.tgz#fd9d0de7075a1b38d384561815b73f4cd3aec19d"
-  integrity sha512-fW9JCdz8bmoOE5pJFiEreRsIPIQdwJwlISODrBHD7PBznuNHBbluCRJTsc3FD3qqS6mLwMzLzYLuuADi0Om5fg==
+"@opentripplanner/types@^4.0.5":
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-4.0.5.tgz#455cbe821ae4c2712b68f19c998c204c86c9a422"
+  integrity sha512-egS1Hb1dZHCfXocvp2UKK64KLM1g/v/7xDUO7aDWmWWdrLCH6TYp4qk4T0VfIS7F5mMPOM3qWOLUVxh9+4tpJg==
 
 "@opentripplanner/vehicle-rental-overlay@^2.1.0":
   version "2.1.0"
