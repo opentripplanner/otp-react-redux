@@ -2,7 +2,7 @@
 import { FormattedMessage, useIntl } from 'react-intl'
 import { NavItem } from 'react-bootstrap'
 import { User } from '@auth0/auth0-react'
-import React, { HTMLAttributes } from 'react'
+import React, { HTMLAttributes, KeyboardEvent, useCallback } from 'react'
 import styled from 'styled-components'
 
 import { LinkContainerWithQuery } from '../form/connected-links'
@@ -51,6 +51,12 @@ const NavLoginButton = ({
     style
   }
 
+  const handleKeydown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === 'Space') {
+      onSignOutClick()
+    }
+  }, [])
+
   // If a profile is passed (a user is logged in), display avatar and drop-down menu.
   if (profile) {
     const displayedName = profile.nickname || profile.name
@@ -93,7 +99,8 @@ const NavLoginButton = ({
 
         <hr role="presentation" />
 
-        <li onSelect={onSignOutClick} tabIndex={0}>
+        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+        <li onClick={onSignOutClick} onKeyDown={handleKeydown} tabIndex={0}>
           <UnstyledButton tabIndex={-1}>
             <FormattedMessage id="components.NavLoginButton.signOut" />
           </UnstyledButton>
