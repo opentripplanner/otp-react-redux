@@ -1,14 +1,11 @@
 import { AccessibilityRating } from '@opentripplanner/itinerary-body'
 import { connect } from 'react-redux'
 import {
-  FormattedList,
   FormattedMessage,
   FormattedNumber,
   injectIntl,
   IntlShape
 } from 'react-intl'
-
-import { getFormattedMode } from '../../../util/i18n'
 import { Itinerary, Leg } from '@opentripplanner/types'
 import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
@@ -23,6 +20,7 @@ import {
   itineraryHasAccessibilityScores
 } from '../../../util/accessibility-routing'
 import { getActiveSearch, getFare } from '../../../util/state'
+import { getFormattedMode } from '../../../util/i18n'
 import { IconWithText } from '../../util/styledIcon'
 import { ItineraryDescription } from '../default/itinerary-description'
 import { localizeGradationMap } from '../utils'
@@ -59,9 +57,7 @@ const DepartureTimes = styled.span`
   align-self: flex-end;
   color: #0909098f;
   font-size: 14px;
-  overflow: hidden;
   text-overflow: ellipsis;
-  white-space: pre;
   width: 100%;
 
   .active {
