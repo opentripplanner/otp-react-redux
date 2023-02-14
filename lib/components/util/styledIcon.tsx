@@ -47,7 +47,7 @@ const rotateAnimation = keyframes`
 `
 
 export const StyledIconWrapper = styled.span<Props>`
-  animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1.2s linear
+  animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1s linear
     infinite;
   display: ${(props) => (props.spin ? 'block' : 'initial')};
   ${StyledIconBase} {
@@ -72,18 +72,24 @@ export const StyledIconWrapperTextAlign = styled(StyledIconWrapper)<Props>`
   }
 `
 
+const IconButton = styled.div`
+  display: flex;
+  gap: 5px;
+`
+
 export const IconWithText = ({
   children,
   Icon,
-  size
+  size,
+  spin
 }: IconPropsWithText): React.ReactElement => {
   return (
-    <>
-      <StyledIconWrapperTextAlign size={size}>
+    <IconButton>
+      <StyledIconWrapperTextAlign size={size} spin={spin}>
         <Icon />
       </StyledIconWrapperTextAlign>
-      {children}
-    </>
+      <span>{children}</span>
+    </IconButton>
   )
 }
 

@@ -211,6 +211,7 @@ components:
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
+    refresh: Refresh arrival times
   LocationSearch:
     enterLocation: Enter location
     setDestination: Set Destination
@@ -425,6 +426,7 @@ components:
     timezoneWarning: "Departure times are shown in <strong>{timezoneCode}</strong>."
     viewNextArrivals: View next arrivals
     viewSchedule: View schedule
+    findSchedule: Find schedule by date
     zoomToStop: Zoom to stop
 
   SubNav:

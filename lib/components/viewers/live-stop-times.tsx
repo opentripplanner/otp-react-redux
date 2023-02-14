@@ -1,4 +1,9 @@
-import { FormattedMessage, FormattedTime } from 'react-intl'
+import {
+  FormattedMessage,
+  FormattedTime,
+  injectIntl,
+  IntlShape
+} from 'react-intl'
 import { Redo } from '@styled-icons/fa-solid/Redo'
 import { TransitOperator } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
@@ -27,6 +32,7 @@ type Props = {
   autoRefreshStopTimes: boolean
   findStopTimesForStop: ({ stopId }: { stopId: string }) => void
   homeTimezone?: string
+  intl: IntlShape
   nearbyStops: any // TODO: shared types
   setHoveredStop: (stopId: string) => void
   showNearbyStops: boolean
@@ -120,6 +126,7 @@ class LiveStopTimes extends Component<Props, State> {
   render(): JSX.Element {
     const {
       homeTimezone,
+      intl,
       nearbyStops,
       setHoveredStop,
       showNearbyStops,
@@ -203,6 +210,9 @@ class LiveStopTimes extends Component<Props, State> {
             className="link-button pull-right percy-hide"
             onClick={this._refreshStopTimes}
             style={{ fontSize: 'small' }}
+            title={intl.formatMessage({
+              id: 'components.LiveStopTimes.refresh'
+            })}
           >
             <IconWithText Icon={Redo} spin={spin}>
               <FormattedTime
@@ -232,4 +242,4 @@ class LiveStopTimes extends Component<Props, State> {
   }
 }
 
-export default LiveStopTimes
+export default injectIntl(LiveStopTimes)
