@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
 import { useIntl } from 'react-intl'
-import React from 'react'
+import React, { KeyboardEvent } from 'react'
 
 import * as uiActions from '../../actions/ui'
 import { getLanguageOptions } from '../../util/i18n'
@@ -15,17 +15,17 @@ interface LocaleSelectorProps {
   setLocale: (locale: string) => void
 }
 
+const onEnterOrSpace = (e: KeyboardEvent, action: () => void): void => {
+  if (e.key === 'Space' || e.key === 'Enter') {
+    action()
+  }
+}
+
 const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
   const { configLanguages, locale: currentLocale, setLocale } = props
   const languageOptions: Record<string, any> | null =
     getLanguageOptions(configLanguages)
   const intl = useIntl()
-
-  const onEnterOrSpace = (e: KeyboardEvent, action: () => void): void => {
-    if (e.key === 'Space' || e.key === 'Enter') {
-      action()
-    }
-  }
 
   // Only render if two or more languages are configured.
   return languageOptions ? (
@@ -51,7 +51,6 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
           key={locale}
           lang={locale}
           onClick={() => setLocale(locale)}
-          // @ts-expect-error TODO: repair this type. Handler is not guaranteed to have 'key'
           onKeyPress={(e) => onEnterOrSpace(e, () => setLocale(locale))}
           // We are correct, not eslint: https://w3c.github.io/aria-practices/examples/combobox/combobox-select-only.html
           // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
@@ -70,6 +69,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
 // Typescript TODO: type state properly
 const mapStateToProps = (state: any) => {
   return {
+    configLanguages: state.otp.config.language,
     locale: state.otp.ui.locale
   }
 }
