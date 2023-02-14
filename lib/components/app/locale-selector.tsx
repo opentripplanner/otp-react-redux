@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
 import { useIntl } from 'react-intl'
-import React, { KeyboardEvent } from 'react'
+import React from 'react'
 
 import * as uiActions from '../../actions/ui'
 import { getLanguageOptions } from '../../util/i18n'
@@ -13,12 +13,6 @@ interface LocaleSelectorProps {
   languageOptions: Record<string, any> | null
   locale: string
   setLocale: (locale: string) => void
-}
-
-const onEnterOrSpace = (e: KeyboardEvent, action: () => void): void => {
-  if (e.key === 'Space' || e.key === 'Enter') {
-    action()
-  }
 }
 
 const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
@@ -44,18 +38,12 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
       // TODO: How to make this work without block ruby?
     >
       {Object.keys(languageOptions).map((locale: string) => (
-        <li
-          aria-selected={locale === currentLocale || undefined}
-          key={locale}
-          lang={locale}
-          onClick={() => setLocale(locale)}
-          onKeyPress={(e) => onEnterOrSpace(e, () => setLocale(locale))}
-          // We are correct, not eslint: https://w3c.github.io/aria-practices/examples/combobox/combobox-select-only.html
-          // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-          role="option"
-          tabIndex={0}
-        >
-          <UnstyledButton tabIndex={-1}>
+        <li key={locale} lang={locale} role="none">
+          <UnstyledButton
+            aria-selected={locale === currentLocale || undefined}
+            onClick={() => setLocale(locale)}
+            role="option"
+          >
             {languageOptions[locale].name}
           </UnstyledButton>
         </li>

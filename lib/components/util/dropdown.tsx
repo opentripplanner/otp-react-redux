@@ -37,7 +37,6 @@ const DropdownMenu = styled.ul`
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   color: #111;
-  cursor: default;
   float: left;
   list-style: none;
   margin: 2px 0 0;
@@ -45,7 +44,6 @@ const DropdownMenu = styled.ul`
   padding: 5px 0;
   position: absolute;
   right: 0;
-  text-align: left;
   top: 100%;
   z-index: 1000;
 
@@ -53,9 +51,12 @@ const DropdownMenu = styled.ul`
     margin: 0;
     padding: 0;
   }
-  li {
+  a,
+  button {
     cursor: pointer;
     padding: 5px 15px;
+    text-align: start;
+    width: 100%;
   }
   li.header {
     cursor: default;
