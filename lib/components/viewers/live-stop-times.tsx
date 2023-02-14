@@ -138,10 +138,10 @@ class LiveStopTimes extends Component<Props, State> {
 
     // TODO: Shared types
     const patternComparator = (patternA: any, patternB: any) => {
-      const arrayA = [].concat(patternA.times).sort(stopTimeComparator)
-      const arrayB = [].concat(patternB.times).sort(stopTimeComparator)
+      const stopTimesA = [].concat(patternA.times).sort(stopTimeComparator)
+      const stopTimesB = [].concat(patternB.times).sort(stopTimeComparator)
       // sort by first departure time
-      return stopTimeComparator(arrayA[0], arrayB[0])
+      return stopTimeComparator(stopTimesA[0], stopTimesB[0])
     }
 
     return (
