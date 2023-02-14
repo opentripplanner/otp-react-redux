@@ -9,8 +9,8 @@ import { UnstyledButton } from '../util/unstyled-button'
 import Dropdown from '../util/dropdown'
 
 interface LocaleSelectorProps {
-  // Typescript TODO configLanguageType
-  configLanguages: Record<string, any>
+  // Typescript TODO languageOptions based on configLanguage type.
+  languageOptions: Record<string, any> | null
   locale: string
   setLocale: (locale: string) => void
 }
@@ -22,9 +22,7 @@ const onEnterOrSpace = (e: KeyboardEvent, action: () => void): void => {
 }
 
 const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
-  const { configLanguages, locale: currentLocale, setLocale } = props
-  const languageOptions: Record<string, any> | null =
-    getLanguageOptions(configLanguages)
+  const { languageOptions, locale: currentLocale, setLocale } = props
   const intl = useIntl()
 
   // Only render if two or more languages are configured.
@@ -69,7 +67,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
 // Typescript TODO: type state properly
 const mapStateToProps = (state: any) => {
   return {
-    configLanguages: state.otp.config.language,
+    languageOptions: getLanguageOptions(state.otp.config.language),
     locale: state.otp.ui.locale
   }
 }
