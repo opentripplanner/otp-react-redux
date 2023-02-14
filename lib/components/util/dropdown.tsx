@@ -113,7 +113,7 @@ const Dropdown = ({
     }
   }, [containerRef])
 
-  const _handleKeyDown = (e: any): void => {
+  const _handleKeyDown = (e: KeyboardEvent): void => {
     const element = e.target as HTMLElement
     switch (e.key) {
       case 'ArrowUp':
@@ -183,6 +183,7 @@ const Dropdown = ({
           aria-label={listLabel}
           aria-labelledby={listLabel ? '' : `${id}-label`}
           id={id}
+          onClick={toggleOpen}
           role="list"
           tabIndex={-1}
         >
