@@ -6,6 +6,8 @@ import {
   injectIntl,
   IntlShape
 } from 'react-intl'
+
+import { getFormattedMode } from '../../../util/i18n'
 import { Itinerary, Leg } from '@opentripplanner/types'
 import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
@@ -420,7 +422,7 @@ class MetroItinerary extends NarrativeItinerary {
                     <FormattedMessage
                       id="components.MetroUI.singleModeItineraryDescription"
                       values={{
-                        mode: itinerary.legs[0].mode,
+                        mode: getFormattedMode(itinerary.legs[0].mode, intl),
                         time: formatDuration(itinerary.duration, intl)
                       }}
                     />
