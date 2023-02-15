@@ -331,6 +331,7 @@ class MetroItinerary extends NarrativeItinerary {
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
     const routeLegs = itinerary.legs.filter(removeInsignifigantWalkLegs)
+    const transitRoutes = getItineraryRoutes(itinerary, intl)
 
     const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
       const routeBlocks = routeLegs
@@ -406,14 +407,24 @@ class MetroItinerary extends NarrativeItinerary {
             {!mini && (
               <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
-                <InvisibleHeader as={expanded && 'h2'}>
-                  <FormattedMessage
-                    id="components.MetroUI.itineraryDescription"
-                    values={{
-                      routes: getItineraryRoutes(itinerary, intl),
-                      time: formatDuration(itinerary.duration, intl)
-                    }}
-                  />
+                <InvisibleHeader as={expanded && 'h1'}>
+                  {String(transitRoutes) ? (
+                    <FormattedMessage
+                      id="components.MetroUI.itineraryDescription"
+                      values={{
+                        routes: transitRoutes,
+                        time: formatDuration(itinerary.duration, intl)
+                      }}
+                    />
+                  ) : (
+                    <FormattedMessage
+                      id="components.MetroUI.singleModeItineraryDescription"
+                      values={{
+                        mode: itinerary.legs[0].mode,
+                        time: formatDuration(itinerary.duration, intl)
+                      }}
+                    />
+                  )}
                 </InvisibleHeader>
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
