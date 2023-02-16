@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import { Alert, FormControl } from 'react-bootstrap'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
-import { Field } from 'formik'
-import { FormattedMessage, useIntl } from 'react-intl'
-import React, { Component } from 'react'
+import { Field, FormikProps } from 'formik'
+import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
+import React, { Component, ComponentType, FormEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 
 import { IconWithText } from '../../util/styledIcon'
@@ -50,7 +49,18 @@ const NotificationSettings = styled.fieldset`
 /**
  * A label followed by a dropdown control.
  */
-const Select = ({ children, Control = FormControl, label, name }) => (
+const Select = ({
+  Control = FormControl,
+  children,
+  label,
+  name
+}: {
+  // Note the prop order required by typescript-sort-keys, also applied above.
+  Control?: ComponentType
+  children: ReactNode
+  label?: ReactNode
+  name: string
+}) => (
   // <Field> is kept outside of <label> to accommodate layout in table/grid cells.
   <>
     {label && <label htmlFor={name}>{label}</label>}
@@ -60,29 +70,39 @@ const Select = ({ children, Control = FormControl, label, name }) => (
   </>
 )
 
-function Options({ defaultValue, options }) {
+function Options({
+  defaultValue,
+  options
+}: {
+  defaultValue: number | string
+  options: { text: string; value: number | string }[]
+}) {
   // <FormattedMessage> can't be used inside <option>.
   const intl = useIntl()
-  return options.map(({ text, value }, i) => (
-    <option key={i} value={value}>
-      {value === defaultValue
-        ? intl.formatMessage(
-            { id: 'common.forms.defaultValue' },
-            { value: text }
-          )
-        : text}
-    </option>
-  ))
+  return (
+    <>
+      {options.map(({ text, value }, i) => (
+        <option key={i} value={value}>
+          {value === defaultValue
+            ? intl.formatMessage(
+                { id: 'common.forms.defaultValue' },
+                { value: text }
+              )
+            : text}
+        </option>
+      ))}
+    </>
+  )
 }
 
 const basicYesNoOptions = [
   {
     id: 'yes',
-    value: true
+    value: 'true'
   },
   {
     id: 'no',
-    value: false
+    value: 'false'
   }
 ]
 
@@ -90,7 +110,7 @@ const basicYesNoOptions = [
  * Produces a yes/no list of options with the specified
  * default value (true for yes, false for no).
  */
-function YesNoOptions({ defaultValue }) {
+function YesNoOptions({ defaultValue }: { defaultValue: boolean }) {
   // <FormattedMessage> can't be used inside <option>.
   const intl = useIntl()
   const options = basicYesNoOptions.map(({ id, value }) => ({
@@ -100,13 +120,26 @@ function YesNoOptions({ defaultValue }) {
         : intl.formatMessage({ id: 'common.forms.no' }),
     value
   }))
-  return <Options defaultValue={defaultValue} options={options} />
+  return (
+    <Options
+      defaultValue={(defaultValue || false).toString()}
+      options={options}
+    />
+  )
 }
 
 /**
  * Produces a list of duration options with the specified default value.
  */
-function DurationOptions({ decoratorFunc, defaultValue, minuteOptions }) {
+function DurationOptions({
+  decoratorFunc,
+  defaultValue,
+  minuteOptions
+}: {
+  decoratorFunc?: (text: string, intl: IntlShape) => string
+  defaultValue: string | number
+  minuteOptions: number[]
+}) {
   // <FormattedMessage> can't be used inside <option>.
   const intl = useIntl()
   const localizedMinutes = minuteOptions.map((minutes) => ({
@@ -131,20 +164,32 @@ function DurationOptions({ decoratorFunc, defaultValue, minuteOptions }) {
   return <Options defaultValue={defaultValue} options={options} />
 }
 
+interface Fields {
+  arrivalVarianceMinutesThreshold: number
+  departureVarianceMinutesThreshold: number
+}
+
+interface Props extends FormikProps<Fields> {
+  notificationChannel: string
+}
+
 /**
  * This component wraps the elements to edit trip notification settings.
  */
-class TripNotificationsPane extends Component {
-  _handleDelayThresholdChange = (e) => {
+class TripNotificationsPane extends Component<Props> {
+  _handleDelayThresholdChange = (e: FormEvent<FormControl>): void => {
     // To spare users the complexity of the departure/arrival delay thresholds,
     // set both the arrival and departure variance delays to the selected value.
     const { setFieldValue } = this.props
-    const threshold = e.target.value
-    setFieldValue('arrivalVarianceMinutesThreshold', threshold)
-    setFieldValue('departureVarianceMinutesThreshold', threshold)
+    const target = e.target as HTMLSelectElement
+    if (target) {
+      const threshold = target.value
+      setFieldValue('arrivalVarianceMinutesThreshold', threshold)
+      setFieldValue('departureVarianceMinutesThreshold', threshold)
+    }
   }
 
-  render() {
+  render(): JSX.Element {
     const { notificationChannel, values } = this.props
     const areNotificationsDisabled = notificationChannel === 'none'
     // Define a common trip delay field for simplicity, set to the smallest between the
