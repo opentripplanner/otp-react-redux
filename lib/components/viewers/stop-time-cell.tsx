@@ -145,7 +145,10 @@ const StopTimeCell = ({
           isDue ? (
             <FormattedMessage id="components.StopTimeCell.imminentArrival" />
           ) : (
-            <FormattedDuration duration={secondsUntilDeparture} />
+            <FormattedDuration
+              duration={secondsUntilDeparture}
+              includeSeconds={false}
+            />
           )
         ) : (
           <DepartureTime realTime stopTime={stopTime} />
