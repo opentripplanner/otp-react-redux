@@ -122,7 +122,7 @@ input[type="text"]::-ms-clear {
 }
 
 .app-menu button[aria-selected="true"],
-#locale-selector li[aria-selected="true"] {
+#locale-selector button[aria-selected="true"] {
   font-weight: bold;
 }
 

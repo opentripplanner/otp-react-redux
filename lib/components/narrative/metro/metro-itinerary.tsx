@@ -6,8 +6,6 @@ import {
   injectIntl,
   IntlShape
 } from 'react-intl'
-
-import { getFormattedMode } from '../../../util/i18n'
 import { Itinerary, Leg } from '@opentripplanner/types'
 import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
@@ -22,6 +20,7 @@ import {
   itineraryHasAccessibilityScores
 } from '../../../util/accessibility-routing'
 import { getActiveSearch, getFare } from '../../../util/state'
+import { getFormattedMode } from '../../../util/i18n'
 import { IconWithText } from '../../util/styledIcon'
 import { ItineraryDescription } from '../default/itinerary-description'
 import { localizeGradationMap } from '../utils'
@@ -58,9 +57,7 @@ const DepartureTimes = styled.span`
   align-self: flex-end;
   color: #0909098f;
   font-size: 14px;
-  overflow: hidden;
   text-overflow: ellipsis;
-  white-space: pre;
   width: 100%;
 
   .active {
@@ -349,7 +346,10 @@ class MetroItinerary extends NarrativeItinerary {
               aria-hidden
               footer={
                 showLegDurations && (
-                  <FormattedDuration duration={leg.duration} />
+                  <FormattedDuration
+                    duration={leg.duration}
+                    includeSeconds={false}
+                  />
                 )
               }
               hideLongName
@@ -417,7 +417,7 @@ class MetroItinerary extends NarrativeItinerary {
                       id="components.MetroUI.itineraryDescription"
                       values={{
                         routes: transitRoutes,
-                        time: formatDuration(itinerary.duration, intl)
+                        time: formatDuration(itinerary.duration, intl, false)
                       }}
                     />
                   ) : (
@@ -425,7 +425,7 @@ class MetroItinerary extends NarrativeItinerary {
                       id="components.MetroUI.singleModeItineraryDescription"
                       values={{
                         mode: getFormattedMode(itinerary.legs[0].mode, intl),
-                        time: formatDuration(itinerary.duration, intl)
+                        time: formatDuration(itinerary.duration, intl, false)
                       }}
                     />
                   )}
@@ -439,7 +439,10 @@ class MetroItinerary extends NarrativeItinerary {
                   })}
                 >
                   <PrimaryInfo>
-                    <FormattedDuration duration={itinerary.duration} />
+                    <FormattedDuration
+                      duration={itinerary.duration}
+                      includeSeconds={false}
+                    />
                   </PrimaryInfo>
                   <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
                     {isFlexItinerary ? (
@@ -479,7 +482,10 @@ class MetroItinerary extends NarrativeItinerary {
                       id="components.MetroUI.timeWalking"
                       values={{
                         time: (
-                          <FormattedDuration duration={itinerary.walkTime} />
+                          <FormattedDuration
+                            duration={itinerary.walkTime}
+                            includeSeconds={false}
+                          />
                         )
                       }}
                     />
@@ -498,7 +504,10 @@ class MetroItinerary extends NarrativeItinerary {
             {mini && (
               <ItineraryGridSmall>
                 <PrimaryInfo as="span">
-                  <FormattedDuration duration={itinerary.duration} />
+                  <FormattedDuration
+                    duration={itinerary.duration}
+                    includeSeconds={false}
+                  />
                 </PrimaryInfo>
                 <SecondaryInfo as="span">
                   <ItineraryDescription itinerary={itinerary} />

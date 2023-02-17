@@ -30,7 +30,10 @@ export function getMainItineraryModes({
   let transitMode
   itinerary.legs.forEach((leg, i) => {
     const { duration, mode, rentedBike, rentedVehicle } = leg
-    if (isTransit(mode) && duration > primaryTransitDuration) {
+    if (
+      (leg.transitLeg || isTransit(mode)) &&
+      duration > primaryTransitDuration
+    ) {
       primaryTransitDuration = duration
       transitMode = getFormattedMode(
         combineTransitModes ? 'transit' : mode.toLowerCase(),
