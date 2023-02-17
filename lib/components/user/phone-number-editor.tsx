@@ -19,6 +19,10 @@ import React, { Component, Fragment } from 'react'
 import styled, { css } from 'styled-components'
 
 import { getErrorStates, isBlank } from '../../util/ui'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
+import SpanWithSpace from '../util/span-with-space'
+
+import { labelStyle } from './styled'
 
 interface Fields {
   validationCode: string
@@ -43,7 +47,8 @@ interface State {
 }
 
 // Styles
-const ControlStrip = styled.div`
+const ControlStrip = styled.span`
+  display: block;
   > * {
     margin-right: 4px;
   }
@@ -56,11 +61,15 @@ const phoneFieldCss = css`
 const InlineTextInput = styled(FormControl)`
   ${phoneFieldCss}
 `
-const InlineStatic = styled(FormControl.Static)`
+const InlineStatic = styled.span`
   ${phoneFieldCss}
 `
 const InlinePhoneInput = styled(Input)`
   ${phoneFieldCss}
+`
+const FakeLabel = styled.span`
+  display: block;
+  ${labelStyle}
 `
 
 const FlushLink = styled(Button)`
@@ -257,14 +266,18 @@ class PhoneNumberEditor extends Component<Props, State> {
           </FormGroup>
         ) : (
           <FormGroup>
-            <ControlLabel>
+            <FakeLabel>
               <FormattedMessage id="components.PhoneNumberEditor.smsDetail" />
-            </ControlLabel>
+            </FakeLabel>
             <ControlStrip>
-              <InlineStatic>
-                {formatPhoneNumber(
-                  isSubmitted ? newPhoneNumber : initialPhoneNumber
-                )}{' '}
+              <InlineStatic className="form-control-static">
+                <SpanWithSpace margin={0.5}>
+                  {formatPhoneNumber(
+                    isSubmitted ? newPhoneNumber : initialPhoneNumber
+                  )}
+                </SpanWithSpace>
+                {/* Invisible parentheses for no-CSS and screen readers */}
+                <InvisibleA11yLabel> (</InvisibleA11yLabel>
                 {isPending ? (
                   <BsLabel bsStyle="warning">
                     <FormattedMessage id="components.PhoneNumberEditor.pending" />
@@ -274,6 +287,7 @@ class PhoneNumberEditor extends Component<Props, State> {
                     <FormattedMessage id="components.PhoneNumberEditor.verified" />
                   </BsLabel>
                 )}
+                <InvisibleA11yLabel>)</InvisibleA11yLabel>
               </InlineStatic>
               <Button onClick={this._handleEditNumber}>
                 <FormattedMessage id="components.PhoneNumberEditor.changeNumber" />
