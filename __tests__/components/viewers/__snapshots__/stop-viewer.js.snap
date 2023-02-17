@@ -1483,6 +1483,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         >
                                           <FormattedDuration
                                             duration={3124}
+                                            includeSeconds={false}
                                           >
                                             <FormattedMessage
                                               id="common.time.tripDurationFormat"
@@ -1490,6 +1491,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                                 Object {
                                                   "hours": 0,
                                                   "minutes": 52,
+                                                  "seconds": 0,
                                                 }
                                               }
                                             >
@@ -3809,6 +3811,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         >
                                           <FormattedDuration
                                             duration={3124}
+                                            includeSeconds={false}
                                           >
                                             <FormattedMessage
                                               id="common.time.tripDurationFormat"
@@ -3816,6 +3819,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                                 Object {
                                                   "hours": 0,
                                                   "minutes": 52,
+                                                  "seconds": 0,
                                                 }
                                               }
                                             >
