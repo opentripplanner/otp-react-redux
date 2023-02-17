@@ -272,8 +272,7 @@ components:
   TransitVehicleOverlay:
     incoming_at: 接近 {stop}
     in_transit_to: 下一车站 {stop}
-    vehicleName: '车辆 {vehicleNumber}: '
-    realtimeVehicleInfo: <strong>{vehicleNameOrBlank}</strong>{relativeTime}
+    vehicleName: '车辆 {vehicleNumber}'
     stopped_at: 巴士车门在 {stop} 打开
     travelingAt: 以 {milesPerHour}
   TripNotificationsPane:
@@ -528,10 +527,11 @@ common:
     transfers: '{transfers, plural, =0 {} one {# 换乘} other {# 换乘}}'
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
+    durationAgo: "{duration}前"
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {几秒钟前}\n =1 {一分钟前}\n other {# 分钟前}\n }}\n =1 {一小时前}\n other {# 小时前}\n }}\n\
       \ other {# 天之前}\n }\n"
-    tripDurationFormat: "{hours, plural, =0 {} other {# 小时 }}{minutes} 分钟}"
+    tripDurationFormat: "{hours, plural, =0 {} other {# 小时 }}{minutes} 分钟} { seconds, plural, =0 {} other {# 秒}}"
   dateExpressions:
     today: 今天
     tomorrow: 明天

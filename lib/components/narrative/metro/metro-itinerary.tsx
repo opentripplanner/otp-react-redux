@@ -336,7 +336,10 @@ class MetroItinerary extends NarrativeItinerary {
             <RouteBlock
               footer={
                 showLegDurations && (
-                  <FormattedDuration duration={leg.duration} />
+                  <FormattedDuration
+                    duration={leg.duration}
+                    includeSeconds={false}
+                  />
                 )
               }
               hideLongName
@@ -394,7 +397,7 @@ class MetroItinerary extends NarrativeItinerary {
               },
               {
                 routes: getItineraryRoutes(itinerary, intl),
-                time: formatDuration(itinerary.duration, intl)
+                time: formatDuration(itinerary.duration, intl, false)
               }
             )}
             className={`itin-wrapper${mini ? '-small' : ''}`}
@@ -418,7 +421,10 @@ class MetroItinerary extends NarrativeItinerary {
                   })}
                 >
                   <PrimaryInfo>
-                    <FormattedDuration duration={itinerary.duration} />
+                    <FormattedDuration
+                      duration={itinerary.duration}
+                      includeSeconds={false}
+                    />
                   </PrimaryInfo>
                   <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
                     {isFlexItinerary ? (
@@ -458,7 +464,10 @@ class MetroItinerary extends NarrativeItinerary {
                       id="components.MetroUI.timeWalking"
                       values={{
                         time: (
-                          <FormattedDuration duration={itinerary.walkTime} />
+                          <FormattedDuration
+                            duration={itinerary.walkTime}
+                            includeSeconds={false}
+                          />
                         )
                       }}
                     />
@@ -477,7 +486,10 @@ class MetroItinerary extends NarrativeItinerary {
             {mini && (
               <ItineraryGridSmall>
                 <PrimaryInfo as="span">
-                  <FormattedDuration duration={itinerary.duration} />
+                  <FormattedDuration
+                    duration={itinerary.duration}
+                    includeSeconds={false}
+                  />
                 </PrimaryInfo>
                 <SecondaryInfo as="span">
                   <ItineraryDescription itinerary={itinerary} />
