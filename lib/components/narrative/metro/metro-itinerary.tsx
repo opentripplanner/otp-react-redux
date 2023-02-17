@@ -205,7 +205,9 @@ const ItineraryGridSmall = styled.div`
 
 // invisible header rendered for screen readers and a11y technologies
 const InvisibleHeader = styled.span`
-  //place it in an unused grid cell so it doesn't add a row
+  /* TODO: This grid/column places the invisbile header into an unused 
+  grid-cell to stop it from adding an additional row. There is probably 
+  a better way to do this! */
   grid-column: 2;
   grid-row: 2;
   height: 0;
