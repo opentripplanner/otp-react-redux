@@ -6,7 +6,7 @@ import {
   FormGroup,
   HelpBlock
 } from 'react-bootstrap'
-import { Field, FormikErrors } from 'formik'
+import { Field, FormikProps } from 'formik'
 import {
   formatPhoneNumber,
   isPossiblePhoneNumber
@@ -24,8 +24,7 @@ interface Fields {
   validationCode: string
 }
 
-interface Props {
-  errors: FormikErrors<Fields>
+interface Props extends FormikProps<Fields> {
   initialPhoneNumber?: string
   initialPhoneNumberVerified?: boolean
   intl: IntlShape
@@ -35,8 +34,6 @@ interface Props {
     countryCode: string
   }
   resetForm: () => void
-  touched: Record<string, boolean>
-  values: Fields
 }
 
 interface State {
@@ -212,7 +209,6 @@ class PhoneNumberEditor extends Component<Props, State> {
     const isPhoneInvalid = !isPossiblePhoneNumber(newPhoneNumber)
     const showPhoneError = isPhoneInvalid && !isBlank(newPhoneNumber)
     const phoneErrorState = showPhoneError ? 'error' : null
-    // @ts-expect-error TODO Add TypeScript to getErrorStates module.
     const codeErrorState = getErrorStates(this.props).validationCode
 
     return (
