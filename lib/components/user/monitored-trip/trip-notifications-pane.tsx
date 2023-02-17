@@ -29,8 +29,8 @@ const SettingsList = styled.ul`
 `
 
 const Summary = styled.summary`
-  /* Revert display:block set by Bootstrap */
-  display: revert;
+  /* Revert display:block set by Bootstrap that hides the native expand/collapse caret. */
+  display: revert-layer;
   /* Format summary as labels */
   font-weight: 700;
   margin-bottom: 5px;
