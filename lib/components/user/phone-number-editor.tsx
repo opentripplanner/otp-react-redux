@@ -120,11 +120,9 @@ class PhoneNumberEditor extends Component<Props, State> {
   }
 
   _handlePhoneNumberKeyDown = (e: KeyboardEvent) => {
-    if (e.keyCode === 13) {
-      // On the user pressing enter (keyCode 13) on the phone number field,
-      // prevent form submission and request the code.
-      e.preventDefault()
-      this._handleRequestCode()
+    if (e.key === 'Escape') {
+      // Cancel editing when user presses ESC from the phone number field.
+      this._handleCancelEditNumber()
     }
   }
 
@@ -234,6 +232,7 @@ class PhoneNumberEditor extends Component<Props, State> {
                 aria-invalid={showPhoneError}
                 className="form-control"
                 country={phoneFormatOptions.countryCode}
+                form="phone-change-form"
                 onChange={this._handleNewPhoneNumberChange}
                 onKeyDown={this._handlePhoneNumberKeyDown}
                 placeholder={intl.formatMessage({
@@ -245,7 +244,9 @@ class PhoneNumberEditor extends Component<Props, State> {
               <Button
                 bsStyle="primary"
                 disabled={isPhoneInvalid}
+                form="phone-change-form"
                 onClick={this._handleRequestCode}
+                type="submit"
               >
                 <FormattedMessage id="components.PhoneNumberEditor.sendVerificationText" />
               </Button>
