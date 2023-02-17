@@ -126,15 +126,6 @@ class PhoneNumberEditor extends Component<Props, State> {
     }
   }
 
-  _handleValidationCodeKeyDown = (e: KeyboardEvent) => {
-    if (e.keyCode === 13) {
-      // On the user pressing enter (keyCode 13) on the validation code field,
-      // prevent form submission and send the validation code.
-      e.preventDefault()
-      this._handleSubmitCode()
-    }
-  }
-
   /**
    * Send phone verification request with the entered values.
    */
@@ -310,9 +301,9 @@ class PhoneNumberEditor extends Component<Props, State> {
             <ControlStrip>
               <Field
                 as={InlineTextInput}
+                form="phone-verification-form"
                 maxLength={6}
                 name="validationCode"
-                onKeyDown={this._handleValidationCodeKeyDown}
                 placeholder="123456"
                 // HACK: <input type='tel'> triggers the numerical keypad on mobile devices, and otherwise
                 // behaves like <input type='text'> with support of leading zeros and the maxLength prop.
@@ -325,7 +316,9 @@ class PhoneNumberEditor extends Component<Props, State> {
               <Button
                 bsStyle="primary"
                 disabled={!!errors.validationCode}
+                form="phone-verification-form"
                 onClick={this._handleSubmitCode}
+                type="submit"
               >
                 <FormattedMessage id="components.PhoneNumberEditor.verify" />
               </Button>
