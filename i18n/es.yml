@@ -264,10 +264,9 @@ components:
     viewNextArrivals: Ver próximas llegadas
     zoomToStop: Zoom a la parada
   TransitVehicleOverlay:
-    vehicleName: 'Vehículo {vehicleNumber}: '
+    vehicleName: 'Vehículo {vehicleNumber}'
     in_transit_to: Próxima parada {stop}
     incoming_at: acercándose a {stop}
-    realtimeVehicleInfo: <strong>{vehicleNameOrBlank}</strong>{relativeTime}
     stopped_at: puertas abiertas en la {stop}
     travelingAt: Viajando a {milesPerHour}
   TripBasicsPane:
@@ -640,10 +639,11 @@ common:
     tap: toque
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
+    durationAgo: "hace {duration}"
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {hace unos segundos}\n =1 {hace un minuto}\n other {hace # minutos}\n }}\n\
       \ =1 {hace una hora}\n other {hace # horas}\n }}\n other {hace # días}\n }\n"
-    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min"
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {} other {# seg}}"
   places:
     custom: personalizado
     dining: restaurante

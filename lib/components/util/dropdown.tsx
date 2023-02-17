@@ -8,7 +8,6 @@ import React, {
 import styled from 'styled-components'
 
 interface Props extends HTMLAttributes<HTMLElement> {
-  children: React.ReactNode
   label?: string
   listLabel?: string
   name: JSX.Element
@@ -37,15 +36,12 @@ const DropdownMenu = styled.ul`
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   color: #111;
-  cursor: default;
-  float: left;
   list-style: none;
   margin: 2px 0 0;
   min-width: 160px;
   padding: 5px 0;
   position: absolute;
   right: 0;
-  text-align: left;
   top: 100%;
   z-index: 1000;
 
@@ -53,9 +49,16 @@ const DropdownMenu = styled.ul`
     margin: 0;
     padding: 0;
   }
-  li {
-    cursor: pointer;
+  a,
+  button,
+  li.header {
     padding: 5px 15px;
+    text-align: start;
+    width: 100%;
+  }
+  a,
+  button {
+    cursor: pointer;
   }
   li.header {
     cursor: default;
@@ -82,38 +85,29 @@ const Dropdown = ({
   style
 }: Props): JSX.Element => {
   const [open, setOpen] = useState(false)
-  const containerRef = useRef(null)
+  const containerRef = useRef<HTMLLIElement>(null)
 
   const toggleOpen = () => setOpen(!open)
 
   // Adding document event listeners allows us to close the dropdown
   // when the user interacts with any part of the page that isn't the dropdown
   useEffect(() => {
-    // TODO: TYPE
-    const handleExternalAction = (
-      e: MouseEvent | FocusEvent | KeyboardEvent
-    ) => {
-      if (
-        !!containerRef.current &&
-        // @ts-expect-error Typescript doesn't like this check
-        !(containerRef?.current).contains(e.target)
-      ) {
+    const handleExternalAction = (e: Event): void => {
+      if (!containerRef?.current?.contains(e.target as HTMLElement)) {
         setOpen(false)
       }
     }
     document.addEventListener('mousedown', handleExternalAction)
-    document.addEventListener('focus', handleExternalAction)
-    // @ts-expect-error not sure what type is expected here
+    document.addEventListener('focusin', handleExternalAction)
     document.addEventListener('keydown', handleExternalAction)
     return () => {
       document.removeEventListener('mousedown', handleExternalAction)
-      document.removeEventListener('focus', handleExternalAction)
-      // @ts-expect-error not sure what type is expected here
+      document.removeEventListener('focusin', handleExternalAction)
       document.removeEventListener('keydown', handleExternalAction)
     }
   }, [containerRef])
 
-  const _handleKeyDown = (e: any): void => {
+  const _handleKeyDown = (e: KeyboardEvent): void => {
     const element = e.target as HTMLElement
     switch (e.key) {
       case 'ArrowUp':
@@ -149,7 +143,7 @@ const Dropdown = ({
     offset: 1 | -1
   ): HTMLElement {
     const entries = Array.from(
-      document.querySelectorAll(`#${id} li, #${id}-label`)
+      document.querySelectorAll(`#${id} button, #${id}-label`)
     )
     const elementIndex = entries.indexOf(element as HTMLElement)
 
@@ -183,6 +177,7 @@ const Dropdown = ({
           aria-label={listLabel}
           aria-labelledby={listLabel ? '' : `${id}-label`}
           id={id}
+          onClick={toggleOpen}
           role="list"
           tabIndex={-1}
         >

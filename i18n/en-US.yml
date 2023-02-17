@@ -192,7 +192,7 @@ components:
   FavoritePlaceList:
     addAnotherPlace: Add another place
     description: "Add the places you frequent often to save time planning trips:"
-    # editThisPlace is a tooltip text.
+    # editThisPlace is used as the button's visibly-hidden text and tooltip text.
     editThisPlace: Edit this place
     setAddressForPlaceType: "Set your {placeType} address"
   FavoritePlaceScreen:
@@ -455,12 +455,11 @@ components:
       improve transit services in my area. <termsOfStorageLink>More info...</termsOfStorageLink>
   TransitVehicleOverlay:
     # keys designed to match API output
-    incoming_at: "approaching {stop}"
-    in_transit_to: "next stop {stop}"
-    realtimeVehicleInfo: "<strong>{vehicleNameOrBlank}</strong>{relativeTime}"
-    stopped_at: "doors open at {stop}"
-    travelingAt: "traveling at {milesPerHour}"
-    vehicleName: "Vehicle {vehicleNumber}: "
+    incoming_at: "Approaching: {stop}"
+    in_transit_to: "Next stop: {stop}"
+    stopped_at: "Doors open at {stop}"
+    travelingAt: "Traveling at {milesPerHour}"
+    vehicleName: "Vehicle {vehicleNumber}"
   TripBasicsPane:
     checkingItineraryExistence: Checking itinerary existence for each day of the week...
     selectAtLeastOneDay: Please select at least one day to monitor.
@@ -619,7 +618,6 @@ common:
     today: Today
     tomorrow: Tomorrow
     yesterday: Yesterday
-
   daysOfWeek:
     monday: Monday
     tuesday: Tuesday
@@ -730,6 +728,7 @@ common:
     # Use ordered placeholders for the departure-arrival string
     # (this will accommodate right-to-left languages by swapping the order in this string).
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
+    durationAgo: "{duration} ago"
     # Replacing (sort of) moment.js fromNow() functionality. This is not a direct 1:1, since
     # moment.js formats text to "a minute ago" once 44 seconds are reached, etc. This has
     # been simplified here.
@@ -747,7 +746,7 @@ common:
         other {# days ago}
       }
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
-    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min"
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {} other {# sec}}"
 
 util:
   state:
