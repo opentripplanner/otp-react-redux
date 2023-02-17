@@ -1,10 +1,10 @@
 import {
+  Label as BsLabel,
   Button,
   ControlLabel,
   FormControl,
   FormGroup,
-  HelpBlock,
-  Label
+  HelpBlock
 } from 'react-bootstrap'
 import { Field, FormikErrors } from 'formik'
 import {
@@ -19,7 +19,6 @@ import React, { Component, Fragment } from 'react'
 import styled, { css } from 'styled-components'
 
 import { getErrorStates, isBlank } from '../../util/ui'
-import SpanWithSpace from '../util/span-with-space'
 
 interface Fields {
   validationCode: string
@@ -227,6 +226,7 @@ class PhoneNumberEditor extends Component<Props, State> {
             </ControlLabel>
             <ControlStrip>
               <InlinePhoneInput
+                aria-invalid={showPhoneError}
                 className="form-control"
                 country={phoneFormatOptions.countryCode}
                 onChange={this._handleNewPhoneNumberChange}
@@ -252,11 +252,11 @@ class PhoneNumberEditor extends Component<Props, State> {
                   </Button>
                 )
               }
-              {showPhoneError && (
-                <HelpBlock>
+              <HelpBlock role="status">
+                {showPhoneError && (
                   <FormattedMessage id="components.PhoneNumberEditor.invalidPhone" />
-                </HelpBlock>
-              )}
+                )}
+              </HelpBlock>
             </ControlStrip>
           </FormGroup>
         ) : (
@@ -266,21 +266,17 @@ class PhoneNumberEditor extends Component<Props, State> {
             </ControlLabel>
             <ControlStrip>
               <InlineStatic>
-                <SpanWithSpace margin={0.5}>
-                  {formatPhoneNumber(
-                    isSubmitted ? newPhoneNumber : initialPhoneNumber
-                  )}
-                </SpanWithSpace>
+                {formatPhoneNumber(
+                  isSubmitted ? newPhoneNumber : initialPhoneNumber
+                )}{' '}
                 {isPending ? (
-                  // eslint-disable-next-line jsx-a11y/label-has-for
-                  <Label bsStyle="warning">
+                  <BsLabel bsStyle="warning">
                     <FormattedMessage id="components.PhoneNumberEditor.pending" />
-                  </Label>
+                  </BsLabel>
                 ) : (
-                  // eslint-disable-next-line jsx-a11y/label-has-for
-                  <Label bsStyle="success">
+                  <BsLabel bsStyle="success">
                     <FormattedMessage id="components.PhoneNumberEditor.verified" />
-                  </Label>
+                  </BsLabel>
                 )}
               </InlineStatic>
               <Button onClick={this._handleEditNumber}>
