@@ -306,9 +306,12 @@ components:
       puis cliquez sur le marqueur qui apparaît afin de définir votre {placeType}.
     viewStop: Voir cet arrêt
   PlaceEditor:
+    addressPrompt: "Adresse :"
     genericLocationPlaceholder: Adresse du lieu
     locationPlaceholder: Adresse de votre {placeName}
-    namePlaceholder: Entrez le nom du lieu
+    locationTypePrompt: "Type de lieu :"
+    nameExample: Mon café du coin
+    namePrompt: "Nom du lieu :"
   PlanFirstLastButtons:
     # Note to translator: these values are width-constrained.
     first: Premier
@@ -457,10 +460,9 @@ components:
     # keys designed to match API output
     incoming_at: "Approchant {stop}"
     in_transit_to: "Prochain arrêt : {stop}"
-    realtimeVehicleInfo: "<strong>{vehicleNameOrBlank}</strong>{relativeTime}"
     stopped_at: "À quai à {stop}"
     travelingAt: "Vitesse : {milesPerHour}"
-    vehicleName: "Véhicule {vehicleNumber} : "
+    vehicleName: "Véhicule {vehicleNumber}"
   TripBasicsPane:
     checkingItineraryExistence: Vérification du trajet pour chaque jour de la semaine...
     selectAtLeastOneDay: Veuillez choisir au moins un jour pour effectuer le suivi.
@@ -730,6 +732,7 @@ common:
 
   time:
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
+    durationAgo: "il y a {duration}"
     fromNowUpdate: >
       {days, plural,
         =0 {{hours,plural,
@@ -743,7 +746,7 @@ common:
         }}
         other {il y a # jours}
       }
-    tripDurationFormat: "{hours, plural, =0 {} other {# h }}{minutes} mn"
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} mn { seconds, plural, =0 {} other {# sec}}"
 
 util:
   state:

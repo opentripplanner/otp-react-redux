@@ -4,7 +4,8 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import { useHistory } from 'react-router'
 import React from 'react'
 
-import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
+import { MainPanelContent } from '../../actions/ui-constants'
+import { setMainPanelContent } from '../../actions/ui'
 
 type Props = {
   accountsActive: boolean

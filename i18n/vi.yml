@@ -257,8 +257,7 @@ components:
     incoming_at: Đang tiếp cận {stop}
     in_transit_to: Điểm dừng tiếp theo {stop}
     stopped_at: Cửa mở tại {stop}
-    vehicleName: 'Phương tiện giao thông {vehicleNumber}: '
-    realtimeVehicleInfo: <strong>{vehicleNameOrBlank}</strong>{relativeTime}
+    vehicleName: 'Phương tiện giao thông {vehicleNumber}'
     travelingAt: di chuyển với tốc độ {milesPerHour}
   TripBasicsPane:
     checkingItineraryExistence: Kiểm tra sự tồn tại của hành trình cho mỗi ngày trong
@@ -581,7 +580,8 @@ common:
     click: nhấp
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
-    tripDurationFormat: "{hours, plural, =0 {} other {# giờ }}{minutes} phút"
+    durationAgo: "{duration} trước"
+    tripDurationFormat: "{hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds, plural, =0 {} other {# giây}}"
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {vài giây trước}\n =1 {một phút trước}\n other {# phút trước}\n }}\n =1\
       \ {một tiếng trước}\n other {# giờ trước}\n }}\n other {# ngày trước}\n }\n"
