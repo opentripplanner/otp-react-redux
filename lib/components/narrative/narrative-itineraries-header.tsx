@@ -30,6 +30,7 @@ const InvisibleHeader = styled.h1`
   width: 0;
 `
 
+// eslint-disable-next-line complexity
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
   errors,
@@ -86,7 +87,7 @@ export default function NarrativeItinerariesHeader({
         flexWrap: 'wrap'
       }}
     >
-      {itineraryIsExpanded || showingErrors ? (
+      {itinerary && (itineraryIsExpanded || showingErrors) ? (
         <>
           <button
             className="clear-button-formatting"
