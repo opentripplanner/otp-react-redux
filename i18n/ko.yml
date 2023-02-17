@@ -256,10 +256,9 @@ components:
       \ 데 동의합니다. <termsOfStorageLink>더 많은 정보...</termsOfStorageLink>\n"
   TransitVehicleOverlay:
     stopped_at: '{stop} 에서 문이 열립니다'
-    vehicleName: '차량 {vehicleNumber}: '
+    vehicleName: '차량 {vehicleNumber}'
     in_transit_to: 다음 중지 {stop}
     incoming_at: '{stop} 과 가까움'
-    realtimeVehicleInfo: <strong>{vehicleNameOrBlank}</strong>{relativeTime}
     travelingAt: 현재 {milesPerHour} 로 주행 중
   TripBasicsPane:
     tripDaysPrompt: 이 여행은 몇 일에 걸립니까?
@@ -583,10 +582,11 @@ common:
     tuesday: 화요일
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
+    durationAgo: "{duration} 전"
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {몇 초 전에}\n =1 {1 분 전}\n other {# 분 전}\n }}\n =1 {한 시간 전에}\n other {# 시간\
       \ 전}\n }}\n other {# 일 전}\n }\n"
-    tripDurationFormat: "{hours, plural, =0 {} other {# 시간 }}{minutes, number} 분"
+    tripDurationFormat: "{hours, plural, =0 {} other {# 시간 }}{minutes, number} 분 { seconds, plural, =0 {} other {# 초}}"
   coordinates: '{lat}, {lon}'
 util:
   state:
