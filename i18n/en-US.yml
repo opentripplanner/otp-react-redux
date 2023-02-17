@@ -305,9 +305,12 @@ components:
       and click the resulting marker to set as {placeType} location.
     viewStop: View Stop
   PlaceEditor:
+    addressPrompt: "Address:"
     genericLocationPlaceholder: Search for location
     locationPlaceholder: "Search for {placeName} location"
-    namePlaceholder: Set place name
+    locationTypePrompt: "Location type:"
+    nameExample: My coffee shop
+    namePrompt: "Place name:"
   PlanFirstLastButtons:
     # Note to translator: these values are width-constrained.
     first: First
