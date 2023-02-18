@@ -233,6 +233,7 @@ components:
     fromStop: "from {stop}"
     orAlternatives: or other routes in the same direction
     itineraryDescription: "{time} itinerary using {routes}"
+    singleModeItineraryDescription: "{time} {mode} itinerary"
     multipleOptions: Multiple Options
   MobileOptions:
     header: Set Search Options

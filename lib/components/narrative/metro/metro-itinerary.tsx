@@ -200,6 +200,17 @@ const ItineraryGridSmall = styled.div`
   }
 `
 
+// invisible header rendered for screen readers and a11y technologies
+const InvisibleHeader = styled.span`
+  /* TODO: This grid/column places the invisbile header into an unused 
+  grid-cell to stop it from adding an additional row. There is probably 
+  a better way to do this! */
+  grid-column: 2;
+  grid-row: 2;
+  height: 0;
+  overflow: hidden;
+  width: 0;
+`
 const BLUR_AMOUNT = 3
 const blurAnimation = keyframes`
  0% { filter: blur(${BLUR_AMOUNT}px); }
@@ -321,9 +332,7 @@ class MetroItinerary extends NarrativeItinerary {
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
     const routeLegs = itinerary.legs.filter(removeInsignifigantWalkLegs)
-    const modeStrings = routeLegs.map((leg: Leg) => {
-      return getFormattedMode(leg.mode, intl)
-    })
+    const transitRoutes = getItineraryRoutes(itinerary, intl)
 
     const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
       const routeBlocks = routeLegs
@@ -334,6 +343,7 @@ class MetroItinerary extends NarrativeItinerary {
             (index > 0 && filteredLegs[index - 1].mode) || undefined
           return (
             <RouteBlock
+              aria-hidden
               footer={
                 showLegDurations && (
                   <FormattedDuration
@@ -390,18 +400,7 @@ class MetroItinerary extends NarrativeItinerary {
           // TODO test this with a screen reader
           // tabIndex={expanded ? 1 : 0}
         >
-          <ItineraryWrapper
-            aria-label={intl.formatMessage(
-              {
-                id: 'components.MetroUI.itineraryDescription'
-              },
-              {
-                routes: getItineraryRoutes(itinerary, intl),
-                time: formatDuration(itinerary.duration, intl, false)
-              }
-            )}
-            className={`itin-wrapper${mini ? '-small' : ''}`}
-          >
+          <ItineraryWrapper className={`itin-wrapper${mini ? '-small' : ''}`}>
             {emissionsNote && <ItineraryNote>{emissionsNote}</ItineraryNote>}
             {itineraryHasAccessibilityScores(itinerary) && (
               <AccessibilityRating
@@ -412,6 +411,25 @@ class MetroItinerary extends NarrativeItinerary {
             {!mini && (
               <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
+                <InvisibleHeader as={expanded && 'h1'}>
+                  {String(transitRoutes) ? (
+                    <FormattedMessage
+                      id="components.MetroUI.itineraryDescription"
+                      values={{
+                        routes: transitRoutes,
+                        time: formatDuration(itinerary.duration, intl, false)
+                      }}
+                    />
+                  ) : (
+                    <FormattedMessage
+                      id="components.MetroUI.singleModeItineraryDescription"
+                      values={{
+                        mode: getFormattedMode(itinerary.legs[0].mode, intl),
+                        time: formatDuration(itinerary.duration, intl, false)
+                      }}
+                    />
+                  )}
+                </InvisibleHeader>
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
                 </Routes>

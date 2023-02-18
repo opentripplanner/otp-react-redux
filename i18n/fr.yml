@@ -238,6 +238,7 @@ components:
     leaveAt: Partez à
     multipleOptions: Plusieurs options
     orAlternatives: ou autres lignes dans la même direction
+    singleModeItineraryDescription: "Trajet de {time} {mode}"
     timeWalking: "{time} de marche"
   MobileOptions:
     header: Options de recherche
