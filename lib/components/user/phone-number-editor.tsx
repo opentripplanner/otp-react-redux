@@ -33,7 +33,6 @@ interface Props extends FormikProps<Fields> {
   initialPhoneNumberVerified?: boolean
   intl: IntlShape
   onRequestCode: (code: string) => void
-  onSubmitCode: (code: string) => void
   phoneFormatOptions: {
     countryCode: string
   }
@@ -155,17 +154,12 @@ class PhoneNumberEditor extends Component<Props, State> {
     if (submittedNumber) {
       // TODO: disable submit while submitting.
       this.setState({ isSubmitted: true })
-      onRequestCode(submittedNumber)
+      alert('Change request sent')
+      // onRequestCode(submittedNumber)
     }
-  }
 
-  _handleSubmitCode = () => {
-    const { errors, onSubmitCode, values } = this.props
-    const { validationCode } = values
-
-    if (!errors.validationCode) {
-      onSubmitCode(validationCode)
-    }
+    // Disable automatic form submission (especially if there are errors).
+    e.preventDefault()
   }
 
   _isPhoneNumberPending = () => {
@@ -212,8 +206,6 @@ class PhoneNumberEditor extends Component<Props, State> {
     return (
       <>
         {isEditing ? (
-          // FIXME: If removing the Save/Cancel buttons on the account screen,
-          // make this <FormGroup> a <form> and remove onKeyDown handler.
           <FormGroup validationState={phoneErrorState}>
             <ControlLabel>
               <FormattedMessage id="components.PhoneNumberEditor.prompt" />
@@ -289,8 +281,6 @@ class PhoneNumberEditor extends Component<Props, State> {
         )}
 
         {isPending && !isEditing && (
-          // FIXME: If removing the Save/Cancel buttons on the account screen,
-          // make this <FormGroup> a <form> and remove onKeyDown handler.
           <FormGroup validationState={codeErrorState}>
             <p>
               <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
@@ -315,18 +305,16 @@ class PhoneNumberEditor extends Component<Props, State> {
               />
               <Button
                 bsStyle="primary"
-                disabled={!!errors.validationCode}
                 form="phone-verification-form"
-                onClick={this._handleSubmitCode}
                 type="submit"
               >
                 <FormattedMessage id="components.PhoneNumberEditor.verify" />
               </Button>
-              {touched.validationCode && errors.validationCode && (
-                <HelpBlock>
+              <HelpBlock role="status">
+                {touched.validationCode && errors.validationCode && (
                   <FormattedMessage id="components.PhoneNumberEditor.invalidCode" />
-                </HelpBlock>
-              )}
+                )}
+              </HelpBlock>
             </ControlStrip>
             <FlushLink bsStyle="link" onClick={this._handleRequestCode}>
               <FormattedMessage id="components.PhoneNumberEditor.requestNewCode" />

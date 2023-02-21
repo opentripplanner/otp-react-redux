@@ -1,7 +1,7 @@
 // @ts-expect-error Package yup does not have type declarations.
 import * as yup from 'yup'
 import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
-import { Field, Formik, FormikProps } from 'formik'
+import { Field, Form, Formik, FormikProps } from 'formik'
 import { FormattedMessage } from 'react-intl'
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
@@ -118,6 +118,7 @@ const NotificationPrefsPane = ({
           // @ts-expect-error onSubmit is not passed to Formik because PhoneNumberEditor handles code submission on its own.
           <Formik
             initialValues={initialFormikValues}
+            onSubmit={onSendPhoneVerificationCode}
             validateOnChange
             validationSchema={codeValidationSchema}
           >
@@ -125,14 +126,16 @@ const NotificationPrefsPane = ({
               // Pass Formik props to the component rendered so Formik can manage its validation.
               // (The validation for this component is independent of the validation set in UserAccountScreen.)
               (innerProps) => (
-                <PhoneNumberEditor
-                  {...innerProps}
-                  initialPhoneNumber={phoneNumber}
-                  initialPhoneNumberVerified={isPhoneNumberVerified}
-                  onRequestCode={onRequestPhoneVerificationCode}
-                  onSubmitCode={onSendPhoneVerificationCode}
-                  phoneFormatOptions={phoneFormatOptions}
-                />
+                <>
+                  <Form id="phone-verification-form" noValidate />
+                  <PhoneNumberEditor
+                    {...innerProps}
+                    initialPhoneNumber={phoneNumber}
+                    initialPhoneNumberVerified={isPhoneNumberVerified}
+                    onRequestCode={onRequestPhoneVerificationCode}
+                    phoneFormatOptions={phoneFormatOptions}
+                  />
+                </>
               )
             }
           </Formik>
