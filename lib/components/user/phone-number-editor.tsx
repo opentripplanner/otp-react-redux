@@ -100,49 +100,50 @@ const PhoneVerificationForm = (props: VerificationFromProps): JSX.Element => {
   // Formik props
   const { errors, onRequestCode, touched } = props
   const codeErrorState = getErrorStates(props).validationCode
+  const isInvalid = !!(touched.validationCode && errors.validationCode)
   const formId = 'phone-verification-form'
 
   return (
-    <>
-      {/* Set up an empty form here without input, and link inputs using the form id.
-          (a submit button within will incorrectly submit the entire page instead of the subform.) */}
+    <FormGroup validationState={codeErrorState}>
+      {/* Set up an empty Formik Form without inputs, and link inputs using the form id.
+          (A submit button within will incorrectly submit the entire page instead of just the subform.)
+          The containing Formik element will watch submission of the form. */}
       <Form id={formId} noValidate />
-      <FormGroup validationState={codeErrorState}>
-        <p>
-          <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
-        </p>
-        <ControlLabel>
-          <FormattedMessage id="components.PhoneNumberEditor.verificationCode" />
-        </ControlLabel>
-        <ControlStrip>
-          <Field
-            as={InlineTextInput}
-            form={formId}
-            maxLength={6}
-            name="validationCode"
-            placeholder="123456"
-            // HACK: <input type='tel'> triggers the numerical keypad on mobile devices, and otherwise
-            // behaves like <input type='text'> with support of leading zeros and the maxLength prop.
-            // <input type='number'> causes values to be stored as Number, resulting in
-            // leading zeros to be invalid and stripped upon submission.
-            type="tel"
-
-            // onBlur, onChange, and value are passed automatically by Formik
-          />
-          <Button bsStyle="primary" form={formId} type="submit">
-            <FormattedMessage id="components.PhoneNumberEditor.verify" />
-          </Button>
-          <HelpBlock role="status">
-            {touched.validationCode && errors.validationCode && (
-              <FormattedMessage id="components.PhoneNumberEditor.invalidCode" />
-            )}
-          </HelpBlock>
-        </ControlStrip>
-        <FlushLink bsStyle="link" onClick={onRequestCode}>
-          <FormattedMessage id="components.PhoneNumberEditor.requestNewCode" />
-        </FlushLink>
-      </FormGroup>
-    </>
+      <p>
+        <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
+      </p>
+      <ControlLabel htmlFor="validation-code">
+        <FormattedMessage id="components.PhoneNumberEditor.verificationCode" />
+      </ControlLabel>
+      <ControlStrip>
+        <Field
+          aria-invalid={isInvalid}
+          aria-required
+          as={InlineTextInput}
+          form={formId}
+          id="validation-code"
+          maxLength={6}
+          name="validationCode"
+          placeholder="123456"
+          // HACK: <input type='tel'> triggers the numerical keypad on mobile devices, and otherwise
+          // behaves like <input type='text'> with support of leading zeros and the maxLength prop.
+          // <input type='number'> causes values to be stored as Number, resulting in
+          // leading zeros to be invalid and stripped upon submission.
+          type="tel"
+        />
+        <Button bsStyle="primary" form={formId} type="submit">
+          <FormattedMessage id="components.PhoneNumberEditor.verify" />
+        </Button>
+        <HelpBlock role="alert">
+          {isInvalid && (
+            <FormattedMessage id="components.PhoneNumberEditor.invalidCode" />
+          )}
+        </HelpBlock>
+      </ControlStrip>
+      <FlushLink bsStyle="link" onClick={onRequestCode}>
+        <FormattedMessage id="components.PhoneNumberEditor.requestNewCode" />
+      </FlushLink>
+    </FormGroup>
   )
 }
 
@@ -352,6 +353,8 @@ class PhoneNumberEditor extends Component<Props, State> {
           <Formik
             initialValues={{ validationCode: '' }}
             onSubmit={onSendPhoneVerificationCode}
+            validateOnBlur
+            validateOnChange={false}
             validationSchema={codeValidationSchema}
           >
             {
