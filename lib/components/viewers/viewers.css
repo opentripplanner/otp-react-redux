@@ -142,7 +142,7 @@
   display: grid;
   font-size: 42px;
   gap: 5px;
-  grid-template-columns: fit-content(8ch) fit-content(8ch);
+  grid-template-columns: 4ch 2fr;
 }
 .otp .stop-viewer .route-row .header .route-name span {
   display: -webkit-box;
@@ -153,11 +153,10 @@
 }
 .otp .stop-viewer .route-row .header .route-name strong span {
   font-size: inherit;
-  max-width: 120px;
-  min-width: 75px;
-  text-align: left;
+  width: 75px;
+  text-align: center;
+  margin-left: 5px;
   -webkit-line-clamp: 2;
-  width: fit-content;
 }
 
 .otp .stop-viewer .route-row .header .next-trip-preview {
@@ -285,8 +284,7 @@
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-label {
   align-items: center;
-  display: flex;
-  width: 75%;
+  display: flex;  
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .route-name {
@@ -324,12 +322,6 @@
   border: none;
   font-size: 12px;
   color: #000080;
-}
-
-@media (max-width: 450px) {
-  .otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-label {
-    width: 65%;
-  }
 }
 /* end of child-stop-details */
 

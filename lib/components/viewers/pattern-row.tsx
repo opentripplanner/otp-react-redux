@@ -73,14 +73,13 @@ class PatternRow extends Component<Props, State> {
 
     const routeName = route.shortName ? route.shortName : route.longName
     const routeColor = getRouteColorBasedOnSettings(route.operator, route)
-    console.log(stopTimes)
-    let style
-    if (routeName && routeName?.length >= 4 && routeName?.length <= 6) {
-      style = { fontSize: '20px' }
-    } else if (routeName && routeName?.length > 7) {
-      style = { fontSize: '16px' }
-    } else {
-      style = { fontSize: '32px' }
+    let fontSize = '32px'
+    if (routeName) {
+      if (routeName?.length >= 4 && routeName?.length <= 6) {
+        fontSize = '20px'
+      } else if (routeName?.length > 7) {
+        fontSize = '16px'
+      }
     }
 
     return (
@@ -95,7 +94,7 @@ class PatternRow extends Component<Props, State> {
         >
           {/* route name */}
           <div className="route-name">
-            <strong style={style}>
+            <strong style={{ fontSize }}>
               <div
                 style={{
                   alignContent: 'center',
