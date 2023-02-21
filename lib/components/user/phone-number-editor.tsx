@@ -100,12 +100,13 @@ const PhoneVerificationForm = (props: VerificationFromProps): JSX.Element => {
   // Formik props
   const { errors, onRequestCode, touched } = props
   const codeErrorState = getErrorStates(props).validationCode
+  const formId = 'phone-verification-form'
 
   return (
     <>
       {/* Set up an empty form here without input, and link inputs using the form id.
           (a submit button within will incorrectly submit the entire page instead of the subform.) */}
-      <Form id="phone-verification-form" noValidate />
+      <Form id={formId} noValidate />
       <FormGroup validationState={codeErrorState}>
         <p>
           <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
@@ -116,7 +117,7 @@ const PhoneVerificationForm = (props: VerificationFromProps): JSX.Element => {
         <ControlStrip>
           <Field
             as={InlineTextInput}
-            form="phone-verification-form"
+            form={formId}
             maxLength={6}
             name="validationCode"
             placeholder="123456"
@@ -128,11 +129,7 @@ const PhoneVerificationForm = (props: VerificationFromProps): JSX.Element => {
 
             // onBlur, onChange, and value are passed automatically by Formik
           />
-          <Button
-            bsStyle="primary"
-            form="phone-verification-form"
-            type="submit"
-          >
+          <Button bsStyle="primary" form={formId} type="submit">
             <FormattedMessage id="components.PhoneNumberEditor.verify" />
           </Button>
           <HelpBlock role="status">

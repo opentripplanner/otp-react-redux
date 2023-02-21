@@ -1,5 +1,3 @@
-// @ts-expect-error Package yup does not have type declarations.
-import * as yup from 'yup'
 import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage } from 'react-intl'
