@@ -1,3 +1,5 @@
+// @ts-expect-error Package yup does not have type declarations.
+import * as yup from 'yup'
 import {
   Label as BsLabel,
   Button,
@@ -6,7 +8,7 @@ import {
   FormGroup,
   HelpBlock
 } from 'react-bootstrap'
-import { Field, FormikProps } from 'formik'
+import { Field, Form, Formik, FormikProps } from 'formik'
 import {
   formatPhoneNumber,
   isPossiblePhoneNumber
@@ -33,6 +35,7 @@ interface Props extends FormikProps<Fields> {
   initialPhoneNumberVerified?: boolean
   intl: IntlShape
   onRequestCode: (code: string) => void
+  onSendPhoneVerificationCode: (code: string) => void
   phoneFormatOptions: {
     countryCode: string
   }
@@ -75,6 +78,76 @@ const FlushLink = styled(Button)`
   padding-left: 0;
   padding-right: 0;
 `
+
+// Because we show the same message for the two validation conditions below,
+// there is no need to pass that message here,
+// that is done in the corresponding `<HelpBlock>` in PhoneNumberEditor.
+const codeValidationSchema = yup.object({
+  validationCode: yup
+    .string()
+    .required()
+    .matches(/^\d{6}$/) // 6-digit string
+})
+
+interface VerificationFromProps extends FormikProps<Fields> {
+  onRequestCode: () => void
+}
+
+/**
+ * Sub-form for entering and submitting a phone validation code.
+ */
+const PhoneVerificationForm = (props: VerificationFromProps): JSX.Element => {
+  // Formik props
+  const { errors, onRequestCode, touched } = props
+  const codeErrorState = getErrorStates(props).validationCode
+
+  return (
+    <>
+      {/* Set up an empty form here without input, and link inputs using the form id.
+          (a submit button within will incorrectly submit the entire page instead of the subform.) */}
+      <Form id="phone-verification-form" noValidate />
+      <FormGroup validationState={codeErrorState}>
+        <p>
+          <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
+        </p>
+        <ControlLabel>
+          <FormattedMessage id="components.PhoneNumberEditor.verificationCode" />
+        </ControlLabel>
+        <ControlStrip>
+          <Field
+            as={InlineTextInput}
+            form="phone-verification-form"
+            maxLength={6}
+            name="validationCode"
+            placeholder="123456"
+            // HACK: <input type='tel'> triggers the numerical keypad on mobile devices, and otherwise
+            // behaves like <input type='text'> with support of leading zeros and the maxLength prop.
+            // <input type='number'> causes values to be stored as Number, resulting in
+            // leading zeros to be invalid and stripped upon submission.
+            type="tel"
+
+            // onBlur, onChange, and value are passed automatically by Formik
+          />
+          <Button
+            bsStyle="primary"
+            form="phone-verification-form"
+            type="submit"
+          >
+            <FormattedMessage id="components.PhoneNumberEditor.verify" />
+          </Button>
+          <HelpBlock role="status">
+            {touched.validationCode && errors.validationCode && (
+              <FormattedMessage id="components.PhoneNumberEditor.invalidCode" />
+            )}
+          </HelpBlock>
+        </ControlStrip>
+        <FlushLink bsStyle="link" onClick={onRequestCode}>
+          <FormattedMessage id="components.PhoneNumberEditor.requestNewCode" />
+        </FlushLink>
+      </FormGroup>
+    </>
+  )
+}
 
 /**
  * Sub-component that handles phone number and validation code editing and validation intricacies.
@@ -182,11 +255,10 @@ class PhoneNumberEditor extends Component<Props, State> {
 
   render() {
     const {
-      errors, // Formik prop
       initialPhoneNumber,
       intl,
-      phoneFormatOptions,
-      touched // Formik prop
+      onSendPhoneVerificationCode,
+      phoneFormatOptions
     } = this.props
     const { isEditing, isSubmitted, newPhoneNumber } = this.state
     const isPending = isSubmitted || this._isPhoneNumberPending()
@@ -201,7 +273,6 @@ class PhoneNumberEditor extends Component<Props, State> {
     const isPhoneInvalid = !isPossiblePhoneNumber(newPhoneNumber)
     const showPhoneError = isPhoneInvalid && !isBlank(newPhoneNumber)
     const phoneErrorState = showPhoneError ? 'error' : null
-    const codeErrorState = getErrorStates(this.props).validationCode
 
     return (
       <>
@@ -281,45 +352,22 @@ class PhoneNumberEditor extends Component<Props, State> {
         )}
 
         {isPending && !isEditing && (
-          <FormGroup validationState={codeErrorState}>
-            <p>
-              <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
-            </p>
-            <ControlLabel>
-              <FormattedMessage id="components.PhoneNumberEditor.verificationCode" />
-            </ControlLabel>
-            <ControlStrip>
-              <Field
-                as={InlineTextInput}
-                form="phone-verification-form"
-                maxLength={6}
-                name="validationCode"
-                placeholder="123456"
-                // HACK: <input type='tel'> triggers the numerical keypad on mobile devices, and otherwise
-                // behaves like <input type='text'> with support of leading zeros and the maxLength prop.
-                // <input type='number'> causes values to be stored as Number, resulting in
-                // leading zeros to be invalid and stripped upon submission.
-                type="tel"
-
-                // onBlur, onChange, and value are passed automatically by Formik
-              />
-              <Button
-                bsStyle="primary"
-                form="phone-verification-form"
-                type="submit"
-              >
-                <FormattedMessage id="components.PhoneNumberEditor.verify" />
-              </Button>
-              <HelpBlock role="status">
-                {touched.validationCode && errors.validationCode && (
-                  <FormattedMessage id="components.PhoneNumberEditor.invalidCode" />
-                )}
-              </HelpBlock>
-            </ControlStrip>
-            <FlushLink bsStyle="link" onClick={this._handleRequestCode}>
-              <FormattedMessage id="components.PhoneNumberEditor.requestNewCode" />
-            </FlushLink>
-          </FormGroup>
+          <Formik
+            initialValues={{ validationCode: '' }}
+            onSubmit={onSendPhoneVerificationCode}
+            validationSchema={codeValidationSchema}
+          >
+            {
+              // Pass Formik props to the component rendered so Formik can manage its validation.
+              // (The validation for this component is independent of the validation set in UserAccountScreen.)
+              (formikProps) => (
+                <PhoneVerificationForm
+                  {...formikProps}
+                  onRequestCode={this._handleRequestCode}
+                />
+              )
+            }
+          </Formik>
         )}
       </>
     )
