@@ -172,7 +172,7 @@ class LiveStopTimes extends Component<Props, State> {
       const daysPastFirstService =
         (serviceDay - firstDayOfService) / ONE_DAY_IN_SECONDS
 
-      // Create a seperate array for each service day
+      // Create a separate array for each service day
       routesByDay[daysPastFirstService]
         ? routesByDay[daysPastFirstService].push(route)
         : routesByDay.push([route])
@@ -180,20 +180,20 @@ class LiveStopTimes extends Component<Props, State> {
 
     return (
       <>
-        <div>
+        <div className="departures">
           {routesByDay.length > 0 && (
             <div className="list-container">
               {routesByDay.map((routes: any) => {
                 const { serviceDay } = routes[0].times[0]
                 return (
-                  <div key={routes.id}>
+                  <div className="day-container" key={routes.id}>
                     {/* If the service day is not today, add a label */}
                     {!isSameDay(
                       // service day has to be converted to milliseconds
                       serviceDay * 1000,
                       utcToZonedTime(Date.now(), homeTimezone)
                     ) && (
-                      <span>
+                      <p>
                         <FormattedDayOfWeek
                           // 'iiii' returns the long ISO day of the week (independent of browser locale).
                           // See https://date-fns.org/v2.28.0/docs/format
@@ -201,7 +201,7 @@ class LiveStopTimes extends Component<Props, State> {
                             timeZone: homeTimezone
                           }).toLowerCase()}
                         />
-                      </span>
+                      </p>
                     )}
                     <ul className="route-row-container">
                       {routes.map((time: any) => {

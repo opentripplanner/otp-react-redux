@@ -7,7 +7,7 @@ import { ComponentContext } from '../../util/contexts'
 import {
   generateFakeLegForRouteRenderer,
   getRouteColorBasedOnSettings,
-  stopTimeComparator
+  routeNameFontSize
 } from '../../util/viewer'
 import { Pattern, Time } from '../util/types'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
@@ -91,7 +91,7 @@ class PatternRow extends Component<Props, State> {
         >
           {/* route name */}
           <div className="route-name">
-            <strong style={{ fontSize }}>
+            <strong style={{ fontSize: routeNameFontSize(routeName) }}>
               <div
                 style={{
                   alignContent: 'center',

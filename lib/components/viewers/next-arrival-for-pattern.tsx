@@ -7,6 +7,7 @@ import { ComponentContext } from '../../util/contexts'
 import {
   extractHeadsignFromPattern,
   generateFakeLegForRouteRenderer,
+  routeNameFontSize,
   stopTimeComparator
 } from '../../util/viewer'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
@@ -84,7 +85,10 @@ function NextArrivalForPattern({
     >
       {/* route name */}
       <div className="next-arrival-label" title={title}>
-        <span className="route-name">
+        <span
+          className="route-name"
+          style={{ fontSize: routeNameFontSize(routeName) }}
+        >
           <RouteRenderer
             isOnColoredBackground={route.operator?.colorMode?.includes('gtfs')}
             // All GTFS bg colors look strange with the top border
