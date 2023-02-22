@@ -25,6 +25,7 @@ import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import SpanWithSpace from '../util/span-with-space'
 
 import { labelStyle } from './styled'
+import PhoneVerificationForm from './phone-verification-form'
 
 interface Fields {
   validationCode: string
@@ -90,74 +91,6 @@ const phoneValidationSchema = yup.object({
       (value) => value && isPossiblePhoneNumber(value)
     )
 })
-
-// Because we show the same message for the two validation conditions below,
-// there is no need to pass that message here,
-// that is done in the corresponding `<HelpBlock>` in PhoneNumberEditor.
-const codeValidationSchema = yup.object({
-  validationCode: yup
-    .string()
-    .required()
-    .matches(/^\d{6}$/) // 6-digit string
-})
-
-interface VerificationFromProps extends FormikProps<Fields> {
-  onRequestCode: () => void
-}
-
-/**
- * Sub-form for entering and submitting a phone validation code.
- */
-const PhoneVerificationForm = (props: VerificationFromProps): JSX.Element => {
-  // Formik props
-  const { errors, onRequestCode, touched } = props
-  const codeErrorState = getErrorStates(props).validationCode
-  const isInvalid = !!(touched.validationCode && errors.validationCode)
-  const formId = 'phone-verification-form'
-
-  return (
-    <FormGroup validationState={codeErrorState}>
-      {/* Set up an empty Formik Form without inputs, and link inputs using the form id.
-          (A submit button within will incorrectly submit the entire page instead of just the subform.)
-          The containing Formik element will watch submission of the form. */}
-      <Form id={formId} noValidate />
-      <p>
-        <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
-      </p>
-      <ControlLabel htmlFor="validation-code">
-        <FormattedMessage id="components.PhoneNumberEditor.verificationCode" />
-      </ControlLabel>
-      <ControlStrip>
-        <Field
-          aria-invalid={isInvalid}
-          aria-required
-          as={InlineTextInput}
-          form={formId}
-          id="validation-code"
-          maxLength={6}
-          name="validationCode"
-          placeholder="123456"
-          // HACK: <input type='tel'> triggers the numerical keypad on mobile devices, and otherwise
-          // behaves like <input type='text'> with support of leading zeros and the maxLength prop.
-          // <input type='number'> causes values to be stored as Number, resulting in
-          // leading zeros to be invalid and stripped upon submission.
-          type="tel"
-        />
-        <Button bsStyle="primary" form={formId} type="submit">
-          <FormattedMessage id="components.PhoneNumberEditor.verify" />
-        </Button>
-        <HelpBlock role="alert">
-          {isInvalid && (
-            <FormattedMessage id="components.PhoneNumberEditor.invalidCode" />
-          )}
-        </HelpBlock>
-      </ControlStrip>
-      <FlushLink bsStyle="link" onClick={onRequestCode}>
-        <FormattedMessage id="components.PhoneNumberEditor.requestNewCode" />
-      </FlushLink>
-    </FormGroup>
-  )
-}
 
 /**
  * Sub-component that handles phone number and validation code editing and validation intricacies.
@@ -388,24 +321,10 @@ class PhoneNumberEditor extends Component<Props, State> {
         )}
 
         {isPending && !isEditing && (
-          <Formik
-            initialValues={{ validationCode: '' }}
+          <PhoneVerificationForm
+            onRequestCode={this._handleRequestCode}
             onSubmit={onSendPhoneVerificationCode}
-            validateOnBlur
-            validateOnChange={false}
-            validationSchema={codeValidationSchema}
-          >
-            {
-              // Pass Formik props to the component rendered so Formik can manage its validation.
-              // (The validation for this component is independent of the validation set in UserAccountScreen.)
-              (formikProps) => (
-                <PhoneVerificationForm
-                  {...formikProps}
-                  onRequestCode={this._handleRequestCode}
-                />
-              )
-            }
-          </Formik>
+          />
         )}
       </>
     )
