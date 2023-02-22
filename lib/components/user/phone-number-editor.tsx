@@ -14,8 +14,10 @@ import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import SpanWithSpace from '../util/span-with-space'
 
 import { ControlStrip, labelStyle, phoneFieldStyle } from './styled'
-import PhoneChangeForm from './phone-change-form'
-import PhoneVerificationForm from './phone-verification-form'
+import PhoneChangeForm, { PhoneChangeSubmitHandler } from './phone-change-form'
+import PhoneVerificationForm, {
+  PhoneVerificationSubmitHandler
+} from './phone-verification-form'
 
 interface Fields {
   validationCode: string
@@ -25,8 +27,8 @@ interface Props extends FormikProps<Fields> {
   initialPhoneNumber?: string
   initialPhoneNumberVerified?: boolean
   intl: IntlShape
-  onRequestCode: (code: string) => void
-  onSendPhoneVerificationCode: (code: string) => void
+  onRequestCode: PhoneChangeSubmitHandler
+  onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
   phoneFormatOptions: {
     countryCode: string
   }
@@ -156,7 +158,6 @@ class PhoneNumberEditor extends Component<Props, State> {
   render() {
     const {
       initialPhoneNumber,
-      intl,
       onSendPhoneVerificationCode,
       phoneFormatOptions
     } = this.props

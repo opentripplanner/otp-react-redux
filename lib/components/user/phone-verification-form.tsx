@@ -39,9 +39,11 @@ interface Fields {
   validationCode: string
 }
 
+export type PhoneVerificationSubmitHandler = (values: Fields) => void
+
 interface Props {
   onRequestCode: () => void
-  onSubmit: (values: Fields) => void
+  onSubmit: PhoneVerificationSubmitHandler
 }
 
 /**

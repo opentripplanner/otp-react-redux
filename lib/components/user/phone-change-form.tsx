@@ -9,7 +9,7 @@ import {
 } from 'react-phone-number-input'
 // @ts-expect-error Package does not have type declaration
 import Input from 'react-phone-number-input/input'
-import React, { useCallback } from 'react'
+import React, { KeyboardEvent, useCallback } from 'react'
 import styled from 'styled-components'
 
 import { ControlStrip, phoneFieldStyle } from './styled'
@@ -27,7 +27,7 @@ const phoneValidationSchema = yup.object({
     .test(
       'phone-number-format',
       'invalidPhoneNumber', // not directly shown.
-      (value) => value && isPossiblePhoneNumber(value)
+      (value?: string) => value && isPossiblePhoneNumber(value)
     )
 })
 
@@ -35,9 +35,11 @@ interface Fields {
   phoneNumber: string
 }
 
+export type PhoneChangeSubmitHandler = (values: Fields) => void
+
 interface Props {
   onCancel: () => void
-  onSubmit: (code: string) => void
+  onSubmit: PhoneChangeSubmitHandler
   phoneFormatOptions: {
     countryCode: string
   }
@@ -60,7 +62,7 @@ const InnerPhoneChangeForm = ({
   const formId = 'phone-change-form'
   const showPhoneError = errors.phoneNumber && touched.phoneNumber
 
-  const handleEscapeKey = (e: KeyboardEvent) => {
+  const handleEscapeKey = (e: KeyboardEvent<FormGroup>) => {
     if (e.key === 'Escape' && typeof onCancel === 'function') {
       // Cancel editing when user presses ESC from the phone number field.
       onCancel()
@@ -82,7 +84,7 @@ const InnerPhoneChangeForm = ({
   return (
     <FormGroup
       onKeyDown={handleEscapeKey}
-      validationState={showPhoneError && 'error'}
+      validationState={showPhoneError ? 'error' : null}
     >
       {/* Set up an empty Formik Form without inputs, and link inputs using the form id.
           (A submit button within will incorrectly submit the entire page instead of just the subform.)
@@ -152,7 +154,9 @@ const PhoneChangeForm = (props: Props): JSX.Element => {
       validateOnChange={false}
       validationSchema={phoneValidationSchema}
     >
-      {(formikProps) => <InnerPhoneChangeForm {...formikProps} {...props} />}
+      {(formikProps: FormikProps<Fields>) => (
+        <InnerPhoneChangeForm {...formikProps} {...props} />
+      )}
     </Formik>
   )
 }
