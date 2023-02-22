@@ -1,9 +1,6 @@
 import { Label as BsLabel, Button, FormGroup } from 'react-bootstrap'
-import {
-  formatPhoneNumber,
-  isPossiblePhoneNumber
-  // @ts-expect-error Package does not have type declaration
-} from 'react-phone-number-input'
+// @ts-expect-error Package does not have type declaration
+import { formatPhoneNumber } from 'react-phone-number-input'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { FormikProps } from 'formik'
 import React, { Component, Fragment } from 'react'
@@ -80,12 +77,6 @@ class PhoneNumberEditor extends Component<Props, State> {
     })
   }
 
-  _handleNewPhoneNumberChange = (newPhoneNumber = '') => {
-    this.setState({
-      newPhoneNumber
-    })
-  }
-
   _handleCancelEditNumber = () => {
     this.setState({
       isEditing: false,
@@ -93,35 +84,26 @@ class PhoneNumberEditor extends Component<Props, State> {
     })
   }
 
-  _handlePhoneNumberKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      // Cancel editing when user presses ESC from the phone number field.
-      this._handleCancelEditNumber()
-    }
-  }
-
   /**
    * Send phone verification request with the entered values.
    */
-  _handleRequestCode = () => {
+  _handleRequestCode = (values) => {
     const { initialPhoneNumber, initialPhoneNumberVerified, onRequestCode } =
       this.props
-    const { newPhoneNumber } = this.state
+    const { phoneNumber } = values
 
     this._handleCancelEditNumber()
 
     // Send the SMS request if one of these conditions apply:
-    // - the user entered a valid phone number different than their current verified number,
+    // - the user entered a (valid) phone number different than their current verified number,
     // - the user clicks 'Request new code' for an already pending number
     //   (they could have refreshed the page in between).
     let submittedNumber
-
     if (
-      newPhoneNumber &&
-      isPossiblePhoneNumber(newPhoneNumber) &&
-      !(newPhoneNumber === initialPhoneNumber && initialPhoneNumberVerified)
+      phoneNumber &&
+      !(phoneNumber === initialPhoneNumber && initialPhoneNumberVerified)
     ) {
-      submittedNumber = newPhoneNumber
+      submittedNumber = phoneNumber
     } else if (this._isPhoneNumberPending()) {
       submittedNumber = initialPhoneNumber
     }
