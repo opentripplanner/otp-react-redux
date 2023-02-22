@@ -1,30 +1,19 @@
-// @ts-expect-error Package yup does not have type declarations.
-import * as yup from 'yup'
-import {
-  Label as BsLabel,
-  Button,
-  ControlLabel,
-  FormControl,
-  FormGroup,
-  HelpBlock
-} from 'react-bootstrap'
-import { Field, Form, Formik, FormikProps } from 'formik'
+import { Label as BsLabel, Button, FormGroup } from 'react-bootstrap'
 import {
   formatPhoneNumber,
   isPossiblePhoneNumber
   // @ts-expect-error Package does not have type declaration
 } from 'react-phone-number-input'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-// @ts-expect-error Package does not have type declaration
-import Input from 'react-phone-number-input/input'
-import React, { Component, Fragment, useCallback } from 'react'
-import styled, { css } from 'styled-components'
+import { FormikProps } from 'formik'
+import React, { Component, Fragment } from 'react'
+import styled from 'styled-components'
 
-import { getErrorStates, isBlank } from '../../util/ui'
+import { isBlank } from '../../util/ui'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import SpanWithSpace from '../util/span-with-space'
 
-import { labelStyle } from './styled'
+import { ControlStrip, labelStyle, phoneFieldStyle } from './styled'
 import PhoneChangeForm from './phone-change-form'
 import PhoneVerificationForm from './phone-verification-form'
 
@@ -51,47 +40,13 @@ interface State {
 }
 
 // Styles
-const ControlStrip = styled.span`
-  display: block;
-  > * {
-    margin-right: 4px;
-  }
-`
-const phoneFieldCss = css`
-  display: inline-block;
-  vertical-align: middle;
-  width: 14em;
-`
-const InlineTextInput = styled(FormControl)`
-  ${phoneFieldCss}
-`
 const InlineStatic = styled.span`
-  ${phoneFieldCss}
-`
-const InlinePhoneInput = styled(Input)`
-  ${phoneFieldCss}
+  ${phoneFieldStyle}
 `
 const FakeLabel = styled.span`
   display: block;
   ${labelStyle}
 `
-
-const FlushLink = styled(Button)`
-  padding-left: 0;
-  padding-right: 0;
-`
-
-// The validation schema fo phone numbers - relies on the react-phone-number-input library.
-const phoneValidationSchema = yup.object({
-  phoneNumber: yup
-    .string()
-    .required()
-    .test(
-      'phone-number-format',
-      'invalidPhoneNumber', // not directly shown.
-      (value) => value && isPossiblePhoneNumber(value)
-    )
-})
 
 /**
  * Sub-component that handles phone number and validation code editing and validation intricacies.

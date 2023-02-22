@@ -10,25 +10,14 @@ import {
 import { Field, Form, Formik } from 'formik'
 import { FormattedMessage } from 'react-intl'
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import { getErrorStates } from '../../util/ui'
 
-// Styles
-// TODO: move to common file.
-const ControlStrip = styled.span`
-  display: block;
-  > * {
-    margin-right: 4px;
-  }
-`
-const phoneFieldCss = css`
-  display: inline-block;
-  vertical-align: middle;
-  width: 14em;
-`
+import { ControlStrip, phoneFieldStyle } from './styled'
+
 const InlineTextInput = styled(FormControl)`
-  ${phoneFieldCss}
+  ${phoneFieldStyle}
 `
 
 const FlushLink = styled(Button)`

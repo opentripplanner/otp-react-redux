@@ -1,12 +1,6 @@
 // @ts-expect-error Package yup does not have type declarations.
 import * as yup from 'yup'
-import {
-  Button,
-  ControlLabel,
-  FormControl,
-  FormGroup,
-  HelpBlock
-} from 'react-bootstrap'
+import { Button, ControlLabel, FormGroup, HelpBlock } from 'react-bootstrap'
 import { Form, Formik, FormikProps } from 'formik'
 import { FormattedMessage, useIntl } from 'react-intl'
 import {
@@ -16,39 +10,13 @@ import {
 // @ts-expect-error Package does not have type declaration
 import Input from 'react-phone-number-input/input'
 import React, { useCallback } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-import { labelStyle } from './styled'
+import { ControlStrip, phoneFieldStyle } from './styled'
 
 // Styles
-const ControlStrip = styled.span`
-  display: block;
-  > * {
-    margin-right: 4px;
-  }
-`
-const phoneFieldCss = css`
-  display: inline-block;
-  vertical-align: middle;
-  width: 14em;
-`
-const InlineTextInput = styled(FormControl)`
-  ${phoneFieldCss}
-`
-const InlineStatic = styled.span`
-  ${phoneFieldCss}
-`
 const InlinePhoneInput = styled(Input)`
-  ${phoneFieldCss}
-`
-const FakeLabel = styled.span`
-  display: block;
-  ${labelStyle}
-`
-
-const FlushLink = styled(Button)`
-  padding-left: 0;
-  padding-right: 0;
+  ${phoneFieldStyle}
 `
 
 // The validation schema fo phone numbers - relies on the react-phone-number-input library.
