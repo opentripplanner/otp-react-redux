@@ -6,9 +6,10 @@ import styled from 'styled-components'
 
 import ButtonGroup from '../util/button-group'
 
-import { PhoneChangeSubmitHandler } from './phone-change-form'
 import { PhoneVerificationSubmitHandler } from './phone-verification-form'
-import PhoneNumberEditor from './phone-number-editor'
+import PhoneNumberEditor, {
+  PhoneCodeRequestHandler
+} from './phone-number-editor'
 
 interface Fields {
   notificationChannel: string
@@ -20,7 +21,7 @@ interface Props extends FormikProps<Fields> {
     isPhoneNumberVerified?: boolean
     phoneNumber?: string
   }
-  onRequestPhoneVerificationCode: PhoneChangeSubmitHandler
+  onRequestPhoneVerificationCode: PhoneCodeRequestHandler
   onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
   phoneFormatOptions: {
     countryCode: string

@@ -15,6 +15,7 @@ import styled from 'styled-components'
 import { getErrorStates } from '../../util/ui'
 
 import { ControlStrip, phoneFieldStyle } from './styled'
+import { PhoneChangeSubmitHandler } from './phone-change-form'
 
 const InlineTextInput = styled(FormControl)`
   ${phoneFieldStyle}
@@ -42,7 +43,7 @@ interface Fields {
 export type PhoneVerificationSubmitHandler = (values: Fields) => void
 
 interface Props {
-  onRequestCode: () => void
+  onRequestCode: PhoneChangeSubmitHandler
   onSubmit: PhoneVerificationSubmitHandler
 }
 

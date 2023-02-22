@@ -9,7 +9,7 @@ import {
 } from 'react-phone-number-input'
 // @ts-expect-error Package does not have type declaration
 import Input from 'react-phone-number-input/input'
-import React, { KeyboardEvent, useCallback } from 'react'
+import React, { KeyboardEvent, MouseEvent, useCallback } from 'react'
 import styled from 'styled-components'
 
 import { ControlStrip, phoneFieldStyle } from './styled'
@@ -35,7 +35,9 @@ interface Fields {
   phoneNumber: string
 }
 
-export type PhoneChangeSubmitHandler = (values: Fields) => void
+export type PhoneChangeSubmitHandler = (
+  values: Fields | MouseEvent<Button>
+) => void
 
 interface Props {
   onCancel: () => void

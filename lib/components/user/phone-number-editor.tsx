@@ -2,7 +2,6 @@ import { Label as BsLabel, Button, FormGroup } from 'react-bootstrap'
 // @ts-expect-error Package does not have type declaration
 import { formatPhoneNumber } from 'react-phone-number-input'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-import { FormikProps } from 'formik'
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 
@@ -16,20 +15,17 @@ import PhoneVerificationForm, {
   PhoneVerificationSubmitHandler
 } from './phone-verification-form'
 
-interface Fields {
-  validationCode: string
-}
+export type PhoneCodeRequestHandler = (phoneNumber: string) => void
 
-interface Props extends FormikProps<Fields> {
+interface Props {
   initialPhoneNumber?: string
   initialPhoneNumberVerified?: boolean
   intl: IntlShape
-  onRequestCode: PhoneChangeSubmitHandler
+  onRequestCode: PhoneCodeRequestHandler
   onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
   phoneFormatOptions: {
     countryCode: string
   }
-  resetForm: () => void
 }
 
 interface State {
@@ -80,10 +76,10 @@ class PhoneNumberEditor extends Component<Props, State> {
   /**
    * Send phone verification request with the entered values.
    */
-  _handleRequestCode = (values) => {
+  _handleRequestCode: PhoneChangeSubmitHandler = (values) => {
     const { initialPhoneNumber, initialPhoneNumberVerified, onRequestCode } =
       this.props
-    const { phoneNumber } = values
+    const phoneNumber = 'phoneNumber' in values ? values.phoneNumber : null
 
     this._handleCancelEditNumber()
 
@@ -103,7 +99,7 @@ class PhoneNumberEditor extends Component<Props, State> {
 
     if (submittedNumber) {
       // TODO: disable submit while submitting.
-      this.setState({ isSubmitted: true })
+      this.setState({ submittedNumber })
       onRequestCode(submittedNumber)
     }
   }
@@ -122,7 +118,6 @@ class PhoneNumberEditor extends Component<Props, State> {
         prevProps.initialPhoneNumberVerified
     ) {
       this._handleCancelEditNumber()
-      this.props.resetForm()
     }
   }
 
