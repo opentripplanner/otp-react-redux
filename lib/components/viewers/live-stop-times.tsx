@@ -2,7 +2,6 @@ import { format, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage, FormattedTime } from 'react-intl'
 import { Redo } from '@styled-icons/fa-solid/Redo'
 import { TransitOperator } from '@opentripplanner/types'
-import addDays from 'date-fns/addDays'
 import coreUtils from '@opentripplanner/core-utils'
 
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
@@ -17,7 +16,6 @@ import {
 } from '../../util/viewer'
 import { IconWithText } from '../util/styledIcon'
 import SpanWithSpace from '../util/span-with-space'
-import type { Time } from '../util/types'
 
 import AmenitiesPanel from './amenities-panel'
 import PatternRow from './pattern-row'
@@ -155,138 +153,82 @@ class LiveStopTimes extends Component<Props, State> {
     const routeTimes = Object.values(stopTimesByPattern)
       .filter(({ times }) => times.length !== 0)
       .sort(patternComparator)
+      .map((route) => {
+        return {
+          ...route,
+          times: route.times.concat()?.sort(stopTimeComparator)
+        }
+      })
       .filter(({ pattern, route }) =>
         routeIsValid(route, getRouteIdForPattern(pattern))
       )
 
-    // Determine if arrival occurs on different day, making sure to account for
-    // any extra days added to the service day if it arrives after midnight. Note:
-    // this can handle the rare (and non-existent?) case where an arrival occurs
-    // 48:00 hours (or more) from the start of the service day.
+    const routesByDay: any = []
+    const firstDayOfService = routeTimes[0].times[0].serviceDay
 
-    const now = utcToZonedTime(Date.now(), homeTimezone)
-    const tomorrow = addDays(now, 1)
-    const dayAfterTomorrow = addDays(now, 2)
+    // Loop through all routes, and sort based on that route's next available day of service.
+    routeTimes.forEach((route) => {
+      const { serviceDay } = route.times[0]
+      const daysPastFirstService =
+        (serviceDay - firstDayOfService) / ONE_DAY_IN_SECONDS
 
-    const findTimes = (times: any, date: any): any[] => {
-      return times
-        .map((route: any) => {
-          return {
-            ...route,
-            times: route.times.filter((time: Time) => {
-              const departureTime = time.realtimeDeparture
-              const serviceDay = utcToZonedTime(
-                new Date(time.serviceDay * 1000),
-                homeTimezone
-              )
-              const departureTimeRemainder = departureTime % ONE_DAY_IN_SECONDS
-              const daysAfterServiceDay =
-                (departureTime - departureTimeRemainder) / ONE_DAY_IN_SECONDS
-              const departureDay = addDays(serviceDay, daysAfterServiceDay)
-              return isSameDay(date, departureDay)
-            })
-          }
-        })
-        .filter((route: any) => route.times.length > 0)
-    }
-
-    const todayTimes = findTimes(routeTimes, now)
-    const tomorrowTimes = findTimes(routeTimes, tomorrow)
-    const dayAfterTomorrowTimes = findTimes(routeTimes, dayAfterTomorrow)
+      // Create a seperate array for each service day
+      routesByDay[daysPastFirstService]
+        ? routesByDay[daysPastFirstService].push(route)
+        : routesByDay.push([route])
+    })
 
     return (
       <>
         <div>
-          {todayTimes.length > 0 && (
+          {routesByDay.length > 0 && (
             <div className="list-container">
-              <ul className="route-row-container">
-                {todayTimes.map(({ id, pattern, route, times }) => {
-                  // Only add pattern if route info is returned by OTP.
-                  return (
-                    <PatternRow
-                      homeTimezone={homeTimezone}
-                      key={id}
-                      pattern={pattern}
-                      route={{
-                        ...route,
-                        operator: transitOperators.find(
-                          (o: TransitOperator) => o.agencyId === route.agencyId
+              {routesByDay.map((routes: any) => {
+                const { serviceDay } = routes[0].times[0]
+                return (
+                  <div key={routes.id}>
+                    {/* If the service day is not today, add a label */}
+                    {!isSameDay(
+                      // service day has to be converted to milliseconds
+                      serviceDay * 1000,
+                      utcToZonedTime(Date.now(), homeTimezone)
+                    ) && (
+                      <span>
+                        <FormattedDayOfWeek
+                          // 'iiii' returns the long ISO day of the week (independent of browser locale).
+                          // See https://date-fns.org/v2.28.0/docs/format
+                          day={format(serviceDay * 1000, 'iiii', {
+                            timeZone: homeTimezone
+                          }).toLowerCase()}
+                        />
+                      </span>
+                    )}
+                    <ul className="route-row-container">
+                      {routes.map((time: any) => {
+                        const { id, pattern, route, times } = time
+                        return (
+                          <PatternRow
+                            homeTimezone={homeTimezone}
+                            key={id}
+                            pattern={pattern}
+                            route={{
+                              ...route,
+                              operator: transitOperators.find(
+                                (o: TransitOperator) =>
+                                  o.agencyId === route.agencyId
+                              )
+                            }}
+                            showOperatorLogo={showOperatorLogo}
+                            stopTimes={times}
+                            stopViewerArriving={stopViewerArriving}
+                            stopViewerConfig={stopViewerConfig}
+                          />
                         )
-                      }}
-                      showOperatorLogo={showOperatorLogo}
-                      stopTimes={times}
-                      stopViewerArriving={stopViewerArriving}
-                      stopViewerConfig={stopViewerConfig}
-                    />
-                  )
-                })}
-              </ul>
-            </div>
-          )}
-          {tomorrowTimes.length > 0 && (
-            <div className="list-container">
-              <p className="day-label">
-                <FormattedDayOfWeek
-                  // 'iiii' returns the long ISO day of the week (independent of browser locale).
-                  // See https://date-fns.org/v2.28.0/docs/format
-                  day={format(tomorrow, 'iiii', {
-                    timeZone: homeTimezone
-                  }).toLowerCase()}
-                />
-              </p>
-              <ul className="route-row-container">
-                {tomorrowTimes.map(({ id, pattern, route, times }) => {
-                  return (
-                    <PatternRow
-                      homeTimezone={homeTimezone}
-                      key={id}
-                      pattern={pattern}
-                      route={{
-                        ...route,
-                        operator: transitOperators.find(
-                          (o: TransitOperator) => o.agencyId === route.agencyId
-                        )
-                      }}
-                      showOperatorLogo={showOperatorLogo}
-                      stopTimes={times}
-                      stopViewerArriving={stopViewerArriving}
-                      stopViewerConfig={stopViewerConfig}
-                    />
-                  )
-                })}
-              </ul>
-            </div>
-          )}
-          {dayAfterTomorrowTimes.length > 0 && (
-            <div className="list-container">
-              <p className="day-label">
-                <FormattedDayOfWeek
-                  day={format(dayAfterTomorrow, 'iiii', {
-                    timeZone: homeTimezone
-                  }).toLowerCase()}
-                />
-              </p>
-              <ul className="route-row-container">
-                {dayAfterTomorrowTimes.map(({ id, pattern, route, times }) => {
-                  return (
-                    <PatternRow
-                      homeTimezone={homeTimezone}
-                      key={id}
-                      pattern={pattern}
-                      route={{
-                        ...route,
-                        operator: transitOperators.find(
-                          (o: TransitOperator) => o.agencyId === route.agencyId
-                        )
-                      }}
-                      showOperatorLogo={showOperatorLogo}
-                      stopTimes={times}
-                      stopViewerArriving={stopViewerArriving}
-                      stopViewerConfig={stopViewerConfig}
-                    />
-                  )
-                })}
-              </ul>
+                      })}
+                    </ul>
+                  </div>
+                )
+              })}
             </div>
           )}
         </div>

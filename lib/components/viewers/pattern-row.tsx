@@ -59,12 +59,9 @@ class PatternRow extends Component<Props, State> {
     const hasStopTimes = stopTimes && stopTimes.length > 0
     if (hasStopTimes) {
       sortedStopTimes = stopTimes
-        .concat()
-        .sort(stopTimeComparator)
         // We request only x departures per pattern, but the patterns are merged
         // according to shared headsigns, so we need to slice the stop times
         // here as well to ensure only x times are shown per route/headsign combo.
-        // This is applied after the sort, so we're keeping the soonest departures.
         .slice(0, stopViewerConfig.numberOfDepartures)
     } else {
       // Do not render pattern row if it has no stop times.
