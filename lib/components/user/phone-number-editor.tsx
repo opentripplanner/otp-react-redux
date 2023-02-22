@@ -22,7 +22,7 @@ interface Props {
   initialPhoneNumberVerified?: boolean
   intl: IntlShape
   onRequestCode: PhoneCodeRequestHandler
-  onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
+  onSubmitCode: PhoneVerificationSubmitHandler
   phoneFormatOptions: {
     countryCode: string
   }
@@ -122,11 +122,7 @@ class PhoneNumberEditor extends Component<Props, State> {
   }
 
   render() {
-    const {
-      initialPhoneNumber,
-      onSendPhoneVerificationCode,
-      phoneFormatOptions
-    } = this.props
+    const { initialPhoneNumber, onSubmitCode, phoneFormatOptions } = this.props
     const { isEditing, submittedNumber } = this.state
     const hasSubmittedNumber = !isBlank(submittedNumber)
     const isPending = hasSubmittedNumber || this._isPhoneNumberPending()
@@ -175,7 +171,7 @@ class PhoneNumberEditor extends Component<Props, State> {
         {isPending && !isEditing && (
           <PhoneVerificationForm
             onRequestCode={this._handleRequestCode}
-            onSubmit={onSendPhoneVerificationCode}
+            onSubmit={onSubmitCode}
           />
         )}
       </>

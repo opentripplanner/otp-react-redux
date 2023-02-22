@@ -107,7 +107,7 @@ const NotificationPrefsPane = ({
             initialPhoneNumber={phoneNumber}
             initialPhoneNumberVerified={isPhoneNumberVerified}
             onRequestCode={onRequestPhoneVerificationCode}
-            onSendPhoneVerificationCode={onSendPhoneVerificationCode}
+            onSubmitCode={onSendPhoneVerificationCode}
             phoneFormatOptions={phoneFormatOptions}
           />
         )}

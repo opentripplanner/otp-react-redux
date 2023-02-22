@@ -20,6 +20,13 @@ const InlinePhoneInput = styled(Input)`
 `
 
 // The validation schema fo phone numbers - relies on the react-phone-number-input library.
+// Supports the following cases:
+// - First time entering a phone number/validation code (blank value, not modified)
+//   => no color, no feedback indication.
+// - Typing backspace all the way to erase a number/code (blank value, modified)
+//   => invalid (red) alert.
+// - Typing a phone number that doesn't match the configured phoneNumberRegEx
+//   => invalid (red) alert.
 const phoneValidationSchema = yup.object({
   phoneNumber: yup
     .string()
@@ -88,6 +95,7 @@ const InnerPhoneChangeForm = ({
 
   return (
     <FormGroup
+      // Handle ESC key from anywhere in this element.
       onKeyDown={handleEscapeKey}
       validationState={showPhoneError ? 'error' : null}
     >
@@ -120,7 +128,6 @@ const InnerPhoneChangeForm = ({
         </Button>
         {
           // Show cancel button only if a phone number is already recorded.
-          // TODO: apply this to ESC key too.
           showCancel && (
             <Button onClick={onCancel}>
               <FormattedMessage id="common.forms.cancel" />
@@ -138,32 +145,20 @@ const InnerPhoneChangeForm = ({
 }
 
 /**
- * Sub-component that handles phone number and validation code editing and validation intricacies.
+ * Sub-component that handles phone number editing and validation.
  */
-const PhoneChangeForm = (props: Props): JSX.Element => {
-  const { onSubmit } = props
-
-  // Here are the states we are dealing with:
-  // - First time entering a phone number/validation code (blank value, not modified)
-  //   => no color, no feedback indication.
-  // - Typing backspace all the way to erase a number/code (blank value, modified)
-  //   => red error.
-  // - Typing a phone number that doesn't match the configured phoneNumberRegEx
-  //   => red error.
-
-  return (
-    <Formik
-      initialValues={{ phoneNumber: '' }}
-      onSubmit={onSubmit}
-      validateOnBlur
-      validateOnChange={false}
-      validationSchema={phoneValidationSchema}
-    >
-      {(formikProps: FormikProps<Fields>) => (
-        <InnerPhoneChangeForm {...formikProps} {...props} />
-      )}
-    </Formik>
-  )
-}
+const PhoneChangeForm = (props: Props): JSX.Element => (
+  <Formik
+    initialValues={{ phoneNumber: '' }}
+    onSubmit={props.onSubmit}
+    validateOnBlur
+    validateOnChange={false}
+    validationSchema={phoneValidationSchema}
+  >
+    {(formikProps: FormikProps<Fields>) => (
+      <InnerPhoneChangeForm {...formikProps} {...props} />
+    )}
+  </Formik>
+)
 
 export default PhoneChangeForm

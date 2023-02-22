@@ -26,9 +26,7 @@ const FlushLink = styled(Button)`
   padding-right: 0;
 `
 
-// Because we show the same message for the two validation conditions below,
-// there is no need to pass that message here,
-// that is done in the corresponding `<HelpBlock>` in PhoneNumberEditor.
+// Validation schema for the phone validation code.
 const codeValidationSchema = yup.object({
   validationCode: yup
     .string()
@@ -62,10 +60,9 @@ const PhoneVerificationForm = ({
     validationSchema={codeValidationSchema}
   >
     {
-      // Pass Formik props to the component rendered so Formik can manage its validation.
-      // (The validation for this component is independent of the validation set in UserAccountScreen.)
+      // Pass Formik props to the component rendered so Formik can manage this form's validation
+      // independently from UserAccountScreen.
       (formikProps) => {
-        // Formik props
         const { errors, touched } = formikProps
         const codeErrorState = getErrorStates(formikProps).validationCode
         const isInvalid = !!(touched.validationCode && errors.validationCode)
@@ -74,8 +71,8 @@ const PhoneVerificationForm = ({
         return (
           <FormGroup validationState={codeErrorState}>
             {/* Set up an empty Formik Form without inputs, and link inputs using the form id.
-                  (A submit button within will incorrectly submit the entire page instead of just the subform.)
-                  The containing Formik element will watch submission of the form. */}
+                (A submit button within will incorrectly submit the entire page instead of just the subform.)
+                The containing Formik element will watch submission of the form. */}
             <Form id={formId} noValidate />
             <p>
               <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
