@@ -62,13 +62,16 @@ const InnerPhoneChangeForm = ({
   const formId = 'phone-change-form'
   const showPhoneError = errors.phoneNumber && touched.phoneNumber
 
-  const handleEscapeKey = (e: KeyboardEvent<FormGroup>) => {
-    if (e.key === 'Escape' && typeof onCancel === 'function') {
-      // Cancel editing when user presses ESC from the phone number field.
-      onCancel()
-      e.preventDefault()
-    }
-  }
+  const handleEscapeKey = useCallback(
+    (e: KeyboardEvent<FormGroup>) => {
+      if (e.key === 'Escape' && showCancel && typeof onCancel === 'function') {
+        // Cancel editing when user presses ESC from the phone number field.
+        onCancel()
+        e.preventDefault()
+      }
+    },
+    [onCancel, showCancel]
+  )
 
   const handlePhoneChange = useCallback(
     (newNumber) =>

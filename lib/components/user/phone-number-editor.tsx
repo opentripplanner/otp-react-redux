@@ -34,8 +34,7 @@ interface Props extends FormikProps<Fields> {
 
 interface State {
   isEditing: boolean
-  isSubmitted: boolean
-  newPhoneNumber: string
+  submittedNumber: string
 }
 
 // Styles
@@ -60,27 +59,21 @@ class PhoneNumberEditor extends Component<Props, State> {
       // For new users, render component in editing state.
       isEditing: isBlank(initialPhoneNumber),
 
-      // Whether the new number was submitted for verification.
-      isSubmitted: false,
-
-      // Holds the new phone number (+15555550123 format) entered by the user.
-      // (This is done outside of Formik because (Phone)Input does not have a
-      // standard onChange event or a simple validity test).
-      newPhoneNumber: ''
+      // Holds the new phone number (+15555550123 format) submitted for verification.
+      submittedNumber: ''
     }
   }
 
   _handleEditNumber = () => {
     this.setState({
-      isEditing: true,
-      newPhoneNumber: ''
+      isEditing: true
     })
   }
 
   _handleCancelEditNumber = () => {
     this.setState({
       isEditing: false,
-      isSubmitted: false
+      submittedNumber: ''
     })
   }
 
@@ -111,12 +104,8 @@ class PhoneNumberEditor extends Component<Props, State> {
     if (submittedNumber) {
       // TODO: disable submit while submitting.
       this.setState({ isSubmitted: true })
-      alert('Change request sent')
-      // onRequestCode(submittedNumber)
+      onRequestCode(submittedNumber)
     }
-
-    // Disable automatic form submission (especially if there are errors).
-    e.preventDefault()
   }
 
   _isPhoneNumberPending = () => {
@@ -143,8 +132,9 @@ class PhoneNumberEditor extends Component<Props, State> {
       onSendPhoneVerificationCode,
       phoneFormatOptions
     } = this.props
-    const { isEditing, isSubmitted, newPhoneNumber } = this.state
-    const isPending = isSubmitted || this._isPhoneNumberPending()
+    const { isEditing, submittedNumber } = this.state
+    const hasSubmittedNumber = !isBlank(submittedNumber)
+    const isPending = hasSubmittedNumber || this._isPhoneNumberPending()
 
     return (
       <>
@@ -164,7 +154,7 @@ class PhoneNumberEditor extends Component<Props, State> {
               <InlineStatic className="form-control-static">
                 <SpanWithSpace margin={0.5}>
                   {formatPhoneNumber(
-                    isSubmitted ? newPhoneNumber : initialPhoneNumber
+                    hasSubmittedNumber ? submittedNumber : initialPhoneNumber
                   )}
                 </SpanWithSpace>
                 {/* Invisible parentheses for no-CSS and screen readers */}
