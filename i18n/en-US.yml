@@ -479,7 +479,7 @@ components:
     howToReceiveAlerts: >
       To receive alerts for your saved trips, enable notifications
       in your account settings, and try saving a trip again.
-    monitorThisTrip: Monitor this trip {minutes} before it begins until it ends.
+    monitorThisTrip: "Monitor this trip before it begins:"
     notificationsTurnedOff: Notifications are turned off for your account.
     # Note to translator: The notifyViaChannelWhen message, combined with
     # altRouteRecommended, delaysAboveTHreshold, realtimeAlertFlagged,
@@ -487,6 +487,7 @@ components:
     notifyViaChannelWhen: "Notify me via {channel} when:"
     oneHour: 1 hour
     realtimeAlertFlagged: There is a realtime alert flagged on my journey
+    timeBefore: "{time} before"
     toggleAdvancedSettings: Toggle advanced settings
   TripStatus:
     alerts: "{alerts, plural, one {# alert!} other {# alerts!}}"
