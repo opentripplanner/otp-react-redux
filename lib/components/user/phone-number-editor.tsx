@@ -25,6 +25,7 @@ import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import SpanWithSpace from '../util/span-with-space'
 
 import { labelStyle } from './styled'
+import PhoneChangeForm from './phone-change-form'
 import PhoneVerificationForm from './phone-verification-form'
 
 interface Fields {
@@ -207,87 +208,15 @@ class PhoneNumberEditor extends Component<Props, State> {
     const { isEditing, isSubmitted, newPhoneNumber } = this.state
     const isPending = isSubmitted || this._isPhoneNumberPending()
 
-    // Here are the states we are dealing with:
-    // - First time entering a phone number/validation code (blank value, not modified)
-    //   => no color, no feedback indication.
-    // - Typing backspace all the way to erase a number/code (blank value, modified)
-    //   => red error.
-    // - Typing a phone number that doesn't match the configured phoneNumberRegEx
-    //   => red error.
-    const formId = 'phone-change-form'
-
     return (
       <>
         {isEditing ? (
-          <Formik
-            initialValues={{ phoneNumber: '' }}
+          <PhoneChangeForm
+            onCancel={this._handleCancelEditNumber}
             onSubmit={this._handleRequestCode}
-            validateOnBlur
-            validateOnChange={false}
-            validationSchema={phoneValidationSchema}
-          >
-            {(formikProps) => {
-              const showPhoneError =
-                formikProps.errors.phoneNumber &&
-                formikProps.touched.phoneNumber
-              return (
-                <FormGroup validationState={showPhoneError && 'error'}>
-                  {/* Set up an empty Formik Form without inputs, and link inputs using the form id.
-                      (A submit button within will incorrectly submit the entire page instead of just the subform.)
-                      The containing Formik element will watch submission of the form. */}
-                  <Form id={formId} noValidate />
-                  <ControlLabel htmlFor="phone-number">
-                    <FormattedMessage id="components.PhoneNumberEditor.prompt" />
-                  </ControlLabel>
-                  <ControlStrip>
-                    <InlinePhoneInput
-                      aria-invalid={showPhoneError}
-                      aria-required
-                      className="form-control"
-                      country={phoneFormatOptions.countryCode}
-                      form={formId}
-                      id="phone-number"
-                      name="phoneNumber"
-                      onBlur={formikProps.handleBlur}
-                      onChange={useCallback(
-                        (newNumber) =>
-                          formikProps.handleChange({
-                            target: {
-                              name: 'phoneNumber',
-                              value: newNumber
-                            }
-                          }),
-                        [formikProps]
-                      )}
-                      onKeyDown={this._handlePhoneNumberKeyDown}
-                      placeholder={intl.formatMessage({
-                        id: 'components.PhoneNumberEditor.placeholder'
-                      })}
-                      type="tel"
-                      value={formikProps.values.phoneNumber}
-                    />
-                    <Button bsStyle="primary" form={formId} type="submit">
-                      <FormattedMessage id="components.PhoneNumberEditor.sendVerificationText" />
-                    </Button>
-                    {
-                      // Show cancel button only if a phone number is already recorded.
-                      // TODO: apply this to ESC key too.
-                      initialPhoneNumber && (
-                        <Button onClick={this._handleCancelEditNumber}>
-                          <FormattedMessage id="common.forms.cancel" />
-                        </Button>
-                      )
-                    }
-                    <HelpBlock role="alert">
-                      {showPhoneError && (
-                        <FormattedMessage id="components.PhoneNumberEditor.invalidPhone" />
-                      )}
-                    </HelpBlock>
-                  </ControlStrip>
-                </FormGroup>
-              )
-            }}
-          </Formik>
+            phoneFormatOptions={phoneFormatOptions}
+            showCancel={!!initialPhoneNumber}
+          />
         ) : (
           <FormGroup>
             <FakeLabel>
