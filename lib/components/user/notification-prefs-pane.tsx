@@ -1,11 +1,12 @@
-import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage } from 'react-intl'
+import { FormGroup } from 'react-bootstrap'
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
 import ButtonGroup from '../util/button-group'
 
+import { FakeLabel, InlineStatic } from './styled'
 import { PhoneVerificationSubmitHandler } from './phone-verification-form'
 import PhoneNumberEditor, {
   PhoneCodeRequestHandler
@@ -96,10 +97,10 @@ const NotificationPrefsPane = ({
       <Details>
         {notificationChannel === 'email' && (
           <FormGroup>
-            <ControlLabel>
+            <FakeLabel>
               <FormattedMessage id="components.NotificationPrefsPane.notificationEmailDetail" />
-            </ControlLabel>
-            <FormControl.Static>{email}</FormControl.Static>
+            </FakeLabel>
+            <InlineStatic>{email}</InlineStatic>
           </FormGroup>
         )}
         {notificationChannel === 'sms' && (

@@ -3,13 +3,12 @@ import { Label as BsLabel, Button, FormGroup } from 'react-bootstrap'
 import { formatPhoneNumber } from 'react-phone-number-input'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import React, { Component, Fragment } from 'react'
-import styled from 'styled-components'
 
 import { isBlank } from '../../util/ui'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import SpanWithSpace from '../util/span-with-space'
 
-import { ControlStrip, labelStyle, phoneFieldStyle } from './styled'
+import { ControlStrip, FakeLabel, InlineStatic } from './styled'
 import PhoneChangeForm, { PhoneChangeSubmitHandler } from './phone-change-form'
 import PhoneVerificationForm, {
   PhoneVerificationSubmitHandler
@@ -32,15 +31,6 @@ interface State {
   isEditing: boolean
   submittedNumber: string
 }
-
-// Styles
-const InlineStatic = styled.span`
-  ${phoneFieldStyle}
-`
-const FakeLabel = styled.span`
-  display: block;
-  ${labelStyle}
-`
 
 /**
  * Sub-component that handles phone number and validation code editing and validation intricacies.
