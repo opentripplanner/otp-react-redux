@@ -17,7 +17,7 @@ import {
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 // @ts-expect-error Package does not have type declaration
 import Input from 'react-phone-number-input/input'
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, useCallback } from 'react'
 import styled, { css } from 'styled-components'
 
 import { getErrorStates, isBlank } from '../../util/ui'
@@ -78,6 +78,18 @@ const FlushLink = styled(Button)`
   padding-left: 0;
   padding-right: 0;
 `
+
+// The validation schema fo phone numbers - relies on the react-phone-number-input library.
+const phoneValidationSchema = yup.object({
+  phoneNumber: yup
+    .string()
+    .required()
+    .test(
+      'phone-number-format',
+      'invalidPhoneNumber', // not directly shown.
+      (value) => value && isPossiblePhoneNumber(value)
+    )
+})
 
 // Because we show the same message for the two validation conditions below,
 // there is no need to pass that message here,
@@ -163,8 +175,9 @@ class PhoneNumberEditor extends Component<Props, State> {
       // Whether the new number was submitted for verification.
       isSubmitted: false,
 
-      // Holds the new phone number (+15555550123 format) entered by the user
-      // (outside of Formik because (Phone)Input does not have a standard onChange event or simple valitity test).
+      // Holds the new phone number (+15555550123 format) entered by the user.
+      // (This is done outside of Formik because (Phone)Input does not have a
+      // standard onChange event or a simple validity test).
       newPhoneNumber: ''
     }
   }
@@ -268,55 +281,80 @@ class PhoneNumberEditor extends Component<Props, State> {
     //   => red error.
     // - Typing a phone number that doesn't match the configured phoneNumberRegEx
     //   => red error.
-    const isPhoneInvalid = !isPossiblePhoneNumber(newPhoneNumber)
-    const showPhoneError = isPhoneInvalid && !isBlank(newPhoneNumber)
-    const phoneErrorState = showPhoneError ? 'error' : null
+    const formId = 'phone-change-form'
 
     return (
       <>
         {isEditing ? (
-          <FormGroup validationState={phoneErrorState}>
-            <ControlLabel>
-              <FormattedMessage id="components.PhoneNumberEditor.prompt" />
-            </ControlLabel>
-            <ControlStrip>
-              <InlinePhoneInput
-                aria-invalid={showPhoneError}
-                className="form-control"
-                country={phoneFormatOptions.countryCode}
-                form="phone-change-form"
-                onChange={this._handleNewPhoneNumberChange}
-                onKeyDown={this._handlePhoneNumberKeyDown}
-                placeholder={intl.formatMessage({
-                  id: 'components.PhoneNumberEditor.placeholder'
-                })}
-                type="tel"
-                value={newPhoneNumber}
-              />
-              <Button
-                bsStyle="primary"
-                disabled={isPhoneInvalid}
-                form="phone-change-form"
-                onClick={this._handleRequestCode}
-                type="submit"
-              >
-                <FormattedMessage id="components.PhoneNumberEditor.sendVerificationText" />
-              </Button>
-              {
-                // Show cancel button only if a phone number is already recorded.
-                initialPhoneNumber && (
-                  <Button onClick={this._handleCancelEditNumber}>
-                    <FormattedMessage id="common.forms.cancel" />
-                  </Button>
-                )
-              }
-              <HelpBlock role="status">
-                {showPhoneError && (
-                  <FormattedMessage id="components.PhoneNumberEditor.invalidPhone" />
-                )}
-              </HelpBlock>
-            </ControlStrip>
-          </FormGroup>
+          <Formik
+            initialValues={{ phoneNumber: '' }}
+            onSubmit={this._handleRequestCode}
+            validateOnBlur
+            validateOnChange={false}
+            validationSchema={phoneValidationSchema}
+          >
+            {(formikProps) => {
+              const showPhoneError =
+                formikProps.errors.phoneNumber &&
+                formikProps.touched.phoneNumber
+              return (
+                <FormGroup validationState={showPhoneError && 'error'}>
+                  {/* Set up an empty Formik Form without inputs, and link inputs using the form id.
+                      (A submit button within will incorrectly submit the entire page instead of just the subform.)
+                      The containing Formik element will watch submission of the form. */}
+                  <Form id={formId} noValidate />
+                  <ControlLabel htmlFor="phone-number">
+                    <FormattedMessage id="components.PhoneNumberEditor.prompt" />
+                  </ControlLabel>
+                  <ControlStrip>
+                    <InlinePhoneInput
+                      aria-invalid={showPhoneError}
+                      aria-required
+                      className="form-control"
+                      country={phoneFormatOptions.countryCode}
+                      form={formId}
+                      id="phone-number"
+                      name="phoneNumber"
+                      onBlur={formikProps.handleBlur}
+                      onChange={useCallback(
+                        (newNumber) =>
+                          formikProps.handleChange({
+                            target: {
+                              name: 'phoneNumber',
+                              value: newNumber
+                            }
+                          }),
+                        [formikProps]
+                      )}
+                      onKeyDown={this._handlePhoneNumberKeyDown}
+                      placeholder={intl.formatMessage({
+                        id: 'components.PhoneNumberEditor.placeholder'
+                      })}
+                      type="tel"
+                      value={formikProps.values.phoneNumber}
+                    />
+                    <Button bsStyle="primary" form={formId} type="submit">
+                      <FormattedMessage id="components.PhoneNumberEditor.sendVerificationText" />
+                    </Button>
+                    {
+                      // Show cancel button only if a phone number is already recorded.
+                      // TODO: apply this to ESC key too.
+                      initialPhoneNumber && (
+                        <Button onClick={this._handleCancelEditNumber}>
+                          <FormattedMessage id="common.forms.cancel" />
+                        </Button>
+                      )
+                    }
+                    <HelpBlock role="alert">
+                      {showPhoneError && (
+                        <FormattedMessage id="components.PhoneNumberEditor.invalidPhone" />
+                      )}
+                    </HelpBlock>
+                  </ControlStrip>
+                </FormGroup>
+              )
+            }}
+          </Formik>
         ) : (
           <FormGroup>
             <FakeLabel>
