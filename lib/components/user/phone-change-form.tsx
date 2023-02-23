@@ -22,7 +22,7 @@ const InlinePhoneInput = styled(Input)`
   ${phoneFieldStyle}
 `
 
-// The validation schema fo phone numbers - relies on the react-phone-number-input library.
+// The validation schema for phone numbers - relies on the react-phone-number-input library.
 // Supports the following cases:
 // - First time entering a phone number/validation code (blank value, not modified)
 //   => no color, no feedback indication.
