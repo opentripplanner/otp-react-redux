@@ -198,9 +198,6 @@ class LiveStopTimes extends Component<Props, State> {
             <FormattedMessage id="components.LiveStopTimes.autoRefresh" />
           </label>
           <button
-            // Functionality is provided by auto-refresh, this only adds confusion
-            // in a screen reader context
-            aria-hidden
             className="link-button pull-right percy-hide"
             onClick={this._refreshStopTimes}
             style={{ fontSize: 'small' }}
