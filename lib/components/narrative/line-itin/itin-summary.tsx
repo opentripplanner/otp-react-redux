@@ -123,7 +123,10 @@ export class ItinerarySummary extends Component<Props> {
         <Details>
           {/* Travel time in hrs/mins */}
           <Header>
-            <FormattedDuration duration={itinerary.duration} />
+            <FormattedDuration
+              duration={itinerary.duration}
+              includeSeconds={false}
+            />
           </Header>
 
           {/* Duration as time range */}

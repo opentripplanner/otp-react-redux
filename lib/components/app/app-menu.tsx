@@ -19,7 +19,8 @@ import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
 import { getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
-import { MainPanelContent, setMainPanelContent } from '../../actions/ui'
+import { MainPanelContent } from '../../actions/ui-constants'
+import { setMainPanelContent } from '../../actions/ui'
 import startOver from '../util/start-over'
 
 import AppMenuItem from './app-menu-item'
@@ -27,10 +28,10 @@ import AppMenuItem from './app-menu-item'
 type AppMenuProps = {
   activeLocale: string
   callTakerEnabled?: boolean
-  // Typescript TODO configLanguageType
-  configLanguages?: Record<string, any>
   extraMenuItems?: menuItem[]
   fieldTripEnabled?: boolean
+  // Typescript TODO language options based on configLanguage.
+  languageOptions: Record<string, any> | null
   location: { search: string }
   mailablesEnabled?: boolean
   popupTarget: string
@@ -154,10 +155,10 @@ class AppMenu extends Component<
     const {
       activeLocale,
       callTakerEnabled,
-      configLanguages,
       extraMenuItems,
       fieldTripEnabled,
       intl,
+      languageOptions,
       mailablesEnabled,
       popupTarget,
       resetAndToggleCallHistory,
@@ -165,9 +166,6 @@ class AppMenu extends Component<
       setLocale,
       toggleMailables
     } = this.props
-
-    const languageOptions: Record<string, any> | null =
-      getLanguageOptions(configLanguages)
     const languageMenuItems: menuItem[] | null = languageOptions && [
       {
         children: Object.keys(languageOptions).map((locale: string) => ({
@@ -292,9 +290,9 @@ const mapStateToProps = (state: Record<string, any>) => {
   return {
     activeLocale: state.otp.ui.locale,
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
-    configLanguages: language,
     extraMenuItems,
     fieldTripEnabled: isModuleEnabled(state, Modules.FIELD_TRIP),
+    languageOptions: getLanguageOptions(language),
     mailablesEnabled: isModuleEnabled(state, Modules.MAILABLES),
     popupTarget: state.otp.config?.popups?.launchers?.sidebarLink
   }

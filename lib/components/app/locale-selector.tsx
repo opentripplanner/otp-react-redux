@@ -9,23 +9,15 @@ import { UnstyledButton } from '../util/unstyled-button'
 import Dropdown from '../util/dropdown'
 
 interface LocaleSelectorProps {
-  // Typescript TODO configLanguageType
-  configLanguages: Record<string, any>
+  // Typescript TODO languageOptions based on configLanguage type.
+  languageOptions: Record<string, any> | null
   locale: string
   setLocale: (locale: string) => void
 }
 
 const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
-  const { configLanguages, locale: currentLocale, setLocale } = props
-  const languageOptions: Record<string, any> | null =
-    getLanguageOptions(configLanguages)
+  const { languageOptions, locale: currentLocale, setLocale } = props
   const intl = useIntl()
-
-  const onEnterOrSpace = (e: KeyboardEvent, action: () => void): void => {
-    if (e.key === 'Space' || e.key === 'Enter') {
-      action()
-    }
-  }
 
   // Only render if two or more languages are configured.
   return languageOptions ? (
@@ -46,19 +38,12 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
       // TODO: How to make this work without block ruby?
     >
       {Object.keys(languageOptions).map((locale: string) => (
-        <li
-          aria-selected={locale === currentLocale || undefined}
-          key={locale}
-          lang={locale}
-          onClick={() => setLocale(locale)}
-          // @ts-expect-error TODO: repair this type. Handler is not guaranteed to have 'key'
-          onKeyPress={(e) => onEnterOrSpace(e, () => setLocale(locale))}
-          // We are correct, not eslint: https://w3c.github.io/aria-practices/examples/combobox/combobox-select-only.html
-          // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-          role="option"
-          tabIndex={0}
-        >
-          <UnstyledButton tabIndex={-1}>
+        <li key={locale} lang={locale} role="none">
+          <UnstyledButton
+            aria-selected={locale === currentLocale || undefined}
+            onClick={() => setLocale(locale)}
+            role="option"
+          >
             {languageOptions[locale].name}
           </UnstyledButton>
         </li>
@@ -70,6 +55,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
 // Typescript TODO: type state properly
 const mapStateToProps = (state: any) => {
   return {
+    languageOptions: getLanguageOptions(state.otp.config.language),
     locale: state.otp.ui.locale
   }
 }

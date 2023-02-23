@@ -1,5 +1,5 @@
 import { FormattedMessage } from 'react-intl'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { InlineLoading } from '../narrative/loading'
 
@@ -25,6 +25,10 @@ const StackedPaneDisplay = ({
   // Create indicator of if cancel button was clicked so that child components can know
   const [isBeingCanceled, updateBeingCanceled] = useState(false)
   const [buttonClicked, setButtonClicked] = useState('')
+
+  useEffect(() => {
+    setButtonClicked('')
+  }, [paneSequence])
 
   return (
     <>
