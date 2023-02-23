@@ -12,6 +12,9 @@ import Input from 'react-phone-number-input/input'
 import React, { KeyboardEvent, MouseEvent, useCallback } from 'react'
 import styled from 'styled-components'
 
+import { InlineLoading } from '../narrative/loading'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
+
 import { ControlStrip, phoneFieldStyle } from './styled'
 
 // Styles
@@ -47,6 +50,7 @@ export type PhoneChangeSubmitHandler = (
 ) => void
 
 interface Props {
+  isSubmitting: boolean
   onCancel: () => void
   onSubmit: PhoneChangeSubmitHandler
   phoneFormatOptions: {
@@ -61,6 +65,7 @@ const InnerPhoneChangeForm = ({
   errors, // Formik
   handleBlur, // Formik
   handleChange, // Formik
+  isSubmitting,
   onCancel,
   phoneFormatOptions,
   showCancel,
@@ -123,8 +128,21 @@ const InnerPhoneChangeForm = ({
           type="tel"
           value={values.phoneNumber}
         />
-        <Button bsStyle="primary" form={formId} type="submit">
-          <FormattedMessage id="components.PhoneNumberEditor.sendVerificationText" />
+
+        <Button
+          bsStyle="primary"
+          disabled={isSubmitting}
+          form={formId}
+          type="submit"
+        >
+          {isSubmitting ? (
+            <InlineLoading />
+          ) : (
+            <FormattedMessage id="components.PhoneNumberEditor.sendVerificationText" />
+          )}
+          <InvisibleA11yLabel role="status">
+            {isSubmitting && <FormattedMessage id="common.forms.submitting" />}
+          </InvisibleA11yLabel>
         </Button>
         {
           // Show cancel button only if a phone number is already recorded.

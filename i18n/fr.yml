@@ -666,6 +666,7 @@ common:
     print: Imprimer
     save: Enregistrer
     startOver: Recommencer
+    submitting: Envoi en cours…
     yes: Oui
   itineraryDescriptions:
     calories: "{calories, number} kcal" # SI unit

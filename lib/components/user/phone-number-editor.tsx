@@ -66,12 +66,10 @@ class PhoneNumberEditor extends Component<Props, State> {
   /**
    * Send phone verification request with the entered values.
    */
-  _handleRequestCode: PhoneChangeSubmitHandler = (values) => {
+  _handleRequestCode: PhoneChangeSubmitHandler = async (values) => {
     const { initialPhoneNumber, initialPhoneNumberVerified, onRequestCode } =
       this.props
     const phoneNumber = 'phoneNumber' in values ? values.phoneNumber : null
-
-    this._handleCancelEditNumber()
 
     // Send the SMS request if one of these conditions apply:
     // - the user entered a (valid) phone number different than their current verified number,
@@ -88,9 +86,11 @@ class PhoneNumberEditor extends Component<Props, State> {
     }
 
     if (submittedNumber) {
-      // TODO: disable submit while submitting.
       this.setState({ submittedNumber })
-      onRequestCode(submittedNumber)
+      await onRequestCode(submittedNumber)
+      this._handleCancelEditNumber()
+    } else {
+      this._handleCancelEditNumber()
     }
   }
 
@@ -121,6 +121,7 @@ class PhoneNumberEditor extends Component<Props, State> {
       <>
         {isEditing ? (
           <PhoneChangeForm
+            isSubmitting={hasSubmittedNumber}
             onCancel={this._handleCancelEditNumber}
             onSubmit={this._handleRequestCode}
             phoneFormatOptions={phoneFormatOptions}

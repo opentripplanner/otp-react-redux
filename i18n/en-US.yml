@@ -658,6 +658,7 @@ common:
     print: Print
     save: Save
     startOver: Start Over
+    submitting: Submitting…
     yes: Yes
   # Shared itinerary description messages
   itineraryDescriptions:
