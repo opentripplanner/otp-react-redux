@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl'
 import React, { useCallback } from 'react'
 
 import * as uiActions from '../../actions/ui'
+import { MobileScreens } from '../../actions/ui-constants'
 import DateTimeModal from '../form/date-time-modal'
 import PlanTripButton from '../form/plan-trip-button'
 
@@ -16,7 +17,7 @@ interface Props {
 const MobileDateTimeScreen = ({ setMobileScreen }: Props) => (
   <MobileContainer>
     <MobileNavigationBar
-      backScreen={uiActions.MobileScreens.SEARCH_FORM}
+      backScreen={MobileScreens.SEARCH_FORM}
       headerText={<FormattedMessage id="components.DateTimeScreen.header" />}
       showBackButton
     />
@@ -28,7 +29,7 @@ const MobileDateTimeScreen = ({ setMobileScreen }: Props) => (
       <div className="options-lower-tray mobile-padding">
         <PlanTripButton
           onClick={useCallback(
-            () => setMobileScreen(uiActions.MobileScreens.RESULTS_SUMMARY),
+            () => setMobileScreen(MobileScreens.RESULTS_SUMMARY),
             [setMobileScreen]
           )}
         />
