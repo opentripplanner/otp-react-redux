@@ -151,6 +151,10 @@ class LiveStopTimes extends Component<Props, State> {
       return stopTimeComparator(stopTimesA[0], stopTimesB[0])
     }
 
+    const refreshButtonText = intl.formatMessage({
+      id: 'components.LiveStopTimes.refresh'
+    })
+
     return (
       <>
         <ul className="route-row-container">
@@ -198,12 +202,11 @@ class LiveStopTimes extends Component<Props, State> {
             <FormattedMessage id="components.LiveStopTimes.autoRefresh" />
           </label>
           <button
+            aria-label={refreshButtonText}
             className="link-button pull-right percy-hide"
             onClick={this._refreshStopTimes}
             style={{ fontSize: 'small' }}
-            title={intl.formatMessage({
-              id: 'components.LiveStopTimes.refresh'
-            })}
+            title={refreshButtonText}
           >
             <IconWithText Icon={Redo} spin={spin}>
               <FormattedTime
