@@ -11,7 +11,7 @@ const OTP_RR_TEST_JS_CONFIG_PATH = OTP_RR_PERCY_CALL_TAKER
   ? './percy/har-mock-config-call-taker.js'
   : './percy/har-mock-config.js'
 
-const MOCK_SERVER_PORT = 5000
+const MOCK_SERVER_PORT = 5486
 
 // Puppeteer can take a long time to load, especially in some ci environments
 jest.setTimeout(600000)
@@ -307,6 +307,7 @@ test('OTP-RR', async () => {
     await page.waitForTimeout(200)
 
     await page.click('#plan-trip')
+    await page.waitForTimeout(1000) // wait extra time for all results to load
   } else {
     // take initial screenshot
     await page.waitForTimeout(1000) // wait extra time for all results to load
