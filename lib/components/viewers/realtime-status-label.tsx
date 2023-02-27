@@ -96,7 +96,7 @@ const RealtimeStatusLabel = ({
     // and display the updated time underneath.
     renderedTime = isEarlyOrLate ? (
       <TimeBlock>
-        <TimeStruck>
+        <TimeStruck aria-hidden>
           <FormattedTime timeStyle="short" value={originalTime} />
         </TimeStruck>
         <div>
