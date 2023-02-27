@@ -109,12 +109,13 @@ components:
   LiveStopTimes:
     autoRefresh: 도착을 자동 새로 고침 하시겠습니까?
   MapLayers:
+    bike-rental: '{companies} 공유 자전거'
     car-rental: 렌터카 위치
+    micromobility-rental: '{companies} 전기 스쿠터'
+    shared-vehicles: 공유 차량
     park-and-ride: Park & Ride위치
     satellite: 위성
     stops: 대중 교통 정류장
-    bike-rental: '{companies} 공유 자전거'
-    micromobility-rental: '{companies} 전기 스쿠터'
     streets: 시가 일반
   MetroUI:
     leaveAt: 출발
@@ -241,9 +242,14 @@ components:
     loadingText: 로딩 중지…
     noStopsFound: 날짜에 대한 정지 시간이 없습니다.
   SubNav:
+    languageSelector: 언어 선택
+    activeLanguage: 현재 언어
+    languages: "언어"
     myAccount: 내 계정
+    selectALanguage: 언어 선택
     settings: 설정
     trips: 여행
+    userMenu: 프로필 옵션
   SwitchButton:
     switchLocations: 위치를 바꾸다
     defaultContent: 바꾸다
@@ -394,6 +400,7 @@ components:
     fieldTrip: 여행 제목
     mailables: 게시 준비
     openMenu: 메뉴 열기
+    skipNavigation: 내비게이션 건너뛰기
   DateTimePreview:
     dayLastWeek: 지난 {formattedDayOfWeek}
     departAt: 출발 {departTime, time, short}
@@ -478,6 +485,8 @@ components:
   StackedPaneDisplay:
     savePreferences: 환경 설정을 저장하십시오
   StopTimeCell:
+    realtime: 실시간 데이터 기반
+    scheduled: 일정 데이터 기준
     imminentArrival: 정당한
   UserAccountScreen:
     confirmDelete: 사용자 계정을 삭제 하시겠습니까? 일단 그렇게하면 복구 할 수 없습니다.
@@ -495,6 +504,7 @@ components:
   PointPopup:
     zoomToLocation: 위치로 확대
   ItinerarySummary:
+    itineraryDetails: 여정 세부 정보
     minMaxFare: '{minTotalFare} - {maxTotalFare}'
 common:
   dateExpressions:
@@ -537,6 +547,13 @@ common:
     transfers: '{transfers, plural, =0 {} one {# 전송} other {# 전송}'
     calories: '{calories, number} 칼로리'
     noItineraryToDisplay: 표시 할 일정이 없습니다.
+    relativeCo2: >
+      {co2}
+      CO<sub>2</sub> 를 자동차보다
+      {isMore, select,
+      true {더}
+      other {덜}
+      } 사용합니다
   modes:
     bicycle_rent: 자전거 공유
     car_park: 주차하고 타십시오

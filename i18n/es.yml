@@ -116,11 +116,13 @@ components:
     mainTitle: Mis ajustes
     terms: Términos
   ItinerarySummary:
+    itineraryDetails: Detalles del itinerario
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   MapLayers:
     bike-rental: '{companies} Bicicleta Compartida'
     car-rental: Ubicaciones de los coches de alquiler
     micromobility-rental: '{companies} E-Scooters'
+    shared-vehicles: "Vehículos compartidos"
     park-and-ride: Ubicaciones de Park & Ride
     satellite: Satélite
     stops: Paradas de tránsito
@@ -430,6 +432,7 @@ components:
     mailables: Lista para publicar
     openMenu: Abrir Menú
     callHistory: Historial de llamadas
+    skipNavigation: Saltar navegación
   BackToTripPlanner:
     backToTripPlanner: Volver al planificador de viajes
   CallTakerPanel:
@@ -505,9 +508,14 @@ components:
     scheduled: Based on schedule data
     imminentArrival: Debido
   SubNav:
+    activeLanguage: Idioma activo
+    languageSelector: Seleccionar idioma
+    languages: "Idiomas"
     myAccount: Mi cuenta
+    selectALanguage: Seleccionar un idioma
     settings: Ajustes
     trips: Viajes
+    userMenu: Opciones de perfil
   SwitchButton:
     switchLocations: Cambiar de ubicación
     defaultContent: Cambiar
@@ -607,6 +615,13 @@ common:
     noItineraryToDisplay: No hay itinerario que mostrar.
     noTransitFareProvided: No hay información sobre las tarifas
     transfers: '{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}'
+    relativeCo2: >
+      {co2}
+      de CO<sub>2</sub> en 
+      {isMore, select,
+      true {más}
+      other {menos}
+      } que conducir
   modes:
     bicycle_rent: Bicicleta compartida
     drive: Conducir

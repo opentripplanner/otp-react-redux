@@ -213,6 +213,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
+    itineraryDetails: Détails de l'itinéraire
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Rafraîchir les horaires automatiquement ?
@@ -437,9 +438,14 @@ components:
     zoomToStop: Zoomer sur l'arrêt
 
   SubNav:
+    activeLanguage: Langue active
+    languageSelector: Sélectionnez une langue
+    languages: "Langues"
     myAccount: Mon compte
+    selectALanguage: Sélectionner une langue
     settings: Préférences
     trips: Trajets
+    userMenu: Options de profil
   SwitchButton:
     defaultContent: Permuter
     switchLocations: Permuter les lieux

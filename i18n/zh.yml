@@ -112,13 +112,14 @@ components:
     setDestination: 选择目的地
     setOrigin: 选择一个产地
   MapLayers:
-    satellite: 卫星
-    streets: 街道
     bike-rental: '{companies} 共享单车'
     car-rental: 租车地点
     micromobility-rental: '{companies} 电动滑板车'
-    park-and-ride: 停车和乘车地点
+    shared-vehicles: 共享车辆
+    park-and-ride: 停车与接驳站点
+    satellite: 卫星
     stops: 公共交通站点
+    streets: 街道
   MetroUI:
     leaveAt: 离开
     timeWalking: 步行时间
@@ -394,12 +395,20 @@ components:
     fieldTrip: 旅行标题
     mailables: 准备发布
     openMenu: 打开菜单
+    skipNavigation: 跳过导航
   StopTimeCell:
     imminentArrival: 到达
+    realtime: 基于实时数据
+    scheduled: 基于预定数据
   SubNav:
+    activeLanguage: 当前语言
+    languageSelector: 选择语言
+    languages: "语言"
     myAccount: 我的帐户
+    selectALanguage: 选择语言
     settings: 设置
     trips: 旅行
+    userMenu: 个人资料选项
   SwitchButton:
     defaultContent: 切换
     switchLocations: 开关位置
@@ -487,6 +496,7 @@ components:
   PointPopup:
     zoomToLocation: 缩放到位置
   ItinerarySummary:
+    itineraryDetails: 行程详情
     minMaxFare: '{minTotalFare} - {maxTotalFare}'
 common:
   daysOfWeekCompact:
@@ -525,6 +535,13 @@ common:
     noTransitFareProvided: 没有票价信息
     noItineraryToDisplay: 没有显示行程.
     transfers: '{transfers, plural, =0 {} one {# 换乘} other {# 换乘}}'
+    relativeCo2: >
+      {co2}
+      {isMore, select,
+      true {更多}
+      other {更少}
+      } CO<sub>2</sub> 
+      比单独驾车
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
     durationAgo: "{duration}前"

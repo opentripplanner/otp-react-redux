@@ -95,11 +95,12 @@ components:
     bike-rental: '{companies} Xe đạp chung'
     car-rental: Địa điểm cho thuê xe
     micromobility-rental: '{companies} Xe tay ga điện'
+    shared-vehicles: Phương tiện chia sẻ
     park-and-ride: Địa điểm Park & Ride
     satellite: Vệ tinh
-    streets: Đường phố
     stops: "Phương tiện công cộng dừng lại\n BD: Alternative: trạm dừng xe buýt và\
       \ nhà ga"
+    streets: Đường phố
   MetroUI:
     arriveAtTime: Đến nơi {time}
     leaveAt: Rời đi lúc
@@ -250,9 +251,14 @@ components:
       này theo yêu cầu. Bạn có thể phải gọi trước để được phục vụ trong lĩnh vực này.
     zoomToStop: Phóng to để dừng lại
   SubNav:
+    languageSelector: Chọn ngôn ngữ
+    activeLanguage: Ngôn ngữ hiện tại
+    languages: "Ngôn ngữ"
     myAccount: Tài khoản của tôi
+    selectALanguage: Chọn một ngôn ngữ
     settings: Cài đặt
     trips: Chuyến đi
+    userMenu: Tùy chọn hồ sơ
   TransitVehicleOverlay:
     incoming_at: Đang tiếp cận {stop}
     in_transit_to: Điểm dừng tiếp theo {stop}
@@ -402,6 +408,7 @@ components:
     callHistory: Lịch sử cuộc gọi
     closeMenu: Đóng menu
     fieldTrip: Tiêu đề chuyến đi
+    skipNavigation: Bỏ qua điều hướng
   NavLoginButton:
     help: Cứu giúp
     myAccount: Tài khoản của tôi
@@ -480,6 +487,8 @@ components:
     resume: Tiếp tục
   StopTimeCell:
     imminentArrival: Đến hạn
+    realtime: Dựa trên dữ liệu thời gian thực
+    scheduled: Dựa trên dữ liệu theo lịch trình
   TermsOfUsePane:
     mustAgreeToTerms: Bạn phải đồng ý với các điều khoản dịch vụ để tiếp tục.
     confirmDeletionPrompt: "Việc xóa bỏ sự đồng ý của bạn đối với việc lưu trữ các\
@@ -498,6 +507,7 @@ components:
   PointPopup:
     zoomToLocation: Thu phóng đến vị trí
   ItinerarySummary:
+    itineraryDetails: Chi tiết hành trình
     minMaxFare: '{minTotalFare} - {maxTotalFare}'
 common:
   coordinates: '{lat}, {lon}'
@@ -545,6 +555,12 @@ common:
     noItineraryToDisplay: Không có hành trình để hiển thị.
     transfers: '{transfers, plural, =0 {} one {# chuyển} other {# chuyển}}'
     noTransitFareProvided: Không có thông tin giá vé
+    relativeCo2: >
+      {co2}
+      CO<sub>2</sub> {isMore, select,
+      true {nhiều}
+      other {ít}
+      } hơn so với xe hơi
   modes:
     bike: Xe đạp
     bicycle_rent: Chia sẻ xe đạp
