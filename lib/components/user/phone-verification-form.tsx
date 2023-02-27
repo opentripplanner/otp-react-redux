@@ -56,11 +56,14 @@ const PhoneVerificationForm = ({
 }: Props): JSX.Element => {
   const [isSubmitting, setSubmitting] = useState<boolean>(false)
   const handleSubmit = useCallback(
-    (values: Fields) => {
+    async (values: Fields) => {
       setSubmitting(true)
-      onSubmit(values)
+      await onSubmit(values)
+      // If user enters the wrong code, re-enable submit.
+      // (If user enters the correct code, the page will be refreshed.)
+      setSubmitting(false)
     },
-    [onSubmit]
+    [onSubmit, setSubmitting]
   )
   return (
     <Formik

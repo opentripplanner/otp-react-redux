@@ -79,9 +79,9 @@ const InnerPhoneChangeForm = ({
   const handleEscapeKey = useCallback(
     (e: KeyboardEvent<FormGroup>) => {
       if (e.key === 'Escape' && showCancel && typeof onCancel === 'function') {
+        e.preventDefault()
         // Cancel editing when user presses ESC from the phone number field.
         onCancel()
-        e.preventDefault()
       }
     },
     [onCancel, showCancel]
