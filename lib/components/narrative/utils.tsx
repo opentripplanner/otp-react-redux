@@ -24,7 +24,7 @@ export function localizeGradationMap(
   Object.keys(newGradationMap).forEach((key) => {
     // As these localization keys are in the config, rather than
     // standard language files, the message ids must be dynamically generated
-    const localizationId = `config.acessibilityScore.gradationMap.${key}`
+    const localizationId = `config.accessibilityScore.gradationMap.${key}`
     const localizedText = intl.formatMessage({ id: localizationId })
     // Override the config label if a localized label exists
     if (localizationId !== localizedText) {
