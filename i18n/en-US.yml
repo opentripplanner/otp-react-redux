@@ -63,7 +63,7 @@ actions:
     accountDeleted: Your user account ({email}) has been deleted.
     authTokenError: Error obtaining an authorization token.
     confirmDeleteMonitoredTrip: Would you like to remove this trip?
-    confirmDeletePlace: Remove this place?
+    confirmDeletePlace: Would you like to remove this place?
     emailVerificationResent: The email verification message has been resent.
     genericError: "An error was encountered: {err}"
     itineraryExistenceCheckFailed: Error checking whether your selected trip is possible.
@@ -766,7 +766,8 @@ common:
         other {# days ago}
       }
     # TODO: Distinguish between one hour (singular) and 2 hours or more?
-    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {} other {# sec}}"
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min { seconds,\
+      \ plural, =0 {} other {# sec}}"
 
 util:
   state:
