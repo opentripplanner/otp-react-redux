@@ -179,9 +179,9 @@ components:
   Place:
     deleteThisPlace: Borrar este lugar
     enterAlert: "Introduzca el origen/destino en el formulario (o establezca mediante\
-    viewStop: Ver parada
       \ un clic en el mapa) y haga clic en el marcador resultante para establecerlo\
       \ como lugar de {placeType}.\n"
+    viewStop: Ver parada
   PlanFirstLastButtons:
     first: Primero
     last: Último
