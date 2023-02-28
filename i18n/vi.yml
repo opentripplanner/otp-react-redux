@@ -164,7 +164,6 @@ components:
   PlaceEditor:
     genericLocationPlaceholder: Tìm kiếm vị trí
     locationPlaceholder: Tìm kiếm vị trí {placeName}
-    namePlaceholder: Đặt tên địa điểm
   PlanFirstLastButtons:
     last: Cuối
     next: Tiếp theo

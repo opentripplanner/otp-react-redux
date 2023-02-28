@@ -274,7 +274,6 @@ components:
     incoming_at: 接近 {stop}
     stopped_at: 巴士车门在 {stop} 打开
     travelingAt: 以 {milesPerHour}
-  vehicleName: '车辆 {vehicleNumber}'
   TripNotificationsPane:
     advancedSettings: 高级设置
     altRouteRecommended: 建议采用替代路线或换乘点
@@ -539,8 +538,7 @@ common:
       {isMore, select,
       true {更多}
       other {更少}
-      } CO<sub>2</sub> 
-      比单独驾车
+      } CO<sub>2</sub>  比单独驾车
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
     durationAgo: "{duration}前"
