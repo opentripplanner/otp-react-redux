@@ -712,15 +712,15 @@ common:
     bus: Bus
     # The original OTP mode id is CABLE_CAR. Lowercase makes it cable_car.
     cable_car: Cable Car
-    car_park: Park and Ride
     car: Car
+    car_park: Park and Ride
     drive: Drive
     ferry: Ferry
     flex: Flex Routes
     funicular: Funicular
     gondola: Gondola
-    micromobility_rent: E-Scooter
     micromobility: E-Scooter
+    micromobility_rent: E-Scooter
     rail: Rail
     rent: Rental options
     subway: Subway
@@ -807,5 +807,5 @@ config:
     both: See bottom of itinerary for details
     call-ahead: Call to reserve
     continuous-dropoff: Communicate with operator about stop
-    flex-service-colon: "Flex Service:"
     flex-service: Flex Service
+    flex-service-colon: "Flex Service:"

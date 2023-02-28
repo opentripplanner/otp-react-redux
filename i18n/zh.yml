@@ -558,15 +558,15 @@ common:
     bike: 自行车
     bus: 公共汽车
     cable_car: 缆车
-    car_park: 停车和乘车
     car: 汽车
+    car_park: 停车和乘车
     drive: 驾驶
     ferry: 渡船
     flex: Flex Routes
     funicular: 缆车
     gondola: 贡多拉
-    micromobility_rent: 电动滑板车
     micromobility: 电动滑板车
+    micromobility_rent: 电动滑板车
     rail: 火车
     rent: 租赁选择
     subway: 地铁
@@ -605,8 +605,8 @@ config:
     both: 详见行程表底部
     call-ahead: 打电话预约
     continuous-dropoff: 与操作人员沟通停止事宜
-    flex-service-colon: 'Flex Service:'
     flex-service: 灵活的服务
+    flex-service-colon: 'Flex Service:'
   accessModes:
     bicycle: 公共交通 + 我的自行车
     bicycle_rent: 公共交通 + 共享单车

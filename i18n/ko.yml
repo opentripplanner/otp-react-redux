@@ -558,15 +558,15 @@ common:
     bike: 자전거
     bus: 버스
     cable_car: 케이블카
-    car_park: 주차하고 타십시오
     car: 자동차
+    car_park: 주차하고 타십시오
     drive: 운전하다
     ferry: 나룻배
     flex: Flex Routes
     funicular: 케이블 카
     gondola: 곤돌라
-    micromobility_rent: 전기 스쿠터
     micromobility: 전기 스쿠터
+    micromobility_rent: 전기 스쿠터
     rail: 기차
     rent: 임대 옵션
     subway: 지하철

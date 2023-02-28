@@ -566,15 +566,15 @@ common:
     bike: Xe đạp
     bus: Xe buýt
     cable_car: Dây điện trong xe
-    car_park: Park and Ride
     car: Xe hơi
+    car_park: Park and Ride
     drive: Lái xe
     ferry: Ghe đò
     flex: Tuyến đường Flex
     funicular: Máy có dây kéo
     gondola: Giỏ treo dưới khí cầu
-    micromobility_rent: Xe tay ga điện
     micromobility: Xe tay ga điện
+    micromobility_rent: Xe tay ga điện
     rail: Xe lửa
     rent: Tùy chọn cho thuê
     subway: Metro

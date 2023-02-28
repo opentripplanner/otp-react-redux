@@ -626,15 +626,15 @@ common:
     bike: Bicicleta
     bus: Autobús
     cable_car: Teleférico
-    car_park: Park and Ride
     car: Coche
+    car_park: Park and Ride
     drive: Conducir
     ferry: Transbordador
     flex: Líneas Flex
     funicular: Funicular
     gondola: Teleférico
-    micromobility_rent: E-Scooter
     micromobility: E-Scooter
+    micromobility_rent: E-Scooter
     rail: Tren
     rent: Opciones de alquiler
     subway: Metro
