@@ -171,17 +171,6 @@ const ItineraryGridSmall = styled.div`
   }
 `
 
-// invisible header rendered for screen readers and a11y technologies
-const InvisibleHeader = styled.span`
-  /* TODO: This grid/column places the invisbile header into an unused 
-  grid-cell to stop it from adding an additional row. There is probably 
-  a better way to do this! */
-  grid-column: 2;
-  grid-row: 2;
-  height: 0;
-  overflow: hidden;
-  width: 0;
-`
 const BLUR_AMOUNT = 3
 const blurAnimation = keyframes`
  0% { filter: blur(${BLUR_AMOUNT}px); }
@@ -214,6 +203,8 @@ type Props = {
 class MetroItinerary extends NarrativeItinerary {
   static contextType = ComponentContext
 
+  static ModesAndRoutes = MetroItineraryRoutes
+
   _onMouseEnter = () => {
     const { active, index, setVisibleItinerary, visibleItinerary } = this.props
     // Set this itinerary as visible if not already visible.
@@ -245,9 +236,7 @@ class MetroItinerary extends NarrativeItinerary {
       <RouteBlock
         aria-hidden
         footer={
-          showLegDurations && (
-            <FormattedDuration duration={leg.duration} includeSeconds={false} />
-          )
+          showLegDurations && <FormattedDuration duration={mainLeg.duration} />
         }
         hideLongName
         leg={mainLeg}
@@ -514,8 +503,6 @@ const mapDispatchToProps = (dispatch: any) => {
       dispatch(uiActions.setItineraryView(payload))
   }
 }
-
-MetroItinerary.ModesAndRoutes = MetroItineraryRoutes
 
 export default injectIntl(
   connect(mapStateToProps, mapDispatchToProps)(MetroItinerary)

@@ -70,7 +70,8 @@ const InvisibleHeader = styled.span`
 `
 
 type Props = {
-  LegIcon: React.ReactNode
+  // TODO: create and reuse type for LegIcon.
+  LegIcon: ({ height, leg }: { height: number; leg: Leg }) => React.ReactElement
   enableDot?: boolean
   /** This is true when there is only one itinerary being shown and the itinerary-body is visible */
   expanded: boolean
@@ -91,7 +92,7 @@ const MetroItineraryRoutes = ({
 
   return (
     <ItineraryGrid>
-      <InvisibleHeader as={expanded && 'h1'}>
+      <InvisibleHeader as={expanded ? 'h1' : undefined}>
         {String(transitRoutes) ? (
           <FormattedMessage
             id="components.MetroUI.itineraryDescription"

@@ -19,9 +19,9 @@ interface Props {
 const TripSummary = ({ monitoredTrip }: Props): JSX.Element => {
   const { itinerary } = monitoredTrip
   const { duration, endTime, startTime } = itinerary
-  // @ts-expect-error No type on ComponentContext
-  const context = useContext(ComponentContext)
-  const ModesAndRoutes = context.ItineraryBody.ModesAndRoutes
+  // @ts-expect-error TODO: add ModesAndRoutes to ItineraryBody attribute of ComponentContext
+  const { ItineraryBody, LegIcon } = useContext(ComponentContext)
+  const ModesAndRoutes = ItineraryBody.ModesAndRoutes
   return (
     <div
       className="otp option default-itin"
@@ -41,7 +41,7 @@ const TripSummary = ({ monitoredTrip }: Props): JSX.Element => {
         <span aria-hidden className="pull-right">
           <FormattedDuration duration={duration} />
         </span>
-        <ModesAndRoutes itinerary={itinerary} LegIcon={context.LegIcon} />
+        <ModesAndRoutes itinerary={itinerary} LegIcon={LegIcon} />
       </div>
     </div>
   )
