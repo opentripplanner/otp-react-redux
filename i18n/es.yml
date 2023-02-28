@@ -484,7 +484,6 @@ components:
   PlaceEditor:
     genericLocationPlaceholder: Buscar ubicación
     locationPlaceholder: Buscar la ubicación de {placeName}
-    namePlaceholder: Establecer el nombre del lugar
   ResultsError:
     backToSearch: Volver a la búsqueda
   ResultsHeader:
@@ -658,7 +657,8 @@ common:
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {hace unos segundos}\n =1 {hace un minuto}\n other {hace # minutos}\n }}\n\
       \ =1 {hace una hora}\n other {hace # horas}\n }}\n other {hace # días}\n }\n"
-    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {} other {# seg}}"
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min { seconds,\
+      \ plural, =0 {} other {# seg}}"
   places:
     custom: personalizado
     dining: restaurante

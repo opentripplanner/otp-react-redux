@@ -183,7 +183,6 @@ components:
   PlaceEditor:
     genericLocationPlaceholder: 搜索地点
     locationPlaceholder: 搜索 {placeName} 位置
-    namePlaceholder: 设置地名
   PlanFirstLastButtons:
     first: 首先
     last: 最后一次
@@ -548,7 +547,8 @@ common:
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {几秒钟前}\n =1 {一分钟前}\n other {# 分钟前}\n }}\n =1 {一小时前}\n other {# 小时前}\n }}\n\
       \ other {# 天之前}\n }\n"
-    tripDurationFormat: "{hours, plural, =0 {} other {# 小时 }}{minutes} 分钟} { seconds, plural, =0 {} other {# 秒}}"
+    tripDurationFormat: "{hours, plural, =0 {} other {# 小时 }}{minutes} 分钟} { seconds,\
+      \ plural, =0 {} other {# 秒}}"
   dateExpressions:
     today: 今天
     tomorrow: 明天

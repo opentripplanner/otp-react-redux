@@ -597,7 +597,8 @@ common:
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
     durationAgo: "{duration} trước"
-    tripDurationFormat: "{hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds, plural, =0 {} other {# giây}}"
+    tripDurationFormat: "{hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds,\
+      \ plural, =0 {} other {# giây}}"
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {vài giây trước}\n =1 {một phút trước}\n other {# phút trước}\n }}\n =1\
       \ {một tiếng trước}\n other {# giờ trước}\n }}\n other {# ngày trước}\n }\n"
