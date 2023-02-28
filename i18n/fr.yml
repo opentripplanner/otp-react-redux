@@ -238,6 +238,7 @@ components:
     leaveAt: Partez à
     multipleOptions: Plusieurs options
     orAlternatives: ou autres lignes dans la même direction
+    singleModeItineraryDescription: "Trajet de {time} {mode}"
     timeWalking: "{time} de marche"
   MobileOptions:
     header: Options de recherche
@@ -478,14 +479,13 @@ components:
       vous annulez, les changements seront perdus.
   TripNotificationsPane:
     advancedSettings: Paramètres avancés
-    altRouteRecommended: Un autre trajet ou une autre correspondance est conseillé·e
+    altRouteRecommended: Un·e autre trajet ou correspondance est conseillé·e
     delaysAboveThreshold: Il y a des perturbations ou retards de plus de
     howToReceiveAlerts: >
       Pour recevoir les alertes pour vos trajets suivis, activez les notifications
       dans la section Préférences de votre compte, et essayez d'enregistrer un trajet
       à nouveau.
-    monitorThisTrip: Effectuer le suivi du trajet {minutes} avant le départ et jusqu'à
-      l'arrivée.
+    monitorThisTrip: "Faire le suivi du trajet avant le départ :"
     notificationsTurnedOff: Les notifications sont désactivées pour votre compte.
     # Note to translator: The notifyViaChannelWhen message, combined with
     # altRouteRecommended, delaysAboveTHreshold, realtimeAlertFlagged,
@@ -493,6 +493,7 @@ components:
     notifyViaChannelWhen: "Recevoir des notifications par {channel} lorsque :"
     oneHour: 1 heure
     realtimeAlertFlagged: Une alerte en temps réel affecte mon trajet
+    timeBefore: "{time} avant"
     toggleAdvancedSettings: Paramètres avancés
   TripStatus:
     alerts: "{alerts, plural, =0 {# alerte !} one {# alerte !} other {# alertes !}}"
