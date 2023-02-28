@@ -464,7 +464,6 @@ components:
   TripBasicsPane:
     checkingItineraryExistence: Checking itinerary existence for each day of the week...
     selectAtLeastOneDay: Please select at least one day to monitor.
-    selectedItinerary: "Selected itinerary:"
     tripIsAvailableOnDaysIndicated: Your trip is available on the days of the week as indicated above.
     tripDaysPrompt: What days do you take this trip?
     tripNamePrompt: "Please provide a name for this trip:"
@@ -536,7 +535,8 @@ components:
       tripStartsSoonNoUpdates: Trip is starting soon (no realtime updates available).
       tripStartsSoonOnTime: Trip is starting soon and is about on time.
   TripSummary:
-    itinerary: Itinerary
+    arriveAt: "Arrive at "
+    leaveAt: "Leave at "
   TripSummaryPane:
     happensOnDays: "Happens on: <strong>{days}</strong>"
     notifications: "Notifications: <strong>{leadTimeInMinutes} min. before scheduled departure</strong>"

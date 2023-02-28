@@ -1,9 +1,9 @@
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, FormattedTime } from 'react-intl'
 import React, { useContext } from 'react'
 
 import { ComponentContext } from '../../../util/contexts'
 import FormattedDuration from '../../util/formatted-duration'
-import SpanWithSpace from '../../util/span-with-space'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 interface Props {
   // TODO: use a more complete definition of monitored trip.
@@ -28,20 +28,18 @@ const TripSummary = ({ monitoredTrip }: Props): JSX.Element => {
       style={{ borderTop: '0px', padding: '0px' }}
     >
       <div className="header">
-        <SpanWithSpace className="title" margin={0.125}>
-          <FormattedMessage id="components.TripSummary.itinerary" />
-        </SpanWithSpace>
-        <SpanWithSpace className="duration pull-right" margin={0.125}>
-          <FormattedDuration duration={duration} includeSeconds={false} />
-        </SpanWithSpace>
-        <span className="arrivalTime">
-          <FormattedMessage
-            id="common.time.departureArrivalTimes"
-            values={{
-              endTime: endTime,
-              startTime: startTime
-            }}
-          />
+        {/* Set up invisible "labels" for each itinerary field, and comma, so that the output of screen readers is more intelligible. */}
+        <InvisibleA11yLabel>
+          <FormattedMessage id="components.TripSummary.leaveAt" />
+        </InvisibleA11yLabel>
+        <FormattedTime value={startTime} />—
+        <InvisibleA11yLabel>
+          <FormattedMessage id="components.TripSummary.arriveAt" />
+        </InvisibleA11yLabel>
+        <FormattedTime value={endTime} />
+        <InvisibleA11yLabel>, </InvisibleA11yLabel>
+        <span aria-hidden className="pull-right">
+          <FormattedDuration duration={duration} />
         </span>
         <ModesAndRoutes itinerary={itinerary} LegIcon={context.LegIcon} />
       </div>
