@@ -167,9 +167,9 @@ components:
     now: Now
   DateTimePreview:
     arriveAt: "Arrive {arriveTime, time, short}"
+    dayLastWeek: "Last {formattedDayOfWeek}"
     departAt: "Depart {departTime, time, short}"
     editDepartOrArrival: Edit departure or arrival time
-    dayLastWeek: "Last {formattedDayOfWeek}"
     leaveNow: Leave now
     range: "{startTime, time, short} to {endTime, time, short}"
   DateTimeScreen:
@@ -226,30 +226,35 @@ components:
     bike-rental: "{companies} Shared Bikes"
     car-rental: Rental Car Locations
     micromobility-rental: "{companies} E-Scooters"
-    shared-vehicles: "Shared Vehicles"
     park-and-ride: Park & Ride Locations
     satellite: Satellite
+    shared-vehicles: "Shared Vehicles"
     stops: Transit Stops
     streets: Streets
   MetroUI:
-    leaveAt: You leave
     arriveAtTime: "Arrive at {time}"
-    timeWalking: "{time} walking"
     fromStop: "from {stop}"
-    orAlternatives: or other routes in the same direction
     itineraryDescription: "{time} itinerary using {routes}"
-    singleModeItineraryDescription: "{time} {mode} itinerary"
+    leaveAt: You leave
     multipleOptions: Multiple Options
+    orAlternatives: or other routes in the same direction
+    singleModeItineraryDescription: "{time} {mode} itinerary"
+    timeWalking: "{time} walking"
   MobileOptions:
     header: Set Search Options
   ModeDropdown:
     exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
-    itinerariesAndIssues: "{itinerariesFound} and {numIssues}"
-    itinerariesFound: "{itineraryNum, plural, one {# itinerary found} other {# itineraries\
-      \ found} }"
-    numIssues: "{issueNum, plural, one {# issue} other {# issues} }"
     changeSortDir: "Change sort direction"
+    itinerariesAndIssues: "{itinerariesFound} and {numIssues}"
+    itinerariesFound: "{itineraryNum, plural,
+        one {# itinerary found}
+        other {# itineraries found}
+      }"
+    numIssues: "{issueNum, plural,
+        one {# issue}
+        other {# issues}
+      }"
     # Note to translator: text below is width-constrained
     # (about half-pane width, or half-screen width in mobile views).
     searching: Finding your options...
@@ -437,9 +442,9 @@ components:
     zoomToStop: Zoom to stop
 
   SubNav:
-    languageSelector: Select language
     activeLanguage: Active language
     languages: "Languages"
+    languageSelector: Select language
     myAccount: My account
     selectALanguage: Select a language
     settings: Settings
@@ -580,12 +585,12 @@ components:
   TripViewer:
     accessible: Accessible
     bicyclesAllowed: Allowed
+    endOfTrip: Trip ends here
     header: Trip Viewer
     listOfRouteStops: List of stops on this route
-    tripDescription: Board at {boardAtStop} and disembark at {disembarkAtStop}
-    startOfTrip: Trip begins here
-    endOfTrip: Trip ends here
     routeHeader: "Route: <strong>{routeShortName}</strong> {routeLongName}"
+    startOfTrip: Trip begins here
+    tripDescription: Board at {boardAtStop} and disembark at {disembarkAtStop}
     viewStop: View
   UserAccountScreen:
     confirmDelete: Are you sure you would like to delete your user account? Once you
@@ -799,8 +804,8 @@ config:
     micromobility_rent: Rented E-scooter
   # Default values for Flex Indicator (set in configuration as well)
   flex:
-    flex-service: Flex Service
-    flex-service-colon: "Flex Service:"
     both: See bottom of itinerary for details
     call-ahead: Call to reserve
     continuous-dropoff: Communicate with operator about stop
+    flex-service: Flex Service
+    flex-service-colon: "Flex Service:"
