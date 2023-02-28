@@ -232,9 +232,7 @@ components:
     stops: Transit Stops
     streets: Streets
   MetroUI:
-    leaveAt: You leave
     arriveAtTime: "Arrive at {time}"
-    timeWalking: "{time} walking"
     fromStop: "from {stop}"
     itineraryDescription: "{time} itinerary using {routes}"
     leaveAt: You leave
