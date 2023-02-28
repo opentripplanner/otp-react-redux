@@ -487,7 +487,8 @@ components:
     unsavedChangesExistingTrip: 你还没有保存你的行程. 如果你离开了变化就会丢失.
     unsavedChangesNewTrip: 你还没有保存你的新旅行. 如果你离开它就会丢失.
   TripSummary:
-    itinerary: 行程
+    arriveAt: "到达 "
+    leaveAt: "离开 "
   SessionTimeout:
     header: 会话即将超时！
     keepSession: 继续会话

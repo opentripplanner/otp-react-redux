@@ -553,7 +553,8 @@ components:
       tripStartsSoonNoUpdates: Départ proche (pas de données en temps réel).
       tripStartsSoonOnTime: Départ proche et prévu à l'heure.
   TripSummary:
-    itinerary: Trajet
+    arriveAt: "Arrivée à "
+    leaveAt: "Partez à "
   TripSummaryPane:
     happensOnDays: "Effectué : <strong>{days}</strong>"
     notifications: "Notifications : <strong>{leadTimeInMinutes} mn avant l'heure de\

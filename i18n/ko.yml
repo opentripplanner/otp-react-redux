@@ -438,7 +438,8 @@ components:
     destination: 에
     route: 노선
   TripSummary:
-    itinerary: 여정
+    arriveAt: "도착 "
+    leaveAt: "출발 "
   TripSummaryPane:
     happensOnDays: '<strong>{days}</strong>: 에 일어난다'
     notifications: '알림: <strong>예정출발 {leadTimeInMinutes} 분전</strong>'
