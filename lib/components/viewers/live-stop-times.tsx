@@ -164,7 +164,7 @@ class LiveStopTimes extends Component<Props, State> {
       )
 
     const routesByDay: any = []
-    const firstDayOfService = routeTimes[0].times[0].serviceDay
+    const firstDayOfService = routeTimes?.[0].times?.[0].serviceDay
 
     // Loop through all routes, and sort based on that route's next available day of service.
     routeTimes.forEach((route) => {
