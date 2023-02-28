@@ -28,8 +28,6 @@ const defaultState = {
   timer: null
 }
 
-const ONE_DAY_IN_SECONDS = 86400
-
 type Props = {
   autoRefreshStopTimes: boolean
   findStopTimesForStop: ({ stopId }: { stopId: string }) => void
@@ -154,8 +152,10 @@ class LiveStopTimes extends Component<Props, State> {
       .filter(({ times }) => times.length !== 0)
       .sort(patternComparator)
       .map((route) => {
+        const { serviceDay } = route.times[0]
         return {
           ...route,
+          day: serviceDay,
           times: route.times.concat()?.sort(stopTimeComparator)
         }
       })
@@ -163,48 +163,41 @@ class LiveStopTimes extends Component<Props, State> {
         routeIsValid(route, getRouteIdForPattern(pattern))
       )
 
-    const routesByDay: any = []
-    const firstDayOfService = routeTimes[0].times[0].serviceDay
-
-    // Loop through all routes, and sort based on that route's next available day of service.
-    routeTimes.forEach((route) => {
-      const { serviceDay } = route.times[0]
-      const daysPastFirstService =
-        (serviceDay - firstDayOfService) / ONE_DAY_IN_SECONDS
-
-      // Create a separate array for each service day
-      routesByDay[daysPastFirstService]
-        ? routesByDay[daysPastFirstService].push(route)
-        : routesByDay.push([route])
-    })
+    // Next 3 service days at this stop
+    const daysOfService = [
+      ...Array.from(new Set(routeTimes.map((route) => route.day)))
+    ]
+      .sort(function (a, b) {
+        return a - b
+      })
+      .slice(0, 3)
 
     return (
       <>
         <div className="departures">
-          {routesByDay.length > 0 && (
-            <div className="list-container">
-              {routesByDay.map((routes: any) => {
-                const { serviceDay } = routes[0].times[0]
-                return (
-                  <div className="day-container" key={routes.id}>
-                    {/* If the service day is not today, add a label */}
-                    {!isSameDay(
-                      // service day has to be converted to milliseconds
-                      serviceDay * 1000,
-                      utcToZonedTime(Date.now(), homeTimezone)
-                    ) && (
-                      <p>
-                        <FormattedDayOfWeek
-                          // 'iiii' returns the long ISO day of the week (independent of browser locale).
-                          // See https://date-fns.org/v2.28.0/docs/format
-                          day={format(serviceDay * 1000, 'iiii', {
-                            timeZone: homeTimezone
-                          }).toLowerCase()}
-                        />
-                      </p>
-                    )}
-                    <ul className="route-row-container">
-                      {routes.map((time: any) => {
+          {routeTimes.length > 0 &&
+            daysOfService &&
+            daysOfService.map((day) => {
+              const today = utcToZonedTime(Date.now(), homeTimezone)
+              const formattedDay = utcToZonedTime(day * 1000, homeTimezone)
+              return (
+                <div className="day-container" key={day}>
+                  {/* If the service day is not today, add a label */}
+                  {!isSameDay(today, formattedDay) && (
+                    <p>
+                      <FormattedDayOfWeek
+                        // 'iiii' returns the long ISO day of the week (independent of browser locale).
+                        // See https://date-fns.org/v2.28.0/docs/format
+                        day={format(formattedDay, 'iiii', {
+                          timeZone: homeTimezone
+                        }).toLowerCase()}
+                      />
+                    </p>
+                  )}
+                  <ul className="route-row-container">
+                    {routeTimes
+                      .filter((route) => route.day === day)
+                      .map((time: any) => {
                         const { id, pattern, route, times } = time
                         return (
                           <PatternRow
@@ -225,12 +218,10 @@ class LiveStopTimes extends Component<Props, State> {
                           />
                         )
                       })}
-                    </ul>
-                  </div>
-                )
-              })}
-            </div>
-          )}
+                  </ul>
+                </div>
+              )
+            })}
         </div>
 
         {/* Auto update controls for realtime arrivals */}
