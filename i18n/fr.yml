@@ -169,9 +169,9 @@ components:
     now: Tout de suite
   DateTimePreview:
     arriveAt: "Arrivée {arriveTime, time, short}"
+    dayLastWeek: "{formattedDayOfWeek} dernier"
     departAt: "Départ {departTime, time, short}"
     editDepartOrArrival: Modifier l'heure de départ ou d'arrivée
-    dayLastWeek: "{formattedDayOfWeek} dernier"
     leaveNow: Tout de suite
     range: "{startTime, time, short} à {endTime, time, short}"
   DateTimeScreen:
@@ -213,6 +213,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
+    itineraryDetails: Détails du trajet
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Rafraîchir les horaires automatiquement ?
@@ -226,9 +227,9 @@ components:
     bike-rental: Vélos partagés {companies}
     car-rental: Voitures en location
     micromobility-rental: Trottinettes {companies}
-    shared-vehicles: "Véhicules partagés"
     park-and-ride: Parcs relais
     satellite: Satellite
+    shared-vehicles: "Véhicules partagés"
     stops: Arrêts et stations
     streets: Plan des rues
   MetroUI:
@@ -245,6 +246,7 @@ components:
   ModeDropdown:
     exclusiveMode: "{mode} uniquement"
   NarrativeItinerariesHeader:
+    changeSortDir: Changer l'ordre de tri
     itinerariesAndIssues: "{itinerariesFound} et {numIssues}"
     itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets\
       \ trouvés} }"
@@ -258,9 +260,8 @@ components:
     selectDepartureTime: Heure de départ
     selectDuration: Durée
     selectWalkTime: Temps de marche
-    viewAll: Toutes les options
-    changeSortDir: Changer l'ordre de tri
     sortBy: Trier par
+    viewAll: Toutes les options
   NavLoginButton:
     help: Aide
     myAccount: Mon compte
@@ -437,9 +438,14 @@ components:
     zoomToStop: Zoomer sur l'arrêt
 
   SubNav:
+    activeLanguage: Langue active
+    languageSelector: Langue
+    languages: "Langues"
     myAccount: Mon compte
+    selectALanguage: Sélectionner une langue
     settings: Préférences
     trips: Trajets
+    userMenu: Options de profil
   SwitchButton:
     defaultContent: Permuter
     switchLocations: Permuter les lieux

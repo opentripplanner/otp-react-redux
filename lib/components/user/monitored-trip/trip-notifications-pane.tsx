@@ -145,13 +145,10 @@ function DurationOptions({
   const localizedMinutes = minuteOptions.map((minutes) => ({
     text:
       minutes === 60
-        ? intl.formatMessage(
-            { id: 'components.TripNotificationsPane.oneHour' },
-            { minutes }
-          )
+        ? intl.formatMessage({ id: 'components.TripNotificationsPane.oneHour' })
         : intl.formatMessage(
             { id: 'common.time.tripDurationFormat' },
-            { hours: 0, minutes }
+            { hours: 0, minutes, seconds: 0 }
           ),
     value: minutes
   }))
