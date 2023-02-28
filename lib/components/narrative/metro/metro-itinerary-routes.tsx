@@ -8,6 +8,7 @@ import { getFormattedMode } from '../../../util/i18n'
 import FormattedDuration, {
   formatDuration
 } from '../../util/formatted-duration'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import {
   getItineraryRoutes,
@@ -15,11 +16,12 @@ import {
 } from './attribute-utils'
 import RouteBlock from './route-block'
 
-const ItineraryGrid = styled.div`
-  display: grid;
-  gap: 7px;
-  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
-  padding: 10px 1em;
+const Routes = styled.div<{ enableDot?: boolean }>`
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px !important;
 
   svg {
     /* Fix for safari, where svg needs explicit width to render */
@@ -29,15 +31,6 @@ const ItineraryGrid = styled.div`
       margin-left: 0px;
     }
   }
-`
-
-const Routes = styled.section<{ enableDot?: boolean }>`
-  align-items: start;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  grid-column-start: 1;
-  margin-top: 10px;
 
   ${(props) =>
     !props?.enableDot &&
@@ -58,15 +51,11 @@ const Routes = styled.section<{ enableDot?: boolean }>`
 `
 
 // invisible header rendered for screen readers and a11y technologies
-const InvisibleHeader = styled.span`
-  /* TODO: This grid/column places the invisbile header into an unused 
-  grid-cell to stop it from adding an additional row. There is probably 
-  a better way to do this! */
+const InvisibleHeader = styled(InvisibleA11yLabel)`
+  /* HACK: This grid/column places the invisbile header into an unused 
+     grid-cell to stop it from adding an additional row. */
   grid-column: 2;
   grid-row: 2;
-  height: 0;
-  overflow: hidden;
-  width: 0;
 `
 
 type Props = {
@@ -91,7 +80,7 @@ const MetroItineraryRoutes = ({
   const transitRoutes = getItineraryRoutes(itinerary, intl)
 
   return (
-    <ItineraryGrid>
+    <>
       <InvisibleHeader as={expanded ? 'h1' : undefined}>
         {String(transitRoutes) ? (
           <FormattedMessage
@@ -136,7 +125,7 @@ const MetroItineraryRoutes = ({
           )
         })}
       </Routes>
-    </ItineraryGrid>
+    </>
   )
 }
 
