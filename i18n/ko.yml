@@ -420,7 +420,6 @@ components:
   PlaceEditor:
     genericLocationPlaceholder: 위치를 검색하십시오
     locationPlaceholder: '{placeName} 위치를 검색하십시오'
-    namePlaceholder: 장소 이름을 설정합니다
   PlanFirstLastButtons:
     first: 첫 번째
     last: 마지막
@@ -586,7 +585,8 @@ common:
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {몇 초 전에}\n =1 {1 분 전}\n other {# 분 전}\n }}\n =1 {한 시간 전에}\n other {# 시간\
       \ 전}\n }}\n other {# 일 전}\n }\n"
-    tripDurationFormat: "{hours, plural, =0 {} other {# 시간 }}{minutes, number} 분 { seconds, plural, =0 {} other {# 초}}"
+    tripDurationFormat: "{hours, plural, =0 {} other {# 시간 }}{minutes, number} 분 {\
+      \ seconds, plural, =0 {} other {# 초}}"
   coordinates: '{lat}, {lon}'
 util:
   state:
