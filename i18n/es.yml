@@ -171,11 +171,11 @@ components:
     smsDetail: 'Las notificaciones por SMS se enviarán a:'
     verificationCode: 'Código de verificación:'
     verificationInstructions: "Por favor, compruebe en la aplicación de mensajería\
-    verified: Verificado
-    verify: Verificar
       \ SMS de su teléfono móvil si hay un mensaje de texto con un código de verificación,\
       \ e introduzca el código que aparece a continuación. El código caduca a los\
       \ 10 minutos.\n"
+    verified: Verificado
+    verify: Verificar
   Place:
     deleteThisPlace: Borrar este lugar
     enterAlert: "Introduzca el origen/destino en el formulario (o establezca mediante\
