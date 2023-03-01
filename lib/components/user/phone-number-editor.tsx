@@ -29,6 +29,7 @@ interface Props {
 
 interface State {
   isEditing: boolean
+  phoneNumberReceived: boolean
   submittedNumber: string
 }
 
@@ -45,6 +46,9 @@ class PhoneNumberEditor extends Component<Props, State> {
       // For new users, render component in editing state.
       isEditing: isBlank(initialPhoneNumber),
 
+      // Alert for when a phone number was successfully received.
+      phoneNumberReceived: false,
+
       // Holds the new phone number (+15555550123 format) submitted for verification.
       submittedNumber: ''
     }
@@ -59,6 +63,7 @@ class PhoneNumberEditor extends Component<Props, State> {
   _handleCancelEditNumber = () => {
     this.setState({
       isEditing: false,
+      phoneNumberReceived: false,
       submittedNumber: ''
     })
   }
@@ -100,25 +105,46 @@ class PhoneNumberEditor extends Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
+    const { initialPhoneNumber, initialPhoneNumberVerified } = this.props
+    const numberChanged = initialPhoneNumber !== prevProps.initialPhoneNumber
     // If new phone number and verified status are received,
     // then reset/clear the inputs.
     if (
-      this.props.initialPhoneNumber !== prevProps.initialPhoneNumber ||
-      this.props.initialPhoneNumberVerified !==
-        prevProps.initialPhoneNumberVerified
+      numberChanged ||
+      initialPhoneNumberVerified !== prevProps.initialPhoneNumberVerified
     ) {
       this._handleCancelEditNumber()
+    }
+
+    // If a new phone number was submitted,
+    // i.e. initialPhoneNumber changed AND initialPhoneNumberVerified turns false,
+    // set an ARIA alert that the phone number was successfully submitted.
+    if (numberChanged && !initialPhoneNumberVerified) {
+      this.setState({ phoneNumberReceived: true })
     }
   }
 
   render() {
     const { initialPhoneNumber, onSubmitCode, phoneFormatOptions } = this.props
-    const { isEditing, submittedNumber } = this.state
+    const { isEditing, phoneNumberReceived, submittedNumber } = this.state
     const hasSubmittedNumber = !isBlank(submittedNumber)
     const isPending = hasSubmittedNumber || this._isPhoneNumberPending()
+    const isPhoneChangeFormBusy = isEditing && hasSubmittedNumber
 
     return (
       <>
+        <InvisibleA11yLabel aria-busy={isPhoneChangeFormBusy} role="alert">
+          {phoneNumberReceived && (
+            // Note: ARIA alerts are read out only once, until they change.
+            <FormattedMessage
+              id="components.PhoneNumberEditor.phoneNumberSubmitted"
+              values={{
+                // TODO: Find a correct way to render phone numbers for screen readers (at least for US).
+                phoneNumber: initialPhoneNumber
+              }}
+            />
+          )}
+        </InvisibleA11yLabel>
         {isEditing ? (
           <PhoneChangeForm
             isSubmitting={hasSubmittedNumber}

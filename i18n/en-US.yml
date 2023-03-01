@@ -286,6 +286,7 @@ components:
     pending: Pending
     # Note to translator: placeholder is width-constrained.
     placeholder: "Enter your phone number"
+    phoneNumberSubmitted: Phone number {phoneNumber} was successfully submitted.
     prompt: "Enter your phone number for SMS notifications:"
     requestNewCode: Request a new code
     sendVerificationText: Send verification text
