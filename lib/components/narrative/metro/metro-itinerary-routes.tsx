@@ -50,10 +50,10 @@ const Routes = styled.div<{ enableDot?: boolean }>`
   `}
 `
 
-// invisible header rendered for screen readers and a11y technologies
+// Invisible header rendered for screen readers and a11y technologies.
+// HACK: This grid/column places the invisible header into an unused
+// grid-cell to stop it from adding an additional row.
 const InvisibleHeader = styled(InvisibleA11yLabel)`
-  /* HACK: This grid/column places the invisbile header into an unused 
-     grid-cell to stop it from adding an additional row. */
   grid-column: 2;
   grid-row: 2;
 `
