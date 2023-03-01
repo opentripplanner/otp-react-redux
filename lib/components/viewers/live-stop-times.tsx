@@ -152,11 +152,21 @@ class LiveStopTimes extends Component<Props, State> {
       .filter(({ times }) => times.length !== 0)
       .sort(patternComparator)
       .map((route) => {
-        const { serviceDay } = route.times[0]
+        const sortedTimes = route.times
+          .concat()
+          ?.sort(stopTimeComparator)
+          // Only show times within 24 hours of next arrival time
+          .filter((time: any, i: number, array: Array<any>) => {
+            const firstDepartureTime =
+              array[0].serviceDay + array[0].realtimeDeparture
+            const departureTime = time.serviceDay + time.realtimeDeparture
+            return i === 0 || (departureTime - firstDepartureTime) / 3600 < 24
+          })
+        const { serviceDay } = sortedTimes[0]
         return {
           ...route,
           day: serviceDay,
-          times: route.times.concat()?.sort(stopTimeComparator)
+          times: sortedTimes
         }
       })
       .filter(({ pattern, route }) =>
