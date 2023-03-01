@@ -3,8 +3,6 @@ import { FormattedMessage, FormattedTime } from 'react-intl'
 import { Redo } from '@styled-icons/fa-solid/Redo'
 import { TransitOperator } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
-
-import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import isSameDay from 'date-fns/isSameDay'
 import React, { Component } from 'react'
 
@@ -15,6 +13,7 @@ import {
   stopTimeComparator
 } from '../../util/viewer'
 import { IconWithText } from '../util/styledIcon'
+import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import SpanWithSpace from '../util/span-with-space'
 
 import AmenitiesPanel from './amenities-panel'
@@ -122,6 +121,27 @@ class LiveStopTimes extends Component<Props, State> {
       this._startAutoRefresh()
   }
 
+  renderDay = (homeTimezone: string, day: number): JSX.Element => {
+    const today = utcToZonedTime(Date.now(), homeTimezone)
+    const formattedDay = utcToZonedTime(day * 1000, homeTimezone)
+    return (
+      <div className="day-container" key={day}>
+        {/* If the service day is not today, add a label */}
+        {!isSameDay(today, formattedDay) && (
+          <p>
+            <FormattedDayOfWeek
+              // 'iiii' returns the long ISO day of the week (independent of browser locale).
+              // See https://date-fns.org/v2.28.0/docs/format
+              day={format(formattedDay, 'iiii', {
+                timeZone: homeTimezone
+              }).toLowerCase()}
+            />
+          </p>
+        )}
+      </div>
+    )
+  }
+
   render(): JSX.Element {
     const {
       homeTimezone,
@@ -163,65 +183,35 @@ class LiveStopTimes extends Component<Props, State> {
         routeIsValid(route, getRouteIdForPattern(pattern))
       )
 
-    // Next 3 service days at this stop
-    const daysOfService = [
-      ...Array.from(new Set(routeTimes.map((route) => route.day)))
-    ]
-      .sort(function (a, b) {
-        return a - b
-      })
-      .slice(0, 3)
-
     return (
       <>
         <div className="departures">
-          {routeTimes.length > 0 &&
-            daysOfService &&
-            daysOfService.map((day) => {
-              const today = utcToZonedTime(Date.now(), homeTimezone)
-              const formattedDay = utcToZonedTime(day * 1000, homeTimezone)
+          <ul className="route-row-container">
+            {routeTimes.map((time: any, index: number) => {
+              const { id, pattern, route, times } = time
               return (
-                <div className="day-container" key={day}>
-                  {/* If the service day is not today, add a label */}
-                  {!isSameDay(today, formattedDay) && (
-                    <p>
-                      <FormattedDayOfWeek
-                        // 'iiii' returns the long ISO day of the week (independent of browser locale).
-                        // See https://date-fns.org/v2.28.0/docs/format
-                        day={format(formattedDay, 'iiii', {
-                          timeZone: homeTimezone
-                        }).toLowerCase()}
-                      />
-                    </p>
-                  )}
-                  <ul className="route-row-container">
-                    {routeTimes
-                      .filter((route) => route.day === day)
-                      .map((time: any) => {
-                        const { id, pattern, route, times } = time
-                        return (
-                          <PatternRow
-                            homeTimezone={homeTimezone}
-                            key={id}
-                            pattern={pattern}
-                            route={{
-                              ...route,
-                              operator: transitOperators.find(
-                                (o: TransitOperator) =>
-                                  o.agencyId === route.agencyId
-                              )
-                            }}
-                            showOperatorLogo={showOperatorLogo}
-                            stopTimes={times}
-                            stopViewerArriving={stopViewerArriving}
-                            stopViewerConfig={stopViewerConfig}
-                          />
-                        )
-                      })}
-                  </ul>
-                </div>
+                <React.Fragment key={id}>
+                  {index > 0 &&
+                    time.day !== routeTimes[index - 1].day &&
+                    this.renderDay(homeTimezone, time.day)}
+                  <PatternRow
+                    homeTimezone={homeTimezone}
+                    pattern={pattern}
+                    route={{
+                      ...route,
+                      operator: transitOperators.find(
+                        (o: TransitOperator) => o.agencyId === route.agencyId
+                      )
+                    }}
+                    showOperatorLogo={showOperatorLogo}
+                    stopTimes={times}
+                    stopViewerArriving={stopViewerArriving}
+                    stopViewerConfig={stopViewerConfig}
+                  />
+                </React.Fragment>
               )
             })}
+          </ul>
         </div>
 
         {/* Auto update controls for realtime arrivals */}
