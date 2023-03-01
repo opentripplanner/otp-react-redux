@@ -121,7 +121,10 @@ const RealtimeStatusLabel = ({
           minutes={
             isEarlyOrLate ? (
               <DelayText>
-                <FormattedDuration duration={Math.abs(delay)} />
+                <FormattedDuration
+                  duration={Math.abs(delay)}
+                  includeSeconds={false}
+                />
               </DelayText>
             ) : (
               <>{null}</>

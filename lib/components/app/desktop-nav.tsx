@@ -41,7 +41,6 @@ export type Props = {
  */
 const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
   const { branding, persistence, title = DEFAULT_APP_TITLE } = otpConfig
-  const { language: configLanguages } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
 
   return (
@@ -72,7 +71,7 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
                 <FormattedMessage id={`config.popups.${popupTarget}`} />
               </NavItemOnLargeScreens>
             )}
-            <LocaleSelector configLanguages={configLanguages} />
+            <LocaleSelector />
             {showLogin && (
               <NavLoginButtonAuth0
                 id="login-control"

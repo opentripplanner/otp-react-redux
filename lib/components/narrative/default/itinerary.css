@@ -37,6 +37,7 @@
   border-top-right-radius: 10px;
 }
 .otp .option.metro-itin.expanded:first-of-type div.header .itin-wrapper {
+  border-bottom: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -127,13 +128,18 @@
   border-left: 4px teal solid;
 }
 
-/* FIXME: don't highlight if not active */
-.otp .option.default-itin:hover:not(.active) {
+/* Highlight if hovering within search results.
+   FIXME: don't highlight if not active */
+.otp .result .option.default-itin:hover:not(.active) {
   background-color: var(--hover-color);
 }
 
 .otp .option.default-itin > .header {
   font-size: 16px;
+}
+
+/* Show a pointer cursor only for itinerary headers under search results. */
+.otp .result .option.default-itin > .header {
   cursor: pointer;
 }
 

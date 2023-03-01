@@ -279,7 +279,7 @@ class DefaultMap extends Component {
     const baseLayerNames = baseLayersWithNames?.map((bl) => bl.name)
 
     return (
-      <MapContainer>
+      <MapContainer className="percy-hide">
         <BaseMap
           baseLayer={
             baseLayerUrls?.length > 1 ? baseLayerUrls : baseLayerUrls?.[0]

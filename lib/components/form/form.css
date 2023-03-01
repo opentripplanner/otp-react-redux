@@ -77,11 +77,17 @@
 }
 
 /* switch button */
+.otp .switch-button .hidden {
+  display: inline-block;
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
 
 .otp .switch-button-container {
   position: absolute;
-  top: 32px;
-  right: 45px;
+  top: 22px;
+  right: 32px;
   z-index: 100000;
 }
 
@@ -407,4 +413,9 @@
 }
 .otp .date-time-modal .date-time-selector.with-desktop-touchscreen input::-webkit-datetime-edit {
   margin-inline-end: 8px;
+}
+
+.batch-routing-panel-location-fields {
+  display: block;
+  position: relative;
 }

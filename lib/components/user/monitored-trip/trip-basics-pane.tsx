@@ -1,7 +1,4 @@
-import { Field } from 'formik'
-// No Typescript Yet
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+import { connect } from 'react-redux'
 import {
   ControlLabel,
   FormControl,
@@ -10,66 +7,121 @@ import {
   HelpBlock,
   ProgressBar
 } from 'react-bootstrap'
+import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl } from 'react-intl'
-// No Typescript Yet
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+import { Itinerary } from '@opentripplanner/types'
+import { Prompt } from 'react-router'
+// @ts-expect-error FormikErrorFocus does not support TypeScript yet.
 import FormikErrorFocus from 'formik-error-focus'
 import React, { Component } from 'react'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { connect } from 'react-redux'
-import { Prompt } from 'react-router'
 import styled from 'styled-components'
 import type { IntlShape, WrappedComponentProps } from 'react-intl'
 
 import * as userActions from '../../../actions/user'
-import {
-  ALL_DAYS,
-  getFormattedDayOfWeekPlural
-} from '../../../util/monitored-trip'
 import { getErrorStates } from '../../../util/ui'
+import { getFormattedDayOfWeekPlural } from '../../../util/monitored-trip'
+import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 import FormattedValidationError from '../../util/formatted-validation-error'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import TripStatus from './trip-status'
 import TripSummary from './trip-summary'
 
-type TripBasicsProps =
-  | {
-      canceled: boolean
-      checkItineraryExistence: (monitoredTrip: unknown, intl: IntlShape) => void
-      clearItineraryExistence: () => void
-      dirty: boolean
-      errors: { tripName?: string }
-      isCreating: boolean
-      isSubmitting: boolean
-      itineraryExistence: Record<string, { valid: boolean }>
-      setFieldValue: (field: string, threshold: number | false) => void
-      values: { [key: string]: string; itinerary: any } // FIXME
-    } & WrappedComponentProps
+interface Fields {
+  friday: boolean
+  itinerary: Itinerary
+  monday: boolean
+  saturday: boolean
+  sunday: boolean
+  thursday: boolean
+  tripName: string
+  tuesday: boolean
+  wednesday: boolean
+}
+
+type TripBasicsProps = WrappedComponentProps &
+  FormikProps<Fields> & {
+    canceled: boolean
+    checkItineraryExistence: (monitoredTrip: unknown, intl: IntlShape) => void
+    clearItineraryExistence: () => void
+    isCreating: boolean
+    itineraryExistence: Record<string, { valid: boolean }>
+  }
 
 // FIXME: move to shared types file
-type errorStates = 'success' | 'warning' | 'error' | null | undefined
+type ErrorStates = 'success' | 'warning' | 'error' | null | undefined
+
+// FIXME: combine back with monitored trips when that is typed.
+const ALL_DAYS = [
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+  'sunday'
+] as const
 
 // Styles.
-const TripDayLabel = styled.label`
-  border: 1px solid #ccc;
-  border-left: none;
-  box-sizing: border-box;
-  display: inline-block;
-  font-weight: inherit;
-  float: left;
-  height: 3em;
-  max-width: 150px;
-  min-width: 14.28%;
-  text-align: center;
+const AvailableDays = styled.fieldset`
+  /* Format <legend> like labels. */
+  legend {
+    border: none;
+    font-size: inherit;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  & > span {
+    border: 1px solid #ccc;
+    border-left: none;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 3em;
+    max-width: 150px;
+    min-width: 14.28%;
+    position: relative;
+    text-align: center;
+  }
   & > span:first-of-type {
+    border-left: 1px solid #ccc;
+  }
+
+  .glyphicon {
+    display: none;
+    /* Remove top attribute set by Bootstrap. */
+    top: inherit;
+  }
+
+  input {
     display: block;
+  }
+
+  input,
+  .glyphicon {
+    bottom: 6px;
+    position: absolute;
     width: 100%;
   }
-  &:first-of-type {
-    border-left: 1px solid #ccc;
+
+  /* Check boxes for disabled days are replaced with the cross mark. */
+  input[disabled] {
+    clip: rect(0, 0, 0, 0);
+    height: 0;
+    margin: 0;
+    width: 0;
+    z-index: -1;
+  }
+  input[disabled] ~ .glyphicon {
+    display: block;
+  }
+
+  /* Make labels occupy the whole space, so the entire block is clickable. */
+  label {
+    font-weight: inherit;
+    height: 100%;
+    width: 100%;
   }
 `
 
@@ -147,12 +199,9 @@ class TripBasicsPane extends Component<TripBasicsProps> {
       // Show an error indication when
       // - monitoredTrip.tripName is not blank and that tripName is not already used.
       // - no day is selected (show a combined error indication).
-      // FIXME: type getErrorStates
-      const errorStates: Record<string, errorStates | any> = getErrorStates(
-        this.props
-      )
+      const errorStates = getErrorStates(this.props)
 
-      let monitoredDaysValidationState: errorStates | null = null
+      let monitoredDaysValidationState: ErrorStates = null
       ALL_DAYS.forEach((day) => {
         if (!monitoredDaysValidationState) {
           monitoredDaysValidationState = errorStates[day]
@@ -174,24 +223,29 @@ class TripBasicsPane extends Component<TripBasicsProps> {
           <TripSummary monitoredTrip={monitoredTrip} />
 
           <FormGroup validationState={errorStates.tripName}>
-            <ControlLabel>
+            <ControlLabel htmlFor="tripName">
               <FormattedMessage id="components.TripBasicsPane.tripNamePrompt" />
             </ControlLabel>
             {/* onBlur, onChange, and value are passed automatically. */}
-            <Field as={FormControl} name="tripName" />
+            <Field
+              aria-invalid={!!errorStates.tripName}
+              as={FormControl}
+              id="tripName"
+              name="tripName"
+            />
             <FormControl.Feedback />
-            {errors.tripName && (
-              <HelpBlock>
+            <HelpBlock role="alert">
+              {errors.tripName && (
                 <FormattedValidationError type={errors.tripName} />
-              </HelpBlock>
-            )}
+              )}
+            </HelpBlock>
           </FormGroup>
 
           <FormGroup validationState={monitoredDaysValidationState}>
-            <ControlLabel>
-              <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
-            </ControlLabel>
-            <div>
+            <AvailableDays>
+              <legend className="control-label">
+                <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
+              </legend>
               {ALL_DAYS.map((day) => {
                 const isDayDisabled =
                   itineraryExistence && !itineraryExistence[day].valid
@@ -208,32 +262,32 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                   : ''
 
                 return (
-                  <TripDayLabel
-                    className={boxClass}
-                    key={day}
-                    title={notAvailableText}
-                  >
-                    <span>
-                      <FormattedDayOfWeekCompact day={day} />
-                    </span>
-                    {
+                  <span className={boxClass} key={day} title={notAvailableText}>
+                    <Field
+                      aria-invalid={!!monitoredDaysValidationState}
                       // Let users save an existing trip, even though it may not be available on some days.
                       // TODO: improve checking trip availability.
-                      isDayDisabled && isCreating ? (
-                        <Glyphicon
-                          aria-label={notAvailableText}
-                          glyph="ban-circle"
-                        />
-                      ) : (
-                        <Field name={day} type="checkbox" />
-                      )
-                    }
-                  </TripDayLabel>
+                      disabled={isDayDisabled && isCreating}
+                      id={day}
+                      name={day}
+                      type="checkbox"
+                    />
+                    <label htmlFor={day}>
+                      <InvisibleA11yLabel>
+                        <FormattedDayOfWeek day={day} />
+                      </InvisibleA11yLabel>
+                      <span aria-hidden>
+                        {/* The abbreviated text is visual only. Screen readers should read out the full day. */}
+                        <FormattedDayOfWeekCompact day={day} />
+                      </span>
+                    </label>
+                    <Glyphicon aria-hidden glyph="ban-circle" />
+                    <InvisibleA11yLabel>{notAvailableText}</InvisibleA11yLabel>
+                  </span>
                 )
               })}
-              <div style={{ clear: 'both' }} />
-            </div>
-            <HelpBlock>
+            </AvailableDays>
+            <HelpBlock role="status">
               {itineraryExistence ? (
                 <FormattedMessage id="components.TripBasicsPane.tripIsAvailableOnDaysIndicated" />
               ) : (
@@ -246,11 +300,11 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                 />
               )}
             </HelpBlock>
-            {monitoredDaysValidationState && (
-              <HelpBlock>
+            <HelpBlock role="alert">
+              {monitoredDaysValidationState && (
                 <FormattedMessage id="components.TripBasicsPane.selectAtLeastOneDay" />
-              </HelpBlock>
-            )}
+              )}
+            </HelpBlock>
 
             {/* Scroll to the trip name/days fields if submitting and there is an error on these fields. */}
             <FormikErrorFocus align="middle" duration={200} />
@@ -263,10 +317,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
 
 // Connect to redux store
 
-// TODO: state type
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   const { itineraryExistence } = state.user
   return {
     itineraryExistence
