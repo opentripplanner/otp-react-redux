@@ -221,3 +221,13 @@ button.step {
   the geocoder search results */
   z-index: 999;
 }
+
+/* Bootstrap adds a bottom margin to all labels,
+   but we don't want that in the map layer selector when it is collapsed. */
+.map-container .layers-list label {
+  margin-bottom: 0;
+}
+.map-container .layers-list.fake-mobile-hover label,
+.map-container .layers-list:hover label {
+  margin-bottom: 5px;
+}

@@ -9,7 +9,6 @@ import styled from 'styled-components'
 
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
 
-import { ItineraryDescription } from './default/itinerary-description'
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
 
@@ -96,9 +95,6 @@ export default function NarrativeItinerariesHeader({
               <FormattedMessage id="components.NarrativeItinerariesHeader.viewAll" />
             </IconWithText>
           </button>
-          <InvisibleHeader>
-            <ItineraryDescription itinerary={itinerary} />
-          </InvisibleHeader>
           {itineraryIsExpanded && (
             // marginLeft: auto is a way of making something "float right"
             // within a flex container
