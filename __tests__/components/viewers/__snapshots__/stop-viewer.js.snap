@@ -1004,6 +1004,10 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         <ul
                           className="route-row-container"
                         >
+                          <div
+                            className="day-container"
+                            key="1565161200"
+                          />
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
                             pattern={
@@ -3484,6 +3488,22 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         <ul
                           className="route-row-container"
                         >
+                          <div
+                            className="day-container"
+                            key="1565161200"
+                          >
+                            <p>
+                              <FormattedDayOfWeek
+                                day="wednesday"
+                              >
+                                <FormattedMessage
+                                  id="common.daysOfWeek.wednesday"
+                                >
+                                  common.daysOfWeek.wednesday
+                                </FormattedMessage>
+                              </FormattedDayOfWeek>
+                            </p>
+                          </div>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
                             pattern={
@@ -5332,6 +5352,22 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         <ul
                           className="route-row-container"
                         >
+                          <div
+                            className="day-container"
+                            key="1565161200"
+                          >
+                            <p>
+                              <FormattedDayOfWeek
+                                day="wednesday"
+                              >
+                                <FormattedMessage
+                                  id="common.daysOfWeek.wednesday"
+                                >
+                                  common.daysOfWeek.wednesday
+                                </FormattedMessage>
+                              </FormattedDayOfWeek>
+                            </p>
+                          </div>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
                             pattern={
@@ -8539,6 +8575,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         <ul
                           className="route-row-container"
                         >
+                          <div
+                            className="day-container"
+                            key="1564988400"
+                          >
+                            <p>
+                              <FormattedDayOfWeek
+                                day="monday"
+                              >
+                                <FormattedMessage
+                                  id="common.daysOfWeek.monday"
+                                >
+                                  common.daysOfWeek.monday
+                                </FormattedMessage>
+                              </FormattedDayOfWeek>
+                            </p>
+                          </div>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
                             pattern={
@@ -10105,6 +10157,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               </li>
                             </PatternRow>
                           </injectIntl(PatternRow)>
+                          <div
+                            className="day-container"
+                            key="1565074800"
+                          >
+                            <p>
+                              <FormattedDayOfWeek
+                                day="tuesday"
+                              >
+                                <FormattedMessage
+                                  id="common.daysOfWeek.tuesday"
+                                >
+                                  common.daysOfWeek.tuesday
+                                </FormattedMessage>
+                              </FormattedDayOfWeek>
+                            </p>
+                          </div>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
                             pattern={
@@ -10772,6 +10840,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               </li>
                             </PatternRow>
                           </injectIntl(PatternRow)>
+                          <div
+                            className="day-container"
+                            key="1565074800"
+                          >
+                            <p>
+                              <FormattedDayOfWeek
+                                day="tuesday"
+                              >
+                                <FormattedMessage
+                                  id="common.daysOfWeek.tuesday"
+                                >
+                                  common.daysOfWeek.tuesday
+                                </FormattedMessage>
+                              </FormattedDayOfWeek>
+                            </p>
+                          </div>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
                             pattern={
@@ -14889,6 +14973,22 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         <ul
                           className="route-row-container"
                         >
+                          <div
+                            className="day-container"
+                            key="1564988400"
+                          >
+                            <p>
+                              <FormattedDayOfWeek
+                                day="monday"
+                              >
+                                <FormattedMessage
+                                  id="common.daysOfWeek.monday"
+                                >
+                                  common.daysOfWeek.monday
+                                </FormattedMessage>
+                              </FormattedDayOfWeek>
+                            </p>
+                          </div>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
                             pattern={
