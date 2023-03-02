@@ -284,9 +284,10 @@ components:
     invalidCode: Please enter 6 digits for the validation code.
     invalidPhone: Please enter a valid phone number.
     pending: Pending
+    phoneNumberSubmitted: Phone number {phoneNumber} was successfully submitted.
+    phoneNumberVerified: Phone number {phoneNumber} was successfully verified.
     # Note to translator: placeholder is width-constrained.
     placeholder: "Enter your phone number"
-    phoneNumberSubmitted: Phone number {phoneNumber} was successfully submitted.
     prompt: "Enter your phone number for SMS notifications:"
     requestNewCode: Request a new code
     sendVerificationText: Send verification text

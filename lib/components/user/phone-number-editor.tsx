@@ -16,6 +16,14 @@ import PhoneVerificationForm, {
 
 export type PhoneCodeRequestHandler = (phoneNumber: string) => void
 
+const blankState = {
+  isEditing: false,
+  phoneNumberReceived: false,
+  phoneNumberVerified: false,
+  submittedCode: '',
+  submittedNumber: ''
+}
+
 interface Props {
   initialPhoneNumber?: string
   initialPhoneNumberVerified?: boolean
@@ -28,8 +36,15 @@ interface Props {
 }
 
 interface State {
+  /** If true, phone number is being edited. */
   isEditing: boolean
+  /** Alert for when a phone number was successfully received. */
   phoneNumberReceived: boolean
+  /** Alert for when a phone number was successfully verified. */
+  phoneNumberVerified: boolean
+  /** Holds the submitted validation code. */
+  submittedCode: string
+  /** Holds the new phone number (+15555550123 format) submitted for verification. */
   submittedNumber: string
 }
 
@@ -42,31 +57,15 @@ class PhoneNumberEditor extends Component<Props, State> {
 
     const { initialPhoneNumber } = props
     this.state = {
-      // If true, phone number is being edited.
+      ...blankState,
       // For new users, render component in editing state.
-      isEditing: isBlank(initialPhoneNumber),
-
-      // Alert for when a phone number was successfully received.
-      phoneNumberReceived: false,
-
-      // Holds the new phone number (+15555550123 format) submitted for verification.
-      submittedNumber: ''
+      isEditing: isBlank(initialPhoneNumber)
     }
   }
 
-  _handleEditNumber = () => {
-    this.setState({
-      isEditing: true
-    })
-  }
+  _handleEditNumber = () => this.setState({ isEditing: true })
 
-  _handleCancelEditNumber = () => {
-    this.setState({
-      isEditing: false,
-      phoneNumberReceived: false,
-      submittedNumber: ''
-    })
-  }
+  _handleCancelEditNumber = () => this.setState(blankState)
 
   /**
    * Send phone verification request with the entered values.
@@ -99,6 +98,23 @@ class PhoneNumberEditor extends Component<Props, State> {
     }
   }
 
+  /**
+   * Send phone validation code.
+   */
+  _handleSubmitCode: PhoneVerificationSubmitHandler = async (values) => {
+    const { onSubmitCode } = this.props
+    const submittedCode =
+      'validationCode' in values ? values.validationCode : null
+
+    if (submittedCode) {
+      this.setState({ submittedCode })
+      await onSubmitCode(values)
+      // If user enters the wrong code, re-enable verification submit.
+      // (If user enters the correct code, the page will be refreshed.)
+      this.setState({ submittedCode: '' })
+    }
+  }
+
   _isPhoneNumberPending = () => {
     const { initialPhoneNumber, initialPhoneNumberVerified } = this.props
     return !isBlank(initialPhoneNumber) && !initialPhoneNumberVerified
@@ -107,12 +123,12 @@ class PhoneNumberEditor extends Component<Props, State> {
   componentDidUpdate(prevProps: Props) {
     const { initialPhoneNumber, initialPhoneNumberVerified } = this.props
     const numberChanged = initialPhoneNumber !== prevProps.initialPhoneNumber
+    const verifiedChanged =
+      initialPhoneNumberVerified !== prevProps.initialPhoneNumberVerified
+
     // If new phone number and verified status are received,
     // then reset/clear the inputs.
-    if (
-      numberChanged ||
-      initialPhoneNumberVerified !== prevProps.initialPhoneNumberVerified
-    ) {
+    if (numberChanged || verifiedChanged) {
       this._handleCancelEditNumber()
     }
 
@@ -122,28 +138,57 @@ class PhoneNumberEditor extends Component<Props, State> {
     if (numberChanged && !initialPhoneNumberVerified) {
       this.setState({ phoneNumberReceived: true })
     }
+
+    // If a verification code was submitted successfully,
+    // i.e. initialPhoneNumber did not change AND initialPhoneVerified turns from false to true,
+    // set an ARIA alert that the phone number was successfully verified.
+    if (!numberChanged && verifiedChanged && initialPhoneNumberVerified) {
+      this.setState({ phoneNumberVerified: true })
+    }
   }
 
   render() {
-    const { initialPhoneNumber, onSubmitCode, phoneFormatOptions } = this.props
-    const { isEditing, phoneNumberReceived, submittedNumber } = this.state
+    const { initialPhoneNumber, phoneFormatOptions } = this.props
+    const {
+      isEditing,
+      phoneNumberReceived,
+      phoneNumberVerified,
+      submittedCode,
+      submittedNumber
+    } = this.state
     const hasSubmittedNumber = !isBlank(submittedNumber)
+    const hasSubmittedCode = !isBlank(submittedCode)
     const isPending = hasSubmittedNumber || this._isPhoneNumberPending()
-    const isPhoneChangeFormBusy = isEditing && hasSubmittedNumber
+    const isAlertBusy = (isEditing && hasSubmittedNumber) || hasSubmittedCode
+
+    // Note: ARIA alerts are read out only once, until they change,
+    // so there is no need to clear them.
+    // TODO: Find a correct way to render phone numbers for screen readers (at least for US).
+    let ariaAlertContent
+    if (phoneNumberReceived) {
+      ariaAlertContent = (
+        <FormattedMessage
+          id="components.PhoneNumberEditor.phoneNumberSubmitted"
+          values={{
+            phoneNumber: initialPhoneNumber
+          }}
+        />
+      )
+    } else if (phoneNumberVerified) {
+      ariaAlertContent = (
+        <FormattedMessage
+          id="components.PhoneNumberEditor.phoneNumberVerified"
+          values={{
+            phoneNumber: initialPhoneNumber
+          }}
+        />
+      )
+    }
 
     return (
       <>
-        <InvisibleA11yLabel aria-busy={isPhoneChangeFormBusy} role="alert">
-          {phoneNumberReceived && (
-            // Note: ARIA alerts are read out only once, until they change.
-            <FormattedMessage
-              id="components.PhoneNumberEditor.phoneNumberSubmitted"
-              values={{
-                // TODO: Find a correct way to render phone numbers for screen readers (at least for US).
-                phoneNumber: initialPhoneNumber
-              }}
-            />
-          )}
+        <InvisibleA11yLabel aria-busy={isAlertBusy} role="alert">
+          {ariaAlertContent}
         </InvisibleA11yLabel>
         {isEditing ? (
           <PhoneChangeForm
@@ -187,8 +232,9 @@ class PhoneNumberEditor extends Component<Props, State> {
 
         {isPending && !isEditing && (
           <PhoneVerificationForm
+            isSubmitting={hasSubmittedCode}
             onRequestCode={this._handleRequestCode}
-            onSubmit={onSubmitCode}
+            onSubmit={this._handleSubmitCode}
           />
         )}
       </>
