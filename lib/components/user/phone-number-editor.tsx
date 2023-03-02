@@ -198,12 +198,16 @@ class PhoneNumberEditor extends Component<Props, State> {
     let ariaAlertContent
     if (phoneNumberReceived) {
       ariaAlertContent = (
-        <FormattedMessage
-          id="components.PhoneNumberEditor.phoneNumberSubmitted"
-          values={{
-            phoneNumber: ariaPhoneNumber
-          }}
-        />
+        <>
+          <FormattedMessage
+            id="components.PhoneNumberEditor.phoneNumberSubmitted"
+            values={{
+              phoneNumber: ariaPhoneNumber
+            }}
+          />{' '}
+          {/* Repeat in the alert that the user has to lookup and enter a validation code next. */}
+          <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
+        </>
       )
     } else if (phoneNumberVerified) {
       ariaAlertContent = (
