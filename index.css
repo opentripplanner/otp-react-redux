@@ -221,3 +221,8 @@ button.step {
   the geocoder search results */
   z-index: 999;
 }
+
+.map-container .layers-list label {
+  /* Bootstrap adds a bottom margin to all labels, but we don't want that in the map layer selector. */
+  margin-bottom: 0;
+}
