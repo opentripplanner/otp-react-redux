@@ -7,9 +7,9 @@ import {
   FormGroup,
   HelpBlock
 } from 'react-bootstrap'
-import { Field, Form, Formik } from 'formik'
+import { Field, Form, Formik, FormikProps } from 'formik'
 import { FormattedMessage } from 'react-intl'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 import { getErrorStates } from '../../util/ui'
@@ -48,17 +48,90 @@ interface Props {
   onSubmit: PhoneVerificationSubmitHandler
 }
 
+type InnerProps = Props & FormikProps<Fields>
+
 /**
  * Sub-form for entering and submitting a phone validation code.
  */
-const PhoneVerificationForm = ({
-  isSubmitting,
-  onRequestCode,
-  onSubmit
-}: Props): JSX.Element => (
+const PhoneVerificationInnerForm = (props: InnerProps): JSX.Element => {
+  const { errors, isSubmitting, onRequestCode, submitCount, touched } = props
+  const ref = useRef<HTMLInputElement>()
+
+  // Return focus to the input control if the incorrect code was submitted.
+  useEffect(() => {
+    if (!isSubmitting && submitCount) {
+      ref.current?.focus()
+    }
+  }, [isSubmitting, submitCount])
+
+  const codeErrorState = getErrorStates(props).validationCode
+  const isInvalid = !!(touched.validationCode && errors.validationCode)
+  const formId = 'phone-verification-form'
+
+  return (
+    <FormGroup validationState={codeErrorState}>
+      {/* Set up an empty Formik Form without inputs, and link inputs using the form id.
+                    (A submit button within will incorrectly submit the entire page instead of just the subform.)
+                    The containing Formik element will watch submission of the form. */}
+      <Form id={formId} noValidate />
+      <p>
+        <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
+      </p>
+      <ControlLabel htmlFor="validation-code">
+        <FormattedMessage id="components.PhoneNumberEditor.verificationCode" />
+      </ControlLabel>
+      <ControlStrip>
+        <Field
+          aria-invalid={isInvalid}
+          aria-required
+          as={InlineTextInput}
+          form={formId}
+          id="validation-code"
+          maxLength={6}
+          name="validationCode"
+          placeholder="123456"
+          ref={ref}
+          // HACK: <input type='tel'> triggers the numerical keypad on mobile devices, and otherwise
+          // behaves like <input type='text'> with support of leading zeros and the maxLength prop.
+          // <input type='number'> causes values to be stored as Number, resulting in
+          // leading zeros to be invalid and stripped upon submission.
+          type="tel"
+        />
+        <Button
+          bsStyle="primary"
+          disabled={isSubmitting}
+          form={formId}
+          type="submit"
+        >
+          {isSubmitting ? (
+            <InlineLoading />
+          ) : (
+            <FormattedMessage id="components.PhoneNumberEditor.verify" />
+          )}
+          <InvisibleA11yLabel role="status">
+            {isSubmitting && <FormattedMessage id="common.forms.submitting" />}
+          </InvisibleA11yLabel>
+        </Button>
+        <HelpBlock role="alert">
+          {isInvalid && (
+            <FormattedMessage id="components.PhoneNumberEditor.invalidCode" />
+          )}
+        </HelpBlock>
+      </ControlStrip>
+      <FlushLink bsStyle="link" onClick={onRequestCode}>
+        <FormattedMessage id="components.PhoneNumberEditor.requestNewCode" />
+      </FlushLink>
+    </FormGroup>
+  )
+}
+
+/**
+ * Sub-form for entering and submitting a phone validation code.
+ */
+const PhoneVerificationForm = (props: Props): JSX.Element => (
   <Formik
     initialValues={{ validationCode: '' }}
-    onSubmit={onSubmit}
+    onSubmit={props.onSubmit}
     validateOnBlur
     validateOnChange={false}
     validationSchema={codeValidationSchema}
@@ -66,64 +139,9 @@ const PhoneVerificationForm = ({
     {
       // Pass Formik props to the component rendered so Formik can manage this form's validation
       // independently from UserAccountScreen.
-      (formikProps) => {
-        const { errors, touched } = formikProps
-        const codeErrorState = getErrorStates(formikProps).validationCode
-        const isInvalid = !!(touched.validationCode && errors.validationCode)
-        const formId = 'phone-verification-form'
-
-        return (
-          <FormGroup validationState={codeErrorState}>
-            {/* Set up an empty Formik Form without inputs, and link inputs using the form id.
-                  (A submit button within will incorrectly submit the entire page instead of just the subform.)
-                  The containing Formik element will watch submission of the form. */}
-            <Form id={formId} noValidate />
-            <p>
-              <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
-            </p>
-            <ControlLabel htmlFor="validation-code">
-              <FormattedMessage id="components.PhoneNumberEditor.verificationCode" />
-            </ControlLabel>
-            <ControlStrip>
-              <Field
-                aria-invalid={isInvalid}
-                aria-required
-                as={InlineTextInput}
-                form={formId}
-                id="validation-code"
-                maxLength={6}
-                name="validationCode"
-                placeholder="123456"
-                // HACK: <input type='tel'> triggers the numerical keypad on mobile devices, and otherwise
-                // behaves like <input type='text'> with support of leading zeros and the maxLength prop.
-                // <input type='number'> causes values to be stored as Number, resulting in
-                // leading zeros to be invalid and stripped upon submission.
-                type="tel"
-              />
-              <Button bsStyle="primary" form={formId} type="submit">
-                {isSubmitting ? (
-                  <InlineLoading />
-                ) : (
-                  <FormattedMessage id="components.PhoneNumberEditor.verify" />
-                )}
-                <InvisibleA11yLabel role="status">
-                  {isSubmitting && (
-                    <FormattedMessage id="common.forms.submitting" />
-                  )}
-                </InvisibleA11yLabel>
-              </Button>
-              <HelpBlock role="alert">
-                {isInvalid && (
-                  <FormattedMessage id="components.PhoneNumberEditor.invalidCode" />
-                )}
-              </HelpBlock>
-            </ControlStrip>
-            <FlushLink bsStyle="link" onClick={onRequestCode}>
-              <FormattedMessage id="components.PhoneNumberEditor.requestNewCode" />
-            </FlushLink>
-          </FormGroup>
-        )
-      }
+      (formikProps) => (
+        <PhoneVerificationInnerForm {...formikProps} {...props} />
+      )
     }
   </Formik>
 )
