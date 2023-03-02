@@ -3,6 +3,7 @@ import { Label as BsLabel, FormGroup } from 'react-bootstrap'
 import { formatPhoneNumber } from 'react-phone-number-input'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import React, { Component, createRef, Fragment } from 'react'
+import styled from 'styled-components'
 
 import { getAriaPhoneNumber } from '../../util/a11y'
 import { isBlank } from '../../util/ui'
@@ -16,6 +17,13 @@ import PhoneVerificationForm, {
 } from './phone-verification-form'
 
 export type PhoneCodeRequestHandler = (phoneNumber: string) => void
+
+const PlainLink = styled(SpanWithSpace)`
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+  }
+`
 
 const blankState = {
   isEditing: false,
@@ -228,14 +236,17 @@ class PhoneNumberEditor extends Component<Props, State> {
             </FakeLabel>
             <ControlStrip>
               <InlineStatic className="form-control-static">
-                <SpanWithSpace
+                <PlainLink
                   aria-label={ariaPhoneNumber}
+                  // Use an anchor so that the aria-label applies.
+                  // Styling will mostly make the text appear plain, but
+                  // phone actions can be performed if necessary.
                   as="a"
                   href={`tel:${shownPhoneNumberRaw}`}
                   margin={0.5}
                 >
                   {shownPhoneNumber}
-                </SpanWithSpace>
+                </PlainLink>
                 {/* Invisible parentheses for no-CSS and screen readers */}
                 <InvisibleA11yLabel> (</InvisibleA11yLabel>
                 {isPending ? (
