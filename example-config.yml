@@ -477,7 +477,7 @@ itinerary:
 #         both: See bottom of itinerary for details.
 #         call-ahead: "Call to reserve: (555) 555-5555"
 #         continuous-dropoff: Communicate with operator about stop
-#       acessibilityScore:
+#       accessibilityScore:
 #         gradationMap:
 #           0.0: 'Not Accessible'
 #           0.9: 'Mostly Accessible'

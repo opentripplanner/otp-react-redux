@@ -169,9 +169,9 @@ components:
     now: Tout de suite
   DateTimePreview:
     arriveAt: "Arrivée {arriveTime, time, short}"
+    dayLastWeek: "{formattedDayOfWeek} dernier"
     departAt: "Départ {departTime, time, short}"
     editDepartOrArrival: Modifier l'heure de départ ou d'arrivée
-    dayLastWeek: "{formattedDayOfWeek} dernier"
     leaveNow: Tout de suite
     range: "{startTime, time, short} à {endTime, time, short}"
   DateTimeScreen:
@@ -213,6 +213,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
+    itineraryDetails: Détails du trajet
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Rafraîchir les horaires automatiquement ?
@@ -226,9 +227,9 @@ components:
     bike-rental: Vélos partagés {companies}
     car-rental: Voitures en location
     micromobility-rental: Trottinettes {companies}
-    shared-vehicles: "Véhicules partagés"
     park-and-ride: Parcs relais
     satellite: Satellite
+    shared-vehicles: "Véhicules partagés"
     stops: Arrêts et stations
     streets: Plan des rues
   MetroUI:
@@ -238,12 +239,14 @@ components:
     leaveAt: Partez à
     multipleOptions: Plusieurs options
     orAlternatives: ou autres lignes dans la même direction
+    singleModeItineraryDescription: "Trajet de {time} {mode}"
     timeWalking: "{time} de marche"
   MobileOptions:
     header: Options de recherche
   ModeDropdown:
     exclusiveMode: "{mode} uniquement"
   NarrativeItinerariesHeader:
+    changeSortDir: Changer l'ordre de tri
     itinerariesAndIssues: "{itinerariesFound} et {numIssues}"
     itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets\
       \ trouvés} }"
@@ -257,9 +260,8 @@ components:
     selectDepartureTime: Heure de départ
     selectDuration: Durée
     selectWalkTime: Temps de marche
-    viewAll: Toutes les options
-    changeSortDir: Changer l'ordre de tri
     sortBy: Trier par
+    viewAll: Toutes les options
   NavLoginButton:
     help: Aide
     myAccount: Mon compte
@@ -436,9 +438,14 @@ components:
     zoomToStop: Zoomer sur l'arrêt
 
   SubNav:
+    activeLanguage: Langue active
+    languageSelector: Langue
+    languages: "Langues"
     myAccount: Mon compte
+    selectALanguage: Sélectionner une langue
     settings: Préférences
     trips: Trajets
+    userMenu: Options de profil
   SwitchButton:
     defaultContent: Permuter
     switchLocations: Permuter les lieux
@@ -478,14 +485,13 @@ components:
       vous annulez, les changements seront perdus.
   TripNotificationsPane:
     advancedSettings: Paramètres avancés
-    altRouteRecommended: Un autre trajet ou une autre correspondance est conseillé·e
+    altRouteRecommended: Un·e autre trajet ou correspondance est conseillé·e
     delaysAboveThreshold: Il y a des perturbations ou retards de plus de
     howToReceiveAlerts: >
       Pour recevoir les alertes pour vos trajets suivis, activez les notifications
       dans la section Préférences de votre compte, et essayez d'enregistrer un trajet
       à nouveau.
-    monitorThisTrip: Effectuer le suivi du trajet {minutes} avant le départ et jusqu'à
-      l'arrivée.
+    monitorThisTrip: "Faire le suivi du trajet avant le départ :"
     notificationsTurnedOff: Les notifications sont désactivées pour votre compte.
     # Note to translator: The notifyViaChannelWhen message, combined with
     # altRouteRecommended, delaysAboveTHreshold, realtimeAlertFlagged,
@@ -493,6 +499,7 @@ components:
     notifyViaChannelWhen: "Recevoir des notifications par {channel} lorsque :"
     oneHour: 1 heure
     realtimeAlertFlagged: Une alerte en temps réel affecte mon trajet
+    timeBefore: "{time} avant"
     toggleAdvancedSettings: Paramètres avancés
   TripStatus:
     alerts: "{alerts, plural, =0 {# alerte !} one {# alerte !} other {# alertes !}}"
