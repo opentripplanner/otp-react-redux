@@ -191,8 +191,9 @@ class LiveStopTimes extends Component<Props, State> {
               const { id, pattern, route, times } = time
               return (
                 <React.Fragment key={id}>
-                  {index > 0 &&
-                    time.day !== routeTimes[index - 1].day &&
+                  {((index > 0 &&
+                    !isSameDay(time.day, routeTimes[index - 1])) ||
+                    (index === 0 && !isSameDay(new Date(), time.day))) &&
                     this.renderDay(homeTimezone, time.day)}
                   <PatternRow
                     homeTimezone={homeTimezone}
