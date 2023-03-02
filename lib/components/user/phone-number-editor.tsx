@@ -1,8 +1,8 @@
-import { Label as BsLabel, Button, FormGroup } from 'react-bootstrap'
+import { Label as BsLabel, FormGroup } from 'react-bootstrap'
 // @ts-expect-error Package does not have type declaration
 import { formatPhoneNumber } from 'react-phone-number-input'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-import React, { Component, Fragment } from 'react'
+import React, { Component, createRef, Fragment } from 'react'
 
 import { getAriaPhoneNumber } from '../../util/a11y'
 import { isBlank } from '../../util/ui'
@@ -64,9 +64,13 @@ class PhoneNumberEditor extends Component<Props, State> {
     }
   }
 
+  _changeRef = createRef<HTMLButtonElement>()
+
   _handleEditNumber = () => this.setState({ isEditing: true })
 
-  _handleCancelEditNumber = () => this.setState(blankState)
+  _handleCancelEditNumber = () => {
+    this.setState(blankState)
+  }
 
   /**
    * Send phone verification request with the entered values.
@@ -121,7 +125,7 @@ class PhoneNumberEditor extends Component<Props, State> {
     return !isBlank(initialPhoneNumber) && !initialPhoneNumberVerified
   }
 
-  componentDidUpdate(prevProps: Props) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     const { initialPhoneNumber, initialPhoneNumberVerified } = this.props
     const numberChanged = initialPhoneNumber !== prevProps.initialPhoneNumber
     const verifiedChanged =
@@ -145,6 +149,16 @@ class PhoneNumberEditor extends Component<Props, State> {
     // set an ARIA alert that the phone number was successfully verified.
     if (!numberChanged && verifiedChanged && initialPhoneNumberVerified) {
       this.setState({ phoneNumberVerified: true })
+    }
+
+    // If the user cancels the phone number change form,
+    // return the keyboard focus to the "Change number" button that started all.
+    if (
+      prevState.isEditing &&
+      !this.state.isEditing &&
+      this.state.submittedNumber === ''
+    ) {
+      this._changeRef.current?.focus()
     }
   }
 
@@ -235,9 +249,14 @@ class PhoneNumberEditor extends Component<Props, State> {
                 )}
                 <InvisibleA11yLabel>)</InvisibleA11yLabel>
               </InlineStatic>
-              <Button onClick={this._handleEditNumber}>
+              <button
+                // "Downgrading" to a plain button so we can insert a ref to return keyboard focus on cancel.
+                className="btn btn-default"
+                onClick={this._handleEditNumber}
+                ref={this._changeRef}
+              >
                 <FormattedMessage id="components.PhoneNumberEditor.changeNumber" />
-              </Button>
+              </button>
             </ControlStrip>
           </FormGroup>
         )}

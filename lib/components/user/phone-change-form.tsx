@@ -9,7 +9,13 @@ import {
 } from 'react-phone-number-input'
 // @ts-expect-error Package does not have type declaration
 import Input from 'react-phone-number-input/input'
-import React, { KeyboardEvent, MouseEvent, useCallback } from 'react'
+import React, {
+  KeyboardEvent,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useRef
+} from 'react'
 import styled from 'styled-components'
 
 import { InlineLoading } from '../narrative/loading'
@@ -61,6 +67,8 @@ interface Props {
 
 type InnerProps = FormikProps<Fields> & Props
 
+const formId = 'phone-change-form'
+
 const InnerPhoneChangeForm = ({
   errors, // Formik
   handleBlur, // Formik
@@ -73,8 +81,12 @@ const InnerPhoneChangeForm = ({
   values // Formik
 }: InnerProps) => {
   const intl = useIntl()
-  const formId = 'phone-change-form'
+  const ref = useRef<HTMLInputElement>()
   const showPhoneError = errors.phoneNumber && touched.phoneNumber
+
+  useEffect(() => {
+    if (showCancel) ref.current?.focus()
+  }, [ref, showCancel])
 
   const handleEscapeKey = useCallback(
     (e: KeyboardEvent<FormGroup>) => {
@@ -125,6 +137,7 @@ const InnerPhoneChangeForm = ({
           placeholder={intl.formatMessage({
             id: 'components.PhoneNumberEditor.placeholder'
           })}
+          ref={ref}
           type="tel"
           value={values.phoneNumber}
         />
