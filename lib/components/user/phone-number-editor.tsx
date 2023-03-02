@@ -4,6 +4,7 @@ import { formatPhoneNumber } from 'react-phone-number-input'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import React, { Component, Fragment } from 'react'
 
+import { getAriaPhoneNumber } from '../../util/a11y'
 import { isBlank } from '../../util/ui'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import SpanWithSpace from '../util/span-with-space'
@@ -161,6 +162,14 @@ class PhoneNumberEditor extends Component<Props, State> {
     const isPending = hasSubmittedNumber || this._isPhoneNumberPending()
     const isAlertBusy = (isEditing && hasSubmittedNumber) || hasSubmittedCode
 
+    const shownPhoneNumberRaw = hasSubmittedNumber
+      ? submittedNumber
+      : initialPhoneNumber
+    const shownPhoneNumber = formatPhoneNumber(shownPhoneNumberRaw)
+    const ariaPhoneNumber = getAriaPhoneNumber(
+      formatPhoneNumber(initialPhoneNumber)
+    )
+
     // Note: ARIA alerts are read out only once, until they change,
     // so there is no need to clear them.
     // TODO: Find a correct way to render phone numbers for screen readers (at least for US).
@@ -170,7 +179,7 @@ class PhoneNumberEditor extends Component<Props, State> {
         <FormattedMessage
           id="components.PhoneNumberEditor.phoneNumberSubmitted"
           values={{
-            phoneNumber: initialPhoneNumber
+            phoneNumber: ariaPhoneNumber
           }}
         />
       )
@@ -179,7 +188,7 @@ class PhoneNumberEditor extends Component<Props, State> {
         <FormattedMessage
           id="components.PhoneNumberEditor.phoneNumberVerified"
           values={{
-            phoneNumber: initialPhoneNumber
+            phoneNumber: ariaPhoneNumber
           }}
         />
       )
@@ -205,10 +214,13 @@ class PhoneNumberEditor extends Component<Props, State> {
             </FakeLabel>
             <ControlStrip>
               <InlineStatic className="form-control-static">
-                <SpanWithSpace margin={0.5}>
-                  {formatPhoneNumber(
-                    hasSubmittedNumber ? submittedNumber : initialPhoneNumber
-                  )}
+                <SpanWithSpace
+                  aria-label={ariaPhoneNumber}
+                  as="a"
+                  href={`tel:${shownPhoneNumberRaw}`}
+                  margin={0.5}
+                >
+                  {shownPhoneNumber}
                 </SpanWithSpace>
                 {/* Invisible parentheses for no-CSS and screen readers */}
                 <InvisibleA11yLabel> (</InvisibleA11yLabel>
