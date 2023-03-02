@@ -79,6 +79,7 @@ export const TripPanelFooter = styled(Panel.Footer)`
 /** Formats non-<label> elements like <label>s. */
 export const labelStyle = css`
   border: none;
+  cursor: default;
   font-size: inherit;
   font-weight: 700;
   margin-bottom: 5px;
