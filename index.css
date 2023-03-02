@@ -122,7 +122,7 @@ input[type="text"]::-ms-clear {
 }
 
 .app-menu button[aria-selected="true"],
-#locale-selector li[aria-selected="true"] {
+#locale-selector button[aria-selected="true"] {
   font-weight: bold;
 }
 
@@ -220,4 +220,14 @@ button.step {
   /* we need to override this z-index so that the +/- map controls appear below
   the geocoder search results */
   z-index: 999;
+}
+
+/* Bootstrap adds a bottom margin to all labels,
+   but we don't want that in the map layer selector when it is collapsed. */
+.map-container .layers-list label {
+  margin-bottom: 0;
+}
+.map-container .layers-list.fake-mobile-hover label,
+.map-container .layers-list:hover label {
+  margin-bottom: 5px;
 }

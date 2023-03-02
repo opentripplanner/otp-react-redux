@@ -1,14 +1,11 @@
-/* eslint-disable react/prop-types */
 import { Alert, FormControl } from 'react-bootstrap'
-import { CaretDown } from '@styled-icons/fa-solid/CaretDown'
-import { CaretRight } from '@styled-icons/fa-solid/CaretRight'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
-import { Field } from 'formik'
-import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
-import React, { Component } from 'react'
+import { Field, FormikProps } from 'formik'
+import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
+import React, { Component, ComponentType, FormEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 
-import { IconWithText, StyledIconWrapper } from '../../util/styledIcon'
+import { IconWithText } from '../../util/styledIcon'
 
 // Element styles
 const SettingsList = styled.ul`
@@ -18,43 +15,52 @@ const SettingsList = styled.ul`
   width: 100%;
   label {
     font-weight: inherit;
+    padding-right: 10px;
   }
+  /* Use table display for this element, so that all dropdowns occupy the same width.
+    (Bootstrap already sets them to occupy 100% of the width of the parent, i.e. the logical cell.) */
   & > li {
     align-items: center;
-    display: block;
-  }
-`
-
-// Using table display for this element, so that all dropdowns occupy the same width.
-// (Bootstrap already sets them to occupy 100% of the width of the parent, i.e. the logical cell.)
-const SettingsListWithAlign = styled(SettingsList)`
-  & > li {
     display: table-row;
     & > * {
       display: table-cell;
     }
-    & > label {
-      padding-right: 10px;
-    }
   }
 `
 
-const InlineFormControl = styled(FormControl)`
-  display: inline-block;
-  margin: 0 0.5em;
-  width: auto;
+const Summary = styled.summary`
+  /* Revert display:block set by Bootstrap that hides the native expand/collapse caret. */
+  display: revert-layer;
+  /* Format summary as labels */
+  font-weight: 700;
+  margin-bottom: 5px;
 `
 
-const SettingsToggle = styled.button`
-  background: none;
-  border: none;
-  padding: 0;
+const NotificationSettings = styled.fieldset`
+  /* Format <legend> like labels. */
+  legend {
+    border: none;
+    font-size: inherit;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
 `
 
 /**
  * A label followed by a dropdown control.
  */
-const Select = ({ children, Control = FormControl, label, name }) => (
+const Select = ({
+  Control = FormControl,
+  children,
+  label,
+  name
+}: {
+  // Note the prop order required by typescript-sort-keys, also applied above.
+  Control?: ComponentType
+  children: ReactNode
+  label?: ReactNode
+  name: string
+}) => (
   // <Field> is kept outside of <label> to accommodate layout in table/grid cells.
   <>
     {label && <label htmlFor={name}>{label}</label>}
@@ -64,29 +70,39 @@ const Select = ({ children, Control = FormControl, label, name }) => (
   </>
 )
 
-function Options({ defaultValue, options }) {
+function Options({
+  defaultValue,
+  options
+}: {
+  defaultValue: number | string
+  options: { text: string; value: number | string }[]
+}) {
   // <FormattedMessage> can't be used inside <option>.
   const intl = useIntl()
-  return options.map(({ text, value }, i) => (
-    <option key={i} value={value}>
-      {value === defaultValue
-        ? intl.formatMessage(
-            { id: 'common.forms.defaultValue' },
-            { value: text }
-          )
-        : text}
-    </option>
-  ))
+  return (
+    <>
+      {options.map(({ text, value }, i) => (
+        <option key={i} value={value}>
+          {value === defaultValue
+            ? intl.formatMessage(
+                { id: 'common.forms.defaultValue' },
+                { value: text }
+              )
+            : text}
+        </option>
+      ))}
+    </>
+  )
 }
 
 const basicYesNoOptions = [
   {
     id: 'yes',
-    value: true
+    value: 'true'
   },
   {
     id: 'no',
-    value: false
+    value: 'false'
   }
 ]
 
@@ -94,7 +110,7 @@ const basicYesNoOptions = [
  * Produces a yes/no list of options with the specified
  * default value (true for yes, false for no).
  */
-function YesNoOptions({ defaultValue }) {
+function YesNoOptions({ defaultValue }: { defaultValue: boolean }) {
   // <FormattedMessage> can't be used inside <option>.
   const intl = useIntl()
   const options = basicYesNoOptions.map(({ id, value }) => ({
@@ -104,54 +120,74 @@ function YesNoOptions({ defaultValue }) {
         : intl.formatMessage({ id: 'common.forms.no' }),
     value
   }))
-  return <Options defaultValue={defaultValue} options={options} />
+  return (
+    <Options
+      defaultValue={(defaultValue || false).toString()}
+      options={options}
+    />
+  )
 }
 
 /**
  * Produces a list of duration options with the specified default value.
  */
-function DurationOptions({ defaultValue, minuteOptions }) {
+function DurationOptions({
+  decoratorFunc,
+  defaultValue,
+  minuteOptions
+}: {
+  decoratorFunc?: (text: string, intl: IntlShape) => string
+  defaultValue: string | number
+  minuteOptions: number[]
+}) {
   // <FormattedMessage> can't be used inside <option>.
   const intl = useIntl()
-  const options = minuteOptions.map((minutes) => ({
+  const localizedMinutes = minuteOptions.map((minutes) => ({
     text:
       minutes === 60
-        ? intl.formatMessage(
-            { id: 'components.TripNotificationsPane.oneHour' },
-            { minutes }
-          )
+        ? intl.formatMessage({ id: 'components.TripNotificationsPane.oneHour' })
         : intl.formatMessage(
             { id: 'common.time.tripDurationFormat' },
-            { hours: 0, minutes }
+            { hours: 0, minutes, seconds: 0 }
           ),
     value: minutes
   }))
+  const options = decoratorFunc
+    ? localizedMinutes.map(({ text, value }) => ({
+        text: decoratorFunc(text, intl),
+        value
+      }))
+    : localizedMinutes
   return <Options defaultValue={defaultValue} options={options} />
+}
+
+interface Fields {
+  arrivalVarianceMinutesThreshold: number
+  departureVarianceMinutesThreshold: number
+}
+
+interface Props extends FormikProps<Fields> {
+  notificationChannel: string
 }
 
 /**
  * This component wraps the elements to edit trip notification settings.
  */
-class TripNotificationsPane extends Component {
-  state = {
-    showAdvancedSettings: false
-  }
-
-  _handleToggleAdvancedSettings = () => {
-    this.setState({ showAdvancedSettings: !this.state.showAdvancedSettings })
-  }
-
-  _handleDelayThresholdChange = (e) => {
+class TripNotificationsPane extends Component<Props> {
+  _handleDelayThresholdChange = (e: FormEvent<FormControl>): void => {
     // To spare users the complexity of the departure/arrival delay thresholds,
     // set both the arrival and departure variance delays to the selected value.
     const { setFieldValue } = this.props
-    const threshold = e.target.value
-    setFieldValue('arrivalVarianceMinutesThreshold', threshold)
-    setFieldValue('departureVarianceMinutesThreshold', threshold)
+    const target = e.target as HTMLSelectElement
+    if (target) {
+      const threshold = target.value
+      setFieldValue('arrivalVarianceMinutesThreshold', threshold)
+      setFieldValue('departureVarianceMinutesThreshold', threshold)
+    }
   }
 
-  render() {
-    const { intl, notificationChannel, values } = this.props
+  render(): JSX.Element {
+    const { notificationChannel, values } = this.props
     const areNotificationsDisabled = notificationChannel === 'none'
     // Define a common trip delay field for simplicity, set to the smallest between the
     // retrieved departure/arrival delay attributes.
@@ -177,10 +213,9 @@ class TripNotificationsPane extends Component {
         </Alert>
       )
     } else {
-      const { showAdvancedSettings } = this.state
       notificationSettingsContent = (
-        <>
-          <h4>
+        <NotificationSettings>
+          <legend>
             <FormattedMessage
               id="components.TripNotificationsPane.notifyViaChannelWhen"
               values={
@@ -197,8 +232,8 @@ class TripNotificationsPane extends Component {
                     }
               }
             />
-          </h4>
-          <SettingsListWithAlign>
+          </legend>
+          <SettingsList>
             <li>
               <Select
                 label={
@@ -233,48 +268,35 @@ class TripNotificationsPane extends Component {
                 <DurationOptions defaultValue={5} minuteOptions={[5, 10, 15]} />
               </FormControl>
             </li>
-          </SettingsListWithAlign>
+          </SettingsList>
 
-          <h4>
-            <SettingsToggle
-              aria-expanded={showAdvancedSettings}
-              aria-label={intl.formatMessage({
-                id: 'components.TripNotificationsPane.toggleAdvancedSettings'
-              })}
-              onClick={this._handleToggleAdvancedSettings}
-              type="button"
-            >
-              <StyledIconWrapper>
-                {showAdvancedSettings ? <CaretDown /> : <CaretRight />}
-              </StyledIconWrapper>
+          <details>
+            <Summary>
               <FormattedMessage id="components.TripNotificationsPane.advancedSettings" />
-            </SettingsToggle>
-          </h4>
-          {showAdvancedSettings && (
+            </Summary>
             <SettingsList>
               <li>
-                <label htmlFor="leadTimeInMinutes">
-                  <FormattedMessage
-                    id="components.TripNotificationsPane.monitorThisTrip"
-                    values={{
-                      minutes: (
-                        <Select
-                          Control={InlineFormControl}
-                          name="leadTimeInMinutes"
-                        >
-                          <DurationOptions
-                            defaultValue={30}
-                            minuteOptions={[15, 30, 45, 60]}
-                          />
-                        </Select>
+                <Select
+                  label={
+                    <FormattedMessage id="components.TripNotificationsPane.monitorThisTrip" />
+                  }
+                  name="leadTimeInMinutes"
+                >
+                  <DurationOptions
+                    decoratorFunc={(time, intl) => {
+                      return intl.formatMessage(
+                        { id: 'components.TripNotificationsPane.timeBefore' },
+                        { time }
                       )
                     }}
+                    defaultValue={30}
+                    minuteOptions={[15, 30, 45, 60]}
                   />
-                </label>
+                </Select>
               </li>
             </SettingsList>
-          )}
-        </>
+          </details>
+        </NotificationSettings>
       )
     }
 
@@ -282,4 +304,4 @@ class TripNotificationsPane extends Component {
   }
 }
 
-export default injectIntl(TripNotificationsPane)
+export default TripNotificationsPane

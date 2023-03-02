@@ -1,14 +1,11 @@
 import { AccessibilityRating } from '@opentripplanner/itinerary-body'
 import { connect } from 'react-redux'
 import {
-  FormattedList,
   FormattedMessage,
   FormattedNumber,
   injectIntl,
   IntlShape
 } from 'react-intl'
-
-import { getFormattedMode } from '../../../util/i18n'
 import { Itinerary, Leg } from '@opentripplanner/types'
 import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
@@ -23,6 +20,7 @@ import {
   itineraryHasAccessibilityScores
 } from '../../../util/accessibility-routing'
 import { getActiveSearch, getFare } from '../../../util/state'
+import { getFormattedMode } from '../../../util/i18n'
 import { IconWithText } from '../../util/styledIcon'
 import { ItineraryDescription } from '../default/itinerary-description'
 import { localizeGradationMap } from '../utils'
@@ -59,9 +57,7 @@ const DepartureTimes = styled.span`
   align-self: flex-end;
   color: #0909098f;
   font-size: 14px;
-  overflow: hidden;
   text-overflow: ellipsis;
-  white-space: pre;
   width: 100%;
 
   .active {
@@ -204,6 +200,17 @@ const ItineraryGridSmall = styled.button`
   }
 `
 
+// invisible header rendered for screen readers and a11y technologies
+const InvisibleHeader = styled.span`
+  /* TODO: This grid/column places the invisbile header into an unused 
+  grid-cell to stop it from adding an additional row. There is probably 
+  a better way to do this! */
+  grid-column: 2;
+  grid-row: 2;
+  height: 0;
+  overflow: hidden;
+  width: 0;
+`
 const BLUR_AMOUNT = 3
 const blurAnimation = keyframes`
  0% { filter: blur(${BLUR_AMOUNT}px); }
@@ -325,9 +332,7 @@ class MetroItinerary extends NarrativeItinerary {
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
     const routeLegs = itinerary.legs.filter(removeInsignifigantWalkLegs)
-    const modeStrings = routeLegs.map((leg: Leg) => {
-      return getFormattedMode(leg.mode, intl)
-    })
+    const transitRoutes = getItineraryRoutes(itinerary, intl)
 
     const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
       const routeBlocks = routeLegs
@@ -338,9 +343,13 @@ class MetroItinerary extends NarrativeItinerary {
             (index > 0 && filteredLegs[index - 1].mode) || undefined
           return (
             <RouteBlock
+              aria-hidden
               footer={
                 showLegDurations && (
-                  <FormattedDuration duration={leg.duration} />
+                  <FormattedDuration
+                    duration={leg.duration}
+                    includeSeconds={false}
+                  />
                 )
               }
               hideLongName
@@ -363,7 +372,7 @@ class MetroItinerary extends NarrativeItinerary {
       // Reset the scroll. Refs would be the more
       // appropriate way to do this, but they don't work
       setTimeout(
-        () => document.querySelector('.metro-itin')?.scrollIntoView(),
+        () => document.querySelector('.batch-routing-panel')?.scrollIntoView(),
         10
       )
     }
@@ -391,18 +400,7 @@ class MetroItinerary extends NarrativeItinerary {
           // TODO test this with a screen reader
           // tabIndex={expanded ? 1 : 0}
         >
-          <ItineraryWrapper
-            aria-label={intl.formatMessage(
-              {
-                id: 'components.MetroUI.itineraryDescription'
-              },
-              {
-                routes: getItineraryRoutes(itinerary, intl),
-                time: formatDuration(itinerary.duration, intl)
-              }
-            )}
-            className={`itin-wrapper${mini ? '-small' : ''}`}
-          >
+          <ItineraryWrapper className={`itin-wrapper${mini ? '-small' : ''}`}>
             {emissionsNote && <ItineraryNote>{emissionsNote}</ItineraryNote>}
             {itineraryHasAccessibilityScores(itinerary) && (
               <AccessibilityRating
@@ -413,6 +411,25 @@ class MetroItinerary extends NarrativeItinerary {
             {!mini && (
               <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
+                <InvisibleHeader as={expanded && 'h1'}>
+                  {String(transitRoutes) ? (
+                    <FormattedMessage
+                      id="components.MetroUI.itineraryDescription"
+                      values={{
+                        routes: transitRoutes,
+                        time: formatDuration(itinerary.duration, intl, false)
+                      }}
+                    />
+                  ) : (
+                    <FormattedMessage
+                      id="components.MetroUI.singleModeItineraryDescription"
+                      values={{
+                        mode: getFormattedMode(itinerary.legs[0].mode, intl),
+                        time: formatDuration(itinerary.duration, intl, false)
+                      }}
+                    />
+                  )}
+                </InvisibleHeader>
                 <Routes aria-hidden enableDot={enableDot}>
                   {renderRouteBlocks(itinerary.legs)}
                 </Routes>
@@ -422,7 +439,10 @@ class MetroItinerary extends NarrativeItinerary {
                   })}
                 >
                   <PrimaryInfo>
-                    <FormattedDuration duration={itinerary.duration} />
+                    <FormattedDuration
+                      duration={itinerary.duration}
+                      includeSeconds={false}
+                    />
                   </PrimaryInfo>
                   <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
                     {isFlexItinerary ? (
@@ -462,7 +482,10 @@ class MetroItinerary extends NarrativeItinerary {
                       id="components.MetroUI.timeWalking"
                       values={{
                         time: (
-                          <FormattedDuration duration={itinerary.walkTime} />
+                          <FormattedDuration
+                            duration={itinerary.walkTime}
+                            includeSeconds={false}
+                          />
                         )
                       }}
                     />
@@ -481,7 +504,10 @@ class MetroItinerary extends NarrativeItinerary {
             {mini && (
               <ItineraryGridSmall className="other-itin">
                 <PrimaryInfo as="span">
-                  <FormattedDuration duration={itinerary.duration} />
+                  <FormattedDuration
+                    duration={itinerary.duration}
+                    includeSeconds={false}
+                  />
                 </PrimaryInfo>
                 <SecondaryInfo as="span">
                   <ItineraryDescription itinerary={itinerary} />

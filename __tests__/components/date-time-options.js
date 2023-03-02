@@ -4,7 +4,7 @@ import {
   mockWithProvider
 } from '../test-utils/mock-data/store'
 import { setDefaultTestTime } from '../test-utils'
-import DateTimeOptions from '../../lib/components/form/call-taker/date-time-options'
+import DateTimeOptions from '../../lib/components/form/call-taker/date-time-picker'
 
 describe('components > form > call-taker > date time options', () => {
   beforeEach(setDefaultTestTime)
