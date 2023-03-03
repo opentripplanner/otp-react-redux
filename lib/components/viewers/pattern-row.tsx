@@ -84,15 +84,7 @@ class PatternRow extends Component<Props, State> {
           {/* route name */}
           <div className="route-name">
             <strong style={{ fontSize: routeNameFontSize(routeName) }}>
-              <div
-                style={{
-                  alignContent: 'center',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  whiteSpace: 'nowrap'
-                }}
-                title={routeName}
-              >
+              <div title={routeName}>
                 {showOperatorLogo && (
                   <OperatorLogo operator={route?.operator} />
                 )}
