@@ -16,6 +16,8 @@ import { IconWithText } from '../util/styledIcon'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import SpanWithSpace from '../util/span-with-space'
 
+import { addHours, isBefore } from 'date-fns'
+
 import AmenitiesPanel from './amenities-panel'
 import PatternRow from './pattern-row'
 import RelatedStopsPanel from './related-stops-panel'
@@ -159,6 +161,7 @@ class LiveStopTimes extends Component<Props, State> {
     // construct a lookup table mapping pattern (e.g. 'ROUTE_ID-HEADSIGN') to
     // an array of stoptimes
     const stopTimesByPattern = getStopTimesByPattern(stopData)
+    const now = utcToZonedTime(Date.now(), homeTimezone)
 
     // TODO: Shared types
     const patternComparator = (patternA: any, patternB: any) => {
@@ -172,16 +175,35 @@ class LiveStopTimes extends Component<Props, State> {
       .filter(({ times }) => times.length !== 0)
       .sort(patternComparator)
       .map((route) => {
-        const { serviceDay } = route.times[0]
+        const sortedTimes = route.times
+          .concat()
+          ?.sort(stopTimeComparator)
+          // Only show times within 24 hours of next arrival time
+          .filter((time: any, i: number, array: Array<any>) => {
+            const firstDepartureTime =
+              array[0].serviceDay + array[0].realtimeDeparture
+            const departureTime = time.serviceDay + time.realtimeDeparture
+            return i === 0 || (departureTime - firstDepartureTime) / 3600 < 24
+          })
+        const { serviceDay } = sortedTimes[0]
         return {
           ...route,
           day: serviceDay,
-          times: route.times.concat()?.sort(stopTimeComparator)
+          times: sortedTimes
         }
       })
       .filter(({ pattern, route }) =>
         routeIsValid(route, getRouteIdForPattern(pattern))
       )
+      .filter((route) => {
+        /* If the route's first departure time falls on the 2nd available service day,
+      only show it if it's within 6 hours of now. */
+        if (!isSameDay(utcToZonedTime(route.day * 1000, homeTimezone), now)) {
+          const departureTime = route.times[0].realtimeDeparture + route.day
+          return isBefore(departureTime * 1000, addHours(now, 6))
+        }
+        return route
+      })
 
     return (
       <>
@@ -211,6 +233,7 @@ class LiveStopTimes extends Component<Props, State> {
                     stopViewerConfig={stopViewerConfig}
                   />
                 </React.Fragment>
+
               )
             })}
           </ul>

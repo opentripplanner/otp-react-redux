@@ -70,14 +70,6 @@ class PatternRow extends Component<Props, State> {
 
     const routeName = route.shortName ? route.shortName : route.longName
     const routeColor = getRouteColorBasedOnSettings(route.operator, route)
-    let fontSize = '32px'
-    if (routeName) {
-      if (routeName?.length >= 4 && routeName?.length <= 6) {
-        fontSize = '20px'
-      } else if (routeName?.length > 7) {
-        fontSize = '16px'
-      }
-    }
 
     return (
       <li className="route-row">
