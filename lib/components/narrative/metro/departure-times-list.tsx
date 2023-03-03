@@ -20,15 +20,17 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
   const { activeItineraryTimeIndex, itinerary, setItineraryTimeIndex } = props
   const intl = useIntl()
   const isRealTime = firstTransitLegIsRealtime(itinerary)
+  const departureLabelText = `${intl.formatTime(itinerary.startTime)} ${
+    isRealTime
+      ? intl.formatMessage({ id: 'components.StopTimeCell.realtime' })
+      : intl.formatMessage({ id: 'components.StopTimeCell.scheduled' })
+  }`
   if (!itinerary.allStartTimes) {
     return (
       <button
+        aria-label={departureLabelText}
         className={isRealTime ? 'realtime active' : 'active'}
-        title={`${intl.formatTime(itinerary.startTime)} ${
-          isRealTime
-            ? intl.formatMessage({ id: 'components.StopTimeCell.realtime' })
-            : ''
-        }`}
+        title={departureLabelText}
       >
         <FormattedTime value={itinerary.startTime} />
       </button>
