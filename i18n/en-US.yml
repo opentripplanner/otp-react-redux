@@ -130,7 +130,6 @@ components:
         other {# spaces available}
       }
   AppMenu:
-    appMenu: App Menu
     callHistory: Call History
     closeMenu: Close Menu
     fieldTrip: Field Trip
@@ -444,7 +443,6 @@ components:
     zoomToStop: Zoom to stop
 
   SubNav:
-    activeLanguage: Active language
     languages: "Languages"
     languageSelector: Select language
     myAccount: My account
@@ -505,7 +503,6 @@ components:
     oneHour: 1 hour
     realtimeAlertFlagged: There is a realtime alert flagged on my journey
     timeBefore: "{time} before"
-    toggleAdvancedSettings: Toggle advanced settings
   TripStatus:
     alerts: "{alerts, plural, one {# alert!} other {# alerts!}}"
     deleteTrip: Delete Trip

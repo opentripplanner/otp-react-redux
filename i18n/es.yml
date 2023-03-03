@@ -298,7 +298,6 @@ components:
     notifyViaChannelWhen: 'Notifíqueme por {channel} cuando:'
     oneHour: 1 hora
     realtimeAlertFlagged: Hay una alerta en tiempo real marcada en mi viaje
-    toggleAdvancedSettings: Activar la configuración avanzada
   TripStatus:
     alerts: '{alerts, plural, one {# alerta!} other {# alertas!}}'
     deleteTrip: Borrar el viaje
@@ -507,7 +506,6 @@ components:
     scheduled: Based on schedule data
     imminentArrival: Debido
   SubNav:
-    activeLanguage: Idioma activo
     languages: "Idiomas"
     languageSelector: Seleccionar idioma
     myAccount: Mi cuenta
