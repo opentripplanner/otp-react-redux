@@ -9,7 +9,7 @@ import {
 } from 'react-bootstrap'
 import { Field, Form, Formik, FormikProps } from 'formik'
 import { FormattedMessage } from 'react-intl'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
 import { getErrorStates } from '../../util/ui'
@@ -43,7 +43,6 @@ interface Fields {
 export type PhoneVerificationSubmitHandler = (values: Fields) => void
 
 interface Props {
-  isSubmitting: boolean
   onRequestCode: PhoneChangeSubmitHandler
   onSubmit: PhoneVerificationSubmitHandler
 }
@@ -54,15 +53,31 @@ type InnerProps = Props & FormikProps<Fields>
  * Sub-form for entering and submitting a phone validation code.
  */
 const PhoneVerificationInnerForm = (props: InnerProps): JSX.Element => {
-  const { errors, isSubmitting, onRequestCode, submitCount, touched } = props
-  const ref = useRef<HTMLInputElement>()
+  const {
+    // Except for onRequest code, these props are provided by Formik.
+    errors,
+    isSubmitting,
+    isValid,
+    isValidating,
+    onRequestCode,
+    resetForm,
+    submitCount,
+    touched
+  } = props
+  const wrongCodeSubmitted =
+    !isSubmitting && submitCount && isValid && !isValidating
 
   // Return focus to the input control if the incorrect code was submitted.
   useEffect(() => {
-    if (!isSubmitting && submitCount) {
-      ref.current?.focus()
+    if (wrongCodeSubmitted) {
+      // Wait very briefly for UI to settle after user acknowledges wrong code.
+      setTimeout(() => {
+        resetForm()
+        // Using the input id is more reliable than refs.
+        document.getElementById('validation-code')?.focus()
+      }, 200)
     }
-  }, [isSubmitting, submitCount])
+  }, [wrongCodeSubmitted, resetForm])
 
   const codeErrorState = getErrorStates(props).validationCode
   const isInvalid = !!(touched.validationCode && errors.validationCode)
@@ -71,8 +86,8 @@ const PhoneVerificationInnerForm = (props: InnerProps): JSX.Element => {
   return (
     <FormGroup validationState={codeErrorState}>
       {/* Set up an empty Formik Form without inputs, and link inputs using the form id.
-                    (A submit button within will incorrectly submit the entire page instead of just the subform.)
-                    The containing Formik element will watch submission of the form. */}
+          (A submit button within will incorrectly submit the entire page instead of just the subform.)
+          The containing Formik element will watch submission of the form. */}
       <Form id={formId} noValidate />
       <p>
         <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
@@ -90,7 +105,6 @@ const PhoneVerificationInnerForm = (props: InnerProps): JSX.Element => {
           maxLength={6}
           name="validationCode"
           placeholder="123456"
-          ref={ref}
           // HACK: <input type='tel'> triggers the numerical keypad on mobile devices, and otherwise
           // behaves like <input type='text'> with support of leading zeros and the maxLength prop.
           // <input type='number'> causes values to be stored as Number, resulting in

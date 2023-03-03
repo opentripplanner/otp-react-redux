@@ -276,7 +276,6 @@ class PhoneNumberEditor extends Component<Props, State> {
 
         {isPending && !isEditing && (
           <PhoneVerificationForm
-            isSubmitting={hasSubmittedCode}
             onRequestCode={this._handleRequestCode}
             onSubmit={this._handleSubmitCode}
           />
