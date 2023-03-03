@@ -1,3 +1,4 @@
+import { addHours, isBefore } from 'date-fns'
 import { format, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage, FormattedTime } from 'react-intl'
 import { Redo } from '@styled-icons/fa-solid/Redo'
@@ -15,8 +16,6 @@ import {
 import { IconWithText } from '../util/styledIcon'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import SpanWithSpace from '../util/span-with-space'
-
-import { addHours, isBefore } from 'date-fns'
 
 import AmenitiesPanel from './amenities-panel'
 import PatternRow from './pattern-row'
@@ -123,13 +122,12 @@ class LiveStopTimes extends Component<Props, State> {
       this._startAutoRefresh()
   }
 
-  renderDay = (homeTimezone: string, day: number): JSX.Element => {
-    const today = utcToZonedTime(Date.now(), homeTimezone)
+  renderDay = (homeTimezone: string, day: number, now: Date): JSX.Element => {
     const formattedDay = utcToZonedTime(day * 1000, homeTimezone)
     return (
       <div className="day-container" key={day}>
         {/* If the service day is not today, add a label */}
-        {!isSameDay(today, formattedDay) && (
+        {!isSameDay(now, formattedDay) && (
           <p>
             <FormattedDayOfWeek
               // 'iiii' returns the long ISO day of the week (independent of browser locale).
@@ -217,7 +215,7 @@ class LiveStopTimes extends Component<Props, State> {
                     !isSameDay(time.day, routeTimes[index - 1])) ||
                     // TODO: is new Date() the right approach?
                     (index === 0 && !isSameDay(new Date(), time.day))) &&
-                    this.renderDay(homeTimezone, time.day)}
+                    this.renderDay(homeTimezone, time.day, now)}
                   <PatternRow
                     homeTimezone={homeTimezone}
                     pattern={pattern}
@@ -233,7 +231,6 @@ class LiveStopTimes extends Component<Props, State> {
                     stopViewerConfig={stopViewerConfig}
                   />
                 </React.Fragment>
-
               )
             })}
           </ul>

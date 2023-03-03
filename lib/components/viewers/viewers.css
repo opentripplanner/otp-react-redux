@@ -159,8 +159,8 @@
 .otp .stop-viewer .route-row .header .route-name span {
   display: -webkit-box;
   font-size: 15px;
-  overflow: hidden;
   line-clamp: 3;
+  overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
@@ -171,9 +171,8 @@
   padding-left: 15px;
   text-align: center;
   text-overflow: ellipsis;
-  width: 85px;
   white-space: nowrap;
- 
+  width: 85px;
 }
 
 .otp .stop-viewer .route-row .header .next-trip-preview {
@@ -215,9 +214,9 @@
 
 @media (max-width: 450px) {
   .otp .stop-viewer .route-row .header .next-trip-preview {
-    width: 100%;
-    padding: 15px 7px;
     max-width: min-content;
+    padding: 15px 7px;
+    width: 100%;
   }
 
   .otp .stop-viewer .route-row .header .route-name strong span {
@@ -300,9 +299,9 @@
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-label {
-  max-width: 75%;
   align-items: center;
   display: flex;
+  max-width: 75%;
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .route-name {
