@@ -105,10 +105,8 @@ class PhoneNumberEditor extends Component<Props, State> {
     if (submittedNumber) {
       this.setState({ submittedNumber })
       await onRequestCode(submittedNumber)
-      this._handleCancelEditNumber()
-    } else {
-      this._handleCancelEditNumber()
     }
+    this._handleCancelEditNumber()
   }
 
   /**
