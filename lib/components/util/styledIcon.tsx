@@ -18,6 +18,7 @@ interface IconProps extends Props {
 interface IconPropsWithText extends Props {
   Icon: React.ElementType
   children: React.ReactNode
+  flex?: boolean
 }
 
 const getFontSize = (size?: string) => {
@@ -79,17 +80,19 @@ const IconButton = styled.div`
 
 export const IconWithText = ({
   children,
+  flex,
   Icon,
   size,
   spin
 }: IconPropsWithText): React.ReactElement => {
+  const Wrapper = flex ? IconButton : React.Fragment
   return (
-    <IconButton>
+    <Wrapper>
       <StyledIconWrapperTextAlign size={size} spin={spin}>
         <Icon />
       </StyledIconWrapperTextAlign>
       <span>{children}</span>
-    </IconButton>
+    </Wrapper>
   )
 }
 

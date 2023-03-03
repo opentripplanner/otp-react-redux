@@ -208,7 +208,7 @@ class LiveStopTimes extends Component<Props, State> {
             style={{ fontSize: 'small' }}
             title={refreshButtonText}
           >
-            <IconWithText Icon={Redo} spin={spin}>
+            <IconWithText flex Icon={Redo} spin={spin}>
               <FormattedTime
                 timeStyle="short"
                 timeZone={userTimezone}
