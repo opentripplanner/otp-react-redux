@@ -287,6 +287,8 @@ components:
     invalidCode: Le code de vérification doit comporter 6 chiffres.
     invalidPhone: Veuillez entrer un numéro de téléphone valable.
     pending: Non vérifié
+    phoneNumberSubmitted: Le numéro {phoneNumber} a bien été envoyé.
+    phoneNumberVerified: Le numéro {phoneNumber} a bien été vérifié.
     # Note to translator: placeholder is width-constrained.
     placeholder: "Entrez votre numéro"
     prompt: "Entrez votre numéro de téléphone pour les SMS de notification :"
