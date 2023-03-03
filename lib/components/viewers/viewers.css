@@ -153,7 +153,8 @@
   font-size: 15px;
   overflow: hidden;
   line-clamp: 3;
-  box-orient: vertical;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 .otp .stop-viewer .route-row .header .route-name strong span {
   font-size: inherit;
@@ -161,6 +162,7 @@
   text-align: center;
   margin-left: 5px;
   line-clamp: 2;
+  -webkit-line-clamp: 2;
 }
 
 .otp .stop-viewer .route-row .header .next-trip-preview {

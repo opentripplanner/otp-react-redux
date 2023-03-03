@@ -17,6 +17,8 @@ import {
 import { IconWithText } from '../util/styledIcon'
 import SpanWithSpace from '../util/span-with-space'
 
+import { addHours, isBefore } from 'date-fns'
+
 import AmenitiesPanel from './amenities-panel'
 import PatternRow from './pattern-row'
 import RelatedStopsPanel from './related-stops-panel'
@@ -139,6 +141,7 @@ class LiveStopTimes extends Component<Props, State> {
     // construct a lookup table mapping pattern (e.g. 'ROUTE_ID-HEADSIGN') to
     // an array of stoptimes
     const stopTimesByPattern = getStopTimesByPattern(stopData)
+    const now = utcToZonedTime(Date.now(), homeTimezone)
 
     // TODO: Shared types
     const patternComparator = (patternA: any, patternB: any) => {
@@ -172,6 +175,15 @@ class LiveStopTimes extends Component<Props, State> {
       .filter(({ pattern, route }) =>
         routeIsValid(route, getRouteIdForPattern(pattern))
       )
+      .filter((route) => {
+        /* If the route's first departure time falls on the 2nd available service day,
+      only show it if it's within 6 hours of now. */
+        if (!isSameDay(utcToZonedTime(route.day * 1000, homeTimezone), now)) {
+          const departureTime = route.times[0].realtimeDeparture + route.day
+          return isBefore(departureTime * 1000, addHours(now, 6))
+        }
+        return route
+      })
 
     // Next 3 service days at this stop
     const daysOfService = [
@@ -188,12 +200,11 @@ class LiveStopTimes extends Component<Props, State> {
           {routeTimes.length > 0 &&
             daysOfService &&
             daysOfService.map((day) => {
-              const today = utcToZonedTime(Date.now(), homeTimezone)
               const formattedDay = utcToZonedTime(day * 1000, homeTimezone)
               return (
                 <div className="day-container" key={day}>
                   {/* If the service day is not today, add a label */}
-                  {!isSameDay(today, formattedDay) && (
+                  {!isSameDay(now, formattedDay) && (
                     <p>
                       <FormattedDayOfWeek
                         // 'iiii' returns the long ISO day of the week (independent of browser locale).
