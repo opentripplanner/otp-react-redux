@@ -364,7 +364,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       >
                         <Styled(styled.span)>
                           <span
-                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                           >
                             <ArrowLeft>
                               <StyledIconBase
@@ -488,7 +488,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           }
                         >
                           <span
-                            className="sc-dkIXZx jtzbta"
+                            className="sc-dkIXZx dNTHem"
                             style={
                               Object {
                                 "marginLeft": "0.2em",
@@ -557,7 +557,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       >
                         <Styled(styled.span)>
                           <span
-                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                           >
                             <Calendar>
                               <StyledIconBase
@@ -1411,7 +1411,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -1525,7 +1525,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -1671,7 +1671,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -1840,7 +1840,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           >
                             <Styled(styled.span)>
                               <span
-                                className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                               >
                                 <Redo>
                                   <StyledIconBase
@@ -2955,7 +2955,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       >
                         <Styled(styled.span)>
                           <span
-                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                           >
                             <ArrowLeft>
                               <StyledIconBase
@@ -3079,7 +3079,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           }
                         >
                           <span
-                            className="sc-dkIXZx jtzbta"
+                            className="sc-dkIXZx dNTHem"
                             style={
                               Object {
                                 "marginLeft": "0.2em",
@@ -3148,7 +3148,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       >
                         <Styled(styled.span)>
                           <span
-                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                           >
                             <Calendar>
                               <StyledIconBase
@@ -3723,7 +3723,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -3860,7 +3860,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           >
                             <Styled(styled.span)>
                               <span
-                                className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                               >
                                 <Redo>
                                   <StyledIconBase
@@ -4678,7 +4678,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       >
                         <Styled(styled.span)>
                           <span
-                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                           >
                             <ArrowLeft>
                               <StyledIconBase
@@ -4802,7 +4802,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           }
                         >
                           <span
-                            className="sc-dkIXZx jtzbta"
+                            className="sc-dkIXZx dNTHem"
                             style={
                               Object {
                                 "marginLeft": "0.2em",
@@ -4871,7 +4871,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       >
                         <Styled(styled.span)>
                           <span
-                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                           >
                             <Calendar>
                               <StyledIconBase
@@ -5725,7 +5725,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -5871,7 +5871,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -6017,7 +6017,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -6186,7 +6186,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           >
                             <Styled(styled.span)>
                               <span
-                                className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                               >
                                 <Redo>
                                   <StyledIconBase
@@ -7658,7 +7658,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       >
                         <Styled(styled.span)>
                           <span
-                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                           >
                             <ArrowLeft>
                               <StyledIconBase
@@ -7782,7 +7782,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           }
                         >
                           <span
-                            className="sc-dkIXZx jtzbta"
+                            className="sc-dkIXZx dNTHem"
                             style={
                               Object {
                                 "marginLeft": "0.2em",
@@ -7851,7 +7851,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       >
                         <Styled(styled.span)>
                           <span
-                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                           >
                             <Calendar>
                               <StyledIconBase
@@ -8959,7 +8959,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -9105,7 +9105,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -9251,7 +9251,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -9787,7 +9787,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -9933,7 +9933,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -10079,7 +10079,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -10507,7 +10507,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -10653,7 +10653,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -10799,7 +10799,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -11227,7 +11227,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -11373,7 +11373,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -11519,7 +11519,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -11688,7 +11688,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           >
                             <Styled(styled.span)>
                               <span
-                                className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                               >
                                 <Redo>
                                   <StyledIconBase
@@ -14187,7 +14187,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       >
                         <Styled(styled.span)>
                           <span
-                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                           >
                             <ArrowLeft>
                               <StyledIconBase
@@ -14311,7 +14311,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           }
                         >
                           <span
-                            className="sc-dkIXZx jtzbta"
+                            className="sc-dkIXZx dNTHem"
                             style={
                               Object {
                                 "marginLeft": "0.2em",
@@ -14380,7 +14380,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       >
                         <Styled(styled.span)>
                           <span
-                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                           >
                             <Calendar>
                               <StyledIconBase
@@ -15487,7 +15487,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -15633,7 +15633,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -15779,7 +15779,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -15948,7 +15948,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           >
                             <Styled(styled.span)>
                               <span
-                                className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                                className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                               >
                                 <Redo>
                                   <StyledIconBase
@@ -18009,7 +18009,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                       >
                         <Styled(styled.span)>
                           <span
-                            className="sc-dkIXZx sc-XhUvE jtzbta jIqulS"
+                            className="sc-dkIXZx sc-XhUvE dNTHem jIqulS"
                           >
                             <ArrowLeft>
                               <StyledIconBase
