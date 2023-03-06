@@ -1,76 +1,61 @@
-import {
-  Button,
-  ControlLabel,
-  FormControl,
-  FormGroup,
-  HelpBlock,
-  Label
-} from 'react-bootstrap'
-import { Field, FormikErrors } from 'formik'
-import {
-  formatPhoneNumber,
-  isPossiblePhoneNumber
-  // @ts-expect-error Package does not have type declaration
-} from 'react-phone-number-input'
-import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { Label as BsLabel, FormGroup } from 'react-bootstrap'
 // @ts-expect-error Package does not have type declaration
-import Input from 'react-phone-number-input/input'
-import React, { Component, Fragment } from 'react'
-import styled, { css } from 'styled-components'
+import { formatPhoneNumber } from 'react-phone-number-input'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import React, { Component, createRef, Fragment } from 'react'
+import styled from 'styled-components'
 
-import { getErrorStates, isBlank } from '../../util/ui'
+import { getAriaPhoneNumber } from '../../util/a11y'
+import { isBlank } from '../../util/ui'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import SpanWithSpace from '../util/span-with-space'
 
-interface Fields {
-  validationCode: string
+import { ControlStrip, FakeLabel, InlineStatic } from './styled'
+import PhoneChangeForm, { PhoneChangeSubmitHandler } from './phone-change-form'
+import PhoneVerificationForm, {
+  PhoneVerificationSubmitHandler
+} from './phone-verification-form'
+
+export type PhoneCodeRequestHandler = (phoneNumber: string) => void
+
+const PlainLink = styled(SpanWithSpace)`
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+  }
+`
+
+const blankState = {
+  isEditing: false,
+  phoneNumberReceived: false,
+  phoneNumberVerified: false,
+  submittedCode: '',
+  submittedNumber: ''
 }
 
 interface Props {
-  errors: FormikErrors<Fields>
   initialPhoneNumber?: string
   initialPhoneNumberVerified?: boolean
   intl: IntlShape
-  onRequestCode: (code: string) => void
-  onSubmitCode: (code: string) => void
+  onRequestCode: PhoneCodeRequestHandler
+  onSubmitCode: PhoneVerificationSubmitHandler
   phoneFormatOptions: {
     countryCode: string
   }
-  resetForm: () => void
-  touched: Record<string, boolean>
-  values: Fields
 }
 
 interface State {
+  /** If true, phone number is being edited. */
   isEditing: boolean
-  isSubmitted: boolean
-  newPhoneNumber: string
+  /** Alert for when a phone number was successfully received. */
+  phoneNumberReceived: boolean
+  /** Alert for when a phone number was successfully verified. */
+  phoneNumberVerified: boolean
+  /** Holds the submitted validation code. */
+  submittedCode: string
+  /** Holds the new phone number (+15555550123 format) submitted for verification. */
+  submittedNumber: string
 }
-
-// Styles
-const ControlStrip = styled.div`
-  > * {
-    margin-right: 4px;
-  }
-`
-const phoneFieldCss = css`
-  display: inline-block;
-  vertical-align: middle;
-  width: 14em;
-`
-const InlineTextInput = styled(FormControl)`
-  ${phoneFieldCss}
-`
-const InlineStatic = styled(FormControl.Static)`
-  ${phoneFieldCss}
-`
-const InlinePhoneInput = styled(Input)`
-  ${phoneFieldCss}
-`
-
-const FlushLink = styled(Button)`
-  padding-left: 0;
-  padding-right: 0;
-`
 
 /**
  * Sub-component that handles phone number and validation code editing and validation intricacies.
@@ -81,96 +66,63 @@ class PhoneNumberEditor extends Component<Props, State> {
 
     const { initialPhoneNumber } = props
     this.state = {
-      // If true, phone number is being edited.
+      ...blankState,
       // For new users, render component in editing state.
-      isEditing: isBlank(initialPhoneNumber),
-
-      // Whether the new number was submitted for verification.
-      isSubmitted: false,
-
-      // Holds the new phone number (+15555550123 format) entered by the user
-      // (outside of Formik because (Phone)Input does not have a standard onChange event or simple valitity test).
-      newPhoneNumber: ''
+      isEditing: isBlank(initialPhoneNumber)
     }
   }
 
-  _handleEditNumber = () => {
-    this.setState({
-      isEditing: true,
-      newPhoneNumber: ''
-    })
-  }
+  _changeRef = createRef<HTMLButtonElement>()
 
-  _handleNewPhoneNumberChange = (newPhoneNumber = '') => {
-    this.setState({
-      newPhoneNumber
-    })
-  }
+  _handleEditNumber = () => this.setState({ isEditing: true })
 
   _handleCancelEditNumber = () => {
-    this.setState({
-      isEditing: false,
-      isSubmitted: false
-    })
-  }
-
-  _handlePhoneNumberKeyDown = (e: KeyboardEvent) => {
-    if (e.keyCode === 13) {
-      // On the user pressing enter (keyCode 13) on the phone number field,
-      // prevent form submission and request the code.
-      e.preventDefault()
-      this._handleRequestCode()
-    }
-  }
-
-  _handleValidationCodeKeyDown = (e: KeyboardEvent) => {
-    if (e.keyCode === 13) {
-      // On the user pressing enter (keyCode 13) on the validation code field,
-      // prevent form submission and send the validation code.
-      e.preventDefault()
-      this._handleSubmitCode()
-    }
+    this.setState(blankState)
   }
 
   /**
    * Send phone verification request with the entered values.
    */
-  _handleRequestCode = () => {
+  _handleRequestCode: PhoneChangeSubmitHandler = async (values) => {
     const { initialPhoneNumber, initialPhoneNumberVerified, onRequestCode } =
       this.props
-    const { newPhoneNumber } = this.state
-
-    this._handleCancelEditNumber()
+    const phoneNumber = 'phoneNumber' in values ? values.phoneNumber : null
 
     // Send the SMS request if one of these conditions apply:
-    // - the user entered a valid phone number different than their current verified number,
+    // - the user entered a (valid) phone number different than their current verified number,
     // - the user clicks 'Request new code' for an already pending number
     //   (they could have refreshed the page in between).
     let submittedNumber
-
     if (
-      newPhoneNumber &&
-      isPossiblePhoneNumber(newPhoneNumber) &&
-      !(newPhoneNumber === initialPhoneNumber && initialPhoneNumberVerified)
+      phoneNumber &&
+      !(phoneNumber === initialPhoneNumber && initialPhoneNumberVerified)
     ) {
-      submittedNumber = newPhoneNumber
+      submittedNumber = phoneNumber
     } else if (this._isPhoneNumberPending()) {
       submittedNumber = initialPhoneNumber
     }
 
     if (submittedNumber) {
-      // TODO: disable submit while submitting.
-      this.setState({ isSubmitted: true })
-      onRequestCode(submittedNumber)
+      this.setState({ submittedNumber })
+      await onRequestCode(submittedNumber)
     }
+    this._handleCancelEditNumber()
   }
 
-  _handleSubmitCode = () => {
-    const { errors, onSubmitCode, values } = this.props
-    const { validationCode } = values
+  /**
+   * Send phone validation code.
+   */
+  _handleSubmitCode: PhoneVerificationSubmitHandler = async (values) => {
+    const { onSubmitCode } = this.props
+    const submittedCode =
+      'validationCode' in values ? values.validationCode : null
 
-    if (!errors.validationCode) {
-      onSubmitCode(validationCode)
+    if (submittedCode) {
+      this.setState({ submittedCode })
+      await onSubmitCode(values)
+      // If user enters the wrong code, re-enable verification submit.
+      // (If user enters the correct code, the page will be refreshed.)
+      this.setState({ submittedCode: '' })
     }
   }
 
@@ -179,159 +131,154 @@ class PhoneNumberEditor extends Component<Props, State> {
     return !isBlank(initialPhoneNumber) && !initialPhoneNumberVerified
   }
 
-  componentDidUpdate(prevProps: Props) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    const { initialPhoneNumber, initialPhoneNumberVerified } = this.props
+    const numberChanged = initialPhoneNumber !== prevProps.initialPhoneNumber
+    const verifiedChanged =
+      initialPhoneNumberVerified !== prevProps.initialPhoneNumberVerified
+
     // If new phone number and verified status are received,
     // then reset/clear the inputs.
-    if (
-      this.props.initialPhoneNumber !== prevProps.initialPhoneNumber ||
-      this.props.initialPhoneNumberVerified !==
-        prevProps.initialPhoneNumberVerified
-    ) {
+    if (numberChanged || verifiedChanged) {
       this._handleCancelEditNumber()
-      this.props.resetForm()
+    }
+
+    // If a new phone number was submitted,
+    // i.e. initialPhoneNumber changed AND initialPhoneNumberVerified turns false,
+    // set an ARIA alert that the phone number was successfully submitted.
+    if (numberChanged && !initialPhoneNumberVerified) {
+      this.setState({ phoneNumberReceived: true })
+    }
+
+    // If a verification code was submitted successfully,
+    // i.e. initialPhoneNumber did not change AND initialPhoneVerified turns from false to true,
+    // set an ARIA alert that the phone number was successfully verified.
+    if (!numberChanged && verifiedChanged && initialPhoneNumberVerified) {
+      this.setState({ phoneNumberVerified: true })
+    }
+
+    // If the user cancels the phone number change form,
+    // return the keyboard focus to the "Change number" button that started all.
+    if (
+      prevState.isEditing &&
+      !this.state.isEditing &&
+      this.state.submittedNumber === ''
+    ) {
+      this._changeRef.current?.focus()
     }
   }
 
   render() {
+    const { initialPhoneNumber, phoneFormatOptions } = this.props
     const {
-      errors, // Formik prop
-      initialPhoneNumber,
-      intl,
-      phoneFormatOptions,
-      touched // Formik prop
-    } = this.props
-    const { isEditing, isSubmitted, newPhoneNumber } = this.state
-    const isPending = isSubmitted || this._isPhoneNumberPending()
+      isEditing,
+      phoneNumberReceived,
+      phoneNumberVerified,
+      submittedCode,
+      submittedNumber
+    } = this.state
+    const hasSubmittedNumber = !isBlank(submittedNumber)
+    const hasSubmittedCode = !isBlank(submittedCode)
+    const isPending = hasSubmittedNumber || this._isPhoneNumberPending()
+    const isAlertBusy = (isEditing && hasSubmittedNumber) || hasSubmittedCode
 
-    // Here are the states we are dealing with:
-    // - First time entering a phone number/validation code (blank value, not modified)
-    //   => no color, no feedback indication.
-    // - Typing backspace all the way to erase a number/code (blank value, modified)
-    //   => red error.
-    // - Typing a phone number that doesn't match the configured phoneNumberRegEx
-    //   => red error.
-    const isPhoneInvalid = !isPossiblePhoneNumber(newPhoneNumber)
-    const showPhoneError = isPhoneInvalid && !isBlank(newPhoneNumber)
-    const phoneErrorState = showPhoneError ? 'error' : null
-    // @ts-expect-error TODO Add TypeScript to getErrorStates module.
-    const codeErrorState = getErrorStates(this.props).validationCode
+    const shownPhoneNumberRaw = hasSubmittedNumber
+      ? submittedNumber
+      : initialPhoneNumber
+    const shownPhoneNumber = formatPhoneNumber(shownPhoneNumberRaw)
+    const ariaPhoneNumber = getAriaPhoneNumber(
+      formatPhoneNumber(initialPhoneNumber)
+    )
+
+    // Note: ARIA alerts are read out only once, until they change,
+    // so there is no need to clear them.
+    // TODO: Find a correct way to render phone numbers for screen readers (at least for US).
+    let ariaAlertContent
+    if (phoneNumberReceived) {
+      ariaAlertContent = (
+        <>
+          <FormattedMessage
+            id="components.PhoneNumberEditor.phoneNumberSubmitted"
+            values={{
+              phoneNumber: ariaPhoneNumber
+            }}
+          />{' '}
+          {/* Repeat in the alert that the user has to lookup and enter a validation code next. */}
+          <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
+        </>
+      )
+    } else if (phoneNumberVerified) {
+      ariaAlertContent = (
+        <FormattedMessage
+          id="components.PhoneNumberEditor.phoneNumberVerified"
+          values={{
+            phoneNumber: ariaPhoneNumber
+          }}
+        />
+      )
+    }
 
     return (
       <>
+        <InvisibleA11yLabel aria-busy={isAlertBusy} role="alert">
+          {ariaAlertContent}
+        </InvisibleA11yLabel>
         {isEditing ? (
-          // FIXME: If removing the Save/Cancel buttons on the account screen,
-          // make this <FormGroup> a <form> and remove onKeyDown handler.
-          <FormGroup validationState={phoneErrorState}>
-            <ControlLabel>
-              <FormattedMessage id="components.PhoneNumberEditor.prompt" />
-            </ControlLabel>
-            <ControlStrip>
-              <InlinePhoneInput
-                className="form-control"
-                country={phoneFormatOptions.countryCode}
-                onChange={this._handleNewPhoneNumberChange}
-                onKeyDown={this._handlePhoneNumberKeyDown}
-                placeholder={intl.formatMessage({
-                  id: 'components.PhoneNumberEditor.placeholder'
-                })}
-                type="tel"
-                value={newPhoneNumber}
-              />
-              <Button
-                bsStyle="primary"
-                disabled={isPhoneInvalid}
-                onClick={this._handleRequestCode}
-              >
-                <FormattedMessage id="components.PhoneNumberEditor.sendVerificationText" />
-              </Button>
-              {
-                // Show cancel button only if a phone number is already recorded.
-                initialPhoneNumber && (
-                  <Button onClick={this._handleCancelEditNumber}>
-                    <FormattedMessage id="common.forms.cancel" />
-                  </Button>
-                )
-              }
-              {showPhoneError && (
-                <HelpBlock>
-                  <FormattedMessage id="components.PhoneNumberEditor.invalidPhone" />
-                </HelpBlock>
-              )}
-            </ControlStrip>
-          </FormGroup>
+          <PhoneChangeForm
+            isSubmitting={hasSubmittedNumber}
+            onCancel={this._handleCancelEditNumber}
+            onSubmit={this._handleRequestCode}
+            phoneFormatOptions={phoneFormatOptions}
+            showCancel={!!initialPhoneNumber}
+          />
         ) : (
           <FormGroup>
-            <ControlLabel>
+            <FakeLabel>
               <FormattedMessage id="components.PhoneNumberEditor.smsDetail" />
-            </ControlLabel>
+            </FakeLabel>
             <ControlStrip>
-              <InlineStatic>
-                <SpanWithSpace margin={0.5}>
-                  {formatPhoneNumber(
-                    isSubmitted ? newPhoneNumber : initialPhoneNumber
-                  )}
-                </SpanWithSpace>
+              <InlineStatic className="form-control-static">
+                <PlainLink
+                  aria-label={ariaPhoneNumber}
+                  // Use an anchor so that the aria-label applies.
+                  // Styling will mostly make the text appear plain, but
+                  // phone actions can be performed if necessary.
+                  as="a"
+                  href={`tel:${shownPhoneNumberRaw}`}
+                  margin={0.5}
+                >
+                  {shownPhoneNumber}
+                </PlainLink>
+                {/* Invisible parentheses for no-CSS and screen readers */}
+                <InvisibleA11yLabel> (</InvisibleA11yLabel>
                 {isPending ? (
-                  // eslint-disable-next-line jsx-a11y/label-has-for
-                  <Label bsStyle="warning">
+                  <BsLabel bsStyle="warning">
                     <FormattedMessage id="components.PhoneNumberEditor.pending" />
-                  </Label>
+                  </BsLabel>
                 ) : (
-                  // eslint-disable-next-line jsx-a11y/label-has-for
-                  <Label bsStyle="success">
+                  <BsLabel bsStyle="success">
                     <FormattedMessage id="components.PhoneNumberEditor.verified" />
-                  </Label>
+                  </BsLabel>
                 )}
+                <InvisibleA11yLabel>)</InvisibleA11yLabel>
               </InlineStatic>
-              <Button onClick={this._handleEditNumber}>
+              <button
+                // "Downgrading" to a plain button so we can insert a ref to return keyboard focus on cancel.
+                className="btn btn-default"
+                onClick={this._handleEditNumber}
+                ref={this._changeRef}
+              >
                 <FormattedMessage id="components.PhoneNumberEditor.changeNumber" />
-              </Button>
+              </button>
             </ControlStrip>
           </FormGroup>
         )}
 
         {isPending && !isEditing && (
-          // FIXME: If removing the Save/Cancel buttons on the account screen,
-          // make this <FormGroup> a <form> and remove onKeyDown handler.
-          <FormGroup validationState={codeErrorState}>
-            <p>
-              <FormattedMessage id="components.PhoneNumberEditor.verificationInstructions" />
-            </p>
-            <ControlLabel>
-              <FormattedMessage id="components.PhoneNumberEditor.verificationCode" />
-            </ControlLabel>
-            <ControlStrip>
-              <Field
-                as={InlineTextInput}
-                maxLength={6}
-                name="validationCode"
-                onKeyDown={this._handleValidationCodeKeyDown}
-                placeholder="123456"
-                // HACK: <input type='tel'> triggers the numerical keypad on mobile devices, and otherwise
-                // behaves like <input type='text'> with support of leading zeros and the maxLength prop.
-                // <input type='number'> causes values to be stored as Number, resulting in
-                // leading zeros to be invalid and stripped upon submission.
-                type="tel"
-
-                // onBlur, onChange, and value are passed automatically by Formik
-              />
-              <Button
-                bsStyle="primary"
-                disabled={!!errors.validationCode}
-                onClick={this._handleSubmitCode}
-              >
-                <FormattedMessage id="components.PhoneNumberEditor.verify" />
-              </Button>
-              {touched.validationCode && errors.validationCode && (
-                <HelpBlock>
-                  <FormattedMessage id="components.PhoneNumberEditor.invalidCode" />
-                </HelpBlock>
-              )}
-            </ControlStrip>
-            <FlushLink bsStyle="link" onClick={this._handleRequestCode}>
-              <FormattedMessage id="components.PhoneNumberEditor.requestNewCode" />
-            </FlushLink>
-          </FormGroup>
+          <PhoneVerificationForm
+            onRequestCode={this._handleRequestCode}
+            onSubmit={this._handleSubmitCode}
+          />
         )}
       </>
     )

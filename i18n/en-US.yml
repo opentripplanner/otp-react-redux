@@ -291,6 +291,8 @@ components:
     invalidCode: Please enter 6 digits for the validation code.
     invalidPhone: Please enter a valid phone number.
     pending: Pending
+    phoneNumberSubmitted: Phone number {phoneNumber} was successfully submitted.
+    phoneNumberVerified: Phone number {phoneNumber} was successfully verified.
     # Note to translator: placeholder is width-constrained.
     placeholder: "Enter your phone number"
     prompt: "Enter your phone number for SMS notifications:"
@@ -685,6 +687,7 @@ common:
     print: Print
     save: Save
     startOver: Start Over
+    submitting: Submitting…
     yes: Yes
   # Shared itinerary description messages
   itineraryDescriptions:
