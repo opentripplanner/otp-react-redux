@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { connect } from 'react-redux'
 import { differenceInDays } from 'date-fns'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'

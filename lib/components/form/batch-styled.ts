@@ -8,20 +8,20 @@ import DateTimePreview from './date-time-preview'
 const SHADOW = 'inset 0px 0px 5px #c1c1c1'
 
 const activeCss = css`
-  background: #e5e5e5;
-  -webkit-box-shadow: ${SHADOW};
   -moz-box-shadow: ${SHADOW};
+  -webkit-box-shadow: ${SHADOW};
+  background: #e5e5e5;
   box-shadow: ${SHADOW};
   outline: none;
 `
 
 export const buttonCss = css`
-  height: 51px;
-  width: 51px;
-  margin: 0px;
-  border: 0px;
   border-radius: 5px;
+  border: 0px;
+  height: 51px;
+  margin: 0px;
   transition: all 250ms cubic-bezier(0.27, 0.01, 0.38, 1.06);
+  width: 51px;
   &:active {
     ${activeCss}
   }
@@ -57,17 +57,17 @@ export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
 `
 
 export const PlanTripButton = styled(Button)`
+  align-item: right;
   background-color: green;
   color: #ffffffdd;
-  padding: 5px;
-  grid-row: 2;
   grid-column: -1;
-  align-item: right;
+  grid-row: 2;
+  padding: 5px;
 
   &:active {
     ${activeCss}
-    filter: saturate(50%);
     background: green;
+    filter: saturate(50%);
   }
 
   span {
@@ -78,8 +78,8 @@ export const PlanTripButton = styled(Button)`
 
 const expandableBoxCss = css`
   background-color: rgb(239, 239, 239);
-  box-shadow: rgba(0, 0, 0, 0.32) 7px 12px 10px;
   border-radius: 5px 5px 5px 5px;
+  box-shadow: rgba(0, 0, 0, 0.32) 7px 12px 10px;
   left: 10px;
   position: absolute;
   right: 10px;

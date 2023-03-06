@@ -90,7 +90,7 @@ function BatchSettings({
   intl,
   routingQuery
 }: Props) {
-  const [expanded, setExpanded] = useState<null | string>(null)
+  const [dateTimeExpanded, setDateTimeExpanded] = useState<boolean>(false)
   const { ModeIcon } = useContext(ComponentContext)
 
   const modeButtonsWithIcons: ModeButtonDefinition[] =
@@ -133,29 +133,23 @@ function BatchSettings({
       return
     }
     // Close any expanded panels.
-    setExpanded(null)
+    setDateTimeExpanded(false)
 
     // Plan trip.
     routingQuery()
   }
 
-  const _updateExpanded = (type: string) => (expanded === type ? null : type)
-
-  const _toggleDateTime = () => setExpanded(_updateExpanded('DATE_TIME'))
   return (
     <>
-      {/* <ModeButtonsFullWidthContainer className="hidden-lg">
-      </ModeButtonsFullWidthContainer> */}
       <MainSettingsRow>
         <StyledDateTimePreview
           // as='button'
-          expanded={expanded === 'DATE_TIME'}
+          expanded={dateTimeExpanded}
           hideButton
-          onClick={_toggleDateTime}
+          onClick={() => setDateTimeExpanded(!dateTimeExpanded)}
         />
         <ModeButtonsContainerCompressed>
           <MetroModeSelector
-            fillModeIcons={config.itinerary?.fillModeIcons}
             modeButtons={buttonsWithSettings}
             onSettingsUpdate={setModeSettingValue}
             onToggleModeButton={toggleModeButton}
@@ -179,15 +173,10 @@ function BatchSettings({
           </PlanTripButton>
         </ModeButtonsContainerCompressed>
       </MainSettingsRow>
-      {expanded === 'DATE_TIME' && (
+      {dateTimeExpanded && (
         <DateTimeModalContainer>
           <DateTimeModal />
         </DateTimeModalContainer>
-      )}
-      {expanded === 'SETTINGS' && (
-        <BatchPreferencesContainer>
-          <BatchPreferences />
-        </BatchPreferencesContainer>
       )}
     </>
   )
