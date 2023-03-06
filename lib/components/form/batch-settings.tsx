@@ -19,35 +19,13 @@ import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { StyledIconWrapper } from '../util/styledIcon'
 
 import {
-  BatchPreferencesContainer,
   DateTimeModalContainer,
   MainSettingsRow,
   PlanTripButton,
   StyledDateTimePreview
 } from './batch-styled'
-import { Dot } from './styled'
-import BatchPreferences from './batch-preferences'
+import { defaultModeOptions } from './mode-buttons'
 import DateTimeModal from './date-time-modal'
-import ModeButtons, {
-  defaultModeOptions,
-  StyledModeButton
-} from './mode-buttons'
-
-const ModeButtonsFullWidthContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-`
-
-// Define Mode Button styled components here to avoid circular imports. I.e., we
-// cannot define them in styled.js (because mode-buttons.js imports buttonCss
-// and then we would need to import ModeButtons/StyledModeButton from that file
-// in turn).
-const ModeButtonsFullWidth = styled(ModeButtons)`
-  &:last-child {
-    margin-right: 0px;
-  }
-`
 
 const ModeButtonsContainerCompressed = styled.div`
   display: flex;
@@ -57,18 +35,6 @@ const ModeButtonsContainerCompressed = styled.div`
   }
 `
 
-const ModeButtonsCompressed = styled(ModeButtons)`
-  ${StyledModeButton} {
-    border-radius: 0px;
-  }
-  &:first-child {
-    border-radius: 5px 0px 0px 5px;
-  }
-  &:last-child {
-    margin-right: 5px;
-    border-radius: 0px 5px 5px 0px;
-  }
-`
 // TYPESCRIPT TODO: better types
 type Props = {
   activeSearch: any
