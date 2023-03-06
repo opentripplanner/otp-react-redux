@@ -212,7 +212,6 @@ class LiveStopTimes extends Component<Props, State> {
               Icon={Redo}
               spin={spin}
               styleProps={{ display: 'flex', gap: '5px' }}
-              Wrapper="div"
             >
               <FormattedTime
                 timeStyle="short"

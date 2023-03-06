@@ -17,7 +17,6 @@ interface IconProps extends Props {
 
 interface IconPropsWithText extends Props {
   Icon: React.ElementType
-  Wrapper?: any
   children: React.ReactNode
   styleProps?: React.CSSProperties
 }
@@ -75,20 +74,19 @@ export const StyledIconWrapperTextAlign = styled(StyledIconWrapper)<Props>`
 `
 
 export const IconWithText = ({
-  Wrapper = React.Fragment,
   children,
   Icon,
   size,
   spin,
-  styleProps
+  styleProps = { display: 'contents' }
 }: IconPropsWithText): React.ReactElement => {
   return (
-    <Wrapper style={styleProps}>
+    <div style={styleProps}>
       <StyledIconWrapperTextAlign size={size} spin={spin}>
         <Icon />
       </StyledIconWrapperTextAlign>
       <span>{children}</span>
-    </Wrapper>
+    </div>
   )
 }
 
