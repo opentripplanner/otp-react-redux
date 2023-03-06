@@ -175,7 +175,7 @@ const ItineraryGrid = styled.div`
   }
 `
 
-const ItineraryGridSmall = styled.button`
+const ItineraryGridSmall = styled.div`
   border-radius: 10px;
   display: grid;
   gap: 0 2px;
@@ -502,7 +502,7 @@ class MetroItinerary extends NarrativeItinerary {
               </ItineraryGrid>
             )}
             {mini && (
-              <ItineraryGridSmall className="other-itin">
+              <ItineraryGridSmall>
                 <PrimaryInfo as="span">
                   <FormattedDuration
                     duration={itinerary.duration}
