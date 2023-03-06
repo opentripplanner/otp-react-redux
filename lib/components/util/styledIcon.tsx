@@ -17,7 +17,7 @@ interface IconProps extends Props {
 
 interface IconPropsWithText extends Props {
   Icon: React.ElementType
-  Wrapper: any
+  Wrapper?: any
   children: React.ReactNode
   styleProps?: React.CSSProperties
 }
