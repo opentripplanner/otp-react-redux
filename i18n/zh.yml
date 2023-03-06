@@ -285,7 +285,6 @@ components:
     notifyViaChannelWhen: '通过 {channel} 通知我当:'
     oneHour: 1小时
     realtimeAlertFlagged: 在我的旅程中有一个实时警报标志着
-    toggleAdvancedSettings: 切换高级设置
   TripStatus:
     deleteTrip: 删除行程
     planNewTrip: 计划新的旅行
@@ -400,7 +399,6 @@ components:
     realtime: 基于实时数据
     scheduled: 基于预定数据
   SubNav:
-    activeLanguage: 当前语言
     languages: "语言"
     languageSelector: 选择语言
     myAccount: 我的帐户
