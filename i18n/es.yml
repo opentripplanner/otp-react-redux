@@ -25,36 +25,36 @@ _name: Spanish
 # Messages that are generated from actions
 actions:
   fieldTrip:
-    setDateError: 'Error al establecer la fecha:'
+    addNoteError: 'Error al agregar la nota de campo:'
+    confirmOverwriteItineraries: "Esta acción anulará un itinerario {outbound, select,\n\
+      \  true {saliente}\n  other {entrante}\n  } previamente planificado para esta\
+      \ solicitud. ¿Desea continuar?\n"
+    deleteItinerariesError: 'Error al eliminar el plan de viaje:'
+    deleteNoteError: 'Error al eliminar nota de viaje:'
+    fetchFieldTripError: 'Error al obtener el viaje: {err}'
+    fetchFieldTripsError: 'Error al obtener viajes: {err}'
+    fetchTripsForDateError: 'Error al obtener viajes para la fecha de viaje: {err}'
+    incompatibleTripDateError: La fecha de viaje planificada ({tripDate}) no es el
+      día de viaje solicitado ({requestDate})
     itineraryCapacityError: 'No se puede guardar el plan: este plan no se pudo guardar
       debido a la falta de capacidad en uno o más vehículos. Por favor, vuelva a planificar
       su viaje.'
     maxTripRequestsExceeded: Se superó el número máximo de solicitudes de viaje sin
       resultados válidos.
     saveItinerariesError: 'No se pudieron guardar los itinerarios: {err}'
-    fetchFieldTripError: 'Error al obtener el viaje: {err}'
-    fetchFieldTripsError: 'Error al obtener viajes: {err}'
-    fetchTripsForDateError: 'Error al obtener viajes para la fecha de viaje: {err}'
-    incompatibleTripDateError: La fecha de viaje planificada ({tripDate}) no es el
-      día de viaje solicitado ({requestDate})
     editSubmitterNotesError: 'Error al editar las notas del remitente:'
     setRequestStatusError: 'Error al establecer el estado de la solicitud:'
-    addNoteError: 'Error al agregar la nota de campo:'
-    setPaymentError: 'Error al configurar la información de pago:'
-    deleteNoteError: 'Error al eliminar nota de viaje:'
-    deleteItinerariesError: 'Error al eliminar el plan de viaje:'
+    setDateError: 'Error al establecer la fecha:'
     setGroupSizeError: 'No se pudo establecer el tamaño del grupo:'
-    confirmOverwriteItineraries: "Esta acción anulará un itinerario {outbound, select,\n\
-      \  true {saliente}\n  other {entrante}\n  } previamente planificado para esta\
-      \ solicitud. ¿Desea continuar?\n"
+    setPaymentError: 'Error al configurar la información de pago:'
   user:
     accountDeleted: El ({email}) de su cuenta de usuario ha sido eliminado.
     authTokenError: Error al obtener un token de autorización.
-    genericError: 'Se ha encontrado un error: {err}'
     confirmDeleteMonitoredTrip: ¿Desea eliminar este viaje?
     confirmDeletePlace: ¿Quiere eliminar este lugar?
     emailVerificationResent: El mensaje de verificación de correo electrónico ha sido
       reenviado.
+    genericError: 'Se ha encontrado un error: {err}'
     itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado
       es posible.
     preferencesSaved: Tus preferencias se han guardado.
@@ -100,22 +100,23 @@ components:
     arriveBy: Llegue a las
     departAt: Salida a las
   DateTimePreview:
-    leaveNow: Salir ahora
-    range: '{startTime, time, short} a {endTime, time, short}'
     arriveAt: Llegar {arriveTime, time, short}
     dayLastWeek: El {formattedDayOfWeek} pasado
     departAt: Salida {departTime, time, short}
     editDepartOrArrival: Editar la hora de salida o de llegada
+    leaveNow: Salir ahora
+    range: '{startTime, time, short} a {endTime, time, short}'
   ErrorMessage:
     warning: Advertencia
     header: No se pudo planificar el viaje
   ExistingAccountDisplay:
     a11y: Accesibilidad
+    mainTitle: Mis ajustes
     notifications: Notificaciones
     places: Lugares favoritos
-    mainTitle: Mis ajustes
     terms: Términos
   ItinerarySummary:
+    itineraryDetails: Detalles del itinerario
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   MapLayers:
     bike-rental: '{companies} Bicicleta Compartida'
@@ -123,12 +124,17 @@ components:
     micromobility-rental: '{companies} E-Scooters'
     park-and-ride: Ubicaciones de Park & Ride
     satellite: Satélite
+    shared-vehicles: "Vehículos compartidos"
     stops: Paradas de tránsito
     streets: Calles
   ModeDropdown:
     exclusiveMode: Solo {mode}
   NarrativeItinerariesHeader:
+    changeSortDir: Cambiar la dirección de clasificación
     itinerariesAndIssues: '{itinerariesFound} y {numIssues}'
+    itinerariesFound: '{itineraryNum, plural, one {# itinerario encontrado} other
+      {# itinerarios encontrados}}'
+    numIssues: '{issueNum, plural, one {# problema} other {# problemas}}'
     searching: Encontrando tus opciones…
     selectArrivalTime: Hora de llegada
     selectBest: La mejor opción
@@ -136,55 +142,51 @@ components:
     selectDepartureTime: Hora de salida
     selectDuration: Duración
     selectWalkTime: Tiempo de caminata
-    viewAll: Ver todas las opciones
-    itinerariesFound: '{itineraryNum, plural, one {# itinerario encontrado} other
-      {# itinerarios encontrados}}'
-    numIssues: '{issueNum, plural, one {# problema} other {# problemas}}'
     sortBy: Ordenar por
-    changeSortDir: Cambiar la dirección de clasificación
+    viewAll: Ver todas las opciones
   NewAccountWizard:
-    terms: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
     notifications: Preferencias de notificación
     places: Añade tus ubicaciones
+    terms: Crear una nueva cuenta
     verify: Verifique su dirección de correo electrónico
   NotFound:
     description: El contenido que ha solicitado no está disponible.
     header: Contenido no encontrado
   NotificationPrefsPane:
-    noneSelect: No me avises
     description: Puedes recibir notificaciones sobre los viajes que realizas con frecuencia.
+    noneSelect: No me avises
     notificationChannelPrompt: ¿Cómo desea recibir las notificaciones?
     notificationEmailDetail: 'Los correos electrónicos de notificación se enviarán
       a:'
   PhoneNumberEditor:
-    invalidPhone: Por favor, introduzca un número de teléfono válido.
-    requestNewCode: Solicitar un nuevo código
-    verify: Verificar
     changeNumber: Cambiar número de teléfono
     invalidCode: Introduzca 6 dígitos para el código de validación.
+    invalidPhone: Por favor, introduzca un número de teléfono válido.
     pending: Pendiente
     placeholder: Introduzca su número de teléfono
     prompt: 'Introduzca su número de teléfono para las notificaciones por SMS:'
+    requestNewCode: Solicitar un nuevo código
     sendVerificationText: Enviar texto de verificación
     smsDetail: 'Las notificaciones por SMS se enviarán a:'
     verificationCode: 'Código de verificación:'
-    verified: Verificado
     verificationInstructions: "Por favor, compruebe en la aplicación de mensajería\
       \ SMS de su teléfono móvil si hay un mensaje de texto con un código de verificación,\
       \ e introduzca el código que aparece a continuación. El código caduca a los\
       \ 10 minutos.\n"
+    verified: Verificado
+    verify: Verificar
   Place:
-    viewStop: Ver parada
     deleteThisPlace: Borrar este lugar
     enterAlert: "Introduzca el origen/destino en el formulario (o establezca mediante\
       \ un clic en el mapa) y haga clic en el marcador resultante para establecerlo\
       \ como lugar de {placeType}.\n"
+    viewStop: Ver parada
   PlanFirstLastButtons:
     first: Primero
-    previous: Anteriormente
     last: Último
     next: Próxima
+    previous: Anteriormente
   PlanTripButton:
     planTrip: Planificar viaje
   PrintLayout:
@@ -197,16 +199,16 @@ components:
       \ utilizando las siguientes rutas: {routes}.\n"
   RealtimeStatusLabel:
     early: '{minutes} antes'
-    scheduled: programado
     late: '{minutes} de retraso'
     onTime: a tiempo
+    scheduled: programado
   RelatedPanel:
     hideExtraStops: Ocultar las paradas adicionales
     showExtraStops: Mostrar {count} paradas adicionales
   RelatedStopsPanel:
     noArrivalFound: No se ha encontrado ninguna llegada
-    viewDetails: Ver detalles
     relatedStops: Paradas relacionadas
+    viewDetails: Ver detalles
   RouteDetails:
     moreDetails: Más detalles
     operatedBy: Servicio operado por {agencyName}
@@ -214,15 +216,15 @@ components:
     stopsTo: Hacia
   RouteViewer:
     agencyFilter: Filtro de agencia
-    findARoute: Buscar una ruta
-    modeFilter: Filtro de modo
-    shortTitle: Ver rutas
-    title: Visor de rutas
     allAgencies: Todas las agencias
     allModes: Todos los modos
-    header: Visor de rutas
-    noFilteredRoutesFound: ¡No hay rutas que coincidan con tu filtro!
     details: ' '
+    findARoute: Buscar una ruta
+    header: Visor de rutas
+    modeFilter: Filtro de modo
+    noFilteredRoutesFound: ¡No hay rutas que coincidan con tu filtro!
+    shortTitle: Ver rutas
+    title: Visor de rutas
   SavedTripEditor:
     editSavedTrip: Editar el viaje guardado
     saveNewTrip: Guardar un nuevo viaje
@@ -232,8 +234,8 @@ components:
     tripNotFoundDescription: Lo sentimos, no se ha encontrado el viaje solicitado.
   SavedTripList:
     myTrips: Mis viajes
-    noSavedTripsInstructions: Realice primero una búsqueda de viajes desde el mapa.
     noSavedTrips: No tienes viajes guardados
+    noSavedTripsInstructions: Realice primero una búsqueda de viajes desde el mapa.
     pause: Pausa
     resume: Reanudar
   SavedTripScreen:
@@ -243,38 +245,38 @@ components:
       un nombre diferente.
     tripNameRequired: Por favor, introduzca el nombre del viaje.
   SaveTripButton:
-    signInTooltip: Por favor, inicia sesión para guardar un viaje.
     cantSaveText: No se puede guardar
     cantSaveTooltip: Sólo se pueden controlar los itinerarios que incluyan ride hailing
       y no los alquileres o los viajes en coche.
     saveTripText: Salvar el viaje
+    signInTooltip: Por favor, inicia sesión para guardar un viaje.
     signInText: Iniciar sesión para guardar el viaje
   SettingsPreview:
     defaultPreviewText: Opciones y preferencias de tránsito
   StopViewer:
-    noStopsFound: No se han encontrado tiempos de parada para la fecha.
-    viewSchedule: Ver horario
     displayStopId: '<strong>ID de Parada</strong>: {stopId}'
     flexStop: Esta es una parada flexible. Los vehículos dejarán y recogerán a los
       pasajeros en esta zona flexible previa solicitud. Es posible que tenga que llamar
       con antelación para el servicio en esta zona.
     header: Visor de paradas
     loadingText: Cargando la parada...
+    noStopsFound: No se han encontrado tiempos de parada para la fecha.
     timezoneWarning: Las horas de salida se indican en <strong>{timezoneCode}</strong>.
     viewNextArrivals: Ver próximas llegadas
+    viewSchedule: Ver horario
     zoomToStop: Zoom a la parada
   TransitVehicleOverlay:
-    vehicleName: 'Vehículo {vehicleNumber}'
     in_transit_to: Próxima parada {stop}
     incoming_at: acercándose a {stop}
     stopped_at: puertas abiertas en la {stop}
     travelingAt: Viajando a {milesPerHour}
+    vehicleName: 'Vehículo {vehicleNumber}'
   TripBasicsPane:
+    checkingItineraryExistence: Comprobación de la existencia de itinerarios para
+      cada día de la semana…
     selectAtLeastOneDay: Por favor, seleccione al menos un día para el seguimiento.
     selectedItinerary: 'Itinerario seleccionado:'
     tripDaysPrompt: ¿Qué días hace este viaje?
-    checkingItineraryExistence: Comprobación de la existencia de itinerarios para
-      cada día de la semana…
     tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana
       indicados anteriormente.
     tripNamePrompt: 'Por favor, indique un nombre para este viaje:'
@@ -284,44 +286,44 @@ components:
     unsavedChangesNewTrip: Todavía no has guardado tu nuevo viaje. Si lo dejas, se
       perderá.
   TripNotificationsPane:
-    oneHour: 1 hora
-    toggleAdvancedSettings: Activar la configuración avanzada
+    advancedSettings: Configuración avanzada
     altRouteRecommended: Se recomienda una ruta alternativa o un punto de transferencia
     delaysAboveThreshold: Hay retrasos o interrupciones de más de
+    howToReceiveAlerts: "Para recibir alertas de tus viajes guardados, activa las\
+      \ notificaciones en la configuración de tu cuenta e intenta guardar un viaje\
+      \ de nuevo.\n"
     monitorThisTrip: Supervise este viaje {minutes} antes de que comience hasta que
       termine.
     notificationsTurnedOff: Las notificaciones están desactivadas para su cuenta.
     notifyViaChannelWhen: 'Notifíqueme por {channel} cuando:'
+    oneHour: 1 hora
     realtimeAlertFlagged: Hay una alerta en tiempo real marcada en mi viaje
-    howToReceiveAlerts: "Para recibir alertas de tus viajes guardados, activa las\
-      \ notificaciones en la configuración de tu cuenta e intenta guardar un viaje\
-      \ de nuevo.\n"
-    advancedSettings: Configuración avanzada
+    toggleAdvancedSettings: Activar la configuración avanzada
   TripStatus:
-    planNewTrip: Planificar un nuevo viaje
     alerts: '{alerts, plural, one {# alerta!} other {# alertas!}}'
     deleteTrip: Borrar el viaje
+    planNewTrip: Planificar un nuevo viaje
   TripStatusRenderers:
     active:
+      delayedHeading: La hora de inicio del viaje se retrasa {formattedDuration}!
       description: El viaje debe comenzar a las {arrivalTime, time, short}.
       onTimeHeading: El viaje está en curso y está más o menos a tiempo.
-      delayedHeading: La hora de inicio del viaje se retrasa {formattedDuration}!
       earlyHeading: ¡El viaje está en marcha y llega {formattedDuration} antes de
         lo previsto!
       noDataHeading: El viaje está en curso (no hay actualizaciones disponibles en
         tiempo real).
     base:
-      togglePause: Pausa
       lastCheckedDefaultText: Hora de la última comprobación desconocida
       lastCheckedText: 'Últimos comprobados: Hace {formattedDuration}'
+      togglePause: Pausa
       tripIsNotSnoozed: Snooze para el resto del día
       tripIsSnoozed: Reactivar el análisis de los viajes
       unknownState: Estado de viaje desconocido
       untogglePause: Reanudar
     nextTripNotPossible:
-      heading: El viaje no es posible hoy
       description: "El planificador de viajes no ha podido encontrar su viaje hoy.\
         \ Intente volver a planificar su itinerario para encontrar una ruta alternativa.\n"
+      heading: El viaje no es posible hoy
     snoozed:
       heading: El seguimiento del viaje se ha suspendido por hoy
       description: Reactivar la supervisión del viaje para ver el estado actualizado.
@@ -354,16 +356,16 @@ components:
     happensOnDays: 'Ocurre en: <strong>{days}</strong>'
     notificationsDisabled: 'Notificaciones: <strong>Discapacitados</strong>'
   TripTools:
-    reportEmailSubject: Informar un problema con OpenTripPlanner
-    reportIssue: Informar problema
     copyLink: Copiar link
     linkCopied: Copiado
+    reportEmailSubject: Informar un problema con OpenTripPlanner
     reportEmailTemplate: "***INSTRUCCIONES PARA EL USUARIO***\n Esta función le permite\
       \ enviar por correo electrónico un informe a los administradores del sitio para\
       \ que lo revisen. Por favor, rellene los campos que aparecen a continuación\
       \ y envíelos utilizando su programa de correo electrónico habitual.\n \n ***POR\
       \ FAVOR COMPLETE LO SIGUIENTE***\n\n Problema encontrado:\n \n Tipo de viaje\
       \ que querías hacer:\n\n ***Detalles técnicos***\n"
+    reportIssue: Informar problema
   TripViewer:
     accessible: Accesible
     bicyclesAllowed: Permitido
@@ -374,17 +376,17 @@ components:
     confirmDelete: ¿Está seguro de que desea eliminar su cuenta de usuario? Una vez
       que lo hagas, no se podrá recuperar.
   UserSettings:
-    favoriteStops: Paradas favoritas
-    mySavedPlaces: Mis lugares guardados (<manageLink>Administrar</manageLink>)
-    noFavoriteStops: No hay paradas favoritas
-    rememberSearches: ¿Recuerda las búsquedas/lugares recientes?
     confirmDeletion: Tienes almacenadas búsquedas o lugares recientes. Si desactiva
       el almacenamiento de lugares o búsquedas recientes, eliminará estos elementos.
       ¿Continuar?
+    favoriteStops: Paradas favoritas
     myPreferences: Mis preferencias
+    mySavedPlaces: Mis lugares guardados (<manageLink>Administrar</manageLink>)
+    noFavoriteStops: No hay paradas favoritas
     recentPlaces: Lugares recientes
-    recentSearchSummary: '{mode} de {from} al {to}'
     recentSearches: Búsquedas recientes
+    recentSearchSummary: '{mode} de {from} al {to}'
+    rememberSearches: ¿Recuerda las búsquedas/lugares recientes?
     stopId: 'ID de Parada: {stopId}'
     storageDisclaimer: "Cualquier preferencia, lugar o configuración que opte por\
       \ guardar se guardará en el almacenamiento local de su navegador. No tendremos\
@@ -407,10 +409,6 @@ components:
   A11yPrefs:
     accessibilityRoutingByDefault: Prefiera los viajes accesibles por defecto
   AmenitiesPanel:
-    noNearbyScooters: No se encontraron alquileres de micromovilidad cerca.
-    noPRLotsFound: No hay Park-and-Ride cerca.
-    nearbyAmenities: Servicios cercanos
-    noNearbyBikes: No se ha encontrado ningún alquiler de bicicletas cercano.
     bikesAtStation: "{companyLength, plural,\n =0 {Bicicletas en la {name}}\n other\
       \ {Bicicletas de {company} en la{name}}\n }\n"
     bikesAvailable: "{count, plural,\n =0 {No hay bicicletas disponibles}\n one {#\
@@ -418,6 +416,10 @@ components:
     bikesNearby: "{count, plural,\n =0 {No hay bicicletas de {company} cerca}\n one\
       \ {# bicicleta de {company} cerca}\n other {#bicicletas de {company} cerca}\n\
       \ }\n"
+    nearbyAmenities: Servicios cercanos
+    noNearbyScooters: No se encontraron alquileres de micromovilidad cerca.
+    noPRLotsFound: No hay Park-and-Ride cerca.
+    noNearbyBikes: No se ha encontrado ningún alquiler de bicicletas cercano.
     scootersNearby: "{count, plural,\n =0 {No hay e-scooters de {company} cerca}\n\
       \ one {# e-scooter de {company} cerca}\n other {# e-scooters de {company} cerca}\n\
       \ }\n"
@@ -425,11 +427,12 @@ components:
       \ one {# plaza de aparcamiento disponible}\n other {# plazas de aparcamiento\
       \ disponibles}\n }\n"
   AppMenu:
+    callHistory: Historial de llamadas
     closeMenu: Cerrar Menú
     fieldTrip: Título del viaje
     mailables: Lista para publicar
     openMenu: Abrir Menú
-    callHistory: Historial de llamadas
+    skipNavigation: Saltar navegación
   BackToTripPlanner:
     backToTripPlanner: Volver al planificador de viajes
   CallTakerPanel:
@@ -468,9 +471,9 @@ components:
     fromStop: de {stop}
     itineraryDescription: '{time} itinerario en {routes}'
     leaveAt: Partir a
-    timeWalking: '{time} caminando'
-    orAlternatives: u otras líneas en la misma dirección
     multipleOptions: Múltiples opciones
+    orAlternatives: u otras líneas en la misma dirección
+    timeWalking: '{time} caminando'
   MobileOptions:
     header: Configurar las opciones de búsqueda
   NavLoginButton:
@@ -481,7 +484,6 @@ components:
   PlaceEditor:
     genericLocationPlaceholder: Buscar ubicación
     locationPlaceholder: Buscar la ubicación de {placeName}
-    namePlaceholder: Establecer el nombre del lugar
   ResultsError:
     backToSearch: Volver a la búsqueda
   ResultsHeader:
@@ -505,9 +507,14 @@ components:
     scheduled: Based on schedule data
     imminentArrival: Debido
   SubNav:
+    activeLanguage: Idioma activo
+    languages: "Idiomas"
+    languageSelector: Seleccionar idioma
     myAccount: Mi cuenta
+    selectALanguage: Seleccionar un idioma
     settings: Ajustes
     trips: Viajes
+    userMenu: Opciones de perfil
   SwitchButton:
     switchLocations: Cambiar de ubicación
     defaultContent: Cambiar
@@ -607,26 +614,33 @@ common:
     noItineraryToDisplay: No hay itinerario que mostrar.
     noTransitFareProvided: No hay información sobre las tarifas
     transfers: '{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}'
+    relativeCo2: >
+      {co2}
+      de CO<sub>2</sub> en 
+      {isMore, select,
+      true {más}
+      other {menos}
+      } que conducir
   modes:
     bicycle_rent: Bicicleta compartida
-    drive: Conducir
-    micromobility_rent: E-Scooter
-    rail: Tren
-    transit: Tránsito
-    walk: Caminar
-    tram: Tranvía
     bike: Bicicleta
     bus: Autobús
     cable_car: Teleférico
     car: Coche
     car_park: Park and Ride
+    drive: Conducir
     ferry: Transbordador
+    flex: Líneas Flex
     funicular: Funicular
     gondola: Teleférico
     micromobility: E-Scooter
+    micromobility_rent: E-Scooter
+    rail: Tren
     rent: Opciones de alquiler
     subway: Metro
-    flex: Líneas Flex
+    tram: Tranvía
+    transit: Tránsito
+    walk: Caminar
   notifications:
     email: correo electrónico
     sms: SMS
@@ -643,7 +657,8 @@ common:
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {hace unos segundos}\n =1 {hace un minuto}\n other {hace # minutos}\n }}\n\
       \ =1 {hace una hora}\n other {hace # horas}\n }}\n other {hace # días}\n }\n"
-    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {} other {# seg}}"
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} min { seconds,\
+      \ plural, =0 {} other {# seg}}"
   places:
     custom: personalizado
     dining: restaurante
@@ -654,14 +669,14 @@ util:
     errorPlanningTrip: Se ha producido un error al planificar un viaje.
     networkUnavailable: La red {network} no está disponible en este momento.
     noTripFound: No se encontró ningún viaje.
-    noTripFoundWithReason: '{noTripFound} {reason}'
-    titleBarRouteId: Ruta {routeId}
-    titleBarStopId: Parada {stopId}
-    titleBarWithStatus: '{title} | {status}'
     noTripFoundForMode: No se ha encontrado ningún viaje para {modes}.
     noTripFoundReason: Es posible que no haya servicio de tránsito dentro de la distancia
       máxima especificada o en el momento especificado, o es posible que su punto
       de inicio o final no sea accesible de manera segura.
+    noTripFoundWithReason: '{noTripFound} {reason}'
+    titleBarRouteId: Ruta {routeId}
+    titleBarStopId: Parada {stopId}
+    titleBarWithStatus: '{title} | {status}'
 config:
   accessModes:
     bicycle: Transportes + Bicicleta personal

@@ -49,15 +49,17 @@ const rotateAnimation = keyframes`
 export const StyledIconWrapper = styled.span<Props>`
   animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1.2s linear
     infinite;
-  display: ${(props) => (props.spin ? 'block' : 'initial')};
+  display: ${(props) => (props.spin ? 'inline-block' : 'initial')};
   svg {
-    width: 1em;
-    height: 1em;
     font-size: ${(props) => getFontSize(props.size)};
+    height: 1em;
+    height: 1em;
     transform: ${(props) => `
-      ${props.flipHorizontal ? 'scale(-1,1) ' : ''}
-      ${props.rotate90 ? 'rotate(90deg)' : ''}
-      `};
+      ${props.flipHorizontal ? 'scale(-1,1) ' : ''} 
+      ${props.rotate90 ? 'rotate(90deg)' : ''} 
+    `};
+    width: 1em;
+    width: 1em;
   }
 `
 
