@@ -1390,12 +1390,24 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.2.0.tgz#ae7ae7923d41f3d84cb2fd88740a89436610bbec"
   integrity sha512-GHUXPEhMEmTpnpIfesFA2KAoMJPb1SPQw964tToQwt+BbGXdhqTCWT1rOb0VURGylsxsYxiGMnseJ3IlclVpVA==
 
+"@floating-ui/core@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.2.2.tgz#66f62cf1b7de2ed23a09c101808536e68caffaec"
+  integrity sha512-FaO9KVLFnxknZaGWGmNtjD2CVFuc0u4yeGEofoyXO2wgRA7fLtkngT6UB0vtWQWuhH3iMTZZ/Y89CMeyGfn8pA==
+
 "@floating-ui/dom@^1.1.1":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.2.0.tgz#a60212069cc58961c478037c30eba4b191c75316"
   integrity sha512-QXzg57o1cjLz3cGETzKXjI3kx1xyS49DW9l7kV2jw2c8Yftd434t2hllX0sVGn2Q8MtcW/4pNm8bfE1/4n6mng==
   dependencies:
     "@floating-ui/core" "^1.2.0"
+
+"@floating-ui/dom@^1.2.1":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.2.3.tgz#8dc6fbf799fbb5c29f705b54bdd51f3ab0ee03a2"
+  integrity sha512-lK9cZUrHSJLMVAdCvDqs6Ug8gr0wmqksYiaoj/bxj2gweRQkSuhg2/V6Jswz2KiQ0RAULbqw1oQDJIMpQ5GfGA==
+  dependencies:
+    "@floating-ui/core" "^1.2.2"
 
 "@floating-ui/react-dom-interactions@^0.11.0":
   version "0.11.0"
@@ -1411,6 +1423,22 @@
   integrity sha512-DbmFBLwFrZhtXgCI2ra7wXYT8L2BN4/4AMQKyu05qzsVji51tXOfF36VE2gpMB6nhJGHa85PdEg75FB4+vnLFQ==
   dependencies:
     "@floating-ui/dom" "^1.1.1"
+
+"@floating-ui/react-dom@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-1.3.0.tgz#4d35d416eb19811c2b0e9271100a6aa18c1579b3"
+  integrity sha512-htwHm67Ji5E/pROEAr7f8IKFShuiCKHwUC/UY4vC3I5jiSvGFAYnSYiZO5MlGmads+QqvUkR9ANHEguGrDv72g==
+  dependencies:
+    "@floating-ui/dom" "^1.2.1"
+
+"@floating-ui/react@^0.20.1":
+  version "0.20.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react/-/react-0.20.1.tgz#20f23cb5615f5beefa6e2ac4d7630a56ccdf7131"
+  integrity sha512-JHTHJ+/YsIxNFH8uJDFa5OyI6dSUZcle6wAFe0zRTjgWD+rkACfBBoJtx2itTtn7C4a7xAz4jgxdEQcMel194g==
+  dependencies:
+    "@floating-ui/react-dom" "^1.3.0"
+    aria-hidden "^1.1.3"
+    tabbable "^6.0.1"
 
 "@formatjs/cli@^4.2.33":
   version "4.8.4"
@@ -2435,10 +2463,28 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^9.0.0-alpha.3", "@opentripplanner/core-utils@^9.0.0-alpha.4":
+"@opentripplanner/core-utils@^9.0.0-alpha.3":
   version "9.0.0-alpha.4"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-9.0.0-alpha.4.tgz#a000817bc2387a39cb5bdefa5274e7815ae70d94"
   integrity sha512-Z7Vi/BO7SDqfLnGXBis285m3osWBXKgabhqG9Qnke3jS4Twal9Qg65sYFMQ5ccL6FrSBhk3aObHvuR/bwyJRWg==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.3.4"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@^9.0.0-alpha.7":
+  version "9.0.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-9.0.0-alpha.7.tgz#5cddc1f6537a48f1e0fa75a96d7e6805c2de6d41"
+  integrity sha512-beaEiJ0NX2hC4NZ+7vHJ63RcKyUUpxN86mbWrpNX5S745DC+jAE7YzCWeTlCv6n/g04nTFgarfwj/4kq0XBh1Q==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
@@ -2740,10 +2786,10 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-4.1.0-alpha.4.tgz#1ecfbd7c908a6972f4dd18df6d4d78bfadab3e24"
   integrity sha512-AdJwZ1cTWrhSEB2O0soC1z8Kx+R/8lOm2vYdQWykzi2bP4FKAipTMRuxe8uYzI6UjH9te1VTkRC9Sk1tWe0WDg==
 
-"@opentripplanner/types@^5.0.0-alpha.1":
-  version "5.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-5.0.0-alpha.1.tgz#38efdf5e2c0f822e0be05b6107a8cbffffd66457"
-  integrity sha512-NcZjEkxOP8yuPqOlRgU6CHPKDtzdu5Q5H4nKcXvoSkClbm04qvm7vj1/O3MfBXqVuQbN8II8jVpd4d09rbDZsw==
+"@opentripplanner/types@^5.0.0-alpha.4":
+  version "5.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-5.0.0-alpha.4.tgz#ec567ed7231d4edf04b4c9808c92ad2509495b6f"
+  integrity sha512-puIuPvwQhh6bN8ABQ2dM1hDYq9X3f8MaJwm2eBUB2IQHMcFk3fGk+jCR8MF8I0a2IH3gj9Np7Ihgr3K0fmjbFQ==
 
 "@opentripplanner/vehicle-rental-overlay@^2.1.0":
   version "2.1.0"
@@ -17340,6 +17386,11 @@ synchronous-promise@^2.0.13:
   version "2.0.15"
   resolved "https://registry.yarnpkg.com/synchronous-promise/-/synchronous-promise-2.0.15.tgz#07ca1822b9de0001f5ff73595f3d08c4f720eb8e"
   integrity sha512-k8uzYIkIVwmT+TcglpdN50pS2y1BDcUnBPK9iJeGu0Pl1lOI8pD6wtzgw91Pjpe+RxtTncw32tLxs/R0yNL2Mg==
+
+tabbable@^6.0.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.1.1.tgz#40cfead5ed11be49043f04436ef924c8890186a0"
+  integrity sha512-4kl5w+nCB44EVRdO0g/UGoOp3vlwgycUVtkk/7DPyeLZUCuNFFKCFG6/t/DgHLrUPHjrZg6s5tNm+56Q2B0xyg==
 
 table@^6.0.9:
   version "6.7.1"
