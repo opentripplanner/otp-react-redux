@@ -256,7 +256,7 @@ class PhoneNumberEditor extends Component<Props, State> {
                     <FormattedMessage id="components.PhoneNumberEditor.pending" />
                   </BsLabel>
                 ) : (
-                  <BsLabel bsStyle="success">
+                  <BsLabel style={{ background: 'green' }}>
                     <FormattedMessage id="components.PhoneNumberEditor.verified" />
                   </BsLabel>
                 )}

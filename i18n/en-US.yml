@@ -130,7 +130,6 @@ components:
         other {# spaces available}
       }
   AppMenu:
-    appMenu: App Menu
     callHistory: Call History
     closeMenu: Close Menu
     fieldTrip: Field Trip
@@ -216,6 +215,7 @@ components:
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
+    refresh: Refresh arrival times
   LocationSearch:
     enterLocation: Enter location
     setDestination: Set Destination
@@ -441,10 +441,10 @@ components:
     timezoneWarning: "Departure times are shown in <strong>{timezoneCode}</strong>."
     viewNextArrivals: View next arrivals
     viewSchedule: View schedule
+    findSchedule: Find schedule by date
     zoomToStop: Zoom to stop
 
   SubNav:
-    activeLanguage: Active language
     languages: "Languages"
     languageSelector: Select language
     myAccount: My account
@@ -505,7 +505,6 @@ components:
     oneHour: 1 hour
     realtimeAlertFlagged: There is a realtime alert flagged on my journey
     timeBefore: "{time} before"
-    toggleAdvancedSettings: Toggle advanced settings
   TripStatus:
     alerts: "{alerts, plural, one {# alert!} other {# alerts!}}"
     deleteTrip: Delete Trip
