@@ -52,7 +52,7 @@ export default function NarrativeItinerariesHeader({
   itineraries: unknown[]
   itinerary: Itinerary
   itineraryIsExpanded: boolean
-  onSortChange: () => void
+  onSortChange: (evt: any) => void
   onSortDirChange: () => void
   onToggleShowErrors: () => void
   onViewAllOptions: () => void

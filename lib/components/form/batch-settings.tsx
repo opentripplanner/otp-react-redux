@@ -57,6 +57,7 @@ function BatchSettings({
   routingQuery
 }: Props) {
   const [dateTimeExpanded, setDateTimeExpanded] = useState<boolean>(false)
+  // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
   const modeButtonsWithIcons: ModeButtonDefinition[] =

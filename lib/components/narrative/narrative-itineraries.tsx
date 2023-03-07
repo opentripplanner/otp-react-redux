@@ -35,41 +35,43 @@ import NarrativeItinerariesHeader from './narrative-itineraries-header'
 
 const { ItineraryView } = uiActions
 
+type ItineraryWithIndex = Itinerary & { allStartTimes: any; index: number }
+
 type Props = {
-  activeItinerary: unknown
-  activeItineraryTimeIndex: unknown
-  activeLeg: unknown
-  activeSearch: unknown
-  activeStep: unknown
-  co2Config: unknown
-  containerStyle: unknown
-  customBatchUiBackground: unknown
-  errorMessages: unknown
-  errors: unknown
+  activeItinerary: number
+  activeItineraryTimeIndex: number
+  activeLeg: number
+  activeSearch: any
+  activeStep: any
+  co2Config: any
+  containerStyle: any
+  customBatchUiBackground: any
+  errorMessages: any
+  errors: any
   groupItineraries: boolean
   groupTransitModes: boolean
-  hideFirstResultByDefault: unknown
+  hideFirstResultByDefault: any
   intl: IntlShape
-  itineraries: Itinerary[]
-  itineraryIsExpanded: unknown
-  mergeItineraries: unknown
-  modes: unknown
-  pending: unknown
-  popupTarget: unknown
-  realtimeEffects: unknown
-  renderSkeletons: unknown
-  setActiveItinerary: unknown
-  setActiveLeg: unknown
-  setActiveStep: unknown
-  setItineraryView: unknown
-  setPopupContent: unknown
-  setVisibleItinerary: unknown
-  showDetails: unknown
-  showHeaderText: unknown
-  sort: unknown
-  timeFormat: unknown
-  updateItineraryFilter: unknown
-  visibleItinerary: unknown
+  itineraries: ItineraryWithIndex[]
+  itineraryIsExpanded: boolean
+  mergeItineraries: boolean
+  modes: any
+  pending: boolean
+  popupTarget: any
+  realtimeEffects: any
+  renderSkeletons: boolean
+  setActiveItinerary: any
+  setActiveLeg: (index: number | null, leg: Leg | null) => void
+  setActiveStep: any
+  setItineraryView: (view: string) => void
+  setPopupContent: any
+  setVisibleItinerary: any
+  showDetails: any
+  showHeaderText: any
+  sort: any
+  timeFormat: any
+  updateItineraryFilter: (sort: any) => void
+  visibleItinerary: any
 }
 
 // FIXME: move to typescript once shared types exist
@@ -81,7 +83,6 @@ const NarrativeItineraries = ({
   activeSearch,
   activeStep,
   co2Config,
-  containerStyle,
   customBatchUiBackground,
   errorMessages,
   errors,
@@ -110,6 +111,7 @@ const NarrativeItineraries = ({
   updateItineraryFilter,
   visibleItinerary
 }: Props) => {
+  // @ts-expect-error context not typed yet
   const { ItineraryBody, LegIcon } = useContext(ComponentContext)
   const ListItem = itineraryIsExpanded ? 'div' : 'li'
 
@@ -151,6 +153,7 @@ const NarrativeItineraries = ({
     // If we do not have a drive yourself itinerary, estimate the distance based on avg of transit distances.
     return coreUtils.itinerary.calculateEmissions(
       // TODO: Fix types on coreutils calculateEmissions, use Omit<>
+      // @ts-expect-error Legs missing every needed type
       _getCarItin() || { legs: [{ distance: avgDistance, mode: 'CAR' }] },
       co2Config?.carbonIntensity,
       co2Config?.massUnit
@@ -158,7 +161,7 @@ const NarrativeItineraries = ({
   }
 
   // TODO
-  const _onSortChange = (evt) => {
+  const _onSortChange = (evt: any) => {
     const { value: type } = evt.target
     updateItineraryFilter({ sort: { ...sort, type } })
   }
@@ -205,7 +208,7 @@ const NarrativeItineraries = ({
     ))
   }
 
-  const _renderItineraryRow = (itinerary: Itinerary, mini = false) => {
+  const _renderItineraryRow = (itinerary: any, mini = false) => {
     const showRealtimeAnnotation =
       realtimeEffects.isAffectedByRealtimeData &&
       (realtimeEffects.exceedsThreshold || realtimeEffects.routesDiffer)
@@ -251,8 +254,8 @@ const NarrativeItineraries = ({
 
   // Merge duplicate itineraries together and save multiple departure times
   const mergedItineraries = mergeItineraries
-    ? itineraries.reduce((prev, cur, curIndex) => {
-        const updatedItineraries = clone(prev)
+    ? itineraries.reduce<ItineraryWithIndex[]>((prev, cur, curIndex) => {
+        const updatedItineraries: ItineraryWithIndex[] = clone(prev)
         const updatedItinerary = clone(cur)
         updatedItinerary.index = curIndex
 
@@ -282,7 +285,7 @@ const NarrativeItineraries = ({
           // the uniqueness feature of Set, but unfortunately objects are never equal
           if (
             !duplicateItin.allStartTimes.find(
-              (time) => getFirstLegStartTime(time.legs) === cur.startTime
+              (time: any) => getFirstLegStartTime(time.legs) === cur.startTime
             )
           ) {
             duplicateItin.allStartTimes.push({
@@ -294,16 +297,18 @@ const NarrativeItineraries = ({
           // Some legs will be the same, but have a different route
           // This map catches those and stores the alternate routes so they can be displayed
           duplicateItin.legs = duplicateItin.legs.map((leg, index) => {
-            const newLeg = clone(leg)
+            const newLeg: any = clone(leg)
             if (leg?.routeId !== cur.legs[index]?.routeId) {
               if (!newLeg.alternateRoutes) {
                 newLeg.alternateRoutes = {}
               }
               const { routeId } = cur.legs?.[index]
-              newLeg.alternateRoutes[routeId] = {
-                // We save the entire leg to the alternateRoutes object so in
-                // the future, we can draw the leg on the map as an alternate route
-                ...cur.legs?.[index]
+              if (routeId) {
+                newLeg.alternateRoutes[routeId] = {
+                  // We save the entire leg to the alternateRoutes object so in
+                  // the future, we can draw the leg on the map as an alternate route
+                  ...cur.legs?.[index]
+                }
               }
             }
             return newLeg
@@ -330,7 +335,10 @@ const NarrativeItineraries = ({
     }) || []
 
   // This loop determines if an itinerary uses a single or multiple modes
-  const groupedMergedItineraries = itinerariesWithCo2.reduce(
+  const groupedMergedItineraries = itinerariesWithCo2.reduce<{
+    multi: any
+    single: any
+  }>(
     (prev, cur) => {
       // Create a clone of our buckets
       const modeItinMap = clone(prev)
@@ -403,7 +411,7 @@ const NarrativeItineraries = ({
                   <S.ModeResultContainer key={mode}>
                     <h2>{mode}</h2>
                     <ListContainer>
-                      {groupedMergedItineraries.multi[mode].map((itin) =>
+                      {groupedMergedItineraries.multi[mode].map((itin: any) =>
                         _renderItineraryRow(itin)
                       )}
                     </ListContainer>
@@ -423,7 +431,7 @@ const NarrativeItineraries = ({
                 </h2>
                 <S.SingleModeRowContainer>
                   {Object.keys(groupedMergedItineraries.single).map((mode) =>
-                    groupedMergedItineraries.single[mode].map((itin) =>
+                    groupedMergedItineraries.single[mode].map((itin: any) =>
                       _renderItineraryRow(itin, true)
                     )
                   )}
@@ -439,8 +447,8 @@ const NarrativeItineraries = ({
 
 // connect to the redux store
 
-const mapStateToProps = (state) => {
-  const activeSearch = getActiveSearch(state)
+const mapStateToProps = (state: any) => {
+  const activeSearch: any = getActiveSearch(state)
   const activeItinerary = activeSearch && activeSearch.activeItinerary
   const activeItineraryTimeIndex =
     activeSearch && activeSearch.activeItineraryTimeIndex
@@ -503,25 +511,28 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: any) => {
   // FIXME: update signature of these methods,
   // so that only one argument is passed,
   // e.g. setActiveLeg({ index, leg })
   return {
-    setActiveItinerary: (payload) => dispatch(setActiveItinerary(payload)),
+    setActiveItinerary: (payload: any) => dispatch(setActiveItinerary(payload)),
     // FIXME
-    setActiveLeg: (index, leg) => {
+    setActiveLeg: (index: number, leg: Leg) => {
       dispatch(setActiveLeg({ index, leg }))
     },
     // FIXME
-    setActiveStep: (index, step) => {
+    setActiveStep: (index: number, step: Leg) => {
       dispatch(setActiveStep({ index, step }))
     },
-    setItineraryView: (payload) =>
+    setItineraryView: (payload: any) =>
       dispatch(uiActions.setItineraryView(payload)),
-    setPopupContent: (payload) => dispatch(uiActions.setPopupContent(payload)),
-    setVisibleItinerary: (payload) => dispatch(setVisibleItinerary(payload)),
-    updateItineraryFilter: (payload) => dispatch(updateItineraryFilter(payload))
+    setPopupContent: (payload: any) =>
+      dispatch(uiActions.setPopupContent(payload)),
+    setVisibleItinerary: (payload: any) =>
+      dispatch(setVisibleItinerary(payload)),
+    updateItineraryFilter: (payload: any) =>
+      dispatch(updateItineraryFilter(payload))
   }
 }
 
