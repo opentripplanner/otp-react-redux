@@ -1,5 +1,9 @@
 /* ITINERARY OPTION */
 
+.otp .option.default-itin :not(button) {
+  outline: none;
+}
+
 /* If child component is focused, highlight itinerary option */
 .otp .option.default-itin:focus-within:not(.expanded) {
   background-color: var(--hover-color);
@@ -104,7 +108,6 @@
 
 .metro-itin div.header button.other-itin {
   padding: 10px 1em;
-  position: relative;
 }
 
 .metro-itin div.header button.other-itin:focus,
