@@ -1,14 +1,16 @@
-// @ts-expect-error Package yup does not have type declarations.
-import * as yup from 'yup'
-import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
-import { Field, Formik, FormikProps } from 'formik'
+import { Field, FormikProps } from 'formik'
 import { FormattedMessage } from 'react-intl'
+import { FormGroup } from 'react-bootstrap'
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
 import ButtonGroup from '../util/button-group'
 
-import PhoneNumberEditor from './phone-number-editor'
+import { FakeLabel, InlineStatic } from './styled'
+import { PhoneVerificationSubmitHandler } from './phone-verification-form'
+import PhoneNumberEditor, {
+  PhoneCodeRequestHandler
+} from './phone-number-editor'
 
 interface Fields {
   notificationChannel: string
@@ -20,8 +22,8 @@ interface Props extends FormikProps<Fields> {
     isPhoneNumberVerified?: boolean
     phoneNumber?: string
   }
-  onRequestPhoneVerificationCode: (code: string) => void
-  onSendPhoneVerificationCode: (code: string) => void
+  onRequestPhoneVerificationCode: PhoneCodeRequestHandler
+  onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
   phoneFormatOptions: {
     countryCode: string
   }
@@ -36,16 +38,6 @@ const Details = styled.div`
   margin-bottom: 15px;
 `
 
-// Because we show the same message for the two validation conditions below,
-// there is no need to pass that message here,
-// that is done in the corresponding `<HelpBlock>` in PhoneNumberEditor.
-const codeValidationSchema = yup.object({
-  validationCode: yup
-    .string()
-    .required()
-    .matches(/^\d{6}$/) // 6-digit string
-})
-
 /**
  * User notification preferences pane.
  */
@@ -58,9 +50,6 @@ const NotificationPrefsPane = ({
 }: Props): JSX.Element => {
   const { email, isPhoneNumberVerified, phoneNumber } = loggedInUser
   const { notificationChannel } = userData
-  const initialFormikValues = {
-    validationCode: ''
-  }
 
   return (
     <div>
@@ -108,34 +97,20 @@ const NotificationPrefsPane = ({
       <Details>
         {notificationChannel === 'email' && (
           <FormGroup>
-            <ControlLabel>
+            <FakeLabel>
               <FormattedMessage id="components.NotificationPrefsPane.notificationEmailDetail" />
-            </ControlLabel>
-            <FormControl.Static>{email}</FormControl.Static>
+            </FakeLabel>
+            <InlineStatic>{email}</InlineStatic>
           </FormGroup>
         )}
         {notificationChannel === 'sms' && (
-          // @ts-expect-error onSubmit is not passed to Formik because PhoneNumberEditor handles code submission on its own.
-          <Formik
-            initialValues={initialFormikValues}
-            validateOnChange
-            validationSchema={codeValidationSchema}
-          >
-            {
-              // Pass Formik props to the component rendered so Formik can manage its validation.
-              // (The validation for this component is independent of the validation set in UserAccountScreen.)
-              (innerProps) => (
-                <PhoneNumberEditor
-                  {...innerProps}
-                  initialPhoneNumber={phoneNumber}
-                  initialPhoneNumberVerified={isPhoneNumberVerified}
-                  onRequestCode={onRequestPhoneVerificationCode}
-                  onSubmitCode={onSendPhoneVerificationCode}
-                  phoneFormatOptions={phoneFormatOptions}
-                />
-              )
-            }
-          </Formik>
+          <PhoneNumberEditor
+            initialPhoneNumber={phoneNumber}
+            initialPhoneNumberVerified={isPhoneNumberVerified}
+            onRequestCode={onRequestPhoneVerificationCode}
+            onSubmitCode={onSendPhoneVerificationCode}
+            phoneFormatOptions={phoneFormatOptions}
+          />
         )}
       </Details>
     </div>

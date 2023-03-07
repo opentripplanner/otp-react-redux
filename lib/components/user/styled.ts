@@ -1,5 +1,5 @@
 import { Panel } from 'react-bootstrap'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const PageHeading = styled.h2`
   margin: 10px 0px 45px 0px;
@@ -74,4 +74,36 @@ export const TripPanelFooter = styled(Panel.Footer)`
     border-top-right-radius: 0;
     border-bottom-left-radius: 0;
   }
+`
+
+/** Formats non-<label> elements like <label>s. */
+export const labelStyle = css`
+  border: none;
+  cursor: default;
+  font-size: inherit;
+  font-weight: 700;
+  margin-bottom: 5px;
+`
+
+export const FakeLabel = styled.span`
+  display: block;
+  ${labelStyle}
+`
+
+/** A container with spacing between controls. */
+export const ControlStrip = styled.span`
+  display: block;
+  & > * {
+    margin-right: 4px;
+  }
+`
+/** Styles for phone editing fields */
+export const phoneFieldStyle = css`
+  display: inline-block;
+  vertical-align: middle;
+  width: 14em;
+`
+
+export const InlineStatic = styled.span`
+  ${phoneFieldStyle}
 `

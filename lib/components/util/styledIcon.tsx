@@ -18,6 +18,7 @@ interface IconProps extends Props {
 interface IconPropsWithText extends Props {
   Icon: React.ElementType
   children: React.ReactNode
+  styleProps?: React.CSSProperties
 }
 
 const getFontSize = (size?: string) => {
@@ -47,17 +48,17 @@ const rotateAnimation = keyframes`
 `
 
 export const StyledIconWrapper = styled.span<Props>`
-  animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1.2s linear
+  animation: ${(props) => (props.spin ? rotateAnimation : 'none')} 1s linear
     infinite;
-  display: ${(props) => (props.spin ? 'block' : 'initial')};
+  display: ${(props) => (props.spin ? 'inline-block' : 'initial')};
   ${StyledIconBase} {
-    width: 1em;
-    height: 1em;
     font-size: ${(props) => getFontSize(props.size)};
+    height: 1em;
     transform: ${(props) => `
       ${props.flipHorizontal ? 'scale(-1,1) ' : ''}
       ${props.rotate90 ? 'rotate(90deg)' : ''}
       `};
+    width: 1em;
   }
 `
 
@@ -75,15 +76,17 @@ export const StyledIconWrapperTextAlign = styled(StyledIconWrapper)<Props>`
 export const IconWithText = ({
   children,
   Icon,
-  size
+  size,
+  spin,
+  styleProps = { display: 'contents' }
 }: IconPropsWithText): React.ReactElement => {
   return (
-    <>
-      <StyledIconWrapperTextAlign size={size}>
+    <div style={styleProps}>
+      <StyledIconWrapperTextAlign size={size} spin={spin}>
         <Icon />
       </StyledIconWrapperTextAlign>
-      {children}
-    </>
+      <span>{children}</span>
+    </div>
   )
 }
 
