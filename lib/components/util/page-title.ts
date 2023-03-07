@@ -10,7 +10,7 @@ interface Props {
  * Invisible component that changes the title to the specified text.
  * (It will append the configured app title to the end.)
  */
-const PageTitle = ({ appTitle, title }: Props): JSX.Element => {
+const PageTitle = ({ appTitle, title }: Props): null => {
   useEffect(() => {
     document.title = title + ' | ' + appTitle
   }, [appTitle, title])
@@ -21,7 +21,7 @@ const PageTitle = ({ appTitle, title }: Props): JSX.Element => {
 
 // connect to redux store
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   return {
     appTitle: state.otp.config.title // or the default one
   }

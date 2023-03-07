@@ -437,8 +437,10 @@ components:
       area.
     header: Stop Viewer
     loadingText: Loading Stop...
+    nextArrivals: Next Arrivals
     noStopsFound: No stop times found for date.
     timezoneWarning: "Departure times are shown in <strong>{timezoneCode}</strong>."
+    schedule: Schedule
     viewNextArrivals: View next arrivals
     viewSchedule: View schedule
     zoomToStop: Zoom to stop
