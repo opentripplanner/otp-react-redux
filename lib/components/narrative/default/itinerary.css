@@ -1,6 +1,6 @@
 /* ITINERARY OPTION */
 
-.otp .option.default-itin :not(button) {
+.otp .option.default-itin button :not(.other-itin):focus {
   outline: none;
 }
 
