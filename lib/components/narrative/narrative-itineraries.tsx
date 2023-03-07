@@ -518,11 +518,11 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     setActiveItinerary: (payload: any) => dispatch(setActiveItinerary(payload)),
     // FIXME
-    setActiveLeg: (index: number, leg: Leg) => {
+    setActiveLeg: (index: number | null, leg: Leg | null) => {
       dispatch(setActiveLeg({ index, leg }))
     },
     // FIXME
-    setActiveStep: (index: number, step: Leg) => {
+    setActiveStep: (index: number | null, step: Leg) => {
       dispatch(setActiveStep({ index, step }))
     },
     setItineraryView: (payload: any) =>

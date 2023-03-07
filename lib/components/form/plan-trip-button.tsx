@@ -8,23 +8,15 @@ import { routingQuery } from '../../actions/api'
 import { setMainPanelContent } from '../../actions/ui'
 
 type Props = {
-  disabled: boolean
+  disabled?: boolean
   onClick: () => void
-  planTrip: () => void
-  profileTrip: () => void
-  routingQuery: (searchId?: string, updateSearchInReducer?: boolean) => void
-  routingType: string
-  setMainPanelContent: () => void
-  text: string
+  setMainPanelContent: (state: number | null) => void
+  text?: string
 }
 
 function PlanTripButton({
   disabled,
   onClick,
-  planTrip,
-  profileTrip,
-  routingQuery,
-  routingType,
   setMainPanelContent,
   text
 }: Props) {
@@ -46,6 +38,6 @@ function PlanTripButton({
   )
 }
 
-const mapDispatchToProps = { routingQuery, setMainPanelContent }
+const mapDispatchToProps = { setMainPanelContent }
 
 export default connect(null, mapDispatchToProps)(PlanTripButton)

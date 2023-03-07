@@ -54,19 +54,21 @@ function BatchSettings({
   config,
   currentQuery,
   intl,
+  modeButtonOptions,
   routingQuery
 }: Props) {
   const [dateTimeExpanded, setDateTimeExpanded] = useState<boolean>(false)
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
-  const modeButtonsWithIcons: ModeButtonDefinition[] =
-    config.modes.modeButtons.map((button: ModeButtonDefinition) => ({
+  const modeButtonsWithIcons: ModeButtonDefinition[] = modeButtonOptions.map(
+    (button: ModeButtonDefinition) => ({
       ...button,
       Icon: React.memo(function ModeButtonIcon() {
         return <ModeIcon mode={button.iconName} />
       })
-    }))
+    })
+  )
 
   const { buttonsWithSettings, setModeSettingValue, toggleModeButton } =
     useModeState(
@@ -155,6 +157,7 @@ const mapStateToProps = (state: any) => ({
   activeSearch: getActiveSearch(state),
   config: state.otp.config,
   currentQuery: state.otp.currentQuery,
+  modeButtonOptions: state.otp.config.modeButtons,
   modeOptions: state.otp.config.modes.modeOptions || defaultModeOptions,
   possibleCombinations: state.otp.config.modes.combinations
 })
