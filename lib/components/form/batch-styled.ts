@@ -30,6 +30,15 @@ export const Button = styled.button`
   ${buttonCss}
 `
 
+export const StyledDateTimePreviewContainer = styled(Button)<{
+  expanded?: boolean
+}>`
+  margin-right: 5px;
+  position: relative;
+  padding: 0;
+  ${(props) => (props.expanded ? activeCss : null)}
+`
+
 export const StyledDateTimePreview = styled(DateTimePreview)`
   ${buttonCss}
   background-color: rgb(239, 239, 239);
@@ -77,11 +86,13 @@ const expandableBoxCss = css`
 
 export const DateTimeModalContainer = styled.div`
   ${expandableBoxCss}
+  margin-top: 50px;
   padding: 10px 20px;
 `
 
 export const BatchPreferencesContainer = styled.div`
   ${expandableBoxCss}
+  margin-top: 50px;
   padding: 5px 10px;
 `
 

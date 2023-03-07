@@ -148,6 +148,7 @@ components:
     header: Plan Your Trip
   BatchSettings:
     destination: destination
+    modeSelector: Mode Selector
     origin: origin
     planTripTooltip: Plan trip
     settings: Trip Settings
