@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 interface Props {
   appTitle: string
-  title?: string
+  title: string
 }
 
 /**
@@ -13,6 +13,11 @@ interface Props {
 const PageTitle = ({ appTitle, title }: Props): null => {
   useEffect(() => {
     document.title = title + ' | ' + appTitle
+
+    // Restore the page title when the component unmounts.
+    return () => {
+      document.title = appTitle
+    }
   }, [appTitle, title])
 
   // Component renders nothing
