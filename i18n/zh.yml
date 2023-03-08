@@ -260,6 +260,7 @@ components:
     loadingText: 加载车站信息…
     noStopsFound: 未找到该日期的车站时间.
     timezoneWarning: 出发时间以 <strong>{timezoneCode}</strong> 显示.
+    titleBarStopId: 车站 {stopId}
     viewNextArrivals: 查看下一个公共交通到达
     viewSchedule: 查看时间表
     zoomToStop: 缩放到车站
@@ -589,6 +590,7 @@ common:
     home: 家
     work: 工作
   routing:
+    routeAndNumber: 路线 {routeId}
     routeToHeadsign: 到 {headsign}
   coordinates: '{lat}, {lon}'
   searchForms:
@@ -624,6 +626,3 @@ util:
     noTripFoundForMode: 没有发现 {modes} 的行程.
     noTripFoundReason: 在指定的最大距离内或在指定的时间可能没有公交服务, 或者您的起点或终点可能无法安全访问.
     noTripFoundWithReason: '{noTripFound} {reason}'
-    titleBarRouteId: 路线 {routeId}
-    titleBarStopId: 车站 {stopId}
-    titleBarWithStatus: '{title} | {status}'

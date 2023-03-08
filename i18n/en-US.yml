@@ -441,6 +441,7 @@ components:
     noStopsFound: No stop times found for date.
     schedule: Schedule
     timezoneWarning: "Departure times are shown in <strong>{timezoneCode}</strong>."
+    titleBarStopId: "Stop {stopId}"
     viewNextArrivals: View next arrivals
     viewSchedule: View schedule
     zoomToStop: Zoom to stop
@@ -746,6 +747,7 @@ common:
     work: work # as in "work location"
 
   routing:
+    routeAndNumber: "Route {routeId}"
     routeToHeadsign: "To {headsign}"
 
   searchForms:
@@ -789,9 +791,6 @@ util:
       distance or at the specified time, or your start or end point might not be safely
       accessible.
     noTripFoundWithReason: "{noTripFound} {reason}"
-    titleBarRouteId: "Route {routeId}"
-    titleBarStopId: "Stop {stopId}"
-    titleBarWithStatus: "{title} | {status}"
 
 config:
   accessModes:

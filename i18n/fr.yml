@@ -437,6 +437,7 @@ components:
     noStopsFound: Aucun horaire pour la date choisie.
     schedule: Horaires
     timezoneWarning: "Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>."
+    titleBarStopId: "Arrêt {stopId}"
     viewNextArrivals: Prochains passages
     viewSchedule: Horaires
     zoomToStop: Zoomer sur l'arrêt
@@ -734,6 +735,7 @@ common:
     work: lieu de travail
 
   routing:
+    routeAndNumber: "Ligne {routeId}"
     routeToHeadsign: "Direction {headsign}"
 
   searchForms:
@@ -770,9 +772,6 @@ util:
       dans le rayon spécifié ou aux heures indiquées, ou ne sont pas accessibles en
       toute sécurité.
     noTripFoundWithReason: "{noTripFound} {reason}"
-    titleBarRouteId: "Ligne {routeId}"
-    titleBarStopId: "Arrêt {stopId}"
-    titleBarWithStatus: "{title} | {status}"
 
 config:
   accessModes:

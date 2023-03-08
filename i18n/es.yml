@@ -262,6 +262,7 @@ components:
     loadingText: Cargando la parada...
     noStopsFound: No se han encontrado tiempos de parada para la fecha.
     timezoneWarning: Las horas de salida se indican en <strong>{timezoneCode}</strong>.
+    titleBarStopId: Parada {stopId}
     viewNextArrivals: Ver próximas llegadas
     viewSchedule: Ver horario
     zoomToStop: Zoom a la parada
@@ -645,6 +646,7 @@ common:
     email: correo electrónico
     sms: SMS
   routing:
+    routeAndNumber: Línea {routeId}
     routeToHeadsign: A {headsign}
   searchForms:
     click: haga clic
@@ -674,9 +676,6 @@ util:
       máxima especificada o en el momento especificado, o es posible que su punto
       de inicio o final no sea accesible de manera segura.
     noTripFoundWithReason: '{noTripFound} {reason}'
-    titleBarRouteId: Ruta {routeId}
-    titleBarStopId: Parada {stopId}
-    titleBarWithStatus: '{title} | {status}'
 config:
   accessModes:
     bicycle: Transportes + Bicicleta personal
