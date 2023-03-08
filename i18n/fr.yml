@@ -433,7 +433,9 @@ components:
       Une réservation préalable peut être exigée pour obtenir la desserte.
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
+    nextArrivals: Prochains passages
     noStopsFound: Aucun horaire pour la date choisie.
+    schedule: Horaires
     timezoneWarning: "Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>."
     viewNextArrivals: Prochains passages
     viewSchedule: Horaires
