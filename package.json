@@ -37,8 +37,8 @@
     "@auth0/auth0-react": "^1.1.0",
     "@bugsnag/js": "^7.17.0",
     "@bugsnag/plugin-react": "^7.17.0",
-    "@opentripplanner/core-utils": "^9.0.0-alpha.7",
     "@opentripplanner/base-map": "^3.0.10",
+    "@opentripplanner/core-utils": "^9.0.0-alpha.7",
     "@opentripplanner/endpoints-overlay": "2.0.5",
     "@opentripplanner/from-to-location-picker": "^2.1.5",
     "@opentripplanner/geocoder": "^1.4.0",
@@ -186,6 +186,7 @@
     "serve": "^13.0.2",
     "tsdx": "https://github.com/ibi-group/tsdx",
     "typescript": "^4.4.2",
+    "yaml-jest": "^1.2.0",
     "yaml-loader": "^0.6.0"
   },
   "peerDependencies": {
@@ -194,7 +195,8 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "i18n/(.*)\\.yml$": "<rootDir>__tests__/test-utils/mock-data/empty-yml.js"
+      "i18n/(.*)\\.yml$": "<rootDir>__tests__/test-utils/mock-data/empty-yml.js",
+      "modeSettings.yml$": "<rootDir>__tests__/test-utils/mock-data/empty-yml.js"
     },
     "transform": {
       "\\.[jt]sx?$": "babel-jest"
