@@ -17,10 +17,16 @@ type DepartureTimesProps = {
     }[]
   }
   setItineraryTimeIndex: (index: number) => void
+  showArrivals?: boolean
 }
 
 export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
-  const { activeItineraryTimeIndex, itinerary, setItineraryTimeIndex } = props
+  const {
+    activeItineraryTimeIndex,
+    itinerary,
+    setItineraryTimeIndex,
+    showArrivals
+  } = props
   const intl = useIntl()
   const isRealTime = firstTransitLegIsRealtime(itinerary)
   if (!itinerary.allStartTimes) {
@@ -67,7 +73,13 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
                 : ''
             }`}
           >
-            <FormattedTime value={getFirstLegStartTime(time.legs)} />
+            <FormattedTime
+              value={
+                showArrivals
+                  ? getLastLegEndTime(time.legs)
+                  : getFirstLegStartTime(time.legs)
+              }
+            />
           </button>
         )
       })}
