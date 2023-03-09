@@ -195,12 +195,10 @@ class BatchSettings extends Component<Props, State> {
             aria-controls="date-time-modal"
             aria-expanded={expanded === 'DATE_TIME'}
             aria-label="Date/Time settings"
+            expanded={expanded === 'DATE_TIME'}
             onClick={this._toggleDateTime}
           >
-            <StyledDateTimePreview
-              expanded={expanded === 'DATE_TIME'}
-              hideButton
-            />
+            <StyledDateTimePreview hideButton />
           </StyledDateTimePreviewContainer>
           {expanded === 'DATE_TIME' && (
             <DateTimeModalContainer id="date-time-modal">
