@@ -12,7 +12,6 @@ const activeCss = css`
   -webkit-box-shadow: ${SHADOW};
   -moz-box-shadow: ${SHADOW};
   box-shadow: ${SHADOW};
-  outline: none;
 `
 
 export const buttonCss = css`
