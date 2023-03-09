@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
+import { injectIntl } from 'react-intl'
 import React, { Component } from 'react'
 
 import * as uiActions from '../../actions/ui'
@@ -27,12 +27,13 @@ class BatchSearchScreen extends Component<Props> {
   _expandDateTimeClicked = () => this.props.setMobileScreen(SET_DATETIME)
 
   render() {
+    const { intl } = this.props
     return (
       <MobileContainer>
         <MobileNavigationBar
-          headerText={
-            <FormattedMessage id="components.BatchSearchScreen.header" />
-          }
+          headerText={intl.formatMessage({
+            id: 'components.BatchSearchScreen.header'
+          })}
         />
         <main tabIndex={-1}>
           <div className="batch-search-settings mobile-padding">
@@ -66,4 +67,4 @@ const mapDispatchToProps = {
   setMobileScreen: uiActions.setMobileScreen
 }
 
-export default connect(null, mapDispatchToProps)(BatchSearchScreen)
+export default connect(null, mapDispatchToProps)(injectIntl(BatchSearchScreen))
