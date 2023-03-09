@@ -102,6 +102,7 @@ const Divider = styled.span`
   display: flex;
   margin: 0 -5px;
   opacity: 0.4;
+  line-height: 2;
 `
 
 // eslint-disable-next-line complexity
