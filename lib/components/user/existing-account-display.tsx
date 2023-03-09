@@ -56,7 +56,7 @@ const ExistingAccountDisplay = (props: {
   ]
 
   const intl = useIntl()
-  // Repeat text from the SubNav component in the title bar.
+  // Repeat text from the SubNav component in the title bar for brevity.
   const mainTitle = intl.formatMessage({
     id: 'components.SubNav.settings'
   })
@@ -66,7 +66,7 @@ const ExistingAccountDisplay = (props: {
   return (
     <div>
       <BackToTripPlanner />
-      <PageTitle title={`${myAccount} | ${mainTitle}`} />
+      <PageTitle title={`${mainTitle} | ${myAccount}`} />
       <StackedPaneDisplay
         onCancel={onCancel}
         paneSequence={paneSequence}
