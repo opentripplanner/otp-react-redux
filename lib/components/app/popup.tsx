@@ -3,6 +3,8 @@ import { useIntl } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useEffect } from 'react'
 
+import PageTitle from '../util/page-title'
+
 type Props = {
   content?: {
     appendLocale?: boolean
@@ -44,12 +46,12 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
 
   if (!compiledUrl || !useIframe) return null
 
+  const title = intl.formatMessage({ id: `config.popups.${id}` })
+
   return (
     <Modal dialogClassName="fullscreen-modal" onHide={hideModal} show={shown}>
-      <iframe
-        src={compiledUrl}
-        title={intl.formatMessage({ id: `config.popups.${id}` })}
-      />
+      <PageTitle title={title} />
+      <iframe src={compiledUrl} title={title} />
     </Modal>
   )
 }
