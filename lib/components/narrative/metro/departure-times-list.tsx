@@ -20,17 +20,18 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
   const { activeItineraryTimeIndex, itinerary, setItineraryTimeIndex } = props
   const intl = useIntl()
   const isRealTime = firstTransitLegIsRealtime(itinerary)
-  const departureLabelText = `${intl.formatTime(itinerary.startTime)} ${
-    isRealTime
-      ? intl.formatMessage({ id: 'components.StopTimeCell.realtime' })
-      : intl.formatMessage({ id: 'components.StopTimeCell.scheduled' })
-  }`
+  const departureLabelText = (time: any, realTime: boolean) =>
+    `${intl.formatTime(time)} ${
+      realTime
+        ? `(${intl.formatMessage({ id: 'components.StopTimeCell.realtime' })})`
+        : `(${intl.formatMessage({ id: 'components.StopTimeCell.scheduled' })})`
+    }`
   if (!itinerary.allStartTimes) {
     return (
       <button
-        aria-label={departureLabelText}
+        aria-label={departureLabelText(itinerary.startTime, isRealTime)}
         className={isRealTime ? 'realtime active' : 'active'}
-        title={departureLabelText}
+        title={departureLabelText(itinerary.startTime, isRealTime)}
       >
         <FormattedTime value={itinerary.startTime} />
       </button>
@@ -45,20 +46,20 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
     <FormattedList
       type="disjunction"
       value={allStartTimes.map((time, index) => {
+        const { legs, realtime } = time
         const classNames = []
-        if (time.realtime) classNames.push('realtime')
+        if (realtime) classNames.push('realtime')
         if (index === (activeItineraryTimeIndex || 0)) classNames.push('active')
-
         return (
           <button
+            aria-label={departureLabelText(
+              getFirstLegStartTime(legs),
+              realtime
+            )}
             className={classNames.join(' ')}
-            key={getFirstLegStartTime(time.legs)}
+            key={getFirstLegStartTime(legs)}
             onClick={() => setItineraryTimeIndex(index)}
-            title={`${intl.formatTime(getFirstLegStartTime(time.legs))} ${
-              time.realtime
-                ? intl.formatMessage({ id: 'components.StopTimeCell.realtime' })
-                : ''
-            }`}
+            title={departureLabelText(getFirstLegStartTime(legs), realtime)}
           >
             <FormattedTime value={getFirstLegStartTime(time.legs)} />
           </button>

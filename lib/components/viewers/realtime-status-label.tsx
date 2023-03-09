@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // Typescript TODO: Waiting on viewer.js being typed
 import { connect } from 'react-redux'
-import { FormattedTime } from 'react-intl'
+import { FormattedMessage, FormattedTime } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
 
 import { getTripStatus, REALTIME_STATUS } from '../../util/viewer'
+import { InvisibleAdditionalDetails } from '@opentripplanner/itinerary-body/lib/styled'
 import FormattedDuration from '../util/formatted-duration'
 import FormattedRealtimeStatusLabel from '../util/formatted-realtime-status-label'
 
@@ -82,6 +83,9 @@ const RealtimeStatusLabel = ({
     delay,
     onTimeThresholdSeconds
   )
+  const formattedOriginalTime = (
+    <FormattedTime timeStyle="short" value={originalTime} />
+  )
   const isEarlyOrLate =
     // @ts-ignore getTripStatus is not typed yet
     status === REALTIME_STATUS.EARLY || status === REALTIME_STATUS.LATE
@@ -96,9 +100,7 @@ const RealtimeStatusLabel = ({
     // and display the updated time underneath.
     renderedTime = isEarlyOrLate ? (
       <TimeBlock>
-        <TimeStruck aria-hidden>
-          <FormattedTime timeStyle="short" value={originalTime} />
-        </TimeStruck>
+        <TimeStruck aria-hidden>{formattedOriginalTime}</TimeStruck>
         <div>
           <FormattedTime timeStyle="short" value={time} />
         </div>
@@ -133,6 +135,14 @@ const RealtimeStatusLabel = ({
           // @ts-ignore getTripStatus is not typed yet
           status={STATUS[status].label}
         />
+        {isEarlyOrLate && (
+          <InvisibleAdditionalDetails>
+            <FormattedMessage
+              id="components.MetroUI.originallyScheduledTime"
+              values={{ originalTime: formattedOriginalTime }}
+            />
+          </InvisibleAdditionalDetails>
+        )}
       </MainContent>
     </Container>
   )
