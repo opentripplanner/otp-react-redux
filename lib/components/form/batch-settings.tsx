@@ -157,7 +157,7 @@ const mapStateToProps = (state: any) => ({
   activeSearch: getActiveSearch(state),
   config: state.otp.config,
   currentQuery: state.otp.currentQuery,
-  modeButtonOptions: state.otp.config.modeButtons,
+  modeButtonOptions: state.otp.config.modes.modeButtons,
   modeOptions: state.otp.config.modes.modeOptions || defaultModeOptions,
   possibleCombinations: state.otp.config.modes.combinations
 })
