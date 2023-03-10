@@ -83,9 +83,6 @@ const RealtimeStatusLabel = ({
     delay,
     onTimeThresholdSeconds
   )
-  const formattedOriginalTime = (
-    <FormattedTime timeStyle="short" value={originalTime} />
-  )
   const isEarlyOrLate =
     // @ts-ignore getTripStatus is not typed yet
     status === REALTIME_STATUS.EARLY || status === REALTIME_STATUS.LATE
@@ -100,7 +97,9 @@ const RealtimeStatusLabel = ({
     // and display the updated time underneath.
     renderedTime = isEarlyOrLate ? (
       <TimeBlock>
-        <TimeStruck aria-hidden>{formattedOriginalTime}</TimeStruck>
+        <TimeStruck aria-hidden>
+          <FormattedTime timeStyle="short" value={originalTime} />
+        </TimeStruck>
         <div>
           <FormattedTime timeStyle="short" value={time} />
         </div>
@@ -139,7 +138,11 @@ const RealtimeStatusLabel = ({
           <InvisibleAdditionalDetails>
             <FormattedMessage
               id="components.MetroUI.originallyScheduledTime"
-              values={{ originalTime: formattedOriginalTime }}
+              values={{
+                originalTime: (
+                  <FormattedTime timeStyle="short" value={originalTime} />
+                )
+              }}
             />
           </InvisibleAdditionalDetails>
         )}

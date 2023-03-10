@@ -3,6 +3,7 @@ import { Itinerary, Leg } from '@opentripplanner/types'
 import React from 'react'
 
 import { firstTransitLegIsRealtime } from '../../../util/viewer'
+import { getDepartureLabelText } from '../utils'
 import { getFirstLegStartTime } from '../../../util/itinerary'
 
 type DepartureTimesProps = {
@@ -20,18 +21,17 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
   const { activeItineraryTimeIndex, itinerary, setItineraryTimeIndex } = props
   const intl = useIntl()
   const isRealTime = firstTransitLegIsRealtime(itinerary)
-  const departureLabelText = (time: any, realTime: boolean) =>
-    `${intl.formatTime(time)} ${
-      realTime
-        ? `(${intl.formatMessage({ id: 'components.StopTimeCell.realtime' })})`
-        : `(${intl.formatMessage({ id: 'components.StopTimeCell.scheduled' })})`
-    }`
+  const itineraryButtonLabel = getDepartureLabelText(
+    intl,
+    itinerary.startTime,
+    isRealTime
+  )
   if (!itinerary.allStartTimes) {
     return (
       <button
-        aria-label={departureLabelText(itinerary.startTime, isRealTime)}
+        aria-label={itineraryButtonLabel}
         className={isRealTime ? 'realtime active' : 'active'}
-        title={departureLabelText(itinerary.startTime, isRealTime)}
+        title={itineraryButtonLabel}
       >
         <FormattedTime value={itinerary.startTime} />
       </button>
@@ -50,16 +50,18 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
         const classNames = []
         if (realtime) classNames.push('realtime')
         if (index === (activeItineraryTimeIndex || 0)) classNames.push('active')
+        const singleItinLabel = getDepartureLabelText(
+          intl,
+          getFirstLegStartTime(legs),
+          realtime
+        )
         return (
           <button
-            aria-label={departureLabelText(
-              getFirstLegStartTime(legs),
-              realtime
-            )}
+            aria-label={singleItinLabel}
             className={classNames.join(' ')}
             key={getFirstLegStartTime(legs)}
             onClick={() => setItineraryTimeIndex(index)}
-            title={departureLabelText(getFirstLegStartTime(legs), realtime)}
+            title={singleItinLabel}
           >
             <FormattedTime value={getFirstLegStartTime(time.legs)} />
           </button>
