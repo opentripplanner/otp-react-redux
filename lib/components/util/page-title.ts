@@ -1,17 +1,26 @@
 import { connect } from 'react-redux'
 import { useEffect } from 'react'
 
+import { isBlank } from '../../util/ui'
+
 interface Props {
   appTitle: string
-  title: string
+  title: string | string[]
 }
 
+const TITLE_SEPARATOR = ' | '
+
 /**
- * Invisible component that sets the page title appended with the app title.
+ * Invisible component that sets the page title (passed as a single string or array of strings)
+ * appended with the app title.
  */
 const PageTitle = ({ appTitle, title }: Props) => {
   useEffect(() => {
-    document.title = title + ' | ' + appTitle
+    const chunks =
+      typeof title === 'string' ? [title, appTitle] : [...title, appTitle]
+    document.title = chunks
+      .filter((chunk) => !isBlank(chunk))
+      .join(TITLE_SEPARATOR)
 
     // Restore the app title as the page title when the component unmounts.
     // (This will cause a side effect if PageTitle appears on a component and its descendents.)

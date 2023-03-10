@@ -90,13 +90,11 @@ class PrintLayout extends Component<Props, State> {
     return (
       <div className="otp print-layout">
         <PageTitle
-          title={
-            printVerb +
-            (activeSearch
-              ? ' | ' +
-                summarizeQuery(activeSearch.query, intl, user.savedLocations)
-              : '')
-          }
+          title={[
+            printVerb,
+            activeSearch &&
+              summarizeQuery(activeSearch.query, intl, user.savedLocations)
+          ]}
         />
         {/* The header bar, including the Toggle Map and Print buttons */}
         <div className="header">
