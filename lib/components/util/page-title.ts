@@ -7,14 +7,14 @@ interface Props {
 }
 
 /**
- * Invisible component that changes the title to the specified text.
- * (It will append the configured app title to the end.)
+ * Invisible component that sets the page title appended with the app title.
  */
-const PageTitle = ({ appTitle, title }: Props): null => {
+const PageTitle = ({ appTitle, title }: Props) => {
   useEffect(() => {
     document.title = title + ' | ' + appTitle
 
-    // Restore the page title when the component unmounts.
+    // Restore the app title as the page title when the component unmounts.
+    // (This will cause a side effect if PageTitle appears on a component and its descendents.)
     return () => {
       document.title = appTitle
     }
@@ -24,11 +24,14 @@ const PageTitle = ({ appTitle, title }: Props): null => {
   return null
 }
 
+/** Default app title from index.html, evaluated once at startup. */
+const defaultTitle = document.title
+
 // connect to redux store
 
 const mapStateToProps = (state: any) => {
   return {
-    appTitle: state.otp.config.title // or the default one
+    appTitle: state.otp.config.title || defaultTitle
   }
 }
 
