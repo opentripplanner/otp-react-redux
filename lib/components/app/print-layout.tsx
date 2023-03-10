@@ -1,6 +1,6 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import { Map } from '@styled-icons/fa-solid/Map'
 import { Print } from '@styled-icons/fa-solid/Print'
 import { Times } from '@styled-icons/fa-solid/Times'
@@ -15,9 +15,11 @@ import {
   clearClassFromRootHtml
 } from '../../util/print'
 import { ComponentContext } from '../../util/contexts'
-import { getActiveItinerary } from '../../util/state'
+import { getActiveItinerary, getActiveSearch } from '../../util/state'
 import { IconWithText } from '../util/styledIcon'
+import { summarizeQuery } from '../form/user-settings-i18n'
 import DefaultMap from '../map/default-map'
+import PageTitle from '../util/page-title'
 import SpanWithSpace from '../util/span-with-space'
 import TripDetails from '../narrative/connected-trip-details'
 
@@ -76,11 +78,21 @@ class PrintLayout extends Component<Props, State> {
   }
 
   render() {
-    const { config, itinerary } = this.props
+    const { activeSearch, config, intl, itinerary, user } = this.props
     const { LegIcon } = this.context
+    const printVerb = intl.formatMessage({ id: 'common.forms.print' })
 
     return (
       <div className="otp print-layout">
+        <PageTitle
+          title={
+            printVerb +
+            (activeSearch
+              ? ' | ' +
+                summarizeQuery(activeSearch.query, intl, user.savedLocations)
+              : '')
+          }
+        />
         {/* The header bar, including the Toggle Map and Print buttons */}
         <div className="header">
           <div style={{ float: 'right' }}>
@@ -93,9 +105,7 @@ class PrintLayout extends Component<Props, State> {
             </SpanWithSpace>
             <SpanWithSpace margin={0.25}>
               <Button bsSize="small" onClick={this._print}>
-                <IconWithText Icon={Print}>
-                  <FormattedMessage id="common.forms.print" />
-                </IconWithText>
+                <IconWithText Icon={Print}>{printVerb}</IconWithText>
               </Button>
             </SpanWithSpace>
             <Button bsSize="small" onClick={this._close}>
@@ -135,10 +145,15 @@ class PrintLayout extends Component<Props, State> {
 
 // TODO: Typescript state
 const mapStateToProps = (state: any) => {
+  const activeSearch = getActiveSearch(state)
+  const { localUser, loggedInUser } = state.user
+  const user = loggedInUser || localUser
   return {
+    activeSearch,
     config: state.otp.config,
     currentQuery: state.otp.currentQuery,
-    itinerary: getActiveItinerary(state)
+    itinerary: getActiveItinerary(state),
+    user
   }
 }
 
@@ -147,4 +162,7 @@ const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PrintLayout)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(PrintLayout))
