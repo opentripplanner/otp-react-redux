@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { injectIntl } from 'react-intl'
+import { injectIntl, IntlShape } from 'react-intl'
 import React, { Component } from 'react'
 
 import * as uiActions from '../../actions/ui'
@@ -15,6 +15,7 @@ import MobileNavigationBar from './navigation-bar'
 const { SET_DATETIME, SET_FROM_LOCATION, SET_TO_LOCATION } = MobileScreens
 
 interface Props {
+  intl: IntlShape
   map: React.ReactElement
   setMobileScreen: (screen: number) => void
 }

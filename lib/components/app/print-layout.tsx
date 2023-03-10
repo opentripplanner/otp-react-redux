@@ -1,6 +1,7 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { Itinerary } from '@opentripplanner/types'
 import { Map } from '@styled-icons/fa-solid/Map'
 import { Print } from '@styled-icons/fa-solid/Print'
 import { Times } from '@styled-icons/fa-solid/Times'
@@ -24,13 +25,17 @@ import SpanWithSpace from '../util/span-with-space'
 import TripDetails from '../narrative/connected-trip-details'
 
 type Props = {
+  // TODO: Typescript activeSearch type
+  activeSearch: any
   // TODO: Typescript config type
   config: any
   currentQuery: any
-  // TODO: typescript state.js
-  itinerary: any
+  intl: IntlShape
+  itinerary: Itinerary
   location?: { search?: string }
   parseUrlQueryString: (params?: any, source?: string) => any
+  // TODO: Typescript user type
+  user: any
 }
 
 type State = {
@@ -152,7 +157,7 @@ const mapStateToProps = (state: any) => {
     activeSearch,
     config: state.otp.config,
     currentQuery: state.otp.currentQuery,
-    itinerary: getActiveItinerary(state),
+    itinerary: getActiveItinerary(state) as Itinerary,
     user
   }
 }
