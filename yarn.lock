@@ -2359,6 +2359,24 @@
     maplibre-gl "^2.1.9"
     react-map-gl "^7.0.15"
 
+"@opentripplanner/core-utils@9.0.0-alpha.8":
+  version "9.0.0-alpha.8"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-9.0.0-alpha.8.tgz#535073b7309c75a2b73b18a79d4a5a9a0c2fd9af"
+  integrity sha512-uzP68BupVXgpnpnrQ+ig96XQGGf8wEhkpOITjCTgvceFG7fHBXOfWfbUo6gSRYtulEVBKhUz/gYy7UVMt3tGJg==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.4.0"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    qs "^6.9.1"
+
 "@opentripplanner/core-utils@^7.0.10", "@opentripplanner/core-utils@^7.0.5":
   version "7.0.10"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-7.0.10.tgz#697aa2309cee35716bcc3f38311739a75353172c"
@@ -2377,23 +2395,6 @@
     qs "^6.9.1"
 
 "@opentripplanner/core-utils@^8.0.0", "@opentripplanner/core-utils@^8.0.1", "@opentripplanner/core-utils@^8.1.1":
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-8.1.1.tgz#434487a09605fd3c241d36993c63e0c2c965e6da"
-  integrity sha512-xQhc6uhdcGZR5HKfQclA4d2YDkUtBcCz+LnFGpXRSlkyJtXHkVs+Z+CsTK/GfNlnhmEoUcyrKN6yGA8xG0/1IA==
-  dependencies:
-    "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^1.3.4"
-    "@styled-icons/foundation" "^10.34.0"
-    "@turf/along" "^6.0.1"
-    bowser "^2.7.0"
-    chroma-js "^2.4.2"
-    date-fns "^2.28.0"
-    date-fns-tz "^1.2.2"
-    lodash.clonedeep "^4.5.0"
-    lodash.isequal "^4.5.0"
-    qs "^6.9.1"
-
-"@opentripplanner/core-utils@^8.2.0":
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-8.2.0.tgz#7d1019534e2c6cb71030c64e7529e8ea053143e1"
   integrity sha512-NWAfVwOoFUay59Pz+aiD0ofpOCAW5dbAK/OUqlfHPnknn4I6D51l/qcgVtrxZz95x5Yh/BhstxZxzQQJsq++nQ==
