@@ -466,7 +466,6 @@ components:
     setDestination: Marcar el destino
     setOrigin: Establecer origen
   MetroUI:
-    arriveAtTime: Llegar a {time}
     fromStop: de {stop}
     itineraryDescription: '{time} itinerario en {routes}'
     leaveAt: Partir a
