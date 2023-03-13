@@ -276,7 +276,6 @@ components:
     checkingItineraryExistence: Comprobación de la existencia de itinerarios para
       cada día de la semana…
     selectAtLeastOneDay: Por favor, seleccione al menos un día para el seguimiento.
-    selectedItinerary: 'Itinerario seleccionado:'
     tripDaysPrompt: ¿Qué días hace este viaje?
     tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana
       indicados anteriormente.
@@ -616,8 +615,7 @@ common:
     transfers: '{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}'
     relativeCo2: >
       {co2}
-      de CO<sub>2</sub> en 
-      {isMore, select,
+      de CO<sub>2</sub> en  {isMore, select,
       true {más}
       other {menos}
       } que conducir

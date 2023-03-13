@@ -476,7 +476,6 @@ components:
   TripBasicsPane:
     checkingItineraryExistence: Vérification du trajet pour chaque jour de la semaine...
     selectAtLeastOneDay: Veuillez choisir au moins un jour pour effectuer le suivi.
-    selectedItinerary: "Trajet selectionné :"
     tripIsAvailableOnDaysIndicated: Votre trajet est possible les jours indiqués ci-dessus.
     tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
     tripNamePrompt: "Saisissez un nom pour ce trajet :"
@@ -690,8 +689,7 @@ common:
     transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
     relativeCo2: >
       {co2}
-      de CO<sub>2</sub> en 
-      {isMore, select,
+      de CO<sub>2</sub> en  {isMore, select,
       true {plus}
       other {moins}
       } qu'en voiture
@@ -762,7 +760,8 @@ common:
         }}
         other {il y a # jours}
       }
-    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} mn { seconds, plural, =0 {} other {# sec}}"
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} mn { seconds,\
+      \ plural, =0 {} other {# sec}}"
 
 util:
   state:
