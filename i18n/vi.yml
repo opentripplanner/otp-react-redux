@@ -164,7 +164,6 @@ components:
   PlaceEditor:
     genericLocationPlaceholder: Tìm kiếm vị trí
     locationPlaceholder: Tìm kiếm vị trí {placeName}
-    namePlaceholder: Đặt tên địa điểm
   PlanFirstLastButtons:
     last: Cuối
     next: Tiếp theo
@@ -251,7 +250,6 @@ components:
     viewSchedule: Xem lịch biểu
     zoomToStop: Phóng to để dừng lại
   SubNav:
-    activeLanguage: Ngôn ngữ hiện tại
     languages: "Ngôn ngữ"
     languageSelector: Chọn ngôn ngữ
     myAccount: Tài khoản của tôi
@@ -293,7 +291,6 @@ components:
     oneHour: 1 giờ
     realtimeAlertFlagged: Có một cảnh báo thời gian thực được gắn cờ trên hành trình
       của tôi
-    toggleAdvancedSettings: Chuyển đổi cài đặt nâng cao
   TripStatus:
     alerts: '{alerts, plural, one {# cảnh báo!} other {# cảnh báo!}}'
     deleteTrip: Xóa chuyến đi

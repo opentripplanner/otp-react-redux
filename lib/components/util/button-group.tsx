@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { labelStyle } from '../user/styled'
+
 const ButtonGroup = styled.fieldset.attrs({
   className: 'btn-group'
 })`
@@ -7,10 +9,7 @@ const ButtonGroup = styled.fieldset.attrs({
 
   /* Format <legend> like labels. */
   legend {
-    border: none;
-    font-size: inherit;
-    font-weight: 700;
-    margin-bottom: 5px;
+    ${labelStyle}
   }
 
   label::first-letter {

@@ -131,7 +131,6 @@ components:
         other {# emplacements disponibles}
       }
   AppMenu:
-    appMenu: App Menu
     callHistory: Historique des appels
     closeMenu: Fermer le menu
     fieldTrip: Groupes scolaires
@@ -233,7 +232,6 @@ components:
     stops: Arrêts et stations
     streets: Plan des rues
   MetroUI:
-    arriveAtTime: "Arrivée à {time}"
     fromStop: "de {stop}"
     itineraryDescription: "Trajet de {time} par les lignes {routes}"
     leaveAt: Partez à
@@ -287,6 +285,8 @@ components:
     invalidCode: Le code de vérification doit comporter 6 chiffres.
     invalidPhone: Veuillez entrer un numéro de téléphone valable.
     pending: Non vérifié
+    phoneNumberSubmitted: Le numéro {phoneNumber} a bien été envoyé.
+    phoneNumberVerified: Le numéro {phoneNumber} a bien été vérifié.
     # Note to translator: placeholder is width-constrained.
     placeholder: "Entrez votre numéro"
     prompt: "Entrez votre numéro de téléphone pour les SMS de notification :"
@@ -374,6 +374,7 @@ components:
     modeFilter: Filtre pour les modes
     noFilteredRoutesFound: Aucune ligne ne correspond à vos critères
     shortTitle: Index des lignes
+    stopsInDirectionOfTravel: "Arrêts dans cette direction :"
     title: Index des lignes
   SavedTripEditor:
     editSavedTrip: Modifier un trajet enregistré
@@ -438,7 +439,6 @@ components:
     zoomToStop: Zoomer sur l'arrêt
 
   SubNav:
-    activeLanguage: Langue active
     languageSelector: Langue
     languages: "Langues"
     myAccount: Mon compte
@@ -500,7 +500,6 @@ components:
     oneHour: 1 heure
     realtimeAlertFlagged: Une alerte en temps réel affecte mon trajet
     timeBefore: "{time} avant"
-    toggleAdvancedSettings: Paramètres avancés
   TripStatus:
     alerts: "{alerts, plural, =0 {# alerte !} one {# alerte !} other {# alertes !}}"
     deleteTrip: Supprimer le trajet
@@ -583,8 +582,12 @@ components:
   TripViewer:
     accessible: Accessible
     bicyclesAllowed: Autorisés
+    endOfTrip: Fin du trajet
     header: Info trajet
+    listOfRouteStops: Liste des arrêts sur cette ligne
     routeHeader: "Ligne : <strong>{routeShortName}</strong> {routeLongName}"
+    startOfTrip: Début du trajet
+    tripDescription: Montez à {boardAtStop} et descendez à {disembarkAtStop}
     viewStop: Info
   UserAccountScreen:
     confirmDelete: "Voulez-vous vraiment supprimer votre compte ? Cette action est\
@@ -674,6 +677,7 @@ common:
     print: Imprimer
     save: Enregistrer
     startOver: Recommencer
+    submitting: Envoi en cours…
     yes: Oui
   itineraryDescriptions:
     calories: "{calories, number} kcal" # SI unit
