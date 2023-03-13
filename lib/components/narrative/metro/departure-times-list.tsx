@@ -3,10 +3,8 @@ import { Itinerary, Leg } from '@opentripplanner/types'
 import React from 'react'
 
 import { firstTransitLegIsRealtime } from '../../../util/viewer'
-import {
-  getFirstLegStartTime,
-  getLastLegEndTime
-} from '../../../util/itinerary'
+import { getDepartureLabelText } from '../utils'
+import { getFirstLegStartTime } from '../../../util/itinerary'
 
 type DepartureTimesProps = {
   activeItineraryTimeIndex?: number
@@ -23,18 +21,17 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
   const { activeItineraryTimeIndex, itinerary, setItineraryTimeIndex } = props
   const intl = useIntl()
   const isRealTime = firstTransitLegIsRealtime(itinerary)
+  const itineraryButtonLabel = getDepartureLabelText(
+    intl,
+    itinerary.startTime,
+    isRealTime
+  )
   if (!itinerary.allStartTimes) {
     return (
       <button
+        aria-label={itineraryButtonLabel}
         className={isRealTime ? 'realtime active' : 'active'}
-        title={`${intl.formatMessage(
-          { id: 'components.MetroUI.arriveAtTime' },
-          { time: intl.formatTime(itinerary.endTime) }
-        )} ${
-          isRealTime
-            ? intl.formatMessage({ id: 'components.StopTimeCell.realtime' })
-            : ''
-        }`}
+        title={itineraryButtonLabel}
       >
         <FormattedTime value={itinerary.startTime} />
       </button>
@@ -49,23 +46,22 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
     <FormattedList
       type="disjunction"
       value={allStartTimes.map((time, index) => {
+        const { legs, realtime } = time
         const classNames = []
-        if (time.realtime) classNames.push('realtime')
+        if (realtime) classNames.push('realtime')
         if (index === (activeItineraryTimeIndex || 0)) classNames.push('active')
-
+        const singleItinLabel = getDepartureLabelText(
+          intl,
+          getFirstLegStartTime(legs),
+          realtime
+        )
         return (
           <button
+            aria-label={singleItinLabel}
             className={classNames.join(' ')}
-            key={getFirstLegStartTime(time.legs)}
+            key={getFirstLegStartTime(legs)}
             onClick={() => setItineraryTimeIndex(index)}
-            title={`${intl.formatMessage(
-              { id: 'components.MetroUI.arriveAtTime' },
-              { time: intl.formatTime(getLastLegEndTime(time.legs)) }
-            )} ${
-              time.realtime
-                ? intl.formatMessage({ id: 'components.StopTimeCell.realtime' })
-                : ''
-            }`}
+            title={singleItinLabel}
           >
             <FormattedTime value={getFirstLegStartTime(time.legs)} />
           </button>

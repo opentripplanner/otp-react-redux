@@ -236,6 +236,7 @@ components:
     fromStop: "from {stop}"
     itineraryDescription: "{time} itinerary using {routes}"
     leaveAt: You leave
+    originallyScheduledTime: (originally {originalTime})
     multipleOptions: Multiple Options
     orAlternatives: or other routes in the same direction
     singleModeItineraryDescription: "{time} {mode} itinerary"
