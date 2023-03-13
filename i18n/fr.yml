@@ -232,7 +232,6 @@ components:
     stops: Arrêts et stations
     streets: Plan des rues
   MetroUI:
-    arriveAtTime: "Arrivée à {time}"
     fromStop: "de {stop}"
     itineraryDescription: "Trajet de {time} par les lignes {routes}"
     leaveAt: Partez à

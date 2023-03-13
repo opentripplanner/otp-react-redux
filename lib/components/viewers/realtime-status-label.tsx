@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // Typescript TODO: Waiting on viewer.js being typed
 import { connect } from 'react-redux'
-import { FormattedTime } from 'react-intl'
+import { FormattedMessage, FormattedTime } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
 
 import { getTripStatus, REALTIME_STATUS } from '../../util/viewer'
+import { InvisibleAdditionalDetails } from '@opentripplanner/itinerary-body/lib/styled'
 import FormattedDuration from '../util/formatted-duration'
 import FormattedRealtimeStatusLabel from '../util/formatted-realtime-status-label'
 
@@ -96,7 +97,7 @@ const RealtimeStatusLabel = ({
     // and display the updated time underneath.
     renderedTime = isEarlyOrLate ? (
       <TimeBlock>
-        <TimeStruck>
+        <TimeStruck aria-hidden>
           <FormattedTime timeStyle="short" value={originalTime} />
         </TimeStruck>
         <div>
@@ -133,6 +134,18 @@ const RealtimeStatusLabel = ({
           // @ts-ignore getTripStatus is not typed yet
           status={STATUS[status].label}
         />
+        {isEarlyOrLate && (
+          <InvisibleAdditionalDetails>
+            <FormattedMessage
+              id="components.MetroUI.originallyScheduledTime"
+              values={{
+                originalTime: (
+                  <FormattedTime timeStyle="short" value={originalTime} />
+                )
+              }}
+            />
+          </InvisibleAdditionalDetails>
+        )}
       </MainContent>
     </Container>
   )
