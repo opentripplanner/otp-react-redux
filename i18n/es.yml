@@ -466,9 +466,10 @@ components:
     setDestination: Marcar el destino
     setOrigin: Establecer origen
   MetroUI:
+    arriveAtTime: Llegar a las {time}
     fromStop: de {stop}
     itineraryDescription: '{time} itinerario en {routes}'
-    leaveAt: Partir a
+    leaveAt: Salida a las
     multipleOptions: Múltiples opciones
     orAlternatives: u otras líneas en la misma dirección
     timeWalking: '{time} caminando'
@@ -516,7 +517,8 @@ components:
     switchLocations: Cambiar de ubicación
     defaultContent: Cambiar
   TripSummary:
-    itinerary: Itinerario
+    arriveAt: "Llegue a las "
+    leaveAt: "Salida a las "
   ViewSwitcher:
     switcher: Botón de cambio
   WelcomeScreen:

@@ -344,7 +344,8 @@ components:
       description: Bật lại tính năng giám sát chuyến đi để xem trạng thái cập nhật
       heading: Giám sát chuyến đi được ngủ cho ngày hôm nay
   TripSummary:
-    itinerary: Hành trình
+    arriveAt: "Đến nơi "
+    leaveAt: "Rời đi lúc "
   TripTools:
     reportEmailTemplate: "*** HƯỚNG DẪN SỬ DỤNG ***\n Tính năng này cho phép bạn gửi\
       \ báo cáo qua email cho quản trị viên trang web để xem xét.\n Vui lòng điền\
