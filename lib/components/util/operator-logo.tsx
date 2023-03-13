@@ -7,12 +7,13 @@ const OperatorImg = styled.img`
 `
 
 type Props = {
+  alt?: string
   operator?: TransitOperator
 }
 
-const OperatorLogo = ({ operator }: Props): JSX.Element | null => {
+const OperatorLogo = ({ alt, operator }: Props): JSX.Element | null => {
   if (!operator?.logo) return null
-  return <OperatorImg alt={operator.name} src={operator.logo} />
+  return <OperatorImg alt={alt || operator.name} src={operator.logo} />
 }
 
 export default OperatorLogo
