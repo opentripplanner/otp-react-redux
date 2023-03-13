@@ -271,6 +271,7 @@ class MetroItinerary extends NarrativeItinerary {
       accessibilityScoreGradationMap,
       active,
       activeItineraryTimeIndex,
+      arrivesAt,
       co2Config,
       currency,
       defaultFareKey,
@@ -492,11 +493,16 @@ class MetroItinerary extends NarrativeItinerary {
                   </SecondaryInfo>
                 </ItineraryDetails>
                 <DepartureTimes>
-                  <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
+                  {arrivesAt ? (
+                    <FormattedMessage id="components.MetroUI.arriveAt" />
+                  ) : (
+                    <FormattedMessage id="components.MetroUI.leaveAt" />
+                  )}{' '}
                   <DepartureTimesList
                     activeItineraryTimeIndex={activeItineraryTimeIndex}
                     itinerary={itinerary}
                     setItineraryTimeIndex={setItineraryTimeIndex}
+                    showArrivals={arrivesAt}
                   />
                 </DepartureTimes>
               </ItineraryGrid>
@@ -545,6 +551,7 @@ const mapStateToProps = (state: any, ownProps: Props) => {
     accessibilityScoreGradationMap:
       state.otp.config.accessibilityScore?.gradationMap,
     activeItineraryTimeIndex,
+    arrivesAt: state.otp.currentQuery.departArrive === 'ARRIVE',
     co2Config: state.otp.config.co2,
     configCosts: state.otp.config.itinerary?.costs,
     // The configured (ambient) currency is needed for rendering the cost

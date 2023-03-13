@@ -4,7 +4,10 @@ import React from 'react'
 
 import { firstTransitLegIsRealtime } from '../../../util/viewer'
 import { getDepartureLabelText } from '../utils'
-import { getFirstLegStartTime } from '../../../util/itinerary'
+import {
+  getFirstLegStartTime,
+  getLastLegEndTime
+} from '../../../util/itinerary'
 
 type DepartureTimesProps = {
   activeItineraryTimeIndex?: number
@@ -15,10 +18,16 @@ type DepartureTimesProps = {
     }[]
   }
   setItineraryTimeIndex: (index: number) => void
+  showArrivals?: boolean
 }
 
 export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
-  const { activeItineraryTimeIndex, itinerary, setItineraryTimeIndex } = props
+  const {
+    activeItineraryTimeIndex,
+    itinerary,
+    setItineraryTimeIndex,
+    showArrivals
+  } = props
   const intl = useIntl()
   const isRealTime = firstTransitLegIsRealtime(itinerary)
   const itineraryButtonLabel = getDepartureLabelText(
@@ -63,7 +72,13 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
             onClick={() => setItineraryTimeIndex(index)}
             title={singleItinLabel}
           >
-            <FormattedTime value={getFirstLegStartTime(time.legs)} />
+            <FormattedTime
+              value={
+                showArrivals
+                  ? getLastLegEndTime(time.legs)
+                  : getFirstLegStartTime(time.legs)
+              }
+            />
           </button>
         )
       })}
