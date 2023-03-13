@@ -179,7 +179,7 @@ class LiveStopTimes extends Component<Props, State> {
           // Only show times within 24 hours of next arrival time
           .filter((time: any, i: number, array: Array<any>) => {
             const firstDepartureTime =
-              array[0].serviceDay + array[0].realtimeDeparture
+              array?.[0]?.serviceDay + array?.[0]?.realtimeDeparture
             const departureTime = time.serviceDay + time.realtimeDeparture
             return i === 0 || (departureTime - firstDepartureTime) / 3600 < 24
           })
