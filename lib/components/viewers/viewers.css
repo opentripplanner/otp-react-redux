@@ -113,6 +113,8 @@
 
 .otp .stop-viewer .day-container .route-row-container li .header.stop-view {
   border-radius: 0;
+  height: fit-content;
+  min-height: 110px;
 }
 
 .otp .stop-viewer .day-container p {
@@ -167,11 +169,8 @@
 .otp .stop-viewer .route-row .header .route-name strong span {
   display: block;
   font-size: inherit;
-  overflow: hidden;
-  padding-left: 15px;
+  padding-left: 10px;
   text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   width: 85px;
 }
 
@@ -292,6 +291,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
+  min-height: 65px;
   width: 100%;
 }
 .otp .stop-viewer .stop-viewer-body .next-arrival-row:last-of-type {

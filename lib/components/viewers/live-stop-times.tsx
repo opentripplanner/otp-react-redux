@@ -170,7 +170,13 @@ class LiveStopTimes extends Component<Props, State> {
     }
 
     const routeTimes = Object.values(stopTimesByPattern)
-      .filter(({ times }) => times.length !== 0)
+      .filter(
+        ({ pattern, route, times }) =>
+          times &&
+          times.length !== 0 &&
+          routeIsValid(route, getRouteIdForPattern(pattern))
+      )
+
       .sort(patternComparator)
       .map((route) => {
         const sortedTimes = route.times
@@ -186,13 +192,10 @@ class LiveStopTimes extends Component<Props, State> {
         const { serviceDay } = sortedTimes[0]
         return {
           ...route,
-          day: serviceDay,
+          day: serviceDay || null,
           times: sortedTimes
         }
       })
-      .filter(({ pattern, route }) =>
-        routeIsValid(route, getRouteIdForPattern(pattern))
-      )
       .filter((route) => {
         /* If the route's first departure time falls on the 2nd available service day,
       only show it if it's within 6 hours of now. */
