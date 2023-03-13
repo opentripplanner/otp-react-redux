@@ -261,6 +261,7 @@ components:
     header: Visor de paradas
     loadingText: Cargando la parada...
     noStopsFound: No se han encontrado tiempos de parada para la fecha.
+    operatorLogoAriaLabel: "Parada de {operatorName}:"
     timezoneWarning: Las horas de salida se indican en <strong>{timezoneCode}</strong>.
     viewNextArrivals: Ver próximas llegadas
     viewSchedule: Ver horario
@@ -489,8 +490,6 @@ components:
     noTripFound: No se encontró ningún viaje
     tripsFound: Encontramos {count, plural, one {# opción} other {# opciones}}
     waiting: Espera...
-  RouteRow:
-    operatorLogoAltText: logotipo de {operatorName}
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo
       real

@@ -361,9 +361,6 @@ components:
     moreDetails: "Plus d'infos"
     stopsTo: "Direction"
     selectADirection: "Choisissez une direction..."
-  RouteRow:
-    operatorLogoAriaLabel: "{operatorName} stop:"
-    operatorLogoAltText: "Logo de {operatorName}"
   # Used in both desktop and mobile
   RouteViewer:
     agencyFilter: Filtrer les transporteurs
@@ -434,6 +431,7 @@ components:
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
     noStopsFound: Aucun horaire pour la date choisie.
+    operatorLogoAriaLabel: "Arrêt {operatorName} :"
     timezoneWarning: "Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>."
     viewNextArrivals: Prochains passages
     viewSchedule: Horaires

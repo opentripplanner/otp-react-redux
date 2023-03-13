@@ -245,6 +245,7 @@ components:
     header: Trình xem trạm dừng
     loadingText: Đang tải trạm dừng…
     noStopsFound: Không tìm thấy thời gian dừng cho ngày.
+    operatorLogoAriaLabel: "Điểm dừng của {operatorName}:"
     timezoneWarning: Thời gian khởi hành được hiển thị trong <strong>{timezoneCode}</strong>.
     viewNextArrivals: Xem những người đến tiếp theo
     viewSchedule: Xem lịch biểu
@@ -467,8 +468,6 @@ components:
   RelatedPanel:
     hideExtraStops: Ẩn các điểm trạm dừng thêm
     showExtraStops: Hiển thị thêm {count} trạm điểm dừng
-  RouteRow:
-    operatorLogoAltText: logo {operatorName}
   SavedTripEditor:
     editSavedTrip: Chỉnh sửa chuyến đi lưu
     saveNewTrip: Lưu chuyến đi mới

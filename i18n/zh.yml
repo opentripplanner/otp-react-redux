@@ -259,6 +259,7 @@ components:
     header: 车站查看器
     loadingText: 加载车站信息…
     noStopsFound: 未找到该日期的车站时间.
+    operatorLogoAriaLabel: "公交车站 {operatorName}:"
     timezoneWarning: 出发时间以 <strong>{timezoneCode}</strong> 显示.
     viewNextArrivals: 查看下一个公共交通到达
     viewSchedule: 查看时间表
@@ -468,8 +469,6 @@ components:
     noTripFound: 没有找到旅行
     tripsFound: 我们发现了 {count} 选项
     waiting: 等待...
-  RouteRow:
-    operatorLogoAltText: '{operatorName} 标志'
   SavedTripScreen:
     tripNameAlreadyUsed: 另一个保存的旅行已经使用了这个名字. 请选择一个不同的名字.
     tripNameRequired: 请输入一个行程名称.
