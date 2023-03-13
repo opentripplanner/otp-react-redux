@@ -19,7 +19,8 @@ const PageTitle = ({ appTitle, title }: Props) => {
     const chunks =
       typeof title === 'string' ? [title, appTitle] : [...title, appTitle]
     document.title = chunks
-      .filter((chunk) => !isBlank(chunk))
+      // Omit null, undefined, '', and blank spaces.
+      .filter((chunk) => !isBlank(chunk?.trim()))
       .join(TITLE_SEPARATOR)
 
     // Restore the app title as the page title when the component unmounts.
