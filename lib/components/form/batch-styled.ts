@@ -24,6 +24,9 @@ export const buttonCss = css`
   &:active {
     ${activeCss}
   }
+  svg {
+    max-height: 36px;
+  }
 `
 
 export const Button = styled.button`
