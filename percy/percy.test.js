@@ -273,12 +273,12 @@ test('OTP-RR', async () => {
 
   if (!OTP_RR_PERCY_CALL_TAKER) {
     // Change the modes
-    await page.click('.visible-lg.straight-corners:first-of-type')
+    await page.click('button[aria-label="Transit"]')
     await page.click('#plan-trip')
 
     await percySnapshotWithWait(page, 'Metro Itinerary No Transit')
     // Restore transit
-    await page.click('.visible-lg.straight-corners:first-of-type')
+    await page.click('button[aria-label="Transit"]')
 
     // Change the time
     await page.click('.summary')
