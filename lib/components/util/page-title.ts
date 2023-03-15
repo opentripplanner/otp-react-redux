@@ -16,9 +16,9 @@ const TITLE_SEPARATOR = ' | '
  */
 const PageTitle = ({ appTitle, title }: Props) => {
   useEffect(() => {
-    const chunks =
+    const titleFragments =
       typeof title === 'string' ? [title, appTitle] : [...title, appTitle]
-    document.title = chunks
+    document.title = titleFragments
       // Omit null, undefined, '', and blank spaces.
       .filter((chunk) => !isBlank(chunk?.trim()))
       .join(TITLE_SEPARATOR)
