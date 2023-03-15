@@ -216,7 +216,7 @@ class AppMenu extends Component<
           from="left"
           hideHeader
           isOpen={isPaneOpen}
-          onRequestClose={this._togglePane}
+          onRequestClose={() => this.setState({ isPaneOpen: false })}
           shouldCloseOnEsc
           width="320px"
         >
