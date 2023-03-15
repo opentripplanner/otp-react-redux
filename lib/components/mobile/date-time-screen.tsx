@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
+import { useIntl } from 'react-intl'
 import React, { useCallback } from 'react'
 
 import * as uiActions from '../../actions/ui'
@@ -14,29 +14,34 @@ interface Props {
   setMobileScreen: (screen: number) => void
 }
 
-const MobileDateTimeScreen = ({ setMobileScreen }: Props) => (
-  <MobileContainer>
-    <MobileNavigationBar
-      backScreen={MobileScreens.SEARCH_FORM}
-      headerText={<FormattedMessage id="components.DateTimeScreen.header" />}
-      showBackButton
-    />
-    <main tabIndex={-1}>
-      <div className="options-main-content mobile-padding">
-        <DateTimeModal />
-      </div>
+const MobileDateTimeScreen = ({ setMobileScreen }: Props) => {
+  const intl = useIntl()
+  return (
+    <MobileContainer>
+      <MobileNavigationBar
+        backScreen={MobileScreens.SEARCH_FORM}
+        headerText={intl.formatMessage({
+          id: 'components.DateTimeScreen.header'
+        })}
+        showBackButton
+      />
+      <main tabIndex={-1}>
+        <div className="options-main-content mobile-padding">
+          <DateTimeModal />
+        </div>
 
-      <div className="options-lower-tray mobile-padding">
-        <PlanTripButton
-          onClick={useCallback(
-            () => setMobileScreen(MobileScreens.RESULTS_SUMMARY),
-            [setMobileScreen]
-          )}
-        />
-      </div>
-    </main>
-  </MobileContainer>
-)
+        <div className="options-lower-tray mobile-padding">
+          <PlanTripButton
+            onClick={useCallback(
+              () => setMobileScreen(MobileScreens.RESULTS_SUMMARY),
+              [setMobileScreen]
+            )}
+          />
+        </div>
+      </main>
+    </MobileContainer>
+  )
+}
 
 // connect to the redux store
 

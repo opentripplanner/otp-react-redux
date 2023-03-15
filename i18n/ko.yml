@@ -238,6 +238,7 @@ components:
     loadingText: 로딩 중지…
     noStopsFound: 날짜에 대한 정지 시간이 없습니다.
     timezoneWarning: 출발 시간은 <strong>{timezoneCode}</strong> 로 표시됩니다.
+    titleBarStopId: 정류장 {stopId}
     viewNextArrivals: 다음 도착 정보보기
     viewSchedule: 일정보기
     zoomToStop: 멈출 수 있습니다
@@ -581,6 +582,7 @@ common:
     home: 집
     work: 일
   routing:
+    routeAndNumber: 노선 {routeId}
     routeToHeadsign: 에 {headsign}
   searchForms:
     enterStartLocation: "시작 위치를 입력하거나 지도를{mapAction} 하십시오"
@@ -613,9 +615,6 @@ util:
     noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나 출발지 또는 도착지에 안전하게 접근하지
       못할 수 있습니다.
     noTripFoundWithReason: '{noTripFound} {reason}'
-    titleBarRouteId: 노선 {routeId}
-    titleBarStopId: 정류장 {stopId}
-    titleBarWithStatus: '{title} | {status}'
 config:
   accessModes:
     bicycle_rent: 대중교통 + 자전거 공유
