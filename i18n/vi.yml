@@ -239,7 +239,7 @@ components:
     destination: Hướng
     route: Tuyến
   StopViewer:
-    displayStopId: '<strong>ID điểm dừng</strong>: {stopId}'
+    displayStopId: '<strong>Diểm dừng</strong>: {stopId}'
     flexStop: Đây là một điểm dừng linh hoạt. Xe sẽ đưa đón khách trong khu linh hoạt
       này theo yêu cầu. Bạn có thể phải gọi trước để được phục vụ trong lĩnh vực này.
     header: Trình xem trạm dừng
@@ -247,6 +247,7 @@ components:
     noStopsFound: Không tìm thấy thời gian dừng cho ngày.
     operatorLogoAriaLabel: "Điểm dừng của {operatorName}:"
     timezoneWarning: Thời gian khởi hành được hiển thị trong <strong>{timezoneCode}</strong>.
+    titleBarStopId: 'Điểm dừng {stopId}'
     viewNextArrivals: Xem những người đến tiếp theo
     viewSchedule: Xem lịch biểu
     zoomToStop: Phóng to để dừng lại
@@ -345,7 +346,8 @@ components:
       description: Bật lại tính năng giám sát chuyến đi để xem trạng thái cập nhật
       heading: Giám sát chuyến đi được ngủ cho ngày hôm nay
   TripSummary:
-    itinerary: Hành trình
+    arriveAt: "Đến nơi "
+    leaveAt: "Rời đi lúc "
   TripTools:
     reportEmailTemplate: "*** HƯỚNG DẪN SỬ DỤNG ***\n Tính năng này cho phép bạn gửi\
       \ báo cáo qua email cho quản trị viên trang web để xem xét.\n Vui lòng điền\
@@ -603,6 +605,7 @@ common:
     tomorrow: Ngày mai
     yesterday: Hôm qua
   routing:
+    routeAndNumber: Tuyến {routeId}
     routeToHeadsign: Hướng {headsign}
 util:
   state:
@@ -614,9 +617,6 @@ util:
     noTripFoundReason: Có thể không có dịch vụ vận chuyển trong khoảng cách được chỉ
       định tối đa hoặc vào thời điểm đã chỉ định, hoặc điểm xuất phát hoặc điểm cuối
       của bạn có thể không thể truy cập an toàn.
-    titleBarRouteId: Tuyến {routeId}
-    titleBarStopId: '{stopId} điểm dừng'
-    titleBarWithStatus: '{title} | {status}'
 config:
   accessModes:
     bicycle_rent: Giao thông công cộng + Chia sẻ xe đạp

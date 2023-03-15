@@ -215,9 +215,6 @@ class TripBasicsPane extends Component<TripBasicsProps> {
           {/* Do not show trip status when saving trip for the first time
               (it doesn't exist in backend yet). */}
           {!isCreating && <TripStatus monitoredTrip={monitoredTrip} />}
-          <ControlLabel>
-            <FormattedMessage id="components.TripBasicsPane.selectedItinerary" />
-          </ControlLabel>
           <TripSummary monitoredTrip={monitoredTrip} />
 
           <FormGroup validationState={errorStates.tripName}>

@@ -12,7 +12,7 @@ export default function FormattedDuration({
   includeSeconds
 }: {
   duration: number
-  includeSeconds: boolean
+  includeSeconds?: boolean
 }): JSX.Element {
   const { hours, minutes, seconds } = toHoursMinutesSeconds(duration)
   return (

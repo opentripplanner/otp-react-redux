@@ -147,6 +147,7 @@ components:
     header: Plan Your Trip
   BatchSettings:
     destination: destination
+    modeSelector: Mode Selector
     origin: origin
     planTripTooltip: Plan trip
     settings: Trip Settings
@@ -232,10 +233,12 @@ components:
     stops: Transit Stops
     streets: Streets
   MetroUI:
+    arriveAt: You arrive
     arriveAtTime: "Arrive at {time}"
     fromStop: "from {stop}"
     itineraryDescription: "{time} itinerary using {routes}"
     leaveAt: You leave
+    originallyScheduledTime: (originally {originalTime})
     multipleOptions: Multiple Options
     orAlternatives: or other routes in the same direction
     singleModeItineraryDescription: "{time} {mode} itinerary"
@@ -434,9 +437,12 @@ components:
       area.
     header: Stop Viewer
     loadingText: Loading Stop...
+    nextArrivals: Next Arrivals
     noStopsFound: No stop times found for date.
     operatorLogoAriaLabel: "{operatorName} stop:"
+    schedule: Schedule
     timezoneWarning: "Departure times are shown in <strong>{timezoneCode}</strong>."
+    titleBarStopId: "Stop {stopId}"
     viewNextArrivals: View next arrivals
     viewSchedule: View schedule
     findSchedule: Find schedule by date
@@ -476,7 +482,6 @@ components:
   TripBasicsPane:
     checkingItineraryExistence: Checking itinerary existence for each day of the week...
     selectAtLeastOneDay: Please select at least one day to monitor.
-    selectedItinerary: "Selected itinerary:"
     tripIsAvailableOnDaysIndicated: Your trip is available on the days of the week
       as indicated above.
     tripDaysPrompt: What days do you take this trip?
@@ -555,7 +560,8 @@ components:
       tripStartsSoonNoUpdates: Trip is starting soon (no realtime updates available).
       tripStartsSoonOnTime: Trip is starting soon and is about on time.
   TripSummary:
-    itinerary: Itinerary
+    arriveAt: "Arrive at "
+    leaveAt: "Leave at "
   TripSummaryPane:
     happensOnDays: "Happens on: <strong>{days}</strong>"
     notifications: "Notifications: <strong>{leadTimeInMinutes} min. before scheduled\
@@ -741,6 +747,7 @@ common:
     work: work # as in "work location"
 
   routing:
+    routeAndNumber: "Route {routeId}"
     routeToHeadsign: "To {headsign}"
 
   searchForms:
@@ -784,9 +791,6 @@ util:
       distance or at the specified time, or your start or end point might not be safely
       accessible.
     noTripFoundWithReason: "{noTripFound} {reason}"
-    titleBarRouteId: "Route {routeId}"
-    titleBarStopId: "Stop {stopId}"
-    titleBarWithStatus: "{title} | {status}"
 
 config:
   accessModes:

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
+import { useIntl } from 'react-intl'
 import React, { useCallback } from 'react'
 
 import * as uiActions from '../../actions/ui'
@@ -13,25 +13,28 @@ interface Props {
   setViewedTrip: (payload: { tripId: string } | null) => void
 }
 
-const MobileTripViewer = ({ setViewedTrip }: Props) => (
-  <MobileContainer>
-    <MobileNavigationBar
-      headerText={<FormattedMessage id="components.TripViewer.header" />}
-      onBackClicked={useCallback(() => setViewedTrip(null), [setViewedTrip])}
-    />
-    <main tabIndex={-1}>
-      <div className="viewer-container">
-        <TripViewer hideBackButton />
-      </div>
+const MobileTripViewer = ({ setViewedTrip }: Props) => {
+  const intl = useIntl()
+  return (
+    <MobileContainer>
+      <MobileNavigationBar
+        headerText={intl.formatMessage({ id: 'components.TripViewer.header' })}
+        onBackClicked={useCallback(() => setViewedTrip(null), [setViewedTrip])}
+      />
+      <main tabIndex={-1}>
+        <div className="viewer-container">
+          <TripViewer hideBackButton />
+        </div>
 
-      {/* The map is less important semantically, so keyboard focus and screen readers
-          will focus on the route viewer first. The map will still appear first visually. */}
-      <div className="viewer-map">
-        <DefaultMap />
-      </div>
-    </main>
-  </MobileContainer>
-)
+        {/* The map is less important semantically, so keyboard focus and screen readers
+            will focus on the route viewer first. The map will still appear first visually. */}
+        <div className="viewer-map">
+          <DefaultMap />
+        </div>
+      </main>
+    </MobileContainer>
+  )
+}
 
 // connect to the redux store
 

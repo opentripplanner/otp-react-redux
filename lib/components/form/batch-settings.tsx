@@ -21,15 +21,13 @@ import {
   MainSettingsRow,
   PlanTripButton,
   SettingsPreview,
-  StyledDateTimePreview
+  StyledDateTimePreview,
+  StyledDateTimePreviewContainer
 } from './batch-styled'
 import { Dot } from './styled'
 import BatchPreferences, { replaceTransitMode } from './batch-preferences'
 import DateTimeModal from './date-time-modal'
-import ModeButtons, {
-  defaultModeOptions,
-  StyledModeButton
-} from './mode-buttons'
+import ModeButtons, { defaultModeOptions } from './mode-buttons'
 import type { Combination } from './batch-preferences'
 import type { Mode } from './mode-buttons'
 
@@ -37,6 +35,15 @@ const ModeButtonsFullWidthContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
+  margin-top: 0px;
+
+  /* <legend> is not shown visually. */
+  & > legend {
+    clip: rect(0, 0, 0, 0);
+    height: 0;
+    overflow: hidden;
+    width: 0;
+  }
 `
 
 // Define Mode Button styled components here to avoid circular imports. I.e., we
@@ -49,22 +56,6 @@ const ModeButtonsFullWidth = styled(ModeButtons)`
   }
 `
 
-const ModeButtonsContainerCompressed = styled.div`
-  display: contents;
-`
-
-const ModeButtonsCompressed = styled(ModeButtons)`
-  ${StyledModeButton} {
-    border-radius: 0px;
-  }
-  &:first-child {
-    border-radius: 5px 0px 0px 5px;
-  }
-  &:last-child {
-    margin-right: 5px;
-    border-radius: 0px 5px 5px 0px;
-  }
-`
 // TYPESCRIPT TODO: better types
 type Props = {
   activeSearch: any
@@ -161,17 +152,26 @@ class BatchSettings extends Component<Props, State> {
     const { activeSearch, config, currentQuery, intl, modeOptions } = this.props
     const { expanded, selectedModes } = this.state
     return (
-      <>
-        <ModeButtonsFullWidthContainer className="hidden-lg">
-          <ModeButtonsFullWidth
-            className="flex"
-            modeOptions={modeOptions}
-            onClick={this._onClickMode}
-            selectedModes={selectedModes}
-          />
-        </ModeButtonsFullWidthContainer>
+      <div role="group">
+        <fieldset>
+          <ModeButtonsFullWidthContainer>
+            <legend>
+              {intl.formatMessage({
+                id: 'components.BatchSettings.modeSelector'
+              })}
+            </legend>
+            <ModeButtonsFullWidth
+              className="flex"
+              modeOptions={modeOptions}
+              onClick={this._onClickMode}
+              selectedModes={selectedModes}
+            />
+          </ModeButtonsFullWidthContainer>
+        </fieldset>
         <MainSettingsRow>
           <SettingsPreview
+            aria-controls="batch-preferences"
+            aria-expanded={expanded === 'SETTINGS'}
             aria-label={intl.formatMessage({
               id: 'components.BatchSettings.settings'
             })}
@@ -185,20 +185,27 @@ class BatchSettings extends Component<Props, State> {
               <Cog />
             </StyledIconWrapper>
           </SettingsPreview>
-          <StyledDateTimePreview
-            // as='button'
+          {expanded === 'SETTINGS' && (
+            <BatchPreferencesContainer id="batch-preferences">
+              <BatchPreferences />
+            </BatchPreferencesContainer>
+          )}
+
+          <StyledDateTimePreviewContainer
+            aria-controls="date-time-modal"
+            aria-expanded={expanded === 'DATE_TIME'}
+            aria-label="Date/Time settings"
             expanded={expanded === 'DATE_TIME'}
-            hideButton
             onClick={this._toggleDateTime}
-          />
-          <ModeButtonsContainerCompressed>
-            <ModeButtonsCompressed
-              className="visible-lg straight-corners"
-              modeOptions={modeOptions}
-              onClick={this._onClickMode}
-              selectedModes={selectedModes}
-            />
-          </ModeButtonsContainerCompressed>
+          >
+            <StyledDateTimePreview hideButton />
+          </StyledDateTimePreviewContainer>
+          {expanded === 'DATE_TIME' && (
+            <DateTimeModalContainer id="date-time-modal">
+              <DateTimeModal />
+            </DateTimeModalContainer>
+          )}
+
           <PlanTripButton
             id="plan-trip"
             onClick={this._planTrip}
@@ -217,17 +224,7 @@ class BatchSettings extends Component<Props, State> {
             </StyledIconWrapper>
           </PlanTripButton>
         </MainSettingsRow>
-        {expanded === 'DATE_TIME' && (
-          <DateTimeModalContainer>
-            <DateTimeModal />
-          </DateTimeModalContainer>
-        )}
-        {expanded === 'SETTINGS' && (
-          <BatchPreferencesContainer>
-            <BatchPreferences />
-          </BatchPreferencesContainer>
-        )}
-      </>
+      </div>
     )
   }
 }

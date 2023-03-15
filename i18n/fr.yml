@@ -232,7 +232,6 @@ components:
     stops: Arrêts et stations
     streets: Plan des rues
   MetroUI:
-    arriveAtTime: "Arrivée à {time}"
     fromStop: "de {stop}"
     itineraryDescription: "Trajet de {time} par les lignes {routes}"
     leaveAt: Partez à
@@ -430,9 +429,12 @@ components:
       Une réservation préalable peut être exigée pour obtenir la desserte.
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
+    nextArrivals: Prochains passages
     noStopsFound: Aucun horaire pour la date choisie.
     operatorLogoAriaLabel: "Arrêt {operatorName} :"
+    schedule: Horaires
     timezoneWarning: "Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>."
+    titleBarStopId: "Arrêt {stopId}"
     viewNextArrivals: Prochains passages
     viewSchedule: Horaires
     zoomToStop: Zoomer sur l'arrêt
@@ -551,7 +553,8 @@ components:
       tripStartsSoonNoUpdates: Départ proche (pas de données en temps réel).
       tripStartsSoonOnTime: Départ proche et prévu à l'heure.
   TripSummary:
-    itinerary: Trajet
+    arriveAt: "Arrivée à "
+    leaveAt: "Partez à "
   TripSummaryPane:
     happensOnDays: "Effectué : <strong>{days}</strong>"
     notifications: "Notifications : <strong>{leadTimeInMinutes} mn avant l'heure de\
@@ -732,6 +735,7 @@ common:
     work: lieu de travail
 
   routing:
+    routeAndNumber: "Ligne {routeId}"
     routeToHeadsign: "Direction {headsign}"
 
   searchForms:
@@ -768,9 +772,6 @@ util:
       dans le rayon spécifié ou aux heures indiquées, ou ne sont pas accessibles en
       toute sécurité.
     noTripFoundWithReason: "{noTripFound} {reason}"
-    titleBarRouteId: "Ligne {routeId}"
-    titleBarStopId: "Arrêt {stopId}"
-    titleBarWithStatus: "{title} | {status}"
 
 config:
   accessModes:

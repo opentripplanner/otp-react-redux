@@ -261,6 +261,7 @@ components:
     noStopsFound: 未找到该日期的车站时间.
     operatorLogoAriaLabel: "公交车站 {operatorName}:"
     timezoneWarning: 出发时间以 <strong>{timezoneCode}</strong> 显示.
+    titleBarStopId: 车站 {stopId}
     viewNextArrivals: 查看下一个公共交通到达
     viewSchedule: 查看时间表
     zoomToStop: 缩放到车站
@@ -484,7 +485,8 @@ components:
     unsavedChangesExistingTrip: 你还没有保存你的行程. 如果你离开了变化就会丢失.
     unsavedChangesNewTrip: 你还没有保存你的新旅行. 如果你离开它就会丢失.
   TripSummary:
-    itinerary: 行程
+    arriveAt: "到达 "
+    leaveAt: "离开 "
   SessionTimeout:
     header: 会话即将超时！
     keepSession: 继续会话
@@ -586,6 +588,7 @@ common:
     home: 家
     work: 工作
   routing:
+    routeAndNumber: 路线 {routeId}
     routeToHeadsign: 到 {headsign}
   coordinates: '{lat}, {lon}'
   searchForms:
@@ -621,6 +624,3 @@ util:
     noTripFoundForMode: 没有发现 {modes} 的行程.
     noTripFoundReason: 在指定的最大距离内或在指定的时间可能没有公交服务, 或者您的起点或终点可能无法安全访问.
     noTripFoundWithReason: '{noTripFound} {reason}'
-    titleBarRouteId: 路线 {routeId}
-    titleBarStopId: 车站 {stopId}
-    titleBarWithStatus: '{title} | {status}'

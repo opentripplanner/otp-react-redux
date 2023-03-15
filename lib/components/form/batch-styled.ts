@@ -12,7 +12,6 @@ const activeCss = css`
   -webkit-box-shadow: ${SHADOW};
   -moz-box-shadow: ${SHADOW};
   box-shadow: ${SHADOW};
-  outline: none;
 `
 
 export const buttonCss = css`
@@ -30,17 +29,23 @@ export const Button = styled.button`
   ${buttonCss}
 `
 
-export const StyledDateTimePreview = styled(DateTimePreview)`
+export const StyledDateTimePreviewContainer = styled(Button)<{
+  expanded?: boolean
+}>`
   ${buttonCss}
-  background-color: rgb(239, 239, 239);
-  cursor: pointer;
-  font-size: 12px;
   margin-right: 5px;
-  padding: 7px 5px;
-  text-align: left;
-  white-space: nowrap;
+  padding: 0;
+  position: relative;
   width: 120px;
   ${(props) => (props.expanded ? activeCss : null)}
+`
+
+export const StyledDateTimePreview = styled(DateTimePreview)`
+  font-size: 12px;
+  margin-right: 5px;
+  padding: 4px 5px;
+  text-align: left;
+  white-space: nowrap;
 `
 export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
   margin-right: 5px;
@@ -77,11 +82,13 @@ const expandableBoxCss = css`
 
 export const DateTimeModalContainer = styled.div`
   ${expandableBoxCss}
+  margin-top: 50px;
   padding: 10px 20px;
 `
 
 export const BatchPreferencesContainer = styled.div`
   ${expandableBoxCss}
+  margin-top: 50px;
   padding: 5px 10px;
 `
 
