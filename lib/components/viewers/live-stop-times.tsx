@@ -125,10 +125,10 @@ class LiveStopTimes extends Component<Props, State> {
   renderDay = (homeTimezone: string, day: number, now: Date): JSX.Element => {
     const formattedDay = utcToZonedTime(day * 1000, homeTimezone)
     return (
-      <div className="day-container" key={day}>
+      <React.Fragment key={day}>
         {/* If the service day is not today, add a label */}
         {!isSameDay(now, formattedDay) && (
-          <p>
+          <p className="day-label">
             <FormattedDayOfWeek
               // 'iiii' returns the long ISO day of the week (independent of browser locale).
               // See https://date-fns.org/v2.28.0/docs/format
@@ -138,7 +138,7 @@ class LiveStopTimes extends Component<Props, State> {
             />
           </p>
         )}
-      </div>
+      </React.Fragment>
     )
   }
 
