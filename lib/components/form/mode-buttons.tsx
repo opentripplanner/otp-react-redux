@@ -50,6 +50,7 @@ const ModeButton = ({
     <OverlayTrigger overlay={overlayTooltip} placement="bottom">
       <button
         aria-label={label || getFormattedMode(mode, intl)}
+        aria-pressed={selected}
         className={className}
         onClick={() => onClick(mode)}
       >

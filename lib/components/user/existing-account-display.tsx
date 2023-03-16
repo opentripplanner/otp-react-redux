@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import React from 'react'
+
+import PageTitle from '../util/page-title'
 
 import A11yPrefs from './a11y-prefs'
 import BackToTripPlanner from './back-to-trip-planner'
@@ -52,9 +54,19 @@ const ExistingAccountDisplay = (props: {
       props
     }
   ]
+
+  const intl = useIntl()
+  // Repeat text from the SubNav component in the title bar for brevity.
+  const settings = intl.formatMessage({
+    id: 'components.SubNav.settings'
+  })
+  const myAccount = intl.formatMessage({
+    id: 'components.SubNav.myAccount'
+  })
   return (
     <div>
       <BackToTripPlanner />
+      <PageTitle title={[settings, myAccount]} />
       <StackedPaneDisplay
         onCancel={onCancel}
         paneSequence={paneSequence}
@@ -79,9 +91,4 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-const mapDispatchToProps = {}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ExistingAccountDisplay)
+export default connect(mapStateToProps)(ExistingAccountDisplay)

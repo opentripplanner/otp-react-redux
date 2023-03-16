@@ -24,7 +24,7 @@ export function localizeGradationMap(
   Object.keys(newGradationMap).forEach((key) => {
     // As these localization keys are in the config, rather than
     // standard language files, the message ids must be dynamically generated
-    const localizationId = `config.acessibilityScore.gradationMap.${key}`
+    const localizationId = `config.accessibilityScore.gradationMap.${key}`
     const localizedText = intl.formatMessage({ id: localizationId })
     // Override the config label if a localized label exists
     if (localizationId !== localizedText) {
@@ -41,4 +41,25 @@ export function localizeGradationMap(
     }
   })
   return newGradationMap
+}
+
+/**
+ * Takes the itinerary start time and returns a label for button title and
+ * screen readers that indicates whether the departure time is based on realtime
+ * or scheduled data.
+ * @param intl React-Intl object
+ * @param time Itinerary start time
+ * @param realTime Whether the itinerary is based on realtime data
+ * @returns string with time and realtime/schedule status
+ */
+export const getDepartureLabelText = (
+  intl: IntlShape,
+  time: any,
+  realTime: boolean
+): string => {
+  return `${intl.formatTime(time)} ${
+    realTime
+      ? `(${intl.formatMessage({ id: 'components.StopTimeCell.realtime' })})`
+      : `(${intl.formatMessage({ id: 'components.StopTimeCell.scheduled' })})`
+  }`
 }

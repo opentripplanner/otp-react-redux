@@ -1,6 +1,11 @@
 import { addHours, isBefore } from 'date-fns'
 import { format, utcToZonedTime } from 'date-fns-tz'
-import { FormattedMessage, FormattedTime } from 'react-intl'
+import {
+  FormattedMessage,
+  FormattedTime,
+  injectIntl,
+  IntlShape
+} from 'react-intl'
 import { Redo } from '@styled-icons/fa-solid/Redo'
 import { TransitOperator } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
@@ -32,6 +37,7 @@ type Props = {
   autoRefreshStopTimes: boolean
   findStopTimesForStop: ({ stopId }: { stopId: string }) => void
   homeTimezone: string
+  intl: IntlShape
   nearbyStops: any // TODO: shared types
   setHoveredStop: (stopId: string) => void
   showNearbyStops: boolean
@@ -145,6 +151,7 @@ class LiveStopTimes extends Component<Props, State> {
   render(): JSX.Element {
     const {
       homeTimezone,
+      intl,
       nearbyStops,
       setHoveredStop,
       showNearbyStops,
@@ -168,6 +175,10 @@ class LiveStopTimes extends Component<Props, State> {
       // sort by first departure time
       return stopTimeComparator(stopTimesA[0], stopTimesB[0])
     }
+
+    const refreshButtonText = intl.formatMessage({
+      id: 'components.LiveStopTimes.refresh'
+    })
 
     const routeTimes = Object.values(stopTimesByPattern)
       .filter(
@@ -255,14 +266,17 @@ class LiveStopTimes extends Component<Props, State> {
             <FormattedMessage id="components.LiveStopTimes.autoRefresh" />
           </label>
           <button
-            // Functionality is provided by auto-refresh, this only adds confusion
-            // in a screen reader context
-            aria-hidden
+            aria-label={refreshButtonText}
             className="link-button pull-right percy-hide"
             onClick={this._refreshStopTimes}
             style={{ fontSize: 'small' }}
+            title={refreshButtonText}
           >
-            <IconWithText Icon={Redo} spin={spin}>
+            <IconWithText
+              Icon={Redo}
+              spin={spin}
+              styleProps={{ display: 'flex', gap: '5px' }}
+            >
               <FormattedTime
                 timeStyle="short"
                 timeZone={userTimezone}
@@ -290,4 +304,4 @@ class LiveStopTimes extends Component<Props, State> {
   }
 }
 
-export default LiveStopTimes
+export default injectIntl(LiveStopTimes)

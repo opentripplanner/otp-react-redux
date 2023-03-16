@@ -11,7 +11,7 @@ const OTP_RR_TEST_JS_CONFIG_PATH = OTP_RR_PERCY_CALL_TAKER
   ? './percy/har-mock-config-call-taker.js'
   : './percy/har-mock-config.js'
 
-const MOCK_SERVER_PORT = 5000
+const MOCK_SERVER_PORT = 5486
 
 // Puppeteer can take a long time to load, especially in some ci environments
 jest.setTimeout(600000)
@@ -86,16 +86,6 @@ beforeAll(async () => {
     browser = await puppeteer.launch({
       args: ['--disable-web-security']
       // ,headless: false
-    })
-
-    // Fix time to Monday, March 14, 2022 14:22:22 GMT (10:22:22 AM EDT).
-    browser.on('targetchanged', async (target) => {
-      const targetPage = await target.page()
-      const client = await targetPage.target().createCDPSession()
-      await client.send('Runtime.evaluate', {
-        expression:
-          'Date.now = function() { return 1647267742000; }; Date.getTime = function() { return 1647267742000; }'
-      })
     })
   } catch (error) {
     console.log(error)
@@ -276,19 +266,19 @@ test('OTP-RR', async () => {
 
   // Plan a trip
   await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2023-01-12&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
+    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2023-03-12&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
   )
   await page.waitForNavigation({ waitUntil: 'networkidle2' })
   await page.waitForSelector('.option.metro-itin')
 
   if (!OTP_RR_PERCY_CALL_TAKER) {
     // Change the modes
-    await page.click('.visible-lg.straight-corners:first-of-type')
+    await page.click('button[aria-label="Transit"]')
     await page.click('#plan-trip')
 
     await percySnapshotWithWait(page, 'Metro Itinerary No Transit')
     // Restore transit
-    await page.click('.visible-lg.straight-corners:first-of-type')
+    await page.click('button[aria-label="Transit"]')
 
     // Change the time
     await page.click('.summary')
@@ -307,6 +297,7 @@ test('OTP-RR', async () => {
     await page.waitForTimeout(200)
 
     await page.click('#plan-trip')
+    await page.waitForTimeout(1000) // wait extra time for all results to load
   } else {
     // take initial screenshot
     await page.waitForTimeout(1000) // wait extra time for all results to load

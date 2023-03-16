@@ -131,7 +131,6 @@ components:
         other {# emplacements disponibles}
       }
   AppMenu:
-    appMenu: App Menu
     callHistory: Historique des appels
     closeMenu: Fermer le menu
     fieldTrip: Groupes scolaires
@@ -169,9 +168,9 @@ components:
     now: Tout de suite
   DateTimePreview:
     arriveAt: "Arrivée {arriveTime, time, short}"
+    dayLastWeek: "{formattedDayOfWeek} dernier"
     departAt: "Départ {departTime, time, short}"
     editDepartOrArrival: Modifier l'heure de départ ou d'arrivée
-    dayLastWeek: "{formattedDayOfWeek} dernier"
     leaveNow: Tout de suite
     range: "{startTime, time, short} à {endTime, time, short}"
   DateTimeScreen:
@@ -213,6 +212,7 @@ components:
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
+    itineraryDetails: Détails du trajet
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Rafraîchir les horaires automatiquement ?
@@ -226,24 +226,25 @@ components:
     bike-rental: Vélos partagés {companies}
     car-rental: Voitures en location
     micromobility-rental: Trottinettes {companies}
-    shared-vehicles: "Véhicules partagés"
     park-and-ride: Parcs relais
     satellite: Satellite
+    shared-vehicles: "Véhicules partagés"
     stops: Arrêts et stations
     streets: Plan des rues
   MetroUI:
-    arriveAtTime: "Arrivée à {time}"
     fromStop: "de {stop}"
     itineraryDescription: "Trajet de {time} par les lignes {routes}"
     leaveAt: Partez à
     multipleOptions: Plusieurs options
     orAlternatives: ou autres lignes dans la même direction
+    singleModeItineraryDescription: "Trajet de {time} {mode}"
     timeWalking: "{time} de marche"
   MobileOptions:
     header: Options de recherche
   ModeDropdown:
     exclusiveMode: "{mode} uniquement"
   NarrativeItinerariesHeader:
+    changeSortDir: Changer l'ordre de tri
     itinerariesAndIssues: "{itinerariesFound} et {numIssues}"
     itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets\
       \ trouvés} }"
@@ -257,9 +258,8 @@ components:
     selectDepartureTime: Heure de départ
     selectDuration: Durée
     selectWalkTime: Temps de marche
-    viewAll: Toutes les options
-    changeSortDir: Changer l'ordre de tri
     sortBy: Trier par
+    viewAll: Toutes les options
   NavLoginButton:
     help: Aide
     myAccount: Mon compte
@@ -285,6 +285,8 @@ components:
     invalidCode: Le code de vérification doit comporter 6 chiffres.
     invalidPhone: Veuillez entrer un numéro de téléphone valable.
     pending: Non vérifié
+    phoneNumberSubmitted: Le numéro {phoneNumber} a bien été envoyé.
+    phoneNumberVerified: Le numéro {phoneNumber} a bien été vérifié.
     # Note to translator: placeholder is width-constrained.
     placeholder: "Entrez votre numéro"
     prompt: "Entrez votre numéro de téléphone pour les SMS de notification :"
@@ -358,9 +360,6 @@ components:
     moreDetails: "Plus d'infos"
     stopsTo: "Direction"
     selectADirection: "Choisissez une direction..."
-  RouteRow:
-    operatorLogoAriaLabel: "{operatorName} stop:"
-    operatorLogoAltText: "Logo de {operatorName}"
   # Used in both desktop and mobile
   RouteViewer:
     agencyFilter: Filtrer les transporteurs
@@ -372,6 +371,7 @@ components:
     modeFilter: Filtre pour les modes
     noFilteredRoutesFound: Aucune ligne ne correspond à vos critères
     shortTitle: Index des lignes
+    stopsInDirectionOfTravel: "Arrêts dans cette direction :"
     title: Index des lignes
   SavedTripEditor:
     editSavedTrip: Modifier un trajet enregistré
@@ -429,16 +429,24 @@ components:
       Une réservation préalable peut être exigée pour obtenir la desserte.
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
+    nextArrivals: Prochains passages
     noStopsFound: Aucun horaire pour la date choisie.
+    operatorLogoAriaLabel: "Arrêt {operatorName} :"
+    schedule: Horaires
     timezoneWarning: "Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>."
+    titleBarStopId: "Arrêt {stopId}"
     viewNextArrivals: Prochains passages
     viewSchedule: Horaires
     zoomToStop: Zoomer sur l'arrêt
 
   SubNav:
+    languageSelector: Langue
+    languages: "Langues"
     myAccount: Mon compte
+    selectALanguage: Sélectionner une langue
     settings: Préférences
     trips: Trajets
+    userMenu: Options de profil
   SwitchButton:
     defaultContent: Permuter
     switchLocations: Permuter les lieux
@@ -466,7 +474,6 @@ components:
   TripBasicsPane:
     checkingItineraryExistence: Vérification du trajet pour chaque jour de la semaine...
     selectAtLeastOneDay: Veuillez choisir au moins un jour pour effectuer le suivi.
-    selectedItinerary: "Trajet selectionné :"
     tripIsAvailableOnDaysIndicated: Votre trajet est possible les jours indiqués ci-dessus.
     tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
     tripNamePrompt: "Saisissez un nom pour ce trajet :"
@@ -478,14 +485,13 @@ components:
       vous annulez, les changements seront perdus.
   TripNotificationsPane:
     advancedSettings: Paramètres avancés
-    altRouteRecommended: Un autre trajet ou une autre correspondance est conseillé·e
+    altRouteRecommended: Un·e autre trajet ou correspondance est conseillé·e
     delaysAboveThreshold: Il y a des perturbations ou retards de plus de
     howToReceiveAlerts: >
       Pour recevoir les alertes pour vos trajets suivis, activez les notifications
       dans la section Préférences de votre compte, et essayez d'enregistrer un trajet
       à nouveau.
-    monitorThisTrip: Effectuer le suivi du trajet {minutes} avant le départ et jusqu'à
-      l'arrivée.
+    monitorThisTrip: "Faire le suivi du trajet avant le départ :"
     notificationsTurnedOff: Les notifications sont désactivées pour votre compte.
     # Note to translator: The notifyViaChannelWhen message, combined with
     # altRouteRecommended, delaysAboveTHreshold, realtimeAlertFlagged,
@@ -493,7 +499,7 @@ components:
     notifyViaChannelWhen: "Recevoir des notifications par {channel} lorsque :"
     oneHour: 1 heure
     realtimeAlertFlagged: Une alerte en temps réel affecte mon trajet
-    toggleAdvancedSettings: Paramètres avancés
+    timeBefore: "{time} avant"
   TripStatus:
     alerts: "{alerts, plural, =0 {# alerte !} one {# alerte !} other {# alertes !}}"
     deleteTrip: Supprimer le trajet
@@ -546,7 +552,8 @@ components:
       tripStartsSoonNoUpdates: Départ proche (pas de données en temps réel).
       tripStartsSoonOnTime: Départ proche et prévu à l'heure.
   TripSummary:
-    itinerary: Trajet
+    arriveAt: "Arrivée à "
+    leaveAt: "Partez à "
   TripSummaryPane:
     happensOnDays: "Effectué : <strong>{days}</strong>"
     notifications: "Notifications : <strong>{leadTimeInMinutes} mn avant l'heure de\
@@ -575,8 +582,12 @@ components:
   TripViewer:
     accessible: Accessible
     bicyclesAllowed: Autorisés
+    endOfTrip: Fin du trajet
     header: Info trajet
+    listOfRouteStops: Liste des arrêts sur cette ligne
     routeHeader: "Ligne : <strong>{routeShortName}</strong> {routeLongName}"
+    startOfTrip: Début du trajet
+    tripDescription: Montez à {boardAtStop} et descendez à {disembarkAtStop}
     viewStop: Info
   UserAccountScreen:
     confirmDelete: "Voulez-vous vraiment supprimer votre compte ? Cette action est\
@@ -666,6 +677,7 @@ common:
     print: Imprimer
     save: Enregistrer
     startOver: Recommencer
+    submitting: Envoi en cours…
     yes: Oui
   itineraryDescriptions:
     calories: "{calories, number} kcal" # SI unit
@@ -675,8 +687,7 @@ common:
     transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
     relativeCo2: >
       {co2}
-      de CO<sub>2</sub> en 
-      {isMore, select,
+      de CO<sub>2</sub> en  {isMore, select,
       true {plus}
       other {moins}
       } qu'en voiture
@@ -722,6 +733,7 @@ common:
     work: lieu de travail
 
   routing:
+    routeAndNumber: "Ligne {routeId}"
     routeToHeadsign: "Direction {headsign}"
 
   searchForms:
@@ -746,7 +758,8 @@ common:
         }}
         other {il y a # jours}
       }
-    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} mn { seconds, plural, =0 {} other {# sec}}"
+    tripDurationFormat: "{hours, plural, =0 {} other {# hr }}{minutes} mn { seconds,\
+      \ plural, =0 {} other {# sec}}"
 
 util:
   state:
@@ -758,9 +771,6 @@ util:
       dans le rayon spécifié ou aux heures indiquées, ou ne sont pas accessibles en
       toute sécurité.
     noTripFoundWithReason: "{noTripFound} {reason}"
-    titleBarRouteId: "Ligne {routeId}"
-    titleBarStopId: "Arrêt {stopId}"
-    titleBarWithStatus: "{title} | {status}"
 
 config:
   accessModes:

@@ -20,6 +20,7 @@ import type { IntlShape, WrappedComponentProps } from 'react-intl'
 import * as userActions from '../../../actions/user'
 import { getErrorStates } from '../../../util/ui'
 import { getFormattedDayOfWeekPlural } from '../../../util/monitored-trip'
+import { labelStyle } from '../styled'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 import FormattedValidationError from '../../util/formatted-validation-error'
@@ -67,10 +68,7 @@ const ALL_DAYS = [
 const AvailableDays = styled.fieldset`
   /* Format <legend> like labels. */
   legend {
-    border: none;
-    font-size: inherit;
-    font-weight: 700;
-    margin-bottom: 5px;
+    ${labelStyle}
   }
 
   & > span {
@@ -217,9 +215,6 @@ class TripBasicsPane extends Component<TripBasicsProps> {
           {/* Do not show trip status when saving trip for the first time
               (it doesn't exist in backend yet). */}
           {!isCreating && <TripStatus monitoredTrip={monitoredTrip} />}
-          <ControlLabel>
-            <FormattedMessage id="components.TripBasicsPane.selectedItinerary" />
-          </ControlLabel>
           <TripSummary monitoredTrip={monitoredTrip} />
 
           <FormGroup validationState={errorStates.tripName}>

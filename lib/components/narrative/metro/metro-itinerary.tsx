@@ -20,13 +20,10 @@ import {
   itineraryHasAccessibilityScores
 } from '../../../util/accessibility-routing'
 import { getActiveSearch, getFare } from '../../../util/state'
-import { getFormattedMode } from '../../../util/i18n'
 import { IconWithText } from '../../util/styledIcon'
 import { ItineraryDescription } from '../default/itinerary-description'
 import { localizeGradationMap } from '../utils'
-import FormattedDuration, {
-  formatDuration
-} from '../../util/formatted-duration'
+import FormattedDuration from '../../util/formatted-duration'
 import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
@@ -36,9 +33,9 @@ import { DepartureTimesList } from './departure-times-list'
 import {
   getFirstTransitLegStop,
   getFlexAttirbutes,
-  getItineraryRoutes,
   removeInsignifigantWalkLegs
 } from './attribute-utils'
+import MetroItineraryRoutes from './metro-itinerary-routes'
 import RouteBlock from './route-block'
 
 const { ItineraryView } = uiActions
@@ -106,32 +103,6 @@ const ItineraryNote = styled.div`
   text-align: right;
 `
 
-const Routes = styled.section<{ enableDot?: boolean }>`
-  align-items: start;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  grid-column-start: 1;
-  margin-top: 10px;
-
-  ${(props) =>
-    !props?.enableDot &&
-    `
-    .route-block-wrapper {
-      background: rgba(0,0,0,0.05);
-      border-radius: 10px;
-      padding: 6px;
-    }
-    /* Slight margin adjustments for "bubble" */
-    .route-block-wrapper svg:first-of-type {
-      margin-left: 5px;
-    }
-    .route-block-wrapper section:first-of-type {
-      margin-left: -4px;
-    }
-  `}
-`
-
 const ItineraryGrid = styled.div`
   display: grid;
   gap: 7px;
@@ -175,7 +146,7 @@ const ItineraryGrid = styled.div`
   }
 `
 
-const ItineraryGridSmall = styled.div`
+const ItineraryGridSmall = styled.button`
   border-radius: 10px;
   display: grid;
   gap: 0 2px;
@@ -232,6 +203,8 @@ type Props = {
 class MetroItinerary extends NarrativeItinerary {
   static contextType = ComponentContext
 
+  static ModesAndRoutes = MetroItineraryRoutes
+
   _onMouseEnter = () => {
     const { active, index, setVisibleItinerary, visibleItinerary } = this.props
     // Set this itinerary as visible if not already visible.
@@ -254,12 +227,32 @@ class MetroItinerary extends NarrativeItinerary {
     }
   }
 
+  _renderMainRouteBlock = (legs: Leg[]) => {
+    const { enableDot, LegIcon, showLegDurations } = this.props
+    const mainLeg = legs
+      // Sort to ensure non-walk leg is first
+      .sort((a: Leg, b: Leg) => b.distance - a.distance)[0]
+    return (
+      <RouteBlock
+        aria-hidden
+        footer={
+          showLegDurations && <FormattedDuration duration={mainLeg.duration} />
+        }
+        hideLongName
+        leg={mainLeg}
+        LegIcon={LegIcon}
+        showDivider={enableDot}
+      />
+    )
+  }
+
   // eslint-disable-next-line complexity
   render() {
     const {
       accessibilityScoreGradationMap,
       active,
       activeItineraryTimeIndex,
+      arrivesAt,
       co2Config,
       currency,
       defaultFareKey,
@@ -300,6 +293,8 @@ class MetroItinerary extends NarrativeItinerary {
               co2: (
                 <LoadingBlurred loading={pending}>
                   <FormattedNumber
+                    // FormattedNumber style prop is not about CSS.
+                    // eslint-disable-next-line react/style-prop-object
                     style="unit"
                     unit="percent"
                     unitDisplay="narrow"
@@ -321,39 +316,6 @@ class MetroItinerary extends NarrativeItinerary {
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
     const routeLegs = itinerary.legs.filter(removeInsignifigantWalkLegs)
-    const modeStrings = routeLegs.map((leg: Leg) => {
-      return getFormattedMode(leg.mode, intl)
-    })
-
-    const renderRouteBlocks = (legs: Leg[], firstOnly = false) => {
-      const routeBlocks = routeLegs
-        // If firstOnly is set to true, sort to ensure non-walk leg is first
-        .sort((a: Leg, b: Leg) => (firstOnly ? b.distance - a.distance : 0))
-        .map((leg: Leg, index: number, filteredLegs: Leg[]) => {
-          const previousLegMode =
-            (index > 0 && filteredLegs[index - 1].mode) || undefined
-          return (
-            <RouteBlock
-              footer={
-                showLegDurations && (
-                  <FormattedDuration
-                    duration={leg.duration}
-                    includeSeconds={false}
-                  />
-                )
-              }
-              hideLongName
-              key={index}
-              leg={leg}
-              LegIcon={LegIcon}
-              previousLegMode={previousLegMode}
-              showDivider={enableDot}
-            />
-          )
-        })
-      if (firstOnly) return routeBlocks[0]
-      return routeBlocks
-    }
 
     const handleClick = () => {
       setActiveItinerary(itinerary)
@@ -362,7 +324,7 @@ class MetroItinerary extends NarrativeItinerary {
       // Reset the scroll. Refs would be the more
       // appropriate way to do this, but they don't work
       setTimeout(
-        () => document.querySelector('.metro-itin')?.scrollIntoView(),
+        () => document.querySelector('.batch-routing-panel')?.scrollIntoView(),
         10
       )
     }
@@ -390,18 +352,7 @@ class MetroItinerary extends NarrativeItinerary {
           // TODO test this with a screen reader
           // tabIndex={expanded ? 1 : 0}
         >
-          <ItineraryWrapper
-            aria-label={intl.formatMessage(
-              {
-                id: 'components.MetroUI.itineraryDescription'
-              },
-              {
-                routes: getItineraryRoutes(itinerary, intl),
-                time: formatDuration(itinerary.duration, intl, false)
-              }
-            )}
-            className={`itin-wrapper${mini ? '-small' : ''}`}
-          >
+          <ItineraryWrapper className={`itin-wrapper${mini ? '-small' : ''}`}>
             {emissionsNote && <ItineraryNote>{emissionsNote}</ItineraryNote>}
             {itineraryHasAccessibilityScores(itinerary) && (
               <AccessibilityRating
@@ -412,9 +363,12 @@ class MetroItinerary extends NarrativeItinerary {
             {!mini && (
               <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
-                <Routes aria-hidden enableDot={enableDot}>
-                  {renderRouteBlocks(itinerary.legs)}
-                </Routes>
+                <MetroItineraryRoutes
+                  expanded={expanded}
+                  itinerary={itinerary}
+                  LegIcon={LegIcon}
+                  showLegDurations={showLegDurations}
+                />
                 <ItineraryDetails
                   aria-label={intl.formatMessage({
                     id: 'components.ItinerarySummary.itineraryDetails'
@@ -474,17 +428,22 @@ class MetroItinerary extends NarrativeItinerary {
                   </SecondaryInfo>
                 </ItineraryDetails>
                 <DepartureTimes>
-                  <FormattedMessage id="components.MetroUI.leaveAt" />{' '}
+                  {arrivesAt ? (
+                    <FormattedMessage id="components.MetroUI.arriveAt" />
+                  ) : (
+                    <FormattedMessage id="components.MetroUI.leaveAt" />
+                  )}{' '}
                   <DepartureTimesList
                     activeItineraryTimeIndex={activeItineraryTimeIndex}
                     itinerary={itinerary}
                     setItineraryTimeIndex={setItineraryTimeIndex}
+                    showArrivals={arrivesAt}
                   />
                 </DepartureTimes>
               </ItineraryGrid>
             )}
             {mini && (
-              <ItineraryGridSmall>
+              <ItineraryGridSmall className="other-itin">
                 <PrimaryInfo as="span">
                   <FormattedDuration
                     duration={itinerary.duration}
@@ -494,7 +453,7 @@ class MetroItinerary extends NarrativeItinerary {
                 <SecondaryInfo as="span">
                   <ItineraryDescription itinerary={itinerary} />
                 </SecondaryInfo>
-                {renderRouteBlocks(itinerary.legs, true)}
+                {this._renderMainRouteBlock(routeLegs)}
               </ItineraryGridSmall>
             )}
           </ItineraryWrapper>
@@ -527,6 +486,7 @@ const mapStateToProps = (state: any, ownProps: Props) => {
     accessibilityScoreGradationMap:
       state.otp.config.accessibilityScore?.gradationMap,
     activeItineraryTimeIndex,
+    arrivesAt: state.otp.currentQuery.departArrive === 'ARRIVE',
     co2Config: state.otp.config.co2,
     configCosts: state.otp.config.itinerary?.costs,
     // The configured (ambient) currency is needed for rendering the cost
