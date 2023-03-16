@@ -232,7 +232,7 @@ components:
     signInTooltip: 여행을 저장하려면 로그인하십시오.
   StopViewer:
     displayStopId: '<strong>정류장 ID</strong>: {stopId}'
-    flexStop: 이것은 플렉스 스톱. 차량은 요청 시 이 플렉서블 존에서 승객을 태우고 내릴 것입니다. 이 지역에서 서비스를 받으려면 미리 
+    flexStop: 이것은 플렉스 스톱. 차량은 요청 시 이 플렉서블 존에서 승객을 태우고 내릴 것입니다. 이 지역에서 서비스를 받으려면 미리
       전화해야 할 수도 있습니다.
     header: 정류장 뷰어
     loadingText: 로딩 중지…
@@ -269,7 +269,6 @@ components:
   TripBasicsPane:
     checkingItineraryExistence: 일주일 내내 여행의 존재를 확인…
     selectAtLeastOneDay: 모니터링하려면 하루 이상 하루를 선택하십시오.
-    selectedItinerary: '선택된 여정:'
     tripDaysPrompt: 이 여행은 몇 일에 걸립니까?
     tripIsAvailableOnDaysIndicated: 여행은 위에 표시된대로 요일에 제공됩니다.
     tripNamePrompt: '이 여행의 이름을 입력하세요:'

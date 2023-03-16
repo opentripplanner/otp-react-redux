@@ -478,7 +478,6 @@ components:
   TripBasicsPane:
     checkingItineraryExistence: 检查一周中每一天的行程存在…
     selectAtLeastOneDay: 请至少选择一天进行监测.
-    selectedItinerary: '选定的行程:'
     tripDaysPrompt: 你这次旅行是在哪天进行的?
     tripIsAvailableOnDaysIndicated: 您的行程可以在上述一周的日子里进行.
     tripNamePrompt: '请为这次旅行提供一个名称:'
