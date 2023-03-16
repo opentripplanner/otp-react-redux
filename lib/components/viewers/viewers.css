@@ -107,15 +107,15 @@
   list-style-type: none;
   padding-left: 0;
 }
-.otp .stop-viewer .departures {
+.otp .stop-viewer .departures,
+.otp .stop-viewer .route-row-container,
+.related-panel-container {
   box-shadow: 2px 2px 5px 1px rgb(0 0 0 / 10%);
   border-radius: 10px;
 }
 
 .otp .stop-viewer .route-row-container li .header.stop-view {
   border-radius: 0;
-  height: fit-content;
-  min-height: 110px;
 }
 
 .otp .stop-viewer p.day-label {
@@ -138,11 +138,9 @@
 
 .otp .stop-viewer .route-row .header {
   align-items: center;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   overflow: hidden;
-  width: 100%;
 }
 .otp .stop-viewer .route-row .header .route-name {
   align-items: center;
@@ -204,9 +202,7 @@
 
 @media (max-width: 450px) {
   .otp .stop-viewer .route-row .header .next-trip-preview {
-    max-width: min-content;
-    padding: 15px 7px;
-    width: 100%;
+    padding: 15px 10px;
   }
 
   .otp .stop-viewer .route-row .header .route-name strong span {
@@ -279,10 +275,11 @@
   -webkit-font-smoothing: antialiased;
   align-items: center;
   border-radius: 10px;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(65%, 90%) 90px;
   justify-content: space-between;
   margin-bottom: 5px;
-  min-height: 65px;
+  min-height: 50px;
   width: 100%;
 }
 .otp .stop-viewer .stop-viewer-body .next-arrival-row:last-of-type {
@@ -292,13 +289,12 @@
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .next-arrival-label {
   align-items: center;
   display: flex;
-  max-width: 75%;
+  gap: 7px;
+  margin-left: 10px;
 }
 
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .route-name {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25em;
+  justify-self: center;
   font-size: 22px;
   font-weight: 700;
 }
