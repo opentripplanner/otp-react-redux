@@ -237,6 +237,7 @@ components:
     header: 정류장 뷰어
     loadingText: 로딩 중지…
     noStopsFound: 날짜에 대한 정지 시간이 없습니다.
+    operatorLogoAriaLabel: "정류장 {operatorName}:"
     timezoneWarning: 출발 시간은 <strong>{timezoneCode}</strong> 로 표시됩니다.
     titleBarStopId: 정류장 {stopId}
     viewNextArrivals: 다음 도착 정보보기
@@ -476,8 +477,6 @@ components:
   RelatedPanel:
     hideExtraStops: 여분의 정지를 숨 깁니다
     showExtraStops: 추가 정거장 {count} 개를 보여줍니다
-  RouteRow:
-    operatorLogoAltText: '{operatorName} 심벌 마크'
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: 이 여행은 실시간 트래픽과 지연 정보를 사용합니다
   StackedPaneDisplay:

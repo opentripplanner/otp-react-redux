@@ -369,9 +369,6 @@ components:
     moreDetails: "More Details"
     stopsTo: "Towards"
     selectADirection: "Select a direction..."
-  RouteRow:
-    operatorLogoAltText: "logo for {operatorName}"
-    operatorLogoAriaLabel: "{operatorName} stop:"
   # Used in both desktop and mobile
   RouteViewer:
     agencyFilter: Agency Filter
@@ -442,6 +439,7 @@ components:
     loadingText: Loading Stop...
     nextArrivals: Next Arrivals
     noStopsFound: No stop times found for date.
+    operatorLogoAriaLabel: "{operatorName} stop:"
     schedule: Schedule
     timezoneWarning: "Departure times are shown in <strong>{timezoneCode}</strong>."
     titleBarStopId: "Stop {stopId}"
