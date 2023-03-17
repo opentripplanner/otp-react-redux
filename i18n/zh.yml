@@ -537,7 +537,7 @@ common:
       {isMore, select,
       true {更多}
       other {更少}
-      } CO<sub>2</sub>  比单独驾车
+      } CO₂  比单独驾车
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
     durationAgo: "{duration}前"
