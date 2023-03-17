@@ -324,7 +324,7 @@ class MetroItinerary extends NarrativeItinerary {
       // Reset the scroll. Refs would be the more
       // appropriate way to do this, but they don't work
       setTimeout(
-        () => document.querySelector('.batch-routing-panel')?.scrollIntoView(),
+        () => document.querySelector('.itin-wrapper')?.scrollIntoView(),
         10
       )
     }

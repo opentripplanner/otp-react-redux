@@ -128,7 +128,7 @@
     "@jackwilsdon/craco-use-babelrc": "^1.0.0",
     "@opentripplanner/scripts": "^1.0.2",
     "@opentripplanner/types": "^5.0.0",
-    "@percy/cli": "^1.16.0",
+    "@percy/cli": "^1.20.3",
     "@percy/puppeteer": "^2.0.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
     "@types/mapbox__polyline": "^1.0.2",
