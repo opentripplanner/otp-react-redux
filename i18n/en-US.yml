@@ -382,6 +382,8 @@ components:
     shortTitle: View Routes
     stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
+    toggleRouteOnMap: Toggle route on map
+    openPatternViewer: Go to route pattern viewer
   SavedTripEditor:
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip
