@@ -100,9 +100,9 @@ const MultiRouteLongName = styled.div`
 const Divider = styled.span`
   align-items: center;
   display: flex;
+  line-height: 2;
   margin: 0 -5px;
   opacity: 0.4;
-  line-height: 2;
 `
 
 // eslint-disable-next-line complexity
