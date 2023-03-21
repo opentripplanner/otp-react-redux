@@ -13,3 +13,7 @@ export function getAriaPhoneNumber(formattedNumber: string): string {
     .replace(/\s*(\d)/g, ' $1')
     .trim()}.`
 }
+
+export const prefersReducedMotion = window.matchMedia(
+  '(prefers-reduced-motion: reduce)'
+).matches
