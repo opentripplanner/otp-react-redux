@@ -545,7 +545,7 @@ common:
     noTransitFareProvided: 운임 정보가 없습니다
     relativeCo2: >
       {co2}
-      CO<sub>2</sub> 를 자동차보다
+      CO₂ 를 자동차보다
       {isMore, select,
       true {더}
       other {덜}
