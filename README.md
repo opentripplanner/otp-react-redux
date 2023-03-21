@@ -69,7 +69,9 @@ the categories in this file. Below are some general guidelines:
   - In contrast, some strings are common to multiple components,
     so it makes sense to group them by theme (e.g. accessModes) under the `common` category.
 
-Note: Do not put comments in the YML files. They will be removed by `yaml-sort`!
+Note: Do not put comments in the YML files! They will be removed by `yaml-sort`.
+Instead, comments for other developers should be placed in the corresponding js/jsx/ts/tsx file.
+Comments for translators should be entered into Weblate (see [Contributing Translations](#contributing-translations))
 
 ### Internationalizable content in the configuration file
 
@@ -111,7 +113,7 @@ OTP-react-redux now uses [Hosted Weblate](https://www.weblate.org) to manage tra
 Translations from the community are welcome and very much appreciated,
 please see instructions at https://hosted.weblate.org/projects/otp-react-redux/.
 Community input from Weblate will appear as pull requests with changes to files in the `i18n` folder for our review.
-(We reserve the right to edit or reject contributions as we see fit.)
+(Contributions may be edited or rejected to remain in line with long-term project goals.)
 
 If changes to a specific language file is needed but not enabled in Weblate, please open an issue or a pull request with the changes needed.
 
