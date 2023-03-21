@@ -74,7 +74,7 @@ function BatchSettings({
     useModeState(
       modeButtonsWithIcons,
       config.modes.initialState,
-      defaultModeSettings,
+      [...defaultModeSettings, ...(config.modes.modeSettingDefinitions || [])],
       {
         queryParamState: true
       }
