@@ -105,7 +105,7 @@ common:
     noItineraryToDisplay: No itinerary to display.
     noTransitFareProvided: No fare info
     relativeCo2: >
-      {co2} {isMore, select, true {more} other {less} } CO<sub>2</sub> than
+      {co2} {isMore, select, true {more} other {less} } CO₂ than
       driving alone
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
   modes:

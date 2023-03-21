@@ -554,7 +554,7 @@ common:
     noTransitFareProvided: Không có thông tin giá vé
     relativeCo2: >
       {co2}
-      CO<sub>2</sub> {isMore, select,
+      CO₂ {isMore, select,
       true {nhiều}
       other {ít}
       } hơn so với xe hơi
