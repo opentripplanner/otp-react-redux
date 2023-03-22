@@ -84,7 +84,7 @@ class PatternRow extends Component<Props, State> {
           {/* route name */}
           <div className="route-name">
             <strong style={{ fontSize: routeNameFontSize(routeName) }}>
-              <div title={routeName}>
+              <span className="route-name-container" title={routeName}>
                 {showOperatorLogo && (
                   <OperatorLogo operator={route?.operator} />
                 )}
@@ -95,7 +95,7 @@ class PatternRow extends Component<Props, State> {
                   )}
                   leg={generateFakeLegForRouteRenderer(route, true)}
                 />
-              </div>
+              </span>
             </strong>
             <span title={pattern.headsign}>{pattern.headsign}</span>
           </div>

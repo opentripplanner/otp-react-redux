@@ -73,7 +73,6 @@ function NextArrivalForPattern({
     { id: 'common.routing.routeToHeadsign' },
     { headsign }
   )
-  const title = `${routeName} ${toHeadsign}`
 
   return (
     <li
@@ -84,7 +83,7 @@ function NextArrivalForPattern({
       }}
     >
       {/* route name */}
-      <div className="next-arrival-label" title={title}>
+      <div className="next-arrival-label">
         <span
           className="route-name"
           style={{ fontSize: routeNameFontSize(routeName) }}
@@ -95,7 +94,9 @@ function NextArrivalForPattern({
             leg={generateFakeLegForRouteRenderer(route, true)}
           />
         </span>
-        <span className="overflow-ellipsis">{toHeadsign}</span>
+        <span className="overflow-ellipsis" title={toHeadsign}>
+          {toHeadsign}
+        </span>
       </div>
       {/* next departure preview */}
       {hasStopTimes && (

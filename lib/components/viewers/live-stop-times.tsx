@@ -1,4 +1,4 @@
-import { addHours, isBefore } from 'date-fns'
+import { addDays, isBefore } from 'date-fns'
 import { format, utcToZonedTime } from 'date-fns-tz'
 import {
   FormattedMessage,
@@ -176,6 +176,8 @@ class LiveStopTimes extends Component<Props, State> {
       return stopTimeComparator(stopTimesA[0], stopTimesB[0])
     }
 
+    const configDepartureWindow = stopViewerConfig?.timeRange / 86400
+
     const refreshButtonText = intl.formatMessage({
       id: 'components.LiveStopTimes.refresh'
     })
@@ -187,18 +189,16 @@ class LiveStopTimes extends Component<Props, State> {
           times.length !== 0 &&
           routeIsValid(route, getRouteIdForPattern(pattern))
       )
-
       .sort(patternComparator)
       .map((route) => {
         const sortedTimes = route.times
           .concat()
           ?.sort(stopTimeComparator)
-          // Only show times within 24 hours of next arrival time
+          // Only show times within the next 2 days, unless otherwise indicated by the config.
           .filter((time: any, i: number, array: Array<any>) => {
-            const firstDepartureTime =
-              array?.[0]?.serviceDay + array?.[0]?.realtimeDeparture
+            const departureWindow = configDepartureWindow || 4
             const departureTime = time.serviceDay + time.realtimeDeparture
-            return i === 0 || (departureTime - firstDepartureTime) / 3600 < 24
+            return isBefore(departureTime, addDays(now, departureWindow))
           })
         const { serviceDay } = sortedTimes[0]
         return {
@@ -207,48 +207,40 @@ class LiveStopTimes extends Component<Props, State> {
           times: sortedTimes
         }
       })
-      .filter((route) => {
-        /* If the route's first departure time falls on the 2nd available service day,
-      only show it if it's within 6 hours of now. */
-        if (!isSameDay(utcToZonedTime(route.day * 1000, homeTimezone), now)) {
-          const departureTime = route.times[0].realtimeDeparture + route.day
-          return isBefore(departureTime * 1000, addHours(now, 6))
-        }
-        return route
-      })
 
     return (
       <>
-        <div className="departures">
-          <ul className="route-row-container">
-            {routeTimes.map((time: any, index: number) => {
-              const { id, pattern, route, times } = time
-              return (
-                <React.Fragment key={id}>
-                  {((index > 0 &&
-                    !isSameDay(time.day, routeTimes[index - 1])) ||
-                    // TODO: is new Date() the right approach?
-                    (index === 0 && !isSameDay(new Date(), time.day))) &&
-                    this.renderDay(homeTimezone, time.day, now)}
-                  <PatternRow
-                    homeTimezone={homeTimezone}
-                    pattern={pattern}
-                    route={{
-                      ...route,
-                      operator: transitOperators.find(
-                        (o: TransitOperator) => o.agencyId === route.agencyId
-                      )
-                    }}
-                    showOperatorLogo={showOperatorLogo}
-                    stopTimes={times}
-                    stopViewerArriving={stopViewerArriving}
-                    stopViewerConfig={stopViewerConfig}
-                  />
-                </React.Fragment>
-              )
-            })}
-          </ul>
-        </div>
+        <ul className="route-row-container">
+          {routeTimes.map((time: any, index: number) => {
+            const { id, pattern, route, times } = time
+            return (
+              <React.Fragment key={id}>
+                {((index > 0 &&
+                  !isSameDay(
+                    time.day * 1000,
+                    routeTimes[index - 1]?.day * 1000
+                  )) ||
+                  // TODO: is new Date() the right approach?
+                  (index === 0 && !isSameDay(now, time.day * 1000))) &&
+                  this.renderDay(homeTimezone, time.day, now)}
+                <PatternRow
+                  homeTimezone={homeTimezone}
+                  pattern={pattern}
+                  route={{
+                    ...route,
+                    operator: transitOperators.find(
+                      (o: TransitOperator) => o.agencyId === route.agencyId
+                    )
+                  }}
+                  showOperatorLogo={showOperatorLogo}
+                  stopTimes={times}
+                  stopViewerArriving={stopViewerArriving}
+                  stopViewerConfig={stopViewerConfig}
+                />
+              </React.Fragment>
+            )
+          })}
+        </ul>
 
         {/* Auto update controls for realtime arrivals */}
         <div style={{ marginTop: '20px' }}>

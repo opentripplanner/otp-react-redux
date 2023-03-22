@@ -107,11 +107,10 @@
   list-style-type: none;
   padding-left: 0;
 }
-.otp .stop-viewer .departures,
 .otp .stop-viewer .route-row-container,
 .related-panel-container {
-  box-shadow: 2px 2px 5px 1px rgb(0 0 0 / 10%);
   border-radius: 10px;
+  box-shadow: 2px 2px 5px 1px rgb(0 0 0 / 10%);
 }
 
 .otp .stop-viewer .route-row-container li .header.stop-view {
@@ -161,6 +160,10 @@
   padding-left: 10px;
   text-align: center;
   width: 85px;
+}
+
+.otp .stop-viewer .route-row .header .route-name span.route-name-container {
+  padding-left: 0;
 }
 
 .otp .stop-viewer .route-row .header .next-trip-preview {
