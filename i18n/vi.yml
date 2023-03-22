@@ -25,7 +25,7 @@ _name: Vietnamese
 # Messages that are generated from actions
 components:
   UserTripSettings:
-    forgetOptions: Xóa các tùy chọn của tôi
+    forgetOptions: Hãy quên các tùy chọn của tôi
     restoreOptions: "Khôi phục {defaults, select,\n true {mặc định của tôi}\n other\
       \ {mặc định}\n }\n"
     rememberOptions: Hãy nhớ các tùy chọn chuyến đi
@@ -33,7 +33,7 @@ components:
     accessibilityRoutingByDefault: Thích những chuyến đi có thể truy cập theo mặc
       định
   BackToTripPlanner:
-    backToTripPlanner: Quay lại Trip Planner
+    backToTripPlanner: Quay lại phần lên kế hoạch chuyến đi
   BatchResultsScreen:
     showResults: Hiển thị kết quả
     expandMap: Mở rộng bản đồ
@@ -41,10 +41,10 @@ components:
     shortTitle: Lên kế hoạch cho chuyến đi
   BatchSettings:
     destination: điểm đến
-    origin: nguồn gốc
+    origin: điểm xuất phát
     planTripTooltip: Lên kế hoạch cho chuyến đi
-    validationMessage: 'Vui lòng xác định các trường sau để lên kế hoạch cho một chuyến
-      đi: {issues}'
+    validationMessage: 'Vui lòng xác định các khu vực sau để lên kế hoạch cho một
+      chuyến đi: {issues}'
     settings: Cài đặt chuyến đi
   CallTakerPanel:
     groupSize: 'Quy mô nhóm:'
@@ -56,11 +56,11 @@ components:
     mainTitle: Đăng nhập bạn vào
   DateTimePreview:
     arriveAt: Đến {arriveTime, time, short}
-    dayLastWeek: '{formattedDayOfWeek} tuần trước'
+    dayLastWeek: '{formattedDayOfWeek} trước'
     departAt: Khởi hành {departTime, time, short}
-    editDepartOrArrival: Chỉnh sửa khởi hành hoặc thời gian đến
+    editDepartOrArrival: Chỉnh sửa thời gian khởi hành hoặc thời gian đến
     leaveNow: Rời đi ngay bây giờ
-    range: '{startTime, time, short} hướng {endTime, time, short}'
+    range: '{startTime, time, short} đến {endTime, time, short}'
   DefaultItinerary:
     multiModeSummary: '{accessMode} + {transitMode}'
     clickDetails: Bấm để xem chi tiết
@@ -72,64 +72,62 @@ components:
     mainTitle: Cài đặt của tôi
     notifications: Thông báo
     places: Những nơi yêu thích
-    terms: Điều kiện
+    terms: Điều khoản
   FavoritePlaceScreen:
     addNewPlace: Thêm địa điểm mới
     editPlace: Chỉnh sửa {placeName}
     editPlaceGeneric: Chỉnh sửa vị trí
-    invalidAddress: Vui lòng đặt một vị trí cho nơi này.
+    invalidAddress: Vui lòng cài đặt một vị trí cho nơi này.
     invalidName: Vui lòng nhập tên cho nơi này.
     nameAlreadyUsed: Bạn đã sử dụng tên này cho một nơi khác. Vui lòng nhập một tên
       khác.
-    placeNotFound: Nơi không tìm thấy
+    placeNotFound: Không tìm thấy địa điểm
     placeNotFoundDescription: Xin lỗi, địa điểm được yêu cầu không được tìm thấy.
   FormNavigationButtons:
-    ariaLabel: Hình thức điều hướng
+    ariaLabel: Điều hướng hình thức
   LiveStopTimes:
     autoRefresh: Tự động làm mới các lượt đến?
   LocationSearch:
     enterLocation: Nhập vị trí
-    setOrigin: Chọn nguồn gốc
+    setOrigin: Chọn điểm xuất phát
     setDestination: Chọn điểm đến
   MapLayers:
     bike-rental: '{companies} Xe đạp chung'
     car-rental: Địa điểm cho thuê xe
     micromobility-rental: '{companies} Xe tay ga điện'
-    park-and-ride: Địa điểm Park & Ride
+    park-and-ride: Địa điểm đậu xe và đi xe công cộng
     satellite: Vệ tinh
     shared-vehicles: Phương tiện chia sẻ
-    stops: "Phương tiện công cộng dừng lại\n BD: Alternative: trạm dừng xe buýt và\
-      \ nhà ga"
+    stops: "Điểm dừng của phương tiện công cộng"
     streets: Đường phố
   MetroUI:
-    arriveAtTime: Đến nơi {time}
+    arriveAtTime: Đến nơi vào {time}
     fromStop: từ {stop}
     itineraryDescription: '{time} hành trình sử dụng {routes}'
-    leaveAt: Rời đi lúc
+    leaveAt: Bạn rời khỏi
     multipleOptions: Nhiều lựa chọn
     orAlternatives: hoặc các tuyến đường khác cùng hướng
-    timeWalking: Đi bộ {time}
+    timeWalking: '{time} đi bộ'
   MobileOptions:
-    header: Đặt tùy chọn tìm kiếm
+    header: Cài đặt tùy chọn tìm kiếm
   ModeDropdown:
     exclusiveMode: Chỉ {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Thay đổi hướng sắp xếp
     itinerariesAndIssues: '{itinerariesFound} và {numIssues}'
-    itinerariesFound: "{itineraryNum, plural,\n one {Đã tìm thấy # hành trình}\n other\
-      \ {# hành trình được tìm thấy}\n }"
+    itinerariesFound: "{itineraryNum} hành trình được tìm thấy"
     numIssues: '{issueNum} vấn đề'
     searching: Tìm lựa chọn của bạn…
     selectArrivalTime: Thời gian đến
     selectBest: Lựa chọn tốt nhất
     selectCost: Phí tổn
     selectDepartureTime: Giờ khởi hành
-    selectDuration: Thời hạn
+    selectDuration: Thời hạn
     selectWalkTime: Thời gian đi bộ
     sortBy: Sắp xếp theo
     viewAll: Xem tất cả các tùy chọn
   NewAccountWizard:
-    finish: Thiết lập tài khoản hoàn tất!
+    finish: Hoàn tất việc thiết lập tài khoản!
     notifications: Tùy chọn thông báo
     places: Thêm vị trí của bạn
     terms: Tạo tài khoản mới
@@ -144,9 +142,9 @@ components:
     changeNumber: Thay đổi số điện thoại
     invalidCode: Vui lòng nhập 6 chữ số cho mã xác thực.
     invalidPhone: Xin vui lòng nhập một số điện thoại hợp lệ.
-    pending: Chưa giải quyết
+    pending: Chưa xác minh
     placeholder: Nhập số điện thoại của bạn
-    prompt: 'Nhập số điện thoại của bạn để biết thông báo SMS:'
+    prompt: 'Nhập số điện thoại của bạn để nhận thông báo SMS:'
     requestNewCode: Yêu cầu một mã mới
     sendVerificationText: Gửi văn bản xác minh
     smsDetail: 'Thông báo SMS sẽ được gửi đến:'
@@ -154,20 +152,20 @@ components:
     verified: Đã xác minh
     verify: Kiểm chứng
     verificationInstructions: "Vui lòng kiểm tra ứng dụng nhắn tin SMS trên điện thoại\
-      \ di động của bạn để biết tin nhắn văn bản bằng mã xác minh và nhập mã bên dưới.\
-      \ Mã hết hạn sau 10 phút.\n"
+      \ di động của bạn để thấy tin nhắn với mã xác minh và nhập mã bên dưới (mã hết\
+      \ hạn sau 10 phút).\n"
   Place:
-    enterAlert: "Nhập nguồn gốc/đích vào biểu mẫu (hoặc đặt qua nhấp vào bản đồ) và\
-      \ nhấp vào điểm đánh dấu kết quả để đặt làm vị trí {placeType}.\n"
+    enterAlert: "Nhập điểm xuất phát/điểm đến vào biểu mẫu này (hoặc cài đặt qua việc\
+      \ nhấp vào bản đồ) và nhấp vào điểm đánh dấu kết quả để cài đặt vị trí {placeType}.\n"
     deleteThisPlace: Xóa nơi này
-    viewStop: Xem trạm dừng
+    viewStop: Xem điểm dừng
   PlaceEditor:
     genericLocationPlaceholder: Tìm kiếm vị trí
     locationPlaceholder: Tìm kiếm vị trí {placeName}
   PlanFirstLastButtons:
     last: Cuối
     next: Tiếp theo
-    first: Ngày thứ nhất
+    first: Thứ nhất
     previous: Trước
   PlanTripButton:
     planTrip: Lên kế hoạch cho chuyến đi
@@ -185,8 +183,8 @@ components:
     onTime: kịp thời
     scheduled: lên kế hoạch
   RelatedStopsPanel:
-    noArrivalFound: Không tìm thấy sự đến
-    relatedStops: Điểm trạm dừng liên quan
+    noArrivalFound: Không tìm thấy việc đến nơi
+    relatedStops: Điểm dừng liên quan
     viewDetails: Xem chi tiết
   ResultsHeader:
     waiting: Đang chờ đợi...
@@ -194,62 +192,62 @@ components:
     tripsFound: Đã tìm thấy {count} tùy chọn
   RouteDetails:
     moreDetails: Thêm chi tiết
-    operatedBy: Dịch vụ do {agencyName}
+    operatedBy: Được điều hành bởi {agencyName}
     selectADirection: Chọn một hướng…
     stopsTo: Hướng
   RouteViewer:
-    agencyFilter: Bộ lọc đại lý giao thông công cộng
+    agencyFilter: Sàng lọc đại lý giao thông công cộng
     allAgencies: Tất cả các đại lý phương tiện công cộng
-    allModes: Tất cả các chế độ
+    allModes: Tất cả các phương tiện
     details: ' '
     findARoute: Tìm một tuyến đường
-    header: Trình xem Tuyến đường
-    modeFilter: Bộ lọc chế độ
-    noFilteredRoutesFound: Không có tuyến đường phù hợp với bộ lọc của bạn!
+    header: Xem tuyến đường
+    modeFilter: Sàng lọc phương tiện
+    noFilteredRoutesFound: Không có tuyến đường phù hợp với sàng lọc của bạn!
     shortTitle: Xem các tuyến đường
-    title: Trình xem Tuyến đường
+    title: Xem tuyến đường
   SaveTripButton:
     cantSaveText: Không thể tiết kiệm
-    cantSaveTooltip: Chỉ các hành trình bao gồm quá cảnh và không có cho thuê hoặc
-      đi xe có thể được theo dõi.
+    cantSaveTooltip: Chỉ các hành trình bao gồm đi xe công cộng và không có cho thuê
+      hoặc đi xe có thể được theo dõi.
     saveTripText: Lưu chuyến đi
     signInText: Đăng nhập để lưu chuyến đi
     signInTooltip: Vui lòng đăng nhập để lưu chuyến đi.
   SavedTripScreen:
     tripNameRequired: Vui lòng nhập tên chuyến đi.
-    tripNameAlreadyUsed: Một chuyến đi đã lưu khác đã sử dụng tên này. Vui lòng chọn
-      một tên khác.
-    tooManyTrips: "Bạn đã đạt được tối đa năm chuyến đi đã lưu. Vui lòng loại bỏ các\
-      \ chuyến đi không sử dụng khỏi các chuyến đi đã lưu của bạn và thử lại.\n"
+    tripNameAlreadyUsed: Một chuyến đi được lưu khác đã sử dụng tên này. Vui lòng
+      chọn một tên khác.
+    tooManyTrips: "Bạn đã đạt được tối đa năm chuyến đi được lưu. Vui lòng loại bỏ\
+      \ các chuyến đi không sử dụng khỏi các chuyến đi được lưu của bạn và thử lại.\n"
   SessionTimeout:
-    body: Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma session'
-      pour conserver votre recherche.
-    header: Votre session va expirer
-    keepSession: Prolonger ma session
+    body: Phiên của bạn sẽ hết hạn trong vòng một phút. Nhấn 'Tiếp tục Phiên' để tiếp
+      tục việc tìm kiếm của bạn.
+    header: Phiên sắp hết giờ!
+    keepSession: Tiếp tục phiên
   SimpleRealtimeAnnotation:
-    usingRealtimeInfo: Chuyến đi này sử dụng thông tin lưu lượng và trì hoãn thời
-      gian thực
+    usingRealtimeInfo: Chuyến đi này sử dụng thông tin lưu thông và sự trì hoãn theo
+      thời gian thực
   SettingsPreview:
     defaultPreviewText: Tùy chọn và Cài đặt Phương tiện Công cộng
   StackedPaneDisplay:
-    savePreferences: Lưu tùy chọn
+    savePreferences: Lưu lại những ưu tiên
   StopScheduleTable:
-    block: Khối
+    block: Dãy nhà
     departure: Khởi hành
-    destination: Hướng
+    destination: Đến
     route: Tuyến
   StopViewer:
-    displayStopId: '<strong>Diểm dừng</strong>: {stopId}'
+    displayStopId: '<strong>ID điểm dừng</strong>: {stopId}'
     flexStop: Đây là một điểm dừng linh hoạt. Xe sẽ đưa đón khách trong khu linh hoạt
-      này theo yêu cầu. Bạn có thể phải gọi trước để được phục vụ trong lĩnh vực này.
-    header: Trình xem trạm dừng
-    loadingText: Đang tải trạm dừng…
+      này theo yêu cầu. Bạn có thể phải gọi trước để được phục vụ trong khu vực này.
+    header: Xem điểm dừng
+    loadingText: Đang tải điểm dừng…
     noStopsFound: Không tìm thấy thời gian dừng cho ngày.
     operatorLogoAriaLabel: "Điểm dừng của {operatorName}:"
     timezoneWarning: Thời gian khởi hành được hiển thị trong <strong>{timezoneCode}</strong>.
-    titleBarStopId: 'Điểm dừng {stopId}'
-    viewNextArrivals: Xem những người đến tiếp theo
-    viewSchedule: Xem lịch biểu
+    titleBarStopId: '{stopId} điểm dừng'
+    viewNextArrivals: Xem những xe đến tiếp theo
+    viewSchedule: Xem lịch trình
     zoomToStop: Phóng to để dừng lại
   SubNav:
     languages: "Ngôn ngữ"
@@ -282,16 +280,16 @@ components:
     advancedSettings: Cài đặt nâng cao
     altRouteRecommended: Một tuyến đường hoặc điểm trung chuyển thay thế được khuyến
       nghị
-    delaysAboveThreshold: Có sự chậm trễ hoặc gián đoạn hơn
+    delaysAboveThreshold: Có sự chậm trễ hoặc gián đoạn của hơn
     howToReceiveAlerts: "Để nhận thông báo cho các chuyến đi đã lưu của bạn, bật thông\
       \ báo trong cài đặt tài khoản của bạn và thử lưu lại một chuyến đi.\n"
-    monitorThisTrip: Theo dõi chuyến đi này {minutes} trước khi nó bắt đầu cho đến
-      khi nó kết thúc.
+    monitorThisTrip: 'Theo dõi chuyến đi này trước khi nó bắt đầu:'
     notificationsTurnedOff: Thông báo được tắt cho tài khoản của bạn.
-    notifyViaChannelWhen: 'Thông báo cho tôi bằng {channel} khi:'
-    oneHour: 1 giờ
+    notifyViaChannelWhen: 'Thông báo cho tôi qua {channel} khi:'
+    oneHour: 1 tiếng
     realtimeAlertFlagged: Có một cảnh báo thời gian thực được gắn cờ trên hành trình
       của tôi
+    timeBefore: '{time} trước'
   TripStatus:
     alerts: '{alerts, plural, one {# cảnh báo!} other {# cảnh báo!}}'
     deleteTrip: Xóa chuyến đi
@@ -300,50 +298,50 @@ components:
     active:
       delayedHeading: Chuyến đi đang được tiến hành và bị trì hoãn {formattedDuration}!
       earlyHeading: Chuyến đi đang diễn ra và sẽ đến sớm hơn {formattedDuration} so
-        với lịch trình!
+        với dự kiến!
       description: Chuyến đi sẽ đến đích lúc {arrivalTime, time, short}.
       noDataHeading: Chuyến đi đang được tiến hành (không có cập nhật thời gian thực
         có sẵn).
       onTimeHeading: Chuyến đi đang được tiến hành và đúng giờ.
     base:
       lastCheckedDefaultText: Thời gian được kiểm tra lần cuối không xác định
-      lastCheckedText: 'Kiểm tra lần cuối: {formattedDuration} trước'
+      lastCheckedText: 'Kiểm tra lần cuối: cách đây {formattedDuration}'
       togglePause: Tạm ngừng
-      tripIsNotSnoozed: Trượt qua cho phần còn lại của ngày hôm nay
+      tripIsNotSnoozed: Tạm dừng phần còn lại của ngày hôm nay
       tripIsSnoozed: Bật lại phân tích chuyến đi
-      unknownState: Nhà nước chuyến đi không xác định
+      unknownState: Không xác định được trạng thái chuyến đi
       untogglePause: Tiếp tục
     inactive:
       description: Tiếp tục giám sát chuyến đi để xem trạng thái cập nhật
-      heading: Giám sát chuyến đi bị tạm dừng
+      heading: Tạm dừng việc giám sát chuyến đi
     nextTripNotPossible:
       description: "Người lập kế hoạch chuyến đi đã không thể tìm thấy chuyến đi của\
-        \ bạn ngày hôm nay. Vui lòng thử đặt lại hành trình của bạn để tìm một tuyến\
-        \ đường thay thế.\n"
-      heading: Chuyến đi là không thể hôm nay
+        \ bạn ngày hôm nay. Vui lòng thử cài đặt lại hành trình của bạn để tìm một\
+        \ tuyến đường thay thế.\n"
+      heading: Không thể thực hiện chuyến đi hôm nay
     upcoming:
       tripStartIsDelayed: Thời gian bắt đầu chuyến đi bị trì hoãn ${duration}!
       nextTripBegins: Chuyến tiếp theo bắt đầu vào {tripDatetime, date, ::eeeee yyyyMMdd}
         lúc {tripDatetime, time, short}.
-      tripBegins: Chuyến đi sẽ bắt đầu lúc {tripStart, time, short}. (Theo dõi thời
-        gian thực sẽ bắt đầu lúc {monitoringStart, time, short}.)
+      tripBegins: Chuyến đi sẽ bắt đầu lúc {tripStart, time, short}. (Việc theo dõi
+        thời gian thực sẽ bắt đầu lúc {monitoringStart, time, short}.)
       tripStartIsEarly: Thời gian bắt đầu chuyến đi đang diễn ra sớm hơn ${duration}
         so với dự kiến!
-      tripStartsSoonNoUpdates: Chuyến đi đang bắt đầu sớm (không có cập nhật thời
-        gian thực có sẵn).
+      tripStartsSoonNoUpdates: Chuyến đi đang bắt đầu sớm (không có cập nhật về thời
+        gian thực).
       tripStartsSoonOnTime: Chuyến đi đang bắt đầu sớm và sắp đúng giờ.
     noLongerPossible:
-      heading: Chuyến đi không còn có thể
-      description: "Người lập kế hoạch chuyến đi đã không thể tìm thấy chuyến đi của\
-        \ bạn ngày hôm nay. Vui lòng thử đặt lại hành trình của bạn để tìm một tuyến\
-        \ đường thay thế.\n"
+      heading: Không thể thực hiện chuyến đi được nữa
+      description: "Người lập kế hoạch chuyến đi không thể tìm thấy chuyến đi của\
+        \ bạn vào bất kỳ ngày nào trong tuần được chọn. Vui lòng thử cài đặt lại hành\
+        \ trình của bạn để tìm một tuyến đường thay thế.\n"
     notCalculated:
       awaiting: Đang chờ tính toán…
-      description: Vui lòng đợi một chút cho chuyến đi để tính toán.
+      description: Vui lòng đợi một chút để tính toán chuyến đi.
       heading: Chuyến đi chưa được tính toán
     snoozed:
       description: Bật lại tính năng giám sát chuyến đi để xem trạng thái cập nhật
-      heading: Giám sát chuyến đi được ngủ cho ngày hôm nay
+      heading: Tạm dừng việc giám sát chuyến đi cho ngày hôm nay
   TripSummary:
     arriveAt: "Đến nơi "
     leaveAt: "Rời đi lúc "
@@ -351,41 +349,42 @@ components:
     reportEmailTemplate: "*** HƯỚNG DẪN SỬ DỤNG ***\n Tính năng này cho phép bạn gửi\
       \ báo cáo qua email cho quản trị viên trang web để xem xét.\n Vui lòng điền\
       \ vào lời nhắc bên dưới và gửi bằng chương trình email thông thường của bạn.\n\
-      \ \n *** VUI LÒNG ĐIỀN ĐẦY ĐỦ SAU ***\n \n Sự cố gặp phải:\n \n Loại chuyến\
-      \ đi bạn muốn thực hiệ:\n \n *** CHI TIẾT KỸ THUẬT***\n"
+      \ \n *** VUI LÒNG ĐIỀN ĐẦY ĐỦ PHẦN SAU ĐÂY ***\n \n Sự cố gặp phải:\n \n Loại\
+      \ chuyến đi bạn muốn thực hiện (ví dụ: đi bộ + đi xe công cộng, đi xe đạp +\
+      \ đi xe công cộng, đi xe hơi + đi xe công cộng):\n \n *** CHI TIẾT KỸ THUẬT***\n"
     reportEmailSubject: Báo cáo sự cố với OpenTripPlanner
     copyLink: Sao chép đường dẫn
     linkCopied: Đã sao chép
-    reportIssue: Báo cáo phát hành
+    reportIssue: Báo cáo sự cố
   UserSettings:
-    confirmDeletion: Bạn có các tìm kiếm hoặc địa điểm gần đây được lưu trữ. Vô hiệu
-      hóa lưu trữ các địa điểm hoặc tìm kiếm gần đây sẽ loại bỏ các mục này. Tiếp
-      tục?
+    confirmDeletion: Bạn có các tìm kiếm và/hoặc địa điểm gần đây được lưu trữ. Việc
+      vô hiệu hóa tính năng lưu trữ các địa điểm/tìm kiếm gần đây sẽ loại bỏ các mục
+      này. Tiếp tục?
     favoriteStops: Điểm dừng yêu thích
-    myPreferences: Sở thích của tôi
+    myPreferences: Ưu tiên của tôi
     mySavedPlaces: Những nơi đã lưu của tôi (<manageLink>quản lý</manageLink>)
-    noFavoriteStops: Không có trạm điểm dừng yêu thích
+    noFavoriteStops: Không có điểm dừng yêu thích
     recentSearches: Tìm kiếm gần đây
     recentSearchSummary: '{mode} từ {from} đến {to}'
     recentPlaces: Những nơi gần đây
-    rememberSearches: Nhớ các tìm kiếm và địa điểm gần đây?
+    rememberSearches: Nhớ các tìm kiếm/địa điểm gần đây?
     stopId: 'ID điểm dừng: {stopId}'
     storageDisclaimer: "Bất kỳ tùy chọn, địa điểm hoặc cài đặt nào bạn chọn để lưu\
-      \ sẽ được lưu trữ trong bộ lưu trữ cục bộ của trình duyệt của bạn. Chúng tôi\
-      \ sẽ không có quyền truy cập kiến thức về nhà riêng, cơ quan hoặc bất kỳ vị\
-      \ trí nào khác của bạn. Tại bất kỳ thời điểm nào, bạn có thể chọn tắt ghi nhớ\
-      \ các địa điểm/tìm kiếm gần đây và xóa các địa điểm nhà/công việc đã lưu của\
-      \ bạn và các điểm dừng yêu thích.\n"
+      \ sẽ được lưu trữ cục bộ trong trình duyệt của bạn. TriMet sẽ không có quyền\
+      \ truy cập kiến thức về nhà ở, chỗ làm hoặc bất kỳ vị trí nào khác của bạn.\
+      \ Tại bất kỳ thời điểm nào, bạn có thể chọn tắt ghi nhớ các địa điểm/tìm kiếm\
+      \ gần đây và xóa các địa điểm nhà ở/chỗ làm đã lưu của bạn và các điểm dừng\
+      \ yêu thích.\n"
   AccountSetupFinishPane:
     message: Bạn đã sẵn sàng để bắt đầu lên kế hoạch cho các chuyến đi của bạn.
   AddPlaceButton:
     addPlace: Thêm địa điểm
-    needOriginDestination: Xác định nguồn gốc hoặc đích để thêm các địa điểm trung
+    needOriginDestination: Xác định nguồn gốc hoặc đích đến để thêm các địa điểm trung
       gian
     tooManyPlaces: Địa điểm trung gian tối đa đạt được
   AfterSignInScreen:
-    message: Nếu trang không tải sau vài giây, <redirectLink>bấm vào đây</redirectLink>.
-    mainTitle: Chuyển hướng.
+    message: Nếu trang này không tải sau vài giây, <redirectLink>bấm vào đây</redirectLink>.
+    mainTitle: Chuyển hướng...
   AmenitiesPanel:
     bikesAvailable: "{count, plural,\n =0 {Không có xe đạp}\n other {# xe đạp có sẵn}\n\
       \ }\n"
@@ -394,29 +393,29 @@ components:
     bikesNearby: "{count, plural,\n =0 {Không có xe đạp {company} nào gần đây}\n other\
       \ {# xe đạp của {company} gần đó}\n }\n"
     nearbyAmenities: Các tiện nghi gần đó
-    noNearbyBikes: Không tìm thấy cho thuê xe đạp gần đó.
-    noNearbyScooters: Không tìm thấy dịch vụ cho thuê micromobility gần đó.
-    noPRLotsFound: Không có Park-and-Ride gần đây.
+    noNearbyBikes: Không tìm thấy xe đạp cho thuê gần đó.
+    noNearbyScooters: Không tìm thấy dịch vụ cho thuê xe hạng nhẹ gần đây.
+    noPRLotsFound: Không có bãi đậu xe và đi xe công cộng gần đây.
     scootersNearby: "{count, plural,\n =0 {Không có xe tay ga điện {company} nào gần\
       \ đây} \n other {Có # xe tay ga điện {company} gần đó} \n }\n"
     spacesAvailable: "{count, plural,\n =0 {Không có chỗ đậu xe}\n other {# chỗ đậu\
       \ xe có sẵn}\n }\n"
   AppMenu:
     callHistory: Lịch sử cuộc gọi
-    closeMenu: Đóng menu
-    fieldTrip: Tiêu đề chuyến đi
-    mailables: Sẵn sàng để đăng
-    openMenu: Mở thực đơn
+    closeMenu: Đóng danh mục
+    fieldTrip: Chuyến đi thực địa
+    mailables: Sẵn sàng để gửi
+    openMenu: Mở danh mục
     skipNavigation: Bỏ qua điều hướng
   NavLoginButton:
-    help: Cứu giúp
+    help: Giúp đỡ
     myAccount: Tài khoản của tôi
     signIn: Đăng nhập
     signOut: Đăng xuất
   ResultsError:
     backToSearch: Quay lại tìm kiếm
   SwitchButton:
-    defaultContent: đổi
+    defaultContent: Đổi
     switchLocations: Chuyển đổi địa điểm
   TripSummaryPane:
     happensOnDays: 'Xảy ra vào: <strong>{days}</strong>'
@@ -426,7 +425,7 @@ components:
   TripViewer:
     accessible: Truy cập được
     bicyclesAllowed: Được phép
-    header: Trình xem chuyến đi
+    header: Xem chuyến đi
     routeHeader: 'Tuyến: <strong>{routeShortName}</strong> {routeLongName}'
     viewStop: Lượt xem
   UserAccountScreen:
@@ -435,51 +434,52 @@ components:
   VerifyEmailPane:
     emailIsVerified: Email của tôi đã được xác minh!
     instructions2: Khi bạn đã được xác minh, nhấp vào nút bên dưới để tiếp tục.
-    instructions1: "Vui lòng kiểm tra hộp thư đến email của bạn và theo dõi liên kết\
-      \ trong tin nhắn để xác minh địa chỉ email của bạn trước khi hoàn thành thiết\
-      \ lập tài khoản của bạn.\n"
+    instructions1: "Vui lòng kiểm tra hộp thư đến trong email của bạn và vào đường\
+      \ link trong tin nhắn để xác minh địa chỉ email của bạn trước khi hoàn thành\
+      \ việc thiết lập tài khoản của bạn.\n"
     resendVerification: Gửi lại email xác minh
   AdvancedOptions:
     bannedRoutes: Chọn các tuyến đường bị cấm…
     maxBike: Đạp xe tối đa {unitsString}
     maxWalk: Đi bộ tối đa {unitsString}
     preferredRoutes: Chọn các tuyến đường ưa thích…
+    walkReluctance: Tránh đi bộ
   BatchSearchScreen:
     header: Lên kế hoạch cho chuyến đi của bạn
   DateTimeOptions:
     departAt: Khởi hành lúc
     now: Hiện nay
-    arriveBy: Đến trước
+    arriveBy: Đến nơi trước
   DateTimeScreen:
-    header: Đặt ngày/giờ
+    header: Cài đặt ngày/giờ
   DeleteUser:
-    deleteMyAccount: Xóa tài khoản của tôi đi
+    deleteMyAccount: Xóa tài khoản của tôi
   EnhancedStopMarker:
     stopID: 'ID điểm dừng:'
-    stopViewer: Trình xem trạm dừng
+    stopViewer: Xem điểm dừng
   FavoritePlaceList:
     addAnotherPlace: Thêm một nơi khác
     description: 'Thêm những địa điểm bạn thường đến để tiết kiệm thời gian lên kế
       hoạch cho chuyến đi:'
     editThisPlace: Chỉnh sửa nơi này
-    setAddressForPlaceType: Đặt địa chỉ {placeType} của bạn
+    setAddressForPlaceType: Cài đặt địa chỉ {placeType} của bạn
   NotFound:
     description: Nội dung bạn yêu cầu không có sẵn.
-    header: Nội dung không tìm thấy
+    header: Không tìm thấy nội dung
   RelatedPanel:
-    hideExtraStops: Ẩn các điểm trạm dừng thêm
-    showExtraStops: Hiển thị thêm {count} trạm điểm dừng
+    hideExtraStops: Ẩn các điểm dừng thêm
+    showExtraStops: Hiển thị thêm {count} điểm dừng
   SavedTripEditor:
-    editSavedTrip: Chỉnh sửa chuyến đi lưu
+    editSavedTrip: Chỉnh sửa chuyến đi được lưu
     saveNewTrip: Lưu chuyến đi mới
     tripInformation: Thông tin chuyến đi
-    tripNotFound: Chuyến đi không tìm thấy
-    tripNotFoundDescription: Xin lỗi, chuyến đi được yêu cầu không được tìm thấy.
+    tripNotFound: Không tìm thấy chuyến đi
+    tripNotFoundDescription: Xin lỗi, không tìm thấy chuyến đi được yêu cầu.
     tripNotifications: Thông báo chuyến đi
   SavedTripList:
     myTrips: Chuyến đi của tôi
     noSavedTrips: Bạn không có những chuyến đi được lưu
-    noSavedTripsInstructions: Thực hiện tìm kiếm chuyến đi từ bản đồ trước.
+    noSavedTripsInstructions: Trước tiên, thực hiện tìm kiếm chuyến đi từ bản đồ.
     pause: Tạm ngừng
     resume: Tiếp tục
   StopTimeCell:
@@ -487,13 +487,13 @@ components:
     realtime: Dựa trên dữ liệu thời gian thực
     scheduled: Dựa trên dữ liệu theo lịch trình
   TermsOfUsePane:
-    mustAgreeToTerms: Bạn phải đồng ý với các điều khoản dịch vụ để tiếp tục.
+    mustAgreeToTerms: Bạn phải đồng ý với các điều khoản của dịch vụ để tiếp tục.
     confirmDeletionPrompt: "Việc xóa bỏ sự đồng ý của bạn đối với việc lưu trữ các\
       \ chuyến đi lịch sử sẽ khiến lịch sử chuyến đi của bạn bị xóa. Bạn có chắc chắn\
       \ muốn tiếp tục không?\n"
     termsOfServiceStatement: "Tôi xác nhận rằng tôi từ 18 tuổi trở lên và tôi đã đọc\
-      \ và đồng ý với <termsOfUseLink>Điều khoản dịch vụ</termsOfUseLink > để sử dụng\
-      \ Công cụ lập kế hoạch chuyến đi.\n"
+      \ và đồng ý với <termsOfUseLink>Điều khoản của dịch vụ</termsOfUseLink> để sử\
+      \ dụng Công cụ lập kế hoạch chuyến đi.\n"
     termsOfStorageStatement: "Không bắt buộc: Tôi đồng ý để Công cụ lập kế hoạch chuyến\
       \ đi lưu trữ các chuyến đi đã lên kế hoạch trước đây của tôi để cải thiện dịch\
       \ vụ chuyển tuyến trong khu vực của tôi. <termsOfStorageLink>Thêm thông tin…</termsOfStorageLink>\n"
@@ -502,7 +502,7 @@ components:
   WelcomeScreen:
     prompt: Bạn muốn đi đâu?
   PointPopup:
-    zoomToLocation: Thu phóng đến vị trí
+    zoomToLocation: Phóng to đến vị trí
   ItinerarySummary:
     itineraryDetails: Chi tiết hành trình
     minMaxFare: '{minTotalFare} - {maxTotalFare}'
@@ -525,15 +525,15 @@ common:
     monday: Thứ hai
     wednesday: Thứ tư
   daysOfWeekPlural:
-    monday: Mỗi Thứ hai
-    friday: Mỗi Thứ sáu
-    saturday: Mỗi Thứ bảy
-    sunday: Mỗi Chủ nhật
-    thursday: Mỗi Thứ năm
-    tuesday: Mỗi Thứ ba
-    wednesday: Mỗi Thứ tư
+    monday: Các thứ hai
+    friday: Các thứ sáu
+    saturday: Các thứ bảy
+    sunday: Các chủ nhật
+    thursday: Các thứ năm
+    tuesday: Các thứ ba
+    wednesday: Các thứ tư
   forms:
-    cancel: Mỗi Hủy bỏ
+    cancel: Hủy bỏ
     close: Đóng
     edit: Chỉnh sửa
     next: Tiếp theo
@@ -562,17 +562,17 @@ common:
     bicycle_rent: Chia sẻ xe đạp
     bike: Xe đạp
     bus: Xe buýt
-    cable_car: Dây điện trong xe
+    cable_car: Xe chạy bằng dây cáp
     car: Xe hơi
-    car_park: Park and Ride
+    car_park: Đậu xe và đi xe công cộng
     drive: Lái xe
-    ferry: Ghe đò
-    flex: Tuyến đường Flex
-    funicular: Máy có dây kéo
-    gondola: Giỏ treo dưới khí cầu
+    ferry: Phà
+    flex: Các tuyến đường linh hoạt
+    funicular: Hệ thống đường ray dây cáp
+    gondola: Thuyền chèo đáy bằng
     micromobility: Xe tay ga điện
     micromobility_rent: Xe tay ga điện
-    rail: Xe lửa
+    rail: Đường ray
     rent: Tùy chọn cho thuê
     subway: Metro
     tram: Xe điện
@@ -583,8 +583,8 @@ common:
     sms: tin nhắn
   places:
     custom: phong tục
-    dining: Ăn uống
-    home: Nhà
+    dining: ăn uống
+    home: nhà
     work: công việc
   searchForms:
     enterDestination: "Nhập điểm đến hoặc {mapAction} vào bản đồ…"
@@ -593,19 +593,19 @@ common:
     click: nhấp
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
-    durationAgo: "{duration} trước"
+    durationAgo: "Cách đây {formattedDuration}"
     tripDurationFormat: "{hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds,\
       \ plural, =0 {} other {# giây}}"
-    fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
-      \ =0 {vài giây trước}\n =1 {một phút trước}\n other {# phút trước}\n }}\n =1\
-      \ {một tiếng trước}\n other {# giờ trước}\n }}\n other {# ngày trước}\n }\n"
+    fromNowUpdate: "Cách đây {days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
+      \ =0 {vài giây}\n =1 {một phút}\n other {# phút}\n }}\n =1 {một tiếng}\n other\
+      \ {# tiếng}\n }}\n other {# ngày}\n }\n"
   dateExpressions:
     today: Hôm nay
     tomorrow: Ngày mai
     yesterday: Hôm qua
   routing:
     routeAndNumber: Tuyến {routeId}
-    routeToHeadsign: Hướng {headsign}
+    routeToHeadsign: Đến {headsign}
 util:
   state:
     errorPlanningTrip: Đã xảy ra lỗi khi lập kế hoạch chuyến đi.
@@ -618,33 +618,33 @@ util:
       của bạn có thể không thể truy cập an toàn.
 config:
   accessModes:
-    bicycle_rent: Giao thông công cộng + Chia sẻ xe đạp
-    bicycle: Giao thông công cộng + Xe đạp của tôi
-    car_hail: Ride Hail
-    car_park: Park & Ride
+    bicycle_rent: Giao thông công cộng + Xe đạp chung
+    bicycle: Giao thông công cộng + Xe đạp cá nhân
+    car_hail: Đi taxi
+    car_park: Đậu xe và đi xe công cộng
     micromobility_rent: Giao thông công cộng + Xe tay ga điện cho thuê
     micromobility: Giao thông công cộng + Xe tay ga điện của tôi
   bicycleModes:
     bicycle: Xe đạp của tôi
-    bicycle_rent: Chia sẻ xe đạp
+    bicycle_rent: Xe đạp chung
   micromobilityModes:
     micromobility: Xe tay ga điện của tôi
     micromobility_rent: Xe tay ga điện cho thuê
   flex:
-    flex-service: Dịch vụ flex
+    flex-service: Dịch vụ linh hoạt
     flex-service-colon: 'Dịch vụ flex:'
     both: Xem dưới cùng của hành trình để biết chi tiết
     continuous-dropoff: Giao tiếp với người vận hành về điểm dừng
-    call-ahead: Gọi để đặt trước
+    call-ahead: Gọi để đặt trước.
 actions:
   fieldTrip:
-    addNoteError: 'Lỗi khi thêm ghi chú chuyến đi: {err}'
+    addNoteError: 'Lỗi khi thêm ghi chú chuyến đi:'
     confirmOverwriteItineraries: "Hành động này sẽ ghi đè lên một hành trình {outbound,\
       \ select,\n  true {xuất ngoại}\n  other {đến}\n  } đã được lên kế hoạch trước\
       \ đó cho yêu cầu này. Bạn có muốn tiếp tục không?\n"
-    deleteNoteError: 'Lỗi khi thêm ghi chú chuyến đi: {err}'
-    deleteItinerariesError: 'Lỗi khi xóa chuyến đi: {err}'
-    editSubmitterNotesError: 'Lỗi khi chỉnh sửa ghi chú của người gửi: {err}'
+    deleteNoteError: 'Lỗi khi xóa ghi chú chuyến đi:'
+    deleteItinerariesError: 'Lỗi khi xóa kế hoạch chuyến đi:'
+    editSubmitterNotesError: 'Lỗi khi chỉnh sửa ghi chú của người gửi:'
     fetchFieldTripsError: 'Lỗi khi tìm nạp các chuyến đi: {err}'
     fetchTripsForDateError: 'Lỗi khi tìm nạp các chuyến đi cho ngày đi du lịch: {err}'
     fetchFieldTripError: 'Lỗi khi tìm nạp các chuyến đi: {err}'
@@ -653,25 +653,26 @@ actions:
     incompatibleTripDateError: Ngày đi dự kiến ({tripDate}) không phải là ngày đi
       theo yêu cầu ({requestDate})
     itineraryCapacityError: 'Không thể lưu kế hoạch chuyến đi: Không thể lưu kế hoạch
-      chuyến đi này do thiếu sức chứa trên một hoặc nhiều xe buýt. Vui lòng lên kế
-      hoạch lại chuyến đi của bạn.'
+      chuyến đi này do thiếu sức chứa trên một hoặc nhiều xe. Vui lòng lên kế hoạch
+      lại chuyến đi của bạn.'
     saveItinerariesError: 'Không lưu được hành trình: {err}'
-    setGroupSizeError: 'Lỗi khi đặt kích thước nhóm:'
-    setDateError: 'Lỗi khi đặt ngày:'
-    setRequestStatusError: 'Lỗi khi đặt trạng thái yêu cầu: {err}'
-    setPaymentError: 'Lỗi khi đặt thông tin thanh toán:'
+    setGroupSizeError: 'Lỗi khi cài đặt kích thước nhóm:'
+    setDateError: 'Lỗi khi cài đặt ngày:'
+    setRequestStatusError: 'Lỗi khi cài đặt trạng thái yêu cầu:'
+    setPaymentError: 'Lỗi khi cài đặt thông tin thanh toán:'
   location:
     geolocationNotSupportedError: Định vị địa lý không được hỗ trợ bởi trình duyệt
       của bạn
-    unknownPositionError: Lỗi không xác định vị trí
+    unknownPositionError: Lỗi không xác định khi tìm vị trí
   user:
     accountDeleted: Tài khoản người dùng của bạn ({email}) đã bị xóa.
-    authTokenError: Lỗi có được mã thông báo ủy quyền.
+    authTokenError: Lỗi khi lấy mã thông báo ủy quyền.
     confirmDeletePlace: Bạn có muốn loại bỏ nơi này không?
     confirmDeleteMonitoredTrip: Bạn có muốn loại bỏ chuyến đi này không?
-    emailVerificationResent: Thông báo xác minh email đã phẫn nộ.
+    emailVerificationResent: Thông báo xác minh email đã được gửi lại.
     genericError: 'Phát sinh lỗi: {err}'
-    itineraryExistenceCheckFailed: Lỗi kiểm tra xem chuyến đi đã chọn của bạn có thể.
+    itineraryExistenceCheckFailed: Lỗi kiểm tra xem chuyến đi được chọn của bạn là
+      có thể.
     smsResendThrottled: Một SMS xác minh đã được gửi đến số điện thoại được chỉ định
       chưa đầy một phút trước. Vui lòng thử lại sau vài phút.
     preferencesSaved: Những sở thích của bạn đã được lưu lại.
