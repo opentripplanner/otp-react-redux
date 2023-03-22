@@ -37,12 +37,12 @@ actions:
     smsResendThrottled: 확인 SMS가 1분 미만 전에 표시된 전화번호로 전송되었습니다. 잠시 후 다시 시도하세요.
     smsVerificationFailed: 번호가 확인되지 않습니다. 입력한 코드가 만료되었을 수 있습니다. 새 코드를 요청한 후 다시 시도하세요.
   fieldTrip:
-    addNoteError: '여행 메모를 찾는 중에 오류가 발생했습니다: {err}'
+    addNoteError: '트립 메모를 찾는 중에 오류가 발생했습니다:'
     confirmOverwriteItineraries: "이 작업은 이 요청에 대해 이전에 계획된 {outbound, select,\n  true\
       \ {아웃바운드}\n  other {인바운드}\n  } 일정을 덮어씁니다. 계속하시겠습니까?\n"
-    deleteItinerariesError: '여행 계획을 삭제하는 중에 오류가 발생했습니다: {err}'
-    deleteNoteError: '여행 메모를 삭제하는 중에 오류가 발생했습니다: {err}'
-    editSubmitterNotesError: '제출자 메모를 수정하는 동안 오류가 발생했습니다: {err}'
+    deleteItinerariesError: '트립 플랜을 삭제하는 중에 오류가 발생했습니다:'
+    deleteNoteError: '트립 메모를 삭제하는 중에 오류가 발생했습니다:'
+    editSubmitterNotesError: '제출자 메모를 수정하는 중에 오류가 발생했습니다:'
     fetchFieldTripError: '트립을 가져오는 중에 오류가 발생했습니다: {err}'
     fetchFieldTripsError: '트립을 가져오는 중에 오류가 발생했습니다: {err}'
     fetchTripsForDateError: '필트 트립 날짜에 대한 트립을 가져오는 중에 오류가 발생했습니다: {err}'
@@ -52,9 +52,9 @@ actions:
     maxTripRequestsExceeded: 유효한 결과없이 초과된 트립 요청의 개수
     saveItinerariesError: '트립을 저장하는 데 실패했습니다: {err}'
     setDateError: '날짜를 설정하는 중에 오류가 발생했습니다:'
-    setPaymentError: '결제 정보 설정 오류: {err}'
-    setGroupSizeError: '그룹 크기를 설정하는 동안 오류가 발생했습니다: {err}'
-    setRequestStatusError: '요청 상태를 설정하는 동안 오류가 발생했습니다: {err}'
+    setPaymentError: '결제 정보를 설정하는 중에 오류가 발생했습니다:'
+    setGroupSizeError: '그룹 크기를 설정하는 중에 오류가 발생했습니다:'
+    setRequestStatusError: '요청 상태를 설정하는 중에 오류가 발생했습니다:'
   location:
     geolocationNotSupportedError: 귀하의 브라우저에서 지원되지 않는 지리적 위치
     unknownPositionError: 위치를 가져오는 중 알 수 없는 오류가 발생했습니다
@@ -76,7 +76,7 @@ components:
     validationMessage: '트립 계획을 위해 다음 필드를 정의하세요: {issues}'
   BeforeSignInScreen:
     mainTitle: 로그인 중
-    message: "이 페이지에 액세스하려면 로그인해야합니다. 로그인 페이지로 리디렉션하는 동안 기다려주세요…\n"
+    message: "이 페이지에 접근하려면 로그인해야 합니다. 로그인 페이지로 리디렉션하는 동안 기다려 주세요…\n"
   CallTakerPanel:
     advancedOptions: 고급 옵션
     groupSize: '그룹 크기:'
@@ -166,13 +166,13 @@ components:
     sendVerificationText: 확인 텍스트 전송
     smsDetail: 'SMS 알림이 다음으로 전송됩니다:'
     verificationCode: '확인 코드:'
-    verificationInstructions: "휴대폰의 SMS 메시지 앱에서 인증 코드를 확인하고 아래 코드를 입력하세요. 코드는 10분\
-      \ 후에 만료됩니다.\n"
+    verificationInstructions: "휴대폰의 SMS 메시지 앱에서 인증 코드를 확인하고 아래에 코드를 입력하세요(코드는 10분\
+      \ 후에 만료됩니다).\n"
     verified: 확인됨
     verify: 확인
   Place:
     deleteThisPlace: 이 장소 삭제
-    enterAlert: "양식에 원점/대상을 입력하고 (맵 클릭을 통해 설정) 결과 마커를 클릭하여 {placeType} 위치로 설정하십시오.\n"
+    enterAlert: "양식에 출발지/목적지를 입력하고(또는 지도를 클릭하여 설정), 생성된 마커를 클릭하여 {placeType} 위치로 설정하세요.\n"
     viewStop: 정류장 보기
   PlanTripButton:
     planTrip: 트립 계획
@@ -220,7 +220,7 @@ components:
     pause: 일시 정지
     resume: 다시 시작
   SavedTripScreen:
-    tooManyTrips: "당신은 이미 최대 5 개의 저장된 여행에 도달했습니다. 저장된 여행에서 사용하지 않은 여행을 제거하고 다시 시도하십시오.\n"
+    tooManyTrips: "저장된 트립의 최대 개수인 5개에 도달했습니다. 저장된 트립에서 사용하지 않는 트립을 제거한 후, 다시 시도하세요.\n"
     tripNameRequired: 트립의 이름을 입력하세요.
     tripNameAlreadyUsed: 저장된 다른 트립이 이 이름을 사용하고 있습니다. 다른 이름을 선택하세요.
   SaveTripButton:
@@ -254,18 +254,18 @@ components:
     defaultContent: 바꾸기
     switchLocations: 위치 바꾸기
   TermsOfUsePane:
-    termsOfServiceStatement: "본인은 만 18세 이상임을 확인하며, 트립플래너 이용을 위한 <termsOfUseLink>이용약관/termsOfUseLink\
-      \ > 을 읽었으며 이에 동의합니다.\n"
+    termsOfServiceStatement: "본인은 만 18세 이상임을 확인하며, 트립 플래너 이용을 위한 <termsOfUseLink>이용\
+      \ 약관</termsOfUseLink>을 읽고 이에 동의합니다.\n"
     mustAgreeToTerms: 계속하시려면 서비스 약관에 동의하셔야 합니다.
-    confirmDeletionPrompt: "여행 기록 저장에 대한 동의를 제거하면 여행 기록이 삭제됩니다. 계속하다?\n"
-    termsOfStorageStatement: "선택 사항: 여행 플래너가 내 지역의 대중 교통 서비스를 개선하기 위해 계획된 여행 기록을 저장하는\
-      \ 데 동의합니다. <termsOfStorageLink>더 많은 정보...</termsOfStorageLink>\n"
+    confirmDeletionPrompt: "트립 기록 저장에 대한 동의를 제거하면 트립 기록이 삭제됩니다. 계속하시겠습니까?\n"
+    termsOfStorageStatement: "선택 사항: 본인의 지역의 대중 교통 서비스를 개선하기 위해 내 트립 플랜 기록을 저장하는 데\
+      \ 동의합니다. <termsOfStorageLink>보다 자세한 정보...</termsOfStorageLink>\n"
   TransitVehicleOverlay:
-    stopped_at: '{stop} 에서 문이 열립니다'
+    stopped_at: '{stop}에서 문이 열립니다'
     vehicleName: '차량 {vehicleNumber}'
-    in_transit_to: 다음 중지 {stop}
-    incoming_at: '{stop} 과 가까움'
-    travelingAt: 현재 {milesPerHour} 로 주행 중
+    in_transit_to: '다음 정류장: {stop}'
+    incoming_at: '{stop}에 접근하는 중'
+    travelingAt: 현재 {milesPerHour} 속도로 주행 중
   TripBasicsPane:
     checkingItineraryExistence: 각 요일의 트립을 확인 중…
     selectAtLeastOneDay: 모니터링하려면 최소 1일 이상을 선택하세요.
@@ -279,8 +279,8 @@ components:
     advancedSettings: 고급 설정
     altRouteRecommended: 대체 경로 또는 환승 지점이 권장됩니다
     delaysAboveThreshold: '다음 시간 이상의 지연 또는 차질이 있습니다:'
-    howToReceiveAlerts: "저장된 여행에 대한 경고를 받으려면 계정 설정에서 알림을 활성화하고 여행을 다시 저장하십시오.\n"
-    monitorThisTrip: 이 여행이 끝날 때까지 시작하기 전에 {minutes} 을 모니터링하십시오.
+    howToReceiveAlerts: "저장된 트립에 대한 경고를 받으려면, 계정 설정에서 알림을 활성화하고 트립을 다시 저장하세요.\n"
+    monitorThisTrip: '시작하기 전에 이 여행을 모니터링하세요:'
     notificationsTurnedOff: 계정에 대한 알림이 꺼져 있습니다.
     notifyViaChannelWhen: '다음의 경우, {channel}을 통해 알려주세요:'
     oneHour: 1 시간
@@ -316,10 +316,10 @@ components:
       tripStartsSoonNoUpdates: 트립이 곧 시작됩니다 (실시간 업데이트를 사용할 수 없습니다).
     nextTripNotPossible:
       heading: 오늘 트립이 불가능함
-      description: "트립 플래너는 오늘 여행을 찾을 수 없었습니다. 대체 경로를 찾으려면 여정을 다시 계획하십시오.\n"
+      description: "트립 플래너가 오늘 트립을 찾을 수 없습니다. 대체 경로를 찾으려면 여정을 트립 일정을 다시 계획하세요.\n"
     noLongerPossible:
       heading: 트립은 더 이상 불가능함
-      description: "여행 플래너는 선택된 요일에 여행을 찾을 수 없었습니다. 대체 경로를 찾으려면 여정을 다시 계획하십시오.\n"
+      description: "트립 플래너는 선택된 요일에 트립을 찾을 수 없습니다. 대체 경로를 찾으려면 트립 일정을 다시 계획하세요.\n"
     inactive:
       description: 트립 모니터링을 다시 시작하여 상태 업데이트 확인
       heading: 트립 모니터링이 일시 중지됨
@@ -333,9 +333,10 @@ components:
     copyLink: 링크 복사
     linkCopied: 복사됨
     reportEmailSubject: OpenTripPlanner로 문제 보고
-    reportEmailTemplate: "*** 사용자 지침 ***\n 이 기능을 사용하면 검토를 위해 사이트 관리자에게 보고서를 이메일로 보낼\
-      \ 수 있습니다.\n 아래 프롬프트를 작성하고 일반 이메일 프로그램을 사용하여 보내주십시오.\n \n *** 다음을 완료하세요 ***\n\
-      \ \n 발생한 문제:\n \n 가고 싶었던 여행의 종류:\n \n *** 기술적 세부 사항 ***\n"
+    reportEmailTemplate: "*** 사용자 안내 ***\n 이 기능을 사용하면 사이트 관리자에게 검토할 수 있도록 보고서를 이메일로\
+      \ 전송할 수 있습니다.\n 아래 프롬프트를 작성한 후, 귀하의 일반 이메일 프로그램을 사용하여 전송하여 주십시오.\n \n *** 다음을\
+      \ 작성해 주십시오 ***\n \n 발생한 문제:\n \n시도하려고 했던 트립의 종류 (예: 도보 + 대중 교통, 자전거 + 대중 교통,\
+      \ 자동차 + 대중 교통)::\n \n *** 기술적 문제의 세부 내용 ***\n"
     reportIssue: 문제 보고
   TripViewer:
     accessible: 접근성이 있음
@@ -351,12 +352,12 @@ components:
     noFavoriteStops: 좋아하지 않는 정류장
     recentPlaces: 최근 장소
     recentSearches: 최근 검색
-    recentSearchSummary: '{from}에서 {to}까지 {mode)'
+    recentSearchSummary: '{from}에서 {to}까지 {mode}'
     rememberSearches: 최근 검색어/장소를 기억하십니까?
     stopId: '정류장 ID: {stopId}'
-    storageDisclaimer: "저장하기로 선택한 기본 설정, 장소 또는 설정은 브라우저의 로컬 저장소에 저장됩니다. 우리는 귀하의 집,\
-      \ 직장 또는 기타 위치에 대한 정보에 접근할 수 없습니다. 언제든지 최근 장소/검색 기억을 끄고 저장된 집/직장 위치 및 즐겨찾는 정류장을\
-      \ 지울 수 있습니다.\n"
+    storageDisclaimer: "저장하기로 선택한 환경설정, 장소 또는 설정은 브라우저의 로컬 저장소에 저장됩니다. TriMet은 귀하의\
+      \ 집, 직장 또는 기타 위치에 대한 정보에 접근할 수 없습니다. 언제든지 최근 장소/검색 기억을 끄고 저장된 집/직장 위치 및 즐겨찾는\
+      \ 정류장을 지우실 수 있습니다.\n"
   UserTripSettings:
     forgetOptions: 내 옵션 잊기
     rememberOptions: 트립 옵션 기억하기
@@ -370,7 +371,7 @@ components:
     tooManyPlaces: 중간 경유지의 최대 수에 도달함
     needOriginDestination: 출발지/목적지를 정의하고 중간 경유지 추가
   AdvancedOptions:
-    bannedRoutes: 금지된 대중교통 경로 선택
+    bannedRoutes: 금지된 경로 선택…
     maxBike: 최대 자전거 {unitsString}
     maxWalk: 최대 도보 {unitsString}
     preferredRoutes: 선호 경로 선택…
@@ -488,7 +489,7 @@ components:
     confirmDelete: 귀하의 사용자 계정을 삭제하시겠습니까? 한 번 그렇게 하신 경우, 복구할 수 없습니다.
   VerifyEmailPane:
     emailIsVerified: 내 이메일이 확인되었습니다!
-    instructions1: "이메일받은 편지함을 확인하고 메시지의 링크를 따라 계정 설정을 마치기 전에 이메일 주소를 확인하십시오.\n"
+    instructions1: "귀하의 이메일의 받은 편지함을 확인한 후, 메시지의 링크를 따라 이메일 주소를 확인하여 계정 설정을 완료하세요.\n"
     instructions2: 확인 후, 아래의 버튼을 클릭하여 계속 진행하십시오.
     resendVerification: 확인 이메일을 다시 전송
   SettingsPreview:
@@ -559,11 +560,11 @@ common:
     car_park: 파크 앤 라이드
     drive: 운전
     ferry: 페리
-    flex: Flex Routes
+    flex: 가변 경로
     funicular: 케이블 카
     gondola: 곤돌라
     micromobility: 전동스쿠터
-    micromobility_rent: 전기 스쿠터
+    micromobility_rent: 전동스쿠터
     rail: 기차
     rent: 대여 옵션
     subway: 지하철
@@ -582,8 +583,8 @@ common:
     routeAndNumber: 경로 {routeId}
     routeToHeadsign: '{headsign} 방면'
   searchForms:
-    enterStartLocation: "시작 위치를 입력하거나 지도를{mapAction} 하십시오"
-    enterDestination: "목적지를 입력하거나 지도를{mapAction} 하십시오"
+    enterStartLocation: "시작 위치 또는 {mapAction}을(를) 지도에 입력하십시오…"
+    enterDestination: "목적지 또는{mapAction}을(를) 지도에 입력하십시오…"
     click: 클릭
     tap: 클릭
   daysOfWeekPlural:
@@ -600,8 +601,8 @@ common:
     fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
       \ =0 {몇 초 전에}\n =1 {1 분 전}\n other {# 분 전}\n }}\n =1 {한 시간 전에}\n other {# 시간\
       \ 전}\n }}\n other {# 일 전}\n }\n"
-    tripDurationFormat: "{hours, plural, =0 {} other {# 시간 }}{minutes, number} 분 {\
-      \ seconds, plural, =0 {} other {# 초}}"
+    tripDurationFormat: "{hours, plural, =0 {} other {# 시간 }}{minutes} 분 { seconds,\
+      \ plural, =0 {} other {# 초}}"
   coordinates: '{lat}, {lon}'
 util:
   state:
