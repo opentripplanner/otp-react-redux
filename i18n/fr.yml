@@ -86,7 +86,7 @@ components:
       intermédiaires
     tooManyPlaces: Nombre max. de points intermédiaires atteint
   AdvancedOptions:
-    bannedRoutes: Choisissez les lignes à éviter
+    bannedRoutes: Choisissez les lignes à éviter…
     maxBike: Dist. à vélo ({unitsString})
     maxWalk: Dist. à pied ({unitsString})
     walkReluctance: Réticence à marcher
@@ -153,6 +153,7 @@ components:
     validationMessage: "Veuillez définir les champs suivants afin de planifier votre\
       \ trajet : {issues}"
     settings: Préférences du trajet
+    modeSelector: Sélecteur de modes
   BeforeSignInScreen:
     mainTitle: Connexion en cours
     message: >
@@ -216,6 +217,7 @@ components:
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Rafraîchir les horaires automatiquement ?
+    refresh: Mettre à jour les prochains passages
   LocationSearch:
     enterLocation: Entrez le lieu
     setDestination: Choisissez la destination
@@ -239,6 +241,9 @@ components:
     orAlternatives: ou autres lignes dans la même direction
     singleModeItineraryDescription: "Trajet de {time} {mode}"
     timeWalking: "{time} de marche"
+    originallyScheduledTime: (initialement {originalTime})
+    arriveAt: Vous arrivez à
+    arriveAtTime: Arrivée à {time}
   MobileOptions:
     header: Options de recherche
   ModeDropdown:
@@ -419,8 +424,8 @@ components:
     destination: Direction
     route: Ligne
   StopTimeCell:
-    realtime: Based on realtime data
-    scheduled: Based on schedule data
+    realtime: Données en temps réel
+    scheduled: Selon l'horaire
     imminentArrival: Imminent
   # Used in both desktop and mobile
   StopViewer:
@@ -439,6 +444,7 @@ components:
     viewSchedule: Horaires
     zoomToStop: Zoomer sur l'arrêt
 
+    findSchedule: Rechercher les horaires par jour
   SubNav:
     languageSelector: Langue
     languages: "Langues"
