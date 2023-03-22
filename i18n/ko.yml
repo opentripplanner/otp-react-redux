@@ -375,6 +375,7 @@ components:
     maxBike: 최대 자전거 {unitsString}
     maxWalk: 최대 도보 {unitsString}
     preferredRoutes: 선호 경로 선택…
+    walkReluctance: 걷기 제외
   AfterSignInScreen:
     message: 몇 초 후에도 페이지가 로드되지 않는 경우, <redirectLink>여기를 클릭</redirectLink>하십시오.
     mainTitle: 경로 재설정 중...
