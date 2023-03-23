@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { differenceInDays } from 'date-fns'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { Itinerary, Leg } from '@opentripplanner/types'
 import clone from 'clone'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useContext, useState } from 'react'
@@ -17,8 +18,6 @@ import {
   getVisibleItineraryIndex
 } from '../../util/state'
 import { getFirstLegStartTime, itinerariesAreEqual } from '../../util/itinerary'
-import { Itinerary, Leg } from '@opentripplanner/types'
-
 import {
   setActiveItinerary,
   setActiveLeg,
@@ -29,6 +28,7 @@ import {
 
 import * as S from './styled'
 import { getItineraryDescription } from './default/itinerary-description'
+import ErrorRenderer, { Error } from './metro/OTP2ErrorRenderer'
 import Loading from './loading'
 import NarrativeItinerariesErrors from './narrative-itineraries-errors'
 import NarrativeItinerariesHeader from './narrative-itineraries-header'
@@ -400,12 +400,7 @@ const NarrativeItineraries = ({
           overflowY: 'auto'
         }}
       >
-        {/* TODO PROPERLY RENDER */}
-        {Object.keys(errorsOtp2).length > 0 &&
-          'errors: ' +
-            JSON.stringify(errorsOtp2, (_key, value) =>
-              value instanceof Set ? [...value] : value
-            )}
+        <ErrorRenderer errors={errorsOtp2} />
         {showingErrors || mergedItineraries.length === 0 ? (
           <NarrativeItinerariesErrors
             errorMessages={errorMessages}

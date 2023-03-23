@@ -287,6 +287,37 @@ components:
     notificationChannelPrompt: How would you like to receive notifications?
     notificationEmailDetail: "Notification emails will be sent to:"
     noneSelect: Don't notify me
+  OTP2ErrorRenderer:
+      inputFields:
+        TO: To
+        FROM: From
+      OUTSIDE_BOUNDS:
+        header: Location outside bounds
+        body: "{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other {locations are}} not in the bounds of the trip planner."
+      WALKING_BETTER_THAN_TRANSIT: 
+        header: Walking is better than transit
+        body: Walking from your origin to your destination will be faster than taking transit.
+      NO_STOPS_IN_RANGE:
+        header: No stops in range
+        body: "{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other {locations are}} not near any transit stops."
+      LOCATION_NOT_FOUND:
+        header: Location not found
+        body: "{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other {locations are}} not near any streets."
+      # Copied from GraphQL documentation
+      NO_TRANSIT_CONNECTION:
+        header: No transit connections
+        body: No transit connection was found between your origin and destination on the selected day of service.
+      # Copied from GraphQL documentation
+      OUTSIDE_SERVICE_PERIOD:
+        header: Outside service period
+        body: The date specified is outside the range of data currently loaded into the trip planner.
+      NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+        header: No transit connection in search window
+        body: A transit connection was found, but it was outside the search window, try adjusting your search window.
+      SYSTEM_ERROR:
+        header: Trip Planner Failure
+        body: An unknown error happened during the search.
+
   PhoneNumberEditor:
     changeNumber: Change number
     invalidCode: Please enter 6 digits for the validation code.
