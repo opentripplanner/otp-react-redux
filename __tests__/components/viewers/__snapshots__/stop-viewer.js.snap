@@ -679,11 +679,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-euMpEg hcLsSS"
+                                    className="sc-jUEmfL gDIokM"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-euMpEg hcLsSS"
+                                      className="sc-jUEmfL gDIokM"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -695,7 +695,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -708,7 +708,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -756,11 +756,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-dtTHTy iMUNPs"
+                                    className="sc-fvhFOF bnAJuG"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-dtTHTy iMUNPs"
+                                      className="sc-fvhFOF bnAJuG"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -772,7 +772,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -785,7 +785,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -3518,11 +3518,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-euMpEg hcLsSS"
+                                    className="sc-jUEmfL gDIokM"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-euMpEg hcLsSS"
+                                      className="sc-jUEmfL gDIokM"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -3534,7 +3534,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -3547,7 +3547,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -3595,11 +3595,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-dtTHTy iMUNPs"
+                                    className="sc-fvhFOF bnAJuG"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-dtTHTy iMUNPs"
+                                      className="sc-fvhFOF bnAJuG"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -3611,7 +3611,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -3624,7 +3624,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -5441,11 +5441,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-euMpEg hcLsSS"
+                                    className="sc-jUEmfL gDIokM"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-euMpEg hcLsSS"
+                                      className="sc-jUEmfL gDIokM"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -5457,7 +5457,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -5470,7 +5470,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -5518,11 +5518,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-dtTHTy iMUNPs"
+                                    className="sc-fvhFOF bnAJuG"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-dtTHTy iMUNPs"
+                                      className="sc-fvhFOF bnAJuG"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -5534,7 +5534,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -5547,7 +5547,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -8663,11 +8663,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-euMpEg hcLsSS"
+                                    className="sc-jUEmfL gDIokM"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-euMpEg hcLsSS"
+                                      className="sc-jUEmfL gDIokM"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -8679,7 +8679,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -8692,7 +8692,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -8740,11 +8740,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-dtTHTy iMUNPs"
+                                    className="sc-fvhFOF bnAJuG"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-dtTHTy iMUNPs"
+                                      className="sc-fvhFOF bnAJuG"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -8756,7 +8756,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -8769,7 +8769,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -15531,11 +15531,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-euMpEg hcLsSS"
+                                    className="sc-jUEmfL gDIokM"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-euMpEg hcLsSS"
+                                      className="sc-jUEmfL gDIokM"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -15547,7 +15547,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -15560,7 +15560,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -15608,11 +15608,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-dtTHTy iMUNPs"
+                                    className="sc-fvhFOF bnAJuG"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-dtTHTy iMUNPs"
+                                      className="sc-fvhFOF bnAJuG"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -15624,7 +15624,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -15637,7 +15637,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
