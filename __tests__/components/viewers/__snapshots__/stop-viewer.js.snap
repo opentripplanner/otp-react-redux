@@ -679,11 +679,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-jUEmfL gDIokM"
+                                    className="sc-euMpEg hcLsSS"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-jUEmfL gDIokM"
+                                      className="sc-euMpEg hcLsSS"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -695,7 +695,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -708,7 +708,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -756,11 +756,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-fvhFOF bnAJuG"
+                                    className="sc-dtTHTy iMUNPs"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-fvhFOF bnAJuG"
+                                      className="sc-dtTHTy iMUNPs"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -772,7 +772,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -785,7 +785,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -829,7 +829,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   tabIndex={0}
                 >
                   <div
-                    className="sc-bQdRvg hGmYyp"
+                    className="sc-fXoxaI gHFXNE"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -1842,6 +1842,22 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -1969,6 +1985,22 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -3518,11 +3550,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-jUEmfL gDIokM"
+                                    className="sc-euMpEg hcLsSS"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-jUEmfL gDIokM"
+                                      className="sc-euMpEg hcLsSS"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -3534,7 +3566,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -3547,7 +3579,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -3595,11 +3627,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-fvhFOF bnAJuG"
+                                    className="sc-dtTHTy iMUNPs"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-fvhFOF bnAJuG"
+                                      className="sc-dtTHTy iMUNPs"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -3611,7 +3643,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -3624,7 +3656,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -3668,7 +3700,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   tabIndex={0}
                 >
                   <div
-                    className="sc-bQdRvg hGmYyp"
+                    className="sc-fXoxaI gHFXNE"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -3889,6 +3921,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           className="route-row-container"
                         >
                           <p
+                            aria-hidden={true}
                             className="day-label"
                           >
                             <FormattedDayOfWeek
@@ -5441,11 +5474,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-jUEmfL gDIokM"
+                                    className="sc-euMpEg hcLsSS"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-jUEmfL gDIokM"
+                                      className="sc-euMpEg hcLsSS"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -5457,7 +5490,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -5470,7 +5503,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -5518,11 +5551,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-fvhFOF bnAJuG"
+                                    className="sc-dtTHTy iMUNPs"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-fvhFOF bnAJuG"
+                                      className="sc-dtTHTy iMUNPs"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -5534,7 +5567,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -5547,7 +5580,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -5591,7 +5624,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   tabIndex={0}
                 >
                   <div
-                    className="sc-bQdRvg hGmYyp"
+                    className="sc-fXoxaI gHFXNE"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -6010,6 +6043,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           className="route-row-container"
                         >
                           <p
+                            aria-hidden={true}
                             className="day-label"
                           >
                             <FormattedDayOfWeek
@@ -6503,6 +6537,22 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -6630,6 +6680,22 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -6757,6 +6823,22 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -8663,11 +8745,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-jUEmfL gDIokM"
+                                    className="sc-euMpEg hcLsSS"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-jUEmfL gDIokM"
+                                      className="sc-euMpEg hcLsSS"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -8679,7 +8761,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -8692,7 +8774,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -8740,11 +8822,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-fvhFOF bnAJuG"
+                                    className="sc-dtTHTy iMUNPs"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-fvhFOF bnAJuG"
+                                      className="sc-dtTHTy iMUNPs"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -8756,7 +8838,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -8769,7 +8851,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -8813,7 +8895,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   tabIndex={0}
                 >
                   <div
-                    className="sc-bQdRvg hGmYyp"
+                    className="sc-fXoxaI gHFXNE"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -9748,6 +9830,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           className="route-row-container"
                         >
                           <p
+                            aria-hidden={true}
                             className="day-label"
                           >
                             <FormattedDayOfWeek
@@ -10237,6 +10320,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="monday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.monday"
+                                                  >
+                                                    common.daysOfWeek.monday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -10364,6 +10463,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="monday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.monday"
+                                                  >
+                                                    common.daysOfWeek.monday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -10491,6 +10606,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="monday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.monday"
+                                                  >
+                                                    common.daysOfWeek.monday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -10531,6 +10662,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             </PatternRow>
                           </injectIntl(PatternRow)>
                           <p
+                            aria-hidden={true}
                             className="day-label"
                           >
                             <FormattedDayOfWeek
@@ -11020,6 +11152,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="tuesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.tuesday"
+                                                  >
+                                                    common.daysOfWeek.tuesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -11147,6 +11295,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="tuesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.tuesday"
+                                                  >
+                                                    common.daysOfWeek.tuesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -11274,6 +11438,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="tuesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.tuesday"
+                                                  >
+                                                    common.daysOfWeek.tuesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -11682,6 +11862,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="tuesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.tuesday"
+                                                  >
+                                                    common.daysOfWeek.tuesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -11809,6 +12005,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -11936,6 +12148,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="thursday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.thursday"
+                                                  >
+                                                    common.daysOfWeek.thursday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -12344,6 +12572,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="tuesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.tuesday"
+                                                  >
+                                                    common.daysOfWeek.tuesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -12471,6 +12715,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="tuesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.tuesday"
+                                                  >
+                                                    common.daysOfWeek.tuesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -12598,6 +12858,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -15531,11 +15807,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-jUEmfL gDIokM"
+                                    className="sc-euMpEg hcLsSS"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-jUEmfL gDIokM"
+                                      className="sc-euMpEg hcLsSS"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -15547,7 +15823,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -15560,7 +15836,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-jUEmfL gDIokM"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-euMpEg hcLsSS"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -15608,11 +15884,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-fvhFOF bnAJuG"
+                                    className="sc-dtTHTy iMUNPs"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-fvhFOF bnAJuG"
+                                      className="sc-dtTHTy iMUNPs"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -15624,7 +15900,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
+                                        className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -15637,7 +15913,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-fvhFOF bnAJuG"
+                                          className="StyledIconBase-ea9ulj-0 iuNRof sc-dtTHTy iMUNPs"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -15681,7 +15957,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   tabIndex={0}
                 >
                   <div
-                    className="sc-bQdRvg hGmYyp"
+                    className="sc-fXoxaI gHFXNE"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -16606,6 +16882,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           className="route-row-container"
                         >
                           <p
+                            aria-hidden={true}
                             className="day-label"
                           >
                             <FormattedDayOfWeek
@@ -17099,6 +17376,22 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="monday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.monday"
+                                                  >
+                                                    common.daysOfWeek.monday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -17226,6 +17519,22 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="monday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.monday"
+                                                  >
+                                                    common.daysOfWeek.monday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -17353,6 +17662,22 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-hzMMVR bVLqNV"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="monday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.monday"
+                                                  >
+                                                    common.daysOfWeek.monday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
