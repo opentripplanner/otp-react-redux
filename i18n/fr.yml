@@ -687,7 +687,7 @@ common:
     transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
     relativeCo2: >
       {co2}
-      de CO<sub>2</sub> en  {isMore, select,
+      de CO₂ en  {isMore, select,
       true {plus}
       other {moins}
       } qu'en voiture

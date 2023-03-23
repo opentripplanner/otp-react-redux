@@ -614,7 +614,7 @@ common:
     transfers: '{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}'
     relativeCo2: >
       {co2}
-      de CO<sub>2</sub> en  {isMore, select,
+      de CO₂ en  {isMore, select,
       true {más}
       other {menos}
       } que conducir

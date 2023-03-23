@@ -183,7 +183,8 @@
     "serve": "^13.0.2",
     "tsdx": "https://github.com/ibi-group/tsdx",
     "typescript": "^4.4.2",
-    "yaml-loader": "^0.6.0"
+    "yaml-loader": "^0.6.0",
+    "yaml-sort": "^2.0.0"
   },
   "peerDependencies": {
     "react": ">=15.0.0",
@@ -220,6 +221,9 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
+    ],
+    "i18n/*.{yml,yaml}": [
+      "yaml-sort --quotingStyle double --input"
     ]
   },
   "percy": {
