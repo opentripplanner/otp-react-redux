@@ -176,7 +176,8 @@ class LiveStopTimes extends Component<Props, State> {
       return stopTimeComparator(stopTimesA[0], stopTimesB[0])
     }
 
-    const configDepartureWindow = stopViewerConfig?.timeRange / 86400
+    // Time range is set in seconds, so convert to days
+    const timeRange = stopViewerConfig.timeRange / 86400
 
     const refreshButtonText = intl.formatMessage({
       id: 'components.LiveStopTimes.refresh'
@@ -194,11 +195,10 @@ class LiveStopTimes extends Component<Props, State> {
         const sortedTimes = route.times
           .concat()
           ?.sort(stopTimeComparator)
-          // Only show times within the next 2 days, unless otherwise indicated by the config.
+          // filter any times according to time range set in config.
           .filter((time: any, i: number, array: Array<any>) => {
-            const departureWindow = configDepartureWindow || 4
             const departureTime = time.serviceDay + time.realtimeDeparture
-            return isBefore(departureTime, addDays(now, departureWindow))
+            return isBefore(departureTime, addDays(now, timeRange))
           })
         const { serviceDay } = sortedTimes[0]
         return {
@@ -220,7 +220,6 @@ class LiveStopTimes extends Component<Props, State> {
                     time.day * 1000,
                     routeTimes[index - 1]?.day * 1000
                   )) ||
-                  // TODO: is new Date() the right approach?
                   (index === 0 && !isSameDay(now, time.day * 1000))) &&
                   this.renderDay(homeTimezone, time.day, now)}
                 <PatternRow
