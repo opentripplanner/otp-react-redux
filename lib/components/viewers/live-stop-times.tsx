@@ -134,7 +134,7 @@ class LiveStopTimes extends Component<Props, State> {
       <React.Fragment key={day}>
         {/* If the service day is not today, add a label */}
         {!isSameDay(now, formattedDay) && (
-          <p className="day-label">
+          <p aria-hidden className="day-label">
             <FormattedDayOfWeek
               // 'iiii' returns the long ISO day of the week (independent of browser locale).
               // See https://date-fns.org/v2.28.0/docs/format

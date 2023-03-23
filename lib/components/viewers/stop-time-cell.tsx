@@ -18,6 +18,7 @@ import getRealtimeStatusLabel, {
 import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 const { getUserTimezone } = coreUtils.time
 const ONE_HOUR_IN_SECONDS = 3600
@@ -77,6 +78,8 @@ const StopTimeCell = ({
   // Whether to display "Due" or a countdown (used in conjunction with showCountdown).
   const isDue = secondsUntilDeparture < 60
 
+  const formattedDay = utcToZonedTime(stopTime.serviceDay * 1000, homeTimezone)
+
   const realtime = stopTime.realtimeState === 'UPDATED'
   const realtimeLabel = realtime
     ? intl.formatMessage({
@@ -117,7 +120,20 @@ const StopTimeCell = ({
             />
           )
         ) : (
-          <DepartureTime realTime stopTime={stopTime} />
+          <>
+            {!isSameDay(new Date(), formattedDay) && (
+              <InvisibleA11yLabel>
+                <FormattedDayOfWeek
+                  // 'iiii' returns the long ISO day of the week (independent of browser locale).
+                  // See https://date-fns.org/v2.28.0/docs/format
+                  day={format(formattedDay, 'iiii', {
+                    timeZone: homeTimezone
+                  }).toLowerCase()}
+                />{' '}
+              </InvisibleA11yLabel>
+            )}
+            <DepartureTime realTime stopTime={stopTime} />
+          </>
         )}
       </span>
     </div>
