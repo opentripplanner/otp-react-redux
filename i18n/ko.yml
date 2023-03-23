@@ -1,556 +1,103 @@
 _id: ko
 _name: Korean
-
-# This file contains localized strings (a.k.a. messages) for the language indicated above:
-#   - Messages are organized in various categories and sub-categories.
-#   - A component or JS module can use messages from one or more categories.
-#   - In the code, messages are retrieved using an ID that is simply the path to the message.
-#     Use the dot '.' to separate categories and sub-categories in the path.
-#     For instance, for the message defined in YML below:
-#         common
-#           modes
-#             subway: Metro#
-#     then use the snippet below with the corresponding message id:
-#         <FormattedMessage id='common.modes.subway' /> // renders "Metro".
-#
-# It is important that message ids in the code be consistent with
-# the categories in this file. Below are some general guidelines:
-#   - For starters, there are an 'actions', 'components' and 'common'
-#     categories. Additional categories may be added as needed.
-#   - Each sub-category under 'components' denotes a component and
-#     should contain messages that are used only by that component (e.g. button captions).
-#   - In contrast, some strings are common to multiple components,
-#     so it makes sense to group them by theme (e.g. accessModes) under the 'common' category.
-
-# Messages that are generated from actions
 actions:
+  callTaker:
+    callQuerySaveError: "통화 쿼리를 저장하는 동안 오류가 발생했습니다: {err}"
+    callSaveError: "요청을 저장할 수 없습니다: {err}"
+    checkSessionError: "인증 세션을 설정하는 동안 오류가 발생했습니다: {err}"
+    couldNotFindCallError: 찾을 수 없습니다. 쿼리 저장 요청을 취소하는 중입니다.
+    fetchCallsError: "항목을 가져오는 중에 오류가 발생했습니다: {err}"
+    queryFetchError: "쿼리를 가져오는 동안 오류가 발생했습니다: {err}"
+  fieldTrip:
+    addNoteError: "여행 메모를 찾는 중에 오류가 발생했습니다: {err}"
+    confirmOverwriteItineraries: |
+      이 작업은 이 요청에 대해 이전에 계획된 {outbound, select,
+        true {아웃바운드}
+        other {인바운드}
+        } 일정을 덮어씁니다. 계속하시겠습니까?
+    deleteItinerariesError: "여행 계획을 삭제하는 중에 오류가 발생했습니다: {err}"
+    deleteNoteError: "여행 메모를 삭제하는 중에 오류가 발생했습니다: {err}"
+    editSubmitterNotesError: "제출자 메모를 수정하는 동안 오류가 발생했습니다: {err}"
+    fetchFieldTripError: "여행을 찾는 중에 오류가 발생했습니다: {err}"
+    fetchFieldTripsError: "여행을 찾는 중에 오류가 발생했습니다: {err}"
+    fetchTripsForDateError: "여행 날짜에 대한 여행을 찾는 동안 오류가 발생했습니다: {err}"
+    incompatibleTripDateError: 계획된 여행 날짜 ({tripDate}) 이 요청한 여행 날짜가 아닙니다 ({requestDate})
+    itineraryCapacityError: "계획을 저장할 수 없음: 이 계획은 하나 이상의 차량에 용량이 부족하여 저장할 수 없습니다. 여행을 다시 계획하십시오."
+    maxTripRequestsExceeded: 유효한 결과 없이 초과된 여행 요청 수
+    saveItinerariesError: "여행을 저장하지 못했습니다: {err}"
+    setDateError: "날짜 설정 중 오류:"
+    setGroupSizeError: "그룹 크기를 설정하는 동안 오류가 발생했습니다: {err}"
+    setPaymentError: "결제 정보 설정 오류: {err}"
+    setRequestStatusError: "요청 상태를 설정하는 동안 오류가 발생했습니다: {err}"
+  location:
+    geolocationNotSupportedError: 브라우저에서 지원하지 않는 지리적 위치
+    unknownPositionError: 알려지지 않은 오류가있는 위치가 발생합니다
+  map:
+    currentLocation: (현재 위치)
   user:
     accountDeleted: 귀하의 사용자 계정({email})이 삭제되었습니다.
     authTokenError: 승인 토큰을 얻는 오류.
     confirmDeleteMonitoredTrip: 이 여행을 제거 하시겠습니까?
     confirmDeletePlace: 이 장소를 제거 하시겠습니까?
     emailVerificationResent: 이메일 확인 메시지가 분개되었습니다.
-    genericError: '오류가 발생했습니다: {err}'
+    genericError: "오류가 발생했습니다: {err}"
     itineraryExistenceCheckFailed: 선택한 여행이 가능한지 확인하는 오류.
     preferencesSaved: 귀하의 선호도가 저장되었습니다.
     smsInvalidCode: 입력 한 코드는 유효하지 않습니다. 다시 시도하십시오.
     smsResendThrottled: 검증 SMS가 1 분도 채되지 않아 표시된 전화 번호로 전송되었습니다. 잠시 후 다시 시도하십시오.
-    smsVerificationFailed: 휴대 전화를 확인할 수 없습니다. 아마도 당신이 입력 한 코드가 만료되었을 것입니다. 새 코드를 요청하고
-      다시 시도하십시오.
-  fieldTrip:
-    addNoteError: '여행 메모를 찾는 중에 오류가 발생했습니다: {err}'
-    confirmOverwriteItineraries: "이 작업은 이 요청에 대해 이전에 계획된 {outbound, select,\n  true\
-      \ {아웃바운드}\n  other {인바운드}\n  } 일정을 덮어씁니다. 계속하시겠습니까?\n"
-    deleteItinerariesError: '여행 계획을 삭제하는 중에 오류가 발생했습니다: {err}'
-    deleteNoteError: '여행 메모를 삭제하는 중에 오류가 발생했습니다: {err}'
-    editSubmitterNotesError: '제출자 메모를 수정하는 동안 오류가 발생했습니다: {err}'
-    fetchFieldTripError: '여행을 찾는 중에 오류가 발생했습니다: {err}'
-    fetchFieldTripsError: '여행을 찾는 중에 오류가 발생했습니다: {err}'
-    fetchTripsForDateError: '여행 날짜에 대한 여행을 찾는 동안 오류가 발생했습니다: {err}'
-    incompatibleTripDateError: 계획된 여행 날짜 ({tripDate}) 이 요청한 여행 날짜가 아닙니다 ({requestDate})
-    itineraryCapacityError: '계획을 저장할 수 없음: 이 계획은 하나 이상의 차량에 용량이 부족하여 저장할 수 없습니다. 여행을
-      다시 계획하십시오.'
-    maxTripRequestsExceeded: 유효한 결과 없이 초과된 여행 요청 수
-    saveItinerariesError: '여행을 저장하지 못했습니다: {err}'
-    setDateError: '날짜 설정 중 오류:'
-    setPaymentError: '결제 정보 설정 오류: {err}'
-    setGroupSizeError: '그룹 크기를 설정하는 동안 오류가 발생했습니다: {err}'
-    setRequestStatusError: '요청 상태를 설정하는 동안 오류가 발생했습니다: {err}'
-  location:
-    geolocationNotSupportedError: 브라우저에서 지원하지 않는 지리적 위치
-    unknownPositionError: 알려지지 않은 오류가있는 위치가 발생합니다
-  map:
-    currentLocation: (현재 위치)
-  callTaker:
-    callQuerySaveError: '통화 쿼리를 저장하는 동안 오류가 발생했습니다: {err}'
-    callSaveError: '요청을 저장할 수 없습니다: {err}'
-    checkSessionError: '인증 세션을 설정하는 동안 오류가 발생했습니다: {err}'
-    couldNotFindCallError: 찾을 수 없습니다. 쿼리 저장 요청을 취소하는 중입니다.
-    fetchCallsError: '항목을 가져오는 중에 오류가 발생했습니다: {err}'
-    queryFetchError: '쿼리를 가져오는 동안 오류가 발생했습니다: {err}'
-components:
-  BatchSettings:
-    destination: 목적지
-    origin: 기원
-    planTripTooltip: 여행 계획
-    settings: 여행 설정
-    validationMessage: '여행을 계획하려면 다음 필드를 정의하십시오: {issues}'
-  BeforeSignInScreen:
-    mainTitle: 서명
-    message: "이 페이지에 액세스하려면 로그인해야합니다. 로그인 페이지로 리디렉션하는 동안 기다려주세요…\n"
-  CallTakerPanel:
-    advancedOptions: 고급 옵션
-    groupSize: '그룹 크기:'
-    intermediateDestination: 중간 목적지 입력
-  DateTimeOptions:
-    arriveBy: 까지 도착
-    departAt: 출발
-    now: 지금
-  ExistingAccountDisplay:
-    a11y: 접근성
-    mainTitle: 내 설정
-    notifications: 알림
-    places: 좋아하는 장소
-    terms: 서비스 약관
-  FavoritePlaceList:
-    addAnotherPlace: 다른 장소를 추가하십시오
-    description: '시간 계획 여행을 절약하기 위해 자주 자주 장소를 추가하십시오:'
-    editThisPlace: 이 장소를 편집하십시오
-    setAddressForPlaceType: '{placeType} 주소를 설정하십시오'
-  FavoritePlaceScreen:
-    addNewPlace: 새로운 장소를 추가하십시오
-    editPlace: '{placeName} 편집'
-    editPlaceGeneric: 장소 편집
-    invalidAddress: 이 장소의 위치를 설정하십시오.
-    invalidName: 이 장소의 이름을 입력하세요.
-    nameAlreadyUsed: 당신은 이미 다른 장소 에이 이름을 사용하고 있습니다. 다른 이름을 입력하십시오.
-    placeNotFound: 장소를 찾을 수 없습니다
-    placeNotFoundDescription: 죄송합니다 요청 된 장소는 찾을 수 없었습니다.
-  LiveStopTimes:
-    autoRefresh: 도착을 자동 새로 고침 하시겠습니까?
-  MapLayers:
-    bike-rental: '{companies} 공유 자전거'
-    car-rental: 렌터카 위치
-    micromobility-rental: '{companies} 전기 스쿠터'
-    park-and-ride: Park & Ride위치
-    satellite: 위성
-    shared-vehicles: 공유 차량
-    stops: 대중 교통 정류장
-    streets: 시가 일반
-  MetroUI:
-    arriveAtTime: 도착 {time}
-    fromStop: ~에서 {stop}
-    itineraryDescription: '{time} {routes} 여행'
-    leaveAt: 출발
-    multipleOptions: 여러 옵션
-    orAlternatives: 또는 같은 방향의 다른 경로
-    timeWalking: '걷는 시간: {time}'
-  NarrativeItinerariesHeader:
-    changeSortDir: 정렬 방향 변경
-    itinerariesAndIssues: '{itinerariesFound} 과 {numIssues}'
-    itinerariesFound: "{itineraryNum, plural,\n one {# 개의 여정을 찾았습니다}\n other {# 개의\
-      \ 여정을 찾았습니다}\n }"
-    numIssues: "{issueNum, plural,\n one {# 문제}\n other {# 문제}\n }"
-    searching: 옵션 찾기...
-    selectArrivalTime: 도착 시간
-    selectBest: 최상의 옵션
-    selectCost: 비용
-    selectDepartureTime: 출발 시각
-    selectDuration: 계속기간
-    selectWalkTime: 걷기 시간
-    sortBy: 정렬 기준
-    viewAll: 모든 옵션을보십시오
-  NavLoginButton:
-    help: 돕다
-    myAccount: 내 계정
-    signIn: 로그인
-    signOut: 로그 아웃하십시오
-  NewAccountWizard:
-    finish: 계정 설정 완료!
-    notifications: 알림 기본 설정
-    places: 위치를 추가하십시오
-    terms: 새 계정 생성
-    verify: 이메일 주소를 확인
-  NotificationPrefsPane:
-    description: 자주 여행에 대한 알림을받을 수 있습니다.
-    noneSelect: 나에게 알리지 마십시오
-    notificationChannelPrompt: 알림을 어떻게 받고 싶습니까?
-    notificationEmailDetail: '알림 이메일이 전송됩니다:'
-  PhoneNumberEditor:
-    changeNumber: 전화번호 변경
-    invalidCode: 유효성 검사 코드는 6 자리를 입력하십시오.
-    invalidPhone: 유효한 전화 번호를 입력하세요.
-    pending: 보류 중
-    placeholder: 전화 번호를 입력하십시오
-    prompt: 'SMS 알림에 대한 전화 번호를 입력하십시오:'
-    requestNewCode: 새 코드를 요청하십시오
-    sendVerificationText: 확인 텍스트를 보내십시오
-    smsDetail: 'SMS 알림이 전송됩니다:'
-    verificationCode: '확인 코드:'
-    verificationInstructions: "휴대폰의 SMS 메시지 앱에서 인증 코드를 확인하고 아래 코드를 입력하세요. 코드는 10분\
-      \ 후에 만료됩니다.\n"
-    verified: 확인
-    verify: 확인하다
-  Place:
-    deleteThisPlace: 이 장소를 삭제하십시오
-    enterAlert: "양식에 원점/대상을 입력하고 (맵 클릭을 통해 설정) 결과 마커를 클릭하여 {placeType} 위치로 설정하십시오.\n"
-    viewStop: 정지보기
-  PlanTripButton:
-    planTrip: 여행 계획
-  RealtimeAnnotation:
-    delaysShownInResults: "귀하의 여행 결과는 실시간 정보를 기반으로 조정되었습니다. 정상적인 상황에서 이 여행은 다음 경로를\
-      \ 사용하여 {normalDuration} 이 소요됩니다:\n"
-    serviceUpdate: 서비스 업데이트
-  RelatedStopsPanel:
-    noArrivalFound: 도착이 발견되지 않았습니다
-    viewDetails: 세부 정보보기
-    relatedStops: 관련 중지
-  ResultsError:
-    backToSearch: 검색으로 돌아갑니다
-  ResultsHeader:
-    noTripFound: 여행을 찾을 수 없습니다
-    tripsFound: '{count} 개의 옵션 을 찾았습니다'
-    waiting: 기다리는...
-  RouteDetails:
-    moreDetails: 자세한 내용은
-    operatedBy: 운영하는 서비스 {agencyName}
-    selectADirection: 방향을 선택하십시오…
-    stopsTo: 쪽으로
-  RouteViewer:
-    agencyFilter: 대행사 필터
-    allAgencies: 모든 대행사
-    allModes: 모든 모드
-    details: ' '
-    findARoute: 경로를 찾으십시오
-    header: 경로 뷰어
-    modeFilter: 모드 필터
-    noFilteredRoutesFound: 노선이 필터와 일치하지 않습니다!
-    shortTitle: 경로보기
-    title: 경로 뷰어
-  SavedTripEditor:
-    editSavedTrip: 저장된 여행 편집
-    saveNewTrip: 새로운 여행을 저장하십시오
-    tripInformation: 여행 정보
-    tripNotFound: 여행을 찾을 수 없습니다
-    tripNotFoundDescription: 죄송합니다 요청 된 여행은 찾을 수 없었습니다.
-    tripNotifications: 여행 알림
-  SavedTripList:
-    myTrips: 내 여행
-    noSavedTrips: 당신은 절약 된 여행이 없습니다
-    noSavedTripsInstructions: 먼저 지도에서 여행 검색을 합니다.
-    pause: 정지시키다
-    resume: 계속하다
-  SavedTripScreen:
-    tooManyTrips: "당신은 이미 최대 5 개의 저장된 여행에 도달했습니다. 저장된 여행에서 사용하지 않은 여행을 제거하고 다시 시도하십시오.\n"
-    tripNameRequired: 이 여행의 이름을 입력하세요.
-    tripNameAlreadyUsed: 또 다른 저장된 여행은 이미이 이름을 사용합니다. 다른 이름을 선택하십시오.
-  SaveTripButton:
-    cantSaveText: 저장할 수 없습니다
-    cantSaveTooltip: 대중 교통 및 임대 또는 승마를 포함한 여정 만 모니터링 할 수 있습니다.
-    saveTripText: 여행을 저장하십시오
-    signInText: 여행을 저장하려면 로그인하십시오
-    signInTooltip: 여행을 저장하려면 로그인하십시오.
-  StopViewer:
-    displayStopId: '<strong>정류장 ID</strong>: {stopId}'
-    flexStop: 이것은 플렉스 스톱. 차량은 요청 시 이 플렉서블 존에서 승객을 태우고 내릴 것입니다. 이 지역에서 서비스를 받으려면 미리 
-      전화해야 할 수도 있습니다.
-    header: 정류장 뷰어
-    loadingText: 로딩 중지…
-    noStopsFound: 날짜에 대한 정지 시간이 없습니다.
-    timezoneWarning: 출발 시간은 <strong>{timezoneCode}</strong> 로 표시됩니다.
-    viewNextArrivals: 다음 도착 정보보기
-    viewSchedule: 일정보기
-    zoomToStop: 멈출 수 있습니다
-  SubNav:
-    languages: "언어"
-    languageSelector: 언어 선택
-    myAccount: 내 계정
-    selectALanguage: 언어 선택
-    settings: 설정
-    trips: 여행
-    userMenu: 프로필 옵션
-  SwitchButton:
-    defaultContent: 바꾸다
-    switchLocations: 위치를 바꾸다
-  TermsOfUsePane:
-    termsOfServiceStatement: "본인은 만 18세 이상임을 확인하며, 트립플래너 이용을 위한 <termsOfUseLink>이용약관/termsOfUseLink\
-      \ > 을 읽었으며 이에 동의합니다.\n"
-    mustAgreeToTerms: 계속하려면 서비스 약관에 동의해야 합니다.
-    confirmDeletionPrompt: "여행 기록 저장에 대한 동의를 제거하면 여행 기록이 삭제됩니다. 계속하다?\n"
-    termsOfStorageStatement: "선택 사항: 여행 플래너가 내 지역의 대중 교통 서비스를 개선하기 위해 계획된 여행 기록을 저장하는\
-      \ 데 동의합니다. <termsOfStorageLink>더 많은 정보...</termsOfStorageLink>\n"
-  TransitVehicleOverlay:
-    stopped_at: '{stop} 에서 문이 열립니다'
-    vehicleName: '차량 {vehicleNumber}'
-    in_transit_to: 다음 중지 {stop}
-    incoming_at: '{stop} 과 가까움'
-    travelingAt: 현재 {milesPerHour} 로 주행 중
-  TripBasicsPane:
-    checkingItineraryExistence: 일주일 내내 여행의 존재를 확인…
-    selectAtLeastOneDay: 모니터링하려면 하루 이상 하루를 선택하십시오.
-    selectedItinerary: '선택된 여정:'
-    tripDaysPrompt: 이 여행은 몇 일에 걸립니까?
-    tripIsAvailableOnDaysIndicated: 여행은 위에 표시된대로 요일에 제공됩니다.
-    tripNamePrompt: '이 여행의 이름을 입력하세요:'
-    tripNotAvailableOnDay: '{repeatedDay} 에는 여행이 불가능합니다'
-    unsavedChangesExistingTrip: 당신은 아직 여행을 구하지 않았습니다. 떠나면 변경 사항이 손실됩니다.
-    unsavedChangesNewTrip: 당신은 아직 새로운 여행을 저장하지 않았습니다. 당신이 떠나면, 그것은 손실됩니다.
-  TripNotificationsPane:
-    advancedSettings: 고급 설정
-    altRouteRecommended: 대체 경로 또는 전송 지점이 권장됩니다
-    delaysAboveThreshold: 이상 지연 또는 차질이 있음
-    howToReceiveAlerts: "저장된 여행에 대한 경고를 받으려면 계정 설정에서 알림을 활성화하고 여행을 다시 저장하십시오.\n"
-    monitorThisTrip: 이 여행이 끝날 때까지 시작하기 전에 {minutes} 을 모니터링하십시오.
-    notificationsTurnedOff: 계정에 대한 알림이 꺼져 있습니다.
-    notifyViaChannelWhen: '{channel} 로 알려주세요:'
-    oneHour: 1 시간
-    realtimeAlertFlagged: 내 여정에 대한 실시간 알림 플래그가 지정되었습니다.
-  TripStatus:
-    deleteTrip: 여행 삭제
-    planNewTrip: 새로운 여행을 계획하십시오
-    alerts: '{alerts, plural, one {# 경고!} other {# 경고!}}'
-  TripStatusRenderers:
-    base:
-      lastCheckedDefaultText: 마지막으로 확인되지 않은 시간
-      lastCheckedText: '{formattedDuration}: 전에 마지막으로 확인함'
-      togglePause: 휴지
-      tripIsNotSnoozed: 오늘의 나머지를 위해 스누즈
-      tripIsSnoozed: 여정 분석 활성화
-      unknownState: 알 수없는 여행 상태
-      untogglePause: 계속하다
-    notCalculated:
-      awaiting: 계산을 기다리고 있습니다…
-      description: 여정이 계산될 때까지 잠시 기다려 주십시오.
-      heading: 아직 계산되지 않았습니다
-    snoozed:
-      description: 업데이트된 상태를 보려면 여행 모니터링을 활성화하세요.
-      heading: 오늘 여행 모니터링이 일시 중지되었습니다.
-    upcoming:
-      nextTripBegins: 다음 여행은 {tripDatetime, date, ::eeeee yyyyMMdd} {tripDatetime,
-        time, short} 시에 시작됩니다.
-      tripStartsSoonOnTime: 여행은 곧 시작되어 정시에 있습니다.
-      tripBegins: 여행은 {tripStart, time, short} 에 시작될 것으로 예상됩니다. (실시간 모니터링은 {monitoringStart,
-        time, short} 시작됩니다.)
-      tripStartIsDelayed: 여행 시작 시간이 ${duration} 지연됩니다!
-      tripStartIsEarly: 여행은 예상보다 ${duration} 일찍 시작됩니다!
-      tripStartsSoonNoUpdates: 여행이 곧 시작됩니다 (실시간 업데이트를 사용할 수 없습니다).
-    nextTripNotPossible:
-      heading: 오늘은 여행이 불가능합니다
-      description: "트립 플래너는 오늘 여행을 찾을 수 없었습니다. 대체 경로를 찾으려면 여정을 다시 계획하십시오.\n"
-    noLongerPossible:
-      heading: 여행은 더 이상 불가능합니다
-      description: "여행 플래너는 선택된 요일에 여행을 찾을 수 없었습니다. 대체 경로를 찾으려면 여정을 다시 계획하십시오.\n"
-    inactive:
-      description: 업데이트 된 상태를 확인하려면 트립 모니터링을 재개하십시오
-      heading: 여행 모니터링이 일시 중지됩니다
-    active:
-      delayedHeading: 여행이 진행 중이며 {formattedDuration} 지연됩니다!
-      description: 여행은 {arrivalTime, time, short} 에 목적지에 도착할 예정입니다.
-      earlyHeading: 투어가 진행 중이며 예상보다 {formattedDuration} 일찍 시작됩니다!
-      noDataHeading: 여행이 진행 중입니다 (실시간 업데이트를 사용할 수 없습니다).
-      onTimeHeading: 여행이 진행 중이며 정시에 있습니다.
-  TripTools:
-    copyLink: 링크 복사
-    linkCopied: 복사
-    reportEmailSubject: OpenTripPlanner로 문제보고
-    reportEmailTemplate: "*** 사용자 지침 ***\n 이 기능을 사용하면 검토를 위해 사이트 관리자에게 보고서를 이메일로 보낼\
-      \ 수 있습니다.\n 아래 프롬프트를 작성하고 일반 이메일 프로그램을 사용하여 보내주십시오.\n \n *** 다음을 완료하세요 ***\n\
-      \ \n 발생한 문제:\n \n 가고 싶었던 여행의 종류:\n \n *** 기술적 세부 사항 ***\n"
-    reportIssue: 문제보고
-  TripViewer:
-    accessible: 얻기 쉬운
-    bicyclesAllowed: 허용됨
-    header: 여행 뷰어
-    viewStop: 전망
-    routeHeader: '노선: <strong>{routeShortName}</strong> {routeLongName}'
-  UserSettings:
-    confirmDeletion: 최근 검색이나 장소가 저장되어 있습니다. 최근 장소 또는 검색을 비활성화하면 이러한 항목이 제거됩니다. 계속하다?
-    favoriteStops: 좋아하는 정지
-    myPreferences: 내 취향
-    mySavedPlaces: 내 저장된 위치 (<manageLink>보다</manageLink>)
-    noFavoriteStops: 좋아하는 멈추지 않습니다
-    recentPlaces: 최근 장소
-    recentSearches: 최근 검색
-    recentSearchSummary: '{from} 에서 {to} 까지 {mode)'
-    rememberSearches: 최근 검색어와 장소를 기억하십니까?
-    stopId: '정류장 ID: {stopId}'
-    storageDisclaimer: "저장하기로 선택한 기본 설정, 장소 또는 설정은 브라우저의 로컬 저장소에 저장됩니다. 우리는 귀하의 집,\
-      \ 직장 또는 기타 위치에 대한 정보에 접근할 수 없습니다. 언제든지 최근 장소/검색 기억을 끄고 저장된 집/직장 위치 및 즐겨찾는 정류장을\
-      \ 지울 수 있습니다.\n"
-  UserTripSettings:
-    forgetOptions: 내 옵션을 잊어 버리세요
-    rememberOptions: 여행 옵션 저장
-    restoreOptions: "{defaults, select,\n true {내 기본 설정}\n other {기본 설정}\n } 복원\n"
-  ViewSwitcher:
-    switcher: 변경 버튼
-  A11yPrefs:
-    accessibilityRoutingByDefault: 나는 접근성이 좋은 여행을 선호한다
-  AddPlaceButton:
-    addPlace: 장소를 추가하십시오
-    tooManyPlaces: 최대 중간 장소에 도달했습니다
-    needOriginDestination: 원점이나 목적지를 정의하여 중간 장소를 추가하십시오
-  AdvancedOptions:
-    bannedRoutes: 금지된 대중교통 경로 선택
-    maxBike: 최대 자전거 {unitsString}
-    maxWalk: 최대 도보 {unitsString}
-    preferredRoutes: 선호 경로 선택…
-  AfterSignInScreen:
-    message: 몇 초 후에 페이지가로드되지 않으면 <redirectLink>여기를 클릭하십시오</redirectLink>.
-    mainTitle: 리디렉션...
-  AmenitiesPanel:
-    bikesAvailable: "{count, plural,\n =0 {이용 가능한 자전거가 없습니다}\n one {# 자전거 이용 가능}\n\
-      \ other {# 자전거 이용 가능}\n }\n"
-    bikesAtStation: "{companyLength, plural,\n =0 {{name}에서 자전거}\n other {{name}에서\
-      \ {company} 자전거}\n }\n"
-    bikesNearby: "{count, plural,\n =0 {근처에 {company} 자전거가 없습니다}\n one {근처에{company}자전거\
-      \ # 대}\n other {근처에{company}자전거 # 대}\n }\n"
-    nearbyAmenities: 근처의 편의 시설
-    noNearbyBikes: 근처의 자전거 렌탈이 발견되지 않았습니다.
-    noNearbyScooters: 근처에 마이크로모빌리티 대여가 없습니다.
-    noPRLotsFound: 주변에 Park-and-Ride 없음.
-    spacesAvailable: "{count, plural,\n =0 {주차 공간 없음}\n one {# 대 주차}\n other {# 대\
-      \ 주차}\n }\n"
-    scootersNearby: "{count, plural,\n =0 {근처에 {company} 전기 스쿠터 없음}\n one {근처에 {company}\
-      \ 전기 스쿠터 # 대}\n other {근처에 {company} 전기 스쿠터 # 대}\n }\n"
-  AppMenu:
-    callHistory: 통화 기록
-    closeMenu: 메뉴를 닫습니다
-    fieldTrip: 여행 제목
-    mailables: 게시 준비
-    openMenu: 메뉴 열기
-    skipNavigation: 내비게이션 건너뛰기
-  DateTimePreview:
-    arriveAt: 도착하다 {arriveTime, time, short}
-    dayLastWeek: 지난 {formattedDayOfWeek}
-    departAt: 출발 {departTime, time, short}
-    editDepartOrArrival: 출발 또는 도착 시간을 편집하십시오
-    leaveNow: 지금 떠나 출발
-    range: '{startTime, time, short} 에 {endTime, time, short}'
-  DefaultItinerary:
-    multiModeSummary: '{accessMode} + {transitMode}'
-    clickDetails: 자세한 내용을 보려면 클릭하십시오
-  DeleteUser:
-    deleteMyAccount: 계정을 삭제하다
-  EnhancedStopMarker:
-    stopID: '정류장 ID:'
-    stopViewer: 정류장 뷰어
-  LocationSearch:
-    setOrigin: 출발지 선택
-    enterLocation: 위치를 입력하십시오
-    setDestination: 목적지 선택
-  MobileOptions:
-    header: 검색 옵션을 설정합니다
-  ModeDropdown:
-    exclusiveMode: '{mode} 만'
-  PlaceEditor:
-    genericLocationPlaceholder: 위치를 검색하십시오
-    locationPlaceholder: '{placeName} 위치를 검색하십시오'
-  PlanFirstLastButtons:
-    first: 첫 번째
-    last: 마지막
-    next: 다음
-    previous: 이전의
-  StopScheduleTable:
-    block: 블록
-    departure: 출발
-    destination: 에
-    route: 노선
-  TripSummary:
-    itinerary: 여정
-  TripSummaryPane:
-    happensOnDays: '<strong>{days}</strong>: 에 일어난다'
-    notifications: '알림: <strong>예정출발 {leadTimeInMinutes} 분전</strong>'
-    notificationsDisabled: '알림: <strong>비활성화됨</strong>'
-  WelcomeScreen:
-    prompt: 어디로 가고 싶니?
-  AccountSetupFinishPane:
-    message: 여행 계획을 시작할 준비가되었습니다.
-  BackToTripPlanner:
-    backToTripPlanner: 트립 플래너로 돌아갑니다
-  BatchResultsScreen:
-    expandMap: 맵을 확장하십시오
-    showResults: 결과 보여줘
-  BatchRoutingPanel:
-    shortTitle: 여행 계획
-  BatchSearchScreen:
-    header: 여행 계획
-  DateTimeScreen:
-    header: 날짜 및 시간 설정
-  ErrorMessage:
-    header: 여행을 계획 할 수 없음
-    warning: 경고
-  FormNavigationButtons:
-    ariaLabel: 양식 내비게이션
-  NotFound:
-    description: 요청한 콘텐츠를 사용할 수 없습니다.
-    header: 내용을 찾을 수 없습니다
-  PrintLayout:
-    itinerary: 여정
-    toggleMap: 지도 토글
-  RealtimeStatusLabel:
-    early: '{minutes} 일찍'
-    late: '{minutes} 늦음'
-    onTime: 제 시간에
-    scheduled: 예정
-  RelatedPanel:
-    hideExtraStops: 여분의 정지를 숨 깁니다
-    showExtraStops: 추가 정거장 {count} 개를 보여줍니다
-  RouteRow:
-    operatorLogoAltText: '{operatorName} 심벌 마크'
-  SimpleRealtimeAnnotation:
-    usingRealtimeInfo: 이 여행은 실시간 트래픽과 지연 정보를 사용합니다
-  StackedPaneDisplay:
-    savePreferences: 환경 설정을 저장하십시오
-  StopTimeCell:
-    realtime: 실시간 데이터 기반
-    scheduled: 일정 데이터 기준
-    imminentArrival: 정당한
-  UserAccountScreen:
-    confirmDelete: 사용자 계정을 삭제 하시겠습니까? 일단 그렇게하면 복구 할 수 없습니다.
-  VerifyEmailPane:
-    emailIsVerified: 내 이메일이 확인되었습니다!
-    instructions1: "이메일받은 편지함을 확인하고 메시지의 링크를 따라 계정 설정을 마치기 전에 이메일 주소를 확인하십시오.\n"
-    instructions2: 확인되면 아래 버튼을 클릭하여 계속하십시오.
-    resendVerification: 확인 이메일을 다시 보내
-  SettingsPreview:
-    defaultPreviewText: 대중 교통 옵션 및 기본 설정
-  SessionTimeout:
-    header: 세션 시간이 초과됩니다!
-    body: 세션이 1분 이내에 만료됩니다. 검색을 유지하려면 '세션 계속'을 누르십시오.
-    keepSession: 세션 계속
-  PointPopup:
-    zoomToLocation: 위치로 확대
-  ItinerarySummary:
-    itineraryDetails: 여정 세부 정보
-    minMaxFare: '{minTotalFare} - {maxTotalFare}'
+    smsVerificationFailed: 휴대 전화를 확인할 수 없습니다. 아마도 당신이 입력 한 코드가 만료되었을 것입니다. 새 코드를 요청하고 다시 시도하십시오.
 common:
+  coordinates: "{lat}, {lon}"
   dateExpressions:
+    today: 오늘
     tomorrow: 내일
     yesterday: 어제
-    today: 오늘
   daysOfWeek:
+    friday: 금요일
     monday: 월요일
+    saturday: 토요일
     sunday: 일요일
+    thursday: 목요일
     tuesday: 화요일
     wednesday: 수요일
-    friday: 금요일
-    saturday: 토요일
-    thursday: 목요일
   daysOfWeekCompact:
     friday: 금요일
+    monday: 월요일
     saturday: 토요일
     sunday: 일요일
+    thursday: 목요일
+    tuesday: 화요일
+    wednesday: 수요일
+  daysOfWeekPlural:
+    friday: 금요일
     monday: 월요일
+    saturday: 토요일
+    sunday: 일요일
     thursday: 목요일
     tuesday: 화요일
     wednesday: 수요일
   forms:
-    defaultValue: '{value} 기본값'
-    error: 오류!
-    startOver: 다시 시작하다
-    yes: 예
     back: 뒤
     cancel: 취소
     close: 닫기
+    defaultValue: "{value} 기본값"
     delete: 삭제
     edit: 편집하다
+    error: 오류!
     finish: 마치다
     next: 다음
-    no: 아니요
+    "no": 아니요
     print: 인쇄하다
     save: 구하다
+    startOver: 다시 시작하다
+    "yes": 예
   itineraryDescriptions:
-    calories: '{calories, number} 칼로리'
+    calories: "{calories, number} 칼로리"
     noItineraryToDisplay: 표시 할 일정이 없습니다.
     noTransitFareProvided: 운임 정보가 없습니다
-    relativeCo2: >
-      {co2}
-      CO<sub>2</sub> 를 자동차보다
-      {isMore, select,
-      true {더}
-      other {덜}
-      } 사용합니다
-    transfers: '{transfers, plural, =0 {} one {# 전송} other {# 전송}'
+    relativeCo2: |
+      {co2} CO₂ 를 자동차보다 {isMore, select, true {더} other {덜} } 사용합니다
+    transfers: "{transfers, plural, =0 {} one {# 전송} other {# 전송}"
   modes:
     bicycle_rent: 자전거 공유
     bike: 자전거
@@ -580,58 +127,545 @@ common:
     home: 집
     work: 일
   routing:
+    routeAndNumber: 노선 {routeId}
     routeToHeadsign: 에 {headsign}
   searchForms:
-    enterStartLocation: "시작 위치를 입력하거나 지도를{mapAction} 하십시오"
-    enterDestination: "목적지를 입력하거나 지도를{mapAction} 하십시오"
     click: 클릭
+    enterDestination: 목적지를 입력하거나 지도를{mapAction} 하십시오
+    enterStartLocation: 시작 위치를 입력하거나 지도를{mapAction} 하십시오
     tap: 클릭
-  daysOfWeekPlural:
-    friday: 금요일
-    thursday: 목요일
-    wednesday: 수요일
-    monday: 월요일
-    saturday: 토요일
-    sunday: 일요일
-    tuesday: 화요일
   time:
-    departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
+    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     durationAgo: "{duration} 전"
-    fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
-      \ =0 {몇 초 전에}\n =1 {1 분 전}\n other {# 분 전}\n }}\n =1 {한 시간 전에}\n other {# 시간\
-      \ 전}\n }}\n other {# 일 전}\n }\n"
-    tripDurationFormat: "{hours, plural, =0 {} other {# 시간 }}{minutes, number} 분 {\
-      \ seconds, plural, =0 {} other {# 초}}"
-  coordinates: '{lat}, {lon}'
+    fromNowUpdate: |
+      {days, plural,
+       =0 {{hours,plural,
+       =0 {{minutes, plural,
+       =0 {몇 초 전에}
+       =1 {1 분 전}
+       other {# 분 전}
+       }}
+       =1 {한 시간 전에}
+       other {# 시간 전}
+       }}
+       other {# 일 전}
+       }
+    tripDurationFormat: >-
+      {hours, plural, =0 {} other {# 시간 }}{minutes, number} 분 { seconds, plural,
+      =0 {} other {# 초}}
+components:
+  A11yPrefs:
+    accessibilityRoutingByDefault: 나는 접근성이 좋은 여행을 선호한다
+  AccountSetupFinishPane:
+    message: 여행 계획을 시작할 준비가되었습니다.
+  AddPlaceButton:
+    addPlace: 장소를 추가하십시오
+    needOriginDestination: 원점이나 목적지를 정의하여 중간 장소를 추가하십시오
+    tooManyPlaces: 최대 중간 장소에 도달했습니다
+  AdvancedOptions:
+    bannedRoutes: 금지된 대중교통 경로 선택
+    maxBike: 최대 자전거 {unitsString}
+    maxWalk: 최대 도보 {unitsString}
+    preferredRoutes: 선호 경로 선택…
+  AfterSignInScreen:
+    mainTitle: 리디렉션...
+    message: 몇 초 후에 페이지가로드되지 않으면 <redirectLink>여기를 클릭하십시오</redirectLink>.
+  AmenitiesPanel:
+    bikesAtStation: |
+      {companyLength, plural,
+       =0 {{name}에서 자전거}
+       other {{name}에서 {company} 자전거}
+       }
+    bikesAvailable: |
+      {count, plural,
+       =0 {이용 가능한 자전거가 없습니다}
+       one {# 자전거 이용 가능}
+       other {# 자전거 이용 가능}
+       }
+    bikesNearby: |
+      {count, plural,
+       =0 {근처에 {company} 자전거가 없습니다}
+       one {근처에{company}자전거 # 대}
+       other {근처에{company}자전거 # 대}
+       }
+    nearbyAmenities: 근처의 편의 시설
+    noNearbyBikes: 근처의 자전거 렌탈이 발견되지 않았습니다.
+    noNearbyScooters: 근처에 마이크로모빌리티 대여가 없습니다.
+    noPRLotsFound: 주변에 Park-and-Ride 없음.
+    scootersNearby: |
+      {count, plural,
+       =0 {근처에 {company} 전기 스쿠터 없음}
+       one {근처에 {company} 전기 스쿠터 # 대}
+       other {근처에 {company} 전기 스쿠터 # 대}
+       }
+    spacesAvailable: |
+      {count, plural,
+       =0 {주차 공간 없음}
+       one {# 대 주차}
+       other {# 대 주차}
+       }
+  AppMenu:
+    callHistory: 통화 기록
+    closeMenu: 메뉴를 닫습니다
+    fieldTrip: 여행 제목
+    mailables: 게시 준비
+    openMenu: 메뉴 열기
+    skipNavigation: 내비게이션 건너뛰기
+  BackToTripPlanner:
+    backToTripPlanner: 트립 플래너로 돌아갑니다
+  BatchResultsScreen:
+    expandMap: 맵을 확장하십시오
+    showResults: 결과 보여줘
+  BatchRoutingPanel:
+    shortTitle: 여행 계획
+  BatchSearchScreen:
+    header: 여행 계획
+  BatchSettings:
+    destination: 목적지
+    origin: 기원
+    planTripTooltip: 여행 계획
+    settings: 여행 설정
+    validationMessage: "여행을 계획하려면 다음 필드를 정의하십시오: {issues}"
+  BeforeSignInScreen:
+    mainTitle: 서명
+    message: |
+      이 페이지에 액세스하려면 로그인해야합니다. 로그인 페이지로 리디렉션하는 동안 기다려주세요…
+  CallTakerPanel:
+    advancedOptions: 고급 옵션
+    groupSize: "그룹 크기:"
+    intermediateDestination: 중간 목적지 입력
+  DateTimeOptions:
+    arriveBy: 까지 도착
+    departAt: 출발
+    now: 지금
+  DateTimePreview:
+    arriveAt: 도착하다 {arriveTime, time, short}
+    dayLastWeek: 지난 {formattedDayOfWeek}
+    departAt: 출발 {departTime, time, short}
+    editDepartOrArrival: 출발 또는 도착 시간을 편집하십시오
+    leaveNow: 지금 떠나 출발
+    range: "{startTime, time, short} 에 {endTime, time, short}"
+  DateTimeScreen:
+    header: 날짜 및 시간 설정
+  DefaultItinerary:
+    clickDetails: 자세한 내용을 보려면 클릭하십시오
+    multiModeSummary: "{accessMode} + {transitMode}"
+  DeleteUser:
+    deleteMyAccount: 계정을 삭제하다
+  EnhancedStopMarker:
+    stopID: "정류장 ID:"
+    stopViewer: 정류장 뷰어
+  ErrorMessage:
+    header: 여행을 계획 할 수 없음
+    warning: 경고
+  ExistingAccountDisplay:
+    a11y: 접근성
+    mainTitle: 내 설정
+    notifications: 알림
+    places: 좋아하는 장소
+    terms: 서비스 약관
+  FavoritePlaceList:
+    addAnotherPlace: 다른 장소를 추가하십시오
+    description: "시간 계획 여행을 절약하기 위해 자주 자주 장소를 추가하십시오:"
+    editThisPlace: 이 장소를 편집하십시오
+    setAddressForPlaceType: "{placeType} 주소를 설정하십시오"
+  FavoritePlaceScreen:
+    addNewPlace: 새로운 장소를 추가하십시오
+    editPlace: "{placeName} 편집"
+    editPlaceGeneric: 장소 편집
+    invalidAddress: 이 장소의 위치를 설정하십시오.
+    invalidName: 이 장소의 이름을 입력하세요.
+    nameAlreadyUsed: 당신은 이미 다른 장소 에이 이름을 사용하고 있습니다. 다른 이름을 입력하십시오.
+    placeNotFound: 장소를 찾을 수 없습니다
+    placeNotFoundDescription: 죄송합니다 요청 된 장소는 찾을 수 없었습니다.
+  FormNavigationButtons:
+    ariaLabel: 양식 내비게이션
+  ItinerarySummary:
+    itineraryDetails: 여정 세부 정보
+    minMaxFare: "{minTotalFare} - {maxTotalFare}"
+  LiveStopTimes:
+    autoRefresh: 도착을 자동 새로 고침 하시겠습니까?
+  LocationSearch:
+    enterLocation: 위치를 입력하십시오
+    setDestination: 목적지 선택
+    setOrigin: 출발지 선택
+  MapLayers:
+    bike-rental: "{companies} 공유 자전거"
+    car-rental: 렌터카 위치
+    micromobility-rental: "{companies} 전기 스쿠터"
+    park-and-ride: Park & Ride위치
+    satellite: 위성
+    shared-vehicles: 공유 차량
+    stops: 대중 교통 정류장
+    streets: 시가 일반
+  MetroUI:
+    arriveAtTime: 도착 {time}
+    fromStop: ~에서 {stop}
+    itineraryDescription: "{time} {routes} 여행"
+    leaveAt: 출발
+    multipleOptions: 여러 옵션
+    orAlternatives: 또는 같은 방향의 다른 경로
+    timeWalking: "걷는 시간: {time}"
+  MobileOptions:
+    header: 검색 옵션을 설정합니다
+  ModeDropdown:
+    exclusiveMode: "{mode} 만"
+  NarrativeItinerariesHeader:
+    changeSortDir: 정렬 방향 변경
+    itinerariesAndIssues: "{itinerariesFound} 과 {numIssues}"
+    itinerariesFound: |-
+      {itineraryNum, plural,
+       one {# 개의 여정을 찾았습니다}
+       other {# 개의 여정을 찾았습니다}
+       }
+    numIssues: |-
+      {issueNum, plural,
+       one {# 문제}
+       other {# 문제}
+       }
+    searching: 옵션 찾기...
+    selectArrivalTime: 도착 시간
+    selectBest: 최상의 옵션
+    selectCost: 비용
+    selectDepartureTime: 출발 시각
+    selectDuration: 계속기간
+    selectWalkTime: 걷기 시간
+    sortBy: 정렬 기준
+    viewAll: 모든 옵션을보십시오
+  NavLoginButton:
+    help: 돕다
+    myAccount: 내 계정
+    signIn: 로그인
+    signOut: 로그 아웃하십시오
+  NewAccountWizard:
+    finish: 계정 설정 완료!
+    notifications: 알림 기본 설정
+    places: 위치를 추가하십시오
+    terms: 새 계정 생성
+    verify: 이메일 주소를 확인
+  NotFound:
+    description: 요청한 콘텐츠를 사용할 수 없습니다.
+    header: 내용을 찾을 수 없습니다
+  NotificationPrefsPane:
+    description: 자주 여행에 대한 알림을받을 수 있습니다.
+    noneSelect: 나에게 알리지 마십시오
+    notificationChannelPrompt: 알림을 어떻게 받고 싶습니까?
+    notificationEmailDetail: "알림 이메일이 전송됩니다:"
+  PhoneNumberEditor:
+    changeNumber: 전화번호 변경
+    invalidCode: 유효성 검사 코드는 6 자리를 입력하십시오.
+    invalidPhone: 유효한 전화 번호를 입력하세요.
+    pending: 보류 중
+    placeholder: 전화 번호를 입력하십시오
+    prompt: "SMS 알림에 대한 전화 번호를 입력하십시오:"
+    requestNewCode: 새 코드를 요청하십시오
+    sendVerificationText: 확인 텍스트를 보내십시오
+    smsDetail: "SMS 알림이 전송됩니다:"
+    verificationCode: "확인 코드:"
+    verificationInstructions: |
+      휴대폰의 SMS 메시지 앱에서 인증 코드를 확인하고 아래 코드를 입력하세요. 코드는 10분 후에 만료됩니다.
+    verified: 확인
+    verify: 확인하다
+  Place:
+    deleteThisPlace: 이 장소를 삭제하십시오
+    enterAlert: |
+      양식에 원점/대상을 입력하고 (맵 클릭을 통해 설정) 결과 마커를 클릭하여 {placeType} 위치로 설정하십시오.
+    viewStop: 정지보기
+  PlaceEditor:
+    genericLocationPlaceholder: 위치를 검색하십시오
+    locationPlaceholder: "{placeName} 위치를 검색하십시오"
+  PlanFirstLastButtons:
+    first: 첫 번째
+    last: 마지막
+    next: 다음
+    previous: 이전의
+  PlanTripButton:
+    planTrip: 여행 계획
+  PointPopup:
+    zoomToLocation: 위치로 확대
+  PrintLayout:
+    itinerary: 여정
+    toggleMap: 지도 토글
+  RealtimeAnnotation:
+    delaysShownInResults: >
+      귀하의 여행 결과는 실시간 정보를 기반으로 조정되었습니다. 정상적인 상황에서 이 여행은 다음 경로를 사용하여
+      {normalDuration} 이 소요됩니다:
+    serviceUpdate: 서비스 업데이트
+  RealtimeStatusLabel:
+    early: "{minutes} 일찍"
+    late: "{minutes} 늦음"
+    onTime: 제 시간에
+    scheduled: 예정
+  RelatedPanel:
+    hideExtraStops: 여분의 정지를 숨 깁니다
+    showExtraStops: 추가 정거장 {count} 개를 보여줍니다
+  RelatedStopsPanel:
+    noArrivalFound: 도착이 발견되지 않았습니다
+    relatedStops: 관련 중지
+    viewDetails: 세부 정보보기
+  ResultsError:
+    backToSearch: 검색으로 돌아갑니다
+  ResultsHeader:
+    noTripFound: 여행을 찾을 수 없습니다
+    tripsFound: "{count} 개의 옵션 을 찾았습니다"
+    waiting: 기다리는...
+  RouteDetails:
+    moreDetails: 자세한 내용은
+    operatedBy: 운영하는 서비스 {agencyName}
+    selectADirection: 방향을 선택하십시오…
+    stopsTo: 쪽으로
+  RouteViewer:
+    agencyFilter: 대행사 필터
+    allAgencies: 모든 대행사
+    allModes: 모든 모드
+    details: " "
+    findARoute: 경로를 찾으십시오
+    header: 경로 뷰어
+    modeFilter: 모드 필터
+    noFilteredRoutesFound: 노선이 필터와 일치하지 않습니다!
+    shortTitle: 경로보기
+    title: 경로 뷰어
+  SaveTripButton:
+    cantSaveText: 저장할 수 없습니다
+    cantSaveTooltip: 대중 교통 및 임대 또는 승마를 포함한 여정 만 모니터링 할 수 있습니다.
+    saveTripText: 여행을 저장하십시오
+    signInText: 여행을 저장하려면 로그인하십시오
+    signInTooltip: 여행을 저장하려면 로그인하십시오.
+  SavedTripEditor:
+    editSavedTrip: 저장된 여행 편집
+    saveNewTrip: 새로운 여행을 저장하십시오
+    tripInformation: 여행 정보
+    tripNotFound: 여행을 찾을 수 없습니다
+    tripNotFoundDescription: 죄송합니다 요청 된 여행은 찾을 수 없었습니다.
+    tripNotifications: 여행 알림
+  SavedTripList:
+    myTrips: 내 여행
+    noSavedTrips: 당신은 절약 된 여행이 없습니다
+    noSavedTripsInstructions: 먼저 지도에서 여행 검색을 합니다.
+    pause: 정지시키다
+    resume: 계속하다
+  SavedTripScreen:
+    tooManyTrips: |
+      당신은 이미 최대 5 개의 저장된 여행에 도달했습니다. 저장된 여행에서 사용하지 않은 여행을 제거하고 다시 시도하십시오.
+    tripNameAlreadyUsed: 또 다른 저장된 여행은 이미이 이름을 사용합니다. 다른 이름을 선택하십시오.
+    tripNameRequired: 이 여행의 이름을 입력하세요.
+  SessionTimeout:
+    body: 세션이 1분 이내에 만료됩니다. 검색을 유지하려면 '세션 계속'을 누르십시오.
+    header: 세션 시간이 초과됩니다!
+    keepSession: 세션 계속
+  SettingsPreview:
+    defaultPreviewText: 대중 교통 옵션 및 기본 설정
+  SimpleRealtimeAnnotation:
+    usingRealtimeInfo: 이 여행은 실시간 트래픽과 지연 정보를 사용합니다
+  StackedPaneDisplay:
+    savePreferences: 환경 설정을 저장하십시오
+  StopScheduleTable:
+    block: 블록
+    departure: 출발
+    destination: 에
+    route: 노선
+  StopTimeCell:
+    imminentArrival: 정당한
+    realtime: 실시간 데이터 기반
+    scheduled: 일정 데이터 기준
+  StopViewer:
+    displayStopId: "<strong>정류장 ID</strong>: {stopId}"
+    flexStop: >-
+      이것은 플렉스 스톱. 차량은 요청 시 이 플렉서블 존에서 승객을 태우고 내릴 것입니다. 이 지역에서 서비스를 받으려면 미리 전화해야
+      할 수도 있습니다.
+    header: 정류장 뷰어
+    loadingText: 로딩 중지…
+    noStopsFound: 날짜에 대한 정지 시간이 없습니다.
+    operatorLogoAriaLabel: "정류장 {operatorName}:"
+    timezoneWarning: 출발 시간은 <strong>{timezoneCode}</strong> 로 표시됩니다.
+    titleBarStopId: 정류장 {stopId}
+    viewNextArrivals: 다음 도착 정보보기
+    viewSchedule: 일정보기
+    zoomToStop: 멈출 수 있습니다
+  SubNav:
+    languageSelector: 언어 선택
+    languages: 언어
+    myAccount: 내 계정
+    selectALanguage: 언어 선택
+    settings: 설정
+    trips: 여행
+    userMenu: 프로필 옵션
+  SwitchButton:
+    defaultContent: 바꾸다
+    switchLocations: 위치를 바꾸다
+  TermsOfUsePane:
+    confirmDeletionPrompt: |
+      여행 기록 저장에 대한 동의를 제거하면 여행 기록이 삭제됩니다. 계속하다?
+    mustAgreeToTerms: 계속하려면 서비스 약관에 동의해야 합니다.
+    termsOfServiceStatement: >
+      본인은 만 18세 이상임을 확인하며, 트립플래너 이용을 위한 <termsOfUseLink>이용약관/termsOfUseLink > 을
+      읽었으며 이에 동의합니다.
+    termsOfStorageStatement: >
+      선택 사항: 여행 플래너가 내 지역의 대중 교통 서비스를 개선하기 위해 계획된 여행 기록을 저장하는 데 동의합니다.
+      <termsOfStorageLink>더 많은 정보...</termsOfStorageLink>
+  TransitVehicleOverlay:
+    in_transit_to: 다음 중지 {stop}
+    incoming_at: "{stop} 과 가까움"
+    stopped_at: "{stop} 에서 문이 열립니다"
+    travelingAt: 현재 {milesPerHour} 로 주행 중
+    vehicleName: 차량 {vehicleNumber}
+  TripBasicsPane:
+    checkingItineraryExistence: 일주일 내내 여행의 존재를 확인…
+    selectAtLeastOneDay: 모니터링하려면 하루 이상 하루를 선택하십시오.
+    tripDaysPrompt: 이 여행은 몇 일에 걸립니까?
+    tripIsAvailableOnDaysIndicated: 여행은 위에 표시된대로 요일에 제공됩니다.
+    tripNamePrompt: "이 여행의 이름을 입력하세요:"
+    tripNotAvailableOnDay: "{repeatedDay} 에는 여행이 불가능합니다"
+    unsavedChangesExistingTrip: 당신은 아직 여행을 구하지 않았습니다. 떠나면 변경 사항이 손실됩니다.
+    unsavedChangesNewTrip: 당신은 아직 새로운 여행을 저장하지 않았습니다. 당신이 떠나면, 그것은 손실됩니다.
+  TripNotificationsPane:
+    advancedSettings: 고급 설정
+    altRouteRecommended: 대체 경로 또는 전송 지점이 권장됩니다
+    delaysAboveThreshold: 이상 지연 또는 차질이 있음
+    howToReceiveAlerts: |
+      저장된 여행에 대한 경고를 받으려면 계정 설정에서 알림을 활성화하고 여행을 다시 저장하십시오.
+    monitorThisTrip: 이 여행이 끝날 때까지 시작하기 전에 {minutes} 을 모니터링하십시오.
+    notificationsTurnedOff: 계정에 대한 알림이 꺼져 있습니다.
+    notifyViaChannelWhen: "{channel} 로 알려주세요:"
+    oneHour: 1 시간
+    realtimeAlertFlagged: 내 여정에 대한 실시간 알림 플래그가 지정되었습니다.
+  TripStatus:
+    alerts: "{alerts, plural, one {# 경고!} other {# 경고!}}"
+    deleteTrip: 여행 삭제
+    planNewTrip: 새로운 여행을 계획하십시오
+  TripStatusRenderers:
+    active:
+      delayedHeading: 여행이 진행 중이며 {formattedDuration} 지연됩니다!
+      description: 여행은 {arrivalTime, time, short} 에 목적지에 도착할 예정입니다.
+      earlyHeading: 투어가 진행 중이며 예상보다 {formattedDuration} 일찍 시작됩니다!
+      noDataHeading: 여행이 진행 중입니다 (실시간 업데이트를 사용할 수 없습니다).
+      onTimeHeading: 여행이 진행 중이며 정시에 있습니다.
+    base:
+      lastCheckedDefaultText: 마지막으로 확인되지 않은 시간
+      lastCheckedText: "{formattedDuration}: 전에 마지막으로 확인함"
+      togglePause: 휴지
+      tripIsNotSnoozed: 오늘의 나머지를 위해 스누즈
+      tripIsSnoozed: 여정 분석 활성화
+      unknownState: 알 수없는 여행 상태
+      untogglePause: 계속하다
+    inactive:
+      description: 업데이트 된 상태를 확인하려면 트립 모니터링을 재개하십시오
+      heading: 여행 모니터링이 일시 중지됩니다
+    nextTripNotPossible:
+      description: |
+        트립 플래너는 오늘 여행을 찾을 수 없었습니다. 대체 경로를 찾으려면 여정을 다시 계획하십시오.
+      heading: 오늘은 여행이 불가능합니다
+    noLongerPossible:
+      description: |
+        여행 플래너는 선택된 요일에 여행을 찾을 수 없었습니다. 대체 경로를 찾으려면 여정을 다시 계획하십시오.
+      heading: 여행은 더 이상 불가능합니다
+    notCalculated:
+      awaiting: 계산을 기다리고 있습니다…
+      description: 여정이 계산될 때까지 잠시 기다려 주십시오.
+      heading: 아직 계산되지 않았습니다
+    snoozed:
+      description: 업데이트된 상태를 보려면 여행 모니터링을 활성화하세요.
+      heading: 오늘 여행 모니터링이 일시 중지되었습니다.
+    upcoming:
+      nextTripBegins: >-
+        다음 여행은 {tripDatetime, date, ::eeeee yyyyMMdd} {tripDatetime, time,
+        short} 시에 시작됩니다.
+      tripBegins: >-
+        여행은 {tripStart, time, short} 에 시작될 것으로 예상됩니다. (실시간 모니터링은
+        {monitoringStart, time, short} 시작됩니다.)
+      tripStartIsDelayed: 여행 시작 시간이 ${duration} 지연됩니다!
+      tripStartIsEarly: 여행은 예상보다 ${duration} 일찍 시작됩니다!
+      tripStartsSoonNoUpdates: 여행이 곧 시작됩니다 (실시간 업데이트를 사용할 수 없습니다).
+      tripStartsSoonOnTime: 여행은 곧 시작되어 정시에 있습니다.
+  TripSummary:
+    arriveAt: "도착 "
+    leaveAt: "출발 "
+  TripSummaryPane:
+    happensOnDays: "<strong>{days}</strong>: 에 일어난다"
+    notifications: "알림: <strong>예정출발 {leadTimeInMinutes} 분전</strong>"
+    notificationsDisabled: "알림: <strong>비활성화됨</strong>"
+  TripTools:
+    copyLink: 링크 복사
+    linkCopied: 복사
+    reportEmailSubject: OpenTripPlanner로 문제보고
+    reportEmailTemplate: |
+      *** 사용자 지침 ***
+       이 기능을 사용하면 검토를 위해 사이트 관리자에게 보고서를 이메일로 보낼 수 있습니다.
+       아래 프롬프트를 작성하고 일반 이메일 프로그램을 사용하여 보내주십시오.
+       
+       *** 다음을 완료하세요 ***
+       
+       발생한 문제:
+       
+       가고 싶었던 여행의 종류:
+       
+       *** 기술적 세부 사항 ***
+    reportIssue: 문제보고
+  TripViewer:
+    accessible: 얻기 쉬운
+    bicyclesAllowed: 허용됨
+    header: 여행 뷰어
+    routeHeader: "노선: <strong>{routeShortName}</strong> {routeLongName}"
+    viewStop: 전망
+  UserAccountScreen:
+    confirmDelete: 사용자 계정을 삭제 하시겠습니까? 일단 그렇게하면 복구 할 수 없습니다.
+  UserSettings:
+    confirmDeletion: 최근 검색이나 장소가 저장되어 있습니다. 최근 장소 또는 검색을 비활성화하면 이러한 항목이 제거됩니다. 계속하다?
+    favoriteStops: 좋아하는 정지
+    myPreferences: 내 취향
+    mySavedPlaces: 내 저장된 위치 (<manageLink>보다</manageLink>)
+    noFavoriteStops: 좋아하는 멈추지 않습니다
+    recentPlaces: 최근 장소
+    recentSearchSummary: "{from} 에서 {to} 까지 {mode)"
+    recentSearches: 최근 검색
+    rememberSearches: 최근 검색어와 장소를 기억하십니까?
+    stopId: "정류장 ID: {stopId}"
+    storageDisclaimer: >
+      저장하기로 선택한 기본 설정, 장소 또는 설정은 브라우저의 로컬 저장소에 저장됩니다. 우리는 귀하의 집, 직장 또는 기타 위치에 대한
+      정보에 접근할 수 없습니다. 언제든지 최근 장소/검색 기억을 끄고 저장된 집/직장 위치 및 즐겨찾는 정류장을 지울 수 있습니다.
+  UserTripSettings:
+    forgetOptions: 내 옵션을 잊어 버리세요
+    rememberOptions: 여행 옵션 저장
+    restoreOptions: |
+      {defaults, select,
+       true {내 기본 설정}
+       other {기본 설정}
+       } 복원
+  VerifyEmailPane:
+    emailIsVerified: 내 이메일이 확인되었습니다!
+    instructions1: |
+      이메일받은 편지함을 확인하고 메시지의 링크를 따라 계정 설정을 마치기 전에 이메일 주소를 확인하십시오.
+    instructions2: 확인되면 아래 버튼을 클릭하여 계속하십시오.
+    resendVerification: 확인 이메일을 다시 보내
+  ViewSwitcher:
+    switcher: 변경 버튼
+  WelcomeScreen:
+    prompt: 어디로 가고 싶니?
+config:
+  accessModes:
+    bicycle: 대중교통 + 내 자전거
+    bicycle_rent: 대중교통 + 자전거 공유
+    car_hail: Ride Hail
+    car_park: Park & Ride
+    micromobility: 대중교통 + 내 전기 스쿠터
+    micromobility_rent: 대중교통 + 렌탈 전기 스쿠터
+  bicycleModes:
+    bicycle: 내 자전거
+    bicycle_rent: 자전거 공유
+  flex:
+    both: 자세한 내용은 여정의 하단을 참조하십시오
+    call-ahead: 전화예약
+    continuous-dropoff: 정지에 대해 연산자와 통신하십시오
+    flex-service: 플렉스 서비스
+    flex-service-colon: "Flex Service:"
+  micromobilityModes:
+    micromobility: 내 전기 스쿠터
+    micromobility_rent: 렌탈 전기 스쿠터
 util:
   state:
     errorPlanningTrip: 여행을 계획하는 동안 오류가 발생했습니다.
     networkUnavailable: 현재 {network} 네트워크를 사용할 수 없습니다.
     noTripFound: 여행을 찾을 수 없습니다.
-    noTripFoundForMode: '{modes} (으)로 검색된 여행이 없습니다.'
-    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나 출발지 또는 도착지에 안전하게 접근하지
-      못할 수 있습니다.
-    noTripFoundWithReason: '{noTripFound} {reason}'
-    titleBarRouteId: 노선 {routeId}
-    titleBarStopId: 정류장 {stopId}
-    titleBarWithStatus: '{title} | {status}'
-config:
-  accessModes:
-    bicycle_rent: 대중교통 + 자전거 공유
-    bicycle: 대중교통 + 내 자전거
-    car_hail: Ride Hail
-    car_park: Park & Ride
-    micromobility_rent: 대중교통 + 렌탈 전기 스쿠터
-    micromobility: 대중교통 + 내 전기 스쿠터
-  micromobilityModes:
-    micromobility: 내 전기 스쿠터
-    micromobility_rent: 렌탈 전기 스쿠터
-  flex:
-    flex-service: 플렉스 서비스
-    flex-service-colon: 'Flex Service:'
-    both: 자세한 내용은 여정의 하단을 참조하십시오
-    call-ahead: 전화예약
-    continuous-dropoff: 정지에 대해 연산자와 통신하십시오
-  bicycleModes:
-    bicycle: 내 자전거
-    bicycle_rent: 자전거 공유
+    noTripFoundForMode: "{modes} (으)로 검색된 여행이 없습니다."
+    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나 출발지 또는 도착지에 안전하게 접근하지 못할 수 있습니다.
+    noTripFoundWithReason: "{noTripFound} {reason}"
