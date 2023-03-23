@@ -289,7 +289,7 @@ components:
     noneSelect: Don't notify me
   OTP2ErrorRenderer:
       inputFields:
-        TO: To
+        TO: Destination
         FROM: From
       OUTSIDE_BOUNDS:
         header: Location outside bounds
@@ -301,7 +301,7 @@ components:
         header: No stops in range
         body: "{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other {locations are}} not near any transit stops."
       LOCATION_NOT_FOUND:
-        header: Location not found
+        header: Location not accessible
         body: "{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other {locations are}} not near any streets."
       # Copied from GraphQL documentation
       NO_TRANSIT_CONNECTION:
