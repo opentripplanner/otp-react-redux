@@ -237,7 +237,7 @@ components:
     destination: Đến
     route: Tuyến
   StopViewer:
-    displayStopId: '<strong>ID điểm dừng</strong>: {stopId}'
+    displayStopId: '<strong>Điểm dừng số</strong>: {stopId}'
     flexStop: Đây là một điểm dừng linh hoạt. Xe sẽ đưa đón khách trong khu linh hoạt
       này theo yêu cầu. Bạn có thể phải gọi trước để được phục vụ trong khu vực này.
     header: Xem điểm dừng
@@ -245,7 +245,7 @@ components:
     noStopsFound: Không tìm thấy thời gian dừng cho ngày.
     operatorLogoAriaLabel: "Điểm dừng của {operatorName}:"
     timezoneWarning: Thời gian khởi hành được hiển thị trong <strong>{timezoneCode}</strong>.
-    titleBarStopId: '{stopId} điểm dừng'
+    titleBarStopId: 'Điểm dừng {stopId}'
     viewNextArrivals: Xem những xe đến tiếp theo
     viewSchedule: Xem lịch trình
     zoomToStop: Phóng to để dừng lại
@@ -368,7 +368,7 @@ components:
     recentSearchSummary: '{mode} từ {from} đến {to}'
     recentPlaces: Những nơi gần đây
     rememberSearches: Nhớ các tìm kiếm/địa điểm gần đây?
-    stopId: 'ID điểm dừng: {stopId}'
+    stopId: 'Điểm dừng số {stopId}'
     storageDisclaimer: "Bất kỳ tùy chọn, địa điểm hoặc cài đặt nào bạn chọn để lưu\
       \ sẽ được lưu trữ cục bộ trong trình duyệt của bạn. TriMet sẽ không có quyền\
       \ truy cập kiến thức về nhà ở, chỗ làm hoặc bất kỳ vị trí nào khác của bạn.\
@@ -455,7 +455,7 @@ components:
   DeleteUser:
     deleteMyAccount: Xóa tài khoản của tôi
   EnhancedStopMarker:
-    stopID: 'ID điểm dừng:'
+    stopID: 'Điểm dừng số'
     stopViewer: Xem điểm dừng
   FavoritePlaceList:
     addAnotherPlace: Thêm một nơi khác
