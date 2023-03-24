@@ -177,7 +177,7 @@ class LiveStopTimes extends Component<Props, State> {
     }
 
     // Time range is set in seconds, so convert to days
-    const timeRange = stopViewerConfig.timeRange / 86400
+    const timeRange = stopViewerConfig.timeRange / 86400 || 2
 
     const refreshButtonText = intl.formatMessage({
       id: 'components.LiveStopTimes.refresh'
@@ -207,6 +207,8 @@ class LiveStopTimes extends Component<Props, State> {
           times: sortedTimes
         }
       })
+      // if the time range filter removes all times, remove route
+      .filter(({ times }) => times.length !== 0)
 
     return (
       <>
