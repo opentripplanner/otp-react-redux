@@ -131,6 +131,7 @@
     "@percy/cli": "^1.20.3",
     "@percy/puppeteer": "^2.0.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
+    "@types/lodash.memoize": "^4.1.7",
     "@types/mapbox__polyline": "^1.0.2",
     "@types/qs": "^6.9.7",
     "@types/react-bootstrap": "^0.32.26",

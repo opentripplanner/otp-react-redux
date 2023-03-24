@@ -5,7 +5,7 @@ import RouteViewerOverlay from '@opentripplanner/route-viewer-overlay'
 /**
  * Helper to compute the displayed route data.
  */
-const getRouteData = (state) => {
+const getRouteData = (state: any) => {
   const { patternId, routeId } = state.otp.ui.viewedRoute || {}
   const { routes } = state.otp.transitIndex
   const routeData = routeId && routes ? routes[routeId] : {}
@@ -41,7 +41,7 @@ const getMemoizedRouteData = memoize(
 
 // connect to the redux store
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   const routeData = getRouteData(state)
 
   // If the state is not pending and filtered patterns contains at least one key,
