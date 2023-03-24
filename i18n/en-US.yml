@@ -290,7 +290,7 @@ components:
   OTP2ErrorRenderer:
       inputFields:
         TO: Destination
-        FROM: From
+        FROM: Origin
       OUTSIDE_BOUNDS:
         header: Location outside bounds
         body: "{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other {locations are}} not in the bounds of the trip planner."
