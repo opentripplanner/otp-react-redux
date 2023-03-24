@@ -558,6 +558,10 @@ itinerary:
 #   # Whether to render routes within flex zones of a route's patterns. If set to true,
 #   # routes will not be rendered within flex zones.
 #   hideRouteShapesWithinFlexZones: true
+#   # disable vehicle highlight if necessary (e.g. inverted icons)
+#   noVehicleIconHighlight: true
+#   # customize vehicle icon padding (the default iconPadding is 2 in otp-ui)
+#   vehicleIconPadding: 0
 
 # API key to make Mapillary API calls. These are used to show street imagery.
 # Mapillary calls these "Client Tokens". They can be created at https://www.mapillary.com/dashboard/developers
