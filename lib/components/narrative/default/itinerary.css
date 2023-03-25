@@ -40,6 +40,7 @@
   border-bottom: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  cursor: auto;
 }
 .otp .option.metro-itin .itin-wrapper-small {
   border-radius: 10px;

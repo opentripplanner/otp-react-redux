@@ -9,7 +9,6 @@ import { injectIntl, IntlShape } from 'react-intl'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import React, { useContext, useState } from 'react'
-import styled from 'styled-components'
 import type { ModeButtonDefinition } from '@opentripplanner/types'
 
 import * as apiActions from '../../actions/api'
@@ -22,18 +21,11 @@ import {
   DateTimeModalContainer,
   MainSettingsRow,
   PlanTripButton,
-  StyledDateTimePreview
+  StyledDateTimePreview,
+  StyledDateTimePreviewContainer
 } from './batch-styled'
 import { defaultModeOptions } from './mode-buttons'
 import DateTimeModal from './date-time-modal'
-
-const ModeButtonsContainerCompressed = styled.div`
-  display: flex;
-
-  @media (max-width: 355px), (min-width: 991px) and (max-width: 1110px) {
-    display: contents;
-  }
-`
 
 // TYPESCRIPT TODO: better types
 type Props = {
@@ -109,45 +101,46 @@ function BatchSettings({
   }
 
   return (
-    <>
+    <div role="group">
       <MainSettingsRow>
-        <StyledDateTimePreview
-          // as='button'
+        <StyledDateTimePreviewContainer
+          aria-controls="date-time-modal"
+          aria-expanded={dateTimeExpanded}
+          aria-label="Date/Time settings"
           expanded={dateTimeExpanded}
-          hideButton
           onClick={() => setDateTimeExpanded(!dateTimeExpanded)}
+        >
+          <StyledDateTimePreview hideButton />
+        </StyledDateTimePreviewContainer>
+        <MetroModeSelector
+          modeButtons={buttonsWithSettings}
+          onSettingsUpdate={setModeSettingValue}
+          onToggleModeButton={toggleModeButton}
         />
-        <ModeButtonsContainerCompressed>
-          <MetroModeSelector
-            modeButtons={buttonsWithSettings}
-            onSettingsUpdate={setModeSettingValue}
-            onToggleModeButton={toggleModeButton}
-          />
-          <PlanTripButton
-            id="plan-trip"
-            onClick={_planTrip}
-            title={intl.formatMessage({
-              id: 'components.BatchSettings.planTripTooltip'
-            })}
-          >
-            <StyledIconWrapper style={{ fontSize: '1.6em' }}>
-              {hasValidLocation(currentQuery, 'from') &&
-              hasValidLocation(currentQuery, 'to') &&
-              !!activeSearch ? (
-                <SyncAlt />
-              ) : (
-                <Search />
-              )}
-            </StyledIconWrapper>
-          </PlanTripButton>
-        </ModeButtonsContainerCompressed>
+        <PlanTripButton
+          id="plan-trip"
+          onClick={_planTrip}
+          title={intl.formatMessage({
+            id: 'components.BatchSettings.planTripTooltip'
+          })}
+        >
+          <StyledIconWrapper style={{ fontSize: '1.6em' }}>
+            {hasValidLocation(currentQuery, 'from') &&
+            hasValidLocation(currentQuery, 'to') &&
+            !!activeSearch ? (
+              <SyncAlt />
+            ) : (
+              <Search />
+            )}
+          </StyledIconWrapper>
+        </PlanTripButton>
       </MainSettingsRow>
       {dateTimeExpanded && (
-        <DateTimeModalContainer>
+        <DateTimeModalContainer id="date-time-modal">
           <DateTimeModal />
         </DateTimeModalContainer>
       )}
-    </>
+    </div>
   )
 }
 

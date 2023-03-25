@@ -25,6 +25,8 @@ import {
   setVisibleItinerary,
   updateItineraryFilter
 } from '../../actions/narrative'
+import { summarizeQuery } from '../form/user-settings-i18n'
+import PageTitle from '../util/page-title'
 
 import * as S from './styled'
 import { getItineraryDescription } from './default/itinerary-description'
@@ -72,6 +74,7 @@ type Props = {
   sort: any
   timeFormat: any
   updateItineraryFilter: (sort: any) => void
+  user: any
   visibleItinerary: any
 }
 
@@ -111,6 +114,7 @@ const NarrativeItineraries = ({
   sort,
   timeFormat,
   updateItineraryFilter,
+  user,
   visibleItinerary
 }: Props) => {
   // @ts-expect-error context not typed yet
@@ -374,6 +378,9 @@ const NarrativeItineraries = ({
         customBatchUiBackground && !itineraryIsExpanded && 'base-color-bg'
       }`}
     >
+      <PageTitle
+        title={summarizeQuery(activeSearch.query, intl, user.savedLocations)}
+      />
       <NarrativeItinerariesHeader
         customBatchUiBackground={customBatchUiBackground}
         errors={errors}
@@ -449,7 +456,7 @@ const NarrativeItineraries = ({
 }
 
 // connect to the redux store
-
+// eslint-disable-next-line complexity
 const mapStateToProps = (state: any) => {
   const activeSearch: any = getActiveSearch(state)
   const activeItinerary = activeSearch && activeSearch.activeItinerary
@@ -479,6 +486,8 @@ const mapStateToProps = (state: any) => {
     !state.otp.config.itinerary?.showFirstResultByDefault
   const itineraryIsExpanded =
     activeItinerary !== undefined && activeItinerary !== null && showDetails
+  const { localUser, loggedInUser } = state.user
+  const user = loggedInUser || localUser
 
   return {
     // swap out realtime itineraries with non-realtime depending on boolean
@@ -525,6 +534,7 @@ const mapStateToProps = (state: any) => {
     showHeaderText,
     sort,
     timeFormat: coreUtils.time.getTimeFormat(state.otp.config),
+    user,
     visibleItinerary: getVisibleItineraryIndex(state)
   }
 }
