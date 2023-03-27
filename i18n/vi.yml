@@ -104,8 +104,9 @@ common:
     calories: "{calories, number} calo"
     noItineraryToDisplay: Không có hành trình để hiển thị.
     noTransitFareProvided: Không có thông tin giá vé
-    relativeCo2: |
-      {co2} CO₂ {isMore, select, true {nhiều} other {ít} } hơn so với xe hơi
+    relativeCo2: >
+      {co2} CO<sub>2</sub> {isMore, select, true {nhiều} other {ít} } hơn so với
+      xe hơi
     transfers: "{transfers, plural, =0 {} one {# chuyển} other {# chuyển}}"
   modes:
     bicycle_rent: Chia sẻ xe đạp

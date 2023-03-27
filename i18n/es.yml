@@ -106,8 +106,9 @@ common:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No hay itinerario que mostrar.
     noTransitFareProvided: No hay información sobre las tarifas
-    relativeCo2: |
-      {co2} de CO₂ en  {isMore, select, true {más} other {menos} } que conducir
+    relativeCo2: >
+      {co2} de CO<sub>2</sub> en  {isMore, select, true {más} other {menos} }
+      que conducir
     transfers: "{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}"
   modes:
     bicycle_rent: Bicicleta compartida

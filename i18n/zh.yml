@@ -96,7 +96,7 @@ common:
     noItineraryToDisplay: 没有显示行程.
     noTransitFareProvided: 没有票价信息
     relativeCo2: |
-      {co2} {isMore, select, true {更多} other {更少} } CO₂  比单独驾车
+      {co2} {isMore, select, true {更多} other {更少} } CO<sub>2</sub>  比单独驾车
     transfers: "{transfers, plural, =0 {} one {# 换乘} other {# 换乘}}"
   modes:
     bicycle_rent: 共享单车
