@@ -552,8 +552,8 @@ itinerary:
 #   # so that, for example, if it is Friday and a route does
 #   # not begin service again until Monday, we are showing its next
 #   # departure and it is not entirely excluded from display
-#   # (defaults to 4 days/345600s if unspecified).
-#   timeRange: 345600
+#   # (defaults to 2 days/172800s if unspecified).
+#   timeRange: 172800
 # routeViewer:
 #   # Whether to render routes within flex zones of a route's patterns. If set to true,
 #   # routes will not be rendered within flex zones.

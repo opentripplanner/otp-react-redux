@@ -7,6 +7,7 @@ import { ComponentContext } from '../../util/contexts'
 import {
   extractHeadsignFromPattern,
   generateFakeLegForRouteRenderer,
+  routeNameFontSize,
   stopTimeComparator
 } from '../../util/viewer'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
@@ -72,7 +73,6 @@ function NextArrivalForPattern({
     { id: 'common.routing.routeToHeadsign' },
     { headsign }
   )
-  const title = `${routeName} ${toHeadsign}`
 
   return (
     <li
@@ -83,15 +83,20 @@ function NextArrivalForPattern({
       }}
     >
       {/* route name */}
-      <div className="next-arrival-label overflow-ellipsis" title={title}>
-        <span className="route-name">
+      <div className="next-arrival-label">
+        <span
+          className="route-name"
+          style={{ fontSize: routeNameFontSize(routeName) }}
+        >
           <RouteRenderer
             isOnColoredBackground={route.operator?.colorMode?.includes('gtfs')}
             // All GTFS bg colors look strange with the top border
             leg={generateFakeLegForRouteRenderer(route, true)}
           />
         </span>
-        {toHeadsign}
+        <span className="overflow-ellipsis" title={toHeadsign}>
+          {toHeadsign}
+        </span>
       </div>
       {/* next departure preview */}
       {hasStopTimes && (
