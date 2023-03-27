@@ -50,7 +50,6 @@ type Props = {
   customBatchUiBackground: any
   errorMessages: any
   errors: any
-  errorsOtp2: any
   groupItineraries: boolean
   groupTransitModes: boolean
   hideFirstResultByDefault: any
@@ -90,7 +89,6 @@ const NarrativeItineraries = ({
   customBatchUiBackground,
   errorMessages,
   errors,
-  errorsOtp2,
   groupItineraries,
   groupTransitModes,
   hideFirstResultByDefault,
@@ -408,11 +406,6 @@ const NarrativeItineraries = ({
         }}
       >
         {/* TODO PROPERLY RENDER */}
-        {Object.keys(errorsOtp2).length > 0 &&
-          'errors: ' +
-            JSON.stringify(errorsOtp2, (_key, value) =>
-              value instanceof Set ? [...value] : value
-            )}
         {showingErrors || mergedItineraries.length === 0 ? (
           <NarrativeItinerariesErrors
             errorMessages={errorMessages}
@@ -506,20 +499,6 @@ const mapStateToProps = (state: any) => {
     errorMessages,
     errors: getResponsesWithErrors(state),
     // TODO: Destory otp1 errors and rename this
-    errorsOtp2: activeSearch?.response?.reduce((acc, cur) => {
-      const { routingErrors } = cur?.plan
-      // code and inputfield
-      if (routingErrors) {
-        routingErrors.forEach((routingError) => {
-          const { code, inputField } = routingError
-          if (!acc[code]) {
-            acc[code] = new Set()
-          }
-          acc[code].add(inputField)
-        })
-      }
-      return acc
-    }, {}),
     groupItineraries,
     groupTransitModes,
     hideFirstResultByDefault,
