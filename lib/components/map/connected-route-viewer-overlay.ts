@@ -33,7 +33,10 @@ const getRouteData = (state: any) => {
 }
 
 /** Used to avoid unnecessary rerenderings */
-const cache = {
+const cache: {
+  id?: string | null
+  routeData: any
+} = {
   id: null,
   routeData: null
 }
