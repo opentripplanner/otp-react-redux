@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import memoize from 'lodash.memoize'
 import RouteViewerOverlay from '@opentripplanner/route-viewer-overlay'
 
 /**
@@ -33,33 +32,39 @@ const getRouteData = (state: any) => {
   return { ...otherRouteData, patterns: filteredPatterns }
 }
 
-/**
- * Memoize route data when the necessary info as been fetched,
- * to avoid unnecessary rerendering and map bounds fitting.
- */
-const getMemoizedRouteData = memoize(
-  getRouteData,
-  // Determine the cache key, based on route and pattern ids.
-  (state) => {
-    const { patternId, routeId } = state.otp.ui.viewedRoute || {}
-    return `${routeId}-${patternId || ''}`
-  }
-)
+/** Used to avoid unnecessary rerenderings */
+const cache = {
+  id: null,
+  routeData: null
+}
 
 // connect to the redux store
 
 const mapStateToProps = (state: any) => {
   const { patterns = {}, pending } = extractRoute(state)
   // If the state is not pending and filtered patterns contains at least one key,
-  // memoize the route data (based on route id and pattern id)
+  // cache the route data (based on route id and pattern id)
   // to avoid unnecessary rerendering/refitting of the map.
-  // (Memoizing has no purpose if the route or pattern info have not been fetched.)
+  // For simplicity, if the route or pattern id change, the previous cached route data are lost.
   // Assumption: we don't expect route shapes to change during a browsing session.
-  const shouldMemoize = !pending && Object.keys(patterns).length !== 0
+  let routeData
+  const shouldCache = !pending && Object.keys(patterns).length !== 0
+  if (shouldCache) {
+    const { patternId, routeId } = state.otp.ui.viewedRoute || {}
+    const id = `${routeId}-${patternId || ''}`
+    if (id !== cache.id) {
+      cache.id = id
+      cache.routeData = getRouteData(state)
+    }
+    routeData = cache.routeData
+  } else {
+    routeData = getRouteData(state)
+  }
+
   return {
     clipToPatternStops:
       state.otp.config.routeViewer?.hideRouteShapesWithinFlexZones,
-    routeData: shouldMemoize ? getMemoizedRouteData(state) : getRouteData(state)
+    routeData
   }
 }
 
