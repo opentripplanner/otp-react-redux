@@ -7,7 +7,7 @@ import { ComponentContext } from '../../util/contexts'
 import {
   generateFakeLegForRouteRenderer,
   getRouteColorBasedOnSettings,
-  stopTimeComparator
+  routeNameFontSize
 } from '../../util/viewer'
 import { Pattern, Time } from '../util/types'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
@@ -59,12 +59,9 @@ class PatternRow extends Component<Props, State> {
     const hasStopTimes = stopTimes && stopTimes.length > 0
     if (hasStopTimes) {
       sortedStopTimes = stopTimes
-        .concat()
-        .sort(stopTimeComparator)
         // We request only x departures per pattern, but the patterns are merged
         // according to shared headsigns, so we need to slice the stop times
         // here as well to ensure only x times are shown per route/headsign combo.
-        // This is applied after the sort, so we're keeping the soonest departures.
         .slice(0, stopViewerConfig.numberOfDepartures)
     } else {
       // Do not render pattern row if it has no stop times.
@@ -78,7 +75,7 @@ class PatternRow extends Component<Props, State> {
       <li className="route-row">
         {/* header row */}
         <div
-          className="header"
+          className="header stop-view"
           style={{
             backgroundColor: routeColor,
             color: getMostReadableTextColor(routeColor, route?.textColor)
@@ -86,19 +83,8 @@ class PatternRow extends Component<Props, State> {
         >
           {/* route name */}
           <div className="route-name">
-            <strong
-              style={
-                routeName && routeName?.length >= 4 ? { fontSize: '50%' } : {}
-              }
-            >
-              <div
-                style={{
-                  alignContent: 'center',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  whiteSpace: 'nowrap'
-                }}
-              >
+            <strong style={{ fontSize: routeNameFontSize(routeName) }}>
+              <span className="route-name-container" title={routeName}>
                 {showOperatorLogo && (
                   <OperatorLogo operator={route?.operator} />
                 )}
@@ -109,9 +95,9 @@ class PatternRow extends Component<Props, State> {
                   )}
                   leg={generateFakeLegForRouteRenderer(route, true)}
                 />
-              </div>
+              </span>
             </strong>
-            <span>{pattern.headsign}</span>
+            <span title={pattern.headsign}>{pattern.headsign}</span>
           </div>
           {/* next departure preview */}
           {hasStopTimes && (
