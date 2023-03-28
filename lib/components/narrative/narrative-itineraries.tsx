@@ -506,7 +506,7 @@ const mapStateToProps = (state: any) => {
     customBatchUiBackground,
     errorMessages,
     errors: getResponsesWithErrors(state),
-    // TODO: Destory otp1 errors and rename this
+    // TODO: Destroy otp1 errors and rename this
     errorsOtp2: activeSearch?.response?.reduce(
       // TODO: type
       (acc: { [code: string]: Set<string | undefined> }, cur: any) => {
