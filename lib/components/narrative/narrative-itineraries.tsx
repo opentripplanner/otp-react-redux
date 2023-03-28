@@ -193,10 +193,15 @@ const NarrativeItineraries = ({
     setShowingErrors(!showingErrors)
   }
 
-  const _renderLoadingDivs = () => {
-    // If renderSkeletons is off, show standard spinner
+  const _renderLoadingSpinner = () => {
     if (!renderSkeletons) {
       return pending ? <Loading /> : null
+    }
+  }
+  const _renderLoadingDivs = () => {
+    // If renderSkeletons is off, don't render the skeleton-type loading divs
+    if (!renderSkeletons) {
+      return null
     }
 
     if (!pending || showingErrors) return null
@@ -408,6 +413,7 @@ const NarrativeItineraries = ({
         }}
       >
         <ErrorRenderer errors={errorsOtp2} />
+        {_renderLoadingSpinner()}
         {showingErrors || mergedItineraries.length === 0 ? (
           <NarrativeItinerariesErrors
             errorMessages={errorMessages}
@@ -464,7 +470,7 @@ const mapStateToProps = (state: any) => {
     activeSearch && activeSearch.activeItineraryTimeIndex
   const { co2, errorMessages, modes } = state.otp.config
   const { sort } = state.otp.filter
-  const pending = activeSearch ? Boolean(activeSearch.pending) : false
+  const pending = activeSearch?.pending > 0
   const itineraries = getActiveItineraries(state)
   const realtimeEffects = getRealtimeEffects(state)
   const urlParams = coreUtils.query.getUrlParams()
