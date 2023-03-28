@@ -507,20 +507,26 @@ const mapStateToProps = (state: any) => {
     errorMessages,
     errors: getResponsesWithErrors(state),
     // TODO: Destory otp1 errors and rename this
-    errorsOtp2: activeSearch?.response?.reduce((acc, cur) => {
-      const { routingErrors } = cur?.plan
-      // code and inputfield
-      if (routingErrors) {
-        routingErrors.forEach((routingError) => {
-          const { code, inputField } = routingError
-          if (!acc[code]) {
-            acc[code] = new Set()
-          }
-          acc[code].add(inputField)
-        })
-      }
-      return acc
-    }, {}),
+    errorsOtp2: activeSearch?.response?.reduce(
+      // TODO: type
+      (acc: { [code: string]: Set<string | undefined> }, cur: any) => {
+        const { routingErrors } = cur?.plan
+        // code and inputfield
+        if (routingErrors) {
+          routingErrors.forEach(
+            (routingError: { code: string; inputField?: string }) => {
+              const { code, inputField } = routingError
+              if (!acc[code]) {
+                acc[code] = new Set()
+              }
+              acc[code].add(inputField)
+            }
+          )
+        }
+        return acc
+      },
+      {}
+    ),
     groupItineraries,
     groupTransitModes,
     hideFirstResultByDefault,
