@@ -413,7 +413,6 @@ const NarrativeItineraries = ({
         }}
       >
         <ErrorRenderer errors={errorsOtp2} />
-        {_renderLoadingSpinner()}
         {showingErrors || mergedItineraries.length === 0 ? (
           <NarrativeItinerariesErrors
             errorMessages={errorMessages}
@@ -456,6 +455,7 @@ const NarrativeItineraries = ({
             )}
           </>
         )}
+        {_renderLoadingSpinner()}
       </div>
     </S.NarrativeItinerariesContainer>
   )
