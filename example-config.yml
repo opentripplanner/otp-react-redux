@@ -558,9 +558,9 @@ itinerary:
 #   # Whether to render routes within flex zones of a route's patterns. If set to true,
 #   # routes will not be rendered within flex zones.
 #   hideRouteShapesWithinFlexZones: true
-#   # disable vehicle highlight if necessary (e.g. inverted icons)
+#   # Disable vehicle highlight if necessary (e.g. inverted icons)
 #   noVehicleIconHighlight: true
-#   # customize vehicle icon padding (the default iconPadding is 2 in otp-ui)
+#   # Customize vehicle icon padding (the default iconPadding is 2px in otp-ui)
 #   vehicleIconPadding: 0
 #   # Interval for refreshing vehicle positions
 #   vehiclePositionRefreshSeconds: 30 # defaults to 30 seconds.
