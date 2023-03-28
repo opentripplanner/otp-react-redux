@@ -162,7 +162,7 @@ if (OTP_RR_PERCY_MOBILE) {
     await page.waitForTimeout(500)
 
     // click the little pattern arrow
-    await page.click('#pattern-button-Green')
+    await page.click('#open-route-button-Green')
 
     await page.waitForSelector('#headsign-selector')
     const secondPatternOption = await page.$$eval(
@@ -388,7 +388,7 @@ test('OTP-RR', async () => {
   await page.waitForTimeout(500)
 
   // click the little pattern arrow
-  await page.click('#pattern-button-1')
+  await page.click('open-route-button-1')
 
   await page.waitForSelector('#headsign-selector')
 
