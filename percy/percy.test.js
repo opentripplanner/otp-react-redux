@@ -388,7 +388,7 @@ test('OTP-RR', async () => {
   await page.waitForTimeout(500)
 
   // click the little pattern arrow
-  await page.click('open-route-button-1')
+  await page.click('#open-route-button-1')
 
   await page.waitForSelector('#headsign-selector')
 
