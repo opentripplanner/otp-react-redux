@@ -2431,7 +2431,7 @@
     "@styled-icons/fa-solid" "^10.34.0"
     throttle-debounce "^2.1.0"
 
-"@opentripplanner/location-icon@^1.4.0", "@opentripplanner/location-icon@^1.4.1":
+"@opentripplanner/location-icon@^1.4.1":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/location-icon/-/location-icon-1.4.1.tgz#9a94bbfd2464db2f7c1be1d759e87a9d982d1448"
   integrity sha512-Yg52MTV6resjSkkTsK6FxeH+s24Pjs0eWsywFmsdBbB2sVS7oueehaky6tOHjAC6In9o2Waux+tqqeip7UQkKw==
