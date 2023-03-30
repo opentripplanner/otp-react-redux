@@ -403,9 +403,8 @@ components:
       header: Trip Planner Failure
     WALKING_BETTER_THAN_TRANSIT:
       body: >-
-        Walking from your origin to your destination will be faster than taking
-        transit.
-      header: Walking is better than transit
+        Avoiding transit on your trip will be faster than taking transit.
+      header: Transit isn't the fastest way to make this trip
     inputFields:
       FROM: Origin
       TO: Destination
