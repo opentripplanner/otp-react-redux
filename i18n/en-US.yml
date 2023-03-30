@@ -265,7 +265,7 @@ components:
   DefaultItinerary:
     clickDetails: Click to view details
     multiModeSummary: "{accessMode} + {transitMode}"
-    nonTransit: Without Transit
+    nonTransit: Alternative options
   DeleteUser:
     deleteMyAccount: Delete my account
   EnhancedStopMarker:
