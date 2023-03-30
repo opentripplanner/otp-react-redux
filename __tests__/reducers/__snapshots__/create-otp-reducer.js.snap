@@ -21,7 +21,7 @@ Object {
       "nearbyRadius": 250,
       "numberOfDepartures": 3,
       "showBlockIds": false,
-      "timeRange": 345600,
+      "timeRange": 172800,
     },
     "transitOperators": Array [],
   },

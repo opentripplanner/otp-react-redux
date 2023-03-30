@@ -318,7 +318,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                 "nearbyRadius": 250,
                 "numberOfDepartures": 3,
                 "showBlockIds": false,
-                "timeRange": 345600,
+                "timeRange": 172800,
               }
             }
             toggleAutoRefresh={[Function]}
@@ -829,7 +829,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   tabIndex={0}
                 >
                   <div
-                    className="sc-edoYdd eXVbVq"
+                    className="sc-jlIlqL iaSjpP"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -1009,7 +1009,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           "nearbyRadius": 250,
                           "numberOfDepartures": 3,
                           "showBlockIds": false,
-                          "timeRange": 345600,
+                          "timeRange": 172800,
                         }
                       }
                       toggleAutoRefresh={[Function]}
@@ -1233,7 +1233,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                             "nearbyRadius": 250,
                             "numberOfDepartures": 3,
                             "showBlockIds": false,
-                            "timeRange": 345600,
+                            "timeRange": 172800,
                           }
                         }
                         toggleAutoRefresh={[Function]}
@@ -1249,7 +1249,6 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         >
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
-                            key="TriMet:20-Gresham TC"
                             pattern={
                               Object {
                                 "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -1388,7 +1387,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                           >
@@ -1568,7 +1567,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   "nearbyRadius": 250,
                                   "numberOfDepartures": 3,
                                   "showBlockIds": false,
-                                  "timeRange": 345600,
+                                  "timeRange": 172800,
                                 }
                               }
                             >
@@ -1576,7 +1575,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                 className="route-row"
                               >
                                 <div
-                                  className="header"
+                                  className="header stop-view"
                                   style={
                                     Object {
                                       "backgroundColor": "#333333",
@@ -1588,17 +1587,15 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                     className="route-name"
                                   >
                                     <strong
-                                      style={Object {}}
-                                    >
-                                      <div
-                                        style={
-                                          Object {
-                                            "alignContent": "center",
-                                            "display": "flex",
-                                            "justifyContent": "center",
-                                            "whiteSpace": "nowrap",
-                                          }
+                                      style={
+                                        Object {
+                                          "fontSize": "32px",
                                         }
+                                      }
+                                    >
+                                      <span
+                                        className="route-name-container"
+                                        title="20"
                                       >
                                         <DefaultRouteRenderer
                                           leg={
@@ -1627,9 +1624,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                             </span>
                                           </styled.span>
                                         </DefaultRouteRenderer>
-                                      </div>
+                                      </span>
                                     </strong>
-                                    <span>
+                                    <span
+                                      title="Gresham TC"
+                                    >
                                       Gresham TC
                                     </span>
                                   </div>
@@ -1841,27 +1840,24 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="thursday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.thursday"
-                                              >
-                                                common.daysOfWeek.thursday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -1987,27 +1983,24 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="thursday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.thursday"
-                                              >
-                                                common.daysOfWeek.thursday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -2350,7 +2343,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                             transitOperators={Array []}
@@ -3196,7 +3189,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                 "nearbyRadius": 250,
                 "numberOfDepartures": 3,
                 "showBlockIds": false,
-                "timeRange": 345600,
+                "timeRange": 172800,
               }
             }
             toggleAutoRefresh={[Function]}
@@ -3707,7 +3700,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   tabIndex={0}
                 >
                   <div
-                    className="sc-edoYdd eXVbVq"
+                    className="sc-jlIlqL iaSjpP"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -3788,7 +3781,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           "nearbyRadius": 250,
                           "numberOfDepartures": 3,
                           "showBlockIds": false,
-                          "timeRange": 345600,
+                          "timeRange": 172800,
                         }
                       }
                       toggleAutoRefresh={[Function]}
@@ -3913,7 +3906,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                             "nearbyRadius": 250,
                             "numberOfDepartures": 3,
                             "showBlockIds": false,
-                            "timeRange": 345600,
+                            "timeRange": 172800,
                           }
                         }
                         toggleAutoRefresh={[Function]}
@@ -3927,9 +3920,22 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         <ul
                           className="route-row-container"
                         >
+                          <p
+                            aria-hidden={true}
+                            className="day-label"
+                          >
+                            <FormattedDayOfWeek
+                              day="wednesday"
+                            >
+                              <FormattedMessage
+                                id="common.daysOfWeek.wednesday"
+                              >
+                                common.daysOfWeek.wednesday
+                              </FormattedMessage>
+                            </FormattedDayOfWeek>
+                          </p>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
-                            key="TriMet:20-Gresham TC"
                             pattern={
                               Object {
                                 "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -3978,7 +3984,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                           >
@@ -4068,7 +4074,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   "nearbyRadius": 250,
                                   "numberOfDepartures": 3,
                                   "showBlockIds": false,
-                                  "timeRange": 345600,
+                                  "timeRange": 172800,
                                 }
                               }
                             >
@@ -4076,7 +4082,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                 className="route-row"
                               >
                                 <div
-                                  className="header"
+                                  className="header stop-view"
                                   style={
                                     Object {
                                       "backgroundColor": "#333333",
@@ -4088,17 +4094,15 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                     className="route-name"
                                   >
                                     <strong
-                                      style={Object {}}
-                                    >
-                                      <div
-                                        style={
-                                          Object {
-                                            "alignContent": "center",
-                                            "display": "flex",
-                                            "justifyContent": "center",
-                                            "whiteSpace": "nowrap",
-                                          }
+                                      style={
+                                        Object {
+                                          "fontSize": "32px",
                                         }
+                                      }
+                                    >
+                                      <span
+                                        className="route-name-container"
+                                        title="20"
                                       >
                                         <DefaultRouteRenderer
                                           leg={
@@ -4127,9 +4131,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                             </span>
                                           </styled.span>
                                         </DefaultRouteRenderer>
-                                      </div>
+                                      </span>
                                     </strong>
-                                    <span>
+                                    <span
+                                      title="Gresham TC"
+                                    >
                                       Gresham TC
                                     </span>
                                   </div>
@@ -4459,7 +4465,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                             transitOperators={Array []}
@@ -5107,7 +5113,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                 "nearbyRadius": 250,
                 "numberOfDepartures": 3,
                 "showBlockIds": false,
-                "timeRange": 345600,
+                "timeRange": 172800,
               }
             }
             toggleAutoRefresh={[Function]}
@@ -5618,7 +5624,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   tabIndex={0}
                 >
                   <div
-                    className="sc-edoYdd eXVbVq"
+                    className="sc-jlIlqL iaSjpP"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -5798,7 +5804,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           "nearbyRadius": 250,
                           "numberOfDepartures": 3,
                           "showBlockIds": false,
-                          "timeRange": 345600,
+                          "timeRange": 172800,
                         }
                       }
                       toggleAutoRefresh={[Function]}
@@ -6022,7 +6028,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                             "nearbyRadius": 250,
                             "numberOfDepartures": 3,
                             "showBlockIds": false,
-                            "timeRange": 345600,
+                            "timeRange": 172800,
                           }
                         }
                         toggleAutoRefresh={[Function]}
@@ -6036,9 +6042,22 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         <ul
                           className="route-row-container"
                         >
+                          <p
+                            aria-hidden={true}
+                            className="day-label"
+                          >
+                            <FormattedDayOfWeek
+                              day="wednesday"
+                            >
+                              <FormattedMessage
+                                id="common.daysOfWeek.wednesday"
+                              >
+                                common.daysOfWeek.wednesday
+                              </FormattedMessage>
+                            </FormattedDayOfWeek>
+                          </p>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
-                            key="TriMet:20-Gresham TC"
                             pattern={
                               Object {
                                 "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -6177,7 +6196,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                           >
@@ -6357,7 +6376,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   "nearbyRadius": 250,
                                   "numberOfDepartures": 3,
                                   "showBlockIds": false,
-                                  "timeRange": 345600,
+                                  "timeRange": 172800,
                                 }
                               }
                             >
@@ -6365,7 +6384,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                 className="route-row"
                               >
                                 <div
-                                  className="header"
+                                  className="header stop-view"
                                   style={
                                     Object {
                                       "backgroundColor": "#333333",
@@ -6377,17 +6396,15 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                     className="route-name"
                                   >
                                     <strong
-                                      style={Object {}}
-                                    >
-                                      <div
-                                        style={
-                                          Object {
-                                            "alignContent": "center",
-                                            "display": "flex",
-                                            "justifyContent": "center",
-                                            "whiteSpace": "nowrap",
-                                          }
+                                      style={
+                                        Object {
+                                          "fontSize": "32px",
                                         }
+                                      }
+                                    >
+                                      <span
+                                        className="route-name-container"
+                                        title="20"
                                       >
                                         <DefaultRouteRenderer
                                           leg={
@@ -6416,9 +6433,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                             </span>
                                           </styled.span>
                                         </DefaultRouteRenderer>
-                                      </div>
+                                      </span>
                                     </strong>
-                                    <span>
+                                    <span
+                                      title="Gresham TC"
+                                    >
                                       Gresham TC
                                     </span>
                                   </div>
@@ -6516,27 +6535,24 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="thursday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.thursday"
-                                              >
-                                                common.daysOfWeek.thursday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -6662,27 +6678,24 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="thursday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.thursday"
-                                              >
-                                                common.daysOfWeek.thursday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -6808,27 +6821,24 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="thursday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.thursday"
-                                              >
-                                                common.daysOfWeek.thursday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -7171,7 +7181,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                             transitOperators={Array []}
@@ -8374,7 +8384,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                 "nearbyRadius": 250,
                 "numberOfDepartures": 3,
                 "showBlockIds": false,
-                "timeRange": 345600,
+                "timeRange": 172800,
               }
             }
             toggleAutoRefresh={[Function]}
@@ -8885,7 +8895,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   tabIndex={0}
                 >
                   <div
-                    className="sc-edoYdd eXVbVq"
+                    className="sc-jlIlqL iaSjpP"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -9323,7 +9333,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           "nearbyRadius": 250,
                           "numberOfDepartures": 3,
                           "showBlockIds": false,
-                          "timeRange": 345600,
+                          "timeRange": 172800,
                         }
                       }
                       toggleAutoRefresh={[Function]}
@@ -9805,7 +9815,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             "nearbyRadius": 250,
                             "numberOfDepartures": 3,
                             "showBlockIds": false,
-                            "timeRange": 345600,
+                            "timeRange": 172800,
                           }
                         }
                         toggleAutoRefresh={[Function]}
@@ -9819,9 +9829,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         <ul
                           className="route-row-container"
                         >
+                          <p
+                            aria-hidden={true}
+                            className="day-label"
+                          >
+                            <FormattedDayOfWeek
+                              day="monday"
+                            >
+                              <FormattedMessage
+                                id="common.daysOfWeek.monday"
+                              >
+                                common.daysOfWeek.monday
+                              </FormattedMessage>
+                            </FormattedDayOfWeek>
+                          </p>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
-                            key="TriMet:20-Gresham TC"
                             pattern={
                               Object {
                                 "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -9863,6 +9886,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 },
                                 Object {
                                   "arrivalDelay": 0,
+                                  "blockId": "2046",
+                                  "departureDelay": 0,
+                                  "headsign": "Gresham TC",
+                                  "realtime": false,
+                                  "realtimeArrival": 65759,
+                                  "realtimeDeparture": 65759,
+                                  "realtimeState": "SCHEDULED",
+                                  "scheduledArrival": 65759,
+                                  "scheduledDeparture": 65759,
+                                  "serviceDay": 1564988400,
+                                  "stopCount": 132,
+                                  "stopId": "TriMet:715",
+                                  "stopIndex": 42,
+                                  "timepoint": false,
+                                  "tripId": "TriMet:9230359",
+                                },
+                                Object {
+                                  "arrivalDelay": 0,
                                   "blockId": "2047",
                                   "departureDelay": 0,
                                   "headsign": "Gresham TC",
@@ -9896,24 +9937,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   "stopIndex": 42,
                                   "timepoint": false,
                                   "tripId": "TriMet:9230361",
-                                },
-                                Object {
-                                  "arrivalDelay": 0,
-                                  "blockId": "2046",
-                                  "departureDelay": 0,
-                                  "headsign": "Gresham TC",
-                                  "realtime": false,
-                                  "realtimeArrival": 65759,
-                                  "realtimeDeparture": 65759,
-                                  "realtimeState": "SCHEDULED",
-                                  "scheduledArrival": 65759,
-                                  "scheduledDeparture": 65759,
-                                  "serviceDay": 1564988400,
-                                  "stopCount": 132,
-                                  "stopId": "TriMet:715",
-                                  "stopIndex": 42,
-                                  "timepoint": false,
-                                  "tripId": "TriMet:9230359",
                                 },
                                 Object {
                                   "arrivalDelay": 0,
@@ -9958,7 +9981,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                           >
@@ -10041,6 +10064,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   },
                                   Object {
                                     "arrivalDelay": 0,
+                                    "blockId": "2046",
+                                    "departureDelay": 0,
+                                    "headsign": "Gresham TC",
+                                    "realtime": false,
+                                    "realtimeArrival": 65759,
+                                    "realtimeDeparture": 65759,
+                                    "realtimeState": "SCHEDULED",
+                                    "scheduledArrival": 65759,
+                                    "scheduledDeparture": 65759,
+                                    "serviceDay": 1564988400,
+                                    "stopCount": 132,
+                                    "stopId": "TriMet:715",
+                                    "stopIndex": 42,
+                                    "timepoint": false,
+                                    "tripId": "TriMet:9230359",
+                                  },
+                                  Object {
+                                    "arrivalDelay": 0,
                                     "blockId": "2047",
                                     "departureDelay": 0,
                                     "headsign": "Gresham TC",
@@ -10074,24 +10115,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     "stopIndex": 42,
                                     "timepoint": false,
                                     "tripId": "TriMet:9230361",
-                                  },
-                                  Object {
-                                    "arrivalDelay": 0,
-                                    "blockId": "2046",
-                                    "departureDelay": 0,
-                                    "headsign": "Gresham TC",
-                                    "realtime": false,
-                                    "realtimeArrival": 65759,
-                                    "realtimeDeparture": 65759,
-                                    "realtimeState": "SCHEDULED",
-                                    "scheduledArrival": 65759,
-                                    "scheduledDeparture": 65759,
-                                    "serviceDay": 1564988400,
-                                    "stopCount": 132,
-                                    "stopId": "TriMet:715",
-                                    "stopIndex": 42,
-                                    "timepoint": false,
-                                    "tripId": "TriMet:9230359",
                                   },
                                   Object {
                                     "arrivalDelay": 0,
@@ -10136,7 +10159,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   "nearbyRadius": 250,
                                   "numberOfDepartures": 3,
                                   "showBlockIds": false,
-                                  "timeRange": 345600,
+                                  "timeRange": 172800,
                                 }
                               }
                             >
@@ -10144,7 +10167,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 className="route-row"
                               >
                                 <div
-                                  className="header"
+                                  className="header stop-view"
                                   style={
                                     Object {
                                       "backgroundColor": "#333333",
@@ -10156,17 +10179,15 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     className="route-name"
                                   >
                                     <strong
-                                      style={Object {}}
-                                    >
-                                      <div
-                                        style={
-                                          Object {
-                                            "alignContent": "center",
-                                            "display": "flex",
-                                            "justifyContent": "center",
-                                            "whiteSpace": "nowrap",
-                                          }
+                                      style={
+                                        Object {
+                                          "fontSize": "32px",
                                         }
+                                      }
+                                    >
+                                      <span
+                                        className="route-name-container"
+                                        title="20"
                                       >
                                         <DefaultRouteRenderer
                                           leg={
@@ -10195,9 +10216,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             </span>
                                           </styled.span>
                                         </DefaultRouteRenderer>
-                                      </div>
+                                      </span>
                                     </strong>
-                                    <span>
+                                    <span
+                                      title="Gresham TC"
+                                    >
                                       Gresham TC
                                     </span>
                                   </div>
@@ -10295,27 +10318,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="monday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.monday"
-                                              >
-                                                common.daysOfWeek.monday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="monday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.monday"
+                                                  >
+                                                    common.daysOfWeek.monday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -10441,27 +10461,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="monday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.monday"
-                                              >
-                                                common.daysOfWeek.monday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="monday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.monday"
+                                                  >
+                                                    common.daysOfWeek.monday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -10587,27 +10604,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="monday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.monday"
-                                              >
-                                                common.daysOfWeek.monday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="monday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.monday"
+                                                  >
+                                                    common.daysOfWeek.monday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -10647,9 +10661,22 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               </li>
                             </PatternRow>
                           </injectIntl(PatternRow)>
+                          <p
+                            aria-hidden={true}
+                            className="day-label"
+                          >
+                            <FormattedDayOfWeek
+                              day="tuesday"
+                            >
+                              <FormattedMessage
+                                id="common.daysOfWeek.tuesday"
+                              >
+                                common.daysOfWeek.tuesday
+                              </FormattedMessage>
+                            </FormattedDayOfWeek>
+                          </p>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
-                            key="TriMet:94-Sherwood"
                             pattern={
                               Object {
                                 "desc": "94 to SW Railroad & Washington (TriMet:3670) from W Burnside & SW 8th (TriMet:715)",
@@ -10709,24 +10736,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 },
                                 Object {
                                   "arrivalDelay": 0,
-                                  "blockId": "9474",
-                                  "departureDelay": 0,
-                                  "headsign": "Sherwood",
-                                  "realtime": false,
-                                  "realtimeArrival": 56880,
-                                  "realtimeDeparture": 56880,
-                                  "realtimeState": "SCHEDULED",
-                                  "scheduledArrival": 56880,
-                                  "scheduledDeparture": 56880,
-                                  "serviceDay": 1565074800,
-                                  "stopCount": 40,
-                                  "stopId": "TriMet:715",
-                                  "stopIndex": 0,
-                                  "timepoint": true,
-                                  "tripId": "TriMet:9238194",
-                                },
-                                Object {
-                                  "arrivalDelay": 0,
                                   "blockId": "9470",
                                   "departureDelay": 0,
                                   "headsign": "Sherwood",
@@ -10742,6 +10751,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   "stopIndex": 0,
                                   "timepoint": true,
                                   "tripId": "TriMet:9238190",
+                                },
+                                Object {
+                                  "arrivalDelay": 0,
+                                  "blockId": "9474",
+                                  "departureDelay": 0,
+                                  "headsign": "Sherwood",
+                                  "realtime": false,
+                                  "realtimeArrival": 56880,
+                                  "realtimeDeparture": 56880,
+                                  "realtimeState": "SCHEDULED",
+                                  "scheduledArrival": 56880,
+                                  "scheduledDeparture": 56880,
+                                  "serviceDay": 1565074800,
+                                  "stopCount": 40,
+                                  "stopId": "TriMet:715",
+                                  "stopIndex": 0,
+                                  "timepoint": true,
+                                  "tripId": "TriMet:9238194",
                                 },
                                 Object {
                                   "arrivalDelay": 0,
@@ -10786,7 +10813,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                           >
@@ -10887,24 +10914,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   },
                                   Object {
                                     "arrivalDelay": 0,
-                                    "blockId": "9474",
-                                    "departureDelay": 0,
-                                    "headsign": "Sherwood",
-                                    "realtime": false,
-                                    "realtimeArrival": 56880,
-                                    "realtimeDeparture": 56880,
-                                    "realtimeState": "SCHEDULED",
-                                    "scheduledArrival": 56880,
-                                    "scheduledDeparture": 56880,
-                                    "serviceDay": 1565074800,
-                                    "stopCount": 40,
-                                    "stopId": "TriMet:715",
-                                    "stopIndex": 0,
-                                    "timepoint": true,
-                                    "tripId": "TriMet:9238194",
-                                  },
-                                  Object {
-                                    "arrivalDelay": 0,
                                     "blockId": "9470",
                                     "departureDelay": 0,
                                     "headsign": "Sherwood",
@@ -10920,6 +10929,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     "stopIndex": 0,
                                     "timepoint": true,
                                     "tripId": "TriMet:9238190",
+                                  },
+                                  Object {
+                                    "arrivalDelay": 0,
+                                    "blockId": "9474",
+                                    "departureDelay": 0,
+                                    "headsign": "Sherwood",
+                                    "realtime": false,
+                                    "realtimeArrival": 56880,
+                                    "realtimeDeparture": 56880,
+                                    "realtimeState": "SCHEDULED",
+                                    "scheduledArrival": 56880,
+                                    "scheduledDeparture": 56880,
+                                    "serviceDay": 1565074800,
+                                    "stopCount": 40,
+                                    "stopId": "TriMet:715",
+                                    "stopIndex": 0,
+                                    "timepoint": true,
+                                    "tripId": "TriMet:9238194",
                                   },
                                   Object {
                                     "arrivalDelay": 0,
@@ -10964,7 +10991,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   "nearbyRadius": 250,
                                   "numberOfDepartures": 3,
                                   "showBlockIds": false,
-                                  "timeRange": 345600,
+                                  "timeRange": 172800,
                                 }
                               }
                             >
@@ -10972,7 +10999,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 className="route-row"
                               >
                                 <div
-                                  className="header"
+                                  className="header stop-view"
                                   style={
                                     Object {
                                       "backgroundColor": "#333333",
@@ -10984,17 +11011,15 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     className="route-name"
                                   >
                                     <strong
-                                      style={Object {}}
-                                    >
-                                      <div
-                                        style={
-                                          Object {
-                                            "alignContent": "center",
-                                            "display": "flex",
-                                            "justifyContent": "center",
-                                            "whiteSpace": "nowrap",
-                                          }
+                                      style={
+                                        Object {
+                                          "fontSize": "32px",
                                         }
+                                      }
+                                    >
+                                      <span
+                                        className="route-name-container"
+                                        title="94"
                                       >
                                         <DefaultRouteRenderer
                                           leg={
@@ -11023,9 +11048,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             </span>
                                           </styled.span>
                                         </DefaultRouteRenderer>
-                                      </div>
+                                      </span>
                                     </strong>
-                                    <span>
+                                    <span
+                                      title="Sherwood"
+                                    >
                                       Sherwood
                                     </span>
                                   </div>
@@ -11123,27 +11150,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="tuesday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.tuesday"
-                                              >
-                                                common.daysOfWeek.tuesday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="tuesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.tuesday"
+                                                  >
+                                                    common.daysOfWeek.tuesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -11269,27 +11293,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="tuesday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.tuesday"
-                                              >
-                                                common.daysOfWeek.tuesday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="tuesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.tuesday"
+                                                  >
+                                                    common.daysOfWeek.tuesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -11415,27 +11436,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="tuesday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.tuesday"
-                                              >
-                                                common.daysOfWeek.tuesday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="tuesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.tuesday"
+                                                  >
+                                                    common.daysOfWeek.tuesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -11477,7 +11495,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           </injectIntl(PatternRow)>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
-                            key="TriMet:94-King City"
                             pattern={
                               Object {
                                 "desc": "94 to SW Pacific Hwy & Durham (TriMet:8644) from W Burnside & SW 8th (TriMet:715)",
@@ -11560,7 +11577,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                           >
@@ -11684,7 +11701,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   "nearbyRadius": 250,
                                   "numberOfDepartures": 3,
                                   "showBlockIds": false,
-                                  "timeRange": 345600,
+                                  "timeRange": 172800,
                                 }
                               }
                             >
@@ -11692,7 +11709,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 className="route-row"
                               >
                                 <div
-                                  className="header"
+                                  className="header stop-view"
                                   style={
                                     Object {
                                       "backgroundColor": "#333333",
@@ -11704,17 +11721,15 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     className="route-name"
                                   >
                                     <strong
-                                      style={Object {}}
-                                    >
-                                      <div
-                                        style={
-                                          Object {
-                                            "alignContent": "center",
-                                            "display": "flex",
-                                            "justifyContent": "center",
-                                            "whiteSpace": "nowrap",
-                                          }
+                                      style={
+                                        Object {
+                                          "fontSize": "32px",
                                         }
+                                      }
+                                    >
+                                      <span
+                                        className="route-name-container"
+                                        title="94"
                                       >
                                         <DefaultRouteRenderer
                                           leg={
@@ -11743,9 +11758,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             </span>
                                           </styled.span>
                                         </DefaultRouteRenderer>
-                                      </div>
+                                      </span>
                                     </strong>
-                                    <span>
+                                    <span
+                                      title="King City"
+                                    >
                                       King City
                                     </span>
                                   </div>
@@ -11843,27 +11860,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="tuesday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.tuesday"
-                                              >
-                                                common.daysOfWeek.tuesday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="tuesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.tuesday"
+                                                  >
+                                                    common.daysOfWeek.tuesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -11989,27 +12003,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="wednesday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.wednesday"
-                                              >
-                                                common.daysOfWeek.wednesday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -12135,27 +12146,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="thursday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.thursday"
-                                              >
-                                                common.daysOfWeek.thursday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="thursday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.thursday"
+                                                  >
+                                                    common.daysOfWeek.thursday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -12197,7 +12205,6 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           </injectIntl(PatternRow)>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
-                            key="TriMet:36-Tualatin Park & Ride"
                             pattern={
                               Object {
                                 "desc": "36 to Tualatin Park & Ride (TriMet:7879) from W Burnside & SW 8th (TriMet:715)",
@@ -12280,7 +12287,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                           >
@@ -12404,7 +12411,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   "nearbyRadius": 250,
                                   "numberOfDepartures": 3,
                                   "showBlockIds": false,
-                                  "timeRange": 345600,
+                                  "timeRange": 172800,
                                 }
                               }
                             >
@@ -12412,7 +12419,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 className="route-row"
                               >
                                 <div
-                                  className="header"
+                                  className="header stop-view"
                                   style={
                                     Object {
                                       "backgroundColor": "#333333",
@@ -12424,17 +12431,15 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                     className="route-name"
                                   >
                                     <strong
-                                      style={Object {}}
-                                    >
-                                      <div
-                                        style={
-                                          Object {
-                                            "alignContent": "center",
-                                            "display": "flex",
-                                            "justifyContent": "center",
-                                            "whiteSpace": "nowrap",
-                                          }
+                                      style={
+                                        Object {
+                                          "fontSize": "32px",
                                         }
+                                      }
+                                    >
+                                      <span
+                                        className="route-name-container"
+                                        title="36"
                                       >
                                         <DefaultRouteRenderer
                                           leg={
@@ -12463,9 +12468,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                             </span>
                                           </styled.span>
                                         </DefaultRouteRenderer>
-                                      </div>
+                                      </span>
                                     </strong>
-                                    <span>
+                                    <span
+                                      title="Tualatin Park & Ride"
+                                    >
                                       Tualatin Park & Ride
                                     </span>
                                   </div>
@@ -12563,27 +12570,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="tuesday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.tuesday"
-                                              >
-                                                common.daysOfWeek.tuesday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="tuesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.tuesday"
+                                                  >
+                                                    common.daysOfWeek.tuesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -12709,27 +12713,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="tuesday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.tuesday"
-                                              >
-                                                common.daysOfWeek.tuesday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="tuesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.tuesday"
+                                                  >
+                                                    common.daysOfWeek.tuesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -12855,27 +12856,24 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="wednesday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.wednesday"
-                                              >
-                                                common.daysOfWeek.wednesday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="wednesday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.wednesday"
+                                                  >
+                                                    common.daysOfWeek.wednesday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -13476,7 +13474,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                             transitOperators={Array []}
@@ -15448,7 +15446,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                 "nearbyRadius": 250,
                 "numberOfDepartures": 3,
                 "showBlockIds": false,
-                "timeRange": 345600,
+                "timeRange": 172800,
               }
             }
             toggleAutoRefresh={[Function]}
@@ -15959,7 +15957,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   tabIndex={0}
                 >
                   <div
-                    className="sc-edoYdd eXVbVq"
+                    className="sc-jlIlqL iaSjpP"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -16392,7 +16390,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           "nearbyRadius": 250,
                           "numberOfDepartures": 3,
                           "showBlockIds": false,
-                          "timeRange": 345600,
+                          "timeRange": 172800,
                         }
                       }
                       toggleAutoRefresh={[Function]}
@@ -16869,7 +16867,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                             "nearbyRadius": 250,
                             "numberOfDepartures": 3,
                             "showBlockIds": false,
-                            "timeRange": 345600,
+                            "timeRange": 172800,
                           }
                         }
                         toggleAutoRefresh={[Function]}
@@ -16883,9 +16881,22 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         <ul
                           className="route-row-container"
                         >
+                          <p
+                            aria-hidden={true}
+                            className="day-label"
+                          >
+                            <FormattedDayOfWeek
+                              day="monday"
+                            >
+                              <FormattedMessage
+                                id="common.daysOfWeek.monday"
+                              >
+                                common.daysOfWeek.monday
+                              </FormattedMessage>
+                            </FormattedDayOfWeek>
+                          </p>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
-                            key="TriMet:20-Gresham TC"
                             pattern={
                               Object {
                                 "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -16947,24 +16958,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                 },
                                 Object {
                                   "arrivalDelay": 0,
-                                  "blockId": "2047",
-                                  "departureDelay": 0,
-                                  "headsign": "Gresham TC",
-                                  "realtime": false,
-                                  "realtimeArrival": 66668,
-                                  "realtimeDeparture": 66668,
-                                  "realtimeState": "SCHEDULED",
-                                  "scheduledArrival": 66668,
-                                  "scheduledDeparture": 66668,
-                                  "serviceDay": 1564988400,
-                                  "stopCount": 132,
-                                  "stopId": "TriMet:715",
-                                  "stopIndex": 42,
-                                  "timepoint": false,
-                                  "tripId": "TriMet:9230360",
-                                },
-                                Object {
-                                  "arrivalDelay": 0,
                                   "blockId": "2046",
                                   "departureDelay": 0,
                                   "headsign": "Gresham TC",
@@ -16980,6 +16973,24 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   "stopIndex": 42,
                                   "timepoint": false,
                                   "tripId": "TriMet:9230359",
+                                },
+                                Object {
+                                  "arrivalDelay": 0,
+                                  "blockId": "2047",
+                                  "departureDelay": 0,
+                                  "headsign": "Gresham TC",
+                                  "realtime": false,
+                                  "realtimeArrival": 66668,
+                                  "realtimeDeparture": 66668,
+                                  "realtimeState": "SCHEDULED",
+                                  "scheduledArrival": 66668,
+                                  "scheduledDeparture": 66668,
+                                  "serviceDay": 1564988400,
+                                  "stopCount": 132,
+                                  "stopId": "TriMet:715",
+                                  "stopIndex": 42,
+                                  "timepoint": false,
+                                  "tripId": "TriMet:9230360",
                                 },
                                 Object {
                                   "arrivalDelay": 0,
@@ -17024,7 +17035,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                           >
@@ -17127,24 +17138,6 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   },
                                   Object {
                                     "arrivalDelay": 0,
-                                    "blockId": "2047",
-                                    "departureDelay": 0,
-                                    "headsign": "Gresham TC",
-                                    "realtime": false,
-                                    "realtimeArrival": 66668,
-                                    "realtimeDeparture": 66668,
-                                    "realtimeState": "SCHEDULED",
-                                    "scheduledArrival": 66668,
-                                    "scheduledDeparture": 66668,
-                                    "serviceDay": 1564988400,
-                                    "stopCount": 132,
-                                    "stopId": "TriMet:715",
-                                    "stopIndex": 42,
-                                    "timepoint": false,
-                                    "tripId": "TriMet:9230360",
-                                  },
-                                  Object {
-                                    "arrivalDelay": 0,
                                     "blockId": "2046",
                                     "departureDelay": 0,
                                     "headsign": "Gresham TC",
@@ -17160,6 +17153,24 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     "stopIndex": 42,
                                     "timepoint": false,
                                     "tripId": "TriMet:9230359",
+                                  },
+                                  Object {
+                                    "arrivalDelay": 0,
+                                    "blockId": "2047",
+                                    "departureDelay": 0,
+                                    "headsign": "Gresham TC",
+                                    "realtime": false,
+                                    "realtimeArrival": 66668,
+                                    "realtimeDeparture": 66668,
+                                    "realtimeState": "SCHEDULED",
+                                    "scheduledArrival": 66668,
+                                    "scheduledDeparture": 66668,
+                                    "serviceDay": 1564988400,
+                                    "stopCount": 132,
+                                    "stopId": "TriMet:715",
+                                    "stopIndex": 42,
+                                    "timepoint": false,
+                                    "tripId": "TriMet:9230360",
                                   },
                                   Object {
                                     "arrivalDelay": 0,
@@ -17204,7 +17215,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   "nearbyRadius": 250,
                                   "numberOfDepartures": 3,
                                   "showBlockIds": false,
-                                  "timeRange": 345600,
+                                  "timeRange": 172800,
                                 }
                               }
                             >
@@ -17212,7 +17223,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                 className="route-row"
                               >
                                 <div
-                                  className="header"
+                                  className="header stop-view"
                                   style={
                                     Object {
                                       "backgroundColor": "#333333",
@@ -17224,17 +17235,15 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                     className="route-name"
                                   >
                                     <strong
-                                      style={Object {}}
-                                    >
-                                      <div
-                                        style={
-                                          Object {
-                                            "alignContent": "center",
-                                            "display": "flex",
-                                            "justifyContent": "center",
-                                            "whiteSpace": "nowrap",
-                                          }
+                                      style={
+                                        Object {
+                                          "fontSize": "32px",
                                         }
+                                      }
+                                    >
+                                      <span
+                                        className="route-name-container"
+                                        title="20"
                                       >
                                         <DefaultRouteRenderer
                                           leg={
@@ -17263,9 +17272,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                             </span>
                                           </styled.span>
                                         </DefaultRouteRenderer>
-                                      </div>
+                                      </span>
                                     </strong>
-                                    <span>
+                                    <span
+                                      title="Gresham TC"
+                                    >
                                       Gresham TC
                                     </span>
                                   </div>
@@ -17363,27 +17374,24 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="monday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.monday"
-                                              >
-                                                common.daysOfWeek.monday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="monday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.monday"
+                                                  >
+                                                    common.daysOfWeek.monday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -17509,27 +17517,24 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="monday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.monday"
-                                              >
-                                                common.daysOfWeek.monday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="monday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.monday"
+                                                  >
+                                                    common.daysOfWeek.monday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -17655,27 +17660,24 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           </Styled(styled.span)>
                                           <span
                                             className="percy-hide"
-                                            style={
-                                              Object {
-                                                "marginBottom": -4,
-                                              }
-                                            }
-                                          >
-                                            <FormattedDayOfWeek
-                                              day="monday"
-                                            >
-                                              <FormattedMessage
-                                                id="common.daysOfWeek.monday"
-                                              >
-                                                common.daysOfWeek.monday
-                                              </FormattedMessage>
-                                            </FormattedDayOfWeek>
-                                             
-                                          </span>
-                                          <span
-                                            className="percy-hide"
                                             title="components.RealtimeStatusLabel.scheduled"
                                           >
+                                            <styled.span>
+                                              <span
+                                                className="sc-dkAqVg eAprJx"
+                                              >
+                                                <FormattedDayOfWeek
+                                                  day="monday"
+                                                >
+                                                  <FormattedMessage
+                                                    id="common.daysOfWeek.monday"
+                                                  >
+                                                    common.daysOfWeek.monday
+                                                  </FormattedMessage>
+                                                </FormattedDayOfWeek>
+                                                 
+                                              </span>
+                                            </styled.span>
                                             <DepartureTime
                                               realTime={true}
                                               stopTime={
@@ -18271,7 +18273,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                 "nearbyRadius": 250,
                                 "numberOfDepartures": 3,
                                 "showBlockIds": false,
-                                "timeRange": 345600,
+                                "timeRange": 172800,
                               }
                             }
                             transitOperators={Array []}
@@ -19810,7 +19812,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                 "nearbyRadius": 250,
                 "numberOfDepartures": 3,
                 "showBlockIds": false,
-                "timeRange": 345600,
+                "timeRange": 172800,
               }
             }
             toggleAutoRefresh={[Function]}

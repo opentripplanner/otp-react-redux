@@ -18,10 +18,10 @@ import getRealtimeStatusLabel, {
 import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 const { getUserTimezone } = coreUtils.time
 const ONE_HOUR_IN_SECONDS = 3600
-const ONE_DAY_IN_SECONDS = 86400
 
 const PulsingRss = styled(Rss)`
   animation: pulse-opacity 2s ease-in-out infinite;
@@ -63,22 +63,6 @@ const StopTimeCell = ({
       </div>
     )
   }
-  const departureTime = stopTime.realtimeDeparture
-  const now = utcToZonedTime(Date.now(), homeTimezone)
-  const serviceDay = utcToZonedTime(
-    new Date(stopTime.serviceDay * 1000),
-    homeTimezone
-  )
-
-  // Determine if arrival occurs on different day, making sure to account for
-  // any extra days added to the service day if it arrives after midnight. Note:
-  // this can handle the rare (and non-existent?) case where an arrival occurs
-  // 48:00 hours (or more) from the start of the service day.
-  const departureTimeRemainder = departureTime % ONE_DAY_IN_SECONDS
-  const daysAfterServiceDay =
-    (departureTime - departureTimeRemainder) / ONE_DAY_IN_SECONDS
-  const departureDay = addDays(serviceDay, daysAfterServiceDay)
-  const vehicleDepartsToday = isSameDay(now, departureDay)
 
   // Determine whether to show departure as countdown (e.g. "5 min") or as HH:mm
   // time, using realtime updates if available.
@@ -94,11 +78,7 @@ const StopTimeCell = ({
   // Whether to display "Due" or a countdown (used in conjunction with showCountdown).
   const isDue = secondsUntilDeparture < 60
 
-  // We only want to show the day of the week if the arrival is on a
-  // different day and we're not showing the countdown string. This avoids
-  // cases such as when it's Wednesday at 11:55pm and an arrival occurs at
-  // Thursday 12:19am. We don't want the time to read: 'Thursday, 24 minutes'.
-  const showDayOfWeek = !vehicleDepartsToday && !showCountdown
+  const formattedDay = utcToZonedTime(stopTime.serviceDay * 1000, homeTimezone)
 
   const realtime = stopTime.realtimeState === 'UPDATED'
   const realtimeLabel = realtime
@@ -121,17 +101,6 @@ const StopTimeCell = ({
         {realtime ? <PulsingRss /> : <Clock />}
       </StyledIconWrapperTextAlign>
 
-      {showDayOfWeek && (
-        <span className="percy-hide" style={{ marginBottom: -4 }}>
-          <FormattedDayOfWeek
-            // 'iiii' returns the long ISO day of the week (independent of browser locale).
-            // See https://date-fns.org/v2.28.0/docs/format
-            day={format(departureDay, 'iiii', {
-              timeZone: homeTimezone
-            }).toLowerCase()}
-          />{' '}
-        </span>
-      )}
       <span
         className="percy-hide"
         title={getRealtimeStatusLabel({
@@ -151,7 +120,20 @@ const StopTimeCell = ({
             />
           )
         ) : (
-          <DepartureTime realTime stopTime={stopTime} />
+          <>
+            {!isSameDay(new Date(), formattedDay) && (
+              <InvisibleA11yLabel>
+                <FormattedDayOfWeek
+                  // 'iiii' returns the long ISO day of the week (independent of browser locale).
+                  // See https://date-fns.org/v2.28.0/docs/format
+                  day={format(formattedDay, 'iiii', {
+                    timeZone: homeTimezone
+                  }).toLowerCase()}
+                />{' '}
+              </InvisibleA11yLabel>
+            )}
+            <DepartureTime realTime stopTime={stopTime} />
+          </>
         )}
       </span>
     </div>

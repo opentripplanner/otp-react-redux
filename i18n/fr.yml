@@ -4,7 +4,7 @@ actions:
   callTaker:
     callQuerySaveError: "Erreur lors de l'enregistrement des requêtes pour l'appel : {err}"
     callSaveError: "Impossible d'enregistrer l'appel : {err}"
-    checkSessionError: "Erreur durant l'auth-entification : {err}"
+    checkSessionError: "Erreur durant la session d'authentification : {err}"
     couldNotFindCallError: >-
       Impossible de trouver l'appel. Tentative de sauvegarde des requêtes
       annulée.
@@ -13,33 +13,33 @@ actions:
   fieldTrip:
     addNoteError: "Erreur lors de l'ajout d'une note sur le groupe :"
     confirmOverwriteItineraries: |
-      Cette action replacera un itinéraire {outbound, select,
+      Cette action replacera un trajet {outbound, select,
         true {aller}
         other {retour}
       } planifié préalablement pour cette demande. Voulez-vous continuer ?
-    deleteItinerariesError: "Erreur lors de la suppression d'un itinéraire de groupe :"
+    deleteItinerariesError: "Erreur lors de la suppression du trajet pour le groupe :"
     deleteNoteError: "Erreur lors de la suppression d'une note sur le groupe :"
     editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur :"
-    fetchFieldTripError: "Erreur de chargement de l'itinéraire du groupe: {err}"
-    fetchFieldTripsError: "Erreur lors du chargement des itinéraires du groupe : {err}"
+    fetchFieldTripError: "Erreur de chargement du groupe scolaire : {err}"
+    fetchFieldTripsError: "Erreur lors du chargement des groupes scolaires : {err}"
     fetchTripsForDateError: >-
-      Erreur lors du chargement des itinéraires du groupe pour les dates de
-      sorties : {err}
+      Erreur lors du chargement des trajets du groupe pour les dates de sorties
+      : {err}
     incompatibleTripDateError: >-
       La date du trajet planifié ({tripDate}) ne correspond pas à la date
       demandée ({requestDate}).
     itineraryCapacityError: >-
-      Impossible d'enregistrer les itinéraires : Capacité insuffisante dans un
-      ou plusieurs véhicules. Veuillez relancer votre recherche.
+      Impossible d'enregistrer les trajets : Capacité insuffisante dans un ou
+      plusieurs véhicules. Veuillez réorganiser votre trajet.
     maxTripRequestsExceeded: Le nombre de requêtes sans résultats valables a été dépassé.
-    saveItinerariesError: "Erreur lors de l'enregistrement des itinéraires : {err}"
+    saveItinerariesError: "Erreur lors de l'enregistrement des trajets : {err}"
     setDateError: "Erreur sur la date :"
     setGroupSizeError: "Erreur sur la taille du groupe :"
     setPaymentError: "Erreur sur les coordonnées de paiement :"
     setRequestStatusError: "Erreur sur l'état de la requête :"
   location:
     geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par votre navigateur.
-    unknownPositionError: Erreur non-gérée lors de la détection de votre emplacement.
+    unknownPositionError: Erreur inconnue lors de la détection de votre emplacement.
   map:
     currentLocation: (Emplacement actuel)
   user:
@@ -58,8 +58,8 @@ actions:
       Un SMS de vérification a été envoyé au numéro de téléphone indiqué il y a
       moins d'une minute. Patientez quelques moments avant de réessayer.
     smsVerificationFailed: >-
-      Votre numéro de téléphone n'a pas pu etre vérifié. Le code que vous avez
-      entré a peut-etre expiré. Veuillez demander un nouveau code puis
+      Votre numéro de téléphone n'a pas pu être vérifié. Le code que vous avez
+      entré a peut-être expiré. Veuillez demander un nouveau code, puis
       réessayez.
 common:
   coordinates: "{lat}; {lon}"
@@ -170,8 +170,8 @@ common:
         other {il y a # jours}
       }
     tripDurationFormat: >-
-      {hours, plural, =0 {} other {# hr }}{minutes} mn { seconds, plural, =0 {}
-      other {# sec}}
+      {hours, plural, =0 {} other {# h }}{minutes} min { seconds, plural, =0 {}
+      other {# s}}
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Privilégier par défaut les trajets accessibles
@@ -184,7 +184,7 @@ components:
       intermédiaires
     tooManyPlaces: Nombre max. de points intermédiaires atteint
   AdvancedOptions:
-    bannedRoutes: Choisissez les lignes à éviter
+    bannedRoutes: Choisissez les lignes à éviter…
     maxBike: Dist. à vélo ({unitsString})
     maxWalk: Dist. à pied ({unitsString})
     preferredRoutes: Choisissez les lignes preferées
@@ -213,7 +213,7 @@ components:
         other {# vélos partagés {company} à proximité}
       }
     nearbyAmenities: Services à proximité
-    noNearbyBikes: Aucun vélo partagé à proximité.
+    noNearbyBikes: Aucun vélo en location à proximité.
     noNearbyScooters: Aucune trottinette en location à proximité.
     noPRLotsFound: Aucun parc relais à proximité.
     scootersNearby: |
@@ -238,7 +238,7 @@ components:
   BackToTripPlanner:
     backToTripPlanner: Retour au planificateur de trajets
   BatchResultsScreen:
-    expandMap: Étendre la carte
+    expandMap: Agrandir la carte
     showResults: Voir les résultats
   BatchRoutingPanel:
     shortTitle: Planifier un trajet
@@ -246,6 +246,7 @@ components:
     header: Planifiez votre trajet
   BatchSettings:
     destination: destination
+    modeSelector: Sélecteur de modes
     origin: point de départ
     planTripTooltip: Planifier le trajet
     settings: Préférences du trajet
@@ -315,7 +316,8 @@ components:
     itineraryDetails: Détails du trajet
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
-    autoRefresh: Rafraîchir les horaires automatiquement ?
+    autoRefresh: Mise à jour automatique ?
+    refresh: Mettre à jour les prochains passages
   LocationSearch:
     enterLocation: Entrez le lieu
     setDestination: Choisissez la destination
@@ -332,11 +334,14 @@ components:
   MapillaryFrame:
     title: Vue panoramique
   MetroUI:
+    arriveAt: Vous arrivez à
+    arriveAtTime: Arrivée à {time}
     fromStop: de {stop}
     itineraryDescription: Trajet de {time} par les lignes {routes}
     leaveAt: Partez à
     multipleOptions: Plusieurs options
     orAlternatives: ou autres lignes dans la même direction
+    originallyScheduledTime: (initialement {originalTime})
     singleModeItineraryDescription: Trajet de {time} {mode}
     timeWalking: "{time} de marche"
   MobileOptions:
@@ -364,7 +369,7 @@ components:
     signOut: Déconnexion
   NewAccountWizard:
     finish: Votre nouveau compte est prêt !
-    notifications: Recevez vos notifications
+    notifications: Préférences pour les notifications
     places: Ajoutez vos lieux
     terms: Créez votre nouveau compte
     verify: Vérifiez votre adresse e-mail
@@ -394,8 +399,8 @@ components:
     verificationInstructions: >
       Un SMS vous a été envoyé avec un code de vérification. Veuillez taper ce
       code ci-dessous (le code expire après 10 minutes).
-    verified: Verifié
-    verify: Verifier
+    verified: Vérifié
+    verify: Vérifier
   Place:
     deleteThisPlace: Supprimer ce lieu
     enterAlert: >
@@ -518,10 +523,11 @@ components:
     route: Ligne
   StopTimeCell:
     imminentArrival: Imminent
-    realtime: Based on realtime data
-    scheduled: Based on schedule data
+    realtime: Données en temps réel
+    scheduled: Selon l'horaire
   StopViewer:
-    displayStopId: <strong>Arrêt n°</strong> {stopId}
+    displayStopId: <strong>Arrêt n°</strong>{stopId}
+    findSchedule: Rechercher les horaires par jour
     flexStop: >-
       Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande. Une
       réservation préalable peut être exigée pour obtenir la desserte.
@@ -583,7 +589,7 @@ components:
   TripNotificationsPane:
     advancedSettings: Paramètres avancés
     altRouteRecommended: Un·e autre trajet ou correspondance est conseillé·e
-    delaysAboveThreshold: Il y a des perturbations ou retards de plus de
+    delaysAboveThreshold: Il y a des perturbations ou des retards de plus de
     howToReceiveAlerts: >
       Pour recevoir les alertes pour vos trajets suivis, activez les
       notifications dans la section Préférences de votre compte, et essayez
@@ -600,10 +606,10 @@ components:
     planNewTrip: Planifier un nouveau trajet
   TripStatusRenderers:
     active:
-      delayedHeading: Trajet en cours, retardé de {deviationHumanDuration}.
+      delayedHeading: Trajet en cours, retardé de {formattedDuration}.
       description: Arrivée à destination prévue à {arrivalTime, time, short}.
       earlyHeading: Trajet en cours, en avance de {deviationHumanDuration}.
-      noDataHeading: Trajet en cours (données en temps-réel non disponibles).
+      noDataHeading: Trajet en cours (données en temps réel non disponibles).
       onTimeHeading: Trajet en cours et prévu à l'heure.
     base:
       lastCheckedDefaultText: Dernière vérification inconnue
@@ -611,7 +617,7 @@ components:
       togglePause: Suspendre le suivi
       tripIsNotSnoozed: Suspendre jusqu'à demain
       tripIsSnoozed: Reprendre le suivi du trajet
-      unknownState: Etat du trajet inconnu
+      unknownState: État du trajet inconnu
       untogglePause: Reprendre
     inactive:
       description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
@@ -629,7 +635,7 @@ components:
     notCalculated:
       awaiting: Calcul des conditions du trajet en cours...
       description: >-
-        Veuillez patienter pendant que les conditions du trajet soient
+        Veuillez patienter pendant que les conditions du trajet sont
         déterminées.
       heading: Conditions du trajet indéterminées
     snoozed:
@@ -740,7 +746,7 @@ config:
     car_hail: Course en voiture
     car_park: Parc relais
     micromobility: Transports + Trottinnette pers.
-    micromobility_rent: Transports + Trottinette partagée
+    micromobility_rent: Transports + Trottinette louée
   bicycleModes:
     bicycle: Vélo pers.
     bicycle_rent: Vélo partagé
@@ -752,11 +758,11 @@ config:
     flex-service-colon: "Service Flex:"
   micromobilityModes:
     micromobility: Trottinnette pers.
-    micromobility_rent: Trottinette partagée
+    micromobility_rent: Trottinette louée
 util:
   state:
     errorPlanningTrip: Une erreur s'est produite lors de la planification du trajet.
-    networkUnavailable: Le systeme {network} n'est pas disponible pour le moment.
+    networkUnavailable: Le système {network} n'est pas disponible pour le moment.
     noTripFound: Aucun trajet trouvé.
     noTripFoundForMode: Aucun trajet {modes} n'a été trouvé.
     noTripFoundReason: >-
