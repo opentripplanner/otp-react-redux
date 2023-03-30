@@ -367,47 +367,6 @@ components:
     noneSelect: Don't notify me
     notificationChannelPrompt: How would you like to receive notifications?
     notificationEmailDetail: "Notification emails will be sent to:"
-  OTP2ErrorRenderer:
-    LOCATION_NOT_FOUND:
-      body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}} not near any streets.
-      header: Location not accessible
-    NO_STOPS_IN_RANGE:
-      body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}} not near any transit stops.
-      header: No stops in range
-    NO_TRANSIT_CONNECTION:
-      body: >-
-        No transit connection was found between your origin and destination on
-        the selected day of service.
-      header: No transit connections
-    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
-      body: >-
-        A transit connection was found, but it was outside the search window,
-        try adjusting your search window.
-      header: No transit connection in search window
-    OUTSIDE_BOUNDS:
-      body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}} not in the bounds of the trip planner.
-      header: Location outside bounds
-    OUTSIDE_SERVICE_PERIOD:
-      body: >-
-        The date specified is outside the range of data currently loaded into
-        the trip planner.
-      header: Outside service period
-    SYSTEM_ERROR:
-      body: An unknown error happened during the search.
-      header: Trip Planner Failure
-    WALKING_BETTER_THAN_TRANSIT:
-      body: >-
-        Avoiding transit on your trip will be faster than taking transit.
-      header: Transit isn't the fastest way to make this trip
-    inputFields:
-      FROM: Origin
-      TO: Destination
   PhoneNumberEditor:
     changeNumber: Change number
     invalidCode: Please enter 6 digits for the validation code.
