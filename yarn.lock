@@ -2548,10 +2548,10 @@
     "@turf/midpoint" "^6.5.0"
     lodash.isequal "^4.5.0"
 
-"@opentripplanner/trip-details@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-3.0.5.tgz#9c7c9d5066e575da7a4c10e94c8f7ef91b3c73a0"
-  integrity sha512-qFKqP527BgKxzwTcTx5tg2uX9ZGje/h3zL/Dh3ZzNnm1MqDg1Czr4DD3+qcITrYVeHX9Qj6JEjYakV21jLwxBg==
+"@opentripplanner/trip-details@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-3.0.6.tgz#5b81bf73e6b3a2eb0061d30bf9103cbf36dad4e2"
+  integrity sha512-VhLAKESpdrKzmkgQnci1sVwO3v901BDAmct93gMW+oUu9/KjNrS8xCa6l2BiyoLYR1ahRggG6IGiiZ7lJX0xOg==
   dependencies:
     "@opentripplanner/core-utils" "^8.1.1"
     "@styled-icons/fa-solid" "^10.34.0"
