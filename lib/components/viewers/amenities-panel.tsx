@@ -172,7 +172,7 @@ class AmenitiesPanel extends Component<Props, State> {
       <ModeIcon
         height={22}
         mode={mode}
-        style={{ marginRight: '5px' }}
+        style={{ marginRight: '5px', maxHeight: '23px' }}
         width={22}
       />
     )
