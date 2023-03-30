@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { differenceInDays } from 'date-fns'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { Itinerary, Leg } from '@opentripplanner/types'
 import clone from 'clone'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useContext, useState } from 'react'
@@ -17,8 +18,6 @@ import {
   getVisibleItineraryIndex
 } from '../../util/state'
 import { getFirstLegStartTime, itinerariesAreEqual } from '../../util/itinerary'
-import { Itinerary, Leg } from '@opentripplanner/types'
-
 import {
   setActiveItinerary,
   setActiveLeg,
@@ -31,6 +30,7 @@ import PageTitle from '../util/page-title'
 
 import * as S from './styled'
 import { getItineraryDescription } from './default/itinerary-description'
+import ErrorRenderer, { Error } from './metro/OTP2ErrorRenderer'
 import Loading from './loading'
 import NarrativeItinerariesErrors from './narrative-itineraries-errors'
 import NarrativeItinerariesHeader from './narrative-itineraries-header'
@@ -50,6 +50,7 @@ type Props = {
   customBatchUiBackground: any
   errorMessages: any
   errors: any
+  errorsOtp2: any
   groupItineraries: boolean
   groupTransitModes: boolean
   hideFirstResultByDefault: any
@@ -89,6 +90,7 @@ const NarrativeItineraries = ({
   customBatchUiBackground,
   errorMessages,
   errors,
+  errorsOtp2,
   groupItineraries,
   groupTransitModes,
   hideFirstResultByDefault,
@@ -191,10 +193,15 @@ const NarrativeItineraries = ({
     setShowingErrors(!showingErrors)
   }
 
-  const _renderLoadingDivs = () => {
-    // If renderSkeletons is off, show standard spinner
+  const _renderLoadingSpinner = () => {
     if (!renderSkeletons) {
       return pending ? <Loading /> : null
+    }
+  }
+  const _renderLoadingDivs = () => {
+    // If renderSkeletons is off, don't render the skeleton-type loading divs
+    if (!renderSkeletons) {
+      return null
     }
 
     if (!pending || showingErrors) return null
@@ -405,7 +412,7 @@ const NarrativeItineraries = ({
           overflowY: 'auto'
         }}
       >
-        {/* TODO PROPERLY RENDER */}
+        <ErrorRenderer errors={errorsOtp2} />
         {showingErrors || mergedItineraries.length === 0 ? (
           <NarrativeItinerariesErrors
             errorMessages={errorMessages}
@@ -448,6 +455,7 @@ const NarrativeItineraries = ({
             )}
           </>
         )}
+        {_renderLoadingSpinner()}
       </div>
     </S.NarrativeItinerariesContainer>
   )
@@ -462,7 +470,7 @@ const mapStateToProps = (state: any) => {
     activeSearch && activeSearch.activeItineraryTimeIndex
   const { co2, errorMessages, modes } = state.otp.config
   const { sort } = state.otp.filter
-  const pending = activeSearch ? Boolean(activeSearch.pending) : false
+  const pending = activeSearch?.pending > 0
   const itineraries = getActiveItineraries(state)
   const realtimeEffects = getRealtimeEffects(state)
   const urlParams = coreUtils.query.getUrlParams()
@@ -498,7 +506,27 @@ const mapStateToProps = (state: any) => {
     customBatchUiBackground,
     errorMessages,
     errors: getResponsesWithErrors(state),
-    // TODO: Destory otp1 errors and rename this
+    // TODO: Destroy otp1 errors and rename this
+    errorsOtp2: activeSearch?.response?.reduce(
+      // TODO: type
+      (acc: { [code: string]: Set<string | undefined> }, cur: any) => {
+        const { routingErrors } = cur?.plan
+        // code and inputfield
+        if (routingErrors) {
+          routingErrors.forEach(
+            (routingError: { code: string; inputField?: string }) => {
+              const { code, inputField } = routingError
+              if (!acc[code]) {
+                acc[code] = new Set()
+              }
+              acc[code].add(inputField)
+            }
+          )
+        }
+        return acc
+      },
+      {}
+    ),
     groupItineraries,
     groupTransitModes,
     hideFirstResultByDefault,
