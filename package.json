@@ -39,25 +39,25 @@
     "@bugsnag/plugin-react": "^7.17.0",
     "@opentripplanner/base-map": "^3.0.10",
     "@opentripplanner/core-utils": "^8.1.1",
-    "@opentripplanner/endpoints-overlay": "2.0.5",
-    "@opentripplanner/from-to-location-picker": "^2.1.5",
+    "@opentripplanner/endpoints-overlay": "^2.0.6",
+    "@opentripplanner/from-to-location-picker": "^2.1.6",
     "@opentripplanner/geocoder": "^1.4.0",
     "@opentripplanner/humanize-distance": "^1.2.0",
     "@opentripplanner/icons": "^2.0.1",
-    "@opentripplanner/itinerary-body": "^4.1.10",
-    "@opentripplanner/location-field": "^1.12.15",
+    "@opentripplanner/itinerary-body": "^4.1.14",
+    "@opentripplanner/location-field": "^1.12.16",
     "@opentripplanner/location-icon": "^1.4.1",
-    "@opentripplanner/map-popup": "^2.0.1",
+    "@opentripplanner/map-popup": "^2.0.3",
     "@opentripplanner/otp2-tile-overlay": "^1.0.2",
     "@opentripplanner/park-and-ride-overlay": "^2.0.4",
-    "@opentripplanner/printable-itinerary": "^2.0.7",
+    "@opentripplanner/printable-itinerary": "^2.0.8",
     "@opentripplanner/route-viewer-overlay": "^2.0.9",
     "@opentripplanner/stop-viewer-overlay": "^2.0.4",
     "@opentripplanner/stops-overlay": "^5.0.7",
-    "@opentripplanner/transit-vehicle-overlay": "^4.0.0",
+    "@opentripplanner/transit-vehicle-overlay": "^4.0.2",
     "@opentripplanner/transitive-overlay": "^3.0.11",
-    "@opentripplanner/trip-details": "^3.0.3",
-    "@opentripplanner/trip-form": "^3.0.3",
+    "@opentripplanner/trip-details": "^3.0.5",
+    "@opentripplanner/trip-form": "^3.0.6",
     "@opentripplanner/trip-viewer-overlay": "^2.0.4",
     "@opentripplanner/vehicle-rental-overlay": "^2.1.0",
     "@styled-icons/fa-regular": "^10.34.0",
@@ -183,7 +183,8 @@
     "serve": "^13.0.2",
     "tsdx": "https://github.com/ibi-group/tsdx",
     "typescript": "^4.4.2",
-    "yaml-loader": "^0.6.0"
+    "yaml-loader": "^0.6.0",
+    "yaml-sort": "^2.0.0"
   },
   "peerDependencies": {
     "react": ">=15.0.0",
@@ -220,6 +221,9 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
+    ],
+    "i18n/*.{yml,yaml}": [
+      "yaml-sort --quotingStyle double --input"
     ]
   },
   "percy": {

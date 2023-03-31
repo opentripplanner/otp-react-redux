@@ -27,7 +27,6 @@ import FormattedDuration from '../../util/formatted-duration'
 import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
-import Sub from '../../util/sub-text'
 
 import { DepartureTimesList } from './departure-times-list'
 import {
@@ -302,8 +301,7 @@ class MetroItinerary extends NarrativeItinerary {
                   />
                 </LoadingBlurred>
               ),
-              isMore: roundedCo2VsBaseline > 0,
-              sub: Sub
+              isMore: roundedCo2VsBaseline > 0
             }}
           />
         </IconWithText>

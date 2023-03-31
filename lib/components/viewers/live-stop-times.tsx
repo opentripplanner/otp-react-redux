@@ -1,3 +1,5 @@
+import { addDays, isBefore } from 'date-fns'
+import { format, utcToZonedTime } from 'date-fns-tz'
 import {
   FormattedMessage,
   FormattedTime,
@@ -7,6 +9,7 @@ import {
 import { Redo } from '@styled-icons/fa-solid/Redo'
 import { TransitOperator } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
+import isSameDay from 'date-fns/isSameDay'
 import React, { Component } from 'react'
 
 import {
@@ -16,6 +19,7 @@ import {
   stopTimeComparator
 } from '../../util/viewer'
 import { IconWithText } from '../util/styledIcon'
+import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import SpanWithSpace from '../util/span-with-space'
 
 import AmenitiesPanel from './amenities-panel'
@@ -32,7 +36,7 @@ const defaultState = {
 type Props = {
   autoRefreshStopTimes: boolean
   findStopTimesForStop: ({ stopId }: { stopId: string }) => void
-  homeTimezone?: string
+  homeTimezone: string
   intl: IntlShape
   nearbyStops: any // TODO: shared types
   setHoveredStop: (stopId: string) => void
@@ -124,6 +128,26 @@ class LiveStopTimes extends Component<Props, State> {
       this._startAutoRefresh()
   }
 
+  renderDay = (homeTimezone: string, day: number, now: Date): JSX.Element => {
+    const formattedDay = utcToZonedTime(day * 1000, homeTimezone)
+    return (
+      <React.Fragment key={day}>
+        {/* If the service day is not today, add a label */}
+        {!isSameDay(now, formattedDay) && (
+          <p aria-hidden className="day-label">
+            <FormattedDayOfWeek
+              // 'iiii' returns the long ISO day of the week (independent of browser locale).
+              // See https://date-fns.org/v2.28.0/docs/format
+              day={format(formattedDay, 'iiii', {
+                timeZone: homeTimezone
+              }).toLowerCase()}
+            />
+          </p>
+        )}
+      </React.Fragment>
+    )
+  }
+
   render(): JSX.Element {
     const {
       homeTimezone,
@@ -142,6 +166,7 @@ class LiveStopTimes extends Component<Props, State> {
     // construct a lookup table mapping pattern (e.g. 'ROUTE_ID-HEADSIGN') to
     // an array of stoptimes
     const stopTimesByPattern = getStopTimesByPattern(stopData)
+    const now = utcToZonedTime(Date.now(), homeTimezone)
 
     // TODO: Shared types
     const patternComparator = (patternA: any, patternB: any) => {
@@ -151,25 +176,56 @@ class LiveStopTimes extends Component<Props, State> {
       return stopTimeComparator(stopTimesA[0], stopTimesB[0])
     }
 
+    // Time range is set in seconds, so convert to days
+    const timeRange = stopViewerConfig.timeRange / 86400 || 2
+
     const refreshButtonText = intl.formatMessage({
       id: 'components.LiveStopTimes.refresh'
     })
 
+    const routeTimes = Object.values(stopTimesByPattern)
+      .filter(
+        ({ pattern, route, times }) =>
+          times &&
+          times.length !== 0 &&
+          routeIsValid(route, getRouteIdForPattern(pattern))
+      )
+      .sort(patternComparator)
+      .map((route) => {
+        const sortedTimes = route.times
+          .concat()
+          ?.sort(stopTimeComparator)
+          // filter any times according to time range set in config.
+          .filter((time: any, i: number, array: Array<any>) => {
+            const departureTime = time.serviceDay + time.realtimeDeparture
+            return isBefore(departureTime, addDays(now, timeRange))
+          })
+        const { serviceDay } = sortedTimes[0]
+        return {
+          ...route,
+          day: serviceDay || null,
+          times: sortedTimes
+        }
+      })
+      // if the time range filter removes all times, remove route
+      .filter(({ times }) => times.length !== 0)
+
     return (
       <>
         <ul className="route-row-container">
-          {Object.values(stopTimesByPattern)
-            .filter(({ times }) => times.length !== 0)
-            .sort(patternComparator)
-            .filter(({ pattern, route }) =>
-              routeIsValid(route, getRouteIdForPattern(pattern))
-            )
-            .map(({ id, pattern, route, times }) => {
-              // Only add pattern if route info is returned by OTP.
-              return (
+          {routeTimes.map((time: any, index: number) => {
+            const { id, pattern, route, times } = time
+            return (
+              <React.Fragment key={id}>
+                {((index > 0 &&
+                  !isSameDay(
+                    time.day * 1000,
+                    routeTimes[index - 1]?.day * 1000
+                  )) ||
+                  (index === 0 && !isSameDay(now, time.day * 1000))) &&
+                  this.renderDay(homeTimezone, time.day, now)}
                 <PatternRow
                   homeTimezone={homeTimezone}
-                  key={id}
                   pattern={pattern}
                   route={{
                     ...route,
@@ -182,8 +238,9 @@ class LiveStopTimes extends Component<Props, State> {
                   stopViewerArriving={stopViewerArriving}
                   stopViewerConfig={stopViewerConfig}
                 />
-              )
-            })}
+              </React.Fragment>
+            )
+          })}
         </ul>
 
         {/* Auto update controls for realtime arrivals */}
