@@ -454,6 +454,9 @@ components:
     shortTitle: View Routes
     stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
+    toggleRouteOnMap: Toggle route on map
+    openPatternViewer: Go to route pattern viewer
+
   SaveTripButton:
     cantSaveText: Cannot save
     cantSaveTooltip: >-
@@ -462,6 +465,7 @@ components:
     saveTripText: Save trip
     signInText: Sign in to save trip
     signInTooltip: Please sign in to save trip.
+
   SavedTripEditor:
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip
