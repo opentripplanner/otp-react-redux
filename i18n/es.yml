@@ -26,9 +26,8 @@ _name: Spanish
 actions:
   fieldTrip:
     addNoteError: 'Error al agregar la nota de campo:'
-    confirmOverwriteItineraries: "Esta acción anulará un itinerario {outbound, select,\n\
-      \  true {saliente}\n  other {entrante}\n  } previamente planificado para esta\
-      \ solicitud. ¿Desea continuar?\n"
+    confirmOverwriteItineraries: "Esta acción sobrescribirá un {outbound, select,\n\
+      \    true {outbound}\n    other {inbound}\n  para esta solicitud. ¿Desea continuar?\n"
     deleteItinerariesError: 'Error al eliminar el plan de viaje:'
     deleteNoteError: 'Error al eliminar nota de viaje:'
     fetchFieldTripError: 'Error al obtener el viaje: {err}'
@@ -39,8 +38,8 @@ actions:
     itineraryCapacityError: 'No se puede guardar el plan: este plan no se pudo guardar
       debido a la falta de capacidad en uno o más vehículos. Por favor, vuelva a planificar
       su viaje.'
-    maxTripRequestsExceeded: Se superó el número máximo de solicitudes de viaje sin
-      resultados válidos.
+    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados
+      válidos
     saveItinerariesError: 'No se pudieron guardar los itinerarios: {err}'
     editSubmitterNotesError: 'Error al editar las notas del remitente:'
     setRequestStatusError: 'Error al establecer el estado de la solicitud:'
@@ -90,7 +89,8 @@ components:
       viaje: {issues}'
     destination: destino
     origin: origen
-    settings: Preferencias de viaje
+    settings: Configuración del viaje
+    modeSelector: Selector de modos
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
     message: "Para acceder a esta página deberá iniciar sesión. Por favor, espere\
@@ -177,6 +177,8 @@ components:
       \ caduca a los 10 minutos.\n"
     verified: Verificado
     verify: Verificar
+    phoneNumberVerified: El número de teléfono {phoneNumber} se ha verificado correctamente.
+    phoneNumberSubmitted: El número de teléfono {phoneNumber} se ha enviado correctamente.
   Place:
     deleteThisPlace: Borrar este lugar
     enterAlert: "Introduzca el origen/destino en el formulario (o establezca mediante\
@@ -226,6 +228,9 @@ components:
     noFilteredRoutesFound: ¡No hay rutas que coincidan con tu filtro!
     shortTitle: Ver rutas
     title: Visor de rutas
+    stopsInDirectionOfTravel: 'Paradas en este sentido de la marcha:'
+    toggleRouteOnMap: Alternar la ruta en el mapa
+    openPatternViewer: Ir al visor de los modelos de la ruta
   SavedTripEditor:
     editSavedTrip: Editar el viaje guardado
     saveNewTrip: Guardar un nuevo viaje
@@ -253,7 +258,7 @@ components:
     signInTooltip: Por favor, inicie sesión para guardar un viaje.
     signInText: Iniciar sesión para guardar el viaje
   SettingsPreview:
-    defaultPreviewText: Opciones y preferencias de tránsito
+    defaultPreviewText: "Opciones de tránsito\ny Preferencias"
   StopViewer:
     displayStopId: '<strong>Parada n°</strong>{stopId}'
     flexStop: Esta es una parada flexible. Los vehículos dejarán y recogerán a los
@@ -268,6 +273,9 @@ components:
     viewNextArrivals: Ver próximas llegadas
     viewSchedule: Ver horario
     zoomToStop: Acercar vista a la parada
+    findSchedule: Buscar el horario por fecha
+    nextArrivals: Llegadas siguientes
+    schedule: Programa
   TransitVehicleOverlay:
     in_transit_to: 'Próxima parada: {stop}'
     incoming_at: 'Acercándose a: {stop}'
@@ -360,12 +368,13 @@ components:
     copyLink: Copiar enlace
     linkCopied: Copiado
     reportEmailSubject: Informar un problema con OpenTripPlanner
-    reportEmailTemplate: "***INSTRUCCIONES PARA EL USUARIO***\n Esta función le permite\
+    reportEmailTemplate: "*** INSTRUCCIONES PARA EL USUARIO ***\nEsta función le permite\
       \ enviar por correo electrónico un informe a los administradores del sitio para\
-      \ que lo revisen. Por favor, rellene los campos que aparecen a continuación\
-      \ y envíelos utilizando su programa de correo electrónico habitual.\n \n ***POR\
-      \ FAVOR COMPLETE LO SIGUIENTE***\n\n Problema encontrado:\n \n Tipo de viaje\
-      \ que querías hacer:\n\n ***Detalles técnicos***\n"
+      \ su revisión.\nPor favor, rellene los campos siguientes y envíelo utilizando\
+      \ su programa de correo electrónico habitual.\n\n*** POR FAVOR, COMPLETE LO\
+      \ SIGUIENTE\n\nProblema encontrado:\n\nTipo de viaje que quería hacer (ej. a\
+      \ pie + tránsito, bicicleta + tránsito, coche + tránsito):\n\n*** DETALLES TÉCNICOS\
+      \ ***\n"
     reportIssue: Informar problema
   TripViewer:
     accessible: Accesible
@@ -373,6 +382,10 @@ components:
     header: Visor de viajes
     routeHeader: 'Ruta: <strong>{routeShortName}</strong> {routeLongName}'
     viewStop: Ver
+    endOfTrip: Aquí termina el viaje
+    tripDescription: Embarque en {boardAtStop} y desembarque en {disembarkAtStop}
+    startOfTrip: Aquí empieza el viaje
+    listOfRouteStops: Lista de paradas de esta ruta
   UserAccountScreen:
     confirmDelete: ¿Está seguro de que desea eliminar su cuenta de usuario? Una vez
       que lo haga, no se podrá recuperar.
@@ -398,8 +411,8 @@ components:
   UserTripSettings:
     forgetOptions: Olvidar mis opciones
     rememberOptions: Recordar las opciones de viaje
-    restoreOptions: "Restaurar {defaults, select,\n true {mis valores predeterminados}\n\
-      \ other {los valores predeterminados}\n }\n"
+    restoreOptions: "Restore {defaults, select,\n  true {mis opciones por defecto}\n\
+      \  other {defaults}\n}\n"
   VerifyEmailPane:
     emailIsVerified: ¡Mi correo electrónico está verificado!
     instructions1: "Por favor compruebe el buzón de su correo electrónico y siga el\
@@ -410,23 +423,22 @@ components:
   A11yPrefs:
     accessibilityRoutingByDefault: Prefiera los viajes accesibles por defecto
   AmenitiesPanel:
-    bikesAtStation: "{companyLength, plural,\n =0 {Bicicletas en la {name}}\n other\
-      \ {Bicicletas de {company} en la{name}}\n }\n"
-    bikesAvailable: "{count, plural,\n =0 {No hay bicicletas disponibles}\n one {#\
-      \ bicicleta disponible}\n other {# bicicletas disponibles}\n }\n"
-    bikesNearby: "{count, plural,\n =0 {No hay bicicletas de {company} cerca}\n one\
-      \ {# bicicleta de {company} cerca}\n other {#bicicletas de {company} cerca}\n\
-      \ }\n"
+    bikesAtStation: "{companyLength, plural,\n  =0 {Bicicletas en {name}}\n  other\
+      \ {{company} bicicletas en {name}}\n}\n"
+    bikesAvailable: "{count, plural,\n  =0 {No hay bicicletas}\n  one {# Bicicleta\
+      \ disponible}\n  other {# Bicicletas disponibles}\n}\n"
+    bikesNearby: "{count, plural,\n  =0 {no hay bicicletas {company} compartidas cerca}\n\
+      \  una {# bicicleta {company} compartida cerca}\n  otra {# bicicletas {company}\
+      \ compartidas cerca}\n}\n"
     nearbyAmenities: Servicios cercanos
     noNearbyScooters: No se encontraron alquileres de micromovilidad cerca.
     noPRLotsFound: No hay Park-and-Ride cerca.
     noNearbyBikes: No se ha encontrado ningún alquiler de bicicletas cercano.
-    scootersNearby: "{count, plural,\n =0 {No hay e-scooters de {company} cerca}\n\
-      \ one {# e-scooter de {company} cerca}\n other {# e-scooters de {company} cerca}\n\
-      \ }\n"
-    spacesAvailable: "{count, plural,\n =0 {No hay plazas de aparcamiento disponibles}\n\
-      \ one {# plaza de aparcamiento disponible}\n other {# plazas de aparcamiento\
-      \ disponibles}\n }\n"
+    scootersNearby: "{contar, plural,\n  =0 {No hay {company} patinetes eléctricos\
+      \ cerca}\n  una {# {company} Patinete eléctrico cerca}\n  otros {# {company}\
+      \ Patinetes eléctricos cerca}\n}\n"
+    spacesAvailable: "{contar, plural,\n  =0 {No hay espacios disponibles}\n  uno\
+      \ {# espacio disponible}\n  otros {# espacios disponibles}\n}\n"
   AppMenu:
     callHistory: Historial de llamadas
     closeMenu: Cerrar Menú
@@ -442,7 +454,7 @@ components:
     groupSize: 'Tamaño del grupo:'
   EnhancedStopMarker:
     stopViewer: Visor de paradas
-    stopID: 'Parada n°'
+    stopID: 'Identificación de la parada:'
   FavoritePlaceList:
     addAnotherPlace: Agregue otro lugar
     description: 'Agregue los lugares que frecuenta a menudo para ahorrar tiempo en
@@ -463,6 +475,7 @@ components:
     ariaLabel: Navegar por los formularios
   LiveStopTimes:
     autoRefresh: ¿Actualizar automáticamente las llegadas?
+    refresh: Actualizar las horas de llegada
   LocationSearch:
     enterLocation: Introduzca la ubicación
     setDestination: Establecer el destino
@@ -475,6 +488,9 @@ components:
     multipleOptions: Múltiples Opciones
     orAlternatives: u otras rutas en la misma dirección
     timeWalking: '{time} caminando'
+    singleModeItineraryDescription: '{time} {mode} itinerario'
+    originallyScheduledTime: (originalmente {originalTime})
+    arriveAt: Tú llegada
   MobileOptions:
     header: Configurar las opciones de búsqueda
   NavLoginButton:
@@ -485,6 +501,10 @@ components:
   PlaceEditor:
     genericLocationPlaceholder: Buscar ubicación
     locationPlaceholder: Buscar la ubicación de {placeName}
+    addressPrompt: 'Dirección:'
+    locationTypePrompt: 'Tipo de la ubicación:'
+    namePrompt: 'Nombre del lugar:'
+    nameExample: Mi cafetería
   ResultsError:
     backToSearch: Volver a la búsqueda
   ResultsHeader:
@@ -502,8 +522,8 @@ components:
     destination: A
     route: 'Ruta'
   StopTimeCell:
-    realtime: Based on realtime data
-    scheduled: Based on schedule data
+    realtime: Basado en datos en tiempo real
+    scheduled: Según los datos del calendario
     imminentArrival: Vencido
   SubNav:
     languages: "Idiomas"
@@ -555,6 +575,7 @@ components:
   DefaultItinerary:
     clickDetails: Haga clic para ver los detalles
     multiModeSummary: '{accessMode} + {transitMode}'
+    nonTransit: Opciones alternativas
   DeleteUser:
     deleteMyAccount: Eliminar mi cuenta
   SessionTimeout:
@@ -564,6 +585,8 @@ components:
     keepSession: Continuar sesión
   PointPopup:
     zoomToLocation: Acercar vista a la ubicación
+  MapillaryFrame:
+    title: Imágenes de la calle
 common:
   coordinates: '{lat}; {lon}'
   dateExpressions:
@@ -609,20 +632,21 @@ common:
     edit: Editar
     error: ¡error!
     startOver: Comenzar de nuevo
+    submitting: Enviando…
   itineraryDescriptions:
-    calories: '{calories, number} Cal'
+    calories: '{calories, number} Kcal'
     noItineraryToDisplay: No hay itinerario que mostrar.
     noTransitFareProvided: No hay información sobre las tarifas
     transfers: '{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}'
     relativeCo2: >
-      {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
+      {co2} {isMore, select, true {more} otro {less} } CO₂ que conducir solo
   modes:
     bicycle_rent: Compartir bicicleta
     bike: Bicicleta
     bus: Autobús
     cable_car: Teleférico
     car: Coche
-    car_park: Park and Ride
+    car_park: Aparcamiento disuasorio
     drive: Conducir
     ferry: Transbordador
     flex: Líneas Flex
@@ -649,10 +673,11 @@ common:
     tap: toque
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
-    durationAgo: "hace {formattedDuration}"
-    fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
-      \ =0 {hace unos segundos}\n =1 {hace un minuto}\n other {hace # minutos}\n }}\n\
-      \ =1 {hace una hora}\n other {hace # horas}\n }}\n other {hace # días}\n }\n"
+    durationAgo: "{duration} hace"
+    fromNowUpdate: "{days, plural,\n  =0 {{hours,plural,\n    =0 {{minutes, plural,\n\
+      \      =0 {hace unos segundos}\n      =1 {hace un minuto}\n      other { # minutos}\n\
+      \    }}\n    =1 {hace una hora}\n    other {# horas atras}\n  }}\n  other {#\
+      \ días atrás}\n}\n"
     tripDurationFormat: "{hours, plural, =0 {} other {# h }}{minutes} min { seconds,\
       \ plural, =0 {} other {# s}}"
   places:
@@ -675,8 +700,8 @@ config:
     bicycle: Tránsito + Bicicleta Personal
     bicycle_rent: Tránsito + Compartir Bicicleta
     micromobility: Tránsito + Scooter Personal
-    car_hail: Ride Hail
-    car_park: Park & Ride
+    car_hail: Granizo
+    car_park: Aparca y anda
     micromobility_rent: Tránsito + Alquiler de scooter eléctrico
   flex:
     flex-service: Servicio Flex
