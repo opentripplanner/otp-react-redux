@@ -1,10 +1,8 @@
-/* eslint-disable react/prop-types */
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
 import * as apiActions from '../../actions/api'
@@ -17,24 +15,39 @@ import {
 } from '../../util/viewer'
 import { getFormattedMode } from '../../util/i18n'
 import { getOperatorAndRoute, getRouteOperator } from '../../util/state'
+import { Pattern } from '../util/types'
 import { StyledIconWrapper } from '../util/styledIcon'
 import PageTitle from '../util/page-title'
 
 import { RouteName } from './RouteRow'
 import RouteDetails from './route-details'
 
-class PatternViewer extends Component {
-  static propTypes = {
-    setViewedRoute: PropTypes.func,
-    transitOperators: PropTypes.array,
-    viewedRoute: PropTypes.shape({
-      patternId: PropTypes.string,
-      routeId: PropTypes.string
-    }),
-    // Routes have many more properties, but none are guaranteed
-    viewedRouteObject: PropTypes.shape({ id: PropTypes.string })
-  }
+interface ViewedRouteState {
+  patternId?: string
+  routeId: string
+}
 
+// Routes have many properties beside id, but none of these are guaranteed.
+interface ViewedRouteObject {
+  id: string
+  patterns?: Record<string, Pattern>
+  pending?: boolean
+  shortName?: string
+  textColor?: string
+}
+
+interface Props {
+  findRoutesIfNeeded: () => void
+  hideBackButton?: boolean
+  intl: IntlShape
+  setViewedRoute: (route: ViewedRouteState) => void
+  transitOperators: unknown[]
+  vehicleIconHighlight: boolean
+  viewedRoute: ViewedRouteState
+  viewedRouteObject: ViewedRouteObject
+}
+
+class PatternViewer extends Component<Props> {
   static contextType = ComponentContext
 
   /**
@@ -43,7 +56,7 @@ class PatternViewer extends Component {
   _backClicked = () =>
     this.props.setViewedRoute({
       ...this.props.viewedRoute,
-      patternId: null
+      patternId: undefined
     })
 
   /**
@@ -55,7 +68,8 @@ class PatternViewer extends Component {
       this.props
     const { patternId } = viewedRoute || {}
     const { patterns, pending, shortName } = viewedRouteObject || {}
-    if (!viewedRouteObject || pending) {
+
+    if (!viewedRouteObject || pending || !patternId) {
       return intl.formatMessage({ id: 'components.RouteViewer.title' })
     }
 
@@ -94,7 +108,7 @@ class PatternViewer extends Component {
       const operator = getRouteOperator(viewedRouteObject, transitOperators)
       const routeColor = getRouteColorBasedOnSettings(operator, route)
       const textColor = getMostReadableTextColor(routeColor, route?.textColor)
-      const fill = vehicleIconHighlight === false ? null : textColor
+      const fill = vehicleIconHighlight === false ? undefined : textColor
 
       return (
         <div
@@ -158,7 +172,7 @@ class PatternViewer extends Component {
 
 // connect to redux store
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   return {
     transitOperators: state.otp.config.transitOperators,
     vehicleIconHighlight: state.otp.config?.routeViewer?.vehicleIconHighlight,
@@ -170,7 +184,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
-  setMainPanelContent: uiActions.setMainPanelContent,
   setViewedRoute: uiActions.setViewedRoute
 }
 
