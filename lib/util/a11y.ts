@@ -1,5 +1,3 @@
-import '../../__tests__/test-utils/mock-match-media.js'
-
 /**
  * Returns a phone number formatted so that screen readers read them digit by digit with a pause for digit groupings
  * (following advice from https://jhalabi.com/blog/accessibility-phone-number-formatting).
@@ -15,7 +13,3 @@ export function getAriaPhoneNumber(formattedNumber: string): string {
     .replace(/\s*(\d)/g, ' $1')
     .trim()}.`
 }
-
-export const prefersReducedMotion = window.matchMedia(
-  '(prefers-reduced-motion: reduce)'
-).matches
