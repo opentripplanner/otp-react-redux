@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
+import { TransitOperator } from '@opentripplanner/types'
 import React, { Component } from 'react'
 
 import * as apiActions from '../../actions/api'
@@ -15,36 +16,26 @@ import {
 } from '../../util/viewer'
 import { getFormattedMode } from '../../util/i18n'
 import { getOperatorAndRoute, getRouteOperator } from '../../util/state'
-import { Pattern } from '../util/types'
+import {
+  SetViewedRouteHandler,
+  ViewedRouteObject,
+  ViewedRouteState
+} from '../util/types'
 import { StyledIconWrapper } from '../util/styledIcon'
 import PageTitle from '../util/page-title'
 
 import { RouteName } from './RouteRow'
 import RouteDetails from './route-details'
 
-interface ViewedRouteState {
-  patternId?: string
-  routeId: string
-}
-
-// Routes have many properties beside id, but none of these are guaranteed.
-interface ViewedRouteObject {
-  id: string
-  patterns?: Record<string, Pattern>
-  pending?: boolean
-  shortName?: string
-  textColor?: string
-}
-
 interface Props {
   findRoutesIfNeeded: () => void
   hideBackButton?: boolean
   intl: IntlShape
-  setViewedRoute: (route: ViewedRouteState) => void
-  transitOperators: unknown[]
+  setViewedRoute: SetViewedRouteHandler
+  transitOperators: TransitOperator[]
   vehicleIconHighlight: boolean
-  viewedRoute: ViewedRouteState
-  viewedRouteObject: ViewedRouteObject
+  viewedRoute?: ViewedRouteState
+  viewedRouteObject?: ViewedRouteObject
 }
 
 class PatternViewer extends Component<Props> {
@@ -53,11 +44,15 @@ class PatternViewer extends Component<Props> {
   /**
    * If we're viewing a pattern's stops, route to main route viewer.
    */
-  _backClicked = () =>
-    this.props.setViewedRoute({
-      ...this.props.viewedRoute,
-      patternId: undefined
-    })
+  _backClicked = () => {
+    const { setViewedRoute, viewedRoute } = this.props
+    if (viewedRoute?.routeId) {
+      setViewedRoute({
+        ...viewedRoute,
+        patternId: undefined
+      })
+    }
+  }
 
   /**
    * Gets a breadcrumbs-like title so we don't need to internationalize the title bar structure.

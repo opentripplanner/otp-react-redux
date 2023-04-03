@@ -74,3 +74,19 @@ export interface VehicleRental {
     [key: string]: { message?: string; severity?: string }
   }
 }
+
+export interface ViewedRouteState {
+  patternId?: string
+  routeId: string
+}
+
+// Routes have many properties beside id, but none of these are guaranteed.
+export interface ViewedRouteObject {
+  id: string
+  patterns?: Record<string, Pattern>
+  pending?: boolean
+  shortName?: string
+  textColor?: string
+}
+
+export type SetViewedRouteHandler = (route?: ViewedRouteState) => void

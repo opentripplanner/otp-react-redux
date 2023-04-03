@@ -1,13 +1,12 @@
-/* eslint-disable react/prop-types */
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Filter } from '@styled-icons/fa-solid/Filter'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { Route, TransitOperator } from '@opentripplanner/types'
 import { Search } from '@styled-icons/fa-solid/Search'
 import coreUtils from '@opentripplanner/core-utils'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React, { Component, FormEvent } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
@@ -18,33 +17,45 @@ import {
   getSortedFilteredRoutes
 } from '../../util/state'
 import { getFormattedMode } from '../../util/i18n'
+import {
+  SetViewedRouteHandler,
+  ViewedRouteObject,
+  ViewedRouteState
+} from '../util/types'
 import { StyledIconWrapper } from '../util/styledIcon'
 import PageTitle from '../util/page-title'
 
 import { RouteRow } from './RouteRow'
 
-class RouteViewer extends Component {
-  static propTypes = {
-    agencies: PropTypes.array,
-    filter: PropTypes.shape({
-      agency: PropTypes.string,
-      mode: PropTypes.string,
-      search: PropTypes.string
-    }),
-    findRouteIfNeeded: PropTypes.func,
-    hideBackButton: PropTypes.bool,
-    modes: PropTypes.array,
-    routes: PropTypes.array,
-    setViewedRoute: PropTypes.func,
-    transitOperators: PropTypes.array,
-    viewedRoute: PropTypes.shape({
-      patternId: PropTypes.string,
-      routeId: PropTypes.string
-    }),
-    // Routes have many more properties, but none are guaranteed
-    viewedRouteObject: PropTypes.shape({ id: PropTypes.string })
-  }
+interface FilterProps {
+  agency?: string
+  mode?: string
+  search?: string
+}
 
+interface Props {
+  agencies: string[]
+  filter: FilterProps
+  // Not really worried about the args for findRoute(s)IfNeeded.
+  findRouteIfNeeded: () => void
+  findRoutesIfNeeded: () => void
+  hideBackButton?: boolean
+  intl: IntlShape
+  modes: string[]
+  routes: Route[]
+  setMainPanelContent: (panelId: number | null) => void
+  setRouteViewerFilter: (filter: FilterProps) => void
+  setViewedRoute: SetViewedRouteHandler
+  transitOperators: TransitOperator[]
+  viewedRoute?: ViewedRouteState
+  viewedRouteObject?: ViewedRouteObject
+}
+
+interface State {
+  initialRender: boolean
+}
+
+class RouteViewer extends Component<Props, State> {
   state = {
     /** Used to track if all routes have been rendered */
     initialRender: true
@@ -97,14 +108,14 @@ class RouteViewer extends Component {
    * Handle filter dropdown change. Id of the filter is equivalent to the key in the
    * route object
    */
-  onFilterChange = (event) => {
+  onFilterChange = (event: FormEvent) => {
     const { eventPhase, target } = event
     // If the dropdown changes without user interaction, don't update!
     // see https://developer.mozilla.org/en-US/docs/Web/API/Event/eventPhase
     if (eventPhase !== Event.BUBBLING_PHASE) {
       return
     }
-    const { id, value } = target
+    const { id, value } = target as HTMLSelectElement
     // id will be either 'agency' or 'mode' based on the dropdown used
     this.props.setRouteViewerFilter({ [id]: value })
   }
@@ -112,9 +123,9 @@ class RouteViewer extends Component {
   /**
    * Update search state when user updates search field
    */
-  onSearchChange = (event) => {
+  onSearchChange = (event: FormEvent) => {
     const { target } = event
-    const { value } = target
+    const { value } = target as HTMLInputElement
     this.props.setRouteViewerFilter({ search: value })
   }
 
@@ -260,7 +271,7 @@ class RouteViewer extends Component {
 
 // connect to redux store
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   return {
     agencies: getAgenciesFromRoutes(state),
     filter: state.otp.ui.routeViewer.filter,
