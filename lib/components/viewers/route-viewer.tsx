@@ -132,7 +132,7 @@ class RouteViewer extends Component<Props, State> {
     const { search } = filter
     const operators =
       transitOperators.length > 0
-        ? [...new Set(transitOperators.map((x) => x.name))]
+        ? Array.from(new Set(transitOperators.map((x) => x.name)))
         : agencies
 
     return (
