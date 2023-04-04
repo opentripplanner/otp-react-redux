@@ -9,13 +9,13 @@ import React, { Component } from 'react'
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
-import {
-  extractHeadsignFromPattern,
-  getModeFromRoute,
-  getRouteColorBasedOnSettings
-} from '../../util/viewer'
 import { getFormattedMode } from '../../util/i18n'
-import { getOperatorAndRoute, getRouteOperator } from '../../util/state'
+import {
+  getModeFromRoute,
+  getRouteColorBasedOnSettings,
+  getRouteOrPatternViewerTitle
+} from '../../util/viewer'
+import { getRouteOperator } from '../../util/state'
 import {
   SetViewedRouteHandler,
   ViewedRouteObject,
@@ -46,37 +46,13 @@ class PatternViewer extends Component<Props> {
    */
   _backClicked = () => {
     const { setViewedRoute, viewedRoute } = this.props
+    // The if test is for typescript checks.
     if (viewedRoute?.routeId) {
       setViewedRoute({
         ...viewedRoute,
         patternId: undefined
       })
     }
-  }
-
-  /**
-   * Gets a breadcrumbs-like title so we don't need to internationalize the title bar structure.
-   * Display the agency, user-facing route number, and pattern destination (except while loading).
-   */
-  getTitle = () => {
-    const { intl, transitOperators, viewedRoute, viewedRouteObject } =
-      this.props
-    const { patternId } = viewedRoute || {}
-    const { patterns, pending, shortName } = viewedRouteObject || {}
-
-    if (!viewedRouteObject || pending || !patternId) {
-      return intl.formatMessage({ id: 'components.RouteViewer.title' })
-    }
-
-    const pattern = patterns?.[patternId]
-    return (
-      getOperatorAndRoute(viewedRouteObject, transitOperators, intl) +
-      (patternId && pattern
-        ? ` ${intl.formatMessage({
-            id: 'components.RouteDetails.stopsTo'
-          })} ${extractHeadsignFromPattern(pattern, shortName)}`
-        : '')
-    )
   }
 
   componentDidMount() {
@@ -114,7 +90,7 @@ class PatternViewer extends Component<Props> {
             fill
           }}
         >
-          <PageTitle title={this.getTitle()} />
+          <PageTitle title={getRouteOrPatternViewerTitle(this.props)} />
           {/* Header Block */}
           <div
             className="route-viewer-header"

@@ -13,10 +13,10 @@ import * as uiActions from '../../actions/ui'
 import {
   getAgenciesFromRoutes,
   getModesForActiveAgencyFilter,
-  getOperatorAndRoute,
   getSortedFilteredRoutes
 } from '../../util/state'
 import { getFormattedMode } from '../../util/i18n'
+import { getRouteOrPatternViewerTitle } from '../../util/viewer'
 import {
   SetViewedRouteHandler,
   ViewedRouteObject,
@@ -65,22 +65,6 @@ class RouteViewer extends Component<Props, State> {
    * Route back to main view.
    */
   _backClicked = () => this.props.setMainPanelContent(null)
-
-  /**
-   * Gets a breadcrumbs-like title following these rules,
-   * so we don't need to internationalize the title bar structure:
-   * - if no route is selected, just say "Route Viewer",
-   * - if a route is selected, display the agency and user-facing route number.
-   */
-  getTitle = () => {
-    const { intl, transitOperators, viewedRouteObject } = this.props
-    const { pending } = viewedRouteObject || {}
-    if (!viewedRouteObject || pending) {
-      return intl.formatMessage({ id: 'components.RouteViewer.title' })
-    }
-
-    return getOperatorAndRoute(viewedRouteObject, transitOperators, intl)
-  }
 
   componentDidMount() {
     this.props.findRoutesIfNeeded()
@@ -152,7 +136,7 @@ class RouteViewer extends Component<Props, State> {
 
     return (
       <div className="route-viewer">
-        <PageTitle title={this.getTitle()} />
+        <PageTitle title={getRouteOrPatternViewerTitle(this.props)} />
         {/* Header Block */}
         <div className="route-viewer-header">
           {/* Back button */}
