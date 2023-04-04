@@ -124,7 +124,8 @@ class RouteViewer extends Component<Props, State> {
       routes: sortedRoutes,
       setViewedRoute,
       transitOperators,
-      viewedRoute
+      viewedRoute,
+      viewedRouteObject
     } = this.props
 
     const { initialRender } = this.state
@@ -136,7 +137,14 @@ class RouteViewer extends Component<Props, State> {
 
     return (
       <div className="route-viewer">
-        <PageTitle title={getRouteOrPatternViewerTitle(this.props)} />
+        <PageTitle
+          title={getRouteOrPatternViewerTitle(
+            transitOperators,
+            viewedRouteObject,
+            null,
+            intl
+          )}
+        />
         {/* Header Block */}
         <div className="route-viewer-header">
           {/* Back button */}
@@ -256,15 +264,15 @@ class RouteViewer extends Component<Props, State> {
 // connect to redux store
 
 const mapStateToProps = (state: any) => {
+  const { viewedRoute } = state.otp.ui
   return {
     agencies: getAgenciesFromRoutes(state),
     filter: state.otp.ui.routeViewer.filter,
     modes: getModesForActiveAgencyFilter(state),
     routes: getSortedFilteredRoutes(state),
     transitOperators: state.otp.config.transitOperators,
-    viewedRoute: state.otp.ui.viewedRoute,
-    viewedRouteObject:
-      state.otp.transitIndex.routes?.[state.otp.ui.viewedRoute?.routeId]
+    viewedRoute,
+    viewedRouteObject: state.otp.transitIndex.routes?.[viewedRoute?.routeId]
   }
 }
 

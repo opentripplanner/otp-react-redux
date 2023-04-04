@@ -1,10 +1,10 @@
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
 import { TransitOperator } from '@opentripplanner/types'
-import React, { Component } from 'react'
+import React, { useCallback, useContext, useEffect } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
@@ -30,7 +30,6 @@ import RouteDetails from './route-details'
 interface Props {
   findRoutesIfNeeded: () => void
   hideBackButton?: boolean
-  intl: IntlShape
   setViewedRoute: SetViewedRouteHandler
   transitOperators: TransitOperator[]
   vehicleIconHighlight: boolean
@@ -38,14 +37,21 @@ interface Props {
   viewedRouteObject?: ViewedRouteObject
 }
 
-class PatternViewer extends Component<Props> {
-  static contextType = ComponentContext
+const PatternViewer = ({
+  findRoutesIfNeeded,
+  hideBackButton,
+  setViewedRoute,
+  transitOperators,
+  vehicleIconHighlight,
+  viewedRoute,
+  viewedRouteObject: route
+}: Props) => {
+  const intl = useIntl()
 
   /**
    * If we're viewing a pattern's stops, route to main route viewer.
    */
-  _backClicked = () => {
-    const { setViewedRoute, viewedRoute } = this.props
+  const _backClicked = useCallback(() => {
     // The if test is for typescript checks.
     if (viewedRoute?.routeId) {
       setViewedRoute({
@@ -53,103 +59,97 @@ class PatternViewer extends Component<Props> {
         patternId: undefined
       })
     }
-  }
+  }, [viewedRoute, setViewedRoute])
 
-  componentDidMount() {
-    this.props.findRoutesIfNeeded()
-  }
+  useEffect(findRoutesIfNeeded, [findRoutesIfNeeded])
 
-  render() {
-    const {
-      hideBackButton,
-      intl,
-      transitOperators,
-      vehicleIconHighlight,
-      viewedRoute,
-      viewedRouteObject
-    } = this.props
+  // @ts-expect-error TODO: add type to ComponentContext
+  const { ModeIcon, RouteRenderer } = useContext(ComponentContext)
 
-    const { ModeIcon, RouteRenderer } = this.context
+  // If patternId is present and route data have been fetched, we're looking at a specific pattern's stops.
+  if (viewedRoute?.patternId && route) {
+    const { patternId } = viewedRoute
+    // Find operator based on agency_id (extracted from OTP route ID).
+    const operator = getRouteOperator(route, transitOperators)
+    const routeColor = getRouteColorBasedOnSettings(operator, route)
+    const textColor = getMostReadableTextColor(routeColor, route?.textColor)
+    const fill = vehicleIconHighlight === false ? undefined : textColor
 
-    // If patternId is present, we're looking at a specific pattern's stops
-    if (viewedRoute?.patternId && viewedRouteObject) {
-      const { patternId } = viewedRoute
-      const route = viewedRouteObject
-      // Find operator based on agency_id (extracted from OTP route ID).
-      const operator = getRouteOperator(viewedRouteObject, transitOperators)
-      const routeColor = getRouteColorBasedOnSettings(operator, route)
-      const textColor = getMostReadableTextColor(routeColor, route?.textColor)
-      const fill = vehicleIconHighlight === false ? undefined : textColor
-
-      return (
+    return (
+      <div
+        className="route-viewer"
+        style={{
+          backgroundColor: routeColor,
+          color: textColor,
+          fill
+        }}
+      >
+        <PageTitle
+          title={getRouteOrPatternViewerTitle(
+            transitOperators,
+            route,
+            patternId,
+            intl
+          )}
+        />
+        {/* Header Block */}
         <div
-          className="route-viewer"
-          style={{
-            backgroundColor: routeColor,
-            color: textColor,
-            fill
-          }}
+          className="route-viewer-header"
+          style={{ backgroundColor: routeColor }}
         >
-          <PageTitle title={getRouteOrPatternViewerTitle(this.props)} />
-          {/* Header Block */}
-          <div
-            className="route-viewer-header"
-            style={{ backgroundColor: routeColor }}
-          >
-            {/* Back button */}
-            {!hideBackButton && (
-              <div className="back-button-container">
-                <Button bsSize="small" onClick={this._backClicked}>
-                  <StyledIconWrapper>
-                    <ArrowLeft />
-                  </StyledIconWrapper>
-                  <FormattedMessage id="common.forms.back" />
-                </Button>
-              </div>
-            )}
-            <div className="header-text route-expanded">
-              <h1 style={{ display: 'contents' }}>
-                {!route.pending && ModeIcon && (
-                  <ModeIcon
-                    aria-label={getFormattedMode(
-                      getModeFromRoute(route).toLowerCase(),
-                      intl
-                    )}
-                    mode={getModeFromRoute(route)}
-                    style={{ maxHeight: 40 }}
-                    width={22}
-                  />
-                )}
-                <RouteName
-                  basicRender
-                  route={route}
-                  RouteRenderer={RouteRenderer}
-                />
-              </h1>
+          {/* Back button */}
+          {!hideBackButton && (
+            <div className="back-button-container">
+              <Button bsSize="small" onClick={_backClicked}>
+                <StyledIconWrapper>
+                  <ArrowLeft />
+                </StyledIconWrapper>
+                <FormattedMessage id="common.forms.back" />
+              </Button>
             </div>
+          )}
+          <div className="header-text route-expanded">
+            <h1 style={{ display: 'contents' }}>
+              {!route.pending && ModeIcon && (
+                <ModeIcon
+                  aria-label={getFormattedMode(
+                    getModeFromRoute(route).toLowerCase(),
+                    intl
+                  )}
+                  mode={getModeFromRoute(route)}
+                  style={{ maxHeight: 40 }}
+                  width={22}
+                />
+              )}
+              <RouteName
+                basicRender
+                route={route}
+                RouteRenderer={RouteRenderer}
+              />
+            </h1>
           </div>
-          <RouteDetails
-            operator={operator}
-            pattern={route?.patterns?.[patternId]}
-            route={route}
-          />
         </div>
-      )
-    }
-
-    return null
+        <RouteDetails
+          operator={operator}
+          pattern={route?.patterns?.[patternId]}
+          route={route}
+        />
+      </div>
+    )
   }
+
+  return null
 }
 
 // connect to redux store
 
 const mapStateToProps = (state: any) => {
+  const { viewedRoute } = state.otp.ui
   return {
     transitOperators: state.otp.config.transitOperators,
     vehicleIconHighlight: state.otp.config?.routeViewer?.vehicleIconHighlight,
-    viewedRoute: state.otp.ui.viewedRoute,
-    viewedRouteObject:
-      state.otp.transitIndex.routes?.[state.otp.ui.viewedRoute?.routeId]
+    viewedRoute,
+    viewedRouteObject: state.otp.transitIndex.routes?.[viewedRoute?.routeId]
   }
 }
 
@@ -158,7 +158,4 @@ const mapDispatchToProps = {
   setViewedRoute: uiActions.setViewedRoute
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectIntl(PatternViewer))
+export default connect(mapStateToProps, mapDispatchToProps)(PatternViewer)
