@@ -62,11 +62,24 @@ function BatchSettings({
     })
   )
 
+  const modeSettingsWithIcons = [
+    ...defaultModeSettings,
+    ...(config.modes.modeSettingDefinitions || [])
+  ].map(
+    React.useCallback(
+      (msd) => ({
+        ...msd,
+        icon: <ModeIcon mode={msd.iconName} width={16} />
+      }),
+      [ModeIcon]
+    )
+  )
+
   const { buttonsWithSettings, setModeSettingValue, toggleModeButton } =
     useModeState(
       modeButtonsWithIcons,
       config.modes.initialState,
-      [...defaultModeSettings, ...(config.modes.modeSettingDefinitions || [])],
+      modeSettingsWithIcons,
       {
         queryParamState: true
       }
@@ -113,6 +126,7 @@ function BatchSettings({
           <StyledDateTimePreview hideButton />
         </StyledDateTimePreviewContainer>
         <MetroModeSelector
+          fillModeIcons={false}
           modeButtons={buttonsWithSettings}
           onSettingsUpdate={setModeSettingValue}
           onToggleModeButton={toggleModeButton}
