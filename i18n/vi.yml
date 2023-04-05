@@ -594,12 +594,14 @@ common:
     click: nhấp
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
-    durationAgo: "Cách đây {formattedDuration}"
+    duration:
+      aFewSeconds: vài giây
+      nDays: "{days} ngày"
+      nHours: "{hours, plural, =1 {một tiếng} other {# tiếng}}"
+      nMinutes: "{minutes, plural, =1 {một phút} other {# phút}}"
+    durationAgo: "Cách đây {duration}"
     tripDurationFormat: "{hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds,\
       \ plural, =0 {} other {# giây}}"
-    fromNowUpdate: "Cách đây {days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
-      \ =0 {vài giây}\n =1 {một phút}\n other {# phút}\n }}\n =1 {một tiếng}\n other\
-      \ {# tiếng}\n }}\n other {# ngày}\n }\n"
   dateExpressions:
     today: Hôm nay
     tomorrow: Ngày mai

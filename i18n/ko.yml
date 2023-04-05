@@ -600,10 +600,12 @@ common:
     tuesday: 화요일
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
+    duration:
+      aFewSeconds: 몇 초
+      nDays: "{days} 일 전"
+      nHours: "{hours} 시간"
+      nMinutes: "{minutes} 분 전"
     durationAgo: "{duration} 전"
-    fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
-      \ =0 {몇 초 전에}\n =1 {1 분 전}\n other {# 분 전}\n }}\n =1 {한 시간 전에}\n other {# 시간\
-      \ 전}\n }}\n other {# 일 전}\n }\n"
     tripDurationFormat: "{hours, plural, =0 {} other {# 시간 }}{minutes} 분 { seconds,\
       \ plural, =0 {} other {# 초}}"
   coordinates: '{lat}, {lon}'

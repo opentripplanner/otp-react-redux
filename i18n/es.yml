@@ -650,10 +650,12 @@ common:
     tap: toque
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
-    durationAgo: "hace {formattedDuration}"
-    fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
-      \ =0 {hace unos segundos}\n =1 {hace un minuto}\n other {hace # minutos}\n }}\n\
-      \ =1 {hace una hora}\n other {hace # horas}\n }}\n other {hace # días}\n }\n"
+    duration:
+      aFewSeconds: unos segundos
+      nDays: "{days, plural, =1 {dia} other {dias}}"
+      nHours: "{hours, plural, =1 {una hora} other {# horas}}"
+      nMinutes: "{minutes, plural, =1 {un minuto} other {# minutos}}"
+    durationAgo: "hace {duration}"
     tripDurationFormat: "{hours, plural, =0 {} other {# h }}{minutes} min { seconds,\
       \ plural, =0 {} other {# s}}"
   places:
