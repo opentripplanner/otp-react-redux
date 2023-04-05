@@ -274,7 +274,7 @@ components:
     viewSchedule: Ver horario
     zoomToStop: Acercar vista a la parada
     findSchedule: Buscar el horario por fecha
-    nextArrivals: Llegadas siguientes
+    nextArrivals: Próximas llegadas
     schedule: Programa
   TransitVehicleOverlay:
     in_transit_to: 'Próxima parada: {stop}'
@@ -673,7 +673,7 @@ common:
     tap: toque
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
-    durationAgo: "{duration} hace"
+    durationAgo: "Hace {duration}"
     fromNowUpdate: "{days, plural,\n  =0 {{hours,plural,\n    =0 {{minutes, plural,\n\
       \      =0 {hace unos segundos}\n      =1 {hace un minuto}\n      other { # minutos}\n\
       \    }}\n    =1 {hace una hora}\n    other {# horas atras}\n  }}\n  other {#\
@@ -700,8 +700,8 @@ config:
     bicycle: Tránsito + Bicicleta Personal
     bicycle_rent: Tránsito + Compartir Bicicleta
     micromobility: Tránsito + Scooter Personal
-    car_hail: Granizo
-    car_park: Aparca y anda
+    car_hail: Pedir un VTC
+    car_park: Aparcamiento disuasorio
     micromobility_rent: Tránsito + Alquiler de scooter eléctrico
   flex:
     flex-service: Servicio Flex
