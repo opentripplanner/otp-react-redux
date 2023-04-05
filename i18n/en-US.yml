@@ -450,9 +450,11 @@ components:
     header: Route Viewer
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
+    openPatternViewer: Go to route pattern viewer
     shortTitle: View Routes
     stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
+    toggleRouteOnMap: Toggle route on map
   SaveTripButton:
     cantSaveText: Cannot save
     cantSaveTooltip: >-

@@ -158,6 +158,12 @@ if (OTP_RR_PERCY_MOBILE) {
     }
     const [subwayRouteButton] = await page.$x("//span[contains(., 'Green')]")
     await subwayRouteButton.click()
+
+    await page.waitForTimeout(500)
+
+    // click the little pattern arrow
+    await page.click('#open-route-button-Green')
+
     await page.waitForSelector('#headsign-selector')
     const secondPatternOption = await page.$$eval(
       'option',
@@ -378,6 +384,12 @@ test('OTP-RR', async () => {
   }
   const [busRouteButton] = await page.$x("//span[contains(., 'Marietta Blvd')]")
   await busRouteButton.click()
+
+  await page.waitForTimeout(500)
+
+  // click the little pattern arrow
+  await page.click('#open-route-button-1')
+
   await page.waitForSelector('#headsign-selector')
 
   await percySnapshotWithWait(page, 'Route Viewer Showing Route 1')
