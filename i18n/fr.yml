@@ -230,7 +230,7 @@ components:
     micromobility-rental: Trottinettes {companies}
     park-and-ride: Parcs relais
     satellite: Satellite
-    shared-vehicles: "Véhicules partagés"
+    shared-vehicles: "Véhicules en partage"
     stops: Arrêts et stations
     streets: Plan des rues
   MetroUI:
