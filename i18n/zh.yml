@@ -176,6 +176,7 @@ components:
     verificationInstructions: "请检查您手机上的短信应用查看是否有验证码的短信并输入以下代码 (代码在10分钟后失效).\n"
     verified: 已验证
     verify: 核实
+    phoneNumberVerified: 电话号码 {phoneNumber} 已成功验证。
   Place:
     deleteThisPlace: 删除这个地点
     enterAlert: "在表格中输入出发地/目的地(或通过地图点击设置)并点击产生的标记设置为 {placeType} 地点.\n"
