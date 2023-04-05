@@ -477,6 +477,7 @@ components:
     tripNotFoundDescription: Xin lỗi, không tìm thấy chuyến đi được yêu cầu.
     tripNotifications: Thông báo chuyến đi
   SavedTripList:
+    fromTo: Từ {from} đến {to}
     myTrips: Chuyến đi của tôi
     noSavedTrips: Bạn không có những chuyến đi được lưu
     noSavedTripsInstructions: Trước tiên, thực hiện tìm kiếm chuyến đi từ bản đồ.

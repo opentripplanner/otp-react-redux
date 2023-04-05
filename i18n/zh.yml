@@ -231,6 +231,7 @@ components:
     tripNotFoundDescription: 对不起, 没有找到所要求的行程.
     tripNotifications: 行程通知
   SavedTripList:
+    fromTo: 从 {from} 到 {to}
     myTrips: 我的行程
     noSavedTrips: 你没有保存的行程
     noSavedTripsInstructions: 首先从地图上进行行程搜索.

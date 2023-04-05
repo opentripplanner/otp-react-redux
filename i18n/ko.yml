@@ -214,6 +214,7 @@ components:
     tripNotFoundDescription: 죄송합니다. 요청된 트립을 찾을 수 없습니다.
     tripNotifications: 트립 알림
   SavedTripList:
+    fromTo: "{from}에서 {to}까지"
     myTrips: 내 트립
     noSavedTrips: 저장된 트립이 없음
     noSavedTripsInstructions: 지도에서 먼저 트립을 검색하세요.

@@ -234,6 +234,7 @@ components:
     tripNotFound: No se encontró el viaje
     tripNotFoundDescription: Lo sentimos, no se encontró el viaje solicitado.
   SavedTripList:
+    fromTo: 'De {from} al {to}'
     myTrips: Mis viajes
     noSavedTrips: No tiene viajes guardados
     noSavedTripsInstructions: Realice primero una búsqueda de viajes desde el mapa.
