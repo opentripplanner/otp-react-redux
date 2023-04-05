@@ -26,9 +26,9 @@ _name: Vietnamese
 components:
   UserTripSettings:
     forgetOptions: Hãy quên các tùy chọn của tôi
-    restoreOptions: "Khôi phục {defaults, select,\n true {mặc định của tôi}\n other\
-      \ {mặc định}\n }\n"
     rememberOptions: Hãy nhớ các tùy chọn chuyến đi
+    restoreDefaultOptions: Khôi phục mặc định
+    restoreMyOptions: Khôi phục mặc định của tôi
   A11yPrefs:
     accessibilityRoutingByDefault: Thích những chuyến đi có thể truy cập theo mặc
       định

@@ -619,8 +619,8 @@ components:
   UserTripSettings:
     forgetOptions: Oublier mes options
     rememberOptions: Enregistrer les options de trajet
-    restoreOptions: "{defaults, select, true {Restaurer mes préférences} other {Paramètres\
-      \ par défaut}}"
+    restoreDefaultOptions: Paramètres par défaut
+    restoreMyOptions: Restaurer mes paramètres
   VerifyEmailPane:
     emailIsVerified: Mon email est vérifié
     instructions1: >

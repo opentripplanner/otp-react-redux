@@ -702,11 +702,8 @@ components:
   UserTripSettings:
     forgetOptions: Forget my options
     rememberOptions: Remember trip options
-    restoreOptions: |
-      Restore {defaults, select,
-        true {my defaults}
-        other {defaults}
-      }
+    restoreDefaultOptions: Restore defaults
+    restoreMyOptions: Restore my defaults
   VerifyEmailPane:
     emailIsVerified: My email is verified!
     instructions1: >

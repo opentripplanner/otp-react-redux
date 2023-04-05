@@ -398,8 +398,8 @@ components:
   UserTripSettings:
     forgetOptions: Olvidar mis opciones
     rememberOptions: Recordar las opciones de viaje
-    restoreOptions: "Restaurar {defaults, select,\n true {mis valores predeterminados}\n\
-      \ other {los valores predeterminados}\n }\n"
+    restoreDefaultOptions: Restaurar los valores predeterminados
+    restoreMyOptions: Restaurar mis valores predeterminados
   VerifyEmailPane:
     emailIsVerified: ¡Mi correo electrónico está verificado!
     instructions1: "Por favor compruebe el buzón de su correo electrónico y siga el\

@@ -369,9 +369,10 @@ components:
     instructions2: 一旦您被验证，请点击下面的按钮继续.
     resendVerification: 重新发送验证邮件
   UserTripSettings:
-    restoreOptions: "恢复 {defaults, select,\n true {我的默认值}\n other {默认设置}\n }\n"
     forgetOptions: 忘记我的选择
     rememberOptions: 记住行程选择
+    restoreDefaultOptions: 恢复默认设置
+    restoreMyOptions: 恢复我的默认值
   AccountSetupFinishPane:
     message: 你已经准备好开始计划你的旅行.
   AmenitiesPanel:
