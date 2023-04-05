@@ -2640,10 +2640,10 @@
     "@opentripplanner/base-map" "^3.0.6"
     "@opentripplanner/core-utils" "^7.0.5"
 
-"@opentripplanner/types@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-5.0.0.tgz#c7f1ed0119d8dbe02e863dccb27c46d6ba68a2cf"
-  integrity sha512-Z9SBCw7yb8g5bH8HVyXzN7Xojxtn6ME8AJRq5ItGpvY6L8k8YVD88EoxB6/k1NJUf8p0oyMResULKj/oY1qq2A==
+"@opentripplanner/types@^6.0.0-alpha.2":
+  version "6.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.0.0-alpha.3.tgz#2e6a3e2cfe25b7a97ac290eb712ddbbebe330734"
+  integrity sha512-LcL8lXqEutk/tzEHwnxDUIqPBTCPBWpnfIRn8E8k8H5tov6TPXWHDYS9N8iE+CzoFv70JUCSB9M08ck+QBl4NQ==
 
 "@opentripplanner/vehicle-rental-overlay@^2.1.0":
   version "2.1.0"

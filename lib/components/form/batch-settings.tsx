@@ -54,12 +54,15 @@ function BatchSettings({
   const { ModeIcon } = useContext(ComponentContext)
 
   const modeButtonsWithIcons: ModeButtonDefinition[] = modeButtonOptions.map(
-    (button: ModeButtonDefinition) => ({
-      ...button,
-      Icon: React.memo(function ModeButtonIcon() {
-        return <ModeIcon mode={button.iconName} />
-      })
-    })
+    React.useCallback(
+      (button: ModeButtonDefinition) => ({
+        ...button,
+        Icon: function ModeButtonIcon() {
+          return <ModeIcon mode={button.iconName} />
+        }
+      }),
+      [ModeIcon]
+    )
   )
 
   const modeSettingsWithIcons = [

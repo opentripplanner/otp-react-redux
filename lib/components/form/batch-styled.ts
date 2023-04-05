@@ -5,13 +5,9 @@ import styled, { css } from 'styled-components'
 import { commonInputCss, modeButtonButtonCss } from './styled'
 import DateTimePreview from './date-time-preview'
 
-const SHADOW = 'inset 0px 0px 5px #c1c1c1'
-
 const activeCss = css`
-  -moz-box-shadow: ${SHADOW};
-  -webkit-box-shadow: ${SHADOW};
   background: #e5e5e5;
-  box-shadow: ${SHADOW};
+  box-shadow: inset 0px 0px 5px #c1c1c1;
 `
 
 const buttonTransitionCss = css`
@@ -71,7 +67,6 @@ export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
 `
 
 export const PlanTripButton = styled(Button)`
-  align-item: right;
   background-color: green;
   color: #ffffffdd;
   grid-column: -1;
