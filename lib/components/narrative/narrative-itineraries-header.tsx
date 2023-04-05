@@ -29,7 +29,6 @@ const InvisibleHeader = styled.h1`
   width: 0;
 `
 
-// eslint-disable-next-line complexity
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
   errors,
@@ -52,7 +51,7 @@ export default function NarrativeItinerariesHeader({
   itineraries: unknown[]
   itinerary: Itinerary
   itineraryIsExpanded: boolean
-  onSortChange: (evt: any) => void
+  onSortChange: () => void
   onSortDirChange: () => void
   onToggleShowErrors: () => void
   onViewAllOptions: () => void
@@ -86,7 +85,7 @@ export default function NarrativeItinerariesHeader({
         flexWrap: 'wrap'
       }}
     >
-      {itinerary && (itineraryIsExpanded || showingErrors) ? (
+      {itineraryIsExpanded || showingErrors ? (
         <>
           <button
             className="clear-button-formatting"

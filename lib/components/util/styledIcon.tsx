@@ -54,12 +54,10 @@ export const StyledIconWrapper = styled.span<Props>`
   svg {
     font-size: ${(props) => getFontSize(props.size)};
     height: 1em;
-    height: 1em;
     transform: ${(props) => `
       ${props.flipHorizontal ? 'scale(-1,1) ' : ''} 
       ${props.rotate90 ? 'rotate(90deg)' : ''} 
     `};
-    width: 1em;
     width: 1em;
   }
 `
