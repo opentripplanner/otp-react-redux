@@ -612,7 +612,6 @@ common:
   itineraryDescriptions:
     calories: '{calories, number} Cal'
     noItineraryToDisplay: No hay itinerario que mostrar.
-    noTransitFareProvided: No hay información sobre las tarifas
     transfers: '{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}'
     relativeCo2: >
       {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
