@@ -31,7 +31,6 @@ const VehiclePositionRetriever = ({
       refreshVehiclePositions()
 
       if (!refreshTimer) {
-        console.log('Set up timer for route ' + routeId || '')
         // Refresh vehicle positions per interval set in config.
         setRefreshTimer(
           setInterval(refreshVehiclePositions, refreshSeconds * 1000)
@@ -40,7 +39,6 @@ const VehiclePositionRetriever = ({
     }
 
     return () => {
-      console.log('Veh pos retrieve unmounting for route ' + routeId || '')
       // Stop refreshing vehicle positions for the specified route when this component unmounts.
       if (refreshTimer) {
         clearInterval(refreshTimer)
