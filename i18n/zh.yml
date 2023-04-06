@@ -541,7 +541,7 @@ common:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
     duration:
       aFewSeconds: 几秒钟
-      nDays: "{days} 일 전"
+      nDays: "{days} 天"
       nHours: "{hours} 小时"
       nMinutes: "{minutes} 分钟"
     durationAgo: "{duration} 前"
