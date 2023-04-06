@@ -148,7 +148,7 @@ common:
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     duration:
       aFewSeconds: a few seconds
-      nDays: "{days, plural, =1 {one day} other {# days}"
+      nDays: "{days, plural, =1 {one day} other {# days}}"
       nHours: "{hours, plural, =1 {an hour} other {# hours}}"
       nMinutes: "{minutes, plural, =1 {one minute} other {# minutes}}"
     durationAgo: "{duration} ago"
