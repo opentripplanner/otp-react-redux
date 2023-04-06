@@ -362,8 +362,8 @@ components:
   UserTripSettings:
     forgetOptions: 내 옵션 잊기
     rememberOptions: 트립 옵션 기억하기
-    restoreDefaultOptions: 기본설정복원
-    restoreMyOptions: 내기본설정복원
+    restoreDefaultOptions: 기본 설정 복원
+    restoreMyOptions: 내 기본 설정 복원 
   ViewSwitcher:
     switcher: 변경
   A11yPrefs:
@@ -602,9 +602,9 @@ common:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
     duration:
       aFewSeconds: 몇 초
-      nDays: "{days} 일 전"
+      nDays: "{days} 일"
       nHours: "{hours} 시간"
-      nMinutes: "{minutes} 분 전"
+      nMinutes: "{minutes} 분"
     durationAgo: "{duration} 전"
     tripDurationFormat: "{hours, plural, =0 {} other {# 시간 }}{minutes} 분 { seconds,\
       \ plural, =0 {} other {# 초}}"
