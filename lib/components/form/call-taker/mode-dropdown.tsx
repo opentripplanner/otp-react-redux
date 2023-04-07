@@ -32,7 +32,7 @@ function ModeDropdown({ modeDropdownOptions, onChangeModes }: Props) {
       )?.combination
       onChangeModes(newModes || [])
     },
-    [modeDropdownOptions, onChangeModes]
+    []
   )
 
   return (
