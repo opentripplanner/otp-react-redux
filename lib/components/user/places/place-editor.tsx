@@ -5,12 +5,11 @@ import {
   HelpBlock
 } from 'react-bootstrap'
 import { Field, FormikProps } from 'formik'
-import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl'
+import { LocationSelectedEvent } from '@opentripplanner/location-field/lib/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
-import type { Location } from '@opentripplanner/types'
-import type { WrappedComponentProps } from 'react-intl'
 
 import { capitalizeFirst, getErrorStates } from '../../../util/ui'
 import { ComponentContext } from '../../../util/contexts'
@@ -68,12 +67,9 @@ const StyledFormGroup = styled(FormGroup)`
 class PlaceEditor extends Component<Props> {
   static contextType = ComponentContext
 
-  _handleLocationChange = (
-    _: IntlShape, // Ignore intl object.
-    { location }: { location: Location }
-  ) => {
+  _handleLocationChange = (e: LocationSelectedEvent) => {
     const { setTouched, setValues, values } = this.props
-    const { lat, lon, name } = location
+    const { lat, lon, name } = e.location
     setValues({
       ...values,
       address: name,

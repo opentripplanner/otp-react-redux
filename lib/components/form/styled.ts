@@ -3,6 +3,12 @@ import {
   DateTimeSelector,
   SettingsSelectorPanel
 } from '@opentripplanner/trip-form'
+import {
+  Input,
+  InputGroupAddon,
+  MenuItemA
+} from '@opentripplanner/location-field/lib/styled'
+import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
 
 const commonButtonCss = css`
@@ -209,4 +215,27 @@ export const StyledDateTimeSelector = styled(DateTimeSelector)`
 
 export const UnpaddedList = styled.ul`
   padding: 0;
+`
+
+export const StyledLocationField = styled(LocationField)`
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
+  width: 100%;
+
+  ${Input} {
+    padding: 6px 12px;
+  }
+
+  ${InputGroupAddon} {
+    align-self: baseline;
+    justify-self: center;
+  }
+
+  ${MenuItemA} {
+    text-decoration: none;
+  }
+
+  ${MenuItemA}:hover {
+    color: #333;
+  }
 `
