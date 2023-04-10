@@ -362,8 +362,8 @@ components:
   UserTripSettings:
     forgetOptions: 내 옵션 잊기
     rememberOptions: 트립 옵션 기억하기
-    restoreDefaultOptions: 기본 설정 복원
-    restoreMyOptions: 내 기본 설정 복원 
+    restoreDefaults: 기본 설정 복원
+    restoreMyDefaults: 내 기본 설정 복원 
   ViewSwitcher:
     switcher: 변경
   A11yPrefs:

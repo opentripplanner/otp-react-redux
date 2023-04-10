@@ -372,8 +372,8 @@ components:
   UserTripSettings:
     forgetOptions: 忘记我的选择
     rememberOptions: 记住行程选择
-    restoreDefaultOptions: 恢复默认设置
-    restoreMyOptions: 恢复我的默认值
+    restoreDefaults: 恢复默认设置
+    restoreMyDefaults: 恢复我的默认值
   AccountSetupFinishPane:
     message: 你已经准备好开始计划你的旅行.
   AmenitiesPanel:

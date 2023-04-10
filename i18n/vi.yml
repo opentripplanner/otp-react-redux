@@ -27,8 +27,8 @@ components:
   UserTripSettings:
     forgetOptions: Hãy quên các tùy chọn của tôi
     rememberOptions: Hãy nhớ các tùy chọn chuyến đi
-    restoreDefaultOptions: Khôi phục mặc định
-    restoreMyOptions: Khôi phục mặc định của tôi
+    restoreDefaults: Khôi phục mặc định
+    restoreMyDefaults: Khôi phục mặc định của tôi
   A11yPrefs:
     accessibilityRoutingByDefault: Thích những chuyến đi có thể truy cập theo mặc
       định
