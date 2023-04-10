@@ -20,10 +20,7 @@ import ButtonGroup from '../../util/button-group'
 import FormattedValidationError from '../../util/formatted-validation-error'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
-import {
-  makeLocationFieldLocation,
-  PlaceLocationField
-} from './place-location-field'
+import { PlaceLocationField } from './place-location-field'
 
 // TODO: Share with OTP middleware user types.
 interface Fields {
@@ -58,6 +55,18 @@ const StyledFormGroup = styled(FormGroup)`
     top: 28px;
   }
 `
+
+/**
+ * Create a LocationField location object from a persisted user location object.
+ */
+function makeLocationFieldLocation(favoriteLocation: Fields) {
+  const { address, lat, lon } = favoriteLocation
+  return {
+    lat,
+    lon,
+    name: address
+  }
+}
 
 /**
  * Contains the fields for editing a favorite place.

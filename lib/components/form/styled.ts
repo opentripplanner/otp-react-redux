@@ -233,9 +233,8 @@ export const StyledLocationField = styled(LocationField)`
 
   ${MenuItemA} {
     text-decoration: none;
-  }
-
-  ${MenuItemA}:hover {
-    color: #333;
+    &:hover {
+      color: inherit;
+    }
   }
 `
