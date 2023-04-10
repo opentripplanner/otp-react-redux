@@ -3,7 +3,8 @@ import {
   Input,
   InputGroupAddon,
   MenuItemA,
-  MenuItemLi
+  MenuItemLi,
+  MenuItemList
 } from '@opentripplanner/location-field/lib/styled'
 import LocationField from '@opentripplanner/location-field'
 import styled from 'styled-components'
@@ -39,6 +40,10 @@ const StyledLocationField = styled(LocationField)<Props>`
   ${InputGroupAddon} {
     display: none;
   }
+  ${MenuItemList} {
+    position: absolute;
+    ${(props) => (props.static ? 'width: 100%;' : '')}
+  }
   ${MenuItemA} {
     &:focus,
     &:hover {
@@ -47,7 +52,9 @@ const StyledLocationField = styled(LocationField)<Props>`
     }
   }
   ${MenuItemA}, ${MenuItemLi} {
-    ${(props) => (props.static ? 'padding-left: 0; padding-right: 0;' : '')}
+    overflow: hidden;
+    ${(props) =>
+      props.static ? 'padding-left: 10px; padding-right: 5px; width: 100%' : ''}
   }
 `
 /**
