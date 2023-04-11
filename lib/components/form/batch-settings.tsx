@@ -32,6 +32,7 @@ type Props = {
   activeSearch: any
   config: any
   currentQuery: any
+  fillModeIcons?: boolean
   intl: IntlShape
   modeButtonOptions: ModeButtonDefinition[]
   routingQuery: any
@@ -45,6 +46,7 @@ function BatchSettings({
   activeSearch,
   config,
   currentQuery,
+  fillModeIcons,
   intl,
   modeButtonOptions,
   routingQuery
@@ -129,7 +131,7 @@ function BatchSettings({
           <StyledDateTimePreview hideButton />
         </StyledDateTimePreviewContainer>
         <MetroModeSelector
-          fillModeIcons={false}
+          fillModeIcons={fillModeIcons}
           modeButtons={buttonsWithSettings}
           onSettingsUpdate={setModeSettingValue}
           onToggleModeButton={toggleModeButton}
@@ -167,6 +169,7 @@ const mapStateToProps = (state: any) => ({
   activeSearch: getActiveSearch(state),
   config: state.otp.config,
   currentQuery: state.otp.currentQuery,
+  fillModeIcons: state.otp.config.itinerary?.fillModeIcons,
   modeButtonOptions: state.otp.config.modes.modeButtons,
   modeOptions: state.otp.config.modes.modeOptions || defaultModeOptions,
   possibleCombinations: state.otp.config.modes.combinations
