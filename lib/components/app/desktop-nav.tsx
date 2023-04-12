@@ -63,10 +63,13 @@ const DesktopNav = ({
     // use history to go back to the root path
     history.replace(history.location.pathname)
     history.push('..' + history.location.search)
-    alert(
+    const confirmed = window.confirm(
       'This action will reset your trip. Are you sure you want to continue?'
     )
-    window.location.reload()
+    if (confirmed) {
+      // reload the page if the user clicks "OK"
+      window.location.reload()
+    }
   }
 
   return (
