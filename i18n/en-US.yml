@@ -104,8 +104,9 @@ common:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
     noTransitFareProvided: No fare info
-    relativeCo2: |
-      {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
+    relativeCo2: >
+      {co2} {isMore, select, true {more} other {less} } CO₂ than
+      driving alone
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
   modes:
     bicycle_rent: Bikeshare
@@ -145,20 +146,12 @@ common:
     tap: tap
   time:
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
+    duration:
+      aFewSeconds: a few seconds
+      nDays: "{days, plural, =1 {one day} other {# days}}"
+      nHours: "{hours, plural, =1 {an hour} other {# hours}}"
+      nMinutes: "{minutes, plural, =1 {one minute} other {# minutes}}"
     durationAgo: "{duration} ago"
-    fromNowUpdate: |
-      {days, plural,
-        =0 {{hours,plural,
-          =0 {{minutes, plural,
-            =0 {a few seconds ago}
-            =1 {one minute ago}
-            other {# minutes ago}
-          }}
-          =1 {an hour ago}
-          other {# hours ago}
-        }}
-        other {# days ago}
-      }
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
       other {# sec}}
@@ -451,11 +444,12 @@ components:
     header: Route Viewer
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
-    openPatternViewer: Go to route pattern viewer
     shortTitle: View Routes
     stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
     toggleRouteOnMap: Toggle route on map
+    openPatternViewer: Go to route pattern viewer
+
   SaveTripButton:
     cantSaveText: Cannot save
     cantSaveTooltip: >-
@@ -464,6 +458,7 @@ components:
     saveTripText: Save trip
     signInText: Sign in to save trip
     signInTooltip: Please sign in to save trip.
+
   SavedTripEditor:
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip
@@ -472,6 +467,7 @@ components:
     tripNotFoundDescription: Sorry, the requested trip was not found.
     tripNotifications: Trip notifications
   SavedTripList:
+    fromTo: From {from} to {to}
     myTrips: My trips
     noSavedTrips: You have no saved trips
     noSavedTripsInstructions: Perform a trip search from the map first.
@@ -700,11 +696,8 @@ components:
   UserTripSettings:
     forgetOptions: Forget my options
     rememberOptions: Remember trip options
-    restoreOptions: |
-      Restore {defaults, select,
-        true {my defaults}
-        other {defaults}
-      }
+    restoreDefaults: Restore defaults
+    restoreMyDefaults: Restore my defaults
   VerifyEmailPane:
     emailIsVerified: My email is verified!
     instructions1: >
