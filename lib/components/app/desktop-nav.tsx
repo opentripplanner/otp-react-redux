@@ -72,6 +72,12 @@ const DesktopNav = ({
     }
   }
 
+  const handleClick = () => {
+    doesLogoRefresh
+      ? _resetAndShowTripPlanner()
+      : doesLogoRedirectToUrl && window.open(urlThatLogoRedirectsTo, '_blank')
+  }
+
   return (
     <header>
       <Navbar fluid inverse>
@@ -83,22 +89,18 @@ const DesktopNav = ({
             <Button
               aria-label={agencyLogoLabel}
               className="navbar-brand"
-              onClick={() => {
-                if (doesLogoRefresh) {
-                  _resetAndShowTripPlanner()
-                } else if (doesLogoRedirectToUrl) {
-                  window.open(urlThatLogoRedirectsTo, '_blank')
-                }
-              }}
+              onClick={handleClick}
               role={
                 // TODO: role "button" doesn't show up for screen readers
                 doesLogoRefresh ? 'button' : 'link'
               }
+              style={{
+                pointerEvents:
+                  doesLogoRefresh || doesLogoRedirectToUrl ? 'auto' : 'none'
+              }}
               title={agencyLogoLabel}
             >
               <div className={branding && `with-icon icon-${branding}`}>
-                {/* A title is always rendered (e.g.for screen readers)
-                  but is visually-hidden if a branding icon is used. */}
                 <div className="navbar-title">{title}</div>
               </div>
             </Button>
