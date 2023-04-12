@@ -26,9 +26,9 @@ _name: Vietnamese
 components:
   UserTripSettings:
     forgetOptions: Hãy quên các tùy chọn của tôi
-    restoreOptions: "Khôi phục {defaults, select,\n true {mặc định của tôi}\n other\
-      \ {mặc định}\n }\n"
     rememberOptions: Hãy nhớ các tùy chọn chuyến đi
+    restoreDefaults: Khôi phục mặc định
+    restoreMyDefaults: Khôi phục mặc định của tôi
   A11yPrefs:
     accessibilityRoutingByDefault: Thích những chuyến đi có thể truy cập theo mặc
       định
@@ -477,6 +477,7 @@ components:
     tripNotFoundDescription: Xin lỗi, không tìm thấy chuyến đi được yêu cầu.
     tripNotifications: Thông báo chuyến đi
   SavedTripList:
+    fromTo: Từ {from} đến {to}
     myTrips: Chuyến đi của tôi
     noSavedTrips: Bạn không có những chuyến đi được lưu
     noSavedTripsInstructions: Trước tiên, thực hiện tìm kiếm chuyến đi từ bản đồ.
@@ -592,12 +593,14 @@ common:
     click: nhấp
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
-    durationAgo: "Cách đây {formattedDuration}"
+    duration:
+      aFewSeconds: vài giây
+      nDays: "{days} ngày"
+      nHours: "{hours, plural, =1 {một tiếng} other {# tiếng}}"
+      nMinutes: "{minutes, plural, =1 {một phút} other {# phút}}"
+    durationAgo: "Cách đây {duration}"
     tripDurationFormat: "{hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds,\
       \ plural, =0 {} other {# giây}}"
-    fromNowUpdate: "Cách đây {days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
-      \ =0 {vài giây}\n =1 {một phút}\n other {# phút}\n }}\n =1 {một tiếng}\n other\
-      \ {# tiếng}\n }}\n other {# ngày}\n }\n"
   dateExpressions:
     today: Hôm nay
     tomorrow: Ngày mai

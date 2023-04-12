@@ -15,6 +15,7 @@ import React, { Component } from 'react'
 import {
   getRouteIdForPattern,
   getStopTimesByPattern,
+  patternComparator,
   routeIsValid,
   stopTimeComparator
 } from '../../util/viewer'
@@ -167,14 +168,6 @@ class LiveStopTimes extends Component<Props, State> {
     // an array of stoptimes
     const stopTimesByPattern = getStopTimesByPattern(stopData)
     const now = utcToZonedTime(Date.now(), homeTimezone)
-
-    // TODO: Shared types
-    const patternComparator = (patternA: any, patternB: any) => {
-      const stopTimesA = [].concat(patternA.times).sort(stopTimeComparator)
-      const stopTimesB = [].concat(patternB.times).sort(stopTimeComparator)
-      // sort by first departure time
-      return stopTimeComparator(stopTimesA[0], stopTimesB[0])
-    }
 
     // Time range is set in seconds, so convert to days
     const timeRange = stopViewerConfig.timeRange / 86400 || 2

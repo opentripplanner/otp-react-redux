@@ -214,6 +214,7 @@ components:
     tripNotFoundDescription: 죄송합니다. 요청된 트립을 찾을 수 없습니다.
     tripNotifications: 트립 알림
   SavedTripList:
+    fromTo: "{from}에서 {to}까지"
     myTrips: 내 트립
     noSavedTrips: 저장된 트립이 없음
     noSavedTripsInstructions: 지도에서 먼저 트립을 검색하세요.
@@ -361,7 +362,8 @@ components:
   UserTripSettings:
     forgetOptions: 내 옵션 잊기
     rememberOptions: 트립 옵션 기억하기
-    restoreOptions: "{defaults, select,\n true {내 기본 설정}\n other {기본 설정}\n } 복원\n"
+    restoreDefaults: 기본 설정 복원
+    restoreMyDefaults: 내 기본 설정 복원 
   ViewSwitcher:
     switcher: 변경
   A11yPrefs:
@@ -597,10 +599,12 @@ common:
     tuesday: 화요일
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
+    duration:
+      aFewSeconds: 몇 초
+      nDays: "{days} 일"
+      nHours: "{hours} 시간"
+      nMinutes: "{minutes} 분"
     durationAgo: "{duration} 전"
-    fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
-      \ =0 {몇 초 전에}\n =1 {1 분 전}\n other {# 분 전}\n }}\n =1 {한 시간 전에}\n other {# 시간\
-      \ 전}\n }}\n other {# 일 전}\n }\n"
     tripDurationFormat: "{hours, plural, =0 {} other {# 시간 }}{minutes} 분 { seconds,\
       \ plural, =0 {} other {# 초}}"
   coordinates: '{lat}, {lon}'

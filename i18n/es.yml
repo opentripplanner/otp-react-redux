@@ -234,6 +234,7 @@ components:
     tripNotFound: No se encontró el viaje
     tripNotFoundDescription: Lo sentimos, no se encontró el viaje solicitado.
   SavedTripList:
+    fromTo: 'De {from} al {to}'
     myTrips: Mis viajes
     noSavedTrips: No tiene viajes guardados
     noSavedTripsInstructions: Realice primero una búsqueda de viajes desde el mapa.
@@ -398,8 +399,8 @@ components:
   UserTripSettings:
     forgetOptions: Olvidar mis opciones
     rememberOptions: Recordar las opciones de viaje
-    restoreOptions: "Restaurar {defaults, select,\n true {mis valores predeterminados}\n\
-      \ other {los valores predeterminados}\n }\n"
+    restoreDefaults: Restaurar los valores predeterminados
+    restoreMyDefaults: Restaurar mis valores predeterminados
   VerifyEmailPane:
     emailIsVerified: ¡Mi correo electrónico está verificado!
     instructions1: "Por favor compruebe el buzón de su correo electrónico y siga el\
@@ -648,10 +649,12 @@ common:
     tap: toque
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
-    durationAgo: "hace {formattedDuration}"
-    fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
-      \ =0 {hace unos segundos}\n =1 {hace un minuto}\n other {hace # minutos}\n }}\n\
-      \ =1 {hace una hora}\n other {hace # horas}\n }}\n other {hace # días}\n }\n"
+    duration:
+      aFewSeconds: unos segundos
+      nDays: "{days, plural, =1 {dia} other {# dias}}"
+      nHours: "{hours, plural, =1 {una hora} other {# horas}}"
+      nMinutes: "{minutes, plural, =1 {un minuto} other {# minutos}}"
+    durationAgo: "hace {duration}"
     tripDurationFormat: "{hours, plural, =0 {} other {# h }}{minutes} min { seconds,\
       \ plural, =0 {} other {# s}}"
   places:

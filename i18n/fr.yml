@@ -386,6 +386,7 @@ components:
     tripNotFoundDescription: Le trajet recherché est introuvable.
     tripNotifications: Notifications du trajet
   SavedTripList:
+    fromTo: "De {from} à {to}"
     myTrips: Mes trajets
     noSavedTrips: Vous n'avez aucun trajet enregistré
     noSavedTripsInstructions: Effectuez une recherche depuis la carte avant de pouvoir
@@ -514,7 +515,7 @@ components:
     active:
       delayedHeading: "Trajet en cours, retardé de {formattedDuration}."
       description: "Arrivée à destination prévue à {arrivalTime, time, short}."
-      earlyHeading: "Trajet en cours, en avance de {deviationHumanDuration}."
+      earlyHeading: "Trajet en cours, en avance de {formattedDuration}."
       noDataHeading: Trajet en cours (données en temps réel non disponibles).
       onTimeHeading: Trajet en cours et prévu à l'heure.
     base:
@@ -619,8 +620,8 @@ components:
   UserTripSettings:
     forgetOptions: Oublier mes options
     rememberOptions: Enregistrer les options de trajet
-    restoreOptions: "{defaults, select, true {Restaurer mes préférences} other {Paramètres\
-      \ par défaut}}"
+    restoreDefaults: Paramètres par défaut
+    restoreMyDefaults: Restaurer mes paramètres
   VerifyEmailPane:
     emailIsVerified: Mon email est vérifié
     instructions1: >
@@ -747,20 +748,12 @@ common:
 
   time:
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
+    duration:
+      aFewSeconds: quelques secondes
+      nDays: "{days, plural, =1 {un jour} other {# jours}}"
+      nHours: "{hours, plural, =1 {une heure} other {# heures}}"
+      nMinutes: "{minutes, plural, =1 {une minute} other {# minutes}}"
     durationAgo: "il y a {duration}"
-    fromNowUpdate: >
-      {days, plural,
-        =0 {{hours,plural,
-          =0 {{minutes, plural,
-            =0 {il y a quelques secondes}
-            =1 {il y a une minute}
-            other {il y a # minutes}
-          }}
-          =1 {il y a une heure}
-          other {il y a # heures}
-        }}
-        other {il y a # jours}
-      }
     tripDurationFormat: "{hours, plural, =0 {} other {# h }}{minutes} min { seconds,\
       \ plural, =0 {} other {# s}}"
 
