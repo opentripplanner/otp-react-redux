@@ -434,6 +434,8 @@ components:
     operatedBy: Operated by {agencyName}
     selectADirection: Select a direction...
     stopsTo: Towards
+  PatternViewer:
+    header: Pattern Viewer
   RouteViewer:
     agencyFilter: Agency Filter
     allAgencies: All Agencies
