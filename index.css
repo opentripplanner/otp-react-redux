@@ -178,6 +178,24 @@ input[type="text"]::-ms-clear {
   width: 0;
 }
 
+.otp .navbar-brand {
+  background-color: transparent;
+  border: none;
+  padding-left: 50px;
+  outline: none;
+  position: inherit;
+  z-index: 2;
+}
+
+.otp .navbar-brand:active {
+  box-shadow: none;
+  outline: none;
+} 
+
+.otp .navbar-brand:focus-visible {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
 /* Buttons */
 
 button.header,

@@ -1,6 +1,7 @@
+import { Button, Nav, Navbar, NavItem } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
-import { Nav, Navbar, NavItem } from 'react-bootstrap'
+import { FormattedMessage, useIntl } from 'react-intl'
+import { useHistory } from 'react-router'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -19,11 +20,14 @@ const NavItemOnLargeScreens = styled(NavItem)`
     display: none !important;
   }
 `
-// Typscript TODO: otpConfig type
+
 export type Props = {
-  otpConfig: any
+  doesLogoRedirectToUrl?: boolean
+  doesLogoRefresh?: boolean
+  otpConfig: Record<string, any>
   popupTarget?: string
   setPopupContent: (url: string) => void
+  urlThatLogoRedirectsTo?: string
 }
 
 /**
@@ -39,9 +43,28 @@ export type Props = {
  *
  * TODO: merge with the mobile navigation bar.
  */
-const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
+const DesktopNav = ({
+  doesLogoRedirectToUrl,
+  doesLogoRefresh,
+  otpConfig,
+  popupTarget,
+  setPopupContent,
+  urlThatLogoRedirectsTo
+}: Props) => {
+  const history = useHistory()
+  const intl = useIntl()
   const { branding, persistence, title = DEFAULT_APP_TITLE } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
+
+  const _resetAndShowTripPlanner = () => {
+    // use history to go back to the root path
+    history.replace(history.location.pathname)
+    history.push('..' + history.location.search)
+    alert(
+      'This action will reset your trip. Are you sure you want to continue?'
+    )
+    window.location.reload()
+  }
 
   return (
     <header>
@@ -49,16 +72,37 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
         <Navbar.Header
           style={{ position: 'relative', width: '100%', zIndex: 2 }}
         >
+          <AppMenu />
           <Navbar.Brand>
-            <AppMenu />
-            <div
-              className={branding && `with-icon icon-${branding}`}
-              style={{ marginLeft: 50 }}
+            <Button
+              aria-label={intl.formatMessage({
+                id: 'components.AppMenu.agencyLogo'
+              })}
+              className="navbar-brand"
+              onClick={() => {
+                if (doesLogoRefresh) {
+                  _resetAndShowTripPlanner()
+                } else if (doesLogoRedirectToUrl) {
+                  window.open(urlThatLogoRedirectsTo, '_blank')
+                }
+              }}
+              role={
+                // TODO: role "button" doesn't show up for screen readers
+                doesLogoRefresh
+                  ? 'button'
+                  : doesLogoRedirectToUrl
+                  ? 'link'
+                  : 'none'
+              }
+              tabIndex={0}
+              title="Agency logo button"
             >
-              {/* A title is always rendered (e.g.for screen readers)
+              <div className={branding && `with-icon icon-${branding}`}>
+                {/* A title is always rendered (e.g.for screen readers)
                   but is visually-hidden if a branding icon is used. */}
-              <div className="navbar-title">{title}</div>
-            </div>
+                <div className="navbar-title">{title}</div>
+              </div>
+            </Button>
           </Navbar.Brand>
 
           <ViewSwitcher sticky />
@@ -87,11 +131,13 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
 }
 
 // connect to the redux store
-// Typescript TODO: state type
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: Record<string, any>) => {
   return {
+    doesLogoRedirectToUrl: state.otp.config?.navBar?.doesLogoRedirectToUrl,
+    doesLogoRefresh: state.otp.config?.navBar?.doesLogoRefresh,
     otpConfig: state.otp.config,
-    popupTarget: state.otp.config?.popups?.launchers?.toolbar
+    popupTarget: state.otp.config?.popups?.launchers?.toolbar,
+    urlThatLogoRedirectsTo: state.otp.config?.navBar?.urlThatLogoRedirectsTo
   }
 }
 
