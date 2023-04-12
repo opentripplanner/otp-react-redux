@@ -98,6 +98,7 @@ const DesktopNav = ({
                 pointerEvents:
                   doesLogoRefresh || doesLogoRedirectToUrl ? 'auto' : 'none'
               }}
+              tabIndex={doesLogoRefresh || doesLogoRedirectToUrl ? 0 : -1}
               title={agencyLogoLabel}
             >
               <div className={branding && `with-icon icon-${branding}`}>
