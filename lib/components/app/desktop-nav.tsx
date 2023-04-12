@@ -55,6 +55,9 @@ const DesktopNav = ({
   const intl = useIntl()
   const { branding, persistence, title = DEFAULT_APP_TITLE } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
+  const agencyLogoLabel = intl.formatMessage({
+    id: 'components.AppMenu.agencyLogo'
+  })
 
   const _resetAndShowTripPlanner = () => {
     // use history to go back to the root path
@@ -75,9 +78,7 @@ const DesktopNav = ({
           <AppMenu />
           <Navbar.Brand>
             <Button
-              aria-label={intl.formatMessage({
-                id: 'components.AppMenu.agencyLogo'
-              })}
+              aria-label={agencyLogoLabel}
               className="navbar-brand"
               onClick={() => {
                 if (doesLogoRefresh) {
@@ -88,14 +89,9 @@ const DesktopNav = ({
               }}
               role={
                 // TODO: role "button" doesn't show up for screen readers
-                doesLogoRefresh
-                  ? 'button'
-                  : doesLogoRedirectToUrl
-                  ? 'link'
-                  : 'none'
+                doesLogoRefresh ? 'button' : 'link'
               }
-              tabIndex={0}
-              title="Agency logo button"
+              title={agencyLogoLabel}
             >
               <div className={branding && `with-icon icon-${branding}`}>
                 {/* A title is always rendered (e.g.for screen readers)
