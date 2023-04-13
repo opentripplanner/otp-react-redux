@@ -1,7 +1,7 @@
 import {
+  ClearButton,
   DropdownButton,
   Input,
-  InputGroupAddon,
   MenuItemA,
   MenuItemLi,
   MenuItemList
@@ -22,6 +22,7 @@ const StyledLocationField = styled(LocationField)<Props>`
   margin-bottom: 0;
   width: 100%;
 
+  ${ClearButton},
   ${DropdownButton} {
     display: none;
   }
@@ -36,9 +37,6 @@ const StyledLocationField = styled(LocationField)<Props>`
     ::placeholder {
       color: #676767;
     }
-  }
-  ${InputGroupAddon} {
-    display: none;
   }
   ${MenuItemList} {
     position: absolute;

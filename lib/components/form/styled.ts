@@ -226,11 +226,6 @@ export const StyledLocationField = styled(LocationField)`
     padding: 6px 12px;
   }
 
-  ${InputGroupAddon} {
-    align-self: baseline;
-    justify-self: center;
-  }
-
   ${MenuItemA} {
     text-decoration: none;
     &:hover {
