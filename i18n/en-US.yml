@@ -104,9 +104,8 @@ common:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
     noTransitFareProvided: No fare info
-    relativeCo2: >
-      {co2} {isMore, select, true {more} other {less} } CO₂ than
-      driving alone
+    relativeCo2: |
+      {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
   modes:
     bicycle_rent: Bikeshare
@@ -443,12 +442,11 @@ components:
     header: Route Viewer
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
+    openPatternViewer: Go to route pattern viewer
     shortTitle: View Routes
     stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
     toggleRouteOnMap: Toggle route on map
-    openPatternViewer: Go to route pattern viewer
-
   SaveTripButton:
     cantSaveText: Cannot save
     cantSaveTooltip: >-
@@ -457,7 +455,6 @@ components:
     saveTripText: Save trip
     signInText: Sign in to save trip
     signInTooltip: Please sign in to save trip.
-
   SavedTripEditor:
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip

@@ -26,6 +26,7 @@ import { StyledIconWrapper } from '../util/styledIcon'
 import PageTitle from '../util/page-title'
 
 import { RouteRow } from './RouteRow'
+import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface FilterProps {
   agency?: string
@@ -137,6 +138,7 @@ class RouteViewer extends Component<Props, State> {
 
     return (
       <div className="route-viewer">
+        <VehiclePositionRetriever />
         <PageTitle
           title={getRouteOrPatternViewerTitle(
             transitOperators,
