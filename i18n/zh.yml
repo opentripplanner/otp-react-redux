@@ -231,6 +231,7 @@ components:
     tripNotFoundDescription: 对不起, 没有找到所要求的行程.
     tripNotifications: 行程通知
   SavedTripList:
+    fromTo: 从 {from} 到 {to}
     myTrips: 我的行程
     noSavedTrips: 你没有保存的行程
     noSavedTripsInstructions: 首先从地图上进行行程搜索.
@@ -369,9 +370,10 @@ components:
     instructions2: 一旦您被验证，请点击下面的按钮继续.
     resendVerification: 重新发送验证邮件
   UserTripSettings:
-    restoreOptions: "恢复 {defaults, select,\n true {我的默认值}\n other {默认设置}\n }\n"
     forgetOptions: 忘记我的选择
     rememberOptions: 记住行程选择
+    restoreDefaults: 恢复默认设置
+    restoreMyDefaults: 恢复我的默认值
   AccountSetupFinishPane:
     message: 你已经准备好开始计划你的旅行.
   AmenitiesPanel:
@@ -537,10 +539,12 @@ common:
       {co2} {isMore, select, true {更多} other {更少} } CO₂ 比单独驾车
   time:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
+    duration:
+      aFewSeconds: 几秒钟
+      nDays: "{days} 天"
+      nHours: "{hours} 小时"
+      nMinutes: "{minutes} 分钟"
     durationAgo: "{duration} 前"
-    fromNowUpdate: "{days, plural,\n =0 {{hours,plural,\n =0 {{minutes, plural,\n\
-      \ =0 {几秒钟前}\n =1 {一分钟前}\n other {# 分钟前}\n }}\n =1 {一小时前}\n other {# 小时前}\n }}\n\
-      \ other {# 天之前}\n }\n"
     tripDurationFormat: "{hours, plural, =0 {} other {# 小时 }}{minutes} 分钟} { seconds,\
       \ plural, =0 {} other {# 秒}}"
   dateExpressions:
