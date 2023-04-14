@@ -183,11 +183,10 @@ class PlaceEditor extends Component<Props> {
                     })
               }
               isRequired
-              isValid={!errorStates.address}
               location={makeLocationFieldLocation(place)}
               locationType="to"
               onLocationSelected={this._handleLocationChange}
-              selfValidate={false}
+              selfValidate={!!errorStates.address}
               showClearButton={false}
               static={isMobile()}
             />
