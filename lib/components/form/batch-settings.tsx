@@ -63,6 +63,7 @@ type Props = {
   currentQuery: any
   intl: IntlShape
   modeOptions: Mode[]
+  onPlanTripClick: () => void
   possibleCombinations: Combination[]
   routingQuery: any
   setQueryParam: (queryParam: any) => void
@@ -112,7 +113,7 @@ class BatchSettings extends Component<Props, State> {
   }
 
   _planTrip = () => {
-    const { currentQuery, intl, routingQuery } = this.props
+    const { currentQuery, intl, onPlanTripClick, routingQuery } = this.props
     // Check for any validation issues in query.
     const issues = []
     if (!hasValidLocation(currentQuery, 'from')) {
@@ -123,6 +124,7 @@ class BatchSettings extends Component<Props, State> {
         intl.formatMessage({ id: 'components.BatchSettings.destination' })
       )
     }
+    onPlanTripClick && onPlanTripClick()
     if (issues.length > 0) {
       // TODO: replace with less obtrusive validation.
       window.alert(
