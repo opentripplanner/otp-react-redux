@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl } from 'react-intl'
-import React, { Component } from 'react'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import React, { Component, FormEvent } from 'react'
 
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
 import BatchSettings from '../form/batch-settings'
@@ -12,15 +11,22 @@ import SwitchButton from '../form/switch-button'
 import UserSettings from '../form/user-settings'
 import ViewerContainer from '../viewers/viewer-container'
 
+interface Props {
+  activeSearch: any
+  intl: IntlShape
+  mobile?: boolean
+  showUserSettings: boolean
+}
+
 /**
  * Main panel for the batch/trip comparison form.
  */
-class BatchRoutingPanel extends Component {
+class BatchRoutingPanel extends Component<Props> {
   state = {
     planTripClicked: false
   }
 
-  handleSubmit = (e) => e.preventDefault()
+  handleSubmit = (e: FormEvent) => e.preventDefault()
 
   handlePlanTripClick = () => {
     this.setState({ planTripClicked: true })
@@ -101,7 +107,7 @@ class BatchRoutingPanel extends Component {
 }
 
 // connect to the redux store
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   const showUserSettings = getShowUserSettings(state)
   return {
     activeSearch: getActiveSearch(state),

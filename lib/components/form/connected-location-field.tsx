@@ -17,7 +17,10 @@ import * as mapActions from '../../actions/map'
 
 import connectLocationField from './connect-location-field'
 
-interface Props extends LocationFieldProps {
+type Props = Omit<
+  LocationFieldProps,
+  'geocoderConfig' | 'getCurrentPosition'
+> & {
   selfValidate?: boolean
 }
 
@@ -62,7 +65,7 @@ const ConnectedLocationField = connectLocationField(StyledLocationField, {
 })
 
 const LocationFieldWithChangedState = ({
-  onClearLocation,
+  clearLocation,
   onLocationSelected,
   selfValidate,
   ...otherProps
@@ -80,15 +83,15 @@ const LocationFieldWithChangedState = ({
   const handleClearLocation = useCallback(
     (e) => {
       setFieldChanged(true)
-      onClearLocation(e)
+      clearLocation && clearLocation(e)
     },
-    [onClearLocation, setFieldChanged]
+    [clearLocation, setFieldChanged]
   )
 
   return (
     <ConnectedLocationField
       {...otherProps}
-      onClearLocation={handleClearLocation}
+      clearLocation={handleClearLocation}
       onLocationSelected={handleLocationSelected}
       selfValidate={selfValidate || fieldChanged}
     />
