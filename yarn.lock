@@ -2613,10 +2613,10 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@^3.1.0-alpha.16":
-  version "3.1.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.1.0-alpha.16.tgz#5f285868e14b730531c6eccf42896486052dbbb9"
-  integrity sha512-qO3Eg1JbK86R1BOvj9kAOLVuvOnEmBI0nT4JbLWzfJD2wYki8RoaNWxXaf7ypmN0vVpYDIE1Si1S+Rvrftx/hQ==
+"@opentripplanner/trip-form@^3.1.0-alpha.17":
+  version "3.1.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.1.0-alpha.17.tgz#2929dd59214007c1a31d465f2b8c39e4fa4b5322"
+  integrity sha512-/yfog7JRYFJWuHMhQ2KJPSCLly09FqW0we81HEH2JQujyti16ZegpEsbzlGD4eRmorBX5p7YmKPnuG9y8gGBcg==
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/core-utils" "^8.2.0"
@@ -2629,7 +2629,6 @@
     flat "^5.0.2"
     react-indiana-drag-scroll "^2.0.1"
     react-inlinesvg "^2.3.0"
-    use-query-params "^2.1.1"
 
 "@opentripplanner/trip-viewer-overlay@^2.0.4":
   version "2.0.4"

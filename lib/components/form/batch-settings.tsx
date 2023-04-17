@@ -2,11 +2,11 @@
 import {
   addSettingsToButton,
   convertModeSettingValue,
+  MetroModeSelector,
   populateSettingWithValue
-} from '@opentripplanner/trip-form/lib/MetroModeSelector/utils'
+} from '@opentripplanner/trip-form'
 import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
-import { MetroModeSelector } from '@opentripplanner/trip-form'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import React, { useContext, useState } from 'react'
