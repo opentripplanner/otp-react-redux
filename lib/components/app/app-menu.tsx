@@ -121,7 +121,11 @@ class AppMenu extends Component<
         } = menuItem
         const { intl } = this.props
         const localizationId = `config.menuItems.${id}`
-        const localizedLabel = intl.formatMessage({ id: localizationId })
+        const localizedLabel = intl.formatMessage({
+          // Add the string id as the default message to limit error messages.
+          defaultMessage: localizationId,
+          id: localizationId
+        })
         // Override the config label if a localized label exists
         const label =
           localizedLabel === localizationId ? configLabel : localizedLabel
