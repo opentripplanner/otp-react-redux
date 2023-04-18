@@ -5,7 +5,7 @@ import React, { HTMLAttributes } from 'react'
 interface LinkProps extends HTMLAttributes<HTMLElement> {
   contents: JSX.Element | string
   gap?: number
-  inline?: boolean
+  isInline?: boolean
   size?: number
   style?: React.CSSProperties
   url: string
@@ -36,19 +36,18 @@ export const NewWindowIconA11y = ({
 export const LinkOpensNewWindow = ({
   contents,
   gap = 6,
-  inline,
+  isInline,
   size = 14,
   style,
   url
 }: LinkProps): JSX.Element => {
-  console.log(size)
   return (
     <a
       href={url}
       rel="noreferrer"
       style={{
         alignItems: 'center',
-        display: `${inline ? 'inline-flex' : 'flex'}`,
+        display: `${isInline ? 'inline-flex' : 'flex'}`,
         flexDirection: 'row',
         gap: `${gap}px`,
         textDecoration: 'underline',
