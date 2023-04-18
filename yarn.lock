@@ -2613,10 +2613,10 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@^3.1.0-alpha.12":
-  version "3.1.0-alpha.12"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.1.0-alpha.12.tgz#b648e6ba63fe530a69f15e957f98c1807c8bc80a"
-  integrity sha512-SCiWu3dlhe2H7e+edMJVzF2cPhG1rlN5qFz9Orq8PenOSM5eJdcFnqWcXBHygR7WXH2mhlY+eJaIRLydiAeRFQ==
+"@opentripplanner/trip-form@^3.1.0-alpha.17":
+  version "3.1.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.1.0-alpha.17.tgz#2929dd59214007c1a31d465f2b8c39e4fa4b5322"
+  integrity sha512-/yfog7JRYFJWuHMhQ2KJPSCLly09FqW0we81HEH2JQujyti16ZegpEsbzlGD4eRmorBX5p7YmKPnuG9y8gGBcg==
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/core-utils" "^8.2.0"
@@ -2629,7 +2629,6 @@
     flat "^5.0.2"
     react-indiana-drag-scroll "^2.0.1"
     react-inlinesvg "^2.3.0"
-    use-query-params "^2.1.1"
 
 "@opentripplanner/trip-viewer-overlay@^2.0.4":
   version "2.0.4"
@@ -16324,6 +16323,11 @@ serialize-query-params@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/serialize-query-params/-/serialize-query-params-2.0.1.tgz#f28f45a3da77ad5b578832fc8c9dc8ee08df9348"
   integrity sha512-MCw3M1sc0N0vTxsXfInqogI7Cygsnlv4Vdy1Sc+QAN50bpteYCIQRRS3FXT/mcCKOLxCR8ohLg29WmeOEXyjmw==
+
+serialize-query-params@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/serialize-query-params/-/serialize-query-params-2.0.2.tgz#598a3fb9e13f4ea1c1992fbd20231aa16b31db81"
+  integrity sha512-1chMo1dST4pFA9RDXAtF0Rbjaut4is7bzFbI1Z26IuMub68pNCILku85aYmeFhvnY//BXUPUhoRMjYcsT93J/Q==
 
 serve-handler@6.1.3:
   version "6.1.3"

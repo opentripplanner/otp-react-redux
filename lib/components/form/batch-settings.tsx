@@ -1,19 +1,29 @@
 /* eslint-disable react/prop-types */
-import { connect } from 'react-redux'
 import {
-  defaultModeSettings,
+  addSettingsToButton,
+  convertModeSettingValue,
   MetroModeSelector,
-  useModeState
+  populateSettingWithValue
 } from '@opentripplanner/trip-form'
+import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import React, { useContext, useState } from 'react'
-import type { ModeButtonDefinition } from '@opentripplanner/types'
+import type {
+  ModeButtonDefinition,
+  ModeSetting,
+  ModeSettingValues
+} from '@opentripplanner/types'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
+import {
+  decodeQueryParams,
+  DelimitedArrayParam,
+  encodeQueryParams
+} from 'use-query-params'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { StyledIconWrapper } from '../util/styledIcon'
 
@@ -24,18 +34,39 @@ import {
   StyledDateTimePreview,
   StyledDateTimePreviewContainer
 } from './batch-styled'
-import { defaultModeOptions } from './mode-buttons'
 import DateTimeModal from './date-time-modal'
+
+const queryParamConfig = { modeButtons: DelimitedArrayParam }
 
 // TYPESCRIPT TODO: better types
 type Props = {
   activeSearch: any
   config: any
   currentQuery: any
+  enabledModeButtons: string[]
+  fillModeIcons?: boolean
   intl: IntlShape
   modeButtonOptions: ModeButtonDefinition[]
+  modeSettingDefinitions: ModeSetting[]
+  modeSettingValues: ModeSettingValues
   routingQuery: any
   setQueryParam: (queryParam: any) => void
+  setUrlSearch: (evt: any) => void
+  urlSearchParams: URLSearchParams
+}
+
+function pipe<T>(...fns: Array<(arg: T) => T>) {
+  return (value: T) => fns.reduce((acc, fn) => fn(acc), value)
+}
+
+// TODO: Move to otp-ui
+export function setModeButtonEnabled(enabledKeys: string[]) {
+  return (modeButton: ModeButtonDefinition): ModeButtonDefinition => {
+    return {
+      ...modeButton,
+      enabled: enabledKeys.includes(modeButton.key)
+    }
+  }
 }
 
 /**
@@ -43,50 +74,49 @@ type Props = {
  */
 function BatchSettings({
   activeSearch,
-  config,
   currentQuery,
+  enabledModeButtons,
+  fillModeIcons,
   intl,
   modeButtonOptions,
-  routingQuery
+  modeSettingDefinitions,
+  modeSettingValues,
+  routingQuery,
+  setUrlSearch
 }: Props) {
   const [dateTimeExpanded, setDateTimeExpanded] = useState<boolean>(false)
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
-  const modeButtonsWithIcons: ModeButtonDefinition[] = modeButtonOptions.map(
-    React.useCallback(
-      (button: ModeButtonDefinition) => ({
-        ...button,
-        Icon: function ModeButtonIcon() {
-          return <ModeIcon mode={button.iconName} />
-        }
-      }),
-      [ModeIcon]
-    )
-  )
-
-  const modeSettingsWithIcons = [
-    ...defaultModeSettings,
-    ...(config.modes.modeSettingDefinitions || [])
-  ].map(
-    React.useCallback(
-      (msd) => ({
-        ...msd,
-        icon: <ModeIcon mode={msd.iconName} width={16} />
-      }),
-      [ModeIcon]
-    )
-  )
-
-  const { buttonsWithSettings, setModeSettingValue, toggleModeButton } =
-    useModeState(
-      modeButtonsWithIcons,
-      config.modes.initialState,
-      modeSettingsWithIcons,
-      {
-        queryParamState: true
+  const addModeButtonIcon = React.useCallback(
+    (def: ModeButtonDefinition) => ({
+      ...def,
+      Icon: function ModeButtonIcon() {
+        return <ModeIcon mode={def.iconName} />
       }
+    }),
+    [ModeIcon]
+  )
+
+  const populateSettingWithIcon = React.useCallback(
+    (msd: ModeSetting) => ({
+      ...msd,
+      icon: <ModeIcon mode={msd.iconName} width={16} />
+    }),
+    [ModeIcon]
+  )
+
+  const processedModeSettings = modeSettingDefinitions.map(
+    pipe(populateSettingWithIcon, populateSettingWithValue(modeSettingValues))
+  )
+
+  const processedModeButtons = modeButtonOptions.map(
+    pipe(
+      addModeButtonIcon,
+      addSettingsToButton(processedModeSettings),
+      setModeButtonEnabled(enabledModeButtons)
     )
+  )
 
   const _planTrip = () => {
     // Check for any validation issues in query.
@@ -116,6 +146,21 @@ function BatchSettings({
     routingQuery()
   }
 
+  const _toggleModeButton = (buttonId: string, newState: boolean) => {
+    let newButtons
+    if (newState) {
+      newButtons = [...enabledModeButtons, buttonId]
+    } else {
+      newButtons = enabledModeButtons.filter((c) => c !== buttonId)
+    }
+
+    // encodeQueryParams serializes the mode buttons for the URL
+    // It uses encodeQueryParams to get nice looking URL params and consistency
+    setUrlSearch(
+      encodeQueryParams(queryParamConfig, { modeButtons: newButtons })
+    )
+  }
+
   return (
     <div role="group">
       <MainSettingsRow>
@@ -129,10 +174,10 @@ function BatchSettings({
           <StyledDateTimePreview hideButton />
         </StyledDateTimePreviewContainer>
         <MetroModeSelector
-          fillModeIcons={false}
-          modeButtons={buttonsWithSettings}
-          onSettingsUpdate={setModeSettingValue}
-          onToggleModeButton={toggleModeButton}
+          fillModeIcons={fillModeIcons}
+          modeButtons={processedModeButtons}
+          onSettingsUpdate={(evt) => setUrlSearch(evt)}
+          onToggleModeButton={_toggleModeButton}
         />
         <PlanTripButton
           id="plan-trip"
@@ -163,18 +208,40 @@ function BatchSettings({
 
 // connect to the redux store
 // TODO: Typescript
-const mapStateToProps = (state: any) => ({
-  activeSearch: getActiveSearch(state),
-  config: state.otp.config,
-  currentQuery: state.otp.currentQuery,
-  modeButtonOptions: state.otp.config.modes.modeButtons,
-  modeOptions: state.otp.config.modes.modeOptions || defaultModeOptions,
-  possibleCombinations: state.otp.config.modes.combinations
-})
+const mapStateToProps = (state: any) => {
+  const urlSearchParams = new URLSearchParams(state.router.location.search)
+  const modeSettingValues = state.otp.modeSettingDefinitions.reduce(
+    (acc: ModeSettingValues, setting: ModeSetting) => {
+      const fromUrl = urlSearchParams.get(setting.key)
+      acc[setting.key] = fromUrl
+        ? convertModeSettingValue(setting, fromUrl)
+        : state.otp.config.modes.initialState.modeSettingValues?.[
+            setting.key
+          ] || setting.default
+      return acc
+    },
+    {}
+  )
+  return {
+    activeSearch: getActiveSearch(state),
+    config: state.otp.config,
+    currentQuery: state.otp.currentQuery,
+    enabledModeButtons:
+      decodeQueryParams(queryParamConfig, {
+        modeButtons: urlSearchParams.get('modeButtons')
+      })?.modeButtons || state.otp.config.modes.initialState.enabledModeButtons,
+    fillModeIcons: state.otp.config.itinerary?.fillModeIcons,
+    modeButtonOptions: state.otp.config.modes.modeButtons,
+    modeSettingDefinitions: state.otp.modeSettingDefinitions,
+    modeSettingValues,
+    urlSearchParams
+  }
+}
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
-  setQueryParam: formActions.setQueryParam
+  setQueryParam: formActions.setQueryParam,
+  setUrlSearch: apiActions.setUrlSearch
 }
 
 export default connect(
