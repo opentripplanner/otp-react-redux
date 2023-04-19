@@ -158,7 +158,9 @@ const Dropdown = ({
       style={{ float: pullRight ? 'right' : 'left' }}
     >
       <DropdownButton
-        aria-controls={id}
+        // Only set aria-controls when the dropdown is open
+        // (otherwise, assistive technologies may not announce the dropdown correctly).
+        aria-controls={open ? id : undefined}
         aria-expanded={open}
         aria-haspopup="listbox"
         aria-label={label}
@@ -175,7 +177,7 @@ const Dropdown = ({
       {open && (
         <DropdownMenu
           aria-label={listLabel}
-          aria-labelledby={listLabel ? '' : `${id}-label`}
+          aria-labelledby={listLabel ? undefined : `${id}-label`}
           id={id}
           onClick={toggleOpen}
           role="list"
