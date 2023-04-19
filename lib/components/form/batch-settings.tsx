@@ -6,6 +6,11 @@ import {
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
 import { connect } from 'react-redux'
+import {
+  decodeQueryParams,
+  DelimitedArrayParam,
+  encodeQueryParams
+} from 'use-query-params'
 import { injectIntl, IntlShape } from 'react-intl'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
@@ -16,11 +21,6 @@ import type {
   ModeSettingValues
 } from '@opentripplanner/types'
 
-import {
-  decodeQueryParams,
-  DelimitedArrayParam,
-  encodeQueryParams
-} from 'use-query-params'
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
