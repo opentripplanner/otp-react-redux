@@ -221,6 +221,9 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
+    ],
+    "i18n/*.{yml,yaml}": [
+      "yaml-sort --quotingStyle double --input"
     ]
   },
   "percy": {
