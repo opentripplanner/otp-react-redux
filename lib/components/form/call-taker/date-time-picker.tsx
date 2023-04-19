@@ -234,7 +234,7 @@ const mapStateToProps = (state: any) => {
   const { dateTime, homeTimezone } = state.otp.config
   return {
     homeTimezone,
-    timeFormat: dateTime.timeFormat
+    timeFormat: dateTime?.timeFormat || 'h:mm a'
   }
 }
 

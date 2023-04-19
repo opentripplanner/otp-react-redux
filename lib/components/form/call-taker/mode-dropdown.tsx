@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
-
-import { getModuleConfig, Modules } from '../../../util/config'
 import { TransportMode } from '@opentripplanner/types'
 import React, { useState } from 'react'
+
+import { defaultDropdownConfig } from '../../../util/call-taker'
+import { getModuleConfig, Modules } from '../../../util/config'
 
 type DropdownOption = {
   combination: TransportMode[]
@@ -47,9 +48,10 @@ function ModeDropdown({ modeDropdownOptions, onChangeModes }: Props) {
 }
 
 const mapStateToProps = (state: any) => {
-  const moduleConfig = getModuleConfig(state, Modules.CALL_TAKER).options
+  const moduleConfig = getModuleConfig(state, Modules.CALL_TAKER)?.options
   return {
-    modeDropdownOptions: moduleConfig.modeDropdownOptions
+    modeDropdownOptions:
+      moduleConfig?.modeDropdownOptions || defaultDropdownConfig
   }
 }
 
