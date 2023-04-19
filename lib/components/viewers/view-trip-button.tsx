@@ -25,7 +25,6 @@ type Props = {
 
 class ViewTripButton extends Component<Props> {
   _onClick = () => {
-    console.log(this.props)
     this.props.setMainPanelContent(MainPanelContent.TRIP_VIEWER)
     this.props.setViewedTrip({
       fromIndex: this.props.fromIndex,
