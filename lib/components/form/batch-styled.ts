@@ -48,7 +48,7 @@ export const StyledDateTimePreviewContainer = styled(Button)<{
   margin-right: 5px;
   padding: 0;
   position: relative;
-  width: 120px;
+  width: 90px;
   ${(props) => (props.expanded ? activeCss : null)}
 `
 
