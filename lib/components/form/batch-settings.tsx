@@ -30,6 +30,7 @@ import { StyledIconWrapper } from '../util/styledIcon'
 import {
   DateTimeModalContainer,
   MainSettingsRow,
+  ModeSelectorContainer,
   PlanTripButton,
   StyledDateTimePreview,
   StyledDateTimePreviewContainer
@@ -173,29 +174,31 @@ function BatchSettings({
         >
           <StyledDateTimePreview hideButton />
         </StyledDateTimePreviewContainer>
-        <MetroModeSelector
-          fillModeIcons={fillModeIcons}
-          modeButtons={processedModeButtons}
-          onSettingsUpdate={setUrlSearch}
-          onToggleModeButton={_toggleModeButton}
-        />
-        <PlanTripButton
-          id="plan-trip"
-          onClick={_planTrip}
-          title={intl.formatMessage({
-            id: 'components.BatchSettings.planTripTooltip'
-          })}
-        >
-          <StyledIconWrapper style={{ fontSize: '1.6em' }}>
-            {hasValidLocation(currentQuery, 'from') &&
-            hasValidLocation(currentQuery, 'to') &&
-            !!activeSearch ? (
-              <SyncAlt />
-            ) : (
-              <Search />
-            )}
-          </StyledIconWrapper>
-        </PlanTripButton>
+        <ModeSelectorContainer>
+          <MetroModeSelector
+            fillModeIcons={fillModeIcons}
+            modeButtons={processedModeButtons}
+            onSettingsUpdate={setUrlSearch}
+            onToggleModeButton={_toggleModeButton}
+          />
+          <PlanTripButton
+            id="plan-trip"
+            onClick={_planTrip}
+            title={intl.formatMessage({
+              id: 'components.BatchSettings.planTripTooltip'
+            })}
+          >
+            <StyledIconWrapper style={{ fontSize: '1.6em' }}>
+              {hasValidLocation(currentQuery, 'from') &&
+              hasValidLocation(currentQuery, 'to') &&
+              !!activeSearch ? (
+                <SyncAlt />
+              ) : (
+                <Search />
+              )}
+            </StyledIconWrapper>
+          </PlanTripButton>
+        </ModeSelectorContainer>
       </MainSettingsRow>
       {dateTimeExpanded && (
         <DateTimeModalContainer id="date-time-modal">

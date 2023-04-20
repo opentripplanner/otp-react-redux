@@ -65,12 +65,9 @@ export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
   padding: 0;
   ${(props) => (props.expanded ? activeCss : null)}
 `
-
 export const PlanTripButton = styled(Button)`
   background-color: green;
   color: #ffffffdd;
-  grid-column: -1;
-  grid-row: 2;
   padding: 5px;
 
   &:active {
@@ -82,6 +79,24 @@ export const PlanTripButton = styled(Button)`
   span {
     display: inline-block;
     margin-top: -5px;
+  }
+`
+
+export const ModeSelectorContainer = styled.div`
+  display: flex;
+  float: right;
+
+  ${PlanTripButton} {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+  label:last-of-type {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+  fieldset {
+    gap: 0 2px;
+    margin: 0 2px 0 0;
   }
 `
 
@@ -109,16 +124,10 @@ export const BatchPreferencesContainer = styled.div`
 export const MainSettingsRow = styled.div`
   align-items: top;
   display: flex;
-  flex-direction: row;
+  flex-flow: wrap;
+  gap: 5px 0;
   justify-content: space-between;
   margin-bottom: 5px;
-
-  @media (max-width: 355px), (min-width: 991px) and (max-width: 1110px) {
-    display: grid;
-    grid-template-columns: repeat(4, 20%);
-    grid-auto-rows: 1fr;
-    gap: 15px 0;
-  }
 `
 
 // FIXME: This is identical to StyledSettingsSelectorPanel, with a
