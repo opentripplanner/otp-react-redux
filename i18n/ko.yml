@@ -170,6 +170,7 @@ components:
       \ 후에 만료됩니다).\n"
     verified: 확인됨
     verify: 확인
+    phoneNumberVerified: 전화번호 {phoneNumber}가 성공적으로 확인되었습니다.
   Place:
     deleteThisPlace: 이 장소 삭제
     enterAlert: "양식에 출발지/목적지를 입력하고(또는 지도를 클릭하여 설정), 생성된 마커를 클릭하여 {placeType} 위치로 설정하세요.\n"
@@ -363,7 +364,7 @@ components:
     forgetOptions: 내 옵션 잊기
     rememberOptions: 트립 옵션 기억하기
     restoreDefaults: 기본 설정 복원
-    restoreMyDefaults: 내 기본 설정 복원 
+    restoreMyDefaults: 내 기본 설정 복원
   ViewSwitcher:
     switcher: 변경
   A11yPrefs:
@@ -553,7 +554,7 @@ common:
       true {더}
       other {덜}
       } 사용합니다
-    transfers: '{transfers, plural, =0 {} one {# 전송} other {# 전송}'
+    transfers: '{transfers, plural, =0 {} other {# 전송}}'
   modes:
     bicycle_rent: 공유자전거
     bike: 자전거
