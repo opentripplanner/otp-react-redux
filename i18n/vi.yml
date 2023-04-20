@@ -1,60 +1,28 @@
 _id: vi
 _name: Vietnamese
-actions:
-  callTaker:
-    callQuerySaveError: "Lỗi khi lưu trữ các truy vấn cuộc gọi: {err}"
-    callSaveError: "Không thể lưu cuộc gọi: {err}"
-    checkSessionError: "Lỗi khi thiết lập phiên ủy quyền: {err}"
-    couldNotFindCallError: Không thể tìm thấy cuộc gọi. Đang hủy yêu cầu lưu truy vấn.
-    fetchCallsError: "Lỗi khi tìm nạp cuộc gọi: {err}"
-    queryFetchError: "Lỗi khi tìm nạp các truy vấn: {err}"
-  fieldTrip:
-    addNoteError: "Lỗi khi thêm ghi chú chuyến đi:"
-    confirmOverwriteItineraries: |
-      Hành động này sẽ ghi đè lên một hành trình {outbound, select,
-        true {xuất ngoại}
-        other {đến}
-        } đã được lên kế hoạch trước đó cho yêu cầu này. Bạn có muốn tiếp tục không?
-    deleteItinerariesError: "Lỗi khi xóa kế hoạch chuyến đi:"
-    deleteNoteError: "Lỗi khi xóa ghi chú chuyến đi:"
-    editSubmitterNotesError: "Lỗi khi chỉnh sửa ghi chú của người gửi:"
-    fetchFieldTripError: "Lỗi khi tìm nạp các chuyến đi: {err}"
-    fetchFieldTripsError: "Lỗi khi tìm nạp các chuyến đi: {err}"
-    fetchTripsForDateError: "Lỗi khi tìm nạp các chuyến đi cho ngày đi du lịch: {err}"
-    incompatibleTripDateError: >-
-      Ngày đi dự kiến ({tripDate}) không phải là ngày đi theo yêu cầu
-      ({requestDate})
-    itineraryCapacityError: >-
-      Không thể lưu kế hoạch chuyến đi: Không thể lưu kế hoạch chuyến đi này do
-      thiếu sức chứa trên một hoặc nhiều xe. Vui lòng lên kế hoạch lại chuyến đi
-      của bạn.
-    maxTripRequestsExceeded: Đã vượt quá số lượng yêu cầu chuyến đi mà không có kết quả hợp lệ
-    saveItinerariesError: "Không lưu được hành trình: {err}"
-    setDateError: "Lỗi khi cài đặt ngày:"
-    setGroupSizeError: "Lỗi khi cài đặt kích thước nhóm:"
-    setPaymentError: "Lỗi khi cài đặt thông tin thanh toán:"
-    setRequestStatusError: "Lỗi khi cài đặt trạng thái yêu cầu:"
-  location:
-    geolocationNotSupportedError: Định vị địa lý không được hỗ trợ bởi trình duyệt của bạn
-    unknownPositionError: Lỗi không xác định khi tìm vị trí
-  map:
-    currentLocation: (Vị trí hiện tại)
-  user:
-    accountDeleted: Tài khoản người dùng của bạn ({email}) đã bị xóa.
-    authTokenError: Lỗi khi lấy mã thông báo ủy quyền.
-    confirmDeleteMonitoredTrip: Bạn có muốn loại bỏ chuyến đi này không?
-    confirmDeletePlace: Bạn có muốn loại bỏ nơi này không?
-    emailVerificationResent: Thông báo xác minh email đã được gửi lại.
-    genericError: "Phát sinh lỗi: {err}"
-    itineraryExistenceCheckFailed: Lỗi kiểm tra xem chuyến đi được chọn của bạn là có thể.
-    preferencesSaved: Những sở thích của bạn đã được lưu lại.
-    smsInvalidCode: Mã bạn nhập không hợp lệ. Vui lòng thử lại.
-    smsResendThrottled: >-
-      Một SMS xác minh đã được gửi đến số điện thoại được chỉ định chưa đầy một
-      phút trước. Vui lòng thử lại sau vài phút.
-    smsVerificationFailed: >-
-      Điện thoại của bạn không thể được xác minh. Có lẽ mã bạn đã nhập đã hết
-      hạn. Vui lòng yêu cầu một mã mới và thử lại.
+
+# This file contains localized strings (a.k.a. messages) for the language indicated above:
+#   - Messages are organized in various categories and sub-categories.
+#   - A component or JS module can use messages from one or more categories.
+#   - In the code, messages are retrieved using an ID that is simply the path to the message.
+#     Use the dot '.' to separate categories and sub-categories in the path.
+#     For instance, for the message defined in YML below:
+#         common
+#           modes
+#             subway: Metro#
+#     then use the snippet below with the corresponding message id:
+#         <FormattedMessage id='common.modes.subway' /> // renders "Metro".
+#
+# It is important that message ids in the code be consistent with
+# the categories in this file. Below are some general guidelines:
+#   - For starters, there are an 'actions', 'components' and 'common'
+#     categories. Additional categories may be added as needed.
+#   - Each sub-category under 'components' denotes a component and
+#     should contain messages that are used only by that component (e.g. button captions).
+#   - In contrast, some strings are common to multiple components,
+#     so it makes sense to group them by theme (e.g. accessModes) under the 'common' category.
+
+# Messages that are generated from actions
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -135,33 +103,24 @@ common:
     dining: ăn uống
     home: nhà
     work: công việc
+  searchForms:
+    enterDestination: "Nhập điểm đến hoặc {mapAction} vào bản đồ…"
+    enterStartLocation: "Nhập vị trí bắt đầu hoặc {mapAction} vào bản đồ…"
+    tap: chạm
+    click: nhấp
+  time:
+    departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
+    duration:
+      aFewSeconds: vài giây
+      nDays: "{days} ngày"
+      nHours: "{hours, plural, =1 {một tiếng} other {# tiếng}}"
+      nMinutes: "{minutes, plural, =1 {một phút} other {# phút}}"
+    durationAgo: "Cách đây {duration}"
+    tripDurationFormat: "{hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds,\
+      \ plural, =0 {} other {# giây}}"
   routing:
     routeAndNumber: Tuyến {routeId}
     routeToHeadsign: Đến {headsign}
-  searchForms:
-    click: nhấp
-    enterDestination: Nhập điểm đến hoặc {mapAction} vào bản đồ…
-    enterStartLocation: Nhập vị trí bắt đầu hoặc {mapAction} vào bản đồ…
-    tap: chạm
-  time:
-    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
-    durationAgo: Cách đây {formattedDuration}
-    fromNowUpdate: |
-      Cách đây {days, plural,
-       =0 {{hours,plural,
-       =0 {{minutes, plural,
-       =0 {vài giây}
-       =1 {một phút}
-       other {# phút}
-       }}
-       =1 {một tiếng}
-       other {# tiếng}
-       }}
-       other {# ngày}
-       }
-    tripDurationFormat: >-
-      {hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds, plural, =0
-      {} other {# giây}}
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Thích những chuyến đi có thể truy cập theo mặc định

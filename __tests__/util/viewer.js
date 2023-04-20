@@ -1,3 +1,4 @@
+import '../test-utils/mock-window-url'
 import { extractHeadsignFromPattern } from '../../lib/util/viewer'
 
 describe('util > viewer', () => {

@@ -145,20 +145,12 @@ common:
     tap: tap
   time:
     departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
+    duration:
+      aFewSeconds: a few seconds
+      nDays: "{days, plural, =1 {one day} other {# days}}"
+      nHours: "{hours, plural, =1 {an hour} other {# hours}}"
+      nMinutes: "{minutes, plural, =1 {one minute} other {# minutes}}"
     durationAgo: "{duration} ago"
-    fromNowUpdate: |
-      {days, plural,
-        =0 {{hours,plural,
-          =0 {{minutes, plural,
-            =0 {a few seconds ago}
-            =1 {one minute ago}
-            other {# minutes ago}
-          }}
-          =1 {an hour ago}
-          other {# hours ago}
-        }}
-        other {# days ago}
-      }
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
       other {# sec}}
@@ -471,6 +463,7 @@ components:
     tripNotFoundDescription: Sorry, the requested trip was not found.
     tripNotifications: Trip notifications
   SavedTripList:
+    fromTo: From {from} to {to}
     myTrips: My trips
     noSavedTrips: You have no saved trips
     noSavedTripsInstructions: Perform a trip search from the map first.
@@ -699,11 +692,8 @@ components:
   UserTripSettings:
     forgetOptions: Forget my options
     rememberOptions: Remember trip options
-    restoreOptions: |
-      Restore {defaults, select,
-        true {my defaults}
-        other {defaults}
-      }
+    restoreDefaults: Restore defaults
+    restoreMyDefaults: Restore my defaults
   VerifyEmailPane:
     emailIsVerified: My email is verified!
     instructions1: >
