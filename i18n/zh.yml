@@ -135,7 +135,7 @@ components:
   NarrativeItinerariesHeader:
     changeSortDir: 改变排序方向
     itinerariesAndIssues: '{itinerariesFound} 和 {numIssues}'
-    itinerariesFound: "{itineraryNum, plural,\n one {发现#条行程}\n other {发现#条行程}\n }"
+    itinerariesFound: "发现{itineraryNum}条行程"
     numIssues: "{issueNum, plural,\n one {# 问题}\n other {# 个问题}\n }"
     searching: 寻找你的选择…
     selectArrivalTime: 抵达时间
@@ -184,6 +184,7 @@ components:
   PlaceEditor:
     genericLocationPlaceholder: 搜索地点
     locationPlaceholder: 搜索 {placeName} 位置
+    namePrompt: '地名:'
   PlanFirstLastButtons:
     first: 首先
     last: 最后一次
@@ -267,6 +268,7 @@ components:
     viewNextArrivals: 查看下一个公共交通到达
     viewSchedule: 查看时间表
     zoomToStop: 缩放到车站
+    findSchedule: 按日期搜索时间表
   TermsOfUsePane:
     confirmDeletionPrompt: "取消您对存储历史旅行的同意将导致您的旅行历史被删除. 你确定你要继续吗？\n"
     mustAgreeToTerms: 您必须同意服务条款才能继续.
