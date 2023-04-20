@@ -127,8 +127,7 @@ components:
   NarrativeItinerariesHeader:
     changeSortDir: 정렬 방향 변경
     itinerariesAndIssues: '{itinerariesFound} 및 {numIssues}'
-    itinerariesFound: "{itineraryNum, plural,\n one {# 개의 여정을 찾았습니다}\n other {# 개의\
-      \ 여정을 찾았습니다}\n }"
+    itinerariesFound: "{itineraryNum} 개의 여정을 찾았습니다"
     numIssues: "{issueNum, plural,\n one {# 문제}\n other {# 문제}\n }"
     searching: 옵션을 찾고 있는 중...
     selectArrivalTime: 도착 시간
@@ -244,6 +243,7 @@ components:
     viewNextArrivals: 다음 도착편 보기
     viewSchedule: 스케쥴 보기
     zoomToStop: 정류장 확대
+    findSchedule: 날짜별 일정 검색
   SubNav:
     languages: "언어"
     languageSelector: 언어 선택
@@ -430,6 +430,7 @@ components:
   PlaceEditor:
     genericLocationPlaceholder: 위치 검색
     locationPlaceholder: '{placeName} 위치 검색'
+    namePrompt: '지명:'
   PlanFirstLastButtons:
     first: 처음
     last: 마지막
