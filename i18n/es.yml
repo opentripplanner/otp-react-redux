@@ -370,12 +370,12 @@ components:
     copyLink: Copiar enlace
     linkCopied: Copiado
     reportEmailSubject: Informar un problema con OpenTripPlanner
-    reportEmailTemplate: "*** INSTRUCCIONES PARA EL USUARIO ***\nEsta función te permite\
-      \ enviar por correo electrónico un informe a los administradores del sitio para\
-      \ su revisión.\nPor favor, rellena los siguientes campos y envíalos utilizando\
-      \ tu programa de correo electrónico habitual.\n\n*** POR FAVOR, COMPLETE LO\
-      \ SIGUIENTE\n\nProblema encontrado:\n\nTipo de viaje que quería hacer (ej. a\
-      \ pie + viaje, bicicleta + viaje, coche + viaje):\n\n*** DETALLES TÉCNICOS ***\n"
+    reportEmailTemplate: "*** INSTRUCCIONES PARA EL USUARIO ***\nEste correo electrónico\
+      \ informará de tu problema a los administradores de esta página.\nCompleta los\
+      \ detalles a continuación, luego envíalo desde tu correo electrónico habitual.\n\
+      \n*** POR FAVOR COMPLETA MÁS ABAJO ***\n\nProblema encontrado:\n\nTipo de viaje\
+      \ que buscas (por ejemplo, a pie + transporte, bicicleta + transporte, coche\
+      \ + transporte):\n\n*** DETALLES TÉCNICOS ***\n"
     reportIssue: Informar problema
   TripViewer:
     accessible: Accesible
@@ -492,7 +492,7 @@ components:
     timeWalking: '{time} caminando'
     originallyScheduledTime: (originalmente {originalTime})
     arriveAt: Llegaste
-    singleModeItineraryDescription: Ruta {time} {mode}
+    singleModeItineraryDescription: Viaja {time} {mode}
   MobileOptions:
     header: Configurar las opciones de búsqueda
   NavLoginButton:
