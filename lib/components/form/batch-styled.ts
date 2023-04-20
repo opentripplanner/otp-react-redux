@@ -6,7 +6,7 @@ import { commonInputCss, modeButtonButtonCss } from './styled'
 import DateTimePreview from './date-time-preview'
 
 const activeCss = css`
-  background: #e5e5e5;
+  background: #d5d5d5;
 `
 
 const buttonTransitionCss = css`
@@ -23,11 +23,11 @@ export const buttonCss = css`
   ${buttonTransitionCss}
 
   &:active {
-    ${activeCss}
+    background: #e5e5e5;
   }
 
   &:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px;
   }
 
   svg {
@@ -103,7 +103,7 @@ export const ModeSelectorContainer = styled.div`
 const expandableBoxCss = css`
   background-color: rgb(239, 239, 239);
   border-radius: 5px 5px 5px 5px;
-  box-shadow: rgba(0, 0, 0, 0.32) 7px 12px 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 20px;
   left: 10px;
   position: absolute;
   right: 10px;
@@ -112,7 +112,6 @@ const expandableBoxCss = css`
 
 export const DateTimeModalContainer = styled.div`
   ${expandableBoxCss}
-  margin-top: 50px;
   padding: 10px 20px;
 `
 
