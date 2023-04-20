@@ -7,13 +7,13 @@ import DateTimePreview from './date-time-preview'
 
 const activeCss = css`
   background: #e5e5e5;
-  box-shadow: inset 0px 0px 5px #c1c1c1;
 `
 
 const buttonTransitionCss = css`
-  transition: all 250ms cubic-bezier(0.27, 0.01, 0.38, 1.06);
+  transition: all 250ms ease-out;
 `
 
+// TODO: this needs to be in line with the mode selector buttons, ideally importing the styles
 export const buttonCss = css`
   border-radius: 5px;
   border: 0px;
@@ -27,9 +27,7 @@ export const buttonCss = css`
   }
 
   &:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05),
-      0 4px 10px rgba(0, 123, 255, 0.25);
-    ${buttonTransitionCss}
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   }
 
   svg {
@@ -48,7 +46,9 @@ export const StyledDateTimePreviewContainer = styled(Button)<{
   margin-right: 5px;
   padding: 0;
   position: relative;
-  width: 120px;
+  min-width: 90px;
+  max-width: 120px;
+  width: 100%;
   ${(props) => (props.expanded ? activeCss : null)}
 `
 

@@ -279,12 +279,12 @@ test('OTP-RR', async () => {
 
   if (!OTP_RR_PERCY_CALL_TAKER) {
     // Change the modes
-    await page.click('button[aria-label="Transit"]')
+    await page.click('label[title="Transit"]')
     await page.click('#plan-trip')
 
     await percySnapshotWithWait(page, 'Metro Itinerary No Transit')
     // Restore transit
-    await page.click('button[aria-label="Transit"]')
+    await page.click('label[title="Transit"]')
 
     // Change the time
     await page.click('.summary')
@@ -292,14 +292,15 @@ test('OTP-RR', async () => {
     await page.keyboard.type('10')
     await page.waitForTimeout(200)
     // Check submode selector
-    await page.click('button[aria-label="Trip Settings"]')
+    await page.hover('label[title="Transit"]')
     await page.waitForTimeout(500)
-    const [streetcarButton] = await page.$x("//span[contains(., 'Streetcar')]")
-    await streetcarButton.click()
-    // Disable accessible routing
-    await page.click('#id-query-param-wheelchair')
+    await page.click('#id-query-param-addTram')
 
-    await page.click('button[aria-label="Trip Settings"]')
+    // Disable accessible routing
+    await page.hover('label[title="Transit"]')
+    await page.click('#id-query-param-wheelchair')
+    await percySnapshotWithWait(page, 'Metro Mode Selector Expanded')
+
     await page.waitForTimeout(200)
 
     await page.click('#plan-trip')

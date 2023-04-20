@@ -6,6 +6,11 @@ import {
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
 import { connect } from 'react-redux'
+import {
+  decodeQueryParams,
+  DelimitedArrayParam,
+  encodeQueryParams
+} from 'use-query-params'
 import { injectIntl, IntlShape } from 'react-intl'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
@@ -19,11 +24,6 @@ import type {
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
-import {
-  decodeQueryParams,
-  DelimitedArrayParam,
-  encodeQueryParams
-} from 'use-query-params'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { StyledIconWrapper } from '../util/styledIcon'
 
@@ -216,7 +216,7 @@ const mapStateToProps = (state: any) => {
       const fromUrl = urlSearchParams.get(setting.key)
       acc[setting.key] = fromUrl
         ? convertModeSettingValue(setting, fromUrl)
-        : state.otp.config.modes.initialState.modeSettingValues?.[
+        : state.otp?.config?.modes?.initialState?.modeSettingValues?.[
             setting.key
           ] || setting.default
       return acc
@@ -227,13 +227,16 @@ const mapStateToProps = (state: any) => {
     activeSearch: getActiveSearch(state),
     config: state.otp.config,
     currentQuery: state.otp.currentQuery,
+    // TODO: Duplicated in apiv2.js
     enabledModeButtons:
       decodeQueryParams(queryParamConfig, {
         modeButtons: urlSearchParams.get('modeButtons')
-      })?.modeButtons || state.otp.config.modes.initialState.enabledModeButtons,
+      })?.modeButtons ||
+      state.otp.config?.modes?.initialState?.enabledModeButtons ||
+      {},
     fillModeIcons: state.otp.config.itinerary?.fillModeIcons,
-    modeButtonOptions: state.otp.config.modes.modeButtons,
-    modeSettingDefinitions: state.otp.modeSettingDefinitions,
+    modeButtonOptions: state.otp.config?.modes?.modeButtons || [],
+    modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
     modeSettingValues,
     urlSearchParams
   }
