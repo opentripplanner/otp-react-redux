@@ -27,7 +27,7 @@ actions:
   fieldTrip:
     addNoteError: 'Error al agregar la nota de campo:'
     confirmOverwriteItineraries: "Esta acción anulará un itinerario {outbound, select,\n\
-      \  true {outbound}\n  other {inbound}\n  } previamente planificado para esta\
+      \  true {saliente}\n  other {entrante}\n  } previamente planificado para esta\
       \ solicitud. ¿Deseas continuar?\n"
     deleteItinerariesError: 'Error al eliminar el plan de viaje:'
     deleteNoteError: 'Error al eliminar nota de viaje:'
@@ -229,7 +229,7 @@ components:
     noFilteredRoutesFound: ¡No hay rutas que coincidan con tu filtro!
     shortTitle: Ver rutas
     title: Visor de rutas
-    stopsInDirectionOfTravel: 'Para en este sentido de la marcha:'
+    stopsInDirectionOfTravel: 'Paradas en este sentido de la marcha:'
     toggleRouteOnMap: Cambiar la ruta en el mapa
     openPatternViewer: Ir al visor de los modelos de ruta
   SavedTripEditor:
@@ -275,7 +275,7 @@ components:
     viewNextArrivals: Ver próximas llegadas
     viewSchedule: Ver horario
     zoomToStop: Acercar vista a la parada
-    schedule: Programa
+    schedule: Horario
     nextArrivals: Próximas llegadas
     findSchedule: Buscar horario por fecha
   TransitVehicleOverlay:
@@ -456,7 +456,7 @@ components:
     groupSize: 'Tamaño del grupo:'
   EnhancedStopMarker:
     stopViewer: Visor de paradas
-    stopID: 'Identificador de la parada:'
+    stopID: 'Parada n°'
   FavoritePlaceList:
     addAnotherPlace: Agregue otro lugar
     description: 'Agregue los lugares que frecuenta a menudo para ahorrar tiempo en
@@ -641,14 +641,14 @@ common:
     noTransitFareProvided: No hay información sobre las tarifas
     transfers: '{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}'
     relativeCo2: >
-      {co2} de CO₂ en {isMore, select, true {more} other {less} } que conducir
+      {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
   modes:
     bicycle_rent: Compartir bicicleta
     bike: Bicicleta
     bus: Autobús
     cable_car: Teleférico
     car: Coche
-    car_park: Apartamento disuasorio
+    car_park: Aparcamiento disuasorio
     drive: Conducir
     ferry: Transbordador
     flex: Líneas Flex
