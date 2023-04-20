@@ -56,6 +56,7 @@ type Props = {
   urlSearchParams: URLSearchParams
 }
 
+// This method is used to daisy-chain a series of functions together on a given value
 function pipe<T>(...fns: Array<(arg: T) => T>) {
   return (value: T) => fns.reduce((acc, fn) => fn(acc), value)
 }
