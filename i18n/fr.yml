@@ -1,5 +1,5 @@
 _id: fr
-_name: Exemple de traduction pour OTP-react-redux en français !
+_name: Exemple de traduction pour OTP-react-redux en français
 
 # Noteworthy items for translating into French:
 # - trip, itinerary, journey => trajet
@@ -471,8 +471,8 @@ components:
       <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the Planificateur
       de trajets.
     termsOfStorageStatement: >
-      Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches
-      afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus
+      Facultatif : Je consens à ce que le Planificateur de trajets sauvegarde mes
+      recherches afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus
       d'informations...</termsOfStorageLink>
   TransitVehicleOverlay:
     # keys designed to match API output
@@ -695,11 +695,7 @@ common:
     noTransitFareProvided: Tarif inconnu
     transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
     relativeCo2: >
-      {co2}
-      de CO₂ en  {isMore, select,
-      true {plus}
-      other {moins}
-      } qu'en voiture
+      {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
 
   # Note to translator: some of the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
@@ -790,7 +786,7 @@ config:
   # Default values for Flex Indicator (set in configuration as well)
   flex:
     flex-service: Service Flex
-    flex-service-colon: "Service Flex:"
+    flex-service-colon: "Service Flex :"
     both: Plus de détails au bas de l'itinéraire
     call-ahead: Appelez pour réserver
     continuous-dropoff: Demandez l'arrêt au conducteur
