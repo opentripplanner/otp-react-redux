@@ -185,6 +185,8 @@ components:
     genericLocationPlaceholder: 搜索地点
     locationPlaceholder: 搜索 {placeName} 位置
     namePrompt: '地名:'
+    nameExample: 我的咖啡店
+    addressPrompt: '地址:'
   PlanFirstLastButtons:
     first: 首先
     last: 最后一次
