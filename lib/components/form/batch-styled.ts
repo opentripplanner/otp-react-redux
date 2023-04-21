@@ -84,11 +84,13 @@ export const PlanTripButton = styled(Button)`
 
 export const ModeSelectorContainer = styled.div`
   display: flex;
+  align-items: flex-start;
   float: right;
 
   ${PlanTripButton} {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+    margin-top: 0px;
   }
   label:last-of-type {
     border-bottom-right-radius: 0;
