@@ -431,6 +431,8 @@ components:
     genericLocationPlaceholder: 위치 검색
     locationPlaceholder: '{placeName} 위치 검색'
     namePrompt: '지명:'
+    addressPrompt: '주소:'
+    nameExample: 내 커피숍
   PlanFirstLastButtons:
     first: 처음
     last: 마지막
