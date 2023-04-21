@@ -164,6 +164,8 @@ components:
     genericLocationPlaceholder: Tìm kiếm vị trí
     locationPlaceholder: Tìm kiếm vị trí {placeName}
     namePrompt: 'Tên địa điểm:'
+    nameExample: Quán cà phê của tôi
+    addressPrompt: 'Địa chỉ:'
   PlanFirstLastButtons:
     last: Cuối
     next: Tiếp theo
