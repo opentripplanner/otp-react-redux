@@ -27,7 +27,7 @@ actions:
   fieldTrip:
     addNoteError: 'Error al agregar la nota de campo:'
     confirmOverwriteItineraries: "Esta acción anulará un itinerario {outbound, select,\n\
-      \  true {saliente}\n  other {entrante}\n  } previamente planificado para esta\
+      \  true {outbound}\n  other {inbound}\n  } previamente planificado para esta\
       \ solicitud. ¿Deseas continuar?\n"
     deleteItinerariesError: 'Error al eliminar el plan de viaje:'
     deleteNoteError: 'Error al eliminar nota de viaje:'
@@ -231,7 +231,7 @@ components:
     title: Visor de rutas
     stopsInDirectionOfTravel: 'Paradas en este sentido de la marcha:'
     toggleRouteOnMap: Cambiar la ruta en el mapa
-    openPatternViewer: Ir al visor de los modelos de ruta
+    openPatternViewer: Ver los detalles de la ruta
   SavedTripEditor:
     editSavedTrip: Editar el viaje guardado
     saveNewTrip: Guardar un nuevo viaje
@@ -371,12 +371,12 @@ components:
     linkCopied: Copiado
     reportEmailSubject: Informar un problema con OpenTripPlanner
     reportEmailTemplate: "*** INSTRUCCIONES PARA EL USUARIO ***\nEste correo electrónico\
-      \ informará de tu problema a los administradores de esta página.\nCompleta los\
-      \ detalles a continuación, luego envíalo desde tu correo electrónico habitual.\n\
-      \n*** POR FAVOR COMPLETA MÁS ABAJO ***\n\nProblema encontrado:\n\nTipo de viaje\
-      \ que buscas (por ejemplo, a pie + transporte, bicicleta + transporte, coche\
-      \ + transporte):\n\n*** DETALLES TÉCNICOS ***\n"
-    reportIssue: Informar de un problema
+      \ informará de su problema a los administradores de esta página.\nComplete los\
+      \ detalles a continuación, luego envíe un correo electrónico desde su software\
+      \ de correo electrónico habitual.\n\n*** POR FAVOR COMPLETE MAS ABAJO ***\n\n\
+      Problema encontrado:\n\nTipo de viaje buscado (por ejemplo, a pie + transporte,\
+      \ bicicleta + transporte, coche + transporte):\n\n*** DETALLES TÉCNICOS ***\n"
+    reportIssue: Reportar un problema
   TripViewer:
     accessible: Accesible
     bicyclesAllowed: Permitido
@@ -638,10 +638,10 @@ common:
   itineraryDescriptions:
     calories: '{calories, number} kcal'
     noItineraryToDisplay: No hay itinerario que mostrar.
-    noTransitFareProvided: No hay información sobre las tarifas
+    noTransitFareProvided: Sin información sobre las tarifas
     transfers: '{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}'
     relativeCo2: >
-      {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir solo
+      {co2} de CO₂ en {isMore, select, true {more} other {less} } que conducir solo
   modes:
     bicycle_rent: Compartir bicicleta
     bike: Bicicleta
