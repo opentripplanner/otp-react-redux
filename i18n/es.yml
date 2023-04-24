@@ -102,7 +102,7 @@ components:
     departAt: Salida a las
   DateTimePreview:
     arriveAt: Llegada {arriveTime, time, short}
-    dayLastWeek: Última {formattedDayOfWeek}
+    dayLastWeek: El {formattedDayOfWeek} pasado
     departAt: Salida {departTime, time, short}
     editDepartOrArrival: Editar la hora de salida o de llegada
     leaveNow: Salir ahora
