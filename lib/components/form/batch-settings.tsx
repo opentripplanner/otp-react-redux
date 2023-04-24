@@ -53,6 +53,7 @@ type Props = {
   routingQuery: any
   setQueryParam: (queryParam: any) => void
   setUrlSearch: (evt: any) => void
+  spacedOutModeSelector?: boolean
   urlSearchParams: URLSearchParams
 }
 
@@ -84,7 +85,8 @@ function BatchSettings({
   modeSettingDefinitions,
   modeSettingValues,
   routingQuery,
-  setUrlSearch
+  setUrlSearch,
+  spacedOutModeSelector
 }: Props) {
   const [dateTimeExpanded, setDateTimeExpanded] = useState<boolean>(false)
   // @ts-expect-error Context not typed
@@ -175,7 +177,7 @@ function BatchSettings({
         >
           <StyledDateTimePreview hideButton />
         </StyledDateTimePreviewContainer>
-        <ModeSelectorContainer>
+        <ModeSelectorContainer squashed={!spacedOutModeSelector}>
           <MetroModeSelector
             fillModeIcons={fillModeIcons}
             modeButtons={processedModeButtons}
@@ -242,6 +244,7 @@ const mapStateToProps = (state: any) => {
     modeButtonOptions: state.otp.config?.modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
     modeSettingValues,
+    spacedOutModeSelector: state.otp?.config?.modes?.spacedOut,
     urlSearchParams
   }
 }

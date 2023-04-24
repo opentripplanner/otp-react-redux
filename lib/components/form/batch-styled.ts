@@ -82,19 +82,20 @@ export const PlanTripButton = styled(Button)`
   }
 `
 
-export const ModeSelectorContainer = styled.div`
+export const ModeSelectorContainer = styled.div<{ squashed?: boolean }>`
   display: flex;
   align-items: flex-start;
   float: right;
 
   ${PlanTripButton} {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
+    border-bottom-left-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
+    border-top-left-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
     margin-top: 0px;
+    margin-left: ${(props) => (props.squashed ? 0 : '3px')};
   }
   label:last-of-type {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
+    border-bottom-right-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
+    border-top-right-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
   }
   fieldset {
     gap: 0 2px;
