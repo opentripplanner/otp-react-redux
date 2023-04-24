@@ -55,9 +55,6 @@ const DesktopNav = ({
   const intl = useIntl()
   const { branding, persistence, title = DEFAULT_APP_TITLE } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
-  const agencyLogoLabel = intl.formatMessage({
-    id: 'components.AppMenu.agencyLogo'
-  })
 
   const _resetAndShowTripPlanner = () => {
     // use history to go back to the root path
@@ -87,19 +84,14 @@ const DesktopNav = ({
           <AppMenu />
           <Navbar.Brand>
             <Button
-              aria-label={agencyLogoLabel}
+              aria-label={intl.formatMessage(
+                {
+                  id: 'components.AppMenu.agencyLogoUrl'
+                },
+                { agencyName: title }
+              )}
               className="navbar-brand"
               onClick={handleClick}
-              role={
-                // TODO: role "button" doesn't show up for screen readers
-                doesLogoRefresh ? 'button' : 'link'
-              }
-              style={{
-                pointerEvents:
-                  doesLogoRefresh || doesLogoRedirectToUrl ? 'auto' : 'none'
-              }}
-              tabIndex={doesLogoRefresh || doesLogoRedirectToUrl ? 0 : -1}
-              title={agencyLogoLabel}
             >
               <div className={branding && `with-icon icon-${branding}`}>
                 <div className="navbar-title">{title}</div>
