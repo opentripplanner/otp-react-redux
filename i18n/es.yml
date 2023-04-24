@@ -27,7 +27,7 @@ actions:
   fieldTrip:
     addNoteError: 'Error al agregar la nota de campo:'
     confirmOverwriteItineraries: "Esta acción anulará un itinerario {outbound, select,\n\
-      \  true {outbound}\n  other {inbound}\n  } previamente planificado para esta\
+      \  true {saliente}\n  other {entrante}\n  } previamente planificado para esta\
       \ solicitud. ¿Deseas continuar?\n"
     deleteItinerariesError: 'Error al eliminar el plan de viaje:'
     deleteNoteError: 'Error al eliminar nota de viaje:'
@@ -641,7 +641,7 @@ common:
     noTransitFareProvided: Sin información sobre las tarifas
     transfers: '{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}'
     relativeCo2: >
-      {co2} de CO₂ en {isMore, select, true {more} other {less} } que conducir solo
+      {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir solo
   modes:
     bicycle_rent: Compartir bicicleta
     bike: Bicicleta
