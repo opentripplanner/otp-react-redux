@@ -1,5 +1,5 @@
 _id: fr
-_name: Exemple de traduction pour OTP-react-redux en français !
+_name: Exemple de traduction pour OTP-react-redux en français
 
 # Noteworthy items for translating into French:
 # - trip, itinerary, journey => trajet
@@ -179,6 +179,7 @@ components:
   DefaultItinerary:
     clickDetails: Cliquez pour afficher les détails
     multiModeSummary: "{accessMode} + {transitMode}"
+    nonTransit: Alternatives
   DeleteUser:
     deleteMyAccount: Supprimer mon compte
   EnhancedStopMarker:
@@ -230,7 +231,7 @@ components:
     micromobility-rental: Trottinettes {companies}
     park-and-ride: Parcs relais
     satellite: Satellite
-    shared-vehicles: "Véhicules partagés"
+    shared-vehicles: "Véhicules en partage"
     stops: Arrêts et stations
     streets: Plan des rues
   MetroUI:
@@ -378,6 +379,8 @@ components:
     shortTitle: Index des lignes
     stopsInDirectionOfTravel: "Arrêts dans cette direction :"
     title: Index des lignes
+    openPatternViewer: Voir les dessertes
+    toggleRouteOnMap: Afficher ou masquer cette ligne sur la carte
   SavedTripEditor:
     editSavedTrip: Modifier un trajet enregistré
     saveNewTrip: Enregistrer un nouveau trajet
@@ -445,7 +448,7 @@ components:
     viewSchedule: Horaires
     zoomToStop: Zoomer sur l'arrêt
 
-    findSchedule: Rechercher les horaires par jour
+    findSchedule: Rechercher les horaires par date
   SubNav:
     languageSelector: Langue
     languages: "Langues"
@@ -468,8 +471,8 @@ components:
       <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the Planificateur
       de trajets.
     termsOfStorageStatement: >
-      Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches
-      afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus
+      Facultatif : Je consens à ce que le Planificateur de trajets sauvegarde mes
+      recherches afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus
       d'informations...</termsOfStorageLink>
   TransitVehicleOverlay:
     # keys designed to match API output
@@ -692,11 +695,7 @@ common:
     noTransitFareProvided: Tarif inconnu
     transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
     relativeCo2: >
-      {co2}
-      de CO₂ en  {isMore, select,
-      true {plus}
-      other {moins}
-      } qu'en voiture
+      {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
 
   # Note to translator: some of the strings below are used in sentences such as:
   # "No trip found for bike, walk, and transit."
@@ -787,7 +786,7 @@ config:
   # Default values for Flex Indicator (set in configuration as well)
   flex:
     flex-service: Service Flex
-    flex-service-colon: "Service Flex:"
+    flex-service-colon: "Service Flex :"
     both: Plus de détails au bas de l'itinéraire
     call-ahead: Appelez pour réserver
     continuous-dropoff: Demandez l'arrêt au conducteur

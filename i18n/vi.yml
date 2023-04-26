@@ -154,6 +154,7 @@ components:
     verificationInstructions: "Vui lòng kiểm tra ứng dụng nhắn tin SMS trên điện thoại\
       \ di động của bạn để thấy tin nhắn với mã xác minh và nhập mã bên dưới (mã hết\
       \ hạn sau 10 phút).\n"
+    phoneNumberVerified: Số điện thoại {phoneNumber} đã được xác minh thành công.
   Place:
     enterAlert: "Nhập điểm xuất phát/điểm đến vào biểu mẫu này (hoặc cài đặt qua việc\
       \ nhấp vào bản đồ) và nhấp vào điểm đánh dấu kết quả để cài đặt vị trí {placeType}.\n"
@@ -162,6 +163,9 @@ components:
   PlaceEditor:
     genericLocationPlaceholder: Tìm kiếm vị trí
     locationPlaceholder: Tìm kiếm vị trí {placeName}
+    namePrompt: 'Tên địa điểm:'
+    nameExample: Quán cà phê của tôi
+    addressPrompt: 'Địa chỉ:'
   PlanFirstLastButtons:
     last: Cuối
     next: Tiếp theo
@@ -249,6 +253,7 @@ components:
     viewNextArrivals: Xem những xe đến tiếp theo
     viewSchedule: Xem lịch trình
     zoomToStop: Phóng to để dừng lại
+    findSchedule: Tìm kiếm lịch trình theo ngày
   SubNav:
     languages: "Ngôn ngữ"
     languageSelector: Chọn ngôn ngữ
@@ -551,7 +556,7 @@ common:
   itineraryDescriptions:
     calories: '{calories, number} calo'
     noItineraryToDisplay: Không có hành trình để hiển thị.
-    transfers: '{transfers, plural, =0 {} one {# chuyển} other {# chuyển}}'
+    transfers: '{transfers, plural, =0 {} other {# chuyển}}'
     noTransitFareProvided: Không có thông tin giá vé
     relativeCo2: >
       {co2}
