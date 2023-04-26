@@ -136,6 +136,10 @@ class RouteViewer extends Component<Props, State> {
         ? Array.from(new Set(transitOperators.map((x) => x.name)))
         : agencies
 
+    const searchRouteText = intl.formatMessage({
+      id: 'components.RouteViewer.findARoute'
+    })
+
     return (
       <div className="route-viewer">
         <VehiclePositionRetriever />
@@ -219,10 +223,9 @@ class RouteViewer extends Component<Props, State> {
                 <Search />
               </StyledIconWrapper>
               <input
+                aria-label={searchRouteText}
                 onChange={this.onSearchChange}
-                placeholder={intl.formatMessage({
-                  id: 'components.RouteViewer.findARoute'
-                })}
+                placeholder={searchRouteText}
                 type="search"
                 value={search}
               />
