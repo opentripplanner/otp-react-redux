@@ -175,10 +175,12 @@ export class ItinerarySummary extends Component<Props> {
 
           {/* Number of transfers, if applicable */}
           <Detail>
-            <FormattedMessage
-              id="common.itineraryDescriptions.transfers"
-              values={{ transfers: itinerary.transfers }}
-            />
+            {itinerary.transfers && (
+              <FormattedMessage
+                id="common.itineraryDescriptions.transfers"
+                values={{ transfers: itinerary.transfers }}
+              />
+            )}
           </Detail>
         </Details>
         <Routes>
