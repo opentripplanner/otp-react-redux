@@ -1,13 +1,15 @@
+import { Button, Nav, Navbar, NavItem } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-import { Nav, Navbar, NavItem } from 'react-bootstrap'
 import React from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import { accountLinks, getAuth0Config } from '../../util/auth'
 import { DEFAULT_APP_TITLE } from '../../util/constants'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
+import startOver from '../util/start-over'
 
 import AppMenu from './app-menu'
 import LocaleSelector from './locale-selector'
@@ -19,10 +21,19 @@ const NavItemOnLargeScreens = styled(NavItem)`
     display: none !important;
   }
 `
+
+const TransparentButton = styled(Button)`
+  display: block;
+  height: 100%;
+  width: 100%;
+`
 // Typscript TODO: otpConfig type
 export type Props = {
-  otpConfig: any
+  agencyName?: string
+  logoClickAction?: string
+  otpConfig: Record<string, any>
   popupTarget?: string
+  reactRouterConfig?: { basename: string }
   setPopupContent: (url: string) => void
 }
 
@@ -37,11 +48,40 @@ export type Props = {
  * 2. If `branding` is not defined but if `title` is, then `title` is shown.
  * 3. If neither is defined, just show 'OpenTripPlanner' (DEFAULT_APP_TITLE).
  *
+ * The `logoClickAction` parameter in config.yml is handled as follows:
+ * 1. If `logoClickAction` is not defined, then clicking the logo does nothing.
+ * 2. If `logoClickAction` is set to 'start-over', then clicking the logo will
+ *   start over the search.
+ * 3. If `logoClickAction` is set to a URL, then clicking the logo will go to that URL.
+ *
+ * The operatorName parameter can be defined in config.yml if the app title is different from the operator name.
+ *
  * TODO: merge with the mobile navigation bar.
  */
-const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
-  const { branding, persistence, title = DEFAULT_APP_TITLE } = otpConfig
+const DesktopNav = ({
+  logoClickAction,
+  otpConfig,
+  popupTarget,
+  reactRouterConfig,
+  setPopupContent
+}: Props) => {
+  const {
+    branding,
+    operatorName,
+    persistence,
+    title = DEFAULT_APP_TITLE
+  } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
+
+  const handleStartOver = () => {
+    if (
+      window.confirm(
+        'This will start over your search. Are you sure you would like to continue?'
+      )
+    ) {
+      window.location.href = startOver(reactRouterConfig?.basename)
+    }
+  }
 
   return (
     <header>
@@ -55,9 +95,24 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
               className={branding && `with-icon icon-${branding}`}
               style={{ marginLeft: 50 }}
             >
-              {/* A title is always rendered (e.g.for screen readers)
-                  but is visually-hidden if a branding icon is used. */}
               <div className="navbar-title">{title}</div>
+              {logoClickAction === 'start-over' && (
+                <TransparentButton bsStyle="link" onClick={handleStartOver}>
+                  <InvisibleA11yLabel>
+                    <FormattedMessage id="components.BatchSearchScreen.header" />
+                  </InvisibleA11yLabel>
+                </TransparentButton>
+              )}
+              {logoClickAction?.startsWith('http') && (
+                <TransparentButton bsStyle="link" href={logoClickAction}>
+                  <InvisibleA11yLabel>
+                    <FormattedMessage
+                      id="components.AppMenu.agencyLogoUrl"
+                      values={{ agencyName: operatorName || title }}
+                    />
+                  </InvisibleA11yLabel>
+                </TransparentButton>
+              )}
             </div>
           </Navbar.Brand>
 
@@ -87,11 +142,12 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
 }
 
 // connect to the redux store
-// Typescript TODO: state type
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: Record<string, any>) => {
   return {
+    logoClickAction: state.otp.config?.navBar?.logoClickAction,
     otpConfig: state.otp.config,
-    popupTarget: state.otp.config?.popups?.launchers?.toolbar
+    popupTarget: state.otp.config?.popups?.launchers?.toolbar,
+    reactRouterConfig: state.otp.config.reactRouter
   }
 }
 

@@ -209,6 +209,7 @@ components:
         other {# spaces available}
       }
   AppMenu:
+    agencyLogoUrl: Home page of {agencyName} (External site)
     callHistory: Call History
     closeMenu: Close Menu
     fieldTrip: Field Trip

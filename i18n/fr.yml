@@ -131,6 +131,7 @@ components:
         other {# emplacements disponibles}
       }
   AppMenu:
+    agencyLogoUrl: Page d'accueil de {agencyName} (Site externe)
     callHistory: Historique des appels
     closeMenu: Fermer le menu
     fieldTrip: Groupes scolaires

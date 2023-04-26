@@ -298,7 +298,8 @@ const mapStateToProps = (state: Record<string, any>) => {
     fieldTripEnabled: isModuleEnabled(state, Modules.FIELD_TRIP),
     languageOptions: getLanguageOptions(language),
     mailablesEnabled: isModuleEnabled(state, Modules.MAILABLES),
-    popupTarget: state.otp.config?.popups?.launchers?.sidebarLink
+    popupTarget: state.otp.config?.popups?.launchers?.sidebarLink,
+    reactRouterConfig: state.otp.config.reactRouter
   }
 }
 

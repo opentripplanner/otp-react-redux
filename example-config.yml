@@ -537,6 +537,13 @@ itinerary:
 # default is 60 seconds.
 # onTimeThresholdSeconds: 60
 
+# navBar
+#   # logoClickAction defines the click functionality of the navbar logo. Absence of this paramater implies no click functionality
+#   # Any link starting with http(s) will turn the navbar logo into a button that redirects to that URL (usually the agency homepage)
+#   # logoClickAction: https://agencywebsite.com
+#   # Setting this parameter to `start-over` will refresh any search or routing settings
+#   # logoClickAction: start-over
+
 # stopViewer:
 #   # The radius (in meters) to use when searching for nearby stops and other
 #   # amenities (rental vehicles, park and rides) to show for the focused stop.

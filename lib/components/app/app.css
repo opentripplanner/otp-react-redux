@@ -66,11 +66,12 @@
   box-sizing: border-box;
 }
 
-/* View Switcher Styling */
+/* View Switcher Styling. The z index allows the nav logo button to be clicked*/
 .view-switcher {
   align-items: center;
   display: flex;
   justify-content: center;
+  z-index: -1;
 }
 .view-switcher button.btn-link {
   color: rgba(255, 255, 255, 0.85);
