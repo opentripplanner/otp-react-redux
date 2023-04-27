@@ -80,7 +80,6 @@ common:
     yes: 是
   itineraryDescriptions:
     calories: '{calories, number} 大卡'
-    noTransitFareProvided: 没有票价信息
     noItineraryToDisplay: 没有显示行程.
     transfers: '{transfers, plural, =0 {} other {# 换乘}}'
     relativeCo2: >

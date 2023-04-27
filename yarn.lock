@@ -2455,7 +2455,25 @@
     "@opentripplanner/core-utils" "^7.0.5"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^4.1.14", "@opentripplanner/itinerary-body@^4.1.7", "@opentripplanner/itinerary-body@^4.1.9":
+"@opentripplanner/itinerary-body@^4.1.16":
+  version "4.1.16"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.1.16.tgz#37b672192d3d4cfe1a76b4d5c4366839a5648e1b"
+  integrity sha512-dMBQqngYn5PZm/gpu1ZESZokoFa62w53+myQEQXpCnLzWYdnfqZPbQqKAJe96k+DR3ungQaOYYsC4Ho/2HUjDg==
+  dependencies:
+    "@opentripplanner/core-utils" "^8.1.1"
+    "@opentripplanner/humanize-distance" "^1.2.0"
+    "@opentripplanner/icons" "^2.0.1"
+    "@opentripplanner/location-icon" "^1.4.1"
+    "@styled-icons/fa-solid" "^10.34.0"
+    "@styled-icons/foundation" "^10.34.0"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    flat "^5.0.2"
+    react-animate-height "^3.0.4"
+    react-resize-detector "^4.2.1"
+    string-similarity "^4.0.4"
+
+"@opentripplanner/itinerary-body@^4.1.7", "@opentripplanner/itinerary-body@^4.1.9":
   version "4.1.14"
   resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.1.14.tgz#b01c3067d466cf5204744a4b878b137568de244d"
   integrity sha512-n4Ql7jrMBpl5Gl6fv69A0r3BJSIqJKD99K+MMYcCbsZaZySCNCqX+LDFOwhczwNYE/ilVC2u7/e0unDBAe00bg==
@@ -2603,10 +2621,10 @@
     "@turf/midpoint" "^6.5.0"
     lodash.isequal "^4.5.0"
 
-"@opentripplanner/trip-details@^3.0.6":
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-3.0.6.tgz#5b81bf73e6b3a2eb0061d30bf9103cbf36dad4e2"
-  integrity sha512-VhLAKESpdrKzmkgQnci1sVwO3v901BDAmct93gMW+oUu9/KjNrS8xCa6l2BiyoLYR1ahRggG6IGiiZ7lJX0xOg==
+"@opentripplanner/trip-details@3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-3.0.7.tgz#21deae6ca5ae277946c5227b2b2d05833d3b2b33"
+  integrity sha512-262tqPgithNlmclD526PgJEccxieVwz7N1Rz2aea3glrdESjTsfTL2TaWQVbGjwzyyklmVF8U1aY3SHOiH46ng==
   dependencies:
     "@opentripplanner/core-utils" "^8.1.1"
     "@styled-icons/fa-solid" "^10.34.0"

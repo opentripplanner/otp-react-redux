@@ -697,8 +697,6 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} kcal" # SI unit
     noItineraryToDisplay: Aucun trajet à afficher.
-    # Note to translator: noTransitFareProvided is width-constrained.
-    noTransitFareProvided: Tarif inconnu
     transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
     relativeCo2: >
       {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
