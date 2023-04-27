@@ -1,7 +1,7 @@
 import { Checkbox, ControlLabel, FormGroup } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import React from 'react'
+import React, { FormEventHandler } from 'react'
 
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
@@ -12,13 +12,20 @@ import {
 /**
  * User terms of use pane.
  */
-/* eslint-disable react/prop-types */
 /* TODO: Prop Types */
 const TermsOfUsePane = ({
   disableCheckTerms,
   handleBlur,
   handleChange,
   values: userData
+}: {
+  disableCheckTerms: boolean
+  handleBlur: () => void
+  handleChange: FormEventHandler<Checkbox>
+  values: {
+    hasConsentedToTerms: boolean
+    storeTripHistory: boolean
+  }
 }) => {
   const intl = useIntl()
   const { hasConsentedToTerms, storeTripHistory } = userData
@@ -33,16 +40,16 @@ const TermsOfUsePane = ({
           checked={hasConsentedToTerms}
           disabled={disableCheckTerms}
           name="hasConsentedToTerms"
-          onBlur={disableCheckTerms ? null : handleBlur}
-          onChange={disableCheckTerms ? null : handleChange}
+          onBlur={disableCheckTerms ? undefined : handleBlur}
+          onChange={disableCheckTerms ? undefined : handleChange}
         >
           <FormattedMessage
             id="components.TermsOfUsePane.termsOfServiceStatement"
             values={{
-              termsOfUseLink: (contents) => (
+              termsOfUseLink: (contents: any) => (
                 <LinkOpensNewWindow
                   contents={contents}
-                  isInline
+                  inline
                   url={`/#${TERMS_OF_SERVICE_PATH}`}
                 />
               )
@@ -77,10 +84,10 @@ const TermsOfUsePane = ({
           <FormattedMessage
             id="components.TermsOfUsePane.termsOfStorageStatement"
             values={{
-              termsOfStorageLink: (contents) => (
+              termsOfStorageLink: (contents: any) => (
                 <LinkOpensNewWindow
                   contents={contents}
-                  isInline
+                  inline
                   url={`/#${TERMS_OF_STORAGE_PATH}`}
                 />
               )
@@ -91,7 +98,7 @@ const TermsOfUsePane = ({
     </div>
   )
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   return {
     termsOfStorageSet: state.otp.config.persistence?.terms_of_storage
   }
