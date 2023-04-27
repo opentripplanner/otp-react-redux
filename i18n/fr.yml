@@ -110,7 +110,6 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} kcal"
     noItineraryToDisplay: Aucun trajet à afficher.
-    noTransitFareProvided: Tarif inconnu
     relativeCo2: |
       {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
     transfers: >-

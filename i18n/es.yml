@@ -106,7 +106,6 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} kcal"
     noItineraryToDisplay: No hay itinerario que mostrar.
-    noTransitFareProvided: Sin información sobre las tarifas
     relativeCo2: >
       {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
       solo
