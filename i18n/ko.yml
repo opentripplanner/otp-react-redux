@@ -549,7 +549,6 @@ common:
   itineraryDescriptions:
     calories: '{calories, number} 칼로리'
     noItineraryToDisplay: 표시할 일정이 없습니다.
-    noTransitFareProvided: 운임 정보 없음
     relativeCo2: >
       {co2}
       CO₂ 를 자동차보다
