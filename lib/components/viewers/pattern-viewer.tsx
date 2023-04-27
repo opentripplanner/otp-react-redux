@@ -26,6 +26,7 @@ import PageTitle from '../util/page-title'
 
 import { RouteName } from './RouteRow'
 import RouteDetails from './route-details'
+import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface Props {
   findRoutesIfNeeded: () => void
@@ -84,6 +85,7 @@ const PatternViewer = ({
           fill
         }}
       >
+        <VehiclePositionRetriever />
         <PageTitle
           title={getRouteOrPatternViewerTitle(
             transitOperators,

@@ -26,6 +26,7 @@ import { StyledIconWrapper } from '../util/styledIcon'
 import PageTitle from '../util/page-title'
 
 import { RouteRow } from './RouteRow'
+import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface FilterProps {
   agency?: string
@@ -135,8 +136,13 @@ class RouteViewer extends Component<Props, State> {
         ? Array.from(new Set(transitOperators.map((x) => x.name)))
         : agencies
 
+    const searchRouteText = intl.formatMessage({
+      id: 'components.RouteViewer.findARoute'
+    })
+
     return (
       <div className="route-viewer">
+        <VehiclePositionRetriever />
         <PageTitle
           title={getRouteOrPatternViewerTitle(
             transitOperators,
@@ -217,10 +223,9 @@ class RouteViewer extends Component<Props, State> {
                 <Search />
               </StyledIconWrapper>
               <input
+                aria-label={searchRouteText}
                 onChange={this.onSearchChange}
-                placeholder={intl.formatMessage({
-                  id: 'components.RouteViewer.findARoute'
-                })}
+                placeholder={searchRouteText}
                 type="search"
                 value={search}
               />
