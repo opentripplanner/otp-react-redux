@@ -112,17 +112,17 @@ class StopScheduleTable extends Component<{
         <thead>
           <tr>
             {showBlockIds && (
-              <th>
+              <th scope="col">
                 <FormattedMessage id="components.StopScheduleTable.block" />
               </th>
             )}
-            <th>
+            <th scope="col">
               <FormattedMessage id="components.StopScheduleTable.route" />
             </th>
-            <th>
+            <th scope="col">
               <FormattedMessage id="components.StopScheduleTable.destination" />
             </th>
-            <th>
+            <th scope="col">
               <FormattedMessage id="components.StopScheduleTable.departure" />
             </th>
           </tr>
