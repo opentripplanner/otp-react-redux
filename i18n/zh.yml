@@ -135,7 +135,7 @@ components:
   NarrativeItinerariesHeader:
     changeSortDir: 改变排序方向
     itinerariesAndIssues: '{itinerariesFound} 和 {numIssues}'
-    itinerariesFound: "{itineraryNum, plural,\n one {发现#条行程}\n other {发现#条行程}\n }"
+    itinerariesFound: "发现{itineraryNum}条行程"
     numIssues: "{issueNum, plural,\n one {# 问题}\n other {# 个问题}\n }"
     searching: 寻找你的选择…
     selectArrivalTime: 抵达时间
@@ -176,6 +176,7 @@ components:
     verificationInstructions: "请检查您手机上的短信应用查看是否有验证码的短信并输入以下代码 (代码在10分钟后失效).\n"
     verified: 已验证
     verify: 核实
+    phoneNumberVerified: 电话号码 {phoneNumber} 已成功验证。
   Place:
     deleteThisPlace: 删除这个地点
     enterAlert: "在表格中输入出发地/目的地(或通过地图点击设置)并点击产生的标记设置为 {placeType} 地点.\n"
@@ -183,6 +184,9 @@ components:
   PlaceEditor:
     genericLocationPlaceholder: 搜索地点
     locationPlaceholder: 搜索 {placeName} 位置
+    namePrompt: '地名:'
+    nameExample: 我的咖啡店
+    addressPrompt: '地址:'
   PlanFirstLastButtons:
     first: 首先
     last: 最后一次
@@ -266,6 +270,7 @@ components:
     viewNextArrivals: 查看下一个公共交通到达
     viewSchedule: 查看时间表
     zoomToStop: 缩放到车站
+    findSchedule: 按日期搜索时间表
   TermsOfUsePane:
     confirmDeletionPrompt: "取消您对存储历史旅行的同意将导致您的旅行历史被删除. 你确定你要继续吗？\n"
     mustAgreeToTerms: 您必须同意服务条款才能继续.
@@ -533,7 +538,7 @@ common:
   itineraryDescriptions:
     calories: '{calories, number} 大卡'
     noItineraryToDisplay: 没有显示行程.
-    transfers: '{transfers, plural, =0 {} one {# 换乘} other {# 换乘}}'
+    transfers: '{transfers, plural, =0 {} other {# 换乘}}'
     relativeCo2: >
       {co2} {isMore, select, true {更多} other {更少} } CO₂ 比单独驾车
   time:

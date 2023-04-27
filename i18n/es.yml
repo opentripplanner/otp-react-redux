@@ -28,7 +28,7 @@ actions:
     addNoteError: 'Error al agregar la nota de campo:'
     confirmOverwriteItineraries: "Esta acción anulará un itinerario {outbound, select,\n\
       \  true {saliente}\n  other {entrante}\n  } previamente planificado para esta\
-      \ solicitud. ¿Desea continuar?\n"
+      \ solicitud. ¿Deseas continuar?\n"
     deleteItinerariesError: 'Error al eliminar el plan de viaje:'
     deleteNoteError: 'Error al eliminar nota de viaje:'
     fetchFieldTripError: 'Error al obtener el viaje: {err}'
@@ -39,8 +39,8 @@ actions:
     itineraryCapacityError: 'No se puede guardar el plan: este plan no se pudo guardar
       debido a la falta de capacidad en uno o más vehículos. Por favor, vuelva a planificar
       su viaje.'
-    maxTripRequestsExceeded: Se superó el número máximo de solicitudes de viaje sin
-      resultados válidos.
+    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados
+      válidos
     saveItinerariesError: 'No se pudieron guardar los itinerarios: {err}'
     editSubmitterNotesError: 'Error al editar las notas del remitente:'
     setRequestStatusError: 'Error al establecer el estado de la solicitud:'
@@ -91,6 +91,7 @@ components:
     destination: destino
     origin: origen
     settings: Preferencias de viaje
+    modeSelector: Selector de modos
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
     message: "Para acceder a esta página deberá iniciar sesión. Por favor, espere\
@@ -177,6 +178,8 @@ components:
       \ caduca a los 10 minutos.\n"
     verified: Verificado
     verify: Verificar
+    phoneNumberSubmitted: El número de teléfono {phoneNumber} se ha enviado correctamente.
+    phoneNumberVerified: El número de teléfono {phoneNumber} se ha verificado correctamente.
   Place:
     deleteThisPlace: Borrar este lugar
     enterAlert: "Introduzca el origen/destino en el formulario (o establezca mediante\
@@ -226,6 +229,9 @@ components:
     noFilteredRoutesFound: ¡No hay rutas que coincidan con tu filtro!
     shortTitle: Ver rutas
     title: Visor de rutas
+    stopsInDirectionOfTravel: 'Paradas en este sentido de la marcha:'
+    toggleRouteOnMap: Cambiar la ruta en el mapa
+    openPatternViewer: Ver los detalles de la ruta
   SavedTripEditor:
     editSavedTrip: Editar el viaje guardado
     saveNewTrip: Guardar un nuevo viaje
@@ -254,7 +260,7 @@ components:
     signInTooltip: Por favor, inicie sesión para guardar un viaje.
     signInText: Iniciar sesión para guardar el viaje
   SettingsPreview:
-    defaultPreviewText: Opciones y preferencias de tránsito
+    defaultPreviewText: "Opciones\ny Preferencias del viaje"
   StopViewer:
     displayStopId: '<strong>Parada n°</strong>{stopId}'
     flexStop: Esta es una parada flexible. Los vehículos dejarán y recogerán a los
@@ -269,6 +275,9 @@ components:
     viewNextArrivals: Ver próximas llegadas
     viewSchedule: Ver horario
     zoomToStop: Acercar vista a la parada
+    schedule: Horario
+    nextArrivals: Próximas llegadas
+    findSchedule: Buscar horario por fecha
   TransitVehicleOverlay:
     in_transit_to: 'Próxima parada: {stop}'
     incoming_at: 'Acercándose a: {stop}'
@@ -361,19 +370,23 @@ components:
     copyLink: Copiar enlace
     linkCopied: Copiado
     reportEmailSubject: Informar un problema con OpenTripPlanner
-    reportEmailTemplate: "***INSTRUCCIONES PARA EL USUARIO***\n Esta función le permite\
-      \ enviar por correo electrónico un informe a los administradores del sitio para\
-      \ que lo revisen. Por favor, rellene los campos que aparecen a continuación\
-      \ y envíelos utilizando su programa de correo electrónico habitual.\n \n ***POR\
-      \ FAVOR COMPLETE LO SIGUIENTE***\n\n Problema encontrado:\n \n Tipo de viaje\
-      \ que querías hacer:\n\n ***Detalles técnicos***\n"
-    reportIssue: Informar problema
+    reportEmailTemplate: "*** INSTRUCCIONES PARA EL USUARIO ***\nEste correo electrónico\
+      \ informará de su problema a los administradores de esta página.\nComplete los\
+      \ detalles a continuación, luego envíe un correo electrónico desde su software\
+      \ de correo electrónico habitual.\n\n*** POR FAVOR COMPLETE MAS ABAJO ***\n\n\
+      Problema encontrado:\n\nTipo de viaje buscado (por ejemplo, a pie + transporte,\
+      \ bicicleta + transporte, coche + transporte):\n\n*** DETALLES TÉCNICOS ***\n"
+    reportIssue: Reportar un problema
   TripViewer:
     accessible: Accesible
     bicyclesAllowed: Permitido
     header: Visor de viajes
     routeHeader: 'Ruta: <strong>{routeShortName}</strong> {routeLongName}'
     viewStop: Ver
+    endOfTrip: El viaje acaba aquí
+    startOfTrip: Aquí comienza el viaje
+    tripDescription: Embarque en {boardAtStop} y desembarque en {disembarkAtStop}
+    listOfRouteStops: Lista de paradas en esta ruta
   UserAccountScreen:
     confirmDelete: ¿Está seguro de que desea eliminar su cuenta de usuario? Una vez
       que lo haga, no se podrá recuperar.
@@ -443,7 +456,7 @@ components:
     groupSize: 'Tamaño del grupo:'
   EnhancedStopMarker:
     stopViewer: Visor de paradas
-    stopID: 'Parada n°'
+    stopID: 'Parada:'
   FavoritePlaceList:
     addAnotherPlace: Agregue otro lugar
     description: 'Agregue los lugares que frecuenta a menudo para ahorrar tiempo en
@@ -464,6 +477,7 @@ components:
     ariaLabel: Navegar por los formularios
   LiveStopTimes:
     autoRefresh: ¿Actualizar automáticamente las llegadas?
+    refresh: Actualizar las horas de llegada
   LocationSearch:
     enterLocation: Introduzca la ubicación
     setDestination: Establecer el destino
@@ -476,6 +490,9 @@ components:
     multipleOptions: Múltiples Opciones
     orAlternatives: u otras rutas en la misma dirección
     timeWalking: '{time} caminando'
+    originallyScheduledTime: (originalmente {originalTime})
+    arriveAt: Llegaste
+    singleModeItineraryDescription: Viaja {time} {mode}
   MobileOptions:
     header: Configurar las opciones de búsqueda
   NavLoginButton:
@@ -486,6 +503,10 @@ components:
   PlaceEditor:
     genericLocationPlaceholder: Buscar ubicación
     locationPlaceholder: Buscar la ubicación de {placeName}
+    addressPrompt: 'Dirección:'
+    locationTypePrompt: 'Tipo de ubicación:'
+    namePrompt: 'Nombre del lugar:'
+    nameExample: Mi cafetería
   ResultsError:
     backToSearch: Volver a la búsqueda
   ResultsHeader:
@@ -503,8 +524,8 @@ components:
     destination: A
     route: 'Ruta'
   StopTimeCell:
-    realtime: Based on realtime data
-    scheduled: Based on schedule data
+    realtime: Datos basados en el tiempo real
+    scheduled: Basado en los datos del programa
     imminentArrival: Vencido
   SubNav:
     languages: "Idiomas"
@@ -556,6 +577,7 @@ components:
   DefaultItinerary:
     clickDetails: Haga clic para ver los detalles
     multiModeSummary: '{accessMode} + {transitMode}'
+    nonTransit: Alternativas
   DeleteUser:
     deleteMyAccount: Eliminar mi cuenta
   SessionTimeout:
@@ -565,6 +587,8 @@ components:
     keepSession: Continuar sesión
   PointPopup:
     zoomToLocation: Acercar vista a la ubicación
+  MapillaryFrame:
+    title: Imágenes de la calle
 common:
   coordinates: '{lat}; {lon}'
   dateExpressions:
@@ -610,19 +634,21 @@ common:
     edit: Editar
     error: ¡error!
     startOver: Comenzar de nuevo
+    submitting: Enviando…
   itineraryDescriptions:
-    calories: '{calories, number} Cal'
+    calories: '{calories, number} kcal'
     noItineraryToDisplay: No hay itinerario que mostrar.
+    noTransitFareProvided: Sin información sobre las tarifas
     transfers: '{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}'
     relativeCo2: >
-      {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
+      {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir solo
   modes:
     bicycle_rent: Compartir bicicleta
     bike: Bicicleta
     bus: Autobús
     cable_car: Teleférico
     car: Coche
-    car_park: Park and Ride
+    car_park: Aparcamiento disuasorio
     drive: Conducir
     ferry: Transbordador
     flex: Líneas Flex
@@ -651,7 +677,7 @@ common:
     departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
     duration:
       aFewSeconds: unos segundos
-      nDays: "{days, plural, =1 {dia} other {# dias}}"
+      nDays: "{days, plural, =1 {un día} other {# días}}"
       nHours: "{hours, plural, =1 {una hora} other {# horas}}"
       nMinutes: "{minutes, plural, =1 {un minuto} other {# minutos}}"
     durationAgo: "hace {duration}"
@@ -677,8 +703,8 @@ config:
     bicycle: Tránsito + Bicicleta Personal
     bicycle_rent: Tránsito + Compartir Bicicleta
     micromobility: Tránsito + Scooter Personal
-    car_hail: Ride Hail
-    car_park: Park & Ride
+    car_hail: VTC
+    car_park: Aparcamiento disuasorio
     micromobility_rent: Tránsito + Alquiler de scooter eléctrico
   flex:
     flex-service: Servicio Flex
