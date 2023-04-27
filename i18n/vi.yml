@@ -557,7 +557,6 @@ common:
     calories: '{calories, number} calo'
     noItineraryToDisplay: Không có hành trình để hiển thị.
     transfers: '{transfers, plural, =0 {} one {# chuyển} other {# chuyển}}'
-    noTransitFareProvided: Không có thông tin giá vé
     relativeCo2: >
       {co2}
       CO₂ {isMore, select,
