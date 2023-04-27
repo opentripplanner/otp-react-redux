@@ -59,6 +59,7 @@ const safeFormat = (date: Date | string, time: string, options: any) => {
 
 type Props = {
   date?: string
+  departArrive?: string
   homeTimezone: string
   onKeyDown: () => void
   setQueryParam: ({
@@ -89,6 +90,7 @@ type Props = {
 
 const DateTimeOptions = ({
   date: initialDate,
+  departArrive: initialDepartArrive,
   homeTimezone,
   onKeyDown,
   setQueryParam,
@@ -128,6 +130,18 @@ const DateTimeOptions = ({
   }
 
   const dateTime = parseInputAsTime(time, date)
+
+  // Update state when external state is updated
+  useEffect(() => {
+    if (initialDate !== date) setDate(initialDate)
+    if (initialTime !== time) setTime(initialTime)
+  }, [initialTime, initialDate])
+
+  useEffect(() => {
+    if (initialDepartArrive && departArrive !== initialDepartArrive) {
+      setDepartArrive(initialDepartArrive)
+    }
+  }, [initialDepartArrive])
 
   // Handler for setting the query parameters
   useEffect(() => {
