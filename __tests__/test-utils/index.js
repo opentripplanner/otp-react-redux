@@ -1,8 +1,8 @@
 // Sun Aug 04 2019 19:34:56 GMT-0700
 const DEFAULT_TEST_TIME = Date.UTC(2019, 7, 5, 2, 34, 56, 78)
 
-export function timeoutPromise(ms): void {
-  return new Promise((resolve, reject) => {
+export function timeoutPromise(ms: number): void {
+  return new Promise((resolve) => {
     setTimeout(resolve, ms)
   })
 }
@@ -17,7 +17,7 @@ export function timeoutPromise(ms): void {
  * https://stackoverflow.com/a/42787232/915811 (basically, moment.js uses
  * Date#now internally).
  */
-export function setTestTime(time): void {
+export function setTestTime(time: string): void {
   const date = new Date(time)
   // Log human-readable date to help out human testers.
   console.log(`Setting test time to ${date}`)
