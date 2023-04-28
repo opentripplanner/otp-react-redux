@@ -1,7 +1,7 @@
 // Sun Aug 04 2019 19:34:56 GMT-0700
 const DEFAULT_TEST_TIME = Date.UTC(2019, 7, 5, 2, 34, 56, 78)
 
-export function timeoutPromise(ms: number): void {
+export function timeoutPromise(ms: number): Promise<void> {
   return new Promise((resolve) => {
     setTimeout(resolve, ms)
   })
