@@ -218,7 +218,7 @@ components:
   BatchRoutingPanel:
     shortTitle: Lên kế hoạch cho chuyến đi
   BatchSearchScreen:
-    header: Lên kế hoạch cho chuyến đi của bạn
+    header: Kế hoạch chuyến đi
   BatchSettings:
     destination: điểm đến
     origin: điểm xuất phát
