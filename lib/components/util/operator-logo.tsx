@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const OperatorImg = styled.img`
-  height: 25px;
+  width: 25px;
 `
 
 type Props = {
