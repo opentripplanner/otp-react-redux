@@ -33,54 +33,65 @@ describe('util > itinerary', () => {
       mode: 'CAR_HAIL'
     }
 
-    const testCases = [{
-      expected: true,
-      itinerary: {
-        legs: [transitLeg, walkLeg]
+    const testCases = [
+      {
+        expected: true,
+        itinerary: {
+          legs: [transitLeg, walkLeg]
+        },
+        title:
+          'should be true for an itinerary with transit, no rentals/ride hail.'
       },
-      title: 'should be true for an itinerary with transit, no rentals/ride hail.'
-    }, {
-      expected: false,
-      itinerary: {
-        legs: [walkLeg, rentalBikeLeg]
+      {
+        expected: false,
+        itinerary: {
+          legs: [walkLeg, rentalBikeLeg]
+        },
+        title: 'should be false for an itinerary without transit.'
       },
-      title: 'should be false for an itinerary without transit.'
-    }, {
-      expected: false,
-      itinerary: {
-        legs: [walkLeg, transitLeg, rentalBikeLeg]
+      {
+        expected: false,
+        itinerary: {
+          legs: [walkLeg, transitLeg, rentalBikeLeg]
+        },
+        title: 'should be false for an itinerary with transit and rental bike.'
       },
-      title: 'should be false for an itinerary with transit and rental bike.'
-    }, {
-      expected: false,
-      itinerary: {
-        legs: [walkLeg, transitLeg, rentalCarLeg]
+      {
+        expected: false,
+        itinerary: {
+          legs: [walkLeg, transitLeg, rentalCarLeg]
+        },
+        title: 'should be false for an itinerary with transit and rental car.'
       },
-      title: 'should be false for an itinerary with transit and rental car.'
-    }, {
-      expected: false,
-      itinerary: {
-        legs: [walkLeg, transitLeg, rentalMicromobilityLeg]
+      {
+        expected: false,
+        itinerary: {
+          legs: [walkLeg, transitLeg, rentalMicromobilityLeg]
+        },
+        title:
+          'should be false for an itinerary with transit and rental micromobility.'
       },
-      title: 'should be false for an itinerary with transit and rental micromobility.'
-    }, {
-      expected: false,
-      itinerary: {
-        legs: [walkLeg, transitLeg, rideHailLeg]
+      {
+        expected: false,
+        itinerary: {
+          legs: [walkLeg, transitLeg, rideHailLeg]
+        },
+        title: 'should be false for an itinerary with transit and ride hail.'
       },
-      title: 'should be false for an itinerary with transit and ride hail.'
-    }, {
-      expected: false,
-      itinerary: {},
-      title: 'should be false for a blank itinerary.'
-    }, {
-      expected: false,
-      itinerary: null,
-      title: 'should be false for a null itinerary.'
-    }]
+      {
+        expected: false,
+        itinerary: {},
+        title: 'should be false for a blank itinerary.'
+      },
+      {
+        expected: false,
+        itinerary: null,
+        title: 'should be false for a null itinerary.'
+      }
+    ]
 
     testCases.forEach(({ expected, itinerary, title }) => {
-      it(title, () => {
+      it(`${title}`, () => {
         expect(itineraryCanBeMonitored(itinerary)).toBe(expected)
       })
     })
@@ -102,49 +113,62 @@ describe('util > itinerary', () => {
       transitLeg: true
     }
 
-    const testCases = [{
-      expected: WEEKDAYS,
-      itinerary: {
-        legs: [walkLeg, transitLegWeekday]
+    const testCases = [
+      {
+        expected: WEEKDAYS,
+        itinerary: {
+          legs: [walkLeg, transitLegWeekday]
+        },
+        title:
+          "should be ['monday' thru 'friday'] for an itinerary starting on a weekday."
       },
-      title: 'should be [\'monday\' thru \'friday\'] for an itinerary starting on a weekday.'
-    }, {
-      expected: WEEKEND_DAYS,
-      itinerary: {
-        legs: [walkLeg, transitLegSaturday]
+      {
+        expected: WEEKEND_DAYS,
+        itinerary: {
+          legs: [walkLeg, transitLegSaturday]
+        },
+        title:
+          "should be ['saturday', 'sunday'] for an itinerary starting on a Saturday."
       },
-      title: 'should be [\'saturday\', \'sunday\'] for an itinerary starting on a Saturday.'
-    }, {
-      expected: WEEKEND_DAYS,
-      itinerary: {
-        legs: [walkLeg, transitLegSunday]
+      {
+        expected: WEEKEND_DAYS,
+        itinerary: {
+          legs: [walkLeg, transitLegSunday]
+        },
+        title:
+          "should be ['saturday', 'sunday'] for an itinerary starting on a Sunday."
       },
-      title: 'should be [\'saturday\', \'sunday\'] for an itinerary starting on a Sunday.'
-    }, {
-      expected: WEEKDAYS,
-      itinerary: {
-        legs: [walkLeg],
-        startTime: 1623341891000 // Thursday 2021-06-10 12:18 pm EDT
+      {
+        expected: WEEKDAYS,
+        itinerary: {
+          legs: [walkLeg],
+          startTime: 1623341891000 // Thursday 2021-06-10 12:18 pm EDT
+        },
+        title:
+          "should be ['monday' thru 'friday'] for an itinerary without transit starting on a weekday (fallback case)."
       },
-      title: 'should be [\'monday\' thru \'friday\'] for an itinerary without transit starting on a weekday (fallback case).'
-    }, {
-      expected: WEEKEND_DAYS,
-      itinerary: {
-        legs: [walkLeg],
-        startTime: 1623514691000 // Saturday 2021-06-12 12:18 pm EDT
+      {
+        expected: WEEKEND_DAYS,
+        itinerary: {
+          legs: [walkLeg],
+          startTime: 1623514691000 // Saturday 2021-06-12 12:18 pm EDT
+        },
+        title:
+          "should be ['saturday', 'sunday'] for an itinerary without transit starting on a Saturday (fallback case)."
       },
-      title: 'should be [\'saturday\', \'sunday\'] for an itinerary without transit starting on a Saturday (fallback case).'
-    }, {
-      expected: WEEKEND_DAYS,
-      itinerary: {
-        legs: [walkLeg],
-        startTime: 1623601091000 // Sunday 2021-06-13 12:18 pm EDT
-      },
-      title: 'should be [\'saturday\', \'sunday\'] for an itinerary without transit starting on a Sunday (fallback case).'
-    }]
+      {
+        expected: WEEKEND_DAYS,
+        itinerary: {
+          legs: [walkLeg],
+          startTime: 1623601091000 // Sunday 2021-06-13 12:18 pm EDT
+        },
+        title:
+          "should be ['saturday', 'sunday'] for an itinerary without transit starting on a Sunday (fallback case)."
+      }
+    ]
 
     testCases.forEach(({ expected, itinerary, title }) => {
-      it(title, () => {
+      it(`${title}`, () => {
         expect(getItineraryDefaultMonitoredDays(itinerary)).toBe(expected)
       })
     })

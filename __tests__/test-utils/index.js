@@ -1,7 +1,7 @@
 // Sun Aug 04 2019 19:34:56 GMT-0700
 const DEFAULT_TEST_TIME = Date.UTC(2019, 7, 5, 2, 34, 56, 78)
 
-export function timeoutPromise (ms) {
+export function timeoutPromise(ms): void {
   return new Promise((resolve, reject) => {
     setTimeout(resolve, ms)
   })
@@ -17,7 +17,7 @@ export function timeoutPromise (ms) {
  * https://stackoverflow.com/a/42787232/915811 (basically, moment.js uses
  * Date#now internally).
  */
-export function setTestTime (time) {
+export function setTestTime(time): void {
   const date = new Date(time)
   // Log human-readable date to help out human testers.
   console.log(`Setting test time to ${date}`)
@@ -28,7 +28,7 @@ export function setTestTime (time) {
  * Sets the default mock test time for a variety of tests such that various
  * calculations and feed version statuses resolve to a certain state.
  */
-export function setDefaultTestTime () {
+export function setDefaultTestTime(): void {
   setTestTime(DEFAULT_TEST_TIME)
 }
 
@@ -36,6 +36,6 @@ export function setDefaultTestTime () {
  * Restore the standard functionality of Date library. This should be used in
  * the afterEach clause in test suites that require a mocked date.
  */
-export function restoreDateNowBehavior () {
+export function restoreDateNowBehavior(): void {
   Date.now.mockRestore && Date.now.mockRestore()
 }
