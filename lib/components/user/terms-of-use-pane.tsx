@@ -46,7 +46,7 @@ const TermsOfUsePane = ({
           <FormattedMessage
             id="components.TermsOfUsePane.termsOfServiceStatement"
             values={{
-              termsOfUseLink: (contents: any) => (
+              termsOfUseLink: (contents: JSX.Element) => (
                 <LinkOpensNewWindow
                   contents={contents}
                   inline
@@ -84,7 +84,7 @@ const TermsOfUsePane = ({
           <FormattedMessage
             id="components.TermsOfUsePane.termsOfStorageStatement"
             values={{
-              termsOfStorageLink: (contents: any) => (
+              termsOfStorageLink: (contents: JSX.Element) => (
                 <LinkOpensNewWindow
                   contents={contents}
                   inline
