@@ -3,11 +3,7 @@ import {
   DateTimeSelector,
   SettingsSelectorPanel
 } from '@opentripplanner/trip-form'
-import {
-  Input,
-  InputGroupAddon,
-  MenuItemA
-} from '@opentripplanner/location-field/lib/styled'
+import { Input, MenuItemA } from '@opentripplanner/location-field/lib/styled'
 import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
 

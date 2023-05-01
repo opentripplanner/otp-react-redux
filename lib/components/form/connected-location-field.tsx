@@ -15,6 +15,9 @@ interface Props extends LocationFieldProps {
   handleLocationSelected: (intl: IntlShape, e: LocationSelectedEvent) => void
 }
 
+/**
+ * Wrapper component around LocationField that handles onLocationSelected.
+ */
 const LocationFieldWithHandler = ({
   handleLocationSelected,
   ...otherProps
