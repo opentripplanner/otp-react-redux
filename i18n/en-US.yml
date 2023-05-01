@@ -103,7 +103,6 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
-    noTransitFareProvided: No fare info
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
@@ -432,7 +431,7 @@ components:
     moreDetails: More Details
     operatedBy: Operated by {agencyName}
     selectADirection: Select a direction...
-    stopsTo: Towards
+    stopsTo: Toward
   RouteViewer:
     agencyFilter: Agency Filter
     allAgencies: All Agencies
@@ -442,7 +441,7 @@ components:
     header: Route Viewer
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
-    openPatternViewer: Go to route pattern viewer
+    openPatternViewer: View route details
     shortTitle: View Routes
     stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
