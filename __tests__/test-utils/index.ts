@@ -15,9 +15,9 @@ export function timeoutPromise(ms: number): Promise<void> {
  *
  * Note: this stack overflow page gives more info on why we're using this:
  * https://stackoverflow.com/a/42787232/915811 (basically, moment.js uses
- * Date#now internally).
+ * Date.now internally).
  */
-export function setTestTime(time: string): void {
+export function setTestTime(time: number): void {
   const date = new Date(time)
   // Log human-readable date to help out human testers.
   console.log(`Setting test time to ${date}`)
@@ -37,5 +37,6 @@ export function setDefaultTestTime(): void {
  * the afterEach clause in test suites that require a mocked date.
  */
 export function restoreDateNowBehavior(): void {
-  Date.now.mockRestore && Date.now.mockRestore()
+  const now = Date.now as jest.Mock
+  now.mockRestore && now.mockRestore()
 }
