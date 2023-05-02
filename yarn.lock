@@ -2315,10 +2315,10 @@
   dependencies:
     "@octokit/openapi-types" "^10.0.0"
 
-"@opentripplanner/base-map@^3.0.10", "@opentripplanner/base-map@^3.0.4", "@opentripplanner/base-map@^3.0.6", "@opentripplanner/base-map@^3.0.7", "@opentripplanner/base-map@^3.0.8", "@opentripplanner/base-map@^3.0.9":
-  version "3.0.10"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.10.tgz#403e89664b1a7330ecc8fae58304c0ddbc86de86"
-  integrity sha512-++zEliWgKUYBsfppCyN+qbDCvN813607Knm3k0Q9HFgQt5eRSCQMkIFhxzqWILamyGOQSw/1CAfsm/jQUquxJA==
+"@opentripplanner/base-map@^3.0.10", "@opentripplanner/base-map@^3.0.11", "@opentripplanner/base-map@^3.0.4", "@opentripplanner/base-map@^3.0.6", "@opentripplanner/base-map@^3.0.7", "@opentripplanner/base-map@^3.0.8", "@opentripplanner/base-map@^3.0.9":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.11.tgz#4a1c3c6234aa4a7916f929a6fe98585869e48410"
+  integrity sha512-FcYOO+B5tYmWHS/eAffnFRD2cRVzNUSk4WH/UEOQX+j9JAtIotHcJQUsew4V0Ag6Nn3udRuK0BDM3fzQO1picA==
   dependencies:
     mapbox-gl "npm:empty-npm-package@1.0.0"
     maplibre-gl "^2.1.9"
@@ -2400,10 +2400,10 @@
     "@opentripplanner/core-utils" "^7.0.5"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^4.1.16", "@opentripplanner/itinerary-body@^4.1.7", "@opentripplanner/itinerary-body@^4.1.9":
-  version "4.1.16"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.1.16.tgz#37b672192d3d4cfe1a76b4d5c4366839a5648e1b"
-  integrity sha512-dMBQqngYn5PZm/gpu1ZESZokoFa62w53+myQEQXpCnLzWYdnfqZPbQqKAJe96k+DR3ungQaOYYsC4Ho/2HUjDg==
+"@opentripplanner/itinerary-body@^4.1.17", "@opentripplanner/itinerary-body@^4.1.7", "@opentripplanner/itinerary-body@^4.1.9":
+  version "4.1.17"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.1.17.tgz#be6120054efc32cfcd840f129f6d41705826e271"
+  integrity sha512-jAuolGg7ED+f9S52wDKvVcbEReRPKnry5fAG+zzeLC1Mq9QP/hx1jxs2Gq1h+oe6Rgqx6xXHL3v47vgik0I5OQ==
   dependencies:
     "@opentripplanner/core-utils" "^8.1.1"
     "@opentripplanner/humanize-distance" "^1.2.0"
