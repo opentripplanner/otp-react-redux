@@ -538,7 +538,7 @@ itinerary:
 # onTimeThresholdSeconds: 60
 
 # navBar
-#   # logoClickAction defines the click functionality of the navbar logo. Absence of this paramater implies no click functionality
+#   # logoClickAction defines the click functionality of the navbar logo. Absence of this parameter implies no click functionality
 #   # Any link starting with http(s) will turn the navbar logo into a button that redirects to that URL (usually the agency homepage)
 #   # logoClickAction: https://agencywebsite.com
 #   # Setting this parameter to `start-over` will refresh any search or routing settings
