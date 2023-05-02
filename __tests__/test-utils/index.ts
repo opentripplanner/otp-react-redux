@@ -15,7 +15,7 @@ export function timeoutPromise(ms: number): Promise<void> {
  *
  * Note: this stack overflow page gives more info on why we're using this:
  * https://stackoverflow.com/a/42787232/915811 (basically, moment.js uses
- * Date.now internally).
+ * Date#now internally).
  */
 export function setTestTime(time: number): void {
   const date = new Date(time)
