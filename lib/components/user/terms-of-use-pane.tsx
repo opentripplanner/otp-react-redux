@@ -12,7 +12,6 @@ import {
 /**
  * User terms of use pane.
  */
-/* TODO: Prop Types */
 const TermsOfUsePane = ({
   disableCheckTerms,
   handleBlur,
