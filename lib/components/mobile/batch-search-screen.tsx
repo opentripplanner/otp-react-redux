@@ -39,11 +39,17 @@ class BatchSearchScreen extends Component<Props> {
         <main tabIndex={-1}>
           <div className="batch-search-settings mobile-padding">
             <LocationField
+              inputPlaceholder={intl.formatMessage({
+                id: 'components.LocationSearch.setOrigin'
+              })}
               locationType="from"
               onTextInputClick={this._fromFieldClicked}
               showClearButton={false}
             />
             <LocationField
+              inputPlaceholder={intl.formatMessage({
+                id: 'components.LocationSearch.setDestination'
+              })}
               locationType="to"
               onTextInputClick={this._toFieldClicked}
               showClearButton={false}
