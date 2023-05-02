@@ -1,17 +1,5 @@
 _id: fr
 _name: Exemple de traduction pour OTP-react-redux en français
-
-# Noteworthy items for translating into French:
-# - trip, itinerary, journey => trajet
-# - trip monitoring => suivi de trajet
-# - place => lieu (destination)
-# - disable, deactivate => désactiver
-# - email => 'e-mail' or 'mail' is widely used in France, although courriel is more common in Canada.
-# - Instruction text is generally less cheerful in French than English (e.g. fewer uses of exclamation marks)
-#   and tends to rely on infinitive tense.
-#
-
-# Messages that are generated from actions
 actions:
   callTaker:
     callQuerySaveError: "Erreur lors de l'enregistrement des requêtes pour l'appel : {err}"
@@ -73,7 +61,107 @@ actions:
       Votre numéro de téléphone n'a pas pu être vérifié. Le code que vous avez
       entré a peut-être expiré. Veuillez demander un nouveau code, puis
       réessayez.
-
+common:
+  coordinates: "{lat}; {lon}"
+  dateExpressions:
+    today: Aujourd'hui
+    tomorrow: Demain
+    yesterday: Hier
+  daysOfWeek:
+    friday: vendredi
+    monday: lundi
+    saturday: samedi
+    sunday: dimanche
+    thursday: jeudi
+    tuesday: mardi
+    wednesday: mercredi
+  daysOfWeekCompact:
+    friday: ven.
+    monday: lun.
+    saturday: sam.
+    sunday: dim.
+    thursday: jeu.
+    tuesday: mar.
+    wednesday: mer.
+  daysOfWeekPlural:
+    friday: vendredis
+    monday: lundis
+    saturday: samedis
+    sunday: dimanches
+    thursday: jeudis
+    tuesday: mardis
+    wednesday: mercredis
+  forms:
+    back: Retour
+    cancel: Annuler
+    close: Fermer
+    defaultValue: "{value} (défaut)"
+    delete: Supprimer
+    edit: Modifier
+    error: erreur !
+    finish: Terminer
+    next: Suivant
+    "no": Non
+    print: Imprimer
+    save: Enregistrer
+    startOver: Recommencer
+    submitting: Envoi en cours…
+    "yes": Oui
+  itineraryDescriptions:
+    calories: "{calories, number} kcal"
+    noItineraryToDisplay: Aucun trajet à afficher.
+    relativeCo2: |
+      {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
+    transfers: >-
+      {transfers, plural, =0 {} one {# correspondance} other {#
+      correspondances}}
+  modes:
+    bicycle_rent: En vélo en libre-service
+    bike: Vélo
+    bus: Bus
+    cable_car: Tram tiré par câble
+    car: Voiture
+    car_park: Parc relais
+    drive: Voiture
+    ferry: Ferry
+    flex: Service Flex
+    funicular: Funiculaire
+    gondola: Téléphérique
+    micromobility: En trottinette électrique
+    micromobility_rent: En trottinette
+    rail: Train
+    rent: Location de véhicules
+    subway: Métro
+    tram: Tram
+    transit: En transports
+    walk: À pied
+  notifications:
+    email: e-mail
+    sms: SMS
+  places:
+    custom: divers
+    dining: restaurant
+    home: domicile
+    work: lieu de travail
+  routing:
+    routeAndNumber: Ligne {routeId}
+    routeToHeadsign: Direction {headsign}
+  searchForms:
+    click: cliquez
+    enterDestination: Entrez votre destination ou {mapAction} sur la carte…
+    enterStartLocation: Entrez votre point de départ ou {mapAction} sur la carte…
+    tap: appuyez
+  time:
+    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
+    duration:
+      aFewSeconds: quelques secondes
+      nDays: "{days, plural, =1 {un jour} other {# jours}}"
+      nHours: "{hours, plural, =1 {une heure} other {# heures}}"
+      nMinutes: "{minutes, plural, =1 {une minute} other {# minutes}}"
+    durationAgo: il y a {duration}
+    tripDurationFormat: >-
+      {hours, plural, =0 {} other {# h }}{minutes} min { seconds, plural, =0 {}
+      other {# s}}
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Privilégier par défaut les trajets accessibles
@@ -231,7 +319,7 @@ components:
     micromobility-rental: Trottinettes {companies}
     park-and-ride: Parcs relais
     satellite: Satellite
-    shared-vehicles: "Véhicules en partage"
+    shared-vehicles: Véhicules en partage
     stops: Arrêts et stations
     streets: Plan des rues
   MapillaryFrame:
@@ -368,6 +456,7 @@ components:
     header: Index des lignes
     modeFilter: Filtre pour les modes
     noFilteredRoutesFound: Aucune ligne ne correspond à vos critères
+    openPatternViewer: Voir les dessertes
     shortTitle: Index des lignes
     stopsInDirectionOfTravel: "Arrêts dans cette direction :"
     title: Index des lignes
@@ -389,7 +478,7 @@ components:
     tripNotFoundDescription: Le trajet recherché est introuvable.
     tripNotifications: Notifications du trajet
   SavedTripList:
-    fromTo: "De {from} à {to}"
+    fromTo: De {from} à {to}
     myTrips: Mes trajets
     noSavedTrips: Vous n'avez aucun trajet enregistré
     noSavedTripsInstructions: >-
@@ -433,7 +522,7 @@ components:
     scheduled: Selon l'horaire
   StopViewer:
     displayStopId: <strong>Arrêt n°</strong>{stopId}
-    findSchedule: Rechercher les horaires par jour
+    findSchedule: Rechercher les horaires par date
     flexStop: >-
       Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande. Une
       réservation préalable peut être exigée pour obtenir la desserte.
@@ -512,9 +601,9 @@ components:
     planNewTrip: Planifier un nouveau trajet
   TripStatusRenderers:
     active:
-      delayedHeading: "Trajet en cours, retardé de {formattedDuration}."
-      description: "Arrivée à destination prévue à {arrivalTime, time, short}."
-      earlyHeading: "Trajet en cours, en avance de {formattedDuration}."
+      delayedHeading: Trajet en cours, retardé de {formattedDuration}.
+      description: Arrivée à destination prévue à {arrivalTime, time, short}.
+      earlyHeading: Trajet en cours, en avance de {formattedDuration}.
       noDataHeading: Trajet en cours (données en temps réel non disponibles).
       onTimeHeading: Trajet en cours et prévu à l'heure.
     base:
@@ -644,137 +733,6 @@ components:
     switcher: Sélecteur de vues
   WelcomeScreen:
     prompt: Où désirez-vous aller ?
-
-common:
-  coordinates: "{lat}; {lon}"
-  dateExpressions:
-    today: Aujourd'hui
-    tomorrow: Demain
-    yesterday: Hier
-
-  daysOfWeek:
-    monday: lundi
-    tuesday: mardi
-    wednesday: mercredi
-    thursday: jeudi
-    friday: vendredi
-    saturday: samedi
-    sunday: dimanche
-  daysOfWeekCompact:
-    monday: lun.
-    tuesday: mar.
-    wednesday: mer.
-    thursday: jeu.
-    friday: ven.
-    saturday: sam.
-    sunday: dim.
-  daysOfWeekPlural:
-    monday: lundis
-    tuesday: mardis
-    wednesday: mercredis
-    thursday: jeudis
-    friday: vendredis
-    saturday: samedis
-    sunday: dimanches
-  # Common form UI messages
-  # Note to translator: these values are width-constrained.
-  forms:
-    back: Retour
-    cancel: Annuler
-    close: Fermer
-    error: erreur !
-    defaultValue: "{value} (défaut)"
-    delete: Supprimer
-    edit: Modifier
-    finish: Terminer
-    next: Suivant
-    no: Non
-    print: Imprimer
-    save: Enregistrer
-    startOver: Recommencer
-    submitting: Envoi en cours…
-    yes: Oui
-  itineraryDescriptions:
-    calories: "{calories, number} kcal" # SI unit
-    noItineraryToDisplay: Aucun trajet à afficher.
-    # Note to translator: noTransitFareProvided is width-constrained.
-    noTransitFareProvided: Tarif inconnu
-    transfers: "{transfers, plural, =0 {} one {# correspondance} other {# correspondances}}"
-    relativeCo2: >
-      {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
-
-  # Note to translator: some of the strings below are used in sentences such as:
-  # "No trip found for bike, walk, and transit."
-  # This set is based on OTP travel modes, in lower case, and accommodates the use
-  # of particles before/after each travel mode in some languages.
-  # In French, the above sentence could read:
-  # "Aucun trajet en vélo, à pied, et en transports publics n'a été trouvé."
-  modes:
-    bike: Vélo
-    bicycle_rent: En vélo en libre-service
-    bus: Bus
-    # The original OTP mode id is CABLE_CAR. Lowercase makes it cable_car.
-    cable_car: Tram tiré par câble
-    car: Voiture
-    car_park: Parc relais
-    drive: Voiture
-    ferry: Ferry
-    flex: Service Flex
-    funicular: Funiculaire
-    gondola: Téléphérique
-    micromobility: En trottinette électrique
-    micromobility_rent: En trottinette
-    rail: Train
-    rent: Location de véhicules
-    subway: Métro
-    tram: Tram
-    transit: En transports
-    walk: À pied
-
-  notifications:
-    email: e-mail
-    sms: SMS
-
-  # Note to translator: Places names below are used in
-  # contexts such as: "Edit home", "Set home address".
-  places:
-    custom: divers
-    dining: restaurant
-    home: domicile
-    work: lieu de travail
-
-  routing:
-    routeAndNumber: "Ligne {routeId}"
-    routeToHeadsign: "Direction {headsign}"
-
-  searchForms:
-    click: cliquez
-    enterDestination: Entrez votre destination ou {mapAction} sur la carte…
-    enterStartLocation: Entrez votre point de départ ou {mapAction} sur la carte…
-    tap: appuyez
-
-  time:
-    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
-    duration:
-      aFewSeconds: quelques secondes
-      nDays: "{days, plural, =1 {un jour} other {# jours}}"
-      nHours: "{hours, plural, =1 {une heure} other {# heures}}"
-      nMinutes: "{minutes, plural, =1 {une minute} other {# minutes}}"
-    durationAgo: "il y a {duration}"
-    tripDurationFormat: "{hours, plural, =0 {} other {# h }}{minutes} min { seconds,\
-      \ plural, =0 {} other {# s}}"
-
-util:
-  state:
-    errorPlanningTrip: Une erreur s'est produite lors de la planification du trajet.
-    networkUnavailable: Le système {network} n'est pas disponible pour le moment.
-    noTripFound: Aucun trajet trouvé.
-    noTripFoundForMode: Aucun trajet {modes} n'a été trouvé.
-    noTripFoundReason: Vos points de départ et d'arrivée ne sont peut-être pas desservis
-      dans le rayon spécifié ou aux heures indiquées, ou ne sont pas accessibles en
-      toute sécurité.
-    noTripFoundWithReason: "{noTripFound} {reason}"
-
 config:
   accessModes:
     bicycle: Transports + Vélo personnel
@@ -787,11 +745,22 @@ config:
     bicycle: Vélo pers.
     bicycle_rent: Vélo partagé
   flex:
-    flex-service: Service Flex
-    flex-service-colon: "Service Flex :"
     both: Plus de détails au bas de l'itinéraire
     call-ahead: Appelez pour réserver
     continuous-dropoff: Demandez l'arrêt au conducteur
   micromobilityModes:
     micromobility: Trottinnette pers.
     micromobility_rent: Trottinette louée
+    flex-service: Service Flex
+    flex-service-colon: "Service Flex :"
+util:
+  state:
+    errorPlanningTrip: Une erreur s'est produite lors de la planification du trajet.
+    networkUnavailable: Le système {network} n'est pas disponible pour le moment.
+    noTripFound: Aucun trajet trouvé.
+    noTripFoundForMode: Aucun trajet {modes} n'a été trouvé.
+    noTripFoundReason: >-
+      Vos points de départ et d'arrivée ne sont peut-être pas desservis dans le
+      rayon spécifié ou aux heures indiquées, ou ne sont pas accessibles en
+      toute sécurité.
+    noTripFoundWithReason: "{noTripFound} {reason}"

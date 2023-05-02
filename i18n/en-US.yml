@@ -103,7 +103,6 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} Cal"
     noItineraryToDisplay: No itinerary to display.
-    noTransitFareProvided: No fare info
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
@@ -154,6 +153,7 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
       other {# sec}}
+  linkOpensNewWindow: "(Opens new window)"
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Prefer accessible trips by default
