@@ -191,7 +191,7 @@ if (OTP_RR_PERCY_MOBILE) {
     await page.waitForTimeout(1000)
 
     await page.waitForSelector('.welcome-location')
-    await page.click('.welcome-location div span input')
+    await page.click('.welcome-location div input')
     await page.waitForSelector('.to-form-control')
 
     await page.focus('.to-form-control')
