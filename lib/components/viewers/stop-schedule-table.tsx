@@ -1,5 +1,7 @@
-import { FormattedMessage, FormattedTime } from 'react-intl'
-import moment from 'moment'
+import { FormattedMessage } from 'react-intl'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore TYPESCRIPT TODO: wait for typescripted core-utils
+import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, createRef } from 'react'
 import styled from 'styled-components'
 
@@ -11,13 +13,14 @@ import {
 import Loading from '../narrative/loading'
 import type { StopData } from '../util/types'
 
+import DepartureTime from './departure-time'
+
 // Styles for the schedule table and its contents.
 const StyledTable = styled.table`
-  border-spacing: collapse;
+  box-sizing: border-box;
   height: 100%;
   width: 100%;
   th {
-    background-color: #fff;
     box-shadow: 0 1px 0px 0px #ccc;
     font-size: 75%;
     position: sticky;
@@ -57,6 +60,7 @@ const TimeCell = styled.td`
  */
 class StopScheduleTable extends Component<{
   date: string
+  homeTimezone: string
   showBlockIds: boolean
   // TODO TYPESCRIPT: move this type to a shared type
   stopData: StopData
@@ -64,7 +68,7 @@ class StopScheduleTable extends Component<{
   /**
    * Link to the DOM for the next departure row, so we can scroll to it if needed.
    */
-  targetDepartureRef = createRef<HTMLElement>()
+  targetDepartureRef = createRef<HTMLTableRowElement>()
 
   /**
    * Scroll to the first stop time that is departing from now.
@@ -86,14 +90,15 @@ class StopScheduleTable extends Component<{
   }
 
   render(): JSX.Element {
-    const { date, showBlockIds, stopData } = this.props
+    const { date, homeTimezone, showBlockIds, stopData } = this.props
     // Show loading spinner if times are still being fetched.
     if (stopData.fetchStatus === FETCH_STATUS.FETCHING) {
       return <Loading small />
     }
     const mergedStopTimes = mergeAndSortStopTimes(stopData)
 
-    const today = moment().startOf('day').format('YYYY-MM-DD')
+    const today = coreUtils.time.getCurrentDate(homeTimezone)
+
     // Find the next stop time that is departing.
     // We will scroll to that stop time entry (if showing schedules for today).
     const shouldHighlightFirstDeparture =
@@ -107,17 +112,17 @@ class StopScheduleTable extends Component<{
         <thead>
           <tr>
             {showBlockIds && (
-              <th>
+              <th scope="col">
                 <FormattedMessage id="components.StopScheduleTable.block" />
               </th>
             )}
-            <th>
+            <th scope="col">
               <FormattedMessage id="components.StopScheduleTable.route" />
             </th>
-            <th>
+            <th scope="col">
               <FormattedMessage id="components.StopScheduleTable.destination" />
             </th>
-            <th>
+            <th scope="col">
               <FormattedMessage id="components.StopScheduleTable.departure" />
             </th>
           </tr>
@@ -139,17 +144,10 @@ class StopScheduleTable extends Component<{
               : highlightRow
             const routeName = route.shortName ? route.shortName : route.longName
 
-            // Convert to milliseconds for FormattedTime
-            const departureTimestamp = moment()
-              .startOf('day')
-              .add(stopTime.scheduledDeparture, 's')
-              .valueOf()
             // Add ref to scroll to the first stop time departing from now.
             const refProp = scrollToRow ? this.targetDepartureRef : undefined
 
             return (
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore TYEPSCRIPT TODO: ref
               <tr className={className} key={index} ref={refProp}>
                 {showBlockIds && (
                   <BlockCell title={blockId}>{blockId}</BlockCell>
@@ -157,7 +155,7 @@ class StopScheduleTable extends Component<{
                 <RouteCell>{routeName}</RouteCell>
                 <td>{headsign}</td>
                 <TimeCell>
-                  <FormattedTime timeStyle="short" value={departureTimestamp} />
+                  <DepartureTime stopTime={stopTime} />
                 </TimeCell>
               </tr>
             )

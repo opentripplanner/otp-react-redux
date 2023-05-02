@@ -32,12 +32,16 @@
 }
 
 /* Don't show route viewer link in the app menu on desktop as it is in the navbar */
-.app-menu-route-viewer-link {
+.app-menu .app-menu-route-viewer-link,
+.app-menu .app-menu-trip-planner-link,
+.app-menu #app-menu-locale-selector {
   display: none;
 }
-@media (max-width: 800px) {
-  .app-menu-route-viewer-link {
-    display: block;
+@media (max-width: 768px) {
+  .app-menu .app-menu-route-viewer-link,
+  .app-menu .app-menu-trip-planner-link,
+  .app-menu #app-menu-locale-selector {
+    display: flex;
   }
 }
 
@@ -74,6 +78,7 @@
 }
 .view-switcher button.btn-link.active {
   background: rgba(0, 0, 0, 0.15);
+  font-weight: 600;
 }
 .view-switcher button.btn-link:hover,
 .view-switcher button.btn-link:focus {
@@ -83,4 +88,33 @@
 
 .view-switcher button.btn-link:hover {
   color: #fff;
+}
+
+/* Full screen modal styling */
+.fullscreen-modal {
+  width: 90vw;
+  height: 100vh;
+}
+.fullscreen-modal .modal-content {
+  height: 90vh;
+}
+.fullscreen-modal iframe {
+  height: 100%;
+  width: 100%;
+}
+
+/** These changes kick in when the map is hidden. These rules ensure that the entire "sidebar"
+    (which at this point fills the entire screen) scrolls as a single unit.
+    These rules can only apply at this high zoom level because the location field dropdown is
+    otherwise "stuck" inside the sidebar and can't overlap the map. */
+@media (max-width: 768px) {
+  .main-row main {
+    overflow-y: auto;
+  }
+  .desktop-narrative-container {
+    overflow-y: unset !important;
+  }
+  .user-settings {
+    overflow-y: unset !important;
+  }
 }

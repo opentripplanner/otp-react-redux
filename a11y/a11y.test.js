@@ -4,6 +4,8 @@
 import execa from 'execa'
 import puppeteer from 'puppeteer'
 
+import '../__tests__/test-utils/mock-window-url'
+
 import routes from '../lib/util/webapp-routes'
 
 import { mockServer } from './mock-server'
@@ -28,6 +30,11 @@ async function runAxeTestOnPath(otpPath) {
   const page = await browser.newPage()
   const filePath = `http://localhost:${MOCK_SERVER_PORT}/#${otpPath}`
   await Promise.all([
+    page.setViewport({
+      deviceScaleFactor: 1,
+      height: 1080,
+      width: 1920
+    }),
     page.goto(filePath),
     page.waitForNavigation({ waitUntil: 'networkidle2' })
   ])
@@ -89,9 +96,5 @@ test('Mocked Stop Viewer and Dropdown should pass Axe tests', async () => {
   // Puppeteer can take a long time to load, espeically in some ci environments
   jest.setTimeout(600000)
   // Test stop viewer
-  const stopViewerPage = await runAxeTestOnPath('/stop/Agency')
-  await stopViewerPage.waitForTimeout(2000)
-  await stopViewerPage.click('.expansion-button')
-  await stopViewerPage.waitForTimeout(2000)
-  await expect(stopViewerPage).toPassAxeTests({ disabledRules })
+  await runAxeTestOnPath('/stop/Agency')
 })

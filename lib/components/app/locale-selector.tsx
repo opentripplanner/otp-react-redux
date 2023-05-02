@@ -1,87 +1,67 @@
-import { connect, ConnectedProps } from 'react-redux'
-import { MenuItem, NavDropdown } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
 import { useIntl } from 'react-intl'
-import React, { MouseEvent } from 'react'
+import React from 'react'
 
 import * as uiActions from '../../actions/ui'
-import * as userActions from '../../actions/user'
-import Icon from '../util/icon'
+import { getLanguageOptions } from '../../util/i18n'
+import { UnstyledButton } from '../util/unstyled-button'
+import Dropdown from '../util/dropdown'
 
-type PropsFromRedux = ConnectedProps<typeof connector>
-
-interface LocaleSelectorProps extends PropsFromRedux {
-  // Typescript TODO configLanguageType
-  configLanguages: Record<string, any>
+interface LocaleSelectorProps {
+  // Typescript TODO languageOptions based on configLanguage type.
+  languageOptions: Record<string, any> | null
+  locale: string
+  setLocale: (locale: string) => void
 }
 
-const LocaleSelector = (props: LocaleSelectorProps): JSX.Element => {
-  const {
-    configLanguages,
-    createOrUpdateUser,
-    locale: currentLocale,
-    loggedInUser,
-    setLocale
-  } = props
-
+const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
+  const { languageOptions, locale: currentLocale, setLocale } = props
   const intl = useIntl()
 
-  const handleLocaleSelection = (e: MouseEvent<Element>, locale: string) => {
-    e.stopPropagation()
-    if (locale === currentLocale) {
-      e.preventDefault()
-      return
-    }
-    window.localStorage.setItem('lang', locale)
-
-    if (loggedInUser) {
-      loggedInUser.preferredLanguage = locale
-      createOrUpdateUser(loggedInUser, false, intl)
-    }
-    setLocale(locale)
-
-    document.location.reload()
-  }
-
-  return (
-    <NavDropdown
+  // Only render if two or more languages are configured.
+  return languageOptions ? (
+    <Dropdown
       id="locale-selector"
-      pullRight
-      title={
-        <Icon style={{ color: 'rgba(255, 255, 255, 0.85)' }} type="globe" />
+      label={intl.formatMessage({ id: 'components.SubNav.selectALanguage' })}
+      listLabel={intl.formatMessage({ id: 'components.SubNav.languages' })}
+      name={
+        <span
+          style={{
+            color: 'rgba(255, 255, 255, 0.85)'
+          }}
+        >
+          <GlobeAmericas height="18px" />
+        </span>
       }
+      style={{ display: 'block ruby' }}
+      // TODO: How to make this work without block ruby?
     >
-      {Object.keys(configLanguages).map((locale) => {
-        return (
-          locale !== 'allLanguages' && (
-            <MenuItem
-              className="locale-name"
-              onClick={(e: MouseEvent) => handleLocaleSelection(e, locale)}
-            >
-              <span
-                style={locale === currentLocale ? { fontWeight: 'bold' } : {}}
-              >
-                {configLanguages[locale].name}
-              </span>
-            </MenuItem>
-          )
-        )
-      })}
-    </NavDropdown>
-  )
+      {Object.keys(languageOptions).map((locale: string) => (
+        <li key={locale} lang={locale} role="none">
+          <UnstyledButton
+            aria-selected={locale === currentLocale || undefined}
+            onClick={() => setLocale(locale)}
+            role="option"
+          >
+            {languageOptions[locale].name}
+          </UnstyledButton>
+        </li>
+      ))}
+    </Dropdown>
+  ) : null
 }
 
 // Typescript TODO: type state properly
 const mapStateToProps = (state: any) => {
   return {
-    locale: state.otp.ui.locale,
-    loggedInUser: state.user.loggedInUser
+    languageOptions: getLanguageOptions(state.otp.config.language),
+    locale: state.otp.ui.locale
   }
 }
 
 const mapDispatchToProps = {
-  createOrUpdateUser: userActions.createOrUpdateUser,
   setLocale: uiActions.setLocale
 }
 
-const connector = connect(mapStateToProps, mapDispatchToProps)
-export default connector(LocaleSelector)
+export default connect(mapStateToProps, mapDispatchToProps)(LocaleSelector)

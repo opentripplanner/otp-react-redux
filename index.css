@@ -1,8 +1,6 @@
 @import url(node_modules/bootstrap/dist/css/bootstrap.min.css);
 
-@import url(https://unpkg.com/leaflet@1.0.3/dist/leaflet.css);
-@import url(node_modules/font-awesome/css/font-awesome.css);
-@import url(node_modules/transitive-js/lib/transitive.css);
+@import url(node_modules/maplibre-gl/dist/maplibre-gl.css);
 
 @import url(lib/components/admin/call-taker.css);
 @import url(lib/components/app/app.css);
@@ -25,43 +23,48 @@ input[type="text"]::-ms-clear {
 
 /* New app menu */
 .app-menu-icon {
-  width: 21px;
-  height: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
+  height: 15px;
   justify-content: space-between;
-  cursor: pointer;
+  padding: 0;
   position: absolute;
-  z-index: 10;
-  transition: all 1s ease;
   top: 16px;
+  transition: all 1s ease;
+  width: 21px;
+  z-index: 10;
 }
 
 @media only screen and (max-width: 768px) {
+  #locale-selector-wrapper {
+    display: none;
+  }
   .app-menu-icon {
-    margin-left: 15px;
+    left: 15px;
   }
 }
 
-.menu-top-line,
-.menu-middle-line,
-.menu-bottom-line,
-.menu-left-x,
-.menu-right-x {
+.app-menu-icon .menu-line {
   border-bottom: 3px solid #ffffff;
+  display: block;
+  position: relative;
   transition: all 0.5s ease;
+  width: 100%;
 }
 
-.menu-left-x {
+.app-menu-icon[aria-expanded="true"] .menu-line.top {
   transform: rotate(45deg);
   top: 7px;
-  position: relative;
 }
-
-.menu-right-x {
+.app-menu-icon[aria-expanded="true"] .menu-line.bottom {
   transform: rotate(-45deg);
   bottom: 5px;
-  position: relative;
+}
+.app-menu-icon[aria-expanded="true"] .menu-line.middle {
+  display: none;
 }
 
 .slide-pane {
@@ -72,55 +75,81 @@ input[type="text"]::-ms-clear {
   margin: 52px auto 0 0;
 }
 
-.slide-pane__header,
-.slide-pane__close {
-  display: none;
-}
-
 .slide-pane__content {
   padding: 6px 0;
 }
 
+.slide-pane__overlay {
+  z-index: 1000;
+}
+
 .app-menu {
   margin: 0;
-  padding: 0;
+  padding: 0.5rem 0;
 }
 
-.app-menu li {
-  list-style-type: none;
-  margin: 1rem 2rem;
-  cursor: pointer;
+.app-menu img,
+.app-menu svg {
+  max-height: 1em;
+  margin: 0 2rem;
+  vertical-align: middle;
+  width: 1em;
 }
 
-.app-menu li img {
-  width: 25px;
-  margin-right: 2rem;
-}
-
-.app-menu li a {
+.app-menu a,
+.app-menu button {
+  background: none;
+  border: none;
   color: inherit;
+  cursor: pointer;
+  display: flex;
   font-size: 20px;
+  padding: 0.5rem 0;
   text-decoration: none;
-  outline: none;
+  width: 100%;
 }
 
-/* increase icon size */
-.app-menu li a .fa,
-.expand-submenu-button span .fa {
-  font-size: 2rem;
-}
-
-.app-menu span:not(.expand-menu-chevron) {
-  margin-right: 2rem;
-}
-
-.menu-item:hover *,
-.app-menu li a span *:hover {
+.app-menu a:hover,
+.app-menu button:hover {
   color: #4c97f5;
 }
 
+.app-menu a:focus,
+.app-menu button:focus {
+  background-color: #ddd;
+  outline: 2px solid #4c97f5;
+  outline-offset: -2px;
+}
+
+.app-menu button[aria-selected="true"],
+#locale-selector button[aria-selected="true"] {
+  font-weight: bold;
+}
+
+.skip-nav-button {
+  color: initial;
+  position: fixed;
+  top: -30px;
+}
+.skip-nav-button:focus {
+  padding: 7px 24px;
+  top: 7px;
+  z-index: 100;
+}
+
+.view-switcher {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .view-switcher {
+    display: flex;
+  }
+}
+
 .expand-menu-chevron {
-  margin-right: -2rem;
+  flex-grow: 1;
+  text-align: end;
 }
 
 .dropdown-header {
@@ -130,34 +159,23 @@ input[type="text"]::-ms-clear {
   white-space: nowrap;
 }
 
-.expand-submenu-button a {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  background: transparent;
-  border: none;
-  outline: none;
-}
-
 .sub-menu-container {
   border-top: 1px solid #cccccc;
+  margin-top: 0.5rem;
+  padding-left: 2rem;
 }
 
-.sub-menu-container li a {
-  margin-left: 2rem;
+.app-menu .app-menu-divider {
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 0;
 }
 
-.sub-menu-container li a span {
-  color: inherit;
-}
-
-.app-menu-divider::after {
-  content: "";
-  display: block;
-  height: 1px;
-  background: #ccc;
-  margin: 1rem;
-  width: 200%; /* ensures the line extends to the edge of the pane */
+/* Header image or title */
+/* If an icon is used, visually-hide the title (but keep it visible to screen readers). */
+.with-icon div.navbar-title {
+  height: 0;
+  overflow: hidden;
+  width: 0;
 }
 
 /* Buttons */
@@ -202,4 +220,14 @@ button.step {
   /* we need to override this z-index so that the +/- map controls appear below
   the geocoder search results */
   z-index: 999;
+}
+
+/* Bootstrap adds a bottom margin to all labels,
+   but we don't want that in the map layer selector when it is collapsed. */
+.map-container .layers-list label {
+  margin-bottom: 0;
+}
+.map-container .layers-list.fake-mobile-hover label,
+.map-container .layers-list:hover label {
+  margin-bottom: 5px;
 }

@@ -1,6 +1,6 @@
 /* ITINERARY OPTION */
 
-.otp .option.default-itin button:focus {
+.otp .option.default-itin button :not(.other-itin):focus {
   outline: none;
 }
 
@@ -19,18 +19,137 @@
   border-top: 1px solid grey;
 }
 
+/* Reset cursor when expanded */
+.otp .option.metro-itin.expanded div.header {
+  cursor: auto;
+}
+
+.otp ul li.result:last-of-type div.header .itin-wrapper,
+.route-row:last-of-type .header {
+  border: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.otp ul li.result:first-of-type div.header .itin-wrapper,
+.route-row:first-of-type .header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.otp .option.metro-itin.expanded:first-of-type div.header .itin-wrapper {
+  border-bottom: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  cursor: auto;
+}
+.otp .option.metro-itin .itin-wrapper-small {
+  border-radius: 10px;
+  border: none;
+}
+.otp .option.metro-itin {
+  display: block;
+}
+
+/* Sadly this hack is the only way to select the AccessibilityRating */
+.otp .option.metro-itin div.header .itin-wrapper div:not(.itinerary-grid),
+.otp
+  .option.metro-itin
+  div.header
+  .itin-wrapper-small
+  div:not(.itinerary-grid) {
+  max-width: inherit;
+  border-radius: 0;
+  margin-top: 0;
+}
+.otp .option.metro-itin div.header .itin-wrapper div:not(.itinerary-grid) svg,
+.otp
+  .option.metro-itin
+  div.header
+  .itin-wrapper-small
+  div:not(.itinerary-grid)
+  svg {
+  flex: inherit !important;
+}
+.otp .option.metro-itin div.header .itin-wrapper,
+.otp .option.metro-itin div.header .itin-wrapper-small {
+  background: #fffffff8;
+  overflow: hidden;
+  transition: all 0.075s ease-out;
+}
+.otp .option.metro-itin:not(.expanded) div.header .itin-wrapper,
+.otp .option.metro-itin:not(.expanded) div.header .itin-wrapper-small {
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
+}
+.otp .option.metro-itin div.header .itin-wrapper:hover,
+.otp .option.metro-itin div.header .itin-wrapper-small:hover {
+  background: #ffffffff;
+  cursor: pointer;
+}
+
+.otp .option.metro-itin .realtime::before {
+  display: inline-block;
+  content: "";
+  background: rgb(0, 180, 0);
+  animation: pulse-opacity 2s ease-in-out infinite;
+  width: 7px;
+  height: 14px;
+  clip-path: path(
+    "M3.7,4.1C3.1,4.9,3,6,3.4,7.2c0.1,0.3,0.5,0.6,0.8,0.6c0.3,0,0.5-0.2,0.4-0.5C4.3,6.4,4.4,5.5,4.9,4.9s1.2-1,2.2-1 c0.1,0,0.3-0.1,0.3-0.1c0.1-0.1,0.1-0.3,0-0.4C7.3,3,6.9,2.8,6.6,2.8C5.3,2.8,4.3,3.2,3.7,4.1z M5.6,0C3.5-0.1,1.8,0.7,0.8,2 s-1.1,3.2-0.3,5.2C0.6,7.5,1,7.8,1.3,7.8c0.3,0,0.5-0.2,0.4-0.5C1,5.6,1.1,4,2,2.8s2.3-1.8,4.1-1.7c0.2,0,0.3-0.1,0.3-0.1 c0.1-0.1,0.1-0.2,0-0.4C6.3,0.3,5.9,0,5.6,0z"
+  );
+}
+
+/* remove button styling */
+.metro-itin div.header button {
+  border: none;
+  background: transparent;
+  padding: 2px;
+  margin: 0;
+}
+
+.metro-itin div.header button.other-itin {
+  padding: 10px 1em;
+}
+
+.metro-itin div.header button.other-itin:focus,
+.metro-itin div.header button.other-itin:focus-visible {
+  outline-offset: -3px;
+}
+
+/* multiple itinerary underline only when expanded */
+.metro-itin.expanded div.header button:not(.active) {
+  text-decoration: underline;
+}
+.metro-itin.expanded div.header button:not(.active):hover {
+  color: #090909ef;
+}
+
+@keyframes pulse-opacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 /* Show side border if active and not expanded */
 .otp .option.default-itin.active:not(.expanded) {
   border-left: 4px teal solid;
 }
 
-/* FIXME: don't highlight if not active */
-.otp .option.default-itin:hover:not(.active) {
+/* Highlight if hovering within search results.
+   FIXME: don't highlight if not active */
+.otp .result .option.default-itin:hover:not(.active) {
   background-color: var(--hover-color);
 }
 
 .otp .option.default-itin > .header {
   font-size: 16px;
+}
+
+/* Show a pointer cursor only for itinerary headers under search results. */
+.otp .result .option.default-itin > .header {
   cursor: pointer;
 }
 
@@ -40,8 +159,15 @@
   font-size: large;
 }
 
+.otp .option.default-itin > .header .title h3 {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
 .otp .option.default-itin > .header .itinerary-attributes {
   float: right;
+  min-width: 6em;
+  text-align: right;
 }
 
 .otp .option.default-itin > .header .itinerary-attributes > li {
@@ -56,6 +182,9 @@
 .otp .option.default-itin > .header .title > .summary {
   /* text-align: center; */
   margin: 0px 0px;
+}
+.otp .option.default-itin > .header > .summary {
+  display: flex;
 }
 
 .otp .option.default-itin > .header .title > .summary > .summary-block {

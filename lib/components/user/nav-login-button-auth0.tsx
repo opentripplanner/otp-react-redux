@@ -1,8 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 
 import { getCurrentRoute } from '../../util/ui'
-import { URL_ROOT } from '../../util/constants'
 
 import NavLoginButton from './nav-login-button'
 
@@ -11,11 +10,9 @@ type AccountLink = {
   url: string
 }
 
-interface NavLoginButtonAuth0Props {
-  className?: string
+interface NavLoginButtonAuth0Props extends HTMLAttributes<HTMLElement> {
   id: string
   links: Array<AccountLink>
-  style?: string
 }
 
 /**
@@ -26,7 +23,7 @@ const NavLoginButtonAuth0 = ({
   id,
   links,
   style
-}: NavLoginButtonAuth0Props) => {
+}: NavLoginButtonAuth0Props): JSX.Element => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
 
   // On login, preserve the current trip query if any.
@@ -37,7 +34,7 @@ const NavLoginButtonAuth0 = ({
   const handleLogout = () =>
     logout({
       // Logout to the map with no search.
-      returnTo: URL_ROOT
+      returnTo: window.location.origin
     })
 
   // On logout, it is better to "clear" the screen, so

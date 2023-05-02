@@ -112,5 +112,4 @@ modes:
 
 dateTime:
   timeFormat: h:mm a
-  dateFormat: MM/DD/YYYY
-  longDateFormat: MMMM D, YYYY
+  dateFormat: MM/dd/yyyy

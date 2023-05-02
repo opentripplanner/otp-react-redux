@@ -4,6 +4,10 @@ api:
   port: 8001
 # v2: false
 
+# Add Bugsnag key for error reporting
+# bugsnag:
+#   key: BUGSNAG_KEY
+
 # Add suggested locations to be shown as options in the form view.
 # locations:
 #   - id: 'airport'
@@ -89,11 +93,10 @@ map:
   initLon: -122.682
   baseLayers:
     - name: Streets
-      url: //cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png
-      subdomains: "abcd"
+      # These tiles are free to use, but not in production
+      url: //basemaps.cartocdn.com/gl/positron-gl-style/style.json
       attribution: 'Map tiles: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
       maxZoom: 20
-      hasRetinaSupport: true
     - name: Stamen Toner Lite
       url: http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
@@ -107,7 +110,23 @@ map:
   ###   styles.segment_labels: styles attributes recognized by transitive.js.
   ###                         For examples of applicable style attributes, see
   ###                         https://github.com/conveyal/transitive.js/blob/master/stories/Transitive.stories.js#L47.
-  ### - disableFlexArc: optional parameter to disable rendering flex itinerary legs as an arc. 
+  ### - disableFlexArc: optional parameter to disable rendering flex itinerary legs as an arc.
+  # Custom Overlays
+  # overlays:
+  #   The OTP2 overlay is slightly more difficult to use
+  #   - type: otp2
+  #   Each OTP2 overlay has to be configured here. The "type" must match
+  #   what's configured in router-config.json
+  #   layers:
+  #   - type: stops
+  #   - type: rentalVehicles
+  #     # Layers that include a network attribute can include a network filter field
+  #     # The layer name and ID will be automatically generated. The name can be set
+  #     # using i18n keys.
+  #     network: lime_seattle
+  #   - type: rentalVehicles
+  #     network: Link_Seattle
+  #   - type: rentalStations
   # transitive:
   #   labeledModes:
   #     - BUS
@@ -124,6 +143,7 @@ map:
   #       font-family: Hind, sans-serif
   #       font-size: 18px
   #   disableFlexArc: true
+  
 
 # it is possible to leave out a geocoder config entirely. In that case only
 # GPS coordinates will be used when finding the origin/destination.
@@ -174,6 +194,21 @@ geocoder:
 
 # Use this mode config for the enhanced Transit+ config
 modes:
+  # This is the default behavior for flex merging.
+  # If set to false, each FLEX mode (FLEX_EGRESS,FLEX_ACCESS,FLEX_DIRECT) will 
+  # be treated separately. If set to true, a single FLEX mode will automatically 
+  # be expanded and reduced to those three modes.
+  mergeFlex: true 
+  modeOptions:
+    - mode: TRANSIT
+    - mode: WALK
+    - mode: CAR
+    - mode: BICYCLE
+    - mode: RENT
+      icon: mobile
+      # This overrides the label generated from the i18n. Use when defining modes that are not supported by OTP i18n
+      # label: Rental 
+      
   transitModes:
     - mode: BUS
       label: Bus
@@ -250,6 +285,11 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # Whether to render route names and colors in the blocks inside
+  # the batch ui rows
+  renderRouteNamesInBlocks: true
+  # Whether the mode icons should be colored as well
+  fillModeIcons: true
   # If multiple fares are returned by OTP, assign names to the fare keys here
   #fareKeyNameMap:
   #  regular: "Transit Fare"
@@ -257,6 +297,35 @@ itinerary:
   #  student: "Student Fare"
   # One fare will always be shown by default
   #defaultFareKey: electronicRegular
+
+  # The following settings must be set to these values to use the new
+  # "Metro" UI. The settings can be used without the Metro UI, but
+  # this may have unexpected effects.
+
+  # When using the metro UI, it is recommended to have 8+ itineraries returned by OTP
+
+  # Whether to show the "# itineraries found" text above the itinerary results
+  showHeaderText: false
+  # Whether to hide the gray loading bars that appear while results are loading
+  hideSkeletons: true
+  # Whether the itinerary listing background should match the header
+  customBatchUiBackground: true
+  # Whether to render itineraries below a mode description header
+  groupByMode: true
+  # Whether to merge groups of itineraries with the same primary mode (Bike, Walk, etc)
+  groupTransitModes: true
+  # Whether to merge itineraries with the same origin, destination, and transit modes
+  mergeItineraries: true
+  # Whether to show the first itinerary on the map. If this is set to false, routes
+  # will only show on the map on hover or click
+  showFirstResultByDefault: false
+  # This flag disables the dot between legs in the metro itnerary summary, replacing it with
+  # a gray background
+  disableMetroSeperatorDot: false
+  # Shows the duration of a leg below the leg in the metro itinerary summary
+  showLegDurations: false
+  # Allows calorie counts to be hidden
+  displayCalories: true
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
@@ -289,6 +358,13 @@ itinerary:
 #     agencyId: PSC
 #     logo: https://d2tyb7byn1fef9.cloudfront.net/psc.png
 #     order: 1
+#     colorMode: gtfs # One of gtfs, gtfs-softened, disabled. see util/viewer.js for more details.
+#     # Mode color overrides. If a GTFS supplies weird colors for
+#     # a mode, they can be overridden here. This is treated as GTFS data.
+#     modeColors:
+#       BUS: # Any OTP mode
+#         color: 00FF00 # HEX color without the # (like GTFS)
+#         textColor: FFFFFF # HEX color without the # (like GTFS)
 #   - feedId: TriMet
 #     agencyId: TRIMET
 #     name: TriMet
@@ -329,6 +405,52 @@ itinerary:
 #       - WALK
 #       - BICYCLE
 
+### Configure here the carbon output in grams per meter for each mode.
+### massUnits can be 'pound', 'kilogram', 'ounce', or 'gram'
+# co2:
+# . enabled: true
+#   carbonIntensity:
+#     walk: 0
+#     bicycle: 0
+#     car: 0.283
+#     tram: 0.041
+#     subway: 0.041
+#     rail: 0.041
+#     bus: 0.105
+#     ferry: 0.082
+#     cable_car: 0.021
+#     gondola: 0.021
+#     funicular: 0.041
+#     transit: 0.041
+#     leg_switch: 0
+#     airplane: 0.382
+#     micromobility: 0
+#   massUnit: "ounce"
+#   showIfHigher: false // show the relative CO₂ even if it's higher than driving
+#   cutoffPercentage: 33 // Only show the CO₂ comparison if the % difference from driving is at least this much
+
+### Popup config
+### OTP-RR supports a full-screen modal popup that can be launched from a set of
+### pre-set locations. Each button can be configured to open a different popup.
+### Popup "targets" define a URL that is opened. Their ID is used to give them names
+### via the language section below. For example, a target with the id "testTarget"
+### can be named with the i18n string "config.popups.testTarget" (see the language section below for an example)
+###
+### Each popup button location can have a target assigned to it
+# popups:
+#   targets:
+#     testTarget: # To set a name for this target, create the i18n string "config.popups.testTarget"
+#       url: http://example.com/ 
+#       modal: false # Setting this to false always launches the popup as a browser popup
+#     secondTarget: 
+#       url: http://test.com/
+#       appendLocale: false # Defaults to true, if set to false otp-rr will not append the current i18n language to the popup URL.
+#   launchers:
+#     toolbar: testTarget # This button is rendered in the top right of the toolbar (desktop view only!)
+#     itineraryFooter: testTarget # This button is rendered at the bottom of a selected itinerary
+#     optionFilter: secondTarget # This button is rendered to the left of the itinerary filter in the batch and metro UIs
+#     sidebarLink: testTarget # this button is rendered in the sidebar
+
 ### Language section to override strings.
 ### Strings can be set globally for all languages (e.g. for strings that are brands/nouns,
 ### e.g. TriMet's "TransitTracker") or by language.
@@ -338,7 +460,7 @@ itinerary:
 ### Languages defined may be region-specific (e.g. en-US) or language-specific (e.g. es, kr)
 ### The LocaleSelector component, which provides a dropdown for the user to change their locale, will
 ### only be rendered if more than one valid language (all languages must have "name" defined) is included
-### in the language config. 
+### in the language config.
 
 # language:
 #   allLanguages
@@ -352,12 +474,17 @@ itinerary:
 #     config:
 #       flex:
 #         flex-service: Flex Service
+#         both: See bottom of itinerary for details.
 #         call-ahead: "Call to reserve: (555) 555-5555"
 #         continuous-dropoff: Communicate with operator about stop
-#       acessibilityScore:
+#       accessibilityScore:
 #         gradationMap:
 #           0.0: 'Not Accessible'
 #           0.9: 'Mostly Accessible'
+#       popups:
+#         testTarget: Test Target!
+#         # Optional string used for narrow UI elements such as link buttons under trip details.
+#         testTarget-narrow: Target!
 #       menuItems:
 #         demo-item: Demo Item
 #     errorMessages:
@@ -410,9 +537,6 @@ itinerary:
 # default is 60 seconds.
 # onTimeThresholdSeconds: 60
 
-# Format the date time format for display.
-dateTime:
-  longDateFormat: DD-MM-YYYY
 # stopViewer:
 #   # The radius (in meters) to use when searching for nearby stops and other
 #   # amenities (rental vehicles, park and rides) to show for the focused stop.
@@ -428,12 +552,18 @@ dateTime:
 #   # so that, for example, if it is Friday and a route does
 #   # not begin service again until Monday, we are showing its next
 #   # departure and it is not entirely excluded from display
-#   # (defaults to 4 days/345600s if unspecified).
-#   timeRange: 345600
+#   # (defaults to 2 days/172800s if unspecified).
+#   timeRange: 172800
 # routeViewer:
 #   # Whether to render routes within flex zones of a route's patterns. If set to true,
 #   # routes will not be rendered within flex zones.
 #   hideRouteShapesWithinFlexZones: true
+#   # Disable vehicle highlight if necessary (e.g. custom or inverted icons)
+#   vehicleIconHighlight: true
+#   # Customize vehicle icon padding (the default iconPadding is 2px in otp-ui)
+#   vehicleIconPadding: 0
+#   # Interval for refreshing vehicle positions
+#   vehiclePositionRefreshSeconds: 30 # defaults to 30 seconds.
 
 # API key to make Mapillary API calls. These are used to show street imagery.
 # Mapillary calls these "Client Tokens". They can be created at https://www.mapillary.com/dashboard/developers
@@ -443,3 +573,8 @@ dateTime:
 ### Setting to enable touch-friendly behavior
 ### e.g. on touch-screen kiosks that run a desktop OS.
 # isTouchScreenOnDesktop: true
+
+### Approximate duration in seconds after which, if there is no user activity, the UI is reset to an initial URL.
+### The value should be at least over a minute, so that users have enough time to extend their session if needed.
+### A warning is shown when a minute or a third of the session time remains, whichever is shorter.
+# sessionTimeoutSeconds: 180

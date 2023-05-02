@@ -1,29 +1,34 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore TODO: migrate to typescript
 import { barberPole } from '@opentripplanner/itinerary-body/lib/otp-react-redux/line-column-content'
+import { CompressArrowsAlt } from '@styled-icons/fa-solid/CompressArrowsAlt'
 import { FormattedMessage } from 'react-intl'
+import { HandPaper } from '@styled-icons/fa-regular/HandPaper'
+import { Phone } from '@styled-icons/fa-solid/Phone'
 import React from 'react'
 import styled from 'styled-components'
 import tinycolor from 'tinycolor2'
 
-import Icon from '../../util/icon'
+import { StyledIconWrapper } from '../../util/styledIcon'
 
 export const FLEX_COLOR = '#FA6400'
 const FLEX_COLOR_LIGHT = tinycolor(FLEX_COLOR).lighten(40).toHexString()
 
-// FIXME: type once the support-gtfs-flex branch is merged
-// eslint-disable-next-line react/prop-types
-const FlexNotice = ({
-  faKey,
-  showText,
-  text
-}: {
-  faKey: string
+type FlexIndicatorProps = {
+  isCallAhead: boolean
+  isContinuousDropoff: boolean
+  phoneNumber: string
+  shrink: boolean
+  textOnly?: boolean
+}
+
+type FlexNoticeProps = {
+  Icon?: React.ElementType
   showText: boolean
   text: string | React.ReactElement
-}) => (
+}
+
+const FlexNotice = ({ Icon, showText, text }: FlexNoticeProps) => (
   <>
-    <Icon type={faKey} />
+    <StyledIconWrapper>{Icon && <Icon />}</StyledIconWrapper>
     {showText && <p>{text}</p>}
   </>
 )
@@ -87,38 +92,42 @@ export const FlexIndicator = ({
   isCallAhead,
   isContinuousDropoff,
   phoneNumber,
-  shrink
-}: {
-  isCallAhead: boolean
-  isContinuousDropoff: boolean
-  phoneNumber: string
-  shrink: boolean
-}): React.ReactElement => (
-  <FlexIndicatorWrapper shrink={shrink}>
-    {!shrink && (
-      <h4>
-        <FormattedMessage id="config.flex.flex-service" />
-      </h4>
-    )}
-    {isCallAhead && (
-      <FlexNotice
-        faKey="phone"
-        showText={!shrink}
-        text={
-          <FormattedMessage
-            id="config.flex.call-ahead"
-            values={{ phoneNumber }}
-          />
-        }
-      />
-    )}
-    {/* Only show continuous dropoff message if call ahead message isn't shown */}
-    {isContinuousDropoff && !isCallAhead && (
-      <FlexNotice
-        faKey="hand-paper-o"
-        showText={!shrink}
-        text={<FormattedMessage id="config.flex.continuous-dropoff" />}
-      />
-    )}
-  </FlexIndicatorWrapper>
-)
+  shrink,
+  textOnly
+}: FlexIndicatorProps): React.ReactElement => {
+  let text = <></>
+  let Icon
+  if (isCallAhead && isContinuousDropoff) {
+    text = <FormattedMessage id="config.flex.both" values={{ phoneNumber }} />
+    Icon = CompressArrowsAlt
+  }
+  if (isCallAhead && !isContinuousDropoff) {
+    text = (
+      <FormattedMessage id="config.flex.call-ahead" values={{ phoneNumber }} />
+    )
+    Icon = Phone
+  }
+  // Only show continuous dropoff message if call ahead message isn't shown
+  if (isContinuousDropoff && !isCallAhead) {
+    text = <FormattedMessage id="config.flex.continuous-dropoff" />
+    Icon = HandPaper
+  }
+
+  if (textOnly)
+    return (
+      <>
+        <FormattedMessage id="config.flex.flex-service-colon" /> {text}
+      </>
+    )
+
+  return (
+    <FlexIndicatorWrapper shrink={shrink}>
+      {!shrink && (
+        <h4>
+          <FormattedMessage id="config.flex.flex-service" />
+        </h4>
+      )}
+      <FlexNotice Icon={Icon} showText={!shrink} text={text} />
+    </FlexIndicatorWrapper>
+  )
+}

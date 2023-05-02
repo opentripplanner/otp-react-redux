@@ -1,8 +1,10 @@
 import { Button } from 'react-bootstrap'
+import { Spinner } from '@styled-icons/fa-solid/Spinner'
+import { Times } from '@styled-icons/fa-solid/Times'
+import { useIntl } from 'react-intl'
 import React, { useEffect, useState } from 'react'
 
-// eslint-disable-next-line sort-imports-es6-autofix/sort-imports-es6
-import Icon from '../util/icon'
+import { StyledIconWrapper } from '../util/styledIcon'
 
 const MapillaryFrame = ({
   id,
@@ -11,6 +13,7 @@ const MapillaryFrame = ({
   id: string
   onClose?: () => void
 }): React.ReactElement => {
+  const intl = useIntl()
   const [fakeLoad, setFakeLoad] = useState(false)
   useEffect(() => {
     // If the ID changed, show a "fake" loading screen to indicate to the user
@@ -19,6 +22,7 @@ const MapillaryFrame = ({
     setTimeout(() => setFakeLoad(false), 750)
   }, [id])
 
+  const closeLabel = intl.formatMessage({ id: 'common.forms.close' })
   return (
     <div className="leg-diagram" style={{ height: '50vh', zIndex: 999 }}>
       <div
@@ -29,7 +33,9 @@ const MapillaryFrame = ({
           justifyContent: 'center'
         }}
       >
-        <Icon className="fa-spin" type="spinner" />
+        <StyledIconWrapper size="2x" spin>
+          <Spinner />
+        </StyledIconWrapper>
       </div>
       <iframe
         frameBorder="0"
@@ -39,14 +45,17 @@ const MapillaryFrame = ({
           height: '100%',
           width: '100%'
         }}
-        title="Imagery of the street"
+        title={intl.formatMessage({ id: 'components.MapillaryFrame.title' })}
       />
       <Button
-        aria-label="Close"
+        aria-label={closeLabel}
         className="mapillary-close-button close-button clear-button-formatting"
         onClick={onClose}
+        title={closeLabel}
       >
-        <i className="fa fa-close" />
+        <StyledIconWrapper>
+          <Times />
+        </StyledIconWrapper>
       </Button>
     </div>
   )

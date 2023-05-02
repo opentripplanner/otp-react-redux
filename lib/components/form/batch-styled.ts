@@ -12,7 +12,6 @@ const activeCss = css`
   -webkit-box-shadow: ${SHADOW};
   -moz-box-shadow: ${SHADOW};
   box-shadow: ${SHADOW};
-  outline: none;
 `
 
 export const buttonCss = css`
@@ -24,39 +23,53 @@ export const buttonCss = css`
   &:active {
     ${activeCss}
   }
+  svg {
+    max-height: 36px;
+  }
 `
 
 export const Button = styled.button`
   ${buttonCss}
 `
 
-export const StyledDateTimePreview = styled(DateTimePreview)`
+export const StyledDateTimePreviewContainer = styled(Button)<{
+  expanded?: boolean
+}>`
   ${buttonCss}
-  background-color: rgb(239, 239, 239);
-  cursor: pointer;
-  font-size: 12px;
   margin-right: 5px;
-  padding: 7px 5px;
-  text-align: left;
-  white-space: nowrap;
+  padding: 0;
+  position: relative;
   width: 120px;
   ${(props) => (props.expanded ? activeCss : null)}
 `
-export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
-  line-height: 22px;
+
+export const StyledDateTimePreview = styled(DateTimePreview)`
+  font-size: 12px;
   margin-right: 5px;
-  padding: 10px 0px;
+  padding: 4px 5px;
+  text-align: left;
+  white-space: nowrap;
+`
+export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
+  margin-right: 5px;
   position: relative;
+  padding: 0;
   ${(props) => (props.expanded ? activeCss : null)}
 `
 
 export const PlanTripButton = styled(Button)`
-  background-color: #f5f5a7;
+  background-color: green;
+  color: #ffffffdd;
   margin-left: auto;
-  padding: 5px;
   &:active {
     ${activeCss}
-    background-color: #ededaf
+    filter: saturate(50%);
+    background: green;
+  }
+
+  span {
+    display: inline-block;
+    margin-top: -5px;
   }
 `
 
@@ -72,11 +85,13 @@ const expandableBoxCss = css`
 
 export const DateTimeModalContainer = styled.div`
   ${expandableBoxCss}
+  margin-top: 50px;
   padding: 10px 20px;
 `
 
 export const BatchPreferencesContainer = styled.div`
   ${expandableBoxCss}
+  margin-top: 50px;
   padding: 5px 10px;
 `
 
@@ -96,7 +111,8 @@ export const StyledBatchPreferences = styled(SettingsSelectorPanel)`
   ${TripFormClasses.SettingLabel} {
     color: #686868;
     font-size: 14px;
-    font-weight: 100;
+    /* Override bootstrap's font-weight on labels so they don't appear bold in batch settings. */
+    font-weight: inherit;
     letter-spacing: 1px;
     padding-top: 8px;
     text-transform: uppercase;

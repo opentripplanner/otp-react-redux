@@ -31,8 +31,13 @@ export interface Route {
   sortOrder: number
 }
 
+// FIXME: incomplete
 export interface StopTime {
+  departureDelay: number
+  headsign: string
   pattern: Pattern
+  realtimeDeparture: boolean
+  realtimeState: string
   times: Time[]
 }
 
@@ -69,3 +74,19 @@ export interface VehicleRental {
     [key: string]: { message?: string; severity?: string }
   }
 }
+
+export interface ViewedRouteState {
+  patternId?: string
+  routeId: string
+}
+
+// Routes have many properties beside id, but none of these are guaranteed.
+export interface ViewedRouteObject {
+  id: string
+  patterns?: Record<string, Pattern>
+  pending?: boolean
+  shortName?: string
+  textColor?: string
+}
+
+export type SetViewedRouteHandler = (route?: ViewedRouteState) => void
