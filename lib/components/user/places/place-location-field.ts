@@ -1,11 +1,8 @@
 import {
-  DropdownContainer,
-  FormGroup,
+  ClearButton,
+  DropdownButton,
   Input,
-  InputGroup,
-  InputGroupAddon,
   MenuItemA,
-  MenuItemHeader,
   MenuItemLi,
   MenuItemList
 } from '@opentripplanner/location-field/lib/styled'
@@ -14,31 +11,22 @@ import styled from 'styled-components'
 
 import connectLocationField from '../../form/connect-location-field'
 
-/**
- * Create a LocationField location object from a persisted user location object.
- */
-export function makeLocationFieldLocation(favoriteLocation) {
-  const { address, lat, lon } = favoriteLocation
-  return {
-    lat,
-    lon,
-    name: address
-  }
+interface Props {
+  static: boolean
 }
 
 // Style and connect LocationField to redux store.
-const StyledLocationField = styled(LocationField)`
+const StyledLocationField = styled(LocationField)<Props>`
+  border-bottom-color: #ccc;
+  display: block;
   margin-bottom: 0;
   width: 100%;
-  ${DropdownContainer} {
-    width: 0;
-    & > button {
-      display: none;
-    }
+
+  ${ClearButton},
+  ${DropdownButton} {
+    display: none;
   }
-  ${FormGroup} {
-    display: block;
-  }
+
   ${Input} {
     display: table-cell;
     font-size: 100%;
@@ -49,13 +37,6 @@ const StyledLocationField = styled(LocationField)`
     ::placeholder {
       color: #676767;
     }
-  }
-  ${InputGroup} {
-    border: none;
-    width: 100%;
-  }
-  ${InputGroupAddon} {
-    display: none;
   }
   ${MenuItemList} {
     position: absolute;
@@ -68,8 +49,10 @@ const StyledLocationField = styled(LocationField)`
       text-decoration: none;
     }
   }
-  ${MenuItemA}, ${MenuItemHeader}, ${MenuItemLi} {
-    ${(props) => (props.static ? 'padding-left: 0; padding-right: 0;' : '')}
+  ${MenuItemA}, ${MenuItemLi} {
+    overflow: hidden;
+    ${(props) =>
+      props.static ? 'padding-left: 10px; padding-right: 5px; width: 100%' : ''}
   }
 `
 /**
