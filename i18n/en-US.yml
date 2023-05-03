@@ -153,6 +153,7 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
       other {# sec}}
+  linkOpensNewWindow: "(Opens new window)"
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Prefer accessible trips by default
