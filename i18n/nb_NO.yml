@@ -40,6 +40,7 @@ components:
   FavoritePlaceList:
     editThisPlace: Rediger dette stedet
     addAnotherPlace: Legg til nytt sted
+    setAddressForPlaceType: Sett din {placeType}-adresse
   AppMenu:
     callHistory: Anropshistorikk
     closeMenu: Lukk menyen
@@ -49,6 +50,7 @@ components:
     deleteThisPlace: Slett dette stedet
   ErrorMessage:
     warning: Advarsel
+    header: Kunne ikke planlegge tur
   NewAccountWizard:
     terms: Opprett ny konto
     verify: Bekreft din e-postadresse
@@ -87,4 +89,58 @@ components:
     keepSession: Fortsett økt
   RouteDetails:
     moreDetails: Flere detaljer
+  AfterSignInScreen:
+    mainTitle: Videresender …
+  AddPlaceButton:
+    addPlace: Legg til sted
+  DeleteUser:
+    deleteMyAccount: Slett kontoen min
+  EnhancedStopMarker:
+    stopID: 'Stopp-ID:'
+    stopViewer: Stopp-viser
 _name: Norsk bokmål
+common:
+  places:
+    home: hjem
+    work: arbeid
+    custom: egendefinert
+  daysOfWeekPlural:
+    monday: Mandager
+    tuesday: Tirsdager
+    wednesday: Onsdager
+    saturday: Lørdager
+    sunday: Søndager
+    friday: Fredager
+    thursday: Torsdager
+  forms:
+    "no": Nei
+    finish: Fullfør
+    back: Tilbake
+    startOver: Start om igjen
+    next: Neste
+    cancel: Avbryt
+    print: Skriv ut
+    save: Lagre
+    submitting: Sender inn …
+    "yes": Ja
+    defaultValue: '{value} (forvalg)'
+    delete: Slett
+    edit: Rediger
+    close: Lukk
+  daysOfWeekCompact:
+    friday: Fre.
+    saturday: Lør.
+    thursday: Tor.
+    monday: Man.
+    wednesday: Ons.
+    sunday: Søn.
+    tuesday: Tir.
+  notifications:
+    sms: tekstmelding
+  daysOfWeek:
+    thursday: Torsdag
+    monday: Mandag
+    wednesday: Onsdag
+    sunday: Søndag
+    saturday: Lørdag
+    tuesday: Tirsdag
