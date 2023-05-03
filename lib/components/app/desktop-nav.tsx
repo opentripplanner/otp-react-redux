@@ -1,6 +1,6 @@
 import { Button, Nav, Navbar, NavItem } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -72,11 +72,12 @@ const DesktopNav = ({
     title = DEFAULT_APP_TITLE
   } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
+  const intl = useIntl()
 
   const handleStartOver = () => {
     if (
       window.confirm(
-        'This will start over your search. Are you sure you would like to continue?'
+        intl.formatMessage({ id: 'components.AppMenu.agencyLogoResetWarning' })
       )
     ) {
       window.location.href = startOver(reactRouterConfig?.basename)
@@ -99,12 +100,16 @@ const DesktopNav = ({
               {logoClickAction === 'start-over' && (
                 <TransparentButton bsStyle="link" onClick={handleStartOver}>
                   <InvisibleA11yLabel>
-                    <FormattedMessage id="components.BatchSearchScreen.header" />
+                    <FormattedMessage id="components.AppMenu.agencyLogoReset" />
                   </InvisibleA11yLabel>
                 </TransparentButton>
               )}
               {logoClickAction?.startsWith('http') && (
-                <TransparentButton bsStyle="link" href={logoClickAction}>
+                <TransparentButton
+                  bsStyle="link"
+                  href={logoClickAction}
+                  title="components.AppMenu.agencyLogoUrl"
+                >
                   <InvisibleA11yLabel>
                     <FormattedMessage
                       id="components.AppMenu.agencyLogoUrl"
