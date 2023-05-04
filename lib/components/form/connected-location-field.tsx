@@ -1,13 +1,9 @@
-import { connect } from 'react-redux'
+import { Input, MenuItemA } from '@opentripplanner/location-field/lib/styled'
+import { IntlShape, useIntl } from 'react-intl'
 import {
-  DropdownContainer,
-  FormGroup,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  MenuItemA
-} from '@opentripplanner/location-field/lib/styled'
-import { LocationFieldProps } from '@opentripplanner/location-field/lib/types'
+  LocationFieldProps,
+  LocationSelectedEvent
+} from '@opentripplanner/location-field/lib/types'
 import LocationField from '@opentripplanner/location-field'
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
@@ -21,38 +17,24 @@ type Props = Omit<
   LocationFieldProps,
   'geocoderConfig' | 'getCurrentPosition'
 > & {
+  handleLocationSelected: (intl: IntlShape, e: LocationSelectedEvent) => void
   selfValidate?: boolean
 }
 
 const StyledLocationField = styled(LocationField)`
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
   width: 100%;
-
-  ${DropdownContainer} {
-    display: grid;
-    grid-template-columns: 30px 1fr 30px;
-  }
-
-  ${FormGroup} {
-    display: table;
-    padding: 6px 12px;
-    width: 100%;
-  }
 
   ${Input} {
     padding: 6px 12px;
   }
 
-  ${InputGroup} {
-    width: 100%;
-  }
-
-  ${InputGroupAddon} {
-    align-self: baseline;
-    justify-self: center;
-  }
-
   ${MenuItemA} {
     text-decoration: none;
+    &:hover {
+      color: inherit;
+    }
   }
 
   ${MenuItemA}:hover {
@@ -64,23 +46,27 @@ const ConnectedLocationField = connectLocationField(StyledLocationField, {
   includeLocation: true
 })
 
-const LocationFieldWithChangedState = ({
+/**
+ * Wrapper component around LocationField that handles onLocationSelected.
+ */
+const LocationFieldWithHandler = ({
   clearLocation,
-  onLocationSelected,
+  handleLocationSelected,
   selfValidate,
   ...otherProps
-}: Props): JSX.Element => {
+}: Props) => {
+  const intl = useIntl()
   const [fieldChanged, setFieldChanged] = useState(false)
 
-  const handleLocationSelected = useCallback(
-    (intl, e) => {
+  const onLocationSelected = useCallback(
+    (e: LocationSelectedEvent) => {
       setFieldChanged(true)
-      onLocationSelected(intl, e)
+      handleLocationSelected(intl, e)
     },
-    [onLocationSelected, setFieldChanged]
+    [intl, handleLocationSelected, setFieldChanged]
   )
 
-  const handleClearLocation = useCallback(
+  const onClearLocation = useCallback(
     (e) => {
       setFieldChanged(true)
       clearLocation && clearLocation(e)
@@ -91,16 +77,17 @@ const LocationFieldWithChangedState = ({
   return (
     <ConnectedLocationField
       {...otherProps}
-      clearLocation={handleClearLocation}
-      onLocationSelected={handleLocationSelected}
+      clearLocation={onClearLocation}
+      onLocationSelected={onLocationSelected}
       selfValidate={selfValidate || fieldChanged}
     />
   )
 }
 
-const mapDispatchToProps = {
-  clearLocation: formActions.clearLocation,
-  onLocationSelected: mapActions.onLocationSelected
-}
-
-export default connect(null, mapDispatchToProps)(LocationFieldWithChangedState)
+export default connectLocationField(LocationFieldWithHandler, {
+  actions: {
+    clearLocation: formActions.clearLocation,
+    handleLocationSelected: mapActions.onLocationSelected
+  },
+  includeLocation: true
+})

@@ -46,6 +46,9 @@ class BatchSearchScreen extends Component<Props> {
         <main tabIndex={-1}>
           <div className="batch-search-settings mobile-padding">
             <LocationField
+              inputPlaceholder={intl.formatMessage({
+                id: 'components.LocationSearch.setOrigin'
+              })}
               isRequired
               locationType="from"
               onTextInputClick={this._fromFieldClicked}
@@ -53,6 +56,9 @@ class BatchSearchScreen extends Component<Props> {
               showClearButton={false}
             />
             <LocationField
+              inputPlaceholder={intl.formatMessage({
+                id: 'components.LocationSearch.setDestination'
+              })}
               isRequired
               locationType="to"
               onTextInputClick={this._toFieldClicked}
