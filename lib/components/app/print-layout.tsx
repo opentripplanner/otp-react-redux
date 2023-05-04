@@ -115,7 +115,7 @@ class PrintLayout extends Component<Props, State> {
                 <IconWithText Icon={Print}>{printVerb}</IconWithText>
               </Button>
             </SpanWithSpace>
-            <Button bsSize="small" onClick={this._close}>
+            <Button bsSize="small" onClick={this._close} role="link">
               <IconWithText Icon={Times}>
                 <FormattedMessage id="common.forms.close" />
               </IconWithText>
