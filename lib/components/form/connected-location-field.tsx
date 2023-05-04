@@ -1,16 +1,14 @@
-import { Input, MenuItemA } from '@opentripplanner/location-field/lib/styled'
 import { IntlShape, useIntl } from 'react-intl'
 import {
   LocationFieldProps,
   LocationSelectedEvent
 } from '@opentripplanner/location-field/lib/types'
-import LocationField from '@opentripplanner/location-field'
 import React, { useCallback, useState } from 'react'
-import styled from 'styled-components'
 
 import * as formActions from '../../actions/form'
 import * as mapActions from '../../actions/map'
 
+import { StyledLocationField } from './styled'
 import connectLocationField from './connect-location-field'
 
 type Props = Omit<
@@ -20,27 +18,6 @@ type Props = Omit<
   handleLocationSelected: (intl: IntlShape, e: LocationSelectedEvent) => void
   selfValidate?: boolean
 }
-
-const StyledLocationField = styled(LocationField)`
-  display: grid;
-  grid-template-columns: 30px 1fr 30px;
-  width: 100%;
-
-  ${Input} {
-    padding: 6px 12px;
-  }
-
-  ${MenuItemA} {
-    text-decoration: none;
-    &:hover {
-      color: inherit;
-    }
-  }
-
-  ${MenuItemA}:hover {
-    color: #333;
-  }
-`
 
 const ConnectedLocationField = connectLocationField(StyledLocationField, {
   includeLocation: true
