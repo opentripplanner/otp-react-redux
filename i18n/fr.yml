@@ -233,7 +233,7 @@ components:
   BatchRoutingPanel:
     shortTitle: Planifier un trajet
   BatchSearchScreen:
-    header: Planifiez votre trajet
+    header: Votre trajet
   BatchSettings:
     destination: destination
     modeSelector: Sélecteur de modes
@@ -311,8 +311,8 @@ components:
     refresh: Mettre à jour les prochains passages
   LocationSearch:
     enterLocation: Entrez le lieu
-    setDestination: Choisissez la destination
-    setOrigin: Choisissez le point de départ
+    setDestination: Destination
+    setOrigin: Point de départ
   MapLayers:
     bike-rental: Vélos partagés {companies}
     car-rental: Voitures en location
