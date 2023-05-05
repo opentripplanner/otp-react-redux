@@ -209,8 +209,9 @@ components:
         other {# spaces available}
       }
   AppMenu:
-    agencyLogoReset: Reset trip search and return to "Plan Trip" page
-    agencyLogoResetWarning: This will reset your trip search.
+    agencyLogoReset: '{agencyName}: Reset trip search and return to "Plan Trip" page'
+    agencyLogoResetWarning: This action will reset your trip search.
+    agencyLogoRedirectWarning: This action will redirect you to the {agencyName} website.
     agencyLogoUrl: Home page of {agencyName} (External site)
     callHistory: Call History
     closeMenu: Close Menu

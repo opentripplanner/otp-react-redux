@@ -73,14 +73,30 @@ const DesktopNav = ({
   } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
   const intl = useIntl()
+  const isExternalLink = logoClickAction?.startsWith('http')
+  const willStartOver = logoClickAction === 'start-over'
 
-  const handleStartOver = () => {
+  const handleClick = () => {
     if (
+      willStartOver &&
       window.confirm(
-        intl.formatMessage({ id: 'components.AppMenu.agencyLogoResetWarning' })
+        intl.formatMessage(
+          { id: 'components.AppMenu.agencyLogoResetWarning' },
+          { agencyName: operatorName || title }
+        )
       )
     ) {
       window.location.href = startOver(reactRouterConfig?.basename)
+    } else if (
+      isExternalLink &&
+      window.confirm(
+        intl.formatMessage(
+          { id: 'components.AppMenu.agencyLogoRedirectWarning' },
+          { agencyName: operatorName || title }
+        )
+      )
+    ) {
+      window.location.href = logoClickAction || ''
     }
   }
 
@@ -97,18 +113,31 @@ const DesktopNav = ({
               style={{ marginLeft: 50 }}
             >
               <div className="navbar-title">{title}</div>
-              {logoClickAction === 'start-over' && (
-                <TransparentButton bsStyle="link" onClick={handleStartOver}>
+              {willStartOver && (
+                <TransparentButton
+                  bsStyle="link"
+                  onClick={handleClick}
+                  role="link"
+                >
                   <InvisibleA11yLabel>
-                    <FormattedMessage id="components.AppMenu.agencyLogoReset" />
+                    <FormattedMessage
+                      id="components.AppMenu.agencyLogoReset"
+                      values={{ agencyName: operatorName || title }}
+                    />
                   </InvisibleA11yLabel>
                 </TransparentButton>
               )}
-              {logoClickAction?.startsWith('http') && (
+              {isExternalLink && (
                 <TransparentButton
                   bsStyle="link"
-                  href={logoClickAction}
-                  title="components.AppMenu.agencyLogoUrl"
+                  onClick={handleClick}
+                  role="link"
+                  title={intl.formatMessage(
+                    {
+                      id: 'components.AppMenu.agencyLogoUrl'
+                    },
+                    { agencyName: operatorName || title }
+                  )}
                 >
                   <InvisibleA11yLabel>
                     <FormattedMessage

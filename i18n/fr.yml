@@ -131,8 +131,9 @@ components:
         other {# emplacements disponibles}
       }
   AppMenu:
-    agencyLogoReset: Réinitialiser les paramètres du traject et revenir à la page "Planifier un trajet"
+    agencyLogoReset: '{agencyName}: Réinitialiser les paramètres du traject et revenir à la page "Planifier un trajet"'
     agencyLogoResetWarning: Cela réinitialisera votre trajet.
+    agencyLogoRedirectWarning: Cela vous redirigera vers la page d'accueil de {agencyName}.
     agencyLogoUrl: Page d'accueil de {agencyName} (Site externe)
     callHistory: Historique des appels
     closeMenu: Fermer le menu
