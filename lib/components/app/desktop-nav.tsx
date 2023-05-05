@@ -78,25 +78,20 @@ const DesktopNav = ({
 
   const handleClick = () => {
     if (
-      willStartOver &&
       window.confirm(
         intl.formatMessage(
-          { id: 'components.AppMenu.agencyLogoResetWarning' },
+          {
+            id: willStartOver
+              ? 'components.AppMenu.agencyLogoResetWarning'
+              : 'components.AppMenu.agencyLogoRedirectWarning'
+          },
           { agencyName: operatorName || title }
         )
       )
     ) {
-      window.location.href = startOver(reactRouterConfig?.basename)
-    } else if (
-      isExternalLink &&
-      window.confirm(
-        intl.formatMessage(
-          { id: 'components.AppMenu.agencyLogoRedirectWarning' },
-          { agencyName: operatorName || title }
-        )
-      )
-    ) {
-      window.location.href = logoClickAction || ''
+      window.location.href = willStartOver
+        ? startOver(reactRouterConfig?.basename)
+        : logoClickAction || ''
     }
   }
 
@@ -113,35 +108,29 @@ const DesktopNav = ({
               style={{ marginLeft: 50 }}
             >
               <div className="navbar-title">{title}</div>
-              {willStartOver && (
+              {(willStartOver || isExternalLink) && (
                 <TransparentButton
                   bsStyle="link"
                   onClick={handleClick}
                   role="link"
+                  title={
+                    isExternalLink
+                      ? intl.formatMessage(
+                          {
+                            id: 'components.AppMenu.agencyLogoUrl'
+                          },
+                          { agencyName: operatorName || title }
+                        )
+                      : ''
+                  }
                 >
                   <InvisibleA11yLabel>
                     <FormattedMessage
-                      id="components.AppMenu.agencyLogoReset"
-                      values={{ agencyName: operatorName || title }}
-                    />
-                  </InvisibleA11yLabel>
-                </TransparentButton>
-              )}
-              {isExternalLink && (
-                <TransparentButton
-                  bsStyle="link"
-                  onClick={handleClick}
-                  role="link"
-                  title={intl.formatMessage(
-                    {
-                      id: 'components.AppMenu.agencyLogoUrl'
-                    },
-                    { agencyName: operatorName || title }
-                  )}
-                >
-                  <InvisibleA11yLabel>
-                    <FormattedMessage
-                      id="components.AppMenu.agencyLogoUrl"
+                      id={
+                        willStartOver
+                          ? 'components.AppMenu.agencyLogoReset'
+                          : 'components.AppMenu.agencyLogoUrl'
+                      }
                       values={{ agencyName: operatorName || title }}
                     />
                   </InvisibleA11yLabel>
