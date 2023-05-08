@@ -332,7 +332,6 @@ components:
     exclusiveMode: Solo {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Cambiar la dirección de clasificación
-    itinerariesAndIssues: "{itinerariesFound} y {numIssues}"
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerario encontrado} other {# itinerarios
       encontrados}}

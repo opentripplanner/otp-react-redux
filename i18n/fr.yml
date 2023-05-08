@@ -341,7 +341,6 @@ components:
     exclusiveMode: "{mode} uniquement"
   NarrativeItinerariesHeader:
     changeSortDir: Changer l'ordre de tri
-    itinerariesAndIssues: "{itinerariesFound} et {numIssues}"
     itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets trouvés} }"
     numIssues: "{issueNum, plural, one {# problème} other {# problèmes} }"
     searching: Recherche...

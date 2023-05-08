@@ -8,6 +8,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
@@ -76,6 +77,16 @@ export default function NarrativeItinerariesHeader({
     { issueNum: errors.length }
   )
 
+  // Transitions to the UI states below should be announced to assistive technology:
+  // - A search is in progress.
+  // - Results or no results are found (with or without errors).
+  const searching = intl.formatMessage({
+    id: 'components.NarrativeItinerariesHeader.searching'
+  })
+  const narrativeUiStatus = pending
+    ? searching
+    : intl.formatList([itinerariesFound, numIssues], { type: 'conjunction' })
+
   return (
     <div
       className="options header"
@@ -85,6 +96,8 @@ export default function NarrativeItinerariesHeader({
         flexWrap: 'wrap'
       }}
     >
+      <InvisibleA11yLabel role="status">{narrativeUiStatus}</InvisibleA11yLabel>
+
       {itineraryIsExpanded || showingErrors ? (
         <>
           <button
@@ -107,24 +120,7 @@ export default function NarrativeItinerariesHeader({
       ) : (
         <>
           {showHeaderText ? (
-            <div
-              style={{ flexGrow: 1 }}
-              title={
-                pending
-                  ? intl.formatMessage({
-                      id: 'components.NarrativeItinerariesHeader.searching'
-                    })
-                  : intl.formatMessage(
-                      {
-                        id: 'components.NarrativeItinerariesHeader.itinerariesAndIssues'
-                      },
-                      {
-                        itinerariesFound,
-                        numIssues
-                      }
-                    )
-              }
-            >
+            <div style={{ flexGrow: 1 }}>
               <h1
                 style={{
                   display: 'inline',
@@ -132,11 +128,7 @@ export default function NarrativeItinerariesHeader({
                   marginRight: '10px'
                 }}
               >
-                {pending ? (
-                  <FormattedMessage id="components.NarrativeItinerariesHeader.searching" />
-                ) : (
-                  itinerariesFound
-                )}
+                {pending ? searching : itinerariesFound}
               </h1>
               {errors.length > 0 && (
                 <IssueButton onClick={onToggleShowErrors}>

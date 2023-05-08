@@ -327,7 +327,6 @@ components:
     exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
-    itinerariesAndIssues: "{itinerariesFound} and {numIssues}"
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
