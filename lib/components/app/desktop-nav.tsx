@@ -21,6 +21,7 @@ const NavItemOnLargeScreens = styled(NavItem)`
 `
 // Typscript TODO: otpConfig type
 export type Props = {
+  locale: string
   otpConfig: any
   popupTarget?: string
   setPopupContent: (url: string) => void
@@ -39,7 +40,12 @@ export type Props = {
  *
  * TODO: merge with the mobile navigation bar.
  */
-const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
+const DesktopNav = ({
+  locale,
+  otpConfig,
+  popupTarget,
+  setPopupContent
+}: Props) => {
   const { branding, persistence, title = DEFAULT_APP_TITLE } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
 
@@ -76,6 +82,7 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
               <NavLoginButtonAuth0
                 id="login-control"
                 links={accountLinks}
+                locale={locale}
                 style={{ float: 'right' }}
               />
             )}
@@ -90,6 +97,7 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
 // Typescript TODO: state type
 const mapStateToProps = (state: any) => {
   return {
+    locale: state.otp.ui.locale,
     otpConfig: state.otp.config,
     popupTarget: state.otp.config?.popups?.launchers?.toolbar
   }
