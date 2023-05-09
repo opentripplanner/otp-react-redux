@@ -327,6 +327,7 @@ components:
     exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
+    howToFindResults: To view results, see the Itineraries Found heading below.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }

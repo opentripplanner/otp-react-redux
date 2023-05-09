@@ -341,6 +341,7 @@ components:
     exclusiveMode: "{mode} uniquement"
   NarrativeItinerariesHeader:
     changeSortDir: Changer l'ordre de tri
+    howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés plus bas.
     itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets trouvés} }"
     numIssues: "{issueNum, plural, one {# problème} other {# problèmes} }"
     searching: Recherche...

@@ -96,7 +96,14 @@ export default function NarrativeItinerariesHeader({
         flexWrap: 'wrap'
       }}
     >
-      <InvisibleA11yLabel role="status">{narrativeUiStatus}</InvisibleA11yLabel>
+      <InvisibleA11yLabel as="div" role="status">
+        <p>{narrativeUiStatus}</p>
+        {!pending && itineraries.length !== 0 && (
+          <p>
+            <FormattedMessage id="components.NarrativeItinerariesHeader.howToFindResults" />
+          </p>
+        )}
+      </InvisibleA11yLabel>
 
       {itineraryIsExpanded || showingErrors ? (
         <>
