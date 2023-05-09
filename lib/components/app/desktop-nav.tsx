@@ -40,8 +40,28 @@ export type Props = {
  * TODO: merge with the mobile navigation bar.
  */
 const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
-  const { branding, persistence, title = DEFAULT_APP_TITLE } = otpConfig
+  const {
+    branding,
+    persistence,
+    title = DEFAULT_APP_TITLE,
+    brandClickable
+  } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
+
+  const BrandingElement = brandClickable ? 'a' : 'div'
+
+  const commonStyles = { marginLeft: 50 }
+  const brandingProps = brandClickable
+    ? {
+        href: '/#/',
+        style: {
+          ...commonStyles,
+          display: 'block',
+          position: 'relative',
+          zIndex: 10
+        }
+      }
+    : { style: { ...commonStyles } }
 
   return (
     <header>
@@ -51,14 +71,16 @@ const DesktopNav = ({ otpConfig, popupTarget, setPopupContent }: Props) => {
         >
           <Navbar.Brand>
             <AppMenu />
-            <div
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore The dynamic tag is causing some trouble */}
+            <BrandingElement
               className={branding && `with-icon icon-${branding}`}
-              style={{ marginLeft: 50 }}
+              {...brandingProps}
             >
               {/* A title is always rendered (e.g.for screen readers)
                   but is visually-hidden if a branding icon is used. */}
               <div className="navbar-title">{title}</div>
-            </div>
+            </BrandingElement>
           </Navbar.Brand>
 
           <ViewSwitcher sticky />
