@@ -224,10 +224,10 @@ button.step {
 
 /* Bootstrap adds a bottom margin to all labels,
    but we don't want that in the map layer selector when it is collapsed. */
-.map-container .layers-list label {
+.maplibregl-map .layers-list label {
   margin-bottom: 0;
 }
-.map-container .layers-list.fake-mobile-hover label,
-.map-container .layers-list:hover label {
+.maplibregl-map .layers-list.fake-mobile-hover label,
+.maplibregl-map .layers-list:hover label {
   margin-bottom: 5px;
 }
