@@ -533,6 +533,7 @@ components:
     viewNextArrivals: Ver próximas llegadas
     viewSchedule: Ver horario
     zoomToStop: Acercar vista a la parada
+    forStop: para {stopName}
   SubNav:
     languageSelector: Seleccionar idioma
     languages: Idiomas
