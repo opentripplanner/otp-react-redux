@@ -85,6 +85,7 @@ function BatchSettings({
   modeButtonOptions,
   modeSettingDefinitions,
   modeSettingValues,
+  onPlanTripClick,
   routingQuery,
   setUrlSearch,
   spacedOutModeSelector
@@ -124,7 +125,6 @@ function BatchSettings({
   )
 
   const _planTrip = () => {
-    const { currentQuery, intl, onPlanTripClick, routingQuery } = this.props
     // Check for any validation issues in query.
     const issues = []
     if (!hasValidLocation(currentQuery, 'from')) {
