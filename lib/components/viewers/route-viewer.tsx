@@ -41,6 +41,7 @@ interface Props {
   findRouteIfNeeded: () => void
   findRoutesIfNeeded: () => void
   hideBackButton?: boolean
+  hideHeader?: boolean
   intl: IntlShape
   modes: string[]
   routes: Route[]
@@ -120,6 +121,7 @@ class RouteViewer extends Component<Props, State> {
       filter,
       findRouteIfNeeded,
       hideBackButton,
+      hideHeader,
       intl,
       modes,
       routes: sortedRoutes,
@@ -166,9 +168,11 @@ class RouteViewer extends Component<Props, State> {
           )}
 
           {/* Header Text */}
-          <h1 className="header-text">
-            <FormattedMessage id="components.RouteViewer.title" />
-          </h1>
+          {!hideHeader && (
+            <h1 className="header-text">
+              <FormattedMessage id="components.RouteViewer.title" />
+            </h1>
+          )}
           <div>
             <FormattedMessage id="components.RouteViewer.details" />
           </div>

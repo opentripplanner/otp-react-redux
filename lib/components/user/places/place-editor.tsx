@@ -5,12 +5,11 @@ import {
   HelpBlock
 } from 'react-bootstrap'
 import { Field, FormikProps } from 'formik'
-import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl'
+import { LocationSelectedEvent } from '@opentripplanner/location-field/lib/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
-import type { Location } from '@opentripplanner/types'
-import type { WrappedComponentProps } from 'react-intl'
 
 import { capitalizeFirst, getErrorStates } from '../../../util/ui'
 import { ComponentContext } from '../../../util/contexts'
@@ -21,10 +20,7 @@ import ButtonGroup from '../../util/button-group'
 import FormattedValidationError from '../../util/formatted-validation-error'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
-import {
-  makeLocationFieldLocation,
-  PlaceLocationField
-} from './place-location-field'
+import { PlaceLocationField } from './place-location-field'
 
 // TODO: Share with OTP middleware user types.
 interface Fields {
@@ -61,6 +57,18 @@ const StyledFormGroup = styled(FormGroup)`
 `
 
 /**
+ * Create a LocationField location object from a persisted user location object.
+ */
+function makeLocationFieldLocation(favoriteLocation: Fields) {
+  const { address, lat, lon } = favoriteLocation
+  return {
+    lat,
+    lon,
+    name: address
+  }
+}
+
+/**
  * Contains the fields for editing a favorite place.
  * This component uses Formik props that are passed
  * within the Formik context set up by FavoritePlaceScreen.
@@ -68,12 +76,9 @@ const StyledFormGroup = styled(FormGroup)`
 class PlaceEditor extends Component<Props> {
   static contextType = ComponentContext
 
-  _handleLocationChange = (
-    _: IntlShape, // Ignore intl object.
-    { location }: { location: Location }
-  ) => {
+  _handleLocationChange = (e: LocationSelectedEvent) => {
     const { setTouched, setValues, values } = this.props
-    const { lat, lon, name } = location
+    const { lat, lon, name } = e.location
     setValues({
       ...values,
       address: name,
@@ -183,10 +188,10 @@ class PlaceEditor extends Component<Props> {
                     })
               }
               isRequired
-              isValid={!!errors.address}
               location={makeLocationFieldLocation(place)}
               locationType="to"
               onLocationSelected={this._handleLocationChange}
+              selfValidate={!!errorStates.address}
               showClearButton={false}
               static={isMobile()}
             />

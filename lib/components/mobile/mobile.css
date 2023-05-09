@@ -264,3 +264,7 @@
   right: 0;
   height: 200px;
 }
+
+.otp.mobile .route-viewer-header {
+  margin: 0;
+}

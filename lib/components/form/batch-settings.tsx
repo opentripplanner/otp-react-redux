@@ -50,6 +50,7 @@ type Props = {
   modeButtonOptions: ModeButtonDefinition[]
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
+  onPlanTripClick: () => void
   routingQuery: any
   setQueryParam: (queryParam: any) => void
   setUrlSearch: (evt: any) => void
@@ -123,6 +124,7 @@ function BatchSettings({
   )
 
   const _planTrip = () => {
+    const { currentQuery, intl, onPlanTripClick, routingQuery } = this.props
     // Check for any validation issues in query.
     const issues = []
     if (!hasValidLocation(currentQuery, 'from')) {
@@ -133,6 +135,7 @@ function BatchSettings({
         intl.formatMessage({ id: 'components.BatchSettings.destination' })
       )
     }
+    onPlanTripClick && onPlanTripClick()
     if (issues.length > 0) {
       // TODO: replace with less obtrusive validation.
       window.alert(

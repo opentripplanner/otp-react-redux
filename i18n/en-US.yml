@@ -106,6 +106,7 @@ common:
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
+  linkOpensNewWindow: (Opens new window)
   modes:
     bicycle_rent: Bikeshare
     bike: Bike
@@ -153,7 +154,6 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
       other {# sec}}
-  linkOpensNewWindow: "(Opens new window)"
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Prefer accessible trips by default
@@ -546,6 +546,7 @@ components:
       This is a flex stop. Vehicles will drop off and pick up passengers in this
       flexible zone by request. You may have to call ahead for service in this
       area.
+    forStop: for {stopName}
     header: Stop Viewer
     loadingText: Loading Stop...
     nextArrivals: Next Arrivals
