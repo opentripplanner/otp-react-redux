@@ -2395,7 +2395,26 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^8.0.0", "@opentripplanner/core-utils@^8.0.1", "@opentripplanner/core-utils@^8.1.1", "@opentripplanner/core-utils@^8.2.0":
+"@opentripplanner/core-utils@^8.0.0", "@opentripplanner/core-utils@^8.0.1", "@opentripplanner/core-utils@^8.1.1", "@opentripplanner/core-utils@^8.2.1":
+  version "8.2.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-8.2.1.tgz#5ad2f4358954de0ae57034ee70a522fc56ea93ec"
+  integrity sha512-CFjxfjnytm/T4hOCMzzjMX0RS7yZ27YPOJ9tQU/JKOODKntCiiah8QFGqEzXLe1sOEohYJrTiH3lvwUhUYqRDw==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^1.4.0"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    bowser "^2.7.0"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    graphql "^16.6.0"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@^8.2.0":
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-8.2.0.tgz#7d1019534e2c6cb71030c64e7529e8ea053143e1"
   integrity sha512-NWAfVwOoFUay59Pz+aiD0ofpOCAW5dbAK/OUqlfHPnknn4I6D51l/qcgVtrxZz95x5Yh/BhstxZxzQQJsq++nQ==
@@ -2603,12 +2622,12 @@
     "@turf/midpoint" "^6.5.0"
     lodash.isequal "^4.5.0"
 
-"@opentripplanner/trip-details@3.0.7":
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-3.0.7.tgz#21deae6ca5ae277946c5227b2b2d05833d3b2b33"
-  integrity sha512-262tqPgithNlmclD526PgJEccxieVwz7N1Rz2aea3glrdESjTsfTL2TaWQVbGjwzyyklmVF8U1aY3SHOiH46ng==
+"@opentripplanner/trip-details@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-4.0.0.tgz#62fbefd850847580fd874a8064f2363d5107cddd"
+  integrity sha512-zfourFRSowrYUCphdLbk+90E0lrGKCogqD/b1rRAdNWn0fNnOQNoHm0lo/oZNb6v9bir87Kdws537qHxCpEwjQ==
   dependencies:
-    "@opentripplanner/core-utils" "^8.1.1"
+    "@opentripplanner/core-utils" "^8.2.1"
     "@styled-icons/fa-solid" "^10.34.0"
     flat "^5.0.2"
     react-animate-height "^3.0.4"
