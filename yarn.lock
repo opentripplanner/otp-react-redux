@@ -2359,10 +2359,10 @@
     maplibre-gl "^2.1.9"
     react-map-gl "^7.0.15"
 
-"@opentripplanner/core-utils@9.0.0-alpha.19":
-  version "9.0.0-alpha.19"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-9.0.0-alpha.19.tgz#62547536866d20470742395da67169b50b780ef9"
-  integrity sha512-j6kzZ/r9G/VVQqRWRqNhPpei+xiV/oV/Tqv6e+MV+5WeuVf48Z55SO+ehbsrYc+xlslt9FvrkzWPNk8aoT4HwQ==
+"@opentripplanner/core-utils@9.0.0-alpha.20":
+  version "9.0.0-alpha.20"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-9.0.0-alpha.20.tgz#179a5925c984ff7466b7bf4f20a1fb6b830c333b"
+  integrity sha512-loA0SZOc+S9g30Mw8xibSy/ab2/4h3N1tWsKt+/X0kWzorcmwx8IR6OU5ZX3hSBwaBkBv5XB11fOZ8kk/LfD1g==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
