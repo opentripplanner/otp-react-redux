@@ -22,14 +22,6 @@ const IssueButton = styled.button`
   padding: 2px 4px;
 `
 
-// h1 element for a11y purposes
-
-const InvisibleHeader = styled.h1`
-  height: 0;
-  overflow: hidden;
-  width: 0;
-`
-
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
   errors,
@@ -146,7 +138,9 @@ export default function NarrativeItinerariesHeader({
               )}
             </div>
           ) : (
-            <InvisibleHeader>{itinerariesFound}</InvisibleHeader>
+            // The "n Itineraries Found" a11y header is an <h2> element
+            // because it falls under the "Plan your trip" <h1> header.
+            <InvisibleA11yLabel as="h2">{itinerariesFound}</InvisibleA11yLabel>
           )}
           <div
             style={{
