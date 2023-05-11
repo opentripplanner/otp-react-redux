@@ -343,9 +343,6 @@ components:
     description: Nội dung bạn yêu cầu không có sẵn.
     header: Không tìm thấy nội dung
   NotificationPrefsPane:
-    description: >-
-      Bạn có thể nhận được thông báo về các chuyến đi bạn thường xuyên thực
-      hiện.
     noneSelect: Đừng thông báo cho tôi
     notificationChannelPrompt: Bạn muốn nhận thông báo như thế nào?
     notificationEmailDetail: "Email thông báo sẽ được gửi đến:"

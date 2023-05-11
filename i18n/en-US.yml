@@ -356,7 +356,6 @@ components:
     description: The content you requested is not available.
     header: Content not found
   NotificationPrefsPane:
-    description: You can receive notifications about trips you frequently take.
     noneSelect: Don't notify me
     notificationChannelPrompt: How would you like to receive notifications?
     notificationEmailDetail: "Notification emails will be sent to:"

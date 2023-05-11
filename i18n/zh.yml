@@ -335,7 +335,6 @@ components:
     description: 您要求的内容不存在.
     header: 未找到内容
   NotificationPrefsPane:
-    description: 你可以收到关于你常用行程的通知.
     noneSelect: 不要通知我
     notificationChannelPrompt: 您希望如何接收通知?
     notificationEmailDetail: "通知邮件将被发送至:"

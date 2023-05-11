@@ -53,9 +53,6 @@ const NotificationPrefsPane = ({
 
   return (
     <div>
-      <p>
-        <FormattedMessage id="components.NotificationPrefsPane.description" />
-      </p>
       <FormGroup>
         <ButtonGroup>
           <legend>
