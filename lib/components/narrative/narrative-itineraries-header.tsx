@@ -40,9 +40,10 @@ const FilterSortButton = styled.button`
 `
 
 const ResultsSortSelect = styled.select`
+  background: #eee;
   border: none;
-  padding: 5px;
   border-radius: 5px;
+  padding: 5px;
 `
 
 const HeaderControlsContainer = styled.div<{ showHeaderText: boolean }>`
