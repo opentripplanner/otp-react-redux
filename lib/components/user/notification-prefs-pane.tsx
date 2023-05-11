@@ -29,13 +29,29 @@ interface Props extends FormikProps<Fields> {
   }
 }
 
-const allowedNotificationChannels = ['email', 'sms', 'none']
+const allowedNotificationChannels = ['email', 'sms']
 
 // Styles
 // HACK: Preserve container height.
 const Details = styled.div`
   min-height: 60px;
   margin-bottom: 15px;
+`
+
+const NotificationOption = styled.div`
+  align-items: flex-start;
+  display: flex;
+  gap: 1ch;
+  margin-bottom: 10px;
+
+  label {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 0;
+  }
+  label::first-letter {
+    text-transform: uppercase;
+  }
 `
 
 /**
@@ -53,44 +69,49 @@ const NotificationPrefsPane = ({
 
   return (
     <div>
-      <FormGroup>
-        <ButtonGroup>
-          <legend>
-            <FormattedMessage id="components.NotificationPrefsPane.notificationChannelPrompt" />
-          </legend>
-          {allowedNotificationChannels.map((type) => {
-            // TODO: If removing the Save/Cancel buttons on the account screen,
-            // persist changes immediately when onChange is triggered.
-            const inputId = `notification-channel-${type}`
-            const isChecked = notificationChannel === type
-            return (
-              <Fragment key={type}>
-                {/* Note: labels are placed after inputs so that the CSS focus selector can be easily applied. */}
-                <Field
-                  id={inputId}
-                  name="notificationChannel"
-                  type="radio"
-                  value={type}
-                />
-                <label
-                  className={
-                    isChecked ? 'btn btn-primary active' : 'btn btn-default'
-                  }
-                  htmlFor={inputId}
-                >
-                  {type === 'email' ? (
-                    <FormattedMessage id="common.notifications.email" />
-                  ) : type === 'sms' ? (
-                    <FormattedMessage id="common.notifications.sms" />
-                  ) : (
-                    <FormattedMessage id="components.NotificationPrefsPane.noneSelect" />
-                  )}
-                </label>
-              </Fragment>
-            )
-          })}
-        </ButtonGroup>
-      </FormGroup>
+      <fieldset>
+        <legend>
+          <FormattedMessage id="components.NotificationPrefsPane.notificationChannelPrompt" />
+        </legend>
+        {allowedNotificationChannels.map((type) => {
+          // TODO: If removing the Save/Cancel buttons on the account screen,
+          // persist changes immediately when onChange is triggered.
+          const inputId = `notification-channel-${type}`
+          return (
+            <NotificationOption key={type}>
+              <Field
+                id={inputId}
+                name="notificationChannel"
+                type="checkbox"
+                value={type}
+              />{' '}
+              <span>
+                {type === 'email' ? (
+                  <>
+                    <label htmlFor={inputId}>
+                      <FormattedMessage id="common.notifications.email" />
+                    </label>
+                    <span style={{ color: '#757575' }}>{email}</span>
+                  </>
+                ) : (
+                  <>
+                    <label htmlFor={inputId}>
+                      <FormattedMessage id="common.notifications.sms" />
+                    </label>
+                    <PhoneNumberEditor
+                      initialPhoneNumber={phoneNumber}
+                      initialPhoneNumberVerified={isPhoneNumberVerified}
+                      onRequestCode={onRequestPhoneVerificationCode}
+                      onSubmitCode={onSendPhoneVerificationCode}
+                      phoneFormatOptions={phoneFormatOptions}
+                    />
+                  </>
+                )}
+              </span>
+            </NotificationOption>
+          )
+        })}
+      </fieldset>
       <Details>
         {notificationChannel === 'email' && (
           <FormGroup>
