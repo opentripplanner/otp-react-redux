@@ -340,6 +340,7 @@ components:
     selectDuration: Duration
     selectWalkTime: Walk time
     sortBy: Sort By
+    sortResults: Sort results
     viewAll: View all options
   NavLoginButton:
     help: Help

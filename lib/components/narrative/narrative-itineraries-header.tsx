@@ -1,13 +1,14 @@
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
+import { ArrowRight } from '@styled-icons/fa-solid'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
+import { Icon, IconWithText, StyledIconWrapper } from '../util/styledIcon'
 
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
@@ -19,6 +20,36 @@ const IssueButton = styled.button`
   display: inline-block;
   font-size: 12px;
   padding: 2px 4px;
+`
+
+const FilterSortButton = styled.button`
+  background: #eee;
+  border: none;
+  border-radius: 5px;
+  color: #090909cc;
+  transition: all 0.15s ease;
+
+  svg {
+    margin-top: -2px;
+  }
+
+  &:hover {
+    background: #fff;
+    transition: all 0.15s ease;
+  }
+`
+
+const ResultsSortSelect = styled.select`
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+`
+
+const HeaderControlsContainer = styled.div<{ showHeaderText: boolean }>`
+  display: flex;
+  float: right;
+  gap: 7px;
+  margin-left: ${(props) => (props.showHeaderText ? 'inherit' : 'auto')};
 `
 
 // h1 element for a11y purposes
@@ -51,7 +82,7 @@ export default function NarrativeItinerariesHeader({
   itineraries: unknown[]
   itinerary: Itinerary
   itineraryIsExpanded: boolean
-  onSortChange: () => void
+  onSortChange: (type: string) => VoidFunction
   onSortDirChange: () => void
   onToggleShowErrors: () => void
   onViewAllOptions: () => void
@@ -62,6 +93,7 @@ export default function NarrativeItinerariesHeader({
   showingErrors: boolean
   sort: { direction: string; type: string }
 }): JSX.Element {
+  const [selectedFilter, setSelectedFilter] = useState('BEST')
   const intl = useIntl()
   const itinerariesFound = intl.formatMessage(
     {
@@ -75,6 +107,10 @@ export default function NarrativeItinerariesHeader({
     },
     { issueNum: errors.length }
   )
+
+  const sortResults = intl.formatMessage({
+    id: 'components.NarrativeItinerariesHeader.sortResults'
+  })
 
   return (
     <div
@@ -149,13 +185,10 @@ export default function NarrativeItinerariesHeader({
           ) : (
             <InvisibleHeader>{itinerariesFound}</InvisibleHeader>
           )}
-          <div
-            style={{
-              display: 'flex',
-              float: 'right',
-              gap: 5,
-              marginLeft: showHeaderText ? 'inherit' : 'auto'
-            }}
+          <HeaderControlsContainer
+            aria-label={sortResults}
+            role="group"
+            showHeaderText={!!showHeaderText}
           >
             {popupTarget && (
               <button onClick={() => setPopupContent(popupTarget)}>
@@ -179,16 +212,16 @@ export default function NarrativeItinerariesHeader({
                 )}
               </StyledIconWrapper>
             </button>
-            <select
+            <ResultsSortSelect
               aria-label={intl.formatMessage({
                 id: 'components.NarrativeItinerariesHeader.sortBy'
               })}
-              onBlur={onSortChange}
-              onChange={onSortChange}
+              onBlur={(e) => setSelectedFilter(e.target.value)}
+              onChange={(e) => setSelectedFilter(e.target.value)}
               title={intl.formatMessage({
                 id: 'components.NarrativeItinerariesHeader.sortBy'
               })}
-              value={sort.type}
+              value={selectedFilter}
             >
               <option value="BEST">
                 {intl.formatMessage({
@@ -220,8 +253,16 @@ export default function NarrativeItinerariesHeader({
                   id: 'components.NarrativeItinerariesHeader.selectCost'
                 })}
               </option>
-            </select>
-          </div>
+            </ResultsSortSelect>
+            <FilterSortButton
+              aria-label={sortResults}
+              className="filter-sort-btn"
+              onClick={() => onSortChange(selectedFilter)}
+              title={sortResults}
+            >
+              <Icon Icon={ArrowRight} />
+            </FilterSortButton>
+          </HeaderControlsContainer>
           <PlanFirstLastButtons />
         </>
       )}
