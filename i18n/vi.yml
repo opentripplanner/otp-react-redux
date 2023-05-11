@@ -344,7 +344,7 @@ components:
     header: Không tìm thấy nội dung
   NotificationPrefsPane:
     noneSelect: Đừng thông báo cho tôi
-    notificationChannelPrompt: Bạn muốn nhận thông báo như thế nào?
+    notificationChannelPrompt: "Nhận thông báo về các chuyến đi đã lưu bằng:"
     notificationEmailDetail: "Email thông báo sẽ được gửi đến:"
   PhoneNumberEditor:
     changeNumber: Thay đổi số điện thoại

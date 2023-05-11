@@ -369,7 +369,7 @@ components:
     header: Contenu introuvable
   NotificationPrefsPane:
     noneSelect: Ne pas me notifier
-    notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
+    notificationChannelPrompt: "Recevoir des notifications sur vos trajets enregistrés par :"
     notificationEmailDetail: "Les courriers de notification seront envoyés à :"
   PhoneNumberEditor:
     changeNumber: Changer de numéro

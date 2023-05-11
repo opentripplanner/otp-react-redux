@@ -363,7 +363,7 @@ components:
     header: No se encontró el contenido
   NotificationPrefsPane:
     noneSelect: No enviar notificaciones
-    notificationChannelPrompt: ¿Cómo desea recibir las notificaciones?
+    notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por :"
     notificationEmailDetail: "Los correos electrónicos de notificación se enviarán a:"
   PhoneNumberEditor:
     changeNumber: Cambiar número de teléfono

@@ -357,7 +357,7 @@ components:
     header: Content not found
   NotificationPrefsPane:
     noneSelect: Don't notify me
-    notificationChannelPrompt: How would you like to receive notifications?
+    notificationChannelPrompt: "Receive notifications about your saved trips via:"
     notificationEmailDetail: "Notification emails will be sent to:"
   PhoneNumberEditor:
     changeNumber: Change number
