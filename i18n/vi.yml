@@ -150,9 +150,10 @@ common:
       nDays: "{days} ngày"
       nHours: "{hours, plural, =1 {một tiếng} other {# tiếng}}"
       nMinutes: "{minutes, plural, =1 {một phút} other {# phút}}"
-    durationAgo: "Cách đây {duration}"
-    tripDurationFormat: "{hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds,\
-      \ plural, =0 {} other {# giây}}"
+    durationAgo: Cách đây {duration}
+    tripDurationFormat: >-
+      {hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds, plural, =0
+      {} other {# giây}}
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Thích những chuyến đi có thể truy cập theo mặc định
@@ -316,7 +317,6 @@ components:
     exclusiveMode: Chỉ {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Thay đổi hướng sắp xếp
-    itinerariesAndIssues: "{itinerariesFound} và {numIssues}"
     itinerariesFound: "{itineraryNum} hành trình được tìm thấy"
     numIssues: "{issueNum} vấn đề"
     searching: Tìm lựa chọn của bạn…
@@ -671,13 +671,13 @@ components:
   UserTripSettings:
     forgetOptions: Hãy quên các tùy chọn của tôi
     rememberOptions: Hãy nhớ các tùy chọn chuyến đi
+    restoreDefaults: Khôi phục mặc định
+    restoreMyDefaults: Khôi phục mặc định của tôi
     restoreOptions: |
       Khôi phục {defaults, select,
        true {mặc định của tôi}
        other {mặc định}
        }
-    restoreDefaults: Khôi phục mặc định
-    restoreMyDefaults: Khôi phục mặc định của tôi
   VerifyEmailPane:
     emailIsVerified: Email của tôi đã được xác minh!
     instructions1: >

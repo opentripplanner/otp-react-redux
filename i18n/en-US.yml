@@ -327,7 +327,7 @@ components:
     exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
-    itinerariesAndIssues: "{itinerariesFound} and {numIssues}"
+    howToFindResults: To view results, see the Itineraries Found heading below.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
@@ -395,8 +395,7 @@ components:
       body: An unknown error happened during the search.
       header: Trip Planner Failure
     WALKING_BETTER_THAN_TRANSIT:
-      body: >-
-        Avoiding transit on your trip will be faster than taking transit.
+      body: Avoiding transit on your trip will be faster than taking transit.
       header: Transit isn't the fastest way to make this trip
     inputFields:
       FROM: Origin

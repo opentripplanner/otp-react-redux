@@ -341,7 +341,7 @@ components:
     exclusiveMode: "{mode} uniquement"
   NarrativeItinerariesHeader:
     changeSortDir: Changer l'ordre de tri
-    itinerariesAndIssues: "{itinerariesFound} et {numIssues}"
+    howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés plus bas.
     itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets trouvés} }"
     numIssues: "{issueNum, plural, one {# problème} other {# problèmes} }"
     searching: Recherche...
@@ -465,10 +465,10 @@ components:
     cantSaveTooltip: >-
       Seuls les trajets en transports publics sans location de véhicules et sans
       course en voiture peuvent être suivis.
+    openPatternViewer: Voir les dessertes
     saveTripText: Enregistrer
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
-    openPatternViewer: Voir les dessertes
     toggleRouteOnMap: Afficher ou masquer cette ligne sur la carte
   SavedTripEditor:
     editSavedTrip: Modifier un trajet enregistré
@@ -560,8 +560,8 @@ components:
       Planificateur de trajets.
     termsOfStorageStatement: >
       Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes
-      recherches afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus
-      d'informations...</termsOfStorageLink>
+      recherches afin d'améliorer les transports publics dans ma region.
+      <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>
   TransitVehicleOverlay:
     in_transit_to: "Prochain arrêt : {stop}"
     incoming_at: Approchant {stop}
@@ -749,10 +749,10 @@ config:
     call-ahead: Appelez pour réserver
     continuous-dropoff: Demandez l'arrêt au conducteur
   micromobilityModes:
-    micromobility: Trottinnette pers.
-    micromobility_rent: Trottinette louée
     flex-service: Service Flex
     flex-service-colon: "Service Flex :"
+    micromobility: Trottinnette pers.
+    micromobility_rent: Trottinette louée
 util:
   state:
     errorPlanningTrip: Une erreur s'est produite lors de la planification du trajet.

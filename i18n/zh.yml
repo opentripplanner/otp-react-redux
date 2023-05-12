@@ -304,7 +304,6 @@ components:
     exclusiveMode: 仅 {mode}
   NarrativeItinerariesHeader:
     changeSortDir: 改变排序方向
-    itinerariesAndIssues: "{itinerariesFound} 和 {numIssues}"
     itinerariesFound: 发现{itineraryNum}条行程
     numIssues: |-
       {issueNum, plural,
@@ -616,13 +615,13 @@ components:
   UserTripSettings:
     forgetOptions: 忘记我的选择
     rememberOptions: 记住行程选择
+    restoreDefaults: 恢复默认设置
+    restoreMyDefaults: 恢复我的默认值
     restoreOptions: |
       恢复 {defaults, select,
        true {我的默认值}
        other {默认设置}
        }
-    restoreDefaults: 恢复默认设置
-    restoreMyDefaults: 恢复我的默认值
   VerifyEmailPane:
     emailIsVerified: 我的电子邮件被验证了!
     instructions1: |
