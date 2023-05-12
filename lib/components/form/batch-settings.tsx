@@ -50,6 +50,7 @@ type Props = {
   modeButtonOptions: ModeButtonDefinition[]
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
+  onPlanTripClick: () => void
   routingQuery: any
   setQueryParam: (queryParam: any) => void
   setUrlSearch: (evt: any) => void
@@ -84,6 +85,7 @@ function BatchSettings({
   modeButtonOptions,
   modeSettingDefinitions,
   modeSettingValues,
+  onPlanTripClick,
   routingQuery,
   setUrlSearch,
   spacedOutModeSelector
@@ -133,6 +135,7 @@ function BatchSettings({
         intl.formatMessage({ id: 'components.BatchSettings.destination' })
       )
     }
+    onPlanTripClick && onPlanTripClick()
     if (issues.length > 0) {
       // TODO: replace with less obtrusive validation.
       window.alert(

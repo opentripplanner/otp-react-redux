@@ -101,8 +101,8 @@ common:
     print: Imprimir
     save: Guardar
     startOver: Comenzar de nuevo
-    "yes": Sí
     submitting: Enviando…
+    "yes": Sí
   itineraryDescriptions:
     calories: "{calories, number} kcal"
     noItineraryToDisplay: No hay itinerario que mostrar.
@@ -110,6 +110,7 @@ common:
       {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
       solo
     transfers: "{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}"
+  linkOpensNewWindow: (Abre una nueva ventana)
   modes:
     bicycle_rent: Compartir bicicleta
     bike: Bicicleta
@@ -337,7 +338,7 @@ components:
       {itineraryNum, plural, one {# itinerario encontrado} other {# itinerarios
       encontrados}}
     numIssues: "{issueNum, plural, one {# problema} other {# problemas}}"
-    searching: Encontrando sus opciones…
+    searching: Buscando tus opciones…
     selectArrivalTime: Hora de llegada
     selectBest: La mejor opción
     selectCost: Costo
