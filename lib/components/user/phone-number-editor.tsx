@@ -8,7 +8,6 @@ import styled from 'styled-components'
 import { getAriaPhoneNumber } from '../../util/a11y'
 import { isBlank } from '../../util/ui'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
-import SpanWithSpace from '../util/span-with-space'
 
 import { ControlStrip } from './styled'
 import PhoneChangeForm, { PhoneChangeSubmitHandler } from './phone-change-form'
@@ -18,7 +17,7 @@ import PhoneVerificationForm, {
 
 export type PhoneCodeRequestHandler = (phoneNumber: string) => void
 
-const PlainLink = styled(SpanWithSpace)`
+const PlainLink = styled.a`
   color: #757575;
   &:hover {
     text-decoration: none;
@@ -232,15 +231,12 @@ class PhoneNumberEditor extends Component<Props, State> {
         ) : (
           <FormGroup>
             <ControlStrip>
+              {/* Use an anchor so that the aria-label applies and phone actions can be performed,
+                  if necessary. Styling will make the text appear plain (mostly). */}
               <PlainLink
                 aria-label={ariaPhoneNumber}
-                // Use an anchor so that the aria-label applies.
-                // Styling will mostly make the text appear plain, but
-                // phone actions can be performed if necessary.
-                as="a"
                 href={`tel:${shownPhoneNumberRaw}`}
                 id={descriptorId}
-                margin={0.5}
               >
                 {shownPhoneNumber}
               </PlainLink>

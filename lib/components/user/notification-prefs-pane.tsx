@@ -32,8 +32,13 @@ const allowedNotificationChannels = ['email', 'sms']
 const NotificationOption = styled.div`
   align-items: flex-start;
   display: flex;
-  gap: 1ch;
   margin-bottom: 10px;
+
+  /* Use bootstrap's spacing between checkbox and label */
+  & > span:first-child {
+    flex-shrink: 0;
+    width: 20px;
+  }
 
   label {
     display: block;
@@ -77,13 +82,15 @@ const NotificationPrefsPane = ({
           const inputDescriptionId = `${inputId}-description`
           return (
             <NotificationOption key={type}>
-              <Field
-                aria-describedby={inputDescriptionId}
-                id={inputId}
-                name="notificationChannel"
-                type="checkbox"
-                value={type}
-              />{' '}
+              <span>
+                <Field
+                  aria-describedby={inputDescriptionId}
+                  id={inputId}
+                  name="notificationChannel"
+                  type="checkbox"
+                  value={type}
+                />
+              </span>
               <span>
                 {type === 'email' ? (
                   <>
