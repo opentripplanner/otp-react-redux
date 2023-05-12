@@ -370,7 +370,6 @@ components:
     prompt: "Enter your phone number for SMS notifications:"
     requestNewCode: Request a new code
     sendVerificationText: Send verification text
-    smsDetail: "SMS notifications will be sent to:"
     verificationCode: "Verification code:"
     verificationInstructions: >
       Please check the SMS messaging app on your mobile phone for a text message

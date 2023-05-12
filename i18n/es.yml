@@ -378,7 +378,6 @@ components:
       texto:
     requestNewCode: Solicitar un nuevo código
     sendVerificationText: Enviar texto de verificación
-    smsDetail: "Las notificaciones por mensaje de texto se enviarán a:"
     verificationCode: "Código de verificación:"
     verificationInstructions: >
       Por favor, compruebe en la aplicación de mensajería de texto de su

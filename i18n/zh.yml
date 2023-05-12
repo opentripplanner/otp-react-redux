@@ -348,7 +348,6 @@ components:
     prompt: "输入你的电话号码以便收到短信通知:"
     requestNewCode: 申请一个新的代码
     sendVerificationText: 发送验证短信
-    smsDetail: "短信通知将被发送到:"
     verificationCode: "验证码:"
     verificationInstructions: |
       请检查您手机上的短信应用查看是否有验证码的短信并输入以下代码 (代码在10分钟后失效).

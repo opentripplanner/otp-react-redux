@@ -1,12 +1,9 @@
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage } from 'react-intl'
-import { FormGroup } from 'react-bootstrap'
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
-import ButtonGroup from '../util/button-group'
-
-import { FakeLabel, InlineStatic } from './styled'
+import { labelStyle } from './styled'
 import { PhoneVerificationSubmitHandler } from './phone-verification-form'
 import PhoneNumberEditor, {
   PhoneCodeRequestHandler
@@ -32,12 +29,6 @@ interface Props extends FormikProps<Fields> {
 const allowedNotificationChannels = ['email', 'sms']
 
 // Styles
-// HACK: Preserve container height.
-const Details = styled.div`
-  min-height: 60px;
-  margin-bottom: 15px;
-`
-
 const NotificationOption = styled.div`
   align-items: flex-start;
   display: flex;
@@ -54,6 +45,13 @@ const NotificationOption = styled.div`
   }
 `
 
+const NotificationOptions = styled.fieldset`
+  /* Format <legend> like labels. */
+  legend {
+    ${labelStyle}
+  }
+`
+
 /**
  * User notification preferences pane.
  */
@@ -62,14 +60,13 @@ const NotificationPrefsPane = ({
   onRequestPhoneVerificationCode,
   onSendPhoneVerificationCode,
   phoneFormatOptions,
-  values: userData // Formik prop
+  values: userData // Formik prop // TODO: remove
 }: Props): JSX.Element => {
   const { email, isPhoneNumberVerified, phoneNumber } = loggedInUser
-  const { notificationChannel } = userData
 
   return (
     <div>
-      <fieldset>
+      <NotificationOptions>
         <legend>
           <FormattedMessage id="components.NotificationPrefsPane.notificationChannelPrompt" />
         </legend>
@@ -77,9 +74,11 @@ const NotificationPrefsPane = ({
           // TODO: If removing the Save/Cancel buttons on the account screen,
           // persist changes immediately when onChange is triggered.
           const inputId = `notification-channel-${type}`
+          const inputDescriptionId = `${inputId}-description`
           return (
             <NotificationOption key={type}>
               <Field
+                aria-describedby={inputDescriptionId}
                 id={inputId}
                 name="notificationChannel"
                 type="checkbox"
@@ -91,7 +90,9 @@ const NotificationPrefsPane = ({
                     <label htmlFor={inputId}>
                       <FormattedMessage id="common.notifications.email" />
                     </label>
-                    <span style={{ color: '#757575' }}>{email}</span>
+                    <span id={inputDescriptionId} style={{ color: '#757575' }}>
+                      {email}
+                    </span>
                   </>
                 ) : (
                   <>
@@ -99,6 +100,7 @@ const NotificationPrefsPane = ({
                       <FormattedMessage id="common.notifications.sms" />
                     </label>
                     <PhoneNumberEditor
+                      descriptorId={inputDescriptionId}
                       initialPhoneNumber={phoneNumber}
                       initialPhoneNumberVerified={isPhoneNumberVerified}
                       onRequestCode={onRequestPhoneVerificationCode}
@@ -111,26 +113,7 @@ const NotificationPrefsPane = ({
             </NotificationOption>
           )
         })}
-      </fieldset>
-      <Details>
-        {notificationChannel === 'email' && (
-          <FormGroup>
-            <FakeLabel>
-              <FormattedMessage id="components.NotificationPrefsPane.notificationEmailDetail" />
-            </FakeLabel>
-            <InlineStatic>{email}</InlineStatic>
-          </FormGroup>
-        )}
-        {notificationChannel === 'sms' && (
-          <PhoneNumberEditor
-            initialPhoneNumber={phoneNumber}
-            initialPhoneNumberVerified={isPhoneNumberVerified}
-            onRequestCode={onRequestPhoneVerificationCode}
-            onSubmitCode={onSendPhoneVerificationCode}
-            phoneFormatOptions={phoneFormatOptions}
-          />
-        )}
-      </Details>
+      </NotificationOptions>
     </div>
   )
 }

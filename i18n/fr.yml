@@ -382,7 +382,6 @@ components:
     prompt: "Entrez votre numéro de téléphone pour les SMS de notification :"
     requestNewCode: Envoyer un nouveau code
     sendVerificationText: Envoyer le SMS de vérification
-    smsDetail: "Les SMS de notification seront envoyés au :"
     verificationCode: "Code de vérification :"
     verificationInstructions: >
       Un SMS vous a été envoyé avec un code de vérification. Veuillez taper ce

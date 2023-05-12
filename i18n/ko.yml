@@ -348,7 +348,6 @@ components:
     prompt: "SMS 알림 수신을 위한 전화번호를 입력하세요:"
     requestNewCode: 새 코드 요청
     sendVerificationText: 확인 텍스트 전송
-    smsDetail: "SMS 알림이 다음으로 전송됩니다:"
     verificationCode: "확인 코드:"
     verificationInstructions: |
       휴대폰의 SMS 메시지 앱에서 인증 코드를 확인하고 아래에 코드를 입력하세요(코드는 10분 후에 만료됩니다).
