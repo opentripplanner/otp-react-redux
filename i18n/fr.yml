@@ -137,6 +137,7 @@ common:
     walk: À pied
   notifications:
     email: e-mail
+    push: notifications push
     sms: SMS
   places:
     custom: divers

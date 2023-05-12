@@ -133,6 +133,7 @@ common:
     walk: Caminar
   notifications:
     email: correo electrónico
+    push: notificaciones push
     sms: Mensaje de texto
   places:
     custom: personalizado

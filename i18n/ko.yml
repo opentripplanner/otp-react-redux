@@ -119,6 +119,7 @@ common:
     walk: 걷기
   notifications:
     email: 이메일
+    push: 푸시 알림
     sms: SMS
   places:
     custom: 사용자 정의

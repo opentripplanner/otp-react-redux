@@ -119,6 +119,7 @@ common:
     walk: 步行
   notifications:
     email: 电子邮件
+    push: 推送通知
     sms: 短信
   places:
     custom: 习俗

@@ -16,6 +16,7 @@ interface Fields {
   isPhoneNumberVerified?: boolean
   notificationChannel: string
   phoneNumber?: string
+  pushDeviceName?: string
 }
 
 interface Props extends FormikProps<Fields> {
@@ -26,7 +27,7 @@ interface Props extends FormikProps<Fields> {
   }
 }
 
-const allowedNotificationChannels = ['email', 'sms']
+const allowedNotificationChannels = ['email', 'sms', 'push']
 
 // Styles
 const NotificationOption = styled.div`
@@ -62,7 +63,7 @@ const NotificationPrefsPane = ({
   phoneFormatOptions,
   values: userData // Formik prop
 }: Props): JSX.Element => {
-  const { email, isPhoneNumberVerified, phoneNumber } = userData
+  const { email, isPhoneNumberVerified, phoneNumber, pushDeviceName } = userData
 
   return (
     <FieldSet>
@@ -93,7 +94,7 @@ const NotificationPrefsPane = ({
                   </label>
                   <span id={inputDescriptionId}>{email}</span>
                 </>
-              ) : (
+              ) : type === 'sms' ? (
                 <>
                   <label htmlFor={inputId}>
                     <FormattedMessage id="common.notifications.sms" />
@@ -106,6 +107,13 @@ const NotificationPrefsPane = ({
                     onSubmitCode={onSendPhoneVerificationCode}
                     phoneFormatOptions={phoneFormatOptions}
                   />
+                </>
+              ) : (
+                <>
+                  <label htmlFor={inputId}>
+                    <FormattedMessage id="common.notifications.push" />
+                  </label>
+                  <span id={inputDescriptionId}>{pushDeviceName}</span>
                 </>
               )}
             </span>

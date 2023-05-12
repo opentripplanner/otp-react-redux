@@ -129,6 +129,7 @@ common:
     walk: Walk
   notifications:
     email: email
+    push: push notifications
     sms: SMS
   places:
     custom: custom
