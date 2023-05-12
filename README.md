@@ -2,6 +2,8 @@
 
 <img src="https://github.com/opentripplanner/otp-react-redux/raw/master/otprr.png" width="500" />
 
+<img src="https://img.shields.io/gitter/room/opentripplanner/otp-react-redux?style=plastic">
+
 A library for writing modern [OpenTripPlanner](http://www.opentripplanner.org/)-compatible multimodal journey planning applications using [React]() and [Redux]().
 
 ## Running the Example
