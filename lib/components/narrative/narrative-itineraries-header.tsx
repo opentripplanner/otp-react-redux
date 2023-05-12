@@ -11,6 +11,8 @@ import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
 import { sortOptions } from '../util/sortOptions'
 import { UnstyledButton } from '../util/unstyled-button'
 import Dropdown from '../util/dropdown'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
+
 
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
@@ -22,14 +24,6 @@ const IssueButton = styled.button`
   display: inline-block;
   font-size: 12px;
   padding: 2px 4px;
-`
-
-// h1 element for a11y purposes
-
-const InvisibleHeader = styled.h1`
-  height: 0;
-  overflow: hidden;
-  width: 0;
 `
 
 export default function NarrativeItinerariesHeader({
@@ -79,6 +73,16 @@ export default function NarrativeItinerariesHeader({
     { issueNum: errors.length }
   )
 
+  // Transitions to the UI states below should be announced to assistive technology:
+  // - A search is in progress.
+  // - Results or no results are found (with or without errors).
+  const searching = intl.formatMessage({
+    id: 'components.NarrativeItinerariesHeader.searching'
+  })
+  const narrativeUiStatus = pending
+    ? searching
+    : intl.formatList([itinerariesFound, numIssues], { type: 'conjunction' })
+
   return (
     <div
       className="options header"
@@ -88,6 +92,15 @@ export default function NarrativeItinerariesHeader({
         flexWrap: 'wrap'
       }}
     >
+      <InvisibleA11yLabel as="div" role="status">
+        <p>{narrativeUiStatus}</p>
+        {!pending && itineraries.length !== 0 && (
+          <p>
+            <FormattedMessage id="components.NarrativeItinerariesHeader.howToFindResults" />
+          </p>
+        )}
+      </InvisibleA11yLabel>
+
       {itineraryIsExpanded || showingErrors ? (
         <>
           <button
@@ -110,24 +123,7 @@ export default function NarrativeItinerariesHeader({
       ) : (
         <>
           {showHeaderText ? (
-            <div
-              style={{ flexGrow: 1 }}
-              title={
-                pending
-                  ? intl.formatMessage({
-                      id: 'components.NarrativeItinerariesHeader.searching'
-                    })
-                  : intl.formatMessage(
-                      {
-                        id: 'components.NarrativeItinerariesHeader.itinerariesAndIssues'
-                      },
-                      {
-                        itinerariesFound,
-                        numIssues
-                      }
-                    )
-              }
-            >
+            <div style={{ flexGrow: 1 }}>
               <h1
                 style={{
                   display: 'inline',
@@ -135,11 +131,7 @@ export default function NarrativeItinerariesHeader({
                   marginRight: '10px'
                 }}
               >
-                {pending ? (
-                  <FormattedMessage id="components.NarrativeItinerariesHeader.searching" />
-                ) : (
-                  itinerariesFound
-                )}
+                {pending ? searching : itinerariesFound}
               </h1>
               {errors.length > 0 && (
                 <IssueButton onClick={onToggleShowErrors}>
@@ -150,7 +142,9 @@ export default function NarrativeItinerariesHeader({
               )}
             </div>
           ) : (
-            <InvisibleHeader>{itinerariesFound}</InvisibleHeader>
+            // The "n Itineraries Found" a11y header is an <h2> element
+            // because it falls under the "Plan your trip" <h1> header.
+            <InvisibleA11yLabel as="h2">{itinerariesFound}</InvisibleA11yLabel>
           )}
           <div
             style={{

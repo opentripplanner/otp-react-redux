@@ -304,7 +304,6 @@ components:
     exclusiveMode: 仅 {mode}
   NarrativeItinerariesHeader:
     changeSortDir: 改变排序方向
-    itinerariesAndIssues: "{itinerariesFound} 和 {numIssues}"
     itinerariesFound: 发现{itineraryNum}条行程
     numIssues: |-
       {issueNum, plural,
