@@ -363,6 +363,7 @@ components:
     description: El contenido que ha solicitado no está disponible.
     header: No se encontró el contenido
   NotificationPrefsPane:
+    noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
     noneSelect: No enviar notificaciones
     notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por :"
     notificationEmailDetail: "Los correos electrónicos de notificación se enviarán a:"

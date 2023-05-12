@@ -80,6 +80,8 @@ const NotificationPrefsPane = ({
             <span>
               <Field
                 aria-describedby={inputDescriptionId}
+                // TODO: Check this condition.
+                disabled={type === 'push' && !pushDeviceName}
                 id={inputId}
                 name="notificationChannel"
                 type="checkbox"
@@ -113,7 +115,11 @@ const NotificationPrefsPane = ({
                   <label htmlFor={inputId}>
                     <FormattedMessage id="common.notifications.push" />
                   </label>
-                  <span id={inputDescriptionId}>{pushDeviceName}</span>
+                  <span id={inputDescriptionId}>
+                    {pushDeviceName || (
+                      <FormattedMessage id="components.NotificationPrefsPane.noDeviceForPush" />
+                    )}
+                  </span>
                 </>
               )}
             </span>
