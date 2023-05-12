@@ -20,13 +20,13 @@ type Props = {
 }
 
 const CloseModalButton = styled.button`
-  position: absolute;
-  top: 0.5em;
-  right: 0.5em;
-  font-size: 2em;
   background: #fff;
   border: none;
   border-radius: 50%;
+  font-size: 2em;
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
   transition: 150ms all ease;
 
   svg {
@@ -76,6 +76,7 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
 
   return (
     <Modal
+      aria-label={title}
       dialogClassName="fullscreen-modal"
       onEscapeKeyDown={hideModal}
       onHide={hideModal}
