@@ -2632,10 +2632,10 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@^3.1.0-alpha.20":
-  version "3.1.0-alpha.20"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.1.0-alpha.20.tgz#75ee63a1d07da8f83fcff5b7d0efe839eb0d3da2"
-  integrity sha512-IlOGuZNzMYIhbF0iikWQVUe43uqw+uTGS4zJ3IsRtOAJ44zM4TY6/iFu0KkmQGNZhP00RG35v1OCC2AF/NMqXw==
+"@opentripplanner/trip-form@^3.1.0-alpha.21":
+  version "3.1.0-alpha.21"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.1.0-alpha.21.tgz#3ae189902b409bc89e05b2e9896203e44ea528b2"
+  integrity sha512-UyLyAYL4cLz7eE2g8zR4WRQVL4jp94HB/8uAXu3GB+VPCHmPpzN8mvuVRuw9I3U8besWdgOg0D+6f2efTrA6og==
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/core-utils" "^8.2.0"
@@ -2658,10 +2658,10 @@
     "@opentripplanner/base-map" "^3.0.6"
     "@opentripplanner/core-utils" "^7.0.5"
 
-"@opentripplanner/types@^6.0.0-alpha.4":
-  version "6.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.0.0-alpha.4.tgz#dee3c06675e30c596159d182ed707e7710cd937c"
-  integrity sha512-FlYsHm/tk+x0ldrEG1X9Ph1R1k3way1oEdKX7XSnhu9lNTzL4lO0hfT1PLzNXMfBRar7TzK94PHNDibJsod8Kw==
+"@opentripplanner/types@^6.0.0-alpha.5":
+  version "6.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.0.0-alpha.5.tgz#d5c77f9fa31ff0d19771a3154b8fd1a06d28c771"
+  integrity sha512-IRV+b9/VX/Rqqg4jI+EH69xHzzr9rkOXwFiM/C3J6mdTdr0X3C0T0mpam/qca/dTQDW5pkZkty/d2RUSX2J6Lw==
 
 "@opentripplanner/vehicle-rental-overlay@^2.1.0":
   version "2.1.0"
