@@ -12,15 +12,13 @@ import PhoneNumberEditor, {
 } from './phone-number-editor'
 
 interface Fields {
+  email: string
+  isPhoneNumberVerified?: boolean
   notificationChannel: string
+  phoneNumber?: string
 }
 
 interface Props extends FormikProps<Fields> {
-  loggedInUser: {
-    email: string
-    isPhoneNumberVerified?: boolean
-    phoneNumber?: string
-  }
   onRequestPhoneVerificationCode: PhoneCodeRequestHandler
   onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
   phoneFormatOptions: {
@@ -59,65 +57,62 @@ const NotificationOption = styled.div`
  * User notification preferences pane.
  */
 const NotificationPrefsPane = ({
-  loggedInUser,
   onRequestPhoneVerificationCode,
   onSendPhoneVerificationCode,
   phoneFormatOptions,
-  values: userData // Formik prop // TODO: remove
+  values: userData // Formik prop
 }: Props): JSX.Element => {
-  const { email, isPhoneNumberVerified, phoneNumber } = loggedInUser
+  const { email, isPhoneNumberVerified, phoneNumber } = userData
 
   return (
-    <div>
-      <FieldSet>
-        <legend>
-          <FormattedMessage id="components.NotificationPrefsPane.notificationChannelPrompt" />
-        </legend>
-        {allowedNotificationChannels.map((type) => {
-          // TODO: If removing the Save/Cancel buttons on the account screen,
-          // persist changes immediately when onChange is triggered.
-          const inputId = `notification-channel-${type}`
-          const inputDescriptionId = `${inputId}-description`
-          return (
-            <NotificationOption key={type}>
-              <span>
-                <Field
-                  aria-describedby={inputDescriptionId}
-                  id={inputId}
-                  name="notificationChannel"
-                  type="checkbox"
-                  value={type}
-                />
-              </span>
-              <span>
-                {type === 'email' ? (
-                  <>
-                    <label htmlFor={inputId}>
-                      <FormattedMessage id="common.notifications.email" />
-                    </label>
-                    <span id={inputDescriptionId}>{email}</span>
-                  </>
-                ) : (
-                  <>
-                    <label htmlFor={inputId}>
-                      <FormattedMessage id="common.notifications.sms" />
-                    </label>
-                    <PhoneNumberEditor
-                      descriptorId={inputDescriptionId}
-                      initialPhoneNumber={phoneNumber}
-                      initialPhoneNumberVerified={isPhoneNumberVerified}
-                      onRequestCode={onRequestPhoneVerificationCode}
-                      onSubmitCode={onSendPhoneVerificationCode}
-                      phoneFormatOptions={phoneFormatOptions}
-                    />
-                  </>
-                )}
-              </span>
-            </NotificationOption>
-          )
-        })}
-      </FieldSet>
-    </div>
+    <FieldSet>
+      <legend>
+        <FormattedMessage id="components.NotificationPrefsPane.notificationChannelPrompt" />
+      </legend>
+      {allowedNotificationChannels.map((type) => {
+        // TODO: If removing the Save/Cancel buttons on the account screen,
+        // persist changes immediately when onChange is triggered.
+        const inputId = `notification-channel-${type}`
+        const inputDescriptionId = `${inputId}-description`
+        return (
+          <NotificationOption key={type}>
+            <span>
+              <Field
+                aria-describedby={inputDescriptionId}
+                id={inputId}
+                name="notificationChannel"
+                type="checkbox"
+                value={type}
+              />
+            </span>
+            <span>
+              {type === 'email' ? (
+                <>
+                  <label htmlFor={inputId}>
+                    <FormattedMessage id="common.notifications.email" />
+                  </label>
+                  <span id={inputDescriptionId}>{email}</span>
+                </>
+              ) : (
+                <>
+                  <label htmlFor={inputId}>
+                    <FormattedMessage id="common.notifications.sms" />
+                  </label>
+                  <PhoneNumberEditor
+                    descriptorId={inputDescriptionId}
+                    initialPhoneNumber={phoneNumber}
+                    initialPhoneNumberVerified={isPhoneNumberVerified}
+                    onRequestCode={onRequestPhoneVerificationCode}
+                    onSubmitCode={onSendPhoneVerificationCode}
+                    phoneFormatOptions={phoneFormatOptions}
+                  />
+                </>
+              )}
+            </span>
+          </NotificationOption>
+        )
+      })}
+    </FieldSet>
   )
 }
 
