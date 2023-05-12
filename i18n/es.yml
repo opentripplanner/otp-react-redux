@@ -364,9 +364,7 @@ components:
     header: No se encontró el contenido
   NotificationPrefsPane:
     noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
-    noneSelect: No enviar notificaciones
     notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por :"
-    notificationEmailDetail: "Los correos electrónicos de notificación se enviarán a:"
   PhoneNumberEditor:
     changeNumber: Cambiar número de teléfono
     invalidCode: Introduzca 6 dígitos para el código de validación.

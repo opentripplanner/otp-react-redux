@@ -358,9 +358,7 @@ components:
     header: Content not found
   NotificationPrefsPane:
     noDeviceForPush: Register your device using the mobile app to access this setting.
-    noneSelect: Don't notify me
     notificationChannelPrompt: "Receive notifications about your saved trips via:"
-    notificationEmailDetail: "Notification emails will be sent to:"
   PhoneNumberEditor:
     changeNumber: Change number
     invalidCode: Please enter 6 digits for the validation code.

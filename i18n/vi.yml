@@ -344,9 +344,7 @@ components:
     description: Nội dung bạn yêu cầu không có sẵn.
     header: Không tìm thấy nội dung
   NotificationPrefsPane:
-    noneSelect: Đừng thông báo cho tôi
     notificationChannelPrompt: "Nhận thông báo về các chuyến đi đã lưu bằng:"
-    notificationEmailDetail: "Email thông báo sẽ được gửi đến:"
   PhoneNumberEditor:
     changeNumber: Thay đổi số điện thoại
     invalidCode: Vui lòng nhập 6 chữ số cho mã xác thực.

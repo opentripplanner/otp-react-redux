@@ -370,9 +370,7 @@ components:
     header: Contenu introuvable
   NotificationPrefsPane:
     noDeviceForPush: Inscrivez-vous avec l'application mobile pour accéder à ce paramètre.
-    noneSelect: Ne pas me notifier
     notificationChannelPrompt: "Recevoir des notifications sur vos trajets enregistrés par :"
-    notificationEmailDetail: "Les courriers de notification seront envoyés à :"
   PhoneNumberEditor:
     changeNumber: Changer de numéro
     invalidCode: Le code de vérification doit comporter 6 chiffres.
