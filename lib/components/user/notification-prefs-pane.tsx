@@ -3,7 +3,9 @@ import { FormattedMessage } from 'react-intl'
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
-import { labelStyle } from './styled'
+import { GRAY_ON_WHITE } from '../util/colors'
+
+import { FieldSet } from './styled'
 import { PhoneVerificationSubmitHandler } from './phone-verification-form'
 import PhoneNumberEditor, {
   PhoneCodeRequestHandler
@@ -34,7 +36,7 @@ const NotificationOption = styled.div`
   display: flex;
   margin-bottom: 10px;
 
-  /* Use bootstrap's spacing between checkbox and label */
+  /* Match bootstrap's spacing between checkbox and label */
   & > span:first-child {
     flex-shrink: 0;
     width: 20px;
@@ -48,12 +50,8 @@ const NotificationOption = styled.div`
   label::first-letter {
     text-transform: uppercase;
   }
-`
-
-const NotificationOptions = styled.fieldset`
-  /* Format <legend> like labels. */
-  legend {
-    ${labelStyle}
+  label + span {
+    color: ${GRAY_ON_WHITE};
   }
 `
 
@@ -71,7 +69,7 @@ const NotificationPrefsPane = ({
 
   return (
     <div>
-      <NotificationOptions>
+      <FieldSet>
         <legend>
           <FormattedMessage id="components.NotificationPrefsPane.notificationChannelPrompt" />
         </legend>
@@ -97,9 +95,7 @@ const NotificationPrefsPane = ({
                     <label htmlFor={inputId}>
                       <FormattedMessage id="common.notifications.email" />
                     </label>
-                    <span id={inputDescriptionId} style={{ color: '#757575' }}>
-                      {email}
-                    </span>
+                    <span id={inputDescriptionId}>{email}</span>
                   </>
                 ) : (
                   <>
@@ -120,7 +116,7 @@ const NotificationPrefsPane = ({
             </NotificationOption>
           )
         })}
-      </NotificationOptions>
+      </FieldSet>
     </div>
   )
 }

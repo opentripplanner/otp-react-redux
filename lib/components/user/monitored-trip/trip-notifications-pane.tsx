@@ -5,6 +5,7 @@ import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
 import React, { Component, ComponentType, FormEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 
+import { FieldSet } from '../styled'
 import { IconWithText } from '../../util/styledIcon'
 
 // Element styles
@@ -34,16 +35,6 @@ const Summary = styled.summary`
   /* Format summary as labels */
   font-weight: 700;
   margin-bottom: 5px;
-`
-
-const NotificationSettings = styled.fieldset`
-  /* Format <legend> like labels. */
-  legend {
-    border: none;
-    font-size: inherit;
-    font-weight: 700;
-    margin-bottom: 5px;
-  }
 `
 
 /**
@@ -214,7 +205,7 @@ class TripNotificationsPane extends Component<Props> {
       )
     } else {
       notificationSettingsContent = (
-        <NotificationSettings>
+        <FieldSet>
           <legend>
             <FormattedMessage
               id="components.TripNotificationsPane.notifyViaChannelWhen"
@@ -296,7 +287,7 @@ class TripNotificationsPane extends Component<Props> {
               </li>
             </SettingsList>
           </details>
-        </NotificationSettings>
+        </FieldSet>
       )
     }
 
