@@ -316,7 +316,6 @@ components:
     exclusiveMode: Chỉ {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Thay đổi hướng sắp xếp
-    itinerariesAndIssues: "{itinerariesFound} và {numIssues}"
     itinerariesFound: "{itineraryNum} hành trình được tìm thấy"
     numIssues: "{issueNum} vấn đề"
     searching: Tìm lựa chọn của bạn…

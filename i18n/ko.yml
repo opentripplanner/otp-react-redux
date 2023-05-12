@@ -304,7 +304,6 @@ components:
     exclusiveMode: "{mode} 전용"
   NarrativeItinerariesHeader:
     changeSortDir: 정렬 방향 변경
-    itinerariesAndIssues: "{itinerariesFound} 및 {numIssues}"
     itinerariesFound: "{itineraryNum} 개의 여정을 찾았습니다"
     numIssues: |-
       {issueNum, plural,
