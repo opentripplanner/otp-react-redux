@@ -25,6 +25,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
       id="locale-selector"
       label={intl.formatMessage({ id: 'components.SubNav.selectALanguage' })}
       listLabel={intl.formatMessage({ id: 'components.SubNav.languages' })}
+      locale
       name={
         <span
           style={{

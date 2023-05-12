@@ -8,6 +8,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
+import { sortOptions } from '../util/sortOptions'
+import { UnstyledButton } from '../util/unstyled-button'
+import Dropdown from '../util/dropdown'
 
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
@@ -51,7 +54,7 @@ export default function NarrativeItinerariesHeader({
   itineraries: unknown[]
   itinerary: Itinerary
   itineraryIsExpanded: boolean
-  onSortChange: () => void
+  onSortChange: (type: string) => VoidFunction
   onSortDirChange: () => void
   onToggleShowErrors: () => void
   onViewAllOptions: () => void
@@ -153,7 +156,7 @@ export default function NarrativeItinerariesHeader({
             style={{
               display: 'flex',
               float: 'right',
-              gap: 5,
+              gap: 7,
               marginLeft: showHeaderText ? 'inherit' : 'auto'
             }}
           >
@@ -179,48 +182,25 @@ export default function NarrativeItinerariesHeader({
                 )}
               </StyledIconWrapper>
             </button>
-            <select
-              aria-label={intl.formatMessage({
-                id: 'components.NarrativeItinerariesHeader.sortBy'
+            <Dropdown
+              id="sort-results"
+              label={intl.formatMessage({
+                id: 'components.NarrativeItinerariesHeader.sortResults'
               })}
-              onBlur={onSortChange}
-              onChange={onSortChange}
-              title={intl.formatMessage({
-                id: 'components.NarrativeItinerariesHeader.sortBy'
+              name={intl.formatMessage({
+                id: 'components.NarrativeItinerariesHeader.sortResults'
               })}
-              value={sort.type}
             >
-              <option value="BEST">
-                {intl.formatMessage({
-                  id: 'components.NarrativeItinerariesHeader.selectBest'
-                })}
-              </option>
-              <option value="DURATION">
-                {intl.formatMessage({
-                  id: 'components.NarrativeItinerariesHeader.selectDuration'
-                })}
-              </option>
-              <option value="ARRIVALTIME">
-                {intl.formatMessage({
-                  id: 'components.NarrativeItinerariesHeader.selectArrivalTime'
-                })}
-              </option>
-              <option value="DEPARTURETIME">
-                {intl.formatMessage({
-                  id: 'components.NarrativeItinerariesHeader.selectDepartureTime'
-                })}
-              </option>
-              <option value="WALKTIME">
-                {intl.formatMessage({
-                  id: 'components.NarrativeItinerariesHeader.selectWalkTime'
-                })}
-              </option>
-              <option value="COST">
-                {intl.formatMessage({
-                  id: 'components.NarrativeItinerariesHeader.selectCost'
-                })}
-              </option>
-            </select>
+              {sortOptions.map((x) => {
+                return (
+                  <li key={x.value}>
+                    <UnstyledButton onClick={() => onSortChange(x.value)}>
+                      <FormattedMessage id={x.locale} />
+                    </UnstyledButton>
+                  </li>
+                )
+              })}
+            </Dropdown>
           </div>
           <PlanFirstLastButtons />
         </>

@@ -12,23 +12,28 @@ interface Props extends HTMLAttributes<HTMLElement> {
   id: string
   label?: string
   listLabel?: string
-  name: JSX.Element
+  locale?: boolean
+  name: JSX.Element | string
   pullRight?: boolean
 }
 
 // TODO: make this a button once bootstrap is removed
-const DropdownButton = styled.a`
+const DropdownButton = styled.a<{ locale?: boolean }>`
   border: none;
+  border-radius: ${(props) => (props.locale ? '' : '5px')};
   color: inherit;
   display: block;
+  padding: ${(props) => (props.locale ? '' : '3px 7px;')};
   transition: all 0.1s ease-in-out;
 
   &:hover {
-    background: rgba(0, 0, 0, 0.05) !important;
+    background: ${(props) =>
+      props.locale ? 'rgba(0, 0, 0, 0.05) !important' : '#fff'};
     cursor: pointer;
   }
   &.active {
-    background: rgba(0, 0, 0, 0.1) !important;
+    background: ${(props) =>
+      props.locale ? 'rgba(0, 0, 0, 0.05) !important' : '#fff'};
   }
 `
 const DropdownMenu = styled.ul`
@@ -101,6 +106,7 @@ const Dropdown = ({
   id,
   label,
   listLabel,
+  locale,
   name,
   pullRight,
   style
@@ -158,10 +164,14 @@ const Dropdown = ({
 
   return (
     <DropdownContainer
+      as={!locale ? 'span' : ''}
       id={`${id}-wrapper`}
       onKeyDown={_handleKeyDown}
       ref={containerRef}
-      style={{ float: pullRight ? 'right' : 'left' }}
+      style={{
+        float: pullRight ? 'right' : 'left',
+        position: locale ? 'inherit' : 'relative'
+      }}
     >
       <DropdownButton
         // Only set aria-controls when the dropdown is open
@@ -170,8 +180,10 @@ const Dropdown = ({
         aria-expanded={open}
         aria-haspopup="listbox"
         aria-label={label}
+        as={!locale ? 'button' : ''}
         className={`${open && 'active'}`}
         id={`${id}-label`}
+        locale={locale}
         onClick={toggleOpen}
         role="button"
         style={style}
