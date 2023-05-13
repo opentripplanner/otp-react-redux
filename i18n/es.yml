@@ -350,6 +350,8 @@ components:
     selectWalkTime: Tiempo de caminata
     sortBy: Ordenar por
     viewAll: Ver todas las opciones
+    howToFindResults: Para ver los resultados, consulta el encabezado de los itinerarios
+      encontrados a continuación.
   NavLoginButton:
     help: Ayuda
     myAccount: Mi cuenta
