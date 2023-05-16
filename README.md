@@ -122,6 +122,6 @@ If changes to a specific language file is needed but not enabled in Weblate, ple
 
 ## Library Documentation
 
-More coming soon...
+You can chat with the main OTP-RR developers in our [Gitter chat](https://gitter.im/opentripplanner/otp-react-redux). Support is not guaranteed, but we may be able to answer questions and assist people wishing to make contributions. 
 
 As of version 2.0, otp-react-redux utilizes React's context API in a number of components. This changed the way that some components receive props such that they will not work properly unless wrapped with the context provider used in the `ResponsiveWebapp` component.
