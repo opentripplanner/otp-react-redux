@@ -3,8 +3,8 @@ import { useIntl } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useEffect } from 'react'
 
-import { Icon } from '../util/styledIcon'
-import { X } from '@styled-icons/bootstrap/X'
+import { StyledIconWrapper } from '../util/styledIcon'
+import { Times } from '@styled-icons/fa-solid'
 import PageTitle from '../util/page-title'
 
 import styled from 'styled-components'
@@ -20,22 +20,10 @@ type Props = {
 }
 
 const CloseModalButton = styled.button`
-  background: #fff;
-  border: none;
-  border-radius: 50%;
-  font-size: 2em;
-  position: absolute;
-  right: 0.5em;
-  top: 0.5em;
-  transition: 150ms all ease;
-
-  svg {
-    margin-top: -3px;
-  }
-
-  &:hover {
-    background: #eee;
-    transition: 150ms all ease;
+  &.close-button {
+    padding: 0.25em;
+    right: 0.75em;
+    top: 0.5em;
   }
 `
 
@@ -85,10 +73,13 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
     >
       <CloseModalButton
         aria-label={closeText}
+        className="clear-button-formatting close-button"
         onClick={hideModal}
         title={closeText}
       >
-        <Icon Icon={X} />
+        <StyledIconWrapper>
+          <Times />
+        </StyledIconWrapper>
       </CloseModalButton>
       <PageTitle title={title} />
       <iframe src={compiledUrl} title={title} />
