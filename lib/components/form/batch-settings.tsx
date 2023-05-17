@@ -21,6 +21,7 @@ import type {
   ModeSettingValues
 } from '@opentripplanner/types'
 
+import tinycolor from 'tinycolor2'
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
