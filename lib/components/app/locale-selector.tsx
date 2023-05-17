@@ -4,9 +4,9 @@ import { useIntl } from 'react-intl'
 import React from 'react'
 
 import * as uiActions from '../../actions/ui'
+import { Dropdown } from '../util/dropdown'
 import { getLanguageOptions } from '../../util/i18n'
 import { UnstyledButton } from '../util/unstyled-button'
-import Dropdown from '../util/dropdown'
 
 interface LocaleSelectorProps {
   // Typescript TODO languageOptions based on configLanguage type.
@@ -25,7 +25,6 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
       id="locale-selector"
       label={intl.formatMessage({ id: 'components.SubNav.selectALanguage' })}
       listLabel={intl.formatMessage({ id: 'components.SubNav.languages' })}
-      locale
       name={
         <span
           style={{
@@ -35,6 +34,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
           <GlobeAmericas height="18px" />
         </span>
       }
+      nav
       style={{ display: 'block ruby' }}
       // TODO: How to make this work without block ruby?
     >

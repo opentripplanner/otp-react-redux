@@ -5,9 +5,9 @@ import { User } from '@auth0/auth0-react'
 import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
 
+import { Dropdown } from '../util/dropdown'
 import { LinkContainerWithQuery } from '../form/connected-links'
 import { UnstyledButton } from '../util/unstyled-button'
-import Dropdown from '../util/dropdown'
 
 const Avatar = styled.img`
   height: 2em;
@@ -67,7 +67,7 @@ const NavLoginButton = ({
             />
           </span>
         }
-        pullRight
+        nav
       >
         <li className="header">{displayedName}</li>
 

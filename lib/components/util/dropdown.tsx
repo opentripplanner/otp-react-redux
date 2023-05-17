@@ -12,28 +12,23 @@ interface Props extends HTMLAttributes<HTMLElement> {
   id: string
   label?: string
   listLabel?: string
-  locale?: boolean
   name: JSX.Element | string
-  pullRight?: boolean
+  nav?: boolean
 }
 
 // TODO: make this a button once bootstrap is removed
-const DropdownButton = styled.a<{ locale?: boolean }>`
+const DropdownButton = styled.a`
   border: none;
-  border-radius: ${(props) => (props.locale ? '' : '5px')};
   color: inherit;
   display: block;
-  padding: ${(props) => (props.locale ? '' : '3px 7px;')};
   transition: all 0.1s ease-in-out;
 
   &:hover {
-    background: ${(props) =>
-      props.locale ? 'rgba(0, 0, 0, 0.05) !important' : '#fff'};
+    background: rgba(0, 0, 0, 0.05);
     cursor: pointer;
   }
   &.active {
-    background: ${(props) =>
-      props.locale ? 'rgba(0, 0, 0, 0.05) !important' : '#fff'};
+    background: rgba(0, 0, 0, 0.05);
   }
 `
 const DropdownMenu = styled.ul`
@@ -75,7 +70,6 @@ const DropdownMenu = styled.ul`
     background: rgba(0, 0, 0, 0.1);
   }
 `
-const DropdownContainer = styled.li``
 
 /**
  * Helper method to find the element within dropdown menu at the given offset
@@ -101,20 +95,22 @@ function getEntryRelativeTo(
  * a floating div is rendered below the "name" with list contents inside. Clicking anywhere
  * outside the floating div will close the dropdown.
  */
-const Dropdown = ({
+export const Dropdown = ({
   children,
+  className,
   id,
   label,
   listLabel,
-  locale,
   name,
-  pullRight,
+  nav,
   style
 }: Props): JSX.Element => {
   const [open, setOpen] = useState(false)
   const containerRef = useRef<HTMLLIElement>(null)
 
   const toggleOpen = useCallback(() => setOpen(!open), [open, setOpen])
+
+  const DropdownContainerEl = nav ? 'li' : 'span'
 
   // Adding document event listeners allows us to close the dropdown
   // when the user interacts with any part of the page that isn't the dropdown
@@ -163,15 +159,11 @@ const Dropdown = ({
   )
 
   return (
-    <DropdownContainer
-      as={!locale ? 'span' : ''}
+    <DropdownContainerEl
+      className={className}
       id={`${id}-wrapper`}
       onKeyDown={_handleKeyDown}
       ref={containerRef}
-      style={{
-        float: pullRight ? 'right' : 'left',
-        position: locale ? 'inherit' : 'relative'
-      }}
     >
       <DropdownButton
         // Only set aria-controls when the dropdown is open
@@ -180,10 +172,9 @@ const Dropdown = ({
         aria-expanded={open}
         aria-haspopup="listbox"
         aria-label={label}
-        as={!locale ? 'button' : ''}
+        as={nav ? '' : 'button'}
         className={`${open && 'active'}`}
         id={`${id}-label`}
-        locale={locale}
         onClick={toggleOpen}
         role="button"
         style={style}
@@ -204,8 +195,25 @@ const Dropdown = ({
           {children}
         </DropdownMenu>
       )}
-    </DropdownContainer>
+    </DropdownContainerEl>
   )
 }
 
-export default Dropdown
+export const SortResultsDropdown = styled(Dropdown)`
+    position: relative;
+
+    ${DropdownButton} {
+      border-radius: 5px;
+      padding: 3px 7px;
+      min-width: 130px;
+      text-align: right;
+
+      &:hover {
+        background: #fff;
+      }
+      &.active {
+        background: #fff;
+      }
+    }
+  }
+`

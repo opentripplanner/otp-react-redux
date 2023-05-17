@@ -1,18 +1,18 @@
+/* eslint-disable complexity */
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
 import { sortOptions } from '../util/sortOptions'
+import { SortResultsDropdown } from '../util/dropdown'
 import { UnstyledButton } from '../util/unstyled-button'
-import Dropdown from '../util/dropdown'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
-
 
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
@@ -60,6 +60,12 @@ export default function NarrativeItinerariesHeader({
   sort: { direction: string; type: string }
 }): JSX.Element {
   const intl = useIntl()
+
+  const [sortSelectedText, setSortSelectedText] = useState(
+    intl.formatMessage({
+      id: 'components.NarrativeItinerariesHeader.selectBest'
+    })
+  )
   const itinerariesFound = intl.formatMessage(
     {
       id: 'components.NarrativeItinerariesHeader.itinerariesFound'
@@ -73,15 +79,25 @@ export default function NarrativeItinerariesHeader({
     { issueNum: errors.length }
   )
 
+  const sortResultsLabel = intl.formatMessage({
+    id: 'components.NarrativeItinerariesHeader.sortResults'
+  })
+
   // Transitions to the UI states below should be announced to assistive technology:
   // - A search is in progress.
   // - Results or no results are found (with or without errors).
+  // - Sort order of trip results
   const searching = intl.formatMessage({
     id: 'components.NarrativeItinerariesHeader.searching'
   })
   const narrativeUiStatus = pending
     ? searching
     : intl.formatList([itinerariesFound, numIssues], { type: 'conjunction' })
+
+  const onClickSort = (x: { text: string; value: string }) => {
+    onSortChange(x.value)
+    setSortSelectedText(x.text)
+  }
 
   return (
     <div
@@ -95,9 +111,19 @@ export default function NarrativeItinerariesHeader({
       <InvisibleA11yLabel as="div" role="status">
         <p>{narrativeUiStatus}</p>
         {!pending && itineraries.length !== 0 && (
-          <p>
-            <FormattedMessage id="components.NarrativeItinerariesHeader.howToFindResults" />
-          </p>
+          <>
+            <p>
+              <FormattedMessage id="components.NarrativeItinerariesHeader.howToFindResults" />
+            </p>
+            <p>
+              {intl.formatMessage(
+                {
+                  id: 'components.NarrativeItinerariesHeader.resultsSortedBy'
+                },
+                { sortSelected: sortSelectedText }
+              )}
+            </p>
+          </>
         )}
       </InvisibleA11yLabel>
 
@@ -150,7 +176,7 @@ export default function NarrativeItinerariesHeader({
             style={{
               display: 'flex',
               float: 'right',
-              gap: 7,
+              gap: 8,
               marginLeft: showHeaderText ? 'inherit' : 'auto'
             }}
           >
@@ -176,25 +202,32 @@ export default function NarrativeItinerariesHeader({
                 )}
               </StyledIconWrapper>
             </button>
-            <Dropdown
+            <SortResultsDropdown
               id="sort-results"
-              label={intl.formatMessage({
-                id: 'components.NarrativeItinerariesHeader.sortResults'
-              })}
-              name={intl.formatMessage({
-                id: 'components.NarrativeItinerariesHeader.sortResults'
-              })}
+              label={sortResultsLabel}
+              name={sortSelectedText}
+              title={sortResultsLabel}
             >
-              {sortOptions.map((x) => {
+              {sortOptions().map((x) => {
                 return (
-                  <li key={x.value}>
-                    <UnstyledButton onClick={() => onSortChange(x.value)}>
-                      <FormattedMessage id={x.locale} />
+                  <li
+                    key={x.value}
+                    style={{
+                      fontWeight:
+                        sortSelectedText === x.text ? 'bold' : undefined
+                    }}
+                  >
+                    <UnstyledButton
+                      aria-selected={sortSelectedText === x.text || undefined}
+                      onClick={() => onClickSort(x)}
+                      role="option"
+                    >
+                      {x.text}
                     </UnstyledButton>
                   </li>
                 )
               })}
-            </Dropdown>
+            </SortResultsDropdown>
           </div>
           <PlanFirstLastButtons />
         </>

@@ -3,14 +3,8 @@
 }
 
 .otp .options > .header {
-  margin: 15px 25px;
+  margin: 1em;
   font-size: 16px;
-}
-
-@media (max-width: 768px) {
-  .otp .options > .header {
-    margin: 1em;
-  }
 }
 
 /* Options scroll bar  */
