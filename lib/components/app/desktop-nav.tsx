@@ -47,10 +47,10 @@ const DesktopNav = ({
   setPopupContent
 }: Props) => {
   const {
+    brandClickable,
     branding,
     persistence,
-    title = DEFAULT_APP_TITLE,
-    brandClickable
+    title = DEFAULT_APP_TITLE
   } = otpConfig
   const showLogin = Boolean(getAuth0Config(persistence))
 
