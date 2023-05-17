@@ -1,6 +1,6 @@
 import {
   addSettingsToButton,
-  convertModeSettingValue,
+  generateModeSettingValues,
   MetroModeSelector,
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
@@ -229,18 +229,10 @@ function BatchSettings({
 // TODO: Typescript
 const mapStateToProps = (state: any) => {
   const urlSearchParams = new URLSearchParams(state.router.location.search)
-  // TODO: Move this to OTP-UI (same code exists in APIV2)
-  const modeSettingValues = state.otp.modeSettingDefinitions.reduce(
-    (acc: ModeSettingValues, setting: ModeSetting) => {
-      const fromUrl = urlSearchParams.get(setting.key)
-      acc[setting.key] = fromUrl
-        ? convertModeSettingValue(setting, fromUrl)
-        : state.otp?.config?.modes?.initialState?.modeSettingValues?.[
-            setting.key
-          ] || setting.default
-      return acc
-    },
-    {}
+  const modeSettingValues = generateModeSettingValues(
+    urlSearchParams,
+    state.otp?.modeSettingDefinitions || [],
+    state.otp.config.initialState.modeSettingValues
   )
   return {
     activeSearch: getActiveSearch(state),
