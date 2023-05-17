@@ -225,7 +225,9 @@ modes:
     # this setting will show up in the hover panel for that button.
     - applicableMode: TRANSIT
       default: false # Initial state value
-      key: wheelchair # Key is used for i18n and query parameters
+      # One of the predefined query parameter names.
+      # See OTP-UI ModeSelector component for a list of supported parameter names.
+      key: wheelchair
       iconName: wheelchair
       type: CHECKBOX # Possible options: CHECKBOX, SUBMODE, SLIDER, DROPDOWN
   transitModes:
