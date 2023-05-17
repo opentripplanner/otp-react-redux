@@ -673,11 +673,6 @@ components:
     rememberOptions: Hãy nhớ các tùy chọn chuyến đi
     restoreDefaults: Khôi phục mặc định
     restoreMyDefaults: Khôi phục mặc định của tôi
-    restoreOptions: |
-      Khôi phục {defaults, select,
-       true {mặc định của tôi}
-       other {mặc định}
-       }
   VerifyEmailPane:
     emailIsVerified: Email của tôi đã được xác minh!
     instructions1: >
