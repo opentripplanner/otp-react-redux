@@ -168,6 +168,12 @@ function BatchSettings({
     )
   }
 
+  // We can rely on this existing, as there is a default
+  const baseColor = getComputedStyle(document.documentElement).getPropertyValue(
+    '--main-base-color'
+  )
+  const accentColor = tinycolor(baseColor).darken(10)
+
   return (
     <div role="group">
       <MainSettingsRow>
@@ -182,6 +188,8 @@ function BatchSettings({
         </StyledDateTimePreviewContainer>
         <ModeSelectorContainer squashed={!spacedOutModeSelector}>
           <MetroModeSelector
+            accentColor={baseColor}
+            activeHoverColor={accentColor.toHexString()}
             fillModeIcons={fillModeIcons}
             modeButtons={processedModeButtons}
             onSettingsUpdate={setUrlSearch}
