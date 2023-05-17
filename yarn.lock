@@ -2614,10 +2614,10 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@^3.1.0-alpha.23":
-  version "3.1.0-alpha.23"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.1.0-alpha.23.tgz#f7ef5725c630cd2a51dc5ed83074b3fe5400075a"
-  integrity sha512-4n36/DOfnLdrK1U4CwWa2QFX8lg3kDLgvC1XObua2GtYYxv2tjUHaPA/+vo143mxqSVB8kIQeKe6Xx27Sy8cDA==
+"@opentripplanner/trip-form@^3.1.0-alpha.25":
+  version "3.1.0-alpha.25"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.1.0-alpha.25.tgz#5d03c049449f963914bdb999c24ba31783ba096b"
+  integrity sha512-ai/aRrGuXODkh43YkDEv+hbwNECLVq6A7we0KPiwfNseUX2ynmX/rk4BFRwMIMgnQgAaeD8gC14HHQN4CTk0/Q==
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/core-utils" "^8.2.1"
