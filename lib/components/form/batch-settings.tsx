@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import {
   addSettingsToButton,
   convertModeSettingValue,
@@ -11,22 +10,22 @@ import {
   DelimitedArrayParam,
   encodeQueryParams
 } from 'use-query-params'
-import { injectIntl, IntlShape } from 'react-intl'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
-import React, { useContext, useState } from 'react'
+import { useIntl } from 'react-intl'
+import React, { useCallback, useContext, useState } from 'react'
 import type {
   ModeButtonDefinition,
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
 
-import tinycolor from 'tinycolor2'
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { StyledIconWrapper } from '../util/styledIcon'
+import tinycolor from 'tinycolor2'
 
 import {
   DateTimeModalContainer,
@@ -47,7 +46,6 @@ type Props = {
   currentQuery: any
   enabledModeButtons: string[]
   fillModeIcons?: boolean
-  intl: IntlShape
   modeButtonOptions: ModeButtonDefinition[]
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
@@ -64,7 +62,6 @@ function pipe<T>(...fns: Array<(arg: T) => T>) {
   return (value: T) => fns.reduce((acc, fn) => fn(acc), value)
 }
 
-// TODO: Move to otp-ui
 export function setModeButtonEnabled(enabledKeys: string[]) {
   return (modeButton: ModeButtonDefinition): ModeButtonDefinition => {
     return {
@@ -82,7 +79,6 @@ function BatchSettings({
   currentQuery,
   enabledModeButtons,
   fillModeIcons,
-  intl,
   modeButtonOptions,
   modeSettingDefinitions,
   modeSettingValues,
@@ -91,11 +87,13 @@ function BatchSettings({
   setUrlSearch,
   spacedOutModeSelector
 }: Props) {
+  const intl = useIntl()
+
   const [dateTimeExpanded, setDateTimeExpanded] = useState<boolean>(false)
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
-  const addModeButtonIcon = React.useCallback(
+  const addModeButtonIcon = useCallback(
     (def: ModeButtonDefinition) => ({
       ...def,
       Icon: function ModeButtonIcon() {
@@ -105,7 +103,7 @@ function BatchSettings({
     [ModeIcon]
   )
 
-  const populateSettingWithIcon = React.useCallback(
+  const populateSettingWithIcon = useCallback(
     (msd: ModeSetting) => ({
       ...msd,
       icon: <ModeIcon mode={msd.iconName} width={16} />
@@ -125,7 +123,7 @@ function BatchSettings({
     )
   )
 
-  const _planTrip = () => {
+  const _planTrip = useCallback(() => {
     // Check for any validation issues in query.
     const issues = []
     if (!hasValidLocation(currentQuery, 'from')) {
@@ -152,22 +150,25 @@ function BatchSettings({
 
     // Plan trip.
     routingQuery()
-  }
+  }, [currentQuery, intl, onPlanTripClick, routingQuery])
 
-  const _toggleModeButton = (buttonId: string, newState: boolean) => {
-    let newButtons
-    if (newState) {
-      newButtons = [...enabledModeButtons, buttonId]
-    } else {
-      newButtons = enabledModeButtons.filter((c) => c !== buttonId)
-    }
+  const _toggleModeButton = useCallback(
+    (buttonId: string, newState: boolean) => {
+      let newButtons
+      if (newState) {
+        newButtons = [...enabledModeButtons, buttonId]
+      } else {
+        newButtons = enabledModeButtons.filter((c) => c !== buttonId)
+      }
 
-    // encodeQueryParams serializes the mode buttons for the URL
-    // It uses encodeQueryParams to get nice looking URL params and consistency
-    setUrlSearch(
-      encodeQueryParams(queryParamConfig, { modeButtons: newButtons })
-    )
-  }
+      // encodeQueryParams serializes the mode buttons for the URL
+      // It uses encodeQueryParams to get nice looking URL params and consistency
+      setUrlSearch(
+        encodeQueryParams(queryParamConfig, { modeButtons: newButtons })
+      )
+    },
+    [enabledModeButtons, setUrlSearch]
+  )
 
   // We can rely on this existing, as there is a default
   const baseColor = getComputedStyle(document.documentElement).getPropertyValue(
@@ -267,7 +268,4 @@ const mapDispatchToProps = {
   setUrlSearch: apiActions.setUrlSearch
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectIntl(BatchSettings))
+export default connect(mapStateToProps, mapDispatchToProps)(BatchSettings)
