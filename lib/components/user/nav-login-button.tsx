@@ -105,12 +105,13 @@ const NavLoginButton = ({
   }
 
   // Display the sign-in link if no profile is passed (user is not logged in).
+  const loginText = intl.formatMessage({
+    id: 'components.NavLoginButton.signIn'
+  })
   return (
-    <NavItem {...commonProps} onClick={onSignInClick}>
+    <NavItem {...commonProps} onClick={onSignInClick} title={loginText}>
       <UserIcon height="18px" />
-      <InvisibleA11yLabel>
-        <FormattedMessage id="components.NavLoginButton.signIn" />
-      </InvisibleA11yLabel>
+      <InvisibleA11yLabel>{loginText}</InvisibleA11yLabel>
     </NavItem>
   )
 }
