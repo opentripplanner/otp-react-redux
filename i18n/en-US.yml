@@ -357,7 +357,7 @@ components:
     description: The content you requested is not available.
     header: Content not found
   NotificationPrefsPane:
-    noDeviceForPush: Register your device using the mobile app to access this setting.
+    noDeviceForPush: Register your device using the mobile app to access push notifications.
     notificationChannelPrompt: "Receive notifications about your saved trips via:"
   PhoneNumberEditor:
     changeNumber: Change number
