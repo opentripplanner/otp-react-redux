@@ -55,50 +55,52 @@ const NavLoginButton = ({
   if (profile) {
     const displayedName = profile.nickname || profile.name
     return (
-      <Dropdown
-        id="user-selector"
-        label={intl.formatMessage({ id: 'components.SubNav.userMenu' })}
-        name={
-          <span>
-            <Avatar
-              alt={displayedName}
-              src={profile.picture}
-              title={`${displayedName}\n(${profile.email})`}
-            />
-          </span>
-        }
-        nav
-      >
-        <li className="header">{displayedName}</li>
+      <li>
+        <Dropdown
+          id="user-selector"
+          label={intl.formatMessage({ id: 'components.SubNav.userMenu' })}
+          name={
+            <span>
+              <Avatar
+                alt={displayedName}
+                src={profile.picture}
+                title={`${displayedName}\n(${profile.email})`}
+              />
+            </span>
+          }
+          nav
+        >
+          <li className="header">{displayedName}</li>
 
-        {links &&
-          links.map((link, i) => (
-            <LinkContainerWithQuery
-              exact
-              key={i}
-              target={link.target}
-              to={link.url}
-            >
-              <li>
-                <UnstyledButton>
-                  {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
-                    <FormattedMessage id="components.NavLoginButton.myAccount" />
-                  ) : (
-                    <FormattedMessage id="components.NavLoginButton.help" />
-                  )}
-                </UnstyledButton>
-              </li>
-            </LinkContainerWithQuery>
-          ))}
+          {links &&
+            links.map((link, i) => (
+              <LinkContainerWithQuery
+                exact
+                key={i}
+                target={link.target}
+                to={link.url}
+              >
+                <li>
+                  <UnstyledButton>
+                    {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
+                      <FormattedMessage id="components.NavLoginButton.myAccount" />
+                    ) : (
+                      <FormattedMessage id="components.NavLoginButton.help" />
+                    )}
+                  </UnstyledButton>
+                </li>
+              </LinkContainerWithQuery>
+            ))}
 
-        <hr role="presentation" />
+          <hr role="presentation" />
 
-        <li>
-          <UnstyledButton onClick={onSignOutClick}>
-            <FormattedMessage id="components.NavLoginButton.signOut" />
-          </UnstyledButton>
-        </li>
-      </Dropdown>
+          <li>
+            <UnstyledButton onClick={onSignOutClick}>
+              <FormattedMessage id="components.NavLoginButton.signOut" />
+            </UnstyledButton>
+          </li>
+        </Dropdown>
+      </li>
     )
   }
 

@@ -26,8 +26,8 @@
   background-color: #080808;
 }
 .navbar-inverse .navbar-nav > li > a,
-.navbar-inverse .navbar-nav > li > button,
-.otp.mobile .navbar .container-fluid .locale-selector-and-login > li > button,
+.navbar-inverse .navbar-nav > li > span > button,
+.otp.mobile .navbar .container-fluid .locale-selector-and-login > li > span > button,
 .otp.mobile
   .navbar
   .container-fluid
@@ -37,7 +37,7 @@
   color: #fff;
   text-decoration: none;
 }
-.navbar-inverse .navbar-nav > li > button{
+.navbar-inverse .navbar-nav > li > span > button{
   background: transparent;
   line-height: 20px;
   padding: 15px;

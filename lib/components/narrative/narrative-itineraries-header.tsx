@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
-import React from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components'
 
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
@@ -89,7 +89,15 @@ export default function NarrativeItinerariesHeader({
     ? searching
     : intl.formatList([itinerariesFound, numIssues], { type: 'conjunction' })
 
-  const sortText = sortOptions(intl).find((x) => x.value === sort.type)?.text
+  const sortOptionsArr = sortOptions(intl)
+  const sortText = sortOptionsArr.find((x) => x.value === sort.type)?.text
+
+  const handleSortClick = useCallback(
+    (value) => {
+      onSortChange(value)
+    },
+    [onSortChange]
+  )
 
   return (
     <div
@@ -200,17 +208,12 @@ export default function NarrativeItinerariesHeader({
               name={sortText}
               title={sortResultsLabel}
             >
-              {sortOptions(intl).map((x) => {
+              {sortOptionsArr.map((x) => {
                 return (
-                  <li
-                    key={x.value}
-                    style={{
-                      fontWeight: sortText === x.text ? 'bold' : undefined
-                    }}
-                  >
+                  <li className="sort-option" key={x.value}>
                     <UnstyledButton
                       aria-selected={sortText === x.text || undefined}
-                      onClick={() => onSortChange(x.value)}
+                      onClick={() => handleSortClick(x.value)}
                       role="option"
                     >
                       {x.text}

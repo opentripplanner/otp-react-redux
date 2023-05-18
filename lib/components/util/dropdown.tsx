@@ -101,15 +101,12 @@ export const Dropdown = ({
   label,
   listLabel,
   name,
-  nav,
   style
 }: Props): JSX.Element => {
   const [open, setOpen] = useState(false)
   const containerRef = useRef<HTMLLIElement>(null)
 
   const toggleOpen = useCallback(() => setOpen(!open), [open, setOpen])
-
-  const DropdownContainerEl = nav ? 'li' : 'span'
 
   // Adding document event listeners allows us to close the dropdown
   // when the user interacts with any part of the page that isn't the dropdown
@@ -158,11 +155,12 @@ export const Dropdown = ({
   )
 
   return (
-    <DropdownContainerEl
+    <span
       className={className}
       id={`${id}-wrapper`}
       onKeyDown={_handleKeyDown}
       ref={containerRef}
+      role="presentation"
     >
       <DropdownButton
         // Only set aria-controls when the dropdown is open
@@ -192,7 +190,7 @@ export const Dropdown = ({
           {children}
         </DropdownMenu>
       )}
-    </DropdownContainerEl>
+    </span>
   )
 }
 
