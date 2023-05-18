@@ -12,12 +12,11 @@ interface Props extends HTMLAttributes<HTMLElement> {
   id: string
   label?: string
   listLabel?: string
-  name: JSX.Element | string
+  name?: JSX.Element | string
   nav?: boolean
 }
 
-// TODO: make this a button once bootstrap is removed
-const DropdownButton = styled.a`
+const DropdownButton = styled.button`
   border: none;
   color: inherit;
   display: block;
@@ -172,11 +171,9 @@ export const Dropdown = ({
         aria-expanded={open}
         aria-haspopup="listbox"
         aria-label={label}
-        as={nav ? '' : 'button'}
         className={`${open && 'active'}`}
         id={`${id}-label`}
         onClick={toggleOpen}
-        role="button"
         style={style}
         tabIndex={0}
       >
@@ -205,8 +202,6 @@ export const SortResultsDropdown = styled(Dropdown)`
     ${DropdownButton} {
       border-radius: 5px;
       padding: 3px 7px;
-      min-width: 130px;
-      text-align: right;
 
       &:hover {
         background: #fff;

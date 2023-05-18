@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
@@ -61,11 +61,6 @@ export default function NarrativeItinerariesHeader({
 }): JSX.Element {
   const intl = useIntl()
 
-  const [sortSelectedText, setSortSelectedText] = useState(
-    intl.formatMessage({
-      id: 'components.NarrativeItinerariesHeader.selectBest'
-    })
-  )
   const itinerariesFound = intl.formatMessage(
     {
       id: 'components.NarrativeItinerariesHeader.itinerariesFound'
@@ -94,10 +89,7 @@ export default function NarrativeItinerariesHeader({
     ? searching
     : intl.formatList([itinerariesFound, numIssues], { type: 'conjunction' })
 
-  const onClickSort = (x: { text: string; value: string }) => {
-    onSortChange(x.value)
-    setSortSelectedText(x.text)
-  }
+  const sortText = sortOptions(intl).find((x) => x.value === sort.type)?.text
 
   return (
     <div
@@ -120,7 +112,7 @@ export default function NarrativeItinerariesHeader({
                 {
                   id: 'components.NarrativeItinerariesHeader.resultsSortedBy'
                 },
-                { sortSelected: sortSelectedText }
+                { sortSelected: sortText }
               )}
             </p>
           </>
@@ -205,21 +197,20 @@ export default function NarrativeItinerariesHeader({
             <SortResultsDropdown
               id="sort-results"
               label={sortResultsLabel}
-              name={sortSelectedText}
+              name={sortText}
               title={sortResultsLabel}
             >
-              {sortOptions().map((x) => {
+              {sortOptions(intl).map((x) => {
                 return (
                   <li
                     key={x.value}
                     style={{
-                      fontWeight:
-                        sortSelectedText === x.text ? 'bold' : undefined
+                      fontWeight: sortText === x.text ? 'bold' : undefined
                     }}
                   >
                     <UnstyledButton
-                      aria-selected={sortSelectedText === x.text || undefined}
-                      onClick={() => onClickSort(x)}
+                      aria-selected={sortText === x.text || undefined}
+                      onClick={() => onSortChange(x.value)}
                       role="option"
                     >
                       {x.text}

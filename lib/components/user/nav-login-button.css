@@ -26,17 +26,24 @@
   background-color: #080808;
 }
 .navbar-inverse .navbar-nav > li > a,
-.otp.mobile .navbar .container-fluid .locale-selector-and-login > li > a,
+.navbar-inverse .navbar-nav > li > button,
+.otp.mobile .navbar .container-fluid .locale-selector-and-login > li > button,
 .otp.mobile
   .navbar
   .container-fluid
   .locale-selector-and-login
   > li.dropdown.open
-  > a {
+  > button {
   color: #fff;
   text-decoration: none;
 }
+.navbar-inverse .navbar-nav > li > button{
+  background: transparent;
+  line-height: 20px;
+  padding: 15px;
+}
 .navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > button:hover,
 .otp.mobile .navbar .container-fluid .locale-selector-and-login > li > a:hover {
   color: #ddd;
   text-decoration: none;
@@ -52,5 +59,8 @@
   }
   #app-menu-locale-selector {
     display: flex;
+  }
+  #user-selector-label {
+    background-color: transparent;
   }
 }

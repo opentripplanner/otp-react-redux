@@ -1,41 +1,46 @@
-import { useIntl } from 'react-intl'
+import { IntlShape } from 'react-intl'
 
-export const sortOptions = (): {
+export const sortOptions = (
+  intl: IntlShape
+): {
   text: string
   value: string
 }[] => {
-  const OptionText = (id: string) => {
-    const intl = useIntl()
-    return intl.formatMessage({ id: id })
-  }
-
   const sortOptionsArray = [
     {
-      text: OptionText('components.NarrativeItinerariesHeader.selectBest'),
+      text: intl.formatMessage({
+        id: 'components.NarrativeItinerariesHeader.selectBest'
+      }),
       value: 'BEST'
     },
     {
-      text: OptionText('components.NarrativeItinerariesHeader.selectDuration'),
+      text: intl.formatMessage({
+        id: 'components.NarrativeItinerariesHeader.selectDuration'
+      }),
       value: 'DURATION'
     },
     {
-      text: OptionText(
-        'components.NarrativeItinerariesHeader.selectArrivalTime'
-      ),
+      text: intl.formatMessage({
+        id: 'components.NarrativeItinerariesHeader.selectArrivalTime'
+      }),
       value: 'ARRIVALTIME'
     },
     {
-      text: OptionText(
-        'components.NarrativeItinerariesHeader.selectDepartureTime'
-      ),
+      text: intl.formatMessage({
+        id: 'components.NarrativeItinerariesHeader.selectDepartureTime'
+      }),
       value: 'DEPARTURETIME'
     },
     {
-      text: OptionText('components.NarrativeItinerariesHeader.selectWalkTime'),
+      text: intl.formatMessage({
+        id: 'components.NarrativeItinerariesHeader.selectWalkTime'
+      }),
       value: 'WALKTIME'
     },
     {
-      text: OptionText('components.NarrativeItinerariesHeader.selectCost'),
+      text: intl.formatMessage({
+        id: 'components.NarrativeItinerariesHeader.selectCost'
+      }),
       value: 'COST'
     }
   ]
