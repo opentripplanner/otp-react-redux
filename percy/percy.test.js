@@ -294,7 +294,7 @@ test('OTP-RR', async () => {
     // Check submode selector
     await page.hover('label[title="Transit"]')
     await page.waitForTimeout(500)
-    await page.click('#id-query-param-addTram')
+    await page.click('#id-query-param-tram')
 
     // Disable accessible routing
     await page.hover('label[title="Transit"]')
