@@ -232,7 +232,7 @@ const mapStateToProps = (state: any) => {
   const modeSettingValues = generateModeSettingValues(
     urlSearchParams,
     state.otp?.modeSettingDefinitions || [],
-    state.otp.config.initialState.modeSettingValues
+    state.otp.config.modes?.initialState?.modeSettingValues
   )
   return {
     activeSearch: getActiveSearch(state),
