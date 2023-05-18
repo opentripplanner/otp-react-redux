@@ -318,7 +318,7 @@ export default injectIntl(
 /**
  * Renders a label and icon either from url or font awesome type
  */
-const Icon = ({
+export const Icon = ({
   iconType,
   iconUrl
 }: {

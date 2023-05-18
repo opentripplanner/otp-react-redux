@@ -7,9 +7,10 @@ import styled from 'styled-components'
 import * as uiActions from '../../actions/ui'
 import { accountLinks, getAuth0Config } from '../../util/auth'
 import { DEFAULT_APP_TITLE } from '../../util/constants'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
 
-import AppMenu from './app-menu'
+import AppMenu, { Icon } from './app-menu'
 import LocaleSelector from './locale-selector'
 import ViewSwitcher from './view-switcher'
 
@@ -19,6 +20,13 @@ const NavItemOnLargeScreens = styled(NavItem)`
     display: none !important;
   }
 `
+
+const StyledNav = styled(Nav)`
+  & > li svg {
+    height: 18px;
+  }
+`
+
 // Typscript TODO: otpConfig type
 export type Props = {
   locale: string
@@ -91,12 +99,15 @@ const DesktopNav = ({
 
           <ViewSwitcher sticky />
 
-          <Nav pullRight>
+          <StyledNav pullRight>
             {popupTarget && (
               <NavItemOnLargeScreens
                 onClick={() => setPopupContent(popupTarget)}
               >
-                <FormattedMessage id={`config.popups.${popupTarget}`} />
+                <Icon iconType={popupTarget} />
+                <InvisibleA11yLabel>
+                  <FormattedMessage id={`config.popups.${popupTarget}`} />
+                </InvisibleA11yLabel>
               </NavItemOnLargeScreens>
             )}
             <LocaleSelector />
@@ -108,7 +119,7 @@ const DesktopNav = ({
                 style={{ float: 'right' }}
               />
             )}
-          </Nav>
+          </StyledNav>
         </Navbar.Header>
       </Navbar>
     </header>

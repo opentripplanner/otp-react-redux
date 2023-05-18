@@ -110,7 +110,7 @@ const NavLoginButton = ({
   })
   return (
     <NavItem {...commonProps} onClick={onSignInClick} title={loginText}>
-      <UserIcon height="18px" />
+      <UserIcon />
       <InvisibleA11yLabel>{loginText}</InvisibleA11yLabel>
     </NavItem>
   )
