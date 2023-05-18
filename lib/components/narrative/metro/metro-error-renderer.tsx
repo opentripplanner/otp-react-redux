@@ -5,9 +5,7 @@ import styled from 'styled-components'
 
 import { Icon } from '../../util/styledIcon'
 
-type Error = {
-  [code: string]: string[]
-}
+type Error = Record<string, string[]>
 
 const List = styled.ul`
   margin: 0;
@@ -19,8 +17,8 @@ const Container = styled.li`
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 1fr max-content;
   list-style-type: none;
-  padding: 0 1em;
   margin: 0;
+  padding: 0 1em;
 
   h3 {
     grid-column: 2;
@@ -29,8 +27,8 @@ const Container = styled.li`
 
   span {
     grid-column: 1;
-    place-self: center;
     grid-row: 1 / -1;
+    place-self: center;
   }
 
   p {
