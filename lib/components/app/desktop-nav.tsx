@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
 import { Nav, Navbar, NavItem } from 'react-bootstrap'
+import { useIntl } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -60,6 +60,7 @@ const DesktopNav = ({
     persistence,
     title = DEFAULT_APP_TITLE
   } = otpConfig
+  const intl = useIntl()
   const showLogin = Boolean(getAuth0Config(persistence))
 
   const BrandingElement = brandClickable ? 'a' : 'div'
@@ -76,6 +77,11 @@ const DesktopNav = ({
         }
       }
     : { style: { ...commonStyles } }
+  const popupButtonText =
+    popupTarget &&
+    intl.formatMessage({
+      id: `config.popups.${popupTarget}`
+    })
 
   return (
     <header>
@@ -103,11 +109,10 @@ const DesktopNav = ({
             {popupTarget && (
               <NavItemOnLargeScreens
                 onClick={() => setPopupContent(popupTarget)}
+                title={popupButtonText}
               >
                 <Icon iconType={popupTarget} />
-                <InvisibleA11yLabel>
-                  <FormattedMessage id={`config.popups.${popupTarget}`} />
-                </InvisibleA11yLabel>
+                <InvisibleA11yLabel>{popupButtonText}</InvisibleA11yLabel>
               </NavItemOnLargeScreens>
             )}
             <LocaleSelector />
