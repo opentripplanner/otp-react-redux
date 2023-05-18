@@ -748,9 +748,9 @@ config:
     both: Plus de détails au bas de l'itinéraire
     call-ahead: Appelez pour réserver
     continuous-dropoff: Demandez l'arrêt au conducteur
-  micromobilityModes:
     flex-service: Service Flex
     flex-service-colon: "Service Flex :"
+  micromobilityModes:
     micromobility: Trottinnette pers.
     micromobility_rent: Trottinette louée
 util:
