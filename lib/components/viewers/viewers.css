@@ -114,7 +114,7 @@
 }
 
 .otp .stop-viewer .route-row-container li .header.stop-view {
-  border-radius: 0;
+  padding: 0 15px;
 }
 
 .otp .stop-viewer p.day-label {
@@ -170,7 +170,7 @@
   display: grid;
   grid-template-rows: fit-content(8ch);
   list-style-type: none;
-  padding: 15px;
+  padding: 15px 0;
   text-align: right;
   white-space: nowrap;
 }
@@ -204,16 +204,16 @@
 }
 
 @media (max-width: 450px) {
-  .otp .stop-viewer .route-row .header .next-trip-preview {
-    padding: 15px 10px;
-  }
-
-  .otp .stop-viewer .route-row .header .route-name strong span {
+  .otp .stop-viewer .route-row .header .route-name strong > span {
     min-width: auto;
   }
 
   .otp .stop-viewer .route-row .header .next-trip-preview li:first-of-type {
     font-size: 18px;
+  }
+
+  .otp .stop-viewer .route-row-container li .header.stop-view {
+    padding: 0 10px;
   }
 }
 
