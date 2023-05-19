@@ -150,15 +150,10 @@
   display: -webkit-box;
   font-size: 15px;
   line-clamp: 3;
-  overflow: hidden;
   text-align: center;
   width: 85px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-}
-
-.otp .stop-viewer .route-row .header .route-name span.route-name-container {
-  padding-left: 0;
 }
 
 .otp .stop-viewer .route-row .header .next-trip-preview {
