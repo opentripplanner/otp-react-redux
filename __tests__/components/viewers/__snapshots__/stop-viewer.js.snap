@@ -1612,11 +1612,21 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         <styled.span
                                           color="333333"
                                           isOnColoredBackground={true}
+                                          style={
+                                            Object {
+                                              "fontSize": "32px",
+                                            }
+                                          }
                                           title="20"
                                         >
                                           <span
                                             className="sc-kYrlTI eljWXI"
                                             color="333333"
+                                            style={
+                                              Object {
+                                                "fontSize": "32px",
+                                              }
+                                            }
                                             title="20"
                                           >
                                             20
@@ -4117,11 +4127,21 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         <styled.span
                                           color="333333"
                                           isOnColoredBackground={true}
+                                          style={
+                                            Object {
+                                              "fontSize": "32px",
+                                            }
+                                          }
                                           title="20"
                                         >
                                           <span
                                             className="sc-kYrlTI eljWXI"
                                             color="333333"
+                                            style={
+                                              Object {
+                                                "fontSize": "32px",
+                                              }
+                                            }
                                             title="20"
                                           >
                                             20
@@ -6417,11 +6437,21 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         <styled.span
                                           color="333333"
                                           isOnColoredBackground={true}
+                                          style={
+                                            Object {
+                                              "fontSize": "32px",
+                                            }
+                                          }
                                           title="20"
                                         >
                                           <span
                                             className="sc-kYrlTI eljWXI"
                                             color="333333"
+                                            style={
+                                              Object {
+                                                "fontSize": "32px",
+                                              }
+                                            }
                                             title="20"
                                           >
                                             20
@@ -10198,11 +10228,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         <styled.span
                                           color="333333"
                                           isOnColoredBackground={true}
+                                          style={
+                                            Object {
+                                              "fontSize": "32px",
+                                            }
+                                          }
                                           title="20"
                                         >
                                           <span
                                             className="sc-kYrlTI eljWXI"
                                             color="333333"
+                                            style={
+                                              Object {
+                                                "fontSize": "32px",
+                                              }
+                                            }
                                             title="20"
                                           >
                                             20
@@ -11028,11 +11068,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         <styled.span
                                           color="333333"
                                           isOnColoredBackground={true}
+                                          style={
+                                            Object {
+                                              "fontSize": "32px",
+                                            }
+                                          }
                                           title="94"
                                         >
                                           <span
                                             className="sc-kYrlTI eljWXI"
                                             color="333333"
+                                            style={
+                                              Object {
+                                                "fontSize": "32px",
+                                              }
+                                            }
                                             title="94"
                                           >
                                             94
@@ -11736,11 +11786,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         <styled.span
                                           color="333333"
                                           isOnColoredBackground={true}
+                                          style={
+                                            Object {
+                                              "fontSize": "32px",
+                                            }
+                                          }
                                           title="94"
                                         >
                                           <span
                                             className="sc-kYrlTI eljWXI"
                                             color="333333"
+                                            style={
+                                              Object {
+                                                "fontSize": "32px",
+                                              }
+                                            }
                                             title="94"
                                           >
                                             94
@@ -12444,11 +12504,21 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         <styled.span
                                           color="333333"
                                           isOnColoredBackground={true}
+                                          style={
+                                            Object {
+                                              "fontSize": "32px",
+                                            }
+                                          }
                                           title="36"
                                         >
                                           <span
                                             className="sc-kYrlTI eljWXI"
                                             color="333333"
+                                            style={
+                                              Object {
+                                                "fontSize": "32px",
+                                              }
+                                            }
                                             title="36"
                                           >
                                             36
@@ -17246,11 +17316,21 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         <styled.span
                                           color="333333"
                                           isOnColoredBackground={true}
+                                          style={
+                                            Object {
+                                              "fontSize": "32px",
+                                            }
+                                          }
                                           title="20"
                                         >
                                           <span
                                             className="sc-kYrlTI eljWXI"
                                             color="333333"
+                                            style={
+                                              Object {
+                                                "fontSize": "32px",
+                                              }
+                                            }
                                             title="20"
                                           >
                                             20
