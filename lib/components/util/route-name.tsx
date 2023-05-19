@@ -1,9 +1,11 @@
-import { Leg, Route } from '@opentripplanner/types'
+import { Route } from '@opentripplanner/types'
 import React, { ComponentType } from 'react'
 import styled from 'styled-components'
 
 import { generateFakeLegForRouteRenderer } from '../../util/viewer'
-import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
+import DefaultRouteRenderer, {
+  RouteRendererProps
+} from '../narrative/metro/default-route-renderer'
 
 const RouteNameElement = styled.span`
   flex-shrink: 0;
@@ -19,14 +21,8 @@ const RouteLongNameElement = styled.span`
   width: 100%;
 `
 
-const SimpleRouteRenderer = styled.span`
-  font-size: 18px;
-  margin: 0;
-  padding: 0;
-`
-
 interface Props {
-  RouteRenderer: ComponentType<{ leg: Leg }>
+  RouteRenderer: ComponentType<RouteRendererProps>
   fullRender?: boolean
   route: Route
 }
@@ -44,11 +40,10 @@ const RouteName = ({
   return (
     <>
       <RouteNameElement title={`${shortName}`}>
-        {fullRender ? (
-          <Route leg={generateFakeLegForRouteRenderer(route)} />
-        ) : (
-          <SimpleRouteRenderer>{shortName || longName}</SimpleRouteRenderer>
-        )}
+        <Route
+          fullRender={fullRender}
+          leg={generateFakeLegForRouteRenderer(route)}
+        />
       </RouteNameElement>
       {/* Only render long name if it's not already rendered by the RouteRenderer 
           (the long name is rendered by the routeRenderer if the short name does not exist) */}
