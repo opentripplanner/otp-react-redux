@@ -89,6 +89,7 @@ function NextArrivalForPattern({
           style={{ fontSize: routeNameFontSize(routeName) }}
         >
           <RouteRenderer
+            fullRender
             isOnColoredBackground={route.operator?.colorMode?.includes('gtfs')}
             // All GTFS bg colors look strange with the top border
             leg={generateFakeLegForRouteRenderer(route, true)}

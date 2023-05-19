@@ -89,6 +89,7 @@ class PatternRow extends Component<Props, State> {
                   <OperatorLogo operator={route?.operator} />
                 )}
                 <RouteRenderer
+                  fullRender
                   // All GTFS bg colors look strange with the top border
                   isOnColoredBackground={route?.operator?.colorMode?.includes(
                     'gtfs'
