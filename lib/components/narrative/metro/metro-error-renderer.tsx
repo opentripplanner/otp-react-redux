@@ -51,7 +51,7 @@ const ErrorRenderer = ({ errors }: { errors: Error }): JSX.Element => {
             })
         )
 
-        // The search window is set by the client and can't be changed by the user.
+        // The search window is hardcoded in otp-rr and can't be changed by the user.
         // Do not tell them what's happening as they can't act on the issue.
         if (error === 'NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW') {
           return null
