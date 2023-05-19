@@ -23,8 +23,8 @@ import {
 } from '../util/types'
 import { StyledIconWrapper } from '../util/styledIcon'
 import PageTitle from '../util/page-title'
+import RouteName from '../util/route-name'
 
-import { RouteName } from './RouteRow'
 import RouteDetails from './route-details'
 import VehiclePositionRetriever from './vehicle-position-retriever'
 
@@ -124,7 +124,7 @@ const PatternViewer = ({
                 />
               )}
               <RouteName
-                basicRender
+                fullRender
                 route={route}
                 RouteRenderer={RouteRenderer}
               />
