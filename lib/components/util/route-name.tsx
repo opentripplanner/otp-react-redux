@@ -47,10 +47,12 @@ const RouteName = ({
       </RouteNameElement>
       {/* Only render long name if it's not already rendered by the RouteRenderer 
           (the long name is rendered by the routeRenderer if the short name does not exist) */}
-      {shortName && longName !== shortName && (
+      {shortName && (
         // If the route long name is the same as the route short name, then
         // hide the route long name from assistive technology to avoid repeating the same route names.
-        <RouteLongNameElement>{longName}</RouteLongNameElement>
+        <RouteLongNameElement aria-hidden={shortName === longName}>
+          {longName}
+        </RouteLongNameElement>
       )}
     </>
   )

@@ -123,11 +123,7 @@ const PatternViewer = ({
                   width={22}
                 />
               )}
-              <RouteName
-                fullRender
-                route={route}
-                RouteRenderer={RouteRenderer}
-              />
+              <RouteName route={route} RouteRenderer={RouteRenderer} />
             </h1>
           </div>
         </div>
