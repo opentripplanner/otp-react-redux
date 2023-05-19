@@ -146,7 +146,7 @@
   display: flex;
   gap: 10px;
 }
-.otp .stop-viewer .route-row .header .route-name span {
+.otp .stop-viewer .route-row .header .route-name > span {
   display: -webkit-box;
   font-size: 15px;
   line-clamp: 3;
@@ -154,7 +154,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
-.otp .stop-viewer .route-row .header .route-name strong span {
+.otp .stop-viewer .route-row .header .route-name strong > span {
   display: block;
   font-size: inherit;
   padding-left: 10px;
