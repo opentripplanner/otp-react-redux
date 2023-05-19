@@ -43,4 +43,3 @@ const DefaultRouteRenderer = ({ leg }: RouteRendererProps): JSX.Element => {
   )
 }
 export default DefaultRouteRenderer
-export type { RouteRendererProps }

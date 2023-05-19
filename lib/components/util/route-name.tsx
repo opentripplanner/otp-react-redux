@@ -1,11 +1,10 @@
-import { Route } from '@opentripplanner/types'
 import React, { ComponentType } from 'react'
 import styled from 'styled-components'
 
 import { generateFakeLegForRouteRenderer } from '../../util/viewer'
-import DefaultRouteRenderer, {
-  RouteRendererProps
-} from '../narrative/metro/default-route-renderer'
+import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
+
+import { ViewedRouteObject } from './types'
 
 const RouteNameElement = styled.span`
   flex-shrink: 0;
@@ -21,10 +20,20 @@ const RouteLongNameElement = styled.span`
   width: 100%;
 `
 
+interface MinimalLeg {
+  mode: string
+  routeColor: string
+}
+
+interface RouteRendererProps {
+  fullRender?: boolean
+  leg: MinimalLeg
+}
+
 interface Props {
   RouteRenderer: ComponentType<RouteRendererProps>
   fullRender?: boolean
-  route: Route
+  route: ViewedRouteObject
 }
 
 /**
