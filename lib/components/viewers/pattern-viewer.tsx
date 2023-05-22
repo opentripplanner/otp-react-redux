@@ -23,9 +23,9 @@ import {
 } from '../util/types'
 import { StyledIconWrapper } from '../util/styledIcon'
 import PageTitle from '../util/page-title'
-import RouteName from '../util/route-name'
 
 import RouteDetails from './route-details'
+import RouteName from './route-name'
 import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface Props {

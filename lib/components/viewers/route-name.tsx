@@ -2,9 +2,8 @@ import React, { ComponentType } from 'react'
 import styled from 'styled-components'
 
 import { generateFakeLegForRouteRenderer } from '../../util/viewer'
+import { ViewedRouteObject } from '../util/types'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
-
-import { ViewedRouteObject } from './types'
 
 const RouteNameElement = styled.span`
   flex-shrink: 0;
