@@ -177,7 +177,7 @@ function BatchSettings({
   const accentColor = tinycolor(baseColor).darken(10)
 
   return (
-    <div role="group">
+    <>
       <MainSettingsRow>
         <StyledDateTimePreviewContainer
           aria-controls="date-time-modal"
@@ -221,7 +221,7 @@ function BatchSettings({
           <DateTimeModal />
         </DateTimeModalContainer>
       )}
-    </div>
+    </>
   )
 }
 
