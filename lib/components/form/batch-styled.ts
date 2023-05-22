@@ -100,6 +100,10 @@ export const ModeSelectorContainer = styled.div<{ squashed?: boolean }>`
   fieldset {
     gap: 0 2px;
     margin: 0 2px 0 0;
+
+    input {
+      margin: 0;
+    }
   }
 `
 
