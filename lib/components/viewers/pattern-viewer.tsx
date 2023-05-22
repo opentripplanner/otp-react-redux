@@ -125,6 +125,7 @@ const PatternViewer = ({
               )}
               <RouteName
                 fullRender
+                isOnColoredBackground
                 route={route}
                 RouteRenderer={RouteRenderer}
               />

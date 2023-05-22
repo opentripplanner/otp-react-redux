@@ -10,6 +10,15 @@ const RouteNameElement = styled.span`
   font-size: 16px;
   font-weight: 400;
 `
+
+const RouteNameElementTall = styled(RouteNameElement)`
+  font-size: 18px;
+  & > span {
+    max-width: unset;
+    vertical-align: text-bottom;
+  }
+`
+
 const RouteLongNameElement = styled.span`
   font-size: 16px;
   font-weight: 500;
@@ -32,6 +41,7 @@ interface RouteRendererProps {
 interface Props {
   RouteRenderer: ComponentType<RouteRendererProps>
   fullRender?: boolean
+  isOnColoredBackground?: boolean
   route: ViewedRouteObject
 }
 
@@ -40,24 +50,25 @@ interface Props {
  */
 const RouteName = ({
   fullRender,
+  isOnColoredBackground,
   route,
   RouteRenderer
 }: Props): JSX.Element => {
   const Route = RouteRenderer || DefaultRouteRenderer
   const { longName, shortName } = route
+  const Wrapper = fullRender ? RouteNameElementTall : RouteNameElement
   return (
     <>
-      <RouteNameElement title={`${shortName}`}>
+      <Wrapper title={`${shortName}`}>
         <Route
           fullRender={fullRender}
-          leg={generateFakeLegForRouteRenderer(route)}
+          leg={generateFakeLegForRouteRenderer(route, isOnColoredBackground)}
         />
-      </RouteNameElement>
-      {/* Only render long name if it's not already rendered by the RouteRenderer 
-          (the long name is rendered by the routeRenderer if the short name does not exist) */}
-      {(shortName !== longName || !fullRender) && (
-        // If the route long name is the same as the route short name, then
-        // hide the route long name from assistive technology to avoid repeating the same route names.
+      </Wrapper>
+      {/* Only render long name if it's not already rendered by the RouteRenderer,
+          and if the route long name is not the same as the route short name.
+          (The long name is rendered by the routeRenderer if the short name does not exist.) */}
+      {shortName && (shortName !== longName || !fullRender) && (
         <RouteLongNameElement>{longName}</RouteLongNameElement>
       )}
     </>
