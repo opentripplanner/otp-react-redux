@@ -22,8 +22,15 @@ const NavItemOnLargeScreens = styled(NavItem)`
 `
 
 const StyledNav = styled(Nav)`
+  /* Almost override bootstrap's margin-right: -15px */
+  margin-right: -5px;
   & > li svg {
     height: 18px;
+  }
+
+  & .caret {
+    margin-left: 5px;
+    margin-right: -10px;
   }
 `
 
