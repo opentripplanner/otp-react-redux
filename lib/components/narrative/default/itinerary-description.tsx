@@ -3,6 +3,7 @@ import { Itinerary } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useContext } from 'react'
 
+import { isRideshareLeg } from '@opentripplanner/core-utils/lib/itinerary'
 import { ComponentContext } from '../../../util/contexts'
 import { getFormattedMode } from '../../../util/i18n'
 import FormattedMode from '../../util/formatted-mode'
@@ -46,6 +47,7 @@ export function getMainItineraryModes({
     if (rentedVehicle || (isMicromobility(mode) && rentedBike))
       accessModeId = 'micromobility_rent'
     if (mode === 'CAR') accessModeId = 'drive'
+    if (isRideshareLeg(leg)) accessModeId = 'ride'
   })
 
   return { mainMode: getFormattedMode(accessModeId, intl), transitMode }
@@ -82,6 +84,7 @@ export function ItineraryDescription({ itinerary }: Props): JSX.Element {
     if (isMicromobility(mode)) accessModeId = 'micromobility'
     if (rentedVehicle) accessModeId = 'micromobility_rent'
     if (mode === 'CAR') accessModeId = 'drive'
+    if (isRideshareLeg(leg)) accessModeId = 'ride'
   })
 
   const mainMode = <FormattedMode mode={accessModeId} />
