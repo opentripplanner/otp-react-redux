@@ -86,7 +86,6 @@ function NextArrivalForPattern({
       <div className="next-arrival-label">
         <span className="route-name">
           <RouteRenderer
-            fullRender
             isOnColoredBackground={route.operator?.colorMode?.includes('gtfs')}
             // All GTFS bg colors look strange with the top border
             leg={generateFakeLegForRouteRenderer(route, true)}

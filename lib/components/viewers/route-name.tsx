@@ -34,13 +34,11 @@ interface MinimalLeg {
 }
 
 interface RouteRendererProps {
-  fullRender?: boolean
   leg: MinimalLeg
 }
 
 interface Props {
   RouteRenderer: ComponentType<RouteRendererProps>
-  fullRender?: boolean
   isOnColoredBackground?: boolean
   route: ViewedRouteObject
 }
@@ -49,26 +47,26 @@ interface Props {
  * Component that renders a route name.
  */
 const RouteName = ({
-  fullRender,
   isOnColoredBackground,
   route,
   RouteRenderer
 }: Props): JSX.Element => {
   const Route = RouteRenderer || DefaultRouteRenderer
   const { longName, shortName } = route
-  const Wrapper = fullRender ? RouteNameElementTall : RouteNameElement
+  const Wrapper = isOnColoredBackground
+    ? RouteNameElementTall
+    : RouteNameElement
   return (
     <>
       <Wrapper title={`${shortName}`}>
         <Route
-          fullRender={fullRender}
           leg={generateFakeLegForRouteRenderer(route, isOnColoredBackground)}
         />
       </Wrapper>
       {/* Only render long name if it's not already rendered by the RouteRenderer,
           and if the route long name is not the same as the route short name.
           (The long name is rendered by the routeRenderer if the short name does not exist.) */}
-      {shortName && (shortName !== longName || !fullRender) && (
+      {shortName && (shortName !== longName || !isOnColoredBackground) && (
         <RouteLongNameElement>{longName}</RouteLongNameElement>
       )}
     </>

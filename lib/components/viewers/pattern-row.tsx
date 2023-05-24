@@ -86,7 +86,6 @@ class PatternRow extends Component<Props, State> {
             <span className="route-name-container" title={routeName}>
               {showOperatorLogo && <OperatorLogo operator={route?.operator} />}
               <RouteRenderer
-                fullRender
                 // All GTFS bg colors look strange with the top border
                 isOnColoredBackground={route?.operator?.colorMode?.includes(
                   'gtfs'
