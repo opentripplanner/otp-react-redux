@@ -14,6 +14,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
   listLabel?: string
   name?: JSX.Element | string
   nav?: boolean
+  pullRight?: boolean
 }
 
 const DropdownButton = styled.button`
@@ -101,6 +102,7 @@ export const Dropdown = ({
   label,
   listLabel,
   name,
+  pullRight,
   style
 }: Props): JSX.Element => {
   const [open, setOpen] = useState(false)
@@ -146,6 +148,7 @@ export const Dropdown = ({
           element.click()
           if (element.id === `${id}-label` || element.id === `${id}-wrapper`) {
             toggleOpen()
+            e.preventDefault()
           }
           break
         default:
@@ -161,6 +164,7 @@ export const Dropdown = ({
       onKeyDown={_handleKeyDown}
       ref={containerRef}
       role="presentation"
+      style={{ float: pullRight ? 'right' : 'left' }}
     >
       <DropdownButton
         // Only set aria-controls when the dropdown is open

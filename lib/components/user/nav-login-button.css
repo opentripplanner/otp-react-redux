@@ -43,10 +43,15 @@
   padding: 15px;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
-.navbar-inverse .navbar-nav > li > button:hover,
+.navbar-inverse .navbar-nav > li > span > button:hover,
 .otp.mobile .navbar .container-fluid .locale-selector-and-login > li > a:hover {
   color: #ddd;
   text-decoration: none;
+}
+
+.navbar-inverse .navbar-nav > li > span > button:hover,
+.navbar-inverse .navbar-nav > li > span > button[aria-expanded="true"] {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 #app-menu-locale-selector {

@@ -68,7 +68,6 @@ const NavLoginButton = ({
               />
             </span>
           }
-          nav
         >
           <li className="header">{displayedName}</li>
 

@@ -208,19 +208,17 @@ export default function NarrativeItinerariesHeader({
               name={sortText}
               title={sortResultsLabel}
             >
-              {sortOptionsArr.map((x) => {
-                return (
-                  <li className="sort-option" key={x.value}>
-                    <UnstyledButton
-                      aria-selected={sortText === x.text || undefined}
-                      onClick={() => handleSortClick(x.value)}
-                      role="option"
-                    >
-                      {x.text}
-                    </UnstyledButton>
-                  </li>
-                )
-              })}
+              {sortOptionsArr.map((x) => (
+                <li className="sort-option" key={x.value}>
+                  <UnstyledButton
+                    aria-selected={sortText === x.text || undefined}
+                    onClick={() => handleSortClick(x.value)}
+                    role="option"
+                  >
+                    {x.text}
+                  </UnstyledButton>
+                </li>
+              ))}
             </SortResultsDropdown>
           </div>
           <PlanFirstLastButtons />
