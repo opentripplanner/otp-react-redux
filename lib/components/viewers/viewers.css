@@ -113,10 +113,6 @@
   box-shadow: 2px 2px 5px 1px rgb(0 0 0 / 10%);
 }
 
-.otp .stop-viewer .route-row-container li .header.stop-view {
-  padding: 0 15px;
-}
-
 .otp .stop-viewer p.day-label {
   font-weight: 500;
   margin: 15px 10px;
@@ -164,7 +160,7 @@
   display: grid;
   grid-template-rows: fit-content(8ch);
   list-style-type: none;
-  padding: 15px 0;
+  padding: 15px;
   text-align: right;
   white-space: nowrap;
 }
