@@ -1,6 +1,6 @@
 import { FormattedMessage, useIntl } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
-import React from 'React'
+import React from 'react'
 
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
