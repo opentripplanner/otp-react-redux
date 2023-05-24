@@ -22,8 +22,8 @@ const RouteNameElementTall = styled(RouteNameElement)`
 const RouteLongNameElement = styled.span`
   font-size: 16px;
   font-weight: 500;
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
 `
