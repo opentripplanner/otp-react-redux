@@ -4,17 +4,15 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
-import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 import styled from 'styled-components'
 
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
+import PopupTriggerText from '../app/popup-trigger-text'
 
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
-
-const isMobile = coreUtils.ui.isMobile()
 
 const IssueButton = styled.button`
   background-color: #ecbe03;
@@ -155,12 +153,7 @@ export default function NarrativeItinerariesHeader({
           >
             {popupTarget && (
               <button onClick={() => setPopupContent(popupTarget)}>
-                <FormattedMessage id={`config.popups.${popupTarget}`} />
-                {isMobile && (
-                  <InvisibleA11yLabel>
-                    <FormattedMessage id="common.linkOpensNewWindow" />
-                  </InvisibleA11yLabel>
-                )}
+                <PopupTriggerText compact popupTarget={popupTarget} />
               </button>
             )}
             <button
