@@ -152,6 +152,7 @@
 }
 
 .otp .stop-viewer .stop-viewer-body .stop-view .route-name-container {
+  flex-shrink: 0;
   text-align: center;
   width: 85px;
 }
