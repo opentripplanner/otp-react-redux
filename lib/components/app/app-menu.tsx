@@ -8,6 +8,7 @@ import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
 import { Undo } from '@styled-icons/fa-solid/Undo'
 import { withRouter } from 'react-router'
+import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, Fragment, useContext } from 'react'
 import SlidingPane from 'react-sliding-pane'
 import type { RouteComponentProps } from 'react-router'
@@ -21,6 +22,7 @@ import { getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent } from '../../actions/ui-constants'
 import { setMainPanelContent } from '../../actions/ui'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import startOver from '../util/start-over'
 
 import AppMenuItem from './app-menu-item'
@@ -58,6 +60,8 @@ type menuItem = {
   onClick?: () => void
   subMenuDivider: boolean
 }
+
+const isMobile = coreUtils.ui.isMobile()
 
 /**
  * Sidebar which appears to show user list of options and links
@@ -252,7 +256,16 @@ class AppMenu extends Component<
               <AppMenuItem
                 icon={<SvgIcon iconName={popupTarget} />}
                 onClick={this._triggerPopup}
-                text={<FormattedMessage id={`config.popups.${popupTarget}`} />}
+                text={
+                  <>
+                    <FormattedMessage id={`config.popups.${popupTarget}`} />
+                    {isMobile && (
+                      <InvisibleA11yLabel>
+                        <FormattedMessage id="common.linkOpensNewWindow" />
+                      </InvisibleA11yLabel>
+                    )}
+                  </>
+                }
               />
             )}
             {callTakerEnabled && (
