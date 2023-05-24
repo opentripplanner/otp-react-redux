@@ -176,9 +176,10 @@ const Dropdown = ({
         role="button"
         style={style}
         tabIndex={0}
+        title={label}
       >
         {name}
-        <span className="caret" role="presentation" style={{ marginLeft: 5 }} />
+        <span className="caret" role="presentation" />
       </DropdownButton>
       {open && (
         <DropdownMenu
