@@ -195,16 +195,16 @@
 }
 
 @media (max-width: 450px) {
+  .otp .stop-viewer .route-row .header .next-trip-preview {
+    padding: 15px 10px;
+  }
+
   .otp .stop-viewer .route-row .header .route-name > span:first-child {
     min-width: auto;
   }
 
   .otp .stop-viewer .route-row .header .next-trip-preview li:first-of-type {
     font-size: 18px;
-  }
-
-  .otp .stop-viewer .route-row-container li .header.stop-view {
-    padding: 0 10px;
   }
 }
 
