@@ -115,6 +115,7 @@ common:
     transfers: >-
       {transfers, plural, =0 {} one {# correspondance} other {#
       correspondances}}
+  linkOpensNewWindow: (Ouvre une nouvelle fenêtre)
   modes:
     bicycle_rent: En vélo en libre-service
     bike: Vélo
@@ -326,7 +327,6 @@ components:
     title: Vue panoramique
   MetroUI:
     arriveAt: Vous arrivez à
-    arriveAtTime: Arrivée à {time}
     fromStop: de {stop}
     itineraryDescription: Trajet de {time} par les lignes {routes}
     leaveAt: Partez à
@@ -525,6 +525,7 @@ components:
     flexStop: >-
       Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande. Une
       réservation préalable peut être exigée pour obtenir la desserte.
+    forStop: pour {stopName}
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
     nextArrivals: Prochains passages

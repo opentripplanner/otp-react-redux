@@ -2494,10 +2494,10 @@
     "@opentripplanner/core-utils" "^7.0.5"
     point-in-polygon "^1.1.0"
 
-"@opentripplanner/scripts@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/scripts/-/scripts-1.0.2.tgz#330707bb0eaf2f4d99505f13b7776f84c77f151a"
-  integrity sha512-vnLZTsMz7VMT0Ccb42Y67+SUDvpHdEolRB0NY4FrOxotcnuM7MRDb7koLnfUqPmLN0UWb89vJqpt3AGEtavePQ==
+"@opentripplanner/scripts@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/scripts/-/scripts-1.1.0.tgz#67a86d6b03263f0d85ce8faaf08b745452d037fc"
+  integrity sha512-X1KpLnfrTZghMhFeLldLBCMgw816WF+xKteCC3ZNPtsdJ/yQWBKLtTd1MQJk58LHaBon5+lNOBWVGsFrUBAzNA==
   dependencies:
     "@formatjs/cli" "^4.2.33"
     flat "^5.0.2"
