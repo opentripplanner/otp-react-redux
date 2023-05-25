@@ -5,7 +5,7 @@
   "scripts": {
     "a11y-test": "jest a11y/ --runInBand --force-exit",
     "build": "craco build",
-    "check:i18n": "node node_modules/@opentripplanner/scripts/lib/run-validate-i18n.js lib i18n/en-US.yml i18n/fr.yml",
+    "check:i18n-en-fr": "node node_modules/@opentripplanner/scripts/lib/run-validate-i18n.js lib i18n/en-US.yml i18n/fr.yml",
     "unit": "jest __tests__/",
     "lint": "lint-staged",
     "lint-all": "eslint lib __tests__ a11y --quiet",
@@ -13,7 +13,7 @@
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "prestart": "yarn",
-    "test": "yarn run lint && yarn run typecheck && yarn check:i18n && yarn run unit",
+    "test": "yarn run lint && yarn run typecheck && yarn check:i18n-en-fr && yarn run unit",
     "typecheck": "yarn tsc",
     "semantic-release": "semantic-release",
     "start": "craco start",
