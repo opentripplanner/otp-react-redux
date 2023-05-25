@@ -145,10 +145,10 @@ export const Dropdown = ({
           break
         case ' ':
         case 'Enter':
+          e.preventDefault()
           element.click()
           if (element.id === `${id}-label` || element.id === `${id}-wrapper`) {
             toggleOpen()
-            e.preventDefault()
           }
           break
         default:
