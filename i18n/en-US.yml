@@ -234,8 +234,8 @@ components:
   BeforeSignInScreen:
     mainTitle: Signing you in
     message: >
-      In order to access this page you will need to sign in. Please wait while
-      we redirect you to the login page...
+      In order to access this page you will need to log in. Please wait while we
+      redirect you to the login page...
   CallTakerPanel:
     advancedOptions: Advanced options
     groupSize: "Group size:"
@@ -347,8 +347,8 @@ components:
   NavLoginButton:
     help: Help
     myAccount: My account
-    signIn: Sign in
-    signOut: Sign out
+    signIn: Log in
+    signOut: Log out
   NewAccountWizard:
     finish: Account setup complete!
     notifications: Notification preferences
@@ -456,8 +456,8 @@ components:
       Only itineraries that include transit and no rentals or ride hailing can
       be monitored.
     saveTripText: Save trip
-    signInText: Sign in to save trip
-    signInTooltip: Please sign in to save trip.
+    signInText: Log in to save trip
+    signInTooltip: Please log in to save trip.
   SavedTripEditor:
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip

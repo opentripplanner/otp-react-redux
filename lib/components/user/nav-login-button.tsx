@@ -2,12 +2,16 @@
 import { FormattedMessage, useIntl } from 'react-intl'
 import { NavItem } from 'react-bootstrap'
 import { User } from '@auth0/auth0-react'
+import { User as UserIcon } from '@styled-icons/fa-regular/User'
 import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
 
 import { Dropdown } from '../util/dropdown'
 import { LinkContainerWithQuery } from '../form/connected-links'
 import { UnstyledButton } from '../util/unstyled-button'
+
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
+
 
 const Avatar = styled.img`
   height: 2em;
@@ -30,7 +34,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 /**
  * This component displays the sign-in status in the nav bar.
- * - When a user is not logged in: display 'Sign In' as a link or button.
+ * - When a user is not logged in: display 'Log In' as a link or button.
  * - When a user is logged in, display an 'avatar' (retrieved from the profile prop)
  *   and a dropdown button so the user can access more options.
  */
@@ -104,9 +108,13 @@ const NavLoginButton = ({
   }
 
   // Display the sign-in link if no profile is passed (user is not logged in).
+  const loginText = intl.formatMessage({
+    id: 'components.NavLoginButton.signIn'
+  })
   return (
-    <NavItem {...commonProps} onClick={onSignInClick}>
-      <FormattedMessage id="components.NavLoginButton.signIn" />
+    <NavItem {...commonProps} onClick={onSignInClick} title={loginText}>
+      <UserIcon />
+      <InvisibleA11yLabel>{loginText}</InvisibleA11yLabel>
     </NavItem>
   )
 }

@@ -92,8 +92,8 @@
 
 /* Full screen modal styling */
 .fullscreen-modal {
-  width: 90vw;
-  height: 100vh;
+  width: 75vw;
+  height: 60vh;
 }
 .fullscreen-modal .modal-content {
   height: 90vh;
