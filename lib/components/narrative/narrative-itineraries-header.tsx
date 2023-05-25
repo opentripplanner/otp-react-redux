@@ -13,6 +13,7 @@ import { sortOptions } from '../util/sortOptions'
 import { SortResultsDropdown } from '../util/dropdown'
 import { UnstyledButton } from '../util/unstyled-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
+import PopupTriggerText from '../app/popup-trigger-text'
 
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
@@ -182,7 +183,7 @@ export default function NarrativeItinerariesHeader({
           >
             {popupTarget && (
               <button onClick={() => setPopupContent(popupTarget)}>
-                <FormattedMessage id={`config.popups.${popupTarget}`} />
+                <PopupTriggerText compact popupTarget={popupTarget} />
               </button>
             )}
             <button

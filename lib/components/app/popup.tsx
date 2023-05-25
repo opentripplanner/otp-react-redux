@@ -3,7 +3,11 @@ import { useIntl } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useEffect } from 'react'
 
+import { StyledIconWrapper } from '../util/styledIcon'
+import { Times } from '@styled-icons/fa-solid'
 import PageTitle from '../util/page-title'
+
+import styled from 'styled-components'
 
 type Props = {
   content?: {
@@ -14,6 +18,14 @@ type Props = {
   }
   hideModal: () => void
 }
+
+const CloseModalButton = styled.button`
+  &.close-button {
+    padding: 0.25em;
+    right: 0.75em;
+    top: 0.5em;
+  }
+`
 
 const isMobile = coreUtils.ui.isMobile()
 
@@ -28,6 +40,8 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
   const intl = useIntl()
 
   const { appendLocale, id, modal, url } = content || {}
+
+  const closeText = intl.formatMessage({ id: 'common.forms.close' })
 
   const useIframe = !isMobile && modal
   const shown = !!url
@@ -49,7 +63,24 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
   const title = intl.formatMessage({ id: `config.popups.${id}` })
 
   return (
-    <Modal dialogClassName="fullscreen-modal" onHide={hideModal} show={shown}>
+    <Modal
+      aria-label={title}
+      dialogClassName="fullscreen-modal"
+      onEscapeKeyDown={hideModal}
+      onHide={hideModal}
+      role="presentation"
+      show={shown}
+    >
+      <CloseModalButton
+        aria-label={closeText}
+        className="clear-button-formatting close-button"
+        onClick={hideModal}
+        title={closeText}
+      >
+        <StyledIconWrapper>
+          <Times />
+        </StyledIconWrapper>
+      </CloseModalButton>
       <PageTitle title={title} />
       <iframe src={compiledUrl} title={title} />
     </Modal>

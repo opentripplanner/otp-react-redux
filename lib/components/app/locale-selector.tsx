@@ -32,7 +32,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
               color: 'rgba(255, 255, 255, 0.85)'
             }}
           >
-            <GlobeAmericas height="18px" />
+            <GlobeAmericas />
           </span>
         }
         style={{ display: 'block ruby' }}
