@@ -350,6 +350,8 @@ components:
     selectWalkTime: Tiempo de caminata
     sortBy: Ordenar por
     viewAll: Ver todas las opciones
+    howToFindResults: Para ver los resultados, consulta el encabezado de los itinerarios
+      encontrados a continuación.
   NavLoginButton:
     help: Ayuda
     myAccount: Mi cuenta
@@ -533,6 +535,7 @@ components:
     viewNextArrivals: Ver próximas llegadas
     viewSchedule: Ver horario
     zoomToStop: Acercar vista a la parada
+    forStop: para {stopName}
   SubNav:
     languageSelector: Seleccionar idioma
     languages: Idiomas
