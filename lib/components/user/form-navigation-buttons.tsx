@@ -1,6 +1,6 @@
 import { Button, FormGroup } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
-import React, { ReactElement } from 'react'
+import React, { MouseEventHandler, ReactElement } from 'react'
 import styled from 'styled-components'
 
 // Styles
@@ -18,18 +18,18 @@ const RightButton = styled(Button)`
 interface ButtonType {
   disabled?: boolean
   /** Triggered when the button is clicked. */
-  onClick?: () => void
+  onClick?: MouseEventHandler<Button>
   /** The text to display on the button (JSX elements accepted). */
   text: ReactElement
   /** The HTML type of the button. */
-  type?: 'button' | 'reset' | 'submit'
+  type?: 'button' | 'reset' | 'submit' | undefined
 }
 
 interface Props {
   /** Information about the back button. */
-  backButton: ButtonType
+  backButton?: ButtonType
   /** Information about the okay (action) button. */
-  okayButton: ButtonType
+  okayButton?: ButtonType
 }
 
 /**

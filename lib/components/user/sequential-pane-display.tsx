@@ -1,32 +1,53 @@
-/* eslint-disable react/prop-types */
+import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React, {
+  Component,
+  ComponentType,
+  MouseEvent,
+  ReactElement
+} from 'react'
 
 import * as uiActions from '../../actions/ui'
 
 import { SequentialPaneContainer } from './styled'
 import FormNavigationButtons from './form-navigation-buttons'
 
+interface PaneProps {
+  disableNext?: boolean
+  hideNavigation?: boolean
+  nextId?: string
+  onNext?: () => void
+  pane: ComponentType
+  prevId?: string
+  props: any
+  title: ReactElement
+}
+
+interface OwnProps {
+  activePaneId: string
+  paneSequence: Record<string, PaneProps>
+}
+
+interface Props extends OwnProps {
+  activePane: PaneProps
+  parentPath: string
+  routeTo: (url: any) => void
+}
+
 /**
  * This component handles the flow between screens for new OTP user accounts.
  */
-class SequentialPaneDisplay extends Component {
-  static propTypes = {
-    activePaneId: PropTypes.string.isRequired,
-    paneSequence: PropTypes.object.isRequired
-  }
-
+class SequentialPaneDisplay extends Component<Props> {
   /**
    * Routes to the next pane URL.
    */
-  _routeTo = (nextId) => {
+  _routeTo = (nextId: string) => {
     const { parentPath, routeTo } = this.props
     routeTo(`${parentPath}/${nextId}`)
   }
 
-  _handleToNextPane = async (e) => {
+  _handleToNextPane = async (e: MouseEvent<Button>) => {
     const { activePane } = this.props
     const { disableNext, nextId } = activePane
 
@@ -48,12 +69,12 @@ class SequentialPaneDisplay extends Component {
   }
 
   _handleToPrevPane = () => {
-    const { activePane } = this.props
-    this._routeTo(activePane.prevId)
+    const { prevId } = this.props.activePane
+    prevId && this._routeTo(prevId)
   }
 
   render() {
-    const { activePane = {} } = this.props
+    const { activePane } = this.props
     const {
       hideNavigation,
       nextId,
@@ -61,7 +82,7 @@ class SequentialPaneDisplay extends Component {
       prevId,
       props,
       title
-    } = activePane
+    } = activePane || {}
 
     return (
       <>
@@ -74,10 +95,12 @@ class SequentialPaneDisplay extends Component {
         {!hideNavigation && (
           <FormNavigationButtons
             backButton={
-              prevId && {
-                onClick: this._handleToPrevPane,
-                text: <FormattedMessage id="common.forms.back" />
-              }
+              prevId
+                ? {
+                    onClick: this._handleToPrevPane,
+                    text: <FormattedMessage id="common.forms.back" />
+                  }
+                : undefined
             }
             okayButton={{
               onClick: this._handleToNextPane,
@@ -97,7 +120,7 @@ class SequentialPaneDisplay extends Component {
 
 // connect to the redux store
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state: any, ownProps: OwnProps) => {
   const { activePaneId, paneSequence } = ownProps
   const { pathname } = state.router.location
   return {
