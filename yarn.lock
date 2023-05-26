@@ -2395,10 +2395,10 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-8.2.3.tgz#cada5890831d4e71b8816724e5c19c37de89fed9"
-  integrity sha512-yzCR73FgKDGXlMScEDI0eRoLJdFuVwxdT12Ec8xaKktAzGbrnZvMGQ9qEiTZkiIcA56aLT6ft6MEqCbao2+RyQ==
+"@opentripplanner/core-utils@^9.0.0-alpha.26":
+  version "9.0.0-alpha.26"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-9.0.0-alpha.26.tgz#3bcba7a3e2d61f2b94a31137c73ba48c5fdf1777"
+  integrity sha512-tksrfGdNM9v3gQz65A8JYzTLBVlwIpsJoISLjgLR9l/TXEX1B4V9cZZH9N1wBCBStISKHeRpbeQdNMs0PxSOpg==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"

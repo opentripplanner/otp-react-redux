@@ -38,7 +38,7 @@
     "@bugsnag/js": "^7.17.0",
     "@bugsnag/plugin-react": "^7.17.0",
     "@opentripplanner/base-map": "^3.0.13",
-    "@opentripplanner/core-utils": "^8.2.3",
+    "@opentripplanner/core-utils": "^9.0.0-alpha.26",
     "@opentripplanner/endpoints-overlay": "^2.0.6",
     "@opentripplanner/from-to-location-picker": "^2.1.6",
     "@opentripplanner/geocoder": "^1.4.0",
