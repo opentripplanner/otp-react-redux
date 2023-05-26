@@ -73,8 +73,7 @@ export function getPathFromParts(...parts: string[]): string {
 }
 
 /**
- * Enum to describe the layout of the itinerary view
- * (currently only used in batch results).
+ * Enum to describe the layout of the itinerary view.
  */
 export enum ItineraryView {
   /** One itinerary is shown. (In mobile view, the map is hidden.) */
@@ -97,8 +96,10 @@ interface UrlParams {
 /**
  * Gets the itinerary view to display based on URL params.
  */
-export function getItineraryView(urlParams: UrlParams): ItineraryView {
-  const { ui_activeItinerary, ui_itineraryView } = urlParams
+export function getItineraryView({
+  ui_activeItinerary,
+  ui_itineraryView
+}: UrlParams): ItineraryView {
   return (
     ui_itineraryView ||
     (ui_activeItinerary !== undefined &&
