@@ -13,12 +13,7 @@ describe('util > ui', () => {
         ItineraryView.FULL
       )
     })
-    it('returns the specified view mode when set URL', () => {
-      expect(getItineraryView({ ui_itineraryView: 'leg' })).toBe(
-        ItineraryView.LEG
-      )
-    })
-    it('returns the list mode when if URL contains ui_activeItinerary  specified view mode when set URL', () => {
+    it('returns the specified view mode when set in URL', () => {
       expect(getItineraryView({ ui_itineraryView: 'leg' })).toBe(
         ItineraryView.LEG
       )
