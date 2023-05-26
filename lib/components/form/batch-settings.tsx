@@ -1,6 +1,5 @@
 import {
   addSettingsToButton,
-  generateModeSettingValues,
   MetroModeSelector,
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
@@ -35,6 +34,7 @@ import {
   StyledDateTimePreview,
   StyledDateTimePreviewContainer
 } from './batch-styled'
+import { generateModeSettingValues } from '../../util/api'
 import DateTimeModal from './date-time-modal'
 
 const queryParamConfig = { modeButtons: DelimitedArrayParam }

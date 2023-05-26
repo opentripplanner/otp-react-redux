@@ -2395,10 +2395,10 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^9.0.0-alpha.25":
-  version "9.0.0-alpha.25"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-9.0.0-alpha.25.tgz#a3ce1e17c005d293b0f0c717cf696dcb8e011121"
-  integrity sha512-Cz2vw7BVyLPoxYNXoPfzMQGij+sC3mTUlEI6+TJP3jH5/v7FxO8B9jZkX18oqBe66mJoC9vBsMlVNJMsZ4JqRA==
+"@opentripplanner/core-utils@^8.2.3":
+  version "8.2.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-8.2.3.tgz#cada5890831d4e71b8816724e5c19c37de89fed9"
+  integrity sha512-yzCR73FgKDGXlMScEDI0eRoLJdFuVwxdT12Ec8xaKktAzGbrnZvMGQ9qEiTZkiIcA56aLT6ft6MEqCbao2+RyQ==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
@@ -2614,10 +2614,10 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@^3.1.0-alpha.25":
-  version "3.1.0-alpha.25"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.1.0-alpha.25.tgz#5d03c049449f963914bdb999c24ba31783ba096b"
-  integrity sha512-ai/aRrGuXODkh43YkDEv+hbwNECLVq6A7we0KPiwfNseUX2ynmX/rk4BFRwMIMgnQgAaeD8gC14HHQN4CTk0/Q==
+"@opentripplanner/trip-form@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.1.0.tgz#b336fede804094544257e246d341558bca46789b"
+  integrity sha512-A4++k33oLUvLiwdN4/phmU01w9Lxy7CdPGXQzpex8TNikL+Bhezol0q6svQn3lk87Qbx2ZxK+hIz0yMFvRiZ2Q==
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/core-utils" "^8.2.1"
@@ -2639,10 +2639,10 @@
     "@opentripplanner/base-map" "^3.0.6"
     "@opentripplanner/core-utils" "^7.0.5"
 
-"@opentripplanner/types@^6.0.0-alpha.5":
-  version "6.0.0-alpha.5"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.0.0-alpha.5.tgz#d5c77f9fa31ff0d19771a3154b8fd1a06d28c771"
-  integrity sha512-IRV+b9/VX/Rqqg4jI+EH69xHzzr9rkOXwFiM/C3J6mdTdr0X3C0T0mpam/qca/dTQDW5pkZkty/d2RUSX2J6Lw==
+"@opentripplanner/types@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-5.0.1.tgz#89e35711cae6aac93382da08ff53b7c56f85b02b"
+  integrity sha512-IwrjEKZaKca1OpGdagkAWDloUEgIWUn9fTC/+MliQ5Kfb0WqqXqQHC9rVskqrJ2FRJe8gm+6AIa4pZ5Je1U+Aw==
 
 "@opentripplanner/vehicle-rental-overlay@^2.1.0":
   version "2.1.0"
