@@ -510,6 +510,8 @@ components:
     pause: Pause
     resume: Resume
   SavedTripScreen:
+    itineraryLoaded: Itinerary loaded
+    itineraryLoading: Loading itinerary
     tooManyTrips: >
       You already have reached the maximum of five saved trips. Please remove
       unused trips from your saved trips, and try again.

@@ -487,6 +487,8 @@ components:
     pause: Arrêter
     resume: Reprendre
   SavedTripScreen:
+    itineraryLoaded: Trajet chargé
+    itineraryLoading: Chargement du trajet
     tooManyTrips: >
       Vous avez déjà atteint le nombre maximum de 5 trajets enregistrés.
       Veuillez supprimer les trajets enregistrés qui sont inutilisés, puis
