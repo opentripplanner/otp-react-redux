@@ -90,7 +90,7 @@ export enum ItineraryView {
 }
 
 interface UrlParams {
-  ui_activeItinerary: string
+  ui_activeItinerary: number | string
   ui_itineraryView: ItineraryView
 }
 
