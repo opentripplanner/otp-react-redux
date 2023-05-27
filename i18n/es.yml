@@ -237,13 +237,13 @@ components:
     origin: origen
     planTripTooltip: Planificar viaje
     settings: Preferencias de viaje
-    validationMessage: "Por favor, defina los siguientes campos para planificar un\
-      \ viaje: {issues}"
+    validationMessage: "Por favor, defina los siguientes campos para planificar un
+      viaje: {issues}"
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
     message: >
-      Para acceder a esta página deberá iniciar sesión. Por favor, espere
-      mientras le redirigimos a la página de inicio de sesión…
+      Para acceder a esta página, debes iniciar sesión. Espera mientras te redirigimos
+      a la página de inicio de sesión...
   CallTakerPanel:
     advancedOptions: Opciones avanzadas
     groupSize: "Tamaño del grupo:"
@@ -355,8 +355,8 @@ components:
   NavLoginButton:
     help: Ayuda
     myAccount: Mi cuenta
-    signIn: Acceder
-    signOut: Firmar la salida
+    signIn: Iniciar sesión
+    signOut: Cerrar sesión
   NewAccountWizard:
     finish: ¡Configuración de la cuenta completa!
     notifications: Preferencias de notificación
@@ -370,8 +370,8 @@ components:
     description: Puede recibir notificaciones sobre los viajes que realiza con frecuencia.
     noneSelect: No enviar notificaciones
     notificationChannelPrompt: ¿Cómo desea recibir las notificaciones?
-    notificationEmailDetail: "Los correos electrónicos de notificación se enviarán\
-      \ a:"
+    notificationEmailDetail: "Los correos electrónicos de notificación se enviarán
+      a:"
   PhoneNumberEditor:
     changeNumber: Cambiar número de teléfono
     invalidCode: Introduzca 6 dígitos para el código de validación.
@@ -469,8 +469,8 @@ components:
       Sólo se pueden controlar los itinerarios que incluyan ride hailing y no
       los alquileres o los viajes en coche.
     saveTripText: Salvar el viaje
-    signInText: Iniciar sesión para guardar el viaje
-    signInTooltip: Por favor, inicie sesión para guardar un viaje.
+    signInText: Inicia sesión para guardar el viaje
+    signInTooltip: Por favor, inicia sesión para guardar el viaje.
   SavedTripEditor:
     editSavedTrip: Editar el viaje guardado
     saveNewTrip: Guardar un nuevo viaje
