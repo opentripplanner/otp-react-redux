@@ -24,6 +24,7 @@ import { setMainPanelContent } from '../../actions/ui'
 import startOver from '../util/start-over'
 
 import AppMenuItem from './app-menu-item'
+import PopupTriggerText from './popup-trigger-text'
 
 type AppMenuProps = {
   activeLocale: string
@@ -252,7 +253,7 @@ class AppMenu extends Component<
               <AppMenuItem
                 icon={<SvgIcon iconName={popupTarget} />}
                 onClick={this._triggerPopup}
-                text={<FormattedMessage id={`config.popups.${popupTarget}`} />}
+                text={<PopupTriggerText popupTarget={popupTarget} />}
               />
             )}
             {callTakerEnabled && (
@@ -318,7 +319,7 @@ export default injectIntl(
 /**
  * Renders a label and icon either from url or font awesome type
  */
-const Icon = ({
+export const Icon = ({
   iconType,
   iconUrl
 }: {

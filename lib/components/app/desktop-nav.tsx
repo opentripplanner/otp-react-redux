@@ -1,15 +1,16 @@
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
 import { Nav, Navbar, NavItem } from 'react-bootstrap'
+import { useIntl } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import { accountLinks, getAuth0Config } from '../../util/auth'
 import { DEFAULT_APP_TITLE } from '../../util/constants'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
 
-import AppMenu from './app-menu'
+import AppMenu, { Icon } from './app-menu'
 import LocaleSelector from './locale-selector'
 import ViewSwitcher from './view-switcher'
 
@@ -19,6 +20,20 @@ const NavItemOnLargeScreens = styled(NavItem)`
     display: none !important;
   }
 `
+
+const StyledNav = styled(Nav)`
+  /* Almost override bootstrap's margin-right: -15px */
+  margin-right: -5px;
+  & > li svg {
+    height: 18px;
+  }
+
+  & .caret {
+    margin-left: 5px;
+    margin-right: -10px;
+  }
+`
+
 // Typscript TODO: otpConfig type
 export type Props = {
   locale: string
@@ -52,6 +67,7 @@ const DesktopNav = ({
     persistence,
     title = DEFAULT_APP_TITLE
   } = otpConfig
+  const intl = useIntl()
   const showLogin = Boolean(getAuth0Config(persistence))
 
   const BrandingElement = brandClickable ? 'a' : 'div'
@@ -68,6 +84,11 @@ const DesktopNav = ({
         }
       }
     : { style: { ...commonStyles } }
+  const popupButtonText =
+    popupTarget &&
+    intl.formatMessage({
+      id: `config.popups.${popupTarget}`
+    })
 
   return (
     <header>
@@ -91,12 +112,14 @@ const DesktopNav = ({
 
           <ViewSwitcher sticky />
 
-          <Nav pullRight>
+          <StyledNav pullRight>
             {popupTarget && (
               <NavItemOnLargeScreens
                 onClick={() => setPopupContent(popupTarget)}
+                title={popupButtonText}
               >
-                <FormattedMessage id={`config.popups.${popupTarget}`} />
+                <Icon iconType={popupTarget} />
+                <InvisibleA11yLabel>{popupButtonText}</InvisibleA11yLabel>
               </NavItemOnLargeScreens>
             )}
             <LocaleSelector />
@@ -108,7 +131,7 @@ const DesktopNav = ({
                 style={{ float: 'right' }}
               />
             )}
-          </Nav>
+          </StyledNav>
         </Navbar.Header>
       </Navbar>
     </header>
