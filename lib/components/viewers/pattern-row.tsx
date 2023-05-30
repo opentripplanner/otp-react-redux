@@ -91,9 +91,7 @@ class PatternRow extends Component<Props, State> {
                   'gtfs'
                 )}
                 leg={generateFakeLegForRouteRenderer(route, true)}
-                style={{
-                  fontSize: routeNameFontSize(routeName)
-                }}
+                style={{ fontSize: routeNameFontSize(routeName) }}
               />
             </span>
             <span title={pattern.headsign}>{pattern.headsign}</span>

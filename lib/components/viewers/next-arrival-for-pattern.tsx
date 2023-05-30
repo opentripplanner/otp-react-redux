@@ -89,9 +89,7 @@ function NextArrivalForPattern({
             isOnColoredBackground={route.operator?.colorMode?.includes('gtfs')}
             // All GTFS bg colors look strange with the top border
             leg={generateFakeLegForRouteRenderer(route, true)}
-            style={{
-              fontSize: routeNameFontSize(routeName)
-            }}
+            style={{ fontSize: routeNameFontSize(routeName) }}
           />
         </span>
         <span className="overflow-ellipsis" title={toHeadsign}>
