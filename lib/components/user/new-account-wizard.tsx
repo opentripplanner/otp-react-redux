@@ -6,12 +6,16 @@ import { User } from './types'
 import AccountSetupFinishPane from './account-setup-finish-pane'
 import FavoritePlaceList from './places/favorite-place-list'
 import NotificationPrefsPane from './notification-prefs-pane'
-import SequentialPaneDisplay, { PaneProps } from './sequential-pane-display'
+import SequentialPaneDisplay from './sequential-pane-display'
 import TermsOfUsePane from './terms-of-use-pane'
 import VerifyEmailPane from './verify-email-pane'
 
 type FormikUserProps = FormikProps<User>
 
+// The props include Formik props that provide access to the current user data (stored in props.values)
+// and to its own blur/change/submit event handlers that automate the state.
+// We forward the props to each pane so that their individual controls
+// can be wired to be managed by Formik.
 interface Props extends FormikUserProps {
   activePaneId: string
   onCreate: (value: User) => void
@@ -49,7 +53,7 @@ class NewAccountWizard extends Component<Props> {
 
     const { hasConsentedToTerms, notificationChannel = 'email' } = userData
 
-    const paneSequence: PaneProps<FormikUserProps>[] = [
+    const paneSequence = [
       {
         disableNext: !hasConsentedToTerms,
         id: 'terms',
@@ -77,16 +81,12 @@ class NewAccountWizard extends Component<Props> {
       }
     ]
 
-    // The props include Formik props that provide access to the current user data (stored in props.values)
-    // and to its own blur/change/submit event handlers that automate the state.
-    // We forward the props to each pane so that their individual controls
-    // can be wired to be managed by Formik.
-    paneSequence.forEach((pane) => {
-      pane.props = formikProps
-    })
-
     return (
-      <SequentialPaneDisplay activePaneId={activePaneId} panes={paneSequence} />
+      <SequentialPaneDisplay
+        activePaneId={activePaneId}
+        paneProps={formikProps}
+        panes={paneSequence}
+      />
     )
   }
 }

@@ -10,12 +10,11 @@ import { GRAY_ON_WHITE } from '../util/colors'
 import { SequentialPaneContainer } from './styled'
 import FormNavigationButtons from './form-navigation-buttons'
 
-export interface PaneProps<T = any> {
+export interface PaneProps {
   disableNext?: boolean
   id: string
   onNext?: () => void
   pane: any
-  props?: T
   title: ReactElement
 }
 
@@ -24,9 +23,10 @@ interface OwnProps {
   panes: PaneProps[]
 }
 
-interface Props extends OwnProps {
+interface Props<T> extends OwnProps {
   activePane: PaneProps
   activePaneIndex: number
+  paneProps: T
   parentPath: string
   routeTo: (url: any) => void
 }
@@ -40,7 +40,7 @@ const StepNumber = styled.p`
 /**
  * This component handles the flow between screens for new OTP user accounts.
  */
-class SequentialPaneDisplay extends Component<Props> {
+class SequentialPaneDisplay<T> extends Component<Props<T>> {
   /**
    * Routes to the next pane URL.
    */
@@ -80,8 +80,8 @@ class SequentialPaneDisplay extends Component<Props> {
   }
 
   render() {
-    const { activePane, activePaneIndex, panes } = this.props
-    const { pane: Pane, props, title } = activePane || {}
+    const { activePane, activePaneIndex, paneProps, panes } = this.props
+    const { pane: Pane, title } = activePane || {}
 
     return (
       <>
@@ -98,7 +98,7 @@ class SequentialPaneDisplay extends Component<Props> {
           {title}
         </h1>
         <SequentialPaneContainer>
-          {Pane && <Pane {...props} />}
+          {Pane && <Pane {...paneProps} />}
         </SequentialPaneContainer>
         <FormNavigationButtons
           backButton={
@@ -130,7 +130,9 @@ class SequentialPaneDisplay extends Component<Props> {
 const mapStateToProps = (state: any, ownProps: OwnProps) => {
   const { activePaneId, panes } = ownProps
   const { pathname } = state.router.location
-  const activePaneIndex = panes.findIndex((pane) => pane.id === activePaneId)
+  const activePaneIndex = panes.findIndex(
+    (pane: PaneProps) => pane.id === activePaneId
+  )
   return {
     activePane: panes[activePaneIndex],
     activePaneIndex,
