@@ -1,3 +1,4 @@
+import { NavbarButton } from '../app/nav-item'
 import React, {
   HTMLAttributes,
   KeyboardEvent,
@@ -17,18 +18,11 @@ interface Props extends HTMLAttributes<HTMLElement> {
   pullRight?: boolean
 }
 
-const DropdownButton = styled.button`
-  border: none;
+const DropdownButton = styled(NavbarButton)`
   color: inherit;
-  display: block;
-  transition: all 0.1s ease-in-out;
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-  }
-  &.active {
-    background: rgba(0, 0, 0, 0.05);
+  span.caret {
+    color: white;
   }
 `
 const DropdownMenu = styled.ul`

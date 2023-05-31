@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import { FormattedMessage, useIntl } from 'react-intl'
-import { NavItem } from 'react-bootstrap'
 import { User } from '@auth0/auth0-react'
 import { User as UserIcon } from '@styled-icons/fa-regular/User'
 import React, { HTMLAttributes } from 'react'
@@ -9,9 +8,8 @@ import styled from 'styled-components'
 import { Dropdown } from '../util/dropdown'
 import { LinkContainerWithQuery } from '../form/connected-links'
 import { UnstyledButton } from '../util/unstyled-button'
-
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
-
+import NavbarItem from '../app/nav-item'
 
 const Avatar = styled.img`
   height: 2em;
@@ -112,10 +110,10 @@ const NavLoginButton = ({
     id: 'components.NavLoginButton.signIn'
   })
   return (
-    <NavItem {...commonProps} onClick={onSignInClick} title={loginText}>
+    <NavbarItem {...commonProps} onClick={onSignInClick} title={loginText}>
       <UserIcon />
       <InvisibleA11yLabel>{loginText}</InvisibleA11yLabel>
-    </NavItem>
+    </NavbarItem>
   )
 }
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { Nav, Navbar, NavItem } from 'react-bootstrap'
+import { Nav, Navbar } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
@@ -12,14 +12,8 @@ import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
 
 import AppMenu, { Icon } from './app-menu'
 import LocaleSelector from './locale-selector'
+import NavbarItem from './nav-item'
 import ViewSwitcher from './view-switcher'
-
-const NavItemOnLargeScreens = styled(NavItem)`
-  display: block;
-  @media (max-width: 768px) {
-    display: none !important;
-  }
-`
 
 const StyledNav = styled(Nav)`
   /* Almost override bootstrap's margin-right: -15px */
@@ -114,13 +108,13 @@ const DesktopNav = ({
 
           <StyledNav pullRight>
             {popupTarget && (
-              <NavItemOnLargeScreens
+              <NavbarItem
                 onClick={() => setPopupContent(popupTarget)}
                 title={popupButtonText}
               >
                 <Icon iconType={popupTarget} />
                 <InvisibleA11yLabel>{popupButtonText}</InvisibleA11yLabel>
-              </NavItemOnLargeScreens>
+              </NavbarItem>
             )}
             <LocaleSelector />
             {showLogin && (
