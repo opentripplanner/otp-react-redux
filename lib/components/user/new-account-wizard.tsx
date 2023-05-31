@@ -2,6 +2,7 @@ import { FormattedMessage } from 'react-intl'
 import { FormikProps } from 'formik'
 import React, { Component } from 'react'
 
+import { User } from './types'
 import AccountSetupFinishPane from './account-setup-finish-pane'
 import FavoritePlaceList from './places/favorite-place-list'
 import NotificationPrefsPane from './notification-prefs-pane'
@@ -9,23 +10,18 @@ import SequentialPaneDisplay, { PaneProps } from './sequential-pane-display'
 import TermsOfUsePane from './terms-of-use-pane'
 import VerifyEmailPane from './verify-email-pane'
 
-interface Fields {
-  hasConsentedToTerms?: boolean
-  id?: string
-  notificationChannel?: string
-  phoneNumber?: string
-}
+type FormikUserProps = FormikProps<User>
 
-interface Props extends FormikProps<Fields> {
+interface Props extends FormikUserProps {
   activePaneId: string
-  onCreate: (value: Fields) => void
+  onCreate: (value: User) => void
 }
 
 /**
  * This component is the new account wizard.
  */
 class NewAccountWizard extends Component<Props> {
-  _handleCreateNewUser = () => {
+  _handleCreateNewUser = (): void => {
     const {
       onCreate, // provided by UserAccountScreen
       values: userData // provided by Formik
@@ -38,7 +34,8 @@ class NewAccountWizard extends Component<Props> {
   }
 
   render(): JSX.Element {
-    const { activePaneId, values: userData } = this.props
+    const { activePaneId, onCreate, ...formikProps } = this.props
+    const { values: userData } = formikProps
     if (activePaneId === 'verify') {
       return (
         <>
@@ -52,7 +49,7 @@ class NewAccountWizard extends Component<Props> {
 
     const { hasConsentedToTerms, notificationChannel = 'email' } = userData
 
-    const paneSequence: PaneProps[] = [
+    const paneSequence: PaneProps<FormikUserProps>[] = [
       {
         disableNext: !hasConsentedToTerms,
         id: 'terms',
@@ -85,7 +82,7 @@ class NewAccountWizard extends Component<Props> {
     // We forward the props to each pane so that their individual controls
     // can be wired to be managed by Formik.
     paneSequence.forEach((pane) => {
-      pane.props = this.props
+      pane.props = formikProps
     })
 
     return (

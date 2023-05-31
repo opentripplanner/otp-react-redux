@@ -10,12 +10,12 @@ import { GRAY_ON_WHITE } from '../util/colors'
 import { SequentialPaneContainer } from './styled'
 import FormNavigationButtons from './form-navigation-buttons'
 
-export interface PaneProps {
+export interface PaneProps<T = any> {
   disableNext?: boolean
   id: string
   onNext?: () => void
   pane: any
-  props?: any
+  props?: T
   title: ReactElement
 }
 
