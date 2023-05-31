@@ -1,18 +1,30 @@
-/* eslint-disable react/prop-types */
 import { FormattedMessage } from 'react-intl'
+import { FormikProps } from 'formik'
 import React, { Component } from 'react'
 
 import AccountSetupFinishPane from './account-setup-finish-pane'
 import FavoritePlaceList from './places/favorite-place-list'
 import NotificationPrefsPane from './notification-prefs-pane'
-import SequentialPaneDisplay from './sequential-pane-display'
+import SequentialPaneDisplay, { PaneProps } from './sequential-pane-display'
 import TermsOfUsePane from './terms-of-use-pane'
 import VerifyEmailPane from './verify-email-pane'
+
+interface Fields {
+  hasConsentedToTerms?: boolean
+  id?: string
+  notificationChannel?: string
+  phoneNumber?: string
+}
+
+interface Props extends FormikProps<Fields> {
+  activePaneId: string
+  onCreate: (value: Fields) => void
+}
 
 /**
  * This component is the new account wizard.
  */
-class NewAccountWizard extends Component {
+class NewAccountWizard extends Component<Props> {
   _handleCreateNewUser = () => {
     const {
       onCreate, // provided by UserAccountScreen
@@ -25,13 +37,8 @@ class NewAccountWizard extends Component {
     }
   }
 
-  render() {
-    // The props include Formik props that provide access to the current user data (stored in props.values)
-    // and to its own blur/change/submit event handlers that automate the state.
-    // We forward the props to each pane so that their individual controls
-    // can be wired to be managed by Formik.
+  render(): JSX.Element {
     const { activePaneId, values: userData } = this.props
-
     if (activePaneId === 'verify') {
       return (
         <>
@@ -45,7 +52,7 @@ class NewAccountWizard extends Component {
 
     const { hasConsentedToTerms, notificationChannel = 'email' } = userData
 
-    const paneSequence = [
+    const paneSequence: PaneProps[] = [
       {
         disableNext: !hasConsentedToTerms,
         id: 'terms',
@@ -73,7 +80,10 @@ class NewAccountWizard extends Component {
       }
     ]
 
-    // Pass props and title to each entry above
+    // The props include Formik props that provide access to the current user data (stored in props.values)
+    // and to its own blur/change/submit event handlers that automate the state.
+    // We forward the props to each pane so that their individual controls
+    // can be wired to be managed by Formik.
     paneSequence.forEach((pane) => {
       pane.props = this.props
     })

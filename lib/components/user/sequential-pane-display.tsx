@@ -1,12 +1,7 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-import React, {
-  Component,
-  ComponentType,
-  MouseEvent,
-  ReactElement
-} from 'react'
+import React, { Component, MouseEvent, ReactElement } from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
@@ -15,23 +10,23 @@ import { GRAY_ON_WHITE } from '../util/colors'
 import { SequentialPaneContainer } from './styled'
 import FormNavigationButtons from './form-navigation-buttons'
 
-interface PaneProps {
+export interface PaneProps {
   disableNext?: boolean
   id: string
   onNext?: () => void
-  pane: ComponentType
-  props: any
+  pane: any
+  props?: any
   title: ReactElement
 }
 
 interface OwnProps {
   activePaneId: string
-  activePaneIndex: number
   panes: PaneProps[]
 }
 
 interface Props extends OwnProps {
   activePane: PaneProps
+  activePaneIndex: number
   parentPath: string
   routeTo: (url: any) => void
 }
