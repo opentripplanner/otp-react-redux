@@ -15,18 +15,17 @@ import FormNavigationButtons from './form-navigation-buttons'
 
 interface PaneProps {
   disableNext?: boolean
-  hideNavigation?: boolean
-  nextId?: string
+  id: string
   onNext?: () => void
   pane: ComponentType
-  prevId?: string
   props: any
   title: ReactElement
 }
 
 interface OwnProps {
   activePaneId: string
-  paneSequence: Record<string, PaneProps>
+  activePaneIndex: number
+  panes: PaneProps[]
 }
 
 interface Props extends OwnProps {
@@ -48,16 +47,17 @@ class SequentialPaneDisplay extends Component<Props> {
   }
 
   _handleToNextPane = async (e: MouseEvent<Button>) => {
-    const { activePane } = this.props
-    const { disableNext, nextId } = activePane
+    const { activePane, activePaneIndex, panes } = this.props
+    const { disableNext } = activePane
 
-    if (nextId) {
+    if (activePaneIndex < panes.length - 1) {
       // Don't submit the form if there are more steps to complete.
       e.preventDefault()
 
       if (disableNext) {
         alert('FIXME: Please check that your input is correct and try again.')
       } else {
+        const nextId = panes[activePaneIndex + 1].id
         // Execute pane-specific action, if any (e.g. save a user account)
         // when clicking next.
         if (typeof activePane.onNext === 'function') {
@@ -69,50 +69,43 @@ class SequentialPaneDisplay extends Component<Props> {
   }
 
   _handleToPrevPane = () => {
-    const { prevId } = this.props.activePane
-    prevId && this._routeTo(prevId)
+    const { activePaneIndex, panes } = this.props
+    if (activePaneIndex > 0) {
+      const prevId = panes[activePaneIndex - 1].id
+      prevId && this._routeTo(prevId)
+    }
   }
 
   render() {
-    const { activePane } = this.props
-    const {
-      hideNavigation,
-      nextId,
-      pane: Pane,
-      prevId,
-      props,
-      title
-    } = activePane || {}
+    const { activePane = {}, activePaneIndex, panes } = this.props
+    const { pane: Pane, props, title } = activePane
 
     return (
       <>
         <h1>{title}</h1>
-
         <SequentialPaneContainer>
           {Pane && <Pane {...props} />}
         </SequentialPaneContainer>
-
-        {!hideNavigation && (
-          <FormNavigationButtons
-            backButton={
-              prevId
-                ? {
-                    onClick: this._handleToPrevPane,
-                    text: <FormattedMessage id="common.forms.back" />
-                  }
-                : undefined
-            }
-            okayButton={{
-              onClick: this._handleToNextPane,
-              text: nextId ? (
+        <FormNavigationButtons
+          backButton={
+            activePaneIndex > 0
+              ? {
+                  onClick: this._handleToPrevPane,
+                  text: <FormattedMessage id="common.forms.back" />
+                }
+              : undefined
+          }
+          okayButton={{
+            onClick: this._handleToNextPane,
+            text:
+              activePaneIndex < panes.length - 1 ? (
                 <FormattedMessage id="common.forms.next" />
               ) : (
                 <FormattedMessage id="common.forms.finish" />
               ),
-              type: 'submit'
-            }}
-          />
-        )}
+            type: 'submit'
+          }}
+        />
       </>
     )
   }
@@ -121,10 +114,12 @@ class SequentialPaneDisplay extends Component<Props> {
 // connect to the redux store
 
 const mapStateToProps = (state: any, ownProps: OwnProps) => {
-  const { activePaneId, paneSequence } = ownProps
+  const { activePaneId, panes } = ownProps
   const { pathname } = state.router.location
+  const activePaneIndex = panes.findIndex((pane) => pane.id === activePaneId)
   return {
-    activePane: paneSequence[activePaneId],
+    activePane: panes[activePaneIndex],
+    activePaneIndex,
     parentPath: pathname.substr(0, pathname.lastIndexOf('/'))
   }
 }
