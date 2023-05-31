@@ -12,10 +12,6 @@ import VerifyEmailPane from './verify-email-pane'
 
 type FormikUserProps = FormikProps<User>
 
-// The props include Formik props that provide access to the current user data (stored in props.values)
-// and to its own blur/change/submit event handlers that automate the state.
-// We forward the props to each pane so that their individual controls
-// can be wired to be managed by Formik.
 interface Props extends FormikUserProps {
   activePaneId: string
   onCreate: (value: User) => void
@@ -38,6 +34,10 @@ class NewAccountWizard extends Component<Props> {
   }
 
   render(): JSX.Element {
+    // The props include Formik props that provide access to the current user data (stored in props.values)
+    // and to its own blur/change/submit event handlers that automate the state.
+    // We forward the props to each pane (via SequentialPaneDisplay) so that their individual controls
+    // can be wired to be managed by Formik.
     const { activePaneId, onCreate, ...formikProps } = this.props
     const { values: userData } = formikProps
     if (activePaneId === 'verify') {
@@ -46,7 +46,7 @@ class NewAccountWizard extends Component<Props> {
           <h1>
             <FormattedMessage id="components.NewAccountWizard.verify" />
           </h1>
-          <VerifyEmailPane {...this.props} />
+          <VerifyEmailPane {...formikProps} />
         </>
       )
     }
