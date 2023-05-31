@@ -494,6 +494,8 @@ components:
       Ce nom est déjà utilisé avec un autre trajet. Veuillez choisir un nom
       différent.
     tripNameRequired: Veuillez entrer un nom pour ce trajet.
+  SequentialPaneDisplay:
+    stepNumber: Étape {step} sur {total}
   SessionTimeout:
     body: >-
       Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma

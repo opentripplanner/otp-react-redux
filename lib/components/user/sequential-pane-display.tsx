@@ -7,8 +7,10 @@ import React, {
   MouseEvent,
   ReactElement
 } from 'react'
+import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
+import { GRAY_ON_WHITE } from '../util/colors'
 
 import { SequentialPaneContainer } from './styled'
 import FormNavigationButtons from './form-navigation-buttons'
@@ -33,6 +35,12 @@ interface Props extends OwnProps {
   parentPath: string
   routeTo: (url: any) => void
 }
+
+const StepNumber = styled.p`
+  color: ${GRAY_ON_WHITE};
+  font-size: 40%;
+  margin: -1em 0 0 0;
+`
 
 /**
  * This component handles the flow between screens for new OTP user accounts.
@@ -77,12 +85,23 @@ class SequentialPaneDisplay extends Component<Props> {
   }
 
   render() {
-    const { activePane = {}, activePaneIndex, panes } = this.props
-    const { pane: Pane, props, title } = activePane
+    const { activePane, activePaneIndex, panes } = this.props
+    const { pane: Pane, props, title } = activePane || {}
 
     return (
       <>
-        <h1>{title}</h1>
+        <h1>
+          <StepNumber>
+            <FormattedMessage
+              id="components.SequentialPaneDisplay.stepNumber"
+              values={{
+                step: activePaneIndex + 1,
+                total: panes.length
+              }}
+            />
+          </StepNumber>
+          {title}
+        </h1>
         <SequentialPaneContainer>
           {Pane && <Pane {...props} />}
         </SequentialPaneContainer>

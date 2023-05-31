@@ -475,6 +475,8 @@ components:
       unused trips from your saved trips, and try again.
     tripNameAlreadyUsed: Another saved trip already uses this name. Please choose a different name.
     tripNameRequired: Please enter a trip name.
+  SequentialPaneDisplay:
+    stepNumber: Step {step} of {total}
   SessionTimeout:
     body: >-
       Your session will expire within a minute. Press 'Continue Session' to keep
