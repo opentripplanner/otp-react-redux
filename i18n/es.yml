@@ -30,8 +30,7 @@ actions:
       No se puede guardar el plan: este plan no se pudo guardar debido a la
       falta de capacidad en uno o más vehículos. Por favor, vuelva a planificar
       su viaje.
-    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados
-      válidos
+    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados válidos
     saveItinerariesError: "No se pudieron guardar los itinerarios: {err}"
     setDateError: "Error al establecer la fecha:"
     setGroupSizeError: "No se pudo establecer el tamaño del grupo:"
@@ -47,11 +46,9 @@ actions:
     authTokenError: Error al obtener un token de autorización.
     confirmDeleteMonitoredTrip: ¿Desea eliminar este viaje?
     confirmDeletePlace: ¿Quiere eliminar este lugar?
-    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido
-      reenviado.
+    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido reenviado.
     genericError: "Se ha encontrado un error: {err}"
-    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado
-      es posible.
+    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
     preferencesSaved: Sus preferencias se han guardado.
     smsInvalidCode: El código introducido no es válido. Por favor, inténtelo de nuevo.
     smsResendThrottled: >-
@@ -113,6 +110,7 @@ common:
       {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
       solo
     transfers: "{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}"
+  linkOpensNewWindow: (Abre una nueva ventana)
   modes:
     bicycle_rent: Compartir bicicleta
     bike: Bicicleta
@@ -160,7 +158,6 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# h }}{minutes} min { seconds, plural, =0 {}
       other {# s}}
-  linkOpensNewWindow: (Abre una nueva ventana)
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Prefiera los viajes accesibles por defecto
@@ -237,8 +234,7 @@ components:
     origin: origen
     planTripTooltip: Planificar viaje
     settings: Preferencias de viaje
-    validationMessage: "Por favor, defina los siguientes campos para planificar un\
-      \ viaje: {issues}"
+    validationMessage: "Por favor, defina los siguientes campos para planificar un viaje: {issues}"
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
     message: >
@@ -337,6 +333,9 @@ components:
     exclusiveMode: Solo {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Cambiar la dirección de clasificación
+    howToFindResults: >-
+      Para ver los resultados, consulta el encabezado de los itinerarios
+      encontrados a continuación.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerario encontrado} other {# itinerarios
       encontrados}}
@@ -368,8 +367,7 @@ components:
     description: Puede recibir notificaciones sobre los viajes que realiza con frecuencia.
     noneSelect: No enviar notificaciones
     notificationChannelPrompt: ¿Cómo desea recibir las notificaciones?
-    notificationEmailDetail: "Los correos electrónicos de notificación se enviarán\
-      \ a:"
+    notificationEmailDetail: "Los correos electrónicos de notificación se enviarán a:"
   PhoneNumberEditor:
     changeNumber: Cambiar número de teléfono
     invalidCode: Introduzca 6 dígitos para el código de validación.
@@ -502,8 +500,7 @@ components:
       Opciones
       y Preferencias del viaje
   SimpleRealtimeAnnotation:
-    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo
-      real
+    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo real
   StackedPaneDisplay:
     savePreferences: Guardar preferencias
   StopScheduleTable:
@@ -522,6 +519,7 @@ components:
       Esta es una parada flexible. Los vehículos dejarán y recogerán a los
       pasajeros en esta zona flexible previa solicitud. Es posible que tenga que
       llamar con antelación para el servicio en esta zona.
+    forStop: para {stopName}
     header: Visor de paradas
     loadingText: Cargando la parada...
     nextArrivals: Próximas llegadas
@@ -565,19 +563,16 @@ components:
     travelingAt: Viajando a {milesPerHour}
     vehicleName: Vehículo {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Comprobación de la existencia de itinerarios para
-      cada día de la semana…
+    checkingItineraryExistence: Comprobación de la existencia de itinerarios para cada día de la semana…
     selectAtLeastOneDay: Por favor, seleccione al menos un día para el seguimiento.
     tripDaysPrompt: ¿Qué días hace este viaje?
-    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana
-      indicados anteriormente.
+    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana indicados anteriormente.
     tripNamePrompt: "Por favor, indique un nombre para este viaje:"
     tripNotAvailableOnDay: El viaje no está disponible el {repeatedDay}
     unsavedChangesExistingTrip: >-
       Todavía no ha guardado su viaje. Si abandona la página, los cambios se
       perderán.
-    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página,
-      se perderá.
+    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página, se perderá.
   TripNotificationsPane:
     advancedSettings: Configuración avanzada
     altRouteRecommended: Se recomienda una ruta alternativa o un punto de transferencia
