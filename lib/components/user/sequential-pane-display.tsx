@@ -1,7 +1,7 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-import React, { Component, MouseEvent, ReactElement } from 'react'
+import React, { Component, MouseEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
@@ -15,7 +15,7 @@ export interface PaneProps {
   id: string
   onNext?: () => void
   pane: any
-  title: ReactElement
+  title: ReactNode
 }
 
 interface OwnProps {
