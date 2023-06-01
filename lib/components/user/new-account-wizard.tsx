@@ -1,10 +1,9 @@
 import { FormattedMessage, useIntl } from 'react-intl'
-import { FormikProps } from 'formik'
 import React, { useCallback } from 'react'
 
 import PageTitle from '../util/page-title'
 
-import { User } from './types'
+import { FormikUserProps, User } from './types'
 import AccountSetupFinishPane from './account-setup-finish-pane'
 import FavoritePlaceList from './places/favorite-place-list'
 import NotificationPrefsPane from './notification-prefs-pane'
@@ -16,8 +15,6 @@ import VerifyEmailPane from './verify-email-pane'
 // and to its own blur/change/submit event handlers that automate the state.
 // We forward the props to each pane (via SequentialPaneDisplay) so that their individual controls
 // can be wired to be managed by Formik.
-type FormikUserProps = FormikProps<User>
-
 interface Props extends FormikUserProps {
   activePaneId: string
   onCreate: (value: User) => void
