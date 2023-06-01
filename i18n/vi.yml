@@ -333,10 +333,10 @@ components:
     signIn: Đăng nhập
     signOut: Đăng xuất
   NewAccountWizard:
+    createNewAccount: Tạo tài khoản mới
     finish: Hoàn tất việc thiết lập tài khoản!
     notifications: Tùy chọn thông báo
     places: Thêm vị trí của bạn
-    terms: Tạo tài khoản mới
     verify: Xác minh địa chỉ email của bạn
   NotFound:
     description: Nội dung bạn yêu cầu không có sẵn.
