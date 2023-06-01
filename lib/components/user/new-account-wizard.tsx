@@ -71,7 +71,9 @@ const NewAccountWizard = ({
     },
     {
       id: 'notifications',
-      invalid: notificationChannel === 'sms' && !userData.phoneNumber,
+      invalid:
+        notificationChannel === 'sms' &&
+        (!userData.phoneNumber || !userData.isPhoneNumberVerified),
       invalidMessage: intl.formatMessage({
         id: 'components.PhoneNumberEditor.invalidPhone'
       }),
