@@ -28,6 +28,13 @@ const StyledNav = styled(Nav)`
   }
 `
 
+const NavItemOnLargeScreens = styled(NavbarItem)`
+  display: block;
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+`
+
 // Typscript TODO: otpConfig type
 export type Props = {
   locale: string
@@ -108,13 +115,13 @@ const DesktopNav = ({
 
           <StyledNav pullRight>
             {popupTarget && (
-              <NavbarItem
+              <NavItemOnLargeScreens
                 onClick={() => setPopupContent(popupTarget)}
                 title={popupButtonText}
               >
                 <Icon iconType={popupTarget} />
                 <InvisibleA11yLabel>{popupButtonText}</InvisibleA11yLabel>
-              </NavbarItem>
+              </NavItemOnLargeScreens>
             )}
             <LocaleSelector />
             {showLogin && (

@@ -70,6 +70,7 @@ const NavLoginButton = ({
               />
             </span>
           }
+          pullRight
         >
           <li className="header">{displayedName}</li>
 

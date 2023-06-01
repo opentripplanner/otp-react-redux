@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 type Props = {
   children: React.ReactNode
+  className?: string
   onClick: () => void
   title: string | undefined
 }
@@ -16,6 +17,10 @@ export const NavbarButton = styled.button`
   padding: 15px;
   transition: all 0.1s ease-in-out;
 
+  @media (max-width: 768px) {
+    padding: 10px;
+    float: right;
+  }
   &:hover,
   &[aria-expanded='true'] {
     background: rgba(0, 0, 0, 0.05);
@@ -27,9 +32,14 @@ export const NavbarButton = styled.button`
   }
 `
 
-const NavbarItem = ({ children, onClick, title }: Props): JSX.Element => {
+const NavbarItem = ({
+  children,
+  className,
+  onClick,
+  title
+}: Props): JSX.Element => {
   return (
-    <li>
+    <li className={className}>
       <NavbarButton className="navItem" onClick={onClick} title={title}>
         {children}
       </NavbarButton>
