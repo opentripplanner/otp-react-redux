@@ -1,5 +1,3 @@
-import { FormikProps } from 'formik'
-
 /**
  * A user-saved, favorite location.
  */
@@ -27,5 +25,3 @@ export interface User {
   savedLocations?: UserSavedLocation[]
   storeTripHistory?: boolean
 }
-
-export type FormikUserProps = FormikProps<User>

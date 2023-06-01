@@ -1,79 +1,59 @@
 import { Checkbox, ControlLabel, FormGroup } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { Times } from '@styled-icons/fa-solid'
-import React from 'react'
-import styled from 'styled-components'
+import React, { FormEventHandler } from 'react'
 
-import { getErrorStates } from '../../util/ui'
 import { LinkOpensNewWindow } from '../util/externalLink'
-import { StyledIconWrapper } from '../util/styledIcon'
 import {
   TERMS_OF_SERVICE_PATH,
   TERMS_OF_STORAGE_PATH
 } from '../../util/constants'
 
-import { FormikUserProps } from './types'
-
-const FlexBox = styled.span`
-  display: flex;
-  gap: 8px;
-`
-
-interface Props extends FormikUserProps {
-  disableCheckTerms: boolean
-}
-
 /**
  * User terms of use pane.
  */
-const TermsOfUsePane = (props: Props) => {
-  const {
-    disableCheckTerms,
-    handleBlur,
-    handleChange,
-    values: userData
-  } = props
+const TermsOfUsePane = ({
+  disableCheckTerms,
+  handleBlur,
+  handleChange,
+  values: userData
+}: {
+  disableCheckTerms: boolean
+  handleBlur: () => void
+  handleChange: FormEventHandler<Checkbox>
+  values: {
+    hasConsentedToTerms: boolean
+    storeTripHistory: boolean
+  }
+}) => {
   const intl = useIntl()
   const { hasConsentedToTerms, storeTripHistory } = userData
-  const errorStates = getErrorStates(props)
 
   return (
     <div>
-      <FormGroup validationState={errorStates.hasConsentedToTerms}>
-        <ControlLabel>
-          <FormattedMessage id="components.TermsOfUsePane.mustAgreeToTerms" />
-        </ControlLabel>
+      <ControlLabel>
+        <FormattedMessage id="components.TermsOfUsePane.mustAgreeToTerms" />
+      </ControlLabel>
+      <FormGroup>
         <Checkbox
-          aria-invalid={!userData.hasConsentedToTerms}
-          aria-required
           checked={hasConsentedToTerms}
           disabled={disableCheckTerms}
           name="hasConsentedToTerms"
           onBlur={disableCheckTerms ? undefined : handleBlur}
           onChange={disableCheckTerms ? undefined : handleChange}
         >
-          <FlexBox>
-            {errorStates.hasConsentedToTerms && (
-              <StyledIconWrapper>
-                <Times />
-              </StyledIconWrapper>
-            )}
-            <span>
-              <FormattedMessage
-                id="components.TermsOfUsePane.termsOfServiceStatement"
-                values={{
-                  termsOfUseLink: (contents: JSX.Element) => (
-                    <LinkOpensNewWindow
-                      contents={contents}
-                      inline
-                      url={`/#${TERMS_OF_SERVICE_PATH}`}
-                    />
-                  )
-                }}
-              />
-            </span>
-          </FlexBox>
+          <FormattedMessage
+            id="components.TermsOfUsePane.termsOfServiceStatement"
+            values={{
+              termsOfUseLink: (contents: JSX.Element) => (
+                <LinkOpensNewWindow
+                  contents={contents}
+                  inline
+                  url={`/#${TERMS_OF_SERVICE_PATH}`}
+                />
+              )
+            }}
+          />
         </Checkbox>
       </FormGroup>
       <FormGroup>
