@@ -25,6 +25,7 @@ const StyledTable = styled.table`
     font-size: 75%;
     position: sticky;
     top: 0px;
+    background-color: var(--main-base-color, white);
   }
   tr > * {
     border-bottom: 1px solid #ccc;
