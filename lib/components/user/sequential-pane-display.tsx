@@ -11,8 +11,9 @@ import { SequentialPaneContainer } from './styled'
 import FormNavigationButtons from './form-navigation-buttons'
 
 export interface PaneProps {
-  disableNext?: boolean
   id: string
+  invalid?: boolean
+  invalidMessage?: string
   onNext?: () => void
   pane: any
   title: ReactNode
@@ -51,14 +52,14 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
 
   _handleToNextPane = async (e: MouseEvent<Button>) => {
     const { activePane, activePaneIndex, panes } = this.props
-    const { disableNext } = activePane
+    const { invalid, invalidMessage } = activePane
 
     if (activePaneIndex < panes.length - 1) {
       // Don't submit the form if there are more steps to complete.
       e.preventDefault()
 
-      if (disableNext) {
-        alert('FIXME: Please check that your input is correct and try again.')
+      if (invalid) {
+        alert(invalidMessage)
       } else {
         const nextId = panes[activePaneIndex + 1].id
         // Execute pane-specific action, if any (e.g. save a user account)

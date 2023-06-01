@@ -60,15 +60,21 @@ const NewAccountWizard = ({
   })
   const paneSequence = [
     {
-      disableNext: !hasConsentedToTerms,
       id: 'terms',
+      invalid: !hasConsentedToTerms,
+      invalidMessage: intl.formatMessage({
+        id: 'components.TermsOfUsePane.mustAgreeToTerms'
+      }),
       onNext: handleCreateNewUser,
       pane: TermsOfUsePane,
       title: createNewAccount
     },
     {
-      disableNext: notificationChannel === 'sms' && !userData.phoneNumber,
       id: 'notifications',
+      invalid: notificationChannel === 'sms' && !userData.phoneNumber,
+      invalidMessage: intl.formatMessage({
+        id: 'components.PhoneNumberEditor.invalidPhone'
+      }),
       pane: NotificationPrefsPane,
       title: <FormattedMessage id="components.NewAccountWizard.notifications" />
     },
