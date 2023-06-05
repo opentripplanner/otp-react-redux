@@ -325,7 +325,6 @@ components:
     selectDepartureTime: Giờ khởi hành
     selectDuration: Thời hạn
     selectWalkTime: Thời gian đi bộ
-    sortBy: Sắp xếp theo
     viewAll: Xem tất cả các tùy chọn
   NavLoginButton:
     help: Giúp đỡ

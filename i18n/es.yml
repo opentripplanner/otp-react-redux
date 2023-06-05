@@ -347,7 +347,6 @@ components:
     selectDepartureTime: Hora de salida
     selectDuration: Duración
     selectWalkTime: Tiempo de caminata
-    sortBy: Ordenar por
     viewAll: Ver todas las opciones
   NavLoginButton:
     help: Ayuda

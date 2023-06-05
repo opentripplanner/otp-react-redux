@@ -332,6 +332,9 @@ components:
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
     numIssues: "{issueNum, plural, one {# issue} other {# issues} }"
+    resultsSortedBy: >-
+      Trip results currently sorted by {sortSelected}. To change the way results
+      are sorted, use the "Sort Results" button below.
     searching: Finding your options...
     selectArrivalTime: Arrival time
     selectBest: Best option
@@ -339,7 +342,7 @@ components:
     selectDepartureTime: Departure time
     selectDuration: Duration
     selectWalkTime: Walk time
-    sortBy: Sort By
+    sortResults: Sort results
     viewAll: View all options
   NavLoginButton:
     help: Help
