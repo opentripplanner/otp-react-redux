@@ -209,14 +209,14 @@ export default function NarrativeItinerariesHeader({
               name={sortText}
               title={sortResultsLabel}
             >
-              {sortOptionsArr.map((x) => (
-                <li className="sort-option" key={x.value}>
+              {sortOptionsArr.map((sortOption) => (
+                <li className="sort-option" key={sortOption.value}>
                   <UnstyledButton
-                    aria-selected={sortText === x.text || undefined}
-                    onClick={() => handleSortClick(x.value)}
+                    aria-selected={sortText === sortOption.text || undefined}
+                    onClick={() => handleSortClick(sortOption.value)}
                     role="option"
                   >
-                    {x.text}
+                    {sortOption.text}
                   </UnstyledButton>
                 </li>
               ))}

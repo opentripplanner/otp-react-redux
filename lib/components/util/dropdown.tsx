@@ -196,12 +196,23 @@ export const Dropdown = ({
 export const SortResultsDropdown = styled(Dropdown)`
     position: relative;
 
+    // Keeps dropdown inline with itinerary buttons when scrollbar is visible
+    @media (min-width: 769px) {
+      margin-right: 10px;
+    }
+
     ${DropdownButton} {
       border-radius: 5px;
       padding: 3px 7px;
+      background: #F8FAFB;
+
+      span.caret {
+        color: inherit;
+      }
 
       &:hover {
         background: #fff;
+        color: inherit;
       }
       &.active {
         background: #fff;
