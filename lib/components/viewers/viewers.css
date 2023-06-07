@@ -113,10 +113,6 @@
   box-shadow: 2px 2px 5px 1px rgb(0 0 0 / 10%);
 }
 
-.otp .stop-viewer .route-row-container li .header.stop-view {
-  border-radius: 0;
-}
-
 .otp .stop-viewer p.day-label {
   font-weight: 500;
   margin: 15px 10px;
@@ -146,24 +142,19 @@
   display: flex;
   gap: 10px;
 }
-.otp .stop-viewer .route-row .header .route-name span {
+
+.otp .stop-viewer .route-row .header .route-name > span {
   display: -webkit-box;
   font-size: 15px;
   line-clamp: 3;
-  overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
-.otp .stop-viewer .route-row .header .route-name strong span {
-  display: block;
-  font-size: inherit;
-  padding-left: 10px;
+
+.otp .stop-viewer .stop-viewer-body .stop-view .route-name-container {
+  flex-shrink: 0;
   text-align: center;
   width: 85px;
-}
-
-.otp .stop-viewer .route-row .header .route-name span.route-name-container {
-  padding-left: 0;
 }
 
 .otp .stop-viewer .route-row .header .next-trip-preview {
@@ -208,7 +199,7 @@
     padding: 15px 10px;
   }
 
-  .otp .stop-viewer .route-row .header .route-name strong span {
+  .otp .stop-viewer .route-row .header .route-name > span:first-child {
     min-width: auto;
   }
 
@@ -296,6 +287,7 @@
   margin-left: 10px;
 }
 
+.otp .stop-viewer .stop-viewer-body .stop-view .route-name-container,
 .otp .stop-viewer .stop-viewer-body .next-arrival-row .route-name {
   justify-self: center;
   font-size: 22px;
