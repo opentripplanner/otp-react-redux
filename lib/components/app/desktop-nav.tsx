@@ -18,7 +18,9 @@ import ViewSwitcher from './view-switcher'
 const StyledNav = styled(Nav)`
   /* Almost override bootstrap's margin-right: -15px */
   margin-right: -5px;
-  & > li svg {
+  /* Target only the svgs in the Navbar */
+  & > li > button > svg,
+  & > li > span > button > span > svg {
     height: 18px;
   }
 
@@ -127,7 +129,7 @@ const DesktopNav = ({
             {showLogin && (
               <NavLoginButtonAuth0
                 id="login-control"
-                links={accountLinks}
+                links={accountLinks(otpConfig)}
                 locale={locale}
                 style={{ float: 'right' }}
               />
