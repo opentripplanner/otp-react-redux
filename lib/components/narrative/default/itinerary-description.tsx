@@ -3,10 +3,11 @@ import { Itinerary } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useContext } from 'react'
 
-import { isRideshareLeg } from '@opentripplanner/core-utils/lib/itinerary'
 import { ComponentContext } from '../../../util/contexts'
 import { getFormattedMode } from '../../../util/i18n'
 import FormattedMode from '../../util/formatted-mode'
+
+const { isRideshareLeg } = coreUtils.itinerary
 
 const { isBicycle, isMicromobility, isTransit } = coreUtils.itinerary
 
