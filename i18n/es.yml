@@ -351,6 +351,10 @@ components:
     selectDuration: Duración
     selectWalkTime: Tiempo de caminata
     viewAll: Ver todas las opciones
+    resultsSortedBy: Los resultados del viaje están actualmente ordenados por {sortSelected}.
+      Para cambiar la forma en que se ordenan los resultados, utiliza el botón "Ordenar
+      resultados" que aparece a continuación.
+    sortResults: Ordenar los resultados
   NavLoginButton:
     help: Ayuda
     myAccount: Mi cuenta
@@ -492,6 +496,8 @@ components:
       Otro viaje guardado ya utiliza este nombre. Por favor, elija un nombre
       diferente.
     tripNameRequired: Por favor, introduzca el nombre del viaje.
+    itineraryLoaded: Itinerario cargado
+    itineraryLoading: Cargando el itinerario
   SessionTimeout:
     body: >-
       Su sesión expirará en un minuto. Pulse 'Continuar sesión' para mantener su
