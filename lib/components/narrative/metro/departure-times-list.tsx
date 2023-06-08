@@ -17,7 +17,8 @@ type DepartureTimesProps = {
       realtime: boolean
     }[]
   }
-  setItineraryTimeIndex: (index: number) => void
+  setActiveItinerary: (payload: { index: number }) => void
+  // setItineraryTimeIndex: (index: number) => void
   showArrivals?: boolean
 }
 
@@ -25,7 +26,8 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
   const {
     activeItineraryTimeIndex,
     itinerary,
-    setItineraryTimeIndex,
+    setActiveItinerary,
+    // setItineraryTimeIndex,
     showArrivals
   } = props
   const intl = useIntl()
@@ -55,7 +57,7 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
     <FormattedList
       type="disjunction"
       value={allStartTimes.map((time, index) => {
-        const { legs, realtime } = time
+        const { itineraryIndex, legs, realtime } = time
         const classNames = []
         if (realtime) classNames.push('realtime')
         if (index === (activeItineraryTimeIndex || 0)) classNames.push('active')
@@ -69,7 +71,10 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
             aria-label={singleItinLabel}
             className={classNames.join(' ')}
             key={getFirstLegStartTime(legs)}
-            onClick={() => setItineraryTimeIndex(index)}
+            onClick={() => {
+              setActiveItinerary({ index: itineraryIndex })
+              // setItineraryTimeIndex(index)
+            }}
             title={singleItinLabel}
           >
             <FormattedTime

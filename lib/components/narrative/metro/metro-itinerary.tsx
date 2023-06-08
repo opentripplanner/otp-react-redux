@@ -335,7 +335,7 @@ class MetroItinerary extends NarrativeItinerary {
       >
         <div
           className="header"
-          onClick={handleClick}
+          onClick={expanded ? undefined : handleClick}
           // TODO: once this can be tabbed to, this behavior needs to be improved. Maybe it focuses the
           // first time?
           // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -433,6 +433,7 @@ class MetroItinerary extends NarrativeItinerary {
                   <DepartureTimesList
                     activeItineraryTimeIndex={activeItineraryTimeIndex}
                     itinerary={itinerary}
+                    setActiveItinerary={setActiveItinerary}
                     setItineraryTimeIndex={setItineraryTimeIndex}
                     showArrivals={arrivesAt}
                   />
