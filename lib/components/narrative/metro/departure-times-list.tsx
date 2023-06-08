@@ -8,6 +8,7 @@ import {
   getFirstLegStartTime,
   getLastLegEndTime
 } from '../../../util/itinerary'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 type DepartureTimesProps = {
   itinerary: Itinerary & {
@@ -34,13 +35,16 @@ export const DepartureTimesList = ({
   )
   if (!itinerary.allStartTimes) {
     return (
-      <button
-        aria-label={itineraryButtonLabel}
-        className={isRealTime ? 'realtime active' : 'active'}
-        title={itineraryButtonLabel}
-      >
-        <FormattedTime value={itinerary.startTime} />
-      </button>
+      <>
+        <span
+          aria-hidden
+          className={isRealTime ? 'realtime active' : 'active'}
+          title={itineraryButtonLabel}
+        >
+          <FormattedTime value={itinerary.startTime} />
+        </span>
+        <InvisibleA11yLabel>{itineraryButtonLabel}</InvisibleA11yLabel>
+      </>
     )
   }
 
