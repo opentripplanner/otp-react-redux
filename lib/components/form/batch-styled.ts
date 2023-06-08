@@ -1,5 +1,7 @@
-import * as TripFormClasses from '@opentripplanner/trip-form/lib/styled'
-import { SettingsSelectorPanel } from '@opentripplanner/trip-form'
+import {
+  SettingsSelectorPanel,
+  Styled as TripFormClasses
+} from '@opentripplanner/trip-form'
 import styled, { css } from 'styled-components'
 
 import { commonInputCss, modeButtonButtonCss } from './styled'
