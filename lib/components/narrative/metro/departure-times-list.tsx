@@ -60,7 +60,7 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
         const { itineraryIndex, legs, realtime } = time
         const classNames = []
         if (realtime) classNames.push('realtime')
-        if (index === (activeItineraryTimeIndex || 0)) classNames.push('active')
+        if (itineraryIndex === itinerary.index) classNames.push('active')
         const singleItinLabel = getDepartureLabelText(
           intl,
           getFirstLegStartTime(legs),
