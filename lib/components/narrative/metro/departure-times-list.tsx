@@ -10,7 +10,6 @@ import {
 } from '../../../util/itinerary'
 
 type DepartureTimesProps = {
-  activeItineraryTimeIndex?: number
   itinerary: Itinerary & {
     allStartTimes: {
       legs: Leg[]
@@ -18,18 +17,14 @@ type DepartureTimesProps = {
     }[]
   }
   setActiveItinerary: (payload: { index: number }) => void
-  // setItineraryTimeIndex: (index: number) => void
   showArrivals?: boolean
 }
 
-export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
-  const {
-    activeItineraryTimeIndex,
-    itinerary,
-    setActiveItinerary,
-    // setItineraryTimeIndex,
-    showArrivals
-  } = props
+export const DepartureTimesList = ({
+  itinerary,
+  setActiveItinerary,
+  showArrivals
+}: DepartureTimesProps): JSX.Element => {
   const intl = useIntl()
   const isRealTime = firstTransitLegIsRealtime(itinerary)
   const itineraryButtonLabel = getDepartureLabelText(
@@ -71,17 +66,14 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
             aria-label={singleItinLabel}
             className={classNames.join(' ')}
             key={getFirstLegStartTime(legs)}
-            onClick={() => {
-              setActiveItinerary({ index: itineraryIndex })
-              // setItineraryTimeIndex(index)
-            }}
+            onClick={() => setActiveItinerary({ index: itineraryIndex })}
             title={singleItinLabel}
           >
             <FormattedTime
               value={
                 showArrivals
-                  ? getLastLegEndTime(time.legs)
-                  : getFirstLegStartTime(time.legs)
+                  ? getLastLegEndTime(legs)
+                  : getFirstLegStartTime(legs)
               }
             />
           </button>
