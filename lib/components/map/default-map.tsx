@@ -278,6 +278,8 @@ class DefaultMap extends Component {
     const baseLayerUrls = baseLayersWithNames?.map((bl) => bl.url)
     const baseLayerNames = baseLayersWithNames?.map((bl) => bl.name)
 
+    const stopsColor = config.map.mapColors.stopsColor
+
     return (
       <MapContainer className="percy-hide">
         <BaseMap
@@ -334,7 +336,9 @@ class DefaultMap extends Component {
               case 'park-and-ride':
                 return <ParkAndRideOverlay {...namedLayerProps} />
               case 'stops':
-                return <StopsOverlay {...namedLayerProps} />
+                return (
+                  <StopsOverlay {...namedLayerProps} stopsColor={stopsColor} />
+                )
               case 'micromobility-rental':
                 return (
                   <VehicleRentalOverlay
