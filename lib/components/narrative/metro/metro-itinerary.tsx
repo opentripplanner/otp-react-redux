@@ -11,7 +11,6 @@ import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
-import * as narrativeActions from '../../../actions/narrative'
 import * as uiActions from '../../../actions/ui'
 import { ComponentContext } from '../../../util/contexts'
 import { FlexIndicator } from '../default/flex-indicator'
@@ -249,12 +248,10 @@ class MetroItinerary extends NarrativeItinerary {
     const {
       accessibilityScoreGradationMap,
       active,
-      activeItineraryTimeIndex,
       arrivesAt,
       co2Config,
       currency,
       defaultFareKey,
-      enableDot,
       expanded,
       intl,
       itinerary,
@@ -263,7 +260,6 @@ class MetroItinerary extends NarrativeItinerary {
       pending,
       setActiveItinerary,
       setActiveLeg,
-      setItineraryTimeIndex,
       setItineraryView,
       showLegDurations,
       showRealtimeAnnotation
@@ -431,10 +427,8 @@ class MetroItinerary extends NarrativeItinerary {
                     <FormattedMessage id="components.MetroUI.leaveAt" />
                   )}{' '}
                   <DepartureTimesList
-                    activeItineraryTimeIndex={activeItineraryTimeIndex}
                     itinerary={itinerary}
                     setActiveItinerary={setActiveItinerary}
-                    setItineraryTimeIndex={setItineraryTimeIndex}
                     showArrivals={arrivesAt}
                   />
                 </DepartureTimes>
@@ -476,14 +470,10 @@ class MetroItinerary extends NarrativeItinerary {
 // TODO: state type
 const mapStateToProps = (state: any, ownProps: Props) => {
   const activeSearch = getActiveSearch(state)
-  const activeItineraryTimeIndex =
-    // @ts-expect-error state is not yet typed
-    activeSearch && activeSearch.activeItineraryTimeIndex
 
   return {
     accessibilityScoreGradationMap:
       state.otp.config.accessibilityScore?.gradationMap,
-    activeItineraryTimeIndex,
     arrivesAt: state.otp.currentQuery.departArrive === 'ARRIVE',
     co2Config: state.otp.config.co2,
     configCosts: state.otp.config.itinerary?.costs,
@@ -500,13 +490,8 @@ const mapStateToProps = (state: any, ownProps: Props) => {
 }
 
 // TS TODO: correct redux types
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    setItineraryTimeIndex: (payload: number) =>
-      dispatch(narrativeActions.setActiveItineraryTime(payload)),
-    setItineraryView: (payload: any) =>
-      dispatch(uiActions.setItineraryView(payload))
-  }
+const mapDispatchToProps = {
+  setItineraryView: uiActions.setItineraryView
 }
 
 export default injectIntl(
