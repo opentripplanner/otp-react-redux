@@ -1,6 +1,6 @@
 import { FormattedList, FormattedTime, useIntl } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
-import React from 'react'
+import React, { MouseEvent } from 'react'
 
 import { firstTransitLegIsRealtime } from '../../../util/viewer'
 import { getDepartureLabelText } from '../utils'
@@ -10,9 +10,14 @@ import {
 } from '../../../util/itinerary'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
+interface ItineraryWithIndex extends Itinerary {
+  index: number
+}
+
 type DepartureTimesProps = {
-  itinerary: Itinerary & {
-    allStartTimes: {
+  itinerary: ItineraryWithIndex & {
+    allStartTimes?: {
+      itinerary: ItineraryWithIndex
       legs: Leg[]
       realtime: boolean
     }[]
@@ -66,7 +71,11 @@ export const DepartureTimesList = ({
             aria-label={singleItinLabel}
             className={classNames.join(' ')}
             key={getFirstLegStartTime(legs)}
-            onClick={() => setActiveItinerary({ index: itinOption.index })}
+            onClick={(e: MouseEvent) => {
+              setActiveItinerary({ index: itinOption.index })
+              // Don't let MetroItinerary.handleClick execute, it will set another itinerary as active.
+              e.stopPropagation()
+            }}
             title={singleItinLabel}
           >
             <FormattedTime
