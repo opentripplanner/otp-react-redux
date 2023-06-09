@@ -44,10 +44,10 @@ export const StyledDateTimePreviewContainer = styled(Button)<{
 }>`
   ${buttonCss}
   margin-right: 5px;
+  max-width: 120px;
+  min-width: 90px;
   padding: 0;
   position: relative;
-  min-width: 90px;
-  max-width: 120px;
   width: 100%;
   ${(props) => (props.expanded ? activeCss : null)}
 `

@@ -179,7 +179,7 @@ function BatchSettings({
       }
 
       // encodeQueryParams serializes the mode buttons for the URL
-      // It uses encodeQueryParams to get nice looking URL params and consistency
+      // to get nice looking URL params and consistency
       setUrlSearch(
         encodeQueryParams(queryParamConfig, { modeButtons: newButtons })
       )
@@ -199,7 +199,9 @@ function BatchSettings({
         <StyledDateTimePreviewContainer
           aria-controls="date-time-modal"
           aria-expanded={dateTimeExpanded}
-          aria-label="Date/Time settings"
+          aria-label={intl.formatMessage({
+            id: 'components.BatchSettings.dateTimeSettingsLabel'
+          })}
           expanded={dateTimeExpanded}
           onClick={() => setDateTimeExpanded(!dateTimeExpanded)}
         >

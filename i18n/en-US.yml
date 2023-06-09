@@ -225,6 +225,7 @@ components:
   BatchSearchScreen:
     header: Plan Your Trip
   BatchSettings:
+    dateTimeSettingsLabel: Date/Time Settings
     destination: destination
     modeSelector: Mode Selector
     origin: origin
