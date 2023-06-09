@@ -35,6 +35,8 @@ import {
   StyledDateTimePreviewContainer
 } from './batch-styled'
 import { generateModeSettingValues } from '../../util/api'
+import { getFormattedMode } from '../../util/i18n'
+
 import DateTimeModal from './date-time-modal'
 
 const queryParamConfig = { modeButtons: DelimitedArrayParam }
@@ -111,8 +113,23 @@ function BatchSettings({
     [ModeIcon]
   )
 
+  const addCustomSettingLabels = useCallback(
+    (msd: ModeSetting) =>
+      msd.type === 'SUBMODE'
+        ? {
+            ...msd,
+            label: getFormattedMode(msd.addTransportMode.mode, intl)
+          }
+        : msd,
+    [intl]
+  )
+
   const processedModeSettings = modeSettingDefinitions.map(
-    pipe(populateSettingWithIcon, populateSettingWithValue(modeSettingValues))
+    pipe(
+      populateSettingWithIcon,
+      populateSettingWithValue(modeSettingValues),
+      addCustomSettingLabels
+    )
   )
 
   const processedModeButtons = modeButtonOptions.map(
