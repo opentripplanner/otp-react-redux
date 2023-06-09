@@ -67,6 +67,7 @@ const DesktopNav = ({
   const {
     brandClickable,
     branding,
+    extraMenuItems,
     persistence,
     title = DEFAULT_APP_TITLE
   } = otpConfig
@@ -129,7 +130,7 @@ const DesktopNav = ({
             {showLogin && (
               <NavLoginButtonAuth0
                 id="login-control"
-                links={accountLinks(otpConfig)}
+                links={accountLinks(extraMenuItems)}
                 locale={locale}
                 style={{ float: 'right' }}
               />
