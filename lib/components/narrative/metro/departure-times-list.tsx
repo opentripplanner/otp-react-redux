@@ -48,18 +48,14 @@ export const DepartureTimesList = ({
     )
   }
 
-  const allStartTimes = itinerary.allStartTimes.sort(
-    (a, b) => getFirstLegStartTime(a.legs) - getFirstLegStartTime(b.legs)
-  )
-
   return (
     <FormattedList
       type="disjunction"
-      value={allStartTimes.map((time, index) => {
-        const { itineraryIndex, legs, realtime } = time
+      value={itinerary.allStartTimes.map((time, index) => {
+        const { itinerary: itinOption, legs, realtime } = time
         const classNames = []
         if (realtime) classNames.push('realtime')
-        if (itineraryIndex === itinerary.index) classNames.push('active')
+        if (itinOption.index === itinerary.index) classNames.push('active')
         const singleItinLabel = getDepartureLabelText(
           intl,
           getFirstLegStartTime(legs),
@@ -70,7 +66,7 @@ export const DepartureTimesList = ({
             aria-label={singleItinLabel}
             className={classNames.join(' ')}
             key={getFirstLegStartTime(legs)}
-            onClick={() => setActiveItinerary({ index: itineraryIndex })}
+            onClick={() => setActiveItinerary({ index: itinOption.index })}
             title={singleItinLabel}
           >
             <FormattedTime
