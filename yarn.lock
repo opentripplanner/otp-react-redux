@@ -2658,7 +2658,7 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@^3.0.6":
+"@opentripplanner/trip-form@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.1.0.tgz#b336fede804094544257e246d341558bca46789b"
   integrity sha512-A4++k33oLUvLiwdN4/phmU01w9Lxy7CdPGXQzpex8TNikL+Bhezol0q6svQn3lk87Qbx2ZxK+hIz0yMFvRiZ2Q==
