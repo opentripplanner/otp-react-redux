@@ -72,7 +72,7 @@ export const DepartureTimesList = ({
             className={classNames.join(' ')}
             key={getFirstLegStartTime(legs)}
             onClick={(e: MouseEvent) => {
-              setActiveItinerary({ index: itinOption.index })
+              setActiveItinerary(itinOption)
               // Don't let MetroItinerary.handleClick execute, it will set another itinerary as active.
               e.stopPropagation()
             }}
