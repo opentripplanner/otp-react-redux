@@ -336,8 +336,8 @@ class MetroItinerary extends NarrativeItinerary {
           // first time?
           // eslint-disable-next-line @typescript-eslint/no-empty-function
           onKeyDown={() => {}}
-          onMouseEnter={this._onMouseEnter}
-          onMouseLeave={this._onMouseLeave}
+          onMouseEnter={expanded ? undefined : this._onMouseEnter}
+          onMouseLeave={expanded ? undefined : this._onMouseLeave}
           // TODO: use _onHeaderClick for tap only -- this will require disabling
           // this onClick handler after a touchStart
           // TODO: CORRECT THIS ARIA ROLE
