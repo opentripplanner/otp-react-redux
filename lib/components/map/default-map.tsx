@@ -254,7 +254,7 @@ class DefaultMap extends Component {
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel, ModeIcon } =
       this.context
-    const { baseLayers, maxZoom, overlays } = mapConfig || {}
+    const { baseLayers, mapColors, maxZoom, overlays } = mapConfig || {}
     const { lat, lon, zoom } = this.state
     const vectorTilesEndpoint = makeApiUrl(config, 'vectorTiles', {})
 
@@ -277,8 +277,6 @@ class DefaultMap extends Component {
     }))
     const baseLayerUrls = baseLayersWithNames?.map((bl) => bl.url)
     const baseLayerNames = baseLayersWithNames?.map((bl) => bl.name)
-
-    const stopsColor = config.map.mapColors.stopsColor
 
     return (
       <MapContainer className="percy-hide">
@@ -337,7 +335,10 @@ class DefaultMap extends Component {
                 return <ParkAndRideOverlay {...namedLayerProps} />
               case 'stops':
                 return (
-                  <StopsOverlay {...namedLayerProps} stopsColor={stopsColor} />
+                  <StopsOverlay
+                    {...namedLayerProps}
+                    stopsColor={mapColors.stopsColor}
+                  />
                 )
               case 'micromobility-rental':
                 return (
