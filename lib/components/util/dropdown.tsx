@@ -18,13 +18,8 @@ interface Props extends HTMLAttributes<HTMLElement> {
   pullRight?: boolean
 }
 
-const DropdownButton = styled(NavbarButton)`
-  color: inherit;
+const DropdownButton = styled(NavbarButton)``
 
-  span.caret {
-    color: white;
-  }
-`
 const DropdownMenu = styled.ul`
   background-clip: padding-box;
   background-color: #fff;
@@ -205,6 +200,7 @@ export const SortResultsDropdown = styled(Dropdown)`
       border-radius: 5px;
       padding: 3px 7px;
       background: #F8FAFB;
+      color: inherit;
 
       span.caret {
         color: inherit;
