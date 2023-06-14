@@ -42,7 +42,9 @@ export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
         className={isRealTime ? 'realtime active' : 'active'}
         title={itineraryButtonLabel}
       >
-        <FormattedTime value={itinerary.startTime} />
+        <FormattedTime
+          value={showArrivals ? itinerary.endTime : itinerary.startTime}
+        />
       </button>
     )
   }
