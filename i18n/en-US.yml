@@ -234,8 +234,8 @@ components:
   BeforeSignInScreen:
     mainTitle: Signing you in
     message: >
-      In order to access this page you will need to sign in. Please wait while
-      we redirect you to the login page...
+      In order to access this page you will need to log in. Please wait while we
+      redirect you to the login page...
   CallTakerPanel:
     advancedOptions: Advanced options
     groupSize: "Group size:"
@@ -331,6 +331,9 @@ components:
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
     numIssues: "{issueNum, plural, one {# issue} other {# issues} }"
+    resultsSortedBy: >-
+      Trip results currently sorted by {sortSelected}. To change the way results
+      are sorted, use the "Sort Results" button below.
     searching: Finding your options...
     selectArrivalTime: Arrival time
     selectBest: Best option
@@ -338,13 +341,13 @@ components:
     selectDepartureTime: Departure time
     selectDuration: Duration
     selectWalkTime: Walk time
-    sortBy: Sort By
+    sortResults: Sort results
     viewAll: View all options
   NavLoginButton:
     help: Help
     myAccount: My account
-    signIn: Sign in
-    signOut: Sign out
+    signIn: Log in
+    signOut: Log out
   NewAccountWizard:
     finish: Account setup complete!
     notifications: Notification preferences
@@ -452,8 +455,8 @@ components:
       Only itineraries that include transit and no rentals or ride hailing can
       be monitored.
     saveTripText: Save trip
-    signInText: Sign in to save trip
-    signInTooltip: Please sign in to save trip.
+    signInText: Log in to save trip
+    signInTooltip: Please log in to save trip.
   SavedTripEditor:
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip
@@ -469,6 +472,8 @@ components:
     pause: Pause
     resume: Resume
   SavedTripScreen:
+    itineraryLoaded: Itinerary loaded
+    itineraryLoading: Loading itinerary
     tooManyTrips: >
       You already have reached the maximum of five saved trips. Please remove
       unused trips from your saved trips, and try again.

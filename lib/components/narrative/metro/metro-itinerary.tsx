@@ -22,6 +22,7 @@ import {
 import { getActiveSearch, getFare } from '../../../util/state'
 import { IconWithText } from '../../util/styledIcon'
 import { ItineraryDescription } from '../default/itinerary-description'
+import { ItineraryView } from '../../../util/ui'
 import { localizeGradationMap } from '../utils'
 import FormattedDuration from '../../util/formatted-duration'
 import ItineraryBody from '../line-itin/connected-itinerary-body'
@@ -36,8 +37,6 @@ import {
 } from './attribute-utils'
 import MetroItineraryRoutes from './metro-itinerary-routes'
 import RouteBlock from './route-block'
-
-const { ItineraryView } = uiActions
 
 // Styled components
 const ItineraryWrapper = styled.div.attrs((props) => {

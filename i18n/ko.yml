@@ -317,7 +317,6 @@ components:
     selectDepartureTime: 출발 시각
     selectDuration: 기간
     selectWalkTime: 도보 시간
-    sortBy: 정렬 기준
     viewAll: 모든 옵션 보기
   NavLoginButton:
     help: 지원

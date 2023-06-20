@@ -4,9 +4,9 @@ import { useIntl } from 'react-intl'
 import React from 'react'
 
 import * as uiActions from '../../actions/ui'
+import { Dropdown } from '../util/dropdown'
 import { getLanguageOptions } from '../../util/i18n'
 import { UnstyledButton } from '../util/unstyled-button'
-import Dropdown from '../util/dropdown'
 
 interface LocaleSelectorProps {
   // Typescript TODO languageOptions based on configLanguage type.
@@ -21,34 +21,35 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
 
   // Only render if two or more languages are configured.
   return languageOptions ? (
-    <Dropdown
-      id="locale-selector"
-      label={intl.formatMessage({ id: 'components.SubNav.selectALanguage' })}
-      listLabel={intl.formatMessage({ id: 'components.SubNav.languages' })}
-      name={
-        <span
-          style={{
-            color: 'rgba(255, 255, 255, 0.85)'
-          }}
-        >
-          <GlobeAmericas height="18px" />
-        </span>
-      }
-      style={{ display: 'block ruby' }}
-      // TODO: How to make this work without block ruby?
-    >
-      {Object.keys(languageOptions).map((locale: string) => (
-        <li key={locale} lang={locale} role="none">
-          <UnstyledButton
-            aria-selected={locale === currentLocale || undefined}
-            onClick={() => setLocale(locale)}
-            role="option"
+    <li>
+      <Dropdown
+        id="locale-selector"
+        label={intl.formatMessage({ id: 'components.SubNav.selectALanguage' })}
+        listLabel={intl.formatMessage({ id: 'components.SubNav.languages' })}
+        name={
+          <span
+            style={{
+              color: 'rgba(255, 255, 255, 0.85)'
+            }}
           >
-            {languageOptions[locale].name}
-          </UnstyledButton>
-        </li>
-      ))}
-    </Dropdown>
+            <GlobeAmericas />
+          </span>
+        }
+        style={{ display: 'block ruby' }}
+      >
+        {Object.keys(languageOptions).map((locale: string) => (
+          <li key={locale} lang={locale} role="none">
+            <UnstyledButton
+              aria-selected={locale === currentLocale || undefined}
+              onClick={() => setLocale(locale)}
+              role="option"
+            >
+              {languageOptions[locale].name}
+            </UnstyledButton>
+          </li>
+        ))}
+      </Dropdown>
+    </li>
   ) : null
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { FormikProps } from 'formik'
 
 /**
@@ -69,4 +70,41 @@ export function getPathFromParts(...parts: string[]): string {
     if (p) path += `/${p}`
   })
   return path
+}
+
+/**
+ * Enum to describe the layout of the itinerary view.
+ */
+export enum ItineraryView {
+  /** One itinerary is shown. (In mobile view, the map is hidden.) */
+  FULL = 'full',
+  /** One itinerary is shown, itinerary and map are focused on a leg. (The mobile view is split.) */
+  LEG = 'leg',
+  /** One itinerary leg is hidden. (In mobile view, the map is expanded.) */
+  LEG_HIDDEN = 'leg-hidden',
+  /** The list of itineraries is shown. (The mobile view is split.) */
+  LIST = 'list',
+  /** The list of itineraries is hidden. (In mobile view, the map is expanded.) */
+  LIST_HIDDEN = 'list-hidden'
+}
+
+interface UrlParams {
+  ui_activeItinerary: number | string
+  ui_itineraryView: ItineraryView
+}
+
+/**
+ * Gets the itinerary view to display based on URL params.
+ */
+export function getItineraryView({
+  ui_activeItinerary,
+  ui_itineraryView
+}: UrlParams): ItineraryView {
+  return (
+    ui_itineraryView ||
+    (ui_activeItinerary !== undefined &&
+      `${ui_activeItinerary}` !== '-1' &&
+      ItineraryView.FULL) ||
+    ItineraryView.LIST
+  )
 }

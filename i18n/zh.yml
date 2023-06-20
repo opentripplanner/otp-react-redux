@@ -317,7 +317,6 @@ components:
     selectDepartureTime: 出发时间
     selectDuration: 旅行时长
     selectWalkTime: 步行时间
-    sortBy: 排序方式
     viewAll: 查看所有选项
   NavLoginButton:
     help: 帮助

@@ -351,7 +351,6 @@ components:
     selectDepartureTime: Heure de départ
     selectDuration: Durée
     selectWalkTime: Temps de marche
-    sortBy: Trier par
     viewAll: Toutes les options
   NavLoginButton:
     help: Aide
@@ -486,6 +485,8 @@ components:
     pause: Arrêter
     resume: Reprendre
   SavedTripScreen:
+    itineraryLoaded: Trajet chargé
+    itineraryLoading: Chargement du trajet
     tooManyTrips: >
       Vous avez déjà atteint le nombre maximum de 5 trajets enregistrés.
       Veuillez supprimer les trajets enregistrés qui sont inutilisés, puis
