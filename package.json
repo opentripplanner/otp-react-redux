@@ -56,7 +56,7 @@
     "@opentripplanner/stops-overlay": "^5.0.9",
     "@opentripplanner/transit-vehicle-overlay": "^4.0.4",
     "@opentripplanner/transitive-overlay": "^3.0.12",
-    "@opentripplanner/trip-details": "^5.0.0-alpha.5",
+    "@opentripplanner/trip-details": "^5.0.0-alpha.6",
     "@opentripplanner/trip-form": "^3.1.0",
     "@opentripplanner/trip-viewer-overlay": "^2.0.5",
     "@opentripplanner/vehicle-rental-overlay": "^2.1.1",
