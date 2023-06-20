@@ -165,11 +165,12 @@ components:
     tooManyPlaces: Maximum intermediate places reached
   AdvancedOptions:
     bannedRoutes: Select banned routes…
+    bikeTolerance: Bike Tolerance
     maxBike: Max bike {unitsString}
     maxWalk: Max walk {unitsString}
     preferredRoutes: Select preferred routes...
     walkReluctance: Walk Reluctance
-    bikeTolerance: Bike Tolerance
+    walkTolerance: Walk Tolerance
   AfterSignInScreen:
     mainTitle: Redirecting...
     message: >-
