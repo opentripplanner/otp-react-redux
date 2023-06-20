@@ -53,7 +53,6 @@ type Props = {
   modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
   routingQuery: any
-  setQueryParam: (queryParam: any) => void
   setUrlSearch: (evt: any) => void
   spacedOutModeSelector?: boolean
   urlSearchParams: URLSearchParams
@@ -275,7 +274,6 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
-  setQueryParam: formActions.setQueryParam,
   setUrlSearch: apiActions.setUrlSearch
 }
 
