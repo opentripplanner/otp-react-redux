@@ -169,6 +169,7 @@ components:
     maxWalk: Max walk {unitsString}
     preferredRoutes: Select preferred routes...
     walkReluctance: Walk Reluctance
+    bikeTolerance: Bike Tolerance
   AfterSignInScreen:
     mainTitle: Redirecting...
     message: >-
