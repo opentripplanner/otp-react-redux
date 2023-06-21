@@ -251,6 +251,7 @@ button.step {
   overflow: scroll;
   height: 100%;
   min-height: 75px;
+  z-index: 1;
 }
 
 /* Bootstrap adds a bottom margin to all labels,
