@@ -2,6 +2,7 @@
   border-radius: 0;
   background-color: #444;
   margin: 0px;
+  z-index: 10;
 }
 
 .otp .navbar .container {
@@ -37,10 +38,10 @@
 }
 
 .sidebar {
-  height: 100%;
   padding: 0;
   box-shadow: 3px 0px 12px #00000052;
   z-index: 1000;
+  width: unset;
 }
 
 .map-container {

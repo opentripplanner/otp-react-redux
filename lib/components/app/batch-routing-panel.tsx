@@ -44,54 +44,56 @@ class BatchRoutingPanel extends Component<Props> {
         })
 
     return (
-      <ViewerContainer
-        className="batch-routing-panel"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%'
-        }}
-      >
-        <InvisibleA11yLabel>
-          <h1>
-            <FormattedMessage id="components.BatchSearchScreen.header" />
-          </h1>
-        </InvisibleA11yLabel>
-        <form
-          className="form"
-          onSubmit={this.handleSubmit}
-          style={{ padding: '10px' }}
+      <>
+        <ViewerContainer
+          className="batch-routing-panel"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%'
+          }}
         >
-          <span className="batch-routing-panel-location-fields">
-            <LocationField
-              inputPlaceholder={intl.formatMessage(
-                { id: 'common.searchForms.enterStartLocation' },
-                { mapAction }
-              )}
-              isRequired
-              locationType="from"
-              selfValidate={planTripClicked}
-              showClearButton={!mobile}
-            />
-            <LocationField
-              inputPlaceholder={intl.formatMessage(
-                { id: 'common.searchForms.enterDestination' },
-                { mapAction }
-              )}
-              isRequired
-              locationType="to"
-              selfValidate={planTripClicked}
-              showClearButton={!mobile}
-            />
-            <div className="switch-button-container">
-              <SwitchButton />
-            </div>
-          </span>
-          <BatchSettings onPlanTripClick={this.handlePlanTripClick} />
-        </form>
-        {!activeSearch && showUserSettings && (
-          <UserSettings style={{ margin: '0 10px', overflowY: 'auto' }} />
-        )}
+          <InvisibleA11yLabel>
+            <h1>
+              <FormattedMessage id="components.BatchSearchScreen.header" />
+            </h1>
+          </InvisibleA11yLabel>
+          <form
+            className="form"
+            onSubmit={this.handleSubmit}
+            style={{ padding: '10px' }}
+          >
+            <span className="batch-routing-panel-location-fields">
+              <LocationField
+                inputPlaceholder={intl.formatMessage(
+                  { id: 'common.searchForms.enterStartLocation' },
+                  { mapAction }
+                )}
+                isRequired
+                locationType="from"
+                selfValidate={planTripClicked}
+                showClearButton={!mobile}
+              />
+              <LocationField
+                inputPlaceholder={intl.formatMessage(
+                  { id: 'common.searchForms.enterDestination' },
+                  { mapAction }
+                )}
+                isRequired
+                locationType="to"
+                selfValidate={planTripClicked}
+                showClearButton={!mobile}
+              />
+              <div className="switch-button-container">
+                <SwitchButton />
+              </div>
+            </span>
+            <BatchSettings onPlanTripClick={this.handlePlanTripClick} />
+          </form>
+          {!activeSearch && showUserSettings && (
+            <UserSettings style={{ margin: '0 10px', overflowY: 'auto' }} />
+          )}
+        </ViewerContainer>
         <div
           className="desktop-narrative-container"
           style={{
@@ -101,7 +103,7 @@ class BatchRoutingPanel extends Component<Props> {
         >
           <NarrativeItineraries />
         </div>
-      </ViewerContainer>
+      </>
     )
   }
 }

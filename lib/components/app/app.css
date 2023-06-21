@@ -73,7 +73,7 @@
   justify-content: center;
 }
 .view-switcher button.btn-link {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(0, 0, 0, 0.85);
   border-radius: 15px;
 }
 .view-switcher button.btn-link.active {
@@ -87,7 +87,7 @@
 }
 
 .view-switcher button.btn-link:hover {
-  color: #fff;
+  color: rgba(0, 0, 0, 0.95);
 }
 
 /* Full screen modal styling */

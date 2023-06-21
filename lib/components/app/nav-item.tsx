@@ -11,7 +11,7 @@ type Props = {
 export const NavbarButton = styled.button`
   background: transparent;
   border: none;
-  color: white;
+  color: rgba(0, 0, 0, 0.75);
   display: block;
   line-height: 20px;
   padding: 15px;
@@ -24,7 +24,7 @@ export const NavbarButton = styled.button`
   &:hover,
   &[aria-expanded='true'] {
     background: rgba(0, 0, 0, 0.05);
-    color: #ddd;
+    color: #222;
     cursor: pointer;
   }
   &.active {

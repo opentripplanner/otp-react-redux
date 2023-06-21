@@ -29,7 +29,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
         name={
           <span
             style={{
-              color: 'rgba(255, 255, 255, 0.85)'
+              color: 'rgba(0, 0, 0, 0.85)'
             }}
           >
             <GlobeAmericas />

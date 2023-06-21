@@ -22,7 +22,7 @@ const DropdownButton = styled(NavbarButton)`
   color: inherit;
 
   span.caret {
-    color: white;
+    color: rgba(0, 0, 0, 0.75);
   }
 `
 const DropdownMenu = styled.ul`

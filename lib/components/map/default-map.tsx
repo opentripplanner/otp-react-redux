@@ -286,7 +286,7 @@ class DefaultMap extends Component {
           }
           baseLayerNames={baseLayerNames}
           center={[lat, lon]}
-          mapLibreProps={{ reuseMaps: true }}
+          mapLibreProps={{ padding: { left: 475 }, reuseMaps: true }}
           maxZoom={maxZoom}
           // In Leaflet, this was an onclick handler. Creating a click handler in
           // MapLibreGL would require writing a custom event handler for all mouse events

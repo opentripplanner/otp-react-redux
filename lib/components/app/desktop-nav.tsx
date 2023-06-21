@@ -13,7 +13,6 @@ import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
 import AppMenu, { Icon } from './app-menu'
 import LocaleSelector from './locale-selector'
 import NavbarItem from './nav-item'
-import ViewSwitcher from './view-switcher'
 
 const StyledNav = styled(Nav)`
   /* Almost override bootstrap's margin-right: -15px */
@@ -97,9 +96,7 @@ const DesktopNav = ({
   return (
     <header>
       <Navbar fluid inverse>
-        <Navbar.Header
-          style={{ position: 'relative', width: '100%', zIndex: 2 }}
-        >
+        <Navbar.Header style={{ position: 'relative', zIndex: 2 }}>
           <Navbar.Brand>
             <AppMenu />
             {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
@@ -113,8 +110,6 @@ const DesktopNav = ({
               <div className="navbar-title">{title}</div>
             </BrandingElement>
           </Navbar.Brand>
-
-          <ViewSwitcher sticky />
 
           <StyledNav pullRight>
             {popupTarget && (
