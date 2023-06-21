@@ -102,19 +102,3 @@
   height: 100%;
   width: 100%;
 }
-
-/** These changes kick in when the map is hidden. These rules ensure that the entire "sidebar"
-    (which at this point fills the entire screen) scrolls as a single unit.
-    These rules can only apply at this high zoom level because the location field dropdown is
-    otherwise "stuck" inside the sidebar and can't overlap the map. */
-@media (max-width: 768px) {
-  .main-row main {
-    overflow-y: auto;
-  }
-  .desktop-narrative-container {
-    overflow-y: unset !important;
-  }
-  .user-settings {
-    overflow-y: unset !important;
-  }
-}

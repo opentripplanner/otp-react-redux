@@ -231,9 +231,10 @@ button.step {
 }
 
 .bubbles-wrapper {
-  height: calc(100vh - 72px);
+  height: calc(100vh - 90px);
   margin: 1em;
   display: grid;
+  grid-template-rows: 1fr 2fr;
   gap: 15px;
   overflow-y: scroll;
 }
@@ -241,7 +242,6 @@ button.step {
   max-width: 475px;
   background: #fff;
   min-width: 465px;
-  padding: 5px 0;
   border-radius: 8px;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
   position: relative;

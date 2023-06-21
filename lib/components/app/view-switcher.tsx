@@ -58,7 +58,7 @@ const ViewSwitcher = ({
               position: 'absolute',
               width: '100%'
             }
-          : {}
+          : { paddingTop: 5 }
       }
     >
       <Button

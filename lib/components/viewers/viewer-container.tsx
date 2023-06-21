@@ -23,7 +23,7 @@ const ViewerContainer = ({
   // check for main panel content
   switch (mainPanelContent) {
     case MainPanelContent.ROUTE_VIEWER:
-      return <RouteViewer hideBackButton />
+      return <RouteViewer hideBackButton hideHeader />
     case MainPanelContent.PATTERN_VIEWER:
       return <PatternViewer hideBackButton />
     case MainPanelContent.TRIP_VIEWER:

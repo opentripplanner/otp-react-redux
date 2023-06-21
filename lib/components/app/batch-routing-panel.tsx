@@ -94,15 +94,6 @@ class BatchRoutingPanel extends Component<Props> {
             <UserSettings style={{ margin: '0 10px', overflowY: 'auto' }} />
           )}
         </ViewerContainer>
-        <div
-          className="desktop-narrative-container"
-          style={{
-            flexGrow: 1,
-            overflowY: 'hidden'
-          }}
-        >
-          <NarrativeItineraries />
-        </div>
       </>
     )
   }
