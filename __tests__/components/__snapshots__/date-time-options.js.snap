@@ -78,6 +78,7 @@ exports[`components > form > call-taker > date time options should correctly han
         >
           <input
             className="datetime-slim"
+            defaultValue="12a"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={null}
@@ -93,7 +94,6 @@ exports[`components > form > call-taker > date time options should correctly han
                 "width": "50px",
               }
             }
-            value="12a"
           />
         </OverlayTrigger>
         <input
@@ -195,6 +195,7 @@ exports[`components > form > call-taker > date time options should correctly han
         >
           <input
             className="datetime-slim"
+            defaultValue="12p"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={null}
@@ -210,7 +211,6 @@ exports[`components > form > call-taker > date time options should correctly han
                 "width": "50px",
               }
             }
-            value="12p"
           />
         </OverlayTrigger>
         <input
@@ -312,6 +312,7 @@ exports[`components > form > call-taker > date time options should correctly han
         >
           <input
             className="datetime-slim"
+            defaultValue="133"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={null}
@@ -327,7 +328,6 @@ exports[`components > form > call-taker > date time options should correctly han
                 "width": "50px",
               }
             }
-            value="133"
           />
         </OverlayTrigger>
         <input
@@ -429,6 +429,7 @@ exports[`components > form > call-taker > date time options should correctly han
         >
           <input
             className="datetime-slim"
+            defaultValue="133p"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={null}
@@ -444,7 +445,6 @@ exports[`components > form > call-taker > date time options should correctly han
                 "width": "50px",
               }
             }
-            value="133p"
           />
         </OverlayTrigger>
         <input
@@ -546,6 +546,7 @@ exports[`components > form > call-taker > date time options should correctly han
         >
           <input
             className="datetime-slim"
+            defaultValue="135p"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={null}
@@ -561,7 +562,6 @@ exports[`components > form > call-taker > date time options should correctly han
                 "width": "50px",
               }
             }
-            value="135p"
           />
         </OverlayTrigger>
         <input
@@ -663,6 +663,7 @@ exports[`components > form > call-taker > date time options should correctly han
         >
           <input
             className="datetime-slim"
+            defaultValue="1335"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={null}
@@ -678,7 +679,6 @@ exports[`components > form > call-taker > date time options should correctly han
                 "width": "50px",
               }
             }
-            value="1335"
           />
         </OverlayTrigger>
         <input
@@ -780,6 +780,7 @@ exports[`components > form > call-taker > date time options should render 1`] = 
         >
           <input
             className="datetime-slim"
+            defaultValue="12:34"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={null}
@@ -795,7 +796,6 @@ exports[`components > form > call-taker > date time options should render 1`] = 
                 "width": "50px",
               }
             }
-            value="12:34"
           />
         </OverlayTrigger>
         <input
