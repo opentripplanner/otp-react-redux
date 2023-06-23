@@ -2500,10 +2500,10 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/itinerary-body@^4.2.0-alpha.1":
-  version "4.2.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.2.0-alpha.1.tgz#4a765a8316d2cd2394a311fab77c4da369af4655"
-  integrity sha512-zrXVn8MLw7328Pa7XE1ODlOPFC9lEJJLmLDYx9KdKqd226XAZK2bKeNkzxB+XTheZndC2R+7bdm7UEA8X9inVg==
+"@opentripplanner/itinerary-body@^4.2.0-alpha.2":
+  version "4.2.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-4.2.0-alpha.2.tgz#99665c0ab9c5541bcd8c19c2d790f9602d5bc86b"
+  integrity sha512-/BBUUVZR8DJJaeODH0/VyRMl7G1wuVjq7uEuQn81/Du+uhh2RZHktAq/Njh2h4xupoxLCc0FNSODsyXtQJMenA==
   dependencies:
     "@opentripplanner/core-utils" "^8.2.1"
     "@opentripplanner/humanize-distance" "^1.2.0"
