@@ -16,23 +16,14 @@ import { ComponentContext } from '../../../util/contexts'
 import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'
 import { getFormattedPlaces } from '../../../util/i18n'
 import { StyledIconWrapper } from '../../util/styledIcon'
+import { UserSavedLocation } from '../types'
 import ButtonGroup from '../../util/button-group'
 import FormattedValidationError from '../../util/formatted-validation-error'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import { PlaceLocationField } from './place-location-field'
 
-// TODO: Share with OTP middleware user types.
-interface Fields {
-  address?: string
-  icon?: string
-  lat?: number
-  lon?: number
-  name?: string
-  type?: string
-}
-
-type Props = WrappedComponentProps & FormikProps<Fields>
+type Props = WrappedComponentProps & FormikProps<UserSavedLocation>
 
 const { isMobile } = coreUtils.ui
 
@@ -59,7 +50,7 @@ const StyledFormGroup = styled(FormGroup)`
 /**
  * Create a LocationField location object from a persisted user location object.
  */
-function makeLocationFieldLocation(favoriteLocation: Fields) {
+function makeLocationFieldLocation(favoriteLocation: UserSavedLocation) {
   const { address, lat, lon } = favoriteLocation
   return {
     lat,

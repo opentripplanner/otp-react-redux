@@ -304,7 +304,7 @@ components:
     stops: Điểm dừng của phương tiện công cộng
     streets: Đường phố
   MetroUI:
-    arriveAtTime: Đến nơi vào {time}
+    arriveAt: Đến nơi
     fromStop: từ {stop}
     itineraryDescription: "{time} hành trình sử dụng {routes}"
     leaveAt: Bạn rời khỏi
@@ -333,10 +333,10 @@ components:
     signIn: Đăng nhập
     signOut: Đăng xuất
   NewAccountWizard:
+    createNewAccount: Tạo tài khoản mới
     finish: Hoàn tất việc thiết lập tài khoản!
     notifications: Tùy chọn thông báo
     places: Thêm vị trí của bạn
-    terms: Tạo tài khoản mới
     verify: Xác minh địa chỉ email của bạn
   NotFound:
     description: Nội dung bạn yêu cầu không có sẵn.

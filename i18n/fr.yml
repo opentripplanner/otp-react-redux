@@ -115,6 +115,7 @@ common:
     transfers: >-
       {transfers, plural, =0 {} one {# correspondance} other {#
       correspondances}}
+  linkOpensNewWindow: (Ouvre une nouvelle fenêtre)
   modes:
     bicycle_rent: En vélo en libre-service
     bike: Vélo
@@ -326,7 +327,6 @@ components:
     title: Vue panoramique
   MetroUI:
     arriveAt: Vous arrivez à
-    arriveAtTime: Arrivée à {time}
     fromStop: de {stop}
     itineraryDescription: Trajet de {time} par les lignes {routes}
     leaveAt: Partez à
@@ -344,6 +344,9 @@ components:
     howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés plus bas.
     itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets trouvés} }"
     numIssues: "{issueNum, plural, one {# problème} other {# problèmes} }"
+    resultsSortedBy: >-
+      Résultats triés par {sortSelected}. Pour modifier l'ordre, utilisez le
+      bouton "Trier les résultats" plus bas.
     searching: Recherche...
     selectArrivalTime: Heure d'arrivée
     selectBest: Meilleure option
@@ -351,6 +354,7 @@ components:
     selectDepartureTime: Heure de départ
     selectDuration: Durée
     selectWalkTime: Temps de marche
+    sortResults: Trier les résultats
     viewAll: Toutes les options
   NavLoginButton:
     help: Aide
@@ -358,10 +362,10 @@ components:
     signIn: Se connecter
     signOut: Déconnexion
   NewAccountWizard:
+    createNewAccount: Créez un nouveau compte
     finish: Votre nouveau compte est prêt !
     notifications: Préférences pour les notifications
     places: Ajoutez vos lieux
-    terms: Créez votre nouveau compte
     verify: Vérifiez votre adresse e-mail
   NotFound:
     description: Le contenu que vous avez demandé n'est pas disponible.
@@ -496,6 +500,8 @@ components:
       Ce nom est déjà utilisé avec un autre trajet. Veuillez choisir un nom
       différent.
     tripNameRequired: Veuillez entrer un nom pour ce trajet.
+  SequentialPaneDisplay:
+    stepNumber: Étape {step} sur {total}
   SessionTimeout:
     body: >-
       Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma
@@ -527,6 +533,7 @@ components:
     flexStop: >-
       Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande. Une
       réservation préalable peut être exigée pour obtenir la desserte.
+    forStop: pour {stopName}
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
     nextArrivals: Prochains passages

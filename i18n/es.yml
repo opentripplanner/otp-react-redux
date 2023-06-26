@@ -318,7 +318,6 @@ components:
     title: Imágenes de la calle
   MetroUI:
     arriveAt: Llegaste
-    arriveAtTime: Llegar a {time}
     fromStop: de {stop}
     itineraryDescription: "{time} itinerario en {routes}"
     leaveAt: Su salida
@@ -354,10 +353,10 @@ components:
     signIn: Acceder
     signOut: Firmar la salida
   NewAccountWizard:
+    createNewAccount: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
     notifications: Preferencias de notificación
     places: Añade tus ubicaciones
-    terms: Crear una nueva cuenta
     verify: Verifique su dirección de correo electrónico
   NotFound:
     description: El contenido que ha solicitado no está disponible.
