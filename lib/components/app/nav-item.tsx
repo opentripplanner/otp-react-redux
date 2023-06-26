@@ -18,6 +18,10 @@ export const NavbarButton = styled.button`
   padding: 15px;
   transition: all 0.1s ease-in-out;
 
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+
   &:hover,
   &[aria-expanded='true'] {
     background: rgba(0, 0, 0, 0.05);
