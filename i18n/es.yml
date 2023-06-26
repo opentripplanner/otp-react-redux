@@ -353,10 +353,10 @@ components:
     signIn: Acceder
     signOut: Firmar la salida
   NewAccountWizard:
+    createNewAccount: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
     notifications: Preferencias de notificación
     places: Añade tus ubicaciones
-    terms: Crear una nueva cuenta
     verify: Verifique su dirección de correo electrónico
   NotFound:
     description: El contenido que ha solicitado no está disponible.

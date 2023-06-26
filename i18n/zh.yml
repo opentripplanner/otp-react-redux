@@ -324,10 +324,10 @@ components:
     signIn: 登录
     signOut: 签出
   NewAccountWizard:
+    createNewAccount: 创建一个新账户
     finish: 账户设置完成!
     notifications: 通知偏好
     places: 添加您的位置
-    terms: 创建一个新账户
     verify: 验证您的电子邮件地址
   NotFound:
     description: 您要求的内容不存在.

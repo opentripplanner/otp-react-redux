@@ -362,10 +362,10 @@ components:
     signIn: Se connecter
     signOut: Déconnexion
   NewAccountWizard:
+    createNewAccount: Créez un nouveau compte
     finish: Votre nouveau compte est prêt !
     notifications: Préférences pour les notifications
     places: Ajoutez vos lieux
-    terms: Créez votre nouveau compte
     verify: Vérifiez votre adresse e-mail
   NotFound:
     description: Le contenu que vous avez demandé n'est pas disponible.
@@ -499,6 +499,8 @@ components:
       Ce nom est déjà utilisé avec un autre trajet. Veuillez choisir un nom
       différent.
     tripNameRequired: Veuillez entrer un nom pour ce trajet.
+  SequentialPaneDisplay:
+    stepNumber: Étape {step} sur {total}
   SessionTimeout:
     body: >-
       Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma

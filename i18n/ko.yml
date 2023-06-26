@@ -324,10 +324,10 @@ components:
     signIn: 로그인
     signOut: 로그 아웃
   NewAccountWizard:
+    createNewAccount: 새 계정 생성
     finish: 계정 설정을 완료하셨습니다!
     notifications: 알림 설정
     places: 위치 추가
-    terms: 새 계정 생성
     verify: 이메일 주소 확인
   NotFound:
     description: 요청한 콘텐츠를 사용할 수 없습니다.
