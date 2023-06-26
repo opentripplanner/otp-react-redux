@@ -303,7 +303,7 @@ components:
     stops: Điểm dừng của phương tiện công cộng
     streets: Đường phố
   MetroUI:
-    arriveAtTime: Đến nơi vào {time}
+    arriveAt: Đến nơi
     fromStop: từ {stop}
     itineraryDescription: "{time} hành trình sử dụng {routes}"
     leaveAt: Bạn rời khỏi

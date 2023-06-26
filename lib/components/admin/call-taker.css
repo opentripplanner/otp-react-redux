@@ -7,7 +7,7 @@
 }
 
 .otp .advanced-search-options {
-  box-shadow: 0px 5px 3px 0px rgba(0,0,0,0.32157);
+  padding: 1ch 0 0 0;
 }
 
 .otp .search-options {

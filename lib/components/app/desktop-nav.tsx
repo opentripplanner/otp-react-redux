@@ -20,7 +20,7 @@ const StyledNav = styled(Nav)`
   margin-right: -5px;
   /* Target only the svgs in the Navbar */
   & > li > button > svg,
-  & > li > span > button > span > svg {
+  & > li > span > button > svg {
     height: 18px;
   }
 

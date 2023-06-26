@@ -11,7 +11,6 @@ import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
-import * as narrativeActions from '../../../actions/narrative'
 import * as uiActions from '../../../actions/ui'
 import { ComponentContext } from '../../../util/contexts'
 import { FlexIndicator } from '../default/flex-indicator'
@@ -249,12 +248,10 @@ class MetroItinerary extends NarrativeItinerary {
     const {
       accessibilityScoreGradationMap,
       active,
-      activeItineraryTimeIndex,
       arrivesAt,
       co2Config,
       currency,
       defaultFareKey,
-      enableDot,
       expanded,
       intl,
       itinerary,
@@ -263,7 +260,6 @@ class MetroItinerary extends NarrativeItinerary {
       pending,
       setActiveItinerary,
       setActiveLeg,
-      setItineraryTimeIndex,
       setItineraryView,
       showLegDurations,
       showRealtimeAnnotation
@@ -335,13 +331,13 @@ class MetroItinerary extends NarrativeItinerary {
       >
         <div
           className="header"
-          onClick={handleClick}
+          onClick={expanded ? undefined : handleClick}
           // TODO: once this can be tabbed to, this behavior needs to be improved. Maybe it focuses the
           // first time?
           // eslint-disable-next-line @typescript-eslint/no-empty-function
           onKeyDown={() => {}}
-          onMouseEnter={this._onMouseEnter}
-          onMouseLeave={this._onMouseLeave}
+          onMouseEnter={expanded ? undefined : this._onMouseEnter}
+          onMouseLeave={expanded ? undefined : this._onMouseLeave}
           // TODO: use _onHeaderClick for tap only -- this will require disabling
           // this onClick handler after a touchStart
           // TODO: CORRECT THIS ARIA ROLE
@@ -431,9 +427,8 @@ class MetroItinerary extends NarrativeItinerary {
                     <FormattedMessage id="components.MetroUI.leaveAt" />
                   )}{' '}
                   <DepartureTimesList
-                    activeItineraryTimeIndex={activeItineraryTimeIndex}
                     itinerary={itinerary}
-                    setItineraryTimeIndex={setItineraryTimeIndex}
+                    setActiveItinerary={setActiveItinerary}
                     showArrivals={arrivesAt}
                   />
                 </DepartureTimes>
@@ -475,14 +470,10 @@ class MetroItinerary extends NarrativeItinerary {
 // TODO: state type
 const mapStateToProps = (state: any, ownProps: Props) => {
   const activeSearch = getActiveSearch(state)
-  const activeItineraryTimeIndex =
-    // @ts-expect-error state is not yet typed
-    activeSearch && activeSearch.activeItineraryTimeIndex
 
   return {
     accessibilityScoreGradationMap:
       state.otp.config.accessibilityScore?.gradationMap,
-    activeItineraryTimeIndex,
     arrivesAt: state.otp.filter.sort.type === 'ARRIVALTIME',
     co2Config: state.otp.config.co2,
     configCosts: state.otp.config.itinerary?.costs,
@@ -499,13 +490,8 @@ const mapStateToProps = (state: any, ownProps: Props) => {
 }
 
 // TS TODO: correct redux types
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    setItineraryTimeIndex: (payload: number) =>
-      dispatch(narrativeActions.setActiveItineraryTime(payload)),
-    setItineraryView: (payload: any) =>
-      dispatch(uiActions.setItineraryView(payload))
-  }
+const mapDispatchToProps = {
+  setItineraryView: uiActions.setItineraryView
 }
 
 export default injectIntl(

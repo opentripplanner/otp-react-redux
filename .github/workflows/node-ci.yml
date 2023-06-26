@@ -32,6 +32,8 @@ jobs:
         run: yarn lint-all || true
       - name: Run type check
         run: yarn typecheck
+      - name: Check i18n messages (en-US and fr)
+        run: yarn check:i18n-en-fr
       - name: Run tests
         run: yarn unit
       - name: Build example project
