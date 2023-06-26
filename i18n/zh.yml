@@ -291,7 +291,7 @@ components:
     stops: 公共交通站点
     streets: 街道
   MetroUI:
-    arriveAtTime: "{time} 到达"
+    arriveAt: 到达
     fromStop: 从 {stop}
     itineraryDescription: "{time} 行程使用 {routes}"
     leaveAt: 您已离开

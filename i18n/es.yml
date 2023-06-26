@@ -318,7 +318,6 @@ components:
     title: Imágenes de la calle
   MetroUI:
     arriveAt: Llegaste
-    arriveAtTime: Llegar a {time}
     fromStop: de {stop}
     itineraryDescription: "{time} itinerario en {routes}"
     leaveAt: Su salida
