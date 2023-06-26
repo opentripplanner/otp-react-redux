@@ -2474,10 +2474,10 @@
     "@opentripplanner/core-utils" "^7.0.5"
     prop-types "^15.7.2"
 
-"@opentripplanner/icons@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-2.0.2.tgz#fc88958bd7c230dc9a317e3631a7b40c210170a0"
-  integrity sha512-O3aKWXdCXRxoo+4D5lpqTvEXwny/W9EzNyW22hE1cjv0+qkhjpLpFcx0Jpbq9cXH/LvfRKQnbVftjsck6oRyzQ==
+"@opentripplanner/icons@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-2.0.3.tgz#c7c587f5b3b8ea050f50af3537e2e409d7258829"
+  integrity sha512-IHoFtTozacXMXBOc87kTcd1V9hXAP4UQEq6RCzhTTCwOEFQ2/aWHSJ+aIyr+3XFIKYyfQ0b8JAdJnEoa1yJzew==
   dependencies:
     "@opentripplanner/core-utils" "^8.2.1"
     prop-types "^15.7.2"
@@ -2574,10 +2574,10 @@
     "@opentripplanner/base-map" "^3.0.11"
     "@opentripplanner/from-to-location-picker" "^2.1.6"
 
-"@opentripplanner/printable-itinerary@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-2.0.9.tgz#3dc2df939b68e63d1babb6a8eba8ef648cf272ca"
-  integrity sha512-ZRExXJT7uKMWu+Zug15vLWhfFkaxWcRp70LTImMA7+7fRjiM747nxpzYQXDo8KmQdohral+885ZTrcGyWf78oQ==
+"@opentripplanner/printable-itinerary@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-2.0.10.tgz#a4e4358f3c8690b94df7ce175d9eeee6ba00d96a"
+  integrity sha512-+AoBTZtcSWQI6e6Co5TfBsE1GkjlL4F9YaUtDerbWcXfD/JZQiSbpvDI5s9ajwmk3Bd1EBQ5crvH8hb42bFvUw==
   dependencies:
     "@opentripplanner/core-utils" "^8.2.1"
     "@opentripplanner/itinerary-body" "^4.1.17"
@@ -2631,10 +2631,10 @@
     "@opentripplanner/icons" "^2.0.1"
     flat "^5.0.2"
 
-"@opentripplanner/transitive-overlay@^3.0.12":
-  version "3.0.12"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-3.0.12.tgz#51b37d42b35295ffe7c7908c30dfabf4bdb894ea"
-  integrity sha512-TvL/H51wUfma9qcw+xzxYwiXX42Tmc9laDnP1bKAX6C/Dn9pseCQiAo99Qr9YBdmv0vhc5mybblBi4u58tVZug==
+"@opentripplanner/transitive-overlay@^3.0.13":
+  version "3.0.13"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-3.0.13.tgz#61457d75a9f16ec2262c746d88ae185faf1333e0"
+  integrity sha512-9t6UER7oFZvz/1N38wQMs0DBnuACDdLBwfF17SK0cpoty5Nb+s4GZQD60ohLqXVILjFfy/wPIRcISaUvzJhDYg==
   dependencies:
     "@mapbox/polyline" "^1.1.1"
     "@opentripplanner/base-map" "^3.0.11"
