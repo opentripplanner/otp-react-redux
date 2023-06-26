@@ -166,10 +166,7 @@ components:
   AdvancedOptions:
     bannedRoutes: Select banned routes…
     bikeTolerance: Bike Tolerance
-    maxBike: Max bike {unitsString}
-    maxWalk: Max walk {unitsString}
     preferredRoutes: Select preferred routes...
-    walkReluctance: Walk Reluctance
     walkTolerance: Walk Tolerance
   AfterSignInScreen:
     mainTitle: Redirecting...
@@ -229,10 +226,8 @@ components:
   BatchSettings:
     dateTimeSettingsLabel: Date/Time Settings
     destination: destination
-    modeSelector: Mode Selector
     origin: origin
     planTripTooltip: Plan trip
-    settings: Trip Settings
     validationMessage: "Please define the following fields to plan a trip: {issues}"
   BeforeSignInScreen:
     mainTitle: Signing you in
@@ -325,8 +320,6 @@ components:
     timeWalking: "{time} walking"
   MobileOptions:
     header: Set Search Options
-  ModeDropdown:
-    exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
     howToFindResults: To view results, see the Itineraries Found heading below.

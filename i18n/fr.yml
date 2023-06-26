@@ -176,10 +176,7 @@ components:
     tooManyPlaces: Nombre max. de points intermédiaires atteint
   AdvancedOptions:
     bannedRoutes: Choisissez les lignes à éviter…
-    maxBike: Dist. à vélo ({unitsString})
-    maxWalk: Dist. à pied ({unitsString})
     preferredRoutes: Choisissez les lignes preferées
-    walkReluctance: Réticence à marcher
   AfterSignInScreen:
     mainTitle: Redirection...
     message: >-
@@ -237,10 +234,8 @@ components:
     header: Votre trajet
   BatchSettings:
     destination: destination
-    modeSelector: Sélecteur de modes
     origin: point de départ
     planTripTooltip: Planifier le trajet
-    settings: Préférences du trajet
     validationMessage: >-
       Veuillez définir les champs suivants afin de planifier votre trajet :
       {issues}
@@ -337,8 +332,6 @@ components:
     timeWalking: "{time} de marche"
   MobileOptions:
     header: Options de recherche
-  ModeDropdown:
-    exclusiveMode: "{mode} uniquement"
   NarrativeItinerariesHeader:
     changeSortDir: Changer l'ordre de tri
     howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés plus bas.
@@ -468,11 +461,9 @@ components:
     cantSaveTooltip: >-
       Seuls les trajets en transports publics sans location de véhicules et sans
       course en voiture peuvent être suivis.
-    openPatternViewer: Voir les dessertes
     saveTripText: Enregistrer
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
-    toggleRouteOnMap: Afficher ou masquer cette ligne sur la carte
   SavedTripEditor:
     editSavedTrip: Modifier un trajet enregistré
     saveNewTrip: Enregistrer un nouveau trajet
