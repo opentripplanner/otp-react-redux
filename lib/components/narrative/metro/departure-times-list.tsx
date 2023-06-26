@@ -46,7 +46,9 @@ export const DepartureTimesList = ({
           className={isRealTime ? 'realtime active' : 'active'}
           title={itineraryButtonLabel}
         >
-          <FormattedTime value={itinerary.startTime} />
+          <FormattedTime
+          value={showArrivals ? itinerary.endTime : itinerary.startTime}
+        />
         </span>
         <InvisibleA11yLabel>{itineraryButtonLabel}</InvisibleA11yLabel>
       </>
