@@ -344,6 +344,9 @@ components:
     howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés plus bas.
     itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets trouvés} }"
     numIssues: "{issueNum, plural, one {# problème} other {# problèmes} }"
+    resultsSortedBy: >-
+      Résultats triés par {sortSelected}. Pour modifier l'ordre, utilisez le
+      bouton "Trier les résultats" plus bas.
     searching: Recherche...
     selectArrivalTime: Heure d'arrivée
     selectBest: Meilleure option
@@ -351,6 +354,7 @@ components:
     selectDepartureTime: Heure de départ
     selectDuration: Durée
     selectWalkTime: Temps de marche
+    sortResults: Trier les résultats
     viewAll: Toutes les options
   NavLoginButton:
     help: Aide
