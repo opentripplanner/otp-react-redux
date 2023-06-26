@@ -27,7 +27,7 @@ interface ButtonType {
 
 interface Props {
   /** Information about the back button. */
-  backButton?: ButtonType
+  backButton?: ButtonType | false
   /** Information about the okay (action) button. */
   okayButton?: ButtonType
 }

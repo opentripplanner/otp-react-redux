@@ -103,12 +103,10 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
         </SequentialPaneContainer>
         <FormNavigationButtons
           backButton={
-            activePaneIndex > 0
-              ? {
-                  onClick: this._handleToPrevPane,
-                  text: <FormattedMessage id="common.forms.back" />
-                }
-              : undefined
+            activePaneIndex > 0 && {
+              onClick: this._handleToPrevPane,
+              text: <FormattedMessage id="common.forms.back" />
+            }
           }
           okayButton={{
             onClick: this._handleToNextPane,
