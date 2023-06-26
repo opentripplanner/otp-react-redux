@@ -26,15 +26,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
         id="locale-selector"
         label={intl.formatMessage({ id: 'components.SubNav.selectALanguage' })}
         listLabel={intl.formatMessage({ id: 'components.SubNav.languages' })}
-        name={
-          <span
-            style={{
-              color: 'rgba(255, 255, 255, 0.85)'
-            }}
-          >
-            <GlobeAmericas />
-          </span>
-        }
+        name={<GlobeAmericas />}
         style={{ display: 'block ruby' }}
       >
         {Object.keys(languageOptions).map((locale: string) => (
