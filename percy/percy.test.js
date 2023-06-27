@@ -449,6 +449,10 @@ test('OTP-RR', async () => {
   await page.goto(`${page.url()}&ui_activeItinerary=1`)
   await page.waitForTimeout(2000)
 
+  await page.click('label[title="Bike"]')
+  await page.click('#plan-trip')
+  await page.waitForTimeout(5000)
+
   await percySnapshotWithWait(
     page,
     'Batch Itinerary With Transit Showing Bikes'
