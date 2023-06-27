@@ -172,10 +172,8 @@ components:
     tooManyPlaces: Se alcanzó el máximo de lugares intermedios
   AdvancedOptions:
     bannedRoutes: Seleccionar rutas prohibidas…
-    maxBike: Máx de bicicleta {unitsString}
     maxWalk: Máx caminando {unitsString}
     preferredRoutes: Seleccionar rutas preferidas…
-    walkReluctance: Evasión de caminata
   AfterSignInScreen:
     mainTitle: Redirigiendo…
     message: >-
@@ -233,10 +231,8 @@ components:
     header: Planifique su viaje
   BatchSettings:
     destination: destino
-    modeSelector: Selector de modos
     origin: origen
     planTripTooltip: Planificar viaje
-    settings: Preferencias de viaje
     validationMessage: "Por favor, defina los siguientes campos para planificar un
       viaje: {issues}"
   BeforeSignInScreen:
@@ -332,8 +328,6 @@ components:
     timeWalking: "{time} caminando"
   MobileOptions:
     header: Configurar las opciones de búsqueda
-  ModeDropdown:
-    exclusiveMode: Solo {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Cambiar la dirección de clasificación
     howToFindResults: >-

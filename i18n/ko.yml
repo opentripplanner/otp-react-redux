@@ -156,10 +156,8 @@ components:
     tooManyPlaces: 중간 경유지의 최대 수에 도달함
   AdvancedOptions:
     bannedRoutes: 금지된 경로 선택…
-    maxBike: 최대 자전거 {unitsString}
     maxWalk: 최대 도보 {unitsString}
     preferredRoutes: 선호 경로 선택…
-    walkReluctance: 걷기 제외
   AfterSignInScreen:
     mainTitle: 경로 재설정 중...
     message: 몇 초 후에도 페이지가 로드되지 않는 경우, <redirectLink>여기를 클릭</redirectLink>하십시오.
@@ -217,7 +215,6 @@ components:
     destination: 목적지
     origin: 출발지
     planTripTooltip: 트립 계획
-    settings: 여행 설정
     validationMessage: "트립 계획을 위해 다음 필드를 정의하세요: {issues}"
   BeforeSignInScreen:
     mainTitle: 로그인 중
@@ -300,8 +297,6 @@ components:
     timeWalking: "{time} 걷기"
   MobileOptions:
     header: 검색 옵션 설정
-  ModeDropdown:
-    exclusiveMode: "{mode} 전용"
   NarrativeItinerariesHeader:
     changeSortDir: 정렬 방향 변경
     itinerariesFound: "{itineraryNum} 개의 여정을 찾았습니다"
