@@ -199,6 +199,13 @@ const DateTimeOptions = ({
       >
         <input
           className="datetime-slim"
+          // TODO: Why does this no longer work when set as `value`? Is this a
+          // date-fns issue?
+          defaultValue={
+            time && time?.length > 1
+              ? time || format(dateTime, 'H:mm', { timeZone: homeTimezone })
+              : time
+          }
           onChange={(e) => {
             setTime(e.target.value)
             unsetNow()
@@ -212,12 +219,6 @@ const DateTimeOptions = ({
             padding: '0px',
             width: '50px'
           }}
-          // Don't use intl.formatTime, so that users can enter time in 12hr or 24hr format at their leisure.
-          value={
-            time && time?.length > 1
-              ? time || format(dateTime, 'H:mm', { timeZone: homeTimezone })
-              : time
-          }
         />
       </OverlayTrigger>
       <input
@@ -248,7 +249,7 @@ const mapStateToProps = (state: any) => {
   const { dateTime, homeTimezone } = state.otp.config
   return {
     homeTimezone,
-    timeFormat: dateTime.timeFormat
+    timeFormat: dateTime?.timeFormat || 'h:mm a'
   }
 }
 

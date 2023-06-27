@@ -47,8 +47,8 @@ export const DepartureTimesList = ({
           title={itineraryButtonLabel}
         >
           <FormattedTime
-          value={showArrivals ? itinerary.endTime : itinerary.startTime}
-        />
+            value={showArrivals ? itinerary.endTime : itinerary.startTime}
+          />
         </span>
         <InvisibleA11yLabel>{itineraryButtonLabel}</InvisibleA11yLabel>
       </>
