@@ -1,28 +1,37 @@
-import * as TripFormClasses from '@opentripplanner/trip-form/lib/styled'
-import { SettingsSelectorPanel } from '@opentripplanner/trip-form'
+import {
+  SettingsSelectorPanel,
+  Styled as TripFormClasses
+} from '@opentripplanner/trip-form'
 import styled, { css } from 'styled-components'
 
 import { commonInputCss, modeButtonButtonCss } from './styled'
 import DateTimePreview from './date-time-preview'
 
-const SHADOW = 'inset 0px 0px 5px #c1c1c1'
-
 const activeCss = css`
-  background: #e5e5e5;
-  -webkit-box-shadow: ${SHADOW};
-  -moz-box-shadow: ${SHADOW};
-  box-shadow: ${SHADOW};
+  background: #d5d5d5;
 `
 
+const buttonTransitionCss = css`
+  transition: all 250ms ease-out;
+`
+
+// TODO: this needs to be in line with the mode selector buttons, ideally importing the styles
 export const buttonCss = css`
-  height: 45px;
-  width: 45px;
-  margin: 0px;
-  border: 0px;
   border-radius: 5px;
+  border: 0px;
+  height: 51px;
+  margin: 0px;
+  width: 51px;
+  ${buttonTransitionCss}
+
   &:active {
-    ${activeCss}
+    background: #e5e5e5;
   }
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px;
+  }
+
   svg {
     max-height: 36px;
   }
@@ -37,9 +46,11 @@ export const StyledDateTimePreviewContainer = styled(Button)<{
 }>`
   ${buttonCss}
   margin-right: 5px;
+  max-width: 120px;
+  min-width: 90px;
   padding: 0;
   position: relative;
-  width: 120px;
+  width: 100%;
   ${(props) => (props.expanded ? activeCss : null)}
 `
 
@@ -56,15 +67,15 @@ export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
   padding: 0;
   ${(props) => (props.expanded ? activeCss : null)}
 `
-
 export const PlanTripButton = styled(Button)`
   background-color: green;
   color: #ffffffdd;
-  margin-left: auto;
+  padding: 5px;
+
   &:active {
     ${activeCss}
-    filter: saturate(50%);
     background: green;
+    filter: saturate(50%);
   }
 
   span {
@@ -73,10 +84,35 @@ export const PlanTripButton = styled(Button)`
   }
 `
 
+export const ModeSelectorContainer = styled.div<{ squashed?: boolean }>`
+  display: flex;
+  align-items: flex-start;
+  float: right;
+
+  ${PlanTripButton} {
+    border-bottom-left-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
+    border-top-left-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
+    margin-top: 0px;
+    margin-left: ${(props) => (props.squashed ? 0 : '3px')};
+  }
+  label:last-of-type {
+    border-bottom-right-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
+    border-top-right-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
+  }
+  fieldset {
+    gap: 0 2px;
+    margin: 0 2px 0 0;
+
+    input {
+      margin: 0;
+    }
+  }
+`
+
 const expandableBoxCss = css`
   background-color: rgb(239, 239, 239);
-  box-shadow: rgba(0, 0, 0, 0.32) 7px 12px 10px;
   border-radius: 5px 5px 5px 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 20px;
   left: 10px;
   position: absolute;
   right: 10px;
@@ -85,7 +121,6 @@ const expandableBoxCss = css`
 
 export const DateTimeModalContainer = styled.div`
   ${expandableBoxCss}
-  margin-top: 50px;
   padding: 10px 20px;
 `
 
@@ -94,12 +129,12 @@ export const BatchPreferencesContainer = styled.div`
   margin-top: 50px;
   padding: 5px 10px;
 `
-
 export const MainSettingsRow = styled.div`
   align-items: top;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-flow: wrap;
+  gap: 5px 0;
+  justify-content: space-between;
   margin-bottom: 5px;
 `
 

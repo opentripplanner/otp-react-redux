@@ -229,7 +229,8 @@ class MetroItinerary extends NarrativeItinerary {
       <RouteBlock
         aria-hidden
         footer={
-          showLegDurations && <FormattedDuration duration={mainLeg.duration} />
+          showLegDurations &&
+          mainLeg?.duration && <FormattedDuration duration={mainLeg.duration} />
         }
         hideLongName
         leg={mainLeg}

@@ -1,7 +1,7 @@
-import * as TripFormClasses from '@opentripplanner/trip-form/lib/styled'
 import {
   DateTimeSelector,
-  SettingsSelectorPanel
+  SettingsSelectorPanel,
+  Styled as TripFormClasses
 } from '@opentripplanner/trip-form'
 import { Input, MenuItemA } from '@opentripplanner/location-field/lib/styled'
 import LocationField from '@opentripplanner/location-field'

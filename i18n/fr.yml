@@ -176,10 +176,9 @@ components:
     tooManyPlaces: Nombre max. de points intermédiaires atteint
   AdvancedOptions:
     bannedRoutes: Choisissez les lignes à éviter…
-    maxBike: Dist. à vélo ({unitsString})
-    maxWalk: Dist. à pied ({unitsString})
+    bikeTolerance: Tolérance au vélo
     preferredRoutes: Choisissez les lignes preferées
-    walkReluctance: Réticence à marcher
+    walkTolerance: Tolérance à la marche
   AfterSignInScreen:
     mainTitle: Redirection...
     message: >-
@@ -236,11 +235,10 @@ components:
   BatchSearchScreen:
     header: Votre trajet
   BatchSettings:
+    dateTimeSettingsLabel: Paramètres Date/Heure
     destination: destination
-    modeSelector: Sélecteur de modes
     origin: point de départ
     planTripTooltip: Planifier le trajet
-    settings: Préférences du trajet
     validationMessage: >-
       Veuillez définir les champs suivants afin de planifier votre trajet :
       {issues}
@@ -337,8 +335,6 @@ components:
     timeWalking: "{time} de marche"
   MobileOptions:
     header: Options de recherche
-  ModeDropdown:
-    exclusiveMode: "{mode} uniquement"
   NarrativeItinerariesHeader:
     changeSortDir: Changer l'ordre de tri
     howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés plus bas.
@@ -377,6 +373,48 @@ components:
     noneSelect: Ne pas me notifier
     notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
     notificationEmailDetail: "Les courriers de notification seront envoyés à :"
+  OTP2ErrorRenderer:
+    LOCATION_NOT_FOUND:
+      body: >-
+        {inputFieldsCount, plural, =0 {} one {Votre {inputFields} est trop loin}
+        other {Vos {inputFields} sont trop loins}} du réseau routier.
+      header: Lieu inaccessible
+    NO_STOPS_IN_RANGE:
+      body: >-
+        {inputFieldsCount, plural, =0 {} one {Votre {inputFields} est trop loin}
+        other {Vos {inputFields} sont trop loins}} des transports.
+      header: Aucun arrêt a proximité
+    NO_TRANSIT_CONNECTION:
+      body: >-
+        Aucune desserte en transports n'a été trouvée entre vos points de départ
+        et d'arrivée pour la date indiquée.
+      header: Aucune desserte
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: >-
+        Une desserte en transports a été trouvée mais ne correspond pas à vos
+        critères. Veuillez ajuster votre recherche.
+      header: Aucune desserte selon vos critères
+    OUTSIDE_BOUNDS:
+      body: >-
+        {inputFieldsCount, plural, =0 {} one {Votre {inputFields} n'est} other
+        {Vos {inputFields} ne sont}} pas dans la zone de recherche.
+      header: Lieu hors zone de recherche
+    OUTSIDE_SERVICE_PERIOD:
+      body: >-
+        La date indiquée est en dehors de la plage de données disponibles pour
+        la recherche de trajets.
+      header: Date sans données
+    SYSTEM_ERROR:
+      body: Une erreur inconnue s'est produite pendant la recherche.
+      header: Echec de la recherche
+    WALKING_BETTER_THAN_TRANSIT:
+      body: >-
+        Vous pouvez effectuer ce trajet plus rapidement en évitant les
+        transports.
+      header: Transports moins rapides
+    inputFields:
+      FROM: point de départ
+      TO: destination
   PhoneNumberEditor:
     changeNumber: Changer de numéro
     invalidCode: Le code de vérification doit comporter 6 chiffres.
@@ -463,7 +501,7 @@ components:
     shortTitle: Index des lignes
     stopsInDirectionOfTravel: "Arrêts dans cette direction :"
     title: Index des lignes
-    toggleRouteOnMap: Afficher ou masquer cette ligne sur la carte
+    toggleRouteOnMap: Afficher ou masquer la ligne sur la carte
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
     cantSaveTooltip: >-
@@ -565,7 +603,10 @@ components:
       J'atteste avoir au moins 18 ans et j'ai lu et consens aux
       <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the
       Planificateur de trajets.
-    termsOfStorageStatement: "Facultatif\_: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>\n"
+    termsOfStorageStatement: >
+      Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes
+      recherches afin d'améliorer les transports publics dans ma region.
+      <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>
   TransitVehicleOverlay:
     in_transit_to: "Prochain arrêt : {stop}"
     incoming_at: Approchant {stop}

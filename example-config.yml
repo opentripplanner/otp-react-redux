@@ -199,21 +199,42 @@ geocoder:
 
 # Use this mode config for the enhanced Transit+ config
 modes:
-  # This is the default behavior for flex merging.
-  # If set to false, each FLEX mode (FLEX_EGRESS,FLEX_ACCESS,FLEX_DIRECT) will 
-  # be treated separately. If set to true, a single FLEX mode will automatically 
-  # be expanded and reduced to those three modes.
-  mergeFlex: true 
-  modeOptions:
-    - mode: TRANSIT
-    - mode: WALK
-    - mode: CAR
-    - mode: BICYCLE
-    - mode: RENT
-      icon: mobile
-      # This overrides the label generated from the i18n. Use when defining modes that are not supported by OTP i18n
-      # label: Rental 
-      
+  # Definition for the mode buttons to display in trip form
+  modeButtons:
+    - iconName: bus
+      key: transit
+      # List of modes to add to the query when this button is enabled
+      modes:
+        - mode: TRANSIT
+    - iconName: bicycle
+      key: bike
+      modes:
+        # Modes can contain a qualifier
+        # See OTP documentation for details
+        - mode: BICYCLE
+        - mode: BICYCLE
+          qualifier: RENT
+    - iconName: car
+      key: car
+      modes:
+        - mode: CAR
+  # Allows initial state to be configured.
+  # Which buttons enabled on load + overriding setting defaults
+  initialState:
+    enabledModeButtons: # Mode button keys enabled by default
+      - transit
+      - bike
+  # Add additional mode settings to show up in mode selector hover panel
+  modeSettingDefinitions:
+    # Corresponding mode; if this mode is found in the button's mode list,
+    # this setting will show up in the hover panel for that button.
+    - applicableMode: TRANSIT
+      default: false # Initial state value
+      # One of the predefined query parameter names.
+      # See OTP-UI ModeSelector component for a list of supported parameter names.
+      key: wheelchair
+      iconName: wheelchair
+      type: CHECKBOX # Possible options: CHECKBOX, SUBMODE, SLIDER, DROPDOWN
   transitModes:
     - mode: BUS
       label: Bus
@@ -227,14 +248,10 @@ modes:
     - mode: GONDOLA
       label: Aerial Tram
 
+  # Potentially deprecated
   accessModes:
     - mode: BICYCLE
       label: Transit + Bike
-
-  bicycleModes:
-    - mode: BICYCLE
-      label: Own Bike
-      iconWidth: 18
 
 # # The following modules require the datastoreUrl and trinetReDirect properties
 # # to be set. Note: Most of these components are currently only configured for
