@@ -29,11 +29,7 @@ import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 
 import { DepartureTimesList } from './departure-times-list'
-import {
-  getFirstTransitLegStop,
-  getFlexAttirbutes,
-  removeInsignifigantWalkLegs
-} from './attribute-utils'
+import { getFirstTransitLegStop, getFlexAttirbutes } from './attribute-utils'
 import MetroItineraryRoutes from './metro-itinerary-routes'
 import RouteBlock from './route-block'
 
@@ -308,7 +304,6 @@ class MetroItinerary extends NarrativeItinerary {
     )
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
-    const routeLegs = itinerary.legs.filter(removeInsignifigantWalkLegs)
 
     const handleClick = () => {
       setActiveItinerary(itinerary)
@@ -445,7 +440,7 @@ class MetroItinerary extends NarrativeItinerary {
                 <SecondaryInfo as="span">
                   <ItineraryDescription itinerary={itinerary} />
                 </SecondaryInfo>
-                {this._renderMainRouteBlock(routeLegs)}
+                {this._renderMainRouteBlock(itinerary.legs)}
               </ItineraryGridSmall>
             )}
           </ItineraryWrapper>
