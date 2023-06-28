@@ -102,6 +102,7 @@ const DateTimeOptions = ({
   )
   const [date, setDate] = useState<string | undefined>(initialDate)
   const [time, setTime] = useState<string | undefined>(initialTime)
+  const [typedTime, setTypedTime] = useState<string | undefined>(initialTime)
 
   const intl = useIntl()
 
@@ -134,7 +135,16 @@ const DateTimeOptions = ({
   // Update state when external state is updated
   useEffect(() => {
     if (initialDate !== date) setDate(initialDate)
-    if (initialTime !== time) setTime(initialTime)
+    if (initialTime !== time) {
+      setTime(initialTime)
+      setTypedTime(
+        safeFormat(dateTime, timeFormat, {
+          timeZone: homeTimezone
+        }) ||
+          // TODO: there doesn't seem to be an intl object present?
+          'Invalid Time'
+      )
+    }
   }, [initialTime, initialDate])
 
   useEffect(() => {
@@ -201,13 +211,9 @@ const DateTimeOptions = ({
           className="datetime-slim"
           // TODO: Why does this no longer work when set as `value`? Is this a
           // date-fns issue?
-          defaultValue={
-            time && time?.length > 1
-              ? time || format(dateTime, 'H:mm', { timeZone: homeTimezone })
-              : time
-          }
           onChange={(e) => {
             setTime(e.target.value)
+            setTypedTime(e.target.value)
             unsetNow()
           }}
           onFocus={(e) => e.target.select()}
@@ -217,8 +223,9 @@ const DateTimeOptions = ({
             lineHeight: '.8em',
             marginLeft: '3px',
             padding: '0px',
-            width: '50px'
+            width: '65px'
           }}
+          value={typedTime}
         />
       </OverlayTrigger>
       <input
