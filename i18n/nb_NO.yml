@@ -100,6 +100,7 @@ components:
   MapLayers:
     streets: Gater
   NewAccountWizard:
+    createNewAccount: Opprett ny konto
     places: Legg til dine steder
     terms: Opprett ny konto
     verify: Bekreft din e-postadresse

@@ -166,10 +166,7 @@ components:
   AdvancedOptions:
     bannedRoutes: Select banned routes…
     bikeTolerance: Bike Tolerance
-    maxBike: Max bike {unitsString}
-    maxWalk: Max walk {unitsString}
     preferredRoutes: Select preferred routes...
-    walkReluctance: Walk Reluctance
     walkTolerance: Walk Tolerance
   AfterSignInScreen:
     mainTitle: Redirecting...
@@ -229,10 +226,8 @@ components:
   BatchSettings:
     dateTimeSettingsLabel: Date/Time Settings
     destination: destination
-    modeSelector: Mode Selector
     origin: origin
     planTripTooltip: Plan trip
-    settings: Trip Settings
     validationMessage: "Please define the following fields to plan a trip: {issues}"
   BeforeSignInScreen:
     mainTitle: Signing you in
@@ -315,7 +310,6 @@ components:
     title: Imagery of the street
   MetroUI:
     arriveAt: You arrive
-    arriveAtTime: Arrive at {time}
     fromStop: from {stop}
     itineraryDescription: "{time} itinerary using {routes}"
     leaveAt: You leave
@@ -326,8 +320,6 @@ components:
     timeWalking: "{time} walking"
   MobileOptions:
     header: Set Search Options
-  ModeDropdown:
-    exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
     howToFindResults: To view results, see the Itineraries Found heading below.
@@ -353,10 +345,10 @@ components:
     signIn: Log in
     signOut: Log out
   NewAccountWizard:
+    createNewAccount: Create a new account
     finish: Account setup complete!
     notifications: Notification preferences
     places: Add your locations
-    terms: Create a new account
     verify: Verify your email address
   NotFound:
     description: The content you requested is not available.
@@ -523,6 +515,8 @@ components:
       unused trips from your saved trips, and try again.
     tripNameAlreadyUsed: Another saved trip already uses this name. Please choose a different name.
     tripNameRequired: Please enter a trip name.
+  SequentialPaneDisplay:
+    stepNumber: Step {step} of {total}
   SessionTimeout:
     body: >-
       Your session will expire within a minute. Press 'Continue Session' to keep

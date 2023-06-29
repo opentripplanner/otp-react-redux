@@ -28,6 +28,10 @@ const StyledStatusLabel = styled(RealtimeStatusLabel)`
  * and, for transit legs, displays any delays or earliness where applicable.
  */
 function RealtimeTimeColumn({ isDestination, leg }: Props): ReactElement {
+  if (typeof leg.startTime === 'string') {
+    return <></>
+  }
+
   const timeMillis = isDestination ? leg.endTime : leg.startTime
   const isTransitLeg = isTransit(leg.mode)
   const isRealtimeTransitLeg = isTransitLeg && leg.realTime

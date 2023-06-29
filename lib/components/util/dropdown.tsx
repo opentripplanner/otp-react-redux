@@ -1,4 +1,3 @@
-import { NavbarButton } from '../app/nav-item'
 import React, {
   HTMLAttributes,
   KeyboardEvent,
@@ -8,6 +7,7 @@ import React, {
   useState
 } from 'react'
 import styled from 'styled-components'
+import { NavbarButton } from '../app/nav-item'
 
 interface Props extends HTMLAttributes<HTMLElement> {
   id: string
@@ -18,13 +18,8 @@ interface Props extends HTMLAttributes<HTMLElement> {
   pullRight?: boolean
 }
 
-const DropdownButton = styled(NavbarButton)`
-  color: inherit;
+const DropdownButton = styled(NavbarButton)``
 
-  span.caret {
-    color: rgba(0, 0, 0, 0.75);
-  }
-`
 const DropdownMenu = styled.ul`
   background-clip: padding-box;
   background-color: #fff;
@@ -205,6 +200,7 @@ export const SortResultsDropdown = styled(Dropdown)`
       border-radius: 5px;
       padding: 3px 7px;
       background: #F8FAFB;
+      color: inherit;
 
       span.caret {
         color: inherit;

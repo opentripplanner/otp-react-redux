@@ -13,14 +13,15 @@ export const NavbarButton = styled.button`
   border: none;
   color: rgba(0, 0, 0, 0.75);
   display: block;
+  float: right;
   line-height: 20px;
   padding: 15px;
   transition: all 0.1s ease-in-out;
 
   @media (max-width: 768px) {
     padding: 10px;
-    float: right;
   }
+
   &:hover,
   &[aria-expanded='true'] {
     background: rgba(0, 0, 0, 0.05);
