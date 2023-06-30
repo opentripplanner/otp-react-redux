@@ -5,7 +5,7 @@ import { IntlShape, useIntl } from 'react-intl'
 import { isMatch, parse } from 'date-fns'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import coreUtils from '@opentripplanner/core-utils'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const { getCurrentDate, OTP_API_DATE_FORMAT, OTP_API_TIME_FORMAT } =
   coreUtils.time
@@ -104,6 +104,8 @@ const DateTimeOptions = ({
   const [time, setTime] = useState<string | undefined>(initialTime)
   const [typedTime, setTypedTime] = useState<string | undefined>(initialTime)
 
+  const timeRef = useRef(null)
+
   const intl = useIntl()
 
   /**
@@ -137,13 +139,17 @@ const DateTimeOptions = ({
     if (initialDate !== date) setDate(initialDate)
     if (initialTime !== time) {
       setTime(initialTime)
-      setTypedTime(
-        safeFormat(dateTime, timeFormat, {
-          timeZone: homeTimezone
-        }) ||
-          // TODO: there doesn't seem to be an intl object present?
-          'Invalid Time'
-      )
+
+      // Don't update if still typing
+      if (timeRef.current !== document.activeElement) {
+        setTypedTime(
+          safeFormat(dateTime, timeFormat, {
+            timeZone: homeTimezone
+          }) ||
+            // TODO: there doesn't seem to be an intl object present?
+            'Invalid Time'
+        )
+      }
     }
   }, [initialTime, initialDate])
 
@@ -152,6 +158,10 @@ const DateTimeOptions = ({
       setDepartArrive(initialDepartArrive)
     }
   }, [initialDepartArrive])
+
+  useEffect(() => {
+    if (departArrive === 'NOW') setTypedTime('')
+  }, [departArrive])
 
   // Handler for setting the query parameters
   useEffect(() => {
@@ -218,6 +228,7 @@ const DateTimeOptions = ({
           }}
           onFocus={(e) => e.target.select()}
           onKeyDown={onKeyDown}
+          ref={timeRef}
           style={{
             fontSize: 'inherit',
             lineHeight: '.8em',
