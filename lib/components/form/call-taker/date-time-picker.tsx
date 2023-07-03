@@ -139,19 +139,21 @@ const DateTimeOptions = ({
     if (initialDate !== date) setDate(initialDate)
     if (initialTime !== time) {
       setTime(initialTime)
-
-      // Don't update if still typing
-      if (timeRef.current !== document.activeElement) {
-        setTypedTime(
-          safeFormat(dateTime, timeFormat, {
-            timeZone: homeTimezone
-          }) ||
-            // TODO: there doesn't seem to be an intl object present?
-            'Invalid Time'
-        )
-      }
     }
   }, [initialTime, initialDate])
+
+  useEffect(() => {
+    // Don't update if still typing
+    if (timeRef.current !== document.activeElement) {
+      setTypedTime(
+        safeFormat(dateTime, timeFormat, {
+          timeZone: homeTimezone
+        }) ||
+          // TODO: there doesn't seem to be an intl object present?
+          'Invalid Time'
+      )
+    }
+  }, [time])
 
   useEffect(() => {
     if (initialDepartArrive && departArrive !== initialDepartArrive) {
