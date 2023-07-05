@@ -20,6 +20,9 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 const DropdownButton = styled(NavbarButton)``
 
+// Dropdown name is wrapped in a span to handle cases of text-overflow
+const NameWrapper = styled.span``
+
 const DropdownMenu = styled.ul`
   background-clip: padding-box;
   background-color: #fff;
@@ -34,6 +37,7 @@ const DropdownMenu = styled.ul`
   position: absolute;
   right: 0;
   top: 100%;
+  width: 100%;
   z-index: 1000;
 
   hr {
@@ -169,7 +173,7 @@ export const Dropdown = ({
         tabIndex={0}
         title={label}
       >
-        {name}
+        <NameWrapper>{name}</NameWrapper>
         <span className="caret" role="presentation" />
       </DropdownButton>
       {open && (
@@ -190,11 +194,6 @@ export const Dropdown = ({
 
 export const SortResultsDropdown = styled(Dropdown)`
     position: relative;
-
-    // Keeps dropdown inline with itinerary buttons when scrollbar is visible
-    @media (min-width: 769px) {
-      margin-right: 10px;
-    }
 
     ${DropdownButton} {
       border-radius: 5px;
