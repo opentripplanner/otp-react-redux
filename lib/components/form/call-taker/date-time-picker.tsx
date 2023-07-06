@@ -221,8 +221,6 @@ const DateTimeOptions = ({
       >
         <input
           className="datetime-slim"
-          // TODO: Why does this no longer work when set as `value`? Is this a
-          // date-fns issue?
           onChange={(e) => {
             setTime(e.target.value)
             setTypedTime(e.target.value)
