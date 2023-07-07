@@ -165,11 +165,10 @@ if (OTP_RR_PERCY_MOBILE) {
     await page.click('#open-route-button-Green')
 
     await page.waitForSelector('#headsign-selector')
-    const secondPatternOption = await page.$$eval(
-      'option',
-      (options) => options.find((o) => o.innerText.includes('Vine City'))?.value
+    const secondPatternOption = await page.$x(
+      "//button[contains(., 'Vine City')]"
     )
-    await page.select('select#headsign-selector', secondPatternOption)
+    await secondPatternOption.click()
 
     await page.waitForSelector('#headsign-selector-label')
     await page.waitForTimeout(1000)
@@ -397,11 +396,9 @@ test('OTP-RR', async () => {
 
   // View multiple patterns
   // Click second option
-  const secondPatternOption = await page.$$eval(
-    'option',
-    (options) => options.find((o) => o.innerText.includes('Moores'))?.value
-  )
-  await page.select('select#headsign-selector', secondPatternOption)
+
+  const secondPatternOption = await page.$x("//button[contains(., 'Moores')]")
+  await secondPatternOption.click()
 
   await page.waitForSelector('#headsign-selector-label')
   await page.waitForTimeout(1000)
