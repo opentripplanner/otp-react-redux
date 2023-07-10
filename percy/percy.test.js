@@ -164,20 +164,27 @@ if (OTP_RR_PERCY_MOBILE) {
     // click the little pattern arrow
     await page.click('#open-route-button-Green')
 
-    await page.waitForSelector('#headsign-selector')
-    const secondPatternOption = await page.$x(
-      "//button[contains(., 'Vine City')]"
-    )
-    await secondPatternOption.click()
-
     await page.waitForSelector('#headsign-selector-label')
+
+    await page.waitForTimeout(500)
+
+    await page.click('#headsign-selector-label')
+
+    await page.waitForTimeout(500)
+
+    await page.keyboard.press('Tab')
+    await page.keyboard.press('Tab')
+    await page.keyboard.press('Tab')
+    await page.keyboard.press('Tab')
+    await page.keyboard.press('Enter')
+
     await page.waitForTimeout(1000)
 
     await percySnapshotWithWait(page, 'Mobile Route Viewer Showing Green Line')
 
     // Open stop viewer
     const [patternStopButton] = await page.$x(
-      "//button[contains(., 'Ashby Station')]"
+      "//button[contains(@name, 'Ashby Station')]"
     )
     await patternStopButton.click()
     await page.waitForSelector('.stop-viewer')
@@ -390,36 +397,32 @@ test('OTP-RR', async () => {
   // click the little pattern arrow
   await page.click('#open-route-button-1')
 
-  await page.waitForSelector('#headsign-selector')
-
+  await page.waitForSelector('#headsign-selector-label')
   await percySnapshotWithWait(page, 'Route Viewer Showing Route 1')
 
   // View multiple patterns
   // Click second option
 
-  const secondPatternOption = await page.$x("//button[contains(., 'Moores')]")
-  await secondPatternOption.click()
+  await page.click('#headsign-selector-label')
 
-  await page.waitForSelector('#headsign-selector-label')
-  await page.waitForTimeout(1000)
+  await page.waitForTimeout(500)
 
   // Click first option
-  const firstPatternOption = await page.$$eval(
-    'option',
-    (options) => options.find((o) => o.innerText.includes('West'))?.value
-  )
-  await page.select('select#headsign-selector', firstPatternOption)
+
+  await page.keyboard.press('Tab')
+  await page.keyboard.press('Enter')
+
   await page.waitForTimeout(1000)
 
   await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 1')
 
   // Stop viewer from pattern viewer
   try {
-    await page.$x("//a[contains(., 'West')]")
+    await page.$x("//button[contains(@name, 'West')]")
   } catch {
     await page.reload({ waitUntil: 'networkidle0' })
   }
-  const [patternStopButton] = await page.$x("//button[contains(., 'West')]")
+  const [patternStopButton] = await page.$x("//button[contains(@name, 'West')]")
   await patternStopButton.click()
   await page.waitForSelector('.stop-viewer')
 
