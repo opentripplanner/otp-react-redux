@@ -62,6 +62,21 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
 
   const title = intl.formatMessage({ id: `config.popups.${id}` })
 
+  /* HACK: Since Bootstrap 3.x does not support adding id or name to navItem, 
+  we have to grab a list of all navItems by className and find the correct button.
+  Since the sliding pane "Leave Feedback" button will always be in the DOM after
+  the navbar button, reverse + find should always find the correct button to return to. */
+
+  const navItemList = Array.from(
+    document.getElementsByClassName('navItem')
+  ).reverse() as HTMLElement[]
+  const focusElement = navItemList.find((el) => el.innerText === title)
+
+  const closeModal = () => {
+    hideModal()
+    focusElement?.focus()
+  }
+
   return (
     <Modal
       aria-label={title}
@@ -74,7 +89,7 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
       <CloseModalButton
         aria-label={closeText}
         className="clear-button-formatting close-button"
-        onClick={hideModal}
+        onClick={closeModal}
         title={closeText}
       >
         <StyledIconWrapper>
