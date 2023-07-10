@@ -81,8 +81,8 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
     <Modal
       aria-label={title}
       dialogClassName="fullscreen-modal"
-      onEscapeKeyDown={hideModal}
-      onHide={hideModal}
+      onEscapeKeyDown={closeModal}
+      onHide={closeModal}
       role="presentation"
       show={shown}
     >
