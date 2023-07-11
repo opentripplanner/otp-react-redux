@@ -20,9 +20,6 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 const DropdownButton = styled(NavbarButton)``
 
-// Dropdown name is wrapped in a span to handle cases of text-overflow
-const NameWrapper = styled.span``
-
 const DropdownMenu = styled.ul`
   background-clip: padding-box;
   background-color: #fff;
@@ -173,7 +170,7 @@ export const Dropdown = ({
         tabIndex={0}
         title={label}
       >
-        <NameWrapper>{name}</NameWrapper>
+        <span>{name}</span>
         <span className="caret" role="presentation" />
       </DropdownButton>
       {open && (
