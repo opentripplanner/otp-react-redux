@@ -28,13 +28,10 @@ import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 
-
-import { DepartureTimesList } from './departure-times-list'
 import { getFirstTransitLegStop, getFlexAttirbutes } from './attribute-utils'
 import DepartureTimesList, {
   SetActiveItineraryHandler
 } from './departure-times-list'
-
 import MetroItineraryRoutes from './metro-itinerary-routes'
 import RouteBlock from './route-block'
 
