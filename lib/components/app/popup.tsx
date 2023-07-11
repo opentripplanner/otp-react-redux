@@ -1,7 +1,7 @@
 import { Modal } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import { StyledIconWrapper } from '../util/styledIcon'
 import { Times } from '@styled-icons/fa-solid'
@@ -58,8 +58,6 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
     }
   }, [compiledUrl, hideModal, useIframe, shown])
 
-  if (!compiledUrl || !useIframe) return null
-
   const title = intl.formatMessage({ id: `config.popups.${id}` })
 
   /* HACK: Since Bootstrap 3.x does not support adding id or name to navItem, 
@@ -72,10 +70,12 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
   ).reverse() as HTMLElement[]
   const focusElement = navItemList.find((el) => el.innerText === title)
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     hideModal()
     focusElement?.focus()
-  }
+  }, [focusElement, hideModal])
+
+  if (!compiledUrl || !useIframe) return null
 
   return (
     <Modal
