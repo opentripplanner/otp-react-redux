@@ -28,8 +28,13 @@ import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 
+
 import { DepartureTimesList } from './departure-times-list'
 import { getFirstTransitLegStop, getFlexAttirbutes } from './attribute-utils'
+import DepartureTimesList, {
+  SetActiveItineraryHandler
+} from './departure-times-list'
+
 import MetroItineraryRoutes from './metro-itinerary-routes'
 import RouteBlock from './route-block'
 
@@ -187,7 +192,7 @@ type Props = {
   intl: IntlShape
   itinerary: Itinerary
   mini?: boolean
-  setActiveItinerary: () => void
+  setActiveItinerary: SetActiveItineraryHandler
   setActiveLeg: (leg: Leg) => void
   setItineraryView: (view: string) => void
   showRealtimeAnnotation: () => void
@@ -423,6 +428,7 @@ class MetroItinerary extends NarrativeItinerary {
                     <FormattedMessage id="components.MetroUI.leaveAt" />
                   )}{' '}
                   <DepartureTimesList
+                    expanded={expanded}
                     itinerary={itinerary}
                     setActiveItinerary={setActiveItinerary}
                     showArrivals={arrivesAt}
