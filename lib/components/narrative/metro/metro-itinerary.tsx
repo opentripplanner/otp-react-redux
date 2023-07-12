@@ -11,7 +11,6 @@ import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
-import * as narrativeActions from '../../../actions/narrative'
 import * as uiActions from '../../../actions/ui'
 import { ComponentContext } from '../../../util/contexts'
 import { FlexIndicator } from '../default/flex-indicator'
@@ -22,22 +21,19 @@ import {
 import { getActiveSearch, getFare } from '../../../util/state'
 import { IconWithText } from '../../util/styledIcon'
 import { ItineraryDescription } from '../default/itinerary-description'
+import { ItineraryView } from '../../../util/ui'
 import { localizeGradationMap } from '../utils'
 import FormattedDuration from '../../util/formatted-duration'
 import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 
-import { DepartureTimesList } from './departure-times-list'
-import {
-  getFirstTransitLegStop,
-  getFlexAttirbutes,
-  removeInsignifigantWalkLegs
-} from './attribute-utils'
+import { getFirstTransitLegStop, getFlexAttirbutes } from './attribute-utils'
+import DepartureTimesList, {
+  SetActiveItineraryHandler
+} from './departure-times-list'
 import MetroItineraryRoutes from './metro-itinerary-routes'
 import RouteBlock from './route-block'
-
-const { ItineraryView } = uiActions
 
 // Styled components
 const ItineraryWrapper = styled.div.attrs((props) => {
@@ -193,7 +189,7 @@ type Props = {
   intl: IntlShape
   itinerary: Itinerary
   mini?: boolean
-  setActiveItinerary: () => void
+  setActiveItinerary: SetActiveItineraryHandler
   setActiveLeg: (leg: Leg) => void
   setItineraryView: (view: string) => void
   showRealtimeAnnotation: () => void
@@ -235,7 +231,8 @@ class MetroItinerary extends NarrativeItinerary {
       <RouteBlock
         aria-hidden
         footer={
-          showLegDurations && <FormattedDuration duration={mainLeg.duration} />
+          showLegDurations &&
+          mainLeg?.duration && <FormattedDuration duration={mainLeg.duration} />
         }
         hideLongName
         leg={mainLeg}
@@ -250,12 +247,10 @@ class MetroItinerary extends NarrativeItinerary {
     const {
       accessibilityScoreGradationMap,
       active,
-      activeItineraryTimeIndex,
       arrivesAt,
       co2Config,
       currency,
       defaultFareKey,
-      enableDot,
       expanded,
       intl,
       itinerary,
@@ -264,7 +259,6 @@ class MetroItinerary extends NarrativeItinerary {
       pending,
       setActiveItinerary,
       setActiveLeg,
-      setItineraryTimeIndex,
       setItineraryView,
       showLegDurations,
       showRealtimeAnnotation
@@ -313,7 +307,6 @@ class MetroItinerary extends NarrativeItinerary {
     )
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
-    const routeLegs = itinerary.legs.filter(removeInsignifigantWalkLegs)
 
     const handleClick = () => {
       setActiveItinerary(itinerary)
@@ -336,13 +329,13 @@ class MetroItinerary extends NarrativeItinerary {
       >
         <div
           className="header"
-          onClick={handleClick}
+          onClick={expanded ? undefined : handleClick}
           // TODO: once this can be tabbed to, this behavior needs to be improved. Maybe it focuses the
           // first time?
           // eslint-disable-next-line @typescript-eslint/no-empty-function
           onKeyDown={() => {}}
-          onMouseEnter={this._onMouseEnter}
-          onMouseLeave={this._onMouseLeave}
+          onMouseEnter={expanded ? undefined : this._onMouseEnter}
+          onMouseLeave={expanded ? undefined : this._onMouseLeave}
           // TODO: use _onHeaderClick for tap only -- this will require disabling
           // this onClick handler after a touchStart
           // TODO: CORRECT THIS ARIA ROLE
@@ -432,9 +425,9 @@ class MetroItinerary extends NarrativeItinerary {
                     <FormattedMessage id="components.MetroUI.leaveAt" />
                   )}{' '}
                   <DepartureTimesList
-                    activeItineraryTimeIndex={activeItineraryTimeIndex}
+                    expanded={expanded}
                     itinerary={itinerary}
-                    setItineraryTimeIndex={setItineraryTimeIndex}
+                    setActiveItinerary={setActiveItinerary}
                     showArrivals={arrivesAt}
                   />
                 </DepartureTimes>
@@ -451,7 +444,7 @@ class MetroItinerary extends NarrativeItinerary {
                 <SecondaryInfo as="span">
                   <ItineraryDescription itinerary={itinerary} />
                 </SecondaryInfo>
-                {this._renderMainRouteBlock(routeLegs)}
+                {this._renderMainRouteBlock(itinerary.legs)}
               </ItineraryGridSmall>
             )}
           </ItineraryWrapper>
@@ -476,15 +469,11 @@ class MetroItinerary extends NarrativeItinerary {
 // TODO: state type
 const mapStateToProps = (state: any, ownProps: Props) => {
   const activeSearch = getActiveSearch(state)
-  const activeItineraryTimeIndex =
-    // @ts-expect-error state is not yet typed
-    activeSearch && activeSearch.activeItineraryTimeIndex
 
   return {
     accessibilityScoreGradationMap:
       state.otp.config.accessibilityScore?.gradationMap,
-    activeItineraryTimeIndex,
-    arrivesAt: state.otp.currentQuery.departArrive === 'ARRIVE',
+    arrivesAt: state.otp.filter.sort.type === 'ARRIVALTIME',
     co2Config: state.otp.config.co2,
     configCosts: state.otp.config.itinerary?.costs,
     // The configured (ambient) currency is needed for rendering the cost
@@ -500,13 +489,8 @@ const mapStateToProps = (state: any, ownProps: Props) => {
 }
 
 // TS TODO: correct redux types
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    setItineraryTimeIndex: (payload: number) =>
-      dispatch(narrativeActions.setActiveItineraryTime(payload)),
-    setItineraryView: (payload: any) =>
-      dispatch(uiActions.setItineraryView(payload))
-  }
+const mapDispatchToProps = {
+  setItineraryView: uiActions.setItineraryView
 }
 
 export default injectIntl(

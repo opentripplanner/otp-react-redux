@@ -1,146 +1,147 @@
+_name: Norsk bokmål
 actions:
   callTaker:
-    callSaveError: 'Kunne ikke lagre anrop: {err}'
+    callSaveError: "Kunne ikke lagre anrop: {err}"
   user:
-    smsInvalidCode: Koden du har skrevet inn er ugyldig. Prøv igjen.
     confirmDeletePlace: Fjern dette stedet?
+    smsInvalidCode: Koden du har skrevet inn er ugyldig. Prøv igjen.
+common:
+  daysOfWeek:
+    monday: Mandag
+    saturday: Lørdag
+    sunday: Søndag
+    thursday: Torsdag
+    tuesday: Tirsdag
+    wednesday: Onsdag
+  daysOfWeekCompact:
+    friday: Fre.
+    monday: Man.
+    saturday: Lør.
+    sunday: Søn.
+    thursday: Tor.
+    tuesday: Tir.
+    wednesday: Ons.
+  daysOfWeekPlural:
+    friday: Fredager
+    monday: Mandager
+    saturday: Lørdager
+    sunday: Søndager
+    thursday: Torsdager
+    tuesday: Tirsdager
+    wednesday: Onsdager
+  forms:
+    back: Tilbake
+    cancel: Avbryt
+    close: Lukk
+    defaultValue: "{value} (forvalg)"
+    delete: Slett
+    edit: Rediger
+    finish: Fullfør
+    next: Neste
+    "no": Nei
+    print: Skriv ut
+    save: Lagre
+    startOver: Start om igjen
+    submitting: Sender inn …
+    "yes": Ja
+  notifications:
+    sms: tekstmelding
+  places:
+    custom: egendefinert
+    home: hjem
+    work: arbeid
 components:
-  RouteViewer:
-    shortTitle: Vis ruter
-    title: Ruteviser
-    details: ' '
-    findARoute: Finn en rute
-  SavedTripEditor:
-    tripNotifications: Turmerknader
-    saveNewTrip: Lagre ny tur
-    editSavedTrip: Rediger lagret tur
-    tripInformation: Turinfo
-  SavedTripList:
-    noSavedTrips: Du har ingen lagrede turer
-    pause: Pause
-    resume: Fortsett
-    myTrips: Mine turer
-  StackedPaneDisplay:
-    savePreferences: Lagre innstillinger
-  BatchRoutingPanel:
-    shortTitle: Planlegg tur
-  CallTakerPanel:
-    advancedOptions: Avanserte innstillinger
-    groupSize: 'Gruppestørrelse:'
-  ExistingAccountDisplay:
-    places: Favorittsteder
-    mainTitle: Mine innstillinger
-    terms: Vilkår
-    notifications: Merknader
-    a11y: Tilgjengelighet
-  BatchSettings:
-    settings: Turinnstillinger
-    planTripTooltip: Planlegg tur
-    destination: mål
-  FavoritePlaceList:
-    editThisPlace: Rediger dette stedet
-    addAnotherPlace: Legg til nytt sted
-    setAddressForPlaceType: Sett din {placeType}-adresse
+  AddPlaceButton:
+    addPlace: Legg til sted
+  AfterSignInScreen:
+    mainTitle: Videresender …
   AppMenu:
     callHistory: Anropshistorikk
     closeMenu: Lukk menyen
   BatchResultsScreen:
     showResults: Vis resultater
-  Place:
-    deleteThisPlace: Slett dette stedet
-  ErrorMessage:
-    warning: Advarsel
-    header: Kunne ikke planlegge tur
-  NewAccountWizard:
-    terms: Opprett ny konto
-    verify: Bekreft din e-postadresse
-    places: Legg til dine steder
+  BatchRoutingPanel:
+    shortTitle: Planlegg tur
   BatchSearchScreen:
     header: Planlegg turen din
+  BatchSettings:
+    destination: mål
+    planTripTooltip: Planlegg tur
+    settings: Turinnstillinger
+  CallTakerPanel:
+    advancedOptions: Avanserte innstillinger
+    groupSize: "Gruppestørrelse:"
   DateTimeOptions:
     now: Nå
-  MapLayers:
-    streets: Gater
+  DeleteUser:
+    deleteMyAccount: Slett kontoen min
+  EnhancedStopMarker:
+    stopID: "Stopp-ID:"
+    stopViewer: Stopp-viser
+  ErrorMessage:
+    header: Kunne ikke planlegge tur
+    warning: Advarsel
+  ExistingAccountDisplay:
+    a11y: Tilgjengelighet
+    mainTitle: Mine innstillinger
+    notifications: Merknader
+    places: Favorittsteder
+    terms: Vilkår
+  FavoritePlaceList:
+    addAnotherPlace: Legg til nytt sted
+    editThisPlace: Rediger dette stedet
+    setAddressForPlaceType: Sett din {placeType}-adresse
   FavoritePlaceScreen:
     addNewPlace: Legg til nytt sted
     editPlace: Rediger {placeName}
     editPlaceGeneric: Rediger sted
   LocationSearch:
     setDestination: Sett mål
+  MapLayers:
+    streets: Gater
+  NewAccountWizard:
+    createNewAccount: Opprett ny konto
+    places: Legg til dine steder
+    terms: Opprett ny konto
+    verify: Bekreft din e-postadresse
   PhoneNumberEditor:
     invalidPhone: Skriv inn et gyldig telefonnummer.
-    verified: Bekreftet
-    requestNewCode: Forespør ny kode
     placeholder: Skriv inn dit telefonnummer
+    requestNewCode: Forespør ny kode
     sendVerificationText: Send bekreftelsestekst
     verificationCode: Bekreftelseskode
+    verified: Bekreftet
     verify: Bekreft
+  Place:
+    deleteThisPlace: Slett dette stedet
   PlanFirstLastButtons:
-    last: Sist
     first: Først
+    last: Sist
     next: Neste
     previous: Forrige
   PlanTripButton:
     planTrip: Planlegg tur
-  SaveTripButton:
-    saveTripText: Lagre tur
-    cantSaveText: Kan ikke lagre
-  SessionTimeout:
-    keepSession: Fortsett økt
   RouteDetails:
     moreDetails: Flere detaljer
-  AfterSignInScreen:
-    mainTitle: Videresender …
-  AddPlaceButton:
-    addPlace: Legg til sted
-  DeleteUser:
-    deleteMyAccount: Slett kontoen min
-  EnhancedStopMarker:
-    stopID: 'Stopp-ID:'
-    stopViewer: Stopp-viser
-_name: Norsk bokmål
-common:
-  places:
-    home: hjem
-    work: arbeid
-    custom: egendefinert
-  daysOfWeekPlural:
-    monday: Mandager
-    tuesday: Tirsdager
-    wednesday: Onsdager
-    saturday: Lørdager
-    sunday: Søndager
-    friday: Fredager
-    thursday: Torsdager
-  forms:
-    "no": Nei
-    finish: Fullfør
-    back: Tilbake
-    startOver: Start om igjen
-    next: Neste
-    cancel: Avbryt
-    print: Skriv ut
-    save: Lagre
-    submitting: Sender inn …
-    "yes": Ja
-    defaultValue: '{value} (forvalg)'
-    delete: Slett
-    edit: Rediger
-    close: Lukk
-  daysOfWeekCompact:
-    friday: Fre.
-    saturday: Lør.
-    thursday: Tor.
-    monday: Man.
-    wednesday: Ons.
-    sunday: Søn.
-    tuesday: Tir.
-  notifications:
-    sms: tekstmelding
-  daysOfWeek:
-    thursday: Torsdag
-    monday: Mandag
-    wednesday: Onsdag
-    sunday: Søndag
-    saturday: Lørdag
-    tuesday: Tirsdag
+  RouteViewer:
+    details: " "
+    findARoute: Finn en rute
+    shortTitle: Vis ruter
+    title: Ruteviser
+  SaveTripButton:
+    cantSaveText: Kan ikke lagre
+    saveTripText: Lagre tur
+  SavedTripEditor:
+    editSavedTrip: Rediger lagret tur
+    saveNewTrip: Lagre ny tur
+    tripInformation: Turinfo
+    tripNotifications: Turmerknader
+  SavedTripList:
+    myTrips: Mine turer
+    noSavedTrips: Du har ingen lagrede turer
+    pause: Pause
+    resume: Fortsett
+  SessionTimeout:
+    keepSession: Fortsett økt
+  StackedPaneDisplay:
+    savePreferences: Lagre innstillinger

@@ -292,7 +292,7 @@ components:
     stops: 公共交通站点
     streets: 街道
   MetroUI:
-    arriveAtTime: "{time} 到达"
+    arriveAt: 到达
     fromStop: 从 {stop}
     itineraryDescription: "{time} 行程使用 {routes}"
     leaveAt: 您已离开
@@ -305,7 +305,6 @@ components:
     exclusiveMode: 仅 {mode}
   NarrativeItinerariesHeader:
     changeSortDir: 改变排序方向
-    itinerariesAndIssues: "{itinerariesFound} 和 {numIssues}"
     itinerariesFound: 发现{itineraryNum}条行程
     numIssues: |-
       {issueNum, plural,
@@ -319,7 +318,6 @@ components:
     selectDepartureTime: 出发时间
     selectDuration: 旅行时长
     selectWalkTime: 步行时间
-    sortBy: 排序方式
     viewAll: 查看所有选项
   NavLoginButton:
     help: 帮助
@@ -327,10 +325,10 @@ components:
     signIn: 登录
     signOut: 签出
   NewAccountWizard:
+    createNewAccount: 创建一个新账户
     finish: 账户设置完成!
     notifications: 通知偏好
     places: 添加您的位置
-    terms: 创建一个新账户
     verify: 验证您的电子邮件地址
   NotFound:
     description: 您要求的内容不存在.

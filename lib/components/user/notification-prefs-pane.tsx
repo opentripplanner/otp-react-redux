@@ -7,19 +7,13 @@ import { GRAY_ON_WHITE } from '../util/colors'
 
 import { FieldSet } from './styled'
 import { PhoneVerificationSubmitHandler } from './phone-verification-form'
+import { User } from './types'
 import PhoneNumberEditor, {
   PhoneCodeRequestHandler
 } from './phone-number-editor'
 
-interface Fields {
-  email: string
-  isPhoneNumberVerified?: boolean
-  notificationChannel: string
-  phoneNumber?: string
-  pushDeviceName?: string
-}
-
-interface Props extends FormikProps<Fields> {
+interface Props extends FormikProps<User> {
+  loggedInUser: User
   onRequestPhoneVerificationCode: PhoneCodeRequestHandler
   onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
   phoneFormatOptions: {

@@ -292,7 +292,7 @@ components:
     stops: 대중 교통 정류장
     streets: 거리
   MetroUI:
-    arriveAtTime: "{time}에 도착"
+    arriveAtTime: 도착
     fromStop: "{stop}에서부터"
     itineraryDescription: "{routes}을(를) 이용한 {time} 일정"
     leaveAt: 출발
@@ -305,7 +305,6 @@ components:
     exclusiveMode: "{mode} 전용"
   NarrativeItinerariesHeader:
     changeSortDir: 정렬 방향 변경
-    itinerariesAndIssues: "{itinerariesFound} 및 {numIssues}"
     itinerariesFound: "{itineraryNum} 개의 여정을 찾았습니다"
     numIssues: |-
       {issueNum, plural,
@@ -319,7 +318,6 @@ components:
     selectDepartureTime: 출발 시각
     selectDuration: 기간
     selectWalkTime: 도보 시간
-    sortBy: 정렬 기준
     viewAll: 모든 옵션 보기
   NavLoginButton:
     help: 지원
@@ -327,10 +325,10 @@ components:
     signIn: 로그인
     signOut: 로그 아웃
   NewAccountWizard:
+    createNewAccount: 새 계정 생성
     finish: 계정 설정을 완료하셨습니다!
     notifications: 알림 설정
     places: 위치 추가
-    terms: 새 계정 생성
     verify: 이메일 주소 확인
   NotFound:
     description: 요청한 콘텐츠를 사용할 수 없습니다.

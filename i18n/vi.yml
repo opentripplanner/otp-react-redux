@@ -103,6 +103,7 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} calo"
     noItineraryToDisplay: Không có hành trình để hiển thị.
+    noTransitFareProvided: Không có thông tin giá vé
     relativeCo2: |
       {co2} CO₂ {isMore, select, true {nhiều} other {ít} } hơn so với xe hơi
     transfers: "{transfers, plural, =0 {} other {# chuyển}}"
@@ -304,7 +305,7 @@ components:
     stops: Điểm dừng của phương tiện công cộng
     streets: Đường phố
   MetroUI:
-    arriveAtTime: Đến nơi vào {time}
+    arriveAt: Đến nơi
     fromStop: từ {stop}
     itineraryDescription: "{time} hành trình sử dụng {routes}"
     leaveAt: Bạn rời khỏi
@@ -317,7 +318,6 @@ components:
     exclusiveMode: Chỉ {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Thay đổi hướng sắp xếp
-    itinerariesAndIssues: "{itinerariesFound} và {numIssues}"
     itinerariesFound: "{itineraryNum} hành trình được tìm thấy"
     numIssues: "{issueNum} vấn đề"
     searching: Tìm lựa chọn của bạn…
@@ -327,7 +327,6 @@ components:
     selectDepartureTime: Giờ khởi hành
     selectDuration: Thời hạn
     selectWalkTime: Thời gian đi bộ
-    sortBy: Sắp xếp theo
     viewAll: Xem tất cả các tùy chọn
   NavLoginButton:
     help: Giúp đỡ
@@ -335,10 +334,10 @@ components:
     signIn: Đăng nhập
     signOut: Đăng xuất
   NewAccountWizard:
+    createNewAccount: Tạo tài khoản mới
     finish: Hoàn tất việc thiết lập tài khoản!
     notifications: Tùy chọn thông báo
     places: Thêm vị trí của bạn
-    terms: Tạo tài khoản mới
     verify: Xác minh địa chỉ email của bạn
   NotFound:
     description: Nội dung bạn yêu cầu không có sẵn.

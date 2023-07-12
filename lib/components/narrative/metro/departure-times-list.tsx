@@ -1,87 +1,122 @@
-import { FormattedList, FormattedTime, useIntl } from 'react-intl'
+import { FormattedList, useIntl } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
-import React from 'react'
+import React, { MouseEvent, useCallback } from 'react'
 
 import { firstTransitLegIsRealtime } from '../../../util/viewer'
-import { getDepartureLabelText } from '../utils'
 import {
   getFirstLegStartTime,
   getLastLegEndTime
 } from '../../../util/itinerary'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+
+interface ItineraryWithIndex extends Itinerary {
+  index: number
+}
+
+interface StartTime {
+  itinerary: ItineraryWithIndex
+  legs: Leg[]
+  realtime: boolean
+}
+
+export type SetActiveItineraryHandler = (payload: { index: number }) => void
 
 type DepartureTimesProps = {
-  activeItineraryTimeIndex?: number
-  itinerary: Itinerary & {
-    allStartTimes: {
-      legs: Leg[]
-      realtime: boolean
-    }[]
+  expanded?: boolean
+  itinerary: ItineraryWithIndex & {
+    allStartTimes?: StartTime[]
   }
-  setItineraryTimeIndex: (index: number) => void
+  setActiveItinerary: SetActiveItineraryHandler
   showArrivals?: boolean
 }
 
-export const DepartureTimesList = (props: DepartureTimesProps): JSX.Element => {
-  const {
-    activeItineraryTimeIndex,
-    itinerary,
-    setItineraryTimeIndex,
-    showArrivals
-  } = props
+interface TimeButtonProps {
+  active?: boolean
+  displayedTime: number
+  itinerary: ItineraryWithIndex
+  realTime?: boolean
+  setActiveItinerary?: SetActiveItineraryHandler
+}
+
+const TimeButton = ({
+  active,
+  displayedTime,
+  itinerary,
+  realTime,
+  setActiveItinerary
+}: TimeButtonProps) => {
   const intl = useIntl()
-  const isRealTime = firstTransitLegIsRealtime(itinerary)
-  const itineraryButtonLabel = getDepartureLabelText(
-    intl,
-    itinerary.startTime,
-    isRealTime
+  const classNames = []
+  if (realTime) classNames.push('realtime')
+  if (active) classNames.push('active')
+  const timeString = intl.formatTime(displayedTime)
+  const realtimeStatus = realTime
+    ? intl.formatMessage({ id: 'components.StopTimeCell.realtime' })
+    : intl.formatMessage({ id: 'components.StopTimeCell.scheduled' })
+  const label = `${timeString} (${realtimeStatus})`
+
+  const handleClick = useCallback(
+    (e: MouseEvent) => {
+      setActiveItinerary && setActiveItinerary(itinerary)
+      // Don't let MetroItinerary.handleClick execute, it will set another itinerary as active.
+      e.stopPropagation()
+    },
+    [itinerary, setActiveItinerary]
   )
+  // If setActiveItinerary is set, use a button, otherwise render the time as span without interaction.
+  const Wrapper = setActiveItinerary ? 'button' : 'span'
+
+  return (
+    <Wrapper
+      className={classNames.length ? classNames.join(' ') : undefined}
+      onClick={setActiveItinerary ? handleClick : undefined}
+      title={label}
+    >
+      {timeString}
+      <InvisibleA11yLabel> ({realtimeStatus})</InvisibleA11yLabel>
+    </Wrapper>
+  )
+}
+
+const DepartureTimesList = ({
+  expanded,
+  itinerary,
+  setActiveItinerary,
+  showArrivals
+}: DepartureTimesProps): JSX.Element => {
   if (!itinerary.allStartTimes) {
     return (
-      <button
-        aria-label={itineraryButtonLabel}
-        className={isRealTime ? 'realtime active' : 'active'}
-        title={itineraryButtonLabel}
-      >
-        <FormattedTime value={itinerary.startTime} />
-      </button>
+      <TimeButton
+        active
+        displayedTime={showArrivals ? itinerary.endTime : itinerary.startTime}
+        itinerary={itinerary}
+        realTime={firstTransitLegIsRealtime(itinerary)}
+        setActiveItinerary={expanded ? undefined : setActiveItinerary}
+      />
     )
   }
-
-  const allStartTimes = itinerary.allStartTimes.sort(
-    (a, b) => getFirstLegStartTime(a.legs) - getFirstLegStartTime(b.legs)
-  )
 
   return (
     <FormattedList
       type="disjunction"
-      value={allStartTimes.map((time, index) => {
-        const { legs, realtime } = time
-        const classNames = []
-        if (realtime) classNames.push('realtime')
-        if (index === (activeItineraryTimeIndex || 0)) classNames.push('active')
-        const singleItinLabel = getDepartureLabelText(
-          intl,
-          getFirstLegStartTime(legs),
-          realtime
-        )
+      value={itinerary.allStartTimes.map((time, index) => {
+        const { itinerary: itinOption, legs, realtime } = time
+        const displayedTime = showArrivals
+          ? getLastLegEndTime(legs)
+          : getFirstLegStartTime(legs)
         return (
-          <button
-            aria-label={singleItinLabel}
-            className={classNames.join(' ')}
-            key={getFirstLegStartTime(legs)}
-            onClick={() => setItineraryTimeIndex(index)}
-            title={singleItinLabel}
-          >
-            <FormattedTime
-              value={
-                showArrivals
-                  ? getLastLegEndTime(time.legs)
-                  : getFirstLegStartTime(time.legs)
-              }
-            />
-          </button>
+          <TimeButton
+            active={itinOption.index === itinerary.index}
+            displayedTime={displayedTime}
+            itinerary={itinOption}
+            key={displayedTime}
+            realTime={realtime}
+            setActiveItinerary={setActiveItinerary}
+          />
         )
       })}
     />
   )
 }
+
+export default DepartureTimesList

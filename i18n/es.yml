@@ -319,7 +319,6 @@ components:
     title: Imágenes de la calle
   MetroUI:
     arriveAt: Llegaste
-    arriveAtTime: Llegar a {time}
     fromStop: de {stop}
     itineraryDescription: "{time} itinerario en {routes}"
     leaveAt: Su salida
@@ -334,7 +333,9 @@ components:
     exclusiveMode: Solo {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Cambiar la dirección de clasificación
-    itinerariesAndIssues: "{itinerariesFound} y {numIssues}"
+    howToFindResults: >-
+      Para ver los resultados, consulta el encabezado de los itinerarios
+      encontrados a continuación.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerario encontrado} other {# itinerarios
       encontrados}}
@@ -346,7 +347,6 @@ components:
     selectDepartureTime: Hora de salida
     selectDuration: Duración
     selectWalkTime: Tiempo de caminata
-    sortBy: Ordenar por
     viewAll: Ver todas las opciones
   NavLoginButton:
     help: Ayuda
@@ -354,17 +354,20 @@ components:
     signIn: Acceder
     signOut: Firmar la salida
   NewAccountWizard:
+    createNewAccount: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
     notifications: Preferencias de notificación
     places: Añade tus ubicaciones
-    terms: Crear una nueva cuenta
     verify: Verifique su dirección de correo electrónico
   NotFound:
     description: El contenido que ha solicitado no está disponible.
     header: No se encontró el contenido
   NotificationPrefsPane:
+    description: Puede recibir notificaciones sobre los viajes que realiza con frecuencia.
     noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
-    notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por :"
+    noneSelect: No enviar notificaciones
+    notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por:"
+    notificationEmailDetail: "Los correos electrónicos de notificación se enviarán a:"
   PhoneNumberEditor:
     changeNumber: Cambiar número de teléfono
     invalidCode: Introduzca 6 dígitos para el código de validación.
@@ -515,6 +518,7 @@ components:
       Esta es una parada flexible. Los vehículos dejarán y recogerán a los
       pasajeros en esta zona flexible previa solicitud. Es posible que tenga que
       llamar con antelación para el servicio en esta zona.
+    forStop: para {stopName}
     header: Visor de paradas
     loadingText: Cargando la parada...
     nextArrivals: Próximas llegadas

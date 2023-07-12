@@ -20,26 +20,9 @@
 }
 .otp.mobile .navbar .container-fluid .locale-selector-and-login > li {
   display: inline-block;
-  padding: 14px;
 }
 .otp.mobile .navbar li.dropdown.open {
   background-color: #080808;
-}
-.navbar-inverse .navbar-nav > li > a,
-.otp.mobile .navbar .container-fluid .locale-selector-and-login > li > a,
-.otp.mobile
-  .navbar
-  .container-fluid
-  .locale-selector-and-login
-  > li.dropdown.open
-  > a {
-  color: #fff;
-  text-decoration: none;
-}
-.navbar-inverse .navbar-nav > li > a:hover,
-.otp.mobile .navbar .container-fluid .locale-selector-and-login > li > a:hover {
-  color: #ddd;
-  text-decoration: none;
 }
 
 #app-menu-locale-selector {
@@ -52,5 +35,8 @@
   }
   #app-menu-locale-selector {
     display: flex;
+  }
+  #user-selector-label {
+    background-color: transparent;
   }
 }

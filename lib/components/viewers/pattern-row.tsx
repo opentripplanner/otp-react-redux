@@ -83,20 +83,17 @@ class PatternRow extends Component<Props, State> {
         >
           {/* route name */}
           <div className="route-name">
-            <strong style={{ fontSize: routeNameFontSize(routeName) }}>
-              <span className="route-name-container" title={routeName}>
-                {showOperatorLogo && (
-                  <OperatorLogo operator={route?.operator} />
+            <span className="route-name-container" title={routeName}>
+              {showOperatorLogo && <OperatorLogo operator={route?.operator} />}
+              <RouteRenderer
+                // All GTFS bg colors look strange with the top border
+                isOnColoredBackground={route?.operator?.colorMode?.includes(
+                  'gtfs'
                 )}
-                <RouteRenderer
-                  // All GTFS bg colors look strange with the top border
-                  isOnColoredBackground={route?.operator?.colorMode?.includes(
-                    'gtfs'
-                  )}
-                  leg={generateFakeLegForRouteRenderer(route, true)}
-                />
-              </span>
-            </strong>
+                leg={generateFakeLegForRouteRenderer(route, true)}
+                style={{ fontSize: routeNameFontSize(routeName) }}
+              />
+            </span>
             <span title={pattern.headsign}>{pattern.headsign}</span>
           </div>
           {/* next departure preview */}
