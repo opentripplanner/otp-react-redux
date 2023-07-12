@@ -57,7 +57,7 @@ const NotificationPrefsPane = ({
   phoneFormatOptions,
   values: userData // Formik prop
 }: Props): JSX.Element => {
-  const { email, isPhoneNumberVerified, phoneNumber, pushDeviceName } = userData
+  const { email, isPhoneNumberVerified, phoneNumber, pushDevices } = userData
 
   return (
     <FieldSet>
@@ -75,7 +75,7 @@ const NotificationPrefsPane = ({
               <Field
                 aria-describedby={inputDescriptionId}
                 // TODO: Check this condition.
-                disabled={type === 'push' && !pushDeviceName}
+                disabled={type === 'push' && !pushDevices}
                 id={inputId}
                 name="notificationChannel"
                 type="checkbox"
@@ -110,7 +110,10 @@ const NotificationPrefsPane = ({
                     <FormattedMessage id="common.notifications.push" />
                   </label>
                   <span id={inputDescriptionId}>
-                    {pushDeviceName || (
+                    {pushDevices ? (
+                      // TODO: i18n
+                      `${pushDevices} devices registered`
+                    ) : (
                       <FormattedMessage id="components.NotificationPrefsPane.noDeviceForPush" />
                     )}
                   </span>
