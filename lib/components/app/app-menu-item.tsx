@@ -75,6 +75,7 @@ export default class AppMenuItem extends Component<Props, State> {
         <Element
           aria-controls={subItems && containerId}
           aria-expanded={subItems && isExpanded}
+          className="navItem"
           id={id}
           onClick={subItems ? this._toggleSubmenu : onClick}
           onKeyDown={this._handleKeyDown}
