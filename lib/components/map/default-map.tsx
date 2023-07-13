@@ -278,6 +278,10 @@ class DefaultMap extends Component {
     const baseLayerUrls = baseLayersWithNames?.map((bl) => bl.url)
     const baseLayerNames = baseLayersWithNames?.map((bl) => bl.name)
 
+    const overlayLayers = overlays.find(
+      (overlay) => overlay.type === 'otp2'
+    ).layers
+
     return (
       <MapContainer className="percy-hide">
         <BaseMap
@@ -307,7 +311,7 @@ class DefaultMap extends Component {
           <ElevationPointMarker />
 
           {/* The configurable overlays */}
-          {overlays?.map((overlayConfig, k) => {
+          {overlayLayers?.map((overlayConfig, k) => {
             const namedLayerProps = {
               ...overlayConfig,
               id: k,
