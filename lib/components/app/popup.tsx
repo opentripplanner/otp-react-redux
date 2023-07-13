@@ -57,7 +57,7 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
     }
   }, [compiledUrl, hideModal, useIframe, shown])
 
-  const title = id && intl.formatMessage({ id: `config.popups.${id}` })
+  const title = id ? intl.formatMessage({ id: `config.popups.${id}` }) : ''
 
   /* HACK: Since Bootstrap 3.x does not support adding id or name to navItem, 
   we have to grab a list of all navItems by className and find the correct button.
