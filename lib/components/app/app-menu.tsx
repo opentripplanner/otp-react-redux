@@ -122,9 +122,10 @@ class AppMenu extends Component<
           skipLocales,
           subMenuDivider
         } = menuItem
-        const { intl } = this.props
+        const { activeLocale, intl, language } = this.props
         let label = configLabel
-        const shouldCheckLocales = !skipLocales
+        const shouldCheckLocales =
+          !skipLocales && language[activeLocale]?.config?.menuItems?.[id]
         if (shouldCheckLocales) {
           const localizationId = `config.menuItems.${id}`
           const localizedLabel = intl.formatMessage({
