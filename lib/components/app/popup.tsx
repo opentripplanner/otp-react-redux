@@ -1,13 +1,12 @@
 import { Modal } from 'react-bootstrap'
+import { Times } from '@styled-icons/fa-solid'
 import { useIntl } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useCallback, useEffect } from 'react'
+import styled from 'styled-components'
 
 import { StyledIconWrapper } from '../util/styledIcon'
-import { Times } from '@styled-icons/fa-solid'
 import PageTitle from '../util/page-title'
-
-import styled from 'styled-components'
 
 type Props = {
   content?: {
@@ -58,7 +57,7 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
     }
   }, [compiledUrl, hideModal, useIframe, shown])
 
-  const title = intl.formatMessage({ id: `config.popups.${id}` })
+  const title = id && intl.formatMessage({ id: `config.popups.${id}` })
 
   /* HACK: Since Bootstrap 3.x does not support adding id or name to navItem, 
   we have to grab a list of all navItems by className and find the correct button.
