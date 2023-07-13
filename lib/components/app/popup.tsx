@@ -65,6 +65,8 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
   Since the sliding pane "Leave Feedback" button will always be in the DOM after
   the navbar button, reverse + find should always find the correct button to return to. */
 
+  // TODO: Replace this method with refs
+
   const navItemList = Array.from(
     document.getElementsByClassName('navItem')
   ).reverse() as HTMLElement[]
