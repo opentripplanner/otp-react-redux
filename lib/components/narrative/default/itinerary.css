@@ -395,3 +395,9 @@
 .otp .option.default-itin .step .step-distance {
   float: right;
 }
+
+/* Allow banned/preferred routes to float on top */
+#bannedRoutes,
+#preferredRoutes {
+  z-index: 100;
+}
