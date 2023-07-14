@@ -2413,10 +2413,10 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^9.0.0-alpha.33":
-  version "9.0.0-alpha.34"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-9.0.0-alpha.34.tgz#63075efb6dd1bf8ba05e27b087c89d3f56827b22"
-  integrity sha512-jELEvn3diXd149ueIiBO0XxoZerl2+r3d31yZV7teao9yKcjOcTAnLph/FYj/3WdHTBi4iPBOZurgWJDpauL1g==
+"@opentripplanner/core-utils@^9.0.0-alpha.35":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-9.0.0.tgz#8f9d2b581ef937a99ef54c410661fa9a4c871eda"
+  integrity sha512-+3ezqmtlKojQVV7aku3EjvxFjuWEKeZxriyvLuNvGn4BFqr61MFKzLB5aDTh1AYRtfax0p2n64sUQ6BuvSBCKQ==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
@@ -2432,10 +2432,10 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^9.0.0-alpha.35":
-  version "9.0.0-alpha.35"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-9.0.0-alpha.35.tgz#01088543813f9b753aa1f2df46913e63521339a2"
-  integrity sha512-dD0UczbLVxZCJPQnNbNL4h3Z/biKWaPfybMdF576w8mRZpEkvPQbmMZFvqb40B/Que8bU7Z0Wy9XW9lhHybcWg==
+"@opentripplanner/core-utils@^9.0.0-alpha.36":
+  version "9.0.0-alpha.37"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-9.0.0-alpha.37.tgz#6172dc3ae917363d97b1ba661de3feb86bb197e5"
+  integrity sha512-khL6tOVniB9lEahcCcQ5PpaJ7JxJxL0qaITroFtKCN+fK4CUaKH7KTGvc33xX6K+u/VueJUuuPHvGkokBDLK+A==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
@@ -2678,11 +2678,11 @@
     lodash.isequal "^4.5.0"
 
 "@opentripplanner/trip-details@^5.0.0-alpha.6":
-  version "5.0.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-5.0.0-alpha.6.tgz#3c9d3716e6fc6f42718ce14ca1c5f724fb965f3f"
-  integrity sha512-nQRL1gda0o6+x76PoKY9n5I3LtAwjoMpSzg5dNP6xF/bGGUCfwFp7aQxmQhOFIi7R9NStdts1d8ubzdqqsSJBQ==
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-5.0.0.tgz#9b422e2eba3b63f6a9bde2bb457220459da7f866"
+  integrity sha512-RHOsaDVBpRHPRBaladU7oIi6UwDSvYzER57j2RfmmGHriwPdp1yOJZXH6qT3NtlRpeERtVkF5/ZzAHYzF90UUQ==
   dependencies:
-    "@opentripplanner/core-utils" "^9.0.0-alpha.33"
+    "@opentripplanner/core-utils" "^9.0.0-alpha.36"
     "@styled-icons/fa-solid" "^10.34.0"
     flat "^5.0.2"
     react-animate-height "^3.0.4"
@@ -2713,9 +2713,9 @@
     "@opentripplanner/core-utils" "^8.2.1"
 
 "@opentripplanner/types@^6.0.0-alpha.8":
-  version "6.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.0.0-alpha.8.tgz#92a13c09b8be55ec83eba1d405bac5a791bba9d2"
-  integrity sha512-38YX9HJiYg/FonohTPrPdBoHV3Wff8GOgz/QgWMU7iiKdgDZvneYU3jJosuoAL3k035DCbA0NL4ngR7VyTbJmA==
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.0.0.tgz#3dabebd404c88030f4191f08c7692d72ca2e3c8d"
+  integrity sha512-mwwj2WzkdCoG2KUYaR/4I2JkcuXr1fFUJpP4nk10YbRgzyGtGLaGIdiTXNYpwgk/5//pMHQ5Qa6psWrHpqRm1A==
 
 "@opentripplanner/vehicle-rental-overlay@^2.1.1":
   version "2.1.1"
