@@ -45,7 +45,8 @@ type AppMenuProps = {
   callTakerEnabled?: boolean
   extraMenuItems?: MenuItem[]
   fieldTripEnabled?: boolean
-  // Typescript TODO language options based on configLanguage.
+  // Typescript TODO language and language options based on configLanguage.
+  language: Record<string, any> | null
   languageOptions: Record<string, any> | null
   location: { search: string }
   mailablesEnabled?: boolean
@@ -122,20 +123,11 @@ class AppMenu extends Component<
           skipLocales,
           subMenuDivider
         } = menuItem
-        const { activeLocale, intl, language } = this.props
-        let label = configLabel
-        const shouldCheckLocales =
-          !skipLocales && language[activeLocale]?.config?.menuItems?.[id]
-        if (shouldCheckLocales) {
-          const localizationId = `config.menuItems.${id}`
-          const localizedLabel = intl.formatMessage({
-            defaultMessage: localizationId,
-            id: localizationId
-          })
-          // Override the config label if a localized label exists
-          label =
-            localizedLabel === localizationId ? configLabel : localizedLabel
-        }
+        const { activeLocale, language } = this.props
+        const localizedLabel = language?.[activeLocale]?.config?.menuItems?.[id]
+        const useLocalizedLabel = !skipLocales && localizedLabel
+        // Override the config label if a localized label exists
+        const label = useLocalizedLabel ? localizedLabel : configLabel
 
         return (
           <AppMenuItem
