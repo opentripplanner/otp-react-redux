@@ -318,7 +318,7 @@ itinerary:
   #  electronicRegular: "SmartCard Fare"
   #  student: "Student Fare"
   # One fare will always be shown by default
-  #defaultFareKey: electronicRegular
+  defaultFareType: { mediumId: null, riderCategoryId: null }
 
   # The following settings must be set to these values to use the new
   # "Metro" UI. The settings can be used without the Metro UI, but
