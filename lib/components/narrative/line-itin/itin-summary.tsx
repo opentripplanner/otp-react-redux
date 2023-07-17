@@ -90,17 +90,16 @@ export class ItinerarySummary extends Component<Props> {
   }
 
   render(): JSX.Element {
-    const { currency, defaultFareKey, itinerary } = this.props
+    const { defaultFareKey, itinerary } = this.props
     const { LegIcon } = this.context
 
     const { fareCurrency, maxTNCFare, minTNCFare, transitFare } = getFare(
       itinerary,
-      defaultFareKey,
-      currency
+      defaultFareKey
     )
 
-    const minTotalFare = minTNCFare * 100 + transitFare
-    const maxTotalFare = maxTNCFare * 100 + transitFare
+    const minTotalFare = minTNCFare * 100 + (transitFare || 0)
+    const maxTotalFare = maxTNCFare * 100 + (transitFare || 0)
 
     const { endTime, startTime } = itinerary
 
