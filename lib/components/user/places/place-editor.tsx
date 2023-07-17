@@ -68,10 +68,9 @@ class PlaceEditor extends Component<Props> {
   static contextType = ComponentContext
 
   _handleLocationChange = (e: LocationSelectedEvent) => {
-    const { intl, setTouched, setValues, values } = this.props
+    const { intl, setTouched, setValues } = this.props
     const { category, lat, lon, name } = e.location
     setValues({
-      ...values,
       address:
         // If the current location is picked, set the "address"
         // so that we can later determine what the current location was at that time.
