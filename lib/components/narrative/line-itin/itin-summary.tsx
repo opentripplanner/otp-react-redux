@@ -238,7 +238,6 @@ function getRouteColorForBadge(leg: Leg): string {
 
 const mapStateToProps = (state: any) => {
   return {
-    currency: state.otp.config.localization?.currency || 'USD',
     defaultFareKey: state.otp.config.itinerary?.defaultFareKey
   }
 }
