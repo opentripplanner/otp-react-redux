@@ -6,7 +6,14 @@ import {
   HelpBlock
 } from 'react-bootstrap'
 import { Field, FormikProps } from 'formik'
-import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl'
+import {
+  FormattedMessage,
+  injectIntl,
+  IntlShape,
+  WrappedComponentProps
+} from 'react-intl'
+import { GeocoderConfig } from '@opentripplanner/geocoder/lib/geocoders/types'
+import { Location } from '@opentripplanner/types'
 import { LocationSelectedEvent } from '@opentripplanner/location-field/lib/types'
 import coreUtils from '@opentripplanner/core-utils'
 import getGeocoder from '@opentripplanner/geocoder'
@@ -26,7 +33,16 @@ import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import { PlaceLocationField } from './place-location-field'
 
-type Props = WrappedComponentProps & FormikProps<UserSavedLocation>
+type Props = WrappedComponentProps &
+  FormikProps<UserSavedLocation> & {
+    geocoderConfig: GeocoderConfig
+    getCurrentPosition: (
+      intl: IntlShape,
+      setAsType?: string | null,
+      onSuccess?: (position: GeolocationPosition) => void
+    ) => Promise<void>
+    intl: IntlShape
+  }
 
 const { isMobile } = coreUtils.ui
 
@@ -70,7 +86,7 @@ function makeLocationFieldLocation(favoriteLocation: UserSavedLocation) {
 class PlaceEditor extends Component<Props> {
   static contextType = ComponentContext
 
-  _setLocation = (location) => {
+  _setLocation = (location: Location) => {
     const { intl, setTouched, setValues, values } = this.props
     const { category, lat, lon, name } = location
     setValues({
@@ -101,7 +117,7 @@ class PlaceEditor extends Component<Props> {
         getGeocoder(geocoderConfig)
           .reverse({ point: coords })
           .then(this._setLocation)
-          .catch((err) => {
+          .catch((err: Error) => {
             console.warn(err)
             const { latitude: lat, longitude: lon } = coords
             this._setLocation({
@@ -235,7 +251,7 @@ class PlaceEditor extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   return {
     geocoderConfig: state.otp.config.geocoder
   }
