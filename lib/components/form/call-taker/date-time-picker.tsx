@@ -5,7 +5,7 @@ import { IntlShape, useIntl } from 'react-intl'
 import { isMatch, parse } from 'date-fns'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import coreUtils from '@opentripplanner/core-utils'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const { getCurrentDate, OTP_API_DATE_FORMAT, OTP_API_TIME_FORMAT } =
   coreUtils.time
@@ -102,6 +102,9 @@ const DateTimeOptions = ({
   )
   const [date, setDate] = useState<string | undefined>(initialDate)
   const [time, setTime] = useState<string | undefined>(initialTime)
+  const [typedTime, setTypedTime] = useState<string | undefined>(initialTime)
+
+  const timeRef = useRef(null)
 
   const intl = useIntl()
 
@@ -134,14 +137,33 @@ const DateTimeOptions = ({
   // Update state when external state is updated
   useEffect(() => {
     if (initialDate !== date) setDate(initialDate)
-    if (initialTime !== time) setTime(initialTime)
+    if (initialTime !== time) {
+      setTime(initialTime)
+    }
   }, [initialTime, initialDate])
+
+  useEffect(() => {
+    // Don't update if still typing
+    if (timeRef.current !== document.activeElement) {
+      setTypedTime(
+        safeFormat(dateTime, timeFormat, {
+          timeZone: homeTimezone
+        }) ||
+          // TODO: there doesn't seem to be an intl object present?
+          'Invalid Time'
+      )
+    }
+  }, [time])
 
   useEffect(() => {
     if (initialDepartArrive && departArrive !== initialDepartArrive) {
       setDepartArrive(initialDepartArrive)
     }
   }, [initialDepartArrive])
+
+  useEffect(() => {
+    if (departArrive === 'NOW') setTypedTime('')
+  }, [departArrive])
 
   // Handler for setting the query parameters
   useEffect(() => {
@@ -199,26 +221,22 @@ const DateTimeOptions = ({
       >
         <input
           className="datetime-slim"
-          // TODO: Why does this no longer work when set as `value`? Is this a
-          // date-fns issue?
-          defaultValue={
-            time && time?.length > 1
-              ? time || format(dateTime, 'H:mm', { timeZone: homeTimezone })
-              : time
-          }
           onChange={(e) => {
             setTime(e.target.value)
+            setTypedTime(e.target.value)
             unsetNow()
           }}
           onFocus={(e) => e.target.select()}
           onKeyDown={onKeyDown}
+          ref={timeRef}
           style={{
             fontSize: 'inherit',
             lineHeight: '.8em',
             marginLeft: '3px',
             padding: '0px',
-            width: '50px'
+            width: '65px'
           }}
+          value={typedTime}
         />
       </OverlayTrigger>
       <input
