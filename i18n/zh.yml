@@ -155,10 +155,7 @@ components:
     tooManyPlaces: 已达到最多中途地点
   AdvancedOptions:
     bannedRoutes: 选择禁行路线…
-    maxBike: 最大骑自行车 {unitsString}
-    maxWalk: 最大步行 {unitsString}
     preferredRoutes: 选择首选路线…
-    walkReluctance: 避免步行
   AfterSignInScreen:
     mainTitle: 重新定向…
     message: 如果几秒钟后页面没有加载, 请 <redirectLink>点击这里</redirectLink>.
@@ -216,7 +213,6 @@ components:
     destination: 目的地
     origin: 出发地
     planTripTooltip: 计划行程
-    settings: 行程设置
     validationMessage: "请定义以下字段来计划旅行: {issues}"
   BeforeSignInScreen:
     mainTitle: 签到
@@ -300,8 +296,6 @@ components:
     timeWalking: "{time} 步行"
   MobileOptions:
     header: 设置搜索选项
-  ModeDropdown:
-    exclusiveMode: 仅 {mode}
   NarrativeItinerariesHeader:
     changeSortDir: 改变排序方向
     itinerariesFound: 发现{itineraryNum}条行程
