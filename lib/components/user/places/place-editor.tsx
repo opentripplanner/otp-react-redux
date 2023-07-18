@@ -1,3 +1,4 @@
+import { connect } from 'react-redux'
 import {
   ControlLabel,
   FormControl,
@@ -11,6 +12,7 @@ import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 
+import * as locationActions from '../../../actions/location'
 import { capitalizeFirst, getErrorStates } from '../../../util/ui'
 import { ComponentContext } from '../../../util/contexts'
 import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'
@@ -82,6 +84,19 @@ class PlaceEditor extends Component<Props> {
       lon
     })
     setTouched({ address: true })
+  }
+
+  _handleGetCurrentPosition = () => {
+    const { getCurrentPosition, intl, setTouched, setValues } = this.props
+    getCurrentPosition(intl, null, (position) => {
+      const { latitude: lat, longitude: lon } = position.coords
+      setValues({
+        address: intl.formatMessage({ id: 'common.coordinates' }, { lat, lon }),
+        lat,
+        lon
+      })
+      setTouched({ address: true })
+    })
   }
 
   render() {
@@ -173,6 +188,7 @@ class PlaceEditor extends Component<Props> {
 
             <PlaceLocationField
               className="form-control"
+              getCurrentPosition={this._handleGetCurrentPosition}
               inputPlaceholder={
                 isFixed
                   ? intl.formatMessage(
@@ -204,4 +220,8 @@ class PlaceEditor extends Component<Props> {
   }
 }
 
-export default injectIntl(PlaceEditor)
+const mapDispatchToProps = {
+  getCurrentPosition: locationActions.getCurrentPosition
+}
+
+export default connect(null, mapDispatchToProps)(injectIntl(PlaceEditor))
