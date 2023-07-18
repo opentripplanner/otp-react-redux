@@ -302,8 +302,6 @@ class MetroItinerary extends NarrativeItinerary {
       accessibilityScoreGradationMap
     )
 
-    const firstTransitStop = getFirstTransitLegStop(itinerary)
-
     const handleClick = () => {
       setActiveItinerary(itinerary)
       setActiveLeg(null, null)
@@ -368,7 +366,7 @@ class MetroItinerary extends NarrativeItinerary {
                     />
                   </PrimaryInfo>
                   <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
-                    {isFlexItinerary ? (
+                    {isFlexItinerary && (
                       <FlexIndicator
                         isCallAhead={isCallAhead}
                         isContinuousDropoff={isContinuousDropoff}
@@ -376,13 +374,6 @@ class MetroItinerary extends NarrativeItinerary {
                         shrink={false}
                         textOnly
                       />
-                    ) : (
-                      firstTransitStop && (
-                        <FormattedMessage
-                          id="components.MetroUI.fromStop"
-                          values={{ stop: firstTransitStop }}
-                        />
-                      )
                     )}
                   </SecondaryInfo>
                   {
