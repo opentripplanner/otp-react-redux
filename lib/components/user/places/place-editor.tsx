@@ -90,9 +90,8 @@ class PlaceEditor extends Component<Props> {
     setValues({
       ...values,
       address:
-        // If the current location is picked, set the "address"
-        // so that we can later determine what the current location was at that time.
-        // TODO: ideally, geocode that location.
+        // If the raw current location is passed without a name attribute (i.e. the address),
+        // set the "address" as the formatted coordinates of the current location at that time.
         category === 'CURRENT_LOCATION'
           ? intl.formatMessage({ id: 'common.coordinates' }, { lat, lon })
           : name,
