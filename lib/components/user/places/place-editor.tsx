@@ -69,11 +69,9 @@ function makeLocationFieldLocation(favoriteLocation: UserSavedLocation) {
 class PlaceEditor extends Component<Props> {
   static contextType = ComponentContext
 
-  _
-
-  _handleLocationChange = (e: LocationSelectedEvent) => {
+  _setLocation = (location) => {
     const { intl, setTouched, setValues } = this.props
-    const { category, lat, lon, name } = e.location
+    const { category, lat, lon, name } = location
     setValues({
       address:
         // If the current location is picked, set the "address"
@@ -88,23 +86,21 @@ class PlaceEditor extends Component<Props> {
     setTouched({ address: true })
   }
 
+  _handleLocationChange = (e: LocationSelectedEvent) => {
+    this._setLocation(e.location)
+  }
+
   _handleGetCurrentPosition = () => {
-    const { getCurrentPosition, intl, setTouched, setValues } = this.props
+    const { getCurrentPosition, intl } = this.props
     getCurrentPosition(
       intl,
       locationActions.PLACE_EDITOR_LOCATION,
-      (position) => {
-        const { latitude: lat, longitude: lon } = position.coords
-        setValues({
-          address: intl.formatMessage(
-            { id: 'common.coordinates' },
-            { lat, lon }
-          ),
-          lat,
-          lon
+      ({ coords }) =>
+        this._setLocation({
+          category: 'CURRENT_LOCATION',
+          lat: coords.latitude,
+          lon: coords.longitude
         })
-        setTouched({ address: true })
-      }
     )
   }
 
