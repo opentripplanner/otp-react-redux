@@ -1,4 +1,7 @@
+// @ts-expect-error TODO: add @types/redux-actions (will break other other stuff).
 import { createAction } from 'redux-actions'
+import { Dispatch } from 'redux'
+import { IntlShape } from 'react-intl'
 
 import { setLocationToCurrent } from './map'
 
@@ -9,10 +12,14 @@ export const receivedPositionResponse = createAction('POSITION_RESPONSE')
 
 export const PLACE_EDITOR_LOCATION = 'placeeditor'
 
-export function getCurrentPosition(intl, setAsType, onSuccess) {
-  return async function (dispatch, getState) {
+export function getCurrentPosition(
+  intl: IntlShape,
+  setAsType?: string | null,
+  onSuccess?: (position: GeolocationPosition) => void
+) {
+  return function (dispatch: Dispatch): void {
     if (navigator.geolocation) {
-      dispatch(fetchingPosition({ type: setAsType || null }))
+      dispatch(fetchingPosition({ type: setAsType }))
       navigator.geolocation.getCurrentPosition(
         // On success
         (position) => {
@@ -21,6 +28,7 @@ export function getCurrentPosition(intl, setAsType, onSuccess) {
             dispatch(receivedPositionResponse({ position }))
             if (setAsType && setAsType !== PLACE_EDITOR_LOCATION) {
               console.log('setting location to current position')
+              // @ts-expect-error Action below is not typed yet.
               dispatch(setLocationToCurrent({ locationType: setAsType }, intl))
             }
             onSuccess && onSuccess(position)

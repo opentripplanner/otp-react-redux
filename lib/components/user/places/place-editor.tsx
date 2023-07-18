@@ -37,10 +37,8 @@ type Props = WrappedComponentProps &
   FormikProps<UserSavedLocation> & {
     geocoderConfig: GeocoderConfig
     getCurrentPosition: (
-      intl: IntlShape,
-      setAsType?: string | null,
-      onSuccess?: (position: GeolocationPosition) => void
-    ) => Promise<void>
+      ...args: Parameters<typeof locationActions.getCurrentPosition>
+    ) => void
     intl: IntlShape
   }
 
