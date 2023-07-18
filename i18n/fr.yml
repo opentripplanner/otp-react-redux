@@ -109,6 +109,7 @@ common:
     "yes": Oui
   itineraryDescriptions:
     calories: "{calories, number} kcal"
+    fareUnknown: TODO TRANSLATE
     noItineraryToDisplay: Aucun trajet à afficher.
     relativeCo2: |
       {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
