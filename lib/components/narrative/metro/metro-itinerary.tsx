@@ -395,7 +395,7 @@ class MetroItinerary extends NarrativeItinerary {
                         {transitFare === null ||
                         transitFare === undefined ||
                         transitFare < 0 ? (
-                          <FormattedMessage id="otpUi.TripDetails.transitFareUnknown" />
+                          <FormattedMessage id="common.itineraryDescriptions.fareUnknown" />
                         ) : (
                           // TODO: re-implement TNC fares for metro UI?
                           <FormattedNumber
