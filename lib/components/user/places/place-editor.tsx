@@ -9,6 +9,7 @@ import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl'
 import { LocationSelectedEvent } from '@opentripplanner/location-field/lib/types'
 import coreUtils from '@opentripplanner/core-utils'
+import getGeocoder from '@opentripplanner/geocoder'
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 
@@ -91,16 +92,24 @@ class PlaceEditor extends Component<Props> {
   }
 
   _handleGetCurrentPosition = () => {
-    const { getCurrentPosition, intl } = this.props
+    const { geocoderConfig, getCurrentPosition, intl } = this.props
     getCurrentPosition(
       intl,
       locationActions.PLACE_EDITOR_LOCATION,
-      ({ coords }) =>
-        this._setLocation({
-          category: 'CURRENT_LOCATION',
-          lat: coords.latitude,
-          lon: coords.longitude
-        })
+      ({ coords }) => {
+        getGeocoder(geocoderConfig)
+          .reverse({ point: coords })
+          .then(this._setLocation)
+          .catch((err) => {
+            console.warn(err)
+            const { latitude: lat, longitude: lon } = coords
+            this._setLocation({
+              category: 'CURRENT_LOCATION',
+              lat,
+              lon
+            })
+          })
+      }
     )
   }
 
@@ -225,8 +234,17 @@ class PlaceEditor extends Component<Props> {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    geocoderConfig: state.otp.config.geocoder
+  }
+}
+
 const mapDispatchToProps = {
   getCurrentPosition: locationActions.getCurrentPosition
 }
 
-export default connect(null, mapDispatchToProps)(injectIntl(PlaceEditor))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(PlaceEditor))
