@@ -87,7 +87,6 @@ class AppMenu extends Component<
   _triggerPopup = () => {
     const { popupTarget, setPopupContent } = this.props
     setPopupContent(popupTarget)
-    this._togglePane()
   }
 
   _togglePane = () => {

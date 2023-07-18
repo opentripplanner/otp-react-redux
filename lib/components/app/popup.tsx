@@ -1,7 +1,7 @@
 import { Modal } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import { StyledIconWrapper } from '../util/styledIcon'
 import { Times } from '@styled-icons/fa-solid'
@@ -58,23 +58,40 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
     }
   }, [compiledUrl, hideModal, useIframe, shown])
 
-  if (!compiledUrl || !useIframe) return null
-
   const title = intl.formatMessage({ id: `config.popups.${id}` })
+
+  /* HACK: Since Bootstrap 3.x does not support adding id or name to navItem, 
+  we have to grab a list of all navItems by className and find the correct button.
+  Since the sliding pane "Leave Feedback" button will always be in the DOM after
+  the navbar button, reverse + find should always find the correct button to return to. */
+
+  // TODO: Replace this method with refs
+
+  const navItemList = Array.from(
+    document.getElementsByClassName('navItem')
+  ).reverse() as HTMLElement[]
+  const focusElement = navItemList.find((el) => el.innerText === title)
+
+  const closeModal = useCallback(() => {
+    hideModal()
+    focusElement?.focus()
+  }, [focusElement, hideModal])
+
+  if (!compiledUrl || !useIframe) return null
 
   return (
     <Modal
       aria-label={title}
       dialogClassName="fullscreen-modal"
-      onEscapeKeyDown={hideModal}
-      onHide={hideModal}
+      onEscapeKeyDown={closeModal}
+      onHide={closeModal}
       role="presentation"
       show={shown}
     >
       <CloseModalButton
         aria-label={closeText}
         className="clear-button-formatting close-button"
-        onClick={hideModal}
+        onClick={closeModal}
         title={closeText}
       >
         <StyledIconWrapper>
