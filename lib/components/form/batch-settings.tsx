@@ -211,6 +211,9 @@ function BatchSettings({
             accentColor={baseColor}
             activeHoverColor={accentColor.toHexString()}
             fillModeIcons={fillModeIcons}
+            label={intl.formatMessage({
+              id: 'components.BatchSearchScreen.modeSelectorLabel'
+            })}
             modeButtons={processedModeButtons}
             onSettingsUpdate={setUrlSearch}
             onToggleModeButton={_toggleModeButton}
