@@ -387,25 +387,23 @@ class MetroItinerary extends NarrativeItinerary {
                   </SecondaryInfo>
                   {
                     // Hide the fare information entirely if the defaultFareType isn't specified.
-                    defaultFareType && (
-                      <SecondaryInfo>
-                        {transitFare === null ||
-                        transitFare === undefined ||
-                        transitFare < 0 ? (
-                          <FormattedMessage id="common.itineraryDescriptions.fareUnknown" />
-                        ) : (
-                          // TODO: re-implement TNC fares for metro UI?
-                          <FormattedNumber
-                            currency={fareCurrency}
-                            currencyDisplay="narrowSymbol"
-                            // This isn't a "real" style prop
-                            // eslint-disable-next-line react/style-prop-object
-                            style="currency"
-                            value={transitFare}
-                          />
-                        )}
-                      </SecondaryInfo>
-                    )
+                    <SecondaryInfo>
+                      {transitFare === null ||
+                      transitFare === undefined ||
+                      transitFare < 0 ? (
+                        <FormattedMessage id="common.itineraryDescriptions.fareUnknown" />
+                      ) : (
+                        // TODO: re-implement TNC fares for metro UI?
+                        <FormattedNumber
+                          currency={fareCurrency}
+                          currencyDisplay="narrowSymbol"
+                          // This isn't a "real" style prop
+                          // eslint-disable-next-line react/style-prop-object
+                          style="currency"
+                          value={transitFare}
+                        />
+                      )}
+                    </SecondaryInfo>
                   }
                   <SecondaryInfo>
                     <FormattedMessage
