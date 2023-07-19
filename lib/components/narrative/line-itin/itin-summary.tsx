@@ -77,7 +77,7 @@ const ShortName = styled.div<{ leg: Leg }>`
 
 type Props = {
   currency?: string
-  defaultFareKey: string
+  defaultFareType: string
   itinerary: Itinerary
   onClick: () => void
 }
@@ -90,12 +90,12 @@ export class ItinerarySummary extends Component<Props> {
   }
 
   render(): JSX.Element {
-    const { defaultFareKey, itinerary } = this.props
+    const { defaultFareType, itinerary } = this.props
     const { LegIcon } = this.context
 
     const { fareCurrency, maxTNCFare, minTNCFare, transitFare } = getFare(
       itinerary,
-      defaultFareKey
+      defaultFareType
     )
 
     const minTotalFare = minTNCFare * 100 + (transitFare || 0)
@@ -238,7 +238,7 @@ function getRouteColorForBadge(leg: Leg): string {
 
 const mapStateToProps = (state: any) => {
   return {
-    defaultFareKey: state.otp.config.itinerary?.defaultFareKey
+    defaultFareType: state.otp.config.itinerary?.defaultFareType
   }
 }
 
