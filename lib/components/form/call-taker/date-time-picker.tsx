@@ -251,7 +251,7 @@ const DateTimeOptions = ({
           fontSize: '14px',
           lineHeight: '1em',
           outline: 'none',
-          width: '109px'
+          width: '120px'
         }}
         type="date"
         value={safeFormat(dateTime, OTP_API_DATE_FORMAT, {
