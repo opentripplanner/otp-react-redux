@@ -28,12 +28,10 @@ import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 
-import { DepartureTimesList } from './departure-times-list'
-import {
-  getFirstTransitLegStop,
-  getFlexAttirbutes,
-  removeInsignifigantWalkLegs
-} from './attribute-utils'
+import { getFirstTransitLegStop, getFlexAttirbutes } from './attribute-utils'
+import DepartureTimesList, {
+  SetActiveItineraryHandler
+} from './departure-times-list'
 import MetroItineraryRoutes from './metro-itinerary-routes'
 import RouteBlock from './route-block'
 
@@ -191,7 +189,7 @@ type Props = {
   intl: IntlShape
   itinerary: Itinerary
   mini?: boolean
-  setActiveItinerary: () => void
+  setActiveItinerary: SetActiveItineraryHandler
   setActiveLeg: (leg: Leg) => void
   setItineraryView: (view: string) => void
   showRealtimeAnnotation: () => void
@@ -309,7 +307,6 @@ class MetroItinerary extends NarrativeItinerary {
     )
 
     const firstTransitStop = getFirstTransitLegStop(itinerary)
-    const routeLegs = itinerary.legs.filter(removeInsignifigantWalkLegs)
 
     const handleClick = () => {
       setActiveItinerary(itinerary)
@@ -428,6 +425,7 @@ class MetroItinerary extends NarrativeItinerary {
                     <FormattedMessage id="components.MetroUI.leaveAt" />
                   )}{' '}
                   <DepartureTimesList
+                    expanded={expanded}
                     itinerary={itinerary}
                     setActiveItinerary={setActiveItinerary}
                     showArrivals={arrivesAt}
@@ -446,7 +444,7 @@ class MetroItinerary extends NarrativeItinerary {
                 <SecondaryInfo as="span">
                   <ItineraryDescription itinerary={itinerary} />
                 </SecondaryInfo>
-                {this._renderMainRouteBlock(routeLegs)}
+                {this._renderMainRouteBlock(itinerary.legs)}
               </ItineraryGridSmall>
             )}
           </ItineraryWrapper>

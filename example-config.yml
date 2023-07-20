@@ -177,6 +177,8 @@ geocoder:
   # This allows the location field dropdown headers to be colored based on Pelias layer
   #resultsColors:
   #  stops: "#007fae"
+  # Override the default number (3) of suggestions returned per category
+  #resultsCount: 5
 
 # example config for an ArcGIS geocoder
 # (https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm)

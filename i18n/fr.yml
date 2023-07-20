@@ -234,6 +234,7 @@ components:
     shortTitle: Planifier un trajet
   BatchSearchScreen:
     header: Votre trajet
+    modeSelectorLabel: Sélectionnez un mode de transport
   BatchSettings:
     dateTimeSettingsLabel: Paramètres Date/Heure
     destination: destination
