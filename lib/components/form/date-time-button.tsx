@@ -19,9 +19,6 @@ import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import { StyledDateTimePreview } from './batch-styled'
 import DateTimeModal from './date-time-modal'
 
-const defaultAccentColor = '#666'
-const defaultActiveHoverColor = '#333'
-
 const boxShadowCss = css`
   box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px;
 `
@@ -30,31 +27,18 @@ const ButtonWrapper = styled.span`
   position: relative;
 
   & > button {
-    /* background: #fff; */
     border-radius: 5px;
     border: none;
-    /* border: 2px solid ${defaultAccentColor}; */
     cursor: pointer;
     height: 51px;
+    padding: 0;
     transition: all 250ms cubic-bezier(0.27, 0.01, 0.38, 1.06);
+    width: 120px;
   }
 
   & > button:hover {
     background: #ddd;
-    border-color: ${defaultActiveHoverColor};
     ${boxShadowCss}
-  }
-
-  & > input:focus + label {
-    outline: 5px auto blue;
-    /* This next line enhances the visuals in Chromium (webkit) browsers */
-    outline: 5px auto -webkit-focus-ring-color;
-    /* Render the focus outline inside and distinct from the border for both Chrome and Firefox. */
-    outline-offset: -4px;
-  }
-
-  & > input:checked + label:hover {
-    background: ${defaultActiveHoverColor};
   }
 `
 
@@ -71,7 +55,6 @@ const HoverInnerContainer = styled.div`
   font-size: 90%;
   font-weight: bold;
   padding: 0px 20px 10px;
-  pointer-events: none;
   ${boxShadowCss}
 `
 
