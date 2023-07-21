@@ -113,6 +113,9 @@ function getLayerName(overlay, config, intl) {
         return getCompanyNames([overlay.network], config, intl)
 
       return intl.formatMessage({ id: 'components.MapLayers.shared-vehicles' })
+    case 'otp2':
+      // The otp2 type will result in multiple layers, so don't show a warning.
+      return type
     default:
       console.warn(`No name found for overlay type ${type}.`)
       return type
