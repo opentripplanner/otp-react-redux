@@ -17,7 +17,7 @@ import {
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import { useIntl } from 'react-intl'
-import React, { useCallback, useContext, useState } from 'react'
+import React, { useCallback, useContext } from 'react'
 import tinycolor from 'tinycolor2'
 
 import * as apiActions from '../../actions/api'
@@ -28,12 +28,9 @@ import { getFormattedMode } from '../../util/i18n'
 import { StyledIconWrapper } from '../util/styledIcon'
 
 import {
-  DateTimeModalContainer,
   MainSettingsRow,
   ModeSelectorContainer,
-  PlanTripButton,
-  StyledDateTimePreview,
-  StyledDateTimePreviewContainer
+  PlanTripButton
 } from './batch-styled'
 import DateTimeButton from './date-time-button'
 // import DateTimeModal from './date-time-modal'
@@ -89,7 +86,6 @@ function BatchSettings({
 }: Props) {
   const intl = useIntl()
 
-  const [dateTimeExpanded, setDateTimeExpanded] = useState<boolean>(false)
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
@@ -160,8 +156,6 @@ function BatchSettings({
       )
       return
     }
-    // Close any expanded panels.
-    setDateTimeExpanded(false)
 
     // Plan trip.
     routingQuery()
@@ -192,59 +186,39 @@ function BatchSettings({
   const accentColor = tinycolor(baseColor).darken(10)
 
   return (
-    <>
-      <MainSettingsRow>
-        <DateTimeButton id="date-time-button" />
-        {/*
-        <StyledDateTimePreviewContainer
-          aria-controls="date-time-modal"
-          aria-expanded={dateTimeExpanded}
-          aria-label={intl.formatMessage({
-            id: 'components.BatchSettings.dateTimeSettingsLabel'
+    <MainSettingsRow>
+      <DateTimeButton id="date-time-button" />
+      <ModeSelectorContainer squashed={!spacedOutModeSelector}>
+        <MetroModeSelector
+          accentColor={baseColor}
+          activeHoverColor={accentColor.toHexString()}
+          fillModeIcons={fillModeIcons}
+          label={intl.formatMessage({
+            id: 'components.BatchSearchScreen.modeSelectorLabel'
           })}
-          expanded={dateTimeExpanded}
-          onClick={() => setDateTimeExpanded(!dateTimeExpanded)}
+          modeButtons={processedModeButtons}
+          onSettingsUpdate={setUrlSearch}
+          onToggleModeButton={_toggleModeButton}
+        />
+        <PlanTripButton
+          id="plan-trip"
+          onClick={_planTrip}
+          title={intl.formatMessage({
+            id: 'components.BatchSettings.planTripTooltip'
+          })}
         >
-          <StyledDateTimePreview hideButton />
-        </StyledDateTimePreviewContainer>
-        */}
-        <ModeSelectorContainer squashed={!spacedOutModeSelector}>
-          <MetroModeSelector
-            accentColor={baseColor}
-            activeHoverColor={accentColor.toHexString()}
-            fillModeIcons={fillModeIcons}
-            label={intl.formatMessage({
-              id: 'components.BatchSearchScreen.modeSelectorLabel'
-            })}
-            modeButtons={processedModeButtons}
-            onSettingsUpdate={setUrlSearch}
-            onToggleModeButton={_toggleModeButton}
-          />
-          <PlanTripButton
-            id="plan-trip"
-            onClick={_planTrip}
-            title={intl.formatMessage({
-              id: 'components.BatchSettings.planTripTooltip'
-            })}
-          >
-            <StyledIconWrapper style={{ fontSize: '1.6em' }}>
-              {hasValidLocation(currentQuery, 'from') &&
-              hasValidLocation(currentQuery, 'to') &&
-              !!activeSearch ? (
-                <SyncAlt />
-              ) : (
-                <Search />
-              )}
-            </StyledIconWrapper>
-          </PlanTripButton>
-        </ModeSelectorContainer>
-      </MainSettingsRow>
-      {/* dateTimeExpanded && (
-        <DateTimeModalContainer id="date-time-modal">
-          <DateTimeModal />
-        </DateTimeModalContainer>
-      ) */}
-    </>
+          <StyledIconWrapper style={{ fontSize: '1.6em' }}>
+            {hasValidLocation(currentQuery, 'from') &&
+            hasValidLocation(currentQuery, 'to') &&
+            !!activeSearch ? (
+              <SyncAlt />
+            ) : (
+              <Search />
+            )}
+          </StyledIconWrapper>
+        </PlanTripButton>
+      </ModeSelectorContainer>
+    </MainSettingsRow>
   )
 }
 
