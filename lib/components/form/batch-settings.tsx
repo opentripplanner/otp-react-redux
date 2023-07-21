@@ -9,22 +9,23 @@ import {
   DelimitedArrayParam,
   encodeQueryParams
 } from 'use-query-params'
-import { Search } from '@styled-icons/fa-solid/Search'
-import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
-import { useIntl } from 'react-intl'
-import React, { useCallback, useContext, useState } from 'react'
-import type {
+import {
   ModeButtonDefinition,
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
+import { Search } from '@styled-icons/fa-solid/Search'
+import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
+import { useIntl } from 'react-intl'
+import React, { useCallback, useContext, useState } from 'react'
+import tinycolor from 'tinycolor2'
 
 import * as apiActions from '../../actions/api'
-import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
+import { generateModeSettingValues } from '../../util/api'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
+import { getFormattedMode } from '../../util/i18n'
 import { StyledIconWrapper } from '../util/styledIcon'
-import tinycolor from 'tinycolor2'
 
 import {
   DateTimeModalContainer,
@@ -34,10 +35,8 @@ import {
   StyledDateTimePreview,
   StyledDateTimePreviewContainer
 } from './batch-styled'
-import { generateModeSettingValues } from '../../util/api'
-import { getFormattedMode } from '../../util/i18n'
-
-import DateTimeModal from './date-time-modal'
+import DateTimeButton from './date-time-button'
+// import DateTimeModal from './date-time-modal'
 
 const queryParamConfig = { modeButtons: DelimitedArrayParam }
 
@@ -195,6 +194,8 @@ function BatchSettings({
   return (
     <>
       <MainSettingsRow>
+        <DateTimeButton id="date-time-button" />
+        {/*
         <StyledDateTimePreviewContainer
           aria-controls="date-time-modal"
           aria-expanded={dateTimeExpanded}
@@ -206,6 +207,7 @@ function BatchSettings({
         >
           <StyledDateTimePreview hideButton />
         </StyledDateTimePreviewContainer>
+        */}
         <ModeSelectorContainer squashed={!spacedOutModeSelector}>
           <MetroModeSelector
             accentColor={baseColor}
@@ -237,11 +239,11 @@ function BatchSettings({
           </PlanTripButton>
         </ModeSelectorContainer>
       </MainSettingsRow>
-      {dateTimeExpanded && (
+      {/* dateTimeExpanded && (
         <DateTimeModalContainer id="date-time-modal">
           <DateTimeModal />
         </DateTimeModalContainer>
-      )}
+      ) */}
     </>
   )
 }
