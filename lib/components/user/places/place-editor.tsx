@@ -110,17 +110,19 @@ class PlaceEditor extends Component<Props> {
       intl,
       locationActions.PLACE_EDITOR_LOCATION,
       ({ coords }) => {
+        const { latitude: lat, longitude: lon } = coords
+        // Populate the "address" field with the coordinates at first.
+        // If geocoding succeeds, the resulting address will appear there.
+        this._setLocation({
+          category: 'CURRENT_LOCATION',
+          lat,
+          lon
+        })
         getGeocoder(geocoderConfig)
           .reverse({ point: coords })
           .then(this._setLocation)
           .catch((err: Error) => {
             console.warn(err)
-            const { latitude: lat, longitude: lon } = coords
-            this._setLocation({
-              category: 'CURRENT_LOCATION',
-              lat,
-              lon
-            })
           })
       }
     )
