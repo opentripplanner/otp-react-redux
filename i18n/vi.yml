@@ -103,7 +103,6 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} calo"
     noItineraryToDisplay: Không có hành trình để hiển thị.
-    noTransitFareProvided: Không có thông tin giá vé
     relativeCo2: |
       {co2} CO₂ {isMore, select, true {nhiều} other {ít} } hơn so với xe hơi
     transfers: "{transfers, plural, =0 {} other {# chuyển}}"
@@ -165,10 +164,7 @@ components:
     tooManyPlaces: Địa điểm trung gian tối đa đạt được
   AdvancedOptions:
     bannedRoutes: Chọn các tuyến đường bị cấm…
-    maxBike: Đạp xe tối đa {unitsString}
-    maxWalk: Đi bộ tối đa {unitsString}
     preferredRoutes: Chọn các tuyến đường ưa thích…
-    walkReluctance: Tránh đi bộ
   AfterSignInScreen:
     mainTitle: Chuyển hướng...
     message: >-
@@ -224,7 +220,6 @@ components:
     destination: điểm đến
     origin: điểm xuất phát
     planTripTooltip: Lên kế hoạch cho chuyến đi
-    settings: Cài đặt chuyến đi
     validationMessage: >-
       Vui lòng xác định các khu vực sau để lên kế hoạch cho một chuyến đi:
       {issues}
@@ -313,8 +308,6 @@ components:
     timeWalking: "{time} đi bộ"
   MobileOptions:
     header: Cài đặt tùy chọn tìm kiếm
-  ModeDropdown:
-    exclusiveMode: Chỉ {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Thay đổi hướng sắp xếp
     itinerariesFound: "{itineraryNum} hành trình được tìm thấy"
