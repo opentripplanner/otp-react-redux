@@ -67,7 +67,6 @@ components:
   BatchSettings:
     destination: mål
     planTripTooltip: Planlegg tur
-    settings: Turinnstillinger
   CallTakerPanel:
     advancedOptions: Avanserte innstillinger
     groupSize: "Gruppestørrelse:"
@@ -102,7 +101,6 @@ components:
   NewAccountWizard:
     createNewAccount: Opprett ny konto
     places: Legg til dine steder
-    terms: Opprett ny konto
     verify: Bekreft din e-postadresse
   PhoneNumberEditor:
     invalidPhone: Skriv inn et gyldig telefonnummer.

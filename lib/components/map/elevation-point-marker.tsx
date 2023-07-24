@@ -11,6 +11,14 @@ type Props = {
   showElevationProfile?: boolean
 }
 
+const ElevationMarker = styled.div`
+  background-color: #87cefa;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+`
+
 /**
  * As the OTP user moves the cursor over the elevation tracking chart
  * of a walking or biking leg (to see which point of their itinerary is at which elevation),
@@ -20,14 +28,6 @@ type Props = {
  */
 const ElevationPointMarker = (props: Props) => {
   const { diagramLeg, elevationPoint, showElevationProfile } = props
-
-  const ElevationMarker = styled.div`
-    background-color: #87cefa;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    height: 15px;
-    width: 15px;
-  `
 
   // Compute the elevation point marker, if activeLeg and elevation profile is enabled.
   let elevationPointMarker = null
@@ -56,9 +56,4 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-const mapDispatchToProps = {}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ElevationPointMarker)
+export default connect(mapStateToProps)(ElevationPointMarker)

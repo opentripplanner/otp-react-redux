@@ -223,6 +223,7 @@ components:
     shortTitle: Plan Trip
   BatchSearchScreen:
     header: Plan Your Trip
+    modeSelectorLabel: Select a transit mode
   BatchSettings:
     dateTimeSettingsLabel: Date/Time Settings
     destination: destination
