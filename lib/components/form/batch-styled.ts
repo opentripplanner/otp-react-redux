@@ -5,7 +5,6 @@ import {
 import styled, { css } from 'styled-components'
 
 import { commonInputCss, modeButtonButtonCss } from './styled'
-import DateTimePreview from './date-time-preview'
 
 const activeCss = css`
   background: #d5d5d5;
@@ -41,26 +40,6 @@ export const Button = styled.button`
   ${buttonCss}
 `
 
-export const StyledDateTimePreviewContainer = styled(Button)<{
-  expanded?: boolean
-}>`
-  ${buttonCss}
-  margin-right: 5px;
-  max-width: 120px;
-  min-width: 90px;
-  padding: 0;
-  position: relative;
-  width: 100%;
-  ${(props) => (props.expanded ? activeCss : null)}
-`
-
-export const StyledDateTimePreview = styled(DateTimePreview)`
-  font-size: 12px;
-  margin-right: 5px;
-  padding: 4px 5px;
-  text-align: left;
-  white-space: nowrap;
-`
 export const SettingsPreview = styled(Button)<{ expanded?: boolean }>`
   margin-right: 5px;
   position: relative;
