@@ -16,8 +16,8 @@ import styled, { css } from 'styled-components'
 
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
-import { StyledDateTimePreview } from './batch-styled'
 import DateTimeModal from './date-time-modal'
+import DateTimePreviewContent from './date-time-preview-content'
 
 const boxShadowCss = css`
   box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px;
@@ -155,7 +155,7 @@ export default function DateTimeButton({
         // Required by linter settings
         type="button"
       >
-        <StyledDateTimePreview hideButton />
+        <DateTimePreviewContent />
         <InvisibleA11yLabel>Invis label text</InvisibleA11yLabel>
       </button>
       {renderDropdown && (
