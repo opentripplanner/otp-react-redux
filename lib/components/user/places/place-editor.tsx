@@ -12,11 +12,10 @@ import {
   IntlShape,
   WrappedComponentProps
 } from 'react-intl'
-import { GeocoderConfig } from '@opentripplanner/geocoder/lib/geocoders/types'
 import { Location } from '@opentripplanner/types'
 import { LocationSelectedEvent } from '@opentripplanner/location-field/lib/types'
 import coreUtils from '@opentripplanner/core-utils'
-import getGeocoder from '@opentripplanner/geocoder'
+import getGeocoder, { GeocoderConfig } from '@opentripplanner/geocoder'
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 

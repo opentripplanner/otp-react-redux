@@ -2469,10 +2469,10 @@
     isomorphic-mapzen-search "^1.6.1"
     lodash.memoize "^4.1.2"
 
-"@opentripplanner/geocoder@^1.4.0", "@opentripplanner/geocoder@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.4.1.tgz#ee1aa00ce6938ab7a7b9ed4e0fa894a226352ee1"
-  integrity sha512-P2tvUkJRYcuT71UMC5MalJuHwVCT+JXw/C/rAVTrwhvFXn+4mceHlBBNLXGzQyzVceBE5lER0xC1PB7xBQeL0w==
+"@opentripplanner/geocoder@^1.4.0", "@opentripplanner/geocoder@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.4.2.tgz#0f827dffca42c7f7a23063b54990a291dd028b80"
+  integrity sha512-yzMVrKXEHO6Y50j9kntk1+odvHaqn9K9D4aKJAd+EabhiZckesfScLb0updmWRUloEWjN45nuDSFto8fbU7Uiw==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@conveyal/lonlat" "^1.4.1"
