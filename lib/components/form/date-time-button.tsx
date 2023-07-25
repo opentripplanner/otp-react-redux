@@ -39,7 +39,8 @@ const ButtonWrapper = styled.span`
     width: 120px;
   }
 
-  & > button:hover {
+  & > button:hover,
+  & > button[aria-expanded='true'] {
     background: #ddd;
     ${boxShadowCss}
   }
@@ -147,7 +148,6 @@ export default function DateTimeButton({
   return (
     <ButtonWrapper>
       <button
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...interactionProps}
         // Separate handler to communicate to the parent element
         // which item had a popup triggered using the keyboard.
@@ -169,7 +169,6 @@ export default function DateTimeButton({
           returnFocus={itemWithKeyboard === id}
         >
           <HoverPanel
-            // This library relies on prop spreading
             {...getFloatingProps()}
             // TODO: Matches ID on Header element in SubSettingsPane
             // aria-labelledby={`metro-mode-selector-${modeButton.key}-button-label`}

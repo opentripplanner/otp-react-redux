@@ -17,7 +17,7 @@ import {
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import { useIntl } from 'react-intl'
-import React, { useCallback, useContext } from 'react'
+import React, { useCallback, useContext, useState } from 'react'
 import tinycolor from 'tinycolor2'
 
 import * as apiActions from '../../actions/api'
@@ -84,6 +84,11 @@ function BatchSettings({
   spacedOutModeSelector
 }: Props) {
   const intl = useIntl()
+
+  // State that holds the id of the active element triggered via keyboard.
+  // It is used to enable/disable hover effects to avoid keyboard focus being stolen
+  // and overlapping popups on mouse hover.
+  const [itemWithKeyboard, setItemWithKeyboard] = useState<string>(null)
 
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
@@ -186,7 +191,14 @@ function BatchSettings({
 
   return (
     <MainSettingsRow>
-      <DateTimeButton id="date-time-button" />
+      <DateTimeButton
+        id="date-time-button"
+        itemWithKeyboard={itemWithKeyboard}
+        onPopupClose={useCallback(() => {
+          setItemWithKeyboard(null)
+        }, [setItemWithKeyboard])}
+        onPopupKeyboardExpand={setItemWithKeyboard}
+      />
       <ModeSelectorContainer squashed={!spacedOutModeSelector}>
         <MetroModeSelector
           accentColor={baseColor}
