@@ -30,9 +30,12 @@ const ButtonWrapper = styled.span`
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    height: 51px;
-    padding: 0;
+    font-size: 12px;
+    height: 100%;
+    padding: 4px 5px;
+    text-align: left;
     transition: all 250ms cubic-bezier(0.27, 0.01, 0.38, 1.06);
+    white-space: nowrap;
     width: 120px;
   }
 
@@ -43,6 +46,7 @@ const ButtonWrapper = styled.span`
 `
 
 const HoverPanel = styled.div`
+  max-width: 100vw;
   padding: 0 10px;
   width: 400px;
   z-index: 100;
@@ -52,8 +56,6 @@ const HoverInnerContainer = styled.div`
   background: #fff;
   border-radius: 4px;
   color: #2e2e2e;
-  font-size: 90%;
-  font-weight: bold;
   padding: 0px 20px 10px;
   ${boxShadowCss}
 `

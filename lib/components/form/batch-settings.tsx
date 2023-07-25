@@ -33,7 +33,6 @@ import {
   PlanTripButton
 } from './batch-styled'
 import DateTimeButton from './date-time-button'
-// import DateTimeModal from './date-time-modal'
 
 const queryParamConfig = { modeButtons: DelimitedArrayParam }
 

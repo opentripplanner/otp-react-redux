@@ -115,6 +115,11 @@ export const MainSettingsRow = styled.div`
   gap: 5px 0;
   justify-content: space-between;
   margin-bottom: 5px;
+
+  label {
+    /* Cancel bottom margin of bootstrap labels in mode selector. */
+    margin-bottom: 0;
+  }
 `
 
 // FIXME: This is identical to StyledSettingsSelectorPanel, with a
