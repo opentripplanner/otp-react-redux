@@ -232,7 +232,6 @@ components:
     departAt: 出发 {departTime, time, short}
     editDepartOrArrival: 编辑出发或到达时间
     leaveNow: 现在离开
-    range: "{startTime, time, short} 到 {endTime, time, short}"
   DateTimeScreen:
     header: 设置日期/时间
   DefaultItinerary:

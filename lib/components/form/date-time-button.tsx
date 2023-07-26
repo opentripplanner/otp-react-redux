@@ -151,7 +151,7 @@ export default function DateTimeButton({
       >
         <InvisibleA11yLabel>
           <span id="date-time-settings-label">
-            <FormattedMessage id="components.BatchSettings.dateTimeSettingsLabel" />
+            <FormattedMessage id="components.DateTimePreview.editDepartOrArrival" />
           </span>
           {' - '}
         </InvisibleA11yLabel>
