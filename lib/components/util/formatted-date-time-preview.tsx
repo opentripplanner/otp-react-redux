@@ -10,7 +10,10 @@ interface Props {
  * Returns a FormattedMessage component for date time preview strings such that i18n IDs
  * are hardcoded and can be kept track of by format.js CLI tools
  */
-const FormattedTimePreview = ({ departArrive, time }: Props): JSX.Element => {
+const FormattedTimePreview = ({
+  departArrive,
+  time
+}: Props): JSX.Element | null => {
   switch (departArrive) {
     case 'NOW':
       return <FormattedMessage id="components.DateTimePreview.leaveNow" />
