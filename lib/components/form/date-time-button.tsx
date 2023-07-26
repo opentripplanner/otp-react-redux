@@ -11,6 +11,7 @@ import {
   useInteractions,
   useRole
 } from '@floating-ui/react'
+import { FormattedMessage } from 'react-intl'
 import React, { useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
 
@@ -156,8 +157,13 @@ export default function DateTimeButton({
         // Required by linter settings
         type="button"
       >
+        <InvisibleA11yLabel>
+          <span id="date-time-settings-label">
+            <FormattedMessage id="components.BatchSettings.dateTimeSettingsLabel" />
+          </span>
+          {' - '}
+        </InvisibleA11yLabel>
         <DateTimePreviewContent />
-        <InvisibleA11yLabel>Invis label text</InvisibleA11yLabel>
       </button>
       {renderDropdown && (
         <FloatingFocusManager
@@ -169,8 +175,7 @@ export default function DateTimeButton({
         >
           <HoverPanel
             {...getFloatingProps()}
-            // TODO: Matches ID on Header element in SubSettingsPane
-            // aria-labelledby={`metro-mode-selector-${modeButton.key}-button-label`}
+            aria-labelledby="date-time-settings-label"
             ref={floating}
             style={{
               left: x ?? 0,
