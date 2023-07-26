@@ -19,7 +19,7 @@ import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 import { activeCss, boxShadowCss } from './batch-styled'
 import DateTimeModal from './date-time-modal'
-import DateTimePreviewContent from './date-time-preview-content'
+import DateTimePreview from './date-time-preview'
 
 const ButtonWrapper = styled.span`
   position: relative;
@@ -155,7 +155,7 @@ export default function DateTimeButton({
           </span>
           {' - '}
         </InvisibleA11yLabel>
-        <DateTimePreviewContent />
+        <DateTimePreview />
       </button>
       {open && (
         <FloatingFocusManager
