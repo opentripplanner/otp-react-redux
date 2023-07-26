@@ -12,7 +12,7 @@ import {
   useRole
 } from '@floating-ui/react'
 import { FormattedMessage } from 'react-intl'
-import React, { HTMLAttributes, useCallback, useRef } from 'react'
+import React, { HTMLAttributes, useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
 
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
@@ -71,10 +71,6 @@ const Arrow = styled.div`
 `
 
 interface DateTimeButtonProps extends HTMLAttributes<HTMLSpanElement> {
-  itemWithKeyboard?: string
-  onPopupClose: () => void
-  onPopupKeyboardExpand: (id: string) => void
-  onToggle: () => void
   open: boolean
   setOpen: (arg: boolean) => void
 }
@@ -83,24 +79,21 @@ interface DateTimeButtonProps extends HTMLAttributes<HTMLSpanElement> {
  * Button and popup component for the date & time selector.
  */
 export default function DateTimeButton({
-  id,
-  itemWithKeyboard,
-  onPopupClose,
-  onPopupKeyboardExpand,
-  onToggle,
   open,
   setOpen,
   style
 }: DateTimeButtonProps): JSX.Element {
   const arrowRef = useRef(null)
+  // State used to keep the popup open when triggered by keyboard while moving the mouse around.
+  const [openWithKeyboard, setOpenWithKeyboard] = useState(false)
   const onOpenChange = useCallback(
     (value) => {
       setOpen(value)
-      if (!value && typeof onPopupClose === 'function') {
-        onPopupClose()
+      if (!value) {
+        setOpenWithKeyboard(false)
       }
     },
-    [onPopupClose, setOpen]
+    [setOpen, setOpenWithKeyboard]
   )
   const {
     context,
@@ -119,8 +112,8 @@ export default function DateTimeButton({
   const { getFloatingProps, getReferenceProps } = useInteractions([
     useHover(context, {
       // Enable hover only if no popup has been triggered via keyboard.
-      // (This is to avoid focus being stolen by hovering out of another button.)
-      enabled: !itemWithKeyboard,
+      // (This keeps the keyboard-triggered popups open while moving mouse around.)
+      enabled: !openWithKeyboard,
       handleClose: safePolygon({
         blockPointerEvents: false,
         buffer: 0,
@@ -136,14 +129,12 @@ export default function DateTimeButton({
 
   const handleButtonClick = useCallback(
     (e) => {
-      if (typeof onPopupKeyboardExpand === 'function') {
-        onPopupKeyboardExpand(id)
-      }
+      setOpenWithKeyboard(true)
       if (typeof interactionProps.onClick === 'function') {
         interactionProps.onClick(e)
       }
     },
-    [id, interactionProps, onPopupKeyboardExpand]
+    [interactionProps]
   )
 
   return (
@@ -172,7 +163,7 @@ export default function DateTimeButton({
           // Restore the keyboard focus AND show focus cue on hovering out of the label
           // only if this component triggered the popup using the keyboard.
           // (Don't show focus cue if the popup was not triggered via keyboard.)
-          returnFocus={itemWithKeyboard === id}
+          returnFocus={openWithKeyboard}
         >
           <HoverPanel
             {...getFloatingProps()}

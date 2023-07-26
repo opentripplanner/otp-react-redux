@@ -85,11 +85,6 @@ function BatchSettings({
 }: Props) {
   const intl = useIntl()
 
-  // State that holds the id of the active element triggered via keyboard.
-  // It is used to enable/disable hover effects to avoid keyboard focus being stolen
-  // and overlapping popups on mouse hover.
-  const [itemWithKeyboard, setItemWithKeyboard] = useState<string>(null)
-
   // Whether the date/time selector is open
   const [dateTimeOpen, setDateTimeOpen] = useState(false)
 
@@ -208,10 +203,6 @@ function BatchSettings({
   return (
     <MainSettingsRow onMouseEnter={checkModeSelectorPopup}>
       <DateTimeButton
-        id="date-time-button"
-        itemWithKeyboard={itemWithKeyboard}
-        onPopupClose={setItemWithKeyboard}
-        onPopupKeyboardExpand={setItemWithKeyboard}
         open={dateTimeOpen}
         setOpen={setDateTimeOpen}
         // Prevent, in many cases (not all), the hover on date/time selector when mode selector has a popup open.
