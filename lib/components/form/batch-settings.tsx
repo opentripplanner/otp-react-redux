@@ -39,7 +39,6 @@ const queryParamConfig = { modeButtons: DelimitedArrayParam }
 // TYPESCRIPT TODO: better types
 type Props = {
   activeSearch: any
-  config: any
   currentQuery: any
   enabledModeButtons: string[]
   fillModeIcons?: boolean
@@ -50,7 +49,6 @@ type Props = {
   routingQuery: any
   setUrlSearch: (evt: any) => void
   spacedOutModeSelector?: boolean
-  urlSearchParams: URLSearchParams
 }
 
 // This method is used to daisy-chain a series of functions together on a given value
@@ -257,7 +255,6 @@ const mapStateToProps = (state: any) => {
   )
   return {
     activeSearch: getActiveSearch(state),
-    config: state.otp.config,
     currentQuery: state.otp.currentQuery,
     // TODO: Duplicated in apiv2.js
     enabledModeButtons:
@@ -270,8 +267,7 @@ const mapStateToProps = (state: any) => {
     modeButtonOptions: state.otp.config?.modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
     modeSettingValues,
-    spacedOutModeSelector: state.otp?.config?.modes?.spacedOut,
-    urlSearchParams
+    spacedOutModeSelector: state.otp?.config?.modes?.spacedOut
   }
 }
 
