@@ -1,11 +1,15 @@
 import styled, { css } from 'styled-components'
 
-const activeCss = css`
+export const activeCss = css`
   background: #d5d5d5;
 `
 
 const buttonTransitionCss = css`
   transition: all 250ms ease-out;
+`
+
+export const boxShadowCss = css`
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px;
 `
 
 // TODO: this needs to be in line with the mode selector buttons, ideally importing the styles
@@ -22,7 +26,7 @@ export const buttonCss = css`
   }
 
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px;
+    ${boxShadowCss}
   }
 
   svg {
@@ -52,8 +56,8 @@ export const PlanTripButton = styled(Button)`
 `
 
 export const ModeSelectorContainer = styled.div<{ squashed?: boolean }>`
-  display: flex;
   align-items: flex-start;
+  display: flex;
   float: right;
 
   ${PlanTripButton} {

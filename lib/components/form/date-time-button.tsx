@@ -12,16 +12,13 @@ import {
   useRole
 } from '@floating-ui/react'
 import React, { useCallback, useRef, useState } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
+import { activeCss, boxShadowCss } from './batch-styled'
 import DateTimeModal from './date-time-modal'
 import DateTimePreviewContent from './date-time-preview-content'
-
-const boxShadowCss = css`
-  box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px;
-`
 
 const ButtonWrapper = styled.span`
   position: relative;
@@ -41,18 +38,20 @@ const ButtonWrapper = styled.span`
 
   & > button:hover,
   & > button[aria-expanded='true'] {
-    background: #d5d5d5;
+    ${activeCss}
     ${boxShadowCss}
   }
 `
 
 const HoverPanel = styled.div`
+  min-width: min(400px, 100vw);
   max-width: 100vw;
   padding: 0 10px;
-  width: 400px;
+  width: 33vw;
   z-index: 100;
 `
 
+// Ideally, import styles below from mode selector package.
 const HoverInnerContainer = styled.div`
   background: #fff;
   border-radius: 4px;
