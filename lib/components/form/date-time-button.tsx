@@ -41,7 +41,7 @@ const ButtonWrapper = styled.span`
 
   & > button:hover,
   & > button[aria-expanded='true'] {
-    background: #ddd;
+    background: #d5d5d5;
     ${boxShadowCss}
   }
 `
