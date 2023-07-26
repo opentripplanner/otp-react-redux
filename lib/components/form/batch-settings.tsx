@@ -90,6 +90,12 @@ function BatchSettings({
   // and overlapping popups on mouse hover.
   const [itemWithKeyboard, setItemWithKeyboard] = useState<string>(null)
 
+  // Whether the date/time selector is open
+  const [dateTimeOpen, setDateTimeOpen] = useState(false)
+
+  // Whether the mode selector has a popup open
+  const [modeSelectorPopup, setModeSelectorPopup] = useState(false)
+
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
@@ -183,6 +189,16 @@ function BatchSettings({
     [enabledModeButtons, setUrlSearch]
   )
 
+  /**
+   * Check whether the mode selector is showing a popup.
+   */
+  const checkModeSelectorPopup = useCallback(() => {
+    const modeSelectorPopup = document.querySelector(
+      '.metro-mode-selector div[role="dialog"]'
+    )
+    setModeSelectorPopup(!!modeSelectorPopup)
+  }, [])
+
   // We can rely on this existing, as there is a default
   const baseColor = getComputedStyle(document.documentElement).getPropertyValue(
     '--main-base-color'
@@ -190,16 +206,22 @@ function BatchSettings({
   const accentColor = tinycolor(baseColor).darken(10)
 
   return (
-    <MainSettingsRow>
+    <MainSettingsRow onMouseEnter={checkModeSelectorPopup}>
       <DateTimeButton
         id="date-time-button"
         itemWithKeyboard={itemWithKeyboard}
-        onPopupClose={useCallback(() => {
-          setItemWithKeyboard(null)
-        }, [setItemWithKeyboard])}
+        onPopupClose={setItemWithKeyboard}
         onPopupKeyboardExpand={setItemWithKeyboard}
+        open={dateTimeOpen}
+        setOpen={setDateTimeOpen}
+        // Prevent, in many cases (not all), the hover on date/time selector when mode selector has a popup open.
+        style={{ pointerEvents: modeSelectorPopup ? 'none' : undefined }}
       />
-      <ModeSelectorContainer squashed={!spacedOutModeSelector}>
+      <ModeSelectorContainer
+        squashed={!spacedOutModeSelector}
+        // Prevent hover effect on mode selector when date selector is activated via keyboard.
+        style={{ pointerEvents: dateTimeOpen ? 'none' : undefined }}
+      >
         <MetroModeSelector
           accentColor={baseColor}
           activeHoverColor={accentColor.toHexString()}

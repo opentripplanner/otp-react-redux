@@ -12,7 +12,7 @@ import {
   useRole
 } from '@floating-ui/react'
 import { FormattedMessage } from 'react-intl'
-import React, { useCallback, useRef, useState } from 'react'
+import React, { HTMLAttributes, useCallback, useRef } from 'react'
 import styled from 'styled-components'
 
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
@@ -56,7 +56,6 @@ const HoverPanel = styled.div`
 const HoverInnerContainer = styled.div`
   background: #fff;
   border-radius: 4px;
-  color: #2e2e2e;
   padding: 0px 20px 10px;
   ${boxShadowCss}
 `
@@ -71,12 +70,13 @@ const Arrow = styled.div`
   ${boxShadowCss}
 `
 
-interface DateTimeButtonProps {
-  id: string
+interface DateTimeButtonProps extends HTMLAttributes<HTMLSpanElement> {
   itemWithKeyboard?: string
   onPopupClose: () => void
   onPopupKeyboardExpand: (id: string) => void
   onToggle: () => void
+  open: boolean
+  setOpen: (arg: boolean) => void
 }
 
 /**
@@ -87,9 +87,11 @@ export default function DateTimeButton({
   itemWithKeyboard,
   onPopupClose,
   onPopupKeyboardExpand,
-  onToggle
+  onToggle,
+  open,
+  setOpen,
+  style
 }: DateTimeButtonProps): JSX.Element {
-  const [open, setOpen] = useState(false)
   const arrowRef = useRef(null)
   const onOpenChange = useCallback(
     (value) => {
@@ -118,7 +120,7 @@ export default function DateTimeButton({
     useHover(context, {
       // Enable hover only if no popup has been triggered via keyboard.
       // (This is to avoid focus being stolen by hovering out of another button.)
-      enabled: itemWithKeyboard === null,
+      enabled: !itemWithKeyboard,
       handleClose: safePolygon({
         blockPointerEvents: false,
         buffer: 0,
@@ -130,7 +132,6 @@ export default function DateTimeButton({
     useDismiss(context)
   ])
 
-  const renderDropdown = open
   const interactionProps = getReferenceProps()
 
   const handleButtonClick = useCallback(
@@ -146,7 +147,7 @@ export default function DateTimeButton({
   )
 
   return (
-    <ButtonWrapper>
+    <ButtonWrapper style={style}>
       <button
         {...interactionProps}
         // Separate handler to communicate to the parent element
@@ -165,7 +166,7 @@ export default function DateTimeButton({
         </InvisibleA11yLabel>
         <DateTimePreviewContent />
       </button>
-      {renderDropdown && (
+      {open && (
         <FloatingFocusManager
           context={context}
           // Restore the keyboard focus AND show focus cue on hovering out of the label
