@@ -17,7 +17,7 @@ import styled from 'styled-components'
 
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
-import { activeCss, boxShadowCss } from './batch-styled'
+import { activeCss, boxShadowCss, buttonHeightPixels } from './batch-styled'
 import DateTimeModal from './date-time-modal'
 import DateTimePreview from './date-time-preview'
 
@@ -29,7 +29,7 @@ const ButtonWrapper = styled.span`
     border: none;
     cursor: pointer;
     font-size: 12px;
-    height: 100%;
+    height: ${buttonHeightPixels}px;
     padding: 4px 5px;
     text-align: left;
     transition: all 250ms cubic-bezier(0.27, 0.01, 0.38, 1.06);
