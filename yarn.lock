@@ -2720,7 +2720,7 @@
     "@opentripplanner/base-map" "^3.0.11"
     "@opentripplanner/core-utils" "^8.2.1"
 
-"@opentripplanner/types@^6.0.0-alpha.8":
+"@opentripplanner/types@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.0.0.tgz#3dabebd404c88030f4191f08c7692d72ca2e3c8d"
   integrity sha512-mwwj2WzkdCoG2KUYaR/4I2JkcuXr1fFUJpP4nk10YbRgzyGtGLaGIdiTXNYpwgk/5//pMHQ5Qa6psWrHpqRm1A==
