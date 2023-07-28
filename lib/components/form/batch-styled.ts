@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-export const buttonHeightPixels = 51
+export const buttonPixels = 51
 
 export const activeCss = css`
   background: #d5d5d5;
@@ -18,9 +18,9 @@ export const boxShadowCss = css`
 export const buttonCss = css`
   border-radius: 5px;
   border: 0px;
-  height: ${buttonHeightPixels}px;
+  height: ${buttonPixels}px;
   margin: 0px;
-  width: 51px;
+  width: ${buttonPixels}px;
   ${buttonTransitionCss}
 
   &:active {
