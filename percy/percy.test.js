@@ -340,9 +340,7 @@ test('OTP-RR', async () => {
 
   // Open Trip Viewer
   await page.waitForTimeout(2000)
-  const [tripViewerButton] = await page.$x(
-    "//button[contains(., 'Trip Viewer')]"
-  )
+  const [tripViewerButton] = await page.$x("//a[contains(., 'Trip Viewer')]")
 
   // If the trip viewer button didn't appear, perhaps we need to click the itinerary again
   if (!tripViewerButton) {

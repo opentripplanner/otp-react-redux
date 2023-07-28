@@ -1,7 +1,4 @@
 {
-  "ignoredIds": [
-    "otpUi.TripDetails.transitFareUnknown"
-  ],
   "groups": {
     "components.OTP2ErrorRenderer.*.body": [
       "LOCATION_NOT_FOUND",
