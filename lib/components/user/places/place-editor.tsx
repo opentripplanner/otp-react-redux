@@ -84,7 +84,7 @@ class PlaceEditor extends Component<Props> {
   static contextType = ComponentContext
 
   _setLocation = (location: Location) => {
-    const { intl, setTouched, setValues, values } = this.props
+    const { intl, setValues, values } = this.props
     const { category, lat, lon, name } = location
     setValues({
       ...values,
@@ -97,7 +97,6 @@ class PlaceEditor extends Component<Props> {
       lat,
       lon
     })
-    setTouched({ address: true })
   }
 
   _handleLocationChange = (e: LocationSelectedEvent) => {
