@@ -190,7 +190,7 @@ function BatchSettings({
       '.metro-mode-selector div[role="dialog"]'
     )
     setModeSelectorPopup(!!modeSelectorPopup)
-  }, [])
+  }, [setModeSelectorPopup])
 
   // We can rely on this existing, as there is a default
   const baseColor = getComputedStyle(document.documentElement).getPropertyValue(
@@ -199,11 +199,11 @@ function BatchSettings({
   const accentColor = tinycolor(baseColor).darken(10)
 
   return (
-    <MainSettingsRow onMouseEnter={checkModeSelectorPopup}>
+    <MainSettingsRow onMouseMove={checkModeSelectorPopup}>
       <DateTimeButton
         open={dateTimeOpen}
         setOpen={setDateTimeOpen}
-        // Prevent, in many cases (not all), the hover on date/time selector when mode selector has a popup open.
+        // Prevent the hover on date/time selector when mode selector has a popup open via keyboard.
         style={{ pointerEvents: modeSelectorPopup ? 'none' : undefined }}
       />
       <ModeSelectorContainer
