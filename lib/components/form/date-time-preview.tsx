@@ -15,7 +15,7 @@ interface Props {
   timeZone: string
 }
 
-const DateTimePreviewContent = ({
+const DateTimePreview = ({
   date,
   departArrive,
   time,
@@ -49,4 +49,4 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-export default connect(mapStateToProps)(DateTimePreviewContent)
+export default connect(mapStateToProps)(DateTimePreview)
