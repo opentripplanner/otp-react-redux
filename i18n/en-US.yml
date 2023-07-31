@@ -102,6 +102,7 @@ common:
     "yes": "Yes"
   itineraryDescriptions:
     calories: "{calories, number} Cal"
+    fareUnknown: No fare information
     noItineraryToDisplay: No itinerary to display.
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
@@ -223,6 +224,7 @@ components:
     shortTitle: Plan Trip
   BatchSearchScreen:
     header: Plan Your Trip
+    modeSelectorLabel: Select a transit mode
   BatchSettings:
     dateTimeSettingsLabel: Date/Time Settings
     destination: destination

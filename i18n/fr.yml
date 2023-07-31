@@ -109,6 +109,7 @@ common:
     "yes": Oui
   itineraryDescriptions:
     calories: "{calories, number} kcal"
+    fareUnknown: Tarif inconnu
     noItineraryToDisplay: Aucun trajet à afficher.
     relativeCo2: |
       {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
@@ -234,6 +235,7 @@ components:
     shortTitle: Planifier un trajet
   BatchSearchScreen:
     header: Votre trajet
+    modeSelectorLabel: Sélectionnez un mode de transport
   BatchSettings:
     dateTimeSettingsLabel: Paramètres Date/Heure
     destination: destination
