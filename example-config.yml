@@ -4,6 +4,11 @@ api:
   port: 8001
 # v2: false
 
+# Determines if the header brand should be clickable or not. If set to true, 
+# clicking the header brand will go back to the main trip planner page and wipe out any
+# results.
+# brandClickable: true/false
+
 # Add Bugsnag key for error reporting
 # bugsnag:
 #   key: BUGSNAG_KEY
@@ -172,6 +177,8 @@ geocoder:
   # This allows the location field dropdown headers to be colored based on Pelias layer
   #resultsColors:
   #  stops: "#007fae"
+  # Override the default number (3) of suggestions returned per category
+  #resultsCount: 5
 
 # example config for an ArcGIS geocoder
 # (https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm)
@@ -194,21 +201,42 @@ geocoder:
 
 # Use this mode config for the enhanced Transit+ config
 modes:
-  # This is the default behavior for flex merging.
-  # If set to false, each FLEX mode (FLEX_EGRESS,FLEX_ACCESS,FLEX_DIRECT) will 
-  # be treated separately. If set to true, a single FLEX mode will automatically 
-  # be expanded and reduced to those three modes.
-  mergeFlex: true 
-  modeOptions:
-    - mode: TRANSIT
-    - mode: WALK
-    - mode: CAR
-    - mode: BICYCLE
-    - mode: RENT
-      icon: mobile
-      # This overrides the label generated from the i18n. Use when defining modes that are not supported by OTP i18n
-      # label: Rental 
-      
+  # Definition for the mode buttons to display in trip form
+  modeButtons:
+    - iconName: bus
+      key: transit
+      # List of modes to add to the query when this button is enabled
+      modes:
+        - mode: TRANSIT
+    - iconName: bicycle
+      key: bike
+      modes:
+        # Modes can contain a qualifier
+        # See OTP documentation for details
+        - mode: BICYCLE
+        - mode: BICYCLE
+          qualifier: RENT
+    - iconName: car
+      key: car
+      modes:
+        - mode: CAR
+  # Allows initial state to be configured.
+  # Which buttons enabled on load + overriding setting defaults
+  initialState:
+    enabledModeButtons: # Mode button keys enabled by default
+      - transit
+      - bike
+  # Add additional mode settings to show up in mode selector hover panel
+  modeSettingDefinitions:
+    # Corresponding mode; if this mode is found in the button's mode list,
+    # this setting will show up in the hover panel for that button.
+    - applicableMode: TRANSIT
+      default: false # Initial state value
+      # One of the predefined query parameter names.
+      # See OTP-UI ModeSelector component for a list of supported parameter names.
+      key: wheelchair
+      iconName: wheelchair
+      type: CHECKBOX # Possible options: CHECKBOX, SUBMODE, SLIDER, DROPDOWN
   transitModes:
     - mode: BUS
       label: Bus
@@ -222,14 +250,10 @@ modes:
     - mode: GONDOLA
       label: Aerial Tram
 
+  # Potentially deprecated
   accessModes:
     - mode: BICYCLE
       label: Transit + Bike
-
-  bicycleModes:
-    - mode: BICYCLE
-      label: Own Bike
-      iconWidth: 18
 
 # # The following modules require the datastoreUrl and trinetReDirect properties
 # # to be set. Note: Most of these components are currently only configured for
@@ -296,7 +320,7 @@ itinerary:
   #  electronicRegular: "SmartCard Fare"
   #  student: "Student Fare"
   # One fare will always be shown by default
-  #defaultFareKey: electronicRegular
+  defaultFareType: { mediumId: null, riderCategoryId: null }
 
   # The following settings must be set to these values to use the new
   # "Metro" UI. The settings can be used without the Metro UI, but
@@ -520,11 +544,6 @@ itinerary:
 
 ### Localization section to provide language/locale settings
 #localization:
-#  # An ambient currency should be defined here (defaults to USD).
-#  # In some components such as DefaultItinerary, we display a cost element
-#  # that falls back to $0.00 (or its equivalent in the configured ambient currency
-#  # and in the user-selected locale) if no fare or currency info is available.
-#  currency: 'USD'
 #  defaultLocale: 'en-US'
 
 ### If using OTP Middleware, you can define the optional phone number options below.

@@ -1,3 +1,4 @@
+import { connect } from 'react-redux'
 import {
   ControlLabel,
   FormControl,
@@ -5,38 +6,40 @@ import {
   HelpBlock
 } from 'react-bootstrap'
 import { Field, FormikProps } from 'formik'
-import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import {
+  FormattedMessage,
+  injectIntl,
+  IntlShape,
+  WrappedComponentProps
+} from 'react-intl'
+import { Location } from '@opentripplanner/types'
+import { LocationSelectedEvent } from '@opentripplanner/location-field/lib/types'
 import coreUtils from '@opentripplanner/core-utils'
+import getGeocoder, { GeocoderConfig } from '@opentripplanner/geocoder'
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
-import type { Location } from '@opentripplanner/types'
-import type { WrappedComponentProps } from 'react-intl'
 
+import * as locationActions from '../../../actions/location'
 import { capitalizeFirst, getErrorStates } from '../../../util/ui'
 import { ComponentContext } from '../../../util/contexts'
 import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'
 import { getFormattedPlaces } from '../../../util/i18n'
 import { StyledIconWrapper } from '../../util/styledIcon'
+import { UserSavedLocation } from '../types'
 import ButtonGroup from '../../util/button-group'
 import FormattedValidationError from '../../util/formatted-validation-error'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
-import {
-  makeLocationFieldLocation,
-  PlaceLocationField
-} from './place-location-field'
+import { PlaceLocationField } from './place-location-field'
 
-// TODO: Share with OTP middleware user types.
-interface Fields {
-  address?: string
-  icon?: string
-  lat?: number
-  lon?: number
-  name?: string
-  type?: string
-}
-
-type Props = WrappedComponentProps & FormikProps<Fields>
+type Props = WrappedComponentProps &
+  FormikProps<UserSavedLocation> & {
+    geocoderConfig: GeocoderConfig
+    getCurrentPosition: (
+      ...args: Parameters<typeof locationActions.getCurrentPosition>
+    ) => void
+    intl: IntlShape
+  }
 
 const { isMobile } = coreUtils.ui
 
@@ -61,6 +64,18 @@ const StyledFormGroup = styled(FormGroup)`
 `
 
 /**
+ * Create a LocationField location object from a persisted user location object.
+ */
+function makeLocationFieldLocation(favoriteLocation: UserSavedLocation) {
+  const { address, lat, lon } = favoriteLocation
+  return {
+    lat,
+    lon,
+    name: address
+  }
+}
+
+/**
  * Contains the fields for editing a favorite place.
  * This component uses Formik props that are passed
  * within the Formik context set up by FavoritePlaceScreen.
@@ -68,19 +83,48 @@ const StyledFormGroup = styled(FormGroup)`
 class PlaceEditor extends Component<Props> {
   static contextType = ComponentContext
 
-  _handleLocationChange = (
-    _: IntlShape, // Ignore intl object.
-    { location }: { location: Location }
-  ) => {
-    const { setTouched, setValues, values } = this.props
-    const { lat, lon, name } = location
+  _setLocation = (location: Location) => {
+    const { intl, setValues, values } = this.props
+    const { category, lat, lon, name } = location
     setValues({
       ...values,
-      address: name,
+      address:
+        // If the raw current location is passed without a name attribute (i.e. the address),
+        // set the "address" as the formatted coordinates of the current location at that time.
+        category === 'CURRENT_LOCATION'
+          ? intl.formatMessage({ id: 'common.coordinates' }, { lat, lon })
+          : name,
       lat,
       lon
     })
-    setTouched({ address: true })
+  }
+
+  _handleLocationChange = (e: LocationSelectedEvent) => {
+    this._setLocation(e.location)
+  }
+
+  _handleGetCurrentPosition = () => {
+    const { geocoderConfig, getCurrentPosition, intl } = this.props
+    getCurrentPosition(
+      intl,
+      locationActions.PLACE_EDITOR_LOCATION,
+      ({ coords }) => {
+        const { latitude: lat, longitude: lon } = coords
+        // Populate the "address" field with the coordinates at first.
+        // If geocoding succeeds, the resulting address will appear there.
+        this._setLocation({
+          category: 'CURRENT_LOCATION',
+          lat,
+          lon
+        })
+        getGeocoder(geocoderConfig)
+          .reverse({ point: coords })
+          .then(this._setLocation)
+          .catch((err: Error) => {
+            console.warn(err)
+          })
+      }
+    )
   }
 
   render() {
@@ -172,6 +216,7 @@ class PlaceEditor extends Component<Props> {
 
             <PlaceLocationField
               className="form-control"
+              getCurrentPosition={this._handleGetCurrentPosition}
               inputPlaceholder={
                 isFixed
                   ? intl.formatMessage(
@@ -183,10 +228,10 @@ class PlaceEditor extends Component<Props> {
                     })
               }
               isRequired
-              isValid={!!errors.address}
               location={makeLocationFieldLocation(place)}
               locationType="to"
               onLocationSelected={this._handleLocationChange}
+              selfValidate={!!errorStates.address}
               showClearButton={false}
               static={isMobile()}
             />
@@ -203,4 +248,17 @@ class PlaceEditor extends Component<Props> {
   }
 }
 
-export default injectIntl(PlaceEditor)
+const mapStateToProps = (state: any) => {
+  return {
+    geocoderConfig: state.otp.config.geocoder
+  }
+}
+
+const mapDispatchToProps = {
+  getCurrentPosition: locationActions.getCurrentPosition
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(PlaceEditor))

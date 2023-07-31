@@ -164,21 +164,24 @@ if (OTP_RR_PERCY_MOBILE) {
     // click the little pattern arrow
     await page.click('#open-route-button-Green')
 
-    await page.waitForSelector('#headsign-selector')
-    const secondPatternOption = await page.$$eval(
-      'option',
-      (options) => options.find((o) => o.innerText.includes('Vine City'))?.value
-    )
-    await page.select('select#headsign-selector', secondPatternOption)
-
     await page.waitForSelector('#headsign-selector-label')
+
+    await page.waitForTimeout(500)
+
+    await page.click('#headsign-selector-label')
+
+    await page.waitForTimeout(500)
+
+    const [patternOption] = await page.$x("//button[contains(., 'Vine City')]")
+    await patternOption.click()
+
     await page.waitForTimeout(1000)
 
     await percySnapshotWithWait(page, 'Mobile Route Viewer Showing Green Line')
 
     // Open stop viewer
     const [patternStopButton] = await page.$x(
-      "//button[contains(., 'Ashby Station')]"
+      "//button[contains(@name, 'Ashby Station')]"
     )
     await patternStopButton.click()
     await page.waitForSelector('.stop-viewer')
@@ -191,7 +194,7 @@ if (OTP_RR_PERCY_MOBILE) {
     await page.waitForTimeout(1000)
 
     await page.waitForSelector('.welcome-location')
-    await page.click('.welcome-location div span input')
+    await page.click('.welcome-location div input')
     await page.waitForSelector('.to-form-control')
 
     await page.focus('.to-form-control')
@@ -272,19 +275,19 @@ test('OTP-RR', async () => {
 
   // Plan a trip
   await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2023-04-28&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
+    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2023-07-28&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
   )
   await page.waitForNavigation({ waitUntil: 'networkidle2' })
   await page.waitForSelector('.option.metro-itin')
 
   if (!OTP_RR_PERCY_CALL_TAKER) {
     // Change the modes
-    await page.click('button[aria-label="Transit"]')
+    await page.click('label[title="Transit"]')
     await page.click('#plan-trip')
 
     await percySnapshotWithWait(page, 'Metro Itinerary No Transit')
     // Restore transit
-    await page.click('button[aria-label="Transit"]')
+    await page.click('label[title="Transit"]')
 
     // Change the time
     await page.click('.summary')
@@ -292,14 +295,15 @@ test('OTP-RR', async () => {
     await page.keyboard.type('10')
     await page.waitForTimeout(200)
     // Check submode selector
-    await page.click('button[aria-label="Trip Settings"]')
+    await page.hover('label[title="Transit"]')
     await page.waitForTimeout(500)
-    const [streetcarButton] = await page.$x("//span[contains(., 'Streetcar')]")
-    await streetcarButton.click()
-    // Disable accessible routing
-    await page.click('#id-query-param-wheelchair')
+    await page.click('#id-query-param-tram')
 
-    await page.click('button[aria-label="Trip Settings"]')
+    // Disable accessible routing
+    await page.hover('label[title="Transit"]')
+    await page.click('#id-query-param-wheelchair')
+    await percySnapshotWithWait(page, 'Metro Mode Selector Expanded')
+
     await page.waitForTimeout(200)
 
     await page.click('#plan-trip')
@@ -336,9 +340,7 @@ test('OTP-RR', async () => {
 
   // Open Trip Viewer
   await page.waitForTimeout(2000)
-  const [tripViewerButton] = await page.$x(
-    "//button[contains(., 'Trip Viewer')]"
-  )
+  const [tripViewerButton] = await page.$x("//a[contains(., 'Trip Viewer')]")
 
   // If the trip viewer button didn't appear, perhaps we need to click the itinerary again
   if (!tripViewerButton) {
@@ -390,38 +392,32 @@ test('OTP-RR', async () => {
   // click the little pattern arrow
   await page.click('#open-route-button-1')
 
-  await page.waitForSelector('#headsign-selector')
-
+  await page.waitForSelector('#headsign-selector-label')
   await percySnapshotWithWait(page, 'Route Viewer Showing Route 1')
 
   // View multiple patterns
   // Click second option
-  const secondPatternOption = await page.$$eval(
-    'option',
-    (options) => options.find((o) => o.innerText.includes('Moores'))?.value
-  )
-  await page.select('select#headsign-selector', secondPatternOption)
 
-  await page.waitForSelector('#headsign-selector-label')
-  await page.waitForTimeout(1000)
+  await page.click('#headsign-selector-label')
+
+  await page.waitForTimeout(500)
 
   // Click first option
-  const firstPatternOption = await page.$$eval(
-    'option',
-    (options) => options.find((o) => o.innerText.includes('West'))?.value
-  )
-  await page.select('select#headsign-selector', firstPatternOption)
+
+  await page.keyboard.press('Tab')
+  await page.keyboard.press('Enter')
+
   await page.waitForTimeout(1000)
 
   await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 1')
 
   // Stop viewer from pattern viewer
   try {
-    await page.$x("//a[contains(., 'West')]")
+    await page.$x("//button[contains(@name, 'West')]")
   } catch {
     await page.reload({ waitUntil: 'networkidle0' })
   }
-  const [patternStopButton] = await page.$x("//button[contains(., 'West')]")
+  const [patternStopButton] = await page.$x("//button[contains(@name, 'West')]")
   await patternStopButton.click()
   await page.waitForSelector('.stop-viewer')
 
@@ -447,6 +443,12 @@ test('OTP-RR', async () => {
   // Need to explicitly select the first itinerary to reset map position
   await page.goto(`${page.url()}&ui_activeItinerary=1`)
   await page.waitForTimeout(2000)
+
+  if (!OTP_RR_PERCY_CALL_TAKER) {
+    await page.click('label[title="Bike"]')
+    await page.click('#plan-trip')
+    await page.waitForTimeout(5000)
+  }
 
   await percySnapshotWithWait(
     page,

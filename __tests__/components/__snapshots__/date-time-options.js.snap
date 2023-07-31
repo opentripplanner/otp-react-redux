@@ -90,10 +90,10 @@ exports[`components > form > call-taker > date time options should correctly han
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
                 "padding": "0px",
-                "width": "50px",
+                "width": "65px",
               }
             }
-            value="12a"
+            value="12:00 AM"
           />
         </OverlayTrigger>
         <input
@@ -207,10 +207,10 @@ exports[`components > form > call-taker > date time options should correctly han
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
                 "padding": "0px",
-                "width": "50px",
+                "width": "65px",
               }
             }
-            value="12p"
+            value="12:00 PM"
           />
         </OverlayTrigger>
         <input
@@ -324,10 +324,10 @@ exports[`components > form > call-taker > date time options should correctly han
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
                 "padding": "0px",
-                "width": "50px",
+                "width": "65px",
               }
             }
-            value="133"
+            value="1:03 PM"
           />
         </OverlayTrigger>
         <input
@@ -441,10 +441,10 @@ exports[`components > form > call-taker > date time options should correctly han
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
                 "padding": "0px",
-                "width": "50px",
+                "width": "65px",
               }
             }
-            value="133p"
+            value="1:33 PM"
           />
         </OverlayTrigger>
         <input
@@ -558,10 +558,10 @@ exports[`components > form > call-taker > date time options should correctly han
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
                 "padding": "0px",
-                "width": "50px",
+                "width": "65px",
               }
             }
-            value="135p"
+            value="1:35 PM"
           />
         </OverlayTrigger>
         <input
@@ -675,10 +675,10 @@ exports[`components > form > call-taker > date time options should correctly han
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
                 "padding": "0px",
-                "width": "50px",
+                "width": "65px",
               }
             }
-            value="1335"
+            value="1:35 PM"
           />
         </OverlayTrigger>
         <input
@@ -792,10 +792,10 @@ exports[`components > form > call-taker > date time options should render 1`] = 
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
                 "padding": "0px",
-                "width": "50px",
+                "width": "65px",
               }
             }
-            value="12:34"
+            value="12:34 PM"
           />
         </OverlayTrigger>
         <input

@@ -1,118 +1,145 @@
-/* eslint-disable react/prop-types */
-import { Cog } from '@styled-icons/fa-solid/Cog'
+import {
+  addSettingsToButton,
+  MetroModeSelector,
+  populateSettingWithValue
+} from '@opentripplanner/trip-form'
 import { connect } from 'react-redux'
-import { injectIntl, IntlShape } from 'react-intl'
+import {
+  decodeQueryParams,
+  DelimitedArrayParam,
+  encodeQueryParams
+} from 'use-query-params'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
-import coreUtils from '@opentripplanner/core-utils'
-import React, { Component } from 'react'
-import styled from 'styled-components'
+import { useIntl } from 'react-intl'
+import React, { useCallback, useContext, useState } from 'react'
+import type {
+  ModeButtonDefinition,
+  ModeSetting,
+  ModeSettingValues
+} from '@opentripplanner/types'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
-import { combinationFilter } from '../../util/combination-filter'
+import { ComponentContext } from '../../util/contexts'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
-import { getDefaultModes } from '../../util/itinerary'
 import { StyledIconWrapper } from '../util/styledIcon'
+import tinycolor from 'tinycolor2'
 
 import {
-  BatchPreferencesContainer,
   DateTimeModalContainer,
   MainSettingsRow,
+  ModeSelectorContainer,
   PlanTripButton,
-  SettingsPreview,
   StyledDateTimePreview,
   StyledDateTimePreviewContainer
 } from './batch-styled'
-import { Dot } from './styled'
-import BatchPreferences, { replaceTransitMode } from './batch-preferences'
+import { generateModeSettingValues } from '../../util/api'
+import { getFormattedMode } from '../../util/i18n'
+
 import DateTimeModal from './date-time-modal'
-import ModeButtons, { defaultModeOptions } from './mode-buttons'
-import type { Combination } from './batch-preferences'
-import type { Mode } from './mode-buttons'
 
-const ModeButtonsFullWidthContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-  margin-top: 0px;
-
-  /* <legend> is not shown visually. */
-  & > legend {
-    clip: rect(0, 0, 0, 0);
-    height: 0;
-    overflow: hidden;
-    width: 0;
-  }
-`
-
-// Define Mode Button styled components here to avoid circular imports. I.e., we
-// cannot define them in styled.js (because mode-buttons.js imports buttonCss
-// and then we would need to import ModeButtons/StyledModeButton from that file
-// in turn).
-const ModeButtonsFullWidth = styled(ModeButtons)`
-  &:last-child {
-    margin-right: 0px;
-  }
-`
+const queryParamConfig = { modeButtons: DelimitedArrayParam }
 
 // TYPESCRIPT TODO: better types
 type Props = {
   activeSearch: any
   config: any
   currentQuery: any
-  intl: IntlShape
-  modeOptions: Mode[]
-  possibleCombinations: Combination[]
+  enabledModeButtons: string[]
+  fillModeIcons?: boolean
+  modeButtonOptions: ModeButtonDefinition[]
+  modeSettingDefinitions: ModeSetting[]
+  modeSettingValues: ModeSettingValues
+  onPlanTripClick: () => void
   routingQuery: any
-  setQueryParam: (queryParam: any) => void
+  setUrlSearch: (evt: any) => void
+  spacedOutModeSelector?: boolean
+  urlSearchParams: URLSearchParams
 }
 
-type State = {
-  expanded?: string | null
-  selectedModes: string[]
+// This method is used to daisy-chain a series of functions together on a given value
+function pipe<T>(...fns: Array<(arg: T) => T>) {
+  return (value: T) => fns.reduce((acc, fn) => fn(acc), value)
+}
+
+export function setModeButtonEnabled(enabledKeys: string[]) {
+  return (modeButton: ModeButtonDefinition): ModeButtonDefinition => {
+    return {
+      ...modeButton,
+      enabled: enabledKeys.includes(modeButton.key)
+    }
+  }
 }
 
 /**
  * Main panel for the batch/trip comparison form.
  */
-class BatchSettings extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props)
-    this.state = {
-      expanded: null,
-      selectedModes: getDefaultModes(props.modeOptions) || []
-    }
-  }
+function BatchSettings({
+  activeSearch,
+  currentQuery,
+  enabledModeButtons,
+  fillModeIcons,
+  modeButtonOptions,
+  modeSettingDefinitions,
+  modeSettingValues,
+  onPlanTripClick,
+  routingQuery,
+  setUrlSearch,
+  spacedOutModeSelector
+}: Props) {
+  const intl = useIntl()
 
-  _onClickMode = (mode: string) => {
-    const { currentQuery, modeOptions, possibleCombinations, setQueryParam } =
-      this.props
-    const { selectedModes } = this.state
-    const index = selectedModes.indexOf(mode)
-    const enableMode = index === -1
-    const newModes = [...selectedModes]
-    if (enableMode) newModes.push(mode)
-    else newModes.splice(index, 1)
-    // Update selected modes for mode buttons.
-    this.setState({ selectedModes: newModes })
-    // Update the available mode combinations based on the new modes selection.
-    const possibleModes = modeOptions.map((m) => m.mode)
-    const disabledModes = possibleModes.filter((m) => !newModes.includes(m))
-    // Only include a combination if it every required mode is enabled.
-    const newCombinations = possibleCombinations
-      .filter(combinationFilter(newModes))
-      .map(replaceTransitMode(currentQuery.mode))
+  const [dateTimeExpanded, setDateTimeExpanded] = useState<boolean>(false)
+  // @ts-expect-error Context not typed
+  const { ModeIcon } = useContext(ComponentContext)
 
-    setQueryParam({
-      combinations: newCombinations,
-      disabledModes,
-      enabledModes: newModes
-    })
-  }
+  const addModeButtonIcon = useCallback(
+    (def: ModeButtonDefinition) => ({
+      ...def,
+      Icon: function ModeButtonIcon() {
+        return <ModeIcon mode={def.iconName} />
+      }
+    }),
+    [ModeIcon]
+  )
 
-  _planTrip = () => {
-    const { currentQuery, intl, routingQuery } = this.props
+  const populateSettingWithIcon = useCallback(
+    (msd: ModeSetting) => ({
+      ...msd,
+      icon: <ModeIcon mode={msd.iconName} width={16} />
+    }),
+    [ModeIcon]
+  )
+
+  const addCustomSettingLabels = useCallback(
+    (msd: ModeSetting) =>
+      msd.type === 'SUBMODE'
+        ? {
+            ...msd,
+            label: getFormattedMode(msd.addTransportMode.mode, intl)
+          }
+        : msd,
+    [intl]
+  )
+
+  const processedModeSettings = modeSettingDefinitions.map(
+    pipe(
+      populateSettingWithIcon,
+      populateSettingWithValue(modeSettingValues),
+      addCustomSettingLabels
+    )
+  )
+
+  const processedModeButtons = modeButtonOptions.map(
+    pipe(
+      addModeButtonIcon,
+      addSettingsToButton(processedModeSettings),
+      setModeButtonEnabled(enabledModeButtons)
+    )
+  )
+
+  const _planTrip = useCallback(() => {
     // Check for any validation issues in query.
     const issues = []
     if (!hasValidLocation(currentQuery, 'from')) {
@@ -123,6 +150,7 @@ class BatchSettings extends Component<Props, State> {
         intl.formatMessage({ id: 'components.BatchSettings.destination' })
       )
     }
+    onPlanTripClick && onPlanTripClick()
     if (issues.length > 0) {
       // TODO: replace with less obtrusive validation.
       window.alert(
@@ -134,81 +162,65 @@ class BatchSettings extends Component<Props, State> {
       return
     }
     // Close any expanded panels.
-    this.setState({ expanded: null })
+    setDateTimeExpanded(false)
 
     // Plan trip.
     routingQuery()
-  }
+  }, [currentQuery, intl, onPlanTripClick, routingQuery])
 
-  _updateExpanded = (type: string) => ({
-    expanded: this.state.expanded === type ? null : type
-  })
+  const _toggleModeButton = useCallback(
+    (buttonId: string, newState: boolean) => {
+      let newButtons
+      if (newState) {
+        newButtons = [...enabledModeButtons, buttonId]
+      } else {
+        newButtons = enabledModeButtons.filter((c) => c !== buttonId)
+      }
 
-  _toggleDateTime = () => this.setState(this._updateExpanded('DATE_TIME'))
+      // encodeQueryParams serializes the mode buttons for the URL
+      // to get nice looking URL params and consistency
+      setUrlSearch(
+        encodeQueryParams(queryParamConfig, { modeButtons: newButtons })
+      )
+    },
+    [enabledModeButtons, setUrlSearch]
+  )
 
-  _toggleSettings = () => this.setState(this._updateExpanded('SETTINGS'))
+  // We can rely on this existing, as there is a default
+  const baseColor = getComputedStyle(document.documentElement).getPropertyValue(
+    '--main-base-color'
+  )
+  const accentColor = tinycolor(baseColor).darken(10)
 
-  render() {
-    const { activeSearch, config, currentQuery, intl, modeOptions } = this.props
-    const { expanded, selectedModes } = this.state
-    return (
-      <div role="group">
-        <fieldset>
-          <ModeButtonsFullWidthContainer>
-            <legend>
-              {intl.formatMessage({
-                id: 'components.BatchSettings.modeSelector'
-              })}
-            </legend>
-            <ModeButtonsFullWidth
-              className="flex"
-              modeOptions={modeOptions}
-              onClick={this._onClickMode}
-              selectedModes={selectedModes}
-            />
-          </ModeButtonsFullWidthContainer>
-        </fieldset>
-        <MainSettingsRow>
-          <SettingsPreview
-            aria-controls="batch-preferences"
-            aria-expanded={expanded === 'SETTINGS'}
-            aria-label={intl.formatMessage({
-              id: 'components.BatchSettings.settings'
+  return (
+    <>
+      <MainSettingsRow>
+        <StyledDateTimePreviewContainer
+          aria-controls="date-time-modal"
+          aria-expanded={dateTimeExpanded}
+          aria-label={intl.formatMessage({
+            id: 'components.BatchSettings.dateTimeSettingsLabel'
+          })}
+          expanded={dateTimeExpanded}
+          onClick={() => setDateTimeExpanded(!dateTimeExpanded)}
+        >
+          <StyledDateTimePreview hideButton />
+        </StyledDateTimePreviewContainer>
+        <ModeSelectorContainer squashed={!spacedOutModeSelector}>
+          <MetroModeSelector
+            accentColor={baseColor}
+            activeHoverColor={accentColor.toHexString()}
+            fillModeIcons={fillModeIcons}
+            label={intl.formatMessage({
+              id: 'components.BatchSearchScreen.modeSelectorLabel'
             })}
-            expanded={expanded === 'SETTINGS'}
-            onClick={this._toggleSettings}
-          >
-            {coreUtils.query.isNotDefaultQuery(currentQuery, config) && (
-              <Dot className="dot" />
-            )}
-            <StyledIconWrapper size="2x">
-              <Cog />
-            </StyledIconWrapper>
-          </SettingsPreview>
-          {expanded === 'SETTINGS' && (
-            <BatchPreferencesContainer id="batch-preferences">
-              <BatchPreferences />
-            </BatchPreferencesContainer>
-          )}
-
-          <StyledDateTimePreviewContainer
-            aria-controls="date-time-modal"
-            aria-expanded={expanded === 'DATE_TIME'}
-            aria-label="Date/Time settings"
-            expanded={expanded === 'DATE_TIME'}
-            onClick={this._toggleDateTime}
-          >
-            <StyledDateTimePreview hideButton />
-          </StyledDateTimePreviewContainer>
-          {expanded === 'DATE_TIME' && (
-            <DateTimeModalContainer id="date-time-modal">
-              <DateTimeModal />
-            </DateTimeModalContainer>
-          )}
-
+            modeButtons={processedModeButtons}
+            onSettingsUpdate={setUrlSearch}
+            onToggleModeButton={_toggleModeButton}
+          />
           <PlanTripButton
             id="plan-trip"
-            onClick={this._planTrip}
+            onClick={_planTrip}
             title={intl.formatMessage({
               id: 'components.BatchSettings.planTripTooltip'
             })}
@@ -223,28 +235,49 @@ class BatchSettings extends Component<Props, State> {
               )}
             </StyledIconWrapper>
           </PlanTripButton>
-        </MainSettingsRow>
-      </div>
-    )
-  }
+        </ModeSelectorContainer>
+      </MainSettingsRow>
+      {dateTimeExpanded && (
+        <DateTimeModalContainer id="date-time-modal">
+          <DateTimeModal />
+        </DateTimeModalContainer>
+      )}
+    </>
+  )
 }
 
 // connect to the redux store
 // TODO: Typescript
-const mapStateToProps = (state: any) => ({
-  activeSearch: getActiveSearch(state),
-  config: state.otp.config,
-  currentQuery: state.otp.currentQuery,
-  modeOptions: state.otp.config.modes.modeOptions || defaultModeOptions,
-  possibleCombinations: state.otp.config.modes.combinations
-})
+const mapStateToProps = (state: any) => {
+  const urlSearchParams = new URLSearchParams(state.router.location.search)
+  const modeSettingValues = generateModeSettingValues(
+    urlSearchParams,
+    state.otp?.modeSettingDefinitions || [],
+    state.otp.config.modes?.initialState?.modeSettingValues
+  )
+  return {
+    activeSearch: getActiveSearch(state),
+    config: state.otp.config,
+    currentQuery: state.otp.currentQuery,
+    // TODO: Duplicated in apiv2.js
+    enabledModeButtons:
+      decodeQueryParams(queryParamConfig, {
+        modeButtons: urlSearchParams.get('modeButtons')
+      })?.modeButtons ||
+      state.otp.config?.modes?.initialState?.enabledModeButtons ||
+      {},
+    fillModeIcons: state.otp.config.itinerary?.fillModeIcons,
+    modeButtonOptions: state.otp.config?.modes?.modeButtons || [],
+    modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
+    modeSettingValues,
+    spacedOutModeSelector: state.otp?.config?.modes?.spacedOut,
+    urlSearchParams
+  }
+}
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
-  setQueryParam: formActions.setQueryParam
+  setUrlSearch: apiActions.setUrlSearch
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectIntl(BatchSettings))
+export default connect(mapStateToProps, mapDispatchToProps)(BatchSettings)

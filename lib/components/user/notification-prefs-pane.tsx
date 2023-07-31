@@ -8,20 +8,13 @@ import ButtonGroup from '../util/button-group'
 
 import { FakeLabel, InlineStatic } from './styled'
 import { PhoneVerificationSubmitHandler } from './phone-verification-form'
+import { User } from './types'
 import PhoneNumberEditor, {
   PhoneCodeRequestHandler
 } from './phone-number-editor'
 
-interface Fields {
-  notificationChannel: string
-}
-
-interface Props extends FormikProps<Fields> {
-  loggedInUser: {
-    email: string
-    isPhoneNumberVerified?: boolean
-    phoneNumber?: string
-  }
+interface Props extends FormikProps<User> {
+  loggedInUser: User
   onRequestPhoneVerificationCode: PhoneCodeRequestHandler
   onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
   phoneFormatOptions: {

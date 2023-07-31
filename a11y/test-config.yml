@@ -5,6 +5,7 @@ homeTimezone: America/Chicago
 # Default OTP API
 api:
   host: http://localhost:9999
+  v2: true
   # host: http://localhost:8001 # For testing against a local OTP instance
   path: /otp/routers/default
 
@@ -78,6 +79,33 @@ companies:
 
 # Mode selector configuration
 modes:
+  modeButtons:
+    - iconName: bus
+      key: transit
+      label: Transit
+      modes:
+        - mode: TRANSIT
+    - iconName: walk
+      key: walk
+      label: Walk
+      modes:
+        - mode: WALK
+    - iconName: bicycle
+      key: bike
+      label: Bike
+      modes:
+        - mode: BICYCLE
+    - iconName: car
+      key: car
+      label: Car
+      modes:
+        - mode: CAR
+  initialState:
+    enabledModeButtons: 
+      - walk
+      - transit
+      - bike
+    modeSettingValues: 
   transitModes:
     - mode: BUS
       label: Bus

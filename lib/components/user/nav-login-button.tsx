@@ -1,18 +1,29 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import { FormattedMessage, useIntl } from 'react-intl'
-import { NavItem } from 'react-bootstrap'
 import { User } from '@auth0/auth0-react'
+import { User as UserIcon } from '@styled-icons/fa-regular/User'
 import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
 
+import { Dropdown } from '../util/dropdown'
 import { LinkContainerWithQuery } from '../form/connected-links'
+import { NewWindowIconA11y } from '../util/externalLink'
 import { UnstyledButton } from '../util/unstyled-button'
-import Dropdown from '../util/dropdown'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
+import NavbarItem from '../app/nav-item'
 
 const Avatar = styled.img`
   height: 2em;
   margin: -15px 0;
   width: 2em;
+`
+const UnstyledHelpLink = styled.a`
+  display: block;
+  color: inherit;
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
 `
 
 type Link = {
@@ -30,7 +41,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 /**
  * This component displays the sign-in status in the nav bar.
- * - When a user is not logged in: display 'Sign In' as a link or button.
+ * - When a user is not logged in: display 'Log In' as a link or button.
  * - When a user is logged in, display an 'avatar' (retrieved from the profile prop)
  *   and a dropdown button so the user can access more options.
  */
@@ -55,58 +66,79 @@ const NavLoginButton = ({
   if (profile) {
     const displayedName = profile.nickname || profile.name
     return (
-      <Dropdown
-        id="user-selector"
-        label={intl.formatMessage({ id: 'components.SubNav.userMenu' })}
-        name={
-          <span>
-            <Avatar
-              alt={displayedName}
-              src={profile.picture}
-              title={`${displayedName}\n(${profile.email})`}
-            />
-          </span>
-        }
-        pullRight
-      >
-        <li className="header">{displayedName}</li>
+      <li>
+        <Dropdown
+          id="user-selector"
+          label={intl.formatMessage({ id: 'components.SubNav.userMenu' })}
+          name={
+            <span>
+              <Avatar
+                alt={displayedName}
+                src={profile.picture}
+                title={`${displayedName}\n(${profile.email})`}
+              />
+            </span>
+          }
+          pullRight
+        >
+          <li className="header">{displayedName}</li>
 
-        {links &&
-          links.map((link, i) => (
-            <LinkContainerWithQuery
-              exact
-              key={i}
-              target={link.target}
-              to={link.url}
-            >
-              <li>
-                <UnstyledButton>
-                  {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
-                    <FormattedMessage id="components.NavLoginButton.myAccount" />
-                  ) : (
-                    <FormattedMessage id="components.NavLoginButton.help" />
-                  )}
-                </UnstyledButton>
-              </li>
-            </LinkContainerWithQuery>
-          ))}
+          {links &&
+            links.map((link, i) => {
+              if (link.url.startsWith('http')) {
+                return (
+                  <li>
+                    <UnstyledHelpLink href={link.url} target="_blank">
+                      <FormattedMessage id="components.NavLoginButton.help" />
+                      <NewWindowIconA11y
+                        size={12}
+                        style={{ marginLeft: '5px', marginTop: '-3px' }}
+                      />
+                    </UnstyledHelpLink>
+                  </li>
+                )
+              }
+              return (
+                <LinkContainerWithQuery
+                  exact
+                  key={i}
+                  target={link.target}
+                  to={link.url}
+                >
+                  <li>
+                    <UnstyledButton>
+                      {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
+                        <FormattedMessage id="components.NavLoginButton.myAccount" />
+                      ) : (
+                        <FormattedMessage id="components.NavLoginButton.help" />
+                      )}
+                    </UnstyledButton>
+                  </li>
+                </LinkContainerWithQuery>
+              )
+            })}
 
-        <hr role="presentation" />
+          <hr role="presentation" />
 
-        <li>
-          <UnstyledButton onClick={onSignOutClick}>
-            <FormattedMessage id="components.NavLoginButton.signOut" />
-          </UnstyledButton>
-        </li>
-      </Dropdown>
+          <li>
+            <UnstyledButton onClick={onSignOutClick}>
+              <FormattedMessage id="components.NavLoginButton.signOut" />
+            </UnstyledButton>
+          </li>
+        </Dropdown>
+      </li>
     )
   }
 
   // Display the sign-in link if no profile is passed (user is not logged in).
+  const loginText = intl.formatMessage({
+    id: 'components.NavLoginButton.signIn'
+  })
   return (
-    <NavItem {...commonProps} onClick={onSignInClick}>
-      <FormattedMessage id="components.NavLoginButton.signIn" />
-    </NavItem>
+    <NavbarItem {...commonProps} onClick={onSignInClick} title={loginText}>
+      <UserIcon />
+      <InvisibleA11yLabel>{loginText}</InvisibleA11yLabel>
+    </NavbarItem>
   )
 }
 

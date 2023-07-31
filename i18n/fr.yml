@@ -109,12 +109,14 @@ common:
     "yes": Oui
   itineraryDescriptions:
     calories: "{calories, number} kcal"
+    fareUnknown: Tarif inconnu
     noItineraryToDisplay: Aucun trajet à afficher.
     relativeCo2: |
       {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
     transfers: >-
       {transfers, plural, =0 {} one {# correspondance} other {#
       correspondances}}
+  linkOpensNewWindow: (Ouvre une nouvelle fenêtre)
   modes:
     bicycle_rent: En vélo en libre-service
     bike: Vélo
@@ -175,10 +177,9 @@ components:
     tooManyPlaces: Nombre max. de points intermédiaires atteint
   AdvancedOptions:
     bannedRoutes: Choisissez les lignes à éviter…
-    maxBike: Dist. à vélo ({unitsString})
-    maxWalk: Dist. à pied ({unitsString})
+    bikeTolerance: Tolérance au vélo
     preferredRoutes: Choisissez les lignes preferées
-    walkReluctance: Réticence à marcher
+    walkTolerance: Tolérance à la marche
   AfterSignInScreen:
     mainTitle: Redirection...
     message: >-
@@ -233,13 +234,13 @@ components:
   BatchRoutingPanel:
     shortTitle: Planifier un trajet
   BatchSearchScreen:
-    header: Planifiez votre trajet
+    header: Votre trajet
+    modeSelectorLabel: Sélectionnez un mode de transport
   BatchSettings:
+    dateTimeSettingsLabel: Paramètres Date/Heure
     destination: destination
-    modeSelector: Sélecteur de modes
     origin: point de départ
     planTripTooltip: Planifier le trajet
-    settings: Préférences du trajet
     validationMessage: >-
       Veuillez définir les champs suivants afin de planifier votre trajet :
       {issues}
@@ -311,8 +312,8 @@ components:
     refresh: Mettre à jour les prochains passages
   LocationSearch:
     enterLocation: Entrez le lieu
-    setDestination: Choisissez la destination
-    setOrigin: Choisissez le point de départ
+    setDestination: Destination
+    setOrigin: Point de départ
   MapLayers:
     bike-rental: Vélos partagés {companies}
     car-rental: Voitures en location
@@ -326,7 +327,6 @@ components:
     title: Vue panoramique
   MetroUI:
     arriveAt: Vous arrivez à
-    arriveAtTime: Arrivée à {time}
     fromStop: de {stop}
     itineraryDescription: Trajet de {time} par les lignes {routes}
     leaveAt: Partez à
@@ -337,13 +337,14 @@ components:
     timeWalking: "{time} de marche"
   MobileOptions:
     header: Options de recherche
-  ModeDropdown:
-    exclusiveMode: "{mode} uniquement"
   NarrativeItinerariesHeader:
     changeSortDir: Changer l'ordre de tri
-    itinerariesAndIssues: "{itinerariesFound} et {numIssues}"
+    howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés plus bas.
     itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets trouvés} }"
     numIssues: "{issueNum, plural, one {# problème} other {# problèmes} }"
+    resultsSortedBy: >-
+      Résultats triés par {sortSelected}. Pour modifier l'ordre, utilisez le
+      bouton "Trier les résultats" plus bas.
     searching: Recherche...
     selectArrivalTime: Heure d'arrivée
     selectBest: Meilleure option
@@ -351,7 +352,7 @@ components:
     selectDepartureTime: Heure de départ
     selectDuration: Durée
     selectWalkTime: Temps de marche
-    sortBy: Trier par
+    sortResults: Trier les résultats
     viewAll: Toutes les options
   NavLoginButton:
     help: Aide
@@ -359,10 +360,10 @@ components:
     signIn: Se connecter
     signOut: Déconnexion
   NewAccountWizard:
+    createNewAccount: Créez un nouveau compte
     finish: Votre nouveau compte est prêt !
     notifications: Préférences pour les notifications
     places: Ajoutez vos lieux
-    terms: Créez votre nouveau compte
     verify: Vérifiez votre adresse e-mail
   NotFound:
     description: Le contenu que vous avez demandé n'est pas disponible.
@@ -374,6 +375,48 @@ components:
     noneSelect: Ne pas me notifier
     notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
     notificationEmailDetail: "Les courriers de notification seront envoyés à :"
+  OTP2ErrorRenderer:
+    LOCATION_NOT_FOUND:
+      body: >-
+        {inputFieldsCount, plural, =0 {} one {Votre {inputFields} est trop loin}
+        other {Vos {inputFields} sont trop loins}} du réseau routier.
+      header: Lieu inaccessible
+    NO_STOPS_IN_RANGE:
+      body: >-
+        {inputFieldsCount, plural, =0 {} one {Votre {inputFields} est trop loin}
+        other {Vos {inputFields} sont trop loins}} des transports.
+      header: Aucun arrêt a proximité
+    NO_TRANSIT_CONNECTION:
+      body: >-
+        Aucune desserte en transports n'a été trouvée entre vos points de départ
+        et d'arrivée pour la date indiquée.
+      header: Aucune desserte
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: >-
+        Une desserte en transports a été trouvée mais ne correspond pas à vos
+        critères. Veuillez ajuster votre recherche.
+      header: Aucune desserte selon vos critères
+    OUTSIDE_BOUNDS:
+      body: >-
+        {inputFieldsCount, plural, =0 {} one {Votre {inputFields} n'est} other
+        {Vos {inputFields} ne sont}} pas dans la zone de recherche.
+      header: Lieu hors zone de recherche
+    OUTSIDE_SERVICE_PERIOD:
+      body: >-
+        La date indiquée est en dehors de la plage de données disponibles pour
+        la recherche de trajets.
+      header: Date sans données
+    SYSTEM_ERROR:
+      body: Une erreur inconnue s'est produite pendant la recherche.
+      header: Echec de la recherche
+    WALKING_BETTER_THAN_TRANSIT:
+      body: >-
+        Vous pouvez effectuer ce trajet plus rapidement en évitant les
+        transports.
+      header: Transports moins rapides
+    inputFields:
+      FROM: point de départ
+      TO: destination
   PhoneNumberEditor:
     changeNumber: Changer de numéro
     invalidCode: Le code de vérification doit comporter 6 chiffres.
@@ -460,7 +503,7 @@ components:
     shortTitle: Index des lignes
     stopsInDirectionOfTravel: "Arrêts dans cette direction :"
     title: Index des lignes
-    toggleRouteOnMap: Afficher ou masquer cette ligne sur la carte
+    toggleRouteOnMap: Afficher ou masquer la ligne sur la carte
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
     cantSaveTooltip: >-
@@ -486,6 +529,8 @@ components:
     pause: Arrêter
     resume: Reprendre
   SavedTripScreen:
+    itineraryLoaded: Trajet chargé
+    itineraryLoading: Chargement du trajet
     tooManyTrips: >
       Vous avez déjà atteint le nombre maximum de 5 trajets enregistrés.
       Veuillez supprimer les trajets enregistrés qui sont inutilisés, puis
@@ -494,6 +539,8 @@ components:
       Ce nom est déjà utilisé avec un autre trajet. Veuillez choisir un nom
       différent.
     tripNameRequired: Veuillez entrer un nom pour ce trajet.
+  SequentialPaneDisplay:
+    stepNumber: Étape {step} sur {total}
   SessionTimeout:
     body: >-
       Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma
@@ -525,6 +572,7 @@ components:
     flexStop: >-
       Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande. Une
       réservation préalable peut être exigée pour obtenir la desserte.
+    forStop: pour {stopName}
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
     nextArrivals: Prochains passages
@@ -557,7 +605,10 @@ components:
       J'atteste avoir au moins 18 ans et j'ai lu et consens aux
       <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the
       Planificateur de trajets.
-    termsOfStorageStatement: "Facultatif\_: Je consens à ce que le Planificateur de trajets sauvegarde mes recherches afin d'améliorer les transports publics dans ma region. <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>\n"
+    termsOfStorageStatement: >
+      Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes
+      recherches afin d'améliorer les transports publics dans ma region.
+      <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>
   TransitVehicleOverlay:
     in_transit_to: "Prochain arrêt : {stop}"
     incoming_at: Approchant {stop}

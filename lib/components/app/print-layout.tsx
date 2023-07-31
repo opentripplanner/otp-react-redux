@@ -100,7 +100,11 @@ class PrintLayout extends Component<Props, State> {
         <div className="header">
           <div style={{ float: 'right' }}>
             <SpanWithSpace margin={0.25}>
-              <Button bsSize="small" onClick={this._toggleMap}>
+              <Button
+                aria-expanded={this.state.mapVisible}
+                bsSize="small"
+                onClick={this._toggleMap}
+              >
                 <IconWithText Icon={Map}>
                   <FormattedMessage id="components.PrintLayout.toggleMap" />
                 </IconWithText>
@@ -111,7 +115,7 @@ class PrintLayout extends Component<Props, State> {
                 <IconWithText Icon={Print}>{printVerb}</IconWithText>
               </Button>
             </SpanWithSpace>
-            <Button bsSize="small" onClick={this._close}>
+            <Button bsSize="small" onClick={this._close} role="link">
               <IconWithText Icon={Times}>
                 <FormattedMessage id="common.forms.close" />
               </IconWithText>

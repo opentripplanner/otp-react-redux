@@ -2,6 +2,9 @@
 
 <img src="https://github.com/opentripplanner/otp-react-redux/raw/master/otprr.png" width="500" />
 
+[![Join the chat at https://gitter.im/opentripplanner/otp-react-redux](https://badges.gitter.im/repo.png)](https://gitter.im/opentripplanner/otp-react-redux)
+[![Build process badge](https://img.shields.io/github/actions/workflow/status/opentripplanner/otp-react-redux/node-ci.yml)](https://github.com/opentripplanner/otp-react-redux/actions/workflows/node-ci.yml)
+
 A library for writing modern [OpenTripPlanner](http://www.opentripplanner.org/)-compatible multimodal journey planning applications using [React]() and [Redux]().
 
 ## Running the Example
@@ -119,6 +122,6 @@ If changes to a specific language file is needed but not enabled in Weblate, ple
 
 ## Library Documentation
 
-More coming soon...
+You can chat with the main OTP-RR developers in our [Gitter chat](https://gitter.im/opentripplanner/otp-react-redux). Support is not guaranteed, but we may be able to answer questions and assist people wishing to make contributions. 
 
 As of version 2.0, otp-react-redux utilizes React's context API in a number of components. This changed the way that some components receive props such that they will not work properly unless wrapped with the context provider used in the `ResponsiveWebapp` component.

@@ -1,5 +1,5 @@
 import { Leg } from '@opentripplanner/types'
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import styled from 'styled-components'
 
 const Block = styled.span<{ color: string; isOnColoredBackground?: boolean }>`
@@ -25,16 +25,21 @@ const Block = styled.span<{ color: string; isOnColoredBackground?: boolean }>`
   `}
 `
 
-type RouteRendererProps = {
+export type RouteRendererProps = {
   leg: Leg & { onColoredBackground?: boolean }
+  style?: CSSProperties
 }
 
-const DefaultRouteRenderer = ({ leg }: RouteRendererProps): JSX.Element => {
+const DefaultRouteRenderer = ({
+  leg,
+  style
+}: RouteRendererProps): JSX.Element => {
   const routeTitle = leg.routeShortName || leg.route || leg.routeLongName
   return (
     <Block
       color={leg.routeColor || '333333'}
       isOnColoredBackground={leg.onColoredBackground}
+      style={style}
       title={routeTitle}
     >
       {routeTitle}
@@ -42,4 +47,3 @@ const DefaultRouteRenderer = ({ leg }: RouteRendererProps): JSX.Element => {
   )
 }
 export default DefaultRouteRenderer
-export type { RouteRendererProps }

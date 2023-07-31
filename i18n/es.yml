@@ -110,6 +110,7 @@ common:
       {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
       solo
     transfers: "{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}"
+  linkOpensNewWindow: (Abre una nueva ventana)
   modes:
     bicycle_rent: Compartir bicicleta
     bike: Bicicleta
@@ -168,10 +169,7 @@ components:
     tooManyPlaces: Se alcanzó el máximo de lugares intermedios
   AdvancedOptions:
     bannedRoutes: Seleccionar rutas prohibidas…
-    maxBike: Máx de bicicleta {unitsString}
-    maxWalk: Máx caminando {unitsString}
     preferredRoutes: Seleccionar rutas preferidas…
-    walkReluctance: Evasión de caminata
   AfterSignInScreen:
     mainTitle: Redirigiendo…
     message: >-
@@ -229,10 +227,8 @@ components:
     header: Planifique su viaje
   BatchSettings:
     destination: destino
-    modeSelector: Selector de modos
     origin: origen
     planTripTooltip: Planificar viaje
-    settings: Preferencias de viaje
     validationMessage: "Por favor, defina los siguientes campos para planificar un viaje: {issues}"
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
@@ -317,7 +313,6 @@ components:
     title: Imágenes de la calle
   MetroUI:
     arriveAt: Llegaste
-    arriveAtTime: Llegar a {time}
     fromStop: de {stop}
     itineraryDescription: "{time} itinerario en {routes}"
     leaveAt: Su salida
@@ -328,23 +323,27 @@ components:
     timeWalking: "{time} caminando"
   MobileOptions:
     header: Configurar las opciones de búsqueda
-  ModeDropdown:
-    exclusiveMode: Solo {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Cambiar la dirección de clasificación
-    itinerariesAndIssues: "{itinerariesFound} y {numIssues}"
+    howToFindResults: >-
+      Para ver los resultados, consulta el encabezado de los itinerarios
+      encontrados a continuación.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerario encontrado} other {# itinerarios
       encontrados}}
     numIssues: "{issueNum, plural, one {# problema} other {# problemas}}"
-    searching: Encontrando sus opciones…
+    resultsSortedBy: >-
+      Los resultados del viaje están actualmente ordenados por {sortSelected}.
+      Para cambiar la forma en que se ordenan los resultados, utiliza el botón
+      "Ordenar resultados" que aparece a continuación.
+    searching: Buscando tus opciones…
     selectArrivalTime: Hora de llegada
     selectBest: La mejor opción
     selectCost: Costo
     selectDepartureTime: Hora de salida
     selectDuration: Duración
     selectWalkTime: Tiempo de caminata
-    sortBy: Ordenar por
+    sortResults: Ordenar los resultados
     viewAll: Ver todas las opciones
   NavLoginButton:
     help: Ayuda
@@ -352,10 +351,10 @@ components:
     signIn: Acceder
     signOut: Firmar la salida
   NewAccountWizard:
+    createNewAccount: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
     notifications: Preferencias de notificación
     places: Añade tus ubicaciones
-    terms: Crear una nueva cuenta
     verify: Verifique su dirección de correo electrónico
   NotFound:
     description: El contenido que ha solicitado no está disponible.
@@ -462,8 +461,8 @@ components:
       Sólo se pueden controlar los itinerarios que incluyan ride hailing y no
       los alquileres o los viajes en coche.
     saveTripText: Salvar el viaje
-    signInText: Iniciar sesión para guardar el viaje
-    signInTooltip: Por favor, inicie sesión para guardar un viaje.
+    signInText: Inicia sesión para guardar el viaje
+    signInTooltip: Por favor, inicia sesión para guardar el viaje.
   SavedTripEditor:
     editSavedTrip: Editar el viaje guardado
     saveNewTrip: Guardar un nuevo viaje
@@ -479,6 +478,8 @@ components:
     pause: Pausa
     resume: Reanudar
   SavedTripScreen:
+    itineraryLoaded: Itinerario cargado
+    itineraryLoading: Cargando el itinerario
     tooManyTrips: >
       Ya ha alcanzado el máximo de cinco viajes guardados. Por favor, elimine
       los viajes no utilizados de sus viajes guardados e inténtelo de nuevo.
@@ -516,6 +517,7 @@ components:
       Esta es una parada flexible. Los vehículos dejarán y recogerán a los
       pasajeros en esta zona flexible previa solicitud. Es posible que tenga que
       llamar con antelación para el servicio en esta zona.
+    forStop: para {stopName}
     header: Visor de paradas
     loadingText: Cargando la parada...
     nextArrivals: Próximas llegadas

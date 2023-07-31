@@ -164,10 +164,7 @@ components:
     tooManyPlaces: Địa điểm trung gian tối đa đạt được
   AdvancedOptions:
     bannedRoutes: Chọn các tuyến đường bị cấm…
-    maxBike: Đạp xe tối đa {unitsString}
-    maxWalk: Đi bộ tối đa {unitsString}
     preferredRoutes: Chọn các tuyến đường ưa thích…
-    walkReluctance: Tránh đi bộ
   AfterSignInScreen:
     mainTitle: Chuyển hướng...
     message: >-
@@ -218,12 +215,11 @@ components:
   BatchRoutingPanel:
     shortTitle: Lên kế hoạch cho chuyến đi
   BatchSearchScreen:
-    header: Lên kế hoạch cho chuyến đi của bạn
+    header: Kế hoạch chuyến đi
   BatchSettings:
     destination: điểm đến
     origin: điểm xuất phát
     planTripTooltip: Lên kế hoạch cho chuyến đi
-    settings: Cài đặt chuyến đi
     validationMessage: >-
       Vui lòng xác định các khu vực sau để lên kế hoạch cho một chuyến đi:
       {issues}
@@ -303,7 +299,7 @@ components:
     stops: Điểm dừng của phương tiện công cộng
     streets: Đường phố
   MetroUI:
-    arriveAtTime: Đến nơi vào {time}
+    arriveAt: Đến nơi
     fromStop: từ {stop}
     itineraryDescription: "{time} hành trình sử dụng {routes}"
     leaveAt: Bạn rời khỏi
@@ -312,11 +308,8 @@ components:
     timeWalking: "{time} đi bộ"
   MobileOptions:
     header: Cài đặt tùy chọn tìm kiếm
-  ModeDropdown:
-    exclusiveMode: Chỉ {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Thay đổi hướng sắp xếp
-    itinerariesAndIssues: "{itinerariesFound} và {numIssues}"
     itinerariesFound: "{itineraryNum} hành trình được tìm thấy"
     numIssues: "{issueNum} vấn đề"
     searching: Tìm lựa chọn của bạn…
@@ -326,7 +319,6 @@ components:
     selectDepartureTime: Giờ khởi hành
     selectDuration: Thời hạn
     selectWalkTime: Thời gian đi bộ
-    sortBy: Sắp xếp theo
     viewAll: Xem tất cả các tùy chọn
   NavLoginButton:
     help: Giúp đỡ
@@ -334,10 +326,10 @@ components:
     signIn: Đăng nhập
     signOut: Đăng xuất
   NewAccountWizard:
+    createNewAccount: Tạo tài khoản mới
     finish: Hoàn tất việc thiết lập tài khoản!
     notifications: Tùy chọn thông báo
     places: Thêm vị trí của bạn
-    terms: Tạo tài khoản mới
     verify: Xác minh địa chỉ email của bạn
   NotFound:
     description: Nội dung bạn yêu cầu không có sẵn.

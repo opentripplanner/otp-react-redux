@@ -1,3 +1,4 @@
+import { NavbarButton } from '../app/nav-item'
 import React, {
   HTMLAttributes,
   KeyboardEvent,
@@ -12,25 +13,13 @@ interface Props extends HTMLAttributes<HTMLElement> {
   id: string
   label?: string
   listLabel?: string
-  name: JSX.Element
+  name?: JSX.Element | string
+  nav?: boolean
   pullRight?: boolean
 }
 
-// TODO: make this a button once bootstrap is removed
-const DropdownButton = styled.a`
-  border: none;
-  color: inherit;
-  display: block;
-  transition: all 0.1s ease-in-out;
+const DropdownButton = styled(NavbarButton)``
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.05) !important;
-    cursor: pointer;
-  }
-  &.active {
-    background: rgba(0, 0, 0, 0.1) !important;
-  }
-`
 const DropdownMenu = styled.ul`
   background-clip: padding-box;
   background-color: #fff;
@@ -45,6 +34,7 @@ const DropdownMenu = styled.ul`
   position: absolute;
   right: 0;
   top: 100%;
+  width: 100%;
   z-index: 1000;
 
   hr {
@@ -70,7 +60,6 @@ const DropdownMenu = styled.ul`
     background: rgba(0, 0, 0, 0.1);
   }
 `
-const DropdownContainer = styled.li``
 
 /**
  * Helper method to find the element within dropdown menu at the given offset
@@ -96,8 +85,9 @@ function getEntryRelativeTo(
  * a floating div is rendered below the "name" with list contents inside. Clicking anywhere
  * outside the floating div will close the dropdown.
  */
-const Dropdown = ({
+export const Dropdown = ({
   children,
+  className,
   id,
   label,
   listLabel,
@@ -145,6 +135,7 @@ const Dropdown = ({
           break
         case ' ':
         case 'Enter':
+          e.preventDefault()
           element.click()
           if (element.id === `${id}-label` || element.id === `${id}-wrapper`) {
             toggleOpen()
@@ -157,10 +148,12 @@ const Dropdown = ({
   )
 
   return (
-    <DropdownContainer
+    <span
+      className={className}
       id={`${id}-wrapper`}
       onKeyDown={_handleKeyDown}
       ref={containerRef}
+      role="presentation"
       style={{ float: pullRight ? 'right' : 'left' }}
     >
       <DropdownButton
@@ -173,12 +166,12 @@ const Dropdown = ({
         className={`${open && 'active'}`}
         id={`${id}-label`}
         onClick={toggleOpen}
-        role="button"
         style={style}
         tabIndex={0}
+        title={label}
       >
-        {name}
-        <span className="caret" role="presentation" style={{ marginLeft: 5 }} />
+        <span>{name}</span>
+        <span className="caret" role="presentation" />
       </DropdownButton>
       {open && (
         <DropdownMenu
@@ -192,8 +185,30 @@ const Dropdown = ({
           {children}
         </DropdownMenu>
       )}
-    </DropdownContainer>
+    </span>
   )
 }
 
-export default Dropdown
+export const SortResultsDropdown = styled(Dropdown)`
+    position: relative;
+
+    ${DropdownButton} {
+      border-radius: 5px;
+      padding: 3px 7px;
+      background: #F8FAFB;
+      color: inherit;
+
+      span.caret {
+        color: inherit;
+      }
+
+      &:hover {
+        background: #fff;
+        color: inherit;
+      }
+      &.active {
+        background: #fff;
+      }
+    }
+  }
+`

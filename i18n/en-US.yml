@@ -102,10 +102,12 @@ common:
     "yes": "Yes"
   itineraryDescriptions:
     calories: "{calories, number} Cal"
+    fareUnknown: No fare information
     noItineraryToDisplay: No itinerary to display.
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
+  linkOpensNewWindow: (Opens new window)
   modes:
     bicycle_rent: Bikeshare
     bike: Bike
@@ -153,7 +155,6 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
       other {# sec}}
-  linkOpensNewWindow: "(Opens new window)"
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Prefer accessible trips by default
@@ -165,10 +166,9 @@ components:
     tooManyPlaces: Maximum intermediate places reached
   AdvancedOptions:
     bannedRoutes: Select banned routes…
-    maxBike: Max bike {unitsString}
-    maxWalk: Max walk {unitsString}
+    bikeTolerance: Bike Tolerance
     preferredRoutes: Select preferred routes...
-    walkReluctance: Walk Reluctance
+    walkTolerance: Walk Tolerance
   AfterSignInScreen:
     mainTitle: Redirecting...
     message: >-
@@ -224,18 +224,18 @@ components:
     shortTitle: Plan Trip
   BatchSearchScreen:
     header: Plan Your Trip
+    modeSelectorLabel: Select a transit mode
   BatchSettings:
+    dateTimeSettingsLabel: Date/Time Settings
     destination: destination
-    modeSelector: Mode Selector
     origin: origin
     planTripTooltip: Plan trip
-    settings: Trip Settings
     validationMessage: "Please define the following fields to plan a trip: {issues}"
   BeforeSignInScreen:
     mainTitle: Signing you in
     message: >
-      In order to access this page you will need to sign in. Please wait while
-      we redirect you to the login page...
+      In order to access this page you will need to log in. Please wait while we
+      redirect you to the login page...
   CallTakerPanel:
     advancedOptions: Advanced options
     groupSize: "Group size:"
@@ -312,7 +312,6 @@ components:
     title: Imagery of the street
   MetroUI:
     arriveAt: You arrive
-    arriveAtTime: Arrive at {time}
     fromStop: from {stop}
     itineraryDescription: "{time} itinerary using {routes}"
     leaveAt: You leave
@@ -323,15 +322,16 @@ components:
     timeWalking: "{time} walking"
   MobileOptions:
     header: Set Search Options
-  ModeDropdown:
-    exclusiveMode: "{mode} only"
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
-    itinerariesAndIssues: "{itinerariesFound} and {numIssues}"
+    howToFindResults: To view results, see the Itineraries Found heading below.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
     numIssues: "{issueNum, plural, one {# issue} other {# issues} }"
+    resultsSortedBy: >-
+      Trip results currently sorted by {sortSelected}. To change the way results
+      are sorted, use the "Sort Results" button below.
     searching: Finding your options...
     selectArrivalTime: Arrival time
     selectBest: Best option
@@ -339,18 +339,18 @@ components:
     selectDepartureTime: Departure time
     selectDuration: Duration
     selectWalkTime: Walk time
-    sortBy: Sort By
+    sortResults: Sort results
     viewAll: View all options
   NavLoginButton:
     help: Help
     myAccount: My account
-    signIn: Sign in
-    signOut: Sign out
+    signIn: Log in
+    signOut: Log out
   NewAccountWizard:
+    createNewAccount: Create a new account
     finish: Account setup complete!
     notifications: Notification preferences
     places: Add your locations
-    terms: Create a new account
     verify: Verify your email address
   NotFound:
     description: The content you requested is not available.
@@ -360,6 +360,46 @@ components:
     noneSelect: Don't notify me
     notificationChannelPrompt: How would you like to receive notifications?
     notificationEmailDetail: "Notification emails will be sent to:"
+  OTP2ErrorRenderer:
+    LOCATION_NOT_FOUND:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}} not near any streets.
+      header: Location not accessible
+    NO_STOPS_IN_RANGE:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}} not near any transit stops.
+      header: No stops in range
+    NO_TRANSIT_CONNECTION:
+      body: >-
+        No transit connection was found between your origin and destination on
+        the selected day of service.
+      header: No transit connections
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: >-
+        A transit connection was found, but it was outside the search window,
+        try adjusting your search window.
+      header: No transit connection in search window
+    OUTSIDE_BOUNDS:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}} not in the bounds of the trip planner.
+      header: Location outside bounds
+    OUTSIDE_SERVICE_PERIOD:
+      body: >-
+        The date specified is outside the range of data currently loaded into
+        the trip planner.
+      header: Outside service period
+    SYSTEM_ERROR:
+      body: An unknown error happened during the search.
+      header: Trip Planner Failure
+    WALKING_BETTER_THAN_TRANSIT:
+      body: Avoiding transit on your trip will be faster than taking transit.
+      header: Transit isn't the fastest way to make this trip
+    inputFields:
+      FROM: Origin
+      TO: Destination
   PhoneNumberEditor:
     changeNumber: Change number
     invalidCode: Please enter 6 digits for the validation code.
@@ -453,8 +493,8 @@ components:
       Only itineraries that include transit and no rentals or ride hailing can
       be monitored.
     saveTripText: Save trip
-    signInText: Sign in to save trip
-    signInTooltip: Please sign in to save trip.
+    signInText: Log in to save trip
+    signInTooltip: Please log in to save trip.
   SavedTripEditor:
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip
@@ -470,11 +510,15 @@ components:
     pause: Pause
     resume: Resume
   SavedTripScreen:
+    itineraryLoaded: Itinerary loaded
+    itineraryLoading: Loading itinerary
     tooManyTrips: >
       You already have reached the maximum of five saved trips. Please remove
       unused trips from your saved trips, and try again.
     tripNameAlreadyUsed: Another saved trip already uses this name. Please choose a different name.
     tripNameRequired: Please enter a trip name.
+  SequentialPaneDisplay:
+    stepNumber: Step {step} of {total}
   SessionTimeout:
     body: >-
       Your session will expire within a minute. Press 'Continue Session' to keep
@@ -505,6 +549,7 @@ components:
       This is a flex stop. Vehicles will drop off and pick up passengers in this
       flexible zone by request. You may have to call ahead for service in this
       area.
+    forStop: for {stopName}
     header: Stop Viewer
     loadingText: Loading Stop...
     nextArrivals: Next Arrivals

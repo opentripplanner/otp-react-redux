@@ -84,14 +84,12 @@ function NextArrivalForPattern({
     >
       {/* route name */}
       <div className="next-arrival-label">
-        <span
-          className="route-name"
-          style={{ fontSize: routeNameFontSize(routeName) }}
-        >
+        <span className="route-name">
           <RouteRenderer
             isOnColoredBackground={route.operator?.colorMode?.includes('gtfs')}
             // All GTFS bg colors look strange with the top border
             leg={generateFakeLegForRouteRenderer(route, true)}
+            style={{ fontSize: routeNameFontSize(routeName) }}
           />
         </span>
         <span className="overflow-ellipsis" title={toHeadsign}>

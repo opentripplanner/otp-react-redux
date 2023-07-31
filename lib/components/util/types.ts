@@ -83,6 +83,7 @@ export interface ViewedRouteState {
 // Routes have many properties beside id, but none of these are guaranteed.
 export interface ViewedRouteObject {
   id: string
+  longName?: string
   patterns?: Record<string, Pattern>
   pending?: boolean
   shortName?: string
