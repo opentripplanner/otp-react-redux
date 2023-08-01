@@ -27,6 +27,13 @@ const IssueButton = styled.button`
   padding: 2px 4px;
 `
 
+const ItinerariesHeaderContainer = styled.div<{ showHeaderText: boolean }>`
+  display: flex;
+  float: left;
+  gap: 8px;
+  margin-left: ${(props) => (props.showHeaderText ? 'inherit' : 'auto')};
+`
+
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
   errors,
@@ -173,14 +180,7 @@ export default function NarrativeItinerariesHeader({
             // because it falls under the "Plan your trip" <h1> header.
             <InvisibleA11yLabel as="h2">{itinerariesFound}</InvisibleA11yLabel>
           )}
-          <div
-            style={{
-              display: 'flex',
-              float: 'right',
-              gap: 8,
-              marginLeft: showHeaderText ? 'inherit' : 'auto'
-            }}
-          >
+          <ItinerariesHeaderContainer showHeaderText={showHeaderText}>
             {popupTarget && (
               <button onClick={() => setPopupContent(popupTarget)}>
                 <PopupTriggerText compact popupTarget={popupTarget} />
@@ -221,7 +221,7 @@ export default function NarrativeItinerariesHeader({
                 </li>
               ))}
             </SortResultsDropdown>
-          </div>
+          </ItinerariesHeaderContainer>
           <PlanFirstLastButtons />
         </>
       )}

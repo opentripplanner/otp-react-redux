@@ -55,9 +55,14 @@ const StyledLocationField = styled(LocationField)<Props>`
       props.static ? 'padding-left: 10px; padding-right: 5px; width: 100%' : ''}
   }
 `
+
 /**
  * Styled LocationField for setting a favorite place locations using the geocoder.
  */
 export const PlaceLocationField = connectLocationField(StyledLocationField, {
+  actions: {
+    // Set to null so that PlaceEditor can set its own handler.
+    getCurrentPosition: null
+  },
   excludeSavedLocations: true
 })
