@@ -102,6 +102,7 @@ common:
     "yes": "Yes"
   itineraryDescriptions:
     calories: "{calories, number} Cal"
+    fareUnknown: No fare information
     noItineraryToDisplay: No itinerary to display.
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
