@@ -261,12 +261,12 @@ class AmenitiesPanel extends Component<Props, State> {
           {this._renderParkAndRides()}
           {!configCompanies ||
             (configCompanies.find((company) =>
-              company.modes.includes('BICYCLE_RENT')
+              company.modes?.includes('BICYCLE_RENT')
             ) &&
               this._renderBikeRentalStations())}
           {!configCompanies ||
             (configCompanies.find((company) =>
-              company.modes.includes('SCOOTER_RENT')
+              company.modes?.includes('SCOOTER_RENT')
             ) &&
               this._renderVehicleRentalStations())}
         </ul>
