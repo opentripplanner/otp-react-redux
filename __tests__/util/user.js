@@ -9,7 +9,6 @@ describe('util > user', () => {
         expected: {
           address: '123 Main street',
           icon: 'home',
-          id: 'id123',
           lat: 12,
           lon: 34,
           name: '123 Main street',
@@ -28,7 +27,7 @@ describe('util > user', () => {
         expected: {
           address: '123 Main street',
           icon: 'briefcase',
-          id: 'id123',
+
           lat: 12,
           lon: 34,
           name: '123 Main street',
