@@ -437,7 +437,7 @@
   position: relative;
 }
 
-/* Highlight location fileds when they update */
+/* Highlight location fields when they update */
 @keyframes highlight {
   from {
     outline: 0px solid #fff;
