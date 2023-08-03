@@ -287,7 +287,6 @@ components:
     stops: 대중 교통 정류장
     streets: 거리
   MetroUI:
-    fromStop: "{stop}에서부터"
     itineraryDescription: "{routes}을(를) 이용한 {time} 일정"
     leaveAt: 출발
     multipleOptions: 여러 옵션
