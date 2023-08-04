@@ -55,6 +55,7 @@ type Props = {
   routingQuery: any
   setUrlSearch: (evt: any) => void
   spacedOutModeSelector?: boolean
+  updateQueryTimeIfLeavingNow: () => void
   urlSearchParams: URLSearchParams
 }
 
@@ -86,7 +87,8 @@ function BatchSettings({
   onPlanTripClick,
   routingQuery,
   setUrlSearch,
-  spacedOutModeSelector
+  spacedOutModeSelector,
+  updateQueryTimeIfLeavingNow
 }: Props) {
   const intl = useIntl()
 
@@ -165,8 +167,15 @@ function BatchSettings({
     setDateTimeExpanded(false)
 
     // Plan trip.
+    updateQueryTimeIfLeavingNow()
     routingQuery()
-  }, [currentQuery, intl, onPlanTripClick, routingQuery])
+  }, [
+    currentQuery,
+    intl,
+    onPlanTripClick,
+    routingQuery,
+    updateQueryTimeIfLeavingNow
+  ])
 
   const _toggleModeButton = useCallback(
     (buttonId: string, newState: boolean) => {
@@ -277,7 +286,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
-  setUrlSearch: apiActions.setUrlSearch
+  setUrlSearch: apiActions.setUrlSearch,
+  updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BatchSettings)
