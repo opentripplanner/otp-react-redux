@@ -3,6 +3,7 @@ import React, { HTMLAttributes } from 'react'
 
 import { MainPanelContent } from '../../actions/ui-constants'
 
+import NearbyView from './nearby-view'
 import PatternViewer from './pattern-viewer'
 import RouteViewer from './route-viewer'
 import StopViewer from './stop-viewer'
@@ -28,6 +29,8 @@ const ViewerContainer = ({
       return <PatternViewer hideBackButton />
     case MainPanelContent.TRIP_VIEWER:
       return <TripViewer hideBackButton />
+    case MainPanelContent.NEARBY_VIEW:
+      return <NearbyView hideBackButton />
     default:
       // check for stop viewer
       if (isViewingStop) {
