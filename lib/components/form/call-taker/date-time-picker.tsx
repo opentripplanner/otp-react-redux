@@ -243,6 +243,10 @@ const DateTimeOptions = ({
         className="datetime-slim"
         disabled={!dateTime}
         onChange={(e) => {
+          if (!e.target.value) {
+            e.preventDefault()
+            return
+          }
           setDate(e.target.value)
           unsetNow()
         }}
