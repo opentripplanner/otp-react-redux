@@ -55,6 +55,7 @@ type Props = {
   routingQuery: any
   setUrlSearch: (evt: any) => void
   spacedOutModeSelector?: boolean
+  subsettingOverrides: any
   urlSearchParams: URLSearchParams
 }
 
@@ -86,7 +87,8 @@ function BatchSettings({
   onPlanTripClick,
   routingQuery,
   setUrlSearch,
-  spacedOutModeSelector
+  spacedOutModeSelector,
+  subsettingOverrides
 }: Props) {
   const intl = useIntl()
 
@@ -217,6 +219,7 @@ function BatchSettings({
             modeButtons={processedModeButtons}
             onSettingsUpdate={setUrlSearch}
             onToggleModeButton={_toggleModeButton}
+            subsettingOverrides={subsettingOverrides}
           />
           <PlanTripButton
             id="plan-trip"
@@ -271,6 +274,7 @@ const mapStateToProps = (state: any) => {
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
     modeSettingValues,
     spacedOutModeSelector: state.otp?.config?.modes?.spacedOut,
+    subsettingOverrides: state.otp?.config?.modes?.subsettingOverrides,
     urlSearchParams
   }
 }
