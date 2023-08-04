@@ -245,6 +245,7 @@ const DateTimeOptions = ({
         onChange={(e) => {
           if (!e.target.value) {
             e.preventDefault()
+            // TODO: prevent selection from advancing to next field
             return
           }
           setDate(e.target.value)
