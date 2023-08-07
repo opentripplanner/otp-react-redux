@@ -51,7 +51,6 @@ type Props = {
   setUrlSearch: (evt: any) => void
   spacedOutModeSelector?: boolean
   updateQueryTimeIfLeavingNow: () => void
-  urlSearchParams: URLSearchParams
 }
 
 // This method is used to daisy-chain a series of functions together on a given value

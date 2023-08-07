@@ -14,7 +14,7 @@ const FormattedTimePreview = ({
   departArrive,
   time
 }: Props): JSX.Element | null => {
-  if (isNaN(time)) return '---'
+  if (isNaN(time)) return <>---</>
   switch (departArrive) {
     case 'NOW':
       return <FormattedMessage id="components.DateTimePreview.leaveNow" />
