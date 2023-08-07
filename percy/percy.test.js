@@ -381,9 +381,17 @@ test('OTP-RR', async () => {
   await page.focus('input[type="date"]')
   await page.keyboard.type('08072023') // MMDDYYYY format.
   await page.waitForTimeout(2000)
+  // TODO: scroll to the top (Ctrl+ArrowUp) of the schedule table.
+  await page.click('tbody > tr:first-of-type > td')
+  await page.keyboard.down('ControlLeft')
+  await page.keyboard.press('ArrowUp')
+  await page.keyboard.up('ControlLeft')
+  await page.waitForTimeout(500)
   await percySnapshotWithWait(page, 'Schedule Viewer')
 
   // Open route viewer
+  // Triggers mock.har graphql query #7.
+  // FIXME: This action also results in a probably unneeded query to index/stops returning a large dataset.
   const [routeViewerButton] = await page.$x(
     "//button[contains(., 'View Routes')]"
   )
@@ -393,7 +401,8 @@ test('OTP-RR', async () => {
 
   await percySnapshotWithWait(page, 'Route Viewer')
 
-  // Open Specific Route`
+  // Open Specific Route
+  // Triggers mock.har graphql query #8.
   try {
     await page.$x("//span[contains(., 'Marietta Blvd')]")
   } catch {
