@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components'
 export const buttonPixels = 51
 
 export const activeCss = css`
-  background: #d5d5d5;
+  /* Make elements slightly darker on hover. */
+  filter: brightness(90%);
 `
 
 const buttonTransitionCss = css`
