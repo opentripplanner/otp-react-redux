@@ -320,7 +320,7 @@ itinerary:
   #  electronicRegular: "SmartCard Fare"
   #  student: "Student Fare"
   # One fare will always be shown by default
-  #defaultFareKey: electronicRegular
+  defaultFareType: { mediumId: null, riderCategoryId: null }
 
   # The following settings must be set to these values to use the new
   # "Metro" UI. The settings can be used without the Metro UI, but
@@ -544,11 +544,6 @@ itinerary:
 
 ### Localization section to provide language/locale settings
 #localization:
-#  # An ambient currency should be defined here (defaults to USD).
-#  # In some components such as DefaultItinerary, we display a cost element
-#  # that falls back to $0.00 (or its equivalent in the configured ambient currency
-#  # and in the user-selected locale) if no fare or currency info is available.
-#  currency: 'USD'
 #  defaultLocale: 'en-US'
 
 ### If using OTP Middleware, you can define the optional phone number options below.

@@ -21,6 +21,7 @@ import React, { useCallback, useContext, useState } from 'react'
 import tinycolor from 'tinycolor2'
 
 import * as apiActions from '../../actions/api'
+import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
@@ -49,6 +50,8 @@ type Props = {
   routingQuery: any
   setUrlSearch: (evt: any) => void
   spacedOutModeSelector?: boolean
+  updateQueryTimeIfLeavingNow: () => void
+  urlSearchParams: URLSearchParams
 }
 
 // This method is used to daisy-chain a series of functions together on a given value
@@ -79,7 +82,8 @@ function BatchSettings({
   onPlanTripClick,
   routingQuery,
   setUrlSearch,
-  spacedOutModeSelector
+  spacedOutModeSelector,
+  updateQueryTimeIfLeavingNow
 }: Props) {
   const intl = useIntl()
 
@@ -161,8 +165,15 @@ function BatchSettings({
     }
 
     // Plan trip.
+    updateQueryTimeIfLeavingNow()
     routingQuery()
-  }, [currentQuery, intl, onPlanTripClick, routingQuery])
+  }, [
+    currentQuery,
+    intl,
+    onPlanTripClick,
+    routingQuery,
+    updateQueryTimeIfLeavingNow
+  ])
 
   const _toggleModeButton = useCallback(
     (buttonId: string, newState: boolean) => {
@@ -273,7 +284,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
-  setUrlSearch: apiActions.setUrlSearch
+  setUrlSearch: apiActions.setUrlSearch,
+  updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BatchSettings)
