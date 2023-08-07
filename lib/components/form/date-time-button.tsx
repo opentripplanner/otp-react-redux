@@ -127,6 +127,16 @@ export default function DateTimeButton({
 
   const interactionProps = getReferenceProps()
 
+  // ARIA roles are added by the `useRole` hook.
+  // Remove the aria-controls, aria-expanded, and aria-haspopup props from the span, they will
+  // instead be passed to the button for keyboard/screen reader users to trigger the popup.
+  const {
+    'aria-controls': ariaControls,
+    'aria-expanded': ariaExpanded,
+    'aria-haspopup': ariaHasPopup,
+    ...spanInteractionProps
+  } = interactionProps
+
   const handleButtonClick = useCallback(
     (e) => {
       setOpenWithKeyboard(true)
@@ -138,14 +148,17 @@ export default function DateTimeButton({
   )
 
   return (
-    <ButtonWrapper style={style}>
+    <ButtonWrapper
+      {...spanInteractionProps}
+      // This will trigger mouse effects such as showing popup on hover of on check.
+      ref={reference}
+      style={style}
+    >
       <button
         {...interactionProps}
         // Separate handler to communicate to the parent element
         // which item had a popup triggered using the keyboard.
         onClick={handleButtonClick}
-        // This will trigger mouse effects such as showing popup on hover of on check.
-        ref={reference}
         // Required by linter settings
         type="button"
       >
