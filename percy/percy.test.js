@@ -273,8 +273,8 @@ test('OTP-RR', async () => {
 
   // await percySnapshotWithWait(page, 'Main Page (without styling)')
 
-  // Make sure that the main UI has loaded.
-  await page.waitForSelector('#plan-trip')
+  // Make sure that the main UI (incl. map control) has loaded.
+  await page.waitForSelector('.maplibregl-ctrl-zoom-in')
 
   // Plan a trip
   // Triggers mock.har graphql query #1 and #2 (transit and walk-alone queries).
@@ -308,6 +308,7 @@ test('OTP-RR', async () => {
     // Enable accessible routing (this will have no effect on mock query)
     await page.hover('label[title="Transit"]')
     await page.click('#id-query-param-wheelchair')
+    await page.waitForTimeout(200)
     await percySnapshotWithWait(
       page,
       'Metro Transit-Walk Itinerary with Mode Selector Expanded'
@@ -315,8 +316,8 @@ test('OTP-RR', async () => {
 
     await page.waitForTimeout(200)
 
-    await page.click('#plan-trip')
-    await page.waitForTimeout(1000) // wait extra time for all results to load
+    // await page.click('#plan-trip')
+    // await page.waitForTimeout(1000) // wait extra time for all results to load
   } else {
     // take initial screenshot
     await page.waitForTimeout(1000) // wait extra time for all results to load
@@ -376,8 +377,11 @@ test('OTP-RR', async () => {
   await page.waitForSelector('button.link-button.pull-right')
   await page.click('button.link-button.pull-right')
   await page.waitForTimeout(6000) // Slow animation
+  // Request a schedule for a specific date.
+  await page.focus('input[type="date"]')
+  await page.keyboard.type('08072023') // MMDDYYYY format.
+  await page.waitForTimeout(2000)
   await percySnapshotWithWait(page, 'Schedule Viewer')
-  // TODO: is the schedule date wrong?
 
   // Open route viewer
   const [routeViewerButton] = await page.$x(
