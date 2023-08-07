@@ -2585,12 +2585,22 @@
     "@opentripplanner/from-to-location-picker" "^2.1.6"
     flat "^5.0.2"
 
-"@opentripplanner/otp2-tile-overlay@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/otp2-tile-overlay/-/otp2-tile-overlay-1.0.3.tgz#cbec0347c7d6213658900c48371c5f30a25378ee"
-  integrity sha512-Qr3pxeEBFp7nZGsw3ifLVtn5XWCwZPm5zJ7ey/MVrkDCmOq1AXIRtaqu3bHDeSh07ogx9mG6CRF4zEXtVACMMg==
+"@opentripplanner/map-popup@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-2.0.5.tgz#a6974712e841e522b3b2add520e7226dea797c0c"
+  integrity sha512-tpIWibuWjWbeNEK0URI9lRaZfMRZo+8iucWaSJ8uHTLbQyLj0htIRTDx2Jf+WYJVIjsiwjoAzfSSEbzub3lrvA==
   dependencies:
-    "@opentripplanner/map-popup" "^2.0.3"
+    "@opentripplanner/base-map" "^3.0.13"
+    "@opentripplanner/core-utils" "^9.0.0"
+    "@opentripplanner/from-to-location-picker" "^2.1.7"
+    flat "^5.0.2"
+
+"@opentripplanner/otp2-tile-overlay@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/otp2-tile-overlay/-/otp2-tile-overlay-1.0.5.tgz#81f96d17f98bda9d354f11182c9a2b3f29923f48"
+  integrity sha512-TXC9h6T/fZALLqF1fkwxtNk6ZTLHYEHEXXHNjJNQ7tGTG4eA1sKTg2AWYGk9DyD2FjD4nIFgXROVhSXHQGf1mg==
+  dependencies:
+    "@opentripplanner/map-popup" "^2.0.5"
 
 "@opentripplanner/park-and-ride-overlay@^2.0.5":
   version "2.0.5"
