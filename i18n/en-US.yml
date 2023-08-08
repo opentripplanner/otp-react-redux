@@ -523,10 +523,6 @@ components:
       your search.
     header: Session about to timeout!
     keepSession: Continue Session
-  SettingsPreview:
-    defaultPreviewText: |-
-      Transit Options
-      & Preferences
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   StackedPaneDisplay:
