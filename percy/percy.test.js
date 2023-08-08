@@ -273,13 +273,13 @@ test('OTP-RR', async () => {
 
   // await percySnapshotWithWait(page, 'Main Page (without styling)')
 
-  // Make sure that the main UI (incl. map control) has loaded.
+  // Make sure that the main UI (incl. map controls) has loaded.
   await page.waitForSelector('.maplibregl-ctrl-zoom-in')
 
   // Plan a trip
   // Triggers mock.har graphql query #1 and #2 (transit and walk-alone queries).
   await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (908981)%3A%3A33.753837%2C-84.391397&date=2023-08-03&time=16%3A49&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
+    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=-1&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (908981)%3A%3A33.753837%2C-84.391397&date=2023-08-03&time=16%3A49&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
   )
   await page.waitForNavigation({ waitUntil: 'networkidle2' })
   await page.waitForSelector('.option.metro-itin')
@@ -323,7 +323,7 @@ test('OTP-RR', async () => {
     await page.waitForTimeout(1000) // wait extra time for all results to load
     await percySnapshotWithWait(page, 'Call Taker')
 
-    // add intermedaite stop
+    // add intermediate stop
     await page.click(
       '#main > div > div > div > div.sidebar.col-md-4.col-sm-6 > main > div > div.form > button'
     )
@@ -381,12 +381,6 @@ test('OTP-RR', async () => {
   await page.focus('input[type="date"]')
   await page.keyboard.type('08072023') // MMDDYYYY format.
   await page.waitForTimeout(2000)
-  // TODO: scroll to the top (Ctrl+ArrowUp) of the schedule table.
-  await page.click('tbody > tr:first-of-type > td')
-  await page.keyboard.down('ControlLeft')
-  await page.keyboard.press('ArrowUp')
-  await page.keyboard.up('ControlLeft')
-  await page.waitForTimeout(500)
   await percySnapshotWithWait(page, 'Schedule Viewer')
 
   // Open route viewer
