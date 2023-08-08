@@ -375,12 +375,12 @@ components:
       body: >-
         No transit connection was found between your origin and destination on
         the selected day of service, using the vehicle types you selected.
-      header: No transit connections for chosen vehicle types
+      header: No transit connections
     NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
       body: >-
         A transit connection was found, but it was outside the search window,
         try adjusting your search window, using the vehicle types you selected.
-      header: No transit connection for chosen vehicle types in search window
+      header: No transit connection in search window
     OUTSIDE_BOUNDS:
       body: >-
         {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
