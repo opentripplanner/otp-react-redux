@@ -242,7 +242,6 @@ components:
     departAt: Khởi hành {departTime, time, short}
     editDepartOrArrival: Chỉnh sửa thời gian khởi hành hoặc thời gian đến
     leaveNow: Rời đi ngay bây giờ
-    range: "{startTime, time, short} đến {endTime, time, short}"
   DateTimeScreen:
     header: Cài đặt ngày/giờ
   DefaultItinerary:

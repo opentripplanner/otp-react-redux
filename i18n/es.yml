@@ -249,7 +249,6 @@ components:
     departAt: Salida {departTime, time, short}
     editDepartOrArrival: Editar la hora de salida o de llegada
     leaveNow: Salir ahora
-    range: "{startTime, time, short} a {endTime, time, short}"
   DateTimeScreen:
     header: Fijar fecha/hora
   DefaultItinerary:
