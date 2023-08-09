@@ -271,36 +271,34 @@ test('OTP-RR', async () => {
     console.error(`Request failed: ${req.method()} ${req.url()}`)
   })
 
-  // await percySnapshotWithWait(page, 'Main Page (without styling)')
-
   // Make sure that the main UI (incl. map controls) has loaded.
   await page.waitForSelector('.maplibregl-ctrl-zoom-in')
 
   // Plan a trip
-  // Triggers mock.har graphql query #1 and #2 (transit and walk-alone queries).
+  // Triggers mock.har graphql query #1 and #2 (bike-only query, twice).
+  // FIXME: Opening a url with non-default mode params triggers the plan query twice.
   await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=-1&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (908981)%3A%3A33.753837%2C-84.391397&date=2023-08-03&time=16%3A49&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
+    `http://localhost:${MOCK_SERVER_PORT}/#/?modeButtons=walk_bike&ui_activeSearch=44y0eq1ce&fromPlace=Opus%20Music%20Store%2C%20Decatur%2C%20GA%3A%3A33.77505%2C-84.300178&toPlace=Five%20Points%20Station%20%28908981%29%3A%3A33.753837%2C-84.391397&date=2023-08-09&time=10%3A42&arriveBy=false&showIntermediateStops=true&walkSpeed=1.34&ignoreRealtimeUpdates=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
   )
-  await page.waitForNavigation({ waitUntil: 'networkidle2' })
+  // FIXME: Network idle condition seems never met after navigating to above link.
+  // await page.waitForNavigation({ waitUntil: 'networkidle2' })
+  await page.waitForTimeout(2000)
   await page.waitForSelector('.option.metro-itin')
 
   if (!OTP_RR_PERCY_CALL_TAKER) {
-    // // Change the modes
-    // await page.click('label[title="Transit"]')
-    // await page.click('#plan-trip')
+    // Change the modes: Activate Transit and remove Bike.
+    await page.click('label[title="Transit"]')
+    await page.click('label[title="Bike"]')
 
-    // await percySnapshotWithWait(page, 'Metro Itinerary Transit and Walk')
+    // Change the date
+    await page.hover('form > div > span > button')
+    await page.waitForTimeout(200)
+    await page.focus('input[type="date"]')
+    // FIXME: Puppeteer only: On Wednesday 08/09/2023, Monday 08/07/2023 was shown as "Last Sunday"!...
+    await page.keyboard.type('08072023') // MMDDYYYY format.
+    await page.waitForTimeout(200)
 
-    // // Restore transit
-    // await page.click('label[title="Transit"]')
-
-    // // Change the time
-    // await page.click('.summary')
-    // await page.focus('input[type="time"]')
-    // await page.keyboard.type('10')
-    // await page.waitForTimeout(200)
-
-    // Check submode selector
+    // Check submode selector (this will have no effect on mock query)
     await page.hover('label[title="Transit"]')
     await page.waitForTimeout(500)
     await page.click('#id-query-param-tram')
@@ -309,18 +307,20 @@ test('OTP-RR', async () => {
     await page.hover('label[title="Transit"]')
     await page.click('#id-query-param-wheelchair')
     await page.waitForTimeout(200)
+
+    // Triggers mock.har graphql query #3 and #4 (transit and walk-alone queries).
+    await page.hover('#plan-trip')
+    await page.click('#plan-trip')
+    await page.waitForTimeout(1000) // wait extra time for all results to load
+
+    await page.hover('label[title="Transit"]')
+    await page.waitForTimeout(200)
     await percySnapshotWithWait(
       page,
       'Metro Transit-Walk Itinerary with Mode Selector Expanded'
     )
-
-    await page.waitForTimeout(200)
-
     // Hover something else to unhover the mode selector.
     await page.hover('#plan-trip')
-
-    // await page.click('#plan-trip')
-    // await page.waitForTimeout(1000) // wait extra time for all results to load
   } else {
     // take initial screenshot
     await page.waitForTimeout(1000) // wait extra time for all results to load
@@ -352,7 +352,7 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Metro Itinerary Selected')
 
   // Open Trip Viewer
-  // Triggers mock.har graphql query #3 (trip).
+  // Triggers mock.har graphql query #5 (trip).
   await page.waitForTimeout(2000)
   const [tripViewerButton] = await page.$x("//a[contains(., 'Trip Viewer')]")
 
@@ -368,7 +368,7 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Trip Viewer')
 
   // Open stop viewer from trip viewer
-  // Triggers mock.har graphql query #4, #5, and #6 (stop details, nearest places, nearest stops).
+  // Triggers mock.har graphql query #6, #7, and #8 (stop details, nearest places, nearest stops).
   await page.click(
     'div.trip-viewer-body > ol > li:nth-child(3) > div.stop-button-container > button'
   )
@@ -388,7 +388,7 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Schedule Viewer')
 
   // Open route viewer
-  // Triggers mock.har graphql query #7.
+  // Triggers mock.har graphql query #9.
   // FIXME: This action also results in a probably unneeded query to index/stops returning a large dataset.
   const [routeViewerButton] = await page.$x(
     "//button[contains(., 'View Routes')]"
@@ -400,7 +400,8 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Route Viewer')
 
   // Open Specific Route
-  // Triggers mock.har graphql query #8 (route details), #9 and #10 (vehicle positions, twice).
+  // Triggers mock.har graphql query #10 (route details), #11 and #12 (vehicle positions, twice).
+  // FIXME: Investigate why twice.
   try {
     await page.$x("//span[contains(., 'Marietta Blvd')]")
   } catch {
@@ -412,7 +413,8 @@ test('OTP-RR', async () => {
   await page.waitForTimeout(500)
 
   // click the little pattern arrow
-  // Triggers mock.har graphql query #11 and #12 (vehicle positions, twice again).
+  // Triggers mock.har graphql query #13 and #14 (vehicle positions, twice again).
+  // FIXME: Investigate why twice.
   await page.click('#open-route-button-1')
 
   await page.waitForSelector('#headsign-selector-label')
@@ -435,7 +437,7 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 1')
 
   // Stop viewer from pattern viewer
-  // Triggers mock.har graphql query #13 (stop info), #14 (nearest amenities), #15 (stops by radius).
+  // Triggers mock.har graphql query #15 (stop info), #16 (nearest amenities), #17 (stops by radius).
   try {
     await page.$x("//button[contains(@name, 'West')]")
   } catch {
