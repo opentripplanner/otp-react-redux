@@ -232,7 +232,6 @@ components:
     departAt: 출발 {departTime, time, short}
     editDepartOrArrival: 출발 시간 또는 도착 시간 수정
     leaveNow: 지금 출발
-    range: "{startTime, time, short}에서 {endTime, time, short}까지"
   DateTimeScreen:
     header: 날짜/시간 설정
   DefaultItinerary:

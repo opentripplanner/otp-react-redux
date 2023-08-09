@@ -237,7 +237,6 @@ components:
     header: Votre trajet
     modeSelectorLabel: Sélectionnez un mode de transport
   BatchSettings:
-    dateTimeSettingsLabel: Paramètres Date/Heure
     destination: destination
     origin: point de départ
     planTripTooltip: Planifier le trajet
@@ -263,7 +262,6 @@ components:
     departAt: Départ {departTime, time, short}
     editDepartOrArrival: Modifier l'heure de départ ou d'arrivée
     leaveNow: Tout de suite
-    range: "{startTime, time, short} à {endTime, time, short}"
   DateTimeScreen:
     header: Jour et heure du trajet
   DefaultItinerary:
