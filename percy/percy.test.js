@@ -128,153 +128,11 @@ test('OTP-RR Fixed Routes', async () => {
 })
 */
 
-if (OTP_RR_PERCY_MOBILE) {
-  test('OTP-RR Mobile', async () => {
-    const page = await loadPath('/')
-    await page.setUserAgent('android')
-    await page.setViewport({
-      height: 1134,
-      width: 750
-    })
-    // Need to reload to load mobile view properly
-    await page.reload()
-
-    await percySnapshotWithWait(page, 'Mobile Main Page')
-
-    await page.click('.app-menu-icon')
-    // Wait for animation
-    await page.waitForTimeout(200)
-    await percySnapshotWithWait(page, 'Mobile Sidebar')
-
-    await page.click('.app-menu-route-viewer-link')
-    await page.waitForSelector('.route-viewer')
-    await page.waitForTimeout(5000)
-
-    // Open Specific Route`
-    try {
-      await page.$x("//span[contains(., 'Green')]")
-    } catch {
-      await page.reload({ waitUntil: 'networkidle0' })
-    }
-    const [subwayRouteButton] = await page.$x("//span[contains(., 'Green')]")
-    await subwayRouteButton.click()
-
-    await page.waitForTimeout(500)
-
-    // click the little pattern arrow
-    await page.click('#open-route-button-Green')
-
-    await page.waitForSelector('#headsign-selector-label')
-
-    await page.waitForTimeout(500)
-
-    await page.click('#headsign-selector-label')
-
-    await page.waitForTimeout(500)
-
-    const [patternOption] = await page.$x("//button[contains(., 'Vine City')]")
-    await patternOption.click()
-
-    await page.waitForTimeout(1000)
-
-    await percySnapshotWithWait(page, 'Mobile Route Viewer Showing Green Line')
-
-    // Open stop viewer
-    const [patternStopButton] = await page.$x(
-      "//button[contains(@name, 'Ashby Station')]"
-    )
-    await patternStopButton.click()
-    await page.waitForSelector('.stop-viewer')
-    // Screenshot here?
-
-    // Return to main page
-    await page.click('.app-menu-icon')
-    await page.waitForTimeout(1000)
-    await page.click('.app-menu-trip-planner-link span')
-    await page.waitForTimeout(1000)
-
-    await page.waitForSelector('.welcome-location')
-    await page.click('.welcome-location div input')
-    await page.waitForSelector('.to-form-control')
-
-    await page.focus('.to-form-control')
-    await page.keyboard.type('ashby')
-    await page.waitForTimeout(2000)
-    await page.keyboard.press('ArrowDown')
-    await page.waitForTimeout(200)
-    await page.keyboard.press('Enter')
-
-    // Wait for page to load
-    await page.waitForTimeout(300)
-
-    await page.click('.from-form-control')
-    // Wait for page to load
-    await page.waitForTimeout(300)
-
-    await page.focus('.from-form-control')
-    await page.keyboard.type('amazon ATL5')
-    await page.waitForTimeout(2000)
-    await page.keyboard.press('ArrowDown')
-    await page.waitForTimeout(200)
-    await page.keyboard.press('Enter')
-
-    await page.waitForTimeout(300)
-    await page.click('.switch-button')
-
-    await page.waitForSelector('.route-block-wrapper')
-    await percySnapshotWithWait(page, 'Mobile Itinerary Results')
-
-    await page.click('.route-block-wrapper')
-    await percySnapshotWithWait(page, 'Mobile Itinerary Selected')
-
-    await page.click('.button-container:nth-of-type(2)')
-    await page.waitForTimeout(500)
-    await percySnapshotWithWait(page, 'Mobile Printable Itinerary')
-  })
-}
-
-test('OTP-RR', async () => {
-  const page = await loadPath('/')
-  await page.setViewport({
-    height: 1080,
-    width: 1920
-  })
-  page.on('console', async (msg) => {
-    const args = await msg.args()
-    args.forEach(async (arg) => {
-      const val = await arg.jsonValue()
-      // value is serializable
-      if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
-      // value is unserializable (or an empty oject)
-      else {
-        const { description, subtype, type } = arg._remoteObject
-        console.log(
-          `type: ${type}, subtype: ${subtype}, description:\n ${description}`
-        )
-      }
-    })
-  })
-  // log all errors that were logged to the browser console
-  page.on('warn', (warn) => {
-    console.log(warn)
-  })
-  page.on('error', (error) => {
-    console.error(error)
-    console.error(error.stack)
-  })
-  // log all uncaught exceptions
-  page.on('pageerror', (error) => {
-    console.error(`Page Error: ${error}`)
-  })
-  // log all failed requests
-  page.on('requestfailed', (req) => {
-    console.error(`Request failed: ${req.method()} ${req.url()}`)
-  })
-
+async function executeTest(page, isMobile, isCallTaker) {
   // Make sure that the main UI (incl. map controls) has loaded.
   await page.waitForSelector('.maplibregl-ctrl-zoom-in')
 
-  // Plan a trip
+  // Load itinerary from URL
   // Triggers mock.har graphql query #1 and #2 (bike-only query, twice).
   // FIXME: Opening a url with non-default mode params triggers the plan query twice.
   await page.goto(
@@ -285,17 +143,32 @@ test('OTP-RR', async () => {
   await page.waitForTimeout(2000)
   await page.waitForSelector('.option.metro-itin')
 
-  if (!OTP_RR_PERCY_CALL_TAKER) {
+  if (!isCallTaker) {
+    // Edit trip params [mobile-specific]
+    if (isMobile) {
+      await page.click('button.edit-search-button')
+    }
+
     // Change the modes: Activate Transit and remove Bike.
     await page.click('label[title="Transit"]')
-    await page.click('label[title="Bike"]')
-
-    // Change the date
-    await page.hover('form > div > span > button')
     await page.waitForTimeout(200)
+
+    // FIXME: Must click Edit again [mobile-specific]
+    if (isMobile) {
+      await page.click('button.edit-search-button')
+    }
+    await page.click('label[title="Bike"]')
+    await page.waitForTimeout(200)
+    // Change the date
+    // FIXME: Must click Edit again [mobile-specific]
+    if (isMobile) {
+      await page.click('button.edit-search-button')
+    }
+    await page.hover('#date-time-button')
     await page.focus('input[type="date"]')
     // FIXME: Puppeteer only: On Wednesday 08/09/2023, Monday 08/07/2023 was shown as "Last Sunday"!...
     await page.keyboard.type('08072023') // MMDDYYYY format.
+    await page.keyboard.press('Escape')
     await page.waitForTimeout(200)
 
     // Check submode selector (this will have no effect on mock query)
@@ -304,22 +177,36 @@ test('OTP-RR', async () => {
     await page.click('#id-query-param-tram')
 
     // Enable accessible routing (this will have no effect on mock query)
+    // FIXME: Must click Edit again [mobile-specific]
+    if (isMobile) {
+      await page.click('button.edit-search-button')
+    }
+    await page.hover('label[title="Transit"]')
+    await page.waitForTimeout(500)
     await page.click('#id-query-param-wheelchair')
     await page.waitForTimeout(200)
 
     // Triggers mock.har graphql query #3 and #4 (transit and walk-alone queries).
+    // FIXME: Must click Edit again [mobile-specific]
+    if (isMobile) {
+      await page.click('button.edit-search-button')
+    }
     await page.hover('#plan-trip')
     await page.click('#plan-trip')
     await page.waitForTimeout(1000) // wait extra time for all results to load
 
-    await page.hover('label[title="Transit"]')
-    await page.waitForTimeout(200)
-    await percySnapshotWithWait(
-      page,
-      'Metro Transit-Walk Itinerary with Mode Selector Expanded'
-    )
-    // Hover something else to unhover the mode selector.
-    await page.hover('#plan-trip')
+    if (!isMobile) {
+      await page.hover('label[title="Transit"]')
+      await page.waitForTimeout(200)
+      await percySnapshotWithWait(
+        page,
+        'Metro Transit-Walk Itinerary Desktop with Mode Selector Expanded'
+      )
+      // Hover something else to unhover the mode selector.
+      await page.hover('#plan-trip')
+    } else {
+      await percySnapshotWithWait(page, 'Metro Transit-Walk Itinerary Mobile')
+    }
   } else {
     await page.waitForTimeout(1000) // wait extra time for all results to load
 
@@ -461,4 +348,156 @@ test('OTP-RR', async () => {
   // Need to explicitly select the first itinerary to reset map position
   await page.goto(`${page.url()}&ui_activeItinerary=-1`)
   await page.waitForTimeout(2000)
-})
+}
+
+if (OTP_RR_PERCY_MOBILE) {
+  test('OTP-RR Mobile', async () => {
+    const page = await loadPath('/')
+    await page.setUserAgent('android')
+    await page.setViewport({
+      height: 1134,
+      width: 750
+    })
+    // Need to reload to load mobile view properly
+    await page.reload()
+
+    await page.click('.app-menu-icon')
+    // Wait for animation
+    await page.waitForTimeout(200)
+    await percySnapshotWithWait(page, 'Mobile Sidebar')
+    await page.click('.app-menu-icon')
+
+    // Execute the rest of the test
+    await executeTest(page, true, false)
+
+    /*
+
+
+    await page.click('.app-menu-route-viewer-link')
+    await page.waitForSelector('.route-viewer')
+    await page.waitForTimeout(5000)
+
+    // Open Specific Route`
+    try {
+      await page.$x("//span[contains(., 'Green')]")
+    } catch {
+      await page.reload({ waitUntil: 'networkidle0' })
+    }
+    const [subwayRouteButton] = await page.$x("//span[contains(., 'Green')]")
+    await subwayRouteButton.click()
+
+    await page.waitForTimeout(500)
+
+    // click the little pattern arrow
+    await page.click('#open-route-button-Green')
+
+    await page.waitForSelector('#headsign-selector-label')
+
+    await page.waitForTimeout(500)
+
+    await page.click('#headsign-selector-label')
+
+    await page.waitForTimeout(500)
+
+    const [patternOption] = await page.$x("//button[contains(., 'Vine City')]")
+    await patternOption.click()
+
+    await page.waitForTimeout(1000)
+
+    await percySnapshotWithWait(page, 'Mobile Route Viewer Showing Green Line')
+
+    // Open stop viewer
+    const [patternStopButton] = await page.$x(
+      "//button[contains(@name, 'Ashby Station')]"
+    )
+    await patternStopButton.click()
+    await page.waitForSelector('.stop-viewer')
+    // Screenshot here?
+
+    // Return to main page
+    await page.click('.app-menu-icon')
+    await page.waitForTimeout(1000)
+    await page.click('.app-menu-trip-planner-link span')
+    await page.waitForTimeout(1000)
+
+    await page.waitForSelector('.welcome-location')
+    await page.click('.welcome-location div input')
+    await page.waitForSelector('.to-form-control')
+
+    await page.focus('.to-form-control')
+    await page.keyboard.type('ashby')
+    await page.waitForTimeout(2000)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Enter')
+
+    // Wait for page to load
+    await page.waitForTimeout(300)
+
+    await page.click('.from-form-control')
+    // Wait for page to load
+    await page.waitForTimeout(300)
+
+    await page.focus('.from-form-control')
+    await page.keyboard.type('amazon ATL5')
+    await page.waitForTimeout(2000)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Enter')
+
+    await page.waitForTimeout(300)
+    await page.click('.switch-button')
+
+    await page.waitForSelector('.route-block-wrapper')
+    await percySnapshotWithWait(page, 'Mobile Itinerary Results')
+
+    await page.click('.route-block-wrapper')
+    await percySnapshotWithWait(page, 'Mobile Itinerary Selected')
+
+    await page.click('.button-container:nth-of-type(2)')
+    await page.waitForTimeout(500)
+    await percySnapshotWithWait(page, 'Mobile Printable Itinerary')
+    */
+  })
+} else {
+  test('OTP-RR', async () => {
+    const page = await loadPath('/')
+    await page.setViewport({
+      height: 1080,
+      width: 1920
+    })
+    page.on('console', async (msg) => {
+      const args = await msg.args()
+      args.forEach(async (arg) => {
+        const val = await arg.jsonValue()
+        // value is serializable
+        if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
+        // value is unserializable (or an empty oject)
+        else {
+          const { description, subtype, type } = arg._remoteObject
+          console.log(
+            `type: ${type}, subtype: ${subtype}, description:\n ${description}`
+          )
+        }
+      })
+    })
+    // log all errors that were logged to the browser console
+    page.on('warn', (warn) => {
+      console.log(warn)
+    })
+    page.on('error', (error) => {
+      console.error(error)
+      console.error(error.stack)
+    })
+    // log all uncaught exceptions
+    page.on('pageerror', (error) => {
+      console.error(`Page Error: ${error}`)
+    })
+    // log all failed requests
+    page.on('requestfailed', (req) => {
+      console.error(`Request failed: ${req.method()} ${req.url()}`)
+    })
+
+    await executeTest(page, false, false)
+  })
+}

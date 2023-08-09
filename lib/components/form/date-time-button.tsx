@@ -156,6 +156,7 @@ export default function DateTimeButton({
     >
       <button
         {...interactionProps}
+        id="date-time-button"
         // Separate handler to communicate to the parent element
         // which item had a popup triggered using the keyboard.
         onClick={handleButtonClick}
