@@ -136,11 +136,11 @@ async function executeTest(page, isMobile, isCallTaker) {
   // Triggers mock.har graphql query #1 and #2 (bike-only query, twice).
   // FIXME: Opening a url with non-default mode params triggers the plan query twice.
   await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?modeButtons=walk_bike&ui_activeSearch=44y0eq1ce&fromPlace=Opus%20Music%20Store%2C%20Decatur%2C%20GA%3A%3A33.77505%2C-84.300178&toPlace=Five%20Points%20Station%20%28908981%29%3A%3A33.753837%2C-84.391397&date=2023-08-09&time=10%3A42&arriveBy=false&showIntermediateStops=true&walkSpeed=1.34&ignoreRealtimeUpdates=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
+    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&showIntermediateStops=true&walkSpeed=1.34&ignoreRealtimeUpdates=true&numItineraries=3&otherThanPreferredRoutesPenalty=900&modeButtons=walk_bike`
   )
   // FIXME: Network idle condition seems never met after navigating to above link.
   // await page.waitForNavigation({ waitUntil: 'networkidle2' })
-  await page.waitForTimeout(2000)
+  await page.waitForTimeout(4000)
   await page.waitForSelector('.option.metro-itin')
 
   if (!isCallTaker) {
@@ -186,6 +186,10 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.click('#id-query-param-wheelchair')
 
     // Delete both origin and destination
+    // FIXME: Must click Edit again [mobile-specific]
+    if (isMobile) {
+      await page.click('button.edit-search-button')
+    }
 
     await page.click('.from-form-control')
     await page.waitForTimeout(300)
@@ -198,13 +202,9 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.click('.to-form-control + button')
 
     // Fill in new origin
-    // FIXME: Must click Edit again [mobile-specific]
-    if (isMobile) {
-      await page.click('button.edit-search-button')
-    }
     await page.hover('.from-form-control')
     await page.focus('.from-form-control')
-    await page.keyboard.type('Opus')
+    await page.keyboard.type('Opus Music')
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
     await page.waitForTimeout(200)
@@ -392,9 +392,19 @@ async function executeTest(page, isMobile, isCallTaker) {
   await viewAllOptionsButton.click()
   await page.waitForTimeout(1000)
 
-  // Need to explicitly select the first itinerary to reset map position
-  await page.goto(`${page.url()}&ui_activeItinerary=-1`)
+  // Select first itineary for printing
+  // FIXME: Navigation out of print view is funky on mobile ui.
+  await page.goto(`${page.url()}&ui_activeItinerary=0`)
   await page.waitForTimeout(2000)
+
+  await page.click('.button-container:nth-of-type(2)')
+  await page.waitForTimeout(500)
+  if (!isMobile) {
+    // Printable itinerary screenshot on desktop only to save allowance.
+    await percySnapshotWithWait(page, 'Printable Itinerary')
+  }
+  await page.goBack()
+  await page.waitForTimeout(20000)
 }
 
 if (OTP_RR_PERCY_MOBILE) {
@@ -410,18 +420,6 @@ if (OTP_RR_PERCY_MOBILE) {
 
     // Execute the rest of the test
     await executeTest(page, true, false)
-
-    /*
-    await page.waitForSelector('.route-block-wrapper')
-    await percySnapshotWithWait(page, 'Mobile Itinerary Results')
-
-    await page.click('.route-block-wrapper')
-    await percySnapshotWithWait(page, 'Mobile Itinerary Selected')
-
-    await page.click('.button-container:nth-of-type(2)')
-    await page.waitForTimeout(500)
-    await percySnapshotWithWait(page, 'Mobile Printable Itinerary')
-    */
   })
 } else {
   test('OTP-RR', async () => {
