@@ -274,6 +274,14 @@ async function executeTest(page, isMobile, isCallTaker) {
   // Open route viewer
   // Triggers mock.har graphql query #9.
   // FIXME: This action also results in a probably unneeded query to index/stops returning a large dataset.
+  if (isMobile) {
+    await page.click('.app-menu-icon')
+    // Wait for animation
+    await page.waitForTimeout(200)
+    // Take screenshot of the sidebar while we are at it.
+    await percySnapshotWithWait(page, 'Mobile Sidebar')
+  }
+
   const [routeViewerButton] = await page.$x(
     "//button[contains(., 'View Routes')]"
   )
@@ -336,7 +344,15 @@ async function executeTest(page, isMobile, isCallTaker) {
   */
 
   // Go back to trip planner
-  await page.click('.view-switcher > button:nth-of-type(1)')
+  if (isMobile) {
+    await page.click('.app-menu-icon')
+    // Wait for animation
+    await page.waitForTimeout(200)
+  }
+  const [planTripTabButton] = await page.$x(
+    "//button[contains(., 'Plan Trip')]"
+  )
+  await planTripTabButton.click()
   await page.waitForSelector('.option')
   await page.waitForTimeout(3000)
   const [viewAllOptionsButton] = await page.$x(
@@ -361,65 +377,10 @@ if (OTP_RR_PERCY_MOBILE) {
     // Need to reload to load mobile view properly
     await page.reload()
 
-    await page.click('.app-menu-icon')
-    // Wait for animation
-    await page.waitForTimeout(200)
-    await percySnapshotWithWait(page, 'Mobile Sidebar')
-    await page.click('.app-menu-icon')
-
     // Execute the rest of the test
     await executeTest(page, true, false)
 
     /*
-
-
-    await page.click('.app-menu-route-viewer-link')
-    await page.waitForSelector('.route-viewer')
-    await page.waitForTimeout(5000)
-
-    // Open Specific Route`
-    try {
-      await page.$x("//span[contains(., 'Green')]")
-    } catch {
-      await page.reload({ waitUntil: 'networkidle0' })
-    }
-    const [subwayRouteButton] = await page.$x("//span[contains(., 'Green')]")
-    await subwayRouteButton.click()
-
-    await page.waitForTimeout(500)
-
-    // click the little pattern arrow
-    await page.click('#open-route-button-Green')
-
-    await page.waitForSelector('#headsign-selector-label')
-
-    await page.waitForTimeout(500)
-
-    await page.click('#headsign-selector-label')
-
-    await page.waitForTimeout(500)
-
-    const [patternOption] = await page.$x("//button[contains(., 'Vine City')]")
-    await patternOption.click()
-
-    await page.waitForTimeout(1000)
-
-    await percySnapshotWithWait(page, 'Mobile Route Viewer Showing Green Line')
-
-    // Open stop viewer
-    const [patternStopButton] = await page.$x(
-      "//button[contains(@name, 'Ashby Station')]"
-    )
-    await patternStopButton.click()
-    await page.waitForSelector('.stop-viewer')
-    // Screenshot here?
-
-    // Return to main page
-    await page.click('.app-menu-icon')
-    await page.waitForTimeout(1000)
-    await page.click('.app-menu-trip-planner-link span')
-    await page.waitForTimeout(1000)
-
     await page.waitForSelector('.welcome-location')
     await page.click('.welcome-location div input')
     await page.waitForSelector('.to-form-control')
