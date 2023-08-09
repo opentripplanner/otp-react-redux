@@ -165,6 +165,7 @@ async function executeTest(page, isMobile, isCallTaker) {
       await page.click('button.edit-search-button')
     }
     await page.hover('#date-time-button')
+    await page.waitForTimeout(200)
     await page.focus('input[type="date"]')
     // FIXME: Puppeteer only: On Wednesday 08/09/2023, Monday 08/07/2023 was shown as "Last Sunday"!...
     await page.keyboard.type('08072023') // MMDDYYYY format.
@@ -393,18 +394,16 @@ async function executeTest(page, isMobile, isCallTaker) {
   await page.waitForTimeout(1000)
 
   // Select first itineary for printing
-  // FIXME: Navigation out of print view is funky on mobile ui.
+  // FIXME: Navigation out of print view is funky.
   await page.goto(`${page.url()}&ui_activeItinerary=0`)
   await page.waitForTimeout(2000)
 
   await page.click('.button-container:nth-of-type(2)')
   await page.waitForTimeout(500)
-  if (!isMobile) {
-    // Printable itinerary screenshot on desktop only to save allowance.
+  if (isMobile) {
+    // Printable itinerary screenshot on mobile only better page ration (and to save allowance).
     await percySnapshotWithWait(page, 'Printable Itinerary')
   }
-  await page.goBack()
-  await page.waitForTimeout(20000)
 }
 
 if (OTP_RR_PERCY_MOBILE) {
