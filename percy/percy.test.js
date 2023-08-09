@@ -184,15 +184,46 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.hover('label[title="Transit"]')
     await page.waitForTimeout(500)
     await page.click('#id-query-param-wheelchair')
-    await page.waitForTimeout(200)
 
-    // Triggers mock.har graphql query #3 and #4 (transit and walk-alone queries).
+    // Delete both origin and destination
+
+    await page.click('.from-form-control')
+    await page.waitForTimeout(300)
+    // Click the clear button next to it
+    await page.click('.from-form-control + button')
+
+    await page.click('.to-form-control')
+    await page.waitForTimeout(300)
+    // Click the clear button next to it
+    await page.click('.to-form-control + button')
+
+    // Fill in new origin
     // FIXME: Must click Edit again [mobile-specific]
     if (isMobile) {
       await page.click('button.edit-search-button')
     }
-    await page.hover('#plan-trip')
-    await page.click('#plan-trip')
+    await page.hover('.from-form-control')
+    await page.focus('.from-form-control')
+    await page.keyboard.type('Opus')
+    await page.waitForTimeout(2000)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Enter')
+
+    // Fill in new destination
+    await page.focus('.to-form-control')
+    await page.keyboard.type('908981')
+    await page.waitForTimeout(2000)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Enter')
+
+    // On desktop, the last action will trigger a replan.
+    // On mobile, we need to click explicitly.
+    // Triggers mock.har graphql query #3 and #4 (transit and walk-alone queries).
+    if (isMobile) {
+      await page.click('#plan-trip')
+    }
     await page.waitForTimeout(1000) // wait extra time for all results to load
 
     if (!isMobile) {
@@ -381,34 +412,6 @@ if (OTP_RR_PERCY_MOBILE) {
     await executeTest(page, true, false)
 
     /*
-    await page.waitForSelector('.welcome-location')
-    await page.click('.welcome-location div input')
-    await page.waitForSelector('.to-form-control')
-
-    await page.focus('.to-form-control')
-    await page.keyboard.type('ashby')
-    await page.waitForTimeout(2000)
-    await page.keyboard.press('ArrowDown')
-    await page.waitForTimeout(200)
-    await page.keyboard.press('Enter')
-
-    // Wait for page to load
-    await page.waitForTimeout(300)
-
-    await page.click('.from-form-control')
-    // Wait for page to load
-    await page.waitForTimeout(300)
-
-    await page.focus('.from-form-control')
-    await page.keyboard.type('amazon ATL5')
-    await page.waitForTimeout(2000)
-    await page.keyboard.press('ArrowDown')
-    await page.waitForTimeout(200)
-    await page.keyboard.press('Enter')
-
-    await page.waitForTimeout(300)
-    await page.click('.switch-button')
-
     await page.waitForSelector('.route-block-wrapper')
     await percySnapshotWithWait(page, 'Mobile Itinerary Results')
 
