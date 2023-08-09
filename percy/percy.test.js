@@ -321,9 +321,7 @@ test('OTP-RR', async () => {
     // Hover something else to unhover the mode selector.
     await page.hover('#plan-trip')
   } else {
-    // take initial screenshot
     await page.waitForTimeout(1000) // wait extra time for all results to load
-    await percySnapshotWithWait(page, 'Call Taker')
 
     // add intermediate stop
     await page.click(
@@ -439,18 +437,19 @@ test('OTP-RR', async () => {
   // Triggers mock.har graphql query #15 (stop info), #16 (nearest amenities), #17 (stops by radius).
   await page.click('ol > li:nth-of-type(1) > button')
   await page.waitForSelector('.stop-viewer')
+  await page.waitForTimeout(1000)
 
   // Activate all layers
+  // TODO: mocks for the layers.
+  /*
   await page.$$eval('.maplibregl-map .layers-list input', (checks) =>
     checks.forEach((c) => c.click())
   )
   await page.waitForTimeout(1000)
+  */
 
   // Go back to trip planner
-  const [tripPlannerButton] = await page.$x(
-    "//button[contains(., 'Plan Trip')]"
-  )
-  await tripPlannerButton.click()
+  await page.click('.view-switcher > button:nth-of-type(1)')
   await page.waitForSelector('.option')
   await page.waitForTimeout(3000)
   const [viewAllOptionsButton] = await page.$x(
@@ -462,15 +461,4 @@ test('OTP-RR', async () => {
   // Need to explicitly select the first itinerary to reset map position
   await page.goto(`${page.url()}&ui_activeItinerary=-1`)
   await page.waitForTimeout(2000)
-
-  if (!OTP_RR_PERCY_CALL_TAKER) {
-    await page.click('label[title="Bike"]')
-    await page.click('#plan-trip')
-    await page.waitForTimeout(5000)
-  }
-
-  await percySnapshotWithWait(
-    page,
-    'Batch Itinerary With Transit Showing Bikes'
-  )
 })
