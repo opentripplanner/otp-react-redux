@@ -316,6 +316,9 @@ test('OTP-RR', async () => {
 
     await page.waitForTimeout(200)
 
+    // Hover something else to unhover the mode selector.
+    await page.hover('#plan-trip')
+
     // await page.click('#plan-trip')
     // await page.waitForTimeout(1000) // wait extra time for all results to load
   } else {
@@ -377,7 +380,8 @@ test('OTP-RR', async () => {
   await page.waitForSelector('button.link-button.pull-right')
   await page.click('button.link-button.pull-right')
   await page.waitForTimeout(6000) // Slow animation
-  // Request a schedule for a specific date.
+  // Request a schedule for a specific valid date in the past,
+  // so it is different than today and triggers a full render of the schedule.
   await page.focus('input[type="date"]')
   await page.keyboard.type('08072023') // MMDDYYYY format.
   await page.waitForTimeout(2000)
@@ -396,7 +400,7 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Route Viewer')
 
   // Open Specific Route
-  // Triggers mock.har graphql query #8.
+  // Triggers mock.har graphql query #8 (route details), #9 and #10 (vehicle positions, twice).
   try {
     await page.$x("//span[contains(., 'Marietta Blvd')]")
   } catch {
@@ -408,6 +412,7 @@ test('OTP-RR', async () => {
   await page.waitForTimeout(500)
 
   // click the little pattern arrow
+  // Triggers mock.har graphql query #11 and #12 (vehicle positions, twice again).
   await page.click('#open-route-button-1')
 
   await page.waitForSelector('#headsign-selector-label')
@@ -430,6 +435,7 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 1')
 
   // Stop viewer from pattern viewer
+  // Triggers mock.har graphql query #13 (stop info), #14 (nearest amenities), #15 (stops by radius).
   try {
     await page.$x("//button[contains(@name, 'West')]")
   } catch {
@@ -440,7 +446,7 @@ test('OTP-RR', async () => {
   await page.waitForSelector('.stop-viewer')
 
   // Activate all layers
-  await page.$$eval('.leaflet-control-layers-selector', (checks) =>
+  await page.$$eval('.maplibregl-map .layers-list input', (checks) =>
     checks.forEach((c) => c.click())
   )
   await page.waitForTimeout(1000)
@@ -459,7 +465,7 @@ test('OTP-RR', async () => {
   await page.waitForTimeout(1000)
 
   // Need to explicitly select the first itinerary to reset map position
-  await page.goto(`${page.url()}&ui_activeItinerary=1`)
+  await page.goto(`${page.url()}&ui_activeItinerary=-1`)
   await page.waitForTimeout(2000)
 
   if (!OTP_RR_PERCY_CALL_TAKER) {
