@@ -304,7 +304,6 @@ test('OTP-RR', async () => {
     await page.click('#id-query-param-tram')
 
     // Enable accessible routing (this will have no effect on mock query)
-    await page.hover('label[title="Transit"]')
     await page.click('#id-query-param-wheelchair')
     await page.waitForTimeout(200)
 
@@ -379,7 +378,7 @@ test('OTP-RR', async () => {
   // Open schedule view
   await page.waitForSelector('button.link-button.pull-right')
   await page.click('button.link-button.pull-right')
-  await page.waitForTimeout(6000) // Slow animation
+  await page.waitForTimeout(500)
   // Request a schedule for a specific valid date in the past,
   // so it is different than today and triggers a full render of the schedule.
   await page.focus('input[type="date"]')
@@ -417,19 +416,19 @@ test('OTP-RR', async () => {
   // FIXME: Investigate why twice.
   await page.click('#open-route-button-1')
 
-  await page.waitForSelector('#headsign-selector-label')
-  await percySnapshotWithWait(page, 'Route Viewer Showing Route 1')
-
-  // View multiple patterns
-  // Click second option
-
+  // View the other pattern on the selected route.
   await page.click('#headsign-selector-label')
+  await page.waitForTimeout(500)
+  await page.keyboard.press('ArrowDown')
+  await page.keyboard.press('ArrowDown')
+  await page.keyboard.press('Enter')
 
   await page.waitForTimeout(500)
 
-  // Click first option
-
-  await page.keyboard.press('Tab')
+  // Go back to the first one.
+  await page.click('#headsign-selector-label')
+  await page.waitForTimeout(500)
+  await page.keyboard.press('ArrowDown')
   await page.keyboard.press('Enter')
 
   await page.waitForTimeout(1000)
@@ -438,13 +437,7 @@ test('OTP-RR', async () => {
 
   // Stop viewer from pattern viewer
   // Triggers mock.har graphql query #15 (stop info), #16 (nearest amenities), #17 (stops by radius).
-  try {
-    await page.$x("//button[contains(@name, 'West')]")
-  } catch {
-    await page.reload({ waitUntil: 'networkidle0' })
-  }
-  const [patternStopButton] = await page.$x("//button[contains(@name, 'West')]")
-  await patternStopButton.click()
+  await page.click('ol > li:nth-of-type(1) > button')
   await page.waitForSelector('.stop-viewer')
 
   // Activate all layers
