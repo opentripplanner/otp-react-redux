@@ -481,6 +481,7 @@ components:
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
     openPatternViewer: View route details
+    selected: Route selected
     shortTitle: View Routes
     stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
