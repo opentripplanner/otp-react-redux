@@ -185,6 +185,11 @@ const DateTimeOptions = ({
     if (departArrive === 'NOW') {
       setTime(getCurrentTime(homeTimezone))
       setDate(getCurrentDate(homeTimezone))
+      setTypedTime(
+        safeFormat(dateTime, timeFormat, {
+          timeZone: homeTimezone
+        })
+      )
     }
   }, [departArrive, setTime, setDate, homeTimezone])
 
