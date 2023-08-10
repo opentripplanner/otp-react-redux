@@ -6,7 +6,7 @@ import puppeteer from 'puppeteer'
 const percySnapshot = require('@percy/puppeteer')
 
 const OTP_RR_TEST_CONFIG_PATH = '../percy/har-mock-config.yml'
-const { OTP_RR_PERCY_CALL_TAKER, OTP_RR_PERCY_MOBILE } = process.env
+const { OTP_RR_PERCY_CALL_TAKER } = process.env
 const OTP_RR_TEST_JS_CONFIG_PATH = OTP_RR_PERCY_CALL_TAKER
   ? './percy/har-mock-config-call-taker.js'
   : './percy/har-mock-config.js'
@@ -100,25 +100,6 @@ afterAll(async () => {
 
 // Puppeteer can take a long time to load, espeically in some ci environments
 jest.setTimeout(600000)
-
-/* These fixed routes allow us to test features that the static html screenshots
- * don't allow us to test. This is disabled, as percy doesn't support transitive.js
- * out of the box, even with javascript enabled.
- *
- * TODO: make transitive.js work with Percy, then complete this test suite
- */
-// eslint-disable-next-line jest/no-commented-out-tests
-/*
-test('OTP-RR Fixed Routes', async () => {
-  const transitive = await loadPath(
-    '/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2022-03-09&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=false&numItineraries=3&otherThanPreferredRoutesPenalty=900'
-  )
-  await percySnapshotWithWait(transitive, 'Itinerary (with transitive)', true)
-
-  const routes = await loadPath('/route')
-  await percySnapshotWithWait(routes, 'Route Viewer (with transitive)', true)
-})
-*/
 
 async function executeTest(page, isMobile, isCallTaker) {
   // Make sure that the main UI (incl. map controls) has loaded.
@@ -398,59 +379,57 @@ async function executeTest(page, isMobile, isCallTaker) {
   }
 }
 
-if (OTP_RR_PERCY_MOBILE) {
-  test('OTP-RR Mobile', async () => {
-    const page = await loadPath('/')
-    await page.setUserAgent('android')
-    await page.setViewport({
-      height: 1134,
-      width: 750
-    })
-    // Need to reload to load mobile view properly
-    await page.reload()
-
-    // Execute the rest of the test
-    await executeTest(page, true, false)
+test('OTP-RR Mobile', async () => {
+  const page = await loadPath('/')
+  await page.setUserAgent('android')
+  await page.setViewport({
+    height: 1134,
+    width: 750
   })
-} else {
-  test('OTP-RR', async () => {
-    const page = await loadPath('/')
-    await page.setViewport({
-      height: 1080,
-      width: 1920
-    })
-    page.on('console', async (msg) => {
-      const args = await msg.args()
-      args.forEach(async (arg) => {
-        const val = await arg.jsonValue()
-        // value is serializable
-        if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
-        // value is unserializable (or an empty oject)
-        else {
-          const { description, subtype, type } = arg._remoteObject
-          console.log(
-            `type: ${type}, subtype: ${subtype}, description:\n ${description}`
-          )
-        }
-      })
-    })
-    // log all errors that were logged to the browser console
-    page.on('warn', (warn) => {
-      console.log(warn)
-    })
-    page.on('error', (error) => {
-      console.error(error)
-      console.error(error.stack)
-    })
-    // log all uncaught exceptions
-    page.on('pageerror', (error) => {
-      console.error(`Page Error: ${error}`)
-    })
-    // log all failed requests
-    page.on('requestfailed', (req) => {
-      console.error(`Request failed: ${req.method()} ${req.url()}`)
-    })
+  // Need to reload to load mobile view properly
+  await page.reload()
 
-    await executeTest(page, false, false)
+  // Execute the rest of the test
+  await executeTest(page, true, false)
+})
+
+test('OTP-RR', async () => {
+  const page = await loadPath('/')
+  await page.setViewport({
+    height: 1080,
+    width: 1920
   })
-}
+  page.on('console', async (msg) => {
+    const args = await msg.args()
+    args.forEach(async (arg) => {
+      const val = await arg.jsonValue()
+      // value is serializable
+      if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
+      // value is unserializable (or an empty oject)
+      else {
+        const { description, subtype, type } = arg._remoteObject
+        console.log(
+          `type: ${type}, subtype: ${subtype}, description:\n ${description}`
+        )
+      }
+    })
+  })
+  // log all errors that were logged to the browser console
+  page.on('warn', (warn) => {
+    console.log(warn)
+  })
+  page.on('error', (error) => {
+    console.error(error)
+    console.error(error.stack)
+  })
+  // log all uncaught exceptions
+  page.on('pageerror', (error) => {
+    console.error(`Page Error: ${error}`)
+  })
+  // log all failed requests
+  page.on('requestfailed', (req) => {
+    console.error(`Request failed: ${req.method()} ${req.url()}`)
+  })
+
+  await executeTest(page, false, false)
+})
