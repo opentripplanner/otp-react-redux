@@ -232,7 +232,6 @@ components:
     departAt: 出发 {departTime, time, short}
     editDepartOrArrival: 编辑出发或到达时间
     leaveNow: 现在离开
-    range: "{startTime, time, short} 到 {endTime, time, short}"
   DateTimeScreen:
     header: 设置日期/时间
   DefaultItinerary:
@@ -436,8 +435,6 @@ components:
     body: 您的使用时间将在一分钟内到期.按“继续使用”以继续您的搜索.
     header: 使用时间即将结束!
     keepSession: 继续使用
-  SettingsPreview:
-    defaultPreviewText: 公共交通选择和偏好
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: 这个行程使用实时交通和延迟信息
   StackedPaneDisplay:

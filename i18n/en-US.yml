@@ -226,7 +226,6 @@ components:
     header: Plan Your Trip
     modeSelectorLabel: Select a transit mode
   BatchSettings:
-    dateTimeSettingsLabel: Date/Time Settings
     destination: destination
     origin: origin
     planTripTooltip: Plan trip
@@ -250,7 +249,6 @@ components:
     departAt: Depart {departTime, time, short}
     editDepartOrArrival: Edit departure or arrival time
     leaveNow: Leave now
-    range: "{startTime, time, short} to {endTime, time, short}"
   DateTimeScreen:
     header: Set Date/Time
   DefaultItinerary:
@@ -524,10 +522,6 @@ components:
       your search.
     header: Session about to timeout!
     keepSession: Continue Session
-  SettingsPreview:
-    defaultPreviewText: |-
-      Transit Options
-      & Preferences
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   StackedPaneDisplay:

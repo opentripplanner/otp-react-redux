@@ -232,7 +232,6 @@ components:
     departAt: 출발 {departTime, time, short}
     editDepartOrArrival: 출발 시간 또는 도착 시간 수정
     leaveNow: 지금 출발
-    range: "{startTime, time, short}에서 {endTime, time, short}까지"
   DateTimeScreen:
     header: 날짜/시간 설정
   DefaultItinerary:
@@ -436,8 +435,6 @@ components:
     body: 세션이 1분 이내에 만료됩니다. 검색을 유지하려면 '세션 계속'을 누르세요.
     header: 세션이 곧 타임아웃됩니다!
     keepSession: 세션 계속
-  SettingsPreview:
-    defaultPreviewText: 대중 교통 옵션 및 기본 설정
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: 이 트립은 실시간 교통 및 지체 정보를 사용합니다
   StackedPaneDisplay:

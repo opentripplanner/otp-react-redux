@@ -105,7 +105,7 @@ exports[`components > form > call-taker > date time options should correctly han
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
-              "width": "109px",
+              "width": "120px",
             }
           }
           type="date"
@@ -222,7 +222,7 @@ exports[`components > form > call-taker > date time options should correctly han
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
-              "width": "109px",
+              "width": "120px",
             }
           }
           type="date"
@@ -339,7 +339,7 @@ exports[`components > form > call-taker > date time options should correctly han
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
-              "width": "109px",
+              "width": "120px",
             }
           }
           type="date"
@@ -456,7 +456,7 @@ exports[`components > form > call-taker > date time options should correctly han
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
-              "width": "109px",
+              "width": "120px",
             }
           }
           type="date"
@@ -573,7 +573,7 @@ exports[`components > form > call-taker > date time options should correctly han
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
-              "width": "109px",
+              "width": "120px",
             }
           }
           type="date"
@@ -690,7 +690,7 @@ exports[`components > form > call-taker > date time options should correctly han
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
-              "width": "109px",
+              "width": "120px",
             }
           }
           type="date"
@@ -807,7 +807,7 @@ exports[`components > form > call-taker > date time options should render 1`] = 
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
-              "width": "109px",
+              "width": "120px",
             }
           }
           type="date"
