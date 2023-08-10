@@ -287,7 +287,6 @@ components:
     streets: 街道
   MetroUI:
     arriveAt: 到达
-    fromStop: 从 {stop}
     itineraryDescription: "{time} 行程使用 {routes}"
     leaveAt: 您已离开
     multipleOptions: 多种选择

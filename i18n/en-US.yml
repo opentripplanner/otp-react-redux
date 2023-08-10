@@ -310,7 +310,6 @@ components:
     title: Imagery of the street
   MetroUI:
     arriveAt: You arrive
-    fromStop: from {stop}
     itineraryDescription: "{time} itinerary using {routes}"
     leaveAt: You leave
     multipleOptions: Multiple Options
