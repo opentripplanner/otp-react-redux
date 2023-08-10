@@ -59,16 +59,10 @@ beforeAll(async () => {
       'build'
     ])
     console.log('Built OTP-RR')
-
-    // grab ATL har file to tmp
-    if (process.env.HAR_URL) {
-      await execa('curl', [process.env.HAR_URL, '-s', '--output', 'mock.har'])
-      console.log('Downloaded HAR data')
-    }
   } catch (error) {
     console.log(error)
   }
-  console.log('Built OTP-RR and downloaded HAR data')
+  console.log('Built OTP-RR')
 
   try {
     execa('yarn', ['percy-serve', 'dist', '-p', MOCK_SERVER_PORT], {
@@ -76,11 +70,9 @@ beforeAll(async () => {
     }).stdout.pipe(process.stdout)
 
     // Launch mock OTP server
-    if (process.env.HAR_URL) {
-      execa('yarn', ['percy-har-express', '-p', '9999', 'mock.har'], {
-        signal: harAbortController.signal
-      }).stdout.pipe(process.stdout)
-    }
+    execa('yarn', ['percy-har-express', '-p', '9999', 'percy/mock.har'], {
+      signal: harAbortController.signal
+    }).stdout.pipe(process.stdout)
 
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
