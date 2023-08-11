@@ -5,11 +5,7 @@ import puppeteer from 'puppeteer'
 
 const percySnapshot = require('@percy/puppeteer')
 
-// const OTP_RR_TEST_CONFIG_PATH = '../percy/har-mock-config.yml'
 const { OTP_RR_UI_MODE } = process.env
-// const OTP_RR_TEST_JS_CONFIG_PATH = OTP_RR_PERCY_CALL_TAKER
-//  ? './percy/har-mock-config-call-taker.js'
-//  : './percy/har-mock-config.js'
 
 const MOCK_SERVER_PORT = 5486
 
@@ -43,24 +39,7 @@ async function loadPath(otpPath) {
 
 beforeAll(async () => {
   try {
-    // Build OTP-RR main.js using new config file
-    /*
-    await execa('env', [
-      `YAML_CONFIG=${
-        process.env.PERCY_OTP_CONFIG_OVERRIDE || OTP_RR_TEST_CONFIG_PATH
-      }`,
-      `JS_CONFIG=${OTP_RR_TEST_JS_CONFIG_PATH}`,
-      'yarn',
-      'build'
-    ])
-    console.log('Built OTP-RR')
-    */
-  } catch (error) {
-    console.log(error)
-  }
-  console.log('Built OTP-RR')
-
-  try {
+    // Launch OTP-RR web server
     execa('yarn', ['percy-serve', 'dist', '-p', MOCK_SERVER_PORT], {
       signal: serveAbortController.signal
     }).stdout.pipe(process.stdout)
