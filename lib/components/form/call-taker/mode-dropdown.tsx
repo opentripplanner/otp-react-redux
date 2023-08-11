@@ -52,7 +52,7 @@ function ModeDropdown({ modeDropdownOptions, onChangeModes }: Props) {
       onBlur={onChange}
       onChange={onChange}
       value={
-        typeof selectedMode === 'string' && selectedMode !== undefined
+        typeof selectedMode === 'string'
           ? selectedMode
           : modeDropdownOptions?.[0].label
       }
