@@ -410,6 +410,6 @@ if (OTP_RR_UI_MODE === 'mobile') {
       console.error(`Request failed: ${req.method()} ${req.url()}`)
     })
 
-    await executeTest(page, false, false)
+    await executeTest(page, false, OTP_RR_UI_MODE === 'calltaker')
   })
 }
