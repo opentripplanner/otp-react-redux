@@ -207,6 +207,9 @@ async function executeTest(page, isMobile, isCallTaker) {
 
     // take screenshot
     await percySnapshotWithWait(page, 'Call Taker With Settings Adjusted')
+
+    // Other steps are identical to desktop, so we end here to not waste screenshots.
+    return
   }
 
   // Select a trip

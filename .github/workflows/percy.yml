@@ -27,6 +27,7 @@ jobs:
         env:
           PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_MOCKOTP2_CONFIG_URL_METRO_MODE_SELECTOR }}
       - name: Build OTP-RR
+        # Artifacts are shared between desktop and mobile tests (but not call-taker).
         run: yarn build
         env:
           YAML_CONFIG: /tmp/otp2config.yml
@@ -36,4 +37,19 @@ jobs:
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_OTP2 }}
           OTP_RR_UI_MODE: desktop
-  # TODO: Reinstate calltaker UI tests.
+      - name: Take Percy Snapshots (Mobile)
+        run: npx percy exec -- npx jest percy/percy.test.js --force-exit
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_OTP2 }}
+          OTP_RR_UI_MODE: mobile
+      # Calltaker has a separate config file, so another build should be produced.
+      - name: Build OTP-RR Calltaker
+        run: yarn build
+        env:
+          YAML_CONFIG: /tmp/otp2config.yml
+          JS_CONFIG: ./percy/har-mock-config-call-taker.js
+      - name: Take Percy Snapshots (Calltaker)
+        run: npx percy exec -- npx jest percy/percy.test.js --force-exit
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_OTP2 }}
+          OTP_RR_UI_MODE: calltaker
