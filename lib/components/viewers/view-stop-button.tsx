@@ -1,21 +1,20 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React, { Component, ReactElement } from 'react'
 
 import { setMainPanelContent, setViewedStop } from '../../actions/ui'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
-class ViewStopButton extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    forStop: PropTypes.string,
-    setViewedStop: PropTypes.func,
-    stopId: PropTypes.string,
-    text: PropTypes.element
-  }
+type Props = {
+  className: string
+  forStop: string
+  setViewedStop: (args: { stopId: string }) => void
+  stopId: string
+  text: ReactElement
+}
 
+class ViewStopButton extends Component<Props> {
   _onClick = () => {
     this.props.setViewedStop({ stopId: this.props.stopId })
   }
@@ -45,7 +44,7 @@ class ViewStopButton extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = () => {
   return {}
 }
 
