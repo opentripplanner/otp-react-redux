@@ -5,11 +5,11 @@ import puppeteer from 'puppeteer'
 
 const percySnapshot = require('@percy/puppeteer')
 
-const OTP_RR_TEST_CONFIG_PATH = '../percy/har-mock-config.yml'
-const { OTP_RR_PERCY_CALL_TAKER } = process.env
-const OTP_RR_TEST_JS_CONFIG_PATH = OTP_RR_PERCY_CALL_TAKER
-  ? './percy/har-mock-config-call-taker.js'
-  : './percy/har-mock-config.js'
+// const OTP_RR_TEST_CONFIG_PATH = '../percy/har-mock-config.yml'
+const { OTP_RR_UI_MODE } = process.env
+// const OTP_RR_TEST_JS_CONFIG_PATH = OTP_RR_PERCY_CALL_TAKER
+//  ? './percy/har-mock-config-call-taker.js'
+//  : './percy/har-mock-config.js'
 
 const MOCK_SERVER_PORT = 5486
 
@@ -20,13 +20,7 @@ jest.setTimeout(600000)
 const PERCY_EXTRA_WAIT = 5000
 const percySnapshotWithWait = async (page, name, enableJavaScript) => {
   await page.waitForTimeout(PERCY_EXTRA_WAIT)
-
-  const namePrefix = process.env.PERCY_OTP_CONFIG_OVERRIDE || 'Mock OTP1 Server'
-  await percySnapshot(
-    page,
-    `${OTP_RR_PERCY_CALL_TAKER ? 'Call Taker - ' : ''}${namePrefix} - ${name}`,
-    { enableJavaScript }
-  )
+  await percySnapshot(page, `${name} [${OTP_RR_UI_MODE}]`, { enableJavaScript })
 }
 
 let browser
@@ -50,6 +44,7 @@ async function loadPath(otpPath) {
 beforeAll(async () => {
   try {
     // Build OTP-RR main.js using new config file
+    /*
     await execa('env', [
       `YAML_CONFIG=${
         process.env.PERCY_OTP_CONFIG_OVERRIDE || OTP_RR_TEST_CONFIG_PATH
@@ -59,6 +54,7 @@ beforeAll(async () => {
       'build'
     ])
     console.log('Built OTP-RR')
+    */
   } catch (error) {
     console.log(error)
   }
@@ -379,57 +375,59 @@ async function executeTest(page, isMobile, isCallTaker) {
   }
 }
 
-test('OTP-RR Mobile', async () => {
-  const page = await loadPath('/')
-  await page.setUserAgent('android')
-  await page.setViewport({
-    height: 1134,
-    width: 750
-  })
-  // Need to reload to load mobile view properly
-  await page.reload()
-
-  // Execute the rest of the test
-  await executeTest(page, true, false)
-})
-
-test('OTP-RR', async () => {
-  const page = await loadPath('/')
-  await page.setViewport({
-    height: 1080,
-    width: 1920
-  })
-  page.on('console', async (msg) => {
-    const args = await msg.args()
-    args.forEach(async (arg) => {
-      const val = await arg.jsonValue()
-      // value is serializable
-      if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
-      // value is unserializable (or an empty oject)
-      else {
-        const { description, subtype, type } = arg._remoteObject
-        console.log(
-          `type: ${type}, subtype: ${subtype}, description:\n ${description}`
-        )
-      }
+if (OTP_RR_UI_MODE === 'mobile') {
+  test('OTP-RR Mobile', async () => {
+    const page = await loadPath('/')
+    await page.setUserAgent('android')
+    await page.setViewport({
+      height: 1134,
+      width: 750
     })
-  })
-  // log all errors that were logged to the browser console
-  page.on('warn', (warn) => {
-    console.log(warn)
-  })
-  page.on('error', (error) => {
-    console.error(error)
-    console.error(error.stack)
-  })
-  // log all uncaught exceptions
-  page.on('pageerror', (error) => {
-    console.error(`Page Error: ${error}`)
-  })
-  // log all failed requests
-  page.on('requestfailed', (req) => {
-    console.error(`Request failed: ${req.method()} ${req.url()}`)
-  })
+    // Need to reload to load mobile view properly
+    await page.reload()
 
-  await executeTest(page, false, false)
-})
+    // Execute the rest of the test
+    await executeTest(page, true, false)
+  })
+} else {
+  test('OTP-RR Desktop', async () => {
+    const page = await loadPath('/')
+    await page.setViewport({
+      height: 1080,
+      width: 1920
+    })
+    page.on('console', async (msg) => {
+      const args = await msg.args()
+      args.forEach(async (arg) => {
+        const val = await arg.jsonValue()
+        // value is serializable
+        if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
+        // value is unserializable (or an empty oject)
+        else {
+          const { description, subtype, type } = arg._remoteObject
+          console.log(
+            `type: ${type}, subtype: ${subtype}, description:\n ${description}`
+          )
+        }
+      })
+    })
+    // log all errors that were logged to the browser console
+    page.on('warn', (warn) => {
+      console.log(warn)
+    })
+    page.on('error', (error) => {
+      console.error(error)
+      console.error(error.stack)
+    })
+    // log all uncaught exceptions
+    page.on('pageerror', (error) => {
+      console.error(`Page Error: ${error}`)
+    })
+    // log all failed requests
+    page.on('requestfailed', (req) => {
+      console.error(`Request failed: ${req.method()} ${req.url()}`)
+    })
+
+    await executeTest(page, false, false)
+  })
+}
