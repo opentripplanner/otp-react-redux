@@ -1,12 +1,12 @@
 import { AccessibilityRating } from '@opentripplanner/itinerary-body'
 import { connect } from 'react-redux'
+import { FareProductSelector, Itinerary, Leg } from '@opentripplanner/types'
 import {
   FormattedMessage,
   FormattedNumber,
   injectIntl,
   IntlShape
 } from 'react-intl'
-import { Itinerary, Leg } from '@opentripplanner/types'
 import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
@@ -184,6 +184,7 @@ type Props = {
   LegIcon: React.ReactNode
   accessibilityScoreGradationMap: { [value: number]: string }
   active: boolean
+  defaultFareType: FareProductSelector
   /** This is true when there is only one itinerary being shown and the itinerary-body is visible */
   expanded: boolean
   intl: IntlShape
@@ -249,8 +250,7 @@ class MetroItinerary extends NarrativeItinerary {
       active,
       arrivesAt,
       co2Config,
-      currency,
-      defaultFareKey,
+      defaultFareType,
       expanded,
       intl,
       itinerary,
@@ -268,11 +268,7 @@ class MetroItinerary extends NarrativeItinerary {
     const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
       getFlexAttirbutes(itinerary)
 
-    const { fareCurrency, transitFare } = getFare(
-      itinerary,
-      defaultFareKey,
-      currency
-    )
+    const { fareCurrency, transitFare } = getFare(itinerary, defaultFareType)
 
     const roundedCo2VsBaseline = Math.round(itinerary.co2VsBaseline * 100)
     const emissionsNote = !mini &&
@@ -305,8 +301,6 @@ class MetroItinerary extends NarrativeItinerary {
       SvgIcon,
       accessibilityScoreGradationMap
     )
-
-    const firstTransitStop = getFirstTransitLegStop(itinerary)
 
     const handleClick = () => {
       setActiveItinerary(itinerary)
@@ -372,7 +366,7 @@ class MetroItinerary extends NarrativeItinerary {
                     />
                   </PrimaryInfo>
                   <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
-                    {isFlexItinerary ? (
+                    {isFlexItinerary && (
                       <FlexIndicator
                         isCallAhead={isCallAhead}
                         isContinuousDropoff={isContinuousDropoff}
@@ -380,30 +374,28 @@ class MetroItinerary extends NarrativeItinerary {
                         shrink={false}
                         textOnly
                       />
-                    ) : (
-                      firstTransitStop && (
-                        <FormattedMessage
-                          id="components.MetroUI.fromStop"
-                          values={{ stop: firstTransitStop }}
+                    )}
+                  </SecondaryInfo>
+                  {
+                    // Hide the fare information entirely if the defaultFareType isn't specified.
+                    <SecondaryInfo>
+                      {transitFare === null ||
+                      transitFare === undefined ||
+                      transitFare < 0 ? (
+                        <FormattedMessage id="common.itineraryDescriptions.fareUnknown" />
+                      ) : (
+                        // TODO: re-implement TNC fares for metro UI?
+                        <FormattedNumber
+                          currency={fareCurrency}
+                          currencyDisplay="narrowSymbol"
+                          // This isn't a "real" style prop
+                          // eslint-disable-next-line react/style-prop-object
+                          style="currency"
+                          value={transitFare}
                         />
-                      )
-                    )}
-                  </SecondaryInfo>
-                  <SecondaryInfo>
-                    {transitFare === null || transitFare < 0 ? (
-                      <FormattedMessage id="otpUi.TripDetails.transitFareUnknown" />
-                    ) : (
-                      // TODO: re-implement TNC fares for metro UI?
-                      <FormattedNumber
-                        currency={fareCurrency}
-                        currencyDisplay="narrowSymbol"
-                        // This isn't a "real" style prop
-                        // eslint-disable-next-line react/style-prop-object
-                        style="currency"
-                        value={transitFare / 100}
-                      />
-                    )}
-                  </SecondaryInfo>
+                      )}
+                    </SecondaryInfo>
+                  }
                   <SecondaryInfo>
                     <FormattedMessage
                       id="components.MetroUI.timeWalking"
@@ -476,11 +468,7 @@ const mapStateToProps = (state: any, ownProps: Props) => {
     arrivesAt: state.otp.filter.sort.type === 'ARRIVALTIME',
     co2Config: state.otp.config.co2,
     configCosts: state.otp.config.itinerary?.costs,
-    // The configured (ambient) currency is needed for rendering the cost
-    // of itineraries whether they include a fare or not, in which case
-    // we show $0.00 or its equivalent in the configured currency and selected locale.
-    currency: state.otp.config.localization?.currency || 'USD',
-    defaultFareKey: state.otp.config.itinerary?.defaultFareKey,
+    defaultFareType: state.otp.config.itinerary?.defaultFareType,
     enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
     // @ts-expect-error TODO: type activeSearch
     pending: activeSearch ? Boolean(activeSearch.pending) : false,

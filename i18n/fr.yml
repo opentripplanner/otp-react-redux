@@ -109,6 +109,7 @@ common:
     "yes": Oui
   itineraryDescriptions:
     calories: "{calories, number} kcal"
+    fareUnknown: Tarif inconnu
     noItineraryToDisplay: Aucun trajet à afficher.
     relativeCo2: |
       {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
@@ -235,8 +236,8 @@ components:
     shortTitle: Planifier un trajet
   BatchSearchScreen:
     header: Votre trajet
+    modeSelectorLabel: Sélectionnez un mode de transport
   BatchSettings:
-    dateTimeSettingsLabel: Paramètres Date/Heure
     destination: destination
     origin: point de départ
     planTripTooltip: Planifier le trajet
@@ -262,7 +263,6 @@ components:
     departAt: Départ {departTime, time, short}
     editDepartOrArrival: Modifier l'heure de départ ou d'arrivée
     leaveNow: Tout de suite
-    range: "{startTime, time, short} à {endTime, time, short}"
   DateTimeScreen:
     header: Jour et heure du trajet
   DefaultItinerary:
@@ -326,7 +326,6 @@ components:
     title: Vue panoramique
   MetroUI:
     arriveAt: Vous arrivez à
-    fromStop: de {stop}
     itineraryDescription: Trajet de {time} par les lignes {routes}
     leaveAt: Partez à
     multipleOptions: Plusieurs options
@@ -546,10 +545,6 @@ components:
       session' pour conserver votre recherche.
     header: Votre session va expirer
     keepSession: Prolonger ma session
-  SettingsPreview:
-    defaultPreviewText: |-
-      Choix du mode
-      & préférences
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: >-
       Ce trajet utilise les informations en temps réel sur le trafic et les

@@ -102,6 +102,7 @@ common:
     "yes": "Yes"
   itineraryDescriptions:
     calories: "{calories, number} Cal"
+    fareUnknown: No fare information
     noItineraryToDisplay: No itinerary to display.
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
@@ -224,8 +225,8 @@ components:
     shortTitle: Plan Trip
   BatchSearchScreen:
     header: Plan Your Trip
+    modeSelectorLabel: Select a transit mode
   BatchSettings:
-    dateTimeSettingsLabel: Date/Time Settings
     destination: destination
     origin: origin
     planTripTooltip: Plan trip
@@ -249,7 +250,6 @@ components:
     departAt: Depart {departTime, time, short}
     editDepartOrArrival: Edit departure or arrival time
     leaveNow: Leave now
-    range: "{startTime, time, short} to {endTime, time, short}"
   DateTimeScreen:
     header: Set Date/Time
   DefaultItinerary:
@@ -311,7 +311,6 @@ components:
     title: Imagery of the street
   MetroUI:
     arriveAt: You arrive
-    fromStop: from {stop}
     itineraryDescription: "{time} itinerary using {routes}"
     leaveAt: You leave
     multipleOptions: Multiple Options
@@ -374,12 +373,12 @@ components:
     NO_TRANSIT_CONNECTION:
       body: >-
         No transit connection was found between your origin and destination on
-        the selected day of service.
+        the selected day of service, using the vehicle types you selected.
       header: No transit connections
     NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
       body: >-
         A transit connection was found, but it was outside the search window,
-        try adjusting your search window.
+        try adjusting your search window, using the vehicle types you selected.
       header: No transit connection in search window
     OUTSIDE_BOUNDS:
       body: >-
@@ -524,10 +523,6 @@ components:
       your search.
     header: Session about to timeout!
     keepSession: Continue Session
-  SettingsPreview:
-    defaultPreviewText: |-
-      Transit Options
-      & Preferences
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   StackedPaneDisplay:

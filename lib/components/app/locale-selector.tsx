@@ -30,7 +30,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
         style={{ display: 'block ruby' }}
       >
         {Object.keys(languageOptions).map((locale: string) => (
-          <li key={locale} lang={locale} role="none">
+          <li key={locale} lang={locale}>
             <UnstyledButton
               aria-selected={locale === currentLocale || undefined}
               onClick={() => setLocale(locale)}

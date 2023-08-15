@@ -9,42 +9,37 @@ import {
   DelimitedArrayParam,
   encodeQueryParams
 } from 'use-query-params'
-import { Search } from '@styled-icons/fa-solid/Search'
-import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
-import { useIntl } from 'react-intl'
-import React, { useCallback, useContext, useState } from 'react'
-import type {
+import {
   ModeButtonDefinition,
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
+import { Search } from '@styled-icons/fa-solid/Search'
+import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
+import { useIntl } from 'react-intl'
+import React, { useCallback, useContext, useState } from 'react'
+import tinycolor from 'tinycolor2'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
+import { generateModeSettingValues } from '../../util/api'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
+import { getFormattedMode } from '../../util/i18n'
 import { StyledIconWrapper } from '../util/styledIcon'
-import tinycolor from 'tinycolor2'
 
 import {
-  DateTimeModalContainer,
   MainSettingsRow,
   ModeSelectorContainer,
-  PlanTripButton,
-  StyledDateTimePreview,
-  StyledDateTimePreviewContainer
+  PlanTripButton
 } from './batch-styled'
-import { generateModeSettingValues } from '../../util/api'
-import { getFormattedMode } from '../../util/i18n'
-
-import DateTimeModal from './date-time-modal'
+import DateTimeButton from './date-time-button'
 
 const queryParamConfig = { modeButtons: DelimitedArrayParam }
 
 // TYPESCRIPT TODO: better types
 type Props = {
   activeSearch: any
-  config: any
   currentQuery: any
   enabledModeButtons: string[]
   fillModeIcons?: boolean
@@ -55,7 +50,7 @@ type Props = {
   routingQuery: any
   setUrlSearch: (evt: any) => void
   spacedOutModeSelector?: boolean
-  urlSearchParams: URLSearchParams
+  updateQueryTimeIfLeavingNow: () => void
 }
 
 // This method is used to daisy-chain a series of functions together on a given value
@@ -86,11 +81,17 @@ function BatchSettings({
   onPlanTripClick,
   routingQuery,
   setUrlSearch,
-  spacedOutModeSelector
+  spacedOutModeSelector,
+  updateQueryTimeIfLeavingNow
 }: Props) {
   const intl = useIntl()
 
-  const [dateTimeExpanded, setDateTimeExpanded] = useState<boolean>(false)
+  // Whether the date/time selector is open
+  const [dateTimeOpen, setDateTimeOpen] = useState(false)
+
+  // Whether the mode selector has a popup open
+  const [modeSelectorPopup, setModeSelectorPopup] = useState(false)
+
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
@@ -161,12 +162,17 @@ function BatchSettings({
       )
       return
     }
-    // Close any expanded panels.
-    setDateTimeExpanded(false)
 
     // Plan trip.
+    updateQueryTimeIfLeavingNow()
     routingQuery()
-  }, [currentQuery, intl, onPlanTripClick, routingQuery])
+  }, [
+    currentQuery,
+    intl,
+    onPlanTripClick,
+    routingQuery,
+    updateQueryTimeIfLeavingNow
+  ])
 
   const _toggleModeButton = useCallback(
     (buttonId: string, newState: boolean) => {
@@ -186,6 +192,16 @@ function BatchSettings({
     [enabledModeButtons, setUrlSearch]
   )
 
+  /**
+   * Check whether the mode selector is showing a popup.
+   */
+  const checkModeSelectorPopup = useCallback(() => {
+    const modeSelectorPopup = document.querySelector(
+      '.metro-mode-selector div[role="dialog"]'
+    )
+    setModeSelectorPopup(!!modeSelectorPopup)
+  }, [setModeSelectorPopup])
+
   // We can rely on this existing, as there is a default
   const baseColor = getComputedStyle(document.documentElement).getPropertyValue(
     '--main-base-color'
@@ -193,53 +209,48 @@ function BatchSettings({
   const accentColor = tinycolor(baseColor).darken(10)
 
   return (
-    <>
-      <MainSettingsRow>
-        <StyledDateTimePreviewContainer
-          aria-controls="date-time-modal"
-          aria-expanded={dateTimeExpanded}
-          aria-label={intl.formatMessage({
-            id: 'components.BatchSettings.dateTimeSettingsLabel'
+    <MainSettingsRow onMouseMove={checkModeSelectorPopup}>
+      <DateTimeButton
+        open={dateTimeOpen}
+        setOpen={setDateTimeOpen}
+        // Prevent the hover on date/time selector when mode selector has a popup open via keyboard.
+        style={{ pointerEvents: modeSelectorPopup ? 'none' : undefined }}
+      />
+      <ModeSelectorContainer
+        squashed={!spacedOutModeSelector}
+        // Prevent hover effect on mode selector when date selector is activated via keyboard.
+        style={{ pointerEvents: dateTimeOpen ? 'none' : undefined }}
+      >
+        <MetroModeSelector
+          accentColor={baseColor}
+          activeHoverColor={accentColor.toHexString()}
+          fillModeIcons={fillModeIcons}
+          label={intl.formatMessage({
+            id: 'components.BatchSearchScreen.modeSelectorLabel'
           })}
-          expanded={dateTimeExpanded}
-          onClick={() => setDateTimeExpanded(!dateTimeExpanded)}
+          modeButtons={processedModeButtons}
+          onSettingsUpdate={setUrlSearch}
+          onToggleModeButton={_toggleModeButton}
+        />
+        <PlanTripButton
+          id="plan-trip"
+          onClick={_planTrip}
+          title={intl.formatMessage({
+            id: 'components.BatchSettings.planTripTooltip'
+          })}
         >
-          <StyledDateTimePreview hideButton />
-        </StyledDateTimePreviewContainer>
-        <ModeSelectorContainer squashed={!spacedOutModeSelector}>
-          <MetroModeSelector
-            accentColor={baseColor}
-            activeHoverColor={accentColor.toHexString()}
-            fillModeIcons={fillModeIcons}
-            modeButtons={processedModeButtons}
-            onSettingsUpdate={setUrlSearch}
-            onToggleModeButton={_toggleModeButton}
-          />
-          <PlanTripButton
-            id="plan-trip"
-            onClick={_planTrip}
-            title={intl.formatMessage({
-              id: 'components.BatchSettings.planTripTooltip'
-            })}
-          >
-            <StyledIconWrapper style={{ fontSize: '1.6em' }}>
-              {hasValidLocation(currentQuery, 'from') &&
-              hasValidLocation(currentQuery, 'to') &&
-              !!activeSearch ? (
-                <SyncAlt />
-              ) : (
-                <Search />
-              )}
-            </StyledIconWrapper>
-          </PlanTripButton>
-        </ModeSelectorContainer>
-      </MainSettingsRow>
-      {dateTimeExpanded && (
-        <DateTimeModalContainer id="date-time-modal">
-          <DateTimeModal />
-        </DateTimeModalContainer>
-      )}
-    </>
+          <StyledIconWrapper style={{ fontSize: '1.6em' }}>
+            {hasValidLocation(currentQuery, 'from') &&
+            hasValidLocation(currentQuery, 'to') &&
+            !!activeSearch ? (
+              <SyncAlt />
+            ) : (
+              <Search />
+            )}
+          </StyledIconWrapper>
+        </PlanTripButton>
+      </ModeSelectorContainer>
+    </MainSettingsRow>
   )
 }
 
@@ -254,7 +265,6 @@ const mapStateToProps = (state: any) => {
   )
   return {
     activeSearch: getActiveSearch(state),
-    config: state.otp.config,
     currentQuery: state.otp.currentQuery,
     // TODO: Duplicated in apiv2.js
     enabledModeButtons:
@@ -267,14 +277,14 @@ const mapStateToProps = (state: any) => {
     modeButtonOptions: state.otp.config?.modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
     modeSettingValues,
-    spacedOutModeSelector: state.otp?.config?.modes?.spacedOut,
-    urlSearchParams
+    spacedOutModeSelector: state.otp?.config?.modes?.spacedOut
   }
 }
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
-  setUrlSearch: apiActions.setUrlSearch
+  setUrlSearch: apiActions.setUrlSearch,
+  updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BatchSettings)

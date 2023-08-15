@@ -170,10 +170,7 @@ components:
     tooManyPlaces: Se alcanzó el máximo de lugares intermedios
   AdvancedOptions:
     bannedRoutes: Seleccionar rutas prohibidas…
-    maxBike: Máx de bicicleta {unitsString}
-    maxWalk: Máx caminando {unitsString}
     preferredRoutes: Seleccionar rutas preferidas…
-    walkReluctance: Evasión de caminata
   AfterSignInScreen:
     mainTitle: Redirigiendo…
     message: >-
@@ -231,10 +228,8 @@ components:
     header: Planifique su viaje
   BatchSettings:
     destination: destino
-    modeSelector: Selector de modos
     origin: origen
     planTripTooltip: Planificar viaje
-    settings: Preferencias de viaje
     validationMessage: "Por favor, defina los siguientes campos para planificar un viaje: {issues}"
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
@@ -255,7 +250,6 @@ components:
     departAt: Salida {departTime, time, short}
     editDepartOrArrival: Editar la hora de salida o de llegada
     leaveNow: Salir ahora
-    range: "{startTime, time, short} a {endTime, time, short}"
   DateTimeScreen:
     header: Fijar fecha/hora
   DefaultItinerary:
@@ -319,7 +313,6 @@ components:
     title: Imágenes de la calle
   MetroUI:
     arriveAt: Llegaste
-    fromStop: de {stop}
     itineraryDescription: "{time} itinerario en {routes}"
     leaveAt: Su salida
     multipleOptions: Múltiples Opciones
@@ -329,8 +322,6 @@ components:
     timeWalking: "{time} caminando"
   MobileOptions:
     header: Configurar las opciones de búsqueda
-  ModeDropdown:
-    exclusiveMode: Solo {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Cambiar la dirección de clasificación
     howToFindResults: >-
@@ -340,6 +331,10 @@ components:
       {itineraryNum, plural, one {# itinerario encontrado} other {# itinerarios
       encontrados}}
     numIssues: "{issueNum, plural, one {# problema} other {# problemas}}"
+    resultsSortedBy: >-
+      Los resultados del viaje están actualmente ordenados por {sortSelected}.
+      Para cambiar la forma en que se ordenan los resultados, utiliza el botón
+      "Ordenar resultados" que aparece a continuación.
     searching: Buscando tus opciones…
     selectArrivalTime: Hora de llegada
     selectBest: La mejor opción
@@ -347,6 +342,7 @@ components:
     selectDepartureTime: Hora de salida
     selectDuration: Duración
     selectWalkTime: Tiempo de caminata
+    sortResults: Ordenar los resultados
     viewAll: Ver todas las opciones
   NavLoginButton:
     help: Ayuda
@@ -464,8 +460,8 @@ components:
       Sólo se pueden controlar los itinerarios que incluyan ride hailing y no
       los alquileres o los viajes en coche.
     saveTripText: Salvar el viaje
-    signInText: Iniciar sesión para guardar el viaje
-    signInTooltip: Por favor, inicie sesión para guardar un viaje.
+    signInText: Inicia sesión para guardar el viaje
+    signInTooltip: Por favor, inicia sesión para guardar el viaje.
   SavedTripEditor:
     editSavedTrip: Editar el viaje guardado
     saveNewTrip: Guardar un nuevo viaje
@@ -481,6 +477,8 @@ components:
     pause: Pausa
     resume: Reanudar
   SavedTripScreen:
+    itineraryLoaded: Itinerario cargado
+    itineraryLoading: Cargando el itinerario
     tooManyTrips: >
       Ya ha alcanzado el máximo de cinco viajes guardados. Por favor, elimine
       los viajes no utilizados de sus viajes guardados e inténtelo de nuevo.
@@ -494,10 +492,6 @@ components:
       búsqueda.
     header: ¡La sesión está a punto de terminar!
     keepSession: Continuar sesión
-  SettingsPreview:
-    defaultPreviewText: |-
-      Opciones
-      y Preferencias del viaje
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo real
   StackedPaneDisplay:

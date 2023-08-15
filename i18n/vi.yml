@@ -103,7 +103,6 @@ common:
   itineraryDescriptions:
     calories: "{calories, number} calo"
     noItineraryToDisplay: Không có hành trình để hiển thị.
-    noTransitFareProvided: Không có thông tin giá vé
     relativeCo2: |
       {co2} CO₂ {isMore, select, true {nhiều} other {ít} } hơn so với xe hơi
     transfers: "{transfers, plural, =0 {} other {# chuyển}}"
@@ -166,10 +165,7 @@ components:
     tooManyPlaces: Địa điểm trung gian tối đa đạt được
   AdvancedOptions:
     bannedRoutes: Chọn các tuyến đường bị cấm…
-    maxBike: Đạp xe tối đa {unitsString}
-    maxWalk: Đi bộ tối đa {unitsString}
     preferredRoutes: Chọn các tuyến đường ưa thích…
-    walkReluctance: Tránh đi bộ
   AfterSignInScreen:
     mainTitle: Chuyển hướng...
     message: >-
@@ -225,7 +221,6 @@ components:
     destination: điểm đến
     origin: điểm xuất phát
     planTripTooltip: Lên kế hoạch cho chuyến đi
-    settings: Cài đặt chuyến đi
     validationMessage: >-
       Vui lòng xác định các khu vực sau để lên kế hoạch cho một chuyến đi:
       {issues}
@@ -248,7 +243,6 @@ components:
     departAt: Khởi hành {departTime, time, short}
     editDepartOrArrival: Chỉnh sửa thời gian khởi hành hoặc thời gian đến
     leaveNow: Rời đi ngay bây giờ
-    range: "{startTime, time, short} đến {endTime, time, short}"
   DateTimeScreen:
     header: Cài đặt ngày/giờ
   DefaultItinerary:
@@ -306,7 +300,6 @@ components:
     streets: Đường phố
   MetroUI:
     arriveAt: Đến nơi
-    fromStop: từ {stop}
     itineraryDescription: "{time} hành trình sử dụng {routes}"
     leaveAt: Bạn rời khỏi
     multipleOptions: Nhiều lựa chọn
@@ -314,8 +307,6 @@ components:
     timeWalking: "{time} đi bộ"
   MobileOptions:
     header: Cài đặt tùy chọn tìm kiếm
-  ModeDropdown:
-    exclusiveMode: Chỉ {mode}
   NarrativeItinerariesHeader:
     changeSortDir: Thay đổi hướng sắp xếp
     itinerariesFound: "{itineraryNum} hành trình được tìm thấy"
@@ -462,8 +453,6 @@ components:
       tiếp tục việc tìm kiếm của bạn.
     header: Phiên sắp hết giờ!
     keepSession: Tiếp tục phiên
-  SettingsPreview:
-    defaultPreviewText: Tùy chọn và Cài đặt Phương tiện Công cộng
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: >-
       Chuyến đi này sử dụng thông tin lưu thông và sự trì hoãn theo thời gian

@@ -156,10 +156,7 @@ components:
     tooManyPlaces: 已达到最多中途地点
   AdvancedOptions:
     bannedRoutes: 选择禁行路线…
-    maxBike: 最大骑自行车 {unitsString}
-    maxWalk: 最大步行 {unitsString}
     preferredRoutes: 选择首选路线…
-    walkReluctance: 避免步行
   AfterSignInScreen:
     mainTitle: 重新定向…
     message: 如果几秒钟后页面没有加载, 请 <redirectLink>点击这里</redirectLink>.
@@ -217,7 +214,6 @@ components:
     destination: 目的地
     origin: 出发地
     planTripTooltip: 计划行程
-    settings: 行程设置
     validationMessage: "请定义以下字段来计划旅行: {issues}"
   BeforeSignInScreen:
     mainTitle: 签到
@@ -237,7 +233,6 @@ components:
     departAt: 出发 {departTime, time, short}
     editDepartOrArrival: 编辑出发或到达时间
     leaveNow: 现在离开
-    range: "{startTime, time, short} 到 {endTime, time, short}"
   DateTimeScreen:
     header: 设置日期/时间
   DefaultItinerary:
@@ -293,7 +288,6 @@ components:
     streets: 街道
   MetroUI:
     arriveAt: 到达
-    fromStop: 从 {stop}
     itineraryDescription: "{time} 行程使用 {routes}"
     leaveAt: 您已离开
     multipleOptions: 多种选择
@@ -301,8 +295,6 @@ components:
     timeWalking: "{time} 步行"
   MobileOptions:
     header: 设置搜索选项
-  ModeDropdown:
-    exclusiveMode: 仅 {mode}
   NarrativeItinerariesHeader:
     changeSortDir: 改变排序方向
     itinerariesFound: 发现{itineraryNum}条行程
@@ -440,8 +432,6 @@ components:
     body: 您的使用时间将在一分钟内到期.按“继续使用”以继续您的搜索.
     header: 使用时间即将结束!
     keepSession: 继续使用
-  SettingsPreview:
-    defaultPreviewText: 公共交通选择和偏好
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: 这个行程使用实时交通和延迟信息
   StackedPaneDisplay:

@@ -26,12 +26,27 @@ import startOver from '../util/start-over'
 import AppMenuItem from './app-menu-item'
 import PopupTriggerText from './popup-trigger-text'
 
+type MenuItem = {
+  children?: MenuItem[]
+  href?: string
+  iconType: string | JSX.Element
+  iconUrl?: string
+  id: string
+  isSelected?: boolean
+  label: string | JSX.Element
+  lang?: string
+  onClick?: () => void
+  skipLocales?: boolean
+  subMenuDivider: boolean
+}
+
 type AppMenuProps = {
   activeLocale: string
   callTakerEnabled?: boolean
-  extraMenuItems?: menuItem[]
+  extraMenuItems?: MenuItem[]
   fieldTripEnabled?: boolean
-  // Typescript TODO language options based on configLanguage.
+  // Typescript TODO language and language options based on configLanguage.
+  language: Record<string, any> | null
   languageOptions: Record<string, any> | null
   location: { search: string }
   mailablesEnabled?: boolean
@@ -46,18 +61,6 @@ type AppMenuProps = {
 }
 type AppMenuState = {
   isPaneOpen: boolean
-}
-type menuItem = {
-  children?: menuItem[]
-  href?: string
-  iconType: string | JSX.Element
-  iconUrl?: string
-  id: string
-  isSelected?: boolean
-  label: string | JSX.Element
-  lang?: string
-  onClick?: () => void
-  subMenuDivider: boolean
 }
 
 /**
@@ -87,7 +90,6 @@ class AppMenu extends Component<
   _triggerPopup = () => {
     const { popupTarget, setPopupContent } = this.props
     setPopupContent(popupTarget)
-    this._togglePane()
   }
 
   _togglePane = () => {
@@ -104,7 +106,7 @@ class AppMenu extends Component<
     document.querySelector('main')?.focus()
   }
 
-  _addExtraMenuItems = (menuItems?: menuItem[] | null) => {
+  _addExtraMenuItems = (menuItems?: MenuItem[] | null) => {
     return (
       menuItems &&
       menuItems.map((menuItem) => {
@@ -118,18 +120,14 @@ class AppMenu extends Component<
           label: configLabel,
           lang,
           onClick,
+          skipLocales,
           subMenuDivider
         } = menuItem
-        const { intl } = this.props
-        const localizationId = `config.menuItems.${id}`
-        const localizedLabel = intl.formatMessage({
-          // Add the string id as the default message to limit error messages.
-          defaultMessage: localizationId,
-          id: localizationId
-        })
+        const { activeLocale, language } = this.props
+        const localizedLabel = language?.[activeLocale]?.config?.menuItems?.[id]
+        const useLocalizedLabel = !skipLocales && localizedLabel
         // Override the config label if a localized label exists
-        const label =
-          localizedLabel === localizationId ? configLabel : localizedLabel
+        const label = useLocalizedLabel ? localizedLabel : configLabel
 
         return (
           <AppMenuItem
@@ -171,7 +169,7 @@ class AppMenu extends Component<
       setLocale,
       toggleMailables
     } = this.props
-    const languageMenuItems: menuItem[] | null = languageOptions && [
+    const languageMenuItems: MenuItem[] | null = languageOptions && [
       {
         children: Object.keys(languageOptions).map((locale: string) => ({
           iconType: <svg />,
@@ -180,11 +178,13 @@ class AppMenu extends Component<
           label: languageOptions[locale].name,
           lang: locale,
           onClick: () => setLocale(locale),
+          skipLocales: true,
           subMenuDivider: false
         })),
         iconType: <GlobeAmericas />,
         id: 'app-menu-locale-selector',
         label: <FormattedMessage id="components.SubNav.languageSelector" />,
+        skipLocales: true,
         subMenuDivider: false
       }
     ]
@@ -297,6 +297,7 @@ const mapStateToProps = (state: Record<string, any>) => {
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
     extraMenuItems,
     fieldTripEnabled: isModuleEnabled(state, Modules.FIELD_TRIP),
+    language,
     languageOptions: getLanguageOptions(language),
     mailablesEnabled: isModuleEnabled(state, Modules.MAILABLES),
     popupTarget: state.otp.config?.popups?.launchers?.sidebarLink
