@@ -299,7 +299,6 @@ components:
     streets: Đường phố
   MetroUI:
     arriveAt: Đến nơi
-    fromStop: từ {stop}
     itineraryDescription: "{time} hành trình sử dụng {routes}"
     leaveAt: Bạn rời khỏi
     multipleOptions: Nhiều lựa chọn
