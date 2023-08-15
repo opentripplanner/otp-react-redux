@@ -367,13 +367,8 @@ components:
     description: Le contenu que vous avez demandé n'est pas disponible.
     header: Contenu introuvable
   NotificationPrefsPane:
-    description: >-
-      Vous pouvez recevoir des notifications sur les trajets que vous effectuez
-      fréquemment.
     noDeviceForPush: Inscrivez-vous avec l'application mobile pour accéder à ce paramètre.
-    noneSelect: Ne pas me notifier
     notificationChannelPrompt: "Recevoir des notifications sur vos trajets par :"
-    notificationEmailDetail: "Les courriers de notification seront envoyés à :"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
