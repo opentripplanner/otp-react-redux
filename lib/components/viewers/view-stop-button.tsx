@@ -1,6 +1,7 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
+import { Stop } from '@opentripplanner/types'
 import React, { Component, ReactElement } from 'react'
 
 import { setMainPanelContent, setViewedStop } from '../../actions/ui'
@@ -9,14 +10,14 @@ import InvisibleA11yLabel from '../util/invisible-a11y-label'
 type Props = {
   className: string
   forStop: string
-  setViewedStop: (args: { stopId: string }) => void
-  stopId: string
+  setViewedStop: (stop: Stop) => void
+  stop: Stop
   text: ReactElement
 }
 
 class ViewStopButton extends Component<Props> {
   _onClick = () => {
-    this.props.setViewedStop({ stopId: this.props.stopId })
+    this.props.setViewedStop(this.props.stop)
   }
 
   render() {
