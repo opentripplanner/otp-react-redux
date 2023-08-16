@@ -148,17 +148,14 @@ export default function DateTimeButton({
   )
 
   return (
-    <ButtonWrapper
-      {...spanInteractionProps}
-      // This will trigger mouse effects such as showing popup on hover of on check.
-      ref={reference}
-      style={style}
-    >
+    <ButtonWrapper style={style}>
       <button
         {...interactionProps}
         // Separate handler to communicate to the parent element
         // which item had a popup triggered using the keyboard.
         onClick={handleButtonClick}
+        // This will trigger mouse effects such as showing popup on hover of on check.
+        ref={reference}
         // Required by linter settings
         type="button"
       >
@@ -168,7 +165,9 @@ export default function DateTimeButton({
           </span>
           {' - '}
         </InvisibleA11yLabel>
-        <DateTimePreview />
+        <span {...spanInteractionProps}>
+          <DateTimePreview />
+        </span>
       </button>
       {open && (
         <FloatingFocusManager
