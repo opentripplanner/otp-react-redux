@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { TransportMode } from '@opentripplanner/types'
-import React, { useState } from 'react'
+import { useQueryParam } from 'use-query-params'
+import React, { useEffect } from 'react'
 
 import { defaultDropdownConfig } from '../../../util/call-taker'
 import { getModuleConfig, Modules } from '../../../util/config'
@@ -23,21 +24,39 @@ type Props = {
  * rental companies).
  */
 function ModeDropdown({ modeDropdownOptions, onChangeModes }: Props) {
-  const [selectedMode, setSelectedMode] = useState(modeDropdownOptions[0].label)
+  const [selectedMode, setSelectedMode] = useQueryParam(
+    modeDropdownOptions[0].label
+  )
 
   const onChange = React.useCallback(
     (e: React.FocusEvent<HTMLSelectElement>) => {
       setSelectedMode(e.target.value)
-      const newModes = modeDropdownOptions.find(
-        (mdo) => mdo.label === e.target.value
-      )?.combination
-      onChangeModes(newModes || [])
     },
     []
   )
 
+  useEffect(() => {
+    if (selectedMode === undefined) {
+      setSelectedMode(modeDropdownOptions?.[0].label)
+      return
+    }
+
+    const newModes = modeDropdownOptions.find(
+      (mdo) => mdo.label === selectedMode
+    )?.combination
+    onChangeModes(newModes || [])
+  }, [selectedMode, modeDropdownOptions, onChangeModes])
+
   return (
-    <select onBlur={onChange} onChange={onChange} value={selectedMode}>
+    <select
+      onBlur={onChange}
+      onChange={onChange}
+      value={
+        typeof selectedMode === 'string'
+          ? selectedMode
+          : modeDropdownOptions?.[0].label
+      }
+    >
       {modeDropdownOptions?.map((o) => (
         <option key={o.label} value={o.label}>
           {o.label}

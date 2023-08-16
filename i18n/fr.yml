@@ -325,7 +325,6 @@ components:
     title: Vue panoramique
   MetroUI:
     arriveAt: Vous arrivez à
-    fromStop: de {stop}
     itineraryDescription: Trajet de {time} par les lignes {routes}
     leaveAt: Partez à
     multipleOptions: Plusieurs options
@@ -545,10 +544,6 @@ components:
       session' pour conserver votre recherche.
     header: Votre session va expirer
     keepSession: Prolonger ma session
-  SettingsPreview:
-    defaultPreviewText: |-
-      Choix du mode
-      & préférences
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: >-
       Ce trajet utilise les informations en temps réel sur le trafic et les
