@@ -78,20 +78,10 @@ const ViewSwitcher = ({
 // connect to the redux store
 
 const mapStateToProps = (state: any) => {
-  const { mainPanelContent } = state.otp.ui
-
-  // Reverse the ID to string mapping
-  const activePanelPair = Object.entries(MainPanelContent).find(
-    (keyValuePair) => keyValuePair[1] === mainPanelContent
-  )
-  // activePanel is array of form [string, ID]
-  // The trip planner has id null
-  const activePanel = (activePanelPair && activePanelPair[1]) || null
-
   return {
     // TODO: more reliable way of detecting these things, such as terms of storage page
     accountsActive: state.router.location.pathname.includes('/account'),
-    activePanel
+    activePanel: state.otp.ui.mainPanelContent
   }
 }
 
