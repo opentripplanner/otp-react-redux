@@ -102,7 +102,8 @@ export function getItineraryView({
 }: UrlParams): ItineraryView {
   return (
     ui_itineraryView ||
-    (ui_activeItinerary !== undefined &&
+    (ui_activeItinerary !== null &&
+      ui_activeItinerary !== undefined &&
       `${ui_activeItinerary}` !== '-1' &&
       ItineraryView.FULL) ||
     ItineraryView.LIST
