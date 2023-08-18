@@ -28,7 +28,7 @@ import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 
-import { getFirstTransitLegStop, getFlexAttirbutes } from './attribute-utils'
+import { getFlexAttirbutes } from './attribute-utils'
 import DepartureTimesList, {
   SetActiveItineraryHandler
 } from './departure-times-list'
