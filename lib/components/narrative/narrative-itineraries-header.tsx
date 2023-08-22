@@ -36,6 +36,7 @@ const ItinerariesHeaderContainer = styled.div<{ showHeaderText: boolean }>`
 
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
+  enabledSortModes,
   errors,
   itineraries,
   itinerary,
@@ -52,6 +53,7 @@ export default function NarrativeItinerariesHeader({
   sort
 }: {
   customBatchUiBackground?: boolean
+  enabledSortModes: string[]
   errors: unknown[]
   itineraries: unknown[]
   itinerary: Itinerary
@@ -97,7 +99,7 @@ export default function NarrativeItinerariesHeader({
     ? searching
     : intl.formatList([itinerariesFound, numIssues], { type: 'conjunction' })
 
-  const sortOptionsArr = sortOptions(intl)
+  const sortOptionsArr = sortOptions(intl, enabledSortModes)
   const sortText = sortOptionsArr.find((x) => x.value === sort.type)?.text
 
   const handleSortClick = useCallback(

@@ -350,6 +350,19 @@ itinerary:
   showLegDurations: false
   # Allows calorie counts to be hidden
   displayCalories: true
+  # The sort option to use by default
+  # Available sort options: 'BEST', 'DURATION', 'ARRIVALTIME', 'WALKTIME', 'COST', 'DEPARTURETIME'
+  # defaultSort: "BEST" # Default
+  # The sort options to display in the sort options list
+  # If unset, will display all.
+  # Available sort options: 'BEST', 'DURATION', 'ARRIVALTIME', 'WALKTIME', 'COST', 'DEPARTURETIME'
+  # sortModes: 
+  #   - 'BEST'
+  #   - 'DURATION'
+  #   - 'ARRIVALTIME'
+  #   - 'WALKTIME'
+  #   - 'COST'
+  #   - 'DEPARTURETIME'
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally

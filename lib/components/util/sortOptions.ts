@@ -1,7 +1,15 @@
 import { IntlShape } from 'react-intl'
 
 export const sortOptions = (
-  intl: IntlShape
+  intl: IntlShape,
+  enabledOptions: (
+    | 'BEST'
+    | 'DURATION'
+    | 'ARRIVALTIME'
+    | 'DEPARTURETIME'
+    | 'WALKTIME'
+    | 'COST'
+  )[] = ['BEST', 'DURATION', 'ARRIVALTIME', 'WALKTIME', 'COST', 'DEPARTURETIME']
 ): {
   text: string
   value: string
@@ -45,5 +53,8 @@ export const sortOptions = (
     }
   ]
 
-  return sortOptionsArray
+  return sortOptionsArray.filter((sortOption) =>
+    // @ts-expect-error TODO: why is this failing
+    enabledOptions.includes(sortOption.value)
+  )
 }
