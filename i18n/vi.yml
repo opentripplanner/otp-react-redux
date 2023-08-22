@@ -299,7 +299,6 @@ components:
     streets: Đường phố
   MetroUI:
     arriveAt: Đến nơi
-    fromStop: từ {stop}
     itineraryDescription: "{time} hành trình sử dụng {routes}"
     leaveAt: Bạn rời khỏi
     multipleOptions: Nhiều lựa chọn
@@ -459,8 +458,6 @@ components:
       tiếp tục việc tìm kiếm của bạn.
     header: Phiên sắp hết giờ!
     keepSession: Tiếp tục phiên
-  SettingsPreview:
-    defaultPreviewText: Tùy chọn và Cài đặt Phương tiện Công cộng
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: >-
       Chuyến đi này sử dụng thông tin lưu thông và sự trì hoãn theo thời gian

@@ -312,7 +312,6 @@ components:
     title: Imágenes de la calle
   MetroUI:
     arriveAt: Llegaste
-    fromStop: de {stop}
     itineraryDescription: "{time} itinerario en {routes}"
     leaveAt: Su salida
     multipleOptions: Múltiples Opciones
@@ -492,10 +491,6 @@ components:
       búsqueda.
     header: ¡La sesión está a punto de terminar!
     keepSession: Continuar sesión
-  SettingsPreview:
-    defaultPreviewText: |-
-      Opciones
-      y Preferencias del viaje
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo real
   StackedPaneDisplay:
