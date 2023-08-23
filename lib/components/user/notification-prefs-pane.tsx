@@ -83,41 +83,29 @@ const NotificationPrefsPane = ({
               />
             </span>
             <span>
+              <label htmlFor={inputId}>
+                <FormattedMessage id={`common.notifications.${type}`} />
+              </label>
               {type === 'email' ? (
-                <>
-                  <label htmlFor={inputId}>
-                    <FormattedMessage id="common.notifications.email" />
-                  </label>
-                  <span id={inputDescriptionId}>{email}</span>
-                </>
+                <span id={inputDescriptionId}>{email}</span>
               ) : type === 'sms' ? (
-                <>
-                  <label htmlFor={inputId}>
-                    <FormattedMessage id="common.notifications.sms" />
-                  </label>
-                  <PhoneNumberEditor
-                    descriptorId={inputDescriptionId}
-                    initialPhoneNumber={phoneNumber}
-                    initialPhoneNumberVerified={isPhoneNumberVerified}
-                    onRequestCode={onRequestPhoneVerificationCode}
-                    onSubmitCode={onSendPhoneVerificationCode}
-                    phoneFormatOptions={phoneFormatOptions}
-                  />
-                </>
+                <PhoneNumberEditor
+                  descriptorId={inputDescriptionId}
+                  initialPhoneNumber={phoneNumber}
+                  initialPhoneNumberVerified={isPhoneNumberVerified}
+                  onRequestCode={onRequestPhoneVerificationCode}
+                  onSubmitCode={onSendPhoneVerificationCode}
+                  phoneFormatOptions={phoneFormatOptions}
+                />
               ) : (
-                <>
-                  <label htmlFor={inputId}>
-                    <FormattedMessage id="common.notifications.push" />
-                  </label>
-                  <span id={inputDescriptionId}>
-                    {pushDevices ? (
-                      // TODO: i18n
-                      `${pushDevices} devices registered`
-                    ) : (
-                      <FormattedMessage id="components.NotificationPrefsPane.noDeviceForPush" />
-                    )}
-                  </span>
-                </>
+                <span id={inputDescriptionId}>
+                  {pushDevices ? (
+                    // TODO: i18n
+                    `${pushDevices} devices registered`
+                  ) : (
+                    <FormattedMessage id="components.NotificationPrefsPane.noDeviceForPush" />
+                  )}
+                </span>
               )}
             </span>
           </NotificationOption>
