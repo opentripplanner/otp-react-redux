@@ -1,15 +1,23 @@
 import { IntlShape } from 'react-intl'
 
+export type SortOptionsType =
+  | 'BEST'
+  | 'DURATION'
+  | 'ARRIVALTIME'
+  | 'DEPARTURETIME'
+  | 'WALKTIME'
+  | 'COST'
+
 export const sortOptions = (
   intl: IntlShape,
-  enabledOptions: (
-    | 'BEST'
-    | 'DURATION'
-    | 'ARRIVALTIME'
-    | 'DEPARTURETIME'
-    | 'WALKTIME'
-    | 'COST'
-  )[] = ['BEST', 'DURATION', 'ARRIVALTIME', 'WALKTIME', 'COST', 'DEPARTURETIME']
+  enabledOptions: SortOptionsType[] = [
+    'BEST',
+    'DURATION',
+    'ARRIVALTIME',
+    'WALKTIME',
+    'COST',
+    'DEPARTURETIME'
+  ]
 ): {
   text: string
   value: string
