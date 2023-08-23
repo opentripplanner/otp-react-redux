@@ -28,7 +28,7 @@ import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 
-import { getFlexAttirbutes } from './attribute-utils'
+import { getFlexAttributes } from './attribute-utils'
 import DepartureTimesList, {
   SetActiveItineraryHandler
 } from './departure-times-list'
@@ -266,7 +266,7 @@ class MetroItinerary extends NarrativeItinerary {
     const { SvgIcon } = this.context
 
     const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
-      getFlexAttirbutes(itinerary)
+      getFlexAttributes(itinerary)
 
     const { fareCurrency, transitFare } = getFare(itinerary, defaultFareType)
 
