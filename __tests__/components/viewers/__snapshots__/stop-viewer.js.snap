@@ -143,6 +143,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                 "wrapRichTextChunksInFragment": undefined,
               }
             }
+            nearbyStops={Array []}
             rememberStop={[Function]}
             setHoveredStop={[Function]}
             setLocation={[Function]}
@@ -836,6 +837,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       autoRefreshStopTimes={true}
                       findStopTimesForStop={[Function]}
                       homeTimezone="America/Los_Angeles"
+                      nearbyStops={Array []}
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
                       showOperatorLogo={false}
@@ -1060,6 +1062,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                             "wrapRichTextChunksInFragment": undefined,
                           }
                         }
+                        nearbyStops={Array []}
                         setHoveredStop={[Function]}
                         showNearbyStops={true}
                         showOperatorLogo={false}
@@ -2179,6 +2182,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           </button>
                           <RelatedStopsPanel
                             homeTimezone="America/Los_Angeles"
+                            nearbyStops={Array []}
                             setHoveredStop={[Function]}
                             stopData={
                               Object {
@@ -2354,33 +2358,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               }
                             }
                             transitOperators={Array []}
-                          >
-                            <RelatedPanel
-                              expanded={false}
-                              onToggleExpanded={[Function]}
-                              title={
-                                <Memo(MemoizedFormattedMessage)
-                                  id="components.RelatedStopsPanel.relatedStops"
-                                />
-                              }
-                              titleWidth="13ch"
-                            >
-                              <div
-                                className="related-panel-container"
-                              >
-                                <h2>
-                                  <FormattedMessage
-                                    id="components.RelatedStopsPanel.relatedStops"
-                                  >
-                                    components.RelatedStopsPanel.relatedStops
-                                  </FormattedMessage>
-                                </h2>
-                                <ul
-                                  className="related-items-list list-unstyled"
-                                />
-                              </div>
-                            </RelatedPanel>
-                          </RelatedStopsPanel>
+                          />
                           <Connect(injectIntl(AmenitiesPanel))
                             stopData={
                               Object {
@@ -3120,6 +3098,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                 "wrapRichTextChunksInFragment": undefined,
               }
             }
+            nearbyStops={Array []}
             rememberStop={[Function]}
             setHoveredStop={[Function]}
             setLocation={[Function]}
@@ -3714,6 +3693,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       autoRefreshStopTimes={true}
                       findStopTimesForStop={[Function]}
                       homeTimezone="America/Los_Angeles"
+                      nearbyStops={Array []}
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
                       showOperatorLogo={false}
@@ -3839,6 +3819,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                             "wrapRichTextChunksInFragment": undefined,
                           }
                         }
+                        nearbyStops={Array []}
                         setHoveredStop={[Function]}
                         showNearbyStops={true}
                         showOperatorLogo={false}
@@ -4407,6 +4388,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           </button>
                           <RelatedStopsPanel
                             homeTimezone="America/Los_Angeles"
+                            nearbyStops={Array []}
                             setHoveredStop={[Function]}
                             stopData={
                               Object {
@@ -4483,33 +4465,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               }
                             }
                             transitOperators={Array []}
-                          >
-                            <RelatedPanel
-                              expanded={false}
-                              onToggleExpanded={[Function]}
-                              title={
-                                <Memo(MemoizedFormattedMessage)
-                                  id="components.RelatedStopsPanel.relatedStops"
-                                />
-                              }
-                              titleWidth="13ch"
-                            >
-                              <div
-                                className="related-panel-container"
-                              >
-                                <h2>
-                                  <FormattedMessage
-                                    id="components.RelatedStopsPanel.relatedStops"
-                                  >
-                                    components.RelatedStopsPanel.relatedStops
-                                  </FormattedMessage>
-                                </h2>
-                                <ul
-                                  className="related-items-list list-unstyled"
-                                />
-                              </div>
-                            </RelatedPanel>
-                          </RelatedStopsPanel>
+                          />
                           <Connect(injectIntl(AmenitiesPanel))
                             stopData={
                               Object {
@@ -4952,6 +4908,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                 "wrapRichTextChunksInFragment": undefined,
               }
             }
+            nearbyStops={Array []}
             rememberStop={[Function]}
             setHoveredStop={[Function]}
             setLocation={[Function]}
@@ -5645,6 +5602,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       autoRefreshStopTimes={true}
                       findStopTimesForStop={[Function]}
                       homeTimezone="America/Los_Angeles"
+                      nearbyStops={Array []}
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
                       showOperatorLogo={false}
@@ -5869,6 +5827,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                             "wrapRichTextChunksInFragment": undefined,
                           }
                         }
+                        nearbyStops={Array []}
                         setHoveredStop={[Function]}
                         showNearbyStops={true}
                         showOperatorLogo={false}
@@ -7031,6 +6990,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           </button>
                           <RelatedStopsPanel
                             homeTimezone="America/Los_Angeles"
+                            nearbyStops={Array []}
                             setHoveredStop={[Function]}
                             stopData={
                               Object {
@@ -7206,33 +7166,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               }
                             }
                             transitOperators={Array []}
-                          >
-                            <RelatedPanel
-                              expanded={false}
-                              onToggleExpanded={[Function]}
-                              title={
-                                <Memo(MemoizedFormattedMessage)
-                                  id="components.RelatedStopsPanel.relatedStops"
-                                />
-                              }
-                              titleWidth="13ch"
-                            >
-                              <div
-                                className="related-panel-container"
-                              >
-                                <h2>
-                                  <FormattedMessage
-                                    id="components.RelatedStopsPanel.relatedStops"
-                                  >
-                                    components.RelatedStopsPanel.relatedStops
-                                  </FormattedMessage>
-                                </h2>
-                                <ul
-                                  className="related-items-list list-unstyled"
-                                />
-                              </div>
-                            </RelatedPanel>
-                          </RelatedStopsPanel>
+                          />
                           <Connect(injectIntl(AmenitiesPanel))
                             stopData={
                               Object {
@@ -7972,6 +7906,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                 "wrapRichTextChunksInFragment": undefined,
               }
             }
+            nearbyStops={Array []}
             rememberStop={[Function]}
             setHoveredStop={[Function]}
             setLocation={[Function]}
@@ -8923,6 +8858,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       autoRefreshStopTimes={true}
                       findStopTimesForStop={[Function]}
                       homeTimezone="America/Los_Angeles"
+                      nearbyStops={Array []}
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
                       showOperatorLogo={false}
@@ -9405,6 +9341,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                             "wrapRichTextChunksInFragment": undefined,
                           }
                         }
+                        nearbyStops={Array []}
                         setHoveredStop={[Function]}
                         showNearbyStops={true}
                         showOperatorLogo={false}
@@ -13094,6 +13031,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           </button>
                           <RelatedStopsPanel
                             homeTimezone="America/Los_Angeles"
+                            nearbyStops={Array []}
                             setHoveredStop={[Function]}
                             stopData={
                               Object {
@@ -13527,33 +13465,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               }
                             }
                             transitOperators={Array []}
-                          >
-                            <RelatedPanel
-                              expanded={false}
-                              onToggleExpanded={[Function]}
-                              title={
-                                <Memo(MemoizedFormattedMessage)
-                                  id="components.RelatedStopsPanel.relatedStops"
-                                />
-                              }
-                              titleWidth="13ch"
-                            >
-                              <div
-                                className="related-panel-container"
-                              >
-                                <h2>
-                                  <FormattedMessage
-                                    id="components.RelatedStopsPanel.relatedStops"
-                                  >
-                                    components.RelatedStopsPanel.relatedStops
-                                  </FormattedMessage>
-                                </h2>
-                                <ul
-                                  className="related-items-list list-unstyled"
-                                />
-                              </div>
-                            </RelatedPanel>
-                          </RelatedStopsPanel>
+                          />
                           <Connect(injectIntl(AmenitiesPanel))
                             stopData={
                               Object {
@@ -15067,6 +14979,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                 "wrapRichTextChunksInFragment": undefined,
               }
             }
+            nearbyStops={Array []}
             rememberStop={[Function]}
             setHoveredStop={[Function]}
             setLocation={[Function]}
@@ -16013,6 +15926,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       autoRefreshStopTimes={true}
                       findStopTimesForStop={[Function]}
                       homeTimezone="America/Los_Angeles"
+                      nearbyStops={Array []}
                       setHoveredStop={[Function]}
                       showNearbyStops={true}
                       showOperatorLogo={false}
@@ -16490,6 +16404,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                             "wrapRichTextChunksInFragment": undefined,
                           }
                         }
+                        nearbyStops={Array []}
                         setHoveredStop={[Function]}
                         showNearbyStops={true}
                         showOperatorLogo={false}
@@ -17905,6 +17820,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           </button>
                           <RelatedStopsPanel
                             homeTimezone="America/Los_Angeles"
+                            nearbyStops={Array []}
                             setHoveredStop={[Function]}
                             stopData={
                               Object {
@@ -18333,33 +18249,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               }
                             }
                             transitOperators={Array []}
-                          >
-                            <RelatedPanel
-                              expanded={false}
-                              onToggleExpanded={[Function]}
-                              title={
-                                <Memo(MemoizedFormattedMessage)
-                                  id="components.RelatedStopsPanel.relatedStops"
-                                />
-                              }
-                              titleWidth="13ch"
-                            >
-                              <div
-                                className="related-panel-container"
-                              >
-                                <h2>
-                                  <FormattedMessage
-                                    id="components.RelatedStopsPanel.relatedStops"
-                                  >
-                                    components.RelatedStopsPanel.relatedStops
-                                  </FormattedMessage>
-                                </h2>
-                                <ul
-                                  className="related-items-list list-unstyled"
-                                />
-                              </div>
-                            </RelatedPanel>
-                          </RelatedStopsPanel>
+                          />
                           <Connect(injectIntl(AmenitiesPanel))
                             stopData={
                               Object {
@@ -19858,6 +19748,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                 "wrapRichTextChunksInFragment": undefined,
               }
             }
+            nearbyStops={Array []}
             rememberStop={[Function]}
             setHoveredStop={[Function]}
             setLocation={[Function]}
