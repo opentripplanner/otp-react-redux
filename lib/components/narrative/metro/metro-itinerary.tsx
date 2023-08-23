@@ -75,7 +75,7 @@ const ItineraryDetails = styled.ul`
   margin: 0;
   overflow: hidden;
   padding: 0;
-  width: 90%;
+  width: 95%;
 `
 const PrimaryInfo = styled.li`
   color: #000000cc;
