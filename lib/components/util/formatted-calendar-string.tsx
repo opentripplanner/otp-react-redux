@@ -2,7 +2,7 @@ import { differenceInDays } from 'date-fns'
 import { format, toDate } from 'date-fns-tz'
 import { FormattedDate, FormattedMessage } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
-import React, { ReactNode } from 'react'
+import React from 'react'
 
 import { isBlank } from '../../util/ui'
 
@@ -19,8 +19,8 @@ interface Props {
  * Returns a FormattedMessage component for date time preview calendar strings such that i18n IDs
  * are hardcoded and can be kept track of by format.js CLI tools
  */
-const FormattedCalendarString = ({ date, timeZone }: Props): ReactNode => {
-  if (isBlank(date)) return '---'
+const FormattedCalendarString = ({ date, timeZone }: Props): JSX.Element => {
+  if (isBlank(date)) return <>---</>
 
   // Dates are expressed in the agency's timezone.
   const today = toDate(getCurrentDate(timeZone), { timeZone })
