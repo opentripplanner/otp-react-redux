@@ -8,6 +8,8 @@ export type SortOptionsType =
   | 'WALKTIME'
   | 'COST'
 
+type SortOptionEntry = { text: string; value: SortOptionsType }
+
 export const sortOptions = (
   intl: IntlShape,
   enabledOptions: SortOptionsType[] = [
@@ -22,7 +24,7 @@ export const sortOptions = (
   text: string
   value: string
 }[] => {
-  const sortOptionsArray = [
+  const sortOptionsArray: SortOptionEntry[] = [
     {
       text: intl.formatMessage({
         id: 'components.NarrativeItinerariesHeader.selectBest'
@@ -62,7 +64,6 @@ export const sortOptions = (
   ]
 
   return sortOptionsArray.filter((sortOption) =>
-    // @ts-expect-error TODO: why is this failing
     enabledOptions.includes(sortOption.value)
   )
 }
