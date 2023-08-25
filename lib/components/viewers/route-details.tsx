@@ -1,9 +1,7 @@
-// FIXME: typescript
-/* eslint-disable react/prop-types */
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
-import PropTypes from 'prop-types'
+import { TransitOperator } from '@opentripplanner/types'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
@@ -14,6 +12,11 @@ import {
 } from '../../util/viewer'
 import { getOperatorName } from '../../util/state'
 import { LinkOpensNewWindow } from '../util/externalLink'
+import {
+  SetViewedRouteHandler,
+  SetViewedStopHandler,
+  ViewedRouteObject
+} from '../util/types'
 import { SortResultsDropdown } from '../util/dropdown'
 import { UnstyledButton } from '../util/unstyled-button'
 
@@ -36,23 +39,28 @@ const PatternSelectButton = styled(UnstyledButton)`
   }
 `
 
-class RouteDetails extends Component {
-  static propTypes = {
-    operator: PropTypes.shape({
-      defaultRouteColor: PropTypes.string,
-      defaultRouteTextColor: PropTypes.string,
-      longNameSplitter: PropTypes.string
-    }),
-    // There are more items in pattern and route, but none mandatory
-    patternId: PropTypes.string,
-    route: PropTypes.shape({ id: PropTypes.string })
-  }
+interface PatternSummary {
+  geometryLength: number
+  headsign: string
+  id: string
+}
 
+interface Props {
+  intl: IntlShape
+  operator: TransitOperator
+  patternId: string
+  route: ViewedRouteObject
+  setHoveredStop: (id: string | null) => void
+  setViewedRoute: SetViewedRouteHandler
+  setViewedStop: SetViewedStopHandler
+}
+
+class RouteDetails extends Component<Props> {
   /**
    * If a headsign link is clicked, set that pattern in redux state so that the
    * view can adjust
    */
-  _headSignButtonClicked = (id) => {
+  _headSignButtonClicked = (id: string) => {
     const { route, setViewedRoute } = this.props
     setViewedRoute({ patternId: id, routeId: route.id })
   }
@@ -60,7 +68,7 @@ class RouteDetails extends Component {
   /**
    * If a stop link is clicked, redirect to stop viewer
    */
-  _stopLinkClicked = (stopId) => {
+  _stopLinkClicked = (stopId: string) => {
     const { setViewedStop } = this.props
     setViewedStop({ stopId })
   }
@@ -73,14 +81,16 @@ class RouteDetails extends Component {
     const routeColor = getRouteColorBasedOnSettings(operator, route)
 
     const headsigns = Object.entries(patterns)
-      .map(([id, pat]) => ({
-        geometryLength: pat.geometry?.length,
-        headsign: extractHeadsignFromPattern(pat, shortName),
-        id
-      }))
+      .map(
+        ([id, pat]): PatternSummary => ({
+          geometryLength: pat.patternGeometry?.length || 0,
+          headsign: extractHeadsignFromPattern(pat, shortName),
+          id
+        })
+      )
       // Remove duplicate headsigns. Using a reducer means that the first pattern
       // with a specific headsign is the accepted one. TODO: is this good behavior?
-      .reduce((prev, cur) => {
+      .reduce((prev: PatternSummary[], cur) => {
         const amended = prev
         const alreadyExistingIndex = prev.findIndex(
           (h) => h.headsign === cur.headsign
@@ -100,12 +110,12 @@ class RouteDetails extends Component {
       }, [])
       .sort((a, b) => {
         // sort by number of vehicles on that pattern
-        const aVehicleCount = route.vehicles?.filter(
-          (vehicle) => vehicle.patternId === a.id
-        ).length
-        const bVehicleCount = route.vehicles?.filter(
-          (vehicle) => vehicle.patternId === b.id
-        ).length
+        const aVehicleCount =
+          route.vehicles?.filter((vehicle) => vehicle.patternId === a.id)
+            .length || 0
+        const bVehicleCount =
+          route.vehicles?.filter((vehicle) => vehicle.patternId === b.id)
+            .length || 0
 
         // if both have the same count, sort by pattern geometry length
         if (aVehicleCount === bVehicleCount) {
@@ -164,7 +174,7 @@ class RouteDetails extends Component {
               pullRight
               style={{ color: 'black' }}
             >
-              {headsigns.map((h) => (
+              {headsigns.map((h: PatternSummary) => (
                 <li key={h.id}>
                   <PatternSelectButton
                     onClick={() => this._headSignButtonClicked(h.id)}
@@ -182,7 +192,7 @@ class RouteDetails extends Component {
             <h2
               style={{
                 fontSize: 'inherit',
-                fontWeight: '400',
+                fontWeight: 400,
                 margin: '0 0 10px 8px'
               }}
             >
