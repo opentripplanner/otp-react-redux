@@ -290,7 +290,7 @@ async function executeTest(page, isMobile, isCallTaker) {
   // click the little pattern arrow
   // Triggers mock.har graphql query #13 and #14 (vehicle positions, twice again).
   // FIXME: Investigate why twice.
-  await page.click('#open-route-button-1-MARTA')
+  await page.click('#open-route-button-1')
 
   // View the other pattern on the selected route.
   await page.click('#headsign-selector-label')
