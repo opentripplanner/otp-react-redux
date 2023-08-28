@@ -4,6 +4,9 @@ describe('util > ui', () => {
   describe('getItineraryView', () => {
     it('returns a list mode by default or ui_activeItinerary is -1', () => {
       expect(getItineraryView({})).toBe(ItineraryView.LIST)
+      expect(getItineraryView({ ui_activeItinerary: null })).toBe(
+        ItineraryView.LIST
+      )
       expect(getItineraryView({ ui_activeItinerary: -1 })).toBe(
         ItineraryView.LIST
       )
