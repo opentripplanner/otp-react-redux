@@ -1,6 +1,7 @@
 /* Plan trip button */
 
-.otp .plan-trip-button, .view-results-button {
+.otp .plan-trip-button,
+.view-results-button {
   width: 100%;
 }
 .otp .plan-trip-button[disabled] {
@@ -17,7 +18,11 @@
 }
 
 .otp .white-fade {
-  background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  );
   z-index: 100;
 }
 
@@ -40,7 +45,7 @@
 
 /* Prevent the calendar picker from having a white margin that covers the date */
 .otp input[type="date"].datetime-slim::-webkit-calendar-picker-indicator {
-  background-color: rgba(0, 0, 0, 0.0);
+  background-color: rgba(0, 0, 0, 0);
   margin-left: 0px;
 }
 
@@ -54,7 +59,7 @@
   padding-right: 5px;
 }
 
-.otp .date-time-selector .date-option-button  {
+.otp .date-time-selector .date-option-button {
   width: 100%;
   font-size: 14px;
 }
@@ -286,7 +291,8 @@
   list-style: none;
 }
 
-.otp .user-settings .place-view, .otp .user-settings .place-view {
+.otp .user-settings .place-view,
+.otp .user-settings .place-view {
   padding-top: 4px;
 }
 
@@ -356,18 +362,43 @@
 .otp .date-time-modal .date-time-selector.with-desktop-touchscreen input {
   position: relative;
 }
-.otp .date-time-modal .date-time-selector.with-desktop-touchscreen input::-webkit-calendar-picker-indicator {
+.otp
+  .date-time-modal
+  .date-time-selector.with-desktop-touchscreen
+  input::-webkit-calendar-picker-indicator {
   background-position-x: right;
   margin-inline-end: 8px;
   position: absolute;
   right: 0;
   width: 100%;
 }
-.otp .date-time-modal .date-time-selector.with-desktop-touchscreen input::-webkit-datetime-edit {
+.otp
+  .date-time-modal
+  .date-time-selector.with-desktop-touchscreen
+  input::-webkit-datetime-edit {
   margin-inline-end: 8px;
 }
 
 .batch-routing-panel-location-fields {
   display: block;
   position: relative;
+}
+
+/* Highlight location fields when they update */
+@keyframes highlight {
+  from {
+    outline: 0px solid #fff;
+  }
+
+  to {
+    outline: 10px solid rgba(255, 247, 0, 0.7);
+  }
+}
+
+.animate-highlight {
+  outline: 0px solid #fff;
+  animation: 0.2s 4 alternate highlight;
+}
+.animate-highlight:focus-within {
+  animation: none;
 }
