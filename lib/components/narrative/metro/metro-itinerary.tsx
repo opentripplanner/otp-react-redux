@@ -202,23 +202,17 @@ class MetroItinerary extends NarrativeItinerary {
   static ModesAndRoutes = MetroItineraryRoutes
 
   _onMouseEnter = () => {
-    const { active, index, setVisibleItinerary, visibleItinerary } = this.props
+    const { active, index, setVisibleItinerary, visible } = this.props
     // Set this itinerary as visible if not already visible.
-    const visibleNotSet =
-      visibleItinerary === null || visibleItinerary === undefined
-    const isVisible =
-      visibleItinerary === index || (active === index && visibleNotSet)
+    const isVisible = visible || active === index
     if (typeof setVisibleItinerary === 'function' && !isVisible) {
       setVisibleItinerary({ index })
     }
   }
 
   _onMouseLeave = () => {
-    const { index, setVisibleItinerary, visibleItinerary } = this.props
-    if (
-      typeof setVisibleItinerary === 'function' &&
-      visibleItinerary === index
-    ) {
+    const { setVisibleItinerary, visible } = this.props
+    if (typeof setVisibleItinerary === 'function' && visible) {
       setVisibleItinerary({ index: null })
     }
   }
