@@ -127,7 +127,9 @@ class RouteDetails extends Component<Props> {
     const patternSelectLabel = intl.formatMessage({
       id: 'components.RouteDetails.selectADirection'
     })
-    const patternSelectName = pattern?.headsign || patternSelectLabel
+
+    const patternSelectName =
+      extractHeadsignFromPattern(pattern, shortName) || patternSelectLabel
 
     // if no pattern is set, we are in the routeRow
     return (
