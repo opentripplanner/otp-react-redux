@@ -1,12 +1,30 @@
 import { IntlShape } from 'react-intl'
 
+export type SortOptionsType =
+  | 'BEST'
+  | 'DURATION'
+  | 'ARRIVALTIME'
+  | 'DEPARTURETIME'
+  | 'WALKTIME'
+  | 'COST'
+
+type SortOptionEntry = { text: string; value: SortOptionsType }
+
 export const sortOptions = (
-  intl: IntlShape
+  intl: IntlShape,
+  enabledOptions: SortOptionsType[] = [
+    'BEST',
+    'DURATION',
+    'ARRIVALTIME',
+    'WALKTIME',
+    'COST',
+    'DEPARTURETIME'
+  ]
 ): {
   text: string
   value: string
 }[] => {
-  const sortOptionsArray = [
+  const sortOptionsArray: SortOptionEntry[] = [
     {
       text: intl.formatMessage({
         id: 'components.NarrativeItinerariesHeader.selectBest'
@@ -45,5 +63,7 @@ export const sortOptions = (
     }
   ]
 
-  return sortOptionsArray
+  return sortOptionsArray.filter((sortOption) =>
+    enabledOptions.includes(sortOption.value)
+  )
 }
