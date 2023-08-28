@@ -51,7 +51,7 @@ type Props = {
   toggleAutoRefresh: (enable: boolean) => void
   // TODO: shared types
   transitOperators: any
-  viewedStop: { stopId: string }
+  viewedStop?: { stopId: string }
 }
 
 type State = {
@@ -68,7 +68,9 @@ class LiveStopTimes extends Component<Props, State> {
 
   _refreshStopTimes = (): void => {
     const { findStopTimesForStop, viewedStop } = this.props
-    findStopTimesForStop({ stopId: viewedStop.stopId })
+    if (!viewedStop) return
+
+    findStopTimesForStop({ stopId: viewedStop?.stopId })
     // FIXME: We need to refresh child stop arrivals, but this could be a ton of
     // requests!!! Is there a better way?
     // Also, we probably need to refresh vehicle locations.

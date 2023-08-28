@@ -3,7 +3,7 @@ import React, { HTMLAttributes } from 'react'
 
 import { MainPanelContent } from '../../actions/ui-constants'
 
-import NearbyView from './nearby-view'
+import NearbyView from './nearby/nearby-view'
 import PatternViewer from './pattern-viewer'
 import RouteViewer from './route-viewer'
 import StopViewer from './stop-viewer'

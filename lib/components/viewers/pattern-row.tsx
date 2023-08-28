@@ -22,8 +22,6 @@ type Props = {
   route: Route & { operator?: TransitOperator & { colorMode?: string } }
   showOperatorLogo?: boolean
   stopTimes: Time[]
-  stopViewerArriving: React.ReactNode
-  stopViewerConfig: { numberOfDepartures: number }
 }
 type State = { expanded: boolean }
 /**
@@ -45,14 +43,8 @@ class PatternRow extends Component<Props, State> {
   render() {
     const { RouteRenderer: CustomRouteRenderer } = this.context
     const RouteRenderer = CustomRouteRenderer || DefaultRouteRenderer
-    const {
-      homeTimezone,
-      pattern,
-      route,
-      showOperatorLogo,
-      stopTimes,
-      stopViewerConfig
-    } = this.props
+    const { homeTimezone, pattern, route, showOperatorLogo, stopTimes } =
+      this.props
 
     // sort stop times by next departure
     let sortedStopTimes: Time[] = []
@@ -62,7 +54,7 @@ class PatternRow extends Component<Props, State> {
         // We request only x departures per pattern, but the patterns are merged
         // according to shared headsigns, so we need to slice the stop times
         // here as well to ensure only x times are shown per route/headsign combo.
-        .slice(0, stopViewerConfig.numberOfDepartures)
+        .slice(0, 3)
     } else {
       // Do not render pattern row if it has no stop times.
       return null
