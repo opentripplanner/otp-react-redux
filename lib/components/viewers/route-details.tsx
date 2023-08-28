@@ -129,7 +129,8 @@ class RouteDetails extends Component<Props> {
     })
 
     const patternSelectName =
-      extractHeadsignFromPattern(pattern, shortName) || patternSelectLabel
+      (pattern ? extractHeadsignFromPattern(pattern, shortName) : null) ||
+      patternSelectLabel
 
     // if no pattern is set, we are in the routeRow
     return (
@@ -205,9 +206,10 @@ class RouteDetails extends Component<Props> {
               onMouseLeave={() => setHoveredStop(null)}
               textColor={getMostReadableTextColor(routeColor, route?.textColor)}
             >
-              {pattern?.stops?.map((stop) => (
+              {pattern?.stops?.map((stop, index) => (
                 <Stop
-                  key={stop.id}
+                  // Use array index instead of stop id because a stop can be visited several times.
+                  key={index}
                   onClick={() => this._stopLinkClicked(stop.id)}
                   onFocus={() => setHoveredStop(stop.id)}
                   onMouseOver={() => setHoveredStop(stop.id)}
