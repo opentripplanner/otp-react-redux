@@ -129,10 +129,9 @@ class RouteDetails extends Component<Props> {
     })
 
     const patternSelectName =
-      (pattern ? extractHeadsignFromPattern(pattern, shortName) : null) ||
+      headsigns.find((h) => h.id === pattern?.id)?.headsign ||
       patternSelectLabel
 
-    // if no pattern is set, we are in the routeRow
     return (
       <Container
         backgroundColor={routeColor}
@@ -211,7 +210,6 @@ class RouteDetails extends Component<Props> {
                   // Use array index instead of stop id because a stop can be visited several times.
                   key={index}
                   onClick={() => this._stopLinkClicked(stop.id)}
-                  onFocus={() => setHoveredStop(stop.id)}
                   onMouseOver={() => setHoveredStop(stop.id)}
                   routeColor={
                     routeColor.includes('ffffff') ? '#333' : routeColor
@@ -224,6 +222,7 @@ class RouteDetails extends Component<Props> {
                   <StopLink
                     name={stop.name}
                     onClick={() => this._stopLinkClicked(stop.id)}
+                    onFocus={() => setHoveredStop(stop.id)}
                     textColor={getMostReadableTextColor(
                       routeColor,
                       route?.textColor
