@@ -93,6 +93,15 @@ interface UrlParams {
   ui_itineraryView: ItineraryView
 }
 
+export function isDefinedAndNotEqual(
+  subject: number | string,
+  value: number | string
+): boolean {
+  return (
+    subject !== null && subject !== undefined && `${subject}` !== `${value}`
+  )
+}
+
 /**
  * Gets the itinerary view to display based on URL params.
  */
@@ -102,9 +111,7 @@ export function getItineraryView({
 }: UrlParams): ItineraryView {
   return (
     ui_itineraryView ||
-    (ui_activeItinerary !== undefined &&
-      `${ui_activeItinerary}` !== '-1' &&
-      ItineraryView.FULL) ||
+    (isDefinedAndNotEqual(ui_activeItinerary, -1) && ItineraryView.FULL) ||
     ItineraryView.LIST
   )
 }
