@@ -204,7 +204,7 @@ class MetroItinerary extends NarrativeItinerary {
   _onMouseEnter = () => {
     const { active, index, setVisibleItinerary, visible } = this.props
     // Set this itinerary as visible if not already visible.
-    const isVisible = visible || active === index
+    const isVisible = visible || active
     if (typeof setVisibleItinerary === 'function' && !isVisible) {
       setVisibleItinerary({ index })
     }
