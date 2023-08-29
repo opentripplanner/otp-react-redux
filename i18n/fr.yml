@@ -238,6 +238,7 @@ components:
     modeSelectorLabel: Sélectionnez un mode de transport
   BatchSettings:
     destination: destination
+    invalidModeSelection: Impossible de planifier un trajet avec les modes sélectionnés.
     origin: point de départ
     planTripTooltip: Planifier le trajet
     validationMessage: >-
