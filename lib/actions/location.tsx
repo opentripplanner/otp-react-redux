@@ -57,9 +57,19 @@ export function getCurrentPosition(
               })
             )
           }
-          // FIXME, analyze error code to produce better error message.
-          // See https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError
-          dispatch(receivedPositionError({ error }))
+          const newError = { ...error }
+          if (error.code === 1) {
+            // i18n for user-denied location message (error.code = 1 on secure origins).
+            if (
+              window.location.protocol === 'https:' ||
+              window.location.host.startsWith('localhost:')
+            ) {
+              newError.message = intl.formatMessage({
+                id: 'actions.location.userDeniedPermission'
+              })
+            }
+          }
+          dispatch(receivedPositionError({ error: newError }))
         },
         // Options
         { enableHighAccuracy: true }

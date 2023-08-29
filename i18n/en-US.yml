@@ -41,6 +41,7 @@ actions:
       browser, and reload the page. 
     geolocationNotSupportedError: Geolocation not supported by your browser
     unknownPositionError: Unknown error getting position
+    userDeniedPermission: User denied permission
   map:
     currentLocation: (Current Location)
   user:
