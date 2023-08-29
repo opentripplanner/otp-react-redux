@@ -2,6 +2,7 @@
 import { createAction } from 'redux-actions'
 import { Dispatch } from 'redux'
 import { IntlShape } from 'react-intl'
+import { isMobile } from '@opentripplanner/core-utils/lib/ui'
 
 import { setLocationToCurrent } from './map'
 
@@ -47,6 +48,15 @@ export function getCurrentPosition(
         // On error
         (error) => {
           console.log('error getting current position', error)
+          // On desktop, after user clicks "Use location" from the location fields,
+          // show an alert and explain if location is blocked.
+          if (!isMobile() && error.code === 1) {
+            window.alert(
+              intl.formatMessage({
+                id: 'actions.location.deniedAccessAlert'
+              })
+            )
+          }
           // FIXME, analyze error code to produce better error message.
           // See https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError
           dispatch(receivedPositionError({ error }))
