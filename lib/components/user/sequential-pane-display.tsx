@@ -52,7 +52,7 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
 
   h1Ref = React.createRef<HTMLHeadingElement>()
 
-  _handleFocus = () => {
+  _focusHeader = () => {
     this.h1Ref?.current?.focus()
   }
 
@@ -76,7 +76,7 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
         this._routeTo(nextId)
       }
     }
-    this._handleFocus()
+    this._focusHeader()
   }
 
   _handleToPrevPane = () => {
@@ -85,11 +85,11 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
       const prevId = panes[activePaneIndex - 1].id
       prevId && this._routeTo(prevId)
     }
-    this._handleFocus()
+    this._focusHeader()
   }
 
   componentDidMount(): void {
-    this._handleFocus()
+    this._focusHeader()
   }
 
   render() {
