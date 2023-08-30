@@ -50,6 +50,7 @@ export function getCurrentPosition(
           console.log('error getting current position', error)
           // On desktop, after user clicks "Use location" from the location fields,
           // show an alert and explain if location is blocked.
+          // TODO: Consider moving the handling of unavailable location to the location-field component.
           if (!isMobile() && error.code === 1) {
             window.alert(
               intl.formatMessage({
