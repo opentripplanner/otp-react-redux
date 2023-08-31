@@ -38,8 +38,14 @@ actions:
     setPaymentError: "Erreur sur les coordonnées de paiement :"
     setRequestStatusError: "Erreur sur l'état de la requête :"
   location:
+    deniedAccessAlert: >
+      L'accès à votre position est refusé.
+
+      Pour utiliser votre emplacement actuel, permettez-en l'accès depuis votre
+      navigateur, et ouvrez de nouveau cette page.
     geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par votre navigateur.
     unknownPositionError: Erreur inconnue lors de la détection de votre emplacement.
+    userDeniedPermission: Refusé par l'utilisateur
   map:
     currentLocation: (Emplacement actuel)
   user:
@@ -179,7 +185,7 @@ components:
   AdvancedOptions:
     bannedRoutes: Choisissez les lignes à éviter…
     bikeTolerance: Tolérance au vélo
-    preferredRoutes: Choisissez les lignes preferées
+    preferredRoutes: Choisissez les lignes préferées
     walkTolerance: Tolérance à la marche
   AfterSignInScreen:
     mainTitle: Redirection...

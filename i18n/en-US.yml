@@ -34,8 +34,14 @@ actions:
     setPaymentError: "Error setting payment info:"
     setRequestStatusError: "Error setting request status:"
   location:
+    deniedAccessAlert: >
+      Access to your location is blocked.
+
+      To use your current location, enable location permissions from your
+      browser, and reload the page. 
     geolocationNotSupportedError: Geolocation not supported by your browser
     unknownPositionError: Unknown error getting position
+    userDeniedPermission: User denied permission
   map:
     currentLocation: (Current Location)
   user:
