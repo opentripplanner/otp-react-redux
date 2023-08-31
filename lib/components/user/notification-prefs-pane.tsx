@@ -125,7 +125,8 @@ const mapStateToProps = (state: any) => {
   return {
     allowedNotificationChannels: supportsPushNotifications
       ? allNotificationChannels
-      : emailAndSms
+      : emailAndSms,
+    phoneFormatOptions: state.otp.config.phoneFormatOptions
   }
 }
 
