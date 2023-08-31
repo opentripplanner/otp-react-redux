@@ -1,6 +1,7 @@
+import { connect } from 'react-redux'
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage } from 'react-intl'
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import { GRAY_ON_WHITE } from '../util/colors'
@@ -13,6 +14,7 @@ import PhoneNumberEditor, {
 } from './phone-number-editor'
 
 interface Props extends FormikProps<User> {
+  allowedNotificationChannels: string[]
   loggedInUser: User
   onRequestPhoneVerificationCode: PhoneCodeRequestHandler
   onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
@@ -21,7 +23,8 @@ interface Props extends FormikProps<User> {
   }
 }
 
-const allowedNotificationChannels = ['email', 'sms', 'push']
+const allNotificationChannels = ['email', 'sms', 'push']
+const emailAndSms = ['email', 'sms']
 
 // Styles
 const NotificationOption = styled.div`
@@ -52,6 +55,7 @@ const NotificationOption = styled.div`
  * User notification preferences pane.
  */
 const NotificationPrefsPane = ({
+  allowedNotificationChannels,
   onRequestPhoneVerificationCode,
   onSendPhoneVerificationCode,
   phoneFormatOptions,
@@ -115,4 +119,14 @@ const NotificationPrefsPane = ({
   )
 }
 
-export default NotificationPrefsPane
+const mapStateToProps = (state: any) => {
+  const { supportsPushNotifications } =
+    state.otp.config.persistence?.otp_middleware || {}
+  return {
+    allowedNotificationChannels: supportsPushNotifications
+      ? allNotificationChannels
+      : emailAndSms
+  }
+}
+
+export default connect(mapStateToProps)(NotificationPrefsPane)
