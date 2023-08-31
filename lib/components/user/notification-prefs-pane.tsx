@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage } from 'react-intl'
+import { ListGroup, ListGroupItem } from 'react-bootstrap'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -27,10 +28,9 @@ const allNotificationChannels = ['email', 'sms', 'push']
 const emailAndSms = ['email', 'sms']
 
 // Styles
-const NotificationOption = styled.div`
+const NotificationOption = styled(ListGroupItem)`
   align-items: flex-start;
   display: flex;
-  margin-bottom: 10px;
 
   /* Match bootstrap's spacing between checkbox and label */
   & > span:first-child {
@@ -68,53 +68,55 @@ const NotificationPrefsPane = ({
       <legend>
         <FormattedMessage id="components.NotificationPrefsPane.notificationChannelPrompt" />
       </legend>
-      {allowedNotificationChannels.map((type) => {
-        // TODO: If removing the Save/Cancel buttons on the account screen,
-        // persist changes immediately when onChange is triggered.
-        const inputId = `notification-channel-${type}`
-        const inputDescriptionId = `${inputId}-description`
-        return (
-          <NotificationOption key={type}>
-            <span>
-              <Field
-                aria-describedby={inputDescriptionId}
-                // TODO: Check this condition.
-                disabled={type === 'push' && !pushDevices}
-                id={inputId}
-                name="notificationChannel"
-                type="checkbox"
-                value={type}
-              />
-            </span>
-            <span>
-              <label htmlFor={inputId}>
-                <FormattedMessage id={`common.notifications.${type}`} />
-              </label>
-              {type === 'email' ? (
-                <span id={inputDescriptionId}>{email}</span>
-              ) : type === 'sms' ? (
-                <PhoneNumberEditor
-                  descriptorId={inputDescriptionId}
-                  initialPhoneNumber={phoneNumber}
-                  initialPhoneNumberVerified={isPhoneNumberVerified}
-                  onRequestCode={onRequestPhoneVerificationCode}
-                  onSubmitCode={onSendPhoneVerificationCode}
-                  phoneFormatOptions={phoneFormatOptions}
+      <ListGroup>
+        {allowedNotificationChannels.map((type) => {
+          // TODO: If removing the Save/Cancel buttons on the account screen,
+          // persist changes immediately when onChange is triggered.
+          const inputId = `notification-channel-${type}`
+          const inputDescriptionId = `${inputId}-description`
+          return (
+            <NotificationOption key={type}>
+              <span>
+                <Field
+                  aria-describedby={inputDescriptionId}
+                  // TODO: Check this condition.
+                  disabled={type === 'push' && !pushDevices}
+                  id={inputId}
+                  name="notificationChannel"
+                  type="checkbox"
+                  value={type}
                 />
-              ) : (
-                <span id={inputDescriptionId}>
-                  {pushDevices ? (
-                    // TODO: i18n
-                    `${pushDevices} devices registered`
-                  ) : (
-                    <FormattedMessage id="components.NotificationPrefsPane.noDeviceForPush" />
-                  )}
-                </span>
-              )}
-            </span>
-          </NotificationOption>
-        )
-      })}
+              </span>
+              <span>
+                <label htmlFor={inputId}>
+                  <FormattedMessage id={`common.notifications.${type}`} />
+                </label>
+                {type === 'email' ? (
+                  <span id={inputDescriptionId}>{email}</span>
+                ) : type === 'sms' ? (
+                  <PhoneNumberEditor
+                    descriptorId={inputDescriptionId}
+                    initialPhoneNumber={phoneNumber}
+                    initialPhoneNumberVerified={isPhoneNumberVerified}
+                    onRequestCode={onRequestPhoneVerificationCode}
+                    onSubmitCode={onSendPhoneVerificationCode}
+                    phoneFormatOptions={phoneFormatOptions}
+                  />
+                ) : (
+                  <span id={inputDescriptionId}>
+                    {pushDevices ? (
+                      // TODO: i18n
+                      `${pushDevices} devices registered`
+                    ) : (
+                      <FormattedMessage id="components.NotificationPrefsPane.noDeviceForPush" />
+                    )}
+                  </span>
+                )}
+              </span>
+            </NotificationOption>
+          )
+        })}
+      </ListGroup>
     </FieldSet>
   )
 }

@@ -265,7 +265,7 @@ class PhoneNumberEditor extends Component<Props, State> {
             </ControlStrip>
           </FormGroup>
         )}
-        <InvisibleA11yLabel aria-busy={isAlertBusy} role="alert">
+        <InvisibleA11yLabel aria-busy={isAlertBusy} as="div" role="alert">
           {ariaAlertContent}
         </InvisibleA11yLabel>
 
