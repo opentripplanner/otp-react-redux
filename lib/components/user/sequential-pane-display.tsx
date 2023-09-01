@@ -50,6 +50,12 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
     routeTo(`${parentPath}/${nextId}`)
   }
 
+  h1Ref = React.createRef<HTMLHeadingElement>()
+
+  _focusHeader = () => {
+    this.h1Ref?.current?.focus()
+  }
+
   _handleToNextPane = async (e: MouseEvent<Button>) => {
     const { activePane, activePaneIndex, panes } = this.props
     const { invalid, invalidMessage } = activePane
@@ -70,6 +76,7 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
         this._routeTo(nextId)
       }
     }
+    this._focusHeader()
   }
 
   _handleToPrevPane = () => {
@@ -78,6 +85,11 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
       const prevId = panes[activePaneIndex - 1].id
       prevId && this._routeTo(prevId)
     }
+    this._focusHeader()
+  }
+
+  componentDidMount(): void {
+    this._focusHeader()
   }
 
   render() {
@@ -86,7 +98,7 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
 
     return (
       <>
-        <h1>
+        <h1 aria-live="assertive" ref={this.h1Ref} tabIndex={-1}>
           <StepNumber>
             <FormattedMessage
               id="components.SequentialPaneDisplay.stepNumber"
