@@ -131,11 +131,7 @@ const PatternViewer = ({
             </h1>
           </div>
         </div>
-        <RouteDetails
-          operator={operator}
-          pattern={route?.patterns?.[patternId]}
-          route={route}
-        />
+        <RouteDetails operator={operator} patternId={patternId} route={route} />
       </div>
     )
   }
