@@ -20,7 +20,7 @@ import { setLocation } from '../../actions/map'
 
 type Props = ComponentProps<typeof EndpointsOverlay> & {
   forgetPlace: (place: string, intl: IntlShape) => void
-  rememberPlace: (arg: UserLocationAndType, intl: IntlShape) => void
+  rememberPlace: (arg: UserLocationAndType, intl: IntlShape) => number
 }
 
 const ConnectedEndpointsOverlay = ({
