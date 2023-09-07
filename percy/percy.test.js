@@ -357,7 +357,49 @@ async function executeTest(page, isMobile, isCallTaker) {
   }
 }
 
-if (OTP_RR_UI_MODE === 'mobile') {
+test('OTP-RR Desktop', async () => {
+  const page = await loadPath('/')
+  await page.setViewport({
+    height: 1080,
+    width: 1920
+  })
+  page.on('console', async (msg) => {
+    const args = await msg.args()
+    args.forEach(async (arg) => {
+      const val = await arg.jsonValue()
+      // value is serializable
+      if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
+      // value is unserializable (or an empty oject)
+      else {
+        const { description, subtype, type } = arg._remoteObject
+        console.log(
+          `type: ${type}, subtype: ${subtype}, description:\n ${description}`
+        )
+      }
+    })
+  })
+  // log all errors that were logged to the browser console
+  page.on('warn', (warn) => {
+    console.log(warn)
+  })
+  page.on('error', (error) => {
+    console.error(error)
+    console.error(error.stack)
+  })
+  // log all uncaught exceptions
+  page.on('pageerror', (error) => {
+    console.error(`Page Error: ${error}`)
+  })
+  // log all failed requests
+  page.on('requestfailed', (req) => {
+    console.error(`Request failed: ${req.method()} ${req.url()}`)
+  })
+
+  await executeTest(page, false, OTP_RR_UI_MODE === 'calltaker')
+})
+
+if (OTP_RR_UI_MODE !== 'calltaker') {
+  // Non-calltaker test runs both mobile and desktop test.
   test('OTP-RR Mobile', async () => {
     const page = await loadPath('/')
     await page.setUserAgent('android')
@@ -370,46 +412,5 @@ if (OTP_RR_UI_MODE === 'mobile') {
 
     // Execute the rest of the test
     await executeTest(page, true, false)
-  })
-} else {
-  test('OTP-RR Desktop', async () => {
-    const page = await loadPath('/')
-    await page.setViewport({
-      height: 1080,
-      width: 1920
-    })
-    page.on('console', async (msg) => {
-      const args = await msg.args()
-      args.forEach(async (arg) => {
-        const val = await arg.jsonValue()
-        // value is serializable
-        if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
-        // value is unserializable (or an empty oject)
-        else {
-          const { description, subtype, type } = arg._remoteObject
-          console.log(
-            `type: ${type}, subtype: ${subtype}, description:\n ${description}`
-          )
-        }
-      })
-    })
-    // log all errors that were logged to the browser console
-    page.on('warn', (warn) => {
-      console.log(warn)
-    })
-    page.on('error', (error) => {
-      console.error(error)
-      console.error(error.stack)
-    })
-    // log all uncaught exceptions
-    page.on('pageerror', (error) => {
-      console.error(`Page Error: ${error}`)
-    })
-    // log all failed requests
-    page.on('requestfailed', (req) => {
-      console.error(`Request failed: ${req.method()} ${req.url()}`)
-    })
-
-    await executeTest(page, false, OTP_RR_UI_MODE === 'calltaker')
   })
 }
