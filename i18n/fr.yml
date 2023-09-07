@@ -58,6 +58,8 @@ actions:
       nouveau.
     genericError: "Une erreur s'est produite : {err}"
     itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité du trajet choisi.
+    mustBeLoggedInToSavePlace: Veuillez vous connecter pour enregistrer des lieux.
+    placeRemembered: "Votre {placeType} est maintenant à : {address}."
     preferencesSaved: Vos préférences ont été enregistrées.
     smsInvalidCode: Le code saisi est incorrect. Veuillez réessayer.
     smsResendThrottled: >-
