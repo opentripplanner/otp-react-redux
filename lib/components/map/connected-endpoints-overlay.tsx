@@ -5,9 +5,17 @@ import EndpointsOverlay from '@opentripplanner/endpoints-overlay'
 import React, { ComponentProps, useCallback } from 'react'
 
 import { clearLocation } from '../../actions/form'
-import { forgetPlace, rememberPlace } from '../../actions/user'
+import {
+  convertToPlace,
+  getUserLocations,
+  toastOnPlaceSaved
+} from '../../util/user'
+import {
+  forgetPlace,
+  rememberPlace,
+  UserActionResult
+} from '../../actions/user'
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
-import { getUserLocations } from '../../util/user'
 import { setLocation } from '../../actions/map'
 
 type Props = ComponentProps<typeof EndpointsOverlay> & {
@@ -29,8 +37,11 @@ const ConnectedEndpointsOverlay = ({
   )
 
   const _rememberPlace = useCallback(
-    (placeTypeLocation) => {
-      rememberPlace(placeTypeLocation, intl)
+    async (placeTypeLocation) => {
+      const result = await rememberPlace(placeTypeLocation, intl)
+      if (result === UserActionResult.SUCCESS) {
+        toastOnPlaceSaved(convertToPlace(placeTypeLocation.location), intl)
+      }
     },
     [rememberPlace, intl]
   )
