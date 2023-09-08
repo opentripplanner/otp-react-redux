@@ -219,6 +219,7 @@ class LiveStopTimes extends Component<Props, State> {
                   this.renderDay(homeTimezone, time.day, now)}
                 <PatternRow
                   homeTimezone={homeTimezone}
+                  key={pattern.id}
                   pattern={pattern}
                   route={{
                     ...route,
