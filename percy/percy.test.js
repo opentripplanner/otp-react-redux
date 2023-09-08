@@ -22,6 +22,7 @@ const percySnapshotWithWait = async (page, name, enableJavaScript) => {
 let browser
 const serveAbortController = new AbortController()
 const harAbortController = new AbortController()
+const geocoderAbortController = new AbortController()
 
 /**
  * Loads a path
@@ -49,6 +50,15 @@ beforeAll(async () => {
       signal: harAbortController.signal
     }).stdout.pipe(process.stdout)
 
+    // Launch mock geocoder server
+    execa(
+      'yarn',
+      ['percy-har-express', '-p', '9977', 'percy/geocoder-mock.har'],
+      {
+        signal: geocoderAbortController.signal
+      }
+    ).stdout.pipe(process.stdout)
+
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
       args: ['--disable-web-security']
@@ -66,6 +76,7 @@ afterAll(async () => {
   try {
     serveAbortController.abort()
     harAbortController.abort()
+    geocoderAbortController.abort()
     await browser.close()
   } catch (error) {
     console.log(error)
@@ -73,7 +84,7 @@ afterAll(async () => {
   console.log('Closed mock server and headless browser')
 })
 
-// Puppeteer can take a long time to load, espeically in some ci environments
+// Puppeteer can take a long time to load, especially in some ci environments
 jest.setTimeout(600000)
 
 async function executeTest(page, isMobile, isCallTaker) {
@@ -153,6 +164,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     // Fill in new origin
     await page.hover('.from-form-control')
     await page.focus('.from-form-control')
+    // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
     await page.keyboard.type('Opus Music')
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
@@ -161,6 +173,7 @@ async function executeTest(page, isMobile, isCallTaker) {
 
     // Fill in new destination
     await page.focus('.to-form-control')
+    // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
     await page.keyboard.type('908981')
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
@@ -196,6 +209,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     )
     await page.waitForSelector('.intermediate-place-0-form-control')
     await page.focus('.intermediate-place-0-form-control')
+    // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
     await page.keyboard.type('arts center')
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
