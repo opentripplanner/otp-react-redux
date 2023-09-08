@@ -1252,6 +1252,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         >
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
+                            key="TriMet:20:1:04"
                             pattern={
                               Object {
                                 "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -3924,6 +3925,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           </p>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
+                            key="TriMet:20:1:04"
                             pattern={
                               Object {
                                 "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -6031,6 +6033,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           </p>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
+                            key="TriMet:20:1:04"
                             pattern={
                               Object {
                                 "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -9803,6 +9806,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           </p>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
+                            key="TriMet:20:1:04"
                             pattern={
                               Object {
                                 "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
@@ -10642,6 +10646,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           </p>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
+                            key="TriMet:94:0:04"
                             pattern={
                               Object {
                                 "desc": "94 to SW Railroad & Washington (TriMet:3670) from W Burnside & SW 8th (TriMet:715)",
@@ -11467,6 +11472,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           </injectIntl(PatternRow)>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
+                            key="TriMet:94:0:02"
                             pattern={
                               Object {
                                 "desc": "94 to SW Pacific Hwy & Durham (TriMet:8644) from W Burnside & SW 8th (TriMet:715)",
@@ -12184,6 +12190,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           </injectIntl(PatternRow)>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
+                            key="TriMet:36:0:04"
                             pattern={
                               Object {
                                 "desc": "36 to Tualatin Park & Ride (TriMet:7879) from W Burnside & SW 8th (TriMet:715)",
@@ -16861,6 +16868,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           </p>
                           <injectIntl(PatternRow)
                             homeTimezone="America/Los_Angeles"
+                            key="TriMet:20:1:04"
                             pattern={
                               Object {
                                 "desc": "20 to Gresham Transit Center (TriMet:8199) from Beaverton Transit Center (TriMet:9978) express",
