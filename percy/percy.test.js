@@ -170,7 +170,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.hover('.from-form-control')
     await page.focus('.from-form-control')
     // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
-    await page.keyboard.type('Opus Music')
+    await page.keyboard.type('Opus Music', { delay: 100 })
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
     await page.waitForTimeout(200)
@@ -179,7 +179,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     // Fill in new destination
     await page.focus('.to-form-control')
     // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
-    await page.keyboard.type('908981')
+    await page.keyboard.type('908981', { delay: 100 })
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
     await page.waitForTimeout(200)
@@ -215,7 +215,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.waitForSelector('.intermediate-place-0-form-control')
     await page.focus('.intermediate-place-0-form-control')
     // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
-    await page.keyboard.type('arts center')
+    await page.keyboard.type('arts center', { delay: 100 })
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
     await page.waitForTimeout(200)
