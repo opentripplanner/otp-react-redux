@@ -53,7 +53,12 @@ beforeAll(async () => {
     // Launch mock geocoder server
     execa(
       'yarn',
-      ['percy-har-express', '-p', '9977', 'percy/geocoder-mock.har'],
+      [
+        'percy-har-express',
+        '-p',
+        '9977',
+        `percy/geocoder-mock-${OTP_RR_UI_MODE}.har`
+      ],
       {
         signal: geocoderAbortController.signal
       }
