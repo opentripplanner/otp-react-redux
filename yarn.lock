@@ -2439,10 +2439,10 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^11.0.2":
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.0.2.tgz#ebfa939c3b7b266e3bf47dcaddda88e093430a9d"
-  integrity sha512-3oQYvnhFHY88K61j2tUkU2fm8tDci5qaMVGEgqTzxpE5NmBTUdAWU1V7W9snJoRATzz3zy+K9qrtIhGjwbwlnA==
+"@opentripplanner/core-utils@^12.0.0-alpha.2":
+  version "12.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-12.0.0-alpha.2.tgz#7069e03b1f2c002b19e13968ac779cd2ea8d862f"
+  integrity sha512-iyrPNZWkt0fBwfBfJU467aW9UvGz2sXLdwxtutvMqs2rmA+M38+UgiIIDNYXTzto7hsHTFDcHpDaRDFFMPeNhg==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
@@ -2771,10 +2771,10 @@
     "@opentripplanner/base-map" "^3.0.13"
     "@opentripplanner/core-utils" "^9.0.0"
 
-"@opentripplanner/types@^6.1.0":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.1.0.tgz#dd5b88cc0b73939cd1eb5bd44d4768e21bedaacc"
-  integrity sha512-fFuNMJLrSCIoIWJ7VugM1Jb7HfIcRDzb8o2LNsASExWAEYDuONFxyGYT/98g82/70Grl8kCSMSAFi0lEiQ/cPQ==
+"@opentripplanner/types@^7.0.0-alpha.9":
+  version "7.0.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-7.0.0-alpha.10.tgz#56a3f90e000e815a663c9ade7965d4d4914f8bf2"
+  integrity sha512-hHltdB1espxHypiu28bUcsFhYpj6511k1NJjLjV2+mC3T1hfb0/aqa1QYj6ydlEww7+mV5b/ENnZEMkDtHErJg==
 
 "@opentripplanner/vehicle-rental-overlay@^2.1.2":
   version "2.1.2"
