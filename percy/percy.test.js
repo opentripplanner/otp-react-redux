@@ -5,11 +5,7 @@ import puppeteer from 'puppeteer'
 
 const percySnapshot = require('@percy/puppeteer')
 
-const OTP_RR_TEST_CONFIG_PATH = '../percy/har-mock-config.yml'
-const { OTP_RR_PERCY_CALL_TAKER, OTP_RR_PERCY_MOBILE } = process.env
-const OTP_RR_TEST_JS_CONFIG_PATH = OTP_RR_PERCY_CALL_TAKER
-  ? './percy/har-mock-config-call-taker.js'
-  : './percy/har-mock-config.js'
+const { OTP_RR_UI_MODE } = process.env
 
 const MOCK_SERVER_PORT = 5486
 
@@ -20,13 +16,7 @@ jest.setTimeout(600000)
 const PERCY_EXTRA_WAIT = 5000
 const percySnapshotWithWait = async (page, name, enableJavaScript) => {
   await page.waitForTimeout(PERCY_EXTRA_WAIT)
-
-  const namePrefix = process.env.PERCY_OTP_CONFIG_OVERRIDE || 'Mock OTP1 Server'
-  await percySnapshot(
-    page,
-    `${OTP_RR_PERCY_CALL_TAKER ? 'Call Taker - ' : ''}${namePrefix} - ${name}`,
-    { enableJavaScript }
-  )
+  await percySnapshot(page, `${name} [${OTP_RR_UI_MODE}]`, { enableJavaScript })
 }
 
 let browser
@@ -49,38 +39,15 @@ async function loadPath(otpPath) {
 
 beforeAll(async () => {
   try {
-    // Build OTP-RR main.js using new config file
-    await execa('env', [
-      `YAML_CONFIG=${
-        process.env.PERCY_OTP_CONFIG_OVERRIDE || OTP_RR_TEST_CONFIG_PATH
-      }`,
-      `JS_CONFIG=${OTP_RR_TEST_JS_CONFIG_PATH}`,
-      'yarn',
-      'build'
-    ])
-    console.log('Built OTP-RR')
-
-    // grab ATL har file to tmp
-    if (process.env.HAR_URL) {
-      await execa('curl', [process.env.HAR_URL, '-s', '--output', 'mock.har'])
-      console.log('Downloaded HAR data')
-    }
-  } catch (error) {
-    console.log(error)
-  }
-  console.log('Built OTP-RR and downloaded HAR data')
-
-  try {
+    // Launch OTP-RR web server
     execa('yarn', ['percy-serve', 'dist', '-p', MOCK_SERVER_PORT], {
       signal: serveAbortController.signal
     }).stdout.pipe(process.stdout)
 
     // Launch mock OTP server
-    if (process.env.HAR_URL) {
-      execa('yarn', ['percy-har-express', '-p', '9999', 'mock.har'], {
-        signal: harAbortController.signal
-      }).stdout.pipe(process.stdout)
-    }
+    execa('yarn', ['percy-har-express', '-p', '9999', 'percy/mock.har'], {
+      signal: harAbortController.signal
+    }).stdout.pipe(process.stdout)
 
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
@@ -109,211 +76,121 @@ afterAll(async () => {
 // Puppeteer can take a long time to load, espeically in some ci environments
 jest.setTimeout(600000)
 
-/* These fixed routes allow us to test features that the static html screenshots
- * don't allow us to test. This is disabled, as percy doesn't support transitive.js
- * out of the box, even with javascript enabled.
- *
- * TODO: make transitive.js work with Percy, then complete this test suite
- */
-// eslint-disable-next-line jest/no-commented-out-tests
-/*
-test('OTP-RR Fixed Routes', async () => {
-  const transitive = await loadPath(
-    '/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2022-03-09&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=false&numItineraries=3&otherThanPreferredRoutesPenalty=900'
-  )
-  await percySnapshotWithWait(transitive, 'Itinerary (with transitive)', true)
+async function executeTest(page, isMobile, isCallTaker) {
+  // Make sure that the main UI (incl. map controls) has loaded.
+  await page.waitForSelector('.maplibregl-ctrl-zoom-in')
 
-  const routes = await loadPath('/route')
-  await percySnapshotWithWait(routes, 'Route Viewer (with transitive)', true)
-})
-*/
-
-if (OTP_RR_PERCY_MOBILE) {
-  test('OTP-RR Mobile', async () => {
-    const page = await loadPath('/')
-    await page.setUserAgent('android')
-    await page.setViewport({
-      height: 1134,
-      width: 750
-    })
-    // Need to reload to load mobile view properly
-    await page.reload()
-
-    await percySnapshotWithWait(page, 'Mobile Main Page')
-
-    await page.click('.app-menu-icon')
-    // Wait for animation
-    await page.waitForTimeout(200)
-    await percySnapshotWithWait(page, 'Mobile Sidebar')
-
-    await page.click('.app-menu-route-viewer-link')
-    await page.waitForSelector('.route-viewer')
-    await page.waitForTimeout(5000)
-
-    // Open Specific Route`
-    try {
-      await page.$x("//span[contains(., 'Green')]")
-    } catch {
-      await page.reload({ waitUntil: 'networkidle0' })
-    }
-    const [subwayRouteButton] = await page.$x("//span[contains(., 'Green')]")
-    await subwayRouteButton.click()
-
-    await page.waitForTimeout(500)
-
-    // click the little pattern arrow
-    await page.click('#open-route-button-Green')
-
-    await page.waitForSelector('#headsign-selector-label')
-
-    await page.waitForTimeout(500)
-
-    await page.click('#headsign-selector-label')
-
-    await page.waitForTimeout(500)
-
-    const [patternOption] = await page.$x("//button[contains(., 'Vine City')]")
-    await patternOption.click()
-
-    await page.waitForTimeout(1000)
-
-    await percySnapshotWithWait(page, 'Mobile Route Viewer Showing Green Line')
-
-    // Open stop viewer
-    const [patternStopButton] = await page.$x(
-      "//button[contains(@name, 'Ashby Station')]"
-    )
-    await patternStopButton.click()
-    await page.waitForSelector('.stop-viewer')
-    // Screenshot here?
-
-    // Return to main page
-    await page.click('.app-menu-icon')
-    await page.waitForTimeout(1000)
-    await page.click('.app-menu-trip-planner-link span')
-    await page.waitForTimeout(1000)
-
-    await page.waitForSelector('.welcome-location')
-    await page.click('.welcome-location div input')
-    await page.waitForSelector('.to-form-control')
-
-    await page.focus('.to-form-control')
-    await page.keyboard.type('ashby')
-    await page.waitForTimeout(2000)
-    await page.keyboard.press('ArrowDown')
-    await page.waitForTimeout(200)
-    await page.keyboard.press('Enter')
-
-    // Wait for page to load
-    await page.waitForTimeout(300)
-
-    await page.click('.from-form-control')
-    // Wait for page to load
-    await page.waitForTimeout(300)
-
-    await page.focus('.from-form-control')
-    await page.keyboard.type('amazon ATL5')
-    await page.waitForTimeout(2000)
-    await page.keyboard.press('ArrowDown')
-    await page.waitForTimeout(200)
-    await page.keyboard.press('Enter')
-
-    await page.waitForTimeout(300)
-    await page.click('.switch-button')
-
-    await page.waitForSelector('.route-block-wrapper')
-    await percySnapshotWithWait(page, 'Mobile Itinerary Results')
-
-    await page.click('.route-block-wrapper')
-    await percySnapshotWithWait(page, 'Mobile Itinerary Selected')
-
-    await page.click('.button-container:nth-of-type(2)')
-    await page.waitForTimeout(500)
-    await percySnapshotWithWait(page, 'Mobile Printable Itinerary')
-  })
-}
-
-test('OTP-RR', async () => {
-  const page = await loadPath('/')
-  await page.setViewport({
-    height: 1080,
-    width: 1920
-  })
-  page.on('console', async (msg) => {
-    const args = await msg.args()
-    args.forEach(async (arg) => {
-      const val = await arg.jsonValue()
-      // value is serializable
-      if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
-      // value is unserializable (or an empty oject)
-      else {
-        const { description, subtype, type } = arg._remoteObject
-        console.log(
-          `type: ${type}, subtype: ${subtype}, description:\n ${description}`
-        )
-      }
-    })
-  })
-  // log all errors that were logged to the browser console
-  page.on('warn', (warn) => {
-    console.log(warn)
-  })
-  page.on('error', (error) => {
-    console.error(error)
-    console.error(error.stack)
-  })
-  // log all uncaught exceptions
-  page.on('pageerror', (error) => {
-    console.error(`Page Error: ${error}`)
-  })
-  // log all failed requests
-  page.on('requestfailed', (req) => {
-    console.error(`Request failed: ${req.method()} ${req.url()}`)
-  })
-
-  await percySnapshotWithWait(page, 'Main Page (without styling)')
-
-  // Plan a trip
+  // Load itinerary from URL
+  // Triggers mock.har graphql query #1 and #2 (bike-only query, twice).
+  // FIXME: Opening a url with non-default mode params triggers the plan query twice.
   await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=5rzujqghc&ui_activeItinerary=0&fromPlace=Opus Music Store%2C Decatur%2C GA%3A%3A33.77505%2C-84.300178&toPlace=Five Points Station (MARTA Stop ID 908981)%3A%3A33.753837%2C-84.391397&date=2023-07-28&time=09%3A58&arriveBy=false&mode=WALK%2CBUS%2CSUBWAY%2CTRAM%2CFLEX_EGRESS%2CFLEX_ACCESS%2CFLEX_DIRECT&showIntermediateStops=true&maxWalkDistance=1207&optimize=QUICK&walkSpeed=1.34&ignoreRealtimeUpdates=true&wheelchair=true&numItineraries=3&otherThanPreferredRoutesPenalty=900`
+    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&showIntermediateStops=true&walkSpeed=1.34&ignoreRealtimeUpdates=true&numItineraries=3&otherThanPreferredRoutesPenalty=900&modeButtons=walk_bike`
   )
-  await page.waitForNavigation({ waitUntil: 'networkidle2' })
+  // FIXME: Network idle condition seems never met after navigating to above link.
+  // await page.waitForNavigation({ waitUntil: 'networkidle2' })
+  await page.waitForTimeout(4000)
   await page.waitForSelector('.option.metro-itin')
 
-  if (!OTP_RR_PERCY_CALL_TAKER) {
-    // Change the modes
-    await page.click('label[title="Transit"]')
-    await page.click('#plan-trip')
+  if (!isCallTaker) {
+    // Edit trip params [mobile-specific]
+    if (isMobile) {
+      await page.click('button.edit-search-button')
+    }
 
-    await percySnapshotWithWait(page, 'Metro Itinerary No Transit')
-    // Restore transit
+    // Change the modes: Activate Transit and remove Bike.
     await page.click('label[title="Transit"]')
-
-    // Change the time
-    await page.click('.summary')
-    await page.focus('input[type="time"]')
-    await page.keyboard.type('10')
     await page.waitForTimeout(200)
-    // Check submode selector
+
+    // FIXME: Must click Edit again [mobile-specific]
+    if (isMobile) {
+      await page.click('button.edit-search-button')
+    }
+    await page.click('label[title="Bike"]')
+    await page.waitForTimeout(200)
+    // Change the date
+    // FIXME: Must click Edit again [mobile-specific]
+    if (isMobile) {
+      await page.click('button.edit-search-button')
+    }
+    await page.hover('#date-time-button')
+    await page.waitForTimeout(200)
+    await page.focus('input[type="date"]')
+    // FIXME: Puppeteer only: On Wednesday 08/09/2023, Monday 08/07/2023 was shown as "Last Sunday"!...
+    await page.keyboard.type('08072023') // MMDDYYYY format.
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+
+    // Check submode selector (this will have no effect on mock query)
     await page.hover('label[title="Transit"]')
     await page.waitForTimeout(500)
     await page.click('#id-query-param-tram')
 
-    // Disable accessible routing
+    // Enable accessible routing (this will have no effect on mock query)
+    // FIXME: Must click Edit again [mobile-specific]
+    if (isMobile) {
+      await page.click('button.edit-search-button')
+    }
     await page.hover('label[title="Transit"]')
+    await page.waitForTimeout(500)
     await page.click('#id-query-param-wheelchair')
-    await percySnapshotWithWait(page, 'Metro Mode Selector Expanded')
 
+    // Delete both origin and destination
+    // FIXME: Must click Edit again [mobile-specific]
+    if (isMobile) {
+      await page.click('button.edit-search-button')
+    }
+
+    await page.click('.from-form-control')
+    await page.waitForTimeout(300)
+    // Click the clear button next to it
+    await page.click('.from-form-control + button')
+
+    await page.click('.to-form-control')
+    await page.waitForTimeout(300)
+    // Click the clear button next to it
+    await page.click('.to-form-control + button')
+
+    // Fill in new origin
+    await page.hover('.from-form-control')
+    await page.focus('.from-form-control')
+    await page.keyboard.type('Opus Music')
+    await page.waitForTimeout(2000)
+    await page.keyboard.press('ArrowDown')
     await page.waitForTimeout(200)
+    await page.keyboard.press('Enter')
 
-    await page.click('#plan-trip')
+    // Fill in new destination
+    await page.focus('.to-form-control')
+    await page.keyboard.type('908981')
+    await page.waitForTimeout(2000)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Enter')
+
+    // On desktop, the last action will trigger a replan.
+    // On mobile, we need to click explicitly.
+    // Triggers mock.har graphql query #3 and #4 (transit and walk-alone queries).
+    if (isMobile) {
+      await page.click('#plan-trip')
+    }
     await page.waitForTimeout(1000) // wait extra time for all results to load
+
+    if (!isMobile) {
+      await page.hover('label[title="Transit"]')
+      await page.waitForTimeout(200)
+      await percySnapshotWithWait(
+        page,
+        'Metro Transit-Walk Itinerary Desktop with Mode Selector Expanded'
+      )
+      // Hover something else to unhover the mode selector.
+      await page.hover('#plan-trip')
+    } else {
+      await percySnapshotWithWait(page, 'Metro Transit-Walk Itinerary Mobile')
+    }
   } else {
-    // take initial screenshot
     await page.waitForTimeout(1000) // wait extra time for all results to load
-    await percySnapshotWithWait(page, 'Call Taker')
 
-    // add intermedaite stop
+    // add intermediate stop
     await page.click(
       '#main > div > div > div > div.sidebar.col-md-4.col-sm-6 > main > div > div.form > button'
     )
@@ -330,6 +207,9 @@ test('OTP-RR', async () => {
 
     // take screenshot
     await percySnapshotWithWait(page, 'Call Taker With Settings Adjusted')
+
+    // Other steps are identical to desktop, so we end here to not waste screenshots.
+    return
   }
 
   // Select a trip
@@ -339,6 +219,7 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Metro Itinerary Selected')
 
   // Open Trip Viewer
+  // Triggers mock.har graphql query #5 (trip).
   await page.waitForTimeout(2000)
   const [tripViewerButton] = await page.$x("//a[contains(., 'Trip Viewer')]")
 
@@ -354,6 +235,7 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Trip Viewer')
 
   // Open stop viewer from trip viewer
+  // Triggers mock.har graphql query #6, #7, and #8 (stop details, nearest places, nearest stops).
   await page.click(
     'div.trip-viewer-body > ol > li:nth-child(3) > div.stop-button-container > button'
   )
@@ -364,11 +246,25 @@ test('OTP-RR', async () => {
   // Open schedule view
   await page.waitForSelector('button.link-button.pull-right')
   await page.click('button.link-button.pull-right')
-  await page.waitForTimeout(6000) // Slow animation
+  await page.waitForTimeout(500)
+  // Request a schedule for a specific valid date in the past,
+  // so it is different than today and triggers a full render of the schedule.
+  await page.focus('input[type="date"]')
+  await page.keyboard.type('08072023') // MMDDYYYY format.
+  await page.waitForTimeout(2000)
   await percySnapshotWithWait(page, 'Schedule Viewer')
-  // TODO: is the schedule date wrong?
 
   // Open route viewer
+  // Triggers mock.har graphql query #9.
+  // FIXME: This action also results in a probably unneeded query to index/stops returning a large dataset.
+  if (isMobile) {
+    await page.click('.app-menu-icon')
+    // Wait for animation
+    await page.waitForTimeout(200)
+    // Take screenshot of the sidebar while we are at it.
+    await percySnapshotWithWait(page, 'Mobile Sidebar')
+  }
+
   const [routeViewerButton] = await page.$x(
     "//button[contains(., 'View Routes')]"
   )
@@ -378,7 +274,9 @@ test('OTP-RR', async () => {
 
   await percySnapshotWithWait(page, 'Route Viewer')
 
-  // Open Specific Route`
+  // Open Specific Route
+  // Triggers mock.har graphql query #10 (route details), #11 and #12 (vehicle positions, twice).
+  // FIXME: Investigate why twice.
   try {
     await page.$x("//span[contains(., 'Marietta Blvd')]")
   } catch {
@@ -390,21 +288,23 @@ test('OTP-RR', async () => {
   await page.waitForTimeout(500)
 
   // click the little pattern arrow
-  await page.click('#open-route-button-1')
+  // Triggers mock.har graphql query #13 and #14 (vehicle positions, twice again).
+  // FIXME: Investigate why twice.
+  await page.click('#open-route-button-1-')
 
-  await page.waitForSelector('#headsign-selector-label')
-  await percySnapshotWithWait(page, 'Route Viewer Showing Route 1')
-
-  // View multiple patterns
-  // Click second option
-
+  // View the other pattern on the selected route.
   await page.click('#headsign-selector-label')
+  await page.waitForTimeout(500)
+  await page.keyboard.press('ArrowDown')
+  await page.keyboard.press('ArrowDown')
+  await page.keyboard.press('Enter')
 
   await page.waitForTimeout(500)
 
-  // Click first option
-
-  await page.keyboard.press('Tab')
+  // Go back to the first one.
+  await page.click('#headsign-selector-label')
+  await page.waitForTimeout(500)
+  await page.keyboard.press('ArrowDown')
   await page.keyboard.press('Enter')
 
   await page.waitForTimeout(1000)
@@ -412,26 +312,30 @@ test('OTP-RR', async () => {
   await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 1')
 
   // Stop viewer from pattern viewer
-  try {
-    await page.$x("//button[contains(@name, 'West')]")
-  } catch {
-    await page.reload({ waitUntil: 'networkidle0' })
-  }
-  const [patternStopButton] = await page.$x("//button[contains(@name, 'West')]")
-  await patternStopButton.click()
+  // Triggers mock.har graphql query #15 (stop info), #16 (nearest amenities), #17 (stops by radius).
+  await page.click('ol > li:nth-of-type(1) > button')
   await page.waitForSelector('.stop-viewer')
+  await page.waitForTimeout(1000)
 
   // Activate all layers
-  await page.$$eval('.leaflet-control-layers-selector', (checks) =>
+  // TODO: mocks for the layers.
+  /*
+  await page.$$eval('.maplibregl-map .layers-list input', (checks) =>
     checks.forEach((c) => c.click())
   )
   await page.waitForTimeout(1000)
+  */
 
   // Go back to trip planner
-  const [tripPlannerButton] = await page.$x(
+  if (isMobile) {
+    await page.click('.app-menu-icon')
+    // Wait for animation
+    await page.waitForTimeout(200)
+  }
+  const [planTripTabButton] = await page.$x(
     "//button[contains(., 'Plan Trip')]"
   )
-  await tripPlannerButton.click()
+  await planTripTabButton.click()
   await page.waitForSelector('.option')
   await page.waitForTimeout(3000)
   const [viewAllOptionsButton] = await page.$x(
@@ -440,18 +344,72 @@ test('OTP-RR', async () => {
   await viewAllOptionsButton.click()
   await page.waitForTimeout(1000)
 
-  // Need to explicitly select the first itinerary to reset map position
-  await page.goto(`${page.url()}&ui_activeItinerary=1`)
+  // Select first itineary for printing
+  // FIXME: Navigation out of print view is funky.
+  await page.goto(`${page.url()}&ui_activeItinerary=0`)
   await page.waitForTimeout(2000)
 
-  if (!OTP_RR_PERCY_CALL_TAKER) {
-    await page.click('label[title="Bike"]')
-    await page.click('#plan-trip')
-    await page.waitForTimeout(5000)
+  await page.click('.button-container:nth-of-type(2)')
+  await page.waitForTimeout(500)
+  if (isMobile) {
+    // Printable itinerary screenshot on mobile only better page ration (and to save allowance).
+    await percySnapshotWithWait(page, 'Printable Itinerary')
   }
+}
 
-  await percySnapshotWithWait(
-    page,
-    'Batch Itinerary With Transit Showing Bikes'
-  )
-})
+if (OTP_RR_UI_MODE === 'mobile') {
+  test('OTP-RR Mobile', async () => {
+    const page = await loadPath('/')
+    await page.setUserAgent('android')
+    await page.setViewport({
+      height: 1134,
+      width: 750
+    })
+    // Need to reload to load mobile view properly
+    await page.reload()
+
+    // Execute the rest of the test
+    await executeTest(page, true, false)
+  })
+} else {
+  test('OTP-RR Desktop', async () => {
+    const page = await loadPath('/')
+    await page.setViewport({
+      height: 1080,
+      width: 1920
+    })
+    page.on('console', async (msg) => {
+      const args = await msg.args()
+      args.forEach(async (arg) => {
+        const val = await arg.jsonValue()
+        // value is serializable
+        if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
+        // value is unserializable (or an empty oject)
+        else {
+          const { description, subtype, type } = arg._remoteObject
+          console.log(
+            `type: ${type}, subtype: ${subtype}, description:\n ${description}`
+          )
+        }
+      })
+    })
+    // log all errors that were logged to the browser console
+    page.on('warn', (warn) => {
+      console.log(warn)
+    })
+    page.on('error', (error) => {
+      console.error(error)
+      console.error(error.stack)
+    })
+    // log all uncaught exceptions
+    page.on('pageerror', (error) => {
+      console.error(`Page Error: ${error}`)
+    })
+    // log all failed requests
+    page.on('requestfailed', (req) => {
+      console.error(`Request failed: ${req.method()} ${req.url()}`)
+    })
+
+    await executeTest(page, false, OTP_RR_UI_MODE === 'calltaker')
+  })
+}
