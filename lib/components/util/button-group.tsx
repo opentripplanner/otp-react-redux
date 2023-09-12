@@ -1,17 +1,10 @@
 import styled from 'styled-components'
 
-import { labelStyle } from '../user/styled'
+import { FieldSet } from '../user/styled'
 
-const ButtonGroup = styled.fieldset.attrs({
+const ButtonGroup = styled(FieldSet).attrs({
   className: 'btn-group'
 })`
-  display: block;
-
-  /* Format <legend> like labels. */
-  legend {
-    ${labelStyle}
-  }
-
   label::first-letter {
     text-transform: uppercase;
   }

@@ -133,6 +133,7 @@ common:
     walk: Caminar
   notifications:
     email: correo electrónico
+    push: notificaciones push
     sms: Mensaje de texto
   places:
     custom: personalizado
@@ -359,8 +360,9 @@ components:
     header: No se encontró el contenido
   NotificationPrefsPane:
     description: Puede recibir notificaciones sobre los viajes que realiza con frecuencia.
+    noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
     noneSelect: No enviar notificaciones
-    notificationChannelPrompt: ¿Cómo desea recibir las notificaciones?
+    notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por:"
     notificationEmailDetail: "Los correos electrónicos de notificación se enviarán a:"
   PhoneNumberEditor:
     changeNumber: Cambiar número de teléfono
@@ -375,7 +377,6 @@ components:
       texto:
     requestNewCode: Solicitar un nuevo código
     sendVerificationText: Enviar texto de verificación
-    smsDetail: "Las notificaciones por mensaje de texto se enviarán a:"
     verificationCode: "Código de verificación:"
     verificationInstructions: >
       Por favor, compruebe en la aplicación de mensajería de texto de su
