@@ -25,7 +25,7 @@ jobs:
       - name: Download OTP2 config file
         run: curl $PERCY_OTP2_CONFIG_URL --output /tmp/otp2config.yml
         env:
-          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_MOCKOTP2_CONFIG_URL_METRO_MODE_SELECTOR }}
+          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_MOCK_OTP2_GEOCODER_CONFIG }}
       - name: Build OTP-RR
         # Artifacts are shared between desktop and mobile tests (but not call-taker).
         run: yarn build
