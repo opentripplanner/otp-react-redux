@@ -18,9 +18,9 @@ import styled from 'styled-components'
 import type { IntlShape, WrappedComponentProps } from 'react-intl'
 
 import * as userActions from '../../../actions/user'
+import { FieldSet } from '../styled'
 import { getErrorStates } from '../../../util/ui'
 import { getFormattedDayOfWeekPlural } from '../../../util/monitored-trip'
-import { labelStyle } from '../styled'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 import FormattedValidationError from '../../util/formatted-validation-error'
@@ -65,12 +65,7 @@ const ALL_DAYS = [
 ] as const
 
 // Styles.
-const AvailableDays = styled.fieldset`
-  /* Format <legend> like labels. */
-  legend {
-    ${labelStyle}
-  }
-
+const AvailableDays = styled(FieldSet)`
   & > span {
     border: 1px solid #ccc;
     border-left: none;

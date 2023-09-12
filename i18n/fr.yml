@@ -145,6 +145,7 @@ common:
     walk: À pied
   notifications:
     email: e-mail
+    push: notifications push
     sms: SMS
   places:
     custom: divers
@@ -372,12 +373,8 @@ components:
     description: Le contenu que vous avez demandé n'est pas disponible.
     header: Contenu introuvable
   NotificationPrefsPane:
-    description: >-
-      Vous pouvez recevoir des notifications sur les trajets que vous effectuez
-      fréquemment.
-    noneSelect: Ne pas me notifier
-    notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
-    notificationEmailDetail: "Les courriers de notification seront envoyés à :"
+    noDeviceForPush: Inscrivez-vous avec l'application mobile pour accéder à ce paramètre.
+    notificationChannelPrompt: "Recevoir des notifications sur vos trajets par :"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
@@ -431,7 +428,6 @@ components:
     prompt: "Entrez votre numéro de téléphone pour les SMS de notification :"
     requestNewCode: Envoyer un nouveau code
     sendVerificationText: Envoyer le SMS de vérification
-    smsDetail: "Les SMS de notification seront envoyés au :"
     verificationCode: "Code de vérification :"
     verificationInstructions: >
       Un SMS vous a été envoyé avec un code de vérification. Veuillez taper ce
