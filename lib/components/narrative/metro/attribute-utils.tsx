@@ -9,7 +9,7 @@ export const getFirstTransitLegStop = (
   itinerary.legs?.find((leg: Leg) => leg?.from?.vertexType === 'TRANSIT')?.from
     ?.name
 
-export const getFlexAttirbutes = (
+export const getFlexAttributes = (
   itinerary: Itinerary
 ): {
   isCallAhead: boolean
