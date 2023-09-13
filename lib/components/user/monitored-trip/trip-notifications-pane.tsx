@@ -1,10 +1,11 @@
 import { Alert, FormControl } from 'react-bootstrap'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { Field, FormikProps } from 'formik'
-import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
+import { FormattedList, FormattedMessage, IntlShape, useIntl } from 'react-intl'
 import React, { Component, ComponentType, FormEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 
+import { FieldSet } from '../styled'
 import { IconWithText } from '../../util/styledIcon'
 
 // Element styles
@@ -34,16 +35,6 @@ const Summary = styled.summary`
   /* Format summary as labels */
   font-weight: 700;
   margin-bottom: 5px;
-`
-
-const NotificationSettings = styled.fieldset`
-  /* Format <legend> like labels. */
-  legend {
-    border: none;
-    font-size: inherit;
-    font-weight: 700;
-    margin-bottom: 5px;
-  }
 `
 
 /**
@@ -188,7 +179,8 @@ class TripNotificationsPane extends Component<Props> {
 
   render(): JSX.Element {
     const { notificationChannel, values } = this.props
-    const areNotificationsDisabled = notificationChannel === 'none'
+    const areNotificationsDisabled =
+      notificationChannel === 'none' || !notificationChannel?.length
     // Define a common trip delay field for simplicity, set to the smallest between the
     // retrieved departure/arrival delay attributes.
     const commonDelayThreshold = Math.min(
@@ -213,24 +205,25 @@ class TripNotificationsPane extends Component<Props> {
         </Alert>
       )
     } else {
+      const selectedChannels = notificationChannel
+        .split(',')
+        .filter((channel) => channel?.length)
+        .map((channel) => (
+          <FormattedMessage
+            id={`common.notifications.${channel}`}
+            key={channel}
+          />
+        ))
       notificationSettingsContent = (
-        <NotificationSettings>
+        <FieldSet>
           <legend>
             <FormattedMessage
               id="components.TripNotificationsPane.notifyViaChannelWhen"
-              values={
-                notificationChannel === 'email'
-                  ? {
-                      channel: (
-                        <FormattedMessage id="common.notifications.email" />
-                      )
-                    }
-                  : {
-                      channel: (
-                        <FormattedMessage id="common.notifications.sms" />
-                      )
-                    }
-              }
+              values={{
+                channel: (
+                  <FormattedList type="conjunction" value={selectedChannels} />
+                )
+              }}
             />
           </legend>
           <SettingsList>
@@ -296,7 +289,7 @@ class TripNotificationsPane extends Component<Props> {
               </li>
             </SettingsList>
           </details>
-        </NotificationSettings>
+        </FieldSet>
       )
     }
 

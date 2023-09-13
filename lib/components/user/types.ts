@@ -22,6 +22,7 @@ export interface User {
   isPhoneNumberVerified?: boolean
   notificationChannel?: string
   phoneNumber?: string
+  pushDevices?: number
   savedLocations?: UserSavedLocation[]
   storeTripHistory?: boolean
 }
