@@ -470,9 +470,9 @@ components:
     tripsFound: We Found {count, plural, one {# Option} other {# Options}}
     waiting: Waiting...
   RouteDetails:
+    headsignTo: "{headsign} ({lastStop})"
     moreDetails: More Details
     operatedBy: Operated by {agencyName}
-    headsignTo: "{headsign} ({lastStop})"
     selectADirection: Select a direction...
     stopsTo: Toward
   RouteViewer:
