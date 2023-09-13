@@ -68,6 +68,7 @@ persistence:
 #  otp_middleware:
 #    apiBaseUrl: https://otp-middleware.example.com
 #    apiKey: your-middleware-api-key
+#    supportsPushNotifications: true # If not set, push notification settings will not be shown.
 
 ### Adding additional menu items to the main menu items. Use the separator flag
 ### to include a separator line if you have groups of menu items
