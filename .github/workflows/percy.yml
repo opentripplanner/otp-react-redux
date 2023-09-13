@@ -33,7 +33,7 @@ jobs:
           YAML_CONFIG: /tmp/otp2config.yml
           JS_CONFIG: ./percy/har-mock-config.js
       - name: Take Percy Snapshots (Desktop + Mobile)
-        run: npx percy exec -- npx jest percy/percy.test.js --force-exit
+        run: npx percy exec -- npx jest percy/percy.test.js
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_OTP2 }}
           OTP_RR_UI_MODE: normal
@@ -44,7 +44,7 @@ jobs:
           YAML_CONFIG: /tmp/otp2config.yml
           JS_CONFIG: ./percy/har-mock-config-call-taker.js
       - name: Take Percy Snapshots (Calltaker)
-        run: npx percy exec -- npx jest percy/percy.test.js --force-exit
+        run: npx percy exec -- npx jest percy/percy.test.js
         env:
           # Calltaker has a separate key because the calltaker-specific snapshots are different.
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_CALL_TAKER_OTP2 }}
