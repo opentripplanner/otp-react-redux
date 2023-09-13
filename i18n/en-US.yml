@@ -472,6 +472,7 @@ components:
   RouteDetails:
     moreDetails: More Details
     operatedBy: Operated by {agencyName}
+    headsignTo: "{headsign} ({lastStop})"
     selectADirection: Select a direction...
     stopsTo: Toward
   RouteViewer:

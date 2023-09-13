@@ -43,6 +43,7 @@ interface PatternSummary {
   geometryLength: number
   headsign: string
   id: string
+  lastStop?: string
 }
 
 interface Props {
@@ -85,27 +86,29 @@ class RouteDetails extends Component<Props> {
         ([id, pat]): PatternSummary => ({
           geometryLength: pat.patternGeometry?.length || 0,
           headsign: extractHeadsignFromPattern(pat, shortName),
-          id
+          id,
+          lastStop: pat.stops?.[pat.stops?.length - 1]?.name
         })
       )
-      // Remove duplicate headsigns. Using a reducer means that the first pattern
-      // with a specific headsign is the accepted one. TODO: is this good behavior?
+      // Remove duplicate headsigns. Replaces duplicate headsigns with the last stop name
       .reduce((prev: PatternSummary[], cur) => {
         const amended = prev
         const alreadyExistingIndex = prev.findIndex(
           (h) => h.headsign === cur.headsign
         )
-        // If the item we're replacing has less geometry, replace it!
-        if (alreadyExistingIndex >= 0) {
-          // Only replace if new pattern has greater geometry
-          if (
-            amended[alreadyExistingIndex].geometryLength < cur.geometryLength
-          ) {
-            amended[alreadyExistingIndex] = cur
-          }
-        } else {
-          amended.push(cur)
+        // If the item we're replacing has less geometry, amend the headsign to be more helpful
+        if (
+          alreadyExistingIndex >= 0 &&
+          cur.lastStop &&
+          cur.headsign !== cur.lastStop
+        ) {
+          cur.headsign = intl.formatMessage(
+            { id: 'components.RouteDetails.headsignTo' },
+            { ...cur }
+          )
         }
+
+        amended.push(cur)
         return amended
       }, [])
       .sort((a, b) => {
