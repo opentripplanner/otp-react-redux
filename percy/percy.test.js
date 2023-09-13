@@ -7,7 +7,7 @@ const percySnapshot = require('@percy/puppeteer')
 
 const { OTP_RR_UI_MODE } = process.env
 
-const MOCK_SERVER_PORT = 5486
+const MOCK_SERVER_PORT = OTP_RR_UI_MODE === 'calltaker' ? 5487 : 5486
 
 // Puppeteer can take a long time to load, especially in some ci environments
 jest.setTimeout(600000)
