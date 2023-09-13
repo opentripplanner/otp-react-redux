@@ -249,7 +249,6 @@ components:
     departAt: Salida {departTime, time, short}
     editDepartOrArrival: Editar la hora de salida o de llegada
     leaveNow: Salir ahora
-    range: "{startTime, time, short} a {endTime, time, short}"
   DateTimeScreen:
     header: Fijar fecha/hora
   DefaultItinerary:
@@ -313,7 +312,6 @@ components:
     title: Imágenes de la calle
   MetroUI:
     arriveAt: Llegaste
-    fromStop: de {stop}
     itineraryDescription: "{time} itinerario en {routes}"
     leaveAt: Su salida
     multipleOptions: Múltiples Opciones
@@ -493,10 +491,6 @@ components:
       búsqueda.
     header: ¡La sesión está a punto de terminar!
     keepSession: Continuar sesión
-  SettingsPreview:
-    defaultPreviewText: |-
-      Opciones
-      y Preferencias del viaje
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo real
   StackedPaneDisplay:

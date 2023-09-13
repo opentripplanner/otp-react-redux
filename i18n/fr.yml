@@ -38,8 +38,14 @@ actions:
     setPaymentError: "Erreur sur les coordonnées de paiement :"
     setRequestStatusError: "Erreur sur l'état de la requête :"
   location:
+    deniedAccessAlert: >
+      L'accès à votre position est refusé.
+
+      Pour utiliser votre emplacement actuel, permettez-en l'accès depuis votre
+      navigateur, et ouvrez de nouveau cette page.
     geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par votre navigateur.
     unknownPositionError: Erreur inconnue lors de la détection de votre emplacement.
+    userDeniedPermission: Refusé par l'utilisateur
   map:
     currentLocation: (Emplacement actuel)
   user:
@@ -178,7 +184,7 @@ components:
   AdvancedOptions:
     bannedRoutes: Choisissez les lignes à éviter…
     bikeTolerance: Tolérance au vélo
-    preferredRoutes: Choisissez les lignes preferées
+    preferredRoutes: Choisissez les lignes préferées
     walkTolerance: Tolérance à la marche
   AfterSignInScreen:
     mainTitle: Redirection...
@@ -237,7 +243,6 @@ components:
     header: Votre trajet
     modeSelectorLabel: Sélectionnez un mode de transport
   BatchSettings:
-    dateTimeSettingsLabel: Paramètres Date/Heure
     destination: destination
     origin: point de départ
     planTripTooltip: Planifier le trajet
@@ -263,7 +268,6 @@ components:
     departAt: Départ {departTime, time, short}
     editDepartOrArrival: Modifier l'heure de départ ou d'arrivée
     leaveNow: Tout de suite
-    range: "{startTime, time, short} à {endTime, time, short}"
   DateTimeScreen:
     header: Jour et heure du trajet
   DefaultItinerary:
@@ -327,7 +331,6 @@ components:
     title: Vue panoramique
   MetroUI:
     arriveAt: Vous arrivez à
-    fromStop: de {stop}
     itineraryDescription: Trajet de {time} par les lignes {routes}
     leaveAt: Partez à
     multipleOptions: Plusieurs options
@@ -547,10 +550,6 @@ components:
       session' pour conserver votre recherche.
     header: Votre session va expirer
     keepSession: Prolonger ma session
-  SettingsPreview:
-    defaultPreviewText: |-
-      Choix du mode
-      & préférences
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: >-
       Ce trajet utilise les informations en temps réel sur le trafic et les
