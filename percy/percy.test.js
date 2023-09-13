@@ -16,7 +16,11 @@ jest.setTimeout(600000)
 const PERCY_EXTRA_WAIT = 5000
 const percySnapshotWithWait = async (page, name, enableJavaScript) => {
   await page.waitForTimeout(PERCY_EXTRA_WAIT)
-  await percySnapshot(page, `${name} [${OTP_RR_UI_MODE}]`, { enableJavaScript })
+  await percySnapshot(
+    page,
+    `${name} [${OTP_RR_UI_MODE}${page.isMobile ? '/mobile' : ''}]`,
+    { enableJavaScript }
+  )
 }
 
 let browser
@@ -421,6 +425,7 @@ if (OTP_RR_UI_MODE !== 'calltaker') {
   // Non-calltaker test runs both mobile and desktop test.
   test('OTP-RR Mobile', async () => {
     const page = await loadPath('/')
+    page.isMobile = true
     await page.setUserAgent('android')
     await page.setViewport({
       height: 1134,
