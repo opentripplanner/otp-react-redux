@@ -227,7 +227,9 @@ components:
     modeSelectorLabel: Select a transit mode
   BatchSettings:
     destination: destination
-    invalidModeSelection: Cannot plan a trip using the selected modes.
+    invalidModeSelection: >-
+      Cannot plan a trip using the selected modes. Try including transit in your
+      mode selection.
     origin: origin
     planTripTooltip: Plan trip
     validationMessage: "Please define the following fields to plan a trip: {issues}"

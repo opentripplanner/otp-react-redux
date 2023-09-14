@@ -238,7 +238,9 @@ components:
     modeSelectorLabel: Sélectionnez un mode de transport
   BatchSettings:
     destination: destination
-    invalidModeSelection: Impossible de planifier un trajet avec les modes sélectionnés.
+    invalidModeSelection: >-
+      Impossible de planifier un trajet avec les modes sélectionnés. Réessayez
+      en ajoutant les transports publics.
     origin: point de départ
     planTripTooltip: Planifier le trajet
     validationMessage: >-
