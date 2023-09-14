@@ -10,7 +10,6 @@ on:
 jobs:
   run-pixel-tests:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -37,6 +36,23 @@ jobs:
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_OTP2 }}
           OTP_RR_UI_MODE: normal
+  run-pixel-tests-calltaker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # This allows us to work with the repository during the lint step
+          fetch-depth: 2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - name: Install npm packages using cache
+        uses: bahmutov/npm-install@v1
+      - name: Download OTP2 config file
+        run: curl $PERCY_OTP2_CONFIG_URL --output /tmp/otp2config.yml
+        env:
+          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_MOCK_OTP2_GEOCODER_CONFIG }}
       - name: Build OTP-RR Calltaker
         # Calltaker has a separate config file, so another build should be produced.
         run: yarn build
