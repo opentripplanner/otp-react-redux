@@ -38,8 +38,14 @@ actions:
     setPaymentError: "Erreur sur les coordonnées de paiement :"
     setRequestStatusError: "Erreur sur l'état de la requête :"
   location:
+    deniedAccessAlert: >
+      L'accès à votre position est refusé.
+
+      Pour utiliser votre emplacement actuel, permettez-en l'accès depuis votre
+      navigateur, et ouvrez de nouveau cette page.
     geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par votre navigateur.
     unknownPositionError: Erreur inconnue lors de la détection de votre emplacement.
+    userDeniedPermission: Refusé par l'utilisateur
   map:
     currentLocation: (Emplacement actuel)
   user:
@@ -139,6 +145,7 @@ common:
     walk: À pied
   notifications:
     email: e-mail
+    push: notifications push
     sms: SMS
   places:
     custom: divers
@@ -178,7 +185,7 @@ components:
   AdvancedOptions:
     bannedRoutes: Choisissez les lignes à éviter…
     bikeTolerance: Tolérance au vélo
-    preferredRoutes: Choisissez les lignes preferées
+    preferredRoutes: Choisissez les lignes préferées
     walkTolerance: Tolérance à la marche
   AfterSignInScreen:
     mainTitle: Redirection...
@@ -369,12 +376,8 @@ components:
     description: Le contenu que vous avez demandé n'est pas disponible.
     header: Contenu introuvable
   NotificationPrefsPane:
-    description: >-
-      Vous pouvez recevoir des notifications sur les trajets que vous effectuez
-      fréquemment.
-    noneSelect: Ne pas me notifier
-    notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
-    notificationEmailDetail: "Les courriers de notification seront envoyés à :"
+    noDeviceForPush: Inscrivez-vous avec l'application mobile pour accéder à ce paramètre.
+    notificationChannelPrompt: "Recevoir des notifications sur vos trajets par :"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
@@ -428,7 +431,6 @@ components:
     prompt: "Entrez votre numéro de téléphone pour les SMS de notification :"
     requestNewCode: Envoyer un nouveau code
     sendVerificationText: Envoyer le SMS de vérification
-    smsDetail: "Les SMS de notification seront envoyés au :"
     verificationCode: "Code de vérification :"
     verificationInstructions: >
       Un SMS vous a été envoyé avec un code de vérification. Veuillez taper ce
