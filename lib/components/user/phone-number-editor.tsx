@@ -6,11 +6,11 @@ import React, { Component, createRef, Fragment } from 'react'
 import styled from 'styled-components'
 
 import { getAriaPhoneNumber } from '../../util/a11y'
+import { GRAY_ON_WHITE } from '../util/colors'
 import { isBlank } from '../../util/ui'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
-import SpanWithSpace from '../util/span-with-space'
 
-import { ControlStrip, FakeLabel, InlineStatic } from './styled'
+import { ControlStrip } from './styled'
 import PhoneChangeForm, { PhoneChangeSubmitHandler } from './phone-change-form'
 import PhoneVerificationForm, {
   PhoneVerificationSubmitHandler
@@ -18,8 +18,8 @@ import PhoneVerificationForm, {
 
 export type PhoneCodeRequestHandler = (phoneNumber: string) => void
 
-const PlainLink = styled(SpanWithSpace)`
-  color: inherit;
+const PlainLink = styled.a`
+  color: ${GRAY_ON_WHITE};
   &:hover {
     text-decoration: none;
   }
@@ -34,6 +34,7 @@ const blankState = {
 }
 
 interface Props {
+  descriptorId: string
   initialPhoneNumber?: string
   initialPhoneNumberVerified?: boolean
   intl: IntlShape
@@ -169,7 +170,7 @@ class PhoneNumberEditor extends Component<Props, State> {
   }
 
   render() {
-    const { initialPhoneNumber, phoneFormatOptions } = this.props
+    const { descriptorId, initialPhoneNumber, phoneFormatOptions } = this.props
     const {
       isEditing,
       phoneNumberReceived,
@@ -220,9 +221,6 @@ class PhoneNumberEditor extends Component<Props, State> {
 
     return (
       <>
-        <InvisibleA11yLabel aria-busy={isAlertBusy} role="alert">
-          {ariaAlertContent}
-        </InvisibleA11yLabel>
         {isEditing ? (
           <PhoneChangeForm
             isSubmitting={hasSubmittedNumber}
@@ -233,46 +231,43 @@ class PhoneNumberEditor extends Component<Props, State> {
           />
         ) : (
           <FormGroup>
-            <FakeLabel>
-              <FormattedMessage id="components.PhoneNumberEditor.smsDetail" />
-            </FakeLabel>
             <ControlStrip>
-              <InlineStatic className="form-control-static">
-                <PlainLink
-                  aria-label={ariaPhoneNumber}
-                  // Use an anchor so that the aria-label applies.
-                  // Styling will mostly make the text appear plain, but
-                  // phone actions can be performed if necessary.
-                  as="a"
-                  href={`tel:${shownPhoneNumberRaw}`}
-                  margin={0.5}
-                >
-                  {shownPhoneNumber}
-                </PlainLink>
-                {/* Invisible parentheses for no-CSS and screen readers */}
-                <InvisibleA11yLabel> (</InvisibleA11yLabel>
-                {isPending ? (
-                  <BsLabel bsStyle="warning">
-                    <FormattedMessage id="components.PhoneNumberEditor.pending" />
-                  </BsLabel>
-                ) : (
-                  <BsLabel style={{ background: 'green' }}>
-                    <FormattedMessage id="components.PhoneNumberEditor.verified" />
-                  </BsLabel>
-                )}
-                <InvisibleA11yLabel>)</InvisibleA11yLabel>
-              </InlineStatic>
+              {/* Use an anchor so that the aria-label applies and phone actions can be performed,
+                  if necessary. Styling will make the text appear plain (mostly). */}
+              <PlainLink
+                aria-label={ariaPhoneNumber}
+                href={`tel:${shownPhoneNumberRaw}`}
+                id={descriptorId}
+              >
+                {shownPhoneNumber}
+              </PlainLink>
+              {/* Invisible parentheses for no-CSS and screen readers */}
+              <InvisibleA11yLabel> (</InvisibleA11yLabel>
+              {isPending ? (
+                <BsLabel bsStyle="warning">
+                  <FormattedMessage id="components.PhoneNumberEditor.pending" />
+                </BsLabel>
+              ) : (
+                <BsLabel style={{ background: 'green' }}>
+                  <FormattedMessage id="components.PhoneNumberEditor.verified" />
+                </BsLabel>
+              )}
+              <InvisibleA11yLabel>)</InvisibleA11yLabel>
               <button
                 // "Downgrading" to a plain button so we can insert a ref to return keyboard focus on cancel.
                 className="btn btn-default"
                 onClick={this._handleEditNumber}
                 ref={this._changeRef}
+                style={{ padding: '2px 12px' }}
               >
                 <FormattedMessage id="components.PhoneNumberEditor.changeNumber" />
               </button>
             </ControlStrip>
           </FormGroup>
         )}
+        <InvisibleA11yLabel aria-busy={isAlertBusy} as="div" role="alert">
+          {ariaAlertContent}
+        </InvisibleA11yLabel>
 
         {isPending && !isEditing && (
           <PhoneVerificationForm

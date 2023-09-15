@@ -138,6 +138,7 @@ common:
     walk: Walk
   notifications:
     email: email
+    push: push notifications
     sms: SMS
   places:
     custom: custom
@@ -235,6 +236,9 @@ components:
     modeSelectorLabel: Select a transit mode
   BatchSettings:
     destination: destination
+    invalidModeSelection: >-
+      Cannot plan a trip using the selected modes. Try including transit in your
+      mode selection.
     origin: origin
     planTripTooltip: Plan trip
     validationMessage: "Please define the following fields to plan a trip: {issues}"
@@ -361,10 +365,8 @@ components:
     description: The content you requested is not available.
     header: Content not found
   NotificationPrefsPane:
-    description: You can receive notifications about trips you frequently take.
-    noneSelect: Don't notify me
-    notificationChannelPrompt: How would you like to receive notifications?
-    notificationEmailDetail: "Notification emails will be sent to:"
+    noDeviceForPush: Register your device using the mobile app to access push notifications.
+    notificationChannelPrompt: "Receive notifications about your saved trips via:"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
@@ -416,7 +418,6 @@ components:
     prompt: "Enter your phone number for SMS notifications:"
     requestNewCode: Request a new code
     sendVerificationText: Send verification text
-    smsDetail: "SMS notifications will be sent to:"
     verificationCode: "Verification code:"
     verificationInstructions: >
       Please check the SMS messaging app on your mobile phone for a text message
