@@ -40,6 +40,10 @@ actions:
   location:
     geolocationNotSupportedError: Su navegador no admite la geolocalización
     unknownPositionError: Error desconocido al obtener la posición
+    userDeniedPermission: Usuario sin permiso
+    deniedAccessAlert: "El acceso a tu ubicación está bloqueado.\nPara utilizar tu
+      ubicación actual, activa los permisos de ubicación desde tu navegador y vuelve
+      a cargar la página. \n"
   map:
     currentLocation: (Ubicación actual)
   user:
@@ -113,6 +117,7 @@ common:
       {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
       solo
     transfers: "{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}"
+    fareUnknown: No hay información de las tarifas
   linkOpensNewWindow: (Abre una nueva ventana)
   modes:
     bicycle_rent: Compartir bicicleta
@@ -174,6 +179,8 @@ components:
   AdvancedOptions:
     bannedRoutes: Seleccionar rutas prohibidas…
     preferredRoutes: Seleccionar rutas preferidas…
+    bikeTolerance: Tolerancia de las bicicletas
+    walkTolerance: Tolerancia al andar
   AfterSignInScreen:
     mainTitle: Redirigiendo…
     message: >-
@@ -229,6 +236,7 @@ components:
     shortTitle: Planificar viaje
   BatchSearchScreen:
     header: Planifique su viaje
+    modeSelectorLabel: Seleccione un modo de transporte
   BatchSettings:
     destination: destino
     origin: origen
@@ -730,6 +738,41 @@ components:
     switcher: Botón de cambio
   WelcomeScreen:
     prompt: ¿A donde quiere ir?
+  OTP2ErrorRenderer:
+    SYSTEM_ERROR:
+      header: Error en el planificador de los viajes
+      body: Se ha producido un error desconocido en la búsqueda.
+    LOCATION_NOT_FOUND:
+      body: '{inputFieldsCount, plural, =0 {} one {localización es} other {localizaciones
+        son}} no están cerca de ninguna calle.'
+      header: No se puede acceder a la ubicación
+    NO_STOPS_IN_RANGE:
+      header: Sin paradas cerca
+      body: '{inputFieldsCount, plural, =0 {} one {ubicación es} other {ubicaciones
+        son}} no están cerca de ninguna parada del transporte.'
+    NO_TRANSIT_CONNECTION:
+      body: No se encontró ninguna conexión entre tu origen y destino en el día seleccionado,
+        utilizando los tipos de vehículos que seleccionaste.
+      header: Sin conexiones
+    inputFields:
+      FROM: Procedencia
+      TO: Destino
+    WALKING_BETTER_THAN_TRANSIT:
+      body: Puede completar esta ruta más rápido caminando.
+      header: El transporte público no es la forma más rápida de hacer este viaje
+    OUTSIDE_SERVICE_PERIOD:
+      header: Fuera de plazo
+      body: La fecha específicada está fuera del rango de los datos disponibles para
+        la búsqueda de los viajes.
+    OUTSIDE_BOUNDS:
+      header: Ubicación fuera de los límites
+      body: '{inputFieldsCount, plural, =0 {} one {localización es} other {localizaciones
+        son}} no están en los límites del planificador de viajes.'
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: Se encontró una conexión, pero estaba fuera de las opciones de la búsqueda,
+        intenta ajustar las opciones de la búsqueda, usando los tipos de vehículos
+        que seleccionaste.
+      header: Sin conexiones por el criterio de la búsqueda
 config:
   accessModes:
     bicycle: Tránsito + Bicicleta Personal
