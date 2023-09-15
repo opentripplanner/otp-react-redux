@@ -90,7 +90,7 @@ class RouteDetails extends Component<Props> {
           lastStop: pat.stops?.[pat.stops?.length - 1]?.name
         })
       )
-      // Remove duplicate headsigns. Replaces duplicate headsigns with the last stop name
+      // Address duplicate headsigns. Replaces duplicate headsigns with the last stop name
       .reduce((prev: PatternSummary[], cur) => {
         const amended = prev
         const alreadyExistingIndex = prev.findIndex(
