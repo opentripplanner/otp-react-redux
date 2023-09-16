@@ -243,6 +243,8 @@ components:
     planTripTooltip: Planificar viaje
     validationMessage: "Por favor, defina los siguientes campos para planificar un
       viaje: {issues}"
+    invalidModeSelection: No se puede planificar un viaje utilizando los modos seleccionados.
+      Prueba a incluir el transporte publico en la selección de modos.
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
     message: >
@@ -773,6 +775,8 @@ components:
         intenta ajustar las opciones de la búsqueda, usando los tipos de vehículos
         que seleccionaste.
       header: Sin conexiones por el criterio de la búsqueda
+  SequentialPaneDisplay:
+    stepNumber: Paso {step} de {total}
 config:
   accessModes:
     bicycle: Tránsito + Bicicleta Personal
