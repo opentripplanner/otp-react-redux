@@ -42,6 +42,12 @@ const ButtonWrapper = styled.span`
     ${activeCss}
     ${boxShadowCss}
   }
+
+  /* Remove pointer events triggered by children of the button.
+     (they are not captured by floating-ui hover interaction handler.) */
+  & > button > * {
+    pointer-events: none;
+  }
 `
 
 const HoverPanel = styled.div`
@@ -139,8 +145,10 @@ export default function DateTimeButton({
 
   const handleButtonClick = useCallback(
     (e) => {
+      console.log('Datetime button click')
       setOpenWithKeyboard(true)
       if (typeof interactionProps.onClick === 'function') {
+        console.log('Datetime button click activates interaction props.click')
         interactionProps.onClick(e)
       }
     },
