@@ -37,8 +37,14 @@ actions:
     setPaymentError: "Error al configurar la información de pago:"
     setRequestStatusError: "Error al establecer el estado de la solicitud:"
   location:
+    deniedAccessAlert: >
+      El acceso a tu ubicación está bloqueado.
+
+      Para utilizar tu ubicación actual, activa los permisos de ubicación desde
+      tu navegador y vuelve a cargar la página. 
     geolocationNotSupportedError: Su navegador no admite la geolocalización
     unknownPositionError: Error desconocido al obtener la posición
+    userDeniedPermission: Usuario sin permiso
   map:
     currentLocation: (Ubicación actual)
   user:
@@ -105,6 +111,7 @@ common:
     "yes": Sí
   itineraryDescriptions:
     calories: "{calories, number} kcal"
+    fareUnknown: No hay información de las tarifas
     noItineraryToDisplay: No hay itinerario que mostrar.
     relativeCo2: >
       {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
@@ -170,7 +177,9 @@ components:
     tooManyPlaces: Se alcanzó el máximo de lugares intermedios
   AdvancedOptions:
     bannedRoutes: Seleccionar rutas prohibidas…
+    bikeTolerance: Tolerancia de las bicicletas
     preferredRoutes: Seleccionar rutas preferidas…
+    walkTolerance: Tolerancia al andar
   AfterSignInScreen:
     mainTitle: Redirigiendo…
     message: >-
@@ -226,6 +235,7 @@ components:
     shortTitle: Planificar viaje
   BatchSearchScreen:
     header: Planifique su viaje
+    modeSelectorLabel: Seleccione un modo de transporte
   BatchSettings:
     destination: destino
     origin: origen
@@ -359,11 +369,50 @@ components:
     description: El contenido que ha solicitado no está disponible.
     header: No se encontró el contenido
   NotificationPrefsPane:
-    description: Puede recibir notificaciones sobre los viajes que realiza con frecuencia.
     noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
-    noneSelect: No enviar notificaciones
     notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por:"
-    notificationEmailDetail: "Los correos electrónicos de notificación se enviarán a:"
+  OTP2ErrorRenderer:
+    LOCATION_NOT_FOUND:
+      body: >-
+        {inputFieldsCount, plural, =0 {} one {localización es} other
+        {localizaciones son}} no están cerca de ninguna calle.
+      header: No se puede acceder a la ubicación
+    NO_STOPS_IN_RANGE:
+      body: >-
+        {inputFieldsCount, plural, =0 {} one {ubicación es} other {ubicaciones
+        son}} no están cerca de ninguna parada del transporte.
+      header: Sin paradas cerca
+    NO_TRANSIT_CONNECTION:
+      body: >-
+        No se encontró ninguna conexión entre tu origen y destino en el día
+        seleccionado, utilizando los tipos de vehículos que seleccionaste.
+      header: Sin conexiones
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: >-
+        Se encontró una conexión, pero estaba fuera de las opciones de la
+        búsqueda, intenta ajustar las opciones de la búsqueda, usando los tipos
+        de vehículos que seleccionaste.
+      header: Sin conexiones por el criterio de la búsqueda
+    OUTSIDE_BOUNDS:
+      body: >-
+        {inputFieldsCount, plural, =0 {} one {localización es} other
+        {localizaciones son}} no están en los límites del planificador de
+        viajes.
+      header: Ubicación fuera de los límites
+    OUTSIDE_SERVICE_PERIOD:
+      body: >-
+        La fecha específicada está fuera del rango de los datos disponibles para
+        la búsqueda de los viajes.
+      header: Fuera de plazo
+    SYSTEM_ERROR:
+      body: Se ha producido un error desconocido en la búsqueda.
+      header: Error en el planificador de los viajes
+    WALKING_BETTER_THAN_TRANSIT:
+      body: Puede completar esta ruta más rápido caminando.
+      header: El transporte público no es la forma más rápida de hacer este viaje
+    inputFields:
+      FROM: Procedencia
+      TO: Destino
   PhoneNumberEditor:
     changeNumber: Cambiar número de teléfono
     invalidCode: Introduzca 6 dígitos para el código de validación.

@@ -416,9 +416,9 @@ components:
       header: Echec de la recherche
     WALKING_BETTER_THAN_TRANSIT:
       body: >-
-        Vous pouvez effectuer ce trajet plus rapidement en évitant les
+        Vous pouvez effectuer ce trajet plus rapidement sans prendre les
         transports.
-      header: Transports moins rapides
+      header: Moins rapide en transports
     inputFields:
       FROM: point de départ
       TO: destination
