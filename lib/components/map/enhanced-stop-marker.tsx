@@ -3,8 +3,8 @@ import {
   MarkerWithPopup
 } from '@opentripplanner/base-map'
 import { connect } from 'react-redux'
-import { Location, Stop } from '@opentripplanner/types'
 import { MapMarker } from '@styled-icons/fa-solid/MapMarker'
+import { Stop } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import StopPopup from '@opentripplanner/map-popup'
@@ -14,7 +14,11 @@ import tinycolor from 'tinycolor2'
 import * as mapActions from '../../actions/map'
 import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
-import { ConfiguredTransitMode, SetViewedStopHandler } from '../util/types'
+import {
+  ConfiguredTransitMode,
+  SetLocationHandler,
+  SetViewedStopHandler
+} from '../util/types'
 import { getModeFromStop, getStopName } from '../../util/viewer'
 
 interface OwnProps {
@@ -27,7 +31,7 @@ interface Props extends OwnProps {
   activeStopId?: string
   highlight: boolean
   modeColors: ModeColors
-  setLocation: (location: { location: Location; locationType: string }) => void
+  setLocation: SetLocationHandler
   setViewedStop: SetViewedStopHandler
 }
 
