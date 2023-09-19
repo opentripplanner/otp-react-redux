@@ -93,3 +93,10 @@ export interface ViewedRouteObject extends Route {
 export type SetViewedRouteHandler = (route?: ViewedRouteState) => void
 
 export type SetViewedStopHandler = (payload: { stopId: string }) => void
+
+export interface ConfiguredTransitMode {
+  color?: string
+  label?: string
+  mode: string
+  showWheelchairSetting?: boolean
+}

@@ -1,10 +1,9 @@
-// TYPESCRIPT TODO: all props here are missing types
-/* eslint-disable react/prop-types */
 import {
   Styled as BaseMapStyled,
   MarkerWithPopup
 } from '@opentripplanner/base-map'
 import { connect } from 'react-redux'
+import { Location, Stop } from '@opentripplanner/types'
 import { MapMarker } from '@styled-icons/fa-solid/MapMarker'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
@@ -15,20 +14,42 @@ import tinycolor from 'tinycolor2'
 import * as mapActions from '../../actions/map'
 import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
+import { ConfiguredTransitMode, SetViewedStopHandler } from '../util/types'
 import { getModeFromStop, getStopName } from '../../util/viewer'
+
+interface OwnProps {
+  stop: Stop
+}
+
+type ModeColors = Record<string, string | undefined>
+
+interface Props extends OwnProps {
+  activeStopId?: string
+  highlight: boolean
+  modeColors: ModeColors
+  setLocation: (location: { location: Location; locationType: string }) => void
+  setViewedStop: SetViewedStopHandler
+}
+
+interface MarkerProps {
+  active?: boolean
+  mainColor?: string
+}
 
 const iconPixels = 32
 const iconPadding = 5
 const caretPixels = iconPixels / 2 + iconPadding
-const borderPixels = (props) => (props?.active ? 3 : 1)
-const leftPixels = (props) => caretPixels / 2 - borderPixels(props) / 2
-const bottomPixels = (props) =>
+const borderPixels = (props: MarkerProps) => (props?.active ? 3 : 1)
+const leftPixels = (props: MarkerProps) =>
+  caretPixels / 2 - borderPixels(props) / 2
+const bottomPixels = (props: MarkerProps) =>
   -((caretPixels * 1.4142) / 4) - borderPixels(props) + iconPadding / 2
 
 const DEFAULT_COLOR = '#a6a6a6'
-const strokeColor = (props) => (props?.active ? props.mainColor : DEFAULT_COLOR)
+const strokeColor = (props: MarkerProps) =>
+  props?.active ? props.mainColor : DEFAULT_COLOR
 
-const BaseStopIcon = styled.div`
+const BaseStopIcon = styled.div<MarkerProps>`
   background: #fff;
   border: ${borderPixels}px solid ${strokeColor};
   border-radius: 50%;
@@ -63,12 +84,12 @@ const BaseStopIcon = styled.div`
 
 const activeContentId = 'enh-stop-popup'
 
-class EnhancedStopMarker extends Component {
+class EnhancedStopMarker extends Component<Props> {
   static contextType = ComponentContext
 
-  onMarkerClick = (e) => {
+  onMarkerClick = () => {
     // Make a copy because getElementsByClassName returns a live collection.
-    const elements = Array.from(
+    const closeButtons = Array.from(
       document.getElementsByClassName('maplibregl-popup-close-button')
     )
     // HACK: If an OTP2 tile stop is right underneath the marker, the tile event handler in OTP-UI
@@ -77,9 +98,14 @@ class EnhancedStopMarker extends Component {
     // so there will be two (duplicate) stop popups.
     // We want to show the popup for the enhanced marker instead of the one from the tile handler
     // because the stop marker has a much larger UI surface than the circle from the tile layer.
-    elements.forEach((el) => {
-      if (el.parentElement.firstChild.firstChild.id !== activeContentId) {
-        el.click()
+    // FIXME: One case that escapes this trick deals with when the active stop marker is below an inactive stop marker.
+    // When clicking the corner of the inactive stop marker, this handler is not triggered,
+    // and two popups for two different stops will be shown.
+    closeButtons.forEach((btn) => {
+      const popup = btn.parentElement?.firstChild?.firstChild as HTMLElement
+      if (popup?.id !== activeContentId) {
+        const button = btn as HTMLButtonElement
+        button.click()
       }
     })
   }
@@ -136,12 +162,12 @@ class EnhancedStopMarker extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state: any, ownProps: OwnProps) => {
   const { highlightedStop } = state.otp.ui
 
   const transitModes = state.otp.config.modes.transitModes
-  const modeColors = {}
-  transitModes.forEach((mode) => {
+  const modeColors: ModeColors = {}
+  transitModes.forEach((mode: ConfiguredTransitMode) => {
     modeColors[mode.mode] = mode.color
   })
 
