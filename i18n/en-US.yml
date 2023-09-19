@@ -267,9 +267,6 @@ components:
     nonTransit: Alternative options
   DeleteUser:
     deleteMyAccount: Delete my account
-  EnhancedStopMarker:
-    stopID: "Stop ID:"
-    stopViewer: Stop Viewer
   ErrorMessage:
     header: Could Not Plan Trip
     warning: Warning

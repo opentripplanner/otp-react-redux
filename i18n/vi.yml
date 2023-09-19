@@ -250,9 +250,6 @@ components:
     multiModeSummary: "{accessMode} + {transitMode}"
   DeleteUser:
     deleteMyAccount: Xóa tài khoản của tôi
-  EnhancedStopMarker:
-    stopID: Điểm dừng số
-    stopViewer: Xem điểm dừng
   ErrorMessage:
     header: Không thể lên kế hoạch cho chuyến đi
     warning: Cảnh báo
