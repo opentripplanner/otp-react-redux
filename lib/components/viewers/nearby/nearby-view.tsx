@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import * as apiActions from '../../../actions/api'
 
+import { NearbySidebarContainer } from './styled'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
 
@@ -17,11 +18,23 @@ type Props = {
   nearbyViewCoords?: LatLonObj
 }
 
-// TODO: THIS NEEDS TO BE IN ITS OWN FILE WHOS THE GIT BLAME ON THIS!!!!!!!!!!!!!!!!!!!!
-const NearbyViewContainer = styled.div`
-  display: flex;
-  flex-direction: col;
-`
+const getNearbyItem = (place: any) => {
+  switch (place.__typename) {
+    case 'RentalVehicle':
+      return <Vehicle vehicle={place} />
+    case 'Stop':
+      return (
+        <Stop
+          setHoveredStop={() => alert(1)}
+          showOperatorLogo
+          stopData={place}
+          transitOperators={{}}
+        />
+      )
+    default:
+      return `${place.__typename}you are from the future and have a cool new version of OTP2 let me know how it is mlsgrnt@icloud.com`
+  }
+}
 
 function NearbyView(props: Props): JSX.Element {
   const { fetchNearby, nearby, nearbyViewCoords } = props
@@ -34,31 +47,10 @@ function NearbyView(props: Props): JSX.Element {
 
   // TODO: when coordiantes are set, put a marker on the map and zoom there
 
-  if (nearby) {
-    return nearby.map((n) => {
-      const { place } = n.node
-      switch (place.__typename) {
-        case 'RentalVehicle':
-          return <Vehicle vehicle={place} />
-        case 'Stop':
-          return (
-            <Stop
-              setHoveredStop={() => alert(1)}
-              showOperatorLogo
-              stopData={place}
-              transitOperators={{}}
-            />
-          )
-        default:
-          return 'you are from the future and have a cool new version of OTP2 let me know how it is mlsgrnt@icloud.com'
-      }
-    })
-  }
-
   return (
-    <>
-      hello {props.nearbyViewCoords?.lat} {props.nearbyViewCoords?.lon}
-    </>
+    <NearbySidebarContainer style={{ background: 'blue' }}>
+      {nearby?.map((n: any) => getNearbyItem(n.node.place))}{' '}
+    </NearbySidebarContainer>
   )
 }
 
@@ -66,7 +58,6 @@ const mapStateToProps = (state: any) => {
   const { transitIndex, ui } = state.otp
   const { nearbyViewCoords } = ui
   const { nearby } = transitIndex
-  console.log(state.otp)
   return {
     nearby,
     nearbyViewCoords

@@ -13,6 +13,7 @@ import { Pattern, Time } from '../util/types'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import OperatorLogo from '../util/operator-logo'
 
+import { NextTripPreview, PatternRowItem } from './styled'
 import StopTimeCell from './stop-time-cell'
 
 type Props = {
@@ -64,7 +65,7 @@ class PatternRow extends Component<Props, State> {
     const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
     return (
-      <li className="route-row">
+      <PatternRowItem>
         {/* header row */}
         <div
           className="header stop-view"
@@ -90,23 +91,22 @@ class PatternRow extends Component<Props, State> {
           </div>
           {/* next departure preview */}
           {hasStopTimes && (
-            <ol className="next-trip-preview">
+            <NextTripPreview>
               {[0, 1, 2].map(
                 (index) =>
                   sortedStopTimes?.[index] && (
-                    <li>
+                    <li key={index}>
                       <StopTimeCell
                         homeTimezone={homeTimezone}
-                        key={index}
                         stopTime={sortedStopTimes[index]}
                       />
                     </li>
                   )
               )}
-            </ol>
+            </NextTripPreview>
           )}
         </div>
-      </li>
+      </PatternRowItem>
     )
   }
 }
