@@ -7,6 +7,7 @@ import {
   Time
 } from '../components/util/types'
 
+import { getOrPutEntry } from './arrays'
 import {
   getRouteIdForPattern,
   getStopTimesByPattern,
@@ -27,24 +28,10 @@ function hasValidTimesAndRoute({
   )
 }
 
-function sortAndFilterPatternTimes(
-  times: Time[],
-  now: Date,
-  daysAhead: number,
-  numberOfDepartures: number
-): Time[] {
-  return (
-    times
-      .concat()
-      ?.sort(stopTimeComparator)
-      // filter any times according to time range set in config.
-      .filter((time, i, array) => {
-        const departureTime = time.serviceDay + time.realtimeDeparture
-        return isBefore(departureTime, addDays(now, daysAhead))
-      })
-      // remove excess departure times
-      .slice(0, numberOfDepartures)
-  )
+/** Filter any times according to time range set in config. */
+function isWithinDaysAhead(time: Time, now: Date, daysAhead: number) {
+  const departureTime = time.serviceDay + time.realtimeDeparture
+  return isBefore(departureTime, addDays(now, daysAhead))
 }
 
 /** Helper to sort and group stop times by pattern by service day */
@@ -61,35 +48,35 @@ export function groupAndSortStopTimesByPatternByDay(
     PatternStopTimes
   >
 
-  const patternTimes: PatternDayStopTimes[] = []
-  Object.values(stopTimesByPattern)
-    .filter(hasValidTimesAndRoute)
-    .forEach((pattern) => {
-      const sortedTimes = sortAndFilterPatternTimes(
-        pattern.times,
-        now,
-        daysAhead,
-        numberOfDepartures
+  return (
+    Object.values(stopTimesByPattern)
+      .filter(hasValidTimesAndRoute)
+      .map((pattern) =>
+        pattern.times
+          .concat([])
+          .sort(stopTimeComparator)
+          .filter((time) => isWithinDaysAhead(time, now, daysAhead))
+          // remove excess departure times
+          .slice(0, numberOfDepartures)
+          // collect times by pattern by day
+          // (every pattern returned has stop times within the days ahead.)
+          .reduce<Record<number, PatternDayStopTimes>>((days, t) => {
+            const { serviceDay } = t
+            const patternDay = getOrPutEntry(days, serviceDay, (day) => ({
+              ...pattern,
+              day,
+              times: []
+            }))
+            patternDay.times.push(t)
+            return days
+          }, {})
       )
-
-      const patternDays: Record<number, PatternDayStopTimes> = {}
-      sortedTimes.forEach((t: Time) => {
-        const { serviceDay } = t
-        let patternDay = patternDays[serviceDay]
-        if (!patternDay) {
-          patternDays[serviceDay] = patternDay = {
-            ...pattern,
-            day: serviceDay,
-            times: []
-          }
-          patternTimes.push(patternDay)
-        }
-        // Ensures that every pattern returned has stop times within the days ahead.
-        patternDay.times.push(t)
-      })
-    })
-
-  // Sort route times by service day then realtime departure
-  patternTimes.sort(patternComparator)
-  return patternTimes
+      // Concatenate all resulting patterns
+      .reduce<PatternDayStopTimes[]>(
+        (result, cur) => result.concat(Object.values(cur)),
+        []
+      )
+      // Sort route times by service day then realtime departure
+      .sort(patternComparator)
+  )
 }
