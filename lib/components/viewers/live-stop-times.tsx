@@ -13,6 +13,7 @@ import React, { Component } from 'react'
 
 import { groupAndSortStopTimesByPatternByDay } from '../../util/stop-times'
 import { IconWithText } from '../util/styledIcon'
+import { StopData } from '../util/types'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import SpanWithSpace from '../util/span-with-space'
 
@@ -36,14 +37,12 @@ type Props = {
   setHoveredStop: (stopId: string) => void
   showNearbyStops: boolean
   showOperatorLogo?: boolean
-  // TODO: shared types
-  stopData: any
+  stopData: StopData
   stopViewerArriving: React.ReactNode
   // TODO: shared types
   stopViewerConfig: any
   toggleAutoRefresh: (enable: boolean) => void
-  // TODO: shared types
-  transitOperators: any
+  transitOperators: TransitOperator[]
   viewedStop: { stopId: string }
 }
 
@@ -173,7 +172,6 @@ class LiveStopTimes extends Component<Props, State> {
       stopViewerConfig.numberOfDepartures
     )
 
-    console.log('route times', routeTimes)
     return (
       <>
         <ul className="route-row-container">
@@ -199,8 +197,6 @@ class LiveStopTimes extends Component<Props, State> {
                   }}
                   showOperatorLogo={showOperatorLogo}
                   stopTimes={times}
-                  stopViewerArriving={stopViewerArriving}
-                  stopViewerConfig={stopViewerConfig}
                 />
               </React.Fragment>
             )
