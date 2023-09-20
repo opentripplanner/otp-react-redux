@@ -20,49 +20,43 @@ describe('util > stop-times', () => {
         3
       )
 
+      function getPatternDays(id: string) {
+        return stopTimesByPatternByDay
+          .filter((p) => p.id === id)
+          .map((p) => p.day)
+      }
+
       // Stop time data has 4 patterns aggregating to 3 final destinations.
       // (This method assumes that the routing is roughly the same for patterns
       // that have the same destination.)
       const headsigns = new Set(
         stopTimesByPatternByDay.map((st) => st.pattern.headsign)
       )
-      expect(headsigns.size).toBe(3)
-      expect(headsigns).toContain('Northgate')
-      expect(headsigns).toContain('Stadium')
-      expect(headsigns).toContain('University of Washington')
+      expect(headsigns).toEqual(
+        new Set(['Northgate', 'Stadium', 'University of Washington'])
+      )
 
-      // The pattern to University of Washington should be included twice,
-      // once per service day outside of today.
-      const uwaPatternDays = stopTimesByPatternByDay
-        .filter((p) => p.id === '40:100479-University of Washington')
-        .map((p) => p.day)
-      expect(uwaPatternDays).toEqual([1695279600, 1695366000])
+      // The pattern to UWA should be included twice, once per service day outside of today.
+      expect(getPatternDays('40:100479-University of Washington')).toEqual([
+        1695279600, 1695366000
+      ])
 
-      // Patterns to Stadium (last trips in the evening) should be for "today's" service day.
-      const stadiumPatternDays = stopTimesByPatternByDay
-        .filter((p) => p.id === '40:100479-Stadium')
-        .map((p) => p.day)
-      expect(stadiumPatternDays).toEqual([1695193200])
+      // Patterns to Stadium (last trips in the evening) should be for "today"'s service day.
+      expect(getPatternDays('40:100479-Stadium')).toEqual([1695193200])
 
-      // There is a same-day pattern to Northgate,
-      // therefore, no next-day pattern to Northgate should be returned.
-      const northgatePatternDays = stopTimesByPatternByDay
-        .filter((p) => p.id === '40:100479-Northgate')
-        .map((p) => p.day)
-      expect(northgatePatternDays).toEqual([1695193200])
+      // No next-day pattern to Northgate should be returned (same-day depatures exist).
+      expect(getPatternDays('40:100479-Northgate')).toEqual([1695193200])
 
-      // Patterns should be sorted by day.
+      // Patterns should be sorted by day, then by departure time.
       for (let i = 1; i < stopTimesByPatternByDay.length; i++) {
         const prevPattern = stopTimesByPatternByDay[i - 1]
         const thisPattern = stopTimesByPatternByDay[i]
-        expect(prevPattern.day).toBeLessThanOrEqual(thisPattern.day)
-
-        if (prevPattern.day === thisPattern.day) {
-          // eslint-disable-next-line jest/no-conditional-expect
-          expect(prevPattern.times[0].realtimeDeparture).toBeLessThanOrEqual(
-            thisPattern.times[0].realtimeDeparture
-          )
-        }
+        expect(
+          prevPattern.day < thisPattern.day ||
+            (prevPattern.day === thisPattern.day &&
+              prevPattern.times[0].realtimeDeparture <=
+                thisPattern.times[0].realtimeDeparture)
+        ).toBe(true)
       }
     })
   })
