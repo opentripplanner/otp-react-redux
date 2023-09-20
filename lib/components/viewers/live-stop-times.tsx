@@ -160,7 +160,7 @@ class LiveStopTimes extends Component<Props, State> {
     const now = utcToZonedTime(Date.now(), homeTimezone)
 
     // Time range is set in seconds, so convert to days
-    const timeRange = stopViewerConfig.timeRange / 86400 || 2
+    const daysAhead = stopViewerConfig.timeRange / 86400 || 2
 
     const refreshButtonText = intl.formatMessage({
       id: 'components.LiveStopTimes.refresh'
@@ -169,7 +169,7 @@ class LiveStopTimes extends Component<Props, State> {
     const routeTimes = groupAndSortStopTimesByPatternByDay(
       stopData,
       now,
-      timeRange,
+      daysAhead,
       stopViewerConfig.numberOfDepartures
     )
 

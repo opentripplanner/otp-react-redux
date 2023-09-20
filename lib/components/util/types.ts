@@ -33,13 +33,6 @@ export interface StopTime {
   times: Time[]
 }
 
-export interface StopTimesForPattern {
-  id: string
-  pattern: Pattern
-  route: Route
-  times: Time[]
-}
-
 export interface Pattern {
   desc: string
   headsign: string
@@ -70,6 +63,17 @@ export interface Time {
   stopIndex: number
   timepoint: boolean
   tripId: string
+}
+
+export interface PatternStopTimes {
+  id: string
+  pattern: Pattern
+  route: Route
+  times: Time[]
+}
+
+export interface PatternDayStopTimes extends PatternStopTimes {
+  day: number
 }
 
 export interface VehicleRental {

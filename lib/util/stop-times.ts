@@ -1,6 +1,11 @@
 import { addDays, isBefore } from 'date-fns'
 
-import { StopTimesForPattern } from '../components/util/types'
+import {
+  PatternDayStopTimes,
+  PatternStopTimes,
+  StopData,
+  Time
+} from '../components/util/types'
 
 import {
   getRouteIdForPattern,
@@ -12,16 +17,19 @@ import {
 
 /** Helper to sort and group stop times by pattern by service day */
 export function groupAndSortStopTimesByPatternByDay(
-  stopData: Record<string, StopTimesForPattern>,
+  stopData: StopData,
   now: Date,
   daysAhead: number,
   numberOfDepartures: number
-) {
+): PatternDayStopTimes[] {
   // construct a lookup table mapping pattern (e.g. 'ROUTE_ID-HEADSIGN') to
   // an array of stoptimes
-  const stopTimesByPattern = getStopTimesByPattern(stopData)
+  const stopTimesByPattern = getStopTimesByPattern(stopData) as Record<
+    string,
+    PatternStopTimes
+  >
 
-  const patternTimes = []
+  const patternTimes: PatternDayStopTimes[] = []
   Object.values(stopTimesByPattern)
     .filter(
       ({ pattern, route, times }) =>
@@ -35,16 +43,16 @@ export function groupAndSortStopTimesByPatternByDay(
         .concat()
         ?.sort(stopTimeComparator)
         // filter any times according to time range set in config.
-        .filter((time: any, i: number, array: Array<any>) => {
+        .filter((time: Time, i: number, array: Time[]) => {
           const departureTime = time.serviceDay + time.realtimeDeparture
           return isBefore(departureTime, addDays(now, daysAhead))
         })
         // remove excess departure times
         .slice(0, numberOfDepartures)
 
-      const serviceDays = {}
-      const serviceDayList = []
-      sortedTimes.forEach((t) => {
+      const serviceDays: Record<number, Time[]> = {}
+      const serviceDayList: number[] = []
+      sortedTimes.forEach((t: Time) => {
         const { serviceDay } = t
         if (!serviceDays[serviceDay]) {
           serviceDays[serviceDay] = []
@@ -67,11 +75,6 @@ export function groupAndSortStopTimesByPatternByDay(
     })
 
   // Sort route times by service day then realtime departure
-  patternTimes.sort(
-    (pt1, pt2) =>
-      (pt1.day - pt2.day) * 100000 +
-      (pt1.times[0].realtimeDeparture - pt2.times[0].realtimeDeparture)
-  )
-
+  patternTimes.sort(patternComparator)
   return patternTimes
 }
