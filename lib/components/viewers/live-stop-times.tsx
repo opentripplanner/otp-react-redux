@@ -33,7 +33,7 @@ type Props = {
   findStopTimesForStop: ({ stopId }: { stopId: string }) => void
   homeTimezone: string
   intl: IntlShape
-  nearbyStops: any // TODO: shared types
+  nearbyStops: string[]
   setHoveredStop: (stopId: string) => void
   showNearbyStops: boolean
   showOperatorLogo?: boolean
@@ -175,32 +175,26 @@ class LiveStopTimes extends Component<Props, State> {
     return (
       <>
         <ul className="route-row-container">
-          {routeTimes.map((time: any, index: number) => {
-            const { id, pattern, route, times } = time
-            return (
-              <React.Fragment key={id}>
-                {((index > 0 &&
-                  !isSameDay(
-                    time.day * 1000,
-                    routeTimes[index - 1]?.day * 1000
-                  )) ||
-                  (index === 0 && !isSameDay(now, time.day * 1000))) &&
-                  this.renderDay(homeTimezone, time.day, now)}
-                <PatternRow
-                  homeTimezone={homeTimezone}
-                  pattern={pattern}
-                  route={{
-                    ...route,
-                    operator: transitOperators.find(
-                      (o: TransitOperator) => o.agencyId === route.agencyId
-                    )
-                  }}
-                  showOperatorLogo={showOperatorLogo}
-                  stopTimes={times}
-                />
-              </React.Fragment>
-            )
-          })}
+          {routeTimes.map(({ day, id, pattern, route, times }, index) => (
+            <React.Fragment key={`${id}-${day}`}>
+              {((index > 0 &&
+                !isSameDay(day * 1000, routeTimes[index - 1]?.day * 1000)) ||
+                (index === 0 && !isSameDay(now, day * 1000))) &&
+                this.renderDay(homeTimezone, day, now)}
+              <PatternRow
+                homeTimezone={homeTimezone}
+                pattern={pattern}
+                route={{
+                  ...route,
+                  operator: transitOperators.find(
+                    (o: TransitOperator) => o.agencyId === route.agencyId
+                  )
+                }}
+                showOperatorLogo={showOperatorLogo}
+                stopTimes={times}
+              />
+            </React.Fragment>
+          ))}
         </ul>
 
         {/* Auto update controls for realtime arrivals */}
