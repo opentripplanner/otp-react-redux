@@ -1,4 +1,3 @@
-import { addDays, isBefore } from 'date-fns'
 import { format, utcToZonedTime } from 'date-fns-tz'
 import {
   FormattedMessage,
@@ -12,13 +11,7 @@ import coreUtils from '@opentripplanner/core-utils'
 import isSameDay from 'date-fns/isSameDay'
 import React, { Component } from 'react'
 
-import {
-  getRouteIdForPattern,
-  getStopTimesByPattern,
-  patternComparator,
-  routeIsValid,
-  stopTimeComparator
-} from '../../util/viewer'
+import { groupAndSortStopTimesByPatternByDay } from '../../util/stop-times'
 import { IconWithText } from '../util/styledIcon'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import SpanWithSpace from '../util/span-with-space'
@@ -164,9 +157,6 @@ class LiveStopTimes extends Component<Props, State> {
     } = this.props
     const { spin } = this.state
     const userTimezone = getUserTimezone()
-    // construct a lookup table mapping pattern (e.g. 'ROUTE_ID-HEADSIGN') to
-    // an array of stoptimes
-    const stopTimesByPattern = getStopTimesByPattern(stopData)
     const now = utcToZonedTime(Date.now(), homeTimezone)
 
     // Time range is set in seconds, so convert to days
@@ -176,33 +166,13 @@ class LiveStopTimes extends Component<Props, State> {
       id: 'components.LiveStopTimes.refresh'
     })
 
-    const routeTimes = Object.values(stopTimesByPattern)
-      .filter(
-        ({ pattern, route, times }) =>
-          times &&
-          times.length !== 0 &&
-          routeIsValid(route, getRouteIdForPattern(pattern))
-      )
-      .sort(patternComparator)
-      .map((route) => {
-        const sortedTimes = route.times
-          .concat()
-          ?.sort(stopTimeComparator)
-          // filter any times according to time range set in config.
-          .filter((time: any, i: number, array: Array<any>) => {
-            const departureTime = time.serviceDay + time.realtimeDeparture
-            return isBefore(departureTime, addDays(now, timeRange))
-          })
-        const { serviceDay } = sortedTimes[0]
-        return {
-          ...route,
-          day: serviceDay || null,
-          times: sortedTimes
-        }
-      })
-      // if the time range filter removes all times, remove route
-      .filter(({ times }) => times.length !== 0)
+    const routeTimes = groupAndSortStopTimesByPatternByDay(
+      stopData,
+      now,
+      timeRange
+    )
 
+    console.log('route times', routeTimes)
     return (
       <>
         <ul className="route-row-container">
