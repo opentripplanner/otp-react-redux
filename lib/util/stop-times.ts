@@ -14,13 +14,14 @@ import {
 export function groupAndSortStopTimesByPatternByDay(
   stopData: Record<string, StopTimesForPattern>,
   now: Date,
-  daysAhead: number
+  daysAhead: number,
+  numberOfDepartures: number
 ) {
   // construct a lookup table mapping pattern (e.g. 'ROUTE_ID-HEADSIGN') to
   // an array of stoptimes
   const stopTimesByPattern = getStopTimesByPattern(stopData)
 
-  const routeTimes = []
+  const patternTimes = []
   Object.values(stopTimesByPattern)
     .filter(
       ({ pattern, route, times }) =>
@@ -29,8 +30,8 @@ export function groupAndSortStopTimesByPatternByDay(
         routeIsValid(route, getRouteIdForPattern(pattern))
     )
     .sort(patternComparator)
-    .forEach((route) => {
-      const sortedTimes = route.times
+    .forEach((pattern) => {
+      const sortedTimes = pattern.times
         .concat()
         ?.sort(stopTimeComparator)
         // filter any times according to time range set in config.
@@ -38,6 +39,8 @@ export function groupAndSortStopTimesByPatternByDay(
           const departureTime = time.serviceDay + time.realtimeDeparture
           return isBefore(departureTime, addDays(now, daysAhead))
         })
+        // remove excess departure times
+        .slice(0, numberOfDepartures)
 
       const serviceDays = {}
       const serviceDayList = []
@@ -54,8 +57,8 @@ export function groupAndSortStopTimesByPatternByDay(
         // Don't return patterns with no times within the days ahead.
         const times = serviceDays[day]
         if (times.length !== 0) {
-          routeTimes.push({
-            ...route,
+          patternTimes.push({
+            ...pattern,
             day,
             times
           })
@@ -64,11 +67,11 @@ export function groupAndSortStopTimesByPatternByDay(
     })
 
   // Sort route times by service day then realtime departure
-  routeTimes.sort(
-    (rt1, rt2) =>
-      (rt1.day - rt2.day) * 100000 +
-      (rt1.times[0].realtimeDeparture - rt2.times[0].realtimeDeparture)
+  patternTimes.sort(
+    (pt1, pt2) =>
+      (pt1.day - pt2.day) * 100000 +
+      (pt1.times[0].realtimeDeparture - pt2.times[0].realtimeDeparture)
   )
 
-  return routeTimes
+  return patternTimes
 }

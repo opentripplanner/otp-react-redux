@@ -169,7 +169,8 @@ class LiveStopTimes extends Component<Props, State> {
     const routeTimes = groupAndSortStopTimesByPatternByDay(
       stopData,
       now,
-      timeRange
+      timeRange,
+      stopViewerConfig.numberOfDepartures
     )
 
     console.log('route times', routeTimes)

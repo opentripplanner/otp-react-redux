@@ -16,7 +16,8 @@ describe('util > stop-times', () => {
       const stopTimesByPatternByDay = groupAndSortStopTimesByPatternByDay(
         stopData,
         now,
-        daysAhead
+        daysAhead,
+        3
       )
 
       // Stop time data has 4 patterns aggregating to 3 final destinations.
@@ -42,6 +43,13 @@ describe('util > stop-times', () => {
         .filter((p) => p.id === '40:100479-Stadium')
         .map((p) => p.day)
       expect(stadiumPatternDays).toEqual([1695193200])
+
+      // There is a same-day pattern to Northgate,
+      // therefore, no next-day pattern to Northgate should be returned.
+      const northgatePatternDays = stopTimesByPatternByDay
+        .filter((p) => p.id === '40:100479-Northgate')
+        .map((p) => p.day)
+      expect(northgatePatternDays).toEqual([1695193200])
 
       // Patterns should be sorted by day.
       for (let i = 1; i < stopTimesByPatternByDay.length; i++) {
