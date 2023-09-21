@@ -52,6 +52,8 @@ actions:
     emailVerificationResent: The email verification message has been resent.
     genericError: "An error was encountered: {err}"
     itineraryExistenceCheckFailed: Error checking whether your selected trip is possible.
+    mustBeLoggedInToSavePlace: Please log in to save locations.
+    placeRemembered: The settings for this place have been saved.
     preferencesSaved: Your preferences have been saved.
     smsInvalidCode: The code you entered is invalid. Please try again.
     smsResendThrottled: >-
