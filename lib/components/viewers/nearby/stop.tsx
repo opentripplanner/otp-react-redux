@@ -15,6 +15,9 @@ import { connect } from 'react-redux'
 import { Card, CardHeader, PatternRowContainer, StyledAlert } from './styled'
 import { Icon, IconWithText } from '../../util/styledIcon'
 import { stopIsFlex } from '../../../util/viewer'
+
+import { useMap } from 'react-map-gl'
+
 import PatternRow from '../pattern-row'
 import Strong from '../../util/strong-text'
 
@@ -44,9 +47,11 @@ type Props = {
   findStopTimesForStop: ({ stopId }: { stopId: string }) => void
   homeTimezone: string
   setHoveredStop: () => void
+  setLocation: (args: any) => void
   showOperatorLogo: boolean
   stopData: any
   transitOperators: any
+  zoomToPlace: (map: any, stopData: any) => void
 }
 
 const Stop = ({
@@ -54,15 +59,17 @@ const Stop = ({
   findStopTimesForStop,
   homeTimezone,
   setHoveredStop,
+  setLocation,
   showOperatorLogo,
   stopData,
-  transitOperators
+  transitOperators,
+  zoomToPlace
 }: Props): JSX.Element => {
   const intl = useIntl()
+  const map = useMap()
   const [isShowingSchedule, setIsShowingSchedule] = useState(false)
 
   // TODO: Let's have some typescript here first that'll help
-  console.log(stopData.stoptimesForPatterns)
   const patternRows = stopData.stoptimesForPatterns?.map(
     (st: any, index: number) => {
       return (
@@ -80,6 +87,19 @@ const Stop = ({
   const isFlex = stopIsFlex(stopData)
   const timezoneWarning = !inHomeTimezone && getTimezoneWarning(homeTimezone)
 
+  const setLocationFromStop = (locationType: 'from' | 'to') => {
+    const location = {
+      lat: stopData.lat,
+      lon: stopData.lon,
+      name: stopData.name
+    }
+    setLocation({ location, locationType, reverseGeocode: false })
+  }
+
+  const zoomToStop = () => {
+    zoomToPlace(map.default, stopData)
+  }
+
   return (
     <Card>
       <CardHeader>{stopData.name}</CardHeader>
@@ -91,7 +111,7 @@ const Stop = ({
           />
           <button
             className="link-button"
-            // onClick={this._zoomToStop}
+            onClick={zoomToStop}
             title={intl.formatMessage({
               id: 'components.StopViewer.zoomToStop'
             })}
@@ -117,8 +137,8 @@ const Stop = ({
         <span role="group">
           <FromToLocationPicker
             label
-            // onFromClick={this._onClickPlanFrom}
-            // onToClick={this._onClickPlanTo}
+            onFromClick={() => setLocationFromStop('from')}
+            onToClick={() => setLocationFromStop('to')}
           />
         </span>
       </p>

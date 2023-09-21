@@ -37,4 +37,5 @@ export const PatternRowContainer = styled.ul`
 `
 export const Scrollable = styled.div`
   overflow-y: scroll;
+  height: 100%;
 `
