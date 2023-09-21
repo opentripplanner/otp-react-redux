@@ -16,12 +16,17 @@ jest.setTimeout(600000)
 const PERCY_EXTRA_WAIT = 5000
 const percySnapshotWithWait = async (page, name, enableJavaScript) => {
   await page.waitForTimeout(PERCY_EXTRA_WAIT)
-  await percySnapshot(page, `${name} [${OTP_RR_UI_MODE}]`, { enableJavaScript })
+  await percySnapshot(
+    page,
+    `${name} [${OTP_RR_UI_MODE}${page.isMobile ? '/mobile' : ''}]`,
+    { enableJavaScript }
+  )
 }
 
 let browser
 const serveAbortController = new AbortController()
 const harAbortController = new AbortController()
+const geocoderAbortController = new AbortController()
 
 /**
  * Loads a path
@@ -49,6 +54,20 @@ beforeAll(async () => {
       signal: harAbortController.signal
     }).stdout.pipe(process.stdout)
 
+    // Launch mock geocoder server
+    execa(
+      'yarn',
+      [
+        'percy-har-express',
+        '-p',
+        '9977',
+        `percy/geocoder-mock-${OTP_RR_UI_MODE}.har`
+      ],
+      {
+        signal: geocoderAbortController.signal
+      }
+    ).stdout.pipe(process.stdout)
+
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
       args: ['--disable-web-security']
@@ -66,6 +85,7 @@ afterAll(async () => {
   try {
     serveAbortController.abort()
     harAbortController.abort()
+    geocoderAbortController.abort()
     await browser.close()
   } catch (error) {
     console.log(error)
@@ -73,7 +93,7 @@ afterAll(async () => {
   console.log('Closed mock server and headless browser')
 })
 
-// Puppeteer can take a long time to load, espeically in some ci environments
+// Puppeteer can take a long time to load, especially in some ci environments
 jest.setTimeout(600000)
 
 async function executeTest(page, isMobile, isCallTaker) {
@@ -153,7 +173,8 @@ async function executeTest(page, isMobile, isCallTaker) {
     // Fill in new origin
     await page.hover('.from-form-control')
     await page.focus('.from-form-control')
-    await page.keyboard.type('Opus Music')
+    // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
+    await page.keyboard.type('Opus Music', { delay: 100 })
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
     await page.waitForTimeout(200)
@@ -161,7 +182,8 @@ async function executeTest(page, isMobile, isCallTaker) {
 
     // Fill in new destination
     await page.focus('.to-form-control')
-    await page.keyboard.type('908981')
+    // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
+    await page.keyboard.type('908981', { delay: 100 })
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
     await page.waitForTimeout(200)
@@ -196,7 +218,8 @@ async function executeTest(page, isMobile, isCallTaker) {
     )
     await page.waitForSelector('.intermediate-place-0-form-control')
     await page.focus('.intermediate-place-0-form-control')
-    await page.keyboard.type('arts center')
+    // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
+    await page.keyboard.type('arts center', { delay: 100 })
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
     await page.waitForTimeout(200)
@@ -357,9 +380,52 @@ async function executeTest(page, isMobile, isCallTaker) {
   }
 }
 
-if (OTP_RR_UI_MODE === 'mobile') {
+test('OTP-RR Desktop', async () => {
+  const page = await loadPath('/')
+  await page.setViewport({
+    height: 1080,
+    width: 1920
+  })
+  page.on('console', async (msg) => {
+    const args = await msg.args()
+    args.forEach(async (arg) => {
+      const val = await arg.jsonValue()
+      // value is serializable
+      if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
+      // value is unserializable (or an empty oject)
+      else {
+        const { description, subtype, type } = arg._remoteObject
+        console.log(
+          `type: ${type}, subtype: ${subtype}, description:\n ${description}`
+        )
+      }
+    })
+  })
+  // log all errors that were logged to the browser console
+  page.on('warn', (warn) => {
+    console.log(warn)
+  })
+  page.on('error', (error) => {
+    console.error(error)
+    console.error(error.stack)
+  })
+  // log all uncaught exceptions
+  page.on('pageerror', (error) => {
+    console.error(`Page Error: ${error}`)
+  })
+  // log all failed requests
+  page.on('requestfailed', (req) => {
+    console.error(`Request failed: ${req.method()} ${req.url()}`)
+  })
+
+  await executeTest(page, false, OTP_RR_UI_MODE === 'calltaker')
+})
+
+if (OTP_RR_UI_MODE !== 'calltaker') {
+  // Non-calltaker test runs both mobile and desktop test.
   test('OTP-RR Mobile', async () => {
     const page = await loadPath('/')
+    page.isMobile = true
     await page.setUserAgent('android')
     await page.setViewport({
       height: 1134,
@@ -370,46 +436,5 @@ if (OTP_RR_UI_MODE === 'mobile') {
 
     // Execute the rest of the test
     await executeTest(page, true, false)
-  })
-} else {
-  test('OTP-RR Desktop', async () => {
-    const page = await loadPath('/')
-    await page.setViewport({
-      height: 1080,
-      width: 1920
-    })
-    page.on('console', async (msg) => {
-      const args = await msg.args()
-      args.forEach(async (arg) => {
-        const val = await arg.jsonValue()
-        // value is serializable
-        if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
-        // value is unserializable (or an empty oject)
-        else {
-          const { description, subtype, type } = arg._remoteObject
-          console.log(
-            `type: ${type}, subtype: ${subtype}, description:\n ${description}`
-          )
-        }
-      })
-    })
-    // log all errors that were logged to the browser console
-    page.on('warn', (warn) => {
-      console.log(warn)
-    })
-    page.on('error', (error) => {
-      console.error(error)
-      console.error(error.stack)
-    })
-    // log all uncaught exceptions
-    page.on('pageerror', (error) => {
-      console.error(`Page Error: ${error}`)
-    })
-    // log all failed requests
-    page.on('requestfailed', (req) => {
-      console.error(`Request failed: ${req.method()} ${req.url()}`)
-    })
-
-    await executeTest(page, false, OTP_RR_UI_MODE === 'calltaker')
   })
 }
