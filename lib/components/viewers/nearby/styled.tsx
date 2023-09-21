@@ -5,6 +5,7 @@ export const NearbySidebarContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: 0.5rem;
+  overflow-y: scroll;
 `
 
 export const Card = styled.div`
@@ -33,4 +34,7 @@ export const PatternRowContainer = styled.ul`
   padding-left: 0;
   border-radius: 10px;
   box-shadow: 2px 2px 5px 1px rgb(0 0 0/10%);
+`
+export const Scrollable = styled.div`
+  overflow-y: scroll;
 `

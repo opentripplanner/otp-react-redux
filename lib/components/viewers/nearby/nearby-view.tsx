@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import * as apiActions from '../../../actions/api'
 
-import { NearbySidebarContainer } from './styled'
+import { NearbySidebarContainer, Scrollable } from './styled'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
 
@@ -48,9 +48,11 @@ function NearbyView(props: Props): JSX.Element {
   // TODO: when coordiantes are set, put a marker on the map and zoom there
 
   return (
-    <NearbySidebarContainer style={{ background: 'blue' }}>
-      {nearby?.map((n: any) => getNearbyItem(n.node.place))}{' '}
-    </NearbySidebarContainer>
+    <Scrollable>
+      <NearbySidebarContainer style={{ background: 'blue' }}>
+        {nearby?.map((n: any) => getNearbyItem(n.node.place))}{' '}
+      </NearbySidebarContainer>
+    </Scrollable>
   )
 }
 
