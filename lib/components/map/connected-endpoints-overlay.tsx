@@ -5,11 +5,7 @@ import EndpointsOverlay from '@opentripplanner/endpoints-overlay'
 import React, { ComponentProps, useCallback } from 'react'
 
 import { clearLocation } from '../../actions/form'
-import {
-  convertToPlace,
-  getUserLocations,
-  toastOnPlaceSaved
-} from '../../util/user'
+import { convertToPlace, getUserLocations } from '../../util/user'
 import {
   forgetPlace,
   rememberPlace,
@@ -17,6 +13,7 @@ import {
 } from '../../actions/user'
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
 import { setLocation } from '../../actions/map'
+import { toastOnPlaceSaved } from '../util/toasts'
 
 type Props = ComponentProps<typeof EndpointsOverlay> & {
   forgetPlace: (place: string, intl: IntlShape) => void

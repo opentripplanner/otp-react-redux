@@ -53,7 +53,7 @@ actions:
     genericError: "An error was encountered: {err}"
     itineraryExistenceCheckFailed: Error checking whether your selected trip is possible.
     mustBeLoggedInToSavePlace: Please log in to save locations.
-    placeRemembered: "Your {placeType} has been set to: {address}."
+    placeRemembered: The settings for this place have been saved.
     preferencesSaved: Your preferences have been saved.
     smsInvalidCode: The code you entered is invalid. Please try again.
     smsResendThrottled: >-
