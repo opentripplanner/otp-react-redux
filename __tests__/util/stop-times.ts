@@ -3,7 +3,7 @@ import { utcToZonedTime } from 'date-fns-tz'
 import '../test-utils/mock-window-url'
 import { groupAndSortStopTimesByPatternByDay } from '../../lib/util/stop-times'
 
-const stopData = require('./stop-data.json')
+const stopData = require('../mocks/stop-data.json')
 const now = utcToZonedTime(
   new Date(stopData.stopTimesLastUpdated),
   'America/Los_Angeles'
