@@ -14,14 +14,16 @@ import React from 'react'
 import {
   BatchResultsScreen,
   BatchSearchScreen,
-  CallHistoryWindow,
-  CallTakerPanel,
-  FieldTripWindows,
-  MailablesWindow,
   MetroItinerary
   // Webpack sets this file to run from a subdirectory within otp-react-redux
   // ../lib points to the index file of otp-react-redux's source code
 } from '../lib'
+import {
+  CallHistoryWindow,
+  FieldTripWindows,
+  MailablesWindow
+} from '../lib/components/admin'
+import { CallTakerPanel } from '../lib/components/app'
 
 /**
  * Custom itinerary footer for this deployment.
