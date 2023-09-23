@@ -63,6 +63,8 @@ actions:
     smsVerificationFailed: >-
       Su teléfono no ha podido ser verificado. Quizás el código que has
       introducido ha caducado. Solicita un nuevo código e inténtalo de nuevo.
+    mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
+    placeRemembered: La configuración de este lugar se ha guardado.
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
