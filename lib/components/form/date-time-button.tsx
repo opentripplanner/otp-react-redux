@@ -42,6 +42,12 @@ const ButtonWrapper = styled.span`
     ${activeCss}
     ${boxShadowCss}
   }
+
+  /* Remove pointer events triggered by children of the button.
+     (they interfere with the floating-ui hover interaction handler.) */
+  & > button > * {
+    pointer-events: none;
+  }
 `
 
 const HoverPanel = styled.div`

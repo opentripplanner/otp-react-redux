@@ -26,6 +26,7 @@ import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { getFormattedMode } from '../../util/i18n'
+import { RoutingQueryCallResult } from '../../actions/api-constants'
 import { StyledIconWrapper } from '../util/styledIcon'
 
 import {
@@ -165,7 +166,16 @@ function BatchSettings({
 
     // Plan trip.
     updateQueryTimeIfLeavingNow()
-    routingQuery()
+    const routingQueryResult = routingQuery()
+
+    // If mode combination is not valid (i.e. produced no query), alert the user.
+    if (routingQueryResult === RoutingQueryCallResult.INVALID_MODE_SELECTION) {
+      window.alert(
+        intl.formatMessage({
+          id: 'components.BatchSettings.invalidModeSelection'
+        })
+      )
+    }
   }, [
     currentQuery,
     intl,
