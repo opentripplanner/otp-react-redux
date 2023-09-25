@@ -282,9 +282,6 @@ components:
     nonTransit: Alternatives
   DeleteUser:
     deleteMyAccount: Supprimer mon compte
-  EnhancedStopMarker:
-    stopID: Arrêt nº
-    stopViewer: Info arrêt
   ErrorMessage:
     header: Impossible de planifier le trajet
     warning: Attention
