@@ -274,9 +274,6 @@ components:
     nonTransit: Alternativas
   DeleteUser:
     deleteMyAccount: Eliminar mi cuenta
-  EnhancedStopMarker:
-    stopID: "Parada:"
-    stopViewer: Visor de paradas
   ErrorMessage:
     header: No se pudo planificar el viaje
     warning: Advertencia
