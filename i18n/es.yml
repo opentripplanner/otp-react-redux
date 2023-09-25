@@ -30,7 +30,8 @@ actions:
       No se puede guardar el plan: este plan no se pudo guardar debido a la
       falta de capacidad en uno o más vehículos. Por favor, vuelva a planificar
       su viaje.
-    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados válidos
+    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados
+      válidos
     saveItinerariesError: "No se pudieron guardar los itinerarios: {err}"
     setDateError: "Error al establecer la fecha:"
     setGroupSizeError: "No se pudo establecer el tamaño del grupo:"
@@ -52,9 +53,11 @@ actions:
     authTokenError: Error al obtener un token de autorización.
     confirmDeleteMonitoredTrip: ¿Desea eliminar este viaje?
     confirmDeletePlace: ¿Quiere eliminar este lugar?
-    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido reenviado.
+    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido
+      reenviado.
     genericError: "Se ha encontrado un error: {err}"
-    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
+    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado
+      es posible.
     preferencesSaved: Sus preferencias se han guardado.
     smsInvalidCode: El código introducido no es válido. Por favor, inténtelo de nuevo.
     smsResendThrottled: >-
@@ -106,7 +109,7 @@ common:
     "no": "No"
     print: Imprimir
     save: Guardar
-    startOver: Comenzar de nuevo
+    startOver: Reiniciar
     submitting: Enviando…
     "yes": Sí
   itineraryDescriptions:
@@ -240,7 +243,10 @@ components:
     destination: destino
     origin: origen
     planTripTooltip: Planificar viaje
-    validationMessage: "Por favor, defina los siguientes campos para planificar un viaje: {issues}"
+    validationMessage: "Por favor, defina los siguientes campos para planificar un
+      viaje: {issues}"
+    invalidModeSelection: No se puede planificar un viaje utilizando los modos seleccionados.
+      Prueba a incluir el transporte publico en la selección de modos.
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
     message: >
@@ -539,7 +545,8 @@ components:
     header: ¡La sesión está a punto de terminar!
     keepSession: Continuar sesión
   SimpleRealtimeAnnotation:
-    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo real
+    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo
+      real
   StackedPaneDisplay:
     savePreferences: Guardar preferencias
   StopScheduleTable:
@@ -602,16 +609,19 @@ components:
     travelingAt: Viajando a {milesPerHour}
     vehicleName: Vehículo {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Comprobación de la existencia de itinerarios para cada día de la semana…
+    checkingItineraryExistence: Comprobación de la existencia de itinerarios para
+      cada día de la semana…
     selectAtLeastOneDay: Por favor, seleccione al menos un día para el seguimiento.
     tripDaysPrompt: ¿Qué días hace este viaje?
-    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana indicados anteriormente.
+    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana
+      indicados anteriormente.
     tripNamePrompt: "Por favor, indique un nombre para este viaje:"
     tripNotAvailableOnDay: El viaje no está disponible el {repeatedDay}
     unsavedChangesExistingTrip: >-
       Todavía no ha guardado su viaje. Si abandona la página, los cambios se
       perderán.
-    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página, se perderá.
+    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página,
+      se perderá.
   TripNotificationsPane:
     advancedSettings: Configuración avanzada
     altRouteRecommended: Se recomienda una ruta alternativa o un punto de transferencia
@@ -718,7 +728,7 @@ components:
 
 
       *** DETALLES TÉCNICOS ***
-    reportIssue: Reportar un problema
+    reportIssue: ¿Un problema?
   TripViewer:
     accessible: Accesible
     bicyclesAllowed: Permitido
@@ -771,6 +781,8 @@ components:
     switcher: Botón de cambio
   WelcomeScreen:
     prompt: ¿A donde quiere ir?
+  SequentialPaneDisplay:
+    stepNumber: Paso {step} de {total}
 config:
   accessModes:
     bicycle: Tránsito + Bicicleta Personal
