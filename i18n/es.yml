@@ -491,6 +491,7 @@ components:
     operatedBy: Servicio operado por {agencyName}
     selectADirection: Seleccione una dirección…
     stopsTo: Hacia
+    headsignTo: '{headsign} ({lastStop})'
   RouteViewer:
     agencyFilter: Filtro de agencia
     allAgencies: Todas las agencias
