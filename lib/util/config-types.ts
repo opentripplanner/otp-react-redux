@@ -23,6 +23,26 @@ export interface BugsnagConfig {
 /** TODO: Configuration object for language settings */
 export type LanguageConfig = Record<string, any>
 
+export interface Auth0Config {
+  audience: string
+  clientId: string
+  domain: string
+}
+
+export interface OtpMiddlewareConfig {
+  apiBaseUrl: string
+  apiKey?: string
+  supportsPushNotifications?: boolean
+}
+
+export interface PersistenceConfig {
+  auth0?: Auth0Config
+  enabled?: boolean
+  // eslint-disable-next-line camelcase
+  otp_middleware?: OtpMiddlewareConfig
+  strategy: 'localStorage' | 'otp_middleware'
+}
+
 export interface PopupTargetConfig {
   appendLocale?: boolean
   modal?: boolean
@@ -47,10 +67,14 @@ export interface PopupConfig {
 
 /** The main application configuration object */
 export interface AppConfig {
+  brandClickable?: boolean
+  branding?: string
   bugsnag: BugsnagConfig
   extraMenuItems?: AppMenuItemConfig[]
   language?: LanguageConfig
+  persistence?: PersistenceConfig
   popups?: PopupConfig
+  title?: string
 
   // TODO: add other config items.
 }

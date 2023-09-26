@@ -281,7 +281,7 @@ class AppMenu extends Component<
 
 // FIXME: type otp config
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const mapStateToProps = (state: Record<string, any>) => {
+const mapStateToProps = (state: any) => {
   const config: AppConfig = state.otp.config
   const { extraMenuItems, language, popups } = config
   return {
