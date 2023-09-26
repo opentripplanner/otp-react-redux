@@ -487,6 +487,7 @@ components:
     tripsFound: "{count, plural, one {# trajet trouvé} other {# trajets trouvés}}"
     waiting: Patientez...
   RouteDetails:
+    headsignTo: "{headsign} ({lastStop})"
     moreDetails: Plus d'infos
     operatedBy: Exploité par {agencyName}
     selectADirection: Choisissez une direction...
