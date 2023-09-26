@@ -48,7 +48,8 @@ const SUPPORTED_TIME_FORMATS = [
   'HH:mm'
 ]
 
-const safeFormat = (date: Date | string, time: string, options: any) => {
+const safeFormat = (date: Date | '', time: string, options: any) => {
+  if (date === '') return ''
   try {
     return format(date, time, options)
   } catch (e) {
