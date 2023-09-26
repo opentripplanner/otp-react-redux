@@ -16,13 +16,20 @@ export interface AppMenuItemConfig {
   subMenuDivider?: boolean
 }
 
-/** Bugsnag */
-export interface BugsnagConfig {
+/** Generic API key config */
+interface ApiKeyConfig {
   key: string
 }
 
+/** Bugsnag */
+export type BugsnagConfig = ApiKeyConfig
+
 /** TODO: Language settings */
 export type LanguageConfig = Record<string, any>
+
+export interface LocalizationConfig {
+  defaultLocale: string
+}
 
 /** Auth0 settings */
 export interface Auth0Config {
@@ -86,17 +93,30 @@ export interface PhoneFormatConfig {
   countryCode: string
 }
 
+/** Mapillary settings */
+export type MapillaryConfig = ApiKeyConfig
+
 /** The main application configuration object */
 export interface AppConfig {
+  /** Whether the header brand should be clickable, and if so, reset the UI. */
   brandClickable?: boolean
   branding?: string
   bugsnag: BugsnagConfig
   extraMenuItems?: AppMenuItemConfig[]
+  homeTimezone: string
+  /** Enable touch-friendly behavior on e.g. touch-screen kiosks that run a desktop OS. */
+  isTouchScreenOnDesktop?: boolean
   language?: LanguageConfig
+  localization?: LocalizationConfig
+  mapillary?: MapillaryConfig
+  /** Interval in seconds past which a trip is no longer considered "on-time". */
+  onTimeThresholdSeconds?: number
   persistence?: PersistenceConfig
   // Optional on declaration, populated with defaults in reducer if not configured.
   phoneFormatOptions: PhoneFormatConfig
   popups?: PopupConfig
+  /** Approx delay in seconds to reset the UI to an initial URL if there is no user activity */
+  sessionTimeoutSeconds?: number
   title?: string
 
   // TODO: add other config items.
