@@ -1,7 +1,7 @@
 // This file is intended to contain configuration types,
 // each suffixed with "Config", as in "MapConfig", "MenuItemConfig", etc.
 
-/** Configuration object for the application menu */
+/** Application side menu */
 export interface AppMenuItemConfig {
   children?: AppMenuItemConfig[]
   href?: string
@@ -16,39 +16,55 @@ export interface AppMenuItemConfig {
   subMenuDivider?: boolean
 }
 
+/** Bugsnag */
 export interface BugsnagConfig {
   key: string
 }
 
-/** TODO: Configuration object for language settings */
+/** TODO: Language settings */
 export type LanguageConfig = Record<string, any>
 
+/** Auth0 settings */
 export interface Auth0Config {
   audience: string
   clientId: string
   domain: string
 }
 
+/** OTP Middleware (Personas) settings */
 export interface OtpMiddlewareConfig {
   apiBaseUrl: string
   apiKey?: string
   supportsPushNotifications?: boolean
 }
 
-export interface PersistenceConfig {
-  auth0?: Auth0Config
-  enabled?: boolean
-  // eslint-disable-next-line camelcase
-  otp_middleware?: OtpMiddlewareConfig
-  strategy: 'localStorage' | 'otp_middleware'
+export interface LocalPersistenceConfig {
+  strategy: 'localStorage'
 }
 
+export interface MiddlewarePersistenceConfig {
+  auth0: Auth0Config
+  // eslint-disable-next-line camelcase
+  otp_middleware: OtpMiddlewareConfig
+  strategy: 'otp_middleware'
+}
+
+/** General persistence settings */
+export type PersistenceConfig = (
+  | LocalPersistenceConfig
+  | MiddlewarePersistenceConfig
+) & {
+  enabled?: boolean
+}
+
+/** Popup target settings */
 export interface PopupTargetConfig {
   appendLocale?: boolean
   modal?: boolean
   url?: string
 }
 
+/** Supported popup launchers */
 export type PopupLauncher =
   /** This button is rendered at the bottom of a selected itinerary */
   | 'itineraryFooter'
@@ -59,7 +75,7 @@ export type PopupLauncher =
   /** This button is rendered in the top right of the toolbar (desktop view only!) */
   | 'toolbar'
 
-/** Configuration object for popups */
+/** Popup settings */
 export interface PopupConfig {
   launchers: Record<PopupLauncher, string>
   targets: Record<PopupLauncher, PopupTargetConfig>
