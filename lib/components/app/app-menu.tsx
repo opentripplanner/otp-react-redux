@@ -16,6 +16,11 @@ import type { WrappedComponentProps } from 'react-intl'
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
+import {
+  AppConfig,
+  LanguageConfig,
+  AppMenuItemConfig as MenuItem
+} from '../../util/config-types'
 import { ComponentContext } from '../../util/contexts'
 import { getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
@@ -26,31 +31,17 @@ import startOver from '../util/start-over'
 import AppMenuItem from './app-menu-item'
 import PopupTriggerText from './popup-trigger-text'
 
-type MenuItem = {
-  children?: MenuItem[]
-  href?: string
-  iconType: string | JSX.Element
-  iconUrl?: string
-  id: string
-  isSelected?: boolean
-  label: string | JSX.Element
-  lang?: string
-  onClick?: () => void
-  skipLocales?: boolean
-  subMenuDivider: boolean
-}
-
 type AppMenuProps = {
   activeLocale: string
   callTakerEnabled?: boolean
   extraMenuItems?: MenuItem[]
   fieldTripEnabled?: boolean
   // Typescript TODO language and language options based on configLanguage.
-  language: Record<string, any> | null
+  language?: LanguageConfig
   languageOptions: Record<string, any> | null
   location: { search: string }
   mailablesEnabled?: boolean
-  popupTarget: string
+  popupTarget?: string
   reactRouterConfig?: { basename: string }
   resetAndToggleCallHistory?: () => void
   resetAndToggleFieldTrips?: () => void
@@ -89,7 +80,7 @@ class AppMenu extends Component<
 
   _triggerPopup = () => {
     const { popupTarget, setPopupContent } = this.props
-    setPopupContent(popupTarget)
+    if (popupTarget) setPopupContent(popupTarget)
   }
 
   _togglePane = () => {
@@ -291,7 +282,8 @@ class AppMenu extends Component<
 // FIXME: type otp config
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const mapStateToProps = (state: Record<string, any>) => {
-  const { extraMenuItems, language } = state.otp.config
+  const config: AppConfig = state.otp.config
+  const { extraMenuItems, language, popups } = config
   return {
     activeLocale: state.otp.ui.locale,
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
@@ -300,7 +292,7 @@ const mapStateToProps = (state: Record<string, any>) => {
     language,
     languageOptions: getLanguageOptions(language),
     mailablesEnabled: isModuleEnabled(state, Modules.MAILABLES),
-    popupTarget: state.otp.config?.popups?.launchers?.sidebarLink
+    popupTarget: popups?.launchers?.sidebarLink
   }
 }
 
