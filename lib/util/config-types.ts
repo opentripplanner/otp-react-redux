@@ -81,6 +81,11 @@ export interface PopupConfig {
   targets: Record<PopupLauncher, PopupTargetConfig>
 }
 
+/** Phone format options */
+export interface PhoneFormatConfig {
+  countryCode: string
+}
+
 /** The main application configuration object */
 export interface AppConfig {
   brandClickable?: boolean
@@ -89,6 +94,8 @@ export interface AppConfig {
   extraMenuItems?: AppMenuItemConfig[]
   language?: LanguageConfig
   persistence?: PersistenceConfig
+  // Optional on declaration, populated with defaults in reducer if not configured.
+  phoneFormatOptions: PhoneFormatConfig
   popups?: PopupConfig
   title?: string
 

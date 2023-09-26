@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import { getAriaPhoneNumber } from '../../util/a11y'
 import { GRAY_ON_WHITE } from '../util/colors'
 import { isBlank } from '../../util/ui'
+import { PhoneFormatConfig } from '../../util/config-types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 import { ControlStrip } from './styled'
@@ -40,9 +41,7 @@ interface Props {
   intl: IntlShape
   onRequestCode: PhoneCodeRequestHandler
   onSubmitCode: PhoneVerificationSubmitHandler
-  phoneFormatOptions: {
-    countryCode: string
-  }
+  phoneFormatOptions: PhoneFormatConfig
 }
 
 interface State {

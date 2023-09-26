@@ -19,6 +19,7 @@ import React, {
 import styled from 'styled-components'
 
 import { InlineLoading } from '../narrative/loading'
+import { PhoneFormatConfig } from '../../util/config-types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 import { ControlStrip, phoneFieldStyle } from './styled'
@@ -59,9 +60,7 @@ interface Props {
   isSubmitting: boolean
   onCancel: () => void
   onSubmit: PhoneChangeSubmitHandler
-  phoneFormatOptions: {
-    countryCode: string
-  }
+  phoneFormatOptions: PhoneFormatConfig
   showCancel?: boolean
 }
 
