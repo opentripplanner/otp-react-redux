@@ -240,9 +240,6 @@ components:
     multiModeSummary: "{accessMode} + {transitMode}"
   DeleteUser:
     deleteMyAccount: 删除我的账户
-  EnhancedStopMarker:
-    stopID: "车站 ID:"
-    stopViewer: 车站查看器
   ErrorMessage:
     header: 无法计划行程
     warning: 警告
