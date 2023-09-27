@@ -1,7 +1,7 @@
 // This file is intended to contain configuration types,
 // each suffixed with "Config", as in "MapConfig", "MenuItemConfig", etc.
 
-import { VehicleRentalMapOverlaySymbol } from '@opentripplanner/types'
+import { Company, VehicleRentalMapOverlaySymbol } from '@opentripplanner/types'
 
 /** OTP URL settings */
 export interface ApiConfig {
@@ -105,7 +105,8 @@ export interface PhoneFormatConfig {
 
 /** Map base layers (e.g. streets, satellite) */
 export interface BaseLayerConfig {
-  type: string
+  name?: string
+  type?: string
   url: string
 }
 
@@ -165,12 +166,13 @@ export type SupportedOverlays =
   | MapTileLayerConfig
 
 export interface MapConfig {
-  baseLayers: BaseLayerConfig[]
-  initLat: number
-  initLon: number
+  baseLayers?: BaseLayerConfig[]
+  initLat?: number
+  initLon?: number
   initZoom?: number
-  overlays: SupportedOverlays[]
-  views: MapViewConfig[]
+  maxZoom?: number
+  overlays?: SupportedOverlays[]
+  views?: MapViewConfig[]
 }
 
 /** Settings for reporting issues */
@@ -185,6 +187,7 @@ export interface AppConfig {
   brandClickable?: boolean
   branding?: string
   bugsnag: BugsnagConfig
+  companies?: Company[]
   extraMenuItems?: AppMenuItemConfig[]
   homeTimezone: string
   /** Enable touch-friendly behavior on e.g. touch-screen kiosks that run a desktop OS. */
