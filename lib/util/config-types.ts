@@ -1,7 +1,12 @@
 // This file is intended to contain configuration types,
 // each suffixed with "Config", as in "MapConfig", "MenuItemConfig", etc.
 
-import { Company, VehicleRentalMapOverlaySymbol } from '@opentripplanner/types'
+import {
+  Company,
+  FareProductSelector,
+  VehicleRentalMapOverlaySymbol
+} from '@opentripplanner/types'
+import { FareTableLayout } from '@opentripplanner/trip-details/lib/types'
 
 /** OTP URL settings */
 export interface ApiConfig {
@@ -180,6 +185,43 @@ export interface ReportIssueConfig {
   mailto: string
 }
 
+export interface ItineraryCostConfig {
+  bikeshareTripCostCents?: number
+  carParkingCostCents?: number
+  drivingCentsPerMile?: number
+}
+
+export type ItinerarySortOption =
+  | 'DURATION'
+  | 'ARRIVALTIME'
+  | 'WALKTIME'
+  | 'COST'
+  | 'DEPARTURETIME'
+
+export interface ItineraryConfig {
+  costs?: ItineraryCostConfig
+  customBatchUiBackground?: boolean
+  defaultFareKey?: string
+  defaultFareType?: FareProductSelector
+  defaultSort?: ItinerarySortOption
+  disableMetroSeperatorDot?: true
+  displayCalories?: boolean
+  fareDetailsLayout?: FareTableLayout[]
+  fareKeyNameMap?: Record<string, string>
+  fillModeIcons?: boolean
+  groupByMode?: boolean
+  groupTransitModes?: boolean
+  hideSkeletons?: boolean
+  mergeItineraries?: boolean
+  renderRouteNamesInBlocks?: boolean
+  showFirstResultByDefault?: boolean
+  showHeaderText?: boolean
+  showLegDurations?: boolean
+  showPlanFirstLastButtons?: boolean
+  showRouteFares?: boolean
+  sortModes?: ItinerarySortOption[]
+}
+
 /** The main application configuration object */
 export interface AppConfig {
   api: ApiConfig
@@ -192,6 +234,7 @@ export interface AppConfig {
   homeTimezone: string
   /** Enable touch-friendly behavior on e.g. touch-screen kiosks that run a desktop OS. */
   isTouchScreenOnDesktop?: boolean
+  itinerary?: ItineraryConfig
   language?: LanguageConfig
   localization?: LocalizationConfig
   map: MapConfig
