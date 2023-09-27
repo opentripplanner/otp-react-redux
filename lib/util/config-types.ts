@@ -11,6 +11,7 @@ import {
   MassUnitOption,
   VehicleRentalMapOverlaySymbol
 } from '@opentripplanner/types'
+import { GeocoderConfig as GeocoderConfigOtpUI } from '@opentripplanner/geocoder'
 
 /** OTP URL settings */
 export interface ApiConfig {
@@ -243,6 +244,18 @@ export interface CO2Config extends CO2ConfigType {
   showIfHigher?: boolean
 }
 
+export interface GeocoderConfig extends GeocoderConfigOtpUI {
+  // layerColorMap is for LocationField.
+  layerColorMap?: {
+    [key: string]: string
+    // Explicitly include those used as headers
+    stations?: string
+    stops?: string
+  }
+  maxNearbyStops?: number
+  type: string
+}
+
 /** The main application configuration object */
 export interface AppConfig {
   api: ApiConfig
@@ -254,7 +267,9 @@ export interface AppConfig {
   bugsnag?: BugsnagConfig
   co2?: CO2Config
   companies?: Company[]
+  elevationProfile?: boolean
   extraMenuItems?: AppMenuItemConfig[]
+  geocoder: GeocoderConfig
   homeTimezone: string
   /** Enable touch-friendly behavior on e.g. touch-screen kiosks that run a desktop OS. */
   isTouchScreenOnDesktop?: boolean
