@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl'
 import React, { useCallback } from 'react'
 
 import * as uiActions from '../../actions/ui'
+import { SetViewedStopHandler } from '../util/types'
 import DefaultMap from '../map/default-map'
 import StopViewer from '../viewers/stop-viewer'
 
@@ -10,7 +11,7 @@ import MobileContainer from './container'
 import MobileNavigationBar from './navigation-bar'
 
 interface Props {
-  setViewedStop: (payload: { stopId: string } | null) => void
+  setViewedStop: SetViewedStopHandler
 }
 
 const MobileStopViewer = ({ setViewedStop }: Props) => {

@@ -240,9 +240,6 @@ components:
     multiModeSummary: "{accessMode} + {transitMode}"
   DeleteUser:
     deleteMyAccount: 내 계정 삭제
-  EnhancedStopMarker:
-    stopID: "정류장 ID:"
-    stopViewer: 정류장 뷰어
   ErrorMessage:
     header: 트립을 계획할 수 없음
     warning: 경고
