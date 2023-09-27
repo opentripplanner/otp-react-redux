@@ -35,6 +35,15 @@ export interface AppMenuItemConfig {
   subMenuDivider?: boolean
 }
 
+export type AutoPlanCondition =
+  | 'ONE_LOCATION_CHANGED'
+  | 'BOTH_LOCATIONS_CHANGED'
+
+export interface AutoPlanConfig {
+  default: AutoPlanCondition
+  mobile: AutoPlanCondition
+}
+
 /** Generic API key config */
 interface ApiKeyConfig {
   key: string
@@ -66,6 +75,8 @@ export interface OtpMiddlewareConfig {
 
 export interface LocalPersistenceConfig {
   strategy: 'localStorage'
+  // eslint-disable-next-line camelcase
+  terms_of_storage?: boolean
 }
 
 export interface MiddlewarePersistenceConfig {
@@ -235,6 +246,8 @@ export interface CO2Config extends CO2ConfigType {
 /** The main application configuration object */
 export interface AppConfig {
   api: ApiConfig
+  // Optional on declaration, populated with defaults in reducer if not configured.
+  autoPlan: AutoPlanConfig
   /** Whether the header brand should be clickable, and if so, reset the UI. */
   brandClickable?: boolean
   branding?: string
