@@ -1,6 +1,16 @@
 // This file is intended to contain configuration types,
 // each suffixed with "Config", as in "MapConfig", "MenuItemConfig", etc.
 
+import { VehicleRentalMapOverlaySymbol } from '@opentripplanner/types'
+
+/** OTP URL settings */
+export interface ApiConfig {
+  host: string
+  path: string
+  port: number
+  v2?: boolean
+}
+
 /** Application side menu */
 export interface AppMenuItemConfig {
   children?: AppMenuItemConfig[]
@@ -21,8 +31,8 @@ interface ApiKeyConfig {
   key: string
 }
 
-/** Bugsnag */
 export type BugsnagConfig = ApiKeyConfig
+export type MapillaryConfig = ApiKeyConfig
 
 /** TODO: Language settings */
 export type LanguageConfig = Record<string, any>
@@ -93,11 +103,84 @@ export interface PhoneFormatConfig {
   countryCode: string
 }
 
-/** Mapillary settings */
-export type MapillaryConfig = ApiKeyConfig
+/** Map base layers (e.g. streets, satellite) */
+export interface BaseLayerConfig {
+  type: string
+  url: string
+}
+
+/** Map views (e.g. default, stylized) */
+export interface MapViewConfig {
+  text: string
+  type: string // TODO use a list of values.
+}
+
+export interface OverlayConfigBase {
+  modes?: string[] // TODO use allowed OTP mode list.
+  name?: string
+  visible?: boolean
+}
+
+export interface ParkAndRideOverlayConfig extends OverlayConfigBase {
+  maxTransitDistance?: number
+  type: 'park-and-ride'
+}
+
+export interface Otp1StopsOverlayConfig extends OverlayConfigBase {
+  type: 'stops'
+}
+
+export interface Otp2TileLayer {
+  color?: string
+  initiallyVisible?: boolean
+  network?: string
+  type: 'stops' | 'stations' | 'rentalVehicles' | 'rentalStations'
+}
+
+export interface Otp2TileLayerConfig {
+  layers: Otp2TileLayer[]
+  type: 'otp2'
+}
+
+export interface MapTileLayerConfig extends OverlayConfigBase {
+  tileUrl: string
+  type: 'tile'
+}
+
+export interface RentalOverlayConfig extends OverlayConfigBase {
+  companies?: string[]
+  mapSymbols: VehicleRentalMapOverlaySymbol[]
+  type:
+    | 'bike-rental'
+    | 'micromobility-rental'
+    | 'otp2-micromobility-rental'
+    | 'otp2-bike-rental'
+}
+
+export type SupportedOverlays =
+  | ParkAndRideOverlayConfig
+  | RentalOverlayConfig
+  | Otp2TileLayerConfig
+  | Otp1StopsOverlayConfig
+  | MapTileLayerConfig
+
+export interface MapConfig {
+  baseLayers: BaseLayerConfig[]
+  initLat: number
+  initLon: number
+  initZoom?: number
+  overlays: SupportedOverlays[]
+  views: MapViewConfig[]
+}
+
+/** Settings for reporting issues */
+export interface ReportIssueConfig {
+  mailto: string
+}
 
 /** The main application configuration object */
 export interface AppConfig {
+  api: ApiConfig
   /** Whether the header brand should be clickable, and if so, reset the UI. */
   brandClickable?: boolean
   branding?: string
@@ -108,6 +191,7 @@ export interface AppConfig {
   isTouchScreenOnDesktop?: boolean
   language?: LanguageConfig
   localization?: LocalizationConfig
+  map: MapConfig
   mapillary?: MapillaryConfig
   /** Interval in seconds past which a trip is no longer considered "on-time". */
   onTimeThresholdSeconds?: number
@@ -115,8 +199,10 @@ export interface AppConfig {
   // Optional on declaration, populated with defaults in reducer if not configured.
   phoneFormatOptions: PhoneFormatConfig
   popups?: PopupConfig
+  reportIssue?: ReportIssueConfig
   /** Approx delay in seconds to reset the UI to an initial URL if there is no user activity */
   sessionTimeoutSeconds?: number
+  /** App title shown in the browser title bar. */
   title?: string
 
   // TODO: add other config items.
