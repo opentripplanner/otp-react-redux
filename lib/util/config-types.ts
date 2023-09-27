@@ -2,11 +2,15 @@
 // each suffixed with "Config", as in "MapConfig", "MenuItemConfig", etc.
 
 import {
+  CO2ConfigType,
+  FareTableLayout
+} from '@opentripplanner/trip-details/lib/types'
+import {
   Company,
   FareProductSelector,
+  MassUnitOption,
   VehicleRentalMapOverlaySymbol
 } from '@opentripplanner/types'
-import { FareTableLayout } from '@opentripplanner/trip-details/lib/types'
 
 /** OTP URL settings */
 export interface ApiConfig {
@@ -192,6 +196,7 @@ export interface ItineraryCostConfig {
 }
 
 export type ItinerarySortOption =
+  | 'BEST'
   | 'DURATION'
   | 'ARRIVALTIME'
   | 'WALKTIME'
@@ -201,11 +206,9 @@ export type ItinerarySortOption =
 export interface ItineraryConfig {
   costs?: ItineraryCostConfig
   customBatchUiBackground?: boolean
-  defaultFareKey?: string
   defaultFareType?: FareProductSelector
   defaultSort?: ItinerarySortOption
   disableMetroSeperatorDot?: true
-  displayCalories?: boolean
   fareDetailsLayout?: FareTableLayout[]
   fareKeyNameMap?: Record<string, string>
   fillModeIcons?: boolean
@@ -222,13 +225,21 @@ export interface ItineraryConfig {
   sortModes?: ItinerarySortOption[]
 }
 
+export interface CO2Config extends CO2ConfigType {
+  cutoffPercentage?: number
+  // FIXME: merge with the CO2ConfigType's unit field.
+  massUnit?: MassUnitOption
+  showIfHigher?: boolean
+}
+
 /** The main application configuration object */
 export interface AppConfig {
   api: ApiConfig
   /** Whether the header brand should be clickable, and if so, reset the UI. */
   brandClickable?: boolean
   branding?: string
-  bugsnag: BugsnagConfig
+  bugsnag?: BugsnagConfig
+  co2?: CO2Config
   companies?: Company[]
   extraMenuItems?: AppMenuItemConfig[]
   homeTimezone: string
