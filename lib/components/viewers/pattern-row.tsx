@@ -20,6 +20,7 @@ type Props = {
   homeTimezone?: any
   intl: IntlShape
   pattern: Pattern
+  roundedTop?: boolean
   route: Route & { operator?: TransitOperator & { colorMode?: string } }
   showOperatorLogo?: boolean
   stopTimes: Time[]
@@ -44,8 +45,14 @@ class PatternRow extends Component<Props, State> {
   render() {
     const { RouteRenderer: CustomRouteRenderer } = this.context
     const RouteRenderer = CustomRouteRenderer || DefaultRouteRenderer
-    const { homeTimezone, pattern, route, showOperatorLogo, stopTimes } =
-      this.props
+    const {
+      homeTimezone,
+      pattern,
+      roundedTop = true,
+      route,
+      showOperatorLogo,
+      stopTimes
+    } = this.props
 
     // sort stop times by next departure
     let sortedStopTimes: Time[] = []
@@ -65,7 +72,7 @@ class PatternRow extends Component<Props, State> {
     const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
     return (
-      <PatternRowItem>
+      <PatternRowItem roundedTop={roundedTop}>
         {/* header row */}
         <div
           className="header stop-view"

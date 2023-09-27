@@ -349,6 +349,9 @@ components:
     myAccount: My account
     signIn: Log in
     signOut: Log out
+  NearbyView:
+    companyBicycle: "{company} Bike"
+    companyScooter: "{company} Scooter"
   NewAccountWizard:
     createNewAccount: Create a new account
     finish: Account setup complete!

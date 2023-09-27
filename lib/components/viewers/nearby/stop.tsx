@@ -12,7 +12,13 @@ import * as uiActions from '../../../actions/ui'
 import * as userActions from '../../../actions/user'
 import { connect } from 'react-redux'
 
-import { Card, CardHeader, PatternRowContainer, StyledAlert } from './styled'
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  PatternRowContainer,
+  StyledAlert
+} from './styled'
 import { Icon, IconWithText } from '../../util/styledIcon'
 import { stopIsFlex } from '../../../util/viewer'
 
@@ -21,6 +27,8 @@ import { useMap } from 'react-map-gl'
 import PatternRow from '../pattern-row'
 import Strong from '../../util/strong-text'
 
+const fullTimestamp = (stoptime) =>
+  stoptime.serviceDay + stoptime.realtimeDeparture
 const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
   const timezoneCode = format(Date.now(), 'z', {
     // To avoid ambiguities for now, use the English-US timezone abbreviations ("EST", "PDT", etc.)
@@ -70,19 +78,41 @@ const Stop = ({
   const [isShowingSchedule, setIsShowingSchedule] = useState(false)
 
   // TODO: Let's have some typescript here first that'll help
-  const patternRows = stopData.stoptimesForPatterns?.map(
-    (st: any, index: number) => {
+  // TODO: We need to bring back the day break-up we had with the old stop viewer
+  const patternRows = stopData.stoptimesForPatterns
+    ?.reduce((acc, cur) => {
+      const dupe = acc.findIndex(
+        (p) => p.pattern.headsign === cur.pattern.headsign
+      )
+      if (dupe === -1) {
+        acc.push(cur)
+      } else {
+        // TODO: is there a method that already does this?
+        const filteredNewStopTimes = cur.stoptimes.filter(
+          (stoptime) =>
+            !acc[dupe].stoptimes.find(
+              (s) => fullTimestamp(stoptime) === fullTimestamp(s)
+            )
+        )
+        acc[dupe].stoptimes = [...acc[dupe].stoptimes, ...filteredNewStopTimes]
+      }
+      return acc
+    }, [])
+    .map((st: any, index: number) => {
+      const sortedStopTimes = st.stoptimes.sort(
+        (a, b) => fullTimestamp(a) - fullTimestamp(b)
+      )
       return (
         <PatternRow
           homeTimezone={homeTimezone}
           key={index}
           pattern={st.pattern}
+          roundedTop={false}
           route={st.pattern.route}
-          stopTimes={st.stoptimes}
+          stopTimes={sortedStopTimes}
         />
       )
-    }
-  )
+    })
   const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
   const isFlex = stopIsFlex(stopData)
   const timezoneWarning = !inHomeTimezone && getTimezoneWarning(homeTimezone)
@@ -101,9 +131,9 @@ const Stop = ({
   }
 
   return (
-    <Card>
+    <Card onMouseEnter={zoomToStop}>
       <CardHeader>{stopData.name}</CardHeader>
-      <p>
+      <CardBody>
         <div>
           <FormattedMessage
             id="components.StopViewer.displayStopId"
@@ -141,7 +171,7 @@ const Stop = ({
             onToClick={() => setLocationFromStop('to')}
           />
         </span>
-      </p>
+      </CardBody>
       <div>
         <div>{timezoneWarning}</div>
         <PatternRowContainer>{patternRows}</PatternRowContainer>
