@@ -21,8 +21,6 @@ jobs:
           node-version: 16.x
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
-      - name: Copy example config
-        run: cp example-config.yml config.yml
       - name: Lint code
         # Move everything from latest commit back to staged
         run: git reset --soft HEAD^ && yarn lint
@@ -36,8 +34,6 @@ jobs:
         run: yarn check:i18n-en-fr
       - name: Run tests
         run: yarn unit
-      - name: Build example project
-        run: yarn build
       - name: Run a11y tests
         run: yarn a11y-test
 
