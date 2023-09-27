@@ -9,6 +9,9 @@ import {
   Company,
   FareProductSelector,
   MassUnitOption,
+  ModeButtonDefinition,
+  ModeSetting,
+  ModeSettingValues,
   VehicleRentalMapOverlaySymbol
 } from '@opentripplanner/types'
 import { GeocoderConfig as GeocoderConfigOtpUI } from '@opentripplanner/geocoder'
@@ -245,15 +248,27 @@ export interface CO2Config extends CO2ConfigType {
 }
 
 export interface GeocoderConfig extends GeocoderConfigOtpUI {
-  // layerColorMap is for LocationField.
-  layerColorMap?: {
-    [key: string]: string
-    // Explicitly include those used as headers
-    stations?: string
-    stops?: string
-  }
+  layerColorMap?: Record<string, string>
   maxNearbyStops?: number
   type: string
+}
+
+export interface TransitModeConfig {
+  color?: string
+  label?: string
+  mode: string
+  showWheelchairSetting?: boolean
+}
+
+export interface ModesConfig {
+  accessModes: TransitModeConfig[]
+  initialState?: {
+    enabledModeButtons?: string[]
+    modeSettingValues?: ModeSettingValues
+  }
+  modeButtons?: ModeButtonDefinition[]
+  modeSettingDefinitions?: ModeSetting[]
+  transitModes: TransitModeConfig[]
 }
 
 /** The main application configuration object */
@@ -278,6 +293,7 @@ export interface AppConfig {
   localization?: LocalizationConfig
   map: MapConfig
   mapillary?: MapillaryConfig
+  modes: ModesConfig
   /** Interval in seconds past which a trip is no longer considered "on-time". */
   onTimeThresholdSeconds?: number
   persistence?: PersistenceConfig
