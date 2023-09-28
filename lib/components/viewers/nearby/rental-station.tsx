@@ -17,7 +17,6 @@ type Props = {
   zoomToPlace: (map: any, stopData: any) => void
 }
 const RentalStation = ({ place, zoomToPlace }: Props) => {
-  console.log(place)
   const map = useMap().default
   const { bikesAvailable, spacesAvailable } = place
   return (
