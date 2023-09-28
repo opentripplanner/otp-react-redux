@@ -12,6 +12,7 @@ import {
   ModeButtonDefinition,
   ModeSetting,
   ModeSettingValues,
+  TransitOperator,
   VehicleRentalMapOverlaySymbol
 } from '@opentripplanner/types'
 import { GeocoderConfig as GeocoderConfigOtpUI } from '@opentripplanner/geocoder'
@@ -271,6 +272,16 @@ export interface ModesConfig {
   transitModes: TransitModeConfig[]
 }
 
+export interface ModeColorConfig {
+  color: string
+  textColor: string
+}
+
+export interface TransitOperatorConfig extends TransitOperator {
+  colorMode: 'gtfs' | 'gtfs-softened' | 'disabled'
+  modeColors: Record<string, ModeColorConfig>
+}
+
 /** The main application configuration object */
 export interface AppConfig {
   api: ApiConfig
@@ -305,6 +316,7 @@ export interface AppConfig {
   sessionTimeoutSeconds?: number
   /** App title shown in the browser title bar. */
   title?: string
+  transitOperators?: TransitOperatorConfig[]
 
   // TODO: add other config items.
 }
