@@ -1,7 +1,10 @@
 import { Calendar, Clock, InfoCircle, Search } from '@styled-icons/fa-solid'
+import { connect } from 'react-redux'
 import { format } from 'date-fns-tz'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { getUserTimezone } from '@opentripplanner/core-utils/lib/time'
+import { Place } from '@opentripplanner/types'
+import { useMap } from 'react-map-gl'
 import dateFnsUSLocale from 'date-fns/locale/en-US'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useEffect, useState } from 'react'
@@ -10,7 +13,6 @@ import * as apiActions from '../../../actions/api'
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import * as userActions from '../../../actions/user'
-import { connect } from 'react-redux'
 
 import {
   Card,
@@ -20,15 +22,24 @@ import {
   StyledAlert
 } from './styled'
 import { Icon, IconWithText } from '../../util/styledIcon'
+import { Pattern, StopTime } from '../../util/types'
 import { stopIsFlex } from '../../../util/viewer'
-
-import { useMap } from 'react-map-gl'
-
 import PatternRow from '../pattern-row'
 import Strong from '../../util/strong-text'
 
-const fullTimestamp = (stoptime) =>
+type PatternStopTime = {
+  pattern: Pattern
+  stoptimes: StopTime[]
+}
+
+type StopData = Place & {
+  code: string
+  stoptimesForPatterns: PatternStopTime[]
+}
+
+const fullTimestamp = (stoptime: StopTime) =>
   stoptime.serviceDay + stoptime.realtimeDeparture
+
 const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
   const timezoneCode = format(Date.now(), 'z', {
     // To avoid ambiguities for now, use the English-US timezone abbreviations ("EST", "PDT", etc.)
@@ -51,36 +62,28 @@ const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
 }
 
 type Props = {
-  allStopData: any
   findStopTimesForStop: ({ stopId }: { stopId: string }) => void
   homeTimezone: string
-  setHoveredStop: () => void
   setLocation: (args: any) => void
   showOperatorLogo: boolean
-  stopData: any
+  stopData: StopData
   transitOperators: any
   zoomToPlace: (map: any, stopData: any) => void
 }
 
 const Stop = ({
-  allStopData,
-  findStopTimesForStop,
   homeTimezone,
-  setHoveredStop,
   setLocation,
-  showOperatorLogo,
   stopData,
-  transitOperators,
   zoomToPlace
 }: Props): JSX.Element => {
   const intl = useIntl()
   const map = useMap()
-  const [isShowingSchedule, setIsShowingSchedule] = useState(false)
 
   // TODO: Let's have some typescript here first that'll help
   // TODO: We need to bring back the day break-up we had with the old stop viewer
   const patternRows = stopData.stoptimesForPatterns
-    ?.reduce((acc, cur) => {
+    ?.reduce<PatternStopTime[]>((acc, cur) => {
       const dupe = acc.findIndex(
         (p) => p.pattern.headsign === cur.pattern.headsign
       )
@@ -89,9 +92,9 @@ const Stop = ({
       } else {
         // TODO: is there a method that already does this?
         const filteredNewStopTimes = cur.stoptimes.filter(
-          (stoptime) =>
+          (stoptime: StopTime) =>
             !acc[dupe].stoptimes.find(
-              (s) => fullTimestamp(stoptime) === fullTimestamp(s)
+              (s: StopTime) => fullTimestamp(stoptime) === fullTimestamp(s)
             )
         )
         acc[dupe].stoptimes = [...acc[dupe].stoptimes, ...filteredNewStopTimes]
@@ -100,7 +103,7 @@ const Stop = ({
     }, [])
     .map((st: any, index: number) => {
       const sortedStopTimes = st.stoptimes.sort(
-        (a, b) => fullTimestamp(a) - fullTimestamp(b)
+        (a: StopTime, b: StopTime) => fullTimestamp(a) - fullTimestamp(b)
       )
       return (
         <PatternRow
@@ -114,7 +117,6 @@ const Stop = ({
       )
     })
   const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
-  const isFlex = stopIsFlex(stopData)
   const timezoneWarning = !inHomeTimezone && getTimezoneWarning(homeTimezone)
 
   const setLocationFromStop = (locationType: 'from' | 'to') => {
@@ -148,21 +150,6 @@ const Stop = ({
           >
             <Icon Icon={Search} style={{ marginLeft: '0.2em' }} />
           </button>
-          {!isFlex && (
-            <button
-              className="link-button pull-right"
-              // onClick={this._toggleScheduleView}
-              style={{ fontSize: 'small' }}
-            >
-              <IconWithText Icon={isShowingSchedule ? Clock : Calendar}>
-                {isShowingSchedule ? (
-                  <FormattedMessage id="components.StopViewer.viewNextArrivals" />
-                ) : (
-                  <FormattedMessage id="components.StopViewer.viewSchedule" />
-                )}
-              </IconWithText>
-            </button>
-          )}
         </div>
         <span role="group">
           <FromToLocationPicker

@@ -27,14 +27,7 @@ const getNearbyItem = (place: any, companies: Company[]) => {
     case 'RentalVehicle':
       return <Vehicle companies={companies} vehicle={place} />
     case 'Stop':
-      return (
-        <Stop
-          setHoveredStop={() => alert(1)}
-          showOperatorLogo
-          stopData={place}
-          transitOperators={{}}
-        />
-      )
+      return <Stop showOperatorLogo stopData={place} transitOperators={{}} />
     case 'VehicleParking':
       return <VehicleParking place={place} />
     case 'BikeRentalStation':
