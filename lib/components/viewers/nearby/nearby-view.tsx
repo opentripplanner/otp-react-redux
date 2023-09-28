@@ -1,8 +1,6 @@
-import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
 import { MapRef, useMap } from 'react-map-gl'
 import React, { useEffect, useRef } from 'react'
-import styled from 'styled-components'
 
 import * as apiActions from '../../../actions/api'
 

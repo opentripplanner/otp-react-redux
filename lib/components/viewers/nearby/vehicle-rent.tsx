@@ -1,7 +1,7 @@
-import { Bicycle } from '@styled-icons/fa-solid'
+import { Bicycle } from '@styled-icons/fa-solid/Bicycle'
 import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
-import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
+import { IntlShape, useIntl } from 'react-intl'
 import { useMap } from 'react-map-gl'
 // @ts-expect-error icons doesn't have typescript?
 import { Micromobility } from '@opentripplanner/icons'

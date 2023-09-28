@@ -1,18 +1,17 @@
-import { Calendar, Clock, InfoCircle, Search } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
 import { format } from 'date-fns-tz'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { getUserTimezone } from '@opentripplanner/core-utils/lib/time'
+import { InfoCircle } from '@styled-icons/fa-solid/InfoCircle'
 import { Place } from '@opentripplanner/types'
+import { Search } from '@styled-icons/fa-solid/Search'
 import { useMap } from 'react-map-gl'
+import coreUtils from '@opentripplanner/core-utils'
 import dateFnsUSLocale from 'date-fns/locale/en-US'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-import * as apiActions from '../../../actions/api'
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
-import * as userActions from '../../../actions/user'
 
 import {
   Card,
@@ -23,9 +22,10 @@ import {
 } from './styled'
 import { Icon, IconWithText } from '../../util/styledIcon'
 import { Pattern, StopTime } from '../../util/types'
-import { stopIsFlex } from '../../../util/viewer'
 import PatternRow from '../pattern-row'
 import Strong from '../../util/strong-text'
+
+const { getUserTimezone } = coreUtils.time
 
 type PatternStopTime = {
   pattern: Pattern

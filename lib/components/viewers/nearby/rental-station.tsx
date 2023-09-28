@@ -1,6 +1,7 @@
-import { Bicycle, Parking } from '@styled-icons/fa-solid'
-import { Company, Place } from '@opentripplanner/types'
+import { Bicycle } from '@styled-icons/fa-solid/Bicycle'
+import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
+import { Parking } from '@styled-icons/fa-solid/Parking'
 import React from 'react'
 
 import * as mapActions from '../../../actions/map'
