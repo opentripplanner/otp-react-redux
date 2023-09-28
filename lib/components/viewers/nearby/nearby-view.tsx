@@ -1,7 +1,7 @@
 import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
 import { MapRef, useMap } from 'react-map-gl'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 import * as apiActions from '../../../actions/api'
@@ -22,9 +22,10 @@ type Props = {
 }
 
 const getNearbyItem = (place: any) => {
+  console.log(place.id)
   switch (place.__typename) {
     case 'RentalVehicle':
-      return <Vehicle vehicle={place} />
+      return <Vehicle key={place.id} vehicle={place} />
     case 'Stop':
       return <Stop showOperatorLogo stopData={place} transitOperators={{}} />
     case 'VehicleParking':
@@ -39,7 +40,9 @@ const getNearbyItem = (place: any) => {
 function NearbyView(props: Props): JSX.Element {
   const { fetchNearby, nearby, nearbyViewCoords } = props
   const map = useMap().current
+  const firstItemRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
+    firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
     if (nearbyViewCoords) {
       fetchNearby(nearbyViewCoords, map)
       const interval = setInterval(() => {
@@ -55,8 +58,11 @@ function NearbyView(props: Props): JSX.Element {
 
   return (
     <Scrollable>
+      <div ref={firstItemRef} />
       <NearbySidebarContainer className="base-color-bg">
-        {nearby?.map((n: any) => getNearbyItem(n.node.place))}
+        {nearby?.map((n: any) => (
+          <div key={n.node.place.id}>{getNearbyItem(n.node.place)}</div>
+        ))}
       </NearbySidebarContainer>
     </Scrollable>
   )
@@ -67,7 +73,7 @@ const mapStateToProps = (state: any) => {
   const { nearbyViewCoords } = ui
   const { nearby } = transitIndex
   return {
-    companies: config.companies,
+    homeTimezone: config.homeTimezone,
     nearby,
     nearbyViewCoords
   }
