@@ -16,15 +16,20 @@ type Props = {
   place: any
   zoomToPlace: (map: any, stopData: any) => void
 }
-const RentalStation = ({ place, zoomToPlace }: Props) => {
+const RentalStation = ({ companies, place, zoomToPlace }: Props) => {
   const map = useMap().default
+  const { networks } = place
+  const network = networks.length === 1 ? networks[0] : null
+  const company = companies.find((c) => c.id === network)?.label
   const { bikesAvailable, spacesAvailable } = place
   return (
     <Card onMouseEnter={() => zoomToPlace(map, place)}>
       <CardHeader>
         {place.name}
         <CardSubheader>
-          <FormattedMessage id="components.NearbyView.bikeRentalStation" />
+          {company || (
+            <FormattedMessage id="components.NearbyView.bikeRentalStation" />
+          )}
         </CardSubheader>
       </CardHeader>
       <CardBody>
@@ -54,7 +59,10 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state: any) => {
-  return {}
+  const { config } = state.otp
+  return {
+    companies: config.companies
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RentalStation)

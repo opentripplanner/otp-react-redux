@@ -15,17 +15,16 @@ import VehicleParking from './vehicle-parking'
 type LatLonObj = { lat: number; lon: number }
 
 type Props = {
-  companies: Company[]
   fetchNearby: (latLon: LatLonObj, map?: MapRef) => void
   hideBackButton?: boolean
   nearby: any
   nearbyViewCoords?: LatLonObj
 }
 
-const getNearbyItem = (place: any, companies: Company[]) => {
+const getNearbyItem = (place: any) => {
   switch (place.__typename) {
     case 'RentalVehicle':
-      return <Vehicle companies={companies} vehicle={place} />
+      return <Vehicle vehicle={place} />
     case 'Stop':
       return <Stop showOperatorLogo stopData={place} transitOperators={{}} />
     case 'VehicleParking':
@@ -38,7 +37,7 @@ const getNearbyItem = (place: any, companies: Company[]) => {
 }
 
 function NearbyView(props: Props): JSX.Element {
-  const { companies, fetchNearby, nearby, nearbyViewCoords } = props
+  const { fetchNearby, nearby, nearbyViewCoords } = props
   const map = useMap().current
   useEffect(() => {
     if (nearbyViewCoords) {
@@ -57,7 +56,7 @@ function NearbyView(props: Props): JSX.Element {
   return (
     <Scrollable>
       <NearbySidebarContainer className="base-color-bg">
-        {nearby?.map((n: any) => getNearbyItem(n.node.place, companies))}
+        {nearby?.map((n: any) => getNearbyItem(n.node.place))}
       </NearbySidebarContainer>
     </Scrollable>
   )

@@ -96,7 +96,10 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state: any) => {
-  return {}
+  const { config } = state.otp
+  return {
+    companies: config.companies
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Vehicle)
