@@ -16,14 +16,14 @@ import type { WrappedComponentProps } from 'react-intl'
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
-import {
-  AppConfig,
-  LanguageConfig,
-  AppMenuItemConfig as MenuItem
-} from '../../util/config-types'
+import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
 import { getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
+import {
+  LanguageConfig,
+  AppMenuItemConfig as MenuItem
+} from '../../util/config-types'
 import { MainPanelContent } from '../../actions/ui-constants'
 import { setMainPanelContent } from '../../actions/ui'
 import startOver from '../util/start-over'
@@ -36,7 +36,6 @@ type AppMenuProps = {
   callTakerEnabled?: boolean
   extraMenuItems?: MenuItem[]
   fieldTripEnabled?: boolean
-  // Typescript TODO language and language options based on configLanguage.
   language?: LanguageConfig
   languageOptions: Record<string, any> | null
   location: { search: string }
@@ -279,11 +278,8 @@ class AppMenu extends Component<
 
 // connect to the redux store
 
-// FIXME: type otp config
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const mapStateToProps = (state: any) => {
-  const config: AppConfig = state.otp.config
-  const { extraMenuItems, language, popups } = config
+const mapStateToProps = (state: AppReduxState) => {
+  const { extraMenuItems, language, popups } = state.otp.config
   return {
     activeLocale: state.otp.ui.locale,
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),

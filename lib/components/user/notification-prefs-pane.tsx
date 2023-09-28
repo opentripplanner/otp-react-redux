@@ -5,8 +5,9 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap'
 import React from 'react'
 import styled from 'styled-components'
 
-import { AppConfig, PhoneFormatConfig } from '../../util/config-types'
+import { AppReduxState } from '../../util/state-types'
 import { GRAY_ON_WHITE } from '../util/colors'
+import { PhoneFormatConfig } from '../../util/config-types'
 
 import { FieldSet } from './styled'
 import { PhoneVerificationSubmitHandler } from './phone-verification-form'
@@ -120,9 +121,8 @@ const NotificationPrefsPane = ({
   )
 }
 
-const mapStateToProps = (state: any) => {
-  const config: AppConfig = state.otp.config
-  const { persistence, phoneFormatOptions } = config
+const mapStateToProps = (state: AppReduxState) => {
+  const { persistence, phoneFormatOptions } = state.otp.config
   const supportsPushNotifications =
     persistence && 'otp_middleware' in persistence
       ? persistence.otp_middleware?.supportsPushNotifications
