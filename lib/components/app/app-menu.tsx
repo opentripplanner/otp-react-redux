@@ -16,14 +16,11 @@ import type { WrappedComponentProps } from 'react-intl'
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
+import { AppMenuItemConfig, LanguageConfig } from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
 import { getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
-import {
-  LanguageConfig,
-  AppMenuItemConfig as MenuItem
-} from '../../util/config-types'
 import { MainPanelContent } from '../../actions/ui-constants'
 import { setMainPanelContent } from '../../actions/ui'
 import startOver from '../util/start-over'
@@ -31,10 +28,24 @@ import startOver from '../util/start-over'
 import AppMenuItem from './app-menu-item'
 import PopupTriggerText from './popup-trigger-text'
 
+type MenuItem = {
+  children?: MenuItem[]
+  href?: string
+  iconType?: string | JSX.Element
+  iconUrl?: string
+  id: string
+  isSelected?: boolean
+  label?: string | JSX.Element
+  lang?: string
+  onClick?: () => void
+  skipLocales?: boolean
+  subMenuDivider?: boolean
+}
+
 type AppMenuProps = {
   activeLocale: string
   callTakerEnabled?: boolean
-  extraMenuItems?: MenuItem[]
+  extraMenuItems?: AppMenuItemConfig[]
   fieldTripEnabled?: boolean
   language?: LanguageConfig
   languageOptions: Record<string, any> | null
@@ -312,7 +323,7 @@ export const Icon = ({
   iconType,
   iconUrl
 }: {
-  iconType: string
+  iconType?: string
   iconUrl?: string
 }): JSX.Element => {
   // FIXME: add types to context

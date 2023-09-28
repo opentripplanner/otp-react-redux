@@ -17,6 +17,18 @@ import {
 } from '@opentripplanner/types'
 import { GeocoderConfig as GeocoderConfigOtpUI } from '@opentripplanner/geocoder'
 
+/** Accessibility threshold settings */
+export interface AccessibilityScoreThresholdConfig {
+  color: string
+  icon: string
+  text?: string
+}
+
+/** All accessibility score settings */
+export interface AccessibilityScoreConfig {
+  gradationMap: Record<string, AccessibilityScoreThresholdConfig>
+}
+
 /** OTP URL settings */
 export interface ApiConfig {
   host: string
@@ -29,14 +41,10 @@ export interface ApiConfig {
 export interface AppMenuItemConfig {
   children?: AppMenuItemConfig[]
   href?: string
-  iconType: string | JSX.Element
+  iconType?: string
   iconUrl?: string
   id: string
-  isSelected?: boolean
-  label: string | JSX.Element
-  lang?: string
-  onClick?: () => void
-  skipLocales?: boolean
+  label?: string
   subMenuDivider?: boolean
 }
 
@@ -71,23 +79,22 @@ export interface Auth0Config {
   domain: string
 }
 
-/** OTP Middleware (Personas) settings */
-export interface OtpMiddlewareConfig {
-  apiBaseUrl: string
-  apiKey?: string
-  supportsPushNotifications?: boolean
-}
-
+/** Local persistence setting */
 export interface LocalPersistenceConfig {
   strategy: 'localStorage'
   // eslint-disable-next-line camelcase
   terms_of_storage?: boolean
 }
 
+/** OTP Middleware (Personas) settings */
 export interface MiddlewarePersistenceConfig {
   auth0: Auth0Config
   // eslint-disable-next-line camelcase
-  otp_middleware: OtpMiddlewareConfig
+  otp_middleware: {
+    apiBaseUrl: string
+    apiKey?: string
+    supportsPushNotifications?: boolean
+  }
   strategy: 'otp_middleware'
 }
 
@@ -249,8 +256,9 @@ export interface CO2Config extends CO2ConfigType {
 }
 
 export interface GeocoderConfig extends GeocoderConfigOtpUI {
-  layerColorMap?: Record<string, string>
   maxNearbyStops?: number
+  resultColors?: Record<string, string>
+  resultsCount?: number
   type: string
 }
 
@@ -282,14 +290,33 @@ export interface TransitOperatorConfig extends TransitOperator {
   modeColors?: Record<string, ModeColorConfig>
 }
 
-export interface AccessibilityScoreThresholdConfig {
-  color: string
-  icon: string
-  text?: string
+/** Route Viewer config */
+export interface RouteViewerConfig {
+  /** Whether to hide the route linear shape inside a flex zone of that route. */
+  hideRouteShapesWithinFlexZones?: boolean
+  /** Disable vehicle highlight if necessary (e.g. custom or inverted icons) */
+  vehicleIconHighlight?: boolean
+  /** Customize vehicle icon padding (the default iconPadding is 2px in otp-ui) */
+  vehicleIconPadding?: number
+  /** Interval for refreshing vehicle positions */
+  vehiclePositionRefreshSeconds?: number
 }
 
-export interface AccessibilityScoreConfig {
-  gradationMap: Record<string, AccessibilityScoreThresholdConfig>
+/** Stop Viewer Config */
+export interface StopViewerConfig {
+  /** Radius (in meters) for searching nearby stops, rental vehicles, park and rides etc. */
+  nearbyRadius?: number
+  /** The max. departures to show for each trip pattern in the Next Arrivals view */
+  numberOfDepartures?: number
+  /** Whether to display block IDs with each departure in the schedule view. */
+  showBlockIds?: boolean
+  /**
+   * Time window, in seconds, in which to search for next arrivals,
+   * so that, for example, if it is Friday and a route does
+   * not begin service again until Monday, we are showing its next
+   * departure and it is not entirely excluded from display.
+   */
+  timeRange?: number
 }
 
 /** The main application configuration object */
@@ -297,7 +324,7 @@ export interface AppConfig {
   accessibilityScore?: AccessibilityScoreConfig
   api: ApiConfig
   // Optional on declaration, populated with defaults in reducer if not configured.
-  autoPlan: AutoPlanConfig
+  autoPlan?: boolean | AutoPlanConfig
   /** Whether the header brand should be clickable, and if so, reset the UI. */
   brandClickable?: boolean
   branding?: string
@@ -323,8 +350,11 @@ export interface AppConfig {
   phoneFormatOptions: PhoneFormatConfig
   popups?: PopupConfig
   reportIssue?: ReportIssueConfig
+  routeModeOverrides?: Record<string, string>
+  routeViewer?: RouteViewerConfig
   /** Approx delay in seconds to reset the UI to an initial URL if there is no user activity */
   sessionTimeoutSeconds?: number
+  stopViewer?: StopViewerConfig
   /** App title shown in the browser title bar. */
   title?: string
   transitOperators?: TransitOperatorConfig[]
