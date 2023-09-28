@@ -50,6 +50,12 @@ function NearbyView(props: Props): JSX.Element {
   useEffect(() => {
     if (nearbyViewCoords) {
       fetchNearby(nearbyViewCoords, map)
+      const interval = setInterval(() => {
+        fetchNearby(nearbyViewCoords, map)
+      }, 2000)
+      return function cleanup() {
+        clearInterval(interval)
+      }
     }
   }, [nearbyViewCoords])
 
