@@ -278,12 +278,23 @@ export interface ModeColorConfig {
 }
 
 export interface TransitOperatorConfig extends TransitOperator {
-  colorMode: 'gtfs' | 'gtfs-softened' | 'disabled'
-  modeColors: Record<string, ModeColorConfig>
+  colorMode?: 'gtfs' | 'gtfs-softened' | 'disabled'
+  modeColors?: Record<string, ModeColorConfig>
+}
+
+export interface AccessibilityScoreThresholdConfig {
+  color: string
+  icon: string
+  text?: string
+}
+
+export interface AccessibilityScoreConfig {
+  gradationMap: Record<string, AccessibilityScoreThresholdConfig>
 }
 
 /** The main application configuration object */
 export interface AppConfig {
+  accessibilityScore?: AccessibilityScoreConfig
   api: ApiConfig
   // Optional on declaration, populated with defaults in reducer if not configured.
   autoPlan: AutoPlanConfig
