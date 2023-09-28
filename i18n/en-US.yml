@@ -350,8 +350,11 @@ components:
     signIn: Log in
     signOut: Log out
   NearbyView:
+    bikeRentalStation: Bike Rental Station
+    bikesAvailable: "{bikesAvailable} bikes available"
     companyBicycle: "{company} Bike"
     companyScooter: "{company} Scooter"
+    spacesAvailable: "{spacesAvailable} empty spaces available"
   NewAccountWizard:
     createNewAccount: Create a new account
     finish: Account setup complete!
