@@ -22,12 +22,11 @@ type Props = {
 }
 
 const getNearbyItem = (place: any) => {
-  console.log(place.id)
   switch (place.__typename) {
     case 'RentalVehicle':
       return <Vehicle key={place.id} vehicle={place} />
     case 'Stop':
-      return <Stop showOperatorLogo stopData={place} transitOperators={{}} />
+      return <Stop showOperatorLogo stopData={place} />
     case 'VehicleParking':
       return <VehicleParking place={place} />
     case 'BikeRentalStation':

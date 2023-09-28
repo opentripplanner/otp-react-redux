@@ -62,12 +62,10 @@ const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
 }
 
 type Props = {
-  findStopTimesForStop: ({ stopId }: { stopId: string }) => void
   homeTimezone: string
   setLocation: (args: any) => void
   showOperatorLogo: boolean
   stopData: StopData
-  transitOperators: any
   zoomToPlace: (map: any, stopData: any) => void
 }
 
@@ -80,7 +78,6 @@ const Stop = ({
   const intl = useIntl()
   const map = useMap()
 
-  // TODO: Let's have some typescript here first that'll help
   // TODO: We need to bring back the day break-up we had with the old stop viewer
   const patternRows = stopData.stoptimesForPatterns
     ?.reduce<PatternStopTime[]>((acc, cur) => {
@@ -168,11 +165,6 @@ const Stop = ({
 }
 
 const mapDispatchToProps = {
-  fetchStopInfo: apiActions.fetchStopInfo,
-  findStopTimesForStop: apiActions.findStopTimesForStop,
-  forgetStop: userActions.forgetStop,
-  rememberStop: userActions.rememberStop,
-  setHoveredStop: uiActions.setHoveredStop,
   setLocation: mapActions.setLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
   toggleAutoRefresh: uiActions.toggleAutoRefresh,
@@ -180,7 +172,10 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state: any) => {
-  return {}
+  const { config } = state.otp
+  return {
+    homeTimezone: config.homeTimezone
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stop)
