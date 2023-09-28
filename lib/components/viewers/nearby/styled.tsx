@@ -26,6 +26,12 @@ export const CardHeader = styled.div`
   font-weight: 600;
 `
 
+export const CardSubheader = styled.p`
+  font-size: 16px;
+  font-weight: 400;
+  color: #444;
+`
+
 export const CardBody = styled.div`
   padding: 0rem 1.2rem;
   margin-bottom: 1rem;

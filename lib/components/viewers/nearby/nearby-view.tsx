@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import * as apiActions from '../../../actions/api'
 
 import { NearbySidebarContainer, Scrollable } from './styled'
+import RentalStation from './rental-station'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
 import VehicleParking from './vehicle-parking'
@@ -36,6 +37,8 @@ const getNearbyItem = (place: any, companies: Company[]) => {
       )
     case 'VehicleParking':
       return <VehicleParking place={place} />
+    case 'BikeRentalStation':
+      return <RentalStation place={place} />
     default:
       return `${place.__typename}you are from the future and have a cool new version of OTP2 let me know how it is mlsgrnt@icloud.com`
   }
