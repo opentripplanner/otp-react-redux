@@ -4,15 +4,16 @@ import React, { Component } from 'react'
 import TransitLegSubheader from '@opentripplanner/itinerary-body/lib/otp-react-redux/transit-leg-subheader'
 
 import { setMainPanelContent, setViewedStop } from '../../../actions/ui'
+import { SetViewedStopHandler } from '../../util/types'
 
 interface Props {
   leg: Leg
   setMainPanelContent: (content: number | null) => void
-  setViewedStop: (payload: Stop) => void
+  setViewedStop: SetViewedStopHandler
 }
 
 class ConnectedTransitLegSubheader extends Component<Props> {
-  onClick = (payload: Stop) => {
+  onClick: SetViewedStopHandler = (payload) => {
     const { setMainPanelContent, setViewedStop } = this.props
     setMainPanelContent(null)
     setViewedStop(payload)

@@ -128,6 +128,7 @@ common:
     walk: Đi bộ
   notifications:
     email: e-mail
+    push: thông báo đẩy
     sms: tin nhắn
   places:
     custom: phong tục
@@ -249,9 +250,6 @@ components:
     multiModeSummary: "{accessMode} + {transitMode}"
   DeleteUser:
     deleteMyAccount: Xóa tài khoản của tôi
-  EnhancedStopMarker:
-    stopID: Điểm dừng số
-    stopViewer: Xem điểm dừng
   ErrorMessage:
     header: Không thể lên kế hoạch cho chuyến đi
     warning: Cảnh báo
@@ -333,12 +331,7 @@ components:
     description: Nội dung bạn yêu cầu không có sẵn.
     header: Không tìm thấy nội dung
   NotificationPrefsPane:
-    description: >-
-      Bạn có thể nhận được thông báo về các chuyến đi bạn thường xuyên thực
-      hiện.
-    noneSelect: Đừng thông báo cho tôi
-    notificationChannelPrompt: Bạn muốn nhận thông báo như thế nào?
-    notificationEmailDetail: "Email thông báo sẽ được gửi đến:"
+    notificationChannelPrompt: "Nhận thông báo về các chuyến đi đã lưu bằng:"
   PhoneNumberEditor:
     changeNumber: Thay đổi số điện thoại
     invalidCode: Vui lòng nhập 6 chữ số cho mã xác thực.
@@ -349,7 +342,6 @@ components:
     prompt: "Nhập số điện thoại của bạn để nhận thông báo SMS:"
     requestNewCode: Yêu cầu một mã mới
     sendVerificationText: Gửi văn bản xác minh
-    smsDetail: "Thông báo SMS sẽ được gửi đến:"
     verificationCode: "Mã xác nhận:"
     verificationInstructions: >
       Vui lòng kiểm tra ứng dụng nhắn tin SMS trên điện thoại di động của bạn để
@@ -609,7 +601,7 @@ components:
       trình</strong>
     notificationsDisabled: "Thông báo: <strong>Đã tắt</strong>"
   TripTools:
-    copyLink: Sao chép đường dẫn
+    copyLink: Sao chép URL
     linkCopied: Đã sao chép
     reportEmailSubject: Báo cáo sự cố với OpenTripPlanner
     reportEmailTemplate: |

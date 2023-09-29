@@ -58,6 +58,8 @@ actions:
       nouveau.
     genericError: "Une erreur s'est produite : {err}"
     itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité du trajet choisi.
+    mustBeLoggedInToSavePlace: Veuillez vous connecter pour enregistrer des lieux.
+    placeRemembered: Les informations pour ce lieu ont été enregistrées.
     preferencesSaved: Vos préférences ont été enregistrées.
     smsInvalidCode: Le code saisi est incorrect. Veuillez réessayer.
     smsResendThrottled: >-
@@ -145,6 +147,7 @@ common:
     walk: À pied
   notifications:
     email: e-mail
+    push: notifications push
     sms: SMS
   places:
     custom: divers
@@ -244,6 +247,9 @@ components:
     modeSelectorLabel: Sélectionnez un mode de transport
   BatchSettings:
     destination: destination
+    invalidModeSelection: >-
+      Impossible de planifier un trajet avec les modes sélectionnés. Réessayez
+      en ajoutant les transports publics.
     origin: point de départ
     planTripTooltip: Planifier le trajet
     validationMessage: >-
@@ -276,9 +282,6 @@ components:
     nonTransit: Alternatives
   DeleteUser:
     deleteMyAccount: Supprimer mon compte
-  EnhancedStopMarker:
-    stopID: Arrêt nº
-    stopViewer: Info arrêt
   ErrorMessage:
     header: Impossible de planifier le trajet
     warning: Attention
@@ -372,12 +375,8 @@ components:
     description: Le contenu que vous avez demandé n'est pas disponible.
     header: Contenu introuvable
   NotificationPrefsPane:
-    description: >-
-      Vous pouvez recevoir des notifications sur les trajets que vous effectuez
-      fréquemment.
-    noneSelect: Ne pas me notifier
-    notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
-    notificationEmailDetail: "Les courriers de notification seront envoyés à :"
+    noDeviceForPush: Inscrivez-vous avec l'application mobile pour accéder à ce paramètre.
+    notificationChannelPrompt: "Recevoir des notifications sur vos trajets par :"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
@@ -414,9 +413,9 @@ components:
       header: Echec de la recherche
     WALKING_BETTER_THAN_TRANSIT:
       body: >-
-        Vous pouvez effectuer ce trajet plus rapidement en évitant les
+        Vous pouvez effectuer ce trajet plus rapidement sans prendre les
         transports.
-      header: Transports moins rapides
+      header: Moins rapide en transports
     inputFields:
       FROM: point de départ
       TO: destination
@@ -431,7 +430,6 @@ components:
     prompt: "Entrez votre numéro de téléphone pour les SMS de notification :"
     requestNewCode: Envoyer un nouveau code
     sendVerificationText: Envoyer le SMS de vérification
-    smsDetail: "Les SMS de notification seront envoyés au :"
     verificationCode: "Code de vérification :"
     verificationInstructions: >
       Un SMS vous a été envoyé avec un code de vérification. Veuillez taper ce
@@ -489,6 +487,7 @@ components:
     tripsFound: "{count, plural, one {# trajet trouvé} other {# trajets trouvés}}"
     waiting: Patientez...
   RouteDetails:
+    headsignTo: "{headsign} ({lastStop})"
     moreDetails: Plus d'infos
     operatedBy: Exploité par {agencyName}
     selectADirection: Choisissez une direction...

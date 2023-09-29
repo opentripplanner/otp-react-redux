@@ -52,7 +52,6 @@ export const PatternContainer = styled.div`
       align-items: center;
       display: flex;
       justify-content: space-between;
-      max-width: 300px;
       width: 95%;
 
       span {
