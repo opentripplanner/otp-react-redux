@@ -11,6 +11,7 @@ import type { Location } from '@opentripplanner/types'
 import * as mapActions from '../../actions/map'
 import { Icon } from '../util/styledIcon'
 import { renderCoordinates } from '../../util/i18n'
+import { SetLocationHandler } from '../util/types'
 
 const PopupTitleWrapper = styled.div`
   align-items: flex-start;
@@ -34,7 +35,7 @@ const ZoomButton = styled.button`
 type Props = {
   clearMapPopupLocation: () => void
   mapPopupLocation: Location
-  setLocation: (arg: unknown) => void
+  setLocation: SetLocationHandler
   zoomToPlace: (
     map?: MapRef,
     place?: { lat: number; lon: number },

@@ -5,6 +5,7 @@ import React, { useEffect } from 'react'
 
 import { parkAndRideQuery } from '../../actions/api'
 import { setLocation } from '../../actions/map'
+import { SetLocationHandler } from '../util/types'
 
 type ParkAndRideParams = {
   maxTransitDistance?: number
@@ -14,11 +15,7 @@ type Props = ParkAndRideParams & {
   keyboard?: boolean
   parkAndRideLocations?: { name: string; x: number; y: number }[]
   parkAndRideQuery: (params: ParkAndRideParams) => void
-  setLocation: (location: {
-    location: Location
-    locationType: string
-    reverseGeocode: boolean
-  }) => void
+  setLocation: SetLocationHandler
 }
 
 function ConnectedParkAndRideOverlay(props: Props): JSX.Element {

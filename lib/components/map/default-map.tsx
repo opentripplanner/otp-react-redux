@@ -47,6 +47,12 @@ const MapContainer = styled.div`
   * {
     box-sizing: unset;
   }
+
+  .maplibregl-popup-content,
+  .mapboxgl-popup-content {
+    border-radius: 10px;
+    box-shadow: 0 3px 14px 4px rgb(0 0 0 / 20%);
+  }
 `
 /**
  * Get the configured display names for the specified company ids.
