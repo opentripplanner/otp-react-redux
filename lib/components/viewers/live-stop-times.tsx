@@ -230,8 +230,6 @@ class LiveStopTimes extends Component<Props, State> {
                   }}
                   showOperatorLogo={showOperatorLogo}
                   stopTimes={times}
-                  stopViewerArriving={stopViewerArriving}
-                  stopViewerConfig={stopViewerConfig}
                 />
               </React.Fragment>
             )
