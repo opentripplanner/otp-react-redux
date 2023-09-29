@@ -101,6 +101,8 @@ exports[`components > viewers > stop viewer should render countdown times after 
         >
           <StopViewer
             autoRefreshStopTimes={true}
+            calendarMax="2024-12-31"
+            calendarMin="2023-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -353,6 +355,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   }
                 />
               </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
               <div
                 className="stop-viewer-header"
               >
@@ -3056,6 +3063,8 @@ exports[`components > viewers > stop viewer should render countdown times for st
         >
           <StopViewer
             autoRefreshStopTimes={true}
+            calendarMax="2024-12-31"
+            calendarMin="2023-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -3209,6 +3218,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   }
                 />
               </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
               <div
                 className="stop-viewer-header"
               >
@@ -4866,6 +4880,8 @@ exports[`components > viewers > stop viewer should render times after midnight w
         >
           <StopViewer
             autoRefreshStopTimes={true}
+            calendarMax="2024-12-31"
+            calendarMin="2023-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -5118,6 +5134,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   }
                 />
               </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
               <div
                 className="stop-viewer-header"
               >
@@ -7864,6 +7885,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
         >
           <StopViewer
             autoRefreshStopTimes={true}
+            calendarMax="2024-12-31"
+            calendarMin="2023-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -8374,6 +8397,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   }
                 />
               </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
               <div
                 className="stop-viewer-header"
               >
@@ -14937,6 +14965,8 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
         >
           <StopViewer
             autoRefreshStopTimes={true}
+            calendarMax="2024-12-31"
+            calendarMin="2023-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -15442,6 +15472,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   }
                 />
               </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
               <div
                 className="stop-viewer-header"
               >
@@ -19706,6 +19741,8 @@ exports[`components > viewers > stop viewer should render with initial stop id a
         >
           <StopViewer
             autoRefreshStopTimes={true}
+            calendarMax="2024-12-31"
+            calendarMin="2023-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -19793,6 +19830,11 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                   }
                 />
               </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
               <div
                 className="stop-viewer-header"
               >
