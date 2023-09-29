@@ -15,9 +15,9 @@ const ServiceTimeRangeRetriever = ({
   retrieveServiceTimeRangeIfNeeded
 }: Props): null => {
   // If not already done, retrieve the OTP available date range on mount.
-  useEffect(retrieveServiceTimeRangeIfNeeded, [
-    retrieveServiceTimeRangeIfNeeded
-  ])
+  useEffect(() => {
+    retrieveServiceTimeRangeIfNeeded()
+  }, [retrieveServiceTimeRangeIfNeeded])
 
   // Component renders nothing
   return null
