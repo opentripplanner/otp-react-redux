@@ -66,10 +66,12 @@ class RouteDetails extends Component<Props> {
     setViewedRoute({ patternId: id, routeId: route.id })
   }
 
+  // FIXME: this should be the Stop type but
+  // we can't do that because Stop is a duplicate identifier (imported from styled)
   /**
    * If a stop link is clicked, redirect to stop viewer
    */
-  _stopLinkClicked = (stop) => {
+  _stopLinkClicked = (stop: any) => {
     const { setViewedStop } = this.props
     setViewedStop(stop)
   }
