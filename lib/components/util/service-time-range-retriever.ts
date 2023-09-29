@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { useEffect } from 'react'
 
-import * as apiActionsV2 from '../../actions/apiV2'
+import apiActionsV2 from '../../actions/apiV2'
 
 interface Props {
   retrieveServiceTimeRangeIfNeeded: () => void
