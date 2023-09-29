@@ -2424,7 +2424,7 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.2.0.tgz#71cf5d5d1b756adef15300edbba0995ccd4b35ee"
   integrity sha512-x0QRXMDhypFeazZ6r6vzrdU8vhiV56nZ/WX6zUbxpgp6T9Oclw0gwR2Zdw6DZiiFpSYVNeVNxVzZwsu6NRGjcA==
 
-"@opentripplanner/icons@^2.0.5", "@opentripplanner/icons@^2.0.6":
+"@opentripplanner/icons@^2.0.1", "@opentripplanner/icons@^2.0.5", "@opentripplanner/icons@^2.0.6":
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-2.0.6.tgz#e1339f75a1c9cb52ad5bddf0b024a260e8f63725"
   integrity sha512-bKwwtugFN9RPpKmqXcukXC4TcWHjmOqPWaMEvjtnnV5LdeuoaOBQ8dJeUUnEKd/dPeOJAF9l3oBVtvM3VAc8jg==
