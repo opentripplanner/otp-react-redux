@@ -51,7 +51,7 @@ function NearbyView(props: Props): JSX.Element {
     }
   }, [nearbyViewCoords])
 
-  // TODO: when coordiantes are set, put a marker on the map and zoom there
+  // TODO: when coordinates are set, put a marker on the map and zoom there
 
   return (
     <Scrollable>
