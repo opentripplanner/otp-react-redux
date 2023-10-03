@@ -3,7 +3,7 @@ import {
   SettingsSelectorPanel,
   Styled as TripFormClasses
 } from '@opentripplanner/trip-form'
-import { Input, MenuItemA } from '@opentripplanner/location-field/lib/styled'
+import { Input, MenuItemLi } from '@opentripplanner/location-field/lib/styled'
 import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
 
@@ -222,7 +222,7 @@ export const StyledLocationField = styled(LocationField)`
     padding: 6px 12px;
   }
 
-  ${MenuItemA} {
+  ${MenuItemLi} {
     text-decoration: none;
     &:hover {
       color: inherit;
