@@ -49,7 +49,6 @@ const StyledLocationField = styled(LocationField)<Props>`
     &:focus,
     &:hover {
       color: inherit;
-      text-decoration: none;
     }
   }
 `
