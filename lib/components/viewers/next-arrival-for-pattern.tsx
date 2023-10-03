@@ -21,7 +21,7 @@ type Props = {
   pattern: Pattern
   // Not the true operator type, but the one that's used here
   // It is annoying to shoehorn the operator in here like this, but passing
-  // it in indvidually would cause a situation where a list of routes
+  // it in individually would cause a situation where a list of routes
   // needs to be matched up with a list of operators
   route: Route & { operator?: { colorMode?: string } }
   routeColor: string
