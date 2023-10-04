@@ -357,6 +357,7 @@ components:
     bikesAvailable: "{bikesAvailable} bikes available"
     companyBicycle: "{company} Bike"
     companyScooter: "{company} Scooter"
+    error: An error occurred loading nearby amenities.
     spacesAvailable: "{spacesAvailable} empty spaces available"
   NewAccountWizard:
     createNewAccount: Create a new account

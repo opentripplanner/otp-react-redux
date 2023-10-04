@@ -3,6 +3,7 @@ import { MapRef, useMap } from 'react-map-gl'
 import React, { useEffect, useRef } from 'react'
 
 import * as apiActions from '../../../actions/api'
+import { useIntl } from 'react-intl'
 
 import { NearbySidebarContainer, Scrollable } from './styled'
 import RentalStation from './rental-station'
@@ -34,9 +35,16 @@ const getNearbyItem = (place: any) => {
   }
 }
 
+const getNearbyItemList = (nearby: any) => {
+  return nearby?.map((n: any) => (
+    <div key={n.node.place.id}>{getNearbyItem(n.node.place)}</div>
+  ))
+}
+
 function NearbyView(props: Props): JSX.Element {
   const { fetchNearby, nearby, nearbyViewCoords } = props
   const map = useMap().current
+  const intl = useIntl()
   const firstItemRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -57,9 +65,10 @@ function NearbyView(props: Props): JSX.Element {
     <Scrollable>
       <div ref={firstItemRef} />
       <NearbySidebarContainer className="base-color-bg">
-        {nearby?.map((n: any) => (
-          <div key={n.node.place.id}>{getNearbyItem(n.node.place)}</div>
-        ))}
+        {nearby &&
+          (nearby.error
+            ? intl.formatMessage({ id: 'components.NearbyView.error' })
+            : getNearbyItemList(nearby))}
       </NearbySidebarContainer>
     </Scrollable>
   )
