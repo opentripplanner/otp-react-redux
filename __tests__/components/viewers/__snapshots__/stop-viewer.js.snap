@@ -399,7 +399,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         >
                           <Styled(styled.span)>
                             <span
-                              className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                             >
                               <ArrowLeft>
                                 <StyledIconBase
@@ -525,7 +525,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                           }
                         >
                           <span
-                            className="sc-gHfsNP fqEECF"
+                            className="sc-dkAqVg dwdQnb"
                             style={
                               Object {
                                 "marginLeft": "0.2em",
@@ -601,7 +601,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                         >
                           <Styled(styled.span)>
                             <span
-                              className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                             >
                               <Calendar>
                                 <StyledIconBase
@@ -687,11 +687,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-gsBqHK hwGZTJ"
+                                    className="sc-aKXVD bNLtzV"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-gsBqHK hwGZTJ"
+                                      className="sc-aKXVD bNLtzV"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -703,7 +703,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gsBqHK hwGZTJ"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -716,7 +716,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gsBqHK hwGZTJ"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -764,11 +764,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-kmATbt iZcPLE"
+                                    className="sc-cvJIAo esTqCF"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-kmATbt iZcPLE"
+                                      className="sc-cvJIAo esTqCF"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -780,7 +780,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt iZcPLE"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -793,7 +793,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt iZcPLE"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -837,7 +837,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   tabIndex={0}
                 >
                   <div
-                    className="sc-eisiLS hQlWAk"
+                    className="sc-dkaWRx gpzDui"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -1387,7 +1387,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         title="20"
                                       >
                                         <span
-                                          className="sc-jvfqPk drpPnJ"
+                                          className="sc-edoYdd cUdUnS"
                                           color="333333"
                                           style={
                                             Object {
@@ -1449,7 +1449,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -1563,7 +1563,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -1619,7 +1619,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="wednesday"
@@ -1706,7 +1706,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -1762,7 +1762,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="wednesday"
@@ -1834,7 +1834,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                               margin={0.25}
                             >
                               <span
-                                className="sc-hkwmXC klpVwE"
+                                className="sc-bSFUlv gNUAmm"
                               >
                                 <input
                                   defaultChecked={true}
@@ -1890,7 +1890,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   spin={true}
                                 >
                                   <span
-                                    className="sc-gHfsNP sc-dkAqVg jdSbUo gBWSYK"
+                                    className="sc-dkAqVg sc-jifHHV ctpxjy czUBjn"
                                   >
                                     <Redo>
                                       <StyledIconBase
@@ -2686,7 +2686,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           >
                                             <div
                                               aria-hidden={true}
-                                              className="sc-bSFUlv knrmPL"
+                                              className="sc-jvfqPk gVipSr"
                                             >
                                               P
                                             </div>
@@ -3019,7 +3019,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         >
                           <Styled(styled.span)>
                             <span
-                              className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                             >
                               <ArrowLeft>
                                 <StyledIconBase
@@ -3145,7 +3145,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                           }
                         >
                           <span
-                            className="sc-gHfsNP fqEECF"
+                            className="sc-dkAqVg dwdQnb"
                             style={
                               Object {
                                 "marginLeft": "0.2em",
@@ -3221,7 +3221,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                         >
                           <Styled(styled.span)>
                             <span
-                              className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                             >
                               <Calendar>
                                 <StyledIconBase
@@ -3307,11 +3307,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-gsBqHK hwGZTJ"
+                                    className="sc-aKXVD bNLtzV"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-gsBqHK hwGZTJ"
+                                      className="sc-aKXVD bNLtzV"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -3323,7 +3323,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gsBqHK hwGZTJ"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -3336,7 +3336,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gsBqHK hwGZTJ"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -3384,11 +3384,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-kmATbt iZcPLE"
+                                    className="sc-cvJIAo esTqCF"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-kmATbt iZcPLE"
+                                      className="sc-cvJIAo esTqCF"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -3400,7 +3400,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt iZcPLE"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -3413,7 +3413,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt iZcPLE"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -3457,7 +3457,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   tabIndex={0}
                 >
                   <div
-                    className="sc-eisiLS hQlWAk"
+                    className="sc-dkaWRx gpzDui"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -3787,7 +3787,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         title="20"
                                       >
                                         <span
-                                          className="sc-jvfqPk drpPnJ"
+                                          className="sc-edoYdd cUdUnS"
                                           color="333333"
                                           style={
                                             Object {
@@ -3849,7 +3849,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -3948,7 +3948,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                               margin={0.25}
                             >
                               <span
-                                className="sc-hkwmXC klpVwE"
+                                className="sc-bSFUlv gNUAmm"
                               >
                                 <input
                                   defaultChecked={true}
@@ -4004,7 +4004,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   spin={true}
                                 >
                                   <span
-                                    className="sc-gHfsNP sc-dkAqVg jdSbUo gBWSYK"
+                                    className="sc-dkAqVg sc-jifHHV ctpxjy czUBjn"
                                   >
                                     <Redo>
                                       <StyledIconBase
@@ -4404,7 +4404,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                           >
                                             <div
                                               aria-hidden={true}
-                                              className="sc-bSFUlv knrmPL"
+                                              className="sc-jvfqPk gVipSr"
                                             >
                                               P
                                             </div>
@@ -4836,7 +4836,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         >
                           <Styled(styled.span)>
                             <span
-                              className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                             >
                               <ArrowLeft>
                                 <StyledIconBase
@@ -4962,7 +4962,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                           }
                         >
                           <span
-                            className="sc-gHfsNP fqEECF"
+                            className="sc-dkAqVg dwdQnb"
                             style={
                               Object {
                                 "marginLeft": "0.2em",
@@ -5038,7 +5038,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                         >
                           <Styled(styled.span)>
                             <span
-                              className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                             >
                               <Calendar>
                                 <StyledIconBase
@@ -5124,11 +5124,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-gsBqHK hwGZTJ"
+                                    className="sc-aKXVD bNLtzV"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-gsBqHK hwGZTJ"
+                                      className="sc-aKXVD bNLtzV"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -5140,7 +5140,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gsBqHK hwGZTJ"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -5153,7 +5153,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gsBqHK hwGZTJ"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -5201,11 +5201,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-kmATbt iZcPLE"
+                                    className="sc-cvJIAo esTqCF"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-kmATbt iZcPLE"
+                                      className="sc-cvJIAo esTqCF"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -5217,7 +5217,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt iZcPLE"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -5230,7 +5230,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt iZcPLE"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -5274,7 +5274,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   tabIndex={0}
                 >
                   <div
-                    className="sc-eisiLS hQlWAk"
+                    className="sc-dkaWRx gpzDui"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -5838,7 +5838,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         title="20"
                                       >
                                         <span
-                                          className="sc-jvfqPk drpPnJ"
+                                          className="sc-edoYdd cUdUnS"
                                           color="333333"
                                           style={
                                             Object {
@@ -5900,7 +5900,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -5956,7 +5956,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="wednesday"
@@ -6043,7 +6043,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -6099,7 +6099,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="wednesday"
@@ -6186,7 +6186,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -6242,7 +6242,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="wednesday"
@@ -6314,7 +6314,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                               margin={0.25}
                             >
                               <span
-                                className="sc-hkwmXC klpVwE"
+                                className="sc-bSFUlv gNUAmm"
                               >
                                 <input
                                   defaultChecked={true}
@@ -6370,7 +6370,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   spin={true}
                                 >
                                   <span
-                                    className="sc-gHfsNP sc-dkAqVg jdSbUo gBWSYK"
+                                    className="sc-dkAqVg sc-jifHHV ctpxjy czUBjn"
                                   >
                                     <Redo>
                                       <StyledIconBase
@@ -7166,7 +7166,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           >
                                             <div
                                               aria-hidden={true}
-                                              className="sc-bSFUlv knrmPL"
+                                              className="sc-jvfqPk gVipSr"
                                             >
                                               P
                                             </div>
@@ -7856,7 +7856,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         >
                           <Styled(styled.span)>
                             <span
-                              className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                             >
                               <ArrowLeft>
                                 <StyledIconBase
@@ -7982,7 +7982,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                           }
                         >
                           <span
-                            className="sc-gHfsNP fqEECF"
+                            className="sc-dkAqVg dwdQnb"
                             style={
                               Object {
                                 "marginLeft": "0.2em",
@@ -8058,7 +8058,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                         >
                           <Styled(styled.span)>
                             <span
-                              className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                             >
                               <Calendar>
                                 <StyledIconBase
@@ -8144,11 +8144,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-gsBqHK hwGZTJ"
+                                    className="sc-aKXVD bNLtzV"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-gsBqHK hwGZTJ"
+                                      className="sc-aKXVD bNLtzV"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -8160,7 +8160,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gsBqHK hwGZTJ"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -8173,7 +8173,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gsBqHK hwGZTJ"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -8221,11 +8221,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-kmATbt iZcPLE"
+                                    className="sc-cvJIAo esTqCF"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-kmATbt iZcPLE"
+                                      className="sc-cvJIAo esTqCF"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -8237,7 +8237,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt iZcPLE"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -8250,7 +8250,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt iZcPLE"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -8294,7 +8294,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   tabIndex={0}
                 >
                   <div
-                    className="sc-eisiLS hQlWAk"
+                    className="sc-dkaWRx gpzDui"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -9372,7 +9372,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="20"
                                       >
                                         <span
-                                          className="sc-jvfqPk drpPnJ"
+                                          className="sc-edoYdd cUdUnS"
                                           color="333333"
                                           style={
                                             Object {
@@ -9434,7 +9434,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -9490,7 +9490,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="monday"
@@ -9577,7 +9577,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -9633,7 +9633,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="monday"
@@ -9720,7 +9720,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -9776,7 +9776,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="monday"
@@ -9970,7 +9970,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="94"
                                       >
                                         <span
-                                          className="sc-jvfqPk drpPnJ"
+                                          className="sc-edoYdd cUdUnS"
                                           color="333333"
                                           style={
                                             Object {
@@ -10032,7 +10032,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -10088,7 +10088,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="tuesday"
@@ -10175,7 +10175,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -10231,7 +10231,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="tuesday"
@@ -10318,7 +10318,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -10374,7 +10374,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="tuesday"
@@ -10518,7 +10518,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="94"
                                       >
                                         <span
-                                          className="sc-jvfqPk drpPnJ"
+                                          className="sc-edoYdd cUdUnS"
                                           color="333333"
                                           style={
                                             Object {
@@ -10580,7 +10580,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -10636,7 +10636,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="tuesday"
@@ -10798,7 +10798,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="36"
                                       >
                                         <span
-                                          className="sc-jvfqPk drpPnJ"
+                                          className="sc-edoYdd cUdUnS"
                                           color="333333"
                                           style={
                                             Object {
@@ -10860,7 +10860,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -10916,7 +10916,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="tuesday"
@@ -11003,7 +11003,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -11059,7 +11059,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="tuesday"
@@ -11217,7 +11217,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="94"
                                       >
                                         <span
-                                          className="sc-jvfqPk drpPnJ"
+                                          className="sc-edoYdd cUdUnS"
                                           color="333333"
                                           style={
                                             Object {
@@ -11279,7 +11279,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -11335,7 +11335,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="wednesday"
@@ -11479,7 +11479,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="36"
                                       >
                                         <span
-                                          className="sc-jvfqPk drpPnJ"
+                                          className="sc-edoYdd cUdUnS"
                                           color="333333"
                                           style={
                                             Object {
@@ -11541,7 +11541,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -11597,7 +11597,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="wednesday"
@@ -11755,7 +11755,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="94"
                                       >
                                         <span
-                                          className="sc-jvfqPk drpPnJ"
+                                          className="sc-edoYdd cUdUnS"
                                           color="333333"
                                           style={
                                             Object {
@@ -11817,7 +11817,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -11873,7 +11873,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="thursday"
@@ -11945,7 +11945,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                               margin={0.25}
                             >
                               <span
-                                className="sc-hkwmXC klpVwE"
+                                className="sc-bSFUlv gNUAmm"
                               >
                                 <input
                                   defaultChecked={true}
@@ -12001,7 +12001,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   spin={true}
                                 >
                                   <span
-                                    className="sc-gHfsNP sc-dkAqVg jdSbUo gBWSYK"
+                                    className="sc-dkAqVg sc-jifHHV ctpxjy czUBjn"
                                   >
                                     <Redo>
                                       <StyledIconBase
@@ -13829,7 +13829,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           >
                                             <div
                                               aria-hidden={true}
-                                              className="sc-bSFUlv knrmPL"
+                                              className="sc-jvfqPk gVipSr"
                                             >
                                               P
                                             </div>
@@ -14514,7 +14514,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         >
                           <Styled(styled.span)>
                             <span
-                              className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                             >
                               <ArrowLeft>
                                 <StyledIconBase
@@ -14640,7 +14640,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                           }
                         >
                           <span
-                            className="sc-gHfsNP fqEECF"
+                            className="sc-dkAqVg dwdQnb"
                             style={
                               Object {
                                 "marginLeft": "0.2em",
@@ -14716,7 +14716,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                         >
                           <Styled(styled.span)>
                             <span
-                              className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                             >
                               <Calendar>
                                 <StyledIconBase
@@ -14802,11 +14802,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-gsBqHK hwGZTJ"
+                                    className="sc-aKXVD bNLtzV"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-gsBqHK hwGZTJ"
+                                      className="sc-aKXVD bNLtzV"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -14818,7 +14818,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gsBqHK hwGZTJ"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -14831,7 +14831,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gsBqHK hwGZTJ"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -14879,11 +14879,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-kmATbt iZcPLE"
+                                    className="sc-cvJIAo esTqCF"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-kmATbt iZcPLE"
+                                      className="sc-cvJIAo esTqCF"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -14895,7 +14895,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt iZcPLE"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -14908,7 +14908,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt iZcPLE"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -14952,7 +14952,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   tabIndex={0}
                 >
                   <div
-                    className="sc-eisiLS hQlWAk"
+                    className="sc-dkaWRx gpzDui"
                     tabIndex={0}
                   >
                     <injectIntl(LiveStopTimes)
@@ -16022,7 +16022,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         title="20"
                                       >
                                         <span
-                                          className="sc-jvfqPk drpPnJ"
+                                          className="sc-edoYdd cUdUnS"
                                           color="333333"
                                           style={
                                             Object {
@@ -16084,7 +16084,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -16140,7 +16140,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="monday"
@@ -16227,7 +16227,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -16283,7 +16283,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="monday"
@@ -16370,7 +16370,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           title="components.StopTimeCell.scheduled"
                                         >
                                           <span
-                                            className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                                            className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                                             style={
                                               Object {
                                                 "fontSize": "0.6em",
@@ -16426,7 +16426,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         >
                                           <styled.span>
                                             <span
-                                              className="sc-edoYdd hROHGP"
+                                              className="sc-jlIlqL fflrIy"
                                             >
                                               <FormattedDayOfWeek
                                                 day="monday"
@@ -16498,7 +16498,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                               margin={0.25}
                             >
                               <span
-                                className="sc-hkwmXC klpVwE"
+                                className="sc-bSFUlv gNUAmm"
                               >
                                 <input
                                   defaultChecked={true}
@@ -16554,7 +16554,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   spin={true}
                                 >
                                   <span
-                                    className="sc-gHfsNP sc-dkAqVg jdSbUo gBWSYK"
+                                    className="sc-dkAqVg sc-jifHHV ctpxjy czUBjn"
                                   >
                                     <Redo>
                                       <StyledIconBase
@@ -18362,7 +18362,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           >
                                             <div
                                               aria-hidden={true}
-                                              className="sc-bSFUlv knrmPL"
+                                              className="sc-jvfqPk gVipSr"
                                             >
                                               P
                                             </div>
@@ -18629,7 +18629,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                         >
                           <Styled(styled.span)>
                             <span
-                              className="sc-gHfsNP sc-dkAqVg fqEECF gBWSYK"
+                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
                             >
                               <ArrowLeft>
                                 <StyledIconBase
