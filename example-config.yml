@@ -331,6 +331,8 @@ itinerary:
 
   # Whether to show the "# itineraries found" text above the itinerary results
   showHeaderText: false
+  # Whether to show the mode descriptions in the batch UI results. Defaults to true
+  showBatchUiItineraryHeaders: false
   # Whether to hide the gray loading bars that appear while results are loading
   hideSkeletons: true
   # Whether the itinerary listing background should match the header

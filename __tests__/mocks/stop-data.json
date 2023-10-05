@@ -1,0 +1,286 @@
+{
+  "id": "40:99256",
+  "code": "C15-T2",
+  "lat": 47.580589,
+  "lon": -122.327263,
+  "locationType": "STOP",
+  "name": "SODO Station",
+  "wheelchairBoarding": "POSSIBLE",
+  "zoneId": "73",
+  "geometries": {
+    "geoJson": {
+      "type": "Point",
+      "coordinates": [
+        -122.3273,
+        47.5806
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "40:100479",
+      "agency": {
+        "gtfsId": "40:40",
+        "name": "Sound Transit"
+      },
+      "longName": "Northgate - Angle Lake",
+      "mode": "TRAM",
+      "color": "28813F",
+      "textColor": "FFFFFF",
+      "shortName": "1-Line"
+    }
+  ],
+  "stopTimes": [
+    {
+      "pattern": {
+        "id": "40:100479:1:01",
+        "desc": "1-Line to Northgate Station (40:990006) from Angle Lake Station (40:99914)",
+        "routeId": "40:100479",
+        "headsign": "Northgate"
+      },
+      "times": [
+        {
+          "stopId": "40:99256",
+          "stopIndex": 8,
+          "stopCount": 19,
+          "scheduledArrival": 23850,
+          "scheduledDeparture": 23880,
+          "realtimeArrival": 23850,
+          "realtimeDeparture": 23880,
+          "arrivalDelay": 0,
+          "departureDelay": 0,
+          "timepoint": true,
+          "realtime": false,
+          "realtimeState": "SCHEDULED",
+          "serviceDay": 1695193200,
+          "tripId": "40:LLR_2023-09-18_Sept18_Weekday_100479_1016",
+          "blockId": "59906",
+          "headsign": "Northgate"
+        },
+        {
+          "stopId": "40:99256",
+          "stopIndex": 8,
+          "stopCount": 19,
+          "scheduledArrival": 23370,
+          "scheduledDeparture": 23400,
+          "realtimeArrival": 23370,
+          "realtimeDeparture": 23400,
+          "arrivalDelay": 0,
+          "departureDelay": 0,
+          "timepoint": true,
+          "realtime": false,
+          "realtimeState": "SCHEDULED",
+          "serviceDay": 1695193200,
+          "tripId": "40:LLR_2023-09-18_Sept18_Weekday_100479_1014",
+          "blockId": "59905",
+          "headsign": "Northgate"
+        },
+        {
+          "stopId": "40:99256",
+          "stopIndex": 8,
+          "stopCount": 19,
+          "scheduledArrival": 22890,
+          "scheduledDeparture": 22920,
+          "realtimeArrival": 22890,
+          "realtimeDeparture": 22920,
+          "arrivalDelay": 0,
+          "departureDelay": 0,
+          "timepoint": true,
+          "realtime": false,
+          "realtimeState": "SCHEDULED",
+          "serviceDay": 1695193200,
+          "tripId": "40:LLR_2023-09-18_Sept18_Weekday_100479_1013",
+          "blockId": "59904",
+          "headsign": "Northgate"
+        }
+      ]
+    },
+    {
+      "pattern": {
+        "id": "40:100479:1:06",
+        "desc": "1-Line University of Washington",
+        "routeId": "40:100479",
+        "headsign": "University of Washington"
+      },
+      "times": [
+        {
+          "stopId": "40:99256",
+          "stopIndex": 0,
+          "stopCount": 8,
+          "scheduledArrival": 15810,
+          "scheduledDeparture": 15840,
+          "realtimeArrival": 15810,
+          "realtimeDeparture": 15840,
+          "arrivalDelay": 0,
+          "departureDelay": 0,
+          "timepoint": true,
+          "realtime": false,
+          "realtimeState": "SCHEDULED",
+          "serviceDay": 1695366000,
+          "tripId": "40:LLR_2023-09-18_Sept18_Weekday_100479_1001",
+          "blockId": "59904",
+          "headsign": "University of Washington"
+        },
+        {
+          "stopId": "40:99256",
+          "stopIndex": 0,
+          "stopCount": 8,
+          "scheduledArrival": 15810,
+          "scheduledDeparture": 15840,
+          "realtimeArrival": 15810,
+          "realtimeDeparture": 15840,
+          "arrivalDelay": 0,
+          "departureDelay": 0,
+          "timepoint": true,
+          "realtime": false,
+          "realtimeState": "SCHEDULED",
+          "serviceDay": 1695279600,
+          "tripId": "40:LLR_2023-09-18_Sept18_Weekday_100479_1001",
+          "blockId": "59904",
+          "headsign": "University of Washington"
+        }
+      ]
+    },
+    {
+      "pattern": {
+        "id": "40:100479:1:07",
+        "desc": "1-Line Stadium",
+        "routeId": "40:100479",
+        "headsign": "Stadium"
+      },
+      "times": [
+        {
+          "stopId": "40:99256",
+          "stopIndex": 8,
+          "stopCount": 10,
+          "scheduledArrival": 90090,
+          "scheduledDeparture": 90120,
+          "realtimeArrival": 90090,
+          "realtimeDeparture": 90120,
+          "arrivalDelay": 0,
+          "departureDelay": 0,
+          "timepoint": true,
+          "realtime": false,
+          "realtimeState": "SCHEDULED",
+          "serviceDay": 1695193200,
+          "tripId": "40:LLR_2023-09-18_Sept18_Weekday_100479_1132",
+          "blockId": "59904",
+          "headsign": "Stadium"
+        },
+        {
+          "stopId": "40:99256",
+          "stopIndex": 8,
+          "stopCount": 10,
+          "scheduledArrival": 89190,
+          "scheduledDeparture": 89220,
+          "realtimeArrival": 89190,
+          "realtimeDeparture": 89220,
+          "arrivalDelay": 0,
+          "departureDelay": 0,
+          "timepoint": true,
+          "realtime": false,
+          "realtimeState": "SCHEDULED",
+          "serviceDay": 1695193200,
+          "tripId": "40:LLR_2023-09-18_Sept18_Weekday_100479_1131",
+          "blockId": "59924",
+          "headsign": "Stadium"
+        },
+        {
+          "stopId": "40:99256",
+          "stopIndex": 8,
+          "stopCount": 10,
+          "scheduledArrival": 88290,
+          "scheduledDeparture": 88320,
+          "realtimeArrival": 88290,
+          "realtimeDeparture": 88320,
+          "arrivalDelay": 0,
+          "departureDelay": 0,
+          "timepoint": true,
+          "realtime": false,
+          "realtimeState": "SCHEDULED",
+          "serviceDay": 1695193200,
+          "tripId": "40:LLR_2023-09-18_Sept18_Weekday_100479_1130",
+          "blockId": "59903",
+          "headsign": "Stadium"
+        }
+      ]
+    },
+    {
+      "pattern": {
+        "id": "40:100479:1:05",
+        "desc": "1-Line to Northgate Station (40:990006) from SODO Station (40:99256)",
+        "routeId": "40:100479",
+        "headsign": "Northgate"
+      },
+      "times": [
+        {
+          "stopId": "40:99256",
+          "stopIndex": 0,
+          "stopCount": 11,
+          "scheduledArrival": 17250,
+          "scheduledDeparture": 17280,
+          "realtimeArrival": 17250,
+          "realtimeDeparture": 17280,
+          "arrivalDelay": 0,
+          "departureDelay": 0,
+          "timepoint": true,
+          "realtime": false,
+          "realtimeState": "SCHEDULED",
+          "serviceDay": 1695279600,
+          "tripId": "40:LLR_2023-09-18_Sept18_Weekday_100479_1003",
+          "blockId": "59908",
+          "headsign": "Northgate"
+        },
+        {
+          "stopId": "40:99256",
+          "stopIndex": 0,
+          "stopCount": 11,
+          "scheduledArrival": 16530,
+          "scheduledDeparture": 16560,
+          "realtimeArrival": 16530,
+          "realtimeDeparture": 16560,
+          "arrivalDelay": 0,
+          "departureDelay": 0,
+          "timepoint": true,
+          "realtime": false,
+          "realtimeState": "SCHEDULED",
+          "serviceDay": 1695279600,
+          "tripId": "40:LLR_2023-09-18_Sept18_Weekday_100479_1002",
+          "blockId": "59922",
+          "headsign": "Northgate"
+        },
+        {
+          "stopId": "40:99256",
+          "stopIndex": 0,
+          "stopCount": 11,
+          "scheduledArrival": 52470,
+          "scheduledDeparture": 52500,
+          "realtimeArrival": 52470,
+          "realtimeDeparture": 52500,
+          "arrivalDelay": 0,
+          "departureDelay": 0,
+          "timepoint": true,
+          "realtime": false,
+          "realtimeState": "SCHEDULED",
+          "serviceDay": 1695193200,
+          "tripId": "40:LLR_2023-09-18_Sept18_Weekday_100479_1072",
+          "blockId": "59925",
+          "headsign": "Northgate"
+        }
+      ]
+    }
+  ],
+  "agencyId": "40:40",
+  "agencyName": "Sound Transit",
+  "color": "#28813F",
+  "bikeRental": {
+    "stations": []
+  },
+  "parkAndRideLocations": [],
+  "vehicleRental": {
+    "stations": []
+  },
+  "nearbyStops": [],
+  "fetchStatus": 2,
+  "stopTimesLastUpdated": 1695215706401
+}

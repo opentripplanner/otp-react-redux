@@ -2469,9 +2469,9 @@
     string-similarity "^4.0.4"
 
 "@opentripplanner/itinerary-body@^5.0.2":
-  version "5.0.9"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-5.0.9.tgz#c625cdf23e234aa0c66c813edc19d6053c040ed8"
-  integrity sha512-SfO8kgB08m7jp+/A+/MzludEh7gt0Qm+eWVMBRm955rxSeSPaSD4wg19z45ql3/eCYhWi9j4LTDo1NBQFpDT3A==
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-5.1.0.tgz#29bba91db379bb4f63d13ec95c1cb058248d0683"
+  integrity sha512-DTS4KlbqokS/ZA+gL0QCuPFORoPq/GVcHlRv0s9YqKmr0aS5eBBLg4f4mOuv1CcNeHKyZc6lNb/Ro3epjshd5A==
   dependencies:
     "@opentripplanner/core-utils" "^11.0.2"
     "@opentripplanner/humanize-distance" "^1.2.0"
@@ -2486,10 +2486,10 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/location-field@^2.0.10":
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-2.0.10.tgz#4563e3c680de2e3cf5468860eac9bfcc312496f3"
-  integrity sha512-s/eoEvjZOudG+BYJrdpNI3LTcpH5DZtEK8i+LHwIgyx4xXbHoUbGX4VF3IF7uP9GzNoQDms7G1q2JrA/bduMdw==
+"@opentripplanner/location-field@^2.0.11":
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-2.0.11.tgz#06a31ec2e62cf5b542d3392281bc28b9dd1ea416"
+  integrity sha512-viyC1vInANBwsd9w3KtE6Y4qYh/yuJAWDStlIx9Ce9z2TraoBHxYKlVhx6w+JxIgiBziEdvZ2staMjo0KKn13A==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@opentripplanner/core-utils" "^11.0.2"
@@ -2626,10 +2626,10 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@^3.3.2":
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.3.2.tgz#4dba0137a21e5e945274d4d67a0decd0a8519055"
-  integrity sha512-BiH1UOqsKSlBuT3fUQEn30FnP+82j5X5Kb5cAAR789wPVu1IehMU4Z+v2kpjW7jRC+uh5MG6d3YWsPX5pWG0Ag==
+"@opentripplanner/trip-form@^3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.3.3.tgz#a7975eb219c7e23876e603132145365eedbb2638"
+  integrity sha512-frS1pdaOicVaGMenf25H12/Ne9KATHJ71ojLqvpSj1qA2MDHYXko07iymhgZ5kJw6wjdkRcIPQxc+rES9OZ3Sw==
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/core-utils" "^11.0.2"
