@@ -28,7 +28,7 @@ export interface StopTime {
   departureDelay?: number
   headsign: string
   pattern: Pattern
-  realtimeDeparture?: boolean
+  realtimeDeparture?: number
   realtimeState?: string
   serviceDay?: number
   times: Time[]

@@ -38,7 +38,7 @@ type StopData = Place & {
 }
 
 const fullTimestamp = (stoptime: StopTime) =>
-  stoptime.serviceDay + stoptime.realtimeDeparture
+  (stoptime.serviceDay || 0) + (stoptime.realtimeDeparture || 0)
 
 const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
   const timezoneCode = format(Date.now(), 'z', {
