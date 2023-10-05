@@ -24,13 +24,12 @@ export interface BikeRental {
   stations: any[]
 }
 
-// FIXME: incomplete
 export interface StopTime {
-  departureDelay: number
+  departureDelay?: number
   headsign: string
   pattern: Pattern
-  realtimeDeparture: boolean
-  realtimeState: string
+  realtimeDeparture?: boolean
+  realtimeState?: string
   times: Time[]
 }
 
@@ -64,6 +63,17 @@ export interface Time {
   stopIndex: number
   timepoint: boolean
   tripId: string
+}
+
+export interface PatternStopTimes {
+  id: string
+  pattern: Pattern
+  route: Route
+  times: Time[]
+}
+
+export interface PatternDayStopTimes extends PatternStopTimes {
+  day: number
 }
 
 export interface VehicleRental {
