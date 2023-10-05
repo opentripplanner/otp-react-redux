@@ -13,13 +13,10 @@ import tinycolor from 'tinycolor2'
 
 import * as mapActions from '../../actions/map'
 import * as uiActions from '../../actions/ui'
+import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
-import {
-  ConfiguredTransitMode,
-  SetLocationHandler,
-  SetViewedStopHandler
-} from '../util/types'
 import { getModeFromStop, getStopName } from '../../util/viewer'
+import { SetLocationHandler, SetViewedStopHandler } from '../util/types'
 
 interface OwnProps {
   stop: Stop
@@ -166,12 +163,11 @@ class EnhancedStopMarker extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state: any, ownProps: OwnProps) => {
+const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
   const { highlightedStop } = state.otp.ui
 
-  const transitModes = state.otp.config.modes.transitModes
   const modeColors: ModeColors = {}
-  transitModes.forEach((mode: ConfiguredTransitMode) => {
+  state.otp.config.modes.transitModes.forEach((mode) => {
     modeColors[mode.mode] = mode.color
   })
 
