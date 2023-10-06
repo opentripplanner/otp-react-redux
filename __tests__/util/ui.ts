@@ -1,4 +1,8 @@
-import { getItineraryView, ItineraryView } from '../../lib/util/ui'
+import {
+  getItineraryView,
+  getMapToggleNewItineraryView,
+  ItineraryView
+} from '../../lib/util/ui'
 
 describe('util > ui', () => {
   describe('getItineraryView', () => {
@@ -29,6 +33,18 @@ describe('util > ui', () => {
           ui_itineraryView: ItineraryView.LEG
         })
       ).toBe(ItineraryView.LIST)
+      expect(
+        getItineraryView({
+          ui_activeItinerary: -1,
+          ui_itineraryView: ItineraryView.LEG_HIDDEN
+        })
+      ).toBe(ItineraryView.LIST)
+      expect(
+        getItineraryView({
+          ui_activeItinerary: -1,
+          ui_itineraryView: ItineraryView.LIST_HIDDEN
+        })
+      ).toBe(ItineraryView.LIST_HIDDEN)
     })
     it('returns the specified view mode when set in URL', () => {
       expect(
@@ -37,6 +53,22 @@ describe('util > ui', () => {
           ui_itineraryView: ItineraryView.LEG
         })
       ).toBe(ItineraryView.LEG)
+    })
+  })
+  describe('getMapToggleNewItineraryView', () => {
+    it('should obtain the new itinerary view value', () => {
+      expect(getMapToggleNewItineraryView(ItineraryView.LEG)).toBe(
+        ItineraryView.LEG_HIDDEN
+      )
+      expect(getMapToggleNewItineraryView(ItineraryView.LIST)).toBe(
+        ItineraryView.LIST_HIDDEN
+      )
+      expect(getMapToggleNewItineraryView(ItineraryView.LEG_HIDDEN)).toBe(
+        ItineraryView.LEG
+      )
+      expect(getMapToggleNewItineraryView(ItineraryView.LIST_HIDDEN)).toBe(
+        ItineraryView.LIST
+      )
     })
   })
 })
