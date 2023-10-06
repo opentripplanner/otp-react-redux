@@ -21,30 +21,21 @@ describe('util > ui', () => {
       )
     })
     it('returns an itinerary list view if URL contains ui_activeItinerary=-1 regardless of ui_itineraryView', () => {
-      expect(
-        getItineraryView({
-          ui_activeItinerary: -1,
-          ui_itineraryView: ItineraryView.FULL
-        })
-      ).toBe(ItineraryView.LIST)
-      expect(
-        getItineraryView({
-          ui_activeItinerary: -1,
-          ui_itineraryView: ItineraryView.LEG
-        })
-      ).toBe(ItineraryView.LIST)
-      expect(
-        getItineraryView({
-          ui_activeItinerary: -1,
-          ui_itineraryView: ItineraryView.LEG_HIDDEN
-        })
-      ).toBe(ItineraryView.LIST)
-      expect(
-        getItineraryView({
-          ui_activeItinerary: -1,
-          ui_itineraryView: ItineraryView.LIST_HIDDEN
-        })
-      ).toBe(ItineraryView.LIST_HIDDEN)
+      const expectedValues = {
+        [ItineraryView.FULL]: ItineraryView.LIST,
+        [ItineraryView.LEG]: ItineraryView.LIST,
+        [ItineraryView.LEG_HIDDEN]: ItineraryView.LIST,
+        [ItineraryView.LIST]: ItineraryView.LIST,
+        [ItineraryView.LIST_HIDDEN]: ItineraryView.LIST_HIDDEN
+      }
+      Object.entries(expectedValues).forEach(([k, v]) => {
+        expect(
+          getItineraryView({
+            ui_activeItinerary: -1,
+            ui_itineraryView: k
+          })
+        ).toBe(v)
+      })
     })
     it('returns the specified view mode when set in URL', () => {
       expect(
@@ -57,18 +48,15 @@ describe('util > ui', () => {
   })
   describe('getMapToggleNewItineraryView', () => {
     it('should obtain the new itinerary view value', () => {
-      expect(getMapToggleNewItineraryView(ItineraryView.LEG)).toBe(
-        ItineraryView.LEG_HIDDEN
-      )
-      expect(getMapToggleNewItineraryView(ItineraryView.LIST)).toBe(
-        ItineraryView.LIST_HIDDEN
-      )
-      expect(getMapToggleNewItineraryView(ItineraryView.LEG_HIDDEN)).toBe(
-        ItineraryView.LEG
-      )
-      expect(getMapToggleNewItineraryView(ItineraryView.LIST_HIDDEN)).toBe(
-        ItineraryView.LIST
-      )
+      const expectedValues = {
+        [ItineraryView.LEG]: ItineraryView.LEG_HIDDEN,
+        [ItineraryView.LEG_HIDDEN]: ItineraryView.LEG,
+        [ItineraryView.LIST]: ItineraryView.LIST_HIDDEN,
+        [ItineraryView.LIST_HIDDEN]: ItineraryView.LIST
+      }
+      Object.entries(expectedValues).forEach(([k, v]) => {
+        expect(getMapToggleNewItineraryView(k)).toBe(v)
+      })
     })
   })
 })
