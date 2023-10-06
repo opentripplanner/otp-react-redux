@@ -351,8 +351,6 @@ itinerary:
   disableMetroSeperatorDot: false
   # Shows the duration of a leg below the leg in the metro itinerary summary
   showLegDurations: false
-  # Allows calorie counts to be hidden
-  displayCalories: true
   # The sort option to use by default
   # Available sort options: 'BEST', 'DURATION', 'ARRIVALTIME', 'WALKTIME', 'COST', 'DEPARTURETIME'
   # defaultSort: "BEST" # Default

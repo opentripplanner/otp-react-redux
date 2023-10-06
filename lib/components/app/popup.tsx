@@ -5,15 +5,13 @@ import coreUtils from '@opentripplanner/core-utils'
 import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components'
 
+import { PopupLauncher, PopupTargetConfig } from '../../util/config-types'
 import { StyledIconWrapper } from '../util/styledIcon'
 import PageTitle from '../util/page-title'
 
 type Props = {
-  content?: {
-    appendLocale?: boolean
-    id?: string
-    modal?: boolean
-    url?: string
+  content?: PopupTargetConfig & {
+    id?: PopupLauncher
   }
   hideModal: () => void
 }
