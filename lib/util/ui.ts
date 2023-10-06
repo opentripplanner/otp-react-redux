@@ -123,7 +123,7 @@ export function getItineraryView({
 }
 
 /**
- * Gets the new itinerary view to display based on current state and URL params.
+ * Gets the new itinerary view to display based on current view.
  */
 export function getMapToggleNewItineraryView(
   currentView: ItineraryView
