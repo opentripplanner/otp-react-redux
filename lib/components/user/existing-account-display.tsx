@@ -2,6 +2,8 @@ import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import React from 'react'
 
+import { AppReduxState } from '../../util/state-types'
+import { TransitModeConfig } from '../../util/config-types'
 import PageTitle from '../util/page-title'
 
 import A11yPrefs from './a11y-prefs'
@@ -9,22 +11,19 @@ import BackToTripPlanner from './back-to-trip-planner'
 import DeleteUser from './delete-user'
 import FavoritePlaceList from './places/favorite-place-list'
 import NotificationPrefsPane from './notification-prefs-pane'
-import StackedPaneDisplay from './stacked-pane-display'
+import StackedPanes from './stacked-panes'
 import TermsOfUsePane from './terms-of-use-pane'
 
 /**
  * This component handles the existing account display.
  */
-const ExistingAccountDisplay = (props: {
-  onCancel: () => void
-  wheelchairEnabled: boolean
-}) => {
+const ExistingAccountDisplay = (props: { wheelchairEnabled: boolean }) => {
   // The props include Formik props that provide access to the current user data
   // and to its own blur/change/submit event handlers that automate the state.
   // We forward the props to each pane so that their individual controls
   // can be wired to be managed by Formik.
-  const { onCancel, wheelchairEnabled } = props
-  const paneSequence = [
+  const { wheelchairEnabled } = props
+  const panes = [
     {
       pane: FavoritePlaceList,
       props,
@@ -67,9 +66,8 @@ const ExistingAccountDisplay = (props: {
     <div>
       <BackToTripPlanner />
       <PageTitle title={[settings, myAccount]} />
-      <StackedPaneDisplay
-        onCancel={onCancel}
-        paneSequence={paneSequence}
+      <StackedPanes
+        panes={panes}
         title={
           <FormattedMessage id="components.ExistingAccountDisplay.mainTitle" />
         }
@@ -77,15 +75,11 @@ const ExistingAccountDisplay = (props: {
     </div>
   )
 }
-// TODO: state type
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const mapStateToProps = (state: any) => {
-  const { accessModes } = state.otp.config?.modes
-  const wheelchairEnabled =
-    accessModes &&
-    accessModes.some(
-      (mode: { showWheelchairSetting: boolean }) => mode.showWheelchairSetting
-    )
+const mapStateToProps = (state: AppReduxState) => {
+  const { accessModes } = state.otp.config.modes
+  const wheelchairEnabled = accessModes?.some(
+    (mode: TransitModeConfig) => mode.showWheelchairSetting
+  )
   return {
     wheelchairEnabled
   }
