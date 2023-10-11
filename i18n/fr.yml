@@ -375,6 +375,9 @@ components:
     description: Le contenu que vous avez demandé n'est pas disponible.
     header: Contenu introuvable
   NotificationPrefsPane:
+    devicesRegistered: >-
+      {count, plural, one {# appareil enregistré} other {# appareils
+      enregistrés}}
     noDeviceForPush: Inscrivez-vous avec l'application mobile pour accéder à ce paramètre.
     notificationChannelPrompt: "Recevoir des notifications sur vos trajets par :"
   OTP2ErrorRenderer:

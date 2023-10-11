@@ -56,7 +56,7 @@ const NotificationOption = styled(ListGroupItem)`
  */
 const NotificationPrefsPane = ({
   allowedNotificationChannels,
-  handleChange,
+  handleChange, // Formik or custom handler
   onRequestPhoneVerificationCode,
   onSendPhoneVerificationCode,
   phoneFormatOptions,
@@ -106,8 +106,12 @@ const NotificationPrefsPane = ({
                 ) : (
                   <span id={inputDescriptionId}>
                     {pushDevices ? (
-                      // TODO: i18n
-                      `${pushDevices} devices registered`
+                      <FormattedMessage
+                        id="components.NotificationPrefsPane.devicesRegistered"
+                        values={{
+                          count: pushDevices
+                        }}
+                      />
                     ) : (
                       <FormattedMessage id="components.NotificationPrefsPane.noDeviceForPush" />
                     )}
