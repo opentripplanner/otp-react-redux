@@ -1,11 +1,13 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { FormikProps } from 'formik'
 import React, { useCallback } from 'react'
 
 import { AppReduxState } from '../../util/state-types'
 import { TransitModeConfig } from '../../util/config-types'
 import PageTitle from '../util/page-title'
 
+import { User } from './types'
 import A11yPrefs from './a11y-prefs'
 import BackToTripPlanner from './back-to-trip-planner'
 import DeleteUser from './delete-user'
@@ -14,12 +16,14 @@ import NotificationPrefsPane from './notification-prefs-pane'
 import StackedPanes from './stacked-panes'
 import TermsOfUsePane from './terms-of-use-pane'
 
+interface Props extends FormikProps<User> {
+  wheelchairEnabled: boolean
+}
+
 /**
  * This component handles the existing account display.
  */
-const ExistingAccountDisplay = (parentProps: {
-  wheelchairEnabled: boolean
-}) => {
+function ExistingAccountDisplay(parentProps: Props) {
   // The props include Formik props that provide access to the current user data
   // and to its own blur/change/submit event handlers that automate the state.
   // We forward the props to each pane so that their individual controls
