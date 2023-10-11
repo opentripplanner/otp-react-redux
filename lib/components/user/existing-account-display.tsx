@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import { AppReduxState } from '../../util/state-types'
 import { TransitModeConfig } from '../../util/config-types'
@@ -17,12 +17,25 @@ import TermsOfUsePane from './terms-of-use-pane'
 /**
  * This component handles the existing account display.
  */
-const ExistingAccountDisplay = (props: { wheelchairEnabled: boolean }) => {
+const ExistingAccountDisplay = (parentProps: {
+  wheelchairEnabled: boolean
+}) => {
   // The props include Formik props that provide access to the current user data
   // and to its own blur/change/submit event handlers that automate the state.
   // We forward the props to each pane so that their individual controls
   // can be wired to be managed by Formik.
-  const { wheelchairEnabled } = props
+  const { handleChange, submitForm, wheelchairEnabled } = parentProps
+  const props = {
+    ...parentProps,
+    handleChange: useCallback(
+      (e) => {
+        // Apply changes and submit the form right away to update the user profile.
+        handleChange(e)
+        submitForm()
+      },
+      [handleChange, submitForm]
+    )
+  }
   const panes = [
     {
       pane: FavoritePlaceList,
