@@ -2,11 +2,11 @@
 // Typescript TODO: Waiting on viewer.js being typed
 import { connect } from 'react-redux'
 import { FormattedMessage, FormattedTime } from 'react-intl'
+import { InvisibleAdditionalDetails } from '@opentripplanner/itinerary-body/lib/styled'
 import React from 'react'
 import styled from 'styled-components'
 
 import { getTripStatus, REALTIME_STATUS } from '../../util/viewer'
-import { InvisibleAdditionalDetails } from '@opentripplanner/itinerary-body/lib/styled'
 import FormattedDuration from '../util/formatted-duration'
 import FormattedRealtimeStatusLabel from '../util/formatted-realtime-status-label'
 
@@ -66,6 +66,7 @@ const RealtimeStatusLabel = ({
   isRealtime,
   onTimeThresholdSeconds,
   originalTime,
+  showLateness,
   time,
   withBackground
 }: {
@@ -74,6 +75,7 @@ const RealtimeStatusLabel = ({
   isRealtime?: boolean
   onTimeThresholdSeconds?: number
   originalTime?: number
+  showLateness?: boolean
   time?: number
   withBackground?: boolean
 }): JSX.Element => {
@@ -117,45 +119,48 @@ const RealtimeStatusLabel = ({
       withBackground={withBackground}
     >
       {renderedTime}
-      <MainContent>
-        <FormattedRealtimeStatusLabel
-          minutes={
-            isEarlyOrLate ? (
-              <DelayText>
-                <FormattedDuration
-                  duration={Math.abs(delay)}
-                  includeSeconds={false}
-                />
-              </DelayText>
-            ) : (
-              <>{null}</>
-            )
-          }
-          // @ts-ignore getTripStatus is not typed yet
-          status={STATUS[status].label}
-        />
-        {isEarlyOrLate && (
-          <InvisibleAdditionalDetails>
-            <FormattedMessage
-              id="components.MetroUI.originallyScheduledTime"
-              values={{
-                originalTime: (
-                  <FormattedTime timeStyle="short" value={originalTime} />
-                )
-              }}
-            />
-          </InvisibleAdditionalDetails>
-        )}
-      </MainContent>
+      {showLateness && (
+        <MainContent>
+          <FormattedRealtimeStatusLabel
+            minutes={
+              isEarlyOrLate ? (
+                <DelayText>
+                  <FormattedDuration
+                    duration={Math.abs(delay)}
+                    includeSeconds={false}
+                  />
+                </DelayText>
+              ) : (
+                <>{null}</>
+              )
+            }
+            // @ts-ignore getTripStatus is not typed yet
+            status={STATUS[status].label}
+          />
+          {isEarlyOrLate && (
+            <InvisibleAdditionalDetails>
+              <FormattedMessage
+                id="components.MetroUI.originallyScheduledTime"
+                values={{
+                  originalTime: (
+                    <FormattedTime timeStyle="short" value={originalTime} />
+                  )
+                }}
+              />
+            </InvisibleAdditionalDetails>
+          )}
+        </MainContent>
+      )}
     </Container>
   )
 }
 
 const mapStateToProps = (state: {
   // Typescript TODO: type state
-  otp: { config: { onTimeThresholdSeconds: any } }
+  otp: { config: { onTimeThresholdSeconds: any; showLateness: boolean } }
 }) => ({
-  onTimeThresholdSeconds: state.otp.config.onTimeThresholdSeconds
+  onTimeThresholdSeconds: state.otp.config.onTimeThresholdSeconds,
+  showLateness: state.otp.config.showLateness
 })
 
 export default connect(mapStateToProps)(RealtimeStatusLabel)
