@@ -1,5 +1,5 @@
+import { Form, FormikProps } from 'formik'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { FormikProps } from 'formik'
 import React, { useCallback } from 'react'
 
 import PageTitle from '../util/page-title'
@@ -46,11 +46,11 @@ const NewAccountWizard = ({
       id: 'components.NewAccountWizard.verify'
     })
     return (
-      <>
+      <Form id="user-settings-form" noValidate>
         <PageTitle title={verifyEmail} />
         <h1>{verifyEmail}</h1>
         <VerifyEmailPane {...formikProps} />
-      </>
+      </Form>
     )
   }
 
@@ -93,14 +93,14 @@ const NewAccountWizard = ({
   ]
 
   return (
-    <>
+    <Form id="user-settings-form" noValidate>
       <PageTitle title={createNewAccount} />
       <SequentialPaneDisplay
         activePaneId={activePaneId}
         paneProps={formikProps}
         panes={paneSequence}
       />
-    </>
+    </Form>
   )
 }
 
