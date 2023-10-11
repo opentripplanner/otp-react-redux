@@ -56,6 +56,7 @@ const NotificationOption = styled(ListGroupItem)`
  */
 const NotificationPrefsPane = ({
   allowedNotificationChannels,
+  handleChange,
   onRequestPhoneVerificationCode,
   onSendPhoneVerificationCode,
   phoneFormatOptions,
@@ -70,8 +71,6 @@ const NotificationPrefsPane = ({
       </legend>
       <ListGroup>
         {allowedNotificationChannels.map((type) => {
-          // TODO: If removing the Save/Cancel buttons on the account screen,
-          // persist changes immediately when onChange is triggered.
           const inputId = `notification-channel-${type}`
           const inputDescriptionId = `${inputId}-description`
           return (
@@ -79,10 +78,12 @@ const NotificationPrefsPane = ({
               <span>
                 <Field
                   aria-describedby={inputDescriptionId}
-                  // TODO: Check this condition.
                   disabled={type === 'push' && !pushDevices}
                   id={inputId}
                   name="notificationChannel"
+                  // Override onChange explicitly to use the custom one for existing accounts.
+                  // (The Formik's one will still be used for new accounts.)
+                  onChange={handleChange}
                   type="checkbox"
                   value={type}
                 />
