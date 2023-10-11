@@ -2,16 +2,21 @@ import React from 'react'
 
 import { PageHeading, StackedPaneContainer } from './styled'
 
+export interface PaneAttributes {
+  hidden?: boolean
+  pane: React.ElementType
+  props?: any
+  title?: string | JSX.Element
+}
+
 export interface Props {
   canceling?: boolean
-  panes: any[]
+  panes: PaneAttributes[]
   title: string | JSX.Element
 }
 
 /**
- * This component handles the flow between screens for new OTP user accounts.
- *
- * TODO: add types once Pane type exists
+ * Stacked layout of panes, each supporting a title and a cancel state.
  */
 const StackedPanes = ({ canceling, panes, title }: Props): JSX.Element => (
   <>
@@ -20,7 +25,7 @@ const StackedPanes = ({ canceling, panes, title }: Props): JSX.Element => (
       ({ hidden, pane: Pane, props, title }, index) =>
         !hidden && (
           <StackedPaneContainer key={index}>
-            <h3>{title}</h3>
+            {title && <h3>{title}</h3>}
             <div>
               <Pane canceled={canceling} {...props} />
             </div>
