@@ -12,6 +12,7 @@ jobs:
       pull-requests: write
     if: github.actor == 'dependabot[bot]'
     steps:
+      - uses: actions/checkout@v2
       - name: Auto-approve PR
         uses: hmarr/auto-approve-action@v3
       - name: Enable auto-merge
