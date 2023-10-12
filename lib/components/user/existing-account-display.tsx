@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { FormikProps } from 'formik'
-import React, { FormEventHandler, useCallback } from 'react'
+import React, { useCallback } from 'react'
 
 import { AppReduxState } from '../../util/state-types'
 import { toastSuccess } from '../util/toasts'
@@ -24,7 +24,7 @@ interface Props extends FormikProps<User> {
 /**
  * This component handles the existing account display.
  */
-function ExistingAccountDisplay(parentProps: Props) {
+const ExistingAccountDisplay = (parentProps: Props) => {
   // The props include Formik props that provide access to the current user data
   // and to its own blur/change/submit event handlers that automate the state.
   // We forward the props to each pane so that their individual controls
