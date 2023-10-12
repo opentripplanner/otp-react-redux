@@ -1,11 +1,13 @@
-// TODO: typescript
-/* eslint-disable react/prop-types */
+import {
+  Auth0ContextInterface,
+  withAuthenticationRequired
+} from '@auth0/auth0-react'
 import { connect } from 'react-redux'
 import { Formik } from 'formik'
-import { injectIntl } from 'react-intl'
-import { withAuthenticationRequired } from '@auth0/auth0-react'
+import { injectIntl, IntlShape } from 'react-intl'
+import { RouteComponentProps } from 'react-router'
 import clone from 'clone'
-import React, { Component } from 'react'
+import React, { Component, FormEvent } from 'react'
 import toast from 'react-hot-toast'
 
 import * as uiActions from '../../actions/ui'
@@ -13,28 +15,51 @@ import * as userActions from '../../actions/user'
 import { CREATE_ACCOUNT_PATH } from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 
+import { User } from './types'
 import AccountPage from './account-page'
 import ExistingAccountDisplay from './existing-account-display'
 import NewAccountWizard from './new-account-wizard'
 import withLoggedInUserSupport from './with-logged-in-user-support'
 
+interface Props {
+  auth0: Auth0ContextInterface
+  createOrUpdateUser: (user: User, intl: IntlShape) => Promise<number>
+  deleteUser: (
+    user: User,
+    auth0: Auth0ContextInterface,
+    intl: IntlShape
+  ) => void
+  intl: IntlShape
+  isCreating: boolean
+  itemId: string
+  loggedInUser: User
+  requestPhoneVerificationSms: (phoneNum: string, intl: IntlShape) => void
+  routeTo: (to: string) => void
+  verifyPhoneNumber: (code: string, intl: IntlShape) => void
+}
+
+type EditedUser = Omit<User, 'notificationChannel'> & {
+  notificationChannel?: string | string[]
+}
+
 /**
  * This screen handles creating/updating OTP user account settings.
  */
-class UserAccountScreen extends Component {
-  _updateUserPrefs = async (userData, silentOnSucceed = false) => {
+class UserAccountScreen extends Component<Props> {
+  _updateUserPrefs = async (userData: EditedUser, silentOnSucceed = false) => {
     const { createOrUpdateUser, intl } = this.props
 
     // Convert the notification attributes from array to comma-separated string.
     const passedUserData = clone(userData)
-    const { notificationChannel } = passedUserData
+    const { notificationChannel } = userData
     if (
+      notificationChannel &&
       typeof notificationChannel === 'object' &&
       typeof notificationChannel.length === 'number'
     ) {
       passedUserData.notificationChannel = notificationChannel.join(',')
     }
-    const result = await createOrUpdateUser(passedUserData, intl)
+    const result = await createOrUpdateUser(passedUserData as User, intl)
 
     // If needed, display a toast notification on success.
     if (result === userActions.UserActionResult.SUCCESS && !silentOnSucceed) {
@@ -52,18 +77,17 @@ class UserAccountScreen extends Component {
    * @param {*} userData The user data state to persist.
    * @returns The new user id the the caller can use.
    */
-  _handleCreateNewUser = (userData) => {
+  _handleCreateNewUser = (userData: EditedUser) => {
     this._updateUserPrefs(userData, true)
   }
 
-  _handleDeleteUser = (evt) => {
+  _handleDeleteUser = (evt: FormEvent) => {
     const { auth0, deleteUser, intl, loggedInUser } = this.props
     // Avoid triggering onsubmit with formik (which would result in a save user
     // call).
     evt.preventDefault()
     if (
-      // eslint-disable-next-line no-restricted-globals
-      confirm(
+      window.confirm(
         intl.formatMessage({ id: 'components.UserAccountScreen.confirmDelete' })
       )
     ) {
@@ -76,7 +100,7 @@ class UserAccountScreen extends Component {
     this.props.routeTo('/')
   }
 
-  _handleRequestPhoneVerificationCode = (newPhoneNumber) => {
+  _handleRequestPhoneVerificationCode = (newPhoneNumber: string) => {
     const { intl, requestPhoneVerificationSms } = this.props
     requestPhoneVerificationSms(newPhoneNumber, intl)
   }
@@ -85,7 +109,7 @@ class UserAccountScreen extends Component {
    * Save changes and return to the planner.
    * @param {*} userData The user edited state to be saved, provided by Formik.
    */
-  _handleSaveAndExit = async (userData) => {
+  _handleSaveAndExit = async (userData: EditedUser) => {
     await this._updateUserPrefs(userData)
     this._handleExit()
   }
@@ -94,7 +118,7 @@ class UserAccountScreen extends Component {
    * Persist changes immediately (for existing account display)
    * @param {*} userData The user edited state to be saved, provided by Formik.
    */
-  _handleFieldChange = async (userData) => {
+  _handleFieldChange = async (userData: EditedUser) => {
     // Turn off the default toast, so we can display a toast per field.
     const result = await this._updateUserPrefs(userData, true)
     if (result !== userActions.UserActionResult.SUCCESS) {
@@ -102,7 +126,11 @@ class UserAccountScreen extends Component {
     }
   }
 
-  _handleSendPhoneVerificationCode = async ({ validationCode: code }) => {
+  _handleSendPhoneVerificationCode = async ({
+    validationCode: code
+  }: {
+    validationCode: string
+  }) => {
     const { intl, verifyPhoneNumber } = this.props
     await verifyPhoneNumber(code, intl)
   }
@@ -114,7 +142,8 @@ class UserAccountScreen extends Component {
       : ExistingAccountDisplay
     const loggedInUserWithNotificationArray = {
       ...loggedInUser,
-      notificationChannel: loggedInUser.notificationChannel.split(',')
+      notificationChannel: loggedInUser.notificationChannel?.split(','),
+      pushDevices: 2
     }
     return (
       <AccountPage subnav={!isCreating}>
@@ -136,7 +165,8 @@ class UserAccountScreen extends Component {
               <DisplayComponent
                 {...formikProps}
                 activePaneId={itemId}
-                emailVerified={auth0.user.email_verified}
+                // @ts-expect-error emailVerified prop used by only one of the DisplayComponent.
+                emailVerified={auth0.user?.email_verified}
                 loggedInUser={loggedInUser}
                 onCancel={this._handleExit}
                 onCreate={this._handleCreateNewUser}
@@ -158,7 +188,10 @@ class UserAccountScreen extends Component {
 
 // connect to the redux store
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (
+  state: any,
+  ownProps: RouteComponentProps<{ step: string }>
+) => {
   const { params, url } = ownProps.match
   const isCreating = url.startsWith(CREATE_ACCOUNT_PATH)
   const { step } = params
