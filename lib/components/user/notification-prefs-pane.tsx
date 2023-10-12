@@ -5,7 +5,9 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap'
 import React from 'react'
 import styled from 'styled-components'
 
+import { AppReduxState } from '../../util/state-types'
 import { GRAY_ON_WHITE } from '../util/colors'
+import { PhoneFormatConfig } from '../../util/config-types'
 
 import { FieldSet } from './styled'
 import { PhoneVerificationSubmitHandler } from './phone-verification-form'
@@ -19,9 +21,7 @@ interface Props extends FormikProps<User> {
   loggedInUser: User
   onRequestPhoneVerificationCode: PhoneCodeRequestHandler
   onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
-  phoneFormatOptions: {
-    countryCode: string
-  }
+  phoneFormatOptions: PhoneFormatConfig
 }
 
 const allNotificationChannels = ['email', 'sms', 'push']
@@ -121,14 +121,17 @@ const NotificationPrefsPane = ({
   )
 }
 
-const mapStateToProps = (state: any) => {
-  const { supportsPushNotifications } =
-    state.otp.config.persistence?.otp_middleware || {}
+const mapStateToProps = (state: AppReduxState) => {
+  const { persistence, phoneFormatOptions } = state.otp.config
+  const supportsPushNotifications =
+    persistence && 'otp_middleware' in persistence
+      ? persistence.otp_middleware?.supportsPushNotifications
+      : false
   return {
     allowedNotificationChannels: supportsPushNotifications
       ? allNotificationChannels
       : emailAndSms,
-    phoneFormatOptions: state.otp.config.phoneFormatOptions
+    phoneFormatOptions
   }
 }
 

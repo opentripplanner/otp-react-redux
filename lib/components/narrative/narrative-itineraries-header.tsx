@@ -9,7 +9,8 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
-import { sortOptions, SortOptionsType } from '../util/sortOptions'
+import { ItinerarySortOption } from '../../util/config-types'
+import { sortOptions } from '../util/sortOptions'
 import { SortResultsDropdown } from '../util/dropdown'
 import { UnstyledButton } from '../util/unstyled-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
@@ -53,7 +54,7 @@ export default function NarrativeItinerariesHeader({
   sort
 }: {
   customBatchUiBackground?: boolean
-  enabledSortModes: SortOptionsType[]
+  enabledSortModes: ItinerarySortOption[]
   errors: unknown[]
   itineraries: unknown[]
   itinerary: Itinerary

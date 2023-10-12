@@ -6,6 +6,8 @@ import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import { accountLinks, getAuth0Config } from '../../util/auth'
+import { AppConfig } from '../../util/config-types'
+import { AppReduxState } from '../../util/state-types'
 import { DEFAULT_APP_TITLE } from '../../util/constants'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
@@ -40,7 +42,7 @@ const NavItemOnLargeScreens = styled(NavbarItem)`
 // Typscript TODO: otpConfig type
 export type Props = {
   locale: string
-  otpConfig: any
+  otpConfig: AppConfig
   popupTarget?: string
   setPopupContent: (url: string) => void
 }
@@ -143,12 +145,12 @@ const DesktopNav = ({
 }
 
 // connect to the redux store
-// Typescript TODO: state type
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
+  const { config: otpConfig } = state.otp
   return {
     locale: state.otp.ui.locale,
-    otpConfig: state.otp.config,
-    popupTarget: state.otp.config?.popups?.launchers?.toolbar
+    otpConfig,
+    popupTarget: otpConfig.popups?.launchers?.toolbar
   }
 }
 
