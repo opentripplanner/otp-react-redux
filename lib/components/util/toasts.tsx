@@ -9,19 +9,29 @@ import { UserSavedLocation } from '../user/types'
 // so intl.formatMessage and others have to be used instead of <FormattedMessage> tags.
 
 /**
+ * Helper for displaying formatted toasts.
+ */
+export function toastSuccess(title: string, description: string): void {
+  toast.success(
+    <span>
+      <strong>{title}</strong>
+      <br />
+      {description}
+    </span>
+  )
+}
+
+/**
  * Helper that will display a toast notification when a place is saved.
  */
 export function toastOnPlaceSaved(
   place: UserSavedLocation,
   intl: IntlShape
 ): void {
-  toast.success(
-    <span>
-      <strong>{getPlaceMainText(place, intl)}</strong>
-      <br />
-      {intl.formatMessage({
-        id: 'actions.user.placeRemembered'
-      })}
-    </span>
+  toastSuccess(
+    getPlaceMainText(place, intl),
+    intl.formatMessage({
+      id: 'actions.user.placeRemembered'
+    })
   )
 }

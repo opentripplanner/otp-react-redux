@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { FormikProps } from 'formik'
-import React, { useCallback } from 'react'
+import React, { FormEventHandler, useCallback } from 'react'
 
 import { AppReduxState } from '../../util/state-types'
+import { toastSuccess } from '../util/toasts'
 import { TransitModeConfig } from '../../util/config-types'
 import PageTitle from '../util/page-title'
 
@@ -29,15 +30,32 @@ function ExistingAccountDisplay(parentProps: Props) {
   // We forward the props to each pane so that their individual controls
   // can be wired to be managed by Formik.
   const { handleChange, submitForm, wheelchairEnabled } = parentProps
+  const intl = useIntl()
   const props = {
     ...parentProps,
     handleChange: useCallback(
-      (e) => {
+      async (e) => {
         // Apply changes and submit the form right away to update the user profile.
         handleChange(e)
-        submitForm()
+        try {
+          await submitForm()
+          // Display a toast notification on success.
+          toastSuccess(
+            intl.formatMessage({
+              // Use a summary text for the field, if defined (e.g. to replace long labels),
+              // otherwise, fall back on the first label of the input.
+              defaultMessage: e.target.labels[0]?.innerText,
+              id: `components.ExistingAccountDisplay.fields.${e.target.name}`
+            }),
+            intl.formatMessage({
+              id: 'components.ExistingAccountDisplay.fieldUpdated'
+            })
+          )
+        } catch {
+          alert('Error updating profile')
+        }
       },
-      [handleChange, submitForm]
+      [intl, handleChange, submitForm]
     )
   }
   const panes = [
@@ -71,7 +89,6 @@ function ExistingAccountDisplay(parentProps: Props) {
     }
   ]
 
-  const intl = useIntl()
   // Repeat text from the SubNav component in the title bar for brevity.
   const settings = intl.formatMessage({
     id: 'components.SubNav.settings'
@@ -92,6 +109,7 @@ function ExistingAccountDisplay(parentProps: Props) {
     </div>
   )
 }
+
 const mapStateToProps = (state: AppReduxState) => {
   const { accessModes } = state.otp.config.modes
   const wheelchairEnabled = accessModes?.some(

@@ -274,6 +274,9 @@ components:
     warning: Warning
   ExistingAccountDisplay:
     a11y: Accessibility
+    fieldUpdated: This setting has been updated.
+    fields:
+      storeTripHistory: Store trip history
     mainTitle: My settings
     notifications: Notifications
     places: Favorite places
