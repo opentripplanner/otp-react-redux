@@ -6,6 +6,7 @@ jobs:
   auto-approve-and-automerge:
     # sources:
     # https://github.com/hmarr/auto-approve-action
+    # https://github.com/marketplace/actions/enable-github-automerge
     # https://github.com/marketplace/actions/enable-pull-request-automerge#dependabot-example
     runs-on: ubuntu-latest
     permissions:
