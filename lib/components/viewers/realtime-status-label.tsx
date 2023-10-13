@@ -66,7 +66,7 @@ const RealtimeStatusLabel = ({
   isRealtime,
   onTimeThresholdSeconds,
   originalTime,
-  showLateness,
+  showScheduleDeviation,
   time,
   withBackground
 }: {
@@ -75,7 +75,7 @@ const RealtimeStatusLabel = ({
   isRealtime?: boolean
   onTimeThresholdSeconds?: number
   originalTime?: number
-  showLateness?: boolean
+  showScheduleDeviation?: boolean
   time?: number
   withBackground?: boolean
 }): JSX.Element => {
@@ -119,7 +119,7 @@ const RealtimeStatusLabel = ({
       withBackground={withBackground}
     >
       {renderedTime}
-      {showLateness && (
+      {showScheduleDeviation && (
         <MainContent>
           <FormattedRealtimeStatusLabel
             minutes={
@@ -157,10 +157,12 @@ const RealtimeStatusLabel = ({
 
 const mapStateToProps = (state: {
   // Typescript TODO: type state
-  otp: { config: { onTimeThresholdSeconds: any; showLateness: boolean } }
+  otp: {
+    config: { onTimeThresholdSeconds: any; showScheduleDeviation: boolean }
+  }
 }) => ({
   onTimeThresholdSeconds: state.otp.config.onTimeThresholdSeconds,
-  showLateness: state.otp.config.showLateness
+  showScheduleDeviation: state.otp.config.showScheduleDeviation
 })
 
 export default connect(mapStateToProps)(RealtimeStatusLabel)
