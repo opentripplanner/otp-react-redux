@@ -25,7 +25,7 @@ const ButtonWrapper = styled.span`
   position: relative;
 
   & > button {
-    background-color: var(--main-base-color, white);
+    background-color: var(--main-base-color, rgba(0, 0, 0, 0.5));
     border-radius: 5px;
     border: none;
     color: var(--main-color, white);
