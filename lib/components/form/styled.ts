@@ -27,7 +27,7 @@ const commonButtonCss = css`
     background-color: var(--main-base-color, rgb(173, 216, 230));
     border: 2px solid rgb(0, 0, 0);
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    color: var(--main-color, black);
+    color: var(--main-color, white);
     font-weight: 600;
   }
 `
