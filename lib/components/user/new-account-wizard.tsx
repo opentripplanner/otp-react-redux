@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 
 import PageTitle from '../util/page-title'
 
-import { User } from './types'
+import { EditedUser } from './types'
 import AccountSetupFinishPane from './account-setup-finish-pane'
 import FavoritePlaceList from './places/favorite-place-list'
 import NotificationPrefsPane from './notification-prefs-pane'
@@ -17,11 +17,12 @@ import VerifyEmailPane from './verify-email-pane'
 // and to its own blur/change/submit event handlers that automate the state.
 // We forward the props to each pane (via SequentialPaneDisplay) so that their individual controls
 // can be wired to be managed by Formik.
-type FormikUserProps = FormikProps<User>
+type FormikUserProps = FormikProps<EditedUser>
 
 interface Props extends FormikUserProps {
   activePaneId: string
-  onCreate: (value: User) => void
+  onCancel: () => void
+  onCreate: (value: EditedUser) => void
 }
 
 /**
@@ -64,7 +65,7 @@ const NewAccountWizard = ({
     )
   }
 
-  const { hasConsentedToTerms, notificationChannel = 'email' } = userData
+  const { hasConsentedToTerms, notificationChannel = ['email'] } = userData
   const createNewAccount = intl.formatMessage({
     id: 'components.NewAccountWizard.createNewAccount'
   })
@@ -82,7 +83,7 @@ const NewAccountWizard = ({
     {
       id: 'notifications',
       invalid:
-        notificationChannel === 'sms' &&
+        notificationChannel.includes('sms') &&
         (!userData.phoneNumber || !userData.isPhoneNumberVerified),
       invalidMessage: intl.formatMessage({
         id: 'components.PhoneNumberEditor.invalidPhone'

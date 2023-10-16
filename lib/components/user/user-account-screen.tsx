@@ -7,7 +7,7 @@ import { Formik, FormikProps } from 'formik'
 import { injectIntl, IntlShape } from 'react-intl'
 import { RouteComponentProps } from 'react-router'
 import clone from 'clone'
-import React, { Component, FormEvent } from 'react'
+import React, { ChangeEvent, Component, FormEvent } from 'react'
 import toast from 'react-hot-toast'
 
 import * as uiActions from '../../actions/ui'
@@ -16,7 +16,7 @@ import { CREATE_ACCOUNT_PATH } from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import { toastSuccess } from '../util/toasts'
 
-import { User } from './types'
+import { EditedUser, User } from './types'
 import AccountPage from './account-page'
 import ExistingAccountDisplay from './existing-account-display'
 import NewAccountWizard from './new-account-wizard'
@@ -39,10 +39,6 @@ interface Props {
   verifyPhoneNumber: (code: string, intl: IntlShape) => void
 }
 
-type EditedUser = Omit<User, 'notificationChannel'> & {
-  notificationChannel?: string | string[]
-}
-
 /**
  * This screen handles creating/updating OTP user account settings.
  */
@@ -51,16 +47,12 @@ class UserAccountScreen extends Component<Props> {
     const { createOrUpdateUser, intl } = this.props
 
     // Convert the notification attributes from array to comma-separated string.
-    const passedUserData = clone(userData)
-    const { notificationChannel } = userData
-    if (
-      notificationChannel &&
-      typeof notificationChannel === 'object' &&
-      typeof notificationChannel.length === 'number'
-    ) {
-      passedUserData.notificationChannel = notificationChannel.join(',')
+    const passedUserData = {
+      ...clone(userData),
+      notificationChannel: userData.notificationChannel.join(',')
     }
-    const result = await createOrUpdateUser(passedUserData as User, intl)
+
+    const result = await createOrUpdateUser(passedUserData, intl)
 
     // If needed, display a toast notification on success.
     if (result === userActions.UserActionResult.SUCCESS && !silentOnSucceed) {
@@ -106,50 +98,51 @@ class UserAccountScreen extends Component<Props> {
     requestPhoneVerificationSms(newPhoneNumber, intl)
   }
 
-  /**
-   * Save changes and return to the planner.
-   * @param {*} userData The user edited state to be saved, provided by Formik.
-   */
-  _handleSaveAndExit = async (userData: EditedUser) => {
-    await this._updateUserPrefs(userData)
-    this._handleExit()
-  }
-
-  _handleInputChange = (formikProps: FormikProps) => async (e: FormEvent) => {
+  _submitForm = async (
+    t: HTMLInputElement,
+    submitForm: () => Promise<void>
+  ) => {
     const { intl, isCreating } = this.props
-    const { handleChange, submitForm, values: userData } = formikProps
-    handleChange(e)
-    const shouldNotSubmit =
-      e.target.name === 'hasConsentedToTerms' ||
-      (e.target.name === 'storeTripHistory' && !userData.id)
-    if (!shouldNotSubmit) {
-      // Submit the form right away after applying changes to update the user profile.
-      try {
-        // Disable input during submission
-        e.target.disabled = true
-        await submitForm()
-        // Re-enable input and refocus after submission
-        e.target.disabled = false
-        e.target.focus()
-        // For existing accounts, display a toast notification on success.
-        if (!isCreating) {
-          toastSuccess(
-            intl.formatMessage({
-              // Use a summary text for the field, if defined (e.g. to replace long labels),
-              // otherwise, fall back on the first label of the input.
-              defaultMessage: e.target.labels[0]?.innerText,
-              id: `components.ExistingAccountDisplay.fields.${e.target.name}`
-            }),
-            intl.formatMessage({
-              id: 'components.ExistingAccountDisplay.fieldUpdated'
-            })
-          )
-        }
-      } catch {
-        alert('Error updating profile')
+    try {
+      // Disable input during submission
+      t.disabled = true
+      await submitForm()
+      // Re-enable input and refocus after submission
+      t.disabled = false
+      t.focus()
+      // For existing accounts, display a toast notification on success.
+      if (!isCreating) {
+        toastSuccess(
+          intl.formatMessage({
+            // Use a summary text for the field, if defined (e.g. to replace long labels),
+            // otherwise, fall back on the first label of the input.
+            defaultMessage: t.labels?.[0]?.innerText,
+            id: `components.ExistingAccountDisplay.fields.${t.name}`
+          }),
+          intl.formatMessage({
+            id: 'components.ExistingAccountDisplay.fieldUpdated'
+          })
+        )
       }
+    } catch {
+      alert('Error updating profile')
     }
   }
+
+  _handleInputChange =
+    (formikProps: FormikProps<EditedUser>) => (e: ChangeEvent) => {
+      const { handleChange, submitForm, values: userData } = formikProps
+      handleChange(e)
+      const t = e.target as HTMLInputElement
+      const shouldNotSubmit =
+        t.name === 'hasConsentedToTerms' ||
+        (t.name === 'storeTripHistory' && !userData.id)
+      if (!shouldNotSubmit) {
+        // Submit the form right away after applying changes to update the user profile.
+        // Separate the submission part because this handler must not be async for type check.
+        this._submitForm(t, submitForm)
+      }
+    }
 
   /**
    * Persist changes immediately (for existing account display)
@@ -179,8 +172,7 @@ class UserAccountScreen extends Component<Props> {
       : ExistingAccountDisplay
     const loggedInUserWithNotificationArray = {
       ...loggedInUser,
-      notificationChannel: loggedInUser.notificationChannel?.split(','),
-      pushDevices: 2
+      notificationChannel: loggedInUser.notificationChannel?.split(',') || []
     }
     return (
       <AccountPage subnav={!isCreating}>
@@ -202,7 +194,7 @@ class UserAccountScreen extends Component<Props> {
                 activePaneId={itemId}
                 // @ts-expect-error emailVerified prop used by only one of the DisplayComponent.
                 emailVerified={auth0.user?.email_verified}
-                // Use our own handlChange handler that wraps around Formik's.
+                // Use our own handleChange handler that wraps around Formik's.
                 handleChange={this._handleInputChange(formikProps)}
                 loggedInUser={loggedInUser}
                 onCancel={this._handleExit}

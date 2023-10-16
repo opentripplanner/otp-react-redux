@@ -7,7 +7,7 @@ import { AppReduxState } from '../../util/state-types'
 import { TransitModeConfig } from '../../util/config-types'
 import PageTitle from '../util/page-title'
 
-import { User } from './types'
+import { EditedUser } from './types'
 import A11yPrefs from './a11y-prefs'
 import BackToTripPlanner from './back-to-trip-planner'
 import DeleteUser from './delete-user'
@@ -16,7 +16,7 @@ import NotificationPrefsPane from './notification-prefs-pane'
 import StackedPanes from './stacked-panes'
 import TermsOfUsePane from './terms-of-use-pane'
 
-interface Props extends FormikProps<User> {
+interface Props extends FormikProps<EditedUser> {
   wheelchairEnabled: boolean
 }
 
