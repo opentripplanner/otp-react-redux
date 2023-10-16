@@ -38,7 +38,11 @@ const ExistingAccountDisplay = (parentProps: Props) => {
         // Apply changes and submit the form right away to update the user profile.
         handleChange(e)
         try {
+          // Disable input during submission
+          e.target.disabled = true
           await submitForm()
+          // Re-enable input during submission
+          e.target.disabled = false
           // Display a toast notification on success.
           toastSuccess(
             intl.formatMessage({
