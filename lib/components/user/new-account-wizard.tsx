@@ -1,6 +1,7 @@
 import { Form, FormikProps } from 'formik'
 import { FormattedMessage, useIntl } from 'react-intl'
 import React, { useCallback } from 'react'
+import toast from 'react-hot-toast'
 
 import PageTitle from '../util/page-title'
 
@@ -28,6 +29,7 @@ interface Props extends FormikUserProps {
  */
 const NewAccountWizard = ({
   activePaneId,
+  onCancel, // provided by UserAccountScreen
   onCreate, // provided by UserAccountScreen
   ...formikProps // provided by Formik
 }: Props): JSX.Element => {
@@ -40,6 +42,14 @@ const NewAccountWizard = ({
       onCreate(userData)
     }
   }, [onCreate, userData])
+
+  const handleFinish = useCallback(() => {
+    // Display a toast to acknowledge saved changes
+    // (although in reality, changes quietly took effect in previous screens).
+    toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
+
+    onCancel && onCancel()
+  }, [intl, onCancel])
 
   if (activePaneId === 'verify') {
     const verifyEmail = intl.formatMessage({
@@ -97,6 +107,7 @@ const NewAccountWizard = ({
       <PageTitle title={createNewAccount} />
       <SequentialPaneDisplay
         activePaneId={activePaneId}
+        onFinish={handleFinish}
         paneProps={formikProps}
         panes={paneSequence}
       />

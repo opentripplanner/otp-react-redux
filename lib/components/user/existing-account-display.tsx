@@ -1,10 +1,9 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { FormikProps } from 'formik'
-import React, { useCallback } from 'react'
+import React from 'react'
 
 import { AppReduxState } from '../../util/state-types'
-import { toastSuccess } from '../util/toasts'
 import { TransitModeConfig } from '../../util/config-types'
 import PageTitle from '../util/page-title'
 
@@ -24,44 +23,15 @@ interface Props extends FormikProps<User> {
 /**
  * This component handles the existing account display.
  */
-const ExistingAccountDisplay = (parentProps: Props) => {
+const ExistingAccountDisplay = (props: Props) => {
   // The props include Formik props that provide access to the current user data
   // and to its own blur/change/submit event handlers that automate the state.
   // We forward the props to each pane so that their individual controls
   // can be wired to be managed by Formik.
-  const { handleChange, submitForm, wheelchairEnabled } = parentProps
+
+  const { wheelchairEnabled } = props
   const intl = useIntl()
-  const props = {
-    ...parentProps,
-    handleChange: useCallback(
-      async (e) => {
-        // Apply changes and submit the form right away to update the user profile.
-        handleChange(e)
-        try {
-          // Disable input during submission
-          e.target.disabled = true
-          await submitForm()
-          // Re-enable input during submission
-          e.target.disabled = false
-          // Display a toast notification on success.
-          toastSuccess(
-            intl.formatMessage({
-              // Use a summary text for the field, if defined (e.g. to replace long labels),
-              // otherwise, fall back on the first label of the input.
-              defaultMessage: e.target.labels[0]?.innerText,
-              id: `components.ExistingAccountDisplay.fields.${e.target.name}`
-            }),
-            intl.formatMessage({
-              id: 'components.ExistingAccountDisplay.fieldUpdated'
-            })
-          )
-        } catch {
-          alert('Error updating profile')
-        }
-      },
-      [intl, handleChange, submitForm]
-    )
-  }
+
   const panes = [
     {
       pane: FavoritePlaceList,

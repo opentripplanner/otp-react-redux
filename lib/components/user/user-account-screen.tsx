@@ -3,7 +3,7 @@ import {
   withAuthenticationRequired
 } from '@auth0/auth0-react'
 import { connect } from 'react-redux'
-import { Formik } from 'formik'
+import { Formik, FormikProps } from 'formik'
 import { injectIntl, IntlShape } from 'react-intl'
 import { RouteComponentProps } from 'react-router'
 import clone from 'clone'
@@ -14,6 +14,7 @@ import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
 import { CREATE_ACCOUNT_PATH } from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
+import { toastSuccess } from '../util/toasts'
 
 import { User } from './types'
 import AccountPage from './account-page'
@@ -114,6 +115,42 @@ class UserAccountScreen extends Component<Props> {
     this._handleExit()
   }
 
+  _handleInputChange = (formikProps: FormikProps) => async (e: FormEvent) => {
+    const { intl, isCreating } = this.props
+    const { handleChange, submitForm, values: userData } = formikProps
+    handleChange(e)
+    const shouldNotSubmit =
+      e.target.name === 'hasConsentedToTerms' ||
+      (e.target.name === 'storeTripHistory' && !userData.id)
+    if (!shouldNotSubmit) {
+      // Submit the form right away after applying changes to update the user profile.
+      try {
+        // Disable input during submission
+        e.target.disabled = true
+        await submitForm()
+        // Re-enable input and refocus after submission
+        e.target.disabled = false
+        e.target.focus()
+        // For existing accounts, display a toast notification on success.
+        if (!isCreating) {
+          toastSuccess(
+            intl.formatMessage({
+              // Use a summary text for the field, if defined (e.g. to replace long labels),
+              // otherwise, fall back on the first label of the input.
+              defaultMessage: e.target.labels[0]?.innerText,
+              id: `components.ExistingAccountDisplay.fields.${e.target.name}`
+            }),
+            intl.formatMessage({
+              id: 'components.ExistingAccountDisplay.fieldUpdated'
+            })
+          )
+        }
+      } catch {
+        alert('Error updating profile')
+      }
+    }
+  }
+
   /**
    * Persist changes immediately (for existing account display)
    * @param {*} userData The user edited state to be saved, provided by Formik.
@@ -151,9 +188,7 @@ class UserAccountScreen extends Component<Props> {
           // Force Formik to reload initialValues when we update them (e.g. user gets assigned an id).
           enableReinitialize
           initialValues={loggedInUserWithNotificationArray}
-          onSubmit={
-            isCreating ? this._handleSaveAndExit : this._handleFieldChange
-          }
+          onSubmit={this._handleFieldChange}
         >
           {
             // Formik props provide access to the current user data state and errors,
@@ -167,6 +202,8 @@ class UserAccountScreen extends Component<Props> {
                 activePaneId={itemId}
                 // @ts-expect-error emailVerified prop used by only one of the DisplayComponent.
                 emailVerified={auth0.user?.email_verified}
+                // Use our own handlChange handler that wraps around Formik's.
+                handleChange={this._handleInputChange(formikProps)}
                 loggedInUser={loggedInUser}
                 onCancel={this._handleExit}
                 onCreate={this._handleCreateNewUser}
