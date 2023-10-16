@@ -101,6 +101,8 @@ exports[`components > viewers > stop viewer should render countdown times after 
         >
           <StopViewer
             autoRefreshStopTimes={true}
+            calendarMax="2024-12-31"
+            calendarMin="2023-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -353,6 +355,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                   }
                 />
               </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
               <div
                 className="stop-viewer-header"
               >
@@ -825,6 +832,91 @@ exports[`components > viewers > stop viewer should render countdown times after 
                       </styled__FromToPickerSpan>
                     </FromToLocationPicker>
                   </span>
+                  <Styled(Alert)
+                    bsStyle="warning"
+                  >
+                    <Alert
+                      bsClass="alert"
+                      bsStyle="warning"
+                      className="sc-cVksOY lbDCQz"
+                      closeLabel="Close alert"
+                    >
+                      <div
+                        className="sc-cVksOY lbDCQz alert alert-warning"
+                        role="alert"
+                      >
+                        <IconWithText
+                          Icon={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "displayName": "ExclamationCircle",
+                              "render": [Function],
+                            }
+                          }
+                        >
+                          <div
+                            style={
+                              Object {
+                                "display": "contents",
+                              }
+                            }
+                          >
+                            <Styled(styled.span)>
+                              <span
+                                className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                              >
+                                <ExclamationCircle>
+                                  <StyledIconBase
+                                    iconAttrs={
+                                      Object {
+                                        "fill": "currentColor",
+                                        "xmlns": "http://www.w3.org/2000/svg",
+                                      }
+                                    }
+                                    iconVerticalAlign="middle"
+                                    iconViewBox="0 0 512 512"
+                                  >
+                                    <ForwardRef
+                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                      iconAttrs={
+                                        Object {
+                                          "fill": "currentColor",
+                                          "xmlns": "http://www.w3.org/2000/svg",
+                                        }
+                                      }
+                                      iconVerticalAlign="middle"
+                                      iconViewBox="0 0 512 512"
+                                    >
+                                      <svg
+                                        aria-hidden="true"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                        fill="currentColor"
+                                        focusable="false"
+                                        viewBox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0 0 114.6 0 256s114.6 256 256 256zm0-384c13.3 0 24 10.7 24 24v112c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32z"
+                                          fill="currentColor"
+                                        />
+                                      </svg>
+                                    </ForwardRef>
+                                  </StyledIconBase>
+                                </ExclamationCircle>
+                              </span>
+                            </Styled(styled.span)>
+                            <span>
+                              <FormattedMessage
+                                id="components.StopViewer.noStopsFound"
+                              >
+                                components.StopViewer.noStopsFound
+                              </FormattedMessage>
+                            </span>
+                          </div>
+                        </IconWithText>
+                      </div>
+                    </Alert>
+                  </Styled(Alert)>
                 </div>
                 <styled.div
                   tabIndex={0}
@@ -2813,6 +2905,8 @@ exports[`components > viewers > stop viewer should render countdown times for st
         >
           <StopViewer
             autoRefreshStopTimes={true}
+            calendarMax="2024-12-31"
+            calendarMin="2023-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -2966,6 +3060,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                   }
                 />
               </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
               <div
                 className="stop-viewer-header"
               >
@@ -3438,6 +3537,91 @@ exports[`components > viewers > stop viewer should render countdown times for st
                       </styled__FromToPickerSpan>
                     </FromToLocationPicker>
                   </span>
+                  <Styled(Alert)
+                    bsStyle="warning"
+                  >
+                    <Alert
+                      bsClass="alert"
+                      bsStyle="warning"
+                      className="sc-cVksOY lbDCQz"
+                      closeLabel="Close alert"
+                    >
+                      <div
+                        className="sc-cVksOY lbDCQz alert alert-warning"
+                        role="alert"
+                      >
+                        <IconWithText
+                          Icon={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "displayName": "ExclamationCircle",
+                              "render": [Function],
+                            }
+                          }
+                        >
+                          <div
+                            style={
+                              Object {
+                                "display": "contents",
+                              }
+                            }
+                          >
+                            <Styled(styled.span)>
+                              <span
+                                className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                              >
+                                <ExclamationCircle>
+                                  <StyledIconBase
+                                    iconAttrs={
+                                      Object {
+                                        "fill": "currentColor",
+                                        "xmlns": "http://www.w3.org/2000/svg",
+                                      }
+                                    }
+                                    iconVerticalAlign="middle"
+                                    iconViewBox="0 0 512 512"
+                                  >
+                                    <ForwardRef
+                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                      iconAttrs={
+                                        Object {
+                                          "fill": "currentColor",
+                                          "xmlns": "http://www.w3.org/2000/svg",
+                                        }
+                                      }
+                                      iconVerticalAlign="middle"
+                                      iconViewBox="0 0 512 512"
+                                    >
+                                      <svg
+                                        aria-hidden="true"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                        fill="currentColor"
+                                        focusable="false"
+                                        viewBox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0 0 114.6 0 256s114.6 256 256 256zm0-384c13.3 0 24 10.7 24 24v112c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32z"
+                                          fill="currentColor"
+                                        />
+                                      </svg>
+                                    </ForwardRef>
+                                  </StyledIconBase>
+                                </ExclamationCircle>
+                              </span>
+                            </Styled(styled.span)>
+                            <span>
+                              <FormattedMessage
+                                id="components.StopViewer.noStopsFound"
+                              >
+                                components.StopViewer.noStopsFound
+                              </FormattedMessage>
+                            </span>
+                          </div>
+                        </IconWithText>
+                      </div>
+                    </Alert>
+                  </Styled(Alert)>
                 </div>
                 <styled.div
                   tabIndex={0}
@@ -4524,6 +4708,8 @@ exports[`components > viewers > stop viewer should render times after midnight w
         >
           <StopViewer
             autoRefreshStopTimes={true}
+            calendarMax="2024-12-31"
+            calendarMin="2023-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -4776,6 +4962,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                   }
                 />
               </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
               <div
                 className="stop-viewer-header"
               >
@@ -5248,6 +5439,91 @@ exports[`components > viewers > stop viewer should render times after midnight w
                       </styled__FromToPickerSpan>
                     </FromToLocationPicker>
                   </span>
+                  <Styled(Alert)
+                    bsStyle="warning"
+                  >
+                    <Alert
+                      bsClass="alert"
+                      bsStyle="warning"
+                      className="sc-cVksOY lbDCQz"
+                      closeLabel="Close alert"
+                    >
+                      <div
+                        className="sc-cVksOY lbDCQz alert alert-warning"
+                        role="alert"
+                      >
+                        <IconWithText
+                          Icon={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "displayName": "ExclamationCircle",
+                              "render": [Function],
+                            }
+                          }
+                        >
+                          <div
+                            style={
+                              Object {
+                                "display": "contents",
+                              }
+                            }
+                          >
+                            <Styled(styled.span)>
+                              <span
+                                className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                              >
+                                <ExclamationCircle>
+                                  <StyledIconBase
+                                    iconAttrs={
+                                      Object {
+                                        "fill": "currentColor",
+                                        "xmlns": "http://www.w3.org/2000/svg",
+                                      }
+                                    }
+                                    iconVerticalAlign="middle"
+                                    iconViewBox="0 0 512 512"
+                                  >
+                                    <ForwardRef
+                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                      iconAttrs={
+                                        Object {
+                                          "fill": "currentColor",
+                                          "xmlns": "http://www.w3.org/2000/svg",
+                                        }
+                                      }
+                                      iconVerticalAlign="middle"
+                                      iconViewBox="0 0 512 512"
+                                    >
+                                      <svg
+                                        aria-hidden="true"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                        fill="currentColor"
+                                        focusable="false"
+                                        viewBox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0 0 114.6 0 256s114.6 256 256 256zm0-384c13.3 0 24 10.7 24 24v112c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32z"
+                                          fill="currentColor"
+                                        />
+                                      </svg>
+                                    </ForwardRef>
+                                  </StyledIconBase>
+                                </ExclamationCircle>
+                              </span>
+                            </Styled(styled.span)>
+                            <span>
+                              <FormattedMessage
+                                id="components.StopViewer.noStopsFound"
+                              >
+                                components.StopViewer.noStopsFound
+                              </FormattedMessage>
+                            </span>
+                          </div>
+                        </IconWithText>
+                      </div>
+                    </Alert>
+                  </Styled(Alert)>
                 </div>
                 <styled.div
                   tabIndex={0}
@@ -7279,6 +7555,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
         >
           <StopViewer
             autoRefreshStopTimes={true}
+            calendarMax="2024-12-31"
+            calendarMin="2023-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -7789,6 +8067,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                   }
                 />
               </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
               <div
                 className="stop-viewer-header"
               >
@@ -8261,6 +8544,91 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                       </styled__FromToPickerSpan>
                     </FromToLocationPicker>
                   </span>
+                  <Styled(Alert)
+                    bsStyle="warning"
+                  >
+                    <Alert
+                      bsClass="alert"
+                      bsStyle="warning"
+                      className="sc-cVksOY lbDCQz"
+                      closeLabel="Close alert"
+                    >
+                      <div
+                        className="sc-cVksOY lbDCQz alert alert-warning"
+                        role="alert"
+                      >
+                        <IconWithText
+                          Icon={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "displayName": "ExclamationCircle",
+                              "render": [Function],
+                            }
+                          }
+                        >
+                          <div
+                            style={
+                              Object {
+                                "display": "contents",
+                              }
+                            }
+                          >
+                            <Styled(styled.span)>
+                              <span
+                                className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                              >
+                                <ExclamationCircle>
+                                  <StyledIconBase
+                                    iconAttrs={
+                                      Object {
+                                        "fill": "currentColor",
+                                        "xmlns": "http://www.w3.org/2000/svg",
+                                      }
+                                    }
+                                    iconVerticalAlign="middle"
+                                    iconViewBox="0 0 512 512"
+                                  >
+                                    <ForwardRef
+                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                      iconAttrs={
+                                        Object {
+                                          "fill": "currentColor",
+                                          "xmlns": "http://www.w3.org/2000/svg",
+                                        }
+                                      }
+                                      iconVerticalAlign="middle"
+                                      iconViewBox="0 0 512 512"
+                                    >
+                                      <svg
+                                        aria-hidden="true"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                        fill="currentColor"
+                                        focusable="false"
+                                        viewBox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0 0 114.6 0 256s114.6 256 256 256zm0-384c13.3 0 24 10.7 24 24v112c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32z"
+                                          fill="currentColor"
+                                        />
+                                      </svg>
+                                    </ForwardRef>
+                                  </StyledIconBase>
+                                </ExclamationCircle>
+                              </span>
+                            </Styled(styled.span)>
+                            <span>
+                              <FormattedMessage
+                                id="components.StopViewer.noStopsFound"
+                              >
+                                components.StopViewer.noStopsFound
+                              </FormattedMessage>
+                            </span>
+                          </div>
+                        </IconWithText>
+                      </div>
+                    </Alert>
+                  </Styled(Alert)>
                 </div>
                 <styled.div
                   tabIndex={0}
@@ -13935,6 +14303,8 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
         >
           <StopViewer
             autoRefreshStopTimes={true}
+            calendarMax="2024-12-31"
+            calendarMin="2023-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -14440,6 +14810,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                   }
                 />
               </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
               <div
                 className="stop-viewer-header"
               >
@@ -14912,6 +15287,91 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                       </styled__FromToPickerSpan>
                     </FromToLocationPicker>
                   </span>
+                  <Styled(Alert)
+                    bsStyle="warning"
+                  >
+                    <Alert
+                      bsClass="alert"
+                      bsStyle="warning"
+                      className="sc-cVksOY lbDCQz"
+                      closeLabel="Close alert"
+                    >
+                      <div
+                        className="sc-cVksOY lbDCQz alert alert-warning"
+                        role="alert"
+                      >
+                        <IconWithText
+                          Icon={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "displayName": "ExclamationCircle",
+                              "render": [Function],
+                            }
+                          }
+                        >
+                          <div
+                            style={
+                              Object {
+                                "display": "contents",
+                              }
+                            }
+                          >
+                            <Styled(styled.span)>
+                              <span
+                                className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                              >
+                                <ExclamationCircle>
+                                  <StyledIconBase
+                                    iconAttrs={
+                                      Object {
+                                        "fill": "currentColor",
+                                        "xmlns": "http://www.w3.org/2000/svg",
+                                      }
+                                    }
+                                    iconVerticalAlign="middle"
+                                    iconViewBox="0 0 512 512"
+                                  >
+                                    <ForwardRef
+                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                      iconAttrs={
+                                        Object {
+                                          "fill": "currentColor",
+                                          "xmlns": "http://www.w3.org/2000/svg",
+                                        }
+                                      }
+                                      iconVerticalAlign="middle"
+                                      iconViewBox="0 0 512 512"
+                                    >
+                                      <svg
+                                        aria-hidden="true"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                        fill="currentColor"
+                                        focusable="false"
+                                        viewBox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0 0 114.6 0 256s114.6 256 256 256zm0-384c13.3 0 24 10.7 24 24v112c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32z"
+                                          fill="currentColor"
+                                        />
+                                      </svg>
+                                    </ForwardRef>
+                                  </StyledIconBase>
+                                </ExclamationCircle>
+                              </span>
+                            </Styled(styled.span)>
+                            <span>
+                              <FormattedMessage
+                                id="components.StopViewer.noStopsFound"
+                              >
+                                components.StopViewer.noStopsFound
+                              </FormattedMessage>
+                            </span>
+                          </div>
+                        </IconWithText>
+                      </div>
+                    </Alert>
+                  </Styled(Alert)>
                 </div>
                 <styled.div
                   tabIndex={0}
@@ -18461,6 +18921,8 @@ exports[`components > viewers > stop viewer should render with initial stop id a
         >
           <StopViewer
             autoRefreshStopTimes={true}
+            calendarMax="2024-12-31"
+            calendarMin="2023-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -18548,6 +19010,11 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                   }
                 />
               </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
               <div
                 className="stop-viewer-header"
               >
