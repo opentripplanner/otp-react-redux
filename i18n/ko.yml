@@ -561,6 +561,7 @@ components:
     notificationsDisabled: "알림: <strong>비활성화됨</strong>"
   TripTools:
     copyLink: 링크 복사
+    header: 도구
     linkCopied: 복사됨
     reportEmailSubject: OpenTripPlanner로 문제 보고
     reportEmailTemplate: |

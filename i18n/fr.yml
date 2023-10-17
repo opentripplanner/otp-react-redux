@@ -703,6 +703,7 @@ components:
     notificationsDisabled: "Notifications : <strong>Désactivées</strong>"
   TripTools:
     copyLink: Copier le lien
+    header: Outils
     linkCopied: Copié
     reportEmailSubject: Signaler un problème avec OpenTripPlanner
     reportEmailTemplate: >
