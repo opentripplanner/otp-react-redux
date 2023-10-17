@@ -602,6 +602,7 @@ components:
     notificationsDisabled: "Thông báo: <strong>Đã tắt</strong>"
   TripTools:
     copyLink: Sao chép URL
+    header: Công cụ
     linkCopied: Đã sao chép
     reportEmailSubject: Báo cáo sự cố với OpenTripPlanner
     reportEmailTemplate: |

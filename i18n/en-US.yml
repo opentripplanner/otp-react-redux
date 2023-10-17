@@ -677,6 +677,7 @@ components:
     notificationsDisabled: "Notifications: <strong>Disabled</strong>"
   TripTools:
     copyLink: Copy Link
+    header: Trip Tools
     linkCopied: Copied
     reportEmailSubject: Reporting an Issue with OpenTripPlanner
     reportEmailTemplate: >
