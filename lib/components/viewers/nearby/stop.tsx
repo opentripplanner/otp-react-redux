@@ -12,6 +12,7 @@ import React from 'react'
 
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
+import { Calendar } from '@styled-icons/fa-solid'
 
 import {
   Card,
@@ -34,6 +35,7 @@ type PatternStopTime = {
 
 type StopData = Place & {
   code: string
+  gtfsId: string
   stoptimesForPatterns: PatternStopTime[]
 }
 
@@ -64,6 +66,7 @@ const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
 type Props = {
   homeTimezone: string
   setLocation: (args: any) => void
+  setViewedStop: (stop: any, nearby: string) => void
   showOperatorLogo: boolean
   stopData: StopData
   zoomToPlace: (map: any, stopData: any) => void
@@ -72,6 +75,7 @@ type Props = {
 const Stop = ({
   homeTimezone,
   setLocation,
+  setViewedStop,
   stopData,
   zoomToPlace
 }: Props): JSX.Element => {
@@ -147,6 +151,15 @@ const Stop = ({
           >
             <Icon Icon={Search} style={{ marginLeft: '0.2em' }} />
           </button>
+          <button
+            className="link-button pull-right"
+            onClick={() => setViewedStop({ stopId: stopData.gtfsId }, 'stop')}
+            style={{ fontSize: 'small' }}
+          >
+            <IconWithText Icon={Calendar}>
+              <FormattedMessage id="components.StopViewer.viewSchedule" />
+            </IconWithText>
+          </button>
         </div>
         <span role="group">
           <FromToLocationPicker
@@ -167,6 +180,7 @@ const Stop = ({
 const mapDispatchToProps = {
   setLocation: mapActions.setLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
+  setViewedStop: uiActions.setViewedStop,
   toggleAutoRefresh: uiActions.toggleAutoRefresh,
   zoomToPlace: mapActions.zoomToPlace
 }
