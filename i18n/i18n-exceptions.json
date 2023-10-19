@@ -5,7 +5,7 @@
       "sms",
       "push"
     ],
-    "components.ExistingAccountDisplay.fields.*": [
+    "components.UserAccountScreen.fields.*": [
       "storeTripHistory"
     ],
     "components.OTP2ErrorRenderer.*.body": [

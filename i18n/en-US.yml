@@ -274,9 +274,6 @@ components:
     warning: Warning
   ExistingAccountDisplay:
     a11y: Accessibility
-    fieldUpdated: This setting has been updated.
-    fields:
-      storeTripHistory: Store trip history
     mainTitle: My settings
     notifications: Notifications
     places: Favorite places
@@ -719,6 +716,10 @@ components:
     confirmDelete: >-
       Are you sure you would like to delete your user account? Once you do so,
       it cannot be recovered.
+    errorUpdatingProfile: Error updating profile.
+    fieldUpdated: This setting has been updated.
+    fields:
+      storeTripHistory: Store trip history
   UserSettings:
     confirmDeletion: >-
       You have recent searches and/or places stored. Disabling storage of recent

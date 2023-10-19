@@ -103,29 +103,35 @@ class UserAccountScreen extends Component<Props> {
     submitForm: () => Promise<void>
   ) => {
     const { intl, isCreating } = this.props
+
+    // Disable input during submission
+    t.disabled = true
     try {
-      // Disable input during submission
-      t.disabled = true
       await submitForm()
-      // Re-enable input and refocus after submission
-      t.disabled = false
-      t.focus()
-      // For existing accounts, display a toast notification on success.
+      // On success, display a toast notification for existing accounts.
       if (!isCreating) {
         toastSuccess(
           intl.formatMessage({
             // Use a summary text for the field, if defined (e.g. to replace long labels),
             // otherwise, fall back on the first label of the input.
             defaultMessage: t.labels?.[0]?.innerText,
-            id: `components.ExistingAccountDisplay.fields.${t.name}`
+            id: `components.UserAccountScreen.fields.${t.name}`
           }),
           intl.formatMessage({
-            id: 'components.ExistingAccountDisplay.fieldUpdated'
+            id: 'components.UserAccountScreen.fieldUpdated'
           })
         )
       }
     } catch {
-      alert('Error updating profile')
+      alert(
+        intl.formatMessage({
+          id: 'components.UserAccountScreen.errorUpdatingProfile'
+        })
+      )
+    } finally {
+      // Re-enable input and refocus after submission
+      t.disabled = false
+      t.focus()
     }
   }
 

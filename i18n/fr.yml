@@ -287,9 +287,6 @@ components:
     warning: Attention
   ExistingAccountDisplay:
     a11y: Accessibilité
-    fieldUpdated: Ce paramètre a été mis à jour.
-    fields:
-      storeTripHistory: Enregistrement des recherches
     mainTitle: Mes préférences
     notifications: Notifications
     places: Lieux favoris
@@ -746,6 +743,10 @@ components:
     confirmDelete: >-
       Voulez-vous vraiment supprimer votre compte ? Cette action est
       irréversible.
+    errorUpdatingProfile: Erreur dans la mise à jour de votre profil.
+    fieldUpdated: Ce paramètre a été mis à jour.
+    fields:
+      storeTripHistory: Enregistrement des recherches
   UserSettings:
     confirmDeletion: >-
       Vous avez des recherches et/ou lieux récemment enregistrés qui vont être
