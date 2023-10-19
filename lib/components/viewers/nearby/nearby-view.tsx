@@ -37,7 +37,7 @@ const getNearbyItem = (place: any) => {
 
 const getNearbyItemList = (nearby: any) => {
   return nearby?.map((n: any) => (
-    <div key={n.node.place.id}>{getNearbyItem(n.node.place)}</div>
+    <div key={n.place.id}>{getNearbyItem(n.place)}</div>
   ))
 }
 
