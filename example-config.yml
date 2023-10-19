@@ -310,6 +310,9 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # Filters out trips returned by OTP by default, unless specifically requested.
+  # e.g. filters out walk-only itineraries if user has not explicitly asked for them.
+  strictItineraryFiltering: false
   # Whether to render route names and colors in the blocks inside
   # the batch ui rows
   renderRouteNamesInBlocks: true
@@ -331,6 +334,8 @@ itinerary:
 
   # Whether to show the "# itineraries found" text above the itinerary results
   showHeaderText: false
+  # Whether to show the mode descriptions in the batch UI results. Defaults to true
+  showBatchUiItineraryHeaders: false
   # Whether to hide the gray loading bars that appear while results are loading
   hideSkeletons: true
   # Whether the itinerary listing background should match the header
@@ -349,8 +354,6 @@ itinerary:
   disableMetroSeperatorDot: false
   # Shows the duration of a leg below the leg in the metro itinerary summary
   showLegDurations: false
-  # Allows calorie counts to be hidden
-  displayCalories: true
   # The sort option to use by default
   # Available sort options: 'BEST', 'DURATION', 'ARRIVALTIME', 'WALKTIME', 'COST', 'DEPARTURETIME'
   # defaultSort: "BEST" # Default

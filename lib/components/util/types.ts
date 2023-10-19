@@ -24,13 +24,12 @@ export interface BikeRental {
   stations: any[]
 }
 
-// FIXME: incomplete
 export interface StopTime {
-  departureDelay: number
+  departureDelay?: number
   headsign: string
   pattern: Pattern
-  realtimeDeparture: boolean
-  realtimeState: string
+  realtimeDeparture?: boolean
+  realtimeState?: string
   times: Time[]
 }
 
@@ -66,6 +65,17 @@ export interface Time {
   tripId: string
 }
 
+export interface PatternStopTimes {
+  id: string
+  pattern: Pattern
+  route: Route
+  times: Time[]
+}
+
+export interface PatternDayStopTimes extends PatternStopTimes {
+  day: number
+}
+
 export interface VehicleRental {
   errorsByNetwork: { [key: string]: { message?: string; severity?: string } }
   systemInformationDataByNetwork: {
@@ -95,10 +105,3 @@ export type SetViewedRouteHandler = (route?: ViewedRouteState) => void
 export type SetViewedStopHandler = (payload: { stopId: string } | null) => void
 
 export type SetLocationHandler = (payload: MapLocationActionArg) => void
-
-export interface ConfiguredTransitMode {
-  color?: string
-  label?: string
-  mode: string
-  showWheelchairSetting?: boolean
-}
