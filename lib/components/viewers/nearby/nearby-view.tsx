@@ -63,7 +63,7 @@ function NearbyView(props: Props): JSX.Element {
 
   return (
     <Scrollable>
-      <div ref={firstItemRef} />
+      <div className="nearby-view" ref={firstItemRef} />
       <NearbySidebarContainer className="base-color-bg">
         {nearby &&
           (nearby.error
