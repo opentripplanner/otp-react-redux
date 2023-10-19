@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 import { MapRef, useMap } from 'react-map-gl'
+import { useIntl } from 'react-intl'
 import React, { useEffect, useRef } from 'react'
 
 import * as apiActions from '../../../actions/api'
-import { useIntl } from 'react-intl'
 
 import { NearbySidebarContainer, Scrollable } from './styled'
 import RentalStation from './rental-station'
@@ -63,7 +63,7 @@ function NearbyView(props: Props): JSX.Element {
 
   return (
     <Scrollable>
-      <div ref={firstItemRef} />
+      <div className="nearby-view" ref={firstItemRef} />
       <NearbySidebarContainer className="base-color-bg">
         {nearby &&
           (nearby.error
