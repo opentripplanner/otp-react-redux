@@ -55,6 +55,8 @@ actions:
     emailVerificationResent: El mensaje de verificación de correo electrónico ha sido reenviado.
     genericError: "Se ha encontrado un error: {err}"
     itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
+    mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
+    placeRemembered: La configuración de este lugar se ha guardado.
     preferencesSaved: Sus preferencias se han guardado.
     smsInvalidCode: El código introducido no es válido. Por favor, inténtelo de nuevo.
     smsResendThrottled: >-
@@ -63,8 +65,6 @@ actions:
     smsVerificationFailed: >-
       Su teléfono no ha podido ser verificado. Quizás el código que has
       introducido ha caducado. Solicita un nuevo código e inténtalo de nuevo.
-    mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
-    placeRemembered: La configuración de este lugar se ha guardado.
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -487,11 +487,11 @@ components:
     tripsFound: Encontramos {count, plural, one {# opción} other {# opciones}}
     waiting: Espera...
   RouteDetails:
+    headsignTo: "{headsign} ({lastStop})"
     moreDetails: Más detalles
     operatedBy: Servicio operado por {agencyName}
     selectADirection: Seleccione una dirección…
     stopsTo: Hacia
-    headsignTo: '{headsign} ({lastStop})'
   RouteViewer:
     agencyFilter: Filtro de agencia
     allAgencies: Todas las agencias
@@ -703,6 +703,7 @@ components:
     notificationsDisabled: "Notificaciones: <strong>Disabled</strong>"
   TripTools:
     copyLink: Copiar enlace
+    header: Herramientas
     linkCopied: Copiado
     reportEmailSubject: Informar un problema con OpenTripPlanner
     reportEmailTemplate: >
