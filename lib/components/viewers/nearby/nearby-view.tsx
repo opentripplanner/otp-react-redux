@@ -1,11 +1,16 @@
 import { connect } from 'react-redux'
 import { MapRef, useMap } from 'react-map-gl'
 import { useIntl } from 'react-intl'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
 
-import { NearbySidebarContainer, Scrollable } from './styled'
+import {
+  FloatingLoadingIndicator,
+  NearbySidebarContainer,
+  Scrollable
+} from './styled'
+import Loading from '../../narrative/loading'
 import RentalStation from './rental-station'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
@@ -45,26 +50,38 @@ function NearbyView(props: Props): JSX.Element {
   const { fetchNearby, nearby, nearbyViewCoords } = props
   const map = useMap().current
   const intl = useIntl()
+  const [loading, setLoading] = useState(true)
   const firstItemRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
     if (nearbyViewCoords) {
       fetchNearby(nearbyViewCoords, map)
+      setLoading(true)
       const interval = setInterval(() => {
         fetchNearby(nearbyViewCoords, map)
-      }, 2000)
+        setLoading(true)
+      }, 15000)
       return function cleanup() {
         clearInterval(interval)
       }
     }
   }, [nearbyViewCoords])
 
+  useEffect(() => {
+    setLoading(false)
+  }, [nearby])
+
   // TODO: when coordinates are set, put a marker on the map and zoom there
 
   return (
-    <Scrollable>
-      <div className="nearby-view" ref={firstItemRef} />
+    <Scrollable className="nearby-view base-color-bg">
       <NearbySidebarContainer className="base-color-bg">
+        <div ref={firstItemRef} />
+        {loading && (
+          <FloatingLoadingIndicator>
+            <Loading extraSmall />
+          </FloatingLoadingIndicator>
+        )}
         {nearby &&
           (nearby.error
             ? intl.formatMessage({ id: 'components.NearbyView.error' })

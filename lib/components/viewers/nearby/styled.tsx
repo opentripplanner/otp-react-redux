@@ -1,10 +1,22 @@
 import styled from 'styled-components'
 
+export const FloatingLoadingIndicator = styled.div`
+  position: fixed;
+  left: 0px;
+  margin: 5px;
+  aspect-ratio: 1;
+  padding: 3px;
+  background: white;
+  color: black;
+  border-radius: 1rem;
+`
+
 export const NearbySidebarContainer = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: 3rem;
-  padding: 3rem;
+  padding: 0 3rem;
   overflow-y: scroll;
 `
 
