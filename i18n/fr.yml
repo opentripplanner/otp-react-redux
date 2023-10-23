@@ -58,6 +58,9 @@ actions:
       nouveau.
     genericError: "Une erreur s'est produite : {err}"
     itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité du trajet choisi.
+    mustAcceptTermsToSavePlace: >-
+      Veuillez accepter les conditions d'utilisation (dans Mon compte) pour
+      enregistrer des lieux.
     mustBeLoggedInToSavePlace: Veuillez vous connecter pour enregistrer des lieux.
     placeRemembered: Les informations pour ce lieu ont été enregistrées.
     preferencesSaved: Vos préférences ont été enregistrées.
@@ -703,6 +706,7 @@ components:
     notificationsDisabled: "Notifications : <strong>Désactivées</strong>"
   TripTools:
     copyLink: Copier le lien
+    header: Outils
     linkCopied: Copié
     reportEmailSubject: Signaler un problème avec OpenTripPlanner
     reportEmailTemplate: >
