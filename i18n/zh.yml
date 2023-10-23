@@ -502,6 +502,7 @@ components:
     notifyViaChannelWhen: "通过 {channel} 通知我当:"
     oneHour: 1小时
     realtimeAlertFlagged: 在我的行程中有一个实时警报标志着
+    timeBefore: '{time} 前'
   TripStatus:
     alerts: "{alerts, plural, one {# 警报!} other {# 警报!}}"
     deleteTrip: 删除行程
@@ -559,6 +560,7 @@ components:
     notificationsDisabled: "通知: <strong>已禁用</strong>"
   TripTools:
     copyLink: 复制链接
+    header: 工具
     linkCopied: 已复制
     reportEmailSubject: 报告OpenTripPlanner的问题
     reportEmailTemplate: |
