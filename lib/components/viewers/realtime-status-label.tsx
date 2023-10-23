@@ -6,7 +6,7 @@ import { InvisibleAdditionalDetails } from '@opentripplanner/itinerary-body/lib/
 import React from 'react'
 import styled from 'styled-components'
 
-import { AppConfig } from '../../util/config-types'
+import { AppReduxState } from '../../util/state-types'
 import { getTripStatus, REALTIME_STATUS } from '../../util/viewer'
 import FormattedDuration from '../util/formatted-duration'
 import FormattedRealtimeStatusLabel from '../util/formatted-realtime-status-label'
@@ -120,8 +120,8 @@ const RealtimeStatusLabel = ({
       withBackground={withBackground}
     >
       {renderedTime}
-      {showScheduleDeviation && (
-        <MainContent>
+      <MainContent>
+        {showScheduleDeviation && (
           <FormattedRealtimeStatusLabel
             minutes={
               isEarlyOrLate ? (
@@ -138,29 +138,25 @@ const RealtimeStatusLabel = ({
             // @ts-ignore getTripStatus is not typed yet
             status={STATUS[status].label}
           />
-          {isEarlyOrLate && (
-            <InvisibleAdditionalDetails>
-              <FormattedMessage
-                id="components.MetroUI.originallyScheduledTime"
-                values={{
-                  originalTime: (
-                    <FormattedTime timeStyle="short" value={originalTime} />
-                  )
-                }}
-              />
-            </InvisibleAdditionalDetails>
-          )}
-        </MainContent>
-      )}
+        )}
+        {isEarlyOrLate && (
+          <InvisibleAdditionalDetails>
+            <FormattedMessage
+              id="components.MetroUI.originallyScheduledTime"
+              values={{
+                originalTime: (
+                  <FormattedTime timeStyle="short" value={originalTime} />
+                )
+              }}
+            />
+          </InvisibleAdditionalDetails>
+        )}
+      </MainContent>
     </Container>
   )
 }
 
-const mapStateToProps = (state: {
-  otp: {
-    config: AppConfig
-  }
-}) => ({
+const mapStateToProps = (state: AppReduxState) => ({
   onTimeThresholdSeconds: state.otp.config.onTimeThresholdSeconds,
   showScheduleDeviation: state.otp.config.showScheduleDeviation
 })
