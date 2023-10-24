@@ -8,6 +8,7 @@ import { injectIntl, IntlShape } from 'react-intl'
 import { RouteComponentProps } from 'react-router'
 import clone from 'clone'
 import React, { ChangeEvent, Component, FormEvent } from 'react'
+import styled from 'styled-components'
 import toast from 'react-hot-toast'
 
 import * as uiActions from '../../actions/ui'
@@ -38,6 +39,26 @@ interface Props {
   routeTo: (to: string) => void
   verifyPhoneNumber: (code: string, intl: IntlShape) => void
 }
+
+const Wrapper = styled.div`
+  @keyframes dive-in {
+    0% {
+      outline-offset: 1px;
+    }
+    100% {
+      outline-offset: -8px;
+    }
+  }
+
+  input[type='checkbox'][disabled]:focus {
+    animation: dive-in 1s linear infinite;
+    cursor: wait;
+    outline: 1px solid blue;
+    /* This next line enhances the visuals in Chromium (webkit) browsers */
+    outline: 1px solid -webkit-focus-ring-color;
+    outline-offset: 1px;
+  }
+`
 
 /**
  * This screen handles creating/updating OTP user account settings.
@@ -104,7 +125,7 @@ class UserAccountScreen extends Component<Props> {
   ) => {
     const { intl, isCreating } = this.props
 
-    // Disable input during submission
+    // Disable input (adds a visual effect) during submission
     t.disabled = true
     try {
       await submitForm()
@@ -195,24 +216,26 @@ class UserAccountScreen extends Component<Props> {
             // We pass the Formik props below to the components rendered so that individual controls
             // can be wired to be managed by Formik.
             (formikProps) => (
-              <DisplayComponent
-                {...formikProps}
-                activePaneId={itemId}
-                // @ts-expect-error emailVerified prop used by only one of the DisplayComponent.
-                emailVerified={auth0.user?.email_verified}
-                // Use our own handleChange handler that wraps around Formik's.
-                handleChange={this._handleInputChange(formikProps)}
-                loggedInUser={loggedInUser}
-                onCancel={this._handleExit}
-                onCreate={this._handleCreateNewUser}
-                onDelete={this._handleDeleteUser}
-                onRequestPhoneVerificationCode={
-                  this._handleRequestPhoneVerificationCode
-                }
-                onSendPhoneVerificationCode={
-                  this._handleSendPhoneVerificationCode
-                }
-              />
+              <Wrapper>
+                <DisplayComponent
+                  {...formikProps}
+                  activePaneId={itemId}
+                  // @ts-expect-error emailVerified prop used by only one of the DisplayComponent.
+                  emailVerified={auth0.user?.email_verified}
+                  // Use our own handleChange handler that wraps around Formik's.
+                  handleChange={this._handleInputChange(formikProps)}
+                  loggedInUser={loggedInUser}
+                  onCancel={this._handleExit}
+                  onCreate={this._handleCreateNewUser}
+                  onDelete={this._handleDeleteUser}
+                  onRequestPhoneVerificationCode={
+                    this._handleRequestPhoneVerificationCode
+                  }
+                  onSendPhoneVerificationCode={
+                    this._handleSendPhoneVerificationCode
+                  }
+                />
+              </Wrapper>
             )
           }
         </Formik>
