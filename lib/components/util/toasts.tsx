@@ -11,13 +11,20 @@ import { UserSavedLocation } from '../user/types'
 /**
  * Helper for displaying formatted toasts.
  */
-export function toastSuccess(title: string, description: string): void {
+export function toastSuccess(
+  title: string,
+  description: string,
+  id?: string
+): void {
   toast.success(
     <span>
       <strong>{title}</strong>
       <br />
       {description}
-    </span>
+    </span>,
+    {
+      id
+    }
   )
 }
 

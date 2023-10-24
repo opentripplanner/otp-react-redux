@@ -722,6 +722,7 @@ components:
     fieldUpdated: This setting has been updated.
     fields:
       storeTripHistory: Store trip history
+    updating: Updating
   UserSettings:
     confirmDeletion: >-
       You have recent searches and/or places stored. Disabling storage of recent

@@ -751,6 +751,7 @@ components:
     fieldUpdated: Ce paramètre a été mis à jour.
     fields:
       storeTripHistory: Enregistrement des recherches
+    updating: Mise à jour
   UserSettings:
     confirmDeletion: >-
       Vous avez des recherches et/ou lieux récemment enregistrés qui vont être

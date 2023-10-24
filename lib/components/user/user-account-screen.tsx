@@ -131,6 +131,12 @@ class UserAccountScreen extends Component<Props> {
     const initialStyle = t.style.animation
     t.style.animation = 'dive-in 1s linear infinite'
     try {
+      const loadingToast = !isCreating
+        ? toast.loading(
+            intl.formatMessage({ id: 'components.UserAccountScreen.updating' })
+          )
+        : null
+
       await submitForm()
       // On success, display a toast notification for existing accounts.
       if (!isCreating) {
@@ -143,7 +149,8 @@ class UserAccountScreen extends Component<Props> {
           }),
           intl.formatMessage({
             id: 'components.UserAccountScreen.fieldUpdated'
-          })
+          }),
+          loadingToast
         )
       }
     } catch {
