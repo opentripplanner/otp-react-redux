@@ -352,6 +352,8 @@ itinerary:
   # This flag disables the dot between legs in the metro itnerary summary, replacing it with
   # a gray background
   disableMetroSeperatorDot: false
+  # If enabled, always shows departures as times ("10pm" instead of "3 min") unless realtime data is present
+  onlyShowCountdownForRealtime: true
   # Shows the duration of a leg below the leg in the metro itinerary summary
   showLegDurations: false
   # The sort option to use by default

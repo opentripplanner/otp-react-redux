@@ -1,13 +1,14 @@
 import { Clock } from '@styled-icons/fa-regular/Clock'
+import { connect } from 'react-redux'
 import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Rss } from '@styled-icons/fa-solid/Rss'
-import addDays from 'date-fns/addDays'
 import coreUtils from '@opentripplanner/core-utils'
 import isSameDay from 'date-fns/isSameDay'
 import React from 'react'
 import styled from 'styled-components'
 
+import { AppReduxState } from '../../util/state-types'
 import { getSecondsUntilDeparture, getTripStatus } from '../../util/viewer'
 import { StyledIconWrapperTextAlign } from '../util/styledIcon'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
@@ -15,10 +16,10 @@ import FormattedDuration from '../util/formatted-duration'
 import getRealtimeStatusLabel, {
   status
 } from '../util/get-realtime-status-label'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
-import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 const { getUserTimezone } = coreUtils.time
 const ONE_HOUR_IN_SECONDS = 3600
@@ -31,6 +32,8 @@ const PulsingRss = styled(Rss)`
 type Props = {
   /** If configured, the timezone of the area */
   homeTimezone?: string
+  /** Optionally hide countdown unless realtime data is present */
+  onlyShowCountdownForRealtime?: boolean
   /** A stopTime object as received from a transit index API */
   stopTime: Time
 }
@@ -39,8 +42,10 @@ type Props = {
  * Renders a stop time as either schedule or countdown, with an optional status icon.
  * Stop time that apply to a different day have an additional text showing the day of departure.
  */
+// eslint-disable-next-line complexity
 const StopTimeCell = ({
   homeTimezone = getUserTimezone(),
+  onlyShowCountdownForRealtime,
   stopTime
 }: Props): JSX.Element => {
   const intl = useIntl()
@@ -109,7 +114,10 @@ const StopTimeCell = ({
           status: getTripStatus(realtime, stopTime.departureDelay, 30) as status
         })}
       >
-        {showCountdown ? (
+        {/* Not the cleanest boolean, but makes it very clear what we're doing
+        in all cases. */}
+        {(onlyShowCountdownForRealtime === true && realtime) ||
+        (onlyShowCountdownForRealtime === false && showCountdown) ? (
           // Show countdown string (e.g., 3 min or Due)
           isDue ? (
             <FormattedMessage id="components.StopTimeCell.imminentArrival" />
@@ -140,4 +148,13 @@ const StopTimeCell = ({
   )
 }
 
-export default StopTimeCell
+const mapStateToProps = (state: AppReduxState) => {
+  return {
+    onlyShowCountdownForRealtime:
+      state.otp.config?.itinerary?.onlyShowCountdownForRealtime || false
+  }
+}
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StopTimeCell)
