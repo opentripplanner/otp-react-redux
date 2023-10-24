@@ -135,7 +135,7 @@ class UserAccountScreen extends Component<Props> {
         ? toast.loading(
             intl.formatMessage({ id: 'components.UserAccountScreen.updating' })
           )
-        : null
+        : undefined
 
       await submitForm()
       // On success, display a toast notification for existing accounts.
