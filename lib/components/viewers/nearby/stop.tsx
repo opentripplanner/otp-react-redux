@@ -65,6 +65,7 @@ const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
 
 type Props = {
   homeTimezone: string
+  setHoveredStop: (stopId: string | undefined) => void
   setLocation: (args: any) => void
   setViewedStop: (stop: any, nearby: string) => void
   showOperatorLogo: boolean
@@ -74,6 +75,7 @@ type Props = {
 
 const Stop = ({
   homeTimezone,
+  setHoveredStop,
   setLocation,
   setViewedStop,
   stopData,
@@ -133,8 +135,17 @@ const Stop = ({
     zoomToPlace(map.default, stopData)
   }
 
+  const onMouseEnter = () => {
+    zoomToStop()
+    setHoveredStop(stopData.gtfsId)
+  }
+
+  const onMouseLeave = () => {
+    setHoveredStop(undefined)
+  }
+
   return (
-    <Card onMouseEnter={zoomToStop}>
+    <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <CardHeader>{stopData.name}</CardHeader>
       <CardBody>
         <div>
@@ -178,6 +189,7 @@ const Stop = ({
 }
 
 const mapDispatchToProps = {
+  setHoveredStop: uiActions.setHoveredStop,
   setLocation: mapActions.setLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
   setViewedStop: uiActions.setViewedStop,

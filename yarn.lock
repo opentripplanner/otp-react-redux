@@ -2579,10 +2579,10 @@
     "@opentripplanner/base-map" "^3.0.14"
     "@opentripplanner/core-utils" "^11.0.2"
 
-"@opentripplanner/stops-overlay@5.1.3-alpha.2":
-  version "5.1.3-alpha.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-5.1.3-alpha.2.tgz#851d4b62e12ea2d7340736cead68b6c59dbe699c"
-  integrity sha512-m2cgefneXUNjsc9O1mQf3dZrgiOJMQ+JXJ1dzg4NFwM0Qpv2bTb2MgC3YKF9/iRgBA+3VEZd/vucm6etLr2BOw==
+"@opentripplanner/stops-overlay@5.2.0-alpha.1":
+  version "5.2.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-5.2.0-alpha.1.tgz#30deb1655f7f80f24f1853aeaa7f5822b530ba05"
+  integrity sha512-ku1DZsJukgFA9ipXtXFCvGw5xe5YHOwcJHFIFpQA5gZZftO3Dp8Err7cjUkB/xSpmmwX+l4n5Xct6kscaot5qA==
   dependencies:
     "@opentripplanner/base-map" "^3.0.14"
     "@opentripplanner/from-to-location-picker" "^2.1.8"

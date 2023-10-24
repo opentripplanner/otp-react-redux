@@ -1,17 +1,21 @@
 import { connect } from 'react-redux'
+import { Stop } from '@opentripplanner/types'
 import StopsOverlay from '@opentripplanner/stops-overlay'
 
 import * as apiActions from '../../actions/api'
 import * as mapActions from '../../actions/map'
 import * as uiActions from '../../actions/ui'
 import { MainPanelContent } from '../../actions/ui-constants'
+import { Pattern } from '../util/types'
 
 // connect to the redux store
 
-const mapStateToProps = (state) => {
-  const { mainPanelContent, viewedRoute } = state.otp.ui
+const mapStateToProps = (state: any) => {
+  const { highlightedStop, mainPanelContent, viewedRoute } = state.otp.ui
   const { patternId, routeId } = viewedRoute || {}
-  const { patterns, v2 } = state.otp.transitIndex.routes?.[routeId] || {}
+  // FIXME: What type to use here? We don't have one that matches for Pattern.
+  const { patterns, v2 }: { patterns: Record<string, any>; v2: boolean } =
+    state.otp.transitIndex.routes?.[routeId] || {}
   const visible = mainPanelContent !== MainPanelContent.STOP_VIEWER
 
   let minZoom = 15
@@ -23,7 +27,7 @@ const mapStateToProps = (state) => {
     patterns
   ) {
     // Avoid duplicates.
-    const stopsById = {}
+    const stopsById: Record<string, Stop> = {}
     // Display stops for the selected pattern for a route.
     if (v2 && !patternId) {
       // If a flex route is being shown, show flex zones from all patterns
@@ -44,12 +48,15 @@ const mapStateToProps = (state) => {
 
     // Override the minimum zoom so that the stops appear even if zoomed out
     minZoom = 2
+  } else if (mainPanelContent === MainPanelContent.NEARBY_VIEW) {
+    stops = state.otp.overlay.transit.stops
   } else if (visible) {
     // Display all stops if no route is shown.
     stops = state.otp.overlay.transit.stops
   }
 
   return {
+    highlightedStop,
     minZoom,
     stops,
     visible
