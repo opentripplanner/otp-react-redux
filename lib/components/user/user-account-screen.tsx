@@ -8,11 +8,12 @@ import { injectIntl, IntlShape } from 'react-intl'
 import { RouteComponentProps } from 'react-router'
 import clone from 'clone'
 import React, { ChangeEvent, Component, FormEvent } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import toast from 'react-hot-toast'
 
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
+import { AppReduxState } from '../../util/state-types'
 import { CREATE_ACCOUNT_PATH } from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import { toastSuccess } from '../util/toasts'
@@ -40,26 +41,26 @@ interface Props {
   verifyPhoneNumber: (code: string, intl: IntlShape) => void
 }
 
+const pendingCss = css`
+  border-radius: 2px;
+  cursor: wait;
+  outline: 1px solid blue;
+  /* This next line enhances the visuals in Chromium (webkit) browsers */
+  outline: 1px solid -webkit-focus-ring-color;
+`
+
 const Wrapper = styled.div`
   @keyframes dive-in {
     0% {
-      outline-offset: 1px;
+      ${pendingCss}
+      outline-offset: 2px;
     }
     100% {
+      ${pendingCss}
       outline-offset: -8px;
     }
   }
-
-  input[type='checkbox'][disabled]:focus {
-    animation: dive-in 1s linear infinite;
-    cursor: wait;
-    outline: 1px solid blue;
-    /* This next line enhances the visuals in Chromium (webkit) browsers */
-    outline: 1px solid -webkit-focus-ring-color;
-    outline-offset: 1px;
-  }
 `
-
 /**
  * This screen handles creating/updating OTP user account settings.
  */
@@ -127,6 +128,8 @@ class UserAccountScreen extends Component<Props> {
 
     // Disable input (adds a visual effect) during submission
     t.disabled = true
+    const initialStyle = t.style.animation
+    t.style.animation = 'dive-in 1s linear infinite'
     try {
       await submitForm()
       // On success, display a toast notification for existing accounts.
@@ -152,6 +155,7 @@ class UserAccountScreen extends Component<Props> {
     } finally {
       // Re-enable input and refocus after submission
       t.disabled = false
+      t.style.animation = initialStyle
       t.focus()
     }
   }
@@ -247,7 +251,7 @@ class UserAccountScreen extends Component<Props> {
 // connect to the redux store
 
 const mapStateToProps = (
-  state: any,
+  state: AppReduxState,
   ownProps: RouteComponentProps<{ step: string }>
 ) => {
   const { params, url } = ownProps.match
