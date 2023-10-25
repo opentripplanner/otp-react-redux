@@ -54,7 +54,7 @@
     "@opentripplanner/park-and-ride-overlay": "^2.0.6",
     "@opentripplanner/route-viewer-overlay": "^2.0.14",
     "@opentripplanner/stop-viewer-overlay": "^2.0.7",
-    "@opentripplanner/stops-overlay": "5.2.0-alpha.1",
+    "@opentripplanner/stops-overlay": "5.2.0-alpha.2",
     "@opentripplanner/transit-vehicle-overlay": "^4.0.6",
     "@opentripplanner/transitive-overlay": "^3.0.16",
     "@opentripplanner/trip-details": "^5.0.4",
