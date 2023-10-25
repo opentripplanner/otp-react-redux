@@ -125,18 +125,20 @@ class UserAccountScreen extends Component<Props> {
     submitForm: () => Promise<void>
   ) => {
     const { intl, isCreating } = this.props
+    const firstLabel = t.labels?.[0]
 
     // Disable input (adds a visual effect) during submission
     t.disabled = true
     const initialStyle = t.style.animation
     t.style.animation = 'dive-in 1s linear infinite'
+    const initialCursor = firstLabel ? firstLabel.style.cursor : ''
+    if (firstLabel) firstLabel.style.cursor = 'wait'
+    const loadingToast = !isCreating
+      ? toast.loading(
+          intl.formatMessage({ id: 'components.UserAccountScreen.updating' })
+        )
+      : undefined
     try {
-      const loadingToast = !isCreating
-        ? toast.loading(
-            intl.formatMessage({ id: 'components.UserAccountScreen.updating' })
-          )
-        : undefined
-
       await submitForm()
       // On success, display a toast notification for existing accounts.
       if (!isCreating) {
@@ -144,7 +146,7 @@ class UserAccountScreen extends Component<Props> {
           intl.formatMessage({
             // Use a summary text for the field, if defined (e.g. to replace long labels),
             // otherwise, fall back on the first label of the input.
-            defaultMessage: t.labels?.[0]?.innerText,
+            defaultMessage: firstLabel?.innerText,
             id: `components.UserAccountScreen.fields.${t.name}`
           }),
           intl.formatMessage({
@@ -154,13 +156,16 @@ class UserAccountScreen extends Component<Props> {
         )
       }
     } catch {
+      // Remove any toasts before showing alert.
+      toast.remove()
       alert(
         intl.formatMessage({
           id: 'components.UserAccountScreen.errorUpdatingProfile'
         })
       )
     } finally {
-      // Re-enable input and refocus after submission
+      // Re-enable input (remove visuals) and refocus after submission.
+      if (firstLabel) firstLabel.style.cursor = initialCursor
       t.disabled = false
       t.style.animation = initialStyle
       t.focus()
