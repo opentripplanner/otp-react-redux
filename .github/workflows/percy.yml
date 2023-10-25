@@ -52,7 +52,7 @@ jobs:
       - name: Download OTP2 config file
         run: curl $PERCY_OTP2_CONFIG_URL --output /tmp/otp2config.yml
         env:
-          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_MOCK_OTP2_GEOCODER_CONFIG }}
+          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_MOCK_OTP2_GEOCODER_CALLTAKER_CONFIG }}
       - name: Build OTP-RR Calltaker
         # Calltaker has a separate config file, so another build should be produced.
         run: yarn build
