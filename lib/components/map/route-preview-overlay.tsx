@@ -10,10 +10,14 @@ import {
   getActiveSearch,
   getVisibleItineraryIndex
 } from '../../util/state'
+import routeDetails from '../viewers/route-details'
+
+import RouteLabelOverlay from './route-label-overlay'
 
 type Props = {
   from: Location
   geometries: string[]
+  labelText: string
   to: Location
   visible?: boolean
 }
@@ -25,6 +29,7 @@ const RoutePreviewOverlay = ({ from, geometries, to, visible }: Props) => {
   // Center the map over the endpoints when this overlay is shown.
   const { current: map } = useMap()
   useEffect(() => {
+    console.log('visible:', visible)
     if (visible) {
       map?.fitBounds([from, to], {
         duration: 500,
@@ -66,6 +71,7 @@ const RoutePreviewOverlay = ({ from, geometries, to, visible }: Props) => {
           }}
           type="line"
         />
+        {visible && <RouteLabelOverlay />}
       </Source>
     )
   } catch (error) {
