@@ -1,1 +1,519 @@
-{}
+components:
+  NarrativeItinerariesHeader:
+    selectDuration: Продолжительность
+    selectCost: Стоимость
+    selectDepartureTime: Время отправления
+    searching: Поиск вариантов…
+    viewAll: Просмотреть все варианты
+    selectWalkTime: Время прогулки
+    selectBest: Лучший вариант
+    selectArrivalTime: Время прибытия
+  TripStatus:
+    planNewTrip: Запланировать поездку
+    deleteTrip: Удалить поездку
+    alerts: '{alerts, plural, one {# предупреждение!} other {несколько предупреждений
+      (#)!}}'
+  NavLoginButton:
+    help: Помощь
+    myAccount: Моя учетная запись
+  MapLayers:
+    bike-rental: Арендные велосипеды {companies}
+    park-and-ride: Места парковки
+    micromobility-rental: Электросамокаты {companies}
+    car-rental: Пункты аренды автомобилей
+    streets: Улицы
+    satellite: Спутник
+    stops: Остановки общественного транспорта
+  FavoritePlaceScreen:
+    placeNotFound: Место не найдено
+    addNewPlace: Добавить новое место
+    editPlace: Редактировать место «{placeName}»
+    nameAlreadyUsed: Это имя уже используется для другого места. Укажите другое имя.
+    invalidName: Укажите имя этого места.
+    invalidAddress: Выберите местоположение для этого места.
+    editPlaceGeneric: Редактировать место
+    placeNotFoundDescription: Не удалось найти требуемое место.
+  AmenitiesPanel:
+    nearbyAmenities: Удобства поблизости
+    noPRLotsFound: Не удалось найти парковочные места поблизости.
+    noNearbyScooters: Не удалось найти пункты проката легких транспортных средств
+      поблизости.
+    noNearbyBikes: Не удалось найти пункты проката велосипедов поблизости.
+  AppMenu:
+    callHistory: История вызовов
+    openMenu: Открыть меню
+    mailables: Почтовые отправления
+    fieldTrip: Поездка
+    closeMenu: Закрыть меню
+  TripStatusRenderers:
+    inactive:
+      description: Возобновите отслеживание поездки, чтобы просматривать изменение
+        ее статуса
+      heading: Отслеживание поездки приостановлено
+    base:
+      lastCheckedText: 'Последняя проверка: {formattedDuration} назад'
+      unknownState: Неизвестное состояние поездки
+      togglePause: Приостановить
+      tripIsNotSnoozed: Отложить до конца дня
+      untogglePause: Возобновить
+      tripIsSnoozed: Восстановить работу службы анализа поездок
+      lastCheckedDefaultText: Время последней проверки неизвестно
+    snoozed:
+      heading: На сегодня отслеживание поездки отложено
+      description: Восстановите отслеживание поездки, чтобы просматривать изменение
+        ее статуса
+    upcoming:
+      tripStartsSoonNoUpdates: Поездка скоро начнется (обновления в реальном времени
+        недоступны).
+      nextTripBegins: 'Начало следующей поездки: {tripDatetime, date, ::eeeee yyyyMMdd}
+        в {tripDatetime, time, short}.'
+      tripStartIsEarly: Начало поездки произойдет на ${duration} раньше ожидаемого!
+      tripBegins: Поездка должна начаться в {tripStart, time, short}. (Отслеживание
+        в реальном времени запустится в {monitoringStart, time, short}.)
+      tripStartIsDelayed: Начало поездки откладывается на ${duration}!
+      tripStartsSoonOnTime: Поездка скоро начнется. Без задержек.
+    notCalculated:
+      description: Подождите, пока завершится расчет поездки.
+      heading: Поездка еще не рассчитана.
+      awaiting: Ожидание расчета…
+    active:
+      noDataHeading: Поездка выполняется (обновления в реальном времени недоступны).
+      description: Прибытие к месту назначения в {arrivalTime, time, short}.
+      delayedHeading: 'Поездка выполняется. Задержка: {formattedDuration}!'
+      earlyHeading: Поездка выполняется. Прибытие к месту назначения на {formattedDuration}
+        раньше ожидаемого.
+      onTimeHeading: Поездка выполнятся. Прибытие в запланированное время.
+    noLongerPossible:
+      heading: Поездка более недоступна
+    nextTripNotPossible:
+      heading: Сегодня поездка невозможна
+  TripViewer:
+    viewStop: Просмотреть
+    header: Средство просмотра поездки
+    accessible: Доступно
+    routeHeader: 'Маршрут: <strong>{routeShortName}</strong> {routeLongName}'
+    bicyclesAllowed: Разрешено
+  ExistingAccountDisplay:
+    a11y: Доступность
+    mainTitle: Мои настройки
+    terms: Условия
+    places: Избранные места
+    notifications: Уведомления
+  NotFound:
+    description: Запрашиваемое содержимое недоступно.
+    header: Содержимое не обнаружено
+  UserSettings:
+    stopId: 'Идентификатор остановки: {stopId}'
+    confirmDeletion: Недавние поисковые запросы и (или) места сохранены. Отключение
+      сохранения недавних мест и (или) поисковых запросов приведет к удалению этих
+      элементов. Продолжить?
+    recentSearchSummary: Режим «{mode}». {from} — {to}
+    mySavedPlaces: Мои сохраненные места (<manageLink>изменить</manageLink>)
+    noFavoriteStops: Избранные остановки
+    recentPlaces: Недавние места
+    favoriteStops: Избранные остановки
+    recentSearches: Недавние поисковые запросы
+    myPreferences: Мои параметры
+    rememberSearches: Сохранить недавние места / поисковые запросы?
+  DateTimePreview:
+    dayLastWeek: Прошл. {formattedDayOfWeek}
+    leaveNow: Выйти
+    editDepartOrArrival: Изменить время прибытия или отправления
+    arriveAt: Прибытие {arriveTime, time, short}
+    departAt: Отправление {departTime, time, short}
+  StopTimeCell:
+    imminentArrival: Отправляется
+  MetroUI:
+    multipleOptions: Несколько вариантов
+    timeWalking: '{time} пешком'
+    itineraryDescription: '{time}, маршрут с {routes}'
+    leaveAt: Отправление
+    orAlternatives: или другие маршруты в том же направлении
+  SavedTripList:
+    noSavedTrips: У вас нет сохраненных поездок
+    pause: Приостановить
+    resume: Возобновить
+    noSavedTripsInstructions: Сперва выполните поиск поездок на карте.
+    myTrips: Мои поездки
+  BatchSettings:
+    destination: место назначения
+    validationMessage: 'Заполните следующие поля, чтобы запланировать поездку: {issues}'
+    planTripTooltip: Запланировать поездку
+    origin: место отправления
+  StopViewer:
+    viewNextArrivals: Посмотреть следующие прибытия
+    loadingText: Загрузка остановки…
+    noStopsFound: Не удалось найти время остановок для этой даты.
+    header: Средство просмотра остановок
+    displayStopId: '<strong>Идентификатор остановки</strong>: {stopId}'
+    viewSchedule: Просмотреть расписание
+    timezoneWarning: Время отправки указано для <strong>{timezoneCode}</strong>.
+    titleBarStopId: Остановка «{stopId}»
+    flexStop: Это остановка по требованию. Водители будут высаживать и подбирать пассажиров
+      в этой зоне по запросу. Для обслуживания в этой зоне вам, возможно, придется
+      позвонить заранее.
+    zoomToStop: Приблизить остановку
+  AddPlaceButton:
+    addPlace: Добавить место
+    tooManyPlaces: Достигнуто ограничение по количеству промежуточных мест
+    needOriginDestination: Выберите место отправления и назначения, чтобы добавить
+      промежуточные места
+  TripBasicsPane:
+    selectAtLeastOneDay: Для просмотра выберите хотя бы один день.
+    tripDaysPrompt: В какие дни вы хотите совершать эту поездку?
+    tripNotAvailableOnDay: 'Поездка недоступна для следующих дней: {repeatedDay}'
+    tripIsAvailableOnDaysIndicated: Поездка доступна для указанных выше дней.
+    unsavedChangesNewTrip: Вы не сохранили новую поездку. Если вы выйдете, она будет
+      удалена.
+    tripNamePrompt: 'Укажите имя поездки:'
+    checkingItineraryExistence: Проверка маршрута на каждый день недели…
+    unsavedChangesExistingTrip: Вы не сохранили поездку. Если вы выйдете, все изменения
+      будут утеряны.
+  VerifyEmailPane:
+    emailIsVerified: Адрес электронной почты подтвержден.
+    resendVerification: Отправить письмо с подтверждением еще раз
+    instructions2: После подтверждения нажмите кнопку ниже, чтобы продолжить.
+  PhoneNumberEditor:
+    invalidCode: Введите проверочный код из 6 цифр.
+    placeholder: Введите свой номер телефона
+    pending: Ожидание
+    verificationCode: 'Код подтверждения:'
+    invalidPhone: Введите действительный номер телефона.
+    verify: Подтвердить
+    prompt: 'Введите номер телефона, на который будут отправляться SMS-уведомления:'
+    requestNewCode: Запросить новый код
+    verified: Подтверждено
+    sendVerificationText: Отправьте текстовое сообщение с кодом подтверждения
+    changeNumber: Изменить номер
+  Place:
+    viewStop: Просмотреть остановку
+    deleteThisPlace: Удалить это место
+  SavedTripEditor:
+    tripNotFound: Поездка не найдена
+    tripNotifications: Уведомления о поездке
+    saveNewTrip: Сохранить поездку
+    tripNotFoundDescription: Не удалось найти требуемую поездку.
+    tripInformation: Информация о поездке
+    editSavedTrip: Редактировать сохраненную поездку
+  NewAccountWizard:
+    finish: Настройка учетной записи завершена!
+    places: Добавьте места
+    createNewAccount: Создайте учетную запись
+    verify: Подтвердите адрес электронной почты
+    notifications: Параметры уведомлений
+  TripSummaryPane:
+    notifications: 'Уведомления: за <strong>{leadTimeInMinutes} мин до запланированного
+      времени отправления</strong>'
+    happensOnDays: 'Проходит в такие дни: <strong>{days}</strong>'
+    notificationsDisabled: 'Уведомления: <strong>отключены</strong>'
+  PlanTripButton:
+    planTrip: Запланировать поездку
+  RouteViewer:
+    shortTitle: Просмотр маршрутов
+    allAgencies: Все агентства
+    allModes: Все режимы
+    noFilteredRoutesFound: Поиск с указанными параметрами фильтра не дал результатов.
+    agencyFilter: Фильтр агентств
+    modeFilter: Фильтр режимов
+    header: Средство просмотра маршрутов
+    title: Средство просмотра маршрутов
+    findARoute: Найти маршрут
+  RelatedStopsPanel:
+    relatedStops: Связанные остановки
+    viewDetails: Просмотреть подробную информацию
+    noArrivalFound: Прибытие не обнаружено
+  TripNotificationsPane:
+    notificationsTurnedOff: Уведомления отключены в настройках вашей учетной записи.
+    advancedSettings: Расширенные настройки
+    oneHour: 1 ч
+    notifyViaChannelWhen: 'Использовать канал «{channel}» для уведомлений, когда:'
+    realtimeAlertFlagged: Для моего пути есть предупреждение в режиме реального времени
+    delaysAboveThreshold: Задержки или сбои в работе более чем на
+    altRouteRecommended: Рекомендуется использовать пересадку или альтернативный маршрут
+  SavedTripScreen:
+    tripNameRequired: Укажите имя поездки.
+    tripNameAlreadyUsed: У вас уже сохранена поездка с таким именем. Укажите другое
+      имя.
+  StackedPaneDisplay:
+    savePreferences: Сохранить параметры
+  LiveStopTimes:
+    autoRefresh: Обновлять прибытия автоматически?
+  RouteDetails:
+    selectADirection: Выберите направление…
+    moreDetails: Подробнее
+    operatedBy: 'Оператор: {agencyName}'
+  SimpleRealtimeAnnotation:
+    usingRealtimeInfo: Для этой поездки используется информация о задержках и дорожном
+      движении в режиме реального времени.
+  TermsOfUsePane:
+    mustAgreeToTerms: Для продолжения примите условия использования.
+  TripTools:
+    reportEmailSubject: Сообщение о проблеме с OpenTripPlanner
+    reportIssue: Сообщить о проблеме
+    linkCopied: Скопировано
+    copyLink: Скопировать ссылку
+  PlanFirstLastButtons:
+    next: Следующий
+    last: Последний
+    first: Первый
+    previous: Предыдущий
+  RealtimeStatusLabel:
+    early: на {minutes} раньше
+    onTime: вовремя
+    late: на {minutes} позже
+    scheduled: по расписанию
+  SaveTripButton:
+    cantSaveTooltip: Просматривать можно только маршруты, которые включают проезд
+      на общественном транспорте и не включают арендные средства передвижения или
+      заказные поездки.
+    cantSaveText: Невозможно сохранить
+    saveTripText: Сохранить поездку
+  StopScheduleTable:
+    route: Маршрут
+    block: Заблокировать
+    departure: Отправление
+    destination: Куда
+  BeforeSignInScreen:
+    mainTitle: Вход в систему
+  BackToTripPlanner:
+    backToTripPlanner: Вернуться в планировщик поездок
+  FavoritePlaceList:
+    editThisPlace: Редактировать это место
+    description: 'Добавляйте места, в которых вы часто бываете, чтобы планировать
+      поездки еще быстрее:'
+    setAddressForPlaceType: Укажите адрес места «{placeType}»
+    addAnotherPlace: Добавить дополнительное место
+  SwitchButton:
+    defaultContent: Переключить
+    switchLocations: Переключить местоположения
+  DateTimeScreen:
+    header: Указать дату и время
+  SubNav:
+    settings: Настройки
+    trips: Поездки
+    myAccount: Моя учетная запись
+  AccountSetupFinishPane:
+    message: Вы готовы планировать поездки.
+  RelatedPanel:
+    showExtraStops: Показать дополнительные остановки ({count})
+    hideExtraStops: Скрыть дополнительные остановки
+  LocationSearch:
+    enterLocation: Ввести местоположение
+    setDestination: Выбрать место назначения
+    setOrigin: Выбрать место отправления
+  ResultsHeader:
+    noTripFound: Не удалось найти поездку
+    waiting: Ожидание…
+  ErrorMessage:
+    header: Не удалось запланировать поездку
+    warning: Предупреждение
+  PointPopup:
+    zoomToLocation: Приблизить местоположение
+  AfterSignInScreen:
+    mainTitle: Перенаправление…
+    message: Если страница не загрузится через несколько секунд, <redirectLink>нажмите
+      здесь</redirectLink>.
+  PlaceEditor:
+    locationPlaceholder: Поиск местоположения «{placeName}»
+    genericLocationPlaceholder: Поиск местоположения
+  CallTakerPanel:
+    groupSize: 'Размер группы:'
+    advancedOptions: Расширенные опции
+    intermediateDestination: Введите промежуточное место назначения
+  ResultsError:
+    backToSearch: Вернуться к поиску
+  UserTripSettings:
+    forgetOptions: Удалить варианты
+    rememberOptions: Сохранить варианты поездки
+  BatchResultsScreen:
+    showResults: Показать результаты
+    expandMap: Развернуть карту
+  SessionTimeout:
+    body: Сеанс завершится через минуту. Чтобы продолжить поиск, нажмите «Продолжить
+      сеанс».
+    header: Сеанс скоро завершится!
+    keepSession: Продолжить сеанс
+  WelcomeScreen:
+    prompt: Куда вы хотите отправиться?
+  BatchRoutingPanel:
+    shortTitle: Запланировать поездку
+  A11yPrefs:
+    accessibilityRoutingByDefault: Предпочитать доступные поездки по умолчанию
+  RealtimeAnnotation:
+    serviceUpdate: Обновление сервиса
+  FormNavigationButtons:
+    ariaLabel: Навигационная форма
+  UserAccountScreen:
+    confirmDelete: Действительно удалить учетную запись? После удаления ее невозможно
+      будет восстановить.
+  PrintLayout:
+    toggleMap: Переключить карту
+    itinerary: Маршрут
+  BatchSearchScreen:
+    header: Запланируйте поездку
+  DateTimeOptions:
+    now: Сейчас
+    departAt: Отправление в
+    arriveBy: Прибытие к
+  MobileOptions:
+    header: Задать параметры поиска
+  ViewSwitcher:
+    switcher: Переключатель
+  DeleteUser:
+    deleteMyAccount: Удалить мою учетную запись
+  AdvancedOptions:
+    preferredRoutes: Выбор предпочтительных маршрутов…
+  DefaultItinerary:
+    clickDetails: Нажмите, чтобы просмотреть подробную информацию
+config:
+  flex:
+    both: Подробные сведения приведены в нижней части экрана маршрута
+    flex-service: Гибкое обслуживание
+    call-ahead: Позвоните, чтобы забронировать
+    flex-service-colon: 'Гибкое обслуживание:'
+    continuous-dropoff: Сообщите оператору об остановке
+  accessModes:
+    car_park: Парковочное место
+    micromobility: Общественный транспорт + личный самокат
+    bicycle: Общественный транспорт + личный велосипед
+    car_hail: Заказная поездка
+    micromobility_rent: Общественный транспорт + прокат электросамоката
+    bicycle_rent: Общественный транспорт + прокат велосипеда
+  bicycleModes:
+    bicycle: Личный велосипед
+    bicycle_rent: Прокат велосипедов
+  micromobilityModes:
+    micromobility: Личный электросамокат
+    micromobility_rent: Прокат электросамокатов
+actions:
+  fieldTrip:
+    saveItinerariesError: 'Не удалось сохранить маршруты: {err}'
+    setDateError: 'Ошибка введения данных:'
+    fetchFieldTripError: 'Ошибка получения поездки: {err}'
+    incompatibleTripDateError: Запланированная дата поездки ({tripDate}) не совпадает
+      с запрашиваемой датой поездки ({requestDate})
+    maxTripRequestsExceeded: Превышено количество запросов на поездку без действительных
+      результатов
+    itineraryCapacityError: Невозможно сохранить план. Этот план невозможно сохранить
+      из-за нехватки мест в одном или нескольких транспортных средствах. Измените
+      план поездки.
+    fetchFieldTripsError: 'Ошибка получения поездок: {err}'
+    fetchTripsForDateError: 'Ошибка получения поездок на дату поездки: {err}'
+  user:
+    emailVerificationResent: Сообщение с подтверждением адреса электронной почты отправлено
+      повторно.
+    genericError: 'Произошла ошибка: {err}'
+    smsVerificationFailed: Не удалось подтвердить ваш телефон. Возможно, истек срок
+      действия кода, который вы ввели. Запросите новый код и попробуйте еще раз.
+    authTokenError: Ошибка получения токена на авторизацию.
+    itineraryExistenceCheckFailed: При проверке возможности выбранной поездки произошла
+      ошибка.
+    smsInvalidCode: Введен недействительный код. Попробуйте еще раз.
+    accountDeleted: Учетная запись ({email}) удалена.
+    preferencesSaved: Ваши параметры сохранены.
+    confirmDeleteMonitoredTrip: Удалить эту поездку?
+    confirmDeletePlace: Удалить это место?
+    smsResendThrottled: SMS-сообщение с подтверждением отправлено на указанный номер
+      меньше минуты назад. Попробуйте снова через несколько минут.
+  callTaker:
+    checkSessionError: 'Ошибка установления сеанса авторизации: {err}'
+    fetchCallsError: 'Ошибка получения вызовов: {err}'
+    couldNotFindCallError: Не удалось найти вызов. Отмена запроса на сохранение запросов.
+    queryFetchError: 'Ошибка получения запросов: {err}'
+    callSaveError: 'Не удалось сохранить вызов: {err}'
+    callQuerySaveError: 'Ошибка сохранения запросов на вызов: {err}'
+  map:
+    currentLocation: (Текущее местоположение)
+  location:
+    unknownPositionError: Неизвестная ошибка при определении местоположения
+    geolocationNotSupportedError: Ваш браузер не поддерживает геоданные
+common:
+  daysOfWeekPlural:
+    thursday: Четверги
+    tuesday: Вторники
+    saturday: Субботы
+    friday: Пятницы
+    monday: Понедельники
+    wednesday: Среды
+    sunday: Воскресенья
+  modes:
+    car: Авто
+    micromobility: Электросамокат
+    rent: Варианты аренды
+    walk: Пешком
+    funicular: Фуникулер
+    car_park: Парковочное место
+    ferry: Паром
+    bike: Велосипед
+    transit: Общественный транспорт
+    gondola: Гондола
+    drive: Поездка в транспортном средстве
+    cable_car: Канатная дорога
+    rail: Рельсовый транспорт
+    bus: Автобус
+    bicycle_rent: Прокат велосипедов
+  notifications:
+    email: электронная почта
+    sms: SMS
+  daysOfWeekCompact:
+    wednesday: Ср.
+    thursday: Чт.
+    sunday: Вс.
+    tuesday: Вт.
+    saturday: Сб.
+    friday: Пт.
+    monday: Пн.
+  forms:
+    "yes": Да
+    print: Печать
+    "no": Нет
+    finish: Завершить
+    startOver: Начать сначала
+    close: Закрыть
+    edit: Редактировать
+    delete: Удалить
+    save: Сохранить
+    cancel: Отмена
+    back: Назад
+    error: Ошибка!
+    next: Далее
+    defaultValue: '{value} (по умолчанию)'
+  itineraryDescriptions:
+    transfers: '{transfers, plural, =0 {} one {# пересадка} other {несколько пересадок
+      (#)}}'
+    noItineraryToDisplay: Нет маршрута для отображения.
+    calories: '{calories, number} кал'
+  places:
+    custom: пользовательское
+    home: дом
+    dining: место
+    work: работа
+  time:
+    durationAgo: '{duration} назад'
+    departureArrivalTimes: '{startTime, time, short} — {endTime, time, short}'
+  daysOfWeek:
+    sunday: Воскресенье
+    wednesday: Среда
+    saturday: Суббота
+    friday: Пятница
+    monday: Понедельник
+    tuesday: Вторник
+    thursday: Четверг
+  dateExpressions:
+    tomorrow: Завтра
+    yesterday: Вчера
+    today: Сегодня
+  coordinates: '{lat}; {lon}'
+  routing:
+    routeAndNumber: Маршрут «{routeId}»
+    routeToHeadsign: 'Куда: {headsign}'
+util:
+  state:
+    noTripFoundReason: В пределах указанного максимального расстояния или в указанное
+      время может не быть транспортного сообщения. Также возможно, что начальная/конечная
+      точка может быть недоступна.
+    networkUnavailable: Сеть «{network}» сейчас недоступна.
+    errorPlanningTrip: Во время планирования поездки произошла ошибка.
+    noTripFound: Не удалось найти поездку.
+    noTripFoundForMode: Не удалось найти поездку для режима «{modes}».
+    noTripFoundWithReason: '{noTripFound}: {reason}'
