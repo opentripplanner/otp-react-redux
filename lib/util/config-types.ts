@@ -355,6 +355,8 @@ export interface AppConfig {
   routeViewer?: RouteViewerConfig
   /** Approx delay in seconds to reset the UI to an initial URL if there is no user activity */
   sessionTimeoutSeconds?: number
+  /** Whether to show the x minutes late/early in the itinerary body */
+  showScheduleDeviation?: boolean
   stopViewer?: StopViewerConfig
   /** App title shown in the browser title bar. */
   title?: string

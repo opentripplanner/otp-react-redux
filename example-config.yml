@@ -354,6 +354,8 @@ itinerary:
   disableMetroSeperatorDot: false
   # If enabled, always shows departures as times ("10pm" instead of "3 min") unless realtime data is present
   onlyShowCountdownForRealtime: true
+  # Show the number of minutes of delay or early beneath a time in the itinerary body
+  showScheduleDeviation: true
   # Shows the duration of a leg below the leg in the metro itinerary summary
   showLegDurations: false
   # The sort option to use by default
