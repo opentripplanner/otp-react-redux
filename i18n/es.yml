@@ -379,6 +379,8 @@ components:
   NotificationPrefsPane:
     noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
     notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por:"
+    devicesRegistered: '{count, plural, one {# dispositivo} other {# dispositivos}}
+      registrado(s)'
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
@@ -751,6 +753,11 @@ components:
     confirmDelete: >-
       ¿Está seguro de que desea eliminar su cuenta de usuario? Una vez que lo
       haga, no se podrá recuperar.
+    updating: Actualizando
+    errorUpdatingProfile: Error al actualizar el perfil.
+    fields:
+      storeTripHistory: Guardar el historial de los viajes
+    fieldUpdated: Este ajuste se ha actualizado.
   UserSettings:
     confirmDeletion: >-
       Tiene almacenadas búsquedas o lugares recientes. Si desactiva el
