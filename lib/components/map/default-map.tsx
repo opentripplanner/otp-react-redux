@@ -308,7 +308,6 @@ class DefaultMap extends Component {
           <EndpointsOverlay />
           <RouteViewerOverlay />
           <TransitVehicleOverlay ModeIcon={ModeIcon} />
-          <StopViewerOverlay />
           <TransitiveOverlay
             getTransitiveRouteLabel={getTransitiveRouteLabel}
           />
