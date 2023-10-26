@@ -2,11 +2,12 @@
 // Typescript TODO: Waiting on viewer.js being typed
 import { connect } from 'react-redux'
 import { FormattedMessage, FormattedTime } from 'react-intl'
+import { InvisibleAdditionalDetails } from '@opentripplanner/itinerary-body/lib/styled'
 import React from 'react'
 import styled from 'styled-components'
 
+import { AppReduxState } from '../../util/state-types'
 import { getTripStatus, REALTIME_STATUS } from '../../util/viewer'
-import { InvisibleAdditionalDetails } from '@opentripplanner/itinerary-body/lib/styled'
 import FormattedDuration from '../util/formatted-duration'
 import FormattedRealtimeStatusLabel from '../util/formatted-realtime-status-label'
 
@@ -66,6 +67,7 @@ const RealtimeStatusLabel = ({
   isRealtime,
   onTimeThresholdSeconds,
   originalTime,
+  showScheduleDeviation,
   time,
   withBackground
 }: {
@@ -74,6 +76,7 @@ const RealtimeStatusLabel = ({
   isRealtime?: boolean
   onTimeThresholdSeconds?: number
   originalTime?: number
+  showScheduleDeviation?: boolean
   time?: number
   withBackground?: boolean
 }): JSX.Element => {
@@ -118,22 +121,24 @@ const RealtimeStatusLabel = ({
     >
       {renderedTime}
       <MainContent>
-        <FormattedRealtimeStatusLabel
-          minutes={
-            isEarlyOrLate ? (
-              <DelayText>
-                <FormattedDuration
-                  duration={Math.abs(delay)}
-                  includeSeconds={false}
-                />
-              </DelayText>
-            ) : (
-              <>{null}</>
-            )
-          }
-          // @ts-ignore getTripStatus is not typed yet
-          status={STATUS[status].label}
-        />
+        {showScheduleDeviation && (
+          <FormattedRealtimeStatusLabel
+            minutes={
+              isEarlyOrLate ? (
+                <DelayText>
+                  <FormattedDuration
+                    duration={Math.abs(delay)}
+                    includeSeconds={false}
+                  />
+                </DelayText>
+              ) : (
+                <>{null}</>
+              )
+            }
+            // @ts-ignore getTripStatus is not typed yet
+            status={STATUS[status].label}
+          />
+        )}
         {isEarlyOrLate && (
           <InvisibleAdditionalDetails>
             <FormattedMessage
@@ -151,11 +156,9 @@ const RealtimeStatusLabel = ({
   )
 }
 
-const mapStateToProps = (state: {
-  // Typescript TODO: type state
-  otp: { config: { onTimeThresholdSeconds: any } }
-}) => ({
-  onTimeThresholdSeconds: state.otp.config.onTimeThresholdSeconds
+const mapStateToProps = (state: AppReduxState) => ({
+  onTimeThresholdSeconds: state.otp.config.onTimeThresholdSeconds,
+  showScheduleDeviation: state.otp.config.showScheduleDeviation
 })
 
 export default connect(mapStateToProps)(RealtimeStatusLabel)

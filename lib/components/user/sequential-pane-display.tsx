@@ -21,6 +21,7 @@ export interface PaneProps {
 
 interface OwnProps {
   activePaneId: string
+  onFinish?: () => void
   panes: PaneProps[]
 }
 
@@ -57,7 +58,7 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
   }
 
   _handleToNextPane = async (e: MouseEvent<Button>) => {
-    const { activePane, activePaneIndex, panes } = this.props
+    const { activePane, activePaneIndex, onFinish, panes } = this.props
     const { invalid, invalidMessage } = activePane
 
     if (activePaneIndex < panes.length - 1) {
@@ -75,8 +76,10 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
         }
         this._routeTo(nextId)
       }
+      this._focusHeader()
+    } else if (onFinish) {
+      onFinish()
     }
-    this._focusHeader()
   }
 
   _handleToPrevPane = () => {
