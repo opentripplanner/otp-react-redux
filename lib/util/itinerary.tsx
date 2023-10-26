@@ -1,8 +1,20 @@
 import { differenceInMinutes } from 'date-fns'
+import { Itinerary, Leg, Place } from '@opentripplanner/types'
 import { toDate, utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
 
 import { WEEKDAYS, WEEKEND_DAYS } from './monitored-trip'
+
+interface ItineraryStartTime {
+  itinerary: Itinerary
+  legs: Leg[]
+  realtime: boolean
+}
+
+// FIXME: replace with OTP2 logic.
+interface ItineraryWithOTP1HailedCar extends Itinerary {
+  legs: (Leg & { hailedCar?: boolean })[]
+}
 
 /**
  * Determines whether the specified Itinerary can be monitored.
@@ -10,7 +22,7 @@ import { WEEKDAYS, WEEKEND_DAYS } from './monitored-trip'
  *   and none of the legs is a rental or ride hail leg (e.g. CAR_RENT, CAR_HAIL, BICYCLE_RENT, etc.).
  *   (We use the corresponding fields returned by OTP to get transit legs and rental/ride hail legs.)
  */
-export function itineraryCanBeMonitored(itinerary) {
+export function itineraryCanBeMonitored(itinerary: ItineraryWithOTP1HailedCar) {
   let hasTransit = false
   let hasRentalOrRideHail = false
 
@@ -33,14 +45,14 @@ export function itineraryCanBeMonitored(itinerary) {
   return hasTransit && !hasRentalOrRideHail
 }
 
-export function getMinutesUntilItineraryStart(itinerary) {
+export function getMinutesUntilItineraryStart(itinerary: Itinerary) {
   return differenceInMinutes(new Date(itinerary.startTime), new Date())
 }
 
 /**
  * Gets the first transit leg of the given itinerary, or null if none found.
  */
-function getFirstTransitLeg(itinerary) {
+function getFirstTransitLeg(itinerary: Itinerary) {
   return itinerary?.legs?.find((leg) => leg.transitLeg)
 }
 
@@ -48,8 +60,8 @@ function getFirstTransitLeg(itinerary) {
  * Get the first stop ID from the itinerary in the underscore format required by
  * the startTransitStopId query param (e.g., TRIMET_12345 instead of TRIMET:12345).
  */
-export function getFirstStopId(itinerary) {
-  return getFirstTransitLeg(itinerary)?.from.stopId.replace(':', '_')
+export function getFirstStopId(itinerary: Itinerary) {
+  return getFirstTransitLeg(itinerary)?.from.stopId?.replace(':', '_')
 }
 
 /**
@@ -62,7 +74,7 @@ export function getFirstStopId(itinerary) {
  * the determination. Otherwise, the itinerary startTime is used.
  */
 export function getItineraryDefaultMonitoredDays(
-  itinerary,
+  itinerary: Itinerary,
   timeZone = coreUtils.time.getUserTimezone()
 ) {
   const firstTransitLeg = getFirstTransitLeg(itinerary)
@@ -71,14 +83,14 @@ export function getItineraryDefaultMonitoredDays(
   // - The format of serviceDate can either be 'yyyyMMdd' (OTP v1) or 'yyyy-MM-dd' (OTP v2)
   //   and both formats are correctly handled by toDate from date-fns-tz.
   const startDate = firstTransitLeg
-    ? toDate(firstTransitLeg.serviceDate, { timeZone })
+    ? toDate(firstTransitLeg.serviceDate || '', { timeZone })
     : utcToZonedTime(new Date(itinerary.startTime), timeZone)
 
   const dayOfWeek = startDate.getDay()
   return dayOfWeek === 0 || dayOfWeek === 6 ? WEEKEND_DAYS : WEEKDAYS
 }
 
-function legLocationsAreEqual(legLocation, other) {
+function legLocationsAreEqual(legLocation: Place, other: Place) {
   return (
     !!legLocation &&
     !!other &&
@@ -87,7 +99,7 @@ function legLocationsAreEqual(legLocation, other) {
   )
 }
 
-export function itinerariesAreEqual(itinerary, other) {
+export function itinerariesAreEqual(itinerary: Itinerary, other: Itinerary) {
   return (
     itinerary.legs.length === other.legs.length &&
     itinerary.legs.every((leg, index) => {
@@ -101,15 +113,15 @@ export function itinerariesAreEqual(itinerary, other) {
   )
 }
 
-export function getFirstLegStartTime(legs) {
-  return legs[0].startTime
+export function getFirstLegStartTime(legs: Leg[]) {
+  return +legs[0].startTime
 }
 
-export function getLastLegEndTime(legs) {
-  return legs[legs.length - 1].endTime
+export function getLastLegEndTime(legs: Leg[]) {
+  return +legs[legs.length - 1].endTime
 }
 
-export function sortStartTimes(startTimes) {
+export function sortStartTimes(startTimes: ItineraryStartTime[]) {
   return startTimes?.sort(
     (a, b) => getFirstLegStartTime(a.legs) - getFirstLegStartTime(b.legs)
   )
