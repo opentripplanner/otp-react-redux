@@ -1,4 +1,9 @@
-import { MapLocationActionArg, Route, Stop } from '@opentripplanner/types'
+import {
+  Agency,
+  MapLocationActionArg,
+  Route,
+  Stop
+} from '@opentripplanner/types'
 
 // TYPESCRIPT TODO: move this to a larger shared types file, preferably within otp-ui
 export interface StopData {
@@ -41,6 +46,15 @@ export interface Pattern {
   patternGeometry?: {
     length: number
     points: string
+  }
+  route: {
+    agency: Agency
+    color: string
+    longName: string
+    mode: string
+    shortName: string
+    textColor: string
+    type: string
   }
   stops?: StopData[]
 }

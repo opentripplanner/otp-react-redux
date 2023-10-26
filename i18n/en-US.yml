@@ -358,6 +358,7 @@ components:
     companyBicycle: "{company} Bike"
     companyScooter: "{company} Scooter"
     error: An error occurred loading nearby amenities.
+    nothingNearby: There are no places nearby.
     spacesAvailable: "{spacesAvailable} empty spaces available"
   NewAccountWizard:
     createNewAccount: Create a new account

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { MapRef, useMap } from 'react-map-gl'
-import { useIntl } from 'react-intl'
 import React, { useEffect, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
@@ -83,9 +83,13 @@ function NearbyView(props: Props): JSX.Element {
           </FloatingLoadingIndicator>
         )}
         {nearby &&
-          (nearby.error
-            ? intl.formatMessage({ id: 'components.NearbyView.error' })
-            : getNearbyItemList(nearby))}
+          (nearby.error ? (
+            intl.formatMessage({ id: 'components.NearbyView.error' })
+          ) : nearby.length > 0 ? (
+            getNearbyItemList(nearby)
+          ) : (
+            <FormattedMessage id="components.NearbyView.nothingNearby" />
+          ))}
       </NearbySidebarContainer>
     </Scrollable>
   )

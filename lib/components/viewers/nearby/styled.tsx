@@ -36,6 +36,7 @@ export const CardHeader = styled.div`
   font-size: 22px;
   padding: 1rem 1.2rem;
   font-weight: 600;
+  display: flex;
 `
 
 export const CardSubheader = styled.p`

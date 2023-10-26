@@ -1,8 +1,9 @@
+import { Calendar, MapPin } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
 import { format } from 'date-fns-tz'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { InfoCircle } from '@styled-icons/fa-solid/InfoCircle'
-import { Place } from '@opentripplanner/types'
+import { Place, TransitOperator } from '@opentripplanner/types'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { useMap } from 'react-map-gl'
 import coreUtils from '@opentripplanner/core-utils'
@@ -12,7 +13,6 @@ import React from 'react'
 
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
-import { Calendar } from '@styled-icons/fa-solid'
 
 import {
   Card,
@@ -21,8 +21,9 @@ import {
   PatternRowContainer,
   StyledAlert
 } from './styled'
-import { Icon, IconWithText } from '../../util/styledIcon'
+import { IconWithText } from '../../util/styledIcon'
 import { Pattern, StopTime } from '../../util/types'
+import OperatorLogo from '../../util/operator-logo'
 import PatternRow from '../pattern-row'
 import Strong from '../../util/strong-text'
 
@@ -70,6 +71,7 @@ type Props = {
   setViewedStop: (stop: any, nearby: string) => void
   showOperatorLogo: boolean
   stopData: StopData
+  transitOperators: TransitOperator[]
   zoomToPlace: (map: any, stopData: any) => void
 }
 
@@ -79,10 +81,17 @@ const Stop = ({
   setLocation,
   setViewedStop,
   stopData,
+  transitOperators,
   zoomToPlace
 }: Props): JSX.Element => {
   const intl = useIntl()
   const map = useMap()
+
+  const agencies = stopData.stoptimesForPatterns?.reduce<Set<string>>(
+    // @ts-expect-error The agency type is not yet compatible with OTP2
+    (prev, cur) => prev.add(cur.pattern.route.agency.gtfsId),
+    new Set()
+  )
 
   // TODO: We need to bring back the day break-up we had with the old stop viewer
   const patternRows = stopData.stoptimesForPatterns
@@ -144,24 +153,42 @@ const Stop = ({
     setHoveredStop(undefined)
   }
 
+  const CustomOperatorLogo = () => {
+    const operator = agencies.size
+      ? transitOperators.find((o) => o.agencyId === Array.from(agencies)[0])
+      : undefined
+    // We can use the first route, as this operator will only be used if there is only one operator
+    return operator ? (
+      <OperatorLogo
+        alt={intl.formatMessage(
+          {
+            id: 'components.StopViewer.operatorLogoAriaLabel'
+          },
+          {
+            operatorName: operator.name
+          }
+        )}
+        operator={operator}
+      />
+    ) : (
+      <MapPin />
+    )
+  }
+
   return (
     <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      <CardHeader>{stopData.name}</CardHeader>
+      <CardHeader>
+        <IconWithText Icon={CustomOperatorLogo}>{stopData.name}</IconWithText>
+      </CardHeader>
       <CardBody>
         <div>
           <FormattedMessage
             id="components.StopViewer.displayStopId"
-            values={{ stopId: stopData.code, strong: Strong }}
+            values={{
+              stopId: stopData.code || stopData.gtfsId,
+              strong: Strong
+            }}
           />
-          <button
-            className="link-button"
-            onClick={zoomToStop}
-            title={intl.formatMessage({
-              id: 'components.StopViewer.zoomToStop'
-            })}
-          >
-            <Icon Icon={Search} style={{ marginLeft: '0.2em' }} />
-          </button>
           <button
             className="link-button pull-right"
             onClick={() => setViewedStop({ stopId: stopData.gtfsId }, 'stop')}
@@ -200,7 +227,8 @@ const mapDispatchToProps = {
 const mapStateToProps = (state: any) => {
   const { config } = state.otp
   return {
-    homeTimezone: config.homeTimezone
+    homeTimezone: config.homeTimezone,
+    transitOperators: config.transitOperators
   }
 }
 

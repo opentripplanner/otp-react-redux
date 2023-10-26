@@ -1,11 +1,14 @@
 import { Bicycle } from '@styled-icons/fa-solid/Bicycle'
 import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
+// @ts-expect-error icons doesn't have typescript?
+import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { IntlShape, useIntl } from 'react-intl'
 import { useMap } from 'react-map-gl'
 // @ts-expect-error icons doesn't have typescript?
 import { Micromobility } from '@opentripplanner/icons'
-import React from 'react'
+import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
+import React, { Suspense } from 'react'
 
 import * as mapActions from '../../../actions/map'
 
@@ -68,30 +71,59 @@ const getVehicleText = (
 
 const Vehicle = ({
   companies,
+  setLocation,
   vehicle,
   zoomToPlace
 }: {
   companies: Company[]
+  setLocation: (args: any) => void
   vehicle: any
   zoomToPlace: (map: any, stopData: any) => void
 }): JSX.Element => {
-  const intl = useIntl()
   const map = useMap().default
   const company = companies.find((c) => c.id === vehicle.network)?.label ?? ''
   const { formFactor } = vehicle.vehicleType
+  const setLocationFromPlace = (locationType: 'from' | 'to') => {
+    const location = {
+      lat: vehicle.lat,
+      lon: vehicle.lon,
+      name: vehicle.name
+    }
+    setLocation({ location, locationType, reverseGeocode: false })
+  }
+  const getStationIcon = () => {
+    const CompanyIcon = getCompanyIcon(vehicle.network)
+    console.log(CompanyIcon)
+    console.log(vehicle.network)
+    return CompanyIcon ? (
+      <Suspense fallback={<span>{company}</span>}>
+        <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
+      </Suspense>
+    ) : (
+      getVehicleIcon(formFactor)
+    )
+  }
   return (
     <Card onMouseEnter={() => zoomToPlace(map, vehicle)}>
       <CardHeader>
-        <IconWithText Icon={getVehicleIcon(formFactor)}>
-          {getVehicleText(formFactor, company, intl)}
-        </IconWithText>
+        <IconWithText Icon={getStationIcon()}>{company}</IconWithText>
       </CardHeader>
-      <CardBody>{vehicle.name}</CardBody>
+      <CardBody>
+        <div>{vehicle.name}</div>
+        <span role="group">
+          <FromToLocationPicker
+            label
+            onFromClick={() => setLocationFromPlace('from')}
+            onToClick={() => setLocationFromPlace('to')}
+          />
+        </span>
+      </CardBody>
     </Card>
   )
 }
 
 const mapDispatchToProps = {
+  setLocation: mapActions.setLocation,
   zoomToPlace: mapActions.zoomToPlace
 }
 

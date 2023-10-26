@@ -55,8 +55,13 @@ const mapStateToProps = (state: any) => {
     stops = state.otp.overlay.transit.stops
   }
 
+  const highlightedStopColor = getComputedStyle(
+    document.documentElement
+  ).getPropertyValue('--main-base-color')
+
   return {
     highlightedStop,
+    highlightedStopColor,
     minZoom,
     stops,
     visible
