@@ -110,8 +110,32 @@ export function getItineraryView({
   ui_itineraryView
 }: UrlParams): ItineraryView {
   return (
+    ((ui_activeItinerary === null ||
+      ui_activeItinerary === undefined ||
+      `${ui_activeItinerary}` === '-1') &&
+      (ui_itineraryView === ItineraryView.LIST_HIDDEN
+        ? ItineraryView.LIST_HIDDEN
+        : ItineraryView.LIST)) ||
     ui_itineraryView ||
     (isDefinedAndNotEqual(ui_activeItinerary, -1) && ItineraryView.FULL) ||
     ItineraryView.LIST
   )
+}
+
+/**
+ * Gets the new itinerary view to display based on current view.
+ */
+export function getMapToggleNewItineraryView(
+  currentView: ItineraryView
+): ItineraryView {
+  switch (currentView) {
+    case ItineraryView.LEG:
+      return ItineraryView.LEG_HIDDEN
+    case ItineraryView.LIST:
+      return ItineraryView.LIST_HIDDEN
+    case ItineraryView.LEG_HIDDEN:
+      return ItineraryView.LEG
+    default:
+      return ItineraryView.LIST
+  }
 }

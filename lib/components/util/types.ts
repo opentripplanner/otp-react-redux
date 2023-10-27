@@ -120,10 +120,3 @@ export type SetViewedRouteHandler = (route?: ViewedRouteState) => void
 export type SetViewedStopHandler = (payload: Stop | null) => void
 
 export type SetLocationHandler = (payload: MapLocationActionArg) => void
-
-export interface ConfiguredTransitMode {
-  color?: string
-  label?: string
-  mode: string
-  showWheelchairSetting?: boolean
-}

@@ -1,9 +1,26 @@
 /* globals describe, expect, it */
 
 import '../test-utils/mock-window-url'
-import { queryIsValid } from '../../lib/util/state'
+import { isValidSubsequence, queryIsValid } from '../../lib/util/state'
 
 describe('util > state', () => {
+  describe('isValidSubsequence', () => {
+    it('should handle edge cases correctly', () => {
+      expect(isValidSubsequence([0], [0])).toBe(true)
+      expect(isValidSubsequence([0], [1])).toBe(false)
+      expect(isValidSubsequence([], [])).toBe(true)
+      expect(isValidSubsequence([], [9])).toBe(false)
+      expect(isValidSubsequence([9], [])).toBe(true)
+      expect(isValidSubsequence([9], [9, 9])).toBe(false)
+      expect(isValidSubsequence([9, 9, 9], [9, 9])).toBe(true)
+    })
+    it('should handle normal cases correctly', () => {
+      expect(isValidSubsequence([1, 2, 3, 4, 5], [5, 6, 3])).toBe(false)
+      expect(isValidSubsequence([1, 2, 3, 4, 5], [2, 3, 4])).toBe(true)
+      expect(isValidSubsequence([1, 2, 4, 4, 3], [2, 3, 4])).toBe(false)
+      expect(isValidSubsequence([1, 2, 3, 4, 5], [1, 3, 4])).toBe(false)
+    })
+  })
   describe('queryIsValid', () => {
     const fakeFromLocation = {
       lat: 12,

@@ -52,6 +52,7 @@ actions:
     emailVerificationResent: The email verification message has been resent.
     genericError: "An error was encountered: {err}"
     itineraryExistenceCheckFailed: Error checking whether your selected trip is possible.
+    mustAcceptTermsToSavePlace: Please accept the Terms of Use (under My Account) to save locations.
     mustBeLoggedInToSavePlace: Please log in to save locations.
     placeRemembered: The settings for this place have been saved.
     preferencesSaved: Your preferences have been saved.
@@ -370,6 +371,7 @@ components:
     description: The content you requested is not available.
     header: Content not found
   NotificationPrefsPane:
+    devicesRegistered: "{count, plural, one {# device} other {# devices}} registered"
     noDeviceForPush: Register your device using the mobile app to access push notifications.
     notificationChannelPrompt: "Receive notifications about your saved trips via:"
   OTP2ErrorRenderer:
@@ -686,6 +688,7 @@ components:
     notificationsDisabled: "Notifications: <strong>Disabled</strong>"
   TripTools:
     copyLink: Copy Link
+    header: Trip Tools
     linkCopied: Copied
     reportEmailSubject: Reporting an Issue with OpenTripPlanner
     reportEmailTemplate: >
@@ -724,6 +727,11 @@ components:
     confirmDelete: >-
       Are you sure you would like to delete your user account? Once you do so,
       it cannot be recovered.
+    errorUpdatingProfile: Error updating profile.
+    fieldUpdated: This setting has been updated.
+    fields:
+      storeTripHistory: Store trip history
+    updating: Updating
   UserSettings:
     confirmDeletion: >-
       You have recent searches and/or places stored. Disabling storage of recent

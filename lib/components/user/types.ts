@@ -26,3 +26,7 @@ export interface User {
   savedLocations?: UserSavedLocation[]
   storeTripHistory?: boolean
 }
+
+export type EditedUser = Omit<User, 'notificationChannel'> & {
+  notificationChannel: string[]
+}

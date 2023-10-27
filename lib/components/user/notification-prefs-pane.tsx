@@ -5,7 +5,9 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap'
 import React from 'react'
 import styled from 'styled-components'
 
+import { AppReduxState } from '../../util/state-types'
 import { GRAY_ON_WHITE } from '../util/colors'
+import { PhoneFormatConfig } from '../../util/config-types'
 
 import { FieldSet } from './styled'
 import { PhoneVerificationSubmitHandler } from './phone-verification-form'
@@ -19,9 +21,7 @@ interface Props extends FormikProps<User> {
   loggedInUser: User
   onRequestPhoneVerificationCode: PhoneCodeRequestHandler
   onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
-  phoneFormatOptions: {
-    countryCode: string
-  }
+  phoneFormatOptions: PhoneFormatConfig
 }
 
 const allNotificationChannels = ['email', 'sms', 'push']
@@ -56,6 +56,7 @@ const NotificationOption = styled(ListGroupItem)`
  */
 const NotificationPrefsPane = ({
   allowedNotificationChannels,
+  handleChange, // Formik or custom handler
   onRequestPhoneVerificationCode,
   onSendPhoneVerificationCode,
   phoneFormatOptions,
@@ -70,8 +71,6 @@ const NotificationPrefsPane = ({
       </legend>
       <ListGroup>
         {allowedNotificationChannels.map((type) => {
-          // TODO: If removing the Save/Cancel buttons on the account screen,
-          // persist changes immediately when onChange is triggered.
           const inputId = `notification-channel-${type}`
           const inputDescriptionId = `${inputId}-description`
           return (
@@ -79,10 +78,12 @@ const NotificationPrefsPane = ({
               <span>
                 <Field
                   aria-describedby={inputDescriptionId}
-                  // TODO: Check this condition.
                   disabled={type === 'push' && !pushDevices}
                   id={inputId}
                   name="notificationChannel"
+                  // Override onChange explicitly to use the custom one for existing accounts.
+                  // (The Formik's one will still be used for new accounts.)
+                  onChange={handleChange}
                   type="checkbox"
                   value={type}
                 />
@@ -105,8 +106,12 @@ const NotificationPrefsPane = ({
                 ) : (
                   <span id={inputDescriptionId}>
                     {pushDevices ? (
-                      // TODO: i18n
-                      `${pushDevices} devices registered`
+                      <FormattedMessage
+                        id="components.NotificationPrefsPane.devicesRegistered"
+                        values={{
+                          count: pushDevices
+                        }}
+                      />
                     ) : (
                       <FormattedMessage id="components.NotificationPrefsPane.noDeviceForPush" />
                     )}
@@ -121,14 +126,17 @@ const NotificationPrefsPane = ({
   )
 }
 
-const mapStateToProps = (state: any) => {
-  const { supportsPushNotifications } =
-    state.otp.config.persistence?.otp_middleware || {}
+const mapStateToProps = (state: AppReduxState) => {
+  const { persistence, phoneFormatOptions } = state.otp.config
+  const supportsPushNotifications =
+    persistence && 'otp_middleware' in persistence
+      ? persistence.otp_middleware?.supportsPushNotifications
+      : false
   return {
     allowedNotificationChannels: supportsPushNotifications
       ? allNotificationChannels
       : emailAndSms,
-    phoneFormatOptions: state.otp.config.phoneFormatOptions
+    phoneFormatOptions
   }
 }
 

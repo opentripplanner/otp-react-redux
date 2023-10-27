@@ -3,7 +3,7 @@ import React, { ComponentType } from 'react'
 
 import BackLink from '../back-link'
 import PageTitle from '../../util/page-title'
-import StackedPaneDisplay from '../stacked-pane-display'
+import StackedPanesWithSave from '../stacked-panes-with-save'
 
 interface Props {
   isCreating: boolean
@@ -50,9 +50,9 @@ const SavedTripEditor = (props: Props): JSX.Element => {
       <>
         <PageTitle title={title} />
         <BackLink />
-        <StackedPaneDisplay
+        <StackedPanesWithSave
           onCancel={onCancel}
-          paneSequence={paneSequence}
+          panes={paneSequence}
           title={title}
         />
       </>

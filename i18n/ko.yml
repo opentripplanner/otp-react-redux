@@ -504,6 +504,7 @@ components:
     notifyViaChannelWhen: "다음의 경우, {channel}을 통해 알려주세요:"
     oneHour: 1 시간
     realtimeAlertFlagged: 내 트립 일정에 실시간 경고가 있습니다
+    timeBefore: "{time} 전"
   TripStatus:
     alerts: "{alerts, plural, one {# 경고!} other {# 경고!}}"
     deleteTrip: 트립 삭제
@@ -561,6 +562,7 @@ components:
     notificationsDisabled: "알림: <strong>비활성화됨</strong>"
   TripTools:
     copyLink: 링크 복사
+    header: 도구
     linkCopied: 복사됨
     reportEmailSubject: OpenTripPlanner로 문제 보고
     reportEmailTemplate: |
