@@ -37,11 +37,11 @@ const mapStateToProps = (state: any) => {
       // However, without changes to GraphQL, getting this data is very expensive
       Object.values(patterns).forEach((p) => {
         p?.stops
-          ?.filter((s) => s.geometries?.geoJson?.type === 'Polygon')
-          ?.forEach((s) => (stopsById[s.id] = s))
+          ?.filter((s: Stop) => s.geometries?.geoJson?.type === 'Polygon')
+          ?.forEach((s: Stop) => (stopsById[s.id] = s))
       })
     } else if (patternId) {
-      patterns?.[patternId]?.stops?.forEach((s) => (stopsById[s.id] = s))
+      patterns?.[patternId]?.stops?.forEach((s: Stop) => (stopsById[s.id] = s))
     }
 
     stops = Object.values(stopsById)
