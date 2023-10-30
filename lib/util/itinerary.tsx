@@ -2,6 +2,8 @@ import { differenceInMinutes } from 'date-fns'
 import { Itinerary, Leg, Place } from '@opentripplanner/types'
 import { toDate, utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
+import hash from 'object-hash'
+import memoize from 'lodash.memoize'
 
 import { WEEKDAYS, WEEKEND_DAYS } from './monitored-trip'
 
@@ -12,8 +14,14 @@ interface ItineraryStartTime {
 }
 
 // FIXME: replace with OTP2 logic.
-interface ItineraryWithOTP1HailedCar extends Itinerary {
+interface ItineraryWithOtp1HailedCar extends Itinerary {
   legs: (Leg & { hailedCar?: boolean })[]
+}
+
+interface OtpResponse {
+  plan: {
+    itineraries: Itinerary[]
+  }
 }
 
 /**
@@ -23,7 +31,7 @@ interface ItineraryWithOTP1HailedCar extends Itinerary {
  *   (We use the corresponding fields returned by OTP to get transit legs and rental/ride hail legs.)
  */
 export function itineraryCanBeMonitored(
-  itinerary: ItineraryWithOTP1HailedCar
+  itinerary: ItineraryWithOtp1HailedCar
 ): boolean {
   let hasTransit = false
   let hasRentalOrRideHail = false
@@ -62,7 +70,7 @@ function getFirstTransitLeg(itinerary: Itinerary) {
  * Get the first stop ID from the itinerary in the underscore format required by
  * the startTransitStopId query param (e.g., TRIMET_12345 instead of TRIMET:12345).
  */
-export function getFirstStopId(itinerary: Itinerary): string {
+export function getFirstStopId(itinerary: Itinerary): string | undefined {
   return getFirstTransitLeg(itinerary)?.from.stopId?.replace(':', '_')
 }
 
@@ -132,4 +140,57 @@ export function sortStartTimes(
   return startTimes?.sort(
     (a, b) => getFirstLegStartTime(a.legs) - getFirstLegStartTime(b.legs)
   )
+}
+
+// Ignore certain keys that could add significant calculation time to hashing.
+// The alerts are irrelevant, but the intermediateStops, interStopGeometry and
+// steps could have the legGeometry substitute as an equivalent hash value
+const blackListedKeys = [
+  'alerts',
+  'intermediateStops',
+  'interStopGeometry',
+  'steps'
+]
+// make blackListedKeys into an object due to superior lookup performance
+const blackListedKeyLookup: Record<string, boolean> = {}
+blackListedKeys.forEach((key) => {
+  blackListedKeyLookup[key] = true
+})
+
+/**
+ * A memoized function to hash the itinerary.
+ * NOTE: It can take a while (>30ms) for the object-hash library to calculate
+ * an itinerary's hash for some lengthy itineraries. If better performance is
+ * desired, additional values to blackListedKeys should be added to avoid
+ * spending extra time hashing values that wouldn't result in different
+ * itineraries.
+ */
+const hashItinerary = memoize((itinerary) =>
+  hash(itinerary, { excludeKeys: (key) => blackListedKeyLookup[key] })
+)
+
+/**
+ * Returns a list of itineraries from the redux-stored responses, without duplicates.
+ */
+export function collectItinerariesWithoutDuplicates(
+  response: OtpResponse[]
+): Itinerary[] {
+  const itineraries: Itinerary[] = []
+  // keep track of itinerary hashes in order to not include duplicate
+  // itineraries. Duplicate itineraries can occur in batch routing where a walk
+  // to transit trip can sometimes still be the most optimal trip even when
+  // additional modes such as bike rental were also requested
+  const seenItineraryHashes: Record<string, boolean> = {}
+  response?.forEach((res) => {
+    res?.plan?.itineraries?.forEach((itinerary) => {
+      // hashing takes a while on itineraries
+      const itineraryHash = hashItinerary(itinerary)
+      if (!seenItineraryHashes[itineraryHash]) {
+        itineraries.push(itinerary)
+        seenItineraryHashes[itineraryHash] = true
+      }
+    })
+  })
+
+  return itineraries
 }
