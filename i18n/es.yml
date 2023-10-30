@@ -68,6 +68,8 @@ actions:
     smsVerificationFailed: >-
       Su teléfono no ha podido ser verificado. Quizás el código que has
       introducido ha caducado. Solicita un nuevo código e inténtalo de nuevo.
+    mustAcceptTermsToSavePlace: Por favor, acepte las Condiciones de uso (en Mi cuenta)
+      para guardar las ubicaciones.
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -377,15 +379,17 @@ components:
   NotificationPrefsPane:
     noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
     notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por:"
+    devicesRegistered: '{count, plural, one {# dispositivo} other {# dispositivos}}
+      registrado(s)'
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
-        {inputFieldsCount, plural, =0 {} one {localización es} other
-        {localizaciones son}} no están cerca de ninguna calle.
+        {inputFields} {inputFieldsCount, plural, =0 {} one {la ubicación es} other
+        {las ubicaciones son}} no está cerca de ninguna calle.
       header: No se puede acceder a la ubicación
     NO_STOPS_IN_RANGE:
       body: >-
-        {inputFieldsCount, plural, =0 {} one {ubicación es} other {ubicaciones
+        {inputFields} {inputFieldsCount, plural, =0 {} one {ubicación es} other {ubicaciones
         son}} no están cerca de ninguna parada del transporte.
       header: Sin paradas cerca
     NO_TRANSIT_CONNECTION:
@@ -401,9 +405,8 @@ components:
       header: Sin conexiones por el criterio de la búsqueda
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFieldsCount, plural, =0 {} one {localización es} other
-        {localizaciones son}} no están en los límites del planificador de
-        viajes.
+        {inputFields} {inputFieldsCount, plural, =0 {} one {ubicación es} other {ubicaciones
+        son}} no están en los límites del planificador de viajes.
       header: Ubicación fuera de los límites
     OUTSIDE_SERVICE_PERIOD:
       body: >-
@@ -750,6 +753,11 @@ components:
     confirmDelete: >-
       ¿Está seguro de que desea eliminar su cuenta de usuario? Una vez que lo
       haga, no se podrá recuperar.
+    updating: Actualizando
+    errorUpdatingProfile: Error al actualizar el perfil.
+    fields:
+      storeTripHistory: Guardar el historial de los viajes
+    fieldUpdated: Este ajuste se ha actualizado.
   UserSettings:
     confirmDeletion: >-
       Tiene almacenadas búsquedas o lugares recientes. Si desactiva el
