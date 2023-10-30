@@ -22,7 +22,9 @@ interface ItineraryWithOTP1HailedCar extends Itinerary {
  *   and none of the legs is a rental or ride hail leg (e.g. CAR_RENT, CAR_HAIL, BICYCLE_RENT, etc.).
  *   (We use the corresponding fields returned by OTP to get transit legs and rental/ride hail legs.)
  */
-export function itineraryCanBeMonitored(itinerary: ItineraryWithOTP1HailedCar) {
+export function itineraryCanBeMonitored(
+  itinerary: ItineraryWithOTP1HailedCar
+): boolean {
   let hasTransit = false
   let hasRentalOrRideHail = false
 
@@ -45,7 +47,7 @@ export function itineraryCanBeMonitored(itinerary: ItineraryWithOTP1HailedCar) {
   return hasTransit && !hasRentalOrRideHail
 }
 
-export function getMinutesUntilItineraryStart(itinerary: Itinerary) {
+export function getMinutesUntilItineraryStart(itinerary: Itinerary): number {
   return differenceInMinutes(new Date(itinerary.startTime), new Date())
 }
 
@@ -60,7 +62,7 @@ function getFirstTransitLeg(itinerary: Itinerary) {
  * Get the first stop ID from the itinerary in the underscore format required by
  * the startTransitStopId query param (e.g., TRIMET_12345 instead of TRIMET:12345).
  */
-export function getFirstStopId(itinerary: Itinerary) {
+export function getFirstStopId(itinerary: Itinerary): string {
   return getFirstTransitLeg(itinerary)?.from.stopId?.replace(':', '_')
 }
 
@@ -76,7 +78,7 @@ export function getFirstStopId(itinerary: Itinerary) {
 export function getItineraryDefaultMonitoredDays(
   itinerary: Itinerary,
   timeZone = coreUtils.time.getUserTimezone()
-) {
+): string[] {
   const firstTransitLeg = getFirstTransitLeg(itinerary)
   // firstTransitLeg should be non-null because only transit trips can be monitored at this time.
   // - using serviceDate covers legs that start past midnight.
@@ -99,7 +101,10 @@ function legLocationsAreEqual(legLocation: Place, other: Place) {
   )
 }
 
-export function itinerariesAreEqual(itinerary: Itinerary, other: Itinerary) {
+export function itinerariesAreEqual(
+  itinerary: Itinerary,
+  other: Itinerary
+): boolean {
   return (
     itinerary.legs.length === other.legs.length &&
     itinerary.legs.every((leg, index) => {
@@ -113,15 +118,17 @@ export function itinerariesAreEqual(itinerary: Itinerary, other: Itinerary) {
   )
 }
 
-export function getFirstLegStartTime(legs: Leg[]) {
+export function getFirstLegStartTime(legs: Leg[]): number {
   return +legs[0].startTime
 }
 
-export function getLastLegEndTime(legs: Leg[]) {
+export function getLastLegEndTime(legs: Leg[]): number {
   return +legs[legs.length - 1].endTime
 }
 
-export function sortStartTimes(startTimes: ItineraryStartTime[]) {
+export function sortStartTimes(
+  startTimes: ItineraryStartTime[]
+): ItineraryStartTime[] {
   return startTimes?.sort(
     (a, b) => getFirstLegStartTime(a.legs) - getFirstLegStartTime(b.legs)
   )
