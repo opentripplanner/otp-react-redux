@@ -128,10 +128,6 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.click('label[title="Bike"]')
     await page.waitForTimeout(200)
     // Change the date
-    // FIXME: Must click Edit again [mobile-specific]
-    if (isMobile) {
-      await page.click('button.edit-search-button')
-    }
     await page.hover('#date-time-button')
     await page.waitForTimeout(200)
     await page.focus('input[type="date"]')
