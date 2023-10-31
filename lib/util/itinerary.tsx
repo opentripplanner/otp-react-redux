@@ -5,6 +5,7 @@ import coreUtils from '@opentripplanner/core-utils'
 import hash from 'object-hash'
 import memoize from 'lodash.memoize'
 
+import { CO2Config } from './config-types'
 import { WEEKDAYS, WEEKEND_DAYS } from './monitored-trip'
 
 interface ItineraryStartTime {
@@ -22,6 +23,11 @@ interface OtpResponse {
   plan: {
     itineraries: Itinerary[]
   }
+}
+
+export interface ItineraryWithCO2Info extends Itinerary {
+  co2: number
+  co2VsBaseline: number
 }
 
 /**
@@ -193,4 +199,76 @@ export function collectItinerariesWithoutDuplicates(
   })
 
   return itineraries
+}
+
+/**
+ * Whether an itinerary is car-only.
+ */
+function isCarOnly(itin: Pick<Itinerary, 'legs'>) {
+  return itin.legs.length === 1 && itin.legs[0].mode.startsWith('CAR')
+}
+
+/**
+ * Returns a car itinerary if there is one, otherwise returns false.
+ */
+function getCarItinerary(itineraries: Pick<Itinerary, 'legs'>[]) {
+  return (
+    !!itineraries.filter(isCarOnly).length && itineraries.filter(isCarOnly)[0]
+  )
+}
+
+/**
+ * Compute the carbon emitted while driving (the baseline for comparison).
+ */
+function computeCarbonBaseline(itineraries: Itinerary[], co2Config: CO2Config) {
+  // Sums the sum of the leg distances for each leg
+  const avgDistance =
+    itineraries.reduce(
+      (sum, itin) =>
+        sum + itin.legs.reduce((legsum, leg) => legsum + leg.distance, 0),
+      0
+    ) / itineraries.length
+
+  // If we do not have a drive yourself itinerary, estimate the distance based on avg of transit distances.
+  return coreUtils.itinerary.calculateEmissions(
+    getCarItinerary(itineraries) || {
+      legs: [{ distance: avgDistance, mode: 'CAR' }] as Leg[]
+    },
+    co2Config?.carbonIntensity,
+    co2Config?.massUnit
+  )
+}
+
+/**
+ * Add carbon info to an itinerary.
+ */
+function addCarbonInfo(
+  itin: Itinerary,
+  co2Config: CO2Config,
+  baselineCo2: number
+) {
+  const emissions = coreUtils.itinerary.calculateEmissions(
+    itin,
+    co2Config?.carbonIntensity,
+    co2Config?.massUnit
+  )
+  return {
+    ...itin,
+    co2: emissions,
+    co2VsBaseline: (emissions - baselineCo2) / baselineCo2
+  }
+}
+
+/**
+ * Add carbon info to the given set of itineraries.
+ */
+export function addCarbonInfoToAll(
+  itineraries: Itinerary[],
+  co2Config: CO2Config
+): ItineraryWithCO2Info[] {
+  const baselineCo2 = computeCarbonBaseline(itineraries, co2Config)
+  return (
+    itineraries?.map((itin) => addCarbonInfo(itin, co2Config, baselineCo2)) ||
+    []
+  )
 }
