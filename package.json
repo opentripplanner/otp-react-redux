@@ -75,7 +75,7 @@
     "flat": "^5.0.2",
     "formik": "^2.1.5",
     "formik-error-focus": "^1.1.0",
-    "graphql": "^16.6.0",
+    "graphql": "^16.8.1",
     "gtfs-realtime-bindings": "^0.0.6",
     "haversine": "^1.1.0",
     "history": "^4.7.2",
