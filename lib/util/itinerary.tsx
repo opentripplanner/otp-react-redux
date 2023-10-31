@@ -25,7 +25,11 @@ interface OtpResponse {
   }
 }
 
-export interface ItineraryWithCO2Info extends Itinerary {
+export interface ItineraryWithIndex extends Itinerary {
+  index: number
+}
+
+export interface ItineraryWithCO2Info extends ItineraryWithIndex {
   co2: number
   co2VsBaseline: number
 }
@@ -180,8 +184,8 @@ const hashItinerary = memoize((itinerary) =>
  */
 export function collectItinerariesWithoutDuplicates(
   response: OtpResponse[]
-): Itinerary[] {
-  const itineraries: Itinerary[] = []
+): ItineraryWithIndex[] {
+  const itineraries: ItineraryWithIndex[] = []
   // keep track of itinerary hashes in order to not include duplicate
   // itineraries. Duplicate itineraries can occur in batch routing where a walk
   // to transit trip can sometimes still be the most optimal trip even when
@@ -192,7 +196,7 @@ export function collectItinerariesWithoutDuplicates(
       // hashing takes a while on itineraries
       const itineraryHash = hashItinerary(itinerary)
       if (!seenItineraryHashes[itineraryHash]) {
-        itineraries.push(itinerary)
+        itineraries.push({ ...itinerary, index: itineraries.length })
         seenItineraryHashes[itineraryHash] = true
       }
     })
@@ -243,7 +247,7 @@ function computeCarbonBaseline(itineraries: Itinerary[], co2Config: CO2Config) {
  * Add carbon info to an itinerary.
  */
 function addCarbonInfo(
-  itin: Itinerary,
+  itin: ItineraryWithIndex,
   co2Config: CO2Config,
   baselineCo2: number
 ) {
@@ -263,7 +267,7 @@ function addCarbonInfo(
  * Add carbon info to the given set of itineraries.
  */
 export function addCarbonInfoToAll(
-  itineraries: Itinerary[],
+  itineraries: ItineraryWithIndex[],
   co2Config: CO2Config
 ): ItineraryWithCO2Info[] {
   const baselineCo2 = computeCarbonBaseline(itineraries, co2Config)
