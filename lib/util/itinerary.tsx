@@ -29,7 +29,7 @@ export interface ItineraryWithIndex extends Itinerary {
   index: number
 }
 
-export interface ItineraryWithCO2Info extends ItineraryWithIndex {
+export interface ItineraryWithCO2Info extends Itinerary {
   co2: number
   co2VsBaseline: number
 }
@@ -246,8 +246,8 @@ function computeCarbonBaseline(itineraries: Itinerary[], co2Config: CO2Config) {
 /**
  * Add carbon info to an itinerary.
  */
-function addCarbonInfo(
-  itin: ItineraryWithIndex,
+function addCarbonInfo<T extends Itinerary>(
+  itin: T,
   co2Config: CO2Config,
   baselineCo2: number
 ) {
@@ -266,8 +266,8 @@ function addCarbonInfo(
 /**
  * Add carbon info to the given set of itineraries.
  */
-export function addCarbonInfoToAll(
-  itineraries: ItineraryWithIndex[],
+export function addCarbonInfoToAll<T extends Itinerary>(
+  itineraries: T[],
   co2Config: CO2Config
 ): ItineraryWithCO2Info[] {
   const baselineCo2 = computeCarbonBaseline(itineraries, co2Config)
