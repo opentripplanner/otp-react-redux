@@ -1,17 +1,19 @@
 import { connect } from 'react-redux'
-import { Itinerary, Location } from '@opentripplanner/types'
+import { Itinerary, Leg, Location } from '@opentripplanner/types'
 import { Marker } from 'react-map-gl'
 import polyline from '@mapbox/polyline'
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import { boxShadowCss } from '../form/batch-styled'
+import { ComponentContext } from '../../util/contexts'
 import { doMergeItineraries } from '../narrative/narrative-itineraries'
 import {
   getActiveItinerary,
   getActiveSearch,
   getVisibleItineraryIndex
 } from '../../util/state'
+import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 
 type Props = {
   from: Location
@@ -43,6 +45,10 @@ const Card = styled.div`
 `
 
 const ItinerarySummaryOverlay = ({ from, itins, to, visible }: Props) => {
+  // @ts-expect-error React context is populated dynamically
+  const { RouteRenderer } = useContext(ComponentContext)
+  const Route = RouteRenderer || DefaultRouteRenderer
+
   if (!itins || !visible) return <></>
   const mergedItins = doMergeItineraries(itins).mergedItineraries
   const midPoints = mergedItins.map((itin: Itinerary, index: number) =>
@@ -57,7 +63,10 @@ const ItinerarySummaryOverlay = ({ from, itins, to, visible }: Props) => {
         {midPoints.map((mp: number[], key: number) => (
           <Marker key={key} latitude={mp[0]} longitude={mp[1]}>
             <Card>
-              Itin {key}: length {mergedItins[key].duration}
+              Itin {key}:{' '}
+              {mergedItins[key].legs.map((leg: Leg) => (
+                <Route key={leg.endTime} leg={leg} />
+              ))}
             </Card>
           </Marker>
         ))}
