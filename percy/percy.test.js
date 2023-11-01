@@ -121,10 +121,6 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.click('label[title="Transit"]')
     await page.waitForTimeout(200)
 
-    // FIXME: Must click Edit again [mobile-specific]
-    if (isMobile) {
-      await page.click('button.edit-search-button')
-    }
     await page.click('label[title="Bike"]')
     await page.waitForTimeout(200)
     // Change the date
@@ -142,19 +138,11 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.click('#id-query-param-tram')
 
     // Enable accessible routing (this will have no effect on mock query)
-    // FIXME: Must click Edit again [mobile-specific]
-    if (isMobile) {
-      await page.click('button.edit-search-button')
-    }
     await page.hover('label[title="Transit"]')
     await page.waitForTimeout(500)
     await page.click('#id-query-param-wheelchair')
 
     // Delete both origin and destination
-    // FIXME: Must click Edit again [mobile-specific]
-    if (isMobile) {
-      await page.click('button.edit-search-button')
-    }
 
     await page.click('.from-form-control')
     await page.waitForTimeout(300)
