@@ -30,7 +30,8 @@ actions:
       No se puede guardar el plan: este plan no se pudo guardar debido a la
       falta de capacidad en uno o más vehículos. Por favor, vuelva a planificar
       su viaje.
-    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados válidos
+    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados
+      válidos
     saveItinerariesError: "No se pudieron guardar los itinerarios: {err}"
     setDateError: "Error al establecer la fecha:"
     setGroupSizeError: "No se pudo establecer el tamaño del grupo:"
@@ -52,9 +53,13 @@ actions:
     authTokenError: Error al obtener un token de autorización.
     confirmDeleteMonitoredTrip: ¿Desea eliminar este viaje?
     confirmDeletePlace: ¿Quiere eliminar este lugar?
-    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido reenviado.
+    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido
+      reenviado.
     genericError: "Se ha encontrado un error: {err}"
-    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
+    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado
+      es posible.
+    mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
+    placeRemembered: La configuración de este lugar se ha guardado.
     preferencesSaved: Sus preferencias se han guardado.
     smsInvalidCode: El código introducido no es válido. Por favor, inténtelo de nuevo.
     smsResendThrottled: >-
@@ -63,8 +68,8 @@ actions:
     smsVerificationFailed: >-
       Su teléfono no ha podido ser verificado. Quizás el código que has
       introducido ha caducado. Solicita un nuevo código e inténtalo de nuevo.
-    mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
-    placeRemembered: La configuración de este lugar se ha guardado.
+    mustAcceptTermsToSavePlace: Por favor, acepte las Condiciones de uso (en Mi cuenta)
+      para guardar las ubicaciones.
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -245,7 +250,8 @@ components:
       a incluir el transporte publico en la selección de modos.
     origin: origen
     planTripTooltip: Planificar viaje
-    validationMessage: "Por favor, defina los siguientes campos para planificar un viaje: {issues}"
+    validationMessage: "Por favor, defina los siguientes campos para planificar un
+      viaje: {issues}"
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
     message: >
@@ -373,15 +379,17 @@ components:
   NotificationPrefsPane:
     noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
     notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por:"
+    devicesRegistered: '{count, plural, one {# dispositivo} other {# dispositivos}}
+      registrado(s)'
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
-        {inputFieldsCount, plural, =0 {} one {localización es} other
-        {localizaciones son}} no están cerca de ninguna calle.
+        {inputFields} {inputFieldsCount, plural, =0 {} one {la ubicación es} other
+        {las ubicaciones son}} no está cerca de ninguna calle.
       header: No se puede acceder a la ubicación
     NO_STOPS_IN_RANGE:
       body: >-
-        {inputFieldsCount, plural, =0 {} one {ubicación es} other {ubicaciones
+        {inputFields} {inputFieldsCount, plural, =0 {} one {ubicación es} other {ubicaciones
         son}} no están cerca de ninguna parada del transporte.
       header: Sin paradas cerca
     NO_TRANSIT_CONNECTION:
@@ -397,9 +405,8 @@ components:
       header: Sin conexiones por el criterio de la búsqueda
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFieldsCount, plural, =0 {} one {localización es} other
-        {localizaciones son}} no están en los límites del planificador de
-        viajes.
+        {inputFields} {inputFieldsCount, plural, =0 {} one {ubicación es} other {ubicaciones
+        son}} no están en los límites del planificador de viajes.
       header: Ubicación fuera de los límites
     OUTSIDE_SERVICE_PERIOD:
       body: >-
@@ -487,11 +494,11 @@ components:
     tripsFound: Encontramos {count, plural, one {# opción} other {# opciones}}
     waiting: Espera...
   RouteDetails:
+    headsignTo: "{headsign} ({lastStop})"
     moreDetails: Más detalles
     operatedBy: Servicio operado por {agencyName}
     selectADirection: Seleccione una dirección…
     stopsTo: Hacia
-    headsignTo: '{headsign} ({lastStop})'
   RouteViewer:
     agencyFilter: Filtro de agencia
     allAgencies: Todas las agencias
@@ -547,7 +554,8 @@ components:
     header: ¡La sesión está a punto de terminar!
     keepSession: Continuar sesión
   SimpleRealtimeAnnotation:
-    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo real
+    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo
+      real
   StackedPaneDisplay:
     savePreferences: Guardar preferencias
   StopScheduleTable:
@@ -610,16 +618,19 @@ components:
     travelingAt: Viajando a {milesPerHour}
     vehicleName: Vehículo {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Comprobación de la existencia de itinerarios para cada día de la semana…
+    checkingItineraryExistence: Comprobación de la existencia de itinerarios para
+      cada día de la semana…
     selectAtLeastOneDay: Por favor, seleccione al menos un día para el seguimiento.
     tripDaysPrompt: ¿Qué días hace este viaje?
-    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana indicados anteriormente.
+    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana
+      indicados anteriormente.
     tripNamePrompt: "Por favor, indique un nombre para este viaje:"
     tripNotAvailableOnDay: El viaje no está disponible el {repeatedDay}
     unsavedChangesExistingTrip: >-
       Todavía no ha guardado su viaje. Si abandona la página, los cambios se
       perderán.
-    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página, se perderá.
+    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página,
+      se perderá.
   TripNotificationsPane:
     advancedSettings: Configuración avanzada
     altRouteRecommended: Se recomienda una ruta alternativa o un punto de transferencia
@@ -700,9 +711,10 @@ components:
     notifications: >-
       Notificaciones: <strong>{leadTimeInMinutes} minutos antes de la salida
       programada</strong>
-    notificationsDisabled: "Notificaciones: <strong>Disabled</strong>"
+    notificationsDisabled: "Notificaciones: <strong>Desactivadas</strong>"
   TripTools:
     copyLink: Copiar enlace
+    header: Herramientas
     linkCopied: Copiado
     reportEmailSubject: Informar un problema con OpenTripPlanner
     reportEmailTemplate: >
@@ -741,6 +753,11 @@ components:
     confirmDelete: >-
       ¿Está seguro de que desea eliminar su cuenta de usuario? Una vez que lo
       haga, no se podrá recuperar.
+    updating: Actualizando
+    errorUpdatingProfile: Error al actualizar el perfil.
+    fields:
+      storeTripHistory: Guardar el historial de los viajes
+    fieldUpdated: Este ajuste se ha actualizado.
   UserSettings:
     confirmDeletion: >-
       Tiene almacenadas búsquedas o lugares recientes. Si desactiva el
