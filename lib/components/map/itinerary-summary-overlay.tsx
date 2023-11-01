@@ -1,3 +1,4 @@
+import { ArrowRight } from '@styled-icons/fa-solid/ArrowRight'
 import { connect } from 'react-redux'
 import { Itinerary, Leg, Location } from '@opentripplanner/types'
 import { Marker } from 'react-map-gl'
@@ -14,6 +15,7 @@ import {
   getVisibleItineraryIndex
 } from '../../util/state'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
+import MetroItineraryRoutes from '../narrative/metro/metro-itinerary-routes'
 
 type Props = {
   from: Location
@@ -38,16 +40,31 @@ const getItinMidpoint = (itin: Itinerary, index: number, itinCount = 1) => {
 }
 
 const Card = styled.div`
+  ${boxShadowCss}
+
   background: #fffffffa;
   border-radius: 5px;
   padding: 5px;
-  ${boxShadowCss}
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+
+  
+  div {
+    margin-top: -0px!important;
+  }
+  .route-block-wrapper span {
+    padding: 0px;
+  }
+  * {
+    height: 20px;
+  }
+}
 `
 
 const ItinerarySummaryOverlay = ({ from, itins, to, visible }: Props) => {
   // @ts-expect-error React context is populated dynamically
-  const { RouteRenderer } = useContext(ComponentContext)
-  const Route = RouteRenderer || DefaultRouteRenderer
+  const { LegIcon } = useContext(ComponentContext)
 
   if (!itins || !visible) return <></>
   const mergedItins = doMergeItineraries(itins).mergedItineraries
@@ -58,15 +75,14 @@ const ItinerarySummaryOverlay = ({ from, itins, to, visible }: Props) => {
   try {
     return (
       <>
-        <Marker latitude={0} longitude={0} />
-        <Marker latitude={1} longitude={1} />
         {midPoints.map((mp: number[], key: number) => (
           <Marker key={key} latitude={mp[0]} longitude={mp[1]}>
             <Card>
-              Itin {key}:{' '}
-              {mergedItins[key].legs.map((leg: Leg) => (
-                <Route key={leg.endTime} leg={leg} />
-              ))}
+              <MetroItineraryRoutes
+                expanded={false}
+                itinerary={mergedItins[key]}
+                LegIcon={LegIcon}
+              />
             </Card>
           </Marker>
         ))}
