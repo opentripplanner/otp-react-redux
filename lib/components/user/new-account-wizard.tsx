@@ -1,10 +1,11 @@
+import { Form, FormikProps } from 'formik'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { FormikProps } from 'formik'
 import React, { useCallback } from 'react'
+import toast from 'react-hot-toast'
 
 import PageTitle from '../util/page-title'
 
-import { User } from './types'
+import { EditedUser } from './types'
 import AccountSetupFinishPane from './account-setup-finish-pane'
 import FavoritePlaceList from './places/favorite-place-list'
 import NotificationPrefsPane from './notification-prefs-pane'
@@ -16,11 +17,12 @@ import VerifyEmailPane from './verify-email-pane'
 // and to its own blur/change/submit event handlers that automate the state.
 // We forward the props to each pane (via SequentialPaneDisplay) so that their individual controls
 // can be wired to be managed by Formik.
-type FormikUserProps = FormikProps<User>
+type FormikUserProps = FormikProps<EditedUser>
 
 interface Props extends FormikUserProps {
   activePaneId: string
-  onCreate: (value: User) => void
+  onCancel: () => void
+  onCreate: (value: EditedUser) => void
 }
 
 /**
@@ -28,6 +30,7 @@ interface Props extends FormikUserProps {
  */
 const NewAccountWizard = ({
   activePaneId,
+  onCancel, // provided by UserAccountScreen
   onCreate, // provided by UserAccountScreen
   ...formikProps // provided by Formik
 }: Props): JSX.Element => {
@@ -41,20 +44,28 @@ const NewAccountWizard = ({
     }
   }, [onCreate, userData])
 
+  const handleFinish = useCallback(() => {
+    // Display a toast to acknowledge saved changes
+    // (although in reality, changes quietly took effect in previous screens).
+    toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
+
+    onCancel && onCancel()
+  }, [intl, onCancel])
+
   if (activePaneId === 'verify') {
     const verifyEmail = intl.formatMessage({
       id: 'components.NewAccountWizard.verify'
     })
     return (
-      <>
+      <Form id="user-settings-form" noValidate>
         <PageTitle title={verifyEmail} />
         <h1>{verifyEmail}</h1>
         <VerifyEmailPane {...formikProps} />
-      </>
+      </Form>
     )
   }
 
-  const { hasConsentedToTerms, notificationChannel = 'email' } = userData
+  const { hasConsentedToTerms, notificationChannel = ['email'] } = userData
   const createNewAccount = intl.formatMessage({
     id: 'components.NewAccountWizard.createNewAccount'
   })
@@ -72,7 +83,7 @@ const NewAccountWizard = ({
     {
       id: 'notifications',
       invalid:
-        notificationChannel === 'sms' &&
+        notificationChannel.includes('sms') &&
         (!userData.phoneNumber || !userData.isPhoneNumberVerified),
       invalidMessage: intl.formatMessage({
         id: 'components.PhoneNumberEditor.invalidPhone'
@@ -93,14 +104,15 @@ const NewAccountWizard = ({
   ]
 
   return (
-    <>
+    <Form id="user-settings-form" noValidate>
       <PageTitle title={createNewAccount} />
       <SequentialPaneDisplay
         activePaneId={activePaneId}
+        onFinish={handleFinish}
         paneProps={formikProps}
         panes={paneSequence}
       />
-    </>
+    </Form>
   )
 }
 
