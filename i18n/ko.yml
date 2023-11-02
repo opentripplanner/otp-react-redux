@@ -290,6 +290,7 @@ components:
     multipleOptions: 여러 옵션
     orAlternatives: 또는 같은 방향의 다른 경로
     timeWalking: "{time} 걷기"
+    arriveAt: 도착한다
   MobileOptions:
     header: 검색 옵션 설정
   NarrativeItinerariesHeader:
