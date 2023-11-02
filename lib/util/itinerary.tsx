@@ -8,8 +8,8 @@ import memoize from 'lodash.memoize'
 import { CO2Config } from './config-types'
 import { WEEKDAYS, WEEKEND_DAYS } from './monitored-trip'
 
-interface ItineraryStartTime {
-  itinerary: Itinerary
+export interface ItineraryStartTime {
+  itinerary: ItineraryWithIndex
   legs: Leg[]
   realtime: boolean
 }

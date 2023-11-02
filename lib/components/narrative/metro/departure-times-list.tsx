@@ -1,27 +1,21 @@
 import { FormattedList, useIntl } from 'react-intl'
-import { Leg } from '@opentripplanner/types'
 import React, { MouseEvent, useCallback } from 'react'
 
 import { firstTransitLegIsRealtime } from '../../../util/viewer'
 import {
   getFirstLegStartTime,
   getLastLegEndTime,
+  ItineraryStartTime,
   ItineraryWithIndex
 } from '../../../util/itinerary'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
-
-interface StartTime {
-  itinerary: ItineraryWithIndex
-  legs: Leg[]
-  realtime: boolean
-}
 
 export type SetActiveItineraryHandler = (payload: { index: number }) => void
 
 type DepartureTimesProps = {
   expanded?: boolean
   itinerary: ItineraryWithIndex & {
-    allStartTimes?: StartTime[]
+    allStartTimes?: ItineraryStartTime[]
   }
   setActiveItinerary: SetActiveItineraryHandler
   showArrivals?: boolean
