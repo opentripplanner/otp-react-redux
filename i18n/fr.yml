@@ -378,6 +378,9 @@ components:
     description: Le contenu que vous avez demandé n'est pas disponible.
     header: Contenu introuvable
   NotificationPrefsPane:
+    devicesRegistered: >-
+      {count, plural, one {# appareil enregistré} other {# appareils
+      enregistrés}}
     noDeviceForPush: Inscrivez-vous avec l'application mobile pour accéder à ce paramètre.
     notificationChannelPrompt: "Recevoir des notifications sur vos trajets par :"
   OTP2ErrorRenderer:
@@ -744,6 +747,11 @@ components:
     confirmDelete: >-
       Voulez-vous vraiment supprimer votre compte ? Cette action est
       irréversible.
+    errorUpdatingProfile: Erreur dans la mise à jour de votre profil.
+    fieldUpdated: Ce paramètre a été mis à jour.
+    fields:
+      storeTripHistory: Enregistrement des recherches
+    updating: Mise à jour
   UserSettings:
     confirmDeletion: >-
       Vous avez des recherches et/ou lieux récemment enregistrés qui vont être
