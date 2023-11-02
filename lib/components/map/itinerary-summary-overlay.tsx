@@ -57,7 +57,7 @@ const Card = styled.div`
     padding: 0px;
   }
   * {
-    height: 20px;
+    height: 25px;
   }
 }
 `
