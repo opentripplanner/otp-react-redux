@@ -55,6 +55,9 @@ actions:
     emailVerificationResent: El mensaje de verificación de correo electrónico ha sido reenviado.
     genericError: "Se ha encontrado un error: {err}"
     itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
+    mustAcceptTermsToSavePlace: >-
+      Por favor, acepte las Condiciones de uso (en Mi cuenta) para guardar las
+      ubicaciones.
     mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
     placeRemembered: La configuración de este lugar se ha guardado.
     preferencesSaved: Sus preferencias se han guardado.
@@ -371,18 +374,19 @@ components:
     description: El contenido que ha solicitado no está disponible.
     header: No se encontró el contenido
   NotificationPrefsPane:
+    devicesRegistered: "{count, plural, one {# dispositivo} other {# dispositivos}} registrado(s)"
     noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
     notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por:"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
-        {inputFieldsCount, plural, =0 {} one {localización es} other
-        {localizaciones son}} no están cerca de ninguna calle.
+        {inputFields} {inputFieldsCount, plural, =0 {} one {la ubicación es}
+        other {las ubicaciones son}} no está cerca de ninguna calle.
       header: No se puede acceder a la ubicación
     NO_STOPS_IN_RANGE:
       body: >-
-        {inputFieldsCount, plural, =0 {} one {ubicación es} other {ubicaciones
-        son}} no están cerca de ninguna parada del transporte.
+        {inputFields} {inputFieldsCount, plural, =0 {} one {ubicación es} other
+        {ubicaciones son}} no están cerca de ninguna parada del transporte.
       header: Sin paradas cerca
     NO_TRANSIT_CONNECTION:
       body: >-
@@ -397,9 +401,8 @@ components:
       header: Sin conexiones por el criterio de la búsqueda
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFieldsCount, plural, =0 {} one {localización es} other
-        {localizaciones son}} no están en los límites del planificador de
-        viajes.
+        {inputFields} {inputFieldsCount, plural, =0 {} one {ubicación es} other
+        {ubicaciones son}} no están en los límites del planificador de viajes.
       header: Ubicación fuera de los límites
     OUTSIDE_SERVICE_PERIOD:
       body: >-
@@ -742,6 +745,11 @@ components:
     confirmDelete: >-
       ¿Está seguro de que desea eliminar su cuenta de usuario? Una vez que lo
       haga, no se podrá recuperar.
+    errorUpdatingProfile: Error al actualizar el perfil.
+    fieldUpdated: Este ajuste se ha actualizado.
+    fields:
+      storeTripHistory: Guardar el historial de los viajes
+    updating: Actualizando
   UserSettings:
     confirmDeletion: >-
       Tiene almacenadas búsquedas o lugares recientes. Si desactiva el

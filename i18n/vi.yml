@@ -313,7 +313,7 @@ components:
     selectBest: Lựa chọn tốt nhất
     selectCost: Phí tổn
     selectDepartureTime: Giờ khởi hành
-    selectDuration: Thời hạn
+    selectDuration: Thời gian
     selectWalkTime: Thời gian đi bộ
     viewAll: Xem tất cả các tùy chọn
   NavLoginButton:
