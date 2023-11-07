@@ -5,7 +5,7 @@ import coreUtils from '@opentripplanner/core-utils'
 import hash from 'object-hash'
 import memoize from 'lodash.memoize'
 
-import { CO2Config } from './config-types'
+import { AppConfig, CO2Config } from './config-types'
 import { WEEKDAYS, WEEKEND_DAYS } from './monitored-trip'
 
 export interface ItineraryStartTime {
@@ -32,6 +32,19 @@ export interface ItineraryWithIndex extends Itinerary {
 export interface ItineraryWithCO2Info extends Itinerary {
   co2: number
   co2VsBaseline: number
+}
+
+export interface ItineraryFareSummary {
+  fareCurrency?: string
+  maxTNCFare: number
+  minTNCFare: number
+  transitFare?: number
+}
+
+// Similar to OTP-UI's FareProductSelector, but the fields are nullable.
+interface RelaxedFareProductSelector {
+  mediumId: string | null
+  riderCategoryId: string | null
 }
 
 /**
@@ -274,5 +287,150 @@ export function addCarbonInfoToAll<T extends Itinerary>(
   return (
     itineraries?.map((itin) => addCarbonInfo(itin, co2Config, baselineCo2)) ||
     []
+  )
+}
+
+/**
+ * Get total drive time (i.e., total duration for legs with mode=CAR) for an
+ * itinerary.
+ */
+function getDriveTime(itinerary: Itinerary): number {
+  if (!itinerary) return 0
+  let driveTime = 0
+  itinerary.legs.forEach((leg) => {
+    if (leg.mode === 'CAR') driveTime += leg.duration
+  })
+  return driveTime
+}
+
+/**
+ * Parses OTP itinerary fare object and returns fares along with overridden currency
+ */
+export function getFare(
+  itinerary: Itinerary,
+  defaultFareType?: RelaxedFareProductSelector
+): ItineraryFareSummary {
+  const { maxTNCFare, minTNCFare } =
+    coreUtils.itinerary.calculateTncFares(itinerary)
+
+  const itineraryCost = coreUtils.itinerary.getItineraryCost(
+    itinerary?.legs,
+    defaultFareType?.mediumId || null,
+    defaultFareType?.riderCategoryId || null
+  )
+
+  return {
+    fareCurrency: itineraryCost?.currency.code,
+    maxTNCFare,
+    minTNCFare,
+    transitFare: itineraryCost?.amount
+  }
+}
+
+/**
+ * Default costs for modes that currently have no costs evaluated in
+ * OpenTripPlanner.
+ */
+const DEFAULT_COSTS = {
+  // $2 per trip? This is a made up number.
+  bikeshareTripCostCents: 2 * 100,
+  // $2 for 3 hours of parking?
+  carParkingCostCents: 3 * 2.0 * 100,
+  // FL per diem rate: https://www.flcourts.org/content/download/219314/1981830/TravelInformation.pdf
+  drivingCentsPerMile: 0.445 * 100
+}
+
+/**
+ * Returns total fare for itinerary (in cents)
+ * FIXME: Move to otp-ui?
+ * TODO: Add GBFS fares
+ */
+export function getTotalFare(
+  itinerary: Itinerary,
+  configCosts = {},
+  defaultFareType: RelaxedFareProductSelector = {
+    mediumId: null,
+    riderCategoryId: null
+  }
+): number | null {
+  // Get TNC fares.
+  const { maxTNCFare, transitFare } = getFare(itinerary, defaultFareType)
+  // Start with default cost values.
+  const costs = DEFAULT_COSTS
+  // If config contains values to override defaults, apply those.
+  if (configCosts) Object.assign(costs, configCosts)
+  // Calculate total cost from itinerary legs.
+  let drivingCost = 0
+  let hasBikeshare = false
+  let transitFareNotProvided = false
+  let rideHailTrip = false
+  itinerary.legs.forEach((leg) => {
+    rideHailTrip = rideHailTrip || !!leg?.rideHailingEstimate
+    if (leg.mode === 'CAR' && !rideHailTrip) {
+      // Convert meters to miles and multiple by cost per mile.
+      drivingCost += leg.distance * 0.000621371 * costs.drivingCentsPerMile
+    }
+    if (
+      leg.mode === 'BICYCLE_RENT' ||
+      leg.mode === 'MICROMOBILITY' ||
+      leg.mode === 'SCOOTER' ||
+      leg.rentedBike
+    ) {
+      hasBikeshare = true
+    }
+    if (coreUtils.itinerary.isTransit(leg.mode) && transitFare == null) {
+      transitFareNotProvided = true
+    }
+  })
+  // If our itinerary includes a transit leg, but transit fare data is not provided
+  // return no fare information, rather than an underestimate
+  if (transitFareNotProvided) return null
+  const bikeshareCost = hasBikeshare ? costs.bikeshareTripCostCents : 0
+  // If some leg uses driving, add parking cost to the total.
+  if (drivingCost > 0 && !rideHailTrip) drivingCost += costs.carParkingCostCents
+  return bikeshareCost + drivingCost + (transitFare || 0) + maxTNCFare * 100
+}
+
+/**
+ * Default constants for calculating itinerary "cost", i.e., how preferential a
+ * particular itinerary is based on factors like wait time, total fare, drive
+ * time, etc.
+ */
+const DEFAULT_WEIGHTS = {
+  driveReluctance: 2,
+  durationFactor: 0.25,
+  fareFactor: 0.5,
+  transferReluctance: 0.9,
+  waitReluctance: 0.1,
+  walkReluctance: 0.1
+}
+
+/**
+ * This calculates the "cost" (not the monetary cost, but the cost according to
+ * multiple factors like duration, total fare, and walking distance) for a
+ * particular itinerary, for use in sorting itineraries.
+ * FIXME: Do major testing to get this right.
+ */
+export function calculateItineraryCost(
+  itinerary: Itinerary,
+  config: Pick<AppConfig, 'itinerary'> = {}
+): number {
+  // Initialize weights to default values.
+  const weights = DEFAULT_WEIGHTS
+  // If config contains values to override defaults, apply those.
+  const configWeights = config.itinerary && config.itinerary.weights
+  if (configWeights) Object.assign(weights, configWeights)
+  return (
+    (getTotalFare(
+      itinerary,
+      config.itinerary?.costs,
+      config.itinerary?.defaultFareType
+    ) || 0) *
+      weights.fareFactor +
+    itinerary.duration * weights.durationFactor +
+    (itinerary.walkDistance || 0) * weights.walkReluctance +
+    getDriveTime(itinerary) * weights.driveReluctance +
+    itinerary.waitingTime * weights.waitReluctance +
+    (itinerary.transfers || 0) * weights.transferReluctance
   )
 }

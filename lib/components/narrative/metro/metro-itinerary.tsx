@@ -18,7 +18,8 @@ import {
   getAccessibilityScoreForItinerary,
   itineraryHasAccessibilityScores
 } from '../../../util/accessibility-routing'
-import { getActiveSearch, getFare } from '../../../util/state'
+import { getActiveSearch } from '../../../util/state'
+import { getFare } from '../../../util/itinerary'
 import { IconWithText } from '../../util/styledIcon'
 import { ItineraryDescription } from '../default/itinerary-description'
 import { ItineraryView } from '../../../util/ui'

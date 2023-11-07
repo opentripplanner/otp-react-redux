@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import type { Itinerary, Leg } from '@opentripplanner/types'
 
 import { ComponentContext } from '../../../util/contexts'
-import { getFare } from '../../../util/state'
+import { getFare } from '../../../util/itinerary'
 import FormattedDuration from '../../util/formatted-duration'
 
 // TODO: make this a prop
