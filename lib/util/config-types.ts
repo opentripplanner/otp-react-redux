@@ -239,6 +239,7 @@ export interface ItineraryConfig {
   groupTransitModes?: boolean
   hideSkeletons?: boolean
   mergeItineraries?: boolean
+  onlyShowCountdownForRealtime?: boolean
   renderRouteNamesInBlocks?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
