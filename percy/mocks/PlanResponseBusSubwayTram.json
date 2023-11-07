@@ -299,7 +299,7 @@
                   "lon": -84.313426,
                   "name": "East Lake Station",
                   "stopCode": "908567",
-                  "stopId": "U3RvcDpNQVJUQToxODY"
+                  "id": "U3RvcDpNQVJUQToxODY"
                 },
                 {
                   "lat": 33.761803,
@@ -307,7 +307,7 @@
                   "lon": -84.340825,
                   "name": "Edgewood-Candler Park Station",
                   "stopCode": "908476",
-                  "stopId": "U3RvcDpNQVJUQToxOTU"
+                  "id": "U3RvcDpNQVJUQToxOTU"
                 },
                 {
                   "lat": 33.757227,
@@ -315,7 +315,7 @@
                   "lon": -84.353066,
                   "name": "Inman Park-Reynoldstown Station",
                   "stopCode": "908692",
-                  "stopId": "U3RvcDpNQVJUQTo4MDQ"
+                  "id": "U3RvcDpNQVJUQTo4MDQ"
                 },
                 {
                   "lat": 33.749853,
@@ -323,7 +323,7 @@
                   "lon": -84.37599,
                   "name": "King Memorial Station",
                   "stopCode": "908693",
-                  "stopId": "U3RvcDpNQVJUQTo4MDU"
+                  "id": "U3RvcDpNQVJUQTo4MDU"
                 },
                 {
                   "lat": 33.750161,
@@ -331,7 +331,7 @@
                   "lon": -84.385915,
                   "name": "Georgia State Station",
                   "stopCode": "908618",
-                  "stopId": "U3RvcDpNQVJUQToxOTg"
+                  "id": "U3RvcDpNQVJUQToxOTg"
                 }
               ],
               "legGeometry": {
@@ -349,6 +349,7 @@
                 "alerts": [],
                 "color": "0075B2",
                 "id": "Um91dGU6TUFSVEE6MTk0NTU",
+                "gtfsId": "Um91dGU6TUFSVEE6MTk0NTU",
                 "longName": "Blue",
                 "shortName": "Blue",
                 "textColor": "000000",
@@ -803,7 +804,7 @@
                   "lon": -84.313426,
                   "name": "East Lake Station",
                   "stopCode": "908567",
-                  "stopId": "U3RvcDpNQVJUQToxODY"
+                  "id": "U3RvcDpNQVJUQToxODY"
                 },
                 {
                   "lat": 33.761803,
@@ -811,7 +812,7 @@
                   "lon": -84.340825,
                   "name": "Edgewood-Candler Park Station",
                   "stopCode": "908476",
-                  "stopId": "U3RvcDpNQVJUQToxOTU"
+                  "id": "U3RvcDpNQVJUQToxOTU"
                 },
                 {
                   "lat": 33.757227,
@@ -819,7 +820,7 @@
                   "lon": -84.353066,
                   "name": "Inman Park-Reynoldstown Station",
                   "stopCode": "908692",
-                  "stopId": "U3RvcDpNQVJUQTo4MDQ"
+                  "id": "U3RvcDpNQVJUQTo4MDQ"
                 },
                 {
                   "lat": 33.749853,
@@ -827,7 +828,7 @@
                   "lon": -84.37599,
                   "name": "King Memorial Station",
                   "stopCode": "908693",
-                  "stopId": "U3RvcDpNQVJUQTo4MDU"
+                  "id": "U3RvcDpNQVJUQTo4MDU"
                 },
                 {
                   "lat": 33.750161,
@@ -835,7 +836,7 @@
                   "lon": -84.385915,
                   "name": "Georgia State Station",
                   "stopCode": "908618",
-                  "stopId": "U3RvcDpNQVJUQToxOTg"
+                  "id": "U3RvcDpNQVJUQToxOTg"
                 }
               ],
               "legGeometry": {
@@ -853,6 +854,7 @@
                 "alerts": [],
                 "color": "0075B2",
                 "id": "Um91dGU6TUFSVEE6MTk0NTU",
+                "gtfsId": "Um91dGU6TUFSVEE6MTk0NTU",
                 "longName": "Blue",
                 "shortName": "Blue",
                 "textColor": "000000",
@@ -1307,7 +1309,7 @@
                   "lon": -84.313426,
                   "name": "East Lake Station",
                   "stopCode": "908567",
-                  "stopId": "U3RvcDpNQVJUQToxODY"
+                  "id": "U3RvcDpNQVJUQToxODY"
                 },
                 {
                   "lat": 33.761803,
@@ -1315,7 +1317,7 @@
                   "lon": -84.340825,
                   "name": "Edgewood-Candler Park Station",
                   "stopCode": "908476",
-                  "stopId": "U3RvcDpNQVJUQToxOTU"
+                  "id": "U3RvcDpNQVJUQToxOTU"
                 },
                 {
                   "lat": 33.757227,
@@ -1323,7 +1325,7 @@
                   "lon": -84.353066,
                   "name": "Inman Park-Reynoldstown Station",
                   "stopCode": "908692",
-                  "stopId": "U3RvcDpNQVJUQTo4MDQ"
+                  "id": "U3RvcDpNQVJUQTo4MDQ"
                 },
                 {
                   "lat": 33.749853,
@@ -1331,7 +1333,7 @@
                   "lon": -84.37599,
                   "name": "King Memorial Station",
                   "stopCode": "908693",
-                  "stopId": "U3RvcDpNQVJUQTo4MDU"
+                  "id": "U3RvcDpNQVJUQTo4MDU"
                 },
                 {
                   "lat": 33.750161,
@@ -1339,7 +1341,7 @@
                   "lon": -84.385915,
                   "name": "Georgia State Station",
                   "stopCode": "908618",
-                  "stopId": "U3RvcDpNQVJUQToxOTg"
+                  "id": "U3RvcDpNQVJUQToxOTg"
                 }
               ],
               "legGeometry": {
@@ -1357,6 +1359,7 @@
                 "alerts": [],
                 "color": "0075B2",
                 "id": "Um91dGU6TUFSVEE6MTk0NTU",
+                "gtfsId": "Um91dGU6TUFSVEE6MTk0NTU",
                 "longName": "Blue",
                 "shortName": "Blue",
                 "textColor": "000000",

@@ -50,7 +50,7 @@ beforeAll(async () => {
     }).stdout.pipe(process.stdout)
 
     // Launch mock OTP server
-    execa('yarn', ['percy-mock-server', '-p', '9999', 'percy/mock.har'], {
+    execa('yarn', ['percy-mock-server'], {
       env: { HAR: './percy/mock.har' },
       signal: harAbortController.signal
     }).stdout.pipe(process.stdout)
