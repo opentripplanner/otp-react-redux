@@ -9,6 +9,9 @@ const StopsByRadiusResponse = require('./mocks/StopsByRadiusResponse.json').data
   .stopsByRadius
 const ServiceTimeRangeResponse =
   require('./mocks/ServiceTimeRangeResponse.json').data.serviceTimeRange
+const RoutesResponse = require('./mocks/Routes.json').data.routes
+const IndividualRouteResponse = require('./mocks/IndividualRoute.json').data
+  .route
 
 function getPlanResponseMock(transportModes) {
   const transportModesString = transportModes
@@ -36,6 +39,12 @@ const mocks = {
     },
     plan(obj, { transportModes }) {
       return getPlanResponseMock(transportModes)
+    },
+    route() {
+      return IndividualRouteResponse
+    },
+    routes() {
+      return RoutesResponse
     },
     serviceTimeRange() {
       return ServiceTimeRangeResponse
