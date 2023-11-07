@@ -239,6 +239,7 @@ export interface ItineraryConfig {
   groupTransitModes?: boolean
   hideSkeletons?: boolean
   mergeItineraries?: boolean
+  mutedErrors?: string[]
   renderRouteNamesInBlocks?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean

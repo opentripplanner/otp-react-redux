@@ -1,8 +1,10 @@
+import { connect } from 'react-redux'
 import { ExclamationCircle } from '@styled-icons/fa-solid/ExclamationCircle'
 import { FormattedMessage, useIntl } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
 
+import { AppReduxState } from '../../../util/state-types'
 import { Icon } from '../../util/styledIcon'
 
 type Error = Record<string, string[]>
@@ -38,7 +40,13 @@ const Container = styled.li`
   }
 `
 
-const ErrorRenderer = ({ errors }: { errors: Error }): JSX.Element => {
+const ErrorRenderer = ({
+  errors,
+  mutedErrors
+}: {
+  errors: Error
+  mutedErrors?: string[]
+}): JSX.Element => {
   const intl = useIntl()
 
   return (
@@ -56,6 +64,9 @@ const ErrorRenderer = ({ errors }: { errors: Error }): JSX.Element => {
         if (error === 'NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW') {
           return null
         }
+
+        // Don't show errors that have been muted in the config
+        if (mutedErrors?.includes(error)) return null
 
         return (
           <Container key={error}>
@@ -81,5 +92,10 @@ const ErrorRenderer = ({ errors }: { errors: Error }): JSX.Element => {
   )
 }
 
-export default ErrorRenderer
+const mapStateToProps = (state: AppReduxState) => {
+  const { itinerary } = state.otp.config
+  return { mutedErrors: itinerary?.mutedErrors }
+}
+export default connect(mapStateToProps)(ErrorRenderer)
+
 export type { Error }
