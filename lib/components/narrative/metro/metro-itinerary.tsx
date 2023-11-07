@@ -453,7 +453,6 @@ class MetroItinerary extends NarrativeItinerary {
   }
 }
 
-// TODO: state type
 const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
   const activeSearch = getActiveSearch(state)
 
