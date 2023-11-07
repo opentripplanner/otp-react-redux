@@ -34,6 +34,11 @@ export interface ItineraryWithCO2Info extends Itinerary {
   co2VsBaseline: number
 }
 
+export interface ItineraryWithSortingCosts extends Itinerary {
+  rank: number
+  totalFare: number
+}
+
 export interface ItineraryFareSummary {
   fareCurrency?: string
   maxTNCFare: number
@@ -433,4 +438,24 @@ export function calculateItineraryCost(
     itinerary.waitingTime * weights.waitReluctance +
     (itinerary.transfers || 0) * weights.transferReluctance
   )
+}
+
+/**
+ * Computes and add cost attributes to avoid recomputing those costs during sorting.
+ */
+export function addSortingCosts<T extends Itinerary>(
+  itinerary: T,
+  config: AppConfig
+): ItineraryWithSortingCosts {
+  const configCosts = config.itinerary?.costs
+  const totalFareResult = getTotalFare(itinerary, configCosts)
+  const totalFare =
+    totalFareResult === null ? Number.MAX_VALUE : totalFareResult
+
+  const rank = calculateItineraryCost(itinerary, config)
+  return {
+    ...itinerary,
+    rank,
+    totalFare
+  }
 }
