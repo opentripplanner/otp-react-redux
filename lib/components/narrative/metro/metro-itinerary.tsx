@@ -12,6 +12,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import * as uiActions from '../../../actions/ui'
+import { AppReduxState } from '../../../util/state-types'
 import { ComponentContext } from '../../../util/contexts'
 import { FlexIndicator } from '../default/flex-indicator'
 import {
@@ -453,7 +454,7 @@ class MetroItinerary extends NarrativeItinerary {
 }
 
 // TODO: state type
-const mapStateToProps = (state: any, ownProps: Props) => {
+const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
   const activeSearch = getActiveSearch(state)
 
   return {
