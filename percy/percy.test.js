@@ -3,6 +3,8 @@
 import execa from 'execa'
 import puppeteer from 'puppeteer'
 
+import { mockServer } from './mock-server'
+
 const percySnapshot = require('@percy/puppeteer')
 
 const { OTP_RR_UI_MODE } = process.env
@@ -50,10 +52,13 @@ beforeAll(async () => {
     }).stdout.pipe(process.stdout)
 
     // Launch mock OTP server
-    execa('yarn', ['percy-mock-server'], {
-      env: { HAR: './percy/mock.har' },
-      signal: harAbortController.signal
-    }).stdout.pipe(process.stdout)
+    // execa('yarn', ['percy-mock-server'], {
+    //   env: { HAR: './percy/mock.har' },
+    //   signal: harAbortController.signal
+    // }).stdout.pipe(process.stdout)
+    mockServer.listen(9999, () => {
+      console.log('Mock server running')
+    })
 
     // Launch mock geocoder server
     execa(
