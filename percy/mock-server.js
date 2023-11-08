@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 // Require the framework and instantiate it
 const express = require('express')
 const har = require('har-express')
@@ -8,7 +9,7 @@ const mocks = require('./graphql-mocks')
 const otpSchema = require('./otpSchema.json').data
 
 const port = process.env.PORT || 9999
-const harPath = process.env.HAR
+const harPath = process.env.HAR || './percy/mock.har'
 
 const app = express()
 const schema = buildClientSchema(otpSchema)
@@ -40,6 +41,11 @@ if (harPath) {
   app.use(har.getMiddleware(harPath))
 }
 
-app.listen(port, () => {
-  console.log('Mock server running.')
-})
+// Run the server is this file was executed on the command line
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log('Mock server running.')
+  })
+}
+
+module.exports.mockServer = app
