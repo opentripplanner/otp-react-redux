@@ -28,7 +28,6 @@ app.all('*', function (req, res, next) {
 
 app.use(express.json())
 app.post('/otp2/routers/default/index/graphql', (req, res) => {
-  console.log('Handling GraphQL Mock')
   graphql({
     schema: schemaWithMocks,
     source: req.body.query,
@@ -44,7 +43,7 @@ if (harPath) {
 // Run the server is this file was executed on the command line
 if (require.main === module) {
   app.listen(port, () => {
-    console.log('Mock server running.')
+    console.log(`Mock server running on port ${port}`)
   })
 }
 
