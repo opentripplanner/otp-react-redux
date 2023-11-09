@@ -52,13 +52,10 @@ beforeAll(async () => {
     }).stdout.pipe(process.stdout)
 
     // Launch mock OTP server
-    // execa('yarn', ['percy-mock-server'], {
-    //   env: { HAR: './percy/mock.har' },
-    //   signal: harAbortController.signal
-    // }).stdout.pipe(process.stdout)
-    mockServer.listen(9999, () => {
-      console.log('Mock server running')
-    })
+    execa('yarn', ['percy-mock-server'], {
+      env: { HAR: './percy/mock.har', PORT: '9999' },
+      signal: harAbortController.signal
+    }).stdout.pipe(process.stdout)
 
     // Launch mock geocoder server
     execa(
