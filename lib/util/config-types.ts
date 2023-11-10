@@ -240,6 +240,7 @@ export interface ItineraryConfig {
   hideSkeletons?: boolean
   mergeItineraries?: boolean
   mutedErrors?: string[]
+  onlyShowCountdownForRealtime?: boolean
   renderRouteNamesInBlocks?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean

@@ -2459,10 +2459,10 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^11.1.2":
-  version "11.1.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.1.2.tgz#a99d1fa4fb1f587d58fae8fcfd70a3bfe4eed424"
-  integrity sha512-Rn1tBm5F+nt/A4/0cpq6cyNTprSsxfFslujMoZ4P4r6fZ7YTx0d25di+MZ/CZgSlCzHJIiGAfi8DsfJ7yStcTA==
+"@opentripplanner/core-utils@^11.1.3":
+  version "11.1.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.1.3.tgz#6309e1298fbfc6dd01f16b22a5b2bc7ba5639454"
+  integrity sha512-O05TSCpzS9K9ery5Fjm+OalbpEpedV6SaCHjyIMqP5XW67lK+fJi4dYHlkr4/IBL7eDQ84op2vMeM/tBSJXsZg==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
@@ -2693,10 +2693,10 @@
     "@turf/midpoint" "^6.5.0"
     lodash.isequal "^4.5.0"
 
-"@opentripplanner/trip-details@^5.0.5":
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-5.0.5.tgz#17e841ba9cfda9cddbe6cff2ffef964131d64049"
-  integrity sha512-EgxcWxAZNTZAS3ISDdeB5E0qEld/7rhj7wag4DQe9YKby9mPXo0ab28+j7MJ0ErQxqjUrsN/2JR2UBC3ybbxsQ==
+"@opentripplanner/trip-details@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-5.0.6.tgz#0f7043e0f112fddca4a10b15293298e7f1f5f421"
+  integrity sha512-t8CFJidFThQZ7zWKqDbilpctULAT/OfS17O14cSo1Ui4TgMfaMDoCWaRK66d93KffhMm4z6J+KLV5PGjtRZptA==
   dependencies:
     "@opentripplanner/core-utils" "^11.0.2"
     "@styled-icons/fa-solid" "^10.34.0"
