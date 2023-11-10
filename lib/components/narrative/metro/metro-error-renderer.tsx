@@ -52,13 +52,6 @@ const ErrorRenderer = ({
   return (
     <List>
       {Object.keys(errors).map((error: string) => {
-        const localizedInputFieldList = Array.from(errors[error])?.map(
-          (inputField) =>
-            intl.formatMessage({
-              id: `components.OTP2ErrorRenderer.inputFields.${inputField}`
-            })
-        )
-
         // The search window is hardcoded in otp-rr and can't be changed by the user.
         // Do not tell them what's happening as they can't act on the issue.
         if (error === 'NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW') {
@@ -67,6 +60,13 @@ const ErrorRenderer = ({
 
         // Don't show errors that have been muted in the config
         if (mutedErrors?.includes(error)) return null
+
+        const localizedInputFieldList = Array.from(errors[error])?.map(
+          (inputField) =>
+            intl.formatMessage({
+              id: `components.OTP2ErrorRenderer.inputFields.${inputField}`
+            })
+        )
 
         return (
           <Container key={error}>
