@@ -3,11 +3,9 @@
 import execa from 'execa'
 import puppeteer from 'puppeteer'
 
-import { mockServer } from './mock-server'
-
 const percySnapshot = require('@percy/puppeteer')
 
-const { OTP_RR_UI_MODE } = process.env
+const OTP_RR_UI_MODE = process.env.OTP_RR_UI_MODE || 'normal'
 
 const MOCK_SERVER_PORT = 5486
 
@@ -62,9 +60,9 @@ beforeAll(async () => {
       'yarn',
       [
         'percy-har-express',
+        `percy/geocoder-mock-${OTP_RR_UI_MODE}.har`,
         '-p',
-        '9977',
-        `percy/geocoder-mock-${OTP_RR_UI_MODE}.har`
+        '9977'
       ],
       {
         signal: geocoderAbortController.signal
@@ -74,7 +72,7 @@ beforeAll(async () => {
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
       args: ['--disable-web-security']
-      // , headless: false
+      // ,headless: false
     })
   } catch (error) {
     console.log(error)
