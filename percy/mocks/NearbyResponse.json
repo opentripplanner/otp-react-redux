@@ -12,8 +12,8 @@
               "lat": 33.750043,
               "lon": -84.388393,
               "name": "Martin L King J Dr at Washington St SW",
-              "code": "114900",
-              "gtfsId": "MARTA:114900",
+              "code": "803",
+              "gtfsId": "MARTA:803",
               "stoptimesForPatterns": [
                 {
                   "pattern": {
