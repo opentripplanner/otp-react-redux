@@ -4,7 +4,8 @@ const PlanResponseBusSubwayTram =
   require('./mocks/PlanResponseBusSubwayTram.json').data.plan
 const TripResponse = require('./mocks/TripResponse.json').data.trip
 const NearestResponse = require('./mocks/NearbyResponse.json').data.nearest
-const StopResponse = require('./mocks/Stop114900Response.json').data.stop
+const Stop114900Response = require('./mocks/Stop114900Response.json').data.stop
+const Stop803Response = require('./mocks/Stop803Response.json').data.stop
 const StopsByRadiusResponse = require('./mocks/StopsByRadiusResponse.json').data
   .stopsByRadius
 const ServiceTimeRangeResponse =
@@ -18,7 +19,6 @@ function getPlanResponseMock(transportModes) {
     .map((tm) => tm.mode)
     .sort()
     .join('')
-  console.log(transportModesString)
   switch (transportModesString) {
     case 'BICYCLEBUSSUBWAYTRAM':
     case 'BUSSUBWAY':
@@ -29,6 +29,16 @@ function getPlanResponseMock(transportModes) {
       return PlanResponseWalk
     default:
       return PlanResponseBike
+  }
+}
+
+function getStopResponseMock(stopId) {
+  switch (stopId) {
+    case 'MARTA:803':
+      return Stop803Response
+    case 'MARTA:114900':
+    default:
+      return Stop114900Response
   }
 }
 
@@ -49,8 +59,8 @@ const mocks = {
     serviceTimeRange() {
       return ServiceTimeRangeResponse
     },
-    stop() {
-      return StopResponse
+    stop(obj, { id }) {
+      return getStopResponseMock(id)
     },
     stopsByRadius() {
       return StopsByRadiusResponse
