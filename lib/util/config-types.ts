@@ -226,6 +226,15 @@ export type ItinerarySortOption =
   | 'COST'
   | 'DEPARTURETIME'
 
+export interface ItineraryCostWeights {
+  driveReluctance: number
+  durationFactor: number
+  fareFactor: number
+  transferReluctance: number
+  waitReluctance: number
+  walkReluctance: number
+}
+
 export interface ItineraryConfig {
   costs?: ItineraryCostConfig
   customBatchUiBackground?: boolean
@@ -239,6 +248,8 @@ export interface ItineraryConfig {
   groupTransitModes?: boolean
   hideSkeletons?: boolean
   mergeItineraries?: boolean
+  mutedErrors?: string[]
+  onlyShowCountdownForRealtime?: boolean
   renderRouteNamesInBlocks?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
@@ -246,6 +257,7 @@ export interface ItineraryConfig {
   showPlanFirstLastButtons?: boolean
   showRouteFares?: boolean
   sortModes?: ItinerarySortOption[]
+  weights?: ItineraryCostWeights
 }
 
 export interface CO2Config extends CO2ConfigType {

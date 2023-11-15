@@ -2,6 +2,11 @@ import { AppConfig } from './config-types'
 
 export interface OtpState {
   config: AppConfig
+  filter: {
+    sort: {
+      type: string
+    }
+  }
   // TODO: Add other OTP states
   ui: any // TODO
 }
