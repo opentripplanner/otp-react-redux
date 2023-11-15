@@ -1,16 +1,21 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { MapRef, useMap } from 'react-map-gl'
-import React, { useEffect, useRef, useState } from 'react'
+
+import MobileNavigationBar from '../../mobile/navigation-bar'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
+import * as uiActions from '../../../actions/ui'
 
 import {
   FloatingLoadingIndicator,
   NearbySidebarContainer,
   Scrollable
 } from './styled'
+import { MainPanelContent } from '../../../actions/ui-constants'
 import Loading from '../../narrative/loading'
+import MobileContainer from '../../mobile/container'
 import RentalStation from './rental-station'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
@@ -21,8 +26,10 @@ type LatLonObj = { lat: number; lon: number }
 type Props = {
   fetchNearby: (latLon: LatLonObj, map?: MapRef) => void
   hideBackButton?: boolean
+  mobile?: boolean
   nearby: any
   nearbyViewCoords?: LatLonObj
+  setMainPanelContent: (content: number) => void
 }
 
 const getNearbyItem = (place: any) => {
@@ -47,7 +54,8 @@ const getNearbyItemList = (nearby: any) => {
 }
 
 function NearbyView(props: Props): JSX.Element {
-  const { fetchNearby, nearby, nearbyViewCoords } = props
+  const { fetchNearby, mobile, nearby, nearbyViewCoords, setMainPanelContent } =
+    props
   const map = useMap().current
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
@@ -71,11 +79,18 @@ function NearbyView(props: Props): JSX.Element {
     setLoading(false)
   }, [nearby])
 
-  // TODO: when coordinates are set, put a marker on the map and zoom there
+  const MainContainer = mobile ? MobileContainer : Scrollable
 
   return (
-    <Scrollable className="nearby-view base-color-bg">
-      <NearbySidebarContainer className="base-color-bg">
+    <MainContainer className="nearby-view base-color-bg">
+      <MobileNavigationBar
+        headerText={intl.formatMessage({ id: 'components.NearbyView.header' })}
+        onBackClicked={useCallback(() => setMainPanelContent(0), [])}
+      />
+      <NearbySidebarContainer
+        className="base-color-bg"
+        style={{ marginTop: mobile ? '50px' : 0 }}
+      >
         <div ref={firstItemRef} />
         {loading && (
           <FloatingLoadingIndicator>
@@ -91,7 +106,7 @@ function NearbyView(props: Props): JSX.Element {
             <FormattedMessage id="components.NearbyView.nothingNearby" />
           ))}
       </NearbySidebarContainer>
-    </Scrollable>
+    </MainContainer>
   )
 }
 
@@ -107,7 +122,8 @@ const mapStateToProps = (state: any) => {
 }
 
 const mapDispatchToProps = {
-  fetchNearby: apiActions.fetchNearby
+  fetchNearby: apiActions.fetchNearby,
+  setMainPanelContent: uiActions.setMainPanelContent
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NearbyView)
