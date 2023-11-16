@@ -403,13 +403,13 @@ components:
       header: Aucun arrêt a proximité
     NO_TRANSIT_CONNECTION:
       body: >-
-        Aucune desserte en transports n'a été trouvée entre vos points de départ
-        et d'arrivée pour la date indiquée.
+        Aucune desserte en transports n'a été trouvée entre vos points de départ et
+        d'arrivée pour la date indiquée.
       header: Aucune desserte
     NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
       body: >-
-        Une desserte en transports a été trouvée mais ne correspond pas à vos
-        critères. Veuillez ajuster votre recherche.
+        Une desserte en transports a été trouvée mais ne correspond pas à vos critères.
+        Veuillez ajuster votre recherche.
       header: Aucune desserte selon vos critères
     OUTSIDE_BOUNDS:
       body: >-
