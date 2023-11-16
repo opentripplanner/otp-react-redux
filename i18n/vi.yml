@@ -250,8 +250,8 @@ components:
   BeforeSignInScreen:
     mainTitle: Đăng nhập bạn vào
     message: >
-      Để truy cập trang này, bạn sẽ cần phải đăng nhập. Vui lòng đợi trong khi
-      chúng tôi chuyển hướng bạn đến trang đăng nhập…
+      Để truy cập trang này, bạn sẽ cần phải đăng nhập. Vui lòng đợi trong khi chúng
+      tôi chuyển hướng bạn đến trang đăng nhập…
   CallTakerPanel:
     advancedOptions: Tùy chọn nâng cao
     groupSize: "Quy mô nhóm:"
