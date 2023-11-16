@@ -68,8 +68,8 @@ actions:
     smsVerificationFailed: >-
       Su teléfono no ha podido ser verificado. Quizás el código que has
       introducido ha caducado. Solicita un nuevo código e inténtalo de nuevo.
-    mustAcceptTermsToSavePlace: Por favor, acepte las Condiciones de uso (en Mi cuenta)
-      para guardar las ubicaciones.
+    mustAcceptTermsToSavePlace: Acepte los Términos de uso (en Mi Cuenta) para guardar
+      las ubicaciones.
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -171,8 +171,8 @@ common:
       nMinutes: "{minutes, plural, =1 {un minuto} other {# minutos}}"
     durationAgo: hace {duration}
     tripDurationFormat: >-
-      {hours, plural, =0 {} other {# h }}{minutes} min { seconds, plural, =0 {}
-      other {# s}}
+      {hours, plural, =0 {} other {# h }}{minutes} min { seconds, plural, =0 {} other
+      {# s}}
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Prefiera los viajes accesibles por defecto
@@ -246,8 +246,8 @@ components:
   BatchSettings:
     destination: destino
     invalidModeSelection: >-
-      No se puede planificar un viaje utilizando los modos seleccionados. Prueba
-      a incluir el transporte publico en la selección de modos.
+      No se puede planificar un viaje utilizando los modos seleccionados. Prueba a
+      incluir el transporte publico en la selección de modos.
     origin: origen
     planTripTooltip: Planificar viaje
     validationMessage: "Por favor, defina los siguientes campos para planificar un
@@ -343,8 +343,8 @@ components:
   NarrativeItinerariesHeader:
     changeSortDir: Cambiar la dirección de clasificación
     howToFindResults: >-
-      Para ver los resultados, consulta el encabezado de los itinerarios
-      encontrados a continuación.
+      Para ver los resultados, consulta el encabezado de los itinerarios encontrados
+      a continuación.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerario encontrado} other {# itinerarios
       encontrados}}
@@ -379,39 +379,38 @@ components:
   NotificationPrefsPane:
     noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
     notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por:"
-    devicesRegistered: '{count, plural, one {# dispositivo} other {# dispositivos}}
-      registrado(s)'
+    devicesRegistered: '{count, plural, one {# device} other {# devices}} registrado'
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {la ubicación es} other
-        {las ubicaciones son}} no está cerca de ninguna calle.
+        {inputFieldsCount, plural, =0 {} one {localización es} other {localizaciones
+        son}} no están cerca de ninguna calle.
       header: No se puede acceder a la ubicación
     NO_STOPS_IN_RANGE:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {ubicación es} other {ubicaciones
-        son}} no están cerca de ninguna parada del transporte.
+        {inputFieldsCount, plural, =0 {} one {ubicación es} other {ubicaciones son}}
+        no están cerca de ninguna parada del transporte.
       header: Sin paradas cerca
     NO_TRANSIT_CONNECTION:
       body: >-
-        No se encontró ninguna conexión entre tu origen y destino en el día
-        seleccionado, utilizando los tipos de vehículos que seleccionaste.
+        No se encontró ninguna conexión entre tu origen y destino en el día seleccionado,
+        utilizando los tipos de vehículos que seleccionaste.
       header: Sin conexiones
     NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
       body: >-
-        Se encontró una conexión, pero estaba fuera de las opciones de la
-        búsqueda, intenta ajustar las opciones de la búsqueda, usando los tipos
-        de vehículos que seleccionaste.
+        Se encontró una conexión, pero estaba fuera de las opciones de la búsqueda,
+        intenta ajustar las opciones de la búsqueda, usando los tipos de vehículos
+        que seleccionaste.
       header: Sin conexiones por el criterio de la búsqueda
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {ubicación es} other {ubicaciones
+        {inputFieldsCount, plural, =0 {} one {localización es} other {localizaciones
         son}} no están en los límites del planificador de viajes.
       header: Ubicación fuera de los límites
     OUTSIDE_SERVICE_PERIOD:
       body: >-
-        La fecha específicada está fuera del rango de los datos disponibles para
-        la búsqueda de los viajes.
+        La fecha específicada está fuera del rango de los datos disponibles para la
+        búsqueda de los viajes.
       header: Fuera de plazo
     SYSTEM_ERROR:
       body: Se ha producido un error desconocido en la búsqueda.
@@ -756,8 +755,8 @@ components:
     updating: Actualizando
     errorUpdatingProfile: Error al actualizar el perfil.
     fields:
-      storeTripHistory: Guardar el historial de los viajes
-    fieldUpdated: Este ajuste se ha actualizado.
+      storeTripHistory: Almacenar historial de viajes
+    fieldUpdated: Este ajuste se actualizó.
   UserSettings:
     confirmDeletion: >-
       Tiene almacenadas búsquedas o lugares recientes. Si desactiva el
