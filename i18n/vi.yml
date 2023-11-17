@@ -5,8 +5,7 @@ actions:
     callQuerySaveError: "Lỗi khi lưu trữ các truy vấn cuộc gọi: {err}"
     callSaveError: "Không thể lưu cuộc gọi: {err}"
     checkSessionError: "Lỗi khi thiết lập phiên ủy quyền: {err}"
-    couldNotFindCallError: Không thể tìm thấy cuộc gọi. Đang hủy yêu cầu lưu truy
-      vấn.
+    couldNotFindCallError: Không thể tìm thấy cuộc gọi. Đang hủy yêu cầu lưu truy vấn.
     fetchCallsError: "Lỗi khi tìm nạp cuộc gọi: {err}"
     queryFetchError: "Lỗi khi tìm nạp các truy vấn: {err}"
   fieldTrip:
@@ -29,21 +28,21 @@ actions:
       Không thể lưu kế hoạch chuyến đi: Không thể lưu kế hoạch chuyến đi này do
       thiếu sức chứa trên một hoặc nhiều xe. Vui lòng lên kế hoạch lại chuyến đi
       của bạn.
-    maxTripRequestsExceeded: Đã vượt quá số lượng yêu cầu chuyến đi mà không có kết
-      quả hợp lệ
+    maxTripRequestsExceeded: Đã vượt quá số lượng yêu cầu chuyến đi mà không có kết quả hợp lệ
     saveItinerariesError: "Không lưu được hành trình: {err}"
     setDateError: "Lỗi khi cài đặt ngày:"
     setGroupSizeError: "Lỗi khi cài đặt kích thước nhóm:"
     setPaymentError: "Lỗi khi cài đặt thông tin thanh toán:"
     setRequestStatusError: "Lỗi khi cài đặt trạng thái yêu cầu:"
   location:
-    geolocationNotSupportedError: Định vị địa lý không được hỗ trợ bởi trình duyệt
-      của bạn
+    deniedAccessAlert: >
+      Quyền truy cập vào địa điểm của quý vị bị chặn.
+
+      Để sử dụng địa điểm hiện tại của mình, quý vị hãy cho phép sử dụng vị trí
+      trong trình duyệt và tải lại trang này. 
+    geolocationNotSupportedError: Định vị địa lý không được hỗ trợ bởi trình duyệt của bạn
     unknownPositionError: Lỗi không xác định khi tìm vị trí
     userDeniedPermission: Người dùng từ chối cấp quyền
-    deniedAccessAlert: "Quyền truy cập vào địa điểm của quý vị bị chặn.\nĐể sử dụng
-      địa điểm hiện tại của mình, quý vị hãy cho phép sử dụng vị trí trong trình duyệt
-      và tải lại trang này. \n"
   map:
     currentLocation: (Vị trí hiện tại)
   user:
@@ -53,8 +52,12 @@ actions:
     confirmDeletePlace: Bạn có muốn loại bỏ nơi này không?
     emailVerificationResent: Thông báo xác minh email đã được gửi lại.
     genericError: "Phát sinh lỗi: {err}"
-    itineraryExistenceCheckFailed: Lỗi kiểm tra xem chuyến đi được chọn của bạn là
-      có thể.
+    itineraryExistenceCheckFailed: Lỗi kiểm tra xem chuyến đi được chọn của bạn là có thể.
+    mustAcceptTermsToSavePlace: >-
+      Vui lòng chấp nhận Điều Khoản Sử Dụng (trong phần Tài Khoản Của Tôi) để
+      lưu lại địa điểm.
+    mustBeLoggedInToSavePlace: Vui lòng đăng nhập để lưu lại địa điểm.
+    placeRemembered: Cài đặt cho vị trí này đã được lưu lại.
     preferencesSaved: Những sở thích của bạn đã được lưu lại.
     smsInvalidCode: Mã bạn nhập không hợp lệ. Vui lòng thử lại.
     smsResendThrottled: >-
@@ -63,10 +66,6 @@ actions:
     smsVerificationFailed: >-
       Điện thoại của bạn không thể được xác minh. Có lẽ mã bạn đã nhập đã hết
       hạn. Vui lòng yêu cầu một mã mới và thử lại.
-    mustBeLoggedInToSavePlace: Vui lòng đăng nhập để lưu lại địa điểm.
-    mustAcceptTermsToSavePlace: Vui lòng chấp nhận Điều Khoản Sử Dụng (trong phần
-      Tài Khoản Của Tôi) để lưu lại địa điểm.
-    placeRemembered: Cài đặt cho vị trí này đã được lưu lại.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -111,15 +110,16 @@ common:
     print: In
     save: Tiết kiệm
     startOver: Bắt đầu lại
-    "yes": Đúng
     submitting: Đang gửi…
+    "yes": Đúng
   itineraryDescriptions:
     calories: "{calories, number} calo"
+    fareUnknown: Không có thông tin giá vé
     noItineraryToDisplay: Không có hành trình để hiển thị.
     relativeCo2: |
       {co2} CO₂ {isMore, select, true {nhiều} other {ít} } hơn so với xe hơi
     transfers: "{transfers, plural, =0 {} other {# chuyển}}"
-    fareUnknown: Không có thông tin giá vé
+  linkOpensNewWindow: (Mở khoảng thời gian mới)
   modes:
     bicycle_rent: Chia sẻ xe đạp
     bike: Xe đạp
@@ -168,22 +168,19 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds, plural, =0
       {} other {# giây}}
-  linkOpensNewWindow: (Mở khoảng thời gian mới)
 components:
   A11yPrefs:
-    accessibilityRoutingByDefault: Thích những chuyến đi có thể truy cập theo mặc
-      định
+    accessibilityRoutingByDefault: Thích những chuyến đi có thể truy cập theo mặc định
   AccountSetupFinishPane:
     message: Bạn đã sẵn sàng để bắt đầu lên kế hoạch cho các chuyến đi của bạn.
   AddPlaceButton:
     addPlace: Thêm địa điểm
-    needOriginDestination: Xác định nguồn gốc hoặc đích đến để thêm các địa điểm trung
-      gian
+    needOriginDestination: Xác định nguồn gốc hoặc đích đến để thêm các địa điểm trung gian
     tooManyPlaces: Địa điểm trung gian tối đa đạt được
   AdvancedOptions:
     bannedRoutes: Chọn các tuyến đường bị cấm…
-    preferredRoutes: Chọn các tuyến đường ưa thích…
     bikeTolerance: Sức chịu đựng đi xe đạp
+    preferredRoutes: Chọn các tuyến đường ưa thích…
     walkTolerance: Sức chịu đựng đi bộ
   AfterSignInScreen:
     mainTitle: Chuyển hướng...
@@ -239,19 +236,19 @@ components:
     modeSelectorLabel: Chọn phương thức di chuyển
   BatchSettings:
     destination: điểm đến
+    invalidModeSelection: >-
+      Không thể lên kế hoạch cho chuyến đi bằng các phương thức đã lựa chọn. Hãy
+      thử đưa phương tiện công cộng vào phần lựa chọn phương thức của quý vị.
     origin: điểm xuất phát
     planTripTooltip: Lên kế hoạch cho chuyến đi
     validationMessage: >-
       Vui lòng xác định các khu vực sau để lên kế hoạch cho một chuyến đi:
       {issues}
-    invalidModeSelection: Không thể lên kế hoạch cho chuyến đi bằng các phương thức
-      đã lựa chọn. Hãy thử đưa phương tiện công cộng vào phần lựa chọn phương thức
-      của quý vị.
   BeforeSignInScreen:
     mainTitle: Đăng nhập bạn vào
     message: >
-      Để truy cập trang này, bạn sẽ cần phải đăng nhập. Vui lòng đợi trong khi chúng
-      tôi chuyển hướng bạn đến trang đăng nhập…
+      Để truy cập trang này, bạn sẽ cần phải đăng nhập. Vui lòng đợi trong khi
+      chúng tôi chuyển hướng bạn đến trang đăng nhập…
   CallTakerPanel:
     advancedOptions: Tùy chọn nâng cao
     groupSize: "Quy mô nhóm:"
@@ -296,8 +293,7 @@ components:
     editPlaceGeneric: Chỉnh sửa vị trí
     invalidAddress: Vui lòng cài đặt một vị trí cho nơi này.
     invalidName: Vui lòng nhập tên cho nơi này.
-    nameAlreadyUsed: Bạn đã sử dụng tên này cho một nơi khác. Vui lòng nhập một tên
-      khác.
+    nameAlreadyUsed: Bạn đã sử dụng tên này cho một nơi khác. Vui lòng nhập một tên khác.
     placeNotFound: Không tìm thấy địa điểm
     placeNotFoundDescription: Xin lỗi, địa điểm được yêu cầu không được tìm thấy.
   FormNavigationButtons:
@@ -321,21 +317,27 @@ components:
     shared-vehicles: Phương Tiện Đi Chung
     stops: Điểm dừng của phương tiện công cộng
     streets: Đường phố
+  MapillaryFrame:
+    title: Hình ảnh đường phố
   MetroUI:
     arriveAt: Đến nơi
     itineraryDescription: "{time} hành trình sử dụng {routes}"
     leaveAt: Bạn rời khỏi
     multipleOptions: Nhiều lựa chọn
     orAlternatives: hoặc các tuyến đường khác cùng hướng
-    timeWalking: "{time} đi bộ"
-    singleModeItineraryDescription: Hành trình {mode} kéo dài {time}
     originallyScheduledTime: (ban đầu là {originalTime})
+    singleModeItineraryDescription: Hành trình {mode} kéo dài {time}
+    timeWalking: "{time} đi bộ"
   MobileOptions:
     header: Cài đặt tùy chọn tìm kiếm
   NarrativeItinerariesHeader:
     changeSortDir: Thay đổi hướng sắp xếp
+    howToFindResults: Để xem kết quả, xem phần các hành trình đã tìm thấy ở phía dưới.
     itinerariesFound: "{itineraryNum} hành trình được tìm thấy"
     numIssues: "{issueNum} vấn đề"
+    resultsSortedBy: >-
+      Kết quả chuyến đi hiện được sắp xếp theo {sortSelected}. Để thay đổi cách
+      sắp xếp kết quả, hãy sử dụng nút "Sắp Xếp Kết Quả" bên dưới.
     searching: Tìm lựa chọn của bạn…
     selectArrivalTime: Thời gian đến
     selectBest: Lựa chọn tốt nhất
@@ -343,11 +345,8 @@ components:
     selectDepartureTime: Giờ khởi hành
     selectDuration: Thời gian
     selectWalkTime: Thời gian đi bộ
-    viewAll: Xem tất cả các tùy chọn
     sortResults: Kết quả sắp xếp
-    howToFindResults: Để xem kết quả, xem phần các hành trình đã tìm thấy ở phía dưới.
-    resultsSortedBy: Kết quả chuyến đi hiện được sắp xếp theo {sortSelected}. Để thay
-      đổi cách sắp xếp kết quả, hãy sử dụng nút "Sắp Xếp Kết Quả" bên dưới.
+    viewAll: Xem tất cả các tùy chọn
   NavLoginButton:
     help: Giúp đỡ
     myAccount: Tài khoản của tôi
@@ -363,16 +362,64 @@ components:
     description: Nội dung bạn yêu cầu không có sẵn.
     header: Không tìm thấy nội dung
   NotificationPrefsPane:
+    devicesRegistered: "{count, plural, one {# device} other {# devices}} đã đăng ký"
+    noDeviceForPush: Đăng ký thiết bị của quý vị bằng ứng dụng di động để nhận thông báo đẩy.
     notificationChannelPrompt: "Nhận thông báo về các chuyến đi đã lưu bằng:"
-    devicesRegistered: '{count, plural, one {# device} other {# devices}} đã đăng
-      ký'
-    noDeviceForPush: Đăng ký thiết bị của quý vị bằng ứng dụng di động để nhận thông
-      báo đẩy.
+  OTP2ErrorRenderer:
+    LOCATION_NOT_FOUND:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}} không nằm gần đường phố nào.
+      header: Không thể tiếp cận địa điểm
+    NO_STOPS_IN_RANGE:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}} không nằm gần trạm dừng phương tiện công cộng nào.
+      header: Không có trạm dừng trong phạm vi
+    NO_TRANSIT_CONNECTION:
+      body: >-
+        Không tìm thấy kết nối bằng phương tiện công cộng nào giữa điểm đầu và
+        điểm đến trong những ngày cung cấp dịch vụ được chọn với các loại phương
+        tiện quý vị đã chọn.
+      header: Không có kết nối bằng phương tiện công cộng nào
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: >-
+        Tìm thấy kết nối bằng phương tiện công cộng nhưng phương thức này nằm
+        ngoài khoảng thời gian tìm kiếm, hãy thử điều chỉnh khoảng thời gian tìm
+        kiếm với các loại phương tiện quý vị đã chọn.
+      header: >-
+        Không có kết nối bằng phương tiện công cộng trong khoảng thời gian tìm
+        kiếm
+    OUTSIDE_BOUNDS:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}} không nằm trong ranh giới của trình lên kế hoạch chuyến
+        đi.
+      header: Địa điểm nằm ngoài ranh giới
+    OUTSIDE_SERVICE_PERIOD:
+      body: >-
+        Ngày được chỉ định nằm ngoài phạm vi dữ liệu hiện có trong trình lên kế
+        hoạch chuyến đi.
+      header: Ngoài giai đoạn cung cấp dịch vụ
+    SYSTEM_ERROR:
+      body: Đã xảy ra lỗi chưa xác định trong khi tìm kiếm.
+      header: Lỗi Trình Lên Kế Hoạch Chuyến Đi
+    WALKING_BETTER_THAN_TRANSIT:
+      body: >-
+        Quý vị sẽ hoàn thành chuyến đi nhanh hơn nếu tránh sử dụng phương tiện
+        công cộng.
+      header: >-
+        Phương tiện công cộng không phải là cách nhanh nhất để thực hiện chuyến
+        đi này
+    inputFields:
+      FROM: Nguồn gốc
+      TO: Điểm đến
   PhoneNumberEditor:
     changeNumber: Thay đổi số điện thoại
     invalidCode: Vui lòng nhập 6 chữ số cho mã xác thực.
     invalidPhone: Xin vui lòng nhập một số điện thoại hợp lệ.
     pending: Chưa xác minh
+    phoneNumberSubmitted: Gửi thành công số điện thoại {phoneNumber}.
     phoneNumberVerified: Số điện thoại {phoneNumber} đã được xác minh thành công.
     placeholder: Nhập số điện thoại của bạn
     prompt: "Nhập số điện thoại của bạn để nhận thông báo SMS:"
@@ -385,7 +432,6 @@ components:
       phút).
     verified: Đã xác minh
     verify: Kiểm chứng
-    phoneNumberSubmitted: Gửi thành công số điện thoại {phoneNumber}.
   Place:
     deleteThisPlace: Xóa nơi này
     enterAlert: >
@@ -397,9 +443,9 @@ components:
     addressPrompt: "Địa chỉ:"
     genericLocationPlaceholder: Tìm kiếm vị trí
     locationPlaceholder: Tìm kiếm vị trí {placeName}
+    locationTypePrompt: "Loại địa điểm:"
     nameExample: Quán cà phê của tôi
     namePrompt: "Tên địa điểm:"
-    locationTypePrompt: 'Loại địa điểm:'
   PlanFirstLastButtons:
     first: Thứ nhất
     last: Cuối
@@ -437,11 +483,11 @@ components:
     tripsFound: Đã tìm thấy {count} tùy chọn
     waiting: Đang chờ đợi...
   RouteDetails:
+    headsignTo: "{headsign} ({lastStop})"
     moreDetails: Thêm chi tiết
     operatedBy: Được điều hành bởi {agencyName}
     selectADirection: Chọn một hướng…
     stopsTo: Hướng
-    headsignTo: '{headsign} ({lastStop})'
   RouteViewer:
     agencyFilter: Sàng lọc đại lý giao thông công cộng
     allAgencies: Tất cả các đại lý phương tiện công cộng
@@ -451,11 +497,11 @@ components:
     header: Xem tuyến đường
     modeFilter: Sàng lọc phương tiện
     noFilteredRoutesFound: Không có tuyến đường phù hợp với sàng lọc của bạn!
+    openPatternViewer: Xem chi tiết tuyến đường
     shortTitle: Xem các tuyến đường
+    stopsInDirectionOfTravel: "Các trạm dừng trong hướng di chuyển này:"
     title: Xem tuyến đường
     toggleRouteOnMap: Chuyển đổi tuyến đường trên bản đồ
-    stopsInDirectionOfTravel: 'Các trạm dừng trong hướng di chuyển này:'
-    openPatternViewer: Xem chi tiết tuyến đường
   SaveTripButton:
     cantSaveText: Không thể tiết kiệm
     cantSaveTooltip: >-
@@ -479,6 +525,8 @@ components:
     pause: Tạm ngừng
     resume: Tiếp tục
   SavedTripScreen:
+    itineraryLoaded: Đã tải hành trình
+    itineraryLoading: Đang tải hành trình
     tooManyTrips: >
       Bạn đã đạt được tối đa năm chuyến đi được lưu. Vui lòng loại bỏ các chuyến
       đi không sử dụng khỏi các chuyến đi được lưu của bạn và thử lại.
@@ -486,8 +534,8 @@ components:
       Một chuyến đi được lưu khác đã sử dụng tên này. Vui lòng chọn một tên
       khác.
     tripNameRequired: Vui lòng nhập tên chuyến đi.
-    itineraryLoaded: Đã tải hành trình
-    itineraryLoading: Đang tải hành trình
+  SequentialPaneDisplay:
+    stepNumber: Bước {step} trên {total}
   SessionTimeout:
     body: >-
       Phiên của bạn sẽ hết hạn trong vòng một phút. Nhấn 'Tiếp tục Phiên' để
@@ -516,18 +564,18 @@ components:
       Đây là một điểm dừng linh hoạt. Xe sẽ đưa đón khách trong khu linh hoạt
       này theo yêu cầu. Bạn có thể phải gọi trước để được phục vụ trong khu vực
       này.
+    forStop: dành cho {stopName}
     header: Xem điểm dừng
     loadingText: Đang tải điểm dừng…
+    nextArrivals: Lần Đến Nơi Tiếp Theo
     noStopsFound: Không tìm thấy thời gian dừng cho ngày.
     operatorLogoAriaLabel: "Điểm dừng của {operatorName}:"
+    schedule: Lịch trình
     timezoneWarning: Thời gian khởi hành được hiển thị trong <strong>{timezoneCode}</strong>.
     titleBarStopId: Điểm dừng {stopId}
-    viewNextArrivals: Xem những xe đến tiếp theo
+    viewNextDepartures: Xem lần khởi hành tiếp theo
     viewSchedule: Xem lịch trình
     zoomToStop: Phóng to để dừng lại
-    nextArrivals: Lần Đến Nơi Tiếp Theo
-    schedule: Lịch trình
-    forStop: dành cho {stopName}
   SubNav:
     languageSelector: Chọn ngôn ngữ
     languages: Ngôn ngữ
@@ -561,22 +609,17 @@ components:
     travelingAt: di chuyển với tốc độ {milesPerHour}
     vehicleName: Phương tiện giao thông {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Kiểm tra sự tồn tại của hành trình cho mỗi ngày trong
-      tuần…
+    checkingItineraryExistence: Kiểm tra sự tồn tại của hành trình cho mỗi ngày trong tuần…
     selectAtLeastOneDay: Vui lòng chọn ít nhất một ngày để theo dõi.
     tripDaysPrompt: Bạn thực hiện chuyến đi này vào những ngày nào?
-    tripIsAvailableOnDaysIndicated: Chuyến đi của bạn có sẵn vào những ngày trong
-      tuần như đã nêu ở trên.
+    tripIsAvailableOnDaysIndicated: Chuyến đi của bạn có sẵn vào những ngày trong tuần như đã nêu ở trên.
     tripNamePrompt: "Vui lòng cung cấp tên cho chuyến đi này:"
     tripNotAvailableOnDay: Chuyến đi không có sẵn vào {repeatedDay}
-    unsavedChangesExistingTrip: Bạn chưa lưu chuyến đi của mình. Nếu bạn rời đi, những
-      thay đổi sẽ bị mất.
-    unsavedChangesNewTrip: Bạn chưa lưu chuyến đi mới của mình. Nếu bạn rời đi, nó
-      sẽ bị mất.
+    unsavedChangesExistingTrip: Bạn chưa lưu chuyến đi của mình. Nếu bạn rời đi, những thay đổi sẽ bị mất.
+    unsavedChangesNewTrip: Bạn chưa lưu chuyến đi mới của mình. Nếu bạn rời đi, nó sẽ bị mất.
   TripNotificationsPane:
     advancedSettings: Cài đặt nâng cao
-    altRouteRecommended: Một tuyến đường hoặc điểm trung chuyển thay thế được khuyến
-      nghị
+    altRouteRecommended: Một tuyến đường hoặc điểm trung chuyển thay thế được khuyến nghị
     delaysAboveThreshold: Có sự chậm trễ hoặc gián đoạn của hơn
     howToReceiveAlerts: >
       Để nhận thông báo cho các chuyến đi đã lưu của bạn, bật thông báo trong
@@ -585,8 +628,7 @@ components:
     notificationsTurnedOff: Thông báo được tắt cho tài khoản của bạn.
     notifyViaChannelWhen: "Thông báo cho tôi qua {channel} khi:"
     oneHour: 1 tiếng
-    realtimeAlertFlagged: Có một cảnh báo thời gian thực được gắn cờ trên hành trình
-      của tôi
+    realtimeAlertFlagged: Có một cảnh báo thời gian thực được gắn cờ trên hành trình của tôi
     timeBefore: "{time} trước"
   TripStatus:
     alerts: "{alerts, plural, one {# cảnh báo!} other {# cảnh báo!}}"
@@ -599,8 +641,7 @@ components:
       earlyHeading: >-
         Chuyến đi đang diễn ra và sẽ đến sớm hơn {formattedDuration} so với dự
         kiến!
-      noDataHeading: Chuyến đi đang được tiến hành (không có cập nhật thời gian thực
-        có sẵn).
+      noDataHeading: Chuyến đi đang được tiến hành (không có cập nhật thời gian thực có sẵn).
       onTimeHeading: Chuyến đi đang được tiến hành và đúng giờ.
     base:
       lastCheckedDefaultText: Thời gian được kiểm tra lần cuối không xác định
@@ -643,8 +684,7 @@ components:
       tripStartIsEarly: >-
         Thời gian bắt đầu chuyến đi đang diễn ra sớm hơn ${duration} so với dự
         kiến!
-      tripStartsSoonNoUpdates: Chuyến đi đang bắt đầu sớm (không có cập nhật về thời
-        gian thực).
+      tripStartsSoonNoUpdates: Chuyến đi đang bắt đầu sớm (không có cập nhật về thời gian thực).
       tripStartsSoonOnTime: Chuyến đi đang bắt đầu sớm và sắp đúng giờ.
   TripSummary:
     arriveAt: "Đến nơi "
@@ -676,22 +716,22 @@ components:
   TripViewer:
     accessible: Truy cập được
     bicyclesAllowed: Được phép
-    header: Xem chuyến đi
-    routeHeader: "Tuyến: <strong>{routeShortName}</strong> {routeLongName}"
-    viewStop: Lượt xem
-    startOfTrip: Chuyến đi bắt đầu tại đây
-    listOfRouteStops: Danh sách các trạm dừng trên tuyến đường này
-    tripDescription: Lên xe tại {boardAtStop} và xuống xe tại {disembarkAtStop}
     endOfTrip: Chuyến đi kết thúc tại đây
+    header: Xem chuyến đi
+    listOfRouteStops: Danh sách các trạm dừng trên tuyến đường này
+    routeHeader: "Tuyến: <strong>{routeShortName}</strong> {routeLongName}"
+    startOfTrip: Chuyến đi bắt đầu tại đây
+    tripDescription: Lên xe tại {boardAtStop} và xuống xe tại {disembarkAtStop}
+    viewStop: Lượt xem
   UserAccountScreen:
     confirmDelete: >-
       Bạn có chắc bạn muốn xóa tài khoản người dùng của mình không? Một khi bạn
       làm như vậy, nó không thể được phục hồi.
-    updating: Đang cập nhật
     errorUpdatingProfile: Lỗi cập nhật hồ sơ.
+    fieldUpdated: Cài đặt này đã được cập nhật.
     fields:
       storeTripHistory: Lưu trữ lịch sử chuyến đi
-    fieldUpdated: Cài đặt này đã được cập nhật.
+    updating: Đang cập nhật
   UserSettings:
     confirmDeletion: >-
       Bạn có các tìm kiếm và/hoặc địa điểm gần đây được lưu trữ. Việc vô hiệu
@@ -730,49 +770,6 @@ components:
     switcher: Nút bật tắt
   WelcomeScreen:
     prompt: Bạn muốn đi đâu?
-  OTP2ErrorRenderer:
-    SYSTEM_ERROR:
-      header: Lỗi Trình Lên Kế Hoạch Chuyến Đi
-      body: Đã xảy ra lỗi chưa xác định trong khi tìm kiếm.
-    LOCATION_NOT_FOUND:
-      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}} không nằm gần đường phố nào.'
-      header: Không thể tiếp cận địa điểm
-    NO_STOPS_IN_RANGE:
-      header: Không có trạm dừng trong phạm vi
-      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}} không nằm gần trạm dừng phương tiện công cộng nào.'
-    NO_TRANSIT_CONNECTION:
-      body: Không tìm thấy kết nối bằng phương tiện công cộng nào giữa điểm đầu và
-        điểm đến trong những ngày cung cấp dịch vụ được chọn với các loại phương tiện
-        quý vị đã chọn.
-      header: Không có kết nối bằng phương tiện công cộng nào
-    inputFields:
-      FROM: Nguồn gốc
-      TO: Điểm đến
-    WALKING_BETTER_THAN_TRANSIT:
-      body: Quý vị sẽ hoàn thành chuyến đi nhanh hơn nếu tránh sử dụng phương tiện
-        công cộng.
-      header: Phương tiện công cộng không phải là cách nhanh nhất để thực hiện chuyến
-        đi này
-    OUTSIDE_SERVICE_PERIOD:
-      header: Ngoài giai đoạn cung cấp dịch vụ
-      body: Ngày được chỉ định nằm ngoài phạm vi dữ liệu hiện có trong trình lên kế
-        hoạch chuyến đi.
-    OUTSIDE_BOUNDS:
-      header: Địa điểm nằm ngoài ranh giới
-      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}} không nằm trong ranh giới của trình lên kế hoạch chuyến đi.'
-    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
-      body: Tìm thấy kết nối bằng phương tiện công cộng nhưng phương thức này nằm
-        ngoài khoảng thời gian tìm kiếm, hãy thử điều chỉnh khoảng thời gian tìm kiếm
-        với các loại phương tiện quý vị đã chọn.
-      header: Không có kết nối bằng phương tiện công cộng trong khoảng thời gian tìm
-        kiếm
-  SequentialPaneDisplay:
-    stepNumber: Bước {step} trên {total}
-  MapillaryFrame:
-    title: Hình ảnh đường phố
 config:
   accessModes:
     bicycle: Giao thông công cộng + Xe đạp cá nhân
