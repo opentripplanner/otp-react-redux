@@ -198,6 +198,8 @@
 .otp .option.default-itin > .header .title > .summary > .mode-block {
   height: 18px;
   width: 18px;
+  color: #eee;
+  fill: #eee;
 }
 
 .otp .option.default-itin > .header .title > .summary > .arrow-block {
