@@ -12,6 +12,13 @@ components:
       }"
     itinerariesFound: "{itineraryNum, plural,\n one {найден # маршрут}\n other {найдено
       несколько маршрутов (#)}\n }"
+    sortResults: Результаты сортировки
+    changeSortDir: Изменить направление сортировки
+    howToFindResults: Чтобы просмотреть результаты, см. заголовок «Найденные маршруты»
+      ниже.
+    resultsSortedBy: Результаты маршрута на данный момент отсортированы по {sortSelected}.
+      Чтобы изменить способ сортировки результатов, используйте кнопку «Сортировать
+      результаты» ниже.
   TripStatus:
     planNewTrip: Запланировать поездку
     deleteTrip: Удалить поездку
@@ -30,6 +37,7 @@ components:
     streets: Улицы
     satellite: Спутник
     stops: Остановки общественного транспорта
+    shared-vehicles: Общие транспортные средства
   FavoritePlaceScreen:
     placeNotFound: Место не найдено
     addNewPlace: Добавить новое место
@@ -64,6 +72,7 @@ components:
     mailables: Почтовые отправления
     fieldTrip: Поездка
     closeMenu: Закрыть меню
+    skipNavigation: Пропустить навигацию
   TripStatusRenderers:
     inactive:
       description: Возобновите отслеживание поездки, чтобы просматривать изменение
@@ -116,6 +125,10 @@ components:
     accessible: Доступно
     routeHeader: 'Маршрут: <strong>{routeShortName}</strong> {routeLongName}'
     bicyclesAllowed: Разрешено
+    startOfTrip: Маршрут начинается здесь
+    listOfRouteStops: Список остановок на этом маршруте
+    tripDescription: Сесть в {boardAtStop} и выйти на {disembarkAtStop}
+    endOfTrip: Маршрут заканчивается здесь
   ExistingAccountDisplay:
     a11y: Доступность
     mainTitle: Мои настройки
@@ -151,23 +164,31 @@ components:
     departAt: Отправление {departTime, time, short}
   StopTimeCell:
     imminentArrival: Отправляется
+    realtime: На основе данных в реальном времени
+    scheduled: По данным расписания
   MetroUI:
     multipleOptions: Несколько вариантов
     timeWalking: '{time} пешком'
     itineraryDescription: '{time}, маршрут с {routes}'
     leaveAt: Отправление
     orAlternatives: или другие маршруты в том же направлении
+    singleModeItineraryDescription: '{time} {mode} маршрут'
+    arriveAt: Вы прибываете
+    originallyScheduledTime: (изначально {originalTime})
   SavedTripList:
     noSavedTrips: У вас нет сохраненных поездок
     pause: Приостановить
     resume: Возобновить
     noSavedTripsInstructions: Сперва выполните поиск поездок на карте.
     myTrips: Мои поездки
+    fromTo: Из {from} в {to}
   BatchSettings:
     destination: место назначения
     validationMessage: 'Заполните следующие поля, чтобы запланировать поездку: {issues}'
     planTripTooltip: Запланировать поездку
     origin: место отправления
+    invalidModeSelection: Невозможно спланировать поездку с использованием выбранных
+      режимов. Попробуйте включить транзит в выбор режима.
   StopViewer:
     viewNextArrivals: Посмотреть следующие прибытия
     loadingText: Загрузка остановки…
@@ -181,6 +202,11 @@ components:
       в этой зоне по запросу. Для обслуживания в этой зоне вам, возможно, придется
       позвонить заранее.
     zoomToStop: Приблизить остановку
+    findSchedule: Найти расписание по дате
+    operatorLogoAriaLabel: '{operatorName} остановка:'
+    nextArrivals: Посмотреть следующие прибытия
+    schedule: Расписание
+    forStop: для {stopName}
   AddPlaceButton:
     addPlace: Добавить место
     tooManyPlaces: Достигнуто ограничение по количеству промежуточных мест
@@ -219,6 +245,8 @@ components:
     verificationInstructions: "Откройте приложение для обмена SMS на телефоне и найдите
       текстовое сообщение с кодом подтверждения. Затем введите код ниже (срок действия
       кода: 10 минут).\n"
+    phoneNumberSubmitted: Номер телефона{phoneNumber} был успешно отправлен.
+    phoneNumberVerified: Номер телефона{phoneNumber}  был успешно проверен.
   Place:
     viewStop: Просмотреть остановку
     deleteThisPlace: Удалить это место
@@ -254,6 +282,10 @@ components:
     header: Средство просмотра маршрутов
     title: Средство просмотра маршрутов
     findARoute: Найти маршрут
+    toggleRouteOnMap: Переключить маршрут на карте
+    stopsInDirectionOfTravel: 'Остановки в этом направлении движения:'
+    details: ' '
+    openPatternViewer: Посмотреть детали маршрута
   RelatedStopsPanel:
     relatedStops: Связанные остановки
     viewDetails: Просмотреть подробную информацию
@@ -268,21 +300,27 @@ components:
     altRouteRecommended: Рекомендуется использовать пересадку или альтернативный маршрут
     howToReceiveAlerts: "Чтобы получать для сохраненных поездок, включите уведомления
       в настройках учетной записи и сохраните поездку еще раз.\n"
+    monitorThisTrip: 'Мониторинг данной поездки до ее начала:'
+    timeBefore: '{time} до'
   SavedTripScreen:
     tripNameRequired: Укажите имя поездки.
     tripNameAlreadyUsed: У вас уже сохранена поездка с таким именем. Укажите другое
       имя.
     tooManyTrips: "Можно сохранить не более пяти поездок. Удалите неиспользуемые поездки
       из раздела сохраненных и попробуйте еще раз.\n"
+    itineraryLoaded: Маршрут загружен
+    itineraryLoading: Загрузка маршрута
   StackedPaneDisplay:
     savePreferences: Сохранить параметры
   LiveStopTimes:
     autoRefresh: Обновлять прибытия автоматически?
+    refresh: Обновить время прибытия
   RouteDetails:
     selectADirection: Выберите направление…
     moreDetails: Подробнее
     operatedBy: 'Оператор: {agencyName}'
     stopsTo: По направлению
+    headsignTo: '{headsign} ({lastStop})'
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Для этой поездки используется информация о задержках и дорожном
       движении в режиме реального времени.
@@ -309,6 +347,7 @@ components:
       \n \n Тип поездки (например, прогулка + общественный транспорт, велосипед +
       общественный транспорт, авто + общественный транспорт): \n \n *** ТЕХНИЧЕСКИЕ
       СВЕДЕНИЯ ***\"\n"
+    header: Инструменты маршрута
   PlanFirstLastButtons:
     next: Следующий
     last: Последний
@@ -353,6 +392,10 @@ components:
     settings: Настройки
     trips: Поездки
     myAccount: Моя учетная запись
+    languageSelector: Выбрать язык
+    userMenu: Опции профиля
+    languages: Языки
+    selectALanguage: Выбрать язык
   AccountSetupFinishPane:
     message: Вы готовы планировать поездки.
   RelatedPanel:
@@ -381,6 +424,8 @@ components:
     genericLocationPlaceholder: Поиск местоположения
     namePrompt: 'Название места:'
     addressPrompt: 'Aдрес:'
+    nameExample: Мои любимые кофейные точки
+    locationTypePrompt: 'Тип местонахождения:'
   CallTakerPanel:
     groupSize: 'Размер группы:'
     advancedOptions: Расширенные опции
@@ -416,11 +461,17 @@ components:
   UserAccountScreen:
     confirmDelete: Действительно удалить учетную запись? После удаления ее невозможно
       будет восстановить.
+    updating: Обновляется
+    errorUpdatingProfile: Ошибка редактирования профиля.
+    fields:
+      storeTripHistory: Сохранять историю поездок
+    fieldUpdated: Этот параметр был обновлен.
   PrintLayout:
     toggleMap: Переключить карту
     itinerary: Маршрут
   BatchSearchScreen:
     header: Запланируйте поездку
+    modeSelectorLabel: Выбрать способ передвижения
   DateTimeOptions:
     now: Сейчас
     departAt: Отправление в
@@ -433,11 +484,16 @@ components:
     deleteMyAccount: Удалить мою учетную запись
   AdvancedOptions:
     preferredRoutes: Выбор предпочтительных маршрутов…
+    bikeTolerance: Выносливость для езды на велосипеде
+    walkTolerance: Выносливость для ходьбы пешком
+    bannedRoutes: Выбор заблокированных маршрутов…
   DefaultItinerary:
     clickDetails: Нажмите, чтобы просмотреть подробную информацию
     multiModeSummary: '{accessMode} + {transitMode}'
+    nonTransit: Альтернативные варианты
   TripSummary:
     arriveAt: 'Прибытие в '
+    leaveAt: 'Оставить '
   TransitVehicleOverlay:
     stopped_at: 'Двери открываются на остановке: «{stop}»'
     in_transit_to: 'Cледующая остановка: «{stop}»'
@@ -446,6 +502,53 @@ components:
     incoming_at: 'Приближаемся к остановке: «{stop}»'
   ItinerarySummary:
     minMaxFare: '{minTotalFare} — {maxTotalFare}'
+    itineraryDetails: Сведения о маршруте
+  NotificationPrefsPane:
+    notificationChannelPrompt: 'Получайте уведомления о сохраненных поездках через:'
+    devicesRegistered: '{count, plural, one {# устройство} other {# устройства}} зарегистрированы'
+    noDeviceForPush: Зарегистрируйте свое устройство с помощью мобильного приложения,
+      чтобы получать всплывающие уведомления.
+  OTP2ErrorRenderer:
+    SYSTEM_ERROR:
+      header: Сбой планировщика поездок
+      body: Во время поиска произошла неизвестная ошибка.
+    LOCATION_NOT_FOUND:
+      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {местонахождение}
+        other {местонахождения}} вдалеке от всех улиц.'
+      header: Местонахождение недоступно.
+    NO_STOPS_IN_RANGE:
+      header: Нет остановок в радиусе действия
+      body: '{inputFields} {inputFieldsCount, plural, =0 {} one{местонахождение} other  {местонахождения}}
+        вдалеке от всех остановок общественного транспорта.'
+    NO_TRANSIT_CONNECTION:
+      body: Между вашим пунктом отправления и пунктом назначения транзитное сообщение
+        в выбранный день с использованием выбранных вами типов транспортных средств
+        не обнаружено.
+      header: Нет транзитного сообщения
+    inputFields:
+      FROM: Mесто отправления
+      TO: Mесто назначения
+    WALKING_BETTER_THAN_TRANSIT:
+      body: При избежании транзитных маршрутов поездка будет быстрее, чем при пользовании
+        транзитом.
+      header: Транзит — не самый быстрый способ совершить эту поездку.
+    OUTSIDE_SERVICE_PERIOD:
+      header: Вне периода обслуживания
+      body: Указанная дата находится за пределами диапазона данных, загруженных в
+        настоящий момент в планировщик поездок.
+    OUTSIDE_BOUNDS:
+      header: Местонахождение вне пределов досягаемости
+      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {местонахождение}
+        other {местонахождения}} не в рамках плана поездки.'
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: Транзитное сообщение было найдено, но оно находилось за пределами окна
+        поиска. Попробуйте настроить окно поиска, используя выбранные вами типы транспортных
+        средств.
+      header: В окне поиска нет транзитного соединения
+  SequentialPaneDisplay:
+    stepNumber: Шаг {шаг} из {общее кол-во}
+  MapillaryFrame:
+    title: Изображения с улицы
 config:
   flex:
     both: Подробные сведения приведены в нижней части экрана маршрута
@@ -496,6 +599,10 @@ actions:
     confirmDeletePlace: Удалить это место?
     smsResendThrottled: SMS-сообщение с подтверждением отправлено на указанный номер
       меньше минуты назад. Попробуйте снова через несколько минут.
+    mustBeLoggedInToSavePlace: Пожалуйста, войдите в систему, чтобы сохранять местоположения.
+    mustAcceptTermsToSavePlace: Примите «Условия использования» (в разделе «Моя учетная
+      запись»), чтобы сохранять местоположения.
+    placeRemembered: Настройки этого места сохранены.
   callTaker:
     checkSessionError: 'Ошибка установления сеанса авторизации: {err}'
     fetchCallsError: 'Ошибка получения вызовов: {err}'
@@ -508,6 +615,10 @@ actions:
   location:
     unknownPositionError: Неизвестная ошибка при определении местоположения
     geolocationNotSupportedError: Ваш браузер не поддерживает геоданные
+    userDeniedPermission: Пользователь отказал в разрешении
+    deniedAccessAlert: "Доступ к вашему местоположению заблокирован.\nЧтобы использовать
+      ваше текущее местоположение, включите разрешение на определение местоположения
+      в браузере и перезагрузите страницу. \n"
 common:
   daysOfWeekPlural:
     thursday: Четверги
@@ -535,9 +646,12 @@ common:
     bicycle_rent: Прокат велосипедов
     micromobility_rent: Электросамокат
     flex: Гибкие маршруты
+    subway: Метро
+    tram: Трамвай
   notifications:
     email: электронная почта
     sms: SMS
+    push: всплывающие уведомления
   daysOfWeekCompact:
     wednesday: Ср.
     thursday: Чт.
@@ -561,11 +675,15 @@ common:
     error: Ошибка!
     next: Далее
     defaultValue: '{value} (по умолчанию)'
+    submitting: Отправка…
   itineraryDescriptions:
     transfers: '{transfers, plural, =0 {} one {# пересадка} other {несколько пересадок
       (#)}}'
     noItineraryToDisplay: Нет маршрута для отображения.
     calories: '{calories, number} кал'
+    fareUnknown: Информации о стоимости поездки нет.
+    relativeCo2: "{co2} {isMore, select, true {больше } other {меньше} } CO₂, чем
+      при вождении в одиночку\n"
   places:
     custom: пользовательское
     home: дом
@@ -579,6 +697,8 @@ common:
       nHours: '{hours, plural, =1 {час назад} other {# ч назад}}'
       nMinutes: '{minutes, plural, =1 {одну минуту} other {# мин}}'
       aFewSeconds: несколько секунд
+    tripDurationFormat: '{hours, plural, =0 {} other {# hr }}{minutes} min { seconds,
+      plural, =0 {} other {# sec}}'
   daysOfWeek:
     sunday: Воскресенье
     wednesday: Среда
@@ -600,6 +720,7 @@ common:
     click: нажмите на него
     tap: коснитесь его
     enterDestination: Введите место назначения или {mapAction} на карте…
+  linkOpensNewWindow: (Открывает новое окно)
 util:
   state:
     noTripFoundReason: В пределах указанного максимального расстояния или в указанное
@@ -610,3 +731,5 @@ util:
     noTripFound: Не удалось найти поездку.
     noTripFoundForMode: Не удалось найти поездку для режима «{modes}».
     noTripFoundWithReason: '{noTripFound}: {reason}'
+_id: ru
+_name: Pусский

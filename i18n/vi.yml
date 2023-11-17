@@ -40,6 +40,10 @@ actions:
     geolocationNotSupportedError: Định vị địa lý không được hỗ trợ bởi trình duyệt
       của bạn
     unknownPositionError: Lỗi không xác định khi tìm vị trí
+    userDeniedPermission: Người dùng từ chối cấp quyền
+    deniedAccessAlert: "Quyền truy cập vào địa điểm của quý vị bị chặn.\nĐể sử dụng
+      địa điểm hiện tại của mình, quý vị hãy cho phép sử dụng vị trí trong trình duyệt
+      và tải lại trang này. \n"
   map:
     currentLocation: (Vị trí hiện tại)
   user:
@@ -59,6 +63,10 @@ actions:
     smsVerificationFailed: >-
       Điện thoại của bạn không thể được xác minh. Có lẽ mã bạn đã nhập đã hết
       hạn. Vui lòng yêu cầu một mã mới và thử lại.
+    mustBeLoggedInToSavePlace: Vui lòng đăng nhập để lưu lại địa điểm.
+    mustAcceptTermsToSavePlace: Vui lòng chấp nhận Điều Khoản Sử Dụng (trong phần
+      Tài Khoản Của Tôi) để lưu lại địa điểm.
+    placeRemembered: Cài đặt cho vị trí này đã được lưu lại.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -104,12 +112,14 @@ common:
     save: Tiết kiệm
     startOver: Bắt đầu lại
     "yes": Đúng
+    submitting: Đang gửi…
   itineraryDescriptions:
     calories: "{calories, number} calo"
     noItineraryToDisplay: Không có hành trình để hiển thị.
     relativeCo2: |
       {co2} CO₂ {isMore, select, true {nhiều} other {ít} } hơn so với xe hơi
     transfers: "{transfers, plural, =0 {} other {# chuyển}}"
+    fareUnknown: Không có thông tin giá vé
   modes:
     bicycle_rent: Chia sẻ xe đạp
     bike: Xe đạp
@@ -158,6 +168,7 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds, plural, =0
       {} other {# giây}}
+  linkOpensNewWindow: (Mở khoảng thời gian mới)
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Thích những chuyến đi có thể truy cập theo mặc
@@ -172,6 +183,8 @@ components:
   AdvancedOptions:
     bannedRoutes: Chọn các tuyến đường bị cấm…
     preferredRoutes: Chọn các tuyến đường ưa thích…
+    bikeTolerance: Sức chịu đựng đi xe đạp
+    walkTolerance: Sức chịu đựng đi bộ
   AfterSignInScreen:
     mainTitle: Chuyển hướng...
     message: >-
@@ -223,6 +236,7 @@ components:
     shortTitle: Lên kế hoạch cho chuyến đi
   BatchSearchScreen:
     header: Kế hoạch chuyến đi
+    modeSelectorLabel: Chọn phương thức di chuyển
   BatchSettings:
     destination: điểm đến
     origin: điểm xuất phát
@@ -230,11 +244,14 @@ components:
     validationMessage: >-
       Vui lòng xác định các khu vực sau để lên kế hoạch cho một chuyến đi:
       {issues}
+    invalidModeSelection: Không thể lên kế hoạch cho chuyến đi bằng các phương thức
+      đã lựa chọn. Hãy thử đưa phương tiện công cộng vào phần lựa chọn phương thức
+      của quý vị.
   BeforeSignInScreen:
     mainTitle: Đăng nhập bạn vào
     message: >
-      Để truy cập trang này, bạn sẽ cần phải đăng nhập. Vui lòng đợi trong khi
-      chúng tôi chuyển hướng bạn đến trang đăng nhập…
+      Để truy cập trang này, bạn sẽ cần phải đăng nhập. Vui lòng đợi trong khi chúng
+      tôi chuyển hướng bạn đến trang đăng nhập…
   CallTakerPanel:
     advancedOptions: Tùy chọn nâng cao
     groupSize: "Quy mô nhóm:"
@@ -254,6 +271,7 @@ components:
   DefaultItinerary:
     clickDetails: Bấm để xem chi tiết
     multiModeSummary: "{accessMode} + {transitMode}"
+    nonTransit: Các tùy chọn thay thế
   DeleteUser:
     deleteMyAccount: Xóa tài khoản của tôi
   ErrorMessage:
@@ -289,6 +307,7 @@ components:
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Tự động làm mới các lượt đến?
+    refresh: Làm mới thời gian đến
   LocationSearch:
     enterLocation: Nhập vị trí
     setDestination: Chọn điểm đến
@@ -299,7 +318,7 @@ components:
     micromobility-rental: "{companies} Xe tay ga điện"
     park-and-ride: Địa điểm đậu xe và đi xe công cộng
     satellite: Vệ tinh
-    shared-vehicles: Phương tiện chia sẻ
+    shared-vehicles: Phương Tiện Đi Chung
     stops: Điểm dừng của phương tiện công cộng
     streets: Đường phố
   MetroUI:
@@ -309,6 +328,8 @@ components:
     multipleOptions: Nhiều lựa chọn
     orAlternatives: hoặc các tuyến đường khác cùng hướng
     timeWalking: "{time} đi bộ"
+    singleModeItineraryDescription: Hành trình {mode} kéo dài {time}
+    originallyScheduledTime: (ban đầu là {originalTime})
   MobileOptions:
     header: Cài đặt tùy chọn tìm kiếm
   NarrativeItinerariesHeader:
@@ -323,6 +344,10 @@ components:
     selectDuration: Thời gian
     selectWalkTime: Thời gian đi bộ
     viewAll: Xem tất cả các tùy chọn
+    sortResults: Kết quả sắp xếp
+    howToFindResults: Để xem kết quả, xem phần các hành trình đã tìm thấy ở phía dưới.
+    resultsSortedBy: Kết quả chuyến đi hiện được sắp xếp theo {sortSelected}. Để thay
+      đổi cách sắp xếp kết quả, hãy sử dụng nút "Sắp Xếp Kết Quả" bên dưới.
   NavLoginButton:
     help: Giúp đỡ
     myAccount: Tài khoản của tôi
@@ -339,6 +364,10 @@ components:
     header: Không tìm thấy nội dung
   NotificationPrefsPane:
     notificationChannelPrompt: "Nhận thông báo về các chuyến đi đã lưu bằng:"
+    devicesRegistered: '{count, plural, one {# device} other {# devices}} đã đăng
+      ký'
+    noDeviceForPush: Đăng ký thiết bị của quý vị bằng ứng dụng di động để nhận thông
+      báo đẩy.
   PhoneNumberEditor:
     changeNumber: Thay đổi số điện thoại
     invalidCode: Vui lòng nhập 6 chữ số cho mã xác thực.
@@ -356,6 +385,7 @@ components:
       phút).
     verified: Đã xác minh
     verify: Kiểm chứng
+    phoneNumberSubmitted: Gửi thành công số điện thoại {phoneNumber}.
   Place:
     deleteThisPlace: Xóa nơi này
     enterAlert: >
@@ -369,6 +399,7 @@ components:
     locationPlaceholder: Tìm kiếm vị trí {placeName}
     nameExample: Quán cà phê của tôi
     namePrompt: "Tên địa điểm:"
+    locationTypePrompt: 'Loại địa điểm:'
   PlanFirstLastButtons:
     first: Thứ nhất
     last: Cuối
@@ -410,6 +441,7 @@ components:
     operatedBy: Được điều hành bởi {agencyName}
     selectADirection: Chọn một hướng…
     stopsTo: Hướng
+    headsignTo: '{headsign} ({lastStop})'
   RouteViewer:
     agencyFilter: Sàng lọc đại lý giao thông công cộng
     allAgencies: Tất cả các đại lý phương tiện công cộng
@@ -421,6 +453,9 @@ components:
     noFilteredRoutesFound: Không có tuyến đường phù hợp với sàng lọc của bạn!
     shortTitle: Xem các tuyến đường
     title: Xem tuyến đường
+    toggleRouteOnMap: Chuyển đổi tuyến đường trên bản đồ
+    stopsInDirectionOfTravel: 'Các trạm dừng trong hướng di chuyển này:'
+    openPatternViewer: Xem chi tiết tuyến đường
   SaveTripButton:
     cantSaveText: Không thể tiết kiệm
     cantSaveTooltip: >-
@@ -451,6 +486,8 @@ components:
       Một chuyến đi được lưu khác đã sử dụng tên này. Vui lòng chọn một tên
       khác.
     tripNameRequired: Vui lòng nhập tên chuyến đi.
+    itineraryLoaded: Đã tải hành trình
+    itineraryLoading: Đang tải hành trình
   SessionTimeout:
     body: >-
       Phiên của bạn sẽ hết hạn trong vòng một phút. Nhấn 'Tiếp tục Phiên' để
@@ -488,6 +525,9 @@ components:
     viewNextArrivals: Xem những xe đến tiếp theo
     viewSchedule: Xem lịch trình
     zoomToStop: Phóng to để dừng lại
+    nextArrivals: Lần Đến Nơi Tiếp Theo
+    schedule: Lịch trình
+    forStop: dành cho {stopName}
   SubNav:
     languageSelector: Chọn ngôn ngữ
     languages: Ngôn ngữ
@@ -639,10 +679,19 @@ components:
     header: Xem chuyến đi
     routeHeader: "Tuyến: <strong>{routeShortName}</strong> {routeLongName}"
     viewStop: Lượt xem
+    startOfTrip: Chuyến đi bắt đầu tại đây
+    listOfRouteStops: Danh sách các trạm dừng trên tuyến đường này
+    tripDescription: Lên xe tại {boardAtStop} và xuống xe tại {disembarkAtStop}
+    endOfTrip: Chuyến đi kết thúc tại đây
   UserAccountScreen:
     confirmDelete: >-
       Bạn có chắc bạn muốn xóa tài khoản người dùng của mình không? Một khi bạn
       làm như vậy, nó không thể được phục hồi.
+    updating: Đang cập nhật
+    errorUpdatingProfile: Lỗi cập nhật hồ sơ.
+    fields:
+      storeTripHistory: Lưu trữ lịch sử chuyến đi
+    fieldUpdated: Cài đặt này đã được cập nhật.
   UserSettings:
     confirmDeletion: >-
       Bạn có các tìm kiếm và/hoặc địa điểm gần đây được lưu trữ. Việc vô hiệu
@@ -681,6 +730,49 @@ components:
     switcher: Nút bật tắt
   WelcomeScreen:
     prompt: Bạn muốn đi đâu?
+  OTP2ErrorRenderer:
+    SYSTEM_ERROR:
+      header: Lỗi Trình Lên Kế Hoạch Chuyến Đi
+      body: Đã xảy ra lỗi chưa xác định trong khi tìm kiếm.
+    LOCATION_NOT_FOUND:
+      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}} không nằm gần đường phố nào.'
+      header: Không thể tiếp cận địa điểm
+    NO_STOPS_IN_RANGE:
+      header: Không có trạm dừng trong phạm vi
+      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}} không nằm gần trạm dừng phương tiện công cộng nào.'
+    NO_TRANSIT_CONNECTION:
+      body: Không tìm thấy kết nối bằng phương tiện công cộng nào giữa điểm đầu và
+        điểm đến trong những ngày cung cấp dịch vụ được chọn với các loại phương tiện
+        quý vị đã chọn.
+      header: Không có kết nối bằng phương tiện công cộng nào
+    inputFields:
+      FROM: Nguồn gốc
+      TO: Điểm đến
+    WALKING_BETTER_THAN_TRANSIT:
+      body: Quý vị sẽ hoàn thành chuyến đi nhanh hơn nếu tránh sử dụng phương tiện
+        công cộng.
+      header: Phương tiện công cộng không phải là cách nhanh nhất để thực hiện chuyến
+        đi này
+    OUTSIDE_SERVICE_PERIOD:
+      header: Ngoài giai đoạn cung cấp dịch vụ
+      body: Ngày được chỉ định nằm ngoài phạm vi dữ liệu hiện có trong trình lên kế
+        hoạch chuyến đi.
+    OUTSIDE_BOUNDS:
+      header: Địa điểm nằm ngoài ranh giới
+      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}} không nằm trong ranh giới của trình lên kế hoạch chuyến đi.'
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: Tìm thấy kết nối bằng phương tiện công cộng nhưng phương thức này nằm
+        ngoài khoảng thời gian tìm kiếm, hãy thử điều chỉnh khoảng thời gian tìm kiếm
+        với các loại phương tiện quý vị đã chọn.
+      header: Không có kết nối bằng phương tiện công cộng trong khoảng thời gian tìm
+        kiếm
+  SequentialPaneDisplay:
+    stepNumber: Bước {step} trên {total}
+  MapillaryFrame:
+    title: Hình ảnh đường phố
 config:
   accessModes:
     bicycle: Giao thông công cộng + Xe đạp cá nhân
