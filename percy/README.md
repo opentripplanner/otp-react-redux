@@ -35,7 +35,7 @@ Objects for the various queries are provided in the `mocks` folder.
 
 Some gotchas experienced while setting up these mocks:
 - The frontend expects the server to return the correct stop ID when it sends a request for stop information. That means that if you send a request for stop ID X, and the server returns data for stop ID Y, the frontend will not work correctly. For the purposes of a screenshot test it may not matter, but for OTP-RR, the ID needs to match. I solved this by adding a handler that checks the `id` argument passed with the request, and returns one of two mocks depending on the ID.
-- When getting data from the mocks, the easiest way is to look at the request OTP-RR makes against a real server and copy the response into the mock JSON file. However, when items in the query are renamed, e.g. `id: gtfsId`, you need to rename those back to the origial name for the mock, otherwise the shape of the data won't match the schema. You will be warned about this in the logs when the query is made, though, so pay special attention to those to figure out what needs to be corrected. 
+- When getting data from the mocks, the easiest way is to look at the request OTP-RR makes against a real server and copy the response into the mock JSON file. However, when items in the query are renamed, e.g. `id: gtfsId`, you need to rename those back to the original name for the mock, otherwise the shape of the data won't match the schema. You will be warned about this in the logs when the query is made, though, so pay special attention to those to figure out what needs to be corrected. 
 
 There is also another HAR file and mock server used for the geocoder, this one without an express server sitting in front.
 
