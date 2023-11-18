@@ -19,7 +19,7 @@
     "start": "craco start",
     "percy-serve": "serve",
     "percy-har-express": "har-express",
-    "percy-mock-server": "node ./percy/mock-server.js"
+    "percy-combined-mock-server": "node ./percy/mock-server.js"
   },
   "standard": {
     "parser": "babel-eslint"

@@ -42,32 +42,42 @@ function getStopResponseMock(stopId) {
   }
 }
 
-const mocks = {
+const increment = (obj, key) => (obj[key] ? obj[key]++ : (obj[key] = 0))
+
+const mocks = (callCount) => ({
   QueryType: {
     nearest() {
+      increment(callCount, 'nearest')
       return NearestResponse
     },
     plan(obj, { transportModes }) {
+      increment(callCount, 'plan')
       return getPlanResponseMock(transportModes)
     },
     route() {
+      increment(callCount, 'route')
       return IndividualRouteResponse
     },
     routes() {
+      increment(callCount, 'routes')
       return RoutesResponse
     },
     serviceTimeRange() {
+      increment(callCount, 'serviceTimeRange')
       return ServiceTimeRangeResponse
     },
     stop(obj, { id }) {
+      increment(callCount, 'stop')
       return getStopResponseMock(id)
     },
     stopsByRadius() {
+      increment(callCount, 'stopsByRoute')
       return StopsByRadiusResponse
     },
     trip() {
+      increment(callCount, 'trip')
       return TripResponse
     }
   }
-}
+})
 module.exports = mocks

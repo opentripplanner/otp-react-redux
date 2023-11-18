@@ -11,9 +11,13 @@ const otpSchema = require('./otpSchema.json').data
 const port = process.env.PORT || 9999
 const harPath = process.env.HAR || './percy/mock.har'
 
+const resolverCallCount = {}
 const app = express()
 const schema = buildClientSchema(otpSchema)
-const schemaWithMocks = addResolversToSchema({ resolvers: mocks, schema })
+const schemaWithMocks = addResolversToSchema({
+  resolvers: mocks(resolverCallCount),
+  schema
+})
 
 app.all('*', function (req, res, next) {
   // Allow all origins
@@ -40,11 +44,18 @@ if (harPath) {
   app.use(har.getMiddleware(harPath))
 }
 
-// Run the server is this file was executed on the command line
+// Run the server if this file was executed on the command line
 if (require.main === module) {
   app.listen(port, () => {
     console.log(`Mock server running on port ${port}`)
   })
 }
 
-module.exports.mockServer = app
+process.on('exit', function () {
+  console.log('GraphQL Resolver Calls:')
+  Object.keys(resolverCallCount).forEach((key) => {
+    console.log(key, resolverCallCount[key])
+  })
+})
+
+module.exports = app

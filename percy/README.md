@@ -49,5 +49,5 @@ This will run the mock servers and then start the tests in headless mode by defa
 
 You can disable headless mode by setting `headless: false` in the Puppeteer launch settings in `percy.test.js`. We left a line commented out which you can uncomment to achieve this. 
 
-You can also debug the tests by creating a JavaScript Debug Terminal in the VSCode run pane, then running the above commands with breakpoints set in the editor. 
+You can also debug the tests by creating a JavaScript Debug Terminal, then running the above commands with breakpoints set in the editor. 
 
