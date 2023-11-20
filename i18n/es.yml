@@ -430,6 +430,10 @@ components:
       texto:
     requestNewCode: Solicitar un nuevo código
     sendVerificationText: Enviar texto de verificación
+    smsConsent: >
+      Al proporcionar tu número de teléfono, aceptas recibir mensajes de
+      verificación y monitoreo de viajes. Tu proveedor telefónico puede aplicar
+      costos adicionales.
     verificationCode: "Código de verificación:"
     verificationInstructions: >
       Por favor, compruebe en la aplicación de mensajería de texto de su

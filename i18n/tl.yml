@@ -433,6 +433,11 @@ components:
     prompt: "Ilagay ang numero ng iyong telepono para sa mga SMS na notification:"
     requestNewCode: Humiling ng bagong code
     sendVerificationText: Magpadala ng text sa pag-verify
+    smsConsent: >-
+      Sa pamamagitan ng pagbibigay ng iyong numero ng telepono, sumasang-ayon
+      kang makatanggap ng mga SMS message sa pag-verify at pagsubaybay ng
+      biyahe. Maaaring nalalapat ang mga karagdagang gastos mula sa carrier ng
+      telepono mo.
     verificationCode: "Code sa pag-verify:"
     verificationInstructions: >
       Tingnan ang app sa SMS messaging sa iyong mobile phone para sa isang text

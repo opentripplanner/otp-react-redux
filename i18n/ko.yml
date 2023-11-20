@@ -392,6 +392,9 @@ components:
     prompt: "SMS 알림 수신을 위한 전화번호를 입력하세요:"
     requestNewCode: 새 코드 요청
     sendVerificationText: 확인 텍스트 전송
+    smsConsent: >-
+      전화번호를 제공하면, 확인 및 이동편 모니터링 SMS 메시지를 받는 데 동의하시는 것입니다. 요금제에 따라 추가 비용이 발생할 수
+      있습니다.
     verificationCode: "확인 코드:"
     verificationInstructions: |
       휴대폰의 SMS 메시지 앱에서 인증 코드를 확인하고 아래에 코드를 입력하세요(코드는 10분 후에 만료됩니다).

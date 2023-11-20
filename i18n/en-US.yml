@@ -417,6 +417,10 @@ components:
     prompt: "Enter your phone number for SMS notifications:"
     requestNewCode: Request a new code
     sendVerificationText: Send verification text
+    smsConsent: >
+      By providing your phone number, you agree to receive verification and trip
+      monitoring SMS messages. Additional costs from your phone carrier may
+      apply.
     verificationCode: "Verification code:"
     verificationInstructions: >
       Please check the SMS messaging app on your mobile phone for a text message

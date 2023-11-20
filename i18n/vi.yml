@@ -425,6 +425,10 @@ components:
     prompt: "Nhập số điện thoại của bạn để nhận thông báo SMS:"
     requestNewCode: Yêu cầu một mã mới
     sendVerificationText: Gửi văn bản xác minh
+    smsConsent: >
+      Qua việc cung cấp số điện thoại của mình, quý vị đồng ý nhận thông báo và
+      tin nhắn SMS về việc theo dõi chuyến đi. Nhà cung cấp dịch vụ điện thoại
+      của quý vị có thể tính thêm chi phí.
     verificationCode: "Mã xác nhận:"
     verificationInstructions: >
       Vui lòng kiểm tra ứng dụng nhắn tin SMS trên điện thoại di động của bạn để
