@@ -23,83 +23,6 @@ map:
   initLon: -84.3880
   initZoom: 10
 
-  overlays:
-    - type: park-and-ride
-      name: Park & Ride Locations
-      maxTransitDistance: 1000
-      modes:
-        - CAR_PARK
-    - type: stops
-      name: Transit Stops
-      visible: true
-    - type: otp2-bike-rental
-      name: Relay Bike Locations
-      modes:
-        - BICYCLE_RENT
-      mapSymbols:
-        - maxZoom: 12
-          minZoom: 0
-          type: circle
-          pixels: 3
-          fillColor: "#FF2E28"
-          dockStrokeColor: "#000000"
-        - maxZoom: 15
-          minZoom: 13
-          type: circle
-          pixels: 5
-          fillColor: "#FF2E28"
-          dockStrokeColor: "#000000"
-        - maxZoom: 20
-          minZoom: 16
-          fillColor: "#FF2E28"
-          dockStrokeColor: "#000000"
-          type: hubAndFloatingBike
-          
-    - type: otp2-bike-rental
-      name: Spin Bike Locations
-      modes:
-        - BICYCLE_RENT
-      mapSymbols:
-        - maxZoom: 12
-          minZoom: 0
-          type: circle
-          pixels: 3
-          fillColor: "#FF2E28"
-          dockStrokeColor: "#000000"
-        - maxZoom: 15
-          minZoom: 13
-          type: circle
-          pixels: 5
-          fillColor: "#FF2E28"
-          dockStrokeColor: "#000000"
-        - maxZoom: 20
-          minZoom: 16
-          fillColor: "#FF2E28"
-          dockStrokeColor: "#000000"
-          type: hubAndFloatingBike      
-
-    - type: otp2-micromobility-rental
-      name: Spin E-scooter Locations
-      modes:
-        - SCOOTER
-      mapSymbols:
-        - maxZoom: 12
-          minZoom: 0
-          type: circle
-          pixels: 3
-          fillColor: "#656565"
-          strokeColor: "#CCCCCC"
-        - maxZoom: 15
-          minZoom: 13
-          type: circle
-          pixels: 5
-          fillColor: "#656565"
-          strokeColor: "#CCCCCC"
-        - maxZoom: 20
-          minZoom: 16
-          fillColor: "#656565"
-          type: marker
-
 geocoder:
   baseUrl: http://localhost:9977
   focusPoint:
@@ -202,21 +125,3 @@ accessibilityScore:
 
 defaultQueryParams:
   maxWalkDistance: 1207 # 3/4 miles in meters
-
-# Custom strings by language
-# TODO: add other supported languages
-language:
-  en-US:
-    config:
-      # Flex Strings
-      flex:
-        flex-service: Flexible Service
-        call-ahead: "Call to reserve {phoneNumber}"
-        continuous-dropoff: Communicate with operator about stop
-      acessibilityScore:
-        gradationMap:
-          0.0: "Not Accessible"
-          0.5: "Likely Not Accessible"
-          0.8: "Mostly Accessible"
-          1.0: "Accessible"
-    name: English (US)
