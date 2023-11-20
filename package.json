@@ -18,7 +18,8 @@
     "semantic-release": "semantic-release",
     "start": "craco start",
     "percy-serve": "serve",
-    "percy-har-express": "har-express"
+    "percy-har-express": "har-express",
+    "percy-combined-mock-server": "node ./percy/mock-server.js"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -50,8 +51,8 @@
     "@opentripplanner/location-icon": "^1.4.1",
     "@opentripplanner/map-popup": "2.0.7-alpha.1",
     "@opentripplanner/otp2-tile-overlay": "1.0.7-alpha.2",
-    "@opentripplanner/printable-itinerary": "2.0.10-alpha.4",
     "@opentripplanner/park-and-ride-overlay": "^2.0.6",
+    "@opentripplanner/printable-itinerary": "2.0.10-alpha.4",
     "@opentripplanner/route-viewer-overlay": "^2.0.14",
     "@opentripplanner/stop-viewer-overlay": "^2.0.7",
     "@opentripplanner/stops-overlay": "^5.1.2",
@@ -131,6 +132,7 @@
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-typescript": "^7.15.0",
     "@craco/craco": "^6.3.0",
+    "@graphql-tools/schema": "^10.0.0",
     "@jackwilsdon/craco-use-babelrc": "^1.0.0",
     "@opentripplanner/scripts": "^1.2.0",
     "@opentripplanner/types": "^6.1.1",
