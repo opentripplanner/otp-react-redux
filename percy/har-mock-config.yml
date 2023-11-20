@@ -98,8 +98,6 @@ itinerary:
   showFirstResultByDefault: false
   mergeItineraries: true
 
-reportIssue:
-  mailto: transitrealtime@ibigroup.com
 dateTime:
   timeFormat: h:mm a
   dateFormat: MM/dd/yyyy
