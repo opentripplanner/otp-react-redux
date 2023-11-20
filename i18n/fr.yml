@@ -443,6 +443,10 @@ components:
     prompt: "Entrez votre numéro de téléphone pour les SMS de notification :"
     requestNewCode: Envoyer un nouveau code
     sendVerificationText: Envoyer le SMS de vérification
+    smsConsent: >
+      En donnant votre numéro téléphone, vous acceptez de recevoir des SMS de
+      vérification et de suivi de vos trajets. Frais applicables selon votre
+      opérateur téléphonique.
     verificationCode: "Code de vérification :"
     verificationInstructions: >
       Un SMS vous a été envoyé avec un code de vérification. Veuillez taper ce
