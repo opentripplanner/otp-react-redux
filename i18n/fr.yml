@@ -2,7 +2,8 @@ _id: fr
 _name: Exemple de traduction pour OTP-react-redux en français
 actions:
   callTaker:
-    callQuerySaveError: "Erreur lors de l'enregistrement des requêtes pour l'appel : {err}"
+    callQuerySaveError: "Erreur lors de l'enregistrement des requêtes pour l'appel
+      : {err}"
     callSaveError: "Impossible d'enregistrer l'appel : {err}"
     checkSessionError: "Erreur durant la session d'authentification : {err}"
     couldNotFindCallError: >-
@@ -17,9 +18,11 @@ actions:
         true {aller}
         other {retour}
       } planifié préalablement pour cette demande. Voulez-vous continuer ?
-    deleteItinerariesError: "Erreur lors de la suppression du trajet pour le groupe :"
+    deleteItinerariesError: "Erreur lors de la suppression du trajet pour le groupe
+      :"
     deleteNoteError: "Erreur lors de la suppression d'une note sur le groupe :"
-    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur :"
+    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur
+      :"
     fetchFieldTripError: "Erreur de chargement du groupe scolaire : {err}"
     fetchFieldTripsError: "Erreur lors du chargement des groupes scolaires : {err}"
     fetchTripsForDateError: >-
@@ -43,7 +46,8 @@ actions:
 
       Pour utiliser votre emplacement actuel, permettez-en l'accès depuis votre
       navigateur, et ouvrez de nouveau cette page.
-    geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par votre navigateur.
+    geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par
+      votre navigateur.
     unknownPositionError: Erreur inconnue lors de la détection de votre emplacement.
     userDeniedPermission: Refusé par l'utilisateur
   map:
@@ -57,7 +61,8 @@ actions:
       Le message de vérification de votre adresse e-mail a été envoyé de
       nouveau.
     genericError: "Une erreur s'est produite : {err}"
-    itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité du trajet choisi.
+    itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité du
+      trajet choisi.
     mustAcceptTermsToSavePlace: >-
       Veuillez accepter les conditions d'utilisation (dans Mon compte) pour
       enregistrer des lieux.
@@ -261,8 +266,8 @@ components:
   BeforeSignInScreen:
     mainTitle: Connexion en cours
     message: >
-      Pour accéder à cette page, vous devez vous connecter. Veuillez patienter
-      pendant que nous vous redirigeons vers la page de connexion...
+      Pour accéder à cette page, vous devez vous connecter. Veuillez patienter pendant
+      que nous vous redirigeons vers la page de connexion...
   CallTakerPanel:
     advancedOptions: Options avancées
     groupSize: "Taille du groupe :"
@@ -348,8 +353,10 @@ components:
     header: Options de recherche
   NarrativeItinerariesHeader:
     changeSortDir: Changer l'ordre de tri
-    howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés plus bas.
-    itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets trouvés} }"
+    howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés
+      plus bas.
+    itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets
+      trouvés} }"
     numIssues: "{issueNum, plural, one {# problème} other {# problèmes} }"
     resultsSortedBy: >-
       Résultats triés par {sortSelected}. Pour modifier l'ordre, utilisez le
@@ -396,13 +403,13 @@ components:
       header: Aucun arrêt a proximité
     NO_TRANSIT_CONNECTION:
       body: >-
-        Aucune desserte en transports n'a été trouvée entre vos points de départ
-        et d'arrivée pour la date indiquée.
+        Aucune desserte en transports n'a été trouvée entre vos points de départ et
+        d'arrivée pour la date indiquée.
       header: Aucune desserte
     NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
       body: >-
-        Une desserte en transports a été trouvée mais ne correspond pas à vos
-        critères. Veuillez ajuster votre recherche.
+        Une desserte en transports a été trouvée mais ne correspond pas à vos critères.
+        Veuillez ajuster votre recherche.
       header: Aucune desserte selon vos critères
     OUTSIDE_BOUNDS:
       body: >-
@@ -670,7 +677,8 @@ components:
       unknownState: État du trajet inconnu
       untogglePause: Reprendre
     inactive:
-      description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
+      description: Reprenez le suivi pour obtenir des dernières conditions de votre
+        trajet.
       heading: Suivi suspendu
     nextTripNotPossible:
       description: >
@@ -689,7 +697,8 @@ components:
         déterminées.
       heading: Conditions du trajet indéterminées
     snoozed:
-      description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
+      description: Reprenez le suivi pour obtenir des dernières conditions de votre
+        trajet.
       heading: Suivi suspendu jusqu'à demain
     upcoming:
       nextTripBegins: >-
