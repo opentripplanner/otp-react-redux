@@ -22,8 +22,7 @@ actions:
     fetchFieldTripsError: "트립을 가져오는 중에 오류가 발생했습니다: {err}"
     fetchTripsForDateError: "필트 트립 날짜에 대한 트립을 가져오는 중에 오류가 발생했습니다: {err}"
     incompatibleTripDateError: 계획한 트립 날짜({tripDate})가 요청한 트립 날짜({requestDate})가 아닙니다
-    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다.
-      트립을 다시 계획하세요."
+    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다. 트립을 다시 계획하세요."
     maxTripRequestsExceeded: 유효한 결과없이 초과된 트립 요청의 개수
     saveItinerariesError: "트립을 저장하는 데 실패했습니다: {err}"
     setDateError: "날짜를 설정하는 중에 오류가 발생했습니다:"
@@ -31,11 +30,12 @@ actions:
     setPaymentError: "결제 정보를 설정하는 중에 오류가 발생했습니다:"
     setRequestStatusError: "요청 상태를 설정하는 중에 오류가 발생했습니다:"
   location:
+    deniedAccessAlert: |
+      귀하의 위치로 액세스가 차단되었습니다.
+      현재 위치를 사용하려면, 브라우저에서 위치 사용을 허용한 후 페이지를 재로드하십시오. 
     geolocationNotSupportedError: 귀하의 브라우저에서 지원되지 않는 지리적 위치
     unknownPositionError: 위치를 가져오는 중 알 수 없는 오류가 발생했습니다
     userDeniedPermission: 사용자가 허용 거부
-    deniedAccessAlert: "귀하의 위치로 액세스가 차단되었습니다.\n현재 위치를 사용하려면, 브라우저에서 위치 사용을 허용한 후 페이지를
-      재로드하십시오. \n"
   map:
     currentLocation: (현재 위치)
   user:
@@ -46,13 +46,13 @@ actions:
     emailVerificationResent: 이메일 확인 메시지가 다시 전송되었습니다.
     genericError: "오류가 발견되었습니다: {err}"
     itineraryExistenceCheckFailed: 선택한 트립이 가능한지 확인하는 중에 오류가 발생했습니다.
+    mustAcceptTermsToSavePlace: 위치를 저장하려면 사용 약관(내 계정 아래)을 수락하십시오.
+    mustBeLoggedInToSavePlace: 위치를 저장하려면 로그인하십시오.
+    placeRemembered: 이 장소에 대한 설정이 저장되었습니다.
     preferencesSaved: 선호사항이 저장되었습니다.
     smsInvalidCode: 입력한 코드가 유효하지 않습니다. 다시 시도하세요.
     smsResendThrottled: 확인 SMS가 1분 미만 전에 표시된 전화번호로 전송되었습니다. 잠시 후 다시 시도하세요.
     smsVerificationFailed: 번호가 확인되지 않습니다. 입력한 코드가 만료되었을 수 있습니다. 새 코드를 요청한 후 다시 시도하세요.
-    mustBeLoggedInToSavePlace: 위치를 저장하려면 로그인하십시오.
-    mustAcceptTermsToSavePlace: 위치를 저장하려면 사용 약관(내 계정 아래)을 수락하십시오.
-    placeRemembered: 이 장소에 대한 설정이 저장되었습니다.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -97,15 +97,16 @@ common:
     print: 인쇄
     save: 저장
     startOver: 다시 시작
-    "yes": 예
     submitting: 제출 중…
+    "yes": 예
   itineraryDescriptions:
     calories: "{calories, number} 칼로리"
+    fareUnknown: 운임 정보 없음
     noItineraryToDisplay: 표시할 일정이 없습니다.
     relativeCo2: |
       {co2} CO₂ 를 자동차보다 {isMore, select, true {더} other {덜} } 사용합니다
     transfers: "{transfers, plural, =0 {} other {# 전송}}"
-    fareUnknown: 운임 정보 없음
+  linkOpensNewWindow: (새 창 열림)
   modes:
     bicycle_rent: 공유자전거
     bike: 자전거
@@ -154,7 +155,6 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# 시간 }}{minutes} 분 { seconds, plural, =0 {}
       other {# 초}}
-  linkOpensNewWindow: (새 창 열림)
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: 접근 가능한 트립 선호를 기본 설정으로
@@ -166,8 +166,8 @@ components:
     tooManyPlaces: 중간 경유지의 최대 수에 도달함
   AdvancedOptions:
     bannedRoutes: 금지된 경로 선택…
-    preferredRoutes: 선호 경로 선택…
     bikeTolerance: 자전거 허용 오차
+    preferredRoutes: 선호 경로 선택…
     walkTolerance: 걷기 내성
   AfterSignInScreen:
     mainTitle: 경로 재설정 중...
@@ -225,10 +225,10 @@ components:
     modeSelectorLabel: 이동 수단을 선택합니다
   BatchSettings:
     destination: 목적지
+    invalidModeSelection: 선택된 수단을 사용해 이동편을 계획할 수 없습니다. 수단 선택에 대중교통을 포함해 보십시오.
     origin: 출발지
     planTripTooltip: 트립 계획
     validationMessage: "트립 계획을 위해 다음 필드를 정의하세요: {issues}"
-    invalidModeSelection: 선택된 수단을 사용해 이동편을 계획할 수 없습니다. 수단 선택에 대중교통을 포함해 보십시오.
   BeforeSignInScreen:
     mainTitle: 로그인 중
     message: |
@@ -299,22 +299,27 @@ components:
     shared-vehicles: 공유 차량
     stops: 대중 교통 정류장
     streets: 거리
+  MapillaryFrame:
+    title: 거리 보기
   MetroUI:
+    arriveAt: 도착합니다
     itineraryDescription: "{routes}을(를) 이용한 {time} 일정"
     leaveAt: 출발
     multipleOptions: 여러 옵션
     orAlternatives: 또는 같은 방향의 다른 경로
-    timeWalking: "{time} 걷기"
-    arriveAt: 도착합니다
-    singleModeItineraryDescription: '{time} {mode} 일정표'
     originallyScheduledTime: (기존 {originalTime})
+    singleModeItineraryDescription: "{time} {mode} 일정표"
+    timeWalking: "{time} 걷기"
   MobileOptions:
     header: 검색 옵션 설정
   NarrativeItinerariesHeader:
     changeSortDir: 정렬 방향 변경
+    howToFindResults: 결과를 보려면, 아래 검색된 일정표 제목을 보십시오.
     itinerariesFound: "{itineraryNum} 개의 여정을 찾았습니다"
-    numIssues: |-
-      {issueNum} 문제
+    numIssues: "{issueNum} 문제"
+    resultsSortedBy: >-
+      이동편 결고가 현재 {sortSelected}(으)로 정렬되었습니다. 결과 정렬 방식을 변경하려면, 아래 "결과 정렬" 버튼을
+      사용하십시오.
     searching: 옵션을 찾고 있는 중...
     selectArrivalTime: 도착 시간
     selectBest: 가장 좋은 옵션
@@ -322,11 +327,8 @@ components:
     selectDepartureTime: 출발 시각
     selectDuration: 기간
     selectWalkTime: 도보 시간
-    viewAll: 모든 옵션 보기
     sortResults: 결과 정렬
-    howToFindResults: 결과를 보려면, 아래 검색된 일정표 제목을 보십시오.
-    resultsSortedBy: 이동편 결고가 현재 {sortSelected}(으)로 정렬되었습니다. 결과 정렬 방식을 변경하려면, 아래 "결과
-      정렬" 버튼을 사용하십시오.
+    viewAll: 모든 옵션 보기
   NavLoginButton:
     help: 지원
     myAccount: 내 계정
@@ -342,25 +344,62 @@ components:
     description: 요청한 콘텐츠를 사용할 수 없습니다.
     header: 콘텐츠를 찾을 수 없음
   NotificationPrefsPane:
-    notificationChannelPrompt: "저장된 여행의 알림을 받는 방법:"
-    devicesRegistered: '{count, plural, one {# device} other {# devices}} 등록됨'
+    devicesRegistered: "{count, plural, one {# device} other {# devices}} 등록됨"
     noDeviceForPush: 푸시 알림을 이용하려면 모바일 앱을 사용해 기기를 등록하십시오.
+    notificationChannelPrompt: "저장된 여행의 알림을 받는 방법:"
+  OTP2ErrorRenderer:
+    LOCATION_NOT_FOUND:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}} 어떤 거리와도 가깝지 않습니다.
+      header: 위치 액세스 불가
+    NO_STOPS_IN_RANGE:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}} 어떤 정거장과도 가깝지 않습니다.
+      header: 범위 내 정류장 없음
+    NO_TRANSIT_CONNECTION:
+      body: 선택하신 차량 유형을 사용해, 선택하신 서비스 요일에 출발지와 목적지 사이에 검색된 대중교통 연결편이 없습니다.
+      header: 대중교통 연결편 없음
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: 대중교통 연결편이 검색되었으나 탐색 창을 벗어났습니다. 선택한 차량 유형을 사용해 탐색 창을 재설정해 보십시오.
+      header: 탐색 창 내 대중교통 연결편 없음
+    OUTSIDE_BOUNDS:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}} 트립 플래너 범위가 아닙니다.
+      header: 범위 밖 위치
+    OUTSIDE_SERVICE_PERIOD:
+      body: 지정된 날짜가 현재 트립 플래너에 로드된 데이터 범위를 벗어납니다.
+      header: 서비스 기간 외
+    SYSTEM_ERROR:
+      body: 검색 중 알 수 없는 오류가 발생했습니다.
+      header: 트립 플래너 실패
+    WALKING_BETTER_THAN_TRANSIT:
+      body: 이동에 대중교통을 피하는 것이 대중교통을 이용하는 것보다 더 빠를 것입니다.
+      header: 이 이동편에서는 대중교통이 가장 빠르지 않습니다.
+    inputFields:
+      FROM: 기원
+      TO: 목적지
   PhoneNumberEditor:
     changeNumber: 번호 변경
     invalidCode: 확인 코드 6 자리를 입력하세요.
     invalidPhone: 유효한 전화번호를 입력하세요.
     pending: 보류 중
+    phoneNumberSubmitted: 전화번호 {phoneNumber} 이/가 성공적으로 제출되었습니다.
     phoneNumberVerified: 전화번호 {phoneNumber}가 성공적으로 확인되었습니다.
     placeholder: 전화번호를 입력하십시오
     prompt: "SMS 알림 수신을 위한 전화번호를 입력하세요:"
     requestNewCode: 새 코드 요청
     sendVerificationText: 확인 텍스트 전송
+    smsConsent: >-
+      전화번호를 제공하면, 확인 및 이동편 모니터링 SMS 메시지를 받는 데 동의하시는 것입니다. 요금제에 따라 추가 비용이 발생할 수
+      있습니다.
     verificationCode: "확인 코드:"
     verificationInstructions: |
       휴대폰의 SMS 메시지 앱에서 인증 코드를 확인하고 아래에 코드를 입력하세요(코드는 10분 후에 만료됩니다).
     verified: 확인됨
     verify: 확인
-    phoneNumberSubmitted: 전화번호 {phoneNumber} 이/가 성공적으로 제출되었습니다.
   Place:
     deleteThisPlace: 이 장소 삭제
     enterAlert: |
@@ -370,9 +409,9 @@ components:
     addressPrompt: "주소:"
     genericLocationPlaceholder: 위치 검색
     locationPlaceholder: "{placeName} 위치 검색"
+    locationTypePrompt: "위치 유형:"
     nameExample: 내 커피숍
     namePrompt: "지명:"
-    locationTypePrompt: '위치 유형:'
   PlanFirstLastButtons:
     first: 처음
     last: 마지막
@@ -387,8 +426,8 @@ components:
     toggleMap: 지도 토글
   RealtimeAnnotation:
     delaysShownInResults: >
-      귀하의 여행 결과는 실시간 정보를 기반으로 조정되었습니다. 정상적인 상황에서 이 여행은 다음 경로를 사용하여 {normalDuration}
-      이 소요됩니다: {routes}
+      귀하의 여행 결과는 실시간 정보를 기반으로 조정되었습니다. 정상적인 상황에서 이 여행은 다음 경로를 사용하여
+      {normalDuration} 이 소요됩니다: {routes}
     serviceUpdate: 서비스 업데이트
   RealtimeStatusLabel:
     early: "{minutes} 일찍"
@@ -409,11 +448,11 @@ components:
     tripsFound: "{count} 개의 옵션 을 찾았습니다"
     waiting: 기다리는 중...
   RouteDetails:
+    headsignTo: "{headsign} ({lastStop})"
     moreDetails: 더 자세한 내용
     operatedBy: "{agencyName}에서 운영하는 서비스"
     selectADirection: 방향 선택…
     stopsTo: 방면
-    headsignTo: '{headsign} ({lastStop})'
   RouteViewer:
     agencyFilter: 에이전시 필터
     allAgencies: 모든 에이전시
@@ -423,11 +462,11 @@ components:
     header: 경로 뷰어
     modeFilter: 모드 필터
     noFilteredRoutesFound: 필터와 일치하는 경로가 없습니다!
+    openPatternViewer: 경로 세부 사항 보기
     shortTitle: 경로 보기
+    stopsInDirectionOfTravel: "이동편 이 방향의 정류장:"
     title: 경로 뷰어
     toggleRouteOnMap: 지도에서 경로 토글
-    stopsInDirectionOfTravel: '이동편 이 방향의 정류장:'
-    openPatternViewer: 경로 세부 사항 보기
   SaveTripButton:
     cantSaveText: 저장할 수 없음
     cantSaveTooltip: 대중교통을 포함하고 렌트 또는 차량 호출을 포함하지 않는 트립 일정만 모니터링할 수 있습니다.
@@ -449,12 +488,14 @@ components:
     pause: 일시 정지
     resume: 다시 시작
   SavedTripScreen:
+    itineraryLoaded: 일정표 로드됨
+    itineraryLoading: 일정표 로드 중
     tooManyTrips: |
       저장된 트립의 최대 개수인 5개에 도달했습니다. 저장된 트립에서 사용하지 않는 트립을 제거한 후, 다시 시도하세요.
     tripNameAlreadyUsed: 저장된 다른 트립이 이 이름을 사용하고 있습니다. 다른 이름을 선택하세요.
     tripNameRequired: 트립의 이름을 입력하세요.
-    itineraryLoaded: 일정표 로드됨
-    itineraryLoading: 일정표 로드 중
+  SequentialPaneDisplay:
+    stepNumber: "{step} / {total}단계"
   SessionTimeout:
     body: 세션이 1분 이내에 만료됩니다. 검색을 유지하려면 '세션 계속'을 누르세요.
     header: 세션이 곧 타임아웃됩니다!
@@ -478,18 +519,18 @@ components:
     flexStop: >-
       이 정류장은 가변 정류장입니다. 이 가변 구역에서 차량은 요청이 있을 때에만 승객을 태우고 내릴 것입니다. 이 지역에서 서비스를
       받으려면 미리 전화를 해야 할 수도 있습니다.
+    forStop: 행 {stopName}
     header: 정류장 뷰어
     loadingText: 정류장 로드 중…
+    nextArrivals: 다음 도착
     noStopsFound: 날짜에 대한 정류장 시간이 없습니다.
     operatorLogoAriaLabel: "정류장 {operatorName}:"
+    schedule: 일정
     timezoneWarning: 출발 시간은 <strong>{timezoneCode}</strong>(으)로 표시됩니다.
     titleBarStopId: 정류장 {stopId}
     viewNextArrivals: 다음 도착편 보기
     viewSchedule: 스케쥴 보기
     zoomToStop: 정류장 확대
-    nextArrivals: 다음 도착
-    schedule: 일정
-    forStop: 행 {stopName}
   SubNav:
     languageSelector: 언어 선택
     languages: 언어
@@ -537,7 +578,7 @@ components:
     notifyViaChannelWhen: "다음의 경우, {channel}을 통해 알려주세요:"
     oneHour: 1 시간
     realtimeAlertFlagged: 내 트립 일정에 실시간 경고가 있습니다
-    timeBefore: '{time} 전'
+    timeBefore: "{time} 전"
   TripStatus:
     alerts: "{alerts} 경고!"
     deleteTrip: 트립 삭제
@@ -614,20 +655,20 @@ components:
   TripViewer:
     accessible: 접근성이 있음
     bicyclesAllowed: 허용됨
-    header: 트립 뷰어
-    routeHeader: "노선: <strong>{routeShortName}</strong> {routeLongName}"
-    viewStop: 보기
-    startOfTrip: 여기에서 이동편 시작
-    listOfRouteStops: 이 경로의 정류장 목록
-    tripDescription: '{boardAtStop} 에서 탑승하고 {disembarkAtStop}에서 하차'
     endOfTrip: 여기에서 이동편 종료
+    header: 트립 뷰어
+    listOfRouteStops: 이 경로의 정류장 목록
+    routeHeader: "노선: <strong>{routeShortName}</strong> {routeLongName}"
+    startOfTrip: 여기에서 이동편 시작
+    tripDescription: "{boardAtStop} 에서 탑승하고 {disembarkAtStop}에서 하차"
+    viewStop: 보기
   UserAccountScreen:
     confirmDelete: 귀하의 사용자 계정을 삭제하시겠습니까? 한 번 그렇게 하신 경우, 복구할 수 없습니다.
-    updating: 업데이트 중
     errorUpdatingProfile: 프로필 업데이트 중 오류.
+    fieldUpdated: 이 설정이 업데이트되었습니다.
     fields:
       storeTripHistory: 이동편 이력 저장
-    fieldUpdated: 이 설정이 업데이트되었습니다.
+    updating: 업데이트 중
   UserSettings:
     confirmDeletion: 최근 검색이나 장소가 저장되어 있습니다. 최근 장소 또는 검색을 비활성화하면 이러한 항목이 제거됩니다. 계속하시겠습니까?
     favoriteStops: 좋아하는 정류장
@@ -658,41 +699,6 @@ components:
     switcher: 변경
   WelcomeScreen:
     prompt: 어디로 가고 싶으신가요?
-  OTP2ErrorRenderer:
-    SYSTEM_ERROR:
-      header: 트립 플래너 실패
-      body: 검색 중 알 수 없는 오류가 발생했습니다.
-    LOCATION_NOT_FOUND:
-      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}} 어떤 거리와도 가깝지 않습니다.'
-      header: 위치 액세스 불가
-    NO_STOPS_IN_RANGE:
-      header: 범위 내 정류장 없음
-      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}} 어떤 정거장과도 가깝지 않습니다.'
-    NO_TRANSIT_CONNECTION:
-      body: 선택하신 차량 유형을 사용해, 선택하신 서비스 요일에 출발지와 목적지 사이에 검색된 대중교통 연결편이 없습니다.
-      header: 대중교통 연결편 없음
-    inputFields:
-      FROM: 기원
-      TO: 목적지
-    WALKING_BETTER_THAN_TRANSIT:
-      body: 이동에 대중교통을 피하는 것이 대중교통을 이용하는 것보다 더 빠를 것입니다.
-      header: 이 이동편에서는 대중교통이 가장 빠르지 않습니다.
-    OUTSIDE_SERVICE_PERIOD:
-      header: 서비스 기간 외
-      body: 지정된 날짜가 현재 트립 플래너에 로드된 데이터 범위를 벗어납니다.
-    OUTSIDE_BOUNDS:
-      header: 범위 밖 위치
-      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}} 트립 플래너 범위가 아닙니다.'
-    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
-      body: 대중교통 연결편이 검색되었으나 탐색 창을 벗어났습니다. 선택한 차량 유형을 사용해 탐색 창을 재설정해 보십시오.
-      header: 탐색 창 내 대중교통 연결편 없음
-  SequentialPaneDisplay:
-    stepNumber: '{step} / {total}단계'
-  MapillaryFrame:
-    title: 거리 보기
 config:
   accessModes:
     bicycle: 대중교통 + 개인 자전거
@@ -719,6 +725,5 @@ util:
     networkUnavailable: 현재 {network} 네트워크를 사용할 수 없습니다.
     noTripFound: 트립을 찾을 수 없습니다.
     noTripFoundForMode: "{modes}의 트립을 찾을 수 없습니다."
-    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지
-      못할 수 있습니다.
+    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지 못할 수 있습니다.
     noTripFoundWithReason: "{noTripFound} {reason}"

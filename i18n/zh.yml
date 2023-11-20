@@ -30,10 +30,12 @@ actions:
     setPaymentError: "设置付款信息时出现错误:"
     setRequestStatusError: "设置请求状态时出现错误:"
   location:
+    deniedAccessAlert: |
+      访问您的位置被阻止。
+      若要使用当前位置，请从浏览器启用位置权限，然后重新加载页面。 
     geolocationNotSupportedError: 您的浏览器不支持地理定位
     unknownPositionError: 获取位置的未知错误
     userDeniedPermission: 用户权限被拒绝
-    deniedAccessAlert: "访问您的位置被阻止。\n若要使用当前位置，请从浏览器启用位置权限，然后重新加载页面。 \n"
   map:
     currentLocation: (当前位置)
   user:
@@ -44,13 +46,13 @@ actions:
     emailVerificationResent: 电子邮件验证信息已被重新发送.
     genericError: "遇到了一个错误: {err}"
     itineraryExistenceCheckFailed: 检查你选择的旅行是否可行时出现错误.
+    mustAcceptTermsToSavePlace: 请接受使用条款（在“我的帐户”下）以保存位置。
+    mustBeLoggedInToSavePlace: 请登录以保存位置。
+    placeRemembered: 针对此地点的设置已保存。
     preferencesSaved: 您的偏好已被保存.
     smsInvalidCode: 您输入的代码无效. 请再试一次.
     smsResendThrottled: 不到一分钟前一条验证短信已经发送到指定的电话号码上. 请稍后再试.
     smsVerificationFailed: 您的手机无法被验证. 也许你输入的代码已经过期. 请申请一个新的代码并重新尝试.
-    mustBeLoggedInToSavePlace: 请登录以保存位置。
-    mustAcceptTermsToSavePlace: 请接受使用条款（在“我的帐户”下）以保存位置。
-    placeRemembered: 针对此地点的设置已保存。
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -95,15 +97,16 @@ common:
     print: 打印
     save: 保存
     startOver: 重新开始
-    "yes": 是
     submitting: 正在提交…
+    "yes": 是
   itineraryDescriptions:
     calories: "{calories, number} 大卡"
+    fareUnknown: 无票价信息
     noItineraryToDisplay: 没有显示行程.
     relativeCo2: |
       {co2} {isMore, select, true {更多} other {更少} } CO₂ 比单独驾车
     transfers: "{transfers, plural, =0 {} other {# 换乘}}"
-    fareUnknown: 无票价信息
+  linkOpensNewWindow: （打开新窗口）
   modes:
     bicycle_rent: 共享单车
     bike: 自行车
@@ -150,9 +153,8 @@ common:
       nMinutes: "{minutes} 分钟"
     durationAgo: "{duration} 前"
     tripDurationFormat: >-
-      {hours, plural, =0 {} other {#小时}}{minutes} 分钟 { seconds, plural, =0 {} other
-      {#秒}}
-  linkOpensNewWindow: （打开新窗口）
+      {hours, plural, =0 {} other {#小时}}{minutes} 分钟 { seconds, plural, =0 {}
+      other {#秒}}
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: 默认情况下优先选择无障碍旅行
@@ -164,8 +166,8 @@ components:
     tooManyPlaces: 已达到最多中途地点
   AdvancedOptions:
     bannedRoutes: 选择禁行路线…
-    preferredRoutes: 选择首选路线…
     bikeTolerance: 骑行容忍度
+    preferredRoutes: 选择首选路线…
     walkTolerance: 步行容忍度
   AfterSignInScreen:
     mainTitle: 重新定向…
@@ -219,10 +221,10 @@ components:
     modeSelectorLabel: 选择出行模式
   BatchSettings:
     destination: 目的地
+    invalidModeSelection: 无法使用所选模式计划行程。尝试在模式选择中包括公交。
     origin: 出发地
     planTripTooltip: 计划行程
     validationMessage: "请定义以下字段来计划旅行: {issues}"
-    invalidModeSelection: 无法使用所选模式计划行程。尝试在模式选择中包括公交。
   BeforeSignInScreen:
     mainTitle: 签到
     message: |
@@ -293,25 +295,29 @@ components:
     shared-vehicles: 共享车辆
     stops: 公共交通站点
     streets: 街道
+  MapillaryFrame:
+    title: 街道图像
   MetroUI:
     arriveAt: 到达
     itineraryDescription: "{time} 行程使用 {routes}"
     leaveAt: 您已离开
     multipleOptions: 多种选择
     orAlternatives: 或同一方向的其他路线
-    timeWalking: "{time} 步行"
-    singleModeItineraryDescription: '{time} {mode} 行程'
     originallyScheduledTime: （最初{originalTime}）
+    singleModeItineraryDescription: "{time} {mode} 行程"
+    timeWalking: "{time} 步行"
   MobileOptions:
     header: 设置搜索选项
   NarrativeItinerariesHeader:
     changeSortDir: 改变排序方向
+    howToFindResults: 要查看结果，请参阅下面的“找到的行程”标题。
     itinerariesFound: 发现{itineraryNum}条行程
     numIssues: |-
       {issueNum, plural,
        one {# 问题}
        other {# 个问题}
        }
+    resultsSortedBy: 当前按{sortSelected}排序的行程结果。要更改结果的排序方式，请使用下面的“排序结果”按钮。
     searching: 寻找你的选择…
     selectArrivalTime: 抵达时间
     selectBest: 最佳选择
@@ -319,10 +325,8 @@ components:
     selectDepartureTime: 出发时间
     selectDuration: 旅行时长
     selectWalkTime: 步行时间
-    viewAll: 查看所有选项
     sortResults: 排序结果
-    howToFindResults: 要查看结果，请参阅下面的“找到的行程”标题。
-    resultsSortedBy: 当前按{sortSelected}排序的行程结果。要更改结果的排序方式，请使用下面的“排序结果”按钮。
+    viewAll: 查看所有选项
   NavLoginButton:
     help: 帮助
     myAccount: 我的账户
@@ -338,25 +342,60 @@ components:
     description: 您要求的内容不存在.
     header: 未找到内容
   NotificationPrefsPane:
-    notificationChannelPrompt: "如何接收已保存行程的通知:"
-    devicesRegistered: '{count, plural, one {# device} other {# devices}}已注册'
+    devicesRegistered: "{count, plural, one {# device} other {# devices}}已注册"
     noDeviceForPush: 使用移动应用程序注册您的设备以访问推送通知。
+    notificationChannelPrompt: "如何接收已保存行程的通知:"
+  OTP2ErrorRenderer:
+    LOCATION_NOT_FOUND:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}}不靠近任何街道。
+      header: 位置不可访问
+    NO_STOPS_IN_RANGE:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}}不靠近任何公车站。
+      header: 范围内无公车站
+    NO_TRANSIT_CONNECTION:
+      body: 在所选服务日，使用您选择的车辆类型，在您的起点和终点之间未找到公交连接。
+      header: 无公交连接
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: 找到了一个公交连接，但它在搜索窗口之外，请尝试使用您选择的车辆类型调整搜索窗口。
+      header: 搜索窗口中没有公交连接
+    OUTSIDE_BOUNDS:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
+        {locations are}}不在Trip Planner的范围内。
+      header: 位置超出边界
+    OUTSIDE_SERVICE_PERIOD:
+      body: 指定的日期不在当前加载到Trip Planner中的数据范围内。
+      header: 非服务时段
+    SYSTEM_ERROR:
+      body: 搜索过程中发生未知错误。
+      header: Trip Planner故障
+    WALKING_BETTER_THAN_TRANSIT:
+      body: 在行程中避免乘坐公交会比乘坐公交更快。
+      header: 公交并不是最快的出行方式
+    inputFields:
+      FROM: 起源
+      TO: 目的地
   PhoneNumberEditor:
     changeNumber: 更改电话号码
     invalidCode: 请输入6位数的验证码.
     invalidPhone: 请输入一个有效的电话号码.
     pending: 待定
+    phoneNumberSubmitted: 电话号码{phoneNumber}已成功提交。
     phoneNumberVerified: 电话号码 {phoneNumber} 已成功验证。
     placeholder: 输入你的电话号码
     prompt: "输入你的电话号码以便收到短信通知:"
     requestNewCode: 申请一个新的代码
     sendVerificationText: 发送验证短信
+    smsConsent: 提供您的电话号码即表示您同意接收验证和行程监控短信。您的手机运营商可能会收取额外费用。
     verificationCode: "验证码:"
     verificationInstructions: |
       请检查您手机上的短信应用查看是否有验证码的短信并输入以下代码 (代码在10分钟后失效).
     verified: 已验证
     verify: 核实
-    phoneNumberSubmitted: 电话号码{phoneNumber}已成功提交。
   Place:
     deleteThisPlace: 删除这个地点
     enterAlert: |
@@ -366,9 +405,9 @@ components:
     addressPrompt: "地址:"
     genericLocationPlaceholder: 搜索地点
     locationPlaceholder: 搜索 {placeName} 位置
+    locationTypePrompt: 位置类型：
     nameExample: 我的咖啡店
     namePrompt: "地名:"
-    locationTypePrompt: 位置类型：
   PlanFirstLastButtons:
     first: 首先
     last: 最后一次
@@ -404,11 +443,11 @@ components:
     tripsFound: 我们发现了 {count} 选项
     waiting: 等待...
   RouteDetails:
+    headsignTo: "{headsign} ({lastStop})"
     moreDetails: 更多细节
     operatedBy: 由 {agencyName} 运营
     selectADirection: 选择一个方向…
     stopsTo: 邁向
-    headsignTo: '{headsign} ({lastStop})'
   RouteViewer:
     agencyFilter: 运输机构筛选
     allAgencies: 所有运输机构
@@ -418,11 +457,11 @@ components:
     header: 路线查看器
     modeFilter: 旅行模式筛选
     noFilteredRoutesFound: 没有符合你筛选的路线!
+    openPatternViewer: 查看路线详细信息
     shortTitle: 查看路线
+    stopsInDirectionOfTravel: 行程此方向上的公车站：
     title: 路线查看器
     toggleRouteOnMap: 在地图上切换路线
-    stopsInDirectionOfTravel: 行程此方向上的公车站：
-    openPatternViewer: 查看路线详细信息
   SaveTripButton:
     cantSaveText: 无法保存
     cantSaveTooltip: 只有包括交通的行程而没有租车或叫车的行程可以被监控.
@@ -444,12 +483,14 @@ components:
     pause: 暂停
     resume: 继续
   SavedTripScreen:
+    itineraryLoaded: 行程已加载
+    itineraryLoading: 加载行程
     tooManyTrips: |
       你已经达到了五次保存行程的上限. 请从你保存行程中删除未使用的行程然后再试一次.
     tripNameAlreadyUsed: 另一个保存行程已经使用了这个名字. 请选择一个不同的名字.
     tripNameRequired: 请输入一个行程名称.
-    itineraryLoaded: 行程已加载
-    itineraryLoading: 加载行程
+  SequentialPaneDisplay:
+    stepNumber: 步骤{step}/{total}
   SessionTimeout:
     body: 您的使用时间将在一分钟内到期.按“继续使用”以继续您的搜索.
     header: 使用时间即将结束!
@@ -471,18 +512,18 @@ components:
     displayStopId: "<strong>公交车站ID</strong>: {stopId}"
     findSchedule: 按日期搜索时间表
     flexStop: 此站为灵活站. 根据要求车辆将在这个灵活的区域上下乘客. 在这个区域, 你可能需要提前打电话申请服务.
+    forStop: 为 {stopName}
     header: 车站查看器
     loadingText: 加载车站信息…
+    nextArrivals: 下一个到达点
     noStopsFound: 未找到该日期的车站时间.
     operatorLogoAriaLabel: "公交车站 {operatorName}:"
+    schedule: 时刻表
     timezoneWarning: 出发时间以 <strong>{timezoneCode}</strong> 显示.
     titleBarStopId: 车站 {stopId}
     viewNextArrivals: 查看下一个公共交通到达
     viewSchedule: 查看时间表
     zoomToStop: 缩放到车站
-    nextArrivals: 下一个到达点
-    schedule: 时刻表
-    forStop: 为 {stopName}
   SubNav:
     languageSelector: 选择语言
     languages: 语言
@@ -530,7 +571,7 @@ components:
     notifyViaChannelWhen: "通过 {channel} 通知我当:"
     oneHour: 1小时
     realtimeAlertFlagged: 在我的行程中有一个实时警报标志着
-    timeBefore: '{time} 前'
+    timeBefore: "{time} 前"
   TripStatus:
     alerts: "{alerts, plural, one {# 警报!} other {# 警报!}}"
     deleteTrip: 删除行程
@@ -606,20 +647,20 @@ components:
   TripViewer:
     accessible: 可通行
     bicyclesAllowed: 允许的
-    header: 行程查看器
-    routeHeader: 路线:<strong>{routeShortName}</strong> {routeLongName}
-    viewStop: 查阅
-    startOfTrip: 行程从这里开始
-    listOfRouteStops: 这条路线上的公车站列表
-    tripDescription: 在{boardAtStop}上车，在{disembarkAtStop}下车
     endOfTrip: 行程到此结束
+    header: 行程查看器
+    listOfRouteStops: 这条路线上的公车站列表
+    routeHeader: 路线:<strong>{routeShortName}</strong> {routeLongName}
+    startOfTrip: 行程从这里开始
+    tripDescription: 在{boardAtStop}上车，在{disembarkAtStop}下车
+    viewStop: 查阅
   UserAccountScreen:
     confirmDelete: 您确定要删除你的用户账户吗?一旦您这样做, 它就无法恢复.
-    updating: 正在更新
     errorUpdatingProfile: 更新配置文件出错。
+    fieldUpdated: 此设置已更新。
     fields:
       storeTripHistory: 存储行程历史记录
-    fieldUpdated: 此设置已更新。
+    updating: 正在更新
   UserSettings:
     confirmDeletion: 您有最近的搜索或地点存储.若停止存储最近的地点或搜索的功能，则这些项目将被删除.要继续吗?
     favoriteStops: 最喜爱的车站
@@ -649,41 +690,6 @@ components:
     switcher: 切换按钮
   WelcomeScreen:
     prompt: 你想去哪里？
-  OTP2ErrorRenderer:
-    SYSTEM_ERROR:
-      header: Trip Planner故障
-      body: 搜索过程中发生未知错误。
-    LOCATION_NOT_FOUND:
-      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}}不靠近任何街道。'
-      header: 位置不可访问
-    NO_STOPS_IN_RANGE:
-      header: 范围内无公车站
-      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}}不靠近任何公车站。'
-    NO_TRANSIT_CONNECTION:
-      body: 在所选服务日，使用您选择的车辆类型，在您的起点和终点之间未找到公交连接。
-      header: 无公交连接
-    inputFields:
-      FROM: 起源
-      TO: 目的地
-    WALKING_BETTER_THAN_TRANSIT:
-      body: 在行程中避免乘坐公交会比乘坐公交更快。
-      header: 公交并不是最快的出行方式
-    OUTSIDE_SERVICE_PERIOD:
-      header: 非服务时段
-      body: 指定的日期不在当前加载到Trip Planner中的数据范围内。
-    OUTSIDE_BOUNDS:
-      header: 位置超出边界
-      body: '{inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}}不在Trip Planner的范围内。'
-    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
-      body: 找到了一个公交连接，但它在搜索窗口之外，请尝试使用您选择的车辆类型调整搜索窗口。
-      header: 搜索窗口中没有公交连接
-  SequentialPaneDisplay:
-    stepNumber: 步骤{step}/{total}
-  MapillaryFrame:
-    title: 街道图像
 config:
   accessModes:
     bicycle: 公共交通 + 我的自行车
