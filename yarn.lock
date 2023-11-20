@@ -2441,6 +2441,11 @@
     maplibre-gl "^2.1.9"
     react-map-gl "^7.0.15"
 
+"@opentripplanner/building-blocks@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-1.0.1.tgz#dde8b6f0e0b5d00ea224ef4e3436930bfb6c6440"
+  integrity sha512-mjsdgYnblsrBB2OLXPxwzV8iIpxibNcrhIJ2BFEO99R4yh/0RuIBCSvpXANQFIOa1V/uVozObgq8xCAmGkcvDg==
+
 "@opentripplanner/core-utils@^11.0.2":
   version "11.0.6"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.0.6.tgz#f8bd9796b4a9bc7490fb7fdca9ce661ed785bab1"
