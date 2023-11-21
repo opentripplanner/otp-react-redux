@@ -1,5 +1,7 @@
 import { Itinerary } from '@opentripplanner/types'
 
+import { DaysOfWeek } from '../../util/monitored-trip'
+
 /**
  * A user-saved, favorite location.
  */
@@ -33,25 +35,13 @@ export type EditedUser = Omit<User, 'notificationChannel'> & {
   notificationChannel: string[]
 }
 
-export const ALL_DAYS = [
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday',
-  'sunday'
-] as const
-
-export type DaysOfWeek = typeof ALL_DAYS[number]
-
 export interface ItineraryExistenceDay {
   valid: boolean
 }
 
 export type ItineraryExistence = Record<DaysOfWeek, ItineraryExistenceDay>
 
-export interface MonitoredTrip extends Record<DaysOfWeek, boolean> {
+export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
   arrivalVarianceMinutesThreshold: number
   departureVarianceMinutesThreshold: number
   excludeFederalHolidays?: boolean

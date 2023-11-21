@@ -17,11 +17,14 @@ import styled from 'styled-components'
 import type { IntlShape, WrappedComponentProps } from 'react-intl'
 
 import * as userActions from '../../../actions/user'
-import { ALL_DAYS, ItineraryExistence, MonitoredTrip } from '../types'
+import {
+  ALL_DAYS,
+  getFormattedDayOfWeekPlural
+} from '../../../util/monitored-trip'
 import { AppReduxState } from '../../../util/state-types'
 import { FieldSet } from '../styled'
 import { getErrorStates } from '../../../util/ui'
-import { getFormattedDayOfWeekPlural } from '../../../util/monitored-trip'
+import { ItineraryExistence, MonitoredTrip } from '../types'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 import FormattedValidationError from '../../util/formatted-validation-error'
