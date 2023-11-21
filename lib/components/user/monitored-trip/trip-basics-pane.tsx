@@ -9,7 +9,6 @@ import {
 } from 'react-bootstrap'
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import { Itinerary } from '@opentripplanner/types'
 import { Prompt } from 'react-router'
 // @ts-expect-error FormikErrorFocus does not support TypeScript yet.
 import FormikErrorFocus from 'formik-error-focus'
@@ -18,7 +17,7 @@ import styled from 'styled-components'
 import type { IntlShape, WrappedComponentProps } from 'react-intl'
 
 import * as userActions from '../../../actions/user'
-import { ALL_DAYS, ItineraryExistence } from '../types'
+import { ALL_DAYS, ItineraryExistence, MonitoredTrip } from '../types'
 import { AppReduxState } from '../../../util/state-types'
 import { FieldSet } from '../styled'
 import { getErrorStates } from '../../../util/ui'
@@ -31,23 +30,13 @@ import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import TripStatus from './trip-status'
 import TripSummary from './trip-summary'
 
-interface Fields {
-  friday: boolean
-  itinerary: Itinerary
-  itineraryExistence?: ItineraryExistence
-  monday: boolean
-  saturday: boolean
-  sunday: boolean
-  thursday: boolean
-  tripName: string
-  tuesday: boolean
-  wednesday: boolean
-}
-
 type TripBasicsProps = WrappedComponentProps &
-  FormikProps<Fields> & {
+  FormikProps<MonitoredTrip> & {
     canceled: boolean
-    checkItineraryExistence: (monitoredTrip: unknown, intl: IntlShape) => void
+    checkItineraryExistence: (
+      monitoredTrip: MonitoredTrip,
+      intl: IntlShape
+    ) => void
     clearItineraryExistence: () => void
     isCreating: boolean
     itineraryExistence?: ItineraryExistence

@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import { ComponentContext } from '../../../util/contexts'
+import { MonitoredTrip } from '../types'
 import FormattedDuration from '../../util/formatted-duration'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
@@ -11,14 +12,7 @@ const SummaryContainer = styled.div`
 `
 
 interface Props {
-  // TODO: use a more complete definition of monitored trip.
-  monitoredTrip: {
-    itinerary: {
-      duration: number
-      endTime: number
-      startTime: number
-    }
-  }
+  monitoredTrip: MonitoredTrip
 }
 
 const TripSummary = ({ monitoredTrip }: Props): JSX.Element => {

@@ -7,6 +7,7 @@ import styled from 'styled-components'
 
 import { FieldSet } from '../styled'
 import { IconWithText } from '../../util/styledIcon'
+import { MonitoredTrip } from '../types'
 
 // Element styles
 const SettingsList = styled.ul`
@@ -152,12 +153,7 @@ function DurationOptions({
   return <Options defaultValue={defaultValue} options={options} />
 }
 
-interface Fields {
-  arrivalVarianceMinutesThreshold: number
-  departureVarianceMinutesThreshold: number
-}
-
-interface Props extends FormikProps<Fields> {
+interface Props extends FormikProps<MonitoredTrip> {
   notificationChannel: string
 }
 

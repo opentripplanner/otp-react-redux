@@ -1,3 +1,5 @@
+import { Itinerary } from '@opentripplanner/types'
+
 /**
  * A user-saved, favorite location.
  */
@@ -48,3 +50,17 @@ export interface ItineraryExistenceDay {
 }
 
 export type ItineraryExistence = Record<DaysOfWeek, ItineraryExistenceDay>
+
+export interface MonitoredTrip extends Record<DaysOfWeek, boolean> {
+  arrivalVarianceMinutesThreshold: number
+  departureVarianceMinutesThreshold: number
+  excludeFederalHolidays?: boolean
+  id: string
+  isActive: boolean
+  itinerary: Itinerary
+  itineraryExistence?: ItineraryExistence
+  leadTimeInMinutes: number
+  queryParams: string
+  tripName: string
+  userId: string
+}
