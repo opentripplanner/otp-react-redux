@@ -233,7 +233,9 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                 <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
               </legend>
               {ALL_DAYS.map((day) => {
-                const isDayDisabled = !finalItineraryExistence?.[day]?.valid
+                const isDayDisabled =
+                  finalItineraryExistence &&
+                  !finalItineraryExistence[day]?.valid
                 const boxClass = isDayDisabled
                   ? 'alert-danger'
                   : monitoredTrip[day]
