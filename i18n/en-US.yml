@@ -234,7 +234,7 @@ components:
     shortTitle: Plan Trip
   BatchSearchScreen:
     header: Plan Your Trip
-    modeSelectorLabel: Select a transit mode
+    modeSelectorLabel: Select a travel mode
   BatchSettings:
     destination: destination
     invalidModeSelection: >-
