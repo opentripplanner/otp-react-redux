@@ -587,7 +587,7 @@ components:
     schedule: Iskedyul
     timezoneWarning: Ipinapakita ang mga oras ng pag-alis sa <strong>{timezoneCode}</strong>.
     titleBarStopId: Hintuan {stopId}
-    viewNextArrivals: Tingnan ang mga susunod na pagdating
+    viewNextDepartures: Tingnan ang mga susunod na pag-alis
     viewSchedule: Tingnan ang iskedyul
     zoomToStop: I-zoom para ihinto
   SubNav:
