@@ -1,3 +1,5 @@
+import { ItineraryExistence, User } from '../components/user/types'
+
 import { AppConfig } from './config-types'
 
 export interface OtpState {
@@ -11,8 +13,14 @@ export interface OtpState {
   ui: any // TODO
 }
 
+export interface UserState {
+  itineraryExistence?: ItineraryExistence
+  loggedInUser: User
+  // TODO: Add other user states.
+}
+
 export interface AppReduxState {
   calltaker?: any // TODO
   otp: OtpState
-  user: any // TODO
+  user: UserState
 }

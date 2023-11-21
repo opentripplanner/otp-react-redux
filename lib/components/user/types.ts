@@ -30,3 +30,21 @@ export interface User {
 export type EditedUser = Omit<User, 'notificationChannel'> & {
   notificationChannel: string[]
 }
+
+export const ALL_DAYS = [
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+  'sunday'
+] as const
+
+export type DaysOfWeek = typeof ALL_DAYS[number]
+
+export interface ItineraryExistenceDay {
+  valid: boolean
+}
+
+export type ItineraryExistence = Record<DaysOfWeek, ItineraryExistenceDay>

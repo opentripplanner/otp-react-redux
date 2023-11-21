@@ -18,6 +18,8 @@ import styled from 'styled-components'
 import type { IntlShape, WrappedComponentProps } from 'react-intl'
 
 import * as userActions from '../../../actions/user'
+import { ALL_DAYS, ItineraryExistence } from '../types'
+import { AppReduxState } from '../../../util/state-types'
 import { FieldSet } from '../styled'
 import { getErrorStates } from '../../../util/ui'
 import { getFormattedDayOfWeekPlural } from '../../../util/monitored-trip'
@@ -32,6 +34,7 @@ import TripSummary from './trip-summary'
 interface Fields {
   friday: boolean
   itinerary: Itinerary
+  itineraryExistence?: ItineraryExistence
   monday: boolean
   saturday: boolean
   sunday: boolean
@@ -47,22 +50,11 @@ type TripBasicsProps = WrappedComponentProps &
     checkItineraryExistence: (monitoredTrip: unknown, intl: IntlShape) => void
     clearItineraryExistence: () => void
     isCreating: boolean
-    itineraryExistence: Record<string, { valid: boolean }>
+    itineraryExistence?: ItineraryExistence
   }
 
 // FIXME: move to shared types file
 type ErrorStates = 'success' | 'warning' | 'error' | null | undefined
-
-// FIXME: combine back with monitored trips when that is typed.
-const ALL_DAYS = [
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday',
-  'sunday'
-] as const
 
 // Styles.
 const AvailableDays = styled(FieldSet)`
@@ -144,9 +136,11 @@ class TripBasicsPane extends Component<TripBasicsProps> {
   }
 
   componentDidMount() {
-    // Check itinerary availability (existence) for all days.
+    // Check itinerary availability (existence) for all days if not already done.
     const { checkItineraryExistence, intl, values: monitoredTrip } = this.props
-    checkItineraryExistence(monitoredTrip, intl)
+    if (!monitoredTrip.itineraryExistence) {
+      checkItineraryExistence(monitoredTrip, intl)
+    }
   }
 
   componentDidUpdate(prevProps: TripBasicsProps) {
@@ -169,6 +163,8 @@ class TripBasicsPane extends Component<TripBasicsProps> {
       values: monitoredTrip
     } = this.props
     const { itinerary } = monitoredTrip
+    const finalItineraryExistence =
+      monitoredTrip.itineraryExistence || itineraryExistence
 
     // Prevent user from leaving when form has been changed,
     // but don't show it when they click submit or cancel.
@@ -237,8 +233,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                 <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
               </legend>
               {ALL_DAYS.map((day) => {
-                const isDayDisabled =
-                  itineraryExistence && !itineraryExistence[day].valid
+                const isDayDisabled = !finalItineraryExistence?.[day]?.valid
                 const boxClass = isDayDisabled
                   ? 'alert-danger'
                   : monitoredTrip[day]
@@ -278,7 +273,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
               })}
             </AvailableDays>
             <HelpBlock role="status">
-              {itineraryExistence ? (
+              {finalItineraryExistence ? (
                 <FormattedMessage id="components.TripBasicsPane.tripIsAvailableOnDaysIndicated" />
               ) : (
                 <ProgressBar
@@ -307,7 +302,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
 
 // Connect to redux store
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const { itineraryExistence } = state.user
   return {
     itineraryExistence
