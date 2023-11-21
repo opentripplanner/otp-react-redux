@@ -1,4 +1,8 @@
-import { ItineraryExistence, User } from '../components/user/types'
+import {
+  ItineraryExistence,
+  MonitoredTrip,
+  User
+} from '../components/user/types'
 
 import { AppConfig } from './config-types'
 
@@ -16,6 +20,7 @@ export interface OtpState {
 export interface UserState {
   itineraryExistence?: ItineraryExistence
   loggedInUser: User
+  loggedInUserMonitoredTrips?: MonitoredTrip[]
   // TODO: Add other user states.
 }
 
