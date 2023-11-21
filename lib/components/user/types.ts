@@ -64,3 +64,7 @@ export interface MonitoredTrip extends Record<DaysOfWeek, boolean> {
   tripName: string
   userId: string
 }
+
+export interface MonitoredTripProps {
+  monitoredTrip: MonitoredTrip
+}

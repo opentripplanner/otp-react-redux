@@ -2,20 +2,18 @@ import { FormattedList, FormattedMessage } from 'react-intl'
 import React from 'react'
 
 import { dayFieldsToArray } from '../../../util/monitored-trip'
-import { MonitoredTrip } from '../types'
+import { MonitoredTripProps } from '../types'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import Strong from '../../util/strong-text'
 
 import TripSummary from './trip-summary'
 
-interface Props {
-  monitoredTrip: MonitoredTrip
-}
-
 /**
  * Displays the summary information of a monitored trip.
  */
-const TripSummaryPane = ({ monitoredTrip }: Props): JSX.Element => {
+const TripSummaryPane = ({
+  monitoredTrip
+}: MonitoredTripProps): JSX.Element => {
   const { itinerary, leadTimeInMinutes } = monitoredTrip
 
   if (!itinerary) {
