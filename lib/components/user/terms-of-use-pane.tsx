@@ -16,11 +16,13 @@ const TermsOfUsePane = ({
   disableCheckTerms,
   handleBlur,
   handleChange,
+  termsOfServiceLink,
   values: userData
 }: {
   disableCheckTerms: boolean
   handleBlur: () => void
   handleChange: FormEventHandler<Checkbox>
+  termsOfServiceLink: string
   values: {
     hasConsentedToTerms: boolean
     storeTripHistory: boolean
@@ -28,6 +30,8 @@ const TermsOfUsePane = ({
 }) => {
   const intl = useIntl()
   const { hasConsentedToTerms, storeTripHistory } = userData
+
+  const termsURL = termsOfServiceLink || `/#${TERMS_OF_SERVICE_PATH}`
 
   return (
     <div>
@@ -46,11 +50,7 @@ const TermsOfUsePane = ({
             id="components.TermsOfUsePane.termsOfServiceStatement"
             values={{
               termsOfUseLink: (contents: JSX.Element) => (
-                <LinkOpensNewWindow
-                  contents={contents}
-                  inline
-                  url={`/#${TERMS_OF_SERVICE_PATH}`}
-                />
+                <LinkOpensNewWindow contents={contents} inline url={termsURL} />
               )
             }}
           />
@@ -99,6 +99,7 @@ const TermsOfUsePane = ({
 }
 const mapStateToProps = (state: any) => {
   return {
+    termsOfServiceLink: state.otp.config.termsOfServiceLink,
     termsOfStorageSet: state.otp.config.persistence?.terms_of_storage
   }
 }
