@@ -1,4 +1,4 @@
-import { Panel } from 'react-bootstrap'
+import { Button, Panel } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
 
 export const PageHeading = styled.h2`
@@ -46,6 +46,22 @@ export const TripHeader = styled.h3`
 
 export const TripPanelHeading = styled(Panel.Heading)`
   background-color: white !important;
+`
+
+export const TripPanelAlert = styled(Button)`
+  border: none;
+  color: red;
+  cursor: pointer;
+  float: right;
+  text-decoration: underline;
+
+  :hover,
+  :focus,
+  :active {
+    background-color: transparent;
+    color: #d9534f;
+    text-decoration: underline;
+  }
 `
 
 export const TripPanelFooter = styled(Panel.Footer)`
