@@ -22,6 +22,11 @@ export interface User {
   isPhoneNumberVerified?: boolean
   notificationChannel?: string
   phoneNumber?: string
+  pushDevices?: number
   savedLocations?: UserSavedLocation[]
   storeTripHistory?: boolean
+}
+
+export type EditedUser = Omit<User, 'notificationChannel'> & {
+  notificationChannel: string[]
 }

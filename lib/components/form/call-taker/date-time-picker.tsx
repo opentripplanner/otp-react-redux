@@ -48,7 +48,8 @@ const SUPPORTED_TIME_FORMATS = [
   'HH:mm'
 ]
 
-const safeFormat = (date: Date | string, time: string, options: any) => {
+const safeFormat = (date: Date | '', time: string, options: any) => {
+  if (date === '') return ''
   try {
     return format(date, time, options)
   } catch (e) {
@@ -185,6 +186,11 @@ const DateTimeOptions = ({
     if (departArrive === 'NOW') {
       setTime(getCurrentTime(homeTimezone))
       setDate(getCurrentDate(homeTimezone))
+      setTypedTime(
+        safeFormat(dateTime, timeFormat, {
+          timeZone: homeTimezone
+        })
+      )
     }
   }, [departArrive, setTime, setDate, homeTimezone])
 
@@ -243,6 +249,11 @@ const DateTimeOptions = ({
         className="datetime-slim"
         disabled={!dateTime}
         onChange={(e) => {
+          if (!e.target.value) {
+            e.preventDefault()
+            // TODO: prevent selection from advancing to next field
+            return
+          }
           setDate(e.target.value)
           unsetNow()
         }}
@@ -251,7 +262,7 @@ const DateTimeOptions = ({
           fontSize: '14px',
           lineHeight: '1em',
           outline: 'none',
-          width: '109px'
+          width: '120px'
         }}
         type="date"
         value={safeFormat(dateTime, OTP_API_DATE_FORMAT, {

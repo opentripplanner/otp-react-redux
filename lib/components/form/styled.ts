@@ -3,7 +3,7 @@ import {
   SettingsSelectorPanel,
   Styled as TripFormClasses
 } from '@opentripplanner/trip-form'
-import { Input, MenuItemA } from '@opentripplanner/location-field/lib/styled'
+import { Input, MenuItemLi } from '@opentripplanner/location-field/lib/styled'
 import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
 
@@ -24,9 +24,10 @@ const commonButtonCss = css`
   user-select: none;
 
   &.active {
-    background-color: rgb(173, 216, 230);
+    background-color: var(--main-base-color, rgb(173, 216, 230));
     border: 2px solid rgb(0, 0, 0);
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    color: var(--main-color, white);
     font-weight: 600;
   }
 `
@@ -222,8 +223,7 @@ export const StyledLocationField = styled(LocationField)`
     padding: 6px 12px;
   }
 
-  ${MenuItemA} {
-    text-decoration: none;
+  ${MenuItemLi} {
     &:hover {
       color: inherit;
     }

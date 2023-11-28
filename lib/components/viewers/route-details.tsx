@@ -1,20 +1,24 @@
-// FIXME: typescript
-/* eslint-disable react/prop-types */
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
-
-import { LinkOpensNewWindow } from '../util/externalLink'
-import PropTypes from 'prop-types'
+import { TransitOperator } from '@opentripplanner/types'
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
+import * as uiActions from '../../actions/ui'
 import {
   extractHeadsignFromPattern,
   getRouteColorBasedOnSettings
 } from '../../util/viewer'
-import { findStopsForPattern } from '../../actions/api'
 import { getOperatorName } from '../../util/state'
-import { setHoveredStop, setViewedRoute, setViewedStop } from '../../actions/ui'
+import { LinkOpensNewWindow } from '../util/externalLink'
+import {
+  SetViewedRouteHandler,
+  SetViewedStopHandler,
+  ViewedRouteObject
+} from '../util/types'
+import { SortResultsDropdown } from '../util/dropdown'
+import { UnstyledButton } from '../util/unstyled-button'
 
 import {
   Container,
@@ -26,41 +30,38 @@ import {
   StopContainer,
   StopLink
 } from './styled'
-import { SortResultsDropdown } from '../util/dropdown'
-import { UnstyledButton } from '../util/unstyled-button'
 
-import styled from 'styled-components'
-
-class RouteDetails extends Component {
-  static propTypes = {
-    findStopsForPattern: findStopsForPattern.type,
-    operator: PropTypes.shape({
-      defaultRouteColor: PropTypes.string,
-      defaultRouteTextColor: PropTypes.string,
-      longNameSplitter: PropTypes.string
-    }),
-    // There are more items in pattern and route, but none mandatory
-    pattern: PropTypes.shape({ id: PropTypes.string }),
-    route: PropTypes.shape({ id: PropTypes.string }),
-    setHoveredStop: setHoveredStop.type,
-    setViewedRoute: setViewedRoute.type
+const PatternSelectButton = styled(UnstyledButton)`
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
+`
 
-  /**
-   * Requests stop list for current pattern
-   */
-  getStops = () => {
-    const { findStopsForPattern, pattern, route } = this.props
-    if (pattern && route) {
-      findStopsForPattern({ patternId: pattern.id, routeId: route.id })
-    }
-  }
+interface PatternSummary {
+  geometryLength: number
+  headsign: string
+  id: string
+  lastStop?: string
+}
 
+interface Props {
+  intl: IntlShape
+  operator: TransitOperator
+  patternId: string
+  route: ViewedRouteObject
+  setHoveredStop: (id: string | null) => void
+  setViewedRoute: SetViewedRouteHandler
+  setViewedStop: SetViewedStopHandler
+}
+
+class RouteDetails extends Component<Props> {
   /**
    * If a headsign link is clicked, set that pattern in redux state so that the
    * view can adjust
    */
-  _headSignButtonClicked = (id) => {
+  _headSignButtonClicked = (id: string) => {
     const { route, setViewedRoute } = this.props
     setViewedRoute({ patternId: id, routeId: route.id })
   }
@@ -68,80 +69,72 @@ class RouteDetails extends Component {
   /**
    * If a stop link is clicked, redirect to stop viewer
    */
-  _stopLinkClicked = (stopId) => {
+  _stopLinkClicked = (stopId: string) => {
     const { setViewedStop } = this.props
     setViewedStop({ stopId })
   }
 
   render() {
-    const { intl, operator, pattern, route, setHoveredStop, viewedRoute } =
-      this.props
-    const { agency, patterns, shortName, url } = route
+    const { intl, operator, patternId, route, setHoveredStop } = this.props
+    const { agency, patterns = {}, shortName, url } = route
+    const pattern = patterns[patternId]
 
     const routeColor = getRouteColorBasedOnSettings(operator, route)
 
-    const PatternSelectButton = styled(UnstyledButton)`
-      span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    `
-
-    const headsigns =
-      patterns &&
-      Object.entries(patterns)
-        .map((pattern) => {
-          return {
-            geometryLength: pattern[1].geometry?.length,
-            headsign: extractHeadsignFromPattern(pattern[1], shortName),
-            id: pattern[0]
-          }
+    const headsigns = Object.entries(patterns)
+      .map(
+        ([id, pat]): PatternSummary => ({
+          geometryLength: pat.patternGeometry?.length || 0,
+          headsign: extractHeadsignFromPattern(pat, shortName),
+          id,
+          lastStop: pat.stops?.[pat.stops?.length - 1]?.name
         })
-        // Remove duplicate headsigns. Using a reducer means that the first pattern
-        // with a specific headsign is the accepted one. TODO: is this good behavior?
-        .reduce((prev, cur) => {
-          const amended = prev
-          const alreadyExistingIndex = prev.findIndex(
-            (h) => h.headsign === cur.headsign
+      )
+      // Address duplicate headsigns. Replaces duplicate headsigns with the last stop name
+      .reduce((prev: PatternSummary[], cur) => {
+        const amended = prev
+        const alreadyExistingIndex = prev.findIndex(
+          (h) => h.headsign === cur.headsign
+        )
+        // If the item we're replacing has less geometry, amend the headsign to be more helpful
+        if (
+          alreadyExistingIndex >= 0 &&
+          cur.lastStop &&
+          cur.headsign !== cur.lastStop
+        ) {
+          cur.headsign = intl.formatMessage(
+            { id: 'components.RouteDetails.headsignTo' },
+            { ...cur }
           )
-          // If the item we're replacing has less geometry, replace it!
-          if (alreadyExistingIndex >= 0) {
-            // Only replace if new pattern has greater geometry
-            if (
-              amended[alreadyExistingIndex].geometryLength < cur.geometryLength
-            ) {
-              amended[alreadyExistingIndex] = cur
-            }
-          } else {
-            amended.push(cur)
-          }
-          return amended
-        }, [])
-        .sort((a, b) => {
-          // sort by number of vehicles on that pattern
-          const aVehicleCount = route.vehicles?.filter(
-            (vehicle) => vehicle.patternId === a.id
-          ).length
-          const bVehicleCount = route.vehicles?.filter(
-            (vehicle) => vehicle.patternId === b.id
-          ).length
+        }
 
-          // if both have the same count, sort by pattern geometry length
-          if (aVehicleCount === bVehicleCount) {
-            return b.geometryLength - a.geometryLength
-          }
-          return bVehicleCount - aVehicleCount
-        })
+        amended.push(cur)
+        return amended
+      }, [])
+      .sort((a, b) => {
+        // sort by number of vehicles on that pattern
+        const aVehicleCount =
+          route.vehicles?.filter((vehicle) => vehicle.patternId === a.id)
+            .length || 0
+        const bVehicleCount =
+          route.vehicles?.filter((vehicle) => vehicle.patternId === b.id)
+            .length || 0
+
+        // if both have the same count, sort by pattern geometry length
+        if (aVehicleCount === bVehicleCount) {
+          return b.geometryLength - a.geometryLength
+        }
+        return bVehicleCount - aVehicleCount
+      })
 
     const patternSelectLabel = intl.formatMessage({
       id: 'components.RouteDetails.selectADirection'
     })
+
     const patternSelectName =
-      headsigns?.find((h) => h.id === viewedRoute?.patternId)?.headsign ||
+      headsigns.find((h) => h.id === pattern?.id)?.headsign ||
       patternSelectLabel
 
-    // if no pattern is set, we are in the routeRow
     return (
       <Container
         backgroundColor={routeColor}
@@ -186,7 +179,7 @@ class RouteDetails extends Component {
               pullRight
               style={{ color: 'black' }}
             >
-              {headsigns.map((h) => (
+              {headsigns.map((h: PatternSummary) => (
                 <li key={h.id}>
                   <PatternSelectButton
                     onClick={() => this._headSignButtonClicked(h.id)}
@@ -204,7 +197,7 @@ class RouteDetails extends Component {
             <h2
               style={{
                 fontSize: 'inherit',
-                fontWeight: '400',
+                fontWeight: 400,
                 margin: '0 0 10px 8px'
               }}
             >
@@ -215,11 +208,11 @@ class RouteDetails extends Component {
               onMouseLeave={() => setHoveredStop(null)}
               textColor={getMostReadableTextColor(routeColor, route?.textColor)}
             >
-              {pattern?.stops?.map((stop) => (
+              {pattern?.stops?.map((stop, index) => (
                 <Stop
-                  key={stop.id}
+                  // Use array index instead of stop id because a stop can be visited several times.
+                  key={index}
                   onClick={() => this._stopLinkClicked(stop.id)}
-                  onFocus={() => setHoveredStop(stop.id)}
                   onMouseOver={() => setHoveredStop(stop.id)}
                   routeColor={
                     routeColor.includes('ffffff') ? '#333' : routeColor
@@ -232,6 +225,7 @@ class RouteDetails extends Component {
                   <StopLink
                     name={stop.name}
                     onClick={() => this._stopLinkClicked(stop.id)}
+                    onFocus={() => setHoveredStop(stop.id)}
                     textColor={getMostReadableTextColor(
                       routeColor,
                       route?.textColor
@@ -250,20 +244,10 @@ class RouteDetails extends Component {
 }
 
 // connect to redux store
-const mapStateToProps = (state) => {
-  return {
-    viewedRoute: state.otp.ui.viewedRoute
-  }
-}
-
 const mapDispatchToProps = {
-  findStopsForPattern,
-  setHoveredStop,
-  setViewedRoute,
-  setViewedStop
+  setHoveredStop: uiActions.setHoveredStop,
+  setViewedRoute: uiActions.setViewedRoute,
+  setViewedStop: uiActions.setViewedStop
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectIntl(RouteDetails))
+export default connect(null, mapDispatchToProps)(injectIntl(RouteDetails))

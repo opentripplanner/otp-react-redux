@@ -77,7 +77,7 @@ export const TripPanelFooter = styled(Panel.Footer)`
 `
 
 /** Formats non-<label> elements like <label>s. */
-export const labelStyle = css`
+const labelStyle = css`
   border: none;
   cursor: default;
   font-size: inherit;
@@ -85,9 +85,12 @@ export const labelStyle = css`
   margin-bottom: 5px;
 `
 
-export const FakeLabel = styled.span`
-  display: block;
-  ${labelStyle}
+/** Fieldset with a legend that looks like labels. */
+export const FieldSet = styled.fieldset`
+  /* Format <legend> like labels. */
+  legend {
+    ${labelStyle}
+  }
 `
 
 /** A container with spacing between controls. */
@@ -102,8 +105,4 @@ export const phoneFieldStyle = css`
   display: inline-block;
   vertical-align: middle;
   width: 14em;
-`
-
-export const InlineStatic = styled.span`
-  ${phoneFieldStyle}
 `

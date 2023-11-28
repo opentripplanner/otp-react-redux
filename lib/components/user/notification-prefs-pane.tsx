@@ -1,12 +1,15 @@
+import { connect } from 'react-redux'
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage } from 'react-intl'
-import { FormGroup } from 'react-bootstrap'
-import React, { Fragment } from 'react'
+import { ListGroup, ListGroupItem } from 'react-bootstrap'
+import React from 'react'
 import styled from 'styled-components'
 
-import ButtonGroup from '../util/button-group'
+import { AppReduxState } from '../../util/state-types'
+import { GRAY_ON_WHITE } from '../util/colors'
+import { PhoneFormatConfig } from '../../util/config-types'
 
-import { FakeLabel, InlineStatic } from './styled'
+import { FieldSet } from './styled'
 import { PhoneVerificationSubmitHandler } from './phone-verification-form'
 import { User } from './types'
 import PhoneNumberEditor, {
@@ -14,100 +17,127 @@ import PhoneNumberEditor, {
 } from './phone-number-editor'
 
 interface Props extends FormikProps<User> {
+  allowedNotificationChannels: string[]
   loggedInUser: User
   onRequestPhoneVerificationCode: PhoneCodeRequestHandler
   onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
-  phoneFormatOptions: {
-    countryCode: string
-  }
+  phoneFormatOptions: PhoneFormatConfig
 }
 
-const allowedNotificationChannels = ['email', 'sms', 'none']
+const allNotificationChannels = ['email', 'sms', 'push']
+const emailAndSms = ['email', 'sms']
 
 // Styles
-// HACK: Preserve container height.
-const Details = styled.div`
-  min-height: 60px;
-  margin-bottom: 15px;
+const NotificationOption = styled(ListGroupItem)`
+  align-items: flex-start;
+  display: flex;
+
+  /* Match bootstrap's spacing between checkbox and label */
+  & > span:first-child {
+    flex-shrink: 0;
+    width: 20px;
+  }
+
+  label {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 0;
+  }
+  label::first-letter {
+    text-transform: uppercase;
+  }
+  label + span {
+    color: ${GRAY_ON_WHITE};
+  }
 `
 
 /**
  * User notification preferences pane.
  */
 const NotificationPrefsPane = ({
-  loggedInUser,
+  allowedNotificationChannels,
+  handleChange, // Formik or custom handler
   onRequestPhoneVerificationCode,
   onSendPhoneVerificationCode,
   phoneFormatOptions,
   values: userData // Formik prop
 }: Props): JSX.Element => {
-  const { email, isPhoneNumberVerified, phoneNumber } = loggedInUser
-  const { notificationChannel } = userData
+  const { email, isPhoneNumberVerified, phoneNumber, pushDevices } = userData
 
   return (
-    <div>
-      <p>
-        <FormattedMessage id="components.NotificationPrefsPane.description" />
-      </p>
-      <FormGroup>
-        <ButtonGroup>
-          <legend>
-            <FormattedMessage id="components.NotificationPrefsPane.notificationChannelPrompt" />
-          </legend>
-          {allowedNotificationChannels.map((type) => {
-            // TODO: If removing the Save/Cancel buttons on the account screen,
-            // persist changes immediately when onChange is triggered.
-            const inputId = `notification-channel-${type}`
-            const isChecked = notificationChannel === type
-            return (
-              <Fragment key={type}>
-                {/* Note: labels are placed after inputs so that the CSS focus selector can be easily applied. */}
+    <FieldSet>
+      <legend>
+        <FormattedMessage id="components.NotificationPrefsPane.notificationChannelPrompt" />
+      </legend>
+      <ListGroup>
+        {allowedNotificationChannels.map((type) => {
+          const inputId = `notification-channel-${type}`
+          const inputDescriptionId = `${inputId}-description`
+          return (
+            <NotificationOption key={type}>
+              <span>
                 <Field
+                  aria-describedby={inputDescriptionId}
+                  disabled={type === 'push' && !pushDevices}
                   id={inputId}
                   name="notificationChannel"
-                  type="radio"
+                  // Override onChange explicitly to use the custom one for existing accounts.
+                  // (The Formik's one will still be used for new accounts.)
+                  onChange={handleChange}
+                  type="checkbox"
                   value={type}
                 />
-                <label
-                  className={
-                    isChecked ? 'btn btn-primary active' : 'btn btn-default'
-                  }
-                  htmlFor={inputId}
-                >
-                  {type === 'email' ? (
-                    <FormattedMessage id="common.notifications.email" />
-                  ) : type === 'sms' ? (
-                    <FormattedMessage id="common.notifications.sms" />
-                  ) : (
-                    <FormattedMessage id="components.NotificationPrefsPane.noneSelect" />
-                  )}
+              </span>
+              <span>
+                <label htmlFor={inputId}>
+                  <FormattedMessage id={`common.notifications.${type}`} />
                 </label>
-              </Fragment>
-            )
-          })}
-        </ButtonGroup>
-      </FormGroup>
-      <Details>
-        {notificationChannel === 'email' && (
-          <FormGroup>
-            <FakeLabel>
-              <FormattedMessage id="components.NotificationPrefsPane.notificationEmailDetail" />
-            </FakeLabel>
-            <InlineStatic>{email}</InlineStatic>
-          </FormGroup>
-        )}
-        {notificationChannel === 'sms' && (
-          <PhoneNumberEditor
-            initialPhoneNumber={phoneNumber}
-            initialPhoneNumberVerified={isPhoneNumberVerified}
-            onRequestCode={onRequestPhoneVerificationCode}
-            onSubmitCode={onSendPhoneVerificationCode}
-            phoneFormatOptions={phoneFormatOptions}
-          />
-        )}
-      </Details>
-    </div>
+                {type === 'email' ? (
+                  <span id={inputDescriptionId}>{email}</span>
+                ) : type === 'sms' ? (
+                  <PhoneNumberEditor
+                    descriptorId={inputDescriptionId}
+                    initialPhoneNumber={phoneNumber}
+                    initialPhoneNumberVerified={isPhoneNumberVerified}
+                    onRequestCode={onRequestPhoneVerificationCode}
+                    onSubmitCode={onSendPhoneVerificationCode}
+                    phoneFormatOptions={phoneFormatOptions}
+                  />
+                ) : (
+                  <span id={inputDescriptionId}>
+                    {pushDevices ? (
+                      <FormattedMessage
+                        id="components.NotificationPrefsPane.devicesRegistered"
+                        values={{
+                          count: pushDevices
+                        }}
+                      />
+                    ) : (
+                      <FormattedMessage id="components.NotificationPrefsPane.noDeviceForPush" />
+                    )}
+                  </span>
+                )}
+              </span>
+            </NotificationOption>
+          )
+        })}
+      </ListGroup>
+    </FieldSet>
   )
 }
 
-export default NotificationPrefsPane
+const mapStateToProps = (state: AppReduxState) => {
+  const { persistence, phoneFormatOptions } = state.otp.config
+  const supportsPushNotifications =
+    persistence && 'otp_middleware' in persistence
+      ? persistence.otp_middleware?.supportsPushNotifications
+      : false
+  return {
+    allowedNotificationChannels: supportsPushNotifications
+      ? allNotificationChannels
+      : emailAndSms,
+    phoneFormatOptions
+  }
+}
+
+export default connect(mapStateToProps)(NotificationPrefsPane)

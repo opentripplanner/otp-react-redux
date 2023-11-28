@@ -140,7 +140,7 @@
 
 /* Highlight if hovering within search results.
    FIXME: don't highlight if not active */
-.otp .result .option.default-itin:hover:not(.active) {
+.otp .result .option.default-itin:hover:not(.expanded) {
   background-color: var(--hover-color);
 }
 
@@ -149,7 +149,7 @@
 }
 
 /* Show a pointer cursor only for itinerary headers under search results. */
-.otp .result .option.default-itin > .header {
+.otp .result .option.default-itin > .header:not(.expanded) {
   cursor: pointer;
 }
 
@@ -198,6 +198,8 @@
 .otp .option.default-itin > .header .title > .summary > .mode-block {
   height: 18px;
   width: 18px;
+  color: #eee;
+  fill: #eee;
 }
 
 .otp .option.default-itin > .header .title > .summary > .arrow-block {
@@ -394,4 +396,10 @@
 
 .otp .option.default-itin .step .step-distance {
   float: right;
+}
+
+/* Allow banned/preferred routes to float on top */
+#bannedRoutes,
+#preferredRoutes {
+  z-index: 100;
 }

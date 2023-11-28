@@ -37,8 +37,14 @@ actions:
     setPaymentError: "Error al configurar la información de pago:"
     setRequestStatusError: "Error al establecer el estado de la solicitud:"
   location:
+    deniedAccessAlert: >
+      El acceso a tu ubicación está bloqueado.
+
+      Para utilizar tu ubicación actual, activa los permisos de ubicación desde
+      tu navegador y vuelve a cargar la página. 
     geolocationNotSupportedError: Su navegador no admite la geolocalización
     unknownPositionError: Error desconocido al obtener la posición
+    userDeniedPermission: Usuario sin permiso
   map:
     currentLocation: (Ubicación actual)
   user:
@@ -49,6 +55,9 @@ actions:
     emailVerificationResent: El mensaje de verificación de correo electrónico ha sido reenviado.
     genericError: "Se ha encontrado un error: {err}"
     itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
+    mustAcceptTermsToSavePlace: Acepte los Términos de uso (en Mi Cuenta) para guardar las ubicaciones.
+    mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
+    placeRemembered: La configuración de este lugar se ha guardado.
     preferencesSaved: Sus preferencias se han guardado.
     smsInvalidCode: El código introducido no es válido. Por favor, inténtelo de nuevo.
     smsResendThrottled: >-
@@ -100,11 +109,12 @@ common:
     "no": "No"
     print: Imprimir
     save: Guardar
-    startOver: Comenzar de nuevo
+    startOver: Reiniciar
     submitting: Enviando…
     "yes": Sí
   itineraryDescriptions:
     calories: "{calories, number} kcal"
+    fareUnknown: No hay información de las tarifas
     noItineraryToDisplay: No hay itinerario que mostrar.
     relativeCo2: >
       {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
@@ -133,6 +143,7 @@ common:
     walk: Caminar
   notifications:
     email: correo electrónico
+    push: notificaciones push
     sms: Mensaje de texto
   places:
     custom: personalizado
@@ -169,7 +180,9 @@ components:
     tooManyPlaces: Se alcanzó el máximo de lugares intermedios
   AdvancedOptions:
     bannedRoutes: Seleccionar rutas prohibidas…
+    bikeTolerance: Tolerancia de las bicicletas
     preferredRoutes: Seleccionar rutas preferidas…
+    walkTolerance: Tolerancia al andar
   AfterSignInScreen:
     mainTitle: Redirigiendo…
     message: >-
@@ -225,8 +238,12 @@ components:
     shortTitle: Planificar viaje
   BatchSearchScreen:
     header: Planifique su viaje
+    modeSelectorLabel: Seleccione un modo de transporte
   BatchSettings:
     destination: destino
+    invalidModeSelection: >-
+      No se puede planificar un viaje utilizando los modos seleccionados. Prueba
+      a incluir el transporte publico en la selección de modos.
     origin: origen
     planTripTooltip: Planificar viaje
     validationMessage: "Por favor, defina los siguientes campos para planificar un viaje: {issues}"
@@ -249,7 +266,6 @@ components:
     departAt: Salida {departTime, time, short}
     editDepartOrArrival: Editar la hora de salida o de llegada
     leaveNow: Salir ahora
-    range: "{startTime, time, short} a {endTime, time, short}"
   DateTimeScreen:
     header: Fijar fecha/hora
   DefaultItinerary:
@@ -258,9 +274,6 @@ components:
     nonTransit: Alternativas
   DeleteUser:
     deleteMyAccount: Eliminar mi cuenta
-  EnhancedStopMarker:
-    stopID: "Parada:"
-    stopViewer: Visor de paradas
   ErrorMessage:
     header: No se pudo planificar el viaje
     warning: Advertencia
@@ -313,7 +326,6 @@ components:
     title: Imágenes de la calle
   MetroUI:
     arriveAt: Llegaste
-    fromStop: de {stop}
     itineraryDescription: "{time} itinerario en {routes}"
     leaveAt: Su salida
     multipleOptions: Múltiples Opciones
@@ -360,10 +372,51 @@ components:
     description: El contenido que ha solicitado no está disponible.
     header: No se encontró el contenido
   NotificationPrefsPane:
-    description: Puede recibir notificaciones sobre los viajes que realiza con frecuencia.
-    noneSelect: No enviar notificaciones
-    notificationChannelPrompt: ¿Cómo desea recibir las notificaciones?
-    notificationEmailDetail: "Los correos electrónicos de notificación se enviarán a:"
+    devicesRegistered: "{count, plural, one {# device} other {# devices}} registrado"
+    noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
+    notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por:"
+  OTP2ErrorRenderer:
+    LOCATION_NOT_FOUND:
+      body: >-
+        {inputFields}: {inputFieldsCount, plural, =0 {} one {localización es}
+        other {localizaciones son}} no están cerca de ninguna calle.
+      header: No se puede acceder a la ubicación
+    NO_STOPS_IN_RANGE:
+      body: >-
+        {inputFields}: {inputFieldsCount, plural, =0 {} one {ubicación es} other
+        {ubicaciones son}} no están cerca de ninguna parada del transporte.
+      header: Sin paradas cerca
+    NO_TRANSIT_CONNECTION:
+      body: >-
+        No se encontró ninguna conexión entre tu origen y destino en el día
+        seleccionado, utilizando los tipos de vehículos que seleccionaste.
+      header: Sin conexiones
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: >-
+        Se encontró una conexión, pero estaba fuera de las opciones de la
+        búsqueda, intenta ajustar las opciones de la búsqueda, usando los tipos
+        de vehículos que seleccionaste.
+      header: Sin conexiones por el criterio de la búsqueda
+    OUTSIDE_BOUNDS:
+      body: >-
+        {inputFields}: {inputFieldsCount, plural, =0 {} one {localización es}
+        other {localizaciones son}} no están en los límites del planificador de
+        viajes.
+      header: Ubicación fuera de los límites
+    OUTSIDE_SERVICE_PERIOD:
+      body: >-
+        La fecha específicada está fuera del rango de los datos disponibles para
+        la búsqueda de los viajes.
+      header: Fuera de plazo
+    SYSTEM_ERROR:
+      body: Se ha producido un error desconocido en la búsqueda.
+      header: Error en el planificador de los viajes
+    WALKING_BETTER_THAN_TRANSIT:
+      body: Puede completar esta ruta más rápido caminando.
+      header: El transporte público no es la forma más rápida de hacer este viaje
+    inputFields:
+      FROM: Procedencia
+      TO: Destino
   PhoneNumberEditor:
     changeNumber: Cambiar número de teléfono
     invalidCode: Introduzca 6 dígitos para el código de validación.
@@ -377,7 +430,10 @@ components:
       texto:
     requestNewCode: Solicitar un nuevo código
     sendVerificationText: Enviar texto de verificación
-    smsDetail: "Las notificaciones por mensaje de texto se enviarán a:"
+    smsConsent: >
+      Al proporcionar tu número de teléfono, aceptas recibir mensajes de
+      verificación y monitoreo de viajes. Tu proveedor telefónico puede aplicar
+      costos adicionales.
     verificationCode: "Código de verificación:"
     verificationInstructions: >
       Por favor, compruebe en la aplicación de mensajería de texto de su
@@ -437,6 +493,7 @@ components:
     tripsFound: Encontramos {count, plural, one {# opción} other {# opciones}}
     waiting: Espera...
   RouteDetails:
+    headsignTo: "{headsign} ({lastStop})"
     moreDetails: Más detalles
     operatedBy: Servicio operado por {agencyName}
     selectADirection: Seleccione una dirección…
@@ -487,16 +544,14 @@ components:
       Otro viaje guardado ya utiliza este nombre. Por favor, elija un nombre
       diferente.
     tripNameRequired: Por favor, introduzca el nombre del viaje.
+  SequentialPaneDisplay:
+    stepNumber: Paso {step} de {total}
   SessionTimeout:
     body: >-
       Su sesión expirará en un minuto. Pulse 'Continuar sesión' para mantener su
       búsqueda.
     header: ¡La sesión está a punto de terminar!
     keepSession: Continuar sesión
-  SettingsPreview:
-    defaultPreviewText: |-
-      Opciones
-      y Preferencias del viaje
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo real
   StackedPaneDisplay:
@@ -526,7 +581,7 @@ components:
     schedule: Horario
     timezoneWarning: Las horas de salida se indican en <strong>{timezoneCode}</strong>.
     titleBarStopId: Parada {stopId}
-    viewNextArrivals: Ver próximas llegadas
+    viewNextDepartures: Ver salidas siguientes
     viewSchedule: Ver horario
     zoomToStop: Acercar vista a la parada
   SubNav:
@@ -651,9 +706,10 @@ components:
     notifications: >-
       Notificaciones: <strong>{leadTimeInMinutes} minutos antes de la salida
       programada</strong>
-    notificationsDisabled: "Notificaciones: <strong>Disabled</strong>"
+    notificationsDisabled: "Notificaciones: <strong>Desactivadas</strong>"
   TripTools:
     copyLink: Copiar enlace
+    header: Herramientas
     linkCopied: Copiado
     reportEmailSubject: Informar un problema con OpenTripPlanner
     reportEmailTemplate: >
@@ -677,7 +733,7 @@ components:
 
 
       *** DETALLES TÉCNICOS ***
-    reportIssue: Reportar un problema
+    reportIssue: ¿Un problema?
   TripViewer:
     accessible: Accesible
     bicyclesAllowed: Permitido
@@ -692,6 +748,11 @@ components:
     confirmDelete: >-
       ¿Está seguro de que desea eliminar su cuenta de usuario? Una vez que lo
       haga, no se podrá recuperar.
+    errorUpdatingProfile: Error al actualizar el perfil.
+    fieldUpdated: Este ajuste se actualizó.
+    fields:
+      storeTripHistory: Almacenar historial de viajes
+    updating: Actualizando
   UserSettings:
     confirmDeletion: >-
       Tiene almacenadas búsquedas o lugares recientes. Si desactiva el

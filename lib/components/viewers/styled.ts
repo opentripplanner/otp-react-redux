@@ -1,7 +1,14 @@
 import styled from 'styled-components'
 
+interface RenderProps {
+  backgroundColor?: string
+  full?: boolean
+  routeColor?: string
+  textColor?: string
+}
+
 /** Route Details */
-export const Container = styled.div`
+export const Container = styled.div<RenderProps>`
   background-color: ${(props) =>
     props.full ? props.backgroundColor || '#ddd' : 'inherit'};
   color: ${(props) => (props.full ? props.textColor : 'inherit')};
@@ -45,7 +52,6 @@ export const PatternContainer = styled.div`
       align-items: center;
       display: flex;
       justify-content: space-between;
-      max-width: 300px;
       width: 95%;
 
       span {
@@ -60,7 +66,7 @@ export const PatternContainer = styled.div`
 }
 `
 
-export const StopContainer = styled.ol`
+export const StopContainer = styled.ol<RenderProps>`
   color: ${(props) => props?.textColor || '#333'};
   background-color: ${(props) => props?.backgroundColor || '#fff'};
   overflow-y: scroll;
@@ -69,7 +75,7 @@ export const StopContainer = styled.ol`
   are shown when browsers don't calculate 100% sensibly */
   padding: 15px 0 100px;
 `
-export const StopLink = styled.button`
+export const StopLink = styled.button<RenderProps>`
   color: ${(props) => props?.textColor + 'da' || '#333'};
   background-color: transparent;
   border: none;
@@ -82,7 +88,8 @@ export const StopLink = styled.button`
     text-decoration: underline;
   }
 `
-export const Stop = styled.li`
+
+export const Stop = styled.li<RenderProps>`
   cursor: pointer;
   display: block;
   white-space: nowrap;
