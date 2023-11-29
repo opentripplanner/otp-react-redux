@@ -577,7 +577,7 @@ components:
     schedule: Lịch trình
     timezoneWarning: Thời gian khởi hành được hiển thị trong <strong>{timezoneCode}</strong>.
     titleBarStopId: Điểm dừng {stopId}
-    viewNextArrivals: Xem những xe đến tiếp theo
+    viewNextDepartures: Xem lần khởi hành tiếp theo
     viewSchedule: Xem lịch trình
     zoomToStop: Phóng to để dừng lại
   SubNav:

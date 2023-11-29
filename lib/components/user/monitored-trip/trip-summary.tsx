@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import { ComponentContext } from '../../../util/contexts'
+import { MonitoredTripProps } from '../types'
 import FormattedDuration from '../../util/formatted-duration'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
@@ -10,18 +11,7 @@ const SummaryContainer = styled.div`
   margin-bottom: 10px;
 `
 
-interface Props {
-  // TODO: use a more complete definition of monitored trip.
-  monitoredTrip: {
-    itinerary: {
-      duration: number
-      endTime: number
-      startTime: number
-    }
-  }
-}
-
-const TripSummary = ({ monitoredTrip }: Props): JSX.Element => {
+const TripSummary = ({ monitoredTrip }: MonitoredTripProps): JSX.Element => {
   const { itinerary } = monitoredTrip
   const { duration, endTime, startTime } = itinerary
   // @ts-expect-error TODO: add ModesAndRoutes to ItineraryBody attribute of ComponentContext

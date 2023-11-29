@@ -234,7 +234,7 @@ components:
     shortTitle: Plan Trip
   BatchSearchScreen:
     header: Plan Your Trip
-    modeSelectorLabel: Select a transit mode
+    modeSelectorLabel: Select a travel mode
   BatchSettings:
     destination: destination
     invalidModeSelection: >-
@@ -564,7 +564,7 @@ components:
     schedule: Schedule
     timezoneWarning: Departure times are shown in <strong>{timezoneCode}</strong>.
     titleBarStopId: Stop {stopId}
-    viewNextArrivals: View next arrivals
+    viewNextDepartures: View next departures
     viewSchedule: View schedule
     zoomToStop: Zoom to stop
   SubNav:
