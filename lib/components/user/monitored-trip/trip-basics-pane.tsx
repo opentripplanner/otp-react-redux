@@ -9,7 +9,6 @@ import {
 } from 'react-bootstrap'
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import { Itinerary } from '@opentripplanner/types'
 import { Prompt } from 'react-router'
 // @ts-expect-error FormikErrorFocus does not support TypeScript yet.
 import FormikErrorFocus from 'formik-error-focus'
@@ -18,9 +17,14 @@ import styled from 'styled-components'
 import type { IntlShape, WrappedComponentProps } from 'react-intl'
 
 import * as userActions from '../../../actions/user'
+import {
+  ALL_DAYS,
+  getFormattedDayOfWeekPlural
+} from '../../../util/monitored-trip'
+import { AppReduxState } from '../../../util/state-types'
 import { FieldSet } from '../styled'
 import { getErrorStates } from '../../../util/ui'
-import { getFormattedDayOfWeekPlural } from '../../../util/monitored-trip'
+import { ItineraryExistence, MonitoredTrip } from '../types'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 import FormattedValidationError from '../../util/formatted-validation-error'
@@ -29,40 +33,20 @@ import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import TripStatus from './trip-status'
 import TripSummary from './trip-summary'
 
-interface Fields {
-  friday: boolean
-  itinerary: Itinerary
-  monday: boolean
-  saturday: boolean
-  sunday: boolean
-  thursday: boolean
-  tripName: string
-  tuesday: boolean
-  wednesday: boolean
-}
-
 type TripBasicsProps = WrappedComponentProps &
-  FormikProps<Fields> & {
+  FormikProps<MonitoredTrip> & {
     canceled: boolean
-    checkItineraryExistence: (monitoredTrip: unknown, intl: IntlShape) => void
+    checkItineraryExistence: (
+      monitoredTrip: MonitoredTrip,
+      intl: IntlShape
+    ) => void
     clearItineraryExistence: () => void
     isCreating: boolean
-    itineraryExistence: Record<string, { valid: boolean }>
+    itineraryExistence?: ItineraryExistence
   }
 
 // FIXME: move to shared types file
 type ErrorStates = 'success' | 'warning' | 'error' | null | undefined
-
-// FIXME: combine back with monitored trips when that is typed.
-const ALL_DAYS = [
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday',
-  'sunday'
-] as const
 
 // Styles.
 const AvailableDays = styled(FieldSet)`
@@ -144,9 +128,11 @@ class TripBasicsPane extends Component<TripBasicsProps> {
   }
 
   componentDidMount() {
-    // Check itinerary availability (existence) for all days.
+    // Check itinerary availability (existence) for all days if not already done.
     const { checkItineraryExistence, intl, values: monitoredTrip } = this.props
-    checkItineraryExistence(monitoredTrip, intl)
+    if (!monitoredTrip.itineraryExistence) {
+      checkItineraryExistence(monitoredTrip, intl)
+    }
   }
 
   componentDidUpdate(prevProps: TripBasicsProps) {
@@ -169,6 +155,8 @@ class TripBasicsPane extends Component<TripBasicsProps> {
       values: monitoredTrip
     } = this.props
     const { itinerary } = monitoredTrip
+    const finalItineraryExistence =
+      monitoredTrip.itineraryExistence || itineraryExistence
 
     // Prevent user from leaving when form has been changed,
     // but don't show it when they click submit or cancel.
@@ -238,7 +226,8 @@ class TripBasicsPane extends Component<TripBasicsProps> {
               </legend>
               {ALL_DAYS.map((day) => {
                 const isDayDisabled =
-                  itineraryExistence && !itineraryExistence[day].valid
+                  finalItineraryExistence &&
+                  !finalItineraryExistence[day]?.valid
                 const boxClass = isDayDisabled
                   ? 'alert-danger'
                   : monitoredTrip[day]
@@ -278,7 +267,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
               })}
             </AvailableDays>
             <HelpBlock role="status">
-              {itineraryExistence ? (
+              {finalItineraryExistence ? (
                 <FormattedMessage id="components.TripBasicsPane.tripIsAvailableOnDaysIndicated" />
               ) : (
                 <ProgressBar
@@ -307,7 +296,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
 
 // Connect to redux store
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const { itineraryExistence } = state.user
   return {
     itineraryExistence
