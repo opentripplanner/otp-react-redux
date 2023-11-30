@@ -36,6 +36,7 @@ import TripSummaryPane from './trip-summary-pane'
 interface ItemProps {
   confirmAndDeleteUserMonitoredTrip: (id: string, intl: IntlShape) => void
   intl: IntlShape
+  renderData: any
   routeTo: (url: any) => void
   togglePauseTrip: (trip: MonitoredTrip, intl: IntlShape) => void
   trip: MonitoredTrip
@@ -179,7 +180,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
 }
 
 // connect to the redux store
-const itemMapStateToProps = (state, ownProps) => {
+const itemMapStateToProps = (ownProps: ItemProps) => {
   const { trip } = ownProps
   const renderData = getRenderData({
     monitoredTrip: trip
