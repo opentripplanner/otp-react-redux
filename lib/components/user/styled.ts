@@ -51,17 +51,14 @@ export const TripPanelHeading = styled(Panel.Heading)`
 `
 
 export const TripPanelAlert = styled.a`
-  border: none;
   color: ${RED_ON_WHITE};
   cursor: pointer;
   float: right;
   text-decoration: underline;
-
-  :hover {
-    opacity: 90%,
+  &:hover {
     background-color: transparent;
-    color: #d9534f;
-    text-decoration: underline;
+    color: ${RED_ON_WHITE};
+    opacity: 80%;
   }
 `
 
