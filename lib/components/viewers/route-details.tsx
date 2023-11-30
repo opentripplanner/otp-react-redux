@@ -11,6 +11,7 @@ import {
   getRouteColorBasedOnSettings
 } from '../../util/viewer'
 import { getOperatorName } from '../../util/state'
+import { grey } from '@opentripplanner/building-blocks'
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
   SetViewedRouteHandler,
@@ -215,7 +216,7 @@ class RouteDetails extends Component<Props> {
                   onClick={() => this._stopLinkClicked(stop.id)}
                   onMouseOver={() => setHoveredStop(stop.id)}
                   routeColor={
-                    routeColor.includes('ffffff') ? '#333' : routeColor
+                    routeColor.includes('ffffff') ? grey[900] : routeColor
                   }
                   textColor={getMostReadableTextColor(
                     routeColor,

@@ -6,7 +6,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../util/state-types'
-import { GRAY_ON_WHITE } from '../util/colors'
+import { grey } from '@opentripplanner/building-blocks'
 import { PhoneFormatConfig } from '../../util/config-types'
 
 import { FieldSet } from './styled'
@@ -47,7 +47,7 @@ const NotificationOption = styled(ListGroupItem)`
     text-transform: uppercase;
   }
   label + span {
-    color: ${GRAY_ON_WHITE};
+    color: ${grey[700]};
   }
 `
 

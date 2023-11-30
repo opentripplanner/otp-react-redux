@@ -1,9 +1,8 @@
 import { Button } from 'react-bootstrap'
 import { FormattedMessage } from 'react-intl'
+import { red } from '@opentripplanner/building-blocks'
 import React from 'react'
 import styled from 'styled-components'
-
-import { RED_ON_WHITE } from '../util/colors'
 
 interface Props {
   onDelete: () => void
@@ -11,14 +10,14 @@ interface Props {
 
 const DeleteButton = styled(Button)`
   background-color: white;
-  border-color: ${RED_ON_WHITE};
-  color: ${RED_ON_WHITE};
+  border-color: ${red[800]};
+  color: ${red[800]};
   :active,
   :focus,
   :focus:active,
   :hover {
-    border-color: ${RED_ON_WHITE};
-    color: ${RED_ON_WHITE};
+    border-color: ${red[800]};
+    color: ${red[800]};
   }
 `
 

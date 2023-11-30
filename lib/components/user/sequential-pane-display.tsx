@@ -5,7 +5,7 @@ import React, { Component, MouseEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
-import { GRAY_ON_WHITE } from '../util/colors'
+import { grey } from '@opentripplanner/building-blocks'
 
 import { SequentialPaneContainer } from './styled'
 import FormNavigationButtons from './form-navigation-buttons'
@@ -34,7 +34,7 @@ interface Props<T> extends OwnProps {
 }
 
 const StepNumber = styled.p`
-  color: ${GRAY_ON_WHITE};
+  color: ${grey[700]};
   font-size: 40%;
   margin: -1em 0 0 0;
 `

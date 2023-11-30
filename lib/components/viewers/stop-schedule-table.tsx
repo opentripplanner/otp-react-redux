@@ -10,6 +10,7 @@ import {
   getFirstDepartureFromNow,
   mergeAndSortStopTimes
 } from '../../util/viewer'
+import { grey } from '@opentripplanner/building-blocks'
 import Loading from '../narrative/loading'
 import type { StopData } from '../util/types'
 
@@ -22,13 +23,13 @@ const StyledTable = styled.table`
   width: 100%;
   th {
     background-color: var(--main-base-color, white);
-    box-shadow: 0 1px 0px 0px #ccc;
+    box-shadow: 0 1px 0px 0px ${grey[200]};
     font-size: 75%;
     position: sticky;
     top: 0px;
   }
   tr > * {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid ${grey[200]};
     padding: 2px 0 2px 10px;
     vertical-align: top;
   }

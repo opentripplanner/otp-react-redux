@@ -6,7 +6,7 @@ import React, { Component, createRef, Fragment } from 'react'
 import styled from 'styled-components'
 
 import { getAriaPhoneNumber } from '../../util/a11y'
-import { GRAY_ON_WHITE } from '../util/colors'
+import { grey } from '@opentripplanner/building-blocks'
 import { isBlank } from '../../util/ui'
 import { PhoneFormatConfig } from '../../util/config-types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
@@ -20,7 +20,7 @@ import PhoneVerificationForm, {
 export type PhoneCodeRequestHandler = (phoneNumber: string) => void
 
 const PlainLink = styled.a`
-  color: ${GRAY_ON_WHITE};
+  color: ${grey[700]};
   &:hover {
     text-decoration: none;
   }
