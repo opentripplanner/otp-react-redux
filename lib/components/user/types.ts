@@ -14,6 +14,12 @@ export interface UserSavedLocation {
   type?: string
 }
 
+export interface MobilityProfile {
+  isMobilityLimited: boolean
+  mobilityDevices: string[]
+  visionLimitation: 'none' | 'low-vision' | 'legally-blind'
+}
+
 /**
  * Type definition for an OTP-middleware (OTP-personas) user.
  */
@@ -24,6 +30,7 @@ export interface User {
   hasConsentedToTerms?: boolean
   id?: string
   isPhoneNumberVerified?: boolean
+  mobilityProfile?: MobilityProfile
   notificationChannel?: string
   phoneNumber?: string
   pushDevices?: number
