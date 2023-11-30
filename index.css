@@ -166,7 +166,6 @@ input[type="text"]::-ms-clear {
   border-top: 1px solid #cccccc;
   margin-top: 0.5rem;
   padding-left: 2rem;
-  overflow: scroll;
 }
 
 .app-menu .app-menu-divider {
