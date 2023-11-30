@@ -73,6 +73,8 @@ input[type="text"]::-ms-clear {
 
 .slide-pane_from_left {
   margin: 52px auto 0 0;
+  /* Keep pane from overflowing on smaller screens */
+  height: calc(100vh - 52px);
 }
 
 .slide-pane__content {
@@ -164,6 +166,7 @@ input[type="text"]::-ms-clear {
   border-top: 1px solid #cccccc;
   margin-top: 0.5rem;
   padding-left: 2rem;
+  overflow: scroll;
 }
 
 .app-menu .app-menu-divider {
