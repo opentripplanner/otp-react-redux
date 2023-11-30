@@ -1,3 +1,7 @@
+import { Itinerary } from '@opentripplanner/types'
+
+import { DaysOfWeek } from '../../util/monitored-trip'
+
 /**
  * A user-saved, favorite location.
  */
@@ -29,4 +33,28 @@ export interface User {
 
 export type EditedUser = Omit<User, 'notificationChannel'> & {
   notificationChannel: string[]
+}
+
+export interface ItineraryExistenceDay {
+  valid: boolean
+}
+
+export type ItineraryExistence = Record<DaysOfWeek, ItineraryExistenceDay>
+
+export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
+  arrivalVarianceMinutesThreshold: number
+  departureVarianceMinutesThreshold: number
+  excludeFederalHolidays?: boolean
+  id: string
+  isActive: boolean
+  itinerary: Itinerary
+  itineraryExistence?: ItineraryExistence
+  leadTimeInMinutes: number
+  queryParams: string
+  tripName: string
+  userId: string
+}
+
+export interface MonitoredTripProps {
+  monitoredTrip: MonitoredTrip
 }
