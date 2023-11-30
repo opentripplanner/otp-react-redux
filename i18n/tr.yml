@@ -2,9 +2,13 @@ _id: en-US
 _name: İngilizce
 actions:
   callTaker:
+    callQuerySaveError: "Çağrı sorguları kaydedilirken hata oluştu: {err}"
+    checkSessionError: "Oturum kimlik doğrulama oluşturulurken hata oluştu: {err}"
+    couldNotFindCallError: Çağrı bulunamadı. Sorguları kaydetme isteği iptal ediliyor.
     fetchCallsError: "Çağrılar alınırken hata oluştu: {err}"
     queryFetchError: "Sorgular alınırken hata oluştu: {err}"
   fieldTrip:
+    addNoteError: "Yolculuk alanına not eklenirken hata oluştu:"
     editSubmitterNotesError: "Gönderenin notları düzenlenirken hata oluştu:"
     fetchFieldTripError: ""
     maxTripRequestsExceeded: Geçerli sonuçlar olmadan yolculuk isteklerinin sayısı aşıldı

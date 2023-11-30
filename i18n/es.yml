@@ -55,9 +55,7 @@ actions:
     emailVerificationResent: El mensaje de verificación de correo electrónico ha sido reenviado.
     genericError: "Se ha encontrado un error: {err}"
     itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
-    mustAcceptTermsToSavePlace: >-
-      Por favor, acepte las Condiciones de uso (en Mi cuenta) para guardar las
-      ubicaciones.
+    mustAcceptTermsToSavePlace: Acepte los Términos de uso (en Mi Cuenta) para guardar las ubicaciones.
     mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
     placeRemembered: La configuración de este lugar se ha guardado.
     preferencesSaved: Sus preferencias se han guardado.
@@ -374,18 +372,18 @@ components:
     description: El contenido que ha solicitado no está disponible.
     header: No se encontró el contenido
   NotificationPrefsPane:
-    devicesRegistered: "{count, plural, one {# dispositivo} other {# dispositivos}} registrado(s)"
+    devicesRegistered: "{count, plural, one {# device} other {# devices}} registrado"
     noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
     notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por:"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {la ubicación es}
-        other {las ubicaciones son}} no está cerca de ninguna calle.
+        {inputFields}: {inputFieldsCount, plural, =0 {} one {localización es}
+        other {localizaciones son}} no están cerca de ninguna calle.
       header: No se puede acceder a la ubicación
     NO_STOPS_IN_RANGE:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {ubicación es} other
+        {inputFields}: {inputFieldsCount, plural, =0 {} one {ubicación es} other
         {ubicaciones son}} no están cerca de ninguna parada del transporte.
       header: Sin paradas cerca
     NO_TRANSIT_CONNECTION:
@@ -401,8 +399,9 @@ components:
       header: Sin conexiones por el criterio de la búsqueda
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {ubicación es} other
-        {ubicaciones son}} no están en los límites del planificador de viajes.
+        {inputFields}: {inputFieldsCount, plural, =0 {} one {localización es}
+        other {localizaciones son}} no están en los límites del planificador de
+        viajes.
       header: Ubicación fuera de los límites
     OUTSIDE_SERVICE_PERIOD:
       body: >-
@@ -431,6 +430,10 @@ components:
       texto:
     requestNewCode: Solicitar un nuevo código
     sendVerificationText: Enviar texto de verificación
+    smsConsent: >
+      Al proporcionar tu número de teléfono, aceptas recibir mensajes de
+      verificación y monitoreo de viajes. Tu proveedor telefónico puede aplicar
+      costos adicionales.
     verificationCode: "Código de verificación:"
     verificationInstructions: >
       Por favor, compruebe en la aplicación de mensajería de texto de su
@@ -578,7 +581,7 @@ components:
     schedule: Horario
     timezoneWarning: Las horas de salida se indican en <strong>{timezoneCode}</strong>.
     titleBarStopId: Parada {stopId}
-    viewNextArrivals: Ver próximas llegadas
+    viewNextDepartures: Ver salidas siguientes
     viewSchedule: Ver horario
     zoomToStop: Acercar vista a la parada
   SubNav:
@@ -746,9 +749,9 @@ components:
       ¿Está seguro de que desea eliminar su cuenta de usuario? Una vez que lo
       haga, no se podrá recuperar.
     errorUpdatingProfile: Error al actualizar el perfil.
-    fieldUpdated: Este ajuste se ha actualizado.
+    fieldUpdated: Este ajuste se actualizó.
     fields:
-      storeTripHistory: Guardar el historial de los viajes
+      storeTripHistory: Almacenar historial de viajes
     updating: Actualizando
   UserSettings:
     confirmDeletion: >-

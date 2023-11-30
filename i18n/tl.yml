@@ -1,3 +1,5 @@
+_id: tl
+_name: Tagalog
 actions:
   callTaker:
     callQuerySaveError: "Nagka-error sa pag-store ng mga query sa tawag: {err}"
@@ -26,8 +28,14 @@ actions:
     saveItinerariesError: "Hindi na-save ang mga itinerary: {err}"
     setDateError: "Nagka-error sa pagtatakda ng petsa:"
   location:
+    deniedAccessAlert: >
+      Naka-block ang access sa lokasyon mo.
+
+      Para gamitin ang kasalukuyang lokasyon mo, i-enable ang mga pahintulot sa
+      lokasyon mula sa browser mo, at i-reload ang page. 
     geolocationNotSupportedError: Hindi sinusuportahan ng iyong browser ang geolocation
     unknownPositionError: Nagka-error sa pagkuha sa posisyon
+    userDeniedPermission: Tinanggihan ng user ang pahintulot
   map:
     currentLocation: (Kasalukuyang Lokasyon)
   user:
@@ -38,6 +46,11 @@ actions:
     emailVerificationResent: Ipinadala ulit ang mensahe ng pag-verify sa email.
     genericError: "Nagka-error: {err}"
     itineraryExistenceCheckFailed: Nagka-error sa pagtingin kung posible ang napili mong biyahe.
+    mustAcceptTermsToSavePlace: >-
+      Pakitanggap ang Mga Tuntunin ng Paggamit (sa ilalim ng Aking Account) para
+      mag-save ng mga lokasyon.
+    mustBeLoggedInToSavePlace: Mangyaring mag-log in para mag-save ng mga lokasyon.
+    placeRemembered: Na-save na ang mga setting para sa lugar na ito.
     preferencesSaved: Na-save ang iyong mga kagustuhan.
     smsInvalidCode: Invalid ang inilagay mong code. Subukan ulit.
     smsResendThrottled: >-
@@ -91,11 +104,17 @@ common:
     print: I-print
     save: I-save
     startOver: Magsimula sa Umpisa
+    submitting: Isinusumite…
     "yes": Oo
   itineraryDescriptions:
     calories: "{calories, number} Cal"
+    fareUnknown: Walang impormasyon sa pamasahe
     noItineraryToDisplay: Walang ipapakitang itinerary.
+    relativeCo2: >
+      {co2} {isMore, select, true {mas maraming} other {mas kaunting} } CO₂
+      kaysa magmaneho nang mag-isa
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
+  linkOpensNewWindow: (Magbubukas sa bagong window)
   modes:
     bicycle_rent: Bikeshare
     bike: Bisikleta
@@ -112,10 +131,13 @@ common:
     micromobility_rent: E-scooter
     rail: Tren
     rent: Mga opsyon sa pagrenta
+    subway: Subway
+    tram: Streetcar
     transit: Pampublikong Transportasyon
     walk: Naglalakad
   notifications:
     email: email
+    push: mga push notification
     sms: SMS
   places:
     custom: custom
@@ -138,6 +160,9 @@ common:
       nHours: "{hours, plural, =1 {an hour} other {# hours}}"
       nMinutes: "{minutes} (na) minuto"
     durationAgo: "{duration} ang nakalipas"
+    tripDurationFormat: >-
+      {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
+      other {# sec}}
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Mas gusto ang mga accessible na biyahe bilang default
@@ -150,7 +175,10 @@ components:
       lugar
     tooManyPlaces: Naabot ang maximum na bilang ng mga intermediate na lugar
   AdvancedOptions:
+    bannedRoutes: Pumili ng mga naka-ban na ruta…
+    bikeTolerance: Tolerance sa Pagbibisikleta
     preferredRoutes: Piliin ang mga mas gustong ruta...
+    walkTolerance: Tolerance sa Paglalakad
   AfterSignInScreen:
     mainTitle: Nire-redirect...
     message: >-
@@ -196,6 +224,7 @@ components:
     fieldTrip: Field Trip
     mailables: Mga Mailable
     openMenu: Buksan ang Menu
+    skipNavigation: I-skip ang pag-navigate
   BackToTripPlanner:
     backToTripPlanner: Bumalik sa planner ng biyahe
   BatchResultsScreen:
@@ -205,8 +234,12 @@ components:
     shortTitle: Planuhin ang Biyahe
   BatchSearchScreen:
     header: Planuhin ang Iyong Biyahe
+    modeSelectorLabel: Pumili ng paraan ng pagbiyahe
   BatchSettings:
     destination: patutunguhan
+    invalidModeSelection: >-
+      Hindi makapagplano ng biyahe gamit ang mga piniling mode. Subukang isama
+      ang pampublikong transportasyon sa pagpili mo ng mode.
     origin: pinagmulan
     planTripTooltip: Planuhin ang biyahe
     validationMessage: "Ilarawan ang mga sumusunod na field para makapagplano ng biyahe: {issues}"
@@ -234,6 +267,7 @@ components:
   DefaultItinerary:
     clickDetails: I-click para tingnan ang mga detalye
     multiModeSummary: "{accessMode} + {transitMode}"
+    nonTransit: Mga alternatibong opsyon
   DeleteUser:
     deleteMyAccount: I-delete ang aking account
   ErrorMessage:
@@ -266,9 +300,11 @@ components:
   FormNavigationButtons:
     ariaLabel: Pag-navigate sa form
   ItinerarySummary:
+    itineraryDetails: Mga detalye ng itinerary
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Awtomatikong i-refresh ang mga pagdating?
+    refresh: I-refresh ang mga oras ng pagdating
   LocationSearch:
     enterLocation: Ilagay ang lokasyon
     setDestination: Itakda ang Patutunguhan
@@ -279,21 +315,35 @@ components:
     micromobility-rental: Mga E-scooter ng {companies}
     park-and-ride: Mga Lokasyon ng Park & Ride
     satellite: Satellite
+    shared-vehicles: Mga Nakabahaging Sasakyan
     stops: Mga Hintuan ng Pampublikong Transportasyon
     streets: Mga Kalye
+  MapillaryFrame:
+    title: Larawan ng kalsada
   MetroUI:
+    arriveAt: Dumating ka na
     itineraryDescription: "{time} (na) itinerary gamit ang {routes}"
     leaveAt: Aalis ka
     multipleOptions: Maraming Opsyon
     orAlternatives: o ang iba pang ruta sa parehong direksyon
+    originallyScheduledTime: (orihinal na {originalTime})
+    singleModeItineraryDescription: "{time} {mode} itinerary"
     timeWalking: "{time} (na) paglalakad"
   MobileOptions:
     header: Itakda ang Mga Opsyon sa Paghahanap
   NarrativeItinerariesHeader:
+    changeSortDir: Baguhin ang pagkakaayos ng direksyon
+    howToFindResults: >-
+      Para tingnan ang mga resulta, tingnan ang heading na Mga Nakitang
+      Itinerary sa ibaba.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
     numIssues: "{issueNum, plural, one {# issue} other {# issues} }"
+    resultsSortedBy: >-
+      Kasalukuyang nakaayos ayon sa {sortSelected} ang mga resulta ng biyahe.
+      Para palitan ang paraan kung paano nakaayos ang mga resulta, gamitin ang
+      "button sa ibaba" na Ayusin ang Mga Resulta.
     searching: Hinahanap ang iyong mga opsyon...
     selectArrivalTime: Oras ng pagdating
     selectBest: Pinakamainam na opsyon
@@ -301,6 +351,7 @@ components:
     selectDepartureTime: Oras ng pag-alis
     selectDuration: Tagal
     selectWalkTime: Tagal ng paglalakad
+    sortResults: Ayusin ang mga resulta
     viewAll: Tingnan ang lahat ng opsyon
   NavLoginButton:
     help: Tulong
@@ -316,15 +367,77 @@ components:
   NotFound:
     description: Hindi available ang hiniling mong content.
     header: Hindi nakita ang content
+  NotificationPrefsPane:
+    devicesRegistered: "{count, plural, one {# device} other {# mga device}} rehistrado"
+    noDeviceForPush: >-
+      Irehistro ang iyong device gamit ang mobile app para i-access ang mga push
+      notification.
+    notificationChannelPrompt: >-
+      Makatanggap ng mga notification tungkol sa iyong mga naka-save na biyahe
+      sa pamamagitan ng:
+  OTP2ErrorRenderer:
+    LOCATION_NOT_FOUND:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {ang lokasyon ay}
+        other {ang mga lokasyon ay}} hindi malapit sa anumang kalsada.
+      header: Hindi naa-access ang lokasyon
+    NO_STOPS_IN_RANGE:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {ang lokasyon ay}
+        other {ang mga lokasyon ay}} hindi malapit sa anumang hintuan ng
+        pampublikong sasakyan.
+      header: Walang nasasaklaw na hintuan
+    NO_TRANSIT_CONNECTION:
+      body: >-
+        Walang nakitang koneksyon sa pampublikong transportasyon sa pagitan ng
+        iyong pinagmulan at destinasyon sa piniling araw ng serbisyo, gamit ang
+        mga uri ng sasakyang pinili mo.
+      header: Walang koneksyon sa pampublikong transportasyon
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: >-
+        May nakitang koneksyon sa pampublikong sasakyan, pero nasa labas ito ng
+        search window, subukang iayos ang iyong search window, gamit ang mga uri
+        ng sasakyang pinili mo.
+      header: Walang koneksyon sa pampublikong transportasyon sa window ng paghahanap
+    OUTSIDE_BOUNDS:
+      body: >-
+        {inputFields} {inputFieldsCount, plural, =0 {} one {ang lokasyon ay}
+        other {ang mga lokasyon ay}} wala sa mga hangganan ng planner ng byahe.
+      header: Wala sa mga hangganan ang lokasyon
+    OUTSIDE_SERVICE_PERIOD:
+      body: >-
+        Wala sa saklaw ng data na kasalukuyang naka-load sa planner ng biyahe
+        ang petsang tinukoy.
+      header: Wala sa panahon ng serbisyo
+    SYSTEM_ERROR:
+      body: May hindi kilalang error na nangyari sa panahon ng paghahanap.
+      header: Failure sa Planner ng Biyahe
+    WALKING_BETTER_THAN_TRANSIT:
+      body: >-
+        Ang pag-iwas sa pampublikong sasakyan sa iyong biyahe ay magiging mas
+        mabilis kaysa sa pagsakay sa pampublikong sasakyan.
+      header: >-
+        Hindi pampublikong transportasyon ang pinakamabilis na paraan para
+        bumiyahe nang ganito
+    inputFields:
+      FROM: Pinagmulan
+      TO: Patutunguhan
   PhoneNumberEditor:
     changeNumber: Baguhin ang numero
     invalidCode: Maglagay ng 6 na digit para sa code sa pag-validate.
     invalidPhone: Maglagay ng valid na numero ng telepono.
     pending: Nakabinbin
+    phoneNumberSubmitted: Matagumpay na naisumite ang numero ng teleponong {phoneNumber}.
+    phoneNumberVerified: Matagumpay na na-verify ang numero ng teleponong {phoneNumber} .
     placeholder: Ilagay ang numero ng iyong telepono
     prompt: "Ilagay ang numero ng iyong telepono para sa mga SMS na notification:"
     requestNewCode: Humiling ng bagong code
     sendVerificationText: Magpadala ng text sa pag-verify
+    smsConsent: >-
+      Sa pamamagitan ng pagbibigay ng iyong numero ng telepono, sumasang-ayon
+      kang makatanggap ng mga SMS message sa pag-verify at pagsubaybay ng
+      biyahe. Maaaring nalalapat ang mga karagdagang gastos mula sa carrier ng
+      telepono mo.
     verificationCode: "Code sa pag-verify:"
     verificationInstructions: >
       Tingnan ang app sa SMS messaging sa iyong mobile phone para sa isang text
@@ -343,6 +456,8 @@ components:
     addressPrompt: "Address:"
     genericLocationPlaceholder: Maghanap ng lokasyon
     locationPlaceholder: Hanapin ang lokasyon ng {placeName}
+    locationTypePrompt: "Uri ng lokasyon:"
+    nameExample: Aking coffee shop
     namePrompt: "Pangalan ng lugar:"
   PlanFirstLastButtons:
     first: Una
@@ -381,6 +496,7 @@ components:
     tripsFound: Nakakita kami ng {count} {count, plural, one {Option} other {Options}}
     waiting: Naghihintay...
   RouteDetails:
+    headsignTo: "{headsign} ({lastStop})"
     moreDetails: Higit Pang Detalye
     operatedBy: Pinapatakbo ng {agencyName}
     selectADirection: Pumili ng direksyon...
@@ -389,12 +505,16 @@ components:
     agencyFilter: Filter ng Ahensya
     allAgencies: Lahat ng Ahensya
     allModes: Lahat ng Mode
+    details: " "
     findARoute: Maghanap ng Ruta
     header: Viewer ng Ruta
     modeFilter: Filter ng Mode
     noFilteredRoutesFound: Walang tumutugmang ruta sa iyong filter!
+    openPatternViewer: Tingnan ang mga detalye ng ruta
     shortTitle: Tingnan ang Mga Ruta
+    stopsInDirectionOfTravel: "Mga hintuan sa direksyong ito ng paglalakbay:"
     title: Viewer ng Ruta
+    toggleRouteOnMap: I-toggle ang ruta sa mapa
   SaveTripButton:
     cantSaveText: Hindi ma-save
     cantSaveTooltip: >-
@@ -411,12 +531,15 @@ components:
     tripNotFoundDescription: Pasensya na, hindi nakita ang hiniling na biyahe.
     tripNotifications: Mga notification sa biyahe
   SavedTripList:
+    fromTo: Mula sa {from} papuntang {to}
     myTrips: Aking mga biyahe
     noSavedTrips: Wala kang naka-save na biyahe
     noSavedTripsInstructions: Maghanap muna ng biyahe sa mapa.
     pause: I-pause
     resume: Ipagpatuloy
   SavedTripScreen:
+    itineraryLoaded: Na-load na ang itinerary
+    itineraryLoading: Nilo-load ang itinerary
     tooManyTrips: >
       Naabot mo na ang maximum na limang naka-save na biyahe. Alisin ang mga
       hindi pa nagagamit na biyahe sa iyong mga naka-save na biyahe, at subukan
@@ -425,6 +548,8 @@ components:
       May gumagamit nang naka-save na biyahe sa pangalang ito. Gumamit ng ibang
       pangalan.
     tripNameRequired: Maglagay ng pangalan ng biyahe.
+  SequentialPaneDisplay:
+    stepNumber: Hakbang {hakbang} ng {kabuuan}
   SessionTimeout:
     body: >-
       Mag-e-expire ang iyong session sa loob ng isang minuto. Pindutin ang
@@ -444,24 +569,35 @@ components:
     route: Ruta
   StopTimeCell:
     imminentArrival: Takdang Petsa
+    realtime: Batay sa realtime na data
+    scheduled: Batay sa data ng iskedyul
   StopViewer:
     displayStopId: "<strong>ID ng Hintuan</strong>: {stopId}"
+    findSchedule: Maghanap ng iskedyul ayon sa petsa
     flexStop: >-
       Isa itong flexible na hintuan. Magbababa at magsasakay ng mga pasahero ang
       mga sasakyan sa flexible na zone na ito kapag hiniling. Posibleng
       kailanganin mong tumawag muna para sa serbisyo sa lugar na ito.
+    forStop: para sa {stopName}
     header: Ihinto ang Viewer
     loadingText: Nilo-load ang Hintuan...
+    nextArrivals: Mga Susunod na Pagdating
     noStopsFound: Walang nakitang oras ng paghinto para sa petsa.
+    operatorLogoAriaLabel: "{operatorName} hintuan:"
+    schedule: Iskedyul
     timezoneWarning: Ipinapakita ang mga oras ng pag-alis sa <strong>{timezoneCode}</strong>.
     titleBarStopId: Hintuan {stopId}
-    viewNextArrivals: Tingnan ang mga susunod na pagdating
+    viewNextDepartures: Tingnan ang mga susunod na pag-alis
     viewSchedule: Tingnan ang iskedyul
     zoomToStop: I-zoom para ihinto
   SubNav:
+    languageSelector: Pumili ng wika
+    languages: Mga Wika
     myAccount: Aking account
+    selectALanguage: Pumili ng isang wika
     settings: Mga Setting
     trips: Mga Biyahe
+    userMenu: Mga opsyon sa profile
   SwitchButton:
     defaultContent: Lumipat
     switchLocations: Lumipat ng lokasyon
@@ -507,10 +643,12 @@ components:
       Para makatanggap ng mga alerto para sa iyong mga naka-save na biyahe,
       i-enable ang mga notification sa mga setting ng iyong account, at subukang
       mag-save ulit ng biyahe.
+    monitorThisTrip: "Subaybayan ang biyaheng ito bago ito magsimula:"
     notificationsTurnedOff: Naka-off ang mga notification para sa iyong account.
     notifyViaChannelWhen: "Abisuhan ako sa pamamagitan ng {channel kapag:"
     oneHour: 1 oras
     realtimeAlertFlagged: May realtime na alertong na-flag sa aking paglalakbay
+    timeBefore: "{time} dati"
   TripStatus:
     alerts: "{alerts, plural, one {# alert!} other {# alerts!}}"
     deleteTrip: I-delete ang Biyahe
@@ -569,6 +707,7 @@ components:
       tripStartsSoonOnTime: Malapit nang magsimula at nasa oras ang biyahe.
   TripSummary:
     arriveAt: "Darating nang "
+    leaveAt: "Umalis sa "
   TripSummaryPane:
     happensOnDays: "Mangyayari sa: <strong>{days}</strong>"
     notifications: >-
@@ -577,6 +716,7 @@ components:
     notificationsDisabled: "Mga Notification: <strong>Naka-disable</strong>"
   TripTools:
     copyLink: Kopyahin ang Link
+    header: Mga Tool sa Biyahe
     linkCopied: Nakopya
     reportEmailSubject: Pag-uulat ng Isyu sa OpenTripPlanner
     reportEmailTemplate: |
@@ -595,13 +735,22 @@ components:
   TripViewer:
     accessible: Accessible
     bicyclesAllowed: Pinapayagan
+    endOfTrip: Magtatapos dito ang biyahe
     header: Viewer ng Biyahe
+    listOfRouteStops: Listahan ng mga hintuan sa rutang ito
     routeHeader: "Ruta: <strong>{routeShortName}</strong> {routeLongName}"
+    startOfTrip: Magsisimula rito ang biyahe
+    tripDescription: Sumakay sa {boardAtStop} at bumaba sa {disembarkAtStop}
     viewStop: Tingnan
   UserAccountScreen:
     confirmDelete: >-
       Sigurado ka bang gusto mong i-delete ang iyong user account? Kapag ginawa
       mo ito, hindi na ito mare-recover.
+    errorUpdatingProfile: Error sa pag-update ng profile
+    fieldUpdated: Na-update na ang setting na ito.
+    fields:
+      storeTripHistory: History ng biyahe sa tindahan
+    updating: Nag-a-update
   UserSettings:
     confirmDeletion: >-
       May mga na-store kang paghahanap at/o lugar kamakailan. Kapag na-disable
