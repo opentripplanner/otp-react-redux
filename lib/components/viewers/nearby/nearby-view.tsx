@@ -3,7 +3,7 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import { MapRef, useMap } from 'react-map-gl'
 
 import MobileNavigationBar from '../../mobile/navigation-bar'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
 import * as uiActions from '../../../actions/ui'
@@ -13,7 +13,6 @@ import {
   NearbySidebarContainer,
   Scrollable
 } from './styled'
-import { MainPanelContent } from '../../../actions/ui-constants'
 import Loading from '../../narrative/loading'
 import MobileContainer from '../../mobile/container'
 import RentalStation from './rental-station'
@@ -83,10 +82,14 @@ function NearbyView(props: Props): JSX.Element {
 
   return (
     <MainContainer className="nearby-view base-color-bg">
-      <MobileNavigationBar
-        headerText={intl.formatMessage({ id: 'components.NearbyView.header' })}
-        onBackClicked={useCallback(() => setMainPanelContent(0), [])}
-      />
+      {mobile && (
+        <MobileNavigationBar
+          headerText={intl.formatMessage({
+            id: 'components.NearbyView.header'
+          })}
+          onBackClicked={() => setMainPanelContent(0)}
+        />
+      )}
       <NearbySidebarContainer
         className="base-color-bg"
         style={{ marginTop: mobile ? '50px' : 0 }}
