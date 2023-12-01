@@ -301,6 +301,19 @@ components:
     itineraryDetails: Itinerary details
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LimitationsPane:
+    devicePrompt: Do you regularly use a mobility assistive device? (Check all that apply.)
+    devices:
+      cane: Cane
+      crutches: Crutches
+      electric-wheelchair: Electric wheelchair
+      manual-walker: Manual walker
+      manual-wheelchair: Manual wheelchair
+      mobility-scooter: Mobility Scooter
+      none: None
+      service-animal: Service animal
+      stroller: Stroller
+      wheeled-walker: Wheeled walker
+      white-cane: White cane
     intro: >-
       Please answer a few questions to customize the trip planning experience to
       your needs and preferences.
