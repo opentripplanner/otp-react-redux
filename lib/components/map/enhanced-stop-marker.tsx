@@ -120,6 +120,7 @@ class EnhancedStopMarker extends Component<Props> {
       setViewedStop,
       stop
     } = this.props
+    if (stop.lat === undefined || stop.lon === undefined) return null
     const { id, lat, lon } = stop
     const displayedStopId = coreUtils.itinerary.getDisplayedStopId(stop)
     if (!displayedStopId) return null
@@ -140,6 +141,7 @@ class EnhancedStopMarker extends Component<Props> {
           activeStopId !== stop.id && (
             <BaseMapStyled.MapOverlayPopup id={activeContentId}>
               <StopPopup
+                // @ts-expect-error The lat and lon are checked for above, but TS doesn't detect this
                 entity={stop}
                 setLocation={setLocation}
                 setViewedStop={setViewedStop}

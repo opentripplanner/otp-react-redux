@@ -2,6 +2,7 @@ import {
   Agency,
   MapLocationActionArg,
   Route,
+  Station,
   Stop
 } from '@opentripplanner/types'
 
@@ -93,6 +94,7 @@ export interface PatternDayStopTimes extends PatternStopTimes {
 
 export interface VehicleRental {
   errorsByNetwork: { [key: string]: { message?: string; severity?: string } }
+  stations: Station[]
   systemInformationDataByNetwork: {
     [key: string]: { message?: string; severity?: string }
   }
