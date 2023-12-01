@@ -4,7 +4,7 @@ import {
 } from '@opentripplanner/base-map'
 import { connect } from 'react-redux'
 import { MapMarker } from '@styled-icons/fa-solid/MapMarker'
-import { Stop } from '@opentripplanner/types'
+import { Stop, StopEventHandler } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import StopPopup from '@opentripplanner/map-popup'
@@ -16,7 +16,7 @@ import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
 import { getModeFromStop, getStopName } from '../../util/viewer'
-import { SetLocationHandler, SetViewedStopHandler } from '../util/types'
+import { SetLocationHandler } from '../util/types'
 
 interface OwnProps {
   stop: Stop
@@ -29,7 +29,7 @@ interface Props extends OwnProps {
   highlight: boolean
   modeColors: ModeColors
   setLocation: SetLocationHandler
-  setViewedStop: SetViewedStopHandler
+  setViewedStop: StopEventHandler
 }
 
 interface MarkerProps {
