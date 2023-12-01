@@ -106,3 +106,24 @@ export const phoneFieldStyle = css`
   vertical-align: middle;
   width: 14em;
 `
+
+/** Settings list container */
+export const SettingsList = styled.ul`
+  border-spacing: 0 10px;
+  display: table;
+  padding-left: 0;
+  width: 100%;
+  label {
+    font-weight: inherit;
+    padding-right: 10px;
+  }
+  /* Use table display for this element, so that all dropdowns occupy the same width.
+    (Bootstrap already sets them to occupy 100% of the width of the parent, i.e. the logical cell.) */
+  & > li {
+    align-items: center;
+    display: table-row;
+    & > * {
+      display: table-cell;
+    }
+  }
+`
