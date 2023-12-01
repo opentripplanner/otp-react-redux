@@ -27,13 +27,13 @@ export const Select = ({
   </>
 )
 
-function Options({
+export function Options({
   defaultValue,
   options
 }: {
   defaultValue: number | string
   options: { text: string; value: number | string }[]
-}) {
+}): JSX.Element {
   // <FormattedMessage> can't be used inside <option>.
   const intl = useIntl()
   return (

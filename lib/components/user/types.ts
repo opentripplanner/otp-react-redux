@@ -14,10 +14,18 @@ export interface UserSavedLocation {
   type?: string
 }
 
+export const visionLimitations = [
+  'none',
+  'low-vision',
+  'legally-blind'
+] as const
+
+export type VisionLimitation = typeof visionLimitations[number]
+
 export interface MobilityProfile {
   isMobilityLimited: boolean
   mobilityDevices: string[]
-  visionLimitation: 'none' | 'low-vision' | 'legally-blind'
+  visionLimitation: VisionLimitation
 }
 
 /**

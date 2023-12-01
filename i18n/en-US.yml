@@ -300,6 +300,18 @@ components:
   ItinerarySummary:
     itineraryDetails: Itinerary details
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
+  LimitationsPane:
+    intro: >-
+      Please answer a few questions to customize the trip planning experience to
+      your needs and preferences.
+    mobilityPrompt: >-
+      Do you have any mobility limitations that cause you to walk slowlier or
+      more carefully than other people?
+    visionLimitations:
+      legally-blind: Legally blind
+      low-vision: Low-vision
+      none: None
+    visionPrompt: Do you have any vision limitations?
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
     refresh: Refresh arrival times
