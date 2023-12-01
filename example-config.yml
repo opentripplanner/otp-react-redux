@@ -36,10 +36,6 @@ api:
 #   default: ONE_LOCATION_CHANGED
 
 
-# Override for if the terms of service are hosted at an external URL.
-# termsOfServiceLink
-
-
 ### The default query parameters can be overridden be uncommenting this object.
 ### Note: the override values must be valid values within otp-ui's query-params.js
 # defaultQueryParams:
