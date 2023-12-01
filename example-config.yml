@@ -35,7 +35,6 @@ api:
 #   mobile: BOTH_LOCATIONS_CHANGED
 #   default: ONE_LOCATION_CHANGED
 
-
 ### The default query parameters can be overridden be uncommenting this object.
 ### Note: the override values must be valid values within otp-ui's query-params.js
 # defaultQueryParams:
