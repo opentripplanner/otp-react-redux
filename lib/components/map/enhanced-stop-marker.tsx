@@ -141,7 +141,6 @@ class EnhancedStopMarker extends Component<Props> {
           activeStopId !== stop.id && (
             <BaseMapStyled.MapOverlayPopup id={activeContentId}>
               <StopPopup
-                // @ts-expect-error The lat and lon are checked for above, but TS doesn't detect this
                 entity={stop}
                 setLocation={setLocation}
                 setViewedStop={setViewedStop}
