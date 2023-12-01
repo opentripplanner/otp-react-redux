@@ -1,11 +1,9 @@
-import { Field, FormikProps } from 'formik'
+import { Field } from 'formik'
 import { FormattedMessage } from 'react-intl'
 import React from 'react'
+import styled from 'styled-components'
 
 import { FieldSet } from '../styled'
-import { User } from '../types'
-
-type Props = FormikProps<User>
 
 const knownDeviceCodes = [
   'none',
@@ -21,46 +19,49 @@ const knownDeviceCodes = [
   'manual-wheelchair'
 ]
 
+const DeviceOption = styled.span`
+  display: block;
+
+  label {
+    font-weight: normal;
+    margin: 0.25em;
+  }
+`
+
 /**
  * Assistive devices pane, part of mobility profile.
  */
-const AssistiveDevicesPane = ({
-  handleChange,
-  values: userData
-}: Props): JSX.Element => {
-  return (
-    <div>
-      <p>
-        <FormattedMessage id="components.MobilityProfile.intro" />
-      </p>
-      <FieldSet>
-        <legend>
-          <FormattedMessage id="components.MobilityProfile.DevicesPane.prompt" />
-        </legend>
-        <ul>
-          {knownDeviceCodes.map((dv) => {
-            const inputId = `device-option-${dv}`
-            return (
-              <li key={dv}>
-                <Field
-                  id={inputId}
-                  name="mobilityDevices"
-                  type="checkbox"
-                  value={dv}
+const AssistiveDevicesPane = (): JSX.Element => (
+  <div>
+    <p>
+      <FormattedMessage id="components.MobilityProfile.intro" />
+    </p>
+    <FieldSet>
+      <legend>
+        <FormattedMessage id="components.MobilityProfile.DevicesPane.prompt" />
+      </legend>
+      <div>
+        {knownDeviceCodes.map((dv) => {
+          const inputId = `device-option-${dv}`
+          return (
+            <DeviceOption key={dv}>
+              <Field
+                id={inputId}
+                name="mobilityProfile.mobilityDevices"
+                type="checkbox"
+                value={dv}
+              />
+              <label htmlFor={inputId}>
+                <FormattedMessage
+                  id={`components.MobilityProfile.DevicesPane.devices.${dv}`}
                 />
-
-                <label htmlFor={inputId}>
-                  <FormattedMessage
-                    id={`components.MobilityProfile.DevicesPane.devices.${dv}`}
-                  />
-                </label>
-              </li>
-            )
-          })}
-        </ul>
-      </FieldSet>
-    </div>
-  )
-}
+              </label>
+            </DeviceOption>
+          )
+        })}
+      </div>
+    </FieldSet>
+  </div>
+)
 
 export default AssistiveDevicesPane

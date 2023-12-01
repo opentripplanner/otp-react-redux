@@ -343,9 +343,7 @@ components:
         stroller: Stroller
         wheeled-walker: Wheeled walker
         white-cane: White cane
-      prompt: >-
-        Do you regularly use a mobility assistive device? (Check all that
-        apply.)
+      prompt: Do you regularly use a mobility assistive device? (Check all that apply)
     LimitationsPane:
       mobilityPrompt: >-
         Do you have any mobility limitations that cause you to walk slowlier or
