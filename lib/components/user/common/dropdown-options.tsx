@@ -1,10 +1,10 @@
 import { Field } from 'formik'
 import { FormControl } from 'react-bootstrap'
-import { useIntl } from 'react-intl'
-import React from 'react'
+import { IntlShape, useIntl } from 'react-intl'
+import React, { ComponentType, ReactNode } from 'react'
 
 interface OptionsPropsBase<T> {
-  defaultValue: T
+  defaultValue?: T
   hideDefaultIndication?: boolean
 }
 
@@ -21,7 +21,7 @@ export const Select = ({
   // Note the prop order required by typescript-sort-keys, also applied above.
   Control?: ComponentType
   children: ReactNode
-  defaultValue?: typeof HTMLSelectElement.defaultValue
+  defaultValue?: string | number | boolean
   label?: ReactNode
   name: string
 }): JSX.Element => (
@@ -40,11 +40,11 @@ export const Select = ({
   </>
 )
 
-interface OptionsProps extends OptionsPropsBase<T> {
+interface OptionsProps<T extends string | number> extends OptionsPropsBase<T> {
   options: { text: string; value: T }[]
 }
 
-export function Options<T>({
+export function Options<T extends string | number>({
   defaultValue,
   hideDefaultIndication,
   options
@@ -89,10 +89,7 @@ export function YesNoOptions({
   // <FormattedMessage> can't be used inside <option>.
   const intl = useIntl()
   const options = basicYesNoOptions.map(({ id, value }) => ({
-    text:
-      id === 'yes'
-        ? intl.formatMessage({ id: 'common.forms.yes' })
-        : intl.formatMessage({ id: 'common.forms.no' }),
+    text: intl.formatMessage({ id: `common.forms.${id}` }),
     value
   }))
   return (

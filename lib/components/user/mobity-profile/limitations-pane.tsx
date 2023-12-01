@@ -50,7 +50,7 @@ const LimitationsPane = ({
           }
           name="mobilityProfile.isMobilityLimited"
         >
-          <YesNoOptions default={false} hideDefaultIndication />
+          <YesNoOptions hideDefaultIndication />
         </Select>
       </FormGroup>
       <FormGroup>
