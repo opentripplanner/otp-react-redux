@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import { Button, Panel } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
+import { FormattedMessage, injectIntl, IntlShape, useIntl } from 'react-intl'
 import { Pause } from '@styled-icons/fa-solid/Pause'
 import { PencilAlt } from '@styled-icons/fa-solid/PencilAlt'
 import { Play } from '@styled-icons/fa-solid/Play'
@@ -11,8 +10,10 @@ import React, { Component } from 'react'
 
 import * as uiActions from '../../../actions/ui'
 import * as userActions from '../../../actions/user'
+import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
 import { InlineLoading } from '../../narrative/loading'
+import { MonitoredTrip } from '../types'
 import {
   PageHeading,
   TripHeader,
@@ -29,15 +30,34 @@ import withLoggedInUserSupport from '../with-logged-in-user-support'
 
 import TripSummaryPane from './trip-summary-pane'
 
+interface ItemProps {
+  confirmAndDeleteUserMonitoredTrip: (id: string, intl: IntlShape) => void
+  intl: IntlShape
+  routeTo: (url: any) => void
+  togglePauseTrip: (trip: MonitoredTrip, intl: IntlShape) => void
+  trip: MonitoredTrip
+}
+
+interface ItemState {
+  pendingRequest: 'pause' | 'delete' | false
+}
+
+interface Props {
+  trips?: MonitoredTrip[]
+}
+
 /**
  * This class manages events and rendering for one item in the saved trip list.
  */
-class TripListItem extends Component {
-  state = {
-    pendingRequest: false
+class TripListItem extends Component<ItemProps, ItemState> {
+  constructor(props: ItemProps) {
+    super(props)
+    this.state = {
+      pendingRequest: false
+    }
   }
 
-  componentDidUpdate = (prevProps) => {
+  componentDidUpdate = (prevProps: ItemProps) => {
     if (prevProps.trip.isActive !== this.props.trip.isActive) {
       this.setState({ pendingRequest: false })
     }
@@ -160,7 +180,7 @@ const ConnectedTripListItem = connect(
 /**
  * This component displays the list of saved trips for the logged-in user.
  */
-const SavedTripList = ({ trips }) => {
+const SavedTripList = ({ trips }: Props) => {
   const intl = useIntl()
   let content
 
@@ -212,17 +232,15 @@ const SavedTripList = ({ trips }) => {
 
 // connect to the redux store
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppReduxState) => {
   return {
     trips: state.user.loggedInUserMonitoredTrips
   }
 }
 
-const mapDispatchToProps = {}
-
 export default withLoggedInUserSupport(
   withAuthenticationRequired(
-    connect(mapStateToProps, mapDispatchToProps)(SavedTripList),
+    connect(mapStateToProps)(SavedTripList),
     RETURN_TO_CURRENT_ROUTE
   ),
   true
