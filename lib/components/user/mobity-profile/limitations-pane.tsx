@@ -44,12 +44,13 @@ const LimitationsPane = ({
       </p>
       <FormGroup>
         <Select
+          defaultValue={false}
           label={
             <FormattedMessage id="components.MobilityProfile.LimitationsPane.mobilityPrompt" />
           }
-          name="isMobilityLimited"
+          name="mobilityProfile.isMobilityLimited"
         >
-          <YesNoOptions />
+          <YesNoOptions default={false} hideDefaultIndication />
         </Select>
       </FormGroup>
       <FormGroup>
@@ -57,7 +58,7 @@ const LimitationsPane = ({
           label={
             <FormattedMessage id="components.MobilityProfile.LimitationsPane.visionPrompt" />
           }
-          name="visionLimitation"
+          name="mobilityProfile.visionLimitation"
         >
           <VisionOptions />
         </Select>

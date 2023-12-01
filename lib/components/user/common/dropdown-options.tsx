@@ -3,44 +3,59 @@ import { FormControl } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
 import React from 'react'
 
+interface OptionsPropsBase<T> {
+  defaultValue: T
+  hideDefaultIndication?: boolean
+}
+
 /**
  * A label followed by a dropdown control.
  */
 export const Select = ({
   Control = FormControl,
   children,
+  defaultValue,
   label,
   name
 }: {
   // Note the prop order required by typescript-sort-keys, also applied above.
   Control?: ComponentType
   children: ReactNode
+  defaultValue?: typeof HTMLSelectElement.defaultValue
   label?: ReactNode
   name: string
 }): JSX.Element => (
   // <Field> is kept outside of <label> to accommodate layout in table/grid cells.
   <>
     {label && <label htmlFor={name}>{label}</label>}
-    <Field as={Control} componentClass="select" id={name} name={name}>
+    <Field
+      as={Control}
+      componentClass="select"
+      defaultValue={defaultValue}
+      id={name}
+      name={name}
+    >
       {children}
     </Field>
   </>
 )
 
-export function Options({
+interface OptionsProps extends OptionsPropsBase<T> {
+  options: { text: string; value: T }[]
+}
+
+export function Options<T>({
   defaultValue,
+  hideDefaultIndication,
   options
-}: {
-  defaultValue: number | string
-  options: { text: string; value: number | string }[]
-}): JSX.Element {
+}: OptionsProps<T>): JSX.Element {
   // <FormattedMessage> can't be used inside <option>.
   const intl = useIntl()
   return (
     <>
       {options.map(({ text, value }, i) => (
         <option key={i} value={value}>
-          {value === defaultValue
+          {!hideDefaultIndication && value === defaultValue
             ? intl.formatMessage(
                 { id: 'common.forms.defaultValue' },
                 { value: text }
@@ -68,10 +83,9 @@ const basicYesNoOptions = [
  * default value (true for yes, false for no).
  */
 export function YesNoOptions({
-  defaultValue
-}: {
-  defaultValue: boolean
-}): JSX.Element {
+  defaultValue,
+  hideDefaultIndication
+}: OptionsPropsBase<boolean>): JSX.Element {
   // <FormattedMessage> can't be used inside <option>.
   const intl = useIntl()
   const options = basicYesNoOptions.map(({ id, value }) => ({
@@ -84,9 +98,15 @@ export function YesNoOptions({
   return (
     <Options
       defaultValue={(defaultValue || false).toString()}
+      hideDefaultIndication={hideDefaultIndication}
       options={options}
     />
   )
+}
+
+interface DurationOptionsProps extends OptionsPropsBase<number> {
+  decoratorFunc?: (text: string, intl: IntlShape) => string
+  minuteOptions: number[]
 }
 
 /**
@@ -96,11 +116,7 @@ export function DurationOptions({
   decoratorFunc,
   defaultValue,
   minuteOptions
-}: {
-  decoratorFunc?: (text: string, intl: IntlShape) => string
-  defaultValue: string | number
-  minuteOptions: number[]
-}): JSX.Element {
+}: DurationOptionsProps): JSX.Element {
   // <FormattedMessage> can't be used inside <option>.
   const intl = useIntl()
   const localizedMinutes = minuteOptions.map((minutes) => ({
