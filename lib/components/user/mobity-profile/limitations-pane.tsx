@@ -23,7 +23,7 @@ function VisionOptions(): JSX.Element {
   const intl = useIntl()
   const options = visionLimitations.map((value: VisionLimitation) => ({
     text: intl.formatMessage({
-      id: `components.LimitationsPane.visionLimitations.${value}`
+      id: `components.MobilityProfile.LimitationsPane.visionLimitations.${value}`
     }),
     value
   }))
@@ -40,12 +40,12 @@ const LimitationsPane = ({
   return (
     <Container>
       <p>
-        <FormattedMessage id="components.LimitationsPane.intro" />
+        <FormattedMessage id="components.MobilityProfile.intro" />
       </p>
       <FormGroup>
         <Select
           label={
-            <FormattedMessage id="components.LimitationsPane.mobilityPrompt" />
+            <FormattedMessage id="components.MobilityProfile.LimitationsPane.mobilityPrompt" />
           }
           name="isMobilityLimited"
         >
@@ -55,7 +55,7 @@ const LimitationsPane = ({
       <FormGroup>
         <Select
           label={
-            <FormattedMessage id="components.LimitationsPane.visionPrompt" />
+            <FormattedMessage id="components.MobilityProfile.LimitationsPane.visionPrompt" />
           }
           name="visionLimitation"
         >

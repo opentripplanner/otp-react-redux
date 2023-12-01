@@ -31,11 +31,11 @@ const AssistiveDevicesPane = ({
   return (
     <div>
       <p>
-        <FormattedMessage id="components.LimitationsPane.intro" />
+        <FormattedMessage id="components.MobilityProfile.intro" />
       </p>
       <FieldSet>
         <legend>
-          <FormattedMessage id="components.LimitationsPane.devicePrompt" />
+          <FormattedMessage id="components.MobilityProfile.DevicesPane.prompt" />
         </legend>
         <ul>
           {knownDeviceCodes.map((dv) => {
@@ -51,7 +51,7 @@ const AssistiveDevicesPane = ({
 
                 <label htmlFor={inputId}>
                   <FormattedMessage
-                    id={`components.LimitationsPane.devices.${dv}`}
+                    id={`components.MobilityProfile.DevicesPane.devices.${dv}`}
                   />
                 </label>
               </li>

@@ -300,31 +300,6 @@ components:
   ItinerarySummary:
     itineraryDetails: Itinerary details
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
-  LimitationsPane:
-    devicePrompt: Do you regularly use a mobility assistive device? (Check all that apply.)
-    devices:
-      cane: Cane
-      crutches: Crutches
-      electric-wheelchair: Electric wheelchair
-      manual-walker: Manual walker
-      manual-wheelchair: Manual wheelchair
-      mobility-scooter: Mobility Scooter
-      none: None
-      service-animal: Service animal
-      stroller: Stroller
-      wheeled-walker: Wheeled walker
-      white-cane: White cane
-    intro: >-
-      Please answer a few questions to customize the trip planning experience to
-      your needs and preferences.
-    mobilityPrompt: >-
-      Do you have any mobility limitations that cause you to walk slowlier or
-      more carefully than other people?
-    visionLimitations:
-      legally-blind: Legally blind
-      low-vision: Low-vision
-      none: None
-    visionPrompt: Do you have any vision limitations?
   LiveStopTimes:
     autoRefresh: Auto-refresh arrivals?
     refresh: Refresh arrival times
@@ -354,6 +329,35 @@ components:
     timeWalking: "{time} walking"
   MobileOptions:
     header: Set Search Options
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Cane
+        crutches: Crutches
+        electric-wheelchair: Electric wheelchair
+        manual-walker: Manual walker
+        manual-wheelchair: Manual wheelchair
+        mobility-scooter: Mobility Scooter
+        none: None
+        service-animal: Service animal
+        stroller: Stroller
+        wheeled-walker: Wheeled walker
+        white-cane: White cane
+      prompt: >-
+        Do you regularly use a mobility assistive device? (Check all that
+        apply.)
+    LimitationsPane:
+      mobilityPrompt: >-
+        Do you have any mobility limitations that cause you to walk slowlier or
+        more carefully than other people?
+      visionLimitations:
+        legally-blind: Legally blind
+        low-vision: Low-vision
+        none: None
+      visionPrompt: Do you have any vision limitations?
+    intro: >-
+      Please answer a few questions to customize the trip planning experience to
+      your needs and preferences.
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
     howToFindResults: To view results, see the Itineraries Found heading below.
