@@ -16,12 +16,14 @@ const TermsOfUsePane = ({
   disableCheckTerms,
   handleBlur,
   handleChange,
+  locale,
   termsOfServiceLink,
   values: userData
 }: {
   disableCheckTerms: boolean
   handleBlur: () => void
   handleChange: FormEventHandler<Checkbox>
+  locale: string
   termsOfServiceLink: string
   values: {
     hasConsentedToTerms: boolean
@@ -31,7 +33,9 @@ const TermsOfUsePane = ({
   const intl = useIntl()
   const { hasConsentedToTerms, storeTripHistory } = userData
 
-  const termsURL = termsOfServiceLink || `/#${TERMS_OF_SERVICE_PATH}`
+  const TOSLinkWithI18n = termsOfServiceLink?.replace('{locale}', locale)
+
+  const termsURL = TOSLinkWithI18n || `/#${TERMS_OF_SERVICE_PATH}`
 
   return (
     <div>
@@ -99,6 +103,7 @@ const TermsOfUsePane = ({
 }
 const mapStateToProps = (state: any) => {
   return {
+    locale: state.otp.ui?.locale,
     termsOfServiceLink: state.otp.config.termsOfServiceLink,
     termsOfStorageSet: state.otp.config.persistence?.terms_of_storage
   }
