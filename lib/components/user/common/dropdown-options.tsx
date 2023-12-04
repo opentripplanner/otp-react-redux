@@ -1,7 +1,7 @@
 import { Field } from 'formik'
 import { FormControl } from 'react-bootstrap'
 import { IntlShape, useIntl } from 'react-intl'
-import React, { ComponentType, ReactNode } from 'react'
+import React, { ChangeEventHandler, ComponentType, ReactNode } from 'react'
 
 interface OptionsPropsBase<T> {
   defaultValue?: T
@@ -16,7 +16,8 @@ export const Select = ({
   children,
   defaultValue,
   label,
-  name
+  name,
+  onChange
 }: {
   // Note the prop order required by typescript-sort-keys, also applied above.
   Control?: ComponentType
@@ -24,6 +25,7 @@ export const Select = ({
   defaultValue?: string | number | boolean
   label?: ReactNode
   name: string
+  onChange?: ChangeEventHandler
 }): JSX.Element => (
   // <Field> is kept outside of <label> to accommodate layout in table/grid cells.
   <>
@@ -34,6 +36,7 @@ export const Select = ({
       defaultValue={defaultValue}
       id={name}
       name={name}
+      onChange={onChange}
     >
       {children}
     </Field>

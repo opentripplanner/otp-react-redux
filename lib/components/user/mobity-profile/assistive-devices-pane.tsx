@@ -1,9 +1,10 @@
-import { Field } from 'formik'
+import { Field, FormikProps } from 'formik'
 import { FormattedMessage } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
 
 import { FieldSet } from '../styled'
+import { User } from '../types'
 
 const knownDeviceCodes = [
   'none',
@@ -31,7 +32,9 @@ const DeviceOption = styled.span`
 /**
  * Assistive devices pane, part of mobility profile.
  */
-const AssistiveDevicesPane = (): JSX.Element => (
+const AssistiveDevicesPane = ({
+  handleChange
+}: FormikProps<User>): JSX.Element => (
   <div>
     <p>
       <FormattedMessage id="components.MobilityProfile.intro" />
@@ -48,6 +51,9 @@ const AssistiveDevicesPane = (): JSX.Element => (
               <Field
                 id={inputId}
                 name="mobilityProfile.mobilityDevices"
+                // Override onChange explicitly to use the custom one for existing accounts.
+                // (The Formik's one will still be used for new accounts.)
+                onChange={handleChange}
                 type="checkbox"
                 value={dv}
               />

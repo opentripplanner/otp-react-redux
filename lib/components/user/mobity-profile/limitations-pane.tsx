@@ -7,8 +7,6 @@ import styled from 'styled-components'
 import { Options, Select, YesNoOptions } from '../common/dropdown-options'
 import { User, VisionLimitation, visionLimitations } from '../types'
 
-type Props = FormikProps<User>
-
 const Container = styled.div`
   select {
     width: unset; /* Otherwise, it is 100% per bootstrap. */
@@ -36,7 +34,7 @@ function VisionOptions(): JSX.Element {
 const LimitationsPane = ({
   handleChange,
   values: userData
-}: Props): JSX.Element => {
+}: FormikProps<User>): JSX.Element => {
   return (
     <Container>
       <p>
@@ -49,6 +47,9 @@ const LimitationsPane = ({
             <FormattedMessage id="components.MobilityProfile.LimitationsPane.mobilityPrompt" />
           }
           name="mobilityProfile.isMobilityLimited"
+          // Override onChange explicitly to use the custom one for existing accounts.
+          // (The Formik's one will still be used for new accounts.)
+          onChange={handleChange}
         >
           <YesNoOptions hideDefaultIndication />
         </Select>
@@ -59,6 +60,9 @@ const LimitationsPane = ({
             <FormattedMessage id="components.MobilityProfile.LimitationsPane.visionPrompt" />
           }
           name="mobilityProfile.visionLimitation"
+          // Override onChange explicitly to use the custom one for existing accounts.
+          // (The Formik's one will still be used for new accounts.)
+          onChange={handleChange}
         >
           <VisionOptions />
         </Select>
