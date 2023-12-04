@@ -1,9 +1,8 @@
 import { Checkbox, ControlLabel, FormGroup } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import React, { FormEventHandler, useContext } from 'react'
+import React, { FormEventHandler } from 'react'
 
-import { ComponentContext } from '../../util/contexts'
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
   TERMS_OF_SERVICE_PATH,
@@ -17,25 +16,21 @@ const TermsOfUsePane = ({
   disableCheckTerms,
   handleBlur,
   handleChange,
-  locale,
+  termsOfServiceLink,
   values: userData
 }: {
   disableCheckTerms: boolean
   handleBlur: () => void
   handleChange: FormEventHandler<Checkbox>
-  locale: string
+  termsOfServiceLink: string
   values: {
     hasConsentedToTerms: boolean
     storeTripHistory: boolean
   }
 }) => {
   const intl = useIntl()
-
-  // @ts-expect-error no type on ComponentContext
-  const { termsOfUseI18n } = useContext(ComponentContext)
   const { hasConsentedToTerms, storeTripHistory } = userData
 
-  const termsOfServiceLink = termsOfUseI18n(locale)
   const termsURL = termsOfServiceLink || `/#${TERMS_OF_SERVICE_PATH}`
 
   return (
@@ -104,7 +99,7 @@ const TermsOfUsePane = ({
 }
 const mapStateToProps = (state: any) => {
   return {
-    locale: state.otp.ui?.locale,
+    termsOfServiceLink: state.otp.config.termsOfServiceLink,
     termsOfStorageSet: state.otp.config.persistence?.terms_of_storage
   }
 }
