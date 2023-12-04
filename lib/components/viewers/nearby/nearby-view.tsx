@@ -1,20 +1,20 @@
 import { connect } from 'react-redux'
-import { FormattedMessage, useIntl } from 'react-intl'
+import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
 import { MapRef, useMap } from 'react-map-gl'
-
-import MobileNavigationBar from '../../mobile/navigation-bar'
 import React, { useEffect, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
 import * as uiActions from '../../../actions/ui'
+import { getCurrentPosition } from '../../../actions/location'
+import Loading from '../../narrative/loading'
+import MobileContainer from '../../mobile/container'
+import MobileNavigationBar from '../../mobile/navigation-bar'
 
 import {
   FloatingLoadingIndicator,
   NearbySidebarContainer,
   Scrollable
 } from './styled'
-import Loading from '../../narrative/loading'
-import MobileContainer from '../../mobile/container'
 import RentalStation from './rental-station'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
@@ -24,11 +24,17 @@ type LatLonObj = { lat: number; lon: number }
 
 type Props = {
   fetchNearby: (latLon: LatLonObj, map?: MapRef) => void
+  getCurrentPosition?: (
+    intl: IntlShape,
+    setAsType?: boolean,
+    onSuccess?: (position: GeolocationPosition) => void
+  ) => void
   hideBackButton?: boolean
   mobile?: boolean
   nearby: any
   nearbyViewCoords?: LatLonObj
   setMainPanelContent: (content: number) => void
+  viewNearby?: (pos: LatLonObj) => void
 }
 
 const getNearbyItem = (place: any) => {
@@ -53,8 +59,15 @@ const getNearbyItemList = (nearby: any) => {
 }
 
 function NearbyView(props: Props): JSX.Element {
-  const { fetchNearby, mobile, nearby, nearbyViewCoords, setMainPanelContent } =
-    props
+  const {
+    fetchNearby,
+    getCurrentPosition: getPosition,
+    mobile,
+    nearby,
+    nearbyViewCoords,
+    setMainPanelContent,
+    viewNearby
+  } = props
   const map = useMap().current
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
@@ -70,6 +83,12 @@ function NearbyView(props: Props): JSX.Element {
       }, 15000)
       return function cleanup() {
         clearInterval(interval)
+      }
+    } else {
+      if (getPosition && viewNearby) {
+        getPosition(intl, false, (pos) => {
+          viewNearby({ lat: pos.coords.latitude, lon: pos.coords.longitude })
+        })
       }
     }
   }, [nearbyViewCoords])
@@ -126,7 +145,9 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   fetchNearby: apiActions.fetchNearby,
-  setMainPanelContent: uiActions.setMainPanelContent
+  getCurrentPosition,
+  setMainPanelContent: uiActions.setMainPanelContent,
+  viewNearby: uiActions.viewNearby
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NearbyView)

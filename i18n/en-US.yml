@@ -769,6 +769,7 @@ components:
     resendVerification: Resend verification email
   ViewSwitcher:
     switcher: Switcher
+    nearby: Nearby
   WelcomeScreen:
     prompt: Where do you want to go?
 config:
