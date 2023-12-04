@@ -326,6 +326,10 @@ itinerary:
   # One fare will always be shown by default
   defaultFareType: { mediumId: null, riderCategoryId: null }
 
+  # List of OTP2 errors to not display. Can be a list
+  # mutedErrors:
+  #   - NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW
+
   # The following settings must be set to these values to use the new
   # "Metro" UI. The settings can be used without the Metro UI, but
   # this may have unexpected effects.
@@ -352,6 +356,8 @@ itinerary:
   # This flag disables the dot between legs in the metro itnerary summary, replacing it with
   # a gray background
   disableMetroSeperatorDot: false
+  # If enabled, always shows departures as times ("10pm" instead of "3 min") unless realtime data is present
+  onlyShowCountdownForRealtime: true
   # Show the number of minutes of delay or early beneath a time in the itinerary body
   showScheduleDeviation: true
   # Shows the duration of a leg below the leg in the metro itinerary summary
@@ -408,6 +414,7 @@ itinerary:
 #       BUS: # Any OTP mode
 #         color: 00FF00 # HEX color without the # (like GTFS)
 #         textColor: FFFFFF # HEX color without the # (like GTFS)
+#     routeIcons: false # If set to false, no mode icons in the route viewer
 #   - feedId: TriMet
 #     agencyId: TRIMET
 #     name: TriMet
