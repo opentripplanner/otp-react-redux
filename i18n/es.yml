@@ -539,6 +539,7 @@ components:
     noSavedTripsInstructions: Realice primero una búsqueda de viajes desde el mapa.
     pause: Pausa
     resume: Reanudar
+    alertTag: '{alerta, plural, one {Ver una alerta} other {Ver # alertas}}'
   SavedTripScreen:
     itineraryLoaded: Itinerario cargado
     itineraryLoading: Cargando el itinerario
