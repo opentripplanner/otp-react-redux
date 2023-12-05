@@ -326,6 +326,7 @@
 .stop-view .route-name {
   align-items: baseline;
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr 5fr;
   padding-left: 5px;
 }
