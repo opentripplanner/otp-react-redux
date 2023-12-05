@@ -99,7 +99,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
     const { renderData, trip } = this.props
     const { itinerary } = trip
     const { legs } = itinerary
-    const alerts = renderData.alerts
+    const { alerts } = renderData
     // Assuming the monitored itinerary has at least one leg:
     // - get the 'from' location of the first leg,
     // - get the 'to' location of the last leg.
