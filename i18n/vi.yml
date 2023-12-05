@@ -319,7 +319,7 @@ components:
     bike-rental: "{companies} Xe đạp chung"
     car-rental: Địa điểm cho thuê xe
     micromobility-rental: "{companies} Xe tay ga điện"
-    park-and-ride: Địa điểm Park & Ride
+    park-and-ride: Địa điểm đậu xe và đi xe công cộng
     satellite: Vệ tinh
     shared-vehicles: Phương Tiện Đi Chung
     stops: Điểm dừng của phương tiện công cộng
