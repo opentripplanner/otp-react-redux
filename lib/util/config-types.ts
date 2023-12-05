@@ -356,6 +356,7 @@ export interface AppConfig {
   map: MapConfig
   mapillary?: MapillaryConfig
   modes: ModesConfig
+  newAccountPages?: string[]
   /** Interval in seconds past which a trip is no longer considered "on-time". */
   onTimeThresholdSeconds?: number
   persistence?: PersistenceConfig

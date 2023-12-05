@@ -1,19 +1,21 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { FormikProps } from 'formik'
 import React, { Component, MouseEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
+import { AppReduxState } from '../../util/state-types'
 import { GRAY_ON_WHITE } from '../util/colors'
 
 import { SequentialPaneContainer } from './styled'
 import FormNavigationButtons from './form-navigation-buttons'
 
 export interface PaneProps {
+  getInvalidMessage?: (intl: IntlShape) => string
   id: string
-  invalid?: boolean
-  invalidMessage?: string
+  isInvalid?: (arg: any) => boolean
   onNext?: () => void
   pane: any
   title: ReactNode
@@ -25,10 +27,12 @@ interface OwnProps {
   panes: PaneProps[]
 }
 
-interface Props<T> extends OwnProps {
+interface Props extends OwnProps {
   activePane: PaneProps
   activePaneIndex: number
-  paneProps: T
+  intl: IntlShape
+  paneProps: FormikProps<any>
+  panes: PaneProps[]
   parentPath: string
   routeTo: (url: any) => void
 }
@@ -42,7 +46,7 @@ const StepNumber = styled.p`
 /**
  * This component handles the flow between screens for new OTP user accounts.
  */
-class SequentialPaneDisplay<T> extends Component<Props<T>> {
+class SequentialPaneDisplay extends Component<Props> {
   /**
    * Routes to the next pane URL.
    */
@@ -58,15 +62,19 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
   }
 
   _handleToNextPane = async (e: MouseEvent<Button>) => {
-    const { activePane, activePaneIndex, onFinish, panes } = this.props
-    const { invalid, invalidMessage } = activePane
+    const { activePane, activePaneIndex, intl, onFinish, paneProps, panes } =
+      this.props
+    const {
+      getInvalidMessage = (intl: IntlShape) => '',
+      isInvalid = () => false
+    } = activePane
 
     if (activePaneIndex < panes.length - 1) {
       // Don't submit the form if there are more steps to complete.
       e.preventDefault()
 
-      if (invalid) {
-        alert(invalidMessage)
+      if (isInvalid(paneProps.values)) {
+        alert(getInvalidMessage(intl))
       } else {
         const nextId = panes[activePaneIndex + 1].id
         // Execute pane-specific action, if any (e.g. save a user account)
@@ -141,7 +149,7 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
 
 // connect to the redux store
 
-const mapStateToProps = (state: any, ownProps: OwnProps) => {
+const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
   const { activePaneId, panes } = ownProps
   const { pathname } = state.router.location
   const activePaneIndex = panes.findIndex(
@@ -161,4 +169,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SequentialPaneDisplay)
+)(injectIntl(SequentialPaneDisplay))

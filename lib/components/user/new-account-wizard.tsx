@@ -1,15 +1,19 @@
+import { connect } from 'react-redux'
 import { Form, FormikProps } from 'formik'
-import { FormattedMessage, useIntl } from 'react-intl'
+import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
 import React, { useCallback } from 'react'
 import toast from 'react-hot-toast'
 
+import { AppReduxState } from '../../util/state-types'
 import PageTitle from '../util/page-title'
 
 import { EditedUser } from './types'
 import AccountSetupFinishPane from './account-setup-finish-pane'
+import AssistiveDevicesPane from './mobity-profile/assistive-devices-pane'
 import FavoritePlaceList from './places/favorite-place-list'
+import LimitationsPane from './mobity-profile/limitations-pane'
 import NotificationPrefsPane from './notification-prefs-pane'
-import SequentialPaneDisplay from './sequential-pane-display'
+import SequentialPaneDisplay, { PaneProps } from './sequential-pane-display'
 import TermsOfUsePane from './terms-of-use-pane'
 import VerifyEmailPane from './verify-email-pane'
 
@@ -17,12 +21,52 @@ import VerifyEmailPane from './verify-email-pane'
 // and to its own blur/change/submit event handlers that automate the state.
 // We forward the props to each pane (via SequentialPaneDisplay) so that their individual controls
 // can be wired to be managed by Formik.
-type FormikUserProps = FormikProps<EditedUser>
-
-interface Props extends FormikUserProps {
+interface Props extends FormikProps<EditedUser> {
   activePaneId: string
   onCancel: () => void
   onCreate: (value: EditedUser) => void
+  panes: PaneProps[]
+}
+
+const standardPanes: Record<string, PaneProps> = {
+  mobility1: {
+    id: 'mobility1',
+    pane: AssistiveDevicesPane,
+    title: <FormattedMessage id="components.MobilityProfile.title" />
+  },
+  mobility2: {
+    id: 'mobility2',
+    pane: LimitationsPane,
+    title: <FormattedMessage id="components.MobilityProfile.title" />
+  },
+  notifications: {
+    getInvalidMessage: (intl: IntlShape) =>
+      intl.formatMessage({
+        id: 'components.PhoneNumberEditor.invalidPhone'
+      }),
+    id: 'notifications',
+    isInvalid: ({
+      isPhoneNumberVerified,
+      notificationChannel,
+      phoneNumber
+    }: EditedUser) => {
+      return (
+        notificationChannel?.includes('sms') &&
+        (!phoneNumber || !isPhoneNumberVerified)
+      )
+    },
+    pane: NotificationPrefsPane,
+    title: <FormattedMessage id="components.NewAccountWizard.notifications" />
+  },
+  places: {
+    id: 'places',
+    pane: FavoritePlaceList,
+    title: <FormattedMessage id="components.NewAccountWizard.places" />
+  }
+}
+
+function getPanes(pageIds: string[]) {
+  return pageIds.map((pageId) => standardPanes[pageId])
 }
 
 /**
@@ -32,6 +76,7 @@ const NewAccountWizard = ({
   activePaneId,
   onCancel, // provided by UserAccountScreen
   onCreate, // provided by UserAccountScreen
+  panes,
   ...formikProps // provided by Formik
 }: Props): JSX.Element => {
   const { values: userData } = formikProps
@@ -65,37 +110,22 @@ const NewAccountWizard = ({
     )
   }
 
-  const { hasConsentedToTerms, notificationChannel = ['email'] } = userData
   const createNewAccount = intl.formatMessage({
     id: 'components.NewAccountWizard.createNewAccount'
   })
   const paneSequence = [
     {
+      getInvalidMessage: (intl: IntlShape) =>
+        intl.formatMessage({
+          id: 'components.TermsOfUsePane.mustAgreeToTerms'
+        }),
       id: 'terms',
-      invalid: !hasConsentedToTerms,
-      invalidMessage: intl.formatMessage({
-        id: 'components.TermsOfUsePane.mustAgreeToTerms'
-      }),
+      isInvalid: ({ hasConsentedToTerms }: EditedUser) => !hasConsentedToTerms,
       onNext: handleCreateNewUser,
       pane: TermsOfUsePane,
       title: createNewAccount
     },
-    {
-      id: 'notifications',
-      invalid:
-        notificationChannel.includes('sms') &&
-        (!userData.phoneNumber || !userData.isPhoneNumberVerified),
-      invalidMessage: intl.formatMessage({
-        id: 'components.PhoneNumberEditor.invalidPhone'
-      }),
-      pane: NotificationPrefsPane,
-      title: <FormattedMessage id="components.NewAccountWizard.notifications" />
-    },
-    {
-      id: 'places',
-      pane: FavoritePlaceList,
-      title: <FormattedMessage id="components.NewAccountWizard.places" />
-    },
+    ...panes,
     {
       id: 'finish',
       pane: AccountSetupFinishPane,
@@ -116,4 +146,13 @@ const NewAccountWizard = ({
   )
 }
 
-export default NewAccountWizard
+// Get the new account pages configuration, if any, from redux state.
+const mapStateToProps = (state: AppReduxState) => {
+  return {
+    panes: getPanes(
+      state.otp.config.newAccountPages || ['notifications', 'places']
+    )
+  }
+}
+
+export default connect(mapStateToProps)(NewAccountWizard)

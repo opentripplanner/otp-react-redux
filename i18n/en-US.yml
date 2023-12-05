@@ -356,6 +356,7 @@ components:
     intro: >-
       Please answer a few questions to customize the trip planning experience to
       your needs and preferences.
+    title: Define Your Mobility Profile
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
     howToFindResults: To view results, see the Itineraries Found heading below.
