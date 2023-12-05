@@ -419,6 +419,7 @@ itinerary:
 #       BUS: # Any OTP mode
 #         color: 00FF00 # HEX color without the # (like GTFS)
 #         textColor: FFFFFF # HEX color without the # (like GTFS)
+#     routeIcons: false # If set to false, no mode icons in the route viewer
 #   - feedId: TriMet
 #     agencyId: TRIMET
 #     name: TriMet
