@@ -532,6 +532,7 @@ components:
     tripNotFoundDescription: Le trajet recherché est introuvable.
     tripNotifications: Notifications du trajet
   SavedTripList:
+    alertTag: "{alert, plural, one {Afficher une alerte} other {Afficher # alertes}}"
     fromTo: De {from} à {to}
     myTrips: Mes trajets
     noSavedTrips: Vous n'avez aucun trajet enregistré
