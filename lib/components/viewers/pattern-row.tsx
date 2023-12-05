@@ -68,7 +68,7 @@ const PatternRow = ({
                 'gtfs'
               )}
               leg={generateFakeLegForRouteRenderer(route, true)}
-              style={{ fontSize: routeNameFontSize(routeName), maxHeight: 90 }}
+              style={{ fontSize: routeNameFontSize(routeName) }}
             />
           </span>
           <span title={pattern.headsign}>{pattern.headsign}</span>

@@ -20,6 +20,8 @@ import Stop from './stop'
 import Vehicle from './vehicle-rent'
 import VehicleParking from './vehicle-parking'
 
+const AUTO_REFRESH_INTERVAL = 15000
+
 type LatLonObj = { lat: number; lon: number }
 
 type Props = {
@@ -42,7 +44,10 @@ const getNearbyItem = (place: any) => {
     case 'BikeRentalStation':
       return <RentalStation place={place} />
     default:
-      return `${place.__typename}you are from the future and have a cool new version of OTP2 let me know how it is mlsgrnt@icloud.com`
+      console.warn(
+        `Received unsupported nearby place type: ${place.__typename} `
+      )
+      return null
   }
 }
 
@@ -67,7 +72,7 @@ function NearbyView(props: Props): JSX.Element {
       const interval = setInterval(() => {
         fetchNearby(nearbyViewCoords, map)
         setLoading(true)
-      }, 15000)
+      }, AUTO_REFRESH_INTERVAL)
       return function cleanup() {
         clearInterval(interval)
       }
