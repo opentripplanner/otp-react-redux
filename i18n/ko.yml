@@ -295,7 +295,7 @@ components:
     bike-rental: "{companies} 공유자전거"
     car-rental: 렌터카 위치
     micromobility-rental: "{companies} 전동스쿠터"
-    park-and-ride: Park & Ride위치
+    park-and-ride: 파크 앤 라이드 위치
     satellite: 위성
     shared-vehicles: 공유 차량
     stops: 대중 교통 정류장
