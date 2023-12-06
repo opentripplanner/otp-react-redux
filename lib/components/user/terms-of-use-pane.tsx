@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import React, { FormEventHandler } from 'react'
 
+import { AppReduxState } from '../../util/state-types'
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
   TERMS_OF_SERVICE_PATH,
@@ -24,7 +25,7 @@ const TermsOfUsePane = ({
   handleBlur: () => void
   handleChange: FormEventHandler<Checkbox>
   locale: string
-  termsOfServiceLink: string
+  termsOfServiceLink?: string
   values: {
     hasConsentedToTerms: boolean
     storeTripHistory: boolean
@@ -101,7 +102,7 @@ const TermsOfUsePane = ({
     </div>
   )
 }
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   return {
     locale: state.otp.ui?.locale,
     termsOfServiceLink: state.otp.config.termsOfServiceLink,
