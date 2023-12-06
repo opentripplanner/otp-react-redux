@@ -17,7 +17,7 @@ export interface UserSavedLocation {
 export const visionLimitations = [
   'none',
   'low-vision',
-  'legally blind'
+  'legally-blind'
 ] as const
 
 export type VisionLimitation = typeof visionLimitations[number]

@@ -349,7 +349,7 @@ components:
         Do you have any mobility limitations that cause you to walk slowlier or
         more carefully than other people?
       visionLimitations:
-        legally blind: Legally blind
+        legally-blind: Legally blind
         low-vision: Low-vision
         none: None
       visionPrompt: Do you have any vision limitations?
