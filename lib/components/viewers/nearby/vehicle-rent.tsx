@@ -12,7 +12,7 @@ import React, { Suspense } from 'react'
 
 import * as mapActions from '../../../actions/map'
 
-import { Card, CardBody, CardHeader } from './styled'
+import { Card, CardBody, CardHeader, CardTitle } from './styled'
 import { IconWithText } from '../../util/styledIcon'
 
 type VehicleFormFactor =
@@ -93,8 +93,6 @@ const Vehicle = ({
   }
   const getStationIcon = () => {
     const CompanyIcon = getCompanyIcon(vehicle.network)
-    console.log(CompanyIcon)
-    console.log(vehicle.network)
     return CompanyIcon ? (
       <Suspense fallback={<span>{company}</span>}>
         <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
@@ -106,7 +104,9 @@ const Vehicle = ({
   return (
     <Card onMouseEnter={() => zoomToPlace(map, vehicle)}>
       <CardHeader>
-        <IconWithText Icon={getStationIcon()}>{company}</IconWithText>
+        <CardTitle>
+          <IconWithText Icon={getStationIcon()}>{company}</IconWithText>
+        </CardTitle>
       </CardHeader>
       <CardBody>
         <div>{vehicle.name}</div>

@@ -8,7 +8,7 @@ import * as mapActions from '../../../actions/map'
 import { FormattedMessage } from 'react-intl'
 import { IconWithText } from '../../util/styledIcon'
 
-import { Card, CardBody, CardHeader, CardSubheader } from './styled'
+import { Card, CardBody, CardHeader, CardSubheader, CardTitle } from './styled'
 
 import { useMap } from 'react-map-gl'
 
@@ -26,7 +26,7 @@ const RentalStation = ({ companies, place, zoomToPlace }: Props) => {
   return (
     <Card onMouseEnter={() => zoomToPlace(map, place)}>
       <CardHeader>
-        {place.name}
+        <CardTitle>{place.name}</CardTitle>
         <CardSubheader>
           {company || (
             <FormattedMessage id="components.NearbyView.bikeRentalStation" />

@@ -4,7 +4,6 @@ import { format } from 'date-fns-tz'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { InfoCircle } from '@styled-icons/fa-solid/InfoCircle'
 import { Place, TransitOperator } from '@opentripplanner/types'
-import { Search } from '@styled-icons/fa-solid/Search'
 import { useMap } from 'react-map-gl'
 import coreUtils from '@opentripplanner/core-utils'
 import dateFnsUSLocale from 'date-fns/locale/en-US'
@@ -18,6 +17,7 @@ import {
   Card,
   CardBody,
   CardHeader,
+  CardTitle,
   PatternRowContainer,
   StyledAlert
 } from './styled'
@@ -178,7 +178,9 @@ const Stop = ({
   return (
     <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <CardHeader>
-        <IconWithText Icon={CustomOperatorLogo}>{stopData.name}</IconWithText>
+        <CardTitle>
+          <IconWithText Icon={CustomOperatorLogo}>{stopData.name}</IconWithText>
+        </CardTitle>
       </CardHeader>
       <CardBody>
         <div>

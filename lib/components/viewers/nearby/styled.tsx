@@ -33,16 +33,22 @@ export const Card = styled.div`
 `
 
 export const CardHeader = styled.div`
-  font-size: 22px;
   padding: 1rem 1.2rem;
-  font-weight: 600;
   display: flex;
+  flex-direction: column;
+`
+
+export const CardTitle = styled.p`
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0;
 `
 
 export const CardSubheader = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: #444;
+  margin: 0;
 `
 
 export const CardBody = styled.div`

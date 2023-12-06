@@ -8,7 +8,7 @@ import { useMap } from 'react-map-gl'
 
 import * as mapActions from '../../../actions/map'
 
-import { Card, CardBody, CardHeader, CardSubheader } from './styled'
+import { Card, CardBody, CardHeader, CardSubheader, CardTitle } from './styled'
 
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 
@@ -31,7 +31,9 @@ const VehicleParking = ({ place, setLocation, zoomToPlace }: Props) => {
   return (
     <Card onMouseEnter={() => zoomToPlace(map, place)}>
       <CardHeader>
-        <IconWithText Icon={Parking}>{place.name}</IconWithText>
+        <CardTitle>
+          <IconWithText Icon={Parking}>{place.name}</IconWithText>
+        </CardTitle>
         <CardSubheader>Park and Ride</CardSubheader>
       </CardHeader>
       <CardBody>
