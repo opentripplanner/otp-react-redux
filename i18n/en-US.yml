@@ -346,13 +346,15 @@ components:
       prompt: Do you regularly use a mobility assistive device? (Check all that apply)
     LimitationsPane:
       mobilityPrompt: >-
-        Do you have any mobility limitations that cause you to walk slowlier or
-        more carefully than other people?
+        Do you have any mobility limitations that cause you to walk more slowly
+        or more carefully than other people?
       visionLimitations:
         legally-blind: Legally blind
         low-vision: Low-vision
         none: None
       visionPrompt: Do you have any vision limitations?
+    MobilityPane:
+      header: Mobility Profile
     intro: >-
       Please answer a few questions to customize the trip planning experience to
       your needs and preferences.

@@ -14,7 +14,7 @@ interface Props extends FormikProps<EditedUser> {
 }
 
 /**
- * This component is the new account wizard.
+ * This component is the mobility profile wizard.
  */
 const MobilityWizard = ({
   activePaneId,

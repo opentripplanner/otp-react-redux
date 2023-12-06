@@ -12,6 +12,7 @@ import A11yPrefs from './a11y-prefs'
 import BackToTripPlanner from './back-to-trip-planner'
 import DeleteUser from './delete-user'
 import FavoritePlaceList from './places/favorite-place-list'
+import MobilityPane from './mobility-profile/mobility-pane'
 import NotificationPrefsPane from './notification-prefs-pane'
 import StackedPanes from './stacked-panes'
 import TermsOfUsePane from './terms-of-use-pane'
@@ -37,6 +38,13 @@ const ExistingAccountDisplay = (props: Props) => {
       pane: FavoritePlaceList,
       props,
       title: <FormattedMessage id="components.ExistingAccountDisplay.places" />
+    },
+    {
+      pane: MobilityPane,
+      props,
+      title: (
+        <FormattedMessage id="components.MobilityProfile.MobilityPane.header" />
+      )
     },
     {
       pane: NotificationPrefsPane,
