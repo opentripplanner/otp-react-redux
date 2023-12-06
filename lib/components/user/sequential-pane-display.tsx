@@ -108,6 +108,10 @@ class SequentialPaneDisplay extends Component<Props> {
 
   componentDidMount(): void {
     this._focusHeader()
+
+    if (!this.props.activePaneId) {
+      this._routeTo(this.props.panes[0].id)
+    }
   }
 
   render() {
