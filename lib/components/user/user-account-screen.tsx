@@ -11,7 +11,6 @@ import React, { ChangeEvent, Component, FormEvent } from 'react'
 import styled, { css } from 'styled-components'
 import toast from 'react-hot-toast'
 
-import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
 import { CREATE_ACCOUNT_PATH, MOBILITY_PATH } from '../../util/constants'
@@ -38,7 +37,6 @@ interface Props {
   itemId: string
   loggedInUser: User
   requestPhoneVerificationSms: (phoneNum: string, intl: IntlShape) => void
-  routeTo: (to: string) => void
   verifyPhoneNumber: (code: string, intl: IntlShape) => void
 }
 
@@ -109,11 +107,6 @@ class UserAccountScreen extends Component<Props> {
     ) {
       deleteUser(loggedInUser, auth0, intl)
     }
-  }
-
-  _handleExit = () => {
-    // On exit, route to default search route.
-    this.props.routeTo('/')
   }
 
   _handleRequestPhoneVerificationCode = (newPhoneNumber: string) => {
@@ -243,7 +236,6 @@ class UserAccountScreen extends Component<Props> {
                   // Use our own handleChange handler that wraps around Formik's.
                   handleChange={this._handleInputChange(formikProps)}
                   loggedInUser={loggedInUser}
-                  onCancel={this._handleExit}
                   onCreate={this._handleCreateNewUser}
                   onDelete={this._handleDeleteUser}
                   onRequestPhoneVerificationCode={
@@ -287,7 +279,6 @@ const mapDispatchToProps = {
   createOrUpdateUser: userActions.createOrUpdateUser,
   deleteUser: userActions.deleteUser,
   requestPhoneVerificationSms: userActions.requestPhoneVerificationSms,
-  routeTo: uiActions.routeTo,
   verifyPhoneNumber: userActions.verifyPhoneNumber
 }
 

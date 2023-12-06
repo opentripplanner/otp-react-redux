@@ -4,6 +4,7 @@ import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
 import React, { useCallback } from 'react'
 import toast from 'react-hot-toast'
 
+import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
 import PageTitle from '../util/page-title'
 
@@ -24,9 +25,9 @@ import VerifyEmailPane from './verify-email-pane'
 interface Props extends FormikProps<EditedUser> {
   activePaneId: string
   basePath: string
-  onCancel: () => void
   onCreate: (value: EditedUser) => void
   panes: PaneProps[]
+  routeTo: (to: string) => void
 }
 
 const standardPanes: Record<string, PaneProps> = {
@@ -92,7 +93,6 @@ function getPanes(pageIds: string[]) {
  */
 const NewAccountWizard = ({
   activePaneId,
-  onCancel, // provided by UserAccountScreen
   onCreate, // provided by UserAccountScreen
   panes,
   ...formikProps // provided by Formik
@@ -114,8 +114,8 @@ const NewAccountWizard = ({
     // (although in reality, changes quietly took effect in previous screens).
     toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
 
-    onCancel && onCancel()
-  }, [intl, onCancel])
+    routeTo('/')
+  }, [intl])
 
   if (activePaneId === 'verify') {
     const verifyEmail = intl.formatMessage({
@@ -163,4 +163,8 @@ const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
   }
 }
 
-export default connect(mapStateToProps)(NewAccountWizard)
+const mapDispatchToProps = {
+  routeTo: uiActions.routeTo
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewAccountWizard)

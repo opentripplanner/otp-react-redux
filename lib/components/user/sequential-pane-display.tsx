@@ -71,15 +71,15 @@ class SequentialPaneDisplay extends Component<Props> {
       paneProps,
       panes
     } = this.props
-    const {
-      getInvalidMessage = (intl: IntlShape) => '',
-      isInvalid = () => false
-    } = activePane
 
     if (activePaneIndex < panes.length - 1) {
       // Don't submit the form if there are more steps to complete.
       e.preventDefault()
 
+      const {
+        getInvalidMessage = (intl: IntlShape) => '',
+        isInvalid = () => false
+      } = activePane
       if (isInvalid(paneProps.values)) {
         alert(getInvalidMessage(intl))
       } else {
