@@ -24,7 +24,6 @@ import VerifyEmailPane from './verify-email-pane'
 // can be wired to be managed by Formik.
 interface Props extends FormikProps<EditedUser> {
   activePaneId: string
-  basePath: string
   onCreate: (value: EditedUser) => void
   panes: PaneProps[]
   routeTo: (to: string) => void
@@ -150,10 +149,9 @@ const NewAccountWizard = ({
 
 // Get the new account pages configuration, if any, from redux state.
 const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
-  const { basePath } = ownProps
   return {
     panes: getPanes(
-      state.otp.config.wizardPages?.[basePath] || [
+      state.otp.config.newAccountPages || [
         'terms',
         'notifications',
         'places',
