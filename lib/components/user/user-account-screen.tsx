@@ -14,7 +14,7 @@ import toast from 'react-hot-toast'
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
-import { CREATE_ACCOUNT_PATH } from '../../util/constants'
+import { CREATE_ACCOUNT_PATH, MOBILITY_PATH } from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import { toastSuccess } from '../util/toasts'
 
@@ -26,6 +26,7 @@ import withLoggedInUserSupport from './with-logged-in-user-support'
 
 interface Props {
   auth0: Auth0ContextInterface
+  basePath: string
   createOrUpdateUser: (user: User, intl: IntlShape) => Promise<number>
   deleteUser: (
     user: User,
@@ -209,7 +210,7 @@ class UserAccountScreen extends Component<Props> {
   }
 
   render() {
-    const { auth0, isCreating, itemId, loggedInUser } = this.props
+    const { auth0, basePath, isCreating, itemId, loggedInUser } = this.props
     const DisplayComponent = isCreating
       ? NewAccountWizard
       : ExistingAccountDisplay
@@ -236,6 +237,7 @@ class UserAccountScreen extends Component<Props> {
                 <DisplayComponent
                   {...formikProps}
                   activePaneId={itemId}
+                  basePath={basePath}
                   // @ts-expect-error emailVerified prop used by only one of the DisplayComponent.
                   emailVerified={auth0.user?.email_verified}
                   // Use our own handleChange handler that wraps around Formik's.
@@ -267,9 +269,14 @@ const mapStateToProps = (
   ownProps: RouteComponentProps<{ step: string }>
 ) => {
   const { params, url } = ownProps.match
-  const isCreating = url.startsWith(CREATE_ACCOUNT_PATH)
+  const isCreating =
+    url.startsWith(CREATE_ACCOUNT_PATH) || url.startsWith(MOBILITY_PATH)
+  let basePath
+  if (url.startsWith(CREATE_ACCOUNT_PATH)) basePath = CREATE_ACCOUNT_PATH
+  if (url.startsWith(MOBILITY_PATH)) basePath = MOBILITY_PATH
   const { step } = params
   return {
+    basePath,
     isCreating,
     itemId: step,
     loggedInUser: state.user.loggedInUser

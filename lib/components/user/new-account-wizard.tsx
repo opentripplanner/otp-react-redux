@@ -23,12 +23,18 @@ import VerifyEmailPane from './verify-email-pane'
 // can be wired to be managed by Formik.
 interface Props extends FormikProps<EditedUser> {
   activePaneId: string
+  basePath: string
   onCancel: () => void
   onCreate: (value: EditedUser) => void
   panes: PaneProps[]
 }
 
 const standardPanes: Record<string, PaneProps> = {
+  finish: {
+    id: 'finish',
+    pane: AccountSetupFinishPane,
+    title: <FormattedMessage id="components.NewAccountWizard.finish" />
+  },
   mobility1: {
     id: 'mobility1',
     pane: AssistiveDevicesPane,
@@ -62,6 +68,18 @@ const standardPanes: Record<string, PaneProps> = {
     id: 'places',
     pane: FavoritePlaceList,
     title: <FormattedMessage id="components.NewAccountWizard.places" />
+  },
+  terms: {
+    getInvalidMessage: (intl: IntlShape) =>
+      intl.formatMessage({
+        id: 'components.TermsOfUsePane.mustAgreeToTerms'
+      }),
+    id: 'terms',
+    isInvalid: ({ hasConsentedToTerms }: EditedUser) => !hasConsentedToTerms,
+    pane: TermsOfUsePane,
+    title: (
+      <FormattedMessage id="components.NewAccountWizard.createNewAccount" />
+    )
   }
 }
 
@@ -115,24 +133,6 @@ const NewAccountWizard = ({
   const createNewAccount = intl.formatMessage({
     id: 'components.NewAccountWizard.createNewAccount'
   })
-  const paneSequence = [
-    {
-      getInvalidMessage: (intl: IntlShape) =>
-        intl.formatMessage({
-          id: 'components.TermsOfUsePane.mustAgreeToTerms'
-        }),
-      id: 'terms',
-      isInvalid: ({ hasConsentedToTerms }: EditedUser) => !hasConsentedToTerms,
-      pane: TermsOfUsePane,
-      title: createNewAccount
-    },
-    ...panes,
-    {
-      id: 'finish',
-      pane: AccountSetupFinishPane,
-      title: <FormattedMessage id="components.NewAccountWizard.finish" />
-    }
-  ]
 
   return (
     <Form id="user-settings-form" noValidate>
@@ -142,17 +142,23 @@ const NewAccountWizard = ({
         onFinish={handleFinish}
         onNext={handleNext}
         paneProps={formikProps}
-        panes={paneSequence}
+        panes={panes}
       />
     </Form>
   )
 }
 
 // Get the new account pages configuration, if any, from redux state.
-const mapStateToProps = (state: AppReduxState) => {
+const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
+  const { basePath } = ownProps
   return {
     panes: getPanes(
-      state.otp.config.newAccountPages || ['notifications', 'places']
+      state.otp.config.wizardPages?.[basePath] || [
+        'terms',
+        'notifications',
+        'places',
+        'finish'
+      ]
     )
   }
 }
