@@ -2,6 +2,7 @@ import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { FormikProps } from 'formik'
+import { push, replace } from 'connected-react-router'
 import React, { Component, MouseEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 
@@ -50,9 +51,9 @@ class SequentialPaneDisplay extends Component<Props> {
   /**
    * Routes to the next pane URL.
    */
-  _routeTo = (nextId: string) => {
+  _routeTo = (nextId: string, method = push) => {
     const { parentPath, routeTo } = this.props
-    routeTo(`${parentPath}/${nextId}`)
+    routeTo(`${parentPath}/${nextId}`, undefined, method)
   }
 
   h1Ref = React.createRef<HTMLHeadingElement>()
@@ -110,7 +111,7 @@ class SequentialPaneDisplay extends Component<Props> {
     this._focusHeader()
 
     if (!this.props.activePaneId) {
-      this._routeTo(this.props.panes[0].id)
+      this._routeTo(this.props.panes[0].id, replace)
     }
   }
 
