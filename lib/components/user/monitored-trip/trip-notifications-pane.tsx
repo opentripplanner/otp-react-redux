@@ -10,11 +10,31 @@ import {
   Select,
   YesNoOptions
 } from '../common/dropdown-options'
-import { FieldSet, SettingsList } from '../styled'
+import { FieldSet } from '../styled'
 import { IconWithText } from '../../util/styledIcon'
 import { MonitoredTrip } from '../types'
 
 // Element styles
+export const SettingsList = styled.ul`
+  border-spacing: 0 10px;
+  display: table;
+  padding-left: 0;
+  width: 100%;
+  label {
+    font-weight: inherit;
+    padding-right: 10px;
+  }
+  /* Use table display for this element, so that all dropdowns occupy the same width.
+    (Bootstrap already sets them to occupy 100% of the width of the parent, i.e. the logical cell.) */
+  & > li {
+    align-items: center;
+    display: table-row;
+    & > * {
+      display: table-cell;
+    }
+  }
+`
+
 const Summary = styled.summary`
   /* Revert display:block set by Bootstrap that hides the native expand/collapse caret. */
   display: revert-layer;
