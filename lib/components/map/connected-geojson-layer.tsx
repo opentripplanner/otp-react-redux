@@ -7,8 +7,13 @@ import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useEffect, useState } from 'react'
 
 import { setLocation } from '../../actions/map'
+import { SetLocationHandler } from '../util/types'
 
-const GeoJSONOverlay = (props) => {
+type Props = {
+  setLocation: SetLocationHandler
+  url: string
+}
+const GeoJSONOverlay = (props: Props) => {
   const { setLocation, url } = props
 
   const [locations, setLocations] = useState([])
@@ -18,10 +23,11 @@ const GeoJSONOverlay = (props) => {
       setLocations(json)
     }
     if (url) downloadLocations()
-  }, [])
+  }, [url])
 
   return (
     <>
+      {/* @ts-expect-error TODO: geojson types */}
       {locations?.features?.map((feature, k) => {
         const { geometry, properties } = feature
         if (!geometry || !geometry.coordinates) return null
@@ -58,14 +64,11 @@ const GeoJSONOverlay = (props) => {
                 </BaseMapStyled.PopupRow>
               </BaseMapStyled.MapOverlayPopup>
             }
+            // @ts-expect-error popup props are incorrect
             popupProps={{ offset: 10 }}
             position={[geometry.coordinates[1], geometry.coordinates[0]]}
           >
-            <img
-              alt={properties.Name}
-              src={properties.icon}
-              style={{ height: 40 }}
-            />
+            <img alt={properties.Name} src={properties.icon} />
           </MarkerWithPopup>
         )
       })}
