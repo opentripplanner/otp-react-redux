@@ -1,8 +1,10 @@
+import { connect } from 'react-redux'
 import { Form, FormikProps } from 'formik'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
 import React, { useCallback } from 'react'
 import toast from 'react-hot-toast'
 
+import * as uiActions from '../../../actions/ui'
 import { EditedUser } from '../types'
 import AccountSetupFinishPane from '../account-setup-finish-pane'
 import AssistiveDevicesPane from '../mobility-profile/assistive-devices-pane'
@@ -91,8 +93,10 @@ function getPanes(pageIds: string[]): PaneProps[] {
 const Wizard = ({
   activePaneId,
   formikProps,
+  onNext,
   originRoute = '/',
   pages,
+  routeTo,
   title
 }: Props): JSX.Element => {
   const intl = useIntl()
@@ -103,7 +107,7 @@ const Wizard = ({
     toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
 
     routeTo(originRoute)
-  }, [intl, originRoute])
+  }, [intl, originRoute, routeTo])
 
   return (
     <Form id="user-settings-form" noValidate>
@@ -119,4 +123,8 @@ const Wizard = ({
   )
 }
 
-export default Wizard
+const mapDispatchToProps = {
+  routeTo: uiActions.routeTo
+}
+
+export default connect(null, mapDispatchToProps)(Wizard)
