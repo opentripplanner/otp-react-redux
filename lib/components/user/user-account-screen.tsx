@@ -3,7 +3,7 @@ import {
   withAuthenticationRequired
 } from '@auth0/auth0-react'
 import { connect } from 'react-redux'
-import { Formik, FormikProps } from 'formik'
+import { Form, Formik, FormikProps } from 'formik'
 import { injectIntl, IntlShape } from 'react-intl'
 import { RouteComponentProps } from 'react-router'
 import clone from 'clone'
@@ -16,15 +16,19 @@ import { AppReduxState } from '../../util/state-types'
 import { CREATE_ACCOUNT_PATH, MOBILITY_PATH } from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import { toastSuccess } from '../util/toasts'
+import PageTitle from '../util/page-title'
 
 import { EditedUser, User } from './types'
 import AccountPage from './account-page'
 import ExistingAccountDisplay from './existing-account-display'
+import MobilityWizard from './mobility-profile/mobility-wizard'
 import NewAccountWizard from './new-account-wizard'
+import VerifyEmailPane from './verify-email-pane'
 import withLoggedInUserSupport from './with-logged-in-user-support'
 
 interface Props {
   auth0: Auth0ContextInterface
+  basePath: string
   createOrUpdateUser: (user: User, intl: IntlShape) => Promise<number>
   deleteUser: (
     user: User,
@@ -202,51 +206,81 @@ class UserAccountScreen extends Component<Props> {
   }
 
   render() {
-    const { auth0, isCreating, itemId, loggedInUser } = this.props
-    const DisplayComponent = isCreating
-      ? NewAccountWizard
-      : ExistingAccountDisplay
+    const { auth0, basePath, intl, isCreating, itemId, loggedInUser } =
+      this.props
     const loggedInUserWithNotificationArray = {
       ...loggedInUser,
       notificationChannel: loggedInUser.notificationChannel?.split(',') || []
     }
     return (
       <AccountPage subnav={!isCreating}>
-        <Formik
-          // Force Formik to reload initialValues when we update them (e.g. user gets assigned an id).
-          enableReinitialize
-          initialValues={loggedInUserWithNotificationArray}
-          onSubmit={this._handleFieldChange}
-        >
-          {
-            // Formik props provide access to the current user data state and errors,
-            // (in props.values, props.touched, props.errors)
-            // and to its own blur/change/submit event handlers that automate the state.
-            // We pass the Formik props below to the components rendered so that individual controls
-            // can be wired to be managed by Formik.
-            (formikProps) => (
-              <Wrapper>
-                <DisplayComponent
-                  {...formikProps}
-                  activePaneId={itemId}
-                  // @ts-expect-error emailVerified prop used by only one of the DisplayComponent.
-                  emailVerified={auth0.user?.email_verified}
+        <Wrapper>
+          <Formik
+            // Force Formik to reload initialValues when we update them (e.g. user gets assigned an id).
+            enableReinitialize
+            initialValues={loggedInUserWithNotificationArray}
+            onSubmit={this._handleFieldChange}
+          >
+            {
+              // Formik props provide access to the current user data state and errors,
+              // (in props.values, props.touched, props.errors)
+              // and to its own blur/change/submit event handlers that automate the state.
+              // We pass the Formik props below to the components rendered so that individual controls
+              // can be wired to be managed by Formik.
+              (formikProps) => {
+                if (itemId === 'verify') {
+                  const verifyEmail = intl.formatMessage({
+                    id: 'components.NewAccountWizard.verify'
+                  })
+                  return (
+                    <Form id="user-settings-form" noValidate>
+                      <PageTitle title={verifyEmail} />
+                      <h1>{verifyEmail}</h1>
+                      <VerifyEmailPane
+                        emailVerified={auth0.user?.email_verified}
+                      />
+                    </Form>
+                  )
+                }
+
+                const newFormikProps = {
+                  ...formikProps,
                   // Use our own handleChange handler that wraps around Formik's.
-                  handleChange={this._handleInputChange(formikProps)}
-                  loggedInUser={loggedInUser}
-                  onCreate={this._handleCreateNewUser}
-                  onDelete={this._handleDeleteUser}
-                  onRequestPhoneVerificationCode={
-                    this._handleRequestPhoneVerificationCode
-                  }
-                  onSendPhoneVerificationCode={
-                    this._handleSendPhoneVerificationCode
-                  }
-                />
-              </Wrapper>
-            )
-          }
-        </Formik>
+                  handleChange: this._handleInputChange(formikProps)
+                }
+
+                if (basePath === CREATE_ACCOUNT_PATH) {
+                  return (
+                    <NewAccountWizard
+                      {...newFormikProps}
+                      activePaneId={itemId}
+                      onCreate={this._handleCreateNewUser}
+                    />
+                  )
+                }
+
+                if (basePath === MOBILITY_PATH) {
+                  return (
+                    <MobilityWizard {...newFormikProps} activePaneId={itemId} />
+                  )
+                }
+
+                return (
+                  <ExistingAccountDisplay
+                    {...newFormikProps}
+                    onDelete={this._handleDeleteUser}
+                    onRequestPhoneVerificationCode={
+                      this._handleRequestPhoneVerificationCode
+                    }
+                    onSendPhoneVerificationCode={
+                      this._handleSendPhoneVerificationCode
+                    }
+                  />
+                )
+              }
+            }
+          </Formik>
+        </Wrapper>
       </AccountPage>
     )
   }
@@ -261,8 +295,13 @@ const mapStateToProps = (
   const { params, url } = ownProps.match
   const isCreating =
     url.startsWith(CREATE_ACCOUNT_PATH) || url.startsWith(MOBILITY_PATH)
+  const basePath = [CREATE_ACCOUNT_PATH, MOBILITY_PATH].find((path) =>
+    url.startsWith(path)
+  )
+
   const { step } = params
   return {
+    basePath,
     isCreating,
     itemId: step,
     loggedInUser: state.user.loggedInUser
