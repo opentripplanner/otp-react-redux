@@ -3,9 +3,13 @@ import { FormControl } from 'react-bootstrap'
 import { IntlShape, useIntl } from 'react-intl'
 import React, { ChangeEventHandler, ComponentType, ReactNode } from 'react'
 
-interface OptionsPropsBase<T> {
-  defaultValue?: T
-  hideDefaultIndication?: boolean
+interface SelectProps {
+  Control?: ComponentType
+  children: ReactNode
+  defaultValue?: string | number | boolean
+  label?: ReactNode
+  name: string
+  onChange?: ChangeEventHandler
 }
 
 /**
@@ -18,15 +22,7 @@ export const Select = ({
   label,
   name,
   onChange
-}: {
-  // Note the prop order required by typescript-sort-keys, also applied above.
-  Control?: ComponentType
-  children: ReactNode
-  defaultValue?: string | number | boolean
-  label?: ReactNode
-  name: string
-  onChange?: ChangeEventHandler
-}): JSX.Element => (
+}: SelectProps): JSX.Element => (
   // <Field> is kept outside of <label> to accommodate layout in table/grid cells.
   <>
     {label && <label htmlFor={name}>{label}</label>}
@@ -42,6 +38,11 @@ export const Select = ({
     </Field>
   </>
 )
+
+interface OptionsPropsBase<T> {
+  defaultValue?: T
+  hideDefaultIndication?: boolean
+}
 
 interface OptionsProps<T extends string | number> extends OptionsPropsBase<T> {
   options: { text: string; value: T }[]
