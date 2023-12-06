@@ -16,7 +16,6 @@ export interface PaneProps {
   getInvalidMessage?: (intl: IntlShape) => string
   id: string
   isInvalid?: (arg: any) => boolean
-  onNext?: () => void
   pane: any
   title: ReactNode
 }
@@ -24,6 +23,7 @@ export interface PaneProps {
 interface OwnProps {
   activePaneId: string
   onFinish?: () => void
+  onNext?: () => void
   panes: PaneProps[]
 }
 
@@ -62,8 +62,15 @@ class SequentialPaneDisplay extends Component<Props> {
   }
 
   _handleToNextPane = async (e: MouseEvent<Button>) => {
-    const { activePane, activePaneIndex, intl, onFinish, paneProps, panes } =
-      this.props
+    const {
+      activePane,
+      activePaneIndex,
+      intl,
+      onFinish,
+      onNext,
+      paneProps,
+      panes
+    } = this.props
     const {
       getInvalidMessage = (intl: IntlShape) => '',
       isInvalid = () => false
@@ -77,10 +84,10 @@ class SequentialPaneDisplay extends Component<Props> {
         alert(getInvalidMessage(intl))
       } else {
         const nextId = panes[activePaneIndex + 1].id
-        // Execute pane-specific action, if any (e.g. save a user account)
-        // when clicking next.
-        if (typeof activePane.onNext === 'function') {
-          await activePane.onNext()
+        // Execute any action that need to happen before going to the next pane
+        // (e.g. save a user account).
+        if (onNext) {
+          await onNext()
         }
         this._routeTo(nextId)
       }

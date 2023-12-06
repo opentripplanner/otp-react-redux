@@ -82,12 +82,14 @@ const NewAccountWizard = ({
   const { values: userData } = formikProps
   const intl = useIntl()
 
-  const handleCreateNewUser = useCallback(() => {
-    // Create a user record only if an id is not assigned.
-    if (!userData.id) {
-      onCreate(userData)
+  const handleNext = useCallback(() => {
+    if (activePaneId === 'terms') {
+      // Create a user record only if an id is not assigned.
+      if (!userData.id) {
+        onCreate(userData)
+      }
     }
-  }, [onCreate, userData])
+  }, [activePaneId, onCreate, userData])
 
   const handleFinish = useCallback(() => {
     // Display a toast to acknowledge saved changes
@@ -121,7 +123,6 @@ const NewAccountWizard = ({
         }),
       id: 'terms',
       isInvalid: ({ hasConsentedToTerms }: EditedUser) => !hasConsentedToTerms,
-      onNext: handleCreateNewUser,
       pane: TermsOfUsePane,
       title: createNewAccount
     },
@@ -139,6 +140,7 @@ const NewAccountWizard = ({
       <SequentialPaneDisplay
         activePaneId={activePaneId}
         onFinish={handleFinish}
+        onNext={handleNext}
         paneProps={formikProps}
         panes={paneSequence}
       />
