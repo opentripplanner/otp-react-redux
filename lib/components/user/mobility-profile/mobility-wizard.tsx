@@ -11,10 +11,6 @@ import Wizard from '../common/wizard'
 // can be wired to be managed by Formik.
 interface Props extends FormikProps<EditedUser> {
   activePaneId: string
-  basePath: string
-  onCreate: (value: EditedUser) => void
-  panes: PaneProps[]
-  routeTo: (to: string) => void
 }
 
 /**
@@ -22,7 +18,6 @@ interface Props extends FormikProps<EditedUser> {
  */
 const MobilityWizard = ({
   activePaneId,
-  panes,
   ...formikProps // provided by Formik
 }: Props): JSX.Element => {
   const intl = useIntl()
@@ -37,7 +32,6 @@ const MobilityWizard = ({
       formikProps={formikProps}
       originRoute="/account/settings"
       pages={['mobility1', 'mobility2']}
-      paneProps={formikProps}
       title={title}
     />
   )
