@@ -1,10 +1,8 @@
-import { connect } from 'react-redux'
 import { Form, FormikProps } from 'formik'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
 import React, { useCallback } from 'react'
 import toast from 'react-hot-toast'
 
-import * as uiActions from '../../../actions/ui'
 import { EditedUser } from '../types'
 import AccountSetupFinishPane from '../account-setup-finish-pane'
 import AssistiveDevicesPane from '../mobility-profile/assistive-devices-pane'
@@ -23,9 +21,8 @@ interface Props {
   activePaneId: string
   formikProps: FormikProps<EditedUser>
   onNext?: () => void
-  originRoute?: string
   pages: string[]
-  routeTo: (to: string) => void
+  returnTo?: string
   title: string
 }
 
@@ -94,9 +91,8 @@ const Wizard = ({
   activePaneId,
   formikProps,
   onNext,
-  originRoute = '/',
   pages,
-  routeTo,
+  returnTo = '/',
   title
 }: Props): JSX.Element => {
   const intl = useIntl()
@@ -105,9 +101,7 @@ const Wizard = ({
     // Display a toast to acknowledge saved changes
     // (although in reality, changes quietly took effect in previous screens).
     toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
-
-    routeTo(originRoute)
-  }, [intl, originRoute, routeTo])
+  }, [intl])
 
   return (
     <Form id="user-settings-form" noValidate>
@@ -118,13 +112,10 @@ const Wizard = ({
         onNext={onNext}
         paneProps={formikProps}
         panes={getPanes(pages)}
+        returnTo={returnTo}
       />
     </Form>
   )
 }
 
-const mapDispatchToProps = {
-  routeTo: uiActions.routeTo
-}
-
-export default connect(null, mapDispatchToProps)(Wizard)
+export default Wizard

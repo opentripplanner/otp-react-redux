@@ -35,6 +35,7 @@ interface Props extends OwnProps {
   paneProps: FormikProps<any>
   panes: PaneProps[]
   parentPath: string
+  returnTo?: string
   routeTo: (url: any) => void
 }
 
@@ -70,7 +71,9 @@ class SequentialPaneDisplay extends Component<Props> {
       onFinish,
       onNext,
       paneProps,
-      panes
+      panes,
+      returnTo = '/',
+      routeTo
     } = this.props
 
     if (activePaneIndex < panes.length - 1) {
@@ -95,6 +98,7 @@ class SequentialPaneDisplay extends Component<Props> {
       this._focusHeader()
     } else if (onFinish) {
       onFinish()
+      routeTo(returnTo)
     }
   }
 

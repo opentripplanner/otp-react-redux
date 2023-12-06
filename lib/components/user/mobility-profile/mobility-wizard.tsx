@@ -30,8 +30,8 @@ const MobilityWizard = ({
     <Wizard
       activePaneId={activePaneId}
       formikProps={formikProps}
-      originRoute="/account/settings"
       pages={['mobility1', 'mobility2']}
+      returnTo="/account/settings"
       title={title}
     />
   )
