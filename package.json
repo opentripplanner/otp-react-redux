@@ -40,7 +40,7 @@
     "@bugsnag/plugin-react": "^7.17.0",
     "@floating-ui/react": "^0.19.2",
     "@opentripplanner/base-map": "^3.0.15",
-    "@opentripplanner/core-utils": "^11.1.5",
+    "@opentripplanner/core-utils": "^12.0.0-alpha.6",
     "@opentripplanner/endpoints-overlay": "^2.0.11",
     "@opentripplanner/from-to-location-picker": "^2.1.11",
     "@opentripplanner/geocoder": "^1.4.2",
