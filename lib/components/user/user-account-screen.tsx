@@ -252,8 +252,8 @@ class UserAccountScreen extends Component<Props> {
                 if (basePath === CREATE_ACCOUNT_PATH) {
                   return (
                     <NewAccountWizard
-                      {...newFormikProps}
                       activePaneId={itemId}
+                      formikProps={newFormikProps}
                       onCreate={this._handleCreateNewUser}
                     />
                   )
@@ -261,7 +261,10 @@ class UserAccountScreen extends Component<Props> {
 
                 if (basePath === MOBILITY_PATH) {
                   return (
-                    <MobilityWizard {...newFormikProps} activePaneId={itemId} />
+                    <MobilityWizard
+                      activePaneId={itemId}
+                      formikProps={newFormikProps}
+                    />
                   )
                 }
 

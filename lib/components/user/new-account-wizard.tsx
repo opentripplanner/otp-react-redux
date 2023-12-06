@@ -1,19 +1,13 @@
 import { connect } from 'react-redux'
-import { FormikProps } from 'formik'
 import { useIntl } from 'react-intl'
 import React, { useCallback } from 'react'
 
 import { AppReduxState } from '../../util/state-types'
 
 import { EditedUser } from './types'
-import Wizard from './common/wizard'
+import Wizard, { WizardProps } from './common/wizard'
 
-// The props include Formik props that provide access to the current user data (stored in props.values)
-// and to its own blur/change/submit event handlers that automate the state.
-// We forward the props to each pane (via SequentialPaneDisplay) so that their individual controls
-// can be wired to be managed by Formik.
-interface Props extends FormikProps<EditedUser> {
-  activePaneId: string
+interface Props extends WizardProps {
   onCreate: (value: EditedUser) => void
   pages: string[]
 }
@@ -23,9 +17,9 @@ interface Props extends FormikProps<EditedUser> {
  */
 const NewAccountWizard = ({
   activePaneId,
-  onCreate, // provided by UserAccountScreen
-  pages,
-  ...formikProps // provided by Formik
+  formikProps,
+  onCreate,
+  pages
 }: Props): JSX.Element => {
   const { values: userData } = formikProps
   const intl = useIntl()

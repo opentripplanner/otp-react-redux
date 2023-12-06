@@ -1,25 +1,15 @@
-import { FormikProps } from 'formik'
 import { useIntl } from 'react-intl'
 import React from 'react'
 
-import { EditedUser } from '../types'
-import Wizard from '../common/wizard'
-
-// The props include Formik props that provide access to the current user data (stored in props.values)
-// and to its own blur/change/submit event handlers that automate the state.
-// We forward the props to each pane (via SequentialPaneDisplay) so that their individual controls
-// can be wired to be managed by Formik.
-interface Props extends FormikProps<EditedUser> {
-  activePaneId: string
-}
+import Wizard, { WizardProps } from '../common/wizard'
 
 /**
  * This component is the mobility profile wizard.
  */
 const MobilityWizard = ({
   activePaneId,
-  ...formikProps // provided by Formik
-}: Props): JSX.Element => {
+  formikProps
+}: WizardProps): JSX.Element => {
   const intl = useIntl()
 
   const title = intl.formatMessage({

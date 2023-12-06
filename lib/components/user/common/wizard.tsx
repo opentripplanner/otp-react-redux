@@ -17,9 +17,12 @@ import TermsOfUsePane from '../terms-of-use-pane'
 // and to its own blur/change/submit event handlers that automate the state.
 // We forward the props to each pane (via SequentialPaneDisplay) so that their individual controls
 // can be wired to be managed by Formik.
-interface Props {
+export interface WizardProps {
   activePaneId: string
   formikProps: FormikProps<EditedUser>
+}
+
+interface Props extends WizardProps {
   onNext?: () => void
   pages: string[]
   returnTo?: string
