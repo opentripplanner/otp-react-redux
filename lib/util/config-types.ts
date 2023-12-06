@@ -103,9 +103,9 @@ export type PersistenceConfig = (
   | LocalPersistenceConfig
   | MiddlewarePersistenceConfig
 ) & {
-  enabled?: boolean | undefined
+  enabled?: boolean
   // eslint-disable-next-line camelcase
-  terms_of_storage?: boolean | undefined
+  terms_of_storage?: boolean
 }
 
 /** Popup target settings */
