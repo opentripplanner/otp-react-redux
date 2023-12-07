@@ -23,12 +23,13 @@ interface OwnProps {
 interface Props extends OwnProps {
   activePane: PaneProps
   activePaneIndex: number
+  formikProps: FormikProps<any>
   intl: IntlShape
   onNext?: () => void
-  paneProps: FormikProps<any>
   parentPath: string
   returnTo?: string
   routeTo: (url: any) => void
+  title: string
 }
 
 const StepNumber = styled.p`
