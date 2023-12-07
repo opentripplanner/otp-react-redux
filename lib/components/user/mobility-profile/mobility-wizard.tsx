@@ -1,7 +1,7 @@
 import { useIntl } from 'react-intl'
 import React from 'react'
 
-import Wizard, { WizardProps } from '../common/wizard'
+import Wizard, { WizardProps } from '../wizard'
 
 /**
  * This component is the mobility profile wizard.

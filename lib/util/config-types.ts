@@ -355,9 +355,8 @@ export interface AppConfig {
   localization?: LocalizationConfig
   map: MapConfig
   mapillary?: MapillaryConfig
+  mobilityProfile?: boolean
   modes: ModesConfig
-  /** Optionally configures wizard (multi-step) dialogs with sequences of pages. */
-  newAccountPages?: string[]
   /** Interval in seconds past which a trip is no longer considered "on-time". */
   onTimeThresholdSeconds?: number
   persistence?: PersistenceConfig

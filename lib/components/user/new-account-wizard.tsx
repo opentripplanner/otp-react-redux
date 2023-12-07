@@ -5,7 +5,7 @@ import React, { useCallback } from 'react'
 import { AppReduxState } from '../../util/state-types'
 
 import { EditedUser } from './types'
-import Wizard, { WizardProps } from './common/wizard'
+import Wizard, { WizardProps } from './wizard'
 
 interface Props extends WizardProps {
   onCreate: (value: EditedUser) => void
@@ -48,15 +48,12 @@ const NewAccountWizard = ({
   )
 }
 
-// Get the new account pages configuration, if any, from redux state.
+// Get the new account pages based on the configuration's mobilityProfile flag.
 const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
   return {
-    pages: state.otp.config.newAccountPages || [
-      'terms',
-      'notifications',
-      'places',
-      'finish'
-    ]
+    pages: state.otp.config.mobilityProfile
+      ? ['terms', 'mobility1', 'mobility2', 'notifications', 'places', 'finish']
+      : ['terms', 'notifications', 'places', 'finish']
   }
 }
 

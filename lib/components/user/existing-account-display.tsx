@@ -30,7 +30,7 @@ const ExistingAccountDisplay = (props: Props) => {
   // We forward the props to each pane so that their individual controls
   // can be wired to be managed by Formik.
 
-  const { wheelchairEnabled } = props
+  const { mobilityProfileEnabled, wheelchairEnabled } = props
   const intl = useIntl()
 
   const panes = [
@@ -40,6 +40,7 @@ const ExistingAccountDisplay = (props: Props) => {
       title: <FormattedMessage id="components.ExistingAccountDisplay.places" />
     },
     {
+      hidden: !mobilityProfileEnabled,
       pane: MobilityPane,
       props,
       title: (
@@ -93,11 +94,12 @@ const ExistingAccountDisplay = (props: Props) => {
 }
 
 const mapStateToProps = (state: AppReduxState) => {
-  const { accessModes } = state.otp.config.modes
-  const wheelchairEnabled = accessModes?.some(
+  const { mobilityProfile: mobilityProfileEnabled, modes } = state.otp.config
+  const wheelchairEnabled = modes.accessModes?.some(
     (mode: TransitModeConfig) => mode.showWheelchairSetting
   )
   return {
+    mobilityProfileEnabled,
     wheelchairEnabled
   }
 }
