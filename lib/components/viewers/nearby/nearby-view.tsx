@@ -28,7 +28,7 @@ type Props = {
   fetchNearby: (latLon: LatLonObj, map?: MapRef) => void
   getCurrentPosition?: (
     intl: IntlShape,
-    setAsType?: boolean,
+    setAsType?: string | null,
     onSuccess?: (position: GeolocationPosition) => void
   ) => void
   hideBackButton?: boolean
@@ -91,7 +91,7 @@ function NearbyView(props: Props): JSX.Element {
       }
     } else {
       if (getPosition && viewNearby) {
-        getPosition(intl, false, (pos) => {
+        getPosition(intl, null, (pos) => {
           viewNearby({ lat: pos.coords.latitude, lon: pos.coords.longitude })
         })
       }

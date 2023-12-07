@@ -141,7 +141,8 @@ class EnhancedStopMarker extends Component<Props> {
           activeStopId !== stop.id && (
             <BaseMapStyled.MapOverlayPopup id={activeContentId}>
               <StopPopup
-                entity={stop}
+                // FIXME: We need to fix the stop type
+                entity={{ ...stop, lat: stop.lat || 0, lon: stop.lon || 0 }}
                 setLocation={setLocation}
                 setViewedStop={setViewedStop}
               />
