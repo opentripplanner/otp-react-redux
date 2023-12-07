@@ -28,13 +28,13 @@ const getVehicleIcon = (vehicleType: VehicleFormFactor): React.ReactNode => {
   switch (vehicleType) {
     case 'BICYCLE':
     case 'CARGO_BICYCLE':
-      return Bicycle
+      return <Bicycle />
     case 'SCOOTER':
     case 'SCOOTER_SEATED':
     case 'SCOOTER_STANDING':
-      return Micromobility
+      return <Micromobility />
     default:
-      return Bicycle
+      return <Bicycle />
   }
 }
 
@@ -98,7 +98,7 @@ const Vehicle = ({
         <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
       </Suspense>
     ) : (
-      <span>getVehicleIcon(formFactor)</span>
+      <span>{getVehicleIcon(formFactor)}</span>
     )
   }
   return (
