@@ -104,6 +104,8 @@ export type PersistenceConfig = (
   | MiddlewarePersistenceConfig
 ) & {
   enabled?: boolean
+  // eslint-disable-next-line camelcase
+  terms_of_storage?: boolean
 }
 
 /** Popup target settings */
@@ -371,6 +373,8 @@ export interface AppConfig {
   /** Whether to show the x minutes late/early in the itinerary body */
   showScheduleDeviation?: boolean
   stopViewer?: StopViewerConfig
+  /** Externally hosted terms of service URL */
+  termsOfServiceLink?: string
   /** App title shown in the browser title bar. */
   title?: string
   transitOperators?: TransitOperatorConfig[]
