@@ -5,6 +5,7 @@ import { Pause } from '@styled-icons/fa-solid/Pause'
 import { PencilAlt } from '@styled-icons/fa-solid/PencilAlt'
 import { Play } from '@styled-icons/fa-solid/Play'
 import { Trash } from '@styled-icons/fa-solid/Trash'
+import { TriangleExclamation } from '@styled-icons/fa-solid/TriangleExclamation'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import React, { Component } from 'react'
 
@@ -17,6 +18,7 @@ import { MonitoredTrip } from '../types'
 import {
   PageHeading,
   TripHeader,
+  TripPanelAlert,
   TripPanelFooter,
   TripPanelHeading
 } from '../styled'
@@ -28,11 +30,13 @@ import BackToTripPlanner from '../back-to-trip-planner'
 import PageTitle from '../../util/page-title'
 import withLoggedInUserSupport from '../with-logged-in-user-support'
 
+import getRenderData from './trip-status-rendering-strategies'
 import TripSummaryPane from './trip-summary-pane'
 
 interface ItemProps {
   confirmAndDeleteUserMonitoredTrip: (id: string, intl: IntlShape) => void
   intl: IntlShape
+  renderData: any
   routeTo: (url: any) => void
   togglePauseTrip: (trip: MonitoredTrip, intl: IntlShape) => void
   trip: MonitoredTrip
@@ -92,9 +96,10 @@ class TripListItem extends Component<ItemProps, ItemState> {
   }
 
   render() {
-    const { trip } = this.props
+    const { renderData, trip } = this.props
     const { itinerary } = trip
     const { legs } = itinerary
+    const { alerts } = renderData
     // Assuming the monitored itinerary has at least one leg:
     // - get the 'from' location of the first leg,
     // - get the 'to' location of the last leg.
@@ -103,6 +108,16 @@ class TripListItem extends Component<ItemProps, ItemState> {
     return (
       <Panel>
         <TripPanelHeading>
+          {alerts && alerts.length > 0 && (
+            <TripPanelAlert onClick={this._handleEditTrip}>
+              <IconWithText Icon={TriangleExclamation}>
+                <FormattedMessage
+                  id="components.SavedTripList.alertTag"
+                  values={{ alert: alerts.length }}
+                />
+              </IconWithText>
+            </TripPanelAlert>
+          )}
           <Panel.Title>
             <TripHeader>{trip.tripName}</TripHeader>
             <small>
@@ -165,6 +180,16 @@ class TripListItem extends Component<ItemProps, ItemState> {
 }
 
 // connect to the redux store
+const itemMapStateToProps = (ownProps: ItemProps) => {
+  const { trip } = ownProps
+  const renderData = getRenderData({
+    monitoredTrip: trip
+  })
+
+  return {
+    renderData
+  }
+}
 
 const itemMapDispatchToProps = {
   confirmAndDeleteUserMonitoredTrip:
@@ -173,7 +198,7 @@ const itemMapDispatchToProps = {
   togglePauseTrip: userActions.togglePauseTrip
 }
 const ConnectedTripListItem = connect(
-  null,
+  itemMapStateToProps,
   itemMapDispatchToProps
 )(injectIntl(TripListItem))
 
