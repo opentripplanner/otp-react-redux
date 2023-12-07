@@ -15,7 +15,7 @@ import { IconWithText } from '../../util/styledIcon'
 import { MonitoredTrip } from '../types'
 
 // Element styles
-export const SettingsList = styled.ul`
+const SettingsList = styled.ul`
   border-spacing: 0 10px;
   display: table;
   padding-left: 0;
