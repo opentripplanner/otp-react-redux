@@ -3,7 +3,7 @@ import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
 // @ts-expect-error icons doesn't have typescript?
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
-import { IntlShape, useIntl } from 'react-intl'
+import { IntlShape } from 'react-intl'
 import { useMap } from 'react-map-gl'
 // @ts-expect-error icons doesn't have typescript?
 import { Micromobility } from '@opentripplanner/icons'
@@ -24,7 +24,7 @@ type VehicleFormFactor =
   | 'SCOOTER_SEATED'
   | 'OTHER'
 
-const getVehicleIcon = (vehicleType: VehicleFormFactor) => {
+const getVehicleIcon = (vehicleType: VehicleFormFactor): React.ReactNode => {
   switch (vehicleType) {
     case 'BICYCLE':
     case 'CARGO_BICYCLE':
@@ -91,21 +91,21 @@ const Vehicle = ({
     }
     setLocation({ location, locationType, reverseGeocode: false })
   }
-  const getStationIcon = () => {
+  const StationIcon = () => {
     const CompanyIcon = getCompanyIcon(vehicle.network)
     return CompanyIcon ? (
       <Suspense fallback={<span>{company}</span>}>
         <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
       </Suspense>
     ) : (
-      getVehicleIcon(formFactor)
+      <span>getVehicleIcon(formFactor)</span>
     )
   }
   return (
     <Card onMouseEnter={() => zoomToPlace(map, vehicle)}>
       <CardHeader>
         <CardTitle>
-          <IconWithText Icon={getStationIcon()}>{company}</IconWithText>
+          <IconWithText Icon={StationIcon}>{company}</IconWithText>
         </CardTitle>
       </CardHeader>
       <CardBody>
