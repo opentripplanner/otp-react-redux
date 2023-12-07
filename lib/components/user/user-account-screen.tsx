@@ -28,7 +28,7 @@ import withLoggedInUserSupport from './with-logged-in-user-support'
 
 interface Props {
   auth0: Auth0ContextInterface
-  basePath: string
+  basePath?: string
   createOrUpdateUser: (user: User, intl: IntlShape) => Promise<number>
   deleteUser: (
     user: User,

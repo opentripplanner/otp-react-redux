@@ -5,17 +5,24 @@ import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { push, replace } from 'connected-react-router'
 import React, { Component, MouseEvent } from 'react'
 import styled from 'styled-components'
+import toast from 'react-hot-toast'
 
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
 import { GRAY_ON_WHITE } from '../util/colors'
 import PageTitle from '../util/page-title'
 
+import { EditedUser } from './types'
 import { SequentialPaneContainer } from './styled'
 import FormNavigationButtons from './form-navigation-buttons'
-import standardPanes from './standard-panes'
+import standardPanes, { PaneProps } from './standard-panes'
 
-interface OwnProps {
+export interface WizardProps {
+  activePaneId: string
+  formikProps: FormikProps<EditedUser>
+}
+
+export interface OwnProps {
   activePaneId: string
   pages: string[]
 }
@@ -23,12 +30,13 @@ interface OwnProps {
 interface Props extends OwnProps {
   activePane: PaneProps
   activePaneIndex: number
-  formikProps: FormikProps<any>
+  formikProps: FormikProps<EditedUser>
   intl: IntlShape
   onNext?: () => void
+  pages: string[]
   parentPath: string
   returnTo?: string
-  routeTo: (url: any) => void
+  routeTo: (url: string, replace?: string, method?: any) => void
   title: string
 }
 
@@ -161,7 +169,7 @@ class Wizard extends Component<Props> {
 
 // connect to the redux store
 
-const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
+const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
   const { activePaneId, pages } = ownProps
   const { pathname } = state.router.location
   const activePaneIndex = pages.indexOf(activePaneId)

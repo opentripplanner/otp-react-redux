@@ -49,7 +49,7 @@ const NewAccountWizard = ({
 }
 
 // Get the new account pages based on the configuration's mobilityProfile flag.
-const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
+const mapStateToProps = (state: AppReduxState) => {
   return {
     pages: state.otp.config.mobilityProfile
       ? ['terms', 'mobility1', 'mobility2', 'notifications', 'places', 'finish']

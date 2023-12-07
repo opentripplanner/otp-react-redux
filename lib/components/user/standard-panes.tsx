@@ -1,6 +1,14 @@
 import { FormattedMessage, IntlShape } from 'react-intl'
 import React, { ReactNode } from 'react'
 
+import { EditedUser } from './types'
+import AccountSetupFinishPane from './account-setup-finish-pane'
+import AssistiveDevicesPane from './mobility-profile/assistive-devices-pane'
+import FavoritePlaceList from './places/favorite-place-list'
+import LimitationsPane from './mobility-profile/limitations-pane'
+import NotificationPrefsPane from './notification-prefs-pane'
+import TermsOfUsePane from './terms-of-use-pane'
+
 export interface PaneProps {
   getInvalidMessage?: (intl: IntlShape) => string
   id: string
