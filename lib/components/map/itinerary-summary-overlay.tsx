@@ -1,6 +1,5 @@
-import { ArrowRight } from '@styled-icons/fa-solid/ArrowRight'
 import { connect } from 'react-redux'
-import { Itinerary, Leg, Location } from '@opentripplanner/types'
+import { Itinerary, Location } from '@opentripplanner/types'
 import { Marker } from 'react-map-gl'
 import polyline from '@mapbox/polyline'
 import React, { useContext } from 'react'
@@ -14,7 +13,6 @@ import {
   getActiveSearch,
   getVisibleItineraryIndex
 } from '../../util/state'
-import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import MetroItineraryRoutes from '../narrative/metro/metro-itinerary-routes'
 
 type Props = {
@@ -31,6 +29,10 @@ const getItinMidpoint = (itin: Itinerary, index: number, itinCount = 1) => {
 
   // Each itinerary will render the marker at a different spot along the itinerary
   // 0.8 prevents any items from appearing at the very end of a leg
+
+  // TODO:
+  // this needs to be an array of arrays. we decide which geometries should be merged based
+  // on their freshet distance
   const midPoint =
     geometries[
       Math.floor((geometries.length / (itinCount + 1)) * 0.8) * (index + 1)
