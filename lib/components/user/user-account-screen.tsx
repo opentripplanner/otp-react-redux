@@ -36,7 +36,7 @@ interface Props {
     intl: IntlShape
   ) => void
   intl: IntlShape
-  isCreating: boolean
+  isWizard: boolean
   itemId: string
   loggedInUser: User
   requestPhoneVerificationSms: (phoneNum: string, intl: IntlShape) => void
@@ -121,7 +121,7 @@ class UserAccountScreen extends Component<Props> {
     t: HTMLInputElement,
     submitForm: () => Promise<void>
   ) => {
-    const { intl, isCreating } = this.props
+    const { intl, isWizard } = this.props
     const firstLabel = t.labels?.[0]
 
     // Disable input (adds a visual effect) during submission
@@ -130,7 +130,7 @@ class UserAccountScreen extends Component<Props> {
     t.style.animation = 'dive-in 1s linear infinite'
     const initialCursor = firstLabel ? firstLabel.style.cursor : ''
     if (firstLabel) firstLabel.style.cursor = 'wait'
-    const loadingToast = !isCreating
+    const loadingToast = !isWizard
       ? toast.loading(
           intl.formatMessage({ id: 'components.UserAccountScreen.updating' })
         )
@@ -138,7 +138,7 @@ class UserAccountScreen extends Component<Props> {
     try {
       await submitForm()
       // On success, display a toast notification for existing accounts.
-      if (!isCreating) {
+      if (!isWizard) {
         toastSuccess(
           intl.formatMessage({
             // Use a summary text for the field, if defined (e.g. to replace long labels),
@@ -206,14 +206,13 @@ class UserAccountScreen extends Component<Props> {
   }
 
   render() {
-    const { auth0, basePath, intl, isCreating, itemId, loggedInUser } =
-      this.props
+    const { auth0, basePath, intl, isWizard, itemId, loggedInUser } = this.props
     const loggedInUserWithNotificationArray = {
       ...loggedInUser,
       notificationChannel: loggedInUser.notificationChannel?.split(',') || []
     }
     return (
-      <AccountPage subnav={!isCreating}>
+      <AccountPage subnav={!isWizard}>
         <Wrapper>
           <Formik
             // Force Formik to reload initialValues when we update them (e.g. user gets assigned an id).
@@ -296,8 +295,6 @@ const mapStateToProps = (
   ownProps: RouteComponentProps<{ step: string }>
 ) => {
   const { params, url } = ownProps.match
-  const isCreating =
-    url.startsWith(CREATE_ACCOUNT_PATH) || url.startsWith(MOBILITY_PATH)
   const basePath = [CREATE_ACCOUNT_PATH, MOBILITY_PATH].find((path) =>
     url.startsWith(path)
   )
@@ -305,7 +302,7 @@ const mapStateToProps = (
   const { step } = params
   return {
     basePath,
-    isCreating,
+    isWizard: !!basePath,
     itemId: step,
     loggedInUser: state.user.loggedInUser
   }
