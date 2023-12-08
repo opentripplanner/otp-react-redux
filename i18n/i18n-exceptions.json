@@ -37,15 +37,15 @@
     "components.MobilityProfile.DevicesPane.devices.*": [
       "cane",
       "crutches",
-      "electric-wheelchair",
-      "manual-walker",
-      "manual-wheelchair",
-      "mobility-scooter",
+      "electric wheelchair",
+      "manual walker",
+      "manual wheelchair",
+      "mobility scooter",
       "none",
-      "service-animal",
+      "service animal",
       "stroller",
-      "wheeled-walker",
-      "white-cane"
+      "wheeled walker",
+      "white cane"
     ],
     "components.MobilityProfile.LimitationsPane.visionLimitations.*": [
       "none",

@@ -334,15 +334,15 @@ components:
       devices:
         cane: Cane
         crutches: Crutches
-        electric-wheelchair: Electric wheelchair
-        manual-walker: Manual walker
-        manual-wheelchair: Manual wheelchair
-        mobility-scooter: Mobility Scooter
-        none: None
-        service-animal: Service animal
+        electric wheelchair: Electric wheelchair
+        manual walker: Manual walker
+        manual wheelchair: Manual/traditional wheelchair
+        mobility scooter: Mobility scooter
+        none: No assistive device
+        service animal: Service animal
         stroller: Stroller
-        wheeled-walker: Wheeled walker
-        white-cane: White cane
+        wheeled walker: Wheeled walker
+        white cane: White cane
       prompt: Do you regularly use a mobility assistive device? (Check all that apply)
     LimitationsPane:
       mobilityPrompt: >-

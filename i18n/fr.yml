@@ -351,15 +351,15 @@ components:
       devices:
         cane: Canne
         crutches: Béquilles
-        electric-wheelchair: Fauteuil roulant électrique
-        manual-walker: Déambuleur manuel
-        manual-wheelchair: Fauteuil roulant manuel
-        mobility-scooter: Scooter électrique
+        electric wheelchair: Fauteuil roulant électrique
+        manual walker: Déambulateur manuel
+        manual wheelchair: Fauteuil roulant manuel
+        mobility scooter: Scooter électrique
         none: Aucun
-        service-animal: Animal de service
+        service animal: Animal de service
         stroller: Poussette
-        wheeled-walker: Déambuleur à roues
-        white-cane: Canne blanche
+        wheeled walker: Déambulateur à roues
+        white cane: Canne blanche
       prompt: >-
         Utilisez-vous habituellement l'aide d'un appareil pour vous déplacer ?
         (Cochez tous les cas qui vous concernent)

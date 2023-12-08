@@ -8,16 +8,16 @@ import { User } from '../types'
 
 const knownDeviceCodes = [
   'none',
-  'white-cane',
-  'manual-walker',
-  'wheeled-walker',
+  'white cane',
+  'manual walker',
+  'wheeled walker',
   'cane',
   'crutches',
   'stroller',
-  'service-animal',
-  'mobility-scooter',
-  'electric-wheelchair',
-  'manual-wheelchair'
+  'service animal',
+  'mobility scooter',
+  'electric wheelchair',
+  'manual wheelchair'
 ]
 
 const DeviceOption = styled.span`
