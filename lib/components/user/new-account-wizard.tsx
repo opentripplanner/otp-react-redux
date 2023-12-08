@@ -52,7 +52,14 @@ const NewAccountWizard = ({
 const mapStateToProps = (state: AppReduxState) => {
   return {
     pages: state.otp.config.mobilityProfile
-      ? ['terms', 'mobility1', 'mobility2', 'notifications', 'places', 'finish']
+      ? [
+          'terms',
+          'mobilityDevices',
+          'mobilityLimitations',
+          'notifications',
+          'places',
+          'finish'
+        ]
       : ['terms', 'notifications', 'places', 'finish']
   }
 }

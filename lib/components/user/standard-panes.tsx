@@ -23,13 +23,13 @@ const standardPanes: Record<string, PaneProps> = {
     pane: AccountSetupFinishPane,
     title: <FormattedMessage id="components.NewAccountWizard.finish" />
   },
-  mobility1: {
-    id: 'mobility1',
+  mobilityDevices: {
+    id: 'mobilityDevices',
     pane: AssistiveDevicesPane,
     title: <FormattedMessage id="components.MobilityProfile.title" />
   },
-  mobility2: {
-    id: 'mobility2',
+  mobilityLimitations: {
+    id: 'mobilityLimitations',
     pane: LimitationsPane,
     title: <FormattedMessage id="components.MobilityProfile.title" />
   },

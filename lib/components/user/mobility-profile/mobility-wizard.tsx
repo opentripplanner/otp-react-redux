@@ -20,7 +20,7 @@ const MobilityWizard = ({
     <Wizard
       activePaneId={activePaneId}
       formikProps={formikProps}
-      pages={['mobility1', 'mobility2']}
+      pages={['mobilityDevices', 'mobilityLimitations']}
       returnTo="/account/settings"
       title={title}
     />
