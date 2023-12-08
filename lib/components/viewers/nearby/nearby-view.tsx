@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
+import { Location } from '@opentripplanner/types'
 import { MapRef, useMap } from 'react-map-gl'
 import React, { useEffect, useRef, useState } from 'react'
 
@@ -35,6 +36,7 @@ type Props = {
   mobile?: boolean
   nearby: any
   nearbyViewCoords?: LatLonObj
+  setHighlightedLocation: (location: Location | null) => void
   setMainPanelContent: (content: number) => void
   viewNearby?: (pos: LatLonObj) => void
 }
@@ -57,12 +59,6 @@ const getNearbyItem = (place: any) => {
   }
 }
 
-const getNearbyItemList = (nearby: any) => {
-  return nearby?.map((n: any) => (
-    <div key={n.place.id}>{getNearbyItem(n.place)}</div>
-  ))
-}
-
 function NearbyView(props: Props): JSX.Element {
   const {
     fetchNearby,
@@ -70,6 +66,7 @@ function NearbyView(props: Props): JSX.Element {
     mobile,
     nearby,
     nearbyViewCoords,
+    setHighlightedLocation,
     setMainPanelContent,
     viewNearby
   } = props
@@ -98,6 +95,26 @@ function NearbyView(props: Props): JSX.Element {
     }
   }, [nearbyViewCoords])
 
+  const onMouseEnter = (location: Location) => {
+    setHighlightedLocation(location)
+  }
+  const onMouseLeave = () => {
+    setHighlightedLocation(null)
+  }
+
+  const getNearbyItemList = (nearby: any) => {
+    return nearby?.map((n: any) => (
+      <div
+        key={n.place.id}
+        onMouseEnter={() => onMouseEnter(n.place)}
+        onMouseLeave={onMouseLeave}
+        role="menuitem"
+        tabIndex={0}
+      >
+        {getNearbyItem(n.place)}
+      </div>
+    ))
+  }
   useEffect(() => {
     setLoading(false)
   }, [nearby])
@@ -151,6 +168,7 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = {
   fetchNearby: apiActions.fetchNearby,
   getCurrentPosition,
+  setHighlightedLocation: uiActions.setHighlightedLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
   viewNearby: uiActions.viewNearby
 }

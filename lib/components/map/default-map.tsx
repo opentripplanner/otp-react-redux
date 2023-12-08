@@ -23,6 +23,7 @@ import { updateOverlayVisibility } from '../../actions/config'
 
 import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
+import NearbyViewDotOverlay from './nearby-view-dot-overlay'
 import ParkAndRideOverlay from './connected-park-and-ride-overlay'
 import PointPopup from './point-popup'
 import RoutePreviewOverlay from './route-preview-overlay'
@@ -302,6 +303,7 @@ class DefaultMap extends Component {
           zoom={zoom}
         >
           <PointPopup />
+          <NearbyViewDotOverlay />
           <RoutePreviewOverlay />
           {/* The default overlays */}
           <EndpointsOverlay />
