@@ -3,7 +3,7 @@ import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
 // @ts-expect-error icons doesn't have typescript?
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
-import { IntlShape } from 'react-intl'
+import { IntlShape, useIntl } from 'react-intl'
 import { useMap } from 'react-map-gl'
 // @ts-expect-error icons doesn't have typescript?
 import { Micromobility } from '@opentripplanner/icons'
@@ -81,13 +81,18 @@ const Vehicle = ({
   zoomToPlace: (map: any, stopData: any) => void
 }): JSX.Element => {
   const map = useMap().default
+  const intl = useIntl()
   const company = companies.find((c) => c.id === vehicle.network)?.label ?? ''
   const { formFactor } = vehicle.vehicleType
+  const name =
+    vehicle.name === 'Default vehicle type'
+      ? getVehicleText(formFactor, company, intl)
+      : vehicle.name
   const setLocationFromPlace = (locationType: 'from' | 'to') => {
     const location = {
       lat: vehicle.lat,
       lon: vehicle.lon,
-      name: vehicle.name
+      name
     }
     setLocation({ location, locationType, reverseGeocode: false })
   }
@@ -105,11 +110,11 @@ const Vehicle = ({
     <Card onMouseEnter={() => zoomToPlace(map, vehicle)}>
       <CardHeader>
         <CardTitle>
-          <IconWithText Icon={StationIcon}>{company}</IconWithText>
+          <IconWithText Icon={StationIcon}>{name}</IconWithText>
         </CardTitle>
       </CardHeader>
       <CardBody>
-        <div>{vehicle.name}</div>
+        {vehicle.name !== 'Default vehicle type' && <div>{vehicle.name}</div>}
         <span role="group">
           <FromToLocationPicker
             label
