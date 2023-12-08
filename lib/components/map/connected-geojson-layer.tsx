@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useEffect, useState } from 'react'
 
-import { setLocation } from '../../actions/map'
+import * as mapActions from '../../actions/map'
 import { SetLocationHandler } from '../util/types'
 
 type Props = {
@@ -68,7 +68,11 @@ const GeoJSONOverlay = (props: Props) => {
             popupProps={{ offset: 10 }}
             position={[geometry.coordinates[1], geometry.coordinates[0]]}
           >
-            <img alt={properties.Name} src={properties.icon} />
+            <img
+              alt={properties.Name}
+              className={properties.className}
+              src={properties.icon}
+            />
           </MarkerWithPopup>
         )
       })}
@@ -76,7 +80,7 @@ const GeoJSONOverlay = (props: Props) => {
   )
 }
 const mapDispatchToProps = {
-  setLocation
+  setLocation: mapActions.setLocation
 }
 
 export default connect(null, mapDispatchToProps)(GeoJSONOverlay)
