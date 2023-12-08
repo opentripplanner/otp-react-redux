@@ -373,6 +373,7 @@ components:
         none: Aucune
       visionPrompt: Avez-vous des déficiences visuelles ?
     MobilityPane:
+      button: Modifier votre profil de mobilité
       header: Profil de mobilité
     intro: >-
       Veuillez répondre a quelques questions pour personaliser vos recherches de

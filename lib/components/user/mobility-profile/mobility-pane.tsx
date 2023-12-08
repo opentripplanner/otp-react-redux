@@ -18,7 +18,7 @@ const MobilityPane = ({ routeTo }: Props): JSX.Element => {
   }, [routeTo])
   return (
     <Button bsStyle="primary" onClick={handleClick}>
-      <FormattedMessage id="components.MobilityProfile.title" />
+      <FormattedMessage id="components.MobilityProfile.MobilityPane.button" />
     </Button>
   )
 }

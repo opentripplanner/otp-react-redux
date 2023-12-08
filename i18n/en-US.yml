@@ -354,6 +354,7 @@ components:
         none: None
       visionPrompt: Do you have any vision limitations?
     MobilityPane:
+      button: Edit your mobility profile
       header: Mobility Profile
     intro: >-
       Please answer a few questions to customize the trip planning experience to
