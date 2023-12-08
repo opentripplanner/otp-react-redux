@@ -4,6 +4,7 @@ import type { Route, TransitOperator } from '@opentripplanner/types'
 
 import { ComponentContext } from '../../util/contexts'
 import {
+  extractHeadsignFromPattern,
   generateFakeLegForRouteRenderer,
   getRouteColorBasedOnSettings,
   routeNameFontSize
@@ -71,7 +72,9 @@ const PatternRow = ({
               style={{ fontSize: routeNameFontSize(routeName) }}
             />
           </span>
-          <span title={pattern.headsign}>{pattern.headsign}</span>
+          <span style={{ wordBreak: 'break-word' }} title={pattern.headsign}>
+            {extractHeadsignFromPattern(pattern)}
+          </span>
         </div>
         {/* next departure preview (only shows up to 3 entries) */}
         {hasStopTimes && (
