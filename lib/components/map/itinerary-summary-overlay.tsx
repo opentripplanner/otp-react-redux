@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
+import { Coord, Feature, lineString, LineString, Units } from '@turf/helpers'
 import { Itinerary, Location } from '@opentripplanner/types'
 import { Marker } from 'react-map-gl'
+import pointToLineDistance from '@turf/point-to-line-distance'
 import polyline from '@mapbox/polyline'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
@@ -15,30 +17,13 @@ import {
 } from '../../util/state'
 import MetroItineraryRoutes from '../narrative/metro/metro-itinerary-routes'
 
+type ItinWithGeometry = Itinerary & { allLegGeometry: Feature<LineString> }
+
 type Props = {
   from: Location
   itins: Itinerary[]
   to: Location
   visible?: boolean
-}
-
-const getItinMidpoint = (itin: Itinerary, index: number, itinCount = 1) => {
-  const geometries = itin.legs.flatMap((leg) =>
-    polyline.decode(leg.legGeometry.points)
-  )
-
-  // Each itinerary will render the marker at a different spot along the itinerary
-  // 0.8 prevents any items from appearing at the very end of a leg
-
-  // TODO:
-  // this needs to be an array of arrays. we decide which geometries should be merged based
-  // on their freshet distance
-  const midPoint =
-    geometries[
-      Math.floor((geometries.length / (itinCount + 1)) * 0.8) * (index + 1)
-    ]
-
-  return midPoint
 }
 
 const Card = styled.div`
@@ -64,30 +49,72 @@ const Card = styled.div`
 }
 `
 
+function addItinLineString(itin: Itinerary): ItinWithGeometry {
+  return {
+    ...itin,
+    allLegGeometry: lineString(
+      itin.legs.flatMap((leg) => polyline.decode(leg.legGeometry.points))
+    )
+  }
+}
+
+function getUniquePoint(
+  thisItin: ItinWithGeometry,
+  otherItineraries: ItinWithGeometry[]
+) {
+  let maxDistance = 0
+  let uniquePoint = null
+  const line = thisItin.allLegGeometry
+
+  line.geometry.coordinates.forEach((point) => {
+    const totalDistance = otherItineraries.reduce(
+      (prev, cur) => (prev += pointToLineDistance(point, cur.allLegGeometry)),
+      0
+    )
+
+    const averageDistance = totalDistance / otherItineraries.length
+
+    if (averageDistance > maxDistance) {
+      maxDistance = averageDistance
+      uniquePoint = point
+    }
+  })
+  return { itin: thisItin, uniquePoint }
+}
+
 const ItinerarySummaryOverlay = ({ from, itins, to, visible }: Props) => {
   // @ts-expect-error React context is populated dynamically
   const { LegIcon } = useContext(ComponentContext)
 
   if (!itins || !visible) return <></>
-  const mergedItins = doMergeItineraries(itins).mergedItineraries
-  const midPoints = mergedItins.map((itin: Itinerary, index: number) =>
-    getItinMidpoint(itin, index, mergedItins.length)
-  )
+  const mergedItins: ItinWithGeometry[] =
+    doMergeItineraries(itins).mergedItineraries.map(addItinLineString)
+  const midPoints = mergedItins.map((itin, index) => {
+    return getUniquePoint(itin, mergedItins.toSpliced(index, 1))
+  })
+  console.log(mergedItins, midPoints)
 
   try {
     return (
       <>
-        {midPoints.map((mp: number[], key: number) => (
-          <Marker key={key} latitude={mp[0]} longitude={mp[1]}>
-            <Card>
-              <MetroItineraryRoutes
-                expanded={false}
-                itinerary={mergedItins[key]}
-                LegIcon={LegIcon}
-              />
-            </Card>
-          </Marker>
-        ))}
+        {midPoints.map(
+          (mp) =>
+            mp.uniquePoint && (
+              <Marker
+                key={mp.itin.duration}
+                latitude={mp.uniquePoint[0]}
+                longitude={mp.uniquePoint[1]}
+              >
+                <Card>
+                  <MetroItineraryRoutes
+                    expanded={false}
+                    itinerary={mp.itin}
+                    LegIcon={LegIcon}
+                  />
+                </Card>
+              </Marker>
+            )
+        )}
       </>
     )
   } catch (error) {
