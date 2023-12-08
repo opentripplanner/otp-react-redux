@@ -21,11 +21,16 @@ const knownDeviceCodes = [
 ]
 
 const DeviceOption = styled.span`
-  display: block;
+  align-items: center;
+  display: inline-flex;
+  gap: 0.5em;
+  margin-bottom: 5px;
+  min-width: 300px;
+  width: 50%;
 
   label {
     font-weight: normal;
-    margin: 0.25em;
+    margin: 4px 0 0; /* match bootstrap's checkbox for better vert. align */
   }
 `
 
