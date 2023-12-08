@@ -11,9 +11,9 @@ import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { Suspense } from 'react'
 
 import * as mapActions from '../../../actions/map'
+import { IconWithText } from '../../util/styledIcon'
 
 import { Card, CardBody, CardHeader, CardTitle } from './styled'
-import { IconWithText } from '../../util/styledIcon'
 
 type VehicleFormFactor =
   | 'BICYCLE'
@@ -24,7 +24,9 @@ type VehicleFormFactor =
   | 'SCOOTER_SEATED'
   | 'OTHER'
 
-const getVehicleIcon = (vehicleType: VehicleFormFactor): React.ReactNode => {
+export const getVehicleIcon = (
+  vehicleType: VehicleFormFactor
+): React.ReactNode => {
   switch (vehicleType) {
     case 'BICYCLE':
     case 'CARGO_BICYCLE':
@@ -114,7 +116,9 @@ const Vehicle = ({
         </CardTitle>
       </CardHeader>
       <CardBody>
-        {vehicle.name !== 'Default vehicle type' && <div>{vehicle.name}</div>}
+        {vehicle.name !== 'Default vehicle type' && vehicle.name !== name && (
+          <div>{vehicle.name}</div>
+        )}
         <span role="group">
           <FromToLocationPicker
             label
