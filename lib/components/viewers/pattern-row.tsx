@@ -73,7 +73,8 @@ const PatternRow = ({
             />
           </span>
           <span style={{ wordBreak: 'break-word' }} title={pattern.headsign}>
-            {extractHeadsignFromPattern(pattern)}
+            {extractHeadsignFromPattern(pattern) ||
+              (pattern.route.longName !== routeName && pattern.route.longName)}
           </span>
         </div>
         {/* next departure preview (only shows up to 3 entries) */}
