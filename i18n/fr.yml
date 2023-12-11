@@ -365,16 +365,19 @@ components:
         (Cochez tous les cas qui vous concernent)
     LimitationsPane:
       mobilityPrompt: >-
-        Avez-vous des déficiences qui vous font marcher plus lentement ou plus
-        prudemment que d'autres personnes ?
+        Avez-vous des handicaps moteurs qui vous font marcher plus lentement ou
+        plus prudemment que d'autres personnes ?
       visionLimitations:
         legally-blind: Non-voyant
         low-vision: Vision basse
         none: Aucune
-      visionPrompt: Avez-vous des déficiences visuelles ?
+      visionPrompt: Avez-vous des handicaps visuels ?
     MobilityPane:
-      button: Modifier votre profil de mobilité
-      header: Profil de mobilité
+      button: Modifier votre profil mobilité
+      header: Profil mobilité
+      mobilityDevices: "Appareils d'aide : "
+      mobilityLimitations: "Handicaps moteurs : "
+      visionLimitations: "Handicaps visuels : "
     intro: >-
       Veuillez répondre a quelques questions pour personaliser vos recherches de
       trajets selon vos besoins et préférences.

@@ -356,6 +356,9 @@ components:
     MobilityPane:
       button: Edit your mobility profile
       header: Mobility Profile
+      mobilityDevices: "Mobility devices: "
+      mobilityLimitations: "Mobility limitations: "
+      visionLimitations: "Vision limitations: "
     intro: >-
       Please answer a few questions to customize the trip planning experience to
       your needs and preferences.
