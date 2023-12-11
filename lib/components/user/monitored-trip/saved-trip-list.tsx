@@ -161,18 +161,6 @@ class TripListItem extends Component<ItemProps, ItemState> {
               <FormattedMessage id="common.forms.edit" />
             </IconWithText>
           </Button>
-          <Button
-            disabled={this.state.pendingRequest === 'delete'}
-            onClick={this._handleDeleteTrip}
-          >
-            {this.state.pendingRequest === 'delete' ? (
-              <InlineLoading />
-            ) : (
-              <IconWithText Icon={Trash}>
-                <FormattedMessage id="common.forms.delete" />
-              </IconWithText>
-            )}
-          </Button>
         </TripPanelFooter>
       </Panel>
     )
