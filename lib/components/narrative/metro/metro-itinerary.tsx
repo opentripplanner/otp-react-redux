@@ -12,13 +12,15 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import * as uiActions from '../../../actions/ui'
+import { AppReduxState } from '../../../util/state-types'
 import { ComponentContext } from '../../../util/contexts'
 import { FlexIndicator } from '../default/flex-indicator'
 import {
   getAccessibilityScoreForItinerary,
   itineraryHasAccessibilityScores
 } from '../../../util/accessibility-routing'
-import { getActiveSearch, getFare } from '../../../util/state'
+import { getActiveSearch } from '../../../util/state'
+import { getFare } from '../../../util/itinerary'
 import { IconWithText } from '../../util/styledIcon'
 import { ItineraryDescription } from '../default/itinerary-description'
 import { ItineraryView } from '../../../util/ui'
@@ -451,8 +453,7 @@ class MetroItinerary extends NarrativeItinerary {
   }
 }
 
-// TODO: state type
-const mapStateToProps = (state: any, ownProps: Props) => {
+const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
   const activeSearch = getActiveSearch(state)
 
   return {

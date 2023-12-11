@@ -10,6 +10,7 @@ actions:
     setPaymentError: 'Ödeme bilgileri ayarlanırken hata oluştu:'
     setRequestStatusError: 'İstek durumu ayarlanırken hata oluştu:'
     editSubmitterNotesError: 'Gönderenin notları düzenlenirken hata oluştu:'
+    addNoteError: 'Yolculuk alanına not eklenirken hata oluştu:'
   user:
     emailVerificationResent: E-posta doğrulama mesajı yeniden gönderildi.
     genericError: 'Bir hata ile karşılaşıldı: {err}'
@@ -36,6 +37,9 @@ actions:
   callTaker:
     fetchCallsError: 'Çağrılar alınırken hata oluştu: {err}'
     queryFetchError: 'Sorgular alınırken hata oluştu: {err}'
+    checkSessionError: 'Oturum kimlik doğrulama oluşturulurken hata oluştu: {err}'
+    couldNotFindCallError: Çağrı bulunamadı. Sorguları kaydetme isteği iptal ediliyor.
+    callQuerySaveError: 'Çağrı sorguları kaydedilirken hata oluştu: {err}'
   map:
     currentLocation: (Mevcut Konum)
 common:

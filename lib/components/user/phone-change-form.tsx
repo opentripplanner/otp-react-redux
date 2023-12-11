@@ -169,6 +169,9 @@ const InnerPhoneChangeForm = ({
             <FormattedMessage id="components.PhoneNumberEditor.invalidPhone" />
           )}
         </HelpBlock>
+        <HelpBlock>
+          <FormattedMessage id="components.PhoneNumberEditor.smsConsent" />
+        </HelpBlock>
       </ControlStrip>
     </FormGroup>
   )

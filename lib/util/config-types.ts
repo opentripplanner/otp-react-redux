@@ -104,6 +104,8 @@ export type PersistenceConfig = (
   | MiddlewarePersistenceConfig
 ) & {
   enabled?: boolean
+  // eslint-disable-next-line camelcase
+  terms_of_storage?: boolean
 }
 
 /** Popup target settings */
@@ -226,6 +228,15 @@ export type ItinerarySortOption =
   | 'COST'
   | 'DEPARTURETIME'
 
+export interface ItineraryCostWeights {
+  driveReluctance: number
+  durationFactor: number
+  fareFactor: number
+  transferReluctance: number
+  waitReluctance: number
+  walkReluctance: number
+}
+
 export interface ItineraryConfig {
   costs?: ItineraryCostConfig
   customBatchUiBackground?: boolean
@@ -239,6 +250,7 @@ export interface ItineraryConfig {
   groupTransitModes?: boolean
   hideSkeletons?: boolean
   mergeItineraries?: boolean
+  mutedErrors?: string[]
   onlyShowCountdownForRealtime?: boolean
   renderRouteNamesInBlocks?: boolean
   showFirstResultByDefault?: boolean
@@ -247,6 +259,7 @@ export interface ItineraryConfig {
   showPlanFirstLastButtons?: boolean
   showRouteFares?: boolean
   sortModes?: ItinerarySortOption[]
+  weights?: ItineraryCostWeights
 }
 
 export interface CO2Config extends CO2ConfigType {
@@ -289,6 +302,7 @@ export interface ModeColorConfig {
 export interface TransitOperatorConfig extends TransitOperator {
   colorMode?: 'gtfs' | 'gtfs-softened' | 'disabled'
   modeColors?: Record<string, ModeColorConfig>
+  routeIcons?: boolean
 }
 
 /** Route Viewer config */
@@ -343,6 +357,7 @@ export interface AppConfig {
   localization?: LocalizationConfig
   map: MapConfig
   mapillary?: MapillaryConfig
+  mobilityProfile?: boolean
   modes: ModesConfig
   /** Interval in seconds past which a trip is no longer considered "on-time". */
   onTimeThresholdSeconds?: number
@@ -358,9 +373,11 @@ export interface AppConfig {
   /** Whether to show the x minutes late/early in the itinerary body */
   showScheduleDeviation?: boolean
   stopViewer?: StopViewerConfig
+  /** Externally hosted terms of service URL */
+  termsOfServiceLink?: string
   /** App title shown in the browser title bar. */
   title?: string
   transitOperators?: TransitOperatorConfig[]
 
-  // TODO: add other config items.
+  // Add other config items as needed.
 }
