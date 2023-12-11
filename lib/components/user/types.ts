@@ -41,6 +41,7 @@ export interface User {
   mobilityProfile?: MobilityProfile
   notificationChannel?: string
   phoneNumber?: string
+  preferredLocale?: string
   pushDevices?: number
   savedLocations?: UserSavedLocation[]
   storeTripHistory?: boolean
