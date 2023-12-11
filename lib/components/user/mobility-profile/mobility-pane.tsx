@@ -18,18 +18,22 @@ const MobilityPane = ({ routeTo, values: userData }: Props): JSX.Element => {
   const handleClick = useCallback(() => {
     routeTo('/account/mobilityProfile/')
   }, [routeTo])
-  const { isMobilityLimited, mobilityDevices, visionLimitation } =
-    userData.mobilityProfile || {}
+  const {
+    isMobilityLimited,
+    mobilityDevices = [],
+    visionLimitation
+  } = userData.mobilityProfile || {}
+  const devices = mobilityDevices.length ? mobilityDevices : ['none']
   return (
     <div>
       <p>
         <FormattedMessage id="components.MobilityProfile.MobilityPane.mobilityDevices" />
         <FormattedList
-          // `style` below is a react-intl-specific prop.
+          // `style` below is a react-intl -specific prop.
           // eslint-disable-next-line react/style-prop-object
-          style="narrow"
+          style="narrow" // Should suppress the ending "and" in "a, b, and c".
           type="conjunction"
-          value={mobilityDevices?.map((dv) => (
+          value={devices.map((dv) => (
             <FormattedMessage
               id={`components.MobilityProfile.DevicesPane.devices.${dv}`}
               key={dv}
