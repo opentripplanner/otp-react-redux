@@ -513,6 +513,7 @@ components:
     tripNotFoundDescription: Sorry, the requested trip was not found.
     tripNotifications: Trip notifications
   SavedTripList:
+    alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
     fromTo: From {from} to {to}
     myTrips: My trips
     noSavedTrips: You have no saved trips
