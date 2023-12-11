@@ -346,6 +346,42 @@ components:
     timeWalking: "{time} de marche"
   MobileOptions:
     header: Options de recherche
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Canne
+        crutches: Béquilles
+        electric wheelchair: Fauteuil roulant électrique
+        manual walker: Déambulateur manuel
+        manual wheelchair: Fauteuil roulant manuel
+        mobility scooter: Scooter électrique
+        none: Aucun
+        service animal: Animal de service
+        stroller: Poussette
+        wheeled walker: Déambulateur à roues
+        white cane: Canne blanche
+      prompt: >-
+        Utilisez-vous habituellement l'aide d'un appareil pour vous déplacer ?
+        (Cochez tous les cas qui vous concernent)
+    LimitationsPane:
+      mobilityPrompt: >-
+        Avez-vous des handicaps moteurs qui vous font marcher plus lentement ou
+        plus prudemment que d'autres personnes ?
+      visionLimitations:
+        legally-blind: Non-voyant
+        low-vision: Vision basse
+        none: Aucune
+      visionPrompt: Avez-vous des handicaps visuels ?
+    MobilityPane:
+      button: Modifier votre profil mobilité
+      header: Profil mobilité
+      mobilityDevices: "Appareils d'aide : "
+      mobilityLimitations: "Handicaps moteurs : "
+      visionLimitations: "Handicaps visuels : "
+    intro: >-
+      Veuillez répondre a quelques questions pour personaliser vos recherches de
+      trajets selon vos besoins et préférences.
+    title: Spécifiez votre profil de mobilité
   NarrativeItinerariesHeader:
     changeSortDir: Changer l'ordre de tri
     howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés plus bas.

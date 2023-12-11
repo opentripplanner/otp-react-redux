@@ -14,6 +14,20 @@ export interface UserSavedLocation {
   type?: string
 }
 
+export const visionLimitations = [
+  'none',
+  'low-vision',
+  'legally-blind'
+] as const
+
+export type VisionLimitation = typeof visionLimitations[number]
+
+export interface MobilityProfile {
+  isMobilityLimited: boolean
+  mobilityDevices: string[]
+  visionLimitation: VisionLimitation
+}
+
 /**
  * Type definition for an OTP-middleware (OTP-personas) user.
  */
@@ -24,6 +38,7 @@ export interface User {
   hasConsentedToTerms?: boolean
   id?: string
   isPhoneNumberVerified?: boolean
+  mobilityProfile?: MobilityProfile
   notificationChannel?: string
   phoneNumber?: string
   pushDevices?: number
