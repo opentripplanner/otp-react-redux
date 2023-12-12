@@ -375,7 +375,7 @@ components:
       visionLimitations:
         legally-blind: Non-voyant
         low-vision: Vision basse
-        none: Aucune
+        none: Aucun
       visionPrompt: Avez-vous des handicaps visuels ?
     MobilityPane:
       button: Modifier votre profil mobilité
