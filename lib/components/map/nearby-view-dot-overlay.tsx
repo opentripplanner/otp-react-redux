@@ -14,7 +14,7 @@ const NearbyDot = styled.div`
   background: var(--main-base-color, #333);
   box-shadow: 0px 0px 10px 10px var(--main-base-color, #333);
 
-  border-radius: 19999999994898498px; //TODO: lower this? --miles
+  border-radius: 30px;
   content: '';
   cursor: pointer;
   display: block;

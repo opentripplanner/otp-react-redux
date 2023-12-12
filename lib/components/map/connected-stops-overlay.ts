@@ -16,7 +16,6 @@ const mapStateToProps = (state: any) => {
   // FIXME: What type to use here? We don't have one that matches for Pattern.
   const { patterns, v2 }: { patterns: Record<string, any>; v2: boolean } =
     state.otp.transitIndex.routes?.[routeId] || {}
-  const visible = mainPanelContent !== MainPanelContent.STOP_VIEWER
 
   let minZoom = 15
   let stops = []
@@ -48,9 +47,7 @@ const mapStateToProps = (state: any) => {
 
     // Override the minimum zoom so that the stops appear even if zoomed out
     minZoom = 2
-  } else if (mainPanelContent === MainPanelContent.NEARBY_VIEW) {
-    stops = state.otp.overlay.transit.stops
-  } else if (visible) {
+  } else {
     // Display all stops if no route is shown.
     stops = state.otp.overlay.transit.stops
   }
@@ -63,8 +60,7 @@ const mapStateToProps = (state: any) => {
     highlightedStop,
     highlightedStopColor,
     minZoom,
-    stops,
-    visible
+    stops
   }
 }
 
