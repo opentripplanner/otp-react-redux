@@ -23,6 +23,7 @@ const NearbyDot = styled.div`
   width: 50px;
 `
 
+// TODO: possibly add bikes and scooters here?
 const NearbyViewDotOverlay = ({ location }: Props) => {
   if (!location) return null
   return (
