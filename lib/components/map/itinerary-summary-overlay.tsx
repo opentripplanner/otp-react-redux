@@ -75,6 +75,7 @@ function getUniquePoint(
     )
 
     const selfDistance = distance(point, centerOfLine)
+    // maximize distance from all other points while minimizing distance to center of our own line
     const averageDistance = totalDistance / otherMidpoints.length - selfDistance
 
     if (averageDistance > maxDistance) {
@@ -101,6 +102,7 @@ const ItinerarySummaryOverlay = ({ from, itins, to, visible }: Props) => {
       )
     )
   })
+  // The first point is probably not well placed, so let's run the algorithm again
   if (midPoints.length > 1) {
     midPoints[0] = getUniquePoint(
       mergedItins[0],
