@@ -16,6 +16,10 @@ import {
   getActiveSearch,
   getVisibleItineraryIndex
 } from '../../util/state'
+import {
+  setActiveItinerary,
+  setVisibleItinerary
+} from '../../actions/narrative'
 import MetroItineraryRoutes from '../narrative/metro/metro-itinerary-routes'
 
 type ItinWithGeometry = Itinerary & { allLegGeometry: Feature<LineString> }
@@ -23,8 +27,11 @@ type ItinWithGeometry = Itinerary & { allLegGeometry: Feature<LineString> }
 type Props = {
   from: Location
   itins: Itinerary[]
+  setActiveItinerary: ({ index }: { index: number }) => void
+  setVisibleItinerary: ({ index }: { index: number }) => void
   to: Location
   visible?: boolean
+  visibleItinerary?: number
 }
 
 const Card = styled.div`
@@ -86,7 +93,15 @@ function getUniquePoint(
   return { itin: thisItin, uniquePoint }
 }
 
-const ItinerarySummaryOverlay = ({ from, itins, to, visible }: Props) => {
+const ItinerarySummaryOverlay = ({
+  from,
+  itins,
+  setActiveItinerary: setActive,
+  setVisibleItinerary: setVisible,
+  to,
+  visible,
+  visibleItinerary
+}: Props) => {
   // @ts-expect-error React context is populated dynamically
   const { LegIcon } = useContext(ComponentContext)
 
@@ -114,14 +129,29 @@ const ItinerarySummaryOverlay = ({ from, itins, to, visible }: Props) => {
     return (
       <>
         {midPoints.map(
-          (mp) =>
+          (mp, index) =>
+            // TODO: does this cause an issue with the merging? is the right itinerary selected?`
+            (visibleItinerary !== null && visibleItinerary !== undefined
+              ? visibleItinerary === index
+              : true) &&
             mp.uniquePoint && (
               <Marker
                 key={mp.itin.duration}
                 latitude={mp.uniquePoint[0]}
                 longitude={mp.uniquePoint[1]}
+                style={{ cursor: 'pointer' }}
               >
-                <Card>
+                <Card
+                  onClick={() => {
+                    setActive({ index })
+                  }}
+                  onMouseEnter={() => {
+                    setVisible({ index })
+                  }}
+                  onMouseLeave={() => {
+                    setVisible({ index: null })
+                  }}
+                >
                   <MetroItineraryRoutes
                     expanded={false}
                     itinerary={mp.itin}
@@ -166,12 +196,14 @@ const mapStateToProps = (state: any) => {
     from,
     itins,
     to,
-    visible:
-      // We need an explicit check for undefined and null because 0
-      // is for us true
-      (visibleItinerary === undefined || visibleItinerary === null) &&
-      (activeItinerary === undefined || activeItinerary === null)
+    visible: activeItinerary === undefined || activeItinerary === null,
+    visibleItinerary
   }
 }
 
-export default connect(mapStateToProps)(ItinerarySummaryOverlay)
+const mapDispatchToProps = { setActiveItinerary, setVisibleItinerary }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ItinerarySummaryOverlay)
