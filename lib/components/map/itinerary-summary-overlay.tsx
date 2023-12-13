@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
-import { Coord, Feature, lineString, LineString, Units } from '@turf/helpers'
+import { Feature, lineString, LineString } from '@turf/helpers'
 import { Itinerary, Location } from '@opentripplanner/types'
 import { Marker } from 'react-map-gl'
-import pointToLineDistance from '@turf/point-to-line-distance'
+import centroid from '@turf/centroid'
+import distance from '@turf/distance'
 import polyline from '@mapbox/polyline'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
@@ -60,19 +61,21 @@ function addItinLineString(itin: Itinerary): ItinWithGeometry {
 
 function getUniquePoint(
   thisItin: ItinWithGeometry,
-  otherItineraries: ItinWithGeometry[]
+  otherMidpoints: [number, number][]
 ) {
-  let maxDistance = 0
-  let uniquePoint = null
+  let maxDistance = -Infinity
   const line = thisItin.allLegGeometry
+  const centerOfLine = centroid(line).geometry.coordinates
+  let uniquePoint = centerOfLine
 
   line.geometry.coordinates.forEach((point) => {
-    const totalDistance = otherItineraries.reduce(
-      (prev, cur) => (prev += pointToLineDistance(point, cur.allLegGeometry)),
+    const totalDistance = otherMidpoints.reduce(
+      (prev, cur) => (prev += distance(point, cur)),
       0
     )
 
-    const averageDistance = totalDistance / otherItineraries.length
+    const selfDistance = distance(point, centerOfLine)
+    const averageDistance = totalDistance / otherMidpoints.length - selfDistance
 
     if (averageDistance > maxDistance) {
       maxDistance = averageDistance
@@ -89,10 +92,21 @@ const ItinerarySummaryOverlay = ({ from, itins, to, visible }: Props) => {
   if (!itins || !visible) return <></>
   const mergedItins: ItinWithGeometry[] =
     doMergeItineraries(itins).mergedItineraries.map(addItinLineString)
-  const midPoints = mergedItins.map((itin, index) => {
-    return getUniquePoint(itin, mergedItins.toSpliced(index, 1))
+  const midPoints = []
+  mergedItins.forEach((itin, index) => {
+    midPoints.push(
+      getUniquePoint(
+        itin,
+        midPoints.map((mp) => mp.uniquePoint)
+      )
+    )
   })
-  console.log(mergedItins, midPoints)
+  if (midPoints.length > 1) {
+    midPoints[0] = getUniquePoint(
+      mergedItins[0],
+      midPoints.map((mp) => mp.uniquePoint)
+    )
+  }
 
   try {
     return (
