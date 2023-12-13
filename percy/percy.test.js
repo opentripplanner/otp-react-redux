@@ -148,7 +148,9 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.waitForTimeout(300)
     // Click the clear button next to it
     await page.click('.from-form-control + button')
-    await page.click('.mobile-location-back')
+    if (isMobile) {
+      await page.click('.mobile-location-back')
+    }
 
     await page.click('.to-form-control')
     await page.waitForTimeout(300)
