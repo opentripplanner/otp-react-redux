@@ -33,6 +33,24 @@
     "components.OTP2ErrorRenderer.inputFields.*": [
       "FROM",
       "TO"
+    ],
+    "components.MobilityProfile.DevicesPane.devices.*": [
+      "cane",
+      "crutches",
+      "electric wheelchair",
+      "manual walker",
+      "manual wheelchair",
+      "mobility scooter",
+      "none",
+      "service animal",
+      "stroller",
+      "wheeled walker",
+      "white cane"
+    ],
+    "components.MobilityProfile.LimitationsPane.visionLimitations.*": [
+      "none",
+      "low-vision",
+      "legally-blind"
     ]
   }
 }
