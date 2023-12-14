@@ -294,8 +294,6 @@ class MetroItinerary extends NarrativeItinerary {
       accessibilityScoreGradationMap
     )
 
-    console.log(itinerary)
-
     const handleClick = () => {
       setActiveItinerary(itinerary)
       setActiveLeg(null, null)
