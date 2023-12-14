@@ -29,7 +29,7 @@ interface Props extends OwnProps {
   activeStopId?: string
   highlight: boolean
   modeColors: ModeColors
-  overrideConfig: AppConfig
+  overrideConfig: Record<string, string>
   setLocation: SetLocationHandler
   setViewedStop: SetViewedStopHandler
 }
