@@ -176,9 +176,7 @@ components:
     tooManyPlaces: Maximum intermediate places reached
   AdvancedOptions:
     bannedRoutes: Select banned routes…
-    bikeTolerance: Bike Tolerance
     preferredRoutes: Select preferred routes...
-    walkTolerance: Walk Tolerance
   AfterSignInScreen:
     mainTitle: Redirecting...
     message: >-

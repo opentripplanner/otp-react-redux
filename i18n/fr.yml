@@ -189,9 +189,7 @@ components:
     tooManyPlaces: Nombre max. de points intermédiaires atteint
   AdvancedOptions:
     bannedRoutes: Choisissez les lignes à éviter…
-    bikeTolerance: Tolérance au vélo
     preferredRoutes: Choisissez les lignes préferées
-    walkTolerance: Tolérance à la marche
   AfterSignInScreen:
     mainTitle: Redirection...
     message: >-
