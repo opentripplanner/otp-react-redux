@@ -149,7 +149,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     // Click the clear button next to it
     await page.click('.from-form-control + button')
     if (isMobile) {
-      await page.click('.mobile-location-back')
+      await page.click('.mobile-back')
     }
 
     await page.click('.to-form-control')
@@ -157,7 +157,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     // Click the clear button next to it
     await page.click('.to-form-control + button')
     if (isMobile) {
-      await page.click('.mobile-location-back')
+      await page.click('.mobile-back')
     }
 
     // Fill in new origin
