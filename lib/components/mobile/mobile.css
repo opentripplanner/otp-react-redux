@@ -54,10 +54,10 @@
 .otp .navbar .mobile-back {
   background: transparent;
   border: none;
-  position: fixed;
-  left: 7px;
   color: white;
   font-size: 18px;
+  left: 7px;
+  position: fixed;
 }
 
 .otp .navbar .mobile-close {
