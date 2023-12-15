@@ -148,11 +148,17 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.waitForTimeout(300)
     // Click the clear button next to it
     await page.click('.from-form-control + button')
+    if (isMobile) {
+      await page.click('.mobile-back')
+    }
 
     await page.click('.to-form-control')
     await page.waitForTimeout(300)
     // Click the clear button next to it
     await page.click('.to-form-control + button')
+    if (isMobile) {
+      await page.click('.mobile-back')
+    }
 
     // Fill in new origin
     await page.hover('.from-form-control')
