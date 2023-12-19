@@ -8,7 +8,7 @@ import { useMap } from 'react-map-gl'
 // @ts-expect-error icons doesn't have typescript?
 import { Micromobility } from '@opentripplanner/icons'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React, { Suspense } from 'react'
+import React, { Suspense, useCallback } from 'react'
 
 import * as mapActions from '../../../actions/map'
 import { AppReduxState } from '../../../util/state-types'
@@ -107,16 +107,24 @@ const Vehicle = ({
     vehicle.name === 'Default vehicle type'
       ? getVehicleText(formFactor, companyLabel, intl)
       : vehicle.name
-  const setLocationFromPlace = (locationType: 'from' | 'to') => {
-    const location = {
-      lat: vehicle.lat,
-      lon: vehicle.lon,
-      name
-    }
-    setLocation({ location, locationType, reverseGeocode: false })
-  }
+  const setLocationFromPlace = useCallback(
+    (locationType: 'from' | 'to') => {
+      const location = {
+        lat: vehicle.lat,
+        lon: vehicle.lon,
+        name
+      }
+      setLocation({ location, locationType, reverseGeocode: false })
+    },
+    [vehicle.lat, vehicle.lon, name, setLocation]
+  )
   return (
-    <Card onMouseEnter={() => zoomToPlace(map, vehicle)}>
+    <Card
+      onMouseEnter={useCallback(
+        () => zoomToPlace(map, vehicle),
+        [map, vehicle, zoomToPlace]
+      )}
+    >
       <CardHeader>
         <CardTitle>
           <IconWithText
@@ -133,8 +141,14 @@ const Vehicle = ({
         <span role="group">
           <FromToLocationPicker
             label
-            onFromClick={() => setLocationFromPlace('from')}
-            onToClick={() => setLocationFromPlace('to')}
+            onFromClick={useCallback(
+              () => setLocationFromPlace('from'),
+              [setLocationFromPlace]
+            )}
+            onToClick={useCallback(
+              () => setLocationFromPlace('to'),
+              [setLocationFromPlace]
+            )}
           />
         </span>
       </CardBody>

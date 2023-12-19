@@ -8,7 +8,7 @@ import { useMap } from 'react-map-gl'
 import coreUtils from '@opentripplanner/core-utils'
 import dateFnsUSLocale from 'date-fns/locale/en-US'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
@@ -150,27 +150,30 @@ const Stop = ({
   const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
   const timezoneWarning = !inHomeTimezone && getTimezoneWarning(homeTimezone)
 
-  const setLocationFromStop = (locationType: 'from' | 'to') => {
-    const location = {
-      lat: stopData.lat,
-      lon: stopData.lon,
-      name: stopData.name
-    }
-    setLocation({ location, locationType, reverseGeocode: false })
-  }
+  const setLocationFromStop = useCallback(
+    (locationType: 'from' | 'to') => {
+      const location = {
+        lat: stopData.lat,
+        lon: stopData.lon,
+        name: stopData.name
+      }
+      setLocation({ location, locationType, reverseGeocode: false })
+    },
+    [stopData.lat, stopData.lon, stopData.name, setLocation]
+  )
 
-  const zoomToStop = () => {
+  const zoomToStop = useCallback(() => {
     zoomToPlace(map.default, stopData)
-  }
+  }, [zoomToPlace, map.default, stopData])
 
-  const onMouseEnter = () => {
+  const onMouseEnter = useCallback(() => {
     zoomToStop()
     setHoveredStop(stopData.gtfsId)
-  }
+  }, [zoomToStop, setHoveredStop, stopData.gtfsId])
 
-  const onMouseLeave = () => {
+  const onMouseLeave = useCallback(() => {
     setHoveredStop(undefined)
-  }
+  }, [setHoveredStop])
 
   const operator = agencies.size
     ? transitOperators?.find((o) => o.agencyId === Array.from(agencies)[0])
@@ -207,8 +210,14 @@ const Stop = ({
         <span role="group">
           <FromToLocationPicker
             label
-            onFromClick={() => setLocationFromStop('from')}
-            onToClick={() => setLocationFromStop('to')}
+            onFromClick={useCallback(
+              () => setLocationFromStop('from'),
+              [setLocationFromStop]
+            )}
+            onToClick={useCallback(
+              () => setLocationFromStop('to'),
+              [setLocationFromStop]
+            )}
           />
         </span>
       </CardBody>

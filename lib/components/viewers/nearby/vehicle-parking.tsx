@@ -3,7 +3,7 @@ import { Parking } from '@styled-icons/fa-solid'
 import { Place } from '@opentripplanner/types'
 import { useMap } from 'react-map-gl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import * as mapActions from '../../../actions/map'
 import { IconWithText } from '../../util/styledIcon'
@@ -19,14 +19,17 @@ type Props = {
 
 const VehicleParking = ({ place, setLocation, zoomToPlace }: Props) => {
   const map = useMap().default
-  const setLocationFromStop = (locationType: 'from' | 'to') => {
-    const location = {
-      lat: place.lat,
-      lon: place.lon,
-      name: place.name
-    }
-    setLocation({ location, locationType, reverseGeocode: false })
-  }
+  const setLocationFromStop = useCallback(
+    (locationType: 'from' | 'to') => {
+      const location = {
+        lat: place.lat,
+        lon: place.lon,
+        name: place.name
+      }
+      setLocation({ location, locationType, reverseGeocode: false })
+    },
+    [place.lat, place.lon, place.name, setLocation]
+  )
   return (
     <Card onMouseEnter={() => zoomToPlace(map, place)}>
       <CardHeader>
@@ -39,8 +42,14 @@ const VehicleParking = ({ place, setLocation, zoomToPlace }: Props) => {
         <span role="group">
           <FromToLocationPicker
             label
-            onFromClick={() => setLocationFromStop('from')}
-            onToClick={() => setLocationFromStop('to')}
+            onFromClick={useCallback(
+              () => setLocationFromStop('from'),
+              [setLocationFromStop]
+            )}
+            onToClick={useCallback(
+              () => setLocationFromStop('to'),
+              [setLocationFromStop]
+            )}
           />
         </span>
       </CardBody>

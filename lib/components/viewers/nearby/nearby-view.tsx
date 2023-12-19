@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
 import { Location } from '@opentripplanner/types'
 import { MapRef, useMap } from 'react-map-gl'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
 import * as locationActions from '../../../actions/location'
@@ -96,29 +96,35 @@ function NearbyView(props: Props): JSX.Element {
     }
   }, [nearbyViewCoords])
 
-  const onMouseEnter = (location: Location) => {
-    setHighlightedLocation(location)
-  }
-  const onMouseLeave = () => {
+  const onMouseEnter = useCallback(
+    (location: Location) => {
+      setHighlightedLocation(location)
+    },
+    [setHighlightedLocation]
+  )
+  const onMouseLeave = useCallback(() => {
     setHighlightedLocation(null)
-  }
+  }, [setHighlightedLocation])
 
-  const getNearbyItemList = (nearby: any) => {
-    return nearby?.map((n: any) => (
-      <div
-        key={n.place.id}
-        onMouseEnter={() => onMouseEnter(n.place)}
-        onMouseLeave={onMouseLeave}
-        role="menuitem"
-        tabIndex={0}
-      >
-        {getNearbyItem(n.place)}
-      </div>
-    ))
-  }
+  const nearbyItemList = nearby?.map((n: any) => (
+    <div
+      key={n.place.id}
+      onMouseEnter={() => onMouseEnter(n.place)}
+      onMouseLeave={onMouseLeave}
+      role="menuitem"
+      tabIndex={0}
+    >
+      {getNearbyItem(n.place)}
+    </div>
+  ))
   useEffect(() => {
     setLoading(false)
   }, [nearby])
+
+  const goBack = useCallback(
+    () => setMainPanelContent(0),
+    [setMainPanelContent]
+  )
 
   const MainContainer = mobile ? MobileContainer : Scrollable
 
@@ -129,7 +135,7 @@ function NearbyView(props: Props): JSX.Element {
           headerText={intl.formatMessage({
             id: 'components.NearbyView.header'
           })}
-          onBackClicked={() => setMainPanelContent(0)}
+          onBackClicked={goBack}
         />
       )}
       <NearbySidebarContainer
@@ -146,7 +152,7 @@ function NearbyView(props: Props): JSX.Element {
           (nearby.error ? (
             intl.formatMessage({ id: 'components.NearbyView.error' })
           ) : nearby.length > 0 ? (
-            getNearbyItemList(nearby)
+            nearbyItemList
           ) : (
             <FormattedMessage id="components.NearbyView.nothingNearby" />
           ))}
