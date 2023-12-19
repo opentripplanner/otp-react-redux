@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
-import { TransitOperator } from '@opentripplanner/types'
+import { Stop, TransitOperator } from '@opentripplanner/types'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
@@ -26,9 +26,9 @@ import {
   LogoLinkContainer,
   PatternContainer,
   RouteNameContainer,
-  Stop,
   StopContainer,
-  StopLink
+  StopLink,
+  Stop as StyledStop
 } from './styled'
 
 const PatternSelectButton = styled(UnstyledButton)`
@@ -71,7 +71,7 @@ class RouteDetails extends Component<Props> {
   /**
    * If a stop link is clicked, redirect to stop viewer
    */
-  _stopLinkClicked = (stop: any) => {
+  _stopLinkClicked = (stop: Stop) => {
     const { setViewedStop } = this.props
     setViewedStop(stop)
   }
@@ -211,7 +211,7 @@ class RouteDetails extends Component<Props> {
               textColor={getMostReadableTextColor(routeColor, route?.textColor)}
             >
               {pattern?.stops?.map((stop, index) => (
-                <Stop
+                <StyledStop
                   // Use array index instead of stop id because a stop can be visited several times.
                   key={index}
                   onClick={() => this._stopLinkClicked(stop)}
@@ -226,7 +226,6 @@ class RouteDetails extends Component<Props> {
                 >
                   <StopLink
                     name={stop.name}
-                    onClick={() => this._stopLinkClicked(stop.id)}
                     onFocus={() => setHoveredStop(stop.id)}
                     textColor={getMostReadableTextColor(
                       routeColor,
@@ -235,7 +234,7 @@ class RouteDetails extends Component<Props> {
                   >
                     {stop.name}
                   </StopLink>
-                </Stop>
+                </StyledStop>
               ))}
             </StopContainer>
           </>

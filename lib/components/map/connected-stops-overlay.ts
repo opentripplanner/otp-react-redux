@@ -5,12 +5,12 @@ import StopsOverlay from '@opentripplanner/stops-overlay'
 import * as apiActions from '../../actions/api'
 import * as mapActions from '../../actions/map'
 import * as uiActions from '../../actions/ui'
+import { AppReduxState } from '../../util/state-types'
 import { MainPanelContent } from '../../actions/ui-constants'
-import { Pattern } from '../util/types'
 
 // connect to the redux store
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const { highlightedStop, mainPanelContent, viewedRoute } = state.otp.ui
   const { patternId, routeId } = viewedRoute || {}
   // FIXME: What type to use here? We don't have one that matches for Pattern.

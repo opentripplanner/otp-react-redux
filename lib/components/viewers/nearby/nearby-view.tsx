@@ -5,8 +5,9 @@ import { MapRef, useMap } from 'react-map-gl'
 import React, { useEffect, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
+import * as locationActions from '../../../actions/location'
 import * as uiActions from '../../../actions/ui'
-import { getCurrentPosition } from '../../../actions/location'
+import { AppReduxState } from '../../../util/state-types'
 import Loading from '../../narrative/loading'
 import MobileContainer from '../../mobile/container'
 import MobileNavigationBar from '../../mobile/navigation-bar'
@@ -154,7 +155,7 @@ function NearbyView(props: Props): JSX.Element {
   )
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const { config, transitIndex, ui } = state.otp
   const { nearbyViewCoords } = ui
   const { nearby } = transitIndex
@@ -167,7 +168,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   fetchNearby: apiActions.fetchNearby,
-  getCurrentPosition,
+  getCurrentPosition: locationActions.getCurrentPosition,
   setHighlightedLocation: uiActions.setHighlightedLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
   viewNearby: uiActions.viewNearby

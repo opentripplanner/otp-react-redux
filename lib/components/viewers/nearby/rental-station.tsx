@@ -10,12 +10,13 @@ import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { Suspense } from 'react'
 
 import * as mapActions from '../../../actions/map'
+import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
 
 import { Card, CardBody, CardHeader, CardSubheader, CardTitle } from './styled'
 
 type Props = {
-  companies: Company[]
+  companies?: Company[]
   place: any
   setLocation: (args: any) => void
   zoomToPlace: (map: any, stopData: any) => void
@@ -29,7 +30,7 @@ const RentalStation = ({
   const map = useMap().default
   const { networks } = place
   const network = networks.length === 1 ? networks[0] : null
-  const company = companies.find((c) => c.id === network)?.label
+  const company = companies?.find((c) => c.id === network)?.label
   const { bikesAvailable, spacesAvailable } = place
   const setLocationFromPlace = (locationType: 'from' | 'to') => {
     const location = {
@@ -95,7 +96,7 @@ const mapDispatchToProps = {
   zoomToPlace: mapActions.zoomToPlace
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
   return {
     companies: config.companies

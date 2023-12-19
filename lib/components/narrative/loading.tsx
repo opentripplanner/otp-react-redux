@@ -10,11 +10,11 @@ type Props = {
 
 const Loading = ({ extraSmall, small }: Props): JSX.Element => {
   return (
-    <p className="text-center percy-hide" style={{ margin: '0', padding: '0' }}>
+    <div className="text-center percy-hide">
       <StyledIconWrapper size={small ? '3x' : extraSmall ? '1x' : '5x'} spin>
         <Redo />
       </StyledIconWrapper>
-    </p>
+    </div>
   )
 }
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { Leg, Stop } from '@opentripplanner/types'
+import { Leg } from '@opentripplanner/types'
 import React, { Component } from 'react'
 import TransitLegSubheader from '@opentripplanner/itinerary-body/lib/otp-react-redux/transit-leg-subheader'
 

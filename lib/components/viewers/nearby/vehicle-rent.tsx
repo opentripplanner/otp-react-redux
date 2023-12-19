@@ -11,7 +11,9 @@ import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { Suspense } from 'react'
 
 import * as mapActions from '../../../actions/map'
+import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
+import { SetLocationHandler } from '../../util/types'
 
 import { Card, CardBody, CardHeader, CardTitle } from './styled'
 
@@ -28,9 +30,6 @@ export const getVehicleIcon = (
   vehicleType: VehicleFormFactor
 ): React.ReactNode => {
   switch (vehicleType) {
-    case 'BICYCLE':
-    case 'CARGO_BICYCLE':
-      return <Bicycle />
     case 'SCOOTER':
     case 'SCOOTER_SEATED':
     case 'SCOOTER_STANDING':
@@ -71,24 +70,42 @@ const getVehicleText = (
   }
 }
 
+const StationIcon = ({
+  companyLabel,
+  vehicle
+}: {
+  companyLabel: string
+  vehicle: any
+}) => {
+  const CompanyIcon = getCompanyIcon(vehicle.network)
+  return CompanyIcon ? (
+    <Suspense fallback={<span>{companyLabel}</span>}>
+      <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
+    </Suspense>
+  ) : (
+    <span>{getVehicleIcon(vehicle.vehicleType.formFactor)}</span>
+  )
+}
+
 const Vehicle = ({
   companies,
   setLocation,
   vehicle,
   zoomToPlace
 }: {
-  companies: Company[]
-  setLocation: (args: any) => void
+  companies?: Company[]
+  setLocation: SetLocationHandler
   vehicle: any
   zoomToPlace: (map: any, stopData: any) => void
 }): JSX.Element => {
   const map = useMap().default
   const intl = useIntl()
-  const company = companies.find((c) => c.id === vehicle.network)?.label ?? ''
+  const companyLabel =
+    companies?.find((c) => c.id === vehicle.network)?.label ?? ''
   const { formFactor } = vehicle.vehicleType
   const name =
     vehicle.name === 'Default vehicle type'
-      ? getVehicleText(formFactor, company, intl)
+      ? getVehicleText(formFactor, companyLabel, intl)
       : vehicle.name
   const setLocationFromPlace = (locationType: 'from' | 'to') => {
     const location = {
@@ -98,21 +115,15 @@ const Vehicle = ({
     }
     setLocation({ location, locationType, reverseGeocode: false })
   }
-  const StationIcon = () => {
-    const CompanyIcon = getCompanyIcon(vehicle.network)
-    return CompanyIcon ? (
-      <Suspense fallback={<span>{company}</span>}>
-        <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
-      </Suspense>
-    ) : (
-      <span>{getVehicleIcon(formFactor)}</span>
-    )
-  }
   return (
     <Card onMouseEnter={() => zoomToPlace(map, vehicle)}>
       <CardHeader>
         <CardTitle>
-          <IconWithText Icon={StationIcon}>{name}</IconWithText>
+          <IconWithText
+            icon={<StationIcon companyLabel={companyLabel} vehicle={vehicle} />}
+          >
+            {name}
+          </IconWithText>
         </CardTitle>
       </CardHeader>
       <CardBody>
@@ -136,7 +147,7 @@ const mapDispatchToProps = {
   zoomToPlace: mapActions.zoomToPlace
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
   return {
     companies: config.companies

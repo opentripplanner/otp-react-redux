@@ -12,6 +12,12 @@ import React from 'react'
 
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
+import { AppReduxState } from '../../../util/state-types'
+import { IconWithText } from '../../util/styledIcon'
+import { Pattern, StopTime } from '../../util/types'
+import OperatorLogo from '../../util/operator-logo'
+import PatternRow from '../pattern-row'
+import Strong from '../../util/strong-text'
 
 import {
   Card,
@@ -21,11 +27,6 @@ import {
   PatternRowContainer,
   StyledAlert
 } from './styled'
-import { IconWithText } from '../../util/styledIcon'
-import { Pattern, StopTime } from '../../util/types'
-import OperatorLogo from '../../util/operator-logo'
-import PatternRow from '../pattern-row'
-import Strong from '../../util/strong-text'
 
 const { getUserTimezone } = coreUtils.time
 
@@ -71,8 +72,27 @@ type Props = {
   setViewedStop: (stop: any, nearby: string) => void
   showOperatorLogo: boolean
   stopData: StopData
-  transitOperators: TransitOperator[]
+  transitOperators?: TransitOperator[]
   zoomToPlace: (map: any, stopData: any) => void
+}
+
+const Operator = ({ operator }: { operator: TransitOperator | undefined }) => {
+  const intl = useIntl()
+  return operator ? (
+    <OperatorLogo
+      alt={intl.formatMessage(
+        {
+          id: 'components.StopViewer.operatorLogoAriaLabel'
+        },
+        {
+          operatorName: operator.name
+        }
+      )}
+      operator={operator}
+    />
+  ) : (
+    <MapPin />
+  )
 }
 
 const Stop = ({
@@ -84,7 +104,6 @@ const Stop = ({
   transitOperators,
   zoomToPlace
 }: Props): JSX.Element => {
-  const intl = useIntl()
   const map = useMap()
 
   const agencies = stopData.stoptimesForPatterns?.reduce<Set<string>>(
@@ -153,33 +172,17 @@ const Stop = ({
     setHoveredStop(undefined)
   }
 
-  const CustomOperatorLogo = () => {
-    const operator = agencies.size
-      ? transitOperators.find((o) => o.agencyId === Array.from(agencies)[0])
-      : undefined
-    // We can use the first route, as this operator will only be used if there is only one operator
-    return operator ? (
-      <OperatorLogo
-        alt={intl.formatMessage(
-          {
-            id: 'components.StopViewer.operatorLogoAriaLabel'
-          },
-          {
-            operatorName: operator.name
-          }
-        )}
-        operator={operator}
-      />
-    ) : (
-      <MapPin />
-    )
-  }
+  const operator = agencies.size
+    ? transitOperators?.find((o) => o.agencyId === Array.from(agencies)[0])
+    : undefined
 
   return (
     <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <CardHeader>
         <CardTitle>
-          <IconWithText Icon={CustomOperatorLogo}>{stopData.name}</IconWithText>
+          <IconWithText icon={<Operator operator={operator} />}>
+            {stopData.name}
+          </IconWithText>
         </CardTitle>
       </CardHeader>
       <CardBody>
@@ -226,7 +229,7 @@ const mapDispatchToProps = {
   zoomToPlace: mapActions.zoomToPlace
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
   return {
     homeTimezone: config.homeTimezone,

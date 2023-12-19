@@ -45,13 +45,9 @@ class ViewStopButton extends Component<Props> {
   }
 }
 
-const mapStateToProps = () => {
-  return {}
-}
-
 const mapDispatchToProps = {
   setMainPanelContent,
   setViewedStop
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewStopButton)
+export default connect(null, mapDispatchToProps)(ViewStopButton)

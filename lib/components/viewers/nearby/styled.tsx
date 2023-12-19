@@ -1,28 +1,28 @@
 import styled from 'styled-components'
 
 export const FloatingLoadingIndicator = styled.div`
-  position: fixed;
+  aspect-ratio: 1;
+  background: white;
+  border-radius: 1rem;
+  color: black;
   left: 0px;
   margin: 5px;
-  aspect-ratio: 1;
   padding: 3px;
-  background: white;
-  color: black;
-  border-radius: 1rem;
+  position: fixed;
 `
 
 export const NearbySidebarContainer = styled.div`
   display: flex;
-  position: relative;
   flex-direction: column;
   gap: 3rem;
-  padding: 0 3rem;
   overflow-y: scroll;
+  padding: 0 3rem;
+  position: relative;
 `
 
 export const Card = styled.div`
-  border-radius: 10px;
   background: white;
+  border-radius: 10px;
   color: #222;
   display: flex;
   flex-direction: column;
@@ -33,27 +33,27 @@ export const Card = styled.div`
 `
 
 export const CardHeader = styled.div`
-  padding: 1rem 1.2rem;
   display: flex;
   flex-direction: column;
+  padding: 1rem 1.2rem;
 `
 
 export const CardTitle = styled.p`
-  font-weight: 600;
   font-size: 22px;
+  font-weight: 600;
   margin: 0;
 `
 
 export const CardSubheader = styled.p`
+  color: #444;
   font-size: 16px;
   font-weight: 400;
-  color: #444;
   margin: 0;
 `
 
 export const CardBody = styled.div`
-  padding: 0rem 1.2rem;
   margin-bottom: 1rem;
+  padding: 0rem 1.2rem;
 `
 
 export const StyledAlert = styled.div`
@@ -65,13 +65,13 @@ export const StyledAlert = styled.div`
 `
 
 export const PatternRowContainer = styled.ul`
-  list-style-type: none;
-  padding-left: 0;
   border-radius: 10px;
-  margin: 0;
   box-shadow: 2px 2px 5px 1px rgb(0 0 0/10%);
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
 `
 export const Scrollable = styled.div`
-  overflow-y: scroll;
   height: 100%;
+  overflow-y: scroll;
 `

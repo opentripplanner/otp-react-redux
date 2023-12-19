@@ -1,20 +1,19 @@
 import { connect } from 'react-redux'
 import { Parking } from '@styled-icons/fa-solid'
 import { Place } from '@opentripplanner/types'
+import { useMap } from 'react-map-gl'
+import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React from 'react'
 
-import { IconWithText } from '../../util/styledIcon'
-import { useMap } from 'react-map-gl'
-
 import * as mapActions from '../../../actions/map'
+import { IconWithText } from '../../util/styledIcon'
+import { SetLocationHandler } from '../../util/types'
 
 import { Card, CardBody, CardHeader, CardSubheader, CardTitle } from './styled'
 
-import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-
 type Props = {
   place: Place
-  setLocation: (args: any) => void
+  setLocation: SetLocationHandler
   zoomToPlace: (map: any, stopData: any) => void
 }
 
@@ -54,8 +53,4 @@ const mapDispatchToProps = {
   zoomToPlace: mapActions.zoomToPlace
 }
 
-const mapStateToProps = (state: any) => {
-  return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(VehicleParking)
+export default connect(null, mapDispatchToProps)(VehicleParking)
