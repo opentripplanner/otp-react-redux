@@ -107,7 +107,6 @@ common:
     cancel: Annuler
     close: Fermer
     defaultValue: "{value} (défaut)"
-    delete: Supprimer
     edit: Modifier
     error: erreur !
     finish: Terminer

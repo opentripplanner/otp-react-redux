@@ -98,7 +98,6 @@ common:
     cancel: Cancel
     close: Close
     defaultValue: "{value} (default)"
-    delete: Delete
     edit: Edit
     error: error!
     finish: Finish
