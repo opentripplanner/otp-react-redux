@@ -506,6 +506,7 @@ components:
     signInText: Log in to save trip
     signInTooltip: Please log in to save trip.
   SavedTripEditor:
+    deleteSavedTrip: Delete saved trip
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip
     tripInformation: Trip information

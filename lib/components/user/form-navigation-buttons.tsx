@@ -1,6 +1,6 @@
 import { Button, FormGroup } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
-import React, { MouseEventHandler, ReactElement } from 'react'
+import React, { MouseEventHandler, ReactElement, ReactNode } from 'react'
 import styled from 'styled-components'
 
 // Styles
@@ -15,12 +15,15 @@ const RightButton = styled(Button)`
   float: right;
 `
 
-interface ButtonType {
+export interface ButtonType {
+  /** The component to use for the button. */
+  ButtonComponent?: ReactNode
+  /** Whether the button is disabled. */
   disabled?: boolean
   /** Triggered when the button is clicked. */
   onClick?: MouseEventHandler<Button>
   /** The text to display on the button (JSX elements accepted). */
-  text: ReactElement
+  text?: ReactElement
   /** The HTML type of the button. */
   type?: 'button' | 'reset' | 'submit' | undefined
 }
@@ -28,6 +31,8 @@ interface ButtonType {
 interface Props {
   /** Information about the back button. */
   backButton?: ButtonType | false
+  /** Extra button placed next to the okayButton */
+  extraButton?: ButtonType
   /** Information about the okay (action) button. */
   okayButton?: ButtonType
 }
@@ -37,6 +42,7 @@ interface Props {
  */
 const FormNavigationButtons = ({
   backButton,
+  extraButton,
   okayButton
 }: Props): JSX.Element => {
   const intl = useIntl()
@@ -66,6 +72,7 @@ const FormNavigationButtons = ({
             {okayButton.text}
           </RightButton>
         )}
+        {extraButton && extraButton.ButtonComponent}
       </nav>
     </StyledFormGroup>
   )
