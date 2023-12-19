@@ -1,5 +1,4 @@
 import {
-  Agency,
   MapLocationActionArg,
   Route,
   Station,
@@ -48,16 +47,8 @@ export interface Pattern {
     length: number
     points: string
   }
-  route: {
-    agency: Agency
-    color: string
-    longName: string
-    mode: string
-    shortName: string
-    textColor: string
-    type: string
-  }
-  stops?: StopData[]
+  route: Route
+  stops?: Stop[]
 }
 
 export interface Time {
