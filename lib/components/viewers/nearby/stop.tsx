@@ -14,7 +14,7 @@ import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
-import { Pattern, StopTime } from '../../util/types'
+import { Pattern, SetLocationHandler, StopTime } from '../../util/types'
 import OperatorLogo from '../../util/operator-logo'
 import PatternRow from '../pattern-row'
 import Strong from '../../util/strong-text'
@@ -67,8 +67,8 @@ const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
 
 type Props = {
   homeTimezone: string
-  setHoveredStop: (stopId: string | undefined) => void
-  setLocation: (args: any) => void
+  setHoveredStop: (stopId?: string) => void
+  setLocation: SetLocationHandler
   setViewedStop: (stop: any, nearby: string) => void
   showOperatorLogo: boolean
   stopData: StopData
@@ -76,7 +76,7 @@ type Props = {
   zoomToPlace: (map: any, stopData: any) => void
 }
 
-const Operator = ({ operator }: { operator: TransitOperator | undefined }) => {
+const Operator = ({ operator }: { operator?: TransitOperator }) => {
   const intl = useIntl()
   return operator ? (
     <OperatorLogo

@@ -15,9 +15,7 @@ export const NearbySidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  overflow-y: scroll;
   padding: 0 3rem;
-  position: relative;
 `
 
 export const Card = styled.div`

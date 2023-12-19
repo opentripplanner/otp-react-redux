@@ -60,17 +60,16 @@ const getNearbyItem = (place: any) => {
   }
 }
 
-function NearbyView(props: Props): JSX.Element {
-  const {
-    fetchNearby,
-    getCurrentPosition: getPosition,
-    mobile,
-    nearby,
-    nearbyViewCoords,
-    setHighlightedLocation,
-    setMainPanelContent,
-    viewNearby
-  } = props
+function NearbyView({
+  fetchNearby,
+  getCurrentPosition: getPosition,
+  mobile,
+  nearby,
+  nearbyViewCoords,
+  setHighlightedLocation,
+  setMainPanelContent,
+  viewNearby
+}: Props): JSX.Element {
   const map = useMap().current
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
