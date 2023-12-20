@@ -54,7 +54,7 @@ const SavedTripEditor = (props: Props): JSX.Element => {
         <StackedPanesWithSave
           extraButton={
             monitoredTrip.id
-              ? { ButtonComponent: <DeleteForm tripId={monitoredTrip.id} /> }
+              ? { content: <DeleteForm tripId={monitoredTrip.id} /> }
               : undefined
           }
           onCancel={onCancel}

@@ -16,8 +16,8 @@ const RightButton = styled(Button)`
 `
 
 export interface ButtonType {
-  /** The component to use for the button. */
-  ButtonComponent?: ReactNode
+  /** The JSX element to display as the button. */
+  content?: ReactNode
   /** Whether the button is disabled. */
   disabled?: boolean
   /** Triggered when the button is clicked. */
@@ -72,7 +72,7 @@ const FormNavigationButtons = ({
             {okayButton.text}
           </RightButton>
         )}
-        {extraButton && extraButton.ButtonComponent}
+        {extraButton && extraButton.content}
       </nav>
     </StyledFormGroup>
   )
