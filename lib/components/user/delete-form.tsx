@@ -1,10 +1,12 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { Trash } from '@styled-icons/fa-solid/Trash'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import * as userActions from '../../actions/user'
+import { IconWithText } from '../util/styledIcon'
 import { InlineLoading } from '../narrative/loading'
 import { RED_ON_WHITE } from '../util/colors'
 
@@ -46,7 +48,9 @@ const DeleteForm: React.FC<DeleteFormProps> = ({
       {isLoading ? (
         <InlineLoading />
       ) : (
-        <FormattedMessage id="components.SavedTripEditor.deleteSavedTrip" />
+        <IconWithText Icon={Trash}>
+          <FormattedMessage id="components.SavedTripEditor.deleteSavedTrip" />
+        </IconWithText>
       )}
     </DeleteFormButton>
   )
