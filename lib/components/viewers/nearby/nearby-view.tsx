@@ -106,15 +106,18 @@ function NearbyView({
   }, [setHighlightedLocation])
 
   const nearbyItemList = nearby?.map((n: any) => (
-    <div
-      key={n.place.id}
-      onMouseEnter={() => onMouseEnter(n.place)}
-      onMouseLeave={onMouseLeave}
-      role="menuitem"
-      tabIndex={0}
-    >
-      {getNearbyItem(n.place)}
-    </div>
+    <li key={n.place.id}>
+      <div
+        onBlur={onMouseLeave}
+        onFocus={() => onMouseEnter(n.place)}
+        onMouseEnter={() => onMouseEnter(n.place)}
+        onMouseLeave={onMouseLeave}
+        role="button"
+        tabIndex={0}
+      >
+        {getNearbyItem(n.place)}
+      </div>
+    </li>
   ))
   useEffect(() => {
     setLoading(false)

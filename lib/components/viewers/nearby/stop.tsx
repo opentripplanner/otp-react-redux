@@ -175,9 +175,10 @@ const Stop = ({
     setHoveredStop(undefined)
   }, [setHoveredStop])
 
-  const operator = agencies.size
-    ? transitOperators?.find((o) => o.agencyId === Array.from(agencies)[0])
-    : undefined
+  const operator =
+    agencies.size === 1
+      ? transitOperators?.find((o) => o.agencyId === Array.from(agencies)[0])
+      : undefined
 
   return (
     <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>

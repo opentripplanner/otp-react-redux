@@ -11,11 +11,12 @@ export const FloatingLoadingIndicator = styled.div`
   position: fixed;
 `
 
-export const NearbySidebarContainer = styled.div`
+export const NearbySidebarContainer = styled.ol`
   display: flex;
   flex-direction: column;
   gap: 3rem;
   padding: 0 3rem;
+  list-style: none;
 `
 
 export const Card = styled.div`
