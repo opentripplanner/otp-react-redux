@@ -89,12 +89,12 @@ const StationIcon = ({
 
 const Vehicle = ({
   companies,
-  setLocation,
+  fromToSlot,
   vehicle,
   zoomToPlace
 }: {
   companies?: Company[]
-  setLocation: SetLocationHandler
+  fromToSlot: JSX.Element
   vehicle: any
   zoomToPlace: (map: any, stopData: any) => void
 }): JSX.Element => {
@@ -107,17 +107,6 @@ const Vehicle = ({
     vehicle.name === 'Default vehicle type'
       ? getVehicleText(formFactor, companyLabel, intl)
       : vehicle.name
-  const setLocationFromPlace = useCallback(
-    (locationType: 'from' | 'to') => {
-      const location = {
-        lat: vehicle.lat,
-        lon: vehicle.lon,
-        name
-      }
-      setLocation({ location, locationType, reverseGeocode: false })
-    },
-    [vehicle.lat, vehicle.lon, name, setLocation]
-  )
   return (
     <Card
       onMouseEnter={useCallback(
@@ -138,26 +127,13 @@ const Vehicle = ({
         {vehicle.name !== 'Default vehicle type' && vehicle.name !== name && (
           <div>{vehicle.name}</div>
         )}
-        <span role="group">
-          <FromToLocationPicker
-            label
-            onFromClick={useCallback(
-              () => setLocationFromPlace('from'),
-              [setLocationFromPlace]
-            )}
-            onToClick={useCallback(
-              () => setLocationFromPlace('to'),
-              [setLocationFromPlace]
-            )}
-          />
-        </span>
+        {fromToSlot}
       </CardBody>
     </Card>
   )
 }
 
 const mapDispatchToProps = {
-  setLocation: mapActions.setLocation,
   zoomToPlace: mapActions.zoomToPlace
 }
 

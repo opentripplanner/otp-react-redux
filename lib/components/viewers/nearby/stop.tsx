@@ -7,14 +7,13 @@ import { Place, TransitOperator } from '@opentripplanner/types'
 import { useMap } from 'react-map-gl'
 import coreUtils from '@opentripplanner/core-utils'
 import dateFnsUSLocale from 'date-fns/locale/en-US'
-import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useCallback } from 'react'
 
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
-import { Pattern, SetLocationHandler, StopTime } from '../../util/types'
+import { Pattern, StopTime } from '../../util/types'
 import OperatorLogo from '../../util/operator-logo'
 import PatternRow from '../pattern-row'
 import Strong from '../../util/strong-text'
@@ -66,9 +65,9 @@ const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
 }
 
 type Props = {
+  fromToSlot: JSX.Element
   homeTimezone: string
   setHoveredStop: (stopId?: string) => void
-  setLocation: SetLocationHandler
   setViewedStop: (stop: any, nearby: string) => void
   showOperatorLogo: boolean
   stopData: StopData
@@ -96,9 +95,9 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
 }
 
 const Stop = ({
+  fromToSlot,
   homeTimezone,
   setHoveredStop,
-  setLocation,
   setViewedStop,
   stopData,
   transitOperators,
@@ -150,18 +149,6 @@ const Stop = ({
   const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
   const timezoneWarning = !inHomeTimezone && getTimezoneWarning(homeTimezone)
 
-  const setLocationFromStop = useCallback(
-    (locationType: 'from' | 'to') => {
-      const location = {
-        lat: stopData.lat,
-        lon: stopData.lon,
-        name: stopData.name
-      }
-      setLocation({ location, locationType, reverseGeocode: false })
-    },
-    [stopData.lat, stopData.lon, stopData.name, setLocation]
-  )
-
   const zoomToStop = useCallback(() => {
     zoomToPlace(map.default, stopData)
   }, [zoomToPlace, map.default, stopData])
@@ -208,19 +195,7 @@ const Stop = ({
             </IconWithText>
           </button>
         </div>
-        <span role="group">
-          <FromToLocationPicker
-            label
-            onFromClick={useCallback(
-              () => setLocationFromStop('from'),
-              [setLocationFromStop]
-            )}
-            onToClick={useCallback(
-              () => setLocationFromStop('to'),
-              [setLocationFromStop]
-            )}
-          />
-        </span>
+        {fromToSlot}
       </CardBody>
       <div>
         <div>{timezoneWarning}</div>
@@ -232,7 +207,6 @@ const Stop = ({
 
 const mapDispatchToProps = {
   setHoveredStop: uiActions.setHoveredStop,
-  setLocation: mapActions.setLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
   setViewedStop: uiActions.setViewedStop,
   toggleAutoRefresh: uiActions.toggleAutoRefresh,

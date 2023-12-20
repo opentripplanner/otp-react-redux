@@ -6,7 +6,6 @@ import { FormattedMessage } from 'react-intl'
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { Parking } from '@styled-icons/fa-solid/Parking'
 import { useMap } from 'react-map-gl'
-import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { Suspense } from 'react'
 
 import * as mapActions from '../../../actions/map'
@@ -17,14 +16,14 @@ import { Card, CardBody, CardHeader, CardSubheader, CardTitle } from './styled'
 
 type Props = {
   companies?: Company[]
+  fromToSlot: JSX.Element
   place: any
-  setLocation: (args: any) => void
   zoomToPlace: (map: any, stopData: any) => void
 }
 const RentalStation = ({
   companies,
+  fromToSlot,
   place,
-  setLocation,
   zoomToPlace
 }: Props) => {
   const map = useMap().default
@@ -32,12 +31,6 @@ const RentalStation = ({
   const network = networks.length === 1 ? networks[0] : null
   const company = companies?.find((c) => c.id === network)?.label
   const { bikesAvailable, spacesAvailable } = place
-  const setLocationFromPlace = (locationType: 'from' | 'to') => {
-    const location = {
-      ...place
-    }
-    setLocation({ location, locationType, reverseGeocode: false })
-  }
 
   const StationIcon = () => {
     const CompanyIcon = getCompanyIcon(network)
@@ -79,20 +72,13 @@ const RentalStation = ({
             />
           </IconWithText>
         </div>
-        <div role="group">
-          <FromToLocationPicker
-            label
-            onFromClick={() => setLocationFromPlace('from')}
-            onToClick={() => setLocationFromPlace('to')}
-          />
-        </div>
+        {fromToSlot}
       </CardBody>
     </Card>
   )
 }
 
 const mapDispatchToProps = {
-  setLocation: mapActions.setLocation,
   zoomToPlace: mapActions.zoomToPlace
 }
 

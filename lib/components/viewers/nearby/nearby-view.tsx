@@ -1,13 +1,16 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
-import { Location } from '@opentripplanner/types'
+import { Location, Stop as StopType } from '@opentripplanner/types'
 import { MapRef, useMap } from 'react-map-gl'
+import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
 import * as locationActions from '../../../actions/location'
+import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
+import { SetLocationHandler } from '../../util/types'
 import Loading from '../../narrative/loading'
 import MobileContainer from '../../mobile/container'
 import MobileNavigationBar from '../../mobile/navigation-bar'
@@ -38,20 +41,50 @@ type Props = {
   nearby: any
   nearbyViewCoords?: LatLonObj
   setHighlightedLocation: (location: Location | null) => void
+  setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
   viewNearby?: (pos: LatLonObj) => void
 }
 
-const getNearbyItem = (place: any) => {
+const FromToPicker = ({
+  setLocation,
+  stopData
+}: {
+  setLocation: SetLocationHandler
+  stopData: StopType
+}) => {
+  const location = {
+    lat: stopData.lat ?? 0,
+    lon: stopData.lon ?? 0,
+    name: stopData.name
+  }
+  return (
+    <span role="group">
+      <FromToLocationPicker
+        label
+        onFromClick={() => {
+          setLocation({ location, locationType: 'from', reverseGeocode: false })
+        }}
+        onToClick={() => {
+          setLocation({ location, locationType: 'to', reverseGeocode: false })
+        }}
+      />
+    </span>
+  )
+}
+
+const getNearbyItem = (place: any, setLocation: SetLocationHandler) => {
+  const fromTo = <FromToPicker setLocation={setLocation} stopData={place} />
+
   switch (place.__typename) {
     case 'RentalVehicle':
-      return <Vehicle key={place.id} vehicle={place} />
+      return <Vehicle fromToSlot={fromTo} vehicle={place} />
     case 'Stop':
-      return <Stop showOperatorLogo stopData={place} />
+      return <Stop fromToSlot={fromTo} showOperatorLogo stopData={place} />
     case 'VehicleParking':
-      return <VehicleParking place={place} />
+      return <VehicleParking fromToSlot={fromTo} place={place} />
     case 'BikeRentalStation':
-      return <RentalStation place={place} />
+      return <RentalStation fromToSlot={fromTo} place={place} />
     default:
       console.warn(
         `Received unsupported nearby place type: ${place.__typename} `
@@ -67,6 +100,7 @@ function NearbyView({
   nearby,
   nearbyViewCoords,
   setHighlightedLocation,
+  setLocation,
   setMainPanelContent,
   viewNearby
 }: Props): JSX.Element {
@@ -74,6 +108,7 @@ function NearbyView({
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
   const firstItemRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
     if (nearbyViewCoords) {
@@ -115,7 +150,7 @@ function NearbyView({
         role="button"
         tabIndex={0}
       >
-        {getNearbyItem(n.place)}
+        {getNearbyItem(n.place, setLocation)}
       </div>
     </li>
   ))
@@ -178,6 +213,7 @@ const mapDispatchToProps = {
   fetchNearby: apiActions.fetchNearby,
   getCurrentPosition: locationActions.getCurrentPosition,
   setHighlightedLocation: uiActions.setHighlightedLocation,
+  setLocation: mapActions.setLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
   viewNearby: uiActions.viewNearby
 }
