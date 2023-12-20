@@ -2459,14 +2459,14 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^11.1.3":
-  version "11.1.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.1.3.tgz#6309e1298fbfc6dd01f16b22a5b2bc7ba5639454"
-  integrity sha512-O05TSCpzS9K9ery5Fjm+OalbpEpedV6SaCHjyIMqP5XW67lK+fJi4dYHlkr4/IBL7eDQ84op2vMeM/tBSJXsZg==
+"@opentripplanner/core-utils@^11.2.0":
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.2.0.tgz#fe73512247bb0dc67c88f83c7fb672c70a27be38"
+  integrity sha512-D3dAZQ9Brc/rblr6M3iBkkvgjFml7wUMJh6aHS7YvpIPUQX8jdDBNid3/SrEsyBsDDz1CZLiy0yTspk4y4s1gg==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^1.4.2"
+    "@opentripplanner/geocoder" "^2.0.0"
     "@styled-icons/foundation" "^10.34.0"
     "@turf/along" "^6.0.1"
     chroma-js "^2.4.2"
@@ -2508,6 +2508,16 @@
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-1.4.2.tgz#0f827dffca42c7f7a23063b54990a291dd028b80"
   integrity sha512-yzMVrKXEHO6Y50j9kntk1+odvHaqn9K9D4aKJAd+EabhiZckesfScLb0updmWRUloEWjN45nuDSFto8fbU7Uiw==
+  dependencies:
+    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
+    "@conveyal/lonlat" "^1.4.1"
+    isomorphic-mapzen-search "^1.6.1"
+    lodash.memoize "^4.1.2"
+
+"@opentripplanner/geocoder@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-2.0.0.tgz#da8138f451021bd4cc88015ff1485332da295197"
+  integrity sha512-zJ1VkJFbjHS+Ujuv6TYDiqy29XiCKamtgA00Nvh8t9weG9i28W7zcmxv3zNkQuzSIIhWo9PaG8/uJ+cqETPgcQ==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@conveyal/lonlat" "^1.4.1"
