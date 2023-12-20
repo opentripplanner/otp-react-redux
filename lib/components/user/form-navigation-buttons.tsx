@@ -23,7 +23,7 @@ export interface ButtonType {
   /** Triggered when the button is clicked. */
   onClick?: MouseEventHandler<Button>
   /** The text to display on the button (JSX elements accepted). */
-  textOverride?: ReactElement
+  text?: ReactElement
   /** The HTML type of the button. */
   type?: 'button' | 'reset' | 'submit' | undefined
 }
@@ -59,7 +59,7 @@ const FormNavigationButtons = ({
             onClick={backButton.onClick}
             type="button"
           >
-            {backButton.textOverride}
+            {backButton.text}
           </LeftButton>
         )}
         {okayButton && (
@@ -69,7 +69,7 @@ const FormNavigationButtons = ({
             onClick={okayButton.onClick}
             type={okayButton.type || 'button'}
           >
-            {okayButton.textOverride}
+            {okayButton.text}
           </RightButton>
         )}
         {extraButton && extraButton.content}

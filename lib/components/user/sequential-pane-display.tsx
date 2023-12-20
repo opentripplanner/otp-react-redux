@@ -120,12 +120,12 @@ class SequentialPaneDisplay<T> extends Component<Props<T>> {
           backButton={
             activePaneIndex > 0 && {
               onClick: this._handleToPrevPane,
-              textOverride: <FormattedMessage id="common.forms.back" />
+              text: <FormattedMessage id="common.forms.back" />
             }
           }
           okayButton={{
             onClick: this._handleToNextPane,
-            textOverride:
+            text:
               activePaneIndex < panes.length - 1 ? (
                 <FormattedMessage id="common.forms.next" />
               ) : (
