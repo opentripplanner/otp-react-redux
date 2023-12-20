@@ -42,7 +42,7 @@ const StackedPanesWithSave = ({
             updateBeingCanceled(true)
             onCancel()
           },
-          text:
+          textOverride:
             buttonClicked === 'back' ? (
               <InlineLoading />
             ) : (
@@ -56,7 +56,7 @@ const StackedPanesWithSave = ({
             // Some browsers need this to happen after the formik action finishes firing
             setTimeout(() => setButtonClicked('okay'), 10)
           },
-          text:
+          textOverride:
             buttonClicked === 'okay' ? (
               <InlineLoading />
             ) : (
