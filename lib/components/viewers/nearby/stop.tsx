@@ -4,12 +4,10 @@ import { format } from 'date-fns-tz'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { InfoCircle } from '@styled-icons/fa-solid/InfoCircle'
 import { Place, TransitOperator } from '@opentripplanner/types'
-import { useMap } from 'react-map-gl'
 import coreUtils from '@opentripplanner/core-utils'
 import dateFnsUSLocale from 'date-fns/locale/en-US'
 import React, { useCallback } from 'react'
 
-import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
@@ -72,7 +70,6 @@ type Props = {
   showOperatorLogo: boolean
   stopData: StopData
   transitOperators?: TransitOperator[]
-  zoomToPlace: (map: any, stopData: any) => void
 }
 
 const Operator = ({ operator }: { operator?: TransitOperator }) => {
@@ -100,11 +97,8 @@ const Stop = ({
   setHoveredStop,
   setViewedStop,
   stopData,
-  transitOperators,
-  zoomToPlace
+  transitOperators
 }: Props): JSX.Element => {
-  const map = useMap()
-
   const agencies = stopData.stoptimesForPatterns?.reduce<Set<string>>(
     // @ts-expect-error The agency type is not yet compatible with OTP2
     (prev, cur) => prev.add(cur.pattern.route.agency.gtfsId),
@@ -149,14 +143,9 @@ const Stop = ({
   const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
   const timezoneWarning = !inHomeTimezone && getTimezoneWarning(homeTimezone)
 
-  const zoomToStop = useCallback(() => {
-    zoomToPlace(map.default, stopData)
-  }, [zoomToPlace, map.default, stopData])
-
   const onMouseEnter = useCallback(() => {
-    zoomToStop()
     setHoveredStop(stopData.gtfsId)
-  }, [zoomToStop, setHoveredStop, stopData.gtfsId])
+  }, [setHoveredStop, stopData.gtfsId])
 
   const onMouseLeave = useCallback(() => {
     setHoveredStop(undefined)
@@ -209,8 +198,7 @@ const mapDispatchToProps = {
   setHoveredStop: uiActions.setHoveredStop,
   setMainPanelContent: uiActions.setMainPanelContent,
   setViewedStop: uiActions.setViewedStop,
-  toggleAutoRefresh: uiActions.toggleAutoRefresh,
-  zoomToPlace: mapActions.zoomToPlace
+  toggleAutoRefresh: uiActions.toggleAutoRefresh
 }
 
 const mapStateToProps = (state: AppReduxState) => {

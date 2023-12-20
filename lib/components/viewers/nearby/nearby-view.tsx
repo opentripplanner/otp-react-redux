@@ -44,6 +44,7 @@ type Props = {
   setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
   viewNearby?: (pos: LatLonObj) => void
+  zoomToPlace: (map: MapRef, stopData: Location) => void
 }
 
 const FromToPicker = ({
@@ -102,9 +103,10 @@ function NearbyView({
   setHighlightedLocation,
   setLocation,
   setMainPanelContent,
-  viewNearby
+  viewNearby,
+  zoomToPlace
 }: Props): JSX.Element {
-  const map = useMap().current
+  const map = useMap().default
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
   const firstItemRef = useRef<HTMLDivElement>(null)
@@ -133,8 +135,10 @@ function NearbyView({
   const onMouseEnter = useCallback(
     (location: Location) => {
       setHighlightedLocation(location)
+      console.log(map, location, zoomToPlace)
+      map && zoomToPlace(map, location)
     },
-    [setHighlightedLocation]
+    [setHighlightedLocation, map, zoomToPlace]
   )
   const onMouseLeave = useCallback(() => {
     setHighlightedLocation(null)
@@ -215,7 +219,8 @@ const mapDispatchToProps = {
   setHighlightedLocation: uiActions.setHighlightedLocation,
   setLocation: mapActions.setLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
-  viewNearby: uiActions.viewNearby
+  viewNearby: uiActions.viewNearby,
+  zoomToPlace: mapActions.zoomToPlace
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NearbyView)

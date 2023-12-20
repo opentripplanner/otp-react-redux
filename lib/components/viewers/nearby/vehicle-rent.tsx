@@ -4,16 +4,12 @@ import { connect } from 'react-redux'
 // @ts-expect-error icons doesn't have typescript?
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { IntlShape, useIntl } from 'react-intl'
-import { useMap } from 'react-map-gl'
 // @ts-expect-error icons doesn't have typescript?
 import { Micromobility } from '@opentripplanner/icons'
-import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React, { Suspense, useCallback } from 'react'
+import React, { Suspense } from 'react'
 
-import * as mapActions from '../../../actions/map'
 import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
-import { SetLocationHandler } from '../../util/types'
 
 import { Card, CardBody, CardHeader, CardTitle } from './styled'
 
@@ -90,15 +86,12 @@ const StationIcon = ({
 const Vehicle = ({
   companies,
   fromToSlot,
-  vehicle,
-  zoomToPlace
+  vehicle
 }: {
   companies?: Company[]
   fromToSlot: JSX.Element
   vehicle: any
-  zoomToPlace: (map: any, stopData: any) => void
 }): JSX.Element => {
-  const map = useMap().default
   const intl = useIntl()
   const companyLabel =
     companies?.find((c) => c.id === vehicle.network)?.label ?? ''
@@ -108,12 +101,7 @@ const Vehicle = ({
       ? getVehicleText(formFactor, companyLabel, intl)
       : vehicle.name
   return (
-    <Card
-      onMouseEnter={useCallback(
-        () => zoomToPlace(map, vehicle),
-        [map, vehicle, zoomToPlace]
-      )}
-    >
+    <Card>
       <CardHeader>
         <CardTitle>
           <IconWithText
@@ -133,10 +121,6 @@ const Vehicle = ({
   )
 }
 
-const mapDispatchToProps = {
-  zoomToPlace: mapActions.zoomToPlace
-}
-
 const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
   return {
@@ -144,4 +128,4 @@ const mapStateToProps = (state: AppReduxState) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Vehicle)
+export default connect(mapStateToProps)(Vehicle)

@@ -5,10 +5,8 @@ import { FormattedMessage } from 'react-intl'
 // @ts-expect-error icons doesn't have typescript?
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { Parking } from '@styled-icons/fa-solid/Parking'
-import { useMap } from 'react-map-gl'
 import React, { Suspense } from 'react'
 
-import * as mapActions from '../../../actions/map'
 import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
 
@@ -18,15 +16,8 @@ type Props = {
   companies?: Company[]
   fromToSlot: JSX.Element
   place: any
-  zoomToPlace: (map: any, stopData: any) => void
 }
-const RentalStation = ({
-  companies,
-  fromToSlot,
-  place,
-  zoomToPlace
-}: Props) => {
-  const map = useMap().default
+const RentalStation = ({ companies, fromToSlot, place }: Props) => {
   const { networks } = place
   const network = networks.length === 1 ? networks[0] : null
   const company = companies?.find((c) => c.id === network)?.label
@@ -44,7 +35,7 @@ const RentalStation = ({
   }
 
   return (
-    <Card onMouseEnter={() => zoomToPlace(map, place)}>
+    <Card>
       <CardHeader>
         <CardTitle>
           <IconWithText Icon={StationIcon}>{place.name}</IconWithText>
@@ -78,10 +69,6 @@ const RentalStation = ({
   )
 }
 
-const mapDispatchToProps = {
-  zoomToPlace: mapActions.zoomToPlace
-}
-
 const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
   return {
@@ -89,4 +76,4 @@ const mapStateToProps = (state: AppReduxState) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RentalStation)
+export default connect(mapStateToProps)(RentalStation)
