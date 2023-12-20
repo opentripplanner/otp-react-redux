@@ -183,7 +183,16 @@ function NearbyView({
         className="base-color-bg"
         style={{ marginTop: mobile ? '50px' : 0 }}
       >
-        <div ref={firstItemRef} />
+        {/* This is used to scroll to top */}
+        <div aria-hidden ref={firstItemRef} />
+        {nearby && (
+          <h3 style={{ opacity: 0, position: 'absolute' }}>
+            <FormattedMessage
+              id="components.NearbyView.nearbyListIntro"
+              values={{ count: nearby.length }}
+            />
+          </h3>
+        )}
         {loading && (
           <FloatingLoadingIndicator>
             <Loading extraSmall />

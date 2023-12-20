@@ -394,6 +394,7 @@ components:
     companyScooter: "{company} Scooter"
     error: An error occurred loading nearby amenities.
     header: Nearby View
+    nearbyListIntro: List of {count} nearby entities.
     nothingNearby: There are no places nearby.
     spacesAvailable: "{spacesAvailable} empty spaces available"
   NewAccountWizard:
@@ -803,8 +804,8 @@ components:
     instructions2: Once you're verified, click the button below to continue.
     resendVerification: Resend verification email
   ViewSwitcher:
-    switcher: Switcher
     nearby: Nearby
+    switcher: Switcher
   WelcomeScreen:
     prompt: Where do you want to go?
 config:
