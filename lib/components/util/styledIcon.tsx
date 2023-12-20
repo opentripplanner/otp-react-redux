@@ -83,7 +83,6 @@ export const IconWithText = ({
   spin,
   styleProps = { display: 'contents' }
 }: IconPropsWithText): React.ReactElement => {
-  console.log(icon, Icon)
   return (
     <div style={styleProps}>
       <StyledIconWrapperTextAlign size={size} spin={spin}>
