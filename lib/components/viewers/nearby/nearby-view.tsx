@@ -113,29 +113,41 @@ function NearbyView({
 
   useEffect(() => {
     firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
-    if (nearbyViewCoords) {
-      fetchNearby(nearbyViewCoords, map)
+    const mapCoords = map?.getCenter()
+    const coords =
+      nearbyViewCoords ||
+      (mapCoords !== undefined
+        ? {
+            lat: mapCoords.lat,
+            lon: mapCoords.lng
+          }
+        : null)
+    if (coords) {
+      fetchNearby(coords)
       setLoading(true)
       const interval = setInterval(() => {
-        fetchNearby(nearbyViewCoords, map)
+        fetchNearby(coords)
         setLoading(true)
       }, AUTO_REFRESH_INTERVAL)
       return function cleanup() {
         clearInterval(interval)
       }
     } else {
+      const currentMapCoords = map?.getCenter()
+      if (currentMapCoords) {
+        fetchNearby({ lat: currentMapCoords.lat, lon: currentMapCoords.lng })
+      }
       if (getPosition && viewNearby) {
         getPosition(intl, null, (pos) => {
           viewNearby({ lat: pos.coords.latitude, lon: pos.coords.longitude })
         })
       }
     }
-  }, [nearbyViewCoords])
+  }, [nearbyViewCoords, map])
 
   const onMouseEnter = useCallback(
     (location: Location) => {
       setHighlightedLocation(location)
-      console.log(map, location, zoomToPlace)
       map && zoomToPlace(map, location)
     },
     [setHighlightedLocation, map, zoomToPlace]
@@ -179,20 +191,20 @@ function NearbyView({
           onBackClicked={goBack}
         />
       )}
+      {nearby && (
+        <h3 style={{ opacity: 0, position: 'absolute' }}>
+          <FormattedMessage
+            id="components.NearbyView.nearbyListIntro"
+            values={{ count: nearby.length }}
+          />
+        </h3>
+      )}
       <NearbySidebarContainer
         className="base-color-bg"
         style={{ marginTop: mobile ? '50px' : 0 }}
       >
         {/* This is used to scroll to top */}
         <div aria-hidden ref={firstItemRef} />
-        {nearby && (
-          <h3 style={{ opacity: 0, position: 'absolute' }}>
-            <FormattedMessage
-              id="components.NearbyView.nearbyListIntro"
-              values={{ count: nearby.length }}
-            />
-          </h3>
-        )}
         {loading && (
           <FloatingLoadingIndicator>
             <Loading extraSmall />
