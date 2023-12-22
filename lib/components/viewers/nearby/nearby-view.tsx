@@ -31,7 +31,7 @@ type LatLonObj = { lat: number; lon: number }
 
 type Props = {
   fetchNearby: (latLon: LatLonObj, map?: MapRef) => void
-  getCurrentPosition?: (
+  getCurrentPosition: (
     intl: IntlShape,
     setAsType?: string | null,
     onSuccess?: (position: GeolocationPosition) => void
@@ -43,7 +43,7 @@ type Props = {
   setHighlightedLocation: (location: Location | null) => void
   setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
-  viewNearby?: (pos: LatLonObj) => void
+  setViewedNearbyCoords: (location: Location | null) => void
   zoomToPlace: (map: MapRef, stopData: Location) => void
 }
 
@@ -103,7 +103,7 @@ function NearbyView({
   setHighlightedLocation,
   setLocation,
   setMainPanelContent,
-  viewNearby,
+  setViewedNearbyCoords,
   zoomToPlace
 }: Props): JSX.Element {
   const map = useMap().default
@@ -113,35 +113,40 @@ function NearbyView({
 
   useEffect(() => {
     firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
-    const mapCoords = map?.getCenter()
-    const coords =
-      nearbyViewCoords ||
-      (mapCoords !== undefined
-        ? {
-            lat: mapCoords.lat,
-            lon: mapCoords.lng
-          }
-        : null)
-    if (coords) {
-      fetchNearby(coords)
+    if (nearbyViewCoords) {
+      fetchNearby(nearbyViewCoords)
       setLoading(true)
       const interval = setInterval(() => {
-        fetchNearby(coords)
+        fetchNearby(nearbyViewCoords)
         setLoading(true)
       }, AUTO_REFRESH_INTERVAL)
       return function cleanup() {
         clearInterval(interval)
       }
     } else {
-      const currentMapCoords = map?.getCenter()
-      if (currentMapCoords) {
-        fetchNearby({ lat: currentMapCoords.lat, lon: currentMapCoords.lng })
+      const rawMapCoords = map?.getCenter()
+      const mapCoords = rawMapCoords !== undefined && {
+        lat: rawMapCoords.lat,
+        lon: rawMapCoords.lng
       }
-      if (getPosition && viewNearby) {
-        getPosition(intl, null, (pos) => {
-          viewNearby({ lat: pos.coords.latitude, lon: pos.coords.longitude })
+      if (mapCoords) {
+        fetchNearby(mapCoords)
+        setLoading(true)
+        const interval = setInterval(() => {
+          fetchNearby(mapCoords)
+          setLoading(true)
+        }, AUTO_REFRESH_INTERVAL)
+        return function cleanup() {
+          clearInterval(interval)
+        }
+      }
+      getPosition(intl, null, (pos) => {
+        // Navigate to nearby at current location (puts coords in URL)
+        setViewedNearbyCoords({
+          lat: pos.coords.latitude,
+          lon: pos.coords.longitude
         })
-      }
+      })
     }
   }, [nearbyViewCoords, map])
 
@@ -240,6 +245,7 @@ const mapDispatchToProps = {
   setHighlightedLocation: uiActions.setHighlightedLocation,
   setLocation: mapActions.setLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
+  setViewedNearbyCoords: uiActions.setViewedNearbyCoords,
   viewNearby: uiActions.viewNearby,
   zoomToPlace: mapActions.zoomToPlace
 }
