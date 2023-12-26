@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { Feature, lineString, LineString } from '@turf/helpers'
+import { Feature, lineString, LineString, Position } from '@turf/helpers'
 import { Itinerary, Location } from '@opentripplanner/types'
 import { Marker } from 'react-map-gl'
 import centroid from '@turf/centroid'
@@ -28,8 +28,8 @@ type ItinWithGeometry = Itinerary & { allLegGeometry: Feature<LineString> }
 type Props = {
   from: Location
   itins: Itinerary[]
-  setActiveItinerary: ({ index }: { index: number }) => void
-  setVisibleItinerary: ({ index }: { index: number }) => void
+  setActiveItinerary: ({ index }: { index: number | null }) => void
+  setVisibleItinerary: ({ index }: { index: number | null }) => void
   to: Location
   visible?: boolean
   visibleItinerary?: number
@@ -75,10 +75,15 @@ function addItinLineString(itin: Itinerary): ItinWithGeometry {
   }
 }
 
+type ItinUniquePoint = {
+  itin: Itinerary
+  uniquePoint: Position
+}
+
 function getUniquePoint(
   thisItin: ItinWithGeometry,
-  otherMidpoints: [number, number][]
-) {
+  otherMidpoints: Position[]
+): ItinUniquePoint {
   let maxDistance = -Infinity
   const line = thisItin.allLegGeometry
   const centerOfLine = centroid(line).geometry.coordinates
@@ -114,12 +119,12 @@ const ItinerarySummaryOverlay = ({
   // @ts-expect-error React context is populated dynamically
   const { LegIcon } = useContext(ComponentContext)
 
-  let sharedTimeout = null
+  let sharedTimeout: null | NodeJS.Timeout = null
 
   if (!itins || !visible) return <></>
   const mergedItins: ItinWithGeometry[] =
     doMergeItineraries(itins).mergedItineraries.map(addItinLineString)
-  const midPoints = []
+  const midPoints: ItinUniquePoint[] = []
   mergedItins.forEach((itin, index) => {
     midPoints.push(
       getUniquePoint(
@@ -163,7 +168,7 @@ const ItinerarySummaryOverlay = ({
                     }, 150)
                   }}
                   onMouseLeave={() => {
-                    clearTimeout(sharedTimeout)
+                    sharedTimeout && clearTimeout(sharedTimeout)
                     setVisible({ index: null })
                   }}
                 >
