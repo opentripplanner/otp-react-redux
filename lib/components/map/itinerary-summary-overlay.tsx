@@ -186,7 +186,7 @@ const ItinerarySummaryOverlay = ({
 
 const mapStateToProps = (state: AppReduxState) => {
   const { activeSearchId, config } = state.otp
-  if (config.itinerary?.previewOverlay === true) {
+  if (config.itinerary?.previewOverlay !== true) {
     return {}
   }
   if (!activeSearchId) return {}
