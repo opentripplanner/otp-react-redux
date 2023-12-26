@@ -108,11 +108,9 @@ function getUniquePoint(
 }
 
 const ItinerarySummaryOverlay = ({
-  from,
   itins,
   setActiveItinerary: setActive,
   setVisibleItinerary: setVisible,
-  to,
   visible,
   visibleItinerary
 }: Props) => {
@@ -124,15 +122,15 @@ const ItinerarySummaryOverlay = ({
   if (!itins || !visible) return <></>
   const mergedItins: ItinWithGeometry[] =
     doMergeItineraries(itins).mergedItineraries.map(addItinLineString)
-  const midPoints: ItinUniquePoint[] = []
-  mergedItins.forEach((itin, index) => {
-    midPoints.push(
+  const midPoints = mergedItins.reduce<ItinUniquePoint[]>((prev, curItin) => {
+    prev.push(
       getUniquePoint(
-        itin,
-        midPoints.map((mp) => mp.uniquePoint)
+        curItin,
+        prev.map((mp) => mp.uniquePoint)
       )
     )
-  })
+    return prev
+  }, [])
   // The first point is probably not well placed, so let's run the algorithm again
   if (midPoints.length > 1) {
     midPoints[0] = getUniquePoint(
