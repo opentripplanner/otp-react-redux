@@ -82,8 +82,9 @@ type ItinUniquePoint = {
 
 function getUniquePoint(
   thisItin: ItinWithGeometry,
-  otherMidpoints: Position[]
+  otherPoints: ItinUniquePoint[]
 ): ItinUniquePoint {
+  const otherMidpoints = otherPoints.map((mp) => mp.uniquePoint)
   let maxDistance = -Infinity
   const line = thisItin.allLegGeometry
   const centerOfLine = centroid(line).geometry.coordinates
@@ -123,20 +124,12 @@ const ItinerarySummaryOverlay = ({
   const mergedItins: ItinWithGeometry[] =
     doMergeItineraries(itins).mergedItineraries.map(addItinLineString)
   const midPoints = mergedItins.reduce<ItinUniquePoint[]>((prev, curItin) => {
-    prev.push(
-      getUniquePoint(
-        curItin,
-        prev.map((mp) => mp.uniquePoint)
-      )
-    )
+    prev.push(getUniquePoint(curItin, prev))
     return prev
   }, [])
   // The first point is probably not well placed, so let's run the algorithm again
   if (midPoints.length > 1) {
-    midPoints[0] = getUniquePoint(
-      mergedItins[0],
-      midPoints.map((mp) => mp.uniquePoint)
-    )
+    midPoints[0] = getUniquePoint(mergedItins[0], midPoints)
   }
 
   try {
