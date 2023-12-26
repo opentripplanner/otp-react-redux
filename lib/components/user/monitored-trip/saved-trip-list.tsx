@@ -33,7 +33,6 @@ import getRenderData from './trip-status-rendering-strategies'
 import TripSummaryPane from './trip-summary-pane'
 
 interface ItemProps {
-  confirmAndDeleteUserMonitoredTrip: (id: string, intl: IntlShape) => void
   intl: IntlShape
   renderData: any
   routeTo: (url: any) => void
@@ -82,16 +81,6 @@ class TripListItem extends Component<ItemProps, ItemState> {
     const { intl, togglePauseTrip, trip } = this.props
     this.setState({ pendingRequest: 'pause' })
     togglePauseTrip(trip, intl)
-  }
-
-  /**
-   * Deletes a trip from persistence.
-   * (The operation also refetches the redux monitoredTrips for the logged-in user.)
-   */
-  _handleDeleteTrip = () => {
-    const { confirmAndDeleteUserMonitoredTrip, intl, trip } = this.props
-    this.setState({ pendingRequest: 'delete' })
-    confirmAndDeleteUserMonitoredTrip(trip.id, intl)
   }
 
   render() {
@@ -179,8 +168,6 @@ const itemMapStateToProps = (ownProps: ItemProps) => {
 }
 
 const itemMapDispatchToProps = {
-  confirmAndDeleteUserMonitoredTrip:
-    userActions.confirmAndDeleteUserMonitoredTrip,
   routeTo: uiActions.routeTo,
   togglePauseTrip: userActions.togglePauseTrip
 }
