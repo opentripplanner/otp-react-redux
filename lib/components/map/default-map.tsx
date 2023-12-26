@@ -23,6 +23,7 @@ import { updateOverlayVisibility } from '../../actions/config'
 
 import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
+import GeoJsonLayer from './connected-geojson-layer'
 import ItinSummaryOverlay from './itinerary-summary-overlay'
 import ParkAndRideOverlay from './connected-park-and-ride-overlay'
 import PointPopup from './point-popup'
@@ -326,6 +327,10 @@ class DefaultMap extends Component {
               name: getLayerName(overlayConfig, config, intl)
             }
             switch (overlayConfig.type) {
+              case 'geojson':
+                return (
+                  <GeoJsonLayer {...namedLayerProps} url={overlayConfig.url} />
+                )
               case 'bike-rental':
                 return (
                   <VehicleRentalOverlay

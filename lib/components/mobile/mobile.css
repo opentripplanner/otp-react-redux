@@ -52,11 +52,12 @@
 }
 
 .otp .navbar .mobile-back {
-  position: fixed;
-  top: 12px;
-  left: 15px;
+  background: transparent;
+  border: none;
   color: white;
   font-size: 18px;
+  left: 7px;
+  position: fixed;
 }
 
 .otp .navbar .mobile-close {
