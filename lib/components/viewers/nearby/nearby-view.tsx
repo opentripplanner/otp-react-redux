@@ -31,6 +31,7 @@ const AUTO_REFRESH_INTERVAL = 15000
 type LatLonObj = { lat: number; lon: number }
 
 type Props = {
+  entityId?: string
   fetchNearby: (latLon: LatLonObj, map?: MapRef) => void
   getCurrentPosition: (
     intl: IntlShape,
@@ -96,6 +97,7 @@ const getNearbyItem = (place: any, setLocation: SetLocationHandler) => {
 }
 
 function NearbyView({
+  entityId,
   fetchNearby,
   getCurrentPosition: getPosition,
   mobile,
@@ -163,7 +165,12 @@ function NearbyView({
   }, [setHighlightedLocation])
 
   const nearbyItemList = nearby?.map((n: any) => (
-    <li key={n.place.id}>
+    <li
+      className={
+        (n.place.gtfsId ?? n.place.id) === entityId ? 'highlighted' : ''
+      }
+      key={n.place.id}
+    >
       <div
         onBlur={onMouseLeave}
         onFocus={() => onMouseEnter(n.place)}
@@ -236,7 +243,9 @@ const mapStateToProps = (state: AppReduxState) => {
   const { config, transitIndex, ui } = state.otp
   const { nearbyViewCoords } = ui
   const { nearby } = transitIndex
+  const { entityId } = state.router.location.query
   return {
+    entityId,
     homeTimezone: config.homeTimezone,
     nearby,
     nearbyViewCoords

@@ -29,6 +29,13 @@ export const Card = styled.div`
   &:hover {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
+
+  .highlighted & {
+    outline-color: #facc15;
+    outline-width: 3px;
+    outline-style: solid;
+    outline-offset: 1px;
+  }
 `
 
 export const CardHeader = styled.div`
