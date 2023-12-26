@@ -5,7 +5,8 @@ actions:
     callQuerySaveError: "Lỗi khi lưu trữ các truy vấn cuộc gọi: {err}"
     callSaveError: "Không thể lưu cuộc gọi: {err}"
     checkSessionError: "Lỗi khi thiết lập phiên ủy quyền: {err}"
-    couldNotFindCallError: Không thể tìm thấy cuộc gọi. Đang hủy yêu cầu lưu truy vấn.
+    couldNotFindCallError: Không thể tìm thấy cuộc gọi. Đang hủy yêu cầu lưu truy
+      vấn.
     fetchCallsError: "Lỗi khi tìm nạp cuộc gọi: {err}"
     queryFetchError: "Lỗi khi tìm nạp các truy vấn: {err}"
   fieldTrip:
@@ -28,7 +29,8 @@ actions:
       Không thể lưu kế hoạch chuyến đi: Không thể lưu kế hoạch chuyến đi này do
       thiếu sức chứa trên một hoặc nhiều xe. Vui lòng lên kế hoạch lại chuyến đi
       của bạn.
-    maxTripRequestsExceeded: Đã vượt quá số lượng yêu cầu chuyến đi mà không có kết quả hợp lệ
+    maxTripRequestsExceeded: Đã vượt quá số lượng yêu cầu chuyến đi mà không có kết
+      quả hợp lệ
     saveItinerariesError: "Không lưu được hành trình: {err}"
     setDateError: "Lỗi khi cài đặt ngày:"
     setGroupSizeError: "Lỗi khi cài đặt kích thước nhóm:"
@@ -40,7 +42,8 @@ actions:
 
       Để sử dụng địa điểm hiện tại của mình, quý vị hãy cho phép sử dụng vị trí
       trong trình duyệt và tải lại trang này. 
-    geolocationNotSupportedError: Định vị địa lý không được hỗ trợ bởi trình duyệt của bạn
+    geolocationNotSupportedError: Định vị địa lý không được hỗ trợ bởi trình duyệt
+      của bạn
     unknownPositionError: Lỗi không xác định khi tìm vị trí
     userDeniedPermission: Người dùng từ chối cấp quyền
   map:
@@ -52,7 +55,8 @@ actions:
     confirmDeletePlace: Bạn có muốn loại bỏ nơi này không?
     emailVerificationResent: Thông báo xác minh email đã được gửi lại.
     genericError: "Phát sinh lỗi: {err}"
-    itineraryExistenceCheckFailed: Lỗi kiểm tra xem chuyến đi được chọn của bạn là có thể.
+    itineraryExistenceCheckFailed: Lỗi kiểm tra xem chuyến đi được chọn của bạn là
+      có thể.
     mustAcceptTermsToSavePlace: >-
       Vui lòng chấp nhận Điều Khoản Sử Dụng (trong phần Tài Khoản Của Tôi) để
       lưu lại địa điểm.
@@ -169,12 +173,14 @@ common:
       {} other {# giây}}
 components:
   A11yPrefs:
-    accessibilityRoutingByDefault: Thích những chuyến đi có thể truy cập theo mặc định
+    accessibilityRoutingByDefault: Thích những chuyến đi có thể truy cập theo mặc
+      định
   AccountSetupFinishPane:
     message: Bạn đã sẵn sàng để bắt đầu lên kế hoạch cho các chuyến đi của bạn.
   AddPlaceButton:
     addPlace: Thêm địa điểm
-    needOriginDestination: Xác định nguồn gốc hoặc đích đến để thêm các địa điểm trung gian
+    needOriginDestination: Xác định nguồn gốc hoặc đích đến để thêm các địa điểm trung
+      gian
     tooManyPlaces: Địa điểm trung gian tối đa đạt được
   AdvancedOptions:
     bannedRoutes: Chọn các tuyến đường bị cấm…
@@ -292,7 +298,8 @@ components:
     editPlaceGeneric: Chỉnh sửa vị trí
     invalidAddress: Vui lòng cài đặt một vị trí cho nơi này.
     invalidName: Vui lòng nhập tên cho nơi này.
-    nameAlreadyUsed: Bạn đã sử dụng tên này cho một nơi khác. Vui lòng nhập một tên khác.
+    nameAlreadyUsed: Bạn đã sử dụng tên này cho một nơi khác. Vui lòng nhập một tên
+      khác.
     placeNotFound: Không tìm thấy địa điểm
     placeNotFoundDescription: Xin lỗi, địa điểm được yêu cầu không được tìm thấy.
   FormNavigationButtons:
@@ -361,8 +368,10 @@ components:
     description: Nội dung bạn yêu cầu không có sẵn.
     header: Không tìm thấy nội dung
   NotificationPrefsPane:
-    devicesRegistered: "{count, plural, one {# device} other {# devices}} đã đăng ký"
-    noDeviceForPush: Đăng ký thiết bị của quý vị bằng ứng dụng di động để nhận thông báo đẩy.
+    devicesRegistered: "{count, plural, one {# device} other {# devices}} đã đăng
+      ký"
+    noDeviceForPush: Đăng ký thiết bị của quý vị bằng ứng dụng di động để nhận thông
+      báo đẩy.
     notificationChannelPrompt: "Nhận thông báo về các chuyến đi đã lưu bằng:"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
@@ -612,17 +621,22 @@ components:
     travelingAt: di chuyển với tốc độ {milesPerHour}
     vehicleName: Phương tiện giao thông {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Kiểm tra sự tồn tại của hành trình cho mỗi ngày trong tuần…
+    checkingItineraryExistence: Kiểm tra sự tồn tại của hành trình cho mỗi ngày trong
+      tuần…
     selectAtLeastOneDay: Vui lòng chọn ít nhất một ngày để theo dõi.
     tripDaysPrompt: Bạn thực hiện chuyến đi này vào những ngày nào?
-    tripIsAvailableOnDaysIndicated: Chuyến đi của bạn có sẵn vào những ngày trong tuần như đã nêu ở trên.
+    tripIsAvailableOnDaysIndicated: Chuyến đi của bạn có sẵn vào những ngày trong
+      tuần như đã nêu ở trên.
     tripNamePrompt: "Vui lòng cung cấp tên cho chuyến đi này:"
     tripNotAvailableOnDay: Chuyến đi không có sẵn vào {repeatedDay}
-    unsavedChangesExistingTrip: Bạn chưa lưu chuyến đi của mình. Nếu bạn rời đi, những thay đổi sẽ bị mất.
-    unsavedChangesNewTrip: Bạn chưa lưu chuyến đi mới của mình. Nếu bạn rời đi, nó sẽ bị mất.
+    unsavedChangesExistingTrip: Bạn chưa lưu chuyến đi của mình. Nếu bạn rời đi, những
+      thay đổi sẽ bị mất.
+    unsavedChangesNewTrip: Bạn chưa lưu chuyến đi mới của mình. Nếu bạn rời đi, nó
+      sẽ bị mất.
   TripNotificationsPane:
     advancedSettings: Cài đặt nâng cao
-    altRouteRecommended: Một tuyến đường hoặc điểm trung chuyển thay thế được khuyến nghị
+    altRouteRecommended: Một tuyến đường hoặc điểm trung chuyển thay thế được khuyến
+      nghị
     delaysAboveThreshold: Có sự chậm trễ hoặc gián đoạn của hơn
     howToReceiveAlerts: >
       Để nhận thông báo cho các chuyến đi đã lưu của bạn, bật thông báo trong
@@ -631,7 +645,8 @@ components:
     notificationsTurnedOff: Thông báo được tắt cho tài khoản của bạn.
     notifyViaChannelWhen: "Thông báo cho tôi qua {channel} khi:"
     oneHour: 1 tiếng
-    realtimeAlertFlagged: Có một cảnh báo thời gian thực được gắn cờ trên hành trình của tôi
+    realtimeAlertFlagged: Có một cảnh báo thời gian thực được gắn cờ trên hành trình
+      của tôi
     timeBefore: "{time} trước"
   TripStatus:
     alerts: "{alerts, plural, one {# cảnh báo!} other {# cảnh báo!}}"
@@ -644,7 +659,8 @@ components:
       earlyHeading: >-
         Chuyến đi đang diễn ra và sẽ đến sớm hơn {formattedDuration} so với dự
         kiến!
-      noDataHeading: Chuyến đi đang được tiến hành (không có cập nhật thời gian thực có sẵn).
+      noDataHeading: Chuyến đi đang được tiến hành (không có cập nhật thời gian thực
+        có sẵn).
       onTimeHeading: Chuyến đi đang được tiến hành và đúng giờ.
     base:
       lastCheckedDefaultText: Thời gian được kiểm tra lần cuối không xác định
@@ -687,7 +703,8 @@ components:
       tripStartIsEarly: >-
         Thời gian bắt đầu chuyến đi đang diễn ra sớm hơn ${duration} so với dự
         kiến!
-      tripStartsSoonNoUpdates: Chuyến đi đang bắt đầu sớm (không có cập nhật về thời gian thực).
+      tripStartsSoonNoUpdates: Chuyến đi đang bắt đầu sớm (không có cập nhật về thời
+        gian thực).
       tripStartsSoonOnTime: Chuyến đi đang bắt đầu sớm và sắp đúng giờ.
   TripSummary:
     arriveAt: "Đến nơi "

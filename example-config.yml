@@ -367,6 +367,8 @@ itinerary:
   showScheduleDeviation: true
   # Shows the duration of a leg below the leg in the metro itinerary summary
   showLegDurations: false
+  # Whether to add a OTP_RR_A11Y_ROUTING_ENABLED error to all itineraries with accessibility scores
+  displayA11yError: false
   # The sort option to use by default
   # Available sort options: 'BEST', 'DURATION', 'ARRIVALTIME', 'WALKTIME', 'COST', 'DEPARTURETIME'
   # defaultSort: "BEST" # Default

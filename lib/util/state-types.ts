@@ -1,3 +1,5 @@
+import { RouterState } from 'connected-react-router'
+
 import {
   ItineraryExistence,
   MonitoredTrip,
@@ -27,5 +29,6 @@ export interface UserState {
 export interface AppReduxState {
   calltaker?: any // TODO
   otp: OtpState
+  router: RouterState
   user: UserState
 }

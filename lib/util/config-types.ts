@@ -357,6 +357,7 @@ export interface AppConfig {
   localization?: LocalizationConfig
   map: MapConfig
   mapillary?: MapillaryConfig
+  mobilityProfile?: boolean
   modes: ModesConfig
   /** Interval in seconds past which a trip is no longer considered "on-time". */
   onTimeThresholdSeconds?: number
@@ -378,5 +379,5 @@ export interface AppConfig {
   title?: string
   transitOperators?: TransitOperatorConfig[]
 
-  // TODO: add other config items.
+  // Add other config items as needed.
 }
