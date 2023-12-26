@@ -105,7 +105,6 @@ common:
     cancel: Hủy bỏ
     close: Đóng
     defaultValue: "{value} (mặc định)"
-    delete: Xóa bỏ
     edit: Chỉnh sửa
     error: lỗi!
     finish: Kết thúc

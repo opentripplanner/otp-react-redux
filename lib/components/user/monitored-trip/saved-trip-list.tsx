@@ -4,7 +4,6 @@ import { FormattedMessage, injectIntl, IntlShape, useIntl } from 'react-intl'
 import { Pause } from '@styled-icons/fa-solid/Pause'
 import { PencilAlt } from '@styled-icons/fa-solid/PencilAlt'
 import { Play } from '@styled-icons/fa-solid/Play'
-import { Trash } from '@styled-icons/fa-solid/Trash'
 import { TriangleExclamation } from '@styled-icons/fa-solid/TriangleExclamation'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import React, { Component } from 'react'
@@ -34,7 +33,6 @@ import getRenderData from './trip-status-rendering-strategies'
 import TripSummaryPane from './trip-summary-pane'
 
 interface ItemProps {
-  confirmAndDeleteUserMonitoredTrip: (id: string, intl: IntlShape) => void
   intl: IntlShape
   renderData: any
   routeTo: (url: any) => void
@@ -83,16 +81,6 @@ class TripListItem extends Component<ItemProps, ItemState> {
     const { intl, togglePauseTrip, trip } = this.props
     this.setState({ pendingRequest: 'pause' })
     togglePauseTrip(trip, intl)
-  }
-
-  /**
-   * Deletes a trip from persistence.
-   * (The operation also refetches the redux monitoredTrips for the logged-in user.)
-   */
-  _handleDeleteTrip = () => {
-    const { confirmAndDeleteUserMonitoredTrip, intl, trip } = this.props
-    this.setState({ pendingRequest: 'delete' })
-    confirmAndDeleteUserMonitoredTrip(trip.id, intl)
   }
 
   render() {
@@ -161,18 +149,6 @@ class TripListItem extends Component<ItemProps, ItemState> {
               <FormattedMessage id="common.forms.edit" />
             </IconWithText>
           </Button>
-          <Button
-            disabled={this.state.pendingRequest === 'delete'}
-            onClick={this._handleDeleteTrip}
-          >
-            {this.state.pendingRequest === 'delete' ? (
-              <InlineLoading />
-            ) : (
-              <IconWithText Icon={Trash}>
-                <FormattedMessage id="common.forms.delete" />
-              </IconWithText>
-            )}
-          </Button>
         </TripPanelFooter>
       </Panel>
     )
@@ -192,8 +168,6 @@ const itemMapStateToProps = (ownProps: ItemProps) => {
 }
 
 const itemMapDispatchToProps = {
-  confirmAndDeleteUserMonitoredTrip:
-    userActions.confirmAndDeleteUserMonitoredTrip,
   routeTo: uiActions.routeTo,
   togglePauseTrip: userActions.togglePauseTrip
 }

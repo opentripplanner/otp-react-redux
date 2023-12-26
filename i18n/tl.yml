@@ -96,7 +96,6 @@ common:
     cancel: Kanselahin
     close: Isara
     defaultValue: "{value} (default)"
-    delete: I-delete
     edit: I-edit
     error: nagka-error!
     finish: Tapos na
