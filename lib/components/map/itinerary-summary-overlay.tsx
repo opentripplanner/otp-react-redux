@@ -8,6 +8,7 @@ import polyline from '@mapbox/polyline'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 
+import { AppReduxState } from '../../util/state-types'
 import { boxShadowCss } from '../form/batch-styled'
 import { ComponentContext } from '../../util/contexts'
 import { doMergeItineraries } from '../narrative/narrative-itineraries'
@@ -45,6 +46,14 @@ const Card = styled.div`
   flex-wrap: wrap;
 
   
+  span {
+    span {
+      span {
+        max-height: 28px;
+        min-height: 20px;
+      }
+    }
+  }
   div {
     margin-top: -0px!important;
   }
@@ -52,7 +61,7 @@ const Card = styled.div`
     padding: 0px;
   }
   * {
-    height: 25px;
+    height: 27px;
   }
 }
 `
@@ -130,6 +139,7 @@ const ItinerarySummaryOverlay = ({
       <>
         {midPoints.map(
           (mp, index) =>
+            // If no itinerary is hovered, show all of them. If one is selected, show only that one
             // TODO: does this cause an issue with the merging? is the right itinerary selected?`
             (visibleItinerary !== null && visibleItinerary !== undefined
               ? visibleItinerary === index
@@ -169,11 +179,9 @@ const ItinerarySummaryOverlay = ({
   }
 }
 
-// TODO: Typescript state
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const { activeSearchId, config } = state.otp
-  // Only show this overlay if the metro UI is explicitly enabled
-  if (config.itinerary?.showFirstResultByDefault !== false) {
+  if (config.itinerary?.previewOverlay === true) {
     return {}
   }
   if (!activeSearchId) return {}
