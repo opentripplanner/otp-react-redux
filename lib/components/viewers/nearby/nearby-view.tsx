@@ -14,6 +14,7 @@ import { SetLocationHandler } from '../../util/types'
 import Loading from '../../narrative/loading'
 import MobileContainer from '../../mobile/container'
 import MobileNavigationBar from '../../mobile/navigation-bar'
+import PageTitle from '../../util/page-title'
 
 import {
   FloatingLoadingIndicator,
@@ -224,6 +225,9 @@ function NearbyView({
             <FormattedMessage id="components.NearbyView.nothingNearby" />
           ))}
       </NearbySidebarContainer>
+      <PageTitle
+        title={intl.formatMessage({ id: 'components.NearbyView.header' })}
+      />
     </MainContainer>
   )
 }
