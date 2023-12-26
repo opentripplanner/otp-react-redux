@@ -114,6 +114,8 @@ const ItinerarySummaryOverlay = ({
   // @ts-expect-error React context is populated dynamically
   const { LegIcon } = useContext(ComponentContext)
 
+  let sharedTimeout = null
+
   if (!itins || !visible) return <></>
   const mergedItins: ItinWithGeometry[] =
     doMergeItineraries(itins).mergedItineraries.map(addItinLineString)
@@ -156,9 +158,12 @@ const ItinerarySummaryOverlay = ({
                     setActive({ index })
                   }}
                   onMouseEnter={() => {
-                    setVisible({ index })
+                    sharedTimeout = setTimeout(() => {
+                      setVisible({ index })
+                    }, 150)
                   }}
                   onMouseLeave={() => {
+                    clearTimeout(sharedTimeout)
                     setVisible({ index: null })
                   }}
                 >
