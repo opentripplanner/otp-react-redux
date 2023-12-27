@@ -112,7 +112,6 @@ common:
     cancel: Annuler
     close: Fermer
     defaultValue: "{value} (défaut)"
-    delete: Supprimer
     edit: Modifier
     error: erreur !
     finish: Terminer
@@ -568,6 +567,7 @@ components:
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SavedTripEditor:
+    deleteSavedTrip: Supprimer le trajet enregistré
     editSavedTrip: Modifier un trajet enregistré
     saveNewTrip: Enregistrer un nouveau trajet
     tripInformation: Informations sur le trajet

@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 
 import { InlineLoading } from '../narrative/loading'
 
-import FormNavigationButtons from './form-navigation-buttons'
+import FormNavigationButtons, { ButtonType } from './form-navigation-buttons'
 import StackedPanes, { Props as StackedPanesProps } from './stacked-panes'
 
 interface Props extends StackedPanesProps {
+  extraButton?: ButtonType
   onCancel: () => void
 }
 
@@ -16,6 +17,7 @@ interface Props extends StackedPanesProps {
  * TODO: add types once Pane type exists
  */
 const StackedPanesWithSave = ({
+  extraButton,
   onCancel,
   panes,
   title
@@ -47,6 +49,7 @@ const StackedPanesWithSave = ({
               <FormattedMessage id="common.forms.cancel" />
             )
         }}
+        extraButton={extraButton}
         okayButton={{
           disabled: buttonClicked === 'okay',
           onClick: () => {
