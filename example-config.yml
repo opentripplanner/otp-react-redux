@@ -68,6 +68,7 @@ persistence:
 #  enabled: true
 #  strategy: otp_middleware
 #  auth0:
+#    cacheLocation: localstorage (optional - default is "memory")
 #    domain: your-auth0-domain
 #    clientId: your-auth0-client-id
 #  otp_middleware:
