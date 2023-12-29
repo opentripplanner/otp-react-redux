@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
+import { FareProductSelector, Itinerary, Leg } from '@opentripplanner/types'
 import { FormattedMessage, FormattedNumber } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import type { Itinerary, Leg } from '@opentripplanner/types'
 
+import { AppReduxState } from '../../../util/state-types'
 import { ComponentContext } from '../../../util/contexts'
-import { getFare } from '../../../util/state'
+import { getFare } from '../../../util/itinerary'
 import FormattedDuration from '../../util/formatted-duration'
 
 // TODO: make this a prop
@@ -77,7 +78,7 @@ const ShortName = styled.div<{ leg: Leg }>`
 
 type Props = {
   currency?: string
-  defaultFareKey: string
+  defaultFareType?: FareProductSelector
   itinerary: Itinerary
   onClick: () => void
 }
@@ -90,17 +91,16 @@ export class ItinerarySummary extends Component<Props> {
   }
 
   render(): JSX.Element {
-    const { currency, defaultFareKey, itinerary } = this.props
+    const { defaultFareType, itinerary } = this.props
     const { LegIcon } = this.context
 
     const { fareCurrency, maxTNCFare, minTNCFare, transitFare } = getFare(
       itinerary,
-      defaultFareKey,
-      currency
+      defaultFareType
     )
 
-    const minTotalFare = minTNCFare * 100 + transitFare
-    const maxTotalFare = maxTNCFare * 100 + transitFare
+    const minTotalFare = minTNCFare * 100 + (transitFare || 0)
+    const maxTotalFare = maxTNCFare * 100 + (transitFare || 0)
 
     const { endTime, startTime } = itinerary
 
@@ -237,10 +237,9 @@ function getRouteColorForBadge(leg: Leg): string {
   return leg.routeColor ? '#' + leg.routeColor : defaultRouteColor
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   return {
-    currency: state.otp.config.localization?.currency || 'USD',
-    defaultFareKey: state.otp.config.itinerary?.defaultFareKey
+    defaultFareType: state.otp.config.itinerary?.defaultFareType
   }
 }
 

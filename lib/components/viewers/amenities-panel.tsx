@@ -246,7 +246,7 @@ class AmenitiesPanel extends Component<Props, State> {
   }
 
   render() {
-    const { intl } = this.props
+    const { configCompanies, intl } = this.props
     const { expanded } = this.state
     return (
       <RelatedPanel
@@ -259,8 +259,16 @@ class AmenitiesPanel extends Component<Props, State> {
       >
         <ul className="related-items-list list-unstyled">
           {this._renderParkAndRides()}
-          {this._renderBikeRentalStations()}
-          {this._renderVehicleRentalStations()}
+          {!configCompanies ||
+            (configCompanies.find((company) =>
+              company.modes?.includes('BICYCLE_RENT')
+            ) &&
+              this._renderBikeRentalStations())}
+          {!configCompanies ||
+            (configCompanies.find((company) =>
+              company.modes?.includes('SCOOTER_RENT')
+            ) &&
+              this._renderVehicleRentalStations())}
         </ul>
       </RelatedPanel>
     )

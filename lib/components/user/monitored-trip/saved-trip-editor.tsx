@@ -1,16 +1,17 @@
 import { FormattedMessage, useIntl } from 'react-intl'
 import React, { ComponentType } from 'react'
 
+import { MonitoredTrip } from '../types'
 import BackLink from '../back-link'
+import DeleteForm from '../delete-form'
 import PageTitle from '../../util/page-title'
-import StackedPaneDisplay from '../stacked-pane-display'
+import StackedPanesWithSave from '../stacked-panes-with-save'
 
 interface Props {
   isCreating: boolean
   onCancel: () => void
   panes: Record<string, ComponentType>
-  // TODO: Combine monitored trip types
-  values: Record<string, unknown>
+  values: MonitoredTrip
 }
 
 /**
@@ -50,9 +51,14 @@ const SavedTripEditor = (props: Props): JSX.Element => {
       <>
         <PageTitle title={title} />
         <BackLink />
-        <StackedPaneDisplay
+        <StackedPanesWithSave
+          extraButton={
+            monitoredTrip.id
+              ? { content: <DeleteForm tripId={monitoredTrip.id} /> }
+              : undefined
+          }
           onCancel={onCancel}
-          paneSequence={paneSequence}
+          panes={paneSequence}
           title={title}
         />
       </>

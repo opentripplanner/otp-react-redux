@@ -1,0 +1,22 @@
+
+name: Auto-approve and enable auto-merge on dependabot PRs
+on: pull_request_target
+
+jobs:
+  auto-approve-and-automerge:
+    # sources:
+    # https://github.com/hmarr/auto-approve-action
+    # https://docs.github.com/en/enterprise-server@3.7/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#enable-auto-merge-on-a-pull-request
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write      
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Auto-approve PR
+        uses: hmarr/auto-approve-action@v3
+      - name: Enable auto-merge
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

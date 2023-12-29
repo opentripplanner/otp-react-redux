@@ -35,6 +35,11 @@ api:
 #   mobile: BOTH_LOCATIONS_CHANGED
 #   default: ONE_LOCATION_CHANGED
 
+### If Terms of Service is hosted at an outside link, provide it here. If translations 
+### are provided, host each translation by including the language code (eg. en-US, fr, es) 
+### in the URL and use {locale} to represent the language in the link below
+# termsOfServiceLink:
+
 ### The default query parameters can be overridden be uncommenting this object.
 ### Note: the override values must be valid values within otp-ui's query-params.js
 # defaultQueryParams:
@@ -68,6 +73,7 @@ persistence:
 #  otp_middleware:
 #    apiBaseUrl: https://otp-middleware.example.com
 #    apiKey: your-middleware-api-key
+#    supportsPushNotifications: true # If not set, push notification settings will not be shown.
 
 ### Adding additional menu items to the main menu items. Use the separator flag
 ### to include a separator line if you have groups of menu items
@@ -177,6 +183,8 @@ geocoder:
   # This allows the location field dropdown headers to be colored based on Pelias layer
   #resultsColors:
   #  stops: "#007fae"
+  # Override the default number (3) of suggestions returned per category
+  #resultsCount: 5
 
 # example config for an ArcGIS geocoder
 # (https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm)
@@ -307,6 +315,9 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # Filters out trips returned by OTP by default, unless specifically requested.
+  # e.g. filters out walk-only itineraries if user has not explicitly asked for them.
+  strictItineraryFiltering: false
   # Whether to render route names and colors in the blocks inside
   # the batch ui rows
   renderRouteNamesInBlocks: true
@@ -318,7 +329,11 @@ itinerary:
   #  electronicRegular: "SmartCard Fare"
   #  student: "Student Fare"
   # One fare will always be shown by default
-  #defaultFareKey: electronicRegular
+  defaultFareType: { mediumId: null, riderCategoryId: null }
+
+  # List of OTP2 errors to not display. Can be a list
+  # mutedErrors:
+  #   - NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW
 
   # The following settings must be set to these values to use the new
   # "Metro" UI. The settings can be used without the Metro UI, but
@@ -328,6 +343,8 @@ itinerary:
 
   # Whether to show the "# itineraries found" text above the itinerary results
   showHeaderText: false
+  # Whether to show the mode descriptions in the batch UI results. Defaults to true
+  showBatchUiItineraryHeaders: false
   # Whether to hide the gray loading bars that appear while results are loading
   hideSkeletons: true
   # Whether the itinerary listing background should match the header
@@ -344,10 +361,27 @@ itinerary:
   # This flag disables the dot between legs in the metro itnerary summary, replacing it with
   # a gray background
   disableMetroSeperatorDot: false
+  # If enabled, always shows departures as times ("10pm" instead of "3 min") unless realtime data is present
+  onlyShowCountdownForRealtime: true
+  # Show the number of minutes of delay or early beneath a time in the itinerary body
+  showScheduleDeviation: true
   # Shows the duration of a leg below the leg in the metro itinerary summary
   showLegDurations: false
-  # Allows calorie counts to be hidden
-  displayCalories: true
+  # Whether to add a OTP_RR_A11Y_ROUTING_ENABLED error to all itineraries with accessibility scores
+  displayA11yError: false
+  # The sort option to use by default
+  # Available sort options: 'BEST', 'DURATION', 'ARRIVALTIME', 'WALKTIME', 'COST', 'DEPARTURETIME'
+  # defaultSort: "BEST" # Default
+  # The sort options to display in the sort options list
+  # If unset, will display all.
+  # Available sort options: 'BEST', 'DURATION', 'ARRIVALTIME', 'WALKTIME', 'COST', 'DEPARTURETIME'
+  # sortModes: 
+  #   - 'BEST'
+  #   - 'DURATION'
+  #   - 'ARRIVALTIME'
+  #   - 'WALKTIME'
+  #   - 'COST'
+  #   - 'DEPARTURETIME'
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
@@ -387,6 +421,7 @@ itinerary:
 #       BUS: # Any OTP mode
 #         color: 00FF00 # HEX color without the # (like GTFS)
 #         textColor: FFFFFF # HEX color without the # (like GTFS)
+#     routeIcons: false # If set to false, no mode icons in the route viewer
 #   - feedId: TriMet
 #     agencyId: TRIMET
 #     name: TriMet
@@ -542,11 +577,6 @@ itinerary:
 
 ### Localization section to provide language/locale settings
 #localization:
-#  # An ambient currency should be defined here (defaults to USD).
-#  # In some components such as DefaultItinerary, we display a cost element
-#  # that falls back to $0.00 (or its equivalent in the configured ambient currency
-#  # and in the user-selected locale) if no fare or currency info is available.
-#  currency: 'USD'
 #  defaultLocale: 'en-US'
 
 ### If using OTP Middleware, you can define the optional phone number options below.

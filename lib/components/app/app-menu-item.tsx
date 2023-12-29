@@ -68,17 +68,21 @@ export default class AppMenuItem extends Component<Props, State> {
   render(): JSX.Element {
     const { icon, id, onClick, subItems, text, ...otherProps } = this.props
     const { isExpanded } = this.state
-    const Element = otherProps.href ? 'a' : 'button'
+    const hasHref = !!otherProps.href
+    const isAbsolute = otherProps.href?.startsWith('http')
+    const Element = hasHref ? 'a' : 'button'
     const containerId = `${id}-container`
     return (
       <>
         <Element
           aria-controls={subItems && containerId}
           aria-expanded={subItems && isExpanded}
+          className="navItem"
           id={id}
           onClick={subItems ? this._toggleSubmenu : onClick}
           onKeyDown={this._handleKeyDown}
           {...otherProps}
+          target={hasHref && isAbsolute ? '_blank' : undefined}
         >
           <span aria-hidden>{icon}</span>
           <span>{text}</span>

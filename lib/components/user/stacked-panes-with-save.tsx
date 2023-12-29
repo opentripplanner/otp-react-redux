@@ -3,13 +3,12 @@ import React, { useEffect, useState } from 'react'
 
 import { InlineLoading } from '../narrative/loading'
 
-import { PageHeading, StackedPaneContainer } from './styled'
-import FormNavigationButtons from './form-navigation-buttons'
+import FormNavigationButtons, { ButtonType } from './form-navigation-buttons'
+import StackedPanes, { Props as StackedPanesProps } from './stacked-panes'
 
-type Props = {
+interface Props extends StackedPanesProps {
+  extraButton?: ButtonType
   onCancel: () => void
-  paneSequence: any[]
-  title?: string | JSX.Element
 }
 
 /**
@@ -17,9 +16,10 @@ type Props = {
  *
  * TODO: add types once Pane type exists
  */
-const StackedPaneDisplay = ({
+const StackedPanesWithSave = ({
+  extraButton,
   onCancel,
-  paneSequence,
+  panes,
   title
 }: Props): JSX.Element => {
   // Create indicator of if cancel button was clicked so that child components can know
@@ -28,22 +28,11 @@ const StackedPaneDisplay = ({
 
   useEffect(() => {
     setButtonClicked('')
-  }, [paneSequence])
+  }, [panes])
 
   return (
     <>
-      {title && <PageHeading>{title}</PageHeading>}
-      {paneSequence.map(
-        ({ hidden, pane: Pane, props, title }, index) =>
-          !hidden && (
-            <StackedPaneContainer key={index}>
-              <h3>{title}</h3>
-              <div>
-                <Pane canceled={isBeingCanceled} {...props} />
-              </div>
-            </StackedPaneContainer>
-          )
-      )}
+      <StackedPanes canceling={isBeingCanceled} panes={panes} title={title} />
 
       <FormNavigationButtons
         backButton={{
@@ -60,6 +49,7 @@ const StackedPaneDisplay = ({
               <FormattedMessage id="common.forms.cancel" />
             )
         }}
+        extraButton={extraButton}
         okayButton={{
           disabled: buttonClicked === 'okay',
           onClick: () => {
@@ -78,4 +68,4 @@ const StackedPaneDisplay = ({
     </>
   )
 }
-export default StackedPaneDisplay
+export default StackedPanesWithSave

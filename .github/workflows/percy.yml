@@ -8,9 +8,8 @@ on:
   pull_request:
 
 jobs:
-  run-pixel-tests-with-otp2-real-server-mobile:
+  run-pixel-tests:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -25,17 +24,20 @@ jobs:
       - name: Download OTP2 config file
         run: curl $PERCY_OTP2_CONFIG_URL --output /tmp/otp2config.yml
         env:
-          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_OTP2_CONFIG_URL_METRO_MODE_SELECTOR }}
-      - name: Take Percy Snapshots
-        # Move everything from latest commit back to staged
+          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_MOCK_OTP2_GEOCODER_CONFIG }}
+      - name: Build OTP-RR
+        # Artifacts are shared between desktop and mobile tests (but not call-taker).
+        run: yarn build
+        env:
+          YAML_CONFIG: /tmp/otp2config.yml
+          JS_CONFIG: ./percy/har-mock-config.js
+      - name: Take Percy Snapshots (Desktop + Mobile)
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_OTP2 }}
-          PERCY_OTP_CONFIG_OVERRIDE: /tmp/otp2config.yml
-          OTP_RR_PERCY_MOBILE: true
-  run-pixel-tests-with-otp2-real-server-call-taker:
+          OTP_RR_UI_MODE: normal
+  run-pixel-tests-calltaker:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -50,11 +52,16 @@ jobs:
       - name: Download OTP2 config file
         run: curl $PERCY_OTP2_CONFIG_URL --output /tmp/otp2config.yml
         env:
-          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_OTP2_CONFIG_URL_METRO_MODE_SELECTOR }}
-      - name: Take Percy Snapshots
-        # Move everything from latest commit back to staged
+          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_MOCK_OTP2_GEOCODER_CALLTAKER_CONFIG }}
+      - name: Build OTP-RR Calltaker
+        # Calltaker has a separate config file, so another build should be produced.
+        run: yarn build
+        env:
+          YAML_CONFIG: /tmp/otp2config.yml
+          JS_CONFIG: ./percy/har-mock-config-call-taker.js
+      - name: Take Percy Snapshots (Calltaker)
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
         env:
+          # Calltaker has a separate key because the calltaker-specific snapshots are different.
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_CALL_TAKER_OTP2 }}
-          PERCY_OTP_CONFIG_OVERRIDE: /tmp/otp2config.yml
-          OTP_RR_PERCY_CALL_TAKER: true
+          OTP_RR_UI_MODE: calltaker

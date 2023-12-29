@@ -1,9 +1,12 @@
+import { connect } from 'react-redux'
 import { ExclamationCircle } from '@styled-icons/fa-solid/ExclamationCircle'
 import { FormattedMessage, useIntl } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
 
+import { AppReduxState } from '../../../util/state-types'
 import { Icon } from '../../util/styledIcon'
+import { LinkOpensNewWindow } from '../../util/externalLink'
 
 type Error = Record<string, string[]>
 
@@ -38,24 +41,33 @@ const Container = styled.li`
   }
 `
 
-const ErrorRenderer = ({ errors }: { errors: Error }): JSX.Element => {
+const ErrorRenderer = ({
+  errors,
+  mutedErrors
+}: {
+  errors: Error
+  mutedErrors?: string[]
+}): JSX.Element => {
   const intl = useIntl()
 
   return (
     <List>
       {Object.keys(errors).map((error: string) => {
+        // The search window is hardcoded in otp-rr and can't be changed by the user.
+        // Do not tell them what's happening as they can't act on the issue.
+        if (error === 'NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW') {
+          return null
+        }
+
+        // Don't show errors that have been muted in the config
+        if (mutedErrors?.includes(error)) return null
+
         const localizedInputFieldList = Array.from(errors[error])?.map(
           (inputField) =>
             intl.formatMessage({
               id: `components.OTP2ErrorRenderer.inputFields.${inputField}`
             })
         )
-
-        // The search window is hardcoded in otp-rr and can't be changed by the user.
-        // Do not tell them what's happening as they can't act on the issue.
-        if (error === 'NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW') {
-          return null
-        }
 
         return (
           <Container key={error}>
@@ -70,7 +82,17 @@ const ErrorRenderer = ({ errors }: { errors: Error }): JSX.Element => {
                 id={`components.OTP2ErrorRenderer.${error}.body`}
                 values={{
                   inputFields: intl.formatList(localizedInputFieldList),
-                  inputFieldsCount: localizedInputFieldList.length
+                  inputFieldsCount: localizedInputFieldList.length,
+                  link: (contents: JSX.Element) => (
+                    <LinkOpensNewWindow
+                      contents={contents}
+                      inline
+                      style={{ color: 'inherit' }}
+                      url={intl.formatMessage({
+                        id: `components.OTP2ErrorRenderer.${error}.link`
+                      })}
+                    />
+                  )
                 }}
               />
             </p>
@@ -81,5 +103,10 @@ const ErrorRenderer = ({ errors }: { errors: Error }): JSX.Element => {
   )
 }
 
-export default ErrorRenderer
+const mapStateToProps = (state: AppReduxState) => {
+  const { itinerary } = state.otp.config
+  return { mutedErrors: itinerary?.mutedErrors }
+}
+export default connect(mapStateToProps)(ErrorRenderer)
+
 export type { Error }

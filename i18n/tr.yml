@@ -1,0 +1,139 @@
+_id: en-US
+_name: İngilizce
+actions:
+  callTaker:
+    callQuerySaveError: "Çağrı sorguları kaydedilirken hata oluştu: {err}"
+    checkSessionError: "Oturum kimlik doğrulama oluşturulurken hata oluştu: {err}"
+    couldNotFindCallError: Çağrı bulunamadı. Sorguları kaydetme isteği iptal ediliyor.
+    fetchCallsError: "Çağrılar alınırken hata oluştu: {err}"
+    queryFetchError: "Sorgular alınırken hata oluştu: {err}"
+  fieldTrip:
+    addNoteError: "Yolculuk alanına not eklenirken hata oluştu:"
+    editSubmitterNotesError: "Gönderenin notları düzenlenirken hata oluştu:"
+    fetchFieldTripError: ""
+    maxTripRequestsExceeded: Geçerli sonuçlar olmadan yolculuk isteklerinin sayısı aşıldı
+    saveItinerariesError: "Seyahat planları kaydedilemedi: {err}"
+    setDateError: "Tarih ayarlanırken hata oluştu:"
+    setGroupSizeError: "Grup boyutu ayarlanırken hata oluştu:"
+    setPaymentError: "Ödeme bilgileri ayarlanırken hata oluştu:"
+    setRequestStatusError: "İstek durumu ayarlanırken hata oluştu:"
+  location:
+    deniedAccessAlert: >
+      Konumunuza erişim engellendi.
+
+      Mevcut konumunuzu kullanmak için tarayıcınızdan konum izinlerini
+      etkinleştirin ve sayfayı yeniden yükleyin. 
+    geolocationNotSupportedError: Coğrafi konum tarayıcınız tarafından desteklenmiyor
+    unknownPositionError: Konum alınırken bilinmeyen hata
+    userDeniedPermission: Kullanıcı izni reddetti
+  map:
+    currentLocation: (Mevcut Konum)
+  user:
+    accountDeleted: Kullanıcı hesabınız ({email}) silindi.
+    authTokenError: Yetkilendirme anahtarı alınırken hata oluştu.
+    confirmDeletePlace: Bu yeri kaldırmak ister misiniz?
+    emailVerificationResent: E-posta doğrulama mesajı yeniden gönderildi.
+    genericError: "Bir hata ile karşılaşıldı: {err}"
+    itineraryExistenceCheckFailed: Seçtiğiniz seyahatin mümkün olup olmadığı kontrol edilirken hata oluştu.
+    mustBeLoggedInToSavePlace: Konumları kaydetmek için lütfen giriş yapın.
+    placeRemembered: Bu yerin ayarları kaydedildi.
+    preferencesSaved: Tercihleriniz kaydedilmiştir.
+    smsInvalidCode: Girdiğiniz kod geçersiz. Lütfen tekrar deneyin.
+    smsResendThrottled: >-
+      Belirtilen telefon numarasına bir dakikadan kısa süre önce bir doğrulama
+      SMS'i gönderildi. Lütfen birkaç dakika sonra tekrar deneyin.
+    smsVerificationFailed: >-
+      Telefonunuz doğrulanamadı. Girdiğiniz kodun süresi dolmuş olabilir. Lütfen
+      yeni bir kod isteyin ve tekrar deneyin.
+common:
+  coordinates: "{lat}, {lon}"
+  dateExpressions:
+    today: Bugün
+    tomorrow: Yarın
+    yesterday: Dün
+  daysOfWeek:
+    friday: Cuma
+    monday: Pazartesi
+    saturday: Cumartesi
+    sunday: Pazar
+    thursday: Perşembe
+    tuesday: Salı
+    wednesday: Çarşamba
+  daysOfWeekCompact:
+    friday: Cum
+    monday: Pzt
+    saturday: Cmt
+    sunday: Paz
+    thursday: Per
+    tuesday: Sal
+    wednesday: Çar
+  daysOfWeekPlural:
+    friday: Cumalar
+    monday: Pazartesileri
+    saturday: Cumartesileri
+    sunday: Pazarları
+    thursday: Perşembeler
+    tuesday: Salılar
+    wednesday: Çarşambalar
+  forms:
+    back: Geri
+    cancel: İptal
+    close: Kapat
+    defaultValue: "{value} (varsayılan)"
+    edit: Düzenle
+    error: hata!
+    finish: Bitiş
+    next: Sonraki
+    "no": Hayır
+    print: Yazdır
+    save: Kaydet
+    startOver: Baştan Başla
+    submitting: Gönderiliyor…
+    "yes": Evet
+  itineraryDescriptions:
+    fareUnknown: Ücret bilgisi yok
+  linkOpensNewWindow: (Yeni pencere açar)
+  modes:
+    bicycle_rent: Bisiklet paylaşımı
+    bike: Bisiklet
+    bus: Otobüs
+    cable_car: Teleferik
+    car: Araba
+    car_park: Park Et Devam Et
+    drive: Sürücü
+    ferry: Feribot
+    flex: Esnek Rotalar
+    funicular: Füniküler
+    gondola: Gondol
+    micromobility: E-Skutır
+    micromobility_rent: E-Skutır
+    rail: Demiryolu
+    rent: Kiralama seçenekleri
+    subway: Metro
+    tram: Tramvay
+    walk: Yürümek
+  notifications:
+    email: eposta
+    push: bildirimler
+    sms: SMS
+  places:
+    dining: yemek
+    home: ev
+    work: iş
+  searchForms:
+    click: tıkla
+  time:
+    duration:
+      aFewSeconds: birkaç saniye
+components:
+  A11yPrefs:
+    accessibilityRoutingByDefault: Varsayılan olarak erişilebilir seyahatleri tercih et
+  AddPlaceButton:
+    addPlace: Yer ekle
+    needOriginDestination: Ara yerler eklemek için başlangıç/bitiş noktasını tanımlayın
+    tooManyPlaces: Maksimum ara yerlere ulaşıldı
+  AdvancedOptions:
+    bannedRoutes: Yasaklanan rotaları seç…
+    preferredRoutes: Tercih edilen rotaları seçin...
+  AfterSignInScreen:
+    mainTitle: Yönlendiriliyor...

@@ -34,7 +34,6 @@ common:
     cancel: Avbryt
     close: Lukk
     defaultValue: "{value} (forvalg)"
-    delete: Slett
     edit: Rediger
     finish: Fullfør
     next: Neste
@@ -67,7 +66,6 @@ components:
   BatchSettings:
     destination: mål
     planTripTooltip: Planlegg tur
-    settings: Turinnstillinger
   CallTakerPanel:
     advancedOptions: Avanserte innstillinger
     groupSize: "Gruppestørrelse:"
@@ -75,9 +73,6 @@ components:
     now: Nå
   DeleteUser:
     deleteMyAccount: Slett kontoen min
-  EnhancedStopMarker:
-    stopID: "Stopp-ID:"
-    stopViewer: Stopp-viser
   ErrorMessage:
     header: Kunne ikke planlegge tur
     warning: Advarsel
@@ -102,7 +97,6 @@ components:
   NewAccountWizard:
     createNewAccount: Opprett ny konto
     places: Legg til dine steder
-    terms: Opprett ny konto
     verify: Bekreft din e-postadresse
   PhoneNumberEditor:
     invalidPhone: Skriv inn et gyldig telefonnummer.

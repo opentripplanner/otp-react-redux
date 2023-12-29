@@ -2,7 +2,8 @@ _id: fr
 _name: Exemple de traduction pour OTP-react-redux en français
 actions:
   callTaker:
-    callQuerySaveError: "Erreur lors de l'enregistrement des requêtes pour l'appel : {err}"
+    callQuerySaveError: "Erreur lors de l'enregistrement des requêtes pour l'appel
+      : {err}"
     callSaveError: "Impossible d'enregistrer l'appel : {err}"
     checkSessionError: "Erreur durant la session d'authentification : {err}"
     couldNotFindCallError: >-
@@ -17,9 +18,11 @@ actions:
         true {aller}
         other {retour}
       } planifié préalablement pour cette demande. Voulez-vous continuer ?
-    deleteItinerariesError: "Erreur lors de la suppression du trajet pour le groupe :"
+    deleteItinerariesError: "Erreur lors de la suppression du trajet pour le groupe
+      :"
     deleteNoteError: "Erreur lors de la suppression d'une note sur le groupe :"
-    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur :"
+    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur
+      :"
     fetchFieldTripError: "Erreur de chargement du groupe scolaire : {err}"
     fetchFieldTripsError: "Erreur lors du chargement des groupes scolaires : {err}"
     fetchTripsForDateError: >-
@@ -38,8 +41,15 @@ actions:
     setPaymentError: "Erreur sur les coordonnées de paiement :"
     setRequestStatusError: "Erreur sur l'état de la requête :"
   location:
-    geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par votre navigateur.
+    deniedAccessAlert: >
+      L'accès à votre position est refusé.
+
+      Pour utiliser votre emplacement actuel, permettez-en l'accès depuis votre
+      navigateur, et ouvrez de nouveau cette page.
+    geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par
+      votre navigateur.
     unknownPositionError: Erreur inconnue lors de la détection de votre emplacement.
+    userDeniedPermission: Refusé par l'utilisateur
   map:
     currentLocation: (Emplacement actuel)
   user:
@@ -51,7 +61,13 @@ actions:
       Le message de vérification de votre adresse e-mail a été envoyé de
       nouveau.
     genericError: "Une erreur s'est produite : {err}"
-    itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité du trajet choisi.
+    itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité du
+      trajet choisi.
+    mustAcceptTermsToSavePlace: >-
+      Veuillez accepter les conditions d'utilisation (dans Mon compte) pour
+      enregistrer des lieux.
+    mustBeLoggedInToSavePlace: Veuillez vous connecter pour enregistrer des lieux.
+    placeRemembered: Les informations pour ce lieu ont été enregistrées.
     preferencesSaved: Vos préférences ont été enregistrées.
     smsInvalidCode: Le code saisi est incorrect. Veuillez réessayer.
     smsResendThrottled: >-
@@ -96,7 +112,6 @@ common:
     cancel: Annuler
     close: Fermer
     defaultValue: "{value} (défaut)"
-    delete: Supprimer
     edit: Modifier
     error: erreur !
     finish: Terminer
@@ -109,6 +124,7 @@ common:
     "yes": Oui
   itineraryDescriptions:
     calories: "{calories, number} kcal"
+    fareUnknown: Tarif inconnu
     noItineraryToDisplay: Aucun trajet à afficher.
     relativeCo2: |
       {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
@@ -138,6 +154,7 @@ common:
     walk: À pied
   notifications:
     email: e-mail
+    push: notifications push
     sms: SMS
   places:
     custom: divers
@@ -177,7 +194,7 @@ components:
   AdvancedOptions:
     bannedRoutes: Choisissez les lignes à éviter…
     bikeTolerance: Tolérance au vélo
-    preferredRoutes: Choisissez les lignes preferées
+    preferredRoutes: Choisissez les lignes préferées
     walkTolerance: Tolérance à la marche
   AfterSignInScreen:
     mainTitle: Redirection...
@@ -234,9 +251,12 @@ components:
     shortTitle: Planifier un trajet
   BatchSearchScreen:
     header: Votre trajet
+    modeSelectorLabel: Sélectionnez un mode de transport
   BatchSettings:
-    dateTimeSettingsLabel: Paramètres Date/Heure
     destination: destination
+    invalidModeSelection: >-
+      Impossible de planifier un trajet avec les modes sélectionnés. Réessayez
+      en ajoutant les transports publics.
     origin: point de départ
     planTripTooltip: Planifier le trajet
     validationMessage: >-
@@ -261,7 +281,6 @@ components:
     departAt: Départ {departTime, time, short}
     editDepartOrArrival: Modifier l'heure de départ ou d'arrivée
     leaveNow: Tout de suite
-    range: "{startTime, time, short} à {endTime, time, short}"
   DateTimeScreen:
     header: Jour et heure du trajet
   DefaultItinerary:
@@ -270,9 +289,6 @@ components:
     nonTransit: Alternatives
   DeleteUser:
     deleteMyAccount: Supprimer mon compte
-  EnhancedStopMarker:
-    stopID: Arrêt nº
-    stopViewer: Info arrêt
   ErrorMessage:
     header: Impossible de planifier le trajet
     warning: Attention
@@ -325,7 +341,6 @@ components:
     title: Vue panoramique
   MetroUI:
     arriveAt: Vous arrivez à
-    fromStop: de {stop}
     itineraryDescription: Trajet de {time} par les lignes {routes}
     leaveAt: Partez à
     multipleOptions: Plusieurs options
@@ -335,10 +350,48 @@ components:
     timeWalking: "{time} de marche"
   MobileOptions:
     header: Options de recherche
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Canne
+        crutches: Béquilles
+        electric wheelchair: Fauteuil roulant électrique
+        manual walker: Déambulateur manuel
+        manual wheelchair: Fauteuil roulant manuel
+        mobility scooter: Scooter électrique
+        none: Aucun
+        service animal: Animal de service
+        stroller: Poussette
+        wheeled walker: Déambulateur à roues
+        white cane: Canne blanche
+      prompt: >-
+        Utilisez-vous habituellement l'aide d'un appareil pour vous déplacer ?
+        (Cochez tous les cas qui vous concernent)
+    LimitationsPane:
+      mobilityPrompt: >-
+        Avez-vous des handicaps moteurs qui vous font marcher plus lentement ou
+        plus prudemment que d'autres personnes ?
+      visionLimitations:
+        legally-blind: Non-voyant
+        low-vision: Vision basse
+        none: Aucun
+      visionPrompt: Avez-vous des handicaps visuels ?
+    MobilityPane:
+      button: Modifier votre profil mobilité
+      header: Profil mobilité
+      mobilityDevices: "Appareils d'aide : "
+      mobilityLimitations: "Handicaps moteurs : "
+      visionLimitations: "Handicaps visuels : "
+    intro: >-
+      Veuillez répondre a quelques questions pour personaliser vos recherches de
+      trajets selon vos besoins et préférences.
+    title: Spécifiez votre profil de mobilité
   NarrativeItinerariesHeader:
     changeSortDir: Changer l'ordre de tri
-    howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés plus bas.
-    itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets trouvés} }"
+    howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés
+      plus bas.
+    itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets
+      trouvés} }"
     numIssues: "{issueNum, plural, one {# problème} other {# problèmes} }"
     resultsSortedBy: >-
       Résultats triés par {sortSelected}. Pour modifier l'ordre, utilisez le
@@ -367,12 +420,11 @@ components:
     description: Le contenu que vous avez demandé n'est pas disponible.
     header: Contenu introuvable
   NotificationPrefsPane:
-    description: >-
-      Vous pouvez recevoir des notifications sur les trajets que vous effectuez
-      fréquemment.
-    noneSelect: Ne pas me notifier
-    notificationChannelPrompt: Comment voulez-vous recevoir vos notifications ?
-    notificationEmailDetail: "Les courriers de notification seront envoyés à :"
+    devicesRegistered: >-
+      {count, plural, one {# appareil enregistré} other {# appareils
+      enregistrés}}
+    noDeviceForPush: Inscrivez-vous avec l'application mobile pour accéder à ce paramètre.
+    notificationChannelPrompt: "Recevoir des notifications sur vos trajets par :"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
@@ -406,12 +458,12 @@ components:
       header: Date sans données
     SYSTEM_ERROR:
       body: Une erreur inconnue s'est produite pendant la recherche.
-      header: Echec de la recherche
+      header: Échec de la recherche
     WALKING_BETTER_THAN_TRANSIT:
       body: >-
-        Vous pouvez effectuer ce trajet plus rapidement en évitant les
+        Vous pouvez effectuer ce trajet plus rapidement sans prendre les
         transports.
-      header: Transports moins rapides
+      header: Moins rapide en transports
     inputFields:
       FROM: point de départ
       TO: destination
@@ -426,7 +478,10 @@ components:
     prompt: "Entrez votre numéro de téléphone pour les SMS de notification :"
     requestNewCode: Envoyer un nouveau code
     sendVerificationText: Envoyer le SMS de vérification
-    smsDetail: "Les SMS de notification seront envoyés au :"
+    smsConsent: >
+      En donnant votre numéro téléphone, vous acceptez de recevoir des SMS de
+      vérification et de suivi de vos trajets. Frais applicables selon votre
+      opérateur téléphonique.
     verificationCode: "Code de vérification :"
     verificationInstructions: >
       Un SMS vous a été envoyé avec un code de vérification. Veuillez taper ce
@@ -484,6 +539,7 @@ components:
     tripsFound: "{count, plural, one {# trajet trouvé} other {# trajets trouvés}}"
     waiting: Patientez...
   RouteDetails:
+    headsignTo: "{headsign} ({lastStop})"
     moreDetails: Plus d'infos
     operatedBy: Exploité par {agencyName}
     selectADirection: Choisissez une direction...
@@ -511,6 +567,7 @@ components:
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SavedTripEditor:
+    deleteSavedTrip: Supprimer le trajet enregistré
     editSavedTrip: Modifier un trajet enregistré
     saveNewTrip: Enregistrer un nouveau trajet
     tripInformation: Informations sur le trajet
@@ -518,6 +575,7 @@ components:
     tripNotFoundDescription: Le trajet recherché est introuvable.
     tripNotifications: Notifications du trajet
   SavedTripList:
+    alertTag: "{alert, plural, one {Afficher une alerte} other {Afficher # alertes}}"
     fromTo: De {from} à {to}
     myTrips: Mes trajets
     noSavedTrips: Vous n'avez aucun trajet enregistré
@@ -545,10 +603,6 @@ components:
       session' pour conserver votre recherche.
     header: Votre session va expirer
     keepSession: Prolonger ma session
-  SettingsPreview:
-    defaultPreviewText: |-
-      Choix du mode
-      & préférences
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: >-
       Ce trajet utilise les informations en temps réel sur le trafic et les
@@ -579,7 +633,7 @@ components:
     schedule: Horaires
     timezoneWarning: Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>.
     titleBarStopId: Arrêt {stopId}
-    viewNextArrivals: Prochains passages
+    viewNextDepartures: Prochains départs
     viewSchedule: Horaires
     zoomToStop: Zoomer sur l'arrêt
   SubNav:
@@ -660,7 +714,8 @@ components:
       unknownState: État du trajet inconnu
       untogglePause: Reprendre
     inactive:
-      description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
+      description: Reprenez le suivi pour obtenir des dernières conditions de votre
+        trajet.
       heading: Suivi suspendu
     nextTripNotPossible:
       description: >
@@ -679,7 +734,8 @@ components:
         déterminées.
       heading: Conditions du trajet indéterminées
     snoozed:
-      description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
+      description: Reprenez le suivi pour obtenir des dernières conditions de votre
+        trajet.
       heading: Suivi suspendu jusqu'à demain
     upcoming:
       nextTripBegins: >-
@@ -703,6 +759,7 @@ components:
     notificationsDisabled: "Notifications : <strong>Désactivées</strong>"
   TripTools:
     copyLink: Copier le lien
+    header: Outils
     linkCopied: Copié
     reportEmailSubject: Signaler un problème avec OpenTripPlanner
     reportEmailTemplate: >
@@ -740,6 +797,11 @@ components:
     confirmDelete: >-
       Voulez-vous vraiment supprimer votre compte ? Cette action est
       irréversible.
+    errorUpdatingProfile: Erreur dans la mise à jour de votre profil.
+    fieldUpdated: Ce paramètre a été mis à jour.
+    fields:
+      storeTripHistory: Enregistrement des recherches
+    updating: Mise à jour
   UserSettings:
     confirmDeletion: >-
       Vous avez des recherches et/ou lieux récemment enregistrés qui vont être

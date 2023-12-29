@@ -3,6 +3,7 @@ import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import React, { Component, FormEvent } from 'react'
 
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
+import { getPersistenceMode } from '../../util/user'
 import BatchSettings from '../form/batch-settings'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import LocationField from '../form/connected-location-field'
@@ -101,7 +102,12 @@ class BatchRoutingPanel extends Component<Props> {
 
 // connect to the redux store
 const mapStateToProps = (state: any) => {
-  const showUserSettings = getShowUserSettings(state)
+  // Show the place shortcuts for OTP-middleware users who have accepted the terms of use
+  // and deployments using persistence to localStorage. Don't show shortcuts otherwise.
+  const showUserSettings =
+    getShowUserSettings(state) &&
+    (state.user.loggedInUser?.hasConsentedToTerms ||
+      getPersistenceMode(state.otp.config.persistence).isLocalStorage)
   return {
     activeSearch: getActiveSearch(state),
     showUserSettings

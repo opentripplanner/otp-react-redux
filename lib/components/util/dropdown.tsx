@@ -34,6 +34,7 @@ const DropdownMenu = styled.ul`
   position: absolute;
   right: 0;
   top: 100%;
+  width: 100%;
   z-index: 1000;
 
   hr {
@@ -169,7 +170,7 @@ export const Dropdown = ({
         tabIndex={0}
         title={label}
       >
-        {name}
+        <span>{name}</span>
         <span className="caret" role="presentation" />
       </DropdownButton>
       {open && (
@@ -190,11 +191,6 @@ export const Dropdown = ({
 
 export const SortResultsDropdown = styled(Dropdown)`
     position: relative;
-
-    // Keeps dropdown inline with itinerary buttons when scrollbar is visible
-    @media (min-width: 769px) {
-      margin-right: 10px;
-    }
 
     ${DropdownButton} {
       border-radius: 5px;

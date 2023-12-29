@@ -1,11 +1,10 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { useHistory } from 'react-router'
 import React from 'react'
 
+import * as uiActions from '../../actions/ui'
 import { MainPanelContent } from '../../actions/ui-constants'
-import { setMainPanelContent } from '../../actions/ui'
 
 type Props = {
   accountsActive: boolean
@@ -23,7 +22,6 @@ const ViewSwitcher = ({
   setMainPanelContent,
   sticky
 }: Props) => {
-  const history = useHistory()
   const intl = useIntl()
 
   const _showRouteViewer = () => {
@@ -31,15 +29,11 @@ const ViewSwitcher = ({
   }
 
   const _showTripPlanner = () => {
-    if (accountsActive) {
-      // Go up to root while preserving query parameters
-      history.push('..' + history.location.search)
-    } else {
-      setMainPanelContent(null)
-    }
+    // setMainPanelContent(null) already includes navigation to '/'.
+    setMainPanelContent(null)
   }
 
-  const tripPlannerActive = activePanel === null
+  const tripPlannerActive = activePanel === null && !accountsActive
   const routeViewerActive = activePanel === MainPanelContent.ROUTE_VIEWER
 
   return (
@@ -84,25 +78,15 @@ const ViewSwitcher = ({
 // connect to the redux store
 
 const mapStateToProps = (state: any) => {
-  const { mainPanelContent } = state.otp.ui
-
-  // Reverse the ID to string mapping
-  const activePanelPair = Object.entries(MainPanelContent).find(
-    (keyValuePair) => keyValuePair[1] === mainPanelContent
-  )
-  // activePanel is array of form [string, ID]
-  // The trip planner has id null
-  const activePanel = (activePanelPair && activePanelPair[1]) || null
-
   return {
     // TODO: more reliable way of detecting these things, such as terms of storage page
     accountsActive: state.router.location.pathname.includes('/account'),
-    activePanel
+    activePanel: state.otp.ui.mainPanelContent
   }
 }
 
 const mapDispatchToProps = {
-  setMainPanelContent
+  setMainPanelContent: uiActions.setMainPanelContent
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewSwitcher)

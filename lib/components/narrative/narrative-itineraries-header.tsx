@@ -9,6 +9,7 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
+import { ItinerarySortOption } from '../../util/config-types'
 import { sortOptions } from '../util/sortOptions'
 import { SortResultsDropdown } from '../util/dropdown'
 import { UnstyledButton } from '../util/unstyled-button'
@@ -27,8 +28,16 @@ const IssueButton = styled.button`
   padding: 2px 4px;
 `
 
+const ItinerariesHeaderContainer = styled.div<{ showHeaderText: boolean }>`
+  display: flex;
+  float: left;
+  gap: 8px;
+  margin-left: ${(props) => (props.showHeaderText ? 'inherit' : 'auto')};
+`
+
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
+  enabledSortModes,
   errors,
   itineraries,
   itinerary,
@@ -45,6 +54,7 @@ export default function NarrativeItinerariesHeader({
   sort
 }: {
   customBatchUiBackground?: boolean
+  enabledSortModes: ItinerarySortOption[]
   errors: unknown[]
   itineraries: unknown[]
   itinerary: Itinerary
@@ -90,7 +100,7 @@ export default function NarrativeItinerariesHeader({
     ? searching
     : intl.formatList([itinerariesFound, numIssues], { type: 'conjunction' })
 
-  const sortOptionsArr = sortOptions(intl)
+  const sortOptionsArr = sortOptions(intl, enabledSortModes)
   const sortText = sortOptionsArr.find((x) => x.value === sort.type)?.text
 
   const handleSortClick = useCallback(
@@ -173,14 +183,7 @@ export default function NarrativeItinerariesHeader({
             // because it falls under the "Plan your trip" <h1> header.
             <InvisibleA11yLabel as="h2">{itinerariesFound}</InvisibleA11yLabel>
           )}
-          <div
-            style={{
-              display: 'flex',
-              float: 'right',
-              gap: 8,
-              marginLeft: showHeaderText ? 'inherit' : 'auto'
-            }}
-          >
+          <ItinerariesHeaderContainer showHeaderText={showHeaderText}>
             {popupTarget && (
               <button onClick={() => setPopupContent(popupTarget)}>
                 <PopupTriggerText compact popupTarget={popupTarget} />
@@ -221,7 +224,7 @@ export default function NarrativeItinerariesHeader({
                 </li>
               ))}
             </SortResultsDropdown>
-          </div>
+          </ItinerariesHeaderContainer>
           <PlanFirstLastButtons />
         </>
       )}

@@ -1,11 +1,18 @@
 import { Alert, FormControl } from 'react-bootstrap'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
-import { Field, FormikProps } from 'formik'
-import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
-import React, { Component, ComponentType, FormEvent, ReactNode } from 'react'
+import { FormattedList, FormattedMessage } from 'react-intl'
+import { FormikProps } from 'formik'
+import React, { Component, FormEvent } from 'react'
 import styled from 'styled-components'
 
+import {
+  DurationOptions,
+  Select,
+  YesNoOptions
+} from '../common/dropdown-options'
+import { FieldSet } from '../styled'
 import { IconWithText } from '../../util/styledIcon'
+import { MonitoredTrip } from '../types'
 
 // Element styles
 const SettingsList = styled.ul`
@@ -36,137 +43,7 @@ const Summary = styled.summary`
   margin-bottom: 5px;
 `
 
-const NotificationSettings = styled.fieldset`
-  /* Format <legend> like labels. */
-  legend {
-    border: none;
-    font-size: inherit;
-    font-weight: 700;
-    margin-bottom: 5px;
-  }
-`
-
-/**
- * A label followed by a dropdown control.
- */
-const Select = ({
-  Control = FormControl,
-  children,
-  label,
-  name
-}: {
-  // Note the prop order required by typescript-sort-keys, also applied above.
-  Control?: ComponentType
-  children: ReactNode
-  label?: ReactNode
-  name: string
-}) => (
-  // <Field> is kept outside of <label> to accommodate layout in table/grid cells.
-  <>
-    {label && <label htmlFor={name}>{label}</label>}
-    <Field as={Control} componentClass="select" id={name} name={name}>
-      {children}
-    </Field>
-  </>
-)
-
-function Options({
-  defaultValue,
-  options
-}: {
-  defaultValue: number | string
-  options: { text: string; value: number | string }[]
-}) {
-  // <FormattedMessage> can't be used inside <option>.
-  const intl = useIntl()
-  return (
-    <>
-      {options.map(({ text, value }, i) => (
-        <option key={i} value={value}>
-          {value === defaultValue
-            ? intl.formatMessage(
-                { id: 'common.forms.defaultValue' },
-                { value: text }
-              )
-            : text}
-        </option>
-      ))}
-    </>
-  )
-}
-
-const basicYesNoOptions = [
-  {
-    id: 'yes',
-    value: 'true'
-  },
-  {
-    id: 'no',
-    value: 'false'
-  }
-]
-
-/**
- * Produces a yes/no list of options with the specified
- * default value (true for yes, false for no).
- */
-function YesNoOptions({ defaultValue }: { defaultValue: boolean }) {
-  // <FormattedMessage> can't be used inside <option>.
-  const intl = useIntl()
-  const options = basicYesNoOptions.map(({ id, value }) => ({
-    text:
-      id === 'yes'
-        ? intl.formatMessage({ id: 'common.forms.yes' })
-        : intl.formatMessage({ id: 'common.forms.no' }),
-    value
-  }))
-  return (
-    <Options
-      defaultValue={(defaultValue || false).toString()}
-      options={options}
-    />
-  )
-}
-
-/**
- * Produces a list of duration options with the specified default value.
- */
-function DurationOptions({
-  decoratorFunc,
-  defaultValue,
-  minuteOptions
-}: {
-  decoratorFunc?: (text: string, intl: IntlShape) => string
-  defaultValue: string | number
-  minuteOptions: number[]
-}) {
-  // <FormattedMessage> can't be used inside <option>.
-  const intl = useIntl()
-  const localizedMinutes = minuteOptions.map((minutes) => ({
-    text:
-      minutes === 60
-        ? intl.formatMessage({ id: 'components.TripNotificationsPane.oneHour' })
-        : intl.formatMessage(
-            { id: 'common.time.tripDurationFormat' },
-            { hours: 0, minutes, seconds: 0 }
-          ),
-    value: minutes
-  }))
-  const options = decoratorFunc
-    ? localizedMinutes.map(({ text, value }) => ({
-        text: decoratorFunc(text, intl),
-        value
-      }))
-    : localizedMinutes
-  return <Options defaultValue={defaultValue} options={options} />
-}
-
-interface Fields {
-  arrivalVarianceMinutesThreshold: number
-  departureVarianceMinutesThreshold: number
-}
-
-interface Props extends FormikProps<Fields> {
+interface Props extends FormikProps<MonitoredTrip> {
   notificationChannel: string
 }
 
@@ -188,7 +65,8 @@ class TripNotificationsPane extends Component<Props> {
 
   render(): JSX.Element {
     const { notificationChannel, values } = this.props
-    const areNotificationsDisabled = notificationChannel === 'none'
+    const areNotificationsDisabled =
+      notificationChannel === 'none' || !notificationChannel?.length
     // Define a common trip delay field for simplicity, set to the smallest between the
     // retrieved departure/arrival delay attributes.
     const commonDelayThreshold = Math.min(
@@ -213,24 +91,25 @@ class TripNotificationsPane extends Component<Props> {
         </Alert>
       )
     } else {
+      const selectedChannels = notificationChannel
+        .split(',')
+        .filter((channel) => channel?.length)
+        .map((channel) => (
+          <FormattedMessage
+            id={`common.notifications.${channel}`}
+            key={channel}
+          />
+        ))
       notificationSettingsContent = (
-        <NotificationSettings>
+        <FieldSet>
           <legend>
             <FormattedMessage
               id="components.TripNotificationsPane.notifyViaChannelWhen"
-              values={
-                notificationChannel === 'email'
-                  ? {
-                      channel: (
-                        <FormattedMessage id="common.notifications.email" />
-                      )
-                    }
-                  : {
-                      channel: (
-                        <FormattedMessage id="common.notifications.sms" />
-                      )
-                    }
-              }
+              values={{
+                channel: (
+                  <FormattedList type="conjunction" value={selectedChannels} />
+                )
+              }}
             />
           </legend>
           <SettingsList>
@@ -296,7 +175,7 @@ class TripNotificationsPane extends Component<Props> {
               </li>
             </SettingsList>
           </details>
-        </NotificationSettings>
+        </FieldSet>
       )
     }
 

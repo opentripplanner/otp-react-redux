@@ -2,7 +2,6 @@ import {
   ClearButton,
   DropdownButton,
   Input,
-  MenuItemA,
   MenuItemLi,
   MenuItemList
 } from '@opentripplanner/location-field/lib/styled'
@@ -42,22 +41,25 @@ const StyledLocationField = styled(LocationField)<Props>`
     position: absolute;
     ${(props) => (props.static ? 'width: 100%;' : '')}
   }
-  ${MenuItemA} {
-    &:focus,
-    &:hover {
-      color: inherit;
-      text-decoration: none;
-    }
-  }
-  ${MenuItemA}, ${MenuItemLi} {
+  ${MenuItemLi} {
     overflow: hidden;
     ${(props) =>
       props.static ? 'padding-left: 10px; padding-right: 5px; width: 100%' : ''}
+
+    &:focus,
+    &:hover {
+      color: inherit;
+    }
   }
 `
+
 /**
  * Styled LocationField for setting a favorite place locations using the geocoder.
  */
 export const PlaceLocationField = connectLocationField(StyledLocationField, {
+  actions: {
+    // Set to null so that PlaceEditor can set its own handler.
+    getCurrentPosition: null
+  },
   excludeSavedLocations: true
 })
