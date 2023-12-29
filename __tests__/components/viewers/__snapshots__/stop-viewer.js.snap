@@ -1472,7 +1472,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         title="20"
                                       >
                                         <span
-                                          className="sc-edoYdd cUdUnS"
+                                          className="sc-edoYdd jUXeWR"
                                           color="333333"
                                           style={
                                             Object {
@@ -4032,7 +4032,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         title="20"
                                       >
                                         <span
-                                          className="sc-edoYdd cUdUnS"
+                                          className="sc-edoYdd jUXeWR"
                                           color="333333"
                                           style={
                                             Object {
@@ -6193,7 +6193,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         title="20"
                                       >
                                         <span
-                                          className="sc-edoYdd cUdUnS"
+                                          className="sc-edoYdd jUXeWR"
                                           color="333333"
                                           style={
                                             Object {
@@ -9887,7 +9887,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="20"
                                       >
                                         <span
-                                          className="sc-edoYdd cUdUnS"
+                                          className="sc-edoYdd jUXeWR"
                                           color="333333"
                                           style={
                                             Object {
@@ -10560,7 +10560,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="94"
                                       >
                                         <span
-                                          className="sc-edoYdd cUdUnS"
+                                          className="sc-edoYdd jUXeWR"
                                           color="333333"
                                           style={
                                             Object {
@@ -11183,7 +11183,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="94"
                                       >
                                         <span
-                                          className="sc-edoYdd cUdUnS"
+                                          className="sc-edoYdd jUXeWR"
                                           color="333333"
                                           style={
                                             Object {
@@ -11488,7 +11488,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="36"
                                       >
                                         <span
-                                          className="sc-edoYdd cUdUnS"
+                                          className="sc-edoYdd jUXeWR"
                                           color="333333"
                                           style={
                                             Object {
@@ -11957,7 +11957,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="94"
                                       >
                                         <span
-                                          className="sc-edoYdd cUdUnS"
+                                          className="sc-edoYdd jUXeWR"
                                           color="333333"
                                           style={
                                             Object {
@@ -12244,7 +12244,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="36"
                                       >
                                         <span
-                                          className="sc-edoYdd cUdUnS"
+                                          className="sc-edoYdd jUXeWR"
                                           color="333333"
                                           style={
                                             Object {
@@ -12545,7 +12545,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="94"
                                       >
                                         <span
-                                          className="sc-edoYdd cUdUnS"
+                                          className="sc-edoYdd jUXeWR"
                                           color="333333"
                                           style={
                                             Object {
@@ -16922,7 +16922,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         title="20"
                                       >
                                         <span
-                                          className="sc-edoYdd cUdUnS"
+                                          className="sc-edoYdd jUXeWR"
                                           color="333333"
                                           style={
                                             Object {
