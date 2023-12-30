@@ -215,7 +215,7 @@ modes:
       modes:
         - mode: TRANSIT
     - iconName: bicycle
-      key: bike
+      key: bicycle
       modes:
         # Modes can contain a qualifier
         # See OTP documentation for details
