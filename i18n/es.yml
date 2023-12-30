@@ -801,6 +801,39 @@ components:
     switcher: Botón de cambio
   WelcomeScreen:
     prompt: ¿A donde quiere ir?
+  MobilityProfile:
+    LimitationsPane:
+      visionLimitations:
+        legally-blind: Invidente
+        none: Ninguna
+        low-vision: Visión reducida
+      visionPrompt: ¿Tiene alguna limitación visual?
+      mobilityPrompt: ¿Tiene alguna limitación de movilidad que le obligue a caminar
+        más despacio o con más cuidado que otras personas?
+    DevicesPane:
+      devices:
+        manual walker: Andador
+        white cane: Bastón blanco
+        none: Sin dispositivo de ayuda
+        stroller: Cochecito
+        crutches: Muletas
+        service animal: Animal de servicio
+        cane: Caña
+        wheeled walker: Andador con ruedas
+        manual wheelchair: Silla de ruedas
+        electric wheelchair: Silla de ruedas eléctrica
+        mobility scooter: Scooter eléctrico
+      prompt: ¿Utiliza habitualmente un dispositivo de ayuda a la movilidad? (Marque
+        todo lo que corresponda)
+    MobilityPane:
+      visionLimitations: 'Limitaciones visuales: '
+      button: Editar su perfil de movilidad
+      header: Perfil de movilidad
+      mobilityLimitations: 'Limitaciones de la movilidad: '
+      mobilityDevices: 'Dispositivos de movilidad: '
+    intro: Por favor, responda a algunas preguntas para adaptar la planificación del
+      viaje a sus necesidades y preferencias.
+    title: Defina su perfil de movilidad
 config:
   accessModes:
     bicycle: Tránsito + Bicicleta Personal
