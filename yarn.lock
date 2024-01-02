@@ -2510,10 +2510,10 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^12.0.0-alpha.6":
-  version "12.0.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-12.0.0-alpha.6.tgz#210a10d5630b25f2ef15e359c124510cf1d584be"
-  integrity sha512-GXbsBLgCsdRo/guX3U0dxyiWG7GKe7CWwqDP7iS562lBU4/rmU5dyWisPzhbfn1EAL7uLtToQontuHaBeiMBIA==
+"@opentripplanner/core-utils@^11.2.2":
+  version "11.2.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.2.2.tgz#38b38d852f2f1cf45a1760b86b105dff103c1860"
+  integrity sha512-aByXh4GuSLqt34vgMFaBh8QnAZs7UoxwpJE8mSJzA8YU86jo6lLg+lLCM/XOzKzwpikRwIJllkUBYjALGlu+NA==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
@@ -2580,7 +2580,7 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.2.0.tgz#71cf5d5d1b756adef15300edbba0995ccd4b35ee"
   integrity sha512-x0QRXMDhypFeazZ6r6vzrdU8vhiV56nZ/WX6zUbxpgp6T9Oclw0gwR2Zdw6DZiiFpSYVNeVNxVzZwsu6NRGjcA==
 
-"@opentripplanner/icons@^2.0.5", "@opentripplanner/icons@^2.0.6":
+"@opentripplanner/icons@^2.0.5":
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-2.0.6.tgz#e1339f75a1c9cb52ad5bddf0b024a260e8f63725"
   integrity sha512-bKwwtugFN9RPpKmqXcukXC4TcWHjmOqPWaMEvjtnnV5LdeuoaOBQ8dJeUUnEKd/dPeOJAF9l3oBVtvM3VAc8jg==
@@ -2594,6 +2594,14 @@
   integrity sha512-+RA6EFYys7fgxmo30yNWJqk4a29sgINso3fj9zMSzB5KqVLau4wkHXyu2ZQ2oS+pcT4YGeKYfqyvTOQ9PY/0xg==
   dependencies:
     "@opentripplanner/core-utils" "^11.0.2"
+    prop-types "^15.7.2"
+
+"@opentripplanner/icons@^2.0.8":
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-2.0.8.tgz#e8d69dc65b3c07f4867d9ec2256717692e662c2e"
+  integrity sha512-F4FM7jtlioLaPKd5d/RJmFFPDF7SzSBx3roifRkDASkUAsq8HsrI4rqHNpTcqkbGknxPLFw7XROXenndVBkkdw==
+  dependencies:
+    "@opentripplanner/core-utils" "^11.1.3"
     prop-types "^15.7.2"
 
 "@opentripplanner/itinerary-body@^5.0.2":
