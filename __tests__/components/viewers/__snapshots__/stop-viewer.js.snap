@@ -101,8 +101,8 @@ exports[`components > viewers > stop viewer should render countdown times after 
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -687,11 +687,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-aKXVD bNLtzV"
+                                    className="sc-cHjwLt vqXdX"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-aKXVD bNLtzV"
+                                      className="sc-cHjwLt vqXdX"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -703,7 +703,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cHjwLt vqXdX"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -716,7 +716,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cHjwLt vqXdX"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -764,11 +764,11 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-cvJIAo esTqCF"
+                                    className="sc-gHfsNP dYlKOt"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-cvJIAo esTqCF"
+                                      className="sc-gHfsNP dYlKOt"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -780,7 +780,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gHfsNP dYlKOt"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -793,7 +793,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gHfsNP dYlKOt"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -2980,8 +2980,8 @@ exports[`components > viewers > stop viewer should render countdown times for st
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -3467,11 +3467,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-aKXVD bNLtzV"
+                                    className="sc-cHjwLt vqXdX"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-aKXVD bNLtzV"
+                                      className="sc-cHjwLt vqXdX"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -3483,7 +3483,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cHjwLt vqXdX"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -3496,7 +3496,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cHjwLt vqXdX"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -3544,11 +3544,11 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-cvJIAo esTqCF"
+                                    className="sc-gHfsNP dYlKOt"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-cvJIAo esTqCF"
+                                      className="sc-gHfsNP dYlKOt"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -3560,7 +3560,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gHfsNP dYlKOt"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -3573,7 +3573,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gHfsNP dYlKOt"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -4808,8 +4808,8 @@ exports[`components > viewers > stop viewer should render times after midnight w
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -5394,11 +5394,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-aKXVD bNLtzV"
+                                    className="sc-cHjwLt vqXdX"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-aKXVD bNLtzV"
+                                      className="sc-cHjwLt vqXdX"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -5410,7 +5410,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cHjwLt vqXdX"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -5423,7 +5423,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cHjwLt vqXdX"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -5471,11 +5471,11 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-cvJIAo esTqCF"
+                                    className="sc-gHfsNP dYlKOt"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-cvJIAo esTqCF"
+                                      className="sc-gHfsNP dYlKOt"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -5487,7 +5487,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gHfsNP dYlKOt"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -5500,7 +5500,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gHfsNP dYlKOt"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -7730,8 +7730,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -8574,11 +8574,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-aKXVD bNLtzV"
+                                    className="sc-cHjwLt vqXdX"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-aKXVD bNLtzV"
+                                      className="sc-cHjwLt vqXdX"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -8590,7 +8590,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cHjwLt vqXdX"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -8603,7 +8603,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cHjwLt vqXdX"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -8651,11 +8651,11 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-cvJIAo esTqCF"
+                                    className="sc-gHfsNP dYlKOt"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-cvJIAo esTqCF"
+                                      className="sc-gHfsNP dYlKOt"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -8667,7 +8667,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gHfsNP dYlKOt"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -8680,7 +8680,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gHfsNP dYlKOt"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -14778,8 +14778,8 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -15617,11 +15617,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   size="0.9em"
                                 >
                                   <DotCircle
-                                    className="sc-aKXVD bNLtzV"
+                                    className="sc-cHjwLt vqXdX"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-aKXVD bNLtzV"
+                                      className="sc-cHjwLt vqXdX"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -15633,7 +15633,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cHjwLt vqXdX"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -15646,7 +15646,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-aKXVD bNLtzV"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cHjwLt vqXdX"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -15694,11 +15694,11 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                   size="0.9em"
                                 >
                                   <MapMarkerAlt
-                                    className="sc-cvJIAo esTqCF"
+                                    className="sc-gHfsNP dYlKOt"
                                     size="0.9em"
                                   >
                                     <StyledIconBase
-                                      className="sc-cvJIAo esTqCF"
+                                      className="sc-gHfsNP dYlKOt"
                                       iconAttrs={
                                         Object {
                                           "fill": "currentColor",
@@ -15710,7 +15710,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       size="0.9em"
                                     >
                                       <ForwardRef
-                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
+                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gHfsNP dYlKOt"
                                         iconAttrs={
                                           Object {
                                             "fill": "currentColor",
@@ -15723,7 +15723,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cvJIAo esTqCF"
+                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-gHfsNP dYlKOt"
                                           fill="currentColor"
                                           focusable="false"
                                           height="0.9em"
@@ -19471,8 +19471,8 @@ exports[`components > viewers > stop viewer should render with initial stop id a
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
