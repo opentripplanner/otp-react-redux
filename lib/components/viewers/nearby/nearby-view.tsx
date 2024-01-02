@@ -65,12 +65,12 @@ const FromToPicker = ({
     <span role="group">
       <FromToLocationPicker
         label
-        onFromClick={() => {
+        onFromClick={useCallback(() => {
           setLocation({ location, locationType: 'from', reverseGeocode: false })
-        }}
-        onToClick={() => {
+        }, [location, setLocation])}
+        onToClick={useCallback(() => {
           setLocation({ location, locationType: 'to', reverseGeocode: false })
-        }}
+        }, [location, setLocation])}
       />
     </span>
   )
@@ -196,6 +196,9 @@ function NearbyView({
 
   return (
     <MainContainer className="nearby-view base-color-bg">
+      <PageTitle
+        title={intl.formatMessage({ id: 'components.NearbyView.header' })}
+      />
       {mobile && (
         <MobileNavigationBar
           headerText={intl.formatMessage({
@@ -232,9 +235,6 @@ function NearbyView({
             <FormattedMessage id="components.NearbyView.nothingNearby" />
           ))}
       </NearbySidebarContainer>
-      <PageTitle
-        title={intl.formatMessage({ id: 'components.NearbyView.header' })}
-      />
     </MainContainer>
   )
 }
