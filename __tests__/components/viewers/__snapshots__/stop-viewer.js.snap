@@ -101,8 +101,8 @@ exports[`components > viewers > stop viewer should render countdown times after 
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -1472,7 +1472,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                         title="20"
                                       >
                                         <span
-                                          className="sc-edoYdd jUXeWR"
+                                          className="sc-edoYdd ckpxJS"
                                           color="333333"
                                           style={
                                             Object {
@@ -2980,8 +2980,8 @@ exports[`components > viewers > stop viewer should render countdown times for st
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -4032,7 +4032,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                         title="20"
                                       >
                                         <span
-                                          className="sc-edoYdd jUXeWR"
+                                          className="sc-edoYdd ckpxJS"
                                           color="333333"
                                           style={
                                             Object {
@@ -4808,8 +4808,8 @@ exports[`components > viewers > stop viewer should render times after midnight w
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -6193,7 +6193,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                         title="20"
                                       >
                                         <span
-                                          className="sc-edoYdd jUXeWR"
+                                          className="sc-edoYdd ckpxJS"
                                           color="333333"
                                           style={
                                             Object {
@@ -7730,8 +7730,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -9887,7 +9887,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="20"
                                       >
                                         <span
-                                          className="sc-edoYdd jUXeWR"
+                                          className="sc-edoYdd ckpxJS"
                                           color="333333"
                                           style={
                                             Object {
@@ -10560,7 +10560,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="94"
                                       >
                                         <span
-                                          className="sc-edoYdd jUXeWR"
+                                          className="sc-edoYdd ckpxJS"
                                           color="333333"
                                           style={
                                             Object {
@@ -11183,7 +11183,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="94"
                                       >
                                         <span
-                                          className="sc-edoYdd jUXeWR"
+                                          className="sc-edoYdd ckpxJS"
                                           color="333333"
                                           style={
                                             Object {
@@ -11488,7 +11488,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="36"
                                       >
                                         <span
-                                          className="sc-edoYdd jUXeWR"
+                                          className="sc-edoYdd ckpxJS"
                                           color="333333"
                                           style={
                                             Object {
@@ -11957,7 +11957,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="94"
                                       >
                                         <span
-                                          className="sc-edoYdd jUXeWR"
+                                          className="sc-edoYdd ckpxJS"
                                           color="333333"
                                           style={
                                             Object {
@@ -12244,7 +12244,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="36"
                                       >
                                         <span
-                                          className="sc-edoYdd jUXeWR"
+                                          className="sc-edoYdd ckpxJS"
                                           color="333333"
                                           style={
                                             Object {
@@ -12545,7 +12545,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                         title="94"
                                       >
                                         <span
-                                          className="sc-edoYdd jUXeWR"
+                                          className="sc-edoYdd ckpxJS"
                                           color="333333"
                                           style={
                                             Object {
@@ -14778,8 +14778,8 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -16922,7 +16922,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                         title="20"
                                       >
                                         <span
-                                          className="sc-edoYdd jUXeWR"
+                                          className="sc-edoYdd ckpxJS"
                                           color="333333"
                                           style={
                                             Object {
@@ -19471,8 +19471,8 @@ exports[`components > viewers > stop viewer should render with initial stop id a
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
