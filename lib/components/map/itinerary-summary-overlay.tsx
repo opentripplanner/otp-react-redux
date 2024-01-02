@@ -5,9 +5,10 @@ import { Marker } from 'react-map-gl'
 import centroid from '@turf/centroid'
 import distance from '@turf/distance'
 import polyline from '@mapbox/polyline'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 
+import * as narriativeActions from '../../actions/narrative'
 import { AppReduxState } from '../../util/state-types'
 import { boxShadowCss } from '../form/batch-styled'
 import { ComponentContext } from '../../util/contexts'
@@ -17,10 +18,6 @@ import {
   getActiveSearch,
   getVisibleItineraryIndex
 } from '../../util/state'
-import {
-  setActiveItinerary,
-  setVisibleItinerary
-} from '../../actions/narrative'
 import MetroItineraryRoutes from '../narrative/metro/metro-itinerary-routes'
 
 type ItinWithGeometry = Itinerary & { allLegGeometry: Feature<LineString> }
@@ -118,7 +115,9 @@ const ItinerarySummaryOverlay = ({
   // @ts-expect-error React context is populated dynamically
   const { LegIcon } = useContext(ComponentContext)
 
-  let sharedTimeout: null | NodeJS.Timeout = null
+  const [sharedTimeout, setSharedTimeout] = useState<null | NodeJS.Timeout>(
+    null
+  )
 
   if (!itins || !visible) return <></>
   const mergedItins: ItinWithGeometry[] =
@@ -138,7 +137,7 @@ const ItinerarySummaryOverlay = ({
         {midPoints.map(
           (mp, index) =>
             // If no itinerary is hovered, show all of them. If one is selected, show only that one
-            // TODO: does this cause an issue with the merging? is the right itinerary selected?`
+            // TODO: clean up conditionals, move these to a more appropriate place without breaking indexing
             (visibleItinerary !== null && visibleItinerary !== undefined
               ? visibleItinerary === index
               : true) &&
@@ -153,10 +152,13 @@ const ItinerarySummaryOverlay = ({
                   onClick={() => {
                     setActive({ index })
                   }}
+                  // TODO: useCallback here (getting weird errors?)
                   onMouseEnter={() => {
-                    sharedTimeout = setTimeout(() => {
-                      setVisible({ index })
-                    }, 150)
+                    setSharedTimeout(
+                      setTimeout(() => {
+                        setVisible({ index })
+                      }, 150)
+                    )
                   }}
                   onMouseLeave={() => {
                     sharedTimeout && clearTimeout(sharedTimeout)
@@ -210,7 +212,10 @@ const mapStateToProps = (state: AppReduxState) => {
   }
 }
 
-const mapDispatchToProps = { setActiveItinerary, setVisibleItinerary }
+const mapDispatchToProps = {
+  setActiveItinerary: narriativeActions.setActiveItinerary,
+  setVisibleItinerary: narriativeActions.setVisibleItinerary
+}
 
 export default connect(
   mapStateToProps,
