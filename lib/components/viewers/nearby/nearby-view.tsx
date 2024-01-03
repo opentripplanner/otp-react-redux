@@ -171,12 +171,13 @@ function NearbyView({
       }
       key={n.place.id}
     >
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
       <div
         onBlur={onMouseLeave}
         onFocus={() => onMouseEnter(n.place)}
         onMouseEnter={() => onMouseEnter(n.place)}
         onMouseLeave={onMouseLeave}
-        role="button"
+        /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
         tabIndex={0}
       >
         {getNearbyItem(n.place, setLocation)}
