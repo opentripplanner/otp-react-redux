@@ -1,5 +1,7 @@
-import { Panel } from 'react-bootstrap'
+import { Button, Panel } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
+
+import { RED_ON_WHITE } from '../util/colors'
 
 export const PageHeading = styled.h2`
   margin: 10px 0px 45px 0px;
@@ -48,13 +50,25 @@ export const TripPanelHeading = styled(Panel.Heading)`
   background-color: white !important;
 `
 
+export const TripPanelAlert = styled.a`
+  color: ${RED_ON_WHITE};
+  cursor: pointer;
+  float: right;
+  text-decoration: underline;
+  &:hover {
+    background-color: transparent;
+    color: ${RED_ON_WHITE};
+    opacity: 80%;
+  }
+`
+
 export const TripPanelFooter = styled(Panel.Footer)`
   background-color: white !important;
   padding: 0px;
   button {
     border: 0px;
     padding: 13px 0px;
-    width: 33.333%;
+    width: 50%;
   }
 
   button:first-child {
@@ -66,13 +80,6 @@ export const TripPanelFooter = styled(Panel.Footer)`
   button:nth-child(2) {
     border-radius: 0;
     border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-  }
-
-  button:last-child {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
   }
 `
 

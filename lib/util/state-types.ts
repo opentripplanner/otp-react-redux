@@ -1,3 +1,11 @@
+import { RouterState } from 'connected-react-router'
+
+import {
+  ItineraryExistence,
+  MonitoredTrip,
+  User
+} from '../components/user/types'
+
 import { AppConfig } from './config-types'
 
 export interface OtpState {
@@ -11,8 +19,16 @@ export interface OtpState {
   ui: any // TODO
 }
 
+export interface UserState {
+  itineraryExistence?: ItineraryExistence
+  loggedInUser: User
+  loggedInUserMonitoredTrips?: MonitoredTrip[]
+  // TODO: Add other user states.
+}
+
 export interface AppReduxState {
   calltaker?: any // TODO
   otp: OtpState
-  user: any // TODO
+  router: RouterState
+  user: UserState
 }

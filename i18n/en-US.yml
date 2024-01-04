@@ -98,7 +98,6 @@ common:
     cancel: Cancel
     close: Close
     defaultValue: "{value} (default)"
-    delete: Delete
     edit: Edit
     error: error!
     finish: Finish
@@ -329,6 +328,40 @@ components:
     timeWalking: "{time} walking"
   MobileOptions:
     header: Set Search Options
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Cane
+        crutches: Crutches
+        electric wheelchair: Electric wheelchair
+        manual walker: Manual walker
+        manual wheelchair: Manual/traditional wheelchair
+        mobility scooter: Mobility scooter
+        none: No assistive device
+        service animal: Service animal
+        stroller: Stroller
+        wheeled walker: Wheeled walker
+        white cane: White cane
+      prompt: Do you regularly use a mobility assistive device? (Check all that apply)
+    LimitationsPane:
+      mobilityPrompt: >-
+        Do you have any mobility limitations that cause you to walk more slowly
+        or more carefully than other people?
+      visionLimitations:
+        legally-blind: Legally blind
+        low-vision: Low-vision
+        none: None
+      visionPrompt: Do you have any vision limitations?
+    MobilityPane:
+      button: Edit your mobility profile
+      header: Mobility Profile
+      mobilityDevices: "Mobility devices: "
+      mobilityLimitations: "Mobility limitations: "
+      visionLimitations: "Vision limitations: "
+    intro: >-
+      Please answer a few questions to customize the trip planning experience to
+      your needs and preferences.
+    title: Define Your Mobility Profile
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
     howToFindResults: To view results, see the Itineraries Found heading below.
@@ -506,6 +539,7 @@ components:
     signInText: Log in to save trip
     signInTooltip: Please log in to save trip.
   SavedTripEditor:
+    deleteSavedTrip: Delete saved trip
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip
     tripInformation: Trip information
@@ -513,6 +547,7 @@ components:
     tripNotFoundDescription: Sorry, the requested trip was not found.
     tripNotifications: Trip notifications
   SavedTripList:
+    alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
     fromTo: From {from} to {to}
     myTrips: My trips
     noSavedTrips: You have no saved trips
