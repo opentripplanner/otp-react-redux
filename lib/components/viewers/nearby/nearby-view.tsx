@@ -114,6 +114,11 @@ function NearbyView({
   const [loading, setLoading] = useState(true)
   const firstItemRef = useRef<HTMLDivElement>(null)
 
+  const onClickSetLocation: SetLocationHandler = (payload) => {
+    setMainPanelContent(0)
+    setLocation(payload)
+  }
+
   useEffect(() => {
     firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
     if (nearbyViewCoords) {
@@ -180,7 +185,7 @@ function NearbyView({
         /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
         tabIndex={0}
       >
-        {getNearbyItem(n.place, setLocation)}
+        {getNearbyItem(n.place, onClickSetLocation)}
       </div>
     </li>
   ))
