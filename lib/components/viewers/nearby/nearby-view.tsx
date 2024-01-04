@@ -3,7 +3,7 @@ import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
 import { Location, Stop as StopType } from '@opentripplanner/types'
 import { MapRef, useMap } from 'react-map-gl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
 import * as locationActions from '../../../actions/location'
@@ -56,11 +56,14 @@ const FromToPicker = ({
   setLocation: SetLocationHandler
   stopData: StopType
 }) => {
-  const location = {
-    lat: stopData.lat ?? 0,
-    lon: stopData.lon ?? 0,
-    name: stopData.name
-  }
+  const location = useMemo(
+    () => ({
+      lat: stopData.lat ?? 0,
+      lon: stopData.lon ?? 0,
+      name: stopData.name
+    }),
+    [stopData]
+  )
   return (
     <span role="group">
       <FromToLocationPicker
