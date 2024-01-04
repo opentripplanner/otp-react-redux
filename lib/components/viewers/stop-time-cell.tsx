@@ -85,7 +85,7 @@ const StopTimeCell = ({
 
   const formattedDay = utcToZonedTime(stopTime.serviceDay * 1000, homeTimezone)
 
-  const realtime = stopTime.realtimeState === 'UPDATED'
+  const realtime = stopTime.realTimeState === 'UPDATED'
   const realtimeLabel = realtime
     ? intl.formatMessage({
         id: 'components.StopTimeCell.realtime'
