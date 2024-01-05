@@ -80,7 +80,6 @@ common:
     cancel: İptal
     close: Kapat
     defaultValue: "{value} (varsayılan)"
-    delete: Sil
     edit: Düzenle
     error: hata!
     finish: Bitiş
