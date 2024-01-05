@@ -41,7 +41,8 @@ export const Card = styled.div`
 export const CardHeader = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1rem 1.2rem;
+  padding: 0 1.2rem;
+  padding-top: 1rem;
 `
 
 export const CardTitle = styled.p`
@@ -59,6 +60,7 @@ export const CardSubheader = styled.p`
 
 export const CardBody = styled.div`
   margin-bottom: 1rem;
+  margin-top: 1rem;
   padding: 0rem 1.2rem;
 `
 

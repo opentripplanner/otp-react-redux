@@ -1,12 +1,11 @@
 import { connect } from 'react-redux'
-import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { Location, Stop as StopType } from '@opentripplanner/types'
 import { MapRef, useMap } from 'react-map-gl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
-import * as locationActions from '../../../actions/location'
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
@@ -33,11 +32,6 @@ type LatLonObj = { lat: number; lon: number }
 type Props = {
   entityId?: string
   fetchNearby: (latLon: LatLonObj, map?: MapRef) => void
-  getCurrentPosition: (
-    intl: IntlShape,
-    setAsType?: string | null,
-    onSuccess?: (position: GeolocationPosition) => void
-  ) => void
   hideBackButton?: boolean
   mobile?: boolean
   nearby: any
@@ -102,7 +96,6 @@ const getNearbyItem = (place: any, setLocation: SetLocationHandler) => {
 function NearbyView({
   entityId,
   fetchNearby,
-  getCurrentPosition: getPosition,
   mobile,
   nearby,
   nearbyViewCoords,
@@ -123,7 +116,24 @@ function NearbyView({
   }
 
   useEffect(() => {
+    const listener = (e: any) => {
+      if (e.geolocateSource) {
+        console.log('new map location', e)
+        setViewedNearbyCoords({
+          lat: e.viewState.latitude,
+          lon: e.viewState.longitude
+        })
+      }
+    }
+    map?.on('moveend', listener)
+    return function cleanup() {
+      map?.off('moveend', listener)
+    }
+  }, [map])
+
+  useEffect(() => {
     firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
+    // If nearby view coords are provided, use those. Otherwise use the map center.
     if (nearbyViewCoords) {
       fetchNearby(nearbyViewCoords)
       setLoading(true)
@@ -151,15 +161,8 @@ function NearbyView({
           clearInterval(interval)
         }
       }
-      getPosition(intl, null, (pos) => {
-        // Navigate to nearby at current location (puts coords in URL)
-        setViewedNearbyCoords({
-          lat: pos.coords.latitude,
-          lon: pos.coords.longitude
-        })
-      })
     }
-  }, [nearbyViewCoords, map])
+  }, [nearbyViewCoords, map, fetchNearby])
 
   const onMouseEnter = useCallback(
     (location: Location) => {
@@ -263,7 +266,6 @@ const mapStateToProps = (state: AppReduxState) => {
 
 const mapDispatchToProps = {
   fetchNearby: apiActions.fetchNearby,
-  getCurrentPosition: locationActions.getCurrentPosition,
   setHighlightedLocation: uiActions.setHighlightedLocation,
   setLocation: mapActions.setLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
