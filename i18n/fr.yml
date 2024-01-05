@@ -107,7 +107,6 @@ common:
     cancel: Annuler
     close: Fermer
     defaultValue: "{value} (défaut)"
-    delete: Supprimer
     edit: Modifier
     error: erreur !
     finish: Terminer
@@ -370,7 +369,7 @@ components:
       visionLimitations:
         legally-blind: Non-voyant
         low-vision: Vision basse
-        none: Aucune
+        none: Aucun
       visionPrompt: Avez-vous des handicaps visuels ?
     MobilityPane:
       button: Modifier votre profil mobilité
@@ -452,7 +451,7 @@ components:
       header: Date sans données
     SYSTEM_ERROR:
       body: Une erreur inconnue s'est produite pendant la recherche.
-      header: Echec de la recherche
+      header: Échec de la recherche
     WALKING_BETTER_THAN_TRANSIT:
       body: >-
         Vous pouvez effectuer ce trajet plus rapidement sans prendre les
@@ -561,6 +560,7 @@ components:
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SavedTripEditor:
+    deleteSavedTrip: Supprimer le trajet enregistré
     editSavedTrip: Modifier un trajet enregistré
     saveNewTrip: Enregistrer un nouveau trajet
     tripInformation: Informations sur le trajet

@@ -101,8 +101,8 @@ exports[`components > viewers > stop viewer should render countdown times after 
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -1449,6 +1449,7 @@ exports[`components > viewers > stop viewer should render countdown times after 
                                           "agencyName": "TriMet",
                                           "mode": "BUS",
                                           "onColoredBackground": true,
+                                          "origColor": undefined,
                                           "routeColor": undefined,
                                           "routeLongName": "Burnside/Stark",
                                           "routeShortName": "20",
@@ -2980,8 +2981,8 @@ exports[`components > viewers > stop viewer should render countdown times for st
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -4009,6 +4010,7 @@ exports[`components > viewers > stop viewer should render countdown times for st
                                           "agencyName": "TriMet",
                                           "mode": "BUS",
                                           "onColoredBackground": true,
+                                          "origColor": undefined,
                                           "routeColor": undefined,
                                           "routeLongName": "Burnside/Stark",
                                           "routeShortName": "20",
@@ -4808,8 +4810,8 @@ exports[`components > viewers > stop viewer should render times after midnight w
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -6170,6 +6172,7 @@ exports[`components > viewers > stop viewer should render times after midnight w
                                           "agencyName": "TriMet",
                                           "mode": "BUS",
                                           "onColoredBackground": true,
+                                          "origColor": undefined,
                                           "routeColor": undefined,
                                           "routeLongName": "Burnside/Stark",
                                           "routeShortName": "20",
@@ -7730,8 +7733,8 @@ exports[`components > viewers > stop viewer should render with OTP transit index
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -9864,6 +9867,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "agencyName": "TriMet",
                                           "mode": "BUS",
                                           "onColoredBackground": true,
+                                          "origColor": undefined,
                                           "routeColor": undefined,
                                           "routeLongName": "Burnside/Stark",
                                           "routeShortName": "20",
@@ -10537,6 +10541,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "agencyName": "TriMet",
                                           "mode": "BUS",
                                           "onColoredBackground": true,
+                                          "origColor": undefined,
                                           "routeColor": undefined,
                                           "routeLongName": "Pacific Hwy/Sherwood",
                                           "routeShortName": "94",
@@ -11160,6 +11165,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "agencyName": "TriMet",
                                           "mode": "BUS",
                                           "onColoredBackground": true,
+                                          "origColor": undefined,
                                           "routeColor": undefined,
                                           "routeLongName": "Pacific Hwy/Sherwood",
                                           "routeShortName": "94",
@@ -11465,6 +11471,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "agencyName": "TriMet",
                                           "mode": "BUS",
                                           "onColoredBackground": true,
+                                          "origColor": undefined,
                                           "routeColor": undefined,
                                           "routeLongName": "South Shore",
                                           "routeShortName": "36",
@@ -11934,6 +11941,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "agencyName": "TriMet",
                                           "mode": "BUS",
                                           "onColoredBackground": true,
+                                          "origColor": undefined,
                                           "routeColor": undefined,
                                           "routeLongName": "Pacific Hwy/Sherwood",
                                           "routeShortName": "94",
@@ -12221,6 +12229,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "agencyName": "TriMet",
                                           "mode": "BUS",
                                           "onColoredBackground": true,
+                                          "origColor": undefined,
                                           "routeColor": undefined,
                                           "routeLongName": "South Shore",
                                           "routeShortName": "36",
@@ -12522,6 +12531,7 @@ exports[`components > viewers > stop viewer should render with OTP transit index
                                           "agencyName": "TriMet",
                                           "mode": "BUS",
                                           "onColoredBackground": true,
+                                          "origColor": undefined,
                                           "routeColor": undefined,
                                           "routeLongName": "Pacific Hwy/Sherwood",
                                           "routeShortName": "94",
@@ -14778,8 +14788,8 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}
@@ -16899,6 +16909,7 @@ exports[`components > viewers > stop viewer should render with TriMet transit in
                                           "agencyName": "TriMet",
                                           "mode": "BUS",
                                           "onColoredBackground": true,
+                                          "origColor": undefined,
                                           "routeColor": undefined,
                                           "routeLongName": "Burnside/Stark",
                                           "routeShortName": "20",
@@ -19471,8 +19482,8 @@ exports[`components > viewers > stop viewer should render with initial stop id a
         >
           <StopViewer
             autoRefreshStopTimes={true}
-            calendarMax="2024-12-31"
-            calendarMin="2023-01-01"
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
             enableFavoriteStops={false}
             favoriteStops={Array []}
             fetchStopInfo={[Function]}

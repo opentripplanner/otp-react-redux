@@ -101,7 +101,6 @@ common:
     cancel: Cancelar
     close: Cerrar
     defaultValue: "{value} (por defecto)"
-    delete: Borrar
     edit: Editar
     error: ¡error!
     finish: Finalizar
@@ -238,7 +237,7 @@ components:
     shortTitle: Planificar viaje
   BatchSearchScreen:
     header: Planifique su viaje
-    modeSelectorLabel: Seleccione un modo de transporte
+    modeSelectorLabel: Seleccione un modo de desplazamiento
   BatchSettings:
     destination: destino
     invalidModeSelection: >-
@@ -528,6 +527,7 @@ components:
     tripNotFoundDescription: Lo sentimos, no se encontró el viaje solicitado.
     tripNotifications: Notificaciones de viaje
   SavedTripList:
+    alertTag: "{alerta, plural, one {Ver una alerta} other {Ver # alertas}}"
     fromTo: De {from} al {to}
     myTrips: Mis viajes
     noSavedTrips: No tiene viajes guardados

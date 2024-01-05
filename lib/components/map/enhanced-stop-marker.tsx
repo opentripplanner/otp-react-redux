@@ -13,6 +13,7 @@ import tinycolor from 'tinycolor2'
 
 import * as mapActions from '../../actions/map'
 import * as uiActions from '../../actions/ui'
+import { AppConfig } from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
 import { getModeFromStop, getStopName } from '../../util/viewer'
@@ -28,6 +29,7 @@ interface Props extends OwnProps {
   activeStopId?: string
   highlight: boolean
   modeColors: ModeColors
+  overrideConfig?: Record<string, string>
   setLocation: SetLocationHandler
   setViewedStop: StopEventHandler
 }
@@ -116,6 +118,7 @@ class EnhancedStopMarker extends Component<Props> {
       activeStopId,
       highlight,
       modeColors,
+      overrideConfig,
       setLocation,
       setViewedStop,
       stop
@@ -125,7 +128,7 @@ class EnhancedStopMarker extends Component<Props> {
     const displayedStopId = coreUtils.itinerary.getDisplayedStopId(stop)
     if (!displayedStopId) return null
 
-    const mode = getModeFromStop(stop)
+    const mode = getModeFromStop(stop, overrideConfig)
     let color = modeColors && modeColors[mode] ? modeColors[mode] : '#121212'
     if (highlight) {
       // Generates a pretty variant of the color
@@ -176,7 +179,8 @@ const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
   return {
     activeStopId: state.otp.ui.viewedStop?.stopId,
     highlight: highlightedStop === ownProps.stop.id,
-    modeColors
+    modeColors,
+    overrideConfig: state.otp.config?.routeModeOverrides
   }
 }
 
