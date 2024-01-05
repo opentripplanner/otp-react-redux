@@ -20,13 +20,17 @@ import {
 } from '../../util/state'
 import MetroItineraryRoutes from '../narrative/metro/metro-itinerary-routes'
 
-type ItinWithGeometry = Itinerary & { allLegGeometry: Feature<LineString> }
+type ItinWithGeometry = Itinerary & {
+  allLegGeometry: Feature<LineString>
+  allStartTimes?: Itinerary[]
+  index?: number
+}
 
 type Props = {
   from: Location
   itins: Itinerary[]
-  setActiveItinerary: ({ index }: { index: number | null }) => void
-  setVisibleItinerary: ({ index }: { index: number | null }) => void
+  setActiveItinerary: ({ index }: { index: number | null | undefined }) => void
+  setVisibleItinerary: ({ index }: { index: number | null | undefined }) => void
   to: Location
   visible?: boolean
   visibleItinerary?: number
@@ -58,7 +62,7 @@ const Card = styled.div`
     padding: 0px;
   }
   * {
-    height: 27px;
+    height: 26px;
   }
 }
 `
@@ -71,9 +75,21 @@ function addItinLineString(itin: Itinerary): ItinWithGeometry {
     )
   }
 }
+function addTrueIndex(array: ItinWithGeometry[]): ItinWithGeometry[] {
+  for (let i = 0; i < array.length; i++) {
+    const prevIndex = array?.[i - 1]?.index
+    const itin = array[i]
+    const nextIndex = itin?.allStartTimes?.length ?? 1
+    array[i] = {
+      ...itin,
+      index: (prevIndex ?? -1) + nextIndex
+    }
+  }
+  return array
+}
 
 type ItinUniquePoint = {
-  itin: Itinerary
+  itin: ItinWithGeometry
   uniquePoint: Position
 }
 
@@ -120,8 +136,10 @@ const ItinerarySummaryOverlay = ({
   )
 
   if (!itins || !visible) return <></>
-  const mergedItins: ItinWithGeometry[] =
+  const mergedItins: ItinWithGeometry[] = addTrueIndex(
     doMergeItineraries(itins).mergedItineraries.map(addItinLineString)
+  )
+
   const midPoints = mergedItins.reduce<ItinUniquePoint[]>((prev, curItin) => {
     prev.push(getUniquePoint(curItin, prev))
     return prev
@@ -135,11 +153,11 @@ const ItinerarySummaryOverlay = ({
     return (
       <>
         {midPoints.map(
-          (mp, index) =>
+          (mp) =>
             // If no itinerary is hovered, show all of them. If one is selected, show only that one
             // TODO: clean up conditionals, move these to a more appropriate place without breaking indexing
             (visibleItinerary !== null && visibleItinerary !== undefined
-              ? visibleItinerary === index
+              ? visibleItinerary === mp.itin.index
               : true) &&
             mp.uniquePoint && (
               <Marker
@@ -150,13 +168,13 @@ const ItinerarySummaryOverlay = ({
               >
                 <Card
                   onClick={() => {
-                    setActive({ index })
+                    setActive({ index: mp.itin.index })
                   }}
                   // TODO: useCallback here (getting weird errors?)
                   onMouseEnter={() => {
                     setSharedTimeout(
                       setTimeout(() => {
-                        setVisible({ index })
+                        setVisible({ index: mp.itin.index })
                       }, 150)
                     )
                   }}
