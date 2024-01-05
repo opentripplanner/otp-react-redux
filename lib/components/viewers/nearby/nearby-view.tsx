@@ -118,7 +118,6 @@ function NearbyView({
   useEffect(() => {
     const listener = (e: any) => {
       if (e.geolocateSource) {
-        console.log('new map location', e)
         setViewedNearbyCoords({
           lat: e.viewState.latitude,
           lon: e.viewState.longitude
@@ -129,7 +128,7 @@ function NearbyView({
     return function cleanup() {
       map?.off('moveend', listener)
     }
-  }, [map])
+  }, [map, setViewedNearbyCoords])
 
   useEffect(() => {
     firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
