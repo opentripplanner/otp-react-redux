@@ -41,7 +41,7 @@ const Card = styled.div`
 
   background: #fffffffa;
   border-radius: 5px;
-  padding: 5px;
+  padding: 6px;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
