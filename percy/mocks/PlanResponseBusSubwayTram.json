@@ -6,6 +6,7 @@
           "accessibilityScore": null,
           "duration": 1340,
           "endTime": 1691097871000,
+          "numberOfTransfers": 4,
           "legs": [
             {
               "alerts": [],
@@ -514,6 +515,7 @@
           "accessibilityScore": null,
           "duration": 1340,
           "endTime": 1691098771000,
+          "numberOfTransfers": 4,
           "legs": [
             {
               "accessibilityScore": null,
@@ -1022,6 +1024,7 @@
           "accessibilityScore": null,
           "duration": 1340,
           "endTime": 1691099671000,
+          "numberOfTransfers": 4,
           "legs": [
             {
               "accessibilityScore": null,
