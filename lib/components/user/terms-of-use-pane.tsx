@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import React, { FormEventHandler } from 'react'
 
+import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
@@ -10,10 +11,14 @@ import {
   TERMS_OF_STORAGE_PATH
 } from '../../util/constants'
 
+import { StackedPaneContainer } from './styled'
+import DeleteUser from './delete-user'
+
 /**
  * User terms of use pane.
  */
 const TermsOfUsePane = ({
+  deleteUser,
   disableCheckTerms,
   handleBlur,
   handleChange,
@@ -21,6 +26,7 @@ const TermsOfUsePane = ({
   termsOfServiceLink,
   values: userData
 }: {
+  deleteUser: () => void
   disableCheckTerms: boolean
   handleBlur: () => void
   handleChange: FormEventHandler<Checkbox>
@@ -99,6 +105,9 @@ const TermsOfUsePane = ({
           />
         </Checkbox>
       </FormGroup>
+      <StackedPaneContainer>
+        <DeleteUser onDelete={deleteUser} />
+      </StackedPaneContainer>
     </div>
   )
 }
@@ -109,4 +118,9 @@ const mapStateToProps = (state: AppReduxState) => {
     termsOfStorageSet: state.otp.config.persistence?.terms_of_storage
   }
 }
-export default connect(mapStateToProps)(TermsOfUsePane)
+
+const mapDispatchToProps = {
+  deleteUser: userActions.deleteUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TermsOfUsePane)
