@@ -19,8 +19,10 @@ function getPlanResponseMock(transportModes) {
     .map((tm) => tm.mode)
     .sort()
     .join('')
+  console.log(transportModesString)
   switch (transportModesString) {
     case 'BICYCLEBUSSUBWAYTRAM':
+    case 'TRANSITWALK':
     case 'BUSSUBWAY':
       return PlanResponseBusSubwayTram
     case 'BICYCLE':
