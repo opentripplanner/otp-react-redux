@@ -25,7 +25,7 @@ const Block = styled.span<{ color: string; isOnColoredBackground?: boolean }>`
 `
 
 export type RouteRendererProps = {
-  leg: Leg & { onColoredBackground?: boolean; origColor: string }
+  leg: Leg & { onColoredBackground?: boolean; origColor?: string }
   style?: CSSProperties
 }
 
