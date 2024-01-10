@@ -4,6 +4,7 @@ import type { Route, TransitOperator } from '@opentripplanner/types'
 
 import { ComponentContext } from '../../util/contexts'
 import {
+  extractHeadsignFromPattern,
   generateFakeLegForRouteRenderer,
   getRouteColorBasedOnSettings,
   routeNameFontSize
@@ -12,11 +13,13 @@ import { Pattern, Time } from '../util/types'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import OperatorLogo from '../util/operator-logo'
 
+import { NextTripPreview, PatternRowItem } from './styled'
 import StopTimeCell from './stop-time-cell'
 
 type Props = {
   homeTimezone?: string
   pattern: Pattern
+  roundedTop?: boolean
   route: Route & { operator?: TransitOperator & { colorMode?: string } }
   showOperatorLogo?: boolean
   stopTimes: Time[]
@@ -29,6 +32,7 @@ type Props = {
 const PatternRow = ({
   homeTimezone,
   pattern,
+  roundedTop = true,
   route,
   showOperatorLogo,
   stopTimes
@@ -46,7 +50,7 @@ const PatternRow = ({
   const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
   return (
-    <li className="route-row">
+    <PatternRowItem roundedTop={roundedTop}>
       {/* header row */}
       <div
         className="header stop-view"
@@ -68,15 +72,19 @@ const PatternRow = ({
               style={{ fontSize: routeNameFontSize(routeName) }}
             />
           </span>
-          <span title={pattern.headsign}>{pattern.headsign}</span>
+          <span style={{ wordBreak: 'break-word' }} title={pattern.headsign}>
+            {extractHeadsignFromPattern(pattern) ||
+              (pattern.route.longName !== routeName && pattern.route.longName)}
+          </span>
         </div>
         {/* next departure preview (only shows up to 3 entries) */}
         {hasStopTimes && (
-          <ol className="next-trip-preview">
+          <NextTripPreview>
             {[0, 1, 2].map(
               (index) =>
                 stopTimes?.[index] && (
-                  <li>
+                  // TODO: use stop time id as index
+                  <li key={index}>
                     <StopTimeCell
                       homeTimezone={homeTimezone}
                       key={index}
@@ -85,10 +93,10 @@ const PatternRow = ({
                   </li>
                 )
             )}
-          </ol>
+          </NextTripPreview>
         )}
       </div>
-    </li>
+    </PatternRowItem>
   )
 }
 

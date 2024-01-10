@@ -7,6 +7,7 @@ const Block = styled.span<{ color: string; isOnColoredBackground?: boolean }>`
   border-radius: 5px;
   border-top: 5px solid #${(props) => props.color};
   display: inline-block;
+  font-weight: 600;
   margin-top: -2px;
   padding: 3px 7px;
   /* Below is for route names that are too long: cut-off and show ellipsis. */
