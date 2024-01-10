@@ -36,7 +36,7 @@ const DefaultRouteRenderer = ({
   const routeTitle = leg.routeShortName || leg.routeLongName
   return (
     <Block
-      color={leg.origColor || '333333'}
+      color={leg.origColor || leg.routeColor || '333333'}
       isOnColoredBackground={leg.onColoredBackground}
       style={style}
       title={routeTitle}
