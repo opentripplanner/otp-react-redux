@@ -57,10 +57,10 @@ export interface Time {
   continuousPickup: number
   departureDelay: number
   headsign: string
-  realtime: boolean
-  realtimeArrival: number
-  realtimeDeparture: number
-  realtimeState: string
+  realTime: boolean
+  realTimeArrival: number
+  realTimeDeparture: number
+  realTimeState: string
   scheduledArrival: number
   scheduledDeparture: number
   serviceAreaRadius: number
