@@ -252,6 +252,7 @@ export interface ItineraryConfig {
   mergeItineraries?: boolean
   mutedErrors?: string[]
   onlyShowCountdownForRealtime?: boolean
+  previewOverlay?: boolean
   renderRouteNamesInBlocks?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
