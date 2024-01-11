@@ -19,7 +19,7 @@ import { getActiveSearch } from '../../../util/state'
 import { getFare } from '../../../util/itinerary'
 import { IconWithText } from '../../util/styledIcon'
 import { ItineraryDescription } from '../default/itinerary-description'
-import { itineraryHasAccessibilityScores } from '../../../util/accessibility-routing'
+import { itineraryHasAccessibilityScore } from '../../../util/accessibility-routing'
 import { ItineraryView } from '../../../util/ui'
 import { localizeGradationMap } from '../utils'
 import FormattedDuration from '../../util/formatted-duration'
@@ -331,7 +331,7 @@ class MetroItinerary extends NarrativeItinerary {
         >
           <ItineraryWrapper className={`itin-wrapper${mini ? '-small' : ''}`}>
             {emissionsNote && <ItineraryNote>{emissionsNote}</ItineraryNote>}
-            {itineraryHasAccessibilityScores(itinerary) && (
+            {itineraryHasAccessibilityScore(itinerary) && (
               <AccessibilityRating
                 gradationMap={localizedGradationMapWithIcons}
                 score={itinerary.accessibilityScore}
