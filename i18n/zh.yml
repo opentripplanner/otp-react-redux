@@ -88,7 +88,6 @@ common:
     cancel: 取消
     close: 关闭
     defaultValue: "{value} (默认)"
-    delete: 删除
     edit: 编辑
     error: 错误!
     finish: 完成
