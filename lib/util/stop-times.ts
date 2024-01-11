@@ -30,7 +30,7 @@ function hasValidTimesAndRoute({
 
 /** Filter any times according to time range set in config. */
 function isWithinDaysAhead(time: Time, now: Date, daysAhead: number) {
-  const departureTime = time.serviceDay + time.realtimeDeparture
+  const departureTime = time.serviceDay + time.realTimeDeparture
   return isBefore(departureTime, addDays(now, daysAhead))
 }
 
