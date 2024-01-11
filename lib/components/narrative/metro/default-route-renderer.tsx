@@ -25,7 +25,7 @@ const Block = styled.span<{ color: string; isOnColoredBackground?: boolean }>`
 `
 
 export type RouteRendererProps = {
-  leg: Leg & { onColoredBackground?: boolean; origColor?: string }
+  leg: Leg & { onColoredBackground?: boolean }
   style?: CSSProperties
 }
 
@@ -36,7 +36,7 @@ const DefaultRouteRenderer = ({
   const routeTitle = leg.routeShortName || leg.routeLongName
   return (
     <Block
-      color={leg.origColor || leg.routeColor || '333333'}
+      color={leg.routeColor || '333333'}
       isOnColoredBackground={leg.onColoredBackground}
       style={style}
       title={routeTitle}
