@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import React, { FormEventHandler } from 'react'
 
-import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
@@ -18,7 +17,6 @@ import DeleteUser from './delete-user'
  * User terms of use pane.
  */
 const TermsOfUsePane = ({
-  deleteUser,
   disableCheckTerms,
   handleBlur,
   handleChange,
@@ -26,7 +24,6 @@ const TermsOfUsePane = ({
   termsOfServiceLink,
   values: userData
 }: {
-  deleteUser: () => void
   disableCheckTerms: boolean
   handleBlur: () => void
   handleChange: FormEventHandler<Checkbox>
@@ -106,7 +103,7 @@ const TermsOfUsePane = ({
         </Checkbox>
       </FormGroup>
       <StackedPaneContainer>
-        <DeleteUser onDelete={deleteUser} />
+        <DeleteUser />
       </StackedPaneContainer>
     </div>
   )
@@ -119,8 +116,4 @@ const mapStateToProps = (state: AppReduxState) => {
   }
 }
 
-const mapDispatchToProps = {
-  deleteUser: userActions.deleteUser
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TermsOfUsePane)
+export default connect(mapStateToProps)(TermsOfUsePane)

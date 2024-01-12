@@ -30,11 +30,6 @@ interface Props {
   auth0: Auth0ContextInterface
   basePath?: string
   createOrUpdateUser: (user: User, intl: IntlShape) => Promise<number>
-  deleteUser: (
-    user: User,
-    auth0: Auth0ContextInterface,
-    intl: IntlShape
-  ) => void
   intl: IntlShape
   isWizard: boolean
   itemId: string
@@ -96,20 +91,6 @@ class UserAccountScreen extends Component<Props> {
    */
   _handleCreateNewUser = (userData: EditedUser) => {
     this._updateUserPrefs(userData, true)
-  }
-
-  _handleDeleteUser = (evt: FormEvent) => {
-    const { auth0, deleteUser, intl, loggedInUser } = this.props
-    // Avoid triggering onsubmit with formik (which would result in a save user
-    // call).
-    evt.preventDefault()
-    if (
-      window.confirm(
-        intl.formatMessage({ id: 'components.UserAccountScreen.confirmDelete' })
-      )
-    ) {
-      deleteUser(loggedInUser, auth0, intl)
-    }
   }
 
   _handleRequestPhoneVerificationCode = (newPhoneNumber: string) => {
@@ -270,7 +251,6 @@ class UserAccountScreen extends Component<Props> {
                 return (
                   <ExistingAccountDisplay
                     {...newFormikProps}
-                    onDelete={this._handleDeleteUser}
                     onRequestPhoneVerificationCode={
                       this._handleRequestPhoneVerificationCode
                     }
@@ -310,7 +290,6 @@ const mapStateToProps = (
 
 const mapDispatchToProps = {
   createOrUpdateUser: userActions.createOrUpdateUser,
-  deleteUser: userActions.deleteUser,
   requestPhoneVerificationSms: userActions.requestPhoneVerificationSms,
   verifyPhoneNumber: userActions.verifyPhoneNumber
 }
