@@ -1,6 +1,7 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
+import { useAuth0 } from '@auth0/auth0-react'
 import React, { useCallback, useEffect } from 'react'
 
 import * as uiActions from '../../actions/ui'
@@ -10,7 +11,6 @@ import { CREATE_ACCOUNT_TERMS_PATH } from '../../util/constants'
 import DeleteUser from './delete-user'
 
 interface Props {
-  emailVerified?: boolean
   resendVerificationEmail: (intl: IntlShape) => void
   routeTo: (url: string) => void
 }
@@ -22,12 +22,9 @@ interface Props {
  * (One way to make sure the parent page fetches the latest email verification status
  * is to simply reload the page.)
  */
-const VerifyEmailPane = ({
-  emailVerified,
-  resendVerificationEmail,
-  routeTo
-}: Props) => {
+const VerifyEmailPane = ({ resendVerificationEmail, routeTo }: Props) => {
   const intl = useIntl()
+  const emailVerified = useAuth0().user?.email_verified
 
   const handleEmailVerified = useCallback(() => window.location.reload(), [])
 
