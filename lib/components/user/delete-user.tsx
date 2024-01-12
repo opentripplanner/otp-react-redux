@@ -2,7 +2,7 @@ import { Auth0ContextInterface, useAuth0 } from '@auth0/auth0-react'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
-import React, { FormEvent, useCallback } from 'react'
+import React, { MouseEvent, useCallback } from 'react'
 import styled from 'styled-components'
 
 import * as userActions from '../../actions/user'
@@ -33,7 +33,7 @@ const DeleteUser = ({ deleteUser }: Props): JSX.Element => {
   const intl = useIntl()
 
   const handleDelete = useCallback(
-    (evt: FormEvent) => {
+    (evt: MouseEvent<Button>) => {
       // Avoid triggering onsubmit with formik (which would result in a save user call).
       evt.preventDefault()
       if (
