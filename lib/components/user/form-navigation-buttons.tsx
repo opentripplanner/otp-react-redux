@@ -73,7 +73,7 @@ const FormNavigationButtons = ({
             {okayButton.text}
           </RightButton>
         )}
-        {extraButton && extraButton.content}
+        {extraButton?.content}
       </nav>
     </StyledFormGroup>
   )
