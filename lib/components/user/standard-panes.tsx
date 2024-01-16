@@ -1,5 +1,5 @@
 import { FormattedMessage, IntlShape } from 'react-intl'
-import React, { ComponentType, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 import { EditedUser } from './types'
 import AccountSetupFinishPane from './account-setup-finish-pane'
@@ -11,7 +11,7 @@ import NotificationPrefsPane from './notification-prefs-pane'
 import TermsOfUsePane from './terms-of-use-pane'
 
 export interface PaneProps {
-  backButton?: ComponentType
+  backButton?: any // ComponentType does not play well with ExistingAccountDisplay.
   getInvalidMessage?: (intl: IntlShape) => string
   id: string
   isInvalid?: (arg: any) => boolean
