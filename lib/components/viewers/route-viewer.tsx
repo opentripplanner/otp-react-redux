@@ -43,6 +43,7 @@ interface Props {
   hideBackButton?: boolean
   hideHeader?: boolean
   intl: IntlShape
+  modeIconOverrides: any
   modes: string[]
   routes: Route[]
   setMainPanelContent: (panelId: number | null) => void
@@ -123,6 +124,7 @@ class RouteViewer extends Component<Props, State> {
       hideBackButton,
       hideHeader,
       intl,
+      modeIconOverrides,
       modes,
       routes: sortedRoutes,
       setViewedRoute,
@@ -141,6 +143,8 @@ class RouteViewer extends Component<Props, State> {
     const searchRouteText = intl.formatMessage({
       id: 'components.RouteViewer.findARoute'
     })
+
+    console.log(sortedRoutes)
 
     return (
       <div className="route-viewer">
@@ -252,6 +256,7 @@ class RouteViewer extends Component<Props, State> {
                 intl={intl}
                 isActive={viewedRoute && viewedRoute.routeId === route.id}
                 key={route.id}
+                modeIconOverrides={modeIconOverrides}
                 operator={operator}
                 route={route}
                 setViewedRoute={setViewedRoute}
@@ -277,6 +282,7 @@ const mapStateToProps = (state: any) => {
   return {
     agencies: getAgenciesFromRoutes(state),
     filter: state.otp.ui.routeViewer.filter,
+    modeIconOverrides: state.otp.config.modeIconOverrides,
     modes: getModesForActiveAgencyFilter(state),
     routes: getSortedFilteredRoutes(state),
     transitOperators: state.otp.config.transitOperators,

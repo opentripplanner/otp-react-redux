@@ -359,6 +359,7 @@ export interface AppConfig {
   map: MapConfig
   mapillary?: MapillaryConfig
   mobilityProfile?: boolean
+  modeIconOverrides?: Record<string, string>
   modes: ModesConfig
   /** Interval in seconds past which a trip is no longer considered "on-time". */
   onTimeThresholdSeconds?: number

@@ -9,9 +9,18 @@ import { ComponentContext } from '../../../util/contexts'
 import DefaultRouteRenderer from './default-route-renderer'
 
 type Props = {
-  LegIcon: ({ height, leg }: { height: number; leg: Leg }) => React.ReactElement
+  LegIcon: ({
+    height,
+    iconOverride,
+    leg
+  }: {
+    height: number
+    iconOverride?: string
+    leg: Leg
+  }) => React.ReactElement
   footer?: React.ReactNode
   hideLongName?: boolean
+  iconOverride?: string
   leg: Leg & {
     alternateRoutes?: {
       [id: string]: Leg
@@ -109,6 +118,7 @@ const Divider = styled.span`
 const RouteBlock = ({
   footer,
   hideLongName,
+  iconOverride,
   leg: rawLeg,
   LegIcon,
   previousLegMode,
@@ -148,7 +158,7 @@ const RouteBlock = ({
       <Wrapper className="route-block-wrapper">
         {leg.mode !== previousLegMode && (
           <LegIconWrapper>
-            <LegIcon height={28} leg={leg} />
+            <LegIcon height={28} iconOverride={iconOverride} leg={leg} />
           </LegIconWrapper>
         )}
         {(leg.routeShortName || leg.route || leg.routeLongName) && (
