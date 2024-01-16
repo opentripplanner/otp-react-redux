@@ -10,9 +10,6 @@ import {
   TERMS_OF_STORAGE_PATH
 } from '../../util/constants'
 
-import { StackedPaneContainer } from './styled'
-import DeleteUser from './delete-user'
-
 /**
  * User terms of use pane.
  */
@@ -102,9 +99,6 @@ const TermsOfUsePane = ({
           />
         </Checkbox>
       </FormGroup>
-      <StackedPaneContainer>
-        <DeleteUser />
-      </StackedPaneContainer>
     </div>
   )
 }
