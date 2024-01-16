@@ -67,7 +67,7 @@ const VerifyEmailPane = ({ resendVerificationEmail, routeTo }: Props) => {
       </div>
 
       <div style={{ marginTop: '3em' }}>
-        <DeleteUser />
+        <DeleteUser size="large" />
       </div>
     </div>
   )

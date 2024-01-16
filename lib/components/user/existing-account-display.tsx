@@ -73,7 +73,7 @@ const ExistingAccountDisplay = (props: Props) => {
     },
     {
       pane: DeleteUser,
-      props
+      props: { block: true, size: 'large' }
     }
   ]
 

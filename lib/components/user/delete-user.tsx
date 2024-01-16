@@ -1,5 +1,5 @@
 import { Auth0ContextInterface, useAuth0 } from '@auth0/auth0-react'
-import { Button } from 'react-bootstrap'
+import { Button, Sizes } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
 import React, { MouseEvent, useCallback } from 'react'
@@ -9,7 +9,9 @@ import * as userActions from '../../actions/user'
 import { RED_ON_WHITE } from '../util/colors'
 
 interface Props {
+  block?: boolean
   deleteUser: (auth0: Auth0ContextInterface, intl: IntlShape) => void
+  size?: Sizes
 }
 
 const DeleteButton = styled(Button)`
@@ -28,7 +30,7 @@ const DeleteButton = styled(Button)`
 /**
  * Renders a delete user button for the account settings page.
  */
-const DeleteUser = ({ deleteUser }: Props): JSX.Element => {
+const DeleteUser = ({ block, deleteUser, size }: Props): JSX.Element => {
   const auth0 = useAuth0()
   const intl = useIntl()
 
@@ -50,7 +52,7 @@ const DeleteUser = ({ deleteUser }: Props): JSX.Element => {
   )
 
   return (
-    <DeleteButton bsSize="large" onClick={handleDelete}>
+    <DeleteButton block={block} bsSize={size} onClick={handleDelete}>
       <FormattedMessage id="components.DeleteUser.deleteMyAccount" />
     </DeleteButton>
   )
