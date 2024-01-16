@@ -59,8 +59,9 @@ export interface Time {
   headsign: string
   realTime: boolean
   realTimeArrival: number
-  realTimeDeparture: number
+  realTimeDeparture?: number
   realTimeState: string
+  realtimeDeparture?: number
   scheduledArrival: number
   scheduledDeparture: number
   serviceAreaRadius: number

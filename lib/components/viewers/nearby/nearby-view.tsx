@@ -131,7 +131,9 @@ function NearbyView({
   }, [map, setViewedNearbyCoords])
 
   useEffect(() => {
-    firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (typeof firstItemRef.current?.scrollIntoView === 'function') {
+      firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
     // If nearby view coords are provided, use those. Otherwise use the map center.
     if (nearbyViewCoords) {
       fetchNearby(nearbyViewCoords)
