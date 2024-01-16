@@ -1,15 +1,17 @@
 import { FormattedMessage, IntlShape } from 'react-intl'
-import React, { ReactNode } from 'react'
+import React, { ComponentType, ReactNode } from 'react'
 
 import { EditedUser } from './types'
 import AccountSetupFinishPane from './account-setup-finish-pane'
 import AssistiveDevicesPane from './mobility-profile/assistive-devices-pane'
+import DeleteUser from './delete-user'
 import FavoritePlaceList from './places/favorite-place-list'
 import LimitationsPane from './mobility-profile/limitations-pane'
 import NotificationPrefsPane from './notification-prefs-pane'
 import TermsOfUsePane from './terms-of-use-pane'
 
 export interface PaneProps {
+  backButton?: ComponentType
   getInvalidMessage?: (intl: IntlShape) => string
   id: string
   isInvalid?: (arg: any) => boolean
@@ -43,12 +45,9 @@ const standardPanes: Record<string, PaneProps> = {
       isPhoneNumberVerified,
       notificationChannel,
       phoneNumber
-    }: EditedUser) => {
-      return (
-        notificationChannel?.includes('sms') &&
-        (!phoneNumber || !isPhoneNumberVerified)
-      )
-    },
+    }: EditedUser) =>
+      notificationChannel?.includes('sms') &&
+      (!phoneNumber || !isPhoneNumberVerified),
     pane: NotificationPrefsPane,
     title: <FormattedMessage id="components.NewAccountWizard.notifications" />
   },
@@ -58,6 +57,7 @@ const standardPanes: Record<string, PaneProps> = {
     title: <FormattedMessage id="components.NewAccountWizard.places" />
   },
   terms: {
+    backButton: DeleteUser,
     getInvalidMessage: (intl: IntlShape) =>
       intl.formatMessage({
         id: 'components.TermsOfUsePane.mustAgreeToTerms'
