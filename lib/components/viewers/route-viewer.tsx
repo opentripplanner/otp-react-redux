@@ -144,8 +144,6 @@ class RouteViewer extends Component<Props, State> {
       id: 'components.RouteViewer.findARoute'
     })
 
-    console.log(sortedRoutes)
-
     return (
       <div className="route-viewer">
         <VehiclePositionRetriever />
