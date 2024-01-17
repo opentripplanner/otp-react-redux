@@ -9,6 +9,8 @@ import {
 import { AppConfig } from './config-types'
 
 export interface OtpState {
+  // TODO: Add other OTP states
+  activeSearchId?: string
   config: AppConfig
   filter: {
     sort: {

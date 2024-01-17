@@ -10,6 +10,8 @@ const Block = styled.span<{ color: string; isOnColoredBackground?: boolean }>`
   font-weight: 600;
   margin-top: -2px;
   padding: 3px 7px;
+  padding-left: 7px !important; /* TODO: this does not scale well to alternate zoom levels/text sizes */
+  padding-right: 7px !important;
   /* Below is for route names that are too long: cut-off and show ellipsis. */
   max-width: 150px;
   overflow: hidden;
