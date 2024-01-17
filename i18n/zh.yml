@@ -530,6 +530,7 @@ components:
     schedule: 时刻表
     timezoneWarning: 出发时间以 <strong>{timezoneCode}</strong> 显示.
     titleBarStopId: 车站 {stopId}
+    viewNearby: 查看附近
     viewNextDepartures: 查看下一次出发
     viewSchedule: 查看时间表
     zoomToStop: 缩放到车站

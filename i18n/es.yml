@@ -593,6 +593,7 @@ components:
     schedule: Horario
     timezoneWarning: Las horas de salida se indican en <strong>{timezoneCode}</strong>.
     titleBarStopId: Parada {stopId}
+    viewNearby: Ver cerca
     viewNextDepartures: Ver salidas siguientes
     viewSchedule: Ver horario
     zoomToStop: Acercar vista a la parada

@@ -537,6 +537,7 @@ components:
     schedule: 일정
     timezoneWarning: 출발 시간은 <strong>{timezoneCode}</strong>(으)로 표시됩니다.
     titleBarStopId: 정류장 {stopId}
+    viewNearby: 근처 보기
     viewNextDepartures: 다음 출발 보기
     viewSchedule: 스케쥴 보기
     zoomToStop: 정류장 확대
