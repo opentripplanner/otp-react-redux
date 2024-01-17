@@ -125,6 +125,10 @@ const Stop = ({
       }
       return acc
     }, [])
+    .sort(
+      (a: PatternStopTime, b: PatternStopTime) =>
+        (a.stoptimes?.[0].serviceDay || 0) - (b.stoptimes?.[0].serviceDay || 0)
+    )
     .map((st: any, index: number) => {
       const sortedStopTimes = st.stoptimes.sort(
         (a: StopTime, b: StopTime) => fullTimestamp(a) - fullTimestamp(b)
