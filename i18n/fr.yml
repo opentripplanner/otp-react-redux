@@ -638,6 +638,7 @@ components:
     schedule: Horaires
     timezoneWarning: Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>.
     titleBarStopId: Arrêt {stopId}
+    viewNearby: À proximité
     viewSchedule: Horaires
     zoomToStop: Zoomer sur l'arrêt
   SubNav:
