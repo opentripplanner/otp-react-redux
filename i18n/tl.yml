@@ -357,6 +357,16 @@ components:
     myAccount: Aking account
     signIn: Mag-log in
     signOut: Mag-log out
+  NearbyView:
+    bikeRentalStation: Istasyon ng Pagrenta ng Bisikleta
+    bikesAvailable: "{bikesAvailable, plural, one {# bike} other {# bikes}} available"
+    companyBicycle: "{company} Bisikleta"
+    companyScooter: "{company} Scooter"
+    error: May naganap na error sa paglo-load ng mga kalapit na amenity.
+    header: Tingnan ang Malapit
+    nearbyListIntro: List of {count} nearby entities.
+    nothingNearby: There are no places nearby.
+    spacesAvailable: "{spacesAvailable} mga available na bakanteng espasyo"
   NewAccountWizard:
     createNewAccount: Gumawa ng bagong account
     finish: Tapos nang i-set up ang account!
@@ -784,6 +794,7 @@ components:
     instructions2: Kapag na-verify ka na, i-click ang button sa ibaba para magpatuloy.
     resendVerification: Ipadala ulit ang email ng pag-verify
   ViewSwitcher:
+    nearby: Tingnan ang Malapit
     switcher: Switcher
   WelcomeScreen:
     prompt: Saan mo gustong pumunta?

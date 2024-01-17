@@ -388,7 +388,7 @@ components:
     signOut: Log out
   NearbyView:
     bikeRentalStation: Bike Rental Station
-    bikesAvailable: "{bikesAvailable} bikes available"
+    bikesAvailable: "{bikesAvailable, plural, one {# bike} other {# bikes}} available"
     companyBicycle: "{company} Bike"
     companyScooter: "{company} Scooter"
     error: An error occurred loading nearby amenities.

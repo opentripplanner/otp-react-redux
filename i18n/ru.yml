@@ -358,6 +358,18 @@ components:
     myAccount: Моя учетная запись
     signIn: Войти
     signOut: Выйти
+  NearbyView:
+    bikeRentalStation: Станция проката велосипедов
+    bikesAvailable: >-
+      {bikesAvailable, plural, one {Свободен # велосипед} other {Свободны
+      несколько велосипедов (#)}}
+    companyBicycle: "{company} Велосипед"
+    companyScooter: "{company} Скутер"
+    error: Произошла ошибка при загрузке близлежащих объектов.
+    header: Посмотреть рядом
+    nearbyListIntro: Список {count} ближайших объектов.
+    nothingNearby: Поблизости нет мест.
+    spacesAvailable: "{spacesAvailable} есть свободные места"
   NewAccountWizard:
     createNewAccount: Создайте учетную запись
     finish: Настройка учетной записи завершена!
@@ -761,6 +773,7 @@ components:
     instructions2: После подтверждения нажмите кнопку ниже, чтобы продолжить.
     resendVerification: Отправить письмо с подтверждением еще раз
   ViewSwitcher:
+    nearby: Посмотреть рядом
     switcher: Переключатель
   WelcomeScreen:
     prompt: Куда вы хотите отправиться?

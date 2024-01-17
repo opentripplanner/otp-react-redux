@@ -403,6 +403,18 @@ components:
     myAccount: Mon compte
     signIn: Se connecter
     signOut: Déconnexion
+  NearbyView:
+    bikeRentalStation: Borne de location de vélos
+    bikesAvailable: >-
+      {bikesAvailable, plural, one {# vélo disponible} other {# vélos
+      disponibles}}
+    companyBicycle: Vélo {company}
+    companyScooter: Trottinette {company}
+    error: Erreur lors du chargement des services à proximité.
+    header: À proximité
+    nearbyListIntro: Liste de {count} entités à proximité.
+    nothingNearby: Aucun lieu à proximité.
+    spacesAvailable: "{spacesAvailable} emplacements libres disponibles"
   NewAccountWizard:
     createNewAccount: Créez un nouveau compte
     finish: Votre nouveau compte est prêt !
@@ -827,6 +839,7 @@ components:
       continuer.
     resendVerification: Envoyer un nouveau message de vérification
   ViewSwitcher:
+    nearby: À proximité
     switcher: Sélecteur de vues
   WelcomeScreen:
     prompt: Où désirez-vous aller ?

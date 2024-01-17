@@ -331,6 +331,16 @@ components:
     myAccount: 我的账户
     signIn: 登录
     signOut: 签出
+  NearbyView:
+    bikeRentalStation: 自行车租赁站
+    bikesAvailable: "{bikesAvailable} 辆自行车可用"
+    companyBicycle: "{company}自行车"
+    companyScooter: "{company}滑板车"
+    error: 加载附近设施时发生错误。
+    header: 查看附近
+    nearbyListIntro: 附近 {count} 个实体的列表。
+    nothingNearby: 附近没有地方。
+    spacesAvailable: "{spacesAvailable} 可用空位"
   NewAccountWizard:
     createNewAccount: 创建一个新账户
     finish: 账户设置完成!
@@ -686,6 +696,7 @@ components:
     instructions2: 一旦您被验证，请点击下面的按钮继续.
     resendVerification: 重新发送验证邮件
   ViewSwitcher:
+    nearby: 查看附近
     switcher: 切换按钮
   WelcomeScreen:
     prompt: 你想去哪里？

@@ -351,6 +351,16 @@ components:
     myAccount: Tài khoản của tôi
     signIn: Đăng nhập
     signOut: Đăng xuất
+  NearbyView:
+    bikeRentalStation: Trạm Thuê Xe Đạp
+    bikesAvailable: "{bikesAvailable} xe đạp có sẵn"
+    companyBicycle: Xe đạp {company}
+    companyScooter: Xe tay ga điện {company}
+    error: Đã xảy ra lỗi trong khi tải các tiện ích lân cận.
+    header: Xem Gần Đây
+    nearbyListIntro: Danh sách {count} thực thể lân cận.
+    nothingNearby: Không có nơi nào gần đây.
+    spacesAvailable: "{spacesAvailable} chỗ trống có sẵn"
   NewAccountWizard:
     createNewAccount: Tạo tài khoản mới
     finish: Hoàn tất việc thiết lập tài khoản!
@@ -770,6 +780,7 @@ components:
     instructions2: Khi bạn đã được xác minh, nhấp vào nút bên dưới để tiếp tục.
     resendVerification: Gửi lại email xác minh
   ViewSwitcher:
+    nearby: Xem Gần Đây
     switcher: Nút bật tắt
   WelcomeScreen:
     prompt: Bạn muốn đi đâu?

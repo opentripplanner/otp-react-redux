@@ -361,6 +361,18 @@ components:
     myAccount: Mi cuenta
     signIn: Acceder
     signOut: Firmar la salida
+  NearbyView:
+    bikeRentalStation: Estación de renta de bicicletas
+    bikesAvailable: >-
+      {bikesAvailable, plural, one {# bicicleta disponible} other {# bicicletas
+      disponibles}}
+    companyBicycle: Bicicleta {company}
+    companyScooter: Scooter {company}
+    error: Se ha producido un error al cargar los servicios cercanos.
+    header: Ver cerca
+    nearbyListIntro: Lista de {count} entidades cercanas.
+    nothingNearby: No ubicaciónes cercanas.
+    spacesAvailable: "{spacesAvailable} espacios libres disponibles"
   NewAccountWizard:
     createNewAccount: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
@@ -788,6 +800,7 @@ components:
     instructions2: Una vez verificado, haga clic en el botón de abajo para continuar.
     resendVerification: Reenviar el correo electrónico de verificación
   ViewSwitcher:
+    nearby: Ver cerca
     switcher: Botón de cambio
   WelcomeScreen:
     prompt: ¿A donde quiere ir?
