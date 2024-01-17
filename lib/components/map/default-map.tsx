@@ -17,6 +17,7 @@ import {
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
+import { MainPanelContent } from '../../actions/ui-constants'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
@@ -256,6 +257,7 @@ class DefaultMap extends Component {
       intl,
       itinerary,
       mapConfig,
+      nearbyViewActive,
       pending,
       setLocation,
       setViewedStop,
@@ -301,6 +303,7 @@ class DefaultMap extends Component {
           // In Leaflet, this was an onclick handler. Creating a click handler in
           // MapLibreGL would require writing a custom event handler for all mouse events
           onContextMenu={this.onMapClick}
+          showEverything={nearbyViewActive}
           zoom={zoom}
         >
           <PointPopup />
@@ -415,6 +418,8 @@ const mapStateToProps = (state) => {
     config: state.otp.config,
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
+    nearbyViewActive:
+      state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
     vehicleRentalStations: state.otp.overlay.vehicleRental.stations
