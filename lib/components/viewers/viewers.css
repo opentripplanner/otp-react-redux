@@ -328,7 +328,7 @@
   align-items: center;
   display: grid;
   grid-template-columns: 1fr 5fr;
-  padding-left: 5px;
+  padding-left: 10px;
 }
 
 /*.otp .stop-viewer .trip-table {
