@@ -32,12 +32,15 @@ import withLoggedInUserSupport from '../with-logged-in-user-support'
 import getRenderData from './trip-status-rendering-strategies'
 import TripSummaryPane from './trip-summary-pane'
 
-interface ItemProps {
+interface ItemOwnProps {
+  trip: MonitoredTrip
+}
+
+interface ItemProps extends ItemOwnProps {
   intl: IntlShape
   renderData: any
-  routeTo: (url: any) => void
+  routeTo: (url: string) => void
   togglePauseTrip: (trip: MonitoredTrip, intl: IntlShape) => void
-  trip: MonitoredTrip
 }
 
 interface ItemState {
@@ -156,14 +159,11 @@ class TripListItem extends Component<ItemProps, ItemState> {
 }
 
 // connect to the redux store
-const itemMapStateToProps = (state: AppReduxState, ownProps: ItemProps) => {
-  const { trip } = ownProps
-  const renderData = getRenderData({
-    monitoredTrip: trip
-  })
-
+const itemMapStateToProps = (state: AppReduxState, { trip }: ItemOwnProps) => {
   return {
-    renderData
+    renderData: getRenderData({
+      monitoredTrip: trip
+    })
   }
 }
 
