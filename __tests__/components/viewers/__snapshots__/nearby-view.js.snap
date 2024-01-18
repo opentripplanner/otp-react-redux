@@ -4199,7 +4199,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -4585,7 +4585,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -4971,7 +4971,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -7555,7 +7555,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           onMouseLeave={[Function]}
                         >
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                           >
@@ -12311,7 +12311,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           onMouseLeave={[Function]}
                         >
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                           >
@@ -15045,7 +15045,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -15431,7 +15431,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -15817,7 +15817,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -18709,7 +18709,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           onMouseLeave={[Function]}
                         >
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                           >
@@ -22534,7 +22534,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -22920,7 +22920,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -23306,7 +23306,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -23692,7 +23692,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -24078,7 +24078,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -25858,7 +25858,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           onMouseLeave={[Function]}
                         >
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                           >
@@ -28592,7 +28592,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -31072,7 +31072,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           onMouseLeave={[Function]}
                         >
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                           >
@@ -35470,7 +35470,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           onMouseLeave={[Function]}
                         >
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                           >
@@ -41023,7 +41023,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                           >
                             <styled.div>
                               <div
@@ -43607,7 +43607,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           onMouseLeave={[Function]}
                         >
                           <div
-                            className="sc-cVksOY cBGhop"
+                            className="sc-cVksOY hGVfg"
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                           >
