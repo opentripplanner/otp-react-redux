@@ -31,10 +31,7 @@ export const Card = styled.div`
   }
 
   .highlighted & {
-    outline-color: #facc15;
-    outline-width: 3px;
-    outline-style: solid;
-    outline-offset: 1px;
+    box-shadow: 0 0 6px 0px #facc15, 0 0 0 4px #facc15;
   }
 `
 
