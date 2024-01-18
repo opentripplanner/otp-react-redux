@@ -90,7 +90,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
     const { renderData, trip } = this.props
     const { itinerary } = trip
     const { legs } = itinerary
-    const { alerts } = renderData
+    const { alerts, shouldRenderAlerts } = renderData
     // Assuming the monitored itinerary has at least one leg:
     // - get the 'from' location of the first leg,
     // - get the 'to' location of the last leg.
@@ -99,7 +99,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
     return (
       <Panel>
         <TripPanelHeading>
-          {alerts && alerts.length > 0 && (
+          {shouldRenderAlerts && (
             <TripPanelAlert onClick={this._handleEditTrip}>
               <IconWithText Icon={TriangleExclamation}>
                 <FormattedMessage
