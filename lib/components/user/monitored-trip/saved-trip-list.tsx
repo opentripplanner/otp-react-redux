@@ -156,7 +156,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
 }
 
 // connect to the redux store
-const itemMapStateToProps = (ownProps: ItemProps) => {
+const itemMapStateToProps = (state: AppReduxState, ownProps: ItemProps) => {
   const { trip } = ownProps
   const renderData = getRenderData({
     monitoredTrip: trip
