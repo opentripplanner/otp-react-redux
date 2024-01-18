@@ -27,6 +27,9 @@ const ViewSwitcher = ({
   const _showRouteViewer = () => {
     setMainPanelContent(MainPanelContent.ROUTE_VIEWER)
   }
+  const _showNearby = () => {
+    setMainPanelContent(MainPanelContent.NEARBY_VIEW)
+  }
 
   const _showTripPlanner = () => {
     // setMainPanelContent(null) already includes navigation to '/'.
@@ -35,6 +38,7 @@ const ViewSwitcher = ({
 
   const tripPlannerActive = activePanel === null && !accountsActive
   const routeViewerActive = activePanel === MainPanelContent.ROUTE_VIEWER
+  const nearbyActive = activePanel === MainPanelContent.NEARBY_VIEW
 
   return (
     <div
@@ -70,6 +74,14 @@ const ViewSwitcher = ({
         onClick={_showRouteViewer}
       >
         <FormattedMessage id="components.RouteViewer.shortTitle" />
+      </Button>
+      <Button
+        aria-controls="view-switcher"
+        bsStyle="link"
+        className={`${nearbyActive ? 'active' : ''}`}
+        onClick={_showNearby}
+      >
+        <FormattedMessage id="components.ViewSwitcher.nearby" />
       </Button>
     </div>
   )
