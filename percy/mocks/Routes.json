@@ -1,0 +1,2154 @@
+{
+  "data": {
+    "routes": [
+      {
+        "gtfsId": "GwinnettCountyTransit:40",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "Lawrenceville - GTC - Sugarloaf Mills",
+        "shortName": "40",
+        "mode": "BUS",
+        "type": 3,
+        "color": "AB0634"
+      },
+      {
+        "gtfsId": "CobbLinc:30",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "Hamilton E. Holmes Station/MTC",
+        "shortName": "30",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0d0d0d"
+      },
+      {
+        "gtfsId": "MARTA:19339",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "14th Street / Blandtown",
+        "shortName": "14",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19338",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Howell Mill Road / Cumberland",
+        "shortName": "12",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19335",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Clifton Road / Emory",
+        "shortName": "6",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008080"
+      },
+      {
+        "gtfsId": "MARTA:19456",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Gold",
+        "shortName": "Gold",
+        "mode": "SUBWAY",
+        "type": 1,
+        "color": "D4A723"
+      },
+      {
+        "gtfsId": "MARTA:19852",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Clairmont Road / Howard Avenue",
+        "shortName": "19",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19334",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Piedmont Road / Sandy Springs",
+        "shortName": "5",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19455",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Blue",
+        "shortName": "Blue",
+        "mode": "SUBWAY",
+        "type": 1,
+        "color": "0075B2"
+      },
+      {
+        "gtfsId": "MARTA:19337",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Boulevard / Tilson Road",
+        "shortName": "9",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19458",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Red",
+        "shortName": "Red",
+        "mode": "SUBWAY",
+        "type": 1,
+        "color": "CE242B"
+      },
+      {
+        "gtfsId": "MARTA:19457",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Green",
+        "shortName": "Green",
+        "mode": "SUBWAY",
+        "type": 1,
+        "color": "009D4B"
+      },
+      {
+        "gtfsId": "MARTA:19336",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "North Druid Hills Road",
+        "shortName": "8",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19331",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Ponce De Leon Avenue / Druid Hills",
+        "shortName": "2",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "Xpress:423",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "E Conyer/W Conyer/Panola - MT",
+        "shortName": "423",
+        "mode": "BUS",
+        "type": 3,
+        "color": "01925c"
+      },
+      {
+        "gtfsId": "MARTA:19330",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Marietta Blvd/Joseph E Lowery Blvd",
+        "shortName": "1",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19451",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Old Fourth Ward",
+        "shortName": "899",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19333",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Moreland Avenue",
+        "shortName": "4",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19453",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Atlanta Streetcar",
+        "shortName": "Atlsc",
+        "mode": "TRAM",
+        "type": 0,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19332",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Martin Luther King Jr Dr/Auburn Ave",
+        "shortName": "3",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8000"
+      },
+      {
+        "gtfsId": "Xpress:426",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "E Conyer/W Conyer/Panola - DT",
+        "shortName": "426",
+        "mode": "BUS",
+        "type": 3,
+        "color": "01925c"
+      },
+      {
+        "gtfsId": "MARTA:19450",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Peyton Forest / Dixie Hills",
+        "shortName": "867",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "Xpress:428",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "W Conyers/Panola - Perimeter",
+        "shortName": "428",
+        "mode": "BUS",
+        "type": 3,
+        "color": "01925c"
+      },
+      {
+        "gtfsId": "CobbLinc:25",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "Hamilton E. Holmes Station/CTC",
+        "shortName": "25",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0d0d0d"
+      },
+      {
+        "gtfsId": "GwinnettCountyTransit:35",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "Peachtree Pkwy - Doraville",
+        "shortName": "35",
+        "mode": "BUS",
+        "type": 3,
+        "color": "F15822"
+      },
+      {
+        "gtfsId": "CobbLinc:BLUE",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "Cumberland Transfer CTC/Battery",
+        "shortName": "BLUE",
+        "mode": "BUS",
+        "type": 3,
+        "color": "ffffff"
+      },
+      {
+        "gtfsId": "GwinnettCountyTransit:30",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "Lilburn - GTC",
+        "shortName": "30",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FFEF00"
+      },
+      {
+        "gtfsId": "CobbLinc:40",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "KSU-Kennesaw - MTC via Marietta",
+        "shortName": "40",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0d0d0d"
+      },
+      {
+        "gtfsId": "CobbLinc:RAPID",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "Arts Station/KSU-Kennesaw Rapid",
+        "shortName": "RAPID",
+        "mode": "BUS",
+        "type": 3,
+        "color": "ffffff"
+      },
+      {
+        "gtfsId": "Xpress:490",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Woodstock - Downtown",
+        "shortName": "490",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "MARTA:19449",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Boulder Park Drive",
+        "shortName": "865",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19448",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Baker Hills / Wilson Mill Meadows",
+        "shortName": "856",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8040"
+      },
+      {
+        "gtfsId": "MARTA:19445",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Grant Park",
+        "shortName": "832",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19444",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Johnson Ferry Road",
+        "shortName": "825",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF0000"
+      },
+      {
+        "gtfsId": "MARTA:19447",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Center Hill",
+        "shortName": "853",
+        "mode": "BUS",
+        "type": 3,
+        "color": "A6CAF0"
+      },
+      {
+        "gtfsId": "ConnectDouglas:37220",
+        "agency": {
+          "gtfsId": "ConnectDouglas:1661",
+          "name": "Connect Douglas"
+        },
+        "longName": "Route 40",
+        "shortName": null,
+        "mode": "BUS",
+        "type": 3,
+        "color": "2CA02C"
+      },
+      {
+        "gtfsId": "Xpress:410",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Sugarloaf Mills - Lindbergh Cent",
+        "shortName": "410",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "MARTA:19446",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Carroll Heights / Fairburn Heights",
+        "shortName": "850",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "Xpress:412",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Sugarloaf Mills - Midtown",
+        "shortName": "412",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "MARTA:19441",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Atlanta University Center",
+        "shortName": "813",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19440",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Monroe Drive / Boulevard",
+        "shortName": "809",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF0000"
+      },
+      {
+        "gtfsId": "Xpress:411",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Hamilton Mill/Mall of GA - MT",
+        "shortName": "411",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "MARTA:19443",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Belvedere",
+        "shortName": "823",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "Xpress:414",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Ham Mill/Mall of GA/Sugarloaf-MT",
+        "shortName": "414",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "MARTA:19442",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "North Highland Avenue",
+        "shortName": "816",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "Xpress:413",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Hamilton Mill/Mall of GA - DT",
+        "shortName": "413",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "Xpress:416",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Dacula - Downtown",
+        "shortName": "416",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "CATS:87961",
+        "agency": {
+          "gtfsId": "CATS:CATS",
+          "name": "Cherokee Area Transportation System (CATS)"
+        },
+        "longName": "Route 2",
+        "shortName": "RT 2",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008a10"
+      },
+      {
+        "gtfsId": "CATS:87960",
+        "agency": {
+          "gtfsId": "CATS:CATS",
+          "name": "Cherokee Area Transportation System (CATS)"
+        },
+        "longName": "Route 1",
+        "shortName": "RT 1",
+        "mode": "BUS",
+        "type": 3,
+        "color": "1cabf2"
+      },
+      {
+        "gtfsId": "Xpress:417",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Sugarloaf Mills - Perimeter",
+        "shortName": "417",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "Xpress:419",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Snellville/Hewatt/Stone Mtn - DT",
+        "shortName": "419",
+        "mode": "BUS",
+        "type": 3,
+        "color": "01925c"
+      },
+      {
+        "gtfsId": "GwinnettCountyTransit:20",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "Beaver Ruin - Doraville",
+        "shortName": "20",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00BCF2"
+      },
+      {
+        "gtfsId": "CobbLinc:10",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "Arts Center Station/Marietta TC",
+        "shortName": "10",
+        "mode": "BUS",
+        "type": 3,
+        "color": "1d1b11"
+      },
+      {
+        "gtfsId": "Xpress:480",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Acworth/Town Center - Downtown",
+        "shortName": "480",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "Xpress:483",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Woodstock/Town Center - Midtown",
+        "shortName": "483",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "MARTA:19357",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Donald Lee Hollowell Parkway",
+        "shortName": "50",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "Xpress:485",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Hickory Grove - Downtown",
+        "shortName": "485",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "Xpress:484",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Hickory Grove  - Midtown",
+        "shortName": "484",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "MARTA:19356",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Mcdonough Boulevard",
+        "shortName": "49",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8040"
+      },
+      {
+        "gtfsId": "MARTA:19359",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Jonesboro Road",
+        "shortName": "55",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8000"
+      },
+      {
+        "gtfsId": "MARTA:19358",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Joseph E Boone Boulevard",
+        "shortName": "51",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "Xpress:401",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Cumming - Perimeter",
+        "shortName": "401",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "MARTA:19353",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Peachtree Street / Downtown",
+        "shortName": "40",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FFFF00"
+      },
+      {
+        "gtfsId": "Xpress:400",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Cumming - Downtown",
+        "shortName": "400",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0f78af"
+      },
+      {
+        "gtfsId": "MARTA:19352",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Buford Highway",
+        "shortName": "39",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19355",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "I-85 Access Road",
+        "shortName": "47",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8080"
+      },
+      {
+        "gtfsId": "MARTA:19354",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Pryor Road",
+        "shortName": "42",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8000"
+      },
+      {
+        "gtfsId": "ConnectDouglas:16390",
+        "agency": {
+          "gtfsId": "ConnectDouglas:1661",
+          "name": "Connect Douglas"
+        },
+        "longName": "Route 10",
+        "shortName": null,
+        "mode": "BUS",
+        "type": 3,
+        "color": "1F77B4"
+      },
+      {
+        "gtfsId": "MARTA:19351",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Defoors Ferry Road",
+        "shortName": "37",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF80"
+      },
+      {
+        "gtfsId": "MARTA:19350",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "N Decatur Road / Virginia Highland",
+        "shortName": "36",
+        "mode": "BUS",
+        "type": 3,
+        "color": "A6CAF0"
+      },
+      {
+        "gtfsId": "GwinnettCountyTransit:10",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "Sug - GTC - Dora via Satellite",
+        "shortName": "10A",
+        "mode": "BUS",
+        "type": 3,
+        "color": "5A3F99"
+      },
+      {
+        "gtfsId": "CobbLinc:20",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "CTC - MTC via S. Cobb Drive",
+        "shortName": "20",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0d0d0d"
+      },
+      {
+        "gtfsId": "MARTA:19349",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Gresham Road",
+        "shortName": "34",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "GwinnettCountyTransit:110",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "Indian Trail P&R - Emory",
+        "shortName": "110",
+        "mode": "BUS",
+        "type": 3,
+        "color": "003971"
+      },
+      {
+        "gtfsId": "MARTA:19346",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Cheshire Bridge Road",
+        "shortName": "27",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF0080"
+      },
+      {
+        "gtfsId": "MARTA:19345",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Marietta Street / Perry Boulevard",
+        "shortName": "26",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008080"
+      },
+      {
+        "gtfsId": "Xpress:476",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Hiram/Powder Springs - DT/MT",
+        "shortName": "476",
+        "mode": "BUS",
+        "type": 3,
+        "color": "8e287e"
+      },
+      {
+        "gtfsId": "ConnectDouglas:17130",
+        "agency": {
+          "gtfsId": "ConnectDouglas:1661",
+          "name": "Connect Douglas"
+        },
+        "longName": "Route 20",
+        "shortName": null,
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF7F0E"
+      },
+      {
+        "gtfsId": "MARTA:19348",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Bouldercrest",
+        "shortName": "32",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19347",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Lavista Road",
+        "shortName": "30",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "ConnectDouglas:17131",
+        "agency": {
+          "gtfsId": "ConnectDouglas:1661",
+          "name": "Connect Douglas"
+        },
+        "longName": "Route 30",
+        "shortName": null,
+        "mode": "BUS",
+        "type": 3,
+        "color": "D62728"
+      },
+      {
+        "gtfsId": "MARTA:19342",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Memorial Drive",
+        "shortName": "21",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19344",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Peachtree Boulevard",
+        "shortName": "25",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19343",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Mcafee / Hosea Williams",
+        "shortName": "24",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19340",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Candler Road",
+        "shortName": "15",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "CobbLinc:15",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "CTC - MTC via Windy Hill",
+        "shortName": "15",
+        "mode": "BUS",
+        "type": 3,
+        "color": "404040"
+      },
+      {
+        "gtfsId": "MARTA:19419",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Riverdale / Atl Intl Terminal",
+        "shortName": "191",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "GwinnettCountyTransit:103",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "Sugarloaf Mills P&R - Downtown Atlanta",
+        "shortName": "103",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008852"
+      },
+      {
+        "gtfsId": "GwinnettCountyTransit:102",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "Indian Trail P&R - Downtown Atlanta",
+        "shortName": "102",
+        "mode": "BUS",
+        "type": 3,
+        "color": "A0CF67"
+      },
+      {
+        "gtfsId": "MARTA:19416",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Rainbow Drive / South Dekalb",
+        "shortName": "186",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19415",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Alpharetta",
+        "shortName": "185",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8000"
+      },
+      {
+        "gtfsId": "GwinnettCountyTransit:101",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "I-985 P&R - Downtown Atlanta",
+        "shortName": "101",
+        "mode": "BUS",
+        "type": 3,
+        "color": "E7A614"
+      },
+      {
+        "gtfsId": "MARTA:19418",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Flat Shoals Road / Scofield Road",
+        "shortName": "189",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19417",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Oakley Industrial",
+        "shortName": "188",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19412",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Roosevelt Highway",
+        "shortName": "180",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19379",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Northside Drive",
+        "shortName": "94",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "Xpress:463",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "W Douglas/Douglas MMTC - DT/MT",
+        "shortName": "463",
+        "mode": "BUS",
+        "type": 3,
+        "color": "8e287e"
+      },
+      {
+        "gtfsId": "MARTA:19378",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Headland Drive / Main Street",
+        "shortName": "93",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19411",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Empire Blvd / Southside Ind Park",
+        "shortName": "178",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19414",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Greenbriar",
+        "shortName": "183",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19413",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Washington Road / Fairburn",
+        "shortName": "181",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8040"
+      },
+      {
+        "gtfsId": "MARTA:19375",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Fairington Road",
+        "shortName": "86",
+        "mode": "BUS",
+        "type": 3,
+        "color": "A6CAF0"
+      },
+      {
+        "gtfsId": "MARTA:19374",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Roswell",
+        "shortName": "85",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19410",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Sylvan Road / Virginia Avenue",
+        "shortName": "172",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8040"
+      },
+      {
+        "gtfsId": "MARTA:19377",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Old National Highway",
+        "shortName": "89",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8040"
+      },
+      {
+        "gtfsId": "MARTA:19376",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Roswell Road / Sandy Springs",
+        "shortName": "87",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19371",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Camp Creek / South Fulton Parkway",
+        "shortName": "82",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19370",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Venetian Hills / Delowe Drive",
+        "shortName": "81",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19373",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Washington Rd/Camp Crk Marketplace",
+        "shortName": "84",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19372",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Campbellton Road",
+        "shortName": "83",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19409",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Fairburn Road",
+        "shortName": "165",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "CobbLinc:100",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "Civic Center Station/Busbee P&R",
+        "shortName": "100",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0d0d0d"
+      },
+      {
+        "gtfsId": "MARTA:19408",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Myrtle Drive / Alison Court",
+        "shortName": "162",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008080"
+      },
+      {
+        "gtfsId": "CobbLinc:101",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "Civic Center/Five Points/MTC",
+        "shortName": "101",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0d0d0d"
+      },
+      {
+        "gtfsId": "CobbLinc:102",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "Arts Center Station/Acworth P&R",
+        "shortName": "102",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0d0d0d"
+      },
+      {
+        "gtfsId": "MARTA:19405",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Dunwoody Village",
+        "shortName": "150",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19404",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Mount Vernon Highway",
+        "shortName": "148",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19407",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Pittsburgh",
+        "shortName": "155",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19406",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "James Jackson Parkway",
+        "shortName": "153",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8000"
+      },
+      {
+        "gtfsId": "MARTA:19368",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Cleveland Avenue",
+        "shortName": "78",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19401",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Haynes Bridge Road / Milton",
+        "shortName": "141",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19400",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "North Point Parkway",
+        "shortName": "140",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8000"
+      },
+      {
+        "gtfsId": "MARTA:19367",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Lawrenceville Highway",
+        "shortName": "75",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19403",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Windward Park & Ride",
+        "shortName": "143",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19402",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "East Holcomb Bridge Road",
+        "shortName": "142",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19369",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Sylvan Hills",
+        "shortName": "79",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8000"
+      },
+      {
+        "gtfsId": "Xpress:453",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Newnan/Union City - DT/MT",
+        "shortName": "453",
+        "mode": "BUS",
+        "type": 3,
+        "color": "f44d23"
+      },
+      {
+        "gtfsId": "MARTA:19364",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Cascade Road",
+        "shortName": "71",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8080"
+      },
+      {
+        "gtfsId": "MARTA:19363",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Benjamin E Mays Drive",
+        "shortName": "68",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF0000"
+      },
+      {
+        "gtfsId": "CobbLinc:GREEN",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "Battery/Windy Hill",
+        "shortName": "GREEN",
+        "mode": "BUS",
+        "type": 3,
+        "color": "ffffff"
+      },
+      {
+        "gtfsId": "MARTA:19366",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Flat Shoals Road",
+        "shortName": "74",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8000"
+      },
+      {
+        "gtfsId": "MARTA:19365",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Fulton Industrial",
+        "shortName": "73",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19360",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Hollywood Road / Lucile Avenue",
+        "shortName": "58",
+        "mode": "BUS",
+        "type": 3,
+        "color": "A6CAF0"
+      },
+      {
+        "gtfsId": "MARTA:19362",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Lynhurst Drive / Princeton Lakes",
+        "shortName": "66",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19361",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Hightower Road",
+        "shortName": "60",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "CobbLinc:50",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "CTC - MTC via Powers Ferry",
+        "shortName": "50",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0d0d0d"
+      },
+      {
+        "gtfsId": "ConnectDouglas:37219",
+        "agency": {
+          "gtfsId": "ConnectDouglas:1661",
+          "name": "Connect Douglas"
+        },
+        "longName": "Route 40A",
+        "shortName": null,
+        "mode": "BUS",
+        "type": 3,
+        "color": "2CA02C"
+      },
+      {
+        "gtfsId": "GwinnettCountyTransit:203",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "Rev Commute Atlanta - Sugarloaf Mills",
+        "shortName": "103A",
+        "mode": "BUS",
+        "type": 3,
+        "color": "6A737B"
+      },
+      {
+        "gtfsId": "GwinnettCountyTransit:202",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "Express PM Sweeper",
+        "shortName": "SWPR",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0037ff"
+      },
+      {
+        "gtfsId": "MARTA:19439",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Lovejoy",
+        "shortName": "800",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "Xpress:441",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Jonesboro - Downtown/Midtown",
+        "shortName": "441",
+        "mode": "BUS",
+        "type": 3,
+        "color": "f44d23"
+      },
+      {
+        "gtfsId": "Xpress:440",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Hampton/Jonesboro - DT/MT",
+        "shortName": "440",
+        "mode": "BUS",
+        "type": 3,
+        "color": "f44d23"
+      },
+      {
+        "gtfsId": "Xpress:442",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "Riverdale - Downtown",
+        "shortName": "442",
+        "mode": "BUS",
+        "type": 3,
+        "color": "f44d23"
+      },
+      {
+        "gtfsId": "MARTA:19397",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Embry Hills",
+        "shortName": "126",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19396",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Clarkston",
+        "shortName": "125",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19399",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Shallowford Road",
+        "shortName": "133",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FFFF00"
+      },
+      {
+        "gtfsId": "MARTA:19398",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Tilly Mill Road",
+        "shortName": "132",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19393",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Memorial Drive / N Hairston Road",
+        "shortName": "121",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "CobbLinc:45",
+        "agency": {
+          "gtfsId": "CobbLinc:1",
+          "name": "CobbLinc"
+        },
+        "longName": "KSU-Kennesaw - MTC via US 41",
+        "shortName": "45",
+        "mode": "BUS",
+        "type": 3,
+        "color": "0d0d0d"
+      },
+      {
+        "gtfsId": "MARTA:19392",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "East Ponce De Leon Avenue",
+        "shortName": "120",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19395",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Pleasantdale Road",
+        "shortName": "124",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19394",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Church Street",
+        "shortName": "123",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19391",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Hairston Road / Stone Mtn Village",
+        "shortName": "119",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008080"
+      },
+      {
+        "gtfsId": "MARTA:19390",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Rockbridge Road / Panola Road",
+        "shortName": "117",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "GwinnettCountyTransit:50",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "Sug - GTC - Dora via Remington",
+        "shortName": "10B",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008B44"
+      },
+      {
+        "gtfsId": "MARTA:19427",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Six Flags Over Georgia",
+        "shortName": "201",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19426",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Southlake Parkway",
+        "shortName": "198",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19429",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Metropolitan Campus Express",
+        "shortName": "295",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19428",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Memorial Drive Limited",
+        "shortName": "221",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "Xpress:430",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "McDonough - Downtown",
+        "shortName": "430",
+        "mode": "BUS",
+        "type": 3,
+        "color": "f44d23"
+      },
+      {
+        "gtfsId": "MARTA:19423",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Forest Parkway",
+        "shortName": "195",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "MARTA:19422",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Conley Road / Mt Zion",
+        "shortName": "194",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19389",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Redan Road",
+        "shortName": "116",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "Xpress:432",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "BrandsMart/Stockbridge - DT",
+        "shortName": "432",
+        "mode": "BUS",
+        "type": 3,
+        "color": "f44d23"
+      },
+      {
+        "gtfsId": "MARTA:19425",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Battle Creek Road",
+        "shortName": "197",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF00FF"
+      },
+      {
+        "gtfsId": "Xpress:431",
+        "agency": {
+          "gtfsId": "Xpress:1",
+          "name": "Xpress"
+        },
+        "longName": "BrandsMart/Stockbridge - MT",
+        "shortName": "431",
+        "mode": "BUS",
+        "type": 3,
+        "color": "f44d23"
+      },
+      {
+        "gtfsId": "MARTA:19424",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Upper Riverdale",
+        "shortName": "196",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19386",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Snapfinger Woods",
+        "shortName": "111",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19385",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Peachtree Road / Buckhead",
+        "shortName": "110",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8040"
+      },
+      {
+        "gtfsId": "MARTA:19388",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Covington Highway",
+        "shortName": "115",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19421",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Morrow / Jonesboro",
+        "shortName": "193",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008080"
+      },
+      {
+        "gtfsId": "MARTA:19420",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Old Dixie / Tara Boulevard",
+        "shortName": "192",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19387",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Columbia Drive",
+        "shortName": "114",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF8040"
+      },
+      {
+        "gtfsId": "MARTA:19382",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Peeler Road",
+        "shortName": "103",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "MARTA:19381",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "North Avenue / Little Five Points",
+        "shortName": "102",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FF00"
+      },
+      {
+        "gtfsId": "MARTA:19384",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Glenwood",
+        "shortName": "107",
+        "mode": "BUS",
+        "type": 3,
+        "color": "008000"
+      },
+      {
+        "gtfsId": "MARTA:19383",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Winters Chapel Road",
+        "shortName": "104",
+        "mode": "BUS",
+        "type": 3,
+        "color": "00FFFF"
+      },
+      {
+        "gtfsId": "GwinnettCountyTransit:45",
+        "agency": {
+          "gtfsId": "GwinnettCountyTransit:GCT",
+          "name": "Ride Gwinnett"
+        },
+        "longName": "GGC",
+        "shortName": "45",
+        "mode": "BUS",
+        "type": 3,
+        "color": "005534"
+      },
+      {
+        "gtfsId": "MARTA:19380",
+        "agency": {
+          "gtfsId": "MARTA:MARTA",
+          "name": "Metropolitan Atlanta Rapid Transit Authority"
+        },
+        "longName": "Metropolitan Parkway",
+        "shortName": "95",
+        "mode": "BUS",
+        "type": 3,
+        "color": "FF0000"
+      }
+    ]
+  }
+}
