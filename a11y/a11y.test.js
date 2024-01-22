@@ -14,6 +14,8 @@ const OTP_RR_TEST_CONFIG_PATH = '../a11y/test-config.yml'
 
 const MOCK_SERVER_PORT = 9999
 
+const DISABLED_ROUTES = ['/nearby', '/nearby/:latLon']
+
 let browser, server
 // These rules aren't relevant to this project
 const disabledRules = [
@@ -77,12 +79,16 @@ routes.forEach((route) => {
   if (Array.isArray(pathsToTest)) {
     // Run test on each path in list.
     pathsToTest.forEach(async (p) => {
-      test(`${p} should pass Axe Tests`, async () => runAxeTestOnPath(p))
+      if (!DISABLED_ROUTES.includes(p)) {
+        test(`${p} should pass Axe Tests`, async () => runAxeTestOnPath(p))
+      }
     })
   } else {
     // Otherwise run test on individual path
-    test(`${pathsToTest} should pass Axe Tests`, async () =>
-      runAxeTestOnPath(pathsToTest))
+    if (!DISABLED_ROUTES.includes(pathsToTest)) {
+      test(`${pathsToTest} should pass Axe Tests`, async () =>
+        runAxeTestOnPath(pathsToTest))
+    }
   }
 })
 

@@ -68,7 +68,7 @@ export const TripPanelFooter = styled(Panel.Footer)`
   button {
     border: 0px;
     padding: 13px 0px;
-    width: 33.333%;
+    width: 50%;
   }
 
   button:first-child {
@@ -80,13 +80,6 @@ export const TripPanelFooter = styled(Panel.Footer)`
   button:nth-child(2) {
     border-radius: 0;
     border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-  }
-
-  button:last-child {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
   }
 `
 

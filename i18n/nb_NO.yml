@@ -34,7 +34,6 @@ common:
     cancel: Avbryt
     close: Lukk
     defaultValue: "{value} (forvalg)"
-    delete: Slett
     edit: Rediger
     finish: Fullfør
     next: Neste

@@ -22,8 +22,7 @@ actions:
     fetchFieldTripsError: "트립을 가져오는 중에 오류가 발생했습니다: {err}"
     fetchTripsForDateError: "필트 트립 날짜에 대한 트립을 가져오는 중에 오류가 발생했습니다: {err}"
     incompatibleTripDateError: 계획한 트립 날짜({tripDate})가 요청한 트립 날짜({requestDate})가 아닙니다
-    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다.
-      트립을 다시 계획하세요."
+    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다. 트립을 다시 계획하세요."
     maxTripRequestsExceeded: 유효한 결과없이 초과된 트립 요청의 개수
     saveItinerariesError: "트립을 저장하는 데 실패했습니다: {err}"
     setDateError: "날짜를 설정하는 중에 오류가 발생했습니다:"
@@ -89,7 +88,6 @@ common:
     cancel: 취소
     close: 닫기
     defaultValue: "{value} (기본값)"
-    delete: 삭제
     edit: 수정
     error: 오류!
     finish: 마침
@@ -335,6 +333,16 @@ components:
     myAccount: 내 계정
     signIn: 로그인
     signOut: 로그 아웃
+  NearbyView:
+    bikeRentalStation: 자전거 대여 역
+    bikesAvailable: "{bikesAvailable} 자전거 이용 가능"
+    companyBicycle: "{company} 자전거"
+    companyScooter: "{company} 스쿠터"
+    error: 인근 부대시설 로드 중 오류가 발생했습니다.
+    header: 근처 보기
+    nearbyListIntro: 주변 개체 {count}개 목록
+    nothingNearby: 근처에 장소가 없습니다.
+    spacesAvailable: "{spacesAvailable} 빈 자리 있음"
   NewAccountWizard:
     createNewAccount: 새 계정 생성
     finish: 계정 설정을 완료하셨습니다!
@@ -529,6 +537,7 @@ components:
     schedule: 일정
     timezoneWarning: 출발 시간은 <strong>{timezoneCode}</strong>(으)로 표시됩니다.
     titleBarStopId: 정류장 {stopId}
+    viewNearby: 근처 보기
     viewNextDepartures: 다음 출발 보기
     viewSchedule: 스케쥴 보기
     zoomToStop: 정류장 확대
@@ -697,6 +706,7 @@ components:
     instructions2: 확인 후, 아래의 버튼을 클릭하여 계속 진행하십시오.
     resendVerification: 확인 이메일을 다시 전송
   ViewSwitcher:
+    nearby: 근처 보기
     switcher: 변경
   WelcomeScreen:
     prompt: 어디로 가고 싶으신가요?
@@ -726,6 +736,5 @@ util:
     networkUnavailable: 현재 {network} 네트워크를 사용할 수 없습니다.
     noTripFound: 트립을 찾을 수 없습니다.
     noTripFoundForMode: "{modes}의 트립을 찾을 수 없습니다."
-    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지
-      못할 수 있습니다.
+    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지 못할 수 있습니다.
     noTripFoundWithReason: "{noTripFound} {reason}"

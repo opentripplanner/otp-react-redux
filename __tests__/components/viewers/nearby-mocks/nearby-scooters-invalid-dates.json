@@ -1,0 +1,3917 @@
+[
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjI0LjE1OTAwMDAwMDAwMDAwMjtVbVZ1ZEdGc1ZtVm9hV05zWlRwc2FXMWxYM05sWVhSMGJHVTZNRE0xTkRCaE9XVXRaVFkxTnkwME5UUmxMV0ZsTjJJdE9HRmtPV1JoT0RaalptVms",
+    "distance": 24,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6MDM1NDBhOWUtZTY1Ny00NTRlLWFlN2ItOGFkOWRhODZjZmVk",
+      "lat": 47.6759,
+      "lon": -122.3158,
+      "network": "lime_seattle",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjI2LjI2NjU7VW1WdWRHRnNWbVZvYVdOc1pUcHNhVzFsWDNObFlYUjBiR1U2TmpsaU1XSm1abUV0TXprMFlpMDBNemMwTFdJd04yTXRNemRsTVRBMk1qQXpNV1U1",
+    "distance": 26,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NjliMWJmZmEtMzk0Yi00Mzc0LWIwN2MtMzdlMTA2MjAzMWU5",
+      "lat": 47.6758,
+      "lon": -122.3157,
+      "network": "lime_seattle",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjM0LjkyNTAwMDAwMDAwMDAwNDtVbVZ1ZEdGc1ZtVm9hV05zWlRwc2FXMWxYM05sWVhSMGJHVTZNV1F6TjJSaU1HRXRNV00yTUMwMFpUZ3lMV0V3WTJZdE5tRmtObUU0TlRFeU5tRXc",
+    "distance": 34,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6MWQzN2RiMGEtMWM2MC00ZTgyLWEwY2YtNmFkNmE4NTEyNmEw",
+      "lat": 47.6759,
+      "lon": -122.3159,
+      "network": "lime_seattle",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjQxLjk2NDAwMDAwMDAwMDAwNjtVM1J2Y0RwclkyMDZNelk1TkRB",
+    "distance": 41,
+    "place": {
+      "__typename": "Stop",
+      "id": "U3RvcDprY206MzY5NDA",
+      "lat": 47.6758881,
+      "lon": -122.315994,
+      "name": "Roosevelt Station - Bay 2",
+      "code": "36940",
+      "gtfsId": "kcm:36940",
+      "stoptimesForPatterns": [
+        {
+          "pattern": {
+            "headsign": "Downtown Seattle Fremont",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "62",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 96,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50190,
+              "scheduledDeparture": 50094,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 50994,
+              "scheduledDeparture": 50994,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51894,
+              "scheduledDeparture": 51894,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52794,
+              "scheduledDeparture": 52794,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53634,
+              "scheduledDeparture": 53634,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 67424,
+              "scheduledDeparture": 67424,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 68264,
+              "scheduledDeparture": 68264,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 69164,
+              "scheduledDeparture": 69164,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 70064,
+              "scheduledDeparture": 70064,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 70893,
+              "scheduledDeparture": 70893,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Downtown Seattle Fremont",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "62",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53634,
+              "scheduledDeparture": 53634,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52794,
+              "scheduledDeparture": 52794,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51894,
+              "scheduledDeparture": 51894,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 50994,
+              "scheduledDeparture": 50994,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 96,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50190,
+              "scheduledDeparture": 50094,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Roosevelt Station Sand Point",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "79",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 110,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 51099,
+              "scheduledDeparture": 50989,
+              "headsign": "Roosevelt Station Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 54589,
+              "scheduledDeparture": 54589,
+              "headsign": "Roosevelt Station Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 58189,
+              "scheduledDeparture": 58189,
+              "headsign": "Roosevelt Station Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 60289,
+              "scheduledDeparture": 60289,
+              "headsign": "Roosevelt Station Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 61789,
+              "scheduledDeparture": 61789,
+              "headsign": "Roosevelt Station Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Loyal Heights Greenwood",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "45",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": -85,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50015,
+              "scheduledDeparture": 50100,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 79,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 51079,
+              "scheduledDeparture": 51000,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51900,
+              "scheduledDeparture": 51900,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52800,
+              "scheduledDeparture": 52800,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53760,
+              "scheduledDeparture": 53760,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 22500,
+              "scheduledDeparture": 22500,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 24300,
+              "scheduledDeparture": 24300,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 26100,
+              "scheduledDeparture": 26100,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 27900,
+              "scheduledDeparture": 27900,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 28800,
+              "scheduledDeparture": 28800,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Loyal Heights Greenwood",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "45",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 28800,
+              "scheduledDeparture": 28800,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 27900,
+              "scheduledDeparture": 27900,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 26100,
+              "scheduledDeparture": 26100,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 24300,
+              "scheduledDeparture": 24300,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 22500,
+              "scheduledDeparture": 22500,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjQ5Ljg2NjtVM1J2Y0RvME1EbzVPVEF3TURN",
+    "distance": 49,
+    "place": {
+      "__typename": "Stop",
+      "id": "U3RvcDo0MDo5OTAwMDM",
+      "lat": 47.676107,
+      "lon": -122.316041,
+      "name": "Roosevelt",
+      "code": null,
+      "gtfsId": "40:990003",
+      "stoptimesForPatterns": [
+        {
+          "pattern": {
+            "headsign": "Capitol Hill",
+            "route": {
+              "agency": {
+                "name": "Sound Transit",
+                "gtfsId": "40:40"
+              },
+              "shortName": "1 Line",
+              "type": 0,
+              "mode": "TRAM",
+              "longName": "Northgate - Angle Lake",
+              "color": "28813F",
+              "textColor": "FFFFFF"
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 17880,
+              "scheduledDeparture": 17880,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 18900,
+              "scheduledDeparture": 18900,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 19800,
+              "scheduledDeparture": 19800,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 20700,
+              "scheduledDeparture": 20700,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 21600,
+              "scheduledDeparture": 21600,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 22500,
+              "scheduledDeparture": 22500,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 23400,
+              "scheduledDeparture": 23400,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 24300,
+              "scheduledDeparture": 24300,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 25200,
+              "scheduledDeparture": 25200,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 26100,
+              "scheduledDeparture": 26100,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Capitol Hill",
+            "route": {
+              "agency": {
+                "name": "Sound Transit",
+                "gtfsId": "40:40"
+              },
+              "shortName": "1 Line",
+              "type": 0,
+              "mode": "TRAM",
+              "longName": "Northgate - Angle Lake",
+              "color": "28813F",
+              "textColor": "FFFFFF"
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 25200,
+              "scheduledDeparture": 25200,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 23400,
+              "scheduledDeparture": 23400,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 21600,
+              "scheduledDeparture": 21600,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 19800,
+              "scheduledDeparture": 19800,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 17880,
+              "scheduledDeparture": 17880,
+              "headsign": "Capitol Hill",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Angle Lake",
+            "route": {
+              "agency": {
+                "name": "Sound Transit",
+                "gtfsId": "40:40"
+              },
+              "shortName": "1 Line",
+              "type": 0,
+              "mode": "TRAM",
+              "longName": "Northgate - Angle Lake",
+              "color": "28813F",
+              "textColor": "FFFFFF"
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 50220,
+              "scheduledDeparture": 50220,
+              "headsign": "Angle Lake",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 50820,
+              "scheduledDeparture": 50820,
+              "headsign": "Angle Lake",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51420,
+              "scheduledDeparture": 51420,
+              "headsign": "Angle Lake",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52020,
+              "scheduledDeparture": 52020,
+              "headsign": "Angle Lake",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52620,
+              "scheduledDeparture": 52620,
+              "headsign": "Angle Lake",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Northgate",
+            "route": {
+              "agency": {
+                "name": "Sound Transit",
+                "gtfsId": "40:40"
+              },
+              "shortName": "1 Line",
+              "type": 0,
+              "mode": "TRAM",
+              "longName": "Northgate - Angle Lake",
+              "color": "28813F",
+              "textColor": "FFFFFF"
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 16560,
+              "scheduledDeparture": 16560,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjUyLjY3MjAwMDAwMDAwMDAwNDtVbVZ1ZEdGc1ZtVm9hV05zWlRwaWFYSmtMWE5sWVhSMGJHVXRkMkZ6YUdsdVozUnZianBqWlRNNE1EQTROeTFsTWpVMUxUUXpZamd0WWpNNVpDMDRNalkzWTJFM01tSmpNR1E",
+    "distance": 52,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpiaXJkLXNlYXR0bGUtd2FzaGluZ3RvbjpjZTM4MDA4Ny1lMjU1LTQzYjgtYjM5ZC04MjY3Y2E3MmJjMGQ",
+      "lat": 47.675873,
+      "lon": -122.316137,
+      "network": "bird-seattle-washington",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjU3LjM4NTAwMDAwMDAwMDAwNTtVbVZ1ZEdGc1ZtVm9hV05zWlRwc2FXMWxYM05sWVhSMGJHVTZPRFE0TTJWbVpHVXRaRFJrTUMwME5XWmtMV0kwWXpJdFpXTmhPVGc0TURoak1EUTQ",
+    "distance": 57,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6ODQ4M2VmZGUtZDRkMC00NWZkLWI0YzItZWNhOTg4MDhjMDQ4",
+      "lat": 47.6759,
+      "lon": -122.3162,
+      "network": "lime_seattle",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjU3LjM4NTAwMDAwMDAwMDAwNTtVbVZ1ZEdGc1ZtVm9hV05zWlRwc2FXMWxYM05sWVhSMGJHVTZabVV3WmpNNFpqQXRNamMzWVMwME1qUTRMVGxrTnpZdE1UYzRZMlV4WkdRME1EWTA",
+    "distance": 57,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6ZmUwZjM4ZjAtMjc3YS00MjQ4LTlkNzYtMTc4Y2UxZGQ0MDY0",
+      "lat": 47.6759,
+      "lon": -122.3162,
+      "network": "lime_seattle",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjkyLjgwNzk5OTk5OTk5OTk5O1UzUnZjRHByWTIwNk1UWTBNekE",
+    "distance": 92,
+    "place": {
+      "__typename": "Stop",
+      "id": "U3RvcDprY206MTY0MzA",
+      "lat": 47.6757507,
+      "lon": -122.316673,
+      "name": "Roosevelt Station - Bay 1",
+      "code": "16430",
+      "gtfsId": "kcm:16430",
+      "stoptimesForPatterns": [
+        {
+          "pattern": {
+            "headsign": "Sand Point East Green Lake",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "62",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 60,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50708,
+              "scheduledDeparture": 50648,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51548,
+              "scheduledDeparture": 51548,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 116,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 52601,
+              "scheduledDeparture": 52485,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53385,
+              "scheduledDeparture": 53385,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 54285,
+              "scheduledDeparture": 54285,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 55185,
+              "scheduledDeparture": 55185,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 63825,
+              "scheduledDeparture": 63825,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 64485,
+              "scheduledDeparture": 64485,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 65085,
+              "scheduledDeparture": 65085,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 65685,
+              "scheduledDeparture": 65685,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 66345,
+              "scheduledDeparture": 66345,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "University District Sand Point",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "79",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52248,
+              "scheduledDeparture": 52248,
+              "headsign": "University District Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 55848,
+              "scheduledDeparture": 55848,
+              "headsign": "University District Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 56748,
+              "scheduledDeparture": 56748,
+              "headsign": "University District Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 59448,
+              "scheduledDeparture": 59448,
+              "headsign": "University District Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 63048,
+              "scheduledDeparture": 63048,
+              "headsign": "University District Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Madrona Special",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "988",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 56940,
+              "scheduledDeparture": 56940,
+              "headsign": "Madrona Special",
+              "trip": {
+                "route": {
+                  "shortName": "988"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Sand Point East Green Lake",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "62",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 116,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 52601,
+              "scheduledDeparture": 52485,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Sand Point East Green Lake",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "62",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 66345,
+              "scheduledDeparture": 66345,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 65685,
+              "scheduledDeparture": 65685,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 65085,
+              "scheduledDeparture": 65085,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 64485,
+              "scheduledDeparture": 64485,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 63825,
+              "scheduledDeparture": 63825,
+              "headsign": "Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "University District Roosevelt Station",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "45",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": -38,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50122,
+              "scheduledDeparture": 50160,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 69,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 51129,
+              "scheduledDeparture": 51060,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51960,
+              "scheduledDeparture": 51960,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": -423,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 52437,
+              "scheduledDeparture": 52860,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53880,
+              "scheduledDeparture": 53880,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 20340,
+              "scheduledDeparture": 20340,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 22140,
+              "scheduledDeparture": 22140,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 23940,
+              "scheduledDeparture": 23940,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 25740,
+              "scheduledDeparture": 25740,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 26640,
+              "scheduledDeparture": 26640,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "University District Roosevelt Station",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "45",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 26640,
+              "scheduledDeparture": 26640,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 25740,
+              "scheduledDeparture": 25740,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 23940,
+              "scheduledDeparture": 23940,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 22140,
+              "scheduledDeparture": 22140,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 20340,
+              "scheduledDeparture": 20340,
+              "headsign": "University District Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjExNS44ODA5OTk5OTk5OTk5OTtVbVZ1ZEdGc1ZtVm9hV05zWlRwc2FXMWxYM05sWVhSMGJHVTZZVGc1TURaaVlUY3RNbVUyTkMwMFpEazRMV0kwWkdZdE5tSmpOREJsWlRWa1l6YzM",
+    "distance": 115,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6YTg5MDZiYTctMmU2NC00ZDk4LWI0ZGYtNmJjNDBlZTVkYzc3",
+      "lat": 47.675,
+      "lon": -122.3157,
+      "network": "lime_seattle",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjExOC40NjtVbVZ1ZEdGc1ZtVm9hV05zWlRwc2FXMWxYM05sWVhSMGJHVTZOVFUwTnpNNU1XRXRNelptTlMwMFlqTmtMV0kzTldJdFptSTJZV0V4WTJKak1qZGg",
+    "distance": 118,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NTU0NzM5MWEtMzZmNS00YjNkLWI3NWItZmI2YWExY2JjMjdh",
+      "lat": 47.6757,
+      "lon": -122.3174,
+      "network": "lime_seattle",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjEyMS4wMjAwMDAwMDAwMDAwMTtVbVZ1ZEdGc1ZtVm9hV05zWlRwc2FXMWxYM05sWVhSMGJHVTZObU15TkRSaFpqRXRaakpqT0MwME4ySmhMV0l6T1RNdE5EaGtNR1ZoWTJabE1ERmo",
+    "distance": 121,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NmMyNDRhZjEtZjJjOC00N2JhLWIzOTMtNDhkMGVhY2ZlMDFj",
+      "lat": 47.6764,
+      "lon": -122.3162,
+      "network": "lime_seattle",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjE0My4zNDk7VW1WdWRHRnNWbVZvYVdOc1pUcHNhVzFsWDNObFlYUjBiR1U2TkRKak1qQTBOV1V0WkRFeVlTMDBNVGcxTFRsa05qRXRNMlprTmpNd016UXlOalV6",
+    "distance": 143,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NDJjMjA0NWUtZDEyYS00MTg1LTlkNjEtM2ZkNjMwMzQyNjUz",
+      "lat": 47.6754,
+      "lon": -122.3173,
+      "network": "lime_seattle",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjE1MS44MTtVbVZ1ZEdGc1ZtVm9hV05zWlRwc2FXMWxYM05sWVhSMGJHVTZOVFprTlRKa056a3RPR013WkMwME56SmlMVGhsTXpndFpqZ3dNR0pqWlRCaE4ySXk",
+    "distance": 151,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NTZkNTJkNzktOGMwZC00NzJiLThlMzgtZjgwMGJjZTBhN2Iy",
+      "lat": 47.6754,
+      "lon": -122.3174,
+      "network": "lime_seattle",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjE1My4wOTQwMDAwMDAwMDAwMjtVM1J2Y0RwclkyMDZNVFkwTkRB",
+    "distance": 153,
+    "place": {
+      "__typename": "Stop",
+      "id": "U3RvcDprY206MTY0NDA",
+      "lat": 47.675457,
+      "lon": -122.317467,
+      "name": "Roosevelt Station Bay 5 - Bay 5",
+      "code": "16440",
+      "gtfsId": "kcm:16440",
+      "stoptimesForPatterns": [
+        {
+          "pattern": {
+            "headsign": "University District Maple Leaf",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "73",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51360,
+              "scheduledDeparture": 51360,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 54060,
+              "scheduledDeparture": 54060,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 55860,
+              "scheduledDeparture": 55860,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 57660,
+              "scheduledDeparture": 57660,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 59460,
+              "scheduledDeparture": 59460,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 24000,
+              "scheduledDeparture": 24000,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 27720,
+              "scheduledDeparture": 27720,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 31320,
+              "scheduledDeparture": 31320,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 35160,
+              "scheduledDeparture": 35160,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 38940,
+              "scheduledDeparture": 38940,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Downtown Seattle Special",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "984",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 66122,
+              "scheduledDeparture": 66122,
+              "headsign": "Downtown Seattle Special",
+              "trip": {
+                "route": {
+                  "shortName": "984"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "University District Maple Leaf",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "73",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 38940,
+              "scheduledDeparture": 38940,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 35160,
+              "scheduledDeparture": 35160,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 31320,
+              "scheduledDeparture": 31320,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 27720,
+              "scheduledDeparture": 27720,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 24000,
+              "scheduledDeparture": 24000,
+              "headsign": "University District Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "University District Roosevelt",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "67",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 269,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50471,
+              "scheduledDeparture": 50202,
+              "headsign": "University District Roosevelt",
+              "trip": {
+                "route": {
+                  "shortName": "67"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51102,
+              "scheduledDeparture": 51102,
+              "headsign": "University District Roosevelt",
+              "trip": {
+                "route": {
+                  "shortName": "67"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52002,
+              "scheduledDeparture": 52002,
+              "headsign": "University District Roosevelt",
+              "trip": {
+                "route": {
+                  "shortName": "67"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52922,
+              "scheduledDeparture": 52922,
+              "headsign": "University District Roosevelt",
+              "trip": {
+                "route": {
+                  "shortName": "67"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53822,
+              "scheduledDeparture": 53822,
+              "headsign": "University District Roosevelt",
+              "trip": {
+                "route": {
+                  "shortName": "67"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjE1Ni4zMTkwMDAwMDAwMDAwMjtVbVZ1ZEdGc1ZtVm9hV05zWlRwc2FXMWxYM05sWVhSMGJHVTZPV00zWkRaa1lqRXRZV0ppTWkwME9XRmxMVGczTnpBdE9HTmtOalExTXpjd01HVXc",
+    "distance": 156,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6OWM3ZDZkYjEtYWJiMi00OWFlLTg3NzAtOGNkNjQ1MzcwMGUw",
+      "lat": 47.675,
+      "lon": -122.3164,
+      "network": "lime_seattle",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjE1Ni41NjA5OTk5OTk5OTk5ODtVM1J2Y0RvME1EbzVPVEF3TURR",
+    "distance": 156,
+    "place": {
+      "__typename": "Stop",
+      "id": "U3RvcDo0MDo5OTAwMDQ",
+      "lat": 47.677081,
+      "lon": -122.315928,
+      "name": "Roosevelt",
+      "code": null,
+      "gtfsId": "40:990004",
+      "stoptimesForPatterns": [
+        {
+          "pattern": {
+            "headsign": "Northgate",
+            "route": {
+              "agency": {
+                "name": "Sound Transit",
+                "gtfsId": "40:40"
+              },
+              "shortName": "1 Line",
+              "type": 0,
+              "mode": "TRAM",
+              "longName": "Northgate - Angle Lake",
+              "color": "28813F",
+              "textColor": "FFFFFF"
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": -149,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50191,
+              "scheduledDeparture": 50340,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": -7,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50933,
+              "scheduledDeparture": 50940,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 162,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 51702,
+              "scheduledDeparture": 51540,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 3,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 52143,
+              "scheduledDeparture": 52140,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52740,
+              "scheduledDeparture": 52740,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53760,
+              "scheduledDeparture": 53760,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 16920,
+              "scheduledDeparture": 16920,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 18540,
+              "scheduledDeparture": 18540,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 19380,
+              "scheduledDeparture": 19380,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 20280,
+              "scheduledDeparture": 20280,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 21180,
+              "scheduledDeparture": 21180,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 22080,
+              "scheduledDeparture": 22080,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 22980,
+              "scheduledDeparture": 22980,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 23880,
+              "scheduledDeparture": 23880,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 24780,
+              "scheduledDeparture": 24780,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 25680,
+              "scheduledDeparture": 25680,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 26580,
+              "scheduledDeparture": 26580,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Northgate",
+            "route": {
+              "agency": {
+                "name": "Sound Transit",
+                "gtfsId": "40:40"
+              },
+              "shortName": "1 Line",
+              "type": 0,
+              "mode": "TRAM",
+              "longName": "Northgate - Angle Lake",
+              "color": "28813F",
+              "textColor": "FFFFFF"
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 25680,
+              "scheduledDeparture": 25680,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 23880,
+              "scheduledDeparture": 23880,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 22080,
+              "scheduledDeparture": 22080,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 20280,
+              "scheduledDeparture": 20280,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 18540,
+              "scheduledDeparture": 18540,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Northgate",
+            "route": {
+              "agency": {
+                "name": "Sound Transit",
+                "gtfsId": "40:40"
+              },
+              "shortName": "1 Line",
+              "type": 0,
+              "mode": "TRAM",
+              "longName": "Northgate - Angle Lake",
+              "color": "28813F",
+              "textColor": "FFFFFF"
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 26580,
+              "scheduledDeparture": 26580,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 24780,
+              "scheduledDeparture": 24780,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 22980,
+              "scheduledDeparture": 22980,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 21180,
+              "scheduledDeparture": 21180,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 19380,
+              "scheduledDeparture": 19380,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Northgate",
+            "route": {
+              "agency": {
+                "name": "Sound Transit",
+                "gtfsId": "40:40"
+              },
+              "shortName": "1 Line",
+              "type": 0,
+              "mode": "TRAM",
+              "longName": "Northgate - Angle Lake",
+              "color": "28813F",
+              "textColor": "FFFFFF"
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52740,
+              "scheduledDeparture": 52740,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 3,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 52143,
+              "scheduledDeparture": 52140,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 162,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 51702,
+              "scheduledDeparture": 51540,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": -7,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50933,
+              "scheduledDeparture": 50940,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": -149,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50191,
+              "scheduledDeparture": 50340,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Northgate",
+            "route": {
+              "agency": {
+                "name": "Sound Transit",
+                "gtfsId": "40:40"
+              },
+              "shortName": "1 Line",
+              "type": 0,
+              "mode": "TRAM",
+              "longName": "Northgate - Angle Lake",
+              "color": "28813F",
+              "textColor": "FFFFFF"
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 16920,
+              "scheduledDeparture": 16920,
+              "headsign": "Northgate",
+              "trip": {
+                "route": {
+                  "shortName": "1 Line"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjE3OC4xOTM1O1UzUnZjRHByWTIwNk1qTTFOakU",
+    "distance": 178,
+    "place": {
+      "__typename": "Stop",
+      "id": "U3RvcDprY206MjM1NjE",
+      "lat": 47.6771355,
+      "lon": -122.315582,
+      "name": "Roosevelt Station - Bay 3",
+      "code": "23561",
+      "gtfsId": "kcm:23561",
+      "stoptimesForPatterns": [
+        {
+          "pattern": {
+            "headsign": "Bothell",
+            "route": {
+              "agency": {
+                "name": "Sound Transit",
+                "gtfsId": "kcm:40"
+              },
+              "shortName": "522",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": "2B376E",
+              "textColor": "FFFFFF"
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 50160,
+              "scheduledDeparture": 50160,
+              "headsign": "Bothell",
+              "trip": {
+                "route": {
+                  "shortName": "522"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51960,
+              "scheduledDeparture": 51960,
+              "headsign": "Bothell",
+              "trip": {
+                "route": {
+                  "shortName": "522"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 54180,
+              "scheduledDeparture": 54180,
+              "headsign": "Bothell",
+              "trip": {
+                "route": {
+                  "shortName": "522"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 55920,
+              "scheduledDeparture": 55920,
+              "headsign": "Bothell",
+              "trip": {
+                "route": {
+                  "shortName": "522"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 57840,
+              "scheduledDeparture": 57840,
+              "headsign": "Bothell",
+              "trip": {
+                "route": {
+                  "shortName": "522"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Kenmore P&R",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "322",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 62160,
+              "scheduledDeparture": 62160,
+              "headsign": "Kenmore P&R",
+              "trip": {
+                "route": {
+                  "shortName": "322"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 64080,
+              "scheduledDeparture": 64080,
+              "headsign": "Kenmore P&R",
+              "trip": {
+                "route": {
+                  "shortName": "322"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 66000,
+              "scheduledDeparture": 66000,
+              "headsign": "Kenmore P&R",
+              "trip": {
+                "route": {
+                  "shortName": "322"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Woodinville",
+            "route": {
+              "agency": {
+                "name": "Sound Transit",
+                "gtfsId": "kcm:40"
+              },
+              "shortName": "522",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": "2B376E",
+              "textColor": "FFFFFF"
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51060,
+              "scheduledDeparture": 51060,
+              "headsign": "Woodinville",
+              "trip": {
+                "route": {
+                  "shortName": "522"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53040,
+              "scheduledDeparture": 53040,
+              "headsign": "Woodinville",
+              "trip": {
+                "route": {
+                  "shortName": "522"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 54960,
+              "scheduledDeparture": 54960,
+              "headsign": "Woodinville",
+              "trip": {
+                "route": {
+                  "shortName": "522"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 56880,
+              "scheduledDeparture": 56880,
+              "headsign": "Woodinville",
+              "trip": {
+                "route": {
+                  "shortName": "522"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 58800,
+              "scheduledDeparture": 58800,
+              "headsign": "Woodinville",
+              "trip": {
+                "route": {
+                  "shortName": "522"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Kenmore P&R Roosevelt Station",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "322",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 59280,
+              "scheduledDeparture": 59280,
+              "headsign": "Kenmore P&R",
+              "trip": {
+                "route": {
+                  "shortName": "322"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 61200,
+              "scheduledDeparture": 61200,
+              "headsign": "Kenmore P&R",
+              "trip": {
+                "route": {
+                  "shortName": "322"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 65040,
+              "scheduledDeparture": 65040,
+              "headsign": "Kenmore P&R",
+              "trip": {
+                "route": {
+                  "shortName": "322"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 68880,
+              "scheduledDeparture": 68880,
+              "headsign": "Kenmore P&R",
+              "trip": {
+                "route": {
+                  "shortName": "322"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 72360,
+              "scheduledDeparture": 72360,
+              "headsign": "Kenmore P&R",
+              "trip": {
+                "route": {
+                  "shortName": "322"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Northgate Station Roosevelt Station",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "67",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 7,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50343,
+              "scheduledDeparture": 50336,
+              "headsign": "Northgate Station Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "67"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51236,
+              "scheduledDeparture": 51236,
+              "headsign": "Northgate Station Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "67"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52136,
+              "scheduledDeparture": 52136,
+              "headsign": "Northgate Station Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "67"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53036,
+              "scheduledDeparture": 53036,
+              "headsign": "Northgate Station Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "67"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53996,
+              "scheduledDeparture": 53996,
+              "headsign": "Northgate Station Roosevelt Station",
+              "trip": {
+                "route": {
+                  "shortName": "67"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Jackson Park Maple Leaf",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "73",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51300,
+              "scheduledDeparture": 51300,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 54900,
+              "scheduledDeparture": 54900,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 56760,
+              "scheduledDeparture": 56760,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 58560,
+              "scheduledDeparture": 58560,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 60360,
+              "scheduledDeparture": 60360,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 24060,
+              "scheduledDeparture": 24060,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 27660,
+              "scheduledDeparture": 27660,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 31380,
+              "scheduledDeparture": 31380,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 35040,
+              "scheduledDeparture": 35040,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 38700,
+              "scheduledDeparture": 38700,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Jackson Park Maple Leaf",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "73",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 38700,
+              "scheduledDeparture": 38700,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 35040,
+              "scheduledDeparture": 35040,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 31380,
+              "scheduledDeparture": 31380,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 27660,
+              "scheduledDeparture": 27660,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 24060,
+              "scheduledDeparture": 24060,
+              "headsign": "Jackson Park Maple Leaf",
+              "trip": {
+                "route": {
+                  "shortName": "73"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjE4MS43ODg1O1VtVnVkR0ZzVm1Wb2FXTnNaVHBzYVcxbFgzTmxZWFIwYkdVNllUTTBZemhtTlRVdE1qWTROeTAwTWpobExXSm1aVE10WVdaaU9EZ3dOamRtTkRNMg",
+    "distance": 181,
+    "place": {
+      "__typename": "RentalVehicle",
+      "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6YTM0YzhmNTUtMjY4Ny00MjhlLWJmZTMtYWZiODgwNjdmNDM2",
+      "lat": 47.6772,
+      "lon": -122.3159,
+      "network": "lime_seattle",
+      "name": "Default vehicle type",
+      "allowPickupNow": true,
+      "operative": true,
+      "rentalUris": null,
+      "vehicleType": {
+        "formFactor": "BICYCLE"
+      }
+    }
+  },
+  {
+    "id": "cGxhY2VBdERpc3RhbmNlOjE5NC4zMzIwMDAwMDAwMDAwMjtVM1J2Y0RwclkyMDZNelk1TXpF",
+    "distance": 194,
+    "place": {
+      "__typename": "Stop",
+      "id": "U3RvcDprY206MzY5MzE",
+      "lat": 47.6758652,
+      "lon": -122.313545,
+      "name": "NE 65th St & 14th Ave NE",
+      "code": "36931",
+      "gtfsId": "kcm:36931",
+      "stoptimesForPatterns": [
+        {
+          "pattern": {
+            "headsign": "Downtown Seattle Fremont",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "62",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 96,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50136,
+              "scheduledDeparture": 50040,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 50940,
+              "scheduledDeparture": 50940,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51840,
+              "scheduledDeparture": 51840,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52740,
+              "scheduledDeparture": 52740,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53580,
+              "scheduledDeparture": 53580,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 67380,
+              "scheduledDeparture": 67380,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 68220,
+              "scheduledDeparture": 68220,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 69120,
+              "scheduledDeparture": 69120,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 70020,
+              "scheduledDeparture": 70020,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 70860,
+              "scheduledDeparture": 70860,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Downtown Seattle Fremont",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "62",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53580,
+              "scheduledDeparture": 53580,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52740,
+              "scheduledDeparture": 52740,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51840,
+              "scheduledDeparture": 51840,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 50940,
+              "scheduledDeparture": 50940,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 96,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 50136,
+              "scheduledDeparture": 50040,
+              "headsign": "Downtown Seattle Fremont",
+              "trip": {
+                "route": {
+                  "shortName": "62"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Roosevelt Station Sand Point",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "79",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 110,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 51066,
+              "scheduledDeparture": 50956,
+              "headsign": "Roosevelt Station Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 54556,
+              "scheduledDeparture": 54556,
+              "headsign": "Roosevelt Station Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 58156,
+              "scheduledDeparture": 58156,
+              "headsign": "Roosevelt Station Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 60256,
+              "scheduledDeparture": 60256,
+              "headsign": "Roosevelt Station Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 61756,
+              "scheduledDeparture": 61756,
+              "headsign": "Roosevelt Station Sand Point",
+              "trip": {
+                "route": {
+                  "shortName": "79"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Loyal Heights Greenwood",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "45",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": -85,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 49974,
+              "scheduledDeparture": 50059,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 79,
+              "realtimeState": "UPDATED",
+              "realtimeDeparture": 51038,
+              "scheduledDeparture": 50959,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 51859,
+              "scheduledDeparture": 51859,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 52759,
+              "scheduledDeparture": 52759,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705046400,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 53719,
+              "scheduledDeparture": 53719,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 22467,
+              "scheduledDeparture": 22467,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 24267,
+              "scheduledDeparture": 24267,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 26067,
+              "scheduledDeparture": 26067,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 27867,
+              "scheduledDeparture": 27867,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 28767,
+              "scheduledDeparture": 28767,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "headsign": "Loyal Heights Greenwood",
+            "route": {
+              "agency": {
+                "name": "Metro Transit",
+                "gtfsId": "kcm:1"
+              },
+              "shortName": "45",
+              "type": 3,
+              "mode": "BUS",
+              "longName": null,
+              "color": null,
+              "textColor": null
+            }
+          },
+          "stoptimes": [
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 28767,
+              "scheduledDeparture": 28767,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 27867,
+              "scheduledDeparture": 27867,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 26067,
+              "scheduledDeparture": 26067,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 24267,
+              "scheduledDeparture": 24267,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            },
+            {
+              "serviceDay": 1705132800,
+              "departureDelay": 0,
+              "realtimeState": "SCHEDULED",
+              "realtimeDeparture": 22467,
+              "scheduledDeparture": 22467,
+              "headsign": "Loyal Heights Greenwood",
+              "trip": {
+                "route": {
+                  "shortName": "45"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
