@@ -1,0 +1,234 @@
+{
+  "data": {
+    "plan": {
+      "itineraries": [
+        {
+          "accessibilityScore": null,
+          "duration": 1229,
+          "endTime": 1691619389000,
+          "numberOfTransfers": 4,
+          "legs": [
+            {
+              "accessibilityScore": null,
+              "agency": null,
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "distance": 4724.02,
+              "dropoffType": "SCHEDULED",
+              "duration": 1229.0,
+              "endTime": 1691619389000,
+              "fareProducts": [],
+              "from": {
+                "lat": 33.7894621,
+                "lon": -84.3766341,
+                "name": "South Prado Northeast, Atlanta, GA, USA",
+                "rentalVehicle": null,
+                "stop": null,
+                "vertexType": "NORMAL"
+              },
+              "interlineWithPreviousLeg": false,
+              "intermediateStops": null,
+              "legGeometry": {
+                "length": 261,
+                "points": "aofmE~x~aO@G@M@GTGBANCv@|@b@h@r@z@b@f@HF?@XZbA~@TNRFNDJBB@R@@?J??UBKLOJOHOHSJOLGJGHKBEDGDGGKl@Jp@NRBPBN?@?ZETEVG`@ITGJCB?NANAD?H@HBJDRNLNRVBFDBBBBLDPHVVa@TY`@e@Vc@Jg@Fi@AeCAuF@e@B[Ho@Li@Nq@t@yAVe@R[b@k@NIHELENABAD?F?b@?f@DF?D@?S?cE?aA?aI@{B?Q?_@AG?CCA?GAECCEC?C@M?K@C@K@G@CBEdD_C|@_AtAcAp@g@zBuA~@i@~@c@tAi@fBa@bFgAhK_B|Da@p@Kx@MrB ]`BYBAXIpBq@JAHBJ?p@SDCHODEHC`Ac@lAu@jCiBQ_@cAgAMM{AaBMeCoA?c@@O?@Y?eA@oA?uA?K?W?  ]?KHA?OXAJ?L?^AXAFAFAHELGHGHCFCHCB?FAF?F@LADADAHGDGBCBEDK?I?O?IAOASAU?G@G?C@E@GVi@VSNELCLCh@ENETKDCDCHI@CBI?C@CBUDq@RaC?I@I?I?I?KAQAOCQAK?G?GAE?CAEACCCCMPEJHf@[FJd@DR@n@@hAAlBAh@?VJl@Tj@b@d@VRTLh@Hb@?zAGZGEACGAI?I@CBG"
+              },
+              "mode": "BICYCLE",
+              "pickupBookingInfo": null,
+              "pickupType": "SCHEDULED",
+              "realTime": false,
+              "realtimeState": null,
+              "rentedBike": false,
+              "rideHailingEstimate": null,
+              "route": null,
+              "startTime": 1691618160000,
+              "steps": [
+                {
+                  "absoluteDirection": "EAST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 14.51,
+                  "elevationProfile": [],
+                  "lat": 33.7894509,
+                  "lon": -84.3766376,
+                  "relativeDirection": "DEPART",
+                  "stayOn": false,
+                  "streetName": "Walker Terrace Northeast"
+                },
+                {
+                  "absoluteDirection": "SOUTH",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 24.77,
+                  "elevationProfile": [],
+                  "lat": 33.7894264,
+                  "lon": -84.3764835,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": false,
+                  "streetName": "South Prado Northeast"
+                },
+                {
+                  "absoluteDirection": "SOUTHWEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 275.92,
+                  "elevationProfile": [],
+                  "lat": 33.7892125,
+                  "lon": -84.3764105,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": false,
+                  "streetName": "Piedmont Avenue Northeast"
+                },
+                {
+                  "absoluteDirection": "EAST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 1045.38,
+                  "elevationProfile": [],
+                  "lat": 33.7872529,
+                  "lon": -84.378135,
+                  "relativeDirection": "LEFT",
+                  "stayOn": false,
+                  "streetName": "path"
+                },
+                {
+                  "absoluteDirection": "EAST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 373.8,
+                  "elevationProfile": [],
+                  "lat": 33.7818372,
+                  "lon": -84.3727976,
+                  "relativeDirection": "LEFT",
+                  "stayOn": true,
+                  "streetName": "bike path"
+                },
+                {
+                  "absoluteDirection": "NORTHEAST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 6.34,
+                  "elevationProfile": [],
+                  "lat": 33.781866,
+                  "lon": -84.3687653,
+                  "relativeDirection": "LEFT",
+                  "stayOn": true,
+                  "streetName": "bike path"
+                },
+                {
+                  "absoluteDirection": "EAST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 8.49,
+                  "elevationProfile": [],
+                  "lat": 33.7819129,
+                  "lon": -84.3687297,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": false,
+                  "streetName": "Interim BeltLine Eastside Trail"
+                },
+                {
+                  "absoluteDirection": "EAST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 1523.22,
+                  "elevationProfile": [],
+                  "lat": 33.7819055,
+                  "lon": -84.3686383,
+                  "relativeDirection": "CONTINUE",
+                  "stayOn": false,
+                  "streetName": "Atlanta BeltLine Eastside Trail"
+                },
+                {
+                  "absoluteDirection": "NORTHEAST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 18.01,
+                  "elevationProfile": [],
+                  "lat": 33.7694207,
+                  "lon": -84.3627561,
+                  "relativeDirection": "LEFT",
+                  "stayOn": false,
+                  "streetName": "bike path"
+                },
+                {
+                  "absoluteDirection": "NORTHEAST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 191.5,
+                  "elevationProfile": [],
+                  "lat": 33.769513,
+                  "lon": -84.362596,
+                  "relativeDirection": "CONTINUE",
+                  "stayOn": false,
+                  "streetName": "Angier Springs Road Northeast"
+                },
+                {
+                  "absoluteDirection": "NORTH",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 73.62,
+                  "elevationProfile": [],
+                  "lat": 33.770456,
+                  "lon": -84.361008,
+                  "relativeDirection": "LEFT",
+                  "stayOn": false,
+                  "streetName": "Bonaventure Avenue Northeast"
+                },
+                {
+                  "absoluteDirection": "EAST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 157.25,
+                  "elevationProfile": [],
+                  "lat": 33.771118,
+                  "lon": -84.361011,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": false,
+                  "streetName": "North Avenue Northeast"
+                },
+                {
+                  "absoluteDirection": "SOUTH",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 548.66,
+                  "elevationProfile": [],
+                  "lat": 33.7710927,
+                  "lon": -84.3593107,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": false,
+                  "streetName": "Stone Mountain Trail"
+                },
+                {
+                  "absoluteDirection": "SOUTH",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 462.58,
+                  "elevationProfile": [],
+                  "lat": 33.7686363,
+                  "lon": -84.3555896,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": true,
+                  "streetName": "bike path"
+                }
+              ],
+              "to": {
+                "lat": 33.7670607,
+                "lon": -84.3574939,
+                "name": "1 Copenhill Avenue NE, Atlanta, GA, USA",
+                "rentalVehicle": null,
+                "stop": null,
+                "vertexType": "NORMAL"
+              },
+              "transitLeg": false,
+              "trip": null
+            }
+          ],
+          "startTime": 1691618160000,
+          "waitingTime": 0,
+          "walkTime": 1229
+        }
+      ],
+      "routingErrors": []
+    }
+  }
+}

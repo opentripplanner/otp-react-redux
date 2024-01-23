@@ -130,3 +130,38 @@ export const Stop = styled.li<RenderProps>`
     background: transparent;
   }
 `
+
+export const PatternRowItem = styled.li<{ roundedTop?: boolean }>`
+  list-style-type: none;
+
+  & .header {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    overflow: hidden;
+  }
+
+  &:first-of-type .header.stop-view {
+    border-top-left-radius: ${({ roundedTop }) => (roundedTop ? '10px' : '0')};
+    border-top-right-radius: ${({ roundedTop }) => (roundedTop ? '10px' : '0')};
+  }
+
+  &:last-of-type .header.stop-view {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+`
+
+export const NextTripPreview = styled.ol`
+  display: grid;
+  grid-template-rows: fit-content(8ch);
+  list-style-type: none;
+  padding: 15px;
+  text-align: right;
+  white-space: nowrap;
+
+  & li:first-of-type {
+    font-size: 24px;
+    font-weight: 700;
+  }
+`
