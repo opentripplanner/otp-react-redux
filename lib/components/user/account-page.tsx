@@ -1,24 +1,38 @@
-import { withAuthenticationRequired } from '@auth0/auth0-react'
-import { replace } from 'connected-react-router'
-import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { replace } from 'connected-react-router'
+import { User, withAuthenticationRequired } from '@auth0/auth0-react'
+import React, { Component, ReactElement } from 'react'
 
 import * as uiActions from '../../actions/ui'
+import { AppReduxState } from '../../util/state-types'
 import {
   CREATE_ACCOUNT_PATH,
   CREATE_ACCOUNT_TERMS_PATH,
   CREATE_ACCOUNT_VERIFY_PATH
 } from '../../util/constants'
+import { PopupTargetConfig } from '../../util/config-types'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
-import withLoggedInUserSupport from './with-logged-in-user-support'
 import AppFrame from '../app/app-frame'
+import PopupWrapper from '../app/popup'
+
 import SubNav from './sub-nav'
+import withLoggedInUserSupport from './with-logged-in-user-support'
+
+interface Props {
+  children: ReactElement
+  isTermsOrVerifyPage: boolean
+  loggedInUser: User
+  popupContent: PopupTargetConfig
+  routeTo: (url: string, arg2: any, arg3: any) => void
+  setPopupContent: (url: string | null) => void
+  subnav: boolean
+}
 
 /**
  * This component contains common navigation elements and wrappers and should
  * wrap any user account page (e.g., SavedTripList or account settings).
  */
-class AccountPage extends Component {
+class AccountPage extends Component<Props> {
   /**
    * If a user signed up in Auth0 and did not complete the New Account wizard
    * (and they are not on or have not just left the Terms and Conditions page),
@@ -26,6 +40,7 @@ class AccountPage extends Component {
    * monitoredTrips should not be null otherwise.
    * NOTE: This check applies to any route that makes use of this component.
    */
+
   _checkAccountCreated = () => {
     const { isTermsOrVerifyPage, loggedInUser, routeTo } = this.props
 
@@ -34,14 +49,22 @@ class AccountPage extends Component {
     }
   }
 
-  componentDidMount () {
+  _hidePopup = () => {
+    const { setPopupContent } = this?.props
+    if (setPopupContent) setPopupContent(null)
+  }
+
+  componentDidMount() {
     this._checkAccountCreated()
   }
 
-  render () {
-    const {children, subnav = true} = this.props
+  render() {
+    const { children, popupContent, subnav = true } = this.props
     return (
-      <AppFrame SubNav={subnav && SubNav}>
+      // @ts-expect-error TODO: add typing for SubNav
+      <AppFrame SubNav={SubNav}>
+        <PopupWrapper content={popupContent} hideModal={this._hidePopup} />
+
         {children}
       </AppFrame>
     )
@@ -50,17 +73,20 @@ class AccountPage extends Component {
 
 // connect to the redux store
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state: AppReduxState, ownProps: any) => {
   const currentPath = state.router.location.pathname
   return {
     isTermsOrVerifyPage:
-      currentPath === CREATE_ACCOUNT_TERMS_PATH || currentPath === CREATE_ACCOUNT_VERIFY_PATH,
-    loggedInUser: state.user.loggedInUser
+      currentPath === CREATE_ACCOUNT_TERMS_PATH ||
+      currentPath === CREATE_ACCOUNT_VERIFY_PATH,
+    loggedInUser: state.user.loggedInUser,
+    popupContent: state.otp.ui.popup
   }
 }
 
 const mapDispatchToProps = {
-  routeTo: uiActions.routeTo
+  routeTo: uiActions.routeTo,
+  setPopupContent: uiActions.setPopupContent
 }
 
 export default withLoggedInUserSupport(
