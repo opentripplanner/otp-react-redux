@@ -13,7 +13,6 @@ import styled, { keyframes } from 'styled-components'
 
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
-import { checkForModeIconOverrides } from '../../../util/config'
 import { ComponentContext } from '../../../util/contexts'
 import { FlexIndicator } from '../default/flex-indicator'
 import { getActiveSearch } from '../../../util/state'
@@ -217,18 +216,10 @@ class MetroItinerary extends NarrativeItinerary {
   }
 
   _renderMainRouteBlock = (legs: Leg[]) => {
-    const { enableDot, LegIcon, modeIconOverrides, showLegDurations } =
-      this.props
+    const { enableDot, LegIcon, showLegDurations } = this.props
     const mainLeg = legs
       // Sort to ensure non-walk leg is first
       .sort((a: Leg, b: Leg) => b.distance - a.distance)[0]
-
-    const iconOverride = checkForModeIconOverrides(
-      mainLeg.routeId,
-      mainLeg.mode,
-      modeIconOverrides
-    )
-
     return (
       <RouteBlock
         aria-hidden
@@ -237,7 +228,6 @@ class MetroItinerary extends NarrativeItinerary {
           mainLeg?.duration && <FormattedDuration duration={mainLeg.duration} />
         }
         hideLongName
-        iconOverride={iconOverride}
         leg={mainLeg}
         LegIcon={LegIcon}
         showDivider={enableDot}
@@ -258,7 +248,6 @@ class MetroItinerary extends NarrativeItinerary {
       itinerary,
       LegIcon,
       mini,
-      modeIconOverrides,
       pending,
       setActiveItinerary,
       setActiveLeg,
@@ -472,7 +461,6 @@ const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
     configCosts: state.otp.config.itinerary?.costs,
     defaultFareType: state.otp.config.itinerary?.defaultFareType,
     enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
-    modeIconOverrides: state.otp.config.modeIconOverrides,
     // @ts-expect-error TODO: type activeSearch
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     showLegDurations: state.otp.config.itinerary?.showLegDurations
