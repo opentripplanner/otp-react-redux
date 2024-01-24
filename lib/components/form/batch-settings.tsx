@@ -119,14 +119,13 @@ function BatchSettings({
       let modeLabel
       // If we're using route mode overrides, make sure we're using the custom mode name
       if (msd.type === 'SUBMODE') {
-        modeLabel = msd.modeOverride || msd.addTransportMode.mode
+        modeLabel = msd.overrideMode || msd.addTransportMode.mode
+        return {
+          ...msd,
+          label: getFormattedMode(modeLabel, intl)
+        }
       }
-      return msd.type === 'SUBMODE'
-        ? {
-            ...msd,
-            label: getFormattedMode(modeLabel, intl)
-          }
-        : msd
+      return msd
     },
     [intl]
   )
