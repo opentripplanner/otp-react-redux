@@ -62,7 +62,7 @@ class AccountPage extends Component<Props> {
     const { children, popupContent, subnav = true } = this.props
     return (
       // @ts-expect-error TODO: add typing for SubNav
-      <AppFrame SubNav={SubNav}>
+      <AppFrame SubNav={subnav && SubNav}>
         <PopupWrapper content={popupContent} hideModal={this._hidePopup} />
 
         {children}
@@ -73,7 +73,7 @@ class AccountPage extends Component<Props> {
 
 // connect to the redux store
 
-const mapStateToProps = (state: AppReduxState, ownProps: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const currentPath = state.router.location.pathname
   return {
     isTermsOrVerifyPage:
