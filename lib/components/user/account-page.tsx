@@ -49,21 +49,26 @@ class AccountPage extends Component<Props> {
     }
   }
 
-  _hidePopup = () => {
-    const { setPopupContent } = this?.props
-    if (setPopupContent) setPopupContent(null)
-  }
-
   componentDidMount() {
     this._checkAccountCreated()
   }
 
   render() {
-    const { children, popupContent, subnav = true } = this.props
+    const {
+      children,
+      popupContent,
+      setPopupContent,
+      subnav = true
+    } = this.props
     return (
       // @ts-expect-error TODO: add typing for SubNav
       <AppFrame SubNav={subnav && SubNav}>
-        <PopupWrapper content={popupContent} hideModal={this._hidePopup} />
+        <PopupWrapper
+          content={popupContent}
+          hideModal={() => {
+            if (setPopupContent) setPopupContent(null)
+          }}
+        />
 
         {children}
       </AppFrame>
