@@ -142,8 +142,6 @@ const RouteBlock = ({
     }
   }
 
-  console.log(leg)
-
   return (
     <>
       {showDivider && previousLegMode && <Divider>•</Divider>}
