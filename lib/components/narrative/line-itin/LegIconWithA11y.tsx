@@ -19,7 +19,7 @@ const LegIconWithA11y = (props: any) => {
   const ariaLabel = isTransit(mode) ? getFormattedMode(mode, intl) : null
   return (
     <>
-      <LegIcon {...props} routeId={leg.routeId} />
+      <LegIcon {...props} leg={leg} />
       {ariaLabel && <InvisibleA11yLabel>{ariaLabel}</InvisibleA11yLabel>}
     </>
   )

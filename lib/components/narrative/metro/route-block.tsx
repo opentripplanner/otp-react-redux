@@ -9,14 +9,7 @@ import { ComponentContext } from '../../../util/contexts'
 import DefaultRouteRenderer from './default-route-renderer'
 
 type Props = {
-  LegIcon: ({
-    height,
-    leg
-  }: {
-    height: number
-    leg: Leg
-    routeId: string | null
-  }) => React.ReactElement
+  LegIcon: ({ height, leg }: { height: number; leg: Leg }) => React.ReactElement
   footer?: React.ReactNode
   hideLongName?: boolean
   leg: Leg & {
@@ -157,7 +150,7 @@ const RouteBlock = ({
       <Wrapper className="route-block-wrapper">
         {leg.mode !== previousLegMode && (
           <LegIconWrapper>
-            <LegIcon height={28} leg={leg} routeId={leg.routeId || null} />
+            <LegIcon height={28} leg={leg} />
           </LegIconWrapper>
         )}
         {(leg.routeShortName || leg.route || leg.routeLongName) && (

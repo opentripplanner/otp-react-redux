@@ -190,7 +190,7 @@ export class ItinerarySummary extends Component<Props> {
               return (
                 <RoutePreview key={k}>
                   <LegIconContainer>
-                    <LegIcon leg={leg} routeId={leg.routeId} />
+                    <LegIcon leg={leg} />
                   </LegIconContainer>
                   {coreUtils.itinerary.isTransit(leg.mode) ? (
                     <ShortName leg={leg}>{getRouteNameForBadge(leg)}</ShortName>
