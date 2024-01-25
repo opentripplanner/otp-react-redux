@@ -4,7 +4,7 @@ import {
 } from '@opentripplanner/base-map'
 import { connect } from 'react-redux'
 import { MapMarker } from '@styled-icons/fa-solid/MapMarker'
-import { Stop } from '@opentripplanner/types'
+import { Stop, StopEventHandler } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import StopPopup from '@opentripplanner/map-popup'
@@ -17,7 +17,7 @@ import { AppConfig } from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
 import { getModeFromStop, getStopName } from '../../util/viewer'
-import { SetLocationHandler, SetViewedStopHandler } from '../util/types'
+import { SetLocationHandler } from '../util/types'
 
 interface OwnProps {
   stop: Stop
@@ -31,7 +31,7 @@ interface Props extends OwnProps {
   modeColors: ModeColors
   overrideConfig?: Record<string, string>
   setLocation: SetLocationHandler
-  setViewedStop: SetViewedStopHandler
+  setViewedStop: StopEventHandler
 }
 
 interface MarkerProps {
@@ -123,6 +123,7 @@ class EnhancedStopMarker extends Component<Props> {
       setViewedStop,
       stop
     } = this.props
+    if (stop.lat === undefined || stop.lon === undefined) return null
     const { id, lat, lon } = stop
     const displayedStopId = coreUtils.itinerary.getDisplayedStopId(stop)
     if (!displayedStopId) return null
@@ -143,7 +144,8 @@ class EnhancedStopMarker extends Component<Props> {
           activeStopId !== stop.id && (
             <BaseMapStyled.MapOverlayPopup id={activeContentId}>
               <StopPopup
-                entity={stop}
+                // FIXME: We need to fix the stop type
+                entity={{ ...stop, lat: stop.lat, lon: stop.lon }}
                 setLocation={setLocation}
                 setViewedStop={setViewedStop}
               />
