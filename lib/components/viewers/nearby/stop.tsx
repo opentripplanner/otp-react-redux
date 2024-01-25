@@ -74,7 +74,7 @@ type Props = {
 
 const Operator = ({ operator }: { operator?: TransitOperator }) => {
   const intl = useIntl()
-  return operator ? (
+  return operator && operator.logo ? (
     <OperatorLogo
       alt={intl.formatMessage(
         {
