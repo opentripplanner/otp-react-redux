@@ -1,0 +1,358 @@
+{
+  "errors": [
+    {
+      "message": "Exception while fetching data (/plan/itineraries[0]/legs[0]/steps[6]/alerts[0]/alertDescriptionText) : Cannot invoke \"org.opentripplanner.framework.i18n.I18NString.toString(java.util.Locale)\" because the return value of \"org.opentripplanner.routing.alertpatch.TransitAlert.descriptionText()\" is null",
+      "locations": [
+        {
+          "line": 151,
+          "column": 13
+        }
+      ],
+      "path": [
+        "plan",
+        "itineraries",
+        0,
+        "legs",
+        0,
+        "steps",
+        6,
+        "alerts",
+        0,
+        "alertDescriptionText"
+      ],
+      "extensions": {
+        "classification": "DataFetchingException"
+      }
+    }
+  ],
+  "data": {
+    "plan": {
+      "itineraries": [
+        {
+          "accessibilityScore": null,
+          "duration": 5246,
+          "endTime": 1691100986000,
+          "numberOfTransfers": 4,
+          "legs": [
+            {
+              "accessibilityScore": null,
+              "agency": null,
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "distance": 9789.56,
+              "dropoffType": "SCHEDULED",
+              "duration": 5246.0,
+              "endTime": 1691100986000,
+              "fareProducts": [],
+              "from": {
+                "lat": 33.77505,
+                "lon": -84.300178,
+                "name": "Opus Music Store, Decatur, GA",
+                "rentalVehicle": null,
+                "stop": null,
+                "vertexType": "NORMAL"
+              },
+              "interlineWithPreviousLeg": false,
+              "intermediateStops": null,
+              "legGeometry": {
+                "length": 407,
+                "points": "aucmEdzoaO~AA@HBRJTJNPNRFb@FdA??J??XLBxE@`@?DDDJHDRED?|@?fBJ`AJn@Tp@pAbCZp@Nx@@AH?@@BDFJHRJRHL?HHXFRDPBNPh@HFPL@F@BPBNAJNFZMvB?~D?lBCpA@JAzBS`BOpD_@@HLA@DDVBPBNDVHZBHVdARx@H`@VdA|@nDJ^n@fCJf@H`@Fb@Fb@BBFpADhABf@?HBx@F~A?T@V??FrBFlBJnBFhANpAJ|@Nx@N~@VdALd@Nb@N`@Rd@R`@Td@v@`BzBrEtAlCrAjC^t@b@z@p@rAd@`ADJpAfCZp@r@~ATn@Vz@T`ARdAHl@Fh@Dt@Dx@@RDtA@jA@dA?r@Af@Ch@Cd@El@E`@Kn@Mx@IK^K^M^M`@_AlC[~@a@lAIXGRKSr@UbAUtAm@xC]pBIh@AFKx@Ix@En@Ev@Cr@Ad@A`@?@?r@?l@?F@l@?F@n@?RB^Bv@Dd@?BF`ADP`CHbANnBJrADj@Bf@PdCNbBJfABRDZFl@BJNhABLXvBVbBDBN@TDb@@HJlAFv@Ht@Fp@R~BLnALbAVtB@DJn@Nr@FXXnATx@BHJXFNPd@DJ@FLVZt@NZZl@Pf@z@n@bA|@zAb@r@jAjB^j@Xb@VIJe@n@AD?JFVTZ`@h@t@hA?THJBBz@|@RXNXBBLPd@Jd@BLDVBTXpBFb@j@xD@FBJDRp@xET~ANdANfA@JFDNfALz@ALHp@XlBF@LLx@F`@DZ~BBRBN`CPnA@FBPT~AVpB@DBRBf@Bz@@dE?zA??fA?`@?N?@`AAn@?J?V@lC?H?L?RArBAnA?jA?^A`B?X?L?P?d@ArA?fAAE|D?N?N?JAl@A|CAp@?NAv@?d@?D?l@?vB?FCR?d@?nA?V?P?@?ChBAvB?VIB?j@AlA?B?NAH@J?XArDAxCAR?L?hAAvC?X?nB?BA??PAJ?D?H?JA@@F@J?PCdHABCB@D@X?H?LBtEAHAJ?n@@xA?H?FB?@@BBBF?@?V?@?|@?bB?NHFTPJHJHDD`@Xp@d@CLERHFLNFJLVMXw@`BGLFDTP"
+              },
+              "mode": "WALK",
+              "pickupBookingInfo": null,
+              "pickupType": "SCHEDULED",
+              "realTime": false,
+              "realtimeState": null,
+              "rentedBike": false,
+              "rideHailingEstimate": null,
+              "route": null,
+              "startTime": 1691095740000,
+              "steps": [
+                {
+                  "absoluteDirection": "SOUTH",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 53.03,
+                  "elevationProfile": [],
+                  "lat": 33.7750523,
+                  "lon": -84.3000227,
+                  "relativeDirection": "DEPART",
+                  "stayOn": false,
+                  "streetName": "Ponce de Leon Place"
+                },
+                {
+                  "absoluteDirection": "WEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 119.46,
+                  "elevationProfile": [],
+                  "lat": 33.7745754,
+                  "lon": -84.3000126,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": false,
+                  "streetName": "Swanton Way"
+                },
+                {
+                  "absoluteDirection": "WEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 21.02,
+                  "elevationProfile": [],
+                  "lat": 33.7737069,
+                  "lon": -84.3005124,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": false,
+                  "streetName": "path"
+                },
+                {
+                  "absoluteDirection": "WEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 118.84,
+                  "elevationProfile": [],
+                  "lat": 33.7735797,
+                  "lon": -84.3006481,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": false,
+                  "streetName": "West Trinity Place"
+                },
+                {
+                  "absoluteDirection": "SOUTHWEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 12.82,
+                  "elevationProfile": [],
+                  "lat": 33.7735453,
+                  "lon": -84.3019331,
+                  "relativeDirection": "LEFT",
+                  "stayOn": false,
+                  "streetName": "Atlanta Avenue"
+                },
+                {
+                  "absoluteDirection": "WEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 302.72,
+                  "elevationProfile": [],
+                  "lat": 33.7734535,
+                  "lon": -84.302017,
+                  "relativeDirection": "SLIGHTLY_RIGHT",
+                  "stayOn": false,
+                  "streetName": "path"
+                },
+                {
+                  "absoluteDirection": "SOUTH",
+                  "alerts": [
+                    null
+                  ],
+                  "area": false,
+                  "distance": 717.65,
+                  "elevationProfile": [],
+                  "lat": 33.7725992,
+                  "lon": -84.3049937,
+                  "relativeDirection": "LEFT",
+                  "stayOn": true,
+                  "streetName": "path"
+                },
+                {
+                  "absoluteDirection": "SOUTH",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 8.36,
+                  "elevationProfile": [],
+                  "lat": 33.7670373,
+                  "lon": -84.3061657,
+                  "relativeDirection": "CONTINUE",
+                  "stayOn": false,
+                  "streetName": "Adair Street"
+                },
+                {
+                  "absoluteDirection": "WEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 956.98,
+                  "elevationProfile": [],
+                  "lat": 33.766963,
+                  "lon": -84.3061521,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": false,
+                  "streetName": "West Howard Avenue"
+                },
+                {
+                  "absoluteDirection": "WEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 3303.3,
+                  "elevationProfile": [],
+                  "lat": 33.7649115,
+                  "lon": -84.3161165,
+                  "relativeDirection": "CONTINUE",
+                  "stayOn": false,
+                  "streetName": "Dekalb Avenue Northeast"
+                },
+                {
+                  "absoluteDirection": "SOUTHWEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 409.51,
+                  "elevationProfile": [],
+                  "lat": 33.7600691,
+                  "lon": -84.3493108,
+                  "relativeDirection": "CONTINUE",
+                  "stayOn": false,
+                  "streetName": "Dekalb Avenue"
+                },
+                {
+                  "absoluteDirection": "NORTHWEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 159.76,
+                  "elevationProfile": [],
+                  "lat": 33.7577824,
+                  "lon": -84.3527742,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": false,
+                  "streetName": "service road"
+                },
+                {
+                  "absoluteDirection": "SOUTHWEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 2422.63,
+                  "elevationProfile": [],
+                  "lat": 33.757447,
+                  "lon": -84.354115,
+                  "relativeDirection": "LEFT",
+                  "stayOn": false,
+                  "streetName": "Edgewood Avenue Northeast"
+                },
+                {
+                  "absoluteDirection": "NORTH",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 5.62,
+                  "elevationProfile": [],
+                  "lat": 33.7544469,
+                  "lon": -84.3795524,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": false,
+                  "streetName": "path"
+                },
+                {
+                  "absoluteDirection": "WEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 427.98,
+                  "elevationProfile": [],
+                  "lat": 33.7544938,
+                  "lon": -84.3795752,
+                  "relativeDirection": "LEFT",
+                  "stayOn": true,
+                  "streetName": "sidewalk"
+                },
+                {
+                  "absoluteDirection": "NORTH",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 395.79,
+                  "elevationProfile": [],
+                  "lat": 33.7545466,
+                  "lon": -84.3842028,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": true,
+                  "streetName": "sidewalk"
+                },
+                {
+                  "absoluteDirection": "SOUTHWEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 10.95,
+                  "elevationProfile": [],
+                  "lat": 33.7545708,
+                  "lon": -84.3884405,
+                  "relativeDirection": "SLIGHTLY_LEFT",
+                  "stayOn": true,
+                  "streetName": "bike path"
+                },
+                {
+                  "absoluteDirection": "WEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 94.69,
+                  "elevationProfile": [],
+                  "lat": 33.7545008,
+                  "lon": -84.3885188,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": false,
+                  "streetName": "Edgewood Avenue Northeast"
+                },
+                {
+                  "absoluteDirection": "SOUTHWEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 97.55,
+                  "elevationProfile": [],
+                  "lat": 33.7545036,
+                  "lon": -84.389543,
+                  "relativeDirection": "LEFT",
+                  "stayOn": false,
+                  "streetName": "path"
+                },
+                {
+                  "absoluteDirection": "WEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 16.25,
+                  "elevationProfile": [],
+                  "lat": 33.7537736,
+                  "lon": -84.3901275,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": true,
+                  "streetName": "path"
+                },
+                {
+                  "absoluteDirection": "SOUTHWEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 37.62,
+                  "elevationProfile": [],
+                  "lat": 33.7538203,
+                  "lon": -84.3902941,
+                  "relativeDirection": "LEFT",
+                  "stayOn": true,
+                  "streetName": "sidewalk"
+                },
+                {
+                  "absoluteDirection": "NORTHWEST",
+                  "alerts": [],
+                  "area": false,
+                  "distance": 97.07,
+                  "elevationProfile": [],
+                  "lat": 33.7535935,
+                  "lon": -84.3905922,
+                  "relativeDirection": "RIGHT",
+                  "stayOn": true,
+                  "streetName": "path"
+                }
+              ],
+              "to": {
+                "lat": 33.753837,
+                "lon": -84.391397,
+                "name": "Five Points Station (908981)",
+                "rentalVehicle": null,
+                "stop": null,
+                "vertexType": "NORMAL"
+              },
+              "transitLeg": false,
+              "trip": null
+            }
+          ],
+          "startTime": 1691095740000,
+          "waitingTime": 0,
+          "walkTime": 5246
+        }
+      ],
+      "routingErrors": []
+    }
+  }
+}
