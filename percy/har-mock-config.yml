@@ -1,118 +1,125 @@
-branding: HAR test
-title: test environment
+branding: HAR Test
+title: Percy Mock Config
 homeTimezone: America/New_York
 
-# Default OTP API
 api:
   host: http://localhost:9999
-  path: /test/otp/routers/default
+  path: /otp2/routers/default
+  v2: true
 
-# Enabled multimodal routing types (e.g. interary, profile)
 routingTypes:
   - key: ITINERARY
     text: Exact Time
   - key: BATCH
     text: Multiple Mode Combinations
-# Map config
+
+elevationProfile: true
 map:
-  # Enabled map views
   views:
     - type: DEFAULT
       text: Map View
-  # Default map center
-  initLat: 29.7604
-  initLon: -95.3698
-  initZoom: 12
 
-  overlays:
-    - type: bike-rental
-      name: HOPR
-      modes:
-        - BICYCLE_RENT
-      companies:
-        - HOPR
-      mapSymbols:
-        - maxZoom: 12
-          minZoom: 0
-          type: circle
-          pixels: 3
-          fillColor: "#FF2E28"
-          dockStrokeColor: "#000000"
-        - maxZoom: 15
-          minZoom: 13
-          type: circle
-          pixels: 5
-          fillColor: "#FF2E28"
-          dockStrokeColor: "#000000"
-        - maxZoom: 20
-          minZoom: 16
-          fillColor: "#FF2E28"
-          dockStrokeColor: "#000000"
-          type: hubAndFloatingBike
+  initLat: 33.7490
+  initLon: -84.3880
+  initZoom: 10
 
-    - type: park-and-ride
-      name: Park & Ride Locations
-      maxTransitDistance: 1000
-      modes:
-        - CAR_PARK
-
-    - type: stops
-      name: Transit Stops
-      visible: true
-
-# A list of private transportation operators. These are either companies that
-# provide rental vehicles or transportation network companies. Companies that
-# have multiple modes of transport should have all modes listed as a string with
-# commas. For example: BICYCLE_RENT,MICROMOBILITY_RENT.
-companies:
-  - id: HOPR
-    label: HOPR
-    modes: BICYCLE_RENT
-
-# Mode selector configuration
+geocoder:
+  baseUrl: http://localhost:9977
+  focusPoint:
+    lat: 33.7490
+    lon: -84.3880
+  boundary:
+    rect:
+      minLon: -86.0856
+      maxLon: -81.9499
+      minLat: 32.066
+      maxLat: 35.7251
+  maxNearbyStops: 6
+  options:
+    headers:
+      x-api-key: insert-your-geocoder-key
+  type: PELIAS
 modes:
+  modeButtons:
+    - iconName: transit
+      key: transit
+      label: Transit
+      modes:
+        - mode: TRANSIT
+    - iconName: walk
+      key: walk
+      label: Walk
+      modes:
+        - mode: WALK
+    - iconName: bicycle
+      key: bike
+      label: Bike
+      modes:
+        - mode: BICYCLE
+    - iconName: car
+      key: car
+      label: Car
+      modes:
+        - mode: CAR
+  initialState:
+    enabledModeButtons:
+      - walk
+      - transit
+  modeSettingDefinitions:
+    - applicableMode: TRANSIT
+      default: false
+      key: wheelchair
+      label: Use Accessible Routing
+      type: CHECKBOX
+
+
   transitModes:
     - mode: BUS
-      label: Bus
-    - mode: TRAM
-      label: Tram
+      showWheelchairSetting: true
     - mode: SUBWAY
-      label: Subway
-  combinations:
-    # Standard
-    - mode: "WALK,TRANSIT"
-      params:
-        numItineraries: 2
+      showWheelchairSetting: true
+    - mode: TRAM
+      label: Atl. Streetcar
+      showWheelchairSetting: true
 
-  # access to transit modes. These options are all combined with the above
-  # transit modes in the request to OTP
   accessModes:
     - mode: BICYCLE
-      label: Transit + Personal bike
     - mode: BICYCLE_RENT
-      label: Transit + BCycle
-      company: HOPR
-    - mode: CAR_PARK
-      label: Park & Ride
-  # which exclusive modes to show. This involves using a single mode and no
-  # transit for the duration of the trip. Further configurations of
-  # `bicycleModes`, `micromobilityModes` and/or `carModes` are needed as
-  # desired, but no extra configuration is needed for a WALK exclusive mode.
-  exclusiveModes:
-    - WALK
-    - BICYCLE
+      label: Transit + Bikeshare
+    - mode: SCOOTER
+      label: Transit + eScooter rental
 
-  bicycleModes:
-    - mode: BICYCLE
-      label: Own Bike
-      iconWidth: 18
-    - mode: BICYCLE_RENT
-      label: HOPR
-      iconWidth: 36
+itinerary:
+  showHeaderText: false
+  hideSkeletons: true
+  customBatchUiBackground: true
+  groupByMode: true
+  groupTransitModes: true
+  showFirstResultByDefault: false
+  mergeItineraries: true
 
 dateTime:
   timeFormat: h:mm a
   dateFormat: MM/dd/yyyy
+stopViewer:
+  nearbyRadius: 250
+routeViewer:
+  hideRouteShapesWithinFlexZones: true
 
-itinerary:
-  mergeItineraries: true
+accessibilityScore:
+  gradationMap:
+    0.0:
+      color: "#ffb5b9"
+      icon: thumbs-down
+    0.5:
+      color: "#b5d1ff"
+      icon: question-circle
+    0.8:
+      color: "#bfffb5"
+      icon: thumbs-up
+    1.0:
+      color: "#a2e099"
+      icon: thumbs-up
+
+defaultQueryParams:
+  maxWalkDistance: 1207 # 3/4 miles in meters

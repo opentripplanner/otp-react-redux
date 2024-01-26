@@ -1,0 +1,1863 @@
+{
+  "data": {
+    "stop": {
+      "gtfsId": "MARTA:114900",
+      "code": "114900",
+      "lat": 33.735899,
+      "lon": -84.413542,
+      "locationType": "STOP",
+      "name": "West End Station",
+      "wheelchairBoarding": "POSSIBLE",
+      "zone": null,
+      "geometries": {
+        "geoJson": {
+          "type": "Point",
+          "coordinates": [
+            -84.4135,
+            33.7359
+          ]
+        }
+      },
+      "routes": [
+        {
+          "gtfsId": "MARTA:19379",
+          "agency": {
+            "gtfsId": "MARTA:MARTA",
+            "name": "Metropolitan Atlanta Rapid Transit Authority"
+          },
+          "longName": "Northside Drive",
+          "mode": "BUS",
+          "color": "008000",
+          "textColor": "000000",
+          "shortName": "94"
+        },
+        {
+          "gtfsId": "MARTA:19445",
+          "agency": {
+            "gtfsId": "MARTA:MARTA",
+            "name": "Metropolitan Atlanta Rapid Transit Authority"
+          },
+          "longName": "Grant Park",
+          "mode": "BUS",
+          "color": "00FF00",
+          "textColor": "000000",
+          "shortName": "832"
+        },
+        {
+          "gtfsId": "MARTA:19364",
+          "agency": {
+            "gtfsId": "MARTA:MARTA",
+            "name": "Metropolitan Atlanta Rapid Transit Authority"
+          },
+          "longName": "Cascade Road",
+          "mode": "BUS",
+          "color": "FF8080",
+          "textColor": "000000",
+          "shortName": "71"
+        },
+        {
+          "gtfsId": "MARTA:19353",
+          "agency": {
+            "gtfsId": "MARTA:MARTA",
+            "name": "Metropolitan Atlanta Rapid Transit Authority"
+          },
+          "longName": "Peachtree Street / Downtown",
+          "mode": "BUS",
+          "color": "FFFF00",
+          "textColor": "000000",
+          "shortName": "40"
+        },
+        {
+          "gtfsId": "MARTA:19363",
+          "agency": {
+            "gtfsId": "MARTA:MARTA",
+            "name": "Metropolitan Atlanta Rapid Transit Authority"
+          },
+          "longName": "Benjamin E Mays Drive",
+          "mode": "BUS",
+          "color": "FF0000",
+          "textColor": "000000",
+          "shortName": "68"
+        },
+        {
+          "gtfsId": "MARTA:19330",
+          "agency": {
+            "gtfsId": "MARTA:MARTA",
+            "name": "Metropolitan Atlanta Rapid Transit Authority"
+          },
+          "longName": "Marietta Blvd/Joseph E Lowery Blvd",
+          "mode": "BUS",
+          "color": "FF00FF",
+          "textColor": "000000",
+          "shortName": "1"
+        },
+        {
+          "gtfsId": "MARTA:19360",
+          "agency": {
+            "gtfsId": "MARTA:MARTA",
+            "name": "Metropolitan Atlanta Rapid Transit Authority"
+          },
+          "longName": "Hollywood Road / Lucile Avenue",
+          "mode": "BUS",
+          "color": "A6CAF0",
+          "textColor": "000000",
+          "shortName": "58"
+        },
+        {
+          "gtfsId": "MARTA:19370",
+          "agency": {
+            "gtfsId": "MARTA:MARTA",
+            "name": "Metropolitan Atlanta Rapid Transit Authority"
+          },
+          "longName": "Venetian Hills / Delowe Drive",
+          "mode": "BUS",
+          "color": "00FF00",
+          "textColor": "000000",
+          "shortName": "81"
+        },
+        {
+          "gtfsId": "MARTA:19380",
+          "agency": {
+            "gtfsId": "MARTA:MARTA",
+            "name": "Metropolitan Atlanta Rapid Transit Authority"
+          },
+          "longName": "Metropolitan Parkway",
+          "mode": "BUS",
+          "color": "FF0000",
+          "textColor": "000000",
+          "shortName": "95"
+        },
+        {
+          "gtfsId": "MARTA:19407",
+          "agency": {
+            "gtfsId": "MARTA:MARTA",
+            "name": "Metropolitan Atlanta Rap Transit Authority"
+          },
+          "longName": "Pittsburgh",
+          "mode": "BUS",
+          "color": "00FFFF",
+          "textColor": "000000",
+          "shortName": "155"
+        }
+      ],
+      "stopTimes": [
+        {
+          "pattern": {
+            "desc": "832 West End Station",
+            "headsign": "West End Station",
+            "gtfsId": "MARTA:19445:1:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 47220,
+              "realtimeDeparture": 47220,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 47220,
+              "scheduledDeparture": 47220,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDU5MTgw"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 43620,
+              "realtimeDeparture": 43620,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 43620,
+              "scheduledDeparture": 43620,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDU5MTgx"
+              }
+            },
+            {
+              "arrivalDelay": 159,
+              "departureDelay": 159,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 40179,
+              "realtimeDeparture": 40179,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 40020,
+              "scheduledDeparture": 40020,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDU5MTgy"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "95 Hapeville",
+            "headsign": "Hapeville",
+            "gtfsId": "MARTA:19380:1:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Hapeville",
+              "realtime": false,
+              "realtimeArrival": 42000,
+              "realtimeDeparture": 42000,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 42000,
+              "scheduledDeparture": 42000,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MjUwNTc1"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Hapeville",
+              "realtime": true,
+              "realtimeArrival": 40800,
+              "realtimeDeparture": 40800,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 40800,
+              "scheduledDeparture": 40800,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MjUwNTc2"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Hapeville",
+              "realtime": true,
+              "realtimeArrival": 39600,
+              "realtimeDeparture": 39600,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 39600,
+              "scheduledDeparture": 39600,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MjUwNTc3"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "40 West End Station",
+            "headsign": "West End Station",
+            "gtfsId": "MARTA:19353:1:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 44820,
+              "realtimeDeparture": 44820,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 44820,
+              "scheduledDeparture": 44820,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDE3NDg5"
+              }
+            },
+            {
+              "arrivalDelay": -10,
+              "departureDelay": -10,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 42110,
+              "realtimeDeparture": 42110,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 42120,
+              "scheduledDeparture": 42120,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDE3NDg4"
+              }
+            },
+            {
+              "arrivalDelay": 457,
+              "departureDelay": 457,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 39877,
+              "realtimeDeparture": 39877,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 39420,
+              "scheduledDeparture": 39420,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDE3NDg3"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "68 Ashby Station",
+            "headsign": "Ashby Station",
+            "gtfsId": "MARTA:19363:0:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Ashby Station",
+              "realtime": false,
+              "realtimeArrival": 45900,
+              "realtimeDeparture": 45900,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 45900,
+              "scheduledDeparture": 45900,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIyNTc0"
+              }
+            },
+            {
+              "arrivalDelay": 100,
+              "departureDelay": 100,
+              "headsign": "Ashby Station",
+              "realtime": true,
+              "realtimeArrival": 43600,
+              "realtimeDeparture": 43600,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 43500,
+              "scheduledDeparture": 43500,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIyNTcz"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Ashby Station",
+              "realtime": false,
+              "realtimeArrival": 41100,
+              "realtimeDeparture": 41100,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 41100,
+              "scheduledDeparture": 41100,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIyNTcy"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "94 West End Station",
+            "headsign": "West End Station",
+            "gtfsId": "MARTA:19379:1:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 45060,
+              "realtimeDeparture": 45060,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 45060,
+              "scheduledDeparture": 45060,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDMyNjAx"
+              }
+            },
+            {
+              "arrivalDelay": 30,
+              "departureDelay": 30,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 42690,
+              "realtimeDeparture": 42690,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 42660,
+              "scheduledDeparture": 42660,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDMyNjAw"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 40260,
+              "realtimeDeparture": 40260,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 40260,
+              "scheduledDeparture": 40260,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDMyNTk5"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "155 Swallow Circle",
+            "headsign": "Swallow Circle",
+            "gtfsId": "MARTA:19407:1:02"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Swallow Circle",
+              "realtime": false,
+              "realtimeArrival": 50100,
+              "realtimeDeparture": 50100,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 50100,
+              "scheduledDeparture": 50100,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDQ1MTIy"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Swallow Circle",
+              "realtime": false,
+              "realtimeArrival": 44700,
+              "realtimeDeparture": 44700,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 44700,
+              "scheduledDeparture": 44700,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDQ1MTIw"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Swallow Circle",
+              "realtime": false,
+              "realtimeArrival": 39300,
+              "realtimeDeparture": 39300,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 39300,
+              "scheduledDeparture": 39300,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDQ1MTE4"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "71 to West End Station (MARTA:114900) from Boat Rock Rd SW at Reynolds Rd SW (MARTA:119002)",
+            "headsign": "West End Station",
+            "gtfsId": "MARTA:19364:0:02"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 45900,
+              "realtimeDeparture": 45900,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 45900,
+              "scheduledDeparture": 45900,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIzNDg5"
+              }
+            },
+            {
+              "arrivalDelay": 346,
+              "departureDelay": 346,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 43846,
+              "realtimeDeparture": 43846,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 43500,
+              "scheduledDeparture": 43500,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIzNDg4"
+              }
+            },
+            {
+              "arrivalDelay": -147,
+              "departureDelay": -147,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 40953,
+              "realtimeDeparture": 40953,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 41100,
+              "scheduledDeparture": 41100,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIzNDg3"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "71 to West End Station (MARTA:114900) from Kimberly Rd at Fairly Way (MARTA:999673)",
+            "headsign": "West End Station",
+            "gtfsId": "MARTA:19364:0:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 44700,
+              "realtimeDeparture": 44700,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 44700,
+              "scheduledDeparture": 44700,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIzNDcw"
+              }
+            },
+            {
+              "arrivalDelay": -102,
+              "departureDelay": -102,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 42198,
+              "realtimeDeparture": 42198,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 42300,
+              "scheduledDeparture": 42300,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIzNDY5"
+              }
+            },
+            {
+              "arrivalDelay": -136,
+              "departureDelay": -136,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 39764,
+              "realtimeDeparture": 39764,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 39900,
+              "scheduledDeparture": 39900,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIzNDY4"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "155 Polar Rock Road",
+            "headsign": "Polar Rock Road",
+            "gtfsId": "MARTA:19407:1:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Polar Rock Road",
+              "realtime": false,
+              "realtimeArrival": 52800,
+              "realtimeDeparture": 52800,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 52800,
+              "scheduledDeparture": 52800,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDQ1MTIz"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Polar Rock Road",
+              "realtime": false,
+              "realtimeArrival": 47400,
+              "realtimeDeparture": 47400,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 47400,
+              "scheduledDeparture": 47400,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDQ1MTIx"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Polar Rock Road",
+              "realtime": false,
+              "realtimeArrival": 42000,
+              "realtimeDeparture": 42000,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 42000,
+              "scheduledDeparture": 42000,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDQ1MTE5"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "1 West End Station",
+            "headsign": "West End Station",
+            "gtfsId": "MARTA:19330:0:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 45900,
+              "realtimeDeparture": 45900,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 45900,
+              "scheduledDeparture": 45900,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDA2MjQ2"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 43500,
+              "realtimeDeparture": 43500,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 43500,
+              "scheduledDeparture": 43500,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDA2MjQ1"
+              }
+            },
+            {
+              "arrivalDelay": -162,
+              "departureDelay": -162,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 40938,
+              "realtimeDeparture": 40938,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 41100,
+              "scheduledDeparture": 41100,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDA2MjQ0"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "58 West Lake Station via Lincoln Homes",
+            "headsign": "West Lake Station via Lincoln Homes",
+            "gtfsId": "MARTA:19360:1:02"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West Lake Station via Lincoln Homes",
+              "realtime": false,
+              "realtimeArrival": 60300,
+              "realtimeDeparture": 60300,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 60300,
+              "scheduledDeparture": 60300,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIxMDY4"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West Lake Station via Lincoln Homes",
+              "realtime": false,
+              "realtimeArrival": 57600,
+              "realtimeDeparture": 57600,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 57600,
+              "scheduledDeparture": 57600,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIxMDY3"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West Lake Station via Lincoln Homes",
+              "realtime": false,
+              "realtimeArrival": 54900,
+              "realtimeDeparture": 54900,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 54900,
+              "scheduledDeparture": 54900,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIxMDY2"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "81 West End Station",
+            "headsign": "West End Station",
+            "gtfsId": "MARTA:19370:0:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 46800,
+              "realtimeDeparture": 46800,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 46800,
+              "scheduledDeparture": 46800,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDI3MDc5"
+              }
+            },
+            {
+              "arrivalDelay": 62,
+              "departureDelay": 62,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 44162,
+              "realtimeDeparture": 44162,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 44100,
+              "scheduledDeparture": 44100,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDI3MDc4"
+              }
+            },
+            {
+              "arrivalDelay": 11,
+              "departureDelay": 11,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 41411,
+              "realtimeDeparture": 41411,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 41400,
+              "scheduledDeparture": 41400,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDI3MDc3"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "94 Arts Center Station",
+            "headsign": "Arts Center Station",
+            "gtfsId": "MARTA:19379:0:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Arts Center Station",
+              "realtime": false,
+              "realtimeArrival": 45600,
+              "realtimeDeparture": 45600,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 45600,
+              "scheduledDeparture": 45600,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDMyNTcz"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Arts Center Station",
+              "realtime": false,
+              "realtimeArrival": 43200,
+              "realtimeDeparture": 43200,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 43200,
+              "scheduledDeparture": 43200,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDMyNTcy"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Arts Center Station",
+              "realtime": false,
+              "realtimeArrival": 40800,
+              "realtimeDeparture": 40800,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 40800,
+              "scheduledDeparture": 40800,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDMyNTcx"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "95 West End Station",
+            "headsign": "West End Station",
+            "gtfsId": "MARTA:19380:0:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": -36,
+              "departureDelay": -36,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 42264,
+              "realtimeDeparture": 42264,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 42300,
+              "scheduledDeparture": 42300,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MjUwNTAw"
+              }
+            },
+            {
+              "arrivalDelay": -2,
+              "departureDelay": -2,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 41098,
+              "realtimeDeparture": 41098,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 41100,
+              "scheduledDeparture": 41100,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MjUwNTAx"
+              }
+            },
+            {
+              "arrivalDelay": 211,
+              "departureDelay": 211,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 40111,
+              "realtimeDeparture": 40111,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 39900,
+              "scheduledDeparture": 39900,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MjUwNTAy"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "58 Hollywood Road via West Lake Station",
+            "headsign": "Hollywood Road via West Lake Station",
+            "gtfsId": "MARTA:19360:1:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Hollywood Road via West Lake Station",
+              "realtime": false,
+              "realtimeArrival": 46800,
+              "realtimeDeparture": 46800,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 46800,
+              "scheduledDeparture": 46800,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIxMDYz"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Hollywood Road via West Lake Station",
+              "realtime": false,
+              "realtimeArrival": 44100,
+              "realtimeDeparture": 44100,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 44100,
+              "scheduledDeparture": 44100,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIxMDYy"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Hollywood Road via West Lake Station",
+              "realtime": true,
+              "realtimeArrival": 41400,
+              "realtimeDeparture": 41400,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 41400,
+              "scheduledDeparture": 41400,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIxMDYx"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "68 H.E. Holmes Station",
+            "headsign": "H.E. Holmes Station",
+            "gtfsId": "MARTA:19363:1:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "H.E. Holmes Station",
+              "realtime": false,
+              "realtimeArrival": 45600,
+              "realtimeDeparture": 45600,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 45600,
+              "scheduledDeparture": 45600,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIyNjA1"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "H.E. Holmes Station",
+              "realtime": false,
+              "realtimeArrival": 43200,
+              "realtimeDeparture": 43200,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 43200,
+              "scheduledDeparture": 43200,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIyNjA0"
+              }
+            },
+            {
+              "arrivalDelay": -201,
+              "departureDelay": 0,
+              "headsign": "H.E. Holmes Station",
+              "realtime": true,
+              "realtimeArrival": 40599,
+              "realtimeDeparture": 40800,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 40800,
+              "scheduledDeparture": 40800,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIyNjAz"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "40 Arts Center Station",
+            "headsign": "Arts Center Station",
+            "gtfsId": "MARTA:19353:0:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Arts Center Station",
+              "realtime": false,
+              "realtimeArrival": 45300,
+              "realtimeDeparture": 45300,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 45300,
+              "scheduledDeparture": 45300,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDE3NDY3"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Arts Center Station",
+              "realtime": false,
+              "realtimeArrival": 42600,
+              "realtimeDeparture": 42600,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 42600,
+              "scheduledDeparture": 42600,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDE3NDY2"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 37,
+              "headsign": "Arts Center Station",
+              "realtime": true,
+              "realtimeArrival": 39900,
+              "realtimeDeparture": 39937,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 39900,
+              "scheduledDeparture": 39900,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDE3NDY1"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "832 Woodland Avenue",
+            "headsign": "Woodland Avenue",
+            "gtfsId": "MARTA:19445:0:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Woodland Avenue",
+              "realtime": false,
+              "realtimeArrival": 48000,
+              "realtimeDeparture": 48000,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 48000,
+              "scheduledDeparture": 48000,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDU5MTYw"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Woodland Avenue",
+              "realtime": false,
+              "realtimeArrival": 44400,
+              "realtimeDeparture": 44400,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 44400,
+              "scheduledDeparture": 44400,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDU5MTYx"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Woodland Avenue",
+              "realtime": true,
+              "realtimeArrival": 40800,
+              "realtimeDeparture": 40800,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 40800,
+              "scheduledDeparture": 40800,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDU5MTYy"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "71 Cascade - Kimberly Road",
+            "headsign": "Cascade - Kimberly Road",
+            "gtfsId": "MARTA:19364:1:02"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Cascade - Kimberly Road",
+              "realtime": false,
+              "realtimeArrival": 44400,
+              "realtimeDeparture": 44400,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 44400,
+              "scheduledDeparture": 44400,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIzNTYx"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Cascade - Kimberly Road",
+              "realtime": false,
+              "realtimeArrival": 42000,
+              "realtimeDeparture": 42000,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 42000,
+              "scheduledDeparture": 42000,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIzNTYw"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Cascade - Kimberly Road",
+              "realtime": true,
+              "realtimeArrival": 39600,
+              "realtimeDeparture": 39600,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 39600,
+              "scheduledDeparture": 39600,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIzNTU5"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "155 to West End Station (MARTA:114900) from Swallow Cir at Finch Dr (MARTA:99971007)",
+            "headsign": "West End Station",
+            "gtfsId": "MARTA:19407:0:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 53400,
+              "realtimeDeparture": 53400,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 53400,
+              "scheduledDeparture": 53400,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDQ1MDk3"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 48000,
+              "realtimeDeparture": 48000,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 48000,
+              "scheduledDeparture": 48000,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDQ1MDk1"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 42600,
+              "realtimeDeparture": 42600,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 42600,
+              "scheduledDeparture": 42600,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDQ1MDkz"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "155 to West End Station (MARTA:114900) from Polar Rock Ter SW at Polar Rock Rd SW (MARTA:149044)",
+            "headsign": "West End Station",
+            "gtfsId": "MARTA:19407:0:02"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 50700,
+              "realtimeDeparture": 50700,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 50700,
+              "scheduledDeparture": 50700,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDQ1MDk2"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 45300,
+              "realtimeDeparture": 45300,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 45300,
+              "scheduledDeparture": 45300,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDQ1MDk0"
+              }
+            },
+            {
+              "arrivalDelay": 109,
+              "departureDelay": 109,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 40009,
+              "realtimeDeparture": 40009,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 39900,
+              "scheduledDeparture": 39900,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDQ1MDky"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "71 Cascade -  Boat Rock",
+            "headsign": "Cascade -  Boat Rock",
+            "gtfsId": "MARTA:19364:1:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Cascade -  Boat Rock",
+              "realtime": false,
+              "realtimeArrival": 45600,
+              "realtimeDeparture": 45600,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 45600,
+              "scheduledDeparture": 45600,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIzNTQy"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Cascade -  Boat Rock",
+              "realtime": false,
+              "realtimeArrival": 43200,
+              "realtimeDeparture": 43200,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 43200,
+              "scheduledDeparture": 43200,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIzNTQx"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Cascade -  Boat Rock",
+              "realtime": true,
+              "realtimeArrival": 40800,
+              "realtimeDeparture": 40800,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 40800,
+              "scheduledDeparture": 40800,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIzNTQw"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "58 West End Station",
+            "headsign": "West End Station",
+            "gtfsId": "MARTA:19360:0:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station",
+              "realtime": false,
+              "realtimeArrival": 45900,
+              "realtimeDeparture": 45900,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 45900,
+              "scheduledDeparture": 45900,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIxMDM3"
+              }
+            },
+            {
+              "arrivalDelay": -74,
+              "departureDelay": -74,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 43126,
+              "realtimeDeparture": 43126,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 43200,
+              "scheduledDeparture": 43200,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIxMDM2"
+              }
+            },
+            {
+              "arrivalDelay": -140,
+              "departureDelay": -140,
+              "headsign": "West End Station",
+              "realtime": true,
+              "realtimeArrival": 40360,
+              "realtimeDeparture": 40360,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 40500,
+              "scheduledDeparture": 40500,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIxMDM1"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "58 West End Station via Lincoln Homes",
+            "headsign": "West End Station via Lincoln Homes",
+            "gtfsId": "MARTA:19360:0:02"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station via Lincoln Homes",
+              "realtime": false,
+              "realtimeArrival": 24300,
+              "realtimeDeparture": 24300,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 24300,
+              "scheduledDeparture": 24300,
+              "serviceDay": 1691553600,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIxMDI5"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station via Lincoln Homes",
+              "realtime": false,
+              "realtimeArrival": 21600,
+              "realtimeDeparture": 21600,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 21600,
+              "scheduledDeparture": 21600,
+              "serviceDay": 1691553600,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIxMDI4"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "West End Station via Lincoln Homes",
+              "realtime": false,
+              "realtimeArrival": 18900,
+              "realtimeDeparture": 18900,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 18900,
+              "scheduledDeparture": 18900,
+              "serviceDay": 1691553600,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDIxMDI3"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "1 Moores Mill Center",
+            "headsign": "Moores Mill Center",
+            "gtfsId": "MARTA:19330:1:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Moores Mill Center",
+              "realtime": false,
+              "realtimeArrival": 44400,
+              "realtimeDeparture": 44400,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 44400,
+              "scheduledDeparture": 44400,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDA2Mjcz"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Moores Mill Center",
+              "realtime": false,
+              "realtimeArrival": 42000,
+              "realtimeDeparture": 42000,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 42000,
+              "scheduledDeparture": 42000,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDA2Mjcy"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "Moores Mill Center",
+              "realtime": true,
+              "realtimeArrival": 39600,
+              "realtimeDeparture": 39600,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 39600,
+              "scheduledDeparture": 39600,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDA2Mjcx"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": {
+            "desc": "81 East Point Station",
+            "headsign": "East Point Station",
+            "gtfsId": "MARTA:19370:1:01"
+          },
+          "times": [
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "East Point Station",
+              "realtime": false,
+              "realtimeArrival": 45900,
+              "realtimeDeparture": 45900,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 45900,
+              "scheduledDeparture": 45900,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDI3MTA3"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "East Point Station",
+              "realtime": false,
+              "realtimeArrival": 43200,
+              "realtimeDeparture": 43200,
+              "realtimeState": "SCHEDULED",
+              "scheduledArrival": 43200,
+              "scheduledDeparture": 43200,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDI3MTA2"
+              }
+            },
+            {
+              "arrivalDelay": 0,
+              "departureDelay": 0,
+              "headsign": "East Point Station",
+              "realtime": true,
+              "realtimeArrival": 40500,
+              "realtimeDeparture": 40500,
+              "realtimeState": "UPDATED",
+              "scheduledArrival": 40500,
+              "scheduledDeparture": 40500,
+              "serviceDay": 1691467200,
+              "stop": {
+                "gtfsId": "MARTA:114900"
+              },
+              "timepoint": true,
+              "trip": {
+                "gtfsId": "VHJpcDpNQVJUQTo4MDI3MTA1"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

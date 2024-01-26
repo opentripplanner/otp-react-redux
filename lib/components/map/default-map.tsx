@@ -2,8 +2,8 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { connect } from 'react-redux'
+import { GeolocateControl, NavigationControl } from 'react-map-gl'
 import { injectIntl } from 'react-intl'
-import { NavigationControl } from 'react-map-gl'
 import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
@@ -17,6 +17,7 @@ import {
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
+import { MainPanelContent } from '../../actions/ui-constants'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
@@ -25,12 +26,12 @@ import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
 import GeoJsonLayer from './connected-geojson-layer'
 import ItinSummaryOverlay from './itinerary-summary-overlay'
+import NearbyViewDotOverlay from './nearby-view-dot-overlay'
 import ParkAndRideOverlay from './connected-park-and-ride-overlay'
 import PointPopup from './point-popup'
 import RoutePreviewOverlay from './route-preview-overlay'
 import RouteViewerOverlay from './connected-route-viewer-overlay'
 import StopsOverlay from './connected-stops-overlay'
-import StopViewerOverlay from './connected-stop-viewer-overlay'
 import TransitiveOverlay from './connected-transitive-overlay'
 import TransitVehicleOverlay from './connected-transit-vehicle-overlay'
 import TripViewerOverlay from './connected-trip-viewer-overlay'
@@ -257,6 +258,7 @@ class DefaultMap extends Component {
       intl,
       itinerary,
       mapConfig,
+      nearbyViewActive,
       pending,
       setLocation,
       setViewedStop,
@@ -302,16 +304,18 @@ class DefaultMap extends Component {
           // In Leaflet, this was an onclick handler. Creating a click handler in
           // MapLibreGL would require writing a custom event handler for all mouse events
           onContextMenu={this.onMapClick}
+          showEverything={nearbyViewActive}
           zoom={zoom}
         >
           <PointPopup />
+          <NearbyViewDotOverlay />
           <ItinSummaryOverlay />
           <RoutePreviewOverlay />
           {/* The default overlays */}
           <EndpointsOverlay />
           <RouteViewerOverlay />
           <TransitVehicleOverlay ModeIcon={ModeIcon} />
-          <StopViewerOverlay />
+          <GeolocateControl position="top-left" />
           <TransitiveOverlay
             getTransitiveRouteLabel={getTransitiveRouteLabel}
           />
@@ -416,6 +420,8 @@ const mapStateToProps = (state) => {
     config: state.otp.config,
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
+    nearbyViewActive:
+      state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
     vehicleRentalStations: state.otp.overlay.vehicleRental.stations

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Envelope } from '@styled-icons/fa-regular/Envelope'
 import { ExternalLinkSquareAlt } from '@styled-icons/fa-solid/ExternalLinkSquareAlt'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import { GlobeAmericas, MapMarked } from '@styled-icons/fa-solid'
+import { GlobeAmericas, MapMarked, MapPin } from '@styled-icons/fa-solid'
 import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
 import { Undo } from '@styled-icons/fa-solid/Undo'
@@ -79,6 +79,11 @@ class AppMenu extends Component<
 
   _showRouteViewer = () => {
     this.props.setMainPanelContent(MainPanelContent.ROUTE_VIEWER)
+    this._togglePane()
+  }
+
+  _showNearby = () => {
+    this.props.setMainPanelContent(MainPanelContent.NEARBY_VIEW)
     this._togglePane()
   }
 
@@ -244,6 +249,14 @@ class AppMenu extends Component<
               icon={<Bus />}
               onClick={this._showRouteViewer}
               text={<FormattedMessage id="components.RouteViewer.shortTitle" />}
+            />
+            {/* This item is duplicated by the view-switcher, but only shown on mobile
+            when the view switcher isn't shown (using css) */}
+            <AppMenuItem
+              className="app-menu-route-viewer-link"
+              icon={<MapPin />}
+              onClick={this._showNearby}
+              text={<FormattedMessage id="components.ViewSwitcher.nearby" />}
             />
             <AppMenuItem
               icon={<Undo />}

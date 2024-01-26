@@ -21,9 +21,11 @@ const DepartureTime = ({
   // If an originDate is defined, use that, otherwise use stopTime.serviceDay.
   // stopTime.serviceDay already corresponds to midnight in the agency's home timezone so no extra conversion is needed.
   const startOfDate = originDate || new Date(stopTime.serviceDay * 1000)
+  const realtimeDeparture =
+    stopTime.realtimeDeparture || stopTime.realTimeDeparture || 0
   const departureTimestamp = addSeconds(
     startOfDate,
-    realTime ? stopTime.realTimeDeparture : stopTime.scheduledDeparture
+    realTime ? realtimeDeparture : stopTime.scheduledDeparture
   )
 
   return <FormattedTime timeStyle="short" value={departureTimestamp} />

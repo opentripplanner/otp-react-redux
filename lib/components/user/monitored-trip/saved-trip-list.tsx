@@ -32,12 +32,15 @@ import withLoggedInUserSupport from '../with-logged-in-user-support'
 import getRenderData from './trip-status-rendering-strategies'
 import TripSummaryPane from './trip-summary-pane'
 
-interface ItemProps {
+interface ItemOwnProps {
+  trip: MonitoredTrip
+}
+
+interface ItemProps extends ItemOwnProps {
   intl: IntlShape
   renderData: any
-  routeTo: (url: any) => void
+  routeTo: (url: string) => void
   togglePauseTrip: (trip: MonitoredTrip, intl: IntlShape) => void
-  trip: MonitoredTrip
 }
 
 interface ItemState {
@@ -87,7 +90,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
     const { renderData, trip } = this.props
     const { itinerary } = trip
     const { legs } = itinerary
-    const { alerts } = renderData
+    const { alerts, shouldRenderAlerts } = renderData
     // Assuming the monitored itinerary has at least one leg:
     // - get the 'from' location of the first leg,
     // - get the 'to' location of the last leg.
@@ -96,7 +99,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
     return (
       <Panel>
         <TripPanelHeading>
-          {alerts && alerts.length > 0 && (
+          {shouldRenderAlerts && (
             <TripPanelAlert onClick={this._handleEditTrip}>
               <IconWithText Icon={TriangleExclamation}>
                 <FormattedMessage
@@ -156,14 +159,11 @@ class TripListItem extends Component<ItemProps, ItemState> {
 }
 
 // connect to the redux store
-const itemMapStateToProps = (ownProps: ItemProps) => {
-  const { trip } = ownProps
-  const renderData = getRenderData({
-    monitoredTrip: trip
-  })
-
+const itemMapStateToProps = (state: AppReduxState, { trip }: ItemOwnProps) => {
   return {
-    renderData
+    renderData: getRenderData({
+      monitoredTrip: trip
+    })
   }
 }
 
