@@ -260,7 +260,7 @@ async function executeTest(page, isMobile, isCallTaker) {
   await percySnapshotWithWait(page, 'Nearby View')
 
   // Open schedule view
-  await page.waitForTimeout(1000)
+  await page.waitForTimeout(2000)
   await page.waitForSelector('button.link-button.pull-right')
   await page.click('button.link-button.pull-right')
   await page.waitForTimeout(500)
