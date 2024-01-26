@@ -94,6 +94,12 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                 </FormattedMessage>
               </ol>
             </styled.ol>
+            <Connect(VehiclePositionRetriever)>
+              <VehiclePositionRetriever
+                getVehiclePositionsForRoute={[Function]}
+                refreshSeconds={30}
+              />
+            </Connect(VehiclePositionRetriever)>
           </div>
         </styled.div>
       </NearbyView>
@@ -46964,6 +46970,12 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                 </li>
               </ol>
             </styled.ol>
+            <Connect(VehiclePositionRetriever)>
+              <VehiclePositionRetriever
+                getVehiclePositionsForRoute={[Function]}
+                refreshSeconds={30}
+              />
+            </Connect(VehiclePositionRetriever)>
           </div>
         </styled.div>
       </NearbyView>
