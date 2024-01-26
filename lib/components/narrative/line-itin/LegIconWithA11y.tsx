@@ -17,9 +17,10 @@ const LegIconWithA11y = (props: any) => {
   const { leg } = props
   const { mode } = leg
   const ariaLabel = isTransit(mode) ? getFormattedMode(mode, intl) : null
+  console.log(props)
   return (
     <>
-      <LegIcon {...props} leg={leg} />
+      <LegIcon {...props} />
       {ariaLabel && <InvisibleA11yLabel>{ariaLabel}</InvisibleA11yLabel>}
     </>
   )
