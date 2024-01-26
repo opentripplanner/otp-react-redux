@@ -24,6 +24,7 @@ import RentalStation from './rental-station'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
 import VehicleParking from './vehicle-parking'
+import VehiclePositionRetriever from '../vehicle-position-retriever'
 
 const AUTO_REFRESH_INTERVAL = 15000
 
@@ -248,6 +249,7 @@ function NearbyView({
             <FormattedMessage id="components.NearbyView.nothingNearby" />
           ))}
       </NearbySidebarContainer>
+      <VehiclePositionRetriever />
     </MainContainer>
   )
 }
