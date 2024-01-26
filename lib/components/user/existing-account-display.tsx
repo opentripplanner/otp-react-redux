@@ -21,7 +21,6 @@ import TermsOfUsePane from './terms-of-use-pane'
 
 interface Props extends FormikProps<EditedUser> {
   mobilityProfileEnabled: boolean
-  onDelete: FormEventHandler
   onRequestPhoneVerificationCode: PhoneCodeRequestHandler
   onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
   wheelchairEnabled: boolean
@@ -74,7 +73,7 @@ const ExistingAccountDisplay = (props: Props) => {
     },
     {
       pane: DeleteUser,
-      props
+      props: { block: true, size: 'large' }
     }
   ]
 
