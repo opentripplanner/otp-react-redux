@@ -54,8 +54,8 @@ describe('util > stop-times', () => {
         expect(
           prevPattern.day < thisPattern.day ||
             (prevPattern.day === thisPattern.day &&
-              prevPattern.times[0].realTimeDeparture <=
-                thisPattern.times[0].realTimeDeparture)
+              prevPattern.times[0].realtimeDeparture <=
+                thisPattern.times[0].realtimeDeparture)
         ).toBe(true)
       }
     })
