@@ -260,8 +260,9 @@ async function executeTest(page, isMobile, isCallTaker) {
   await percySnapshotWithWait(page, 'Nearby View')
 
   // Open schedule view
-  await page.waitForSelector('a.link-button.pull-right')
-  await page.click('a.link-button.pull-right')
+  await page.waitForTimeout(1000)
+  await page.waitForSelector('button.link-button.pull-right')
+  await page.click('button.link-button.pull-right')
   await page.waitForTimeout(500)
   // Request a schedule for a specific valid date in the past,
   // so it is different than today and triggers a full render of the schedule.
