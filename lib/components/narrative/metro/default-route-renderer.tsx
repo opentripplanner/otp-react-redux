@@ -8,7 +8,6 @@ const Block = styled.span<{ color: string; isOnColoredBackground?: boolean }>`
   border-top: 5px solid #${(props) => props.color};
   display: inline-block;
   font-weight: 600;
-  margin-top: -2px;
   padding: 3px 7px;
   padding-left: 7px !important; /* TODO: this does not scale well to alternate zoom levels/text sizes */
   padding-right: 7px !important;
