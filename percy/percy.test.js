@@ -235,7 +235,9 @@ async function executeTest(page, isMobile, isCallTaker) {
   // Open Trip Viewer
   // Triggers mock.har graphql query #5 (trip).
   await page.waitForTimeout(2000)
-  const [tripViewerButton] = await page.$x("//a[contains(., 'Trip Viewer')]")
+  const [tripViewerButton] = await page.$x(
+    "//button[contains(., 'Trip Viewer')]"
+  )
 
   // If the trip viewer button didn't appear, perhaps we need to click the itinerary again
   if (!tripViewerButton) {
