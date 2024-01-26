@@ -8862,7 +8862,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -8873,21 +8873,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -8895,29 +8888,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.late"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -9597,7 +9602,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -9608,21 +9613,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -9630,29 +9628,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.late"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -10397,7 +10407,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -10408,21 +10418,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -10430,29 +10433,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.early"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -10552,7 +10567,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -10563,21 +10578,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -10585,29 +10593,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.late"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -20106,7 +20126,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -20117,21 +20137,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -20139,29 +20152,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.late"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -20416,7 +20441,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -20427,21 +20452,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -20449,29 +20467,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.late"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -22014,7 +22044,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -22025,21 +22055,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -22047,29 +22070,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.early"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -22169,7 +22204,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -22180,21 +22215,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -22202,29 +22230,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.late"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -28072,7 +28112,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -28083,21 +28123,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -28105,29 +28138,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.late"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -32444,7 +32489,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -32455,21 +32500,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -32477,29 +32515,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.early"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -32599,7 +32649,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -32610,21 +32660,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -32632,29 +32675,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.onTime"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -32754,7 +32809,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -32765,21 +32820,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -32787,29 +32835,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.late"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -39703,7 +39763,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -39714,21 +39774,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -39736,29 +39789,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.onTime"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -44914,7 +44979,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -44925,21 +44990,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -44947,29 +45005,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.late"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -45649,7 +45719,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -45660,21 +45730,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -45682,29 +45745,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.late"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -46449,7 +46524,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -46460,21 +46535,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -46482,29 +46550,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.early"
                                                       >
                                                         <styled.span>
                                                           <span
@@ -46604,7 +46684,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             "marginRight": 2,
                                                           }
                                                         }
-                                                        title="components.StopTimeCell.scheduled"
+                                                        title="components.StopTimeCell.realtime"
                                                       >
                                                         <span
                                                           className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
@@ -46615,21 +46695,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                               "marginRight": 2,
                                                             }
                                                           }
-                                                          title="components.StopTimeCell.scheduled"
+                                                          title="components.StopTimeCell.realtime"
                                                         >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
+                                                          <Styled(Rss)>
+                                                            <Rss
+                                                              className="sc-liccgK dCyAyu"
                                                             >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              <StyledIconBase
+                                                                className="sc-liccgK dCyAyu"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -46637,29 +46710,41 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                   }
                                                                 }
                                                                 iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
+                                                                iconViewBox="0 0 448 512"
                                                               >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                <ForwardRef
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
+                                                                  iconAttrs={
+                                                                    Object {
+                                                                      "fill": "currentColor",
+                                                                      "xmlns": "http://www.w3.org/2000/svg",
+                                                                    }
+                                                                  }
+                                                                  iconVerticalAlign="middle"
+                                                                  iconViewBox="0 0 448 512"
                                                                 >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-liccgK dCyAyu"
                                                                     fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
+                                                                    focusable="false"
+                                                                    viewBox="0 0 448 512"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm128 352c0 35.3-28.7 64-64 64S0 451.3 0 416s28.7-64 64-64 64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                                                                      fill="currentColor"
+                                                                    />
+                                                                  </svg>
+                                                                </ForwardRef>
+                                                              </StyledIconBase>
+                                                            </Rss>
+                                                          </Styled(Rss)>
                                                         </span>
                                                       </Styled(styled.span)>
                                                       <span
                                                         className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                        title="components.RealtimeStatusLabel.late"
                                                       >
                                                         <styled.span>
                                                           <span
