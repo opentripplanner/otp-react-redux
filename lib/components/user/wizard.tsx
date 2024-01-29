@@ -124,7 +124,11 @@ class Wizard extends Component<Props> {
   render() {
     const { activePane, activePaneIndex, formikProps, pages, title } =
       this.props
-    const { pane: Pane, title: paneTitle } = activePane || {}
+    const {
+      backButton: BackButton,
+      pane: Pane,
+      title: paneTitle
+    } = activePane || {}
 
     return (
       <Form id="user-settings-form" noValidate>
@@ -146,10 +150,13 @@ class Wizard extends Component<Props> {
         </SequentialPaneContainer>
         <FormNavigationButtons
           backButton={
-            activePaneIndex > 0 && {
+            (BackButton && {
+              content: <BackButton />
+            }) ||
+            (activePaneIndex > 0 && {
               onClick: this._handleToPrevPane,
               text: <FormattedMessage id="common.forms.back" />
-            }
+            })
           }
           okayButton={{
             onClick: this._handleToNextPane,
