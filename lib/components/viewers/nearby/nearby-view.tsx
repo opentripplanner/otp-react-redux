@@ -115,6 +115,13 @@ function NearbyView({
     setLocation(payload)
   }
 
+  // Make sure the highlighted location is cleaned up when leaving nearby
+  useEffect(() => {
+    return function cleanup() {
+      setHighlightedLocation(null)
+    }
+  })
+
   useEffect(() => {
     const listener = (e: any) => {
       if (e.geolocateSource) {
