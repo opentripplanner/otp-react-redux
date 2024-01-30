@@ -269,9 +269,9 @@ class DefaultMap extends Component {
       this.context
     const { baseLayers, maxZoom, overlays } = mapConfig || {}
     const { lat, lon, zoom } = this.state
-    const vectorTilesEndpoint = `${assembleBasePath(
-      config
-    )}/otp/routers/default/vectorTiles`
+    const vectorTilesEndpoint = `${assembleBasePath(config)}${
+      config.api?.path
+    }/vectorTiles`
 
     const bikeStations = [
       ...bikeRentalStations.filter(
