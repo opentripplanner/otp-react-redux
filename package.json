@@ -4,7 +4,7 @@
   "main": "build/index.js",
   "scripts": {
     "a11y-test": "jest a11y/ --runInBand --force-exit",
-    "build": "craco build",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider craco build",
     "check:i18n-en-fr": "node node_modules/@opentripplanner/scripts/lib/run-validate-i18n.js lib i18n/en-US.yml i18n/fr.yml",
     "unit": "jest __tests__/",
     "lint": "lint-staged",
