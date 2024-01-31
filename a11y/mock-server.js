@@ -15,7 +15,7 @@ const app = express()
 app.get('*', express.static(path.join(__dirname, '../dist')))
 
 // Mock exactly the requests the test link will create requests to
-app.get('/otp/routers/default/index/graphql', (req, res) => {
+app.get('/gtfs/v1', (req, res) => {
   res.send(PLAN_REALTIME)
 })
 app.get('/otp/routers/default/index/stops', (req, res) => {
