@@ -108,10 +108,9 @@ const Stop = ({
 
   const patternRows = stopData.stoptimesForPatterns
     ?.reduce<PatternStopTime[]>((acc, cur) => {
+      const currentHeadsign = extractHeadsignFromPattern(cur.pattern)
       const dupe = acc.findIndex(
-        (p) =>
-          extractHeadsignFromPattern(p.pattern) ===
-          extractHeadsignFromPattern(cur.pattern)
+        (p) => extractHeadsignFromPattern(p.pattern) === currentHeadsign
       )
       if (dupe === -1) {
         acc.push(cur)
