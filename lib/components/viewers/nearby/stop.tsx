@@ -24,6 +24,7 @@ import {
   PatternRowContainer,
   StyledAlert
 } from './styled'
+import { NearbyViewConfig } from '../../../util/config-types'
 
 const { getUserTimezone } = coreUtils.time
 
@@ -65,6 +66,7 @@ const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
 type Props = {
   fromToSlot: JSX.Element
   homeTimezone: string
+  nearbyViewConfig?: NearbyViewConfig
   setHoveredStop: (stopId?: string) => void
   setViewedStop: (stop: any, nearby: string) => void
   showOperatorLogo: boolean
@@ -94,6 +96,7 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
 const Stop = ({
   fromToSlot,
   homeTimezone,
+  nearbyViewConfig,
   setHoveredStop,
   setViewedStop,
   stopData,
@@ -160,6 +163,8 @@ const Stop = ({
       ? transitOperators?.find((o) => o.agencyId === Array.from(agencies)[0])
       : undefined
 
+  if (nearbyViewConfig?.hideEmptyStops && patternRows.length === 0) return <></>
+
   return (
     <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <CardHeader>
@@ -209,6 +214,7 @@ const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
   return {
     homeTimezone: config.homeTimezone,
+    nearbyViewConfig: config?.nearbyView,
     transitOperators: config.transitOperators
   }
 }
