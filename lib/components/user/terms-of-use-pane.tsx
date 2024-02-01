@@ -109,4 +109,5 @@ const mapStateToProps = (state: AppReduxState) => {
     termsOfStorageSet: state.otp.config.persistence?.terms_of_storage
   }
 }
+
 export default connect(mapStateToProps)(TermsOfUsePane)
