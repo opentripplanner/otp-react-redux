@@ -3,10 +3,13 @@ import {
   LocationFieldProps,
   LocationSelectedEvent
 } from '@opentripplanner/location-field/lib/types'
-import React, { useCallback, useState } from 'react'
+import { MapPin } from '@styled-icons/fa-solid'
+import React, { useCallback, useContext, useState } from 'react'
 
 import * as formActions from '../../actions/form'
 import * as mapActions from '../../actions/map'
+import { ComponentContext } from '../../util/contexts'
+import { IconWrapper } from '../user/places/place'
 
 import { StyledLocationField } from './styled'
 import connectLocationField from './connect-location-field'
@@ -22,6 +25,31 @@ type Props = Omit<
 const ConnectedLocationField = connectLocationField(StyledLocationField, {
   includeLocation: true
 })
+
+export function GeocodedOptionIcon({
+  feature = {}
+}: {
+  feature: {
+    properties?: { modes?: string[]; source: string }
+  }
+}): React.ReactElement {
+  // FIXME: add types to context
+  // @ts-expect-error No type on ComponentContext
+  const { ModeIcon } = useContext(ComponentContext)
+
+  const { properties } = feature
+  if (feature && properties) {
+    const { modes } = properties
+    if (modes && modes.length > 0) {
+      return (
+        <IconWrapper>
+          <ModeIcon mode={modes[0].toLowerCase()} role="img" />
+        </IconWrapper>
+      )
+    }
+  }
+  return <MapPin size={13} />
+}
 
 /**
  * Wrapper component around LocationField that handles onLocationSelected.
@@ -55,6 +83,7 @@ const LocationFieldWithHandler = ({
     <ConnectedLocationField
       {...otherProps}
       clearLocation={onClearLocation}
+      GeocodedOptionIconComponent={GeocodedOptionIcon}
       onLocationSelected={onLocationSelected}
       selfValidate={selfValidate || fieldChanged}
     />
