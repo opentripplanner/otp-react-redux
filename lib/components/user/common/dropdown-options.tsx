@@ -28,20 +28,16 @@ export const Select = ({
     componentClass: 'select',
     defaultValue,
     id: name,
-    name
+    name,
+    onChange
   }
+  /* Passing an onChange will override Formik's onChange, so only pass if onChange exists. */
+  if (!onChange) delete fieldProps.onChange
   return (
     // <Field> is kept outside of <label> to accommodate layout in table/grid cells.
     <>
       {label && <label htmlFor={name}>{label}</label>}
-      {/* passing an onChange will override Formik's onChange, so only pass if onChange exists. */}
-      {onChange ? (
-        <Field {...fieldProps} onChange={onChange}>
-          {children}
-        </Field>
-      ) : (
-        <Field {...fieldProps}>{children}</Field>
-      )}
+      <Field {...fieldProps}>{children}</Field>
     </>
   )
 }
