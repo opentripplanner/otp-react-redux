@@ -8,6 +8,7 @@ import React, { Component, Suspense } from 'react'
 import styled from 'styled-components'
 
 import { ComponentContext } from '../../util/contexts'
+import { StopData } from '../util/types'
 
 import RelatedPanel from './related-panel'
 
@@ -35,11 +36,7 @@ const parkAndRideMarker = (
 type Props = {
   configCompanies: ConfiguredCompany[]
   intl: IntlShape
-  stopData: Stop & {
-    bikeRental: any
-    parkAndRideLocations: any
-    vehicleRental: any
-  }
+  stopData: StopData
 }
 type State = {
   expanded: boolean

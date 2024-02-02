@@ -4,7 +4,7 @@ import {
 } from '@opentripplanner/base-map'
 import { connect } from 'react-redux'
 import { MapMarker } from '@styled-icons/fa-solid/MapMarker'
-import { Stop } from '@opentripplanner/types'
+import { Stop, StopEventHandler } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 import StopPopup from '@opentripplanner/map-popup'
@@ -13,10 +13,11 @@ import tinycolor from 'tinycolor2'
 
 import * as mapActions from '../../actions/map'
 import * as uiActions from '../../actions/ui'
+import { AppConfig } from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
 import { getModeFromStop, getStopName } from '../../util/viewer'
-import { SetLocationHandler, SetViewedStopHandler } from '../util/types'
+import { SetLocationHandler } from '../util/types'
 
 interface OwnProps {
   stop: Stop
@@ -28,8 +29,9 @@ interface Props extends OwnProps {
   activeStopId?: string
   highlight: boolean
   modeColors: ModeColors
+  overrideConfig?: Record<string, string>
   setLocation: SetLocationHandler
-  setViewedStop: SetViewedStopHandler
+  setViewedStop: StopEventHandler
 }
 
 interface MarkerProps {
@@ -116,15 +118,17 @@ class EnhancedStopMarker extends Component<Props> {
       activeStopId,
       highlight,
       modeColors,
+      overrideConfig,
       setLocation,
       setViewedStop,
       stop
     } = this.props
+    if (stop.lat === undefined || stop.lon === undefined) return null
     const { id, lat, lon } = stop
     const displayedStopId = coreUtils.itinerary.getDisplayedStopId(stop)
     if (!displayedStopId) return null
 
-    const mode = getModeFromStop(stop)
+    const mode = getModeFromStop(stop, overrideConfig)
     let color = modeColors && modeColors[mode] ? modeColors[mode] : '#121212'
     if (highlight) {
       // Generates a pretty variant of the color
@@ -140,7 +144,8 @@ class EnhancedStopMarker extends Component<Props> {
           activeStopId !== stop.id && (
             <BaseMapStyled.MapOverlayPopup id={activeContentId}>
               <StopPopup
-                entity={stop}
+                // FIXME: We need to fix the stop type
+                entity={{ ...stop, lat: stop.lat, lon: stop.lon }}
                 setLocation={setLocation}
                 setViewedStop={setViewedStop}
               />
@@ -174,7 +179,8 @@ const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
   return {
     activeStopId: state.otp.ui.viewedStop?.stopId,
     highlight: highlightedStop === ownProps.stop.id,
-    modeColors
+    modeColors,
+    overrideConfig: state.otp.config?.routeModeOverrides
   }
 }
 
