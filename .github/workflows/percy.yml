@@ -15,10 +15,10 @@ jobs:
         with:
           # This allows us to work with the repository during the lint step
           fetch-depth: 2
-      - name: Use Node.js 16.x
+      - name: Use Node.js 21.x
         uses: actions/setup-node@v1
         with:
-          node-version: 16.x
+          node-version: 21.x
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
       - name: Build OTP-RR
@@ -39,10 +39,10 @@ jobs:
         with:
           # This allows us to work with the repository during the lint step
           fetch-depth: 2
-      - name: Use Node.js 16.x
+      - name: Use Node.js 21.x
         uses: actions/setup-node@v1
         with:
-          node-version: 16.x
+          node-version: 21.x
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
       - name: Download OTP2 config file
