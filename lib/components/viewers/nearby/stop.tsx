@@ -24,6 +24,7 @@ import {
   PatternRowContainer,
   StyledAlert
 } from './styled'
+import { extractHeadsignFromPattern } from '../../../util/viewer'
 
 const { getUserTimezone } = coreUtils.time
 
@@ -105,11 +106,11 @@ const Stop = ({
     new Set()
   )
 
-  // TODO: We need to bring back the day break-up we had with the old stop viewer
   const patternRows = stopData.stoptimesForPatterns
     ?.reduce<PatternStopTime[]>((acc, cur) => {
+      const currentHeadsign = extractHeadsignFromPattern(cur.pattern)
       const dupe = acc.findIndex(
-        (p) => p.pattern.headsign === cur.pattern.headsign
+        (p) => extractHeadsignFromPattern(p.pattern) === currentHeadsign
       )
       if (dupe === -1) {
         acc.push(cur)

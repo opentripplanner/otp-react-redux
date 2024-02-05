@@ -31,7 +31,7 @@ app.all('*', function (req, res, next) {
 })
 
 app.use(express.json())
-app.post('/otp2/routers/default/index/graphql', (req, res) => {
+app.post('/otp/gtfs/v1', (req, res) => {
   graphql({
     schema: schemaWithMocks,
     source: req.body.query,
