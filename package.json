@@ -4,7 +4,7 @@
   "main": "build/index.js",
   "scripts": {
     "a11y-test": "jest a11y/ --runInBand --force-exit",
-    "build": "craco build",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider craco build",
     "check:i18n-en-fr": "node node_modules/@opentripplanner/scripts/lib/run-validate-i18n.js lib i18n/en-US.yml i18n/fr.yml",
     "unit": "jest __tests__/",
     "lint": "lint-staged",
@@ -16,13 +16,16 @@
     "test": "yarn run lint && yarn run typecheck && yarn check:i18n-en-fr && yarn run unit",
     "typecheck": "yarn tsc",
     "semantic-release": "semantic-release",
-    "start": "craco start",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider craco start",
     "percy-serve": "serve",
     "percy-har-express": "har-express",
     "percy-combined-mock-server": "node ./percy/mock-server.js"
   },
   "standard": {
     "parser": "babel-eslint"
+  },
+  "engines": {
+    "node": ">=16"
   },
   "repository": {
     "type": "git",
