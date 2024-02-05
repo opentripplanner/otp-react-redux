@@ -1147,7 +1147,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.0", "@babel/runtime@^7.15.3", "@babel/runtime@^7.19.0", "@babel/runtime@^7.20.7", "@babel/runtime@^7.21.0", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.13.10", "@babel/runtime@^7.19.0", "@babel/runtime@^7.20.7", "@babel/runtime@^7.21.0", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.22.11"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.22.11.tgz#7a9ba3bbe406ad6f9e8dd4da2ece453eb23a77a4"
   integrity sha512-ee7jVNlWN09+KftVOu9n7S8gQzD/Z6hN/I8VBRXW4P1+Xe7kJGXMwu8vds4aGIMHZnNbdpSWCfZZtinytpcAvA==
@@ -2790,10 +2790,10 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.4.0.tgz#2f49a720773d3326f172b8bf8493be7fe5800138"
-  integrity sha512-Fb5cTXx4+kl0S8jhkQKF0twwnJzLzF/6V1hanXeONLYxQkcrKuRln4y2nzyMFhMavlY8fSQdurWbenmA8VkdOg==
+"@opentripplanner/trip-form@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.5.0.tgz#6c6d1f984f501857fb873627613ad20b36f6b3b7"
+  integrity sha512-PZ+7vJMZME+jKYguoevyfWnluuH0SuDZrmh3Sx1fmEC4FVhyzkE3I0enwozRCYXag0hGipei/scxOVt7G4C9Sw==
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/core-utils" "^11.1.3"
@@ -2815,10 +2815,10 @@
     "@opentripplanner/base-map" "^3.0.14"
     "@opentripplanner/core-utils" "^11.0.2"
 
-"@opentripplanner/types@^6.3.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.3.0.tgz#c06bf562f4f1619908514470efacacb5f8be0cbc"
-  integrity sha512-QYi+36AzUafxuY5IgwVRB/kdO4fP/lCRgvslgqJ2B6EqFgQH+8bcVXx4ArUJ4qZG+ZuwfiFUYp290LC63kRd9A==
+"@opentripplanner/types@^6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.4.0.tgz#6f7a3475ea982c7b7d8b2f1383a6d775dfabe62a"
+  integrity sha512-PS+CUwETLf0WzAUZg3qiey+SBigaf0CfknKF1XMOM+zJVc2c8nN34hgnwV7sS+RKs030KZFAgIn8p035ErcBuQ==
 
 "@opentripplanner/vehicle-rental-overlay@^2.1.3":
   version "2.1.3"
@@ -3214,20 +3214,20 @@
     "@sinonjs/commons" "^1.7.0"
 
 "@styled-icons/bootstrap@^10.34.0":
-  version "10.34.0"
-  resolved "https://registry.yarnpkg.com/@styled-icons/bootstrap/-/bootstrap-10.34.0.tgz#d9142e9eb70dc437f7ef62ffc40168e1ae13ab12"
-  integrity sha512-UpzdVUR7r9BNqEfPrMchJdgMZEg9eXQxLQJUXM0ouvbI5o9j21/y1dGameO4PZtYbutT/dWv5O6y24z5JWzd5w==
+  version "10.47.0"
+  resolved "https://registry.yarnpkg.com/@styled-icons/bootstrap/-/bootstrap-10.47.0.tgz#c3e363dfe87b732a5da818f320f90f5ab4961b84"
+  integrity sha512-xpnPdrLhAhpTRE4iljQIEK73twVj7VPglwHSL+8nQdH7EsW5RJIOWsmlkZMyqhQHN0H7fGmT10F3/6OQhSpfGg==
   dependencies:
-    "@babel/runtime" "^7.14.0"
-    "@styled-icons/styled-icon" "^10.6.3"
+    "@babel/runtime" "^7.20.7"
+    "@styled-icons/styled-icon" "^10.7.0"
 
 "@styled-icons/boxicons-regular@^10.38.0":
-  version "10.38.0"
-  resolved "https://registry.yarnpkg.com/@styled-icons/boxicons-regular/-/boxicons-regular-10.38.0.tgz#1eb80b4f94a18a9b77b11dee5204aa23378d37ec"
-  integrity sha512-xjhafoa0/EeYtQOyTw+ohuSlBx599t8l8++JH1tQlM0l73dP4icTpF4znYL+HhZeaUe3D+UhrkfWuBBua2w2Qw==
+  version "10.47.0"
+  resolved "https://registry.yarnpkg.com/@styled-icons/boxicons-regular/-/boxicons-regular-10.47.0.tgz#6318dd8ba9bfbf143c3a32c9d1c72479d376bd3a"
+  integrity sha512-z8KczDp4VArXvOn8i2j66Xs4oX9oiiJEhMoHydY3uC9kdtImcxhZ/xHPrgTJLkbK6f5ikwB4CKVnSqQGzzAJNw==
   dependencies:
-    "@babel/runtime" "^7.15.3"
-    "@styled-icons/styled-icon" "^10.6.3"
+    "@babel/runtime" "^7.20.7"
+    "@styled-icons/styled-icon" "^10.7.0"
 
 "@styled-icons/fa-regular@^10.34.0", "@styled-icons/fa-regular@^10.37.0":
   version "10.47.0"
@@ -3253,7 +3253,7 @@
     "@babel/runtime" "^7.19.0"
     "@styled-icons/styled-icon" "^10.7.0"
 
-"@styled-icons/styled-icon@^10.6.3", "@styled-icons/styled-icon@^10.7.0":
+"@styled-icons/styled-icon@^10.7.0":
   version "10.7.0"
   resolved "https://registry.yarnpkg.com/@styled-icons/styled-icon/-/styled-icon-10.7.0.tgz#d6960e719b8567c8d0d3a87c40fb6f5b4952a228"
   integrity sha512-SCrhCfRyoY8DY7gUkpz+B0RqUg/n1Zaqrr2+YKmK/AyeNfCcoHuP4R9N4H0p/NA1l7PTU10ZkAWSLi68phnAjw==
@@ -5996,10 +5996,15 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5, classnames@^2.2.6, classnames@^2.3.1:
+classnames@^2.2.5, classnames@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
+
+classnames@^2.2.6:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.5.1.tgz#ba774c614be0f016da105c858e7159eae8e7687b"
+  integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
 
 clean-css@^4.2.3:
   version "4.2.3"
@@ -8366,7 +8371,7 @@ execa@^5.0.0, execa@^5.1.1:
 exenv@^1.2.0, exenv@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
-  integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
+  integrity sha512-Z+ktTxTwv9ILfgKCk32OX3n/doe+OcLTRtqK9pcL+JsP3J1/VW8Uvl4ZjLlKqeW4rzK4oesDOGMEMRIZqtP4Iw==
 
 exit@^0.1.2:
   version "0.1.2"
@@ -15333,9 +15338,9 @@ react-fast-compare@^2.0.1:
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
 react-from-dom@^0.6.0:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/react-from-dom/-/react-from-dom-0.6.1.tgz#6740f5a3d79e0c354703e5c096b8fdfe0db71b0f"
-  integrity sha512-7aAZx7LhRnmR51W5XtmTBYHGFl2n1AdEk1uoXLuzHa1OoGXrxOW/iwLcudvgp6BGX/l4Yh1rtMrIzvhlvbVddg==
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/react-from-dom/-/react-from-dom-0.6.2.tgz#9da903a508c91c013b55afcd59348b8b0a39bdb4"
+  integrity sha512-qvWWTL/4xw4k/Dywd41RBpLQUSq97csuv15qrxN+izNeLYlD9wn5W8LspbfYe5CWbaSdkZ72BsaYBPQf2x4VbQ==
 
 react-ga@^3.3.0:
   version "3.3.0"
@@ -15350,9 +15355,9 @@ react-hot-toast@^2.4.1:
     goober "^2.1.10"
 
 react-indiana-drag-scroll@^2.0.1:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-indiana-drag-scroll/-/react-indiana-drag-scroll-2.1.0.tgz#37654eae8caced01cdecc8bce55f0382871a021d"
-  integrity sha512-Tj94Dv9PkmoKqc9nxK/dzwhtE8pP7NTxmeHqkD8KN0zad1NNE+/JsvRcK4EdqE6CdA2nMESzqPMvv1AzRXdBew==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-indiana-drag-scroll/-/react-indiana-drag-scroll-2.2.0.tgz#657e14bbdf4888cc738e9fa8dc4384d76c348c0b"
+  integrity sha512-+W/3B2OQV0FrbdnsoIo4dww/xpH0MUQJz6ziQb7H+oBko3OCbXuzDFYnho6v6yhGrYDNWYPuFUewb89IONEl/A==
   dependencies:
     classnames "^2.2.6"
     debounce "^1.2.0"
