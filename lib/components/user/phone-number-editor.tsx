@@ -7,6 +7,7 @@ import React, { Component, createRef, Fragment } from 'react'
 import styled from 'styled-components'
 
 import * as userActions from '../../actions/user'
+import { AppReduxState } from '../../util/state-types'
 import { getAriaPhoneNumber } from '../../util/a11y'
 import { GRAY_ON_WHITE } from '../util/colors'
 import { isBlank } from '../../util/ui'
@@ -291,9 +292,19 @@ class PhoneNumberEditor extends Component<Props, State> {
   }
 }
 
+const mapStateToProps = (state: AppReduxState) => {
+  const { phoneFormatOptions } = state.otp.config
+  return {
+    phoneFormatOptions
+  }
+}
+
 const mapDispatchToProps = {
   requestPhoneVerificationSms: userActions.requestPhoneVerificationSms,
   verifyPhoneNumber: userActions.verifyPhoneNumber
 }
 
-export default connect(null, mapDispatchToProps)(injectIntl(PhoneNumberEditor))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(PhoneNumberEditor))
