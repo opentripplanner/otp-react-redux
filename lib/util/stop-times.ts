@@ -31,7 +31,7 @@ function hasValidTimesAndRoute({
 /** Filter any times according to time range set in config. */
 function isWithinDaysAhead(time: Time, now: Date, daysAhead: number) {
   // TODO: is this the best fix for this typescript complaint?
-  const departureTime = time.serviceDay + (time.realTimeDeparture || 0)
+  const departureTime = time.serviceDay + (time.realtimeDeparture || 0)
   return isBefore(departureTime, addDays(now, daysAhead))
 }
 
