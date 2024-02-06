@@ -154,6 +154,7 @@ class AppMenu extends Component<
             role={isSelected !== undefined ? 'option' : undefined}
             subItems={this._addExtraMenuItems(children) || undefined}
             text={label}
+            title={typeof label === 'string' ? label : ''}
           />
         )
       })
@@ -241,6 +242,9 @@ class AppMenu extends Component<
               text={
                 <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
               }
+              title={intl.formatMessage({
+                id: 'components.BatchRoutingPanel.shortTitle'
+              })}
             />
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
@@ -249,6 +253,9 @@ class AppMenu extends Component<
               icon={<Bus />}
               onClick={this._showRouteViewer}
               text={<FormattedMessage id="components.RouteViewer.shortTitle" />}
+              title={intl.formatMessage({
+                id: 'components.RouteViewer.shortTitle'
+              })}
             />
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
@@ -257,17 +264,26 @@ class AppMenu extends Component<
               icon={<MapPin />}
               onClick={this._showNearby}
               text={<FormattedMessage id="components.ViewSwitcher.nearby" />}
+              title={intl.formatMessage({
+                id: 'components.ViewSwitcher.nearby'
+              })}
             />
             <AppMenuItem
               icon={<Undo />}
               onClick={this._startOver}
               text={<FormattedMessage id="common.forms.startOver" />}
+              title={intl.formatMessage({
+                id: 'common.forms.startOver'
+              })}
             />
             {popupTarget && (
               <AppMenuItem
                 icon={<SvgIcon iconName={popupTarget} />}
                 onClick={this._triggerPopup}
                 text={<PopupTriggerText popupTarget={popupTarget} />}
+                title={intl.formatMessage({
+                  id: `config.popups.${popupTarget}`
+                })}
               />
             )}
             {callTakerEnabled && (
@@ -275,6 +291,9 @@ class AppMenu extends Component<
                 icon={<History />}
                 onClick={resetAndToggleCallHistory}
                 text={<FormattedMessage id="components.AppMenu.callHistory" />}
+                title={intl.formatMessage({
+                  id: 'components.AppMenu.callHistory'
+                })}
               />
             )}
             {fieldTripEnabled && (
@@ -282,6 +301,9 @@ class AppMenu extends Component<
                 icon={<GraduationCap />}
                 onClick={resetAndToggleFieldTrips}
                 text={<FormattedMessage id="components.AppMenu.fieldTrip" />}
+                title={intl.formatMessage({
+                  id: 'components.AppMenu.fieldTrip'
+                })}
               />
             )}
             {mailablesEnabled && (
@@ -289,6 +311,9 @@ class AppMenu extends Component<
                 icon={<Envelope />}
                 onClick={toggleMailables}
                 text={<FormattedMessage id="components.AppMenu.mailables" />}
+                title={intl.formatMessage({
+                  id: 'components.AppMenu.mailables'
+                })}
               />
             )}
             {this._addExtraMenuItems(extraMenuItems)}
