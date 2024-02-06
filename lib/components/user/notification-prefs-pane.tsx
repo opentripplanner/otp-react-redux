@@ -10,17 +10,12 @@ import { GRAY_ON_WHITE } from '../util/colors'
 import { PhoneFormatConfig } from '../../util/config-types'
 
 import { FieldSet } from './styled'
-import { PhoneVerificationSubmitHandler } from './phone-verification-form'
 import { User } from './types'
-import PhoneNumberEditor, {
-  PhoneCodeRequestHandler
-} from './phone-number-editor'
+import PhoneNumberEditor from './phone-number-editor'
 
 interface Props extends FormikProps<User> {
   allowedNotificationChannels: string[]
   loggedInUser: User
-  onRequestPhoneVerificationCode: PhoneCodeRequestHandler
-  onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
   phoneFormatOptions: PhoneFormatConfig
 }
 
@@ -57,8 +52,6 @@ const NotificationOption = styled(ListGroupItem)`
 const NotificationPrefsPane = ({
   allowedNotificationChannels,
   handleChange, // Formik or custom handler
-  onRequestPhoneVerificationCode,
-  onSendPhoneVerificationCode,
   phoneFormatOptions,
   values: userData // Formik prop
 }: Props): JSX.Element => {
@@ -99,8 +92,6 @@ const NotificationPrefsPane = ({
                     descriptorId={inputDescriptionId}
                     initialPhoneNumber={phoneNumber}
                     initialPhoneNumberVerified={isPhoneNumberVerified}
-                    onRequestCode={onRequestPhoneVerificationCode}
-                    onSubmitCode={onSendPhoneVerificationCode}
                     phoneFormatOptions={phoneFormatOptions}
                   />
                 ) : (
