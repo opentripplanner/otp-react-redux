@@ -57,19 +57,25 @@ interface State {
   submittedNumber: string
 }
 
+function getInitialState({
+  initialPhoneNumber,
+  initialPhoneNumberVerified = false
+}: Props): State {
+  return {
+    ...blankState,
+    // For new users, render component in editing state.
+    isEditing: isBlank(initialPhoneNumber),
+    phoneNumberVerified: initialPhoneNumberVerified
+  }
+}
+
 /**
  * Sub-component that handles phone number and validation code editing and validation intricacies.
  */
 class PhoneNumberEditor extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
-
-    const { initialPhoneNumber } = props
-    this.state = {
-      ...blankState,
-      // For new users, render component in editing state.
-      isEditing: isBlank(initialPhoneNumber)
-    }
+    this.state = getInitialState(props)
   }
 
   _changeRef = createRef<HTMLButtonElement>()
@@ -77,7 +83,7 @@ class PhoneNumberEditor extends Component<Props, State> {
   _handleEditNumber = () => this.setState({ isEditing: true })
 
   _handleCancelEditNumber = () => {
-    this.setState(blankState)
+    this.setState(getInitialState(this.props))
   }
 
   /**
