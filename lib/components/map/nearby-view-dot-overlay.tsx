@@ -21,7 +21,6 @@ const NearbyDot = styled.div`
   width: 50px;
 `
 
-// TODO: possibly add bikes and scooters here?
 const NearbyViewDotOverlay = ({ location }: Props) => {
   if (!location) return null
   return (
@@ -33,6 +32,7 @@ const NearbyViewDotOverlay = ({ location }: Props) => {
 
 const mapStateToProps = (state: AppReduxState) => {
   const { highlightedLocation } = state.otp.ui
+  // TODO: Check for nearby view status and hide if it's not
   return {
     location: highlightedLocation
   }

@@ -10,7 +10,9 @@ import React, { useCallback } from 'react'
 
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
+import { extractHeadsignFromPattern } from '../../../util/viewer'
 import { IconWithText } from '../../util/styledIcon'
+import { NearbyViewConfig } from '../../../util/config-types'
 import { Pattern, StopTime } from '../../util/types'
 import OperatorLogo from '../../util/operator-logo'
 import PatternRow from '../pattern-row'
@@ -24,7 +26,6 @@ import {
   PatternRowContainer,
   StyledAlert
 } from './styled'
-import { NearbyViewConfig } from '../../../util/config-types'
 
 const { getUserTimezone } = coreUtils.time
 
@@ -108,11 +109,11 @@ const Stop = ({
     new Set()
   )
 
-  // TODO: We need to bring back the day break-up we had with the old stop viewer
   const patternRows = stopData.stoptimesForPatterns
     ?.reduce<PatternStopTime[]>((acc, cur) => {
+      const currentHeadsign = extractHeadsignFromPattern(cur.pattern)
       const dupe = acc.findIndex(
-        (p) => p.pattern.headsign === cur.pattern.headsign
+        (p) => extractHeadsignFromPattern(p.pattern) === currentHeadsign
       )
       if (dupe === -1) {
         acc.push(cur)

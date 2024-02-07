@@ -178,9 +178,7 @@ components:
     tooManyPlaces: Địa điểm trung gian tối đa đạt được
   AdvancedOptions:
     bannedRoutes: Chọn các tuyến đường bị cấm…
-    bikeTolerance: Sức chịu đựng đi xe đạp
     preferredRoutes: Chọn các tuyến đường ưa thích…
-    walkTolerance: Sức chịu đựng đi bộ
   AfterSignInScreen:
     mainTitle: Chuyển hướng...
     message: >-
@@ -587,7 +585,6 @@ components:
     timezoneWarning: Thời gian khởi hành được hiển thị trong <strong>{timezoneCode}</strong>.
     titleBarStopId: Điểm dừng {stopId}
     viewNearby: Xem Gần Đây
-    viewNextDepartures: Xem lần khởi hành tiếp theo
     viewSchedule: Xem lịch trình
     zoomToStop: Phóng to để dừng lại
   SubNav:
