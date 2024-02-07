@@ -1,6 +1,11 @@
 api:
   host: http://localhost
+  # Path will be deprecated once the REST API is deprecated, which will be soon.
+  # If the OTP server is hosted at /otp, then no path needs to be configured
   path: /otp/routers/default
+  # If your OTP server is at a path other than "/otp" (usually due to a proxy)
+  # Then you can set the OPTIONAL property basePath. The default is "/otp"
+  basePath: /otp
   port: 8001
 # v2: false
 
