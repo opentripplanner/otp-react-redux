@@ -22,22 +22,25 @@ export const Select = ({
   label,
   name,
   onChange
-}: SelectProps): JSX.Element => (
-  // <Field> is kept outside of <label> to accommodate layout in table/grid cells.
-  <>
-    {label && <label htmlFor={name}>{label}</label>}
-    <Field
-      as={Control}
-      componentClass="select"
-      defaultValue={defaultValue}
-      id={name}
-      name={name}
-      onChange={onChange}
-    >
-      {children}
-    </Field>
-  </>
-)
+}: SelectProps): JSX.Element => {
+  const fieldProps = {
+    as: Control,
+    componentClass: 'select',
+    defaultValue,
+    id: name,
+    name,
+    onChange
+  }
+  /* Passing an onChange will override Formik's onChange, so only pass if onChange exists. */
+  if (!onChange) delete fieldProps.onChange
+  return (
+    // <Field> is kept outside of <label> to accommodate layout in table/grid cells.
+    <>
+      {label && <label htmlFor={name}>{label}</label>}
+      <Field {...fieldProps}>{children}</Field>
+    </>
+  )
+}
 
 interface OptionsPropsBase<T> {
   defaultValue?: T
