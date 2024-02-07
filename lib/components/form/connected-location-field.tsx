@@ -43,7 +43,7 @@ export function GeocodedOptionIcon({
     if (modes && modes.length > 0) {
       return (
         <IconWrapper>
-          <ModeIcon mode={modes[0].toLowerCase()} role="img" />
+          <ModeIcon aria-hidden mode={modes[0].toLowerCase()} role="img" />
         </IconWrapper>
       )
     }
