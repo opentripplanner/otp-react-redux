@@ -10,7 +10,9 @@ import React, { useCallback } from 'react'
 
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
+import { extractHeadsignFromPattern } from '../../../util/viewer'
 import { IconWithText } from '../../util/styledIcon'
+import { NearbyViewConfig } from '../../../util/config-types'
 import { Pattern, StopTime } from '../../util/types'
 import OperatorLogo from '../../util/operator-logo'
 import PatternRow from '../pattern-row'
@@ -65,6 +67,7 @@ const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
 type Props = {
   fromToSlot: JSX.Element
   homeTimezone: string
+  nearbyViewConfig?: NearbyViewConfig
   setHoveredStop: (stopId?: string) => void
   setViewedStop: (stop: any, nearby: string) => void
   showOperatorLogo: boolean
@@ -94,6 +97,7 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
 const Stop = ({
   fromToSlot,
   homeTimezone,
+  nearbyViewConfig,
   setHoveredStop,
   setViewedStop,
   stopData,
@@ -105,11 +109,11 @@ const Stop = ({
     new Set()
   )
 
-  // TODO: We need to bring back the day break-up we had with the old stop viewer
   const patternRows = stopData.stoptimesForPatterns
     ?.reduce<PatternStopTime[]>((acc, cur) => {
+      const currentHeadsign = extractHeadsignFromPattern(cur.pattern)
       const dupe = acc.findIndex(
-        (p) => p.pattern.headsign === cur.pattern.headsign
+        (p) => extractHeadsignFromPattern(p.pattern) === currentHeadsign
       )
       if (dupe === -1) {
         acc.push(cur)
@@ -160,6 +164,8 @@ const Stop = ({
       ? transitOperators?.find((o) => o.agencyId === Array.from(agencies)[0])
       : undefined
 
+  if (nearbyViewConfig?.hideEmptyStops && patternRows.length === 0) return <></>
+
   return (
     <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <CardHeader>
@@ -209,6 +215,7 @@ const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
   return {
     homeTimezone: config.homeTimezone,
+    nearbyViewConfig: config?.nearbyView,
     transitOperators: config.transitOperators
   }
 }

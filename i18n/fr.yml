@@ -244,7 +244,7 @@ components:
     shortTitle: Planifier un trajet
   BatchSearchScreen:
     header: Votre trajet
-    modeSelectorLabel: Sélectionnez un mode de transport
+    modeSelectorLabel: Sélectionnez un mode de déplacement
   BatchSettings:
     destination: destination
     invalidModeSelection: >-

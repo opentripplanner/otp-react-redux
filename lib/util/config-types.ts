@@ -65,6 +65,8 @@ interface ApiKeyConfig {
 export type BugsnagConfig = ApiKeyConfig
 export type MapillaryConfig = ApiKeyConfig
 
+export type NearbyViewConfig = { hideEmptyStops?: boolean }
+
 /** TODO: Language settings */
 export type LanguageConfig = Record<string, any>
 
@@ -360,6 +362,7 @@ export interface AppConfig {
   mapillary?: MapillaryConfig
   mobilityProfile?: boolean
   modes: ModesConfig
+  nearbyView?: NearbyViewConfig
   /** Interval in seconds past which a trip is no longer considered "on-time". */
   onTimeThresholdSeconds?: number
   persistence?: PersistenceConfig
