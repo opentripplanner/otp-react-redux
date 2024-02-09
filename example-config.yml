@@ -637,3 +637,7 @@ itinerary:
 ### The value should be at least over a minute, so that users have enough time to extend their session if needed.
 ### A warning is shown when a minute or a third of the session time remains, whichever is shorter.
 # sessionTimeoutSeconds: 180
+
+# nearbyView:
+### Setting to hide stops with no depatures in the nearby view.
+#   hideEmptyStops: true
