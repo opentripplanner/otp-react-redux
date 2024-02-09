@@ -719,11 +719,9 @@ components:
     arriveAt: "Arrive at "
     leaveAt: "Leave at "
   TripSummaryPane:
-    happensOnDays: "Happens on: <strong>{days}</strong>"
-    notifications: >-
-      Notifications: <strong>{leadTimeInMinutes} min. before scheduled
-      departure</strong>
-    notificationsDisabled: "Notifications: <strong>Disabled</strong>"
+    happensOnDays: "Happens on: {days}"
+    notifications: "{leadTimeInMinutes} min. before scheduled departure"
+    notificationsDisabled: Notifications disabled
   TripTools:
     copyLink: Copy Link
     header: Trip Tools

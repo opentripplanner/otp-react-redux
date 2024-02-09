@@ -1,9 +1,6 @@
-import { Button, Panel } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape, useIntl } from 'react-intl'
-import { Pause } from '@styled-icons/fa-solid/Pause'
-import { PencilAlt } from '@styled-icons/fa-solid/PencilAlt'
-import { Play } from '@styled-icons/fa-solid/Play'
+import { Panel } from 'react-bootstrap'
 import { TriangleExclamation } from '@styled-icons/fa-solid/TriangleExclamation'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import React, { Component } from 'react'
@@ -11,15 +8,16 @@ import React, { Component } from 'react'
 import * as uiActions from '../../../actions/ui'
 import * as userActions from '../../../actions/user'
 import { AppReduxState } from '../../../util/state-types'
-import { IconWithText } from '../../util/styledIcon'
-import { InlineLoading } from '../../narrative/loading'
+import { Edit } from '@styled-icons/fa-solid'
+import { Icon, IconWithText } from '../../util/styledIcon'
 import { MonitoredTrip } from '../types'
 import {
   PageHeading,
   TripHeader,
   TripPanelAlert,
   TripPanelFooter,
-  TripPanelHeading
+  TripPanelHeading,
+  TripPannelTitle
 } from '../styled'
 import { RETURN_TO_CURRENT_ROUTE } from '../../../util/ui'
 import { TRIPS_PATH } from '../../../util/constants'
@@ -30,6 +28,7 @@ import PageTitle from '../../util/page-title'
 import withLoggedInUserSupport from '../with-logged-in-user-support'
 
 import getRenderData from './trip-status-rendering-strategies'
+import RouteBlockWrapper from './route-block-wrapper'
 import TripSummaryPane from './trip-summary-pane'
 
 interface ItemOwnProps {
@@ -99,60 +98,37 @@ class TripListItem extends Component<ItemProps, ItemState> {
     return (
       <Panel>
         <TripPanelHeading>
-          {shouldRenderAlerts && (
-            <TripPanelAlert onClick={this._handleEditTrip}>
-              <IconWithText Icon={TriangleExclamation}>
-                <FormattedMessage
-                  id="components.SavedTripList.alertTag"
-                  values={{ alert: alerts.length }}
-                />
-              </IconWithText>
-            </TripPanelAlert>
-          )}
-          <Panel.Title>
-            <TripHeader>{trip.tripName}</TripHeader>
-            <small>
-              <FormattedMessage
-                id="components.SavedTripList.fromTo"
-                values={{
-                  from: <strong>{from.name}</strong>,
-                  to: <strong>{to.name}</strong>
-                }}
-              />
-            </small>
-          </Panel.Title>
+          <TripPannelTitle>
+            <Panel.Title>
+              <TripHeader>{trip.tripName}</TripHeader>
+            </Panel.Title>
+            <button onClick={this._handleEditTrip}>
+              <Icon Icon={Edit} />
+            </button>
+          </TripPannelTitle>
+          <RouteBlockWrapper itinerary={itinerary} />
         </TripPanelHeading>
         <Panel.Body>
-          <TripSummaryPane monitoredTrip={trip} />
-        </Panel.Body>
-        <TripPanelFooter>
-          <Button
-            disabled={this.state.pendingRequest === 'pause'}
-            onClick={this._handleTogglePauseMonitoring}
-          >
-            {this.state.pendingRequest === 'pause' ? (
-              /* Make loader fit */
-              <InlineLoading />
-            ) : trip.isActive ? (
-              <>
-                <IconWithText Icon={Pause}>
-                  <FormattedMessage id="components.SavedTripList.pause" />
+          <TripSummaryPane
+            from={from}
+            handleTogglePauseMonitoring={this._handleTogglePauseMonitoring}
+            monitoredTrip={trip}
+            pendingRequest={this.state.pendingRequest}
+            to={to}
+          />
+          <TripPanelFooter>
+            {shouldRenderAlerts && (
+              <TripPanelAlert onClick={this._handleEditTrip}>
+                <IconWithText Icon={TriangleExclamation}>
+                  <FormattedMessage
+                    id="components.SavedTripList.alertTag"
+                    values={{ alert: alerts.length }}
+                  />
                 </IconWithText>
-              </>
-            ) : (
-              <>
-                <IconWithText Icon={Play}>
-                  <FormattedMessage id="components.SavedTripList.resume" />
-                </IconWithText>
-              </>
+              </TripPanelAlert>
             )}
-          </Button>
-          <Button onClick={this._handleEditTrip}>
-            <IconWithText Icon={PencilAlt}>
-              <FormattedMessage id="common.forms.edit" />
-            </IconWithText>
-          </Button>
-        </TripPanelFooter>
+          </TripPanelFooter>
+        </Panel.Body>
       </Panel>
     )
   }

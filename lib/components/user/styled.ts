@@ -46,8 +46,25 @@ export const TripHeader = styled.h3`
   margin-top: 0px;
 `
 
+export const TripPannelTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 export const TripPanelHeading = styled(Panel.Heading)`
   background-color: white !important;
+  border-color: #fff !important;
+  padding: 20px 25px 0 25px;
+
+  button {
+    background: transparent;
+    border: 0;
+  }
+
+  h3 {
+    margin: 0;
+  }
 `
 
 export const TripPanelAlert = styled.button`
@@ -65,22 +82,7 @@ export const TripPanelAlert = styled.button`
 export const TripPanelFooter = styled(Panel.Footer)`
   background-color: white !important;
   padding: 0px;
-  button {
-    border: 0px;
-    padding: 13px 0px;
-    width: 50%;
-  }
-
-  button:first-child {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  button:nth-child(2) {
-    border-radius: 0;
-    border-left: 1px solid #ddd;
-  }
+  border: none;
 `
 
 /** Formats non-<label> elements like <label>s. */
