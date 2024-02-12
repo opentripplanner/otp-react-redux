@@ -36,6 +36,7 @@ export interface ApiConfig {
   // Soon to be deprecated
   path: string
   port: number
+  // Soon to be deprecated
   v2?: boolean
 }
 
