@@ -30,8 +30,6 @@ interface Props {
   isWizard: boolean
   itemId: string
   loggedInUser: User
-  requestPhoneVerificationSms: (phoneNum: string, intl: IntlShape) => void
-  verifyPhoneNumber: (code: string, intl: IntlShape) => void
 }
 
 const pendingCss = css`
@@ -87,11 +85,6 @@ class UserAccountScreen extends Component<Props> {
    */
   _handleCreateNewUser = (userData: EditedUser) => {
     this._updateUserPrefs(userData, true)
-  }
-
-  _handleRequestPhoneVerificationCode = (newPhoneNumber: string) => {
-    const { intl, requestPhoneVerificationSms } = this.props
-    requestPhoneVerificationSms(newPhoneNumber, intl)
   }
 
   _submitForm = async (
@@ -173,15 +166,6 @@ class UserAccountScreen extends Component<Props> {
     }
   }
 
-  _handleSendPhoneVerificationCode = async ({
-    validationCode: code
-  }: {
-    validationCode: string
-  }) => {
-    const { intl, verifyPhoneNumber } = this.props
-    await verifyPhoneNumber(code, intl)
-  }
-
   render() {
     const { basePath, intl, isWizard, itemId, loggedInUser } = this.props
     const loggedInUserWithNotificationArray = {
@@ -242,17 +226,7 @@ class UserAccountScreen extends Component<Props> {
                   )
                 }
 
-                return (
-                  <ExistingAccountDisplay
-                    {...newFormikProps}
-                    onRequestPhoneVerificationCode={
-                      this._handleRequestPhoneVerificationCode
-                    }
-                    onSendPhoneVerificationCode={
-                      this._handleSendPhoneVerificationCode
-                    }
-                  />
-                )
+                return <ExistingAccountDisplay {...newFormikProps} />
               }
             }
           </Formik>
@@ -283,9 +257,7 @@ const mapStateToProps = (
 }
 
 const mapDispatchToProps = {
-  createOrUpdateUser: userActions.createOrUpdateUser,
-  requestPhoneVerificationSms: userActions.requestPhoneVerificationSms,
-  verifyPhoneNumber: userActions.verifyPhoneNumber
+  createOrUpdateUser: userActions.createOrUpdateUser
 }
 
 export default withLoggedInUserSupport(
