@@ -14,7 +14,6 @@ import PhoneNumberEditor from './phone-number-editor'
 
 interface Props extends FormikProps<User> {
   allowedNotificationChannels: string[]
-  loggedInUser: User
 }
 
 const allNotificationChannels = ['email', 'sms', 'push']
