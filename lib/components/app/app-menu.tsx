@@ -154,7 +154,6 @@ class AppMenu extends Component<
             role={isSelected !== undefined ? 'option' : undefined}
             subItems={this._addExtraMenuItems(children) || undefined}
             text={label}
-            title={typeof label === 'string' ? label : ''}
           />
         )
       })
@@ -239,10 +238,7 @@ class AppMenu extends Component<
               className="app-menu-trip-planner-link"
               icon={<MapMarked />}
               onClick={this._showTripPlanner}
-              text={
-                <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
-              }
-              title={intl.formatMessage({
+              text={intl.formatMessage({
                 id: 'components.BatchRoutingPanel.shortTitle'
               })}
             />
@@ -252,8 +248,7 @@ class AppMenu extends Component<
               className="app-menu-route-viewer-link"
               icon={<Bus />}
               onClick={this._showRouteViewer}
-              text={<FormattedMessage id="components.RouteViewer.shortTitle" />}
-              title={intl.formatMessage({
+              text={intl.formatMessage({
                 id: 'components.RouteViewer.shortTitle'
               })}
             />
@@ -263,16 +258,14 @@ class AppMenu extends Component<
               className="app-menu-route-viewer-link"
               icon={<MapPin />}
               onClick={this._showNearby}
-              text={<FormattedMessage id="components.ViewSwitcher.nearby" />}
-              title={intl.formatMessage({
+              text={intl.formatMessage({
                 id: 'components.ViewSwitcher.nearby'
               })}
             />
             <AppMenuItem
               icon={<Undo />}
               onClick={this._startOver}
-              text={<FormattedMessage id="common.forms.startOver" />}
-              title={intl.formatMessage({
+              text={intl.formatMessage({
                 id: 'common.forms.startOver'
               })}
             />
@@ -280,8 +273,7 @@ class AppMenu extends Component<
               <AppMenuItem
                 icon={<SvgIcon iconName={popupTarget} />}
                 onClick={this._triggerPopup}
-                text={<PopupTriggerText popupTarget={popupTarget} />}
-                title={intl.formatMessage({
+                text={intl.formatMessage({
                   id: `config.popups.${popupTarget}`
                 })}
               />
@@ -290,8 +282,7 @@ class AppMenu extends Component<
               <AppMenuItem
                 icon={<History />}
                 onClick={resetAndToggleCallHistory}
-                text={<FormattedMessage id="components.AppMenu.callHistory" />}
-                title={intl.formatMessage({
+                text={intl.formatMessage({
                   id: 'components.AppMenu.callHistory'
                 })}
               />
@@ -300,8 +291,7 @@ class AppMenu extends Component<
               <AppMenuItem
                 icon={<GraduationCap />}
                 onClick={resetAndToggleFieldTrips}
-                text={<FormattedMessage id="components.AppMenu.fieldTrip" />}
-                title={intl.formatMessage({
+                text={intl.formatMessage({
                   id: 'components.AppMenu.fieldTrip'
                 })}
               />
@@ -310,8 +300,7 @@ class AppMenu extends Component<
               <AppMenuItem
                 icon={<Envelope />}
                 onClick={toggleMailables}
-                text={<FormattedMessage id="components.AppMenu.mailables" />}
-                title={intl.formatMessage({
+                text={intl.formatMessage({
                   id: 'components.AppMenu.mailables'
                 })}
               />

@@ -9,7 +9,6 @@ interface Props extends HTMLAttributes<HTMLElement> {
   onClick?: () => void
   subItems?: JSX.Element[]
   text: JSX.Element | string
-  title?: string
 }
 
 interface State {
@@ -67,8 +66,7 @@ export default class AppMenuItem extends Component<Props, State> {
   }
 
   render(): JSX.Element {
-    const { icon, id, onClick, subItems, text, title, ...otherProps } =
-      this.props
+    const { icon, id, onClick, subItems, text, ...otherProps } = this.props
     const { isExpanded } = this.state
     const hasHref = !!otherProps.href
     const isAbsolute = otherProps.href?.startsWith('http')
@@ -85,7 +83,7 @@ export default class AppMenuItem extends Component<Props, State> {
           onKeyDown={this._handleKeyDown}
           {...otherProps}
           target={hasHref && isAbsolute ? '_blank' : undefined}
-          title={title}
+          title={typeof text === 'string' ? text : ''}
         >
           <span aria-hidden>{icon}</span>
           <span>{text}</span>
