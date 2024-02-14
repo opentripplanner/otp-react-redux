@@ -31,9 +31,12 @@ export interface AccessibilityScoreConfig {
 
 /** OTP URL settings */
 export interface ApiConfig {
+  basePath?: string
   host: string
+  // Soon to be deprecated
   path: string
   port: number
+  // Soon to be deprecated
   v2?: boolean
 }
 

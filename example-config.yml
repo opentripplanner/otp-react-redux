@@ -1,8 +1,20 @@
+# To use OTP-RR with your own OTP deployment, at a minimum you will need to set the
+# host and port under the api section (for example to http://localhost and 8080).
+# The v2 configuration item here refers to OTP 2.x, not a versioned API with base URLs
+# ending in v2. OTP v1 is no longer supported by OTP-RR, so leave this v2 item enabled.
+# The bare minimum additional things to configure are:
+# The initLat, initLon, and  baseLayers in the 'map' section below;
+# The apiKey, boundary, focus point, and baseUrl in the 'geocoder' section below.
 api:
   host: http://localhost
+  # Path will be deprecated once the REST API is deprecated, which will be soon.
+  # If the OTP server is hosted at /otp, then no path needs to be configured
   path: /otp/routers/default
-  port: 8001
-# v2: false
+  # If your OTP server is at a path other than "/otp" (usually due to a proxy)
+  # Then you can set the OPTIONAL property basePath. The default is "/otp"
+  basePath: /otp
+  port: 8080
+  v2: true
 
 # Determines if the header brand should be clickable or not. If set to true, 
 # clicking the header brand will go back to the main trip planner page and wipe out any
@@ -159,9 +171,11 @@ map:
 # it is possible to leave out a geocoder config entirely. In that case only
 # GPS coordinates will be used when finding the origin/destination.
 
-# example config for a Pelias geocoder (https://pelias.io/)
+# Example config for a Pelias geocoder (https://pelias.io/).
+# Until you have deployed or subscribed to a geocoder service, a short-term temporary
+# geocoder test account can be obtained from the Pelias maintainers at geocode.earth.
 geocoder:
-  apiKey: MAPZEN_KEY
+  apiKey: PELIAS_API_KEY
   boundary:
     rect:
       minLon: -123.2034
