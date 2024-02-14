@@ -179,9 +179,7 @@ components:
     tooManyPlaces: Se alcanzó el máximo de lugares intermedios
   AdvancedOptions:
     bannedRoutes: Seleccionar rutas prohibidas…
-    bikeTolerance: Tolerancia de las bicicletas
     preferredRoutes: Seleccionar rutas preferidas…
-    walkTolerance: Tolerancia al andar
   AfterSignInScreen:
     mainTitle: Redirigiendo…
     message: >-
@@ -334,6 +332,42 @@ components:
     timeWalking: "{time} caminando"
   MobileOptions:
     header: Configurar las opciones de búsqueda
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Caña
+        crutches: Muletas
+        electric wheelchair: Silla de ruedas eléctrica
+        manual walker: Andador
+        manual wheelchair: Silla de ruedas
+        mobility scooter: Scooter eléctrico
+        none: Sin dispositivo de ayuda
+        service animal: Animal de servicio
+        stroller: Cochecito
+        wheeled walker: Andador con ruedas
+        white cane: Bastón blanco
+      prompt: >-
+        ¿Utiliza habitualmente un dispositivo de ayuda a la movilidad? (Marque
+        todo lo que corresponda)
+    LimitationsPane:
+      mobilityPrompt: >-
+        ¿Tiene alguna limitación de movilidad que le obligue a caminar más
+        despacio o con más cuidado que otras personas?
+      visionLimitations:
+        legally-blind: Invidente
+        low-vision: Visión reducida
+        none: Ninguna
+      visionPrompt: ¿Tiene alguna limitación visual?
+    MobilityPane:
+      button: Editar su perfil de movilidad
+      header: Perfil de movilidad
+      mobilityDevices: "Dispositivos de movilidad: "
+      mobilityLimitations: "Limitaciones de la movilidad: "
+      visionLimitations: "Limitaciones visuales: "
+    intro: >-
+      Por favor, responda a algunas preguntas para adaptar la planificación del
+      viaje a sus necesidades y preferencias.
+    title: Defina su perfil de movilidad
   NarrativeItinerariesHeader:
     changeSortDir: Cambiar la dirección de clasificación
     howToFindResults: >-
@@ -594,7 +628,6 @@ components:
     timezoneWarning: Las horas de salida se indican en <strong>{timezoneCode}</strong>.
     titleBarStopId: Parada {stopId}
     viewNearby: Ver cerca
-    viewNextDepartures: Ver salidas siguientes
     viewSchedule: Ver horario
     zoomToStop: Acercar vista a la parada
   SubNav:

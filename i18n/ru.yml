@@ -170,9 +170,7 @@ components:
     tooManyPlaces: Достигнуто ограничение по количеству промежуточных мест
   AdvancedOptions:
     bannedRoutes: Выбор заблокированных маршрутов…
-    bikeTolerance: Выносливость для езды на велосипеде
     preferredRoutes: Выбор предпочтительных маршрутов…
-    walkTolerance: Выносливость для ходьбы пешком
   AfterSignInScreen:
     mainTitle: Перенаправление…
     message: >-
@@ -592,7 +590,6 @@ components:
     timezoneWarning: Время отправки указано для <strong>{timezoneCode}</strong>.
     titleBarStopId: Остановка «{stopId}»
     viewNearby: Посмотреть рядом
-    viewNextDepartures: Просмотреть следующие отправления
     viewSchedule: Просмотреть расписание
     zoomToStop: Приблизить остановку
   SubNav:

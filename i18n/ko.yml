@@ -165,9 +165,7 @@ components:
     tooManyPlaces: 중간 경유지의 최대 수에 도달함
   AdvancedOptions:
     bannedRoutes: 금지된 경로 선택…
-    bikeTolerance: 자전거 허용 오차
     preferredRoutes: 선호 경로 선택…
-    walkTolerance: 걷기 내성
   AfterSignInScreen:
     mainTitle: 경로 재설정 중...
     message: 몇 초 후에도 페이지가 로드되지 않는 경우, <redirectLink>여기를 클릭</redirectLink>하십시오.
@@ -538,7 +536,6 @@ components:
     timezoneWarning: 출발 시간은 <strong>{timezoneCode}</strong>(으)로 표시됩니다.
     titleBarStopId: 정류장 {stopId}
     viewNearby: 근처 보기
-    viewNextDepartures: 다음 출발 보기
     viewSchedule: 스케쥴 보기
     zoomToStop: 정류장 확대
   SubNav:
