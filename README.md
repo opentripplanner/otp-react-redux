@@ -13,7 +13,7 @@ An example of an OTP-RR application is included in the repository. The example p
 
 To run, first clone the repo and install [yarn](https://yarnpkg.com/) if needed.
 
-Update `example-config.yml` with the needed API keys, and optionally, the OTP endpoint and initial map origin. (The default values are for a test server for Portland, OR.).
+Update `example-config.yml` with the needed API keys, and optionally, the OTP endpoint and initial map origin. (The default values are for a test server for Portland, OR.). See the comments at the head of the config file for further details.
 
 Install the dependencies and start a local instance using the following script:
 
@@ -41,6 +41,8 @@ env JS_CONFIG=my-custom-js.js CUSTOM_CSS=my-custom-css.css yarn build
 
 OTP-react-redux uses `react-intl` from the [`formatjs`](https://github.com/formatjs/formatjs) library for internationalization.
 Both `react-intl` and `formatjs` take advantage of native internationalization features provided by web browsers.
+
+The example application supports several different languages out of the box. It will first check the `lang` key in `window.localstorage` for ISO language codes such as `fr` or `es` matching files in the i18n directory, then fall back on the `navigator.language` that is typically configured via your web browser's settings, before finally falling back on the `localization: defaultLocale` item defined in `example-config.yml`.
 
 ### `i18n` Folder
 
