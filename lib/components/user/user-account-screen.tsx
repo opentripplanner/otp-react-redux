@@ -10,6 +10,7 @@ import toast from 'react-hot-toast'
 
 import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
+import { cleanupMobilityDevices } from '../../util/user'
 import { CREATE_ACCOUNT_PATH, MOBILITY_PATH } from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import { toastSuccess } from '../util/toasts'
@@ -64,6 +65,10 @@ class UserAccountScreen extends Component<Props> {
       ...clone(userData),
       notificationChannel: userData.notificationChannel.join(',')
     }
+    cleanupMobilityDevices(
+      passedUserData.mobilityProfile,
+      this.props.loggedInUser.mobilityProfile?.mobilityDevices
+    )
 
     const result = await createOrUpdateUser(passedUserData, intl)
 
