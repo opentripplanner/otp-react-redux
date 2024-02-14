@@ -14,6 +14,7 @@ import Loading from '../../narrative/loading'
 import MobileContainer from '../../mobile/container'
 import MobileNavigationBar from '../../mobile/navigation-bar'
 import PageTitle from '../../util/page-title'
+import VehiclePositionRetriever from '../vehicle-position-retriever'
 
 import {
   FloatingLoadingIndicator,
@@ -24,7 +25,6 @@ import RentalStation from './rental-station'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
 import VehicleParking from './vehicle-parking'
-import VehiclePositionRetriever from '../vehicle-position-retriever'
 
 const AUTO_REFRESH_INTERVAL = 15000
 
@@ -34,6 +34,7 @@ type Props = {
   entityId?: string
   fetchNearby: (latLon: LatLonObj, map?: MapRef) => void
   hideBackButton?: boolean
+  location: string
   mobile?: boolean
   nearby: any
   nearbyViewCoords?: LatLonObj
@@ -97,6 +98,7 @@ const getNearbyItem = (place: any, setLocation: SetLocationHandler) => {
 function NearbyView({
   entityId,
   fetchNearby,
+  location,
   mobile,
   nearby,
   nearbyViewCoords,
@@ -121,7 +123,7 @@ function NearbyView({
     return function cleanup() {
       setHighlightedLocation(null)
     }
-  })
+  }, [location, setHighlightedLocation])
 
   useEffect(() => {
     const listener = (e: any) => {
@@ -272,6 +274,7 @@ const mapStateToProps = (state: AppReduxState) => {
   return {
     entityId,
     homeTimezone: config.homeTimezone,
+    location: state.router.location,
     nearby,
     nearbyViewCoords
   }
