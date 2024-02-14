@@ -602,6 +602,7 @@ components:
     header: Stop Viewer
     loadingText: Loading Stop...
     nextArrivals: Next Arrivals
+    nextDepartures: Next Departures
     noStopsFound: No stop times found for date.
     operatorLogoAriaLabel: "{operatorName} stop:"
     schedule: Schedule

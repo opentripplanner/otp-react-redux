@@ -20,10 +20,12 @@ import {
   NearbySidebarContainer,
   Scrollable
 } from './styled'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import RentalStation from './rental-station'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
 import VehicleParking from './vehicle-parking'
+
 import VehiclePositionRetriever from '../vehicle-position-retriever'
 
 const AUTO_REFRESH_INTERVAL = 15000
@@ -223,6 +225,11 @@ function NearbyView({
       <PageTitle
         title={intl.formatMessage({ id: 'components.NearbyView.header' })}
       />
+      <InvisibleA11yLabel>
+        <h1>
+          <FormattedMessage id="components.NearbyView.header" />
+        </h1>
+      </InvisibleA11yLabel>
       {mobile && (
         <MobileNavigationBar
           headerText={intl.formatMessage({
@@ -232,12 +239,12 @@ function NearbyView({
         />
       )}
       {nearby && (
-        <h3 style={{ opacity: 0, position: 'absolute' }}>
+        <h2 style={{ opacity: 0, position: 'absolute' }}>
           <FormattedMessage
             id="components.NearbyView.nearbyListIntro"
             values={{ count: nearby.length }}
           />
-        </h3>
+        </h2>
       )}
       <NearbySidebarContainer
         className="base-color-bg"

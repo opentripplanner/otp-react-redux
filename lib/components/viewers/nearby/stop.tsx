@@ -26,6 +26,7 @@ import {
   PatternRowContainer,
   StyledAlert
 } from './styled'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 const { getUserTimezone } = coreUtils.time
 
@@ -197,6 +198,11 @@ const Stop = ({
         {fromToSlot}
       </CardBody>
       <div>
+        <InvisibleA11yLabel>
+          <h3>
+            <FormattedMessage id="components.StopViewer.nextDepartures" />
+          </h3>
+        </InvisibleA11yLabel>
         <div>{timezoneWarning}</div>
         <PatternRowContainer>{patternRows}</PatternRowContainer>
       </div>
