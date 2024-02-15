@@ -58,7 +58,7 @@ const Wrapper = styled.div`
  */
 class UserAccountScreen extends Component<Props> {
   _updateUserPrefs = async (userData: EditedUser, silentOnSucceed = false) => {
-    const { createOrUpdateUser, intl } = this.props
+    const { createOrUpdateUser, intl, loggedInUser } = this.props
 
     // Convert the notification attributes from array to comma-separated string.
     const passedUserData = {
@@ -67,7 +67,7 @@ class UserAccountScreen extends Component<Props> {
     }
     cleanupMobilityDevices(
       passedUserData.mobilityProfile,
-      this.props.loggedInUser.mobilityProfile?.mobilityDevices
+      loggedInUser.mobilityProfile?.mobilityDevices
     )
 
     const result = await createOrUpdateUser(passedUserData, intl)
