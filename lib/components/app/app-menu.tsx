@@ -273,9 +273,7 @@ class AppMenu extends Component<
               <AppMenuItem
                 icon={<SvgIcon iconName={popupTarget} />}
                 onClick={this._triggerPopup}
-                text={intl.formatMessage({
-                  id: `config.popups.${popupTarget}`
-                })}
+                text={<PopupTriggerText popupTarget={popupTarget} />}
               />
             )}
             {callTakerEnabled && (
