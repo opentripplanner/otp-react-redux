@@ -524,16 +524,21 @@ itinerary:
 #     optionFilter: secondTarget # This button is rendered to the left of the itinerary filter in the batch and metro UIs
 #     sidebarLink: testTarget # this button is rendered in the sidebar
 
-### Language section to override strings.
+### Uncommenting the language section below will enable internationalization as a whole.
+### Defining a language here (a nested section whose name is an ISO language code corresponding to
+### a file in the i18n directory) will make that language available programmatically, and will also
+### cause it to be visible in the LocaleSelector component. Each language must have at least a
+### "name" property defined to be valid. Only this name property is needed for a language to function.
+### The LocaleSelector component, which provides a dropdown for the user to change their locale, will
+### only be rendered in the UI if more than one valid language is included in the language section.
+###
+### Language strings may also be optionally overridden here.
 ### Strings can be set globally for all languages (e.g. for strings that are brands/nouns,
 ### e.g. TriMet's "TransitTracker") or by language.
 ### The nested structure should be the same as the language files under the i18n folder.
 ### You can also customize OTP error messages for itinerary searches based on OTP HTTP codes.
 ### A separate message can be set for each language or locale if necessary.
 ### Languages defined may be region-specific (e.g. en-US) or language-specific (e.g. es, kr)
-### The LocaleSelector component, which provides a dropdown for the user to change their locale, will
-### only be rendered if more than one valid language (all languages must have "name" defined) is included
-### in the language config.
 
 # language:
 #   allLanguages
