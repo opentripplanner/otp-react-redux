@@ -2,9 +2,11 @@
 # host and port under the api section (for example to http://localhost and 8080).
 # The v2 configuration item here refers to OTP 2.x, not a versioned API with base URLs
 # ending in v2. OTP v1 is no longer supported by OTP-RR, so leave this v2 item enabled.
-# The bare minimum additional things to configure are:
-# The initLat, initLon, and  baseLayers in the 'map' section below;
-# The apiKey, boundary, focus point, and baseUrl in the 'geocoder' section below.
+# The bare minimum additional things to configure in sections below are:
+# The initLat, initLon, and  baseLayers in the 'map' section;
+# The apiKey, boundary, focus point, and baseUrl in the 'geocoder' section;
+# All locally relevant modes of transport in the 'modes: transitModes' section;
+# If needed, any language codes and names in the 'language' section.
 api:
   host: http://localhost
   # Path will be deprecated once the REST API is deprecated, which will be soon.
@@ -264,11 +266,19 @@ modes:
       # most notably in the enhanced stop viewer bubble
       color: blue
     - mode: TRAM
+      # For each GTFS mode, you can customize the label displayed in the UI.
       label: MAX & Streetcar
     - mode: RAIL
       label: WES
     - mode: GONDOLA
       label: Aerial Tram
+    ## Additional modes added here will be visible in the mode selector in the UI.
+    ## Modes that are not configured here will never be enabled in requests, so if
+    ## your network has subways or ferries be sure they are present here.
+    - mode: SUBWAY
+      label: Subway
+    - mode: FERRY
+      label: Ferry
 
   # Potentially deprecated
   accessModes:
