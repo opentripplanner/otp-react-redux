@@ -5,7 +5,6 @@ import dateFnsUSLocale from 'date-fns/locale/en-US'
 import React from 'react'
 
 import { IconWithText } from '../util/styledIcon'
-import Strong from '../util/strong-text'
 
 interface Props {
   /**
@@ -34,7 +33,7 @@ const TimezoneWarning = ({
     <IconWithText Icon={InfoCircle}>
       <FormattedMessage
         id="components.StopViewer.timezoneWarning"
-        values={{ strong: Strong, timezoneCode }}
+        values={{ timezoneCode: <strong>{timezoneCode}</strong> }}
       />
     </IconWithText>
   )

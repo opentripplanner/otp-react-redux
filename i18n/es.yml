@@ -625,7 +625,7 @@ components:
     noStopsFound: No se han encontrado tiempos de parada para la fecha.
     operatorLogoAriaLabel: "Parada de {operatorName}:"
     schedule: Horario
-    timezoneWarning: Las horas de salida se indican en <strong>{timezoneCode}</strong>.
+    timezoneWarning: Las horas de salida se indican en {timezoneCode}.
     titleBarStopId: Parada {stopId}
     viewNearby: Ver cerca
     viewSchedule: Ver horario

@@ -634,7 +634,7 @@ components:
     noStopsFound: Aucun horaire pour la date choisie.
     operatorLogoAriaLabel: "Arrêt {operatorName} :"
     schedule: Horaires
-    timezoneWarning: Les horaires sont affichés dans le fuseau <strong>{timezoneCode}</strong>.
+    timezoneWarning: Les horaires sont affichés dans le fuseau {timezoneCode}.
     titleBarStopId: Arrêt {stopId}
     viewNearby: À proximité
     viewSchedule: Horaires
