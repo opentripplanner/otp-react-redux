@@ -131,7 +131,8 @@ const Stop = ({
     }, [])
     .sort(
       (a: PatternStopTime, b: PatternStopTime) =>
-        (a.stoptimes?.[0].serviceDay || 0) - (b.stoptimes?.[0].serviceDay || 0)
+        (a.stoptimes?.[0].realtimeDeparture || 0) -
+        (b.stoptimes?.[0].realtimeDeparture || 0)
     )
     .map((st: any, index: number) => {
       const sortedStopTimes = st.stoptimes.sort(
