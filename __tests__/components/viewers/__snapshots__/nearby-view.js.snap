@@ -13067,6 +13067,741 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     key="0"
                                     pattern={
                                       Object {
+                                        "headsign": "Angle Lake",
+                                        "route": Object {
+                                          "agency": Object {
+                                            "gtfsId": "40:40",
+                                            "name": "Sound Transit",
+                                          },
+                                          "color": "28813F",
+                                          "longName": "Northgate - Angle Lake",
+                                          "mode": "TRAM",
+                                          "shortName": "1 Line",
+                                          "textColor": "FFFFFF",
+                                          "type": 0,
+                                        },
+                                      }
+                                    }
+                                    roundedTop={false}
+                                    route={
+                                      Object {
+                                        "agency": Object {
+                                          "gtfsId": "40:40",
+                                          "name": "Sound Transit",
+                                        },
+                                        "color": "28813F",
+                                        "longName": "Northgate - Angle Lake",
+                                        "mode": "TRAM",
+                                        "shortName": "1 Line",
+                                        "textColor": "FFFFFF",
+                                        "type": 0,
+                                      }
+                                    }
+                                    stopTimes={
+                                      Array [
+                                        Object {
+                                          "departureDelay": 0,
+                                          "headsign": "Angle Lake",
+                                          "realtimeDeparture": 50220,
+                                          "realtimeState": "SCHEDULED",
+                                          "scheduledDeparture": 50220,
+                                          "serviceDay": 1705046400,
+                                          "trip": Object {
+                                            "route": Object {
+                                              "shortName": "1 Line",
+                                            },
+                                          },
+                                        },
+                                        Object {
+                                          "departureDelay": 0,
+                                          "headsign": "Angle Lake",
+                                          "realtimeDeparture": 50820,
+                                          "realtimeState": "SCHEDULED",
+                                          "scheduledDeparture": 50820,
+                                          "serviceDay": 1705046400,
+                                          "trip": Object {
+                                            "route": Object {
+                                              "shortName": "1 Line",
+                                            },
+                                          },
+                                        },
+                                        Object {
+                                          "departureDelay": 0,
+                                          "headsign": "Angle Lake",
+                                          "realtimeDeparture": 51420,
+                                          "realtimeState": "SCHEDULED",
+                                          "scheduledDeparture": 51420,
+                                          "serviceDay": 1705046400,
+                                          "trip": Object {
+                                            "route": Object {
+                                              "shortName": "1 Line",
+                                            },
+                                          },
+                                        },
+                                        Object {
+                                          "departureDelay": 0,
+                                          "headsign": "Angle Lake",
+                                          "realtimeDeparture": 52020,
+                                          "realtimeState": "SCHEDULED",
+                                          "scheduledDeparture": 52020,
+                                          "serviceDay": 1705046400,
+                                          "trip": Object {
+                                            "route": Object {
+                                              "shortName": "1 Line",
+                                            },
+                                          },
+                                        },
+                                        Object {
+                                          "departureDelay": 0,
+                                          "headsign": "Angle Lake",
+                                          "realtimeDeparture": 52620,
+                                          "realtimeState": "SCHEDULED",
+                                          "scheduledDeparture": 52620,
+                                          "serviceDay": 1705046400,
+                                          "trip": Object {
+                                            "route": Object {
+                                              "shortName": "1 Line",
+                                            },
+                                          },
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <styled.li
+                                      roundedTop={false}
+                                    >
+                                      <li
+                                        className="sc-gUUBao cACaIc"
+                                      >
+                                        <div
+                                          className="header stop-view"
+                                          style={
+                                            Object {
+                                              "backgroundColor": "#28813F",
+                                              "color": "#FFFFFF",
+                                            }
+                                          }
+                                        >
+                                          <div
+                                            className="route-name"
+                                          >
+                                            <span
+                                              className="route-name-container"
+                                              title="1 Line"
+                                            >
+                                              <DefaultRouteRenderer
+                                                leg={
+                                                  Object {
+                                                    "agencyName": "Sound Transit",
+                                                    "mode": "TRAM",
+                                                    "onColoredBackground": true,
+                                                    "origColor": undefined,
+                                                    "routeColor": "28813F",
+                                                    "routeLongName": "Northgate - Angle Lake",
+                                                    "routeShortName": "1 Line",
+                                                    "routeTextColor": "FFFFFF",
+                                                  }
+                                                }
+                                                style={
+                                                  Object {
+                                                    "fontSize": "16px",
+                                                  }
+                                                }
+                                              >
+                                                <styled.span
+                                                  color="28813F"
+                                                  isOnColoredBackground={true}
+                                                  style={
+                                                    Object {
+                                                      "fontSize": "16px",
+                                                    }
+                                                  }
+                                                  title="1 Line"
+                                                >
+                                                  <span
+                                                    className="sc-JoojE bMhDjL"
+                                                    color="28813F"
+                                                    style={
+                                                      Object {
+                                                        "fontSize": "16px",
+                                                      }
+                                                    }
+                                                    title="1 Line"
+                                                  >
+                                                    1 Line
+                                                  </span>
+                                                </styled.span>
+                                              </DefaultRouteRenderer>
+                                            </span>
+                                            <span
+                                              style={
+                                                Object {
+                                                  "wordBreak": "break-word",
+                                                }
+                                              }
+                                              title="Angle Lake"
+                                            >
+                                              Angle Lake
+                                            </span>
+                                          </div>
+                                          <styled.ol>
+                                            <ol
+                                              className="sc-hJxDiT kOKRew"
+                                            >
+                                              <p
+                                                aria-hidden={true}
+                                                className="day-label"
+                                              >
+                                                <IconWithText
+                                                  Icon={
+                                                    Object {
+                                                      "$$typeof": Symbol(react.forward_ref),
+                                                      "displayName": "Calendar",
+                                                      "render": [Function],
+                                                    }
+                                                  }
+                                                >
+                                                  <div
+                                                    style={
+                                                      Object {
+                                                        "display": "contents",
+                                                      }
+                                                    }
+                                                  >
+                                                    <Styled(styled.span)>
+                                                      <span
+                                                        className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                                                      >
+                                                        <Calendar>
+                                                          <StyledIconBase
+                                                            iconAttrs={
+                                                              Object {
+                                                                "fill": "currentColor",
+                                                                "xmlns": "http://www.w3.org/2000/svg",
+                                                              }
+                                                            }
+                                                            iconVerticalAlign="middle"
+                                                            iconViewBox="0 0 448 512"
+                                                          >
+                                                            <ForwardRef
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                              iconAttrs={
+                                                                Object {
+                                                                  "fill": "currentColor",
+                                                                  "xmlns": "http://www.w3.org/2000/svg",
+                                                                }
+                                                              }
+                                                              iconVerticalAlign="middle"
+                                                              iconViewBox="0 0 448 512"
+                                                            >
+                                                              <svg
+                                                                aria-hidden="true"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                                fill="currentColor"
+                                                                focusable="false"
+                                                                viewBox="0 0 448 512"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                              >
+                                                                <path
+                                                                  d="M152 64h144V24c0-13.25 10.7-24 24-24s24 10.75 24 24v40h40c35.3 0 64 28.65 64 64v320c0 35.3-28.7 64-64 64H64c-35.35 0-64-28.7-64-64V128c0-35.35 28.65-64 64-64h40V24c0-13.25 10.7-24 24-24s24 10.75 24 24v40zM48 448c0 8.8 7.16 16 16 16h320c8.8 0 16-7.2 16-16V192H48v256z"
+                                                                  fill="currentColor"
+                                                                />
+                                                              </svg>
+                                                            </ForwardRef>
+                                                          </StyledIconBase>
+                                                        </Calendar>
+                                                      </span>
+                                                    </Styled(styled.span)>
+                                                    <span>
+                                                      <FormattedDayOfWeek
+                                                        day="friday"
+                                                      >
+                                                        <FormattedMessage
+                                                          id="common.daysOfWeek.friday"
+                                                        >
+                                                          common.daysOfWeek.friday
+                                                        </FormattedMessage>
+                                                      </FormattedDayOfWeek>
+                                                    </span>
+                                                  </div>
+                                                </IconWithText>
+                                              </p>
+                                              <li
+                                                key="0"
+                                              >
+                                                <Connect(StopTimeCell)
+                                                  homeTimezone="America/Los_Angeles"
+                                                  key="0"
+                                                  stopTime={
+                                                    Object {
+                                                      "departureDelay": 0,
+                                                      "headsign": "Angle Lake",
+                                                      "realtimeDeparture": 50220,
+                                                      "realtimeState": "SCHEDULED",
+                                                      "scheduledDeparture": 50220,
+                                                      "serviceDay": 1705046400,
+                                                      "trip": Object {
+                                                        "route": Object {
+                                                          "shortName": "1 Line",
+                                                        },
+                                                      },
+                                                    }
+                                                  }
+                                                >
+                                                  <StopTimeCell
+                                                    homeTimezone="America/Los_Angeles"
+                                                    onlyShowCountdownForRealtime={false}
+                                                    stopTime={
+                                                      Object {
+                                                        "departureDelay": 0,
+                                                        "headsign": "Angle Lake",
+                                                        "realtimeDeparture": 50220,
+                                                        "realtimeState": "SCHEDULED",
+                                                        "scheduledDeparture": 50220,
+                                                        "serviceDay": 1705046400,
+                                                        "trip": Object {
+                                                          "route": Object {
+                                                            "shortName": "1 Line",
+                                                          },
+                                                        },
+                                                      }
+                                                    }
+                                                  >
+                                                    <div
+                                                      className="percy-hide"
+                                                    >
+                                                      <Styled(styled.span)
+                                                        style={
+                                                          Object {
+                                                            "fontSize": "0.6em",
+                                                            "margin": 0,
+                                                            "marginRight": 2,
+                                                          }
+                                                        }
+                                                        title="components.StopTimeCell.scheduled"
+                                                      >
+                                                        <span
+                                                          className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                                                          style={
+                                                            Object {
+                                                              "fontSize": "0.6em",
+                                                              "margin": 0,
+                                                              "marginRight": 2,
+                                                            }
+                                                          }
+                                                          title="components.StopTimeCell.scheduled"
+                                                        >
+                                                          <Clock>
+                                                            <StyledIconBase
+                                                              iconAttrs={
+                                                                Object {
+                                                                  "fill": "currentColor",
+                                                                  "xmlns": "http://www.w3.org/2000/svg",
+                                                                }
+                                                              }
+                                                              iconVerticalAlign="middle"
+                                                              iconViewBox="0 0 512 512"
+                                                            >
+                                                              <ForwardRef
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                                iconAttrs={
+                                                                  Object {
+                                                                    "fill": "currentColor",
+                                                                    "xmlns": "http://www.w3.org/2000/svg",
+                                                                  }
+                                                                }
+                                                                iconVerticalAlign="middle"
+                                                                iconViewBox="0 0 512 512"
+                                                              >
+                                                                <svg
+                                                                  aria-hidden="true"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                                  fill="currentColor"
+                                                                  focusable="false"
+                                                                  viewBox="0 0 512 512"
+                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                  <path
+                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                    fill="currentColor"
+                                                                  />
+                                                                </svg>
+                                                              </ForwardRef>
+                                                            </StyledIconBase>
+                                                          </Clock>
+                                                        </span>
+                                                      </Styled(styled.span)>
+                                                      <span
+                                                        className="percy-hide"
+                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                      >
+                                                        <styled.span>
+                                                          <span
+                                                            className="sc-hkwmXC eVsZcu"
+                                                          >
+                                                            <FormattedDayOfWeek
+                                                              day="friday"
+                                                            >
+                                                              <FormattedMessage
+                                                                id="common.daysOfWeek.friday"
+                                                              >
+                                                                common.daysOfWeek.friday
+                                                              </FormattedMessage>
+                                                            </FormattedDayOfWeek>
+                                                             
+                                                          </span>
+                                                        </styled.span>
+                                                        <DepartureTime
+                                                          realTime={true}
+                                                          stopTime={
+                                                            Object {
+                                                              "departureDelay": 0,
+                                                              "headsign": "Angle Lake",
+                                                              "realtimeDeparture": 50220,
+                                                              "realtimeState": "SCHEDULED",
+                                                              "scheduledDeparture": 50220,
+                                                              "serviceDay": 1705046400,
+                                                              "trip": Object {
+                                                                "route": Object {
+                                                                  "shortName": "1 Line",
+                                                                },
+                                                              },
+                                                            }
+                                                          }
+                                                        >
+                                                          <FormattedTime
+                                                            timeStyle="short"
+                                                            value={2024-01-12T21:57:00.000Z}
+                                                          >
+                                                            1:57 PM
+                                                          </FormattedTime>
+                                                        </DepartureTime>
+                                                      </span>
+                                                    </div>
+                                                  </StopTimeCell>
+                                                </Connect(StopTimeCell)>
+                                              </li>
+                                              <li
+                                                key="1"
+                                              >
+                                                <Connect(StopTimeCell)
+                                                  homeTimezone="America/Los_Angeles"
+                                                  key="1"
+                                                  stopTime={
+                                                    Object {
+                                                      "departureDelay": 0,
+                                                      "headsign": "Angle Lake",
+                                                      "realtimeDeparture": 50820,
+                                                      "realtimeState": "SCHEDULED",
+                                                      "scheduledDeparture": 50820,
+                                                      "serviceDay": 1705046400,
+                                                      "trip": Object {
+                                                        "route": Object {
+                                                          "shortName": "1 Line",
+                                                        },
+                                                      },
+                                                    }
+                                                  }
+                                                >
+                                                  <StopTimeCell
+                                                    homeTimezone="America/Los_Angeles"
+                                                    onlyShowCountdownForRealtime={false}
+                                                    stopTime={
+                                                      Object {
+                                                        "departureDelay": 0,
+                                                        "headsign": "Angle Lake",
+                                                        "realtimeDeparture": 50820,
+                                                        "realtimeState": "SCHEDULED",
+                                                        "scheduledDeparture": 50820,
+                                                        "serviceDay": 1705046400,
+                                                        "trip": Object {
+                                                          "route": Object {
+                                                            "shortName": "1 Line",
+                                                          },
+                                                        },
+                                                      }
+                                                    }
+                                                  >
+                                                    <div
+                                                      className="percy-hide"
+                                                    >
+                                                      <Styled(styled.span)
+                                                        style={
+                                                          Object {
+                                                            "fontSize": "0.6em",
+                                                            "margin": 0,
+                                                            "marginRight": 2,
+                                                          }
+                                                        }
+                                                        title="components.StopTimeCell.scheduled"
+                                                      >
+                                                        <span
+                                                          className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                                                          style={
+                                                            Object {
+                                                              "fontSize": "0.6em",
+                                                              "margin": 0,
+                                                              "marginRight": 2,
+                                                            }
+                                                          }
+                                                          title="components.StopTimeCell.scheduled"
+                                                        >
+                                                          <Clock>
+                                                            <StyledIconBase
+                                                              iconAttrs={
+                                                                Object {
+                                                                  "fill": "currentColor",
+                                                                  "xmlns": "http://www.w3.org/2000/svg",
+                                                                }
+                                                              }
+                                                              iconVerticalAlign="middle"
+                                                              iconViewBox="0 0 512 512"
+                                                            >
+                                                              <ForwardRef
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                                iconAttrs={
+                                                                  Object {
+                                                                    "fill": "currentColor",
+                                                                    "xmlns": "http://www.w3.org/2000/svg",
+                                                                  }
+                                                                }
+                                                                iconVerticalAlign="middle"
+                                                                iconViewBox="0 0 512 512"
+                                                              >
+                                                                <svg
+                                                                  aria-hidden="true"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                                  fill="currentColor"
+                                                                  focusable="false"
+                                                                  viewBox="0 0 512 512"
+                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                  <path
+                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                    fill="currentColor"
+                                                                  />
+                                                                </svg>
+                                                              </ForwardRef>
+                                                            </StyledIconBase>
+                                                          </Clock>
+                                                        </span>
+                                                      </Styled(styled.span)>
+                                                      <span
+                                                        className="percy-hide"
+                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                      >
+                                                        <styled.span>
+                                                          <span
+                                                            className="sc-hkwmXC eVsZcu"
+                                                          >
+                                                            <FormattedDayOfWeek
+                                                              day="friday"
+                                                            >
+                                                              <FormattedMessage
+                                                                id="common.daysOfWeek.friday"
+                                                              >
+                                                                common.daysOfWeek.friday
+                                                              </FormattedMessage>
+                                                            </FormattedDayOfWeek>
+                                                             
+                                                          </span>
+                                                        </styled.span>
+                                                        <DepartureTime
+                                                          realTime={true}
+                                                          stopTime={
+                                                            Object {
+                                                              "departureDelay": 0,
+                                                              "headsign": "Angle Lake",
+                                                              "realtimeDeparture": 50820,
+                                                              "realtimeState": "SCHEDULED",
+                                                              "scheduledDeparture": 50820,
+                                                              "serviceDay": 1705046400,
+                                                              "trip": Object {
+                                                                "route": Object {
+                                                                  "shortName": "1 Line",
+                                                                },
+                                                              },
+                                                            }
+                                                          }
+                                                        >
+                                                          <FormattedTime
+                                                            timeStyle="short"
+                                                            value={2024-01-12T22:07:00.000Z}
+                                                          >
+                                                            2:07 PM
+                                                          </FormattedTime>
+                                                        </DepartureTime>
+                                                      </span>
+                                                    </div>
+                                                  </StopTimeCell>
+                                                </Connect(StopTimeCell)>
+                                              </li>
+                                              <li
+                                                key="2"
+                                              >
+                                                <Connect(StopTimeCell)
+                                                  homeTimezone="America/Los_Angeles"
+                                                  key="2"
+                                                  stopTime={
+                                                    Object {
+                                                      "departureDelay": 0,
+                                                      "headsign": "Angle Lake",
+                                                      "realtimeDeparture": 51420,
+                                                      "realtimeState": "SCHEDULED",
+                                                      "scheduledDeparture": 51420,
+                                                      "serviceDay": 1705046400,
+                                                      "trip": Object {
+                                                        "route": Object {
+                                                          "shortName": "1 Line",
+                                                        },
+                                                      },
+                                                    }
+                                                  }
+                                                >
+                                                  <StopTimeCell
+                                                    homeTimezone="America/Los_Angeles"
+                                                    onlyShowCountdownForRealtime={false}
+                                                    stopTime={
+                                                      Object {
+                                                        "departureDelay": 0,
+                                                        "headsign": "Angle Lake",
+                                                        "realtimeDeparture": 51420,
+                                                        "realtimeState": "SCHEDULED",
+                                                        "scheduledDeparture": 51420,
+                                                        "serviceDay": 1705046400,
+                                                        "trip": Object {
+                                                          "route": Object {
+                                                            "shortName": "1 Line",
+                                                          },
+                                                        },
+                                                      }
+                                                    }
+                                                  >
+                                                    <div
+                                                      className="percy-hide"
+                                                    >
+                                                      <Styled(styled.span)
+                                                        style={
+                                                          Object {
+                                                            "fontSize": "0.6em",
+                                                            "margin": 0,
+                                                            "marginRight": 2,
+                                                          }
+                                                        }
+                                                        title="components.StopTimeCell.scheduled"
+                                                      >
+                                                        <span
+                                                          className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                                                          style={
+                                                            Object {
+                                                              "fontSize": "0.6em",
+                                                              "margin": 0,
+                                                              "marginRight": 2,
+                                                            }
+                                                          }
+                                                          title="components.StopTimeCell.scheduled"
+                                                        >
+                                                          <Clock>
+                                                            <StyledIconBase
+                                                              iconAttrs={
+                                                                Object {
+                                                                  "fill": "currentColor",
+                                                                  "xmlns": "http://www.w3.org/2000/svg",
+                                                                }
+                                                              }
+                                                              iconVerticalAlign="middle"
+                                                              iconViewBox="0 0 512 512"
+                                                            >
+                                                              <ForwardRef
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                                iconAttrs={
+                                                                  Object {
+                                                                    "fill": "currentColor",
+                                                                    "xmlns": "http://www.w3.org/2000/svg",
+                                                                  }
+                                                                }
+                                                                iconVerticalAlign="middle"
+                                                                iconViewBox="0 0 512 512"
+                                                              >
+                                                                <svg
+                                                                  aria-hidden="true"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                                                  fill="currentColor"
+                                                                  focusable="false"
+                                                                  viewBox="0 0 512 512"
+                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                  <path
+                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
+                                                                    fill="currentColor"
+                                                                  />
+                                                                </svg>
+                                                              </ForwardRef>
+                                                            </StyledIconBase>
+                                                          </Clock>
+                                                        </span>
+                                                      </Styled(styled.span)>
+                                                      <span
+                                                        className="percy-hide"
+                                                        title="components.RealtimeStatusLabel.scheduled"
+                                                      >
+                                                        <styled.span>
+                                                          <span
+                                                            className="sc-hkwmXC eVsZcu"
+                                                          >
+                                                            <FormattedDayOfWeek
+                                                              day="friday"
+                                                            >
+                                                              <FormattedMessage
+                                                                id="common.daysOfWeek.friday"
+                                                              >
+                                                                common.daysOfWeek.friday
+                                                              </FormattedMessage>
+                                                            </FormattedDayOfWeek>
+                                                             
+                                                          </span>
+                                                        </styled.span>
+                                                        <DepartureTime
+                                                          realTime={true}
+                                                          stopTime={
+                                                            Object {
+                                                              "departureDelay": 0,
+                                                              "headsign": "Angle Lake",
+                                                              "realtimeDeparture": 51420,
+                                                              "realtimeState": "SCHEDULED",
+                                                              "scheduledDeparture": 51420,
+                                                              "serviceDay": 1705046400,
+                                                              "trip": Object {
+                                                                "route": Object {
+                                                                  "shortName": "1 Line",
+                                                                },
+                                                              },
+                                                            }
+                                                          }
+                                                        >
+                                                          <FormattedTime
+                                                            timeStyle="short"
+                                                            value={2024-01-12T22:17:00.000Z}
+                                                          >
+                                                            2:17 PM
+                                                          </FormattedTime>
+                                                        </DepartureTime>
+                                                      </span>
+                                                    </div>
+                                                  </StopTimeCell>
+                                                </Connect(StopTimeCell)>
+                                              </li>
+                                            </ol>
+                                          </styled.ol>
+                                        </div>
+                                      </li>
+                                    </styled.li>
+                                  </PatternRow>
+                                  <PatternRow
+                                    homeTimezone="America/Los_Angeles"
+                                    key="1"
+                                    pattern={
+                                      Object {
                                         "headsign": "Northgate",
                                         "route": Object {
                                           "agency": Object {
@@ -13437,7 +14172,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   </PatternRow>
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
-                                    key="1"
+                                    key="2"
                                     pattern={
                                       Object {
                                         "headsign": "Capitol Hill",
@@ -14222,741 +14957,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             value={2024-01-13T13:30:00.000Z}
                                                           >
                                                             5:30 AM
-                                                          </FormattedTime>
-                                                        </DepartureTime>
-                                                      </span>
-                                                    </div>
-                                                  </StopTimeCell>
-                                                </Connect(StopTimeCell)>
-                                              </li>
-                                            </ol>
-                                          </styled.ol>
-                                        </div>
-                                      </li>
-                                    </styled.li>
-                                  </PatternRow>
-                                  <PatternRow
-                                    homeTimezone="America/Los_Angeles"
-                                    key="2"
-                                    pattern={
-                                      Object {
-                                        "headsign": "Angle Lake",
-                                        "route": Object {
-                                          "agency": Object {
-                                            "gtfsId": "40:40",
-                                            "name": "Sound Transit",
-                                          },
-                                          "color": "28813F",
-                                          "longName": "Northgate - Angle Lake",
-                                          "mode": "TRAM",
-                                          "shortName": "1 Line",
-                                          "textColor": "FFFFFF",
-                                          "type": 0,
-                                        },
-                                      }
-                                    }
-                                    roundedTop={false}
-                                    route={
-                                      Object {
-                                        "agency": Object {
-                                          "gtfsId": "40:40",
-                                          "name": "Sound Transit",
-                                        },
-                                        "color": "28813F",
-                                        "longName": "Northgate - Angle Lake",
-                                        "mode": "TRAM",
-                                        "shortName": "1 Line",
-                                        "textColor": "FFFFFF",
-                                        "type": 0,
-                                      }
-                                    }
-                                    stopTimes={
-                                      Array [
-                                        Object {
-                                          "departureDelay": 0,
-                                          "headsign": "Angle Lake",
-                                          "realtimeDeparture": 50220,
-                                          "realtimeState": "SCHEDULED",
-                                          "scheduledDeparture": 50220,
-                                          "serviceDay": 1705046400,
-                                          "trip": Object {
-                                            "route": Object {
-                                              "shortName": "1 Line",
-                                            },
-                                          },
-                                        },
-                                        Object {
-                                          "departureDelay": 0,
-                                          "headsign": "Angle Lake",
-                                          "realtimeDeparture": 50820,
-                                          "realtimeState": "SCHEDULED",
-                                          "scheduledDeparture": 50820,
-                                          "serviceDay": 1705046400,
-                                          "trip": Object {
-                                            "route": Object {
-                                              "shortName": "1 Line",
-                                            },
-                                          },
-                                        },
-                                        Object {
-                                          "departureDelay": 0,
-                                          "headsign": "Angle Lake",
-                                          "realtimeDeparture": 51420,
-                                          "realtimeState": "SCHEDULED",
-                                          "scheduledDeparture": 51420,
-                                          "serviceDay": 1705046400,
-                                          "trip": Object {
-                                            "route": Object {
-                                              "shortName": "1 Line",
-                                            },
-                                          },
-                                        },
-                                        Object {
-                                          "departureDelay": 0,
-                                          "headsign": "Angle Lake",
-                                          "realtimeDeparture": 52020,
-                                          "realtimeState": "SCHEDULED",
-                                          "scheduledDeparture": 52020,
-                                          "serviceDay": 1705046400,
-                                          "trip": Object {
-                                            "route": Object {
-                                              "shortName": "1 Line",
-                                            },
-                                          },
-                                        },
-                                        Object {
-                                          "departureDelay": 0,
-                                          "headsign": "Angle Lake",
-                                          "realtimeDeparture": 52620,
-                                          "realtimeState": "SCHEDULED",
-                                          "scheduledDeparture": 52620,
-                                          "serviceDay": 1705046400,
-                                          "trip": Object {
-                                            "route": Object {
-                                              "shortName": "1 Line",
-                                            },
-                                          },
-                                        },
-                                      ]
-                                    }
-                                  >
-                                    <styled.li
-                                      roundedTop={false}
-                                    >
-                                      <li
-                                        className="sc-gUUBao cACaIc"
-                                      >
-                                        <div
-                                          className="header stop-view"
-                                          style={
-                                            Object {
-                                              "backgroundColor": "#28813F",
-                                              "color": "#FFFFFF",
-                                            }
-                                          }
-                                        >
-                                          <div
-                                            className="route-name"
-                                          >
-                                            <span
-                                              className="route-name-container"
-                                              title="1 Line"
-                                            >
-                                              <DefaultRouteRenderer
-                                                leg={
-                                                  Object {
-                                                    "agencyName": "Sound Transit",
-                                                    "mode": "TRAM",
-                                                    "onColoredBackground": true,
-                                                    "origColor": undefined,
-                                                    "routeColor": "28813F",
-                                                    "routeLongName": "Northgate - Angle Lake",
-                                                    "routeShortName": "1 Line",
-                                                    "routeTextColor": "FFFFFF",
-                                                  }
-                                                }
-                                                style={
-                                                  Object {
-                                                    "fontSize": "16px",
-                                                  }
-                                                }
-                                              >
-                                                <styled.span
-                                                  color="28813F"
-                                                  isOnColoredBackground={true}
-                                                  style={
-                                                    Object {
-                                                      "fontSize": "16px",
-                                                    }
-                                                  }
-                                                  title="1 Line"
-                                                >
-                                                  <span
-                                                    className="sc-JoojE bMhDjL"
-                                                    color="28813F"
-                                                    style={
-                                                      Object {
-                                                        "fontSize": "16px",
-                                                      }
-                                                    }
-                                                    title="1 Line"
-                                                  >
-                                                    1 Line
-                                                  </span>
-                                                </styled.span>
-                                              </DefaultRouteRenderer>
-                                            </span>
-                                            <span
-                                              style={
-                                                Object {
-                                                  "wordBreak": "break-word",
-                                                }
-                                              }
-                                              title="Angle Lake"
-                                            >
-                                              Angle Lake
-                                            </span>
-                                          </div>
-                                          <styled.ol>
-                                            <ol
-                                              className="sc-hJxDiT kOKRew"
-                                            >
-                                              <p
-                                                aria-hidden={true}
-                                                className="day-label"
-                                              >
-                                                <IconWithText
-                                                  Icon={
-                                                    Object {
-                                                      "$$typeof": Symbol(react.forward_ref),
-                                                      "displayName": "Calendar",
-                                                      "render": [Function],
-                                                    }
-                                                  }
-                                                >
-                                                  <div
-                                                    style={
-                                                      Object {
-                                                        "display": "contents",
-                                                      }
-                                                    }
-                                                  >
-                                                    <Styled(styled.span)>
-                                                      <span
-                                                        className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                                      >
-                                                        <Calendar>
-                                                          <StyledIconBase
-                                                            iconAttrs={
-                                                              Object {
-                                                                "fill": "currentColor",
-                                                                "xmlns": "http://www.w3.org/2000/svg",
-                                                              }
-                                                            }
-                                                            iconVerticalAlign="middle"
-                                                            iconViewBox="0 0 448 512"
-                                                          >
-                                                            <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 448 512"
-                                                            >
-                                                              <svg
-                                                                aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                fill="currentColor"
-                                                                focusable="false"
-                                                                viewBox="0 0 448 512"
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                              >
-                                                                <path
-                                                                  d="M152 64h144V24c0-13.25 10.7-24 24-24s24 10.75 24 24v40h40c35.3 0 64 28.65 64 64v320c0 35.3-28.7 64-64 64H64c-35.35 0-64-28.7-64-64V128c0-35.35 28.65-64 64-64h40V24c0-13.25 10.7-24 24-24s24 10.75 24 24v40zM48 448c0 8.8 7.16 16 16 16h320c8.8 0 16-7.2 16-16V192H48v256z"
-                                                                  fill="currentColor"
-                                                                />
-                                                              </svg>
-                                                            </ForwardRef>
-                                                          </StyledIconBase>
-                                                        </Calendar>
-                                                      </span>
-                                                    </Styled(styled.span)>
-                                                    <span>
-                                                      <FormattedDayOfWeek
-                                                        day="friday"
-                                                      >
-                                                        <FormattedMessage
-                                                          id="common.daysOfWeek.friday"
-                                                        >
-                                                          common.daysOfWeek.friday
-                                                        </FormattedMessage>
-                                                      </FormattedDayOfWeek>
-                                                    </span>
-                                                  </div>
-                                                </IconWithText>
-                                              </p>
-                                              <li
-                                                key="0"
-                                              >
-                                                <Connect(StopTimeCell)
-                                                  homeTimezone="America/Los_Angeles"
-                                                  key="0"
-                                                  stopTime={
-                                                    Object {
-                                                      "departureDelay": 0,
-                                                      "headsign": "Angle Lake",
-                                                      "realtimeDeparture": 50220,
-                                                      "realtimeState": "SCHEDULED",
-                                                      "scheduledDeparture": 50220,
-                                                      "serviceDay": 1705046400,
-                                                      "trip": Object {
-                                                        "route": Object {
-                                                          "shortName": "1 Line",
-                                                        },
-                                                      },
-                                                    }
-                                                  }
-                                                >
-                                                  <StopTimeCell
-                                                    homeTimezone="America/Los_Angeles"
-                                                    onlyShowCountdownForRealtime={false}
-                                                    stopTime={
-                                                      Object {
-                                                        "departureDelay": 0,
-                                                        "headsign": "Angle Lake",
-                                                        "realtimeDeparture": 50220,
-                                                        "realtimeState": "SCHEDULED",
-                                                        "scheduledDeparture": 50220,
-                                                        "serviceDay": 1705046400,
-                                                        "trip": Object {
-                                                          "route": Object {
-                                                            "shortName": "1 Line",
-                                                          },
-                                                        },
-                                                      }
-                                                    }
-                                                  >
-                                                    <div
-                                                      className="percy-hide"
-                                                    >
-                                                      <Styled(styled.span)
-                                                        style={
-                                                          Object {
-                                                            "fontSize": "0.6em",
-                                                            "margin": 0,
-                                                            "marginRight": 2,
-                                                          }
-                                                        }
-                                                        title="components.StopTimeCell.scheduled"
-                                                      >
-                                                        <span
-                                                          className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                                          style={
-                                                            Object {
-                                                              "fontSize": "0.6em",
-                                                              "margin": 0,
-                                                              "marginRight": 2,
-                                                            }
-                                                          }
-                                                          title="components.StopTimeCell.scheduled"
-                                                        >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
-                                                            >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                iconAttrs={
-                                                                  Object {
-                                                                    "fill": "currentColor",
-                                                                    "xmlns": "http://www.w3.org/2000/svg",
-                                                                  }
-                                                                }
-                                                                iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
-                                                              >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
-                                                                >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
-                                                                    fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
-                                                        </span>
-                                                      </Styled(styled.span)>
-                                                      <span
-                                                        className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
-                                                      >
-                                                        <styled.span>
-                                                          <span
-                                                            className="sc-hkwmXC eVsZcu"
-                                                          >
-                                                            <FormattedDayOfWeek
-                                                              day="friday"
-                                                            >
-                                                              <FormattedMessage
-                                                                id="common.daysOfWeek.friday"
-                                                              >
-                                                                common.daysOfWeek.friday
-                                                              </FormattedMessage>
-                                                            </FormattedDayOfWeek>
-                                                             
-                                                          </span>
-                                                        </styled.span>
-                                                        <DepartureTime
-                                                          realTime={true}
-                                                          stopTime={
-                                                            Object {
-                                                              "departureDelay": 0,
-                                                              "headsign": "Angle Lake",
-                                                              "realtimeDeparture": 50220,
-                                                              "realtimeState": "SCHEDULED",
-                                                              "scheduledDeparture": 50220,
-                                                              "serviceDay": 1705046400,
-                                                              "trip": Object {
-                                                                "route": Object {
-                                                                  "shortName": "1 Line",
-                                                                },
-                                                              },
-                                                            }
-                                                          }
-                                                        >
-                                                          <FormattedTime
-                                                            timeStyle="short"
-                                                            value={2024-01-12T21:57:00.000Z}
-                                                          >
-                                                            1:57 PM
-                                                          </FormattedTime>
-                                                        </DepartureTime>
-                                                      </span>
-                                                    </div>
-                                                  </StopTimeCell>
-                                                </Connect(StopTimeCell)>
-                                              </li>
-                                              <li
-                                                key="1"
-                                              >
-                                                <Connect(StopTimeCell)
-                                                  homeTimezone="America/Los_Angeles"
-                                                  key="1"
-                                                  stopTime={
-                                                    Object {
-                                                      "departureDelay": 0,
-                                                      "headsign": "Angle Lake",
-                                                      "realtimeDeparture": 50820,
-                                                      "realtimeState": "SCHEDULED",
-                                                      "scheduledDeparture": 50820,
-                                                      "serviceDay": 1705046400,
-                                                      "trip": Object {
-                                                        "route": Object {
-                                                          "shortName": "1 Line",
-                                                        },
-                                                      },
-                                                    }
-                                                  }
-                                                >
-                                                  <StopTimeCell
-                                                    homeTimezone="America/Los_Angeles"
-                                                    onlyShowCountdownForRealtime={false}
-                                                    stopTime={
-                                                      Object {
-                                                        "departureDelay": 0,
-                                                        "headsign": "Angle Lake",
-                                                        "realtimeDeparture": 50820,
-                                                        "realtimeState": "SCHEDULED",
-                                                        "scheduledDeparture": 50820,
-                                                        "serviceDay": 1705046400,
-                                                        "trip": Object {
-                                                          "route": Object {
-                                                            "shortName": "1 Line",
-                                                          },
-                                                        },
-                                                      }
-                                                    }
-                                                  >
-                                                    <div
-                                                      className="percy-hide"
-                                                    >
-                                                      <Styled(styled.span)
-                                                        style={
-                                                          Object {
-                                                            "fontSize": "0.6em",
-                                                            "margin": 0,
-                                                            "marginRight": 2,
-                                                          }
-                                                        }
-                                                        title="components.StopTimeCell.scheduled"
-                                                      >
-                                                        <span
-                                                          className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                                          style={
-                                                            Object {
-                                                              "fontSize": "0.6em",
-                                                              "margin": 0,
-                                                              "marginRight": 2,
-                                                            }
-                                                          }
-                                                          title="components.StopTimeCell.scheduled"
-                                                        >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
-                                                            >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                iconAttrs={
-                                                                  Object {
-                                                                    "fill": "currentColor",
-                                                                    "xmlns": "http://www.w3.org/2000/svg",
-                                                                  }
-                                                                }
-                                                                iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
-                                                              >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
-                                                                >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
-                                                                    fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
-                                                        </span>
-                                                      </Styled(styled.span)>
-                                                      <span
-                                                        className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
-                                                      >
-                                                        <styled.span>
-                                                          <span
-                                                            className="sc-hkwmXC eVsZcu"
-                                                          >
-                                                            <FormattedDayOfWeek
-                                                              day="friday"
-                                                            >
-                                                              <FormattedMessage
-                                                                id="common.daysOfWeek.friday"
-                                                              >
-                                                                common.daysOfWeek.friday
-                                                              </FormattedMessage>
-                                                            </FormattedDayOfWeek>
-                                                             
-                                                          </span>
-                                                        </styled.span>
-                                                        <DepartureTime
-                                                          realTime={true}
-                                                          stopTime={
-                                                            Object {
-                                                              "departureDelay": 0,
-                                                              "headsign": "Angle Lake",
-                                                              "realtimeDeparture": 50820,
-                                                              "realtimeState": "SCHEDULED",
-                                                              "scheduledDeparture": 50820,
-                                                              "serviceDay": 1705046400,
-                                                              "trip": Object {
-                                                                "route": Object {
-                                                                  "shortName": "1 Line",
-                                                                },
-                                                              },
-                                                            }
-                                                          }
-                                                        >
-                                                          <FormattedTime
-                                                            timeStyle="short"
-                                                            value={2024-01-12T22:07:00.000Z}
-                                                          >
-                                                            2:07 PM
-                                                          </FormattedTime>
-                                                        </DepartureTime>
-                                                      </span>
-                                                    </div>
-                                                  </StopTimeCell>
-                                                </Connect(StopTimeCell)>
-                                              </li>
-                                              <li
-                                                key="2"
-                                              >
-                                                <Connect(StopTimeCell)
-                                                  homeTimezone="America/Los_Angeles"
-                                                  key="2"
-                                                  stopTime={
-                                                    Object {
-                                                      "departureDelay": 0,
-                                                      "headsign": "Angle Lake",
-                                                      "realtimeDeparture": 51420,
-                                                      "realtimeState": "SCHEDULED",
-                                                      "scheduledDeparture": 51420,
-                                                      "serviceDay": 1705046400,
-                                                      "trip": Object {
-                                                        "route": Object {
-                                                          "shortName": "1 Line",
-                                                        },
-                                                      },
-                                                    }
-                                                  }
-                                                >
-                                                  <StopTimeCell
-                                                    homeTimezone="America/Los_Angeles"
-                                                    onlyShowCountdownForRealtime={false}
-                                                    stopTime={
-                                                      Object {
-                                                        "departureDelay": 0,
-                                                        "headsign": "Angle Lake",
-                                                        "realtimeDeparture": 51420,
-                                                        "realtimeState": "SCHEDULED",
-                                                        "scheduledDeparture": 51420,
-                                                        "serviceDay": 1705046400,
-                                                        "trip": Object {
-                                                          "route": Object {
-                                                            "shortName": "1 Line",
-                                                          },
-                                                        },
-                                                      }
-                                                    }
-                                                  >
-                                                    <div
-                                                      className="percy-hide"
-                                                    >
-                                                      <Styled(styled.span)
-                                                        style={
-                                                          Object {
-                                                            "fontSize": "0.6em",
-                                                            "margin": 0,
-                                                            "marginRight": 2,
-                                                          }
-                                                        }
-                                                        title="components.StopTimeCell.scheduled"
-                                                      >
-                                                        <span
-                                                          className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                                          style={
-                                                            Object {
-                                                              "fontSize": "0.6em",
-                                                              "margin": 0,
-                                                              "marginRight": 2,
-                                                            }
-                                                          }
-                                                          title="components.StopTimeCell.scheduled"
-                                                        >
-                                                          <Clock>
-                                                            <StyledIconBase
-                                                              iconAttrs={
-                                                                Object {
-                                                                  "fill": "currentColor",
-                                                                  "xmlns": "http://www.w3.org/2000/svg",
-                                                                }
-                                                              }
-                                                              iconVerticalAlign="middle"
-                                                              iconViewBox="0 0 512 512"
-                                                            >
-                                                              <ForwardRef
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                iconAttrs={
-                                                                  Object {
-                                                                    "fill": "currentColor",
-                                                                    "xmlns": "http://www.w3.org/2000/svg",
-                                                                  }
-                                                                }
-                                                                iconVerticalAlign="middle"
-                                                                iconViewBox="0 0 512 512"
-                                                              >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                                  fill="currentColor"
-                                                                  focusable="false"
-                                                                  viewBox="0 0 512 512"
-                                                                  xmlns="http://www.w3.org/2000/svg"
-                                                                >
-                                                                  <path
-                                                                    d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"
-                                                                    fill="currentColor"
-                                                                  />
-                                                                </svg>
-                                                              </ForwardRef>
-                                                            </StyledIconBase>
-                                                          </Clock>
-                                                        </span>
-                                                      </Styled(styled.span)>
-                                                      <span
-                                                        className="percy-hide"
-                                                        title="components.RealtimeStatusLabel.scheduled"
-                                                      >
-                                                        <styled.span>
-                                                          <span
-                                                            className="sc-hkwmXC eVsZcu"
-                                                          >
-                                                            <FormattedDayOfWeek
-                                                              day="friday"
-                                                            >
-                                                              <FormattedMessage
-                                                                id="common.daysOfWeek.friday"
-                                                              >
-                                                                common.daysOfWeek.friday
-                                                              </FormattedMessage>
-                                                            </FormattedDayOfWeek>
-                                                             
-                                                          </span>
-                                                        </styled.span>
-                                                        <DepartureTime
-                                                          realTime={true}
-                                                          stopTime={
-                                                            Object {
-                                                              "departureDelay": 0,
-                                                              "headsign": "Angle Lake",
-                                                              "realtimeDeparture": 51420,
-                                                              "realtimeState": "SCHEDULED",
-                                                              "scheduledDeparture": 51420,
-                                                              "serviceDay": 1705046400,
-                                                              "trip": Object {
-                                                                "route": Object {
-                                                                  "shortName": "1 Line",
-                                                                },
-                                                              },
-                                                            }
-                                                          }
-                                                        >
-                                                          <FormattedTime
-                                                            timeStyle="short"
-                                                            value={2024-01-12T22:17:00.000Z}
-                                                          >
-                                                            2:17 PM
                                                           </FormattedTime>
                                                         </DepartureTime>
                                                       </span>
