@@ -108,6 +108,15 @@ class RouteDetails extends Component<Props> {
             { id: 'components.RouteDetails.headsignTo' },
             { ...cur }
           )
+
+          // If there are only two total patterns, then we should rename
+          // both of them
+          if (amended.length === 1 && Object.entries(patterns).length === 2) {
+            amended[0].headsign = intl.formatMessage(
+              { id: 'components.RouteDetails.headsignTo' },
+              { ...amended[0] }
+            )
+          }
         }
 
         amended.push(cur)
