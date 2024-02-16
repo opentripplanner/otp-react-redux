@@ -160,7 +160,8 @@ const Stop = ({
   }, [setHoveredStop])
 
   const operator =
-    agencies.size === 1
+    // TODO: is this check needed?
+    agencies.size > 0
       ? transitOperators?.find((o) => o.agencyId === Array.from(agencies)[0])
       : undefined
 
