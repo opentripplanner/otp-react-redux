@@ -7574,7 +7574,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-ksXiFW hqEOzF"
                                   >
                                     <IconWithText
-                                      icon={<Operator />}
+                                      icon={<React.Fragment />}
                                     >
                                       <div
                                         style={
@@ -7586,48 +7586,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         <Styled(styled.span)>
                                           <span
                                             className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                          >
-                                            <Operator>
-                                              <MapPin>
-                                                <StyledIconBase
-                                                  iconAttrs={
-                                                    Object {
-                                                      "fill": "currentColor",
-                                                      "xmlns": "http://www.w3.org/2000/svg",
-                                                    }
-                                                  }
-                                                  iconVerticalAlign="middle"
-                                                  iconViewBox="0 0 320 512"
-                                                >
-                                                  <ForwardRef
-                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                    iconAttrs={
-                                                      Object {
-                                                        "fill": "currentColor",
-                                                        "xmlns": "http://www.w3.org/2000/svg",
-                                                      }
-                                                    }
-                                                    iconVerticalAlign="middle"
-                                                    iconViewBox="0 0 320 512"
-                                                  >
-                                                    <svg
-                                                      aria-hidden="true"
-                                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                      fill="currentColor"
-                                                      focusable="false"
-                                                      viewBox="0 0 320 512"
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                      <path
-                                                        d="M320 144c0 79.5-64.5 144-144 144S32 223.5 32 144 96.5 0 176 0s144 64.5 144 144zM176 80c8.8 0 16-7.2 16-16s-7.2-16-16-16c-53 0-96 43-96 96 0 8.8 7.2 16 16 16s16-7.2 16-16c0-35.3 28.7-64 64-64zm-32 400V317.1a177.984 177.984 0 0 0 64 0V480c0 17.7-14.3 32-32 32s-32-14.3-32-32z"
-                                                        fill="currentColor"
-                                                      />
-                                                    </svg>
-                                                  </ForwardRef>
-                                                </StyledIconBase>
-                                              </MapPin>
-                                            </Operator>
-                                          </span>
+                                          />
                                         </Styled(styled.span)>
                                         <span>
                                           Roosevelt Station - Bay 2
@@ -12350,7 +12309,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-ksXiFW hqEOzF"
                                   >
                                     <IconWithText
-                                      icon={<Operator />}
+                                      icon={<React.Fragment />}
                                     >
                                       <div
                                         style={
@@ -12362,48 +12321,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         <Styled(styled.span)>
                                           <span
                                             className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                          >
-                                            <Operator>
-                                              <MapPin>
-                                                <StyledIconBase
-                                                  iconAttrs={
-                                                    Object {
-                                                      "fill": "currentColor",
-                                                      "xmlns": "http://www.w3.org/2000/svg",
-                                                    }
-                                                  }
-                                                  iconVerticalAlign="middle"
-                                                  iconViewBox="0 0 320 512"
-                                                >
-                                                  <ForwardRef
-                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                    iconAttrs={
-                                                      Object {
-                                                        "fill": "currentColor",
-                                                        "xmlns": "http://www.w3.org/2000/svg",
-                                                      }
-                                                    }
-                                                    iconVerticalAlign="middle"
-                                                    iconViewBox="0 0 320 512"
-                                                  >
-                                                    <svg
-                                                      aria-hidden="true"
-                                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                      fill="currentColor"
-                                                      focusable="false"
-                                                      viewBox="0 0 320 512"
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                      <path
-                                                        d="M320 144c0 79.5-64.5 144-144 144S32 223.5 32 144 96.5 0 176 0s144 64.5 144 144zM176 80c8.8 0 16-7.2 16-16s-7.2-16-16-16c-53 0-96 43-96 96 0 8.8 7.2 16 16 16s16-7.2 16-16c0-35.3 28.7-64 64-64zm-32 400V317.1a177.984 177.984 0 0 0 64 0V480c0 17.7-14.3 32-32 32s-32-14.3-32-32z"
-                                                        fill="currentColor"
-                                                      />
-                                                    </svg>
-                                                  </ForwardRef>
-                                                </StyledIconBase>
-                                              </MapPin>
-                                            </Operator>
-                                          </span>
+                                          />
                                         </Styled(styled.span)>
                                         <span>
                                           Roosevelt
@@ -18748,7 +18666,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-ksXiFW hqEOzF"
                                   >
                                     <IconWithText
-                                      icon={<Operator />}
+                                      icon={<React.Fragment />}
                                     >
                                       <div
                                         style={
@@ -18760,48 +18678,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         <Styled(styled.span)>
                                           <span
                                             className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                          >
-                                            <Operator>
-                                              <MapPin>
-                                                <StyledIconBase
-                                                  iconAttrs={
-                                                    Object {
-                                                      "fill": "currentColor",
-                                                      "xmlns": "http://www.w3.org/2000/svg",
-                                                    }
-                                                  }
-                                                  iconVerticalAlign="middle"
-                                                  iconViewBox="0 0 320 512"
-                                                >
-                                                  <ForwardRef
-                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                    iconAttrs={
-                                                      Object {
-                                                        "fill": "currentColor",
-                                                        "xmlns": "http://www.w3.org/2000/svg",
-                                                      }
-                                                    }
-                                                    iconVerticalAlign="middle"
-                                                    iconViewBox="0 0 320 512"
-                                                  >
-                                                    <svg
-                                                      aria-hidden="true"
-                                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                      fill="currentColor"
-                                                      focusable="false"
-                                                      viewBox="0 0 320 512"
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                      <path
-                                                        d="M320 144c0 79.5-64.5 144-144 144S32 223.5 32 144 96.5 0 176 0s144 64.5 144 144zM176 80c8.8 0 16-7.2 16-16s-7.2-16-16-16c-53 0-96 43-96 96 0 8.8 7.2 16 16 16s16-7.2 16-16c0-35.3 28.7-64 64-64zm-32 400V317.1a177.984 177.984 0 0 0 64 0V480c0 17.7-14.3 32-32 32s-32-14.3-32-32z"
-                                                        fill="currentColor"
-                                                      />
-                                                    </svg>
-                                                  </ForwardRef>
-                                                </StyledIconBase>
-                                              </MapPin>
-                                            </Operator>
-                                          </span>
+                                          />
                                         </Styled(styled.span)>
                                         <span>
                                           Roosevelt Station - Bay 1
@@ -25917,7 +25794,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-ksXiFW hqEOzF"
                                   >
                                     <IconWithText
-                                      icon={<Operator />}
+                                      icon={<React.Fragment />}
                                     >
                                       <div
                                         style={
@@ -25929,48 +25806,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         <Styled(styled.span)>
                                           <span
                                             className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                          >
-                                            <Operator>
-                                              <MapPin>
-                                                <StyledIconBase
-                                                  iconAttrs={
-                                                    Object {
-                                                      "fill": "currentColor",
-                                                      "xmlns": "http://www.w3.org/2000/svg",
-                                                    }
-                                                  }
-                                                  iconVerticalAlign="middle"
-                                                  iconViewBox="0 0 320 512"
-                                                >
-                                                  <ForwardRef
-                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                    iconAttrs={
-                                                      Object {
-                                                        "fill": "currentColor",
-                                                        "xmlns": "http://www.w3.org/2000/svg",
-                                                      }
-                                                    }
-                                                    iconVerticalAlign="middle"
-                                                    iconViewBox="0 0 320 512"
-                                                  >
-                                                    <svg
-                                                      aria-hidden="true"
-                                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                      fill="currentColor"
-                                                      focusable="false"
-                                                      viewBox="0 0 320 512"
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                      <path
-                                                        d="M320 144c0 79.5-64.5 144-144 144S32 223.5 32 144 96.5 0 176 0s144 64.5 144 144zM176 80c8.8 0 16-7.2 16-16s-7.2-16-16-16c-53 0-96 43-96 96 0 8.8 7.2 16 16 16s16-7.2 16-16c0-35.3 28.7-64 64-64zm-32 400V317.1a177.984 177.984 0 0 0 64 0V480c0 17.7-14.3 32-32 32s-32-14.3-32-32z"
-                                                        fill="currentColor"
-                                                      />
-                                                    </svg>
-                                                  </ForwardRef>
-                                                </StyledIconBase>
-                                              </MapPin>
-                                            </Operator>
-                                          </span>
+                                          />
                                         </Styled(styled.span)>
                                         <span>
                                           Roosevelt Station Bay 5 - Bay 5
@@ -31136,7 +30972,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-ksXiFW hqEOzF"
                                   >
                                     <IconWithText
-                                      icon={<Operator />}
+                                      icon={<React.Fragment />}
                                     >
                                       <div
                                         style={
@@ -31148,48 +30984,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         <Styled(styled.span)>
                                           <span
                                             className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                          >
-                                            <Operator>
-                                              <MapPin>
-                                                <StyledIconBase
-                                                  iconAttrs={
-                                                    Object {
-                                                      "fill": "currentColor",
-                                                      "xmlns": "http://www.w3.org/2000/svg",
-                                                    }
-                                                  }
-                                                  iconVerticalAlign="middle"
-                                                  iconViewBox="0 0 320 512"
-                                                >
-                                                  <ForwardRef
-                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                    iconAttrs={
-                                                      Object {
-                                                        "fill": "currentColor",
-                                                        "xmlns": "http://www.w3.org/2000/svg",
-                                                      }
-                                                    }
-                                                    iconVerticalAlign="middle"
-                                                    iconViewBox="0 0 320 512"
-                                                  >
-                                                    <svg
-                                                      aria-hidden="true"
-                                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                      fill="currentColor"
-                                                      focusable="false"
-                                                      viewBox="0 0 320 512"
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                      <path
-                                                        d="M320 144c0 79.5-64.5 144-144 144S32 223.5 32 144 96.5 0 176 0s144 64.5 144 144zM176 80c8.8 0 16-7.2 16-16s-7.2-16-16-16c-53 0-96 43-96 96 0 8.8 7.2 16 16 16s16-7.2 16-16c0-35.3 28.7-64 64-64zm-32 400V317.1a177.984 177.984 0 0 0 64 0V480c0 17.7-14.3 32-32 32s-32-14.3-32-32z"
-                                                        fill="currentColor"
-                                                      />
-                                                    </svg>
-                                                  </ForwardRef>
-                                                </StyledIconBase>
-                                              </MapPin>
-                                            </Operator>
-                                          </span>
+                                          />
                                         </Styled(styled.span)>
                                         <span>
                                           Roosevelt
@@ -35549,7 +35344,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-ksXiFW hqEOzF"
                                   >
                                     <IconWithText
-                                      icon={<Operator />}
+                                      icon={<React.Fragment />}
                                     >
                                       <div
                                         style={
@@ -35561,48 +35356,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         <Styled(styled.span)>
                                           <span
                                             className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                          >
-                                            <Operator>
-                                              <MapPin>
-                                                <StyledIconBase
-                                                  iconAttrs={
-                                                    Object {
-                                                      "fill": "currentColor",
-                                                      "xmlns": "http://www.w3.org/2000/svg",
-                                                    }
-                                                  }
-                                                  iconVerticalAlign="middle"
-                                                  iconViewBox="0 0 320 512"
-                                                >
-                                                  <ForwardRef
-                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                    iconAttrs={
-                                                      Object {
-                                                        "fill": "currentColor",
-                                                        "xmlns": "http://www.w3.org/2000/svg",
-                                                      }
-                                                    }
-                                                    iconVerticalAlign="middle"
-                                                    iconViewBox="0 0 320 512"
-                                                  >
-                                                    <svg
-                                                      aria-hidden="true"
-                                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                      fill="currentColor"
-                                                      focusable="false"
-                                                      viewBox="0 0 320 512"
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                      <path
-                                                        d="M320 144c0 79.5-64.5 144-144 144S32 223.5 32 144 96.5 0 176 0s144 64.5 144 144zM176 80c8.8 0 16-7.2 16-16s-7.2-16-16-16c-53 0-96 43-96 96 0 8.8 7.2 16 16 16s16-7.2 16-16c0-35.3 28.7-64 64-64zm-32 400V317.1a177.984 177.984 0 0 0 64 0V480c0 17.7-14.3 32-32 32s-32-14.3-32-32z"
-                                                        fill="currentColor"
-                                                      />
-                                                    </svg>
-                                                  </ForwardRef>
-                                                </StyledIconBase>
-                                              </MapPin>
-                                            </Operator>
-                                          </span>
+                                          />
                                         </Styled(styled.span)>
                                         <span>
                                           Roosevelt Station - Bay 3
@@ -43691,7 +43445,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-ksXiFW hqEOzF"
                                   >
                                     <IconWithText
-                                      icon={<Operator />}
+                                      icon={<React.Fragment />}
                                     >
                                       <div
                                         style={
@@ -43703,48 +43457,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         <Styled(styled.span)>
                                           <span
                                             className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                          >
-                                            <Operator>
-                                              <MapPin>
-                                                <StyledIconBase
-                                                  iconAttrs={
-                                                    Object {
-                                                      "fill": "currentColor",
-                                                      "xmlns": "http://www.w3.org/2000/svg",
-                                                    }
-                                                  }
-                                                  iconVerticalAlign="middle"
-                                                  iconViewBox="0 0 320 512"
-                                                >
-                                                  <ForwardRef
-                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                    iconAttrs={
-                                                      Object {
-                                                        "fill": "currentColor",
-                                                        "xmlns": "http://www.w3.org/2000/svg",
-                                                      }
-                                                    }
-                                                    iconVerticalAlign="middle"
-                                                    iconViewBox="0 0 320 512"
-                                                  >
-                                                    <svg
-                                                      aria-hidden="true"
-                                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                      fill="currentColor"
-                                                      focusable="false"
-                                                      viewBox="0 0 320 512"
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                      <path
-                                                        d="M320 144c0 79.5-64.5 144-144 144S32 223.5 32 144 96.5 0 176 0s144 64.5 144 144zM176 80c8.8 0 16-7.2 16-16s-7.2-16-16-16c-53 0-96 43-96 96 0 8.8 7.2 16 16 16s16-7.2 16-16c0-35.3 28.7-64 64-64zm-32 400V317.1a177.984 177.984 0 0 0 64 0V480c0 17.7-14.3 32-32 32s-32-14.3-32-32z"
-                                                        fill="currentColor"
-                                                      />
-                                                    </svg>
-                                                  </ForwardRef>
-                                                </StyledIconBase>
-                                              </MapPin>
-                                            </Operator>
-                                          </span>
+                                          />
                                         </Styled(styled.span)>
                                         <span>
                                           NE 65th St & 14th Ave NE

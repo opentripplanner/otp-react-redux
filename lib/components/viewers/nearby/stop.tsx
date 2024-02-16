@@ -159,19 +159,23 @@ const Stop = ({
     setHoveredStop(undefined)
   }, [setHoveredStop])
 
-  const operator =
-    // TODO: is this check needed?
-    agencies.size > 0
-      ? transitOperators?.find((o) => o.agencyId === Array.from(agencies)[0])
-      : undefined
-
   if (nearbyViewConfig?.hideEmptyStops && patternRows.length === 0) return <></>
 
   return (
     <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <CardHeader>
         <CardTitle>
-          <IconWithText icon={<Operator operator={operator} />}>
+          <IconWithText
+            icon={
+              <>
+                {transitOperators
+                  ?.filter((to) => Array.from(agencies).includes(to.agencyId))
+                  .map((to) => (
+                    <Operator key={to.agencyId} operator={to} />
+                  ))}
+              </>
+            }
+          >
             {stopData.name}
           </IconWithText>
         </CardTitle>

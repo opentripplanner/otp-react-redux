@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const OperatorImg = styled.img`
+  margin-right: 0.25ch;
   width: 25px;
 `
 
