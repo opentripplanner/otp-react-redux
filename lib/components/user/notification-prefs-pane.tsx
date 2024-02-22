@@ -7,21 +7,14 @@ import styled from 'styled-components'
 
 import { AppReduxState } from '../../util/state-types'
 import { GRAY_ON_WHITE } from '../util/colors'
-import { PhoneFormatConfig } from '../../util/config-types'
 
 import { FieldSet } from './styled'
-import { PhoneVerificationSubmitHandler } from './phone-verification-form'
 import { User } from './types'
-import PhoneNumberEditor, {
-  PhoneCodeRequestHandler
-} from './phone-number-editor'
+import PhoneNumberEditor from './phone-number-editor'
 
 interface Props extends FormikProps<User> {
   allowedNotificationChannels: string[]
   loggedInUser: User
-  onRequestPhoneVerificationCode: PhoneCodeRequestHandler
-  onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
-  phoneFormatOptions: PhoneFormatConfig
 }
 
 const allNotificationChannels = ['email', 'sms', 'push']
@@ -57,9 +50,6 @@ const NotificationOption = styled(ListGroupItem)`
 const NotificationPrefsPane = ({
   allowedNotificationChannels,
   handleChange, // Formik or custom handler
-  onRequestPhoneVerificationCode,
-  onSendPhoneVerificationCode,
-  phoneFormatOptions,
   values: userData // Formik prop
 }: Props): JSX.Element => {
   const { email, isPhoneNumberVerified, phoneNumber, pushDevices } = userData
@@ -99,9 +89,6 @@ const NotificationPrefsPane = ({
                     descriptorId={inputDescriptionId}
                     initialPhoneNumber={phoneNumber}
                     initialPhoneNumberVerified={isPhoneNumberVerified}
-                    onRequestCode={onRequestPhoneVerificationCode}
-                    onSubmitCode={onSendPhoneVerificationCode}
-                    phoneFormatOptions={phoneFormatOptions}
                   />
                 ) : (
                   <span id={inputDescriptionId}>
@@ -127,7 +114,7 @@ const NotificationPrefsPane = ({
 }
 
 const mapStateToProps = (state: AppReduxState) => {
-  const { persistence, phoneFormatOptions } = state.otp.config
+  const { persistence } = state.otp.config
   const supportsPushNotifications =
     persistence && 'otp_middleware' in persistence
       ? persistence.otp_middleware?.supportsPushNotifications
@@ -135,8 +122,7 @@ const mapStateToProps = (state: AppReduxState) => {
   return {
     allowedNotificationChannels: supportsPushNotifications
       ? allNotificationChannels
-      : emailAndSms,
-    phoneFormatOptions
+      : emailAndSms
   }
 }
 

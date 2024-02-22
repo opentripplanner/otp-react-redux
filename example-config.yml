@@ -1,8 +1,22 @@
+# To use OTP-RR with your own OTP deployment, at a minimum you will need to set the
+# host and port under the api section (for example to http://localhost and 8080).
+# The v2 configuration item here refers to OTP 2.x, not a versioned API with base URLs
+# ending in v2. OTP v1 is no longer supported by OTP-RR, so leave this v2 item enabled.
+# The bare minimum additional things to configure in sections below are:
+# The initLat, initLon, and  baseLayers in the 'map' section;
+# The apiKey, boundary, focus point, and baseUrl in the 'geocoder' section;
+# All locally relevant modes of transport in the 'modes: transitModes' section;
+# If needed, any language codes and names in the 'language' section.
 api:
   host: http://localhost
+  # Path will be deprecated once the REST API is deprecated, which will be soon.
+  # If the OTP server is hosted at /otp, then no path needs to be configured
   path: /otp/routers/default
-  port: 8001
-# v2: false
+  # If your OTP server is at a path other than "/otp" (usually due to a proxy)
+  # Then you can set the OPTIONAL property basePath. The default is "/otp"
+  basePath: /otp
+  port: 8080
+  v2: true
 
 # Determines if the header brand should be clickable or not. If set to true, 
 # clicking the header brand will go back to the main trip planner page and wipe out any
@@ -159,9 +173,11 @@ map:
 # it is possible to leave out a geocoder config entirely. In that case only
 # GPS coordinates will be used when finding the origin/destination.
 
-# example config for a Pelias geocoder (https://pelias.io/)
+# Example config for a Pelias geocoder (https://pelias.io/).
+# Until you have deployed or subscribed to a geocoder service, a short-term temporary
+# geocoder test account can be obtained from the Pelias maintainers at geocode.earth.
 geocoder:
-  apiKey: MAPZEN_KEY
+  apiKey: PELIAS_API_KEY
   boundary:
     rect:
       minLon: -123.2034
@@ -250,11 +266,19 @@ modes:
       # most notably in the enhanced stop viewer bubble
       color: blue
     - mode: TRAM
+      # For each GTFS mode, you can customize the label displayed in the UI.
       label: MAX & Streetcar
     - mode: RAIL
       label: WES
     - mode: GONDOLA
       label: Aerial Tram
+    ## Additional modes added here will be visible in the mode selector in the UI.
+    ## Modes that are not configured here will never be enabled in requests, so if
+    ## your network has subways or ferries be sure they are present here.
+    - mode: SUBWAY
+      label: Subway
+    - mode: FERRY
+      label: Ferry
 
   # Potentially deprecated
   accessModes:
@@ -510,16 +534,21 @@ itinerary:
 #     optionFilter: secondTarget # This button is rendered to the left of the itinerary filter in the batch and metro UIs
 #     sidebarLink: testTarget # this button is rendered in the sidebar
 
-### Language section to override strings.
+### Uncommenting the language section below will enable internationalization as a whole.
+### Defining a language here (a nested section whose name is an ISO language code corresponding to
+### a file in the i18n directory) will make that language available programmatically, and will also
+### cause it to be visible in the LocaleSelector component. Each language must have at least a
+### "name" property defined to be valid. Only this name property is needed for a language to function.
+### The LocaleSelector component, which provides a dropdown for the user to change their locale, will
+### only be rendered in the UI if more than one valid language is included in the language section.
+###
+### Language strings may also be optionally overridden here.
 ### Strings can be set globally for all languages (e.g. for strings that are brands/nouns,
 ### e.g. TriMet's "TransitTracker") or by language.
 ### The nested structure should be the same as the language files under the i18n folder.
 ### You can also customize OTP error messages for itinerary searches based on OTP HTTP codes.
 ### A separate message can be set for each language or locale if necessary.
 ### Languages defined may be region-specific (e.g. en-US) or language-specific (e.g. es, kr)
-### The LocaleSelector component, which provides a dropdown for the user to change their locale, will
-### only be rendered if more than one valid language (all languages must have "name" defined) is included
-### in the language config.
 
 # language:
 #   allLanguages

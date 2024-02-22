@@ -25,7 +25,7 @@
     "parser": "babel-eslint"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=17"
   },
   "repository": {
     "type": "git",
