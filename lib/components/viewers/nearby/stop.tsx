@@ -170,6 +170,11 @@ const Stop = ({
               <>
                 {transitOperators
                   ?.filter((to) => Array.from(agencies).includes(to.agencyId))
+                  // Second pass to remove duplicates based on name
+                  .filter(
+                    (to, index, arr) =>
+                      index === arr.findIndex((t) => t?.name === to?.name)
+                  )
                   .map((to) => (
                     <Operator key={to.agencyId} operator={to} />
                   ))}
