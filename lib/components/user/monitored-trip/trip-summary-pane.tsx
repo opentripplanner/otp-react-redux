@@ -1,4 +1,4 @@
-import { Bell, BellSlash, Calendar } from '@styled-icons/fa-regular'
+import { Bell, BellSlash, Calendar, Clock } from '@styled-icons/fa-regular'
 import { FormattedMessage } from 'react-intl'
 import React from 'react'
 
@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import { InlineLoading } from '../../narrative/loading'
 
 import MonitoredDays from './trip-monitored-days'
+import TripSummary from './trip-summary'
 
 /**
  * Displays the summary information of a monitored trip.
@@ -18,6 +19,11 @@ import MonitoredDays from './trip-monitored-days'
 const SavedTripBody = styled.div`
   display: flex;
   padding: 0 15px;
+  justify-content: center;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `
 
 const LocationDetails = styled.div`
@@ -29,18 +35,31 @@ const LocationDetails = styled.div`
   justify-content: center;
   padding: 20px;
   border-right: 1px solid #ddd;
+
+  @media (max-width: 600px) {
+    border-right: 0;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    width: 100%;
+    align-items: center;
+  }
 `
 const ItineraryDetails = styled.div`
   display: flex;
   justify-content: center;
   padding: 20px;
   width: 50%;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `
 const TextWIcon = styled.div`
   align-items: center;
   justify-content: left;
   display: flex;
   gap: 7px;
+  width: 250px;
 
   svg {
     flex-shrink: 0;
@@ -53,6 +72,14 @@ const TripDetailWithIcon = styled(TextWIcon)`
   svg {
     width: 16px;
   }
+
+  &:last-of-type {
+    align-items: flex-start;
+
+    svg {
+      margin-top: 2px;
+    }
+  }
 `
 
 const TripDetailsList = styled.ul`
@@ -61,7 +88,7 @@ const TripDetailsList = styled.ul`
   justify-content: center;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   padding: 0;
 `
 
@@ -69,6 +96,7 @@ const ToggleNotificationButton = styled.button`
   background: transparent;
   border: none;
   text-decoration: underline;
+  padding: 0;
 `
 
 const TripSummaryPane = ({
@@ -108,6 +136,10 @@ const TripSummaryPane = ({
         </LocationDetails>
         <ItineraryDetails>
           <TripDetailsList>
+            <TripDetailWithIcon as="li">
+              <Clock />
+              <TripSummary monitoredTrip={monitoredTrip} />
+            </TripDetailWithIcon>
             <TripDetailWithIcon as="li">
               <Calendar />
               <MonitoredDays days={days} />

@@ -269,3 +269,10 @@
 .otp.mobile .route-viewer-header {
   margin: 0;
 }
+
+@media (max-width: 600px){
+  .panel-default {
+    width: 90%;
+  }
+}
+

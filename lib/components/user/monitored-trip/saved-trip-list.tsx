@@ -29,6 +29,9 @@ import withLoggedInUserSupport from '../with-logged-in-user-support'
 
 import getRenderData from './trip-status-rendering-strategies'
 import RouteBlockWrapper from './route-block-wrapper'
+
+import styled from 'styled-components'
+
 import TripSummaryPane from './trip-summary-pane'
 
 interface ItemOwnProps {
@@ -49,6 +52,13 @@ interface ItemState {
 interface Props {
   trips?: MonitoredTrip[]
 }
+
+const TripContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
 
 /**
  * This class manages events and rendering for one item in the saved trip list.
@@ -106,7 +116,9 @@ class TripListItem extends Component<ItemProps, ItemState> {
               <Icon Icon={Edit} />
             </button>
           </TripPannelTitle>
-          <RouteBlockWrapper itinerary={itinerary} />
+          <div style={{ marginTop: '-20px' }}>
+            <RouteBlockWrapper itinerary={itinerary} />
+          </div>
         </TripPanelHeading>
         <Panel.Body>
           <TripSummaryPane
@@ -194,9 +206,11 @@ const SavedTripList = ({ trips }: Props) => {
           <PageHeading>
             <FormattedMessage id="components.SavedTripList.myTrips" />
           </PageHeading>
-          {trips.map((trip) => (
-            <ConnectedTripListItem key={trip.id} trip={trip} />
-          ))}
+          <TripContainer>
+            {trips.map((trip) => (
+              <ConnectedTripListItem key={trip.id} trip={trip} />
+            ))}
+          </TripContainer>
         </>
       )
     }
