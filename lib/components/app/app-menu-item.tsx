@@ -83,6 +83,7 @@ export default class AppMenuItem extends Component<Props, State> {
           onKeyDown={this._handleKeyDown}
           {...otherProps}
           target={hasHref && isAbsolute ? '_blank' : undefined}
+          title={typeof text === 'string' ? text : ''}
         >
           <span aria-hidden>{icon}</span>
           <span>{text}</span>
