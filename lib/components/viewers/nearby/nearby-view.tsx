@@ -274,7 +274,7 @@ const mapStateToProps = (state: AppReduxState) => {
   return {
     entityId,
     homeTimezone: config.homeTimezone,
-    location: state.router.location,
+    location: state.router.location.hash,
     nearby,
     nearbyViewCoords
   }
