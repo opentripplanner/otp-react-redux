@@ -114,15 +114,15 @@ export function groupAndSortStopTimesByPatternByDay(
 }
 
 /**
- * Filter predicate used, so that the stop viewer only shows departures from a stop
- * (arrivals at a terminus stop are not shown in the stop viewer).
- * @returns true if the given stopTime does not correspond to the last stop visited by a pattern.
+ * Determines whether a stopId corresponds to the last stop time of a pattern.
+ * (Arrivals at a terminus stop are not shown in the schedule viewer.)
+ * Note: OTP offers a stopPosition attribute, but it is not necessarily the index of the stop in an array.
+ * @returns true if the given stopId corresponds to the last stop visited by a pattern.
  */
-function excludeLastStop(
-  stopTime: StopTime & { stopPosition?: number },
-  stopCount = 0
-): boolean {
-  return !stopTime.stopPosition || stopTime.stopPosition < stopCount - 1
+function isLastStop(stopId: string, pattern: Pattern): boolean {
+  if (!pattern.stops) return false
+  const position = pattern.stops.findIndex((stop) => stop.gtfsId === stopId)
+  return position === pattern.stops.length - 1
 }
 
 export function getStopTimesByPatternV2(
@@ -130,42 +130,41 @@ export function getStopTimesByPatternV2(
 ): Record<string, StopTimesForPattern> {
   const stopTimesByPattern: Record<string, StopTimesForPattern> = {}
   if (stopData && stopData.routes && stopData.stoptimesForPatterns) {
-    stopData.stoptimesForPatterns.forEach(({ pattern, stoptimes }) => {
-      const routeId = getRouteIdForPattern(pattern)
+    stopData.stoptimesForPatterns
+      // If this stop is the last stop on this pattern, then don't include any stop times from that pattern.
+      // (The schedule viewer doesn't show arrival times to a terminus stop.)
+      .filter(({ pattern }) => !isLastStop(stopData.gtfsId, pattern))
+      .forEach(({ pattern, stoptimes }) => {
+        const routeId = getRouteIdForPattern(pattern)
 
-      let headsign = stoptimes[0] && stoptimes[0].headsign
-      // If times didn't provide a headsign, extract it from the pattern
-      if (isBlank(headsign)) {
-        headsign = extractHeadsignFromPattern(pattern)
-      }
-      pattern.headsign = headsign
-
-      const id = `${routeId}-${headsign}`
-      if (!(id in stopTimesByPattern)) {
-        const route = stopData.routes.find((r) => r.id === routeId)
-        // in some cases, the TriMet transit index will not return all routes
-        // that serve a stop. Perhaps it doesn't return some routes if the
-        // route only performs a drop-off at the stop... not quite sure. So a
-        // check is needed to make sure we don't add data for routes not found
-        // from the routes query.
-        if (!routeIsValid(route, routeId)) {
-          return
+        let headsign = stoptimes[0] && stoptimes[0].headsign
+        // If times didn't provide a headsign, extract it from the pattern
+        if (isBlank(headsign)) {
+          headsign = extractHeadsignFromPattern(pattern)
         }
-        stopTimesByPattern[id] = {
-          id,
-          pattern,
-          route,
-          times: []
-        }
-      }
-      // Exclude the last stop, as the stop viewer doesn't show arrival times to a terminus stop.
-      const filteredTimes = stoptimes.filter((st: StopTime) =>
-        excludeLastStop(st, pattern.stops?.length)
-      )
+        pattern.headsign = headsign
 
-      stopTimesByPattern[id].times =
-        stopTimesByPattern[id].times.concat(filteredTimes)
-    })
+        const id = `${routeId}-${headsign}`
+        if (!(id in stopTimesByPattern)) {
+          const route = stopData.routes.find((r) => r.id === routeId)
+          // in some cases, the TriMet transit index will not return all routes
+          // that serve a stop. Perhaps it doesn't return some routes if the
+          // route only performs a drop-off at the stop... not quite sure. So a
+          // check is needed to make sure we don't add data for routes not found
+          // from the routes query.
+          if (!routeIsValid(route, routeId)) {
+            return
+          }
+          stopTimesByPattern[id] = {
+            id,
+            pattern,
+            route,
+            times: []
+          }
+        }
+        stopTimesByPattern[id].times =
+          stopTimesByPattern[id].times.concat(stoptimes)
+      })
   }
   return stopTimesByPattern
 }
@@ -181,12 +180,14 @@ export function mergeAndSortStopTimes(
   // Merge stop times, so that we can sort them across all route patterns.
   // (stopData is assumed valid per StopViewer render condition.)
   let mergedStopTimes: DetailedStopTime[] = []
-  Object.values(stopTimesByPattern).forEach(({ pattern, route, times }) => {
-    // Only add pattern if route info is returned by OTP.
-    if (routeIsValid(route, getRouteIdForPattern(pattern))) {
-      const filteredTimes = times
-        .filter((st: StopTime) => excludeLastStop(st, pattern.stops?.length))
-        .map((stopTime) => {
+  Object.values(stopTimesByPattern)
+    // If this stop is the last stop on this pattern, then don't include any stop times from that pattern.
+    // (The schedule viewer doesn't show arrival times to a terminus stop.)
+    .filter(({ pattern }) => !isLastStop(stopData.gtfsId, pattern))
+    .forEach(({ pattern, route, times }) => {
+      // Only add pattern if route info is returned by OTP.
+      if (routeIsValid(route, getRouteIdForPattern(pattern))) {
+        const filteredTimes = times.map((stopTime) => {
           // Add the route attribute and headsign to each stop time for rendering route info.
           const headsign = isBlank(stopTime.headsign)
             ? pattern.headsign
@@ -197,9 +198,9 @@ export function mergeAndSortStopTimes(
             route
           }
         })
-      mergedStopTimes = mergedStopTimes.concat(filteredTimes)
-    }
-  })
+        mergedStopTimes = mergedStopTimes.concat(filteredTimes)
+      }
+    })
 
   return mergedStopTimes.sort(stopTimeComparator)
 }
