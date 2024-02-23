@@ -165,9 +165,7 @@ components:
     tooManyPlaces: 已达到最多中途地点
   AdvancedOptions:
     bannedRoutes: 选择禁行路线…
-    bikeTolerance: 骑行容忍度
     preferredRoutes: 选择首选路线…
-    walkTolerance: 步行容忍度
   AfterSignInScreen:
     mainTitle: 重新定向…
     message: 如果几秒钟后页面没有加载, 请 <redirectLink>点击这里</redirectLink>.
@@ -531,7 +529,6 @@ components:
     timezoneWarning: 出发时间以 <strong>{timezoneCode}</strong> 显示.
     titleBarStopId: 车站 {stopId}
     viewNearby: 查看附近
-    viewNextDepartures: 查看下一次出发
     viewSchedule: 查看时间表
     zoomToStop: 缩放到车站
   SubNav:

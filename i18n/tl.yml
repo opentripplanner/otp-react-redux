@@ -175,9 +175,7 @@ components:
     tooManyPlaces: Naabot ang maximum na bilang ng mga intermediate na lugar
   AdvancedOptions:
     bannedRoutes: Pumili ng mga naka-ban na ruta…
-    bikeTolerance: Tolerance sa Pagbibisikleta
     preferredRoutes: Piliin ang mga mas gustong ruta...
-    walkTolerance: Tolerance sa Paglalakad
   AfterSignInScreen:
     mainTitle: Nire-redirect...
     message: >-
@@ -597,7 +595,6 @@ components:
     timezoneWarning: Ipinapakita ang mga oras ng pag-alis sa <strong>{timezoneCode}</strong>.
     titleBarStopId: Hintuan {stopId}
     viewNearby: Tingnan ang Malapit
-    viewNextDepartures: Tingnan ang mga susunod na pag-alis
     viewSchedule: Tingnan ang iskedyul
     zoomToStop: I-zoom para ihinto
   SubNav:

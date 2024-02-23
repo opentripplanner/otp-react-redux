@@ -24,6 +24,7 @@ import RentalStation from './rental-station'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
 import VehicleParking from './vehicle-parking'
+import VehiclePositionRetriever from '../vehicle-position-retriever'
 
 const AUTO_REFRESH_INTERVAL = 15000
 
@@ -115,6 +116,13 @@ function NearbyView({
     setLocation(payload)
   }
 
+  // Make sure the highlighted location is cleaned up when leaving nearby
+  useEffect(() => {
+    return function cleanup() {
+      setHighlightedLocation(null)
+    }
+  })
+
   useEffect(() => {
     const listener = (e: any) => {
       if (e.geolocateSource) {
@@ -176,26 +184,29 @@ function NearbyView({
     setHighlightedLocation(null)
   }, [setHighlightedLocation])
 
-  const nearbyItemList = nearby?.map((n: any) => (
-    <li
-      className={
-        (n.place.gtfsId ?? n.place.id) === entityId ? 'highlighted' : ''
-      }
-      key={n.place.id}
-    >
-      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-      <div
-        onBlur={onMouseLeave}
-        onFocus={() => onMouseEnter(n.place)}
-        onMouseEnter={() => onMouseEnter(n.place)}
-        onMouseLeave={onMouseLeave}
-        /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
-        tabIndex={0}
+  const nearbyItemList =
+    nearby?.map &&
+    nearby?.map((n: any) => (
+      <li
+        className={
+          (n.place.gtfsId ?? n.place.id) === entityId ? 'highlighted' : ''
+        }
+        key={n.place.id}
       >
-        {getNearbyItem(n.place, onClickSetLocation)}
-      </div>
-    </li>
-  ))
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+        <div
+          onBlur={onMouseLeave}
+          onFocus={() => onMouseEnter(n.place)}
+          onMouseEnter={() => onMouseEnter(n.place)}
+          onMouseLeave={onMouseLeave}
+          /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
+          tabIndex={0}
+        >
+          {getNearbyItem(n.place, onClickSetLocation)}
+        </div>
+      </li>
+    ))
+
   useEffect(() => {
     setLoading(false)
   }, [nearby])
@@ -248,6 +259,7 @@ function NearbyView({
             <FormattedMessage id="components.NearbyView.nothingNearby" />
           ))}
       </NearbySidebarContainer>
+      <VehiclePositionRetriever />
     </MainContainer>
   )
 }

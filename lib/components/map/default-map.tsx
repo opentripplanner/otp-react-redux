@@ -10,9 +10,9 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import {
+  assembleBasePath,
   bikeRentalQuery,
   carRentalQuery,
-  makeApiUrl,
   vehicleRentalQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
@@ -269,7 +269,9 @@ class DefaultMap extends Component {
       this.context
     const { baseLayers, maxZoom, overlays } = mapConfig || {}
     const { lat, lon, zoom } = this.state
-    const vectorTilesEndpoint = makeApiUrl(config, 'vectorTiles', {})
+    const vectorTilesEndpoint = `${assembleBasePath(config)}${
+      config.api?.path
+    }/vectorTiles`
 
     const bikeStations = [
       ...bikeRentalStations.filter(

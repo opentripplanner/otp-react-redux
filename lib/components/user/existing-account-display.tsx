@@ -1,15 +1,13 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { FormikProps } from 'formik'
-import React, { FormEventHandler } from 'react'
+import React from 'react'
 
 import { AppReduxState } from '../../util/state-types'
 import { TransitModeConfig } from '../../util/config-types'
 import PageTitle from '../util/page-title'
 
 import { EditedUser } from './types'
-import { PhoneCodeRequestHandler } from './phone-number-editor'
-import { PhoneVerificationSubmitHandler } from './phone-verification-form'
 import A11yPrefs from './a11y-prefs'
 import BackToTripPlanner from './back-to-trip-planner'
 import DeleteUser from './delete-user'
@@ -21,8 +19,6 @@ import TermsOfUsePane from './terms-of-use-pane'
 
 interface Props extends FormikProps<EditedUser> {
   mobilityProfileEnabled: boolean
-  onRequestPhoneVerificationCode: PhoneCodeRequestHandler
-  onSendPhoneVerificationCode: PhoneVerificationSubmitHandler
   wheelchairEnabled: boolean
 }
 
