@@ -6,10 +6,8 @@ import React, { Component, createRef } from 'react'
 import styled from 'styled-components'
 
 import { FETCH_STATUS } from '../../util/constants'
-import {
-  getFirstDepartureFromNow,
-  mergeAndSortStopTimes
-} from '../../util/viewer'
+import { getFirstDepartureFromNow } from '../../util/viewer'
+import { mergeAndSortStopTimes } from '../../util/stop-times'
 import Loading from '../narrative/loading'
 import type { StopData } from '../util/types'
 
