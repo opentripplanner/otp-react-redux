@@ -1,5 +1,6 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { Place } from '@opentripplanner/types'
 import { Star as StarRegular } from '@styled-icons/fa-regular/Star'
 import { Star as StarSolid } from '@styled-icons/fa-solid/Star'
 import React, { useCallback } from 'react'
@@ -8,6 +9,7 @@ import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
 import { getPersistenceMode } from '../../util/user'
 import { getShowUserSettings } from '../../util/state'
+import { Pattern, StopTime } from '../util/types'
 import { StyledIconWrapper } from '../util/styledIcon'
 
 type PatternStopTime = {
@@ -40,8 +42,10 @@ const FavoriteStopToggle = ({
   stopData
 }: Props): JSX.Element | null => {
   const handleClick = useCallback(() => {
-    if (isFavoriteStop) forgetStop(stopData)
-    else rememberStop(stopData)
+    if (stopData) {
+      if (isFavoriteStop) forgetStop(stopData)
+      else rememberStop(stopData)
+    }
   }, [forgetStop, isFavoriteStop, rememberStop, stopData])
 
   return enableFavoriteStops ? (
@@ -68,13 +72,15 @@ const mapStateToProps = (state: AppReduxState) => {
   const showUserSettings = getShowUserSettings(state)
   const { config, ui } = state.otp
   const { persistence } = config
-  const { favoriteStops } = state.user.localUser
   const stopId = ui.viewedStop.stopId
 
   return {
     enableFavoriteStops:
       showUserSettings && getPersistenceMode(persistence).isLocalStorage,
-    isFavoriteStop: favoriteStops.findIndex((s) => s.id === stopId) !== -1
+    isFavoriteStop:
+      state.user.localUser?.favoriteStops.findIndex(
+        (s: { id: string }) => s.id === stopId
+      ) !== -1
   }
 }
 
