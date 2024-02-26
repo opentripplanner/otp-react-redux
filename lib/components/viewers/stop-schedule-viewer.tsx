@@ -259,9 +259,16 @@ class StopScheduleViewer extends Component<Props, State> {
     const { date } = this.state
     const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
 
-    const displayedStopId = stopData
-      ? coreUtils.itinerary.getDisplayedStopId(stopData)
-      : ''
+    // Rewrite stop ID to not include Agency prefix, if present
+    // TODO: make this functionality configurable?
+    let displayedStopId
+    if (stopData) {
+      displayedStopId =
+        stopData.code ||
+        (stopData.gtfsId?.includes(':')
+          ? stopData.gtfsId.split(':')[1]
+          : stopData.gtfsId)
+    }
 
     let warning
     if (!inHomeTimezone && this._isDateWithinRange(date)) {
