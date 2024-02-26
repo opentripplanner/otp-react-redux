@@ -3,11 +3,7 @@ import {
   getMockInitialState,
   mockWithProvider
 } from '../../test-utils/mock-data/store'
-import {
-  restoreDateNowBehavior,
-  setDefaultTestTime,
-  setTestTime
-} from '../../test-utils'
+import { restoreDateNowBehavior, setDefaultTestTime } from '../../test-utils'
 import StopScheduleViewer from '../../../lib/components/viewers/stop-schedule-viewer'
 
 describe('components > viewers > stop viewer', () => {
