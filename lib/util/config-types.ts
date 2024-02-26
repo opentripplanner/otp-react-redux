@@ -324,20 +324,10 @@ export interface RouteViewerConfig {
 }
 
 /** Stop Viewer Config */
+// TODO: rename to ScheduleViewer
 export interface StopViewerConfig {
-  /** Radius (in meters) for searching nearby stops, rental vehicles, park and rides etc. */
-  nearbyRadius?: number
-  /** The max. departures to show for each trip pattern in the Next Arrivals view */
-  numberOfDepartures?: number
   /** Whether to display block IDs with each departure in the schedule view. */
   showBlockIds?: boolean
-  /**
-   * Time window, in seconds, in which to search for next arrivals,
-   * so that, for example, if it is Friday and a route does
-   * not begin service again until Monday, we are showing its next
-   * departure and it is not entirely excluded from display.
-   */
-  timeRange?: number
 }
 
 /** The main application configuration object */
