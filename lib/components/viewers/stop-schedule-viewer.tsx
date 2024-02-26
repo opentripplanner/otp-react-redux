@@ -112,9 +112,6 @@ class StopScheduleViewer extends Component<Props, State> {
   _onClickPlanFrom = () => this._setLocationFromStop('from')
 
   componentDidMount() {
-    // const { fetchStopInfo, map, stopId } = this.props
-    // Load the viewed stop in the store when the Stop Viewer first mounts
-    // fetchStopInfo(map, viewedStop)
     this._findStopTimesForDate(this.state.date)
   }
 
@@ -438,10 +435,8 @@ const mapStateToProps = (state: AppReduxState) => {
 }
 
 const mapDispatchToProps = {
-  // fetchStopInfo: apiActions.fetchStopInfo, // TODO remove from api.js
   findStopTimesForStop: apiActions.findStopTimesForStop,
   setLocation: mapActions.setLocation,
-  // setViewedNearbyCoords: uiActions.setViewedNearbyCoords,
   zoomToPlace: mapActions.zoomToPlace
 }
 
