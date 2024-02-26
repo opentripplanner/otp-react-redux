@@ -29,14 +29,21 @@ export interface BikeRental {
   stations: any[]
 }
 
+export interface StopTimeTrip {
+  blockId?: string
+  id: string
+}
+
 export interface StopTime {
   departureDelay?: number
   headsign: string
   pattern: Pattern
   realtimeDeparture?: number
   realtimeState?: string
-  serviceDay?: number
+  scheduledDeparture: number
+  serviceDay: number
   times: Time[]
+  trip: StopTimeTrip
 }
 
 export interface Pattern {

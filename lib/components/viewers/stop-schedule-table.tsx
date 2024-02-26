@@ -7,9 +7,9 @@ import styled from 'styled-components'
 
 import { FETCH_STATUS } from '../../util/constants'
 import { getFirstDepartureFromNow } from '../../util/viewer'
-import { mergeAndSortStopTimes } from '../../util/stop-times'
+import { isBlank } from '../../util/ui'
+import { mergeAndSortStopTimes, StopDataV2 } from '../../util/stop-times'
 import Loading from '../narrative/loading'
-import type { StopData } from '../util/types'
 
 import DepartureTime from './departure-time'
 
@@ -61,8 +61,7 @@ class StopScheduleTable extends Component<{
   date: string
   homeTimezone: string
   showBlockIds: boolean
-  // TODO TYPESCRIPT: move this type to a shared type
-  stopData: StopData
+  stopData: StopDataV2
 }> {
   /**
    * Link to the DOM for the next departure row, so we can scroll to it if needed.
@@ -141,7 +140,11 @@ class StopScheduleTable extends Component<{
             const scrollToRow = nextStopTime
               ? nextStopTime === highlightedStopTime
               : highlightRow
-            const routeName = route.shortName ? route.shortName : route.longName
+            const routeName = route
+              ? !isBlank(route.shortName)
+                ? route.shortName
+                : route.longName
+              : ''
 
             // Add ref to scroll to the first stop time departing from now.
             const refProp = scrollToRow ? this.targetDepartureRef : undefined

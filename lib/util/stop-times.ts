@@ -28,8 +28,9 @@ type PatternStopTime = {
 }
 
 // TODO move to common file
-type StopDataV2 = Place & {
+export type StopDataV2 = Place & {
   code: string
+  fetchStatus: number
   gtfsId: string
   routes: Route[]
   stoptimesForPatterns: PatternStopTime[]
@@ -43,6 +44,7 @@ export interface StopTimesForPattern {
 }
 
 export interface DetailedStopTime extends StopTime {
+  blockId?: string
   headsign: string
   route?: Route
 }
@@ -176,9 +178,10 @@ export function mergeAndSortStopTimes(
         : stopTime.headsign
       return {
         ...stopTime,
+        blockId: stopTime.trip.blockId,
         headsign,
         route
-      }
+      } as DetailedStopTime
     })
     mergedStopTimes = mergedStopTimes.concat(timesWithHeadsign)
   })
