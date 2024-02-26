@@ -1,36 +1,11 @@
-import { Agency, Place, Route } from '@opentripplanner/types'
+import { Route } from '@opentripplanner/types'
 
-import { Pattern, StopTime } from '../components/util/types'
+import { Pattern, StopData, StopTime } from '../components/util/types'
 
 import { extractHeadsignFromPattern, getRouteIdForPattern } from './viewer'
 import { isBlank } from './ui'
 
-// TODO move to common file
-type PatternStopTime = {
-  pattern: Pattern
-  stoptimes: StopTime[]
-}
-
-// FIXME: add to OTP-UI types
-interface AgencyWithGtfsId extends Agency {
-  gtfsId: string
-}
-
-// FIXME: add to OTP-UI types
-interface RouteWithAgencyGtfsId extends Route {
-  agency: AgencyWithGtfsId
-}
-
-// TODO move to common file
-export type StopDataV2 = Place & {
-  code: string
-  fetchStatus: number
-  gtfsId: string
-  routes: RouteWithAgencyGtfsId[]
-  stoptimesForPatterns: PatternStopTime[]
-}
-
-export interface StopTimesForPattern {
+interface StopTimesForPattern {
   id: string
   pattern: Pattern
   route?: Route
@@ -100,9 +75,7 @@ function stopTimeComparator(a: StopTime, b: StopTime) {
 /**
  * Merges and sorts the stop time entries from the patterns in the given stopData object.
  */
-export function mergeAndSortStopTimes(
-  stopData: StopDataV2
-): DetailedStopTime[] {
+export function mergeAndSortStopTimes(stopData: StopData): DetailedStopTime[] {
   const stopTimesByPattern = getStopTimesByPattern(stopData)
 
   // Merge stop times, so that we can sort them across all route patterns.

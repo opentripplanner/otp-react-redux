@@ -59,6 +59,29 @@ export interface RouteVehicle {
   patternId: string
 }
 
+export interface PatternStopTime {
+  pattern: Pattern
+  stoptimes: StopTime[]
+}
+
+// FIXME: add to OTP-UI types
+interface AgencyWithGtfsId extends Agency {
+  gtfsId: string
+}
+
+// FIXME: add to OTP-UI types
+interface RouteWithAgencyGtfsId extends Route {
+  agency: AgencyWithGtfsId
+}
+
+export interface StopData extends Place {
+  code: string
+  fetchStatus: number
+  gtfsId: string
+  routes: RouteWithAgencyGtfsId[]
+  stoptimesForPatterns: PatternStopTime[]
+}
+
 // Routes have many properties beside id, but none of these are guaranteed.
 export interface ViewedRouteObject extends Route {
   patterns?: Record<string, Pattern>

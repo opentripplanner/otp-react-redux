@@ -1,6 +1,5 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { Place } from '@opentripplanner/types'
 import { Star as StarRegular } from '@styled-icons/fa-regular/Star'
 import { Star as StarSolid } from '@styled-icons/fa-solid/Star'
 import React, { useCallback } from 'react'
@@ -9,19 +8,8 @@ import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
 import { getPersistenceMode } from '../../util/user'
 import { getShowUserSettings } from '../../util/state'
-import { Pattern, StopTime } from '../util/types'
+import { StopData } from '../util/types'
 import { StyledIconWrapper } from '../util/styledIcon'
-
-type PatternStopTime = {
-  pattern: Pattern
-  stoptimes: StopTime[]
-}
-
-type StopData = Place & {
-  code: string
-  gtfsId: string
-  stoptimesForPatterns: PatternStopTime[]
-}
 
 interface Props {
   enableFavoriteStops: boolean
