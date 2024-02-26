@@ -150,7 +150,6 @@ common:
     work: công việc
   routing:
     routeAndNumber: Tuyến {routeId}
-    routeToHeadsign: Đến {headsign}
   searchForms:
     click: nhấp
     enterDestination: Nhập điểm đến hoặc {mapAction} vào bản đồ…
@@ -184,36 +183,6 @@ components:
     message: >-
       Nếu trang này không tải sau vài giây, <redirectLink>bấm vào
       đây</redirectLink>.
-  AmenitiesPanel:
-    bikesAtStation: |
-      {companyLength, plural,
-       =0 {xe đạp tại {name}}
-       other {xe đạp {company} tại {name}}
-       }
-    bikesAvailable: |
-      {count, plural,
-       =0 {Không có xe đạp}
-       other {# xe đạp có sẵn}
-       }
-    bikesNearby: |
-      {count, plural,
-       =0 {Không có xe đạp {company} nào gần đây}
-       other {# xe đạp của {company} gần đó}
-       }
-    nearbyAmenities: Các tiện nghi gần đó
-    noNearbyBikes: Không tìm thấy xe đạp cho thuê gần đó.
-    noNearbyScooters: Không tìm thấy dịch vụ cho thuê xe hạng nhẹ gần đây.
-    noPRLotsFound: Không có bãi đậu xe và đi xe công cộng gần đây.
-    scootersNearby: |
-      {count, plural,
-       =0 {Không có xe tay ga điện {company} nào gần đây} 
-       other {Có # xe tay ga điện {company} gần đó} 
-       }
-    spacesAvailable: |
-      {count, plural,
-       =0 {Không có chỗ đậu xe}
-       other {# chỗ đậu xe có sẵn}
-       }
   AppMenu:
     callHistory: Lịch sử cuộc gọi
     closeMenu: Đóng danh mục
@@ -298,9 +267,6 @@ components:
   ItinerarySummary:
     itineraryDetails: Chi tiết hành trình
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
-  LiveStopTimes:
-    autoRefresh: Tự động làm mới các lượt đến?
-    refresh: Làm mới thời gian đến
   LocationSearch:
     enterLocation: Nhập vị trí
     setDestination: Chọn điểm đến
@@ -480,13 +446,6 @@ components:
     late: Trễ {minutes}
     onTime: kịp thời
     scheduled: lên kế hoạch
-  RelatedPanel:
-    hideExtraStops: Ẩn các điểm dừng thêm
-    showExtraStops: Hiển thị thêm {count} điểm dừng
-  RelatedStopsPanel:
-    noArrivalFound: Không tìm thấy việc đến nơi
-    relatedStops: Điểm dừng liên quan
-    viewDetails: Xem chi tiết
   ResultsError:
     backToSearch: Quay lại tìm kiếm
   ResultsHeader:
@@ -571,14 +530,9 @@ components:
   StopViewer:
     displayStopId: "<strong>Điểm dừng số</strong>: {stopId}"
     findSchedule: Tìm kiếm lịch trình theo ngày
-    flexStop: >-
-      Đây là một điểm dừng linh hoạt. Xe sẽ đưa đón khách trong khu linh hoạt
-      này theo yêu cầu. Bạn có thể phải gọi trước để được phục vụ trong khu vực
-      này.
     forStop: dành cho {stopName}
     header: Xem điểm dừng
     loadingText: Đang tải điểm dừng…
-    nextArrivals: Lần Đến Nơi Tiếp Theo
     noStopsFound: Không tìm thấy thời gian dừng cho ngày.
     operatorLogoAriaLabel: "Điểm dừng của {operatorName}:"
     schedule: Lịch trình

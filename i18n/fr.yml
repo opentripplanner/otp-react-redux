@@ -158,7 +158,6 @@ common:
     work: lieu de travail
   routing:
     routeAndNumber: Ligne {routeId}
-    routeToHeadsign: Direction {headsign}
   searchForms:
     click: cliquez
     enterDestination: Entrez votre destination ou {mapAction} sur la carte…
@@ -194,40 +193,6 @@ components:
     message: >-
       Si la page ne s'affiche pas après quelques secondes, <redirectLink>cliquez
       ici</redirectLink>.
-  AmenitiesPanel:
-    bikesAtStation: |
-      {companyLength, plural,
-        =0 {vélo à {name}}
-        other {vélos {company} à {name}}
-      }
-    bikesAvailable: |
-      {count, plural,
-        =0 {Aucun vélo disponible}
-        one {# vélo disponible}
-        other {# vélos disponibles}
-      }
-    bikesNearby: |
-      {count, plural,
-        =0 {Aucun vélo partagé {company} à proximité}
-        one {# vélo partagé {company} à proximité}
-        other {# vélos partagés {company} à proximité}
-      }
-    nearbyAmenities: Services à proximité
-    noNearbyBikes: Aucun vélo en location à proximité.
-    noNearbyScooters: Aucune trottinette en location à proximité.
-    noPRLotsFound: Aucun parc relais à proximité.
-    scootersNearby: |
-      {count, plural,
-        =0 {Aucune trottinette {company} à proximité}
-        one {# trottinette {company} à proximité}
-        other {# trottinettes {company} à proximité}
-      }
-    spacesAvailable: |
-      {count, plural,
-        =0 {Aucun emplacement disponible}
-        one {# emplacement disponible}
-        other {# emplacements disponibles}
-      }
   AppMenu:
     callHistory: Historique des appels
     closeMenu: Fermer le menu
@@ -314,9 +279,6 @@ components:
   ItinerarySummary:
     itineraryDetails: Détails du trajet
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
-  LiveStopTimes:
-    autoRefresh: Mise à jour automatique ?
-    refresh: Mettre à jour les prochains passages
   LocationSearch:
     enterLocation: Entrez le lieu
     setDestination: Destination
@@ -528,13 +490,6 @@ components:
     late: retard {minutes}
     onTime: à l'heure
     scheduled: horaire
-  RelatedPanel:
-    hideExtraStops: Masquer les arrêts à proximité
-    showExtraStops: Afficher {count} arrêts à proximité
-  RelatedStopsPanel:
-    noArrivalFound: Aucun passage prévu
-    relatedStops: Arrêts à proximité
-    viewDetails: Détails
   ResultsError:
     backToSearch: Retour à la recherche
   ResultsHeader:
@@ -624,13 +579,9 @@ components:
   StopViewer:
     displayStopId: <strong>Arrêt n°</strong>{stopId}
     findSchedule: Rechercher les horaires par date
-    flexStop: >-
-      Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande. Une
-      réservation préalable peut être exigée pour obtenir la desserte.
     forStop: pour {stopName}
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
-    nextArrivals: Prochains passages
     noStopsFound: Aucun horaire pour la date choisie.
     operatorLogoAriaLabel: "Arrêt {operatorName} :"
     schedule: Horaires

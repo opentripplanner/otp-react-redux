@@ -145,7 +145,6 @@ common:
     work: trabaho
   routing:
     routeAndNumber: Ruta {routeId}
-    routeToHeadsign: Papuntang {headsign}
   searchForms:
     click: click
     enterDestination: Ilagay ang destinasyon o {mapAction} sa mapa…
@@ -181,40 +180,6 @@ components:
     message: >-
       Kung hindi maglo-load ang page pagkalipas ng ilang segundo,
       <redirectLink>click here</redirectLink>.
-  AmenitiesPanel:
-    bikesAtStation: |
-      {companyLength, plural,
-       =0 {Bikes at {name}}
-       other {{company} bikes at {name}}
-       }
-    bikesAvailable: |
-      {count, plural,
-       =0 {No bikes available}
-       one {# bike available}
-       other {# bikes available}
-       }
-    bikesNearby: |
-      {count, plural,
-       =0 {no floating {company} bikes nearby}
-       one {# floating {company} bike nearby}
-       other {# floating {company} bikes nearby}
-       }
-    nearbyAmenities: Mga Amenity sa Malapit
-    noNearbyBikes: Walang nakitang pinaparentahang bisikleta sa malapit.
-    noNearbyScooters: Walang nakitang pinaparentahang micromobility sa malapit.
-    noPRLotsFound: Walang nakitang park and ride na lote sa malapit.
-    scootersNearby: |
-      {count, plural,
-       =0 {No {company} E-Scooters nearby}
-       one {# {company} E-Scooter nearby}
-       other {# {company} E-Scooters nearby}
-       }
-    spacesAvailable: |
-      {count, plural,
-       =0 {No spaces available}
-       one {# space available}
-       other {# spaces available}
-       }
   AppMenu:
     callHistory: History ng Tawag
     closeMenu: Isara ang Menu
@@ -299,9 +264,6 @@ components:
   ItinerarySummary:
     itineraryDetails: Mga detalye ng itinerary
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
-  LiveStopTimes:
-    autoRefresh: Awtomatikong i-refresh ang mga pagdating?
-    refresh: I-refresh ang mga oras ng pagdating
   LocationSearch:
     enterLocation: Ilagay ang lokasyon
     setDestination: Itakda ang Patutunguhan
@@ -489,13 +451,6 @@ components:
     late: "{minutes} (na) late"
     onTime: nasa oras
     scheduled: nakaiskedyul
-  RelatedPanel:
-    hideExtraStops: Itago ang mga karagdagang hintuan
-    showExtraStops: Ipakita ang {count} (na) karagdagang hakbang
-  RelatedStopsPanel:
-    noArrivalFound: Walang nakitang pagdating
-    relatedStops: Mga Kaugnay na Hintuan
-    viewDetails: Tingnan ang mga detalye
   ResultsError:
     backToSearch: Bumalik sa Paghahanap
   ResultsHeader:
@@ -581,14 +536,9 @@ components:
   StopViewer:
     displayStopId: "<strong>ID ng Hintuan</strong>: {stopId}"
     findSchedule: Maghanap ng iskedyul ayon sa petsa
-    flexStop: >-
-      Isa itong flexible na hintuan. Magbababa at magsasakay ng mga pasahero ang
-      mga sasakyan sa flexible na zone na ito kapag hiniling. Posibleng
-      kailanganin mong tumawag muna para sa serbisyo sa lugar na ito.
     forStop: para sa {stopName}
     header: Ihinto ang Viewer
     loadingText: Nilo-load ang Hintuan...
-    nextArrivals: Mga Susunod na Pagdating
     noStopsFound: Walang nakitang oras ng paghinto para sa petsa.
     operatorLogoAriaLabel: "{operatorName} hintuan:"
     schedule: Iskedyul
