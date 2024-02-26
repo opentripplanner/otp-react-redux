@@ -2,11 +2,7 @@ import { Agency, Place, Route } from '@opentripplanner/types'
 
 import { Pattern, StopTime } from '../components/util/types'
 
-import {
-  extractHeadsignFromPattern,
-  getRouteIdForPattern,
-  stopTimeComparator
-} from './viewer'
+import { extractHeadsignFromPattern, getRouteIdForPattern } from './viewer'
 import { isBlank } from './ui'
 
 // TODO move to common file
@@ -59,7 +55,7 @@ export function isLastStop(stopId: string, pattern: Pattern): boolean {
   return position === pattern.stops.length - 1
 }
 
-export function getStopTimesByPatternV2(
+function getStopTimesByPattern(
   stopData: StopDataV2
 ): Record<string, StopTimesForPattern> {
   const stopTimesByPattern: Record<string, StopTimesForPattern> = {}
@@ -92,12 +88,22 @@ export function getStopTimesByPatternV2(
 }
 
 /**
+ * Comparator to sort stop times by their departure times
+ * (in chronological order - 9:13am, 9:15am, etc.)
+ */
+function stopTimeComparator(a: StopTime, b: StopTime) {
+  const aTime = a.serviceDay + (a.realtimeDeparture ?? a.scheduledDeparture)
+  const bTime = b.serviceDay + (b.realtimeDeparture ?? b.scheduledDeparture)
+  return aTime - bTime
+}
+
+/**
  * Merges and sorts the stop time entries from the patterns in the given stopData object.
  */
 export function mergeAndSortStopTimes(
   stopData: StopDataV2
 ): DetailedStopTime[] {
-  const stopTimesByPattern = getStopTimesByPatternV2(stopData)
+  const stopTimesByPattern = getStopTimesByPattern(stopData)
 
   // Merge stop times, so that we can sort them across all route patterns.
   // (stopData is assumed valid per StopScheduleViewer render condition.)
