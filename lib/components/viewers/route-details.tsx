@@ -119,7 +119,16 @@ class RouteDetails extends Component<Props> {
           }
         }
 
-        amended.push(cur)
+        if (alreadyExistingIndex >= 0) {
+          // Only replace if new pattern has greater geometry
+          if (
+            amended[alreadyExistingIndex].geometryLength < cur.geometryLength
+          ) {
+            amended[alreadyExistingIndex] = cur
+          }
+        } else {
+          amended.push(cur)
+        }
         return amended
       }, [])
       .sort((a, b) => {
