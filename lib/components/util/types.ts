@@ -1,33 +1,4 @@
-import {
-  MapLocationActionArg,
-  Route,
-  Station,
-  Stop
-} from '@opentripplanner/types'
-
-// TYPESCRIPT TODO: move this to a larger shared types file, preferably within otp-ui
-export interface StopData {
-  bikeRental: BikeRental
-  fetchStatus: number
-  id: string
-  lat: number
-  locationType: number
-  lon: number
-  name: string
-  nearbyStops: string[]
-  parkAndRideLocations: any[]
-  routes: Route[]
-  stopTimes: StopTime[]
-  stopTimesLastUpdated: number
-  vehicleRental: VehicleRental
-  vehicleType: number
-  vehicleTypeSet: boolean
-  wheelchairBoarding: number
-}
-
-export interface BikeRental {
-  stations: any[]
-}
+import { MapLocationActionArg, Route, Stop } from '@opentripplanner/types'
 
 export interface StopTimeTrip {
   blockId?: string
@@ -77,25 +48,6 @@ export interface Time {
   stopIndex: number
   timepoint: boolean
   tripId: string
-}
-
-export interface PatternStopTimes {
-  id: string
-  pattern: Pattern
-  route: Route
-  times: Time[]
-}
-
-export interface PatternDayStopTimes extends PatternStopTimes {
-  day: number
-}
-
-export interface VehicleRental {
-  errorsByNetwork: { [key: string]: { message?: string; severity?: string } }
-  stations: Station[]
-  systemInformationDataByNetwork: {
-    [key: string]: { message?: string; severity?: string }
-  }
 }
 
 export interface ViewedRouteState {
