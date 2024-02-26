@@ -31,7 +31,7 @@ export function isLastStop(stopId: string, pattern: Pattern): boolean {
 }
 
 function getStopTimesByPattern(
-  stopData: StopDataV2
+  stopData: StopData
 ): Record<string, StopTimesForPattern> {
   const stopTimesByPattern: Record<string, StopTimesForPattern> = {}
   if (stopData && stopData.routes && stopData.stoptimesForPatterns) {

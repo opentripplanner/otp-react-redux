@@ -15,12 +15,10 @@ import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as mapActions from '../../actions/map'
-// import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
 import { Icon, IconWithText } from '../util/styledIcon'
 import { isBlank, navigateBack } from '../../util/ui'
-import { SetLocationHandler } from '../util/types'
-import { StopDataV2 } from '../../util/stop-times'
+import { SetLocationHandler, StopData } from '../util/types'
 import { TransitOperatorConfig } from '../../util/config-types'
 import Link from '../../util/link'
 import OperatorLogo from '../util/operator-logo'
@@ -43,7 +41,7 @@ interface Props {
   map?: MapRef
   setLocation: SetLocationHandler
   showBlockIds?: boolean
-  stopData?: StopDataV2
+  stopData?: StopData
   stopId?: string
   transitOperators: TransitOperatorConfig[]
   // TODO refactor

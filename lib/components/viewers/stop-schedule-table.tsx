@@ -8,7 +8,8 @@ import styled from 'styled-components'
 import { FETCH_STATUS } from '../../util/constants'
 import { getFirstDepartureFromNow } from '../../util/viewer'
 import { isBlank } from '../../util/ui'
-import { mergeAndSortStopTimes, StopDataV2 } from '../../util/stop-times'
+import { mergeAndSortStopTimes } from '../../util/stop-times'
+import { StopData } from '../util/types'
 import Loading from '../narrative/loading'
 
 import DepartureTime from './departure-time'
@@ -61,7 +62,7 @@ class StopScheduleTable extends Component<{
   date: string
   homeTimezone: string
   showBlockIds?: boolean
-  stopData: StopDataV2
+  stopData: StopData
 }> {
   /**
    * Link to the DOM for the next departure row, so we can scroll to it if needed.

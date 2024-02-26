@@ -1,4 +1,10 @@
-import { MapLocationActionArg, Route, Stop } from '@opentripplanner/types'
+import {
+  Agency,
+  MapLocationActionArg,
+  Place,
+  Route,
+  Stop
+} from '@opentripplanner/types'
 
 export interface StopTimeTrip {
   blockId?: string
