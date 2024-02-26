@@ -24,7 +24,6 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
   >
     <Connect(NearbyView)>
       <NearbyView
-        entityId="undefined"
         fetchNearby={[Function]}
         homeTimezone="America/Los_Angeles"
         nearby={Array []}
@@ -133,7 +132,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
   >
     <Connect(NearbyView)>
       <NearbyView
-        entityId="undefined"
         fetchNearby={[Function]}
         homeTimezone="America/Los_Angeles"
         nearby={
