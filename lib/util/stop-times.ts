@@ -1,5 +1,5 @@
 import { addDays, isBefore } from 'date-fns'
-import { Place, Route } from '@opentripplanner/types'
+import { Agency, Place, Route } from '@opentripplanner/types'
 
 import {
   Pattern,
@@ -27,12 +27,22 @@ type PatternStopTime = {
   stoptimes: StopTime[]
 }
 
+// FIXME: add to OTP-UI types
+interface AgencyWithGtfsId extends Agency {
+  gtfsId: string
+}
+
+// FIXME: add to OTP-UI types
+interface RouteWithAgencyGtfsId extends Route {
+  agency: AgencyWithGtfsId
+}
+
 // TODO move to common file
 export type StopDataV2 = Place & {
   code: string
   fetchStatus: number
   gtfsId: string
-  routes: Route[]
+  routes: RouteWithAgencyGtfsId[]
   stoptimesForPatterns: PatternStopTime[]
 }
 

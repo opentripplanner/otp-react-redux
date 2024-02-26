@@ -60,7 +60,7 @@ const TimeCell = styled.td`
 class StopScheduleTable extends Component<{
   date: string
   homeTimezone: string
-  showBlockIds: boolean
+  showBlockIds?: boolean
   stopData: StopDataV2
 }> {
   /**

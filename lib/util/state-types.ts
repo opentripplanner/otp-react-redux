@@ -18,6 +18,10 @@ export interface OtpState {
     }
   }
   overlay: any
+  serviceTimeRange?: {
+    end: number
+    start: number
+  }
   transitIndex: any
   // TODO: Add other OTP states
   ui: any // TODO

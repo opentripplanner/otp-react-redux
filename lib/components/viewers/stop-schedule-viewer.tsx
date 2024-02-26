@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Alert, Button } from 'react-bootstrap'
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
 import { connect } from 'react-redux'
@@ -6,22 +5,24 @@ import { ExclamationCircle } from '@styled-icons/fa-solid/ExclamationCircle'
 import { format, parse } from 'date-fns'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { MagnifyingGlass } from '@styled-icons/fa-solid/MagnifyingGlass'
-import { Place } from '@opentripplanner/types'
+import { MapRef } from 'react-map-gl'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React, { Component } from 'react'
+import React, { Component, FormEvent } from 'react'
 import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as mapActions from '../../actions/map'
-import * as uiActions from '../../actions/ui'
+// import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
 import { Icon, IconWithText } from '../util/styledIcon'
 import { isBlank, navigateBack } from '../../util/ui'
-import { Pattern, StopTime } from '../../util/types'
+import { SetLocationHandler } from '../util/types'
+import { StopDataV2 } from '../../util/stop-times'
 import { TransitOperatorConfig } from '../../util/config-types'
+import Link from '../../util/link'
 import OperatorLogo from '../util/operator-logo'
 import PageTitle from '../util/page-title'
 import ServiceTimeRangeRetriever from '../util/service-time-range-retriever'
@@ -32,27 +33,25 @@ import FavoriteStopToggle from './favorite-stop-toggle'
 import StopScheduleTable from './stop-schedule-table'
 import TimezoneWarning from './timezone-warning'
 
-type PatternStopTime = {
-  pattern: Pattern
-  stoptimes: StopTime[]
-}
-
-type StopData = Place & {
-  code: string
-  gtfsId: string
-  stoptimesForPatterns: PatternStopTime[]
-}
-
 interface Props {
   calendarMax: string
   calendarMin: string
+  findStopTimesForStop: (arg: { date: string; stopId: string }) => void
   hideBackButton?: boolean
   homeTimezone: string
   intl: IntlShape
+  map?: MapRef
+  setLocation: SetLocationHandler
   showBlockIds?: boolean
-  stopData?: StopData
+  stopData?: StopDataV2
   stopId?: string
   transitOperators: TransitOperatorConfig[]
+  // TODO refactor
+  zoomToPlace: (
+    map?: MapRef,
+    place?: { lat: number; lon: number },
+    zoom?: number
+  ) => void
 }
 
 interface State {
@@ -65,7 +64,7 @@ const { getCurrentDate, getUserTimezone } = coreUtils.time
 /** The native date format used with <input type="date" /> elements */
 const inputDateFormat = 'yyyy-MM-dd'
 
-function getDefaultState(timeZone) {
+function getDefaultState(timeZone: string) {
   return {
     // Compare dates/times in the stop viewer based on the agency's timezone.
     date: getCurrentDate(timeZone),
@@ -88,37 +87,6 @@ const StyledAlert = styled(Alert)`
   text-align: center;
 `
 
-// TODO: refactor
-const FromToPicker = ({
-  setLocation,
-  stopData
-}: {
-  setLocation: SetLocationHandler
-  stopData: StopType
-}) => {
-  const location = useMemo(
-    () => ({
-      lat: stopData.lat ?? 0,
-      lon: stopData.lon ?? 0,
-      name: stopData.name
-    }),
-    [stopData]
-  )
-  return (
-    <span role="group">
-      <FromToLocationPicker
-        label
-        onFromClick={useCallback(() => {
-          setLocation({ location, locationType: 'from', reverseGeocode: false })
-        }, [location, setLocation])}
-        onToClick={useCallback(() => {
-          setLocation({ location, locationType: 'to', reverseGeocode: false })
-        }, [location, setLocation])}
-      />
-    </span>
-  )
-}
-
 class StopScheduleViewer extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
@@ -127,15 +95,16 @@ class StopScheduleViewer extends Component<Props, State> {
 
   _backClicked = () => navigateBack()
 
-  _setLocationFromStop = (locationType) => {
+  _setLocationFromStop = (locationType: string) => {
     const { setLocation, stopData } = this.props
-    const location = {
-      lat: stopData.lat,
-      lon: stopData.lon,
-      name: stopData.name
+    if (stopData) {
+      const location = {
+        lat: stopData.lat,
+        lon: stopData.lon,
+        name: stopData.name
+      }
+      setLocation({ location, locationType, reverseGeocode: false })
     }
-    setLocation({ location, locationType, reverseGeocode: false })
-    this.setState({ popupPosition: null })
   }
 
   _onClickPlanTo = () => this._setLocationFromStop('to')
@@ -149,7 +118,7 @@ class StopScheduleViewer extends Component<Props, State> {
     this._findStopTimesForDate(this.state.date)
   }
 
-  _findStopTimesForDate = (date) => {
+  _findStopTimesForDate = (date: string) => {
     const { findStopTimesForStop, stopId } = this.props
     if (stopId) {
       findStopTimesForStop({ date, stopId })
@@ -162,7 +131,7 @@ class StopScheduleViewer extends Component<Props, State> {
 
     // We can use the first route, as this operator will only be used if there is only one operator
     return transitOperators.find(
-      (o) => o.agencyId === stopData?.routes?.[0]?.agency?.gtfsId
+      (o) => o.agencyId === stopData?.routes?.[0]?.agency.gtfsId
     )
   }
 
@@ -203,15 +172,16 @@ class StopScheduleViewer extends Component<Props, State> {
     */
   }
 
-  _isDateWithinRange = (date) => {
+  _isDateWithinRange = (date: string) => {
     const { calendarMax, calendarMin } = this.props
+    // Date comparison is string-based (lexicographic).
     return !isBlank(date) && date >= calendarMin && date <= calendarMax
   }
 
-  handleDateChange = (evt) => {
+  handleDateChange = (evt: FormEvent<HTMLInputElement>) => {
     // Check for non-empty date, and that date is within range before making request.
     // (Users can enter a date outside of the range using the Up/Down arrow keys in Firefox and Safari.)
-    const date = evt.target.value
+    const date = (evt.target as HTMLInputElement).value
     if (this._isDateWithinRange(date)) {
       this._findStopTimesForDate(date)
     }
@@ -223,12 +193,7 @@ class StopScheduleViewer extends Component<Props, State> {
     zoomToPlace(map, stopData)
   }
 
-  _viewNearby = () => {
-    const { setViewedNearbyCoords, stopData } = this.props
-    setViewedNearbyCoords(stopData)
-  }
-
-  _renderHeader = (agencyCount) => {
+  _renderHeader = (agencyCount: number) => {
     const { hideBackButton, intl, stopData } = this.props
 
     // We can use the first route, as this operator will only be used if there is only one operator
@@ -294,12 +259,14 @@ class StopScheduleViewer extends Component<Props, State> {
    * Plan trip from/to here buttons, plus the schedule/next arrivals toggle.
    */
   _renderControls = () => {
-    const { calendarMax, calendarMin, homeTimezone, intl, stopData } =
+    const { calendarMax, calendarMin, homeTimezone, intl, stopData, stopId } =
       this.props
     const { date } = this.state
     const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
 
-    const stopId = coreUtils.itinerary.getDisplayedStopId(stopData)
+    const displayedStopId = stopData
+      ? coreUtils.itinerary.getDisplayedStopId(stopData)
+      : ''
 
     let warning
     if (!inHomeTimezone && this._isDateWithinRange(date)) {
@@ -334,7 +301,7 @@ class StopScheduleViewer extends Component<Props, State> {
         <div>
           <FormattedMessage
             id="components.StopViewer.displayStopId"
-            values={{ stopId, strong: Strong }}
+            values={{ stopId: displayedStopId, strong: Strong }}
           />
           <button
             className="link-button"
@@ -345,16 +312,19 @@ class StopScheduleViewer extends Component<Props, State> {
           >
             <Icon Icon={Search} style={{ marginLeft: '0.2em' }} />
           </button>
-          <button
-            className="link-button pull-right"
-            onClick={this._viewNearby}
-            style={{ fontSize: 'small' }}
-          >
-            {/* FIXME: What icon should we use? */}
-            <IconWithText Icon={MagnifyingGlass}>
-              <FormattedMessage id="components.StopViewer.viewNearby" />
-            </IconWithText>
-          </button>
+          {stopData ? (
+            <Link
+              className="pull-right"
+              style={{ color: 'inherit', fontSize: 'small' }}
+              to={`/nearby/${stopData.lat},${stopData.lon}`}
+              toParams={{ entityId: stopId }}
+            >
+              {/* FIXME: What icon should we use? */}
+              <IconWithText Icon={MagnifyingGlass}>
+                <FormattedMessage id="components.StopViewer.viewNearby" />
+              </IconWithText>
+            </Link>
+          ) : null}
         </div>
         <span role="group">
           <FromToLocationPicker
@@ -371,7 +341,6 @@ class StopScheduleViewer extends Component<Props, State> {
           max={calendarMax}
           min={calendarMin}
           onChange={this.handleDateChange}
-          onKeyDown={this.props.onKeyDown}
           required
           type="date"
           value={this.state.date}
@@ -420,18 +389,23 @@ class StopScheduleViewer extends Component<Props, State> {
 // connect to redux store
 
 const mapStateToProps = (state: AppReduxState) => {
-  const { config, serviceTimeRange = {}, transitIndex, ui } = state.otp
+  const {
+    config,
+    serviceTimeRange = { end: 0, start: 0 },
+    transitIndex,
+    ui
+  } = state.otp
   const {
     homeTimezone,
     stopViewer: stopViewerConfig,
-    transitOperators
+    transitOperators = [] as TransitOperatorConfig[]
   } = config
   const stopLookup = transitIndex.stops
   const stopId = ui.viewedStop.stopId
   const stopData = stopLookup[stopId]
   const now = new Date()
   const thisYear = now.getFullYear()
-  const { end = 0, start = 0 } = serviceTimeRange
+  const { end, start } = serviceTimeRange
   // If start is not provided, default to the first day of the current calendar year in the user's timezone.
   // (No timezone conversion is needed in this case.)
   // If start is provided in OTP, convert that date in the agency's home time zone.
@@ -467,7 +441,7 @@ const mapDispatchToProps = {
   // fetchStopInfo: apiActions.fetchStopInfo, // TODO remove from api.js
   findStopTimesForStop: apiActions.findStopTimesForStop,
   setLocation: mapActions.setLocation,
-  setViewedNearbyCoords: uiActions.setViewedNearbyCoords,
+  // setViewedNearbyCoords: uiActions.setViewedNearbyCoords,
   zoomToPlace: mapActions.zoomToPlace
 }
 
