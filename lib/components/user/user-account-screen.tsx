@@ -10,6 +10,7 @@ import toast from 'react-hot-toast'
 
 import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
+import { cleanupMobilityDevices } from '../../util/user'
 import { CREATE_ACCOUNT_PATH, MOBILITY_PATH } from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import { toastSuccess } from '../util/toasts'
@@ -57,13 +58,17 @@ const Wrapper = styled.div`
  */
 class UserAccountScreen extends Component<Props> {
   _updateUserPrefs = async (userData: EditedUser, silentOnSucceed = false) => {
-    const { createOrUpdateUser, intl } = this.props
+    const { createOrUpdateUser, intl, loggedInUser } = this.props
 
     // Convert the notification attributes from array to comma-separated string.
     const passedUserData = {
       ...clone(userData),
       notificationChannel: userData.notificationChannel.join(',')
     }
+    cleanupMobilityDevices(
+      passedUserData.mobilityProfile,
+      loggedInUser.mobilityProfile?.mobilityDevices
+    )
 
     const result = await createOrUpdateUser(passedUserData, intl)
 
