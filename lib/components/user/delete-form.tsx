@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import * as userActions from '../../actions/user'
 import { IconWithText } from '../util/styledIcon'
 import { InlineLoading } from '../narrative/loading'
-import { RED_ON_WHITE } from '../util/colors'
+import { red } from '@opentripplanner/building-blocks'
 
 interface DeleteFormProps {
   confirmAndDeleteUserMonitoredTrip: (id: string, intl: any) => void
@@ -17,14 +17,14 @@ interface DeleteFormProps {
 
 const DeleteFormButton = styled(Button)`
   background-color: white;
-  border-color: ${RED_ON_WHITE};
-  color: ${RED_ON_WHITE};
+  border-color: ${red[800]};
+  color: ${red[800]};
   :active,
   :focus,
   :focus:active,
   :hover {
-    border-color: ${RED_ON_WHITE};
-    color: ${RED_ON_WHITE};
+    border-color: ${red[800]};
+    color: ${red[800]};
   }
   float: right;
   margin-right: 10px;

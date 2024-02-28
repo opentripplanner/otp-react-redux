@@ -1,7 +1,6 @@
-import { Button, Panel } from 'react-bootstrap'
+import { Panel } from 'react-bootstrap'
+import { red } from '@opentripplanner/building-blocks'
 import styled, { css } from 'styled-components'
-
-import { RED_ON_WHITE } from '../util/colors'
 
 export const PageHeading = styled.h2`
   margin: 10px 0px 45px 0px;
@@ -53,7 +52,7 @@ export const TripPanelHeading = styled(Panel.Heading)`
 export const TripPanelAlert = styled.button`
   background: none;
   border: none;
-  color: ${RED_ON_WHITE};
+  color: ${red[800]};
   cursor: pointer;
   float: right;
   text-decoration: underline;
