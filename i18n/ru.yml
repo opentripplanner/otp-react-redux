@@ -587,7 +587,7 @@ components:
     noStopsFound: Не удалось найти время остановок для этой даты.
     operatorLogoAriaLabel: "{operatorName} остановка:"
     schedule: Расписание
-    timezoneWarning: Время отправки указано для <strong>{timezoneCode}</strong>.
+    timezoneWarning: Время отправки указано для {timezoneCode}.
     titleBarStopId: Остановка «{stopId}»
     viewNearby: Посмотреть рядом
     viewSchedule: Просмотреть расписание
