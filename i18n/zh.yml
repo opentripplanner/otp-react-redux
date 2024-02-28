@@ -526,7 +526,7 @@ components:
     noStopsFound: 未找到该日期的车站时间.
     operatorLogoAriaLabel: "公交车站 {operatorName}:"
     schedule: 时刻表
-    timezoneWarning: 出发时间以 <strong>{timezoneCode}</strong> 显示.
+    timezoneWarning: 出发时间以 {timezoneCode} 显示.
     titleBarStopId: 车站 {stopId}
     viewNearby: 查看附近
     viewSchedule: 查看时间表
