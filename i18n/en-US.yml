@@ -98,7 +98,6 @@ common:
     cancel: Cancel
     close: Close
     defaultValue: "{value} (default)"
-    delete: Delete
     edit: Edit
     error: error!
     finish: Finish
@@ -176,9 +175,7 @@ components:
     tooManyPlaces: Maximum intermediate places reached
   AdvancedOptions:
     bannedRoutes: Select banned routes…
-    bikeTolerance: Bike Tolerance
     preferredRoutes: Select preferred routes...
-    walkTolerance: Walk Tolerance
   AfterSignInScreen:
     mainTitle: Redirecting...
     message: >-
@@ -234,7 +231,7 @@ components:
     shortTitle: Plan Trip
   BatchSearchScreen:
     header: Plan Your Trip
-    modeSelectorLabel: Select a transit mode
+    modeSelectorLabel: Select a travel mode
   BatchSettings:
     destination: destination
     invalidModeSelection: >-
@@ -329,6 +326,40 @@ components:
     timeWalking: "{time} walking"
   MobileOptions:
     header: Set Search Options
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Cane
+        crutches: Crutches
+        electric wheelchair: Electric wheelchair
+        manual walker: Manual walker
+        manual wheelchair: Manual/traditional wheelchair
+        mobility scooter: Mobility scooter
+        none: No assistive device
+        service animal: Service animal
+        stroller: Stroller
+        wheeled walker: Wheeled walker
+        white cane: White cane
+      prompt: Do you regularly use a mobility assistive device? (Check all that apply)
+    LimitationsPane:
+      mobilityPrompt: >-
+        Do you have any mobility limitations that cause you to walk more slowly
+        or more carefully than other people?
+      visionLimitations:
+        legally-blind: Legally blind
+        low-vision: Low-vision
+        none: None
+      visionPrompt: Do you have any vision limitations?
+    MobilityPane:
+      button: Edit your mobility profile
+      header: Mobility Profile
+      mobilityDevices: "Mobility devices: "
+      mobilityLimitations: "Mobility limitations: "
+      visionLimitations: "Vision limitations: "
+    intro: >-
+      Please answer a few questions to customize the trip planning experience to
+      your needs and preferences.
+    title: Define Your Mobility Profile
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
     howToFindResults: To view results, see the Itineraries Found heading below.
@@ -353,6 +384,16 @@ components:
     myAccount: My account
     signIn: Log in
     signOut: Log out
+  NearbyView:
+    bikeRentalStation: Bike Rental Station
+    bikesAvailable: "{bikesAvailable, plural, one {# bike} other {# bikes}} available"
+    companyBicycle: "{company} Bike"
+    companyScooter: "{company} Scooter"
+    error: An error occurred loading nearby amenities.
+    header: Nearby View
+    nearbyListIntro: List of {count} nearby entities.
+    nothingNearby: There are no places nearby.
+    spacesAvailable: "{spacesAvailable} empty spaces available"
   NewAccountWizard:
     createNewAccount: Create a new account
     finish: Account setup complete!
@@ -506,6 +547,7 @@ components:
     signInText: Log in to save trip
     signInTooltip: Please log in to save trip.
   SavedTripEditor:
+    deleteSavedTrip: Delete saved trip
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip
     tripInformation: Trip information
@@ -513,6 +555,7 @@ components:
     tripNotFoundDescription: Sorry, the requested trip was not found.
     tripNotifications: Trip notifications
   SavedTripList:
+    alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
     fromTo: From {from} to {to}
     myTrips: My trips
     noSavedTrips: You have no saved trips
@@ -562,9 +605,9 @@ components:
     noStopsFound: No stop times found for date.
     operatorLogoAriaLabel: "{operatorName} stop:"
     schedule: Schedule
-    timezoneWarning: Departure times are shown in <strong>{timezoneCode}</strong>.
+    timezoneWarning: Departure times are shown in {timezoneCode}.
     titleBarStopId: Stop {stopId}
-    viewNextArrivals: View next arrivals
+    viewNearby: View Nearby
     viewSchedule: View schedule
     zoomToStop: Zoom to stop
   SubNav:
@@ -759,6 +802,7 @@ components:
     instructions2: Once you're verified, click the button below to continue.
     resendVerification: Resend verification email
   ViewSwitcher:
+    nearby: Nearby
     switcher: Switcher
   WelcomeScreen:
     prompt: Where do you want to go?

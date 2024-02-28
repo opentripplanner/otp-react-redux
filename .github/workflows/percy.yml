@@ -15,21 +15,17 @@ jobs:
         with:
           # This allows us to work with the repository during the lint step
           fetch-depth: 2
-      - name: Use Node.js 16.x
+      - name: Use Node.js 21.x
         uses: actions/setup-node@v1
         with:
-          node-version: 16.x
+          node-version: 21.x
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
-      - name: Download OTP2 config file
-        run: curl $PERCY_OTP2_CONFIG_URL --output /tmp/otp2config.yml
-        env:
-          PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_MOCK_OTP2_GEOCODER_CONFIG }}
       - name: Build OTP-RR
         # Artifacts are shared between desktop and mobile tests (but not call-taker).
         run: yarn build
         env:
-          YAML_CONFIG: /tmp/otp2config.yml
+          YAML_CONFIG: ../percy/har-mock-config.yml
           JS_CONFIG: ./percy/har-mock-config.js
       - name: Take Percy Snapshots (Desktop + Mobile)
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
@@ -43,10 +39,10 @@ jobs:
         with:
           # This allows us to work with the repository during the lint step
           fetch-depth: 2
-      - name: Use Node.js 16.x
+      - name: Use Node.js 21.x
         uses: actions/setup-node@v1
         with:
-          node-version: 16.x
+          node-version: 21.x
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
       - name: Download OTP2 config file

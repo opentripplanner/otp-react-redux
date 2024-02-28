@@ -96,6 +96,7 @@
   gap: 10px;
 }
 .otp .route-viewer .header-text.route-expanded span {
+  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -113,9 +114,12 @@
   box-shadow: 2px 2px 5px 1px rgb(0 0 0 / 10%);
 }
 
-.otp .stop-viewer p.day-label {
+.otp p.day-label {
   font-weight: 500;
-  margin: 15px 10px;
+  text-align: right;
+  margin: 0;
+  opacity: 0.8;
+  display: inline;
 }
 
 .otp .stop-viewer .route-row-container li:first-of-type .header.stop-view {
@@ -323,6 +327,12 @@
   color: #000080;
 }
 /* end of child-stop-details */
+.stop-view .route-name {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  padding-left: 10px;
+}
 
 /*.otp .stop-viewer .trip-table {
   display: table;

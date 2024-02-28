@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
-import { TransitOperator } from '@opentripplanner/types'
+import { Stop, TransitOperator } from '@opentripplanner/types'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
@@ -27,9 +27,9 @@ import {
   LogoLinkContainer,
   PatternContainer,
   RouteNameContainer,
-  Stop,
   StopContainer,
-  StopLink
+  StopLink,
+  Stop as StyledStop
 } from './styled'
 
 const PatternSelectButton = styled(UnstyledButton)`
@@ -67,12 +67,14 @@ class RouteDetails extends Component<Props> {
     setViewedRoute({ patternId: id, routeId: route.id })
   }
 
+  // FIXME: this should be the Stop type but
+  // we can't do that because Stop is a duplicate identifier (imported from styled)
   /**
    * If a stop link is clicked, redirect to stop viewer
    */
-  _stopLinkClicked = (stopId: string) => {
+  _stopLinkClicked = (stop: Stop) => {
     const { setViewedStop } = this.props
-    setViewedStop({ stopId })
+    setViewedStop(stop)
   }
 
   render() {
@@ -210,10 +212,10 @@ class RouteDetails extends Component<Props> {
               textColor={getMostReadableTextColor(routeColor, route?.textColor)}
             >
               {pattern?.stops?.map((stop, index) => (
-                <Stop
+                <StyledStop
                   // Use array index instead of stop id because a stop can be visited several times.
                   key={index}
-                  onClick={() => this._stopLinkClicked(stop.id)}
+                  onClick={() => this._stopLinkClicked(stop)}
                   onMouseOver={() => setHoveredStop(stop.id)}
                   routeColor={
                     routeColor.includes('ffffff') ? grey[900] : routeColor
@@ -225,7 +227,6 @@ class RouteDetails extends Component<Props> {
                 >
                   <StopLink
                     name={stop.name}
-                    onClick={() => this._stopLinkClicked(stop.id)}
                     onFocus={() => setHoveredStop(stop.id)}
                     textColor={getMostReadableTextColor(
                       routeColor,
@@ -234,7 +235,7 @@ class RouteDetails extends Component<Props> {
                   >
                     {stop.name}
                   </StopLink>
-                </Stop>
+                </StyledStop>
               ))}
             </StopContainer>
           </>

@@ -12,11 +12,13 @@ import A11yPrefs from './a11y-prefs'
 import BackToTripPlanner from './back-to-trip-planner'
 import DeleteUser from './delete-user'
 import FavoritePlaceList from './places/favorite-place-list'
+import MobilityPane from './mobility-profile/mobility-pane'
 import NotificationPrefsPane from './notification-prefs-pane'
 import StackedPanes from './stacked-panes'
 import TermsOfUsePane from './terms-of-use-pane'
 
 interface Props extends FormikProps<EditedUser> {
+  mobilityProfileEnabled: boolean
   wheelchairEnabled: boolean
 }
 
@@ -29,7 +31,7 @@ const ExistingAccountDisplay = (props: Props) => {
   // We forward the props to each pane so that their individual controls
   // can be wired to be managed by Formik.
 
-  const { wheelchairEnabled } = props
+  const { mobilityProfileEnabled, wheelchairEnabled } = props
   const intl = useIntl()
 
   const panes = [
@@ -37,6 +39,14 @@ const ExistingAccountDisplay = (props: Props) => {
       pane: FavoritePlaceList,
       props,
       title: <FormattedMessage id="components.ExistingAccountDisplay.places" />
+    },
+    {
+      hidden: !mobilityProfileEnabled,
+      pane: MobilityPane,
+      props,
+      title: (
+        <FormattedMessage id="components.MobilityProfile.MobilityPane.header" />
+      )
     },
     {
       pane: NotificationPrefsPane,
@@ -59,7 +69,7 @@ const ExistingAccountDisplay = (props: Props) => {
     },
     {
       pane: DeleteUser,
-      props
+      props: { block: true, size: 'large' }
     }
   ]
 
@@ -85,11 +95,13 @@ const ExistingAccountDisplay = (props: Props) => {
 }
 
 const mapStateToProps = (state: AppReduxState) => {
-  const { accessModes } = state.otp.config.modes
-  const wheelchairEnabled = accessModes?.some(
+  const { mobilityProfile: mobilityProfileEnabled = false, modes } =
+    state.otp.config
+  const wheelchairEnabled = modes.accessModes?.some(
     (mode: TransitModeConfig) => mode.showWheelchairSetting
   )
   return {
+    mobilityProfileEnabled,
     wheelchairEnabled
   }
 }

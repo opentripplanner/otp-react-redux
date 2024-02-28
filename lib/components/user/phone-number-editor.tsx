@@ -1,10 +1,13 @@
 import { Label as BsLabel, FormGroup } from 'react-bootstrap'
+import { connect } from 'react-redux'
 // @ts-expect-error Package does not have type declaration
 import { formatPhoneNumber } from 'react-phone-number-input'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import React, { Component, createRef, Fragment } from 'react'
 import styled from 'styled-components'
 
+import * as userActions from '../../actions/user'
+import { AppReduxState } from '../../util/state-types'
 import { getAriaPhoneNumber } from '../../util/a11y'
 import { grey } from '@opentripplanner/building-blocks'
 import { isBlank } from '../../util/ui'
@@ -16,8 +19,6 @@ import PhoneChangeForm, { PhoneChangeSubmitHandler } from './phone-change-form'
 import PhoneVerificationForm, {
   PhoneVerificationSubmitHandler
 } from './phone-verification-form'
-
-export type PhoneCodeRequestHandler = (phoneNumber: string) => void
 
 const PlainLink = styled.a`
   color: ${grey[700]};
@@ -39,9 +40,9 @@ interface Props {
   initialPhoneNumber?: string
   initialPhoneNumberVerified?: boolean
   intl: IntlShape
-  onRequestCode: PhoneCodeRequestHandler
-  onSubmitCode: PhoneVerificationSubmitHandler
   phoneFormatOptions: PhoneFormatConfig
+  requestPhoneVerificationSms: (phoneNum: string, intl: IntlShape) => void
+  verifyPhoneNumber: (code: string, intl: IntlShape) => void
 }
 
 interface State {
@@ -57,19 +58,25 @@ interface State {
   submittedNumber: string
 }
 
+function getInitialState({
+  initialPhoneNumber,
+  initialPhoneNumberVerified = false
+}: Props): State {
+  return {
+    ...blankState,
+    // For new users, render component in editing state.
+    isEditing: isBlank(initialPhoneNumber),
+    phoneNumberVerified: initialPhoneNumberVerified
+  }
+}
+
 /**
  * Sub-component that handles phone number and validation code editing and validation intricacies.
  */
 class PhoneNumberEditor extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
-
-    const { initialPhoneNumber } = props
-    this.state = {
-      ...blankState,
-      // For new users, render component in editing state.
-      isEditing: isBlank(initialPhoneNumber)
-    }
+    this.state = getInitialState(props)
   }
 
   _changeRef = createRef<HTMLButtonElement>()
@@ -77,15 +84,19 @@ class PhoneNumberEditor extends Component<Props, State> {
   _handleEditNumber = () => this.setState({ isEditing: true })
 
   _handleCancelEditNumber = () => {
-    this.setState(blankState)
+    this.setState(getInitialState(this.props))
   }
 
   /**
    * Send phone verification request with the entered values.
    */
   _handleRequestCode: PhoneChangeSubmitHandler = async (values) => {
-    const { initialPhoneNumber, initialPhoneNumberVerified, onRequestCode } =
-      this.props
+    const {
+      initialPhoneNumber,
+      initialPhoneNumberVerified,
+      intl,
+      requestPhoneVerificationSms
+    } = this.props
     const phoneNumber = 'phoneNumber' in values ? values.phoneNumber : null
 
     // Send the SMS request if one of these conditions apply:
@@ -104,7 +115,7 @@ class PhoneNumberEditor extends Component<Props, State> {
 
     if (submittedNumber) {
       this.setState({ submittedNumber })
-      await onRequestCode(submittedNumber)
+      await requestPhoneVerificationSms(submittedNumber, intl)
     }
     this._handleCancelEditNumber()
   }
@@ -113,13 +124,13 @@ class PhoneNumberEditor extends Component<Props, State> {
    * Send phone validation code.
    */
   _handleSubmitCode: PhoneVerificationSubmitHandler = async (values) => {
-    const { onSubmitCode } = this.props
+    const { intl, verifyPhoneNumber } = this.props
     const submittedCode =
       'validationCode' in values ? values.validationCode : null
 
     if (submittedCode) {
       this.setState({ submittedCode })
-      await onSubmitCode(values)
+      await verifyPhoneNumber(submittedCode, intl)
       // If user enters the wrong code, re-enable verification submit.
       // (If user enters the correct code, the page will be refreshed.)
       this.setState({ submittedCode: '' })
@@ -247,9 +258,11 @@ class PhoneNumberEditor extends Component<Props, State> {
                   <FormattedMessage id="components.PhoneNumberEditor.pending" />
                 </BsLabel>
               ) : (
-                <BsLabel style={{ background: 'green' }}>
-                  <FormattedMessage id="components.PhoneNumberEditor.verified" />
-                </BsLabel>
+                phoneNumberVerified && (
+                  <BsLabel style={{ background: 'green' }}>
+                    <FormattedMessage id="components.PhoneNumberEditor.verified" />
+                  </BsLabel>
+                )
               )}
               <InvisibleA11yLabel>)</InvisibleA11yLabel>
               <button
@@ -279,4 +292,19 @@ class PhoneNumberEditor extends Component<Props, State> {
   }
 }
 
-export default injectIntl(PhoneNumberEditor)
+const mapStateToProps = (state: AppReduxState) => {
+  const { phoneFormatOptions } = state.otp.config
+  return {
+    phoneFormatOptions
+  }
+}
+
+const mapDispatchToProps = {
+  requestPhoneVerificationSms: userActions.requestPhoneVerificationSms,
+  verifyPhoneNumber: userActions.verifyPhoneNumber
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(PhoneNumberEditor))

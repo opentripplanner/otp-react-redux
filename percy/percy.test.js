@@ -5,7 +5,7 @@ import puppeteer from 'puppeteer'
 
 const percySnapshot = require('@percy/puppeteer')
 
-const { OTP_RR_UI_MODE } = process.env
+const OTP_RR_UI_MODE = process.env.OTP_RR_UI_MODE || 'normal'
 
 const MOCK_SERVER_PORT = 5486
 
@@ -50,7 +50,8 @@ beforeAll(async () => {
     }).stdout.pipe(process.stdout)
 
     // Launch mock OTP server
-    execa('yarn', ['percy-har-express', '-p', '9999', 'percy/mock.har'], {
+    execa('yarn', ['percy-combined-mock-server'], {
+      env: { HAR: './percy/mock.har', PORT: '9999' },
       signal: harAbortController.signal
     }).stdout.pipe(process.stdout)
 
@@ -59,9 +60,9 @@ beforeAll(async () => {
       'yarn',
       [
         'percy-har-express',
+        `percy/geocoder-mock-${OTP_RR_UI_MODE}.har`,
         '-p',
-        '9977',
-        `percy/geocoder-mock-${OTP_RR_UI_MODE}.har`
+        '9977'
       ],
       {
         signal: geocoderAbortController.signal
@@ -71,7 +72,7 @@ beforeAll(async () => {
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
       args: ['--disable-web-security']
-      // ,headless: false
+      //, headless: false
     })
   } catch (error) {
     console.log(error)
@@ -148,11 +149,17 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.waitForTimeout(300)
     // Click the clear button next to it
     await page.click('.from-form-control + button')
+    if (isMobile) {
+      await page.click('.mobile-back')
+    }
 
     await page.click('.to-form-control')
     await page.waitForTimeout(300)
     // Click the clear button next to it
     await page.click('.to-form-control + button')
+    if (isMobile) {
+      await page.click('.mobile-back')
+    }
 
     // Fill in new origin
     await page.hover('.from-form-control')
@@ -228,7 +235,9 @@ async function executeTest(page, isMobile, isCallTaker) {
   // Open Trip Viewer
   // Triggers mock.har graphql query #5 (trip).
   await page.waitForTimeout(2000)
-  const [tripViewerButton] = await page.$x("//a[contains(., 'Trip Viewer')]")
+  const [tripViewerButton] = await page.$x(
+    "//button[contains(., 'Trip Viewer')]"
+  )
 
   // If the trip viewer button didn't appear, perhaps we need to click the itinerary again
   if (!tripViewerButton) {
@@ -241,16 +250,17 @@ async function executeTest(page, isMobile, isCallTaker) {
   await page.waitForTimeout(1000)
   await percySnapshotWithWait(page, 'Trip Viewer')
 
-  // Open stop viewer from trip viewer
+  // Open nearby viewer from trip viewer
   // Triggers mock.har graphql query #6, #7, and #8 (stop details, nearest places, nearest stops).
   await page.click(
     'div.trip-viewer-body > ol > li:nth-child(3) > div.stop-button-container > button'
   )
-  await page.waitForSelector('.stop-viewer')
+  await page.waitForSelector('.nearby-view')
 
-  await percySnapshotWithWait(page, 'Stop Viewer')
+  await percySnapshotWithWait(page, 'Nearby View')
 
   // Open schedule view
+  await page.waitForTimeout(2000)
   await page.waitForSelector('button.link-button.pull-right')
   await page.click('button.link-button.pull-right')
   await page.waitForTimeout(500)
@@ -318,10 +328,10 @@ async function executeTest(page, isMobile, isCallTaker) {
 
   await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 1')
 
-  // Stop viewer from pattern viewer
+  // Nearby viewer from pattern viewer
   // Triggers mock.har graphql query #15 (stop info), #16 (nearest amenities), #17 (stops by radius).
   await page.click('ol > li:nth-of-type(1) > button')
-  await page.waitForSelector('.stop-viewer')
+  await page.waitForSelector('.nearby-view')
   await page.waitForTimeout(1000)
 
   // Activate all layers

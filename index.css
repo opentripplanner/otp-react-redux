@@ -73,6 +73,8 @@ input[type="text"]::-ms-clear {
 
 .slide-pane_from_left {
   margin: 52px auto 0 0;
+  /* Keep pane from overflowing on smaller screens */
+  height: calc(100% - 52px);
 }
 
 .slide-pane__content {
@@ -109,9 +111,12 @@ input[type="text"]::-ms-clear {
   width: 100%;
 }
 
-.app-menu a:hover,
-.app-menu button:hover {
-  color: #4c97f5;
+/* Prevents hover styles from getting triggered on mobile */
+@media (hover: hover) {
+  .app-menu a:hover,
+  .app-menu button:hover {
+    color: #4c97f5;
+  }
 }
 
 .app-menu a:focus,

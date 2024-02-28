@@ -1,44 +1,36 @@
-import {
-  Auth0ContextInterface,
-  withAuthenticationRequired
-} from '@auth0/auth0-react'
 import { connect } from 'react-redux'
-import { Formik, FormikProps } from 'formik'
+import { Form, Formik, FormikProps } from 'formik'
 import { injectIntl, IntlShape } from 'react-intl'
 import { RouteComponentProps } from 'react-router'
+import { withAuthenticationRequired } from '@auth0/auth0-react'
 import clone from 'clone'
-import React, { ChangeEvent, Component, FormEvent } from 'react'
+import React, { ChangeEvent, Component } from 'react'
 import styled, { css } from 'styled-components'
 import toast from 'react-hot-toast'
 
-import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
-import { CREATE_ACCOUNT_PATH } from '../../util/constants'
+import { cleanupMobilityDevices } from '../../util/user'
+import { CREATE_ACCOUNT_PATH, MOBILITY_PATH } from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import { toastSuccess } from '../util/toasts'
+import PageTitle from '../util/page-title'
 
 import { EditedUser, User } from './types'
 import AccountPage from './account-page'
 import ExistingAccountDisplay from './existing-account-display'
+import MobilityWizard from './mobility-profile/mobility-wizard'
 import NewAccountWizard from './new-account-wizard'
+import VerifyEmailPane from './verify-email-pane'
 import withLoggedInUserSupport from './with-logged-in-user-support'
 
 interface Props {
-  auth0: Auth0ContextInterface
+  basePath?: string
   createOrUpdateUser: (user: User, intl: IntlShape) => Promise<number>
-  deleteUser: (
-    user: User,
-    auth0: Auth0ContextInterface,
-    intl: IntlShape
-  ) => void
   intl: IntlShape
-  isCreating: boolean
+  isWizard: boolean
   itemId: string
   loggedInUser: User
-  requestPhoneVerificationSms: (phoneNum: string, intl: IntlShape) => void
-  routeTo: (to: string) => void
-  verifyPhoneNumber: (code: string, intl: IntlShape) => void
 }
 
 const pendingCss = css`
@@ -66,13 +58,17 @@ const Wrapper = styled.div`
  */
 class UserAccountScreen extends Component<Props> {
   _updateUserPrefs = async (userData: EditedUser, silentOnSucceed = false) => {
-    const { createOrUpdateUser, intl } = this.props
+    const { createOrUpdateUser, intl, loggedInUser } = this.props
 
     // Convert the notification attributes from array to comma-separated string.
     const passedUserData = {
       ...clone(userData),
       notificationChannel: userData.notificationChannel.join(',')
     }
+    cleanupMobilityDevices(
+      passedUserData.mobilityProfile,
+      loggedInUser.mobilityProfile?.mobilityDevices
+    )
 
     const result = await createOrUpdateUser(passedUserData, intl)
 
@@ -96,35 +92,11 @@ class UserAccountScreen extends Component<Props> {
     this._updateUserPrefs(userData, true)
   }
 
-  _handleDeleteUser = (evt: FormEvent) => {
-    const { auth0, deleteUser, intl, loggedInUser } = this.props
-    // Avoid triggering onsubmit with formik (which would result in a save user
-    // call).
-    evt.preventDefault()
-    if (
-      window.confirm(
-        intl.formatMessage({ id: 'components.UserAccountScreen.confirmDelete' })
-      )
-    ) {
-      deleteUser(loggedInUser, auth0, intl)
-    }
-  }
-
-  _handleExit = () => {
-    // On exit, route to default search route.
-    this.props.routeTo('/')
-  }
-
-  _handleRequestPhoneVerificationCode = (newPhoneNumber: string) => {
-    const { intl, requestPhoneVerificationSms } = this.props
-    requestPhoneVerificationSms(newPhoneNumber, intl)
-  }
-
   _submitForm = async (
     t: HTMLInputElement,
     submitForm: () => Promise<void>
   ) => {
-    const { intl, isCreating } = this.props
+    const { intl, isWizard } = this.props
     const firstLabel = t.labels?.[0]
 
     // Disable input (adds a visual effect) during submission
@@ -133,7 +105,7 @@ class UserAccountScreen extends Component<Props> {
     t.style.animation = 'dive-in 1s linear infinite'
     const initialCursor = firstLabel ? firstLabel.style.cursor : ''
     if (firstLabel) firstLabel.style.cursor = 'wait'
-    const loadingToast = !isCreating
+    const loadingToast = !isWizard
       ? toast.loading(
           intl.formatMessage({ id: 'components.UserAccountScreen.updating' })
         )
@@ -141,7 +113,7 @@ class UserAccountScreen extends Component<Props> {
     try {
       await submitForm()
       // On success, display a toast notification for existing accounts.
-      if (!isCreating) {
+      if (!isWizard) {
         toastSuccess(
           intl.formatMessage({
             // Use a summary text for the field, if defined (e.g. to replace long labels),
@@ -199,62 +171,71 @@ class UserAccountScreen extends Component<Props> {
     }
   }
 
-  _handleSendPhoneVerificationCode = async ({
-    validationCode: code
-  }: {
-    validationCode: string
-  }) => {
-    const { intl, verifyPhoneNumber } = this.props
-    await verifyPhoneNumber(code, intl)
-  }
-
   render() {
-    const { auth0, isCreating, itemId, loggedInUser } = this.props
-    const DisplayComponent = isCreating
-      ? NewAccountWizard
-      : ExistingAccountDisplay
+    const { basePath, intl, isWizard, itemId, loggedInUser } = this.props
     const loggedInUserWithNotificationArray = {
       ...loggedInUser,
       notificationChannel: loggedInUser.notificationChannel?.split(',') || []
     }
     return (
-      <AccountPage subnav={!isCreating}>
-        <Formik
-          // Force Formik to reload initialValues when we update them (e.g. user gets assigned an id).
-          enableReinitialize
-          initialValues={loggedInUserWithNotificationArray}
-          onSubmit={this._handleFieldChange}
-        >
-          {
-            // Formik props provide access to the current user data state and errors,
-            // (in props.values, props.touched, props.errors)
-            // and to its own blur/change/submit event handlers that automate the state.
-            // We pass the Formik props below to the components rendered so that individual controls
-            // can be wired to be managed by Formik.
-            (formikProps) => (
-              <Wrapper>
-                <DisplayComponent
-                  {...formikProps}
-                  activePaneId={itemId}
-                  // @ts-expect-error emailVerified prop used by only one of the DisplayComponent.
-                  emailVerified={auth0.user?.email_verified}
+      <AccountPage subnav={!isWizard}>
+        <Wrapper>
+          <Formik
+            // Force Formik to reload initialValues when we update them (e.g. user gets assigned an id).
+            enableReinitialize
+            initialValues={loggedInUserWithNotificationArray}
+            onSubmit={this._handleFieldChange}
+          >
+            {
+              // Formik props provide access to the current user data state and errors,
+              // (in props.values, props.touched, props.errors)
+              // and to its own blur/change/submit event handlers that automate the state.
+              // We pass the Formik props below to the components rendered so that individual controls
+              // can be wired to be managed by Formik.
+              (formikProps) => {
+                if (itemId === 'verify') {
+                  const verifyEmail = intl.formatMessage({
+                    id: 'components.NewAccountWizard.verify'
+                  })
+                  return (
+                    <Form id="user-settings-form" noValidate>
+                      <PageTitle title={verifyEmail} />
+                      <h1>{verifyEmail}</h1>
+                      <VerifyEmailPane />
+                    </Form>
+                  )
+                }
+
+                const newFormikProps = {
+                  ...formikProps,
                   // Use our own handleChange handler that wraps around Formik's.
-                  handleChange={this._handleInputChange(formikProps)}
-                  loggedInUser={loggedInUser}
-                  onCancel={this._handleExit}
-                  onCreate={this._handleCreateNewUser}
-                  onDelete={this._handleDeleteUser}
-                  onRequestPhoneVerificationCode={
-                    this._handleRequestPhoneVerificationCode
-                  }
-                  onSendPhoneVerificationCode={
-                    this._handleSendPhoneVerificationCode
-                  }
-                />
-              </Wrapper>
-            )
-          }
-        </Formik>
+                  handleChange: this._handleInputChange(formikProps)
+                }
+
+                if (basePath === CREATE_ACCOUNT_PATH) {
+                  return (
+                    <NewAccountWizard
+                      activePaneId={itemId}
+                      formikProps={newFormikProps}
+                      onCreate={this._handleCreateNewUser}
+                    />
+                  )
+                }
+
+                if (basePath === MOBILITY_PATH) {
+                  return (
+                    <MobilityWizard
+                      activePaneId={itemId}
+                      formikProps={newFormikProps}
+                    />
+                  )
+                }
+
+                return <ExistingAccountDisplay {...newFormikProps} />
+              }
+            }
+          </Formik>
+        </Wrapper>
       </AccountPage>
     )
   }
@@ -267,21 +248,21 @@ const mapStateToProps = (
   ownProps: RouteComponentProps<{ step: string }>
 ) => {
   const { params, url } = ownProps.match
-  const isCreating = url.startsWith(CREATE_ACCOUNT_PATH)
+  const basePath = [CREATE_ACCOUNT_PATH, MOBILITY_PATH].find((path) =>
+    url.startsWith(path)
+  )
+
   const { step } = params
   return {
-    isCreating,
+    basePath,
+    isWizard: !!basePath,
     itemId: step,
     loggedInUser: state.user.loggedInUser
   }
 }
 
 const mapDispatchToProps = {
-  createOrUpdateUser: userActions.createOrUpdateUser,
-  deleteUser: userActions.deleteUser,
-  requestPhoneVerificationSms: userActions.requestPhoneVerificationSms,
-  routeTo: uiActions.routeTo,
-  verifyPhoneNumber: userActions.verifyPhoneNumber
+  createOrUpdateUser: userActions.createOrUpdateUser
 }
 
 export default withLoggedInUserSupport(

@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 import { AppReduxState } from '../../../util/state-types'
 import { Icon } from '../../util/styledIcon'
+import { LinkOpensNewWindow } from '../../util/externalLink'
 
 type Error = Record<string, string[]>
 
@@ -81,7 +82,17 @@ const ErrorRenderer = ({
                 id={`components.OTP2ErrorRenderer.${error}.body`}
                 values={{
                   inputFields: intl.formatList(localizedInputFieldList),
-                  inputFieldsCount: localizedInputFieldList.length
+                  inputFieldsCount: localizedInputFieldList.length,
+                  link: (contents: JSX.Element) => (
+                    <LinkOpensNewWindow
+                      contents={contents}
+                      inline
+                      style={{ color: 'inherit' }}
+                      url={intl.formatMessage({
+                        id: `components.OTP2ErrorRenderer.${error}.link`
+                      })}
+                    />
+                  )
                 }}
               />
             </p>

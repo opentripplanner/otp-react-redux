@@ -13,7 +13,7 @@ const buttonTransitionCss = css`
 `
 
 export const boxShadowCss = css`
-  box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 0 20px;
 `
 
 // TODO: this needs to be in line with the mode selector buttons, ideally importing the styles

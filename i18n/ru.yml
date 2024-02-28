@@ -88,7 +88,6 @@ common:
     cancel: Отмена
     close: Закрыть
     defaultValue: "{value} (по умолчанию)"
-    delete: Удалить
     edit: Редактировать
     error: Ошибка!
     finish: Завершить
@@ -171,9 +170,7 @@ components:
     tooManyPlaces: Достигнуто ограничение по количеству промежуточных мест
   AdvancedOptions:
     bannedRoutes: Выбор заблокированных маршрутов…
-    bikeTolerance: Выносливость для езды на велосипеде
     preferredRoutes: Выбор предпочтительных маршрутов…
-    walkTolerance: Выносливость для ходьбы пешком
   AfterSignInScreen:
     mainTitle: Перенаправление…
     message: >-
@@ -359,6 +356,18 @@ components:
     myAccount: Моя учетная запись
     signIn: Войти
     signOut: Выйти
+  NearbyView:
+    bikeRentalStation: Станция проката велосипедов
+    bikesAvailable: >-
+      {bikesAvailable, plural, one {Свободен # велосипед} other {Свободны
+      несколько велосипедов (#)}}
+    companyBicycle: "{company} Велосипед"
+    companyScooter: "{company} Скутер"
+    error: Произошла ошибка при загрузке близлежащих объектов.
+    header: Посмотреть рядом
+    nearbyListIntro: Список {count} ближайших объектов.
+    nothingNearby: Поблизости нет мест.
+    spacesAvailable: "{spacesAvailable} есть свободные места"
   NewAccountWizard:
     createNewAccount: Создайте учетную запись
     finish: Настройка учетной записи завершена!
@@ -578,9 +587,9 @@ components:
     noStopsFound: Не удалось найти время остановок для этой даты.
     operatorLogoAriaLabel: "{operatorName} остановка:"
     schedule: Расписание
-    timezoneWarning: Время отправки указано для <strong>{timezoneCode}</strong>.
+    timezoneWarning: Время отправки указано для {timezoneCode}.
     titleBarStopId: Остановка «{stopId}»
-    viewNextArrivals: Посмотреть следующие прибытия
+    viewNearby: Посмотреть рядом
     viewSchedule: Просмотреть расписание
     zoomToStop: Приблизить остановку
   SubNav:
@@ -762,6 +771,7 @@ components:
     instructions2: После подтверждения нажмите кнопку ниже, чтобы продолжить.
     resendVerification: Отправить письмо с подтверждением еще раз
   ViewSwitcher:
+    nearby: Посмотреть рядом
     switcher: Переключатель
   WelcomeScreen:
     prompt: Куда вы хотите отправиться?

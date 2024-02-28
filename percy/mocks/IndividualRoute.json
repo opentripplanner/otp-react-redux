@@ -1,0 +1,2146 @@
+{
+  "data": {
+    "route": {
+      "gtfsId": "MARTA:19330",
+      "desc": null,
+      "agency": {
+        "gtfsId": "MARTA:MARTA",
+        "name": "Metropolitan Atlanta Rapid Transit Authority",
+        "url": "https://www.itsmarta.com",
+        "timezone": "America/New_York",
+        "lang": "en",
+        "phone": "404-848-5000"
+      },
+      "longName": "Marietta Blvd/Joseph E Lowery Blvd",
+      "shortName": "1",
+      "mode": "BUS",
+      "type": 3,
+      "color": "FF00FF",
+      "textColor": "000000",
+      "bikesAllowed": "NO_INFORMATION",
+      "routeBikesAllowed": "NO_INFORMATION",
+      "url": "https://itsmarta.com/1.aspx",
+      "patterns": [
+        {
+          "vehiclePositions": [
+            {
+              "vehicleId": "MARTA: 1677",
+              "label": "1677",
+              "lat": 33.7447929,
+              "lon": -84.4175034,
+              "stopRelationship": {
+                "status": "IN_TRANSIT_TO",
+                "stop": {
+                  "name": "Joseph E Lowery Blvd at Sells Ave SW",
+                  "gtfsId": "MARTA: 100114"
+                }
+              },
+              "speed": null,
+              "heading": 0.8943710923194885,
+              "lastUpdated": 1691526540,
+              "trip": {
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToxOTMzMDoxOjAx"
+                }
+              }
+            },
+            {
+              "vehicleId": "MARTA: 1563",
+              "label": "1563",
+              "lat": 33.817524,
+              "lon": -84.447998,
+              "stopRelationship": {
+                "status": "STOPPED_AT",
+                "stop": {
+                  "name": "Marietta Blvd at Coronet Way",
+                  "gtfsId": "MARTA: 57004"
+                }
+              },
+              "speed": null,
+              "heading": 303.4278564453125,
+              "lastUpdated": 1691526537,
+              "trip": {
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToxOTMzMDoxOjAx"
+                }
+              }
+            }
+          ],
+          "id": "UGF0dGVybjpNQVJUQToxOTMzMDoxOjAx",
+          "headsign": "Moores Mill Center",
+          "name": "1 Moores Mill Center",
+          "patternGeometry": {
+            "points": "i`|lE|~ebOfD@B?B@@@B@@B@@@B?B?DAlBIAeAAYAeAAeBAiAAaAAkF@?hA?xF@p@Bb@Bp@TbDNhBiA?aAAyAA]?eAAiB?cB?sAEgA?M?OAaACy@A{CGk@Cg@?{EA}C?YAqD@[?Y?oB?uFAsBAI???I?U?sCAaB@k@?]?}@?iC?o@?e@?q@?}@?K?_B@U?]?eB?wA?g@?cDCgB?k@AeA?yA?iAB_A@oA?q@?eCCgCC_B?a@?eJEmA?iDBE?_DEK?{B?{GA{B?Q?mJEaEAI?Q?mG?sCAKAkCCa@AcE?K?{B?uA?aBAkBCuV@U?yB?_IEK?]CWGWGqDrCo@p@q@hAu@pAw@lBe@jBWxASrBSrC?FMhBi@xGE[xEUhBe@lBa@fBY~AMfACbAcAHYBQ@YBK@a@DqAJmARyATm@Ny@Zi@R]L}@ZqAp@aAn@q@^iB`Au@^oBbA{OnIQH_Bx@iDbByFvCuCzAqNlHMFsD~AGBgCl@_@H_Dv@aMlCI@_IlB_Cd@uFfAs@JcBX@?_BXWD??cDd@yDj@w@LeARA?A@eAeAl@??qA`AgArA??q@fAABk@tAe@lByBzKi@nC??eAjD??c@dAa@|@cAzBy@bB??cA~BcAxB??yEnKeA~B",
+            "length": 214
+          },
+          "stops": [
+            {
+              "code": "114900",
+              "gtfsId": "MARTA:114900",
+              "lat": 33.735899,
+              "lon": -84.413542,
+              "name": "West End Station",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4135,
+                    33.7359
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "008000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF8080"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FFFF00"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "A6CAF0"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FFFF"
+                }
+              ]
+            },
+            {
+              "code": "113166",
+              "gtfsId": "MARTA:113166",
+              "lat": 33.738338,
+              "lon": -84.416122,
+              "name": "Ralph D Abernathy Blvd SW at Dunn St SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4161,
+                    33.7383
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF8080"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "A6CAF0"
+                }
+              ]
+            },
+            {
+              "code": "113092",
+              "gtfsId": "MARTA:113092",
+              "lat": 33.738364,
+              "lon": -84.417643,
+              "name": "Joseph E Lowery Blvd SW at Ralph D Abernathy Blvd SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4176,
+                    33.7384
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "A6CAF0"
+                }
+              ]
+            },
+            {
+              "code": "113094",
+              "gtfsId": "MARTA:113094",
+              "lat": 33.73929,
+              "lon": -84.417629,
+              "name": "Joseph E Lowery Blvd at 577",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4176,
+                    33.7393
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "A6CAF0"
+                }
+              ]
+            },
+            {
+              "code": "113096",
+              "gtfsId": "MARTA:113096",
+              "lat": 33.74017,
+              "lon": -84.417656,
+              "name": "Joseph E Lowery Blvd at Oak St SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4177,
+                    33.7402
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "A6CAF0"
+                }
+              ]
+            },
+            {
+              "code": "213518",
+              "gtfsId": "MARTA:99973727",
+              "lat": 33.743427,
+              "lon": -84.417498,
+              "name": "Joseph E Lowery Blvd at Cunningham Pl",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4175,
+                    33.7434
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "100114",
+              "gtfsId": "MARTA:100114",
+              "lat": 33.745314,
+              "lon": -84.41729,
+              "name": "Joseph E Lowery Blvd at Sells Ave SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4173,
+                    33.7453
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "100115",
+              "gtfsId": "MARTA:100115",
+              "lat": 33.74634,
+              "lon": -84.417334,
+              "name": "Joseph E Lowery Blvd at Westview Dr SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4173,
+                    33.7463
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "100024",
+              "gtfsId": "MARTA:100024",
+              "lat": 33.749024,
+              "lon": -84.417337,
+              "name": "Joseph E Lowery Blvd at Atlanta Student Movement Blvd",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4173,
+                    33.749
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "100026",
+              "gtfsId": "MARTA:100026",
+              "lat": 33.75063,
+              "lon": -84.417277,
+              "name": "Joseph E Lowery Blvd at Parsons St SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4173,
+                    33.7506
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "100028",
+              "gtfsId": "MARTA:100028",
+              "lat": 33.752027,
+              "lon": -84.417322,
+              "name": "Joseph E Lowery Blvd at Beckwith St SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4173,
+                    33.752
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "100046",
+              "gtfsId": "MARTA:100046",
+              "lat": 33.753318,
+              "lon": -84.417466,
+              "name": "Joseph E Lowery Blvd at Mitchell St SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4175,
+                    33.7533
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "100048",
+              "gtfsId": "MARTA:100048",
+              "lat": 33.754524,
+              "lon": -84.417346,
+              "name": "Joseph E Lowery Blvd at Martin L King Jr Dr",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4173,
+                    33.7545
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904642",
+              "gtfsId": "MARTA:79028",
+              "lat": 33.756066,
+              "lon": -84.417371,
+              "name": "Ashby Station - Northbound",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4174,
+                    33.7561
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904629",
+              "gtfsId": "MARTA:79468",
+              "lat": 33.75842,
+              "lon": -84.417483,
+              "name": "Joseph E Lowery Blvd NW at Magnolia St NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4175,
+                    33.7584
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904627",
+              "gtfsId": "MARTA:79464",
+              "lat": 33.760255,
+              "lon": -84.417441,
+              "name": "Joseph E Lowery Blvd NW at Thurmond St NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4174,
+                    33.7603
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904750",
+              "gtfsId": "MARTA:79472",
+              "lat": 33.763459,
+              "lon": -84.417391,
+              "name": "Joseph E Lowery Blvd NW at Joseph E Boone Blvd",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4174,
+                    33.7635
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904946",
+              "gtfsId": "MARTA:79480",
+              "lat": 33.767004,
+              "lon": -84.417385,
+              "name": "Joseph E Lowery Blvd NW at Neal St NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4174,
+                    33.767
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904873",
+              "gtfsId": "MARTA:79484",
+              "lat": 33.76994,
+              "lon": -84.417355,
+              "name": "Joseph E Lowery Blvd NW at North Ave NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4174,
+                    33.7699
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904875",
+              "gtfsId": "MARTA:79488",
+              "lat": 33.772124,
+              "lon": -84.417336,
+              "name": "Joseph E Lowery Blvd NW at Fox St NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4173,
+                    33.7721
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904268",
+              "gtfsId": "MARTA:79528",
+              "lat": 33.774039,
+              "lon": -84.417305,
+              "name": "Joseph E Lowery Blvd NW at Wheeler St NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4173,
+                    33.774
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "213392",
+              "gtfsId": "MARTA:99973766",
+              "lat": 33.779969,
+              "lon": -84.417278,
+              "name": "Joseph E Lowery Blvd at 841",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4173,
+                    33.78
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "213388",
+              "gtfsId": "MARTA:99973765",
+              "lat": 33.782343,
+              "lon": -84.417253,
+              "name": "Joseph E Lowery Blvd NW at W Marietta St NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4173,
+                    33.7823
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "901912",
+              "gtfsId": "MARTA:67234",
+              "lat": 33.785249,
+              "lon": -84.421812,
+              "name": "W Marietta St NW at Herndon St",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4218,
+                    33.7852
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "008080"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "901911",
+              "gtfsId": "MARTA:67232",
+              "lat": 33.785523,
+              "lon": -84.423791,
+              "name": "W Marietta St NW at Longley Ave NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4238,
+                    33.7855
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "008080"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "213421",
+              "gtfsId": "MARTA:99973795",
+              "lat": 33.789237,
+              "lon": -84.428482,
+              "name": "Marietta Blvd at Huff Rd",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4285,
+                    33.7892
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "210972",
+              "gtfsId": "MARTA:99971216",
+              "lat": 33.791205,
+              "lon": -84.429714,
+              "name": "Marietta Blvd NW at Elaine Ave NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4297,
+                    33.7912
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "210973",
+              "gtfsId": "MARTA:99971217",
+              "lat": 33.794828,
+              "lon": -84.431938,
+              "name": "Marietta Blvd at Tacoma Dr",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4319,
+                    33.7948
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "210974",
+              "gtfsId": "MARTA:99971218",
+              "lat": 33.798165,
+              "lon": -84.433944,
+              "name": "Marietta Blvd at 1595",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4339,
+                    33.7982
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "211963",
+              "gtfsId": "MARTA:99972311",
+              "lat": 33.800705,
+              "lon": -84.435525,
+              "name": "Marietta Blvd at 1695",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4355,
+                    33.8007
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "210975",
+              "gtfsId": "MARTA:99971219",
+              "lat": 33.802324,
+              "lon": -84.436256,
+              "name": "Marietta Blvd at Carroll Dr",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4363,
+                    33.8023
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "210976",
+              "gtfsId": "MARTA:99971220",
+              "lat": 33.805545,
+              "lon": -84.43725,
+              "name": "Marietta Blvd at Plymouth Rd",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4373,
+                    33.8055
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "211037",
+              "gtfsId": "MARTA:99971288",
+              "lat": 33.810288,
+              "lon": -84.438693,
+              "name": "Marietta Blvd at Chattahoochee Ave",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4387,
+                    33.8103
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "901457",
+              "gtfsId": "MARTA:67160",
+              "lat": 33.812825,
+              "lon": -84.439287,
+              "name": "Marietta Blvd at 2095",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4393,
+                    33.8128
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                }
+              ]
+            },
+            {
+              "code": "901458",
+              "gtfsId": "MARTA:67161",
+              "lat": 33.814527,
+              "lon": -84.440842,
+              "name": "Marietta Blvd at Bolton Pl",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4408,
+                    33.8145
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                }
+              ]
+            },
+            {
+              "code": "213670",
+              "gtfsId": "MARTA:99974025",
+              "lat": 33.816361,
+              "lon": -84.445786,
+              "name": "Marietta Blvd at Bolton Dr",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4458,
+                    33.8164
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                }
+              ]
+            },
+            {
+              "code": "900375",
+              "gtfsId": "MARTA:57004",
+              "lat": 33.817514,
+              "lon": -84.447838,
+              "name": "Marietta Blvd at Coronet Way",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4478,
+                    33.8175
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF80"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FFFF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                }
+              ]
+            },
+            {
+              "code": "900349",
+              "gtfsId": "MARTA:57008",
+              "lat": 33.819344,
+              "lon": -84.451044,
+              "name": "Marietta Blvd NW at Moores Mill Rd NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.451,
+                    33.8193
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF80"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FFFF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "vehiclePositions": [],
+          "id": "UGF0dGVybjpNQVJUQToxOTMzMDowOjAx",
+          "headsign": "West End Station",
+          "name": "1 West End Station",
+          "patternGeometry": {
+            "points": "ailmEvjmbOiCvFGHiAbCm@rAc@`AYr@OAO?]GlAgKd@_Ef@oE@?Dk@TkC??pAgArBaBjDgC~BcBXUXEFn@h@??x@cB@A`AyBdAcC??dAkD??h@oCZ{A|A_Id@mBj@uAr@kA??fAsApAaA??d@W^UfA_@@?dASv@MxDk@pC_@PE??vB_@A?bBYr@KtFgA~Be@~HmBHA`MmC~Cw@n@OvBg@FC`EgBv@_@vKyFvDoBxFwChDcBbAg@l@[zOoIb@UjAm@~CaBp@_@`Ao@pAq@|@[fAa@x@[l@OxAUlASpAK`@EJAXCPAXCbAIBcALgAToABO`@gBd@mBTiBVqDBg@n@wHLiBFkAJoARsBVyAd@kBv@mBt@qAp@iAn@q@h@a@fCqBVFVFh@B~HDxB?fB?bTAjBB`B@tA?jA?n@?nE?`@@jCBf@@vB@bG?H?Z?`E@lJD`C?J?zG@zB?J?~CDfBAfAAlA?bJD@?`C?fCBvDBP?|@?~@AhACxA?dA?@?pC@bDB~B?dB??tBAJ?h@?R?p@?tA?hB?^?|@?hA?pA?NAlC@D?T?H?H?rB@tF@~A?N?X?pD?ZAvD@bG@j@BnBDj@@x@@`ABN@L?fA?rADlE?v@@j@?xA@jC@OiBUcDGuAA[?U?yF?iABsD@_@?c@hF@??AxA@B?B@B@B@@@B@@B?FBlE@",
+            "length": 227
+          },
+          "stops": [
+            {
+              "code": "900349",
+              "gtfsId": "MARTA:57008",
+              "lat": 33.819344,
+              "lon": -84.451044,
+              "name": "Marietta Blvd NW at Moores Mill Rd NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.451,
+                    33.8193
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF80"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FFFF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                }
+              ]
+            },
+            {
+              "code": "900378",
+              "gtfsId": "MARTA:57012",
+              "lat": 33.820737,
+              "lon": -84.452113,
+              "name": "Bolton Rd NW at Moores Mill Rd",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4521,
+                    33.8207
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF80"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FFFF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                }
+              ]
+            },
+            {
+              "code": "900379",
+              "gtfsId": "MARTA:57014",
+              "lat": 33.820318,
+              "lon": -84.449893,
+              "name": "Bolton Rd NW at Coronet Way NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4499,
+                    33.8203
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF80"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FFFF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                }
+              ]
+            },
+            {
+              "code": "213759",
+              "gtfsId": "MARTA:99974143",
+              "lat": 33.818389,
+              "lon": -84.44766,
+              "name": "Coronet Way at Pine Grove Dr",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4477,
+                    33.8184
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF80"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FFFF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                }
+              ]
+            },
+            {
+              "code": "900394",
+              "gtfsId": "MARTA:57062",
+              "lat": 33.816713,
+              "lon": -84.446824,
+              "name": "Marietta Blvd NW at Coronet Way NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4468,
+                    33.8167
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                }
+              ]
+            },
+            {
+              "code": "213592",
+              "gtfsId": "MARTA:99973937",
+              "lat": 33.815322,
+              "lon": -84.443486,
+              "name": "Marietta Blvd at 2210",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4435,
+                    33.8153
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                }
+              ]
+            },
+            {
+              "code": "901803",
+              "gtfsId": "MARTA:67196",
+              "lat": 33.813256,
+              "lon": -84.439754,
+              "name": "Marietta Blvd NW at 2130",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4398,
+                    33.8133
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                }
+              ]
+            },
+            {
+              "code": "211036",
+              "gtfsId": "MARTA:99971287",
+              "lat": 33.810494,
+              "lon": -84.438824,
+              "name": "Marietta Blvd at Chattahoochee Ave",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4388,
+                    33.8105
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "210977",
+              "gtfsId": "MARTA:99971221",
+              "lat": 33.805501,
+              "lon": -84.437457,
+              "name": "Marietta Blvd at Plymouth Rd",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4375,
+                    33.8055
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "210978",
+              "gtfsId": "MARTA:99971222",
+              "lat": 33.802226,
+              "lon": -84.43631,
+              "name": "Marietta Blvd at Carroll Dr",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4363,
+                    33.8022
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "211962",
+              "gtfsId": "MARTA:99972310",
+              "lat": 33.800293,
+              "lon": -84.435491,
+              "name": "Marietta Blvd at 1650",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4355,
+                    33.8003
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "210979",
+              "gtfsId": "MARTA:99971223",
+              "lat": 33.798272,
+              "lon": -84.434183,
+              "name": "Marietta Blvd at 1594",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4342,
+                    33.7983
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "210980",
+              "gtfsId": "MARTA:99971224",
+              "lat": 33.794935,
+              "lon": -84.432112,
+              "name": "Marietta Blvd at Tacoma Dr",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4321,
+                    33.7949
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "210981",
+              "gtfsId": "MARTA:99971225",
+              "lat": 33.791786,
+              "lon": -84.430271,
+              "name": "Marietta Blvd at Elaine Ave",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4303,
+                    33.7918
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "902121",
+              "gtfsId": "MARTA:67114",
+              "lat": 33.785946,
+              "lon": -84.426788,
+              "name": "W Marietta St NW at Rice St NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4268,
+                    33.7859
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "008080"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "902123",
+              "gtfsId": "MARTA:67118",
+              "lat": 33.785328,
+              "lon": -84.424187,
+              "name": "W Marietta St NW at Longley Ave NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4242,
+                    33.7853
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "008080"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "902124",
+              "gtfsId": "MARTA:67120",
+              "lat": 33.785076,
+              "lon": -84.421493,
+              "name": "W Marietta St NW at Herndon St NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4215,
+                    33.7851
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "008080"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "213389",
+              "gtfsId": "MARTA:99972852",
+              "lat": 33.783371,
+              "lon": -84.417833,
+              "name": "W Marietta St NW at Joseph E Lowery Blvd NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4178,
+                    33.7834
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "008080"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "213393",
+              "gtfsId": "MARTA:99973767",
+              "lat": 33.779559,
+              "lon": -84.417391,
+              "name": "Joseph E Lowery Blvd at 841",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4174,
+                    33.7796
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904644",
+              "gtfsId": "MARTA:79040",
+              "lat": 33.774334,
+              "lon": -84.417408,
+              "name": "Joseph E Lowery Blvd at Wheeler St",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4174,
+                    33.7743
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904625",
+              "gtfsId": "MARTA:79450",
+              "lat": 33.771989,
+              "lon": -84.417447,
+              "name": "Joseph E Lowery Blvd NW at Fox St NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4174,
+                    33.772
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904698",
+              "gtfsId": "MARTA:79454",
+              "lat": 33.770083,
+              "lon": -84.417431,
+              "name": "Joseph E Lowery Blvd NW at North Ave NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4174,
+                    33.7701
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904837",
+              "gtfsId": "MARTA:79050",
+              "lat": 33.766449,
+              "lon": -84.417481,
+              "name": "Joseph E Lowery Blvd NW at Neal St NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4175,
+                    33.7664
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904748",
+              "gtfsId": "MARTA:79460",
+              "lat": 33.762968,
+              "lon": -84.417543,
+              "name": "Joseph E Lowery Blvd NW at Joseph E Boone Blvd",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4175,
+                    33.763
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904957",
+              "gtfsId": "MARTA:79058",
+              "lat": 33.760434,
+              "lon": -84.417529,
+              "name": "Joseph E Lowery Blvd NW at Thurmond St NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4175,
+                    33.7604
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904628",
+              "gtfsId": "MARTA:79466",
+              "lat": 33.75808,
+              "lon": -84.417569,
+              "name": "Joseph E Lowery Blvd NW at Mayson Turner Rd NW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4176,
+                    33.7581
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "904948",
+              "gtfsId": "MARTA:79496",
+              "lat": 33.756281,
+              "lon": -84.417724,
+              "name": "Ashby Station - Southbound",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4177,
+                    33.7563
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "100004",
+              "gtfsId": "MARTA:100004",
+              "lat": 33.752569,
+              "lon": -84.4176,
+              "name": "Joseph E Lowery Blvd at Beckwith St SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4176,
+                    33.7526
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                }
+              ]
+            },
+            {
+              "code": "100006",
+              "gtfsId": "MARTA:100006",
+              "lat": 33.751251,
+              "lon": -84.417762,
+              "name": "Joseph E Lowery Blvd at Parsons St SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4178,
+                    33.7513
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                }
+              ]
+            },
+            {
+              "code": "100008",
+              "gtfsId": "MARTA:100008",
+              "lat": 33.750004,
+              "lon": -84.417604,
+              "name": "Joseph E Lowery Blvd at Ashby Grv SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4176,
+                    33.75
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                }
+              ]
+            },
+            {
+              "code": "100010",
+              "gtfsId": "MARTA:100010",
+              "lat": 33.749212,
+              "lon": -84.417594,
+              "name": "Joseph E Lowery Blvd at Fair St SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4176,
+                    33.7492
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                }
+              ]
+            },
+            {
+              "code": "100012",
+              "gtfsId": "MARTA:100012",
+              "lat": 33.746685,
+              "lon": -84.417803,
+              "name": "Joseph E Lowery Blvd at Westview Dr SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4178,
+                    33.7467
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                }
+              ]
+            },
+            {
+              "code": "100014",
+              "gtfsId": "MARTA:100014",
+              "lat": 33.745587,
+              "lon": -84.417784,
+              "name": "Joseph E Lowery Blvd at Sells Ave SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4178,
+                    33.7456
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                }
+              ]
+            },
+            {
+              "code": "213517",
+              "gtfsId": "MARTA:99973633",
+              "lat": 33.742445,
+              "lon": -84.417692,
+              "name": "Joseph E Lowery Blvd at Lucile Ave SW",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4177,
+                    33.7424
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                }
+              ]
+            },
+            {
+              "code": "113098",
+              "gtfsId": "MARTA:113098",
+              "lat": 33.739363,
+              "lon": -84.417743,
+              "name": "Joseph E Lowery Blvd at 577",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4177,
+                    33.7394
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "A6CAF0"
+                }
+              ]
+            },
+            {
+              "code": "113122",
+              "gtfsId": "MARTA:113122",
+              "lat": 33.738201,
+              "lon": -84.415785,
+              "name": "Ralph David Abernath Blvd SW at Evans",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4158,
+                    33.7382
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "FF8080"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "A6CAF0"
+                }
+              ]
+            },
+            {
+              "code": "114082",
+              "gtfsId": "MARTA:114082",
+              "lat": 33.738185,
+              "lon": -84.413155,
+              "name": "Ralph D Abernathy Blvd at W Whitehall St",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4132,
+                    33.7382
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF8080"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FFFF00"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "A6CAF0"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FFFF"
+                }
+              ]
+            },
+            {
+              "code": "114900",
+              "gtfsId": "MARTA:114900",
+              "lat": 33.735899,
+              "lon": -84.413542,
+              "name": "West End Station",
+              "locationType": "STOP",
+              "geometries": {
+                "geoJson": {
+                  "type": "Point",
+                  "coordinates": [
+                    -84.4135,
+                    33.7359
+                  ]
+                }
+              },
+              "routes": [
+                {
+                  "textColor": "000000",
+                  "color": "008000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF8080"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FFFF00"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF00FF"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "A6CAF0"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FF00"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "FF0000"
+                },
+                {
+                  "textColor": "000000",
+                  "color": "00FFFF"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
