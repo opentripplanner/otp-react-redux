@@ -45,7 +45,6 @@ type Props = {
   showNearbyStops: boolean
   showOperatorLogo?: boolean
   stopData: StopData
-  stopViewerArriving: React.ReactNode
   // TODO: shared types
   stopViewerConfig: any
   toggleAutoRefresh: (enable: boolean) => void
@@ -162,7 +161,6 @@ class LiveStopTimes extends Component<Props, State> {
       showNearbyStops,
       showOperatorLogo,
       stopData,
-      stopViewerArriving,
       stopViewerConfig,
       transitOperators
     } = this.props
@@ -250,7 +248,6 @@ class LiveStopTimes extends Component<Props, State> {
                 nearbyStops={nearbyStops}
                 setHoveredStop={setHoveredStop}
                 stopData={stopData}
-                stopViewerArriving={stopViewerArriving}
                 stopViewerConfig={stopViewerConfig}
                 transitOperators={transitOperators}
               />
