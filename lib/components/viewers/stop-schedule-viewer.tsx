@@ -19,6 +19,7 @@ import { AppReduxState } from '../../util/state-types'
 import { Icon, IconWithText } from '../util/styledIcon'
 import { isBlank, navigateBack } from '../../util/ui'
 import { SetLocationHandler, StopData } from '../util/types'
+import { stopIsFlex } from '../../util/viewer'
 import { TransitOperatorConfig } from '../../util/config-types'
 import Link from '../../util/link'
 import OperatorLogo from '../util/operator-logo'
@@ -372,6 +373,17 @@ class StopScheduleViewer extends Component<Props, State> {
             {/* scrollable list of scheduled stops requires tabIndex 
             for keyboard navigation */}
             <Scrollable tabIndex={0}>
+              {/* If geometries are available (and are not a point) and stop times 
+                are not, it is a strong indication that the stop is a flex stop.
+
+                The extra checks stopData are needed to ensure that the message is 
+                not shown while stopData is loading
+                */}
+              {stopIsFlex(stopData) && (
+                <div style={{ lineHeight: 'normal' }}>
+                  <FormattedMessage id="components.StopViewer.flexStop" />
+                </div>
+              )}
               {this._isDateWithinRange(date) && (
                 <StopScheduleTable
                   date={date}
