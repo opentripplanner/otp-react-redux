@@ -569,6 +569,10 @@ components:
   StopViewer:
     displayStopId: <strong>Parada n°</strong>{stopId}
     findSchedule: Buscar horario por fecha
+    flexStop: >-
+      Esta es una parada flexible. Los vehículos dejarán y recogerán a los
+      pasajeros en esta zona flexible previa solicitud. Es posible que tenga que
+      llamar con antelación para el servicio en esta zona.    
     forStop: para {stopName}
     header: Visor de paradas
     loadingText: Cargando la parada...

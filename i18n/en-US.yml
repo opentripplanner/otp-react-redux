@@ -549,6 +549,10 @@ components:
   StopViewer:
     displayStopId: "<strong>Stop ID</strong>: {stopId}"
     findSchedule: Find schedule by date
+    flexStop: >-
+      This is a flex stop. Vehicles will drop off and pick up passengers in this
+      flexible zone by request. You may have to call ahead for service in this
+      area.
     forStop: for {stopName}
     header: Stop Viewer
     loadingText: Loading Stop...

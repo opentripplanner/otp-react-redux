@@ -530,6 +530,10 @@ components:
   StopViewer:
     displayStopId: "<strong>Điểm dừng số</strong>: {stopId}"
     findSchedule: Tìm kiếm lịch trình theo ngày
+    flexStop: >-
+      Đây là một điểm dừng linh hoạt. Xe sẽ đưa đón khách trong khu linh hoạt
+      này theo yêu cầu. Bạn có thể phải gọi trước để được phục vụ trong khu vực
+      này.
     forStop: dành cho {stopName}
     header: Xem điểm dừng
     loadingText: Đang tải điểm dừng…

@@ -477,6 +477,7 @@ components:
   StopViewer:
     displayStopId: "<strong>公交车站ID</strong>: {stopId}"
     findSchedule: 按日期搜索时间表
+    flexStop: 此站为灵活站. 根据要求车辆将在这个灵活的区域上下乘客. 在这个区域, 你可能需要提前打电话申请服务.
     forStop: 为 {stopName}
     header: 车站查看器
     loadingText: 加载车站信息…

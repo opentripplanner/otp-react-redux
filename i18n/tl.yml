@@ -536,6 +536,10 @@ components:
   StopViewer:
     displayStopId: "<strong>ID ng Hintuan</strong>: {stopId}"
     findSchedule: Maghanap ng iskedyul ayon sa petsa
+    flexStop: >-
+      Isa itong flexible na hintuan. Magbababa at magsasakay ng mga pasahero ang
+      mga sasakyan sa flexible na zone na ito kapag hiniling. Posibleng
+      kailanganin mong tumawag muna para sa serbisyo sa lugar na ito.
     forStop: para sa {stopName}
     header: Ihinto ang Viewer
     loadingText: Nilo-load ang Hintuan...

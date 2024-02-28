@@ -478,6 +478,9 @@ components:
   StopViewer:
     displayStopId: "<strong>정류장 ID</strong>: {stopId}"
     findSchedule: 날짜별 일정 검색
+    flexStop: >-
+      이 정류장은 가변 정류장입니다. 이 가변 구역에서 차량은 요청이 있을 때에만 승객을 태우고 내릴 것입니다. 이 지역에서 서비스를
+      받으려면 미리 전화를 해야 할 수도 있습니다.
     forStop: 행 {stopName}
     header: 정류장 뷰어
     loadingText: 정류장 로드 중…
