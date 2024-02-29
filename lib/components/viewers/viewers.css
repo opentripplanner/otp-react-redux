@@ -111,6 +111,13 @@
   display: inline;
 }
 
+.stop-view .route-name {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  padding-left: 10px;
+}
+
 .otp .stop-viewer .stop-viewer-controls button {
   color: inherit;
 }
