@@ -41,6 +41,7 @@ function getStopResponseMock(stopId, requestNumber) {
     case 'MARTA:803':
       switch (requestNumber) {
         case 3:
+        case 7: // callCount does not reset between desktop and mobile tests.
           return Stop803ScheduleResponse
         default:
           return Stop803Response
