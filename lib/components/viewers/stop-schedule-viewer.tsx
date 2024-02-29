@@ -55,7 +55,6 @@ interface Props {
 
 interface State {
   date: string
-  scheduleFetched: boolean
 }
 
 const { getCurrentDate, getUserTimezone } = coreUtils.time
@@ -66,8 +65,7 @@ const inputDateFormat = 'yyyy-MM-dd'
 function getDefaultState(timeZone: string) {
   return {
     // Compare dates/times in the stop viewer based on the agency's timezone.
-    date: getCurrentDate(timeZone),
-    scheduleFetched: false
+    date: getCurrentDate(timeZone)
   }
 }
 
@@ -118,7 +116,6 @@ class StopScheduleViewer extends Component<Props, State> {
     const { findStopTimesForStop, stopId } = this.props
     if (stopId) {
       findStopTimesForStop({ date, stopId })
-      this.setState({ scheduleFetched: true })
     }
   }
 
@@ -151,23 +148,6 @@ class StopScheduleViewer extends Component<Props, State> {
     ]
   }
 
-  componentDidUpdate() {
-    /*
-    const { date, scheduleFetched } = this.state
-    if (
-      !scheduleFetched &&
-      // This will hammer OTP if a stop genuinely has fewer than 4
-      // departures a day
-      this.props.stopData?.stopTimes?.[0]?.times?.length <= 3
-    ) {
-      // If the viewing mode has changed to schedule view,
-      // then fetch all departures for the current day
-      // (otherwise only a few are shown).
-      this._findStopTimesForDate(date)
-    }
-    */
-  }
-
   _isDateWithinRange = (date: string) => {
     const { calendarMax, calendarMin } = this.props
     // Date comparison is string-based (lexicographic).
@@ -181,7 +161,7 @@ class StopScheduleViewer extends Component<Props, State> {
     if (this._isDateWithinRange(date)) {
       this._findStopTimesForDate(date)
     }
-    this.setState({ date, scheduleFetched: false })
+    this.setState({ date })
   }
 
   _zoomToStop = () => {
@@ -236,7 +216,6 @@ class StopScheduleViewer extends Component<Props, State> {
                   />
                 </span>
               )}
-              --
               {stopData.name}
             </h1>
           ) : (
