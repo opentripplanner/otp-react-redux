@@ -592,7 +592,7 @@ components:
     noStopsFound: Walang nakitang oras ng paghinto para sa petsa.
     operatorLogoAriaLabel: "{operatorName} hintuan:"
     schedule: Iskedyul
-    timezoneWarning: Ipinapakita ang mga oras ng pag-alis sa <strong>{timezoneCode}</strong>.
+    timezoneWarning: Ipinapakita ang mga oras ng pag-alis sa {timezoneCode}.
     titleBarStopId: Hintuan {stopId}
     viewNearby: Tingnan ang Malapit
     viewSchedule: Tingnan ang iskedyul
