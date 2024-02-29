@@ -1,133 +1,73 @@
-            {
-              "data": {
-                "stop": {
-                  "gtfsId": "MARTA:803",
-                  "code": "908691",
-                  "lat": 33.775214,
-                  "lon": -84.282466,
-                  "locationType": "STOP",
-                  "name": "Avondale Station",
-                  "wheelchairBoarding": "POSSIBLE",
-                  "zoneId": null,
-                  "geometries": {
-                    "geoJson": {
-                      "type": "Point",
-                      "coordinates": [
-                        -84.2825,
-                        33.7752
-                      ]
-                    }
-                  },
-                  "routes": [
-                    {
-                      "gtfsId": "MARTA:19455",
-                      "agency": {
-                        "gtfsId": "MARTA:MARTA",
-                        "name": "Metropolitan Atlanta Rapid Transit Authority"
-                      },
-                      "longName": "Blue",
-                      "mode": "SUBWAY",
-                      "color": "0075B2",
-                      "textColor": "000000",
-                      "shortName": "Blue"
-                    }
-                  ],
-                  "stopTimes": [
-                    {
-                      "pattern": {
-                        "desc": "Blue to Hamilton E Holmes Station (MARTA:40) from Indian Creek Station (MARTA:802)",
-                        "headsign": "H E HOLMES STATION",
-                        "gtfsId": "MARTA:19455:1:01"
-                      },
-                      "times": [
-                        {
-                          "arrivalDelay": 0,
-                          "departureDelay": 0,
-                          "headsign": "H E HOLMES STATION",
-                          "realtime": false,
-                          "realtimeArrival": 65100,
-                          "realtimeDeparture": 65100,
-                          "realtimeState": "SCHEDULED",
-                          "scheduledArrival": 65100,
-                          "scheduledDeparture": 65100,
-                          "serviceDay": 1691121600,
-                          "stop": {
-                            "gtfsId": "MARTA:803"
-                          },
-                          "timepoint": true,
-                          "trip": {
-                            "gtfsId": "VHJpcDpNQVJUQTo4MDYzNDQ4"
-                          }
-                        },
-                        {
-                          "arrivalDelay": 0,
-                          "departureDelay": 0,
-                          "headsign": "H E HOLMES STATION",
-                          "realtime": false,
-                          "realtimeArrival": 64200,
-                          "realtimeDeparture": 64200,
-                          "realtimeState": "SCHEDULED",
-                          "scheduledArrival": 64200,
-                          "scheduledDeparture": 64200,
-                          "serviceDay": 1691121600,
-                          "stop": {
-                            "gtfsId": "MARTA:803"
-                          },
-                          "timepoint": true,
-                          "trip": {
-                            "gtfsId": "VHJpcDpNQVJUQTo4MDYzNDQ3"
-                          }
-                        },
-                        {
-                          "arrivalDelay": 0,
-                          "departureDelay": 0,
-                          "headsign": "H E HOLMES STATION",
-                          "realtime": false,
-                          "realtimeArrival": 63300,
-                          "realtimeDeparture": 63300,
-                          "realtimeState": "SCHEDULED",
-                          "scheduledArrival": 63300,
-                          "scheduledDeparture": 63300,
-                          "serviceDay": 1691121600,
-                          "stop": {
-                            "gtfsId": "MARTA:803"
-                          },
-                          "timepoint": true,
-                          "trip": {
-                            "gtfsId": "VHJpcDpNQVJUQTo4MDYzNDQ2"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "pattern": {
-                        "desc": "Blue to Five Points Station (MARTA:806)",
-                        "headsign": "H E HOLMES STATION",
-                        "gtfsId": "MARTA:19455:1:02"
-                      },
-                      "times": [
-                        {
-                          "arrivalDelay": 0,
-                          "departureDelay": 0,
-                          "headsign": "H E HOLMES STATION",
-                          "realtime": false,
-                          "realtimeArrival": 90300,
-                          "realtimeDeparture": 90300,
-                          "realtimeState": "SCHEDULED",
-                          "scheduledArrival": 90300,
-                          "scheduledDeparture": 90300,
-                          "serviceDay": 1691121600,
-                          "stop": {
-                            "gtfsId": "MARTA:803"
-                          },
-                          "timepoint": true,
-                          "trip": {
-                            "gtfsId": "VHJpcDpNQVJUQTo4MDYzMzky"
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
+{
+  "data": {
+    "stop": {
+      "gtfsId": "MARTA:803",
+      "code": "908691",
+      "lat": 33.775214,
+      "lon": -84.282466,
+      "locationType": "STOP",
+      "name": "Avondale Station",
+      "wheelchairBoarding": "POSSIBLE",
+      "routes": [
+        {
+          "gtfsId": "MARTA:19455",
+          "agency": {
+            "gtfsId": "MARTA:MARTA",
+            "name": "Metropolitan Atlanta Rapid Transit Authority"
+          },
+          "longName": "Blue",
+          "mode": "SUBWAY",
+          "color": "0075B2",
+          "textColor": "000000",
+          "shortName": "Blue"
+        }
+      ],
+      "stoptimesForPatterns": [
+        {
+          "pattern": {
+            "code": "MARTA:19455:1:01 // needed to satisfy mock server...",
+            "desc": "Blue to Hamilton E Holmes Station (MARTA:40) from Indian Creek Station (MARTA:802)",
+            "headsign": "H E HOLMES STATION",
+            "id": "MARTA:19455:1:01",
+            "route": {
+              "gtfsId": "MARTA:19455"
+            },
+            "stops": [
+              {
+                "gtfsId": "MARTA:802"
+              },
+              {
+                "gtfsId": "MARTA:224"
+              },
+              {
+                "gtfsId": "MARTA:803"
+              },
+              {
+                "gtfsId": "MARTA:193"
+              },
+              {
+                "gtfsId": "MARTA:186"
+              },
+              {
+                "gtfsId": "MARTA:195"
+              },
+              {
+                "gtfsId": "MARTA:804"
+              },
+              {
+                "gtfsId": "MARTA:805"
+              },
+              {
+                "gtfsId": "MARTA:198"
+              },
+              {
+                "gtfsId": "MARTA:806"
               }
-            }
+            ]
+          },
+          "stoptimes": []
+        }
+      ]
+    }
+  }
+}

@@ -6,6 +6,8 @@ const TripResponse = require('./mocks/TripResponse.json').data.trip
 const NearestResponse = require('./mocks/NearbyResponse.json').data.nearest
 const Stop114900Response = require('./mocks/Stop114900Response.json').data.stop
 const Stop803Response = require('./mocks/Stop803Response.json').data.stop
+const Stop803ScheduleResponse = require('./mocks/Stop803ScheduleResponse.json')
+  .data.stop
 const StopsByRadiusResponse = require('./mocks/StopsByRadiusResponse.json').data
   .stopsByRadius
 const ServiceTimeRangeResponse =
@@ -34,17 +36,23 @@ function getPlanResponseMock(transportModes) {
   }
 }
 
-function getStopResponseMock(stopId) {
+function getStopResponseMock(stopId, requestNumber) {
   switch (stopId) {
     case 'MARTA:803':
-      return Stop803Response
+      switch (requestNumber) {
+        case 3:
+          return Stop803ScheduleResponse
+        default:
+          return Stop803Response
+      }
     case 'MARTA:114900':
     default:
       return Stop114900Response
   }
 }
 
-const increment = (obj, key) => (obj[key] ? obj[key]++ : (obj[key] = 0))
+const increment = (obj, key) =>
+  obj[key] !== undefined ? obj[key]++ : (obj[key] = 0)
 
 const mocks = (callCount) => ({
   QueryType: {
@@ -70,7 +78,7 @@ const mocks = (callCount) => ({
     },
     stop(obj, { id }) {
       increment(callCount, 'stop')
-      return getStopResponseMock(id)
+      return getStopResponseMock(id, callCount.stop)
     },
     stopsByRadius() {
       increment(callCount, 'stopsByRoute')

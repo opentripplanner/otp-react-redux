@@ -1,0 +1,1304 @@
+{
+  "data": {
+    "stop": {
+      "gtfsId": "MARTA:803",
+      "code": "908691",
+      "lat": 33.775214,
+      "lon": -84.282466,
+      "locationType": "STOP",
+      "name": "Avondale Station",
+      "wheelchairBoarding": "POSSIBLE",
+      "routes": [
+        {
+          "gtfsId": "MARTA:19455",
+          "agency": {
+            "gtfsId": "MARTA:MARTA",
+            "name": "Metropolitan Atlanta Rapid Transit Authority"
+          },
+          "longName": "Blue",
+          "mode": "SUBWAY",
+          "color": "0075B2",
+          "textColor": "000000",
+          "shortName": "Blue"
+        }
+      ],
+      "stoptimesForPatterns": [
+        {
+          "pattern": {
+            "code": "MARTA:19455:1:01 // needed to satisfy mock server...",
+            "desc": "Blue to Hamilton E Holmes Station (MARTA:40) from Indian Creek Station (MARTA:802)",
+            "headsign": "H E HOLMES STATION",
+            "id": "MARTA:19455:1:01",
+            "route": {
+              "gtfsId": "MARTA:19455"
+            },
+            "stops": [
+              {
+                "gtfsId": "MARTA:802"
+              },
+              {
+                "gtfsId": "MARTA:224"
+              },
+              {
+                "gtfsId": "MARTA:803"
+              },
+              {
+                "gtfsId": "MARTA:193"
+              },
+              {
+                "gtfsId": "MARTA:186"
+              },
+              {
+                "gtfsId": "MARTA:195"
+              },
+              {
+                "gtfsId": "MARTA:804"
+              },
+              {
+                "gtfsId": "MARTA:805"
+              },
+              {
+                "gtfsId": "MARTA:198"
+              },
+              {
+                "gtfsId": "MARTA:806"
+              }
+            ]
+          },
+          "stoptimes": [
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 89100,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzAw",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 87900,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njk5",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 86700,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njk4",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 85500,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njk3",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 84300,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njk2",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 83100,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njk1",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 81900,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njk0",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 80700,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njkz",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 79500,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njky",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 78300,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njkx",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 77100,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njkw",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 75900,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njg5",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 74700,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njg4",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 73500,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njg3",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 72300,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njg2",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 71100,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njg1",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 69900,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njg0",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 68700,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njgz",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 67980,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152113",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzQ4",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 67260,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzQ3",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 66540,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzQ2",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 65820,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152110",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzQ1",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 65100,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzQ0",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 64380,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152108",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzQz",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 63660,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzQy",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 62940,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152113",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzQx",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 62220,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzQw",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 61500,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzM5",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 60780,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152110",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzM4",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 60060,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzM3",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 59340,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152108",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzM2",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 58620,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzM1",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 57900,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152113",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzM0",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 57180,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzMz",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 56460,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzMy",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 55740,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152110",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzMx",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 55020,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzMw",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 54300,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152108",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzI5",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 53580,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzI4",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 52860,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152113",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzI3",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 52140,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzI2",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 51420,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzI1",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 50700,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152110",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzI0",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 49800,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njgy",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 48900,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152108",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njgx",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 48000,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njgw",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 47100,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njc5",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 46200,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njc4",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 45300,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152110",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njc3",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 44400,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njc2",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 43500,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152108",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njc1",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 42600,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njc0",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 41700,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njcz",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 40800,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njcy",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 39900,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152110",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njcx",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 39000,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5Njcw",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 38100,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152108",
+                "id": "VHJpcDpNQVJUQTo5MDU5NjY5",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 37200,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5NjY4",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 36300,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5NjY3",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 35400,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5NjY2",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 34500,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152110",
+                "id": "VHJpcDpNQVJUQTo5MDU5NjY1",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 33600,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5NjY0",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 32700,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152108",
+                "id": "VHJpcDpNQVJUQTo5MDU5NjYz",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 31980,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzIz",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 31260,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzIy",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 30540,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzIx",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 29820,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152110",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzIw",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 29100,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzE5",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 28380,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152112",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzE4",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 27660,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152108",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzE3",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 26940,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzE2",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 26220,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzE1",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 25500,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152111",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzE0",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 24780,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152110",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzEz",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 24060,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152109",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzEy",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 23340,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152112",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzEx",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 22620,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152108",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzEw",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 21900,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152107",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzAy",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 20760,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152106",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzA2",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 19500,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152110",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzA4",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 18300,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152112",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzA1",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            },
+            {
+              "headsign": "H E HOLMES STATION",
+              "scheduledDeparture": 17100,
+              "serviceDay": 1691380800,
+              "trip": {
+                "blockId": "1152108",
+                "id": "VHJpcDpNQVJUQTo5MDU5NzA0",
+                "pattern": {
+                  "id": "UGF0dGVybjpNQVJUQToyMDg5OToxOjAx"
+                },
+                "route": {
+                  "gtfsId": "MARTA:19455"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
