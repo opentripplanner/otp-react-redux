@@ -605,7 +605,7 @@ components:
     noStopsFound: No stop times found for date.
     operatorLogoAriaLabel: "{operatorName} stop:"
     schedule: Schedule
-    timezoneWarning: Departure times are shown in <strong>{timezoneCode}</strong>.
+    timezoneWarning: Departure times are shown in {timezoneCode}.
     titleBarStopId: Stop {stopId}
     viewNearby: View Nearby
     viewSchedule: View schedule
