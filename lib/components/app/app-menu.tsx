@@ -238,9 +238,9 @@ class AppMenu extends Component<
               className="app-menu-trip-planner-link"
               icon={<MapMarked />}
               onClick={this._showTripPlanner}
-              text={
-                <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
-              }
+              text={intl.formatMessage({
+                id: 'components.BatchRoutingPanel.shortTitle'
+              })}
             />
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
@@ -248,7 +248,9 @@ class AppMenu extends Component<
               className="app-menu-route-viewer-link"
               icon={<Bus />}
               onClick={this._showRouteViewer}
-              text={<FormattedMessage id="components.RouteViewer.shortTitle" />}
+              text={intl.formatMessage({
+                id: 'components.RouteViewer.shortTitle'
+              })}
             />
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
@@ -256,12 +258,16 @@ class AppMenu extends Component<
               className="app-menu-route-viewer-link"
               icon={<MapPin />}
               onClick={this._showNearby}
-              text={<FormattedMessage id="components.ViewSwitcher.nearby" />}
+              text={intl.formatMessage({
+                id: 'components.ViewSwitcher.nearby'
+              })}
             />
             <AppMenuItem
               icon={<Undo />}
               onClick={this._startOver}
-              text={<FormattedMessage id="common.forms.startOver" />}
+              text={intl.formatMessage({
+                id: 'common.forms.startOver'
+              })}
             />
             {popupTarget && (
               <AppMenuItem
@@ -274,21 +280,27 @@ class AppMenu extends Component<
               <AppMenuItem
                 icon={<History />}
                 onClick={resetAndToggleCallHistory}
-                text={<FormattedMessage id="components.AppMenu.callHistory" />}
+                text={intl.formatMessage({
+                  id: 'components.AppMenu.callHistory'
+                })}
               />
             )}
             {fieldTripEnabled && (
               <AppMenuItem
                 icon={<GraduationCap />}
                 onClick={resetAndToggleFieldTrips}
-                text={<FormattedMessage id="components.AppMenu.fieldTrip" />}
+                text={intl.formatMessage({
+                  id: 'components.AppMenu.fieldTrip'
+                })}
               />
             )}
             {mailablesEnabled && (
               <AppMenuItem
                 icon={<Envelope />}
                 onClick={toggleMailables}
-                text={<FormattedMessage id="components.AppMenu.mailables" />}
+                text={intl.formatMessage({
+                  id: 'components.AppMenu.mailables'
+                })}
               />
             )}
             {this._addExtraMenuItems(extraMenuItems)}
