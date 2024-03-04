@@ -26,7 +26,6 @@ type Props = {
   route: Route & { operator?: { colorMode?: string } }
   routeColor: string
   stopTimes: Time[]
-  stopViewerArriving: React.ReactNode
   stopViewerConfig: { numberOfDepartures: number }
 }
 /**

@@ -175,9 +175,7 @@ components:
     tooManyPlaces: Maximum intermediate places reached
   AdvancedOptions:
     bannedRoutes: Select banned routes…
-    bikeTolerance: Bike Tolerance
     preferredRoutes: Select preferred routes...
-    walkTolerance: Walk Tolerance
   AfterSignInScreen:
     mainTitle: Redirecting...
     message: >-
@@ -386,6 +384,16 @@ components:
     myAccount: My account
     signIn: Log in
     signOut: Log out
+  NearbyView:
+    bikeRentalStation: Bike Rental Station
+    bikesAvailable: "{bikesAvailable, plural, one {# bike} other {# bikes}} available"
+    companyBicycle: "{company} Bike"
+    companyScooter: "{company} Scooter"
+    error: An error occurred loading nearby amenities.
+    header: Nearby View
+    nearbyListIntro: List of {count} nearby entities.
+    nothingNearby: There are no places nearby.
+    spacesAvailable: "{spacesAvailable} empty spaces available"
   NewAccountWizard:
     createNewAccount: Create a new account
     finish: Account setup complete!
@@ -597,9 +605,9 @@ components:
     noStopsFound: No stop times found for date.
     operatorLogoAriaLabel: "{operatorName} stop:"
     schedule: Schedule
-    timezoneWarning: Departure times are shown in <strong>{timezoneCode}</strong>.
+    timezoneWarning: Departure times are shown in {timezoneCode}.
     titleBarStopId: Stop {stopId}
-    viewNextDepartures: View next departures
+    viewNearby: View Nearby
     viewSchedule: View schedule
     zoomToStop: Zoom to stop
   SubNav:
@@ -794,6 +802,7 @@ components:
     instructions2: Once you're verified, click the button below to continue.
     resendVerification: Resend verification email
   ViewSwitcher:
+    nearby: Nearby
     switcher: Switcher
   WelcomeScreen:
     prompt: Where do you want to go?

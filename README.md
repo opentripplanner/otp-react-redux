@@ -13,13 +13,15 @@ An example of an OTP-RR application is included in the repository. The example p
 
 To run, first clone the repo and install [yarn](https://yarnpkg.com/) if needed.
 
-Update `example-config.yml` with the needed API keys, and optionally, the OTP endpoint and initial map origin. (The default values are for a test server for Portland, OR.).
+Update `example-config.yml` with the needed API keys, and optionally, the OTP endpoint and initial map origin. (The default values are for a test server for Portland, OR.). See the comments at the head of the config file for further details.
 
-Install the dependencies and start a local instance using the following script:
+Install the dependencies and start a local development server using the following script:
 
 ```bash
 yarn start
 ```
+
+The port on which the development server listens can be configured in `.env`.
 
 Should you want to maintain multiple configuration files, OTP-RR can be made to use a custom config file by using environment variables. Other environment variables also exist. `CUSTOM_CSS` can be used to point to a css file to inject, and `JS_CONFIG` can be used to point to a `config.js` file to override the one shipped with OTP-RR.
 
@@ -29,7 +31,7 @@ env YAML_CONFIG=/absolute/path/to/config.yml yarn start
 
 ## Deploying the UI
 
-Build the js/css bundle by running `yarn build`. The build will appear in the `dist/` directory).
+Build a production js/css bundle by running `yarn build`. The build will appear in the `dist/` directory). It consists entirely of static files and can be served by a simple static web server or CDN.
 
 The same environment variables which affect the behavior of `yarn start` also affect `yarn build`. Running the following command builds OTP-RR with customized js and css:
 
@@ -41,6 +43,8 @@ env JS_CONFIG=my-custom-js.js CUSTOM_CSS=my-custom-css.css yarn build
 
 OTP-react-redux uses `react-intl` from the [`formatjs`](https://github.com/formatjs/formatjs) library for internationalization.
 Both `react-intl` and `formatjs` take advantage of native internationalization features provided by web browsers.
+
+The example application supports several different languages out of the box, but language selection must be enabled. See the `language` section of the YAML config. Once enabled, the application will first check the `lang` key in `window.localstorage` for ISO language codes such as `fr` or `es` matching files in the i18n directory, then fall back on the `navigator.language` that is typically configured via your web browser's settings, before finally falling back on the `localization: defaultLocale` item defined in `example-config.yml`.
 
 ### `i18n` Folder
 

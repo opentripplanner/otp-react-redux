@@ -53,15 +53,16 @@ const FormNavigationButtons = ({
           id: 'components.FormNavigationButtons.ariaLabel'
         })}
       >
-        {backButton && (
-          <LeftButton
-            disabled={backButton.disabled}
-            onClick={backButton.onClick}
-            type="button"
-          >
-            {backButton.text}
-          </LeftButton>
-        )}
+        {backButton &&
+          (backButton.content || (
+            <LeftButton
+              disabled={backButton.disabled}
+              onClick={backButton.onClick}
+              type="button"
+            >
+              {backButton.text}
+            </LeftButton>
+          ))}
         {okayButton && (
           <RightButton
             bsStyle="primary"
@@ -72,7 +73,7 @@ const FormNavigationButtons = ({
             {okayButton.text}
           </RightButton>
         )}
-        {extraButton && extraButton.content}
+        {extraButton?.content}
       </nav>
     </StyledFormGroup>
   )

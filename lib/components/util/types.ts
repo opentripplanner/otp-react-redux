@@ -1,4 +1,9 @@
-import { MapLocationActionArg, Route } from '@opentripplanner/types'
+import {
+  MapLocationActionArg,
+  Route,
+  Station,
+  Stop
+} from '@opentripplanner/types'
 
 // TYPESCRIPT TODO: move this to a larger shared types file, preferably within otp-ui
 export interface StopData {
@@ -28,8 +33,9 @@ export interface StopTime {
   departureDelay?: number
   headsign: string
   pattern: Pattern
-  realtimeDeparture?: boolean
+  realtimeDeparture?: number
   realtimeState?: string
+  serviceDay?: number
   times: Time[]
 }
 
@@ -41,7 +47,8 @@ export interface Pattern {
     length: number
     points: string
   }
-  stops?: StopData[]
+  route: Route
+  stops?: Stop[]
 }
 
 export interface Time {
@@ -78,6 +85,7 @@ export interface PatternDayStopTimes extends PatternStopTimes {
 
 export interface VehicleRental {
   errorsByNetwork: { [key: string]: { message?: string; severity?: string } }
+  stations: Station[]
   systemInformationDataByNetwork: {
     [key: string]: { message?: string; severity?: string }
   }
@@ -102,6 +110,6 @@ export interface ViewedRouteObject extends Route {
 
 export type SetViewedRouteHandler = (route?: ViewedRouteState) => void
 
-export type SetViewedStopHandler = (payload: { stopId: string } | null) => void
+export type SetViewedStopHandler = (payload: Stop | null) => void
 
 export type SetLocationHandler = (payload: MapLocationActionArg) => void
