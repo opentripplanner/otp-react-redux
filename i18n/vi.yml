@@ -582,7 +582,7 @@ components:
     noStopsFound: Không tìm thấy thời gian dừng cho ngày.
     operatorLogoAriaLabel: "Điểm dừng của {operatorName}:"
     schedule: Lịch trình
-    timezoneWarning: Thời gian khởi hành được hiển thị trong <strong>{timezoneCode}</strong>.
+    timezoneWarning: Thời gian khởi hành được hiển thị trong {timezoneCode}.
     titleBarStopId: Điểm dừng {stopId}
     viewNearby: Xem Gần Đây
     viewSchedule: Xem lịch trình
