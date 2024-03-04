@@ -3,6 +3,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 const OperatorImg = styled.img`
+  &:not(:last-of-type) {
+    margin-right: 0.5ch;
+  }
   width: 25px;
 `
 

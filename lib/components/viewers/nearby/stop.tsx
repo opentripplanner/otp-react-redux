@@ -108,7 +108,7 @@ const Stop = ({
     }, [])
     .sort(
       (a: PatternStopTime, b: PatternStopTime) =>
-        (a.stoptimes?.[0].serviceDay || 0) - (b.stoptimes?.[0].serviceDay || 0)
+        fullTimestamp(a.stoptimes?.[0]) - fullTimestamp(b.stoptimes?.[0])
     )
     .map((st: any, index: number) => {
       const sortedStopTimes = st.stoptimes.sort(
@@ -140,18 +140,28 @@ const Stop = ({
     setHoveredStop(undefined)
   }, [setHoveredStop])
 
-  const operator =
-    agencies.size === 1
-      ? transitOperators?.find((o) => o.agencyId === Array.from(agencies)[0])
-      : undefined
-
   if (nearbyViewConfig?.hideEmptyStops && patternRows.length === 0) return <></>
 
   return (
     <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <CardHeader>
         <CardTitle>
-          <IconWithText icon={<Operator operator={operator} />}>
+          <IconWithText
+            icon={
+              <>
+                {transitOperators
+                  ?.filter((to) => Array.from(agencies).includes(to.agencyId))
+                  // Second pass to remove duplicates based on name
+                  .filter(
+                    (to, index, arr) =>
+                      index === arr.findIndex((t) => t?.name === to?.name)
+                  )
+                  .map((to) => (
+                    <Operator key={to.agencyId} operator={to} />
+                  ))}
+              </>
+            }
+          >
             {stopData.name}
           </IconWithText>
         </CardTitle>
