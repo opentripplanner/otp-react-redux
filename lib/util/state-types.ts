@@ -29,7 +29,7 @@ export interface OtpState {
 
 export interface UserState {
   itineraryExistence?: ItineraryExistence
-  localUser: any
+  localUser?: any
   loggedInUser: User
   loggedInUserMonitoredTrips?: MonitoredTrip[]
   // TODO: Add other user states.

@@ -11,12 +11,15 @@ import { getShowUserSettings } from '../../util/state'
 import { StopData } from '../util/types'
 import { StyledIconWrapper } from '../util/styledIcon'
 
-interface Props {
+interface OwnProps {
+  stopData?: StopData
+}
+
+interface Props extends OwnProps {
   enableFavoriteStops: boolean
   forgetStop: (stopData: StopData) => void
   isFavoriteStop: boolean
   rememberStop: (stopData: StopData) => void
-  stopData?: StopData
 }
 
 /**
@@ -56,19 +59,18 @@ const FavoriteStopToggle = ({
 
 // connect to redux store
 
-const mapStateToProps = (state: AppReduxState) => {
+const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
   const showUserSettings = getShowUserSettings(state)
-  const { config, ui } = state.otp
+  const { config } = state.otp
   const { persistence } = config
-  const stopId = ui.viewedStop.stopId
+  const stopId = ownProps.stopData?.gtfsId
 
   return {
     enableFavoriteStops:
       showUserSettings && getPersistenceMode(persistence).isLocalStorage,
-    isFavoriteStop:
-      state.user.localUser?.favoriteStops.findIndex(
-        (s: { id: string }) => s.id === stopId
-      ) !== -1
+    isFavoriteStop: state.user.localUser?.favoriteStops.some(
+      (s: { id: string }) => s.id === stopId
+    )
   }
 }
 
