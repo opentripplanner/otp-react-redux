@@ -270,7 +270,7 @@ const mapStateToProps = (state: AppReduxState) => {
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
   return {
-    entityId: entityId !== undefined ? decodeURIComponent(entityId) : undefined,
+    entityId: entityId && decodeURIComponent(entityId),
     homeTimezone: config.homeTimezone,
     nearby,
     nearbyViewCoords
