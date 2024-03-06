@@ -16,7 +16,6 @@ import styled from 'styled-components'
 import * as apiActions from '../../actions/api'
 import * as mapActions from '../../actions/map'
 import { AppReduxState } from '../../util/state-types'
-import { FETCH_STATUS } from '../../util/constants'
 import { Icon, IconWithText } from '../util/styledIcon'
 import { isBlank, navigateBack } from '../../util/ui'
 import { SetLocationHandler, StopData } from '../util/types'
@@ -191,7 +190,7 @@ class StopScheduleViewer extends Component<Props, State> {
 
         {/* Header Text */}
         <div className="header-text">
-          {stopData?.fetchStatus === FETCH_STATUS.FETCHED ? (
+          {stopData?.name ? (
             <h1 style={{ paddingLeft: '0.5ch' }}>
               {agencyCount <= 1 && stationOperator && (
                 /* Span with agency classname allows optional contrast/customization in user 
