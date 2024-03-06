@@ -35,7 +35,8 @@ function getStopTimesByPattern(
 ): Record<string, StopTimesForPattern> {
   const stopTimesByPattern: Record<string, StopTimesForPattern> = {}
   if (stopData && stopData.routes && stopData.stoptimesForPatterns) {
-    stopData.stoptimesForPatterns.forEach(({ pattern, stoptimes }) => {
+    const { routes, stoptimesForPatterns } = stopData
+    stoptimesForPatterns.forEach(({ pattern, stoptimes }) => {
       const routeId = getRouteIdForPattern(pattern)
 
       let headsign = stoptimes[0] && stoptimes[0].headsign
@@ -47,7 +48,7 @@ function getStopTimesByPattern(
 
       const id = `${routeId}-${headsign}`
       if (!(id in stopTimesByPattern)) {
-        const route = stopData.routes.find((r) => r.id === routeId)
+        const route = routes.find((r) => r.id === routeId)
         stopTimesByPattern[id] = {
           id,
           pattern,

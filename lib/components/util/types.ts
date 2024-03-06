@@ -81,11 +81,11 @@ interface RouteWithAgencyGtfsId extends Route {
 }
 
 export interface StopData extends Place {
-  code: string
+  code?: string
   fetchStatus: number
-  gtfsId: string
-  routes: RouteWithAgencyGtfsId[]
-  stoptimesForPatterns: PatternStopTime[]
+  gtfsId?: string
+  routes?: RouteWithAgencyGtfsId[]
+  stoptimesForPatterns?: PatternStopTime[]
 }
 
 // Routes have many properties beside id, but none of these are guaranteed.
