@@ -119,6 +119,8 @@ class RouteDetails extends Component<Props> {
           }
         }
 
+        // This resolves the edge case where two patterns with the same headsign are
+        // getting filterted out. This resolves that
         if (alreadyExistingIndex >= 0) {
           // Only replace if new pattern has greater geometry
           if (
