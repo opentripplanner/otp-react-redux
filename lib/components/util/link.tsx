@@ -1,27 +1,17 @@
 import { Link as RouterLink } from 'react-router-dom'
-import coreUtils from '@opentripplanner/core-utils'
-import qs from 'qs'
 import React, { HTMLAttributes } from 'react'
+
+import { combineQueryParams } from '../../util/api'
 
 interface Props extends HTMLAttributes<HTMLSpanElement> {
   to: string
   toParams: Record<string, unknown>
 }
 
-const { getUrlParams } = coreUtils.query
-
 /**
- * Helper function to add/modify parameters from the URL bar
- * while preserving the other ones.
+ * Renders an anchor element <a> with specified path and query params,
+ * that preserves other existing query params.
  */
-function queryParams(addedParams: Record<string, unknown>) {
-  const search = {
-    ...qs.parse(getUrlParams()),
-    ...addedParams
-  }
-  return qs.stringify(search)
-}
-
 const Link = ({
   children,
   className,
@@ -34,7 +24,7 @@ const Link = ({
     style={style}
     to={{
       pathname: to,
-      search: queryParams(toParams)
+      search: combineQueryParams(toParams)
     }}
   >
     {children}

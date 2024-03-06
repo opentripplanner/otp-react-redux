@@ -1,6 +1,10 @@
 import { convertModeSettingValue } from '@opentripplanner/trip-form'
 import { ModeSetting, ModeSettingValues } from '@opentripplanner/types'
 import { toDate } from 'date-fns-tz'
+import coreUtils from '@opentripplanner/core-utils'
+import qs from 'qs'
+
+const { getUrlParams } = coreUtils.query
 
 export const SERVICE_BREAK = '03:30'
 
@@ -38,4 +42,18 @@ export function getServiceStart(
   timeZone: string
 ): Date {
   return toDate(`${date} ${SERVICE_BREAK}`, { timeZone })
+}
+
+/**
+ * Helper function to add/modify parameters from the URL bar
+ * while preserving the other ones.
+ */
+export function combineQueryParams(
+  addedParams: Record<string, unknown>
+): string {
+  const search = {
+    ...getUrlParams(),
+    ...addedParams
+  }
+  return qs.stringify(search, { arrayFormat: 'repeat' })
 }
