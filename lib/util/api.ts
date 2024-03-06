@@ -1,5 +1,8 @@
 import { convertModeSettingValue } from '@opentripplanner/trip-form'
 import { ModeSetting, ModeSettingValues } from '@opentripplanner/types'
+import { toDate } from 'date-fns-tz'
+
+export const SERVICE_BREAK = '03:30'
 
 /**
  * Generates a record of all mode setting keys and their values from (in order of priority):
@@ -27,4 +30,12 @@ export const generateModeSettingValues = (
   )
 
   return modeSettingValues
+}
+
+/** Gets a zoned time object for 03:30 am for the specified date and timezone. */
+export function getServiceStart(
+  date: string | number | Date,
+  timeZone: string
+): Date {
+  return toDate(`${date} ${SERVICE_BREAK}`, { timeZone })
 }
