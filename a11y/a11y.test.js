@@ -102,5 +102,5 @@ test('Mocked Stop Viewer and Dropdown should pass Axe tests', async () => {
   // Puppeteer can take a long time to load, espeically in some ci environments
   jest.setTimeout(600000)
   // Test stop viewer
-  await runAxeTestOnPath('/stop/Agency')
+  await runAxeTestOnPath('/schedule/Agency')
 })
