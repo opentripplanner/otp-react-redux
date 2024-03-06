@@ -6,8 +6,6 @@ const TripResponse = require('./mocks/TripResponse.json').data.trip
 const NearestResponse = require('./mocks/NearbyResponse.json').data.nearest
 const Stop114900Response = require('./mocks/Stop114900Response.json').data.stop
 const Stop803Response = require('./mocks/Stop803Response.json').data.stop
-const Stop803ScheduleResponse = require('./mocks/Stop803ScheduleResponse.json')
-  .data.stop
 const StopsByRadiusResponse = require('./mocks/StopsByRadiusResponse.json').data
   .stopsByRadius
 const ServiceTimeRangeResponse =
@@ -36,16 +34,10 @@ function getPlanResponseMock(transportModes) {
   }
 }
 
-function getStopResponseMock(stopId, requestNumber) {
+function getStopResponseMock(stopId) {
   switch (stopId) {
     case 'MARTA:803':
-      switch (requestNumber) {
-        case 3:
-        case 7: // callCount does not reset between desktop and mobile tests.
-          return Stop803ScheduleResponse
-        default:
-          return Stop803Response
-      }
+      return Stop803Response
     case 'MARTA:114900':
     default:
       return Stop114900Response
@@ -79,7 +71,7 @@ const mocks = (callCount) => ({
     },
     stop(obj, { id }) {
       increment(callCount, 'stop')
-      return getStopResponseMock(id, callCount.stop)
+      return getStopResponseMock(id)
     },
     stopsByRadius() {
       increment(callCount, 'stopsByRoute')
