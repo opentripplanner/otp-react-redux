@@ -323,9 +323,8 @@ export interface RouteViewerConfig {
   vehiclePositionRefreshSeconds?: number
 }
 
-/** Stop Viewer Config */
-// TODO: rename to ScheduleViewer
-export interface StopViewerConfig {
+/** Stop Schedule Viewer Config */
+export interface StopScheduleViewerConfig {
   /** Whether to display block IDs with each departure in the schedule view. */
   showBlockIds?: boolean
 }
@@ -369,7 +368,7 @@ export interface AppConfig {
   sessionTimeoutSeconds?: number
   /** Whether to show the x minutes late/early in the itinerary body */
   showScheduleDeviation?: boolean
-  stopViewer?: StopViewerConfig
+  stopViewer?: StopScheduleViewerConfig
   /** Externally hosted terms of service URL */
   termsOfServiceLink?: string
   /** App title shown in the browser title bar. */
