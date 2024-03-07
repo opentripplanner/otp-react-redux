@@ -31,6 +31,7 @@ const AUTO_REFRESH_INTERVAL = 15000
 type LatLonObj = { lat: number; lon: number }
 
 type Props = {
+  currentPosition?: { coords?: { latitude: number; longitude: number } }
   entityId?: string
   fetchNearby: (latLon: LatLonObj, map?: MapRef) => void
   hideBackButton?: boolean
@@ -96,6 +97,7 @@ const getNearbyItem = (place: any, setLocation: SetLocationHandler) => {
 }
 
 function NearbyView({
+  currentPosition,
   entityId,
   fetchNearby,
   location,
@@ -124,6 +126,13 @@ function NearbyView({
       setHighlightedLocation(null)
     }
   }, [location, setHighlightedLocation])
+
+  useEffect(() => {
+    if (currentPosition?.coords) {
+      const { latitude, longitude } = currentPosition.coords
+      setViewedNearbyCoords({ lat: latitude, lon: longitude })
+    }
+  }, [currentPosition, setViewedNearbyCoords])
 
   useEffect(() => {
     const listener = (e: any) => {
@@ -267,11 +276,13 @@ function NearbyView({
 }
 
 const mapStateToProps = (state: AppReduxState) => {
-  const { config, transitIndex, ui } = state.otp
+  const { config, location, transitIndex, ui } = state.otp
   const { nearbyViewCoords } = ui
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
+  const { currentPosition } = location
   return {
+    currentPosition,
     entityId,
     homeTimezone: config.homeTimezone,
     location: state.router.location.hash,
