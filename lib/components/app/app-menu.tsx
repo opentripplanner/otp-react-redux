@@ -58,6 +58,7 @@ type AppMenuProps = {
   setLocale: (locale: string) => void
   setMainPanelContent: (panel: number | null) => void
   setPopupContent: (url: string) => void
+  startOverFromInitialUrl: () => void
   toggleMailables: () => void
 }
 type AppMenuState = {
@@ -88,9 +89,7 @@ class AppMenu extends Component<
   }
 
   _startOver = () => {
-    const { location, reactRouterConfig } = this.props
-    const { search } = location
-    window.location.href = startOver(reactRouterConfig?.basename, search)
+    this.props.startOverFromInitialUrl()
   }
 
   _triggerPopup = () => {
@@ -334,6 +333,7 @@ const mapDispatchToProps = {
   setLocale: uiActions.setLocale,
   setMainPanelContent,
   setPopupContent: uiActions.setPopupContent,
+  startOverFromInitialUrl: uiActions.startOverFromInitialUrl,
   toggleMailables: callTakerActions.toggleMailables
 }
 
