@@ -6,6 +6,7 @@ import React, { useCallback } from 'react'
 
 import * as uiActions from '../../../actions/ui'
 import { EditedUser } from '../types'
+import { NONE_SINGLETON } from '../../../util/user'
 
 interface Props extends FormikProps<EditedUser> {
   routeTo: (url: string) => void
@@ -23,7 +24,7 @@ const MobilityPane = ({ routeTo, values: userData }: Props): JSX.Element => {
     mobilityDevices = [],
     visionLimitation
   } = userData.mobilityProfile || {}
-  const devices = mobilityDevices.length ? mobilityDevices : ['none']
+  const devices = mobilityDevices.length ? mobilityDevices : NONE_SINGLETON
   return (
     <div>
       <p>

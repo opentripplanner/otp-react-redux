@@ -1,20 +1,20 @@
 import { Calendar, MapPin } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
-import { format } from 'date-fns-tz'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { InfoCircle } from '@styled-icons/fa-solid/InfoCircle'
 import { Place, TransitOperator } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
-import dateFnsUSLocale from 'date-fns/locale/en-US'
 import React, { useCallback } from 'react'
 
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
+import { extractHeadsignFromPattern } from '../../../util/viewer'
 import { IconWithText } from '../../util/styledIcon'
+import { NearbyViewConfig } from '../../../util/config-types'
 import { Pattern, StopTime } from '../../util/types'
 import OperatorLogo from '../../util/operator-logo'
 import PatternRow from '../pattern-row'
 import Strong from '../../util/strong-text'
+import TimezoneWarning from '../timezone-warning'
 
 import {
   Card,
@@ -24,7 +24,6 @@ import {
   PatternRowContainer,
   StyledAlert
 } from './styled'
-import { extractHeadsignFromPattern } from '../../../util/viewer'
 
 const { getUserTimezone } = coreUtils.time
 
@@ -42,30 +41,10 @@ type StopData = Place & {
 const fullTimestamp = (stoptime: StopTime) =>
   (stoptime.serviceDay || 0) + (stoptime.realtimeDeparture || 0)
 
-const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
-  const timezoneCode = format(Date.now(), 'z', {
-    // To avoid ambiguities for now, use the English-US timezone abbreviations ("EST", "PDT", etc.)
-    locale: dateFnsUSLocale,
-    timeZone: homeTimezone
-  })
-
-  // Display a banner about the departure timezone if user's timezone is not the configured 'homeTimezone'
-  // (e.g. cases where a user in New York looks at a schedule in Los Angeles).
-  return (
-    <StyledAlert>
-      <IconWithText Icon={InfoCircle}>
-        <FormattedMessage
-          id="components.StopViewer.timezoneWarning"
-          values={{ strong: Strong, timezoneCode }}
-        />
-      </IconWithText>
-    </StyledAlert>
-  )
-}
-
 type Props = {
   fromToSlot: JSX.Element
   homeTimezone: string
+  nearbyViewConfig?: NearbyViewConfig
   setHoveredStop: (stopId?: string) => void
   setViewedStop: (stop: any, nearby: string) => void
   showOperatorLogo: boolean
@@ -95,6 +74,7 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
 const Stop = ({
   fromToSlot,
   homeTimezone,
+  nearbyViewConfig,
   setHoveredStop,
   setViewedStop,
   stopData,
@@ -128,7 +108,7 @@ const Stop = ({
     }, [])
     .sort(
       (a: PatternStopTime, b: PatternStopTime) =>
-        (a.stoptimes?.[0].serviceDay || 0) - (b.stoptimes?.[0].serviceDay || 0)
+        fullTimestamp(a.stoptimes?.[0]) - fullTimestamp(b.stoptimes?.[0])
     )
     .map((st: any, index: number) => {
       const sortedStopTimes = st.stoptimes.sort(
@@ -146,7 +126,11 @@ const Stop = ({
       )
     })
   const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
-  const timezoneWarning = !inHomeTimezone && getTimezoneWarning(homeTimezone)
+  const timezoneWarning = !inHomeTimezone && (
+    <StyledAlert>
+      <TimezoneWarning homeTimezone={homeTimezone} />
+    </StyledAlert>
+  )
 
   const onMouseEnter = useCallback(() => {
     setHoveredStop(stopData.gtfsId)
@@ -156,16 +140,28 @@ const Stop = ({
     setHoveredStop(undefined)
   }, [setHoveredStop])
 
-  const operator =
-    agencies.size === 1
-      ? transitOperators?.find((o) => o.agencyId === Array.from(agencies)[0])
-      : undefined
+  if (nearbyViewConfig?.hideEmptyStops && patternRows.length === 0) return <></>
 
   return (
     <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <CardHeader>
         <CardTitle>
-          <IconWithText icon={<Operator operator={operator} />}>
+          <IconWithText
+            icon={
+              <>
+                {transitOperators
+                  ?.filter((to) => Array.from(agencies).includes(to.agencyId))
+                  // Second pass to remove duplicates based on name
+                  .filter(
+                    (to, index, arr) =>
+                      index === arr.findIndex((t) => t?.name === to?.name)
+                  )
+                  .map((to) => (
+                    <Operator key={to.agencyId} operator={to} />
+                  ))}
+              </>
+            }
+          >
             {stopData.name}
           </IconWithText>
         </CardTitle>
@@ -210,6 +206,7 @@ const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
   return {
     homeTimezone: config.homeTimezone,
+    nearbyViewConfig: config?.nearbyView,
     transitOperators: config.transitOperators
   }
 }

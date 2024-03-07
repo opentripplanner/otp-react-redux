@@ -10,6 +10,7 @@ import toast from 'react-hot-toast'
 
 import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
+import { cleanupMobilityDevices } from '../../util/user'
 import { CREATE_ACCOUNT_PATH, MOBILITY_PATH } from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import { toastSuccess } from '../util/toasts'
@@ -30,8 +31,6 @@ interface Props {
   isWizard: boolean
   itemId: string
   loggedInUser: User
-  requestPhoneVerificationSms: (phoneNum: string, intl: IntlShape) => void
-  verifyPhoneNumber: (code: string, intl: IntlShape) => void
 }
 
 const pendingCss = css`
@@ -59,13 +58,17 @@ const Wrapper = styled.div`
  */
 class UserAccountScreen extends Component<Props> {
   _updateUserPrefs = async (userData: EditedUser, silentOnSucceed = false) => {
-    const { createOrUpdateUser, intl } = this.props
+    const { createOrUpdateUser, intl, loggedInUser } = this.props
 
     // Convert the notification attributes from array to comma-separated string.
     const passedUserData = {
       ...clone(userData),
       notificationChannel: userData.notificationChannel.join(',')
     }
+    cleanupMobilityDevices(
+      passedUserData.mobilityProfile,
+      loggedInUser.mobilityProfile?.mobilityDevices
+    )
 
     const result = await createOrUpdateUser(passedUserData, intl)
 
@@ -87,11 +90,6 @@ class UserAccountScreen extends Component<Props> {
    */
   _handleCreateNewUser = (userData: EditedUser) => {
     this._updateUserPrefs(userData, true)
-  }
-
-  _handleRequestPhoneVerificationCode = (newPhoneNumber: string) => {
-    const { intl, requestPhoneVerificationSms } = this.props
-    requestPhoneVerificationSms(newPhoneNumber, intl)
   }
 
   _submitForm = async (
@@ -173,15 +171,6 @@ class UserAccountScreen extends Component<Props> {
     }
   }
 
-  _handleSendPhoneVerificationCode = async ({
-    validationCode: code
-  }: {
-    validationCode: string
-  }) => {
-    const { intl, verifyPhoneNumber } = this.props
-    await verifyPhoneNumber(code, intl)
-  }
-
   render() {
     const { basePath, intl, isWizard, itemId, loggedInUser } = this.props
     const loggedInUserWithNotificationArray = {
@@ -242,17 +231,7 @@ class UserAccountScreen extends Component<Props> {
                   )
                 }
 
-                return (
-                  <ExistingAccountDisplay
-                    {...newFormikProps}
-                    onRequestPhoneVerificationCode={
-                      this._handleRequestPhoneVerificationCode
-                    }
-                    onSendPhoneVerificationCode={
-                      this._handleSendPhoneVerificationCode
-                    }
-                  />
-                )
+                return <ExistingAccountDisplay {...newFormikProps} />
               }
             }
           </Formik>
@@ -283,9 +262,7 @@ const mapStateToProps = (
 }
 
 const mapDispatchToProps = {
-  createOrUpdateUser: userActions.createOrUpdateUser,
-  requestPhoneVerificationSms: userActions.requestPhoneVerificationSms,
-  verifyPhoneNumber: userActions.verifyPhoneNumber
+  createOrUpdateUser: userActions.createOrUpdateUser
 }
 
 export default withLoggedInUserSupport(

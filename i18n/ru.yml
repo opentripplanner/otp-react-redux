@@ -18,8 +18,7 @@ actions:
     itineraryCapacityError: >-
       Невозможно сохранить план. Этот план невозможно сохранить из-за нехватки
       мест в одном или нескольких транспортных средствах. Измените план поездки.
-    maxTripRequestsExceeded: Превышено количество запросов на поездку без действительных
-      результатов
+    maxTripRequestsExceeded: Превышено количество запросов на поездку без действительных результатов
     saveItinerariesError: "Не удалось сохранить маршруты: {err}"
     setDateError: "Ошибка введения данных:"
   location:
@@ -38,11 +37,9 @@ actions:
     authTokenError: Ошибка получения токена на авторизацию.
     confirmDeleteMonitoredTrip: Удалить эту поездку?
     confirmDeletePlace: Удалить это место?
-    emailVerificationResent: Сообщение с подтверждением адреса электронной почты отправлено
-      повторно.
+    emailVerificationResent: Сообщение с подтверждением адреса электронной почты отправлено повторно.
     genericError: "Произошла ошибка: {err}"
-    itineraryExistenceCheckFailed: При проверке возможности выбранной поездки произошла
-      ошибка.
+    itineraryExistenceCheckFailed: При проверке возможности выбранной поездки произошла ошибка.
     mustAcceptTermsToSavePlace: >-
       Примите «Условия использования» (в разделе «Моя учетная запись»), чтобы
       сохранять местоположения.
@@ -150,7 +147,7 @@ common:
     enterStartLocation: Введите место отправления или {mapAction} на карте…
     tap: коснитесь его
   time:
-    departureArrivalTimes: "{startTime, time, short} — {endTime, time, short}"
+    departureArrivalTimes: "{startTime, time, short}\_— {endTime, time, short}"
     duration:
       aFewSeconds: несколько секунд
       nDays: "{days} дн."
@@ -203,8 +200,7 @@ components:
       }
     nearbyAmenities: Удобства поблизости
     noNearbyBikes: Не удалось найти пункты проката велосипедов поблизости.
-    noNearbyScooters: Не удалось найти пункты проката легких транспортных средств
-      поблизости.
+    noNearbyScooters: Не удалось найти пункты проката легких транспортных средств поблизости.
     noPRLotsFound: Не удалось найти парковочные места поблизости.
     scootersNearby: |
       {count, plural,
@@ -299,7 +295,7 @@ components:
     ariaLabel: Навигационная форма
   ItinerarySummary:
     itineraryDetails: Сведения о маршруте
-    minMaxFare: "{minTotalFare} — {maxTotalFare}"
+    minMaxFare: "{minTotalFare}\_— {maxTotalFare}"
   LiveStopTimes:
     autoRefresh: Обновлять прибытия автоматически?
     refresh: Обновить время прибытия
@@ -331,8 +327,7 @@ components:
     header: Задать параметры поиска
   NarrativeItinerariesHeader:
     changeSortDir: Изменить направление сортировки
-    howToFindResults: Чтобы просмотреть результаты, см. заголовок «Найденные маршруты»
-      ниже.
+    howToFindResults: Чтобы просмотреть результаты, см. заголовок «Найденные маршруты» ниже.
     itinerariesFound: |-
       {itineraryNum, plural,
        one {найден # маршрут}
@@ -435,7 +430,7 @@ components:
       TO: Mесто назначения
   PhoneNumberEditor:
     changeNumber: Изменить номер
-    invalidCode: "Введите проверочный код из 6 цифр."
+    invalidCode: "Введите проверочный код из 6\_цифр."
     invalidPhone: Введите действительный номер телефона.
     pending: Ожидание
     phoneNumberSubmitted: Номер телефона{phoneNumber} был успешно отправлен.
@@ -449,9 +444,7 @@ components:
       подтверждением и мониторингом поездки. Вашим оператором мобильной связи
       могут взиматься дополнительные пени.
     verificationCode: "Код подтверждения:"
-    verificationInstructions: "Откройте приложение для обмена SMS на телефоне и найдите
-      текстовое сообщение с кодом подтверждения. Затем введите код ниже (срок действия
-      кода: 10 минут).\n"
+    verificationInstructions: "Откройте приложение для обмена SMS на телефоне и найдите текстовое сообщение с кодом подтверждения. Затем введите код ниже (срок действия кода: 10\_минут).\n"
     verified: Подтверждено
     verify: Подтвердить
   Place:
@@ -555,8 +548,7 @@ components:
     tooManyTrips: >
       Можно сохранить не более пяти поездок. Удалите неиспользуемые поездки из
       раздела сохраненных и попробуйте еще раз.
-    tripNameAlreadyUsed: У вас уже сохранена поездка с таким именем. Укажите другое
-      имя.
+    tripNameAlreadyUsed: У вас уже сохранена поездка с таким именем. Укажите другое имя.
     tripNameRequired: Укажите имя поездки.
   SequentialPaneDisplay:
     stepNumber: Шаг {шаг} из {общее кол-во}
@@ -595,7 +587,7 @@ components:
     noStopsFound: Не удалось найти время остановок для этой даты.
     operatorLogoAriaLabel: "{operatorName} остановка:"
     schedule: Расписание
-    timezoneWarning: Время отправки указано для <strong>{timezoneCode}</strong>.
+    timezoneWarning: Время отправки указано для {timezoneCode}.
     titleBarStopId: Остановка «{stopId}»
     viewNearby: Посмотреть рядом
     viewSchedule: Просмотреть расписание
@@ -612,13 +604,9 @@ components:
     defaultContent: Переключить
     switchLocations: Переключить местоположения
   TermsOfUsePane:
-    confirmDeletionPrompt: "Недавние поисковые запросы и (или) места сохранены. Отключение
-      сохранения недавних мест и (или) поисковых запросов приведет к удалению этих
-      элементов. Продолжить?\n"
+    confirmDeletionPrompt: "Недавние поисковые запросы и\_(или) места сохранены. Отключение сохранения недавних мест и\_(или) поисковых запросов приведет к удалению этих элементов. Продолжить?\n"
     mustAgreeToTerms: Для продолжения примите условия использования.
-    termsOfServiceStatement: "Я подтверждаю, что мне исполнилось 18 лет и что я прочитал
-      и принимаю <termsOfUseLink>Условия использования</termsOfUseLink > планировщика
-      поездок.\n"
+    termsOfServiceStatement: "Я подтверждаю, что мне исполнилось 18\_лет и что я прочитал и принимаю <termsOfUseLink>Условия использования</termsOfUseLink > планировщика поездок.\n"
     termsOfStorageStatement: >
       Необязательно: я даю согласие на то, чтобы планировщик поездок хранил
       архивные данные о моих запланированных поездках с целью улучшения услуг
@@ -637,10 +625,8 @@ components:
     tripIsAvailableOnDaysIndicated: Поездка доступна для указанных выше дней.
     tripNamePrompt: "Укажите имя поездки:"
     tripNotAvailableOnDay: "Поездка недоступна для следующих дней: {repeatedDay}"
-    unsavedChangesExistingTrip: Вы не сохранили поездку. Если вы выйдете, все изменения
-      будут утеряны.
-    unsavedChangesNewTrip: Вы не сохранили новую поездку. Если вы выйдете, она будет
-      удалена.
+    unsavedChangesExistingTrip: Вы не сохранили поездку. Если вы выйдете, все изменения будут утеряны.
+    unsavedChangesNewTrip: Вы не сохранили новую поездку. Если вы выйдете, она будет удалена.
   TripNotificationsPane:
     advancedSettings: Расширенные настройки
     altRouteRecommended: Рекомендуется использовать пересадку или альтернативный маршрут
@@ -651,7 +637,7 @@ components:
     monitorThisTrip: "Мониторинг данной поездки до ее начала:"
     notificationsTurnedOff: Уведомления отключены в настройках вашей учетной записи.
     notifyViaChannelWhen: "Использовать канал «{channel}» для уведомлений, когда:"
-    oneHour: "1 ч"
+    oneHour: "1\_ч"
     realtimeAlertFlagged: Для моего пути есть предупреждение в режиме реального времени
     timeBefore: "{time} до"
   TripStatus:
@@ -710,8 +696,7 @@ components:
         реальном времени запустится в {monitoringStart, time, short}.)
       tripStartIsDelayed: Начало поездки откладывается на ${duration}!
       tripStartIsEarly: Начало поездки произойдет на ${duration} раньше ожидаемого!
-      tripStartsSoonNoUpdates: Поездка скоро начнется (обновления в реальном времени
-        недоступны).
+      tripStartsSoonNoUpdates: Поездка скоро начнется (обновления в реальном времени недоступны).
       tripStartsSoonOnTime: Поездка скоро начнется. Без задержек.
   TripSummary:
     arriveAt: "Прибытие в "
@@ -760,23 +745,17 @@ components:
       storeTripHistory: Сохранять историю поездок
     updating: Обновляется
   UserSettings:
-    confirmDeletion: "Недавние поисковые запросы и (или) места сохранены. Отключение
-      сохранения недавних мест и (или) поисковых запросов приведет к удалению этих
-      элементов. Продолжить?"
+    confirmDeletion: "Недавние поисковые запросы и\_(или) места сохранены. Отключение сохранения недавних мест и\_(или) поисковых запросов приведет к удалению этих элементов. Продолжить?"
     favoriteStops: Избранные остановки
     myPreferences: Мои параметры
     mySavedPlaces: Мои сохраненные места (<manageLink>изменить</manageLink>)
     noFavoriteStops: Избранные остановки
     recentPlaces: Недавние места
-    recentSearchSummary: "Режим «{mode}». {from} — {to}"
+    recentSearchSummary: "Режим «{mode}». {from}\_— {to}"
     recentSearches: Недавние поисковые запросы
-    rememberSearches: "Сохранить недавние места / поисковые запросы?"
+    rememberSearches: "Сохранить недавние места\_/ поисковые запросы?"
     stopId: "Идентификатор остановки: {stopId}"
-    storageDisclaimer: "Все сохраненные параметры, места и настройки будут храниться
-      в локальном хранилище браузера. TriMet не получит доступ к данным о вашем доме,
-      месте работы или другим местоположениям. В любой момент вы можете отключить
-      сохранение недавних мест / поисковых запросов и очистить список местоположений
-      дома/работы, а также избранных остановок.\n"
+    storageDisclaimer: "Все сохраненные параметры, места и настройки будут храниться в локальном хранилище браузера. TriMet не получит доступ к данным о вашем доме, месте работы или другим местоположениям. В любой момент вы можете отключить сохранение недавних мест\_/ поисковых запросов и очистить список местоположений дома/работы, а также избранных остановок.\n"
   UserTripSettings:
     forgetOptions: Удалить варианты
     rememberOptions: Сохранить варианты поездки
@@ -798,12 +777,12 @@ components:
     prompt: Куда вы хотите отправиться?
 config:
   accessModes:
-    bicycle: "Общественный транспорт + личный велосипед"
-    bicycle_rent: "Общественный транспорт + прокат велосипеда"
+    bicycle: "Общественный транспорт\_+\_личный велосипед"
+    bicycle_rent: "Общественный транспорт\_+\_прокат велосипеда"
     car_hail: Заказная поездка
     car_park: Парковочное место
-    micromobility: "Общественный транспорт + личный самокат"
-    micromobility_rent: "Общественный транспорт + прокат электросамоката"
+    micromobility: "Общественный транспорт\_+\_личный самокат"
+    micromobility_rent: "Общественный транспорт\_+\_прокат электросамоката"
   bicycleModes:
     bicycle: Личный велосипед
     bicycle_rent: Прокат велосипедов

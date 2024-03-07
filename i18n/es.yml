@@ -30,8 +30,7 @@ actions:
       No se puede guardar el plan: este plan no se pudo guardar debido a la
       falta de capacidad en uno o más vehículos. Por favor, vuelva a planificar
       su viaje.
-    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados
-      válidos
+    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados válidos
     saveItinerariesError: "No se pudieron guardar los itinerarios: {err}"
     setDateError: "Error al establecer la fecha:"
     setGroupSizeError: "No se pudo establecer el tamaño del grupo:"
@@ -53,13 +52,10 @@ actions:
     authTokenError: Error al obtener un token de autorización.
     confirmDeleteMonitoredTrip: ¿Desea eliminar este viaje?
     confirmDeletePlace: ¿Quiere eliminar este lugar?
-    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido
-      reenviado.
+    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido reenviado.
     genericError: "Se ha encontrado un error: {err}"
-    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado
-      es posible.
-    mustAcceptTermsToSavePlace: Acepte los Términos de uso (en Mi Cuenta) para guardar
-      las ubicaciones.
+    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
+    mustAcceptTermsToSavePlace: Acepte los Términos de uso (en Mi Cuenta) para guardar las ubicaciones.
     mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
     placeRemembered: La configuración de este lugar se ha guardado.
     preferencesSaved: Sus preferencias se han guardado.
@@ -247,8 +243,7 @@ components:
       a incluir el transporte publico en la selección de modos.
     origin: origen
     planTripTooltip: Planificar viaje
-    validationMessage: "Por favor, defina los siguientes campos para planificar un
-      viaje: {issues}"
+    validationMessage: "Por favor, defina los siguientes campos para planificar un viaje: {issues}"
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
     message: >
@@ -337,6 +332,42 @@ components:
     timeWalking: "{time} caminando"
   MobileOptions:
     header: Configurar las opciones de búsqueda
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Caña
+        crutches: Muletas
+        electric wheelchair: Silla de ruedas eléctrica
+        manual walker: Andador
+        manual wheelchair: Silla de ruedas
+        mobility scooter: Scooter eléctrico
+        none: Sin dispositivo de ayuda
+        service animal: Animal de servicio
+        stroller: Cochecito
+        wheeled walker: Andador con ruedas
+        white cane: Bastón blanco
+      prompt: >-
+        ¿Utiliza habitualmente un dispositivo de ayuda a la movilidad? (Marque
+        todo lo que corresponda)
+    LimitationsPane:
+      mobilityPrompt: >-
+        ¿Tiene alguna limitación de movilidad que le obligue a caminar más
+        despacio o con más cuidado que otras personas?
+      visionLimitations:
+        legally-blind: Invidente
+        low-vision: Visión reducida
+        none: Ninguna
+      visionPrompt: ¿Tiene alguna limitación visual?
+    MobilityPane:
+      button: Editar su perfil de movilidad
+      header: Perfil de movilidad
+      mobilityDevices: "Dispositivos de movilidad: "
+      mobilityLimitations: "Limitaciones de la movilidad: "
+      visionLimitations: "Limitaciones visuales: "
+    intro: >-
+      Por favor, responda a algunas preguntas para adaptar la planificación del
+      viaje a sus necesidades y preferencias.
+    title: Defina su perfil de movilidad
   NarrativeItinerariesHeader:
     changeSortDir: Cambiar la dirección de clasificación
     howToFindResults: >-
@@ -569,8 +600,7 @@ components:
     header: ¡La sesión está a punto de terminar!
     keepSession: Continuar sesión
   SimpleRealtimeAnnotation:
-    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo
-      real
+    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo real
   StackedPaneDisplay:
     savePreferences: Guardar preferencias
   StopScheduleTable:
@@ -596,7 +626,7 @@ components:
     noStopsFound: No se han encontrado tiempos de parada para la fecha.
     operatorLogoAriaLabel: "Parada de {operatorName}:"
     schedule: Horario
-    timezoneWarning: Las horas de salida se indican en <strong>{timezoneCode}</strong>.
+    timezoneWarning: Las horas de salida se indican en {timezoneCode}.
     titleBarStopId: Parada {stopId}
     viewNearby: Ver cerca
     viewSchedule: Ver horario
@@ -633,19 +663,16 @@ components:
     travelingAt: Viajando a {milesPerHour}
     vehicleName: Vehículo {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Comprobación de la existencia de itinerarios para
-      cada día de la semana…
+    checkingItineraryExistence: Comprobación de la existencia de itinerarios para cada día de la semana…
     selectAtLeastOneDay: Por favor, seleccione al menos un día para el seguimiento.
     tripDaysPrompt: ¿Qué días hace este viaje?
-    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana
-      indicados anteriormente.
+    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana indicados anteriormente.
     tripNamePrompt: "Por favor, indique un nombre para este viaje:"
     tripNotAvailableOnDay: El viaje no está disponible el {repeatedDay}
     unsavedChangesExistingTrip: >-
       Todavía no ha guardado su viaje. Si abandona la página, los cambios se
       perderán.
-    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página,
-      se perderá.
+    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página, se perderá.
   TripNotificationsPane:
     advancedSettings: Configuración avanzada
     altRouteRecommended: Se recomienda una ruta alternativa o un punto de transferencia
@@ -812,39 +839,6 @@ components:
     switcher: Botón de cambio
   WelcomeScreen:
     prompt: ¿A donde quiere ir?
-  MobilityProfile:
-    LimitationsPane:
-      visionLimitations:
-        legally-blind: Invidente
-        none: Ninguna
-        low-vision: Visión reducida
-      visionPrompt: ¿Tiene alguna limitación visual?
-      mobilityPrompt: ¿Tiene alguna limitación de movilidad que le obligue a caminar
-        más despacio o con más cuidado que otras personas?
-    DevicesPane:
-      devices:
-        manual walker: Andador
-        white cane: Bastón blanco
-        none: Sin dispositivo de ayuda
-        stroller: Cochecito
-        crutches: Muletas
-        service animal: Animal de servicio
-        cane: Caña
-        wheeled walker: Andador con ruedas
-        manual wheelchair: Silla de ruedas
-        electric wheelchair: Silla de ruedas eléctrica
-        mobility scooter: Scooter eléctrico
-      prompt: ¿Utiliza habitualmente un dispositivo de ayuda a la movilidad? (Marque
-        todo lo que corresponda)
-    MobilityPane:
-      visionLimitations: 'Limitaciones visuales: '
-      button: Editar su perfil de movilidad
-      header: Perfil de movilidad
-      mobilityLimitations: 'Limitaciones de la movilidad: '
-      mobilityDevices: 'Dispositivos de movilidad: '
-    intro: Por favor, responda a algunas preguntas para adaptar la planificación del
-      viaje a sus necesidades y preferencias.
-    title: Defina su perfil de movilidad
 config:
   accessModes:
     bicycle: Tránsito + Bicicleta Personal
