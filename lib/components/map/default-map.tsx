@@ -321,7 +321,7 @@ class DefaultMap extends Component {
           <TransitVehicleOverlay ModeIcon={ModeIcon} />
           <GeolocateControl
             onGeolocate={() => {
-              getCurrentPosition()
+              getCurrentPosition(intl)
             }}
             position="top-left"
           />
