@@ -54,33 +54,19 @@ interface RelaxedFareProductSelector {
 
 /**
  * Determines whether the specified Itinerary can be monitored.
- * @returns true if at least one Leg of the specified Itinerary is a transit leg,
- *   and none of the legs is a rental or ride hail leg (e.g. CAR_RENT, CAR_HAIL, BICYCLE_RENT, etc.).
+ * @returns true if an itinerary has no rental or ride hail leg (e.g. CAR_RENT, CAR_HAIL, BICYCLE_RENT, etc.).
  *   (We use the corresponding fields returned by OTP to get transit legs and rental/ride hail legs.)
  */
 export function itineraryCanBeMonitored(
   itinerary: ItineraryWithOtp1HailedCar
 ): boolean {
-  let hasTransit = false
-  let hasRentalOrRideHail = false
-
-  if (itinerary && itinerary.legs) {
-    for (const leg of itinerary.legs) {
-      if (leg.transitLeg) {
-        hasTransit = true
-      }
-      if (
-        leg.rentedBike ||
-        leg.rentedCar ||
-        leg.rentedVehicle ||
-        leg.hailedCar
-      ) {
-        hasRentalOrRideHail = true
-      }
-    }
-  }
-
-  return hasTransit && !hasRentalOrRideHail
+  return (
+    !!itinerary?.legs &&
+    !itinerary.legs.some(
+      (leg: Leg) =>
+        leg.rentedBike || leg.rentedCar || leg.rentedVehicle || leg.hailedCar
+    )
+  )
 }
 
 export function getMinutesUntilItineraryStart(itinerary: Itinerary): number {
