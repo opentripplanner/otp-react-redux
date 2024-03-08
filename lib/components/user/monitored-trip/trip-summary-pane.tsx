@@ -18,8 +18,8 @@ import TripSummary from './trip-summary'
 
 const SavedTripBody = styled.div`
   display: flex;
-  padding: 0 15px;
   justify-content: center;
+  padding: 0 15px;
 
   @media (max-width: 600px) {
     flex-direction: column;
@@ -27,21 +27,21 @@ const SavedTripBody = styled.div`
 `
 
 const LocationDetails = styled.div`
-  width: 50%;
+  align-items: start;
+  border-right: 1px solid #ddd;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-items: start;
   justify-content: center;
   padding: 20px;
-  border-right: 1px solid #ddd;
+  width: 50%;
 
   @media (max-width: 600px) {
-    border-right: 0;
+    align-items: center;
     border-bottom: 1px solid #ddd;
+    border-right: 0;
     border-top: 1px solid #ddd;
     width: 100%;
-    align-items: center;
   }
 `
 const ItineraryDetails = styled.div`
@@ -56,9 +56,9 @@ const ItineraryDetails = styled.div`
 `
 const TextWIcon = styled.div`
   align-items: center;
-  justify-content: left;
   display: flex;
   gap: 7px;
+  justify-content: left;
   width: 250px;
 
   svg {
@@ -83,20 +83,20 @@ const TripDetailWithIcon = styled(TextWIcon)`
 `
 
 const TripDetailsList = styled.ul`
-  list-style: none;
   align-items: start;
-  justify-content: center;
   display: flex;
   flex-direction: column;
+  list-style: none;
   gap: 15px;
+  justify-content: center;
   padding: 0;
 `
 
 const ToggleNotificationButton = styled.button`
   background: transparent;
   border: none;
-  text-decoration: underline;
   padding: 0;
+  text-decoration: underline;
 `
 
 const TripSummaryPane = ({
@@ -117,8 +117,9 @@ const TripSummaryPane = ({
     const days = dayFieldsToArray(monitoredTrip)
 
     const testHandle = () => {
-      // @ts-expect-error hsdf
-      handleTogglePauseMonitoring()
+      if (handleTogglePauseMonitoring) {
+        handleTogglePauseMonitoring()
+      }
     }
 
     return (
@@ -136,14 +137,17 @@ const TripSummaryPane = ({
         </LocationDetails>
         <ItineraryDetails>
           <TripDetailsList>
+            {/* Trip time and duration */}
             <TripDetailWithIcon as="li">
               <Clock />
               <TripSummary monitoredTrip={monitoredTrip} />
             </TripDetailWithIcon>
+            {/* Available trip days */}
             <TripDetailWithIcon as="li">
               <Calendar />
               <MonitoredDays days={days} />
             </TripDetailWithIcon>
+            {/* Trip notification info */}
             <TripDetailWithIcon as="li">
               {monitoredTrip.isActive ? <Bell /> : <BellSlash width={20} />}
               <span>
