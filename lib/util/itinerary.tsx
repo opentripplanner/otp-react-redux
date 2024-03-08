@@ -15,8 +15,12 @@ export interface ItineraryStartTime {
 }
 
 // FIXME: replace with OTP2 logic.
+interface LegWithOtp1HailedCar extends Leg {
+  hailedCar?: boolean
+}
+
 interface ItineraryWithOtp1HailedCar extends Itinerary {
-  legs: (Leg & { hailedCar?: boolean })[]
+  legs: LegWithOtp1HailedCar[]
 }
 
 interface OtpResponse {
@@ -63,7 +67,7 @@ export function itineraryCanBeMonitored(
   return (
     !!itinerary?.legs &&
     !itinerary.legs.some(
-      (leg: Leg) =>
+      (leg: LegWithOtp1HailedCar) =>
         leg.rentedBike || leg.rentedCar || leg.rentedVehicle || leg.hailedCar
     )
   )
