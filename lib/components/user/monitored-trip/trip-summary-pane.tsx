@@ -10,7 +10,7 @@ import styled from 'styled-components'
 import { InlineLoading } from '../../narrative/loading'
 
 import MonitoredDays from './trip-monitored-days'
-import TripSummary from './trip-summary'
+import TripSummary from './trip-duration-summary'
 
 /**
  * Displays the summary information of a monitored trip.

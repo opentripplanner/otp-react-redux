@@ -31,7 +31,7 @@ import FormattedValidationError from '../../util/formatted-validation-error'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import TripStatus from './trip-status'
-import TripSummary from './trip-summary'
+import TripSummary from './trip-duration-summary'
 
 type TripBasicsProps = WrappedComponentProps &
   FormikProps<MonitoredTrip> & {
