@@ -24,6 +24,7 @@ module.exports = {
     'typescript-sort-keys'
   ],
   rules: {
+    '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/member-delimiter-style': [
       'off',
       {
