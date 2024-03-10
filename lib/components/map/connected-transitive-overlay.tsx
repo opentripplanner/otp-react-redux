@@ -36,5 +36,4 @@ const mapStateToProps = (state: Record<string, any>, ownProps: Props) => {
   }
 }
 
-// @ts-expect-error state.js being typescripted will fix this error
 export default injectIntl(connect(mapStateToProps)(TransitiveCanvasOverlay))

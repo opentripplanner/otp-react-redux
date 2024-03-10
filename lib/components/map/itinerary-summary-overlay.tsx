@@ -211,7 +211,6 @@ const mapStateToProps = (state: AppReduxState) => {
   const activeItinerary = getActiveItinerary(state)
 
   const activeSearch = getActiveSearch(state)
-  // @ts-expect-error state is not typed
   const itins = activeSearch?.response.flatMap(
     (serverResponse: { plan?: { itineraries?: Itinerary[] } }) =>
       serverResponse?.plan?.itineraries

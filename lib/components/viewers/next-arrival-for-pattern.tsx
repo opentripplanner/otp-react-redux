@@ -45,7 +45,7 @@ function NextArrivalForPattern({
   const RouteRenderer = CustomRouteRenderer || DefaultRouteRenderer
 
   // sort stop times by next departure
-  let sortedStopTimes = []
+  let sortedStopTimes: Time[] = []
   const hasStopTimes = stopTimes && stopTimes.length > 0
   if (hasStopTimes) {
     sortedStopTimes = stopTimes

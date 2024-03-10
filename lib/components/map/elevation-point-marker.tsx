@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { Leg } from '@opentripplanner/types'
 import { Marker } from 'react-map-gl'
 import coreUtils from '@opentripplanner/core-utils'
-import React from 'react'
+import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 
 type Props = {
@@ -30,7 +30,7 @@ const ElevationPointMarker = (props: Props) => {
   const { diagramLeg, elevationPoint, showElevationProfile } = props
 
   // Compute the elevation point marker, if activeLeg and elevation profile is enabled.
-  let elevationPointMarker = null
+  let elevationPointMarker: ReactElement | null = null
   if (showElevationProfile && diagramLeg && elevationPoint) {
     const pos = coreUtils.itinerary.legLocationAtDistance(
       diagramLeg,

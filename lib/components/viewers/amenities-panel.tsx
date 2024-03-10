@@ -2,7 +2,6 @@
 import { ConfiguredCompany, Station, Stop } from '@opentripplanner/types'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-// @ts-expect-error not typescripted yet
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import React, { Component, Suspense } from 'react'
 import styled from 'styled-components'

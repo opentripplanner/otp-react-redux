@@ -1,6 +1,5 @@
 import { Label as BsLabel, FormGroup } from 'react-bootstrap'
 import { connect } from 'react-redux'
-// @ts-expect-error Package does not have type declaration
 import { formatPhoneNumber } from 'react-phone-number-input'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import React, { Component, createRef, Fragment } from 'react'

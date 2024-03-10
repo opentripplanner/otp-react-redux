@@ -87,7 +87,6 @@ const mapStateToProps = (state: any) => {
   const activeItinerary = getActiveItinerary(state)
 
   const activeSearch = getActiveSearch(state)
-  // @ts-expect-error state is not typed
   const geometries = activeSearch?.response.flatMap(
     (serverResponse: { plan?: { itineraries?: Itinerary[] } }) =>
       serverResponse?.plan?.itineraries?.flatMap((itinerary) => {
@@ -95,7 +94,6 @@ const mapStateToProps = (state: any) => {
       })
   )
 
-  // @ts-expect-error state is not typed
   const query = activeSearch ? activeSearch?.query : state.otp.currentQuery
   const { from, to } = query
 

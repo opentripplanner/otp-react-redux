@@ -1,13 +1,8 @@
-// @ts-expect-error Package yup does not have type declarations.
 import * as yup from 'yup'
 import { Button, ControlLabel, FormGroup, HelpBlock } from 'react-bootstrap'
 import { Form, Formik, FormikProps } from 'formik'
 import { FormattedMessage, useIntl } from 'react-intl'
-import {
-  isPossiblePhoneNumber
-  // @ts-expect-error Package does not have type declaration
-} from 'react-phone-number-input'
-// @ts-expect-error Package does not have type declaration
+import { isPossiblePhoneNumber } from 'react-phone-number-input'
 import Input from 'react-phone-number-input/input'
 import React, {
   KeyboardEvent,

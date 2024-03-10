@@ -37,7 +37,7 @@ const TimeButton = ({
   setActiveItinerary
 }: TimeButtonProps) => {
   const intl = useIntl()
-  const classNames = []
+  const classNames: string[] = []
   if (realTime) classNames.push('realtime')
   if (active) classNames.push('active')
   const timeString = intl.formatTime(displayedTime)

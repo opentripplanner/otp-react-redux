@@ -461,7 +461,6 @@ const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
     configCosts: state.otp.config.itinerary?.costs,
     defaultFareType: state.otp.config.itinerary?.defaultFareType,
     enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
-    // @ts-expect-error TODO: type activeSearch
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     showLegDurations: state.otp.config.itinerary?.showLegDurations
   }

@@ -1,10 +1,8 @@
 import { Bicycle } from '@styled-icons/fa-solid/Bicycle'
 import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
-// @ts-expect-error icons doesn't have typescript?
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { IntlShape, useIntl } from 'react-intl'
-// @ts-expect-error icons doesn't have typescript?
 import { Micromobility } from '@opentripplanner/icons'
 import React, { Suspense } from 'react'
 

@@ -1,5 +1,4 @@
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
-// @ts-expect-error No typescript
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { useIntl } from 'react-intl'
 import React, { Suspense } from 'react'

@@ -1,4 +1,3 @@
-// @ts-expect-error Package yup does not have type declarations.
 import * as yup from 'yup'
 import {
   Button,

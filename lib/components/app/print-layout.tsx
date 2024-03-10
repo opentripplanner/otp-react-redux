@@ -5,7 +5,6 @@ import { Itinerary } from '@opentripplanner/types'
 import { Map } from '@styled-icons/fa-solid/Map'
 import { Print } from '@styled-icons/fa-solid/Print'
 import { Times } from '@styled-icons/fa-solid/Times'
-// @ts-expect-error not typescripted yet
 import PrintableItinerary from '@opentripplanner/printable-itinerary'
 import React, { Component } from 'react'
 

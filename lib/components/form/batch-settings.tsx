@@ -148,7 +148,7 @@ function BatchSettings({
 
   const _planTrip = useCallback(() => {
     // Check for any validation issues in query.
-    const issues = []
+    const issues: string[] = []
     if (!hasValidLocation(currentQuery, 'from')) {
       issues.push(intl.formatMessage({ id: 'components.BatchSettings.origin' }))
     }

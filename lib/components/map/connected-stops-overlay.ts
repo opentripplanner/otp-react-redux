@@ -18,7 +18,7 @@ const mapStateToProps = (state: AppReduxState) => {
     state.otp.transitIndex.routes?.[routeId] || {}
 
   let minZoom = 15
-  let stops = []
+  let stops: Stop[] = []
 
   if (
     (mainPanelContent === MainPanelContent.ROUTE_VIEWER ||

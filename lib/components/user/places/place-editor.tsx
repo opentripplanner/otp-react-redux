@@ -166,7 +166,6 @@ class PlaceEditor extends Component<Props> {
                   <FormattedMessage id="components.PlaceEditor.locationTypePrompt" />
                 </legend>
                 {Object.keys(CUSTOM_PLACE_TYPES).map((k) => {
-                  // @ts-expect-error TODO: add types to CUSTOM_PLACE_TYPES
                   const { icon, type } = CUSTOM_PLACE_TYPES[k]
                   const title = capitalizeFirst(getFormattedPlaces(k, intl))
                   const inputId = `location-type-${type}`

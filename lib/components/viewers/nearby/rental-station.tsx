@@ -2,7 +2,6 @@ import { Bicycle } from '@styled-icons/fa-solid/Bicycle'
 import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-// @ts-expect-error icons doesn't have typescript?
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { Parking } from '@styled-icons/fa-solid/Parking'
 import React, { Suspense } from 'react'

@@ -10,7 +10,6 @@ import {
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { Prompt } from 'react-router'
-// @ts-expect-error FormikErrorFocus does not support TypeScript yet.
 import FormikErrorFocus from 'formik-error-focus'
 import React, { Component } from 'react'
 import styled from 'styled-components'
