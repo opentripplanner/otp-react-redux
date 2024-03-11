@@ -272,7 +272,7 @@ const mapStateToProps = (state: AppReduxState) => {
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
   return {
-    entityId,
+    entityId: entityId && decodeURIComponent(entityId),
     homeTimezone: config.homeTimezone,
     location: state.router.location.hash,
     nearby,

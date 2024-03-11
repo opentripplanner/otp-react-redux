@@ -140,7 +140,6 @@ common:
     work: работа
   routing:
     routeAndNumber: Маршрут «{routeId}»
-    routeToHeadsign: "Куда: {headsign}"
   searchForms:
     click: нажмите на него
     enterDestination: Введите место назначения или {mapAction} на карте…
@@ -176,44 +175,6 @@ components:
     message: >-
       Если страница не загрузится через несколько секунд, <redirectLink>нажмите
       здесь</redirectLink>.
-  AmenitiesPanel:
-    bikesAtStation: |
-      {companyLength, plural,
-       =0 {Велосипеды в «{name}»}
-       other {Велосипеды ({company}) в месте «{name}»}
-       }
-    bikesAvailable: |
-      {count, plural,
-       =0 {Нет свободных велосипедов}
-       one {Свободен # велосипед}
-       other {Свободны несколько велосипедов (#)}
-       }
-    bikesNearby: >
-      {count, plural,  =0 {нет свободных велосипедов компании {company} вне
-      станции поблизости}
-
-      one {# свободный велосипед компании {company} вне станции поблизости}
-
-      other {несколько свободных велосипедов (#) компании {company} вне станции
-      поблизости}
-
-      }
-    nearbyAmenities: Удобства поблизости
-    noNearbyBikes: Не удалось найти пункты проката велосипедов поблизости.
-    noNearbyScooters: Не удалось найти пункты проката легких транспортных средств поблизости.
-    noPRLotsFound: Не удалось найти парковочные места поблизости.
-    scootersNearby: |
-      {count, plural,
-       =0 {Не удалось найти электросамокаты компании {company} поблизости}
-       one {# электросамокат компании {company} поблизости}
-       other {Несколько самокатов компании {company} поблизости (# )}
-       }
-    spacesAvailable: |
-      {count, plural,
-       =0 {Нет свободных мест}
-       one {Свободно # место}
-       other {Свободны несколько мест (#)}
-       }
   AppMenu:
     callHistory: История вызовов
     closeMenu: Закрыть меню
@@ -296,9 +257,6 @@ components:
   ItinerarySummary:
     itineraryDetails: Сведения о маршруте
     minMaxFare: "{minTotalFare}\_— {maxTotalFare}"
-  LiveStopTimes:
-    autoRefresh: Обновлять прибытия автоматически?
-    refresh: Обновить время прибытия
   LocationSearch:
     enterLocation: Ввести местоположение
     setDestination: Выбрать место назначения
@@ -484,13 +442,6 @@ components:
     late: на {minutes} позже
     onTime: вовремя
     scheduled: по расписанию
-  RelatedPanel:
-    hideExtraStops: Скрыть дополнительные остановки
-    showExtraStops: Показать дополнительные остановки ({count})
-  RelatedStopsPanel:
-    noArrivalFound: Прибытие не обнаружено
-    relatedStops: Связанные остановки
-    viewDetails: Просмотреть подробную информацию
   ResultsError:
     backToSearch: Вернуться к поиску
   ResultsHeader:
@@ -583,7 +534,6 @@ components:
     forStop: для {stopName}
     header: Средство просмотра остановок
     loadingText: Загрузка остановки…
-    nextArrivals: Посмотреть следующие прибытия
     noStopsFound: Не удалось найти время остановок для этой даты.
     operatorLogoAriaLabel: "{operatorName} остановка:"
     schedule: Расписание
