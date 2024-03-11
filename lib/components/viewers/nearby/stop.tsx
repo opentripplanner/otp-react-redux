@@ -1,29 +1,20 @@
-import { Calendar, MapPin } from '@styled-icons/fa-solid'
+import { Calendar } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
-import { FormattedMessage, useIntl } from 'react-intl'
-import { Place, TransitOperator } from '@opentripplanner/types'
+import { FormattedMessage } from 'react-intl'
+import { Place } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useCallback } from 'react'
 
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { extractHeadsignFromPattern } from '../../../util/viewer'
-import { IconWithText } from '../../util/styledIcon'
 import { NearbyViewConfig } from '../../../util/config-types'
 import { Pattern, StopTime } from '../../util/types'
-import OperatorLogo from '../../util/operator-logo'
 import PatternRow from '../pattern-row'
-import Strong from '../../util/strong-text'
 import TimezoneWarning from '../timezone-warning'
 
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  CardTitle,
-  PatternRowContainer,
-  StyledAlert
-} from './styled'
+import { Card, PatternRowContainer, StyledAlert } from './styled'
+import StopCardHeader from './stop-card-header'
 
 const { getUserTimezone } = coreUtils.time
 
@@ -46,29 +37,7 @@ type Props = {
   homeTimezone: string
   nearbyViewConfig?: NearbyViewConfig
   setHoveredStop: (stopId?: string) => void
-  setViewedStop: (stop: any, nearby: string) => void
-  showOperatorLogo: boolean
   stopData: StopData
-  transitOperators?: TransitOperator[]
-}
-
-const Operator = ({ operator }: { operator?: TransitOperator }) => {
-  const intl = useIntl()
-  return operator && operator.logo ? (
-    <OperatorLogo
-      alt={intl.formatMessage(
-        {
-          id: 'components.StopViewer.operatorLogoAriaLabel'
-        },
-        {
-          operatorName: operator.name
-        }
-      )}
-      operator={operator}
-    />
-  ) : (
-    <MapPin />
-  )
 }
 
 const Stop = ({
@@ -76,16 +45,8 @@ const Stop = ({
   homeTimezone,
   nearbyViewConfig,
   setHoveredStop,
-  setViewedStop,
-  stopData,
-  transitOperators
+  stopData
 }: Props): JSX.Element => {
-  const agencies = stopData.stoptimesForPatterns?.reduce<Set<string>>(
-    // @ts-expect-error The agency type is not yet compatible with OTP2
-    (prev, cur) => prev.add(cur.pattern.route.agency.gtfsId),
-    new Set()
-  )
-
   const patternRows = stopData.stoptimesForPatterns
     ?.reduce<PatternStopTime[]>((acc, cur) => {
       const currentHeadsign = extractHeadsignFromPattern(cur.pattern)
@@ -144,49 +105,15 @@ const Stop = ({
 
   return (
     <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      <CardHeader>
-        <CardTitle>
-          <IconWithText
-            icon={
-              <>
-                {transitOperators
-                  ?.filter((to) => Array.from(agencies).includes(to.agencyId))
-                  // Second pass to remove duplicates based on name
-                  .filter(
-                    (to, index, arr) =>
-                      index === arr.findIndex((t) => t?.name === to?.name)
-                  )
-                  .map((to) => (
-                    <Operator key={to.agencyId} operator={to} />
-                  ))}
-              </>
-            }
-          >
-            {stopData.name}
-          </IconWithText>
-        </CardTitle>
-      </CardHeader>
-      <CardBody>
-        <div>
-          <FormattedMessage
-            id="components.StopViewer.displayStopId"
-            values={{
-              stopId: stopData.code || stopData.gtfsId,
-              strong: Strong
-            }}
-          />
-          <button
-            className="link-button pull-right"
-            onClick={() => setViewedStop({ stopId: stopData.gtfsId }, 'stop')}
-            style={{ fontSize: 'small' }}
-          >
-            <IconWithText Icon={Calendar}>
-              <FormattedMessage id="components.StopViewer.viewSchedule" />
-            </IconWithText>
-          </button>
-        </div>
-        {fromToSlot}
-      </CardBody>
+      <StopCardHeader
+        actionIcon={Calendar}
+        actionText={
+          <FormattedMessage id="components.StopViewer.viewSchedule" />
+        }
+        actionUrl={`/schedule/${stopData.gtfsId}`}
+        fromToSlot={fromToSlot}
+        stopData={stopData}
+      />
       <div>
         <div>{timezoneWarning}</div>
         <PatternRowContainer>{patternRows}</PatternRowContainer>
@@ -195,20 +122,16 @@ const Stop = ({
   )
 }
 
-const mapDispatchToProps = {
-  setHoveredStop: uiActions.setHoveredStop,
-  setMainPanelContent: uiActions.setMainPanelContent,
-  setViewedStop: uiActions.setViewedStop,
-  toggleAutoRefresh: uiActions.toggleAutoRefresh
-}
-
 const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
   return {
     homeTimezone: config.homeTimezone,
-    nearbyViewConfig: config?.nearbyView,
-    transitOperators: config.transitOperators
+    nearbyViewConfig: config?.nearbyView
   }
+}
+
+const mapDispatchToProps = {
+  setHoveredStop: uiActions.setHoveredStop
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stop)
