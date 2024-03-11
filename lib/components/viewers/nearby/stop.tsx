@@ -3,9 +3,8 @@ import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { Place } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
-import React, { useCallback } from 'react'
+import React from 'react'
 
-import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { extractHeadsignFromPattern } from '../../../util/viewer'
 import { NearbyViewConfig } from '../../../util/config-types'
@@ -36,7 +35,6 @@ type Props = {
   fromToSlot: JSX.Element
   homeTimezone: string
   nearbyViewConfig?: NearbyViewConfig
-  setHoveredStop: (stopId?: string) => void
   stopData: StopData
 }
 
@@ -44,7 +42,6 @@ const Stop = ({
   fromToSlot,
   homeTimezone,
   nearbyViewConfig,
-  setHoveredStop,
   stopData
 }: Props): JSX.Element => {
   const patternRows = stopData.stoptimesForPatterns
@@ -93,18 +90,10 @@ const Stop = ({
     </StyledAlert>
   )
 
-  const onMouseEnter = useCallback(() => {
-    setHoveredStop(stopData.gtfsId)
-  }, [setHoveredStop, stopData.gtfsId])
-
-  const onMouseLeave = useCallback(() => {
-    setHoveredStop(undefined)
-  }, [setHoveredStop])
-
   if (nearbyViewConfig?.hideEmptyStops && patternRows.length === 0) return <></>
 
   return (
-    <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <Card>
       <StopCardHeader
         actionIcon={Calendar}
         actionText={
@@ -130,8 +119,4 @@ const mapStateToProps = (state: AppReduxState) => {
   }
 }
 
-const mapDispatchToProps = {
-  setHoveredStop: uiActions.setHoveredStop
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Stop)
+export default connect(mapStateToProps)(Stop)
