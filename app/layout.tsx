@@ -1,4 +1,6 @@
+import '../example.css'
 import '../index.css'
+
 import React from 'react'
 import type { Metadata } from 'next'
 

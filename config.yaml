@@ -1,0 +1,425 @@
+branding: ibi
+title: ARC GMAP
+homeTimezone: America/New_York
+
+# Default OTP API
+api:
+  host: https://zcl3o5i5ib.execute-api.us-east-1.amazonaws.com/prod # https://atl-rides-otp.ibi-transit.com
+  # host: http://localhost:8001 # For testing against a local OTP instance
+  path: /otp/routers/default
+  v2: true
+
+bugsnag:
+  key: 92e2493ab0217ad67bec4b2f680cd324
+
+# Enabled multimodal routing types (e.g. interary, profile)
+routingTypes:
+  - key: ITINERARY
+    text: Exact Time
+  - key: BATCH
+    text: Multiple Mode Combinations
+
+### The persistence setting is used to enable the storage of places (home, work),
+### recent searches/places, user overrides, and favorite stops.
+persistence:
+  enabled: true
+  strategy: otp_middleware
+  auth0:
+    audience: https://otp-middleware
+    domain: arc-otp.us.auth0.com
+    clientId: wt1lCenj6UoPz8dWTyWJ1oXjLPQzJH7j
+  otp_middleware:
+    # The server below must have CORS (cross-origin calls) enabled
+    # (i.e. proper headers while sending response for GET and OPTIONS methods).
+    # If apiBaseUrl is an AWS API, you an use the API resource editor
+    # to set all applicable resources for CORS (remember to redeploy API when done).
+    apiBaseUrl: https://zcl3o5i5ib.execute-api.us-east-1.amazonaws.com/prod
+    # apiKey: todo
+    supportsPushNotifications: true
+# Show mobility profile options in the ARC deployment.
+mobilityProfile: true
+
+# Show/hide elevation profile chart for walk/bike legs
+elevationProfile: false
+
+initialQuery:
+  numItineraries: 8
+
+# Map config
+map:
+  # Enabled map views
+  views:
+    - type: DEFAULT
+      text: Map View
+    # Delete/uncomment the following block to disable the stylized map
+    #- type: STYLIZED
+    #  text: Network View
+
+  # Default map center
+  initLat: 33.95026792
+  initLon: -83.98992008
+  initZoom: 13
+
+  # Base layers for default map
+  baseLayers:
+    - type: streets
+      url: https://api.maptiler.com/maps/7d44a13f-623c-4111-b6fd-68e7377bed51/style.json?key=L3727Mt1IutzaL7DoUrd
+
+  overlays:
+    - type: park-and-ride
+      maxTransitDistance: 1000
+      modes:
+        - CAR_PARK
+    - type: otp2
+      layers:
+        - type: stops
+          initiallyVisible: true
+        - type: rentalVehicles
+        - type: rentalStations
+
+geocoder:
+  # IBI geocode.earth + Pelias stitcher
+  baseUrl: https://ao9yvlrax5.execute-api.us-east-1.amazonaws.com/atl
+  focusPoint:
+    lat: 33.7490
+    lon: -84.3880
+  # Geocoding search bounds
+  boundary:
+    rect:
+      minLon: -86.0856
+      maxLon: -81.9499
+      minLat: 32.066
+      maxLat: 35.7251
+  maxNearbyStops: 6
+  # fetch options
+  options:
+    headers:
+      # AWS API Gateway key specific to Houston (IBI AWS account):
+      # https://console.aws.amazon.com/apigateway/home?region=us-east-1#/api-keys/fchsdgyys9
+      x-api-key: lvJXqETokn3T338y1c8U843Fjh1ONdgzK3Ar0pl4
+  type: PELIAS
+
+# A list of private transportation operators. These are either companies that
+# provide rental vehicles or transportation network companies. Companies that
+# have multiple modes of transport should have all modes listed as a string with
+# commas. For example: BICYCLE_RENT,MICROMOBILITY_RENT.
+companies:
+  - id: HOPR
+    # The bikeshare service in City of Atlanta is currently branded "Relay (powered by HOPR)",
+    # so we'll use the existing Relay brand for now.
+    label: Relay
+    modes: BICYCLE_RENT
+  - id: SPIN
+    label: Spin
+    modes: MICROMOBILITY_RENT
+
+# Mode selector configuration. This list consists of the sets of mode combinations
+# that will be fired off as plan requests to the OTP API whenever someone plans
+# a trip. For each option, a set of default params can be provided which will
+# override the default query params.
+modes:
+  modeButtons:
+    - iconName: transit
+      key: transit
+      label: Transit
+      modes:
+        - mode: TRANSIT
+        - mode: WALK
+    - iconName: bicycle
+      key: bicycle
+      label: Bike
+      modes:
+        - mode: BICYCLE
+    - iconName: car
+      key: car
+      label: Car
+      modes:
+        - mode: CAR
+  initialState:
+    enabledModeButtons: 
+      - walk
+      - transit
+  modeSettingDefinitions:
+    - applicableMode: TRANSIT
+      default: false
+      key: wheelchair
+      label: Use Accessible Routing
+      type: CHECKBOX
+
+  transitModes:
+    - mode: BUS
+      showWheelchairSetting: true
+    - mode: SUBWAY
+      showWheelchairSetting: true
+    - mode: TRAM
+      # We consider "Atlanta Streetcar" to be a brand name, therefore it should not be translated.
+      # (We abbreviate because of space constraints.)
+      label: Atl. Streetcar
+      showWheelchairSetting: true
+
+  # access to transit modes. These options are all combined with the above
+  # transit modes in the request to OTP
+  accessModes:
+    - mode: BICYCLE
+    - mode: BICYCLE_RENT
+      label: Transit + Bikeshare
+    - mode: SCOOTER
+      label: Transit + eScooter rental
+  # which exclusive modes to show. This involves using a single mode and no
+  # transit for the duration of the trip. Further configurations of
+  # `bicycleModes`, `micromobilityModes` and/or `carModes` are needed as
+  # desired, but no extra configuration is needed for a WALK exclusive mode.
+  exclusiveModes:
+    - WALK
+    - BICYCLE
+    - BICYCLE_RENT
+    - SCOOTER
+
+  bicycleModes:
+    - mode: BICYCLE
+      iconWidth: 18
+    - mode: BICYCLE_RENT
+      label: Shared Bike
+      iconWidth: 36
+    - mode: SCOOTER
+      iconWidth: 18
+
+accessibilityScore:
+  gradationMap:
+    0.0:
+      color: "#ffb5b9"
+      icon: thumbs-down
+    0.5:
+      color: "#b5d1ff"
+      icon: question-circle
+    0.8:
+      color: "#bfffb5"
+      icon: thumbs-up
+    1.0:
+      color: "#a2e099"
+      icon: thumbs-up
+
+defaultQueryParams:
+  maxWalkDistance: 1207 # 3/4 miles in meters
+
+itinerary:
+  showHeaderText: false
+  mergeItineraries: true
+  hideSkeletons: true
+  customBatchUiBackground: true
+  groupByMode: true
+  groupTransitModes: true
+  showFirstResultByDefault: false
+
+reportIssue:
+  mailto: transitrealtime@ibigroup.com
+# TODO: Add GA
+# analytics:
+#   google:
+#     globalSiteTag: UA-XXXXXXX
+dateTime:
+  timeFormat: h:mm a
+  dateFormat: MM/dd/yyyy
+stopViewer:
+  nearbyRadius: 250
+routeViewer:
+  hideRouteShapesWithinFlexZones: true
+
+# Custom strings by language
+language:
+  en-US:
+    common:
+      modes:
+        subway: MARTA Rail
+    config:
+      popups:
+        survey: Give Feedback
+      # App (hamburger) menu items
+      menuItems:
+        car-pool: Carpool
+        log-my-commute: Log My Commute
+        traveler-tools: Traveler Tools
+      # Flex Strings
+      flex:
+        flex-service: Flexible Service
+        call-ahead: "Call {phoneNumber} to reserve"
+        continuous-dropoff: Communicate with operator about stop
+      accessibilityScore:
+        gradationMap:
+          0.0: "Not Accessible"
+          0.5: "Likely Not Accessible"
+          0.8: "Mostly Accessible"
+          1.0: "Accessible"
+    name: English (US)
+
+# The following translations were translated by Google Translate (TODO: More accurate translations)
+  fr:
+    common:
+      modes:
+        subway: MARTA (métro)
+    config:
+      popups:
+        survey: Donnez votre avis
+        survey-narrow: Votre avis
+      # App (hamburger) menu items
+      menuItems:
+        car-pool: Covoiturage
+        log-my-commute: Mes trajets verts
+        traveler-tools: Outils du voyageur
+      # Flex Strings
+      flex:
+        flex-service: Service Flex
+        call-ahead: "Appelez le {phoneNumber} pour réserver"
+        continuous-dropoff: Demandez l'arrêt au conducteur
+      accessibilityScore:
+        gradationMap:
+          0.0: Inaccessible
+          0.5: Peu accessible
+          0.8: Assez accessible
+          1.0: Accessible
+    name: Français
+  
+  ko:
+    common:
+      modes:
+        subway: MARTA 레일
+    config:
+      popups:
+        survey: 피드백 제공
+      # App (hamburger) menu items
+      menuItems:
+        car-pool: 카풀
+        log-my-commute: 통근 기록
+        traveler-tools: 여행자 도구
+      # Flex Strings
+      flex:
+        flex-service: 유연한 서비스
+        call-ahead: "예약 전화 {phoneNumber}"
+        continuous-dropoff: 정지에 대해 운영자와 통신
+      accessibilityScore:
+        gradationMap:
+          0.0: "액세스 불가"
+          0.5: "접근 불가"
+          0.8: "액세스 가능 확률 높음"
+          1.0: "액세스 가능"
+    name: 한국어
+
+  vi:
+    common:
+      modes:
+        subway: Tàu MARTA
+    config:
+      popups:
+        survey: Cung cấp thông tin phản hồi
+        survey-narrow: Thông tin phản hồi của bạn
+      # App (hamburger) menu items
+      menuItems:
+        car-pool: đi chung xe
+        log-my-commute: Đăng nhập tuyến đường đi làm của tôi
+        traveler-tools: công cụ du lịch
+      # Flex Strings
+      flex:
+        flex-service: Dịch vụ linh hoạt
+        call-ahead: "Gọi cho {phoneNumber} để đặt trước"
+        continuous-dropoff: Bỏ học liên tục
+      accessibilityScore:
+        gradationMap:
+          0.0: "Không thể tiếp cận"
+          0.5: "Có khả năng không truy cập được"
+          0.8: "Có thể tiếp cận"
+          1.0: "Có thể truy cập"
+    name: Tiếng Việt
+
+  zh:
+    common:
+      modes:
+        subway: MARTA (軌)
+    config:
+      accessibilityScore:
+        gradationMap:
+          0.0: "无法访问"
+          0.5: "可能無法訪問"
+          0.8: "可能可访问"
+          1.0: "无障碍"
+      popups:
+        survey: 给予反馈
+      # App (hamburger) menu items
+      menuItems:
+        car-pool: 停車場
+        log-my-commute: 記錄我的通勤
+        traveler-tools: 旅行工具
+      # Flex Strings
+      flex:
+        flex-service: 彈性服務
+        call-ahead: "致電 {phoneNumber} 預訂"
+        continuous-dropoff: 持續下降
+    name: 中文
+
+  es:
+    common:
+      modes:
+        subway: MARTA (Carril)
+    config:
+      popups:
+        survey: Dar feedback
+        survey-narrow: Tu feedback
+      # App (hamburger) menu items
+      menuItems:
+        car-pool: Compartir coche
+        log-my-commute: Registrar mi viaje
+        traveler-tools: Herramientas para viajeros
+      # Flex Strings
+      flex:
+        flex-service: Servicio Flexible
+        call-ahead: "Llame al {phoneNumber} para reservar"
+        continuous-dropoff: Comunicarse con el operador sobre la parada
+      accessibilityScore:
+        gradationMap:
+          0.0: "Inaccesible"
+          0.5: "Probablemente no accesible"
+          0.8: "Posiblemente accesible"
+          1.0: "Accesible"
+    name: Español
+
+transitOperators:
+  # MARTA
+  - feedId: "5"
+    agencyId: MARTA
+    name: MARTA
+    logo: https://s3.amazonaws.com/datatools-production/branding/agency_2_MARTA.png
+    order: 1
+
+  # CATS
+  - feedId: "1"
+    agencyId: "1"
+    name: CATS
+    logo: https://s3.amazonaws.com/datatools-production/branding/agency_2_cats.png
+    order: 2
+
+  # CobbLinc
+  - feedId: "2"
+    agencyId: "1"
+    name: CobbLinc
+    logo: https://s3.amazonaws.com/datatools-production/branding/agency_2_cobblinc.png
+    order: 3
+
+  # Connect Douglas
+  - feedId: "3"
+    agencyId: "1661"
+    name: Connect Douglas
+    logo: https://s3.amazonaws.com/datatools-production/branding/agency_2_connect_douglas.png
+    order: 4
+
+  # GCT
+  - feedId: "4"
+    agencyId: GCT
+    name: GCT
+    logo: https://s3.amazonaws.com/datatools-production/branding/agency_2_gct.png
+    order: 5
+
+  # Xpress
+  - feedId: "6"
+    agencyId: "1"
+    name: Xpress
+    logo: https://s3.amazonaws.com/datatools-production/branding/agency_2_xpress_logo.png
+    order: 6
