@@ -21,10 +21,8 @@ import { isBlank, navigateBack } from '../../util/ui'
 import { SetLocationHandler, StopData } from '../util/types'
 import { stopIsFlex } from '../../util/viewer'
 import { TransitOperatorConfig } from '../../util/config-types'
-import Link from '../util/link'
 import PageTitle from '../util/page-title'
 import ServiceTimeRangeRetriever from '../util/service-time-range-retriever'
-import Strong from '../util/strong-text'
 import withMap from '../map/with-map'
 
 import { Card } from './nearby/styled'
@@ -130,6 +128,7 @@ class StopScheduleViewer extends Component<Props, State> {
     }
   }
 
+  // TODO: refactor
   getOperator = () => {
     const { stopData, transitOperators } = this.props
 
@@ -227,21 +226,9 @@ class StopScheduleViewer extends Component<Props, State> {
    * Plan trip from/to here buttons, plus the schedule/next arrivals toggle.
    */
   _renderControls = () => {
-    const { calendarMax, calendarMin, homeTimezone, intl, stopData, stopId } =
-      this.props
+    const { calendarMax, calendarMin, homeTimezone, intl } = this.props
     const { date } = this.state
     const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
-
-    // Rewrite stop ID to not include Agency prefix, if present
-    // TODO: make this functionality configurable?
-    let displayedStopId
-    if (stopData) {
-      displayedStopId =
-        stopData.code ||
-        (stopData.gtfsId?.includes(':')
-          ? stopData.gtfsId.split(':')[1]
-          : stopData.gtfsId)
-    }
 
     let warning
     if (!inHomeTimezone && this._isDateWithinRange(date)) {
@@ -274,10 +261,6 @@ class StopScheduleViewer extends Component<Props, State> {
         style={{ marginBottom: '10px' }}
       >
         <div>
-          <FormattedMessage
-            id="components.StopViewer.displayStopId"
-            values={{ stopId: displayedStopId, strong: Strong }}
-          />
           <button
             className="link-button"
             onClick={this._zoomToStop}
@@ -287,19 +270,6 @@ class StopScheduleViewer extends Component<Props, State> {
           >
             <Icon Icon={Search} style={{ marginLeft: '0.2em' }} />
           </button>
-          {stopData ? (
-            <Link
-              className="pull-right"
-              style={{ color: 'inherit', fontSize: 'small' }}
-              to={`/nearby/${stopData.lat},${stopData.lon}`}
-              toParams={{ entityId: stopId }}
-            >
-              {/* FIXME: What icon should we use? */}
-              <IconWithText Icon={MagnifyingGlass}>
-                <FormattedMessage id="components.StopViewer.viewNearby" />
-              </IconWithText>
-            </Link>
-          ) : null}
         </div>
         <span role="group">
           <FromToLocationPicker
