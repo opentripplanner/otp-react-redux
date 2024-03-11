@@ -89,6 +89,7 @@ const StopCardHeader = ({
                   ))}
               </>
             }
+            styleProps={{}}
           >
             {stopData.name}
           </IconWithText>

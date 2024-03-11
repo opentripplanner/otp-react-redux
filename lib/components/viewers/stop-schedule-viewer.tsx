@@ -85,6 +85,16 @@ const StyledAlert = styled(Alert)`
   text-align: center;
 `
 
+const HeaderCard = styled(Card)`
+  background: none;
+  color: inherit;
+  margin: 5px 0;
+  width: 100%;
+  &:hover {
+    box-shadow: none;
+  }
+`
+
 class StopScheduleViewer extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
@@ -188,7 +198,7 @@ class StopScheduleViewer extends Component<Props, State> {
         {/* Header Text */}
         <div className="header-text">
           {stopData?.name ? (
-            <Card>
+            <HeaderCard>
               <StopCardHeader
                 // FIXME: What icon should we use?
                 actionIcon={MagnifyingGlass}
@@ -200,7 +210,7 @@ class StopScheduleViewer extends Component<Props, State> {
                 CardTitle="h1"
                 stopData={stopData}
               />
-            </Card>
+            </HeaderCard>
           ) : (
             <h1>
               <FormattedMessage id="components.StopViewer.loadingText" />
