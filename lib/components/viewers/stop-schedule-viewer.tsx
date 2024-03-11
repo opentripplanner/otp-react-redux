@@ -22,13 +22,14 @@ import { SetLocationHandler, StopData } from '../util/types'
 import { stopIsFlex } from '../../util/viewer'
 import { TransitOperatorConfig } from '../../util/config-types'
 import Link from '../util/link'
-import OperatorLogo from '../util/operator-logo'
 import PageTitle from '../util/page-title'
 import ServiceTimeRangeRetriever from '../util/service-time-range-retriever'
 import Strong from '../util/strong-text'
 import withMap from '../map/with-map'
 
+import { Card } from './nearby/styled'
 import FavoriteStopToggle from './favorite-stop-toggle'
+import StopCardHeader from './nearby/stop-card-header'
 import StopScheduleTable from './stop-schedule-table'
 import TimezoneWarning from './timezone-warning'
 
@@ -170,11 +171,7 @@ class StopScheduleViewer extends Component<Props, State> {
   }
 
   _renderHeader = (agencyCount: number) => {
-    const { hideBackButton, intl, stopData } = this.props
-
-    // We can use the first route, as this operator will only be used if there is only one operator
-    const stationOperator = this.getOperator()
-
+    const { hideBackButton, stopData, stopId } = this.props
     return (
       <div className="stop-viewer-header">
         {/* Back button */}
@@ -191,33 +188,19 @@ class StopScheduleViewer extends Component<Props, State> {
         {/* Header Text */}
         <div className="header-text">
           {stopData?.name ? (
-            <h1 style={{ paddingLeft: '0.5ch' }}>
-              {agencyCount <= 1 && stationOperator && (
-                /* Span with agency classname allows optional contrast/customization in user 
-                config for logos with poor contrast. Class name is hyphenated agency name 
-                e.g. "sound-transit" */
-                <span
-                  className={
-                    stationOperator?.name
-                      ? stationOperator.name.replace(/\s+/g, '-').toLowerCase()
-                      : ''
-                  }
-                >
-                  <OperatorLogo
-                    alt={intl.formatMessage(
-                      {
-                        id: 'components.StopViewer.operatorLogoAriaLabel'
-                      },
-                      {
-                        operatorName: stationOperator.name
-                      }
-                    )}
-                    operator={stationOperator}
-                  />
-                </span>
-              )}
-              {stopData.name}
-            </h1>
+            <Card>
+              <StopCardHeader
+                // FIXME: What icon should we use?
+                actionIcon={MagnifyingGlass}
+                actionParams={{ entityId: stopId }}
+                actionText={
+                  <FormattedMessage id="components.StopViewer.viewNearby" />
+                }
+                actionUrl={`/nearby/${stopData.lat},${stopData.lon}`}
+                CardTitle="h1"
+                stopData={stopData}
+              />
+            </Card>
           ) : (
             <h1>
               <FormattedMessage id="components.StopViewer.loadingText" />
