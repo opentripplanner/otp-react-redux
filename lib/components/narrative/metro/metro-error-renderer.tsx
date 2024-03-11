@@ -17,7 +17,7 @@ const List = styled.ul`
 const Container = styled.li`
   background: rgba(0, 0, 0, 0.1);
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr max-content;
   list-style-type: none;
   margin: 0;
@@ -43,31 +43,38 @@ const Container = styled.li`
 
 const ErrorRenderer = ({
   errors,
+  itinerariesLength,
   mutedErrors
 }: {
   errors: Error
+  itinerariesLength: number
   mutedErrors?: string[]
 }): JSX.Element => {
   const intl = useIntl()
 
+  // The search window is hardcoded in otp-rr and can't be changed by the user.
+  // Do not tell them what's happening as they can't act on the issue.
+  const ignoredErrors = ['NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW']
+  mutedErrors && ignoredErrors.push(...mutedErrors)
+
+  const errorList = Object.keys(errors).filter((err) => {
+    return !ignoredErrors.includes(err)
+  })
+  // If there are no itineraries and no displayed errors, generate a default error
+  // so we're not left with an empty results container.
+  if (errorList.length === 0 && itinerariesLength === 0) {
+    errorList.push('DEFAULT_ERROR_MESSAGE')
+  }
   return (
     <List>
-      {Object.keys(errors).map((error: string) => {
-        // The search window is hardcoded in otp-rr and can't be changed by the user.
-        // Do not tell them what's happening as they can't act on the issue.
-        if (error === 'NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW') {
-          return null
-        }
-
-        // Don't show errors that have been muted in the config
-        if (mutedErrors?.includes(error)) return null
-
-        const localizedInputFieldList = Array.from(errors[error])?.map(
-          (inputField) =>
-            intl.formatMessage({
-              id: `components.OTP2ErrorRenderer.inputFields.${inputField}`
-            })
-        )
+      {errorList.map((error: string) => {
+        const localizedInputFieldList = errors[error]
+          ? Array.from(errors[error]).map((inputField) =>
+              intl.formatMessage({
+                id: `components.OTP2ErrorRenderer.inputFields.${inputField}`
+              })
+            )
+          : []
 
         return (
           <Container key={error}>
