@@ -17,6 +17,7 @@ export interface OtpState {
       type: string
     }
   }
+  location: any
   overlay: any
   transitIndex: any
   // TODO: Add other OTP states
