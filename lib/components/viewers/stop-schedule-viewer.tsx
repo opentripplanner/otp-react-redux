@@ -6,7 +6,6 @@ import { format, parse } from 'date-fns'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { MagnifyingGlass } from '@styled-icons/fa-solid/MagnifyingGlass'
 import { MapRef } from 'react-map-gl'
-import { Search } from '@styled-icons/fa-solid/Search'
 import { utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
@@ -16,7 +15,7 @@ import styled from 'styled-components'
 import * as apiActions from '../../actions/api'
 import * as mapActions from '../../actions/map'
 import { AppReduxState } from '../../util/state-types'
-import { Icon, IconWithText } from '../util/styledIcon'
+import { IconWithText } from '../util/styledIcon'
 import { isBlank, navigateBack } from '../../util/ui'
 import { SetLocationHandler, StopData } from '../util/types'
 import { stopIsFlex } from '../../util/viewer'
@@ -207,6 +206,7 @@ class StopScheduleViewer extends Component<Props, State> {
                 }
                 actionUrl={`/nearby/${stopData.lat},${stopData.lon}`}
                 CardTitle="h1"
+                onZoomClick={this._zoomToStop}
                 stopData={stopData}
               />
             </HeaderCard>
@@ -260,17 +260,6 @@ class StopScheduleViewer extends Component<Props, State> {
         role="group"
         style={{ marginBottom: '10px' }}
       >
-        <div>
-          <button
-            className="link-button"
-            onClick={this._zoomToStop}
-            title={intl.formatMessage({
-              id: 'components.StopViewer.zoomToStop'
-            })}
-          >
-            <Icon Icon={Search} style={{ marginLeft: '0.2em' }} />
-          </button>
-        </div>
         <span role="group">
           <FromToLocationPicker
             label

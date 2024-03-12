@@ -2,11 +2,13 @@ import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { MapPin } from '@styled-icons/fa-solid'
 import { Place, TransitOperator } from '@opentripplanner/types'
+import { Search } from '@styled-icons/fa-solid/Search'
 import React, { ComponentType } from 'react'
 
 import { AppReduxState } from '../../../util/state-types'
-import { IconWithText } from '../../util/styledIcon'
+import { Icon, IconWithText } from '../../util/styledIcon'
 import { Pattern, StopTime } from '../../util/types'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import Link from '../../util/link'
 import OperatorLogo from '../../util/operator-logo'
 import Strong from '../../util/strong-text'
@@ -31,6 +33,7 @@ type Props = {
   actionText: JSX.Element
   actionUrl: string
   fromToSlot: JSX.Element
+  onZoomClick: () => void
   stopData: StopData
   transitOperators?: TransitOperator[]
 }
@@ -61,14 +64,21 @@ const StopCardHeader = ({
   actionUrl,
   CardTitle,
   fromToSlot,
+  onZoomClick,
   stopData,
   transitOperators
 }: Props): JSX.Element => {
+  const intl = useIntl()
   const agencies = stopData.stoptimesForPatterns?.reduce<Set<string>>(
     // @ts-expect-error The agency type is not yet compatible with OTP2
     (prev, cur) => prev.add(cur.pattern.route.agency.gtfsId),
     new Set()
   )
+  const zoomButtonText = onZoomClick
+    ? intl.formatMessage({
+        id: 'components.StopViewer.zoomToStop'
+      })
+    : null
 
   return (
     <>
@@ -104,6 +114,16 @@ const StopCardHeader = ({
               strong: Strong
             }}
           />
+          {onZoomClick ? (
+            <button
+              className="link-button"
+              onClick={onZoomClick}
+              title={zoomButtonText}
+            >
+              <Icon Icon={Search} style={{ marginLeft: '0.2em' }} />
+              <InvisibleA11yLabel>{zoomButtonText}</InvisibleA11yLabel>
+            </button>
+          ) : null}
           <Link
             className="pull-right"
             style={{ color: 'inherit', fontSize: 'small' }}
