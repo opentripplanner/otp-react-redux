@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
 import React, { HTMLAttributes } from 'react'
 
+import { AppReduxState } from '../../util/state-types'
 import { MainPanelContent } from '../../actions/ui-constants'
 
 import NearbyView from './nearby/nearby-view'
 import PatternViewer from './pattern-viewer'
 import RouteViewer from './route-viewer'
-import StopViewer from './stop-viewer'
+import StopScheduleViewer from './stop-schedule-viewer'
 import TripViewer from './trip-viewer'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -34,7 +35,7 @@ const ViewerContainer = ({
     default:
       // check for stop viewer
       if (isViewingStop) {
-        return <StopViewer hideBackButton />
+        return <StopScheduleViewer hideBackButton />
       }
 
       // otherwise, return default content
@@ -48,7 +49,7 @@ const ViewerContainer = ({
 
 // connect to the redux store
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const { mainPanelContent, viewedStop } = state.otp.ui
   return {
     isViewingStop: !!viewedStop,
