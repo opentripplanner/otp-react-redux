@@ -57,7 +57,7 @@ Object {
       "type": "BEST",
     },
   },
-  "initialUrl": "http://localhost:9966/",
+  "initialUrl": "/",
   "lastActionMillis": 0,
   "location": Object {
     "currentPosition": Object {
