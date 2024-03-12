@@ -23,7 +23,6 @@ import { getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent } from '../../actions/ui-constants'
 import { setMainPanelContent } from '../../actions/ui'
-import startOver from '../util/start-over'
 
 import AppMenuItem from './app-menu-item'
 import PopupTriggerText from './popup-trigger-text'
@@ -52,7 +51,6 @@ type AppMenuProps = {
   location: { search: string }
   mailablesEnabled?: boolean
   popupTarget?: string
-  reactRouterConfig?: { basename: string }
   resetAndToggleCallHistory?: () => void
   resetAndToggleFieldTrips?: () => void
   setLocale: (locale: string) => void
