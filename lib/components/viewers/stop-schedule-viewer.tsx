@@ -194,6 +194,7 @@ class StopScheduleViewer extends Component<Props, State> {
   _renderHeader = (agencyCount: number) => {
     const { hideBackButton, stopData, stopId } = this.props
     return (
+      // CSS class stop-viewer-header is needed for customizing how logos are displayed.
       <div className="stop-viewer-header">
         {/* Back button */}
         {!hideBackButton && (
