@@ -140,7 +140,6 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                 "wrapRichTextChunksInFragment": undefined,
               }
             }
-            setLocation={[Function]}
             showBlockIds={false}
             stopId="TriMet:13170"
             transitOperators={Array []}
@@ -266,24 +265,32 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                     </button>
                   </Button>
                 </div>
-                <div
-                  className="header-text"
-                >
-                  <h1>
-                    <FormattedMessage
-                      id="components.StopViewer.loadingText"
-                    >
-                      components.StopViewer.loadingText
-                    </FormattedMessage>
-                  </h1>
-                  <Connect(FavoriteStopToggle)>
-                    <FavoriteStopToggle
-                      forgetStop={[Function]}
-                      isFavoriteStop={false}
-                      rememberStop={[Function]}
-                    />
-                  </Connect(FavoriteStopToggle)>
-                </div>
+                <styled.div>
+                  <div
+                    className="sc-cjHJky bihPUp"
+                  >
+                    <styled.div>
+                      <div
+                        className="sc-edoYdd kXYHaz"
+                      >
+                        <h1>
+                          <FormattedMessage
+                            id="components.StopViewer.loadingText"
+                          >
+                            components.StopViewer.loadingText
+                          </FormattedMessage>
+                        </h1>
+                      </div>
+                    </styled.div>
+                  </div>
+                </styled.div>
+                <Connect(FavoriteStopToggle)>
+                  <FavoriteStopToggle
+                    forgetStop={[Function]}
+                    isFavoriteStop={false}
+                    rememberStop={[Function]}
+                  />
+                </Connect(FavoriteStopToggle)>
                 <div
                   style={
                     Object {
