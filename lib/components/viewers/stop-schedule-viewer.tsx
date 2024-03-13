@@ -23,7 +23,7 @@ import PageTitle from '../util/page-title'
 import ServiceTimeRangeRetriever from '../util/service-time-range-retriever'
 import withMap from '../map/with-map'
 
-import { Card, CardBody } from './nearby/styled'
+import { Card, CardBody, CardHeader } from './nearby/styled'
 import FavoriteStopToggle from './favorite-stop-toggle'
 import FromToPicker from './nearby/from-to-picker'
 import StopCardHeader from './nearby/stop-card-header'
@@ -212,8 +212,8 @@ class StopScheduleViewer extends Component<Props, State> {
 
         {/* Header Text */}
         <div className="header-text">
-          {stopData?.name ? (
-            <HeaderCard>
+          <HeaderCard>
+            {stopData?.name ? (
               <StopCardHeader
                 // FIXME: What icon should we use?
                 actionIcon={MagnifyingGlass}
@@ -227,12 +227,14 @@ class StopScheduleViewer extends Component<Props, State> {
                 onZoomClick={this._zoomToStop}
                 stopData={stopData}
               />
-            </HeaderCard>
-          ) : (
-            <h1>
-              <FormattedMessage id="components.StopViewer.loadingText" />
-            </h1>
-          )}
+            ) : (
+              <CardHeader>
+                <h1>
+                  <FormattedMessage id="components.StopViewer.loadingText" />
+                </h1>
+              </CardHeader>
+            )}
+          </HeaderCard>
           <FavoriteStopToggle stopData={stopData} />
         </div>
         <div style={{ clear: 'both' }} />
