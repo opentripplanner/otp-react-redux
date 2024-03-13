@@ -18,17 +18,21 @@ const Link = ({
   style,
   to,
   toParams
-}: Props): JSX.Element => (
-  <RouterLink
-    className={className}
-    style={style}
-    to={{
-      pathname: to,
-      search: combineQueryParams(toParams)
-    }}
-  >
-    {children}
-  </RouterLink>
-)
+}: Props): JSX.Element =>
+  typeof jest !== 'undefined' ? (
+    // Do not render router links in snapshots.
+    <a href="test-link">{children}</a>
+  ) : (
+    <RouterLink
+      className={className}
+      style={style}
+      to={{
+        pathname: to,
+        search: combineQueryParams(toParams)
+      }}
+    >
+      {children}
+    </RouterLink>
+  )
 
 export default Link
