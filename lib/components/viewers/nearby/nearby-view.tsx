@@ -45,7 +45,7 @@ type Props = {
   zoomToPlace: (map: MapRef, stopData: Location) => void
 }
 
-const getNearbyItem = (place: any, setLocation: SetLocationHandler) => {
+const getNearbyItem = (place: any) => {
   const fromTo = <FromToPicker place={place} />
 
   switch (place.__typename) {
