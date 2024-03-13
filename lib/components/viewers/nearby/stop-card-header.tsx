@@ -1,25 +1,19 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { MapPin } from '@styled-icons/fa-solid'
-import { Place, TransitOperator } from '@opentripplanner/types'
 import { Search } from '@styled-icons/fa-solid/Search'
+import { TransitOperator } from '@opentripplanner/types'
 import React, { ComponentType } from 'react'
 
 import { AppReduxState } from '../../../util/state-types'
 import { Icon, IconWithText } from '../../util/styledIcon'
-import { PatternStopTime } from '../../util/types'
+import { StopData } from '../../util/types'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import Link from '../../util/link'
 import OperatorLogo from '../../util/operator-logo'
 import Strong from '../../util/strong-text'
 
 import { CardBody, CardHeader, CardTitle as NearbyCardTitle } from './styled'
-
-type StopData = Place & {
-  code?: string
-  gtfsId?: string
-  stoptimesForPatterns?: PatternStopTime[]
-}
 
 type Props = {
   actionIcon: ComponentType

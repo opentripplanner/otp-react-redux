@@ -1,14 +1,13 @@
 import { Calendar } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-import { Place } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 
 import { AppReduxState } from '../../../util/state-types'
 import { extractHeadsignFromPattern } from '../../../util/viewer'
 import { NearbyViewConfig } from '../../../util/config-types'
-import { PatternStopTime, StopTime } from '../../util/types'
+import { PatternStopTime, StopData, StopTime } from '../../util/types'
 import PatternRow from '../pattern-row'
 import TimezoneWarning from '../timezone-warning'
 
@@ -16,12 +15,6 @@ import { Card, PatternRowContainer, StyledAlert } from './styled'
 import StopCardHeader from './stop-card-header'
 
 const { getUserTimezone } = coreUtils.time
-
-type StopData = Place & {
-  code: string
-  gtfsId: string
-  stoptimesForPatterns: PatternStopTime[]
-}
 
 const fullTimestamp = (stoptime: StopTime) =>
   (stoptime.serviceDay || 0) + (stoptime.realtimeDeparture || 0)
@@ -39,7 +32,7 @@ const Stop = ({
   nearbyViewConfig,
   stopData
 }: Props): JSX.Element => {
-  const patternRows = stopData.stoptimesForPatterns
+  const patternRows = (stopData.stoptimesForPatterns || [])
     ?.reduce<PatternStopTime[]>((acc, cur) => {
       const currentHeadsign = extractHeadsignFromPattern(cur.pattern)
       const dupe = acc.findIndex(
