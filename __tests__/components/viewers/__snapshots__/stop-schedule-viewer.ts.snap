@@ -271,7 +271,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                   >
                     <styled.div>
                       <div
-                        className="sc-edoYdd kXYHaz"
+                        className="sc-edoYdd ipgOiu"
                       >
                         <h1>
                           <FormattedMessage

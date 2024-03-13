@@ -36,15 +36,15 @@ export const Card = styled.div`
 `
 
 export const CardHeader = styled.div`
-  align-items: center;
-  display: flex;
-  gap: 0.5ch;
   padding: 1rem 1.2rem 0;
 `
 
 export const CardTitle = styled.p`
+  align-items: center;
+  display: flex;
   font-size: 22px;
   font-weight: 600;
+  gap: 0.5ch;
   margin: 0;
 `
 
