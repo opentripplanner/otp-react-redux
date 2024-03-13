@@ -8,7 +8,6 @@ import { MagnifyingGlass } from '@styled-icons/fa-solid/MagnifyingGlass'
 import { MapRef } from 'react-map-gl'
 import { utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
-import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { Component, FormEvent } from 'react'
 import styled from 'styled-components'
 
@@ -17,15 +16,16 @@ import * as mapActions from '../../actions/map'
 import { AppReduxState } from '../../util/state-types'
 import { IconWithText } from '../util/styledIcon'
 import { isBlank, navigateBack } from '../../util/ui'
-import { SetLocationHandler, StopData } from '../util/types'
+import { StopData } from '../util/types'
 import { stopIsFlex } from '../../util/viewer'
 import { TransitOperatorConfig } from '../../util/config-types'
 import PageTitle from '../util/page-title'
 import ServiceTimeRangeRetriever from '../util/service-time-range-retriever'
 import withMap from '../map/with-map'
 
-import { Card } from './nearby/styled'
+import { Card, CardBody } from './nearby/styled'
 import FavoriteStopToggle from './favorite-stop-toggle'
+import FromToPicker from './nearby/from-to-picker'
 import StopCardHeader from './nearby/stop-card-header'
 import StopScheduleTable from './stop-schedule-table'
 import TimezoneWarning from './timezone-warning'
@@ -38,7 +38,6 @@ interface Props {
   homeTimezone: string
   intl: IntlShape
   map?: MapRef
-  setLocation: SetLocationHandler
   showBlockIds?: boolean
   stopData?: StopData
   stopId?: string
@@ -85,10 +84,44 @@ const StyledAlert = styled(Alert)`
 const HeaderCard = styled(Card)`
   background: none;
   color: inherit;
-  margin: 5px 0;
+  margin: 5px 0 0;
   width: 100%;
   &:hover {
     box-shadow: none;
+  }
+
+  ${CardBody} {
+    margin: 25px 0 0;
+  }
+
+  input[type='date'] {
+    background: inherit;
+    border: none;
+    clear: right;
+    cursor: pointer;
+    outline: none;
+    width: 125px;
+  }
+  /* Remove arrows on date input */
+  input[type='date']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  /* For Chromium browsers, remove extra space between date and the calendar icon. */
+  input[type='date']::-webkit-calendar-picker-indicator {
+    margin: 0;
+  }
+`
+
+const StyledFromToPicker = styled(FromToPicker)`
+  button {
+    color: inherit;
+  }
+  span {
+    border-color: currentColor;
+  }
+  svg {
+    color: inherit;
+    fill: inherit;
   }
 `
 
@@ -99,22 +132,6 @@ class StopScheduleViewer extends Component<Props, State> {
   }
 
   _backClicked = () => navigateBack()
-
-  _setLocationFromStop = (locationType: string) => {
-    const { setLocation, stopData } = this.props
-    if (stopData) {
-      const location = {
-        lat: stopData.lat,
-        lon: stopData.lon,
-        name: stopData.name
-      }
-      setLocation({ location, locationType, reverseGeocode: false })
-    }
-  }
-
-  _onClickPlanTo = () => this._setLocationFromStop('to')
-
-  _onClickPlanFrom = () => this._setLocationFromStop('from')
 
   componentDidMount() {
     this._findStopTimesForDate(this.state.date)
@@ -206,6 +223,7 @@ class StopScheduleViewer extends Component<Props, State> {
                 }
                 actionUrl={`/nearby/${stopData.lat},${stopData.lon}`}
                 CardTitle="h1"
+                fromToSlot={this._renderControls()}
                 onZoomClick={this._zoomToStop}
                 stopData={stopData}
               />
@@ -223,10 +241,11 @@ class StopScheduleViewer extends Component<Props, State> {
   }
 
   /**
-   * Plan trip from/to here buttons, plus the schedule/next arrivals toggle.
+   * Plan trip from/to here buttons, plus the schedule date control.
    */
   _renderControls = () => {
-    const { calendarMax, calendarMin, homeTimezone, intl } = this.props
+    const { calendarMax, calendarMin, homeTimezone, intl, stopData } =
+      this.props
     const { date } = this.state
     const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
 
@@ -255,18 +274,8 @@ class StopScheduleViewer extends Component<Props, State> {
     }
 
     return (
-      <div
-        className="stop-viewer-controls"
-        role="group"
-        style={{ marginBottom: '10px' }}
-      >
-        <span role="group">
-          <FromToLocationPicker
-            label
-            onFromClick={this._onClickPlanFrom}
-            onToClick={this._onClickPlanTo}
-          />
-        </span>
+      <div role="group" style={{ marginBottom: '10px' }}>
+        <StyledFromToPicker place={stopData} />
         <input
           aria-label={intl.formatMessage({
             id: 'components.StopViewer.findSchedule'
@@ -300,7 +309,6 @@ class StopScheduleViewer extends Component<Props, State> {
 
         {stopData && (
           <div className="stop-viewer-body">
-            {this._renderControls()}
             {/* scrollable list of scheduled stops requires tabIndex 
             for keyboard navigation */}
             <Scrollable tabIndex={0}>
@@ -384,7 +392,6 @@ const mapStateToProps = (state: AppReduxState) => {
 
 const mapDispatchToProps = {
   findStopTimesForStop: apiActions.findStopTimesForStop,
-  setLocation: mapActions.setLocation,
   zoomToPlace: mapActions.zoomToPlace
 }
 

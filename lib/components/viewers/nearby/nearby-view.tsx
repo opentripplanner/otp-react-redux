@@ -1,9 +1,8 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { Location, Stop as StopType } from '@opentripplanner/types'
+import { Location } from '@opentripplanner/types'
 import { MapRef, useMap } from 'react-map-gl'
-import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
 import * as mapActions from '../../../actions/map'
@@ -21,6 +20,7 @@ import {
   NearbySidebarContainer,
   Scrollable
 } from './styled'
+import FromToPicker from './from-to-picker'
 import RentalStation from './rental-station'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
@@ -45,38 +45,8 @@ type Props = {
   zoomToPlace: (map: MapRef, stopData: Location) => void
 }
 
-const FromToPicker = ({
-  setLocation,
-  stopData
-}: {
-  setLocation: SetLocationHandler
-  stopData: StopType
-}) => {
-  const location = useMemo(
-    () => ({
-      lat: stopData.lat ?? 0,
-      lon: stopData.lon ?? 0,
-      name: stopData.name
-    }),
-    [stopData]
-  )
-  return (
-    <span role="group">
-      <FromToLocationPicker
-        label
-        onFromClick={useCallback(() => {
-          setLocation({ location, locationType: 'from', reverseGeocode: false })
-        }, [location, setLocation])}
-        onToClick={useCallback(() => {
-          setLocation({ location, locationType: 'to', reverseGeocode: false })
-        }, [location, setLocation])}
-      />
-    </span>
-  )
-}
-
 const getNearbyItem = (place: any, setLocation: SetLocationHandler) => {
-  const fromTo = <FromToPicker setLocation={setLocation} stopData={place} />
+  const fromTo = <FromToPicker place={place} />
 
   switch (place.__typename) {
     case 'RentalVehicle':

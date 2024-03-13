@@ -40,23 +40,6 @@
   animation-name: yellowfade;
 }
 
-.otp .stop-viewer-body input[type="date"] {
-  background: inherit;
-  border: none;
-  clear: right;
-  cursor: pointer;
-  outline: none;
-  width: 125px;
-}
-/* Remove arrows on date input */
-.otp .stop-viewer-body input[type="date"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-/* For Chromium browsers, remove extra space between date and the calendar icon. */
-.otp .stop-viewer-body input[type="date"]::-webkit-calendar-picker-indicator {
-  margin: 0;
-}
-
 .otp .route-viewer-body,
 .otp .stop-viewer-body,
 .otp .trip-viewer-body {
@@ -115,14 +98,6 @@
   display: grid;
   grid-template-columns: 1fr 5fr;
   padding-left: 10px;
-}
-
-.otp .stop-viewer .stop-viewer-controls button {
-  color: inherit;
-}
-.otp .stop-viewer .stop-viewer-controls svg {
-  color: inherit;
-  fill: inherit;
 }
 
 /* trip viewer styles */
