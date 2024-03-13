@@ -98,10 +98,10 @@ const Stop = ({
         actionIcon={Calendar}
         // Remove entityId URL parameter when leaving nearby view.
         actionParams={{ entityId: undefined }}
+        actionPath={`/schedule/${stopData.gtfsId}`}
         actionText={
           <FormattedMessage id="components.StopViewer.viewSchedule" />
         }
-        actionUrl={`/schedule/${stopData.gtfsId}`}
         fromToSlot={fromToSlot}
         stopData={stopData}
       />

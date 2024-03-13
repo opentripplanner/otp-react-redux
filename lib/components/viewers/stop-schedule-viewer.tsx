@@ -206,21 +206,20 @@ class StopScheduleViewer extends Component<Props, State> {
           </div>
         )}
 
-        {/* Header Text */}
         <HeaderCard>
           {stopData?.name ? (
             <StopCardHeader
               // FIXME: What icon should we use?
               actionIcon={MagnifyingGlass}
               actionParams={{ entityId: stopId }}
+              actionPath={`/nearby/${stopData.lat},${stopData.lon}`}
               actionText={
                 <FormattedMessage id="components.StopViewer.viewNearby" />
               }
-              actionUrl={`/nearby/${stopData.lat},${stopData.lon}`}
-              CardTitle="h1"
               fromToSlot={this._renderControls()}
               onZoomClick={this._zoomToStop}
               stopData={stopData}
+              titleAs="h1"
             />
           ) : (
             <CardHeader>

@@ -27,14 +27,14 @@ type StopData = Place & {
 }
 
 type Props = {
-  CardTitle: string
   actionIcon: ComponentType
   actionParams?: Record<string, unknown>
+  actionPath: string
   actionText: JSX.Element
-  actionUrl: string
   fromToSlot: JSX.Element
   onZoomClick: () => void
   stopData: StopData
+  titleAs?: string
   transitOperators?: TransitOperator[]
 }
 
@@ -69,12 +69,12 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
 const StopCardHeader = ({
   actionIcon,
   actionParams,
+  actionPath,
   actionText,
-  actionUrl,
-  CardTitle,
   fromToSlot,
   onZoomClick,
   stopData,
+  titleAs,
   transitOperators
 }: Props): JSX.Element => {
   const intl = useIntl()
@@ -102,7 +102,7 @@ const StopCardHeader = ({
           .map((to) => (
             <Operator key={to.agencyId} operator={to} />
           ))}
-        <NearbyCardTitle as={CardTitle}>{stopData.name}</NearbyCardTitle>
+        <NearbyCardTitle as={titleAs}>{stopData.name}</NearbyCardTitle>
       </CardHeader>
       <CardBody>
         <div>
@@ -126,7 +126,7 @@ const StopCardHeader = ({
           <Link
             className="pull-right"
             style={{ color: 'inherit', fontSize: 'small' }}
-            to={actionUrl}
+            to={actionPath}
             toParams={actionParams}
           >
             <IconWithText Icon={actionIcon}>{actionText}</IconWithText>
