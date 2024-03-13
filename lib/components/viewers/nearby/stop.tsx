@@ -96,6 +96,8 @@ const Stop = ({
     <Card>
       <StopCardHeader
         actionIcon={Calendar}
+        // Remove entityId URL parameter when leaving nearby view.
+        actionParams={{ entityId: undefined }}
         actionText={
           <FormattedMessage id="components.StopViewer.viewSchedule" />
         }
