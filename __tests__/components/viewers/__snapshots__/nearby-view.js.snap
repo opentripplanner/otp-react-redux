@@ -5901,7 +5901,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           }
                         />
                       }
-                      showOperatorLogo={true}
                       stopData={
                         Object {
                           "__typename": "Stop",
@@ -7036,7 +7035,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
-                        showOperatorLogo={true}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -9915,7 +9913,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       <p
                                         className="sc-ksXiFW hqEOzF"
                                       >
-                                        Roosevelt Station - Bay 2
+                                        <span>
+                                          Roosevelt Station - Bay 2
+                                        </span>
                                       </p>
                                     </styled.p>
                                   </div>
@@ -9936,7 +9936,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <Link
+                                      <DummyLink
                                         className="pull-right"
                                         style={
                                           Object {
@@ -9952,7 +9952,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <a
-                                          href="test-link"
+                                          href="/schedule/kcm:36940"
                                         >
                                           <IconWithText
                                             Icon={
@@ -10024,7 +10024,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             </div>
                                           </IconWithText>
                                         </a>
-                                      </Link>
+                                      </DummyLink>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
@@ -14089,7 +14089,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           }
                         />
                       }
-                      showOperatorLogo={true}
                       stopData={
                         Object {
                           "__typename": "Stop",
@@ -14822,7 +14821,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
-                        showOperatorLogo={true}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -16696,7 +16694,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       <p
                                         className="sc-ksXiFW hqEOzF"
                                       >
-                                        Roosevelt
+                                        <span>
+                                          Roosevelt
+                                        </span>
                                       </p>
                                     </styled.p>
                                   </div>
@@ -16717,7 +16717,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <Link
+                                      <DummyLink
                                         className="pull-right"
                                         style={
                                           Object {
@@ -16733,7 +16733,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <a
-                                          href="test-link"
+                                          href="/schedule/40:990003"
                                         >
                                           <IconWithText
                                             Icon={
@@ -16805,7 +16805,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             </div>
                                           </IconWithText>
                                         </a>
-                                      </Link>
+                                      </DummyLink>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
@@ -21508,7 +21508,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           }
                         />
                       }
-                      showOperatorLogo={true}
                       stopData={
                         Object {
                           "__typename": "Stop",
@@ -22797,7 +22796,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
-                        showOperatorLogo={true}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -26061,7 +26059,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       <p
                                         className="sc-ksXiFW hqEOzF"
                                       >
-                                        Roosevelt Station - Bay 1
+                                        <span>
+                                          Roosevelt Station - Bay 1
+                                        </span>
                                       </p>
                                     </styled.p>
                                   </div>
@@ -26082,7 +26082,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <Link
+                                      <DummyLink
                                         className="pull-right"
                                         style={
                                           Object {
@@ -26098,7 +26098,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <a
-                                          href="test-link"
+                                          href="/schedule/kcm:16430"
                                         >
                                           <IconWithText
                                             Icon={
@@ -26170,7 +26170,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             </div>
                                           </IconWithText>
                                         </a>
-                                      </Link>
+                                      </DummyLink>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
@@ -32790,7 +32790,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           }
                         />
                       }
-                      showOperatorLogo={true}
                       stopData={
                         Object {
                           "__typename": "Stop",
@@ -33523,7 +33522,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
-                        showOperatorLogo={true}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -35397,7 +35395,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       <p
                                         className="sc-ksXiFW hqEOzF"
                                       >
-                                        Roosevelt Station Bay 5 - Bay 5
+                                        <span>
+                                          Roosevelt Station Bay 5 - Bay 5
+                                        </span>
                                       </p>
                                     </styled.p>
                                   </div>
@@ -35418,7 +35418,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <Link
+                                      <DummyLink
                                         className="pull-right"
                                         style={
                                           Object {
@@ -35434,7 +35434,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <a
-                                          href="test-link"
+                                          href="/schedule/kcm:16440"
                                         >
                                           <IconWithText
                                             Icon={
@@ -35506,7 +35506,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             </div>
                                           </IconWithText>
                                         </a>
-                                      </Link>
+                                      </DummyLink>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
@@ -39305,7 +39305,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           }
                         />
                       }
-                      showOperatorLogo={true}
                       stopData={
                         Object {
                           "__typename": "Stop",
@@ -40388,7 +40387,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
-                        showOperatorLogo={true}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -43137,7 +43135,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       <p
                                         className="sc-ksXiFW hqEOzF"
                                       >
-                                        Roosevelt
+                                        <span>
+                                          Roosevelt
+                                        </span>
                                       </p>
                                     </styled.p>
                                   </div>
@@ -43158,7 +43158,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <Link
+                                      <DummyLink
                                         className="pull-right"
                                         style={
                                           Object {
@@ -43174,7 +43174,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <a
-                                          href="test-link"
+                                          href="/schedule/40:990004"
                                         >
                                           <IconWithText
                                             Icon={
@@ -43246,7 +43246,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             </div>
                                           </IconWithText>
                                         </a>
-                                      </Link>
+                                      </DummyLink>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
@@ -46088,7 +46088,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           }
                         />
                       }
-                      showOperatorLogo={true}
                       stopData={
                         Object {
                           "__typename": "Stop",
@@ -47377,7 +47376,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
-                        showOperatorLogo={true}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -50641,7 +50639,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       <p
                                         className="sc-ksXiFW hqEOzF"
                                       >
-                                        Roosevelt Station - Bay 3
+                                        <span>
+                                          Roosevelt Station - Bay 3
+                                        </span>
                                       </p>
                                     </styled.p>
                                   </div>
@@ -50662,7 +50662,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <Link
+                                      <DummyLink
                                         className="pull-right"
                                         style={
                                           Object {
@@ -50678,7 +50678,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <a
-                                          href="test-link"
+                                          href="/schedule/kcm:23561"
                                         >
                                           <IconWithText
                                             Icon={
@@ -50750,7 +50750,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             </div>
                                           </IconWithText>
                                         </a>
-                                      </Link>
+                                      </DummyLink>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
@@ -57672,7 +57672,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           }
                         />
                       }
-                      showOperatorLogo={true}
                       stopData={
                         Object {
                           "__typename": "Stop",
@@ -58807,7 +58806,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
-                        showOperatorLogo={true}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -61686,7 +61684,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       <p
                                         className="sc-ksXiFW hqEOzF"
                                       >
-                                        NE 65th St & 14th Ave NE
+                                        <span>
+                                          NE 65th St & 14th Ave NE
+                                        </span>
                                       </p>
                                     </styled.p>
                                   </div>
@@ -61707,7 +61707,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <Link
+                                      <DummyLink
                                         className="pull-right"
                                         style={
                                           Object {
@@ -61723,7 +61723,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <a
-                                          href="test-link"
+                                          href="/schedule/kcm:36931"
                                         >
                                           <IconWithText
                                             Icon={
@@ -61795,7 +61795,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             </div>
                                           </IconWithText>
                                         </a>
-                                      </Link>
+                                      </DummyLink>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
