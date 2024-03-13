@@ -23,7 +23,7 @@ import PageTitle from '../util/page-title'
 import ServiceTimeRangeRetriever from '../util/service-time-range-retriever'
 import withMap from '../map/with-map'
 
-import { Card, CardBody, CardHeader } from './nearby/styled'
+import { CardBody, CardHeader } from './nearby/styled'
 import FavoriteStopToggle from './favorite-stop-toggle'
 import FromToPicker from './nearby/from-to-picker'
 import StopCardHeader from './nearby/stop-card-header'
@@ -81,14 +81,10 @@ const StyledAlert = styled(Alert)`
   text-align: center;
 `
 
-const HeaderCard = styled(Card)`
-  background: none;
-  color: inherit;
+const HeaderCard = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 5px 0 0;
-  width: 100%;
-  &:hover {
-    box-shadow: none;
-  }
 
   ${CardBody} {
     margin: 25px 0 0;
@@ -211,32 +207,31 @@ class StopScheduleViewer extends Component<Props, State> {
         )}
 
         {/* Header Text */}
-        <div className="header-text">
-          <HeaderCard>
-            {stopData?.name ? (
-              <StopCardHeader
-                // FIXME: What icon should we use?
-                actionIcon={MagnifyingGlass}
-                actionParams={{ entityId: stopId }}
-                actionText={
-                  <FormattedMessage id="components.StopViewer.viewNearby" />
-                }
-                actionUrl={`/nearby/${stopData.lat},${stopData.lon}`}
-                CardTitle="h1"
-                fromToSlot={this._renderControls()}
-                onZoomClick={this._zoomToStop}
-                stopData={stopData}
-              />
-            ) : (
-              <CardHeader>
-                <h1>
-                  <FormattedMessage id="components.StopViewer.loadingText" />
-                </h1>
-              </CardHeader>
-            )}
-          </HeaderCard>
-          <FavoriteStopToggle stopData={stopData} />
-        </div>
+        <HeaderCard>
+          {stopData?.name ? (
+            <StopCardHeader
+              // FIXME: What icon should we use?
+              actionIcon={MagnifyingGlass}
+              actionParams={{ entityId: stopId }}
+              actionText={
+                <FormattedMessage id="components.StopViewer.viewNearby" />
+              }
+              actionUrl={`/nearby/${stopData.lat},${stopData.lon}`}
+              CardTitle="h1"
+              fromToSlot={this._renderControls()}
+              onZoomClick={this._zoomToStop}
+              stopData={stopData}
+            />
+          ) : (
+            <CardHeader>
+              <h1>
+                <FormattedMessage id="components.StopViewer.loadingText" />
+              </h1>
+            </CardHeader>
+          )}
+        </HeaderCard>
+        <FavoriteStopToggle stopData={stopData} />
+
         <div style={{ clear: 'both' }} />
       </div>
     )

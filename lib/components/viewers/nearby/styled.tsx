@@ -36,10 +36,10 @@ export const Card = styled.div`
 `
 
 export const CardHeader = styled.div`
+  align-items: center;
   display: flex;
-  flex-direction: column;
-  padding: 0 1.2rem;
-  padding-top: 1rem;
+  gap: 0.5ch;
+  padding: 1rem 1.2rem 0;
 `
 
 export const CardTitle = styled.p`

@@ -59,12 +59,6 @@
   margin-right: 10px;
 }
 
-.otp .stop-viewer .header-text {
-  display: flex;
-  align-items: flex-end;
-  gap: 1ch;
-}
-.otp .stop-viewer .header-text h1,
 .otp .trip-viewer .header-text,
 .otp .route-viewer .header-text {
   display: contents;

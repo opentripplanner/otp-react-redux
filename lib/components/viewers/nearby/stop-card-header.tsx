@@ -41,17 +41,26 @@ type Props = {
 const Operator = ({ operator }: { operator?: TransitOperator }) => {
   const intl = useIntl()
   return operator && operator.logo ? (
-    <OperatorLogo
-      alt={intl.formatMessage(
-        {
-          id: 'components.StopViewer.operatorLogoAriaLabel'
-        },
-        {
-          operatorName: operator.name
-        }
-      )}
-      operator={operator}
-    />
+    /* Span with agency classname allows optional contrast/customization in user 
+    config for logos with poor contrast. Class name is hyphenated agency name 
+    e.g. "sound-transit" */
+    <span
+      className={
+        operator.name ? operator.name.replace(/\s+/g, '-').toLowerCase() : ''
+      }
+    >
+      <OperatorLogo
+        alt={intl.formatMessage(
+          {
+            id: 'components.StopViewer.operatorLogoAriaLabel'
+          },
+          {
+            operatorName: operator.name
+          }
+        )}
+        operator={operator}
+      />
+    </span>
   ) : (
     <MapPin />
   )
@@ -83,27 +92,17 @@ const StopCardHeader = ({
   return (
     <>
       <CardHeader>
-        <NearbyCardTitle as={CardTitle}>
-          <IconWithText
-            icon={
-              <>
-                {transitOperators
-                  ?.filter((to) => Array.from(agencies).includes(to.agencyId))
-                  // Second pass to remove duplicates based on name
-                  .filter(
-                    (to, index, arr) =>
-                      index === arr.findIndex((t) => t?.name === to?.name)
-                  )
-                  .map((to) => (
-                    <Operator key={to.agencyId} operator={to} />
-                  ))}
-              </>
-            }
-            styleProps={{}}
-          >
-            {stopData.name}
-          </IconWithText>
-        </NearbyCardTitle>
+        {transitOperators
+          ?.filter((to) => Array.from(agencies).includes(to.agencyId))
+          // Second pass to remove duplicates based on name
+          .filter(
+            (to, index, arr) =>
+              index === arr.findIndex((t) => t?.name === to?.name)
+          )
+          .map((to) => (
+            <Operator key={to.agencyId} operator={to} />
+          ))}
+        <NearbyCardTitle as={CardTitle}>{stopData.name}</NearbyCardTitle>
       </CardHeader>
       <CardBody>
         <div>
