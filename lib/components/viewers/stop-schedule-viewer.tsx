@@ -271,7 +271,7 @@ class StopScheduleViewer extends Component<Props, State> {
 
     return (
       <div role="group" style={{ marginBottom: '10px' }}>
-        <StyledFromToPicker place={stopData} />
+        {stopData ? <StyledFromToPicker place={stopData} /> : null}
         <input
           aria-label={intl.formatMessage({
             id: 'components.StopViewer.findSchedule'

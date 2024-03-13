@@ -8,7 +8,7 @@ import React from 'react'
 import { AppReduxState } from '../../../util/state-types'
 import { extractHeadsignFromPattern } from '../../../util/viewer'
 import { NearbyViewConfig } from '../../../util/config-types'
-import { Pattern, StopTime } from '../../util/types'
+import { PatternStopTime, StopTime } from '../../util/types'
 import PatternRow from '../pattern-row'
 import TimezoneWarning from '../timezone-warning'
 
@@ -16,11 +16,6 @@ import { Card, PatternRowContainer, StyledAlert } from './styled'
 import StopCardHeader from './stop-card-header'
 
 const { getUserTimezone } = coreUtils.time
-
-type PatternStopTime = {
-  pattern: Pattern
-  stoptimes: StopTime[]
-}
 
 type StopData = Place & {
   code: string

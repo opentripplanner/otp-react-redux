@@ -7,7 +7,7 @@ import React, { ComponentType } from 'react'
 
 import { AppReduxState } from '../../../util/state-types'
 import { Icon, IconWithText } from '../../util/styledIcon'
-import { Pattern, StopTime } from '../../util/types'
+import { PatternStopTime } from '../../util/types'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import Link from '../../util/link'
 import OperatorLogo from '../../util/operator-logo'
@@ -15,15 +15,10 @@ import Strong from '../../util/strong-text'
 
 import { CardBody, CardHeader, CardTitle as NearbyCardTitle } from './styled'
 
-type PatternStopTime = {
-  pattern: Pattern
-  stoptimes: StopTime[]
-}
-
 type StopData = Place & {
-  code: string
-  gtfsId: string
-  stoptimesForPatterns: PatternStopTime[]
+  code?: string
+  gtfsId?: string
+  stoptimesForPatterns?: PatternStopTime[]
 }
 
 type Props = {
@@ -32,7 +27,7 @@ type Props = {
   actionPath: string
   actionText: JSX.Element
   fromToSlot: JSX.Element
-  onZoomClick: () => void
+  onZoomClick?: () => void
   stopData: StopData
   titleAs?: string
   transitOperators?: TransitOperator[]
@@ -78,31 +73,35 @@ const StopCardHeader = ({
   transitOperators
 }: Props): JSX.Element => {
   const intl = useIntl()
-  const agencies = stopData.stoptimesForPatterns?.reduce<Set<string>>(
-    // @ts-expect-error The agency type is not yet compatible with OTP2
-    (prev, cur) => prev.add(cur.pattern.route.agency.gtfsId),
-    new Set()
-  )
+  const agencies =
+    stopData.stoptimesForPatterns?.reduce<Set<string>>(
+      // @ts-expect-error The agency type is not yet compatible with OTP2
+      (prev, cur) => prev.add(cur.pattern.route.agency.gtfsId),
+      new Set()
+    ) || new Set()
   const zoomButtonText = onZoomClick
     ? intl.formatMessage({
         id: 'components.StopViewer.zoomToStop'
       })
-    : null
+    : undefined
 
   return (
     <>
       <CardHeader>
-        {transitOperators
-          ?.filter((to) => Array.from(agencies).includes(to.agencyId))
-          // Second pass to remove duplicates based on name
-          .filter(
-            (to, index, arr) =>
-              index === arr.findIndex((t) => t?.name === to?.name)
-          )
-          .map((to) => (
-            <Operator key={to.agencyId} operator={to} />
-          ))}
-        <NearbyCardTitle as={titleAs}>{stopData.name}</NearbyCardTitle>
+        {/* @ts-expect-error The 'as' prop in styled-components is not listed for TypeScript. */}
+        <NearbyCardTitle as={titleAs}>
+          {transitOperators
+            ?.filter((to) => Array.from(agencies).includes(to.agencyId))
+            // Second pass to remove duplicates based on name
+            .filter(
+              (to, index, arr) =>
+                index === arr.findIndex((t) => t?.name === to?.name)
+            )
+            .map((to) => (
+              <Operator key={to.agencyId} operator={to} />
+            ))}
+          <span>{stopData.name}</span>
+        </NearbyCardTitle>
       </CardHeader>
       <CardBody>
         <div>

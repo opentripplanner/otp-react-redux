@@ -52,7 +52,7 @@ const getNearbyItem = (place: any) => {
     case 'RentalVehicle':
       return <Vehicle fromToSlot={fromTo} vehicle={place} />
     case 'Stop':
-      return <Stop fromToSlot={fromTo} showOperatorLogo stopData={place} />
+      return <Stop fromToSlot={fromTo} stopData={place} />
     case 'VehicleParking':
       return <VehicleParking fromToSlot={fromTo} place={place} />
     case 'BikeRentalStation':
@@ -82,11 +82,6 @@ function NearbyView({
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
   const firstItemRef = useRef<HTMLDivElement>(null)
-
-  const onClickSetLocation: SetLocationHandler = (payload) => {
-    setMainPanelContent(0)
-    setLocation(payload)
-  }
 
   // Make sure the highlighted location is cleaned up when leaving nearby
   useEffect(() => {
@@ -174,7 +169,7 @@ function NearbyView({
           /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
           tabIndex={0}
         >
-          {getNearbyItem(n.place, onClickSetLocation)}
+          {getNearbyItem(n.place)}
         </div>
       </li>
     ))

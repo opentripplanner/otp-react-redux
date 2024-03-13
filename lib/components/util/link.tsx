@@ -5,7 +5,7 @@ import { combineQueryParams } from '../../util/api'
 
 interface Props extends HTMLAttributes<HTMLSpanElement> {
   to: string
-  toParams: Record<string, unknown>
+  toParams?: Record<string, unknown>
 }
 
 /**
