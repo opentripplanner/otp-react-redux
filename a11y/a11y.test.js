@@ -14,7 +14,7 @@ const OTP_RR_TEST_CONFIG_PATH = '../a11y/test-config.yml'
 
 const MOCK_SERVER_PORT = 9999
 
-const DISABLED_ROUTES = ['/nearby', '/nearby/:latLon']
+const DISABLED_ROUTES = ['/nearby', '/nearby/:latLon', '/schedule']
 
 let browser, server
 // These rules aren't relevant to this project
@@ -98,9 +98,9 @@ test('Mocked Main Trip planner page should pass Axe Tests', async () => {
   )
 })
 
-test('Mocked Stop Viewer and Dropdown should pass Axe tests', async () => {
+test('Mocked Schedule Viewer and Dropdown should pass Axe tests', async () => {
   // Puppeteer can take a long time to load, espeically in some ci environments
   jest.setTimeout(600000)
-  // Test stop viewer
-  await runAxeTestOnPath('/stop/Agency')
+  // Test Schedule viewer
+  await runAxeTestOnPath('/schedule/Agency')
 })
