@@ -2,12 +2,12 @@ import { FormattedTime } from 'react-intl'
 import addSeconds from 'date-fns/addSeconds'
 import React from 'react'
 
-import type { Time } from '../util/types'
+import type { StopTime, Time } from '../util/types'
 
 interface Props {
   originDate?: Date
   realTime?: boolean
-  stopTime: Time
+  stopTime: Time | StopTime
 }
 
 /**
