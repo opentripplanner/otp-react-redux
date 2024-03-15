@@ -2447,10 +2447,28 @@
     "@opentripplanner/core-utils" "^11.2.3"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^5.2.6", "@opentripplanner/itinerary-body@^5.2.7":
+"@opentripplanner/itinerary-body@^5.2.6":
   version "5.2.7"
   resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-5.2.7.tgz#f12d52540a912e14ff3b704604de06608301ff35"
   integrity sha512-aCjhCAlFfMNbjLQc2jG8CPch7TipQcUnzunYxT2ZvwIH5/CUGVjuO0BXxKpXAb3p53eeRwe2VoHoynoMiM7Iuw==
+  dependencies:
+    "@opentripplanner/core-utils" "^11.2.3"
+    "@opentripplanner/humanize-distance" "^1.2.0"
+    "@opentripplanner/icons" "^2.0.9"
+    "@opentripplanner/location-icon" "^1.4.1"
+    "@styled-icons/fa-solid" "^10.34.0"
+    "@styled-icons/foundation" "^10.34.0"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    flat "^5.0.2"
+    react-animate-height "^3.0.4"
+    react-resize-detector "^4.2.1"
+    string-similarity "^4.0.4"
+
+"@opentripplanner/itinerary-body@^5.2.8":
+  version "5.2.8"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-5.2.8.tgz#12cb356dc3c203af9603541d46b2c30f0cc8dbe1"
+  integrity sha512-D/gH80BlTR/J4XYyhVG234J5qVatzYwEjObHUY01u17X+uUgRcl05zv9vNSLx9Va0UDxPc7oR+Ro5VnkW+QkKA==
   dependencies:
     "@opentripplanner/core-utils" "^11.2.3"
     "@opentripplanner/humanize-distance" "^1.2.0"
@@ -2568,10 +2586,10 @@
     "@opentripplanner/icons" "^2.0.9"
     flat "^5.0.2"
 
-"@opentripplanner/transitive-overlay@^3.0.17":
-  version "3.0.17"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-3.0.17.tgz#d2b1cc21d7770fe45dc663970925456d6e10fede"
-  integrity sha512-9j3D5IKhMih/2tayBS+dR2BSAnlJOWayE0f0nxGttj94Q7i+rcsZ1iQ9Z5okA+dRd9oBCdzPiDqCnSfCakOMfA==
+"@opentripplanner/transitive-overlay@^3.0.18":
+  version "3.0.18"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-3.0.18.tgz#c225564355125a0978061704fa4de3e899902869"
+  integrity sha512-zOcxhNszDg/87flr3SZ9J53YA5L0P+YFHQc/so4ceuaVXfkCkuaE6WvubG0FFM7Dj7JE+vqbjqz5bEYI6Xj8qg==
   dependencies:
     "@mapbox/polyline" "^1.1.1"
     "@opentripplanner/base-map" "^3.0.16"
