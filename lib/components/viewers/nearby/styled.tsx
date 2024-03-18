@@ -46,6 +46,10 @@ export const CardTitle = styled.p`
   font-weight: 600;
   gap: 0.5ch;
   margin: 0;
+  /* Prevent svg and images to be taller than the text. */
+  svg {
+    max-height: 1em;
+  }
 `
 
 export const CardSubheader = styled.p`
