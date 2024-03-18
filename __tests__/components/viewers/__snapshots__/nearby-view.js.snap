@@ -4211,7 +4211,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -4614,7 +4614,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -5017,7 +5017,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -9911,7 +9911,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW edHBMM"
+                                        className="sc-ksXiFW ljNmEi"
                                       >
                                         <span>
                                           Roosevelt Station - Bay 2
@@ -9936,7 +9936,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <DummyLink
+                                      <Connect(Link)
                                         className="pull-right"
                                         style={
                                           Object {
@@ -9951,42 +9951,55 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                       >
-                                        <a
-                                          href="/schedule/kcm:36940"
+                                        <Link
+                                          className="pull-right"
+                                          dispatch={[Function]}
+                                          href="#/schedule/kcm:36940"
+                                          style={
+                                            Object {
+                                              "color": "inherit",
+                                              "fontSize": "small",
+                                            }
+                                          }
+                                          to="/schedule/kcm:36940"
+                                          toParams={
+                                            Object {
+                                              "entityId": undefined,
+                                            }
+                                          }
                                         >
-                                          <IconWithText
-                                            Icon={
+                                          <a
+                                            className="pull-right"
+                                            href="#/schedule/kcm:36940"
+                                            style={
                                               Object {
-                                                "$$typeof": Symbol(react.forward_ref),
-                                                "displayName": "Calendar",
-                                                "render": [Function],
+                                                "color": "inherit",
+                                                "fontSize": "small",
                                               }
                                             }
                                           >
-                                            <div
-                                              style={
+                                            <IconWithText
+                                              Icon={
                                                 Object {
-                                                  "display": "contents",
+                                                  "$$typeof": Symbol(react.forward_ref),
+                                                  "displayName": "Calendar",
+                                                  "render": [Function],
                                                 }
                                               }
                                             >
-                                              <Styled(styled.span)>
-                                                <span
-                                                  className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                                >
-                                                  <Calendar>
-                                                    <StyledIconBase
-                                                      iconAttrs={
-                                                        Object {
-                                                          "fill": "currentColor",
-                                                          "xmlns": "http://www.w3.org/2000/svg",
-                                                        }
-                                                      }
-                                                      iconVerticalAlign="middle"
-                                                      iconViewBox="0 0 448 512"
-                                                    >
-                                                      <ForwardRef
-                                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                              <div
+                                                style={
+                                                  Object {
+                                                    "display": "contents",
+                                                  }
+                                                }
+                                              >
+                                                <Styled(styled.span)>
+                                                  <span
+                                                    className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                                                  >
+                                                    <Calendar>
+                                                      <StyledIconBase
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -9996,35 +10009,47 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         iconVerticalAlign="middle"
                                                         iconViewBox="0 0 448 512"
                                                       >
-                                                        <svg
-                                                          aria-hidden="true"
+                                                        <ForwardRef
                                                           className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                          fill="currentColor"
-                                                          focusable="false"
-                                                          viewBox="0 0 448 512"
-                                                          xmlns="http://www.w3.org/2000/svg"
+                                                          iconAttrs={
+                                                            Object {
+                                                              "fill": "currentColor",
+                                                              "xmlns": "http://www.w3.org/2000/svg",
+                                                            }
+                                                          }
+                                                          iconVerticalAlign="middle"
+                                                          iconViewBox="0 0 448 512"
                                                         >
-                                                          <path
-                                                            d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                          <svg
+                                                            aria-hidden="true"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                                                             fill="currentColor"
-                                                          />
-                                                        </svg>
-                                                      </ForwardRef>
-                                                    </StyledIconBase>
-                                                  </Calendar>
+                                                            focusable="false"
+                                                            viewBox="0 0 448 512"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                          >
+                                                            <path
+                                                              d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                              fill="currentColor"
+                                                            />
+                                                          </svg>
+                                                        </ForwardRef>
+                                                      </StyledIconBase>
+                                                    </Calendar>
+                                                  </span>
+                                                </Styled(styled.span)>
+                                                <span>
+                                                  <FormattedMessage
+                                                    id="components.StopViewer.viewSchedule"
+                                                  >
+                                                    components.StopViewer.viewSchedule
+                                                  </FormattedMessage>
                                                 </span>
-                                              </Styled(styled.span)>
-                                              <span>
-                                                <FormattedMessage
-                                                  id="components.StopViewer.viewSchedule"
-                                                >
-                                                  components.StopViewer.viewSchedule
-                                                </FormattedMessage>
-                                              </span>
-                                            </div>
-                                          </IconWithText>
-                                        </a>
-                                      </DummyLink>
+                                              </div>
+                                            </IconWithText>
+                                          </a>
+                                        </Link>
+                                      </Connect(Link)>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
@@ -16692,7 +16717,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW edHBMM"
+                                        className="sc-ksXiFW ljNmEi"
                                       >
                                         <span>
                                           Roosevelt
@@ -16717,7 +16742,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <DummyLink
+                                      <Connect(Link)
                                         className="pull-right"
                                         style={
                                           Object {
@@ -16732,42 +16757,55 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                       >
-                                        <a
-                                          href="/schedule/40:990003"
+                                        <Link
+                                          className="pull-right"
+                                          dispatch={[Function]}
+                                          href="#/schedule/40:990003"
+                                          style={
+                                            Object {
+                                              "color": "inherit",
+                                              "fontSize": "small",
+                                            }
+                                          }
+                                          to="/schedule/40:990003"
+                                          toParams={
+                                            Object {
+                                              "entityId": undefined,
+                                            }
+                                          }
                                         >
-                                          <IconWithText
-                                            Icon={
+                                          <a
+                                            className="pull-right"
+                                            href="#/schedule/40:990003"
+                                            style={
                                               Object {
-                                                "$$typeof": Symbol(react.forward_ref),
-                                                "displayName": "Calendar",
-                                                "render": [Function],
+                                                "color": "inherit",
+                                                "fontSize": "small",
                                               }
                                             }
                                           >
-                                            <div
-                                              style={
+                                            <IconWithText
+                                              Icon={
                                                 Object {
-                                                  "display": "contents",
+                                                  "$$typeof": Symbol(react.forward_ref),
+                                                  "displayName": "Calendar",
+                                                  "render": [Function],
                                                 }
                                               }
                                             >
-                                              <Styled(styled.span)>
-                                                <span
-                                                  className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                                >
-                                                  <Calendar>
-                                                    <StyledIconBase
-                                                      iconAttrs={
-                                                        Object {
-                                                          "fill": "currentColor",
-                                                          "xmlns": "http://www.w3.org/2000/svg",
-                                                        }
-                                                      }
-                                                      iconVerticalAlign="middle"
-                                                      iconViewBox="0 0 448 512"
-                                                    >
-                                                      <ForwardRef
-                                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                              <div
+                                                style={
+                                                  Object {
+                                                    "display": "contents",
+                                                  }
+                                                }
+                                              >
+                                                <Styled(styled.span)>
+                                                  <span
+                                                    className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                                                  >
+                                                    <Calendar>
+                                                      <StyledIconBase
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -16777,35 +16815,47 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         iconVerticalAlign="middle"
                                                         iconViewBox="0 0 448 512"
                                                       >
-                                                        <svg
-                                                          aria-hidden="true"
+                                                        <ForwardRef
                                                           className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                          fill="currentColor"
-                                                          focusable="false"
-                                                          viewBox="0 0 448 512"
-                                                          xmlns="http://www.w3.org/2000/svg"
+                                                          iconAttrs={
+                                                            Object {
+                                                              "fill": "currentColor",
+                                                              "xmlns": "http://www.w3.org/2000/svg",
+                                                            }
+                                                          }
+                                                          iconVerticalAlign="middle"
+                                                          iconViewBox="0 0 448 512"
                                                         >
-                                                          <path
-                                                            d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                          <svg
+                                                            aria-hidden="true"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                                                             fill="currentColor"
-                                                          />
-                                                        </svg>
-                                                      </ForwardRef>
-                                                    </StyledIconBase>
-                                                  </Calendar>
+                                                            focusable="false"
+                                                            viewBox="0 0 448 512"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                          >
+                                                            <path
+                                                              d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                              fill="currentColor"
+                                                            />
+                                                          </svg>
+                                                        </ForwardRef>
+                                                      </StyledIconBase>
+                                                    </Calendar>
+                                                  </span>
+                                                </Styled(styled.span)>
+                                                <span>
+                                                  <FormattedMessage
+                                                    id="components.StopViewer.viewSchedule"
+                                                  >
+                                                    components.StopViewer.viewSchedule
+                                                  </FormattedMessage>
                                                 </span>
-                                              </Styled(styled.span)>
-                                              <span>
-                                                <FormattedMessage
-                                                  id="components.StopViewer.viewSchedule"
-                                                >
-                                                  components.StopViewer.viewSchedule
-                                                </FormattedMessage>
-                                              </span>
-                                            </div>
-                                          </IconWithText>
-                                        </a>
-                                      </DummyLink>
+                                              </div>
+                                            </IconWithText>
+                                          </a>
+                                        </Link>
+                                      </Connect(Link)>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
@@ -19741,7 +19791,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -20144,7 +20194,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -20547,7 +20597,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -26057,7 +26107,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW edHBMM"
+                                        className="sc-ksXiFW ljNmEi"
                                       >
                                         <span>
                                           Roosevelt Station - Bay 1
@@ -26082,7 +26132,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <DummyLink
+                                      <Connect(Link)
                                         className="pull-right"
                                         style={
                                           Object {
@@ -26097,42 +26147,55 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                       >
-                                        <a
-                                          href="/schedule/kcm:16430"
+                                        <Link
+                                          className="pull-right"
+                                          dispatch={[Function]}
+                                          href="#/schedule/kcm:16430"
+                                          style={
+                                            Object {
+                                              "color": "inherit",
+                                              "fontSize": "small",
+                                            }
+                                          }
+                                          to="/schedule/kcm:16430"
+                                          toParams={
+                                            Object {
+                                              "entityId": undefined,
+                                            }
+                                          }
                                         >
-                                          <IconWithText
-                                            Icon={
+                                          <a
+                                            className="pull-right"
+                                            href="#/schedule/kcm:16430"
+                                            style={
                                               Object {
-                                                "$$typeof": Symbol(react.forward_ref),
-                                                "displayName": "Calendar",
-                                                "render": [Function],
+                                                "color": "inherit",
+                                                "fontSize": "small",
                                               }
                                             }
                                           >
-                                            <div
-                                              style={
+                                            <IconWithText
+                                              Icon={
                                                 Object {
-                                                  "display": "contents",
+                                                  "$$typeof": Symbol(react.forward_ref),
+                                                  "displayName": "Calendar",
+                                                  "render": [Function],
                                                 }
                                               }
                                             >
-                                              <Styled(styled.span)>
-                                                <span
-                                                  className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                                >
-                                                  <Calendar>
-                                                    <StyledIconBase
-                                                      iconAttrs={
-                                                        Object {
-                                                          "fill": "currentColor",
-                                                          "xmlns": "http://www.w3.org/2000/svg",
-                                                        }
-                                                      }
-                                                      iconVerticalAlign="middle"
-                                                      iconViewBox="0 0 448 512"
-                                                    >
-                                                      <ForwardRef
-                                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                              <div
+                                                style={
+                                                  Object {
+                                                    "display": "contents",
+                                                  }
+                                                }
+                                              >
+                                                <Styled(styled.span)>
+                                                  <span
+                                                    className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                                                  >
+                                                    <Calendar>
+                                                      <StyledIconBase
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -26142,35 +26205,47 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         iconVerticalAlign="middle"
                                                         iconViewBox="0 0 448 512"
                                                       >
-                                                        <svg
-                                                          aria-hidden="true"
+                                                        <ForwardRef
                                                           className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                          fill="currentColor"
-                                                          focusable="false"
-                                                          viewBox="0 0 448 512"
-                                                          xmlns="http://www.w3.org/2000/svg"
+                                                          iconAttrs={
+                                                            Object {
+                                                              "fill": "currentColor",
+                                                              "xmlns": "http://www.w3.org/2000/svg",
+                                                            }
+                                                          }
+                                                          iconVerticalAlign="middle"
+                                                          iconViewBox="0 0 448 512"
                                                         >
-                                                          <path
-                                                            d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                          <svg
+                                                            aria-hidden="true"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                                                             fill="currentColor"
-                                                          />
-                                                        </svg>
-                                                      </ForwardRef>
-                                                    </StyledIconBase>
-                                                  </Calendar>
+                                                            focusable="false"
+                                                            viewBox="0 0 448 512"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                          >
+                                                            <path
+                                                              d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                              fill="currentColor"
+                                                            />
+                                                          </svg>
+                                                        </ForwardRef>
+                                                      </StyledIconBase>
+                                                    </Calendar>
+                                                  </span>
+                                                </Styled(styled.span)>
+                                                <span>
+                                                  <FormattedMessage
+                                                    id="components.StopViewer.viewSchedule"
+                                                  >
+                                                    components.StopViewer.viewSchedule
+                                                  </FormattedMessage>
                                                 </span>
-                                              </Styled(styled.span)>
-                                              <span>
-                                                <FormattedMessage
-                                                  id="components.StopViewer.viewSchedule"
-                                                >
-                                                  components.StopViewer.viewSchedule
-                                                </FormattedMessage>
-                                              </span>
-                                            </div>
-                                          </IconWithText>
-                                        </a>
-                                      </DummyLink>
+                                              </div>
+                                            </IconWithText>
+                                          </a>
+                                        </Link>
+                                      </Connect(Link)>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
@@ -30495,7 +30570,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -30898,7 +30973,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -31301,7 +31376,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -31704,7 +31779,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -32107,7 +32182,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -35393,7 +35468,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW edHBMM"
+                                        className="sc-ksXiFW ljNmEi"
                                       >
                                         <span>
                                           Roosevelt Station Bay 5 - Bay 5
@@ -35418,7 +35493,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <DummyLink
+                                      <Connect(Link)
                                         className="pull-right"
                                         style={
                                           Object {
@@ -35433,42 +35508,55 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                       >
-                                        <a
-                                          href="/schedule/kcm:16440"
+                                        <Link
+                                          className="pull-right"
+                                          dispatch={[Function]}
+                                          href="#/schedule/kcm:16440"
+                                          style={
+                                            Object {
+                                              "color": "inherit",
+                                              "fontSize": "small",
+                                            }
+                                          }
+                                          to="/schedule/kcm:16440"
+                                          toParams={
+                                            Object {
+                                              "entityId": undefined,
+                                            }
+                                          }
                                         >
-                                          <IconWithText
-                                            Icon={
+                                          <a
+                                            className="pull-right"
+                                            href="#/schedule/kcm:16440"
+                                            style={
                                               Object {
-                                                "$$typeof": Symbol(react.forward_ref),
-                                                "displayName": "Calendar",
-                                                "render": [Function],
+                                                "color": "inherit",
+                                                "fontSize": "small",
                                               }
                                             }
                                           >
-                                            <div
-                                              style={
+                                            <IconWithText
+                                              Icon={
                                                 Object {
-                                                  "display": "contents",
+                                                  "$$typeof": Symbol(react.forward_ref),
+                                                  "displayName": "Calendar",
+                                                  "render": [Function],
                                                 }
                                               }
                                             >
-                                              <Styled(styled.span)>
-                                                <span
-                                                  className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                                >
-                                                  <Calendar>
-                                                    <StyledIconBase
-                                                      iconAttrs={
-                                                        Object {
-                                                          "fill": "currentColor",
-                                                          "xmlns": "http://www.w3.org/2000/svg",
-                                                        }
-                                                      }
-                                                      iconVerticalAlign="middle"
-                                                      iconViewBox="0 0 448 512"
-                                                    >
-                                                      <ForwardRef
-                                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                              <div
+                                                style={
+                                                  Object {
+                                                    "display": "contents",
+                                                  }
+                                                }
+                                              >
+                                                <Styled(styled.span)>
+                                                  <span
+                                                    className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                                                  >
+                                                    <Calendar>
+                                                      <StyledIconBase
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -35478,35 +35566,47 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         iconVerticalAlign="middle"
                                                         iconViewBox="0 0 448 512"
                                                       >
-                                                        <svg
-                                                          aria-hidden="true"
+                                                        <ForwardRef
                                                           className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                          fill="currentColor"
-                                                          focusable="false"
-                                                          viewBox="0 0 448 512"
-                                                          xmlns="http://www.w3.org/2000/svg"
+                                                          iconAttrs={
+                                                            Object {
+                                                              "fill": "currentColor",
+                                                              "xmlns": "http://www.w3.org/2000/svg",
+                                                            }
+                                                          }
+                                                          iconVerticalAlign="middle"
+                                                          iconViewBox="0 0 448 512"
                                                         >
-                                                          <path
-                                                            d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                          <svg
+                                                            aria-hidden="true"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                                                             fill="currentColor"
-                                                          />
-                                                        </svg>
-                                                      </ForwardRef>
-                                                    </StyledIconBase>
-                                                  </Calendar>
+                                                            focusable="false"
+                                                            viewBox="0 0 448 512"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                          >
+                                                            <path
+                                                              d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                              fill="currentColor"
+                                                            />
+                                                          </svg>
+                                                        </ForwardRef>
+                                                      </StyledIconBase>
+                                                    </Calendar>
+                                                  </span>
+                                                </Styled(styled.span)>
+                                                <span>
+                                                  <FormattedMessage
+                                                    id="components.StopViewer.viewSchedule"
+                                                  >
+                                                    components.StopViewer.viewSchedule
+                                                  </FormattedMessage>
                                                 </span>
-                                              </Styled(styled.span)>
-                                              <span>
-                                                <FormattedMessage
-                                                  id="components.StopViewer.viewSchedule"
-                                                >
-                                                  components.StopViewer.viewSchedule
-                                                </FormattedMessage>
-                                              </span>
-                                            </div>
-                                          </IconWithText>
-                                        </a>
-                                      </DummyLink>
+                                              </div>
+                                            </IconWithText>
+                                          </a>
+                                        </Link>
+                                      </Connect(Link)>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
@@ -38447,7 +38547,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -43133,7 +43233,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW edHBMM"
+                                        className="sc-ksXiFW ljNmEi"
                                       >
                                         <span>
                                           Roosevelt
@@ -43158,7 +43258,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <DummyLink
+                                      <Connect(Link)
                                         className="pull-right"
                                         style={
                                           Object {
@@ -43173,42 +43273,55 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                       >
-                                        <a
-                                          href="/schedule/40:990004"
+                                        <Link
+                                          className="pull-right"
+                                          dispatch={[Function]}
+                                          href="#/schedule/40:990004"
+                                          style={
+                                            Object {
+                                              "color": "inherit",
+                                              "fontSize": "small",
+                                            }
+                                          }
+                                          to="/schedule/40:990004"
+                                          toParams={
+                                            Object {
+                                              "entityId": undefined,
+                                            }
+                                          }
                                         >
-                                          <IconWithText
-                                            Icon={
+                                          <a
+                                            className="pull-right"
+                                            href="#/schedule/40:990004"
+                                            style={
                                               Object {
-                                                "$$typeof": Symbol(react.forward_ref),
-                                                "displayName": "Calendar",
-                                                "render": [Function],
+                                                "color": "inherit",
+                                                "fontSize": "small",
                                               }
                                             }
                                           >
-                                            <div
-                                              style={
+                                            <IconWithText
+                                              Icon={
                                                 Object {
-                                                  "display": "contents",
+                                                  "$$typeof": Symbol(react.forward_ref),
+                                                  "displayName": "Calendar",
+                                                  "render": [Function],
                                                 }
                                               }
                                             >
-                                              <Styled(styled.span)>
-                                                <span
-                                                  className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                                >
-                                                  <Calendar>
-                                                    <StyledIconBase
-                                                      iconAttrs={
-                                                        Object {
-                                                          "fill": "currentColor",
-                                                          "xmlns": "http://www.w3.org/2000/svg",
-                                                        }
-                                                      }
-                                                      iconVerticalAlign="middle"
-                                                      iconViewBox="0 0 448 512"
-                                                    >
-                                                      <ForwardRef
-                                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                              <div
+                                                style={
+                                                  Object {
+                                                    "display": "contents",
+                                                  }
+                                                }
+                                              >
+                                                <Styled(styled.span)>
+                                                  <span
+                                                    className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                                                  >
+                                                    <Calendar>
+                                                      <StyledIconBase
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -43218,35 +43331,47 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         iconVerticalAlign="middle"
                                                         iconViewBox="0 0 448 512"
                                                       >
-                                                        <svg
-                                                          aria-hidden="true"
+                                                        <ForwardRef
                                                           className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                          fill="currentColor"
-                                                          focusable="false"
-                                                          viewBox="0 0 448 512"
-                                                          xmlns="http://www.w3.org/2000/svg"
+                                                          iconAttrs={
+                                                            Object {
+                                                              "fill": "currentColor",
+                                                              "xmlns": "http://www.w3.org/2000/svg",
+                                                            }
+                                                          }
+                                                          iconVerticalAlign="middle"
+                                                          iconViewBox="0 0 448 512"
                                                         >
-                                                          <path
-                                                            d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                          <svg
+                                                            aria-hidden="true"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                                                             fill="currentColor"
-                                                          />
-                                                        </svg>
-                                                      </ForwardRef>
-                                                    </StyledIconBase>
-                                                  </Calendar>
+                                                            focusable="false"
+                                                            viewBox="0 0 448 512"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                          >
+                                                            <path
+                                                              d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                              fill="currentColor"
+                                                            />
+                                                          </svg>
+                                                        </ForwardRef>
+                                                      </StyledIconBase>
+                                                    </Calendar>
+                                                  </span>
+                                                </Styled(styled.span)>
+                                                <span>
+                                                  <FormattedMessage
+                                                    id="components.StopViewer.viewSchedule"
+                                                  >
+                                                    components.StopViewer.viewSchedule
+                                                  </FormattedMessage>
                                                 </span>
-                                              </Styled(styled.span)>
-                                              <span>
-                                                <FormattedMessage
-                                                  id="components.StopViewer.viewSchedule"
-                                                >
-                                                  components.StopViewer.viewSchedule
-                                                </FormattedMessage>
-                                              </span>
-                                            </div>
-                                          </IconWithText>
-                                        </a>
-                                      </DummyLink>
+                                              </div>
+                                            </IconWithText>
+                                          </a>
+                                        </Link>
+                                      </Connect(Link)>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
@@ -50637,7 +50762,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW edHBMM"
+                                        className="sc-ksXiFW ljNmEi"
                                       >
                                         <span>
                                           Roosevelt Station - Bay 3
@@ -50662,7 +50787,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <DummyLink
+                                      <Connect(Link)
                                         className="pull-right"
                                         style={
                                           Object {
@@ -50677,42 +50802,55 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                       >
-                                        <a
-                                          href="/schedule/kcm:23561"
+                                        <Link
+                                          className="pull-right"
+                                          dispatch={[Function]}
+                                          href="#/schedule/kcm:23561"
+                                          style={
+                                            Object {
+                                              "color": "inherit",
+                                              "fontSize": "small",
+                                            }
+                                          }
+                                          to="/schedule/kcm:23561"
+                                          toParams={
+                                            Object {
+                                              "entityId": undefined,
+                                            }
+                                          }
                                         >
-                                          <IconWithText
-                                            Icon={
+                                          <a
+                                            className="pull-right"
+                                            href="#/schedule/kcm:23561"
+                                            style={
                                               Object {
-                                                "$$typeof": Symbol(react.forward_ref),
-                                                "displayName": "Calendar",
-                                                "render": [Function],
+                                                "color": "inherit",
+                                                "fontSize": "small",
                                               }
                                             }
                                           >
-                                            <div
-                                              style={
+                                            <IconWithText
+                                              Icon={
                                                 Object {
-                                                  "display": "contents",
+                                                  "$$typeof": Symbol(react.forward_ref),
+                                                  "displayName": "Calendar",
+                                                  "render": [Function],
                                                 }
                                               }
                                             >
-                                              <Styled(styled.span)>
-                                                <span
-                                                  className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                                >
-                                                  <Calendar>
-                                                    <StyledIconBase
-                                                      iconAttrs={
-                                                        Object {
-                                                          "fill": "currentColor",
-                                                          "xmlns": "http://www.w3.org/2000/svg",
-                                                        }
-                                                      }
-                                                      iconVerticalAlign="middle"
-                                                      iconViewBox="0 0 448 512"
-                                                    >
-                                                      <ForwardRef
-                                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                              <div
+                                                style={
+                                                  Object {
+                                                    "display": "contents",
+                                                  }
+                                                }
+                                              >
+                                                <Styled(styled.span)>
+                                                  <span
+                                                    className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                                                  >
+                                                    <Calendar>
+                                                      <StyledIconBase
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -50722,35 +50860,47 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         iconVerticalAlign="middle"
                                                         iconViewBox="0 0 448 512"
                                                       >
-                                                        <svg
-                                                          aria-hidden="true"
+                                                        <ForwardRef
                                                           className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                          fill="currentColor"
-                                                          focusable="false"
-                                                          viewBox="0 0 448 512"
-                                                          xmlns="http://www.w3.org/2000/svg"
+                                                          iconAttrs={
+                                                            Object {
+                                                              "fill": "currentColor",
+                                                              "xmlns": "http://www.w3.org/2000/svg",
+                                                            }
+                                                          }
+                                                          iconVerticalAlign="middle"
+                                                          iconViewBox="0 0 448 512"
                                                         >
-                                                          <path
-                                                            d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                          <svg
+                                                            aria-hidden="true"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                                                             fill="currentColor"
-                                                          />
-                                                        </svg>
-                                                      </ForwardRef>
-                                                    </StyledIconBase>
-                                                  </Calendar>
+                                                            focusable="false"
+                                                            viewBox="0 0 448 512"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                          >
+                                                            <path
+                                                              d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                              fill="currentColor"
+                                                            />
+                                                          </svg>
+                                                        </ForwardRef>
+                                                      </StyledIconBase>
+                                                    </Calendar>
+                                                  </span>
+                                                </Styled(styled.span)>
+                                                <span>
+                                                  <FormattedMessage
+                                                    id="components.StopViewer.viewSchedule"
+                                                  >
+                                                    components.StopViewer.viewSchedule
+                                                  </FormattedMessage>
                                                 </span>
-                                              </Styled(styled.span)>
-                                              <span>
-                                                <FormattedMessage
-                                                  id="components.StopViewer.viewSchedule"
-                                                >
-                                                  components.StopViewer.viewSchedule
-                                                </FormattedMessage>
-                                              </span>
-                                            </div>
-                                          </IconWithText>
-                                        </a>
-                                      </DummyLink>
+                                              </div>
+                                            </IconWithText>
+                                          </a>
+                                        </Link>
+                                      </Connect(Link)>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={
@@ -56788,7 +56938,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW edHBMM"
+                                    className="sc-ksXiFW ljNmEi"
                                   >
                                     <IconWithText
                                       icon={
@@ -61682,7 +61832,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW edHBMM"
+                                        className="sc-ksXiFW ljNmEi"
                                       >
                                         <span>
                                           NE 65th St & 14th Ave NE
@@ -61707,7 +61857,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         components.StopViewer.displayStopId
                                       </FormattedMessage>
-                                      <DummyLink
+                                      <Connect(Link)
                                         className="pull-right"
                                         style={
                                           Object {
@@ -61722,42 +61872,55 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                       >
-                                        <a
-                                          href="/schedule/kcm:36931"
+                                        <Link
+                                          className="pull-right"
+                                          dispatch={[Function]}
+                                          href="#/schedule/kcm:36931"
+                                          style={
+                                            Object {
+                                              "color": "inherit",
+                                              "fontSize": "small",
+                                            }
+                                          }
+                                          to="/schedule/kcm:36931"
+                                          toParams={
+                                            Object {
+                                              "entityId": undefined,
+                                            }
+                                          }
                                         >
-                                          <IconWithText
-                                            Icon={
+                                          <a
+                                            className="pull-right"
+                                            href="#/schedule/kcm:36931"
+                                            style={
                                               Object {
-                                                "$$typeof": Symbol(react.forward_ref),
-                                                "displayName": "Calendar",
-                                                "render": [Function],
+                                                "color": "inherit",
+                                                "fontSize": "small",
                                               }
                                             }
                                           >
-                                            <div
-                                              style={
+                                            <IconWithText
+                                              Icon={
                                                 Object {
-                                                  "display": "contents",
+                                                  "$$typeof": Symbol(react.forward_ref),
+                                                  "displayName": "Calendar",
+                                                  "render": [Function],
                                                 }
                                               }
                                             >
-                                              <Styled(styled.span)>
-                                                <span
-                                                  className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
-                                                >
-                                                  <Calendar>
-                                                    <StyledIconBase
-                                                      iconAttrs={
-                                                        Object {
-                                                          "fill": "currentColor",
-                                                          "xmlns": "http://www.w3.org/2000/svg",
-                                                        }
-                                                      }
-                                                      iconVerticalAlign="middle"
-                                                      iconViewBox="0 0 448 512"
-                                                    >
-                                                      <ForwardRef
-                                                        className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                              <div
+                                                style={
+                                                  Object {
+                                                    "display": "contents",
+                                                  }
+                                                }
+                                              >
+                                                <Styled(styled.span)>
+                                                  <span
+                                                    className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                                                  >
+                                                    <Calendar>
+                                                      <StyledIconBase
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -61767,35 +61930,47 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         iconVerticalAlign="middle"
                                                         iconViewBox="0 0 448 512"
                                                       >
-                                                        <svg
-                                                          aria-hidden="true"
+                                                        <ForwardRef
                                                           className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                                          fill="currentColor"
-                                                          focusable="false"
-                                                          viewBox="0 0 448 512"
-                                                          xmlns="http://www.w3.org/2000/svg"
+                                                          iconAttrs={
+                                                            Object {
+                                                              "fill": "currentColor",
+                                                              "xmlns": "http://www.w3.org/2000/svg",
+                                                            }
+                                                          }
+                                                          iconVerticalAlign="middle"
+                                                          iconViewBox="0 0 448 512"
                                                         >
-                                                          <path
-                                                            d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                          <svg
+                                                            aria-hidden="true"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                                                             fill="currentColor"
-                                                          />
-                                                        </svg>
-                                                      </ForwardRef>
-                                                    </StyledIconBase>
-                                                  </Calendar>
+                                                            focusable="false"
+                                                            viewBox="0 0 448 512"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                          >
+                                                            <path
+                                                              d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zm352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192z"
+                                                              fill="currentColor"
+                                                            />
+                                                          </svg>
+                                                        </ForwardRef>
+                                                      </StyledIconBase>
+                                                    </Calendar>
+                                                  </span>
+                                                </Styled(styled.span)>
+                                                <span>
+                                                  <FormattedMessage
+                                                    id="components.StopViewer.viewSchedule"
+                                                  >
+                                                    components.StopViewer.viewSchedule
+                                                  </FormattedMessage>
                                                 </span>
-                                              </Styled(styled.span)>
-                                              <span>
-                                                <FormattedMessage
-                                                  id="components.StopViewer.viewSchedule"
-                                                >
-                                                  components.StopViewer.viewSchedule
-                                                </FormattedMessage>
-                                              </span>
-                                            </div>
-                                          </IconWithText>
-                                        </a>
-                                      </DummyLink>
+                                              </div>
+                                            </IconWithText>
+                                          </a>
+                                        </Link>
+                                      </Connect(Link)>
                                     </div>
                                     <Connect(FromToPicker)
                                       place={

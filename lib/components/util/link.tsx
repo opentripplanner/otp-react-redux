@@ -1,9 +1,15 @@
-import { Link as RouterLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 import React, { HTMLAttributes } from 'react'
 
+import { AppReduxState } from '../../util/state-types'
 import { combineQueryParams } from '../../util/api'
+import { isBlank } from '../../util/ui'
 
-interface Props extends HTMLAttributes<HTMLSpanElement> {
+interface Props extends OwnProps, HTMLAttributes<HTMLAnchorElement> {
+  href: string
+}
+
+interface OwnProps {
   to: string
   toParams?: Record<string, unknown>
 }
@@ -12,28 +18,20 @@ interface Props extends HTMLAttributes<HTMLSpanElement> {
  * Renders an anchor element <a> with specified path and query params,
  * that preserves other existing query params.
  */
-const Link = ({
-  children,
-  className,
-  style,
-  to,
-  toParams
-}: Props): JSX.Element => (
-  <RouterLink
-    className={className}
-    style={style}
-    to={{
-      pathname: to,
-      search: combineQueryParams(toParams)
-    }}
-  >
+const Link = ({ children, className, href, style }: Props): JSX.Element => (
+  <a className={className} href={href} style={style}>
     {children}
-  </RouterLink>
+  </a>
 )
 
-const DummyLink = ({ children, to }: Props): JSX.Element => (
-  // Do not render router links in snapshots.
-  <a href={to}>{children}</a>
-)
+// connect to the redux store so that the search params get updated in timely fashion.
 
-export default typeof jest !== 'undefined' ? DummyLink : Link
+const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
+  const queryParams = combineQueryParams(ownProps.toParams)
+  const href = `#${ownProps.to}${isBlank(queryParams) ? '' : `?${queryParams}`}`
+  return {
+    href
+  }
+}
+
+export default connect(mapStateToProps)(Link)
