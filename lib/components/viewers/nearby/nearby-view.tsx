@@ -32,12 +32,13 @@ type LatLonObj = { lat: number; lon: number }
 
 type Props = {
   entityId?: string
-  fetchNearby: (latLon: LatLonObj, map?: MapRef) => void
+  fetchNearby: (latLon: LatLonObj, radius?: number) => void
   hideBackButton?: boolean
   location: string
   mobile?: boolean
   nearby: any
   nearbyViewCoords?: LatLonObj
+  radius?: number
   setHighlightedLocation: (location: Location | null) => void
   setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
@@ -102,6 +103,7 @@ function NearbyView({
   mobile,
   nearby,
   nearbyViewCoords,
+  radius,
   setHighlightedLocation,
   setLocation,
   setMainPanelContent,
@@ -146,10 +148,10 @@ function NearbyView({
     }
     // If nearby view coords are provided, use those. Otherwise use the map center.
     if (nearbyViewCoords) {
-      fetchNearby(nearbyViewCoords)
+      fetchNearby(nearbyViewCoords, radius)
       setLoading(true)
       const interval = setInterval(() => {
-        fetchNearby(nearbyViewCoords)
+        fetchNearby(nearbyViewCoords, radius)
         setLoading(true)
       }, AUTO_REFRESH_INTERVAL)
       return function cleanup() {
@@ -162,10 +164,10 @@ function NearbyView({
         lon: rawMapCoords.lng
       }
       if (mapCoords) {
-        fetchNearby(mapCoords)
+        fetchNearby(mapCoords, radius)
         setLoading(true)
         const interval = setInterval(() => {
-          fetchNearby(mapCoords)
+          fetchNearby(mapCoords, radius)
           setLoading(true)
         }, AUTO_REFRESH_INTERVAL)
         return function cleanup() {
@@ -173,7 +175,7 @@ function NearbyView({
         }
       }
     }
-  }, [nearbyViewCoords, map, fetchNearby])
+  }, [nearbyViewCoords, map, fetchNearby, radius])
 
   const onMouseEnter = useCallback(
     (location: Location) => {
@@ -276,7 +278,8 @@ const mapStateToProps = (state: AppReduxState) => {
     homeTimezone: config.homeTimezone,
     location: state.router.location.hash,
     nearby,
-    nearbyViewCoords
+    nearbyViewCoords,
+    radius: config.nearbyView?.radius
   }
 }
 
