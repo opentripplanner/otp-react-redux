@@ -23,7 +23,6 @@ import { getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
 import { MainPanelContent } from '../../actions/ui-constants'
 import { setMainPanelContent } from '../../actions/ui'
-import startOver from '../util/start-over'
 
 import AppMenuItem from './app-menu-item'
 import PopupTriggerText from './popup-trigger-text'
@@ -52,12 +51,12 @@ type AppMenuProps = {
   location: { search: string }
   mailablesEnabled?: boolean
   popupTarget?: string
-  reactRouterConfig?: { basename: string }
   resetAndToggleCallHistory?: () => void
   resetAndToggleFieldTrips?: () => void
   setLocale: (locale: string) => void
   setMainPanelContent: (panel: number | null) => void
   setPopupContent: (url: string) => void
+  startOverFromInitialUrl: () => void
   toggleMailables: () => void
 }
 type AppMenuState = {
@@ -88,9 +87,7 @@ class AppMenu extends Component<
   }
 
   _startOver = () => {
-    const { location, reactRouterConfig } = this.props
-    const { search } = location
-    window.location.href = startOver(reactRouterConfig?.basename, search)
+    this.props.startOverFromInitialUrl()
   }
 
   _triggerPopup = () => {
@@ -334,6 +331,7 @@ const mapDispatchToProps = {
   setLocale: uiActions.setLocale,
   setMainPanelContent,
   setPopupContent: uiActions.setPopupContent,
+  startOverFromInitialUrl: uiActions.startOverFromInitialUrl,
   toggleMailables: callTakerActions.toggleMailables
 }
 
