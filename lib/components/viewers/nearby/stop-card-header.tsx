@@ -13,7 +13,7 @@ import Link from '../../util/link'
 import OperatorLogo from '../../util/operator-logo'
 import Strong from '../../util/strong-text'
 
-import { CardBody, CardHeader, CardTitle as NearbyCardTitle } from './styled'
+import { CardBody, CardHeader, CardTitle } from './styled'
 
 type Props = {
   actionIcon: ComponentType
@@ -83,7 +83,7 @@ const StopCardHeader = ({
     <>
       <CardHeader>
         {/* @ts-expect-error The 'as' prop in styled-components is not listed for TypeScript. */}
-        <NearbyCardTitle as={titleAs}>
+        <CardTitle as={titleAs}>
           {transitOperators
             ?.filter((to) => Array.from(agencies).includes(to.agencyId))
             // Second pass to remove duplicates based on name
@@ -95,7 +95,7 @@ const StopCardHeader = ({
               <Operator key={to.agencyId} operator={to} />
             ))}
           <span>{stopData.name}</span>
-        </NearbyCardTitle>
+        </CardTitle>
       </CardHeader>
       <CardBody>
         <div>
