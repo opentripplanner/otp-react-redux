@@ -16,7 +16,7 @@ import * as mapActions from '../../actions/map'
 import { AppReduxState } from '../../util/state-types'
 import { IconWithText } from '../util/styledIcon'
 import { isBlank, navigateBack } from '../../util/ui'
-import { StopData } from '../util/types'
+import { StopData, ZoomToPlaceHandler } from '../util/types'
 import { stopIsFlex } from '../../util/viewer'
 import { TransitOperatorConfig } from '../../util/config-types'
 import PageTitle from '../util/page-title'
@@ -42,12 +42,7 @@ interface Props {
   stopData?: StopData
   stopId?: string
   transitOperators: TransitOperatorConfig[]
-  // TODO refactor
-  zoomToPlace: (
-    map?: MapRef,
-    place?: { lat: number; lon: number },
-    zoom?: number
-  ) => void
+  zoomToPlace: ZoomToPlaceHandler
 }
 
 interface State {
@@ -140,7 +135,6 @@ class StopScheduleViewer extends Component<Props, State> {
     }
   }
 
-  // TODO: refactor
   getOperator = () => {
     const { stopData, transitOperators } = this.props
 

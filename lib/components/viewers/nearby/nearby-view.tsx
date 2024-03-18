@@ -8,7 +8,7 @@ import * as apiActions from '../../../actions/api'
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
-import { SetLocationHandler } from '../../util/types'
+import { SetLocationHandler, ZoomToPlaceHandler } from '../../util/types'
 import Loading from '../../narrative/loading'
 import MobileContainer from '../../mobile/container'
 import MobileNavigationBar from '../../mobile/navigation-bar'
@@ -42,7 +42,7 @@ type Props = {
   setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
   setViewedNearbyCoords: (location: Location | null) => void
-  zoomToPlace: (map: MapRef, stopData: Location) => void
+  zoomToPlace: ZoomToPlaceHandler
 }
 
 const getNearbyItem = (place: any) => {
