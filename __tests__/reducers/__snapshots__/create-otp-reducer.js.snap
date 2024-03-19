@@ -18,10 +18,7 @@ Object {
     "realtimeEffectsDisplayThreshold": 120,
     "routingTypes": Array [],
     "stopViewer": Object {
-      "nearbyRadius": 250,
-      "numberOfDepartures": 3,
       "showBlockIds": false,
-      "timeRange": 172800,
     },
     "transitOperators": Array [],
   },
@@ -57,7 +54,7 @@ Object {
       "type": "BEST",
     },
   },
-  "initialUrl": "http://localhost:9966/",
+  "initialUrl": "/",
   "lastActionMillis": 0,
   "location": Object {
     "currentPosition": Object {
