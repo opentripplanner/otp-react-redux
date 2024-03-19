@@ -101,8 +101,6 @@ itinerary:
 dateTime:
   timeFormat: h:mm a
   dateFormat: MM/dd/yyyy
-stopViewer:
-  nearbyRadius: 250
 routeViewer:
   hideRouteShapesWithinFlexZones: true
 

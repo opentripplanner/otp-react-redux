@@ -68,7 +68,7 @@ interface ApiKeyConfig {
 export type BugsnagConfig = ApiKeyConfig
 export type MapillaryConfig = ApiKeyConfig
 
-export type NearbyViewConfig = { hideEmptyStops?: boolean }
+export type NearbyViewConfig = { hideEmptyStops?: boolean; radius?: number }
 
 /** TODO: Language settings */
 export type LanguageConfig = Record<string, any>
@@ -323,21 +323,10 @@ export interface RouteViewerConfig {
   vehiclePositionRefreshSeconds?: number
 }
 
-/** Stop Viewer Config */
-export interface StopViewerConfig {
-  /** Radius (in meters) for searching nearby stops, rental vehicles, park and rides etc. */
-  nearbyRadius?: number
-  /** The max. departures to show for each trip pattern in the Next Arrivals view */
-  numberOfDepartures?: number
+/** Stop Schedule Viewer Config */
+export interface StopScheduleViewerConfig {
   /** Whether to display block IDs with each departure in the schedule view. */
   showBlockIds?: boolean
-  /**
-   * Time window, in seconds, in which to search for next arrivals,
-   * so that, for example, if it is Friday and a route does
-   * not begin service again until Monday, we are showing its next
-   * departure and it is not entirely excluded from display.
-   */
-  timeRange?: number
 }
 
 /** The main application configuration object */
@@ -379,7 +368,7 @@ export interface AppConfig {
   sessionTimeoutSeconds?: number
   /** Whether to show the x minutes late/early in the itinerary body */
   showScheduleDeviation?: boolean
-  stopViewer?: StopViewerConfig
+  stopViewer?: StopScheduleViewerConfig
   /** Externally hosted terms of service URL */
   termsOfServiceLink?: string
   /** App title shown in the browser title bar. */
