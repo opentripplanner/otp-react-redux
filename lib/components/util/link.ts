@@ -1,15 +1,11 @@
+import { ComponentType, HTMLAttributes } from 'react'
 import { connect } from 'react-redux'
-import React, { HTMLAttributes } from 'react'
 
 import { AppReduxState } from '../../util/state-types'
 import { combineQueryParams } from '../../util/api'
 import { isBlank } from '../../util/ui'
 
-interface Props extends OwnProps, HTMLAttributes<HTMLAnchorElement> {
-  href: string
-}
-
-interface OwnProps {
+interface OwnProps extends HTMLAttributes<HTMLAnchorElement> {
   to: string
   toParams?: Record<string, unknown>
 }
@@ -18,11 +14,7 @@ interface OwnProps {
  * Renders an anchor element <a> with specified path and query params,
  * that preserves other existing query params.
  */
-const Link = ({ children, className, href, style }: Props): JSX.Element => (
-  <a className={className} href={href} style={style}>
-    {children}
-  </a>
-)
+const Link: ComponentType = 'a' as unknown as ComponentType
 
 // connect to the redux store so that the search params get updated in timely fashion.
 
