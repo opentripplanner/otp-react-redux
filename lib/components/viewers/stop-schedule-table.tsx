@@ -6,13 +6,15 @@ import React, { Component, createRef } from 'react'
 import styled from 'styled-components'
 
 import { FETCH_STATUS } from '../../util/constants'
-import {
-  getFirstDepartureFromNow,
-  mergeAndSortStopTimes
-} from '../../util/viewer'
+
+
 import { grey } from '@opentripplanner/building-blocks'
+import { getFirstDepartureFromNow } from '../../util/viewer'
+import { isBlank } from '../../util/ui'
+import { mergeAndSortStopTimes } from '../../util/stop-times'
+import { StopData } from '../util/types'
+
 import Loading from '../narrative/loading'
-import type { StopData } from '../util/types'
 
 import DepartureTime from './departure-time'
 
@@ -63,8 +65,7 @@ const TimeCell = styled.td`
 class StopScheduleTable extends Component<{
   date: string
   homeTimezone: string
-  showBlockIds: boolean
-  // TODO TYPESCRIPT: move this type to a shared type
+  showBlockIds?: boolean
   stopData: StopData
 }> {
   /**
@@ -144,7 +145,11 @@ class StopScheduleTable extends Component<{
             const scrollToRow = nextStopTime
               ? nextStopTime === highlightedStopTime
               : highlightRow
-            const routeName = route.shortName ? route.shortName : route.longName
+            const routeName = route
+              ? !isBlank(route.shortName)
+                ? route.shortName
+                : route.longName
+              : ''
 
             // Add ref to scroll to the first stop time departing from now.
             const refProp = scrollToRow ? this.targetDepartureRef : undefined

@@ -109,9 +109,29 @@ class RouteDetails extends Component<Props> {
             { id: 'components.RouteDetails.headsignTo' },
             { ...cur }
           )
+
+          // If there are only two total patterns, then we should rename
+          // both of them
+          if (amended.length === 1 && Object.entries(patterns).length === 2) {
+            amended[0].headsign = intl.formatMessage(
+              { id: 'components.RouteDetails.headsignTo' },
+              { ...amended[0] }
+            )
+          }
         }
 
-        amended.push(cur)
+        // This resolves the edge case where two patterns with the same headsign are
+        // getting filterted out. This resolves that
+        if (alreadyExistingIndex >= 0) {
+          // Only replace if new pattern has greater geometry
+          if (
+            amended[alreadyExistingIndex].geometryLength < cur.geometryLength
+          ) {
+            amended[alreadyExistingIndex] = cur
+          }
+        } else {
+          amended.push(cur)
+        }
         return amended
       }, [])
       .sort((a, b) => {

@@ -1,5 +1,3 @@
-/* globals describe, expect, it */
-
 import {
   getItineraryDefaultMonitoredDays,
   itineraryCanBeMonitored
@@ -8,6 +6,10 @@ import { WEEKDAYS, WEEKEND_DAYS } from '../../lib/util/monitored-trip'
 
 const walkLeg = {
   mode: 'WALK'
+}
+
+const bikeLeg = {
+  mode: 'BICYCLE'
 }
 
 describe('util > itinerary', () => {
@@ -43,11 +45,28 @@ describe('util > itinerary', () => {
           'should be true for an itinerary with transit, no rentals/ride hail.'
       },
       {
+        expected: true,
+        itinerary: {
+          legs: [walkLeg]
+        },
+        title:
+          'should be true for an itinerary without transit and without rentals.'
+      },
+      {
+        expected: true,
+        itinerary: {
+          legs: [bikeLeg]
+        },
+        title:
+          'should be true for an itinerary without transit and without rentals.'
+      },
+      {
         expected: false,
         itinerary: {
           legs: [walkLeg, rentalBikeLeg]
         },
-        title: 'should be false for an itinerary without transit.'
+        title:
+          'should be true for an itinerary without transit and without rentals.'
       },
       {
         expected: false,
