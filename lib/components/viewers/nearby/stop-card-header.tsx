@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { MapPin } from '@styled-icons/fa-solid'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { ComponentType } from 'react'
@@ -29,30 +28,34 @@ type Props = {
 
 const Operator = ({ operator }: { operator?: TransitOperator }) => {
   const intl = useIntl()
-  return operator && operator.logo ? (
-    /* Span with agency classname allows optional contrast/customization in user 
-    config for logos with poor contrast. Class name is hyphenated agency name 
-    e.g. "sound-transit" */
-    <span
-      className={
-        operator.name ? operator.name.replace(/\s+/g, '-').toLowerCase() : ''
+  if (!operator) {
+    return null
+  } else {
+    const operatorLogoAriaLabel = intl.formatMessage(
+      {
+        id: 'components.StopViewer.operatorLogoAriaLabel'
+      },
+      {
+        operatorName: operator.name
       }
-    >
-      <OperatorLogo
-        alt={intl.formatMessage(
-          {
-            id: 'components.StopViewer.operatorLogoAriaLabel'
-          },
-          {
-            operatorName: operator.name
-          }
-        )}
-        operator={operator}
-      />
-    </span>
-  ) : (
-    <MapPin />
-  )
+    )
+    return operator.logo ? (
+      // Span with agency classname allows optional contrast/customization in user
+      // config for logos with poor contrast. Class name is hyphenated agency name
+      // e.g. "sound-transit"
+      <span
+        className={
+          operator.name ? operator.name.replace(/\s+/g, '-').toLowerCase() : ''
+        }
+      >
+        <OperatorLogo alt={operatorLogoAriaLabel} operator={operator} />
+      </span>
+    ) : (
+      // If operator exists but logo is missing,
+      // we still need to announce the operator name to screen readers.
+      <InvisibleA11yLabel>{operatorLogoAriaLabel}</InvisibleA11yLabel>
+    )
+  }
 }
 
 const StopCardHeader = ({
