@@ -1,5 +1,5 @@
-import { connect } from 'react-redux'
 import {
+  Checkbox,
   ControlLabel,
   FormControl,
   FormGroup,
@@ -7,18 +7,21 @@ import {
   HelpBlock,
   ProgressBar
 } from 'react-bootstrap'
+import { connect } from 'react-redux'
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { Prompt } from 'react-router'
 // @ts-expect-error FormikErrorFocus does not support TypeScript yet.
 import FormikErrorFocus from 'formik-error-focus'
-import React, { Component } from 'react'
+import React, { Component, FormEvent, FormEventHandler } from 'react'
 import styled from 'styled-components'
 import type { IntlShape, WrappedComponentProps } from 'react-intl'
 
 import * as userActions from '../../../actions/user'
 import {
   ALL_DAYS,
+  arrayToDayFields,
+  dayFieldsToArray,
   getFormattedDayOfWeekPlural
 } from '../../../util/monitored-trip'
 import { AppReduxState } from '../../../util/state-types'
@@ -124,6 +127,18 @@ class TripBasicsPane extends Component<TripBasicsProps> {
     }
   }
 
+  _handleOneTimeTrip: FormEventHandler<Checkbox> = (e) => {
+    const input = e.target as HTMLInputElement
+    if (input.checked) {
+      const { setValues, values } = this.props
+      // Uncheck all monitored days
+      setValues({
+        ...values,
+        ...arrayToDayFields([])
+      })
+    }
+  }
+
   componentDidMount() {
     // Check itinerary availability (existence) for all days if not already done.
     const { checkItineraryExistence, intl, values: monitoredTrip } = this.props
@@ -178,6 +193,8 @@ class TripBasicsPane extends Component<TripBasicsProps> {
       // - monitoredTrip.tripName is not blank and that tripName is not already used.
       // - no day is selected (show a combined error indication).
       const errorStates = getErrorStates(this.props)
+      const monitoredDays = dayFieldsToArray(monitoredTrip)
+      const isOneTime = monitoredDays.length === 0
       return (
         <div>
           {/* TODO: This component does not block navigation on reload or using the back button.
@@ -254,6 +271,12 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                 )
               })}
             </AvailableDays>
+            <Checkbox checked={isOneTime} onChange={this._handleOneTimeTrip}>
+              <FormattedMessage
+                id="components.TripBasicsPane.onlyOnDate"
+                values={{ date: itinerary.startTime }}
+              />
+            </Checkbox>
             <HelpBlock role="status">
               {finalItineraryExistence ? (
                 <FormattedMessage id="components.TripBasicsPane.tripIsAvailableOnDaysIndicated" />

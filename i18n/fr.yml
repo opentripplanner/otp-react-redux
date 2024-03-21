@@ -626,6 +626,7 @@ components:
     vehicleName: Véhicule {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Vérification du trajet pour chaque jour de la semaine...
+    onlyOnDate: Uniquement le {date, date, full}
     selectAtLeastOneDay: Veuillez choisir au moins un jour pour effectuer le suivi.
     tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
     tripIsAvailableOnDaysIndicated: Votre trajet est possible les jours indiqués ci-dessus.
