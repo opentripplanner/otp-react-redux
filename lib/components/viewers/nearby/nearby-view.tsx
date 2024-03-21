@@ -128,7 +128,7 @@ function NearbyView({
   }, [location, setHighlightedLocation])
 
   useEffect(() => {
-    const listener = (e: any) => {
+    const moveListener = (e: any) => {
       if (e.geolocateSource) {
         setViewedNearbyCoords({
           lat: e.viewState.latitude,
@@ -136,11 +136,28 @@ function NearbyView({
         })
       }
     }
-    map?.on('moveend', listener)
-    return function cleanup() {
-      map?.off('moveend', listener)
+
+    const dragListener = (e: any) => {
+      const coords = {
+        lat: e.viewState.latitude,
+        lon: e.viewState.longitude
+      }
+      setViewedNearbyCoords(coords)
+
+      // Briefly flash the highlight to alert the user that we've moved
+      setHighlightedLocation(coords)
+      setTimeout(() => {
+        setHighlightedLocation(null)
+      }, 500)
     }
-  }, [map, setViewedNearbyCoords])
+
+    map?.on('dragend', dragListener)
+    map?.on('moveend', moveListener)
+    return function cleanup() {
+      map?.off('dragend', dragListener)
+      map?.off('moveend', moveListener)
+    }
+  }, [map, setViewedNearbyCoords, setHighlightedLocation])
 
   useEffect(() => {
     if (typeof firstItemRef.current?.scrollIntoView === 'function') {
