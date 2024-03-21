@@ -1,4 +1,4 @@
-import { FormattedList, FormattedMessage } from 'react-intl'
+import { FormattedDate, FormattedList, FormattedMessage } from 'react-intl'
 import React from 'react'
 
 import { dayFieldsToArray } from '../../../util/monitored-trip'
@@ -23,10 +23,16 @@ const TripSummaryPane = ({
       </div>
     )
   } else {
-    const days = (
+    const monitoredDays = dayFieldsToArray(monitoredTrip)
+    const isOneTime = monitoredDays.length === 0
+    // For one-time trips, just print the date the trip is taken.
+    // For recurrent trips, print the days the trip will be monitored.
+    const days = isOneTime ? (
+      <FormattedDate dateStyle="full" value={itinerary.startTime} />
+    ) : (
       <FormattedList
         type="conjunction"
-        value={dayFieldsToArray(monitoredTrip).map((d) => (
+        value={monitoredDays.map((d) => (
           <FormattedDayOfWeek day={d} key={d} />
         ))}
       />
