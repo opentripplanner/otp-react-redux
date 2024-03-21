@@ -45,9 +45,6 @@ type TripBasicsProps = WrappedComponentProps &
     itineraryExistence?: ItineraryExistence
   }
 
-// FIXME: move to shared types file
-type ErrorStates = 'success' | 'warning' | 'error' | null | undefined
-
 // Styles.
 const AvailableDays = styled(FieldSet)`
   & > span {
@@ -181,14 +178,6 @@ class TripBasicsPane extends Component<TripBasicsProps> {
       // - monitoredTrip.tripName is not blank and that tripName is not already used.
       // - no day is selected (show a combined error indication).
       const errorStates = getErrorStates(this.props)
-
-      let monitoredDaysValidationState: ErrorStates = null
-      ALL_DAYS.forEach((day) => {
-        if (!monitoredDaysValidationState) {
-          monitoredDaysValidationState = errorStates[day]
-        }
-      })
-
       return (
         <div>
           {/* TODO: This component does not block navigation on reload or using the back button.
@@ -219,7 +208,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
             </HelpBlock>
           </FormGroup>
 
-          <FormGroup validationState={monitoredDaysValidationState}>
+          <FormGroup>
             <AvailableDays>
               <legend className="control-label">
                 <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
@@ -243,7 +232,6 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                 return (
                   <span className={boxClass} key={day} title={notAvailableText}>
                     <Field
-                      aria-invalid={!!monitoredDaysValidationState}
                       // Let users save an existing trip, even though it may not be available on some days.
                       // TODO: improve checking trip availability.
                       disabled={isDayDisabled && isCreating}
@@ -277,11 +265,6 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                   }
                   now={100}
                 />
-              )}
-            </HelpBlock>
-            <HelpBlock role="alert">
-              {monitoredDaysValidationState && (
-                <FormattedMessage id="components.TripBasicsPane.selectAtLeastOneDay" />
               )}
             </HelpBlock>
 
