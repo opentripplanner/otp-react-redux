@@ -652,3 +652,5 @@ itinerary:
 # nearbyView:
 ### Setting to hide stops with no depatures in the nearby view.
 #   hideEmptyStops: true
+### What radius should the nearby query get results within? (in meters)
+#   radius: 600

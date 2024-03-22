@@ -68,7 +68,7 @@ interface ApiKeyConfig {
 export type BugsnagConfig = ApiKeyConfig
 export type MapillaryConfig = ApiKeyConfig
 
-export type NearbyViewConfig = { hideEmptyStops?: boolean }
+export type NearbyViewConfig = { hideEmptyStops?: boolean; radius?: number }
 
 /** TODO: Language settings */
 export type LanguageConfig = Record<string, any>
