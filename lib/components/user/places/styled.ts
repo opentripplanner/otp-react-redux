@@ -1,6 +1,5 @@
+import { grey } from '@opentripplanner/building-blocks'
 import styled from 'styled-components'
-
-import { GRAY_ON_WHITE } from '../../util/colors'
 
 import Place, {
   ActionButton,
@@ -40,7 +39,7 @@ export const StyledFavoritePlace = styled(Place).attrs({
     overflow: hidden;
   }
   ${PlaceDetail} {
-    color: ${GRAY_ON_WHITE};
+    color: ${grey[700]};
   }
 
   ${PlaceName},
@@ -51,7 +50,7 @@ export const StyledFavoritePlace = styled(Place).attrs({
     width: 100%;
   }
   ${IconWrapper} {
-    color: ${GRAY_ON_WHITE};
+    color: ${grey[700]};
     flex-shrink: 0;
   }
   ${ActionButton}, ${ActionButtonPlaceholder} {

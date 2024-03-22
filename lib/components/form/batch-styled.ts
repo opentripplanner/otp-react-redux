@@ -1,3 +1,4 @@
+import { grey } from '@opentripplanner/building-blocks'
 import styled, { css } from 'styled-components'
 
 export const buttonPixels = 51
@@ -25,7 +26,7 @@ export const buttonCss = css`
   ${buttonTransitionCss}
 
   &:active {
-    background: #e5e5e5;
+    background: ${grey[50]};
   }
 
   &:hover {

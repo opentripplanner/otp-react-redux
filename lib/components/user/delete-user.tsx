@@ -2,11 +2,11 @@ import { Auth0ContextInterface, useAuth0 } from '@auth0/auth0-react'
 import { Button, Sizes } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
+import { red } from '@opentripplanner/building-blocks'
 import React, { MouseEvent, useCallback } from 'react'
 import styled from 'styled-components'
 
 import * as userActions from '../../actions/user'
-import { RED_ON_WHITE } from '../util/colors'
 
 interface Props {
   block?: boolean
@@ -16,14 +16,14 @@ interface Props {
 
 const DeleteButton = styled(Button)`
   background-color: white;
-  border-color: ${RED_ON_WHITE};
-  color: ${RED_ON_WHITE};
+  border-color: ${red[800]};
+  color: ${red[800]};
   :active,
   :focus,
   :focus:active,
   :hover {
-    border-color: ${RED_ON_WHITE};
-    color: ${RED_ON_WHITE};
+    border-color: ${red[800]};
+    color: ${red[800]};
   }
 `
 
