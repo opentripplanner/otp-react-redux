@@ -13,7 +13,7 @@ import { FormattedMessage, injectIntl } from 'react-intl'
 import { Prompt } from 'react-router'
 // @ts-expect-error FormikErrorFocus does not support TypeScript yet.
 import FormikErrorFocus from 'formik-error-focus'
-import React, { Component, FormEvent, FormEventHandler } from 'react'
+import React, { Component, FormEventHandler } from 'react'
 import styled from 'styled-components'
 import type { IntlShape, WrappedComponentProps } from 'react-intl'
 
