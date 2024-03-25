@@ -408,11 +408,6 @@ components:
     noDeviceForPush: Register your device using the mobile app to access push notifications.
     notificationChannelPrompt: "Receive notifications about your saved trips via:"
   OTP2ErrorRenderer:
-    DEFAULT_ERROR_MESSAGE:
-      body: >-
-        We couldn't find any trips that matched these search terms. Please
-        adjust your search and try again.
-      header: No itineraries found
     LOCATION_NOT_FOUND:
       body: >-
         {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
@@ -427,7 +422,7 @@ components:
       body: >-
         No transit connection was found between your origin and destination on
         the selected day of service, using the vehicle types you selected.
-      header: No transit connections
+      header: No itineraries found
     NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
       body: >-
         A transit connection was found, but it was outside the search window,
