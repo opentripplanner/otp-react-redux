@@ -73,7 +73,10 @@ const StopCardHeader = ({
   const agencies =
     stopData.stoptimesForPatterns?.reduce<Set<string>>(
       // @ts-expect-error The agency type is not yet compatible with OTP2
-      (prev, cur) => prev.add(cur.pattern.route.agency.gtfsId),
+      (prev, cur) => {
+        const agencyGtfsId = cur.pattern.route.agency?.gtfsId
+        return agencyGtfsId ? prev.add(agencyGtfsId) : prev
+      },
       new Set()
     ) || new Set()
   const zoomButtonText = onZoomClick
