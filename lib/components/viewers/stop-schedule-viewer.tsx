@@ -128,6 +128,12 @@ class StopScheduleViewer extends Component<Props, State> {
     this._findStopTimesForDate(this.state.date)
   }
 
+  componentDidUpdate() {
+    // FIXME: This is to prevent zooming the map back to entire itinerary
+    // when accessing the schedule viewer from the nearby view.
+    this._zoomToStop()
+  }
+
   _findStopTimesForDate = (date: string) => {
     const { findStopTimesForStop, stopId } = this.props
     if (stopId) {
