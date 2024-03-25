@@ -9953,7 +9953,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         <a
                                           className="pull-right"
-                                          dispatch={[Function]}
                                           href="#/schedule/kcm:36940"
                                           style={
                                             Object {
@@ -16742,7 +16741,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         <a
                                           className="pull-right"
-                                          dispatch={[Function]}
                                           href="#/schedule/40:990003"
                                           style={
                                             Object {
@@ -26115,7 +26113,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         <a
                                           className="pull-right"
-                                          dispatch={[Function]}
                                           href="#/schedule/kcm:16430"
                                           style={
                                             Object {
@@ -35459,7 +35456,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         <a
                                           className="pull-right"
-                                          dispatch={[Function]}
                                           href="#/schedule/kcm:16440"
                                           style={
                                             Object {
@@ -43207,7 +43203,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         <a
                                           className="pull-right"
-                                          dispatch={[Function]}
                                           href="#/schedule/40:990004"
                                           style={
                                             Object {
@@ -50719,7 +50714,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         <a
                                           className="pull-right"
-                                          dispatch={[Function]}
                                           href="#/schedule/kcm:23561"
                                           style={
                                             Object {
@@ -61772,7 +61766,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       >
                                         <a
                                           className="pull-right"
-                                          dispatch={[Function]}
                                           href="#/schedule/kcm:36931"
                                           style={
                                             Object {

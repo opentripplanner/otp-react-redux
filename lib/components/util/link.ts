@@ -29,4 +29,5 @@ const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
   }
 }
 
-export default connect(mapStateToProps)(Link)
+// Pass an empty object as mapDispatchToProps to remove dispatch from the rendered HTML.
+export default connect(mapStateToProps, {})(Link)
