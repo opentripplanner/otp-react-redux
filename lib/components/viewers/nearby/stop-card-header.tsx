@@ -71,14 +71,11 @@ const StopCardHeader = ({
 }: Props): JSX.Element => {
   const intl = useIntl()
   const agencies =
-    stopData.stoptimesForPatterns?.reduce<Set<string>>(
+    stopData.stoptimesForPatterns?.reduce<Set<string>>((prev, cur) => {
       // @ts-expect-error The agency type is not yet compatible with OTP2
-      (prev, cur) => {
-        const agencyGtfsId = cur.pattern.route.agency?.gtfsId
-        return agencyGtfsId ? prev.add(agencyGtfsId) : prev
-      },
-      new Set()
-    ) || new Set()
+      const agencyGtfsId = cur.pattern.route.agency?.gtfsId
+      return agencyGtfsId ? prev.add(agencyGtfsId) : prev
+    }, new Set()) || new Set()
   const zoomButtonText = onZoomClick
     ? intl.formatMessage({
         id: 'components.StopViewer.zoomToStop'
