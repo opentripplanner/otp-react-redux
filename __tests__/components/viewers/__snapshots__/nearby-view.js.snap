@@ -9961,12 +9961,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               "fontSize": "small",
                                             }
                                           }
-                                          to="/schedule/kcm:36940"
-                                          toParams={
-                                            Object {
-                                              "entityId": undefined,
-                                            }
-                                          }
                                         >
                                           <IconWithText
                                             Icon={
@@ -16754,12 +16748,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             Object {
                                               "color": "inherit",
                                               "fontSize": "small",
-                                            }
-                                          }
-                                          to="/schedule/40:990003"
-                                          toParams={
-                                            Object {
-                                              "entityId": undefined,
                                             }
                                           }
                                         >
@@ -26135,12 +26123,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               "fontSize": "small",
                                             }
                                           }
-                                          to="/schedule/kcm:16430"
-                                          toParams={
-                                            Object {
-                                              "entityId": undefined,
-                                            }
-                                          }
                                         >
                                           <IconWithText
                                             Icon={
@@ -35485,12 +35467,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               "fontSize": "small",
                                             }
                                           }
-                                          to="/schedule/kcm:16440"
-                                          toParams={
-                                            Object {
-                                              "entityId": undefined,
-                                            }
-                                          }
                                         >
                                           <IconWithText
                                             Icon={
@@ -43239,12 +43215,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               "fontSize": "small",
                                             }
                                           }
-                                          to="/schedule/40:990004"
-                                          toParams={
-                                            Object {
-                                              "entityId": undefined,
-                                            }
-                                          }
                                         >
                                           <IconWithText
                                             Icon={
@@ -50755,12 +50725,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             Object {
                                               "color": "inherit",
                                               "fontSize": "small",
-                                            }
-                                          }
-                                          to="/schedule/kcm:23561"
-                                          toParams={
-                                            Object {
-                                              "entityId": undefined,
                                             }
                                           }
                                         >
@@ -61814,12 +61778,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             Object {
                                               "color": "inherit",
                                               "fontSize": "small",
-                                            }
-                                          }
-                                          to="/schedule/kcm:36931"
-                                          toParams={
-                                            Object {
-                                              "entityId": undefined,
                                             }
                                           }
                                         >

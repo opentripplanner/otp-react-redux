@@ -22,7 +22,10 @@ const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
   const queryParams = combineQueryParams(ownProps.toParams)
   const href = `#${ownProps.to}${isBlank(queryParams) ? '' : `?${queryParams}`}`
   return {
-    href
+    href,
+    // Remove the passed to and toParams props from the rendered HTML.
+    to: undefined,
+    toParams: undefined
   }
 }
 
