@@ -347,6 +347,8 @@ itinerary:
   renderRouteNamesInBlocks: true
   # Whether the mode icons should be colored as well
   fillModeIcons: true
+  # Allow user to collapse alerts in itinerary body
+  collapseAlerts: true
   # If multiple fares are returned by OTP, assign names to the fare keys here
   #fareKeyNameMap:
   #  regular: "Transit Fare"
