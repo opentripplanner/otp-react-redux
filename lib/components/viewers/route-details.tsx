@@ -92,13 +92,15 @@ class RouteDetails extends Component<Props> {
           lastStop: pat.stops?.[pat.stops?.length - 1]?.name
         })
       )
-      // Address duplicate headsigns. Replaces duplicate headsigns with the last stop name
+      // Address duplicate headsigns.
       .reduce((prev: PatternSummary[], cur) => {
         const amended = prev
         const alreadyExistingIndex = prev.findIndex(
           (h) => h.headsign === cur.headsign
         )
-        // If the item we're replacing has less geometry, amend the headsign to be more helpful
+        // If the headsign is a duplicate, and the last stop of the pattern is not the headsign,
+        // amend the headsign with the last stop name in parenthesis.
+        // e.g. "Headsign (Last Stop)"
         if (
           alreadyExistingIndex >= 0 &&
           cur.lastStop &&
@@ -116,13 +118,14 @@ class RouteDetails extends Component<Props> {
               { id: 'components.RouteDetails.headsignTo' },
               { ...amended[0] }
             )
+            amended.push(cur)
+            return amended
           }
         }
 
-        // This resolves the edge case where two patterns with the same headsign are
-        // getting filterted out. This resolves that
+        // With all remaining duplicate headsigns, only keep the pattern with the
+        // longest geometry.
         if (alreadyExistingIndex >= 0) {
-          // Only replace if new pattern has greater geometry
           if (
             amended[alreadyExistingIndex].geometryLength < cur.geometryLength
           ) {
