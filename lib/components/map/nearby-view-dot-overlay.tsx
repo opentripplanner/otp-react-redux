@@ -10,29 +10,28 @@ type Props = {
   location: Location | null
 }
 
-const NearbyDot = styled.div`
+const NearbyDot = styled.div<{ invisible: boolean }>`
   background: var(--main-base-color, #333);
   border-radius: 30px;
   box-shadow: 0px 0px 10px 10px var(--main-base-color, #333);
   cursor: pointer;
   display: block;
   height: 50px;
-  opacity: 0.3;
+  opacity: ${(props) => (props.invisible ? 0 : 0.3)};
+  transition: 0.1s opacity ease-out;
   width: 50px;
 `
 
 const NearbyViewDotOverlay = ({ location }: Props) => {
-  if (!location) return null
   return (
-    <Marker latitude={location.lat} longitude={location.lon}>
-      <NearbyDot />
+    <Marker latitude={location?.lat || 0} longitude={location?.lon || 0}>
+      <NearbyDot invisible={!location} />
     </Marker>
   )
 }
 
 const mapStateToProps = (state: AppReduxState) => {
   const { highlightedLocation } = state.otp.ui
-  // TODO: Check for nearby view status and hide if it's not
   return {
     location: highlightedLocation
   }

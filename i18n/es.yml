@@ -151,7 +151,6 @@ common:
     work: trabajo
   routing:
     routeAndNumber: Ruta {routeId}
-    routeToHeadsign: A {headsign}
   searchForms:
     click: haga clic
     enterDestination: Introduzca el destino o {mapAction} en el mapa…
@@ -185,40 +184,6 @@ components:
     message: >-
       Si la página no se carga después de unos segundos, <redirectLink>haga clic
       aquí</redirectLink>.
-  AmenitiesPanel:
-    bikesAtStation: |
-      {companyLength, plural,
-       =0 {Bicicletas en la {name}}
-       other {Bicicletas de {company} en la{name}}
-       }
-    bikesAvailable: |
-      {count, plural,
-       =0 {No hay bicicletas disponibles}
-       one {# bicicleta disponible}
-       other {# bicicletas disponibles}
-       }
-    bikesNearby: |
-      {count, plural,
-       =0 {No hay bicicletas de {company} cerca}
-       one {# bicicleta de {company} cerca}
-       other {#bicicletas de {company} cerca}
-       }
-    nearbyAmenities: Servicios cercanos
-    noNearbyBikes: No se ha encontrado ningún alquiler de bicicletas cercano.
-    noNearbyScooters: No se encontraron alquileres de micromovilidad cerca.
-    noPRLotsFound: No hay Park-and-Ride cerca.
-    scootersNearby: |
-      {count, plural,
-       =0 {No hay e-scooters de {company} cerca}
-       one {# e-scooter de {company} cerca}
-       other {# e-scooters de {company} cerca}
-       }
-    spacesAvailable: |
-      {count, plural,
-       =0 {No hay plazas de aparcamiento disponibles}
-       one {# plaza de aparcamiento disponible}
-       other {# plazas de aparcamiento disponibles}
-       }
   AppMenu:
     callHistory: Historial de llamadas
     closeMenu: Cerrar Menú
@@ -303,9 +268,6 @@ components:
   ItinerarySummary:
     itineraryDetails: Detalles del itinerario
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
-  LiveStopTimes:
-    autoRefresh: ¿Actualizar automáticamente las llegadas?
-    refresh: Actualizar las horas de llegada
   LocationSearch:
     enterLocation: Introduzca la ubicación
     setDestination: Establecer el destino
@@ -524,13 +486,6 @@ components:
     late: "{minutes} de retraso"
     onTime: a tiempo
     scheduled: programado
-  RelatedPanel:
-    hideExtraStops: Ocultar las paradas adicionales
-    showExtraStops: Mostrar {count} paradas adicionales
-  RelatedStopsPanel:
-    noArrivalFound: No se ha encontrado ninguna llegada
-    relatedStops: Paradas relacionadas
-    viewDetails: Ver detalles
   ResultsError:
     backToSearch: Volver a la búsqueda
   ResultsHeader:
@@ -617,15 +572,14 @@ components:
     flexStop: >-
       Esta es una parada flexible. Los vehículos dejarán y recogerán a los
       pasajeros en esta zona flexible previa solicitud. Es posible que tenga que
-      llamar con antelación para el servicio en esta zona.
+      llamar con antelación para el servicio en esta zona.    
     forStop: para {stopName}
     header: Visor de paradas
     loadingText: Cargando la parada...
-    nextArrivals: Próximas llegadas
     noStopsFound: No se han encontrado tiempos de parada para la fecha.
     operatorLogoAriaLabel: "Parada de {operatorName}:"
     schedule: Horario
-    timezoneWarning: Las horas de salida se indican en <strong>{timezoneCode}</strong>.
+    timezoneWarning: Las horas de salida se indican en {timezoneCode}.
     titleBarStopId: Parada {stopId}
     viewNearby: Ver cerca
     viewSchedule: Ver horario

@@ -1,115 +1,38 @@
-import { Calendar, MapPin } from '@styled-icons/fa-solid'
+import { Calendar } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
-import { format } from 'date-fns-tz'
-import { FormattedMessage, useIntl } from 'react-intl'
-import { InfoCircle } from '@styled-icons/fa-solid/InfoCircle'
-import { Place, TransitOperator } from '@opentripplanner/types'
+import { FormattedMessage } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
-import dateFnsUSLocale from 'date-fns/locale/en-US'
-import React, { useCallback } from 'react'
+import React from 'react'
 
-import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { extractHeadsignFromPattern } from '../../../util/viewer'
-import { IconWithText } from '../../util/styledIcon'
 import { NearbyViewConfig } from '../../../util/config-types'
-import { Pattern, StopTime } from '../../util/types'
-import OperatorLogo from '../../util/operator-logo'
+import { PatternStopTime, StopData, StopTime } from '../../util/types'
 import PatternRow from '../pattern-row'
-import Strong from '../../util/strong-text'
+import TimezoneWarning from '../timezone-warning'
 
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  CardTitle,
-  PatternRowContainer,
-  StyledAlert
-} from './styled'
+import { Card, PatternRowContainer, StyledAlert } from './styled'
+import StopCardHeader from './stop-card-header'
 
 const { getUserTimezone } = coreUtils.time
 
-type PatternStopTime = {
-  pattern: Pattern
-  stoptimes: StopTime[]
-}
-
-type StopData = Place & {
-  code: string
-  gtfsId: string
-  stoptimesForPatterns: PatternStopTime[]
-}
-
 const fullTimestamp = (stoptime: StopTime) =>
   (stoptime.serviceDay || 0) + (stoptime.realtimeDeparture || 0)
-
-const getTimezoneWarning = (homeTimezone: string): JSX.Element => {
-  const timezoneCode = format(Date.now(), 'z', {
-    // To avoid ambiguities for now, use the English-US timezone abbreviations ("EST", "PDT", etc.)
-    locale: dateFnsUSLocale,
-    timeZone: homeTimezone
-  })
-
-  // Display a banner about the departure timezone if user's timezone is not the configured 'homeTimezone'
-  // (e.g. cases where a user in New York looks at a schedule in Los Angeles).
-  return (
-    <StyledAlert>
-      <IconWithText Icon={InfoCircle}>
-        <FormattedMessage
-          id="components.StopViewer.timezoneWarning"
-          values={{ strong: Strong, timezoneCode }}
-        />
-      </IconWithText>
-    </StyledAlert>
-  )
-}
 
 type Props = {
   fromToSlot: JSX.Element
   homeTimezone: string
   nearbyViewConfig?: NearbyViewConfig
-  setHoveredStop: (stopId?: string) => void
-  setViewedStop: (stop: any, nearby: string) => void
-  showOperatorLogo: boolean
   stopData: StopData
-  transitOperators?: TransitOperator[]
-}
-
-const Operator = ({ operator }: { operator?: TransitOperator }) => {
-  const intl = useIntl()
-  return operator && operator.logo ? (
-    <OperatorLogo
-      alt={intl.formatMessage(
-        {
-          id: 'components.StopViewer.operatorLogoAriaLabel'
-        },
-        {
-          operatorName: operator.name
-        }
-      )}
-      operator={operator}
-    />
-  ) : (
-    <MapPin />
-  )
 }
 
 const Stop = ({
   fromToSlot,
   homeTimezone,
   nearbyViewConfig,
-  setHoveredStop,
-  setViewedStop,
-  stopData,
-  transitOperators
+  stopData
 }: Props): JSX.Element => {
-  const agencies = stopData.stoptimesForPatterns?.reduce<Set<string>>(
-    // @ts-expect-error The agency type is not yet compatible with OTP2
-    (prev, cur) => prev.add(cur.pattern.route.agency.gtfsId),
-    new Set()
-  )
-
-  const patternRows = stopData.stoptimesForPatterns
+  const patternRows = (stopData.stoptimesForPatterns || [])
     ?.reduce<PatternStopTime[]>((acc, cur) => {
       const currentHeadsign = extractHeadsignFromPattern(cur.pattern)
       const dupe = acc.findIndex(
@@ -131,7 +54,7 @@ const Stop = ({
     }, [])
     .sort(
       (a: PatternStopTime, b: PatternStopTime) =>
-        (a.stoptimes?.[0].serviceDay || 0) - (b.stoptimes?.[0].serviceDay || 0)
+        fullTimestamp(a.stoptimes?.[0]) - fullTimestamp(b.stoptimes?.[0])
     )
     .map((st: any, index: number) => {
       const sortedStopTimes = st.stoptimes.sort(
@@ -149,53 +72,27 @@ const Stop = ({
       )
     })
   const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
-  const timezoneWarning = !inHomeTimezone && getTimezoneWarning(homeTimezone)
-
-  const onMouseEnter = useCallback(() => {
-    setHoveredStop(stopData.gtfsId)
-  }, [setHoveredStop, stopData.gtfsId])
-
-  const onMouseLeave = useCallback(() => {
-    setHoveredStop(undefined)
-  }, [setHoveredStop])
-
-  const operator =
-    agencies.size === 1
-      ? transitOperators?.find((o) => o.agencyId === Array.from(agencies)[0])
-      : undefined
+  const timezoneWarning = !inHomeTimezone && (
+    <StyledAlert>
+      <TimezoneWarning homeTimezone={homeTimezone} />
+    </StyledAlert>
+  )
 
   if (nearbyViewConfig?.hideEmptyStops && patternRows.length === 0) return <></>
 
   return (
-    <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      <CardHeader>
-        <CardTitle>
-          <IconWithText icon={<Operator operator={operator} />}>
-            {stopData.name}
-          </IconWithText>
-        </CardTitle>
-      </CardHeader>
-      <CardBody>
-        <div>
-          <FormattedMessage
-            id="components.StopViewer.displayStopId"
-            values={{
-              stopId: stopData.code || stopData.gtfsId,
-              strong: Strong
-            }}
-          />
-          <button
-            className="link-button pull-right"
-            onClick={() => setViewedStop({ stopId: stopData.gtfsId }, 'stop')}
-            style={{ fontSize: 'small' }}
-          >
-            <IconWithText Icon={Calendar}>
-              <FormattedMessage id="components.StopViewer.viewSchedule" />
-            </IconWithText>
-          </button>
-        </div>
-        {fromToSlot}
-      </CardBody>
+    <Card>
+      <StopCardHeader
+        actionIcon={Calendar}
+        // Remove entityId URL parameter when leaving nearby view.
+        actionParams={{ entityId: undefined }}
+        actionPath={`/schedule/${stopData.gtfsId}`}
+        actionText={
+          <FormattedMessage id="components.StopViewer.viewSchedule" />
+        }
+        fromToSlot={fromToSlot}
+        stopData={stopData}
+      />
       <div>
         <div>{timezoneWarning}</div>
         <PatternRowContainer>{patternRows}</PatternRowContainer>
@@ -204,20 +101,12 @@ const Stop = ({
   )
 }
 
-const mapDispatchToProps = {
-  setHoveredStop: uiActions.setHoveredStop,
-  setMainPanelContent: uiActions.setMainPanelContent,
-  setViewedStop: uiActions.setViewedStop,
-  toggleAutoRefresh: uiActions.toggleAutoRefresh
-}
-
 const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
   return {
     homeTimezone: config.homeTimezone,
-    nearbyViewConfig: config?.nearbyView,
-    transitOperators: config.transitOperators
+    nearbyViewConfig: config?.nearbyView
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Stop)
+export default connect(mapStateToProps)(Stop)

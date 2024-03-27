@@ -137,7 +137,6 @@ common:
     work: 직장
   routing:
     routeAndNumber: 경로 {routeId}
-    routeToHeadsign: "{headsign} 방면"
   searchForms:
     click: 클릭
     enterDestination: 목적지 또는{mapAction}을(를) 지도에 입력하십시오…
@@ -169,40 +168,6 @@ components:
   AfterSignInScreen:
     mainTitle: 경로 재설정 중...
     message: 몇 초 후에도 페이지가 로드되지 않는 경우, <redirectLink>여기를 클릭</redirectLink>하십시오.
-  AmenitiesPanel:
-    bikesAtStation: |
-      {companyLength, plural,
-       =0 {{name}에서 자전거}
-       other {{name}에서 {company} 자전거}
-       }
-    bikesAvailable: |
-      {count, plural,
-       =0 {이용 가능한 자전거가 없습니다}
-       one {# 자전거 이용 가능}
-       other {# 자전거 이용 가능}
-       }
-    bikesNearby: |
-      {count, plural,
-       =0 {근처에 {company} 자전거가 없습니다}
-       one {근처에{company}자전거 # 대}
-       other {근처에{company}자전거 # 대}
-       }
-    nearbyAmenities: 근처 편의시설
-    noNearbyBikes: 근처에 자전거 대여점을 찾을 수 없습니다.
-    noNearbyScooters: 근처에 마이크로 모빌리티 대여점을 찾을 수 없습니다.
-    noPRLotsFound: 근처에 파크 앤 라이드를 찾을 수 없습니다.
-    scootersNearby: |
-      {count, plural,
-       =0 {근처에 {company} 전기 스쿠터 없음}
-       one {근처에 {company} 전기 스쿠터 # 대}
-       other {근처에 {company} 전기 스쿠터 # 대}
-       }
-    spacesAvailable: |
-      {count, plural,
-       =0 {주차 공간 없음}
-       one {# 대 주차}
-       other {# 대 주차}
-       }
   AppMenu:
     callHistory: 통화 기록
     closeMenu: 메뉴 닫기
@@ -280,9 +245,6 @@ components:
   ItinerarySummary:
     itineraryDetails: 여정 세부 정보
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
-  LiveStopTimes:
-    autoRefresh: 도착을 자동으로 새로 고침?
-    refresh: 도착 시간 새로고침
   LocationSearch:
     enterLocation: 위치 입력
     setDestination: 목적지 선택
@@ -441,13 +403,6 @@ components:
     late: "{minutes} 늦게"
     onTime: 제 시간
     scheduled: 예정
-  RelatedPanel:
-    hideExtraStops: 여분의 정류장 숨기기
-    showExtraStops: "{count}개의 여분의 정류장 보이기"
-  RelatedStopsPanel:
-    noArrivalFound: 도착편을 찾을 수 없음
-    relatedStops: 관련 정류장
-    viewDetails: 세부 정보 보기
   ResultsError:
     backToSearch: 검색으로 돌아가기
   ResultsHeader:
@@ -529,11 +484,10 @@ components:
     forStop: 행 {stopName}
     header: 정류장 뷰어
     loadingText: 정류장 로드 중…
-    nextArrivals: 다음 도착
     noStopsFound: 날짜에 대한 정류장 시간이 없습니다.
     operatorLogoAriaLabel: "정류장 {operatorName}:"
     schedule: 일정
-    timezoneWarning: 출발 시간은 <strong>{timezoneCode}</strong>(으)로 표시됩니다.
+    timezoneWarning: 출발 시간은 {timezoneCode}(으)로 표시됩니다.
     titleBarStopId: 정류장 {stopId}
     viewNearby: 근처 보기
     viewSchedule: 스케쥴 보기

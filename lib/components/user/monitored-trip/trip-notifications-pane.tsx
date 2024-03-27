@@ -2,6 +2,7 @@ import { Alert, FormControl } from 'react-bootstrap'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedList, FormattedMessage } from 'react-intl'
 import { FormikProps } from 'formik'
+import { Leg } from '@opentripplanner/types'
 import React, { Component, FormEvent } from 'react'
 import styled from 'styled-components'
 
@@ -73,6 +74,9 @@ class TripNotificationsPane extends Component<Props> {
       values.arrivalVarianceMinutesThreshold,
       values.departureVarianceMinutesThreshold
     )
+    const hasTransit = values.itinerary?.legs?.some(
+      (leg: Leg) => leg.transitLeg
+    )
 
     let notificationSettingsContent
     if (areNotificationsDisabled) {
@@ -102,52 +106,62 @@ class TripNotificationsPane extends Component<Props> {
         ))
       notificationSettingsContent = (
         <FieldSet>
-          <legend>
-            <FormattedMessage
-              id="components.TripNotificationsPane.notifyViaChannelWhen"
-              values={{
-                channel: (
-                  <FormattedList type="conjunction" value={selectedChannels} />
-                )
-              }}
-            />
-          </legend>
-          <SettingsList>
-            <li>
-              <Select
-                label={
-                  <FormattedMessage id="components.TripNotificationsPane.realtimeAlertFlagged" />
-                }
-                name="notifyOnAlert"
-              >
-                <YesNoOptions defaultValue />
-              </Select>
-            </li>
-            <li>
-              <Select
-                label={
-                  <FormattedMessage id="components.TripNotificationsPane.altRouteRecommended" />
-                }
-                name="notifyOnItineraryChange"
-              >
-                <YesNoOptions defaultValue />
-              </Select>
-            </li>
-            <li>
-              <label htmlFor="commonDelayThreshold">
-                <FormattedMessage id="components.TripNotificationsPane.delaysAboveThreshold" />
-              </label>
-              <FormControl
-                componentClass="select"
-                id="commonDelayThreshold"
-                // Special event handler, hence not using <Select> as above.
-                onChange={this._handleDelayThresholdChange}
-                value={commonDelayThreshold}
-              >
-                <DurationOptions defaultValue={5} minuteOptions={[5, 10, 15]} />
-              </FormControl>
-            </li>
-          </SettingsList>
+          {hasTransit ? (
+            <>
+              <legend>
+                <FormattedMessage
+                  id="components.TripNotificationsPane.notifyViaChannelWhen"
+                  values={{
+                    channel: (
+                      <FormattedList
+                        type="conjunction"
+                        value={selectedChannels}
+                      />
+                    )
+                  }}
+                />
+              </legend>
+              <SettingsList>
+                <li>
+                  <Select
+                    label={
+                      <FormattedMessage id="components.TripNotificationsPane.realtimeAlertFlagged" />
+                    }
+                    name="notifyOnAlert"
+                  >
+                    <YesNoOptions defaultValue />
+                  </Select>
+                </li>
+                <li>
+                  <Select
+                    label={
+                      <FormattedMessage id="components.TripNotificationsPane.altRouteRecommended" />
+                    }
+                    name="notifyOnItineraryChange"
+                  >
+                    <YesNoOptions defaultValue />
+                  </Select>
+                </li>
+                <li>
+                  <label htmlFor="commonDelayThreshold">
+                    <FormattedMessage id="components.TripNotificationsPane.delaysAboveThreshold" />
+                  </label>
+                  <FormControl
+                    componentClass="select"
+                    id="commonDelayThreshold"
+                    // Special event handler, hence not using <Select> as above.
+                    onChange={this._handleDelayThresholdChange}
+                    value={commonDelayThreshold}
+                  >
+                    <DurationOptions
+                      defaultValue={5}
+                      minuteOptions={[5, 10, 15]}
+                    />
+                  </FormControl>
+                </li>
+              </SettingsList>
+            </>
+          ) : null}
 
           <details>
             <Summary>

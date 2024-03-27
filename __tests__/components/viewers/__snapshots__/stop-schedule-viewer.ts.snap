@@ -1,0 +1,309 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components > viewers > stop viewer should render with initial stop id and no stop times 1`] = `
+<IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en-US"
+  formats={Object {}}
+  locale="en-US"
+  messages={Object {}}
+  onError={[Function]}
+  textComponent={Symbol(react.fragment)}
+>
+  <Provider
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <injectIntl(WrappedComponent)>
+      <WrappedComponent
+        intl={
+          Object {
+            "defaultFormats": Object {},
+            "defaultLocale": "en-US",
+            "defaultRichTextElements": undefined,
+            "formatDate": [Function],
+            "formatDateTimeRange": [Function],
+            "formatDateToParts": [Function],
+            "formatDisplayName": [Function],
+            "formatList": [Function],
+            "formatListToParts": [Function],
+            "formatMessage": [Function],
+            "formatNumber": [Function],
+            "formatNumberToParts": [Function],
+            "formatPlural": [Function],
+            "formatRelativeTime": [Function],
+            "formatTime": [Function],
+            "formatTimeToParts": [Function],
+            "formats": Object {},
+            "formatters": Object {
+              "getDateTimeFormat": [Function],
+              "getDisplayNames": [Function],
+              "getListFormat": [Function],
+              "getMessageFormat": [Function],
+              "getNumberFormat": [Function],
+              "getPluralRules": [Function],
+              "getRelativeTimeFormat": [Function],
+            },
+            "locale": "en-US",
+            "messages": Object {},
+            "onError": [Function],
+            "textComponent": Symbol(react.fragment),
+            "timeZone": undefined,
+            "wrapRichTextChunksInFragment": undefined,
+          }
+        }
+      >
+        <Connect(StopScheduleViewer)
+          intl={
+            Object {
+              "defaultFormats": Object {},
+              "defaultLocale": "en-US",
+              "defaultRichTextElements": undefined,
+              "formatDate": [Function],
+              "formatDateTimeRange": [Function],
+              "formatDateToParts": [Function],
+              "formatDisplayName": [Function],
+              "formatList": [Function],
+              "formatListToParts": [Function],
+              "formatMessage": [Function],
+              "formatNumber": [Function],
+              "formatNumberToParts": [Function],
+              "formatPlural": [Function],
+              "formatRelativeTime": [Function],
+              "formatTime": [Function],
+              "formatTimeToParts": [Function],
+              "formats": Object {},
+              "formatters": Object {
+                "getDateTimeFormat": [Function],
+                "getDisplayNames": [Function],
+                "getListFormat": [Function],
+                "getMessageFormat": [Function],
+                "getNumberFormat": [Function],
+                "getPluralRules": [Function],
+                "getRelativeTimeFormat": [Function],
+              },
+              "locale": "en-US",
+              "messages": Object {},
+              "onError": [Function],
+              "textComponent": Symbol(react.fragment),
+              "timeZone": undefined,
+              "wrapRichTextChunksInFragment": undefined,
+            }
+          }
+        >
+          <StopScheduleViewer
+            calendarMax="2025-12-31"
+            calendarMin="2024-01-01"
+            findStopTimesForStop={[Function]}
+            homeTimezone="America/Los_Angeles"
+            intl={
+              Object {
+                "defaultFormats": Object {},
+                "defaultLocale": "en-US",
+                "defaultRichTextElements": undefined,
+                "formatDate": [Function],
+                "formatDateTimeRange": [Function],
+                "formatDateToParts": [Function],
+                "formatDisplayName": [Function],
+                "formatList": [Function],
+                "formatListToParts": [Function],
+                "formatMessage": [Function],
+                "formatNumber": [Function],
+                "formatNumberToParts": [Function],
+                "formatPlural": [Function],
+                "formatRelativeTime": [Function],
+                "formatTime": [Function],
+                "formatTimeToParts": [Function],
+                "formats": Object {},
+                "formatters": Object {
+                  "getDateTimeFormat": [Function],
+                  "getDisplayNames": [Function],
+                  "getListFormat": [Function],
+                  "getMessageFormat": [Function],
+                  "getNumberFormat": [Function],
+                  "getPluralRules": [Function],
+                  "getRelativeTimeFormat": [Function],
+                },
+                "locale": "en-US",
+                "messages": Object {},
+                "onError": [Function],
+                "textComponent": Symbol(react.fragment),
+                "timeZone": undefined,
+                "wrapRichTextChunksInFragment": undefined,
+              }
+            }
+            showBlockIds={false}
+            stopId="TriMet:13170"
+            transitOperators={Array []}
+            zoomToPlace={[Function]}
+          >
+            <div
+              className="stop-viewer base-color-bg"
+            >
+              <Connect(PageTitle)
+                title={
+                  Array [
+                    "components.StopViewer.titleBarStopId",
+                    "components.StopViewer.schedule",
+                  ]
+                }
+              >
+                <PageTitle
+                  appTitle=""
+                  dispatch={[Function]}
+                  title={
+                    Array [
+                      "components.StopViewer.titleBarStopId",
+                      "components.StopViewer.schedule",
+                    ]
+                  }
+                />
+              </Connect(PageTitle)>
+              <Connect(ServiceTimeRangeRetriever)>
+                <ServiceTimeRangeRetriever
+                  retrieveServiceTimeRangeIfNeeded={[Function]}
+                />
+              </Connect(ServiceTimeRangeRetriever)>
+              <div
+                className="stop-viewer-header"
+              >
+                <div
+                  className="back-button-container"
+                >
+                  <Button
+                    active={false}
+                    block={false}
+                    bsClass="btn"
+                    bsSize="small"
+                    bsStyle="default"
+                    disabled={false}
+                    onClick={[Function]}
+                  >
+                    <button
+                      className="btn btn-sm btn-default"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <IconWithText
+                        Icon={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "displayName": "ArrowLeft",
+                            "render": [Function],
+                          }
+                        }
+                      >
+                        <div
+                          style={
+                            Object {
+                              "display": "contents",
+                            }
+                          }
+                        >
+                          <Styled(styled.span)>
+                            <span
+                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                            >
+                              <ArrowLeft>
+                                <StyledIconBase
+                                  iconAttrs={
+                                    Object {
+                                      "fill": "currentColor",
+                                      "xmlns": "http://www.w3.org/2000/svg",
+                                    }
+                                  }
+                                  iconVerticalAlign="middle"
+                                  iconViewBox="0 0 448 512"
+                                >
+                                  <ForwardRef
+                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                    iconAttrs={
+                                      Object {
+                                        "fill": "currentColor",
+                                        "xmlns": "http://www.w3.org/2000/svg",
+                                      }
+                                    }
+                                    iconVerticalAlign="middle"
+                                    iconViewBox="0 0 448 512"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      viewBox="0 0 448 512"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </ForwardRef>
+                                </StyledIconBase>
+                              </ArrowLeft>
+                            </span>
+                          </Styled(styled.span)>
+                          <span>
+                            <FormattedMessage
+                              id="common.forms.back"
+                            >
+                              common.forms.back
+                            </FormattedMessage>
+                          </span>
+                        </div>
+                      </IconWithText>
+                    </button>
+                  </Button>
+                </div>
+                <styled.div>
+                  <div
+                    className="sc-cjHJky bihPUp"
+                  >
+                    <styled.div>
+                      <div
+                        className="sc-edoYdd ipgOiu"
+                      >
+                        <h1>
+                          <FormattedMessage
+                            id="components.StopViewer.loadingText"
+                          >
+                            components.StopViewer.loadingText
+                          </FormattedMessage>
+                        </h1>
+                      </div>
+                    </styled.div>
+                  </div>
+                </styled.div>
+                <Connect(FavoriteStopToggle)>
+                  <FavoriteStopToggle
+                    forgetStop={[Function]}
+                    isFavoriteStop={false}
+                    rememberStop={[Function]}
+                  />
+                </Connect(FavoriteStopToggle)>
+                <div
+                  style={
+                    Object {
+                      "clear": "both",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </StopScheduleViewer>
+        </Connect(StopScheduleViewer)>
+      </WrappedComponent>
+    </injectIntl(WrappedComponent)>
+  </Provider>
+</IntlProvider>
+`;
