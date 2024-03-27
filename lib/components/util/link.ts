@@ -6,6 +6,7 @@ import { combineQueryParams } from '../../util/api'
 import { isBlank } from '../../util/ui'
 
 interface OwnProps extends HTMLAttributes<HTMLAnchorElement> {
+  isActive?: boolean
   to: string
   toParams?: Record<string, unknown>
 }
@@ -19,11 +20,19 @@ const Link: ComponentType = 'a' as unknown as ComponentType
 // connect to the redux store so that the search params get updated in timely fashion.
 
 const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
-  const queryParams = combineQueryParams(ownProps.toParams)
-  const href = `#${ownProps.to}${isBlank(queryParams) ? '' : `?${queryParams}`}`
+  const { className, isActive, to, toParams } = ownProps
+  const queryParams = combineQueryParams(toParams)
+  const href = `#${to}${isBlank(queryParams) ? '' : `?${queryParams}`}`
   return {
+    className:
+      className && isActive
+        ? `${className} active`
+        : isActive
+        ? 'active'
+        : className,
     href,
-    // Remove the passed to and toParams props from the rendered HTML.
+    // Remove the passed isActive, to and toParams props from the rendered HTML.
+    isActive: undefined,
     to: undefined,
     toParams: undefined
   }
