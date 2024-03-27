@@ -3,7 +3,6 @@ import { FormattedList, FormattedMessage } from 'react-intl'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import React from 'react'
-import Strong from '../../util/strong-text'
 
 import styled from 'styled-components'
 
@@ -16,16 +15,16 @@ const DayCircleContainer = styled.div`
   gap: 4px;
 `
 
-const MonitoredDay = styled.div<{ monitored: boolean }>`
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
+const MonitoredDay = styled.span<{ monitored: boolean }>`
+  align-items: center;
   background-color: ${(props) => (props.monitored ? '#4152a4' : 'transparent')};
+  border-radius: 50%;
   color: ${(props) => (props.monitored ? 'white' : 'inherit')};
   display: flex;
-  align-items: center;
+  height: 27px;
   justify-content: center;
   text-transform: capitalize;
+  width: 27px;
 `
 
 const daysOfWeek = [
@@ -52,21 +51,21 @@ const MonitoredDays = ({ days }: Props) => {
       d === 'thursday' || d === 'sunday' ? d.slice(0, 2) : d.charAt(0)
     const monitored = days?.includes(d)
     return (
-      <MonitoredDay aria-hidden key={d} monitored={monitored}>
+      <MonitoredDay key={d} monitored={monitored}>
         <span>{dayAbbrev}</span>
       </MonitoredDay>
     )
   })
   return (
-    <DayCircleContainer>
-      {DayCircles}
+    <>
       <InvisibleA11yLabel>
         <FormattedMessage
           id="components.TripSummaryPane.happensOnDays"
-          values={{ days: monitoredDaysList, strong: Strong }}
+          values={{ days: monitoredDaysList }}
         />
       </InvisibleA11yLabel>
-    </DayCircleContainer>
+      <DayCircleContainer aria-hidden>{DayCircles}</DayCircleContainer>
+    </>
   )
 }
 

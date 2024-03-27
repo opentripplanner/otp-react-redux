@@ -1,5 +1,5 @@
 import { Bell, BellSlash, Calendar, Clock } from '@styled-icons/fa-regular'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, IntlShape } from 'react-intl'
 import React from 'react'
 
 import { dayFieldsToArray } from '../../../util/monitored-trip'
@@ -8,6 +8,7 @@ import LocationIcon from '@opentripplanner/location-icon'
 import styled from 'styled-components'
 
 import { InlineLoading } from '../../narrative/loading'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import MonitoredDays from './trip-monitored-days'
 import TripSummary from './trip-duration-summary'
@@ -15,6 +16,10 @@ import TripSummary from './trip-duration-summary'
 /**
  * Displays the summary information of a monitored trip.
  */
+
+interface Props extends MonitoredTripProps {
+  intl: IntlShape
+}
 
 const SavedTripBody = styled.div`
   display: flex;
@@ -102,10 +107,11 @@ const ToggleNotificationButton = styled.button`
 const TripSummaryPane = ({
   from,
   handleTogglePauseMonitoring,
+  intl,
   monitoredTrip,
   pendingRequest,
   to
-}: MonitoredTripProps): JSX.Element => {
+}: Props): JSX.Element => {
   const { itinerary, leadTimeInMinutes } = monitoredTrip
   if (!itinerary) {
     return (
@@ -124,8 +130,13 @@ const TripSummaryPane = ({
 
     return (
       <SavedTripBody>
-        {/* TODO: use the modern itinerary summary built for trip comparison. */}
         <LocationDetails>
+          <InvisibleA11yLabel>
+            <FormattedMessage
+              id="components.SavedTripList.fromTo"
+              values={{ from: from?.name, to: to?.name }}
+            />
+          </InvisibleA11yLabel>
           <TextWIcon>
             <LocationIcon size={14} type="from" />
             <span>{from?.name}</span>
@@ -171,13 +182,9 @@ const TripSummaryPane = ({
                     /* Make loader fit */
                     <InlineLoading />
                   ) : monitoredTrip.isActive ? (
-                    <>
-                      <FormattedMessage id="components.SavedTripList.pause" />
-                    </>
+                    <FormattedMessage id="components.SavedTripList.pause" />
                   ) : (
-                    <>
-                      <FormattedMessage id="components.SavedTripList.resume" />
-                    </>
+                    <FormattedMessage id="components.SavedTripList.resume" />
                   )}
                 </ToggleNotificationButton>
               </span>

@@ -17,7 +17,7 @@ import {
   TripPanelAlert,
   TripPanelFooter,
   TripPanelHeading,
-  TripPannelTitle
+  TripPanelTitle
 } from '../styled'
 import { RETURN_TO_CURRENT_ROUTE } from '../../../util/ui'
 import { TRIPS_PATH } from '../../../util/constants'
@@ -103,7 +103,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
     return (
       <Panel>
         <TripPanelHeading>
-          <TripPannelTitle>
+          <TripPanelTitle>
             <Panel.Title>
               <TripHeader>{trip.tripName}</TripHeader>
             </Panel.Title>
@@ -118,7 +118,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
                 <FormattedMessage id="components.SavedTripEditor.editSavedTrip" />
               </InvisibleA11yLabel>
             </Link>
-          </TripPannelTitle>
+          </TripPanelTitle>
           <div style={{ marginTop: '-20px' }}>
             <RouteBlockWrapper itinerary={itinerary} />
           </div>
@@ -127,6 +127,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
           <TripSummaryPane
             from={from}
             handleTogglePauseMonitoring={this._handleTogglePauseMonitoring}
+            intl={intl}
             monitoredTrip={trip}
             pendingRequest={this.state.pendingRequest}
             to={to}

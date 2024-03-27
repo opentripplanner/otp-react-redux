@@ -46,7 +46,7 @@ export const TripHeader = styled.h3`
   margin-top: 0px;
 `
 
-export const TripPannelTitle = styled.div`
+export const TripPanelTitle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
