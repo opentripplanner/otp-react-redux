@@ -49,11 +49,10 @@ export function getServiceStart(
  * while preserving the other ones.
  */
 export function combineQueryParams(
-  addedParams?: Record<string, unknown>,
-  originalQuery: Record<string, unknown>
+  addedParams?: Record<string, unknown>
 ): string {
   const search = {
-    ...(originalQuery || getUrlParams()),
+    ...getUrlParams(),
     ...addedParams
   }
   return qs.stringify(search, { arrayFormat: 'repeat' })
