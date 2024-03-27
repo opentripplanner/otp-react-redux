@@ -7,7 +7,7 @@ import { isBlank } from '../../util/ui'
 
 interface OwnProps extends HTMLAttributes<HTMLAnchorElement> {
   isActive?: boolean
-  to: string
+  to?: string
   toParams?: Record<string, unknown>
 }
 
@@ -20,7 +20,7 @@ const Link: ComponentType = 'a' as unknown as ComponentType
 // connect to the redux store so that the search params get updated in timely fashion.
 
 const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
-  const { className, isActive, to, toParams } = ownProps
+  const { className, isActive, to = '', toParams } = ownProps
   const queryParams = combineQueryParams(toParams)
   const href = `#${to}${isBlank(queryParams) ? '' : `?${queryParams}`}`
   return {
