@@ -7,10 +7,8 @@ import { GlobeAmericas, MapMarked, MapPin } from '@styled-icons/fa-solid'
 import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
 import { Undo } from '@styled-icons/fa-solid/Undo'
-import { withRouter } from 'react-router'
 import React, { Component, Fragment, useContext } from 'react'
 import SlidingPane from 'react-sliding-pane'
-import type { RouteComponentProps } from 'react-router'
 import type { WrappedComponentProps } from 'react-intl'
 
 import * as callTakerActions from '../../actions/call-taker'
@@ -46,7 +44,6 @@ type AppMenuProps = {
   fieldTripEnabled?: boolean
   language?: LanguageConfig
   languageOptions: Record<string, any> | null
-  location: { search: string }
   mailablesEnabled?: boolean
   popupTarget?: string
   resetAndToggleCallHistory?: () => void
@@ -64,7 +61,7 @@ type AppMenuState = {
  * Sidebar which appears to show user list of options and links
  */
 class AppMenu extends Component<
-  AppMenuProps & WrappedComponentProps & RouteComponentProps,
+  AppMenuProps & WrappedComponentProps,
   AppMenuState
 > {
   static contextType = ComponentContext
@@ -319,9 +316,7 @@ const mapDispatchToProps = {
   toggleMailables: callTakerActions.toggleMailables
 }
 
-export default injectIntl(
-  withRouter(connect(mapStateToProps, mapDispatchToProps)(AppMenu))
-)
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(AppMenu))
 
 /**
  * Renders a label and icon either from url or font awesome type
