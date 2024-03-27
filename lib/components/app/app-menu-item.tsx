@@ -12,7 +12,6 @@ interface Props extends HTMLAttributes<HTMLElement> {
   subItems?: JSX.Element[]
   text: JSX.Element | string
   to?: string
-  toParams?: Record<string, unknown>
 }
 
 interface State {
