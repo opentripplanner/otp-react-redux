@@ -128,21 +128,44 @@ const TripSummaryPane = ({
       }
     }
 
+    const notificationLabel = intl.formatMessage({
+      id: 'components.ExistingAccountDisplay.notifications'
+    })
+    const durationLabel = intl.formatMessage({
+      id: 'components.TripSummaryPane.timeAndDuration'
+    })
+    const monitoredDaysLabel = intl.formatMessage({
+      id: 'components.TripSummaryPane.monitoredTripDays'
+    })
+
     return (
       <SavedTripBody>
-        <LocationDetails>
-          <InvisibleA11yLabel>
-            <FormattedMessage
-              id="components.SavedTripList.fromTo"
-              values={{ from: from?.name, to: to?.name }}
-            />
-          </InvisibleA11yLabel>
+        <InvisibleA11yLabel>
+          <FormattedMessage
+            id="components.SavedTripList.fromTo"
+            values={{ from: from?.name, to: to?.name }}
+          />
+        </InvisibleA11yLabel>
+        <LocationDetails aria-hidden>
           <TextWIcon>
-            <LocationIcon size={14} type="from" />
+            {/* Location Icon does not allow a title prop so use a span wrapper for a title tooltip */}
+            <span
+              title={intl.formatMessage({
+                id: 'components.BatchSettings.origin'
+              })}
+            >
+              <LocationIcon size={14} type="from" />
+            </span>
             <span>{from?.name}</span>
           </TextWIcon>
           <TextWIcon>
-            <LocationIcon size={14} type="to" />
+            <span
+              title={intl.formatMessage({
+                id: 'components.BatchSettings.destination'
+              })}
+            >
+              <LocationIcon size={14} type="to" />
+            </span>
             <span>{to?.name}</span>
           </TextWIcon>
         </LocationDetails>
@@ -150,17 +173,27 @@ const TripSummaryPane = ({
           <TripDetailsList>
             {/* Trip time and duration */}
             <TripDetailWithIcon as="li">
-              <Clock />
+              <Clock aria-label={durationLabel} title={durationLabel} />
               <TripSummary monitoredTrip={monitoredTrip} />
             </TripDetailWithIcon>
             {/* Available trip days */}
             <TripDetailWithIcon as="li">
-              <Calendar />
+              <Calendar
+                aria-label={monitoredDaysLabel}
+                title={monitoredDaysLabel}
+              />
               <MonitoredDays days={days} />
             </TripDetailWithIcon>
             {/* Trip notification info */}
             <TripDetailWithIcon as="li">
-              {monitoredTrip.isActive ? <Bell /> : <BellSlash width={20} />}
+              {monitoredTrip.isActive ? (
+                <Bell
+                  aria-label={notificationLabel}
+                  title={notificationLabel}
+                />
+              ) : (
+                <BellSlash width={20} />
+              )}
               <span>
                 {monitoredTrip.isActive ? (
                   <FormattedMessage

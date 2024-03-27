@@ -674,8 +674,10 @@ components:
     leaveAt: "Leave at "
   TripSummaryPane:
     happensOnDays: "Happens on: {days}"
+    monitoredTripDays: Trip monitored days
     notifications: "{leadTimeInMinutes} min. before scheduled departure"
     notificationsDisabled: Notifications disabled
+    timeAndDuration: Trip time and duration
   TripTools:
     copyLink: Copy Link
     header: Trip Tools
