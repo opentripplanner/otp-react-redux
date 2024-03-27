@@ -6,29 +6,27 @@ import { format, parse } from 'date-fns'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { MagnifyingGlass } from '@styled-icons/fa-solid/MagnifyingGlass'
 import { MapRef } from 'react-map-gl'
-import { Search } from '@styled-icons/fa-solid/Search'
 import { utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
-import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { Component, FormEvent } from 'react'
 import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as mapActions from '../../actions/map'
 import { AppReduxState } from '../../util/state-types'
-import { Icon, IconWithText } from '../util/styledIcon'
+import { IconWithText } from '../util/styledIcon'
 import { isBlank, navigateBack } from '../../util/ui'
-import { SetLocationHandler, StopData } from '../util/types'
+import { StopData, ZoomToPlaceHandler } from '../util/types'
 import { stopIsFlex } from '../../util/viewer'
 import { TransitOperatorConfig } from '../../util/config-types'
-import Link from '../util/link'
-import OperatorLogo from '../util/operator-logo'
 import PageTitle from '../util/page-title'
 import ServiceTimeRangeRetriever from '../util/service-time-range-retriever'
-import Strong from '../util/strong-text'
 import withMap from '../map/with-map'
 
+import { CardBody, CardHeader } from './nearby/styled'
 import FavoriteStopToggle from './favorite-stop-toggle'
+import FromToPicker from './nearby/from-to-picker'
+import StopCardHeader from './nearby/stop-card-header'
 import StopScheduleTable from './stop-schedule-table'
 import TimezoneWarning from './timezone-warning'
 
@@ -40,17 +38,11 @@ interface Props {
   homeTimezone: string
   intl: IntlShape
   map?: MapRef
-  setLocation: SetLocationHandler
   showBlockIds?: boolean
   stopData?: StopData
   stopId?: string
   transitOperators: TransitOperatorConfig[]
-  // TODO refactor
-  zoomToPlace: (
-    map?: MapRef,
-    place?: { lat: number; lon: number },
-    zoom?: number
-  ) => void
+  zoomToPlace: ZoomToPlaceHandler
 }
 
 interface State {
@@ -84,6 +76,46 @@ const StyledAlert = styled(Alert)`
   text-align: center;
 `
 
+const HeaderCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 0;
+
+  ${CardBody} {
+    margin: 25px 0 0;
+  }
+
+  input[type='date'] {
+    background: inherit;
+    border: none;
+    clear: right;
+    cursor: pointer;
+    outline: none;
+    width: 125px;
+  }
+  /* Remove arrows on date input */
+  input[type='date']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  /* For Chromium browsers, remove extra space between date and the calendar icon. */
+  input[type='date']::-webkit-calendar-picker-indicator {
+    margin: 0;
+  }
+`
+
+const StyledFromToPicker = styled(FromToPicker)`
+  button {
+    color: inherit;
+  }
+  span {
+    border-color: currentColor;
+  }
+  svg {
+    color: inherit;
+    fill: inherit;
+  }
+`
+
 class StopScheduleViewer extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
@@ -92,24 +124,14 @@ class StopScheduleViewer extends Component<Props, State> {
 
   _backClicked = () => navigateBack()
 
-  _setLocationFromStop = (locationType: string) => {
-    const { setLocation, stopData } = this.props
-    if (stopData) {
-      const location = {
-        lat: stopData.lat,
-        lon: stopData.lon,
-        name: stopData.name
-      }
-      setLocation({ location, locationType, reverseGeocode: false })
-    }
-  }
-
-  _onClickPlanTo = () => this._setLocationFromStop('to')
-
-  _onClickPlanFrom = () => this._setLocationFromStop('from')
-
   componentDidMount() {
     this._findStopTimesForDate(this.state.date)
+  }
+
+  componentDidUpdate() {
+    // FIXME: This is to prevent zooming the map back to entire itinerary
+    // when accessing the schedule viewer from the nearby view.
+    this._zoomToStop()
   }
 
   _findStopTimesForDate = (date: string) => {
@@ -170,12 +192,9 @@ class StopScheduleViewer extends Component<Props, State> {
   }
 
   _renderHeader = (agencyCount: number) => {
-    const { hideBackButton, intl, stopData } = this.props
-
-    // We can use the first route, as this operator will only be used if there is only one operator
-    const stationOperator = this.getOperator()
-
+    const { hideBackButton, stopData, stopId } = this.props
     return (
+      // CSS class stop-viewer-header is needed for customizing how logos are displayed.
       <div className="stop-viewer-header">
         {/* Back button */}
         {!hideBackButton && (
@@ -188,67 +207,44 @@ class StopScheduleViewer extends Component<Props, State> {
           </div>
         )}
 
-        {/* Header Text */}
-        <div className="header-text">
+        <HeaderCard>
           {stopData?.name ? (
-            <h1 style={{ paddingLeft: '0.5ch' }}>
-              {agencyCount <= 1 && stationOperator && (
-                /* Span with agency classname allows optional contrast/customization in user 
-                config for logos with poor contrast. Class name is hyphenated agency name 
-                e.g. "sound-transit" */
-                <span
-                  className={
-                    stationOperator?.name
-                      ? stationOperator.name.replace(/\s+/g, '-').toLowerCase()
-                      : ''
-                  }
-                >
-                  <OperatorLogo
-                    alt={intl.formatMessage(
-                      {
-                        id: 'components.StopViewer.operatorLogoAriaLabel'
-                      },
-                      {
-                        operatorName: stationOperator.name
-                      }
-                    )}
-                    operator={stationOperator}
-                  />
-                </span>
-              )}
-              {stopData.name}
-            </h1>
+            <StopCardHeader
+              // FIXME: What icon should we use?
+              actionIcon={MagnifyingGlass}
+              actionParams={{ entityId: stopId }}
+              actionPath={`/nearby/${stopData.lat},${stopData.lon}`}
+              actionText={
+                <FormattedMessage id="components.StopViewer.viewNearby" />
+              }
+              fromToSlot={this._renderControls()}
+              onZoomClick={this._zoomToStop}
+              stopData={stopData}
+              titleAs="h1"
+            />
           ) : (
-            <h1>
-              <FormattedMessage id="components.StopViewer.loadingText" />
-            </h1>
+            <CardHeader>
+              <h1>
+                <FormattedMessage id="components.StopViewer.loadingText" />
+              </h1>
+            </CardHeader>
           )}
-          <FavoriteStopToggle stopData={stopData} />
-        </div>
+        </HeaderCard>
+        <FavoriteStopToggle stopData={stopData} />
+
         <div style={{ clear: 'both' }} />
       </div>
     )
   }
 
   /**
-   * Plan trip from/to here buttons, plus the schedule/next arrivals toggle.
+   * Plan trip from/to here buttons, plus the schedule date control.
    */
   _renderControls = () => {
-    const { calendarMax, calendarMin, homeTimezone, intl, stopData, stopId } =
+    const { calendarMax, calendarMin, homeTimezone, intl, stopData } =
       this.props
     const { date } = this.state
     const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
-
-    // Rewrite stop ID to not include Agency prefix, if present
-    // TODO: make this functionality configurable?
-    let displayedStopId
-    if (stopData) {
-      displayedStopId =
-        stopData.code ||
-        (stopData.gtfsId?.includes(':')
-          ? stopData.gtfsId.split(':')[1]
-          : stopData.gtfsId)
-    }
 
     let warning
     if (!inHomeTimezone && this._isDateWithinRange(date)) {
@@ -275,46 +271,8 @@ class StopScheduleViewer extends Component<Props, State> {
     }
 
     return (
-      <div
-        className="stop-viewer-controls"
-        role="group"
-        style={{ marginBottom: '10px' }}
-      >
-        <div>
-          <FormattedMessage
-            id="components.StopViewer.displayStopId"
-            values={{ stopId: displayedStopId, strong: Strong }}
-          />
-          <button
-            className="link-button"
-            onClick={this._zoomToStop}
-            title={intl.formatMessage({
-              id: 'components.StopViewer.zoomToStop'
-            })}
-          >
-            <Icon Icon={Search} style={{ marginLeft: '0.2em' }} />
-          </button>
-          {stopData ? (
-            <Link
-              className="pull-right"
-              style={{ color: 'inherit', fontSize: 'small' }}
-              to={`/nearby/${stopData.lat},${stopData.lon}`}
-              toParams={{ entityId: stopId }}
-            >
-              {/* FIXME: What icon should we use? */}
-              <IconWithText Icon={MagnifyingGlass}>
-                <FormattedMessage id="components.StopViewer.viewNearby" />
-              </IconWithText>
-            </Link>
-          ) : null}
-        </div>
-        <span role="group">
-          <FromToLocationPicker
-            label
-            onFromClick={this._onClickPlanFrom}
-            onToClick={this._onClickPlanTo}
-          />
-        </span>
+      <div role="group" style={{ marginBottom: '10px' }}>
+        {stopData ? <StyledFromToPicker place={stopData} /> : null}
         <input
           aria-label={intl.formatMessage({
             id: 'components.StopViewer.findSchedule'
@@ -348,7 +306,6 @@ class StopScheduleViewer extends Component<Props, State> {
 
         {stopData && (
           <div className="stop-viewer-body">
-            {this._renderControls()}
             {/* scrollable list of scheduled stops requires tabIndex 
             for keyboard navigation */}
             <Scrollable tabIndex={0}>
@@ -432,7 +389,6 @@ const mapStateToProps = (state: AppReduxState) => {
 
 const mapDispatchToProps = {
   findStopTimesForStop: apiActions.findStopTimesForStop,
-  setLocation: mapActions.setLocation,
   zoomToPlace: mapActions.zoomToPlace
 }
 
