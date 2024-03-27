@@ -67,7 +67,7 @@ export const TripPanelHeading = styled(Panel.Heading)`
   }
 `
 
-export const TripPanelAlert = styled.button`
+export const TripPanelAlert = styled.span`
   background: none;
   border: none;
   color: ${RED_ON_WHITE};

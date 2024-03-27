@@ -28,9 +28,12 @@ import PageTitle from '../../util/page-title'
 import withLoggedInUserSupport from '../with-logged-in-user-support'
 
 import getRenderData from './trip-status-rendering-strategies'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import RouteBlockWrapper from './route-block-wrapper'
 
 import styled from 'styled-components'
+
+import Link from '../../util/link'
 
 import TripSummaryPane from './trip-summary-pane'
 
@@ -78,15 +81,6 @@ class TripListItem extends Component<ItemProps, ItemState> {
   }
 
   /**
-   * Navigate to the saved trip's URL #/TRIPS_PATH/trip-id-123.
-   * (There shouldn't be a need to encode the ids from Mongo.)
-   */
-  _handleEditTrip = () => {
-    const { routeTo, trip } = this.props
-    routeTo(`${TRIPS_PATH}/${trip.id}`)
-  }
-
-  /**
    * Pauses or resumes the specified trip.
    */
   _handleTogglePauseMonitoring = () => {
@@ -96,7 +90,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
   }
 
   render() {
-    const { renderData, trip } = this.props
+    const { intl, renderData, trip } = this.props
     const { itinerary } = trip
     const { legs } = itinerary
     const { alerts, shouldRenderAlerts } = renderData
@@ -105,6 +99,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
     // - get the 'to' location of the last leg.
     const from = legs[0].from
     const to = legs[legs.length - 1].to
+    const editTripPath = `${TRIPS_PATH}/${trip.id}`
     return (
       <Panel>
         <TripPanelHeading>
@@ -112,9 +107,17 @@ class TripListItem extends Component<ItemProps, ItemState> {
             <Panel.Title>
               <TripHeader>{trip.tripName}</TripHeader>
             </Panel.Title>
-            <button onClick={this._handleEditTrip}>
+            <Link
+              title={intl.formatMessage({
+                id: 'components.SavedTripEditor.editSavedTrip'
+              })}
+              to={editTripPath}
+            >
               <Icon Icon={Edit} />
-            </button>
+              <InvisibleA11yLabel>
+                <FormattedMessage id="components.SavedTripEditor.editSavedTrip" />
+              </InvisibleA11yLabel>
+            </Link>
           </TripPannelTitle>
           <div style={{ marginTop: '-20px' }}>
             <RouteBlockWrapper itinerary={itinerary} />
@@ -130,14 +133,16 @@ class TripListItem extends Component<ItemProps, ItemState> {
           />
           <TripPanelFooter>
             {shouldRenderAlerts && (
-              <TripPanelAlert onClick={this._handleEditTrip}>
-                <IconWithText Icon={TriangleExclamation}>
-                  <FormattedMessage
-                    id="components.SavedTripList.alertTag"
-                    values={{ alert: alerts.length }}
-                  />
-                </IconWithText>
-              </TripPanelAlert>
+              <Link to={editTripPath}>
+                <TripPanelAlert>
+                  <IconWithText Icon={TriangleExclamation}>
+                    <FormattedMessage
+                      id="components.SavedTripList.alertTag"
+                      values={{ alert: alerts.length }}
+                    />
+                  </IconWithText>
+                </TripPanelAlert>
+              </Link>
             )}
           </TripPanelFooter>
         </Panel.Body>
