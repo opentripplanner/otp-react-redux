@@ -656,6 +656,9 @@ components:
       awaiting: Awaiting calculation...
       description: Please wait a bit for the trip to calculate.
       heading: Trip not yet calculated
+    past:
+      description: This is a one-time trip that occurred in the past.
+      heading: Trip is in the past
     snoozed:
       description: Unsnooze trip monitoring to see the updated status.
       heading: Trip monitoring is snoozed for today

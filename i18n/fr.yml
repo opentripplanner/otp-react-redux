@@ -690,6 +690,9 @@ components:
         Veuillez patienter pendant que les conditions du trajet sont
         déterminées.
       heading: Conditions du trajet indéterminées
+    past:
+      description: Le jour de ce trajet non-répété est passé.
+      heading: Trajet dans le passé
     snoozed:
       description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
       heading: Suivi suspendu jusqu'à demain

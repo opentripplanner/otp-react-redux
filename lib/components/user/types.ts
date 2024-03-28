@@ -74,3 +74,9 @@ export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
 export interface MonitoredTripProps {
   monitoredTrip: MonitoredTrip
 }
+
+export interface MonitoredTripRenderData {
+  bodyText: React.ReactNode
+  headingText: React.ReactNode
+  shouldRenderAlerts: boolean
+}
