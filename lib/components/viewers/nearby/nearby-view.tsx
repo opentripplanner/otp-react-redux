@@ -1,15 +1,14 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { Location, Stop as StopType } from '@opentripplanner/types'
+import { Location } from '@opentripplanner/types'
 import { MapRef, useMap } from 'react-map-gl'
-import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
-import { SetLocationHandler } from '../../util/types'
+import { SetLocationHandler, ZoomToPlaceHandler } from '../../util/types'
 import Loading from '../../narrative/loading'
 import MobileContainer from '../../mobile/container'
 import MobileNavigationBar from '../../mobile/navigation-bar'
@@ -21,6 +20,7 @@ import {
   NearbySidebarContainer,
   Scrollable
 } from './styled'
+import FromToPicker from './from-to-picker'
 import RentalStation from './rental-station'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
@@ -43,47 +43,17 @@ type Props = {
   setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
   setViewedNearbyCoords: (location: Location | null) => void
-  zoomToPlace: (map: MapRef, stopData: Location) => void
+  zoomToPlace: ZoomToPlaceHandler
 }
 
-const FromToPicker = ({
-  setLocation,
-  stopData
-}: {
-  setLocation: SetLocationHandler
-  stopData: StopType
-}) => {
-  const location = useMemo(
-    () => ({
-      lat: stopData.lat ?? 0,
-      lon: stopData.lon ?? 0,
-      name: stopData.name
-    }),
-    [stopData]
-  )
-  return (
-    <span role="group">
-      <FromToLocationPicker
-        label
-        onFromClick={useCallback(() => {
-          setLocation({ location, locationType: 'from', reverseGeocode: false })
-        }, [location, setLocation])}
-        onToClick={useCallback(() => {
-          setLocation({ location, locationType: 'to', reverseGeocode: false })
-        }, [location, setLocation])}
-      />
-    </span>
-  )
-}
-
-const getNearbyItem = (place: any, setLocation: SetLocationHandler) => {
-  const fromTo = <FromToPicker setLocation={setLocation} stopData={place} />
+const getNearbyItem = (place: any) => {
+  const fromTo = <FromToPicker place={place} />
 
   switch (place.__typename) {
     case 'RentalVehicle':
       return <Vehicle fromToSlot={fromTo} vehicle={place} />
     case 'Stop':
-      return <Stop fromToSlot={fromTo} showOperatorLogo stopData={place} />
+      return <Stop fromToSlot={fromTo} stopData={place} />
     case 'VehicleParking':
       return <VehicleParking fromToSlot={fromTo} place={place} />
     case 'BikeRentalStation':
@@ -114,11 +84,6 @@ function NearbyView({
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
   const firstItemRef = useRef<HTMLDivElement>(null)
-
-  const onClickSetLocation: SetLocationHandler = (payload) => {
-    setMainPanelContent(0)
-    setLocation(payload)
-  }
 
   // Make sure the highlighted location is cleaned up when leaving nearby
   useEffect(() => {
@@ -223,7 +188,7 @@ function NearbyView({
           /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
           tabIndex={0}
         >
-          {getNearbyItem(n.place, onClickSetLocation)}
+          {getNearbyItem(n.place)}
         </div>
       </li>
     ))

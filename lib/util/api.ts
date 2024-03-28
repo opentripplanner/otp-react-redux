@@ -49,7 +49,7 @@ export function getServiceStart(
  * while preserving the other ones.
  */
 export function combineQueryParams(
-  addedParams: Record<string, unknown>
+  addedParams?: Record<string, unknown>
 ): string {
   const search = {
     ...getUrlParams(),
