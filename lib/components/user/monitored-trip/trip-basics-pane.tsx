@@ -102,6 +102,19 @@ const AvailableDays = styled(FieldSet)`
   }
 `
 
+const CheckboxWrapper = styled.span`
+  input {
+    &:focus-visible,
+    &:focus {
+      outline-offset: 0.5px;
+      outline: solid 2px blue;
+      &:checked {
+        outline: solid 2px white;
+      }
+    }
+  }
+`
+
 /**
  * This component shows summary information for a trip
  * and lets the user edit the trip name and day.
@@ -242,15 +255,17 @@ class TripBasicsPane extends Component<TripBasicsProps> {
 
                 return (
                   <span className={boxClass} key={day} title={notAvailableText}>
-                    <Field
-                      aria-invalid={!!monitoredDaysValidationState}
-                      // Let users save an existing trip, even though it may not be available on some days.
-                      // TODO: improve checking trip availability.
-                      disabled={isDayDisabled && isCreating}
-                      id={day}
-                      name={day}
-                      type="checkbox"
-                    />
+                    <CheckboxWrapper>
+                      <Field
+                        aria-invalid={!!monitoredDaysValidationState}
+                        // Let users save an existing trip, even though it may not be available on some days.
+                        // TODO: improve checking trip availability.
+                        disabled={isDayDisabled && isCreating}
+                        id={day}
+                        name={day}
+                        type="checkbox"
+                      />
+                    </CheckboxWrapper>
                     <label htmlFor={day}>
                       <InvisibleA11yLabel>
                         <FormattedDayOfWeek day={day} />
