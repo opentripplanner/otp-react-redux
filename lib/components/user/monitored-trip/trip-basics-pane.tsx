@@ -101,7 +101,7 @@ const AvailableDays = styled(FieldSet)`
     width: 100%;
   }
 `
-
+// Targets the formik checkboxes to provide better contrast on focus styles
 const CheckboxWrapper = styled.span`
   input {
     &:focus-visible,
