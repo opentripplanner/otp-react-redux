@@ -85,8 +85,9 @@
 }
 .view-switcher a:hover,
 .view-switcher a:focus {
-  text-decoration: none;
   border-radius: 15px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .view-switcher a:hover {
