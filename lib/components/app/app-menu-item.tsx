@@ -3,12 +3,15 @@ import { ChevronUp } from '@styled-icons/fa-solid/ChevronUp'
 import AnimateHeight from 'react-animate-height'
 import React, { Component, HTMLAttributes, KeyboardEvent } from 'react'
 
+import Link from '../util/link'
+
 interface Props extends HTMLAttributes<HTMLElement> {
   href?: string
   icon?: JSX.Element
   onClick?: () => void
   subItems?: JSX.Element[]
   text: JSX.Element | string
+  to?: string
 }
 
 interface State {
@@ -70,7 +73,7 @@ export default class AppMenuItem extends Component<Props, State> {
     const { isExpanded } = this.state
     const hasHref = !!otherProps.href
     const isAbsolute = otherProps.href?.startsWith('http')
-    const Element = hasHref ? 'a' : 'button'
+    const Element = hasHref ? 'a' : otherProps.to ? Link : 'button'
     const containerId = `${id}-container`
     return (
       <>
