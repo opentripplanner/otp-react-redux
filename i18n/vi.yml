@@ -579,7 +579,6 @@ components:
     vehicleName: Phương tiện giao thông {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Kiểm tra sự tồn tại của hành trình cho mỗi ngày trong tuần…
-    selectAtLeastOneDay: Vui lòng chọn ít nhất một ngày để theo dõi.
     tripDaysPrompt: Bạn thực hiện chuyến đi này vào những ngày nào?
     tripIsAvailableOnDaysIndicated: Chuyến đi của bạn có sẵn vào những ngày trong tuần như đã nêu ở trên.
     tripNamePrompt: "Vui lòng cung cấp tên cho chuyến đi này:"

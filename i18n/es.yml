@@ -617,7 +617,6 @@ components:
     vehicleName: Vehículo {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Comprobación de la existencia de itinerarios para cada día de la semana…
-    selectAtLeastOneDay: Por favor, seleccione al menos un día para el seguimiento.
     tripDaysPrompt: ¿Qué días hace este viaje?
     tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana indicados anteriormente.
     tripNamePrompt: "Por favor, indique un nombre para este viaje:"

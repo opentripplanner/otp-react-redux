@@ -570,7 +570,6 @@ components:
     vehicleName: Транспортное средство {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Проверка маршрута на каждый день недели…
-    selectAtLeastOneDay: Для просмотра выберите хотя бы один день.
     tripDaysPrompt: В какие дни вы хотите совершать эту поездку?
     tripIsAvailableOnDaysIndicated: Поездка доступна для указанных выше дней.
     tripNamePrompt: "Укажите имя поездки:"
