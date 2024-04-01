@@ -189,9 +189,7 @@ class TripBasicsPane extends Component<TripBasicsProps> {
         </div>
       )
     } else {
-      // Show an error indication when
-      // - monitoredTrip.tripName is not blank and that tripName is not already used.
-      // - no day is selected (show a combined error indication).
+      // Show an error indication when monitoredTrip.tripName is not blank, or that tripName is already used.
       const errorStates = getErrorStates(this.props)
       const monitoredDays = dayFieldsToArray(monitoredTrip)
       const isOneTime = monitoredDays.length === 0

@@ -16,7 +16,6 @@ export default function pastTripRenderer(
   data.headingText = (
     <FormattedMessage id="components.TripStatusRenderers.past.heading" />
   )
-  // data.lastCheckedText = ''
   data.bodyText = (
     <FormattedMessage id="components.TripStatusRenderers.past.description" />
   )
