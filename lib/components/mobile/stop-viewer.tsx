@@ -5,7 +5,7 @@ import React, { useCallback } from 'react'
 import * as uiActions from '../../actions/ui'
 import { SetViewedStopHandler } from '../util/types'
 import DefaultMap from '../map/default-map'
-import StopViewer from '../viewers/stop-viewer'
+import StopScheduleViewer from '../viewers/stop-schedule-viewer'
 
 import MobileContainer from './container'
 import MobileNavigationBar from './navigation-bar'
@@ -24,7 +24,7 @@ const MobileStopViewer = ({ setViewedStop }: Props) => {
       />
       <main tabIndex={-1}>
         <div className="viewer-container">
-          <StopViewer hideBackButton />
+          <StopScheduleViewer hideBackButton />
         </div>
 
         {/* The map is less important semantically, so keyboard focus and screen readers

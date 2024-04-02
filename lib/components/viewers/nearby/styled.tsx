@@ -36,16 +36,20 @@ export const Card = styled.div`
 `
 
 export const CardHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 0 1.2rem;
-  padding-top: 1rem;
+  padding: 1rem 1.2rem 0;
 `
 
 export const CardTitle = styled.p`
+  align-items: center;
+  display: flex;
   font-size: 22px;
   font-weight: 600;
+  gap: 0.5ch;
   margin: 0;
+  /* Prevent svg and images to be taller than the text. */
+  svg {
+    max-height: 1em;
+  }
 `
 
 export const CardSubheader = styled.p`

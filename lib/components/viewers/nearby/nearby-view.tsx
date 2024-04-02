@@ -1,15 +1,14 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { Location, Stop as StopType } from '@opentripplanner/types'
+import { Location } from '@opentripplanner/types'
 import { MapRef, useMap } from 'react-map-gl'
-import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
-import { SetLocationHandler } from '../../util/types'
+import { SetLocationHandler, ZoomToPlaceHandler } from '../../util/types'
 import Loading from '../../narrative/loading'
 import MobileContainer from '../../mobile/container'
 import MobileNavigationBar from '../../mobile/navigation-bar'
@@ -21,6 +20,7 @@ import {
   NearbySidebarContainer,
   Scrollable
 } from './styled'
+import FromToPicker from './from-to-picker'
 import RentalStation from './rental-station'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
@@ -32,57 +32,28 @@ type LatLonObj = { lat: number; lon: number }
 
 type Props = {
   entityId?: string
-  fetchNearby: (latLon: LatLonObj, map?: MapRef) => void
+  fetchNearby: (latLon: LatLonObj, radius?: number) => void
   hideBackButton?: boolean
   location: string
   mobile?: boolean
   nearby: any
   nearbyViewCoords?: LatLonObj
+  radius?: number
   setHighlightedLocation: (location: Location | null) => void
   setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
   setViewedNearbyCoords: (location: Location | null) => void
-  zoomToPlace: (map: MapRef, stopData: Location) => void
+  zoomToPlace: ZoomToPlaceHandler
 }
 
-const FromToPicker = ({
-  setLocation,
-  stopData
-}: {
-  setLocation: SetLocationHandler
-  stopData: StopType
-}) => {
-  const location = useMemo(
-    () => ({
-      lat: stopData.lat ?? 0,
-      lon: stopData.lon ?? 0,
-      name: stopData.name
-    }),
-    [stopData]
-  )
-  return (
-    <span role="group">
-      <FromToLocationPicker
-        label
-        onFromClick={useCallback(() => {
-          setLocation({ location, locationType: 'from', reverseGeocode: false })
-        }, [location, setLocation])}
-        onToClick={useCallback(() => {
-          setLocation({ location, locationType: 'to', reverseGeocode: false })
-        }, [location, setLocation])}
-      />
-    </span>
-  )
-}
-
-const getNearbyItem = (place: any, setLocation: SetLocationHandler) => {
-  const fromTo = <FromToPicker setLocation={setLocation} stopData={place} />
+const getNearbyItem = (place: any) => {
+  const fromTo = <FromToPicker place={place} />
 
   switch (place.__typename) {
     case 'RentalVehicle':
       return <Vehicle fromToSlot={fromTo} vehicle={place} />
     case 'Stop':
-      return <Stop fromToSlot={fromTo} showOperatorLogo stopData={place} />
+      return <Stop fromToSlot={fromTo} stopData={place} />
     case 'VehicleParking':
       return <VehicleParking fromToSlot={fromTo} place={place} />
     case 'BikeRentalStation':
@@ -102,6 +73,7 @@ function NearbyView({
   mobile,
   nearby,
   nearbyViewCoords,
+  radius,
   setHighlightedLocation,
   setLocation,
   setMainPanelContent,
@@ -113,11 +85,6 @@ function NearbyView({
   const [loading, setLoading] = useState(true)
   const firstItemRef = useRef<HTMLDivElement>(null)
 
-  const onClickSetLocation: SetLocationHandler = (payload) => {
-    setMainPanelContent(0)
-    setLocation(payload)
-  }
-
   // Make sure the highlighted location is cleaned up when leaving nearby
   useEffect(() => {
     return function cleanup() {
@@ -126,7 +93,7 @@ function NearbyView({
   }, [location, setHighlightedLocation])
 
   useEffect(() => {
-    const listener = (e: any) => {
+    const moveListener = (e: any) => {
       if (e.geolocateSource) {
         setViewedNearbyCoords({
           lat: e.viewState.latitude,
@@ -134,11 +101,28 @@ function NearbyView({
         })
       }
     }
-    map?.on('moveend', listener)
-    return function cleanup() {
-      map?.off('moveend', listener)
+
+    const dragListener = (e: any) => {
+      const coords = {
+        lat: e.viewState.latitude,
+        lon: e.viewState.longitude
+      }
+      setViewedNearbyCoords(coords)
+
+      // Briefly flash the highlight to alert the user that we've moved
+      setHighlightedLocation(coords)
+      setTimeout(() => {
+        setHighlightedLocation(null)
+      }, 500)
     }
-  }, [map, setViewedNearbyCoords])
+
+    map?.on('dragend', dragListener)
+    map?.on('moveend', moveListener)
+    return function cleanup() {
+      map?.off('dragend', dragListener)
+      map?.off('moveend', moveListener)
+    }
+  }, [map, setViewedNearbyCoords, setHighlightedLocation])
 
   useEffect(() => {
     if (typeof firstItemRef.current?.scrollIntoView === 'function') {
@@ -146,10 +130,10 @@ function NearbyView({
     }
     // If nearby view coords are provided, use those. Otherwise use the map center.
     if (nearbyViewCoords) {
-      fetchNearby(nearbyViewCoords)
+      fetchNearby(nearbyViewCoords, radius)
       setLoading(true)
       const interval = setInterval(() => {
-        fetchNearby(nearbyViewCoords)
+        fetchNearby(nearbyViewCoords, radius)
         setLoading(true)
       }, AUTO_REFRESH_INTERVAL)
       return function cleanup() {
@@ -162,10 +146,10 @@ function NearbyView({
         lon: rawMapCoords.lng
       }
       if (mapCoords) {
-        fetchNearby(mapCoords)
+        fetchNearby(mapCoords, radius)
         setLoading(true)
         const interval = setInterval(() => {
-          fetchNearby(mapCoords)
+          fetchNearby(mapCoords, radius)
           setLoading(true)
         }, AUTO_REFRESH_INTERVAL)
         return function cleanup() {
@@ -173,7 +157,7 @@ function NearbyView({
         }
       }
     }
-  }, [nearbyViewCoords, map, fetchNearby])
+  }, [nearbyViewCoords, map, fetchNearby, radius])
 
   const onMouseEnter = useCallback(
     (location: Location) => {
@@ -204,7 +188,7 @@ function NearbyView({
           /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
           tabIndex={0}
         >
-          {getNearbyItem(n.place, onClickSetLocation)}
+          {getNearbyItem(n.place)}
         </div>
       </li>
     ))
@@ -272,11 +256,12 @@ const mapStateToProps = (state: AppReduxState) => {
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
   return {
-    entityId,
+    entityId: entityId && decodeURIComponent(entityId),
     homeTimezone: config.homeTimezone,
     location: state.router.location.hash,
     nearby,
-    nearbyViewCoords
+    nearbyViewCoords,
+    radius: config.nearbyView?.radius
   }
 }
 
