@@ -50,6 +50,17 @@ type ErrorStates = 'success' | 'warning' | 'error' | null | undefined
 
 // Styles.
 const AvailableDays = styled(FieldSet)`
+  // Targets the formik checkboxes to provide better contrast on focus styles
+  input {
+    &:focus-visible,
+    &:focus {
+      outline-offset: 0.5px;
+      outline: solid 2px blue;
+      &:checked {
+        outline: solid 2px white;
+      }
+    }
+  }
   & > span {
     border: 1px solid #ccc;
     border-left: none;
@@ -99,19 +110,6 @@ const AvailableDays = styled(FieldSet)`
     font-weight: inherit;
     height: 100%;
     width: 100%;
-  }
-`
-// Targets the formik checkboxes to provide better contrast on focus styles
-const CheckboxWrapper = styled.span`
-  input {
-    &:focus-visible,
-    &:focus {
-      outline-offset: 0.5px;
-      outline: solid 2px blue;
-      &:checked {
-        outline: solid 2px white;
-      }
-    }
   }
 `
 
@@ -255,17 +253,15 @@ class TripBasicsPane extends Component<TripBasicsProps> {
 
                 return (
                   <span className={boxClass} key={day} title={notAvailableText}>
-                    <CheckboxWrapper>
-                      <Field
-                        aria-invalid={!!monitoredDaysValidationState}
-                        // Let users save an existing trip, even though it may not be available on some days.
-                        // TODO: improve checking trip availability.
-                        disabled={isDayDisabled && isCreating}
-                        id={day}
-                        name={day}
-                        type="checkbox"
-                      />
-                    </CheckboxWrapper>
+                    <Field
+                      aria-invalid={!!monitoredDaysValidationState}
+                      // Let users save an existing trip, even though it may not be available on some days.
+                      // TODO: improve checking trip availability.
+                      disabled={isDayDisabled && isCreating}
+                      id={day}
+                      name={day}
+                      type="checkbox"
+                    />
                     <label htmlFor={day}>
                       <InvisibleA11yLabel>
                         <FormattedDayOfWeek day={day} />
