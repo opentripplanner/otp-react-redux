@@ -431,6 +431,9 @@ components:
       minutes).
     verified: Verified
     verify: Verify
+    verifySms: >-
+      Please complete the verification process in order to set up SMS
+      notifications.
   Place:
     deleteThisPlace: Delete this place
     enterAlert: >
