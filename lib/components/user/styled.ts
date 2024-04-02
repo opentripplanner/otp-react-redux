@@ -2,6 +2,7 @@ import { Button, Panel } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
 
 import { RED_ON_WHITE } from '../util/colors'
+import baseColor from '../util/base-color'
 
 export const PageHeading = styled.h2`
   margin: 10px 0px 45px 0px;
@@ -57,9 +58,8 @@ export const TripPanelHeading = styled(Panel.Heading)`
   border-color: #fff !important;
   padding: 20px 25px 0 25px;
 
-  button {
-    background: transparent;
-    border: 0;
+  a {
+    color: ${baseColor};
   }
 
   h3 {

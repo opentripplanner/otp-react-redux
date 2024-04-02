@@ -4,6 +4,8 @@ import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import React from 'react'
 
+import baseColor from '../../util/base-color'
+
 import styled from 'styled-components'
 
 interface Props {
@@ -17,12 +19,14 @@ const DayCircleContainer = styled.div`
 
 const MonitoredDay = styled.span<{ monitored: boolean }>`
   align-items: center;
-  background-color: ${(props) => (props.monitored ? '#4152a4' : 'transparent')};
+  background-color: ${(props) => (props.monitored ? baseColor : 'transparent')};
+  border: 1px solid ${(props) => (props.monitored ? baseColor : '#333')};
   border-radius: 50%;
   color: ${(props) => (props.monitored ? 'white' : 'inherit')};
   display: flex;
   height: 27px;
   justify-content: center;
+  opacity: ${(props) => (props.monitored ? 1 : 0.7)};
   text-transform: capitalize;
   width: 27px;
 `
