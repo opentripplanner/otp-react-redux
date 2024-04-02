@@ -270,7 +270,7 @@
   margin: 0;
 }
 
-@media (max-width: 650px){
+@media (max-width: 768px){
   .panel-default {
     width: 90%;
   }

@@ -26,7 +26,7 @@ const SavedTripBody = styled.div`
   justify-content: center;
   padding: 0 0 0 15px;
 
-  @media (max-width: 650px) {
+  @media (max-width: 768px) {
     flex-direction: column;
     padding: 0;
   }
@@ -43,7 +43,7 @@ const LocationDetails = styled.div`
   padding-right: 30px;
   width: 50%;
 
-  @media (max-width: 650px) {
+  @media (max-width: 768px) {
     align-items: center;
     border-bottom: 1px solid #ddd;
     border-right: 0;
@@ -58,7 +58,7 @@ const ItineraryDetails = styled.div`
   padding: 20px;
   padding-left: 30px;
 
-  @media (max-width: 650px) {
+  @media (max-width: 768px) {
     padding: 30px 20px 20px 20px;
     width: 100%;
   }
