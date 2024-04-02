@@ -7,7 +7,7 @@ import FormattedDuration from '../../util/formatted-duration'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 const Divider = styled.span`
-  margin: 0 3px;
+  margin: 0 5px;
 `
 
 const TripSummary = ({ monitoredTrip }: MonitoredTripProps): JSX.Element => {

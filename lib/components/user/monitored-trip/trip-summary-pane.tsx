@@ -24,10 +24,11 @@ interface Props extends MonitoredTripProps {
 const SavedTripBody = styled.div`
   display: flex;
   justify-content: center;
-  padding: 0 15px;
+  padding: 0 0 0 15px;
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     flex-direction: column;
+    padding: 0;
   }
 `
 
@@ -39,13 +40,15 @@ const LocationDetails = styled.div`
   gap: 10px;
   justify-content: center;
   padding: 20px;
+  padding-right: 30px;
   width: 50%;
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     align-items: center;
     border-bottom: 1px solid #ddd;
     border-right: 0;
     border-top: 1px solid #ddd;
+    padding: 30px 20px 30px 20px;
     width: 100%;
   }
 `
@@ -53,9 +56,10 @@ const ItineraryDetails = styled.div`
   display: flex;
   justify-content: center;
   padding: 20px;
-  width: 50%;
+  padding-left: 30px;
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
+    padding: 30px 20px 20px 20px;
     width: 100%;
   }
 `
@@ -73,6 +77,7 @@ const TextWIcon = styled.div`
 
 const TripDetailWithIcon = styled(TextWIcon)`
   gap: 12px;
+  width: 273px;
 
   svg {
     width: 16px;
@@ -100,6 +105,7 @@ const TripDetailsList = styled.ul`
 const ToggleNotificationButton = styled.button`
   background: transparent;
   border: none;
+  font-style: italic;
   padding: 0;
   text-decoration: underline;
 `
