@@ -12,17 +12,16 @@ interface Props {
   days: string[]
 }
 
-const baseColor = getBaseColor()
-
 const DayCircleContainer = styled.div`
   display: flex;
   gap: 4px;
 `
 
-const MonitoredDay = styled.span<{ monitored: boolean }>`
+const MonitoredDay = styled.span<{ baseColor: string; monitored: boolean }>`
   align-items: center;
-  background-color: ${(props) => (props.monitored ? baseColor : 'transparent')};
-  border: 1px solid ${(props) => (props.monitored ? baseColor : '#333')};
+  background-color: ${(props) =>
+    props.monitored ? props.baseColor : 'transparent'};
+  border: 1px solid ${(props) => (props.monitored ? props.baseColor : '#333')};
   border-radius: 50%;
   color: ${(props) => (props.monitored ? 'white' : 'inherit')};
   display: flex;
@@ -52,12 +51,14 @@ const MonitoredDays = ({ days }: Props) => {
       ))}
     />
   )
+
+  const baseColor = getBaseColor()
   const DayCircles = daysOfWeek.map((d) => {
     const dayAbbrev =
       d === 'thursday' || d === 'sunday' ? d.slice(0, 2) : d.charAt(0)
     const monitored = days?.includes(d)
     return (
-      <MonitoredDay key={d} monitored={monitored}>
+      <MonitoredDay baseColor={baseColor} key={d} monitored={monitored}>
         <span>{dayAbbrev}</span>
       </MonitoredDay>
     )
