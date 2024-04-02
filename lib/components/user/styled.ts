@@ -1,8 +1,10 @@
-import { Button, Panel } from 'react-bootstrap'
+import { Panel } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
 
 import { RED_ON_WHITE } from '../util/colors'
-import baseColor from '../util/base-color'
+import getBaseColor from '../util/base-color'
+
+const baseColor = getBaseColor()
 
 export const PageHeading = styled.h2`
   margin: 10px 0px 45px 0px;

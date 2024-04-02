@@ -4,13 +4,15 @@ import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import React from 'react'
 
-import baseColor from '../../util/base-color'
+import getBaseColor from '../../util/base-color'
 
 import styled from 'styled-components'
 
 interface Props {
   days: string[]
 }
+
+const baseColor = getBaseColor()
 
 const DayCircleContainer = styled.div`
   display: flex;

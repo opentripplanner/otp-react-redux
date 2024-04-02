@@ -34,8 +34,8 @@ import {
   ModeSelectorContainer,
   PlanTripButton
 } from './batch-styled'
-import baseColor from '../util/base-color'
 import DateTimeButton from './date-time-button'
+import getBaseColor from '../util/base-color'
 
 const queryParamConfig = { modeButtons: DelimitedArrayParam }
 
@@ -217,6 +217,8 @@ function BatchSettings({
     )
     setModeSelectorPopup(!!modeSelectorPopup)
   }, [setModeSelectorPopup])
+
+  const baseColor = getBaseColor()
 
   const accentColor = tinycolor(baseColor).darken(10)
 

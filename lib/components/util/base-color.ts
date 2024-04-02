@@ -1,6 +1,6 @@
-const baseColor = (): string => {
+const getBaseColor = (): string => {
   return getComputedStyle(document.documentElement).getPropertyValue(
     '--main-base-color'
   )
 }
-export default baseColor
+export default getBaseColor
