@@ -43,69 +43,83 @@ const Container = styled.li`
 
 const ErrorRenderer = ({
   errors,
+  exclusiveErrors,
   mutedErrors
 }: {
   errors: Error
+  exclusiveErrors?: string[]
   mutedErrors?: string[]
 }): JSX.Element => {
   const intl = useIntl()
 
   return (
     <List>
-      {Object.keys(errors).map((error: string) => {
-        // The search window is hardcoded in otp-rr and can't be changed by the user.
-        // Do not tell them what's happening as they can't act on the issue.
-        if (error === 'NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW') {
-          return null
-        }
+      {Object.keys(errors)
+        .filter((error: string) => {
+          // The search window is hardcoded in otp-rr and can't be changed by the user.
+          // Do not tell them what's happening as they can't act on the issue.
+          if (error === 'NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW') {
+            return false
+          }
 
-        // Don't show errors that have been muted in the config
-        if (mutedErrors?.includes(error)) return null
+          // Don't show errors that have been muted in the config
+          if (mutedErrors?.includes(error)) return false
 
-        const localizedInputFieldList = Array.from(errors[error])?.map(
-          (inputField) =>
-            intl.formatMessage({
-              id: `components.OTP2ErrorRenderer.inputFields.${inputField}`
-            })
-        )
+          return true
+        })
+        .filter((err: string, _: any, array: string[]) => {
+          if (array.length > 1 && exclusiveErrors?.includes(err)) return false
 
-        return (
-          <Container key={error}>
-            <Icon Icon={ExclamationCircle} size="3x" />
-            <h3>
-              <FormattedMessage
-                id={`components.OTP2ErrorRenderer.${error}.header`}
-              />
-            </h3>
-            <p>
-              <FormattedMessage
-                id={`components.OTP2ErrorRenderer.${error}.body`}
-                values={{
-                  inputFields: intl.formatList(localizedInputFieldList),
-                  inputFieldsCount: localizedInputFieldList.length,
-                  link: (contents: JSX.Element) => (
-                    <LinkOpensNewWindow
-                      contents={contents}
-                      inline
-                      style={{ color: 'inherit' }}
-                      url={intl.formatMessage({
-                        id: `components.OTP2ErrorRenderer.${error}.link`
-                      })}
-                    />
-                  )
-                }}
-              />
-            </p>
-          </Container>
-        )
-      })}
+          return true
+        })
+        .map((error: string) => {
+          const localizedInputFieldList = Array.from(errors[error])?.map(
+            (inputField) =>
+              intl.formatMessage({
+                id: `components.OTP2ErrorRenderer.inputFields.${inputField}`
+              })
+          )
+
+          return (
+            <Container key={error}>
+              <Icon Icon={ExclamationCircle} size="3x" />
+              <h3>
+                <FormattedMessage
+                  id={`components.OTP2ErrorRenderer.${error}.header`}
+                />
+              </h3>
+              <p>
+                <FormattedMessage
+                  id={`components.OTP2ErrorRenderer.${error}.body`}
+                  values={{
+                    inputFields: intl.formatList(localizedInputFieldList),
+                    inputFieldsCount: localizedInputFieldList.length,
+                    link: (contents: JSX.Element) => (
+                      <LinkOpensNewWindow
+                        contents={contents}
+                        inline
+                        style={{ color: 'inherit' }}
+                        url={intl.formatMessage({
+                          id: `components.OTP2ErrorRenderer.${error}.link`
+                        })}
+                      />
+                    )
+                  }}
+                />
+              </p>
+            </Container>
+          )
+        })}
     </List>
   )
 }
 
 const mapStateToProps = (state: AppReduxState) => {
   const { itinerary } = state.otp.config
-  return { mutedErrors: itinerary?.mutedErrors }
+  return {
+    exclusiveErrors: itinerary?.exclusiveErrors || ['NO_TRANSIT_CONNECTION'],
+    mutedErrors: itinerary?.mutedErrors
+  }
 }
 export default connect(mapStateToProps)(ErrorRenderer)
 

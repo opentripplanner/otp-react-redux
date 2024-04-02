@@ -248,6 +248,7 @@ export interface ItineraryConfig {
   defaultFareType?: FareProductSelector
   defaultSort?: ItinerarySortOption
   disableMetroSeperatorDot?: true
+  exclusiveErrors?: string[]
   fareDetailsLayout?: FareTableLayout[]
   fareKeyNameMap?: Record<string, string>
   fillModeIcons?: boolean
