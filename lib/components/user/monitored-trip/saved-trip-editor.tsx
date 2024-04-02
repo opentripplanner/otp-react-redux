@@ -67,7 +67,7 @@ const SavedTripEditor = (props: Props): JSX.Element => {
     )
   }
 
-  return <TripNotFound intl={intl} />
+  return <TripNotFound />
 }
 
 export default SavedTripEditor

@@ -1,14 +1,11 @@
-import { FormattedMessage, IntlShape } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 
 import BackLink from '../back-link'
 import PageTitle from '../../util/page-title'
-import React, { ReactComponentElement } from 'react'
+import React from 'react'
 
-interface Props {
-  intl: IntlShape
-}
-
-const TripNotFound = ({ intl }: Props): JSX.Element => {
+const TripNotFound = (): JSX.Element => {
+  const intl = useIntl()
   const tripNotFound = intl.formatMessage({
     id: 'components.SavedTripEditor.tripNotFound'
   })
