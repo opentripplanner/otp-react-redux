@@ -444,7 +444,7 @@ components:
     requestNewCode: Envoyer un nouveau code
     sendVerificationText: Envoyer le SMS de vérification
     smsConsent: >
-      En donnant votre numéro téléphone, vous acceptez de recevoir des SMS de
+      En donnant votre numéro de téléphone, vous acceptez de recevoir des SMS de
       vérification et de suivi de vos trajets. Frais applicables selon votre
       opérateur téléphonique.
     verificationCode: "Code de vérification :"
@@ -453,6 +453,9 @@ components:
       code ci-dessous (le code expire après 10 minutes).
     verified: Vérifié
     verify: Vérifier
+    verifySms: >-
+      Veuillez effectuer la vérification de votre numéro de téléphone afin de
+      recevoir des notifications par SMS.
   Place:
     deleteThisPlace: Supprimer ce lieu
     enterAlert: >

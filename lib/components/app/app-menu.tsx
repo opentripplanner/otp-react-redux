@@ -7,10 +7,8 @@ import { GlobeAmericas, MapMarked, MapPin } from '@styled-icons/fa-solid'
 import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
 import { Undo } from '@styled-icons/fa-solid/Undo'
-import { withRouter } from 'react-router'
 import React, { Component, Fragment, useContext } from 'react'
 import SlidingPane from 'react-sliding-pane'
-import type { RouteComponentProps } from 'react-router'
 import type { WrappedComponentProps } from 'react-intl'
 
 import * as callTakerActions from '../../actions/call-taker'
@@ -21,8 +19,6 @@ import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
 import { getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
-import { MainPanelContent } from '../../actions/ui-constants'
-import { setMainPanelContent } from '../../actions/ui'
 
 import AppMenuItem from './app-menu-item'
 import PopupTriggerText from './popup-trigger-text'
@@ -48,13 +44,11 @@ type AppMenuProps = {
   fieldTripEnabled?: boolean
   language?: LanguageConfig
   languageOptions: Record<string, any> | null
-  location: { search: string }
   mailablesEnabled?: boolean
   popupTarget?: string
   resetAndToggleCallHistory?: () => void
   resetAndToggleFieldTrips?: () => void
   setLocale: (locale: string) => void
-  setMainPanelContent: (panel: number | null) => void
   setPopupContent: (url: string) => void
   startOverFromInitialUrl: () => void
   toggleMailables: () => void
@@ -67,23 +61,13 @@ type AppMenuState = {
  * Sidebar which appears to show user list of options and links
  */
 class AppMenu extends Component<
-  AppMenuProps & WrappedComponentProps & RouteComponentProps,
+  AppMenuProps & WrappedComponentProps,
   AppMenuState
 > {
   static contextType = ComponentContext
 
   state = {
     isPaneOpen: false
-  }
-
-  _showRouteViewer = () => {
-    this.props.setMainPanelContent(MainPanelContent.ROUTE_VIEWER)
-    this._togglePane()
-  }
-
-  _showNearby = () => {
-    this.props.setMainPanelContent(MainPanelContent.NEARBY_VIEW)
-    this._togglePane()
   }
 
   _startOver = () => {
@@ -98,11 +82,6 @@ class AppMenu extends Component<
   _togglePane = () => {
     const { isPaneOpen } = this.state
     this.setState({ isPaneOpen: !isPaneOpen })
-  }
-
-  _showTripPlanner = () => {
-    this.props.setMainPanelContent(null)
-    this._togglePane()
   }
 
   _handleSkipNavigation = () => {
@@ -234,30 +213,33 @@ class AppMenu extends Component<
             <AppMenuItem
               className="app-menu-trip-planner-link"
               icon={<MapMarked />}
-              onClick={this._showTripPlanner}
+              onClick={this._togglePane}
               text={intl.formatMessage({
                 id: 'components.BatchRoutingPanel.shortTitle'
               })}
+              to="/"
             />
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
             <AppMenuItem
               className="app-menu-route-viewer-link"
               icon={<Bus />}
-              onClick={this._showRouteViewer}
+              onClick={this._togglePane}
               text={intl.formatMessage({
                 id: 'components.RouteViewer.shortTitle'
               })}
+              to="/route"
             />
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
             <AppMenuItem
               className="app-menu-route-viewer-link"
               icon={<MapPin />}
-              onClick={this._showNearby}
+              onClick={this._togglePane}
               text={intl.formatMessage({
                 id: 'components.ViewSwitcher.nearby'
               })}
+              to="/nearby"
             />
             <AppMenuItem
               icon={<Undo />}
@@ -329,15 +311,12 @@ const mapDispatchToProps = {
   resetAndToggleCallHistory: callTakerActions.resetAndToggleCallHistory,
   resetAndToggleFieldTrips: fieldTripActions.resetAndToggleFieldTrips,
   setLocale: uiActions.setLocale,
-  setMainPanelContent,
   setPopupContent: uiActions.setPopupContent,
   startOverFromInitialUrl: uiActions.startOverFromInitialUrl,
   toggleMailables: callTakerActions.toggleMailables
 }
 
-export default injectIntl(
-  withRouter(connect(mapStateToProps, mapDispatchToProps)(AppMenu))
-)
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(AppMenu))
 
 /**
  * Renders a label and icon either from url or font awesome type
