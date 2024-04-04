@@ -10,7 +10,6 @@ import LocationField from '../form/connected-location-field'
 import NarrativeItineraries from '../narrative/narrative-itineraries'
 import SwitchButton from '../form/switch-button'
 import UserSettings from '../form/user-settings'
-import ViewerContainer from '../viewers/viewer-container'
 
 interface Props {
   activeSearch: any
@@ -45,7 +44,7 @@ class BatchRoutingPanel extends Component<Props> {
         })
 
     return (
-      <ViewerContainer
+      <div
         className="batch-routing-panel"
         style={{
           display: 'flex',
@@ -102,7 +101,7 @@ class BatchRoutingPanel extends Component<Props> {
         >
           <NarrativeItineraries />
         </div>
-      </ViewerContainer>
+      </div>
     )
   }
 }
