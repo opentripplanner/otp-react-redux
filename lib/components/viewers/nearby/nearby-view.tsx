@@ -75,7 +75,6 @@ function NearbyView({
   nearbyViewCoords,
   radius,
   setHighlightedLocation,
-  setLocation,
   setMainPanelContent,
   setViewedNearbyCoords,
   zoomToPlace
@@ -93,7 +92,7 @@ function NearbyView({
   }, [location, setHighlightedLocation])
 
   useEffect(() => {
-    const moveListener = (e: any) => {
+    const moveListener = (e: mapboxgl.EventData) => {
       if (e.geolocateSource) {
         setViewedNearbyCoords({
           lat: e.viewState.latitude,
@@ -102,7 +101,7 @@ function NearbyView({
       }
     }
 
-    const dragListener = (e: any) => {
+    const dragListener = (e: mapboxgl.EventData) => {
       const coords = {
         lat: e.viewState.latitude,
         lon: e.viewState.longitude
@@ -255,11 +254,13 @@ const mapStateToProps = (state: AppReduxState) => {
   const { nearbyViewCoords } = ui
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
+  const showNearby =
+    nearby?.lat === nearbyViewCoords.lat && nearby?.lon === nearbyViewCoords.lon
   return {
     entityId: entityId && decodeURIComponent(entityId),
     homeTimezone: config.homeTimezone,
     location: state.router.location.hash,
-    nearby,
+    nearby: showNearby ? nearby?.data : null,
     nearbyViewCoords,
     radius: config.nearbyView?.radius
   }
