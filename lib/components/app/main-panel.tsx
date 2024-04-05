@@ -13,7 +13,7 @@ const MainPanel = (): JSX.Element => {
   const { MainPanel: ConfigMainPanel } = useContext(ComponentContext)
   return (
     <Switch>
-      <Route exact path={['/nearby', '/nearby/:latLon']}>
+      <Route exact path={['/nearby', '/nearby/:latLon', '/stop', '/stop/:id']}>
         <NearbyView hideBackButton />
       </Route>
       <Route exact path={['/schedule', '/schedule/:id']}>
