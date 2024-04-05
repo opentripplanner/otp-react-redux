@@ -64,7 +64,7 @@ const ItineraryDetails = styled.div`
   }
 `
 const TextWIcon = styled.div`
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   gap: 7px;
   justify-content: left;
@@ -76,6 +76,7 @@ const TextWIcon = styled.div`
 `
 
 const TripDetailWithIcon = styled(TextWIcon)`
+  align-items: center;
   gap: 12px;
   width: 273px;
 

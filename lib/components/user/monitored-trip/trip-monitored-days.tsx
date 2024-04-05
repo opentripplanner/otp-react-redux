@@ -65,13 +65,13 @@ const MonitoredDays = ({ days }: Props) => {
   })
   return (
     <>
+      <DayCircleContainer aria-hidden>{DayCircles}</DayCircleContainer>
       <InvisibleA11yLabel>
         <FormattedMessage
           id="components.TripSummaryPane.happensOnDays"
           values={{ days: monitoredDaysList }}
         />
       </InvisibleA11yLabel>
-      <DayCircleContainer aria-hidden>{DayCircles}</DayCircleContainer>
     </>
   )
 }

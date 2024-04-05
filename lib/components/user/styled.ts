@@ -50,9 +50,9 @@ export const TripHeader = styled.h3`
 `
 
 export const TripPanelTitle = styled.div`
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 `
 
 export const TripPanelHeading = styled(Panel.Heading)`
@@ -83,8 +83,8 @@ export const TripPanelAlert = styled.span`
 
 export const TripPanelFooter = styled(Panel.Footer)`
   background-color: white !important;
-  padding: 0px;
   border: none;
+  padding: 0px;
 `
 
 /** Formats non-<label> elements like <label>s. */

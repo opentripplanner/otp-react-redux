@@ -56,10 +56,10 @@ interface Props {
 }
 
 const TripContainer = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 `
 
 /**
