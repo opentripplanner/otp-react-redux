@@ -137,12 +137,6 @@ const TripSummaryPane = ({
     const notificationLabel = intl.formatMessage({
       id: 'components.ExistingAccountDisplay.notifications'
     })
-    const durationLabel = intl.formatMessage({
-      id: 'components.TripSummaryPane.timeAndDuration'
-    })
-    const monitoredDaysLabel = intl.formatMessage({
-      id: 'components.TripSummaryPane.monitoredTripDays'
-    })
 
     return (
       <SavedTripBody>
@@ -179,14 +173,21 @@ const TripSummaryPane = ({
           <TripDetailsList>
             {/* Trip time and duration */}
             <TripDetailWithIcon as="li">
-              <Clock aria-label={durationLabel} title={durationLabel} />
+              <Clock
+                aria-hidden
+                title={intl.formatMessage({
+                  id: 'components.TripSummaryPane.timeAndDuration'
+                })}
+              />
               <TripSummary monitoredTrip={monitoredTrip} />
             </TripDetailWithIcon>
             {/* Available trip days */}
             <TripDetailWithIcon as="li">
               <Calendar
-                aria-label={monitoredDaysLabel}
-                title={monitoredDaysLabel}
+                aria-hidden
+                title={intl.formatMessage({
+                  id: 'components.TripSummaryPane.monitoredTripDays'
+                })}
               />
               <MonitoredDays days={days} />
             </TripDetailWithIcon>

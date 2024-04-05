@@ -78,13 +78,13 @@ common:
     tuesday: Tuesday
     wednesday: Wednesday
   daysOfWeekCompact:
-    friday: Fri.
-    monday: Mon.
-    saturday: Sat.
-    sunday: Sun.
-    thursday: Thu.
-    tuesday: Tue.
-    wednesday: Wed.
+    friday: F
+    monday: M
+    saturday: S
+    sunday: Su
+    thursday: Th
+    tuesday: T
+    wednesday: W
   daysOfWeekPlural:
     friday: Fridays
     monday: Mondays

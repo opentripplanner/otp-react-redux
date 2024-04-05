@@ -1,9 +1,10 @@
-import { FormattedList, FormattedMessage } from 'react-intl'
+import { FormattedList, FormattedMessage, useIntl } from 'react-intl'
 
-import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import React from 'react'
 
+import FormattedDayOfWeek from '../../util/formatted-day-of-week'
+import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 import getBaseColor from '../../util/base-color'
 
 import styled from 'styled-components'
@@ -54,8 +55,7 @@ const MonitoredDays = ({ days }: Props) => {
 
   const baseColor = getBaseColor()
   const DayCircles = daysOfWeek.map((d) => {
-    const dayAbbrev =
-      d === 'thursday' || d === 'sunday' ? d.slice(0, 2) : d.charAt(0)
+    const dayAbbrev = <FormattedDayOfWeekCompact day={d} />
     const monitored = days?.includes(d)
     return (
       <MonitoredDay baseColor={baseColor} key={d} monitored={monitored}>

@@ -9,7 +9,7 @@ import * as uiActions from '../../../actions/ui'
 import * as userActions from '../../../actions/user'
 import { AppReduxState } from '../../../util/state-types'
 import { Edit } from '@styled-icons/fa-solid'
-import { Icon, IconWithText } from '../../util/styledIcon'
+import { IconWithText } from '../../util/styledIcon'
 import { MonitoredTrip } from '../types'
 import {
   PageHeading,
@@ -44,7 +44,6 @@ interface ItemOwnProps {
 interface ItemProps extends ItemOwnProps {
   intl: IntlShape
   renderData: any
-  routeTo: (url: string) => void
   togglePauseTrip: (trip: MonitoredTrip, intl: IntlShape) => void
 }
 
@@ -113,7 +112,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
               })}
               to={editTripPath}
             >
-              <Icon Icon={Edit} />
+              <Edit height={18} />
               <InvisibleA11yLabel>
                 <FormattedMessage id="components.SavedTripEditor.editSavedTrip" />
               </InvisibleA11yLabel>
@@ -162,7 +161,6 @@ const itemMapStateToProps = (state: AppReduxState, { trip }: ItemOwnProps) => {
 }
 
 const itemMapDispatchToProps = {
-  routeTo: uiActions.routeTo,
   togglePauseTrip: userActions.togglePauseTrip
 }
 const ConnectedTripListItem = connect(

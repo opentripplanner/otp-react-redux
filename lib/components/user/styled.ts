@@ -60,7 +60,7 @@ export const TripPanelHeading = styled(Panel.Heading)`
   border-color: #fff !important;
   padding: 20px 25px 0 25px;
 
-  a {
+  a svg {
     color: ${baseColor};
   }
 
