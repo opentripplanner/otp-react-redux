@@ -87,13 +87,13 @@ common:
     tuesday: mardi
     wednesday: mercredi
   daysOfWeekCompact:
-    friday: ven.
-    monday: lun.
-    saturday: sam.
-    sunday: dim.
-    thursday: jeu.
-    tuesday: mar.
-    wednesday: mer.
+    friday: V
+    monday: L
+    saturday: S
+    sunday: D
+    thursday: J
+    tuesday: M
+    wednesday: M
   daysOfWeekPlural:
     friday: vendredis
     monday: lundis

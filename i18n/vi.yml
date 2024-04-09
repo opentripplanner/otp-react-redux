@@ -81,13 +81,13 @@ common:
     tuesday: Thứ ba
     wednesday: Thứ tư
   daysOfWeekCompact:
-    friday: Thứ sáu
-    monday: Thứ hai
-    saturday: Thứ bảy
-    sunday: Chủ nhật
-    thursday: Thứ năm
-    tuesday: Thứ ba
-    wednesday: Thứ tư
+    friday: T6
+    monday: T2
+    saturday: T7
+    sunday: CN
+    thursday: T5
+    tuesday: T3
+    wednesday: T4
   daysOfWeekPlural:
     friday: Các thứ sáu
     monday: Các thứ hai
