@@ -659,11 +659,9 @@ components:
     arriveAt: "Đến nơi "
     leaveAt: "Rời đi lúc "
   TripSummaryPane:
-    happensOnDays: "Xảy ra vào: <strong>{days}</strong>"
-    notifications: >-
-      Thông báo: <strong>{leadTimeInMinutes} phút trước khi khởi hành theo lịch
-      trình</strong>
-    notificationsDisabled: "Thông báo: <strong>Đã tắt</strong>"
+    happensOnDays: "Xảy ra vào: {days}"
+    notifications: "{leadTimeInMinutes} phút trước khi khởi hành theo lịch trình"
+    notificationsDisabled: Thông báo đã tắt
   TripTools:
     copyLink: Sao chép URL
     header: Công cụ
