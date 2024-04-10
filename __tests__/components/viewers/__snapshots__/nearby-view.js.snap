@@ -7035,6 +7035,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
+                        routeSortComparator={[Function]}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -7598,7 +7599,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
-                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
@@ -14829,6 +14829,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
+                        routeSortComparator={[Function]}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -15191,7 +15192,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
-                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
@@ -22812,6 +22812,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
+                        routeSortComparator={[Function]}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -23452,7 +23453,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
-                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
@@ -33546,6 +33546,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
+                        routeSortComparator={[Function]}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -33908,7 +33909,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
-                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
@@ -40419,6 +40419,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
+                        routeSortComparator={[Function]}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -40956,7 +40957,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
-                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
@@ -47416,6 +47416,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
+                        routeSortComparator={[Function]}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -48056,7 +48057,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
-                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
@@ -58854,6 +58854,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           />
                         }
                         homeTimezone="America/Los_Angeles"
+                        routeSortComparator={[Function]}
                         stopData={
                           Object {
                             "__typename": "Stop",
@@ -59417,7 +59418,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
-                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
