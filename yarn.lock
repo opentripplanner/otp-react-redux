@@ -2383,10 +2383,19 @@
   dependencies:
     "@octokit/openapi-types" "^10.0.0"
 
-"@opentripplanner/base-map@^3.0.16", "@opentripplanner/base-map@^3.0.17":
+"@opentripplanner/base-map@^3.0.16":
   version "3.0.17"
   resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.17.tgz#01862a7925b59be355e3229edac954ef876343cb"
   integrity sha512-cWfhquu7PrLnqte03Mj5XQJW3OSrRtwq10/s2Az523X9yeheZsiO4sm/Bfmizr9xhqec/UTl882nOVKjESHzHA==
+  dependencies:
+    mapbox-gl "npm:empty-npm-package@1.0.0"
+    maplibre-gl "^2.1.9"
+    react-map-gl "^7.0.15"
+
+"@opentripplanner/base-map@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.1.0.tgz#3181d4ec17029db8a40ca1342e20d1a0d449931f"
+  integrity sha512-feOSOWmiBFvIFWyG+OllCMxOcTmRKzxIoKKeoEgUFjNdVnrkZM6HH5r0m5IaQA9wO7T0N0K64hn/zdRQZBv0rQ==
   dependencies:
     mapbox-gl "npm:empty-npm-package@1.0.0"
     maplibre-gl "^2.1.9"

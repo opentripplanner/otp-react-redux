@@ -661,3 +661,5 @@ itinerary:
 #   hideEmptyStops: true
 ### What radius should the nearby query get results within? (in meters)
 #   radius: 600
+### Setting this to true will use the route viewer sort algorithm on routes
+#   useRouteViewSort: false
