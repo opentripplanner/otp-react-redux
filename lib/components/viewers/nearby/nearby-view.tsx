@@ -67,7 +67,7 @@ const getNearbyItem = (place: any) => {
   }
 }
 
-function getNearbyCoords(
+function getNearbyCoordsFromUrlOrMapCenter(
   coordsFromUrl?: LatLonObj,
   map?: MapRef
 ): LatLonObj | null {
@@ -104,7 +104,7 @@ function NearbyView({
   const [loading, setLoading] = useState(true)
   const firstItemRef = useRef<HTMLDivElement>(null)
   const finalNearbyCoords = useMemo(
-    () => getNearbyCoords(nearbyViewCoords, map),
+    () => getNearbyCoordsFromUrlOrMapCenter(nearbyViewCoords, map),
     [nearbyViewCoords, map]
   )
 
