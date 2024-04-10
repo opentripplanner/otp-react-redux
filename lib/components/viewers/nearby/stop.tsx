@@ -24,31 +24,17 @@ type Props = {
   fromToSlot: JSX.Element
   homeTimezone: string
   nearbyViewConfig?: NearbyViewConfig
+  routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
   stopData: StopData
-  transitOperators: TransitOperator[]
 }
 
 const Stop = ({
   fromToSlot,
   homeTimezone,
   nearbyViewConfig,
-  stopData,
-  transitOperators
+  routeSortComparator,
+  stopData
 }: Props): JSX.Element => {
-  const generateRouteSortComparator = () => {
-    if (nearbyViewConfig?.useRouteViewSort) {
-      return (a: PatternStopTime, b: PatternStopTime) =>
-        coreUtils.route.makeRouteComparator(transitOperators)(
-          // @ts-expect-error core-utils types are wrong!
-          a.pattern.route,
-          b.pattern.route
-        )
-    }
-
-    // Default sort: departure time
-    return (a: PatternStopTime, b: PatternStopTime) =>
-      fullTimestamp(a.stoptimes?.[0]) - fullTimestamp(b.stoptimes?.[0])
-  }
   const patternRows = (stopData.stoptimesForPatterns || [])
     ?.reduce<PatternStopTime[]>((acc, cur) => {
       const currentHeadsign = extractHeadsignFromPattern(cur.pattern)
@@ -69,7 +55,7 @@ const Stop = ({
       }
       return acc
     }, [])
-    .sort(generateRouteSortComparator())
+    .sort(routeSortComparator)
     .map((st: any, index: number) => {
       const sortedStopTimes = st.stoptimes.sort(
         (a: StopTime, b: StopTime) => fullTimestamp(a) - fullTimestamp(b)
@@ -117,10 +103,26 @@ const Stop = ({
 
 const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
+  const nearbyViewConfig = config?.nearbyView
+  const transitOperators = config?.transitOperators || []
+
+  // Default sort: departure time
+  let routeSortComparator = (a: PatternStopTime, b: PatternStopTime) =>
+    fullTimestamp(a.stoptimes?.[0]) - fullTimestamp(b.stoptimes?.[0])
+
+  if (nearbyViewConfig?.useRouteViewSort) {
+    routeSortComparator = (a: PatternStopTime, b: PatternStopTime) =>
+      coreUtils.route.makeRouteComparator(transitOperators)(
+        // @ts-expect-error core-utils types are wrong!
+        a.pattern.route,
+        b.pattern.route
+      )
+  }
+
   return {
     homeTimezone: config.homeTimezone,
-    nearbyViewConfig: config?.nearbyView,
-    transitOperators: config?.transitOperators || []
+    nearbyViewConfig,
+    routeSortComparator
   }
 }
 
