@@ -3,6 +3,7 @@ import { FormattedList, FormattedMessage, useIntl } from 'react-intl'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import React from 'react'
 
+import { ALL_DAYS } from '../../../util/monitored-trip'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 import getBaseColor from '../../util/base-color'
@@ -33,16 +34,6 @@ const MonitoredDay = styled.span<{ baseColor: string; monitored: boolean }>`
   width: 27px;
 `
 
-const daysOfWeek = [
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday',
-  'sunday'
-]
-
 const MonitoredDays = ({ days }: Props) => {
   const monitoredDaysList = (
     <FormattedList
@@ -54,7 +45,7 @@ const MonitoredDays = ({ days }: Props) => {
   )
 
   const baseColor = getBaseColor()
-  const DayCircles = daysOfWeek.map((d) => {
+  const DayCircles = ALL_DAYS.map((d) => {
     const dayAbbrev = <FormattedDayOfWeekCompact day={d} />
     const monitored = days?.includes(d)
     return (

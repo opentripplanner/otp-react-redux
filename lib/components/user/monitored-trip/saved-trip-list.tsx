@@ -5,7 +5,6 @@ import { TriangleExclamation } from '@styled-icons/fa-solid/TriangleExclamation'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import React, { Component } from 'react'
 
-import * as uiActions from '../../../actions/ui'
 import * as userActions from '../../../actions/user'
 import { AppReduxState } from '../../../util/state-types'
 import { Edit } from '@styled-icons/fa-solid'
@@ -25,13 +24,14 @@ import AccountPage from '../account-page'
 import AwaitingScreen from '../awaiting-screen'
 import BackToTripPlanner from '../back-to-trip-planner'
 import PageTitle from '../../util/page-title'
+
+import styled from 'styled-components'
+
 import withLoggedInUserSupport from '../with-logged-in-user-support'
 
 import getRenderData from './trip-status-rendering-strategies'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import RouteBlockWrapper from './route-block-wrapper'
-
-import styled from 'styled-components'
 
 import Link from '../../util/link'
 
@@ -126,7 +126,6 @@ class TripListItem extends Component<ItemProps, ItemState> {
           <TripSummaryPane
             from={from}
             handleTogglePauseMonitoring={this._handleTogglePauseMonitoring}
-            intl={intl}
             monitoredTrip={trip}
             pendingRequest={this.state.pendingRequest}
             to={to}

@@ -1,5 +1,5 @@
 import { Bell, BellSlash, Calendar, Clock } from '@styled-icons/fa-regular'
-import { FormattedMessage, IntlShape } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import React from 'react'
 
 import { dayFieldsToArray } from '../../../util/monitored-trip'
@@ -16,10 +16,6 @@ import TripSummary from './trip-duration-summary'
 /**
  * Displays the summary information of a monitored trip.
  */
-
-interface Props extends MonitoredTripProps {
-  intl: IntlShape
-}
 
 const SavedTripBody = styled.div`
   display: flex;
@@ -97,9 +93,9 @@ const TripDetailsList = styled.ul`
   align-items: start;
   display: flex;
   flex-direction: column;
-  list-style: none;
   gap: 15px;
   justify-content: center;
+  list-style: none;
   padding: 0;
 `
 
@@ -114,11 +110,11 @@ const ToggleNotificationButton = styled.button`
 const TripSummaryPane = ({
   from,
   handleTogglePauseMonitoring,
-  intl,
   monitoredTrip,
   pendingRequest,
   to
-}: Props): JSX.Element => {
+}: MonitoredTripProps): JSX.Element => {
+  const intl = useIntl()
   const { itinerary, leadTimeInMinutes } = monitoredTrip
   if (!itinerary) {
     return (
