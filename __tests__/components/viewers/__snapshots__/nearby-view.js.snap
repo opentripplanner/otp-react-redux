@@ -7598,6 +7598,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
+                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
@@ -15190,6 +15191,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
+                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
@@ -23450,6 +23452,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
+                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
@@ -33905,6 +33908,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
+                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
@@ -40952,6 +40956,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
+                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
@@ -48051,6 +48056,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
+                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
@@ -59411,6 +59417,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             ],
                           }
                         }
+                        transitOperators={Array []}
                       >
                         <styled.div>
                           <div
