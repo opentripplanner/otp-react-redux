@@ -361,6 +361,11 @@ itinerary:
   # mutedErrors:
   #   - NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW
 
+  # List of OTP2 errors that should only be displayed alone, alongside no  
+  # other errors. 
+  # exclusiveErrors:
+  #   - NO_TRANSIT_CONNECTION
+
   # The following settings must be set to these values to use the new
   # "Metro" UI. The settings can be used without the Metro UI, but
   # this may have unexpected effects.
