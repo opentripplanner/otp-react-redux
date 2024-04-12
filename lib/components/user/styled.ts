@@ -1,4 +1,4 @@
-import { Button, Panel } from 'react-bootstrap'
+import { Panel } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
 
 import { RED_ON_WHITE } from '../util/colors'
@@ -29,15 +29,15 @@ export const SubNavContainer = styled.div`
 export const SubNavLinks = styled.div`
   margin-top: 11px;
 
-  .btn-link {
+  a {
+    border: 1px transparent;
     border-bottom: 3px solid transparent;
     font-size: 17px;
     margin-left: 8px;
-    paddisng: 0px 3px;
+    padding: 6px 12px;
   }
 
-  .btn-link.active {
-    border: none;
+  a.active {
     border-bottom: 3px solid #adadad;
   }
 `
