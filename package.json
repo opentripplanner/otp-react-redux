@@ -43,14 +43,14 @@
     "@bugsnag/plugin-react": "^7.17.0",
     "@floating-ui/react": "^0.19.2",
     "@opentripplanner/base-map": "^3.0.17",
-    "@opentripplanner/core-utils": "^11.3.0",
+    "@opentripplanner/core-utils": "^11.3.1",
     "@opentripplanner/endpoints-overlay": "^2.0.12",
     "@opentripplanner/from-to-location-picker": "^2.1.12",
-    "@opentripplanner/geocoder": "^2.1.0",
+    "@opentripplanner/geocoder": "^2.2.0",
     "@opentripplanner/humanize-distance": "^1.2.0",
     "@opentripplanner/icons": "^2.0.10",
-    "@opentripplanner/itinerary-body": "^5.2.7",
-    "@opentripplanner/location-field": "^2.0.15",
+    "@opentripplanner/itinerary-body": "^5.2.8",
+    "@opentripplanner/location-field": "^2.0.16",
     "@opentripplanner/location-icon": "^1.4.1",
     "@opentripplanner/map-popup": "^3.0.3",
     "@opentripplanner/otp2-tile-overlay": "^1.0.11",
@@ -60,8 +60,8 @@
     "@opentripplanner/stop-viewer-overlay": "^2.0.8",
     "@opentripplanner/stops-overlay": "^5.2.2",
     "@opentripplanner/transit-vehicle-overlay": "^4.0.9",
-    "@opentripplanner/transitive-overlay": "^3.0.17",
-    "@opentripplanner/trip-details": "^5.0.10",
+    "@opentripplanner/transitive-overlay": "^3.0.18",
+    "@opentripplanner/trip-details": "^5.0.11",
     "@opentripplanner/trip-form": "^3.5.2",
     "@opentripplanner/trip-viewer-overlay": "^2.0.8",
     "@opentripplanner/vehicle-rental-overlay": "^2.1.7",
@@ -151,6 +151,7 @@
     "@types/qs": "^6.9.7",
     "@types/react-bootstrap": "^0.32.26",
     "@types/react-router": "^5.1.17",
+    "@types/react-router-dom": "^5.1.17",
     "@types/styled-components": "^5.1.14",
     "@types/tinycolor2": "^1.4.3",
     "@wordpress/jest-puppeteer-axe": "^3.1.0",
@@ -180,7 +181,7 @@
     "eslint-plugin-sort-keys-fix": "^1.1.1",
     "eslint-plugin-typescript-sort-keys": "^1.8.0",
     "execa": "^5.1.1",
-    "express": "^4.17.3",
+    "express": "^4.19.2",
     "har-express": "^1.1.0",
     "husky": "^6.0.0",
     "jest-transform-stub": "^2.0.0",
@@ -206,6 +207,9 @@
   "peerDependencies": {
     "react": ">=15.0.0",
     "react-dom": ">=15.0.0"
+  },
+  "resolutions": {
+    "@leeoniya/ufuzzy": "npm:dry-uninstall"
   },
   "jest": {
     "moduleNameMapper": {

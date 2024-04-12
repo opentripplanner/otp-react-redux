@@ -147,7 +147,6 @@ common:
     work: work
   routing:
     routeAndNumber: Route {routeId}
-    routeToHeadsign: To {headsign}
   searchForms:
     click: click
     enterDestination: Enter destination or {mapAction} on map…
@@ -181,40 +180,6 @@ components:
     message: >-
       If the page doesn't load after a few seconds, <redirectLink>click
       here</redirectLink>.
-  AmenitiesPanel:
-    bikesAtStation: |
-      {companyLength, plural,
-        =0 {Bikes at {name}}
-        other {{company} bikes at {name}}
-      }
-    bikesAvailable: |
-      {count, plural,
-        =0 {No bikes available}
-        one {# bike available}
-        other {# bikes available}
-      }
-    bikesNearby: |
-      {count, plural,
-        =0 {no floating {company} bikes nearby}
-        one {# floating {company} bike nearby}
-        other {# floating {company} bikes nearby}
-      }
-    nearbyAmenities: Nearby Amenities
-    noNearbyBikes: No nearby bike rentals found.
-    noNearbyScooters: No nearby micromobility rentals found.
-    noPRLotsFound: No nearby park and ride lots found.
-    scootersNearby: |
-      {count, plural,
-        =0 {No {company} E-Scooters nearby}
-        one {# {company} E-Scooter nearby}
-        other {# {company} E-Scooters nearby}
-      }
-    spacesAvailable: |
-      {count, plural,
-        =0 {No spaces available}
-        one {# space available}
-        other {# spaces available}
-      }
   AppMenu:
     callHistory: Call History
     closeMenu: Close Menu
@@ -297,9 +262,6 @@ components:
   ItinerarySummary:
     itineraryDetails: Itinerary details
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
-  LiveStopTimes:
-    autoRefresh: Auto-refresh arrivals?
-    refresh: Refresh arrival times
   LocationSearch:
     enterLocation: Enter location
     setDestination: Set Destination
@@ -422,7 +384,7 @@ components:
       body: >-
         No transit connection was found between your origin and destination on
         the selected day of service, using the vehicle types you selected.
-      header: No transit connections
+      header: No itineraries found
     NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
       body: >-
         A transit connection was found, but it was outside the search window,
@@ -469,6 +431,9 @@ components:
       minutes).
     verified: Verified
     verify: Verify
+    verifySms: >-
+      Please complete the verification process in order to set up SMS
+      notifications.
   Place:
     deleteThisPlace: Delete this place
     enterAlert: >
@@ -505,13 +470,6 @@ components:
     late: "{minutes} late"
     onTime: on time
     scheduled: scheduled
-  RelatedPanel:
-    hideExtraStops: Hide extra stops
-    showExtraStops: Show {count} extra stops
-  RelatedStopsPanel:
-    noArrivalFound: No arrival found
-    relatedStops: Related Stops
-    viewDetails: View details
   ResultsError:
     backToSearch: Back to Search
   ResultsHeader:
@@ -601,7 +559,6 @@ components:
     forStop: for {stopName}
     header: Stop Viewer
     loadingText: Loading Stop...
-    nextArrivals: Next Arrivals
     noStopsFound: No stop times found for date.
     operatorLogoAriaLabel: "{operatorName} stop:"
     schedule: Schedule

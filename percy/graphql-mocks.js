@@ -44,7 +44,8 @@ function getStopResponseMock(stopId) {
   }
 }
 
-const increment = (obj, key) => (obj[key] ? obj[key]++ : (obj[key] = 0))
+const increment = (obj, key) =>
+  obj[key] !== undefined ? obj[key]++ : (obj[key] = 0)
 
 const mocks = (callCount) => ({
   QueryType: {

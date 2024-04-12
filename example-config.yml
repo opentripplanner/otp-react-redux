@@ -347,6 +347,8 @@ itinerary:
   renderRouteNamesInBlocks: true
   # Whether the mode icons should be colored as well
   fillModeIcons: true
+  # Allow user to collapse alerts in itinerary body
+  allowUserAlertCollapsing: true
   # If multiple fares are returned by OTP, assign names to the fare keys here
   #fareKeyNameMap:
   #  regular: "Transit Fare"
@@ -358,6 +360,11 @@ itinerary:
   # List of OTP2 errors to not display. Can be a list
   # mutedErrors:
   #   - NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW
+
+  # List of OTP2 errors that should only be displayed alone, alongside no  
+  # other errors. 
+  # exclusiveErrors:
+  #   - NO_TRANSIT_CONNECTION
 
   # The following settings must be set to these values to use the new
   # "Metro" UI. The settings can be used without the Metro UI, but
@@ -621,22 +628,9 @@ itinerary:
 # onTimeThresholdSeconds: 60
 
 # stopViewer:
-#   # The radius (in meters) to use when searching for nearby stops and other
-#   # amenities (rental vehicles, park and rides) to show for the focused stop.
-#   nearbyRadius: 250
-#   # The max. number of departures to show for each trip pattern
-#   # in the stop viewer Next Arrivals mode
-#   # (defaults to 3 if unspecified).
-#   numberOfDepartures: 3
 #   # Whether to display block IDs with each departure in the schedule mode.
 #   # (defaults to false if unspecified).
 #   showBlockIds: false
-#   # Specifies the time window, in seconds, in which to search for next arrivals,
-#   # so that, for example, if it is Friday and a route does
-#   # not begin service again until Monday, we are showing its next
-#   # departure and it is not entirely excluded from display
-#   # (defaults to 2 days/172800s if unspecified).
-#   timeRange: 172800
 # routeViewer:
 #   # Whether to render routes within flex zones of a route's patterns. If set to true,
 #   # routes will not be rendered within flex zones.
@@ -665,3 +659,5 @@ itinerary:
 # nearbyView:
 ### Setting to hide stops with no depatures in the nearby view.
 #   hideEmptyStops: true
+### What radius should the nearby query get results within? (in meters)
+#   radius: 600
