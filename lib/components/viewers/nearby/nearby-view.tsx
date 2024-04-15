@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Location } from '@opentripplanner/types'
 import { MapRef, useMap } from 'react-map-gl'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
 import * as mapActions from '../../../actions/map'
@@ -31,6 +31,7 @@ const AUTO_REFRESH_INTERVAL = 15000
 type LatLonObj = { lat: number; lon: number }
 
 type Props = {
+  displayedCoords?: LatLonObj
   entityId?: string
   fetchNearby: (latLon: LatLonObj, radius?: number) => void
   hideBackButton?: boolean
@@ -66,7 +67,26 @@ const getNearbyItem = (place: any) => {
   }
 }
 
+function getNearbyCoordsFromUrlOrMapCenter(
+  coordsFromUrl?: LatLonObj,
+  map?: MapRef
+): LatLonObj | null {
+  if (coordsFromUrl) {
+    return coordsFromUrl
+  }
+  const rawMapCoords = map?.getCenter()
+  const mapCoords = rawMapCoords !== undefined && {
+    lat: rawMapCoords.lat,
+    lon: rawMapCoords.lng
+  }
+  if (mapCoords) {
+    return mapCoords
+  }
+  return null
+}
+
 function NearbyView({
+  displayedCoords,
   entityId,
   fetchNearby,
   location,
@@ -75,7 +95,6 @@ function NearbyView({
   nearbyViewCoords,
   radius,
   setHighlightedLocation,
-  setLocation,
   setMainPanelContent,
   setViewedNearbyCoords,
   zoomToPlace
@@ -84,6 +103,10 @@ function NearbyView({
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
   const firstItemRef = useRef<HTMLDivElement>(null)
+  const finalNearbyCoords = useMemo(
+    () => getNearbyCoordsFromUrlOrMapCenter(nearbyViewCoords, map),
+    [nearbyViewCoords, map]
+  )
 
   // Make sure the highlighted location is cleaned up when leaving nearby
   useEffect(() => {
@@ -93,7 +116,7 @@ function NearbyView({
   }, [location, setHighlightedLocation])
 
   useEffect(() => {
-    const moveListener = (e: any) => {
+    const moveListener = (e: mapboxgl.EventData) => {
       if (e.geolocateSource) {
         setViewedNearbyCoords({
           lat: e.viewState.latitude,
@@ -102,7 +125,7 @@ function NearbyView({
       }
     }
 
-    const dragListener = (e: any) => {
+    const dragListener = (e: mapboxgl.EventData) => {
       const coords = {
         lat: e.viewState.latitude,
         lon: e.viewState.longitude
@@ -128,36 +151,18 @@ function NearbyView({
     if (typeof firstItemRef.current?.scrollIntoView === 'function') {
       firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
     }
-    // If nearby view coords are provided, use those. Otherwise use the map center.
-    if (nearbyViewCoords) {
-      fetchNearby(nearbyViewCoords, radius)
+    if (finalNearbyCoords) {
+      fetchNearby(finalNearbyCoords, radius)
       setLoading(true)
       const interval = setInterval(() => {
-        fetchNearby(nearbyViewCoords, radius)
+        fetchNearby(finalNearbyCoords, radius)
         setLoading(true)
       }, AUTO_REFRESH_INTERVAL)
       return function cleanup() {
         clearInterval(interval)
       }
-    } else {
-      const rawMapCoords = map?.getCenter()
-      const mapCoords = rawMapCoords !== undefined && {
-        lat: rawMapCoords.lat,
-        lon: rawMapCoords.lng
-      }
-      if (mapCoords) {
-        fetchNearby(mapCoords, radius)
-        setLoading(true)
-        const interval = setInterval(() => {
-          fetchNearby(mapCoords, radius)
-          setLoading(true)
-        }, AUTO_REFRESH_INTERVAL)
-        return function cleanup() {
-          clearInterval(interval)
-        }
-      }
     }
-  }, [nearbyViewCoords, map, fetchNearby, radius])
+  }, [finalNearbyCoords, fetchNearby, radius])
 
   const onMouseEnter = useCallback(
     (location: Location) => {
@@ -169,6 +174,12 @@ function NearbyView({
   const onMouseLeave = useCallback(() => {
     setHighlightedLocation(null)
   }, [setHighlightedLocation])
+
+  // Determine whether the data we have is stale based on whether the coords match the URL
+  // Sometimes Redux could have data from a previous load of the nearby view
+  const staleData =
+    finalNearbyCoords?.lat !== displayedCoords?.lat ||
+    finalNearbyCoords?.lon !== displayedCoords?.lon
 
   const nearbyItemList =
     nearby?.map &&
@@ -194,8 +205,10 @@ function NearbyView({
     ))
 
   useEffect(() => {
-    setLoading(false)
-  }, [nearby])
+    if (!staleData) {
+      setLoading(false)
+    }
+  }, [nearby, staleData])
 
   const goBack = useCallback(
     () => setMainPanelContent(0),
@@ -237,6 +250,7 @@ function NearbyView({
           </FloatingLoadingIndicator>
         )}
         {nearby &&
+          !staleData &&
           (nearby.error ? (
             intl.formatMessage({ id: 'components.NearbyView.error' })
           ) : nearby.length > 0 ? (
@@ -256,10 +270,11 @@ const mapStateToProps = (state: AppReduxState) => {
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
   return {
+    displayedCoords: nearby?.coords,
     entityId: entityId && decodeURIComponent(entityId),
     homeTimezone: config.homeTimezone,
     location: state.router.location.hash,
-    nearby,
+    nearby: nearby?.data,
     nearbyViewCoords,
     radius: config.nearbyView?.radius
   }
