@@ -1,13 +1,13 @@
+import { connect } from 'react-redux'
 import {
-  Checkbox,
   ControlLabel,
   FormControl,
   FormGroup,
   Glyphicon,
   HelpBlock,
-  ProgressBar
+  ProgressBar,
+  Radio
 } from 'react-bootstrap'
-import { connect } from 'react-redux'
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { Prompt } from 'react-router'
@@ -22,7 +22,8 @@ import {
   ALL_DAYS,
   arrayToDayFields,
   dayFieldsToArray,
-  getFormattedDayOfWeekPlural
+  getFormattedDayOfWeekPlural,
+  WEEKDAYS
 } from '../../../util/monitored-trip'
 import { AppReduxState } from '../../../util/state-types'
 import { FieldSet } from '../styled'
@@ -47,6 +48,10 @@ type TripBasicsProps = WrappedComponentProps &
     isCreating: boolean
     itineraryExistence?: ItineraryExistence
   }
+
+interface State {
+  selectedDays: string[]
+}
 
 // Styles.
 const AvailableDays = styled(FieldSet)`
@@ -106,7 +111,13 @@ const AvailableDays = styled(FieldSet)`
  * This component shows summary information for a trip
  * and lets the user edit the trip name and day.
  */
-class TripBasicsPane extends Component<TripBasicsProps> {
+class TripBasicsPane extends Component<TripBasicsProps, State> {
+  state = {
+    // Initialize to "Monday-to-Friday" so that, for one-time trips, when clicking the recurring trip option,
+    // Monday...Friday will be selected as default.
+    selectedDays: WEEKDAYS
+  }
+
   /**
    * For new trips only, update the Formik state to
    * uncheck days for which the itinerary is not available.
@@ -127,10 +138,27 @@ class TripBasicsPane extends Component<TripBasicsProps> {
     }
   }
 
-  _handleOneTimeTrip: FormEventHandler<Checkbox> = (e) => {
+  _handleRecurringTrip: FormEventHandler<Radio> = (e) => {
     const input = e.target as HTMLInputElement
     if (input.checked) {
       const { setValues, values } = this.props
+      const { selectedDays } = this.state
+
+      // Restore previously checked monitored days
+      setValues({
+        ...values,
+        ...arrayToDayFields(selectedDays)
+      })
+    }
+  }
+
+  _handleOneTimeTrip: FormEventHandler<Radio> = (e) => {
+    const input = e.target as HTMLInputElement
+    if (input.checked) {
+      const { setValues, values } = this.props
+      // Hold on to monitored days
+      this.setState({ selectedDays: dayFieldsToArray(values) })
+
       // Uncheck all monitored days
       setValues({
         ...values,
@@ -224,10 +252,13 @@ class TripBasicsPane extends Component<TripBasicsProps> {
           </FormGroup>
 
           <FormGroup>
+            <ControlLabel>
+              <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
+            </ControlLabel>
+            <Radio checked={!isOneTime} onChange={this._handleRecurringTrip}>
+              <FormattedMessage id="components.TripBasicsPane.recurringEachWeek" />
+            </Radio>
             <AvailableDays>
-              <legend className="control-label">
-                <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
-              </legend>
               {ALL_DAYS.map((day) => {
                 const isDayDisabled =
                   finalItineraryExistence &&
@@ -269,12 +300,6 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                 )
               })}
             </AvailableDays>
-            <Checkbox checked={isOneTime} onChange={this._handleOneTimeTrip}>
-              <FormattedMessage
-                id="components.TripBasicsPane.onlyOnDate"
-                values={{ date: itinerary.startTime }}
-              />
-            </Checkbox>
             <HelpBlock role="status">
               {finalItineraryExistence ? (
                 <FormattedMessage id="components.TripBasicsPane.tripIsAvailableOnDaysIndicated" />
@@ -288,6 +313,12 @@ class TripBasicsPane extends Component<TripBasicsProps> {
                 />
               )}
             </HelpBlock>
+            <Radio checked={isOneTime} onChange={this._handleOneTimeTrip}>
+              <FormattedMessage
+                id="components.TripBasicsPane.onlyOnDate"
+                values={{ date: itinerary.startTime }}
+              />
+            </Radio>
 
             {/* Scroll to the trip name/days fields if submitting and there is an error on these fields. */}
             <FormikErrorFocus align="middle" duration={200} />
