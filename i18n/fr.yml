@@ -627,7 +627,7 @@ components:
   TripBasicsPane:
     checkingItineraryExistence: Vérification du trajet pour chaque jour de la semaine...
     onlyOnDate: "{date, date, ::eeeee yyyyMMdd} uniquement"
-    recurringEachWeek: "Les jours suivants chaque semaine :"
+    recurringEachWeek: Certains jours chaque semaine
     tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
     tripIsAvailableOnDaysIndicated: Votre trajet est possible les jours indiqués ci-dessus.
     tripNamePrompt: "Saisissez un nom pour ce trajet :"

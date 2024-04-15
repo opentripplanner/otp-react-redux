@@ -22,8 +22,7 @@ import {
   ALL_DAYS,
   arrayToDayFields,
   dayFieldsToArray,
-  getFormattedDayOfWeekPlural,
-  WEEKDAYS
+  getFormattedDayOfWeekPlural
 } from '../../../util/monitored-trip'
 import { AppReduxState } from '../../../util/state-types'
 import { FieldSet } from '../styled'
@@ -50,7 +49,7 @@ type TripBasicsProps = WrappedComponentProps &
   }
 
 interface State {
-  selectedDays: string[]
+  selectedDays: string[] | null
 }
 
 // Styles.
@@ -113,9 +112,7 @@ const AvailableDays = styled(FieldSet)`
  */
 class TripBasicsPane extends Component<TripBasicsProps, State> {
   state = {
-    // Initialize to "Monday-to-Friday" so that, for one-time trips, when clicking the recurring trip option,
-    // Monday...Friday will be selected as default.
-    selectedDays: WEEKDAYS
+    selectedDays: null
   }
 
   /**
@@ -138,16 +135,26 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
     }
   }
 
+  _getDaysFromItineraryExistence = () => {
+    const { itineraryExistence, values: trip } = this.props
+    const finalItineraryExistence =
+      trip.itineraryExistence || itineraryExistence
+    return ALL_DAYS.filter((day) => finalItineraryExistence?.[day]?.valid)
+  }
+
   _handleRecurringTrip: FormEventHandler<Radio> = (e) => {
     const input = e.target as HTMLInputElement
     if (input.checked) {
       const { setValues, values } = this.props
       const { selectedDays } = this.state
 
-      // Restore previously checked monitored days
+      // Restore previously checked monitored days.
+      // If none were set, use the itinerary existence values (at least one day should exist in there).
       setValues({
         ...values,
-        ...arrayToDayFields(selectedDays)
+        ...arrayToDayFields(
+          selectedDays || this._getDaysFromItineraryExistence()
+        )
       })
     }
   }
@@ -258,61 +265,75 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
             <Radio checked={!isOneTime} onChange={this._handleRecurringTrip}>
               <FormattedMessage id="components.TripBasicsPane.recurringEachWeek" />
             </Radio>
-            <AvailableDays>
-              {ALL_DAYS.map((day) => {
-                const isDayDisabled =
-                  finalItineraryExistence &&
-                  !finalItineraryExistence[day]?.valid
-                const boxClass = isDayDisabled
-                  ? 'alert-danger'
-                  : monitoredTrip[day]
-                  ? 'bg-primary'
-                  : ''
-                const notAvailableText = isDayDisabled
-                  ? intl.formatMessage(
-                      { id: 'components.TripBasicsPane.tripNotAvailableOnDay' },
-                      { repeatedDay: getFormattedDayOfWeekPlural(day, intl) }
-                    )
-                  : ''
+            {!isOneTime ? (
+              <>
+                <AvailableDays>
+                  {ALL_DAYS.map((day) => {
+                    const isDayDisabled =
+                      finalItineraryExistence &&
+                      !finalItineraryExistence[day]?.valid
+                    const boxClass = isDayDisabled
+                      ? 'alert-danger'
+                      : monitoredTrip[day]
+                      ? 'bg-primary'
+                      : ''
+                    const notAvailableText = isDayDisabled
+                      ? intl.formatMessage(
+                          {
+                            id: 'components.TripBasicsPane.tripNotAvailableOnDay'
+                          },
+                          {
+                            repeatedDay: getFormattedDayOfWeekPlural(day, intl)
+                          }
+                        )
+                      : ''
 
-                return (
-                  <span className={boxClass} key={day} title={notAvailableText}>
-                    <Field
-                      // Let users save an existing trip, even though it may not be available on some days.
-                      // TODO: improve checking trip availability.
-                      disabled={isDayDisabled && isCreating}
-                      id={day}
-                      name={day}
-                      type="checkbox"
-                    />
-                    <label htmlFor={day}>
-                      <InvisibleA11yLabel>
-                        <FormattedDayOfWeek day={day} />
-                      </InvisibleA11yLabel>
-                      <span aria-hidden>
-                        {/* The abbreviated text is visual only. Screen readers should read out the full day. */}
-                        <FormattedDayOfWeekCompact day={day} />
+                    return (
+                      <span
+                        className={boxClass}
+                        key={day}
+                        title={notAvailableText}
+                      >
+                        <Field
+                          // Let users save an existing trip, even though it may not be available on some days.
+                          // TODO: improve checking trip availability.
+                          disabled={isDayDisabled && isCreating}
+                          id={day}
+                          name={day}
+                          type="checkbox"
+                        />
+                        <label htmlFor={day}>
+                          <InvisibleA11yLabel>
+                            <FormattedDayOfWeek day={day} />
+                          </InvisibleA11yLabel>
+                          <span aria-hidden>
+                            {/* The abbreviated text is visual only. Screen readers should read out the full day. */}
+                            <FormattedDayOfWeekCompact day={day} />
+                          </span>
+                        </label>
+                        <Glyphicon aria-hidden glyph="ban-circle" />
+                        <InvisibleA11yLabel>
+                          {notAvailableText}
+                        </InvisibleA11yLabel>
                       </span>
-                    </label>
-                    <Glyphicon aria-hidden glyph="ban-circle" />
-                    <InvisibleA11yLabel>{notAvailableText}</InvisibleA11yLabel>
-                  </span>
-                )
-              })}
-            </AvailableDays>
-            <HelpBlock role="status">
-              {finalItineraryExistence ? (
-                <FormattedMessage id="components.TripBasicsPane.tripIsAvailableOnDaysIndicated" />
-              ) : (
-                <ProgressBar
-                  active
-                  label={
-                    <FormattedMessage id="components.TripBasicsPane.checkingItineraryExistence" />
-                  }
-                  now={100}
-                />
-              )}
-            </HelpBlock>
+                    )
+                  })}
+                </AvailableDays>
+                <HelpBlock role="status">
+                  {finalItineraryExistence ? (
+                    <FormattedMessage id="components.TripBasicsPane.tripIsAvailableOnDaysIndicated" />
+                  ) : (
+                    <ProgressBar
+                      active
+                      label={
+                        <FormattedMessage id="components.TripBasicsPane.checkingItineraryExistence" />
+                      }
+                      now={100}
+                    />
+                  )}
+                </HelpBlock>
+              </>
+            ) : null}
             <Radio checked={isOneTime} onChange={this._handleOneTimeTrip}>
               <FormattedMessage
                 id="components.TripBasicsPane.onlyOnDate"
