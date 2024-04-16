@@ -6,7 +6,6 @@ import { format, parse } from 'date-fns'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { MagnifyingGlass } from '@styled-icons/fa-solid/MagnifyingGlass'
 import { MapRef } from 'react-map-gl'
-import { RouteComponentProps, withRouter } from 'react-router'
 import { utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, FormEvent } from 'react'
@@ -31,7 +30,7 @@ import StopCardHeader from './nearby/stop-card-header'
 import StopScheduleTable from './stop-schedule-table'
 import TimezoneWarning from './timezone-warning'
 
-interface Props extends RouteComponentProps<{ id: string }> {
+interface Props {
   calendarMax: string
   calendarMin: string
   findStopTimesForStop: (arg: { date: string; stopId: string }) => void
@@ -339,14 +338,12 @@ class StopScheduleViewer extends Component<Props, State> {
 
 // connect to redux store
 
-const mapStateToProps = (
-  state: AppReduxState,
-  ownProps: RouteComponentProps<{ id: string }>
-) => {
+const mapStateToProps = (state: AppReduxState) => {
   const {
     config,
     serviceTimeRange = { end: 0, start: 0 },
-    transitIndex
+    transitIndex,
+    ui
   } = state.otp
   const {
     homeTimezone,
@@ -354,7 +351,7 @@ const mapStateToProps = (
     transitOperators = [] as TransitOperatorConfig[]
   } = config
   const stopLookup = transitIndex.stops
-  const stopId = ownProps.match.params.id
+  const stopId = ui.viewedStop.stopId
   const stopData = stopLookup[stopId]
   const now = new Date()
   const thisYear = now.getFullYear()
@@ -395,8 +392,6 @@ const mapDispatchToProps = {
   zoomToPlace: mapActions.zoomToPlace
 }
 
-export default withRouter(
-  injectIntl(
-    withMap(connect(mapStateToProps, mapDispatchToProps)(StopScheduleViewer))
-  )
+export default injectIntl(
+  withMap(connect(mapStateToProps, mapDispatchToProps)(StopScheduleViewer))
 )
