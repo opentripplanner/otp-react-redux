@@ -19,14 +19,18 @@ interface Props {
  * This component contains the prompt for the user to verify their email address.
  * It also contains a button that lets the user finish account setup.
  *
- * (One way to make sure the parent page fetches the latest email verification status
- * is to simply reload the page.)
+ * (To force the user to update, logout and refresh the page - the user should
+ * automatically get logged back in)
  */
 const VerifyEmailPane = ({ resendVerificationEmail, routeTo }: Props) => {
   const intl = useIntl()
   const emailVerified = useAuth0().user?.email_verified
+  const logout = useAuth0().logout
 
-  const handleEmailVerified = useCallback(() => window.location.reload(), [])
+  const handleEmailVerified = useCallback(() => {
+    logout()
+    window.location.reload()
+  }, [])
 
   const handleResend = useCallback(() => {
     resendVerificationEmail(intl)
