@@ -1,6 +1,11 @@
-const getBaseColor = (): string => {
+import tinycolor, { Instance } from 'tinycolor2'
+
+export const getBaseColor = (): string => {
   return getComputedStyle(document.documentElement).getPropertyValue(
     '--main-base-color'
   )
 }
-export default getBaseColor
+
+export const getAccentColor = (): Instance => {
+  return tinycolor(getBaseColor()).darken(10)
+}
