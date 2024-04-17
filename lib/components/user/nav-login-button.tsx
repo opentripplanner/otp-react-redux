@@ -6,10 +6,10 @@ import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
 
 import { Dropdown } from '../util/dropdown'
-import { LinkContainerWithQuery } from '../form/connected-links'
 import { NewWindowIconA11y } from '../util/externalLink'
 import { UnstyledButton } from '../util/unstyled-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
+import Link from '../util/link'
 import NavbarItem from '../app/nav-item'
 
 const Avatar = styled.img`
@@ -17,7 +17,7 @@ const Avatar = styled.img`
   margin: -15px 0;
   width: 2em;
 `
-const UnstyledHelpLink = styled.a`
+const UnstyledLink = styled(Link)`
   display: block;
   color: inherit;
   &:hover {
@@ -26,14 +26,14 @@ const UnstyledHelpLink = styled.a`
   }
 `
 
-type Link = {
+type LinkData = {
   messageId: string
   target?: string
   url: string
 }
 
 interface Props extends HTMLAttributes<HTMLElement> {
-  links: Link[]
+  links: LinkData[]
   onSignInClick: () => void
   onSignOutClick: () => void
   profile?: User | null
@@ -87,34 +87,27 @@ const NavLoginButton = ({
             links.map((link, i) => {
               if (link.url.startsWith('http')) {
                 return (
-                  <li>
-                    <UnstyledHelpLink href={link.url} target="_blank">
+                  <li key={link.url}>
+                    <UnstyledLink as="a" href={link.url} target="_blank">
                       <FormattedMessage id="components.NavLoginButton.help" />
                       <NewWindowIconA11y
                         size={12}
                         style={{ marginLeft: '5px', marginTop: '-3px' }}
                       />
-                    </UnstyledHelpLink>
+                    </UnstyledLink>
                   </li>
                 )
               }
               return (
-                <LinkContainerWithQuery
-                  exact
-                  key={i}
-                  target={link.target}
-                  to={link.url}
-                >
-                  <li>
-                    <UnstyledButton>
-                      {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
-                        <FormattedMessage id="components.NavLoginButton.myAccount" />
-                      ) : (
-                        <FormattedMessage id="components.NavLoginButton.help" />
-                      )}
-                    </UnstyledButton>
-                  </li>
-                </LinkContainerWithQuery>
+                <li key={link.url}>
+                  <UnstyledLink to={link.url}>
+                    {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
+                      <FormattedMessage id="components.NavLoginButton.myAccount" />
+                    ) : (
+                      <FormattedMessage id="components.NavLoginButton.help" />
+                    )}
+                  </UnstyledLink>
+                </li>
               )
             })}
 
