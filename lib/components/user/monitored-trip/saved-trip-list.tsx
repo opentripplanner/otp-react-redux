@@ -61,6 +61,15 @@ const TripContainer = styled.div`
   flex-direction: column;
   justify-content: center;
 `
+// Prevent the invisble header in route-blocks from causing white space
+const RouteBlockGrid = styled.div`
+  display: grid;
+  grid-template-columns: 2;
+
+  span {
+    grid-row: 1;
+  }
+`
 
 /**
  * This class manages events and rendering for one item in the saved trip list.
@@ -118,9 +127,9 @@ class TripListItem extends Component<ItemProps, ItemState> {
               </InvisibleA11yLabel>
             </Link>
           </TripPanelTitle>
-          <div style={{ marginTop: '-20px' }}>
+          <RouteBlockGrid>
             <RouteBlockWrapper itinerary={itinerary} />
-          </div>
+          </RouteBlockGrid>
         </TripPanelHeading>
         <Panel.Body>
           <TripSummaryPane

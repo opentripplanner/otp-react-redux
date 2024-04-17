@@ -4,9 +4,9 @@ import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import React from 'react'
 
 import { ALL_DAYS } from '../../../util/monitored-trip'
+import { getBaseColor } from '../../util/base-color'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
-import getBaseColor from '../../util/base-color'
 
 import styled from 'styled-components'
 
@@ -19,7 +19,10 @@ const DayCircleContainer = styled.div`
   gap: 4px;
 `
 
-const MonitoredDay = styled.span<{ baseColor: string; monitored: boolean }>`
+const MonitoredDayCircle = styled.span<{
+  baseColor: string
+  monitored: boolean
+}>`
   align-items: center;
   background-color: ${(props) =>
     props.monitored ? props.baseColor : 'transparent'};
@@ -32,6 +35,10 @@ const MonitoredDay = styled.span<{ baseColor: string; monitored: boolean }>`
   opacity: ${(props) => (props.monitored ? 1 : 0.7)};
   text-transform: capitalize;
   width: 27px;
+
+  span {
+    margin: 3px 0 0 1px;
+  }
 `
 
 const MonitoredDays = ({ days }: Props) => {
@@ -49,9 +56,9 @@ const MonitoredDays = ({ days }: Props) => {
     const dayAbbrev = <FormattedDayOfWeekCompact day={d} />
     const monitored = days?.includes(d)
     return (
-      <MonitoredDay baseColor={baseColor} key={d} monitored={monitored}>
+      <MonitoredDayCircle baseColor={baseColor} key={d} monitored={monitored}>
         <span>{dayAbbrev}</span>
-      </MonitoredDay>
+      </MonitoredDayCircle>
     )
   })
   return (

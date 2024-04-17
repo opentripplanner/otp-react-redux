@@ -55,7 +55,7 @@ const ItineraryDetails = styled.div`
   padding-left: 30px;
 
   @media (max-width: 768px) {
-    padding: 30px 20px 20px 20px;
+    padding-top: 30px;
     width: 100%;
   }
 `
@@ -135,6 +135,8 @@ const TripSummaryPane = ({
       id: 'components.ExistingAccountDisplay.notifications'
     })
 
+    const iconSize = 14
+
     return (
       <SavedTripBody>
         <InvisibleA11yLabel>
@@ -151,7 +153,7 @@ const TripSummaryPane = ({
                 id: 'components.BatchSettings.origin'
               })}
             >
-              <LocationIcon size={14} type="from" />
+              <LocationIcon size={iconSize} type="from" />
             </span>
             <span>{from?.name}</span>
           </TextWIcon>
@@ -161,7 +163,7 @@ const TripSummaryPane = ({
                 id: 'components.BatchSettings.destination'
               })}
             >
-              <LocationIcon size={14} type="to" />
+              <LocationIcon size={iconSize} type="to" />
             </span>
             <span>{to?.name}</span>
           </TextWIcon>
