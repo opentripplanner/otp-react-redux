@@ -2383,10 +2383,19 @@
   dependencies:
     "@octokit/openapi-types" "^10.0.0"
 
-"@opentripplanner/base-map@^3.0.16", "@opentripplanner/base-map@^3.0.17":
+"@opentripplanner/base-map@^3.0.16":
   version "3.0.17"
   resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.17.tgz#01862a7925b59be355e3229edac954ef876343cb"
   integrity sha512-cWfhquu7PrLnqte03Mj5XQJW3OSrRtwq10/s2Az523X9yeheZsiO4sm/Bfmizr9xhqec/UTl882nOVKjESHzHA==
+  dependencies:
+    mapbox-gl "npm:empty-npm-package@1.0.0"
+    maplibre-gl "^2.1.9"
+    react-map-gl "^7.0.15"
+
+"@opentripplanner/base-map@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.1.0.tgz#3181d4ec17029db8a40ca1342e20d1a0d449931f"
+  integrity sha512-feOSOWmiBFvIFWyG+OllCMxOcTmRKzxIoKKeoEgUFjNdVnrkZM6HH5r0m5IaQA9wO7T0N0K64hn/zdRQZBv0rQ==
   dependencies:
     mapbox-gl "npm:empty-npm-package@1.0.0"
     maplibre-gl "^2.1.9"
@@ -2564,10 +2573,10 @@
     "@opentripplanner/map-popup" "^3.0.2"
     flat "^5.0.2"
 
-"@opentripplanner/transit-vehicle-overlay@^4.0.9":
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-4.0.9.tgz#f193de3444445fefe1bf8e40e312d53ea2a70dc7"
-  integrity sha512-VajxLn+qIOQ17Z7vdjWFmImDz4aKJ4mzQsztZH0zSZepmEFD5HLqdlvm1RGRbpLbnAU2XWGVgAAT8NTT5YxVyw==
+"@opentripplanner/transit-vehicle-overlay@^4.0.10":
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-4.0.10.tgz#a63e86a2dc5108ddf47ba8d8c0c9f5017c65c86a"
+  integrity sha512-j8+KCyeCD7WLQgAIbtzX7ckwqLU1fwKjXCMJ5E5/t75YqNuWB8hAiUonerIanuA20TUinm4sPwSL3dr9OnGNlA==
   dependencies:
     "@opentripplanner/base-map" "^3.0.16"
     "@opentripplanner/core-utils" "^11.2.3"
@@ -2626,10 +2635,10 @@
     "@opentripplanner/base-map" "^3.0.16"
     "@opentripplanner/core-utils" "^11.2.3"
 
-"@opentripplanner/types@^6.4.0":
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.4.0.tgz#6f7a3475ea982c7b7d8b2f1383a6d775dfabe62a"
-  integrity sha512-PS+CUwETLf0WzAUZg3qiey+SBigaf0CfknKF1XMOM+zJVc2c8nN34hgnwV7sS+RKs030KZFAgIn8p035ErcBuQ==
+"@opentripplanner/types@^6.4.1":
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.4.1.tgz#a01e612e258d873840a3222bbc7dd446e7c502c4"
+  integrity sha512-gSaEIxdXJjOoUcOKi+JNVkcT58SyqU5RnU3zoBVKrH8DYjXOTqX058NmmzPpptL3yEZRXysjlIyRL/xo2x5Wlw==
 
 "@opentripplanner/vehicle-rental-overlay@^2.1.7":
   version "2.1.7"
