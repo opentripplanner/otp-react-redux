@@ -61,7 +61,7 @@ const TripContainer = styled.div`
   flex-direction: column;
   justify-content: center;
 `
-// Prevent the invisble header in route-blocks from causing white space
+// Prevent the invisible header in route-blocks from causing white space
 const RouteBlockGrid = styled.div`
   display: grid;
   grid-template-columns: 2;
