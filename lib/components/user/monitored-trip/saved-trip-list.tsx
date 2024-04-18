@@ -31,9 +31,10 @@ import withLoggedInUserSupport from '../with-logged-in-user-support'
 
 import getRenderData from './trip-status-rendering-strategies'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
-import RouteBlockWrapper from './route-block-wrapper'
 
+import { ComponentContext } from '../../../util/contexts'
 import Link from '../../util/link'
+import MetroItineraryRoutes from '../../narrative/metro/metro-itinerary-routes'
 
 import TripSummaryPane from './trip-summary-pane'
 
@@ -82,6 +83,8 @@ class TripListItem extends Component<ItemProps, ItemState> {
     }
   }
 
+  static contextType = ComponentContext
+
   componentDidUpdate = (prevProps: ItemProps) => {
     if (prevProps.trip.isActive !== this.props.trip.isActive) {
       this.setState({ pendingRequest: false })
@@ -108,6 +111,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
     const from = legs[0].from
     const to = legs[legs.length - 1].to
     const editTripPath = `${TRIPS_PATH}/${trip.id}`
+    const { LegIcon } = this.context
     return (
       <Panel>
         <TripPanelHeading>
@@ -128,7 +132,11 @@ class TripListItem extends Component<ItemProps, ItemState> {
             </Link>
           </TripPanelTitle>
           <RouteBlockGrid>
-            <RouteBlockWrapper itinerary={itinerary} />
+            <MetroItineraryRoutes
+              expanded={false}
+              itinerary={itinerary}
+              LegIcon={LegIcon}
+            />
           </RouteBlockGrid>
         </TripPanelHeading>
         <Panel.Body>
