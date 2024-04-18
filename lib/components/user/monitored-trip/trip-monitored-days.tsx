@@ -26,18 +26,22 @@ const MonitoredDayCircle = styled.span<{
   align-items: center;
   background-color: ${(props) =>
     props.monitored ? props.baseColor : 'transparent'};
-  border: 1px solid ${(props) => (props.monitored ? props.baseColor : '#333')};
   border-radius: 50%;
   color: ${(props) => (props.monitored ? 'white' : 'inherit')};
   display: flex;
-  height: 27px;
+  height: 3rem;
   justify-content: center;
   opacity: ${(props) => (props.monitored ? 1 : 0.7)};
   text-transform: capitalize;
-  width: 27px;
+  width: 3rem;
 
   span {
-    margin: 3px 0 0 1px;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    margin-top: 1px;
+    width: 100%;
   }
 `
 
