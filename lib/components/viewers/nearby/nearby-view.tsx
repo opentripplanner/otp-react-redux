@@ -30,9 +30,10 @@ const AUTO_REFRESH_INTERVAL = 15000
 
 // TODO: use lonlat package
 type LatLonObj = { lat: number; lon: number }
+type CurrentPosition = { coords?: { latitude: number; longitude: number } }
 
 type Props = {
-  currentPosition?: { coords?: { latitude: number; longitude: number } }
+  currentPosition?: CurrentPosition
   displayedCoords?: LatLonObj
   entityId?: string
   fetchNearby: (latLon: LatLonObj, radius?: number) => void
@@ -69,13 +70,20 @@ const getNearbyItem = (place: any) => {
   }
 }
 
-function getNearbyCoordsFromUrlOrMapCenter(
+function getNearbyCoordsFromUrlOrLocationOrMapCenter(
   coordsFromUrl?: LatLonObj,
+  currentPosition?: CurrentPosition,
   map?: MapRef
 ): LatLonObj | null {
   if (coordsFromUrl) {
     return coordsFromUrl
   }
+
+  if (currentPosition?.coords) {
+    const { latitude: lat, longitude: lon } = currentPosition.coords
+    return { lat, lon }
+  }
+
   const rawMapCoords = map?.getCenter()
   const mapCoords = rawMapCoords !== undefined && {
     lat: rawMapCoords.lat,
@@ -107,8 +115,13 @@ function NearbyView({
   const [loading, setLoading] = useState(true)
   const firstItemRef = useRef<HTMLDivElement>(null)
   const finalNearbyCoords = useMemo(
-    () => getNearbyCoordsFromUrlOrMapCenter(nearbyViewCoords, map),
-    [nearbyViewCoords, map]
+    () =>
+      getNearbyCoordsFromUrlOrLocationOrMapCenter(
+        nearbyViewCoords,
+        currentPosition,
+        map
+      ),
+    [nearbyViewCoords, currentPosition, map]
   )
 
   // Make sure the highlighted location is cleaned up when leaving nearby
@@ -119,11 +132,6 @@ function NearbyView({
   }, [location, setHighlightedLocation])
 
   useEffect(() => {
-    if (currentPosition?.coords) {
-      const { latitude, longitude } = currentPosition.coords
-      setViewedNearbyCoords({ lat: latitude, lon: longitude })
-    }
-
     const moveListener = (e: mapboxgl.EventData) => {
       if (e.geolocateSource) {
         setViewedNearbyCoords({
@@ -153,7 +161,7 @@ function NearbyView({
       map?.off('dragend', dragListener)
       map?.off('moveend', moveListener)
     }
-  }, [map, setViewedNearbyCoords, setHighlightedLocation, currentPosition])
+  }, [map, setViewedNearbyCoords, setHighlightedLocation])
 
   useEffect(() => {
     if (typeof firstItemRef.current?.scrollIntoView === 'function') {
