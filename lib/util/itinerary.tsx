@@ -19,7 +19,7 @@ interface LegWithOtp1HailedCar extends Leg {
   hailedCar?: boolean
 }
 
-interface ItineraryWithOtp1HailedCar extends Itinerary {
+export interface ItineraryWithOtp1HailedCar extends Itinerary {
   legs: LegWithOtp1HailedCar[]
 }
 
@@ -62,7 +62,7 @@ interface RelaxedFareProductSelector {
  *   (We use the corresponding fields returned by OTP to get transit legs and rental/ride hail legs.)
  */
 export function itineraryCanBeMonitored(
-  itinerary: ItineraryWithOtp1HailedCar
+  itinerary?: ItineraryWithOtp1HailedCar
 ): boolean {
   return (
     !!itinerary?.legs &&
