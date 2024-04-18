@@ -23,8 +23,8 @@ import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
-import { getAccentColor, getBaseColor } from '../util/base-color'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
+import { getBaseColor, getDarkenedBaseColor } from '../util/base-color'
 import { getFormattedMode } from '../../util/i18n'
 import { RoutingQueryCallResult } from '../../actions/api-constants'
 import { StyledIconWrapper } from '../util/styledIcon'
@@ -219,7 +219,7 @@ function BatchSettings({
 
   const baseColor = getBaseColor()
 
-  const accentColor = getAccentColor()
+  const accentColor = getDarkenedBaseColor()
 
   return (
     <MainSettingsRow onMouseMove={checkModeSelectorPopup}>

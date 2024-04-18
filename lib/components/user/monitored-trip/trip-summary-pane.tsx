@@ -137,7 +137,7 @@ const TripSummaryPane = ({
       id: 'components.ExistingAccountDisplay.notifications'
     })
 
-    const iconSize = 14
+    const ICON_SIZE = 14
 
     return (
       <SavedTripBody>
@@ -155,7 +155,7 @@ const TripSummaryPane = ({
                 id: 'components.BatchSettings.origin'
               })}
             >
-              <LocationIcon size={iconSize} type="from" />
+              <LocationIcon size={ICON_SIZE} type="from" />
             </span>
             <span>{from?.name}</span>
           </TextWIcon>
@@ -165,7 +165,7 @@ const TripSummaryPane = ({
                 id: 'components.BatchSettings.destination'
               })}
             >
-              <LocationIcon size={iconSize} type="to" />
+              <LocationIcon size={ICON_SIZE} type="to" />
             </span>
             <span>{to?.name}</span>
           </TextWIcon>

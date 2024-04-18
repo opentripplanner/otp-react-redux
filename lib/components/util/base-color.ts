@@ -6,6 +6,6 @@ export const getBaseColor = (): string => {
   )
 }
 
-export const getAccentColor = (): Instance => {
+export const getDarkenedBaseColor = (): Instance => {
   return tinycolor(getBaseColor()).darken(10)
 }
