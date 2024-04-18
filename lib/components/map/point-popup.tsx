@@ -4,7 +4,7 @@ import { Search } from '@styled-icons/fa-solid/Search'
 import { useIntl, WrappedComponentProps } from 'react-intl'
 import { useMap } from 'react-map-gl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import styled from 'styled-components'
 import type { Location } from '@opentripplanner/types'
 
@@ -50,6 +50,65 @@ function MapPopup({
   const intl = useIntl()
   const { current: map } = useMap()
 
+  /**
+   * Creates a focus trap within map popup that can be dismissed with esc.
+   * https://medium.com/cstech/achieving-focus-trapping-in-a-react-modal-component-3f28f596f35b
+   */
+  function getEntryRelativeTo(
+    element: EventTarget,
+    offset: 1 | -1
+  ): HTMLElement {
+    const entries = Array.from(
+      document.querySelectorAll('button#zoom-btn, #from-to button')
+    )
+    const firstElement = entries[0]
+    const lastElement = entries[entries.length - 1]
+    const elementIndex = entries.indexOf(element as HTMLButtonElement)
+
+    if (element === firstElement && offset === -1) {
+      return lastElement as HTMLElement
+    }
+    if (element === lastElement && offset === 1) {
+      return firstElement as HTMLElement
+    }
+    return entries[elementIndex + offset] as HTMLElement
+  }
+
+  /**
+   * Check to see which keys are down by tracking keyUp and keyDown events
+   * in order to see when "tab" and "shift" are pressed at the same time.
+   */
+  let keysDown: string[] = useMemo(() => [], [])
+
+  const _handleKeyDown = useCallback(
+    (e) => {
+      keysDown.push(e.key)
+      const element = e.target as HTMLElement
+      switch (e.key) {
+        case 'Escape':
+          clearMapPopupLocation()
+          break
+        case 'Tab':
+          if (keysDown.includes('Shift')) {
+            e.preventDefault()
+            getEntryRelativeTo(element, -1)?.focus()
+          } else {
+            e.preventDefault()
+            getEntryRelativeTo(element, 1)?.focus()
+          }
+          break
+        case ' ':
+          break
+        default:
+      }
+    },
+    [clearMapPopupLocation, keysDown]
+  )
+
+  const _handleKeyUp = (e: any) => {
+    keysDown = keysDown.filter((key) => key !== e.key)
+  }
+
   // Memoize callbacks that shouldn't change from one render to the next.
   const onSetLocationFromPopup = useCallback(
     (payload) => {
@@ -72,37 +131,40 @@ function MapPopup({
   })
 
   return (
-    <Popup
-      closeButton={false}
-      closeOnClick
-      latitude={mapPopupLocation.lat}
-      longitude={mapPopupLocation.lon}
-      onClose={clearMapPopupLocation}
-      // Override inline style supplied by react-map-gl to accommodate long "plan a trip" translations.
-      style={{ maxWidth: '260px', width: '260px' }}
-    >
-      <PopupTitleWrapper>
-        <PopupTitle>
-          {typeof popupName === 'string' && popupName.split(',').length > 3
-            ? popupName.split(',').splice(0, 3).join(',')
-            : popupName}
-        </PopupTitle>
-        <ZoomButton
-          aria-label={zoomButtonLabel}
-          onClick={() => zoomToPlace(map, mapPopupLocation, DEFAULT_ZOOM)}
-          title={zoomButtonLabel}
-        >
-          <Icon Icon={Search} />
-        </ZoomButton>
-      </PopupTitleWrapper>
-      <div>
-        <FromToLocationPicker
-          label
-          location={{ ...mapPopupLocation, name: popupName }}
-          setLocation={onSetLocationFromPopup}
-        />
-      </div>
-    </Popup>
+    <div onKeyDown={_handleKeyDown} onKeyUp={_handleKeyUp} role="presentation">
+      <Popup
+        closeButton={false}
+        closeOnClick
+        latitude={mapPopupLocation.lat}
+        longitude={mapPopupLocation.lon}
+        onClose={clearMapPopupLocation}
+        // Override inline style supplied by react-map-gl to accommodate long "plan a trip" translations.
+        style={{ maxWidth: '260px', width: '260px' }}
+      >
+        <PopupTitleWrapper>
+          <PopupTitle>
+            {typeof popupName === 'string' && popupName.split(',').length > 3
+              ? popupName.split(',').splice(0, 3).join(',')
+              : popupName}
+          </PopupTitle>
+          <ZoomButton
+            aria-label={zoomButtonLabel}
+            id="zoom-btn"
+            onClick={() => zoomToPlace(map, mapPopupLocation, DEFAULT_ZOOM)}
+            title={zoomButtonLabel}
+          >
+            <Icon Icon={Search} />
+          </ZoomButton>
+        </PopupTitleWrapper>
+        <div id="from-to">
+          <FromToLocationPicker
+            label
+            location={{ ...mapPopupLocation, name: popupName }}
+            setLocation={onSetLocationFromPopup}
+          />
+        </div>
+      </Popup>
+    </div>
   )
 }
 
