@@ -2,6 +2,7 @@ import { Panel } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
 
 import { RED_ON_WHITE } from '../util/colors'
+import Link from '../util/link'
 
 export const PageHeading = styled.h2`
   margin: 10px 0px 45px 0px;
@@ -112,4 +113,15 @@ export const phoneFieldStyle = css`
   display: inline-block;
   vertical-align: middle;
   width: 14em;
+`
+
+export const UnstyledLink = styled(Link)`
+  color: initial;
+  letter-spacing: initial;
+  text-transform: none;
+
+  &:hover {
+    color: initial;
+    text-decoration: none;
+  }
 `

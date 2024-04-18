@@ -5,7 +5,6 @@ import { Lock } from '@styled-icons/fa-solid/Lock'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { PlusCircle } from '@styled-icons/fa-solid/PlusCircle'
 import React from 'react'
-import styled from 'styled-components'
 
 import { AppReduxState } from '../../util/state-types'
 import { CREATE_TRIP_PATH } from '../../util/constants'
@@ -16,19 +15,8 @@ import {
   ItineraryWithOtp1HailedCar
 } from '../../util/itinerary'
 import { PersistenceConfig } from '../../util/config-types'
+import { UnstyledLink } from '../user/styled'
 import { User } from '../user/types'
-import Link from '../util/link'
-
-const UnstyledLink = styled(Link)`
-  color: initial;
-  letter-spacing: initial;
-  text-transform: none;
-
-  &:hover {
-    color: initial;
-    text-decoration: none;
-  }
-`
 
 interface Props {
   itinerary?: ItineraryWithOtp1HailedCar

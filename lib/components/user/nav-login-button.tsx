@@ -9,21 +9,17 @@ import { Dropdown } from '../util/dropdown'
 import { NewWindowIconA11y } from '../util/externalLink'
 import { UnstyledButton } from '../util/unstyled-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
-import Link from '../util/link'
 import NavbarItem from '../app/nav-item'
+
+import { UnstyledLink } from './styled'
 
 const Avatar = styled.img`
   height: 2em;
   margin: -15px 0;
   width: 2em;
 `
-const UnstyledLink = styled(Link)`
+const NavUnstyledLink = styled(UnstyledLink)`
   display: block;
-  color: inherit;
-  &:hover {
-    color: inherit;
-    text-decoration: none;
-  }
 `
 
 type LinkData = {
@@ -88,25 +84,25 @@ const NavLoginButton = ({
               if (link.url.startsWith('http')) {
                 return (
                   <li key={link.url}>
-                    <UnstyledLink as="a" href={link.url} target="_blank">
+                    <NavUnstyledLink as="a" href={link.url} target="_blank">
                       <FormattedMessage id="components.NavLoginButton.help" />
                       <NewWindowIconA11y
                         size={12}
                         style={{ marginLeft: '5px', marginTop: '-3px' }}
                       />
-                    </UnstyledLink>
+                    </NavUnstyledLink>
                   </li>
                 )
               }
               return (
                 <li key={link.url}>
-                  <UnstyledLink to={link.url}>
+                  <NavUnstyledLink to={link.url}>
                     {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
                       <FormattedMessage id="components.NavLoginButton.myAccount" />
                     ) : (
                       <FormattedMessage id="components.NavLoginButton.help" />
                     )}
-                  </UnstyledLink>
+                  </NavUnstyledLink>
                 </li>
               )
             })}
