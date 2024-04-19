@@ -38,7 +38,7 @@ const standardPanes: Record<string, PaneProps> = {
   notifications: {
     getInvalidMessage: (intl: IntlShape) =>
       intl.formatMessage({
-        id: 'components.PhoneNumberEditor.invalidPhone'
+        id: 'components.PhoneNumberEditor.verifySms'
       }),
     id: 'notifications',
     isInvalid: ({

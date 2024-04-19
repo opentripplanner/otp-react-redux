@@ -50,6 +50,17 @@ type ErrorStates = 'success' | 'warning' | 'error' | null | undefined
 
 // Styles.
 const AvailableDays = styled(FieldSet)`
+  // Targets the formik checkboxes to provide better contrast on focus styles
+  input {
+    &:focus-visible,
+    &:focus {
+      outline-offset: 0.5px;
+      outline: solid 2px blue;
+      &:checked {
+        outline: solid 2px white;
+      }
+    }
+  }
   & > span {
     border: 1px solid #ccc;
     border-left: none;
