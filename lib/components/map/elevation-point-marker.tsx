@@ -1,10 +1,12 @@
-import { blue } from '@opentripplanner/building-blocks'
 import { connect } from 'react-redux'
 import { Leg } from '@opentripplanner/types'
 import { Marker } from 'react-map-gl'
+import colors from '@opentripplanner/building-blocks'
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 import styled from 'styled-components'
+
+const { blue } = colors
 
 type Props = {
   diagramLeg: Leg

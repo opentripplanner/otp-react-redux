@@ -1,12 +1,14 @@
-import { blue, grey } from '@opentripplanner/building-blocks'
 import {
   DateTimeSelector,
   SettingsSelectorPanel,
   Styled as TripFormClasses
 } from '@opentripplanner/trip-form'
 import { Input, MenuItemLi } from '@opentripplanner/location-field/lib/styled'
+import colors from '@opentripplanner/building-blocks'
 import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
+
+const { blue, grey } = colors
 
 const commonButtonCss = css`
   -webkit-user-select: none;
@@ -35,7 +37,7 @@ const commonButtonCss = css`
 
 export const commonInputCss = css`
   background: none;
-  border: 1px solid ${grey[200]};
+  border: 1px solid ${blue[200]};
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   color: ${grey[800]};
   font-family: inherit;

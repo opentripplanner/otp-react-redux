@@ -1,4 +1,4 @@
-import { grey } from '@opentripplanner/building-blocks'
+import colors from '@opentripplanner/building-blocks'
 import styled from 'styled-components'
 
 import Place, {
@@ -15,6 +15,8 @@ import Place, {
 // used in the My account page.
 
 const FAVORITE_PLACE_HEIGHT_PX = '60px'
+
+const { grey } = colors
 
 export const StyledFavoritePlace = styled(Place).attrs({
   largeIcon: true

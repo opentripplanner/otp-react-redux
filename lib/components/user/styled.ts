@@ -1,6 +1,8 @@
 import { Panel } from 'react-bootstrap'
-import { red } from '@opentripplanner/building-blocks'
+import colors from '@opentripplanner/building-blocks'
 import styled, { css } from 'styled-components'
+
+const { red } = colors
 
 export const PageHeading = styled.h2`
   margin: 10px 0px 45px 0px;

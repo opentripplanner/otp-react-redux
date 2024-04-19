@@ -1,6 +1,7 @@
-import { grey } from '@opentripplanner/building-blocks'
+import colors from '@opentripplanner/building-blocks'
 import styled, { css } from 'styled-components'
 
+const { grey } = colors
 export const buttonPixels = 51
 
 export const activeCss = css`

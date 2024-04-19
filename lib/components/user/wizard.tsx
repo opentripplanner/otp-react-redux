@@ -9,7 +9,7 @@ import toast from 'react-hot-toast'
 
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
-import { grey } from '@opentripplanner/building-blocks'
+import colors from '@opentripplanner/building-blocks'
 import PageTitle from '../util/page-title'
 
 import { EditedUser } from './types'
@@ -39,6 +39,8 @@ interface Props extends OwnProps {
   routeTo: (url: string, replace?: string, method?: any) => void
   title: string
 }
+
+const { grey } = colors
 
 const StepNumber = styled.p`
   color: ${grey[700]};

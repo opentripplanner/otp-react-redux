@@ -9,9 +9,9 @@ import styled from 'styled-components'
 import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
 import { getAriaPhoneNumber } from '../../util/a11y'
-import { grey } from '@opentripplanner/building-blocks'
 import { isBlank } from '../../util/ui'
 import { PhoneFormatConfig } from '../../util/config-types'
+import colors from '@opentripplanner/building-blocks'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 import { ControlStrip } from './styled'
@@ -19,6 +19,8 @@ import PhoneChangeForm, { PhoneChangeSubmitHandler } from './phone-change-form'
 import PhoneVerificationForm, {
   PhoneVerificationSubmitHandler
 } from './phone-verification-form'
+
+const { grey } = colors
 
 const PlainLink = styled.a`
   color: ${grey[700]};

@@ -6,11 +6,13 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../util/state-types'
-import { grey } from '@opentripplanner/building-blocks'
+import colors from '@opentripplanner/building-blocks'
 
 import { FieldSet } from './styled'
 import { User } from './types'
 import PhoneNumberEditor from './phone-number-editor'
+
+const { grey } = colors
 
 interface Props extends FormikProps<User> {
   allowedNotificationChannels: string[]

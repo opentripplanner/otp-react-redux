@@ -6,17 +6,17 @@ import React, { Component, createRef } from 'react'
 import styled from 'styled-components'
 
 import { FETCH_STATUS } from '../../util/constants'
+import colors from '@opentripplanner/building-blocks'
 
-
-import { grey } from '@opentripplanner/building-blocks'
 import { getFirstDepartureFromNow } from '../../util/viewer'
 import { isBlank } from '../../util/ui'
 import { mergeAndSortStopTimes } from '../../util/stop-times'
 import { StopData } from '../util/types'
-
 import Loading from '../narrative/loading'
 
 import DepartureTime from './departure-time'
+
+const { grey } = colors
 
 // Styles for the schedule table and its contents.
 const StyledTable = styled.table`

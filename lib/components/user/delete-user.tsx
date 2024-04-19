@@ -2,11 +2,13 @@ import { Auth0ContextInterface, useAuth0 } from '@auth0/auth0-react'
 import { Button, Sizes } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
-import { red } from '@opentripplanner/building-blocks'
+import colors from '@opentripplanner/building-blocks'
 import React, { MouseEvent, useCallback } from 'react'
 import styled from 'styled-components'
 
 import * as userActions from '../../actions/user'
+
+const { red } = colors
 
 interface Props {
   block?: boolean

@@ -11,7 +11,6 @@ import {
   getRouteColorBasedOnSettings
 } from '../../util/viewer'
 import { getOperatorName } from '../../util/state'
-import { grey } from '@opentripplanner/building-blocks'
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
   SetViewedRouteHandler,
@@ -20,6 +19,7 @@ import {
 } from '../util/types'
 import { SortResultsDropdown } from '../util/dropdown'
 import { UnstyledButton } from '../util/unstyled-button'
+import colors from '@opentripplanner/building-blocks'
 
 import {
   Container,
@@ -31,6 +31,8 @@ import {
   StopLink,
   Stop as StyledStop
 } from './styled'
+
+const { grey } = colors
 
 const PatternSelectButton = styled(UnstyledButton)`
   span {

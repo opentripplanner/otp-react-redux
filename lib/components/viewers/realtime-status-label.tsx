@@ -7,10 +7,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../util/state-types'
-import { blue, grey, red } from '@opentripplanner/building-blocks'
 import { getTripStatus, REALTIME_STATUS } from '../../util/viewer'
+import colors from '@opentripplanner/building-blocks'
 import FormattedDuration from '../util/formatted-duration'
 import FormattedRealtimeStatusLabel from '../util/formatted-realtime-status-label'
+
+const { blue, grey, red } = colors
 
 // If shown, keep the '5 min' portion of the status string on the same line.
 export const DelayText = styled.span`

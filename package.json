@@ -42,7 +42,7 @@
     "@bugsnag/js": "^7.17.0",
     "@bugsnag/plugin-react": "^7.17.0",
     "@floating-ui/react": "^0.19.2",
-    "@opentripplanner/building-blocks": "^1.0.1",
+    "@opentripplanner/building-blocks": "^1.0.3",
     "@opentripplanner/base-map": "^3.0.17",
     "@opentripplanner/core-utils": "^11.3.0",
     "@opentripplanner/endpoints-overlay": "^2.0.12",

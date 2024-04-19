@@ -8,7 +8,9 @@ import styled from 'styled-components'
 import * as userActions from '../../actions/user'
 import { IconWithText } from '../util/styledIcon'
 import { InlineLoading } from '../narrative/loading'
-import { red } from '@opentripplanner/building-blocks'
+import colors from '@opentripplanner/building-blocks'
+
+const { red } = colors
 
 interface DeleteFormProps {
   confirmAndDeleteUserMonitoredTrip: (id: string, intl: any) => void
