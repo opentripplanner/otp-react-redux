@@ -243,11 +243,13 @@ export interface ItineraryCostWeights {
 }
 
 export interface ItineraryConfig {
+  allowUserAlertCollapsing?: boolean
   costs?: ItineraryCostConfig
   customBatchUiBackground?: boolean
   defaultFareType?: FareProductSelector
   defaultSort?: ItinerarySortOption
   disableMetroSeperatorDot?: true
+  exclusiveErrors?: string[]
   fareDetailsLayout?: FareTableLayout[]
   fareKeyNameMap?: Record<string, string>
   fillModeIcons?: boolean

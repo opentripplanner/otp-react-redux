@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
-import { MapRef, useMap } from 'react-map-gl'
 import { Popup } from '@opentripplanner/base-map'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { useIntl, WrappedComponentProps } from 'react-intl'
+import { useMap } from 'react-map-gl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useCallback } from 'react'
 import styled from 'styled-components'
@@ -11,7 +11,7 @@ import type { Location } from '@opentripplanner/types'
 import * as mapActions from '../../actions/map'
 import { Icon } from '../util/styledIcon'
 import { renderCoordinates } from '../../util/i18n'
-import { SetLocationHandler } from '../util/types'
+import { SetLocationHandler, ZoomToPlaceHandler } from '../util/types'
 
 const PopupTitleWrapper = styled.div`
   align-items: flex-start;
@@ -36,11 +36,7 @@ type Props = {
   clearMapPopupLocation: () => void
   mapPopupLocation: Location
   setLocation: SetLocationHandler
-  zoomToPlace: (
-    map?: MapRef,
-    place?: { lat: number; lon: number },
-    zoom?: number
-  ) => void
+  zoomToPlace: ZoomToPlaceHandler
 } & WrappedComponentProps
 
 const DEFAULT_ZOOM = 15

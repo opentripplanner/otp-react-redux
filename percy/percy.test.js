@@ -261,8 +261,8 @@ async function executeTest(page, isMobile, isCallTaker) {
 
   // Open schedule view
   await page.waitForTimeout(2000)
-  await page.waitForSelector('button.link-button.pull-right')
-  await page.click('button.link-button.pull-right')
+  await page.waitForSelector('a.pull-right')
+  await page.click('a.pull-right')
   await page.waitForTimeout(500)
   // Request a schedule for a specific valid date in the past,
   // so it is different than today and triggers a full render of the schedule.
@@ -282,10 +282,8 @@ async function executeTest(page, isMobile, isCallTaker) {
     await percySnapshotWithWait(page, 'Mobile Sidebar')
   }
 
-  const [routeViewerButton] = await page.$x(
-    "//button[contains(., 'View Routes')]"
-  )
-  await routeViewerButton.click()
+  const [routeViewerLink] = await page.$x("//a[contains(., 'View Routes')]")
+  await routeViewerLink.click()
   await page.waitForSelector('.route-viewer')
   await page.waitForTimeout(5000)
 
@@ -349,10 +347,8 @@ async function executeTest(page, isMobile, isCallTaker) {
     // Wait for animation
     await page.waitForTimeout(200)
   }
-  const [planTripTabButton] = await page.$x(
-    "//button[contains(., 'Plan Trip')]"
-  )
-  await planTripTabButton.click()
+  const [planTripTabLink] = await page.$x("//a[contains(., 'Plan Trip')]")
+  await planTripTabLink.click()
   await page.waitForSelector('.option')
   await page.waitForTimeout(3000)
   const [viewAllOptionsButton] = await page.$x(

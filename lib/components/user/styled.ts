@@ -1,5 +1,6 @@
 import { Panel } from 'react-bootstrap'
 import colors from '@opentripplanner/building-blocks'
+
 import styled, { css } from 'styled-components'
 
 const { red } = colors
@@ -30,15 +31,15 @@ export const SubNavContainer = styled.div`
 export const SubNavLinks = styled.div`
   margin-top: 11px;
 
-  .btn-link {
+  a {
+    border: 1px transparent;
     border-bottom: 3px solid transparent;
     font-size: 17px;
     margin-left: 8px;
-    paddisng: 0px 3px;
+    padding: 6px 12px;
   }
 
-  .btn-link.active {
-    border: none;
+  a.active {
     border-bottom: 3px solid #adadad;
   }
 `
