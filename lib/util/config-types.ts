@@ -317,7 +317,7 @@ export interface TransitOperatorConfig extends TransitOperator {
 export interface RouteViewerConfig {
   /** Whether to hide the route linear shape inside a flex zone of that route. */
   hideRouteShapesWithinFlexZones?: boolean
-  /** Remove vehiles from the map if they haven't sent an update in a number of seconds */
+  /** Remove vehicles from the map if they haven't sent an update in a number of seconds */
   maxRealtimeVehicleAge?: number
   /** Disable vehicle highlight if necessary (e.g. custom or inverted icons) */
   vehicleIconHighlight?: boolean
