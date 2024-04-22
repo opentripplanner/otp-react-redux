@@ -49,6 +49,7 @@ type Props = {
   modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
   routingQuery: any
+  setQueryParam: (evt: any) => void
   setUrlSearch: (evt: any) => void
   spacedOutModeSelector?: boolean
   updateQueryTimeIfLeavingNow: () => void
@@ -81,6 +82,7 @@ function BatchSettings({
   modeSettingValues,
   onPlanTripClick,
   routingQuery,
+  setQueryParam,
   setUrlSearch,
   spacedOutModeSelector,
   updateQueryTimeIfLeavingNow
@@ -223,6 +225,10 @@ function BatchSettings({
   )
   const accentColor = tinycolor(baseColor).darken(10)
 
+  const _onSettingsUpdate = (params: any) => {
+    setQueryParam({ queryParamData: params, ...params })
+  }
+
   return (
     <MainSettingsRow onMouseMove={checkModeSelectorPopup}>
       <DateTimeButton
@@ -244,7 +250,7 @@ function BatchSettings({
             id: 'components.BatchSearchScreen.modeSelectorLabel'
           })}
           modeButtons={processedModeButtons}
-          onSettingsUpdate={setUrlSearch}
+          onSettingsUpdate={_onSettingsUpdate}
           onToggleModeButton={_toggleModeButton}
         />
         <PlanTripButton
@@ -298,6 +304,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
+  setQueryParam: formActions.setQueryParam,
   setUrlSearch: apiActions.setUrlSearch,
   updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
