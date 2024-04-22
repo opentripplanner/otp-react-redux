@@ -25,7 +25,7 @@ const MonitoredDayCircle = styled.span<{
 }>`
   align-items: center;
   background-color: ${(props) =>
-    props.monitored ? props.baseColor : 'transparent'};
+    props.monitored ? props.baseColor : '#ECECEC'};
   border-radius: 50%;
   color: ${(props) => (props.monitored ? 'white' : 'inherit')};
   display: flex;
@@ -36,12 +36,8 @@ const MonitoredDayCircle = styled.span<{
   width: 3rem;
 
   span {
-    align-items: center;
-    display: flex;
-    height: 100%;
-    justify-content: center;
+    font-family: 'SF Pro Display', 'Inter', sans-serif;
     margin-top: 1px;
-    width: 100%;
   }
 `
 
