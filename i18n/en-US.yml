@@ -351,6 +351,7 @@ components:
     bikesAvailable: "{bikesAvailable, plural, one {# bike} other {# bikes}} available"
     companyBicycle: "{company} Bike"
     companyScooter: "{company} Scooter"
+    distanceAway: "{localizedDistanceString} away"
     error: An error occurred loading nearby amenities.
     header: Nearby View
     nearbyListIntro: List of {count} nearby entities.
