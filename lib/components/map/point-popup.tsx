@@ -9,6 +9,7 @@ import styled from 'styled-components'
 import type { Location } from '@opentripplanner/types'
 
 import * as mapActions from '../../actions/map'
+import { getEntryRelativeTo } from '../util/get-entry-relative-to'
 import { Icon } from '../util/styledIcon'
 import { renderCoordinates } from '../../util/i18n'
 import { SetLocationHandler, ZoomToPlaceHandler } from '../util/types'
@@ -54,31 +55,15 @@ function MapPopup({
    * Creates a focus trap within map popup that can be dismissed with esc.
    * https://medium.com/cstech/achieving-focus-trapping-in-a-react-modal-component-3f28f596f35b
    */
-  function getEntryRelativeTo(
-    element: EventTarget,
-    offset: 1 | -1
-  ): HTMLElement {
-    const entries = Array.from(
-      document.querySelectorAll('button#zoom-btn, #from-to button')
-    )
-    const firstElement = entries[0]
-    const lastElement = entries[entries.length - 1]
-    const elementIndex = entries.indexOf(element as HTMLButtonElement)
-
-    if (element === firstElement && offset === -1) {
-      return lastElement as HTMLElement
-    }
-    if (element === lastElement && offset === 1) {
-      return firstElement as HTMLElement
-    }
-    return entries[elementIndex + offset] as HTMLElement
-  }
 
   /**
    * Check to see which keys are down by tracking keyUp and keyDown events
    * in order to see when "tab" and "shift" are pressed at the same time.
    */
   let keysDown: string[] = useMemo(() => [], [])
+
+  // Argument for document.querySelectorAll to target focusable elements.
+  const queryId = 'button#zoom-btn, #from-to button'
 
   const _handleKeyDown = useCallback(
     (e) => {
@@ -91,10 +76,10 @@ function MapPopup({
         case 'Tab':
           if (keysDown.includes('Shift')) {
             e.preventDefault()
-            getEntryRelativeTo(element, -1)?.focus()
+            getEntryRelativeTo(queryId, element, -1)?.focus()
           } else {
             e.preventDefault()
-            getEntryRelativeTo(element, 1)?.focus()
+            getEntryRelativeTo(queryId, element, 1)?.focus()
           }
           break
         case ' ':
