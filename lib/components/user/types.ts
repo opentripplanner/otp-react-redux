@@ -1,4 +1,4 @@
-import { Itinerary } from '@opentripplanner/types'
+import { Itinerary, Place } from '@opentripplanner/types'
 
 import { DaysOfWeek } from '../../util/monitored-trip'
 
@@ -73,5 +73,9 @@ export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
 }
 
 export interface MonitoredTripProps {
+  from?: Place
+  handleTogglePauseMonitoring?: () => void
   monitoredTrip: MonitoredTrip
+  pendingRequest?: boolean | string
+  to?: Place
 }

@@ -81,13 +81,13 @@ common:
     tuesday: Martes
     wednesday: Miércoles
   daysOfWeekCompact:
-    friday: Vie.
-    monday: Lun.
-    saturday: Sáb.
-    sunday: Dom.
-    thursday: Jue.
-    tuesday: Mar.
-    wednesday: Mié.
+    friday: V
+    monday: L
+    saturday: S
+    sunday: D
+    thursday: J
+    tuesday: M
+    wednesday: X
   daysOfWeekPlural:
     friday: Viernes
     monday: Lunes
@@ -702,11 +702,9 @@ components:
     arriveAt: "Llegue a las "
     leaveAt: "Salida a las "
   TripSummaryPane:
-    happensOnDays: "Ocurre en: <strong>{days}</strong>"
-    notifications: >-
-      Notificaciones: <strong>{leadTimeInMinutes} minutos antes de la salida
-      programada</strong>
-    notificationsDisabled: "Notificaciones: <strong>Desactivadas</strong>"
+    happensOnDays: "Ocurre en: {days}"
+    notifications: "{leadTimeInMinutes} minutos antes de la salida programada"
+    notificationsDisabled: Notificaciones desactivadas
   TripTools:
     copyLink: Copiar enlace
     header: Herramientas
