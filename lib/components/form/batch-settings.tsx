@@ -191,6 +191,14 @@ function BatchSettings({
     updateQueryTimeIfLeavingNow
   ])
 
+  /**
+   * Stores parameters in both the Redux `currentQuery` and URL
+   * @param params Params to store
+   */
+  const _onSettingsUpdate = (params: any) => {
+    setQueryParam({ queryParamData: params, ...params })
+  }
+
   const _toggleModeButton = useCallback(
     (buttonId: string, newState: boolean) => {
       let newButtons
@@ -202,7 +210,7 @@ function BatchSettings({
 
       // encodeQueryParams serializes the mode buttons for the URL
       // to get nice looking URL params and consistency
-      setUrlSearch(
+      _onSettingsUpdate(
         encodeQueryParams(queryParamConfig, { modeButtons: newButtons })
       )
     },
@@ -224,10 +232,6 @@ function BatchSettings({
     '--main-base-color'
   )
   const accentColor = tinycolor(baseColor).darken(10)
-
-  const _onSettingsUpdate = (params: any) => {
-    setQueryParam({ queryParamData: params, ...params })
-  }
 
   return (
     <MainSettingsRow onMouseMove={checkModeSelectorPopup}>
