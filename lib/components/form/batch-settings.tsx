@@ -195,9 +195,12 @@ function BatchSettings({
    * Stores parameters in both the Redux `currentQuery` and URL
    * @param params Params to store
    */
-  const _onSettingsUpdate = (params: any) => {
-    setQueryParam({ queryParamData: params, ...params })
-  }
+  const _onSettingsUpdate = useCallback(
+    (params: any) => {
+      setQueryParam({ queryParamData: params, ...params })
+    },
+    [setQueryParam]
+  )
 
   const _toggleModeButton = useCallback(
     (buttonId: string, newState: boolean) => {
@@ -214,7 +217,7 @@ function BatchSettings({
         encodeQueryParams(queryParamConfig, { modeButtons: newButtons })
       )
     },
-    [enabledModeButtons, setUrlSearch]
+    [enabledModeButtons, _onSettingsUpdate]
   )
 
   /**
