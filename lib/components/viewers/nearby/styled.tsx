@@ -36,6 +36,7 @@ export const Card = styled.div`
 `
 
 export const CardHeader = styled.div`
+  align-items: center;
   display: grid;
   grid-template-columns: 25fr 1fr;
   padding: 1rem 1.2rem 0;
