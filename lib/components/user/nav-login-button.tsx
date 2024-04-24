@@ -84,7 +84,7 @@ const NavLoginButton = ({
               if (link.url.startsWith('http')) {
                 return (
                   <li key={link.url}>
-                    <NavUnstyledLink as="a" href={link.url} target="_blank">
+                    <NavUnstyledLink href={link.url} target="_blank">
                       <FormattedMessage id="components.NavLoginButton.help" />
                       <NewWindowIconA11y
                         size={12}

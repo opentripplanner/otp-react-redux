@@ -1,11 +1,11 @@
-import { ComponentType, HTMLAttributes } from 'react'
+import { AnchorHTMLAttributes, ComponentType } from 'react'
 import { connect } from 'react-redux'
 
 import { AppReduxState } from '../../util/state-types'
 import { combineQueryParams } from '../../util/api'
 import { isBlank } from '../../util/ui'
 
-interface OwnProps extends HTMLAttributes<HTMLAnchorElement> {
+interface OwnProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   to?: string
   toParams?: Record<string, unknown>
   /** If true, an 'active' CSS class will be applied if the URL starts the same as the `to` prop. */
