@@ -592,9 +592,9 @@ components:
     arriveAt: "도착 "
     leaveAt: "출발 "
   TripSummaryPane:
-    happensOnDays: "발생: <strong>{days}</strong>"
-    notifications: "알림: <strong>출발 예정 시간 {leadTimeInMinutes} 분 전</strong>"
-    notificationsDisabled: "알림: <strong>비활성화됨</strong>"
+    happensOnDays: "발생: {days}"
+    notifications: 출발 예정 시간 {leadTimeInMinutes} 분 전
+    notificationsDisabled: "알림: 비활성화됨"
   TripTools:
     copyLink: 링크 복사
     header: 도구
