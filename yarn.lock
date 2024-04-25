@@ -15304,13 +15304,6 @@ react-resize-detector@^4.2.1:
     raf-schd "^4.0.2"
     resize-observer-polyfill "^1.5.1"
 
-react-router-bootstrap@^0.25.0:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/react-router-bootstrap/-/react-router-bootstrap-0.25.0.tgz#5d1a99b5b8a2016c011fc46019d2397e563ce0df"
-  integrity sha512-/22eqxjn6Zv5fvY2rZHn57SKmjmJfK7xzJ6/G1OgxAjLtKVfWgV5sn41W2yiqzbtV5eE4/i4LeDLBGYTqx7jbA==
-  dependencies:
-    prop-types "^15.5.10"
-
 react-router-dom@^5.3.4:
   version "5.3.4"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-5.3.4.tgz#2ed62ffd88cae6db134445f4a0c0ae8b91d2e5e6"
