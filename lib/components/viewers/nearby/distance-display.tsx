@@ -7,7 +7,7 @@ import { CardAside } from './styled'
 const DistanceDisplay = ({ distance }: { distance?: number }): JSX.Element => {
   const intl = useIntl()
 
-  if (!distance) return <></>
+  if (!distance || distance < 5) return <></>
   return (
     <CardAside>
       <FormattedMessage
