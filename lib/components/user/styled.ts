@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 
 import { getBaseColor } from '../util/base-color'
 import { RED_ON_WHITE } from '../util/colors'
+import Link from '../util/link'
 
 const baseColor = getBaseColor()
 
@@ -117,4 +118,15 @@ export const phoneFieldStyle = css`
   display: inline-block;
   vertical-align: middle;
   width: 14em;
+`
+
+export const UnstyledLink = styled(Link)`
+  color: initial;
+  letter-spacing: initial;
+  text-transform: none;
+
+  &:hover {
+    color: initial;
+    text-decoration: none;
+  }
 `

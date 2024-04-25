@@ -9,6 +9,7 @@ import Place, {
   PlaceButton,
   PlaceContent,
   PlaceDetail,
+  PlaceLink,
   PlaceName
 } from './place'
 
@@ -25,7 +26,7 @@ export const StyledFavoritePlace = styled(Place).attrs({
   height: ${FAVORITE_PLACE_HEIGHT_PX};
   margin-bottom: 10px;
 
-  ${PlaceButton} {
+  ${PlaceLink} {
     align-items: center;
     display: flex;
     flex: 1 0 0;
