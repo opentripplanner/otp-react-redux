@@ -34,7 +34,7 @@ import FormattedValidationError from '../../util/formatted-validation-error'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import TripStatus from './trip-status'
-import TripSummary from './trip-summary'
+import TripSummary from './trip-duration-summary'
 
 type TripBasicsProps = WrappedComponentProps &
   FormikProps<MonitoredTrip> & {
@@ -54,6 +54,17 @@ interface State {
 
 // Styles.
 const AvailableDays = styled(FieldSet)`
+  // Targets the formik checkboxes to provide better contrast on focus styles
+  input {
+    &:focus-visible,
+    &:focus {
+      outline-offset: 0.5px;
+      outline: solid 2px blue;
+      &:checked {
+        outline: solid 2px white;
+      }
+    }
+  }
   & > span {
     border: 1px solid #ccc;
     border-left: none;

@@ -399,7 +399,9 @@
 }
 
 /* Allow banned/preferred routes to float on top */
-#bannedRoutes,
-#preferredRoutes {
+#bannedRoutes {
   z-index: 100;
+}
+#preferredRoutes {
+  z-index: 101;
 }

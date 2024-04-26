@@ -669,11 +669,9 @@ components:
     arriveAt: "Darating nang "
     leaveAt: "Umalis sa "
   TripSummaryPane:
-    happensOnDays: "Mangyayari sa: <strong>{days}</strong>"
-    notifications: >-
-      Mga Notification: <strong>{leadTimeInMinutes} (na) minuto bago ang
-      nakaiskedyul na pag-alis</strong>
-    notificationsDisabled: "Mga Notification: <strong>Naka-disable</strong>"
+    happensOnDays: "Mangyayari sa: {days}"
+    notifications: "{leadTimeInMinutes} (na) minuto bago ang nakaiskedyul na pag-alis"
+    notificationsDisabled: "Mga Notification: Naka-disable"
   TripTools:
     copyLink: Kopyahin ang Link
     header: Mga Tool sa Biyahe
