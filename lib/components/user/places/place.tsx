@@ -3,12 +3,12 @@ import { Search } from '@styled-icons/fa-solid/Search'
 import { TrashAlt } from '@styled-icons/fa-solid/TrashAlt'
 import { useIntl } from 'react-intl'
 import React, { HTMLAttributes, ReactNode, useContext } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { ComponentContext } from '../../../util/contexts'
-import { LinkContainerWithQuery } from '../../form/connected-links'
 import { StyledIconWrapper } from '../../util/styledIcon'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+import Link from '../../util/link'
 
 interface Props extends HTMLAttributes<HTMLLIElement> {
   /** The action text shown for accessibility purposes */
@@ -48,12 +48,20 @@ const Container = styled.li`
 // styled.js to define multiple flavors of the Place component,
 // without creating circular references between that file and this file.
 
-export const PlaceButton = styled(Button)`
+const placeButtonCss = css`
   background: none;
   flex: 1 0 0;
   overflow: hidden;
   text-align: left;
   text-overflow: ellipsis;
+`
+
+export const PlaceButton = styled(Button)`
+  ${placeButtonCss}
+`
+
+export const PlaceLink = styled(Link)`
+  ${placeButtonCss}
 `
 
 export const PlaceDetail = styled.span``
@@ -98,43 +106,45 @@ const Place = ({
   const deletePlaceLabel = intl.formatMessage({
     id: 'components.Place.deleteThisPlace'
   })
-  const to = onClick ? null : path
   const iconSize = largeIcon ? '2x' : undefined
-  return (
-    // @ts-expect-error Prop 'as' from styled-components is not recognized by TypeScript.
-    <Container as={tag} className={className}>
-      <LinkContainerWithQuery
-        // Don't highlight component if 'to' is null.
-        activeClassName=""
-        to={to}
-      >
-        <PlaceButton onClick={onClick}>
-          {largeIcon && (
-            <IconWrapper size="2x">
+
+  const placeContent = (
+    <>
+      {largeIcon && (
+        <IconWrapper size="2x">
+          <SvgIcon iconName={icon} />
+        </IconWrapper>
+      )}
+      <PlaceContent title={title}>
+        <PlaceText className="place-text">
+          {!largeIcon && (
+            <IconWrapper>
               <SvgIcon iconName={icon} />
             </IconWrapper>
           )}
-          <PlaceContent title={title}>
-            <PlaceText className="place-text">
-              {!largeIcon && (
-                <IconWrapper>
-                  <SvgIcon iconName={icon} />
-                </IconWrapper>
-              )}
-              <PlaceName>{mainText}</PlaceName>
-            </PlaceText>
-            {detailText && (
-              <PlaceDetail className="place-detail">
-                <InvisibleA11yLabel> - </InvisibleA11yLabel>
-                {detailText}
-              </PlaceDetail>
-            )}
-            {actionText && (
-              <InvisibleA11yLabel> [{actionText}]</InvisibleA11yLabel>
-            )}
-          </PlaceContent>
-        </PlaceButton>
-      </LinkContainerWithQuery>
+          <PlaceName>{mainText}</PlaceName>
+        </PlaceText>
+        {detailText && (
+          <PlaceDetail className="place-detail">
+            <InvisibleA11yLabel> - </InvisibleA11yLabel>
+            {detailText}
+          </PlaceDetail>
+        )}
+        {actionText && <InvisibleA11yLabel> [{actionText}]</InvisibleA11yLabel>}
+      </PlaceContent>
+    </>
+  )
+
+  return (
+    // @ts-expect-error Prop 'as' from styled-components is not recognized by TypeScript.
+    <Container as={tag} className={className}>
+      {onClick ? (
+        <PlaceButton onClick={onClick}>{placeContent}</PlaceButton>
+      ) : (
+        <PlaceLink className="btn btn-default" to={path}>
+          {placeContent}
+        </PlaceLink>
+      )}
 
       {/* Action buttons. If none, render a placeholder. */}
       {!onView && !onDelete && <ActionButtonPlaceholder />}
