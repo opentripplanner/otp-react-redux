@@ -7,6 +7,8 @@ import DeleteForm from '../delete-form'
 import PageTitle from '../../util/page-title'
 import StackedPanesWithSave from '../stacked-panes-with-save'
 
+import TripNotFound from './trip-not-found'
+
 interface Props {
   isCreating: boolean
   onCancel: () => void
@@ -65,18 +67,7 @@ const SavedTripEditor = (props: Props): JSX.Element => {
     )
   }
 
-  const tripNotFound = intl.formatMessage({
-    id: 'components.SavedTripEditor.tripNotFound'
-  })
-  return (
-    <>
-      <PageTitle title={tripNotFound} />
-      <h1>{tripNotFound}</h1>
-      <p>
-        <FormattedMessage id="components.SavedTripEditor.tripNotFoundDescription" />
-      </p>
-    </>
-  )
+  return <TripNotFound />
 }
 
 export default SavedTripEditor

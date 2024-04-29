@@ -78,13 +78,13 @@ common:
     tuesday: Tuesday
     wednesday: Wednesday
   daysOfWeekCompact:
-    friday: Fri.
-    monday: Mon.
-    saturday: Sat.
-    sunday: Sun.
-    thursday: Thu.
-    tuesday: Tue.
-    wednesday: Wed.
+    friday: F
+    monday: M
+    saturday: S
+    sunday: Su
+    thursday: Th
+    tuesday: T
+    wednesday: W
   daysOfWeekPlural:
     friday: Fridays
     monday: Mondays
@@ -384,7 +384,7 @@ components:
       body: >-
         No transit connection was found between your origin and destination on
         the selected day of service, using the vehicle types you selected.
-      header: No transit connections
+      header: No itineraries found
     NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
       body: >-
         A transit connection was found, but it was outside the search window,
@@ -431,6 +431,9 @@ components:
       minutes).
     verified: Verified
     verify: Verify
+    verifySms: >-
+      Please complete the verification process in order to set up SMS
+      notifications.
   Place:
     deleteThisPlace: Delete this place
     enterAlert: >
@@ -673,11 +676,11 @@ components:
     arriveAt: "Arrive at "
     leaveAt: "Leave at "
   TripSummaryPane:
-    happensOnDays: "Happens on: <strong>{days}</strong>"
-    notifications: >-
-      Notifications: <strong>{leadTimeInMinutes} min. before scheduled
-      departure</strong>
-    notificationsDisabled: "Notifications: <strong>Disabled</strong>"
+    happensOnDays: "Happens on: {days}"
+    monitoredTripDays: Trip monitored days
+    notifications: "{leadTimeInMinutes} min. before scheduled departure"
+    notificationsDisabled: Notifications disabled
+    timeAndDuration: Trip time and duration
   TripTools:
     copyLink: Copy Link
     header: Trip Tools

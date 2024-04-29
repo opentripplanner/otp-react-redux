@@ -1,25 +1,22 @@
-import { Button, Panel } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape, useIntl } from 'react-intl'
-import { Pause } from '@styled-icons/fa-solid/Pause'
-import { PencilAlt } from '@styled-icons/fa-solid/PencilAlt'
-import { Play } from '@styled-icons/fa-solid/Play'
+import { Panel } from 'react-bootstrap'
 import { TriangleExclamation } from '@styled-icons/fa-solid/TriangleExclamation'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import React, { Component } from 'react'
 
-import * as uiActions from '../../../actions/ui'
 import * as userActions from '../../../actions/user'
 import { AppReduxState } from '../../../util/state-types'
+import { Edit } from '@styled-icons/fa-solid'
 import { IconWithText } from '../../util/styledIcon'
-import { InlineLoading } from '../../narrative/loading'
 import { MonitoredTrip } from '../types'
 import {
   PageHeading,
   TripHeader,
   TripPanelAlert,
   TripPanelFooter,
-  TripPanelHeading
+  TripPanelHeading,
+  TripPanelTitle
 } from '../styled'
 import { RETURN_TO_CURRENT_ROUTE } from '../../../util/ui'
 import { TRIPS_PATH } from '../../../util/constants'
@@ -27,9 +24,18 @@ import AccountPage from '../account-page'
 import AwaitingScreen from '../awaiting-screen'
 import BackToTripPlanner from '../back-to-trip-planner'
 import PageTitle from '../../util/page-title'
+
+import styled from 'styled-components'
+
 import withLoggedInUserSupport from '../with-logged-in-user-support'
 
 import getRenderData from './trip-status-rendering-strategies'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+
+import { ComponentContext } from '../../../util/contexts'
+import Link from '../../util/link'
+import MetroItineraryRoutes from '../../narrative/metro/metro-itinerary-routes'
+
 import TripSummaryPane from './trip-summary-pane'
 
 interface ItemOwnProps {
@@ -39,7 +45,6 @@ interface ItemOwnProps {
 interface ItemProps extends ItemOwnProps {
   intl: IntlShape
   renderData: any
-  routeTo: (url: string) => void
   togglePauseTrip: (trip: MonitoredTrip, intl: IntlShape) => void
 }
 
@@ -50,6 +55,22 @@ interface ItemState {
 interface Props {
   trips?: MonitoredTrip[]
 }
+
+const TripContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+// Prevent the invisible header in route-blocks from causing white space
+const RouteBlockGrid = styled.div`
+  display: grid;
+  grid-template-columns: 2;
+
+  span {
+    grid-row: 1;
+  }
+`
 
 /**
  * This class manages events and rendering for one item in the saved trip list.
@@ -62,19 +83,12 @@ class TripListItem extends Component<ItemProps, ItemState> {
     }
   }
 
+  static contextType = ComponentContext
+
   componentDidUpdate = (prevProps: ItemProps) => {
     if (prevProps.trip.isActive !== this.props.trip.isActive) {
       this.setState({ pendingRequest: false })
     }
-  }
-
-  /**
-   * Navigate to the saved trip's URL #/TRIPS_PATH/trip-id-123.
-   * (There shouldn't be a need to encode the ids from Mongo.)
-   */
-  _handleEditTrip = () => {
-    const { routeTo, trip } = this.props
-    routeTo(`${TRIPS_PATH}/${trip.id}`)
   }
 
   /**
@@ -87,7 +101,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
   }
 
   render() {
-    const { renderData, trip } = this.props
+    const { intl, renderData, trip } = this.props
     const { itinerary } = trip
     const { legs } = itinerary
     const { alerts, shouldRenderAlerts } = renderData
@@ -96,63 +110,59 @@ class TripListItem extends Component<ItemProps, ItemState> {
     // - get the 'to' location of the last leg.
     const from = legs[0].from
     const to = legs[legs.length - 1].to
+    const editTripPath = `${TRIPS_PATH}/${trip.id}`
+    const { LegIcon } = this.context
     return (
       <Panel>
         <TripPanelHeading>
-          {shouldRenderAlerts && (
-            <TripPanelAlert onClick={this._handleEditTrip}>
-              <IconWithText Icon={TriangleExclamation}>
-                <FormattedMessage
-                  id="components.SavedTripList.alertTag"
-                  values={{ alert: alerts.length }}
-                />
-              </IconWithText>
-            </TripPanelAlert>
-          )}
-          <Panel.Title>
-            <TripHeader>{trip.tripName}</TripHeader>
-            <small>
-              <FormattedMessage
-                id="components.SavedTripList.fromTo"
-                values={{
-                  from: <strong>{from.name}</strong>,
-                  to: <strong>{to.name}</strong>
-                }}
-              />
-            </small>
-          </Panel.Title>
+          <TripPanelTitle>
+            <Panel.Title>
+              <TripHeader>{trip.tripName}</TripHeader>
+            </Panel.Title>
+            <Link
+              title={intl.formatMessage({
+                id: 'components.SavedTripEditor.editSavedTrip'
+              })}
+              to={editTripPath}
+            >
+              <Edit height={18} />
+              <InvisibleA11yLabel>
+                <FormattedMessage id="components.SavedTripEditor.editSavedTrip" />
+              </InvisibleA11yLabel>
+            </Link>
+          </TripPanelTitle>
+          <RouteBlockGrid>
+            {/* TODO: Fix issues with custom route renderer */}
+            <MetroItineraryRoutes
+              expanded={false}
+              itinerary={itinerary}
+              LegIcon={LegIcon}
+            />
+          </RouteBlockGrid>
         </TripPanelHeading>
         <Panel.Body>
-          <TripSummaryPane monitoredTrip={trip} />
-        </Panel.Body>
-        <TripPanelFooter>
-          <Button
-            disabled={this.state.pendingRequest === 'pause'}
-            onClick={this._handleTogglePauseMonitoring}
-          >
-            {this.state.pendingRequest === 'pause' ? (
-              /* Make loader fit */
-              <InlineLoading />
-            ) : trip.isActive ? (
-              <>
-                <IconWithText Icon={Pause}>
-                  <FormattedMessage id="components.SavedTripList.pause" />
-                </IconWithText>
-              </>
-            ) : (
-              <>
-                <IconWithText Icon={Play}>
-                  <FormattedMessage id="components.SavedTripList.resume" />
-                </IconWithText>
-              </>
+          <TripSummaryPane
+            from={from}
+            handleTogglePauseMonitoring={this._handleTogglePauseMonitoring}
+            monitoredTrip={trip}
+            pendingRequest={this.state.pendingRequest}
+            to={to}
+          />
+          <TripPanelFooter>
+            {shouldRenderAlerts && (
+              <Link to={editTripPath}>
+                <TripPanelAlert>
+                  <IconWithText Icon={TriangleExclamation}>
+                    <FormattedMessage
+                      id="components.SavedTripList.alertTag"
+                      values={{ alert: alerts.length }}
+                    />
+                  </IconWithText>
+                </TripPanelAlert>
+              </Link>
             )}
-          </Button>
-          <Button onClick={this._handleEditTrip}>
-            <IconWithText Icon={PencilAlt}>
-              <FormattedMessage id="common.forms.edit" />
-            </IconWithText>
-          </Button>
-        </TripPanelFooter>
+          </TripPanelFooter>
+        </Panel.Body>
       </Panel>
     )
   }
@@ -168,7 +178,6 @@ const itemMapStateToProps = (state: AppReduxState, { trip }: ItemOwnProps) => {
 }
 
 const itemMapDispatchToProps = {
-  routeTo: uiActions.routeTo,
   togglePauseTrip: userActions.togglePauseTrip
 }
 const ConnectedTripListItem = connect(
@@ -218,9 +227,11 @@ const SavedTripList = ({ trips }: Props) => {
           <PageHeading>
             <FormattedMessage id="components.SavedTripList.myTrips" />
           </PageHeading>
-          {trips.map((trip) => (
-            <ConnectedTripListItem key={trip.id} trip={trip} />
-          ))}
+          <TripContainer>
+            {trips.map((trip) => (
+              <ConnectedTripListItem key={trip.id} trip={trip} />
+            ))}
+          </TripContainer>
         </>
       )
     }
