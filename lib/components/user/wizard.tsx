@@ -18,12 +18,10 @@ import FormNavigationButtons from './form-navigation-buttons'
 import standardPanes, { PaneProps } from './standard-panes'
 
 export interface WizardProps {
-  activePaneId: string
   formikProps: FormikProps<EditedUser>
 }
 
 export interface OwnProps {
-  activePaneId: string
   pages: string[]
 }
 
@@ -32,7 +30,7 @@ interface Props extends OwnProps {
   activePaneIndex: number
   formikProps: FormikProps<EditedUser>
   intl: IntlShape
-  onNext?: () => void
+  onNext?: (currentPage: string) => void
   pages: string[]
   parentPath: string
   returnTo?: string
@@ -64,6 +62,12 @@ class Wizard extends Component<Props> {
     this.h1Ref?.current?.focus()
   }
 
+  _showDefaultPage = () => {
+    if (this.props.activePaneIndex === -1) {
+      this._routeTo(this.props.pages[0], replace)
+    }
+  }
+
   _handleToNextPane = async (e: MouseEvent<Button>) => {
     const {
       activePane,
@@ -91,7 +95,7 @@ class Wizard extends Component<Props> {
         // Execute any action that need to happen before going to the next pane
         // (e.g. save a user account).
         if (onNext) {
-          await onNext()
+          await onNext(pages[activePaneIndex])
         }
         this._routeTo(nextId)
       }
@@ -115,10 +119,11 @@ class Wizard extends Component<Props> {
 
   componentDidMount(): void {
     this._focusHeader()
+    this._showDefaultPage()
+  }
 
-    if (!this.props.activePaneId) {
-      this._routeTo(this.props.pages[0], replace)
-    }
+  componentDidUpdate(): void {
+    this._showDefaultPage()
   }
 
   render() {
@@ -177,14 +182,18 @@ class Wizard extends Component<Props> {
 // connect to the redux store
 
 const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
-  const { activePaneId, pages } = ownProps
+  const { pages } = ownProps
   const { pathname } = state.router.location
+  const lastSlashIndex = pathname.lastIndexOf('/')
+  const activePaneId = pathname.substr(
+    Math.min(lastSlashIndex + 1, pathname.length)
+  )
   const activePaneIndex = pages.indexOf(activePaneId)
   return {
     // This, instead of just standardPages[activePaneId], ensures no "foreign" page is accidentally shown.
     activePane: standardPanes[pages[activePaneIndex]],
     activePaneIndex,
-    parentPath: pathname.substr(0, pathname.lastIndexOf('/'))
+    parentPath: pathname.substr(0, lastSlashIndex)
   }
 }
 

@@ -26,7 +26,6 @@ interface Props {
   createOrUpdateUser: (user: User, intl: IntlShape) => Promise<number>
   intl: IntlShape
   isWizard: boolean
-  itemId: string
   loggedInUser: User
 }
 
@@ -169,7 +168,7 @@ class UserAccountScreen extends Component<Props> {
   }
 
   render() {
-    const { isWizard, itemId, loggedInUser } = this.props
+    const { isWizard, loggedInUser } = this.props
     const loggedInUserWithNotificationArray = {
       ...loggedInUser,
       notificationChannel: loggedInUser.notificationChannel?.split(',') || []
@@ -199,16 +198,12 @@ class UserAccountScreen extends Component<Props> {
                   <Switch>
                     <Route path={CREATE_ACCOUNT_PATH}>
                       <NewAccountWizard
-                        activePaneId={itemId}
                         formikProps={newFormikProps}
                         onCreate={this._handleCreateNewUser}
                       />
                     </Route>
                     <Route path={MOBILITY_PATH}>
-                      <MobilityWizard
-                        activePaneId={itemId}
-                        formikProps={newFormikProps}
-                      />
+                      <MobilityWizard formikProps={newFormikProps} />
                     </Route>
                     <Route>
                       <ExistingAccountDisplay {...newFormikProps} />
@@ -228,17 +223,14 @@ class UserAccountScreen extends Component<Props> {
 
 const mapStateToProps = (
   state: AppReduxState,
-  ownProps: RouteComponentProps<{ step: string }>
+  ownProps: RouteComponentProps
 ) => {
-  const { params, url } = ownProps.match
+  const { url } = ownProps.match
   const basePath = [CREATE_ACCOUNT_PATH, MOBILITY_PATH].find((path) =>
     url.startsWith(path)
   )
-
-  const { step } = params
   return {
     isWizard: !!basePath,
-    itemId: step,
     loggedInUser: state.user.loggedInUser
   }
 }
