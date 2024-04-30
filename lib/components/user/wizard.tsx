@@ -25,13 +25,11 @@ export interface OwnProps {
   pages: string[]
 }
 
-interface Props extends OwnProps {
+interface Props extends OwnProps, WizardProps {
   activePane: PaneProps
   activePaneIndex: number
-  formikProps: FormikProps<EditedUser>
   intl: IntlShape
   onNext?: (currentPage: string) => void
-  pages: string[]
   parentPath: string
   returnTo?: string
   routeTo: (url: string, replace?: string, method?: any) => void
