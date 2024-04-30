@@ -18,13 +18,13 @@ import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import { useIntl } from 'react-intl'
 import React, { useCallback, useContext, useState } from 'react'
-import tinycolor from 'tinycolor2'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
+import { getBaseColor, getDarkenedBaseColor } from '../util/base-color'
 import { getFormattedMode } from '../../util/i18n'
 import { RoutingQueryCallResult } from '../../actions/api-constants'
 import { StyledIconWrapper } from '../util/styledIcon'
@@ -228,11 +228,9 @@ function BatchSettings({
     setModeSelectorPopup(!!modeSelectorPopup)
   }, [setModeSelectorPopup])
 
-  // We can rely on this existing, as there is a default
-  const baseColor = getComputedStyle(document.documentElement).getPropertyValue(
-    '--main-base-color'
-  )
-  const accentColor = tinycolor(baseColor).darken(10)
+  const baseColor = getBaseColor()
+
+  const accentColor = getDarkenedBaseColor()
 
   return (
     <MainSettingsRow onMouseMove={checkModeSelectorPopup}>

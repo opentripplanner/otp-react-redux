@@ -1,24 +1,20 @@
 import { FormattedMessage, FormattedTime } from 'react-intl'
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-import { ComponentContext } from '../../../util/contexts'
 import { MonitoredTripProps } from '../types'
 import FormattedDuration from '../../util/formatted-duration'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
-const SummaryContainer = styled.div`
-  margin-bottom: 10px;
+const Divider = styled.span`
+  margin: 0 7px;
 `
 
 const TripSummary = ({ monitoredTrip }: MonitoredTripProps): JSX.Element => {
   const { itinerary } = monitoredTrip
   const { duration, endTime, startTime } = itinerary
-  // @ts-expect-error TODO: add ModesAndRoutes to ItineraryBody attribute of ComponentContext
-  const { ItineraryBody, LegIcon } = useContext(ComponentContext)
-  const ModesAndRoutes = ItineraryBody.ModesAndRoutes
   return (
-    <SummaryContainer>
+    <span>
       {/* Set up invisible "labels" for each itinerary field, and comma, so that the output of screen readers is more intelligible. */}
       <InvisibleA11yLabel>
         <FormattedMessage id="components.TripSummary.leaveAt" />
@@ -29,11 +25,11 @@ const TripSummary = ({ monitoredTrip }: MonitoredTripProps): JSX.Element => {
       </InvisibleA11yLabel>
       <FormattedTime value={endTime} />
       <InvisibleA11yLabel>, </InvisibleA11yLabel>
-      <span aria-hidden className="pull-right">
+      <Divider>•</Divider>
+      <span aria-hidden>
         <FormattedDuration duration={duration} />
       </span>
-      <ModesAndRoutes itinerary={itinerary} LegIcon={LegIcon} />
-    </SummaryContainer>
+    </span>
   )
 }
 

@@ -1,5 +1,3 @@
-// TODO: Typescript
-/* eslint-disable react/prop-types */
 import { Ban } from '@styled-icons/fa-solid/Ban'
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
@@ -8,36 +6,52 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { PlusCircle } from '@styled-icons/fa-solid/PlusCircle'
 import React from 'react'
 
+import { AppReduxState } from '../../util/state-types'
 import { CREATE_TRIP_PATH } from '../../util/constants'
 import { getActiveItinerary } from '../../util/state'
 import { IconWithText } from '../util/styledIcon'
-import { itineraryCanBeMonitored } from '../../util/itinerary'
-import { LinkContainerWithQuery } from '../form/connected-links'
+import {
+  itineraryCanBeMonitored,
+  ItineraryWithOtp1HailedCar
+} from '../../util/itinerary'
+import { PersistenceConfig } from '../../util/config-types'
+import { UnstyledLink } from '../user/styled'
+import { User } from '../user/types'
+
+interface Props {
+  itinerary?: ItineraryWithOtp1HailedCar
+  loggedInUser?: User
+  persistence?: PersistenceConfig
+}
 
 /**
  * This connected component encapsulates the states and behavior of the button
  * to save an itinerary for notifications.
  */
-const SaveTripButton = ({ itinerary, loggedInUser, persistence }) => {
+const SaveTripButton = ({
+  itinerary,
+  loggedInUser,
+  persistence
+}: Props): JSX.Element | null => {
   const intl = useIntl()
   // We are dealing with the following states:
   // 1. Persistence disabled => just return null
   // 2. User is not logged in => render something like: "Please log in to save trip".
   // 3. itin cannot be monitored => disable the button with prompt and tooltip.
 
+  if (!persistence || !persistence.enabled) return null
+
   let buttonDisabled
   let buttonText
   let tooltipText
-  let iconType
   let ButtonIcon
 
-  if (!persistence || !persistence.enabled) {
-    return null
-  } else if (!loggedInUser) {
+  if (!loggedInUser) {
     buttonDisabled = true
     buttonText = <FormattedMessage id="components.SaveTripButton.signInText" />
-    iconType = 'lock'
     ButtonIcon = Lock
+    // Must get text using intl.formatMessage here because the rendering
+    // OverlayTrigger occurs outside of the IntlProvider context.
     tooltipText = intl.formatMessage({
       id: 'components.SaveTripButton.signInTooltip'
     })
@@ -46,40 +60,27 @@ const SaveTripButton = ({ itinerary, loggedInUser, persistence }) => {
     buttonText = (
       <FormattedMessage id="components.SaveTripButton.cantSaveText" />
     )
-    iconType = 'ban'
     ButtonIcon = Ban
     tooltipText = intl.formatMessage({
       id: 'components.SaveTripButton.cantSaveTooltip'
     })
-  } else {
-    buttonText = (
-      <FormattedMessage id="components.SaveTripButton.saveTripText" />
-    )
-    iconType = 'plus-circle'
-    ButtonIcon = PlusCircle
   }
-  const button = (
-    <button
-      // Apply pull-right style class so that the element is flush right,
-      // even with LineItineraries.
-      className="clear-button-formatting pull-right"
-      disabled={buttonDisabled}
-      style={buttonDisabled ? { pointerEvents: 'none' } : {}}
-    >
-      <IconWithText Icon={ButtonIcon}>{buttonText}</IconWithText>
-    </button>
-  )
   // Show tooltip with help text if button is disabled.
   if (buttonDisabled) {
+    const button = (
+      <button
+        // Apply pull-right style class so that the element is flush right,
+        // even with LineItineraries.
+        className="clear-button-formatting pull-right"
+        disabled={buttonDisabled}
+        style={{ pointerEvents: 'none' }}
+      >
+        <IconWithText Icon={ButtonIcon}>{buttonText}</IconWithText>
+      </button>
+    )
     return (
       <OverlayTrigger
-        overlay={
-          <Tooltip id="disabled-save-tooltip">
-            {/* Must get text using intl.formatMessage here because the rendering
-             of OverlayTrigger seems to occur outside of the IntlProvider context. */}
-            {tooltipText}
-          </Tooltip>
-        }
+        overlay={<Tooltip id="disabled-save-tooltip">{tooltipText}</Tooltip>}
         placement="top"
       >
         {/* An active element around the disabled button is necessary
@@ -92,18 +93,20 @@ const SaveTripButton = ({ itinerary, loggedInUser, persistence }) => {
   }
 
   return (
-    <LinkContainerWithQuery to={CREATE_TRIP_PATH}>
-      {button}
-    </LinkContainerWithQuery>
+    <UnstyledLink className="pull-right" to={CREATE_TRIP_PATH}>
+      <IconWithText Icon={PlusCircle}>
+        <FormattedMessage id="components.SaveTripButton.saveTripText" />
+      </IconWithText>
+    </UnstyledLink>
   )
 }
 
 // connect to the redux store
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state: AppReduxState) => {
   const { persistence } = state.otp.config
   return {
-    itinerary: getActiveItinerary(state),
+    itinerary: getActiveItinerary(state) as ItineraryWithOtp1HailedCar,
     loggedInUser: state.user.loggedInUser,
     persistence
   }

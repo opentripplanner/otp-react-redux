@@ -81,13 +81,13 @@ common:
     tuesday: Thứ ba
     wednesday: Thứ tư
   daysOfWeekCompact:
-    friday: Thứ sáu
-    monday: Thứ hai
-    saturday: Thứ bảy
-    sunday: Chủ nhật
-    thursday: Thứ năm
-    tuesday: Thứ ba
-    wednesday: Thứ tư
+    friday: T6
+    monday: T2
+    saturday: T7
+    sunday: CN
+    thursday: T5
+    tuesday: T3
+    wednesday: T4
   daysOfWeekPlural:
     friday: Các thứ sáu
     monday: Các thứ hai
@@ -659,11 +659,9 @@ components:
     arriveAt: "Đến nơi "
     leaveAt: "Rời đi lúc "
   TripSummaryPane:
-    happensOnDays: "Xảy ra vào: <strong>{days}</strong>"
-    notifications: >-
-      Thông báo: <strong>{leadTimeInMinutes} phút trước khi khởi hành theo lịch
-      trình</strong>
-    notificationsDisabled: "Thông báo: <strong>Đã tắt</strong>"
+    happensOnDays: "Xảy ra vào: {days}"
+    notifications: "{leadTimeInMinutes} phút trước khi khởi hành theo lịch trình"
+    notificationsDisabled: Thông báo đã tắt
   TripTools:
     copyLink: Sao chép URL
     header: Công cụ
