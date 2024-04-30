@@ -62,12 +62,6 @@ class Wizard extends Component<Props> {
     this.h1Ref?.current?.focus()
   }
 
-  _showDefaultPage = () => {
-    if (this.props.activePaneIndex === -1) {
-      this._routeTo(this.props.pages[0], replace)
-    }
-  }
-
   _handleToNextPane = async (e: MouseEvent<Button>) => {
     const {
       activePane,
@@ -118,12 +112,11 @@ class Wizard extends Component<Props> {
   }
 
   componentDidMount(): void {
+    const { activePaneIndex, pages } = this.props
     this._focusHeader()
-    this._showDefaultPage()
-  }
-
-  componentDidUpdate(): void {
-    this._showDefaultPage()
+    if (activePaneIndex === -1) {
+      this._routeTo(pages[0], replace)
+    }
   }
 
   render() {
