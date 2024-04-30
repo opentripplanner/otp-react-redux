@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { Form, Formik, FormikProps } from 'formik'
+import { Formik, FormikProps } from 'formik'
 import { injectIntl, IntlShape } from 'react-intl'
 import { Route, RouteComponentProps, Switch } from 'react-router'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
@@ -18,14 +18,13 @@ import {
 } from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import { toastSuccess } from '../util/toasts'
-import PageTitle from '../util/page-title'
 
 import { EditedUser, User } from './types'
 import AccountPage from './account-page'
 import ExistingAccountDisplay from './existing-account-display'
 import MobilityWizard from './mobility-profile/mobility-wizard'
 import NewAccountWizard from './new-account-wizard'
-import VerifyEmailPane from './verify-email-pane'
+import VerifyEmailScreen from './verify-email-screen'
 import withLoggedInUserSupport from './with-logged-in-user-support'
 
 interface Props {
@@ -175,7 +174,7 @@ class UserAccountScreen extends Component<Props> {
   }
 
   render() {
-    const { intl, isWizard, itemId, loggedInUser } = this.props
+    const { isWizard, itemId, loggedInUser } = this.props
     const loggedInUserWithNotificationArray = {
       ...loggedInUser,
       notificationChannel: loggedInUser.notificationChannel?.split(',') || []
@@ -201,18 +200,10 @@ class UserAccountScreen extends Component<Props> {
                   // Use our own handleChange handler that wraps around Formik's.
                   handleChange: this._handleInputChange(formikProps)
                 }
-                const verifyEmail = intl.formatMessage({
-                  id: 'components.NewAccountWizard.verify'
-                })
-
                 return (
                   <Switch>
                     <Route exact path={CREATE_ACCOUNT_VERIFY_PATH}>
-                      <Form id="user-settings-form" noValidate>
-                        <PageTitle title={verifyEmail} />
-                        <h1>{verifyEmail}</h1>
-                        <VerifyEmailPane />
-                      </Form>
+                      <VerifyEmailScreen />
                     </Route>
                     <Route path={CREATE_ACCOUNT_PATH}>
                       <NewAccountWizard
