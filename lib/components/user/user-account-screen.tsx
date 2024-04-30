@@ -11,11 +11,7 @@ import toast from 'react-hot-toast'
 import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
 import { cleanupMobilityDevices } from '../../util/user'
-import {
-  CREATE_ACCOUNT_PATH,
-  CREATE_ACCOUNT_VERIFY_PATH,
-  MOBILITY_PATH
-} from '../../util/constants'
+import { CREATE_ACCOUNT_PATH, MOBILITY_PATH } from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import { toastSuccess } from '../util/toasts'
 
@@ -24,7 +20,6 @@ import AccountPage from './account-page'
 import ExistingAccountDisplay from './existing-account-display'
 import MobilityWizard from './mobility-profile/mobility-wizard'
 import NewAccountWizard from './new-account-wizard'
-import VerifyEmailScreen from './verify-email-screen'
 import withLoggedInUserSupport from './with-logged-in-user-support'
 
 interface Props {
@@ -202,9 +197,6 @@ class UserAccountScreen extends Component<Props> {
                 }
                 return (
                   <Switch>
-                    <Route exact path={CREATE_ACCOUNT_VERIFY_PATH}>
-                      <VerifyEmailScreen />
-                    </Route>
                     <Route path={CREATE_ACCOUNT_PATH}>
                       <NewAccountWizard
                         activePaneId={itemId}
