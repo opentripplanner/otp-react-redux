@@ -50,7 +50,6 @@ type Props = {
   onPlanTripClick: () => void
   routingQuery: any
   setQueryParam: (evt: any) => void
-  setUrlSearch: (evt: any) => void
   spacedOutModeSelector?: boolean
   updateQueryTimeIfLeavingNow: () => void
 }
@@ -83,7 +82,6 @@ function BatchSettings({
   onPlanTripClick,
   routingQuery,
   setQueryParam,
-  setUrlSearch,
   spacedOutModeSelector,
   updateQueryTimeIfLeavingNow
 }: Props) {
@@ -312,7 +310,6 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
   setQueryParam: formActions.setQueryParam,
-  setUrlSearch: apiActions.setUrlSearch,
   updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
 
