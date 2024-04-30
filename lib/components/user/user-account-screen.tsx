@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { Formik, FormikProps } from 'formik'
 import { injectIntl, IntlShape } from 'react-intl'
-import { Route, RouteComponentProps, Switch } from 'react-router'
+import { Route, Switch } from 'react-router'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import clone from 'clone'
 import React, { ChangeEvent, Component } from 'react'
@@ -221,13 +221,10 @@ class UserAccountScreen extends Component<Props> {
 
 // connect to the redux store
 
-const mapStateToProps = (
-  state: AppReduxState,
-  ownProps: RouteComponentProps
-) => {
-  const { url } = ownProps.match
+const mapStateToProps = (state: AppReduxState) => {
+  const { pathname } = state.router.location
   const basePath = [CREATE_ACCOUNT_PATH, MOBILITY_PATH].find((path) =>
-    url.startsWith(path)
+    pathname.startsWith(path)
   )
   return {
     isWizard: !!basePath,
