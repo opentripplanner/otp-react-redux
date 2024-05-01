@@ -38,7 +38,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
           className="nearby-view base-color-bg"
         >
           <div
-            className="sc-ihmZXn cokYYt nearby-view base-color-bg"
+            className="sc-cuWdqJ cZFGA-D nearby-view base-color-bg"
           >
             <Connect(PageTitle)
               title="components.NearbyView.header"
@@ -77,7 +77,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
               }
             >
               <ol
-                className="sc-dkaWRx dVfztG base-color-bg"
+                className="sc-dcwqsv bgYBAJ base-color-bg"
                 style={
                   Object {
                     "marginTop": 0,
@@ -4064,7 +4064,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
           className="nearby-view base-color-bg"
         >
           <div
-            className="sc-ihmZXn cokYYt nearby-view base-color-bg"
+            className="sc-cuWdqJ cZFGA-D nearby-view base-color-bg"
           >
             <Connect(PageTitle)
               title="components.NearbyView.header"
@@ -4103,7 +4103,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
               }
             >
               <ol
-                className="sc-dkaWRx dVfztG base-color-bg"
+                className="sc-dcwqsv bgYBAJ base-color-bg"
                 style={
                   Object {
                     "marginTop": 0,
@@ -4207,15 +4207,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -4296,7 +4296,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -4315,7 +4315,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -4638,15 +4638,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -4727,7 +4727,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -4746,7 +4746,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -5069,15 +5069,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -5158,7 +5158,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -5177,7 +5177,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -7689,7 +7689,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -9999,11 +9999,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-kHNMIv bKThFh"
+                                    className="sc-hFXoIY jfMSdz"
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW fyEBQb"
+                                        className="sc-iuAqRD ffydil"
                                       >
                                         <span>
                                           Roosevelt Station - Bay 2
@@ -10015,7 +10015,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-bGqPaL gYVaQf"
+                                          className="sc-dwqccx jgqhIg"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -10034,7 +10034,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-fxNMLY chQMOE"
+                                    className="sc-gUUBao dCmAkv"
                                   >
                                     <div>
                                       <FormattedMessage
@@ -11466,7 +11466,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-cjHJky egWyBI"
+                                  className="sc-liccgK cELqZs"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -11642,7 +11642,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -11690,7 +11690,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="45"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -11717,7 +11717,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -11864,10 +11864,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -11878,7 +11878,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -11890,7 +11890,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -12024,10 +12024,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -12038,7 +12038,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -12050,7 +12050,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -12452,7 +12452,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -12500,7 +12500,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="62"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -12527,7 +12527,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -12674,10 +12674,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -12688,7 +12688,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -12700,7 +12700,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -13192,7 +13192,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -13240,7 +13240,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="79"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -13267,7 +13267,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -13414,10 +13414,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -13428,7 +13428,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -13440,7 +13440,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -15311,7 +15311,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -16817,11 +16817,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-kHNMIv bKThFh"
+                                    className="sc-hFXoIY jfMSdz"
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW fyEBQb"
+                                        className="sc-iuAqRD ffydil"
                                       >
                                         <span>
                                           Roosevelt
@@ -16833,7 +16833,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-bGqPaL gYVaQf"
+                                          className="sc-dwqccx jgqhIg"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -16852,7 +16852,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-fxNMLY chQMOE"
+                                    className="sc-gUUBao dCmAkv"
                                   >
                                     <div>
                                       <FormattedMessage
@@ -17882,7 +17882,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-cjHJky egWyBI"
+                                  className="sc-liccgK cELqZs"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -17993,7 +17993,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -18041,7 +18041,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="1 Line"
                                                 >
                                                   <span
-                                                    className="sc-JoojE bMhDjL"
+                                                    className="sc-fTACoA NVRqI"
                                                     color="28813F"
                                                     style={
                                                       Object {
@@ -18068,7 +18068,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -18676,7 +18676,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -18724,7 +18724,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="1 Line"
                                                 >
                                                   <span
-                                                    className="sc-JoojE bMhDjL"
+                                                    className="sc-fTACoA NVRqI"
                                                     color="28813F"
                                                     style={
                                                       Object {
@@ -18751,7 +18751,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -19166,7 +19166,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -19214,7 +19214,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="1 Line"
                                                 >
                                                   <span
-                                                    className="sc-JoojE bMhDjL"
+                                                    className="sc-fTACoA NVRqI"
                                                     color="28813F"
                                                     style={
                                                       Object {
@@ -19241,7 +19241,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -19895,15 +19895,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -19984,7 +19984,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -20003,7 +20003,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -20326,15 +20326,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -20415,7 +20415,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -20434,7 +20434,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -20757,15 +20757,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -20846,7 +20846,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -20865,7 +20865,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -23685,7 +23685,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -26303,11 +26303,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-kHNMIv bKThFh"
+                                    className="sc-hFXoIY jfMSdz"
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW fyEBQb"
+                                        className="sc-iuAqRD ffydil"
                                       >
                                         <span>
                                           Roosevelt Station - Bay 1
@@ -26319,7 +26319,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-bGqPaL gYVaQf"
+                                          className="sc-dwqccx jgqhIg"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -26338,7 +26338,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-fxNMLY chQMOE"
+                                    className="sc-gUUBao dCmAkv"
                                   >
                                     <div>
                                       <FormattedMessage
@@ -27924,7 +27924,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-cjHJky egWyBI"
+                                  className="sc-liccgK cELqZs"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -28100,7 +28100,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -28148,7 +28148,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="45"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -28175,7 +28175,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -28322,10 +28322,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -28336,7 +28336,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -28348,7 +28348,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -28482,10 +28482,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -28496,7 +28496,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -28508,7 +28508,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -28923,7 +28923,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -28971,7 +28971,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="62"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -28998,7 +28998,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -29145,10 +29145,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -29159,7 +29159,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -29171,7 +29171,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -29460,10 +29460,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -29474,7 +29474,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -29486,7 +29486,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -29668,7 +29668,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -29716,7 +29716,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="79"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -29743,7 +29743,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -30351,7 +30351,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -30399,7 +30399,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="988"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -30426,7 +30426,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -30770,15 +30770,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -30859,7 +30859,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -30878,7 +30878,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -31201,15 +31201,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -31290,7 +31290,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -31309,7 +31309,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -31632,15 +31632,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -31721,7 +31721,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -31740,7 +31740,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -32063,15 +32063,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -32152,7 +32152,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -32171,7 +32171,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -32494,15 +32494,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -32583,7 +32583,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -32602,7 +32602,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -34310,7 +34310,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -35816,11 +35816,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-kHNMIv bKThFh"
+                                    className="sc-hFXoIY jfMSdz"
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW fyEBQb"
+                                        className="sc-iuAqRD ffydil"
                                       >
                                         <span>
                                           Roosevelt Station Bay 5 - Bay 5
@@ -35832,7 +35832,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-bGqPaL gYVaQf"
+                                          className="sc-dwqccx jgqhIg"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -35851,7 +35851,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-fxNMLY chQMOE"
+                                    className="sc-gUUBao dCmAkv"
                                   >
                                     <div>
                                       <FormattedMessage
@@ -36881,7 +36881,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-cjHJky egWyBI"
+                                  className="sc-liccgK cELqZs"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -36992,7 +36992,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -37040,7 +37040,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="67"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -37067,7 +37067,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -37214,10 +37214,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -37228,7 +37228,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -37240,7 +37240,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -37797,7 +37797,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -37845,7 +37845,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="73"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -37872,7 +37872,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -38480,7 +38480,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -38528,7 +38528,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="984"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -38555,7 +38555,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -38899,15 +38899,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -38988,7 +38988,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -39007,7 +39007,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -41415,7 +41415,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -43621,11 +43621,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-kHNMIv bKThFh"
+                                    className="sc-hFXoIY jfMSdz"
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW fyEBQb"
+                                        className="sc-iuAqRD ffydil"
                                       >
                                         <span>
                                           Roosevelt
@@ -43637,7 +43637,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-bGqPaL gYVaQf"
+                                          className="sc-dwqccx jgqhIg"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -43656,7 +43656,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-fxNMLY chQMOE"
+                                    className="sc-gUUBao dCmAkv"
                                   >
                                     <div>
                                       <FormattedMessage
@@ -45036,7 +45036,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-cjHJky egWyBI"
+                                  className="sc-liccgK cELqZs"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -45303,7 +45303,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -45351,7 +45351,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="1 Line"
                                                 >
                                                   <span
-                                                    className="sc-JoojE bMhDjL"
+                                                    className="sc-fTACoA NVRqI"
                                                     color="28813F"
                                                     style={
                                                       Object {
@@ -45378,7 +45378,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -45525,10 +45525,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -45539,7 +45539,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -45551,7 +45551,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -45685,10 +45685,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -45699,7 +45699,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -45711,7 +45711,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -45845,10 +45845,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -45859,7 +45859,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -45871,7 +45871,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -48544,7 +48544,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -51162,11 +51162,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-kHNMIv bKThFh"
+                                    className="sc-hFXoIY jfMSdz"
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW fyEBQb"
+                                        className="sc-iuAqRD ffydil"
                                       >
                                         <span>
                                           Roosevelt Station - Bay 3
@@ -51178,7 +51178,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-bGqPaL gYVaQf"
+                                          className="sc-dwqccx jgqhIg"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -51197,7 +51197,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-fxNMLY chQMOE"
+                                    className="sc-gUUBao dCmAkv"
                                   >
                                     <div>
                                       <FormattedMessage
@@ -52783,7 +52783,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-cjHJky egWyBI"
+                                  className="sc-liccgK cELqZs"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -52894,7 +52894,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -52942,7 +52942,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="522"
                                                 >
                                                   <span
-                                                    className="sc-JoojE leaZCj"
+                                                    className="sc-fTACoA bFfeuI"
                                                     color="2B376E"
                                                     style={
                                                       Object {
@@ -52969,7 +52969,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -53629,7 +53629,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -53677,7 +53677,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="67"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -53704,7 +53704,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -53851,10 +53851,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -53865,7 +53865,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -53877,7 +53877,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -54369,7 +54369,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -54417,7 +54417,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="522"
                                                 >
                                                   <span
-                                                    className="sc-JoojE leaZCj"
+                                                    className="sc-fTACoA bFfeuI"
                                                     color="2B376E"
                                                     style={
                                                       Object {
@@ -54444,7 +54444,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -55169,7 +55169,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -55217,7 +55217,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="73"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -55244,7 +55244,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -55904,7 +55904,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -55952,7 +55952,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="322"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -55979,7 +55979,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -56613,7 +56613,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -56661,7 +56661,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="322"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -56688,7 +56688,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -57342,15 +57342,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <styled.div>
                               <div
-                                className="sc-kHNMIv bKThFh"
+                                className="sc-hFXoIY jfMSdz"
                               >
                                 <styled.p>
                                   <p
-                                    className="sc-ksXiFW fyEBQb"
+                                    className="sc-iuAqRD ffydil"
                                   >
                                     <IconWithText
                                       icon={
@@ -57431,7 +57431,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-bGqPaL gYVaQf"
+                                      className="sc-dwqccx jgqhIg"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -57450,7 +57450,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-fxNMLY chQMOE"
+                                className="sc-gUUBao dCmAkv"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -59962,7 +59962,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-cVksOY hGVfg"
+                            className="sc-ehsPLh krQqGl"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -62272,11 +62272,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-kHNMIv bKThFh"
+                                    className="sc-hFXoIY jfMSdz"
                                   >
                                     <styled.p>
                                       <p
-                                        className="sc-ksXiFW fyEBQb"
+                                        className="sc-iuAqRD ffydil"
                                       >
                                         <span>
                                           NE 65th St & 14th Ave NE
@@ -62288,7 +62288,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-bGqPaL gYVaQf"
+                                          className="sc-dwqccx jgqhIg"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -62307,7 +62307,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-fxNMLY chQMOE"
+                                    className="sc-gUUBao dCmAkv"
                                   >
                                     <div>
                                       <FormattedMessage
@@ -63739,7 +63739,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-cjHJky egWyBI"
+                                  className="sc-liccgK cELqZs"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -63915,7 +63915,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -63963,7 +63963,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="45"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -63990,7 +63990,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -64137,10 +64137,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -64151,7 +64151,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -64163,7 +64163,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -64297,10 +64297,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -64311,7 +64311,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -64323,7 +64323,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -64725,7 +64725,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -64773,7 +64773,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="62"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -64800,7 +64800,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -64947,10 +64947,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -64961,7 +64961,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -64973,7 +64973,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
@@ -65465,7 +65465,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-hJxDiT iyWRNg"
+                                        className="sc-gfaqzF lnhCXy"
                                       >
                                         <div
                                           className="header stop-view"
@@ -65513,7 +65513,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="79"
                                                 >
                                                   <span
-                                                    className="sc-JoojE inAnuP"
+                                                    className="sc-fTACoA MLrMk"
                                                     color="333333"
                                                     style={
                                                       Object {
@@ -65540,7 +65540,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           </div>
                                           <styled.ol>
                                             <ol
-                                              className="sc-liccgK gEQUEe"
+                                              className="sc-clhTte dZqpkF"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -65687,10 +65687,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <Styled(Rss)>
                                                             <Rss
-                                                              className="sc-cuWdqJ csQciJ"
+                                                              className="sc-kJFuxL hzGcQZ"
                                                             >
                                                               <StyledIconBase
-                                                                className="sc-cuWdqJ csQciJ"
+                                                                className="sc-kJFuxL hzGcQZ"
                                                                 iconAttrs={
                                                                   Object {
                                                                     "fill": "currentColor",
@@ -65701,7 +65701,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 iconViewBox="0 0 448 512"
                                                               >
                                                                 <ForwardRef
-                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                   iconAttrs={
                                                                     Object {
                                                                       "fill": "currentColor",
@@ -65713,7 +65713,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                                 >
                                                                   <svg
                                                                     aria-hidden="true"
-                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-cuWdqJ csQciJ"
+                                                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kJFuxL hzGcQZ"
                                                                     fill="currentColor"
                                                                     focusable="false"
                                                                     viewBox="0 0 448 512"
