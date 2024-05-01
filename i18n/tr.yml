@@ -11,7 +11,8 @@ actions:
     addNoteError: "Yolculuk alanına not eklenirken hata oluştu:"
     editSubmitterNotesError: "Gönderenin notları düzenlenirken hata oluştu:"
     fetchFieldTripError: ""
-    maxTripRequestsExceeded: Geçerli sonuçlar olmadan yolculuk isteklerinin sayısı aşıldı
+    maxTripRequestsExceeded: Geçerli sonuçlar olmadan yolculuk isteklerinin sayısı
+      aşıldı
     saveItinerariesError: "Seyahat planları kaydedilemedi: {err}"
     setDateError: "Tarih ayarlanırken hata oluştu:"
     setGroupSizeError: "Grup boyutu ayarlanırken hata oluştu:"
@@ -34,7 +35,8 @@ actions:
     confirmDeletePlace: Bu yeri kaldırmak ister misiniz?
     emailVerificationResent: E-posta doğrulama mesajı yeniden gönderildi.
     genericError: "Bir hata ile karşılaşıldı: {err}"
-    itineraryExistenceCheckFailed: Seçtiğiniz seyahatin mümkün olup olmadığı kontrol edilirken hata oluştu.
+    itineraryExistenceCheckFailed: Seçtiğiniz seyahatin mümkün olup olmadığı kontrol
+      edilirken hata oluştu.
     mustBeLoggedInToSavePlace: Konumları kaydetmek için lütfen giriş yapın.
     placeRemembered: Bu yerin ayarları kaydedildi.
     preferencesSaved: Tercihleriniz kaydedilmiştir.
@@ -127,7 +129,8 @@ common:
       aFewSeconds: birkaç saniye
 components:
   A11yPrefs:
-    accessibilityRoutingByDefault: Varsayılan olarak erişilebilir seyahatleri tercih et
+    accessibilityRoutingByDefault: Varsayılan olarak erişilebilir seyahatleri tercih
+      et
   AddPlaceButton:
     addPlace: Yer ekle
     needOriginDestination: Ara yerler eklemek için başlangıç/bitiş noktasını tanımlayın
