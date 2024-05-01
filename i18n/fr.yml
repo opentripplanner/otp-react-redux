@@ -370,6 +370,7 @@ components:
       disponibles}}
     companyBicycle: Vélo {company}
     companyScooter: Trottinette {company}
+    distanceAway: à {localizedDistanceString}
     error: Erreur lors du chargement des services à proximité.
     header: À proximité
     nearbyListIntro: Liste de {count} entités à proximité.
