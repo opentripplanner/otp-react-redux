@@ -117,7 +117,7 @@ const AvailableDays = styled(FieldSet)`
   }
 `
 
-function isDisabled(day: string, itineraryExistence: ItineraryExistence) {
+function isDisabled(day: string, itineraryExistence?: ItineraryExistence) {
   return itineraryExistence && !itineraryExistence[day]?.valid
 }
 
