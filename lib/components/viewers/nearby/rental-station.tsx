@@ -11,6 +11,7 @@ import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
 
 import { Card, CardBody, CardHeader, CardSubheader, CardTitle } from './styled'
+import DistanceDisplay from './distance-display'
 
 type Props = {
   companies?: Company[]
@@ -45,6 +46,7 @@ const RentalStation = ({ companies, fromToSlot, place }: Props) => {
             <FormattedMessage id="components.NearbyView.bikeRentalStation" />
           )}
         </CardSubheader>
+        <DistanceDisplay distance={place.distance} />
       </CardHeader>
       <CardBody>
         <div>
