@@ -374,6 +374,7 @@ components:
     nearbyListIntro: Lista de {count} entidades cercanas.
     nothingNearby: No ubicaciónes cercanas.
     spacesAvailable: "{spacesAvailable} espacios libres disponibles"
+    distanceAway: '{localizedDistanceString} de distancia'
   NewAccountWizard:
     createNewAccount: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
@@ -402,7 +403,7 @@ components:
       body: >-
         No se encontró ninguna conexión entre tu origen y destino en el día
         seleccionado, utilizando los tipos de vehículos que seleccionaste.
-      header: Sin conexiones
+      header: Sin itinerarios
     NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
       body: >-
         Se encontró una conexión, pero estaba fuera de las opciones de la
@@ -454,6 +455,8 @@ components:
       minutos.
     verified: Verificado
     verify: Verificar
+    verifySms: Por favor, complete el proceso de verificación para configurar las
+      notificaciones por SMS.
   Place:
     deleteThisPlace: Borrar este lugar
     enterAlert: >
@@ -715,6 +718,8 @@ components:
     happensOnDays: "Ocurre en: {days}"
     notifications: "{leadTimeInMinutes} minutos antes de la salida programada"
     notificationsDisabled: Notificaciones desactivadas
+    monitoredTripDays: Días de viaje monitoreados
+    timeAndDuration: Tiempo y duración del viaje
   TripTools:
     copyLink: Copiar enlace
     header: Herramientas
