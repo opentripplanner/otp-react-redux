@@ -13,6 +13,7 @@ import OperatorLogo from '../../util/operator-logo'
 import Strong from '../../util/strong-text'
 
 import { CardBody, CardHeader, CardTitle } from './styled'
+import DistanceDisplay from './distance-display'
 
 type Props = {
   actionIcon: ComponentType
@@ -21,7 +22,7 @@ type Props = {
   actionText: JSX.Element
   fromToSlot: JSX.Element
   onZoomClick?: () => void
-  stopData: StopData
+  stopData: StopData & { distance?: number }
   titleAs?: string
   transitOperators?: TransitOperator[]
 }
@@ -99,6 +100,7 @@ const StopCardHeader = ({
             ))}
           <span>{stopData.name}</span>
         </CardTitle>
+        <DistanceDisplay distance={stopData.distance} />
       </CardHeader>
       <CardBody>
         <div>

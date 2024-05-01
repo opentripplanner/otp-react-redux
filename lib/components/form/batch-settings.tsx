@@ -49,7 +49,7 @@ type Props = {
   modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
   routingQuery: any
-  setUrlSearch: (evt: any) => void
+  setQueryParam: (evt: any) => void
   spacedOutModeSelector?: boolean
   updateQueryTimeIfLeavingNow: () => void
 }
@@ -81,7 +81,7 @@ function BatchSettings({
   modeSettingValues,
   onPlanTripClick,
   routingQuery,
-  setUrlSearch,
+  setQueryParam,
   spacedOutModeSelector,
   updateQueryTimeIfLeavingNow
 }: Props) {
@@ -189,6 +189,17 @@ function BatchSettings({
     updateQueryTimeIfLeavingNow
   ])
 
+  /**
+   * Stores parameters in both the Redux `currentQuery` and URL
+   * @param params Params to store
+   */
+  const _onSettingsUpdate = useCallback(
+    (params: any) => {
+      setQueryParam({ queryParamData: params, ...params })
+    },
+    [setQueryParam]
+  )
+
   const _toggleModeButton = useCallback(
     (buttonId: string, newState: boolean) => {
       let newButtons
@@ -200,11 +211,11 @@ function BatchSettings({
 
       // encodeQueryParams serializes the mode buttons for the URL
       // to get nice looking URL params and consistency
-      setUrlSearch(
+      _onSettingsUpdate(
         encodeQueryParams(queryParamConfig, { modeButtons: newButtons })
       )
     },
-    [enabledModeButtons, setUrlSearch]
+    [enabledModeButtons, _onSettingsUpdate]
   )
 
   /**
@@ -242,7 +253,7 @@ function BatchSettings({
             id: 'components.BatchSearchScreen.modeSelectorLabel'
           })}
           modeButtons={processedModeButtons}
-          onSettingsUpdate={setUrlSearch}
+          onSettingsUpdate={_onSettingsUpdate}
           onToggleModeButton={_toggleModeButton}
         />
         <PlanTripButton
@@ -296,7 +307,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
-  setUrlSearch: apiActions.setUrlSearch,
+  setQueryParam: formActions.setQueryParam,
   updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
 
