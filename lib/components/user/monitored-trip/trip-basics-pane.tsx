@@ -117,6 +117,10 @@ const AvailableDays = styled(FieldSet)`
   }
 `
 
+function isDisabled(day: string, itineraryExistence: ItineraryExistence) {
+  return itineraryExistence && !itineraryExistence[day]?.valid
+}
+
 /**
  * This component shows summary information for a trip
  * and lets the user edit the trip name and day.
@@ -239,6 +243,9 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
       const errorStates = getErrorStates(this.props)
       const monitoredDays = dayFieldsToArray(monitoredTrip)
       const isOneTime = monitoredDays.length === 0
+      const errorCheckingTrip = ALL_DAYS.every((day) =>
+        isDisabled(day, finalItineraryExistence)
+      )
       return (
         <div>
           {/* TODO: This component does not block navigation on reload or using the back button.
@@ -273,16 +280,29 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
             <ControlLabel>
               <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
             </ControlLabel>
-            <Radio checked={!isOneTime} onChange={this._handleRecurringTrip}>
+            <Radio
+              checked={!isOneTime}
+              // FIXME: Temporary solution until itinerary existence check is fixed.
+              disabled={errorCheckingTrip}
+              onChange={this._handleRecurringTrip}
+            >
               <FormattedMessage id="components.TripBasicsPane.recurringEachWeek" />
+              {errorCheckingTrip && (
+                <>
+                  {/* FIXME: Temporary solution until itinerary existence check is fixed. */}
+                  <br />
+                  <FormattedMessage id="actions.user.itineraryExistenceCheckFailed" />
+                </>
+              )}
             </Radio>
-            {!isOneTime ? (
+            {!isOneTime && (
               <>
                 <AvailableDays>
                   {ALL_DAYS.map((day) => {
-                    const isDayDisabled =
-                      finalItineraryExistence &&
-                      !finalItineraryExistence[day]?.valid
+                    const isDayDisabled = isDisabled(
+                      day,
+                      finalItineraryExistence
+                    )
                     const boxClass = isDayDisabled
                       ? 'alert-danger'
                       : monitoredTrip[day]
@@ -344,7 +364,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
                   )}
                 </HelpBlock>
               </>
-            ) : null}
+            )}
             <Radio checked={isOneTime} onChange={this._handleOneTimeTrip}>
               <FormattedMessage
                 id="components.TripBasicsPane.onlyOnDate"
