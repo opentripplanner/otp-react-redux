@@ -140,7 +140,7 @@
     "@jackwilsdon/craco-use-babelrc": "^1.0.0",
     "@opentripplanner/scripts": "^1.2.0",
     "@opentripplanner/types": "^6.4.1",
-    "@percy/cli": "^1.20.3",
+    "@percy/cli": "^1.28.5",
     "@percy/puppeteer": "^2.0.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
     "@types/clone": "^2.1.1",
