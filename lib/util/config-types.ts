@@ -91,8 +91,6 @@ export interface Auth0Config {
 /** Local persistence setting */
 export interface LocalPersistenceConfig {
   strategy: 'localStorage'
-  // eslint-disable-next-line camelcase
-  terms_of_storage?: boolean
 }
 
 /** OTP Middleware (Personas) settings */
@@ -113,8 +111,11 @@ export type PersistenceConfig = (
   | MiddlewarePersistenceConfig
 ) & {
   enabled?: boolean
-  // eslint-disable-next-line camelcase
-  terms_of_storage?: boolean
+  termsOfStorageDefault?:
+    | 'visible-unchecked' // default
+    | 'visible-checked'
+    | 'hidden-unchecked'
+    | 'hidden-checked'
 }
 
 /** Popup target settings */

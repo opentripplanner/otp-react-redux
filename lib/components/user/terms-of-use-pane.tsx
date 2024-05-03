@@ -105,8 +105,7 @@ const TermsOfUsePane = ({
 const mapStateToProps = (state: AppReduxState) => {
   return {
     locale: state.otp.ui?.locale,
-    termsOfServiceLink: state.otp.config.termsOfServiceLink,
-    termsOfStorageSet: state.otp.config.persistence?.terms_of_storage
+    termsOfServiceLink: state.otp.config.termsOfServiceLink
   }
 }
 
