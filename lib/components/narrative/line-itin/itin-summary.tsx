@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import { AppReduxState } from '../../../util/state-types'
 import { ComponentContext } from '../../../util/contexts'
 import { getFare } from '../../../util/itinerary'
+import { GRAY_ON_WHITE } from '../../util/colors'
 import FormattedDuration from '../../util/formatted-duration'
 
 // TODO: make this a prop
@@ -22,7 +23,7 @@ const Container = styled.div`
 `
 
 const Detail = styled.div`
-  color: #676767;
+  color: ${GRAY_ON_WHITE};
   font-size: 13px;
 `
 

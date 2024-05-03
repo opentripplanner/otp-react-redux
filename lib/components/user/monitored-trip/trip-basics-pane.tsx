@@ -27,6 +27,7 @@ import {
 import { AppReduxState } from '../../../util/state-types'
 import { FieldSet } from '../styled'
 import { getErrorStates } from '../../../util/ui'
+import { grey } from '../../util/colors'
 import { ItineraryExistence, MonitoredTrip } from '../types'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
@@ -66,7 +67,7 @@ const AvailableDays = styled(FieldSet)`
     }
   }
   & > span {
-    border: 1px solid #ccc;
+    border: 1px solid ${grey[100]};
     border-left: none;
     box-sizing: border-box;
     display: inline-block;
@@ -77,7 +78,7 @@ const AvailableDays = styled(FieldSet)`
     text-align: center;
   }
   & > span:first-of-type {
-    border-left: 1px solid #ccc;
+    border-left: 1px solid ${grey[100]};
   }
 
   .glyphicon {

@@ -7,6 +7,7 @@ import styled from 'styled-components'
 
 import { FETCH_STATUS } from '../../util/constants'
 import { getFirstDepartureFromNow } from '../../util/viewer'
+import { grey } from '../util/colors'
 import { isBlank } from '../../util/ui'
 import { mergeAndSortStopTimes } from '../../util/stop-times'
 import { StopData } from '../util/types'
@@ -21,13 +22,13 @@ const StyledTable = styled.table`
   width: 100%;
   th {
     background-color: var(--main-base-color, white);
-    box-shadow: 0 1px 0px 0px #ccc;
+    box-shadow: 0 1px 0px 0px ${grey[100]};
     font-size: 75%;
     position: sticky;
     top: 0px;
   }
   tr > * {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid ${grey[100]};
     padding: 2px 0 2px 10px;
     vertical-align: top;
   }

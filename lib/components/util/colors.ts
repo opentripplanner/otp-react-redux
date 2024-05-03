@@ -4,20 +4,30 @@ const { blue, grey, red } = colors
 
 /**
  * A red color similar to Bootstrap's "alert" background #d9534f,
- * but with enough contrast over white backgrounds
+ * but with WCAG AAA contrast
  */
 const RED_ON_WHITE = red[800]
 
 /**
  * A gray color similar to #808080 or #888,
- * but with enough contrast on white backgrounds.
+ * but with WCAG AA contrast.
  */
 const GRAY_ON_WHITE = grey[700]
 
 /**
- * A blue for links and blue text on white
+ * A blue with WCAG AAA contrast on white backgrounds
  */
 
 const BLUE_ON_WHITE = blue[800]
 
-export { grey, red, blue, RED_ON_WHITE, GRAY_ON_WHITE, BLUE_ON_WHITE }
+const DARK_TEXT_GREY = '#333'
+
+export {
+  grey,
+  red,
+  blue,
+  DARK_TEXT_GREY,
+  RED_ON_WHITE,
+  GRAY_ON_WHITE,
+  BLUE_ON_WHITE
+}
