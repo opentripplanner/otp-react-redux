@@ -18,6 +18,6 @@ const GRAY_ON_WHITE = grey[700]
  * A blue for links and blue text on white
  */
 
-const BLUE_LINKS = blue[800]
+const BLUE_ON_WHITE = blue[800]
 
-export { grey, red, blue, RED_ON_WHITE, GRAY_ON_WHITE, BLUE_LINKS }
+export { grey, red, blue, RED_ON_WHITE, GRAY_ON_WHITE, BLUE_ON_WHITE }
