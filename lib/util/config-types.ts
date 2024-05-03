@@ -105,17 +105,19 @@ export interface MiddlewarePersistenceConfig {
   strategy: 'otp_middleware'
 }
 
+export type CheckboxDefaultState =
+  | 'visible-unchecked'
+  | 'visible-checked'
+  | 'hidden-unchecked'
+  | 'hidden-checked'
+
 /** General persistence settings */
 export type PersistenceConfig = (
   | LocalPersistenceConfig
   | MiddlewarePersistenceConfig
 ) & {
   enabled?: boolean
-  termsOfStorageDefault?:
-    | 'visible-unchecked' // default
-    | 'visible-checked'
-    | 'hidden-unchecked'
-    | 'hidden-checked'
+  termsOfStorageDefault?: CheckboxDefaultState
 }
 
 /** Popup target settings */
