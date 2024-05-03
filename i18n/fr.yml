@@ -529,7 +529,7 @@ components:
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SavedTripEditor:
-    deleteSavedTrip: Supprimer le trajet enregistré
+    deleteSavedTrip: Supprimer ce trajet
     editSavedTrip: Modifier un trajet enregistré
     saveNewTrip: Enregistrer un nouveau trajet
     tripInformation: Informations sur le trajet
@@ -630,7 +630,8 @@ components:
     vehicleName: Véhicule {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Vérification du trajet pour chaque jour de la semaine...
-    selectAtLeastOneDay: Veuillez choisir au moins un jour pour effectuer le suivi.
+    onlyOnDate: "{date, date, ::eeeee yyyyMMdd} uniquement"
+    recurringEachWeek: Certains jours chaque semaine
     tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
     tripIsAvailableOnDaysIndicated: Votre trajet est possible les jours indiqués ci-dessus.
     tripNamePrompt: "Saisissez un nom pour ce trajet :"
@@ -693,6 +694,9 @@ components:
         Veuillez patienter pendant que les conditions du trajet sont
         déterminées.
       heading: Conditions du trajet indéterminées
+    past:
+      description: Le jour de ce trajet non-répété est passé.
+      heading: Trajet dans le passé
     snoozed:
       description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
       heading: Suivi suspendu jusqu'à demain

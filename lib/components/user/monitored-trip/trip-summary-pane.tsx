@@ -1,13 +1,12 @@
 import { Bell, BellSlash, Calendar, Clock } from '@styled-icons/fa-regular'
-import { FormattedMessage, useIntl } from 'react-intl'
-import React from 'react'
-
-import { dayFieldsToArray } from '../../../util/monitored-trip'
-import { MonitoredTripProps } from '../types'
+import { FormattedDate, FormattedMessage, useIntl } from 'react-intl'
 import LocationIcon from '@opentripplanner/location-icon'
+import React from 'react'
 import styled from 'styled-components'
 
+import { dayFieldsToArray } from '../../../util/monitored-trip'
 import { InlineLoading } from '../../narrative/loading'
+import { MonitoredTripProps } from '../types'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import MonitoredDays from './trip-monitored-days'
@@ -125,7 +124,15 @@ const TripSummaryPane = ({
       </div>
     )
   } else {
-    const days = dayFieldsToArray(monitoredTrip)
+    const monitoredDays = dayFieldsToArray(monitoredTrip)
+    const isOneTime = monitoredDays.length === 0
+    // For one-time trips, just print the date the trip is taken.
+    // For recurrent trips, print the days the trip will be monitored.
+    const displayedDays = isOneTime ? (
+      <FormattedDate dateStyle="full" value={itinerary.startTime} />
+    ) : (
+      <MonitoredDays days={monitoredDays} />
+    )
 
     const testHandle = () => {
       if (handleTogglePauseMonitoring) {
@@ -190,7 +197,7 @@ const TripSummaryPane = ({
                   id: 'components.TripSummaryPane.monitoredTripDays'
                 })}
               />
-              <MonitoredDays days={days} />
+              {displayedDays}
             </TripDetailWithIcon>
             {/* Trip notification info */}
             <TripDetailWithIcon as="li">

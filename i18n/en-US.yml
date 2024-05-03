@@ -600,7 +600,8 @@ components:
     vehicleName: Vehicle {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Checking itinerary existence for each day of the week...
-    selectAtLeastOneDay: Please select at least one day to monitor.
+    onlyOnDate: Only on {date, date, ::eeeee yyyyMMdd}
+    recurringEachWeek: On certain days each week
     tripDaysPrompt: What days do you take this trip?
     tripIsAvailableOnDaysIndicated: Your trip is available on the days of the week as indicated above.
     tripNamePrompt: "Please provide a name for this trip:"
@@ -659,6 +660,9 @@ components:
       awaiting: Awaiting calculation...
       description: Please wait a bit for the trip to calculate.
       heading: Trip not yet calculated
+    past:
+      description: This is a one-time trip that occurred in the past.
+      heading: Trip is in the past
     snoozed:
       description: Unsnooze trip monitoring to see the updated status.
       heading: Trip monitoring is snoozed for today

@@ -78,3 +78,9 @@ export interface MonitoredTripProps {
   pendingRequest?: boolean | string
   to?: Place
 }
+
+export interface MonitoredTripRenderData {
+  bodyText: React.ReactNode
+  headingText: React.ReactNode
+  shouldRenderAlerts: boolean
+}
