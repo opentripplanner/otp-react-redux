@@ -81,13 +81,13 @@ common:
     tuesday: Martes
     wednesday: Miércoles
   daysOfWeekCompact:
-    friday: Vie.
-    monday: Lun.
-    saturday: Sáb.
-    sunday: Dom.
-    thursday: Jue.
-    tuesday: Mar.
-    wednesday: Mié.
+    friday: V
+    monday: L
+    saturday: S
+    sunday: D
+    thursday: J
+    tuesday: M
+    wednesday: X
   daysOfWeekPlural:
     friday: Viernes
     monday: Lunes
@@ -527,6 +527,7 @@ components:
     tripNotFound: No se encontró el viaje
     tripNotFoundDescription: Lo sentimos, no se encontró el viaje solicitado.
     tripNotifications: Notificaciones de viaje
+    deleteSavedTrip: Borrar viaje guardado
   SavedTripList:
     alertTag: "{alerta, plural, one {Ver una alerta} other {Ver # alertas}}"
     fromTo: De {from} al {to}
@@ -617,7 +618,6 @@ components:
     vehicleName: Vehículo {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Comprobación de la existencia de itinerarios para cada día de la semana…
-    selectAtLeastOneDay: Por favor, seleccione al menos un día para el seguimiento.
     tripDaysPrompt: ¿Qué días hace este viaje?
     tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana indicados anteriormente.
     tripNamePrompt: "Por favor, indique un nombre para este viaje:"
@@ -702,11 +702,9 @@ components:
     arriveAt: "Llegue a las "
     leaveAt: "Salida a las "
   TripSummaryPane:
-    happensOnDays: "Ocurre en: <strong>{days}</strong>"
-    notifications: >-
-      Notificaciones: <strong>{leadTimeInMinutes} minutos antes de la salida
-      programada</strong>
-    notificationsDisabled: "Notificaciones: <strong>Desactivadas</strong>"
+    happensOnDays: "Ocurre en: {days}"
+    notifications: "{leadTimeInMinutes} minutos antes de la salida programada"
+    notificationsDisabled: Notificaciones desactivadas
   TripTools:
     copyLink: Copiar enlace
     header: Herramientas

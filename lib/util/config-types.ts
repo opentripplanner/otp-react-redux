@@ -317,6 +317,8 @@ export interface TransitOperatorConfig extends TransitOperator {
 export interface RouteViewerConfig {
   /** Whether to hide the route linear shape inside a flex zone of that route. */
   hideRouteShapesWithinFlexZones?: boolean
+  /** Remove vehicles from the map if they haven't sent an update in a number of seconds */
+  maxRealtimeVehicleAge?: number
   /** Disable vehicle highlight if necessary (e.g. custom or inverted icons) */
   vehicleIconHighlight?: boolean
   /** Customize vehicle icon padding (the default iconPadding is 2px in otp-ui) */

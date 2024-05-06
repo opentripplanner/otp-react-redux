@@ -1,4 +1,3 @@
-import { NavbarButton } from '../app/nav-item'
 import React, {
   HTMLAttributes,
   KeyboardEvent,
@@ -7,6 +6,9 @@ import React, {
   useRef,
   useState
 } from 'react'
+
+import { getEntryRelativeTo } from './get-entry-relative-to'
+import { NavbarButton } from '../app/nav-item'
 import styled from 'styled-components'
 
 interface Props extends HTMLAttributes<HTMLElement> {
@@ -62,25 +64,6 @@ const DropdownMenu = styled.ul`
 `
 
 /**
- * Helper method to find the element within dropdown menu at the given offset
- * (e.g. previous or next) relative to the specified element.
- * The query is limited to the dropdown so that arrow navigation is contained within
- * (tab navigation is not restricted).
- */
-function getEntryRelativeTo(
-  id: string,
-  element: EventTarget,
-  offset: 1 | -1
-): HTMLElement {
-  const entries = Array.from(
-    document.querySelectorAll(`#${id} button, #${id}-label`)
-  )
-  const elementIndex = entries.indexOf(element as HTMLElement)
-
-  return entries[elementIndex + offset] as HTMLElement
-}
-
-/**
  * Renders a dropdown menu. By default, only a passed "name" is rendered. If clicked,
  * a floating div is rendered below the "name" with list contents inside. Clicking anywhere
  * outside the floating div will close the dropdown.
@@ -99,6 +82,9 @@ export const Dropdown = ({
   const containerRef = useRef<HTMLLIElement>(null)
 
   const toggleOpen = useCallback(() => setOpen(!open), [open, setOpen])
+
+  // Argument for document.querySelectorAll to target focusable elements.
+  const queryId = `#${id} button, #${id}-label`
 
   // Adding document event listeners allows us to close the dropdown
   // when the user interacts with any part of the page that isn't the dropdown
@@ -124,11 +110,11 @@ export const Dropdown = ({
       switch (e.key) {
         case 'ArrowUp':
           e.preventDefault()
-          getEntryRelativeTo(id, element, -1)?.focus()
+          getEntryRelativeTo(queryId, element, -1)?.focus()
           break
         case 'ArrowDown':
           e.preventDefault()
-          getEntryRelativeTo(id, element, 1)?.focus()
+          getEntryRelativeTo(queryId, element, 1)?.focus()
           break
         case 'Escape':
           setOpen(false)

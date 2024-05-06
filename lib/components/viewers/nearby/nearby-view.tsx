@@ -215,7 +215,7 @@ function NearbyView({
           /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
           tabIndex={0}
         >
-          {getNearbyItem(n.place)}
+          {getNearbyItem({ ...n.place, distance: n.distance })}
         </div>
       </li>
     ))
