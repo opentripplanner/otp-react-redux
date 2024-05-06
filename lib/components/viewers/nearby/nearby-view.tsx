@@ -28,6 +28,7 @@ import VehicleParking from './vehicle-parking'
 
 const AUTO_REFRESH_INTERVAL = 15000
 
+// TODO: use lonlat package
 type LatLonObj = { lat: number; lon: number }
 
 type Props = {
@@ -199,7 +200,7 @@ function NearbyView({
           /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
           tabIndex={0}
         >
-          {getNearbyItem(n.place)}
+          {getNearbyItem({ ...n.place, distance: n.distance })}
         </div>
       </li>
     ))

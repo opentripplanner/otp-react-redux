@@ -518,7 +518,6 @@ components:
     vehicleName: 车辆 {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: 检查一周中每一天的行程存在…
-    selectAtLeastOneDay: 请至少选择一天进行监测.
     tripDaysPrompt: 您这次行程是在哪天进行的?
     tripIsAvailableOnDaysIndicated: 您的行程可以在上述一周的日子里进行.
     tripNamePrompt: "请为这次旅行提供一个名称:"
@@ -589,9 +588,9 @@ components:
     arriveAt: "到达 "
     leaveAt: "离开 "
   TripSummaryPane:
-    happensOnDays: "发生在: <strong>{days}</strong>"
-    notifications: "通知: <strong>预定出发前 {leadTimeInMinutes} </strong>"
-    notificationsDisabled: "通知: <strong>已禁用</strong>"
+    happensOnDays: "发生在: {days}"
+    notifications: 预定出发前 {leadTimeInMinutes}
+    notificationsDisabled: "通知: 已禁用"
   TripTools:
     copyLink: 复制链接
     header: 工具

@@ -1,19 +1,16 @@
-import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import React from 'react'
 
-import { AppReduxState } from '../../util/state-types'
 import Link from '../util/link'
 
 type Props = {
-  mainPath: string
   sticky?: boolean
 }
 /**
  * This component is a switcher between
  * the main views of the application.
  */
-const ViewSwitcher = ({ mainPath, sticky }: Props) => {
+const ViewSwitcher = ({ sticky }: Props) => {
   const intl = useIntl()
   return (
     <div
@@ -34,26 +31,17 @@ const ViewSwitcher = ({ mainPath, sticky }: Props) => {
           : {}
       }
     >
-      <Link isActive={mainPath === '/'} to="/">
+      <Link to="/" tracking>
         <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />
       </Link>
-      <Link isActive={mainPath === '/route'} to="/route">
+      <Link to="/route" tracking>
         <FormattedMessage id="components.RouteViewer.shortTitle" />
       </Link>
-      <Link isActive={mainPath === '/nearby'} to="/nearby">
+      <Link to="/nearby" tracking>
         <FormattedMessage id="components.ViewSwitcher.nearby" />
       </Link>
     </div>
   )
 }
 
-// connect to the redux store
-
-const mapStateToProps = (state: AppReduxState) => {
-  const pathParts = state.router.location.pathname.split('/')
-  return {
-    mainPath: `/${pathParts[1]}`
-  }
-}
-
-export default connect(mapStateToProps)(ViewSwitcher)
+export default ViewSwitcher

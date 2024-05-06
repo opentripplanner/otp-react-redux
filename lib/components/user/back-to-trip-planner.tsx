@@ -4,18 +4,18 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { IconWithText } from '../util/styledIcon'
-import { LinkWithQuery } from '../form/connected-links'
+import Link from '../util/link'
 
-const StyledLinkWithQuery = styled(LinkWithQuery)`
+const StyledLink = styled(Link)`
   display: block;
 `
 
-const BackToTripPlanner = () => (
-  <StyledLinkWithQuery to="/">
+const BackToTripPlanner = (): JSX.Element => (
+  <StyledLink to="/">
     <IconWithText Icon={ArrowLeft}>
       <FormattedMessage id="components.BackToTripPlanner.backToTripPlanner" />
     </IconWithText>
-  </StyledLinkWithQuery>
+  </StyledLink>
 )
 
 export default BackToTripPlanner
