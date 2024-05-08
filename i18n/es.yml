@@ -521,6 +521,7 @@ components:
     signInText: Inicia sesión para guardar el viaje
     signInTooltip: Por favor, inicia sesión para guardar el viaje.
   SavedTripEditor:
+    deleteSavedTrip: Borrar viaje guardado
     editSavedTrip: Editar el viaje guardado
     saveNewTrip: Guardar un nuevo viaje
     tripInformation: Información sobre el viaje
@@ -617,7 +618,6 @@ components:
     vehicleName: Vehículo {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Comprobación de la existencia de itinerarios para cada día de la semana…
-    selectAtLeastOneDay: Por favor, seleccione al menos un día para el seguimiento.
     tripDaysPrompt: ¿Qué días hace este viaje?
     tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana indicados anteriormente.
     tripNamePrompt: "Por favor, indique un nombre para este viaje:"
