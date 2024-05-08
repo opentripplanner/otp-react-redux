@@ -12,6 +12,7 @@ export interface OtpState {
   // TODO: Add other OTP states
   activeSearchId?: string
   config: AppConfig
+  currentQuery: any // TODO
   filter: {
     sort: {
       type: string
