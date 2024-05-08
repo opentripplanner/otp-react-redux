@@ -521,13 +521,13 @@ components:
     signInText: Inicia sesión para guardar el viaje
     signInTooltip: Por favor, inicia sesión para guardar el viaje.
   SavedTripEditor:
+    deleteSavedTrip: Borrar viaje guardado
     editSavedTrip: Editar el viaje guardado
     saveNewTrip: Guardar un nuevo viaje
     tripInformation: Información sobre el viaje
     tripNotFound: No se encontró el viaje
     tripNotFoundDescription: Lo sentimos, no se encontró el viaje solicitado.
     tripNotifications: Notificaciones de viaje
-    deleteSavedTrip: Borrar viaje guardado
   SavedTripList:
     alertTag: "{alerta, plural, one {Ver una alerta} other {Ver # alertas}}"
     fromTo: De {from} al {to}
