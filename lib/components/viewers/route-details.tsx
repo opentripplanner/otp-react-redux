@@ -30,7 +30,7 @@ import {
   StopLink,
   Stop as StyledStop
 } from './styled'
-import { grey } from '../util/colors'
+import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 
 const PatternSelectButton = styled(UnstyledButton)`
   span {
@@ -241,7 +241,9 @@ class RouteDetails extends Component<Props> {
                   onClick={() => this._stopLinkClicked(stop)}
                   onMouseOver={() => setHoveredStop(stop.id)}
                   routeColor={
-                    routeColor.includes('ffffff') ? grey[800] : routeColor
+                    routeColor.includes('ffffff')
+                      ? DEFAULT_ROUTE_COLOR
+                      : routeColor
                   }
                   textColor={getMostReadableTextColor(
                     routeColor,
