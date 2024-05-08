@@ -180,10 +180,10 @@ export const SortResultsDropdown = styled(Dropdown)`
   position: relative;
 
   ${DropdownButton} {
-    border-radius: 5px;
-    padding: 3px 7px;
     background: #fff;
+    border-radius: 5px;
     color: inherit;
+    padding: 3px 7px;
 
     span.caret {
       color: inherit;
