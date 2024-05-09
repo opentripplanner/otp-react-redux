@@ -585,7 +585,6 @@ components:
     vehicleName: Sasakyan {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Tinitingnan kung may itinerary para sa bawat araw ng linggo...
-    selectAtLeastOneDay: Pumili ng kahit isang araw lang na susubaybayan.
     tripDaysPrompt: Anong mga araw mo ginagawa ang biyaheng ito?
     tripIsAvailableOnDaysIndicated: Available ang iyong biyahe sa mga araw ng linggo na nakasaad sa itaas.
     tripNamePrompt: "Pangalanan ang biyaheng ito:"
