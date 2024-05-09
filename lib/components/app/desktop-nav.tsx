@@ -9,6 +9,7 @@ import { accountLinks, getAuth0Config } from '../../util/auth'
 import { AppConfig } from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
 import { DEFAULT_APP_TITLE } from '../../util/constants'
+import { isMobile } from '@opentripplanner/core-utils/lib/ui'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
 
@@ -104,16 +105,21 @@ const DesktopNav = ({
         >
           <Navbar.Brand>
             <AppMenu />
-            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-            {/* @ts-ignore The dynamic tag is causing some trouble */}
-            <BrandingElement
-              className={branding && `with-icon icon-${branding}`}
-              {...brandingProps}
-            >
-              {/* A title is always rendered (e.g.for screen readers)
-                  but is visually-hidden if a branding icon is used. */}
-              <div className="navbar-title">{title}</div>
-            </BrandingElement>
+
+            {!isMobile() && (
+              <>
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-ignore The dynamic tag is causing some trouble */}
+                <BrandingElement
+                  className={branding && `with-icon icon-${branding}`}
+                  {...brandingProps}
+                >
+                  {/* A title is always rendered (e.g.for screen readers)
+                    but is visually-hidden if a branding icon is used. */}
+                  <div className="navbar-title">{title}</div>
+                </BrandingElement>
+              </>
+            )}
           </Navbar.Brand>
 
           <ViewSwitcher sticky />
