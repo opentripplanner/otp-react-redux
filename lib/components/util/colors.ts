@@ -26,7 +26,7 @@ const RED_ON_WHITE = red[800]
  * A gray color similar to #808080 or #888,
  * but with WCAG AA contrast.
  */
-const GRAY_ON_WHITE = grey[700]
+const GREY_ON_WHITE = grey[700]
 
 /**
  * A blue with WCAG AAA contrast on white backgrounds
@@ -47,6 +47,6 @@ export {
   DEFAULT_ROUTE_COLOR,
   ELEVATION_BLUE,
   RED_ON_WHITE,
-  GRAY_ON_WHITE,
+  GREY_ON_WHITE,
   BLUE_ON_WHITE
 }
