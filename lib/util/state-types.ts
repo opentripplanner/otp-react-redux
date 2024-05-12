@@ -17,6 +17,7 @@ export interface OtpState {
       type: string
     }
   }
+  location: any
   overlay: any
   serviceTimeRange?: {
     end: number
