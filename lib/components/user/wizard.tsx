@@ -18,22 +18,18 @@ import FormNavigationButtons from './form-navigation-buttons'
 import standardPanes, { PaneProps } from './standard-panes'
 
 export interface WizardProps {
-  activePaneId: string
   formikProps: FormikProps<EditedUser>
 }
 
 export interface OwnProps {
-  activePaneId: string
   pages: string[]
 }
 
-interface Props extends OwnProps {
+interface Props extends OwnProps, WizardProps {
   activePane: PaneProps
   activePaneIndex: number
-  formikProps: FormikProps<EditedUser>
   intl: IntlShape
-  onNext?: () => void
-  pages: string[]
+  onNext?: (currentPage: string) => void
   parentPath: string
   returnTo?: string
   routeTo: (url: string, replace?: string, method?: any) => void
@@ -91,7 +87,7 @@ class Wizard extends Component<Props> {
         // Execute any action that need to happen before going to the next pane
         // (e.g. save a user account).
         if (onNext) {
-          await onNext()
+          await onNext(pages[activePaneIndex])
         }
         this._routeTo(nextId)
       }
@@ -114,10 +110,10 @@ class Wizard extends Component<Props> {
   }
 
   componentDidMount(): void {
+    const { activePaneIndex, pages } = this.props
     this._focusHeader()
-
-    if (!this.props.activePaneId) {
-      this._routeTo(this.props.pages[0], replace)
+    if (activePaneIndex === -1) {
+      this._routeTo(pages[0], replace)
     }
   }
 
@@ -177,14 +173,18 @@ class Wizard extends Component<Props> {
 // connect to the redux store
 
 const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
-  const { activePaneId, pages } = ownProps
+  const { pages } = ownProps
   const { pathname } = state.router.location
+  const lastSlashIndex = pathname.lastIndexOf('/')
+  const activePaneId = pathname.substr(
+    Math.min(lastSlashIndex + 1, pathname.length)
+  )
   const activePaneIndex = pages.indexOf(activePaneId)
   return {
     // This, instead of just standardPages[activePaneId], ensures no "foreign" page is accidentally shown.
     activePane: standardPanes[pages[activePaneIndex]],
     activePaneIndex,
-    parentPath: pathname.substr(0, pathname.lastIndexOf('/'))
+    parentPath: pathname.substr(0, lastSlashIndex)
   }
 }
 
