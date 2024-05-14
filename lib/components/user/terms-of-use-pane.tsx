@@ -20,7 +20,7 @@ const TermsOfUsePane = ({
   handleChange,
   locale,
   termsOfServiceLink,
-  termsOfStorageDefault,
+  termsOfStorageDefault = CheckboxDefaultState.VISIBLE_UNCHECKED,
   values: userData
 }: {
   disableCheckTerms: boolean
@@ -41,7 +41,7 @@ const TermsOfUsePane = ({
 
   const termsURL = TOSLinkWithI18n || `/#${TERMS_OF_SERVICE_PATH}`
 
-  const isStorageVisible = termsOfStorageDefault.startsWith('visible-')
+  const showStorageTerms = termsOfStorageDefault.startsWith('visible-')
 
   return (
     <div>
@@ -66,7 +66,7 @@ const TermsOfUsePane = ({
           />
         </Checkbox>
       </FormGroup>
-      {isStorageVisible ? (
+      {showStorageTerms ? (
         <FormGroup>
           <Checkbox
             checked={storeTripHistory}
@@ -113,7 +113,7 @@ const mapStateToProps = (state: AppReduxState) => {
   return {
     locale: state.otp.ui?.locale,
     termsOfServiceLink: state.otp.config.termsOfServiceLink,
-    termsOfStorageDefault: state.otp.config.termsOfStorageDefault
+    termsOfStorageDefault: state.otp.config.persistence?.termsOfStorageDefault
   }
 }
 

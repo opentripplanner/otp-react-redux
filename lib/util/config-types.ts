@@ -105,11 +105,19 @@ export interface MiddlewarePersistenceConfig {
   strategy: 'otp_middleware'
 }
 
-export type CheckboxDefaultState =
-  | 'visible-unchecked'
-  | 'visible-checked'
-  | 'hidden-unchecked'
-  | 'hidden-checked'
+/**
+ * Enum to describe the layout state of checkboxes.
+ */
+export enum CheckboxDefaultState {
+  /** Checkbox is hidden and initially checked */
+  HIDDEN_CHECKED = 'hidden-checked',
+  /** Checkbox is hidden and initially unchecked */
+  HIDDEN_UNCHECKED = 'hidden-unchecked',
+  /** Checkbox is visible and initially checked */
+  VISIBLE_CHECKED = 'visible-checked',
+  /** Checkbox is visible and initially unchecked */
+  VISIBLE_UNCHECKED = 'visible-unchecked'
+}
 
 /** General persistence settings */
 export type PersistenceConfig = (
