@@ -133,7 +133,7 @@ class Wizard extends Component<Props> {
     return (
       <Form id="user-settings-form" noValidate>
         <PageTitle title={title} />
-        <h1 aria-live="assertive" ref={this.h1Ref} tabIndex={-1}>
+        <h1 ref={this.h1Ref} tabIndex={-1}>
           <StepNumber>
             <FormattedMessage
               id="components.SequentialPaneDisplay.stepNumber"
