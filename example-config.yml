@@ -339,6 +339,8 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # Show all walking legs regardless of distance
+  showAllWalkLegs: false
   # Filters out trips returned by OTP by default, unless specifically requested.
   # e.g. filters out walk-only itineraries if user has not explicitly asked for them.
   strictItineraryFiltering: false
