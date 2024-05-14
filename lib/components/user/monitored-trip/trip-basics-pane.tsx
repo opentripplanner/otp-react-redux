@@ -27,13 +27,13 @@ import {
 import { AppReduxState } from '../../../util/state-types'
 import { FieldSet } from '../styled'
 import { getErrorStates } from '../../../util/ui'
-import { grey } from '../../util/colors'
 import { ItineraryExistence, MonitoredTrip } from '../types'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 import FormattedValidationError from '../../util/formatted-validation-error'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
+import { BORDER_COLOR } from './trip-summary-pane'
 import TripStatus from './trip-status'
 import TripSummary from './trip-duration-summary'
 
@@ -67,7 +67,7 @@ const AvailableDays = styled(FieldSet)`
     }
   }
   & > span {
-    border: 1px solid ${grey[100]};
+    border: 1px solid ${BORDER_COLOR};
     border-left: none;
     box-sizing: border-box;
     display: inline-block;
@@ -78,7 +78,7 @@ const AvailableDays = styled(FieldSet)`
     text-align: center;
   }
   & > span:first-of-type {
-    border-left: 1px solid ${grey[100]};
+    border-left: 1px solid ${BORDER_COLOR};
   }
 
   .glyphicon {

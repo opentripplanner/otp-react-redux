@@ -13,7 +13,7 @@ import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import MonitoredDays from './trip-monitored-days'
 import TripSummary from './trip-duration-summary'
 
-const BORDER_COLOR = grey[100]
+export const BORDER_COLOR = grey[100]
 
 /**
  * Displays the summary information of a monitored trip.

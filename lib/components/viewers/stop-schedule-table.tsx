@@ -5,6 +5,7 @@ import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, createRef } from 'react'
 import styled from 'styled-components'
 
+import { BORDER_COLOR } from '../user/monitored-trip/trip-summary-pane'
 import { FETCH_STATUS } from '../../util/constants'
 import { getFirstDepartureFromNow } from '../../util/viewer'
 import { grey } from '../util/colors'
@@ -28,7 +29,7 @@ const StyledTable = styled.table`
     top: 0px;
   }
   tr > * {
-    border-bottom: 1px solid ${grey[100]};
+    border-bottom: 1px solid ${BORDER_COLOR};
     padding: 2px 0 2px 10px;
     vertical-align: top;
   }
