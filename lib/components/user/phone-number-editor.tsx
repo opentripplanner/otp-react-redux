@@ -9,7 +9,7 @@ import styled from 'styled-components'
 import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
 import { getAriaPhoneNumber } from '../../util/a11y'
-import { GRAY_ON_WHITE } from '../util/colors'
+import { GREY_ON_WHITE } from '../util/colors'
 import { isBlank } from '../../util/ui'
 import { PhoneFormatConfig } from '../../util/config-types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
@@ -21,7 +21,7 @@ import PhoneVerificationForm, {
 } from './phone-verification-form'
 
 const PlainLink = styled.a`
-  color: ${GRAY_ON_WHITE};
+  color: ${GREY_ON_WHITE};
   &:hover {
     text-decoration: none;
   }

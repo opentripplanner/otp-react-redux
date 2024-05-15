@@ -6,7 +6,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../util/state-types'
-import { GRAY_ON_WHITE } from '../util/colors'
+import { GREY_ON_WHITE } from '../util/colors'
 
 import { FieldSet } from './styled'
 import { User } from './types'
@@ -40,7 +40,7 @@ const NotificationOption = styled(ListGroupItem)`
     text-transform: uppercase;
   }
   label + span {
-    color: ${GRAY_ON_WHITE};
+    color: ${GREY_ON_WHITE};
   }
 `
 

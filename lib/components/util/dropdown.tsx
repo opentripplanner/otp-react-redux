@@ -7,6 +7,7 @@ import React, {
   useState
 } from 'react'
 
+import { DARK_TEXT_GREY } from './colors'
 import { getEntryRelativeTo } from './get-entry-relative-to'
 import { NavbarButton } from '../app/nav-item'
 import styled from 'styled-components'
@@ -28,7 +29,7 @@ const DropdownMenu = styled.ul`
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  color: #111;
+  color: ${DARK_TEXT_GREY};
   list-style: none;
   margin: 2px 0 0;
   min-width: 160px;
@@ -176,25 +177,16 @@ export const Dropdown = ({
 }
 
 export const SortResultsDropdown = styled(Dropdown)`
-    position: relative;
+  position: relative;
 
-    ${DropdownButton} {
-      border-radius: 5px;
-      padding: 3px 7px;
-      background: #F8FAFB;
+  ${DropdownButton} {
+    background: #fff;
+    border-radius: 5px;
+    color: inherit;
+    padding: 3px 7px;
+
+    span.caret {
       color: inherit;
-
-      span.caret {
-        color: inherit;
-      }
-
-      &:hover {
-        background: #fff;
-        color: inherit;
-      }
-      &.active {
-        background: #fff;
-      }
     }
   }
 `
