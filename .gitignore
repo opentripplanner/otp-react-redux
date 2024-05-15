@@ -20,4 +20,6 @@ dist
 !example-config.yml
 !test-config.yml
 !har-mock-config.yml
-.vscode/settings.json
+
+# vscode extensions
+.vscode
