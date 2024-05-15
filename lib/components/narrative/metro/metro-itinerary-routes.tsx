@@ -4,6 +4,7 @@ import { Itinerary, Leg } from '@opentripplanner/types'
 import React from 'react'
 import styled from 'styled-components'
 
+import { AppReduxState } from '../../../util/state-types'
 import { getFormattedMode } from '../../../util/i18n'
 import FormattedDuration, {
   formatDuration
@@ -133,8 +134,7 @@ const MetroItineraryRoutes = ({
   )
 }
 
-// TODO: state type
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: AppReduxState) => ({
   enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
   showAllWalkLegs: state.otp.config.itinerary?.showAllWalkLegs
 })
