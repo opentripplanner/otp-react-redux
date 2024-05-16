@@ -156,7 +156,9 @@ export class RouteRow extends PureComponent<Props> {
 
     if (!route) return null
 
-    const { patterns } = route
+    const { id, longName, mode, patterns, shortName } = route
+    const modeFromRoute = getModeFromRoute(route)
+    const routePath = `/route/${id}`
     const firstPattern = patterns && Object.values(patterns)?.[0]?.id
 
     const patternViewerLinkText = intl.formatMessage({
@@ -171,25 +173,25 @@ export class RouteRow extends PureComponent<Props> {
           onFocus={this._onFocusOrEnter}
           onMouseEnter={this._onFocusOrEnter}
           onTouchStart={this._onFocusOrEnter}
-          to={`/route/${route.id}`}
+          to={routePath}
           tracking
         >
           <RouteDetailsContainer>
             <OperatorLogo operator={operator} />
-            {route.mode && operator.routeIcons !== false && (
+            {mode && operator.routeIcons !== false && (
               <ModeIconElement>
                 <ModeIcon
                   aria-label={getFormattedMode(
-                    getModeFromRoute(route).toLowerCase(),
+                    modeFromRoute.toLowerCase(),
                     intl
                   )}
                   height={28}
                   leg={{
-                    routeId: route.id,
-                    routeLongName: route.longName,
-                    routeShortName: route.shortName
+                    routeId: id,
+                    routeLongName: longName,
+                    routeShortName: shortName
                   }}
-                  mode={getModeFromRoute(route)}
+                  mode={modeFromRoute}
                   role="img"
                   width={28}
                 />
@@ -200,13 +202,13 @@ export class RouteRow extends PureComponent<Props> {
         </RouteRowLink>
         <PatternViewerLink
           aria-label={patternViewerLinkText}
-          id={`open-route-button-${route.shortName || route.longName}-${
+          id={`open-route-button-${shortName || longName}-${
             operator.name || '' // don't print 'undefined' if there is no operator.
           }`}
           // Cannot keyboard navigate to the link unless it is visible
           tabIndex={isActive ? 0 : -1}
           title={patternViewerLinkText}
-          to={`/route/${route.id}/pattern/${firstPattern}`}
+          to={`${routePath}/pattern/${firstPattern}`}
         >
           <Icon Icon={ArrowRight} />
         </PatternViewerLink>
