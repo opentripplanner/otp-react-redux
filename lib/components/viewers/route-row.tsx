@@ -10,7 +10,6 @@ import { getModeFromRoute } from '../../util/viewer'
 import { Icon } from '../util/styledIcon'
 import { SetViewedRouteHandler, ViewedRouteObject } from '../util/types'
 import { TransitOperatorConfig } from '../../util/config-types'
-import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import Link from '../util/link'
 import OperatorLogo from '../util/operator-logo'
 
@@ -18,7 +17,6 @@ import RouteName from './route-name'
 
 interface ButtonProps {
   display?: boolean
-  patternActive?: boolean
 }
 
 interface Props {
@@ -27,7 +25,6 @@ interface Props {
   intl: IntlShape
   isActive?: boolean
   operator: TransitOperatorConfig
-  patternActive?: boolean
   route?: ViewedRouteObject
   setViewedRoute: SetViewedRouteHandler
 }
@@ -43,7 +40,7 @@ export const StyledRouteRow = styled.li`
   position: relative;
 `
 // Route Row Button sits invisible on top of the route name and info.
-export const RouteRowLink = styled(Link)<ButtonProps>`
+export const RouteRowLink = styled(Link)`
   align-items: center;
   display: flex;
   min-height: 50px;
@@ -53,15 +50,9 @@ export const RouteRowLink = styled(Link)<ButtonProps>`
   transition: all ease-out 0.1s;
   width: 100%;
 
-  &:before {
-    background-color: ${(props) => (props.patternActive ? blue[50] : 'white')};
+  &.active {
+    background-color: ${blue[50]};
     border-radius: 4px;
-    content: '';
-    height: 100%;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: -4;
   }
 `
 
@@ -173,10 +164,6 @@ export class RouteRow extends PureComponent<Props> {
       description: 'identifies the purpose of the pattern viewer button',
       id: 'components.RouteViewer.openPatternViewer'
     })
-    const routeMapToggleText = intl.formatMessage({
-      description: 'identifies the behavior of the route viewer button',
-      id: 'components.RouteViewer.toggleRouteOnMap'
-    })
 
     return (
       <StyledRouteRow ref={this.activeRef}>
@@ -185,8 +172,8 @@ export class RouteRow extends PureComponent<Props> {
           onFocus={this._onFocusOrEnter}
           onMouseEnter={this._onFocusOrEnter}
           onTouchStart={this._onFocusOrEnter}
-          patternActive={isActive}
           to={`/route/${route.id}`}
+          tracking
         >
           <RouteDetailsContainer>
             <OperatorLogo operator={operator} />
@@ -211,7 +198,6 @@ export class RouteRow extends PureComponent<Props> {
             )}
             <RouteName route={route} RouteRenderer={RouteRenderer} />
           </RouteDetailsContainer>
-          <InvisibleA11yLabel>({routeMapToggleText})</InvisibleA11yLabel>
         </RouteRowLink>
         <PatternButton
           aria-label={patternViewerButtonText}
