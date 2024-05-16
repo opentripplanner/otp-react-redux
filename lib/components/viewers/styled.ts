@@ -1,3 +1,4 @@
+import { blue, DARK_TEXT_GREY, grey } from '../util/colors'
 import styled from 'styled-components'
 
 interface RenderProps {
@@ -10,7 +11,7 @@ interface RenderProps {
 /** Route Details */
 export const Container = styled.div<RenderProps>`
   background-color: ${(props) =>
-    props.full ? props.backgroundColor || '#ddd' : 'inherit'};
+    props.full ? props.backgroundColor || grey[100] : 'inherit'};
   color: ${(props) => (props.full ? props.textColor : 'inherit')};
   height: 100%;
   overflow-y: hidden;
@@ -39,7 +40,7 @@ export const PatternContainer = styled.div`
   margin: 0;
   padding: 8px;
 
-  label { 
+  label {
     width: 15%;
   }
 
@@ -57,17 +58,14 @@ export const PatternContainer = styled.div`
       span {
         text-overflow: ellipsis;
         overflow: hidden;
-        white-space nowrap;
+        white-space: nowrap;
       }
-      
     }
   }
-  }
-}
 `
 
 export const StopContainer = styled.ol<RenderProps>`
-  color: ${(props) => props?.textColor || '#333'};
+  color: ${(props) => props?.textColor || DARK_TEXT_GREY};
   background-color: ${(props) => props?.backgroundColor || '#fff'};
   overflow-y: scroll;
   height: 100%;
@@ -76,7 +74,7 @@ export const StopContainer = styled.ol<RenderProps>`
   padding: 15px 0 100px;
 `
 export const StopLink = styled.button<RenderProps>`
-  color: ${(props) => props?.textColor + 'da' || '#333'};
+  color: ${(props) => props?.textColor + 'da' || DARK_TEXT_GREY};
   background-color: transparent;
   border: none;
   padding: 0;
@@ -84,7 +82,7 @@ export const StopLink = styled.button<RenderProps>`
   width: 95%;
 
   &:hover {
-    color: ${(props) => props?.textColor || '#23527c'};
+    color: ${(props) => props?.textColor || blue[900]};
     text-decoration: underline;
   }
 `

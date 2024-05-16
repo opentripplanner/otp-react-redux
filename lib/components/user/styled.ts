@@ -1,8 +1,7 @@
 import { Panel } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
 
-import { getBaseColor } from '../util/base-color'
-import { RED_ON_WHITE } from '../util/colors'
+import { getBaseColor, RED_ON_WHITE } from '../util/colors'
 import Link from '../util/link'
 
 const baseColor = getBaseColor()
